@@ -7,6 +7,7 @@
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
 using Microsoft.Health.Fhir.CodeGen.Models;
+using Microsoft.Health.Fhir.CodeGen.Utils;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
@@ -24,6 +25,21 @@ public static class ElementDefinitionExtensions
 
     /// <summary>Gets the explicit name of this element if set, or returns an empty string.</summary>
     public static string cgExplicitName(this ElementDefinition ed) => ed.GetExtensionValue<FhirString>(CommonDefinitions.ExtUrlExplicitTypeName)?.ToString() ?? string.Empty;
+
+    /// <summary>Gets the short name of this element, or explicit name if there is one.</summary>
+    /// <param name="ed">The ed to act on.</param>
+    /// <returns>A string.</returns>
+    public static string cgName(this ElementDefinition ed)
+    {
+        string en = ed.cgExplicitName();
+
+        if (!string.IsNullOrEmpty(en))
+        {
+            return en;
+        }
+
+        return ed.Path.Split('.').Last();
+    }
 
     /// <summary>Gets the types.</summary>
     public static IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> cgTypes(this ElementDefinition ed) => ed.Type.ToDictionary(t => t.cgName(), t => t);
@@ -43,6 +59,24 @@ public static class ElementDefinitionExtensions
     /// <param name="ed">The ed to act on.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
     public static bool cgIsSimple(this ElementDefinition ed) => ed.Type.Any(trc => trc.cgIsSimpleType());
+
+    /// <summary>Gets if this element is optional.</summary>
+    /// <param name="ed">The ed to act on.</param>
+    /// <returns>True if it is optional, false if it is not.</returns>
+    public static bool cgIsOptional(this ElementDefinition ed) => ed.Min == 0;
+
+    /// <summary>Gets if this element represents an array of values.</summary>
+    /// <param name="ed">The ed to act on.</param>
+    /// <returns>True if it is an array, false if it is scalar.</returns>
+    public static bool cgIsArray(this ElementDefinition ed) => ed.Max == "*" || (ed.Max != null && int.Parse(ed.Max) > 1);
+
+    /// <summary>An ElementDefinition extension method that cg is inherited.</summary>
+    /// <param name="ed">The ed to act on.</param>
+    /// <param name="sd">The SD.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public static bool cgIsInherited(this ElementDefinition ed, StructureDefinition sd) => (ed.Base != null)
+        ? (!ed.Base.Path.Equals(ed.Path, StringComparison.Ordinal))
+        : sd.Differential?.Element?.Any(e => e.Path.Equals(ed.Path, StringComparison.Ordinal)) ?? false;
 
     /// <summary>Gets the first validation regex defined for an element or an empty string</summary>
     /// <param name="ed">The ed to act on.</param>
@@ -90,6 +124,93 @@ public static class ElementDefinitionExtensions
     public static bool cgBindingIsCommon(this ElementDefinition ed) =>
         ed.Binding?.GetExtensionValue<FhirBoolean>(CommonDefinitions.ExtUrlIsCommonBinding)?.Value
         ?? false;
+
+    /// <summary>Gets the base type name for the given ElementDefinition.</summary>
+    /// <param name="ed">     The ElementDefinition.</param>
+    /// <param name="typeMap">(Optional) The dictionary containing type mappings.</param>
+    /// <returns>The base type name.</returns>
+    public static string cgBaseTypeName(
+        this ElementDefinition ed,
+        DefinitionCollection dc,
+        Dictionary<string, string>? typeMap = null,
+        NamingConvention namingConvention = NamingConvention.PascalCase)
+    {
+        if (ed.Path.Contains("[x]", StringComparison.Ordinal))
+        {
+            return string.Empty;
+        }
+
+        string value;
+        string? mapped;
+
+        if (ed.ContentReference != null)
+        {
+            if (ed.ContentReference.StartsWith(CommonDefinitions.FhirStructureUrlPrefix, StringComparison.Ordinal))
+            {
+                value = ed.ContentReference.Split('#').Last();
+                return (typeMap?.TryGetValue(value, out mapped) ?? false)
+                    ? mapped : value;
+            }
+
+            if (ed.ContentReference.StartsWith('#'))
+            {
+                value = ed.ContentReference.Substring(1);
+                return (typeMap?.TryGetValue(value, out mapped) ?? false)
+                    ? mapped : value;
+            }
+
+            value = ed.ContentReference;
+            return (typeMap?.TryGetValue(value, out mapped) ?? false)
+                ? mapped : value;
+        }
+
+        // check to see if we are in an extension
+        string lastSegment = ed.Path.Split('.').Last();
+        switch (lastSegment)
+        {
+            case "extension":
+            case "Extension":
+                return "Extension";
+
+            case "modifierExtension":
+            case "ModifierExtension":
+                return "Extension";
+        }
+
+        // check for having child elements
+        if (dc.IsBackbonePath(ed.Path))
+        {
+            if (ed.Type.Any(et => et.Code == "Element"))
+            {
+                return "Element";
+            }
+
+            return "BackboneElement";
+        }
+
+        // check for no types
+        if (ed.Type.Count == 0)
+        {
+            return "Element";
+        }
+
+        // check for single type
+        if (ed.Type.Count == 1)
+        {
+            value = ed.Type.First().cgName();
+            return (typeMap?.TryGetValue(value, out mapped) ?? false)
+                ? mapped : value;
+        }
+
+        // no derivable base type name
+        return string.Empty;
+    }
+
+    /// <summary>Get a flag for if this element should have codes.</summary>
+    /// <param name="ed">The ed to act on.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public static bool cgHasCodes(this ElementDefinition ed) =>
+        (ed.Binding?.Strength == BindingStrength.Required) && (ed.Type?.Any(tr => tr.Code.Equals("Code")) ?? false);
 
     /// <summary>Gets the required codes for this element.</summary>
     /// <param name="ed">       The ed to act on.</param>

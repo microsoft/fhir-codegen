@@ -32,10 +32,6 @@ public record class SliceDiscriminator
     /// <summary>Gets or initializes a value indicating whether this object is binding.</summary>
     public bool IsBinding { get; init; } = false;
 
+    /// <summary>Gets or initializes the name of the binding.</summary>
     public string BindingName { get; init; } = string.Empty;
-
-    
-
-    ///// <summary>Gets or initializes the sub slices.</summary>
-    //public Dictionary<string, SliceDiscriminator> SubSlices { get; init; } = new();
 }

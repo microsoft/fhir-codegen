@@ -17,13 +17,16 @@ public static class StructureDefPrimitive
     /// <summary>
     /// Get the Short definition of a Primitive datatype (may differ from Description).
     /// </summary>
-    public static string cgpShort(this StructureDefinition sd) => sd.Differential.Element.Any() ? sd.Differential.Element[0].Short : sd.Description;
+    public static string cgpShort(this StructureDefinition sd) =>
+        (sd.Snapshot?.Element.Any() ?? false) ? sd.Snapshot.Element[0].Short : sd.Differential.Element.Any() ? sd.Differential.Element[0].Short : sd.Description;
 
     /// <summary>Get the Definition of a primitive datatype (may differ from Purpose).</summary>
-    public static string cgpDefinition(this StructureDefinition sd) => sd.Differential.Element.Any() ? sd.Differential.Element[0].Definition : sd.Purpose;
+    public static string cgpDefinition(this StructureDefinition sd) =>
+        (sd.Snapshot?.Element.Any() ?? false) ? sd.Snapshot.Element[0].Definition : sd.Differential.Element.Any() ? sd.Differential.Element[0].Definition : sd.Purpose;
 
     /// <summary>Get the comment for a primitive datatype.</summary>
-    public static string cgpComment(this StructureDefinition sd) => sd.Differential.Element.Any() ? sd.Differential.Element[0].Comment : string.Empty;
+    public static string cgpComment(this StructureDefinition sd) =>
+        (sd.Snapshot?.Element.Any() ?? false) ? sd.Snapshot.Element[0].Comment : sd.Differential.Element.Any() ? sd.Differential.Element[0].Comment : string.Empty;
 
     /// <summary>Get the system type for a primitive datatype.</summary>
     public static string cgpSystemType(this StructureDefinition sd) => sd.Differential.Element.Count > 1

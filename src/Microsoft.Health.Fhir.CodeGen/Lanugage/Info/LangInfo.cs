@@ -38,6 +38,9 @@ public class LangInfo : ILanguage<InfoOptions>
             ArgName = "--format",
             Description = "File format to export.")]
         public LangInfo.InfoFormat FileFormat { get; set; } = LangInfo.InfoFormat.Text;
+
+        /// <summary>Gets or sets the write stream to use.</summary>
+        public Stream? WriteStream { get; set; } = null;
     }
 
     /// <summary>Gets the language name.</summary>
@@ -76,6 +79,7 @@ public class LangInfo : ILanguage<InfoOptions>
     /// <summary>The currently in-use text writer.</summary>
     private ExportStreamWriter _writer = null!;
 
+    /// <summary>The definitions.</summary>
     private DefinitionCollection _definitions = null!;
 
     /// <summary>Exports the given configuration.</summary>
@@ -84,18 +88,18 @@ public class LangInfo : ILanguage<InfoOptions>
     /// <param name="writeStream">(Optional) Stream to write data to.</param>
     public void Export(
         InfoOptions config,
-        DefinitionCollection definitions,
-        Stream? writeStream = null)
+        DefinitionCollection definitions)
     {
         _definitions = definitions;
 
         // TODO(ginoc): actually open the file
         // create a filename for writing (single file for now)
-        //string filename = Path.Combine(config.OutputDirectory, $"Info_{definitions.FhirSequence.ToRLiteral()}.txt");
+        string filename = Path.Combine(config.OutputDirectory, $"Info_{definitions.FhirSequence.ToRLiteral()}.txt");
         //using (FileStream stream = new(filename, FileMode.Create))
-        using (writeStream == null
-            ? _writer = new ExportStreamWriter(Console.OpenStandardOutput(), System.Text.Encoding.UTF8, 1024, true)
-            : _writer = new ExportStreamWriter(writeStream, System.Text.Encoding.UTF8, 1024, true))
+
+        using (config.WriteStream == null
+            ? _writer = new ExportStreamWriter(new FileStream(filename, FileMode.Create), System.Text.Encoding.UTF8, 1024, true)
+            : _writer = new ExportStreamWriter(config.WriteStream, System.Text.Encoding.UTF8, 1024, true))
         {
             WriteHeader(config, definitions);
 
@@ -116,7 +120,6 @@ public class LangInfo : ILanguage<InfoOptions>
             WriteUnresolvedValueSets(definitions.BoundExternalValueSets(), "External Value Set Binding References");
 
             //WriteFooter();
-
         }
     }
 

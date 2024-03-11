@@ -587,25 +587,6 @@ public class PackageLoader
                                     throw new Exception($"Failed to parse StructureDefinition file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
                                 }
 
-                                //// DSTU2 Quantity types cannot be detected properly, just 
-                                //if ((packageFhirVersion == FhirReleases.FhirSequenceCodes.DSTU2) &&
-                                //    (r.Type == "SimpleQuantity"))
-                                //{
-                                //    switch (r.Id)
-                                //    {
-                                //        case "Age":
-                                //        case "Count":
-                                //        case "Distance":
-                                //        case "Duration":
-                                //        case "Money":
-                                //            break;
-
-                                //        // SimplyQuantity is acutally a profile, so it is correct
-                                //        case "SimpleQuantity":
-                                //            break;
-                                //    }
-                                //}
-
                                 switch (r.cgArtifactClass())
                                 {
                                     case FhirArtifactClassEnum.PrimitiveType:

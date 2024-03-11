@@ -238,44 +238,28 @@ public abstract partial class FhirSanitizationUtils
         switch (convention)
         {
             case NamingConvention.FhirDotNotation:
-                {
-                    return value;
-                }
+                return value;
 
             case NamingConvention.PascalDotNotation:
-                {
-                    return value.ToPascalDotCase();
-                }
+                return value.ToPascalDotCase();
 
             case NamingConvention.PascalCase:
-                {
-                    return value.ToPascalCase(true);
-                }
+                return value.ToPascalCase(true);
 
             case NamingConvention.CamelCase:
-                {
-                    return value.ToCamelCase(true, concatenationDelimiter);
-                }
+                return value.ToCamelCase(true, concatenationDelimiter);
 
             case NamingConvention.UpperCase:
-                {
-                    return value.ToUpperCase(true, concatenationDelimiter);
-                }
+                return value.ToUpperCase(true, concatenationDelimiter);
 
             case NamingConvention.LowerCase:
-                {
-                    return value.ToLowerCase(true, concatenationDelimiter);
-                }
+                return value.ToLowerCase(true, concatenationDelimiter);
 
             case NamingConvention.LowerKebab:
-                {
-                    return value.ToLowerKebabCase(true);
-                }
+                return value.ToLowerKebabCase(true);
 
             case NamingConvention.None:
-                {
-                    return value;
-                }
+                return value;
 
             default:
                 throw new ArgumentException($"Invalid Naming Convention: {convention}");
@@ -475,7 +459,7 @@ public abstract partial class FhirSanitizationUtils
     /// <returns>A string.</returns>
     public static string SanitizeForProperty(
         string value,
-        HashSet<string> reservedWords,
+        HashSet<string>? reservedWords = null,
         NamingConvention convertToConvention = NamingConvention.None,
         Dictionary<char[], string>? replacements = null,
         bool checkForGmt = false)
@@ -636,7 +620,7 @@ public abstract partial class FhirSanitizationUtils
 
         // need to check for all digits or underscores, or reserved word
         if (RequiresAlpha(value) ||
-            reservedWords != null && reservedWords.Contains(value))
+            ((reservedWords != null) && reservedWords.Contains(value)))
         {
             if (value[0] == '_')
             {

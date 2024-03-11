@@ -4,6 +4,7 @@
 // </copyright>
 
 
+using System.Diagnostics.CodeAnalysis;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Rest;
 using Hl7.Fhir.Specification.Source;
@@ -40,6 +41,16 @@ public partial class DefinitionCollection : IAsyncResourceResolver
             Console.WriteLine($"Error expanding {uri}: {ex.Message}");
             return null;
         }
+    }
+
+    /// <summary>Attempts to expand vs a ValueSet from the given string.</summary>
+    /// <param name="uri">The canonical url of a (conformance) resource.</param>
+    /// <param name="vs"> [out] The vs.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool TryExpandVs(string uri, [NotNullWhen(true)] out ValueSet? vs)
+    {
+        vs = ExpandVs(uri).Result;
+        return vs != null;
     }
 
     /// <summary>Find a (conformance) resource based on its canonical uri.</summary>

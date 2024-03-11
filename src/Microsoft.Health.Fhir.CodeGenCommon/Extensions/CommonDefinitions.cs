@@ -42,5 +42,7 @@ public static class CommonDefinitions
     public const string ExtUrlEdProfileElement = "http://hl7.org/fhir/StructureDefinition/elementdefinition-profile-element";
 
     public const string FhirStructureUrlPrefix = "http://hl7.org/fhir/StructureDefinition/";
+    public const string FhirUrlPrefix = "http://hl7.org/fhir/";
     public const string FhirPathUrlPrefix = "http://hl7.org/fhirpath/";
+    public const string THOCsUrlPrefix = "http://terminology.hl7.org/CodeSystem/";
 }

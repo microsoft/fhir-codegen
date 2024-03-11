@@ -5,6 +5,7 @@
 
 
 using FluentAssertions;
+using Microsoft.Health.Fhir.CodeGen.Lanugage;
 using Microsoft.Health.Fhir.CodeGen.Lanugage.Info;
 using Microsoft.Health.Fhir.CodeGen.Loader;
 using Microsoft.Health.Fhir.CodeGen.Models;
@@ -110,9 +111,22 @@ public class GenerationTestsR5 : IClassFixture<GenerationTestFixture>
     }
 
     [Theory]
-    [FileData("TestData/Generated/Info-R5.txt")]
-    internal async void TestInfoR5(string previous)
+    [InlineData("Info", "TestData/Generated/Info-R5.ts")]
+    [InlineData("TypeScript", "TestData/Generated/TypeScript-R5.ts")]
+    internal async void TestGenR5(string langName, string filePath)
     {
+        // Get the absolute path to the file
+        string path = Path.IsPathRooted(filePath)
+            ? filePath
+            : Path.GetRelativePath(Directory.GetCurrentDirectory(), filePath);
+
+        if (!File.Exists(path))
+        {
+            throw new ArgumentException($"Could not find file at path: {path}");
+        }
+
+        string data = File.ReadAllText(path);
+
         PackageLoader loader = new(_fixture.Cache, new());
 
         DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR5.First().Name, _fixture.EntriesR5);
@@ -124,16 +138,32 @@ public class GenerationTestsR5 : IClassFixture<GenerationTestFixture>
             return;
         }
 
-        // set the allowed terminology servers
-        //loaded.TxServers = new[] { "http://tx.fhir.org/r5" };
-
-        LangInfo exportLang = new();
-
-        LangInfo.InfoOptions options = new();
-
         using (MemoryStream ms = new())
         {
-            exportLang.Export(options, loaded, ms);
+            switch (langName)
+            {
+                case "Info":
+                    {
+                        LangInfo exportLang = new();
+                        LangInfo.InfoOptions options = new();
+                        options.WriteStream = ms;
+                        exportLang.Export(options, loaded);
+                    }
+                    break;
+
+                case "TypeScript":
+                    {
+                        TypeScript exportLang = new();
+                        TypeScript.TypeScriptOptions options = new();
+                        options.WriteStream = ms;
+                        exportLang.Export(options, loaded);
+                    }
+                    break;
+                default:
+                    throw new ArgumentException($"Unknown language: {langName}");
+            }
+
+
             ms.Flush();
             ms.Seek(0, SeekOrigin.Begin);
 
@@ -142,13 +172,12 @@ public class GenerationTestsR5 : IClassFixture<GenerationTestFixture>
                 string current = sr.ReadToEnd();
 
                 // update the current file contents (manual)
-                //File.WriteAllText("TestData/Generated/Info-R5.txt", current);
+                File.WriteAllText(filePath, current);
 
                 // should the types like canonical be canonical::canonical or canonical::string?
-                current.Should().Be(previous);
+                current.Should().Be(data);
             }
         }
-
     }
 }
 
@@ -186,7 +215,9 @@ public class GenerationTestsR4B : IClassFixture<GenerationTestFixture>
 
         using (MemoryStream ms = new())
         {
-            exportLang.Export(options, loaded, ms);
+            options.WriteStream = ms;
+
+            exportLang.Export(options, loaded);
             ms.Flush();
             ms.Seek(0, SeekOrigin.Begin);
 
@@ -239,7 +270,8 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
 
         using (MemoryStream ms = new())
         {
-            exportLang.Export(options, loaded, ms);
+            options.WriteStream = ms;
+            exportLang.Export(options, loaded);
             ms.Flush();
             ms.Seek(0, SeekOrigin.Begin);
 
@@ -292,7 +324,8 @@ public class GenerationTestsR3 : IClassFixture<GenerationTestFixture>
 
         using (MemoryStream ms = new())
         {
-            exportLang.Export(options, loaded, ms);
+            options.WriteStream = ms;
+            exportLang.Export(options, loaded);
             ms.Flush();
             ms.Seek(0, SeekOrigin.Begin);
 
@@ -345,7 +378,8 @@ public class GenerationTestsR2 : IClassFixture<GenerationTestFixture>
 
         using (MemoryStream ms = new())
         {
-            exportLang.Export(options, loaded, ms);
+            options.WriteStream = ms;
+            exportLang.Export(options, loaded);
             ms.Flush();
             ms.Seek(0, SeekOrigin.Begin);
 

@@ -18,5 +18,5 @@ public class LangOpenApi : ILanguage<OpenApiOptions>
     /// <summary>Gets the FHIR primitive type map.</summary>
     public Dictionary<string, string> FhirPrimitiveTypeMap => _primitiveTypeMap;
 
-    public void Export(OpenApiOptions config, DefinitionCollection definitions, Stream? writeStream = null) { }
+    public void Export(OpenApiOptions config, DefinitionCollection definitions) { }
 }

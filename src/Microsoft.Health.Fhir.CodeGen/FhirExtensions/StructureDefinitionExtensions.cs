@@ -103,6 +103,33 @@ public static class StructureDefinitionExtensions
     /// <returns>A string.</returns>
     public static string cgDefinitionCategory(this StructureDefinition sd) => sd.GetExtensionValue<FhirString>(CommonDefinitions.ExtUrlCategory)?.Value ?? string.Empty;
 
+    /// <summary>Gets the base type name for the given ElementDefinition.</summary>
+    /// <param name="sd">     The ElementDefinition.</param>
+    /// <param name="typeMap">(Optional) The dictionary containing type mappings.</param>
+    /// <returns>The base type name.</returns>
+    public static string cgBaseTypeName(this StructureDefinition sd, DefinitionCollection dc, Dictionary<string, string>? typeMap = null)
+    {
+        string value;
+        string? mapped;
+
+        if (!string.IsNullOrEmpty(sd.BaseDefinition))
+        {
+            value = sd.BaseDefinition.Split('/').Last();
+            return (typeMap?.TryGetValue(value, out mapped) ?? false)
+                ? mapped : value;
+        }
+
+        if (!string.IsNullOrEmpty(sd.Type))
+        {
+            value = sd.Type;
+            return (typeMap?.TryGetValue(value, out mapped) ?? false)
+                ? mapped : value;
+        }
+
+        // if we have no type on the structure, we need to look at the first element
+        return sd.cgRootElement()?.cgBaseTypeName(dc, typeMap) ?? string.Empty;
+    }
+
     /// <summary>
     /// Enumerates property elements in this structure - skips the root and slices.
     /// </summary>

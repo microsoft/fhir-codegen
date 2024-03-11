@@ -80,7 +80,7 @@ public partial class DefinitionCollection
     private readonly Dictionary<string, CapabilityStatement> _capabilityStatementsByUrl = new();
     private readonly Dictionary<string, CompartmentDefinition> _compartmentsByUrl = new();
 
-    private readonly HashSet<string> _backbonePaths = new();
+    internal readonly HashSet<string> _backbonePaths = new();
 
     private readonly List<string> _errors = new();
 
@@ -105,7 +105,6 @@ public partial class DefinitionCollection
     /// <param name="path">Full pathname of the file.</param>
     /// <returns>True if backbone path, false if not.</returns>
     public bool IsBackbonePath(string path) => _backbonePaths.Contains(path);
-
 
     /// <summary>Processes elements in a structure definition.</summary>
     /// <remarks>Addes field orders, indexes paths that contain child elements, etc.</remarks>
@@ -366,11 +365,28 @@ public partial class DefinitionCollection
     }
 
     /// <summary>
+    /// Retrieves the concept definition for a given code in a specified code system.
+    /// </summary>
+    /// <param name="system">The URL of the code system.</param>
+    /// <param name="code">The code to retrieve the definition for.</param>
+    /// <returns>The concept definition for the specified code, or an empty string if not found.</returns>
+    public string ConceptDefinition(string system, string code)
+    {
+        // check to see if we have the code system
+        if (!_codeSystemsByUrl.TryGetValue(system, out CodeSystem? cs))
+        {
+            return string.Empty;
+        }
+
+        return cs.Concept?.FirstOrDefault(c => c.Code.Equals(code, StringComparison.Ordinal))?.Definition ?? string.Empty;
+    }
+
+    /// <summary>
     /// Returns the versioned URL for a given value set URL.
     /// </summary>
     /// <param name="vsUrl">The URL of the value set.</param>
     /// <returns>The versioned URL of the value set.</returns>
-    private string VersionedUrlForVs(string vsUrl)
+    internal string VersionedUrlForVs(string vsUrl)
     {
         int lastPipe = vsUrl.LastIndexOf('|');
 
@@ -384,7 +400,7 @@ public partial class DefinitionCollection
         return vsUrl + "|" + vsVersions!.Max();
     }
 
-    private string UnversionedUrlForVs(string vsUrl)
+    internal string UnversionedUrlForVs(string vsUrl)
     {
         int lastPipe = vsUrl.LastIndexOf('|');
 

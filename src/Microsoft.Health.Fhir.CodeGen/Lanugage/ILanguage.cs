@@ -34,7 +34,6 @@ public interface ILanguage<T> : ILanguage
     /// <param name="writeStream">(Optional) Stream to write data to.</param>
     void Export(
         T config,
-        DefinitionCollection definitions,
-        Stream? writeStream = null);
+        DefinitionCollection definitions);
 }
 

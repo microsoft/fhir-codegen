@@ -4,35 +4,46 @@
 // </copyright>
 
 using Hl7.Fhir.Model;
+using Microsoft.Health.Fhir.CodeGen.Utils;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 
 namespace Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 
 public static class ValueSetExtensions
 {
-    /// <summary>Gets the standards status of this definition (e.g., trial-use, normative).</summary>
-    /// <param name="vs">The SD to act on.</param>
-    /// <returns>A string.</returns>
+    /// <summary>
+    /// Gets the standards status of this definition (e.g., trial-use, normative).
+    /// </summary>
+    /// <param name="vs">The ValueSet to act on.</param>
+    /// <returns>A string representing the standards status.</returns>
     public static string cgStandardStatus(this ValueSet vs) => vs.GetExtensionValue<Code>(CommonDefinitions.ExtUrlStandardStatus)?.ToString() ?? string.Empty;
 
-    /// <summary>Gets the FHIR Maturity Model (FMM) level of this definition, or 0 if not specified.</summary>
-    /// <param name="vs">The SD to act on.</param>
-    /// <returns>An int.</returns>
+    /// <summary>
+    /// Gets the FHIR Maturity Model (FMM) level of this definition, or 0 if not specified.
+    /// </summary>
+    /// <param name="vs">The ValueSet to act on.</param>
+    /// <returns>An int representing the FMM level.</returns>
     public static int? cgMaturityLevel(this ValueSet vs) => vs.GetExtensionValue<Integer>(CommonDefinitions.ExtUrlFmm)?.Value;
 
-    /// <summary>Gets a flag indicating if this definition is experimental.</summary>
-    /// <param name="vs">The SD to act on.</param>
-    /// <returns>True if it succeeds, false if it fails.</returns>
+    /// <summary>
+    /// Gets a flag indicating if this definition is experimental.
+    /// </summary>
+    /// <param name="vs">The ValueSet to act on.</param>
+    /// <returns>True if the definition is experimental, false otherwise.</returns>
     public static bool cgIsExperimental(this ValueSet vs) => vs.Experimental ?? false;
 
-    /// <summary>Gets the Work Group responsible for this definition.</summary>
-    /// <param name="vs">The SD to act on.</param>
-    /// <returns>A string.</returns>
+    /// <summary>
+    /// Gets the Work Group responsible for this definition.
+    /// </summary>
+    /// <param name="vs">The ValueSet to act on.</param>
+    /// <returns>A string representing the Work Group.</returns>
     public static string cgWorkGroup(this ValueSet vs) => vs.GetExtensionValue<FhirString>(CommonDefinitions.ExtUrlWorkGroup)?.Value ?? string.Empty;
 
-    /// <summary>A ValueSet extension method that query if 'vs' is limited expansion.</summary>
-    /// <param name="vs">The SD to act on.</param>
-    /// <returns>True if limited expansion, false if not.</returns>
+    /// <summary>
+    /// Determines whether the ValueSet is limited expansion.
+    /// </summary>
+    /// <param name="vs">The ValueSet to act on.</param>
+    /// <returns>True if the ValueSet is limited expansion, false otherwise.</returns>
     public static bool IsLimitedExpansion(this ValueSet vs)
     {
         if (vs.Expansion?.Parameter == null)
@@ -59,4 +70,44 @@ public static class ValueSetExtensions
                 return false;
         }
     }
+
+    /// <summary>
+    /// Gets the key for the ValueSet.ContainsComponent.
+    /// </summary>
+    /// <param name="c">The ContainsComponent to act on.</param>
+    /// <returns>A string representing the key.</returns>
+    public static string cgKey(this ValueSet.ContainsComponent c) => c.System + "#" + c.Code;
+
+    /// <summary>
+    /// Gets the local name of the system in the ValueSet.ContainsComponent.
+    /// </summary>
+    /// <param name="c">The ContainsComponent to act on.</param>
+    /// <returns>A string representing the local name of the system.</returns>
+    public static string cgSystemLocalName(this ValueSet.ContainsComponent c)
+    {
+        if (string.IsNullOrEmpty(c.System))
+        {
+            return string.Empty;
+        }
+
+        if (c.System.StartsWith(CommonDefinitions.FhirUrlPrefix, StringComparison.Ordinal))
+        {
+            return FhirSanitizationUtils.SanitizeForProperty(c.System.Substring(20));
+        }
+
+        if (c.System.StartsWith(CommonDefinitions.THOCsUrlPrefix, StringComparison.Ordinal))
+        {
+            return FhirSanitizationUtils.SanitizeForProperty(c.System.Substring(38));
+        }
+
+        return FhirSanitizationUtils.SanitizeForProperty(c.System);
+    }
+
+    /// <summary>
+    /// Gets the referenced code systems in the ValueSet.
+    /// </summary>
+    /// <param name="vs">The ValueSet to act on.</param>
+    /// <returns>An enumerable of string representing the referenced code systems.</returns>
+    public static IEnumerable<string> cgReferencedCodeSystems(this ValueSet vs) =>
+        vs.Expansion?.Contains?.Select(c => c.System).Distinct() ?? vs.Compose?.Include?.Select(i => i.System).Distinct() ?? Enumerable.Empty<string>();
 }
