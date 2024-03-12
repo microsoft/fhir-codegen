@@ -10,8 +10,6 @@ namespace Microsoft.Health.Fhir.CodeGen.Models;
 
 public class NaturalComparer : IComparer<string>
 {
-    //private static readonly char[] _splitChars = { ' ', '.', '-' };
-
     public static readonly NaturalComparer Instance = new NaturalComparer();
 
     /// <summary>(Immutable) The tokenizer.</summary>
@@ -50,38 +48,37 @@ public class NaturalComparer : IComparer<string>
 
         IEnumerator<Match> xE = (IEnumerator<Match>)_tokenizer.Matches(x).GetEnumerator();
         IEnumerator<Match> yE = (IEnumerator<Match>)_tokenizer.Matches(y).GetEnumerator();
+
+        while (true)
         {
-            while (true)
+            bool hasX = xE.MoveNext();
+            bool hasY = yE.MoveNext();
+
+            if (!(hasX || hasY)) return 0;
+
+            if (!hasX) return -1;
+            if (!hasY) return 1;
+
+            bool isXNumeric = xE.Current.Groups[_matchGroupNumeric].Success;
+            bool isYNumeric = yE.Current.Groups[_matchGroupNumeric].Success;
+
+            if (isXNumeric != isYNumeric)
             {
-                bool hasX = xE.MoveNext();
-                bool hasY = yE.MoveNext();
+                return isXNumeric ? -1 : 1;
+            }
 
-                if (!(hasX || hasY)) return 0;
+            if (isXNumeric)
+            {
+                int xNum = int.Parse(xE.Current.Value);
+                int yNum = int.Parse(yE.Current.Value);
 
-                if (!hasX) return -1;
-                if (!hasY) return 1;
-
-                bool isXNumeric = xE.Current.Groups[_matchGroupNumeric].Success;
-                bool isYNumeric = yE.Current.Groups[_matchGroupNumeric].Success;
-
-                if (isXNumeric != isYNumeric)
-                {
-                    return isXNumeric ? -1 : 1;
-                }
-
-                if (isXNumeric)
-                {
-                    int xNum = int.Parse(xE.Current.Value);
-                    int yNum = int.Parse(yE.Current.Value);
-
-                    int numResult = xNum - yNum;
-                    if (numResult != 0) return numResult;
-                }
-                else
-                {
-                    int itemResult = string.Compare(xE.Current.Value, yE.Current.Value, StringComparison.Ordinal);
-                    if (itemResult != 0) return itemResult;
-                }
+                int numResult = xNum - yNum;
+                if (numResult != 0) return numResult;
+            }
+            else
+            {
+                int itemResult = string.Compare(xE.Current.Value, yE.Current.Value, StringComparison.Ordinal);
+                if (itemResult != 0) return itemResult;
             }
         }
     }

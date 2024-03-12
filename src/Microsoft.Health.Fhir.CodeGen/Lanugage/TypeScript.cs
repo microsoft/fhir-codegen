@@ -156,7 +156,9 @@ public class TypeScript : ILanguage<TypeScript.TypeScriptOptions>
     private static readonly HashSet<string> _unexportableSystems = new()
     {
         "http://www.rfc-editor.org/bcp/bcp13.txt",
+        "http://hl7.org/fhir/ValueSet/mimetype",
         "http://hl7.org/fhir/ValueSet/mimetypes",
+        "http://hl7.org/fhir/ValueSet/ucum-units",
     };
 
     /// <summary>The generics and type hints.</summary>
@@ -482,16 +484,16 @@ public class TypeScript : ILanguage<TypeScript.TypeScriptOptions>
     }
 
     /// <summary>Writes each of the StructureDefinitions in the enumeration.</summary>
-    /// <param name="complexes"> The complexes.</param>
+    /// <param name="structures"> The Structure Definitions.</param>
     /// <param name="isResource">(Optional) True if is resource, false if not.</param>
     private void WriteStructures(
-        IEnumerable<StructureDefinition> complexes,
+        IEnumerable<StructureDefinition> structures,
         bool isResource = false)
     {
-        foreach (StructureDefinition sd in complexes.OrderBy(c => c.Name))
+        foreach (StructureDefinition sd in structures.OrderBy(c => c.Name))
         {
-            // get each component, ordered by path descending so that we write the more deeply nested components first
-            foreach (ComponentDefinition component in sd.cgComponents(_dc, null, true, false).OrderByDescending(c => c.Element?.Path ?? string.Empty))
+            // get each component
+            foreach (ComponentDefinition component in sd.cgComponents(_dc, null, true, false).OrderBy(c => c.Element?.Path ?? string.Empty, FhirDotNestComparer.Instance))
             {
                 WriteInterface(component, isResource && !component.Element.Path.Contains('.'));
             }
@@ -529,18 +531,6 @@ public class TypeScript : ILanguage<TypeScript.TypeScriptOptions>
             exportName = cd.Element.cgNameForExport(NamingConvention.PascalCase);
             _writer.WriteLineIndented($"export interface {exportName} {{");
         }
-
-        //if (string.IsNullOrEmpty(typeName) ||
-        //    (typeName.Equals("Element", StringComparison.Ordinal) && (!_dc.IsBackbonePath(cd.Element.Path))))
-        //{
-        //    exportName = cd.Element.cgNameForExport(NamingConvention.PascalCase);
-        //    _writer.WriteLineIndented($"export interface {exportName} {{");
-        //}
-        //else if (cd.Element.Path.Equals(typeName, StringComparison.Ordinal))
-        //{
-        //    exportName = cd.Element.cgNameForExport(NamingConvention.PascalCase, true);
-        //    _writer.WriteLineIndented($"export interface {exportName} {{");
-        //}
         else
         {
             exportName = cd.Element.cgNameForExport(NamingConvention.PascalCase, true);
@@ -714,11 +704,22 @@ public class TypeScript : ILanguage<TypeScript.TypeScriptOptions>
         string baseName = ed.cgName();
         bool isChoice = false;
 
+        // check for a generic type hint override
+        if (_genericsAndTypeHints.ContainsKey(ed.Path))
+        {
+            values.Add(
+                FhirSanitizationUtils.ToConvention(baseName, ed.Path, nameConvention, concatenatePath, concatenationDelimiter),
+                FhirSanitizationUtils.ToConvention(ed.Path, string.Empty, typeConvention));
+
+            return values;
+        }
+
         IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> elementTypes = ed.cgTypes();
 
         if (!elementTypes.Any())
         {
-            if (_dc.IsBackbonePath(ed.Path))
+            // check for a backbone element
+            if (_dc.HasChildElements(ed.Path))
             {
                 values.Add(
                     FhirSanitizationUtils.ToConvention(baseName, ed.Path, nameConvention, concatenatePath, concatenationDelimiter),
@@ -776,6 +777,15 @@ public class TypeScript : ILanguage<TypeScript.TypeScriptOptions>
                 {
                     types += "|" + type;
                 }
+            }
+
+            if (types.Equals("BackboneElement", StringComparison.Ordinal))
+            {
+                values.Add(
+                    FhirSanitizationUtils.ToConvention(baseName, ed.Path, nameConvention, concatenatePath, concatenationDelimiter),
+                    FhirSanitizationUtils.ToConvention(ed.Path, string.Empty, typeConvention));
+
+                return values;
             }
 
             string cased = FhirSanitizationUtils.ToConvention(baseName, string.Empty, nameConvention, concatenatePath, concatenationDelimiter);

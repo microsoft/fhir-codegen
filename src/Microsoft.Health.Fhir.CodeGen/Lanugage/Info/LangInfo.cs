@@ -659,6 +659,11 @@ public class LangInfo : ILanguage<InfoOptions>
     /// <param name="complex">    The complex.</param>
     private void WriteElements(StructureDefinition sd, IEnumerable<ElementDefinition> elements)
     {
+        //if (sd.Name.Equals("Observationbmi"))
+        //{
+        //    Console.Write("");
+        //}
+
         foreach (ElementDefinition element in elements.OrderBy(s => s.cgFieldOrder()))
         {
             WriteElement(sd, element);
@@ -805,10 +810,10 @@ public class LangInfo : ILanguage<InfoOptions>
                 _writer.DecreaseIndent();
             }
 
-            if (_definitions.IsBackbonePath(ed.Path))
+            if (_definitions.HasChildElements(ed.Path))
             {
                 _writer.IncreaseIndent();
-                WriteElements(sd, sd.cgElements(forBackbonePath: ed.Path, topLevelOnly: true));
+                WriteElements(sd, sd.cgElements(forBackbonePath: ed.Path, topLevelOnly: true, includeRoot: false));
                 _writer.DecreaseIndent();
             }
         }

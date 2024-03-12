@@ -178,7 +178,7 @@ public static class ElementDefinitionExtensions
         }
 
         // check for having child elements
-        if (dc.IsBackbonePath(ed.Path))
+        if (dc.HasChildElements(ed.Path))
         {
             if (ed.Type.Any(et => et.Code == "Element"))
             {
@@ -222,6 +222,17 @@ public static class ElementDefinitionExtensions
     {
         // if the binding is not required, we don't need to generate the codes
         if ((ed.Binding == null) || (ed.Binding.Strength != BindingStrength.Required))
+        {
+            return Enumerable.Empty<string>();
+        }
+
+        // only generate codes for elements of type code, string, uri, url, or canonical
+        if (!ed.Type.Any(tr =>
+                tr.Code.Equals("code", StringComparison.Ordinal) ||
+                tr.Code.Equals("string", StringComparison.Ordinal) ||
+                tr.Code.Equals("uri", StringComparison.Ordinal) ||
+                tr.Code.Equals("url", StringComparison.Ordinal) ||
+                tr.Code.Equals("canonical", StringComparison.Ordinal)))
         {
             return Enumerable.Empty<string>();
         }

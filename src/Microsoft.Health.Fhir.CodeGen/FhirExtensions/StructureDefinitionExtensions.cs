@@ -150,18 +150,31 @@ public static class StructureDefinitionExtensions
 
         int dotCount = string.IsNullOrEmpty(forBackbonePath) ? 0 : forBackbonePath.Count(c => c == '.');
 
-        // skip the first element (root)
+        // filter based on the backbone path we want
         if (string.IsNullOrEmpty(forBackbonePath))
         {
-            source = (sd.Snapshot?.Element.Any() ?? false) ? sd.Snapshot.Element.Skip(includeRoot ? 0 : 1) : sd.Differential.Element.Skip(includeRoot ? 0 : 1);
+            // get the correct list of elements (snapshot or differential)
+            source = (sd.Snapshot?.Element.Any() ?? false)
+                ? sd.Snapshot.Element.Skip(includeRoot ? 0 : 1)
+                : sd.Differential.Element.Skip(includeRoot ? 0 : 1);
         }
         else
         {
+            // we want child elements of the requested path, so append an additional dot
             source = (sd.Snapshot?.Element.Any() ?? false)
-                ? sd.Snapshot.Element.Where(e => e.Path.StartsWith(forBackbonePath, StringComparison.Ordinal)).Skip(includeRoot ? 0 : 1)
-                : sd.Differential.Element.Where(e => e.Path.StartsWith(forBackbonePath, StringComparison.Ordinal)).Skip(includeRoot ? 0 : 1);
+                ? sd.Snapshot.Element.Where(e => e.Path.StartsWith(forBackbonePath + ".", StringComparison.Ordinal))
+                : sd.Differential.Element.Where(e => e.Path.StartsWith(forBackbonePath + ".", StringComparison.Ordinal));
+
+            // this will filter out the requested path itself, so check if we need the root
+            if (includeRoot)
+            {
+                yield return (sd.Snapshot?.Element.Any() ?? false)
+                    ? sd.Snapshot.Element.First(e => e.Path.Equals(forBackbonePath, StringComparison.Ordinal))
+                    : sd.Differential.Element.First(e => e.Path.Equals(forBackbonePath, StringComparison.Ordinal));
+            }
         }
 
+        // traverse our filtered elements
         foreach (ElementDefinition e in source)
         {
             // skip slices and their children

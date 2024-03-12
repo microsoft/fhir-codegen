@@ -718,7 +718,6 @@ Resources: 119
   - location[0..1]: Reference(Location)
   - seriousness[0..1]: CodeableConcept binding name: AdverseEventSeriousness
   - outcome[0..1]: CodeableConcept binding name: AdverseEventOutcome
-    {resolved|recovering|ongoing|resolvedWithSequelae|fatal|unknown}
   - recorder[0..1]: Reference(Patient|Practitioner|RelatedPerson) (W5: who.author)
   - eventParticipant[0..1]: Reference(Practitioner|Device)
   - description[0..1]: string
@@ -1552,7 +1551,6 @@ Resources: 119
   - status[0..1]: code binding name: ClaimStatus (W5: status)
     {active|cancelled|draft|entered-in-error}
   - type[0..1]: CodeableConcept binding name: ClaimType (W5: class)
-    {institutional|oral|pharmacy|professional|vision}
   - subType[0..*]: CodeableConcept binding name: ClaimSubType (W5: class)
   - use[0..1]: code binding name: Use (W5: class)
     {complete|proposed|exploratory|other}
@@ -1633,7 +1631,6 @@ Resources: 119
     - modifierExtension[0..*]: Extension
     - date[1..1]: date
     - type[0..1]: CodeableConcept binding name: AccidentType
-      {MVA|SCHOOL|SPT|WPA}
     - location[x][0..1]: Address|Reference(Location)
   - employmentImpacted[0..1]: Period
   - hospitalization[0..1]: Period
@@ -1812,7 +1809,6 @@ Resources: 119
     - modifierExtension[0..*]: Extension
     - number[0..1]: positiveInt
     - type[0..1]: CodeableConcept binding name: NoteType
-      {display|print|printoper}
     - text[0..1]: string
     - language[0..1]: CodeableConcept binding name: Language
   - communicationRequest[0..*]: Reference(CommunicationRequest)
@@ -3013,7 +3009,6 @@ Resources: 119
   - status[0..1]: code binding name: DeviceRequestStatus (W5: status)
     {draft|active|suspended|cancelled|completed|entered-in-error|unknown}
   - intent[1..1]: CodeableConcept binding name: RequestIntent (W5: class)
-    {proposal|plan|order|original-order|reflex-order|filler-order|instance-order|option}
   - priority[0..1]: code binding name: RequestPriority (W5: grade)
   .defaultValuecode = If missing, normal priority
     {routine|urgent|asap|stat}
@@ -3359,7 +3354,6 @@ Resources: 119
   - requestOrganization[0..1]: Reference(Organization) (W5: who.source)
   - request[0..1]: Reference(EligibilityRequest) (W5: why)
   - outcome[0..1]: CodeableConcept binding name: RemittanceOutcome
-    {complete|error|partial}
   - disposition[0..1]: string
   - insurer[0..1]: Reference(Organization)
   - inforce[0..1]: boolean
@@ -3582,7 +3576,6 @@ Resources: 119
     {active|cancelled|draft|entered-in-error}
   - request[0..1]: Reference(EnrollmentRequest)
   - outcome[0..1]: CodeableConcept binding name: RemittanceOutcome
-    {complete|error|partial}
   - disposition[0..1]: string
   - created[0..1]: dateTime
   - organization[0..1]: Reference(Organization)
@@ -3699,7 +3692,6 @@ Resources: 119
         - modifierExtension[0..*]: Extension
         - language[0..1]: code binding name: Language
         - use[0..1]: Coding binding name: ConceptDesignationUse
-          {900000000000003001|900000000000013009|900000000000550004}
     - exclude[0..1]: BackboneElement
       - id[0..1]: string
       - extension[0..*]: Extension
@@ -3710,7 +3702,6 @@ Resources: 119
         - modifierExtension[0..*]: Extension
         - language[0..1]: code binding name: Language
         - use[0..1]: Coding binding name: ConceptDesignationUse
-          {900000000000003001|900000000000013009|900000000000550004}
   - includeDefinition[0..1]: boolean
   .defaultValueboolean = false
   - activeOnly[0..1]: boolean
@@ -3748,7 +3739,6 @@ Resources: 119
   - status[0..1]: code binding name: ExplanationOfBenefitStatus (W5: status)
     {active|cancelled|draft|entered-in-error}
   - type[0..1]: CodeableConcept binding name: ClaimType (W5: class)
-    {institutional|oral|pharmacy|professional|vision}
   - subType[0..*]: CodeableConcept binding name: ClaimSubType (W5: class)
   - patient[0..1]: Reference(Patient) (W5: who.focus)
   - billablePeriod[0..1]: Period (W5: when.done)
@@ -3778,7 +3768,6 @@ Resources: 119
     - modifierExtension[0..*]: Extension
     - type[0..1]: CodeableConcept binding name: PayeeType
     - resourceType[0..1]: CodeableConcept binding name: PayeeResourceType
-      {organization|patient|practitioner|relatedperson}
     - party[0..1]: Reference(Practitioner|Organization|Patient|RelatedPerson)
   - information[0..*]: BackboneElement
     - id[0..1]: string
@@ -3827,7 +3816,6 @@ Resources: 119
     - modifierExtension[0..*]: Extension
     - date[0..1]: date
     - type[0..1]: CodeableConcept binding name: AccidentType
-      {MVA|SCHOOL|SPT|WPA}
     - location[x][0..1]: Address|Reference(Location)
   - employmentImpacted[0..1]: Period
   - hospitalization[0..1]: Period
@@ -3870,7 +3858,6 @@ Resources: 119
       - modifierExtension[0..*]: Extension
       - sequence[1..1]: positiveInt
       - type[1..1]: CodeableConcept binding name: ItemType
-        {CPNDDRGING|CPNDINDING|CPNDSUPING|DRUGING|FRAMEING|LENSING|PRDING|CPINV|CSINV|CSPINV|FININV|OHSINV|PAINV|RXCINV|RXDINV|SBFINV|VRXINV}
       - revenue[0..1]: CodeableConcept binding name: RevenueCenter
       - category[0..1]: CodeableConcept binding name: BenefitSubCategory
       - service[0..1]: CodeableConcept binding name: ServiceProduct
@@ -3889,7 +3876,6 @@ Resources: 119
         - modifierExtension[0..*]: Extension
         - sequence[1..1]: positiveInt
         - type[1..1]: CodeableConcept binding name: ItemType
-          {CPNDDRGING|CPNDINDING|CPNDSUPING|DRUGING|FRAMEING|LENSING|PRDING|CPINV|CSINV|CSPINV|FININV|OHSINV|PAINV|RXCINV|RXDINV|SBFINV|VRXINV}
         - revenue[0..1]: CodeableConcept binding name: RevenueCenter
         - category[0..1]: CodeableConcept binding name: BenefitSubCategory
         - service[0..1]: CodeableConcept binding name: ServiceProduct
@@ -3945,7 +3931,6 @@ Resources: 119
     - modifierExtension[0..*]: Extension
     - number[0..1]: positiveInt
     - type[0..1]: CodeableConcept binding name: NoteType
-      {display|print|printoper}
     - text[0..1]: string
     - language[0..1]: CodeableConcept binding name: Language
   - benefitBalance[0..*]: BackboneElement
@@ -6178,7 +6163,6 @@ Resources: 119
   - organization[0..1]: Reference(Organization) (W5: who.source)
   - request[0..1]: Reference(ProcessRequest) (W5: why)
   - outcome[0..1]: CodeableConcept binding name: RemittanceOutcome
-    {complete|error|partial}
   - disposition[0..1]: string
   - requestProvider[0..1]: Reference(Practitioner)
   - requestOrganization[0..1]: Reference(Organization)
@@ -6200,7 +6184,6 @@ Resources: 119
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
     - type[0..1]: CodeableConcept binding name: NoteType
-      {display|print|printoper}
     - text[0..1]: string
   ?created: created=date
   ?disposition: disposition=string
@@ -6359,7 +6342,6 @@ Resources: 119
         {patient|practitioner|related-person}
       - role[0..1]: CodeableConcept binding name: ActionParticipantRole
     - type[0..1]: Coding binding name: ActionType
-      {create|update|remove|fire-event}
     - groupingBehavior[0..1]: code binding name: ActionGroupingBehavior
       {visual-group|logical-group|sentence-group}
     - selectionBehavior[0..1]: code binding name: ActionSelectionBehavior
@@ -6730,7 +6712,6 @@ Resources: 119
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
     - type[0..1]: CodeableConcept binding name: NoteType
-      {display|print|printoper}
     - text[0..1]: string
   - error[0..*]: CodeableConcept binding name: AdjudicationError
   - communicationRequest[0..*]: Reference(CommunicationRequest)
@@ -8055,7 +8036,6 @@ Resources: 119
     {in-progress|completed|abandoned|entered-in-error}
   - patient[0..1]: Reference(Patient)
   - type[0..1]: CodeableConcept binding name: SupplyDeliveryType
-    {medication|device}
   - suppliedItem[0..1]: BackboneElement
     - id[0..1]: string
     - extension[0..*]: Extension
@@ -8401,21 +8381,6 @@ Resources: 119
       - modifierExtension[0..*]: Extension
       - name[1..1]: string
       - value[0..1]: string
-    - id[0..1]: string
-    - extension[0..*]: Extension
-    - modifierExtension[0..*]: Extension
-    - resource[1..1]: Reference(Resource)
-    - rule[1..*]: BackboneElement
-      - id[0..1]: string
-      - extension[0..*]: Extension
-      - modifierExtension[0..*]: Extension
-      - ruleId[1..1]: id
-      - param[0..*]: BackboneElement
-        - id[0..1]: string
-        - extension[0..*]: Extension
-        - modifierExtension[0..*]: Extension
-        - name[1..1]: string
-        - value[0..1]: string
   - ruleset[0..*]: BackboneElement
     - id[0..1]: string
     - extension[0..*]: Extension
@@ -8508,21 +8473,6 @@ Resources: 119
             - modifierExtension[0..*]: Extension
             - name[1..1]: string
             - value[1..1]: string
-          - id[0..1]: string
-          - extension[0..*]: Extension
-          - modifierExtension[0..*]: Extension
-          - rulesetId[1..1]: id
-          - rule[0..*]: BackboneElement
-            - id[0..1]: string
-            - extension[0..*]: Extension
-            - modifierExtension[0..*]: Extension
-            - ruleId[1..1]: id
-            - param[0..*]: BackboneElement
-              - id[0..1]: string
-              - extension[0..*]: Extension
-              - modifierExtension[0..*]: Extension
-              - name[1..1]: string
-              - value[1..1]: string
         - ruleset[0..1]: BackboneElement
           - id[0..1]: string
           - extension[0..*]: Extension
@@ -8850,7 +8800,6 @@ Profiles: 33
   - issued[0..1]: instant (W5: when.recorded)
   - performer[0..*]: Reference(Practitioner|Organization|Patient|RelatedPerson) (W5: who.actor)
   - valueQuantity[0..1]: Quantity conditions: obs-7 binding name: VitalSignsUnits
-    {%|cm|[in_i]|kg|g|[lb_av]|Cel|[degF]|mm[Hg]|/min|kg/m2|m2}
     - id[0..1]: string
     - extension[0..*]: Extension
     - value[1..1]: decimal
@@ -8892,7 +8841,6 @@ Profiles: 33
     - modifierExtension[0..*]: Extension
     - code[1..1]: CodeableConcept binding name: VitalSigns (W5: what)
     - valueQuantity[0..1]: Quantity binding name: VitalSignsUnits
-      {%|cm|[in_i]|kg|g|[lb_av]|Cel|[degF]|mm[Hg]|/min|kg/m2|m2}
       - id[0..1]: string
       - extension[0..*]: Extension
       - value[1..1]: decimal
@@ -9039,7 +8987,6 @@ Profiles: 33
   - issued[0..1]: instant (W5: when.recorded)
   - performer[0..*]: Reference(Practitioner|Organization|Patient|RelatedPerson) (W5: who.actor)
   - valueQuantity[0..1]: Quantity conditions: obs-7 binding name: VitalSignsUnits
-    {%|cm|[in_i]|kg|g|[lb_av]|Cel|[degF]|mm[Hg]|/min|kg/m2|m2}
     - id[0..1]: string
     - extension[0..*]: Extension
     - value[1..1]: decimal
@@ -9081,7 +9028,6 @@ Profiles: 33
     - modifierExtension[0..*]: Extension
     - code[1..1]: CodeableConcept binding name: VitalSigns (W5: what)
     - valueQuantity[0..1]: Quantity binding name: VitalSignsUnits
-      {%|cm|[in_i]|kg|g|[lb_av]|Cel|[degF]|mm[Hg]|/min|kg/m2|m2}
       - id[0..1]: string
       - extension[0..*]: Extension
       - value[1..1]: decimal
@@ -9228,7 +9174,6 @@ Profiles: 33
   - issued[0..1]: instant (W5: when.recorded)
   - performer[0..*]: Reference(Practitioner|Organization|Patient|RelatedPerson) (W5: who.actor)
   - valueQuantity[0..1]: Quantity conditions: obs-7 binding name: VitalSignsUnits
-    {%|cm|[in_i]|kg|g|[lb_av]|Cel|[degF]|mm[Hg]|/min|kg/m2|m2}
     - id[0..1]: string
     - extension[0..*]: Extension
     - value[1..1]: decimal
@@ -9270,7 +9215,6 @@ Profiles: 33
     - modifierExtension[0..*]: Extension
     - code[1..1]: CodeableConcept binding name: VitalSigns (W5: what)
     - valueQuantity[0..1]: Quantity binding name: VitalSignsUnits
-      {%|cm|[in_i]|kg|g|[lb_av]|Cel|[degF]|mm[Hg]|/min|kg/m2|m2}
       - id[0..1]: string
       - extension[0..*]: Extension
       - value[1..1]: decimal
@@ -9417,7 +9361,6 @@ Profiles: 33
   - issued[0..1]: instant (W5: when.recorded)
   - performer[0..*]: Reference(Practitioner|Organization|Patient|RelatedPerson) (W5: who.actor)
   - valueQuantity[0..1]: Quantity conditions: obs-7 binding name: VitalSignsUnits
-    {%|cm|[in_i]|kg|g|[lb_av]|Cel|[degF]|mm[Hg]|/min|kg/m2|m2}
     - id[0..1]: string
     - extension[0..*]: Extension
     - value[1..1]: decimal
@@ -9459,7 +9402,6 @@ Profiles: 33
     - modifierExtension[0..*]: Extension
     - code[1..1]: CodeableConcept binding name: VitalSigns (W5: what)
     - valueQuantity[0..1]: Quantity binding name: VitalSignsUnits
-      {%|cm|[in_i]|kg|g|[lb_av]|Cel|[degF]|mm[Hg]|/min|kg/m2|m2}
       - id[0..1]: string
       - extension[0..*]: Extension
       - value[1..1]: decimal
@@ -9606,7 +9548,6 @@ Profiles: 33
   - issued[0..1]: instant (W5: when.recorded)
   - performer[0..*]: Reference(Practitioner|Organization|Patient|RelatedPerson) (W5: who.actor)
   - valueQuantity[0..1]: Quantity conditions: obs-7 binding name: VitalSignsUnits
-    {%|cm|[in_i]|kg|g|[lb_av]|Cel|[degF]|mm[Hg]|/min|kg/m2|m2}
     - id[0..1]: string
     - extension[0..*]: Extension
     - value[1..1]: decimal
@@ -9648,7 +9589,6 @@ Profiles: 33
     - modifierExtension[0..*]: Extension
     - code[1..1]: CodeableConcept binding name: VitalSigns (W5: what)
     - valueQuantity[0..1]: Quantity binding name: VitalSignsUnits
-      {%|cm|[in_i]|kg|g|[lb_av]|Cel|[degF]|mm[Hg]|/min|kg/m2|m2}
       - id[0..1]: string
       - extension[0..*]: Extension
       - value[1..1]: decimal
@@ -9795,7 +9735,6 @@ Profiles: 33
   - issued[0..1]: instant (W5: when.recorded)
   - performer[0..*]: Reference(Practitioner|Organization|Patient|RelatedPerson) (W5: who.actor)
   - valueQuantity[0..0]: Quantity conditions: obs-7 binding name: VitalSignsUnits
-    {%|cm|[in_i]|kg|g|[lb_av]|Cel|[degF]|mm[Hg]|/min|kg/m2|m2}
     - id[0..1]: string
     - extension[0..*]: Extension
     - value[1..1]: decimal
@@ -11222,7 +11161,6 @@ Profiles: 33
   - issued[0..1]: instant (W5: when.recorded)
   - performer[0..*]: Reference(Practitioner|Organization|Patient|RelatedPerson) (W5: who.actor)
   - valueQuantity[0..1]: Quantity conditions: obs-7 binding name: VitalSignsUnits
-    {%|cm|[in_i]|kg|g|[lb_av]|Cel|[degF]|mm[Hg]|/min|kg/m2|m2}
     - id[0..1]: string
     - extension[0..*]: Extension
     - value[1..1]: decimal
@@ -11264,7 +11202,6 @@ Profiles: 33
     - modifierExtension[0..*]: Extension
     - code[1..1]: CodeableConcept binding name: VitalSigns (W5: what)
     - valueQuantity[0..1]: Quantity binding name: VitalSignsUnits
-      {%|cm|[in_i]|kg|g|[lb_av]|Cel|[degF]|mm[Hg]|/min|kg/m2|m2}
       - id[0..1]: string
       - extension[0..*]: Extension
       - value[1..1]: decimal
@@ -11411,7 +11348,6 @@ Profiles: 33
   - issued[0..1]: instant (W5: when.recorded)
   - performer[0..*]: Reference(Practitioner|Organization|Patient|RelatedPerson) (W5: who.actor)
   - valueQuantity[0..1]: Quantity conditions: obs-7 binding name: VitalSignsUnits
-    {%|cm|[in_i]|kg|g|[lb_av]|Cel|[degF]|mm[Hg]|/min|kg/m2|m2}
     - id[0..1]: string
     - extension[0..*]: Extension
     - value[1..1]: decimal
@@ -11453,7 +11389,6 @@ Profiles: 33
     - modifierExtension[0..*]: Extension
     - code[1..1]: CodeableConcept binding name: VitalSigns (W5: what)
     - valueQuantity[0..1]: Quantity binding name: VitalSignsUnits
-      {%|cm|[in_i]|kg|g|[lb_av]|Cel|[degF]|mm[Hg]|/min|kg/m2|m2}
       - id[0..1]: string
       - extension[0..*]: Extension
       - value[1..1]: decimal
@@ -11662,7 +11597,6 @@ Profiles: 33
     {registered|preliminary|final|amended|corrected|cancelled|entered-in-error|unknown}
   - category[0..*]: CodeableConcept binding name: ObservationCategory (W5: class)
   - code[1..1]: CodeableConcept binding name: LDLCodes (W5: what)
-    {18262-6|13457-7}
   - subject[0..1]: Reference(Patient|Group|Device|Location) (W5: who.focus)
   - context[0..1]: Reference(Encounter|EpisodeOfCare) (W5: context)
   - effective[x][0..1]: dateTime|Period (W5: when.done)
@@ -12064,7 +11998,6 @@ Profiles: 33
   - issued[0..1]: instant (W5: when.recorded)
   - performer[0..*]: Reference(Practitioner|Organization|Patient|RelatedPerson) (W5: who.actor)
   - valueQuantity[0..1]: Quantity conditions: obs-7 binding name: VitalSignsUnits
-    {%|cm|[in_i]|kg|g|[lb_av]|Cel|[degF]|mm[Hg]|/min|kg/m2|m2}
     - id[0..1]: string
     - extension[0..*]: Extension
     - value[1..1]: decimal
@@ -12106,7 +12039,6 @@ Profiles: 33
     - modifierExtension[0..*]: Extension
     - code[1..1]: CodeableConcept binding name: VitalSigns (W5: what)
     - valueQuantity[0..1]: Quantity binding name: VitalSignsUnits
-      {%|cm|[in_i]|kg|g|[lb_av]|Cel|[degF]|mm[Hg]|/min|kg/m2|m2}
       - id[0..1]: string
       - extension[0..*]: Extension
       - value[1..1]: decimal
@@ -12327,7 +12259,6 @@ Profiles: 33
   - issued[0..1]: instant (W5: when.recorded)
   - performer[0..*]: Reference(Practitioner|Organization|Patient|RelatedPerson) (W5: who.actor)
   - valueQuantity[0..1]: Quantity conditions: obs-7 binding name: VitalSignsUnits
-    {%|cm|[in_i]|kg|g|[lb_av]|Cel|[degF]|mm[Hg]|/min|kg/m2|m2}
     - id[0..1]: string
     - extension[0..*]: Extension
     - value[1..1]: decimal
@@ -12369,7 +12300,6 @@ Profiles: 33
     - modifierExtension[0..*]: Extension
     - code[1..1]: CodeableConcept binding name: VitalSigns (W5: what)
     - valueQuantity[0..1]: Quantity binding name: VitalSignsUnits
-      {%|cm|[in_i]|kg|g|[lb_av]|Cel|[degF]|mm[Hg]|/min|kg/m2|m2}
       - id[0..1]: string
       - extension[0..*]: Extension
       - value[1..1]: decimal
@@ -13002,7 +12932,6 @@ Profiles: 33
   - issued[0..1]: instant (W5: when.recorded)
   - performer[0..*]: Reference(Practitioner|Organization|Patient|RelatedPerson) (W5: who.actor)
   - valueQuantity[0..1]: Quantity conditions: obs-7 binding name: VitalSignsUnits
-    {%|cm|[in_i]|kg|g|[lb_av]|Cel|[degF]|mm[Hg]|/min|kg/m2|m2}
     - id[0..1]: string
     - extension[0..*]: Extension
     - value[1..1]: decimal
@@ -13043,7 +12972,6 @@ Profiles: 33
     - modifierExtension[0..*]: Extension
     - code[1..1]: CodeableConcept binding name: VitalSigns (W5: what)
     - valueQuantity[0..1]: Quantity binding name: VitalSignsUnits
-      {%|cm|[in_i]|kg|g|[lb_av]|Cel|[degF]|mm[Hg]|/min|kg/m2|m2}
       - id[0..1]: string
       - extension[0..*]: Extension
       - value[1..1]: decimal
@@ -13189,7 +13117,6 @@ Profiles: 33
   - issued[0..1]: instant (W5: when.recorded)
   - performer[0..*]: Reference(Practitioner|Organization|Patient|RelatedPerson) (W5: who.actor)
   - valueQuantity[0..0]: Quantity conditions: obs-7 binding name: VitalSignsUnits
-    {%|cm|[in_i]|kg|g|[lb_av]|Cel|[degF]|mm[Hg]|/min|kg/m2|m2}
     - id[0..1]: string
     - extension[0..*]: Extension
     - value[1..1]: decimal
@@ -13230,7 +13157,6 @@ Profiles: 33
     - modifierExtension[0..*]: Extension
     - code[1..1]: CodeableConcept binding name: VitalSigns (W5: what)
     - valueQuantity[0..1]: Quantity binding name: VitalSignsUnits
-      {%|cm|[in_i]|kg|g|[lb_av]|Cel|[degF]|mm[Hg]|/min|kg/m2|m2}
       - id[0..1]: string
       - extension[0..*]: Extension
       - value[1..1]: decimal

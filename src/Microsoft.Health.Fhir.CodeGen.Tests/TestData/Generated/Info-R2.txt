@@ -1249,7 +1249,6 @@ Resources: 96
     - detailSequenceLinkId[0..1]: positiveInt
     - subdetailSequenceLinkId[0..1]: positiveInt
     - code[1..1]: Coding
-      {A001|A002}
   - totalCost[0..1]: Quantity(Money)
   - unallocDeductable[0..1]: Quantity(Money)
   - totalBenefit[0..1]: Quantity(Money)
@@ -1260,14 +1259,12 @@ Resources: 96
   - paymentRef[0..1]: Identifier
   - reserved[0..1]: Coding
   - form[0..1]: Coding
-    {1|2}
   - note[0..*]: BackboneElement
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
     - number[0..1]: positiveInt
     - type[0..1]: Coding
-      {display|print|printoper}
     - text[0..1]: string
   - coverage[0..*]: BackboneElement
     - id[0..1]: id
@@ -2455,7 +2452,6 @@ Resources: 96
   - status[1..1]: code (W5: status)
     {current|superseded|entered-in-error}
   - docStatus[0..1]: CodeableConcept (W5: status)
-    {preliminary|final|amended|entered-in-error}
   - relatesTo[0..*]: BackboneElement
     - id[0..1]: id
     - extension[0..*]: Extension
@@ -3034,7 +3030,6 @@ Resources: 96
   - uid[1..1]: oid (W5: id)
   - patient[1..1]: Reference(Patient) (W5: who.focus)
   - title[1..1]: CodeableConcept
-    {113000|113001|113002|113003|113004|113005|113006|113007|113008|113009|113010|113013|113018|113020|113021|113030|113031|113032|113033|113034|113035|113036|113037|113038|113039}
   - description[0..1]: string
   - author[0..1]: Reference(Practitioner|Device|Organization|Patient|RelatedPerson) (W5: who.author)
   - authoringTime[0..1]: dateTime (W5: when.recorded)
@@ -4432,7 +4427,6 @@ Resources: 96
   - deceased[x][0..1]: boolean|dateTime
   - address[0..*]: Address
   - maritalStatus[0..1]: CodeableConcept
-    {A|D|I|L|M|P|S|T|W|UNK|U}
   - multipleBirth[x][0..1]: boolean|integer
   - photo[0..*]: Attachment
   - contact[0..*]: BackboneElement constraints: pat-1
@@ -4615,14 +4609,12 @@ Resources: 96
     - date[0..1]: date
     - amount[0..1]: Quantity(Money)
   - form[0..1]: Coding
-    {1|2}
   - total[1..1]: Quantity(Money)
   - note[0..*]: BackboneElement
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
     - type[0..1]: Coding
-      {display|print|printoper}
     - text[0..1]: string
   ?identifier: identifier=token
 - Person: DomainResource (draft FMM: 1) (abstract: False)
@@ -4788,7 +4780,6 @@ Resources: 96
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
     - action[0..1]: CodeableConcept
-      {implanted|explanted|manipulated}
     - manipulated[1..1]: Reference(Device)
   - used[0..*]: Reference(Device|Medication|Substance)
   Extensions: 6
@@ -4927,16 +4918,13 @@ Resources: 96
   - requestProvider[0..1]: Reference(Practitioner)
   - requestOrganization[0..1]: Reference(Organization)
   - form[0..1]: Coding
-    {1|2}
   - notes[0..*]: BackboneElement
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
     - type[0..1]: Coding
-      {display|print|printoper}
     - text[0..1]: string
   - error[0..*]: Coding
-    {A001|A002}
   ?identifier: identifier=token
   ?organization: organization=reference
   ?request: request=reference
@@ -5595,7 +5583,6 @@ Resources: 96
     {in-progress|completed|abandoned}
   - patient[0..1]: Reference(Patient)
   - type[0..1]: CodeableConcept
-    {medication|device}
   - quantity[0..1]: Quantity(SimpleQuantity)
   - suppliedItem[0..1]: Reference(Medication|Substance|Device)
   - supplier[0..1]: Reference(Practitioner)
@@ -5625,7 +5612,6 @@ Resources: 96
   - status[0..1]: code
     {requested|completed|failed|cancelled}
   - kind[0..1]: CodeableConcept
-    {central|nonstock}
   - orderedItem[0..1]: Reference(Medication|Substance|Device)
   - supplier[0..*]: Reference(Organization)
   - reason[x][0..1]: CodeableConcept|Reference(Resource)
@@ -7435,7 +7421,6 @@ Profiles: 107
   - identifier[0..*]: Identifier (W5: id)
   - title[0..1]: string
   - code[1..1]: CodeableConcept (W5: what)
-    {42346-7|10160-0|75311-1}
   - subject[0..1]: Reference(daf-patient) (W5: who.focus)
   - source[1..1]: Reference(daf-pract|daf-patient|Device) (W5: who.author)
   - encounter[0..1]: Reference(Encounter) (W5: context)
@@ -7759,7 +7744,6 @@ Profiles: 107
     - country[1..1]: string
     - period[0..1]: Period
   - maritalStatus[0..1]: CodeableConcept
-    {A|D|I|L|M|P|S|T|W|UNK|U}
   - multipleBirth[x][0..1]: boolean|integer
   - photo[0..*]: Attachment
   - contact[0..*]: BackboneElement constraints: pat-1
@@ -7767,7 +7751,6 @@ Profiles: 107
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
     - relationship[0..*]: CodeableConcept
-      {emergency|family|guardian|friend|partner|work|caregiver|agent|guarantor|owner|parent}
     - name[0..1]: HumanName
     - telecom[0..*]: ContactPoint
     - address[0..1]: Address
@@ -8121,7 +8104,6 @@ Profiles: 107
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
     - action[0..1]: CodeableConcept
-      {implanted|explanted|manipulated}
     - manipulated[1..1]: Reference(Device)
   - used[0..*]: Reference(Device|Medication|Substance)
   Extensions: 6
@@ -8366,7 +8348,6 @@ Profiles: 107
   - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6
   - interpretation[0..1]: CodeableConcept
-    {<|>|A|AA|AC|B|D|DET|H|HH|HM|HU|I|IE|IND|L|LL|LU|MS|N|ND|NEG|NR|NS|OBX|POS|QCF|R|RR|S|SDD|SYN-R|SYN-S|TOX|U|VS|W|WR|null}
     - id[0..1]: id
     - extension[0..*]: Extension
     - coding[1..*]: Coding
@@ -8937,7 +8918,6 @@ Profiles: 107
   - issued[0..1]: instant (W5: when.recorded)
   - performer[0..1]: Reference(daf-pract|daf-patient|daf-relatedperson|daf-organization) (W5: who.actor)
   - valueQuantity[0..1]: Quantity
-    {%|cm|kg|Cel|mm[Hg]|/min|kg/m2|m2}
     - id[0..1]: id
     - extension[0..*]: Extension
     - value[0..1]: decimal
@@ -8959,7 +8939,6 @@ Profiles: 107
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
     - low[0..1]: Quantity(SimpleQuantity) constraints: qty-3, sqty-1
-      {%|cm|kg|Cel|mm[Hg]|/min|kg/m2|m2}
       - id[0..1]: id
       - extension[0..*]: Extension
       - value[0..1]: decimal
@@ -8970,7 +8949,6 @@ Profiles: 107
       .fixeduri = http://unitsofmeasure.org
       - code[0..1]: code
     - high[0..1]: Quantity(SimpleQuantity) constraints: qty-3, sqty-1
-      {%|cm|kg|Cel|mm[Hg]|/min|kg/m2|m2}
       - id[0..1]: id
       - extension[0..*]: Extension
       - value[0..1]: decimal
@@ -10177,7 +10155,6 @@ Profiles: 107
     {registered|preliminary|final|amended|cancelled|entered-in-error|unknown}
   - category[0..1]: CodeableConcept (W5: class)
   - code[1..1]: CodeableConcept (W5: what)
-    {18262-6|13457-7}
   - subject[0..1]: Reference(Patient|Group|Device|Location) (W5: who.focus)
   - encounter[0..1]: Reference(Encounter) (W5: context)
   - effective[x][0..1]: dateTime|Period (W5: when.done)
@@ -12281,7 +12258,6 @@ Profiles: 107
     - country[0..1]: string
     - period[0..1]: Period
   - maritalStatus[0..1]: CodeableConcept
-    {A|D|I|L|M|P|S|T|W|UNK|U}
   - multipleBirth[x][0..1]: boolean|integer
   - photo[0..*]: Attachment
   - contact[0..*]: BackboneElement constraints: pat-1
@@ -12549,7 +12525,6 @@ Profiles: 107
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
     - action[0..1]: CodeableConcept
-      {implanted|explanted|manipulated}
     - manipulated[1..1]: Reference(qicore-device)
   - used[0..*]: Reference(Device|Medication|Substance)
   Extensions: 6
@@ -14884,7 +14859,6 @@ Profiles: 107
   - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6
   - interpretation[0..1]: CodeableConcept
-    {<|>|A|AA|AC|B|D|DET|H|HH|HM|HU|I|IE|IND|L|LL|LU|MS|N|ND|NEG|NR|NS|OBX|POS|QCF|R|RR|S|SDD|SYN-R|SYN-S|TOX|U|VS|W|WR|null}
     - id[0..1]: id
     - extension[0..*]: Extension
     - coding[1..*]: Coding
@@ -15113,7 +15087,6 @@ Profiles: 107
   - value[x][0..1]: Attachment|dateTime|Period|SampledData|string|time
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6
   - interpretation[0..1]: CodeableConcept
-    {<|>|A|AA|AC|B|D|DET|H|HH|HM|HU|I|IE|IND|L|LL|LU|MS|N|ND|NEG|NR|NS|OBX|POS|QCF|R|RR|S|SDD|SYN-R|SYN-S|TOX|U|VS|W|WR|null}
     - id[0..1]: id
     - extension[0..*]: Extension
     - coding[1..*]: Coding
@@ -15340,7 +15313,6 @@ Profiles: 107
   - value[x][0..0]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6
   - interpretation[0..0]: CodeableConcept
-    {<|>|A|AA|AC|B|D|DET|H|HH|HM|HU|I|IE|IND|L|LL|LU|MS|N|ND|NEG|NR|NS|OBX|POS|QCF|R|RR|S|SDD|SYN-R|SYN-S|TOX|U|VS|W|WR|null}
   - comments[0..1]: string
   - bodySite[0..0]: CodeableConcept
   - method[0..1]: CodeableConcept
@@ -15566,7 +15538,6 @@ Profiles: 107
   - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6
   - interpretation[0..1]: CodeableConcept
-    {<|>|A|AA|AC|B|D|DET|H|HH|HM|HU|I|IE|IND|L|LL|LU|MS|N|ND|NEG|NR|NS|OBX|POS|QCF|R|RR|S|SDD|SYN-R|SYN-S|TOX|U|VS|W|WR|null}
     - id[0..1]: id
     - extension[0..*]: Extension
     - coding[1..*]: Coding
@@ -15844,7 +15815,6 @@ Profiles: 107
   - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6
   - interpretation[0..1]: CodeableConcept
-    {<|>|A|AA|AC|B|D|DET|H|HH|HM|HU|I|IE|IND|L|LL|LU|MS|N|ND|NEG|NR|NS|OBX|POS|QCF|R|RR|S|SDD|SYN-R|SYN-S|TOX|U|VS|W|WR|null}
     - id[0..1]: id
     - extension[0..*]: Extension
     - coding[1..*]: Coding
@@ -16122,7 +16092,6 @@ Profiles: 107
   - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6
   - interpretation[0..1]: CodeableConcept
-    {<|>|A|AA|AC|B|D|DET|H|HH|HM|HU|I|IE|IND|L|LL|LU|MS|N|ND|NEG|NR|NS|OBX|POS|QCF|R|RR|S|SDD|SYN-R|SYN-S|TOX|U|VS|W|WR|null}
     - id[0..1]: id
     - extension[0..*]: Extension
     - coding[1..*]: Coding
@@ -16458,7 +16427,6 @@ Profiles: 107
     - country[0..1]: string
     - period[0..1]: Period
   - maritalStatus[0..1]: CodeableConcept
-    {A|D|I|L|M|P|S|T|W|UNK|U}
   - multipleBirth[x][0..1]: boolean|integer
   - photo[0..*]: Attachment
   - contact[0..*]: BackboneElement constraints: pat-1
@@ -16739,7 +16707,6 @@ Profiles: 107
     - country[0..1]: string
     - period[0..1]: Period
   - maritalStatus[0..1]: CodeableConcept
-    {A|D|I|L|M|P|S|T|W|UNK|U}
   - multipleBirth[x][0..1]: boolean|integer
   - photo[0..*]: Attachment
   - contact[0..*]: BackboneElement constraints: pat-1
@@ -17423,7 +17390,6 @@ Profiles: 107
   - status[1..1]: code (W5: status)
     {current|superseded|entered-in-error}
   - docStatus[0..0]: CodeableConcept (W5: status)
-    {preliminary|final|amended|entered-in-error}
   - relatesTo[0..*]: BackboneElement
     - id[0..1]: id
     - extension[0..*]: Extension

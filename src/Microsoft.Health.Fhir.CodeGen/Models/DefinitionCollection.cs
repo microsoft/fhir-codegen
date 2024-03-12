@@ -6,6 +6,7 @@
 
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Specification.Terminology;
@@ -80,7 +81,7 @@ public partial class DefinitionCollection
     private readonly Dictionary<string, CapabilityStatement> _capabilityStatementsByUrl = new();
     private readonly Dictionary<string, CompartmentDefinition> _compartmentsByUrl = new();
 
-    internal readonly HashSet<string> _backbonePaths = new();
+    internal readonly Dictionary<string, string> _parentElementsAndType = new();
 
     private readonly List<string> _errors = new();
 
@@ -101,19 +102,30 @@ public partial class DefinitionCollection
         _localTx = new LocalTerminologyService(this);
     }
 
-    /// <summary>Query if 'path' is backbone path.</summary>
-    /// <param name="path">Full pathname of the file.</param>
-    /// <returns>True if backbone path, false if not.</returns>
-    public bool IsBackbonePath(string path) => _backbonePaths.Contains(path);
+    /// <summary>Query if 'path' has child elements.</summary>
+    /// <param name="path">Dot-notation path to the element.</param>
+    /// <returns>True if the path contains child elements, false if not.</returns>
+    public bool HasChildElements(string path) => _parentElementsAndType.ContainsKey(path);
+
+    /// <summary>Query if 'path' is backbone element.</summary>
+    /// <param name="path">Dot-notation path to the element.</param>
+    /// <returns>True if backbone element, false if not.</returns>
+    public bool IsBackboneElement(string path) =>
+        _parentElementsAndType.TryGetValue(path, out string? type) &&
+        (type.Equals("BackboneElement", StringComparison.Ordinal) || type.Equals("Element", StringComparison.Ordinal));
 
     /// <summary>Processes elements in a structure definition.</summary>
     /// <remarks>Addes field orders, indexes paths that contain child elements, etc.</remarks>
-    /// <param name="sd">The structure definition.</param>
+    /// <param name="artifactClass">The artifact class.</param>
+    /// <param name="sd">           The structure definition.</param>
+    /// <param name="fhirVersion">  The FHIR version.</param>
     private void ProcessElements(FhirArtifactClassEnum artifactClass, StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion)
     {
         Dictionary<string, int> allFieldOrders = new();
 
         List<string> idByDepth = new();
+
+        Dictionary<string, string> pathTypes = new();
 
         // process each element in the snapshot
         foreach (ElementDefinition ed in sd.Snapshot?.Element ?? Enumerable.Empty<ElementDefinition>())
@@ -137,14 +149,22 @@ public partial class DefinitionCollection
             // add to lookup dict
             _elementSdLookup.Add(ed, sd);
 
-            // check for being a child element
-            if (ed.Path.Contains('.'))
+            // check for being a child element to promote a parent to backbone
+            int lastDot = ed.Path.LastIndexOf('.');
+            if (lastDot != -1)
             {
-                string parentPath = ed.Path.Substring(0, ed.Path.LastIndexOf('.'));
+                string parentPath = ed.Path.Substring(0, lastDot);
                 if (parentPath.Contains('.') &&
-                    !_backbonePaths.Contains(parentPath))
+                    !_parentElementsAndType.ContainsKey(parentPath))
                 {
-                    _backbonePaths.Add(parentPath);
+                    if (pathTypes.TryGetValue(parentPath, out string? parentType))
+                    {
+                        _parentElementsAndType.Add(parentPath, parentType);
+                    }
+                    else
+                    {
+                        _parentElementsAndType.Add(parentPath, string.Empty);
+                    }
                 }
             }
 
@@ -173,6 +193,12 @@ public partial class DefinitionCollection
             {
                 ConsolidateTypes(sd, ed);
             }
+
+            // check for a single type and add to the path types dictionary
+            if (ed.Type.Count() == 1)
+            {
+                pathTypes[ed.Path] = ed.Type.First().Code;
+            }
         }
 
         // process each element in the differential
@@ -199,17 +225,22 @@ public partial class DefinitionCollection
                 // add to lookup dict
                 _elementSdLookup.Add(ed, sd);
 
-                // check for being a child element - only need to test if this element has not been processed already
-                //if (ed.Type.Any(t => t.Code.Equals("BackboneElement", StringComparison.Ordinal)))
-                //{
-                //    _backbonePaths.Add(ed.Path);
-                //}
-                if (ed.Path.Contains('.'))
+                // check for being a child element to promote a parent to backbone
+                int lastDot = ed.Path.LastIndexOf('.');
+                if (lastDot != -1)
                 {
-                    string parentPath = ed.Path.Substring(0, ed.Path.LastIndexOf('.'));
-                    if (!_backbonePaths.Contains(parentPath))
+                    string parentPath = ed.Path.Substring(0, lastDot);
+                    if (parentPath.Contains('.') &&
+                        !_parentElementsAndType.ContainsKey(parentPath))
                     {
-                        _backbonePaths.Add(parentPath);
+                        if (pathTypes.TryGetValue(parentPath, out string? parentType))
+                        {
+                            _parentElementsAndType.Add(parentPath, parentType);
+                        }
+                        else
+                        {
+                            _parentElementsAndType.Add(parentPath, string.Empty);
+                        }
                     }
                 }
 
@@ -237,6 +268,12 @@ public partial class DefinitionCollection
                 if ((fhirVersion == FhirReleases.FhirSequenceCodes.DSTU2) || (fhirVersion == FhirReleases.FhirSequenceCodes.STU3))
                 {
                     ConsolidateTypes(sd, ed);
+                }
+
+                // check for a single type and add to the path types dictionary
+                if (ed.Type.Count() == 1)
+                {
+                    pathTypes[ed.Path] = ed.Type.First().Code;
                 }
             }
 
