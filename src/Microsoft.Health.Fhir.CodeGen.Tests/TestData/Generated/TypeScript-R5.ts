@@ -3241,7 +3241,7 @@ export interface Account extends DomainResource {
   /**
    * The default currency for the account.
    */
-  currency?: ('AED'|'AFN'|'ALL'|'AMD'|'ANG'|'AOA'|'ARS'|'AUD'|'AWG'|'AZN'|'BAM'|'BBD'|'BDT'|'BGN'|'BHD'|'BIF'|'BMD'|'BND'|'BOB'|'BOV'|'BRL'|'BSD'|'BTN'|'BWP'|'BYN'|'BZD'|'CAD'|'CDF'|'CHE'|'CHF'|'CHW'|'CLF'|'CLP'|'CNY'|'COP'|'COU'|'CRC'|'CUC'|'CUP'|'CVE'|'CZK'|'DJF'|'DKK'|'DOP'|'DZD'|'EGP'|'ERN'|'ETB'|'EUR'|'FJD'|'FKP'|'GBP'|'GEL'|'GGP'|'GHS'|'GIP'|'GMD'|'GNF'|'GTQ'|'GYD'|'HKD'|'HNL'|'HRK'|'HTG'|'HUF'|'IDR'|'ILS'|'IMP'|'INR'|'IQD'|'IRR'|'ISK'|'JEP'|'JMD'|'JOD'|'JPY'|'KES'|'KGS'|'KHR'|'KMF'|'KPW'|'KRW'|'KWD'|'KYD'|'KZT'|'LAK'|'LBP'|'LKR'|'LRD'|'LSL'|'LYD'|'MAD'|'MDL'|'MGA'|'MKD'|'MMK'|'MNT'|'MOP'|'MRU'|'MUR'|'MVR'|'MWK'|'MXN'|'MXV'|'MYR'|'MZN'|'NAD'|'NGN'|'NIO'|'NOK'|'NPR'|'NZD'|'OMR'|'PAB'|'PEN'|'PGK'|'PHP'|'PKR'|'PLN'|'PYG'|'QAR'|'RON'|'RSD'|'RUB'|'RWF'|'SAR'|'SBD'|'SCR'|'SDG'|'SEK'|'SGD'|'SHP'|'SLL'|'SOS'|'SRD'|'SSP'|'STN'|'SVC'|'SYP'|'SZL'|'THB'|'TJS'|'TMT'|'TND'|'TOP'|'TRY'|'TTD'|'TVD'|'TWD'|'TZS'|'UAH'|'UGX'|'USD'|'USN'|'UYI'|'UYU'|'UZS'|'VEF'|'VND'|'VUV'|'WST'|'XAF'|'XAG'|'XAU'|'XBA'|'XBB'|'XBC'|'XBD'|'XCD'|'XDR'|'XOF'|'XPD'|'XPF'|'XPT'|'XSU'|'XTS'|'XUA'|'XXX'|'YER'|'ZAR'|'ZMW'|'ZWL') | undefined;
+  currency?: CodeableConcept | undefined;
   /**
    * Provides additional information about what the account tracks and how it is used.
    */
@@ -3797,7 +3797,7 @@ export interface AdministrableProductDefinitionProperty extends BackboneElement 
   /**
    * The status of characteristic e.g. assigned or pending.
    */
-  status?: ('draft'|'active'|'retired'|'unknown') | undefined;
+  status?: CodeableConcept | undefined;
   /**
    * A code expressing the type of characteristic.
    */
@@ -4238,7 +4238,7 @@ export interface AllergyIntolerance extends DomainResource {
    * Refer to [discussion](extensibility.html#Special-Case) if clinicalStatus is missing data.
    * The data type is CodeableConcept because clinicalStatus has some clinical judgment involved, such that there might need to be more specificity than the required FHIR value set allows. For example, a SNOMED coding might allow for additional specificity.
    */
-  clinicalStatus?: ('active'|'inactive'|'resolved') | undefined;
+  clinicalStatus?: CodeableConcept | undefined;
   /**
    * Code for an allergy or intolerance statement (either a positive or a negated/excluded statement).  This may be a code for a substance or pharmaceutical product that is considered to be responsible for the adverse reaction risk (e.g., "Latex"), an allergy or intolerance condition (e.g., "Latex allergy"), or a negated/excluded code for a specific substance or class (e.g., "No latex allergy") or a general or categorical negated statement (e.g.,  "No known allergy", "No known drug allergies").  Note: the substance for a specific reaction may be different from the substance identified as the cause of the risk, but it must be consistent with it. For instance, it may be a more specific substance (e.g. a brand medication) or a composite product that includes the identified substance. It must be clinically safe to only process the 'code' and ignore the 'reaction.substance'.  If a receiving system is unable to confirm that AllergyIntolerance.reaction.substance falls within the semantic scope of AllergyIntolerance.code, then the receiving system should ignore AllergyIntolerance.reaction.substance.
    * It is strongly recommended that this element be populated using a terminology, where possible. For example, some terminologies used include RxNorm, SNOMED CT, DM+D, NDFRT, ICD-9, IDC-10, UNII, and ATC. Plain text should only be used if there is no appropriate terminology available. Additional details can be specified in the text.
@@ -4320,7 +4320,7 @@ export interface AllergyIntolerance extends DomainResource {
    * Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified substance (including pharmaceutical product).  The verification status pertains to the allergy or intolerance, itself, not to any specific AllergyIntolerance attribute.
    * The data type is CodeableConcept because verificationStatus has some clinical judgment involved, such that there might need to be more specificity than the required FHIR value set allows. For example, a SNOMED coding might allow for additional specificity.
    */
-  verificationStatus?: ('unconfirmed'|'presumed'|'confirmed'|'refuted'|'entered-in-error') | undefined;
+  verificationStatus?: CodeableConcept | undefined;
 }
 /**
  * Participants involved in appointment
@@ -4366,7 +4366,7 @@ export interface AppointmentRecurrenceTemplateMonthlyTemplate extends BackboneEl
    * Indicates which day of the week the recurring appointments should occur each nth week.
    * This property is intended to be used with Appointment.recurrenceTemplate.monthly.nthWeek.
    */
-  dayOfWeek?: ('mon'|'tue'|'wed'|'thu'|'fri'|'sat'|'sun') | undefined;
+  dayOfWeek?: Coding | undefined;
   /**
    * Indicates that recurring appointments should occur every nth month.
    */
@@ -4374,7 +4374,7 @@ export interface AppointmentRecurrenceTemplateMonthlyTemplate extends BackboneEl
   /**
    * Indicates which week within a month the appointments in the series of recurring appointments should occur on.
    */
-  nthWeekOfMonth?: ('first'|'second'|'third'|'fourth'|'last') | undefined;
+  nthWeekOfMonth?: Coding | undefined;
 }
 /**
  * Information about weekly recurring appointments
@@ -4470,7 +4470,7 @@ export interface AppointmentRecurrenceTemplate extends BackboneElement {
   /**
    * The timezone of the recurring appointment occurrences.
    */
-  timezone?: ('Africa/Abidjan'|'Africa/Accra'|'Africa/Addis_Ababa'|'Africa/Algiers'|'Africa/Asmara'|'Africa/Bamako'|'Africa/Bangui'|'Africa/Banjul'|'Africa/Bissau'|'Africa/Blantyre'|'Africa/Brazzaville'|'Africa/Bujumbura'|'Africa/Cairo'|'Africa/Casablanca'|'Africa/Ceuta'|'Africa/Conakry'|'Africa/Dakar'|'Africa/Dar_es_Salaam'|'Africa/Djibouti'|'Africa/Douala'|'Africa/El_Aaiun'|'Africa/Freetown'|'Africa/Gaborone'|'Africa/Harare'|'Africa/Johannesburg'|'Africa/Juba'|'Africa/Kampala'|'Africa/Khartoum'|'Africa/Kigali'|'Africa/Kinshasa'|'Africa/Lagos'|'Africa/Libreville'|'Africa/Lome'|'Africa/Luanda'|'Africa/Lubumbashi'|'Africa/Lusaka'|'Africa/Malabo'|'Africa/Maputo'|'Africa/Maseru'|'Africa/Mbabane'|'Africa/Mogadishu'|'Africa/Monrovia'|'Africa/Nairobi'|'Africa/Ndjamena'|'Africa/Niamey'|'Africa/Nouakchott'|'Africa/Ouagadougou'|'Africa/Porto-Novo'|'Africa/Sao_Tome'|'Africa/Timbuktu'|'Africa/Tripoli'|'Africa/Tunis'|'Africa/Windhoek'|'America/Adak'|'America/Anchorage'|'America/Anguilla'|'America/Antigua'|'America/Araguaina'|'America/Argentina/Buenos_Aires'|'America/Argentina/Catamarca'|'America/Argentina/ComodRivadavia'|'America/Argentina/Cordoba'|'America/Argentina/Jujuy'|'America/Argentina/La_Rioja'|'America/Argentina/Mendoza'|'America/Argentina/Rio_Gallegos'|'America/Argentina/Salta'|'America/Argentina/San_Juan'|'America/Argentina/San_Luis'|'America/Argentina/Tucuman'|'America/Argentina/Ushuaia'|'America/Aruba'|'America/Asuncion'|'America/Atikokan'|'America/Bahia'|'America/Bahia_Banderas'|'America/Barbados'|'America/Belem'|'America/Belize'|'America/Blanc-Sablon'|'America/Boa_Vista'|'America/Bogota'|'America/Boise'|'America/Cambridge_Bay'|'America/Campo_Grande'|'America/Cancun'|'America/Caracas'|'America/Cayenne'|'America/Cayman'|'America/Chicago'|'America/Chihuahua'|'America/Coral_Harbour'|'America/Costa_Rica'|'America/Creston'|'America/Cuiaba'|'America/Curacao'|'America/Danmarkshavn'|'America/Dawson'|'America/Dawson_Creek'|'America/Denver'|'America/Detroit'|'America/Dominica'|'America/Edmonton'|'America/Eirunepe'|'America/El_Salvador'|'America/Ensenada'|'America/Fort_Nelson'|'America/Fortaleza'|'America/Glace_Bay'|'America/Goose_Bay'|'America/Grand_Turk'|'America/Grenada'|'America/Guadeloupe'|'America/Guatemala'|'America/Guayaquil'|'America/Guyana'|'America/Halifax'|'America/Havana'|'America/Hermosillo'|'America/Indiana/Indianapolis'|'America/Indiana/Knox'|'America/Indiana/Marengo'|'America/Indiana/Petersburg'|'America/Indiana/Tell_City'|'America/Indiana/Vevay'|'America/Indiana/Vincennes'|'America/Indiana/Winamac'|'America/Inuvik'|'America/Iqaluit'|'America/Jamaica'|'America/Juneau'|'America/Kentucky/Louisville'|'America/Kentucky/Monticello'|'America/La_Paz'|'America/Lima'|'America/Los_Angeles'|'America/Maceio'|'America/Managua'|'America/Manaus'|'America/Martinique'|'America/Matamoros'|'America/Mazatlan'|'America/Menominee'|'America/Merida'|'America/Metlakatla'|'America/Mexico_City'|'America/Miquelon'|'America/Moncton'|'America/Monterrey'|'America/Montevideo'|'America/Montreal'|'America/Montserrat'|'America/Nassau'|'America/New_York'|'America/Nipigon'|'America/Nome'|'America/Noronha'|'America/North_Dakota/Beulah'|'America/North_Dakota/Center'|'America/North_Dakota/New_Salem'|'America/Nuuk'|'America/Ojinaga'|'America/Panama'|'America/Pangnirtung'|'America/Paramaribo'|'America/Phoenix'|'America/Port-au-Prince'|'America/Port_of_Spain'|'America/Porto_Velho'|'America/Puerto_Rico'|'America/Punta_Arenas'|'America/Rainy_River'|'America/Rankin_Inlet'|'America/Recife'|'America/Regina'|'America/Resolute'|'America/Rio_Branco'|'America/Rosario'|'America/Santarem'|'America/Santiago'|'America/Santo_Domingo'|'America/Sao_Paulo'|'America/Scoresbysund'|'America/Sitka'|'America/St_Johns'|'America/St_Kitts'|'America/St_Lucia'|'America/St_Thomas'|'America/St_Vincent'|'America/Swift_Current'|'America/Tegucigalpa'|'America/Thule'|'America/Thunder_Bay'|'America/Tijuana'|'America/Toronto'|'America/Tortola'|'America/Vancouver'|'America/Whitehorse'|'America/Winnipeg'|'America/Yakutat'|'America/Yellowknife'|'Antarctica/Casey'|'Antarctica/Davis'|'Antarctica/DumontDUrville'|'Antarctica/Macquarie'|'Antarctica/Mawson'|'Antarctica/McMurdo'|'Antarctica/Palmer'|'Antarctica/Rothera'|'Antarctica/Syowa'|'Antarctica/Troll'|'Antarctica/Vostok'|'Asia/Aden'|'Asia/Almaty'|'Asia/Amman'|'Asia/Anadyr'|'Asia/Aqtau'|'Asia/Aqtobe'|'Asia/Ashgabat'|'Asia/Atyrau'|'Asia/Baghdad'|'Asia/Bahrain'|'Asia/Baku'|'Asia/Bangkok'|'Asia/Barnaul'|'Asia/Beirut'|'Asia/Bishkek'|'Asia/Brunei'|'Asia/Chita'|'Asia/Choibalsan'|'Asia/Chongqing'|'Asia/Colombo'|'Asia/Damascus'|'Asia/Dhaka'|'Asia/Dili'|'Asia/Dubai'|'Asia/Dushanbe'|'Asia/Famagusta'|'Asia/Gaza'|'Asia/Hanoi'|'Asia/Harbin'|'Asia/Hebron'|'Asia/Ho_Chi_Minh'|'Asia/Hong_Kong'|'Asia/Hovd'|'Asia/Irkutsk'|'Asia/Jakarta'|'Asia/Jayapura'|'Asia/Jerusalem'|'Asia/Kabul'|'Asia/Kamchatka'|'Asia/Karachi'|'Asia/Kashgar'|'Asia/Kathmandu'|'Asia/Khandyga'|'Asia/Kolkata'|'Asia/Krasnoyarsk'|'Asia/Kuala_Lumpur'|'Asia/Kuching'|'Asia/Kuwait'|'Asia/Macau'|'Asia/Magadan'|'Asia/Makassar'|'Asia/Manila'|'Asia/Muscat'|'Asia/Nicosia'|'Asia/Novokuznetsk'|'Asia/Novosibirsk'|'Asia/Omsk'|'Asia/Oral'|'Asia/Phnom_Penh'|'Asia/Pontianak'|'Asia/Pyongyang'|'Asia/Qatar'|'Asia/Qostanay'|'Asia/Qyzylorda'|'Asia/Riyadh'|'Asia/Sakhalin'|'Asia/Samarkand'|'Asia/Seoul'|'Asia/Shanghai'|'Asia/Singapore'|'Asia/Srednekolymsk'|'Asia/Taipei'|'Asia/Tashkent'|'Asia/Tbilisi'|'Asia/Tehran'|'Asia/Tel_Aviv'|'Asia/Thimphu'|'Asia/Tokyo'|'Asia/Tomsk'|'Asia/Ulaanbaatar'|'Asia/Urumqi'|'Asia/Ust-Nera'|'Asia/Vientiane'|'Asia/Vladivostok'|'Asia/Yakutsk'|'Asia/Yangon'|'Asia/Yekaterinburg'|'Asia/Yerevan'|'Atlantic/Azores'|'Atlantic/Bermuda'|'Atlantic/Canary'|'Atlantic/Cape_Verde'|'Atlantic/Faroe'|'Atlantic/Jan_Mayen'|'Atlantic/Madeira'|'Atlantic/Reykjavik'|'Atlantic/South_Georgia'|'Atlantic/St_Helena'|'Atlantic/Stanley'|'Australia/Adelaide'|'Australia/Brisbane'|'Australia/Broken_Hill'|'Australia/Currie'|'Australia/Darwin'|'Australia/Eucla'|'Australia/Hobart'|'Australia/Lindeman'|'Australia/Lord_Howe'|'Australia/Melbourne'|'Australia/Perth'|'Australia/Sydney'|'CET'|'CST6CDT'|'EET'|'EST'|'EST5EDT'|'Etc/GMT'|'Etc/GMT+1'|'Etc/GMT+10'|'Etc/GMT+11'|'Etc/GMT+12'|'Etc/GMT+2'|'Etc/GMT+3'|'Etc/GMT+4'|'Etc/GMT+5'|'Etc/GMT+6'|'Etc/GMT+7'|'Etc/GMT+8'|'Etc/GMT+9'|'Etc/GMT-1'|'Etc/GMT-10'|'Etc/GMT-11'|'Etc/GMT-12'|'Etc/GMT-13'|'Etc/GMT-14'|'Etc/GMT-2'|'Etc/GMT-3'|'Etc/GMT-4'|'Etc/GMT-5'|'Etc/GMT-6'|'Etc/GMT-7'|'Etc/GMT-8'|'Etc/GMT-9'|'Etc/UTC'|'Europe/Amsterdam'|'Europe/Andorra'|'Europe/Astrakhan'|'Europe/Athens'|'Europe/Belfast'|'Europe/Belgrade'|'Europe/Berlin'|'Europe/Brussels'|'Europe/Bucharest'|'Europe/Budapest'|'Europe/Chisinau'|'Europe/Copenhagen'|'Europe/Dublin'|'Europe/Gibraltar'|'Europe/Guernsey'|'Europe/Helsinki'|'Europe/Isle_of_Man'|'Europe/Istanbul'|'Europe/Jersey'|'Europe/Kaliningrad'|'Europe/Kiev'|'Europe/Kirov'|'Europe/Lisbon'|'Europe/Ljubljana'|'Europe/London'|'Europe/Luxembourg'|'Europe/Madrid'|'Europe/Malta'|'Europe/Minsk'|'Europe/Monaco'|'Europe/Moscow'|'Europe/Oslo'|'Europe/Paris'|'Europe/Prague'|'Europe/Riga'|'Europe/Rome'|'Europe/Samara'|'Europe/Sarajevo'|'Europe/Saratov'|'Europe/Simferopol'|'Europe/Skopje'|'Europe/Sofia'|'Europe/Stockholm'|'Europe/Tallinn'|'Europe/Tirane'|'Europe/Tiraspol'|'Europe/Ulyanovsk'|'Europe/Uzhgorod'|'Europe/Vaduz'|'Europe/Vienna'|'Europe/Vilnius'|'Europe/Volgograd'|'Europe/Warsaw'|'Europe/Zagreb'|'Europe/Zaporozhye'|'Europe/Zurich'|'Factory'|'HST'|'Indian/Antananarivo'|'Indian/Chagos'|'Indian/Christmas'|'Indian/Cocos'|'Indian/Comoro'|'Indian/Kerguelen'|'Indian/Mahe'|'Indian/Maldives'|'Indian/Mauritius'|'Indian/Mayotte'|'Indian/Reunion'|'MET'|'MST'|'MST7MDT'|'PST8PDT'|'Pacific/Apia'|'Pacific/Auckland'|'Pacific/Bougainville'|'Pacific/Chatham'|'Pacific/Chuuk'|'Pacific/Easter'|'Pacific/Efate'|'Pacific/Enderbury'|'Pacific/Fakaofo'|'Pacific/Fiji'|'Pacific/Funafuti'|'Pacific/Galapagos'|'Pacific/Gambier'|'Pacific/Guadalcanal'|'Pacific/Guam'|'Pacific/Honolulu'|'Pacific/Johnston'|'Pacific/Kiritimati'|'Pacific/Kosrae'|'Pacific/Kwajalein'|'Pacific/Majuro'|'Pacific/Marquesas'|'Pacific/Midway'|'Pacific/Nauru'|'Pacific/Niue'|'Pacific/Norfolk'|'Pacific/Noumea'|'Pacific/Pago_Pago'|'Pacific/Palau'|'Pacific/Pitcairn'|'Pacific/Pohnpei'|'Pacific/Port_Moresby'|'Pacific/Rarotonga'|'Pacific/Saipan'|'Pacific/Tahiti'|'Pacific/Tarawa'|'Pacific/Tongatapu'|'Pacific/Wake'|'Pacific/Wallis'|'WET') | undefined;
+  timezone?: CodeableConcept | undefined;
   /**
    * Information about weekly recurring appointments.
    */
@@ -10824,7 +10824,7 @@ export interface Condition extends DomainResource {
    * The clinical status of the condition.
    * The data type is CodeableConcept because clinicalStatus has some clinical judgment involved, such that there might need to be more specificity than the required FHIR value set allows. For example, a SNOMED coding might allow for additional specificity.  clinicalStatus is required since it is a modifier element.  For conditions that are problems list items, the clinicalStatus should not be unknown.  For conditions that are not problem list items, the clinicalStatus may be unknown.  For example, conditions derived from a claim are point in time, so those conditions may have a clinicalStatus of unknown
    */
-  clinicalStatus: ('active'|'recurrence'|'relapse'|'inactive'|'remission'|'resolved'|'unknown');
+  clinicalStatus: CodeableConcept;
   /**
    * Identification of the condition, problem or diagnosis.
    */
@@ -10897,7 +10897,7 @@ export interface Condition extends DomainResource {
    * verificationStatus is not required.  For example, when a patient has abdominal pain in the ED, there is not likely going to be a verification status.
    * The data type is CodeableConcept because verificationStatus has some clinical judgment involved, such that there might need to be more specificity than the required FHIR value set allows. For example, a SNOMED coding might allow for additional specificity.
    */
-  verificationStatus?: ('unconfirmed'|'provisional'|'differential'|'confirmed'|'refuted'|'entered-in-error') | undefined;
+  verificationStatus?: CodeableConcept | undefined;
 }
 /**
  * Medications particularly relevant for this condition
@@ -13159,11 +13159,11 @@ export interface DeviceAssociation extends DomainResource {
   /**
    * Indicates the state of the Device association.
    */
-  status: ('implanted'|'explanted'|'entered-in-error'|'attached'|'unknown');
+  status: CodeableConcept;
   /**
    * The reasons given for the current association status.
    */
-  statusReason?: ('attached'|'disconnected'|'failed'|'placed'|'replaced')[] | undefined;
+  statusReason?: CodeableConcept[] | undefined;
   /**
    * The individual, group of individuals or device that the device is on or associated with.
    */
@@ -14081,7 +14081,7 @@ export interface DeviceUsage extends DomainResource {
   /**
    * The status of the device usage, for example always, sometimes, never. This is not the same as the status of the statement.
    */
-  usageStatus?: ('active'|'completed'|'not-done'|'entered-in-error'|'intended'|'stopped'|'on-hold') | undefined;
+  usageStatus?: CodeableConcept | undefined;
 }
 /**
  * Key images or data associated with this report
@@ -20523,7 +20523,7 @@ export interface InsurancePlanPlanSpecificCostBenefitCost extends BackboneElemen
   /**
    * Whether the cost applies to in-network or out-of-network providers (in-network; out-of-network; other).
    */
-  applicability?: ('in-network'|'out-of-network'|'other') | undefined;
+  applicability?: CodeableConcept | undefined;
   /**
    * Additional information about the cost, such as information about funding sources (e.g. HSA, HRA, FSA, RRA).
    */
@@ -21794,7 +21794,7 @@ export interface MeasureGroup extends BackboneElement {
    * Information on whether an increase or decrease in score is the preferred result (e.g., a higher score indicates better quality OR a lower score indicates better quality OR quality is within a range).
    * When specified at the group level, this element defines the improvementNotation for this specific group. If not specified, improvementNotation for this group is determined by the root improvementNotation element
    */
-  improvementNotation?: ('increase'|'decrease') | undefined;
+  improvementNotation?: CodeableConcept | undefined;
   /**
    * A reference to a Library resource containing the formal logic used by the measure group.
    */
@@ -21995,7 +21995,7 @@ export interface Measure extends DomainResource {
   /**
    * Information on whether an increase or decrease in score is the preferred result (e.g., a higher score indicates better quality OR a lower score indicates better quality OR quality is within a range).
    */
-  improvementNotation?: ('increase'|'decrease') | undefined;
+  improvementNotation?: CodeableConcept | undefined;
   /**
    * A legal or geographic region in which the measure is intended to be used.
    * It may be possible for the measure to be used in jurisdictions other than those for which it was originally designed or intended.
@@ -22410,7 +22410,7 @@ export interface MeasureReport extends DomainResource {
    * Whether improvement in the measure is noted by an increase or decrease in the measure score.
    * This element is typically defined by the measure, but reproduced here to ensure the measure score can be interpreted. The element is labeled as a modifier because it changes the interpretation of the reported measure score. Note also that a MeasureReport instance includes the improvementNotation as defined by the Measure being reported. It is duplicated in the MeasureReport because it is a critical aspect of interpreting the measure score but it is not intended to reflect whether the measure report is an increase or decrease. It helps interpret if the measure score is an increase or decrease, I.e., moving in the direction of the desired outcome.
    */
-  improvementNotation?: ('increase'|'decrease') | undefined;
+  improvementNotation?: CodeableConcept | undefined;
   /**
    * A reference to a Parameters resource (typically represented using a contained resource) that represents any input parameters that were provided to the operation that generated the report.
    * Whenever an operation returns a MeasureReport, the IN parameters from that operation can be returned to the caller of the operation using MeasureReport.inputParameters. Operations include but are not limited to $evaluate-measure, $care-gaps, $data-requirements, and $collect-data. The inputParameters can also be used in a MeasureReport used to define a test case (i.e., not as a result of an operation).
@@ -30512,7 +30512,7 @@ export interface ResearchSubjectProgress extends BackboneElement {
   /**
    * The current state of the subject.
    */
-  subjectState?: ('candidate'|'eligible'|'follow-up'|'ineligible'|'not-registered'|'off-study'|'on-study'|'on-study-intervention'|'on-study-observation'|'pending-on-study'|'potential-candidate'|'screening'|'withdrawn') | undefined;
+  subjectState?: CodeableConcept | undefined;
   /**
    * Identifies the aspect of the subject's journey that the state refers to.
    */
@@ -33226,7 +33226,7 @@ export interface SubstanceDefinitionSourceMaterial extends BackboneElement {
   /**
    * The country or countries where the material is harvested.
    */
-  countryOfOrigin?: ('AD'|'AE'|'AF'|'AG'|'AI'|'AL'|'AM'|'AO'|'AQ'|'AR'|'AS'|'AT'|'AU'|'AW'|'AX'|'AZ'|'BA'|'BB'|'BD'|'BE'|'BF'|'BG'|'BH'|'BI'|'BJ'|'BL'|'BM'|'BN'|'BO'|'BQ'|'BR'|'BS'|'BT'|'BV'|'BW'|'BY'|'BZ'|'CA'|'CC'|'CD'|'CF'|'CG'|'CH'|'CI'|'CK'|'CL'|'CM'|'CN'|'CO'|'CR'|'CU'|'CV'|'CW'|'CX'|'CY'|'CZ'|'DE'|'DJ'|'DK'|'DM'|'DO'|'DZ'|'EC'|'EE'|'EG'|'EH'|'ER'|'ES'|'ET'|'FI'|'FJ'|'FK'|'FM'|'FO'|'FR'|'GA'|'GB'|'GD'|'GE'|'GF'|'GG'|'GH'|'GI'|'GL'|'GM'|'GN'|'GP'|'GQ'|'GR'|'GS'|'GT'|'GU'|'GW'|'GY'|'HK'|'HM'|'HN'|'HR'|'HT'|'HU'|'ID'|'IE'|'IL'|'IM'|'IN'|'IO'|'IQ'|'IR'|'IS'|'IT'|'JE'|'JM'|'JO'|'JP'|'KE'|'KG'|'KH'|'KI'|'KM'|'KN'|'KP'|'KR'|'KW'|'KY'|'KZ'|'LA'|'LB'|'LC'|'LI'|'LK'|'LR'|'LS'|'LT'|'LU'|'LV'|'LY'|'MA'|'MC'|'MD'|'ME'|'MF'|'MG'|'MH'|'MK'|'ML'|'MM'|'MN'|'MO'|'MP'|'MQ'|'MR'|'MS'|'MT'|'MU'|'MV'|'MW'|'MX'|'MY'|'MZ'|'NA'|'NC'|'NE'|'NF'|'NG'|'NI'|'NL'|'NO'|'NP'|'NR'|'NU'|'NZ'|'OM'|'PA'|'PE'|'PF'|'PG'|'PH'|'PK'|'PL'|'PM'|'PN'|'PR'|'PS'|'PT'|'PW'|'PY'|'QA'|'RE'|'RO'|'RS'|'RU'|'RW'|'SA'|'SB'|'SC'|'SD'|'SE'|'SG'|'SH'|'SI'|'SJ'|'SK'|'SL'|'SM'|'SN'|'SO'|'SR'|'SS'|'ST'|'SV'|'SX'|'SY'|'SZ'|'TC'|'TD'|'TF'|'TG'|'TH'|'TJ'|'TK'|'TL'|'TM'|'TN'|'TO'|'TR'|'TT'|'TV'|'TW'|'TZ'|'UA'|'UG'|'UM'|'US'|'UY'|'UZ'|'VA'|'VC'|'VE'|'VG'|'VI'|'VN'|'VU'|'WF'|'WS'|'YE'|'YT'|'ZA'|'ZM'|'ZW'|'ABW'|'AFG'|'AGO'|'AIA'|'ALA'|'ALB'|'AND'|'ARE'|'ARG'|'ARM'|'ASM'|'ATA'|'ATF'|'ATG'|'AUS'|'AUT'|'AZE'|'BDI'|'BEL'|'BEN'|'BES'|'BFA'|'BGD'|'BGR'|'BHR'|'BHS'|'BIH'|'BLM'|'BLR'|'BLZ'|'BMU'|'BOL'|'BRA'|'BRB'|'BRN'|'BTN'|'BVT'|'BWA'|'CAF'|'CAN'|'CCK'|'CHE'|'CHL'|'CHN'|'CIV'|'CMR'|'COD'|'COG'|'COK'|'COL'|'COM'|'CPV'|'CRI'|'CUB'|'CUW'|'CXR'|'CYM'|'CYP'|'CZE'|'DEU'|'DJI'|'DMA'|'DNK'|'DOM'|'DZA'|'ECU'|'EGY'|'ERI'|'ESH'|'ESP'|'EST'|'ETH'|'FIN'|'FJI'|'FLK'|'FRA'|'FRO'|'FSM'|'GAB'|'GBR'|'GEO'|'GGY'|'GHA'|'GIB'|'GIN'|'GLP'|'GMB'|'GNB'|'GNQ'|'GRC'|'GRD'|'GRL'|'GTM'|'GUF'|'GUM'|'GUY'|'HKG'|'HMD'|'HND'|'HRV'|'HTI'|'HUN'|'IDN'|'IMN'|'IND'|'IOT'|'IRL'|'IRN'|'IRQ'|'ISL'|'ISR'|'ITA'|'JAM'|'JEY'|'JOR'|'JPN'|'KAZ'|'KEN'|'KGZ'|'KHM'|'KIR'|'KNA'|'KOR'|'KWT'|'LAO'|'LBN'|'LBR'|'LBY'|'LCA'|'LIE'|'LKA'|'LSO'|'LTU'|'LUX'|'LVA'|'MAC'|'MAF'|'MAR'|'MCO'|'MDA'|'MDG'|'MDV'|'MEX'|'MHL'|'MKD'|'MLI'|'MLT'|'MMR'|'MNE'|'MNG'|'MNP'|'MOZ'|'MRT'|'MSR'|'MTQ'|'MUS'|'MWI'|'MYS'|'MYT'|'NAM'|'NCL'|'NER'|'NFK'|'NGA'|'NIC'|'NIU'|'NLD'|'NOR'|'NPL'|'NRU'|'NZL'|'OMN'|'PAK'|'PAN'|'PCN'|'PER'|'PHL'|'PLW'|'PNG'|'POL'|'PRI'|'PRK'|'PRT'|'PRY'|'PSE'|'PYF'|'QAT'|'REU'|'ROU'|'RUS'|'RWA'|'SAU'|'SDN'|'SEN'|'SGP'|'SGS'|'SHN'|'SJM'|'SLB'|'SLE'|'SLV'|'SMR'|'SOM'|'SPM'|'SRB'|'SSD'|'STP'|'SUR'|'SVK'|'SVN'|'SWE'|'SWZ'|'SXM'|'SYC'|'SYR'|'TCA'|'TCD'|'TGO'|'THA'|'TJK'|'TKL'|'TKM'|'TLS'|'TON'|'TTO'|'TUN'|'TUR'|'TUV'|'TWN'|'TZA'|'UGA'|'UKR'|'UMI'|'URY'|'USA'|'UZB'|'VAT'|'VCT'|'VEN'|'VGB'|'VIR'|'VNM'|'VUT'|'WLF'|'WSM'|'YEM'|'ZAF'|'ZMB'|'ZWE'|'004'|'008'|'010'|'012'|'016'|'020'|'024'|'028'|'031'|'032'|'036'|'040'|'044'|'048'|'050'|'051'|'052'|'056'|'060'|'064'|'068'|'070'|'072'|'074'|'076'|'084'|'086'|'090'|'092'|'096'|'100'|'104'|'108'|'112'|'116'|'120'|'124'|'132'|'136'|'140'|'144'|'148'|'152'|'156'|'158'|'162'|'166'|'170'|'174'|'175'|'178'|'180'|'184'|'188'|'191'|'192'|'196'|'203'|'204'|'208'|'212'|'214'|'218'|'222'|'226'|'231'|'232'|'233'|'234'|'238'|'239'|'242'|'246'|'248'|'250'|'254'|'258'|'260'|'262'|'266'|'268'|'270'|'275'|'276'|'288'|'292'|'296'|'300'|'304'|'308'|'312'|'316'|'320'|'324'|'328'|'332'|'334'|'336'|'340'|'344'|'348'|'352'|'356'|'360'|'364'|'368'|'372'|'376'|'380'|'384'|'388'|'392'|'398'|'400'|'404'|'408'|'410'|'414'|'417'|'418'|'422'|'426'|'428'|'430'|'434'|'438'|'440'|'442'|'446'|'450'|'454'|'458'|'462'|'466'|'470'|'474'|'478'|'480'|'484'|'492'|'496'|'498'|'499'|'500'|'504'|'508'|'512'|'516'|'520'|'524'|'528'|'531'|'533'|'534'|'535'|'540'|'548'|'554'|'558'|'562'|'566'|'570'|'574'|'578'|'580'|'581'|'583'|'584'|'585'|'586'|'591'|'598'|'600'|'604'|'608'|'612'|'616'|'620'|'624'|'626'|'630'|'634'|'638'|'642'|'643'|'646'|'652'|'654'|'659'|'660'|'662'|'663'|'666'|'670'|'674'|'678'|'682'|'686'|'688'|'690'|'694'|'702'|'703'|'704'|'705'|'706'|'710'|'716'|'724'|'728'|'729'|'732'|'740'|'744'|'748'|'752'|'756'|'760'|'762'|'764'|'768'|'772'|'776'|'780'|'784'|'788'|'792'|'795'|'796'|'798'|'800'|'804'|'807'|'818'|'826'|'831'|'832'|'833'|'834'|'840'|'850'|'854'|'858'|'860'|'862'|'876'|'882'|'887'|'894')[] | undefined;
+  countryOfOrigin?: CodeableConcept[] | undefined;
   /**
    * The genus of an organism, typically referring to the Latin epithet of the genus element of the plant/animal scientific name.
    */
@@ -34098,7 +34098,7 @@ export interface SupplyDelivery extends DomainResource {
   /**
    * Indicates the type of supply being provided.  Examples include: Medication, Device, Biologically Derived Product.
    */
-  type?: ('medication'|'device'|'biologicallyderivedproduct') | undefined;
+  type?: CodeableConcept | undefined;
 }
 /**
  * Ordered item details
