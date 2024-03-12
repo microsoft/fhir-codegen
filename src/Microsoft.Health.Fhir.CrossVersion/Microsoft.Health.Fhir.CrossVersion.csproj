@@ -16,4 +16,8 @@
     <Folder Include="Convert_30_50\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Microsoft.Health.Fhir.CodeGenCommon\Microsoft.Health.Fhir.CodeGenCommon.csproj" />
+  </ItemGroup>
+
 </Project>

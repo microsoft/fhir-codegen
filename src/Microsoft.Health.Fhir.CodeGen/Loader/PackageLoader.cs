@@ -392,8 +392,10 @@ public class PackageLoader
             }
 
             // update the collection FHIR version based on the first package we come across with one
-            if ((definitions.FhirVersion == null) && manifest.AllFhirVersions.Any())
+            if (string.IsNullOrEmpty(definitions.FhirVersionLiteral) && manifest.AllFhirVersions.Any())
             {
+                definitions.FhirVersionLiteral = manifest.AllFhirVersions.First();
+
                 definitions.FhirSequence = FhirReleases.FhirVersionToSequence(manifest.AllFhirVersions.First());
 
                 definitions.FhirVersion = definitions.FhirSequence switch

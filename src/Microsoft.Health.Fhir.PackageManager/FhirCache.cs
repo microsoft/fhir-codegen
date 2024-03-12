@@ -1611,7 +1611,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
         else if (segments[2].Length == 2)
         {
             throw new Exception("IGs do not get version.info!");
-
+#if CAKE
             string potentialPackageName;
 
             // check to see if we have a fifth segment that is a ballot marker
@@ -1663,6 +1663,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
                 nameType = DirectiveNameTypeCodes.GuideWithoutSuffix;
                 packageName = $"hl7.fhir.{segments[2]}.{segments[3]}";
             }
+#endif
         }
 
         // check for not determining the URL

@@ -96,6 +96,8 @@ public class Program
             generateCommand.AddCommand(languageCommand);
         }
 
+        generateCommand.Handler = CommandHandler.Create<ConfigGenerate, CancellationToken>(RunGenerate);
+
         // TODO(ginoc): Set the command handler
         rootCommand.AddCommand(generateCommand);
 
@@ -318,6 +320,28 @@ public class Program
             "1..*" => ArgumentArity.OneOrMore,
             _ => ArgumentArity.ZeroOrOne,
         };
+    }
+
+    public static int RunGenerate(ConfigGenerate config, CancellationToken cancellationToken)
+    {
+        try
+        {
+            // get the language to use
+            ILanguage language = LanguageManager.GetLanguage(config.Language);
+        }
+        catch (Exception ex)
+        {
+            if (ex.InnerException != null)
+            {
+                Console.WriteLine($"RunGenerate <<< caught: {ex.Message}::{ex.InnerException.Message}");
+            }
+            else
+            {
+                Console.WriteLine($"RunGenerate <<< caught: {ex.Message}");
+            }
+
+            return -1;
+        }
     }
 
     /// <summary>web UI.</summary>

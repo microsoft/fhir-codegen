@@ -37,7 +37,9 @@ public static class CommonDefinitions
     public const string ExtUrlBindingName = "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName";
     public const string ExtUrlIsCommonBinding = "http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding";
 
-    public const string ExtUrlFieldOrder = "http://ginoc.io/fhir/StructureDefinition/field-order";
+    public const string ExtUrlEdFieldOrder = "http://ginoc.io/fhir/StructureDefinition/elementdefinition-fieldOrder";
+    public const string ExtUrlSpXPath = "http://hl7.org/fhir/1.0/StructureDefinition/extension-SearchParameter.xpath";
+    public const string ExtUrlSpXPathUsage = "http://hl7.org/fhir/1.0/StructureDefinition/extension-SearchParameter.xpathUsage";
 
     public const string ExtUrlEdProfileElement = "http://hl7.org/fhir/StructureDefinition/elementdefinition-profile-element";
 

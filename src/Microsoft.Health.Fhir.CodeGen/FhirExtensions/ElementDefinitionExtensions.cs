@@ -18,7 +18,7 @@ namespace Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 public static class ElementDefinitionExtensions
 {
     /// <summary>Gets the field order.</summary>
-    public static int cgFieldOrder(this ElementDefinition ed) => ed.GetExtensionValue<Hl7.Fhir.Model.Integer>(CommonDefinitions.ExtUrlFieldOrder)?.Value ?? -1;
+    public static int cgFieldOrder(this ElementDefinition ed) => ed.GetExtensionValue<Hl7.Fhir.Model.Integer>(CommonDefinitions.ExtUrlEdFieldOrder)?.Value ?? -1;
 
     /// <summary>Gets the full path of the base definition.</summary>
     public static string cgBasePath(this ElementDefinition ed) => ed.Base?.Path ?? string.Empty;
@@ -39,6 +39,23 @@ public static class ElementDefinitionExtensions
         }
 
         return ed.Path.Split('.').Last();
+    }
+
+    /// <summary>Get the URL for a root element or a relative URL for components.</summary>
+    /// <param name="ed">        The ed to act on.</param>
+    /// <param name="sd">        The SD.</param>
+    /// <param name="convention">(Optional) The convention.</param>
+    /// <returns>A string.</returns>
+    public static string cgUrl(this ElementDefinition ed, StructureDefinition sd, NamingConvention convention = NamingConvention.PascalCase)
+    {
+        // check for root element and use the SD url
+        if (!ed.Path.Contains('.'))
+        {
+            return sd.Url;
+        }
+
+        // join the sd name and the element name
+        return sd.Id.ToPascalCase() + "#" + ed.cgName().ToPascalCase();
     }
 
     /// <summary>Gets the types.</summary>
@@ -68,7 +85,7 @@ public static class ElementDefinitionExtensions
     /// <summary>Gets if this element represents an array of values.</summary>
     /// <param name="ed">The ed to act on.</param>
     /// <returns>True if it is an array, false if it is scalar.</returns>
-    public static bool cgIsArray(this ElementDefinition ed) => ed.Max == "*" || (ed.Max != null && int.Parse(ed.Max) > 1);
+    public static bool cgIsArray(this ElementDefinition ed) => !ed.Max.Equals("1", StringComparison.Ordinal);
 
     /// <summary>An ElementDefinition extension method that cg is inherited.</summary>
     /// <param name="ed">The ed to act on.</param>
@@ -432,6 +449,31 @@ public static class ElementDefinitionExtensions
             case NamingConvention.None:
             default:
                 throw new ArgumentException($"Invalid Naming Convention: {convention}");
+        }
+    }
+
+    /// <summary>Enumerates cg extract base types in this collection.</summary>
+    /// <param name="elements">The elements to act on.</param>
+    /// <returns>
+    /// An enumerator that allows foreach to be used to process cg extract base types in this
+    /// collection.
+    /// </returns>
+    public static IEnumerable<string> cgExtractBaseTypes(this IEnumerable<ElementDefinition> elements)
+    {
+        HashSet<string> seen = new();
+
+        foreach (ElementDefinition ed in elements)
+        {
+            string bt = ed.Path.Split('.').First();
+
+            if (seen.Contains(bt))
+            {
+                continue;
+            }
+
+            seen.Add(bt);
+
+            yield return bt;
         }
     }
 }

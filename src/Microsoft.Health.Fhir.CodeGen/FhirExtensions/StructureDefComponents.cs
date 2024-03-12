@@ -11,6 +11,19 @@ namespace Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 
 public static class StructureDefComponents
 {
+    /// <summary>Get a ComponentDefinition for a StructureDefinition</summary>
+    /// <param name="sd">The StructureDefinition.</param>
+    /// <returns>A ComponentDefinition.</returns>
+    public static ComponentDefinition cgComponent(this StructureDefinition sd)
+    {
+        return new()
+        {
+            Structure = sd,
+            Element = sd.cgRootElement() ?? sd.Snapshot?.Element.FirstOrDefault() ?? sd.Differential.Element.First(),
+            IsRootOfStructure = true,
+        };
+    }
+
     /// <summary>Generates the component definitions for a StructureDefinition.</summary>
     /// <param name="sd">              The StructureDefinition.</param>
     /// <param name="dc">              The DefinitionCollection.</param>

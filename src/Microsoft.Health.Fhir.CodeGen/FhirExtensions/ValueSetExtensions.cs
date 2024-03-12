@@ -4,6 +4,7 @@
 // </copyright>
 
 using Hl7.Fhir.Model;
+using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGen.Utils;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 
@@ -110,4 +111,54 @@ public static class ValueSetExtensions
     /// <returns>An enumerable of string representing the referenced code systems.</returns>
     public static IEnumerable<string> cgReferencedCodeSystems(this ValueSet vs) =>
         vs.Expansion?.Contains?.Select(c => c.System).Distinct() ?? vs.Compose?.Include?.Select(i => i.System).Distinct() ?? Enumerable.Empty<string>();
+
+
+    /// <summary>
+    /// Gets the flat list of FhirConcepts from the ValueSet.
+    /// </summary>
+    /// <param name="vs">The ValueSet to act on.</param>
+    /// <returns>An enumerable of FhirConcept representing the flat list of concepts.</returns>
+    public static IEnumerable<FhirConcept> cgGetFlatConcepts(this ValueSet vs)
+    {
+        if (!(vs.Expansion?.Contains.Any() ?? false))
+        {
+            yield break;
+        }
+
+        foreach (FhirConcept fc in RecurseContains(vs.Expansion.Contains))
+        {
+            yield return fc;
+        }
+
+        yield break;
+
+        /// <summary>
+        /// Recursively gets the FhirConcepts from the ContainsComponent.
+        /// </summary>
+        /// <param name="cc">The ContainsComponent to act on.</param>
+        /// <returns>An enumerable of FhirConcept representing the concepts.</returns>
+        IEnumerable<FhirConcept> RecurseContains(IEnumerable<ValueSet.ContainsComponent> cc)
+        {
+            foreach (ValueSet.ContainsComponent c in cc)
+            {
+                yield return new FhirConcept
+                {
+                    System = c.System,
+                    Code = c.Code,
+                    Display = c.Display,
+                    IsAbstract = c.Abstract,
+                    IsInactive = c.Inactive,
+                    Properties = c.Property.Select(p => new FhirConcept.ConceptProperty { Code = p.Code, Value = p.Value.ToString() ?? string.Empty }).ToArray(),
+                };
+
+                if (c.Contains.Any())
+                {
+                    foreach (FhirConcept fc in RecurseContains(c.Contains))
+                    {
+                        yield return fc;
+                    }
+                }
+            }
+        }
+    }
 }

@@ -18,5 +18,8 @@ public class LangOpenApi : ILanguage<OpenApiOptions>
     /// <summary>Gets the FHIR primitive type map.</summary>
     public Dictionary<string, string> FhirPrimitiveTypeMap => _primitiveTypeMap;
 
+    /// <summary>Gets a value indicating whether this language is idempotent.</summary>
+    public bool IsIdempotent => true;
+
     public void Export(OpenApiOptions config, DefinitionCollection definitions) { }
 }

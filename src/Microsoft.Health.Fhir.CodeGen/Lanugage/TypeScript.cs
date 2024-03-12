@@ -197,10 +197,12 @@ public class TypeScript : ILanguage<TypeScript.TypeScriptOptions>
     /// <value>The name of the language.</value>
     public string Name => "TypeScript";
 
-
     /// <summary>Gets the FHIR primitive type map.</summary>
     /// <value>The FHIR primitive type map.</value>
     public Dictionary<string, string> FhirPrimitiveTypeMap => _primitiveTypeMap;
+
+    /// <summary>Gets a value indicating whether this language is idempotent.</summary>
+    public bool IsIdempotent => true;
 
     /// <summary>Gets the reserved words.</summary>
     /// <value>The reserved words.</value>

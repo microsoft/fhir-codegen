@@ -30,6 +30,9 @@ public partial class DefinitionCollection
     /// <summary>Gets or sets the FHIR version.</summary>
     public FHIRVersion? FhirVersion { get; set; } = null;
 
+    /// <summary>Gets or sets the FHIR version literal.</summary>
+    public string FhirVersionLiteral { get; set; } = string.Empty;
+
     public FhirReleases.FhirSequenceCodes FhirSequence { get; set; } = FhirReleases.FhirSequenceCodes.Unknown;
 
     /// <summary>Gets or sets the identifier of the main package.</summary>
@@ -114,6 +117,95 @@ public partial class DefinitionCollection
         _parentElementsAndType.TryGetValue(path, out string? type) &&
         (type.Equals("BackboneElement", StringComparison.Ordinal) || type.Equals("Element", StringComparison.Ordinal));
 
+    /// <summary>Attempts to insert element.</summary>
+    /// <param name="sd">             The structure definition.</param>
+    /// <param name="ed">             The <see cref="ElementDefinition"/> to add the missing ID to.</param>
+    /// <param name="insertAfterPath">(Optional) Full pathname of the insert after file.</param>
+    /// <param name="insertAtOrder">  (Optional) The insert at order.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    internal bool TryInsertElement(
+        StructureDefinition sd,
+        ElementDefinition ed,
+        int insertAtOrder,
+        bool increaseSubsequentOrders)
+    {
+        // check for needing to add or update the field order annotation
+        int? existingOrder = ed.GetIntegerExtension(CommonDefinitions.ExtUrlEdFieldOrder);
+        if (existingOrder.HasValue)
+        {
+            if (existingOrder.Value != insertAtOrder)
+            {
+                ed.SetIntegerExtension(CommonDefinitions.ExtUrlEdFieldOrder, insertAtOrder);
+            }
+        }
+        else
+        {
+            ed.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(insertAtOrder));
+        }
+
+        // add to lookup dict
+        _elementSdLookup.Add(ed, sd);
+
+        // check for a value set binding
+        CheckElementBindings(sd.cgArtifactClass(), sd, ed);
+
+        // check for adding to snapshot
+        if (sd.Snapshot?.Element.Any() ?? false)
+        {
+            // find the element to insert after
+            int matchIndex = sd.Snapshot.Element.FindIndex(e => e.cgFieldOrder() == insertAtOrder);
+
+            if (matchIndex == -1)
+            {
+                // add to the end
+                sd.Snapshot.Element.Add(ed);
+            }
+            else
+            {
+                if (increaseSubsequentOrders)
+                {
+                    // increase the order of all subsequent elements
+                    for (int i = matchIndex; i < sd.Snapshot.Element.Count; i++)
+                    {
+                        int currentOrder = sd.Snapshot.Element[i].cgFieldOrder();
+                        sd.Snapshot.Element[i].SetIntegerExtension(CommonDefinitions.ExtUrlEdFieldOrder, currentOrder + 1);
+                    }
+                }
+
+                sd.Snapshot.Element.Insert(matchIndex, ed);
+            }
+        }
+
+        // check for adding to differential
+        if (sd.Differential?.Element.Any() ?? false)
+        {
+            // find the element to insert after
+            int matchIndex = sd.Differential.Element.FindIndex(e => e.cgFieldOrder() == insertAtOrder);
+
+            if (matchIndex == -1)
+            {
+                // add to the end
+                sd.Differential.Element.Add(ed);
+            }
+            else
+            {
+                if (increaseSubsequentOrders)
+                {
+                    // increase the order of all subsequent elements
+                    for (int i = matchIndex; i < sd.Differential.Element.Count; i++)
+                    {
+                        int currentOrder = sd.Differential.Element[i].cgFieldOrder();
+                        sd.Differential.Element[i].SetIntegerExtension(CommonDefinitions.ExtUrlEdFieldOrder, currentOrder + 1);
+                    }
+                }
+
+                sd.Differential.Element.Insert(matchIndex, ed);
+            }
+        }
+
+        return true;
+    }
+
     /// <summary>Processes elements in a structure definition.</summary>
     /// <remarks>Addes field orders, indexes paths that contain child elements, etc.</remarks>
     /// <param name="artifactClass">The artifact class.</param>
@@ -144,7 +236,7 @@ public partial class DefinitionCollection
 
             int fo = allFieldOrders.Count();
             allFieldOrders.Add(ed.ElementId, fo);
-            ed.AddExtension(CommonDefinitions.ExtUrlFieldOrder, new Integer(fo));
+            ed.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(fo));
 
             // add to lookup dict
             _elementSdLookup.Add(ed, sd);
@@ -277,7 +369,7 @@ public partial class DefinitionCollection
                 }
             }
 
-            ed.AddExtension(CommonDefinitions.ExtUrlFieldOrder, new Integer(fo));
+            ed.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(fo));
         }
 
         // DSTU2 and STU3 do not always declare types on root elements
@@ -418,6 +510,16 @@ public partial class DefinitionCollection
         return cs.Concept?.FirstOrDefault(c => c.Code.Equals(code, StringComparison.Ordinal))?.Definition ?? string.Empty;
     }
 
+    /// <summary>Attempts to get value set.</summary>
+    /// <param name="unversionedUrl">URL of the unversioned.</param>
+    /// <param name="version">       The version.</param>
+    /// <param name="vs">            [out] The vs.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    internal bool TryGetValueSet(string unversionedUrl, string version, [NotNullWhen(true)] out ValueSet? vs)
+    {
+        return _valueSetsByVersionedUrl.TryGetValue(unversionedUrl + "|" + version, out vs);
+    }
+
     /// <summary>
     /// Returns the versioned URL for a given value set URL.
     /// </summary>
@@ -437,6 +539,9 @@ public partial class DefinitionCollection
         return vsUrl + "|" + vsVersions!.Max();
     }
 
+    /// <summary>Unversioned URL for vs.</summary>
+    /// <param name="vsUrl">The URL of the value set.</param>
+    /// <returns>A string.</returns>
     internal string UnversionedUrlForVs(string vsUrl)
     {
         int lastPipe = vsUrl.LastIndexOf('|');
@@ -586,7 +691,7 @@ public partial class DefinitionCollection
                 inFieldOrder.Add(pc.Name, fo);
             }
 
-            pc.AddExtension(CommonDefinitions.ExtUrlFieldOrder, new Integer(fo));
+            pc.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(fo));
         }
     }
 
@@ -663,6 +768,9 @@ public partial class DefinitionCollection
         _codeSystemsByUrl[codeSystem.Url] = codeSystem;
         TrackResource(codeSystem);
     }
+
+    /// <summary>Gets the value set versions.</summary>
+    public IReadOnlyDictionary<string, string[]> ValueSetVersions => _valueSetVersions;
 
     /// <summary>Gets URL of the value sets by.</summary>
     public IReadOnlyDictionary<string, ValueSet> ValueSetsByVersionedUrl => _valueSetsByVersionedUrl;

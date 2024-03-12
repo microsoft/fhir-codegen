@@ -11,7 +11,7 @@ namespace Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 public static class OpDefParameterExtensions
 {
     /// <summary>Gets the field order.</summary>
-    public static int cgFieldOrder(this OperationDefinition.ParameterComponent pc) => pc.GetExtensionValue<Hl7.Fhir.Model.Integer>(CommonDefinitions.ExtUrlFieldOrder)?.Value ?? -1;
+    public static int cgFieldOrder(this OperationDefinition.ParameterComponent pc) => pc.GetExtensionValue<Hl7.Fhir.Model.Integer>(CommonDefinitions.ExtUrlEdFieldOrder)?.Value ?? -1;
 
     public static string cgCardinality(this OperationDefinition.ParameterComponent pc) => $"{pc.Min ?? 0}..{pc.Max ?? "*"}";
 

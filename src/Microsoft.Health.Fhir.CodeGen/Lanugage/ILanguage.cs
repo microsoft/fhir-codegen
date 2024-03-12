@@ -17,6 +17,9 @@ public interface ILanguage
 
     /// <summary>Gets the FHIR primitive type map.</summary>
     Dictionary<string, string> FhirPrimitiveTypeMap { get; }
+
+    /// <summary>Gets a value indicating whether this language is idempotent.</summary>
+    bool IsIdempotent { get; }
 }
 
 /// <summary>Interface for code generation languages.</summary>

@@ -3,8 +3,6 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System.CommandLine;
-using System.Linq;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Utility;
 using Hl7.FhirPath.Sprache;
@@ -13,8 +11,6 @@ using Microsoft.Health.Fhir.CodeGen.Extensions;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using static Hl7.Fhir.Model.CodeSystem;
 using static Microsoft.Health.Fhir.CodeGen.Lanugage.Info.LangInfo;
 using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 
@@ -75,6 +71,8 @@ public class LangInfo : ILanguage<InfoOptions>
 
     /// <summary>Gets the FHIR primitive type map.</summary>
     public Dictionary<string, string> FhirPrimitiveTypeMap => _primitiveTypeMap;
+
+    public bool IsIdempotent => true;
 
     /// <summary>The currently in-use text writer.</summary>
     private ExportStreamWriter _writer = null!;

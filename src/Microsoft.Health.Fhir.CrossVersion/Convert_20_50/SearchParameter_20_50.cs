@@ -5,6 +5,7 @@
 
 using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Model;
+using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 
 namespace Microsoft.Health.Fhir.CrossVersion.Convert_20_50;
 
@@ -148,12 +149,14 @@ public class SearchParameter_20_50 : ICrossVersionProcessor<SearchParameter>, IC
 				break;
 
 			case "xpath":
-				// element SearchParameter.xpath has been removed in the target spec
-				break;
+                // element SearchParameter.xpath has been removed in the target spec
+                current.AddExtension(CommonDefinitions.ExtUrlSpXPath, new FhirString(node.Text));
+                break;
 
 			case "xpathUsage":
-				// element SearchParameter.xpathUsage has been removed in the target spec
-				break;
+                // element SearchParameter.xpathUsage has been removed in the target spec
+                current.AddExtension(CommonDefinitions.ExtUrlSpXPathUsage, new FhirString(node.Text));
+                break;
 
 			case "target":
 				current.TargetElement.Add(new Code<VersionIndependentResourceTypesAll>(Hl7.Fhir.Utility.EnumUtility.ParseLiteral<VersionIndependentResourceTypesAll>(node.Text)));
