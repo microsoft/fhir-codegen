@@ -1,40 +1,39 @@
 {
-  "$schema": "http://json.schemastore.org/launchsettings.json",
-    "iisSettings": {
-      "windowsAuthentication": false,
-      "anonymousAuthentication": true,
-      "iisExpress": {
-        "applicationUrl": "http://localhost:45023",
-        "sslPort": 0
-      }
+  "profiles": {
+    "default": {
+      "commandName": "Project",
+      "commandLineArgs": "generate openapi",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
     },
-    "profiles": {
-        "default": {
-            "commandName": "Project",
-            "commandLineArgs": "generate openapi --version v3 --package a --package b",
-            //"commandLineArgs": "generate --help",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "Firely 5.x Base": {
-            "commandName": "Project",
-            "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\temp\\fhir-net-sdk\\src\\Hl7.Fhir.Base\\Model -p hl7.fhir.r5.core#5.0.0 -p hl7.fhir.r5.expansions#5.0.0 -p hl7.fhir.uv.extensions#1.0.0 --subset base --official-expansions-only true",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "http": {
-            "commandName": "Project",
-            "dotnetRunMessages": true,
-            "launchBrowser": true,
-            "applicationUrl": "http://localhost:5074",
-            "environmentVariables": {
-                "ASPNETCORE_ENVIRONMENT": "Development"
-            }
-        },
-        "IIS Express": {
-            "commandName": "IISExpress",
-            "launchBrowser": true,
-            "environmentVariables": {
-                "ASPNETCORE_ENVIRONMENT": "Development"
-            }
-        }
+    "Firely 5.x Base": {
+      "commandName": "Project",
+      "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\temp\\fhir-net-sdk\\src\\Hl7.Fhir.Base\\Model -p hl7.fhir.r5.core#5.0.0 -p hl7.fhir.r5.expansions#5.0.0 -p hl7.fhir.uv.extensions#1.0.0 --subset base",
+      "workingDirectory": "$(MSBuildProjectDirectory)"
+    },
+    "http": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "http://localhost:5074"
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  },
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": false,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:45023",
+      "sslPort": 0
     }
   }
+}

@@ -4,6 +4,7 @@
 // </copyright>
 
 
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
 namespace Microsoft.Health.Fhir.CodeGen.Lanugage;
@@ -19,6 +20,11 @@ public static class LanguageManager
         LoadLanguages();
     }
 
+    /// <summary>Query if 'languageName' has language.</summary>
+    /// <param name="languageName">Name of the language.</param>
+    /// <returns>True if language, false if not.</returns>
+    public static bool HasLanguage(string languageName) => _languagesByName.ContainsKey(languageName);
+
     /// <summary>Gets the languages in this collection.</summary>
     /// <returns>
     /// An enumerator that allows foreach to be used to process the languages in this collection.
@@ -26,6 +32,14 @@ public static class LanguageManager
     public static IEnumerable<ILanguage> GetLanguages()
     {
         return _languagesByName.Values;
+    }
+
+    /// <summary>Gets a language.</summary>
+    /// <param name="languageName">Name of the language.</param>
+    /// <returns>The language.</returns>
+    public static bool TryGetLanguage(string languageName, [NotNullWhen(true)] out ILanguage? language)
+    {
+        return _languagesByName.TryGetValue(languageName, out language);
     }
 
     /// <summary>Configuration type for language.</summary>

@@ -8,7 +8,6 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using fhir_codegen.Components;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
-using Hl7.Fhir.Model;
 using Microsoft.AspNetCore.Hosting.StaticWebAssets;
 using Microsoft.FluentUI.AspNetCore.Components;
 using Microsoft.Health.Fhir.CodeGen.Lanugage;
@@ -22,14 +21,22 @@ using Microsoft.Extensions.Primitives;
 using System.CommandLine.Parsing;
 using System.ComponentModel;
 using System.CommandLine.Help;
+using System.CommandLine.Invocation;
+using static Hl7.Fhir.Model.Group;
+using System.Collections;
 
 namespace fhir_codegen;
 
 /// <summary>A program.</summary>
 public class Program
 {
-    /// <summary>Language exporters by name.</summary>
-    private static Dictionary<string, ILanguage> _languagesByName = new(StringComparer.OrdinalIgnoreCase);
+    private static List<SCL.Option> _optsWithEnums = new();
+
+    private static HashSet<string> _packageAliases = new()
+    {
+        "--package", "--load-package", "-p"
+    };
+
 
     /// <summary>Main entry-point for this application.</summary>
     /// <param name="args">An array of command-line argument strings.</param>
@@ -45,91 +52,72 @@ public class Program
             .AddEnvironmentVariables()
             .Build();
 
-        // build our command parser
-        SCL.Parsing.Parser parser = BuildCommandParser(envConfig);
+        // in order to process help correctly we have to build a parser independent of the command
+        SCL.Parsing.Parser parser = BuildParser(envConfig);
 
-        // invoke the command specified
-        return await parser.InvokeAsync(args);
+        // attempt a parse
+        SCL.Parsing.ParseResult pr = parser.Parse(args);
+
+        // check for invalid arguments, help, a generate command with no subcommand, or a generate with no packages to trigger the nicely formatted help
+        if (pr.UnmatchedTokens.Any() ||
+            !pr.Tokens.Any() ||
+            (!pr.CommandResult.Command.Parents?.Any() ?? false) ||
+            pr.Tokens.Any(t => t.Value.Equals("-?", StringComparison.Ordinal)) ||
+            pr.Tokens.Any(t => t.Value.Equals("-h", StringComparison.Ordinal)) ||
+            pr.Tokens.Any(t => t.Value.Equals("--help", StringComparison.Ordinal)) ||
+            pr.Tokens.Any(t => t.Value.Equals("help", StringComparison.Ordinal)) ||
+            pr.CommandResult.Command.Name.Equals("generate", StringComparison.Ordinal))
+
+        {
+            return await parser.InvokeAsync(args);
+        }
+
+        // check for a generate command with no packages
+        if ((pr.CommandResult.Command.Parents?.FirstOrDefault()?.Name.Equals("generate", StringComparison.Ordinal) ?? false) &&
+            (!pr.Tokens.Any(t => _packageAliases.Contains(t.Value))))
+        {
+            Console.WriteLine("Error: generate command requires at least one package to process.");
+
+            return await parser.InvokeAsync(args.Append("--help").ToArray());
+        }
+
+        // any language subcommand is a generate command
+        string command = pr.CommandResult.Command.Name;
+        if (LanguageManager.HasLanguage(command))
+        {
+            command = "generate";
+        }
+
+        switch (command)
+        {
+            case "generate":
+                return await DoGenerate(pr);
+
+            //case "interactive":
+            //    return await DoInteractive(pr);
+
+            //case "web":
+            //    return await DoWeb(pr);
+
+            default:
+                return await parser.InvokeAsync(args);
+        }
     }
 
-    /// <summary>Builds command parser.</summary>
-    /// <param name="envConfig">The environment configuration.</param>
-    /// <returns>A SCL.Parsing.Parser.</returns>
-    private static SCL.Parsing.Parser BuildCommandParser(IConfiguration envConfig)
+    private static SCL.Parsing.Parser BuildParser(IConfiguration envConfig)
     {
-        List<SCL.Option> optsWithEnums = new();
+        SCL.RootCommand command = BuildCommand(envConfig);
 
-        // create our root command
-        SCL.RootCommand rootCommand = new("A utility for processing FHIR packages into other formats/languages.");
-        foreach (SCL.Option option in BuildCliOptions(typeof(ConfigRoot), envConfig: envConfig))
-        {
-            // note that 'global' here is just recursive DOWNWARD
-            rootCommand.AddGlobalOption(option);
-            TrackIfEnum(option);
-        }
-
-        // create our generate command
-        SCL.Command generateCommand = new("generate", "Generate output from a FHIR package and exit.");
-        foreach (SCL.Option option in BuildCliOptions(typeof(ConfigGenerate), typeof(ConfigRoot), envConfig))
-        {
-            // note that 'global' here is just recursive DOWNWARD
-            generateCommand.AddGlobalOption(option);
-            TrackIfEnum(option);
-        }
-
-        // iterate through languages and add them as subcommands
-        foreach (ILanguage language in LanguageManager.GetLanguages())
-        {
-            SCL.Command languageCommand = new(language.Name, $"Generate {language.Name}");
-            if (language.Name.Any(char.IsUpper))
+        SCL.Parsing.Parser parser = new CommandLineBuilder(command)
+            .UseExceptionHandler((ex, ctx) =>
             {
-                languageCommand.AddAlias(language.Name.ToLowerInvariant());
-            }
-
-            foreach (SCL.Option option in BuildCliOptions(LanguageManager.ConfigTypeForLanguage(language.Name), envConfig: envConfig))
-            {
-                languageCommand.AddOption(option);
-                TrackIfEnum(option);
-            }
-
-            // TODO(ginoc): Decide if this should have a handler, or just promote to generate command
-            generateCommand.AddCommand(languageCommand);
-        }
-
-        generateCommand.Handler = CommandHandler.Create<ConfigGenerate, CancellationToken>(RunGenerate);
-
-        // TODO(ginoc): Set the command handler
-        rootCommand.AddCommand(generateCommand);
-
-        // create our interactive command
-        SCL.Command interactiveCommand = new("interactive", "Launch into an interactive console.");
-        foreach (SCL.Option option in BuildCliOptions(typeof(ConfigInteractive), typeof(ConfigRoot), envConfig))
-        {
-            // note that 'global' here is just recursive DOWNWARD
-            interactiveCommand.AddGlobalOption(option);
-            TrackIfEnum(option);
-        }
-
-        // TODO(ginoc): Set the command handler
-        rootCommand.AddCommand(interactiveCommand);
-
-        // create our generate command
-        SCL.Command webCommand = new("web", "Launch into a locally-hosted web UI.");
-        foreach (SCL.Option option in BuildCliOptions(typeof(ConfigFluentUi), typeof(ConfigRoot), envConfig))
-        {
-            // note that 'global' here is just recursive DOWNWARD
-            webCommand.AddGlobalOption(option);
-            TrackIfEnum(option);
-        }
-
-        // TODO(ginoc): Set the command handler
-        rootCommand.AddCommand(webCommand);
-
-        SCL.Parsing.Parser parser = new CommandLineBuilder(rootCommand)
+                Console.WriteLine($"Error: {ex.Message}");
+                ctx.ExitCode = 1;
+            })
             .UseDefaults()
             .UseHelp(ctx =>
             {
-                foreach (SCL.Option option in optsWithEnums)
+                foreach (SCL.Option option in _optsWithEnums)
                 {
                     StringBuilder sb = new();
                     if (option.Aliases.Any())
@@ -173,12 +161,83 @@ public class Program
             .Build();
 
         return parser;
+    }
+
+    /// <summary>Builds command parser.</summary>
+    /// <param name="envConfig">  The environment configuration.</param>
+    /// <param name="addHandlers">True to add handlers.</param>
+    /// <returns>A SCL.Parsing.Parser.</returns>
+    private static SCL.RootCommand BuildCommand(IConfiguration envConfig)
+    {
+        // create our root command
+        SCL.RootCommand rootCommand = new("A utility for processing FHIR packages into other formats/languages.");
+        foreach (SCL.Option option in BuildCliOptions(typeof(ConfigRoot), envConfig: envConfig))
+        {
+            // note that 'global' here is just recursive DOWNWARD
+            rootCommand.AddGlobalOption(option);
+            TrackIfEnum(option);
+        }
+
+        // create our generate command
+        SCL.Command generateCommand = new("generate", "Generate output from a FHIR package and exit.");
+        foreach (SCL.Option option in BuildCliOptions(typeof(ConfigGenerate), typeof(ConfigRoot), envConfig))
+        {
+            // note that 'global' here is just recursive DOWNWARD
+            generateCommand.AddGlobalOption(option);
+            TrackIfEnum(option);
+        }
+
+        // iterate through languages and add them as subcommands
+        foreach (ILanguage language in LanguageManager.GetLanguages())
+        {
+            SCL.Command languageCommand = new(language.Name, $"Generate {language.Name}");
+            if (language.Name.Any(char.IsUpper))
+            {
+                languageCommand.AddAlias(language.Name.ToLowerInvariant());
+            }
+
+            foreach (SCL.Option option in BuildCliOptions(LanguageManager.ConfigTypeForLanguage(language.Name), envConfig: envConfig, languageName: language.Name))
+            {
+                languageCommand.AddOption(option);
+                TrackIfEnum(option);
+            }
+
+            generateCommand.AddCommand(languageCommand);
+        }
+
+        rootCommand.AddCommand(generateCommand);
+
+        // create our interactive command
+        SCL.Command interactiveCommand = new("interactive", "Launch into an interactive console.");
+        foreach (SCL.Option option in BuildCliOptions(typeof(ConfigInteractive), typeof(ConfigRoot), envConfig))
+        {
+            // note that 'global' here is just recursive DOWNWARD
+            interactiveCommand.AddGlobalOption(option);
+            TrackIfEnum(option);
+        }
+
+        // TODO(ginoc): Set the command handler
+        rootCommand.AddCommand(interactiveCommand);
+
+        // create our generate command
+        SCL.Command webCommand = new("web", "Launch into a locally-hosted web UI.");
+        foreach (SCL.Option option in BuildCliOptions(typeof(ConfigFluentUi), typeof(ConfigRoot), envConfig))
+        {
+            // note that 'global' here is just recursive DOWNWARD
+            webCommand.AddGlobalOption(option);
+            TrackIfEnum(option);
+        }
+
+        // TODO(ginoc): Set the command handler
+        rootCommand.AddCommand(webCommand);
+
+        return rootCommand;
 
         void TrackIfEnum(SCL.Option option)
         {
             if (option.ValueType.IsEnum)
             {
-                optsWithEnums.Add(option);
+                _optsWithEnums.Add(option);
                 return;
             }
 
@@ -186,7 +245,7 @@ public class Program
             {
                 if (option.ValueType.GenericTypeArguments.First().IsEnum)
                 {
-                    optsWithEnums.Add(option);
+                    _optsWithEnums.Add(option);
                 }
 
                 return;
@@ -196,12 +255,130 @@ public class Program
             {
                 if (option.ValueType.GetElementType()!.IsEnum)
                 {
-                    optsWithEnums.Add(option);
+                    _optsWithEnums.Add(option);
                 }
 
                 return;
             }
         }
+    }
+
+    //private static SCL.RootCommand BuildCommand(IConfiguration envConfig)
+    //{
+    //    // create our root command
+    //    SCL.RootCommand rootCommand = new("A utility for processing FHIR packages into other formats/languages.");
+    //    //foreach (SCL.Option option in BuildCliOptions(typeof(ConfigRoot), envConfig: envConfig))
+    //    //{
+    //    //    rootCommand.AddOption(option);
+    //    //    TrackIfEnum(option);
+    //    //}
+
+    //    // create our generate command
+    //    SCL.Command generateCommand = new("generate", "Generate output from a FHIR package and exit.");
+    //    //foreach (SCL.Option option in BuildCliOptions(typeof(ConfigGenerate), envConfig: envConfig))
+    //    //{
+    //    //    generateCommand.AddOption(option);
+    //    //    TrackIfEnum(option);
+    //    //}
+
+    //    // iterate through languages and add them as subcommands
+    //    foreach (ILanguage language in LanguageManager.GetLanguages())
+    //    {
+    //        SCL.Command languageCommand = new(language.Name, $"Generate {language.Name}");
+    //        if (language.Name.Any(char.IsUpper))
+    //        {
+    //            languageCommand.AddAlias(language.Name.ToLowerInvariant());
+    //        }
+
+    //        foreach (SCL.Option option in BuildCliOptions(LanguageManager.ConfigTypeForLanguage(language.Name), envConfig: envConfig))
+    //        {
+    //            languageCommand.AddOption(option);
+    //            TrackIfEnum(option);
+    //        }
+
+    //        foreach (SCL.Option option in BuildCliOptions(typeof(ConfigGenerate), envConfig: envConfig))
+    //        {
+    //            languageCommand.AddOption(option);
+    //            TrackIfEnum(option);
+    //        }
+
+    //        generateCommand.AddCommand(languageCommand);
+    //    }
+
+    //    rootCommand.AddCommand(generateCommand);
+
+    //    // create our interactive command
+    //    SCL.Command interactiveCommand = new("interactive", "Launch into an interactive console.");
+    //    foreach (SCL.Option option in BuildCliOptions(typeof(ConfigInteractive), envConfig: envConfig))
+    //    {
+    //        // note that 'global' here is just recursive DOWNWARD
+    //        interactiveCommand.AddOption(option);
+    //        TrackIfEnum(option);
+    //    }
+
+    //    // TODO(ginoc): Set the command handler
+    //    rootCommand.AddCommand(interactiveCommand);
+
+    //    // create our generate command
+    //    SCL.Command webCommand = new("web", "Launch into a locally-hosted web UI.");
+    //    foreach (SCL.Option option in BuildCliOptions(typeof(ConfigFluentUi), envConfig: envConfig))
+    //    {
+    //        // note that 'global' here is just recursive DOWNWARD
+    //        webCommand.AddOption(option);
+    //        TrackIfEnum(option);
+    //    }
+
+    //    // TODO(ginoc): Set the command handler
+    //    rootCommand.AddCommand(webCommand);
+
+    //    return rootCommand;
+
+    //    void TrackIfEnum(SCL.Option option)
+    //    {
+    //        if (option.ValueType.IsEnum)
+    //        {
+    //            _optsWithEnums.Add(option);
+    //            return;
+    //        }
+
+    //        if (option.ValueType.IsGenericType)
+    //        {
+    //            if (option.ValueType.GenericTypeArguments.First().IsEnum)
+    //            {
+    //                _optsWithEnums.Add(option);
+    //            }
+
+    //            return;
+    //        }
+
+    //        if (option.ValueType.IsArray)
+    //        {
+    //            if (option.ValueType.GetElementType()!.IsEnum)
+    //            {
+    //                _optsWithEnums.Add(option);
+    //            }
+
+    //            return;
+    //        }
+    //    }
+    //}
+
+    private static Dictionary<string, LanguageOptionInfo> _configMapsByLang = new();
+
+    private record class LanguageOptionInfo
+    {
+        public required string Name { get; set; }
+
+        public required Type ConfigType { get; set; }
+
+        public List<PropertyOptionTuple> Properties { get; set; } = new();
+    }
+
+    private record class PropertyOptionTuple
+    {
+        public required PropertyInfo ConfigProp { get; set; }
+
+        public required SCL.Option CommandOpt { get; set; }
     }
 
     /// <summary>Enumerates build CLI options in this collection.</summary>
@@ -215,8 +392,30 @@ public class Program
     private static IEnumerable<SCL.Option> BuildCliOptions(
         Type forType,
         Type? exludeFromType = null,
-        IConfiguration? envConfig = null)
+        IConfiguration? envConfig = null,
+        string languageName = "")
     {
+        LanguageOptionInfo? langConfigMap = null;
+
+        if (!string.IsNullOrEmpty(languageName))
+        {
+            if (!_configMapsByLang.TryGetValue(languageName, out langConfigMap))
+            {
+                langConfigMap = new LanguageOptionInfo()
+                {
+                    Name = languageName,
+                    ConfigType = forType,
+                };
+
+                _configMapsByLang.Add(languageName, langConfigMap);
+            }
+            else
+            {
+                // ensure we don' duplicate on multiple calls
+                langConfigMap.Properties.Clear();
+            }
+        }
+
         HashSet<string> inheritedPropNames = new();
 
         if (exludeFromType != null)
@@ -271,6 +470,12 @@ public class Program
 
             // set additional properties
             option.Arity = ArityFromCard(attr.ArgArity);
+
+            if (attr.ArgArity.StartsWith('1'))
+            {
+                option.IsRequired = true;
+            }
+
             //if (attr.ArgArity.EndsWith('*'))
             //{
             //    option.AllowMultipleArgumentsPerToken = true;
@@ -306,6 +511,12 @@ public class Program
                 }
             }
 
+            langConfigMap?.Properties.Add(new PropertyOptionTuple()
+            {
+                ConfigProp = prop,
+                CommandOpt = option,
+            });
+
             // add the option to the collection
             yield return option;
         }
@@ -322,12 +533,90 @@ public class Program
         };
     }
 
-    public static int RunGenerate(ConfigGenerate config, CancellationToken cancellationToken)
+    public static async Task<int> DoGenerate(SCL.Parsing.ParseResult pr)
     {
         try
         {
-            // get the language to use
-            ILanguage language = LanguageManager.GetLanguage(config.Language);
+            string languageName = pr.CommandResult.Command.Name;
+
+            if (!_configMapsByLang.TryGetValue(languageName, out LanguageOptionInfo? langConfigMap))
+            {
+                throw new Exception($"Could not find language config map for {languageName}");
+            }
+
+            if (langConfigMap.ConfigType.IsAbstract)
+            {
+                throw new Exception($"Could not find language config map for {languageName}");
+            }
+
+            // create our configuration object
+            object? langConfig = Activator.CreateInstance(langConfigMap.ConfigType);
+
+            if (langConfig is null)
+            {
+                throw new Exception($"Could not create configuration object for {languageName}");
+            }
+
+            // iterate over the properties and get the values from the parse result
+            foreach (PropertyOptionTuple map in langConfigMap.Properties)
+            {
+                string propName = map.ConfigProp.Name;
+
+                object? configValue = map.ConfigProp.GetValue(langConfig);
+                object? optValue = pr.GetValueForOption(map.CommandOpt);
+
+                if (map.ConfigProp.PropertyType.IsArray &&
+                    (configValue is Array configValueArray) &&
+                    (optValue is IEnumerator enumerator))
+                {
+                    Type valueType = map.ConfigProp.PropertyType.GetElementType()!;
+                    //Type valueType = configValueArray.GetType().GetElementType()!;
+
+                    Type listType = typeof(List<>); // Represents List<T>
+                    Type concreteType = listType.MakeGenericType(valueType); // Create a concrete type (e.g., List<string>)
+
+                    object? tempList = Activator.CreateInstance(concreteType); // Instantiate the list
+
+                    // use the enumerator to add values to the array
+                    while (enumerator.MoveNext())
+                    {
+                        ((IList)tempList!).Add(enumerator.Current);
+
+                        object? value = enumerator.Current;
+                    }
+
+                    Array parsedValues = Array.CreateInstance(valueType, ((IList)tempList!).Count);
+
+                    foreach (object? item in (IList)tempList!)
+                    {
+                        parsedValues.SetValue(item, ((IList)tempList!).IndexOf(item));
+                    }
+
+                    map.ConfigProp.SetValue(langConfig, parsedValues);
+                }
+                else if (map.ConfigProp.PropertyType.IsGenericType)
+                {
+                    Type hashGenType = typeof(HashSet<>);
+
+                    if (map.ConfigProp.PropertyType.GetGenericTypeDefinition() == hashGenType)
+                    {
+                        Type valueType = map.ConfigProp.PropertyType.GetElementType()!;
+
+                        Type concreteType = hashGenType.MakeGenericType(valueType);
+
+                    }
+
+                    Type ieGenericType = typeof(IEnumerable<>);
+
+                }
+                else
+                {
+                    map.ConfigProp.SetValue(langConfig, pr.GetValueForOption(map.CommandOpt));
+                }
+            }
+
+
+            Console.WriteLine("In generate....");
         }
         catch (Exception ex)
         {
@@ -339,9 +628,9 @@ public class Program
             {
                 Console.WriteLine($"RunGenerate <<< caught: {ex.Message}");
             }
-
-            return -1;
         }
+
+        return 10;
     }
 
     /// <summary>web UI.</summary>
