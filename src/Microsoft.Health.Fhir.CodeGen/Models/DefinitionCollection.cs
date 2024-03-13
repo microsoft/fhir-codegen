@@ -214,6 +214,7 @@ public partial class DefinitionCollection
     private void ProcessElements(FhirArtifactClassEnum artifactClass, StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion)
     {
         Dictionary<string, int> allFieldOrders = new();
+        //Dictionary<string, int> fieldOrderPerPath = new();
 
         List<string> idByDepth = new();
 
@@ -222,6 +223,16 @@ public partial class DefinitionCollection
         // process each element in the snapshot
         foreach (ElementDefinition ed in sd.Snapshot?.Element ?? Enumerable.Empty<ElementDefinition>())
         {
+            int lastDot = ed.Path.LastIndexOf('.');
+            string parentPath = lastDot == -1 ? ed.Path : ed.Path.Substring(0, lastDot);
+
+            //if (!fieldOrderPerPath.TryGetValue(parentPath, out int relativeFieldOrder))
+            //{
+            //    relativeFieldOrder = 0;
+            //}
+
+            //fieldOrderPerPath[parentPath] = relativeFieldOrder++;
+
             // DSTU2 did not include element id's on ElementDefinitions, so we need to construct them
             if (string.IsNullOrEmpty(ed.ElementId))
             {
@@ -237,15 +248,13 @@ public partial class DefinitionCollection
             int fo = allFieldOrders.Count();
             allFieldOrders.Add(ed.ElementId, fo);
             ed.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(fo));
+            //ed.AddExtension(CommonDefinitions.ExtUrlEdFieldOrderInComponent, new Integer(relativeFieldOrder));
 
             // add to lookup dict
             _elementSdLookup.Add(ed, sd);
 
-            // check for being a child element to promote a parent to backbone
-            int lastDot = ed.Path.LastIndexOf('.');
             if (lastDot != -1)
             {
-                string parentPath = ed.Path.Substring(0, lastDot);
                 if (parentPath.Contains('.') &&
                     !_parentElementsAndType.ContainsKey(parentPath))
                 {
@@ -308,9 +317,27 @@ public partial class DefinitionCollection
                 }
             }
 
+            //int relativeFieldOrder = 0;
             // use the field order from the snapshot if it exists
-            if (!allFieldOrders.TryGetValue(ed.ElementId, out int fo))
+            if (allFieldOrders.TryGetValue(ed.ElementId, out int fo))
             {
+                //int lastDot = ed.Path.LastIndexOf('.');
+                //string parentPath = lastDot == -1 ? ed.Path : ed.Path.Substring(0, lastDot);
+
+                //relativeFieldOrder = fieldOrderPerPath[parentPath];
+            }
+            else
+            {
+                int lastDot = ed.Path.LastIndexOf('.');
+                string parentPath = lastDot == -1 ? ed.Path : ed.Path.Substring(0, lastDot);
+
+                //if (!fieldOrderPerPath.TryGetValue(parentPath, out relativeFieldOrder))
+                //{
+                //    relativeFieldOrder = 0;
+                //}
+
+                //fieldOrderPerPath[parentPath] = relativeFieldOrder++;
+
                 fo = allFieldOrders.Count();
                 allFieldOrders.Add(ed.ElementId, fo);
 
@@ -318,10 +345,8 @@ public partial class DefinitionCollection
                 _elementSdLookup.Add(ed, sd);
 
                 // check for being a child element to promote a parent to backbone
-                int lastDot = ed.Path.LastIndexOf('.');
                 if (lastDot != -1)
                 {
-                    string parentPath = ed.Path.Substring(0, lastDot);
                     if (parentPath.Contains('.') &&
                         !_parentElementsAndType.ContainsKey(parentPath))
                     {
@@ -370,6 +395,7 @@ public partial class DefinitionCollection
             }
 
             ed.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(fo));
+            //ed.AddExtension(CommonDefinitions.ExtUrlEdFieldOrderInComponent, new Integer(relativeFieldOrder));
         }
 
         // DSTU2 and STU3 do not always declare types on root elements
@@ -398,6 +424,14 @@ public partial class DefinitionCollection
                     re.Max = "*";
                 }
             }
+        }
+
+        if (sd.Id == "Bundle")
+        {
+            Console.WriteLine(string.Join('\n', sd.Snapshot!.Element.OrderBy(e => e.cgFieldOrder()).Select(e => e.cgFieldOrder() + " " + e.Path)));
+            //Console.WriteLine("---");
+            //Console.WriteLine(string.Join('\n', sd.Snapshot!.Element.OrderBy(e => e.cgFieldOrder()).Select(e => e.cgFieldOrder() + " " + e.Path)));
+            Console.Write("");
         }
     }
 
@@ -499,15 +533,46 @@ public partial class DefinitionCollection
     /// <param name="system">The URL of the code system.</param>
     /// <param name="code">The code to retrieve the definition for.</param>
     /// <returns>The concept definition for the specified code, or an empty string if not found.</returns>
-    public string ConceptDefinition(string system, string code)
+    public string ConceptDefinition(string system, string code, string defaultValue = "")
     {
         // check to see if we have the code system
         if (!_codeSystemsByUrl.TryGetValue(system, out CodeSystem? cs))
         {
-            return string.Empty;
+            return defaultValue;
         }
 
-        return cs.Concept?.FirstOrDefault(c => c.Code.Equals(code, StringComparison.Ordinal))?.Definition ?? string.Empty;
+        if (cs.Concept is null)
+        {
+            return defaultValue;
+        }
+
+        return searchConceptRecursive(cs.Concept!) ?? defaultValue;
+
+        string? searchConceptRecursive(List<CodeSystem.ConceptDefinitionComponent> defs)
+        {
+            string? val = null;
+
+            foreach (CodeSystem.ConceptDefinitionComponent c in defs)
+            {
+                if (c.Code.Equals(code, StringComparison.Ordinal))
+                {
+                    return c.Definition;
+                }
+
+                if (c.Concept is null)
+                {
+                    continue;
+                }
+
+                val = searchConceptRecursive(c.Concept);
+                if (val is not null)
+                {
+                    return val;
+                }
+            }
+
+            return null;
+        }
     }
 
     /// <summary>Attempts to get value set.</summary>
@@ -976,7 +1041,8 @@ public partial class DefinitionCollection
     /// <returns>A BindingStrength?</returns>
     public BindingStrength? StrongestBinding(IReadOnlyDictionary<string, ElementDefinition[]> bindings)
     {
-        return bindings.SelectMany(kvp => kvp.Value.Select(ed => ed.Binding.Strength)).OrderBy(s => s, BindingStrengthComparer.Instance).FirstOrDefault();
+        // we want descending order so that strongest is first
+        return bindings.SelectMany(kvp => kvp.Value.Select(ed => ed.Binding.Strength)).OrderByDescending(s => s, BindingStrengthComparer.Instance).FirstOrDefault();
     }
 
     /// <summary>Binding strength by type.</summary>

@@ -9,6 +9,8 @@ using Hl7.Fhir.Serialization;
 
 namespace Microsoft.Health.Fhir.CodeGen.Loader;
 
+// TODO(ginoc): Add options for these settings to root configuration
+
 /// <summary>
 /// Represents the options for the loader.
 /// </summary>

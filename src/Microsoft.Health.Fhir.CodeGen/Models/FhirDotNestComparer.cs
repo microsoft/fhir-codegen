@@ -7,7 +7,7 @@ namespace Microsoft.Health.Fhir.CodeGen.Models;
 
 public class FhirDotNestComparer : IComparer<string>
 {
-    public static readonly FhirDotNestComparer Instance = new FhirDotNestComparer();
+    public static readonly FhirDotNestComparer Instance = new();
 
     /// <summary>
     /// Compares two objects and returns a value indicating whether one is less than, equal to, or

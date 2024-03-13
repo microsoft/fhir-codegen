@@ -127,7 +127,7 @@ public static class StructureDefinitionExtensions
         }
 
         // if we have no type on the structure, we need to look at the first element
-        return sd.cgRootElement()?.cgBaseTypeName(dc, typeMap) ?? string.Empty;
+        return sd.cgRootElement()?.cgBaseTypeName(dc, false, typeMap) ?? string.Empty;
     }
 
     /// <summary>

@@ -16,10 +16,12 @@ using Microsoft.Health.Fhir.CodeGen.Utils;
 
 namespace Microsoft.Health.Fhir.CodeGen.Lanugage;
 
-public class TypeScript : ILanguage<TypeScript.TypeScriptOptions>
+public class TypeScript : ILanguage
 {
     private const string _defaultNamespace = "fhir{VersionNumber}";
     private const string _defaultMinTsVersion = "3.7";
+
+    public Type ConfigType => typeof(TypeScriptOptions);
 
     public class TypeScriptOptions : ConfigGenerate
     {
@@ -29,11 +31,68 @@ public class TypeScript : ILanguage<TypeScript.TypeScriptOptions>
             Description = "Base namespace for TypeScript files, default is 'fhir{VersionNumber}', use '' (empty string) for none.")]
         public string Namespace { get; set; } = _defaultNamespace;
 
+        private static ConfigurationOption NamespaceParameter { get; } = new()
+        {
+            Name = "Namespace",
+            DefaultValue = _defaultNamespace,
+            CliOption = new System.CommandLine.Option<string>("--namespace", "Base namespace for TypeScript files, default is 'fhir{VersionNumber}', use '' (empty string) for none.")
+            {
+                Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+                IsRequired = false,
+            },
+        };
+
         /// <summary>Gets or sets the minimum ts version.</summary>
         [ConfigOption(
             ArgName = "--min-ts-version",
             Description = "Minimum TypeScript version, use '' (empty string) for none.")]
         public string MinTsVersion { get; set; } = _defaultMinTsVersion;
+
+        private static ConfigurationOption MinTsVersionParameter { get; } = new()
+        {
+            Name = "MinTypeScriptVersion",
+            DefaultValue = _defaultMinTsVersion,
+            CliOption = new System.CommandLine.Option<string>("--min-ts-version", "Minimum TypeScript version, use '' (empty string) for none.")
+            {
+                Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+                IsRequired = false,
+            },
+        };
+
+        private static readonly ConfigurationOption[] _options = new ConfigurationOption[]
+        {
+            NamespaceParameter,
+            MinTsVersionParameter,
+        };
+
+        /// <summary>
+        /// Gets the configuration options for the current instance and its base class.
+        /// </summary>
+        /// <returns>An array of configuration options.</returns>
+        public override ConfigurationOption[] GetOptions()
+        {
+            return base.GetOptions().Concat(_options).ToArray();
+        }
+
+        public override void Parse(System.CommandLine.Parsing.ParseResult parseResult)
+        {
+            // parse base properties
+            base.Parse(parseResult);
+
+            // iterate over options for ones we are interested in
+            foreach (ConfigurationOption opt in _options)
+            {
+                switch (opt.Name)
+                {
+                    case "Namespace":
+                        Namespace = GetOpt(parseResult, opt.CliOption, Namespace);
+                        break;
+                    case "MinTypeScriptVersion":
+                        MinTsVersion = GetOpt(parseResult, opt.CliOption, MinTsVersion);
+                        break;
+                }
+            }
+        }
 
         /// <summary>Gets or sets the write stream to use.</summary>
         public Stream? WriteStream { get; set; } = null;
@@ -214,9 +273,14 @@ public class TypeScript : ILanguage<TypeScript.TypeScriptOptions>
     /// <param name="options">        Options for controlling the operation.</param>
     /// <param name="exportDirectory">Directory to write files.</param>
     public void Export(
-        TypeScriptOptions config,
+        object untypedConfig,
         DefinitionCollection definitions)
     {
+        if (untypedConfig is not TypeScriptOptions config)
+        {
+            throw new ArgumentException("Invalid configuration type");
+        }
+
         // set internal vars so we don't pass them to every function
         // this is ugly, but the interface patterns get bad quickly because we need the type map to copy the FHIR info
         _dc = definitions;
@@ -348,32 +412,33 @@ public class TypeScript : ILanguage<TypeScript.TypeScriptOptions>
     {
         string vsName = FhirSanitizationUtils.SanitizeForProperty(vs.Id ?? vs.Name, _reservedWords).ToPascalCase();
 
-        foreach (ValueSet.ContainsComponent contains in vs.Expansion.Contains.OrderBy(c => c.Code))
+        IEnumerable<FhirConcept> concepts = vs.cgGetFlatConcepts(_dc).OrderBy(c => c.Key);
+
+        foreach (FhirConcept concept in concepts)
         {
-            string key = contains.cgKey();
-            if (writtenCodesAndNames.ContainsKey(key))
+            if (writtenCodesAndNames.ContainsKey(concept.Key))
             {
                 continue;
             }
 
-            string input = contains.Display;
-            if (_systemsNamedByDisplay.Contains(contains.System))
+            string input = concept.Display;
+            if (_systemsNamedByDisplay.Contains(concept.System))
             {
-                input = contains.Display;
+                input = concept.Display;
             }
-            else if (_systemsNamedByCode.Contains(contains.System))
+            else if (_systemsNamedByCode.Contains(concept.System))
             {
-                input = contains.Code;
+                input = concept.Code;
             }
             else if (string.IsNullOrEmpty(input))
             {
-                input = contains.Code;
+                input = concept.Code;
             }
 
             string codeName = FhirSanitizationUtils.SanitizeForProperty(input, _reservedWords).ToPascalCase(true);
-            string codeValue = FhirSanitizationUtils.SanitizeForValue(contains.Code);
+            string codeValue = FhirSanitizationUtils.SanitizeForValue(concept.Code);
 
-            string systemLocalName = contains.cgSystemLocalName();
+            string systemLocalName = concept.cgSystemLocalName();
 
             string constName;
             if (!string.IsNullOrEmpty(systemLocalName))
@@ -401,7 +466,7 @@ public class TypeScript : ILanguage<TypeScript.TypeScriptOptions>
             }
 
             writtenCodesAndNames.Add(
-                key,
+                concept.Key,
                 new WrittenCodeInfo() { Name = codeName, ConstName = constName });
             writtenNames.Add(constName);
 
@@ -410,12 +475,12 @@ public class TypeScript : ILanguage<TypeScript.TypeScriptOptions>
 
             _writer.WriteLineIndented($"code: \"{codeValue}\",");
 
-            if (!string.IsNullOrEmpty(contains.Display))
+            if (!string.IsNullOrEmpty(concept.Display))
             {
-                _writer.WriteLineIndented($"display: \"{FhirSanitizationUtils.SanitizeForQuoted(contains.Display)}\",");
+                _writer.WriteLineIndented($"display: \"{FhirSanitizationUtils.SanitizeForQuoted(concept.Display)}\",");
             }
 
-            _writer.WriteLineIndented($"system: \"{contains.System}\"");
+            _writer.WriteLineIndented($"system: \"{concept.System}\"");
 
             _writer.DecreaseIndent();
 
@@ -438,11 +503,11 @@ public class TypeScript : ILanguage<TypeScript.TypeScriptOptions>
         HashSet<string> usedValues = new HashSet<string>();
 
         // TODO: shouldn't loop over this twice, but writer functions don't allow writing in two places at once yet
-        foreach (ValueSet.ContainsComponent contains in vs.Expansion.Contains.OrderBy(c => c.Code))
+        foreach (FhirConcept concept in concepts)
         {
-            string codeKey = contains.cgKey();
-            string systemLocalName = contains.cgSystemLocalName();
-            string definition = _dc.ConceptDefinition(contains.System, contains.Code);
+            string codeKey = concept.Key;
+            string systemLocalName = concept.cgSystemLocalName();
+            string definition = _dc.ConceptDefinition(concept.System, concept.Code);
 
             if (!string.IsNullOrEmpty(definition))
             {
@@ -525,7 +590,7 @@ public class TypeScript : ILanguage<TypeScript.TypeScriptOptions>
             WriteIndentedComment(comment);
 
             // get the base type name from the root element of this path
-            typeName = cd.Element.cgBaseTypeName(_dc, _primitiveTypeMap);
+            typeName = cd.Element.cgBaseTypeName(_dc, false, _primitiveTypeMap);
         }
 
         if (string.IsNullOrEmpty(typeName) || cd.Element.Path.Equals(typeName, StringComparison.Ordinal))
@@ -733,7 +798,7 @@ public class TypeScript : ILanguage<TypeScript.TypeScriptOptions>
             // if there are no types, use the base type
             values.Add(
                 FhirSanitizationUtils.ToConvention(baseName, ed.Path, nameConvention, concatenatePath, concatenationDelimiter),
-                FhirSanitizationUtils.ToConvention(ed.cgBaseTypeName(_dc, _primitiveTypeMap), string.Empty, typeConvention));
+                FhirSanitizationUtils.ToConvention(ed.cgBaseTypeName(_dc, false, _primitiveTypeMap), string.Empty, typeConvention));
 
             return values;
         }

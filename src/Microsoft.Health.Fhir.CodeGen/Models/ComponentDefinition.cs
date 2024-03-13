@@ -43,16 +43,26 @@ public record class ComponentDefinition
     /// </summary>
     /// <param name="convention">The naming convention.</param>
     /// <returns>A string representing the code generation name.</returns>
-    public string cgName(NamingConvention convention = NamingConvention.PascalCase) => IsRootOfStructure
-        ? Element.cgNameForExport(convention)
-        : Element.cgNameForExport(convention, true);
+    //public string cgName(NamingConvention convention = NamingConvention.PascalCase) => IsRootOfStructure
+    //    ? Element.cgNameForExport(convention)
+    //    : Element.cgNameForExport(convention, true);
+    public string cgName(NamingConvention convention = NamingConvention.PascalCase) => Element.cgNameForExport(convention);
 
     /// <summary>
     /// Gets the base type name for code generation.
     /// </summary>
     /// <param name="dc">The device context.</param>
     /// <returns>A string representing the base type name.</returns>
-    public string cgBaseTypeName(DefinitionCollection dc) => Element?.cgBaseTypeName(dc) ?? Structure.cgBaseTypeName();
+    public string cgBaseTypeName(DefinitionCollection dc, bool usePathForParents)
+    {
+        string tn = Structure.cgBaseTypeName();
+        if (IsRootOfStructure && !string.IsNullOrEmpty(tn))
+        {
+            return Structure.cgBaseTypeName();
+        }
+
+        return Element?.cgBaseTypeName(dc, usePathForParents) ?? tn;
+    }
 
     /// <summary>
     /// Gets the child element definition for code generation.

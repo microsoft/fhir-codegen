@@ -8,6 +8,7 @@ using System.Diagnostics.CodeAnalysis;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Specification.Source;
 using Hl7.Fhir.Specification.Terminology;
+using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 
 namespace Microsoft.Health.Fhir.CodeGen.Models;
 
@@ -28,7 +29,8 @@ public partial class DefinitionCollection : IAsyncResourceResolver
         {
             Resource r = await _localTx.Expand(p);
 
-            if (r is ValueSet vs)
+            if ((r is ValueSet vs) &&
+                (!vs.IsLimitedExpansion()))
             {
                 return vs;
             }

@@ -184,6 +184,7 @@ public class GenerationTestsR5 : IClassFixture<GenerationTestFixture>
                 if (GenerationTestFixture.WriteGeneratedFiles)
                 {
                     File.WriteAllText(filePath, current);
+                    Assert.Fail("Generated files updated, please re-run the test");
                 }
 
                 // should the types like canonical be canonical::canonical or canonical::string?
@@ -277,6 +278,7 @@ public class GenerationTestsR4B : IClassFixture<GenerationTestFixture>
                 if (GenerationTestFixture.WriteGeneratedFiles)
                 {
                     File.WriteAllText(filePath, current);
+                    Assert.Fail("Generated files updated, please re-run the test");
                 }
 
                 // should the types like canonical be canonical::canonical or canonical::string?
@@ -370,6 +372,7 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
                 if (GenerationTestFixture.WriteGeneratedFiles)
                 {
                     File.WriteAllText(filePath, current);
+                    Assert.Fail("Generated files updated, please re-run the test");
                 }
 
                 // should the types like canonical be canonical::canonical or canonical::string?
@@ -463,6 +466,7 @@ public class GenerationTestsR3 : IClassFixture<GenerationTestFixture>
                 if (GenerationTestFixture.WriteGeneratedFiles)
                 {
                     File.WriteAllText(filePath, current);
+                    Assert.Fail("Generated files updated, please re-run the test");
                 }
 
                 // should the types like canonical be canonical::canonical or canonical::string?
@@ -556,6 +560,7 @@ public class GenerationTestsR2 : IClassFixture<GenerationTestFixture>
                 if (GenerationTestFixture.WriteGeneratedFiles)
                 {
                     File.WriteAllText(filePath, current);
+                    Assert.Fail("Generated files updated, please re-run the test");
                 }
 
                 // should the types like canonical be canonical::canonical or canonical::string?

@@ -19,11 +19,14 @@ using System.CommandLine.Builder;
 using System.Text;
 using Microsoft.Extensions.Primitives;
 using System.CommandLine.Parsing;
-using System.ComponentModel;
 using System.CommandLine.Help;
 using System.CommandLine.Invocation;
-using static Hl7.Fhir.Model.Group;
 using System.Collections;
+using Hl7.Fhir.Utility;
+using Microsoft.Health.Fhir.PackageManager;
+using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
+using Microsoft.Health.Fhir.CodeGen.Loader;
+using Microsoft.Health.Fhir.CodeGen.Models;
 
 namespace fhir_codegen;
 
@@ -36,7 +39,6 @@ public class Program
     {
         "--package", "--load-package", "-p"
     };
-
 
     /// <summary>Main entry-point for this application.</summary>
     /// <param name="args">An array of command-line argument strings.</param>
@@ -196,7 +198,7 @@ public class Program
                 languageCommand.AddAlias(language.Name.ToLowerInvariant());
             }
 
-            foreach (SCL.Option option in BuildCliOptions(LanguageManager.ConfigTypeForLanguage(language.Name), envConfig: envConfig, languageName: language.Name))
+            foreach (SCL.Option option in BuildCliOptions(LanguageManager.ConfigTypeForLanguage(language.Name), envConfig: envConfig))
             {
                 languageCommand.AddOption(option);
                 TrackIfEnum(option);
@@ -389,7 +391,7 @@ public class Program
     /// <returns>
     /// An enumerator that allows foreach to be used to process build CLI options in this collection.
     /// </returns>
-    private static IEnumerable<SCL.Option> BuildCliOptions(
+    private static IEnumerable<SCL.Option> BuildCliOptionsReflection(
         Type forType,
         Type? exludeFromType = null,
         IConfiguration? envConfig = null,
@@ -499,11 +501,6 @@ public class Program
                     (!string.IsNullOrEmpty(attr.EnvName)))
                 {
                     option.SetDefaultValueFactory(() => envConfig.GetValue(propType, attr.EnvName));
-
-                    if (attr.EnvName.Equals("Load_Package"))
-                    {
-                        Console.Write("");
-                    }
                 }
                 else if (configDefault != null)
                 {
@@ -533,7 +530,160 @@ public class Program
         };
     }
 
+    private static IEnumerable<SCL.Option> BuildCliOptions(
+        Type forType,
+        Type? exludeFromType = null,
+        IConfiguration? envConfig = null)
+    {
+        HashSet<string> inheritedPropNames = new();
+
+        if (exludeFromType != null)
+        {
+            PropertyInfo[] exProps = exludeFromType.GetProperties();
+            foreach (PropertyInfo exProp in exProps)
+            {
+                inheritedPropNames.Add(exProp.Name);
+            }
+        }
+
+        object? configDefault = null;
+        if (forType.IsAbstract)
+        {
+            throw new Exception($"Config type cannot be abstract! {forType.Name}");
+        }
+
+        configDefault = Activator.CreateInstance(forType);
+
+        if (configDefault is not ICodeGenConfig config)
+        {
+            throw new Exception("Config type must implement ICodeGenConfig");
+        }
+
+        foreach (ConfigurationOption opt in config.GetOptions())
+        {
+            // need to configure default values
+            if ((envConfig is not null) &&
+                (!string.IsNullOrEmpty(opt.EnvVarName)))
+            {
+                opt.CliOption.SetDefaultValueFactory(() => envConfig.GetSection(opt.EnvVarName).GetChildren().Select(c => c.Value));
+            }
+            else
+            {
+                opt.CliOption.SetDefaultValue(opt.DefaultValue);
+            }
+
+            yield return opt.CliOption;
+        }
+    }
+
     public static async Task<int> DoGenerate(SCL.Parsing.ParseResult pr)
+    {
+        try
+        {
+            string languageName = pr.CommandResult.Command.Name;
+
+            if (!LanguageManager.TryGetLanguage(languageName, out ILanguage? language))
+            {
+                throw new Exception($"Could not find language type for {languageName}");
+            }
+
+            // get our language type
+            Type langType = LanguageManager.TypeForLanguage(languageName);
+
+            // get our language configuration type
+            Type configType = LanguageManager.ConfigTypeForLanguage(language.Name);
+
+            // create our configuration object
+            object? configGeneric = Activator.CreateInstance(configType);
+
+            if (configGeneric is null)
+            {
+                throw new Exception($"Could not create configuration object for {languageName} ({configType.Name})");
+            }
+
+            if (configGeneric is not ICodeGenConfig config)
+            {
+                throw new Exception($"Config type must implement ICodeGenConfig, {languageName} ({configType.Name})");
+            }
+
+            if (config is not ConfigRoot rootConfig)
+            {
+                throw new Exception("Config type must inherit from ConfigRoot");
+            }
+
+            // parse the arguments into the configuration object
+            config.Parse(pr);
+
+            object? langObject = Activator.CreateInstance(langType);
+
+            if (langObject is null)
+            {
+                throw new Exception($"Could not create language object for {languageName} ({langType.Name})");
+            }
+
+            if (langObject is not ILanguage iLang)
+            {
+                throw new Exception($"Language type must implement ILanguage, {languageName} ({langType.Name})");
+            }
+
+            // create our cache object to load packages with
+            IFhirPackageClient cache = FhirCache.Create(new FhirPackageClientSettings()
+            {
+                CachePath = rootConfig.FhirCacheDirectory,
+            });
+
+            List<PackageCacheEntry> packages = new();
+
+            // load packages
+            foreach (string package in rootConfig.Packages)
+            {
+                PackageCacheEntry? entry;
+
+                if (package.StartsWith("http", StringComparison.OrdinalIgnoreCase))
+                {
+                    entry = await cache.FindOrDownloadPackageByUrl(package);
+                }
+                else
+                {
+                    entry = await cache.FindOrDownloadPackageByDirective(package);
+                }
+
+                if (entry is null)
+                {
+                    throw new Exception($"Could not find or download package {package}");
+                }
+
+                packages.Add((PackageCacheEntry)entry);
+            }
+
+            PackageLoader loader = new(cache, new());
+
+            DefinitionCollection? loaded = await loader.LoadPackages(packages.First().Name, packages);
+
+            if (loaded is null)
+            {
+                throw new Exception($"Could not load packages: {string.Join(',', rootConfig.Packages)}");
+            }
+
+            // call the export method on the language object
+            iLang.Export(config, loaded);
+        }
+        catch (Exception ex)
+        {
+            if (ex.InnerException != null)
+            {
+                Console.WriteLine($"RunGenerate <<< caught: {ex.Message}::{ex.InnerException.Message}");
+            }
+            else
+            {
+                Console.WriteLine($"RunGenerate <<< caught: {ex.Message}");
+            }
+        }
+
+        return 10;
+    }
+
+    public static async Task<int> DoGenerateReflection(SCL.Parsing.ParseResult pr)
     {
         try
         {

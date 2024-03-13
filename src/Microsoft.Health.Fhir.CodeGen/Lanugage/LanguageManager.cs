@@ -12,6 +12,7 @@ namespace Microsoft.Health.Fhir.CodeGen.Lanugage;
 public static class LanguageManager
 {
     private static Dictionary<string, ILanguage> _languagesByName = new(StringComparer.OrdinalIgnoreCase);
+    private static Dictionary<string, Type> _languageTypes = new(StringComparer.OrdinalIgnoreCase);
     private static Dictionary<string, Type> _languageConfigTypes = new(StringComparer.OrdinalIgnoreCase);
 
     /// <summary>Initializes static members of the <see cref="LanguageManager"/> class.</summary>
@@ -56,6 +57,16 @@ public static class LanguageManager
         throw new Exception($"Language {languageName} not found");
     }
 
+    public static Type TypeForLanguage(string languageName)
+    {
+        if (_languageTypes.TryGetValue(languageName, out Type? configType))
+        {
+            return configType;
+        }
+
+        throw new Exception($"Language {languageName} not found");
+    }
+
     /// <summary>Loads the languages.</summary>
     /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>
     public static void LoadLanguages()
@@ -67,7 +78,6 @@ public static class LanguageManager
         }
 
         Type ilt = typeof(ILanguage);
-        Type ilgt = typeof(ILanguage<>);
 
         IEnumerable<Type> lTypes;
 
@@ -79,20 +89,7 @@ public static class LanguageManager
 
         foreach (Type localType in lTypes)
         {
-            // check for the implmented interface to get the type information
-            IEnumerable<Type> iis = localType.GetInterfaces()
-                .Where(t => t.IsGenericType && t.GetGenericTypeDefinition() == ilgt);
-
-            if (!iis.Any())
-            {
-                throw new Exception($"Invalid language definition {localType.Name} - missing configuration type");
-            }
-
-            Type iType = iis.First();
-
             ILanguage? language = null;
-
-            Type configType = iType.GetGenericArguments().First();
 
             try
             {
@@ -103,7 +100,7 @@ public static class LanguageManager
                 throw new Exception($"Could not create instance of {localType.Name} - {ex.Message}");
             }
 
-            if (language == null)
+            if (language is null)
             {
                 throw new Exception($"Could not create instance of {localType.Name}");
             }
@@ -113,8 +110,14 @@ public static class LanguageManager
                 continue;
             }
 
+            if (language.ConfigType.IsAbstract)
+            {
+                throw new Exception(language.Name + " config type is abstract");
+            }
+
             _languagesByName.Add(language.Name, language);
-            _languageConfigTypes.Add(language.Name, configType);
+            _languageTypes.Add(language.Name, localType);
+            _languageConfigTypes.Add(language.Name, language.ConfigType);
         }
     }
 }

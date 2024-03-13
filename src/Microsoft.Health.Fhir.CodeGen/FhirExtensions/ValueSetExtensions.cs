@@ -112,13 +112,11 @@ public static class ValueSetExtensions
     public static IEnumerable<string> cgReferencedCodeSystems(this ValueSet vs) =>
         vs.Expansion?.Contains?.Select(c => c.System).Distinct() ?? vs.Compose?.Include?.Select(i => i.System).Distinct() ?? Enumerable.Empty<string>();
 
-
-    /// <summary>
-    /// Gets the flat list of FhirConcepts from the ValueSet.
-    /// </summary>
+    /// <summary>Gets the flat list of FhirConcepts from the ValueSet.</summary>
     /// <param name="vs">The ValueSet to act on.</param>
+    /// <param name="dc">The device-context.</param>
     /// <returns>An enumerable of FhirConcept representing the flat list of concepts.</returns>
-    public static IEnumerable<FhirConcept> cgGetFlatConcepts(this ValueSet vs)
+    public static IEnumerable<FhirConcept> cgGetFlatConcepts(this ValueSet vs, DefinitionCollection dc)
     {
         if (!(vs.Expansion?.Contains.Any() ?? false))
         {
@@ -146,6 +144,7 @@ public static class ValueSetExtensions
                     System = c.System,
                     Code = c.Code,
                     Display = c.Display,
+                    Definition = dc.ConceptDefinition(c.System, c.Code, c.Display),
                     IsAbstract = c.Abstract,
                     IsInactive = c.Inactive,
                     Properties = c.Property.Select(p => new FhirConcept.ConceptProperty { Code = p.Code, Value = p.Value.ToString() ?? string.Empty }).ToArray(),

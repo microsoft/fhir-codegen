@@ -17,7 +17,7 @@ using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionEx
 namespace Microsoft.Health.Fhir.CodeGen.Lanugage.Info;
 
 /// <summary>Class used to export package/specification information.</summary>
-public class LangInfo : ILanguage<InfoOptions>
+public class LangInfo : ILanguage
 {
     /// <summary>Values that represent Information formats.</summary>
     public enum InfoFormat
@@ -25,6 +25,9 @@ public class LangInfo : ILanguage<InfoOptions>
         Text,
         Json,
     }
+
+    /// <summary>Gets the type of the configuration.</summary>
+    public Type ConfigType => typeof(InfoOptions);
 
     /// <summary>An information options.</summary>
     public class InfoOptions : ConfigGenerate
@@ -34,6 +37,48 @@ public class LangInfo : ILanguage<InfoOptions>
             ArgName = "--format",
             Description = "File format to export.")]
         public LangInfo.InfoFormat FileFormat { get; set; } = LangInfo.InfoFormat.Text;
+
+        private static ConfigurationOption FileFormatParameter { get; } = new()
+        {
+            Name = "FileFormat",
+            DefaultValue = LangInfo.InfoFormat.Text,
+            CliOption = new System.CommandLine.Option<LangInfo.InfoFormat>("--format", "File format to export.")
+            {
+                Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+                IsRequired = false,
+            },
+        };
+
+        private static readonly ConfigurationOption[] _options = 
+        {
+            FileFormatParameter,
+        };
+
+        /// <summary>
+        /// Gets the configuration options for the current instance and its base class.
+        /// </summary>
+        /// <returns>An array of configuration options.</returns>
+        public override ConfigurationOption[] GetOptions()
+        {
+            return base.GetOptions().Concat(_options).ToArray();
+        }
+
+        public override void Parse(System.CommandLine.Parsing.ParseResult parseResult)
+        {
+            // parse base properties
+            base.Parse(parseResult);
+
+            // iterate over options for ones we are interested in
+            foreach (ConfigurationOption opt in _options)
+            {
+                switch (opt.Name)
+                {
+                    case "FileFormat":
+                        FileFormat = GetOpt(parseResult, opt.CliOption, FileFormat);
+                        break;
+                }
+            }
+        }
 
         /// <summary>Gets or sets the write stream to use.</summary>
         public Stream? WriteStream { get; set; } = null;
@@ -85,9 +130,14 @@ public class LangInfo : ILanguage<InfoOptions>
     /// <param name="definitions">The definitions to export.</param>
     /// <param name="writeStream">(Optional) Stream to write data to.</param>
     public void Export(
-        InfoOptions config,
+        object untypedConfig,
         DefinitionCollection definitions)
     {
+        if (untypedConfig is not InfoOptions config)
+        {
+            throw new ArgumentException("Invalid configuration type");
+        }
+
         _definitions = definitions;
 
         // TODO(ginoc): actually open the file
@@ -173,9 +223,9 @@ public class LangInfo : ILanguage<InfoOptions>
                 }
                 else
                 {
-                    foreach (ValueSet.ContainsComponent cc in expanded.Expansion.Contains.OrderBy(c => c.Code))
+                    foreach (FhirConcept concept in vs.cgGetFlatConcepts(_definitions).OrderBy(c => c.Key))
                     {
-                        _writer.WriteLineIndented($"- #{cc.Code}: {cc.Display}");
+                        _writer.WriteLineIndented($"- #{concept.Code}: {concept.Display}");
                     }
                 }
             }

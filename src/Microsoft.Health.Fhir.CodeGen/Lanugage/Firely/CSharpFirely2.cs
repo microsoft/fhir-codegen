@@ -22,19 +22,20 @@ using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGen.Utils;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
-using Ncqa.Cql.Model;
 using static Microsoft.Health.Fhir.CodeGen.Lanugage.Firely.CSharpFirelyCommon;
 using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 
 namespace Microsoft.Health.Fhir.CodeGen.Lanugage.Firely;
 
-public sealed class CSharpFirely2 : ILanguage<FirelyGenOptions>
+public sealed class CSharpFirely2 : ILanguage
 {
     /// <summary>(Immutable) Name of the language.</summary>
     private const string _languageName = "CSharpFirely2";
 
     /// <summary>Gets the language name.</summary>
     public string Name => _languageName;
+
+    public Type ConfigType => typeof(FirelyGenOptions);
 
     /// <summary>Gets the FHIR primitive type map.</summary>
     public Dictionary<string, string> FhirPrimitiveTypeMap => CSharpFirelyCommon.PrimitiveTypeMap;
@@ -104,6 +105,19 @@ public sealed class CSharpFirely2 : ILanguage<FirelyGenOptions>
             * use enums in this situation, it is not useful to generate this valueset
             */
         "http://hl7.org/fhir/ValueSet/ucum-units",
+
+        /* R5 made Resource.language a required binding to all-languages, which contains
+         * all of bcp:47 and is listed as infinite. This is not useful to generate.
+         * Note that in R5, many elements that are required to all-languages also have bound
+         * starter value sets.  TODO: consider if we want to generate constants for those.
+         */
+        "http://hl7.org/fhir/ValueSet/all-languages",
+
+        /* MIME types are infinite, so we do not want to generate these.
+         * Note that in R5, many elements that are required to MIME type also have bound
+         * starter value sets.  TODO: consider if we want to generate constants for those.
+         */
+        "http://hl7.org/fhir/ValueSet/mimetypes",
     };
 
     /// <summary>
@@ -374,10 +388,7 @@ public sealed class CSharpFirely2 : ILanguage<FirelyGenOptions>
 
     /// <summary>If a Cql ModelInfo is available, this will be the parsed XML model file.</summary>
     private Ncqa.Cql.Model.ModelInfo? _cqlModelInfo = null;
-    private IDictionary<string, ClassInfo>? _cqlModelClassInfo = null;
-
-
-
+    private IDictionary<string, Ncqa.Cql.Model.ClassInfo>? _cqlModelClassInfo = null;
 
     /// <summary>Export the passed FHIR version into the specified directory.</summary>
     /// <param name="info">           The information.</param>
@@ -389,8 +400,13 @@ public sealed class CSharpFirely2 : ILanguage<FirelyGenOptions>
     //    FhirCapabiltyStatement serverInfo,
     //    ExporterOptions options,
     //    string exportDirectory)
-    public void Export(FirelyGenOptions options, DefinitionCollection info)
+    public void Export(object untypedOptions, DefinitionCollection info)
     {
+        if (untypedOptions is not FirelyGenOptions options)
+        {
+            throw new ArgumentException("Options must be of type FirelyGenOptions");
+        }
+
         var subset = options.Subset;
 
         // STU3 satellite is a combination of satellite and conformance
@@ -437,8 +453,8 @@ public sealed class CSharpFirely2 : ILanguage<FirelyGenOptions>
         string cqlmodelResourceKey = options.CqlModel;
         if (!string.IsNullOrEmpty(cqlmodelResourceKey))
         {
-            _cqlModelInfo = CqlModels.LoadEmbeddedResource(cqlmodelResourceKey);
-            _cqlModelClassInfo = CqlModels.ClassesByName(_cqlModelInfo);
+            _cqlModelInfo = Ncqa.Cql.Model.CqlModels.LoadEmbeddedResource(cqlmodelResourceKey);
+            _cqlModelClassInfo = Ncqa.Cql.Model.CqlModels.ClassesByName(_cqlModelInfo);
         }
 
         var allPrimitives = new Dictionary<string, WrittenModelInfo>();
@@ -986,6 +1002,12 @@ public sealed class CSharpFirely2 : ILanguage<FirelyGenOptions>
                         continue;
                     }
 
+                    // we never want to write limited expansions
+                    //if (vs.IsLimitedExpansion())
+                    //{
+                    //    continue;
+                    //}
+
                     IReadOnlyDictionary<string, ElementDefinition[]> coreBindings = _info.CoreBindingsForVs(vs.Url);
                     Hl7.Fhir.Model.BindingStrength? strongestBinding = _info.StrongestBinding(coreBindings);
 
@@ -1030,7 +1052,7 @@ public sealed class CSharpFirely2 : ILanguage<FirelyGenOptions>
 
                     _modelWriter.IncreaseIndent();
 
-                    foreach (string path in coreBindings.Values.SelectMany(v => v.Select(e => e.Path)).OrderDescending())
+                    foreach (string path in coreBindings.Values.SelectMany(v => v.Select(e => e)).Order(ElementDefinitionComparer.Instance).Select(e => e.Path))
                     {
                         string name = path.Split('.')[0];
 
@@ -1224,7 +1246,7 @@ public sealed class CSharpFirely2 : ILanguage<FirelyGenOptions>
 
         var isPatientClass = false;
 
-        if (complex.cgBaseTypeName(_info) == "Quantity")
+        if (complex.cgBaseTypeName(_info, false) == "Quantity")
         {
             // Constrained quantities are handled differently
             WriteConstrainedQuantity(complex, exportName);
@@ -1271,7 +1293,7 @@ public sealed class CSharpFirely2 : ILanguage<FirelyGenOptions>
         _writer.WriteLineIndented(
             $"public{abstractFlag} partial class" +
                 $" {exportName}" +
-                $" : {Namespace}.{DetermineExportedBaseTypeName(complex.cgBaseTypeName(_info))}{interfacesSuffix}");
+                $" : {Namespace}.{DetermineExportedBaseTypeName(complex.cgBaseTypeName(_info, false))}{interfacesSuffix}");
 
         // open class
         OpenScope();
@@ -1744,7 +1766,7 @@ public sealed class CSharpFirely2 : ILanguage<FirelyGenOptions>
         _writer.WriteLineIndented(
             $"public partial class" +
                 $" {exportName}" +
-                $" : {Namespace}.{complex.cgBaseTypeName(_info)}");
+                $" : {Namespace}.{complex.cgBaseTypeName(_info, false)}");
 
         // open class
         OpenScope();
@@ -1793,7 +1815,7 @@ public sealed class CSharpFirely2 : ILanguage<FirelyGenOptions>
             WriteBackboneComponent(
                 component,
                 componentExportName,
-                exportName,
+                parentExportName,
                 subset);
         }
     }
@@ -1854,6 +1876,11 @@ public sealed class CSharpFirely2 : ILanguage<FirelyGenOptions>
             return;
         }
 
+        //if (vs.IsLimitedExpansion())
+        //{
+        //    return;
+        //}
+
         string name = (vs.Name ?? vs.Id)
             .Replace(" ", string.Empty, StringComparison.Ordinal)
             .Replace("_", string.Empty, StringComparison.Ordinal);
@@ -1904,7 +1931,7 @@ public sealed class CSharpFirely2 : ILanguage<FirelyGenOptions>
                 $"(systems: {referencedCodeSystems.Count()})");
         }
 
-        IEnumerable<FhirConcept> concepts = vs.cgGetFlatConcepts();
+        IEnumerable<FhirConcept> concepts = vs.cgGetFlatConcepts(_info);
 
         var defaultSystem = GetDefaultCodeSystem(concepts);
 
@@ -1920,9 +1947,9 @@ public sealed class CSharpFirely2 : ILanguage<FirelyGenOptions>
         {
             string codeName = ConvertEnumValue(concept.Code);
             string codeValue = FhirSanitizationUtils.SanitizeForValue(concept.Code);
-            string description = string.IsNullOrEmpty(concept.Display)
+            string description = string.IsNullOrEmpty(concept.Definition)
                 ? $"MISSING DESCRIPTION\n(system: {concept.System})"
-                : $"{concept.Display}\n(system: {concept.System})";
+                : $"{concept.Definition}\n(system: {concept.System})";
 
             if (concept.HasProperty("status", "deprecated"))
             {
@@ -2024,13 +2051,16 @@ public sealed class CSharpFirely2 : ILanguage<FirelyGenOptions>
             .Where(e => !e.cgIsInherited(complex.Structure))
             .OrderBy(e => e.cgFieldOrder());
 
+        int orderOffset = complex.Element.cgFieldOrder();
+
         foreach (ElementDefinition element in elementsToGenerate)
         {
             WriteElement(
                 exportedComplexName,
                 element,
                 ref exportedElements,
-                subset);
+                subset,
+                orderOffset);
         }
     }
 
@@ -2105,9 +2135,18 @@ public sealed class CSharpFirely2 : ILanguage<FirelyGenOptions>
         return ei;
     }
 
-    private void BuildFhirElementAttribute(string name, string summary, string? isModifier, ElementDefinition element, string choice, string fiveWs, string? since = null, (string, string)? until = null)
+    private void BuildFhirElementAttribute(
+        string name,
+        string summary,
+        string? isModifier,
+        ElementDefinition element,
+        int offset,
+        string choice,
+        string fiveWs,
+        string? since = null,
+        (string, string)? until = null)
     {
-        string attributeText = $"[FhirElement(\"{name}\"{summary}{isModifier}, Order={CSharpFirelyCommon.GetOrder(element)}{choice}{fiveWs}";
+        string attributeText = $"[FhirElement(\"{name}\"{summary}{isModifier}, Order={GetOrder(element, offset)}{choice}{fiveWs}";
         if (since is { })
         {
             attributeText += $", Since=FhirRelease.{since}";
@@ -2126,12 +2165,14 @@ public sealed class CSharpFirely2 : ILanguage<FirelyGenOptions>
     /// <param name="exportedComplexName">Name of the exported complex parent.</param>
     /// <param name="element">            The element.</param>
     /// <param name="exportedElements">   [in,out] The exported elements.</param>
-    /// <param name="subset"></param>
+    /// <param name="subset">             .</param>
+    /// <param name="orderOffset">      The relative order.</param>
     private void WriteElement(
         string exportedComplexName,
         ElementDefinition element,
         ref List<WrittenElementInfo> exportedElements,
-        GenSubset subset)
+        GenSubset subset,
+        int orderOffset)
     {
         string name = element.cgName().Replace("[x]", string.Empty);
 
@@ -2170,19 +2211,19 @@ public sealed class CSharpFirely2 : ILanguage<FirelyGenOptions>
 
         if (element.Path == "OperationOutcome.issue.severity")
         {
-            BuildFhirElementAttribute(name, summary, ", IsModifier=true", element, choice, fiveWs);
-            BuildFhirElementAttribute(name, summary, null, element, choice, fiveWs, since: "R4");
+            BuildFhirElementAttribute(name, summary, ", IsModifier=true", element, orderOffset, choice, fiveWs);
+            BuildFhirElementAttribute(name, summary, null, element, orderOffset, choice, fiveWs, since: "R4");
         }
         else if (element.Path is "Signature.who" or "Signature.onBehalfOf")
         {
-            BuildFhirElementAttribute(name, summary, isModifier, element, ", Choice = ChoiceType.DatatypeChoice", fiveWs);
-            BuildFhirElementAttribute(name, summary, isModifier, element, "", fiveWs, since: since);
+            BuildFhirElementAttribute(name, summary, isModifier, element, orderOffset, ", Choice = ChoiceType.DatatypeChoice", fiveWs);
+            BuildFhirElementAttribute(name, summary, isModifier, element, orderOffset, "", fiveWs, since: since);
             _writer.WriteLineIndented($"[DeclaredType(Type = typeof(ResourceReference), Since = FhirRelease.R4)]");
             _writer.WriteLineIndented($"[AllowedTypes(typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.ResourceReference))]");
         }
         else
         {
-            BuildFhirElementAttribute(name, summary, isModifier, element, choice, fiveWs, since, until);
+            BuildFhirElementAttribute(name, summary, isModifier, element, orderOffset, choice, fiveWs, since, until);
         }
 
         if (element.Path == "Meta.profile")
@@ -2251,7 +2292,7 @@ public sealed class CSharpFirely2 : ILanguage<FirelyGenOptions>
         if ((element.Min != 0) ||
             (element.cgCardinalityMax() != 1))
         {
-            _writer.WriteLineIndented($"[Cardinality(Min={element.Min},Max={element.Max})]");
+            _writer.WriteLineIndented($"[Cardinality(Min={element.Min},Max={element.cgCardinalityMax()})]");
         }
 
         writeElementGettersAndSetters(element, ei);
@@ -2277,9 +2318,11 @@ public sealed class CSharpFirely2 : ILanguage<FirelyGenOptions>
         string type;
         var name = element.cgName().Replace("[x]", string.Empty);
 
-        if (!string.IsNullOrEmpty(element.cgBaseTypeName(_info)))
+        string btName = element.cgBaseTypeName(_info, true);
+
+        if (!string.IsNullOrEmpty(btName))
         {
-            type = element.cgBaseTypeName(_info);
+            type = btName;
         }
         else if (element.Type.Count == 1)
         {
@@ -2332,7 +2375,7 @@ public sealed class CSharpFirely2 : ILanguage<FirelyGenOptions>
         {
             type = CSharpFirelyCommon.TypeNameMappings[type];
         }
-        else
+        else if (!type.Contains('.'))
         {
             type = type.ToPascalCase();
         }
@@ -2472,32 +2515,37 @@ public sealed class CSharpFirely2 : ILanguage<FirelyGenOptions>
         }
         else
         {
-            StringBuilder sb = new StringBuilder();
+            //StringBuilder sb = new StringBuilder();
 
             string[] components = type.Split('.');
 
-            for (int i = 0; i < components.Length; i++)
+            if (components.Length > 1)
             {
-                if (i == 0)
-                {
-                    sb.Append(components[i]);
-                    continue;
-                }
-
-                if (i == 1)
-                {
-                    sb.Append(".");
-                }
-
-                // AdverseEvent.suspectEntity.Causality does not prefix?
-                if (i == components.Length - 1)
-                {
-                    sb.Append(FhirSanitizationUtils.SanitizedToConvention(components[i], NamingConvention.PascalCase));
-                }
+                type = string.Join('.', components[0], components.Last().ToPascalCase()) + "Component";
             }
 
-            sb.Append("Component");
-            type = sb.ToString();
+            //for (int i = 0; i < components.Length; i++)
+            //{
+            //    if (i == 0)
+            //    {
+            //        sb.Append(components[i]);
+            //        continue;
+            //    }
+
+            //    if (i == 1)
+            //    {
+            //        sb.Append(".");
+            //    }
+
+            //    // AdverseEvent.suspectEntity.Causality does not prefix?
+            //    if (i == components.Length - 1)
+            //    {
+            //        sb.Append(FhirSanitizationUtils.SanitizedToConvention(components[i], NamingConvention.PascalCase));
+            //    }
+            //}
+
+            //sb.Append("Component");
+            //type = sb.ToString();
         }
 
         return type;

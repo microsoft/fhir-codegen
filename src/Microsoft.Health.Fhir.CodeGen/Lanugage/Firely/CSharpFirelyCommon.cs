@@ -209,8 +209,14 @@ public static class CSharpFirelyCommon
     /// <summary>Gets an order.</summary>
     /// <param name="element">The element.</param>
     /// <returns>The order.</returns>
-    public static int GetOrder(ElementDefinition element)
+    public static int GetOrder(ElementDefinition element, int offset = 0)
     {
-        return (element.cgFieldOrder() * 10) + 10;
+        //return (element.cgFieldOrder() * 10) + 10;
+        return (element.cgFieldOrder() - offset) * 10;
+    }
+
+    public static int GetOrder(int relativeOrder)
+    {
+        return (relativeOrder * 10) + 10;
     }
 }

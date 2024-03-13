@@ -149,6 +149,7 @@ public static class ElementDefinitionExtensions
     public static string cgBaseTypeName(
         this ElementDefinition ed,
         DefinitionCollection dc,
+        bool usePathForParents,
         Dictionary<string, string>? typeMap = null,
         NamingConvention namingConvention = NamingConvention.PascalCase)
     {
@@ -197,6 +198,11 @@ public static class ElementDefinitionExtensions
         // check for having child elements
         if (dc.HasChildElements(ed.Path))
         {
+            if (usePathForParents)
+            {
+                return ed.Path;
+            }
+
             if (ed.Type.Any(et => et.Code == "Element"))
             {
                 return "Element";
