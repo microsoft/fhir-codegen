@@ -12,6 +12,7 @@
 
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Reflection.Metadata;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Xml.Linq;
@@ -531,8 +532,12 @@ public sealed class CSharpFirely2 : ILanguage
                 edContent.Min = 1;
                 edContent.Max = "1";
 
-                // add the copied element to the binary structure, note that the DefinitionCollection needs to process and track
-                sdBinary.cgInsertElement(_info, edContent, edData.cgFieldOrder(), false);
+                edContent.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(edData.cgFieldOrder()));
+                edContent.AddExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, new Integer(edData.cgComponentFieldOrder()));
+
+                // add our element and track info, note that we are not increasing
+                // the orders since they are duplicate elements from different versions
+                _ = _info.TryInsertElement(sdBinary, edContent, false);
             }
         }
 
@@ -552,8 +557,11 @@ public sealed class CSharpFirely2 : ILanguage
                 edBlob.Min = 0;
                 edBlob.Max = "1";
 
-                // add the copied element to the signature structure, note that the DefinitionCollection needs to process and track
-                sdSignature.cgInsertElement(_info, edBlob, edData.cgFieldOrder(), false);
+                edBlob.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(edData.cgFieldOrder() + 1));
+                edBlob.AddExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, new Integer(edData.cgComponentFieldOrder() + 1));
+
+                // add our element and track info
+                _ = _info.TryInsertElement(sdSignature, edBlob, true);
             }
 
             if (!sdSignature.cgTryGetElementByPath("Signature.contentType", out _))
@@ -590,7 +598,11 @@ public sealed class CSharpFirely2 : ILanguage
                     }
                 };
 
-                sdSignature.cgInsertElement(_info, edContentType, 6, false);
+                edContentType.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(6), true);
+                edContentType.AddExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, new Integer(6), true);
+
+                // add our element and track info
+                _ = _info.TryInsertElement(sdSignature, edContentType, true);
             }
 
             if (sdSignature.cgTryGetElementById("Signature.who", out ElementDefinition? edWho))
@@ -599,6 +611,8 @@ public sealed class CSharpFirely2 : ILanguage
                 edWho.ElementId = "Signature.who[x]";
                 edWho.Path = "Signature.who[x]";
                 edWho.Type.Add(new() { Code = "uri" });
+
+                _ = _info.TryUpdateElement(sdSignature, edWho);
             }
 
             if (sdSignature.cgTryGetElementById("Signature.onBehalfOf", out ElementDefinition? edOnBehalfOf))
@@ -607,6 +621,8 @@ public sealed class CSharpFirely2 : ILanguage
                 edOnBehalfOf.ElementId = "Signature.onBehalfOf[x]";
                 edOnBehalfOf.Path = "Signature.onBehalfOf[x]";
                 edOnBehalfOf.Type.Add(new() { Code = "uri" });
+
+                _ = _info.TryUpdateElement(sdSignature, edOnBehalfOf);
             }
         }
 
@@ -641,7 +657,11 @@ public sealed class CSharpFirely2 : ILanguage
                 MustSupport = false,
             };
 
-            sdValueSet.cgInsertElement(_info, edFocus, 3, false);
+            edFocus.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(123), true);
+            edFocus.AddExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, new Integer(3), true);
+
+            // add our element and track info
+            _ = _info.TryInsertElement(sdValueSet, edFocus, true);
         }
 
         // Element Bundle.link.relation changed from FhirString to Code<Hl7.Fhir.Model.Bundle.LinkRelationTypes> in R5 (5.0.0-snapshot3).
@@ -650,6 +670,8 @@ public sealed class CSharpFirely2 : ILanguage
             sdBundle.cgTryGetElementById("Bundle.link.relation", out ElementDefinition? edRelation))
         {
             edRelation.Type = new() { new() { Code = "string" } };
+
+            _ = _info.TryUpdateElement(sdBundle, edRelation);
         }
 
         // Element ElementDefinition.constraint.xpath has been removed in R5 (5.0.0-snapshot3). Adding this element to the list of ComplexTypes,
@@ -671,7 +693,11 @@ public sealed class CSharpFirely2 : ILanguage
                 IsSummary = true,
             };
 
-            sdElementDefinition.cgInsertElement(_info, edXPath, 7, false);
+            edXPath.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(65), true);
+            edXPath.AddExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, new Integer(7), true);
+
+            // add our element and track info
+            _ = _info.TryInsertElement(sdElementDefinition, edXPath, true);
         }
 
         // We need to modify the (R4+-based) definition of RelatedArtifact, to include
@@ -693,7 +719,11 @@ public sealed class CSharpFirely2 : ILanguage
                 IsSummary = true,
             };
 
-            sdRelatedArtifact.cgInsertElement(_info, edUrl, 6, false);
+            edUrl.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(6), true);
+            edUrl.AddExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, new Integer(6), true);
+
+            // add our element and track info
+            _ = _info.TryInsertElement(sdRelatedArtifact, edUrl, true);
         }
     }
 
@@ -2146,7 +2176,7 @@ public sealed class CSharpFirely2 : ILanguage
         string? since = null,
         (string, string)? until = null)
     {
-        string attributeText = $"[FhirElement(\"{name}\"{summary}{isModifier}, Order={GetOrder(element, offset)}{choice}{fiveWs}";
+        string attributeText = $"[FhirElement(\"{name}\"{summary}{isModifier}, Order={GetOrder(element)}{choice}{fiveWs}";
         if (since is { })
         {
             attributeText += $", Since=FhirRelease.{since}";

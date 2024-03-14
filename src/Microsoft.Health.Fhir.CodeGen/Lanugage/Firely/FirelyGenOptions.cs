@@ -38,12 +38,12 @@ public class FirelyGenOptions : ConfigGenerate
     [ConfigOption(
         ArgName = "--w5",
         Description = "If the output should include 5W's mappings.")]
-    public bool ExportFiveWs { get; set; } = false;
+    public bool ExportFiveWs { get; set; } = true;
 
     private static ConfigurationOption ExportFiveWsParameter { get; } = new()
     {
         Name = "ExportFiveWs",
-        DefaultValue = false,
+        DefaultValue = true,
         CliOption = new System.CommandLine.Option<bool>("--w5", "If the output should include 5W's mappings.")
         {
             Arity = System.CommandLine.ArgumentArity.ZeroOrOne,

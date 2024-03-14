@@ -197,16 +197,6 @@ public static class StructureDefinitionExtensions
         }
     }
 
-    public static void cgInsertElement(
-        this StructureDefinition sd,
-        DefinitionCollection dc,
-        ElementDefinition ed,
-        int insertAtOrder,
-        bool increaseSubsequentOrders)
-    {
-        _ = dc.TryInsertElement(sd, ed, insertAtOrder, increaseSubsequentOrders);
-    }
-
     /// <summary>
     /// A StructureDefinition extension method that attempts to get element by path.
     /// </summary>

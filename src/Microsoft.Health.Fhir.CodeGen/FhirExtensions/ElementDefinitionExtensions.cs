@@ -20,6 +20,8 @@ public static class ElementDefinitionExtensions
     /// <summary>Gets the field order.</summary>
     public static int cgFieldOrder(this ElementDefinition ed) => ed.GetExtensionValue<Hl7.Fhir.Model.Integer>(CommonDefinitions.ExtUrlEdFieldOrder)?.Value ?? -1;
 
+    public static int cgComponentFieldOrder(this ElementDefinition ed) => ed.GetExtensionValue<Hl7.Fhir.Model.Integer>(CommonDefinitions.ExtUrlEdComponentFieldOrder)?.Value ?? -1;
+
     /// <summary>Gets the full path of the base definition.</summary>
     public static string cgBasePath(this ElementDefinition ed) => ed.Base?.Path ?? string.Empty;
 

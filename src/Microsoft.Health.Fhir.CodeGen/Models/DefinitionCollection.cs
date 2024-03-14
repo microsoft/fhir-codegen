@@ -117,31 +117,80 @@ public partial class DefinitionCollection
         _parentElementsAndType.TryGetValue(path, out string? type) &&
         (type.Equals("BackboneElement", StringComparison.Ordinal) || type.Equals("Element", StringComparison.Ordinal));
 
-    /// <summary>Attempts to insert element.</summary>
-    /// <param name="sd">             The structure definition.</param>
-    /// <param name="ed">             The <see cref="ElementDefinition"/> to add the missing ID to.</param>
-    /// <param name="insertAfterPath">(Optional) Full pathname of the insert after file.</param>
-    /// <param name="insertAtOrder">  (Optional) The insert at order.</param>
+    internal bool TryUpdateElement(StructureDefinition destinationSd, ElementDefinition ed)
+    {
+        // lookup the structure locally because the parameter may be a copy or read only
+        if ((!_complexTypesByName.TryGetValue(destinationSd.Name, out StructureDefinition? sd)) &&
+            (!_resourcesByName.TryGetValue(destinationSd.Name, out sd)) &&
+            (!_profilesByUrl.TryGetValue(destinationSd.Url, out sd)))
+        {
+            throw new Exception($"Failed to find StructureDefinition id: {destinationSd.Id}, name: {destinationSd.Name}, url: {destinationSd.Url}");
+        }
+
+        int sdFieldOrder = ed.GetIntegerExtension(CommonDefinitions.ExtUrlEdFieldOrder) ?? -1;
+        int componentFieldOrder = ed.GetIntegerExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder) ?? -1;
+
+        if ((sdFieldOrder == -1) || (componentFieldOrder == -1))
+        {
+            throw new Exception(
+                $"ElementDefinitions must be annotated with extensions: " +
+                $"{CommonDefinitions.ExtUrlEdFieldOrder} and " +
+                $"{CommonDefinitions.ExtUrlEdComponentFieldOrder}");
+        }
+
+        // check for adding to snapshot
+        if (sd.Snapshot?.Element.Any() ?? false)
+        {
+            // find the element to insert after
+            int matchIndex = sd.Snapshot.Element.FindIndex(
+                e => (e.cgFieldOrder() == sdFieldOrder) && (e.cgComponentFieldOrder() == componentFieldOrder));
+            sd.Snapshot.Element[matchIndex] = ed;
+        }
+
+        // check for adding to differential
+        if (sd.Differential?.Element.Any() ?? false)
+        {
+            // find the element to insert after
+            int matchIndex = sd.Differential.Element.FindIndex(
+                e => (e.cgFieldOrder() == sdFieldOrder) && (e.cgComponentFieldOrder() == componentFieldOrder));
+            sd.Differential.Element[matchIndex] = ed;
+        }
+
+        return true;
+    }
+
+    /// <summary>Attempts to insert element, must be annotated with field orders.</summary>
+    /// <param name="destinationSd">           Destination SD.</param>
+    /// <param name="ed">                      The <see cref="ElementDefinition"/> to add the
+    ///  missing ID to.</param>
+    /// <param name="increaseSubsequentOrders">True to increase subsequent orders.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
     internal bool TryInsertElement(
-        StructureDefinition sd,
+        StructureDefinition destinationSd,
         ElementDefinition ed,
-        int insertAtOrder,
         bool increaseSubsequentOrders)
     {
-        // check for needing to add or update the field order annotation
-        int? existingOrder = ed.GetIntegerExtension(CommonDefinitions.ExtUrlEdFieldOrder);
-        if (existingOrder.HasValue)
+        // lookup the structure locally because the parameter may be a copy or read only
+        if ((!_complexTypesByName.TryGetValue(destinationSd.Name, out StructureDefinition? sd)) &&
+            (!_resourcesByName.TryGetValue(destinationSd.Name, out sd)) &&
+            (!_profilesByUrl.TryGetValue(destinationSd.Url, out sd)))
         {
-            if (existingOrder.Value != insertAtOrder)
-            {
-                ed.SetIntegerExtension(CommonDefinitions.ExtUrlEdFieldOrder, insertAtOrder);
-            }
+            throw new Exception($"Failed to find StructureDefinition id: {destinationSd.Id}, name: {destinationSd.Name}, url: {destinationSd.Url}");
         }
-        else
+
+        int sdFieldOrder = ed.GetIntegerExtension(CommonDefinitions.ExtUrlEdFieldOrder) ?? -1;
+        int componentFieldOrder = ed.GetIntegerExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder) ?? -1;
+
+        if ((sdFieldOrder == -1) || (componentFieldOrder == -1))
         {
-            ed.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(insertAtOrder));
+            throw new Exception(
+                $"ElementDefinitions to insert must be annotated with extensions: " +
+                $"{CommonDefinitions.ExtUrlEdFieldOrder} and " +
+                $"{CommonDefinitions.ExtUrlEdComponentFieldOrder}");
         }
+
+        int lastDot = ed.Path.LastIndexOf('.');
+        string parentPath = lastDot == -1 ? ed.Path : ed.Path.Substring(0, lastDot);
 
         // add to lookup dict
         _elementSdLookup.Add(ed, sd);
@@ -153,7 +202,7 @@ public partial class DefinitionCollection
         if (sd.Snapshot?.Element.Any() ?? false)
         {
             // find the element to insert after
-            int matchIndex = sd.Snapshot.Element.FindIndex(e => e.cgFieldOrder() == insertAtOrder);
+            int matchIndex = sd.Snapshot.Element.FindIndex(e => e.cgFieldOrder() == sdFieldOrder);
 
             if (matchIndex == -1)
             {
@@ -162,17 +211,26 @@ public partial class DefinitionCollection
             }
             else
             {
+                sd.Snapshot.Element.Insert(matchIndex, ed);
+
                 if (increaseSubsequentOrders)
                 {
                     // increase the order of all subsequent elements
-                    for (int i = matchIndex; i < sd.Snapshot.Element.Count; i++)
+                    foreach (ElementDefinition e in sd.Snapshot.Element.Skip(matchIndex + 1))
                     {
-                        int currentOrder = sd.Snapshot.Element[i].cgFieldOrder();
-                        sd.Snapshot.Element[i].SetIntegerExtension(CommonDefinitions.ExtUrlEdFieldOrder, currentOrder + 1);
+                        int currentOrder = e.cgFieldOrder();
+                        e.SetIntegerExtension(CommonDefinitions.ExtUrlEdFieldOrder, currentOrder + 1);
+
+                        int currentLastDot = e.Path.LastIndexOf('.');
+                        string currentParentPath = currentLastDot == -1 ? e.Path : e.Path.Substring(0, currentLastDot);
+
+                        if (currentParentPath == parentPath)
+                        {
+                            int currentComponentOrder = e.GetIntegerExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder) ?? -1;
+                            e.SetIntegerExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, currentComponentOrder + 1);
+                        }
                     }
                 }
-
-                sd.Snapshot.Element.Insert(matchIndex, ed);
             }
         }
 
@@ -180,7 +238,7 @@ public partial class DefinitionCollection
         if (sd.Differential?.Element.Any() ?? false)
         {
             // find the element to insert after
-            int matchIndex = sd.Differential.Element.FindIndex(e => e.cgFieldOrder() == insertAtOrder);
+            int matchIndex = sd.Differential.Element.FindIndex(e => e.cgFieldOrder() == sdFieldOrder);
 
             if (matchIndex == -1)
             {
@@ -189,17 +247,26 @@ public partial class DefinitionCollection
             }
             else
             {
+                sd.Differential.Element.Insert(matchIndex, ed);
+
                 if (increaseSubsequentOrders)
                 {
                     // increase the order of all subsequent elements
-                    for (int i = matchIndex; i < sd.Differential.Element.Count; i++)
+                    foreach (ElementDefinition e in sd.Differential.Element.Skip(matchIndex + 1))
                     {
-                        int currentOrder = sd.Differential.Element[i].cgFieldOrder();
-                        sd.Differential.Element[i].SetIntegerExtension(CommonDefinitions.ExtUrlEdFieldOrder, currentOrder + 1);
+                        int currentOrder = e.cgFieldOrder();
+                        e.SetIntegerExtension(CommonDefinitions.ExtUrlEdFieldOrder, currentOrder + 1);
+
+                        int currentLastDot = e.Path.LastIndexOf('.');
+                        string currentParentPath = currentLastDot == -1 ? e.Path : e.Path.Substring(0, currentLastDot);
+
+                        if (currentParentPath == parentPath)
+                        {
+                            int currentComponentOrder = e.GetIntegerExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder) ?? -1;
+                            e.SetIntegerExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, currentComponentOrder + 1);
+                        }
                     }
                 }
-
-                sd.Differential.Element.Insert(matchIndex, ed);
             }
         }
 
@@ -214,7 +281,7 @@ public partial class DefinitionCollection
     private void ProcessElements(FhirArtifactClassEnum artifactClass, StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion)
     {
         Dictionary<string, int> allFieldOrders = new();
-        //Dictionary<string, int> fieldOrderPerPath = new();
+        Dictionary<string, Dictionary<string, int>> componentOrdersByIdByParent = new();
 
         List<string> idByDepth = new();
 
@@ -223,16 +290,6 @@ public partial class DefinitionCollection
         // process each element in the snapshot
         foreach (ElementDefinition ed in sd.Snapshot?.Element ?? Enumerable.Empty<ElementDefinition>())
         {
-            int lastDot = ed.Path.LastIndexOf('.');
-            string parentPath = lastDot == -1 ? ed.Path : ed.Path.Substring(0, lastDot);
-
-            //if (!fieldOrderPerPath.TryGetValue(parentPath, out int relativeFieldOrder))
-            //{
-            //    relativeFieldOrder = 0;
-            //}
-
-            //fieldOrderPerPath[parentPath] = relativeFieldOrder++;
-
             // DSTU2 did not include element id's on ElementDefinitions, so we need to construct them
             if (string.IsNullOrEmpty(ed.ElementId))
             {
@@ -245,10 +302,25 @@ public partial class DefinitionCollection
                 }
             }
 
+            int lastDot = ed.Path.LastIndexOf('.');
+            string parentPath = lastDot == -1 ? ed.Path : ed.Path.Substring(0, lastDot);
+
+            if (!componentOrdersByIdByParent.TryGetValue(parentPath, out Dictionary<string, int>? coById))
+            {
+                coById = new();
+                componentOrdersByIdByParent.Add(parentPath, coById);
+            }
+
+            if (!coById.TryGetValue(ed.ElementId, out int componentFieldOrder))
+            {
+                componentFieldOrder = coById.Count;
+                coById.Add(ed.ElementId, componentFieldOrder);
+            }
+
             int fo = allFieldOrders.Count();
             allFieldOrders.Add(ed.ElementId, fo);
             ed.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(fo));
-            //ed.AddExtension(CommonDefinitions.ExtUrlEdFieldOrderInComponent, new Integer(relativeFieldOrder));
+            ed.AddExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, new Integer(componentFieldOrder));
 
             // add to lookup dict
             _elementSdLookup.Add(ed, sd);
@@ -317,27 +389,24 @@ public partial class DefinitionCollection
                 }
             }
 
-            //int relativeFieldOrder = 0;
-            // use the field order from the snapshot if it exists
-            if (allFieldOrders.TryGetValue(ed.ElementId, out int fo))
-            {
-                //int lastDot = ed.Path.LastIndexOf('.');
-                //string parentPath = lastDot == -1 ? ed.Path : ed.Path.Substring(0, lastDot);
+            int lastDot = ed.Path.LastIndexOf('.');
+            string parentPath = lastDot == -1 ? ed.Path : ed.Path.Substring(0, lastDot);
 
-                //relativeFieldOrder = fieldOrderPerPath[parentPath];
+            if (!componentOrdersByIdByParent.TryGetValue(parentPath, out Dictionary<string, int>? coById))
+            {
+                coById = new();
+                componentOrdersByIdByParent.Add(parentPath, coById);
             }
-            else
+
+            if (!coById.TryGetValue(ed.ElementId, out int componentFieldOrder))
             {
-                int lastDot = ed.Path.LastIndexOf('.');
-                string parentPath = lastDot == -1 ? ed.Path : ed.Path.Substring(0, lastDot);
+                componentFieldOrder = coById.Count;
+                coById.Add(ed.ElementId, componentFieldOrder);
+            }
 
-                //if (!fieldOrderPerPath.TryGetValue(parentPath, out relativeFieldOrder))
-                //{
-                //    relativeFieldOrder = 0;
-                //}
-
-                //fieldOrderPerPath[parentPath] = relativeFieldOrder++;
-
+            // check if this element has already been processed
+            if (!allFieldOrders.TryGetValue(ed.ElementId, out int fo))
+            {
                 fo = allFieldOrders.Count();
                 allFieldOrders.Add(ed.ElementId, fo);
 
@@ -395,7 +464,7 @@ public partial class DefinitionCollection
             }
 
             ed.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(fo));
-            //ed.AddExtension(CommonDefinitions.ExtUrlEdFieldOrderInComponent, new Integer(relativeFieldOrder));
+            ed.AddExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, new Integer(componentFieldOrder));
         }
 
         // DSTU2 and STU3 do not always declare types on root elements
