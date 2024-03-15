@@ -304,17 +304,21 @@ public partial class DefinitionCollection
 
             int lastDot = ed.Path.LastIndexOf('.');
             string parentPath = lastDot == -1 ? ed.Path : ed.Path.Substring(0, lastDot);
+            int componentFieldOrder = 0;
 
-            if (!componentOrdersByIdByParent.TryGetValue(parentPath, out Dictionary<string, int>? coById))
+            if (lastDot != -1)
             {
-                coById = new();
-                componentOrdersByIdByParent.Add(parentPath, coById);
-            }
+                if (!componentOrdersByIdByParent.TryGetValue(parentPath, out Dictionary<string, int>? coById))
+                {
+                    coById = new();
+                    componentOrdersByIdByParent.Add(parentPath, coById);
+                }
 
-            if (!coById.TryGetValue(ed.ElementId, out int componentFieldOrder))
-            {
-                componentFieldOrder = coById.Count;
-                coById.Add(ed.ElementId, componentFieldOrder);
+                if (!coById.TryGetValue(ed.ElementId, out componentFieldOrder))
+                {
+                    componentFieldOrder = coById.Count;
+                    coById.Add(ed.ElementId, componentFieldOrder);
+                }
             }
 
             int fo = allFieldOrders.Count();
@@ -391,17 +395,21 @@ public partial class DefinitionCollection
 
             int lastDot = ed.Path.LastIndexOf('.');
             string parentPath = lastDot == -1 ? ed.Path : ed.Path.Substring(0, lastDot);
+            int componentFieldOrder = 0;
 
-            if (!componentOrdersByIdByParent.TryGetValue(parentPath, out Dictionary<string, int>? coById))
+            if (lastDot != -1)
             {
-                coById = new();
-                componentOrdersByIdByParent.Add(parentPath, coById);
-            }
+                if (!componentOrdersByIdByParent.TryGetValue(parentPath, out Dictionary<string, int>? coById))
+                {
+                    coById = new();
+                    componentOrdersByIdByParent.Add(parentPath, coById);
+                }
 
-            if (!coById.TryGetValue(ed.ElementId, out int componentFieldOrder))
-            {
-                componentFieldOrder = coById.Count;
-                coById.Add(ed.ElementId, componentFieldOrder);
+                if (!coById.TryGetValue(ed.ElementId, out componentFieldOrder))
+                {
+                    componentFieldOrder = coById.Count;
+                    coById.Add(ed.ElementId, componentFieldOrder);
+                }
             }
 
             // check if this element has already been processed
@@ -497,7 +505,7 @@ public partial class DefinitionCollection
 
         if (sd.Id == "Bundle")
         {
-            Console.WriteLine(string.Join('\n', sd.Snapshot!.Element.OrderBy(e => e.cgFieldOrder()).Select(e => e.cgFieldOrder() + " " + e.Path)));
+            Console.WriteLine(string.Join('\n', sd.Snapshot!.Element.OrderBy(e => e.cgFieldOrder()).Select(e => e.cgFieldOrder() + ":" + e.cgComponentFieldOrder() + " - " + e.Path)));
             //Console.WriteLine("---");
             //Console.WriteLine(string.Join('\n', sd.Snapshot!.Element.OrderBy(e => e.cgFieldOrder()).Select(e => e.cgFieldOrder() + " " + e.Path)));
             Console.Write("");

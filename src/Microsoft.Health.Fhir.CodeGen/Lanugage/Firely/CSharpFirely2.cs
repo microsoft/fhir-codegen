@@ -529,8 +529,12 @@ public sealed class CSharpFirely2 : ILanguage
                 // update the copied element to be the content element
                 edContent.ElementId = "Binary.content";
                 edContent.Path = "Binary.content";
+                edContent.Base = new() { Path = "Binary.content", Min = 0, Max = "1" };
                 edContent.Min = 1;
                 edContent.Max = "1";
+
+                edContent.RemoveExtension(CommonDefinitions.ExtUrlEdFieldOrder);
+                edContent.RemoveExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder);
 
                 edContent.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(edData.cgFieldOrder()));
                 edContent.AddExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, new Integer(edData.cgComponentFieldOrder()));
@@ -554,8 +558,12 @@ public sealed class CSharpFirely2 : ILanguage
                 // update the copied element to be the blob element
                 edBlob.ElementId = "Signature.blob";
                 edBlob.Path = "Signature.blob";
+                edBlob.Base = new() { Path = "Signature.blob", Min = 0, Max = "1" };
                 edBlob.Min = 0;
                 edBlob.Max = "1";
+
+                edBlob.RemoveExtension(CommonDefinitions.ExtUrlEdFieldOrder);
+                edBlob.RemoveExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder);
 
                 edBlob.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(edData.cgFieldOrder() + 1));
                 edBlob.AddExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, new Integer(edData.cgComponentFieldOrder() + 1));
@@ -575,6 +583,7 @@ public sealed class CSharpFirely2 : ILanguage
                     Definition = "A mime type that indicates the technical format of the signature. Important mime types are application/signature+xml for X ML DigSig, application/jwt for JWT, and image/* for a graphical image of a signature, etc.",
                     Min = 0,
                     Max = "1",
+                    Base = new() { Path = "Signature.contentType", Min = 0, Max = "1" },
                     Type = new() { new() { Code = "code" } },
                     IsSummary = true,
                     Binding = new()
@@ -597,6 +606,9 @@ public sealed class CSharpFirely2 : ILanguage
                         }
                     }
                 };
+
+                edContentType.RemoveExtension(CommonDefinitions.ExtUrlEdFieldOrder);
+                edContentType.RemoveExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder);
 
                 edContentType.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(6), true);
                 edContentType.AddExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, new Integer(6), true);
@@ -641,6 +653,7 @@ public sealed class CSharpFirely2 : ILanguage
                 Definition = "The general focus of the Value Set as it relates to the intended semantic space. This can be the information about clinical relevancy or the statement about the general focus of the Value Set, such as a description of types of messages, payment options, geographic locations, etc.",
                 Min = 0,
                 Max = "1",
+                Base = new() { Path = "ValueSet.scope.focus", Min = 0, Max = "1" },
                 Type = new() { new() { Code = "string" } },
                 Constraint = new()
                 {
@@ -656,6 +669,9 @@ public sealed class CSharpFirely2 : ILanguage
                 IsModifier = false,
                 MustSupport = false,
             };
+
+            edFocus.RemoveExtension(CommonDefinitions.ExtUrlEdFieldOrder);
+            edFocus.RemoveExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder);
 
             edFocus.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(123), true);
             edFocus.AddExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, new Integer(3), true);
@@ -689,9 +705,13 @@ public sealed class CSharpFirely2 : ILanguage
                 Definition = "An XPath expression of constraint that can be executed to see if this constraint is met.",
                 Min = 0,
                 Max = "1",
+                Base = new() { Path = "ElementDefinition.constraint.xpath", Min = 0, Max = "1" },
                 Type = new() { new() { Code = "string" } },
                 IsSummary = true,
             };
+
+            edXPath.RemoveExtension(CommonDefinitions.ExtUrlEdFieldOrder);
+            edXPath.RemoveExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder);
 
             edXPath.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(65), true);
             edXPath.AddExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, new Integer(7), true);
@@ -715,9 +735,13 @@ public sealed class CSharpFirely2 : ILanguage
                 Comment = "If a document or resource element is present, this element SHALL NOT be provided (use the url or reference in the Attachment or resource reference).",
                 Min = 0,
                 Max = "1",
+                Base = new() { Path = "RelatedArtifact.url", Min = 0, Max = "1" },
                 Type = new() { new() { Code = "uri" } },
                 IsSummary = true,
             };
+
+            edUrl.RemoveExtension(CommonDefinitions.ExtUrlEdFieldOrder);
+            edUrl.RemoveExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder);
 
             edUrl.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(6), true);
             edUrl.AddExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, new Integer(6), true);

@@ -198,7 +198,7 @@ public static class ElementDefinitionExtensions
         }
 
         // check for having child elements
-        if (dc.HasChildElements(ed.Path))
+        if (dc.IsBackboneElement(ed.Path))       // (dc.HasChildElements(ed.Path))
         {
             if (usePathForParents)
             {
