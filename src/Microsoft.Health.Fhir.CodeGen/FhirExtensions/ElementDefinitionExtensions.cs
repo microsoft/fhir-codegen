@@ -29,15 +29,19 @@ public static class ElementDefinitionExtensions
     public static string cgExplicitName(this ElementDefinition ed) => ed.GetExtensionValue<FhirString>(CommonDefinitions.ExtUrlExplicitTypeName)?.ToString() ?? string.Empty;
 
     /// <summary>Gets the short name of this element, or explicit name if there is one.</summary>
-    /// <param name="ed">The ed to act on.</param>
+    /// <param name="ed">               The ed to act on.</param>
+    /// <param name="allowExplicitName">(Optional) True to allow, false to suppress the explicit name.</param>
     /// <returns>A string.</returns>
-    public static string cgName(this ElementDefinition ed)
+    public static string cgName(this ElementDefinition ed, bool allowExplicitName = false)
     {
-        string en = ed.cgExplicitName();
-
-        if (!string.IsNullOrEmpty(en))
+        if (allowExplicitName)
         {
-            return en;
+            string en = ed.cgExplicitName();
+
+            if (!string.IsNullOrEmpty(en))
+            {
+                return en;
+            }
         }
 
         return ed.Path.Split('.').Last();
@@ -466,13 +470,56 @@ public static class ElementDefinitionExtensions
     /// An enumerator that allows foreach to be used to process cg extract base types in this
     /// collection.
     /// </returns>
-    public static IEnumerable<string> cgExtractBaseTypes(this IEnumerable<ElementDefinition> elements)
+    public static IEnumerable<string> cgExtractBaseTypes(this IEnumerable<ElementDefinition> elements, DefinitionCollection dc)
     {
         HashSet<string> seen = new();
 
         foreach (ElementDefinition ed in elements)
         {
-            string bt = ed.Path.Split('.').First();
+            // get the structure used to define this element
+            StructureDefinition sd = dc.StructureForElement(ed);
+
+            string bt;
+
+            switch (sd.cgArtifactClass())
+            {
+                case CodeGenCommon.Models.FhirArtifactClassEnum.PrimitiveType:
+                    bt = sd.Id;
+                    break;
+
+                case CodeGenCommon.Models.FhirArtifactClassEnum.ComplexType:
+                    {
+                        bt = sd.cgBaseTypeName();
+                        if (!bt.Equals("Quantity", StringComparison.Ordinal))
+                        {
+                            bt = sd.Id;
+                        }
+                    }
+                    break;
+
+                case CodeGenCommon.Models.FhirArtifactClassEnum.Resource:
+                case CodeGenCommon.Models.FhirArtifactClassEnum.LogicalModel:
+                    bt = sd.Id;
+                    break;
+
+                case CodeGenCommon.Models.FhirArtifactClassEnum.Profile:
+                default:
+                    bt = sd.cgBaseTypeName();
+                    break;
+            }
+
+            //// get the base type out of the structure
+            //bt = sd.cgBaseTypeName();
+
+            //// for first-order types, we want the actual type name
+            //switch (bt)
+            //{
+            //    case "DataType":
+            //    case "DomainResource":
+            //    case "Resource":
+            //        bt = sd.Id;
+            //        break;
+            //}
 
             if (seen.Contains(bt))
             {

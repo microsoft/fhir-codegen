@@ -1,32 +1,42 @@
 {
-  "profiles": {
-    "default": {
-      "commandName": "Project",
-      "commandLineArgs": "generate openapi",
-      "workingDirectory": "$(MSBuildProjectDirectory)"
+    "profiles": {
+        "default": {
+            "commandName": "Project",
+            "commandLineArgs": "generate openapi",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "Firely 5.x Base": {
+            "commandName": "Project",
+            "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\temp\\fhir-net-sdk -p hl7.fhir.r5.core#5.0.0 -p hl7.fhir.r5.expansions#5.0.0 --subset base",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "Firely 5.x Conformance": {
+            "commandName": "Project",
+            "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\temp\\fhir-net-sdk -p hl7.fhir.r5.core#5.0.0 -p hl7.fhir.r5.expansions#5.0.0 --subset conformance",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "Firely 5.x R5": {
+            "commandName": "Project",
+            "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\temp\\fhir-net-sdk -p hl7.fhir.r5.core#5.0.0 -p hl7.fhir.r5.expansions#5.0.0 --subset satellite",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "http": {
+            "commandName": "Project",
+            "launchBrowser": true,
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "dotnetRunMessages": true,
+            "applicationUrl": "http://localhost:5074"
+        },
+        "IIS Express": {
+            "commandName": "IISExpress",
+            "launchBrowser": true,
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        }
     },
-    "Firely 5.x Base": {
-      "commandName": "Project",
-      "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\temp\\fhir-net-sdk -p hl7.fhir.r5.core#5.0.0 -p hl7.fhir.r5.expansions#5.0.0 --subset base",
-      "workingDirectory": "$(MSBuildProjectDirectory)"
-    },
-    "http": {
-      "commandName": "Project",
-      "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "dotnetRunMessages": true,
-      "applicationUrl": "http://localhost:5074"
-    },
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    }
-  },
   "$schema": "http://json.schemastore.org/launchsettings.json",
   "iisSettings": {
     "windowsAuthentication": false,

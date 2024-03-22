@@ -484,14 +484,14 @@ public sealed class CSharpFirely2 : ILanguage
 
             if (options.ExportStructures.Contains(CodeGenCommon.Models.FhirArtifactClassEnum.PrimitiveType))
             {
-                WritePrimitiveTypes(_info.PrimitiveTypesByName.Values, ref dummy, subset);
+                WritePrimitiveTypes(_info.PrimitiveTypesByName.Values.OrderBy(sd => sd.Name), ref dummy, subset);
             }
 
             AddModels(allPrimitives, _info.PrimitiveTypesByName.Values);
 
             if (options.ExportStructures.Contains(CodeGenCommon.Models.FhirArtifactClassEnum.ComplexType))
             {
-                WriteComplexDataTypes(_info.ComplexTypesByName.Values, ref dummy, subset);
+                WriteComplexDataTypes(_info.ComplexTypesByName.Values.OrderBy(sd => sd.Name), ref dummy, subset);
             }
 
             AddModels(allComplexTypes, _info.ComplexTypesByName.Values);
@@ -499,7 +499,7 @@ public sealed class CSharpFirely2 : ILanguage
 
             if (options.ExportStructures.Contains(CodeGenCommon.Models.FhirArtifactClassEnum.Resource))
             {
-                WriteResources(_info.ResourcesByName.Values, ref dummy, subset);
+                WriteResources(_info.ResourcesByName.Values.OrderBy(sd => sd.Name), ref dummy, subset);
             }
 
             AddModels(allResources, _info.ResourcesByName.Values);
@@ -812,7 +812,7 @@ public sealed class CSharpFirely2 : ILanguage
         _writer.WriteLineIndented("public static List<SearchParamDefinition> SearchParameters = new List<SearchParamDefinition>()");
         OpenScope();
 
-        foreach (StructureDefinition complex in _info.ResourcesByName.Values)
+        foreach (StructureDefinition complex in _info.ResourcesByName.Values.OrderBy(c => c.Name))
         {
             IReadOnlyDictionary<string, SearchParameter> resourceSearchParams = _info.SearchParametersForBase(complex.Name);
             if (!resourceSearchParams.Any())
@@ -1075,7 +1075,7 @@ public sealed class CSharpFirely2 : ILanguage
                         continue;
                     }
 
-                    IEnumerable<string> referencedBy = coreBindings.Values.SelectMany(v => v).cgExtractBaseTypes();
+                    IEnumerable<string> referencedBy = coreBindings.Values.SelectMany(v => v).cgExtractBaseTypes(_info);
 
                     if ((referencedBy.Count() < 2) && !_explicitSharedValueSets.Contains((_info.FhirSequence.ToString(), vs.Url)))
                     {
@@ -1319,7 +1319,7 @@ public sealed class CSharpFirely2 : ILanguage
 
         if (isPatientClass) interfaces.Add($"{Namespace}.IPatient");
 
-        var identifierElement = getIdentifierElement(complex);
+        var identifierElement = complex.cgGetChildren(false).SingleOrDefault(isIdentifierProperty);
         if (identifierElement is not null)
         {
             if (identifierElement.cgIsArray())
@@ -2062,21 +2062,6 @@ public sealed class CSharpFirely2 : ILanguage
     /// <param name="name">The name.</param>
     /// <returns>The enum converted value.</returns>
     private static string ConvertEnumValue(string name) => CSharpFirelyCommon.ConvertEnumValue(name);
-
-    private static ElementDefinition? getIdentifierElement(ComponentDefinition cd)
-    {
-        if (!cd.IsRootOfStructure)
-        {
-            return null;
-        }
-
-        if (cd.Structure.Snapshot?.Element.Any() ?? false)
-        {
-            return cd.Structure.Snapshot.Element.SingleOrDefault(e => isIdentifierProperty(e));
-        }
-
-        return cd.Structure.Differential?.Element.SingleOrDefault(e => isIdentifierProperty(e));
-    }
 
     /// <summary>
     /// Determines whether this element qualifies as an identifying element.
@@ -3106,7 +3091,7 @@ public sealed class CSharpFirely2 : ILanguage
         Dictionary<string, WrittenModelInfo> total,
         IEnumerable<StructureDefinition> typesToAdd)
     {
-        AddModels(total, typesToAdd.Select(ta => CreateWMI(ta)));
+        AddModels(total, typesToAdd.OrderBy(sd => sd.Name).Select(ta => CreateWMI(ta)));
 
         WrittenModelInfo CreateWMI(StructureDefinition t)
         {
