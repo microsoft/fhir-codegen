@@ -103,5 +103,26 @@ public static class ElementDefTypeExtensions
     /// <summary>Gets the 5Ws mappings for this element, or an empty string if none are defined.</summary>
     /// <param name="ed">The ed to act on.</param>
     /// <returns>A string.</returns>
-    public static string cgFiveWs(this ElementDefinition ed) => ed.Mapping.Where(m => m.Identity.Equals("w5")).FirstOrDefault()?.Map ?? string.Empty;
+    public static string cgFiveWs(this ElementDefinition ed)
+    {
+        string source = ed.Mapping.Where(m => m.Identity.Equals("w5")).FirstOrDefault()?.Map ?? string.Empty;
+
+        if (string.IsNullOrEmpty(source))
+        {
+            return string.Empty;
+        }
+
+        // need to change "FiveWs.subject[x]" to "FiveWs.subject", but beware of duplicates
+        HashSet<string> hash = source.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).ToHashSet();
+        if (hash.Contains("FiveWs.subject[x]"))
+        {
+            hash.Remove("FiveWs.subject[x]");
+            if (!hash.Contains("FiveWs.subject"))
+            {
+                hash.Add("FiveWs.subject");
+            }
+        }
+
+        return string.Join(',', hash);
+    }
 }
