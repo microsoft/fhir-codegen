@@ -115,7 +115,7 @@ public partial class DefinitionCollection
     /// <returns>True if backbone element, false if not.</returns>
     public bool IsBackboneElement(string path) =>
         _parentElementsAndType.TryGetValue(path, out string? type) &&
-        (type.Equals("BackboneElement", StringComparison.Ordinal) || type.Equals("Element", StringComparison.Ordinal));
+        ((type == "BackboneElement") || (type == "Element"));
 
     internal bool TryUpdateElement(StructureDefinition destinationSd, ElementDefinition ed)
     {
@@ -355,7 +355,7 @@ public partial class DefinitionCollection
                 }
                 else
                 {
-                    if (!slices.Any(sliceDef => sliceDef.Key.Equals(ed.SliceName, StringComparison.Ordinal)))
+                    if (!slices.Any(sliceDef => sliceDef.Key == ed.SliceName))
                     {
                         _pathsWithSlices[ed.Path] = slices.Append(new(ed.SliceName, sd)).ToArray();
                     }
@@ -448,7 +448,7 @@ public partial class DefinitionCollection
                     }
                     else
                     {
-                        if (!slices.Any(sliceDef => sliceDef.Key.Equals(ed.SliceName, StringComparison.Ordinal)))
+                        if (!slices.Any(sliceDef => sliceDef.Key == ed.SliceName))
                         {
                             _pathsWithSlices[ed.Path] = slices.Append(new(ed.SliceName, sd)).ToArray();
                         }
@@ -631,7 +631,7 @@ public partial class DefinitionCollection
 
             foreach (CodeSystem.ConceptDefinitionComponent c in defs)
             {
-                if (c.Code.Equals(code, StringComparison.Ordinal))
+                if (c.Code == code)
                 {
                     return c.Definition;
                 }
@@ -857,7 +857,7 @@ public partial class DefinitionCollection
             else
             {
                 canonicalUrl = fullUrl;
-                IEnumerable<ElementValue> vElement = r.NamedChildren.Where(e => e.ElementName.Equals("version", StringComparison.Ordinal));
+                IEnumerable<ElementValue> vElement = r.NamedChildren.Where(e => e.ElementName == "version");
 
                 if (vElement.Any())
                 {
@@ -880,7 +880,7 @@ public partial class DefinitionCollection
 
         string url;
 
-        IEnumerable<ElementValue> uElement = r.NamedChildren.Where(e => e.ElementName.Equals("url", StringComparison.Ordinal));
+        IEnumerable<ElementValue> uElement = r.NamedChildren.Where(e => e.ElementName == "url");
 
         if (uElement.Any())
         {
@@ -1497,7 +1497,7 @@ public partial class DefinitionCollection
             }
 
             // check for a base of "Resource" and add to the global list
-            if (spBase.Equals("Resource", StringComparison.Ordinal))
+            if (spBase == "Resource")
             {
                 _globalSearchParameters[sp.Url] = sp;
                 continue;

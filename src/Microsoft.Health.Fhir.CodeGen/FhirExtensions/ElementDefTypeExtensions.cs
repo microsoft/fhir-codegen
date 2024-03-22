@@ -105,7 +105,7 @@ public static class ElementDefTypeExtensions
     /// <returns>A string.</returns>
     public static string cgFiveWs(this ElementDefinition ed)
     {
-        string source = ed.Mapping.Where(m => m.Identity.Equals("w5")).FirstOrDefault()?.Map ?? string.Empty;
+        string source = ed.Mapping.Where(m => m.Identity == "w5").FirstOrDefault()?.Map ?? string.Empty;
 
         if (string.IsNullOrEmpty(source))
         {

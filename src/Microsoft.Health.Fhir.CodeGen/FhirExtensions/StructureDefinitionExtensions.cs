@@ -47,7 +47,7 @@ public static class StructureDefinitionExtensions
                         {
                             return FhirArtifactClassEnum.ComplexType;
                         }
-                        else if (!sd.Type.Equals(sd.Id))
+                        else if (sd.Type != sd.Id)
                         {
                             return FhirArtifactClassEnum.Profile;
                         }
@@ -65,7 +65,7 @@ public static class StructureDefinitionExtensions
                         {
                             return FhirArtifactClassEnum.Extension;
                         }
-                        else if (!sd.Type.Equals(sd.Id))
+                        else if (sd.Type != sd.Id)
                         {
                             return FhirArtifactClassEnum.Profile;
                         }
@@ -169,8 +169,8 @@ public static class StructureDefinitionExtensions
             if (includeRoot)
             {
                 yield return (sd.Snapshot?.Element.Any() ?? false)
-                    ? sd.Snapshot.Element.First(e => e.Path.Equals(forBackbonePath, StringComparison.Ordinal))
-                    : sd.Differential.Element.First(e => e.Path.Equals(forBackbonePath, StringComparison.Ordinal));
+                    ? sd.Snapshot.Element.First(e => e.Path == forBackbonePath)
+                    : sd.Differential.Element.First(e => e.Path == forBackbonePath);
             }
         }
 
@@ -208,13 +208,13 @@ public static class StructureDefinitionExtensions
     {
         if (sd.Snapshot?.Element.Any() ?? false)
         {
-            element = sd.Snapshot.Element.FirstOrDefault(e => e.Path.Equals(path, StringComparison.Ordinal));
+            element = sd.Snapshot.Element.FirstOrDefault(e => e.Path == path);
             return element != null;
         }
 
         if (sd.Differential?.Element.Any() ?? false)
         {
-            element = sd.Differential.Element.FirstOrDefault(e => e.Path.Equals(path, StringComparison.Ordinal));
+            element = sd.Differential.Element.FirstOrDefault(e => e.Path == path);
             return element != null;
         }
 
@@ -233,13 +233,13 @@ public static class StructureDefinitionExtensions
     {
         if (sd.Snapshot?.Element.Any() ?? false)
         {
-            element = sd.Snapshot.Element.FirstOrDefault(e => e.ElementId.Equals(id, StringComparison.Ordinal));
+            element = sd.Snapshot.Element.FirstOrDefault(e => e.ElementId == id);
             return element != null;
         }
 
         if (sd.Differential?.Element.Any() ?? false)
         {
-            element = sd.Differential.Element.FirstOrDefault(e => e.ElementId.Equals(id, StringComparison.Ordinal));
+            element = sd.Differential.Element.FirstOrDefault(e => e.ElementId == id);
             return element != null;
         }
 
@@ -279,14 +279,14 @@ public static class StructureDefinitionExtensions
         if (sd.Snapshot?.Element.Any() ?? false)
         {
             return sd.Snapshot.Element.SelectMany(e => e.Constraint)
-                .Where(e => e.Source.Equals(sd.Url, StringComparison.Ordinal))
+                .Where(e => e.Source == sd.Url)
                 .GroupBy(e => e.Key)
                 .Select(e => e.First())
                 .OrderBy(e => e.Key, NaturalComparer.Instance);
         }
 
         return sd.Differential.Element.SelectMany(e => e.Constraint)
-            .Where(e => e.Source.Equals(sd.Url, StringComparison.Ordinal))
+            .Where(e => e.Source == sd.Url)
             .GroupBy(e => e.Key)
             .Select(e => e.First())
             .OrderBy(e => e.Key, NaturalComparer.Instance);
@@ -333,7 +333,7 @@ public static class StructureDefinitionExtensions
 
         if (sd.Differential?.Element.Any() ?? false)
         {
-            if (sd.Differential.Element.First().ElementId.Equals(sd.Id))
+            if (sd.Differential.Element.First().ElementId == sd.Id)
             {
                 // first element is the root
                 return sd.Differential.Element.First();

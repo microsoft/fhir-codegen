@@ -20,7 +20,7 @@ public partial class DefinitionCollection
     public bool HasSlicing(string path, StructureDefinition? definedBy = null) =>
         (definedBy == null)
         ? _pathsWithSlices.ContainsKey(path)
-        : _pathsWithSlices.ContainsKey(path) && _pathsWithSlices[path].Any(kvp => kvp.Value.Id.Equals(definedBy.Id, StringComparison.Ordinal));
+        : _pathsWithSlices.ContainsKey(path) && _pathsWithSlices[path].Any(kvp => kvp.Value.Id == definedBy.Id);
 
     /// <summary>Attempts to get slicing a string[] from the given string.</summary>
     /// <param name="path">  Full pathname of the file.</param>
@@ -53,7 +53,7 @@ public partial class DefinitionCollection
             return false;
         }
 
-        slices = sliceDefs.Where(kvp => kvp.Value.Id.Equals(definedBy.Id, StringComparison.Ordinal)).Select(kvp => kvp.Key).ToArray();
+        slices = sliceDefs.Where(kvp => kvp.Value.Id == definedBy.Id).Select(kvp => kvp.Key).ToArray();
         return true;
     }
 

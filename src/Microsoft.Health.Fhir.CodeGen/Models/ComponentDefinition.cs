@@ -75,12 +75,12 @@ public record class ComponentDefinition
 
         if (Structure.Snapshot?.Element.Any() ?? false)
         {
-            return Structure.Snapshot.Element.FirstOrDefault(e => e.Path.Equals(path, StringComparison.Ordinal));
+            return Structure.Snapshot.Element.FirstOrDefault(e => e.Path == path);
         }
 
         if (Structure.Differential?.Element.Any() ?? false)
         {
-            return Structure.Differential.Element.FirstOrDefault(e => e.Path.Equals(path, StringComparison.Ordinal));
+            return Structure.Differential.Element.FirstOrDefault(e => e.Path == path);
         }
 
         return null;

@@ -109,7 +109,7 @@ public static class StructureDefSlicing
         string discriminatorPath,
         out string postResolve)
     {
-        if (discriminatorPath.Equals("$this", StringComparison.Ordinal))
+        if (discriminatorPath == "$this")
         {
             postResolve = string.Empty;
             return string.Empty;
@@ -139,7 +139,7 @@ public static class StructureDefSlicing
 
         // TODO(ginoc): need to sort out allowed 'ofType()' processing and mangle the path appropriately - need an example to test against
 
-        if (string.IsNullOrEmpty(path) || path.Equals(".", StringComparison.Ordinal))
+        if (string.IsNullOrEmpty(path) || path == ".")
         {
             return string.Empty;
         }
@@ -178,7 +178,7 @@ public static class StructureDefSlicing
         string id = $"{slicingEd.Path}:{sliceName}{relativePath}";
         string path = $"{slicingEd.Path}{relativePath}";
 
-        foreach (ElementDefinition ed in sliceElements.Where(e => e.Path.Equals(path, StringComparison.Ordinal)))
+        foreach (ElementDefinition ed in sliceElements.Where(e => e.Path == path))
         {
             foreach (ElementDefinition.TypeRefComponent et in ed.Type ?? Enumerable.Empty<ElementDefinition.TypeRefComponent>())
             {
@@ -207,7 +207,7 @@ public static class StructureDefSlicing
             id = id.Substring(0, id.LastIndexOf('.'));
             path = path.Substring(0, path.LastIndexOf('.'));
 
-            foreach (ElementDefinition ed in sliceElements.Where(e => e.Path.Equals(path, StringComparison.Ordinal)))
+            foreach (ElementDefinition ed in sliceElements.Where(e => e.Path == path))
             {
                 bool found = false;
 
@@ -234,7 +234,7 @@ public static class StructureDefSlicing
 
                 // TODO: not quite right - need to check for transitive slicing (see above)
                 // if not found, check for 'commonly misused' types
-                foreach (ElementDefinition.TypeRefComponent t in ed.Type.Where(t => (t.Code.Equals("BackboneElement", StringComparison.Ordinal) || t.Code.Equals("Element", StringComparison.Ordinal))))
+                foreach (ElementDefinition.TypeRefComponent t in ed.Type.Where(t => (t.Code == "BackboneElement" || t.Code == "Element")))
                 {
                     result.Add(new()
                     {
@@ -266,7 +266,7 @@ public static class StructureDefSlicing
         string id = $"{slicingEd.Path}:{sliceName}{relativePath}";
         string path = $"{slicingEd.Path}{relativePath}";
 
-        foreach (ElementDefinition ed in sliceElements.Where(e => e.Path.Equals(path, StringComparison.Ordinal)))
+        foreach (ElementDefinition ed in sliceElements.Where(e => e.Path == path))
         {
             result.Add(new()
             {
@@ -292,7 +292,7 @@ public static class StructureDefSlicing
             id = id.Substring(0, id.LastIndexOf('.'));
             path = path.Substring(0, path.LastIndexOf('.'));
 
-            foreach (ElementDefinition ed in sliceElements.Where(e => e.Path.Equals(path, StringComparison.Ordinal)))
+            foreach (ElementDefinition ed in sliceElements.Where(e => e.Path == path))
             {
                 result.Add(new()
                 {
@@ -329,7 +329,7 @@ public static class StructureDefSlicing
         string id = $"{slicingEd.Path}:{sliceName}{relativePath}";
         string path = $"{slicingEd.Path}{relativePath}";
 
-        foreach (ElementDefinition ed in sliceElements.Where(e => e.Path.Equals(path, StringComparison.Ordinal)))
+        foreach (ElementDefinition ed in sliceElements.Where(e => e.Path == path))
         //foreach (ElementDefinition ed in sliceElements.Where(e => e.ElementId.Equals(id, StringComparison.Ordinal)))
         {
             foreach (string profile in ed.Type?.SelectMany(t => t.Profile) ?? Enumerable.Empty<string>())
@@ -360,7 +360,7 @@ public static class StructureDefSlicing
             id = id.Substring(0, id.LastIndexOf('.'));
             path = path.Substring(0, path.LastIndexOf('.'));
 
-            foreach (ElementDefinition ed in sliceElements.Where(e => e.Path.Equals(path, StringComparison.Ordinal)))
+            foreach (ElementDefinition ed in sliceElements.Where(e => e.Path == path))
             //foreach (ElementDefinition ed in sliceElements.Where(e => e.ElementId.Equals(id, StringComparison.Ordinal)))
             {
                 bool found = false;
@@ -388,7 +388,7 @@ public static class StructureDefSlicing
 
                 result.AddRange(CheckTransitiveForValue(
                     dc,
-                    ed.Type!.Where(t => t.Code.Equals("BackboneElement", StringComparison.Ordinal) || t.Code.Equals("Element", StringComparison.Ordinal)),
+                    ed.Type!.Where(t => t.Code == "BackboneElement" || t.Code == "Element"),
                     discriminator,
                     id,
                     relativePath,
@@ -421,7 +421,7 @@ public static class StructureDefSlicing
         string id = $"{slicingEd.Path}:{sliceName}{relativePath}";
         string path = $"{slicingEd.Path}{relativePath}";
 
-        foreach (ElementDefinition ed in sliceElements.Where(e => e.Path.Equals(path, StringComparison.Ordinal)))
+        foreach (ElementDefinition ed in sliceElements.Where(e => e.Path == path))
         //foreach (ElementDefinition ed in sliceElements.Where(e => e.ElementId.Equals(id, StringComparison.Ordinal)))
         {
             if (ed.Fixed != null)
@@ -454,11 +454,11 @@ public static class StructureDefSlicing
             }
 
             // check for references that cross resolve boundaries
-            if (!string.IsNullOrEmpty(postResolve) && ed.Type.Any(t => t.Code.Equals("Reference", StringComparison.Ordinal)))
+            if (!string.IsNullOrEmpty(postResolve) && ed.Type.Any(t => t.Code == "Reference"))
             {
                 List<SliceDiscriminator> resolvedSlices = CheckResolvedTarget(
                     dc,
-                    ed.Type!.Where(t => t.Code.Equals("Reference", StringComparison.Ordinal)),
+                    ed.Type!.Where(t => t.Code == "Reference"),
                     discriminator,
                     postResolve,
                     ed.Path);
@@ -477,13 +477,13 @@ public static class StructureDefSlicing
         }
 
         // check for extension URL, it is represented oddly
-        if (discriminator.Path.Equals("url", StringComparison.Ordinal))
+        if (discriminator.Path == "url")
         {
             id = $"{slicingEd.Path}:{sliceName}";
 
-            foreach (ElementDefinition ed in sliceElements.Where(e => e.ElementId.Equals(id, StringComparison.Ordinal)))
+            foreach (ElementDefinition ed in sliceElements.Where(e => e.ElementId == id))
             {
-                foreach (string profile in ed.Type?.Where(t => t.Code.Equals("Extension", StringComparison.Ordinal)).SelectMany(t => t.Profile) ?? Enumerable.Empty<string>())
+                foreach (string profile in ed.Type?.Where(t => t.Code == "Extension").SelectMany(t => t.Profile) ?? Enumerable.Empty<string>())
                 {
                     result.Add(new()
                     {
@@ -513,13 +513,13 @@ public static class StructureDefSlicing
             id = id.Substring(0, id.LastIndexOf('.'));
             path = path.Substring(0, path.LastIndexOf('.'));
 
-            foreach (ElementDefinition ed in sliceElements.Where(e => (e.Type != null) && e.Path.Equals(path, StringComparison.Ordinal)))
+            foreach (ElementDefinition ed in sliceElements.Where(e => (e.Type != null) && e.Path == path))
             //foreach (ElementDefinition ed in sliceElements.Where(e => (e.Type != null) && e.ElementId.Equals(id, StringComparison.Ordinal)))
             {
                 bool found = false;
 
                 // check for the specified type
-                foreach (ElementDefinition.TypeRefComponent tr in ed.Type!.Where(t => t.Code.Equals(eType, StringComparison.Ordinal)))
+                foreach (ElementDefinition.TypeRefComponent tr in ed.Type!.Where(t => t.Code == eType))
                 {
                     if (tr.Profile.Any())
                     {
@@ -542,7 +542,7 @@ public static class StructureDefSlicing
                 // check for a transitive slicing definition
                 result.AddRange(CheckTransitiveForValue(
                     dc,
-                    ed.Type!.Where(t => t.Code.Equals("BackboneElement", StringComparison.Ordinal) || t.Code.Equals("Element", StringComparison.Ordinal)),
+                    ed.Type!.Where(t => t.Code == "BackboneElement" || t.Code == "Element"),
                     discriminator,
                     id,
                     relativePath,
@@ -663,7 +663,7 @@ public static class StructureDefSlicing
                 if (transitive.cgTryGetElementById(tId, out tEd) && (tEd != null))
                 {
                     // check for the specified type
-                    foreach (ElementDefinition.TypeRefComponent tTr in tEd.Type!.Where(t => t.Code.Equals(teType, StringComparison.Ordinal)))
+                    foreach (ElementDefinition.TypeRefComponent tTr in tEd.Type!.Where(t => t.Code == teType))
                     {
                         if (tTr.Profile.Any())
                         {
@@ -774,7 +774,7 @@ public static class StructureDefSlicing
                 if (transitive.cgTryGetElementById(tId, out tEd) && (tEd != null))
                 {
                     // check for the specified type
-                    foreach (ElementDefinition.TypeRefComponent tTr in tEd.Type!.Where(t => t.Code.Equals(teType, StringComparison.Ordinal)))
+                    foreach (ElementDefinition.TypeRefComponent tTr in tEd.Type!.Where(t => t.Code == teType))
                     {
                         if (tTr.Profile.Any())
                         {

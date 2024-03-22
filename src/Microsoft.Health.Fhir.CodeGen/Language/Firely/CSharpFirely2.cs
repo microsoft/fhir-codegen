@@ -2072,7 +2072,7 @@ public sealed class CSharpFirely2 : ILanguage
     {
         return element.Path.EndsWith(".identifier", StringComparison.Ordinal) &&
             (element.Type.Count == 1) &&
-            element.Type.First().Code.Equals("Identifier", StringComparison.Ordinal);
+            (element.Type.First().Code == "Identifier");
     }
 
     /// <summary>Writes the elements.</summary>
@@ -2695,7 +2695,7 @@ public sealed class CSharpFirely2 : ILanguage
 
         if (elementTypes.Any())
         {
-            foreach ((string etName, ElementDefinition.TypeRefComponent elementType) in elementTypes.Where(kvp => kvp.Key.Equals("Reference") && kvp.Value.TargetProfile.Any()))
+            foreach ((string etName, ElementDefinition.TypeRefComponent elementType) in elementTypes.Where(kvp => (kvp.Key == "Reference") && kvp.Value.TargetProfile.Any()))
             {
                 resourceReferences = "[References(" +
                     string.Join(',', elementType.cgTargetProfiles().Keys.Select(name => "\"" + name + "\"")) +

@@ -91,15 +91,15 @@ public static class ElementDefinitionExtensions
     /// <summary>Gets if this element represents an array of values.</summary>
     /// <param name="ed">The ed to act on.</param>
     /// <returns>True if it is an array, false if it is scalar.</returns>
-    public static bool cgIsArray(this ElementDefinition ed) => !ed.Max.Equals("1", StringComparison.Ordinal);
+    public static bool cgIsArray(this ElementDefinition ed) => ed.Max != "1";
 
     /// <summary>An ElementDefinition extension method that cg is inherited.</summary>
     /// <param name="ed">The ed to act on.</param>
     /// <param name="sd">The SD.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
     public static bool cgIsInherited(this ElementDefinition ed, StructureDefinition sd) => (ed.Base != null)
-        ? (!ed.Base.Path.Equals(ed.Path, StringComparison.Ordinal))
-        : !(sd.Differential?.Element?.Any(e => e.Path.Equals(ed.Path, StringComparison.Ordinal))) ?? false;
+        ? (ed.Base.Path != ed.Path)
+        : !(sd.Differential?.Element?.Any(e => e.Path == ed.Path)) ?? false;
 
     /// <summary>Gets the first validation regex defined for an element or an empty string</summary>
     /// <param name="ed">The ed to act on.</param>
@@ -239,7 +239,7 @@ public static class ElementDefinitionExtensions
     /// <param name="ed">The ed to act on.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
     public static bool cgHasCodes(this ElementDefinition ed) =>
-        (ed.Binding?.Strength == BindingStrength.Required) && (ed.Type?.Any(tr => tr.Code.Equals("Code")) ?? false);
+        (ed.Binding?.Strength == BindingStrength.Required) && (ed.Type?.Any(tr => tr.Code == "Code") ?? false);
 
     /// <summary>Gets the required codes for this element.</summary>
     /// <param name="ed">       The ed to act on.</param>
@@ -257,11 +257,11 @@ public static class ElementDefinitionExtensions
 
         // only generate codes for elements of type code, string, uri, url, or canonical
         if (!ed.Type.Any(tr =>
-                tr.Code.Equals("code", StringComparison.Ordinal) ||
-                tr.Code.Equals("string", StringComparison.Ordinal) ||
-                tr.Code.Equals("uri", StringComparison.Ordinal) ||
-                tr.Code.Equals("url", StringComparison.Ordinal) ||
-                tr.Code.Equals("canonical", StringComparison.Ordinal)))
+                (tr.Code == "code") ||
+                (tr.Code == "string") ||
+                (tr.Code == "uri") ||
+                (tr.Code == "url") ||
+                (tr.Code == "canonical")))
         {
             return Enumerable.Empty<string>();
         }
@@ -273,7 +273,7 @@ public static class ElementDefinitionExtensions
             // TODO(ginoc): backwards-compatibility says we should use 'starter' in place of actual binding for CS.format
             // On the other hand, Attachment.language looks like we should ignore.  What do we want?
             // check for additional bindings
-            if (ed.Path.Equals("CapabilityStatement.format", StringComparison.Ordinal) &&
+            if ((ed.Path == "CapabilityStatement.format") &&
                 ed.Binding.Additional.Any(a => a.Purpose == ElementDefinition.AdditionalBindingPurposeVS.Starter))
             {
                 ElementDefinition.AdditionalComponent add = ed.Binding.Additional.First(a => a.Purpose == ElementDefinition.AdditionalBindingPurposeVS.Starter);
@@ -490,7 +490,7 @@ public static class ElementDefinitionExtensions
                 case CodeGenCommon.Models.FhirArtifactClassEnum.ComplexType:
                     {
                         bt = sd.cgBaseTypeName();
-                        if (!bt.Equals("Quantity", StringComparison.Ordinal))
+                        if (bt != "Quantity")
                         {
                             bt = sd.Id;
                         }

@@ -52,7 +52,7 @@ public static class ValueSetExtensions
             return false;
         }
 
-        ValueSet.ParameterComponent? vspc = vs.Expansion.Parameter.Where(pc => pc.Name.Equals("limitedExpansion", StringComparison.Ordinal)).FirstOrDefault();
+        ValueSet.ParameterComponent? vspc = vs.Expansion.Parameter.Where(pc => pc.Name == "limitedExpansion").FirstOrDefault();
 
         if (vspc == null)
         {
@@ -139,16 +139,19 @@ public static class ValueSetExtensions
         {
             foreach (ValueSet.ContainsComponent c in cc)
             {
-                yield return new FhirConcept
+                if (!string.IsNullOrEmpty(c.Code))
                 {
-                    System = c.System,
-                    Code = c.Code,
-                    Display = c.Display,
-                    Definition = dc.ConceptDefinition(c.System, c.Code, c.Display),
-                    IsAbstract = c.Abstract,
-                    IsInactive = c.Inactive,
-                    Properties = c.Property.Select(p => new FhirConcept.ConceptProperty { Code = p.Code, Value = p.Value.ToString() ?? string.Empty }).ToArray(),
-                };
+                    yield return new FhirConcept
+                    {
+                        System = c.System,
+                        Code = c.Code,
+                        Display = c.Display,
+                        Definition = dc.ConceptDefinition(c.System, c.Code, c.Display),
+                        IsAbstract = c.Abstract,
+                        IsInactive = c.Inactive,
+                        Properties = c.Property.Select(p => new FhirConcept.ConceptProperty { Code = p.Code, Value = p.Value.ToString() ?? string.Empty }).ToArray(),
+                    };
+                }
 
                 if (c.Contains.Any())
                 {
