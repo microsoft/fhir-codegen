@@ -99,7 +99,7 @@ public static class ElementDefinitionExtensions
     /// <returns>True if it succeeds, false if it fails.</returns>
     public static bool cgIsInherited(this ElementDefinition ed, StructureDefinition sd) => (ed.Base != null)
         ? (!ed.Base.Path.Equals(ed.Path, StringComparison.Ordinal))
-        : sd.Differential?.Element?.Any(e => e.Path.Equals(ed.Path, StringComparison.Ordinal)) ?? false;
+        : !(sd.Differential?.Element?.Any(e => e.Path.Equals(ed.Path, StringComparison.Ordinal))) ?? false;
 
     /// <summary>Gets the first validation regex defined for an element or an empty string</summary>
     /// <param name="ed">The ed to act on.</param>
