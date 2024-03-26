@@ -59,10 +59,29 @@ public class TypeScript : ILanguage
             },
         };
 
+        /// <summary>Gets or sets the namespace.</summary>
+        [ConfigOption(
+            ArgName = "--inline-enums",
+            Description = "If code elements with required bindings should have inlined enums.")]
+        public bool InlineEnums { get; set; } = true;
+
+        private static ConfigurationOption InlineEnumsParameter { get; } = new()
+        {
+            Name = "InlineEnums",
+            DefaultValue = true,
+            CliOption = new System.CommandLine.Option<string>("--inline-enums", "If code elements with required bindings should have inlined enums.")
+            {
+                Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+                IsRequired = false,
+            },
+        };
+
+        /// <summary>(Immutable) Options for controlling the operation.</summary>
         private static readonly ConfigurationOption[] _options = new ConfigurationOption[]
         {
             NamespaceParameter,
             MinTsVersionParameter,
+            InlineEnumsParameter,
         };
 
         /// <summary>
@@ -89,6 +108,9 @@ public class TypeScript : ILanguage
                         break;
                     case "MinTypeScriptVersion":
                         MinTsVersion = GetOpt(parseResult, opt.CliOption, MinTsVersion);
+                        break;
+                    case "InlineEnums":
+                        InlineEnums = GetOpt(parseResult, opt.CliOption, InlineEnums);
                         break;
                 }
             }
@@ -299,7 +321,7 @@ public class TypeScript : ILanguage
 
         if (config.ExportStructures.Contains(CodeGenCommon.Models.FhirArtifactClassEnum.ValueSet))
         {
-            _exportEnums = true;
+            _exportEnums = !_options.InlineEnums;
         }
         else
         {
@@ -593,14 +615,29 @@ public class TypeScript : ILanguage
             typeName = cd.Element.cgBaseTypeName(_dc, false, _primitiveTypeMap);
         }
 
-        if (string.IsNullOrEmpty(typeName) || cd.Element.Path.Equals(typeName, StringComparison.Ordinal))
+        if (string.IsNullOrEmpty(typeName) ||
+            (cd.Element.Path == "Element") ||
+            (cd.Element.Path == cd.Structure.Name))
         {
-            exportName = cd.Element.cgNameForExport(NamingConvention.PascalCase);
-            _writer.WriteLineIndented($"export interface {exportName} {{");
+            exportName = cd.cgNameRooted(NamingConvention.PascalCase);
+            //exportName = cd.Element.cgNameForExport(NamingConvention.PascalCase);
+            //_writer.WriteLineIndented($"export interface {exportName} {{");
+
+            if (_genericsAndTypeHints.TryGetValue(cd.Element.Path, out GenericTypeHintInfo hint))
+            {
+                _writer.WriteLineIndented(
+                    $"export interface" +
+                    $" {exportName}<{hint.Alias} = {hint.GenericHint}> {{");
+            }
+            else
+            {
+                _writer.WriteLineIndented($"export interface {exportName} {{");
+            }
         }
         else
         {
-            exportName = cd.Element.cgNameForExport(NamingConvention.PascalCase, true);
+            exportName = cd.cgNameRooted(NamingConvention.PascalCase);
+            //exportName = cd.Element.cgNameForExport(NamingConvention.PascalCase, true);
             string exportTypeName = typeName.ToPascalCase();
 
             if (_genericsAndTypeHints.TryGetValue(cd.Element.Path, out GenericTypeHintInfo hint))
@@ -735,7 +772,7 @@ public class TypeScript : ILanguage
     {
         elementsWithCodes = new List<ElementDefinition>();
 
-        foreach (ElementDefinition ed in cd.Structure.cgElements(cd.Element.Path, true, false).OrderBy(e => e.Path))
+        foreach (ElementDefinition ed in cd.Structure.cgElements(cd.Element.Path, true, false).Where(e => e.cgIsInherited(cd.Structure) == false).OrderBy(e => e.Path))
         {
             if (ed.cgIsInherited(cd.Structure))
             {
@@ -798,7 +835,7 @@ public class TypeScript : ILanguage
             // if there are no types, use the base type
             values.Add(
                 FhirSanitizationUtils.ToConvention(baseName, ed.Path, nameConvention, concatenatePath, concatenationDelimiter),
-                FhirSanitizationUtils.ToConvention(ed.cgBaseTypeName(_dc, false, _primitiveTypeMap), string.Empty, typeConvention));
+                FhirSanitizationUtils.ToConvention(ed.cgBaseTypeName(_dc, true, _primitiveTypeMap), string.Empty, typeConvention));
 
             return values;
         }

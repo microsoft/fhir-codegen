@@ -3,6 +3,7 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System.Xml.Linq;
 using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Model;
 
@@ -11,7 +12,93 @@ namespace Microsoft.Health.Fhir.CrossVersion.Convert_20_50;
 public class ElementDefinition_20_50 : ICrossVersionProcessor<ElementDefinition>, ICrossVersionExtractor<ElementDefinition>
 {
 	private Converter_20_50 _converter;
-	internal ElementDefinition_20_50(Converter_20_50 converter)
+
+    /// <summary>The named reference links.</summary>
+    private static Dictionary<string, string> _namedReferenceLinks = new()
+    {
+        { "Extension.extension", "Extension.extension" },
+        { "Bundle.link", "Bundle.link" },
+        { "Composition.section", "Composition.section" },
+        { "ConceptMap.dependsOn", "ConceptMap.element.target.dependsOn" },
+        { "Conformance.searchParam", "Conformance.rest.resource.searchParam" },
+        { "ConsentDirective.identifier", "Contract.identifier" },
+        { "ConsentDirective.issued", "Contract.issued" },
+        { "ConsentDirective.applies", "Contract.applies" },
+        { "ConsentDirective.subject", "Contract.subject" },
+        { "ConsentDirective.authority", "Contract.authority" },
+        { "ConsentDirective.domain", "Contract.domain" },
+        { "ConsentDirective.type", "Contract.type" },
+        { "ConsentDirective.subType", "Contract.subType" },
+        { "ConsentDirective.action", "Contract.action" },
+        { "ConsentDirective.actionReason", "Contract.actionReason" },
+        { "ConsentDirective.actor", "Contract.actor" },
+        { "ConsentDirective.actor.entity", "Contract.actor.entity" },
+        { "ConsentDirective.actor.role", "Contract.actor.role" },
+        { "ConsentDirective.valuedItem", "Contract.valuedItem" },
+        { "ConsentDirective.valuedItem.entity[x]", "Contract.valuedItem.entity[x]" },
+        { "ConsentDirective.valuedItem.identifier", "Contract.valuedItem.identifier" },
+        { "ConsentDirective.valuedItem.effectiveTime", "Contract.valuedItem.effectiveTime" },
+        { "ConsentDirective.valuedItem.quantity", "Contract.valuedItem.quantity" },
+        { "ConsentDirective.valuedItem.unitprice", "Contract.valuedItem.unitPrice" },
+        { "ConsentDirective.valuedItem.factor", "Contract.valuedItem.factor" },
+        { "ConsentDirective.valuedItem.points", "Contract.valuedItem.points" },
+        { "ConsentDirective.valuedItem.net", "Contract.valuedItem.net" },
+        { "ConsentDirective.signer", "Contract.signer" },
+        { "ConsentDirective.signer.type", "Contract.signer.type" },
+        { "ConsentDirective.signer.party", "Contract.signer.party" },
+        { "ConsentDirective.signer.signature", "Contract.signer.signature" },
+        { "ConsentDirective.term", "Contract.term" },
+        { "ConsentDirective.term.identifier", "Contract.term.identifier" },
+        { "ConsentDirective.term.issued", "Contract.term.issued" },
+        { "ConsentDirective.term.applies", "Contract.term.applies" },
+        { "ConsentDirective.term.type", "Contract.term.type" },
+        { "ConsentDirective.term.subType", "Contract.term.subType" },
+        { "ConsentDirective.term.subject", "Contract.term.subject" },
+        { "ConsentDirective.term.action", "Contract.term.action" },
+        { "ConsentDirective.term.actionReason", "Contract.term.actionReason" },
+        { "ConsentDirective.term.actor", "Contract.term.actor" },
+        { "ConsentDirective.term.actor.entity", "Contract.term.actor.entity" },
+        { "ConsentDirective.term.actor.role", "Contract.term.actor.role" },
+        { "ConsentDirective.term.text", "Contract.term.text" },
+        { "ConsentDirective.term.valuedItem", "Contract.term.valuedItem" },
+        { "ConsentDirective.term.valuedItem.entity[x]", "Contract.term.valuedItem.entity[x]" },
+        { "ConsentDirective.term.valuedItem.", "Contract.term.valuedItem.identifier" },
+        { "ConsentDirective.term.valuedItem.effectiveTime", "Contract.term.valuedItem.effectiveTime" },
+        { "ConsentDirective.term.valuedItem.quantity", "Contract.term.valuedItem.quantity" },
+        { "ConsentDirective.term.valuedItem.unitPrice", "Contract.term.valuedItem.unitPrice" },
+        { "ConsentDirective.term.valuedItem.factor", "Contract.term.valuedItem.factor" },
+        { "ConsentDirective.term.valuedItem.points", "Contract.term.valuedItem.points" },
+        { "ConsentDirective.term.valuedItem.net", "Contract.term.valuedItem.net" },
+        { "Contract.term", "Contract.term" },
+        { "Condition.onsetquantity", "Condition.onsetQuantity" },
+        { "Condition.onsetdatetime", "Condition.onsetDateTime" },
+        { "DiagnosticReport.USLabLOINCCoding", "DiagnosticReport.code.coding" },
+        { "MedicationAdministration.medicationcodeableconcept", "MedicationAdministration.medicationCodeableConcept" },
+        { "MedicationAdministration.medicationreference", "MedicationAdministration.medicationReference" },
+        { "Observation.referenceRange", "Observation.referenceRange" },
+        { "Specimen.USLabPlacerSID", "Specimen.identifier" },
+        { "DiagnosticOrder.event", "DiagnosticOrder.event" },
+        { "ImplementationGuide.page", "ImplementationGuide.page" },
+        { "OperationDefinition.parameter", "OperationDefinition.parameter" },
+        { "Parameters.parameter", "Parameters.parameter" },
+        { "Provenance.agent", "Provenance.agent" },
+        { "DiagnosticReport.locationPerformed.valueReference", "DiagnosticReport.extension.valueReference" },
+        { "Questionnaire.group", "Questionnaire.group" },
+        { "QuestionnaireResponse.group", "QuestionnaireResponse.group" },
+        { "ValueSet.designation", "ValueSet.codeSystem.concept.designation" },
+        { "DataElement.l", "DataElement.element.maxValue[x]" },
+        { "DataElement.MappingEquivalence", "DataElement.element.mapping.extension" },
+        { "ValueSet.concept", "ValueSet.codeSystem.concept" },
+        { "ValueSet.include", "ValueSet.compose.include" },
+        { "ValueSet.contains", "ValueSet.expansion.contains" },
+        { "TestScript.metadata", "TestScript.metadata" },
+        { "TestScript.operation", "TestScript.setup.action.operation" },
+        { "TestScript.assert", "TestScript.setup.action.assert" },
+        { "DiagnosticOrder.USLabDOPlacerID", "DiagnosticOrder.identifier" },
+    };
+
+
+    internal ElementDefinition_20_50(Converter_20_50 converter)
 	{
 		_converter = converter;
 	}
@@ -24,7 +111,40 @@ public class ElementDefinition_20_50 : ICrossVersionProcessor<ElementDefinition>
 			Process(child, v);
 		}
 
-		return v;
+        // check to see if the name should actually be applied as a slice name
+        if (!string.IsNullOrEmpty(v.SliceName))
+        {
+            if ((v.Slicing == null) &&
+                !v.Path.EndsWith(".extension", StringComparison.Ordinal))
+            {
+                v.ElementId = v.SliceName;
+                v.SliceName = null;
+            }
+        }
+
+        // correct content references
+        if (!string.IsNullOrEmpty(v.ContentReference))
+        {
+            string lookupName;
+
+            if (v.ContentReference.Contains('.', StringComparison.Ordinal))
+            {
+                lookupName = v.ContentReference;
+            }
+            else
+            {
+                lookupName = $"{v.Path.Split('.')[0]}.{v.ContentReference}";
+            }
+
+            // look up the named reference in the alias table
+            if (!_namedReferenceLinks.TryGetValue(lookupName, out string? updated))
+            {
+                throw new InvalidDataException($"Could not resolve NameReference {v.ContentReference} field {v.Path}");
+            }
+
+            v.ContentReference = updated;
+        }
+        return v;
 	}
 
 	public void Process(ISourceNode node, ElementDefinition current)
@@ -44,14 +164,13 @@ public class ElementDefinition_20_50 : ICrossVersionProcessor<ElementDefinition>
 				break;
 
 			case "name":
-			case "sliceName":
-				current.SliceNameElement = new FhirString(node.Text);
-				break;
+                //current.ElementId = node.Text;
+                current.SliceNameElement = new FhirString(node.Text);
+                break;
 
-			case "_name":
-			case "_sliceName":
-				_converter._element.Process(node, current.SliceNameElement);
-				break;
+			//case "_name":
+			//	_converter._element.Process(node, current.SliceNameElement);
+			//	break;
 
 			case "label":
 				current.LabelElement = new FhirString(node.Text);
@@ -125,11 +244,11 @@ public class ElementDefinition_20_50 : ICrossVersionProcessor<ElementDefinition>
 				current.Base = Extract20ElementDefinitionBaseComponent(node);
 				break;
 
-			case "contentReference":
-				current.ContentReferenceElement = new FhirUri(node.Text);
+			case "nameReference":
+                current.ContentReferenceElement = new FhirUri(node.Text);
 				break;
 
-			case "_contentReference":
+			case "_nameReference":
 				_converter._element.Process(node, current.ContentReferenceElement);
 				break;
 

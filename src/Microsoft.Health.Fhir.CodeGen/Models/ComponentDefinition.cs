@@ -43,10 +43,16 @@ public record class ComponentDefinition
     /// </summary>
     /// <param name="convention">The naming convention.</param>
     /// <returns>A string representing the code generation name.</returns>
-    //public string cgName(NamingConvention convention = NamingConvention.PascalCase) => IsRootOfStructure
-    //    ? Element.cgNameForExport(convention)
-    //    : Element.cgNameForExport(convention, true);
+    /// <remarks>Firely uses this version</remarks>
     public string cgName(NamingConvention convention = NamingConvention.PascalCase) => Element.cgNameForExport(convention);
+
+    /// <summary>Cg name rooted.</summary>
+    /// <param name="convention">(Optional) The convention.</param>
+    /// <returns>A string.</returns>
+    /// <remarks>TypeScript uses this version</remarks>
+    public string cgNameRooted(NamingConvention convention = NamingConvention.PascalCase) => IsRootOfStructure
+        ? Structure.Name.ToConvention(convention)
+        : Element.cgNameForExport(convention, true);
 
     /// <summary>
     /// Gets the base type name for code generation.

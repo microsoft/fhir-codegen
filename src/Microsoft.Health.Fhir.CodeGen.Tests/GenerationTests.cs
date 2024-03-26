@@ -133,7 +133,7 @@ public class GenerationTestsR5 : IClassFixture<GenerationTestFixture>
     [Theory]
     [InlineData("Info", "TestData/Generated/Info-R5.txt")]
     [InlineData("TypeScript", "TestData/Generated/TypeScript-R5.ts")]
-    internal void TestGenR5(string langName, string filePath)
+    internal void TestLangR5(string langName, string filePath)
     {
         // Get the absolute path to the file
         string path = Path.IsPathRooted(filePath)
@@ -227,7 +227,7 @@ public class GenerationTestsR4B : IClassFixture<GenerationTestFixture>
     [Theory]
     [InlineData("Info", "TestData/Generated/Info-R4B.txt")]
     [InlineData("TypeScript", "TestData/Generated/TypeScript-R4B.ts")]
-    internal void TestInfoR4B(string langName, string filePath)
+    internal void TestLangR4B(string langName, string filePath)
     {
         // Get the absolute path to the file
         string path = Path.IsPathRooted(filePath)
@@ -321,7 +321,7 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
     [Theory]
     [InlineData("Info", "TestData/Generated/Info-R4.txt")]
     [InlineData("TypeScript", "TestData/Generated/TypeScript-R4.ts")]
-    internal void TestInfoR4(string langName, string filePath)
+    internal void TestLangR4(string langName, string filePath)
     {
         // Get the absolute path to the file
         string path = Path.IsPathRooted(filePath)
@@ -415,7 +415,7 @@ public class GenerationTestsR3 : IClassFixture<GenerationTestFixture>
     [Theory]
     [InlineData("Info", "TestData/Generated/Info-R3.txt")]
     [InlineData("TypeScript", "TestData/Generated/TypeScript-R3.ts")]
-    internal void TestInfoR3(string langName, string filePath)
+    internal void TestLangR3(string langName, string filePath)
     {
         // Get the absolute path to the file
         string path = Path.IsPathRooted(filePath)
@@ -509,7 +509,7 @@ public class GenerationTestsR2 : IClassFixture<GenerationTestFixture>
     [Theory]
     [InlineData("Info", "TestData/Generated/Info-R2.txt")]
     [InlineData("TypeScript", "TestData/Generated/TypeScript-R2.ts")]
-    internal void TestInfoR2(string langName, string filePath)
+    internal void TestLangR2(string langName, string filePath)
     {
         // Get the absolute path to the file
         string path = Path.IsPathRooted(filePath)

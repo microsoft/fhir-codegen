@@ -38,7 +38,7 @@ Primitive Types: 18
 - xhtml: xhtml::xhtml
 Complex Types: 35
 - Address: Element (abstract: False)
-  ^address[0..*]: Address conditions: ele-1
+  ^address[0..*]: Element conditions: ele-1
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
   - id[0..1]: string
   - extension[0..*]: Extension
@@ -55,7 +55,7 @@ Complex Types: 35
   - country[0..1]: string
   - period[0..1]: Period
 - Age: Quantity (abstract: False)
-  ^age[0..*]: Age constraints: age-1
+  ^age[0..*]: Element constraints: age-1
   !age-1: local error: (code or value.empty()) and (system.empty() or system = %ucum) and (value.empty() or value > 0)
   !qty-3: inherited error: code.empty() or system.exists()
   - id[0..1]: string
@@ -67,7 +67,7 @@ Complex Types: 35
   - system[0..1]: uri conditions: qty-3
   - code[0..1]: code
 - Annotation: Element (abstract: False)
-  ^annotation[0..*]: Annotation conditions: ele-1
+  ^annotation[0..*]: Element conditions: ele-1
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
   - id[0..1]: string
   - extension[0..*]: Extension
@@ -75,7 +75,7 @@ Complex Types: 35
   - time[0..1]: dateTime
   - text[1..1]: string
 - Attachment: Element (abstract: False)
-  ^attachment[0..*]: Attachment constraints: att-1 conditions: ele-1
+  ^attachment[0..*]: Element constraints: att-1 conditions: ele-1
   !att-1: local error: data.empty() or contentType.exists()
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
   - id[0..1]: string
@@ -89,20 +89,20 @@ Complex Types: 35
   - title[0..1]: string
   - creation[0..1]: dateTime
 - BackboneElement: Element (abstract: True)
-  ^backboneElement[0..*]: BackboneElement conditions: ele-1
+  ^backboneElement[0..*]: Element conditions: ele-1
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
   - id[0..1]: string
   - extension[0..*]: Extension
   - modifierExtension[0..*]: Extension
 - CodeableConcept: Element (abstract: False)
-  ^codeableConcept[0..*]: CodeableConcept conditions: ele-1
+  ^codeableConcept[0..*]: Element conditions: ele-1
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
   - id[0..1]: string
   - extension[0..*]: Extension
   - coding[0..*]: Coding
   - text[0..1]: string
 - Coding: Element (abstract: False)
-  ^coding[0..*]: Coding conditions: ele-1
+  ^coding[0..*]: Element conditions: ele-1
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
   - id[0..1]: string
   - extension[0..*]: Extension
@@ -112,14 +112,14 @@ Complex Types: 35
   - display[0..1]: string
   - userSelected[0..1]: boolean
 - ContactDetail: Element (abstract: False)
-  ^contactDetail[0..*]: ContactDetail conditions: ele-1
+  ^contactDetail[0..*]: Element conditions: ele-1
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
   - id[0..1]: string
   - extension[0..*]: Extension
   - name[0..1]: string
   - telecom[0..*]: ContactPoint
 - ContactPoint: Element (abstract: False)
-  ^contactPoint[0..*]: ContactPoint constraints: cpt-2 conditions: ele-1
+  ^contactPoint[0..*]: Element constraints: cpt-2 conditions: ele-1
   !cpt-2: local error: value.empty() or system.exists()
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
   - id[0..1]: string
@@ -132,7 +132,7 @@ Complex Types: 35
   - rank[0..1]: positiveInt
   - period[0..1]: Period
 - Contributor: Element (abstract: False)
-  ^contributor[0..*]: Contributor conditions: ele-1
+  ^contributor[0..*]: Element conditions: ele-1
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
   - id[0..1]: string
   - extension[0..*]: Extension
@@ -141,7 +141,7 @@ Complex Types: 35
   - name[1..1]: string
   - contact[0..*]: ContactDetail
 - Count: Quantity (abstract: False)
-  ^count[0..*]: Count constraints: cnt-3
+  ^count[0..*]: Element constraints: cnt-3
   !cnt-3: local error: (code or value.empty()) and (system.empty() or system = %ucum) and (code.empty() or code = '1') and (value.empty() or value.toString().contains('.').not())
   !qty-3: inherited error: code.empty() or system.exists()
   - id[0..1]: string
@@ -153,7 +153,7 @@ Complex Types: 35
   - system[0..1]: uri conditions: qty-3
   - code[0..1]: code
 - DataRequirement: Element (abstract: False)
-  ^dataRequirement[0..*]: DataRequirement conditions: ele-1
+  ^dataRequirement[0..*]: Element conditions: ele-1
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
   - id[0..1]: string
   - extension[0..*]: Extension
@@ -175,7 +175,7 @@ Complex Types: 35
     - path[1..1]: string
     - value[x][0..1]: dateTime|Duration|Period
 - Distance: Quantity (abstract: False)
-  ^distance[0..*]: Distance constraints: dis-1
+  ^distance[0..*]: Element constraints: dis-1
   !dis-1: local error: (code or value.empty()) and (system.empty() or system = %ucum)
   !qty-3: inherited error: code.empty() or system.exists()
   - id[0..1]: string
@@ -187,7 +187,7 @@ Complex Types: 35
   - system[0..1]: uri conditions: qty-3
   - code[0..1]: code
 - Dosage: Element (abstract: False)
-  ^dosage[0..*]: Dosage conditions: ele-1
+  ^dosage[0..*]: Element conditions: ele-1
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
   - id[0..1]: string
   - extension[0..*]: Extension
@@ -206,7 +206,7 @@ Complex Types: 35
   - maxDosePerLifetime[0..1]: Quantity(SimpleQuantity)
   - rate[x][0..1]: Quantity(SimpleQuantity)|Range|Ratio
 - Duration: Quantity (abstract: False)
-  ^duration[0..*]: Duration constraints: drt-1
+  ^duration[0..*]: Element constraints: drt-1
   !drt-1: local error: code.exists() implies ((system = %ucum) and value.exists())
   !qty-3: inherited error: code.empty() or system.exists()
   - id[0..1]: string
@@ -223,7 +223,7 @@ Complex Types: 35
   - id[0..1]: string
   - extension[0..*]: Extension
 - ElementDefinition: Element (abstract: False)
-  ^elementDefinition[0..*]: ElementDefinition constraints: eld-2, eld-5, eld-6, eld-7, eld-8, eld-11, eld-13, eld-14, eld-15, eld-16 conditions: ele-1
+  ^elementDefinition[0..*]: Element constraints: eld-2, eld-5, eld-6, eld-7, eld-8, eld-11, eld-13, eld-14, eld-15, eld-16 conditions: ele-1
   !eld-1: local error: discriminator.exists() or description.exists()
   !eld-2: local error: min.empty() or max.empty() or (max = '*') or (min <= max.toInteger())
   !eld-3: local error: empty() or ($this = '*') or (toInteger() >= 0)
@@ -342,7 +342,7 @@ Complex Types: 35
   - url[1..1]: uri
   - value[x][0..1]: Address|Age|Annotation|Attachment|base64Binary|boolean|code|CodeableConcept|Coding|ContactPoint|Count|date|dateTime|decimal|Distance|Duration|HumanName|id|Identifier|instant|integer|markdown|Meta|Money|oid|Period|positiveInt|Quantity|Range|Ratio|Reference|SampledData|Signature|string|time|Timing|unsignedInt|uri
 - HumanName: Element (abstract: False)
-  ^humanName[0..*]: HumanName conditions: ele-1
+  ^humanName[0..*]: Element conditions: ele-1
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
   - id[0..1]: string
   - extension[0..*]: Extension
@@ -355,7 +355,7 @@ Complex Types: 35
   - suffix[0..*]: string
   - period[0..1]: Period
 - Identifier: Element (abstract: False)
-  ^identifier[0..*]: Identifier conditions: ele-1
+  ^identifier[0..*]: Element conditions: ele-1
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
   - id[0..1]: string
   - extension[0..*]: Extension
@@ -367,7 +367,7 @@ Complex Types: 35
   - period[0..1]: Period
   - assigner[0..1]: Reference(Organization)
 - Meta: Element (abstract: False)
-  ^meta[0..*]: Meta conditions: ele-1
+  ^meta[0..*]: Element conditions: ele-1
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
   - id[0..1]: string
   - extension[0..*]: Extension
@@ -377,7 +377,7 @@ Complex Types: 35
   - security[0..*]: Coding binding name: SecurityLabels
   - tag[0..*]: Coding binding name: Tags
 - Money: Quantity (abstract: False)
-  ^money[0..*]: Money constraints: mny-1
+  ^money[0..*]: Element constraints: mny-1
   !mny-1: local error: (code or value.empty()) and (system.empty() or system = 'urn:iso:std:iso:4217')
   !qty-3: inherited error: code.empty() or system.exists()
   - id[0..1]: string
@@ -389,7 +389,7 @@ Complex Types: 35
   - system[0..1]: uri conditions: qty-3
   - code[0..1]: code
 - Narrative: Element (abstract: False)
-  ^narrative[0..*]: Narrative conditions: ele-1
+  ^narrative[0..*]: Element conditions: ele-1
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
   !txt-1: local error: htmlchecks()
   !txt-2: local error: htmlchecks()
@@ -399,7 +399,7 @@ Complex Types: 35
     {generated|extensions|additional|empty}
   - div[1..1]: xhtml constraints: txt-1, txt-2
 - ParameterDefinition: Element (abstract: False)
-  ^parameterDefinition[0..*]: ParameterDefinition conditions: ele-1
+  ^parameterDefinition[0..*]: Element conditions: ele-1
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
   - id[0..1]: string
   - extension[0..*]: Extension
@@ -413,7 +413,7 @@ Complex Types: 35
     {Address|Age|Annotation|Attachment|BackboneElement|CodeableConcept|Coding|ContactDetail|ContactPoint|Contributor|Count|DataRequirement|Distance|Dosage|Duration|Element|ElementDefinition|Extension|HumanName|Identifier|Meta|Money|Narrative|ParameterDefinition|Period|Quantity|Range|Ratio|Reference|RelatedArtifact|SampledData|Signature|SimpleQuantity|Timing|TriggerDefinition|UsageContext|base64Binary|boolean|code|date|dateTime|decimal|id|instant|integer|markdown|oid|positiveInt|string|time|unsignedInt|uri|uuid|xhtml|Account|ActivityDefinition|AdverseEvent|AllergyIntolerance|Appointment|AppointmentResponse|AuditEvent|Basic|Binary|BodySite|Bundle|CapabilityStatement|CarePlan|CareTeam|ChargeItem|Claim|ClaimResponse|ClinicalImpression|CodeSystem|Communication|CommunicationRequest|CompartmentDefinition|Composition|ConceptMap|Condition|Consent|Contract|Coverage|DataElement|DetectedIssue|Device|DeviceComponent|DeviceMetric|DeviceRequest|DeviceUseStatement|DiagnosticReport|DocumentManifest|DocumentReference|DomainResource|EligibilityRequest|EligibilityResponse|Encounter|Endpoint|EnrollmentRequest|EnrollmentResponse|EpisodeOfCare|ExpansionProfile|ExplanationOfBenefit|FamilyMemberHistory|Flag|Goal|GraphDefinition|Group|GuidanceResponse|HealthcareService|ImagingManifest|ImagingStudy|Immunization|ImmunizationRecommendation|ImplementationGuide|Library|Linkage|List|Location|Measure|MeasureReport|Media|Medication|MedicationAdministration|MedicationDispense|MedicationRequest|MedicationStatement|MessageDefinition|MessageHeader|NamingSystem|NutritionOrder|Observation|OperationDefinition|OperationOutcome|Organization|Parameters|Patient|PaymentNotice|PaymentReconciliation|Person|PlanDefinition|Practitioner|PractitionerRole|Procedure|ProcedureRequest|ProcessRequest|ProcessResponse|Provenance|Questionnaire|QuestionnaireResponse|ReferralRequest|RelatedPerson|RequestGroup|ResearchStudy|ResearchSubject|Resource|RiskAssessment|Schedule|SearchParameter|Sequence|ServiceDefinition|Slot|Specimen|StructureDefinition|StructureMap|Subscription|Substance|SupplyDelivery|SupplyRequest|Task|TestReport|TestScript|ValueSet|VisionPrescription|Type|Any}
   - profile[0..1]: Reference(StructureDefinition)
 - Period: Element (abstract: False)
-  ^period[0..*]: Period constraints: per-1 conditions: ele-1
+  ^period[0..*]: Element constraints: per-1 conditions: ele-1
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
   !per-1: local error: start.empty() or end.empty() or (start <= end)
   - id[0..1]: string
@@ -421,7 +421,7 @@ Complex Types: 35
   - start[0..1]: dateTime conditions: per-1
   - end[0..1]: dateTime conditions: per-1
 - Quantity: Element (abstract: False)
-  ^quantity[0..*]: Quantity constraints: qty-3 conditions: ele-1
+  ^quantity[0..*]: Element constraints: qty-3 conditions: ele-1
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
   !qty-3: local error: code.empty() or system.exists()
   - id[0..1]: string
@@ -435,7 +435,7 @@ Complex Types: 35
   Profiles[Quantity]: 1
     -SimpleQuantity: http://hl7.org/fhir/StructureDefinition/SimpleQuantity (SimpleQuantity)
 - Range: Element (abstract: False)
-  ^range[0..*]: Range constraints: rng-2 conditions: ele-1
+  ^range[0..*]: Element constraints: rng-2 conditions: ele-1
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
   !rng-2: local error: low.empty() or high.empty() or (low <= high)
   - id[0..1]: string
@@ -443,7 +443,7 @@ Complex Types: 35
   - low[0..1]: Quantity(SimpleQuantity) conditions: rng-2
   - high[0..1]: Quantity(SimpleQuantity) conditions: rng-2
 - Ratio: Element (abstract: False)
-  ^ratio[0..*]: Ratio constraints: rat-1 conditions: ele-1
+  ^ratio[0..*]: Element constraints: rat-1 conditions: ele-1
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
   !rat-1: local error: (numerator.empty() xor denominator.exists()) and (numerator.exists() or extension.exists())
   - id[0..1]: string
@@ -451,7 +451,7 @@ Complex Types: 35
   - numerator[0..1]: Quantity
   - denominator[0..1]: Quantity
 - Reference: Element (abstract: False)
-  ^reference[0..*]: Reference constraints: ref-1 conditions: ele-1
+  ^reference[0..*]: Element constraints: ref-1 conditions: ele-1
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
   !ref-1: local error: reference.startsWith('#').not() or (reference.substring(1).trace('url') in %resource.contained.id.trace('ids'))
   - id[0..1]: string
@@ -460,7 +460,7 @@ Complex Types: 35
   - identifier[0..1]: Identifier
   - display[0..1]: string
 - RelatedArtifact: Element (abstract: False)
-  ^relatedArtifact[0..*]: RelatedArtifact conditions: ele-1
+  ^relatedArtifact[0..*]: Element conditions: ele-1
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
   - id[0..1]: string
   - extension[0..*]: Extension
@@ -472,7 +472,7 @@ Complex Types: 35
   - document[0..1]: Attachment
   - resource[0..1]: Reference(Resource)
 - SampledData: Element (abstract: False)
-  ^sampledData[0..*]: SampledData conditions: ele-1
+  ^sampledData[0..*]: Element conditions: ele-1
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
   - id[0..1]: string
   - extension[0..*]: Extension
@@ -485,7 +485,7 @@ Complex Types: 35
   - dimensions[1..1]: positiveInt
   - data[1..1]: string
 - Signature: Element (abstract: False)
-  ^signature[0..*]: Signature conditions: ele-1
+  ^signature[0..*]: Element conditions: ele-1
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
   - id[0..1]: string
   - extension[0..*]: Extension
@@ -496,7 +496,7 @@ Complex Types: 35
   - contentType[0..1]: code binding name: MimeType
   - blob[0..1]: base64Binary
 - Timing: Element (abstract: False)
-  ^timing[0..*]: Timing conditions: ele-1
+  ^timing[0..*]: Element conditions: ele-1
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
   !tim-1: local error: duration.empty() or durationUnit.exists()
   !tim-2: local error: period.empty() or periodUnit.exists()
@@ -533,7 +533,7 @@ Complex Types: 35
     - offset[0..1]: unsignedInt
   - code[0..1]: CodeableConcept binding name: TimingAbbreviation
 - TriggerDefinition: Element (abstract: False)
-  ^triggerDefinition[0..*]: TriggerDefinition conditions: ele-1
+  ^triggerDefinition[0..*]: Element conditions: ele-1
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
   - id[0..1]: string
   - extension[0..*]: Extension
@@ -543,7 +543,7 @@ Complex Types: 35
   - eventTiming[x][0..1]: date|dateTime|Reference(Schedule)|Timing
   - eventData[0..1]: DataRequirement
 - UsageContext: Element (abstract: False)
-  ^usageContext[0..*]: UsageContext conditions: ele-1
+  ^usageContext[0..*]: Element conditions: ele-1
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
   - id[0..1]: string
   - extension[0..*]: Extension
@@ -551,7 +551,7 @@ Complex Types: 35
   - value[x][1..1]: CodeableConcept|Quantity|Range binding name: UsageContextValue
 Resources: 119
 - Account: DomainResource (FMM: 2) (abstract: False)
-  ^account[0..*]: Account (W5: financial.support)
+  ^account[0..*]: Element (W5: financial.support)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -599,7 +599,7 @@ Resources: 119
   ?subject: subject=reference
   ?type: type=token
 - ActivityDefinition: DomainResource (FMM: 2) (abstract: False)
-  ^activityDefinition[0..*]: ActivityDefinition (W5: clinical.general)
+  ^activityDefinition[0..*]: Element (W5: clinical.general)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -693,7 +693,7 @@ Resources: 119
   ActivityDefinition/{id}/$data-requirements (FMM: 0)
     Out: return: Library[1..1]
 - AdverseEvent: DomainResource (FMM: 0) (abstract: False)
-  ^adverseEvent[0..*]: AdverseEvent (W5: clinical.general)
+  ^adverseEvent[0..*]: Element (W5: clinical.general)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -746,7 +746,7 @@ Resources: 119
   ?substance: substance=reference
   ?type: type=token
 - AllergyIntolerance: DomainResource (FMM: 3) (abstract: False)
-  ^allergyIntolerance[0..*]: AllergyIntolerance constraints: ait-1, ait-2 (W5: clinical.general)
+  ^allergyIntolerance[0..*]: Element constraints: ait-1, ait-2 (W5: clinical.general)
   !ait-1: local error: verificationStatus='entered-in-error' or clinicalStatus.exists()
   !ait-2: local error: verificationStatus!='entered-in-error' or clinicalStatus.empty()
   !dom-1: inherited error: contained.text.empty()
@@ -810,7 +810,7 @@ Resources: 119
   ?type: type=token
   ?verification-status: verification-status=token
 - Appointment: DomainResource (FMM: 3) (abstract: False)
-  ^appointment[0..*]: Appointment constraints: app-2, app-3 (W5: workflow.scheduling)
+  ^appointment[0..*]: Element constraints: app-2, app-3 (W5: workflow.scheduling)
   !app-1: local error: type.exists() or actor.exists()
   !app-2: local error: start.empty() xor end.exists()
   !app-3: local error: (start.exists() and end.exists()) or (status in ('proposed' | 'cancelled'))
@@ -869,7 +869,7 @@ Resources: 119
   ?service-type: service-type=token
   ?status: status=token
 - AppointmentResponse: DomainResource (FMM: 3) (abstract: False)
-  ^appointmentResponse[0..*]: AppointmentResponse constraints: apr-1 (W5: workflow.scheduling)
+  ^appointmentResponse[0..*]: Element constraints: apr-1 (W5: workflow.scheduling)
   !apr-1: local error: participantType.exists() or actor.exists()
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
@@ -900,7 +900,7 @@ Resources: 119
   ?patient: patient=reference
   ?practitioner: practitioner=reference
 - AuditEvent: DomainResource (FMM: 3) (abstract: False)
-  ^auditEvent[0..*]: AuditEvent (W5: infrastructure.information)
+  ^auditEvent[0..*]: Element (W5: infrastructure.information)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -994,7 +994,7 @@ Resources: 119
   Profiles[AuditEvent]: 1
     -ehrsrle-auditevent: http://hl7.org/fhir/StructureDefinition/ehrsrle-auditevent (EHRS FM Record Lifecycle Event - Audit Event)
 - Basic: DomainResource (FMM: 1) (abstract: False)
-  ^basic[0..*]: Basic (W5: infrastructure.structure)
+  ^basic[0..*]: Element (W5: infrastructure.structure)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -1019,7 +1019,7 @@ Resources: 119
   ?patient: patient=reference
   ?subject: subject=reference
 - Binary: Resource (FMM: 5) (abstract: False)
-  ^binary[0..*]: Binary (W5: infrastructure.structure)
+  ^binary[0..*]: Element (W5: infrastructure.structure)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -1029,7 +1029,7 @@ Resources: 119
   - content[1..1]: base64Binary
   ?contenttype: contenttype=token
 - BodySite: DomainResource (FMM: 1) (abstract: False)
-  ^bodySite[0..*]: BodySite (W5: clinical.diagnostics)
+  ^bodySite[0..*]: Element (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -1054,7 +1054,7 @@ Resources: 119
   ?identifier: identifier=token
   ?patient: patient=reference
 - Bundle: Resource (FMM: 5) (abstract: False)
-  ^bundle[0..*]: Bundle constraints: bdl-1, bdl-2, bdl-3, bdl-4, bdl-7, bdl-9 (W5: infrastructure.structure)
+  ^bundle[0..*]: Element constraints: bdl-1, bdl-2, bdl-3, bdl-4, bdl-7, bdl-9 (W5: infrastructure.structure)
   !bdl-1: local error: total.empty() or (type = 'searchset') or (type = 'history')
   !bdl-2: local error: entry.search.empty() or (type = 'searchset')
   !bdl-3: local error: entry.request.empty() or type = 'batch' or type = 'transaction' or type = 'history'
@@ -1082,7 +1082,7 @@ Resources: 119
     - id[0..1]: string
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
-    - link[0..*]: !!! undeclared type !!!
+    - link[0..*]: #Bundle.link
     - fullUrl[0..1]: uri
     - resource[0..1]: Resource
     - search[0..1]: BackboneElement conditions: bdl-2
@@ -1118,7 +1118,7 @@ Resources: 119
   ?message: message=reference
   ?type: type=token
 - CapabilityStatement: DomainResource (FMM: 3) (abstract: False)
-  ^capabilityStatement[1..1]: CapabilityStatement constraints: cpb-1, cpb-2, cpb-3, cpb-7, cpb-8, cpb-14, cpb-15 (W5: conformance.behavior)
+  ^capabilityStatement[1..1]: Element constraints: cpb-1, cpb-2, cpb-3, cpb-7, cpb-8, cpb-14, cpb-15 (W5: conformance.behavior)
   !cpb-1: local error: rest.exists() or messaging.exists() or document.exists()
   !cpb-2: local error: (description.count() + software.count() + implementation.count()) > 0
   !cpb-3: local error: messaging.endpoint.empty() or kind = 'instance'
@@ -1245,7 +1245,7 @@ Resources: 119
       - code[1..1]: code binding name: SystemRestfulInteraction
         {transaction|batch|search-system|history-system}
       - documentation[0..1]: string
-    - searchParam[0..*]: !!! undeclared type !!!
+    - searchParam[0..*]: #CapabilityStatement.rest.resource.searchParam
     - operation[0..*]: BackboneElement
       - id[0..1]: string
       - extension[0..*]: Extension
@@ -1339,7 +1339,7 @@ Resources: 119
     In: resource: Code[1..*]
     Out: return: CapabilityStatement[1..1]
 - CarePlan: DomainResource (FMM: 2) (abstract: False)
-  ^carePlan[0..*]: CarePlan (W5: clinical.careprovision)
+  ^carePlan[0..*]: Element (W5: clinical.careprovision)
   !cpl-3: local error: detail.empty() or reference.empty()
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
@@ -1426,7 +1426,7 @@ Resources: 119
   ?status: status=token
   ?subject: subject=reference
 - CareTeam: DomainResource (FMM: 2) (abstract: False)
-  ^careTeam[0..*]: CareTeam (W5: clinical.careprovision)
+  ^careTeam[0..*]: Element (W5: clinical.careprovision)
   !ctm-1: local error: onBehalfOf.exists() implies (member.resolve() is Practitioner)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
@@ -1471,7 +1471,7 @@ Resources: 119
   ?status: status=token
   ?subject: subject=reference
 - ChargeItem: DomainResource (FMM: 0) (abstract: False)
-  ^chargeItem[0..*]: ChargeItem (W5: financial.support)
+  ^chargeItem[0..*]: Element (W5: financial.support)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -1532,7 +1532,7 @@ Resources: 119
   ?service: service=reference
   ?subject: subject=reference
 - Claim: DomainResource (FMM: 2) (abstract: False)
-  ^claim[0..*]: Claim (W5: financial.billing)
+  ^claim[0..*]: Element (W5: financial.billing)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -1702,7 +1702,7 @@ Resources: 119
   ?provider: provider=reference
   ?use: use=token
 - ClaimResponse: DomainResource (FMM: 2) (abstract: False)
-  ^claimResponse[0..*]: ClaimResponse (W5: financial.billing)
+  ^claimResponse[0..*]: Element (W5: financial.billing)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -1748,14 +1748,14 @@ Resources: 119
       - modifierExtension[0..*]: Extension
       - sequenceLinkId[1..1]: positiveInt
       - noteNumber[0..*]: positiveInt
-      - adjudication[0..*]: !!! undeclared type !!!
+      - adjudication[0..*]: #ClaimResponse.item.adjudication
       - subDetail[0..*]: BackboneElement
         - id[0..1]: string
         - extension[0..*]: Extension
         - modifierExtension[0..*]: Extension
         - sequenceLinkId[1..1]: positiveInt
         - noteNumber[0..*]: positiveInt
-        - adjudication[0..*]: !!! undeclared type !!!
+        - adjudication[0..*]: #ClaimResponse.item.adjudication
   - addItem[0..*]: BackboneElement
     - id[0..1]: string
     - extension[0..*]: Extension
@@ -1767,7 +1767,7 @@ Resources: 119
     - modifier[0..*]: CodeableConcept binding name: Modifiers
     - fee[0..1]: Money
     - noteNumber[0..*]: positiveInt
-    - adjudication[0..*]: !!! undeclared type !!!
+    - adjudication[0..*]: #ClaimResponse.item.adjudication
     - detail[0..*]: BackboneElement
       - id[0..1]: string
       - extension[0..*]: Extension
@@ -1778,7 +1778,7 @@ Resources: 119
       - modifier[0..*]: CodeableConcept binding name: Modifiers
       - fee[0..1]: Money
       - noteNumber[0..*]: positiveInt
-      - adjudication[0..*]: !!! undeclared type !!!
+      - adjudication[0..*]: #ClaimResponse.item.adjudication
   - error[0..*]: BackboneElement
     - id[0..1]: string
     - extension[0..*]: Extension
@@ -1831,7 +1831,7 @@ Resources: 119
   ?request: request=reference
   ?request-provider: request-provider=reference
 - ClinicalImpression: DomainResource (FMM: 0) (abstract: False)
-  ^clinicalImpression[0..*]: ClinicalImpression (W5: clinical.general)
+  ^clinicalImpression[0..*]: Element (W5: clinical.general)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -1889,7 +1889,7 @@ Resources: 119
   ?status: status=token
   ?subject: subject=reference
 - CodeSystem: DomainResource (FMM: 5) (abstract: False)
-  ^codeSystem[0..*]: CodeSystem constraints: csd-1 (W5: conformance.terminology)
+  ^codeSystem[0..*]: Element constraints: csd-1 (W5: conformance.terminology)
   !csd-1: local error: (concept.code | descendants().concept.code).isDistinct()
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
@@ -1967,7 +1967,7 @@ Resources: 119
       - modifierExtension[0..*]: Extension
       - code[1..1]: code
       - value[x][1..1]: boolean|code|Coding|dateTime|integer|string
-    - concept[0..*]: !!! undeclared type !!!
+    - concept[0..*]: #CodeSystem.concept
   ?code: code=token
   ?content-mode: content-mode=token
   ?date: date=date
@@ -2028,7 +2028,7 @@ Resources: 119
   Profiles[CodeSystem]: 1
     -shareablecodesystem: http://hl7.org/fhir/StructureDefinition/shareablecodesystem (Shareable CodeSystem)
 - Communication: DomainResource (FMM: 2) (abstract: False)
-  ^communication[0..*]: Communication constraints: com-1 (W5: workflow.encounter)
+  ^communication[0..*]: Element constraints: com-1 (W5: workflow.encounter)
   !com-1: local error: notDone or notDoneReason.exists().not()
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
@@ -2084,7 +2084,7 @@ Resources: 119
   ?status: status=token
   ?subject: subject=reference
 - CommunicationRequest: DomainResource (FMM: 2) (abstract: False)
-  ^communicationRequest[0..*]: CommunicationRequest (W5: workflow.order)
+  ^communicationRequest[0..*]: Element (W5: workflow.order)
   !cmr-1: local error: (agent.resolve() is Practitioner) or (agent.resolve() is Device) or onBehalfOf.exists().not()
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
@@ -2148,7 +2148,7 @@ Resources: 119
   ?status: status=token
   ?subject: subject=reference
 - CompartmentDefinition: DomainResource (FMM: 1) (abstract: False)
-  ^compartmentDefinition[1..1]: CompartmentDefinition (W5: conformance.behavior)
+  ^compartmentDefinition[1..1]: Element (W5: conformance.behavior)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -2197,7 +2197,7 @@ Resources: 119
   ?title: title=string
   ?url: url=uri
 - Composition: DomainResource (FMM: 2) (abstract: False)
-  ^composition[0..*]: Composition (W5: infrastructure.documents)
+  ^composition[0..*]: Element (W5: infrastructure.documents)
   !cmp-1: local error: text.exists() or entry.exists() or section.exists()
   !cmp-2: local error: emptyReason.empty() or entry.empty()
   !dom-1: inherited error: contained.text.empty()
@@ -2260,7 +2260,7 @@ Resources: 119
     - orderedBy[0..1]: CodeableConcept binding name: SectionEntryOrder
     - entry[0..*]: Reference(Resource) conditions: cmp-2
     - emptyReason[0..1]: CodeableConcept conditions: cmp-2 binding name: SectionEmptyReason
-    - section[0..*]: !!! undeclared type !!! conditions: cmp-1
+    - section[0..*]: #Composition.section conditions: cmp-1
   ?attester: attester=reference
   ?author: author=reference
   ?class: class=token
@@ -2286,7 +2286,7 @@ Resources: 119
   Profiles[Composition]: 1
     -clinicaldocument: http://hl7.org/fhir/StructureDefinition/clinicaldocument (Clinical Document Profile for Composition)
 - ConceptMap: DomainResource (FMM: 3) (abstract: False)
-  ^conceptMap[0..*]: ConceptMap (W5: conformance.terminology)
+  ^conceptMap[0..*]: Element (W5: conformance.terminology)
   !cmd-1: local error: comment.exists() or equivalence.empty() or ((equivalence != 'narrower') and (equivalence != 'inexact'))
   !cmd-2: local error: (mode = 'fixed') implies code.exists()
   !cmd-3: local error: (mode = 'other-map') implies url.exists()
@@ -2353,7 +2353,7 @@ Resources: 119
           - system[0..1]: uri
           - code[1..1]: string
           - display[0..1]: string
-        - product[0..*]: !!! undeclared type !!!
+        - product[0..*]: #ConceptMap.group.element.target.dependsOn
     - unmapped[0..1]: BackboneElement constraints: cmd-2, cmd-3
       - id[0..1]: string
       - extension[0..*]: Extension
@@ -2413,7 +2413,7 @@ Resources: 119
     Out: message: String[0..1]
     Out: match: [0..*]
 - Condition: DomainResource (FMM: 3) (abstract: False)
-  ^condition[0..*]: Condition constraints: con-3, con-4 (W5: clinical.general)
+  ^condition[0..*]: Element constraints: con-3, con-4 (W5: clinical.general)
   !con-1: local error: summary.exists() or assessment.exists()
   !con-2: local error: code.exists() or detail.exists()
   !con-3: local error: verificationStatus='entered-in-error' or clinicalStatus.exists()
@@ -2488,7 +2488,7 @@ Resources: 119
   ?Example Search Parameter: subject=reference (experimental)
   ?verification-status: verification-status=token
 - Consent: DomainResource (FMM: 1) (abstract: False)
-  ^consent[0..*]: Consent constraints: ppc-1 (W5: infrastructure.information)
+  ^consent[0..*]: Element constraints: ppc-1 (W5: infrastructure.information)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -2578,7 +2578,7 @@ Resources: 119
   ?source: source=reference
   ?status: status=token
 - Contract: DomainResource (FMM: 1) (abstract: False)
-  ^contract[0..*]: Contract (W5: financial.other)
+  ^contract[0..*]: Element (W5: financial.other)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -2665,7 +2665,7 @@ Resources: 119
       - factor[0..1]: decimal
       - points[0..1]: decimal
       - net[0..1]: Money
-    - group[0..*]: !!! undeclared type !!!
+    - group[0..*]: #Contract.term
   - binding[x][0..1]: Attachment|Reference(Composition|DocumentReference|QuestionnaireResponse)
   - friendly[0..*]: BackboneElement
     - id[0..1]: string
@@ -2694,7 +2694,7 @@ Resources: 119
   Profiles[Contract]: 1
     -consentdirective: http://hl7.org/fhir/StructureDefinition/consentdirective (Consent Directive)
 - Coverage: DomainResource (FMM: 2) (abstract: False)
-  ^coverage[0..*]: Coverage (W5: financial.support)
+  ^coverage[0..*]: Element (W5: financial.support)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -2755,7 +2755,7 @@ Resources: 119
   ?subscriber: subscriber=reference
   ?type: type=token
 - DataElement: DomainResource (FMM: 1) (abstract: False)
-  ^dataElement[0..*]: DataElement (W5: conformance.content)
+  ^dataElement[0..*]: Element (W5: conformance.content)
   !dae-1: local error: base.empty()
   !dae-2: local error: slicing.empty()
   !dae-3: local error: uri.exists() or name.exists()
@@ -2812,7 +2812,7 @@ Resources: 119
   ?url: url=uri
   ?version: version=token
 - DetectedIssue: DomainResource (FMM: 1) (abstract: False)
-  ^detectedIssue[0..*]: DetectedIssue (W5: clinical.general)
+  ^detectedIssue[0..*]: Element (W5: clinical.general)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -2852,7 +2852,7 @@ Resources: 119
   ?implicated: implicated=reference
   ?patient: patient=reference
 - Device: DomainResource (FMM: 2) (abstract: False)
-  ^device[0..*]: Device (W5: administrative.device)
+  ^device[0..*]: Element (W5: administrative.device)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -2909,7 +2909,7 @@ Resources: 119
   ?udi-di: udi-di=string
   ?url: url=uri
 - DeviceComponent: DomainResource (FMM: 1) (abstract: False)
-  ^deviceComponent[0..*]: DeviceComponent (W5: administrative.device)
+  ^deviceComponent[0..*]: Element (W5: administrative.device)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -2945,7 +2945,7 @@ Resources: 119
   ?source: source=reference
   ?type: type=token
 - DeviceMetric: DomainResource (FMM: 1) (abstract: False)
-  ^deviceMetric[0..*]: DeviceMetric (W5: administrative.device)
+  ^deviceMetric[0..*]: Element (W5: administrative.device)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -2986,7 +2986,7 @@ Resources: 119
   ?source: source=reference
   ?type: type=token
 - DeviceRequest: DomainResource (FMM: 0) (abstract: False)
-  ^deviceRequest[0..*]: DeviceRequest (W5: workflow.order)
+  ^deviceRequest[0..*]: Element (W5: workflow.order)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -3046,7 +3046,7 @@ Resources: 119
   ?status: status=token
   ?subject: subject=reference
 - DeviceUseStatement: DomainResource (FMM: 0) (abstract: False)
-  ^deviceUseStatement[0..*]: DeviceUseStatement (W5: workflow.order)
+  ^deviceUseStatement[0..*]: Element (W5: workflow.order)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -3076,7 +3076,7 @@ Resources: 119
   ?patient: patient=reference
   ?subject: subject=reference
 - DiagnosticReport: DomainResource (FMM: 3) (abstract: False)
-  ^diagnosticReport[0..*]: DiagnosticReport (W5: clinical.diagnostics)
+  ^diagnosticReport[0..*]: Element (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -3141,7 +3141,7 @@ Resources: 119
     -hlaresult: http://hl7.org/fhir/StructureDefinition/hlaresult (Profile for HLA Genotyping Results)
     -lipidprofile: http://hl7.org/fhir/StructureDefinition/lipidprofile (Example Lipid Profile)
 - DocumentManifest: DomainResource (FMM: 2) (abstract: False)
-  ^documentManifest[0..*]: DocumentManifest (W5: infrastructure.documents)
+  ^documentManifest[0..*]: Element (W5: infrastructure.documents)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -3191,7 +3191,7 @@ Resources: 119
   ?subject: subject=reference
   ?type: type=token
 - DocumentReference: DomainResource (FMM: 3) (abstract: False)
-  ^documentReference[0..*]: DocumentReference (W5: infrastructure.documents)
+  ^documentReference[0..*]: Element (W5: infrastructure.documents)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -3279,7 +3279,7 @@ Resources: 119
   ?subject: subject=reference
   ?type: type=token
 - DomainResource: Resource (FMM: 5) (abstract: True)
-  ^domainResource[0..*]: DomainResource constraints: dom-1, dom-2, dom-3, dom-4
+  ^domainResource[0..*]: Element constraints: dom-1, dom-2, dom-3, dom-4
   !dom-1: local error: contained.text.empty()
   !dom-2: local error: contained.contained.empty()
   !dom-3: local error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -3294,7 +3294,7 @@ Resources: 119
   - modifierExtension[0..*]: Extension
   ?_text: _text=string
 - EligibilityRequest: DomainResource (FMM: 2) (abstract: False)
-  ^eligibilityRequest[0..*]: EligibilityRequest (W5: financial.support)
+  ^eligibilityRequest[0..*]: Element (W5: financial.support)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -3331,7 +3331,7 @@ Resources: 119
   ?patient: patient=reference
   ?provider: provider=reference
 - EligibilityResponse: DomainResource (FMM: 2) (abstract: False)
-  ^eligibilityResponse[0..*]: EligibilityResponse (W5: financial.support)
+  ^eligibilityResponse[0..*]: Element (W5: financial.support)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -3396,7 +3396,7 @@ Resources: 119
   ?request-organization: request-organization=reference
   ?request-provider: request-provider=reference
 - Encounter: DomainResource (FMM: 2) (abstract: False)
-  ^encounter[0..*]: Encounter (W5: workflow.encounter)
+  ^encounter[0..*]: Element (W5: workflow.encounter)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -3498,7 +3498,7 @@ Resources: 119
   Encounter/{id}/$everything (FMM: 0)
     Out: return: Bundle[1..1]
 - Endpoint: DomainResource (FMM: 2) (abstract: False)
-  ^endpoint[0..*]: Endpoint (W5: infrastructure.exchange)
+  ^endpoint[0..*]: Element (W5: infrastructure.exchange)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -3530,7 +3530,7 @@ Resources: 119
   ?payload-type: payload-type=token
   ?status: status=token
 - EnrollmentRequest: DomainResource (FMM: 0) (abstract: False)
-  ^enrollmentRequest[0..*]: EnrollmentRequest (W5: financial.support)
+  ^enrollmentRequest[0..*]: Element (W5: financial.support)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -3557,7 +3557,7 @@ Resources: 119
   ?patient: patient=reference
   ?subject: subject=reference
 - EnrollmentResponse: DomainResource (FMM: 0) (abstract: False)
-  ^enrollmentResponse[0..*]: EnrollmentResponse (W5: financial.support)
+  ^enrollmentResponse[0..*]: Element (W5: financial.support)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -3584,7 +3584,7 @@ Resources: 119
   ?organization: organization=reference
   ?request: request=reference
 - EpisodeOfCare: DomainResource (FMM: 2) (abstract: False)
-  ^episodeOfCare[0..*]: EpisodeOfCare (W5: workflow.encounter)
+  ^episodeOfCare[0..*]: Element (W5: workflow.encounter)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -3633,7 +3633,7 @@ Resources: 119
   ?status: status=token
   ?type: type=token
 - ExpansionProfile: DomainResource (FMM: 2) (abstract: False)
-  ^expansionProfile[0..*]: ExpansionProfile (W5: conformance.terminology)
+  ^expansionProfile[0..*]: Element (W5: conformance.terminology)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -3720,7 +3720,7 @@ Resources: 119
   ?url: url=uri
   ?version: version=token
 - ExplanationOfBenefit: DomainResource (FMM: 2) (abstract: False)
-  ^explanationOfBenefit[0..*]: ExplanationOfBenefit (W5: financial.other)
+  ^explanationOfBenefit[0..*]: Element (W5: financial.other)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -3868,7 +3868,7 @@ Resources: 119
       - net[0..1]: Money
       - udi[0..*]: Reference(Device)
       - noteNumber[0..*]: positiveInt
-      - adjudication[0..*]: !!! undeclared type !!!
+      - adjudication[0..*]: #ExplanationOfBenefit.item.adjudication
       - subDetail[0..*]: BackboneElement
         - id[0..1]: string
         - extension[0..*]: Extension
@@ -3886,7 +3886,7 @@ Resources: 119
         - net[0..1]: Money
         - udi[0..*]: Reference(Device)
         - noteNumber[0..*]: positiveInt
-        - adjudication[0..*]: !!! undeclared type !!!
+        - adjudication[0..*]: #ExplanationOfBenefit.item.adjudication
   - addItem[0..*]: BackboneElement
     - id[0..1]: string
     - extension[0..*]: Extension
@@ -3898,7 +3898,7 @@ Resources: 119
     - modifier[0..*]: CodeableConcept binding name: Modifiers
     - fee[0..1]: Money
     - noteNumber[0..*]: positiveInt
-    - adjudication[0..*]: !!! undeclared type !!!
+    - adjudication[0..*]: #ExplanationOfBenefit.item.adjudication
     - detail[0..*]: BackboneElement
       - id[0..1]: string
       - extension[0..*]: Extension
@@ -3909,7 +3909,7 @@ Resources: 119
       - modifier[0..*]: CodeableConcept binding name: Modifiers
       - fee[0..1]: Money
       - noteNumber[0..*]: positiveInt
-      - adjudication[0..*]: !!! undeclared type !!!
+      - adjudication[0..*]: #ExplanationOfBenefit.item.adjudication
   - totalCost[0..1]: Money
   - unallocDeductable[0..1]: Money
   - totalBenefit[0..1]: Money
@@ -3965,7 +3965,7 @@ Resources: 119
   ?payee: payee=reference
   ?provider: provider=reference
 - FamilyMemberHistory: DomainResource (FMM: 2) (abstract: False)
-  ^familyMemberHistory[0..*]: FamilyMemberHistory constraints: fhs-1, fhs-2, fhs-3 (W5: clinical.general)
+  ^familyMemberHistory[0..*]: Element constraints: fhs-1, fhs-2, fhs-3 (W5: clinical.general)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -4021,7 +4021,7 @@ Resources: 119
   Profiles[FamilyMemberHistory]: 1
     -familymemberhistory-genetic: http://hl7.org/fhir/StructureDefinition/familymemberhistory-genetic (Family member history for genetics analysis)
 - Flag: DomainResource (FMM: 1) (abstract: False)
-  ^flag[0..*]: Flag (W5: workflow.encounter)
+  ^flag[0..*]: Element (W5: workflow.encounter)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -4050,7 +4050,7 @@ Resources: 119
   ?patient: patient=reference
   ?subject: subject=reference
 - Goal: DomainResource (FMM: 2) (abstract: False)
-  ^goal[0..*]: Goal (W5: clinical.careprovision)
+  ^goal[0..*]: Element (W5: clinical.careprovision)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -4095,7 +4095,7 @@ Resources: 119
   ?subject: subject=reference
   ?target-date: target-date=date
 - GraphDefinition: DomainResource (FMM: 0) (abstract: False)
-  ^graphDefinition[0..*]: GraphDefinition (W5: conformance.behavior)
+  ^graphDefinition[0..*]: Element (W5: conformance.behavior)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -4151,7 +4151,7 @@ Resources: 119
           {identical|matching|different|custom}
         - expression[0..1]: string
         - description[0..1]: string
-      - link[0..*]: !!! undeclared type !!!
+      - link[0..*]: #GraphDefinition.link
   ?date: date=date
   ?description: description=string
   ?jurisdiction: jurisdiction=token
@@ -4162,7 +4162,7 @@ Resources: 119
   ?url: url=uri
   ?version: version=token
 - Group: DomainResource (FMM: 1) (abstract: False)
-  ^group[0..*]: Group constraints: grp-1 (W5: administrative.group)
+  ^group[0..*]: Element constraints: grp-1 (W5: administrative.group)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -4214,7 +4214,7 @@ Resources: 119
   ?type: type=token
   ?value: value=token
 - GuidanceResponse: DomainResource (FMM: 2) (abstract: False)
-  ^guidanceResponse[0..*]: GuidanceResponse (W5: clinical.general)
+  ^guidanceResponse[0..*]: Element (W5: clinical.general)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -4247,7 +4247,7 @@ Resources: 119
   ?request: request=token
   ?subject: subject=reference
 - HealthcareService: DomainResource (FMM: 2) (abstract: False)
-  ^healthcareService[0..*]: HealthcareService (W5: administrative.group)
+  ^healthcareService[0..*]: Element (W5: administrative.group)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -4310,7 +4310,7 @@ Resources: 119
   ?programname: programname=string
   ?type: type=token
 - ImagingManifest: DomainResource (FMM: 1) (abstract: False)
-  ^imagingManifest[0..*]: ImagingManifest (W5: clinical.diagnostics)
+  ^imagingManifest[0..*]: Element (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -4356,7 +4356,7 @@ Resources: 119
   ?patient: patient=reference
   ?selected-study: selected-study=uri
 - ImagingStudy: DomainResource (FMM: 3) (abstract: False)
-  ^imagingStudy[0..*]: ImagingStudy (W5: clinical.diagnostics)
+  ^imagingStudy[0..*]: Element (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -4429,7 +4429,7 @@ Resources: 119
   ?study: study=uri
   ?uid: uid=uri
 - Immunization: DomainResource (FMM: 3) (abstract: False)
-  ^immunization[0..*]: Immunization constraints: imm-1, imm-2 (W5: clinical.medication)
+  ^immunization[0..*]: Element constraints: imm-1, imm-2 (W5: clinical.medication)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -4510,7 +4510,7 @@ Resources: 119
   ?status: status=token
   ?vaccine-code: vaccine-code=token
 - ImmunizationRecommendation: DomainResource (FMM: 1) (abstract: False)
-  ^immunizationRecommendation[0..*]: ImmunizationRecommendation (W5: clinical.medication)
+  ^immunizationRecommendation[0..*]: Element (W5: clinical.medication)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -4563,7 +4563,7 @@ Resources: 119
   ?target-disease: target-disease=token
   ?vaccine-type: vaccine-type=token
 - ImplementationGuide: DomainResource (FMM: 1) (abstract: False)
-  ^implementationGuide[1..1]: ImplementationGuide (W5: conformance.misc)
+  ^implementationGuide[1..1]: Element (W5: conformance.misc)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -4634,7 +4634,7 @@ Resources: 119
       {Account|ActivityDefinition|AdverseEvent|AllergyIntolerance|Appointment|AppointmentResponse|AuditEvent|Basic|Binary|BodySite|Bundle|CapabilityStatement|CarePlan|CareTeam|ChargeItem|Claim|ClaimResponse|ClinicalImpression|CodeSystem|Communication|CommunicationRequest|CompartmentDefinition|Composition|ConceptMap|Condition|Consent|Contract|Coverage|DataElement|DetectedIssue|Device|DeviceComponent|DeviceMetric|DeviceRequest|DeviceUseStatement|DiagnosticReport|DocumentManifest|DocumentReference|DomainResource|EligibilityRequest|EligibilityResponse|Encounter|Endpoint|EnrollmentRequest|EnrollmentResponse|EpisodeOfCare|ExpansionProfile|ExplanationOfBenefit|FamilyMemberHistory|Flag|Goal|GraphDefinition|Group|GuidanceResponse|HealthcareService|ImagingManifest|ImagingStudy|Immunization|ImmunizationRecommendation|ImplementationGuide|Library|Linkage|List|Location|Measure|MeasureReport|Media|Medication|MedicationAdministration|MedicationDispense|MedicationRequest|MedicationStatement|MessageDefinition|MessageHeader|NamingSystem|NutritionOrder|Observation|OperationDefinition|OperationOutcome|Organization|Parameters|Patient|PaymentNotice|PaymentReconciliation|Person|PlanDefinition|Practitioner|PractitionerRole|Procedure|ProcedureRequest|ProcessRequest|ProcessResponse|Provenance|Questionnaire|QuestionnaireResponse|ReferralRequest|RelatedPerson|RequestGroup|ResearchStudy|ResearchSubject|Resource|RiskAssessment|Schedule|SearchParameter|Sequence|ServiceDefinition|Slot|Specimen|StructureDefinition|StructureMap|Subscription|Substance|SupplyDelivery|SupplyRequest|Task|TestReport|TestScript|ValueSet|VisionPrescription}
     - package[0..*]: string
     - format[0..1]: code binding name: MimeType
-    - page[0..*]: !!! undeclared type !!!
+    - page[0..*]: #ImplementationGuide.page
   ?date: date=date
   ?dependency: dependency=uri
   ?description: description=string
@@ -4647,7 +4647,7 @@ Resources: 119
   ?url: url=uri
   ?version: version=token
 - Library: DomainResource (FMM: 2) (abstract: False)
-  ^library[0..*]: Library (W5: clinical.general)
+  ^library[0..*]: Element (W5: clinical.general)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -4708,7 +4708,7 @@ Resources: 119
     In: target: Reference[0..1]
     Out: return: Library[1..1]
 - Linkage: DomainResource (FMM: 0) (abstract: False)
-  ^linkage[0..*]: Linkage constraints: lnk-1 (W5: infrastructure.structure)
+  ^linkage[0..*]: Element constraints: lnk-1 (W5: infrastructure.structure)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -4737,7 +4737,7 @@ Resources: 119
   ?item: item=reference
   ?source: source=reference
 - List: DomainResource (FMM: 1) (abstract: False)
-  ^list[0..*]: List constraints: lst-1, lst-2 (W5: infrastructure.documents)
+  ^list[0..*]: Element constraints: lst-1, lst-2 (W5: infrastructure.documents)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -4792,7 +4792,7 @@ Resources: 119
     In: patient: Id[1..1]
     In: name: Code[1..1]
 - Location: DomainResource (FMM: 3) (abstract: False)
-  ^location[0..*]: Location (W5: administrative.entity)
+  ^location[0..*]: Element (W5: administrative.entity)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -4846,7 +4846,7 @@ Resources: 119
   ?status: status=token
   ?type: type=token
 - Measure: DomainResource (FMM: 2) (abstract: False)
-  ^measure[0..*]: Measure (W5: clinical.general)
+  ^measure[0..*]: Element (W5: clinical.general)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -4967,7 +4967,7 @@ Resources: 119
     In: lastReceivedOn: DateTime[0..1]
     Out: return: MeasureReport[1..1]
 - MeasureReport: DomainResource (FMM: 2) (abstract: False)
-  ^measureReport[0..*]: MeasureReport (W5: clinical.general)
+  ^measureReport[0..*]: Element (W5: clinical.general)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -5029,7 +5029,7 @@ Resources: 119
   ?patient: patient=reference
   ?status: status=token
 - Media: DomainResource (FMM: 1) (abstract: False)
-  ^media[0..*]: Media constraints: mda-1, mda-2, mda-3, mda-4 (W5: infrastructure.structure)
+  ^media[0..*]: Element constraints: mda-1, mda-2, mda-3, mda-4 (W5: infrastructure.structure)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -5080,7 +5080,7 @@ Resources: 119
   ?type: type=token
   ?view: view=token
 - Medication: DomainResource (FMM: 3) (abstract: False)
-  ^medication[0..*]: Medication (W5: clinical.medication)
+  ^medication[0..*]: Element (W5: clinical.medication)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -5137,7 +5137,7 @@ Resources: 119
   ?package-item-code: package-item-code=token
   ?status: status=token
 - MedicationAdministration: DomainResource (FMM: 2) (abstract: False)
-  ^medicationAdministration[0..*]: MedicationAdministration constraints: mad-2, mad-3 (W5: clinical.medication)
+  ^medicationAdministration[0..*]: Element constraints: mad-2, mad-3 (W5: clinical.medication)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -5204,7 +5204,7 @@ Resources: 119
   ?status: status=token
   ?subject: subject=reference
 - MedicationDispense: DomainResource (FMM: 2) (abstract: False)
-  ^medicationDispense[0..*]: MedicationDispense constraints: mdd-1 (W5: clinical.medication)
+  ^medicationDispense[0..*]: Element constraints: mdd-1 (W5: clinical.medication)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -5272,7 +5272,7 @@ Resources: 119
   ?whenhandedover: whenhandedover=date
   ?whenprepared: whenprepared=date
 - MedicationRequest: DomainResource (FMM: 3) (abstract: False)
-  ^medicationRequest[0..*]: MedicationRequest (W5: clinical.medication)
+  ^medicationRequest[0..*]: Element (W5: clinical.medication)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -5347,7 +5347,7 @@ Resources: 119
   ?status: status=token
   ?subject: subject=reference
 - MedicationStatement: DomainResource (FMM: 3) (abstract: False)
-  ^medicationStatement[0..*]: MedicationStatement constraints: mst-1 (W5: clinical.medication)
+  ^medicationStatement[0..*]: Element constraints: mst-1 (W5: clinical.medication)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -5393,7 +5393,7 @@ Resources: 119
   ?status: status=token
   ?subject: subject=reference
 - MessageDefinition: DomainResource (FMM: 0) (abstract: False)
-  ^messageDefinition[0..*]: MessageDefinition (W5: infrastructure.exchange)
+  ^messageDefinition[0..*]: Element (W5: infrastructure.exchange)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -5462,7 +5462,7 @@ Resources: 119
   ?url: url=uri
   ?version: version=token
 - MessageHeader: DomainResource (FMM: 3) (abstract: False)
-  ^messageHeader[0..*]: MessageHeader (W5: infrastructure.exchange)
+  ^messageHeader[0..*]: Element (W5: infrastructure.exchange)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -5525,7 +5525,7 @@ Resources: 119
   ?target: target=reference
   ?timestamp: timestamp=date
 - NamingSystem: DomainResource (FMM: 1) (abstract: False)
-  ^namingSystem[0..*]: NamingSystem constraints: nsd-1, nsd-2, nsd-3 (W5: conformance.terminology)
+  ^namingSystem[0..*]: Element constraints: nsd-1, nsd-2, nsd-3 (W5: conformance.terminology)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -5583,7 +5583,7 @@ Resources: 119
   ?type: type=token
   ?value: value=string
 - NutritionOrder: DomainResource (FMM: 2) (abstract: False)
-  ^nutritionOrder[0..*]: NutritionOrder constraints: nor-1 (W5: clinical.careprovision)
+  ^nutritionOrder[0..*]: Element constraints: nor-1 (W5: clinical.careprovision)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -5667,7 +5667,7 @@ Resources: 119
   ?status: status=token
   ?supplement: supplement=token
 - Observation: DomainResource (FMM: 5) (abstract: False)
-  ^observation[0..*]: Observation constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  ^observation[0..*]: Element constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -5728,7 +5728,7 @@ Resources: 119
     - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6 binding name: ObservationValueAbsentReason
     - interpretation[0..1]: CodeableConcept binding name: ObservationInterpretation
-    - referenceRange[0..*]: !!! undeclared type !!!
+    - referenceRange[0..*]: #Observation.referenceRange
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference
   ?category: category=token
@@ -5825,7 +5825,7 @@ Resources: 119
     -vitalsigns: http://hl7.org/fhir/StructureDefinition/vitalsigns (Vital Signs Profile)
     -vitalspanel: http://hl7.org/fhir/StructureDefinition/vitalspanel (Vital Signs Profile)
 - OperationDefinition: DomainResource (FMM: 4) (abstract: False)
-  ^operationDefinition[0..*]: OperationDefinition (W5: conformance.behavior)
+  ^operationDefinition[0..*]: Element (W5: conformance.behavior)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -5887,7 +5887,7 @@ Resources: 119
       - strength[1..1]: code binding name: BindingStrength
         {required|extensible|preferred|example}
       - valueSet[x][1..1]: Reference(ValueSet)|uri
-    - part[0..*]: !!! undeclared type !!! conditions: opd-1
+    - part[0..*]: #OperationDefinition.parameter conditions: opd-1
   - overload[0..*]: BackboneElement
     - id[0..1]: string
     - extension[0..*]: Extension
@@ -5910,7 +5910,7 @@ Resources: 119
   ?url: url=uri
   ?version: version=token
 - OperationOutcome: DomainResource (FMM: 5) (abstract: False)
-  ^operationOutcome[0..*]: OperationOutcome (W5: infrastructure.exchange)
+  ^operationOutcome[0..*]: Element (W5: infrastructure.exchange)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -5937,7 +5937,7 @@ Resources: 119
     - location[0..*]: string
     - expression[0..*]: string
 - Organization: DomainResource (FMM: 3) (abstract: False)
-  ^organization[0..*]: Organization constraints: org-1 (W5: administrative.group)
+  ^organization[0..*]: Element constraints: org-1 (W5: administrative.group)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -5986,7 +5986,7 @@ Resources: 119
   ?phonetic: phonetic=string
   ?type: type=token
 - Parameters: Resource (FMM: 5) (abstract: False)
-  ^parameters[0..*]: Parameters (W5: infrastructure.exchange)
+  ^parameters[0..*]: Element (W5: infrastructure.exchange)
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
   !inv-1: local error: (part.exists() and value.empty() and resource.empty()) or (part.empty() and (value.exists() xor resource.exists()))
   - id[0..1]: id
@@ -6000,9 +6000,9 @@ Resources: 119
     - name[1..1]: string
     - value[x][0..1]: Address|Age|Annotation|Attachment|base64Binary|boolean|code|CodeableConcept|Coding|ContactPoint|Count|date|dateTime|decimal|Distance|Duration|HumanName|id|Identifier|instant|integer|markdown|Meta|Money|oid|Period|positiveInt|Quantity|Range|Ratio|Reference|SampledData|Signature|string|time|Timing|unsignedInt|uri conditions: inv-1
     - resource[0..1]: Resource conditions: inv-1
-    - part[0..*]: !!! undeclared type !!!
+    - part[0..*]: #Parameters.parameter
 - Patient: DomainResource (FMM: 5) (abstract: False)
-  ^patient[0..*]: Patient (W5: administrative.individual)
+  ^patient[0..*]: Element (W5: administrative.individual)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -6107,7 +6107,7 @@ Resources: 119
     In: end: Date[0..1]
     Out: return: Bundle[1..1]
 - PaymentNotice: DomainResource (FMM: 2) (abstract: False)
-  ^paymentNotice[0..*]: PaymentNotice (W5: financial.payment)
+  ^paymentNotice[0..*]: Element (W5: financial.payment)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -6140,7 +6140,7 @@ Resources: 119
   ?response: response=reference
   ?statusdate: statusdate=date
 - PaymentReconciliation: DomainResource (FMM: 2) (abstract: False)
-  ^paymentReconciliation[0..*]: PaymentReconciliation (W5: financial.payment)
+  ^paymentReconciliation[0..*]: Element (W5: financial.payment)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -6193,7 +6193,7 @@ Resources: 119
   ?request-organization: request-organization=reference
   ?request-provider: request-provider=reference
 - Person: DomainResource (FMM: 2) (abstract: False)
-  ^person[0..*]: Person (W5: administrative.entity)
+  ^person[0..*]: Element (W5: administrative.entity)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -6244,7 +6244,7 @@ Resources: 119
   ?relatedperson: relatedperson=reference
   ?telecom: telecom=token
 - PlanDefinition: DomainResource (FMM: 2) (abstract: False)
-  ^planDefinition[0..*]: PlanDefinition (W5: clinical.general)
+  ^planDefinition[0..*]: Element (W5: clinical.general)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -6361,7 +6361,7 @@ Resources: 119
       - path[0..1]: string
       - language[0..1]: string
       - expression[0..1]: string
-    - action[0..*]: !!! undeclared type !!!
+    - action[0..*]: #PlanDefinition.action
   ?composed-of: composed-of=reference
   ?date: date=date
   ?depends-on: depends-on=reference
@@ -6393,7 +6393,7 @@ Resources: 119
   PlanDefinition/{id}/$data-requirements (FMM: 0)
     Out: return: Library[1..1]
 - Practitioner: DomainResource (FMM: 3) (abstract: False)
-  ^practitioner[0..*]: Practitioner (W5: administrative.individual)
+  ^practitioner[0..*]: Element (W5: administrative.individual)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -6444,7 +6444,7 @@ Resources: 119
   ?phonetic: phonetic=string
   ?telecom: telecom=token
 - PractitionerRole: DomainResource (FMM: 2) (abstract: False)
-  ^practitionerRole[0..*]: PractitionerRole (W5: administrative.individual)
+  ^practitionerRole[0..*]: Element (W5: administrative.individual)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -6500,7 +6500,7 @@ Resources: 119
   ?specialty: specialty=token
   ?telecom: telecom=token
 - Procedure: DomainResource (FMM: 3) (abstract: False)
-  ^procedure[0..*]: Procedure constraints: pro-1 (W5: clinical.general)
+  ^procedure[0..*]: Element constraints: pro-1 (W5: clinical.general)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -6569,7 +6569,7 @@ Resources: 119
   ?status: status=token
   ?subject: subject=reference
 - ProcedureRequest: DomainResource (FMM: 3) (abstract: False)
-  ^procedureRequest[0..*]: ProcedureRequest (W5: clinical.general)
+  ^procedureRequest[0..*]: Element (W5: clinical.general)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -6641,7 +6641,7 @@ Resources: 119
   Profiles[ProcedureRequest]: 1
     -procedurerequest-genetics: http://hl7.org/fhir/StructureDefinition/procedurerequest-genetics (ProcedureRequest-Genetics)
 - ProcessRequest: DomainResource (FMM: 2) (abstract: False)
-  ^processRequest[0..*]: ProcessRequest (W5: workflow.order)
+  ^processRequest[0..*]: Element (W5: workflow.order)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -6681,7 +6681,7 @@ Resources: 119
   ?organization: organization=reference
   ?provider: provider=reference
 - ProcessResponse: DomainResource (FMM: 2) (abstract: False)
-  ^processResponse[0..*]: ProcessResponse (W5: workflow.order)
+  ^processResponse[0..*]: Element (W5: workflow.order)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -6720,7 +6720,7 @@ Resources: 119
   ?request-organization: request-organization=reference
   ?request-provider: request-provider=reference
 - Provenance: DomainResource (FMM: 3) (abstract: False)
-  ^provenance[0..*]: Provenance (W5: infrastructure.information)
+  ^provenance[0..*]: Element (W5: infrastructure.information)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -6756,7 +6756,7 @@ Resources: 119
     - role[1..1]: code binding name: ProvenanceEntityRole
       {derivation|revision|quotation|source|removal}
     - what[x][1..1]: Identifier|Reference(Resource)|uri
-    - agent[0..*]: !!! undeclared type !!!
+    - agent[0..*]: #Provenance.agent
   - signature[0..*]: Signature
   ?agent: agent=reference
   ?agent-role: agent-role=token
@@ -6772,7 +6772,7 @@ Resources: 119
   Profiles[Provenance]: 1
     -ehrsrle-provenance: http://hl7.org/fhir/StructureDefinition/ehrsrle-provenance (EHRS FM Record Lifecycle Event - Provenance)
 - Questionnaire: DomainResource (FMM: 3) (abstract: False)
-  ^questionnaire[0..*]: Questionnaire constraints: que-2 (W5: infrastructure.information)
+  ^questionnaire[0..*]: Element constraints: que-2 (W5: infrastructure.information)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -6849,7 +6849,7 @@ Resources: 119
       - modifierExtension[0..*]: Extension
       - value[x][1..1]: Coding|date|integer|string|time binding name: QuestionnaireQuestionOption
     - initial[x][0..1]: Attachment|boolean|Coding|date|dateTime|decimal|integer|Quantity|Reference(Resource)|string|time|uri conditions: que-8 binding name: QuestionnaireQuestionOption2
-    - item[0..*]: !!! undeclared type !!! conditions: que-1
+    - item[0..*]: #Questionnaire.item conditions: que-1
   ?code: code=token
   ?date: date=date
   ?description: description=string
@@ -6919,7 +6919,7 @@ Resources: 119
   Profiles[Questionnaire]: 1
     -cqif-questionnaire: http://hl7.org/fhir/StructureDefinition/cqif-questionnaire (CQIF-Questionnaire)
 - QuestionnaireResponse: DomainResource (FMM: 3) (abstract: False)
-  ^questionnaireResponse[0..*]: QuestionnaireResponse (W5: infrastructure.information)
+  ^questionnaireResponse[0..*]: Element (W5: infrastructure.information)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -6958,8 +6958,8 @@ Resources: 119
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
       - value[x][0..1]: Attachment|boolean|Coding|date|dateTime|decimal|integer|Quantity|Reference(Resource)|string|time|uri binding name: QuestionnaireAnswer
-      - item[0..*]: !!! undeclared type !!!
-    - item[0..*]: !!! undeclared type !!!
+      - item[0..*]: #QuestionnaireResponse.item
+    - item[0..*]: #QuestionnaireResponse.item
   ?author: author=reference
   ?authored: authored=date
   ?based-on: based-on=reference
@@ -6972,7 +6972,7 @@ Resources: 119
   ?status: status=token
   ?subject: subject=reference
 - ReferralRequest: DomainResource (FMM: 1) (abstract: False)
-  ^referralRequest[0..*]: ReferralRequest (W5: clinical.careprovision)
+  ^referralRequest[0..*]: Element (W5: clinical.careprovision)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -7038,7 +7038,7 @@ Resources: 119
   ?subject: subject=reference
   ?type: type=token
 - RelatedPerson: DomainResource (FMM: 2) (abstract: False)
-  ^relatedPerson[0..*]: RelatedPerson (W5: administrative.individual)
+  ^relatedPerson[0..*]: Element (W5: administrative.individual)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -7081,7 +7081,7 @@ Resources: 119
   ?phonetic: phonetic=string
   ?telecom: telecom=token
 - RequestGroup: DomainResource (FMM: 0) (abstract: False)
-  ^requestGroup[0..*]: RequestGroup (W5: clinical.general)
+  ^requestGroup[0..*]: Element (W5: clinical.general)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -7154,7 +7154,7 @@ Resources: 119
     - cardinalityBehavior[0..1]: code binding name: ActionCardinalityBehavior
       {single|multiple}
     - resource[0..1]: Reference(Resource) conditions: rqg-1
-    - action[0..*]: !!! undeclared type !!! conditions: rqg-1
+    - action[0..*]: #RequestGroup.action conditions: rqg-1
   ?author: author=reference
   ?authored: authored=date
   ?context: context=reference
@@ -7169,7 +7169,7 @@ Resources: 119
   ?status: status=token
   ?subject: subject=reference
 - ResearchStudy: DomainResource (FMM: 0) (abstract: False)
-  ^researchStudy[0..*]: ResearchStudy (W5: clinical.diagnostics)
+  ^researchStudy[0..*]: Element (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -7224,7 +7224,7 @@ Resources: 119
   ?status: status=token
   ?title: title=string
 - ResearchSubject: DomainResource (FMM: 0) (abstract: False)
-  ^researchSubject[0..*]: ResearchSubject (W5: clinical.diagnostics)
+  ^researchSubject[0..*]: Element (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -7252,7 +7252,7 @@ Resources: 119
   ?patient: patient=reference
   ?status: status=token
 - Resource: Resource (FMM: 5) (abstract: True)
-  ^resource[0..*]: Resource
+  ^resource[0..*]: Element
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7278,7 +7278,7 @@ Resources: 119
     In: profile: Uri[0..1]
     Out: return: OperationOutcome[1..1]
 - RiskAssessment: DomainResource (FMM: 1) (abstract: False)
-  ^riskAssessment[0..*]: RiskAssessment (W5: clinical.general)
+  ^riskAssessment[0..*]: Element (W5: clinical.general)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -7331,7 +7331,7 @@ Resources: 119
   ?risk: risk=token
   ?subject: subject=reference
 - Schedule: DomainResource (FMM: 3) (abstract: False)
-  ^schedule[0..*]: Schedule (W5: workflow.scheduling)
+  ^schedule[0..*]: Element (W5: workflow.scheduling)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -7359,7 +7359,7 @@ Resources: 119
   ?identifier: identifier=token
   ?type: type=token
 - SearchParameter: DomainResource (FMM: 3) (abstract: False)
-  ^searchParameter[1..1]: SearchParameter constraints: spd-1, spd-2 (W5: conformance.behavior)
+  ^searchParameter[1..1]: Element constraints: spd-1, spd-2 (W5: conformance.behavior)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -7426,7 +7426,7 @@ Resources: 119
   ?url: url=uri
   ?version: version=token
 - Sequence: DomainResource (FMM: 1) (abstract: False)
-  ^sequence[0..*]: Sequence constraints: seq-3 (W5: clinical.diagnostics)
+  ^sequence[0..*]: Element constraints: seq-3 (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -7518,7 +7518,7 @@ Resources: 119
   ?start: start=number
   ?type: type=token
 - ServiceDefinition: DomainResource (FMM: 0) (abstract: False)
-  ^serviceDefinition[0..*]: ServiceDefinition (W5: clinical.general)
+  ^serviceDefinition[0..*]: Element (W5: clinical.general)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -7597,7 +7597,7 @@ Resources: 119
     In: settingContext: CodeableConcept[0..1]
     Out: return: GuidanceResponse[1..1]
 - Slot: DomainResource (FMM: 3) (abstract: False)
-  ^slot[0..*]: Slot (W5: workflow.scheduling)
+  ^slot[0..*]: Element (W5: workflow.scheduling)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -7628,7 +7628,7 @@ Resources: 119
   ?start: start=date
   ?status: status=token
 - Specimen: DomainResource (FMM: 2) (abstract: False)
-  ^specimen[0..*]: Specimen (W5: clinical.diagnostics)
+  ^specimen[0..*]: Element (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -7692,7 +7692,7 @@ Resources: 119
   ?subject: subject=reference
   ?type: type=token
 - StructureDefinition: DomainResource (FMM: 5) (abstract: False)
-  ^structureDefinition[0..*]: StructureDefinition constraints: sdf-1, sdf-4, sdf-5, sdf-6, sdf-7, sdf-9, sdf-11, sdf-14, sdf-16, sdf-17, sdf-18, sdf-19 (W5: conformance.content)
+  ^structureDefinition[0..*]: Element constraints: sdf-1, sdf-4, sdf-5, sdf-6, sdf-7, sdf-9, sdf-11, sdf-14, sdf-16, sdf-17, sdf-18, sdf-19 (W5: conformance.content)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -7807,7 +7807,7 @@ Resources: 119
     In: supportedOnly: Boolean[0..1]
     Out: return: Questionnaire[1..1]
 - StructureMap: DomainResource (FMM: 2) (abstract: False)
-  ^structureMap[1..1]: StructureMap (W5: conformance.content)
+  ^structureMap[1..1]: Element (W5: conformance.content)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -7906,7 +7906,7 @@ Resources: 119
           - extension[0..*]: Extension
           - modifierExtension[0..*]: Extension
           - value[x][1..1]: boolean|decimal|id|integer|string
-      - rule[0..*]: !!! undeclared type !!!
+      - rule[0..*]: #StructureMap.group.rule
       - dependent[0..*]: BackboneElement
         - id[0..1]: string
         - extension[0..*]: Extension
@@ -7933,7 +7933,7 @@ Resources: 119
     In: content: Resource[1..1]
     Out: return: Resource[1..1]
 - Subscription: DomainResource (FMM: 3) (abstract: False)
-  ^subscription[0..*]: Subscription (W5: infrastructure.exchange)
+  ^subscription[0..*]: Element (W5: infrastructure.exchange)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -7972,7 +7972,7 @@ Resources: 119
   ?type: type=token
   ?url: url=uri
 - Substance: DomainResource (FMM: 2) (abstract: False)
-  ^substance[0..*]: Substance (W5: administrative.entity)
+  ^substance[0..*]: Element (W5: administrative.entity)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -8014,7 +8014,7 @@ Resources: 119
   ?status: status=token
   ?substance-reference: substance-reference=reference
 - SupplyDelivery: DomainResource (FMM: 1) (abstract: False)
-  ^supplyDelivery[0..*]: SupplyDelivery (W5: workflow.order)
+  ^supplyDelivery[0..*]: Element (W5: workflow.order)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -8051,7 +8051,7 @@ Resources: 119
   ?status: status=token
   ?supplier: supplier=reference
 - SupplyRequest: DomainResource (FMM: 1) (abstract: False)
-  ^supplyRequest[0..*]: SupplyRequest (W5: workflow.order)
+  ^supplyRequest[0..*]: Element (W5: workflow.order)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -8096,7 +8096,7 @@ Resources: 119
   ?status: status=token
   ?supplier: supplier=reference
 - Task: DomainResource (FMM: 2) (abstract: False)
-  ^task[0..*]: Task constraints: inv-1 (W5: workflow.order)
+  ^task[0..*]: Element constraints: inv-1 (W5: workflow.order)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -8183,7 +8183,7 @@ Resources: 119
   ?status: status=token
   ?subject: subject=reference
 - TestReport: DomainResource (FMM: 0) (abstract: False)
-  ^testReport[0..*]: TestReport (W5: conformance.misc)
+  ^testReport[0..*]: Element (W5: conformance.misc)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -8251,8 +8251,8 @@ Resources: 119
       - id[0..1]: string
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
-      - operation[0..1]: !!! undeclared type !!!
-      - assert[0..1]: !!! undeclared type !!!
+      - operation[0..1]: #TestReport.setup.action.operation
+      - assert[0..1]: #TestReport.setup.action.assert
   - teardown[0..1]: BackboneElement
     - id[0..1]: string
     - extension[0..*]: Extension
@@ -8261,7 +8261,7 @@ Resources: 119
       - id[0..1]: string
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
-      - operation[1..1]: !!! undeclared type !!!
+      - operation[1..1]: #TestReport.setup.action.operation
   ?identifier: identifier=token
   ?issued: issued=date
   ?participant: participant=uri
@@ -8269,7 +8269,7 @@ Resources: 119
   ?tester: tester=string
   ?testscript: testscript=reference
 - TestScript: DomainResource (FMM: 2) (abstract: False)
-  ^testScript[0..*]: TestScript (W5: conformance.misc)
+  ^testScript[0..*]: Element (W5: conformance.misc)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -8503,8 +8503,8 @@ Resources: 119
       - id[0..1]: string
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
-      - operation[0..1]: !!! undeclared type !!! constraints: inv-8
-      - assert[0..1]: !!! undeclared type !!! constraints: inv-6, inv-11, inv-13
+      - operation[0..1]: #TestScript.setup.action.operation constraints: inv-8
+      - assert[0..1]: #TestScript.setup.action.assert constraints: inv-6, inv-11, inv-13
   - teardown[0..1]: BackboneElement
     - id[0..1]: string
     - extension[0..*]: Extension
@@ -8513,7 +8513,7 @@ Resources: 119
       - id[0..1]: string
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
-      - operation[1..1]: !!! undeclared type !!! constraints: inv-9
+      - operation[1..1]: #TestScript.setup.action.operation constraints: inv-9
   ?date: date=date
   ?description: description=string
   ?identifier: identifier=token
@@ -8526,7 +8526,7 @@ Resources: 119
   ?url: url=uri
   ?version: version=token
 - ValueSet: DomainResource (FMM: 5) (abstract: False)
-  ^valueSet[0..*]: ValueSet constraints: vsd-5 (W5: conformance.terminology)
+  ^valueSet[0..*]: Element constraints: vsd-5 (W5: conformance.terminology)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -8599,7 +8599,7 @@ Resources: 119
           {=|is-a|descendent-of|is-not-a|regex|in|not-in|generalizes|exists}
         - value[1..1]: code
       - valueSet[0..*]: uri conditions: vsd-1
-    - exclude[0..*]: !!! undeclared type !!! conditions: vsd-2
+    - exclude[0..*]: #ValueSet.compose.include conditions: vsd-2
   - expansion[0..1]: BackboneElement conditions: vsd-5
     - id[0..1]: string
     - extension[0..*]: Extension
@@ -8626,8 +8626,8 @@ Resources: 119
       - version[0..1]: string
       - code[0..1]: code conditions: vsd-6
       - display[0..1]: string conditions: vsd-6
-      - designation[0..*]: !!! undeclared type !!!
-      - contains[0..*]: !!! undeclared type !!!
+      - designation[0..*]: #ValueSet.compose.include.concept.designation
+      - contains[0..*]: #ValueSet.expansion.contains
   ?date: date=date
   ?description: description=string
   ?expansion: expansion=uri
@@ -8711,7 +8711,7 @@ Resources: 119
   Profiles[ValueSet]: 1
     -shareablevalueset: http://hl7.org/fhir/StructureDefinition/shareablevalueset (Shareable ValueSet)
 - VisionPrescription: DomainResource (FMM: 1) (abstract: False)
-  ^visionPrescription[0..*]: VisionPrescription (W5: clinical.careprovision)
+  ^visionPrescription[0..*]: Element (W5: clinical.careprovision)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -8761,7 +8761,7 @@ Resources: 119
   ?prescriber: prescriber=reference
 Profiles: 33
 - Vital Signs Profile: (bmi) vitalsigns
-  ^observation[0..*]: Observation (W5: clinical.diagnostics)
+  ^observation[0..*]: Element (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -8851,7 +8851,7 @@ Profiles: 33
       - code[1..1]: code
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6 binding name: DAR
     - interpretation[0..1]: CodeableConcept binding name: ObservationInterpretation
-    - referenceRange[0..*]: Observation.component.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference
   ?category: category=token
@@ -8948,7 +8948,7 @@ Profiles: 33
     -vitalsigns: http://hl7.org/fhir/StructureDefinition/vitalsigns (Vital Signs Profile)
     -vitalspanel: http://hl7.org/fhir/StructureDefinition/vitalspanel (Vital Signs Profile)
 - Vital Signs Profile: (bodyheight) vitalsigns
-  ^observation[0..*]: Observation (W5: clinical.diagnostics)
+  ^observation[0..*]: Element (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -9038,7 +9038,7 @@ Profiles: 33
       - code[1..1]: code
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6 binding name: DAR
     - interpretation[0..1]: CodeableConcept binding name: ObservationInterpretation
-    - referenceRange[0..*]: Observation.component.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference
   ?category: category=token
@@ -9135,7 +9135,7 @@ Profiles: 33
     -vitalsigns: http://hl7.org/fhir/StructureDefinition/vitalsigns (Vital Signs Profile)
     -vitalspanel: http://hl7.org/fhir/StructureDefinition/vitalspanel (Vital Signs Profile)
 - Vital Signs Profile: (bodylength) vitalsigns
-  ^observation[0..*]: Observation (W5: clinical.diagnostics)
+  ^observation[0..*]: Element (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -9225,7 +9225,7 @@ Profiles: 33
       - code[1..1]: code
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6 binding name: DAR
     - interpretation[0..1]: CodeableConcept binding name: ObservationInterpretation
-    - referenceRange[0..*]: Observation.component.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference
   ?category: category=token
@@ -9322,7 +9322,7 @@ Profiles: 33
     -vitalsigns: http://hl7.org/fhir/StructureDefinition/vitalsigns (Vital Signs Profile)
     -vitalspanel: http://hl7.org/fhir/StructureDefinition/vitalspanel (Vital Signs Profile)
 - Vital Signs Profile: (bodytemp) vitalsigns
-  ^observation[0..*]: Observation (W5: clinical.diagnostics)
+  ^observation[0..*]: Element (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -9412,7 +9412,7 @@ Profiles: 33
       - code[1..1]: code
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6 binding name: DAR
     - interpretation[0..1]: CodeableConcept binding name: ObservationInterpretation
-    - referenceRange[0..*]: Observation.component.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference
   ?category: category=token
@@ -9509,7 +9509,7 @@ Profiles: 33
     -vitalsigns: http://hl7.org/fhir/StructureDefinition/vitalsigns (Vital Signs Profile)
     -vitalspanel: http://hl7.org/fhir/StructureDefinition/vitalspanel (Vital Signs Profile)
 - Vital Signs Profile: (bodyweight) vitalsigns
-  ^observation[0..*]: Observation (W5: clinical.diagnostics)
+  ^observation[0..*]: Element (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -9599,7 +9599,7 @@ Profiles: 33
       - code[1..1]: code
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6 binding name: DAR
     - interpretation[0..1]: CodeableConcept binding name: ObservationInterpretation
-    - referenceRange[0..*]: Observation.component.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference
   ?category: category=token
@@ -9696,7 +9696,7 @@ Profiles: 33
     -vitalsigns: http://hl7.org/fhir/StructureDefinition/vitalsigns (Vital Signs Profile)
     -vitalspanel: http://hl7.org/fhir/StructureDefinition/vitalspanel (Vital Signs Profile)
 - Vital Signs Profile: (bp) vitalsigns
-  ^observation[0..*]: Observation (W5: clinical.diagnostics)
+  ^observation[0..*]: Element (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -9866,7 +9866,7 @@ Profiles: 33
     -vitalsigns: http://hl7.org/fhir/StructureDefinition/vitalsigns (Vital Signs Profile)
     -vitalspanel: http://hl7.org/fhir/StructureDefinition/vitalspanel (Vital Signs Profile)
 - Example Lipid Profile: (cholesterol) Observation (FMM: 1 experimental)
-  ^observation[1..1]: Observation (W5: clinical.diagnostics)
+  ^observation[1..1]: Element (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -9942,7 +9942,7 @@ Profiles: 33
     - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6 binding name: ObservationValueAbsentReason
     - interpretation[0..1]: CodeableConcept binding name: ObservationInterpretation
-    - referenceRange[0..*]: Observation.component.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference
   ?category: category=token
@@ -10039,7 +10039,7 @@ Profiles: 33
     -vitalsigns: http://hl7.org/fhir/StructureDefinition/vitalsigns (Vital Signs Profile)
     -vitalspanel: http://hl7.org/fhir/StructureDefinition/vitalspanel (Vital Signs Profile)
 - Clinical Document Profile for Composition: (clinicaldocument) Composition
-  ^composition[0..*]: Composition (W5: infrastructure.documents)
+  ^composition[0..*]: Element (W5: infrastructure.documents)
   !cmp-1: local error: text.exists() or entry.exists() or section.exists()
   !cmp-2: local error: emptyReason.empty() or entry.empty()
   !dom-1: inherited error: contained.text.empty()
@@ -10102,7 +10102,7 @@ Profiles: 33
     - orderedBy[0..1]: CodeableConcept binding name: SectionEntryOrder
     - entry[0..*]: Reference(Resource) conditions: cmp-2
     - emptyReason[0..1]: CodeableConcept conditions: cmp-2 binding name: SectionEmptyReason
-    - section[0..*]: Composition.section.section conditions: cmp-1
+    - section[0..*]: #Composition.section conditions: cmp-1
   ?attester: attester=reference
   ?author: author=reference
   ?class: class=token
@@ -10128,7 +10128,7 @@ Profiles: 33
   Profiles[Composition]: 1
     -clinicaldocument: http://hl7.org/fhir/StructureDefinition/clinicaldocument (Clinical Document Profile for Composition)
 - Consent Directive: (consentdirective) Contract
-  ^contract[0..*]: Contract (W5: financial.other)
+  ^contract[0..*]: Element (W5: financial.other)
   !mny-1: local error: (code or value.empty()) and (system.empty() or system = 'urn:iso:std:iso:4217')
   !qty-3: local error: code.empty() or system
   !sqty-1: local error: comparator.empty()
@@ -10206,7 +10206,7 @@ Profiles: 33
       - factor[0..1]: decimal
       - points[0..1]: decimal
       - net[0..1]: Quantity(Money) constraints: mny-1, qty-3
-    - group[0..*]: Contract.term.group
+    - group[0..*]: #Contract.term
   - binding[x][1..1]: Attachment|Reference(Composition|DocumentReference|QuestionnaireResponse)
   - friendly[0..*]: BackboneElement
     - id[0..1]: id
@@ -10235,7 +10235,7 @@ Profiles: 33
   Profiles[Contract]: 1
     -consentdirective: http://hl7.org/fhir/StructureDefinition/consentdirective (Consent Directive)
 - CQIF-Questionnaire: (cqif-questionnaire) Questionnaire
-  ^questionnaire[0..*]: Questionnaire (W5: infrastructure.information)
+  ^questionnaire[0..*]: Element (W5: infrastructure.information)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -10320,7 +10320,7 @@ Profiles: 33
       - modifierExtension[0..*]: Extension
       - value[x][1..1]: Coding|date|integer|string|time binding name: QuestionnaireQuestionOption
     - initial[x][0..1]: Attachment|boolean|Coding|date|dateTime|decimal|integer|Quantity|Reference(Resource)|string|time|uri conditions: que-8 binding name: QuestionnaireQuestionOption2
-    - item[0..*]: Questionnaire.item.item conditions: que-1
+    - item[0..*]: #Questionnaire.item conditions: que-1
   ?code: code=token
   ?date: date=date
   ?description: description=string
@@ -10390,7 +10390,7 @@ Profiles: 33
   Profiles[Questionnaire]: 1
     -cqif-questionnaire: http://hl7.org/fhir/StructureDefinition/cqif-questionnaire (CQIF-Questionnaire)
 - Device Metric Observation Profile: (devicemetricobservation) Observation
-  ^observation[0..*]: Observation (W5: clinical.diagnostics)
+  ^observation[0..*]: Element (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -10451,7 +10451,7 @@ Profiles: 33
     - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6 binding name: ObservationValueAbsentReason
     - interpretation[0..1]: CodeableConcept binding name: ObservationInterpretation
-    - referenceRange[0..*]: Observation.component.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference
   ?category: category=token
@@ -10548,7 +10548,7 @@ Profiles: 33
     -vitalsigns: http://hl7.org/fhir/StructureDefinition/vitalsigns (Vital Signs Profile)
     -vitalspanel: http://hl7.org/fhir/StructureDefinition/vitalspanel (Vital Signs Profile)
 - DiagnosticReport-Genetics: (diagnosticreport-genetics) DiagnosticReport
-  ^diagnosticReport[0..*]: DiagnosticReport (W5: clinical.diagnostics)
+  ^diagnosticReport[0..*]: Element (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -10615,7 +10615,7 @@ Profiles: 33
     -hlaresult: http://hl7.org/fhir/StructureDefinition/hlaresult (Profile for HLA Genotyping Results)
     -lipidprofile: http://hl7.org/fhir/StructureDefinition/lipidprofile (Example Lipid Profile)
 - EHRS FM Record Lifecycle Event - Audit Event: (ehrsrle-auditevent) AuditEvent
-  ^auditEvent[0..*]: AuditEvent (W5: infrastructure.information)
+  ^auditEvent[0..*]: Element (W5: infrastructure.information)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -10709,7 +10709,7 @@ Profiles: 33
   Profiles[AuditEvent]: 1
     -ehrsrle-auditevent: http://hl7.org/fhir/StructureDefinition/ehrsrle-auditevent (EHRS FM Record Lifecycle Event - Audit Event)
 - EHRS FM Record Lifecycle Event - Provenance: (ehrsrle-provenance) Provenance
-  ^provenance[0..*]: Provenance (W5: infrastructure.information)
+  ^provenance[0..*]: Element (W5: infrastructure.information)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -10745,7 +10745,7 @@ Profiles: 33
     - role[1..1]: code binding name: ProvenanceEntityRole
       {derivation|revision|quotation|source|removal}
     - what[x][1..1]: Identifier|Reference(Resource)|uri
-    - agent[0..*]: Provenance.entity.agent
+    - agent[0..*]: #Provenance.agent
   - signature[0..*]: Signature
   ?agent: agent=reference
   ?agent-role: agent-role=token
@@ -10761,7 +10761,7 @@ Profiles: 33
   Profiles[Provenance]: 1
     -ehrsrle-provenance: http://hl7.org/fhir/StructureDefinition/ehrsrle-provenance (EHRS FM Record Lifecycle Event - Provenance)
 - DataElement constraint on ElementDefinition data type: (elementdefinition-de) ElementDefinition
-  ^elementDefinition[0..*]: ElementDefinition conditions: ele-1
+  ^elementDefinition[0..*]: Element conditions: ele-1
   !eld-1: inherited error: discriminator.exists() or description.exists()
   !eld-2: inherited error: min.empty() or max.empty() or (max = '*') or (min <= max.toInteger())
   !eld-3: local error: empty() or ($this = '*') or (toInteger() >= 0)
@@ -10873,7 +10873,7 @@ Profiles: 33
   Profiles[ElementDefinition]: 1
     -elementdefinition-de: http://hl7.org/fhir/StructureDefinition/elementdefinition-de (DataElement constraint on ElementDefinition data type)
 - LipidProfileExample: (example) DiagnosticReport (experimental)
-  ^diagnosticReport[1..1]: DiagnosticReport
+  ^diagnosticReport[1..1]: Element
   - extension[0..*]: Extension
   - text[0..1]: Narrative
   - contained[0..*]: Resource
@@ -10916,7 +10916,7 @@ Profiles: 33
     -hlaresult: http://hl7.org/fhir/StructureDefinition/hlaresult (Profile for HLA Genotyping Results)
     -lipidprofile: http://hl7.org/fhir/StructureDefinition/lipidprofile (Example Lipid Profile)
 - Family member history for genetics analysis: (familymemberhistory-genetic) FamilyMemberHistory
-  ^familyMemberHistory[0..*]: FamilyMemberHistory (W5: clinical.general)
+  ^familyMemberHistory[0..*]: Element (W5: clinical.general)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -10960,7 +10960,7 @@ Profiles: 33
   Profiles[FamilyMemberHistory]: 1
     -familymemberhistory-genetic: http://hl7.org/fhir/StructureDefinition/familymemberhistory-genetic (Family member history for genetics analysis)
 - Example Lipid Profile: (hdlcholesterol) Observation (FMM: 1 experimental)
-  ^observation[1..1]: Observation (W5: clinical.diagnostics)
+  ^observation[1..1]: Element (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -11025,7 +11025,7 @@ Profiles: 33
     - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6 binding name: ObservationValueAbsentReason
     - interpretation[0..1]: CodeableConcept binding name: ObservationInterpretation
-    - referenceRange[0..*]: Observation.component.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference
   ?category: category=token
@@ -11122,7 +11122,7 @@ Profiles: 33
     -vitalsigns: http://hl7.org/fhir/StructureDefinition/vitalsigns (Vital Signs Profile)
     -vitalspanel: http://hl7.org/fhir/StructureDefinition/vitalspanel (Vital Signs Profile)
 - Vital Signs Profile: (headcircum) vitalsigns
-  ^observation[0..*]: Observation (W5: clinical.diagnostics)
+  ^observation[0..*]: Element (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -11212,7 +11212,7 @@ Profiles: 33
       - code[1..1]: code
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6 binding name: DAR
     - interpretation[0..1]: CodeableConcept binding name: ObservationInterpretation
-    - referenceRange[0..*]: Observation.component.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference
   ?category: category=token
@@ -11309,7 +11309,7 @@ Profiles: 33
     -vitalsigns: http://hl7.org/fhir/StructureDefinition/vitalsigns (Vital Signs Profile)
     -vitalspanel: http://hl7.org/fhir/StructureDefinition/vitalspanel (Vital Signs Profile)
 - Vital Signs Profile: (heartrate) vitalsigns
-  ^observation[0..*]: Observation (W5: clinical.diagnostics)
+  ^observation[0..*]: Element (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -11399,7 +11399,7 @@ Profiles: 33
       - code[1..1]: code
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6 binding name: DAR
     - interpretation[0..1]: CodeableConcept binding name: ObservationInterpretation
-    - referenceRange[0..*]: Observation.component.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference
   ?category: category=token
@@ -11496,7 +11496,7 @@ Profiles: 33
     -vitalsigns: http://hl7.org/fhir/StructureDefinition/vitalsigns (Vital Signs Profile)
     -vitalspanel: http://hl7.org/fhir/StructureDefinition/vitalspanel (Vital Signs Profile)
 - Profile for HLA Genotyping Results: (hlaresult) DiagnosticReport
-  ^diagnosticReport[0..*]: DiagnosticReport (W5: clinical.diagnostics)
+  ^diagnosticReport[0..*]: Element (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -11571,7 +11571,7 @@ Profiles: 33
     -hlaresult: http://hl7.org/fhir/StructureDefinition/hlaresult (Profile for HLA Genotyping Results)
     -lipidprofile: http://hl7.org/fhir/StructureDefinition/lipidprofile (Example Lipid Profile)
 - Example Lipid Profile: (ldlcholesterol) Observation (FMM: 1 experimental)
-  ^observation[1..1]: Observation (W5: clinical.diagnostics)
+  ^observation[1..1]: Element (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -11635,7 +11635,7 @@ Profiles: 33
     - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6 binding name: ObservationValueAbsentReason
     - interpretation[0..1]: CodeableConcept binding name: ObservationInterpretation
-    - referenceRange[0..*]: Observation.component.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference
   ?category: category=token
@@ -11732,7 +11732,7 @@ Profiles: 33
     -vitalsigns: http://hl7.org/fhir/StructureDefinition/vitalsigns (Vital Signs Profile)
     -vitalspanel: http://hl7.org/fhir/StructureDefinition/vitalspanel (Vital Signs Profile)
 - Example Lipid Profile: (lipidprofile) DiagnosticReport (FMM: 1 experimental)
-  ^diagnosticReport[1..1]: DiagnosticReport (W5: clinical.diagnostics)
+  ^diagnosticReport[1..1]: Element (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -11799,7 +11799,7 @@ Profiles: 33
     -hlaresult: http://hl7.org/fhir/StructureDefinition/hlaresult (Profile for HLA Genotyping Results)
     -lipidprofile: http://hl7.org/fhir/StructureDefinition/lipidprofile (Example Lipid Profile)
 - Observation-genetics: (observation-genetics) Observation
-  ^observation[0..*]: Observation (W5: clinical.diagnostics)
+  ^observation[0..*]: Element (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -11862,7 +11862,7 @@ Profiles: 33
     - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6 binding name: ObservationValueAbsentReason
     - interpretation[0..1]: CodeableConcept binding name: ObservationInterpretation
-    - referenceRange[0..*]: Observation.component.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference
   ?category: category=token
@@ -11959,7 +11959,7 @@ Profiles: 33
     -vitalsigns: http://hl7.org/fhir/StructureDefinition/vitalsigns (Vital Signs Profile)
     -vitalspanel: http://hl7.org/fhir/StructureDefinition/vitalspanel (Vital Signs Profile)
 - Vital Signs Profile: (oxygensat) vitalsigns
-  ^observation[0..*]: Observation (W5: clinical.diagnostics)
+  ^observation[0..*]: Element (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -12049,7 +12049,7 @@ Profiles: 33
       - code[1..1]: code
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6 binding name: DAR
     - interpretation[0..1]: CodeableConcept binding name: ObservationInterpretation
-    - referenceRange[0..*]: Observation.component.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference
   ?category: category=token
@@ -12146,7 +12146,7 @@ Profiles: 33
     -vitalsigns: http://hl7.org/fhir/StructureDefinition/vitalsigns (Vital Signs Profile)
     -vitalspanel: http://hl7.org/fhir/StructureDefinition/vitalspanel (Vital Signs Profile)
 - ProcedureRequest-Genetics: (procedurerequest-genetics) ProcedureRequest
-  ^procedureRequest[0..*]: ProcedureRequest (W5: clinical.general)
+  ^procedureRequest[0..*]: Element (W5: clinical.general)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -12220,7 +12220,7 @@ Profiles: 33
   Profiles[ProcedureRequest]: 1
     -procedurerequest-genetics: http://hl7.org/fhir/StructureDefinition/procedurerequest-genetics (ProcedureRequest-Genetics)
 - Vital Signs Profile: (resprate) vitalsigns
-  ^observation[0..*]: Observation (W5: clinical.diagnostics)
+  ^observation[0..*]: Element (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -12310,7 +12310,7 @@ Profiles: 33
       - code[1..1]: code
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6 binding name: DAR
     - interpretation[0..1]: CodeableConcept binding name: ObservationInterpretation
-    - referenceRange[0..*]: Observation.component.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference
   ?category: category=token
@@ -12407,7 +12407,7 @@ Profiles: 33
     -vitalsigns: http://hl7.org/fhir/StructureDefinition/vitalsigns (Vital Signs Profile)
     -vitalspanel: http://hl7.org/fhir/StructureDefinition/vitalspanel (Vital Signs Profile)
 - Shareable CodeSystem: (shareablecodesystem) CodeSystem
-  ^codeSystem[1..1]: CodeSystem (W5: conformance.terminology)
+  ^codeSystem[1..1]: Element (W5: conformance.terminology)
   !csd-1: inherited error: (concept.code | descendants().concept.code).isDistinct()
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
@@ -12485,7 +12485,7 @@ Profiles: 33
       - modifierExtension[0..*]: Extension
       - code[1..1]: code
       - value[x][1..1]: boolean|code|Coding|dateTime|integer|string
-    - concept[0..*]: CodeSystem.concept.concept
+    - concept[0..*]: #CodeSystem.concept
   ?code: code=token
   ?content-mode: content-mode=token
   ?date: date=date
@@ -12546,7 +12546,7 @@ Profiles: 33
   Profiles[CodeSystem]: 1
     -shareablecodesystem: http://hl7.org/fhir/StructureDefinition/shareablecodesystem (Shareable CodeSystem)
 - Shareable ValueSet: (shareablevalueset) ValueSet
-  ^valueSet[1..1]: ValueSet (W5: conformance.terminology)
+  ^valueSet[1..1]: Element (W5: conformance.terminology)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -12619,7 +12619,7 @@ Profiles: 33
           {=|is-a|descendent-of|is-not-a|regex|in|not-in|generalizes|exists}
         - value[1..1]: code
       - valueSet[0..*]: uri conditions: vsd-1
-    - exclude[0..*]: ValueSet.compose.exclude conditions: vsd-2
+    - exclude[0..*]: #ValueSet.compose.include conditions: vsd-2
   - expansion[0..1]: BackboneElement conditions: vsd-5
     - id[0..1]: string
     - extension[0..*]: Extension
@@ -12646,8 +12646,8 @@ Profiles: 33
       - version[0..1]: string
       - code[0..1]: code conditions: vsd-6
       - display[0..1]: string conditions: vsd-6
-      - designation[0..*]: ValueSet.expansion.contains.designation
-      - contains[0..*]: ValueSet.expansion.contains.contains
+      - designation[0..*]: #ValueSet.compose.include.concept.designation
+      - contains[0..*]: #ValueSet.expansion.contains
   ?date: date=date
   ?description: description=string
   ?expansion: expansion=uri
@@ -12731,7 +12731,7 @@ Profiles: 33
   Profiles[ValueSet]: 1
     -shareablevalueset: http://hl7.org/fhir/StructureDefinition/shareablevalueset (Shareable ValueSet)
 - SimpleQuantity: (SimpleQuantity) Quantity
-  ^quantity[0..*]: Quantity constraints: sqty-1 conditions: ele-1
+  ^quantity[0..*]: Element constraints: sqty-1 conditions: ele-1
   @Slices present with no defined slicing
   !ele-1: inherited error: hasValue() | (children().count() > id.count())
   !qty-3: inherited error: code.empty() or system.exists()
@@ -12739,7 +12739,7 @@ Profiles: 33
   Profiles[Quantity]: 1
     -SimpleQuantity: http://hl7.org/fhir/StructureDefinition/SimpleQuantity (SimpleQuantity)
 - Example Lipid Profile: (triglyceride) Observation (FMM: 1 experimental)
-  ^observation[1..1]: Observation (W5: clinical.diagnostics)
+  ^observation[1..1]: Element (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -12801,7 +12801,7 @@ Profiles: 33
     - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6 binding name: ObservationValueAbsentReason
     - interpretation[0..1]: CodeableConcept binding name: ObservationInterpretation
-    - referenceRange[0..*]: Observation.component.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference
   ?category: category=token
@@ -12898,7 +12898,7 @@ Profiles: 33
     -vitalsigns: http://hl7.org/fhir/StructureDefinition/vitalsigns (Vital Signs Profile)
     -vitalspanel: http://hl7.org/fhir/StructureDefinition/vitalspanel (Vital Signs Profile)
 - Vital Signs Profile: (vitalsigns) Observation
-  ^observation[0..*]: Observation constraints: vs-2 (W5: clinical.diagnostics)
+  ^observation[0..*]: Element constraints: vs-2 (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -12982,7 +12982,7 @@ Profiles: 33
       - code[1..1]: code
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6 binding name: DAR
     - interpretation[0..1]: CodeableConcept binding name: ObservationInterpretation
-    - referenceRange[0..*]: Observation.component.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference
   ?category: category=token
@@ -13079,7 +13079,7 @@ Profiles: 33
     -vitalsigns: http://hl7.org/fhir/StructureDefinition/vitalsigns (Vital Signs Profile)
     -vitalspanel: http://hl7.org/fhir/StructureDefinition/vitalspanel (Vital Signs Profile)
 - Vital Signs Profile: (vitalspanel) vitalsigns
-  ^observation[0..*]: Observation (W5: clinical.diagnostics)
+  ^observation[0..*]: Element (W5: clinical.diagnostics)
   !dom-1: inherited error: contained.text.empty()
   !dom-2: inherited error: contained.contained.empty()
   !dom-3: inherited error: contained.where(('#'+id in %resource.descendants().reference).not()).empty()
@@ -13167,7 +13167,7 @@ Profiles: 33
       - code[1..1]: code
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6 binding name: DAR
     - interpretation[0..1]: CodeableConcept binding name: ObservationInterpretation
-    - referenceRange[0..*]: Observation.component.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference
   ?category: category=token

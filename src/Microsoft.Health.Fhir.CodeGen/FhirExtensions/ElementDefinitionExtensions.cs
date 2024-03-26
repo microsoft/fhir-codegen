@@ -97,9 +97,12 @@ public static class ElementDefinitionExtensions
     /// <param name="ed">The ed to act on.</param>
     /// <param name="sd">The SD.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    public static bool cgIsInherited(this ElementDefinition ed, StructureDefinition sd) => (ed.Base != null)
-        ? (ed.Base.Path != ed.Path)
-        : !(sd.Differential?.Element?.Any(e => e.Path == ed.Path)) ?? false;
+    public static bool cgIsInherited(this ElementDefinition ed, StructureDefinition sd) =>
+        ed.Path.StartsWith(sd.Id, StringComparison.Ordinal)
+        ? (ed.Base != null)
+            ? (ed.Base.Path != ed.Path)
+            : !(sd.Differential?.Element?.Any(e => e.Path == ed.Path)) ?? false
+        : true;
 
     /// <summary>Gets the first validation regex defined for an element or an empty string</summary>
     /// <param name="ed">The ed to act on.</param>
@@ -239,7 +242,7 @@ public static class ElementDefinitionExtensions
     /// <param name="ed">The ed to act on.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
     public static bool cgHasCodes(this ElementDefinition ed) =>
-        (ed.Binding?.Strength == BindingStrength.Required) && (ed.Type?.Any(tr => tr.Code == "Code") ?? false);
+        (ed.Binding?.Strength == BindingStrength.Required) && (ed.Type?.Any(tr => tr.Code == "code") ?? false);
 
     /// <summary>Gets the required codes for this element.</summary>
     /// <param name="ed">       The ed to act on.</param>

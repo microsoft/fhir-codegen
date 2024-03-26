@@ -10,6 +10,7 @@ using Microsoft.Health.Fhir.CodeGen.Configuration;
 using Microsoft.Health.Fhir.CodeGen.Extensions;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGen.Models;
+using Microsoft.Health.Fhir.CodeGen.Utils;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using static Microsoft.Health.Fhir.CodeGen.Lanugage.Info.LangInfo;
 using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
@@ -755,7 +756,20 @@ public class LangInfo : ILanguage
 
         if (string.IsNullOrEmpty(propertyType))
         {
-            propertyType = ed.Base?.Path ?? "!!! undeclared type !!!";
+            if (!string.IsNullOrEmpty(ed.ContentReference))
+            {
+                propertyType = ed.ContentReference;
+            }
+            else if (_definitions.HasChildElements(ed.Path))
+            {
+                propertyType = ed.Path;
+            }
+            else
+            {
+                propertyType = ed.cgBaseTypeName(_definitions, false, _primitiveTypeMap);
+            }
+
+            //propertyType = ed.Base?.Path ?? "!!! undeclared type !!!";
         }
 
         if (ed.cgIsSimple())

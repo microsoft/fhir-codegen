@@ -34,7 +34,7 @@ public class StructureDefinition_20_50 : ICrossVersionProcessor<StructureDefinit
         v.Derivation = string.IsNullOrEmpty(v.Type) ? StructureDefinition.TypeDerivationRule.Specialization : StructureDefinition.TypeDerivationRule.Constraint;
 
         // check for incorrect mapping of quantity-derived types
-        if (v.Type?.Equals("Quantity", StringComparison.Ordinal) ?? false)
+        if (v.Type == "Quantity")
         {
             v.Derivation = StructureDefinition.TypeDerivationRule.Specialization;
         }
