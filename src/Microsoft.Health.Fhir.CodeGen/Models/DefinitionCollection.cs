@@ -77,8 +77,8 @@ public partial class DefinitionCollection
     private readonly Dictionary<string, string[]> _valueSetVersions = new();
     private readonly Dictionary<string, string> _valueSetUrlsById = new();
 
-    private readonly Dictionary<string, Dictionary<string, List<StructureElementCollection>>> _coreBindingEdsByPathByValueSet = new();
-    private readonly Dictionary<string, Dictionary<string, List<StructureElementCollection>>> _extendedBindingEdsByPathByValueSet = new();
+    private readonly Dictionary<string, List<StructureElementCollection>> _coreBindingEdsByPathByValueSet = new();
+    private readonly Dictionary<string, List<StructureElementCollection>> _extendedBindingEdsByPathByValueSet = new();
 
     private readonly Dictionary<string, ImplementationGuide> _implementationGuidesByUrl = new();
     private readonly Dictionary<string, CapabilityStatement> _capabilityStatementsByUrl = new();
@@ -716,24 +716,18 @@ public partial class DefinitionCollection
                 case FhirArtifactClassEnum.Resource:
                 case FhirArtifactClassEnum.Compartment:
                     {
-                        if (!_coreBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, List<StructureElementCollection>>? bindings))
+                        if (!_coreBindingEdsByPathByValueSet.TryGetValue(url, out List<StructureElementCollection>? bindings))
                         {
                             bindings = new();
                             _coreBindingEdsByPathByValueSet[url] = bindings;
                         }
 
-                        if (!bindings.TryGetValue(ed.Path, out List<StructureElementCollection>? pathElementCollections))
-                        {
-                            pathElementCollections = new();
-                            bindings.Add(ed.Path, pathElementCollections);
-                        }
-
                         // search for the structure element collection that contains the structure definition
-                        StructureElementCollection? matchingElementCollection = pathElementCollections.FirstOrDefault(e => e.Structure.Url == sd.Url);
+                        StructureElementCollection? matchingElementCollection = bindings.FirstOrDefault(e => e.Structure.Url == sd.Url);
                         if (matchingElementCollection is null)
                         {
                             matchingElementCollection = new StructureElementCollection { Structure = sd, Elements = new() };
-                            pathElementCollections.Add(matchingElementCollection);
+                            bindings.Add(matchingElementCollection);
                         }
 
                         matchingElementCollection.Elements.Add(ed);
@@ -758,24 +752,18 @@ public partial class DefinitionCollection
                 case FhirArtifactClassEnum.NamingSystem:
                 case FhirArtifactClassEnum.StructureMap:
                     {
-                        if (!_extendedBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, List<StructureElementCollection>>? bindings))
+                        if (!_extendedBindingEdsByPathByValueSet.TryGetValue(url, out List<StructureElementCollection>? bindings))
                         {
                             bindings = new();
                             _extendedBindingEdsByPathByValueSet[url] = bindings;
                         }
 
-                        if (!bindings.TryGetValue(ed.Path, out List<StructureElementCollection>? pathElementCollections))
-                        {
-                            pathElementCollections = new();
-                            bindings.Add(ed.Path, pathElementCollections);
-                        }
-
                         // search for the structure element collection that contains the structure definition
-                        StructureElementCollection? matchingElementCollection = pathElementCollections.FirstOrDefault(e => e.Structure.Url == sd.Url);
+                        StructureElementCollection? matchingElementCollection = bindings.FirstOrDefault(e => e.Structure.Url == sd.Url);
                         if (matchingElementCollection is null)
                         {
                             matchingElementCollection = new StructureElementCollection { Structure = sd, Elements = new() };
-                            pathElementCollections.Add(matchingElementCollection);
+                            bindings.Add(matchingElementCollection);
                         }
 
                         matchingElementCollection.Elements.Add(ed);
@@ -810,7 +798,7 @@ public partial class DefinitionCollection
                 {
                     case StructureDefinition.ExtensionContextType.Element:
                         {
-                            if (!_extendedBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, List<StructureElementCollection>>? bindings))
+                            if (!_extendedBindingEdsByPathByValueSet.TryGetValue(url, out List<StructureElementCollection>? bindings))
                             {
                                 bindings = new();
                                 _extendedBindingEdsByPathByValueSet[url] = bindings;
@@ -818,18 +806,18 @@ public partial class DefinitionCollection
 
                             //bindings[cc.Expression] = bindings.TryGetValue(cc.Expression, out ElementDefinition[]? ar) ? ar.Append(ed).ToArray() : new[] { ed };
 
-                            if (!bindings.TryGetValue(cc.Expression, out List<StructureElementCollection>? pathElementCollections))
-                            {
-                                pathElementCollections = new();
-                                bindings.Add(cc.Expression, pathElementCollections);
-                            }
+                            //if (!bindings.TryGetValue(cc.Expression, out List<StructureElementCollection>? pathElementCollections))
+                            //{
+                            //    pathElementCollections = new();
+                            //    bindings.Add(cc.Expression, pathElementCollections);
+                            //}
 
                             // search for the structure element collection that contains the structure definition
-                            StructureElementCollection? matchingElementCollection = pathElementCollections.FirstOrDefault(e => e.Structure.Url == currentSd.Url);
+                            StructureElementCollection? matchingElementCollection = bindings.FirstOrDefault(e => e.Structure.Url == currentSd.Url);
                             if (matchingElementCollection is null)
                             {
                                 matchingElementCollection = new StructureElementCollection { Structure = currentSd, Elements = new() };
-                                pathElementCollections.Add(matchingElementCollection);
+                                bindings.Add(matchingElementCollection);
                             }
 
                             matchingElementCollection.Elements.Add(ed);
@@ -987,19 +975,18 @@ public partial class DefinitionCollection
         return core.Union(ext);
     }
 
-    /// <summary>Value set bind strength by path.</summary>
+    /// <summary>Structures and elements that contain bindings to the specified value set URL.</summary>
     /// <param name="valueSetUrl">URL of the value set.</param>
-    /// <returns>An IReadOnlyDictionary&lt;string,BindingStrength&gt;</returns>
-    public IReadOnlyDictionary<string, List<StructureElementCollection>> CoreBindingsForVs(string valueSetUrl)
+    public IEnumerable<StructureElementCollection> CoreBindingsForVs(string valueSetUrl)
     {
         string url = VersionedUrlForVs(valueSetUrl);
 
-        if (_coreBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, List<StructureElementCollection>>? bindings))
+        if (_coreBindingEdsByPathByValueSet.TryGetValue(url, out List<StructureElementCollection>? bindings))
         {
             return bindings;
         }
 
-        return new Dictionary<string, List<StructureElementCollection>>();
+        return Enumerable.Empty<StructureElementCollection>();
     }
 
     /// <summary>Strongest core binding.</summary>
@@ -1009,11 +996,11 @@ public partial class DefinitionCollection
     {
         string url = VersionedUrlForVs(valueSetUrl);
 
-        if (_coreBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, List<StructureElementCollection>>? bindings) &&
+        if (_coreBindingEdsByPathByValueSet.TryGetValue(url, out List<StructureElementCollection>? bindings) &&
             (bindings != null))
         {
             return bindings
-                .SelectMany(kvp => kvp.Value.SelectMany(ec => ec.Elements.Select(ed => ed.Binding.Strength)))
+                .SelectMany(ec => ec.Elements.Select(ed => ed.Binding.Strength))
                 .OrderBy(s => s, BindingStrengthComparer.Instance)
                 .FirstOrDefault();
         }
@@ -1030,13 +1017,13 @@ public partial class DefinitionCollection
 
         Dictionary<string, BindingStrength> bindingStrengthByType = new();
 
-        if (!_coreBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, List<StructureElementCollection>>? bindings))
+        if (!_coreBindingEdsByPathByValueSet.TryGetValue(url, out List<StructureElementCollection>? bindings))
         {
             return bindingStrengthByType;
         }
 
         // traverse existing bindings to find the strongest for each type
-        foreach (StructureElementCollection ec in bindings.Values.SelectMany(a => a))
+        foreach (StructureElementCollection ec in bindings)
         {
             foreach (ElementDefinition ed in ec.Elements)
             {
@@ -1058,17 +1045,34 @@ public partial class DefinitionCollection
 
     /// <summary>Extended bindings for vs.</summary>
     /// <param name="valueSetUrl">URL of the value set.</param>
-    /// <returns>An IReadOnlyDictionary&lt;string,ElementDefinition&gt;</returns>
-    public IReadOnlyDictionary<string, List<StructureElementCollection>> ExtendedBindingsForVs(string valueSetUrl)
+    /// <returns>
+    /// An enumerator that allows foreach to be used to process extended bindings for vs in this
+    /// collection.
+    /// </returns>
+    public IEnumerable<StructureElementCollection> ExtendedBindingsForVs(string valueSetUrl)
     {
         string url = VersionedUrlForVs(valueSetUrl);
 
-        if (_extendedBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, List<StructureElementCollection>>? bindings))
+        if (_extendedBindingEdsByPathByValueSet.TryGetValue(url, out List<StructureElementCollection>? bindings))
         {
             return bindings;
+
+            //List<StructureElementCollection> filtered = new();
+
+            //foreach (StructureElementCollection ec in bindings)
+            //{
+            //    List<ElementDefinition> elements = ec.Elements.Where(ed => !ed.cgIsInherited(ec.Structure)).ToList();
+
+            //    if (elements.Any())
+            //    {
+            //        filtered.Add(new StructureElementCollection { Structure = ec.Structure, Elements = elements });
+            //    }
+            //}
+
+            //return filtered;
         }
 
-        return new Dictionary<string, List<StructureElementCollection>>();
+        return Enumerable.Empty<StructureElementCollection>();
     }
 
     /// <summary>Strongest extended binding.</summary>
@@ -1078,11 +1082,11 @@ public partial class DefinitionCollection
     {
         string url = VersionedUrlForVs(valueSetUrl);
 
-        if (_extendedBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, List<StructureElementCollection>>? bindings) &&
+        if (_extendedBindingEdsByPathByValueSet.TryGetValue(url, out List<StructureElementCollection>? bindings) &&
             (bindings != null))
         {
             return bindings
-                .SelectMany(kvp => kvp.Value.SelectMany(ec => ec.Elements.Select(ed => ed.Binding.Strength)))
+                .SelectMany(ec => ec.Elements.Select(ed => ed.Binding.Strength))
                 .OrderBy(s => s, BindingStrengthComparer.Instance)
                 .FirstOrDefault();
         }
@@ -1099,13 +1103,13 @@ public partial class DefinitionCollection
 
         Dictionary<string, BindingStrength> bindingStrengthByType = new();
 
-        if (!_extendedBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, List<StructureElementCollection>>? bindings))
+        if (!_extendedBindingEdsByPathByValueSet.TryGetValue(url, out List<StructureElementCollection>? bindings))
         {
             return bindingStrengthByType;
         }
 
         // traverse existing bindings to find the strongest for each type
-        foreach (StructureElementCollection ec in bindings.Values.SelectMany(a => a))
+        foreach (StructureElementCollection ec in bindings)
         {
             foreach (ElementDefinition ed in ec.Elements)
             {
@@ -1128,21 +1132,21 @@ public partial class DefinitionCollection
     /// <summary>Bindings for vs.</summary>
     /// <param name="valueSetUrl">URL of the value set.</param>
     /// <returns>An IReadOnlyDictionary&lt;string,ElementDefinition&gt;</returns>
-    public IReadOnlyDictionary<string, List<StructureElementCollection>> BindingsForVs(string valueSetUrl)
+    public IEnumerable<StructureElementCollection> BindingsForVs(string valueSetUrl)
     {
         string url = VersionedUrlForVs(valueSetUrl);
 
-        if (!_coreBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, List<StructureElementCollection>>? core))
+        if (!_coreBindingEdsByPathByValueSet.TryGetValue(url, out List<StructureElementCollection>? core))
         {
             core = new();
         }
 
-        if (!_extendedBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, List<StructureElementCollection>>? extended))
+        if (!_extendedBindingEdsByPathByValueSet.TryGetValue(url, out List<StructureElementCollection>? extended))
         {
             extended = new();
         }
 
-        return core.Union(extended).ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+        return core.Union(extended);
     }
 
     /// <summary>Strongest binding.</summary>
@@ -1155,18 +1159,18 @@ public partial class DefinitionCollection
         BindingStrength? cbs = null;
         BindingStrength? ebs = null;
 
-        if (_coreBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, List<StructureElementCollection>>? core))
+        if (_coreBindingEdsByPathByValueSet.TryGetValue(url, out List<StructureElementCollection>? core))
         {
             cbs = core
-                .SelectMany(kvp => kvp.Value.SelectMany(ec => ec.Elements.Select(ed => ed.Binding.Strength)))
+                .SelectMany(ec => ec.Elements.Select(ed => ed.Binding.Strength))
                 .OrderBy(s => s, BindingStrengthComparer.Instance)
                 .FirstOrDefault();
         }
 
-        if (_extendedBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, List<StructureElementCollection>>? extended))
+        if (_extendedBindingEdsByPathByValueSet.TryGetValue(url, out List<StructureElementCollection>? extended))
         {
             ebs = extended
-                .SelectMany(kvp => kvp.Value.SelectMany(ec => ec.Elements.Select(ed => ed.Binding.Strength)))
+                .SelectMany(ec => ec.Elements.Select(ed => ed.Binding.Strength))
                 .OrderBy(s => s, BindingStrengthComparer.Instance)
                 .FirstOrDefault();
         }
@@ -1177,11 +1181,11 @@ public partial class DefinitionCollection
     /// <summary>Strongest binding.</summary>
     /// <param name="bindings">The bindings.</param>
     /// <returns>A BindingStrength?</returns>
-    public BindingStrength? StrongestBinding(IReadOnlyDictionary<string, List<StructureElementCollection>> bindings)
+    public BindingStrength? StrongestBinding(IEnumerable<StructureElementCollection> bindings)
     {
         // we want descending order so that strongest is first
         return bindings
-            .SelectMany(kvp => kvp.Value.SelectMany(ec => ec.Elements.Select(ed => ed.Binding.Strength)))
+            .SelectMany(ec => ec.Elements.Select(ed => ed.Binding.Strength))
             .OrderByDescending(s => s, BindingStrengthComparer.Instance)
             .FirstOrDefault();
     }
@@ -1195,18 +1199,18 @@ public partial class DefinitionCollection
 
         Dictionary<string, BindingStrength> bindingStrengthByType = new();
 
-        if (!_coreBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, List<StructureElementCollection>>? core))
+        if (!_coreBindingEdsByPathByValueSet.TryGetValue(url, out List<StructureElementCollection>? core))
         {
             core = new();
         }
 
-        if (!_extendedBindingEdsByPathByValueSet.TryGetValue(url, out Dictionary<string, List<StructureElementCollection>>? extended))
+        if (!_extendedBindingEdsByPathByValueSet.TryGetValue(url, out List<StructureElementCollection>? extended))
         {
             extended = new();
         }
 
         // note that we do not have to worry about structure collisions between the two since no structure can be in both
-        Dictionary<string, List<StructureElementCollection>> all = core.Union(extended).ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+        IEnumerable<StructureElementCollection> all = core.Union(extended);
 
         if (!all.Any())
         {
@@ -1214,7 +1218,7 @@ public partial class DefinitionCollection
         }
 
         // traverse existing bindings to find the strongest for each type
-        foreach (ElementDefinition ed in all.Values.SelectMany(v => v.SelectMany(ec => ec.Elements)))
+        foreach (ElementDefinition ed in all.SelectMany(ec => ec.Elements))
         {
             foreach (ElementDefinition.TypeRefComponent tr in ed.Type)
             {
@@ -1234,7 +1238,7 @@ public partial class DefinitionCollection
     /// <summary>Binding strength by type.</summary>
     /// <param name="bindings">The bindings.</param>
     /// <returns>An IReadOnlyDictionary&lt;string,BindingStrength&gt;</returns>
-    public IReadOnlyDictionary<string, BindingStrength> BindingStrengthByType(IReadOnlyDictionary<string, List<StructureElementCollection>> bindings)
+    public IReadOnlyDictionary<string, BindingStrength> BindingStrengthByType(IEnumerable<StructureElementCollection> bindings)
     {
         Dictionary<string, BindingStrength> bindingStrengthByType = new();
 
@@ -1244,7 +1248,7 @@ public partial class DefinitionCollection
         }
 
         // traverse existing bindings to find the strongest for each type
-        foreach (ElementDefinition ed in bindings.Values.SelectMany(v => v.SelectMany(ec => ec.Elements)))
+        foreach (ElementDefinition ed in bindings.SelectMany(ec => ec.Elements))
         {
             foreach (ElementDefinition.TypeRefComponent tr in ed.Type)
             {

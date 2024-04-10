@@ -192,26 +192,26 @@ public class LangInfo : ILanguage
 
             _writer.IncreaseIndent();
 
-            IReadOnlyDictionary<string, List<StructureElementCollection>> coreBindings = _definitions.CoreBindingsForVs(vs.Url);
+            IEnumerable<StructureElementCollection> coreBindings = _definitions.CoreBindingsForVs(vs.Url);
             BindingStrength? strongestBinding = _definitions.StrongestBinding(coreBindings);
             IReadOnlyDictionary<string, BindingStrength> bindingStrengthByType = _definitions.BindingStrengthByType(coreBindings);
             if (coreBindings.Any())
             {
                 _writer.WriteLineIndented(
-                    $"references ({coreBindings.Count}): " + string.Join(", ", coreBindings.Keys) +
+                    $"references ({coreBindings.Count()} structures, {coreBindings.Select(ec => ec.Elements.Count).Sum()} elements): " + ReferenceLiteral(coreBindings) +
                     ", strongest binding: " + strongestBinding!.GetLiteral() +
                     ", by type: " + string.Join(", ", bindingStrengthByType.Select(bs => $"{bs.Key}:{bs.Value}")));
             }
 
-            IReadOnlyDictionary<string, List<StructureElementCollection>> extendedBindings = _definitions.ExtendedBindingsForVs(vs.Url);
+            IEnumerable<StructureElementCollection> extendedBindings = _definitions.ExtendedBindingsForVs(vs.Url);
             strongestBinding = _definitions.StrongestBinding(extendedBindings);
 
             if (extendedBindings.Any())
             {
                 _writer.WriteLineIndented(
-                    $"extensions/profiles ({extendedBindings.Count}):" +
+                    $"extensions/profiles ({extendedBindings.Count()} structures, {extendedBindings.Select(ec => ec.Elements.Count).Sum()} elements):" +
                     " strongest binding: " + strongestBinding!.GetLiteral() +
-                    ", refs: " + string.Join(", ", extendedBindings.Select(ecs => ExternalRefLiteral(ecs.Key, ecs.Value))));
+                    ", refs: " + ExternalRefLiteral(extendedBindings));
             }
 
             ValueSet? expanded = _definitions.ExpandVs(vs.Url + "|" + vs.Version).Result;
@@ -240,12 +240,27 @@ public class LangInfo : ILanguage
 
         return;
 
-        string ExternalRefLiteral(string path, List<StructureElementCollection> ecs)
-        {
-            return path + " (" + string.Join(", ", ecs.Select(ec => $"{ec.Structure.cgArtifactClass()}:{ec.Structure.Id}")) + ")";
-        }
     }
 
+    /// <summary>Build a string for the core structure collections that reference a value set.</summary>
+    /// <param name="ecs">The ecs.</param>
+    /// <returns>A string.</returns>
+    private string ReferenceLiteral(IEnumerable<StructureElementCollection> ecs)
+    {
+        return string.Join(", ", ecs.SelectMany(ec => ec.Elements.Select(ed => ed.Path)).Distinct());
+    }
+
+    /// <summary>Build a string for the external structure collections that reference a value set.</summary>
+    /// <param name="ecs">The ecs.</param>
+    /// <returns>A string.</returns>
+    private string ExternalRefLiteral(IEnumerable<StructureElementCollection> ecs)
+    {
+        return string.Join(", ", ecs.Select(ec => $"{ec.Structure.Id}({ec.Structure.cgArtifactClass()}) [{string.Join(',', ec.Elements.Select(ed => ed.Path).Distinct())}]"));
+    }
+
+    /// <summary>Writes an unresolved value sets.</summary>
+    /// <param name="valueSetUrls">The value set urls.</param>
+    /// <param name="headerHint">  (Optional) The header hint.</param>
     private void WriteUnresolvedValueSets(
         IEnumerable<string> valueSetUrls,
         string headerHint = "")
@@ -261,43 +276,32 @@ public class LangInfo : ILanguage
 
             _writer.IncreaseIndent();
 
-            IReadOnlyDictionary<string, List<StructureElementCollection>> coreBindings = _definitions.CoreBindingsForVs(url);
+            IEnumerable<StructureElementCollection> coreBindings = _definitions.CoreBindingsForVs(url);
             BindingStrength? strongestBinding = _definitions.StrongestBinding(coreBindings);
             IReadOnlyDictionary<string, BindingStrength> bindingStrengthByType = _definitions.BindingStrengthByType(coreBindings);
             if (coreBindings.Any())
             {
                 _writer.WriteLineIndented(
-                    $"references ({coreBindings.Count}): " + string.Join(", ", coreBindings.Keys) +
+                    $"references ({coreBindings.Count()} structures, {coreBindings.Select(ec => ec.Elements.Count).Sum()} elements): " + ReferenceLiteral(coreBindings) +
                     ", strongest binding: " + strongestBinding!.GetLiteral() +
                     ", by type: " + string.Join(", ", bindingStrengthByType.Select(bs => $"{bs.Key}:{bs.Value}")));
             }
 
-            IReadOnlyDictionary<string, List<StructureElementCollection>> extendedBindings = _definitions.ExtendedBindingsForVs(url);
+            IEnumerable<StructureElementCollection> extendedBindings = _definitions.ExtendedBindingsForVs(url);
             strongestBinding = _definitions.StrongestBinding(extendedBindings);
 
             if (extendedBindings.Any())
             {
                 _writer.WriteLineIndented(
-                    $"extensions/profiles ({extendedBindings.Count}):" +
+                    $"extensions/profiles ({extendedBindings.Count()} structures, {extendedBindings.Select(ec => ec.Elements.Count).Sum()} elements):" +
                     " strongest binding: " + strongestBinding!.GetLiteral() +
-                    ", refs: " + string.Join(", ", extendedBindings.Select(ecs => ExternalRefLiteral(ecs.Key, ecs.Value))));
+                    ", refs: " + ExternalRefLiteral(extendedBindings));
             }
 
             _writer.DecreaseIndent();
         }
 
         return;
-
-        //string ExternalRefLiteral(string path, ElementDefinition ed)
-        string ExternalRefLiteral(string path, List<StructureElementCollection> ecs)
-        {
-            return path + " (" + string.Join(", ", ecs.Select(ec => $"{ec.Structure.cgArtifactClass()}:{ec.Structure.Id}")) + ")";
-            //return string.Join(", ", ecs.Select(ec => $"{ec.Structure.cgArtifactClass()}:{path}[{ec.Structure.Id}]"));
-
-            //StructureDefinition sd = _definitions.StructureForElement(ed);
-
-            //return $"{sd.cgArtifactClass()}:{path}[{sd.Id}]";
-        }
     }
 
     /// <summary>Writes the structures.</summary>

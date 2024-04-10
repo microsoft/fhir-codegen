@@ -1062,7 +1062,7 @@ public sealed class CSharpFirely2 : ILanguage
                     //    continue;
                     //}
 
-                    IReadOnlyDictionary<string, List<StructureElementCollection>> coreBindings = _info.CoreBindingsForVs(vs.Url);
+                    IEnumerable<StructureElementCollection> coreBindings = _info.CoreBindingsForVs(vs.Url);
                     Hl7.Fhir.Model.BindingStrength? strongestBinding = _info.StrongestBinding(coreBindings);
 
                     if (strongestBinding != Hl7.Fhir.Model.BindingStrength.Required)
@@ -1075,7 +1075,7 @@ public sealed class CSharpFirely2 : ILanguage
                         continue;
                     }
 
-                    IEnumerable<string> referencedBy = coreBindings.Values.SelectMany(v => v).cgExtractBaseTypes(_info);
+                    IEnumerable<string> referencedBy = coreBindings.cgExtractBaseTypes(_info);
 
                     if ((referencedBy.Count() < 2) && !_explicitSharedValueSets.Contains((_info.FhirSequence.ToString(), vs.Url)))
                     {
@@ -1106,7 +1106,7 @@ public sealed class CSharpFirely2 : ILanguage
 
                     _modelWriter.IncreaseIndent();
 
-                    foreach (string path in coreBindings.Values.SelectMany(v => v.SelectMany(ec => ec.Elements.Select(e => e))).Order(ElementDefinitionComparer.Instance).Select(e => e.Path))
+                    foreach (string path in coreBindings.SelectMany(ec => ec.Elements.Select(e => e)).Order(ElementDefinitionComparer.Instance).Select(e => e.Path))
                     {
                         string name = path.Split('.')[0];
 
