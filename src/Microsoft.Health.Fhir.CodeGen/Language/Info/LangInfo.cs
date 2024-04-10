@@ -768,8 +768,6 @@ public class LangInfo : ILanguage
             {
                 propertyType = ed.cgBaseTypeName(_definitions, false, _primitiveTypeMap);
             }
-
-            //propertyType = ed.Base?.Path ?? "!!! undeclared type !!!";
         }
 
         if (ed.cgIsSimple())
