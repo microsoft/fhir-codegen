@@ -37,7 +37,7 @@ public class GenerationTestFixture
     public IEnumerable<PackageCacheEntry> EntriesR2;
 
     /// <summary>True to write generated files.</summary>
-    public static bool WriteGeneratedFiles = false;
+    public static bool WriteGeneratedFiles = true;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="GenerationTestFixture"/> class.

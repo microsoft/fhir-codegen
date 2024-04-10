@@ -192,7 +192,7 @@ public class LangInfo : ILanguage
 
             _writer.IncreaseIndent();
 
-            IReadOnlyDictionary<string, ElementDefinition[]> coreBindings = _definitions.CoreBindingsForVs(vs.Url);
+            IReadOnlyDictionary<string, List<StructureElementCollection>> coreBindings = _definitions.CoreBindingsForVs(vs.Url);
             BindingStrength? strongestBinding = _definitions.StrongestBinding(coreBindings);
             IReadOnlyDictionary<string, BindingStrength> bindingStrengthByType = _definitions.BindingStrengthByType(coreBindings);
             if (coreBindings.Any())
@@ -203,7 +203,7 @@ public class LangInfo : ILanguage
                     ", by type: " + string.Join(", ", bindingStrengthByType.Select(bs => $"{bs.Key}:{bs.Value}")));
             }
 
-            IReadOnlyDictionary<string, ElementDefinition[]> extendedBindings = _definitions.ExtendedBindingsForVs(vs.Url);
+            IReadOnlyDictionary<string, List<StructureElementCollection>> extendedBindings = _definitions.ExtendedBindingsForVs(vs.Url);
             strongestBinding = _definitions.StrongestBinding(extendedBindings);
 
             if (extendedBindings.Any())
@@ -211,7 +211,7 @@ public class LangInfo : ILanguage
                 _writer.WriteLineIndented(
                     $"extensions/profiles ({extendedBindings.Count}):" +
                     " strongest binding: " + strongestBinding!.GetLiteral() +
-                    ", refs: " + string.Join(", ", extendedBindings.SelectMany(ebs => ebs.Value.Select(eb => ExternalRefLiteral(ebs.Key, eb)))));
+                    ", refs: " + string.Join(", ", extendedBindings.Select(ecs => ExternalRefLiteral(ecs.Key, ecs.Value))));
             }
 
             ValueSet? expanded = _definitions.ExpandVs(vs.Url + "|" + vs.Version).Result;
@@ -240,11 +240,9 @@ public class LangInfo : ILanguage
 
         return;
 
-        string ExternalRefLiteral(string path, ElementDefinition ed)
+        string ExternalRefLiteral(string path, List<StructureElementCollection> ecs)
         {
-            StructureDefinition sd = _definitions.StructureForElement(ed);
-
-            return $"{sd.cgArtifactClass()}:{path}[{sd.Id}]";
+            return path + " (" + string.Join(", ", ecs.Select(ec => $"{ec.Structure.cgArtifactClass()}:{ec.Structure.Id}")) + ")";
         }
     }
 
@@ -263,7 +261,7 @@ public class LangInfo : ILanguage
 
             _writer.IncreaseIndent();
 
-            IReadOnlyDictionary<string, ElementDefinition[]> coreBindings = _definitions.CoreBindingsForVs(url);
+            IReadOnlyDictionary<string, List<StructureElementCollection>> coreBindings = _definitions.CoreBindingsForVs(url);
             BindingStrength? strongestBinding = _definitions.StrongestBinding(coreBindings);
             IReadOnlyDictionary<string, BindingStrength> bindingStrengthByType = _definitions.BindingStrengthByType(coreBindings);
             if (coreBindings.Any())
@@ -274,7 +272,7 @@ public class LangInfo : ILanguage
                     ", by type: " + string.Join(", ", bindingStrengthByType.Select(bs => $"{bs.Key}:{bs.Value}")));
             }
 
-            IReadOnlyDictionary<string, ElementDefinition[]> extendedBindings = _definitions.ExtendedBindingsForVs(url);
+            IReadOnlyDictionary<string, List<StructureElementCollection>> extendedBindings = _definitions.ExtendedBindingsForVs(url);
             strongestBinding = _definitions.StrongestBinding(extendedBindings);
 
             if (extendedBindings.Any())
@@ -282,7 +280,7 @@ public class LangInfo : ILanguage
                 _writer.WriteLineIndented(
                     $"extensions/profiles ({extendedBindings.Count}):" +
                     " strongest binding: " + strongestBinding!.GetLiteral() +
-                    ", refs: " + string.Join(", ", extendedBindings.SelectMany(ebs => ebs.Value.Select(eb => ExternalRefLiteral(ebs.Key, eb)))));
+                    ", refs: " + string.Join(", ", extendedBindings.Select(ecs => ExternalRefLiteral(ecs.Key, ecs.Value))));
             }
 
             _writer.DecreaseIndent();
@@ -290,11 +288,15 @@ public class LangInfo : ILanguage
 
         return;
 
-        string ExternalRefLiteral(string path, ElementDefinition ed)
+        //string ExternalRefLiteral(string path, ElementDefinition ed)
+        string ExternalRefLiteral(string path, List<StructureElementCollection> ecs)
         {
-            StructureDefinition sd = _definitions.StructureForElement(ed);
+            return path + " (" + string.Join(", ", ecs.Select(ec => $"{ec.Structure.cgArtifactClass()}:{ec.Structure.Id}")) + ")";
+            //return string.Join(", ", ecs.Select(ec => $"{ec.Structure.cgArtifactClass()}:{path}[{ec.Structure.Id}]"));
 
-            return $"{sd.cgArtifactClass()}:{path}[{sd.Id}]";
+            //StructureDefinition sd = _definitions.StructureForElement(ed);
+
+            //return $"{sd.cgArtifactClass()}:{path}[{sd.Id}]";
         }
     }
 

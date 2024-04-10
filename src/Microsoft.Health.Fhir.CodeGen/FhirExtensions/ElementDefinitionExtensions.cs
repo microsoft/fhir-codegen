@@ -468,70 +468,70 @@ public static class ElementDefinitionExtensions
     }
 
     /// <summary>Enumerates cg extract base types in this collection.</summary>
-    /// <param name="elements">The elements to act on.</param>
+    /// <param name="elementCollections">The elements to act on.</param>
     /// <returns>
     /// An enumerator that allows foreach to be used to process cg extract base types in this
     /// collection.
     /// </returns>
-    public static IEnumerable<string> cgExtractBaseTypes(this IEnumerable<ElementDefinition> elements, DefinitionCollection dc)
+    public static IEnumerable<string> cgExtractBaseTypes(this IEnumerable<StructureElementCollection> elementCollections, DefinitionCollection dc)
     {
         HashSet<string> seen = new();
 
-        foreach (ElementDefinition ed in elements)
+        foreach (StructureElementCollection elementCollection in elementCollections)
         {
-            // get the structure used to define this element
-            StructureDefinition sd = dc.StructureForElement(ed);
-
-            string bt;
-
-            switch (sd.cgArtifactClass())
+            foreach (ElementDefinition ed in elementCollection.Elements)
             {
-                case CodeGenCommon.Models.FhirArtifactClassEnum.PrimitiveType:
-                    bt = sd.Id;
-                    break;
+                string bt;
 
-                case CodeGenCommon.Models.FhirArtifactClassEnum.ComplexType:
-                    {
-                        bt = sd.cgBaseTypeName();
-                        if (bt != "Quantity")
+                switch (elementCollection.Structure.cgArtifactClass())
+                {
+                    case CodeGenCommon.Models.FhirArtifactClassEnum.PrimitiveType:
+                        bt = elementCollection.Structure.Id;
+                        break;
+
+                    case CodeGenCommon.Models.FhirArtifactClassEnum.ComplexType:
                         {
-                            bt = sd.Id;
+                            bt = elementCollection.Structure.cgBaseTypeName();
+                            if (bt != "Quantity")
+                            {
+                                bt = elementCollection.Structure.Id;
+                            }
                         }
-                    }
-                    break;
+                        break;
 
-                case CodeGenCommon.Models.FhirArtifactClassEnum.Resource:
-                case CodeGenCommon.Models.FhirArtifactClassEnum.LogicalModel:
-                    bt = sd.Id;
-                    break;
+                    case CodeGenCommon.Models.FhirArtifactClassEnum.Resource:
+                    case CodeGenCommon.Models.FhirArtifactClassEnum.LogicalModel:
+                        bt = elementCollection.Structure.Id;
+                        break;
 
-                case CodeGenCommon.Models.FhirArtifactClassEnum.Profile:
-                default:
-                    bt = sd.cgBaseTypeName();
-                    break;
+                    case CodeGenCommon.Models.FhirArtifactClassEnum.Profile:
+                    default:
+                        bt = elementCollection.Structure.cgBaseTypeName();
+                        break;
+                }
+
+                //// get the base type out of the structure
+                //bt = sd.cgBaseTypeName();
+
+                //// for first-order types, we want the actual type name
+                //switch (bt)
+                //{
+                //    case "DataType":
+                //    case "DomainResource":
+                //    case "Resource":
+                //        bt = sd.Id;
+                //        break;
+                //}
+
+                if (seen.Contains(bt))
+                {
+                    continue;
+                }
+
+                seen.Add(bt);
+
+                yield return bt;
             }
-
-            //// get the base type out of the structure
-            //bt = sd.cgBaseTypeName();
-
-            //// for first-order types, we want the actual type name
-            //switch (bt)
-            //{
-            //    case "DataType":
-            //    case "DomainResource":
-            //    case "Resource":
-            //        bt = sd.Id;
-            //        break;
-            //}
-
-            if (seen.Contains(bt))
-            {
-                continue;
-            }
-
-            seen.Add(bt);
-
-            yield return bt;
         }
     }
 }
