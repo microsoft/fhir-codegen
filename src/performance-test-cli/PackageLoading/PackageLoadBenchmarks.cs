@@ -72,7 +72,7 @@ public class PackageLoadBenchmarks
             throw new Exception("No test entries");
         }
 
-        DefinitionCollection? loaded = _loader.LoadPackages(TestEntries[0].Name, TestEntries).Result;
+        DefinitionCollection? loaded = _loader.LoadPackages(TestEntries[0].Name, TestEntries);
 
         return loaded;
     }
@@ -95,7 +95,7 @@ public class PackageLoadBenchmarks
             throw new Exception("No test entries");
         }
 
-        DefinitionCollection? loaded = _loader.LoadPackages(TestEntries[0].Name, TestEntries).Result;
+        DefinitionCollection? loaded = _loader.LoadPackages(TestEntries[0].Name, TestEntries);
 
         return loaded;
     }

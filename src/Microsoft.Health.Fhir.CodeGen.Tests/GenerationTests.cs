@@ -118,7 +118,7 @@ public class GenerationTestsR5 : IClassFixture<GenerationTestFixture>
 
         PackageLoader loader = new(_fixture.Cache, new());
 
-        DefinitionCollection? loaded = loader.LoadPackages(_fixture.EntriesR5.First().Name, _fixture.EntriesR5).Result;
+        DefinitionCollection? loaded = loader.LoadPackages(_fixture.EntriesR5.First().Name, _fixture.EntriesR5);
 
         loaded.Should().NotBeNull();
 
@@ -212,7 +212,7 @@ public class GenerationTestsR4B : IClassFixture<GenerationTestFixture>
 
         PackageLoader loader = new(_fixture.Cache, new());
 
-        DefinitionCollection? loaded = loader.LoadPackages(_fixture.EntriesR4B.First().Name, _fixture.EntriesR4B).Result;
+        DefinitionCollection? loaded = loader.LoadPackages(_fixture.EntriesR4B.First().Name, _fixture.EntriesR4B);
 
         loaded.Should().NotBeNull();
 
@@ -306,7 +306,7 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
 
         PackageLoader loader = new(_fixture.Cache, new());
 
-        DefinitionCollection? loaded = loader.LoadPackages(_fixture.EntriesR4.First().Name, _fixture.EntriesR4).Result;
+        DefinitionCollection? loaded = loader.LoadPackages(_fixture.EntriesR4.First().Name, _fixture.EntriesR4);
 
         loaded.Should().NotBeNull();
 
@@ -400,7 +400,7 @@ public class GenerationTestsR3 : IClassFixture<GenerationTestFixture>
 
         PackageLoader loader = new(_fixture.Cache, new());
 
-        DefinitionCollection? loaded = loader.LoadPackages(_fixture.EntriesR3.First().Name, _fixture.EntriesR3).Result;
+        DefinitionCollection? loaded = loader.LoadPackages(_fixture.EntriesR3.First().Name, _fixture.EntriesR3);
 
         loaded.Should().NotBeNull();
 
@@ -494,7 +494,7 @@ public class GenerationTestsR2 : IClassFixture<GenerationTestFixture>
 
         PackageLoader loader = new(_fixture.Cache, new());
 
-        DefinitionCollection? loaded = loader.LoadPackages(_fixture.EntriesR2.First().Name, _fixture.EntriesR2).Result;
+        DefinitionCollection? loaded = loader.LoadPackages(_fixture.EntriesR2.First().Name, _fixture.EntriesR2);
 
         loaded.Should().NotBeNull();
 

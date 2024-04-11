@@ -29,13 +29,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Health.Fhir.CodeG
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Health.Fhir.CodeGen.Tests", "src\Microsoft.Health.Fhir.CodeGen.Tests\Microsoft.Health.Fhir.CodeGen.Tests.csproj", "{BE10F292-4A7F-46A0-B4C9-D64003153DDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "performance-test-cli", "src\performance-test-cli\performance-test-cli.csproj", "{E2173A90-0BCA-427F-9A6C-E767889A4E9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "performance-test-cli", "src\performance-test-cli\performance-test-cli.csproj", "{E2173A90-0BCA-427F-9A6C-E767889A4E9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Health.Fhir.MappingLanguage", "src\Microsoft.Health.Fhir.MappingLanguage\Microsoft.Health.Fhir.MappingLanguage.csproj", "{6BF42D89-F37F-4BDF-B180-B65F18734F86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Health.Fhir.MappingLanguage", "src\Microsoft.Health.Fhir.MappingLanguage\Microsoft.Health.Fhir.MappingLanguage.csproj", "{6BF42D89-F37F-4BDF-B180-B65F18734F86}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Health.Fhir.MappingLanguage.Tests", "src\Microsoft.Health.Fhir.MappingLanguage.Tests\Microsoft.Health.Fhir.MappingLanguage.Tests.csproj", "{3408FD47-4413-4DD5-B4AC-65D4846E4002}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Health.Fhir.MappingLanguage.Tests", "src\Microsoft.Health.Fhir.MappingLanguage.Tests\Microsoft.Health.Fhir.MappingLanguage.Tests.csproj", "{3408FD47-4413-4DD5-B4AC-65D4846E4002}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Health.Fhir.CrossVersion", "src\Microsoft.Health.Fhir.CrossVersion\Microsoft.Health.Fhir.CrossVersion.csproj", "{8327D398-57D6-4C42-978B-E1C416AC6601}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Health.Fhir.CrossVersion", "src\Microsoft.Health.Fhir.CrossVersion\Microsoft.Health.Fhir.CrossVersion.csproj", "{8327D398-57D6-4C42-978B-E1C416AC6601}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

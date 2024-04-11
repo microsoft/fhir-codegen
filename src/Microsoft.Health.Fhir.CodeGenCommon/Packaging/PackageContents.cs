@@ -53,6 +53,6 @@ public record class PackageContents
 
     /// <summary>Gets or initializes the files.</summary>
     [JsonPropertyName("files")]
-    public IEnumerable<PackageFile> Files { get; init; } = Enumerable.Empty<PackageFile>();
+    public PackageFile[] Files { get; init; } = [];
 }
 

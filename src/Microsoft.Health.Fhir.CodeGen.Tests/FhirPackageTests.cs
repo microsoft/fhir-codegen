@@ -140,11 +140,11 @@ public class FhirPackageTestsR5 : IClassFixture<FhirPackageTestFixture>
     [Theory]
     [InlineData(LoaderOptions.JsonDeserializationModel.Poco)]
     [InlineData(LoaderOptions.JsonDeserializationModel.SystemTextJson)]
-    internal async void ParseCorePackage(LoaderOptions.JsonDeserializationModel jsonModel)
+    internal void ParseCorePackage(LoaderOptions.JsonDeserializationModel jsonModel)
     {
         PackageLoader loader = new(_fixture.Cache, new() { JsonModel = jsonModel });
 
-        DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR5.First().Name, _fixture.EntriesR5);
+        DefinitionCollection? loaded = loader.LoadPackages(_fixture.EntriesR5.First().Name, _fixture.EntriesR5);
 
         loaded.Should().NotBeNull();
 
@@ -208,11 +208,11 @@ public class FhirPackageTestsR4B : IClassFixture<FhirPackageTestFixture>
     /// </summary>
     /// <param name="jsonModel">The JSON deserialization model.</param>
     [Fact]
-    internal async void ParseCorePackage()
+    internal void ParseCorePackage()
     {
         PackageLoader loader = new(_fixture.Cache, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
 
-        DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR4B.First().Name, _fixture.EntriesR4B);
+        DefinitionCollection? loaded = loader.LoadPackages(_fixture.EntriesR4B.First().Name, _fixture.EntriesR4B);
 
         loaded.Should().NotBeNull();
 
@@ -276,11 +276,11 @@ public class FhirPackageTestsR4 : IClassFixture<FhirPackageTestFixture>
     /// </summary>
     /// <param name="jsonModel">The JSON deserialization model.</param>
     [Fact]
-    internal async void ParseCorePackage()
+    internal void ParseCorePackage()
     {
         PackageLoader loader = new(_fixture.Cache, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
 
-        DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR4.First().Name, _fixture.EntriesR4);
+        DefinitionCollection? loaded = loader.LoadPackages(_fixture.EntriesR4.First().Name, _fixture.EntriesR4);
 
         loaded.Should().NotBeNull();
 
@@ -344,11 +344,11 @@ public class FhirPackageTestsR3 : IClassFixture<FhirPackageTestFixture>
     /// </summary>
     /// <param name="jsonModel">The JSON deserialization model.</param>
     [Fact]
-    internal async void ParseCorePackage()
+    internal void ParseCorePackage()
     {
         PackageLoader loader = new(_fixture.Cache, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
 
-        DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR3.First().Name, _fixture.EntriesR3);
+        DefinitionCollection? loaded = loader.LoadPackages(_fixture.EntriesR3.First().Name, _fixture.EntriesR3);
 
         loaded.Should().NotBeNull();
 
@@ -412,11 +412,11 @@ public class FhirPackageTestsR2 : IClassFixture<FhirPackageTestFixture>
     /// </summary>
     /// <param name="jsonModel">The JSON deserialization model.</param>
     [Fact]
-    internal async void ParseCorePackage()
+    internal void ParseCorePackage()
     {
         PackageLoader loader = new(_fixture.Cache, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
 
-        DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR2.First().Name, _fixture.EntriesR2);
+        DefinitionCollection? loaded = loader.LoadPackages(_fixture.EntriesR2.First().Name, _fixture.EntriesR2);
 
         loaded.Should().NotBeNull();
 

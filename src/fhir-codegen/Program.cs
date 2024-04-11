@@ -6,10 +6,10 @@
 using SCL = System.CommandLine; // this is present to disambuite Option from System.CommandLine and Microsoft.FluentUI.AspNetCore.Components
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using fhir_codegen.Components;
+//using fhir_codegen.Components;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
-using Microsoft.AspNetCore.Hosting.StaticWebAssets;
-using Microsoft.FluentUI.AspNetCore.Components;
+//using Microsoft.AspNetCore.Hosting.StaticWebAssets;
+//using Microsoft.FluentUI.AspNetCore.Components;
 using Microsoft.Health.Fhir.CodeGen.Lanugage;
 using System.Reflection;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
@@ -27,6 +27,8 @@ using Microsoft.Health.Fhir.PackageManager;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using Microsoft.Health.Fhir.CodeGen.Loader;
 using Microsoft.Health.Fhir.CodeGen.Models;
+using System.Resources;
+using Microsoft.Extensions.Configuration;
 
 namespace fhir_codegen;
 
@@ -383,153 +385,6 @@ public class Program
         public required SCL.Option CommandOpt { get; set; }
     }
 
-    /// <summary>Enumerates build CLI options in this collection.</summary>
-    /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>
-    /// <param name="forType">       The Configuration type to generate options for.</param>
-    /// <param name="exludeFromType">(Optional) Type of the exlude from.</param>
-    /// <param name="envConfig">     (Optional) The environment configuration.</param>
-    /// <returns>
-    /// An enumerator that allows foreach to be used to process build CLI options in this collection.
-    /// </returns>
-    private static IEnumerable<SCL.Option> BuildCliOptionsReflection(
-        Type forType,
-        Type? exludeFromType = null,
-        IConfiguration? envConfig = null,
-        string languageName = "")
-    {
-        LanguageOptionInfo? langConfigMap = null;
-
-        if (!string.IsNullOrEmpty(languageName))
-        {
-            if (!_configMapsByLang.TryGetValue(languageName, out langConfigMap))
-            {
-                langConfigMap = new LanguageOptionInfo()
-                {
-                    Name = languageName,
-                    ConfigType = forType,
-                };
-
-                _configMapsByLang.Add(languageName, langConfigMap);
-            }
-            else
-            {
-                // ensure we don' duplicate on multiple calls
-                langConfigMap.Properties.Clear();
-            }
-        }
-
-        HashSet<string> inheritedPropNames = new();
-
-        if (exludeFromType != null)
-        {
-            PropertyInfo[] exProps = exludeFromType.GetProperties();
-            foreach (PropertyInfo exProp in exProps)
-            {
-                inheritedPropNames.Add(exProp.Name);
-            }
-        }
-
-        object? configDefault = null;
-        if (!forType.IsAbstract)
-        {
-            configDefault = Activator.CreateInstance(forType);
-        }
-
-        // reflect over the forConfig object and get properties that have the ConfigOptionAttribute
-        PropertyInfo[] props = forType.GetProperties();
-        foreach (PropertyInfo prop in props)
-        {
-            // exclude inherited properties
-            if (inheritedPropNames.Contains(prop.Name))
-            {
-                continue;
-            }
-
-            ConfigOptionAttribute? attr = prop.GetCustomAttribute<ConfigOptionAttribute>();
-            if (attr == null)
-            {
-                continue;
-            }
-
-            // get the type of the property so we can create an argument of the matching type
-            Type propType = prop.PropertyType;
-
-            //if (propType.IsGenericType)
-            //{
-            //    propType = propType.GetGenericArguments().First();
-            //}
-
-            // create the base option
-            SCL.Option? option = (SCL.Option?)Activator.CreateInstance(
-                typeof(SCL.Option<>).MakeGenericType(propType),
-                NameOrAlias(attr),
-                attr.Description);
-
-            if (option == null)
-            {
-                throw new Exception($"Could not create option for {prop.Name}");
-            }
-
-            // set additional properties
-            option.Arity = ArityFromCard(attr.ArgArity);
-
-            if (attr.ArgArity.StartsWith('1'))
-            {
-                option.IsRequired = true;
-            }
-
-            //if (attr.ArgArity.EndsWith('*'))
-            //{
-            //    option.AllowMultipleArgumentsPerToken = true;
-            //}
-
-            if (propType.IsGenericType || propType.IsArray)
-            {
-                if ((envConfig != null) &&
-                    (!string.IsNullOrEmpty(attr.EnvName)))
-                {
-                    option.SetDefaultValueFactory(() => envConfig.GetSection(attr.EnvName).GetChildren().Select(c => c.Value));
-                }
-                else if (configDefault != null)
-                {
-                    option.SetDefaultValue(prop.GetValue(configDefault));
-                }
-            }
-            else
-            {
-                if ((envConfig != null) &&
-                    (!string.IsNullOrEmpty(attr.EnvName)))
-                {
-                    option.SetDefaultValueFactory(() => envConfig.GetValue(propType, attr.EnvName));
-                }
-                else if (configDefault != null)
-                {
-                    option.SetDefaultValue(prop.GetValue(configDefault));
-                }
-            }
-
-            langConfigMap?.Properties.Add(new PropertyOptionTuple()
-            {
-                ConfigProp = prop,
-                CommandOpt = option,
-            });
-
-            // add the option to the collection
-            yield return option;
-        }
-
-        object NameOrAlias(ConfigOptionAttribute a) => string.IsNullOrEmpty(a.ArgName) ? a.ArgAliases : a.ArgName;
-
-        ArgumentArity ArityFromCard(string c) => c switch
-        {
-            "0..1" => ArgumentArity.ZeroOrOne,
-            "0..*" => ArgumentArity.ZeroOrMore,
-            "1..1" => ArgumentArity.ExactlyOne,
-            "1..*" => ArgumentArity.OneOrMore,
-            _ => ArgumentArity.ZeroOrOne,
-        };
-    }
-
     private static IEnumerable<SCL.Option> BuildCliOptions(
         Type forType,
         Type? exludeFromType = null,
@@ -656,9 +511,12 @@ public class Program
                 packages.Add((PackageCacheEntry)entry);
             }
 
-            PackageLoader loader = new(cache, new());
+            PackageLoader loader = new(cache, new()
+            {
+                JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
+            });
 
-            DefinitionCollection? loaded = await loader.LoadPackages(packages.First().Name, packages);
+            DefinitionCollection? loaded = loader.LoadPackages(packages.First().Name, packages);
 
             if (loaded is null)
             {
@@ -687,6 +545,8 @@ public class Program
     {
         try
         {
+            await Task.Delay(0);
+
             string languageName = pr.CommandResult.Command.Name;
 
             if (!_configMapsByLang.TryGetValue(languageName, out LanguageOptionInfo? langConfigMap))
@@ -783,123 +643,123 @@ public class Program
         return 10;
     }
 
-    /// <summary>web UI.</summary>
-    /// <param name="config">           The configuration.</param>
-    /// <param name="cancellationToken">A token that allows processing to be cancelled.</param>
-    /// <returns>An asynchronous result that yields an int.</returns>
-    public static async Task<int> RunServer(ConfigFluentUi config, CancellationToken cancellationToken)
-    {
-        try
-        {
-            WebApplicationBuilder builder = null!;
+    ///// <summary>web UI.</summary>
+    ///// <param name="config">           The configuration.</param>
+    ///// <param name="cancellationToken">A token that allows processing to be cancelled.</param>
+    ///// <returns>An asynchronous result that yields an int.</returns>
+    //public static async Task<int> RunServer(ConfigFluentUi config, CancellationToken cancellationToken)
+    //{
+    //    try
+    //    {
+    //        WebApplicationBuilder builder = null!;
 
-            // when packaging as a dotnet tool, we need to do some directory shenanigans for the static content root
-            string root = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location ?? AppContext.BaseDirectory) ?? string.Empty;
-            if (!string.IsNullOrEmpty(root))
-            {
-                string webRoot = FindRelativeDir(root, "staticwebassets", false);
+    //        // when packaging as a dotnet tool, we need to do some directory shenanigans for the static content root
+    //        string root = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location ?? AppContext.BaseDirectory) ?? string.Empty;
+    //        if (!string.IsNullOrEmpty(root))
+    //        {
+    //            string webRoot = FindRelativeDir(root, "staticwebassets", false);
 
-                if ((!string.IsNullOrEmpty(webRoot)) && Directory.Exists(webRoot))
-                {
-                    builder = WebApplication.CreateBuilder(new WebApplicationOptions()
-                    {
-                        WebRootPath = webRoot,
-                    });
-                }
-            }
+    //            if ((!string.IsNullOrEmpty(webRoot)) && Directory.Exists(webRoot))
+    //            {
+    //                builder = WebApplication.CreateBuilder(new WebApplicationOptions()
+    //                {
+    //                    WebRootPath = webRoot,
+    //                });
+    //            }
+    //        }
 
-            if (builder == null)
-            {
-                builder = WebApplication.CreateBuilder();
-            }
+    //        if (builder == null)
+    //        {
+    //            builder = WebApplication.CreateBuilder();
+    //        }
 
-            StaticWebAssetsLoader.UseStaticWebAssets(builder.Environment, builder.Configuration);
+    //        StaticWebAssetsLoader.UseStaticWebAssets(builder.Environment, builder.Configuration);
 
-            builder.WebHost.UseStaticWebAssets();
+    //        builder.WebHost.UseStaticWebAssets();
 
-            // add our configuration before starting things up
-            builder.Services.AddSingleton(config);
+    //        // add our configuration before starting things up
+    //        builder.Services.AddSingleton(config);
 
-            // add any locally-defined we want injected
-            //builder.Services.AddSingleton<IExample, Example>();
-            //builder.Services.AddHostedService<IExample>(sp => sp.GetRequiredService<IExample>());
+    //        // add any locally-defined we want injected
+    //        //builder.Services.AddSingleton<IExample, Example>();
+    //        //builder.Services.AddHostedService<IExample>(sp => sp.GetRequiredService<IExample>());
 
-            // Add services - do individually for control over middleware order
-            builder.Services.AddCors();
-            builder.Services.AddControllers();
-            builder.Services.AddRazorComponents()
-                    .AddInteractiveServerComponents();
+    //        // Add services - do individually for control over middleware order
+    //        builder.Services.AddCors();
+    //        builder.Services.AddControllers();
+    //        builder.Services.AddRazorComponents()
+    //                .AddInteractiveServerComponents();
 
-            builder.Services.AddFluentUIComponents();
+    //        //builder.Services.AddFluentUIComponents();
 
-            // use the requested default port
-            string localUrl = $"http://*:{config.UiListenPort}";
+    //        // use the requested default port
+    //        string localUrl = $"http://*:{config.UiListenPort}";
 
-            builder.WebHost.UseUrls(localUrl);
+    //        builder.WebHost.UseUrls(localUrl);
 
-            WebApplication app = builder.Build();
+    //        WebApplication app = builder.Build();
 
-            // we want to essentially disable CORS
-            app.UseCors(builder => builder
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .WithExposedHeaders(new[] { "Content-Location", "Location", "Etag", "Last-Modified" }));
+    //        // we want to essentially disable CORS
+    //        app.UseCors(builder => builder
+    //            .AllowAnyOrigin()
+    //            .AllowAnyMethod()
+    //            .AllowAnyHeader()
+    //            .WithExposedHeaders(new[] { "Content-Location", "Location", "Etag", "Last-Modified" }));
 
-            app.UseStaticFiles();
-            app.UseRouting();
-            app.MapControllers();
+    //        app.UseStaticFiles();
+    //        app.UseRouting();
+    //        app.MapControllers();
 
-            // this is developer tooling - always respond with as much detail as we can
-            app.UseDeveloperExceptionPage();
+    //        // this is developer tooling - always respond with as much detail as we can
+    //        app.UseDeveloperExceptionPage();
 
-            // add UI components
-            app.MapRazorComponents<App>()
-                .AddInteractiveServerRenderMode();
+    //        // add UI components
+    //        app.MapRazorComponents<App>()
+    //            .AddInteractiveServerRenderMode();
 
-            app.MapFallbackToPage("/_Host");
+    //        app.MapFallbackToPage("/_Host");
 
-            // perform initialization of services
-            //IExample example = app.Services.GetRequiredService<IExample>();
-            //ExampleScenario.Init();
+    //        // perform initialization of services
+    //        //IExample example = app.Services.GetRequiredService<IExample>();
+    //        //ExampleScenario.Init();
 
-            // start the webserver
-            _ = app.StartAsync();
+    //        // start the webserver
+    //        _ = app.StartAsync();
 
-            // perform any post-startup actions
-            AfterServerStart(app, config);
+    //        // perform any post-startup actions
+    //        AfterServerStart(app, config);
 
-            // wait for the server to shutdown
-            await app.WaitForShutdownAsync(cancellationToken);
+    //        // wait for the server to shutdown
+    //        await app.WaitForShutdownAsync(cancellationToken);
 
-            // return success
-            return 0;
-        }
-        catch (OperationCanceledException)
-        {
-            return 0;
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"fhir-candle <<< caught exception: {ex.Message}");
-            return -1;
-        }
-    }
+    //        // return success
+    //        return 0;
+    //    }
+    //    catch (OperationCanceledException)
+    //    {
+    //        return 0;
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        Console.WriteLine($"fhir-candle <<< caught exception: {ex.Message}");
+    //        return -1;
+    //    }
+    //}
 
-    /// <summary>Actions to take after the server has started.</summary>
-    /// <param name="app">   The application.</param>
-    /// <param name="config">The configuration.</param>
-    private static void AfterServerStart(WebApplication app, ConfigFluentUi config)
-    {
-        Console.WriteLine("Press CTRL+C to exit");
+    ///// <summary>Actions to take after the server has started.</summary>
+    ///// <param name="app">   The application.</param>
+    ///// <param name="config">The configuration.</param>
+    //private static void AfterServerStart(WebApplication app, ConfigFluentUi config)
+    //{
+    //    Console.WriteLine("Press CTRL+C to exit");
 
-        if (config.OpenBrowser == true)
-        {
-            string url = $"http://localhost:{config.UiListenPort}";
+    //    if (config.OpenBrowser == true)
+    //    {
+    //        string url = $"http://localhost:{config.UiListenPort}";
 
-            LaunchBrowser(url);
-        }
-    }
+    //        LaunchBrowser(url);
+    //    }
+    //}
 
     /// <summary>Executes the browser operation.</summary>
     /// <param name="url">URL of the resource.</param>

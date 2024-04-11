@@ -22,6 +22,7 @@ namespace Microsoft.Health.Fhir.CodeGen.Loader;
 /// <summary>A package loader.</summary>
 public class PackageLoader
 {
+
     /// <summary>(Immutable) The cache.</summary>
     private readonly IFhirPackageClient _cache;
 
@@ -39,9 +40,6 @@ public class PackageLoader
         "CompartmentDefinition",
     };
 
-    /// <summary>(Immutable) List of types of the sorted resources.</summary>
-    private static readonly HashSet<string> _sortedResourceTypes = new HashSet<string>(_sortedLoadOrder);
-
     private JsonSerializerOptions _jsonOptions;
 
     /// <summary>The lenient JSON parser.</summary>
@@ -50,16 +48,17 @@ public class PackageLoader
     /// <summary>The lenient XML parser.</summary>
     private FhirXmlPocoDeserializer _xmlParser;
 
+    /// <summary>A load functions.</summary>
     private class LoadFunctions
     {
-        public required Func<string, string, Task<CapabilityStatement?>> ParseCapabilityStatement;
-        public required Func<string, string, Task<CodeSystem?>> ParseCodeSystem;
-        public required Func<string, string, Task<CompartmentDefinition?>> ParseCompartmentDef;
-        public required Func<string, string, Task<ImplementationGuide?>> ParseImplementationGuide;
-        public required Func<string, string, Task<OperationDefinition?>> ParseOperationDef;
-        public required Func<string, string, Task<SearchParameter?>> ParseSearchParam;
-        public required Func<string, string, Task<StructureDefinition?>> ParseStructureDef;
-        public required Func<string, string, Task<ValueSet?>> ParseValueSet;
+        public required Func<string, string, CapabilityStatement?> ParseCapabilityStatement;
+        public required Func<string, string, CodeSystem?> ParseCodeSystem;
+        public required Func<string, string, CompartmentDefinition?> ParseCompartmentDef;
+        public required Func<string, string, ImplementationGuide?> ParseImplementationGuide;
+        public required Func<string, string, OperationDefinition?> ParseOperationDef;
+        public required Func<string, string, SearchParameter?> ParseSearchParam;
+        public required Func<string, string, StructureDefinition?> ParseStructureDef;
+        public required Func<string, string, ValueSet?> ParseValueSet;
     }
 
     private LoadFunctions _loadFunctionsR5;
@@ -368,7 +367,7 @@ public class PackageLoader
     /// <param name="name">    The name.</param>
     /// <param name="packages">The cached package.</param>
     /// <returns>An asynchronous result that yields the package.</returns>
-    public async Task<DefinitionCollection?> LoadPackages(string name, IEnumerable<PackageCacheEntry> packages)
+    public DefinitionCollection? LoadPackages(string name, IEnumerable<PackageCacheEntry> packages)
     {
         DefinitionCollection definitions = new()
         {
@@ -495,21 +494,38 @@ public class PackageLoader
 
             definitions.ContentListings.Add(cachedPackage.ResolvedDirective, packageContents);
 
-            // build a dictionary of the contents based on resource type
-            Dictionary<string, List<PackageContents.PackageFile>> filesByType =
-                packageContents.Files.GroupBy(f => f.ResourceType).ToDictionary(g => g.Key, g => g.ToList());
+            // create an dictionary of indexes we are going to load - note that we are essentially traversing twice, but that is better than projecting each time
+            List<int>[] sortedFileIndexes = new List<int>[_sortedLoadOrder.Length];
 
-            // first iterate over our sorted resource types to load them
-            foreach (string rt in _sortedLoadOrder)
+            for (int i = 0; i < sortedFileIndexes.Length; i++)
             {
-                if ((!filesByType.TryGetValue(rt, out List<PackageContents.PackageFile>? files)) ||
-                    (!files.Any()))
+                sortedFileIndexes[i] = new();
+            }
+
+            // traverse our files
+            int fileIndex = 0;
+            foreach (PackageContents.PackageFile pf in packageContents.Files)
+            {
+                int loadIndex = Array.IndexOf(_sortedLoadOrder, pf.ResourceType);
+                if (loadIndex < 0)
                 {
+                    fileIndex++;
                     continue;
                 }
 
-                foreach (PackageContents.PackageFile pFile in files)
+                // add this index to the list of indexes for this type
+                sortedFileIndexes[loadIndex].Add(fileIndex++);
+            }
+
+            // iterate over our sorted list of indexes
+            for (int i = 0; i < _sortedLoadOrder.Length; i++)
+            {
+                string rt = _sortedLoadOrder[i];
+
+                foreach (int fi in sortedFileIndexes[i])
                 {
+                    PackageContents.PackageFile pFile = packageContents.Files[fi];
+
                     // load the file
                     string path = Path.Combine(cachedPackage.Directory, "package", pFile.FileName);
 
@@ -519,24 +535,24 @@ public class PackageLoader
                     }
 
                     string fileExtension = Path.GetExtension(pFile.FileName);
-                    //string contents = await File.ReadAllTextAsync(path);
 
                     switch (rt)
                     {
                         case "CodeSystem":
                             {
-                                CodeSystem? r = await lf.ParseCodeSystem(fileExtension, path);
+                                CodeSystem? r = lf.ParseCodeSystem(fileExtension, path);
                                 if (r == null)
                                 {
                                     throw new Exception($"Failed to parse CodeSystem file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
                                 }
+
                                 definitions.AddCodeSystem(r);
                             }
                             break;
 
                         case "ValueSet":
                             {
-                                ValueSet? r = await lf.ParseValueSet(fileExtension, path);
+                                ValueSet? r = lf.ParseValueSet(fileExtension, path);
                                 if (r == null)
                                 {
                                     throw new Exception($"Failed to parse ValueSet file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
@@ -583,7 +599,7 @@ public class PackageLoader
 
                         case "StructureDefinition":
                             {
-                                StructureDefinition? r = await lf.ParseStructureDef(fileExtension, path);
+                                StructureDefinition? r = lf.ParseStructureDef(fileExtension, path);
                                 if (r == null)
                                 {
                                     throw new Exception($"Failed to parse StructureDefinition file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
@@ -619,18 +635,19 @@ public class PackageLoader
                             break;
                         case "SearchParameter":
                             {
-                                SearchParameter? r = await lf.ParseSearchParam(fileExtension, path);
+                                SearchParameter? r = lf.ParseSearchParam(fileExtension, path);
                                 if (r == null)
                                 {
                                     throw new Exception($"Failed to parse SearchParameter file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
                                 }
+
                                 definitions.AddSearchParameter(r);
                             }
                             break;
 
                         case "OperationDefinition":
                             {
-                                OperationDefinition? r = await lf.ParseOperationDef(fileExtension, path);
+                                OperationDefinition? r = lf.ParseOperationDef(fileExtension, path);
                                 if (r == null)
                                 {
                                     throw new Exception($"Failed to parse OperationDefinition file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
@@ -643,33 +660,36 @@ public class PackageLoader
                         case "Conformance":
                         case "CapabilityStatement":
                             {
-                                CapabilityStatement? r = await lf.ParseCapabilityStatement(fileExtension, path);
+                                CapabilityStatement? r = lf.ParseCapabilityStatement(fileExtension, path);
                                 if (r == null)
                                 {
                                     throw new Exception($"Failed to parse CapabilityStatement file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
                                 }
+
                                 definitions.AddCapabilityStatement(r, manifest);
                             }
                             break;
 
                         case "ImplementationGuide":
                             {
-                                ImplementationGuide? r = await lf.ParseImplementationGuide(fileExtension, path);
+                                ImplementationGuide? r = lf.ParseImplementationGuide(fileExtension, path);
                                 if (r == null)
                                 {
                                     throw new Exception($"Failed to parse ImplementationGuide file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
                                 }
+
                                 definitions.AddImplementationGuide(r);
                             }
                             break;
 
                         case "CompartmentDefinition":
                             {
-                                CompartmentDefinition? r = await lf.ParseCompartmentDef(fileExtension, path);
+                                CompartmentDefinition? r = lf.ParseCompartmentDef(fileExtension, path);
                                 if (r == null)
                                 {
                                     throw new Exception($"Failed to parse CompartmentDefinition file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
                                 }
+
                                 definitions.AddCompartment(r);
                             }
                             break;
@@ -720,9 +740,9 @@ public class PackageLoader
     /// <param name="format">Describes the format to use.</param>
     /// <param name="path">  Full pathname of the file.</param>
     /// <returns>A TResource?</returns>
-    public async Task<TResource?> ParseContentsPoco<TResource>(string format, string path) where TResource : Resource, new()
+    public TResource? ParseContentsPoco<TResource>(string format, string path) where TResource : Resource, new()
     {
-        string content = await File.ReadAllTextAsync(path);
+        string content = File.ReadAllTextAsync(path).Result;
 
         switch (format.ToLowerInvariant())
         {
@@ -801,7 +821,7 @@ public class PackageLoader
     /// <param name="format">Describes the format to use.</param>
     /// <param name="path">  Full pathname of the file.</param>
     /// <returns>An asynchronous result that yields a TResource?</returns>
-    public async Task<TResource?> ParseContents43<TResource>(string format, string path) where TResource : Resource, new()
+    public TResource? ParseContents43<TResource>(string format, string path) where TResource : Resource, new()
     {
         switch (format.ToLowerInvariant())
         {
@@ -812,7 +832,7 @@ public class PackageLoader
             case "application/fhir+json":
                 try
                 {
-                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirJsonNode.Parse(await File.ReadAllTextAsync(path));
+                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirJsonNode.Parse(File.ReadAllText(path));
                     return _converter_43_50!.Convert(sn) as TResource;
                 }
                 catch (Exception ex)
@@ -835,7 +855,7 @@ public class PackageLoader
             case "application/fhir+xml":
                 try
                 {
-                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirXmlNode.Parse(await File.ReadAllTextAsync(path));
+                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirXmlNode.Parse(File.ReadAllText(path));
                     return _converter_43_50!.Convert(sn) as TResource;
                 }
                 catch (Exception ex)
@@ -859,7 +879,7 @@ public class PackageLoader
         }
     }
 
-    public async Task<TResource?> ParseContents30<TResource>(string format, string path) where TResource : Resource, new()
+    public TResource? ParseContents30<TResource>(string format, string path) where TResource : Resource, new()
     {
         switch (format.ToLowerInvariant())
         {
@@ -870,7 +890,7 @@ public class PackageLoader
             case "application/fhir+json":
                 try
                 {
-                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirJsonNode.Parse(await File.ReadAllTextAsync(path));
+                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirJsonNode.Parse(File.ReadAllText(path));
                     return _converter_30_50!.Convert(sn) as TResource;
                 }
                 catch (Exception ex)
@@ -893,7 +913,7 @@ public class PackageLoader
             case "application/fhir+xml":
                 try
                 {
-                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirXmlNode.Parse(await File.ReadAllTextAsync(path));
+                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirXmlNode.Parse(File.ReadAllText(path));
                     return _converter_30_50!.Convert(sn) as TResource;
                 }
                 catch (Exception ex)
@@ -917,7 +937,7 @@ public class PackageLoader
         }
     }
 
-    public async Task<TResource?> ParseContents20<TResource>(string format, string path) where TResource : Resource, new()
+    public TResource? ParseContents20<TResource>(string format, string path) where TResource : Resource, new()
     {
         switch (format.ToLowerInvariant())
         {
@@ -928,7 +948,7 @@ public class PackageLoader
             case "application/fhir+json":
                 try
                 {
-                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirJsonNode.Parse(await File.ReadAllTextAsync(path));
+                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirJsonNode.Parse(File.ReadAllText(path));
                     return _converter_20_50!.Convert(sn) as TResource;
                 }
                 catch (Exception ex)
@@ -951,7 +971,7 @@ public class PackageLoader
             case "application/fhir+xml":
                 try
                 {
-                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirXmlNode.Parse(await File.ReadAllTextAsync(path));
+                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirXmlNode.Parse(File.ReadAllText(path));
                     return _converter_20_50!.Convert(sn) as TResource;
                 }
                 catch (Exception ex)
@@ -982,7 +1002,7 @@ public class PackageLoader
     /// <returns>
     /// The parsed resource of type <typeparamref name="TResource"/> or null if parsing fails.
     /// </returns>
-    public async Task<TResource?> ParseContentsSystemTextStream<TResource>(string format, string path) where TResource : Resource, new()
+    public TResource? ParseContentsSystemTextStream<TResource>(string format, string path) where TResource : Resource, new()
     {
         switch (format.ToLowerInvariant())
         {
@@ -1018,7 +1038,7 @@ public class PackageLoader
             case "application/fhir+xml":
                 try
                 {
-                    string content = await File.ReadAllTextAsync(path);
+                    string content = File.ReadAllText(path);
 
                     // always use lenient parsing
                     Resource parsed = _xmlParser.DeserializeResource(content);

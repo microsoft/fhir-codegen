@@ -502,14 +502,6 @@ public partial class DefinitionCollection
                 }
             }
         }
-
-        if (sd.Id == "Bundle")
-        {
-            Console.WriteLine(string.Join('\n', sd.Snapshot!.Element.OrderBy(e => e.cgFieldOrder()).Select(e => e.cgFieldOrder() + ":" + e.cgComponentFieldOrder() + " - " + e.Path)));
-            //Console.WriteLine("---");
-            //Console.WriteLine(string.Join('\n', sd.Snapshot!.Element.OrderBy(e => e.cgFieldOrder()).Select(e => e.cgFieldOrder() + " " + e.Path)));
-            Console.Write("");
-        }
     }
 
     /// <summary>
