@@ -5,7 +5,7 @@
 
 using System.Text;
 
-namespace Microsoft.Health.Fhir.CodeGen.Lanugage;
+namespace Microsoft.Health.Fhir.CodeGen.Language;
 
 public class ExportStreamWriter : StreamWriter
 {

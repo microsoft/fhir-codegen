@@ -43,11 +43,11 @@ internal record class RegistryPackageManifest
 
     /// <summary>Gets or sets the distribution tags.</summary>
     [JsonPropertyName("dist-tags")]
-    public Dictionary<string, string> DistributionTags { get; set; } = new();
+    public Dictionary<string, string> DistributionTags { get; set; } = [];
 
     /// <summary>Gets or sets the versions.</summary>
     [JsonPropertyName("versions")]
-    public Dictionary<string, FhirPackageVersionInfo> Versions { get; set; } = new();
+    public Dictionary<string, FhirPackageVersionInfo> Versions { get; set; } = [];
 
     /// <summary>Parses.</summary>
     /// <exception cref="ArgumentNullException">Thrown when one or more required arguments are null.</exception>
@@ -74,7 +74,7 @@ internal record class RegistryPackageManifest
                 return null;
             }
 
-            List<string> keysToRemove = new();
+            List<string> keysToRemove = [];
 
             foreach (string key in manifest.Versions.Keys)
             {

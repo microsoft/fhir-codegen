@@ -88,9 +88,9 @@ public static class FhirNameConventionExtensions
     /// <returns>Word as a string.</returns>
     public static string[] ToPascalCase(this string[] words, bool removeDelimiters = true, string joinDelimiter = "")
     {
-        if (!(words?.Any() ?? false))
+        if (words.Length == 0)
         {
-            return Array.Empty<string>();
+            return [];
         }
 
         string[] output = new string[words.Length];
@@ -112,7 +112,7 @@ public static class FhirNameConventionExtensions
     /// <returns>Words as a string.</returns>
     public static string ToPascalCaseWord(this IEnumerable<string> words, bool removeDelimiters = true, string joinDelimiter = "")
     {
-        if (!(words?.Any() ?? false))
+        if (!words.Any())
         {
             return string.Empty;
         }
@@ -149,9 +149,9 @@ public static class FhirNameConventionExtensions
     /// <returns>Word as a string.</returns>
     public static string[] ToCamelCase(this string[] words, bool removeDelimiters = true, string joinDelimiter = "")
     {
-        if (!(words?.Any() ?? false))
+        if (words.Length == 0)
         {
-            return Array.Empty<string>();
+            return [];
         }
 
         string[] output = new string[words.Length];
@@ -236,9 +236,9 @@ public static class FhirNameConventionExtensions
     /// <returns>Words as a string[].</returns>
     public static string[] ToUpperCase(this string[] words, bool removeDelimiters = true, string joinDelimiter = "_")
     {
-        if (!(words?.Any() ?? false))
+        if (words.Length == 0)
         {
-            return Array.Empty<string>();
+            return [];
         }
 
         string[] output = new string[words.Length];
@@ -266,7 +266,7 @@ public static class FhirNameConventionExtensions
             }
         }
 
-        return words.Select(w => w.ToUpperInvariant()).ToArray() ?? Array.Empty<string>();
+        return words.Select(w => w.ToUpperInvariant()).ToArray() ?? [];
     }
 
     /// <summary>
@@ -316,9 +316,9 @@ public static class FhirNameConventionExtensions
     /// <returns>Words as a string[].</returns>
     public static string[] ToLowerCase(this string[] words, bool removeDelimiters = true, string joinDelimiter = "_")
     {
-        if (!(words?.Any() ?? false))
+        if (words.Length == 0)
         {
-            return Array.Empty<string>();
+            return [];
         }
 
         string[] output = new string[words.Length];
@@ -346,7 +346,7 @@ public static class FhirNameConventionExtensions
             }
         }
 
-        return words.Select(w => w.ToLowerInvariant()).ToArray() ?? Array.Empty<string>();
+        return words.Select(w => w.ToLowerInvariant()).ToArray() ?? [];
     }
 
     /// <summary>
@@ -439,9 +439,9 @@ public static class FhirNameConventionExtensions
     /// <returns>The given data converted to a string.</returns>
     public static string[] ToPascalDotCase(this string[] words)
     {
-        if (!(words?.Any() ?? false))
+        if (words.Length == 0)
         {
-            return Array.Empty<string>();
+            return [];
         }
 
         string[] output = new string[words.Length];
@@ -492,9 +492,9 @@ public static class FhirNameConventionExtensions
     /// <returns>The given data converted to a string.</returns>
     public static string[] ToFhirDotCase(this string[] words)
     {
-        if (!(words?.Any() ?? false))
+        if (words.Length == 0)
         {
-            return Array.Empty<string>();
+            return [];
         }
 
         string[] output = new string[words.Length];

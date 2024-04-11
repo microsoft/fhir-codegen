@@ -17,7 +17,7 @@ public class ConfigOptionAttribute : Attribute
     public string ArgName { get; set; } = string.Empty;
 
     /// <summary>Gets or sets the argument aliases.</summary>
-    public string[] ArgAliases { get; set; } = Array.Empty<string>();
+    public string[] ArgAliases { get; set; } = [];
 
     /// <summary>Gets or sets the description.</summary>
     public string Description { get; set; } = string.Empty;

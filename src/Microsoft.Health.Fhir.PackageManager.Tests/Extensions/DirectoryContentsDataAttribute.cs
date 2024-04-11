@@ -49,13 +49,13 @@ public class DirectoryContentsDataAttribute : DataAttribute
             throw new ArgumentException($"Could not find directory: {path}");
         }
 
-        List<object> data = new();
+        List<object> data = [];
 
         foreach (string filename in Directory.EnumerateFiles(path, _searchPattern, _searchOption))
         {
             data.Add(File.ReadAllText(filename));
         }
 
-        return new object[][] { data.ToArray() };
+        return new object[][] { [.. data] };
     }
 }

@@ -63,7 +63,7 @@ public static class LinqExtensions
         where KT : notnull
         where VT : ICloneable
     {
-        Dictionary<KT, VT> dest = new();
+        Dictionary<KT, VT> dest = [];
 
         foreach ((KT key, VT value) in source)
         {
@@ -85,11 +85,11 @@ public static class LinqExtensions
         where KT : notnull
         where VT : ICloneable
     {
-        Dictionary<KT, List<VT>> dest = new();
+        Dictionary<KT, List<VT>> dest = [];
 
         foreach ((KT key, List<VT> sourceList) in source)
         {
-            List<VT> list = new();
+            List<VT> list = [];
 
             foreach (VT value in sourceList)
             {
@@ -110,11 +110,11 @@ public static class LinqExtensions
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Dictionary<string, List<object>> DeepCopy(this Dictionary<string, List<object>> source)
     {
-        Dictionary<string, List<object>> dest = new();
+        Dictionary<string, List<object>> dest = [];
 
         foreach ((string key, List<object> sourceList) in source)
         {
-            List<object> list = new();
+            List<object> list = [];
 
             foreach (object value in sourceList)
             {
@@ -143,7 +143,7 @@ public static class LinqExtensions
     public static Dictionary<KT, VT> ShallowCopy<KT, VT>(this Dictionary<KT, VT> source)
         where KT : notnull
     {
-        Dictionary<KT, VT> dest = new();
+        Dictionary<KT, VT> dest = [];
 
         foreach ((KT key, VT value) in source)
         {
@@ -164,7 +164,7 @@ public static class LinqExtensions
     public static Dictionary<KT, List<VT>> ShallowCopy<KT, VT>(this Dictionary<KT, List<VT>> source)
         where KT : notnull
     {
-        Dictionary<KT, List<VT>> dest = new();
+        Dictionary<KT, List<VT>> dest = [];
 
         foreach ((KT key, List<VT> value) in source)
         {
@@ -195,7 +195,7 @@ public static class LinqExtensions
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static HashSet<T> DeepCopy<T>(this HashSet<T> source)
     {
-        HashSet<T> dest = new();
+        HashSet<T> dest = [];
 
         dest.UnionWith(source);
 
@@ -229,7 +229,7 @@ public static class LinqExtensions
         T? defaultVal = null)
         where T : struct, System.Enum
     {
-        List<T> list = new();
+        List<T> list = [];
 
         foreach (string val in source)
         {
@@ -243,7 +243,7 @@ public static class LinqExtensions
             }
         }
 
-        return list.Any() ? list.AsEnumerable() : Enumerable.Empty<T>();
+        return list.Count != 0 ? list.AsEnumerable() : [];
     }
 }
 

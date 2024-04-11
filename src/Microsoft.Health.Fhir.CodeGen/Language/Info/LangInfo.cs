@@ -12,10 +12,10 @@ using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGen.Utils;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
-using static Microsoft.Health.Fhir.CodeGen.Lanugage.Info.LangInfo;
+using static Microsoft.Health.Fhir.CodeGen.Language.Info.LangInfo;
 using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 
-namespace Microsoft.Health.Fhir.CodeGen.Lanugage.Info;
+namespace Microsoft.Health.Fhir.CodeGen.Language.Info;
 
 /// <summary>Class used to export package/specification information.</summary>
 public class LangInfo : ILanguage
@@ -51,9 +51,9 @@ public class LangInfo : ILanguage
         };
 
         private static readonly ConfigurationOption[] _options = 
-        {
+        [
             FileFormatParameter,
-        };
+        ];
 
         /// <summary>
         /// Gets the configuration options for the current instance and its base class.
@@ -61,7 +61,7 @@ public class LangInfo : ILanguage
         /// <returns>An array of configuration options.</returns>
         public override ConfigurationOption[] GetOptions()
         {
-            return base.GetOptions().Concat(_options).ToArray();
+            return [.. base.GetOptions(), .. _options];
         }
 
         public override void Parse(System.CommandLine.Parsing.ParseResult parseResult)
@@ -89,7 +89,7 @@ public class LangInfo : ILanguage
     public string Name => "Info";
 
     /// <summary>Dictionary mapping FHIR primitive types to language equivalents.</summary>
-    private static readonly Dictionary<string, string> _primitiveTypeMap = new();
+    private static readonly Dictionary<string, string> _primitiveTypeMap = [];
         //{
         //    { "base", "base" },
         //    { "base64Binary", "base64Binary" },
@@ -391,19 +391,19 @@ public class LangInfo : ILanguage
         // check for a 'simple' extension
         if (((sd.Snapshot?.Element.Count ?? 0) == 5) || (sd.Differential.Element.Count == 4))
         {
-            ElementDefinition? eleUrl = (sd.Snapshot?.Element.Any() ?? false)
+            ElementDefinition? eleUrl = (sd.Snapshot != null) && (sd.Snapshot.Element.Count != 0)
                 ? sd.Snapshot.Element[3]
                 : sd.Differential.Element[2];
 
             _writer.WriteLineIndented($"- {eleUrl.cgNameForExport(NamingConvention.CamelCase)}[{eleUrl.cgCardinality()}]: fixed to {eleUrl.Fixed}");
 
-            ElementDefinition? eleValue = (sd.Snapshot?.Element.Any() ?? false)
+            ElementDefinition? eleValue = (sd.Snapshot != null) && (sd.Snapshot.Element.Count != 0)
                 ? sd.Snapshot.Element[4]
                 : sd.Differential.Element[3];
 
             string propertyType = string.Empty;
 
-            if (eleValue.Type.Any())
+            if (eleValue.Type.Count != 0)
             {
                 IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> types = eleValue.cgTypes();
 
@@ -586,7 +586,7 @@ public class LangInfo : ILanguage
                     break;
             }
 
-            if (operation.Parameter.Any())
+            if (operation.Parameter.Count != 0)
             {
                 _writer.IncreaseIndent();
 
@@ -665,7 +665,7 @@ public class LangInfo : ILanguage
 
         foreach (SearchParameter searchParam in searchParameters.OrderBy(s => s.Code))
         {
-            if (searchParam.Component.Any())
+            if (searchParam.Component.Count != 0)
             {
                 _writer.WriteLineIndented($"?{searchParam.Name}: {searchParam.Code} is composite (resolves: {searchParam.cgCompositeResolves(_definitions.SearchParametersByUrl.Keys)})");
 
@@ -736,7 +736,7 @@ public class LangInfo : ILanguage
     {
         string propertyType = string.Empty;
 
-        if (ed.Type.Any())
+        if (ed.Type.Count != 0)
         {
             IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> types = ed.cgTypes();
 
@@ -862,7 +862,8 @@ public class LangInfo : ILanguage
 
         // check for slicing information defined by the current sd
         if (_definitions.TryGetSliceNames(ed.Path, out string[]? sliceNames, sd) &&
-            (sliceNames?.Any() ?? false))
+            (sliceNames != null) &&
+            (sliceNames.Length != 0))
         {
             WriteSlices(sd, ed, sliceNames);
         }
@@ -1046,13 +1047,13 @@ public class LangInfo : ILanguage
         _writer.WriteLine($"  Interaction Naming Style: {NamingConvention.PascalCase}");
         //_writer.WriteLine($"  Extension Support: {_options.ExtensionSupport}");
 
-        if (config.ExportStructures.Any())
+        if (config.ExportStructures.Length != 0)
         {
             string restrictions = string.Join("|", config.ExportStructures);
             _writer.WriteLine($"  Export structures: {restrictions}");
         }
 
-        if (config.ExportKeys.Any())
+        if (config.ExportKeys.Count != 0)
         {
             string restrictions = string.Join("|", config.ExportKeys);
             _writer.WriteLine($"  Export keys: {restrictions}");

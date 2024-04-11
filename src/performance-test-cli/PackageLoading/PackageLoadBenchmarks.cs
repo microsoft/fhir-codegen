@@ -47,12 +47,12 @@ public class PackageLoadBenchmarks
     /// Gets or sets the test directives.
     /// </summary>
     [ParamsSource(nameof(AllTestDirectives))]
-    public IEnumerable<string> TestDirectives { get; set; } = Enumerable.Empty<string>();
+    public IEnumerable<string> TestDirectives { get; set; } = [];
 
     /// <summary>
     /// Gets or sets the test entries.
     /// </summary>
-    public PackageCacheEntry[] TestEntries { get; set; } = Array.Empty<PackageCacheEntry>();
+    public PackageCacheEntry[] TestEntries { get; set; } = [];
 
     /// <summary>
     /// Loads the packages with POCO deserialization model.
@@ -116,14 +116,14 @@ public class PackageLoadBenchmarks
                 throw new Exception($"Failed to load {directive}");
             }
 
-            TestEntries = TestEntries.Append((PackageCacheEntry)p).ToArray();
+            TestEntries = [.. TestEntries, (PackageCacheEntry)p];
         }
     }
 
     /// <summary>
     /// Performs the setup for benchmarking with POCO deserialization model.
     /// </summary>
-    [GlobalSetup(Targets = new[] { nameof(LoadWithPoco) })]
+    [GlobalSetup(Targets = [nameof(LoadWithPoco)])]
     public void SetupPoco()
     {
         CommonSetup();
@@ -137,7 +137,7 @@ public class PackageLoadBenchmarks
     /// <summary>
     /// Performs the setup for benchmarking with System.Text.Json deserialization model.
     /// </summary>
-    [GlobalSetup(Targets = new[] { nameof(LoadWithSystemTextJson) })]
+    [GlobalSetup(Targets = [nameof(LoadWithSystemTextJson)])]
     public void SetupSystemTextJson()
     {
         CommonSetup();

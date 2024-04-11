@@ -37,14 +37,14 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
         long PackageSize,
         FhirNpmPackageDetails Details);
 
-    /// <summary>(Immutable) The package registry uris.</summary>
+    /// <summary>(Immutable) The package registry URIs.</summary>
     private static readonly Uri[] _defaultRegistryUris =
-    {
+    [
         new("http://packages.fhir.org/"),
         new("http://packages2.fhir.org/packages/"),
-    };
+    ];
 
-    /// <summary>The registry uris.</summary>
+    /// <summary>The registry URIs.</summary>
     private static IEnumerable<Uri> _registryUris = _defaultRegistryUris;
 
     /// <summary>(Immutable) URI of the FHIR published server.</summary>
@@ -88,10 +88,10 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
     private bool _disposedValue = false;
 
     /// <summary>The package records, by directive.</summary>
-    private Dictionary<string, PackageCacheRecord> _packagesByDirective = new();
+    private Dictionary<string, PackageCacheRecord> _packagesByDirective = [];
 
     /// <summary>Package versions, by package name.</summary>
-    private Dictionary<string, List<string>> _versionsByName = new();
+    private Dictionary<string, List<string>> _versionsByName = [];
 
     /// <summary>Occurs when a package has been downloaded or deleted.</summary>
     public event EventHandler<EventArgs>? OnChanged = null;
@@ -128,7 +128,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
     /// <summary>The match file URL suffix.</summary>
     internal static Regex _matchFileUrlSuffix = MatchFileUrlSuffix();
 
-    /// <summary>The RegEx to test if a string is a semver version.</summary>
+    /// <summary>The RegEx to test if a string is a Semver version.</summary>
     internal static Regex _matchSemver = MatchSemVer();
 
     /// <summary>A RegEx to test if a string is a semver version.</summary>
@@ -216,11 +216,23 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
     /// <summary>URL of the match ci ig current.</summary>
     internal static Regex _matchCiIgUrl = MatchCiIgUrl();
 
+    /// <summary>The jso case insensitive.</summary>
+    private static JsonSerializerOptions _jsoCaseInsensitive = new()
+    {
+        PropertyNameCaseInsensitive = true,
+    };
+
+    /// <summary>The jso allow trailing commas.</summary>
+    private static JsonSerializerOptions _jsoAllowTrailingCommas = new()
+    {
+        AllowTrailingCommas = true,
+    };
+
     /// <summary>Gets the packages by directive.</summary>
     private Dictionary<string, PackageCacheRecord> PackagesByDirective => _packagesByDirective;
 
     /// <summary>The completed requests.</summary>
-    private HashSet<string> _processed = new();
+    private HashSet<string> _processed = [];
 
     /// <summary>Creates a new IFhirPackageClient.</summary>
     /// <param name="settings">(Optional) Options for controlling the operation.</param>
@@ -255,7 +267,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
             cachePath,
             settings?.OfflineMode ?? false,
             null,
-            settings?.AdditionalRegistryUrls ?? Enumerable.Empty<string>());
+            settings?.AdditionalRegistryUrls ?? []);
 
         return fhirCache;
     }
@@ -270,7 +282,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
     public async Task<PackageCacheEntry?> AddLocalPackage(
         string packageFilename,
         string cacheVersionAlias = "",
-        CancellationToken cancellationToken = default(CancellationToken))
+        CancellationToken cancellationToken = default)
     {
         if (string.IsNullOrEmpty(packageFilename))
         {
@@ -290,9 +302,9 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
 
         try
         {
-            using (FileStream fs = new FileStream(packageFilename, FileMode.Open, FileAccess.Read, FileShare.Read))
+            using (FileStream fs = new(packageFilename, FileMode.Open, FileAccess.Read, FileShare.Read))
             using (Stream gzipStream = new GZipStream(fs, CompressionMode.Decompress))
-            using (TarReader tarReader = new TarReader(gzipStream))
+            using (TarReader tarReader = new(gzipStream))
             {
                 // since we do not know the contents of the package tar, we need to pull the package manifest
                 TarEntry? entry = tarReader.GetNextEntry();
@@ -314,7 +326,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
                                     continue;
                                 }
 
-                                using (StreamReader sr = new StreamReader(entry.DataStream))
+                                using (StreamReader sr = new(entry.DataStream))
                                 {
                                     string manifest = await sr.ReadToEndAsync(cancellationToken);
 
@@ -355,7 +367,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
                 directory = Path.Combine(_cachePackageDirectory, $"{name}#{cacheVersionAlias}");
             }
 
-            using (FileStream fs = new FileStream(packageFilename, FileMode.Open, FileAccess.Read, FileShare.Read))
+            using (FileStream fs = new(packageFilename, FileMode.Open, FileAccess.Read, FileShare.Read))
             using (Stream gzipStream = new GZipStream(fs, CompressionMode.Decompress))
             {
                 // make sure our destination directory exists
@@ -411,7 +423,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
     }
 
     /// <summary>
-    /// Resolve a package directive, donwload the package if necessary, and return the local and
+    /// Resolve a package directive, download the package if necessary, and return the local and
     /// extracted package information.
     /// </summary>
     /// <param name="directive">          The directive.</param>
@@ -421,7 +433,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
     public async Task<PackageCacheEntry?> FindOrDownloadPackageByDirective(
         string directive,
         bool includeDependencies = false,
-        CancellationToken cancellationToken = default(CancellationToken))
+        CancellationToken cancellationToken = default)
     {
         PackageCacheEntry? package = await ResolveAndDownloadDirective(directive, cancellationToken: cancellationToken);
 
@@ -459,7 +471,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
     }
 
     /// <summary>
-    /// Resolve a package URL, donwload the package if necessary, and return the local and extracted
+    /// Resolve a package URL, download the package if necessary, and return the local and extracted
     /// package information.
     /// </summary>
     /// <param name="url">                URL of the package tgz or IG page URL.</param>
@@ -469,7 +481,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
     public async Task<PackageCacheEntry?> FindOrDownloadPackageByUrl(
         string url,
         bool includeDependencies = false,
-        CancellationToken cancellationToken = default(CancellationToken))
+        CancellationToken cancellationToken = default)
     {
         if (!TryParseUrl(url, out FhirDirective? parsedUrl))
         {
@@ -569,10 +581,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
 
         try
         {
-            return JsonSerializer.Deserialize<PackageContents>(File.ReadAllText(indexPath), new JsonSerializerOptions()
-            {
-                AllowTrailingCommas = true,
-            });
+            return JsonSerializer.Deserialize<PackageContents>(File.ReadAllText(indexPath), _jsoAllowTrailingCommas);
         }
         catch (Exception ex)
         {
@@ -683,7 +692,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
         {
             FhirSequenceCodes sequence = (FhirSequenceCodes)FhirReleases.FhirVersionToSequence(segments[3]);
 
-            // if there was no package specified, we can still defualt if we know the FHIR version
+            // if there was no package specified, we can still default if we know the FHIR version
             if (string.IsNullOrEmpty(possiblePackage) &&
                 (sequence != FhirSequenceCodes.Unknown))
             {
@@ -723,7 +732,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
             {
                 PublishedReleaseInformation ballot = ballotMatches.First();
 
-                // if there was no package specified, we can defualt 
+                // if there was no package specified, we can default 
                 if (string.IsNullOrEmpty(possiblePackage))
                 {
                     // use core package literal
@@ -1236,7 +1245,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
             return false;
         }
 
-        // extact known segment values
+        // extract known segment values
         string org = segments[3];
         string repo = segments[4];
         string branch = segments[6];
@@ -1301,7 +1310,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
             return false;
         }
 
-        // extact known segment values
+        // extract known segment values
         string org = segments[3];
         string repo = segments[4];
 
@@ -1401,12 +1410,12 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
         {
             if (input.EndsWith(".tgz", StringComparison.OrdinalIgnoreCase))
             {
-                manifestUrl = input.Substring(0, input.Length - 4) + ".manifest.json";
+                manifestUrl = string.Concat(input.AsSpan(0, input.Length - 4), ".manifest.json");
             }
             else
             {
                 int loc = input.LastIndexOf('/');
-                manifestUrl = input.Substring(0, loc) + "/package.manifest.json";
+                manifestUrl = string.Concat(input.AsSpan(0, loc), "/package.manifest.json");
             }
         }
         else
@@ -1567,7 +1576,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
         // core ballot packages: hl7.org/fhir/[YYYYMMM]/[package|url]
         // check if the third segment is a ballot marker, a four-year number (YYYY) and a three-letter month abbreviation (MMM)
         if ((segments[2].Length == 7) &&
-            int.TryParse(segments[2].Substring(0, 4), out _) &&
+            int.TryParse(segments[2].AsSpan(0, 4), out _) &&
             DateTimeFormatInfo.CurrentInfo.AbbreviatedMonthNames.Contains(segments[2].Substring(4)))
         {
             // try and pull a version.info file to determine what this URL contains
@@ -1585,7 +1594,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
         // check if the third segment is an R-literal, the letter 'R' followed by a number
         else if ((segments[2].Length > 1) &&
             segments[2].StartsWith('R') &&
-            int.TryParse(segments[2].Substring(1), out _))
+            int.TryParse(segments[2].AsSpan(1), out _))
         {
             FhirSequenceCodes sequence = (FhirSequenceCodes)FhirReleases.FhirVersionToSequence(segments[2]);
 
@@ -1882,7 +1891,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
                         else if (current.PackageVersion.EndsWith(".x", StringComparison.OrdinalIgnoreCase))
                         {
                             // check for a semver if we swap out the last segment
-                            if (_matchSemver.IsMatch(current.PackageVersion.Substring(0, current.PackageVersion.Length -2) + "0"))
+                            if (_matchSemver.IsMatch(string.Concat(current.PackageVersion.AsSpan(0, current.PackageVersion.Length -2), "0")))
                             {
                                 current = current with { VersionType = DirectiveVersionCodes.Partial, };
                             }
@@ -2156,7 +2165,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
 
             string contents = _httpClient.GetStringAsync(_qasUri).Result;
 
-            IEnumerable<FhirQasRec> igs = JsonSerializer.Deserialize<List<FhirQasRec>>(contents) ?? new();
+            IEnumerable<FhirQasRec> igs = JsonSerializer.Deserialize<List<FhirQasRec>>(contents) ?? [];
 
             // find records that match the package name and branch
             // note that we are just using 'main' and 'master' as default branches - not fully correct, but default branches are not identified
@@ -2362,7 +2371,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
             return false;
         }
 
-        FhirQasRec[] igs = Array.Empty<FhirQasRec>();
+        FhirQasRec[] igs = [];
 
         // check to see if this is a CI-Build URL fragment
         if (inputUrl.StartsWith("HL7/", StringComparison.OrdinalIgnoreCase))
@@ -2370,12 +2379,8 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
             // check to see if this URL appears in qas.json
             try
             {
-                if (!igs.Any())
-                {
-                    string contents = _httpClient.GetStringAsync(_qasUri).Result;
-
-                    igs = JsonSerializer.Deserialize<FhirQasRec[]>(contents) ?? Array.Empty<FhirQasRec>();
-                }
+                string contents = _httpClient.GetStringAsync(_qasUri).Result;
+                igs = JsonSerializer.Deserialize<FhirQasRec[]>(contents) ?? [];
 
                 string searchUrl = inputUrl.EndsWith("qa.json", StringComparison.OrdinalIgnoreCase)
                     ? inputUrl
@@ -2425,13 +2430,13 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
             // check to see if this URL appears in qas.json
             try
             {
-                if (!igs.Any())
+                if (igs.Length == 0)
                 {
                     Uri uri = new(_ciUri, "ig/qas.json");
 
                     string contents = _httpClient.GetStringAsync(uri).Result;
 
-                    igs = JsonSerializer.Deserialize<FhirQasRec[]>(contents) ?? Array.Empty<FhirQasRec>();
+                    igs = JsonSerializer.Deserialize<FhirQasRec[]>(contents) ?? [];
                 }
 
                 IEnumerable<FhirQasRec> matching = igs.Where(x => x.Url.Equals(inputUrl, StringComparison.OrdinalIgnoreCase));
@@ -2615,14 +2620,14 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
         }
 
         // get manifests from each registry if we have not done so
-        if (!directive.Manifests.Any())
+        if (directive.Manifests.Count == 0)
         {
             _ = TryGetRegistryManifests(ref directive);
         }
 
-        Dictionary<Uri, HashSet<string>> knownVersions = new();
-        Dictionary<Uri, string> latestVersions = new();
-        Dictionary<Uri, string> highestVersions = new();
+        Dictionary<Uri, HashSet<string>> knownVersions = [];
+        Dictionary<Uri, string> latestVersions = [];
+        Dictionary<Uri, string> highestVersions = [];
 
         // traverse our manifests and build a list of known versions per registry
         foreach ((Uri uri, RegistryPackageManifest manifest) in directive.Manifests)
@@ -2640,7 +2645,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
             }
 
             highestVersions.Add(uri, highestVersion);
-            knownVersions.Add(uri, manifest.Versions.Keys.ToHashSet());
+            knownVersions.Add(uri, [.. manifest.Versions.Keys]);
 
             // check for a tagged latest
             if (manifest.DistributionTags.TryGetValue("latest", out string? latest))
@@ -2717,13 +2722,13 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
         }
 
         // get manifests from each registry if we have not done so
-        if (!directive.Manifests.Any())
+        if (directive.Manifests.Count == 0)
         {
             _ = TryGetRegistryManifests(ref directive);
         }
 
-        Dictionary<Uri, HashSet<string>> knownVersions = new();
-        Dictionary<Uri, string> latestVersion = new();
+        Dictionary<Uri, HashSet<string>> knownVersions = [];
+        Dictionary<Uri, string> latestVersion = [];
 
         // traverse our manifests and build a list of known versions per registry
         foreach ((Uri uri, RegistryPackageManifest manifest) in directive.Manifests)
@@ -2733,12 +2738,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
                 continue;
             }
 
-            knownVersions[uri] = new HashSet<string>();
-
-            foreach (string version in manifest.Versions.Keys)
-            {
-                knownVersions[uri].Add(version);
-            }
+            knownVersions[uri] = [.. manifest.Versions.Keys];
 
             // check for a tagged latest
             if (manifest.DistributionTags.TryGetValue("latest", out string? latest))
@@ -2748,7 +2748,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
         }
 
         // check to see if we have any 'latest' tagged versions
-        if (latestVersion.Any())
+        if (latestVersion.Count != 0)
         {
             string testVal = latestVersion.First().Value;
 
@@ -2823,12 +2823,9 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
         foreach (Uri uri in _registryUris)
         {
             // check for a matching latest
-            if (!knownVersions.TryGetValue(uri, out HashSet<string>? versions))
-            {
-                continue;
-            }
-
-            if (!(versions?.Any() ?? false))
+            if (!knownVersions.TryGetValue(uri, out HashSet<string>? versions) ||
+                (versions == null) ||
+                (versions.Count == 0))
             {
                 continue;
             }
@@ -2919,7 +2916,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
 
         directive.Manifests = manifests.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
-        return directive.Manifests.Any();
+        return directive.Manifests.Count != 0;
     }
 
     /// <summary>Attempts to catalog search.</summary>
@@ -2953,10 +2950,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
                 string json = response.Content.ReadAsStringAsync().Result;
 
                 // TODO: packages.fhir.org is currently returning PascalCase instead of CamelCase - remove this (performance) when fixed
-                IEnumerable<FhirNpmPackageDetails>? entries = JsonSerializer.Deserialize<IEnumerable<FhirNpmPackageDetails>>(json, new JsonSerializerOptions()
-                {
-                    PropertyNameCaseInsensitive = true,
-                });
+                IEnumerable<FhirNpmPackageDetails>? entries = JsonSerializer.Deserialize<IEnumerable<FhirNpmPackageDetails>>(json, _jsoCaseInsensitive);
 
                 if (!(entries?.Any() ?? false))
                 {
@@ -2984,7 +2978,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
             CatalogEntries = catalog.ToDictionary(kvp => kvp.Key, kvp => kvp.Value),
         };
 
-        return directive.CatalogEntries.Any();
+        return directive.CatalogEntries.Count != 0;
     }
 
     /// <summary>
@@ -3004,7 +2998,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
         }
 
         // perform a catalog search if we need to
-        if ((!directive.CatalogEntries.Any()) &&
+        if ((directive.CatalogEntries.Count == 0) &&
             (!TryCatalogSearch(ref directive)))
         {
             _logger.LogWarning($"TryResolveIgName <<< catalog search failed for package: {directive.PackageId}!");
@@ -3093,7 +3087,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
     internal async Task<PackageCacheEntry?> ResolveAndDownloadDirective(
         string inputDirective,
         FhirSequenceCodes forFhirVersion = FhirSequenceCodes.Unknown,
-        CancellationToken cancellationToken = default(CancellationToken))
+        CancellationToken cancellationToken = default)
     {
         _logger.LogInformation($"Request to resolve: {inputDirective}");
 
@@ -3311,7 +3305,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
         // check for cancellation before downloading
         cancellationToken.ThrowIfCancellationRequested();
 
-        List<string> urls = new();
+        List<string> urls = [];
 
         if (!string.IsNullOrEmpty(directive.ResolvedTarballUrl))
         {
@@ -3371,41 +3365,41 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
                 {
                     case DirectiveNameTypeCodes.CoreFull:
                         {
-                            return new List<string>()
-                            {
+                            return
+                            [
                                 $"{directive.PackageId}#{directive.PackageVersion}",
-                            };
+                            ];
                         }
                     case DirectiveNameTypeCodes.CorePartial:
                         {
-                            return new List<string>()
-                            {
+                            return
+                            [
                                 $"{directive.PackageId}#{directive.PackageVersion}",
                                 $"{directive.PackageId}.core#{directive.PackageVersion}",
-                            };
+                            ];
                         }
                     case DirectiveNameTypeCodes.GuideWithSuffix:
                         {
-                            return new List<string>()
-                            {
+                            return
+                            [
                                 $"{directive.PackageId}#{directive.PackageVersion}",
-                            };
+                            ];
                         }
                     case DirectiveNameTypeCodes.GuideWithoutSuffix:
                         {
-                            return new List<string>()
-                            {
+                            return
+                            [
                                 $"{directive.PackageId}#{directive.PackageVersion}",
                                 $"{directive.PackageId}.{FhirVersionToRLiteral(directive.FhirRelease)}#{directive.PackageVersion}",
-                            };
+                            ];
                         }
 
                     default:
                         {
-                            return new List<string>()
-                            {
+                            return
+                            [
                                 $"{directive.PackageId}#{directive.PackageVersion}",
-                            };
+                            ];
                         }
                 }
             }
@@ -3414,41 +3408,41 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
             {
                 case DirectiveNameTypeCodes.CoreFull:
                     {
-                        return new List<string>()
-                        {
+                        return
+                        [
                             directive.Directive,
-                        };
+                        ];
                     }
                 case DirectiveNameTypeCodes.CorePartial:
                     {
-                        return new List<string>()
-                        {
+                        return
+                        [
                             directive.Directive,
                             directive.Directive.Replace("#", ".core#"),
-                        };
+                        ];
                     }
                 case DirectiveNameTypeCodes.GuideWithSuffix:
                     {
-                        return new List<string>()
-                        {
+                        return
+                        [
                             directive.Directive,
-                        };
+                        ];
                     }
                 case DirectiveNameTypeCodes.GuideWithoutSuffix:
                     {
-                        return new List<string>()
-                        {
+                        return
+                        [
                             directive.Directive,
                             directive.PackageId.Replace("#", $".{FhirVersionToRLiteral(directive.FhirRelease)}"),
-                        };
+                        ];
                     }
 
                 default:
                     {
-                        return new List<string>()
-                        {
+                        return
+                        [
                             directive.Directive,
-                        };
+                        ];
                     }
             }
         }
@@ -3462,14 +3456,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
         DirectoryInfo dirInfo = new(directory);
         IEnumerable<FileInfo> fileInfos = dirInfo.EnumerateFiles("*.*", SearchOption.AllDirectories);
 
-        long size = 0;
-
-        foreach (FileInfo fileInfo in fileInfos)
-        {
-            size = size + fileInfo.Length;
-        }
-
-        return size;
+        return fileInfos.Sum(fi => fi.Length);
     }
 
     /// <summary>Updates the cache package initialize.</summary>
@@ -3528,10 +3515,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
                 }
             }
 
-            if (_packagesByDirective.ContainsKey(directive))
-            {
-                _packagesByDirective.Remove(directive);
-            }
+            _packagesByDirective.Remove(directive);
 
             if (_versionsByName.ContainsKey(name))
             {
@@ -3567,7 +3551,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
 
             if (!_versionsByName.ContainsKey(name))
             {
-                _versionsByName.Add(name, new());
+                _versionsByName.Add(name, []);
             }
 
             if (!_versionsByName[name].Contains(npmDetails.Version))
@@ -3656,7 +3640,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
         Uri uri,
         string directory,
         string packageDirective,
-        CancellationToken cancellationToken = default(CancellationToken))
+        CancellationToken cancellationToken = default)
     {
         try
         {
@@ -3794,7 +3778,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
         directory = Path.Combine(_cachePackageDirectory, directive);
 
         // most publication versions are named with correct package information
-        Uri uri = new Uri(_publicationUri, $"{relative}/{name}.tgz");
+        Uri uri = new(_publicationUri, $"{relative}/{name}.tgz");
 
         (success, fhirVersion, resolvedDirective) = DownloadAndExtract(uri, directory, directive).Result;
         if (success)
@@ -4058,7 +4042,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
     /// <returns>True if it succeeds, false if it fails.</returns>
     private bool TryGetPackageManifests(string packageName, out IEnumerable<RegistryPackageManifest> manifests)
     {
-        List<RegistryPackageManifest> manifestList = new();
+        List<RegistryPackageManifest> manifestList = [];
 
         packageName = GetPackageNameFromInput(packageName);
 
@@ -4117,7 +4101,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
             }
         }
 
-        if (manifestList.Any())
+        if (manifestList.Count != 0)
         {
             manifests = manifestList.AsEnumerable();
             return true;
@@ -4126,7 +4110,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
         //_logger.LogInformation(
         //    $"Package {packageName}" +
         //    $" was not found on any registry.");
-        manifests = Enumerable.Empty<RegistryPackageManifest>();
+        manifests = [];
         return false;
     }
 
@@ -4146,7 +4130,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
             return;
         }
 
-        List<string> directivesToRemove = new();
+        List<string> directivesToRemove = [];
 
         foreach (IniParser.Model.Property? line in data["packages"])
         {
@@ -4326,7 +4310,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
 
         if (!_versionsByName.ContainsKey(name))
         {
-            _versionsByName.Add(name, new());
+            _versionsByName.Add(name, []);
         }
 
         _versionsByName[name].Add(version);

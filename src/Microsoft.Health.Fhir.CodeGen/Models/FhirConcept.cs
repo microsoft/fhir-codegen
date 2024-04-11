@@ -38,7 +38,7 @@ public record class FhirConcept
 
     public string Version { get; init; } = string.Empty;
 
-    public ConceptProperty[] Properties { get; init; } = Array.Empty<ConceptProperty>();
+    public ConceptProperty[] Properties { get; init; } = [];
 
     /// <summary>Query if 'code' has property.</summary>
     /// <param name="code"> The code.</param>

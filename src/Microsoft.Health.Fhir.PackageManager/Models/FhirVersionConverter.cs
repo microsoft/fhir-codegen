@@ -37,7 +37,7 @@ internal class FhirVersionConverter : JsonConverter<string>
                 break;
             case JsonTokenType.StartArray:
                 {
-                    List<string> result = new();
+                    List<string> result = [];
                     while (reader.Read())
                     {
                         if (reader.TokenType == JsonTokenType.EndArray)

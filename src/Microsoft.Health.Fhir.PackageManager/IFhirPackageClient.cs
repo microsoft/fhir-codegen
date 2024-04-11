@@ -26,14 +26,14 @@ public interface IFhirPackageClient : IDisposable
     Task<PackageCacheEntry?> AddLocalPackage(
         string packageFilename,
         string cacheVersionAlias = "",
-        CancellationToken cancellationToken = default(CancellationToken));
+        CancellationToken cancellationToken = default);
 
     /// <summary>Deletes the package described by packageDirective.</summary>
     /// <param name="packageDirective">The package directive.</param>
     void DeletePackage(string packageDirective);
 
     /// <summary>
-    /// Resolve a package directive, donwload the package if necessary, and return the local and
+    /// Resolve a package directive, download the package if necessary, and return the local and
     /// extracted package information.
     /// </summary>
     /// <param name="directive">          The directive.</param>
@@ -43,10 +43,10 @@ public interface IFhirPackageClient : IDisposable
     Task<PackageCacheEntry?> FindOrDownloadPackageByDirective(
         string directive,
         bool includeDependencies = false,
-        CancellationToken cancellationToken = default(CancellationToken));
+        CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Resolve a package URL, donwload the package if necessary, and return the local and extracted
+    /// Resolve a package URL, download the package if necessary, and return the local and extracted
     /// package information.
     /// </summary>
     /// <param name="url">                URL of the package tgz or IG page URL.</param>
@@ -56,7 +56,7 @@ public interface IFhirPackageClient : IDisposable
     Task<PackageCacheEntry?> FindOrDownloadPackageByUrl(
         string url,
         bool includeDependencies = false,
-        CancellationToken cancellationToken = default(CancellationToken));
+        CancellationToken cancellationToken = default);
 
     /// <summary>Gets local entries.</summary>
     /// <param name="name">          (Optional) Name of the package to search for.  By default, the

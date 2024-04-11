@@ -6,7 +6,7 @@
 
 using Microsoft.Health.Fhir.CodeGen.Models;
 
-namespace Microsoft.Health.Fhir.CodeGen.Lanugage;
+namespace Microsoft.Health.Fhir.CodeGen.Language;
 
 /// <summary>Interface for code generation languages.</summary>
 public interface ILanguage

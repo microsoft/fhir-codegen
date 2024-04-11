@@ -235,35 +235,18 @@ public abstract partial class FhirSanitizationUtils
             value = "Fhir" + concatenationDelimiter + value;
         }
 
-        switch (convention)
+        return convention switch
         {
-            case NamingConvention.FhirDotNotation:
-                return value;
-
-            case NamingConvention.PascalDotNotation:
-                return value.ToPascalDotCase();
-
-            case NamingConvention.PascalCase:
-                return value.ToPascalCase(true);
-
-            case NamingConvention.CamelCase:
-                return value.ToCamelCase(true, concatenationDelimiter);
-
-            case NamingConvention.UpperCase:
-                return value.ToUpperCase(true, concatenationDelimiter);
-
-            case NamingConvention.LowerCase:
-                return value.ToLowerCase(true, concatenationDelimiter);
-
-            case NamingConvention.LowerKebab:
-                return value.ToLowerKebabCase(true);
-
-            case NamingConvention.None:
-                return value;
-
-            default:
-                throw new ArgumentException($"Invalid Naming Convention: {convention}");
-        }
+            NamingConvention.FhirDotNotation => value,
+            NamingConvention.PascalDotNotation => value.ToPascalDotCase(),
+            NamingConvention.PascalCase => value.ToPascalCase(true),
+            NamingConvention.CamelCase => value.ToCamelCase(true, concatenationDelimiter),
+            NamingConvention.UpperCase => value.ToUpperCase(true, concatenationDelimiter),
+            NamingConvention.LowerCase => value.ToLowerCase(true, concatenationDelimiter),
+            NamingConvention.LowerKebab => value.ToLowerKebabCase(true),
+            NamingConvention.None => value,
+            _ => throw new ArgumentException($"Invalid Naming Convention: {convention}"),
+        };
     }
 
     /// <summary>Sanitized to convention.</summary>
@@ -518,7 +501,7 @@ public abstract partial class FhirSanitizationUtils
 
         char[] chars = value.Normalize(NormalizationForm.FormD).ToCharArray();
 
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new();
 
         int charsLen = chars.Length;
 
@@ -529,7 +512,7 @@ public abstract partial class FhirSanitizationUtils
 
             if (i + 2 < charsLen)
             {
-                v = new char[3] { ch, chars[i + 1], chars[i + 2] };
+                v = [ch, chars[i + 1], chars[i + 2]];
                 if (replacements.ContainsKey(v))
                 {
                     sb.Append(replacements[v]);
@@ -540,7 +523,7 @@ public abstract partial class FhirSanitizationUtils
 
             if (i + 1 < charsLen)
             {
-                v = new char[2] { ch, chars[i + 1] };
+                v = [ch, chars[i + 1]];
                 if (replacements.ContainsKey(v))
                 {
                     sb.Append(replacements[v]);
@@ -549,7 +532,7 @@ public abstract partial class FhirSanitizationUtils
                 }
             }
 
-            v = new char[1] { ch };
+            v = [ch];
             if (replacements.ContainsKey(v))
             {
                 sb.Append(replacements[v]);
@@ -603,12 +586,12 @@ public abstract partial class FhirSanitizationUtils
         // remove duplicate underscores caused by prior replacements
         value = _regexRemoveDuplicateLines.Replace(value, "_");
 
-        while (value.StartsWith("_", StringComparison.Ordinal))
+        while (value.StartsWith('_'))
         {
             value = value.Substring(1);
         }
 
-        while (value.EndsWith("_", StringComparison.Ordinal))
+        while (value.EndsWith('_'))
         {
             value = value.Remove(value.Length - 1);
         }

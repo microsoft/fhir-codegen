@@ -97,12 +97,12 @@ internal record class FhirDirective
     public string BuildDate { get; set; } = string.Empty;
 
     /// <summary>The manifests.</summary>
-    public Dictionary<Uri, RegistryPackageManifest> Manifests = new();
+    public Dictionary<Uri, RegistryPackageManifest> Manifests = [];
 
     /// <summary>The catalog entries.</summary>
     /// <remarks>
     /// Note these records contain *very* limited data, but they are wire-compatible
     /// and it is not worth maintaining multiple models for the same data.
     /// </remarks>
-    public Dictionary<Uri, Dictionary<string, FhirNpmPackageDetails>> CatalogEntries = new();
+    public Dictionary<Uri, Dictionary<string, FhirNpmPackageDetails>> CatalogEntries = [];
 }

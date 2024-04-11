@@ -15,8 +15,8 @@ namespace Microsoft.Health.Fhir.PackageManager.Models;
 internal record class FhirNpmPackageDetails
 {
     private string _fhirVersion = string.Empty;
-    private IEnumerable<string> _fhirVersionList = Enumerable.Empty<string>();
-    private IEnumerable<string> _fhirVersions = Enumerable.Empty<string>();
+    private IEnumerable<string> _fhirVersionList = [];
+    private IEnumerable<string> _fhirVersions = [];
 
     /// <summary>A package maintainer.</summary>
     internal record class PackageMaintainer
@@ -201,11 +201,11 @@ internal record class FhirNpmPackageDetails
 
     /// <summary>Gets or sets the dependencies.</summary>
     [JsonPropertyName("dependencies")]
-    public Dictionary<string, string> Dependencies { get; set; } = new();
+    public Dictionary<string, string> Dependencies { get; set; } = [];
 
     /// <summary>Gets or sets the keywords.</summary>
     [JsonPropertyName("keywords")]
-    public IEnumerable<string> Keywords { get; set; } = Enumerable.Empty<string>();
+    public IEnumerable<string> Keywords { get; set; } = [];
 
     /// <summary>Gets or sets the author.</summary>
     [JsonPropertyName("author")]
@@ -213,7 +213,7 @@ internal record class FhirNpmPackageDetails
 
     /// <summary>Gets or sets the maintainers.</summary>
     [JsonPropertyName("maintainers")]
-    public IEnumerable<PackageMaintainer> Maintainers { get; set; } = Enumerable.Empty<PackageMaintainer>();
+    public IEnumerable<PackageMaintainer> Maintainers { get; set; } = [];
 
     /// <summary>Gets or sets the license.</summary>
     [JsonPropertyName("license")]
@@ -221,7 +221,7 @@ internal record class FhirNpmPackageDetails
 
     /// <summary>Gets or sets the directories.</summary>
     [JsonPropertyName("directories")]
-    public Dictionary<string, string> Directories { get; set; } = new();
+    public Dictionary<string, string> Directories { get; set; } = [];
 
     /// <summary>Gets or sets the jurisdiction.</summary>
     [JsonPropertyName("jurisdiction")]
@@ -417,10 +417,7 @@ internal record class FhirNpmPackageDetails
             }
         }
 
-        if (details.Dependencies == null)
-        {
-            details.Dependencies = new();
-        }
+        details.Dependencies ??= [];
 
         return details;
     }
@@ -434,10 +431,10 @@ internal record class FhirNpmPackageDetails
     {
         if (node?[prop] == null)
         {
-            return new();
+            return [];
         }
 
-        Dictionary<string, string> val = new();
+        Dictionary<string, string> val = [];
 
         if (node[prop] is JsonObject obj)
         {
@@ -477,10 +474,10 @@ internal record class FhirNpmPackageDetails
     {
         if (node?[prop] == null)
         {
-            return Enumerable.Empty<string>();
+            return [];
         }
 
-        List<string> val = new();
+        List<string> val = [];
 
         switch (node[prop])
         {
@@ -518,7 +515,7 @@ internal record class FhirNpmPackageDetails
             return string.Empty;
         }
 
-        if (node[prop] is JsonArray ja && ja.Any())
+        if (node[prop] is JsonArray ja && ja.Count != 0)
         {
             return ja.First()!.ToString();
         }

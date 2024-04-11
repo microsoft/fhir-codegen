@@ -23,18 +23,18 @@ using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGen.Utils;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
-using static Microsoft.Health.Fhir.CodeGen.Lanugage.Firely.CSharpFirelyCommon;
+using static Microsoft.Health.Fhir.CodeGen.Language.Firely.CSharpFirelyCommon;
 using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 
-namespace Microsoft.Health.Fhir.CodeGen.Lanugage.Firely;
+namespace Microsoft.Health.Fhir.CodeGen.Language.Firely;
 
 public sealed class CSharpFirely2 : ILanguage
 {
     /// <summary>(Immutable) Name of the language.</summary>
-    private const string _languageName = "CSharpFirely2";
+    private const string LanguageName = "CSharpFirely2";
 
     /// <summary>Gets the language name.</summary>
-    public string Name => _languageName;
+    public string Name => LanguageName;
 
     public Type ConfigType => typeof(FirelyGenOptions);
 
@@ -54,10 +54,10 @@ public sealed class CSharpFirely2 : ILanguage
     private FirelyGenOptions _options = null!;
 
     /// <summary>Keep track of information about written value sets.</summary>
-    private Dictionary<string, WrittenValueSetInfo> _writtenValueSets = new();
+    private Dictionary<string, WrittenValueSetInfo> _writtenValueSets = [];
 
     /// <summary>The split characters.</summary>
-    private static readonly char[] _splitChars = { '|', ' ' };
+    private static readonly char[] _splitChars = ['|', ' '];
 
     /// <summary>The currently in-use text writer.</summary>
     private ExportStreamWriter _writer = null!;
@@ -69,8 +69,8 @@ public sealed class CSharpFirely2 : ILanguage
     private string _exportDirectory = string.Empty;
 
     /// <summary>Structures to skip generating.</summary>
-    private static readonly HashSet<string> _exclusionSet = new()
-    {
+    private static readonly HashSet<string> _exclusionSet =
+    [
         /* Since Base defines its methods abstractly, the pattern for generating it
             * is sufficiently different from derived classes that it makes sense not
             * to generate the methods (it's pretty empty too - no members on this abstract class) */
@@ -119,24 +119,24 @@ public sealed class CSharpFirely2 : ILanguage
          * starter value sets.  TODO: consider if we want to generate constants for those.
          */
         "http://hl7.org/fhir/ValueSet/mimetypes",
-    };
+    ];
 
     /// <summary>
     /// List of types introduced in R5 that are retrospectively introduced in R3 and R4.
     /// </summary>
-    private static readonly List<WrittenModelInfo> _sharedR5DataTypes = new()
-    {
+    private static readonly List<WrittenModelInfo> _sharedR5DataTypes =
+    [
         new WrittenModelInfo { CsName = "BackboneType", FhirName = "BackboneType", IsAbstract = true },
         new WrittenModelInfo { CsName = "Base", FhirName = "Base", IsAbstract = true },
         new WrittenModelInfo { CsName = "DataType", FhirName = "DataType", IsAbstract = true },
         new WrittenModelInfo { CsName = "PrimitiveType", FhirName = "PrimitiveType", IsAbstract = true },
-    };
+    ];
 
     /// <summary>
     /// List of complex datatype classes that are part of the 'base' subset. See <see cref="GenSubset"/>.
     /// </summary>
-    private static readonly List<string> _baseSubsetComplexTypes = new()
-    {
+    private static readonly List<string> _baseSubsetComplexTypes =
+    [
         "Attachment",
         "BackboneElement",
         "BackboneType",
@@ -159,61 +159,61 @@ public sealed class CSharpFirely2 : ILanguage
         "Signature",
         "UsageContext",
         "CodeableReference"
-    };
+    ];
 
     /// <summary>
     /// List of complex datatype classes that are part of the 'conformance' subset. See <see cref="GenSubset"/>.
     /// </summary>
-    private static readonly List<string> _conformanceSubsetComplexTypes = new()
-    {
+    private static readonly List<string> _conformanceSubsetComplexTypes =
+    [
         "ElementDefinition",
         "RelatedArtifact",
-    };
+    ];
 
     /// <summary>
     /// List of resource classes that are part of the 'base' subset. See <see cref="GenSubset"/>.
     /// </summary>
-    private static readonly List<string> _baseSubsetResourceTypes = new()
-    {
+    private static readonly List<string> _baseSubsetResourceTypes =
+    [
         "Binary",
         "Bundle",
         "DomainResource",
         "OperationOutcome",
         "Parameters",
         "Resource",
-    };
+    ];
 
 
     /// <summary>
     /// List of resource classes that are part of the 'conformance' subset. See <see cref="GenSubset"/>.
     /// </summary>
-    private static readonly List<string> _conformanceSubsetResourceTypes = new()
-    {
+    private static readonly List<string> _conformanceSubsetResourceTypes =
+    [
         "CapabilityStatement",
         "CodeSystem",
         "ElementDefinition",
         "StructureDefinition",
         "ValueSet",
-    };
+    ];
 
     /// <summary>
     /// List of all valuesets that we publish in the base subset
     /// </summary>
-    private static readonly List<string> _baseSubsetValueSets = new()
-    {
+    private static readonly List<string> _baseSubsetValueSets =
+    [
         "http://hl7.org/fhir/ValueSet/publication-status",
         "http://hl7.org/fhir/ValueSet/FHIR-version",
 
         // Doesn't strictly need to be in base (but in conformance),
         // but we used to generate it for base, so I am keeping it that way.
         "http://hl7.org/fhir/ValueSet/filter-operator",
-    };
+    ];
 
     /// <summary>
     /// List of all valuesets that we publish in the conformance subset.
     /// </summary>
-    private static readonly List<string> _conformanceSubsetValueSets = new List<string>()
-    {
+    private static readonly List<string> _conformanceSubsetValueSets =
+    [
         "http://hl7.org/fhir/ValueSet/capability-statement-kind",
         "http://hl7.org/fhir/ValueSet/binding-strength",
         "http://hl7.org/fhir/ValueSet/search-param-type",
@@ -231,44 +231,44 @@ public sealed class CSharpFirely2 : ILanguage
         "http://hl7.org/fhir/ValueSet/constraint-severity",
 
         "http://hl7.org/fhir/ValueSet/codesystem-content-mode"
-    };
+    ];
 
     /// <summary>
     ///  List of all valuesets that we should publish as a shared Enum although there is only 1 reference to it.
     /// </summary>
-    private static readonly List<(string, string)> _explicitSharedValueSets = new()
-    {
+    private static readonly List<(string, string)> _explicitSharedValueSets =
+    [
         // This enum should go to Template-binding.cs because otherwise it will introduce a breaking change.
         ("R4", "http://hl7.org/fhir/ValueSet/messageheader-response-request"),
         ("R4", "http://hl7.org/fhir/ValueSet/concept-map-equivalence"),
         ("R4B", "http://hl7.org/fhir/ValueSet/messageheader-response-request"),
         ("R4B", "http://hl7.org/fhir/ValueSet/concept-map-equivalence"),
         ("R5", "http://hl7.org/fhir/ValueSet/constraint-severity"),
-    };
+    ];
 
 
     /// <summary>Gets the reserved words.</summary>
     /// <value>The reserved words.</value>
-    private static readonly HashSet<string> _reservedWords = new HashSet<string>();
+    private static readonly HashSet<string> _reservedWords = [];
 
     private static readonly Func<WrittenModelInfo, bool> SupportedResourcesFilter = wmi => !wmi.IsAbstract;
-    private static readonly Func<WrittenModelInfo, bool> FhirToCsFilter = wmi => !ExcludeFromCsToFhir!.Contains(wmi.FhirName);
+    private static readonly Func<WrittenModelInfo, bool> FhirToCsFilter = wmi => !_excludeFromCsToFhir!.Contains(wmi.FhirName);
     private static readonly Func<WrittenModelInfo, bool> CsToStringFilter = FhirToCsFilter;
 
-    private static readonly string[] ExcludeFromCsToFhir =
-    {
+    private static readonly string[] _excludeFromCsToFhir =
+    [
         "CanonicalResource",
         "MetadataResource",
-    };
+    ];
 
     /// <summary>
     /// The list of elements that would normally be represented using a CodeOfT enum, but that we
     /// want to be generated as a normal Code instead.
     /// </summary>
-    private readonly List<string> _codedElementOverrides = new()
-    {
+    private readonly List<string> _codedElementOverrides =
+    [
         "CapabilityStatement.rest.resource.type"
-    };
+    ];
 
     /// <summary>
     /// Some valuesets have names that are the same as element names or are just not nice - use this collection
@@ -398,7 +398,7 @@ public sealed class CSharpFirely2 : ILanguage
     /// <param name="exportDirectory">Directory to write files.</param>
     //void ILanguage.Export(
     //    FhirVersionInfo info,
-    //    FhirCapabiltyStatement serverInfo,
+    //    FhirCapabilityStatement serverInfo,
     //    ExporterOptions options,
     //    string exportDirectory)
     public void Export(object untypedOptions, DefinitionCollection info)
@@ -420,7 +420,7 @@ public sealed class CSharpFirely2 : ILanguage
         // only generate base definitions for R5
         if (subset.HasFlag(GenSubset.Base) && info.FhirSequence != FhirReleases.FhirSequenceCodes.R5)
         {
-            Console.WriteLine($"Aborting {_languageName} for {info.FhirSequence}: code generation for the 'base' subset should be run on R5 only.");
+            Console.WriteLine($"Aborting {LanguageName} for {info.FhirSequence}: code generation for the 'base' subset should be run on R5 only.");
             return;
         }
 
@@ -429,7 +429,7 @@ public sealed class CSharpFirely2 : ILanguage
             (info.FhirSequence != FhirReleases.FhirSequenceCodes.STU3 &&
             info.FhirSequence != FhirReleases.FhirSequenceCodes.R5))
         {
-            Console.WriteLine($"Aborting {_languageName} for {info.FhirSequence}: code generation for the 'conformance' subset should be run on STU3 or R5 only.");
+            Console.WriteLine($"Aborting {LanguageName} for {info.FhirSequence}: code generation for the 'conformance' subset should be run on STU3 or R5 only.");
             return;
         }
 
@@ -439,7 +439,7 @@ public sealed class CSharpFirely2 : ILanguage
         _info = info;
         _options = options;
         _exportDirectory = options.OutputDirectory;
-        _writtenValueSets = new Dictionary<string, WrittenValueSetInfo>();
+        _writtenValueSets = [];
 
         if (!Directory.Exists(_exportDirectory))
         {
@@ -465,7 +465,7 @@ public sealed class CSharpFirely2 : ILanguage
 
         string infoFilename = Path.Combine(_exportDirectory, "Generated", "_GeneratorLog.cs");
 
-        // update the models for consisntency across different versions of FHIR
+        // update the models for consistency across different versions of FHIR
         ModifyDefinitionsForConsistency();
 
         using (var infoStream = new FileStream(infoFilename, FileMode.Create))
@@ -584,15 +584,15 @@ public sealed class CSharpFirely2 : ILanguage
                     Min = 0,
                     Max = "1",
                     Base = new() { Path = "Signature.contentType", Min = 0, Max = "1" },
-                    Type = new() { new() { Code = "code" } },
+                    Type = [new() { Code = "code" }],
                     IsSummary = true,
                     Binding = new()
                     {
                         Strength = Hl7.Fhir.Model.BindingStrength.Required,
                         ValueSet = new Canonical("http://www.rfc-editor.org/bcp/bcp13.txt"),
                         Description = "The mime type of an attachment. Any valid mime type is allowed.",
-                        Extension = new List<Extension>
-                        {
+                        Extension =
+                        [
                             new()
                             {
                                 Url = CommonDefinitions.ExtUrlBindingName,
@@ -603,7 +603,7 @@ public sealed class CSharpFirely2 : ILanguage
                                 Url = CommonDefinitions.ExtUrlIsCommonBinding,
                                 Value = new FhirBoolean(true),
                             }
-                        }
+                        ]
                     }
                 };
 
@@ -654,9 +654,9 @@ public sealed class CSharpFirely2 : ILanguage
                 Min = 0,
                 Max = "1",
                 Base = new() { Path = "ValueSet.scope.focus", Min = 0, Max = "1" },
-                Type = new() { new() { Code = "string" } },
-                Constraint = new()
-                {
+                Type = [new() { Code = "string" }],
+                Constraint =
+                [
                     new()
                     {
                         Key = "ele-1",
@@ -664,7 +664,7 @@ public sealed class CSharpFirely2 : ILanguage
                         Human = "All FHIR elements must have a @value or children",
                         Expression = "hasValue() or (children().count() > id.count())",
                     },
-                },
+                ],
                 IsSummary = false,
                 IsModifier = false,
                 MustSupport = false,
@@ -685,7 +685,7 @@ public sealed class CSharpFirely2 : ILanguage
         if (_info.ResourcesByName.TryGetValue("Bundle", out StructureDefinition? sdBundle) &&
             sdBundle.cgTryGetElementById("Bundle.link.relation", out ElementDefinition? edRelation))
         {
-            edRelation.Type = new() { new() { Code = "string" } };
+            edRelation.Type = [new() { Code = "string" }];
 
             _ = _info.TryUpdateElement(sdBundle, edRelation);
         }
@@ -706,7 +706,7 @@ public sealed class CSharpFirely2 : ILanguage
                 Min = 0,
                 Max = "1",
                 Base = new() { Path = "ElementDefinition.constraint.xpath", Min = 0, Max = "1" },
-                Type = new() { new() { Code = "string" } },
+                Type = [new() { Code = "string" }],
                 IsSummary = true,
             };
 
@@ -736,7 +736,7 @@ public sealed class CSharpFirely2 : ILanguage
                 Min = 0,
                 Max = "1",
                 Base = new() { Path = "RelatedArtifact.url", Min = 0, Max = "1" },
-                Type = new() { new() { Code = "uri" } },
+                Type = [new() { Code = "uri" }],
                 IsSummary = true,
             };
 
@@ -762,8 +762,8 @@ public sealed class CSharpFirely2 : ILanguage
     {
         string filename = Path.Combine(_exportDirectory, "Generated", "Template-ModelInfo.cs");
 
-        using (FileStream stream = new FileStream(filename, FileMode.Create))
-        using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+        using (FileStream stream = new(filename, FileMode.Create))
+        using (ExportStreamWriter writer = new(stream))
         {
             _writer = writer;
 
@@ -867,7 +867,7 @@ public sealed class CSharpFirely2 : ILanguage
                 }
                 else
                 {
-                    SortedSet<string> sc = new SortedSet<string>();
+                    SortedSet<string> sc = [];
 
                     foreach (string t in sp.Target.Select(t => t.GetLiteral()!))
                     {
@@ -907,7 +907,7 @@ public sealed class CSharpFirely2 : ILanguage
                 string expression = string.IsNullOrEmpty(sp.Expression) ? string.Empty : ", Expression = \"" + sp.Expression + "\"";
                 string urlComponent = $", Url = \"{sp.Url}\"";
 
-                string[] components = sp.Component?.Select(c => $"""new SearchParamComponent("{c.Definition}", "{c.Expression}")""").ToArray() ?? Array.Empty<string>();
+                string[] components = sp.Component?.Select(c => $"""new SearchParamComponent("{c.Definition}", "{c.Expression}")""").ToArray() ?? [];
                 string strComponents = (components.Length > 0) ? $", Component = new SearchParamComponent[] {{ {string.Join(',', components)} }}" : string.Empty;
 
                 _writer.WriteLineIndented(
@@ -942,9 +942,7 @@ public sealed class CSharpFirely2 : ILanguage
             return string.Empty;
         }
 
-#pragma warning disable CA1307 // Specify StringComparison
         return value.Replace("\"", "\"\"").Replace("\r", @"\r").Replace("\n", @"\n");
-#pragma warning restore CA1307 // Specify StringComparison
     }
 
     /// <summary>Writes the C# to FHIR map dictionary.</summary>
@@ -1028,12 +1026,12 @@ public sealed class CSharpFirely2 : ILanguage
     /// <summary>Writes the shared enums.</summary>
     private void WriteSharedValueSets(GenSubset subset)
     {
-        HashSet<string> usedEnumNames = new HashSet<string>();
+        HashSet<string> usedEnumNames = [];
 
         string filename = Path.Combine(_exportDirectory, "Generated", "Template-Bindings.cs");
 
-        using (FileStream stream = new FileStream(filename, FileMode.Create))
-        using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+        using (FileStream stream = new(filename, FileMode.Create))
+        using (ExportStreamWriter writer = new(stream))
         {
             _writer = writer;
 
@@ -1177,8 +1175,8 @@ public sealed class CSharpFirely2 : ILanguage
 
         _modelWriter.WriteLineIndented($"// {exportName}.cs");
 
-        using (FileStream stream = new FileStream(filename, FileMode.Create))
-        using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+        using (FileStream stream = new(filename, FileMode.Create))
+        using (ExportStreamWriter writer = new(stream))
         {
             _writer = writer;
 
@@ -1248,8 +1246,8 @@ public sealed class CSharpFirely2 : ILanguage
 
         _modelWriter.WriteLineIndented($"// {exportName}.cs");
 
-        using (FileStream stream = new FileStream(filename, FileMode.Create))
-        using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+        using (FileStream stream = new(filename, FileMode.Create))
+        using (ExportStreamWriter writer = new(stream))
         {
             _writer = writer;
 
@@ -1281,7 +1279,7 @@ public sealed class CSharpFirely2 : ILanguage
         string complexName = complex.cgName();
         bool isAbstract = complex.Structure.Abstract == true;
 
-        List<WrittenElementInfo> exportedElements = new List<WrittenElementInfo>();
+        List<WrittenElementInfo> exportedElements = [];
 
         WriteIndentedComment($"{complex.Element.Short}");
 
@@ -1308,7 +1306,7 @@ public sealed class CSharpFirely2 : ILanguage
         }
 
         string abstractFlag = isAbstract ? " abstract" : string.Empty;
-        List<string> interfaces = new List<string>();
+        List<string> interfaces = [];
 
         if (_cqlModelInfo?.patientClassName is not null)
         {
@@ -1342,7 +1340,7 @@ public sealed class CSharpFirely2 : ILanguage
             }
         }
 
-        string interfacesSuffix = interfaces.Any() ? $", {string.Join(", ", interfaces)}" : string.Empty;
+        string interfacesSuffix = interfaces.Count != 0 ? $", {string.Join(", ", interfaces)}" : string.Empty;
 
         _writer.WriteLineIndented(
             $"public{abstractFlag} partial class" +
@@ -1769,7 +1767,7 @@ public sealed class CSharpFirely2 : ILanguage
 
     private string capitalizeThoseSillyBackboneNames(string path) =>
         path.Length == 1 ? path :
-               path.StartsWith(".") ?
+               path.StartsWith('.') ?
                 char.ToUpper(path[1]) + capitalizeThoseSillyBackboneNames(path.Substring(2))
                 : path[0] + capitalizeThoseSillyBackboneNames(path.Substring(1));
 
@@ -1784,7 +1782,7 @@ public sealed class CSharpFirely2 : ILanguage
         string parentExportName,
         GenSubset subset)
     {
-        List<WrittenElementInfo> exportedElements = new List<WrittenElementInfo>();
+        List<WrittenElementInfo> exportedElements = [];
 
         WriteIndentedComment($"{complex.Element.Short}");
 
@@ -1883,10 +1881,7 @@ public sealed class CSharpFirely2 : ILanguage
         string className,
         HashSet<string>? usedEnumNames = null)
     {
-        if (usedEnumNames == null)
-        {
-            usedEnumNames = new HashSet<string>();
-        }
+        usedEnumNames ??= [];
 
         IEnumerable<ElementDefinition> childElements = complex.cgGetChildren();
 
@@ -1995,7 +1990,7 @@ public sealed class CSharpFirely2 : ILanguage
 
         OpenScope();
 
-        HashSet<string> usedLiterals = new HashSet<string>();
+        HashSet<string> usedLiterals = [];
 
         foreach (FhirConcept concept in concepts)
         {
@@ -2218,7 +2213,7 @@ public sealed class CSharpFirely2 : ILanguage
         WrittenElementInfo ei = BuildElementInfo(exportedComplexName, element);
         exportedElements.Add(ei);
 
-        BuildElementOptionals(
+        BuildElementOptionalFlags(
             element,
             subset,
             out string summary,
@@ -2598,7 +2593,7 @@ public sealed class CSharpFirely2 : ILanguage
     /// <param name="choice">            [out] The choice.</param>
     /// <param name="allowedTypes">      [out] List of types of the allowed.</param>
     /// <param name="resourceReferences">[out] The resource references.</param>
-    private void BuildElementOptionals(
+    private void BuildElementOptionalFlags(
         ElementDefinition element,
         GenSubset subset,
         out string summary,
@@ -2647,10 +2642,10 @@ public sealed class CSharpFirely2 : ILanguage
                 // present in the current version of the standard. So, in principle, we don't generate
                 // this attribute in the base subset, unless all types mentioned are present in the
                 // exception list above.
-                bool isPrimive(string name) => char.IsLower(name[0]);
+                bool isPrimitive(string name) => char.IsLower(name[0]);
                 bool allTypesAvailable =
                     elementTypes.Keys.All(en =>
-                        isPrimive(en) // primitives are available everywhere
+                        isPrimitive(en) // primitives are available everywhere
                         || _baseSubsetComplexTypes.Contains(en) // base subset types are all available everywhere
                         || (subset.HasFlag(GenSubset.Conformance) && _conformanceSubsetComplexTypes.Contains(en)) // otherwise, conformance types are available in conformance
                         || subset.HasFlag(GenSubset.Satellite)  // main has access to all types
@@ -2658,7 +2653,7 @@ public sealed class CSharpFirely2 : ILanguage
 
                 if (allTypesAvailable)
                 {
-                    StringBuilder sb = new StringBuilder();
+                    StringBuilder sb = new();
                     sb.Append("[AllowedTypes(");
 
                     bool needsSep = false;
@@ -2666,14 +2661,14 @@ public sealed class CSharpFirely2 : ILanguage
                     {
                         if (needsSep)
                         {
-                            sb.Append(",");
+                            sb.Append(',');
                         }
 
                         needsSep = true;
 
                         sb.Append("typeof(");
                         sb.Append(Namespace);
-                        sb.Append(".");
+                        sb.Append('.');
 
                         if (CSharpFirelyCommon.TypeNameMappings.ContainsKey(etName))
                         {
@@ -2684,7 +2679,7 @@ public sealed class CSharpFirely2 : ILanguage
                             sb.Append(FhirSanitizationUtils.SanitizedToConvention(etName, NamingConvention.PascalCase));
                         }
 
-                        sb.Append(")");
+                        sb.Append(')');
                     }
 
                     sb.Append(")]");
@@ -2719,23 +2714,12 @@ public sealed class CSharpFirely2 : ILanguage
     /// <summary>Query if 'typeName' is nullable.</summary>
     /// <param name="typeName">Name of the type.</param>
     /// <returns>True if nullable, false if not.</returns>
-    private static bool IsNullable(string typeName)
+    private static bool IsNullable(string typeName) => typeName switch
     {
         // nullable reference types are not allowed in current C#
-        switch (typeName)
-        {
-            case "bool":
-            case "decimal":
-            case "DateTime":
-            case "int":
-            case "long":
-            case "uint":
-            case "Guid":
-                return true;
-        }
-
-        return false;
-    }
+        "bool" or "decimal" or "DateTime" or "int" or "long" or "uint" or "Guid" => true,
+        _ => false,
+    };
 
     /// <summary>Writes a primitive types.</summary>
     /// <param name="primitives">   The primitives.</param>
@@ -2801,8 +2785,8 @@ public sealed class CSharpFirely2 : ILanguage
 
         _modelWriter.WriteLineIndented($"// {exportName}.cs");
 
-        using (FileStream stream = new FileStream(filename, FileMode.Create))
-        using (ExportStreamWriter writer = new ExportStreamWriter(stream))
+        using (FileStream stream = new(filename, FileMode.Create))
+        using (ExportStreamWriter writer = new(stream))
         {
             _writer = writer;
 
@@ -2918,7 +2902,7 @@ public sealed class CSharpFirely2 : ILanguage
 
     private static string PrimitiveValueInterface(string valueType)
     {
-        if (valueType.EndsWith("?", StringComparison.InvariantCulture))
+        if (valueType.EndsWith('?'))
         {
             string nullableType = valueType.TrimEnd('?');
             return $"INullableValue<{nullableType}>";
@@ -2998,16 +2982,13 @@ public sealed class CSharpFirely2 : ILanguage
     /// <param name="writer">(Optional) The currently in-use text writer.</param>
     private void WriteGenerationComment(ExportStreamWriter? writer = null)
     {
-        if (writer == null)
-        {
-            writer = _writer;
-        }
+        writer ??= _writer;
 
         writer.WriteLineIndented("// <auto-generated/>");
         writer.WriteLineIndented($"// Contents of: {string.Join(", ", _info.Manifests.Select(kvp => kvp.Key))}");
         //writer.WriteLineIndented($"// Contents of: {_info.PackageName} version: {_info.VersionString}");
 
-        if (_options.ExportKeys.Any())
+        if (_options.ExportKeys.Count != 0)
         {
             string restrictions = string.Join("|", _options.ExportKeys);
             _writer.WriteLine($"  // Restricted to: {restrictions}");

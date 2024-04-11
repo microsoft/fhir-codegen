@@ -55,7 +55,7 @@ public class ConfigGenerate : ConfigRoot
         EnvName = "Export_Keys",
         Description = "Keys of FHIR structures to export (e.g., Patient), empty means all.",
         ArgArity = "0..*")]
-    public HashSet<string> ExportKeys { get; set; } = new();
+    public HashSet<string> ExportKeys { get; set; } = [];
 
     private static ConfigurationOption ExportKeysParameter { get; } = new()
     {
@@ -71,7 +71,7 @@ public class ConfigGenerate : ConfigRoot
 
     /// <summary>Gets a value indicating whether the experimental should be included.</summary>
     [ConfigOption(
-        ArgAliases = new[] { "--include-experimental", "--experimental" },
+        ArgAliases = ["--include-experimental", "--experimental"],
         EnvName = "Include_Experimental",
         Description = "If the output should include structures marked experimental.")]
     public bool IncludeExperimental { get; set; } = false;
@@ -89,11 +89,11 @@ public class ConfigGenerate : ConfigRoot
     };
 
     private static readonly ConfigurationOption[] _options =
-    {
+    [
         ExportStructuresParameter,
         ExportKeysParameter,
         IncludeExperimentalParameter,
-    };
+    ];
 
     /// <summary>
     /// Gets the configuration options for the current instance and its base class.
@@ -101,7 +101,7 @@ public class ConfigGenerate : ConfigRoot
     /// <returns>An array of configuration options.</returns>
     public override ConfigurationOption[] GetOptions()
     {
-        return base.GetOptions().Concat(_options).ToArray();
+        return [.. base.GetOptions(), .. _options];
     }
 
     public override void Parse(System.CommandLine.Parsing.ParseResult parseResult)

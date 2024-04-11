@@ -27,8 +27,8 @@ public class PackageLoader
     private readonly IFhirPackageClient _cache;
 
     /// <summary>(Immutable) The sorted order for definition types we want to load.</summary>
-    private static readonly string[] _sortedLoadOrder = new string[]
-    {
+    private static readonly string[] _sortedLoadOrder =
+    [
         "CodeSystem",
         "ValueSet",
         "StructureDefinition",
@@ -38,7 +38,7 @@ public class PackageLoader
         "Conformance",
         "ImplementationGuide",
         "CompartmentDefinition",
-    };
+    ];
 
     private JsonSerializerOptions _jsonOptions;
 
@@ -176,7 +176,7 @@ public class PackageLoader
             Url = "http://hl7.org/fhir/search.html#summary",
             Description = "Request to return a portion of matching resources.",
             ParamType = SearchParamType.Token,
-            AllowedValues = new[] { "true", "false", "count", "data", "text", },
+            AllowedValues = ["true", "false", "count", "data", "text",],
         });
 
         dc.AddHttpQueryParameter(new()
@@ -196,7 +196,7 @@ public class PackageLoader
                 Url = "http://hl7.org/fhir/http.html#pretty",
                 Description = "Ask for a pretty printed response for human convenience.",
                 ParamType = SearchParamType.String,
-                AllowedValues = new[] { "true", "false", },
+                AllowedValues = [ "true", "false", ],
             });
         }
     }
@@ -243,7 +243,7 @@ public class PackageLoader
             Url = "http://hl7.org/fhir/search.html#contained",
             Description = "Request modification to handling of contained resource searching.",
             ParamType = SearchParamType.Token,
-            AllowedValues = new[] { "true", "false", "both", },
+            AllowedValues = [ "true", "false", "both", ],
         });
 
         dc.AddSearchResultParameter(new()
@@ -252,7 +252,7 @@ public class PackageLoader
             Url = "http://hl7.org/fhir/search.html#containedType",
             Description = "When contained resources are being returned, whether the server should return either the container or the contained resource.",
             ParamType = SearchParamType.Token,
-            AllowedValues = new[] { "container", "contained", },
+            AllowedValues = [ "container", "contained", ],
         });
 
         // add parameters from R4 and later
@@ -264,7 +264,7 @@ public class PackageLoader
                 Url = "http://hl7.org/fhir/search.html#total",
                 Description = "Optimization hint for servers indicating reliance on the Bundle.total element.",
                 ParamType = SearchParamType.Token,
-                AllowedValues = new[] { "none", "estimate", "accurate" },
+                AllowedValues = [ "none", "estimate", "accurate" ],
             });
         }
     }
@@ -283,7 +283,7 @@ public class PackageLoader
             Title = "Resource content filter",
             Status = PublicationStatus.Active,
             Description = "Search on the entire content of the resource.",
-            Base = new VersionIndependentResourceTypesAll?[] { VersionIndependentResourceTypesAll.Resource },
+            Base = [ VersionIndependentResourceTypesAll.Resource ],
             Type = SearchParamType.Special,
         });
 
@@ -297,7 +297,7 @@ public class PackageLoader
             Title = "Advanced search filter",
             Status = PublicationStatus.Active,
             Description = "Filter search parameter which supports a more sophisticated grammar for searching.",
-            Base = new VersionIndependentResourceTypesAll?[] { VersionIndependentResourceTypesAll.Resource },
+            Base = [ VersionIndependentResourceTypesAll.Resource ],
             Type = SearchParamType.Special,
         });
 
@@ -311,7 +311,7 @@ public class PackageLoader
             Title = "Resource text filter",
             Status = PublicationStatus.Active,
             Description = "Search the narrative content of a resource.",
-            Base = new VersionIndependentResourceTypesAll?[] { VersionIndependentResourceTypesAll.Resource },
+            Base = [ VersionIndependentResourceTypesAll.Resource ],
             Type = SearchParamType.String,
         });
 
@@ -325,9 +325,9 @@ public class PackageLoader
             Title = "List reference filter",
             Status = PublicationStatus.Active,
             Description = "Filter based on resources referenced by a List resource.",
-            Base = new VersionIndependentResourceTypesAll?[] { VersionIndependentResourceTypesAll.Resource },
+            Base = [ VersionIndependentResourceTypesAll.Resource ],
             Type = SearchParamType.Reference,
-            Target = new VersionIndependentResourceTypesAll?[] { VersionIndependentResourceTypesAll.List },
+            Target = [ VersionIndependentResourceTypesAll.List ],
         });
 
         if (dc.FhirSequence >= FhirReleases.FhirSequenceCodes.R4)
@@ -342,7 +342,7 @@ public class PackageLoader
                 Title = "Limited support for reverse chaining",
                 Status = PublicationStatus.Active,
                 Description = "For selecting resources based on the properties of resources that refer to them.",
-                Base = new VersionIndependentResourceTypesAll?[] { VersionIndependentResourceTypesAll.Resource },
+                Base = [ VersionIndependentResourceTypesAll.Resource ],
                 Type = SearchParamType.Special,
             });
 
@@ -356,7 +356,7 @@ public class PackageLoader
                 Title = "Resource type filter",
                 Status = PublicationStatus.Active,
                 Description = "For filtering resources based on their type in searches across resource types.",
-                Base = new VersionIndependentResourceTypesAll?[] { VersionIndependentResourceTypesAll.Resource },
+                Base = [ VersionIndependentResourceTypesAll.Resource ],
                 Type = SearchParamType.Token,
             });
         }
@@ -376,11 +376,8 @@ public class PackageLoader
 
         foreach (PackageCacheEntry cachedPackage in packages)
         {
-            CachePackageManifest? manifest = _cache.GetManifest(cachedPackage);
-            if (manifest == null)
-            {
-                throw new Exception("Failed to load package manifest");
-            }
+            CachePackageManifest? manifest = _cache.GetManifest(cachedPackage) ?? throw new Exception("Failed to load package manifest");
+
             definitions.Manifests.Add(cachedPackage.ResolvedDirective, manifest);
 
             if (string.IsNullOrEmpty(definitions.MainPackageId) || name.Equals(manifest.Name, StringComparison.OrdinalIgnoreCase))
@@ -425,10 +422,7 @@ public class PackageLoader
                         {
                             lock (_convertLockObject)
                             {
-                                if (_converter_20_50 == null)
-                                {
-                                    _converter_20_50 = new();
-                                }
+                                _converter_20_50 ??= new();
                             }
                         }
                     }
@@ -441,10 +435,7 @@ public class PackageLoader
                         {
                             lock (_convertLockObject)
                             {
-                                if (_converter_30_50 == null)
-                                {
-                                    _converter_30_50 = new();
-                                }
+                                _converter_30_50 ??= new();
                             }
                         }
                     }
@@ -458,10 +449,7 @@ public class PackageLoader
                         {
                             lock (_convertLockObject)
                             {
-                                if (_converter_43_50 == null)
-                                {
-                                    _converter_43_50 = new();
-                                }
+                                _converter_43_50 ??= new();
                             }
                         }
                     }
@@ -475,19 +463,14 @@ public class PackageLoader
                     break;
             }
 
-            PackageContents? packageContents = _cache.GetIndexedContents(cachedPackage);
-
-            if (packageContents == null)
-            {
-                throw new Exception("Failed to load package contents");
-            }
+            PackageContents? packageContents = _cache.GetIndexedContents(cachedPackage) ?? throw new Exception("Failed to load package contents");
 
             if (string.IsNullOrEmpty(cachedPackage.Directory))
             {
                 throw new Exception("Package directory is empty");
             }
 
-            if (!packageContents.Files.Any())
+            if (packageContents.Files.Length == 0)
             {
                 throw new Exception("Package contents are empty");
             }
@@ -499,7 +482,7 @@ public class PackageLoader
 
             for (int i = 0; i < sortedFileIndexes.Length; i++)
             {
-                sortedFileIndexes[i] = new();
+                sortedFileIndexes[i] = [];
             }
 
             // traverse our files
@@ -540,27 +523,20 @@ public class PackageLoader
                     {
                         case "CodeSystem":
                             {
-                                CodeSystem? r = lf.ParseCodeSystem(fileExtension, path);
-                                if (r == null)
-                                {
-                                    throw new Exception($"Failed to parse CodeSystem file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
-                                }
-
+                                CodeSystem? r = lf.ParseCodeSystem(fileExtension, path)
+                                    ?? throw new Exception($"Failed to parse CodeSystem file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
                                 definitions.AddCodeSystem(r);
                             }
                             break;
 
                         case "ValueSet":
                             {
-                                ValueSet? r = lf.ParseValueSet(fileExtension, path);
-                                if (r == null)
-                                {
+                                ValueSet? r = lf.ParseValueSet(fileExtension, path) ??
                                     throw new Exception($"Failed to parse ValueSet file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
-                                }
 
                                 // DSTU2 has embedded CodeSystems
                                 if ((packageFhirVersion == FhirReleases.FhirSequenceCodes.DSTU2) &&
-                                    r.Contained.Any())
+                                    r.Contained.Count != 0)
                                 {
                                     foreach (Resource contained in r.Contained)
                                     {
@@ -575,14 +551,11 @@ public class PackageLoader
                                             definitions.AddCodeSystem(cs);
 
                                             // use all values from the code system
-                                            if (r.Compose == null)
-                                            {
-                                                r.Compose = new();
-                                            }
+                                            r.Compose ??= new();
 
                                             if (r.Compose.Include == null)
                                             {
-                                                r.Compose.Include = new();
+                                                r.Compose.Include = [];
                                             }
 
                                             r.Compose.Include.Add(new ValueSet.ConceptSetComponent
@@ -599,11 +572,8 @@ public class PackageLoader
 
                         case "StructureDefinition":
                             {
-                                StructureDefinition? r = lf.ParseStructureDef(fileExtension, path);
-                                if (r == null)
-                                {
+                                StructureDefinition? r = lf.ParseStructureDef(fileExtension, path) ??
                                     throw new Exception($"Failed to parse StructureDefinition file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
-                                }
 
                                 switch (r.cgArtifactClass())
                                 {
@@ -635,11 +605,8 @@ public class PackageLoader
                             break;
                         case "SearchParameter":
                             {
-                                SearchParameter? r = lf.ParseSearchParam(fileExtension, path);
-                                if (r == null)
-                                {
+                                SearchParameter? r = lf.ParseSearchParam(fileExtension, path) ??
                                     throw new Exception($"Failed to parse SearchParameter file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
-                                }
 
                                 definitions.AddSearchParameter(r);
                             }
@@ -647,11 +614,8 @@ public class PackageLoader
 
                         case "OperationDefinition":
                             {
-                                OperationDefinition? r = lf.ParseOperationDef(fileExtension, path);
-                                if (r == null)
-                                {
+                                OperationDefinition? r = lf.ParseOperationDef(fileExtension, path) ??
                                     throw new Exception($"Failed to parse OperationDefinition file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
-                                }
 
                                 definitions.AddOperation(r);
                             }
@@ -660,11 +624,8 @@ public class PackageLoader
                         case "Conformance":
                         case "CapabilityStatement":
                             {
-                                CapabilityStatement? r = lf.ParseCapabilityStatement(fileExtension, path);
-                                if (r == null)
-                                {
+                                CapabilityStatement? r = lf.ParseCapabilityStatement(fileExtension, path) ??
                                     throw new Exception($"Failed to parse CapabilityStatement file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
-                                }
 
                                 definitions.AddCapabilityStatement(r, manifest);
                             }
@@ -672,11 +633,8 @@ public class PackageLoader
 
                         case "ImplementationGuide":
                             {
-                                ImplementationGuide? r = lf.ParseImplementationGuide(fileExtension, path);
-                                if (r == null)
-                                {
+                                ImplementationGuide? r = lf.ParseImplementationGuide(fileExtension, path) ??
                                     throw new Exception($"Failed to parse ImplementationGuide file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
-                                }
 
                                 definitions.AddImplementationGuide(r);
                             }
@@ -684,11 +642,8 @@ public class PackageLoader
 
                         case "CompartmentDefinition":
                             {
-                                CompartmentDefinition? r = lf.ParseCompartmentDef(fileExtension, path);
-                                if (r == null)
-                                {
+                                CompartmentDefinition? r = lf.ParseCompartmentDef(fileExtension, path) ??
                                     throw new Exception($"Failed to parse CompartmentDefinition file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
-                                }
 
                                 definitions.AddCompartment(r);
                             }
@@ -755,9 +710,9 @@ public class PackageLoader
                 {
                     // always use lenient parsing
                     Resource parsed = _jsonParser.DeserializeResource(content);
-                    if (parsed is TResource)
+                    if (parsed is TResource resource)
                     {
-                        return (TResource)parsed;
+                        return resource;
                     }
                     else
                     {
@@ -786,9 +741,9 @@ public class PackageLoader
                 {
                     // always use lenient parsing
                     Resource parsed = _xmlParser.DeserializeResource(content);
-                    if (parsed is TResource)
+                    if (parsed is TResource resource)
                     {
-                        return (TResource)parsed;
+                        return resource;
                     }
                     else
                     {
@@ -1042,9 +997,9 @@ public class PackageLoader
 
                     // always use lenient parsing
                     Resource parsed = _xmlParser.DeserializeResource(content);
-                    if (parsed is TResource)
+                    if (parsed is TResource resource)
                     {
-                        return (TResource)parsed;
+                        return resource;
                     }
                     else
                     {

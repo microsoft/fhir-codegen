@@ -37,7 +37,7 @@ public static class SearchParameterExtensions
     ///// <returns>A string.</returns>
     //public static string cgWorkGroup(this StructureDefinition sd) => sd.GetExtensionValue<FhirString>(CommonDefinitions.ExtUrlWorkGroup)?.Value ?? string.Empty;
 
-    ///// <summary>Gets the FHIR category this defintion belongs to (e.g., Foundation.Other, Specialized.Evidence-Based Medicine).</summary>
+    ///// <summary>Gets the FHIR category this definition belongs to (e.g., Foundation.Other, Specialized.Evidence-Based Medicine).</summary>
     ///// <param name="sd">The SD to act on.</param>
     ///// <returns>A string.</returns>
     //public static string cgDefinitionCategory(this StructureDefinition sd) => sd.GetExtensionValue<FhirString>(CommonDefinitions.ExtUrlCategory)?.Value ?? string.Empty;
@@ -49,10 +49,7 @@ public static class SearchParameterExtensions
     /// <param name="searchParameterUrls">The search parameter urls.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
     public static bool cgCompositeResolves(this SearchParameter sp, IEnumerable<string> searchParameterUrls) =>
-        sp.Component.All(
-            sp => string.IsNullOrEmpty(sp.Definition)
-                ? false
-                : searchParameterUrls.Contains(sp.Definition));
+        sp.Component.All(sp => !string.IsNullOrEmpty(sp.Definition) && searchParameterUrls.Contains(sp.Definition));
 
     /// <summary>
     /// Gets the XPath expression associated with the search parameter.

@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
 //using Microsoft.AspNetCore.Hosting.StaticWebAssets;
 //using Microsoft.FluentUI.AspNetCore.Components;
-using Microsoft.Health.Fhir.CodeGen.Lanugage;
+using Microsoft.Health.Fhir.CodeGen.Language;
 using System.Reflection;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using System.CommandLine;
@@ -35,12 +35,12 @@ namespace fhir_codegen;
 /// <summary>A program.</summary>
 public class Program
 {
-    private static List<SCL.Option> _optsWithEnums = new();
+    private static List<SCL.Option> _optsWithEnums = [];
 
-    private static HashSet<string> _packageAliases = new()
-    {
+    private static HashSet<string> _packageAliases =
+    [
         "--package", "--load-package", "-p"
-    };
+    ];
 
     /// <summary>Main entry-point for this application.</summary>
     /// <param name="args">An array of command-line argument strings.</param>
@@ -50,7 +50,7 @@ public class Program
     /// </returns>
     public static async Task<int> Main(string[] args)
     {
-        // setup our configuration defaults (environment > appsettings.json) - args will supercede
+        // setup our configuration defaults (environment > appsettings.json) - args will supersede
         IConfiguration envConfig = new ConfigurationBuilder()
             .AddJsonFile("appsettings.json", optional: true)
             .AddEnvironmentVariables()
@@ -92,20 +92,15 @@ public class Program
             command = "generate";
         }
 
-        switch (command)
+        return command switch
         {
-            case "generate":
-                return await DoGenerate(pr);
-
+            "generate" => await DoGenerate(pr),
             //case "interactive":
             //    return await DoInteractive(pr);
-
             //case "web":
             //    return await DoWeb(pr);
-
-            default:
-                return await parser.InvokeAsync(args);
-        }
+            _ => await parser.InvokeAsync(args),
+        };
     }
 
     private static SCL.Parsing.Parser BuildParser(IConfiguration envConfig)
@@ -124,7 +119,7 @@ public class Program
                 foreach (SCL.Option option in _optsWithEnums)
                 {
                     StringBuilder sb = new();
-                    if (option.Aliases.Any())
+                    if (option.Aliases.Count != 0)
                     {
                         sb.AppendLine(string.Join(", ", option.Aliases));
                     }
@@ -147,12 +142,12 @@ public class Program
 
                     foreach (MemberInfo mem in et.GetMembers(BindingFlags.Public | BindingFlags.Static).Where(m => m.DeclaringType == et).OrderBy(m => m.Name))
                     {
-                        IEnumerable<DescriptionAttribute> attrs = mem.GetCustomAttributes<DescriptionAttribute>(false);
+                        IEnumerable<DescriptionAttribute> attributes = mem.GetCustomAttributes<DescriptionAttribute>(false);
 
                         sb.AppendLine($"  opt: {mem.Name}");
-                        if (attrs.Any())
+                        if (attributes.Any())
                         {
-                            sb.AppendLine($"       {attrs.First().Description}");
+                            sb.AppendLine($"       {attributes.First().Description}");
                         }
                     }
 
@@ -367,7 +362,7 @@ public class Program
     //    }
     //}
 
-    private static Dictionary<string, LanguageOptionInfo> _configMapsByLang = new();
+    private static Dictionary<string, LanguageOptionInfo> _configMapsByLang = [];
 
     private record class LanguageOptionInfo
     {
@@ -375,7 +370,7 @@ public class Program
 
         public required Type ConfigType { get; set; }
 
-        public List<PropertyOptionTuple> Properties { get; set; } = new();
+        public List<PropertyOptionTuple> Properties { get; set; } = [];
     }
 
     private record class PropertyOptionTuple
@@ -387,14 +382,14 @@ public class Program
 
     private static IEnumerable<SCL.Option> BuildCliOptions(
         Type forType,
-        Type? exludeFromType = null,
+        Type? excludeFromType = null,
         IConfiguration? envConfig = null)
     {
-        HashSet<string> inheritedPropNames = new();
+        HashSet<string> inheritedPropNames = [];
 
-        if (exludeFromType != null)
+        if (excludeFromType != null)
         {
-            PropertyInfo[] exProps = exludeFromType.GetProperties();
+            PropertyInfo[] exProps = excludeFromType.GetProperties();
             foreach (PropertyInfo exProp in exProps)
             {
                 inheritedPropNames.Add(exProp.Name);
@@ -449,12 +444,8 @@ public class Program
             Type configType = LanguageManager.ConfigTypeForLanguage(language.Name);
 
             // create our configuration object
-            object? configGeneric = Activator.CreateInstance(configType);
-
-            if (configGeneric is null)
-            {
-                throw new Exception($"Could not create configuration object for {languageName} ({configType.Name})");
-            }
+            object? configGeneric = Activator.CreateInstance(configType)
+                ?? throw new Exception($"Could not create configuration object for {languageName} ({configType.Name})");
 
             if (configGeneric is not ICodeGenConfig config)
             {
@@ -469,12 +460,8 @@ public class Program
             // parse the arguments into the configuration object
             config.Parse(pr);
 
-            object? langObject = Activator.CreateInstance(langType);
-
-            if (langObject is null)
-            {
-                throw new Exception($"Could not create language object for {languageName} ({langType.Name})");
-            }
+            object? langObject = Activator.CreateInstance(langType)
+                ?? throw new Exception($"Could not create language object for {languageName} ({langType.Name})");
 
             if (langObject is not ILanguage iLang)
             {
@@ -487,7 +474,7 @@ public class Program
                 CachePath = rootConfig.FhirCacheDirectory,
             });
 
-            List<PackageCacheEntry> packages = new();
+            List<PackageCacheEntry> packages = [];
 
             // load packages
             foreach (string package in rootConfig.Packages)
@@ -516,12 +503,8 @@ public class Program
                 JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
             });
 
-            DefinitionCollection? loaded = loader.LoadPackages(packages.First().Name, packages);
-
-            if (loaded is null)
-            {
-                throw new Exception($"Could not load packages: {string.Join(',', rootConfig.Packages)}");
-            }
+            DefinitionCollection? loaded = loader.LoadPackages(packages.First().Name, packages)
+                ?? throw new Exception($"Could not load packages: {string.Join(',', rootConfig.Packages)}");
 
             // call the export method on the language object
             iLang.Export(config, loaded);
@@ -560,12 +543,8 @@ public class Program
             }
 
             // create our configuration object
-            object? langConfig = Activator.CreateInstance(langConfigMap.ConfigType);
-
-            if (langConfig is null)
-            {
-                throw new Exception($"Could not create configuration object for {languageName}");
-            }
+            object? langConfig = Activator.CreateInstance(langConfigMap.ConfigType)
+                ?? throw new Exception($"Could not create configuration object for {languageName}");
 
             // iterate over the properties and get the values from the parse result
             foreach (PropertyOptionTuple map in langConfigMap.Properties)

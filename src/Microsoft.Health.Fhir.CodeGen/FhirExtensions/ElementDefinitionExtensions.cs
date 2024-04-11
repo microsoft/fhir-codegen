@@ -255,7 +255,7 @@ public static class ElementDefinitionExtensions
         // if the binding is not required, we don't need to generate the codes
         if ((ed.Binding == null) || (ed.Binding.Strength != BindingStrength.Required))
         {
-            return Enumerable.Empty<string>();
+            return [];
         }
 
         // only generate codes for elements of type code, string, uri, url, or canonical
@@ -266,7 +266,7 @@ public static class ElementDefinitionExtensions
                 (tr.Code == "url") ||
                 (tr.Code == "canonical")))
         {
-            return Enumerable.Empty<string>();
+            return [];
         }
 
         ValueSet? vs = null;
@@ -285,13 +285,9 @@ public static class ElementDefinitionExtensions
                 //vs = definitions.ResolveVs(add.ValueSet);
             }
 
-            if (vs == null)
-            {
-                vs = definitions.ExpandVs(ed.Binding.ValueSet).Result;
-                //vs = definitions.ResolveVs(ed.Binding.ValueSet);
-            }
+            vs ??= definitions.ExpandVs(ed.Binding.ValueSet).Result;
 
-            return vs?.Expansion?.Contains?.Select(c => c.Code) ?? Enumerable.Empty<string>();
+            return vs?.Expansion?.Contains?.Select(c => c.Code) ?? [];
         }
         catch (Exception ex)
         {
@@ -303,7 +299,7 @@ public static class ElementDefinitionExtensions
             {
                 Console.WriteLine($"Error resolving value set {ed.Binding.ValueSet}: {ex.Message}: {ex.InnerException}");
             }
-            return Enumerable.Empty<string>();
+            return [];
         }
     }
 
@@ -400,7 +396,7 @@ public static class ElementDefinitionExtensions
                     if ((reservedWords != null) &&
                         reservedWords.Contains(value))
                     {
-                        // note we use capitialized (pascal) for appending here since the prefix is lower-cased
+                        // note we use capitalized (pascal) for appending here since the prefix is lower-cased
                         return "fhir" + ed.cgNameForExport(NamingConvention.PascalCase, false);
                     }
 
@@ -475,7 +471,7 @@ public static class ElementDefinitionExtensions
     /// </returns>
     public static IEnumerable<string> cgExtractBaseTypes(this IEnumerable<StructureElementCollection> elementCollections, DefinitionCollection dc)
     {
-        HashSet<string> seen = new();
+        HashSet<string> seen = [];
 
         foreach (StructureElementCollection elementCollection in elementCollections)
         {

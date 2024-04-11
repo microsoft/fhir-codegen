@@ -23,10 +23,10 @@ public class TypeDetails
         }
 
         /// <summary>Gets or sets the profiles.</summary>
-        public List<string> Profiles { get; set; } = new();
+        public List<string> Profiles { get; set; } = [];
 
         /// <summary>Gets or sets the element definitions.</summary>
-        public List<ElementDefinition.ElementDefinitionBindingComponent> ElementDefinitions { get; set; } = new();
+        public List<ElementDefinition.ElementDefinitionBindingComponent> ElementDefinitions { get; set; } = [];
     }
 
 }

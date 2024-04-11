@@ -7,12 +7,12 @@ using System.ComponentModel;
 using Hl7.Fhir.Model;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 
-namespace Microsoft.Health.Fhir.CodeGen.Lanugage.Firely;
+namespace Microsoft.Health.Fhir.CodeGen.Language.Firely;
 
 public static class CSharpFirelyCommon
 {
     /// <summary>Dictionary mapping FHIR primitive types to language equivalents (see Template-Model.tt#1252).</summary>
-    public static readonly Dictionary<string, string> PrimitiveTypeMap = new Dictionary<string, string>()
+    public static readonly Dictionary<string, string> PrimitiveTypeMap = new()
     {
         { "base64Binary", "byte[]" },
         { "boolean", "bool?" },
@@ -37,7 +37,7 @@ public static class CSharpFirelyCommon
     };
 
     /// <summary>Types that have non-standard names or formatting (see Template-Model.tt#1252).</summary>
-    public static readonly Dictionary<string, string> TypeNameMappings = new Dictionary<string, string>()
+    public static readonly Dictionary<string, string> TypeNameMappings = new()
     {
         { "boolean", "FhirBoolean" },
         { "dateTime", "FhirDateTime" },
@@ -50,7 +50,7 @@ public static class CSharpFirelyCommon
     };
 
     /// <summary>Primitive types that have a specific validation attribute on their Value property.</summary>
-    public static readonly Dictionary<string, string> PrimitiveValidationPatterns = new Dictionary<string, string>
+    public static readonly Dictionary<string, string> PrimitiveValidationPatterns = new()
     {
         ["uri"] = "UriPattern",
         ["uuid"] = "UuidPattern",
@@ -161,7 +161,7 @@ public static class CSharpFirelyCommon
     public static string ConvertEnumValue(string name)
     {
         // remove a leading underscore
-        if (name.StartsWith("_", StringComparison.Ordinal))
+        if (name.StartsWith('_'))
         {
             name = name.Substring(1);
         }

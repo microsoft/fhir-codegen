@@ -98,7 +98,7 @@ public static class StructureDefinitionExtensions
     /// <returns>A string.</returns>
     public static string cgWorkGroup(this StructureDefinition sd) => sd.GetExtensionValue<FhirString>(CommonDefinitions.ExtUrlWorkGroup)?.Value ?? string.Empty;
 
-    /// <summary>Gets the FHIR category this defintion belongs to (e.g., Foundation.Other, Specialized.Evidence-Based Medicine).</summary>
+    /// <summary>Gets the FHIR category this definition belongs to (e.g., Foundation.Other, Specialized.Evidence-Based Medicine).</summary>
     /// <param name="sd">The SD to act on.</param>
     /// <returns>A string.</returns>
     public static string cgDefinitionCategory(this StructureDefinition sd) => sd.GetExtensionValue<FhirString>(CommonDefinitions.ExtUrlCategory)?.Value ?? string.Empty;
@@ -154,21 +154,21 @@ public static class StructureDefinitionExtensions
         if (string.IsNullOrEmpty(forBackbonePath))
         {
             // get the correct list of elements (snapshot or differential)
-            source = (sd.Snapshot?.Element.Any() ?? false)
+            source = (sd.Snapshot != null) && (sd.Snapshot.Element.Count != 0)
                 ? sd.Snapshot.Element.Skip(includeRoot ? 0 : 1)
                 : sd.Differential.Element.Skip(includeRoot ? 0 : 1);
         }
         else
         {
             // we want child elements of the requested path, so append an additional dot
-            source = (sd.Snapshot?.Element.Any() ?? false)
+            source = (sd.Snapshot != null) && (sd.Snapshot.Element.Count != 0)
                 ? sd.Snapshot.Element.Where(e => e.Path.StartsWith(forBackbonePath + ".", StringComparison.Ordinal))
                 : sd.Differential.Element.Where(e => e.Path.StartsWith(forBackbonePath + ".", StringComparison.Ordinal));
 
             // this will filter out the requested path itself, so check if we need the root
             if (includeRoot)
             {
-                yield return (sd.Snapshot?.Element.Any() ?? false)
+                yield return (sd.Snapshot != null) && (sd.Snapshot.Element.Count != 0)
                     ? sd.Snapshot.Element.First(e => e.Path == forBackbonePath)
                     : sd.Differential.Element.First(e => e.Path == forBackbonePath);
             }
@@ -206,13 +206,13 @@ public static class StructureDefinitionExtensions
     /// <returns>True if it succeeds, false if it fails.</returns>
     public static bool cgTryGetElementByPath(this StructureDefinition sd, string path, [NotNullWhen(true)] out ElementDefinition? element)
     {
-        if (sd.Snapshot?.Element.Any() ?? false)
+        if ((sd.Snapshot != null) && (sd.Snapshot.Element.Count != 0))
         {
             element = sd.Snapshot.Element.FirstOrDefault(e => e.Path == path);
             return element != null;
         }
 
-        if (sd.Differential?.Element.Any() ?? false)
+        if ((sd.Differential != null) && (sd.Differential.Element.Count != 0))
         {
             element = sd.Differential.Element.FirstOrDefault(e => e.Path == path);
             return element != null;
@@ -231,13 +231,13 @@ public static class StructureDefinitionExtensions
     /// <returns>True if it succeeds, false if it fails.</returns>
     public static bool cgTryGetElementById(this StructureDefinition sd, string id, [NotNullWhen(true)] out ElementDefinition? element)
     {
-        if (sd.Snapshot?.Element.Any() ?? false)
+        if ((sd.Snapshot != null) && (sd.Snapshot.Element.Count != 0))
         {
             element = sd.Snapshot.Element.FirstOrDefault(e => e.ElementId == id);
             return element != null;
         }
 
-        if (sd.Differential?.Element.Any() ?? false)
+        if ((sd.Differential != null) && (sd.Differential.Element.Count != 0))
         {
             element = sd.Differential.Element.FirstOrDefault(e => e.ElementId == id);
             return element != null;
@@ -262,7 +262,7 @@ public static class StructureDefinitionExtensions
     {
         if (includeInherited)
         {
-            if (sd.Snapshot?.Element.Any() ?? false)
+            if ((sd.Snapshot != null) && (sd.Snapshot.Element.Count != 0))
             {
                 return sd.Snapshot.Element.SelectMany(e => e.Constraint)
                     .GroupBy(e => e.Key)
@@ -276,7 +276,7 @@ public static class StructureDefinitionExtensions
                 .OrderBy(e => e.Key, NaturalComparer.Instance);
         }
 
-        if (sd.Snapshot?.Element.Any() ?? false)
+        if ((sd.Snapshot != null) && (sd.Snapshot.Element.Count != 0))
         {
             return sd.Snapshot.Element.SelectMany(e => e.Constraint)
                 .Where(e => e.Source == sd.Url)
@@ -326,12 +326,12 @@ public static class StructureDefinitionExtensions
     /// <returns>An ElementDefinition?</returns>
     public static ElementDefinition? cgRootElement(this StructureDefinition sd)
     {
-        if (sd.Snapshot?.Element.Any() ?? false)
+        if ((sd.Snapshot != null) && (sd.Snapshot.Element.Count != 0))
         {
             return sd.Snapshot.Element.FirstOrDefault();
         }
 
-        if (sd.Differential?.Element.Any() ?? false)
+        if ((sd.Differential != null) && (sd.Differential.Element.Count != 0))
         {
             if (sd.Differential.Element.First().ElementId == sd.Id)
             {

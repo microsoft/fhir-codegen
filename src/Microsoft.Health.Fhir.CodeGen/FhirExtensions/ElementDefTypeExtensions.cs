@@ -113,14 +113,11 @@ public static class ElementDefTypeExtensions
         }
 
         // need to change "FiveWs.subject[x]" to "FiveWs.subject", but beware of duplicates
-        HashSet<string> hash = source.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).ToHashSet();
+        HashSet<string> hash = [.. source.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)];
         if (hash.Contains("FiveWs.subject[x]"))
         {
             hash.Remove("FiveWs.subject[x]");
-            if (!hash.Contains("FiveWs.subject"))
-            {
-                hash.Add("FiveWs.subject");
-            }
+            hash.Add("FiveWs.subject");
         }
 
         return string.Join(',', hash);

@@ -22,7 +22,7 @@ public partial class DefinitionCollection : IAsyncResourceResolver
     /// <returns>An asynchronous result that yields a ValueSet?</returns>
     public async Task<ValueSet?> ExpandVs(string uri)
     {
-        Parameters p = new();
+        Parameters p = [];
         p.Parameter.Add(new() { Name = "url", Value = new FhirUri(uri) });
 
         try
@@ -74,7 +74,7 @@ public partial class DefinitionCollection : IAsyncResourceResolver
 
         if (_canonicalResources.TryGetValue(key, out Dictionary<string, IConformanceResource>? versions) &&
             (versions != null) &&
-            versions.Any())
+            versions.Count != 0)
         {
             if (string.IsNullOrEmpty(version))
             {

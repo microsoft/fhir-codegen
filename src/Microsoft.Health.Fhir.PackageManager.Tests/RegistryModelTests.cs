@@ -80,7 +80,7 @@ public class RegistryModelTests
         manifest!.DistributionTags["latest"].Should().Be("1.1.0");
 
         manifest!.Versions.Should().NotBeNullOrEmpty();
-        manifest!.Versions.Count().Should().Be(3);
+        manifest!.Versions.Count.Should().Be(3);
         manifest!.Versions.Should().ContainKey("0.1.0");
         manifest!.Versions["0.1.0"].Name.Should().Be("hl7.fhir.uv.subscriptions-backport");
         manifest!.Versions["0.1.0"].Version.Should().Be("0.1.0");
@@ -111,7 +111,7 @@ public class RegistryModelTests
         manifest!.DistributionTags["latest"].Should().Be("1.1.0");
 
         manifest!.Versions.Should().NotBeNullOrEmpty();
-        manifest!.Versions.Count().Should().Be(3);
+        manifest!.Versions.Count.Should().Be(3);
         manifest!.Versions.Should().ContainKey("0.1.0");
         manifest!.Versions["0.1.0"].Name.Should().Be("hl7.fhir.uv.subscriptions-backport");
         manifest!.Versions["0.1.0"].Version.Should().Be("0.1.0");

@@ -12,7 +12,7 @@ namespace Microsoft.Health.Fhir.PackageManager.Tests.Extensions;
 /// <summary>Attribute for file data.</summary>
 public class FileDataAttribute : DataAttribute
 {
-    private readonly List<string> _filePaths = new();
+    private readonly List<string> _filePaths = [];
 
     /// <summary>Load file contents as the data source for a theory.</summary>
     /// <param name="filePath">The absolute or relative path to the file to load.</param>
@@ -59,7 +59,7 @@ public class FileDataAttribute : DataAttribute
     {
         if (testMethod == null) { throw new ArgumentNullException(nameof(testMethod)); }
 
-        List<object> contents = new();
+        List<object> contents = [];
 
         foreach (string filePath in _filePaths)
         {
@@ -77,6 +77,6 @@ public class FileDataAttribute : DataAttribute
             contents.Add(data);
         }
 
-        return new object[][] { contents.ToArray<object>() };
+        return new object[][] { [.. contents] };
     }
 }

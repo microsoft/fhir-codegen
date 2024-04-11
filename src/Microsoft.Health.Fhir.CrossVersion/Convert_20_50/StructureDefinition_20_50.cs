@@ -53,10 +53,7 @@ public class StructureDefinition_20_50 : ICrossVersionProcessor<StructureDefinit
                     {
                         v.Kind = StructureDefinition.StructureDefinitionKind.PrimitiveType;
 
-                        if (v.Type == null)
-                        {
-                            v.Type = v.Id;
-                        }
+                        v.Type ??= v.Id;
                     }
                     else
                     {
@@ -81,10 +78,7 @@ public class StructureDefinition_20_50 : ICrossVersionProcessor<StructureDefinit
                 {
                     v.Kind = StructureDefinition.StructureDefinitionKind.Resource;
 
-                    if (v.Type == null)
-                    {
-                        v.Type = v.Id;
-                    }
+                    v.Type ??= v.Id;
                 }
                 break;
 

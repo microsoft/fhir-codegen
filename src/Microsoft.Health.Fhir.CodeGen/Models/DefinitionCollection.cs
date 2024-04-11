@@ -45,54 +45,54 @@ public partial class DefinitionCollection
     public string MainPackageVersion { get; set; } = string.Empty;
 
     /// <summary>Gets or sets the manifest.</summary>
-    public Dictionary<string, CachePackageManifest> Manifests { get; set; } = new();
+    public Dictionary<string, CachePackageManifest> Manifests { get; set; } = [];
 
     /// <summary>Gets or sets the contents.</summary>
-    public Dictionary<string, PackageContents> ContentListings { get; set; } = new();
+    public Dictionary<string, PackageContents> ContentListings { get; set; } = [];
 
     //private readonly Dictionary<ElementDefinition, StructureDefinition> _elementSdLookup = new();
 
-    private readonly Dictionary<string, StructureDefinition> _primitiveTypesByName = new();
-    private readonly Dictionary<string, StructureDefinition> _complexTypesByName = new();
-    private readonly Dictionary<string, StructureDefinition> _resourcesByName = new();
-    private readonly Dictionary<string, StructureDefinition> _logicalModelsByName = new();
-    private readonly Dictionary<string, StructureDefinition> _extensionsByUrl = new();
-    private readonly Dictionary<string, Dictionary<string, StructureDefinition>> _extensionsByPath = new();
-    private readonly Dictionary<string, StructureDefinition> _profilesByUrl = new();
-    private readonly Dictionary<string, Dictionary<string, StructureDefinition>> _profilesByBaseType = new();
+    private readonly Dictionary<string, StructureDefinition> _primitiveTypesByName = [];
+    private readonly Dictionary<string, StructureDefinition> _complexTypesByName = [];
+    private readonly Dictionary<string, StructureDefinition> _resourcesByName = [];
+    private readonly Dictionary<string, StructureDefinition> _logicalModelsByName = [];
+    private readonly Dictionary<string, StructureDefinition> _extensionsByUrl = [];
+    private readonly Dictionary<string, Dictionary<string, StructureDefinition>> _extensionsByPath = [];
+    private readonly Dictionary<string, StructureDefinition> _profilesByUrl = [];
+    private readonly Dictionary<string, Dictionary<string, StructureDefinition>> _profilesByBaseType = [];
 
-    private readonly Dictionary<string, OperationDefinition> _systemOperations = new();
-    private readonly Dictionary<string, OperationDefinition> _operationsByUrl = new();
-    private readonly Dictionary<string, Dictionary<string, OperationDefinition>> _typeOperationsByType = new();
-    private readonly Dictionary<string, Dictionary<string, OperationDefinition>> _instanceOperationsByType = new();
+    private readonly Dictionary<string, OperationDefinition> _systemOperations = [];
+    private readonly Dictionary<string, OperationDefinition> _operationsByUrl = [];
+    private readonly Dictionary<string, Dictionary<string, OperationDefinition>> _typeOperationsByType = [];
+    private readonly Dictionary<string, Dictionary<string, OperationDefinition>> _instanceOperationsByType = [];
 
-    private readonly Dictionary<string, SearchParameter> _globalSearchParameters = new();
-    private readonly Dictionary<string, FhirQueryParameter> _searchResultParameters = new();
-    private readonly Dictionary<string, FhirQueryParameter> _allInteractionParameters = new();
-    private readonly Dictionary<string, SearchParameter> _searchParamsByUrl = new();
-    private readonly Dictionary<string, Dictionary<string, SearchParameter>> _searchParamsByBase = new();
+    private readonly Dictionary<string, SearchParameter> _globalSearchParameters = [];
+    private readonly Dictionary<string, FhirQueryParameter> _searchResultParameters = [];
+    private readonly Dictionary<string, FhirQueryParameter> _allInteractionParameters = [];
+    private readonly Dictionary<string, SearchParameter> _searchParamsByUrl = [];
+    private readonly Dictionary<string, Dictionary<string, SearchParameter>> _searchParamsByBase = [];
 
-    private readonly Dictionary<string, CodeSystem> _codeSystemsByUrl = new();
-    private readonly Dictionary<string, ValueSet> _valueSetsByVersionedUrl = new();
-    private readonly Dictionary<string, string[]> _valueSetVersions = new();
-    private readonly Dictionary<string, string> _valueSetUrlsById = new();
+    private readonly Dictionary<string, CodeSystem> _codeSystemsByUrl = [];
+    private readonly Dictionary<string, ValueSet> _valueSetsByVersionedUrl = [];
+    private readonly Dictionary<string, string[]> _valueSetVersions = [];
+    private readonly Dictionary<string, string> _valueSetUrlsById = [];
 
-    private readonly Dictionary<string, List<StructureElementCollection>> _coreBindingEdsByPathByValueSet = new();
-    private readonly Dictionary<string, List<StructureElementCollection>> _extendedBindingEdsByPathByValueSet = new();
+    private readonly Dictionary<string, List<StructureElementCollection>> _coreBindingEdsByPathByValueSet = [];
+    private readonly Dictionary<string, List<StructureElementCollection>> _extendedBindingEdsByPathByValueSet = [];
 
-    private readonly Dictionary<string, ImplementationGuide> _implementationGuidesByUrl = new();
-    private readonly Dictionary<string, CapabilityStatement> _capabilityStatementsByUrl = new();
-    private readonly Dictionary<string, CompartmentDefinition> _compartmentsByUrl = new();
+    private readonly Dictionary<string, ImplementationGuide> _implementationGuidesByUrl = [];
+    private readonly Dictionary<string, CapabilityStatement> _capabilityStatementsByUrl = [];
+    private readonly Dictionary<string, CompartmentDefinition> _compartmentsByUrl = [];
 
-    internal readonly Dictionary<string, string> _parentElementsAndType = new();
+    internal readonly Dictionary<string, string> _parentElementsAndType = [];
 
-    private readonly List<string> _errors = new();
+    private readonly List<string> _errors = [];
 
     /// <summary>(Immutable) all resources.</summary>
-    private readonly Dictionary<string, Resource> _allResources = new();
+    private readonly Dictionary<string, Resource> _allResources = [];
 
     /// <summary>(Immutable) The canonical resources.</summary>
-    private readonly Dictionary<string, Dictionary<string, IConformanceResource>> _canonicalResources = new();
+    private readonly Dictionary<string, Dictionary<string, IConformanceResource>> _canonicalResources = [];
 
     /// <summary>(Immutable) The local transmit.</summary>
     private readonly LocalTerminologyService _localTx;
@@ -139,7 +139,7 @@ public partial class DefinitionCollection
         }
 
         // check for adding to snapshot
-        if (sd.Snapshot?.Element.Any() ?? false)
+        if ((sd.Snapshot != null) && (sd.Snapshot.Element.Count != 0))
         {
             // find the element to insert after
             int matchIndex = sd.Snapshot.Element.FindIndex(
@@ -148,7 +148,7 @@ public partial class DefinitionCollection
         }
 
         // check for adding to differential
-        if (sd.Differential?.Element.Any() ?? false)
+        if ((sd.Differential != null) && (sd.Differential.Element.Count != 0))
         {
             // find the element to insert after
             int matchIndex = sd.Differential.Element.FindIndex(
@@ -199,7 +199,7 @@ public partial class DefinitionCollection
         CheckElementBindings(sd.cgArtifactClass(), sd, ed);
 
         // check for adding to snapshot
-        if (sd.Snapshot?.Element.Any() ?? false)
+        if ((sd.Snapshot != null) && (sd.Snapshot.Element.Count != 0))
         {
             // find the element to insert after
             int matchIndex = sd.Snapshot.Element.FindIndex(e => e.cgFieldOrder() == sdFieldOrder);
@@ -235,7 +235,7 @@ public partial class DefinitionCollection
         }
 
         // check for adding to differential
-        if (sd.Differential?.Element.Any() ?? false)
+        if ((sd.Differential != null) && (sd.Differential.Element.Count != 0))
         {
             // find the element to insert after
             int matchIndex = sd.Differential.Element.FindIndex(e => e.cgFieldOrder() == sdFieldOrder);
@@ -274,18 +274,18 @@ public partial class DefinitionCollection
     }
 
     /// <summary>Processes elements in a structure definition.</summary>
-    /// <remarks>Addes field orders, indexes paths that contain child elements, etc.</remarks>
+    /// <remarks>Adds field orders, indexes paths that contain child elements, etc.</remarks>
     /// <param name="artifactClass">The artifact class.</param>
     /// <param name="sd">           The structure definition.</param>
     /// <param name="fhirVersion">  The FHIR version.</param>
     private void ProcessElements(FhirArtifactClassEnum artifactClass, StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion)
     {
-        Dictionary<string, int> allFieldOrders = new();
-        Dictionary<string, Dictionary<string, int>> componentOrdersByIdByParent = new();
+        Dictionary<string, int> allFieldOrders = [];
+        Dictionary<string, Dictionary<string, int>> componentOrdersByIdByParent = [];
 
-        List<string> idByDepth = new();
+        List<string> idByDepth = [];
 
-        Dictionary<string, string> pathTypes = new();
+        Dictionary<string, string> pathTypes = [];
 
         // process each element in the snapshot
         foreach (ElementDefinition ed in sd.Snapshot?.Element ?? Enumerable.Empty<ElementDefinition>())
@@ -310,7 +310,7 @@ public partial class DefinitionCollection
             {
                 if (!componentOrdersByIdByParent.TryGetValue(parentPath, out Dictionary<string, int>? coById))
                 {
-                    coById = new();
+                    coById = [];
                     componentOrdersByIdByParent.Add(parentPath, coById);
                 }
 
@@ -321,7 +321,7 @@ public partial class DefinitionCollection
                 }
             }
 
-            int fo = allFieldOrders.Count();
+            int fo = allFieldOrders.Count;
             allFieldOrders.Add(ed.ElementId, fo);
             ed.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(fo));
             ed.AddExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, new Integer(componentFieldOrder));
@@ -350,14 +350,14 @@ public partial class DefinitionCollection
             {
                 if (!_pathsWithSlices.TryGetValue(ed.Path, out KeyValuePair<string, StructureDefinition>[]? slices))
                 {
-                    slices = new KeyValuePair<string, StructureDefinition>[] { new(ed.SliceName, sd) };
+                    slices = [new(ed.SliceName, sd)];
                     _pathsWithSlices[ed.Path] = slices;
                 }
                 else
                 {
                     if (!slices.Any(sliceDef => sliceDef.Key == ed.SliceName))
                     {
-                        _pathsWithSlices[ed.Path] = slices.Append(new(ed.SliceName, sd)).ToArray();
+                        _pathsWithSlices[ed.Path] = [.. slices, new(ed.SliceName, sd)];
                     }
                 }
             }
@@ -372,7 +372,7 @@ public partial class DefinitionCollection
             }
 
             // check for a single type and add to the path types dictionary
-            if (ed.Type.Count() == 1)
+            if (ed.Type.Count == 1)
             {
                 pathTypes[ed.Path] = ed.Type.First().Code;
             }
@@ -401,7 +401,7 @@ public partial class DefinitionCollection
             {
                 if (!componentOrdersByIdByParent.TryGetValue(parentPath, out Dictionary<string, int>? coById))
                 {
-                    coById = new();
+                    coById = [];
                     componentOrdersByIdByParent.Add(parentPath, coById);
                 }
 
@@ -415,7 +415,7 @@ public partial class DefinitionCollection
             // check if this element has already been processed
             if (!allFieldOrders.TryGetValue(ed.ElementId, out int fo))
             {
-                fo = allFieldOrders.Count();
+                fo = allFieldOrders.Count;
                 allFieldOrders.Add(ed.ElementId, fo);
 
                 //// add to lookup dict
@@ -443,14 +443,14 @@ public partial class DefinitionCollection
                 {
                     if (!_pathsWithSlices.TryGetValue(ed.Path, out KeyValuePair<string, StructureDefinition>[]? slices))
                     {
-                        slices = new KeyValuePair<string, StructureDefinition>[] { new(ed.SliceName, sd) };
+                        slices = [new(ed.SliceName, sd)];
                         _pathsWithSlices[ed.Path] = slices;
                     }
                     else
                     {
                         if (!slices.Any(sliceDef => sliceDef.Key == ed.SliceName))
                         {
-                            _pathsWithSlices[ed.Path] = slices.Append(new(ed.SliceName, sd)).ToArray();
+                            _pathsWithSlices[ed.Path] = [.. slices, new(ed.SliceName, sd)];
                         }
                     }
                 }
@@ -465,7 +465,7 @@ public partial class DefinitionCollection
                 }
 
                 // check for a single type and add to the path types dictionary
-                if (ed.Type.Count() == 1)
+                if (ed.Type.Count == 1)
                 {
                     pathTypes[ed.Path] = ed.Type.First().Code;
                 }
@@ -481,20 +481,14 @@ public partial class DefinitionCollection
             ElementDefinition? re = sd.cgRootElement();
             if (re != null)
             {
-                if (re.Base == null)
-                {
-                    re.Base = new ElementDefinition.BaseComponent();
-                }
+                re.Base ??= new ElementDefinition.BaseComponent();
 
                 if (string.IsNullOrEmpty(re.Base.Path))
                 {
                     re.Base.Path = re.Path;
                 }
 
-                if (re.Min == null)
-                {
-                    re.Min = 0;
-                }
+                re.Min ??= 0;
 
                 if (string.IsNullOrEmpty(re.Max))
                 {
@@ -538,7 +532,7 @@ public partial class DefinitionCollection
                 if (ed.SliceName.StartsWith(idByDepth[0]))
                 {
                     // append just the last dot component as a slice name
-                    components[depth - 1] += ":" + ed.SliceName.Substring(ed.SliceName.LastIndexOf('.') + 1);
+                    components[depth - 1] += string.Concat(":", ed.SliceName.AsSpan(ed.SliceName.LastIndexOf('.') + 1));
                 }
                 else
                 {
@@ -564,13 +558,13 @@ public partial class DefinitionCollection
     private void ConsolidateTypes(StructureDefinition sd, ElementDefinition ed)
     {
         // only need to consolidate if there are 2 or more
-        if (ed.Type.Count() < 2)
+        if (ed.Type.Count < 2)
         {
             return;
         }
 
         // consolidate types
-        Dictionary<string, ElementDefinition.TypeRefComponent> consolidatedTypes = new();
+        Dictionary<string, ElementDefinition.TypeRefComponent> consolidatedTypes = [];
 
         foreach (ElementDefinition.TypeRefComponent tr in ed.Type)
         {
@@ -581,19 +575,19 @@ public partial class DefinitionCollection
             }
 
             // add any missing profile references
-            if (tr.ProfileElement.Any())
+            if (tr.ProfileElement.Count != 0)
             {
                 existing.ProfileElement.AddRange(tr.ProfileElement);
             }
 
-            if (tr.TargetProfileElement.Any())
+            if (tr.TargetProfileElement.Count != 0)
             {
                 existing.TargetProfileElement.AddRange(tr.TargetProfileElement);
             }
         }
 
         // update our types
-        ed.Type = consolidatedTypes.Values.ToList();
+        ed.Type = [.. consolidatedTypes.Values];
     }
 
     /// <summary>
@@ -665,7 +659,8 @@ public partial class DefinitionCollection
 
         if ((lastPipe != -1) ||
             (!_valueSetVersions.TryGetValue(vsUrl, out string[]? vsVersions)) ||
-            (!(vsVersions?.Any() ?? false)))
+            (vsVersions == null) ||
+            (vsVersions.Length == 0))
         {
             return vsUrl;
         }
@@ -710,7 +705,7 @@ public partial class DefinitionCollection
                     {
                         if (!_coreBindingEdsByPathByValueSet.TryGetValue(url, out List<StructureElementCollection>? bindings))
                         {
-                            bindings = new();
+                            bindings = [];
                             _coreBindingEdsByPathByValueSet[url] = bindings;
                         }
 
@@ -718,7 +713,7 @@ public partial class DefinitionCollection
                         StructureElementCollection? matchingElementCollection = bindings.FirstOrDefault(e => e.Structure.Url == sd.Url);
                         if (matchingElementCollection is null)
                         {
-                            matchingElementCollection = new StructureElementCollection { Structure = sd, Elements = new() };
+                            matchingElementCollection = new StructureElementCollection { Structure = sd, Elements = [] };
                             bindings.Add(matchingElementCollection);
                         }
 
@@ -746,7 +741,7 @@ public partial class DefinitionCollection
                     {
                         if (!_extendedBindingEdsByPathByValueSet.TryGetValue(url, out List<StructureElementCollection>? bindings))
                         {
-                            bindings = new();
+                            bindings = [];
                             _extendedBindingEdsByPathByValueSet[url] = bindings;
                         }
 
@@ -754,7 +749,7 @@ public partial class DefinitionCollection
                         StructureElementCollection? matchingElementCollection = bindings.FirstOrDefault(e => e.Structure.Url == sd.Url);
                         if (matchingElementCollection is null)
                         {
-                            matchingElementCollection = new StructureElementCollection { Structure = sd, Elements = new() };
+                            matchingElementCollection = new StructureElementCollection { Structure = sd, Elements = [] };
                             bindings.Add(matchingElementCollection);
                         }
 
@@ -792,7 +787,7 @@ public partial class DefinitionCollection
                         {
                             if (!_extendedBindingEdsByPathByValueSet.TryGetValue(url, out List<StructureElementCollection>? bindings))
                             {
-                                bindings = new();
+                                bindings = [];
                                 _extendedBindingEdsByPathByValueSet[url] = bindings;
                             }
 
@@ -808,7 +803,7 @@ public partial class DefinitionCollection
                             StructureElementCollection? matchingElementCollection = bindings.FirstOrDefault(e => e.Structure.Url == currentSd.Url);
                             if (matchingElementCollection is null)
                             {
-                                matchingElementCollection = new StructureElementCollection { Structure = currentSd, Elements = new() };
+                                matchingElementCollection = new StructureElementCollection { Structure = currentSd, Elements = [] };
                                 bindings.Add(matchingElementCollection);
                             }
 
@@ -843,8 +838,8 @@ public partial class DefinitionCollection
     /// <param name="op">The operation.</param>
     private void ProcessParameters(OperationDefinition op)
     {
-        Dictionary<string, int> inFieldOrder = new();
-        Dictionary<string, int> outFieldOrder = new();
+        Dictionary<string, int> inFieldOrder = [];
+        Dictionary<string, int> outFieldOrder = [];
 
         // annotate each parameter with a field order extension
         foreach (OperationDefinition.ParameterComponent pc in op.Parameter ?? Enumerable.Empty<OperationDefinition.ParameterComponent>())
@@ -852,12 +847,12 @@ public partial class DefinitionCollection
             int fo;
             if (pc.Use == OperationParameterUse.Out)
             {
-                fo = outFieldOrder.Count() + 1;
+                fo = outFieldOrder.Count + 1;
                 outFieldOrder.Add(pc.Name, fo);
             }
             else 
             {
-                fo = inFieldOrder.Count() + 1;
+                fo = inFieldOrder.Count + 1;
                 inFieldOrder.Add(pc.Name, fo);
             }
 
@@ -899,7 +894,7 @@ public partial class DefinitionCollection
 
             if (!_canonicalResources.TryGetValue(canonicalUrl, out Dictionary<string, IConformanceResource>? versions))
             {
-                versions = new();
+                versions = [];
                 _canonicalResources.Add(canonicalUrl, versions);
             }
 
@@ -949,7 +944,7 @@ public partial class DefinitionCollection
 
         _valueSetVersions.TryGetValue(url, out string[]? versions);
 
-        return versions ?? Array.Empty<string>();
+        return versions ?? [];
     }
 
     /// <summary>
@@ -978,7 +973,7 @@ public partial class DefinitionCollection
             return bindings;
         }
 
-        return Enumerable.Empty<StructureElementCollection>();
+        return [];
     }
 
     /// <summary>Strongest core binding.</summary>
@@ -1007,7 +1002,7 @@ public partial class DefinitionCollection
     {
         string url = VersionedUrlForVs(valueSetUrl);
 
-        Dictionary<string, BindingStrength> bindingStrengthByType = new();
+        Dictionary<string, BindingStrength> bindingStrengthByType = [];
 
         if (!_coreBindingEdsByPathByValueSet.TryGetValue(url, out List<StructureElementCollection>? bindings))
         {
@@ -1064,7 +1059,7 @@ public partial class DefinitionCollection
             //return filtered;
         }
 
-        return Enumerable.Empty<StructureElementCollection>();
+        return [];
     }
 
     /// <summary>Strongest extended binding.</summary>
@@ -1093,7 +1088,7 @@ public partial class DefinitionCollection
     {
         string url = VersionedUrlForVs(valueSetUrl);
 
-        Dictionary<string, BindingStrength> bindingStrengthByType = new();
+        Dictionary<string, BindingStrength> bindingStrengthByType = [];
 
         if (!_extendedBindingEdsByPathByValueSet.TryGetValue(url, out List<StructureElementCollection>? bindings))
         {
@@ -1130,12 +1125,12 @@ public partial class DefinitionCollection
 
         if (!_coreBindingEdsByPathByValueSet.TryGetValue(url, out List<StructureElementCollection>? core))
         {
-            core = new();
+            core = [];
         }
 
         if (!_extendedBindingEdsByPathByValueSet.TryGetValue(url, out List<StructureElementCollection>? extended))
         {
-            extended = new();
+            extended = [];
         }
 
         return core.Union(extended);
@@ -1189,16 +1184,16 @@ public partial class DefinitionCollection
     {
         string url = VersionedUrlForVs(valueSetUrl);
 
-        Dictionary<string, BindingStrength> bindingStrengthByType = new();
+        Dictionary<string, BindingStrength> bindingStrengthByType = [];
 
         if (!_coreBindingEdsByPathByValueSet.TryGetValue(url, out List<StructureElementCollection>? core))
         {
-            core = new();
+            core = [];
         }
 
         if (!_extendedBindingEdsByPathByValueSet.TryGetValue(url, out List<StructureElementCollection>? extended))
         {
-            extended = new();
+            extended = [];
         }
 
         // note that we do not have to worry about structure collisions between the two since no structure can be in both
@@ -1232,7 +1227,7 @@ public partial class DefinitionCollection
     /// <returns>An IReadOnlyDictionary&lt;string,BindingStrength&gt;</returns>
     public IReadOnlyDictionary<string, BindingStrength> BindingStrengthByType(IEnumerable<StructureElementCollection> bindings)
     {
-        Dictionary<string, BindingStrength> bindingStrengthByType = new();
+        Dictionary<string, BindingStrength> bindingStrengthByType = [];
 
         if (!bindings.Any())
         {
@@ -1277,12 +1272,12 @@ public partial class DefinitionCollection
         {
             if (!versions.Contains(valueSet.Version))
             {
-                _valueSetVersions[unversioned] = versions.Append(valueSet.Version).ToArray();
+                _valueSetVersions[unversioned] = [.. versions, valueSet.Version];
             }
         }
         else
         {
-            _valueSetVersions[unversioned] = new[] { valueSet.Version };
+            _valueSetVersions[unversioned] = [valueSet.Version];
         }
 
         if (!_valueSetUrlsById.ContainsKey(valueSet.Id))
@@ -1456,7 +1451,7 @@ public partial class DefinitionCollection
 
             if (!_extensionsByPath.ContainsKey(ctx.Expression))
             {
-                _extensionsByPath[ctx.Expression] = new();
+                _extensionsByPath[ctx.Expression] = [];
             }
 
             _extensionsByPath[ctx.Expression][url] = sd;
@@ -1493,7 +1488,7 @@ public partial class DefinitionCollection
         {
             if (!_profilesByBaseType.TryGetValue(sd.Type, out Dictionary<string, StructureDefinition>? sdDict))
             {
-                sdDict = new();
+                sdDict = [];
                 _profilesByBaseType.Add(sd.Type, sdDict);
             }
 
@@ -1567,14 +1562,11 @@ public partial class DefinitionCollection
             if ((!_searchParamsByBase.TryGetValue(spBase, out Dictionary<string, SearchParameter>? spDict)) ||
                 (spDict == null))
             {
-                spDict = new();
+                spDict = [];
                 _searchParamsByBase.Add(spBase, spDict);
             }
 
-            if (!spDict.ContainsKey(sp.Url))
-            {
-                spDict.Add(sp.Url, sp);
-            }
+            _ = spDict.TryAdd(sp.Url, sp);
         }
     }
 
@@ -1658,7 +1650,7 @@ public partial class DefinitionCollection
             _systemOperations[op.Url] = op;
         }
 
-        // add to the correct resoure dictionary
+        // add to the correct resource dictionary
         foreach (VersionIndependentResourceTypesAll? t in op.Resource)
         {
             if (t == null)
@@ -1671,7 +1663,7 @@ public partial class DefinitionCollection
             if ((!_typeOperationsByType.TryGetValue(rt, out Dictionary<string, OperationDefinition>? typeDict)) ||
                 (typeDict == null))
             {
-                typeDict = new();
+                typeDict = [];
                 _typeOperationsByType.Add(rt, typeDict);
             }
 
@@ -1683,7 +1675,7 @@ public partial class DefinitionCollection
             if ((!_instanceOperationsByType.TryGetValue(rt, out Dictionary<string, OperationDefinition>? instanceDict)) ||
                 (instanceDict == null))
             {
-                instanceDict = new();
+                instanceDict = [];
                 _instanceOperationsByType.Add(rt, instanceDict);
             }
 

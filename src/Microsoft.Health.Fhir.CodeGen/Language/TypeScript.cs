@@ -14,12 +14,12 @@ using Hl7.Fhir.Model;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGen.Utils;
 
-namespace Microsoft.Health.Fhir.CodeGen.Lanugage;
+namespace Microsoft.Health.Fhir.CodeGen.Language;
 
 public class TypeScript : ILanguage
 {
-    private const string _defaultNamespace = "fhir{VersionNumber}";
-    private const string _defaultMinTsVersion = "3.7";
+    private const string DefaultNamespace = "fhir{VersionNumber}";
+    private const string DefaultMinTsVersion = "3.7";
 
     public Type ConfigType => typeof(TypeScriptOptions);
 
@@ -29,12 +29,12 @@ public class TypeScript : ILanguage
         [ConfigOption(
             ArgName = "--namespace",
             Description = "Base namespace for TypeScript files, default is 'fhir{VersionNumber}', use '' (empty string) for none.")]
-        public string Namespace { get; set; } = _defaultNamespace;
+        public string Namespace { get; set; } = DefaultNamespace;
 
         private static ConfigurationOption NamespaceParameter { get; } = new()
         {
             Name = "Namespace",
-            DefaultValue = _defaultNamespace,
+            DefaultValue = DefaultNamespace,
             CliOption = new System.CommandLine.Option<string>("--namespace", "Base namespace for TypeScript files, default is 'fhir{VersionNumber}', use '' (empty string) for none.")
             {
                 Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
@@ -46,12 +46,12 @@ public class TypeScript : ILanguage
         [ConfigOption(
             ArgName = "--min-ts-version",
             Description = "Minimum TypeScript version, use '' (empty string) for none.")]
-        public string MinTsVersion { get; set; } = _defaultMinTsVersion;
+        public string MinTsVersion { get; set; } = DefaultMinTsVersion;
 
         private static ConfigurationOption MinTsVersionParameter { get; } = new()
         {
             Name = "MinTypeScriptVersion",
-            DefaultValue = _defaultMinTsVersion,
+            DefaultValue = DefaultMinTsVersion,
             CliOption = new System.CommandLine.Option<string>("--min-ts-version", "Minimum TypeScript version, use '' (empty string) for none.")
             {
                 Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
@@ -77,12 +77,12 @@ public class TypeScript : ILanguage
         };
 
         /// <summary>(Immutable) Options for controlling the operation.</summary>
-        private static readonly ConfigurationOption[] _options = new ConfigurationOption[]
-        {
+        private static readonly ConfigurationOption[] _options =
+        [
             NamespaceParameter,
             MinTsVersionParameter,
             InlineEnumsParameter,
-        };
+        ];
 
         /// <summary>
         /// Gets the configuration options for the current instance and its base class.
@@ -90,7 +90,7 @@ public class TypeScript : ILanguage
         /// <returns>An array of configuration options.</returns>
         public override ConfigurationOption[] GetOptions()
         {
-            return base.GetOptions().Concat(_options).ToArray();
+            return [.. base.GetOptions(), .. _options];
         }
 
         public override void Parse(System.CommandLine.Parsing.ParseResult parseResult)
@@ -121,14 +121,14 @@ public class TypeScript : ILanguage
     }
 
     /// <summary>The systems named by display.</summary>
-    private static HashSet<string> _systemsNamedByDisplay = new HashSet<string>()
-    {
+    private static HashSet<string> _systemsNamedByDisplay =
+    [
         /// <summary>Units of Measure have incomprehensible codes after naming substitutions.</summary>
         "http://unitsofmeasure.org",
-    };
+    ];
 
-    private static HashSet<string> _systemsNamedByCode = new HashSet<string>()
-    {
+    private static HashSet<string> _systemsNamedByCode =
+    [
         /// <summary>Operation Outcomes include c-style string formats in display.</summary>
         "http://terminology.hl7.org/CodeSystem/operation-outcome",
 
@@ -161,7 +161,7 @@ public class TypeScript : ILanguage
 
         /// <summary>Display includes too many Unicode characters (invalid export names).</summary>
         "http://hl7.org/fhir/v2/0256",
-    };
+    ];
 
     /// <summary>FHIR information we are exporting.</summary>
     private DefinitionCollection _dc = null!;
@@ -183,22 +183,22 @@ public class TypeScript : ILanguage
     private string _namespace = string.Empty;
 
     /// <summary>The exported codes.</summary>
-    private HashSet<string> _exportedCodes = new HashSet<string>();
+    private HashSet<string> _exportedCodes = [];
 
     /// <summary>The exported resources.</summary>
-    private List<string> _exportedResources = new List<string>();
+    private List<string> _exportedResources = [];
 
     /// <summary>The currently in-use text writer.</summary>
     private ExportStreamWriter _writer = null!;
 
     /// <summary>The single file export extension.</summary>
-    private const string _singleFileExportExtension = ".ts";
+    private const string SingleFileExportExtension = ".ts";
 
     /// <summary>The minimum type script version.</summary>
     private string _minimumTypeScriptVersion = "3.7";
 
     /// <summary>Dictionary mapping FHIR primitive types to language equivalents.</summary>
-    private static readonly Dictionary<string, string> _primitiveTypeMap = new Dictionary<string, string>()
+    private static readonly Dictionary<string, string> _primitiveTypeMap = new()
         {
             { "base", "Object" },
             { "base64Binary", "string" },
@@ -226,24 +226,24 @@ public class TypeScript : ILanguage
 
     /// <summary>Gets the reserved words.</summary>
     /// <value>The reserved words.</value>
-    private static readonly HashSet<string> _reservedWords = new()
-    {
+    private static readonly HashSet<string> _reservedWords =
+    [
         "const",
         "enum",
         "export",
         "interface",
-    };
+    ];
 
-    private static readonly HashSet<string> _unexportableSystems = new()
-    {
+    private static readonly HashSet<string> _unexportableSystems =
+    [
         "http://www.rfc-editor.org/bcp/bcp13.txt",
         "http://hl7.org/fhir/ValueSet/mimetype",
         "http://hl7.org/fhir/ValueSet/mimetypes",
         "http://hl7.org/fhir/ValueSet/ucum-units",
-    };
+    ];
 
     /// <summary>The generics and type hints.</summary>
-    private static readonly Dictionary<string, GenericTypeHintInfo> _genericsAndTypeHints = new Dictionary<string, GenericTypeHintInfo>()
+    private static readonly Dictionary<string, GenericTypeHintInfo> _genericsAndTypeHints = new()
         {
             {
                 "Bundle",
@@ -310,14 +310,14 @@ public class TypeScript : ILanguage
 
         _includeNamespace = string.IsNullOrEmpty(config.Namespace);
 
-        _namespace = config.Namespace.Equals(_defaultNamespace, StringComparison.Ordinal)
+        _namespace = config.Namespace.Equals(DefaultNamespace, StringComparison.Ordinal)
             ? $"fhir{definitions.FhirSequence.ToRLiteral()}"
             : config.Namespace;
 
         _minimumTypeScriptVersion = config.MinTsVersion;
 
-        _exportedCodes = new HashSet<string>();
-        _exportedResources = new List<string>();
+        _exportedCodes = [];
+        _exportedResources = [];
 
         if (config.ExportStructures.Contains(CodeGenCommon.Models.FhirArtifactClassEnum.ValueSet))
         {
@@ -401,8 +401,8 @@ public class TypeScript : ILanguage
     private void WriteValueSets(
         IEnumerable<ValueSet> valueSets)
     {
-        Dictionary<string, WrittenCodeInfo> writtenCodesAndNames = new Dictionary<string, WrittenCodeInfo>();
-        HashSet<string> writtenNames = new HashSet<string>();
+        Dictionary<string, WrittenCodeInfo> writtenCodesAndNames = [];
+        HashSet<string> writtenNames = [];
 
         foreach (ValueSet vs in valueSets.OrderBy(v => v.Url))
         {
@@ -426,7 +426,7 @@ public class TypeScript : ILanguage
     /// <param name="vs">                  The value set.</param>
     /// <param name="writtenCodesAndNames">[in,out] The written codes, to prevent duplication
     ///  without writing all code systems.</param>
-    /// <param name="writtenNames">        [in,out] List of names of the writtens.</param>
+    /// <param name="writtenNames">        [in,out] List of names of ValueSets that have been written.</param>
     private void WriteValueSet(
         ValueSet vs,
         ref Dictionary<string, WrittenCodeInfo> writtenCodesAndNames,
@@ -522,7 +522,7 @@ public class TypeScript : ILanguage
         _writer.IncreaseIndent();
 
         bool prefixWithSystem = vs.cgReferencedCodeSystems().Count() > 1;
-        HashSet<string> usedValues = new HashSet<string>();
+        HashSet<string> usedValues = [];
 
         // TODO: shouldn't loop over this twice, but writer functions don't allow writing in two places at once yet
         foreach (FhirConcept concept in concepts)
@@ -733,35 +733,20 @@ public class TypeScript : ILanguage
     /// <summary>Determine if we should write resource name.</summary>
     /// <param name="name">The name.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    private static bool ShouldWriteResourceType(string name)
+    private static bool ShouldWriteResourceType(string name) => name switch
     {
-        switch (name)
-        {
-            case "Resource":
-            case "DomainResource":
-            case "MetadataResource":
-            case "CanonicalResource":
-                return false;
-        }
-
-        return true;
-    }
+        "Resource" or "DomainResource" or "MetadataResource" or "CanonicalResource" => false,
+        _ => true,
+    };
 
     /// <summary>Determine if the export should support generics</summary>
     /// <param name="name">The name.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    private static bool ShouldSupportGenerics(string name)
+    private static bool ShouldSupportGenerics(string name) => name switch
     {
-        switch (name)
-        {
-            case "Bundle":
-            case "Bundle.entry":
-            case "Bundle.entry.resource":
-                return true;
-        }
-
-        return false;
-    }
+        "Bundle" or "Bundle.entry" or "Bundle.entry.resource" => true,
+        _ => false,
+    };
 
     /// <summary>Writes the elements.</summary>
     /// <param name="cd">          The complex.</param>
@@ -770,7 +755,7 @@ public class TypeScript : ILanguage
         ComponentDefinition cd,
         out List<ElementDefinition> elementsWithCodes)
     {
-        elementsWithCodes = new List<ElementDefinition>();
+        elementsWithCodes = [];
 
         foreach (ElementDefinition ed in cd.Structure.cgElements(cd.Element.Path, true, false).Where(e => e.cgIsInherited(cd.Structure) == false).OrderBy(e => e.Path))
         {
@@ -803,7 +788,7 @@ public class TypeScript : ILanguage
         bool concatenatePath = false,
         string concatenationDelimiter = "")
     {
-        Dictionary<string, string> values = new Dictionary<string, string>();
+        Dictionary<string, string> values = [];
 
         string baseName = ed.cgName();
         bool isChoice = false;
@@ -857,10 +842,7 @@ public class TypeScript : ILanguage
 
                 string combined = $"{name}{type}";
 
-                if (!values.ContainsKey(combined))
-                {
-                    values.Add(combined, type);
-                }
+                _ = values.TryAdd(combined, type);
             }
         }
         else
@@ -894,10 +876,7 @@ public class TypeScript : ILanguage
 
             string cased = FhirSanitizationUtils.ToConvention(baseName, string.Empty, nameConvention, concatenatePath, concatenationDelimiter);
 
-            if (!values.ContainsKey(cased))
-            {
-                values.Add(cased, types);
-            }
+            _ = values.TryAdd(cased, types);
         }
 
         return values;
@@ -1016,13 +995,13 @@ public class TypeScript : ILanguage
         _writer.WriteLineIndented($"  // Interaction Naming Style: {NamingConvention.None}");
         //_writer.WriteLineIndented($"  // Extension Support: {_options.ExtensionSupport}");
 
-        if (_options.ExportStructures.Any())
+        if (_options.ExportStructures.Length != 0)
         {
             string restrictions = string.Join("|", _options.ExportStructures);
             _writer.WriteLine($"  // Export structures: {restrictions}");
         }
 
-        if (_options.ExportKeys.Any())
+        if (_options.ExportKeys.Count != 0)
         {
             string restrictions = string.Join("|", _options.ExportKeys);
             _writer.WriteLine($"  // Restricted to: {restrictions}");

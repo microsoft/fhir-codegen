@@ -10,10 +10,10 @@ namespace Microsoft.Health.Fhir.CodeGen.Models;
 
 public class NaturalComparer : IComparer<string>
 {
-    public static readonly NaturalComparer Instance = new NaturalComparer();
+    public static readonly NaturalComparer Instance = new();
 
     /// <summary>(Immutable) The tokenizer.</summary>
-    private static readonly Regex _tokenizer = new Regex(@"(\D+)|(\d+)", RegexOptions.Compiled);
+    private static readonly Regex _tokenizer = new(@"(\D+)|(\d+)", RegexOptions.Compiled);
 
     private const int _matchGroupAlphabetic = 1;
     private const int _matchGroupNumeric = 2;

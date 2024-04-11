@@ -7,7 +7,7 @@ using System.ComponentModel;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 
-namespace Microsoft.Health.Fhir.CodeGen.Lanugage.OpenApi;
+namespace Microsoft.Health.Fhir.CodeGen.Language.OpenApi;
 
 /// <summary>An open API common.</summary>
 public static class OpenApiCommon
@@ -181,8 +181,8 @@ public static class OpenApiCommon
     }
 
     /// <summary>The uncommon fields.</summary>
-    public static readonly HashSet<string> _uncommonFields = new HashSet<string>()
-    {
+    public static readonly HashSet<string> _uncommonFields =
+    [
         "Annotation.id",
         "Coding.version",
         "Coding.userSelected",
@@ -198,7 +198,7 @@ public static class OpenApiCommon
         "Reference.identifier",
         "SimpleQuantity.id",
         "Timing.id",
-    };
+    ];
 
     /// <summary>Dictionary mapping FHIR primitive types to language equivalents.</summary>
     public static readonly Dictionary<string, string> _primitiveTypeMap = new()
@@ -277,7 +277,7 @@ public static class OpenApiCommon
     //};
 
     /// <summary>(Immutable) The reserved words.</summary>
-    public static readonly HashSet<string> _reservedWords = new();
+    public static readonly HashSet<string> _reservedWords = [];
 
     /// <summary>(Immutable) Options for controlling the HTTP.</summary>
     public static readonly Dictionary<string, OpenApiParameter> _httpReadParameters;
@@ -307,22 +307,22 @@ public static class OpenApiCommon
     public static readonly Dictionary<string, OpenApiParameter> _httpResponseHeaders;
 
     /// <summary>(Immutable) The response codes read.</summary>
-    public static readonly int[] _responseCodesRead = new int[] { 200, 410, 404 };
+    public static readonly int[] _responseCodesRead = [200, 410, 404];
 
     /// <summary>(Immutable) The response codes conditional or patch.</summary>
-    public static readonly int[] _responseCodesConditionalOrPatch = new int[] { 200, 400, 401, 404, 412 };
+    public static readonly int[] _responseCodesConditionalOrPatch = [200, 400, 401, 404, 412];
 
     /// <summary>(Immutable) The response codes update.</summary>
-    public static readonly int[] _responseCodesUpdate = new int[] { 200, 400, 401, 404, 405, 409, 412, 422 };
+    public static readonly int[] _responseCodesUpdate = [200, 400, 401, 404, 405, 409, 412, 422];
 
     /// <summary>(Immutable) The response codes create.</summary>
-    public static readonly int[] _responseCodesCreate = new int[] { 200, 400, 404, 422 };
+    public static readonly int[] _responseCodesCreate = [200, 400, 404, 422];
 
     /// <summary>(Immutable) The response codes delete.</summary>
-    public static readonly int[] _responseCodesDelete = new int[] { 200, 202, 204, 400, 401, 404, 405, 409 };
+    public static readonly int[] _responseCodesDelete = [200, 202, 204, 400, 401, 404, 405, 409];
 
     /// <summary>(Immutable) The response codes search.</summary>
-    public static readonly int[] _responseCodesSearch = new int[] { 200, 400, 401, 405 };
+    public static readonly int[] _responseCodesSearch = [200, 400, 401, 405];
 
     /// <summary>The HTTP response descriptions.</summary>
     public static readonly Dictionary<int, string> _httpResponseDescriptions = new()

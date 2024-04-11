@@ -7,7 +7,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
-namespace Microsoft.Health.Fhir.CodeGen.Lanugage;
+namespace Microsoft.Health.Fhir.CodeGen.Language;
 
 public static class LanguageManager
 {
@@ -72,7 +72,7 @@ public static class LanguageManager
     public static void LoadLanguages()
     {
         // only load once
-        if (_languagesByName.Any())
+        if (_languagesByName.Count != 0)
         {
             return;
         }

@@ -18,7 +18,7 @@ public class CodeableConcept_43_50 : ICrossVersionProcessor<CodeableConcept>, IC
 
 	public CodeableConcept Extract(ISourceNode node)
 	{
-		CodeableConcept v = new();
+		CodeableConcept v = [];
 		foreach (ISourceNode child in node.Children())
 		{
 			Process(child, v);

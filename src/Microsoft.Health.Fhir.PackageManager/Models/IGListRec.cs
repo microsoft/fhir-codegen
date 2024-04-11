@@ -10,7 +10,7 @@ namespace Microsoft.Health.Fhir.PackageManager.Models;
 /// <summary>Information about FHIR Implementation Guides, from fhir-ig-list.json.</summary>
 internal class IGListRec
 {
-    public IEnumerable<GuideRec> Guides { get; set; } = Enumerable.Empty<GuideRec>();
+    public IEnumerable<GuideRec> Guides { get; set; } = [];
 
     public class GuideRec
     {
@@ -30,16 +30,16 @@ internal class IGListRec
         public string Authority { get; set; } = string.Empty;
 
         [JsonPropertyName("product")]
-        public string[] Product { get; set; } = Array.Empty<string>();
+        public string[] Product { get; set; } = [];
 
         [JsonPropertyName("country")]
         public string Country { get; set; } = string.Empty;
 
         [JsonPropertyName("language")]
-        public string[] Language { get; set; } = Array.Empty<string>();
+        public string[] Language { get; set; } = [];
 
         [JsonPropertyName("implementations")]
-        public Implementation[] Implementations { get; set; } = Array.Empty<Implementation>();
+        public Implementation[] Implementations { get; set; } = [];
 
         [JsonPropertyName("history")]
         public string History { get; set; } = string.Empty;
@@ -54,7 +54,7 @@ internal class IGListRec
         public Analysis? Analysis { get; set; } = null;
 
         [JsonPropertyName("editions")]
-        public Edition[] Editions { get; set; } = Array.Empty<Edition>();
+        public Edition[] Editions { get; set; } = [];
     }
 
     public class Analysis
@@ -135,7 +135,7 @@ internal class IGListRec
         public string Package { get; set; } = string.Empty;
 
         [JsonPropertyName("fhir-version")]
-        public string[] FhirVersion { get; set; } = Array.Empty<string>();
+        public string[] FhirVersion { get; set; } = [];
 
         [JsonPropertyName("url")]
         public string Url { get; set; } = string.Empty;

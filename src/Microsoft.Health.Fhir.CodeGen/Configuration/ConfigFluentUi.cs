@@ -11,20 +11,20 @@ namespace Microsoft.Health.Fhir.CodeGen.Configuration;
 public class ConfigFluentUi : ConfigRoot
 {
     /// <summary>(Immutable) The default user interface listen port.</summary>
-    private const int _defaultUiListenPort = 0;
+    private const int DefaultUiListenPort = 0;
 
     /// <summary>Gets or sets the listen port for the UI.</summary>
     [ConfigOption(
-        ArgAliases = new[] { "--port", "--listen-port" },
+        ArgAliases = ["--port", "--listen-port"],
         EnvName = "Listen_Port",
         Description = "Listen port for the web server.")]
-    public int UiListenPort { get; set; } = _defaultUiListenPort;
+    public int UiListenPort { get; set; } = DefaultUiListenPort;
 
     private static ConfigurationOption UiListenPortParameter { get; } = new()
     {
         Name = "ListenPort",
         EnvVarName = "Listen_Port",
-        DefaultValue = _defaultUiListenPort,
+        DefaultValue = DefaultUiListenPort,
         CliOption = new System.CommandLine.Option<int>(["--port", "--listen-port"], "Listen port for the web server.")
         {
             Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
@@ -35,7 +35,7 @@ public class ConfigFluentUi : ConfigRoot
 
     /// <summary>Gets or sets a value indicating whether the browser should be opened at launch.</summary>
     [ConfigOption(
-        ArgAliases = new[] { "--open-browser" },
+        ArgAliases = ["--open-browser"],
         EnvName = "Open_Browser",
         Description = "Open a browser once the server starts.")]
     public bool OpenBrowser { get; set; } = true;
@@ -52,11 +52,11 @@ public class ConfigFluentUi : ConfigRoot
         },
     };
 
-    private static readonly ConfigurationOption[] _options = new ConfigurationOption[]
-    {
+    private static readonly ConfigurationOption[] _options =
+    [
         UiListenPortParameter,
         OpenBrowserParameter,
-    };
+    ];
 
     /// <summary>
     /// Gets the configuration options for the current instance and its base class.
@@ -64,7 +64,7 @@ public class ConfigFluentUi : ConfigRoot
     /// <returns>An array of configuration options.</returns>
     public override ConfigurationOption[] GetOptions()
     {
-        return base.GetOptions().Concat(_options).ToArray();
+        return [.. base.GetOptions(), .. _options];
     }
 
     public override void Parse(System.CommandLine.Parsing.ParseResult parseResult)

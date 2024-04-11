@@ -10,7 +10,7 @@ namespace Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 /// <summary>A FHIR enum extensions.</summary>
 public static class FhirEnumExtensions
 {
-    private static Dictionary<Type, EnumValueLookups> _typeLookups = new ();
+    private static Dictionary<Type, EnumValueLookups> _typeLookups = [];
 
     /// <summary>An Enum extension method that converts a value to a literal.</summary>
     /// <param name="fhirEnum">The fhirEnumValue to act on.</param>
@@ -43,8 +43,8 @@ public static class FhirEnumExtensions
     {
         EnumValueLookups lookups = new ()
         {
-            EnumToString = new (),
-            StringToEnum = new (),
+            EnumToString = [],
+            StringToEnum = [],
         };
 
         foreach (Enum value in Enum.GetValues(type))
@@ -133,7 +133,7 @@ public static class FhirEnumExtensions
     {
         if (string.IsNullOrEmpty(literal))
         {
-            value = default(T);
+            value = default;
             return false;
         }
 
@@ -156,7 +156,7 @@ public static class FhirEnumExtensions
             return false;
         }
 
-        List<T> data = new();
+        List<T> data = [];
 
         foreach (string sourceVal in source)
         {
@@ -187,10 +187,10 @@ public static class FhirEnumExtensions
     {
         if (!(source?.Any() ?? false))
         {
-            return new();
+            return [];
         }
 
-        List<T> data = new();
+        List<T> data = [];
 
         foreach (string sourceVal in source)
         {
@@ -223,7 +223,7 @@ public static class FhirEnumExtensions
     {
         if (string.IsNullOrEmpty(literal))
         {
-            value = default(T);
+            value = default;
             return false;
         }
 
@@ -236,7 +236,7 @@ public static class FhirEnumExtensions
 
         if (!_typeLookups[enumType].StringToEnum.ContainsKey(literal))
         {
-            value = default(T);
+            value = default;
             return false;
         }
 

@@ -12,7 +12,7 @@ namespace Microsoft.Health.Fhir.CodeGen.Models;
 /// <content>Collection of definitions.</content>
 public partial class DefinitionCollection
 {
-    private readonly Dictionary<string, KeyValuePair<string, StructureDefinition>[]> _pathsWithSlices = new();
+    private readonly Dictionary<string, KeyValuePair<string, StructureDefinition>[]> _pathsWithSlices = [];
 
     /// <summary>Query if 'path' has slicing.</summary>
     /// <param name="path">Full pathname of the file.</param>

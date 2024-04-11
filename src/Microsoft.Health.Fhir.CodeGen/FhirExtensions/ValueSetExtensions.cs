@@ -59,17 +59,13 @@ public static class ValueSetExtensions
             return false;
         }
 
-        switch (vspc.Value)
+        return vspc.Value switch
         {
-            case FhirBoolean fb:
-                return (fb.Value == true);
-            case FhirString fs:
-                return fs.Value.Equals("true", StringComparison.OrdinalIgnoreCase) || fs.Value.Equals("-1", StringComparison.Ordinal);
-            case Integer i:
-                return i.Value == -1;
-            default:
-                return false;
-        }
+            FhirBoolean fb => (fb.Value == true),
+            FhirString fs => fs.Value.Equals("true", StringComparison.OrdinalIgnoreCase) || fs.Value.Equals("-1", StringComparison.Ordinal),
+            Integer i => i.Value == -1,
+            _ => false,
+        };
     }
 
     /// <summary>
@@ -110,7 +106,7 @@ public static class ValueSetExtensions
     /// <param name="vs">The ValueSet to act on.</param>
     /// <returns>An enumerable of string representing the referenced code systems.</returns>
     public static IEnumerable<string> cgReferencedCodeSystems(this ValueSet vs) =>
-        vs.Expansion?.Contains?.Select(c => c.System).Distinct() ?? vs.Compose?.Include?.Select(i => i.System).Distinct() ?? Enumerable.Empty<string>();
+        vs.Expansion?.Contains?.Select(c => c.System).Distinct() ?? vs.Compose?.Include?.Select(i => i.System).Distinct() ?? [];
 
     /// <summary>Gets the flat list of FhirConcepts from the ValueSet.</summary>
     /// <param name="vs">The ValueSet to act on.</param>
@@ -118,7 +114,7 @@ public static class ValueSetExtensions
     /// <returns>An enumerable of FhirConcept representing the flat list of concepts.</returns>
     public static IEnumerable<FhirConcept> cgGetFlatConcepts(this ValueSet vs, DefinitionCollection dc)
     {
-        if (!(vs.Expansion?.Contains.Any() ?? false))
+        if ((vs.Expansion == null) || (vs.Expansion.Contains.Count == 0))
         {
             yield break;
         }
@@ -153,7 +149,7 @@ public static class ValueSetExtensions
                     };
                 }
 
-                if (c.Contains.Any())
+                if (c.Contains.Count != 0)
                 {
                     foreach (FhirConcept fc in RecurseContains(c.Contains))
                     {

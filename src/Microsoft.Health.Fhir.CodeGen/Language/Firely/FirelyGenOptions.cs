@@ -8,7 +8,7 @@ using System.ComponentModel;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
 using Microsoft.Health.Fhir.CodeGen.Extensions;
 
-namespace Microsoft.Health.Fhir.CodeGen.Lanugage.Firely;
+namespace Microsoft.Health.Fhir.CodeGen.Language.Firely;
 
 /// <summary>Firely generation options.</summary>
 public class FirelyGenOptions : ConfigGenerate
@@ -69,11 +69,11 @@ public class FirelyGenOptions : ConfigGenerate
     };
 
     private static readonly ConfigurationOption[] _options =
-    {
+    [
         SubsetParameter,
         ExportFiveWsParameter,
         CqlModelParameter,
-    };
+    ];
 
 
     /// <summary>
@@ -82,7 +82,7 @@ public class FirelyGenOptions : ConfigGenerate
     /// <returns>An array of configuration options.</returns>
     public override ConfigurationOption[] GetOptions()
     {
-        return base.GetOptions().Concat(_options).ToArray();
+        return [.. base.GetOptions(), .. _options];
     }
 
     public override void Parse(System.CommandLine.Parsing.ParseResult parseResult)

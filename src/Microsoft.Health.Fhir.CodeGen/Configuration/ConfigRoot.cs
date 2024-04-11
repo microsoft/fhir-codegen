@@ -43,7 +43,7 @@ public class ConfigRoot : ICodeGenConfig
     /// Gets or sets the pathname of the output directory.
     /// </summary>
     [ConfigOption(
-        ArgAliases = new[] { "--output-path", "--output-directory", "--output-dir" },
+        ArgAliases = ["--output-path", "--output-directory", "--output-dir"],
         EnvName = "Output_Path",
         Description = "File or directory to write output.")]
     public string OutputDirectory { get; set; } = "./generated";
@@ -67,11 +67,11 @@ public class ConfigRoot : ICodeGenConfig
     /// Gets or sets the packages to load.
     /// </summary>
     [ConfigOption(
-        ArgAliases = new[] { "--package", "--load-package", "-p" },
+        ArgAliases = ["--package", "--load-package", "-p"],
         EnvName = "Load_Package",
         ArgArity = "0..*",
         Description = "Package to load, either as directive ([name]#[version/literal]) or URL.")]
-    public string[] Packages { get; set; } = Array.Empty<string>();
+    public string[] Packages { get; set; } = [];
 
     /// <summary>
     /// Gets or sets the configuration option for the packages to load.
@@ -115,12 +115,12 @@ public class ConfigRoot : ICodeGenConfig
     /// Gets all the configuration options.
     /// </summary>
     private static readonly ConfigurationOption[] _options =
-    {
+    [
         FhirCacheDirectoryParameter,
         OutputDirectoryParameter,
         PackagesParameter,
         OfflineModeParameter,
-    };
+    ];
 
     /// <summary>
     /// Gets the array of configuration options.
@@ -165,7 +165,7 @@ public class ConfigRoot : ICodeGenConfig
             return defaultValue;
         }
 
-        List<T> values = new();
+        List<T> values = [];
 
         if (parsed is T[] array)
         {
@@ -200,12 +200,12 @@ public class ConfigRoot : ICodeGenConfig
         }
 
         // if no values were added, return the default - parser cannot tell the difference between no values and default values
-        if (!values.Any())
+        if (values.Count == 0)
         {
             return defaultValue;
         }
 
-        return values.ToArray();
+        return [.. values];
     }
 
     internal HashSet<T> GetOptHash<T>(
@@ -225,7 +225,7 @@ public class ConfigRoot : ICodeGenConfig
             return defaultValue;
         }
 
-        HashSet<T> values = new();
+        HashSet<T> values = [];
 
         if (parsed is IEnumerator<T> typed)
         {
@@ -241,7 +241,7 @@ public class ConfigRoot : ICodeGenConfig
         }
 
         // if no values were added, return the default - parser cannot tell the difference between no values and default values
-        if (!values.Any())
+        if (values.Count == 0)
         {
             return defaultValue;
         }

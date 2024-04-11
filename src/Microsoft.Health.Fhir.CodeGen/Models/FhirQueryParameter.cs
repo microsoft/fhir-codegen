@@ -22,5 +22,5 @@ public record class FhirQueryParameter
     public required SearchParamType ParamType { get; init; }
 
     /// <summary>Gets or initializes the allowed values.</summary>
-    public IEnumerable<string> AllowedValues { get; init; } = Enumerable.Empty<string>();
+    public IEnumerable<string> AllowedValues { get; init; } = [];
 }

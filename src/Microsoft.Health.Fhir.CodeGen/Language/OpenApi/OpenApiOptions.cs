@@ -5,9 +5,9 @@
 
 using Microsoft.Health.Fhir.CodeGen.Configuration;
 using Microsoft.Health.Fhir.CodeGen.Extensions;
-using static Microsoft.Health.Fhir.CodeGen.Lanugage.OpenApi.OpenApiCommon;
+using static Microsoft.Health.Fhir.CodeGen.Language.OpenApi.OpenApiCommon;
 
-namespace Microsoft.Health.Fhir.CodeGen.Lanugage.OpenApi;
+namespace Microsoft.Health.Fhir.CodeGen.Language.OpenApi;
 
 /// <summary>An open API options.</summary>
 public class OpenApiOptions : ConfigGenerate
@@ -64,11 +64,11 @@ public class OpenApiOptions : ConfigGenerate
     };
 
     private static readonly ConfigurationOption[] _options =
-    {
+    [
         OpenApiVersionParameter,
         FileFormatParameter,
         ExtensionSupportParameter,
-    };
+    ];
 
 
     /// <summary>
@@ -77,7 +77,7 @@ public class OpenApiOptions : ConfigGenerate
     /// <returns>An array of configuration options.</returns>
     public override ConfigurationOption[] GetOptions()
     {
-        return base.GetOptions().Concat(_options).ToArray();
+        return [.. base.GetOptions(), .. _options];
     }
 
     public override void Parse(System.CommandLine.Parsing.ParseResult parseResult)

@@ -5,8 +5,8 @@
 
 
 using FluentAssertions;
-using Microsoft.Health.Fhir.CodeGen.Lanugage;
-using Microsoft.Health.Fhir.CodeGen.Lanugage.Info;
+using Microsoft.Health.Fhir.CodeGen.Language;
+using Microsoft.Health.Fhir.CodeGen.Language.Info;
 using Microsoft.Health.Fhir.CodeGen.Loader;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGen.Tests.Extensions;
@@ -49,38 +49,38 @@ public class GenerationTestFixture
             CachePath = "~/.fhir",
         });
 
-        EntriesR5 = new List<PackageCacheEntry>()
-        {
+        EntriesR5 =
+        [
             Load("hl7.fhir.r5.core#5.0.0"),
             Load("hl7.fhir.r5.expansions#5.0.0"),
             Load("hl7.fhir.uv.extensions#1.0.0"),
-        };
+        ];
 
-        EntriesR4B = new List<PackageCacheEntry>()
-        {
+        EntriesR4B =
+        [
             Load("hl7.fhir.r4b.core#4.3.0"),
             Load("hl7.fhir.r4b.expansions#4.3.0"),
             Load("hl7.fhir.uv.extensions#1.0.0"),
-        };
+        ];
 
-        EntriesR4 = new List<PackageCacheEntry>()
-        {
+        EntriesR4 =
+        [
             Load("hl7.fhir.r4.core#4.0.1"),
             Load("hl7.fhir.r4.expansions#4.0.1"),
             Load("hl7.fhir.uv.extensions#1.0.0"),
-        };
+        ];
 
-        EntriesR3 = new List<PackageCacheEntry>()
-        {
+        EntriesR3 =
+        [
             Load("hl7.fhir.r3.core#3.0.2"),
             Load("hl7.fhir.r3.expansions#3.0.2"),
-        };
+        ];
 
-        EntriesR2 = new List<PackageCacheEntry>()
-        {
+        EntriesR2 =
+        [
             Load("hl7.fhir.r2.core#1.0.2"),
             Load("hl7.fhir.r2.expansions#1.0.2"),
-        };
+        ];
     }
 
     /// <summary>Loads.</summary>
@@ -89,12 +89,8 @@ public class GenerationTestFixture
     /// <returns>A PackageCacheEntry.</returns>
     private PackageCacheEntry Load(string directive)
     {
-        PackageCacheEntry? p = Cache.FindOrDownloadPackageByDirective(directive, false).Result;
-
-        if (p == null)
-        {
-            throw new Exception($"Failed to load {directive}");
-        }
+        PackageCacheEntry? p = Cache.FindOrDownloadPackageByDirective(directive, false).Result
+            ?? throw new Exception($"Failed to load {directive}");
 
         return (PackageCacheEntry)p;
     }
@@ -154,8 +150,10 @@ public class GenerationTestsR5 : IClassFixture<GenerationTestFixture>
                 case "Info":
                     {
                         LangInfo exportLang = new();
-                        LangInfo.InfoOptions options = new();
-                        options.WriteStream = ms;
+                        LangInfo.InfoOptions options = new()
+                        {
+                            WriteStream = ms
+                        };
                         exportLang.Export(options, _loaded);
                     }
                     break;
@@ -163,8 +161,10 @@ public class GenerationTestsR5 : IClassFixture<GenerationTestFixture>
                 case "TypeScript":
                     {
                         TypeScript exportLang = new();
-                        TypeScript.TypeScriptOptions options = new();
-                        options.WriteStream = ms;
+                        TypeScript.TypeScriptOptions options = new()
+                        {
+                            WriteStream = ms,
+                        };
                         exportLang.Export(options, _loaded);
                     }
                     break;
@@ -248,8 +248,10 @@ public class GenerationTestsR4B : IClassFixture<GenerationTestFixture>
                 case "Info":
                     {
                         LangInfo exportLang = new();
-                        LangInfo.InfoOptions options = new();
-                        options.WriteStream = ms;
+                        LangInfo.InfoOptions options = new()
+                        {
+                            WriteStream = ms
+                        };
                         exportLang.Export(options, _loaded);
                     }
                     break;
@@ -257,8 +259,10 @@ public class GenerationTestsR4B : IClassFixture<GenerationTestFixture>
                 case "TypeScript":
                     {
                         TypeScript exportLang = new();
-                        TypeScript.TypeScriptOptions options = new();
-                        options.WriteStream = ms;
+                        TypeScript.TypeScriptOptions options = new()
+                        {
+                            WriteStream = ms
+                        };
                         exportLang.Export(options, _loaded);
                     }
                     break;
@@ -342,8 +346,10 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
                 case "Info":
                     {
                         LangInfo exportLang = new();
-                        LangInfo.InfoOptions options = new();
-                        options.WriteStream = ms;
+                        LangInfo.InfoOptions options = new()
+                        {
+                            WriteStream = ms
+                        };
                         exportLang.Export(options, _loaded);
                     }
                     break;
@@ -351,8 +357,10 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
                 case "TypeScript":
                     {
                         TypeScript exportLang = new();
-                        TypeScript.TypeScriptOptions options = new();
-                        options.WriteStream = ms;
+                        TypeScript.TypeScriptOptions options = new()
+                        {
+                            WriteStream = ms
+                        };
                         exportLang.Export(options, _loaded);
                     }
                     break;
@@ -436,8 +444,10 @@ public class GenerationTestsR3 : IClassFixture<GenerationTestFixture>
                 case "Info":
                     {
                         LangInfo exportLang = new();
-                        LangInfo.InfoOptions options = new();
-                        options.WriteStream = ms;
+                        LangInfo.InfoOptions options = new()
+                        {
+                            WriteStream = ms
+                        };
                         exportLang.Export(options, _loaded);
                     }
                     break;
@@ -445,8 +455,10 @@ public class GenerationTestsR3 : IClassFixture<GenerationTestFixture>
                 case "TypeScript":
                     {
                         TypeScript exportLang = new();
-                        TypeScript.TypeScriptOptions options = new();
-                        options.WriteStream = ms;
+                        TypeScript.TypeScriptOptions options = new()
+                        {
+                            WriteStream = ms
+                        };
                         exportLang.Export(options, _loaded);
                     }
                     break;
@@ -530,8 +542,10 @@ public class GenerationTestsR2 : IClassFixture<GenerationTestFixture>
                 case "Info":
                     {
                         LangInfo exportLang = new();
-                        LangInfo.InfoOptions options = new();
-                        options.WriteStream = ms;
+                        LangInfo.InfoOptions options = new()
+                        {
+                            WriteStream = ms
+                        };
                         exportLang.Export(options, _loaded);
                     }
                     break;
@@ -539,8 +553,10 @@ public class GenerationTestsR2 : IClassFixture<GenerationTestFixture>
                 case "TypeScript":
                     {
                         TypeScript exportLang = new();
-                        TypeScript.TypeScriptOptions options = new();
-                        options.WriteStream = ms;
+                        TypeScript.TypeScriptOptions options = new()
+                        {
+                            WriteStream = ms
+                        };
                         exportLang.Export(options, _loaded);
                     }
                     break;

@@ -79,12 +79,12 @@ public record class ComponentDefinition
     {
         string path = Element.Path + (name.StartsWith('.') ? name : "." + name);
 
-        if (Structure.Snapshot?.Element.Any() ?? false)
+        if ((Structure.Snapshot != null) && (Structure.Snapshot.Element.Count != 0))
         {
             return Structure.Snapshot.Element.FirstOrDefault(e => e.Path == path);
         }
 
-        if (Structure.Differential?.Element.Any() ?? false)
+        if ((Structure.Differential != null) && (Structure.Differential.Element.Count != 0))
         {
             return Structure.Differential.Element.FirstOrDefault(e => e.Path == path);
         }

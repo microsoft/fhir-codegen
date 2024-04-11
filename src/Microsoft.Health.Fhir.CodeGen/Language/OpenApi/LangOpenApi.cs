@@ -5,9 +5,9 @@
 
 using System.CommandLine;
 using Microsoft.Health.Fhir.CodeGen.Models;
-using static Microsoft.Health.Fhir.CodeGen.Lanugage.OpenApi.OpenApiCommon;
+using static Microsoft.Health.Fhir.CodeGen.Language.OpenApi.OpenApiCommon;
 
-namespace Microsoft.Health.Fhir.CodeGen.Lanugage.OpenApi;
+namespace Microsoft.Health.Fhir.CodeGen.Language.OpenApi;
 
 /// <summary>Class used to export OpenAPI definitions.</summary>
 public class LangOpenApi : ILanguage

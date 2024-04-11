@@ -17,16 +17,19 @@ public static class StructureDefPrimitive
     /// <summary>
     /// Get the Short definition of a Primitive datatype (may differ from Description).
     /// </summary>
-    public static string cgpShort(this StructureDefinition sd) =>
-        (sd.Snapshot?.Element.Any() ?? false) ? sd.Snapshot.Element[0].Short : sd.Differential.Element.Any() ? sd.Differential.Element[0].Short : sd.Description;
+    public static string cgpShort(this StructureDefinition sd) => (sd.Snapshot != null) && (sd.Snapshot.Element.Count != 0) 
+        ? sd.Snapshot.Element[0].Short 
+        : sd.Differential.Element.Count != 0 ? sd.Differential.Element[0].Short : sd.Description;
 
     /// <summary>Get the Definition of a primitive datatype (may differ from Purpose).</summary>
-    public static string cgpDefinition(this StructureDefinition sd) =>
-        (sd.Snapshot?.Element.Any() ?? false) ? sd.Snapshot.Element[0].Definition : sd.Differential.Element.Any() ? sd.Differential.Element[0].Definition : sd.Purpose;
+    public static string cgpDefinition(this StructureDefinition sd) => (sd.Snapshot != null) && (sd.Snapshot.Element.Count != 0) 
+        ? sd.Snapshot.Element[0].Definition 
+        : sd.Differential.Element.Count != 0 ? sd.Differential.Element[0].Definition : sd.Purpose;
 
     /// <summary>Get the comment for a primitive datatype.</summary>
-    public static string cgpComment(this StructureDefinition sd) =>
-        (sd.Snapshot?.Element.Any() ?? false) ? sd.Snapshot.Element[0].Comment : sd.Differential.Element.Any() ? sd.Differential.Element[0].Comment : string.Empty;
+    public static string cgpComment(this StructureDefinition sd) => (sd.Snapshot != null) && (sd.Snapshot.Element.Count != 0) 
+        ? sd.Snapshot.Element[0].Comment 
+        : sd.Differential.Element.Count != 0 ? sd.Differential.Element[0].Comment : string.Empty;
 
     /// <summary>Get the system type for a primitive datatype.</summary>
     public static string cgpSystemType(this StructureDefinition sd) => sd.Differential.Element.Count > 1
@@ -44,7 +47,7 @@ public static class StructureDefPrimitive
         : sd.Name;
 
     /// <summary>Get the validation regex string for a primitive datatype.</summary>
-    public static string cgpValidationRegEx(this StructureDefinition sd) => sd.Differential.Element.Count > 1 && sd.Differential.Element[1].Type.Any()
+    public static string cgpValidationRegEx(this StructureDefinition sd) => sd.Differential.Element.Count > 1 && sd.Differential.Element[1].Type.Count != 0
         ? sd.Differential.Element[1].Type.First().GetExtensionValue<FhirString>(CommonDefinitions.ExtUrlSdRegex)?.ToString()
             ?? sd.Differential.Element[1].Type.First().GetExtensionValue<FhirString>(CommonDefinitions.ExtUrlSdRegex2)?.ToString()
             ?? string.Empty

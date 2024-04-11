@@ -32,7 +32,7 @@ public static class StructureDefSlicing
         bool includeRoot = true)
     {
         string sliceId = $"{slicingEd.Path}:{sliceName}";
-        return (sd.Snapshot?.Element.Any() ?? false)
+        return (sd.Snapshot != null) && (sd.Snapshot.Element.Count != 0)
             ? sd.Snapshot.Element.Where(e => e.ElementId.StartsWith(sliceId, StringComparison.Ordinal)).Skip(includeRoot ? 0 : 1)
             : sd.Differential.Element.Where(e => e.ElementId.StartsWith(sliceId, StringComparison.Ordinal)).Skip(includeRoot ? 0 : 1);
     }
@@ -53,10 +53,10 @@ public static class StructureDefSlicing
         string sliceName,
         IEnumerable<ElementDefinition> sliceElements)
     {
-        List<SliceDiscriminator> result = new();
+        List<SliceDiscriminator> result = [];
 
         if ((slicingEd.Slicing == null) ||
-            (!slicingEd.Slicing.Discriminator.Any()))
+            (slicingEd.Slicing.Discriminator.Count == 0))
         {
             return result;
         }
@@ -172,7 +172,7 @@ public static class StructureDefSlicing
         string sliceName,
         IEnumerable<ElementDefinition> sliceElements)
     {
-        List<SliceDiscriminator> result = new();
+        List<SliceDiscriminator> result = [];
         string relativePath = GetRelativePath(slicingEd.Path, discriminator.Path, out string postResolve);
 
         string id = $"{slicingEd.Path}:{sliceName}{relativePath}";
@@ -194,7 +194,7 @@ public static class StructureDefSlicing
             }
         }
 
-        if (result.Any())
+        if (result.Count != 0)
         {
             return result;
         }
@@ -260,7 +260,7 @@ public static class StructureDefSlicing
         string sliceName,
         IEnumerable<ElementDefinition> sliceElements)
     {
-        List<SliceDiscriminator> result = new();
+        List<SliceDiscriminator> result = [];
         string relativePath = GetRelativePath(slicingEd.Path, discriminator.Path, out string postResolve);
 
         string id = $"{slicingEd.Path}:{sliceName}{relativePath}";
@@ -279,7 +279,7 @@ public static class StructureDefSlicing
             });
         }
 
-        if (result.Any())
+        if (result.Count != 0)
         {
             return result;
         }
@@ -323,7 +323,7 @@ public static class StructureDefSlicing
         string sliceName,
         IEnumerable<ElementDefinition> sliceElements)
     {
-        List<SliceDiscriminator> result = new();
+        List<SliceDiscriminator> result = [];
         string relativePath = GetRelativePath(slicingEd.Path, discriminator.Path, out string postResolve);
 
         string id = $"{slicingEd.Path}:{sliceName}{relativePath}";
@@ -347,7 +347,7 @@ public static class StructureDefSlicing
             }
         }
 
-        if (result.Any())
+        if (result.Count != 0)
         {
             return result;
         }
@@ -415,7 +415,7 @@ public static class StructureDefSlicing
         string sliceName,
         IEnumerable<ElementDefinition> sliceElements)
     {
-        List<SliceDiscriminator> result = new();
+        List<SliceDiscriminator> result = [];
         string relativePath = GetRelativePath(slicingEd.Path, discriminator.Path, out string postResolve);
 
         string id = $"{slicingEd.Path}:{sliceName}{relativePath}";
@@ -463,7 +463,7 @@ public static class StructureDefSlicing
                     postResolve,
                     ed.Path);
 
-                if (resolvedSlices.Any())
+                if (resolvedSlices.Count != 0)
                 {
                     result.AddRange(resolvedSlices);
                     continue;
@@ -471,7 +471,7 @@ public static class StructureDefSlicing
             }
         }
 
-        if (result.Any())
+        if (result.Count != 0)
         {
             return result;
         }
@@ -500,7 +500,7 @@ public static class StructureDefSlicing
             }
         }
 
-        if (result.Any())
+        if (result.Count != 0)
         {
             return result;
         }
@@ -574,11 +574,11 @@ public static class StructureDefSlicing
         string sliceName,
         string postResolve)
     {
-        List<SliceDiscriminator> result = new();
+        List<SliceDiscriminator> result = [];
 
         foreach (ElementDefinition.TypeRefComponent tr in typeComponents)
         {
-            if (!tr.ProfileElement.Any())
+            if (tr.ProfileElement.Count == 0)
             {
                 continue;
             }
@@ -700,7 +700,7 @@ public static class StructureDefSlicing
         string postResolve,
         string sourcePath)
     {
-        List<SliceDiscriminator> result = new();
+        List<SliceDiscriminator> result = [];
 
         foreach (ElementDefinition.TypeRefComponent tr in typeComponents)
         {

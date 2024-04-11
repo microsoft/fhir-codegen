@@ -20,7 +20,7 @@ public record class FhirPackageClientSettings
     /// Gets or initializes additional registry urls (default includes pacakges.fhir.org and
     /// packages2.fhir.org).
     /// </summary>
-    public IEnumerable<string> AdditionalRegistryUrls { get; init; } = Enumerable.Empty<string>();
+    public IEnumerable<string> AdditionalRegistryUrls { get; init; } = [];
 
     /// <summary>
     /// Gets or initializes a value indicating whether to use offline mode (only use the local cache).

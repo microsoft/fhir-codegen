@@ -102,14 +102,14 @@ public record class CachePackageManifest
     /// balloted packages.
     /// </remarks>
     [JsonPropertyName("fhirVersions")]
-    public IEnumerable<string> FhirVersions { get; init; } = Enumerable.Empty<string>();
+    public IEnumerable<string> FhirVersions { get; init; } = [];
 
     /// <summary>Gets or initializes a list of FHIR versions.</summary>
     /// <remarks>
     /// Older packages (including R4 release) use this.
     /// </remarks>
     [JsonPropertyName("fhir-version-list")]
-    public IEnumerable<string> FhirVersionList { get; init; } = Enumerable.Empty<string>();
+    public IEnumerable<string> FhirVersionList { get; init; } = [];
 
     /// <summary>Gets the FHIR versions.</summary>
     [JsonIgnore]
@@ -143,11 +143,11 @@ public record class CachePackageManifest
 
     /// <summary>Gets or sets the package dependencies - keys are package names, values are package versions.</summary>
     [JsonPropertyName("dependencies")]
-    public Dictionary<string, string> Dependencies { get; init; } = new Dictionary<string, string>();
+    public Dictionary<string, string> Dependencies { get; init; } = [];
 
     /// <summary>Gets the keywords.</summary>
     [JsonPropertyName("keywords")]
-    public IEnumerable<string> Keywords { get; init; } = Enumerable.Empty<string>();
+    public IEnumerable<string> Keywords { get; init; } = [];
 
     /// <summary>Gets or sets the author.</summary>
     [JsonPropertyName("author")]
@@ -155,7 +155,7 @@ public record class CachePackageManifest
 
     /// <summary>Gets or sets the mantainers.</summary>
     [JsonPropertyName("maintainers")]
-    public IEnumerable<PackageMantainer> Mantainers { get; init; } = Enumerable.Empty<PackageMantainer>();
+    public IEnumerable<PackageMantainer> Mantainers { get; init; } = [];
 
     /// <summary>Gets or sets the SPDX-convention license name.</summary>
     [JsonPropertyName("license")]
@@ -189,7 +189,7 @@ public record class CachePackageManifest
     ///  https://confluence.hl7.org/pages/viewpage.action?pageId=35718629#NPMPackageSpecification-Packagemanifest.
     /// </remarks>
     [JsonPropertyName("directories")]
-    public Dictionary<string, string> Directories { get; init; } = new Dictionary<string, string>();
+    public Dictionary<string, string> Directories { get; init; } = [];
 
     /// <summary>Gets or sets the date.</summary>
     /// <remarks>TODO: not documented at https://confluence.hl7.org/pages/viewpage.action?pageId=35718629#NPMPackageSpecification-Packagemanifest </remarks>
