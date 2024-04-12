@@ -504,6 +504,7 @@ public abstract partial class FhirSanitizationUtils
         StringBuilder sb = new();
 
         int charsLen = chars.Length;
+        string? rValue;
 
         for (int i = 0; i < charsLen; i++)
         {
@@ -513,9 +514,9 @@ public abstract partial class FhirSanitizationUtils
             if (i + 2 < charsLen)
             {
                 v = [ch, chars[i + 1], chars[i + 2]];
-                if (replacements.ContainsKey(v))
+                if (replacements.TryGetValue(v, out rValue))
                 {
-                    sb.Append(replacements[v]);
+                    sb.Append(rValue);
                     i += 2;                 // skip two *additional* characters
                     continue;
                 }
@@ -524,18 +525,18 @@ public abstract partial class FhirSanitizationUtils
             if (i + 1 < charsLen)
             {
                 v = [ch, chars[i + 1]];
-                if (replacements.ContainsKey(v))
+                if (replacements.TryGetValue(v, out rValue))
                 {
-                    sb.Append(replacements[v]);
+                    sb.Append(rValue);
                     i += 1;                // skip one *additional* character
                     continue;
                 }
             }
 
             v = [ch];
-            if (replacements.ContainsKey(v))
+            if (replacements.TryGetValue(v, out rValue))
             {
-                sb.Append(replacements[v]);
+                sb.Append(rValue);
                 continue;
             }
 

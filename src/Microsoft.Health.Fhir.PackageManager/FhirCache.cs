@@ -27,6 +27,9 @@ namespace Microsoft.Health.Fhir.PackageManager;
 /// <summary>A FHIR cache.</summary>
 public partial class FhirCache : IFhirPackageClient, IDisposable
 {
+    private const string WarningMsgDefault = "{Function} <<< caught exception: {Message}, inner: {Inner}";
+    private const string WarningMsgEx = "{Function} <<< {Info} caught exception: {Message}, inner: {Inner}";
+
     /// <summary>Information about a package in the cache.</summary>
     internal readonly record struct PackageCacheRecord(
         string CacheDirective,
@@ -399,14 +402,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
         }
         catch (Exception ex)
         {
-            if (ex.InnerException == null)
-            {
-                _logger.LogInformation($"AddLocalPackage <<< exception processing: {packageFilename}: {ex.Message}");
-            }
-            else
-            {
-                _logger.LogInformation($"AddLocalPackage <<< exception processing: {packageFilename}: {ex.Message}.  {ex.InnerException.Message}");
-            }
+            _logger.LogWarning(WarningMsgEx, nameof(AddLocalPackage), "processing " + packageFilename, ex.Message, ex.InnerException?.Message ?? string.Empty);
         }
 
         // make sure to clean our directory so we don't load a partial package on next run
@@ -541,14 +537,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
         }
         catch (Exception ex)
         {
-            if (ex.InnerException == null)
-            {
-                _logger.LogWarning($"GetManifest <<< caught exception: {ex.Message}");
-            }
-            else
-            {
-                _logger.LogWarning($"GetManifest <<< caught exception: {ex.Message}, inner: {ex.InnerException.Message}");
-            }
+            _logger.LogWarning(WarningMsgDefault, nameof(GetManifest), ex.Message, ex.InnerException?.Message ?? string.Empty);
         }
 
         return null;
@@ -585,14 +574,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
         }
         catch (Exception ex)
         {
-            if (ex.InnerException == null)
-            {
-                _logger.LogWarning($"GetIndexedContents <<< caught exception: {ex.Message}");
-            }
-            else
-            {
-                _logger.LogWarning($"GetIndexedContents <<< caught exception: {ex.Message}, inner: {ex.InnerException.Message}");
-            }
+            _logger.LogWarning(WarningMsgDefault, nameof(GetIndexedContents), ex.Message, ex.InnerException?.Message ?? string.Empty);
         }
 
         return null;
@@ -1486,15 +1468,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
         }
         catch (Exception ex)
         {
-            if (ex.InnerException == null)
-            {
-                _logger.LogWarning($"TryFetchManifestInfo <<< caught exception: {ex.Message}");
-            }
-            else
-            {
-                _logger.LogWarning($"TryFetchManifestInfo <<< caught exception: {ex.Message}, inner: {ex.InnerException.Message}");
-            }
-
+            _logger.LogWarning(WarningMsgDefault, nameof(TryFetchManifestInfo), ex.Message, ex.InnerException?.Message ?? string.Empty);
             details = null;
             return false;
         }
@@ -1536,15 +1510,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
         }
         catch (Exception ex)
         {
-            if (ex.InnerException == null)
-            {
-                _logger.LogWarning($"TryFetchVersionInfo <<< caught exception: {ex.Message}");
-            }
-            else
-            {
-                _logger.LogWarning($"TryFetchVersionInfo <<< caught exception: {ex.Message}, inner: {ex.InnerException.Message}");
-            }
-
+            _logger.LogWarning(WarningMsgDefault, nameof(TryFetchVersionInfo), ex.Message, ex.InnerException?.Message ?? string.Empty);
             info = null;
             return false;
         }
@@ -1720,15 +1686,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
         }
         catch (Exception ex)
         {
-            if (ex.InnerException == null)
-            {
-                _logger.LogWarning($"TryParseHl7ProdUrl <<< caught exception: {ex.Message}");
-            }
-            else
-            {
-                _logger.LogWarning($"TryParseHl7ProdUrl <<< caught exception: {ex.Message}, inner: {ex.InnerException.Message}");
-            }
-
+            _logger.LogWarning(WarningMsgDefault, nameof(TryParseHl7ProdUrl), ex.Message, ex.InnerException?.Message ?? string.Empty);
             directive = null;
             return false;
         }
@@ -2087,7 +2045,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
                 (ciVersion == null))
             {
                 // not found just means the build does not exist
-                _logger.LogWarning($"TryResolveCi <<< failed to parse version.info");
+                _logger.LogWarning("{Function} <<< failed to parse version.info for directive {Directive}", nameof(TryResolveCi), directive.Directive);
                 return false;
             }
 
@@ -2123,30 +2081,16 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
                 if (h.StatusCode == HttpStatusCode.NotFound)
                 {
                     // not found just means the build does not exist
-                    _logger.LogWarning($"TryResolveCi <<< ci build of {directive.PackageId}${directive.CiBranch} does not exist!");
+                    _logger.LogWarning("{Function} <<< ci build of {PackageId}${CiBranch} does not exist", nameof(TryResolveCi), directive.PackageId, directive.CiBranch);
                     return false;
                 }
             }
 
-            if (s.InnerException != null)
-            {
-                _logger.LogError($"TryResolveCi <<< processing {directive.PackageId}${directive.CiBranch} - caught: {s.Message}, inner: {s.InnerException.Message}");
-            }
-            else
-            {
-                _logger.LogError($"TryResolveCi <<< processing {directive.PackageId}${directive.CiBranch} - caught: {s.Message}");
-            }
+            _logger.LogWarning(WarningMsgDefault, nameof(TryResolveCi), s.Message, s.InnerException?.Message ?? string.Empty);
         }
         catch (Exception ex)
         {
-            if (ex.InnerException != null)
-            {
-                _logger.LogError($"TryResolveCi <<< processing {directive.PackageId}${directive.CiBranch} - caught: {ex.Message}, inner: {ex.InnerException.Message}");
-            }
-            else
-            {
-                _logger.LogError($"TryResolveCi <<< processing {directive.PackageId}${directive.CiBranch} - caught: {ex.Message}");
-            }
+            _logger.LogWarning(WarningMsgDefault, nameof(TryResolveCi), ex.Message, ex.InnerException?.Message ?? string.Empty);
         }
 
         // still here means nothing was found successfully
@@ -2282,7 +2226,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
 
             if (matching.Count() > 1)
             {
-                _logger.LogWarning($"TryResolveCi <<< multiple matches for {directive.PackageId}${directive.CiBranch}");
+                _logger.LogWarning("{Function} <<< multiple matches for {PackageId}${CiBranch}", nameof(TryResolveCiIg), directive.PackageId, directive.CiBranch);
             }
 
             FhirQasRec match = matching
@@ -2295,11 +2239,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
         }
         catch (Exception ex)
         {
-            _logger.LogError($"TryResolveCi <<< processing {directive.PackageId}${directive.CiBranch} - caught: {ex.Message}");
-            if (ex.InnerException != null)
-            {
-                _logger.LogError($" <<< {ex.InnerException.Message}");
-            }
+            _logger.LogWarning(WarningMsgEx, nameof(TryResolveCi), $"processing {directive.PackageId}${directive.CiBranch}", ex.Message, ex.InnerException?.Message ?? string.Empty);
         }
 
         // still here means nothing was found successfully
@@ -3001,7 +2941,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
         if ((directive.CatalogEntries.Count == 0) &&
             (!TryCatalogSearch(ref directive)))
         {
-            _logger.LogWarning($"TryResolveIgName <<< catalog search failed for package: {directive.PackageId}!");
+            _logger.LogWarning("{Function} <<< catalog search failed for package: {PackageId}", nameof(TryResolveNameFromCatalog), directive.PackageId);
             return false;
         }
 
@@ -3517,9 +3457,9 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
 
             _packagesByDirective.Remove(directive);
 
-            if (_versionsByName.ContainsKey(name))
+            if (_versionsByName.TryGetValue(name, out List<string>? value))
             {
-                _versionsByName[name] = _versionsByName[name].Where((v) => !v.Equals(directiveVersion)).ToList();
+                _versionsByName[name] = value.Where((v) => !v.Equals(directiveVersion)).ToList();
             }
 
             return;
@@ -3549,14 +3489,17 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
 
             _packagesByDirective[directive] = record;
 
-            if (!_versionsByName.ContainsKey(name))
+            // update the versions list
+            if (_versionsByName.TryGetValue(name, out List<string>? versions))
             {
-                _versionsByName.Add(name, []);
+                if (!versions.Contains(npmDetails.Version))
+                {
+                    versions.Add(npmDetails.Version);
+                }
             }
-
-            if (!_versionsByName[name].Contains(npmDetails.Version))
+            else
             {
-                _versionsByName[name].Add(npmDetails.Version);
+                _ = _versionsByName.TryAdd(name, [ npmDetails.Version ]);
             }
         }
 
@@ -3972,7 +3915,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
         string name,
         out string version)
     {
-        if (!_versionsByName.ContainsKey(name))
+        if (!_versionsByName.TryGetValue(name, out List<string>? value))
         {
             version = string.Empty;
             return false;
@@ -3980,7 +3923,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
 
         string highestVersion = string.Empty;
 
-        foreach (string cachedVersion in _versionsByName[name])
+        foreach (string cachedVersion in value)
         {
             if (cachedVersion.Equals("dev", StringComparison.OrdinalIgnoreCase) ||
                 cachedVersion.Equals("current", StringComparison.OrdinalIgnoreCase))
@@ -4308,12 +4251,17 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
 
         _packagesByDirective[directive] = record;
 
-        if (!_versionsByName.ContainsKey(name))
+        if (_versionsByName.TryGetValue(name, out List<string>? value))
         {
-            _versionsByName.Add(name, []);
+            if (!value.Contains(version))
+            {
+                value.Add(version);
+            }
         }
-
-        _versionsByName[name].Add(version);
+        else
+        {
+            _ = _versionsByName.TryAdd(name, [ version ]);
+        }
     }
 
     /// <summary>Creates empty cache initialize.</summary>

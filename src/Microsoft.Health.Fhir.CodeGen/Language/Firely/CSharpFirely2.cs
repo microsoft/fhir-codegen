@@ -1228,9 +1228,9 @@ public sealed class CSharpFirely2 : ILanguage
     {
         string exportName = complex.Name.ToPascalCase();
 
-        if (CSharpFirelyCommon.TypeNameMappings.ContainsKey(exportName))
+        if (TypeNameMappings.TryGetValue(exportName, out string? value))
         {
-            exportName = CSharpFirelyCommon.TypeNameMappings[exportName];
+            exportName = value;
         }
 
         writtenModels.Add(
@@ -2389,9 +2389,9 @@ public sealed class CSharpFirely2 : ILanguage
         string nativeType = type;
         string optional = string.Empty;
 
-        if (CSharpFirelyCommon.PrimitiveTypeMap.ContainsKey(nativeType))
+        if (PrimitiveTypeMap.TryGetValue(nativeType, out string? ptmValue))
         {
-            nativeType = CSharpFirelyCommon.PrimitiveTypeMap[nativeType];
+            nativeType = ptmValue;
 
             if (IsNullable(nativeType))
             {
@@ -2405,9 +2405,9 @@ public sealed class CSharpFirely2 : ILanguage
             nativeType = $"{Namespace}.{type}";
         }
 
-        if (CSharpFirelyCommon.TypeNameMappings.ContainsKey(type))
+        if (TypeNameMappings.TryGetValue(type, out string? tmValue))
         {
-            type = CSharpFirelyCommon.TypeNameMappings[type];
+            type = tmValue;
         }
         else if (!type.Contains('.'))
         {
@@ -2670,9 +2670,9 @@ public sealed class CSharpFirely2 : ILanguage
                         sb.Append(Namespace);
                         sb.Append('.');
 
-                        if (CSharpFirelyCommon.TypeNameMappings.ContainsKey(etName))
+                        if (TypeNameMappings.TryGetValue(etName, out string? tmValue))
                         {
-                            sb.Append(CSharpFirelyCommon.TypeNameMappings[etName]);
+                            sb.Append(tmValue);
                         }
                         else
                         {
@@ -2754,18 +2754,18 @@ public sealed class CSharpFirely2 : ILanguage
         string exportName;
         string typeName;
 
-        if (CSharpFirelyCommon.TypeNameMappings.ContainsKey(primitive.Name))
+        if (TypeNameMappings.TryGetValue(primitive.Name, out string? tmValue))
         {
-            exportName = CSharpFirelyCommon.TypeNameMappings[primitive.Name];
+            exportName = tmValue;
         }
         else
         {
             exportName = primitive.Name.ToPascalCase();
         }
 
-        if (CSharpFirelyCommon.PrimitiveTypeMap.ContainsKey(primitive.Name))
+        if (PrimitiveTypeMap.TryGetValue(primitive.Name, out string? ptmValue))
         {
-            typeName = CSharpFirelyCommon.PrimitiveTypeMap[primitive.Name];
+            typeName = ptmValue;
         }
         else
         {
@@ -2843,9 +2843,9 @@ public sealed class CSharpFirely2 : ILanguage
             _writer.WriteLineIndented("[FhirElement(\"value\", IsPrimitiveValue=true, XmlSerialization=XmlRepresentation.XmlAttr, InSummary=true, Order=30)]");
             _writer.WriteLineIndented($"[DeclaredType(Type = typeof({getSystemTypeForFhirType(primitive.Name)}))]");
 
-            if (CSharpFirelyCommon.PrimitiveValidationPatterns.ContainsKey(primitive.Name))
+            if (PrimitiveValidationPatterns.TryGetValue(primitive.Name, out string? primitivePattern))
             {
-                _writer.WriteLineIndented($"[{CSharpFirelyCommon.PrimitiveValidationPatterns[primitive.Name]}]");
+                _writer.WriteLineIndented($"[{primitivePattern}]");
             }
 
             _writer.WriteLineIndented("[DataMember]");
@@ -3076,9 +3076,16 @@ public sealed class CSharpFirely2 : ILanguage
 
         WrittenModelInfo CreateWMI(StructureDefinition t)
         {
-            string exportName = CSharpFirelyCommon.TypeNameMappings.ContainsKey(t.Name) ?
-                CSharpFirelyCommon.TypeNameMappings[t.Name] :
-                t.Name.ToPascalCase();
+            string exportName;
+
+            if (TypeNameMappings.TryGetValue(t.Name, out string? tmValue))
+            {
+                exportName = tmValue;
+            }
+            else
+            {
+                exportName = t.Name.ToPascalCase();
+            }
 
             return new WrittenModelInfo()
             {

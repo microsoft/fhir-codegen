@@ -1449,12 +1449,13 @@ public partial class DefinitionCollection
                 continue;
             }
 
-            if (!_extensionsByPath.ContainsKey(ctx.Expression))
+            if (!_extensionsByPath.TryGetValue(ctx.Expression, out Dictionary<string, StructureDefinition>? value))
             {
-                _extensionsByPath[ctx.Expression] = [];
+                value = ([]);
+                _extensionsByPath[ctx.Expression] = value;
             }
 
-            _extensionsByPath[ctx.Expression][url] = sd;
+            value[url] = sd;
         }
     }
 
