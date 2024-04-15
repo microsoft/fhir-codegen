@@ -17,7 +17,7 @@
 /**
  * Note: address is intended to describe postal addresses for administrative purposes, not to describe absolute geographical coordinates.  Postal addresses are often used as proxies for physical locations (also see the [Location](location.html#) resource).
  */
-export interface Address {
+export interface Address extends DataType {
   /**
    * The name of the city, town, suburb, village or other community or delivery center.
    */
@@ -76,12 +76,12 @@ export interface Address {
 /**
  * The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator.
  */
-export interface Age {
+export interface Age extends Quantity {
 }
 /**
  * For systems that do not have structured annotations, they can simply communicate a single annotation with no author or time.  This element may need to be included in narrative because of the potential for modifying information.  *Annotations SHOULD NOT* be used to communicate "modifying" information that could be computable. (This is a SHOULD because enforcing user behavior is nearly impossible).
  */
-export interface Annotation {
+export interface Annotation extends DataType {
   /**
    * The individual responsible for making the annotation.
    * Organization is used when there's no need for specific attribution as to who made the comment.
@@ -91,8 +91,8 @@ export interface Annotation {
    * The individual responsible for making the annotation.
    * Organization is used when there's no need for specific attribution as to who made the comment.
    */
-  authorstring?: string | undefined;
-  _authorstring?: Element | undefined;
+  authorString?: string | undefined;
+  _authorString?: Element | undefined;
   /**
    * The text of the annotation in markdown format.
    */
@@ -107,7 +107,7 @@ export interface Annotation {
 /**
  * When providing a summary view (for example with Observation.value[x]) Attachment should be represented with a brief display text such as "Signed Procedure Consent".
  */
-export interface Attachment {
+export interface Attachment extends DataType {
   /**
    * Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate.
    */
@@ -219,17 +219,17 @@ export interface AvailabilityNotAvailableTime extends Element {
    */
   during?: Period | undefined;
 }
-export interface Availability {
+export interface Availability extends DataType {
   /**
    * Times the {item} is available.
    */
-  availableTime?: Element[] | undefined;
+  availableTime?: AvailabilityAvailableTime[] | undefined;
   /**
    * Not available during this time due to provided reason.
    */
-  notAvailableTime?: Element[] | undefined;
+  notAvailableTime?: AvailabilityNotAvailableTime[] | undefined;
 }
-export interface BackboneElement {
+export interface BackboneElement extends Element {
   /**
    * May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
    * Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).
@@ -237,7 +237,7 @@ export interface BackboneElement {
    */
   modifierExtension?: Extension[] | undefined;
 }
-export interface BackboneType {
+export interface BackboneType extends DataType {
   /**
    * May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
    * Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).
@@ -250,7 +250,7 @@ export interface Base {
 /**
  * Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.
  */
-export interface CodeableConcept {
+export interface CodeableConcept extends DataType {
   /**
    * A reference to a code defined by a terminology system.
    * Codes may be defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.  Ordering of codings is undefined and SHALL NOT be used to infer meaning. Generally, at most only one of the coding values will be labeled as UserSelected = true.
@@ -263,7 +263,7 @@ export interface CodeableConcept {
   text?: string | undefined;
   _text?: Element | undefined;
 }
-export interface CodeableReference {
+export interface CodeableReference extends DataType {
   /**
    * A reference to a concept - e.g. the information is identified by its general class to the degree of precision found in the terminology.
    */
@@ -276,7 +276,7 @@ export interface CodeableReference {
 /**
  * Codes may be defined very casually in enumerations or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.
  */
-export interface Coding {
+export interface Coding extends DataType {
   /**
    * A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination).
    */
@@ -306,7 +306,7 @@ export interface Coding {
   version?: string | undefined;
   _version?: Element | undefined;
 }
-export interface ContactDetail {
+export interface ContactDetail extends DataType {
   /**
    * The name of an individual to contact.
    * If there is no named individual, the telecom information is for the organization as a whole.
@@ -318,7 +318,7 @@ export interface ContactDetail {
    */
   telecom?: ContactPoint[] | undefined;
 }
-export interface ContactPoint {
+export interface ContactPoint extends DataType {
   /**
    * Time period when the contact point was/is in use.
    */
@@ -348,7 +348,7 @@ export interface ContactPoint {
   value?: string | undefined;
   _value?: Element | undefined;
 }
-export interface Contributor {
+export interface Contributor extends DataType {
   /**
    * Contact details to assist a user in finding and communicating with the contributor.
    */
@@ -367,7 +367,7 @@ export interface Contributor {
 /**
  * The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator.
  */
-export interface Count {
+export interface Count extends Quantity {
 }
 /**
  * What codes are expected
@@ -412,8 +412,8 @@ export interface DataRequirementDateFilter extends Element {
   /**
    * The value of the filter. If period is specified, the filter will return only those data items that fall within the bounds determined by the Period, inclusive of the period boundaries. If dateTime is specified, the filter will return only those data items that are equal to the specified dateTime. If a Duration is specified, the filter will return only those data items that fall within Duration before now.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * The value of the filter. If period is specified, the filter will return only those data items that fall within the bounds determined by the Period, inclusive of the period boundaries. If dateTime is specified, the filter will return only those data items that are equal to the specified dateTime. If a Duration is specified, the filter will return only those data items that fall within Duration before now.
    */
@@ -462,8 +462,8 @@ export interface DataRequirementValueFilter extends Element {
   /**
    * The value of the filter.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * The value of the filter.
    */
@@ -473,15 +473,15 @@ export interface DataRequirementValueFilter extends Element {
    */
   valuePeriod?: Period | undefined;
 }
-export interface DataRequirement {
+export interface DataRequirement extends DataType {
   /**
    * Code filters specify additional constraints on the data, specifying the value set of interest for a particular element of the data. Each code filter defines an additional constraint on the data, i.e. code filters are AND'ed, not OR'ed.
    */
-  codeFilter?: Element[] | undefined;
+  codeFilter?: DataRequirementCodeFilter[] | undefined;
   /**
    * Date filters specify additional constraints on the data in terms of the applicable date range for specific elements. Each date filter specifies an additional constraint on the data, i.e. date filters are AND'ed, not OR'ed.
    */
-  dateFilter?: Element[] | undefined;
+  dateFilter?: DataRequirementDateFilter[] | undefined;
   /**
    * Specifies a maximum number of results that are required (uses the _count search parameter).
    * This element can be used in combination with the sort element to specify quota requirements such as "the most recent 5" or "the highest 5".
@@ -502,7 +502,7 @@ export interface DataRequirement {
    * Specifies the order of the results to be returned.
    * This element can be used in combination with the sort element to specify quota requirements such as "the most recent 5" or "the highest 5". When multiple sorts are specified, they are applied in the order they appear in the resource.
    */
-  sort?: Element[] | undefined;
+  sort?: DataRequirementSort[] | undefined;
   /**
    * The intended subjects of the data requirement. If this element is not provided, a Patient subject is assumed.
    * The subject of a data requirement is critical, as the data being specified is determined with respect to a particular subject. This corresponds roughly to the notion of a Compartment in that it limits what data is available based on its relationship to the subject. In CQL, this corresponds to the context declaration.
@@ -521,14 +521,14 @@ export interface DataRequirement {
   /**
    * Value filters specify additional constraints on the data for elements other than code-valued or date-valued. Each value filter specifies an additional constraint on the data (i.e. valueFilters are AND'ed, not OR'ed).
    */
-  valueFilter?: Element[] | undefined;
+  valueFilter?: DataRequirementValueFilter[] | undefined;
 }
-export interface DataType {
+export interface DataType extends Element {
 }
 /**
  * The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator.
  */
-export interface Distance {
+export interface Distance extends Quantity {
 }
 /**
  * Amount of medication administered, to be administered or typical amount to be administered
@@ -567,7 +567,7 @@ export interface DosageDoseAndRate extends Element {
    */
   type?: CodeableConcept | undefined;
 }
-export interface Dosage {
+export interface Dosage extends BackboneType {
   /**
    * Supplemental instructions to the patient on how to take the medication  (e.g. "with meals" or"take half to one hour before food") or warnings for the patient about the medication (e.g. "may cause drowsiness" or "avoid exposure of skin to direct sunlight or sunlamps").
    * Information about administration or preparation of the medication (e.g. "infuse as rapidly as possibly via intraperitoneal port" or take "immediately following drug x") should be populated in dosage.text.
@@ -587,7 +587,7 @@ export interface Dosage {
   /**
    * Depending on the resource,this is the amount of medication administered, to  be administered or typical amount to be administered.
    */
-  doseAndRate?: Element[] | undefined;
+  doseAndRate?: DosageDoseAndRate[] | undefined;
   /**
    * Upper limit on medication per administration.
    * This is intended for use as an adjunct to the dosage when there is an upper cap.  For example, a body surface area related dose with a maximum amount, such as 1.5 mg/m2 (maximum 2 mg) IV over 5 – 10 minutes would have doseQuantity of 1.5 mg/m2 and maxDosePerAdministration of 2 mg.
@@ -639,7 +639,7 @@ export interface Dosage {
 /**
  * The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator.
  */
-export interface Duration {
+export interface Duration extends Quantity {
 }
 export interface Element {
   /**
@@ -720,7 +720,7 @@ export interface ElementDefinitionBinding extends Element {
   /**
    * Additional bindings that help applications implementing this element. Additional bindings do not replace the main binding but provide more information and/or context.
    */
-  additional?: Element[] | undefined;
+  additional?: ElementDefinitionBindingAdditional[] | undefined;
   /**
    * Describes the intended use of this particular set of codes.
    */
@@ -819,13 +819,13 @@ export interface ElementDefinitionExample extends Element {
   /**
    * The actual value for the element, which must be one of the types allowed for this element.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * The actual value for the element, which must be one of the types allowed for this element.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * The actual value for the element, which must be one of the types allowed for this element.
    */
@@ -857,7 +857,7 @@ export interface ElementDefinitionExample extends Element {
   /**
    * The actual value for the element, which must be one of the types allowed for this element.
    */
-  valuenumber?: number | undefined;
+  valueNumber?: number | undefined;
   /**
    * The actual value for the element, which must be one of the types allowed for this element.
    */
@@ -1007,7 +1007,7 @@ export interface ElementDefinitionSlicing extends Element {
    * Designates which child elements are used to discriminate between the slices when processing an instance. If one or more discriminators are provided, the value of the child elements in the instance data SHALL completely distinguish which slice the element in the resource matches based on the allowed values for those elements in each of the slices.
    * If there is no discriminator, the content is hard to process, so this should be avoided.
    */
-  discriminator?: Element[] | undefined;
+  discriminator?: ElementDefinitionSlicingDiscriminator[] | undefined;
   /**
    * If the matching elements have to occur in the same order as defined in the profile.
    * Order should only be required when it is a pressing concern for presentation. Profile authors should consider making the order a feature of the rules about the narrative, not the rules about the data - requiring ordered data makes the profile much less re-usable.
@@ -1056,7 +1056,7 @@ export interface ElementDefinitionType extends Element {
   versioning?: ('either'|'independent'|'specific') | undefined;
   _versioning?: Element | undefined;
 }
-export interface ElementDefinition {
+export interface ElementDefinition extends BackboneType {
   /**
    * Identifies additional names by which this element might also be known.
    */
@@ -1066,12 +1066,12 @@ export interface ElementDefinition {
    * Information about the base definition of the element, provided to make it unnecessary for tools to trace the deviation of the element through the derived and related profiles. When the element definition is not the original definition of an element - e.g. either in a constraint on another type, or for elements from a super type in a snap shot - then the information in provided in the element definition may be different to the base definition. On the original definition of the element, it will be same.
    * The base information does not carry any information that could not be determined from the path and related profiles, but making this determination requires both that the related profiles are available, and that the algorithm to determine them be available. For tooling simplicity, the base information must always be populated in element definitions in snap shots, even if it is the same.
    */
-  base?: Element | undefined;
+  base?: ElementDefinitionBase | undefined;
   /**
    * Binds to a value set if this element is coded (code, Coding, CodeableConcept, Quantity), or the data types (string, uri).
    * For a CodeableConcept, when no codes are allowed - only text, use a binding of strength "required" with a description explaining that no coded values are allowed and what sort of information to put in the "text" element.
    */
-  binding?: Element | undefined;
+  binding?: ElementDefinitionBinding | undefined;
   /**
    * A code that has the same meaning as the element in a particular terminology.
    * The concept SHALL be properly aligned with the data element definition and other constraints, as defined in the code system, including relationships, of any code listed here.  Where multiple codes exist in a terminology that could correspond to the data element, the most granular code(s) should be selected, so long as they are not more restrictive than the data element itself. The mappings may be used to provide more or less granular or structured equivalences in the code system.
@@ -1092,7 +1092,7 @@ export interface ElementDefinition {
    * Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the context of the instance.
    * Constraints should be declared on the "context" element - the lowest element in the hierarchy that is common to all nodes referenced by the constraint.
    */
-  constraint?: Element[] | undefined;
+  constraint?: ElementDefinitionConstraint[] | undefined;
   /**
    * Identifies an element defined elsewhere in the definition whose content rules should be applied to the current element. ContentReferences bring across all the rules that are in the ElementDefinition for the element, including definitions, cardinality constraints, bindings, invariants etc.
    * ContentReferences can only be defined in specializations, not constrained types, and they cannot be changed and always reference the non-constrained definition.
@@ -1134,15 +1134,15 @@ export interface ElementDefinition {
    * Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed, or changed in constraints on content models. Defining default values creates many difficulties in implementation (e.g. when is a value missing?). For these reasons, default values are (and should be) used extremely sparingly. 
    * No default values are ever defined in the FHIR specification, nor can they be defined in constraints ("profiles") on data types or resources. This element only exists so that default values may be defined in logical models.
    */
-  defaultValuestring?: string | undefined;
-  _defaultValuestring?: Element | undefined;
+  defaultValueString?: string | undefined;
+  _defaultValueString?: Element | undefined;
   /**
    * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
    * Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed, or changed in constraints on content models. Defining default values creates many difficulties in implementation (e.g. when is a value missing?). For these reasons, default values are (and should be) used extremely sparingly. 
    * No default values are ever defined in the FHIR specification, nor can they be defined in constraints ("profiles") on data types or resources. This element only exists so that default values may be defined in logical models.
    */
-  defaultValueboolean?: boolean | undefined;
-  _defaultValueboolean?: Element | undefined;
+  defaultValueBoolean?: boolean | undefined;
+  _defaultValueBoolean?: Element | undefined;
   /**
    * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
    * Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed, or changed in constraints on content models. Defining default values creates many difficulties in implementation (e.g. when is a value missing?). For these reasons, default values are (and should be) used extremely sparingly. 
@@ -1190,7 +1190,7 @@ export interface ElementDefinition {
    * Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed, or changed in constraints on content models. Defining default values creates many difficulties in implementation (e.g. when is a value missing?). For these reasons, default values are (and should be) used extremely sparingly. 
    * No default values are ever defined in the FHIR specification, nor can they be defined in constraints ("profiles") on data types or resources. This element only exists so that default values may be defined in logical models.
    */
-  defaultValuenumber?: number | undefined;
+  defaultValueNumber?: number | undefined;
   /**
    * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
    * Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed, or changed in constraints on content models. Defining default values creates many difficulties in implementation (e.g. when is a value missing?). For these reasons, default values are (and should be) used extremely sparingly. 
@@ -1333,7 +1333,7 @@ export interface ElementDefinition {
    * A sample value for this element demonstrating the type of information that would typically be found in the element.
    * Examples will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
    */
-  example?: Element[] | undefined;
+  example?: ElementDefinitionExample[] | undefined;
   /**
    * Specifies a value that SHALL be exactly the value  for this element in the instance, if present. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
    * This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
@@ -1363,14 +1363,14 @@ export interface ElementDefinition {
    * Specifies a value that SHALL be exactly the value  for this element in the instance, if present. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
    * This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
    */
-  fixedstring?: string | undefined;
-  _fixedstring?: Element | undefined;
+  fixedString?: string | undefined;
+  _fixedString?: Element | undefined;
   /**
    * Specifies a value that SHALL be exactly the value  for this element in the instance, if present. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
    * This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
    */
-  fixedboolean?: boolean | undefined;
-  _fixedboolean?: Element | undefined;
+  fixedBoolean?: boolean | undefined;
+  _fixedBoolean?: Element | undefined;
   /**
    * Specifies a value that SHALL be exactly the value  for this element in the instance, if present. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
    * This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
@@ -1410,7 +1410,7 @@ export interface ElementDefinition {
    * Specifies a value that SHALL be exactly the value  for this element in the instance, if present. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
    * This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
    */
-  fixednumber?: number | undefined;
+  fixedNumber?: number | undefined;
   /**
    * Specifies a value that SHALL be exactly the value  for this element in the instance, if present. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
    * This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
@@ -1555,7 +1555,7 @@ export interface ElementDefinition {
    * Identifies a concept from an external specification that roughly corresponds to this element.
    * Mappings are not necessarily specific enough for safe translation.
    */
-  mapping?: Element[] | undefined;
+  mapping?: ElementDefinitionMapping[] | undefined;
   /**
    * The maximum number of times this element is permitted to appear in the instance.
    */
@@ -1570,13 +1570,13 @@ export interface ElementDefinition {
    * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
    * Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a [Duration](datatypes.html#Duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as a canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
    */
-  maxValuestring?: string | undefined;
-  _maxValuestring?: Element | undefined;
+  maxValueString?: string | undefined;
+  _maxValueString?: Element | undefined;
   /**
    * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
    * Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a [Duration](datatypes.html#Duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as a canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
    */
-  maxValuenumber?: number | undefined;
+  maxValueNumber?: number | undefined;
   /**
    * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
    * Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a [Duration](datatypes.html#Duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as a canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
@@ -1596,13 +1596,13 @@ export interface ElementDefinition {
    * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
    * Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a [Duration](datatypes.html#Duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as a canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
    */
-  minValuestring?: string | undefined;
-  _minValuestring?: Element | undefined;
+  minValueString?: string | undefined;
+  _minValueString?: Element | undefined;
   /**
    * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
    * Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a [Duration](datatypes.html#Duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as a canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
    */
-  minValuenumber?: number | undefined;
+  minValueNumber?: number | undefined;
   /**
    * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
    * Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a [Duration](datatypes.html#Duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as a canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
@@ -1702,8 +1702,8 @@ export interface ElementDefinition {
    * If a pattern[x] is declared on a repeating element, the pattern applies to all repetitions.  If the desire is for a pattern to apply to only one element or a subset of elements, slicing must be used. See [Examples of Patterns](elementdefinition-examples.html#pattern-examples) for examples of pattern usage and the effect it will have.
    * Mostly used for fixing values of CodeableConcept. In general, pattern[x] is not intended for use with primitive types, where is has the same meaning as fixed[x].
    */
-  patternstring?: string | undefined;
-  _patternstring?: Element | undefined;
+  patternString?: string | undefined;
+  _patternString?: Element | undefined;
   /**
    * Specifies a value that each occurrence of the element in the instance SHALL follow - that is, any value in the pattern must be found in the instance, if the element has a value. Other additional values may be found too. This is effectively constraint by example.  
    * When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.
@@ -1715,8 +1715,8 @@ export interface ElementDefinition {
    * If a pattern[x] is declared on a repeating element, the pattern applies to all repetitions.  If the desire is for a pattern to apply to only one element or a subset of elements, slicing must be used. See [Examples of Patterns](elementdefinition-examples.html#pattern-examples) for examples of pattern usage and the effect it will have.
    * Mostly used for fixing values of CodeableConcept. In general, pattern[x] is not intended for use with primitive types, where is has the same meaning as fixed[x].
    */
-  patternboolean?: boolean | undefined;
-  _patternboolean?: Element | undefined;
+  patternBoolean?: boolean | undefined;
+  _patternBoolean?: Element | undefined;
   /**
    * Specifies a value that each occurrence of the element in the instance SHALL follow - that is, any value in the pattern must be found in the instance, if the element has a value. Other additional values may be found too. This is effectively constraint by example.  
    * When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.
@@ -1812,7 +1812,7 @@ export interface ElementDefinition {
    * If a pattern[x] is declared on a repeating element, the pattern applies to all repetitions.  If the desire is for a pattern to apply to only one element or a subset of elements, slicing must be used. See [Examples of Patterns](elementdefinition-examples.html#pattern-examples) for examples of pattern usage and the effect it will have.
    * Mostly used for fixing values of CodeableConcept. In general, pattern[x] is not intended for use with primitive types, where is has the same meaning as fixed[x].
    */
-  patternnumber?: number | undefined;
+  patternNumber?: number | undefined;
   /**
    * Specifies a value that each occurrence of the element in the instance SHALL follow - that is, any value in the pattern must be found in the instance, if the element has a value. Other additional values may be found too. This is effectively constraint by example.  
    * When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.
@@ -2111,12 +2111,12 @@ export interface ElementDefinition {
    * Indicates that the element is sliced into a set of alternative definitions (i.e. in a structure definition, there are multiple different constraints on a single element in the base resource). Slicing can be used in any resource that has cardinality ..* on the base resource, or any resource with a choice of types. The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set).
    * The first element in the sequence, the one that carries the slicing, is the definition that applies to all the slices. This is based on the unconstrained element, but can apply any constraints as appropriate. This may include the common constraints on the children of the element.
    */
-  slicing?: Element | undefined;
+  slicing?: ElementDefinitionSlicing | undefined;
   /**
    * The data type or resource that the value of this element is permitted to be.
    * The Type of the element can be left blank in a differential constraint, in which case the type is inherited from the resource. Abstract types are not permitted to appear as a type when multiple types are listed.  (I.e. Abstract types cannot be part of a choice).
    */
-  type?: Element[] | undefined;
+  type?: ElementDefinitionType[] | undefined;
   /**
    * Specifies a list of extensions that can appear in place of a primitive value.
    * if mustHaveValue is true, then this element should not be present, since no extensions are allowed in place of the value. Note that this element has no impact if the value is present.
@@ -2124,7 +2124,7 @@ export interface ElementDefinition {
   valueAlternatives?: string[] | undefined;
   _valueAlternatives?: Element[] | undefined;
 }
-export interface Expression {
+export interface Expression extends DataType {
   /**
    * A brief, natural language description of the condition that effectively communicates the intended semantics.
    */
@@ -2156,7 +2156,7 @@ export interface Expression {
 /**
  * This datatype may be sparsely populated, i.e. only contain a purpose and phone number or address, but other cases could be completed filled out.
  */
-export interface ExtendedContactDetail {
+export interface ExtendedContactDetail extends DataType {
   /**
    * Address for the contact.
    * More than 1 address would be for different purposes, and thus should be entered as a different entry,.
@@ -2186,7 +2186,7 @@ export interface ExtendedContactDetail {
    */
   telecom?: ContactPoint[] | undefined;
 }
-export interface Extension {
+export interface Extension extends DataType {
   /**
    * Source of the definition for the extension code - a logical name or a URL.
    * The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension.
@@ -2216,13 +2216,13 @@ export interface Extension {
   /**
    * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
    */
@@ -2254,7 +2254,7 @@ export interface Extension {
   /**
    * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
    */
-  valuenumber?: number | undefined;
+  valueNumber?: number | undefined;
   /**
    * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
    */
@@ -2347,7 +2347,7 @@ export interface Extension {
 /**
  * Names may be changed, or repudiated, or people may have different names in different contexts. Names may be divided into parts of different type that have variable significance depending on context, though the division into parts does not always matter. With personal names, the different parts might or might not be imbued with some implicit meaning; various cultures associate different importance with the name parts and the degree to which systems must care about name parts around the world varies widely.
  */
-export interface HumanName {
+export interface HumanName extends DataType {
   /**
    * The part of a name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.
    * Family Name may be decomposed into specific parts using extensions (de, nl, es related cultures).
@@ -2390,7 +2390,7 @@ export interface HumanName {
 /**
  * The rules of the identifier.type  determine if a check digit is part of the ID value or sent separately, such as through the checkDigit extension.
  */
-export interface Identifier {
+export interface Identifier extends DataType {
   /**
    * Organization that issued/manages the identifier.
    * The Identifier.assigner may omit the .reference element and only contain a .display element reflecting the name or other textual information about the assigning organization.
@@ -2424,7 +2424,7 @@ export interface Identifier {
   value?: string | undefined;
   _value?: Element | undefined;
 }
-export interface MarketingStatus {
+export interface MarketingStatus extends BackboneType {
   /**
    * The country in which the marketing authorization has been granted shall be specified It should be specified using the ISO 3166 ‑ 1 alpha-2 code elements.
    */
@@ -2447,7 +2447,7 @@ export interface MarketingStatus {
    */
   status: CodeableConcept;
 }
-export interface Meta {
+export interface Meta extends DataType {
   /**
    * When the resource last changed - e.g. when the version changed.
    * This element is generally omitted in instances submitted in a PUT or POST. Instead, it is populated in the response instance and when retrieving information using a GET. The server / resource manager sets this value; what a client provides is irrelevant. This is equivalent to the HTTP Last-Modified and SHOULD have the same value on a [read](http.html#read) interaction.
@@ -2484,7 +2484,7 @@ export interface Meta {
   versionId?: string | undefined;
   _versionId?: Element | undefined;
 }
-export interface MonetaryComponent {
+export interface MonetaryComponent extends DataType {
   /**
    * Explicit value amount to be used.
    */
@@ -2503,7 +2503,7 @@ export interface MonetaryComponent {
   type: ('base'|'surcharge'|'deduction'|'discount'|'tax'|'informational');
   _type?: Element | undefined;
 }
-export interface Money {
+export interface Money extends DataType {
   /**
    * ISO 4217 Currency Code.
    */
@@ -2515,7 +2515,7 @@ export interface Money {
    */
   value?: number | undefined;
 }
-export interface Narrative {
+export interface Narrative extends DataType {
   /**
    * The actual narrative content, a stripped down version of XHTML.
    * The contents of the html element are an XHTML fragment containing only the basic html formatting elements described in chapters 7-11 and 15 of the HTML 4.0 standard, <a> elements (either name or href), images and internally contained stylesheets. The XHTML content SHALL NOT contain a head, a body, external stylesheet references, scripts, forms, base/link/xlink, frames, iframes and objects.
@@ -2528,7 +2528,7 @@ export interface Narrative {
   status: ('generated'|'extensions'|'additional'|'empty');
   _status?: Element | undefined;
 }
-export interface ParameterDefinition {
+export interface ParameterDefinition extends DataType {
   /**
    * A brief discussion of what the parameter is for and how it is used by the module.
    */
@@ -2568,7 +2568,7 @@ export interface ParameterDefinition {
  * A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. "the patient was an inpatient of the hospital for this time range") or one value from the range applies (e.g. "give to the patient between these two times").
  * Period is not used for a duration (a measure of elapsed time). See [Duration](datatypes.html#Duration).
  */
-export interface Period {
+export interface Period extends DataType {
   /**
    * The end of the period. If the end of the period is missing, it means no end was known or planned at the time the instance was created. The start may be in the past, and the end date in the future, which means that period is expected/planned to end at that time.
    * The end value includes any matching date/time. i.e. 2012-02-03T10:00:00 is in a period that has an end value of 2012-02-03.
@@ -2582,9 +2582,9 @@ export interface Period {
   start?: string | undefined;
   _start?: Element | undefined;
 }
-export interface PrimitiveType {
+export interface PrimitiveType extends DataType {
 }
-export interface ProductShelfLife {
+export interface ProductShelfLife extends BackboneType {
   /**
    * The shelf life time period can be specified using a numerical value for the period of time and its unit of time measurement The unit of measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the symbol identifier shall be used.
    */
@@ -2592,8 +2592,8 @@ export interface ProductShelfLife {
   /**
    * The shelf life time period can be specified using a numerical value for the period of time and its unit of time measurement The unit of measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the symbol identifier shall be used.
    */
-  periodstring?: string | undefined;
-  _periodstring?: Element | undefined;
+  periodString?: string | undefined;
+  _periodString?: Element | undefined;
   /**
    * Special precautions for storage, if any, can be specified using an appropriate controlled vocabulary The controlled term and the controlled term identifier shall be specified.
    */
@@ -2606,7 +2606,7 @@ export interface ProductShelfLife {
 /**
  * The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator.
  */
-export interface Quantity {
+export interface Quantity extends DataType {
   /**
    * A computer processable form of the unit in some unit representation system.
    * The preferred system is UCUM, but SNOMED CT can also be used (for customary units) or ISO 4217 for currency.  The context of use may additionally require a code from a particular system.
@@ -2637,7 +2637,7 @@ export interface Quantity {
 /**
  * The stated low and high value are assumed to have arbitrarily high precision when it comes to determining which values are in the range. I.e. 1.99 is not in the range 2 -> 3.
  */
-export interface Range {
+export interface Range extends DataType {
   /**
    * The high limit. The boundary is inclusive.
    * If the high element is missing, the high boundary is not known.
@@ -2652,7 +2652,7 @@ export interface Range {
 /**
  * The Ratio datatype should only be used to express a relationship of two numbers if the relationship cannot be suitably expressed using a Quantity and a common unit.  Where the denominator value is known to be fixed to "1", Quantity should be used instead of Ratio.
  */
-export interface Ratio {
+export interface Ratio extends DataType {
   /**
    * The value of the denominator.
    */
@@ -2665,7 +2665,7 @@ export interface Ratio {
 /**
  * The stated low and high value are assumed to have arbitrarily high precision when it comes to determining which values are in the range. I.e. 1.99 is not in the range 2 -> 3.
  */
-export interface RatioRange {
+export interface RatioRange extends DataType {
   /**
    * The value of the denominator.
    */
@@ -2684,7 +2684,7 @@ export interface RatioRange {
 /**
  * References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
  */
-export interface Reference {
+export interface Reference extends DataType {
   /**
    * Plain text narrative that identifies the resource in addition to the resource reference.
    * This is generally not the same as the Resource.text of the referenced resource.  The purpose is to identify what's being referenced, not to fully describe it.
@@ -2717,7 +2717,7 @@ export interface Reference {
 /**
  * Each related artifact is either an attachment, or a reference to another knowledge resource, but not both.
  */
-export interface RelatedArtifact {
+export interface RelatedArtifact extends DataType {
   /**
    * A bibliographic citation for the related artifact. This text SHOULD be formatted according to an accepted citation format.
    * Additional structured information about citations should be captured as extensions.
@@ -2773,7 +2773,7 @@ export interface RelatedArtifact {
 /**
  * The data is not interpretable without at least origin, period, and dimensions, but these are optional to allow a separation between the template of measurement and the actual measurement, such as between DeviceCapabilities and DeviceLog.  When providing a summary view (for example with Observation.value[x]) SampledData should be represented with a brief display text such as "Sampled Data".
  */
-export interface SampledData {
+export interface SampledData extends DataType {
   /**
    * Reference to ConceptMap that defines the codes used in the data.
    * The ConceptMap cannot define meanings for the codes 'E', 'U', or 'L' (nor 'e', 'u', or 'l').
@@ -2827,7 +2827,7 @@ export interface SampledData {
 /**
  * The elements of the Signature Resource are for ease of access of these elements. For digital signatures (Xml DigSig, JWS), the non-repudiation proof comes from the Signature  validation, which includes validation of the referenced objects (e.g. Resources) (a.k.a., Content) in the XML-Signature Detached form.
  */
-export interface Signature {
+export interface Signature extends DataType {
   /**
    * The base64 encoding of the Signature content. When signature is not recorded electronically this element would be empty.
    * Where the signature type is an XML DigSig, the signed content is a FHIR Resource(s), the signature is of the XML form of the Resource(s) using  XML-Signature (XMLDIG) "Detached Signature" form.
@@ -2957,7 +2957,7 @@ export interface TimingRepeat extends Element {
  * Describes the occurrence of an event that may occur multiple times. Timing schedules are used for specifying when events are expected or requested to occur, and may also be used to represent the summary of a past or ongoing event.  For simplicity, the definitions of Timing components are expressed as 'future' events, but such components can also be used to describe historic or ongoing events.
  * A Timing schedule can be a list of events and/or criteria for when the event happens, which can be expressed in a structured form and/or as a code. When both event and a repeating specification are provided, the list of events should be understood as an interpretation of the information in the repeat structure.
  */
-export interface Timing {
+export interface Timing extends BackboneType {
   /**
    * A code for the timing schedule (or just text in code.text). Some codes such as BID are ubiquitous, but many institutions define their own additional codes. If a code is provided, the code is understood to be a complete statement of whatever is specified in the structured timing data, and either the code or the data may be used to interpret the Timing, with the exception that .repeat.bounds still applies over the code (and is not contained in the code).
    * BID etc. are defined as 'at institutionally specified times'. For example, an institution may choose that BID is "always at 7am and 6pm".  If it is inappropriate for this choice to be made, the code BID should not be used. Instead, a distinct organization-specific code should be used in place of the HL7-defined BID code and/or a structured representation should be used (in this case, specifying the two event times).
@@ -2971,12 +2971,12 @@ export interface Timing {
   /**
    * A set of rules that describe when the event is scheduled.
    */
-  repeat?: Element | undefined;
+  repeat?: TimingRepeat | undefined;
 }
 /**
  * If an event is a named-event, it means the event is completely pre-coordinated, and no other information can be specified for the event. If the event is one of the data- events, the data and condition elements specify the triggering criteria. The data element specifies the structured component, and the condition element provides additional optional refinement of that structured component. If the event is periodic, the timing element defines when the event is triggered. For both data- and periodic events, a name can be provided as a shorthand for the formal semantics provided by the other elements.
  */
-export interface TriggerDefinition {
+export interface TriggerDefinition extends DataType {
   /**
    * A code that identifies the event.
    */
@@ -3005,8 +3005,8 @@ export interface TriggerDefinition {
   /**
    * The timing of the event (if this is a periodic trigger).
    */
-  timingstring?: string | undefined;
-  _timingstring?: Element | undefined;
+  timingString?: string | undefined;
+  _timingString?: Element | undefined;
   /**
    * The timing of the event (if this is a periodic trigger).
    */
@@ -3021,7 +3021,7 @@ export interface TriggerDefinition {
   type: ('named-event'|'periodic'|'data-changed'|'data-added'|'data-modified'|'data-removed'|'data-accessed'|'data-access-ended');
   _type?: Element | undefined;
 }
-export interface UsageContext {
+export interface UsageContext extends DataType {
   /**
    * A code that identifies the type of context being specified by this usage context.
    */
@@ -3043,7 +3043,7 @@ export interface UsageContext {
    */
   valueReference?: Reference | undefined;
 }
-export interface VirtualServiceDetail {
+export interface VirtualServiceDetail extends DataType {
   /**
    * Address to see alternative connection details.
    * This web address can be used to provide additional details on the call, such as alternative/regional call in numbers, or other associated services.
@@ -3061,8 +3061,8 @@ export interface VirtualServiceDetail {
   /**
    * What address or number needs to be used for a user to connect to the virtual service to join. The channelType informs as to which datatype is appropriate to use (requires knowledge of the specific type).
    */
-  addressstring?: string | undefined;
-  _addressstring?: Element | undefined;
+  addressString?: string | undefined;
+  _addressString?: Element | undefined;
   /**
    * The type of virtual service to connect to (i.e. Teams, Zoom, Specific VMR technology, WhatsApp).
    * As this type defines what the virtual service is, it then defines what address and additional information might be relevant.
@@ -3215,7 +3215,7 @@ export interface AccountRelatedAccount extends BackboneElement {
    */
   relationship?: CodeableConcept | undefined;
 }
-export interface Account {
+export interface Account extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Account';
   /**
@@ -3344,7 +3344,7 @@ export interface ActivityDefinitionParticipant extends BackboneElement {
    */
   typeReference?: Reference | undefined;
 }
-export interface ActivityDefinition {
+export interface ActivityDefinition extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ActivityDefinition';
   /**
@@ -3357,8 +3357,8 @@ export interface ActivityDefinition {
   /**
    * If a CodeableConcept is present, it indicates the pre-condition for performing the service.  For example "pain", "on flare-up", etc.
    */
-  asNeededboolean?: boolean | undefined;
-  _asNeededboolean?: Element | undefined;
+  asNeededBoolean?: boolean | undefined;
+  _asNeededBoolean?: Element | undefined;
   /**
    * If a CodeableConcept is present, it indicates the pre-condition for performing the service.  For example "pain", "on flare-up", etc.
    */
@@ -3564,8 +3564,8 @@ export interface ActivityDefinition {
    * A code, group definition, or canonical reference that describes  or identifies the intended subject of the activity being defined.  Canonical references are allowed to support the definition of protocols for drug and substance quality specifications, and is allowed to reference a MedicinalProductDefinition, SubstanceDefinition, AdministrableProductDefinition, ManufacturedItemDefinition, or PackagedProductDefinition resource.
    * Note that the choice of canonical for the subject element was introduced in R4B to support pharmaceutical quality use cases. To ensure as much backwards-compatibility as possible, it is recommended to only use the new canonical type with these use cases.
    */
-  subjectstring?: string | undefined;
-  _subjectstring?: Element | undefined;
+  subjectString?: string | undefined;
+  _subjectString?: Element | undefined;
   /**
    * A code, group definition, or canonical reference that describes  or identifies the intended subject of the activity being defined.  Canonical references are allowed to support the definition of protocols for drug and substance quality specifications, and is allowed to reference a MedicinalProductDefinition, SubstanceDefinition, AdministrableProductDefinition, ManufacturedItemDefinition, or PackagedProductDefinition resource.
    * Note that the choice of canonical for the subject element was introduced in R4B to support pharmaceutical quality use cases. To ensure as much backwards-compatibility as possible, it is recommended to only use the new canonical type with these use cases.
@@ -3651,10 +3651,10 @@ export interface ActivityDefinition {
    * Indicates the mechanism used to compare versions to determine which is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
-export interface ActorDefinition {
+export interface ActorDefinition extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ActorDefinition';
   /**
@@ -3789,8 +3789,8 @@ export interface ActorDefinition {
    * Indicates the mechanism used to compare versions to determine which is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
 /**
  * Characteristics e.g. a product's onset of action
@@ -3811,8 +3811,8 @@ export interface AdministrableProductDefinitionProperty extends BackboneElement 
   /**
    * A value for the characteristic.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * A value for the characteristic.
    */
@@ -3820,8 +3820,8 @@ export interface AdministrableProductDefinitionProperty extends BackboneElement 
   /**
    * A value for the characteristic.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * A value for the characteristic.
    */
@@ -3895,7 +3895,7 @@ export interface AdministrableProductDefinitionRouteOfAdministration extends Bac
    */
   targetSpecies?: AdministrableProductDefinitionRouteOfAdministrationTargetSpecies[] | undefined;
 }
-export interface AdministrableProductDefinition {
+export interface AdministrableProductDefinition extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'AdministrableProductDefinition';
   /**
@@ -4046,7 +4046,7 @@ export interface AdverseEventSuspectEntity extends BackboneElement {
    */
   instanceReference?: Reference | undefined;
 }
-export interface AdverseEvent {
+export interface AdverseEvent extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'AdverseEvent';
   /**
@@ -4102,8 +4102,8 @@ export interface AdverseEvent {
   /**
    * The date (and perhaps time) when the adverse event occurred.
    */
-  occurrencestring?: string | undefined;
-  _occurrencestring?: Element | undefined;
+  occurrenceString?: string | undefined;
+  _occurrenceString?: Element | undefined;
   /**
    * The date (and perhaps time) when the adverse event occurred.
    */
@@ -4225,7 +4225,7 @@ export interface AllergyIntoleranceReaction extends BackboneElement {
 /**
  * Substances include, but are not limited to: a therapeutic substance administered correctly at an appropriate dosage for the individual; food; material derived from plants or animals; or venom from insect stings.
  */
-export interface AllergyIntolerance {
+export interface AllergyIntolerance extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'AllergyIntolerance';
   /**
@@ -4283,8 +4283,8 @@ export interface AllergyIntolerance {
    * Estimated or actual date,  date-time, or age when allergy or intolerance was identified.
    * Age is generally used when the patient reports an age at which the AllergyIntolerance was noted. Period is generally used to convey an imprecise onset that occurred within the time period.  Range is generally used to convey an imprecise age range (e.g. 4 to 6 years old).
    */
-  onsetstring?: string | undefined;
-  _onsetstring?: Element | undefined;
+  onsetString?: string | undefined;
+  _onsetString?: Element | undefined;
   /**
    * Estimated or actual date,  date-time, or age when allergy or intolerance was identified.
    * Age is generally used when the patient reports an age at which the AllergyIntolerance was noted. Period is generally used to convey an imprecise onset that occurred within the time period.  Range is generally used to convey an imprecise age range (e.g. 4 to 6 years old).
@@ -4482,7 +4482,7 @@ export interface AppointmentRecurrenceTemplate extends BackboneElement {
    */
   yearlyTemplate?: AppointmentRecurrenceTemplateYearlyTemplate | undefined;
 }
-export interface Appointment {
+export interface Appointment extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Appointment';
   /**
@@ -4645,7 +4645,7 @@ export interface Appointment {
    */
   virtualService?: VirtualServiceDetail[] | undefined;
 }
-export interface AppointmentResponse {
+export interface AppointmentResponse extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'AppointmentResponse';
   /**
@@ -4762,7 +4762,7 @@ export interface ArtifactAssessmentContent extends BackboneElement {
    */
   type?: CodeableConcept | undefined;
 }
-export interface ArtifactAssessment {
+export interface ArtifactAssessment extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ArtifactAssessment';
   /**
@@ -4774,8 +4774,8 @@ export interface ArtifactAssessment {
   /**
    * A reference to a resource, canonical resource, or non-FHIR resource which the comment or assessment is about.
    */
-  artifactstring?: string | undefined;
-  _artifactstring?: Element | undefined;
+  artifactString?: string | undefined;
+  _artifactString?: Element | undefined;
   /**
    * A reference to a resource, canonical resource, or non-FHIR resource which the comment or assessment is about.
    */
@@ -4783,8 +4783,8 @@ export interface ArtifactAssessment {
   /**
    * Display of or reference to the bibliographic citation of the comment, classifier, or rating.
    */
-  citeAsstring?: string | undefined;
-  _citeAsstring?: Element | undefined;
+  citeAsString?: string | undefined;
+  _citeAsString?: Element | undefined;
   /**
    * Display of or reference to the bibliographic citation of the comment, classifier, or rating.
    */
@@ -4856,8 +4856,8 @@ export interface AuditEventAgent extends BackboneElement {
    * When the event utilizes a network there should be an agent describing the local system, and an agent describing remote system, with the network interface details.
    * When remote network endpoint is known, another agent representing the remote agent would indicate the remote network endpoint used. Convention is to indicate data flowing from Source to Destination. The convention for Search, given data flows both ways (query parameters vs results), is to have the Source as the initiator of the Search Transaction, and the Destination the responder to the Search transaction.
    */
-  networkstring?: string | undefined;
-  _networkstring?: Element | undefined;
+  networkString?: string | undefined;
+  _networkString?: Element | undefined;
   /**
    * Where the policy(ies) are known that authorized the agent participation in the event. Typically, a single activity may have multiple applicable policies, such as patient consent, guarantor funding, etc. The policy would also indicate the security token used.
    * For example: Where an OAuth token authorizes, the unique identifier from the OAuth token is placed into the policy element Where a policy engine (e.g. XACML) holds policy logic, the unique policy identifier is placed into the policy element.
@@ -4897,13 +4897,13 @@ export interface AuditEventEntityDetail extends BackboneElement {
   /**
    * The  value of the extra detail.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * The  value of the extra detail.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * The  value of the extra detail.
    */
@@ -4911,7 +4911,7 @@ export interface AuditEventEntityDetail extends BackboneElement {
   /**
    * The  value of the extra detail.
    */
-  valuenumber?: number | undefined;
+  valueNumber?: number | undefined;
   /**
    * The  value of the extra detail.
    */
@@ -5002,7 +5002,7 @@ export interface AuditEventSource extends BackboneElement {
 /**
  * Based on IHE-ATNA.
  */
-export interface AuditEvent {
+export interface AuditEvent extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'AuditEvent';
   /**
@@ -5047,8 +5047,8 @@ export interface AuditEvent {
    * The time or period during which the activity occurred.
    * The time or period can be a little arbitrary; where possible, the time should correspond to human assessment of the activity time.
    */
-  occurredstring?: string | undefined;
-  _occurredstring?: Element | undefined;
+  occurredString?: string | undefined;
+  _occurredString?: Element | undefined;
   /**
    * The time or period during which the activity occurred.
    * The time or period can be a little arbitrary; where possible, the time should correspond to human assessment of the activity time.
@@ -5081,7 +5081,7 @@ export interface AuditEvent {
    */
   source: AuditEventSource;
 }
-export interface Basic {
+export interface Basic extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Basic';
   /**
@@ -5115,7 +5115,7 @@ export interface Basic {
  * * PDF Documents 
  * * Images.
  */
-export interface Binary {
+export interface Binary extends Resource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Binary';
   /**
@@ -5142,8 +5142,8 @@ export interface BiologicallyDerivedProductCollection extends BackboneElement {
   /**
    * Time of product collection.
    */
-  collectedstring?: string | undefined;
-  _collectedstring?: Element | undefined;
+  collectedString?: string | undefined;
+  _collectedString?: Element | undefined;
   /**
    * Time of product collection.
    */
@@ -5176,8 +5176,8 @@ export interface BiologicallyDerivedProductProperty extends BackboneElement {
    * Property values.
    * The value should be provided as a boolean, integer, CodeableConcept, period, quantity, range, ratio, or attachment. The description can be a string only when these others are not available. The type of value will depend on the property type and is specified in ST-027.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * Property values.
    * The value should be provided as a boolean, integer, CodeableConcept, period, quantity, range, ratio, or attachment. The description can be a string only when these others are not available. The type of value will depend on the property type and is specified in ST-027.
@@ -5187,7 +5187,7 @@ export interface BiologicallyDerivedProductProperty extends BackboneElement {
    * Property values.
    * The value should be provided as a boolean, integer, CodeableConcept, period, quantity, range, ratio, or attachment. The description can be a string only when these others are not available. The type of value will depend on the property type and is specified in ST-027.
    */
-  valuenumber?: number | undefined;
+  valueNumber?: number | undefined;
   /**
    * Property values.
    * The value should be provided as a boolean, integer, CodeableConcept, period, quantity, range, ratio, or attachment. The description can be a string only when these others are not available. The type of value will depend on the property type and is specified in ST-027.
@@ -5212,13 +5212,13 @@ export interface BiologicallyDerivedProductProperty extends BackboneElement {
    * Property values.
    * The value should be provided as a boolean, integer, CodeableConcept, period, quantity, range, ratio, or attachment. The description can be a string only when these others are not available. The type of value will depend on the property type and is specified in ST-027.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
 }
 /**
  * Substances include, but are not limited to: whole blood, bone marrow, organs, and manipulated blood cells.
  */
-export interface BiologicallyDerivedProduct {
+export interface BiologicallyDerivedProduct extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'BiologicallyDerivedProduct';
   /**
@@ -5294,7 +5294,7 @@ export interface BiologicallyDerivedProductDispensePerformer extends BackboneEle
    */
   function?: CodeableConcept | undefined;
 }
-export interface BiologicallyDerivedProductDispense {
+export interface BiologicallyDerivedProductDispense extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'BiologicallyDerivedProductDispense';
   /**
@@ -5425,7 +5425,7 @@ export interface BodyStructureIncludedStructure extends BackboneElement {
    */
   structure: CodeableConcept;
 }
-export interface BodyStructure {
+export interface BodyStructure extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'BodyStructure';
   /**
@@ -5605,7 +5605,7 @@ export interface BundleLink extends BackboneElement {
   url: string;
   _url?: Element | undefined;
 }
-export interface Bundle<BundleContentType = FhirResource> {
+export interface Bundle<BundleContentType = FhirResource> extends Resource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Bundle';
   /**
@@ -5658,120 +5658,6 @@ export interface Bundle<BundleContentType = FhirResource> {
    */
   type: ('document'|'message'|'transaction'|'transaction-response'|'batch'|'batch-response'|'history'|'searchset'|'collection'|'subscription-notification');
   _type?: Element | undefined;
-}
-export interface CanonicalResource {
-  /** Resource Type Name (for serialization) */
-  readonly resourceType: string;
-  /**
-   * Contact details to assist a user in finding and communicating with the publisher.
-   * May be a web site, an email address, a telephone number, etc.
-   * See guidance around (not) making local changes to elements [here](canonicalresource.html#localization).
-   */
-  contact?: ContactDetail[] | undefined;
-  /**
-   * A copyright statement relating to the {{title}} and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the {{title}}.
-   * The short copyright declaration (e.g. (c) '2015+ xyz organization' should be sent in the copyrightLabel element.
-   */
-  copyright?: string | undefined;
-  _copyright?: Element | undefined;
-  /**
-   * A short string (<50 characters), suitable for inclusion in a page footer that identifies the copyright holder, effective period, and optionally whether rights are resctricted. (e.g. 'All rights reserved', 'Some rights reserved').
-   * The (c) symbol should NOT be included in this string. It will be added by software when rendering the notation. Full details about licensing, restrictions, warrantees, etc. goes in the more general 'copyright' element.
-   */
-  copyrightLabel?: string | undefined;
-  _copyrightLabel?: Element | undefined;
-  /**
-   * The date (and optionally time) when the {{title}} was last significantly changed. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the {{title}} changes.
-   * The date is often not tracked until the resource is published, but may be present on draft content. Note that this is not the same as the resource last-modified-date, since the resource may be a secondary representation of the {{title}}. Additional specific dates may be added as extensions or be found by consulting Provenances associated with past versions of the resource.
-   * See guidance around (not) making local changes to elements [here](canonicalresource.html#localization).
-   */
-  date?: string | undefined;
-  _date?: Element | undefined;
-  /**
-   * A free text natural language description of the {{title}} from a consumer's perspective.
-   * This description can be used to capture details such as comments about misuse, instructions for clinical use and interpretation, literature references, examples from the paper world, etc. It is not a rendering of the {{title}} as conveyed in the 'text' field of the resource itself. This item SHOULD be populated unless the information is available from context.
-   */
-  description?: string | undefined;
-  _description?: Element | undefined;
-  /**
-   * A Boolean value to indicate that this {{title}} is authored for testing purposes (or education/evaluation/marketing) and is not intended for genuine usage.
-   * Allows filtering of {{title}}s that are appropriate for use versus not.
-   */
-  experimental?: boolean | undefined;
-  _experimental?: Element | undefined;
-  /**
-   * A formal identifier that is used to identify this {{title}} when it is represented in other formats, or referenced in a specification, model, design or an instance.
-   * Typically, this is used for identifiers that can go in an HL7 V3 II (instance identifier) data type, and can then identify this {{title}} outside of FHIR, where it is not possible to use the logical URI.
-   */
-  identifier?: Identifier[] | undefined;
-  /**
-   * A legal or geographic region in which the {{title}} is intended to be used.
-   * It may be possible for the {{title}} to be used in jurisdictions other than those for which it was originally designed or intended.
-   * DEPRECATION NOTE: For consistency, implementations are encouraged to migrate to using the new 'jurisdiction' code in the useContext element.  (I.e. useContext.code indicating http://terminology.hl7.org/CodeSystem/usage-context-type#jurisdiction and useContext.valueCodeableConcept indicating the jurisdiction.)
-   */
-  jurisdiction?: CodeableConcept[] | undefined;
-  /**
-   * A natural language name identifying the {{title}}. This name should be usable as an identifier for the resource by machine processing applications such as code generation.
-   * The name is not expected to be globally unique. The name should be a simple alphanumeric type no-whitespace name to ensure that it is machine-processing friendly.
-   */
-  name?: string | undefined;
-  _name?: Element | undefined;
-  /**
-   * The name of the organization or individual responsible for the release and ongoing maintenance of the {{title}}.
-   * Usually an organization but may be an individual. The publisher (or steward) of the {{title}} is the organization or individual primarily responsible for the maintenance and upkeep of the {{title}}. This is not necessarily the same individual or organization that developed and initially authored the content. The publisher is the primary point of contact for questions or issues with the {{title}}. This item SHOULD be populated unless the information is available from context.
-   */
-  publisher?: string | undefined;
-  _publisher?: Element | undefined;
-  /**
-   * Explanation of why this {{title}} is needed and why it has been designed as it has.
-   * This element does not describe the usage of the {{title}}. Instead, it provides traceability of "why" the resource is either needed or "why" it is defined as it is.  This may be used to point to source materials or specifications that drove the structure of this {{title}}.
-   */
-  purpose?: string | undefined;
-  _purpose?: Element | undefined;
-  /**
-   * The current state of this {{title}}. 
-   * A nominal state-transition diagram can be found in the [Definition pattern](definition.html#statemachine) documentation.
-   * Unknown does not represent 'other' - one of the defined statuses must apply.  Unknown is used when the authoring system is not sure what the current status is.
-   * See guidance around (not) making local changes to elements [here](canonicalresource.html#localization).
-   */
-  status: ('draft'|'active'|'retired'|'unknown');
-  _status?: Element | undefined;
-  /**
-   * A short, descriptive, user-friendly title for the {{title}}.
-   * This name does not need to be machine-processing friendly and may contain punctuation, white-space, etc.
-   */
-  title?: string | undefined;
-  _title?: Element | undefined;
-  /**
-   * An absolute URI that is used to identify this {{title}} when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which an authoritative instance of this {{title}} is (or will be) published. This URL can be the target of a canonical reference. It SHALL remain the same when the {{title}} is stored on different servers.
-   * Can be a urn:uuid: or a urn:oid: but real http: addresses are preferred.  Multiple instances may share the same URL if they have a distinct version.
-   * The determination of when to create a new version of a resource (same url, new version) vs. defining a new artifact is up to the author.  Considerations for making this decision are found in [Technical and Business Versions](resource.html#versions).
-   * In some cases, the resource can no longer be found at the stated url, but the url itself cannot change. Implementations can use the [meta.source](resource.html#meta) element to indicate where the current master source of the resource can be found.
-   */
-  url?: string | undefined;
-  _url?: Element | undefined;
-  /**
-   * The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate {{title}}s.
-   * When multiple useContexts are specified, there is no expectation that all or even any of the contexts apply.
-   */
-  useContext?: UsageContext[] | undefined;
-  /**
-   * The identifier that is used to identify this version of the {{title}} when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the {{title}} author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence without additional knowledge.  (See the versionAlgorithm element.)
-   * There may be different {{title}}s that have the same url but different versions.  The version can be appended to the url in a reference to allow a reference to a particular business version of the {{title}} with the format [url]|[version]. The version SHOULD NOT contain a '#' - see [Business Version](resource.html#bv-format).
-   */
-  version?: string | undefined;
-  _version?: Element | undefined;
-  /**
-   * Indicates the mechanism used to compare versions to determine which is more current.
-   * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
-   */
-  versionAlgorithmCoding?: Coding | undefined;
-  /**
-   * Indicates the mechanism used to compare versions to determine which is more current.
-   * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
-   */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
 }
 /**
  * Document definition
@@ -6153,7 +6039,7 @@ export interface CapabilityStatementSoftware extends BackboneElement {
 /**
  * Applications may implement multiple versions (see [Managing Multiple Versions](versioning.html), and the [$versions](capabilitystatement-operation-versions.html) operation). If they do, then a CapabilityStatement describes the system's support for a particular version of FHIR, and the server will have multiple statements, one for each version.
  */
-export interface CapabilityStatement {
+export interface CapabilityStatement extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'CapabilityStatement';
   /**
@@ -6333,8 +6219,8 @@ export interface CapabilityStatement {
    * Indicates the mechanism used to compare versions to determine which is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
 /**
  * Action to occur or has occurred as part of plan
@@ -6357,7 +6243,7 @@ export interface CarePlanActivity extends BackboneElement {
    */
   progress?: Annotation[] | undefined;
 }
-export interface CarePlan {
+export interface CarePlan extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'CarePlan';
   /**
@@ -6506,7 +6392,7 @@ export interface CareTeamParticipant extends BackboneElement {
    */
   role?: CodeableConcept | undefined;
 }
-export interface CareTeam {
+export interface CareTeam extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'CareTeam';
   /**
@@ -6575,7 +6461,7 @@ export interface ChargeItemPerformer extends BackboneElement {
    */
   function?: CodeableConcept | undefined;
 }
-export interface ChargeItem {
+export interface ChargeItem extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ChargeItem';
   /**
@@ -6635,8 +6521,8 @@ export interface ChargeItem {
    * Date/time(s) or duration when the charged service was applied.
    * The list of types may be constrained as appropriate for the type of charge item.
    */
-  occurrencestring?: string | undefined;
-  _occurrencestring?: Element | undefined;
+  occurrenceString?: string | undefined;
+  _occurrenceString?: Element | undefined;
   /**
    * Date/time(s) or duration when the charged service was applied.
    * The list of types may be constrained as appropriate for the type of charge item.
@@ -6748,7 +6634,7 @@ export interface ChargeItemDefinitionPropertyGroup extends BackboneElement {
    */
   priceComponent?: MonetaryComponent[] | undefined;
 }
-export interface ChargeItemDefinition {
+export interface ChargeItemDefinition extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ChargeItemDefinition';
   /**
@@ -6904,8 +6790,8 @@ export interface ChargeItemDefinition {
    * Indicates the mechanism used to compare versions to determine which is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
 /**
  * Summary of the article or artifact
@@ -7416,7 +7302,7 @@ export interface CitationSummary extends BackboneElement {
   text: string;
   _text?: Element | undefined;
 }
-export interface Citation {
+export interface Citation extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Citation';
   /**
@@ -7597,8 +7483,8 @@ export interface Citation {
    * Indicates the mechanism used to compare versions to determine which is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 is newer, and a 0 if the version ordering can't successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
 /**
  * Details of the event
@@ -7689,8 +7575,8 @@ export interface ClaimEvent extends BackboneElement {
   /**
    * A date or period in the past or future indicating when the event occurred or is expectd to occur.
    */
-  whenstring?: string | undefined;
-  _whenstring?: Element | undefined;
+  whenString?: string | undefined;
+  _whenString?: Element | undefined;
   /**
    * A date or period in the past or future indicating when the event occurred or is expectd to occur.
    */
@@ -7999,8 +7885,8 @@ export interface ClaimItem extends BackboneElement {
   /**
    * The date or dates when the service or product was supplied, performed or completed.
    */
-  servicedstring?: string | undefined;
-  _servicedstring?: Element | undefined;
+  servicedString?: string | undefined;
+  _servicedString?: Element | undefined;
   /**
    * The date or dates when the service or product was supplied, performed or completed.
    */
@@ -8114,8 +8000,8 @@ export interface ClaimSupportingInfo extends BackboneElement {
   /**
    * The date when or period to which this information refers.
    */
-  timingstring?: string | undefined;
-  _timingstring?: Element | undefined;
+  timingString?: string | undefined;
+  _timingString?: Element | undefined;
   /**
    * The date when or period to which this information refers.
    */
@@ -8129,8 +8015,8 @@ export interface ClaimSupportingInfo extends BackboneElement {
    * Additional data or information such as resources, documents, images etc. including references to the data or the actual inclusion of the data.
    * Could be used to provide references to other resources, document. For example could contain a PDF in an Attachment of the Police Report for an Accident.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * Additional data or information such as resources, documents, images etc. including references to the data or the actual inclusion of the data.
    * Could be used to provide references to other resources, document. For example could contain a PDF in an Attachment of the Police Report for an Accident.
@@ -8150,13 +8036,13 @@ export interface ClaimSupportingInfo extends BackboneElement {
    * Additional data or information such as resources, documents, images etc. including references to the data or the actual inclusion of the data.
    * Could be used to provide references to other resources, document. For example could contain a PDF in an Attachment of the Police Report for an Accident.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
 }
 /**
  * The Claim resource fulfills three information request requirements: Claim - a request for adjudication for reimbursement for products and/or services provided; Preauthorization - a request to authorize the future provision of products and/or services including an anticipated adjudication; and, Predetermination - a request for a non-bind adjudication of possible future products and/or services.
  */
-export interface Claim {
+export interface Claim extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Claim';
   /**
@@ -8539,8 +8425,8 @@ export interface ClaimResponseAddItem extends BackboneElement {
   /**
    * The date or dates when the service or product was supplied, performed or completed.
    */
-  servicedstring?: string | undefined;
-  _servicedstring?: Element | undefined;
+  servicedString?: string | undefined;
+  _servicedString?: Element | undefined;
   /**
    * The date or dates when the service or product was supplied, performed or completed.
    */
@@ -8601,8 +8487,8 @@ export interface ClaimResponseEvent extends BackboneElement {
   /**
    * A date or period in the past or future indicating when the event occurred or is expectd to occur.
    */
-  whenstring?: string | undefined;
-  _whenstring?: Element | undefined;
+  whenString?: string | undefined;
+  _whenString?: Element | undefined;
   /**
    * A date or period in the past or future indicating when the event occurred or is expectd to occur.
    */
@@ -8840,7 +8726,7 @@ export interface ClaimResponseTotal extends BackboneElement {
    */
   category: CodeableConcept;
 }
-export interface ClaimResponse {
+export interface ClaimResponse extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ClaimResponse';
   /**
@@ -9008,7 +8894,7 @@ export interface ClinicalImpressionFinding extends BackboneElement {
    */
   item?: CodeableReference | undefined;
 }
-export interface ClinicalImpression {
+export interface ClinicalImpression extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ClinicalImpression';
   /**
@@ -9029,8 +8915,8 @@ export interface ClinicalImpression {
    * The point in time or period over which the subject was assessed.
    * This SHOULD be accurate to at least the minute, though some assessments only have a known date.
    */
-  effectivestring?: string | undefined;
-  _effectivestring?: Element | undefined;
+  effectiveString?: string | undefined;
+  _effectiveString?: Element | undefined;
   /**
    * The point in time or period over which the subject was assessed.
    * This SHOULD be accurate to at least the minute, though some assessments only have a known date.
@@ -9178,8 +9064,8 @@ export interface ClinicalUseDefinitionIndication extends BackboneElement {
   /**
    * Timing or duration information, that may be associated with use with the indicated condition e.g. Adult patients suffering from myocardial infarction (from a few days until less than 35 days), ischaemic stroke (from 7 days until less than 6 months).
    */
-  durationstring?: string | undefined;
-  _durationstring?: Element | undefined;
+  durationString?: string | undefined;
+  _durationString?: Element | undefined;
   /**
    * The intended effect, aim or strategy to be achieved.
    */
@@ -9262,7 +9148,7 @@ export interface ClinicalUseDefinitionWarning extends BackboneElement {
   description?: string | undefined;
   _description?: Element | undefined;
 }
-export interface ClinicalUseDefinition {
+export interface ClinicalUseDefinition extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ClinicalUseDefinition';
   /**
@@ -9355,13 +9241,13 @@ export interface CodeSystemConceptProperty extends BackboneElement {
   /**
    * The value of this property.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * The value of this property.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * The value of this property.
    */
@@ -9369,7 +9255,7 @@ export interface CodeSystemConceptProperty extends BackboneElement {
   /**
    * The value of this property.
    */
-  valuenumber?: number | undefined;
+  valueNumber?: number | undefined;
 }
 /**
  * Concepts in the code system
@@ -9457,7 +9343,7 @@ export interface CodeSystemProperty extends BackboneElement {
   uri?: string | undefined;
   _uri?: Element | undefined;
 }
-export interface CodeSystem {
+export interface CodeSystem extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'CodeSystem';
   /**
@@ -9670,8 +9556,8 @@ export interface CodeSystem {
    * Indicates the mechanism used to compare versions to determine which CodeSystem is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
   /**
    * This flag is used to signify that the code system does not commit to concept permanence across versions. If true, a version must be specified when referencing this code system.
    * Best practice is that code systems do not redefine concepts, or that if concepts are redefined, a new code system definition is created. But this is not always possible, so some code systems may be defined as 'versionNeeded'.
@@ -9706,7 +9592,7 @@ export interface CommunicationPayload extends BackboneElement {
    */
   contentReference?: Reference | undefined;
 }
-export interface Communication {
+export interface Communication extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Communication';
   /**
@@ -9843,7 +9729,7 @@ export interface CommunicationRequestPayload extends BackboneElement {
    */
   contentReference?: Reference | undefined;
 }
-export interface CommunicationRequest {
+export interface CommunicationRequest extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'CommunicationRequest';
   /**
@@ -9908,8 +9794,8 @@ export interface CommunicationRequest {
   /**
    * The time when this communication is to occur.
    */
-  occurrencestring?: string | undefined;
-  _occurrencestring?: Element | undefined;
+  occurrenceString?: string | undefined;
+  _occurrenceString?: Element | undefined;
   /**
    * The time when this communication is to occur.
    */
@@ -9990,7 +9876,7 @@ export interface CompartmentDefinitionResource extends BackboneElement {
 /**
  * In FHIR, search is not performed directly on a resource (by XML or JSON path), but on a named parameter that maps into the resource content.
  */
-export interface CompartmentDefinition {
+export interface CompartmentDefinition extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'CompartmentDefinition';
   /**
@@ -10093,8 +9979,8 @@ export interface CompartmentDefinition {
    * Indicates the mechanism used to compare versions to determine which is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
 /**
  * Attests to accuracy of composition
@@ -10184,7 +10070,7 @@ export interface CompositionSection extends BackboneElement {
 /**
  * While the focus of this specification is on patient-specific clinical statements, this resource can also apply to other healthcare-related statements such as study protocol designs, healthcare invoices and other activities that are not necessarily patient-specific or clinical.
  */
-export interface Composition {
+export interface Composition extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Composition';
   /**
@@ -10339,14 +10225,14 @@ export interface ConceptMapGroupElementTargetDependsOn extends BackboneElement {
    * Data element value that the map depends on / produces.
    * If the data type is a code, then the code system is .group.source for .dependsOn.valueCode and .group.target for .product.valueCode.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * Data element value that the map depends on / produces.
    * If the data type is a code, then the code system is .group.source for .dependsOn.valueCode and .group.target for .product.valueCode.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * Data element value that the map depends on / produces.
    * If the data type is a code, then the code system is .group.source for .dependsOn.valueCode and .group.target for .product.valueCode.
@@ -10375,13 +10261,13 @@ export interface ConceptMapGroupElementTargetProperty extends BackboneElement {
   /**
    * The value of this property. If the type chosen for this element is 'code', then the property SHALL be defined in a ConceptMap.property element.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * The value of this property. If the type chosen for this element is 'code', then the property SHALL be defined in a ConceptMap.property element.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * The value of this property. If the type chosen for this element is 'code', then the property SHALL be defined in a ConceptMap.property element.
    */
@@ -10389,7 +10275,7 @@ export interface ConceptMapGroupElementTargetProperty extends BackboneElement {
   /**
    * The value of this property. If the type chosen for this element is 'code', then the property SHALL be defined in a ConceptMap.property element.
    */
-  valuenumber?: number | undefined;
+  valueNumber?: number | undefined;
 }
 /**
  * Concept in target system for element
@@ -10567,7 +10453,7 @@ export interface ConceptMapProperty extends BackboneElement {
   uri?: string | undefined;
   _uri?: Element | undefined;
 }
-export interface ConceptMap {
+export interface ConceptMap extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ConceptMap';
   /**
@@ -10697,8 +10583,8 @@ export interface ConceptMap {
    * Identifier for the source value set that contains the concepts that are being mapped and provides context for the mappings.  Limits the scope of the map to source codes (ConceptMap.group.element code or valueSet) that are members of this value set.
    * Should be a version specific reference. URIs SHOULD be absolute. If there is no sourceScope or targetScope value set, there is no specified context for the map (not recommended).  The sourceScope value set may select codes from either an explicit (standard or local) or implicit code system.
    */
-  sourceScopestring?: string | undefined;
-  _sourceScopestring?: Element | undefined;
+  sourceScopeString?: string | undefined;
+  _sourceScopeString?: Element | undefined;
   /**
    * The status of this concept map. Enables tracking the life-cycle of the content.
    * Allows filtering of concept maps that are appropriate for use versus not.
@@ -10710,8 +10596,8 @@ export interface ConceptMap {
    * Identifier for the target value set that provides important context about how the mapping choices are made.  Limits the scope of the map to target codes (ConceptMap.group.element.target code or valueSet) that are members of this value set.
    * Should be a version specific reference. URIs SHOULD be absolute. If there is no sourceScope or targetScope value set, there is no specified context for the map (not recommended).  The targetScope value set may select codes from either an explicit (standard or local) or implicit code system.
    */
-  targetScopestring?: string | undefined;
-  _targetScopestring?: Element | undefined;
+  targetScopeString?: string | undefined;
+  _targetScopeString?: Element | undefined;
   /**
    * A short, descriptive, user-friendly title for the concept map.
    * This name does not need to be machine-processing friendly and may contain punctuation, white-space, etc.
@@ -10751,8 +10637,8 @@ export interface ConceptMap {
    * Indicates the mechanism used to compare versions to determine which ConceptMap is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
 /**
  * Who or what participated in the activities related to the condition and how they were involved
@@ -10784,7 +10670,7 @@ export interface ConditionStage extends BackboneElement {
    */
   type?: CodeableConcept | undefined;
 }
-export interface Condition {
+export interface Condition extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Condition';
   /**
@@ -10798,8 +10684,8 @@ export interface Condition {
    * There is no explicit distinction between resolution and remission because in many cases the distinction is not clear. Age is generally used when the patient reports an age at which the Condition abated.  If there is no abatement element, it is unknown whether the condition has resolved or entered remission; applications and users should generally assume that the condition is still valid.  When abatementString exists, it implies the condition is abated.
    * Because a Condition.code can represent multiple levels of granularity and can be modified over time, the onset and abatement dates can have ambiguity whether those dates apply to the current Condition.code or an earlier representation of that Condition.code.   For example, if the Condition.code was initially documented as severe asthma, then it is ambiguous whether the onset and abatement dates apply to asthma (overall in that subject's lifetime) or when asthma transitioned to become severe.
    */
-  abatementstring?: string | undefined;
-  _abatementstring?: Element | undefined;
+  abatementString?: string | undefined;
+  _abatementString?: Element | undefined;
   /**
    * The date or estimated date that the condition resolved or went into remission. This is called "abatement" because of the many overloaded connotations associated with "remission" or "resolution" - Some conditions, such as chronic conditions, are never really resolved, but they can abate.
    * There is no explicit distinction between resolution and remission because in many cases the distinction is not clear. Age is generally used when the patient reports an age at which the Condition abated.  If there is no abatement element, it is unknown whether the condition has resolved or entered remission; applications and users should generally assume that the condition is still valid.  When abatementString exists, it implies the condition is abated.
@@ -10859,8 +10745,8 @@ export interface Condition {
    * Estimated or actual date or date-time  the condition began, in the opinion of the clinician.
    * Age is generally used when the patient reports an age at which the Condition began to occur.  Period is generally used to convey an imprecise onset that occurred within the time period.  For example, Period is not intended to convey the transition period before the chronic bronchitis or COPD condition was diagnosed, but Period can be used to convey an imprecise diagnosis date.  Range is generally used to convey an imprecise age range (e.g. 4 to 6 years old).  Because a Condition.code can represent multiple levels of granularity and can be modified over time, the onset and abatement dates can have ambiguity whether those dates apply to the current Condition.code or an earlier representation of that Condition.code.   For example, if the Condition.code was initially documented as severe asthma, then it is ambiguous whether the onset and abatement dates apply to asthma (overall in that subject's lifetime) or when asthma transitioned to become severe.
    */
-  onsetstring?: string | undefined;
-  _onsetstring?: Element | undefined;
+  onsetString?: string | undefined;
+  _onsetString?: Element | undefined;
   /**
    * Estimated or actual date or date-time  the condition began, in the opinion of the clinician.
    * Age is generally used when the patient reports an age at which the Condition began to occur.  Period is generally used to convey an imprecise onset that occurred within the time period.  For example, Period is not intended to convey the transition period before the chronic bronchitis or COPD condition was diagnosed, but Period can be used to convey an imprecise diagnosis date.  Range is generally used to convey an imprecise age range (e.g. 4 to 6 years old).  Because a Condition.code can represent multiple levels of granularity and can be modified over time, the onset and abatement dates can have ambiguity whether those dates apply to the current Condition.code or an earlier representation of that Condition.code.   For example, if the Condition.code was initially documented as severe asthma, then it is ambiguous whether the onset and abatement dates apply to asthma (overall in that subject's lifetime) or when asthma transitioned to become severe.
@@ -10976,7 +10862,7 @@ export interface ConditionDefinitionQuestionnaire extends BackboneElement {
    */
   reference: Reference;
 }
-export interface ConditionDefinition {
+export interface ConditionDefinition extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ConditionDefinition';
   /**
@@ -11135,8 +11021,8 @@ export interface ConditionDefinition {
    * Indicates the mechanism used to compare versions to determine which is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
 /**
  * Computable version of the backing policy
@@ -11273,7 +11159,7 @@ export interface ConsentVerification extends BackboneElement {
 /**
  * Broadly, there are 3 key areas of consent for patients: Consent around sharing information (aka Privacy Consent Directive - Authorization to Collect, Use, or Disclose information), consent for specific treatment, or kinds of treatment and consent for research participation and data sharing.
  */
-export interface Consent {
+export interface Consent extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Consent';
   /**
@@ -11496,8 +11382,8 @@ export interface ContractTermAction extends BackboneElement {
   /**
    * When action happens.
    */
-  occurrencestring?: string | undefined;
-  _occurrencestring?: Element | undefined;
+  occurrenceString?: string | undefined;
+  _occurrenceString?: Element | undefined;
   /**
    * When action happens.
    */
@@ -11724,8 +11610,8 @@ export interface ContractTermOfferAnswer extends BackboneElement {
   /**
    * Response to an offer clause or question text,  which enables selection of values to be agreed to, e.g., the period of participation, the date of occupancy of a rental, warranty duration, or whether biospecimen may be used for further research.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * Response to an offer clause or question text,  which enables selection of values to be agreed to, e.g., the period of participation, the date of occupancy of a rental, warranty duration, or whether biospecimen may be used for further research.
    */
@@ -11733,12 +11619,12 @@ export interface ContractTermOfferAnswer extends BackboneElement {
   /**
    * Response to an offer clause or question text,  which enables selection of values to be agreed to, e.g., the period of participation, the date of occupancy of a rental, warranty duration, or whether biospecimen may be used for further research.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * Response to an offer clause or question text,  which enables selection of values to be agreed to, e.g., the period of participation, the date of occupancy of a rental, warranty duration, or whether biospecimen may be used for further research.
    */
-  valuenumber?: number | undefined;
+  valueNumber?: number | undefined;
   /**
    * Response to an offer clause or question text,  which enables selection of values to be agreed to, e.g., the period of participation, the date of occupancy of a rental, warranty duration, or whether biospecimen may be used for further research.
    */
@@ -11898,7 +11784,7 @@ export interface ContractTerm extends BackboneElement {
    */
   type?: CodeableConcept | undefined;
 }
-export interface Contract {
+export interface Contract extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Contract';
   /**
@@ -12156,7 +12042,7 @@ export interface CoveragePaymentBy extends BackboneElement {
 /**
  * The Coverage resource contains the insurance card level information, which is customary to provide on claims and other communications between providers and insurers.
  */
-export interface Coverage {
+export interface Coverage extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Coverage';
   /**
@@ -12266,8 +12152,8 @@ export interface CoverageEligibilityRequestEvent extends BackboneElement {
   /**
    * A date or period in the past or future indicating when the event occurred or is expectd to occur.
    */
-  whenstring?: string | undefined;
-  _whenstring?: Element | undefined;
+  whenString?: string | undefined;
+  _whenString?: Element | undefined;
   /**
    * A date or period in the past or future indicating when the event occurred or is expectd to occur.
    */
@@ -12375,7 +12261,7 @@ export interface CoverageEligibilityRequestSupportingInfo extends BackboneElemen
    */
   sequence: number;
 }
-export interface CoverageEligibilityRequest {
+export interface CoverageEligibilityRequest extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'CoverageEligibilityRequest';
   /**
@@ -12434,8 +12320,8 @@ export interface CoverageEligibilityRequest {
   /**
    * The date or dates when the enclosed suite of services were performed or completed.
    */
-  servicedstring?: string | undefined;
-  _servicedstring?: Element | undefined;
+  servicedString?: string | undefined;
+  _servicedString?: Element | undefined;
   /**
    * The date or dates when the enclosed suite of services were performed or completed.
    */
@@ -12478,8 +12364,8 @@ export interface CoverageEligibilityResponseEvent extends BackboneElement {
   /**
    * A date or period in the past or future indicating when the event occurred or is expectd to occur.
    */
-  whenstring?: string | undefined;
-  _whenstring?: Element | undefined;
+  whenString?: string | undefined;
+  _whenString?: Element | undefined;
   /**
    * A date or period in the past or future indicating when the event occurred or is expectd to occur.
    */
@@ -12496,12 +12382,12 @@ export interface CoverageEligibilityResponseInsuranceItemBenefit extends Backbon
   /**
    * The quantity of the benefit which is permitted under the coverage.
    */
-  allowedstring?: string | undefined;
-  _allowedstring?: Element | undefined;
+  allowedString?: string | undefined;
+  _allowedString?: Element | undefined;
   /**
    * The quantity of the benefit which is permitted under the coverage.
    */
-  allowednumber?: number | undefined;
+  allowedNumber?: number | undefined;
   /**
    * Classification of benefit being provided.
    * For example: deductible, visits, benefit amount.
@@ -12514,12 +12400,12 @@ export interface CoverageEligibilityResponseInsuranceItemBenefit extends Backbon
   /**
    * The quantity of the benefit which have been consumed to date.
    */
-  usedstring?: string | undefined;
-  _usedstring?: Element | undefined;
+  usedString?: string | undefined;
+  _usedString?: Element | undefined;
   /**
    * The quantity of the benefit which have been consumed to date.
    */
-  usednumber?: number | undefined;
+  usedNumber?: number | undefined;
 }
 /**
  * Benefits and authorization details
@@ -12615,7 +12501,7 @@ export interface CoverageEligibilityResponseInsurance extends BackboneElement {
    */
   item?: CoverageEligibilityResponseInsuranceItem[] | undefined;
 }
-export interface CoverageEligibilityResponse {
+export interface CoverageEligibilityResponse extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'CoverageEligibilityResponse';
   /**
@@ -12686,8 +12572,8 @@ export interface CoverageEligibilityResponse {
   /**
    * The date or dates when the enclosed suite of services were performed or completed.
    */
-  servicedstring?: string | undefined;
-  _servicedstring?: Element | undefined;
+  servicedString?: string | undefined;
+  _servicedString?: Element | undefined;
   /**
    * The date or dates when the enclosed suite of services were performed or completed.
    */
@@ -12736,7 +12622,7 @@ export interface DetectedIssueMitigation extends BackboneElement {
    */
   note?: Annotation[] | undefined;
 }
-export interface DetectedIssue {
+export interface DetectedIssue extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'DetectedIssue';
   /**
@@ -12770,8 +12656,8 @@ export interface DetectedIssue {
   /**
    * The date or period when the detected issue was initially identified.
    */
-  identifiedstring?: string | undefined;
-  _identifiedstring?: Element | undefined;
+  identifiedString?: string | undefined;
+  _identifiedString?: Element | undefined;
   /**
    * The date or period when the detected issue was initially identified.
    */
@@ -12866,8 +12752,8 @@ export interface DeviceProperty extends BackboneElement {
    * The value of the property specified by the associated property.type code.
    * The text element in CodeableConcept.text is used for properties which would usually be coded (such as the size of an implant, or a security classification) but for which there is not currently an appropriate concept in the vocabulary (e.g. a custom implant size, or a security classification which depends on configuration). Otherwise the string choice type is used for descriptive properties, or instructions.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * The value of the property specified by the associated property.type code.
    * The text element in CodeableConcept.text is used for properties which would usually be coded (such as the size of an implant, or a security classification) but for which there is not currently an appropriate concept in the vocabulary (e.g. a custom implant size, or a security classification which depends on configuration). Otherwise the string choice type is used for descriptive properties, or instructions.
@@ -12877,7 +12763,7 @@ export interface DeviceProperty extends BackboneElement {
    * The value of the property specified by the associated property.type code.
    * The text element in CodeableConcept.text is used for properties which would usually be coded (such as the size of an implant, or a security classification) but for which there is not currently an appropriate concept in the vocabulary (e.g. a custom implant size, or a security classification which depends on configuration). Otherwise the string choice type is used for descriptive properties, or instructions.
    */
-  valuenumber?: number | undefined;
+  valueNumber?: number | undefined;
   /**
    * The value of the property specified by the associated property.type code.
    * The text element in CodeableConcept.text is used for properties which would usually be coded (such as the size of an implant, or a security classification) but for which there is not currently an appropriate concept in the vocabulary (e.g. a custom implant size, or a security classification which depends on configuration). Otherwise the string choice type is used for descriptive properties, or instructions.
@@ -12892,8 +12778,8 @@ export interface DeviceProperty extends BackboneElement {
    * The value of the property specified by the associated property.type code.
    * The text element in CodeableConcept.text is used for properties which would usually be coded (such as the size of an implant, or a security classification) but for which there is not currently an appropriate concept in the vocabulary (e.g. a custom implant size, or a security classification which depends on configuration). Otherwise the string choice type is used for descriptive properties, or instructions.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
 }
 /**
  * Unique Device Identifier (UDI) Barcode string
@@ -12961,7 +12847,7 @@ export interface DeviceVersion extends BackboneElement {
   value: string;
   _value?: Element | undefined;
 }
-export interface Device {
+export interface Device extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Device';
   /**
@@ -13131,7 +13017,7 @@ export interface DeviceAssociationOperation extends BackboneElement {
    */
   status: CodeableConcept;
 }
-export interface DeviceAssociation {
+export interface DeviceAssociation extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'DeviceAssociation';
   /**
@@ -13409,8 +13295,8 @@ export interface DeviceDefinitionProperty extends BackboneElement {
    * The value of the property specified by the associated property.type code.
    * This use of string or CodeableConcept is supported to address different purposes The text element of the valueCodeableConcept choice type is used for properties which would usually be coded (such as the size of an implant, or a security classification) but for which there is not currently an appropriate concept in the vocabulary (e.g., a custom implant size, or a security classification which depends on configuration. Otherwise the valueString choice type is used for textual descriptive device properties that cannot be expressed in other elements.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * The value of the property specified by the associated property.type code.
    * This use of string or CodeableConcept is supported to address different purposes The text element of the valueCodeableConcept choice type is used for properties which would usually be coded (such as the size of an implant, or a security classification) but for which there is not currently an appropriate concept in the vocabulary (e.g., a custom implant size, or a security classification which depends on configuration. Otherwise the valueString choice type is used for textual descriptive device properties that cannot be expressed in other elements.
@@ -13420,7 +13306,7 @@ export interface DeviceDefinitionProperty extends BackboneElement {
    * The value of the property specified by the associated property.type code.
    * This use of string or CodeableConcept is supported to address different purposes The text element of the valueCodeableConcept choice type is used for properties which would usually be coded (such as the size of an implant, or a security classification) but for which there is not currently an appropriate concept in the vocabulary (e.g., a custom implant size, or a security classification which depends on configuration. Otherwise the valueString choice type is used for textual descriptive device properties that cannot be expressed in other elements.
    */
-  valuenumber?: number | undefined;
+  valueNumber?: number | undefined;
   /**
    * The value of the property specified by the associated property.type code.
    * This use of string or CodeableConcept is supported to address different purposes The text element of the valueCodeableConcept choice type is used for properties which would usually be coded (such as the size of an implant, or a security classification) but for which there is not currently an appropriate concept in the vocabulary (e.g., a custom implant size, or a security classification which depends on configuration. Otherwise the valueString choice type is used for textual descriptive device properties that cannot be expressed in other elements.
@@ -13435,8 +13321,8 @@ export interface DeviceDefinitionProperty extends BackboneElement {
    * The value of the property specified by the associated property.type code.
    * This use of string or CodeableConcept is supported to address different purposes The text element of the valueCodeableConcept choice type is used for properties which would usually be coded (such as the size of an implant, or a security classification) but for which there is not currently an appropriate concept in the vocabulary (e.g., a custom implant size, or a security classification which depends on configuration. Otherwise the valueString choice type is used for textual descriptive device properties that cannot be expressed in other elements.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
 }
 /**
  * Regulatory identifier(s) associated with this device
@@ -13524,7 +13410,7 @@ export interface DeviceDefinitionVersion extends BackboneElement {
 /**
  * For the initial scope, this DeviceDefinition resource is only applicable to describe a single node in the containment tree that is produced by the context scanner in any medical device that implements or derives from the ISO/IEEE 11073 standard and that does not represent a metric. Examples for such a node are MDS, VMD, or Channel.
  */
-export interface DeviceDefinition {
+export interface DeviceDefinition extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'DeviceDefinition';
   /**
@@ -13655,7 +13541,7 @@ export interface DeviceDispensePerformer extends BackboneElement {
    */
   function?: CodeableConcept | undefined;
 }
-export interface DeviceDispense {
+export interface DeviceDispense extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'DeviceDispense';
   /**
@@ -13776,7 +13662,7 @@ export interface DeviceMetricCalibration extends BackboneElement {
 /**
  * The DeviceMetric resource is derived from the ISO/IEEE 11073-10201 Domain Information Model standard, but is more widely applicable.
  */
-export interface DeviceMetric {
+export interface DeviceMetric extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'DeviceMetric';
   /**
@@ -13835,8 +13721,8 @@ export interface DeviceRequestParameter extends BackboneElement {
    * The value of the device detail.
    * Range means device should have a value that falls somewhere within the specified range.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * The value of the device detail.
    * Range means device should have a value that falls somewhere within the specified range.
@@ -13853,7 +13739,7 @@ export interface DeviceRequestParameter extends BackboneElement {
    */
   valueRange?: Range | undefined;
 }
-export interface DeviceRequest {
+export interface DeviceRequest extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'DeviceRequest';
   /**
@@ -13924,8 +13810,8 @@ export interface DeviceRequest {
   /**
    * The timing schedule for the use of the device. The Schedule data type allows many different expressions, for example. "Every 8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:"; "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".
    */
-  occurrencestring?: string | undefined;
-  _occurrencestring?: Element | undefined;
+  occurrenceString?: string | undefined;
+  _occurrenceString?: Element | undefined;
   /**
    * The timing schedule for the use of the device. The Schedule data type allows many different expressions, for example. "Every 8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:"; "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".
    */
@@ -13998,7 +13884,7 @@ export interface DeviceUsageAdherence extends BackboneElement {
    */
   reason: CodeableConcept[];
 }
-export interface DeviceUsage {
+export interface DeviceUsage extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'DeviceUsage';
   /**
@@ -14066,8 +13952,8 @@ export interface DeviceUsage {
   /**
    * How often the device was used.
    */
-  timingstring?: string | undefined;
-  _timingstring?: Element | undefined;
+  timingString?: string | undefined;
+  _timingString?: Element | undefined;
   /**
    * How often the device was used.
    */
@@ -14116,7 +14002,7 @@ export interface DiagnosticReportSupportingInfo extends BackboneElement {
 /**
  * This is intended to capture a single report and is not suitable for use in displaying summary information that covers multiple reports.  For example, this resource has not been designed for laboratory cumulative reporting formats nor detailed structured reports for sequencing.
  */
-export interface DiagnosticReport {
+export interface DiagnosticReport extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'DiagnosticReport';
   /**
@@ -14151,8 +14037,8 @@ export interface DiagnosticReport {
    * The time or time-period the observed values are related to. When the subject of the report is a patient, this is usually either the time of the procedure or of specimen collection(s), but very often the source of the date/time is not known, only the date/time itself.
    * If the diagnostic procedure was performed on the patient, this is the time it was performed. If there are specimens, the diagnostically relevant time can be derived from the specimen collection times, but the specimen information is not always available, and the exact relationship between the specimens and the diagnostically relevant time is not always automatic.
    */
-  effectivestring?: string | undefined;
-  _effectivestring?: Element | undefined;
+  effectiveString?: string | undefined;
+  _effectiveString?: Element | undefined;
   /**
    * The time or time-period the observed values are related to. When the subject of the report is a patient, this is usually either the time of the procedure or of specimen collection(s), but very often the source of the date/time is not known, only the date/time itself.
    * If the diagnostic procedure was performed on the patient, this is the time it was performed. If there are specimens, the diagnostically relevant time can be derived from the specimen collection times, but the specimen information is not always available, and the exact relationship between the specimens and the diagnostically relevant time is not always automatic.
@@ -14255,8 +14141,8 @@ export interface DocumentReferenceContentProfile extends BackboneElement {
   /**
    * Code|uri|canonical.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * Code|uri|canonical.
    */
@@ -14296,7 +14182,7 @@ export interface DocumentReferenceRelatesTo extends BackboneElement {
 /**
  * Usually, this is used for documents other than those defined by FHIR.
  */
-export interface DocumentReference {
+export interface DocumentReference extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'DocumentReference';
   /**
@@ -14415,7 +14301,7 @@ export interface DocumentReference {
   version?: string | undefined;
   _version?: Element | undefined;
 }
-export interface DomainResource {
+export interface DomainResource extends Resource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: string;
   /**
@@ -14551,7 +14437,7 @@ export interface EncounterReason extends BackboneElement {
    */
   value?: CodeableReference[] | undefined;
 }
-export interface Encounter {
+export interface Encounter extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Encounter';
   /**
@@ -14716,7 +14602,7 @@ export interface EncounterHistoryLocation extends BackboneElement {
    */
   location: Reference;
 }
-export interface EncounterHistory {
+export interface EncounterHistory extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'EncounterHistory';
   /**
@@ -14801,7 +14687,7 @@ export interface EndpointPayload extends BackboneElement {
    */
   type?: CodeableConcept[] | undefined;
 }
-export interface Endpoint {
+export interface Endpoint extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Endpoint';
   /**
@@ -14868,7 +14754,7 @@ export interface Endpoint {
   status: ('active'|'suspended'|'error'|'off'|'entered-in-error');
   _status?: Element | undefined;
 }
-export interface EnrollmentRequest {
+export interface EnrollmentRequest extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'EnrollmentRequest';
   /**
@@ -14903,7 +14789,7 @@ export interface EnrollmentRequest {
   status?: ('active'|'cancelled'|'draft'|'entered-in-error') | undefined;
   _status?: Element | undefined;
 }
-export interface EnrollmentResponse {
+export interface EnrollmentResponse extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'EnrollmentResponse';
   /**
@@ -14990,7 +14876,7 @@ export interface EpisodeOfCareStatusHistory extends BackboneElement {
   status: ('planned'|'waitlist'|'active'|'onhold'|'finished'|'cancelled'|'entered-in-error');
   _status?: Element | undefined;
 }
-export interface EpisodeOfCare {
+export interface EpisodeOfCare extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'EpisodeOfCare';
   /**
@@ -15057,7 +14943,7 @@ export interface EpisodeOfCare {
    */
   type?: CodeableConcept[] | undefined;
 }
-export interface EventDefinition {
+export interface EventDefinition extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'EventDefinition';
   /**
@@ -15237,8 +15123,8 @@ export interface EventDefinition {
    * Indicates the mechanism used to compare versions to determine which is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
 /**
  * Certainty or quality of the evidence
@@ -15459,7 +15345,7 @@ export interface EvidenceVariableDefinition extends BackboneElement {
    */
   variableRole: CodeableConcept;
 }
-export interface Evidence {
+export interface Evidence extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Evidence';
   /**
@@ -15486,8 +15372,8 @@ export interface Evidence {
   /**
    * Citation Resource or display of suggested citation for this evidence.
    */
-  citeAsstring?: string | undefined;
-  _citeAsstring?: Element | undefined;
+  citeAsString?: string | undefined;
+  _citeAsString?: Element | undefined;
   /**
    * Citation Resource or display of suggested citation for this evidence.
    */
@@ -15637,8 +15523,8 @@ export interface Evidence {
    * Indicates the mechanism used to compare versions to determine which is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 is newer, and a 0 if the version ordering can't successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
 /**
  * Target of the relationship
@@ -15765,8 +15651,8 @@ export interface EvidenceReportSubjectCharacteristic extends BackboneElement {
    * Characteristic value.
    * Example 1 is Citation #37. Example 2 is selecting clinical outcomes. Example 3 is 1-year mortality.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * Characteristic value.
    * Example 1 is Citation #37. Example 2 is selecting clinical outcomes. Example 3 is 1-year mortality.
@@ -15802,7 +15688,7 @@ export interface EvidenceReportSubject extends BackboneElement {
    */
   note?: Annotation[] | undefined;
 }
-export interface EvidenceReport {
+export interface EvidenceReport extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'EvidenceReport';
   /**
@@ -15814,8 +15700,8 @@ export interface EvidenceReport {
    * Citation Resource or display of suggested citation for this report.
    * used for reports for which external citation is expected, such as use in support of scholarly publications.
    */
-  citeAsstring?: string | undefined;
-  _citeAsstring?: Element | undefined;
+  citeAsString?: string | undefined;
+  _citeAsString?: Element | undefined;
   /**
    * Citation Resource or display of suggested citation for this report.
    * used for reports for which external citation is expected, such as use in support of scholarly publications.
@@ -15968,8 +15854,8 @@ export interface EvidenceVariableCharacteristicDefinitionByTypeAndValue extends 
   /**
    * Defines the characteristic when paired with characteristic.type.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * Defines the characteristic when paired with characteristic.type.
    */
@@ -15977,8 +15863,8 @@ export interface EvidenceVariableCharacteristicDefinitionByTypeAndValue extends 
   /**
    * Defines the characteristic when paired with characteristic.type.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * Defines the characteristic when paired with characteristic.type.
    */
@@ -16008,8 +15894,8 @@ export interface EvidenceVariableCharacteristicTimeFromEvent extends BackboneEle
   /**
    * The event used as a base point (reference point) in time.
    */
-  eventstring?: string | undefined;
-  _eventstring?: Element | undefined;
+  eventString?: string | undefined;
+  _eventString?: Element | undefined;
   /**
    * The event used as a base point (reference point) in time.
    */
@@ -16106,7 +15992,7 @@ export interface EvidenceVariableCharacteristic extends BackboneElement {
 /**
  * The EvidenceVariable may be an exposure variable (intervention, condition, or state), a measured variable (outcome or observed parameter), or other variable (such as confounding factor).
  */
-export interface EvidenceVariable {
+export interface EvidenceVariable extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'EvidenceVariable';
   /**
@@ -16280,8 +16166,8 @@ export interface EvidenceVariable {
    * Indicates the mechanism used to compare versions to determine which is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 is newer, and a 0 if the version ordering can't successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
 /**
  * Individual involved in exchange
@@ -16376,8 +16262,8 @@ export interface ExampleScenarioInstance extends BackboneElement {
   /**
    * Refers to a profile, template or other ruleset the instance adheres to.
    */
-  structureProfilestring?: string | undefined;
-  _structureProfilestring?: Element | undefined;
+  structureProfileString?: string | undefined;
+  _structureProfileString?: Element | undefined;
   /**
    * A code indicating the kind of data structure (FHIR resource or some other standard) this is an instance of.
    */
@@ -16533,7 +16419,7 @@ export interface ExampleScenarioProcess extends BackboneElement {
   title: string;
   _title?: Element | undefined;
 }
-export interface ExampleScenario {
+export interface ExampleScenario extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ExampleScenario';
   /**
@@ -16656,8 +16542,8 @@ export interface ExampleScenario {
    * Indicates the mechanism used to compare versions to determine which is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
 /**
  * Details of the event
@@ -16926,8 +16812,8 @@ export interface ExplanationOfBenefitAddItem extends BackboneElement {
   /**
    * The date or dates when the service or product was supplied, performed or completed.
    */
-  servicedstring?: string | undefined;
-  _servicedstring?: Element | undefined;
+  servicedString?: string | undefined;
+  _servicedString?: Element | undefined;
   /**
    * The date or dates when the service or product was supplied, performed or completed.
    */
@@ -16960,12 +16846,12 @@ export interface ExplanationOfBenefitBenefitBalanceFinancial extends BackboneEle
   /**
    * The quantity of the benefit which is permitted under the coverage.
    */
-  allowedstring?: string | undefined;
-  _allowedstring?: Element | undefined;
+  allowedString?: string | undefined;
+  _allowedString?: Element | undefined;
   /**
    * The quantity of the benefit which is permitted under the coverage.
    */
-  allowednumber?: number | undefined;
+  allowedNumber?: number | undefined;
   /**
    * Classification of benefit being provided.
    * For example: deductible, visits, benefit amount.
@@ -16978,7 +16864,7 @@ export interface ExplanationOfBenefitBenefitBalanceFinancial extends BackboneEle
   /**
    * The quantity of the benefit which have been consumed to date.
    */
-  usednumber?: number | undefined;
+  usedNumber?: number | undefined;
 }
 /**
  * Balance by Benefit Category
@@ -17089,8 +16975,8 @@ export interface ExplanationOfBenefitEvent extends BackboneElement {
   /**
    * A date or period in the past or future indicating when the event occurred or is expectd to occur.
    */
-  whenstring?: string | undefined;
-  _whenstring?: Element | undefined;
+  whenString?: string | undefined;
+  _whenString?: Element | undefined;
   /**
    * A date or period in the past or future indicating when the event occurred or is expectd to occur.
    */
@@ -17464,8 +17350,8 @@ export interface ExplanationOfBenefitItem extends BackboneElement {
   /**
    * The date or dates when the service or product was supplied, performed or completed.
    */
-  servicedstring?: string | undefined;
-  _servicedstring?: Element | undefined;
+  servicedString?: string | undefined;
+  _servicedString?: Element | undefined;
   /**
    * The date or dates when the service or product was supplied, performed or completed.
    */
@@ -17634,8 +17520,8 @@ export interface ExplanationOfBenefitSupportingInfo extends BackboneElement {
   /**
    * The date when or period to which this information refers.
    */
-  timingstring?: string | undefined;
-  _timingstring?: Element | undefined;
+  timingString?: string | undefined;
+  _timingString?: Element | undefined;
   /**
    * The date when or period to which this information refers.
    */
@@ -17649,8 +17535,8 @@ export interface ExplanationOfBenefitSupportingInfo extends BackboneElement {
    * Additional data or information such as resources, documents, images etc. including references to the data or the actual inclusion of the data.
    * Could be used to provide references to other resources, document. For example, could contain a PDF in an Attachment of the Police Report for an Accident.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * Additional data or information such as resources, documents, images etc. including references to the data or the actual inclusion of the data.
    * Could be used to provide references to other resources, document. For example, could contain a PDF in an Attachment of the Police Report for an Accident.
@@ -17670,8 +17556,8 @@ export interface ExplanationOfBenefitSupportingInfo extends BackboneElement {
    * Additional data or information such as resources, documents, images etc. including references to the data or the actual inclusion of the data.
    * Could be used to provide references to other resources, document. For example, could contain a PDF in an Attachment of the Police Report for an Accident.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
 }
 /**
  * Adjudication totals
@@ -17688,7 +17574,7 @@ export interface ExplanationOfBenefitTotal extends BackboneElement {
    */
   category: CodeableConcept;
 }
-export interface ExplanationOfBenefit {
+export interface ExplanationOfBenefit extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ExplanationOfBenefit';
   /**
@@ -17949,8 +17835,8 @@ export interface FamilyMemberHistoryCondition extends BackboneElement {
   /**
    * Either the age of onset, range of approximate age or descriptive string can be recorded.  For conditions with multiple occurrences, this describes the first known occurrence.
    */
-  onsetstring?: string | undefined;
-  _onsetstring?: Element | undefined;
+  onsetString?: string | undefined;
+  _onsetString?: Element | undefined;
   /**
    * Indicates what happened following the condition.  If the condition resulted in death, deceased date is captured on the relation.
    */
@@ -17997,8 +17883,8 @@ export interface FamilyMemberHistoryProcedure extends BackboneElement {
   /**
    * Estimated or actual date, date-time, period, or age when the procedure was performed. Allows a period to support complex procedures that span more than one date, and also allows for the length of the procedure to be captured.
    */
-  performedstring?: string | undefined;
-  _performedstring?: Element | undefined;
+  performedString?: string | undefined;
+  _performedString?: Element | undefined;
   /**
    * Estimated or actual date, date-time, period, or age when the procedure was performed. Allows a period to support complex procedures that span more than one date, and also allows for the length of the procedure to be captured.
    */
@@ -18008,7 +17894,7 @@ export interface FamilyMemberHistoryProcedure extends BackboneElement {
    */
   performedRange?: Range | undefined;
 }
-export interface FamilyMemberHistory {
+export interface FamilyMemberHistory extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'FamilyMemberHistory';
   /**
@@ -18025,13 +17911,13 @@ export interface FamilyMemberHistory {
    * The age of the relative at the time the family member history is recorded.
    * use estimatedAge to indicate whether the age is actual or not.
    */
-  agestring?: string | undefined;
-  _agestring?: Element | undefined;
+  ageString?: string | undefined;
+  _ageString?: Element | undefined;
   /**
    * The actual or approximate date of birth of the relative.
    */
-  bornstring?: string | undefined;
-  _bornstring?: Element | undefined;
+  bornString?: string | undefined;
+  _bornString?: Element | undefined;
   /**
    * The actual or approximate date of birth of the relative.
    */
@@ -18057,13 +17943,13 @@ export interface FamilyMemberHistory {
   /**
    * Deceased flag or the actual or approximate age of the relative at the time of death for the family member history record.
    */
-  deceasedboolean?: boolean | undefined;
-  _deceasedboolean?: Element | undefined;
+  deceasedBoolean?: boolean | undefined;
+  _deceasedBoolean?: Element | undefined;
   /**
    * Deceased flag or the actual or approximate age of the relative at the time of death for the family member history record.
    */
-  deceasedstring?: string | undefined;
-  _deceasedstring?: Element | undefined;
+  deceasedString?: string | undefined;
+  _deceasedString?: Element | undefined;
   /**
    * Deceased flag or the actual or approximate age of the relative at the time of death for the family member history record.
    */
@@ -18133,7 +18019,7 @@ export interface FamilyMemberHistory {
   status: ('partial'|'completed'|'entered-in-error'|'health-unknown');
   _status?: Element | undefined;
 }
-export interface Flag {
+export interface Flag extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Flag';
   /**
@@ -18175,7 +18061,7 @@ export interface Flag {
    */
   subject: Reference;
 }
-export interface FormularyItem {
+export interface FormularyItem extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'FormularyItem';
   /**
@@ -18335,7 +18221,7 @@ export interface GenomicStudyAnalysis extends BackboneElement {
   title?: string | undefined;
   _title?: Element | undefined;
 }
-export interface GenomicStudy {
+export interface GenomicStudy extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'GenomicStudy';
   /**
@@ -18413,8 +18299,8 @@ export interface GoalTarget extends BackboneElement {
    * The target value of the focus to be achieved to signify the fulfillment of the goal, e.g. 150 pounds, 7.0%. Either the high or low or both values of the range can be specified. When a low value is missing, it indicates that the goal is achieved at any focus value at or below the high value. Similarly, if the high value is missing, it indicates that the goal is achieved at any focus value at or above the low value.
    * A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Goal.target.measure defines a coded value.
    */
-  detailboolean?: boolean | undefined;
-  _detailboolean?: Element | undefined;
+  detailBoolean?: boolean | undefined;
+  _detailBoolean?: Element | undefined;
   /**
    * The target value of the focus to be achieved to signify the fulfillment of the goal, e.g. 150 pounds, 7.0%. Either the high or low or both values of the range can be specified. When a low value is missing, it indicates that the goal is achieved at any focus value at or below the high value. Similarly, if the high value is missing, it indicates that the goal is achieved at any focus value at or above the low value.
    * A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Goal.target.measure defines a coded value.
@@ -18424,7 +18310,7 @@ export interface GoalTarget extends BackboneElement {
    * The target value of the focus to be achieved to signify the fulfillment of the goal, e.g. 150 pounds, 7.0%. Either the high or low or both values of the range can be specified. When a low value is missing, it indicates that the goal is achieved at any focus value at or below the high value. Similarly, if the high value is missing, it indicates that the goal is achieved at any focus value at or above the low value.
    * A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Goal.target.measure defines a coded value.
    */
-  detailnumber?: number | undefined;
+  detailNumber?: number | undefined;
   /**
    * The target value of the focus to be achieved to signify the fulfillment of the goal, e.g. 150 pounds, 7.0%. Either the high or low or both values of the range can be specified. When a low value is missing, it indicates that the goal is achieved at any focus value at or below the high value. Similarly, if the high value is missing, it indicates that the goal is achieved at any focus value at or above the low value.
    * A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Goal.target.measure defines a coded value.
@@ -18444,13 +18330,13 @@ export interface GoalTarget extends BackboneElement {
    * The target value of the focus to be achieved to signify the fulfillment of the goal, e.g. 150 pounds, 7.0%. Either the high or low or both values of the range can be specified. When a low value is missing, it indicates that the goal is achieved at any focus value at or below the high value. Similarly, if the high value is missing, it indicates that the goal is achieved at any focus value at or above the low value.
    * A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Goal.target.measure defines a coded value.
    */
-  detailstring?: string | undefined;
-  _detailstring?: Element | undefined;
+  detailString?: string | undefined;
+  _detailString?: Element | undefined;
   /**
    * Indicates either the date or the duration after start by which the goal should be met.
    */
-  duestring?: string | undefined;
-  _duestring?: Element | undefined;
+  dueString?: string | undefined;
+  _dueString?: Element | undefined;
   /**
    * Indicates either the date or the duration after start by which the goal should be met.
    */
@@ -18463,7 +18349,7 @@ export interface GoalTarget extends BackboneElement {
 /**
  * Goal can be achieving a particular change or merely maintaining a current state or even slowing a decline.
  */
-export interface Goal {
+export interface Goal extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Goal';
   /**
@@ -18528,8 +18414,8 @@ export interface Goal {
   /**
    * The date or event after which the goal should begin being pursued.
    */
-  startstring?: string | undefined;
-  _startstring?: Element | undefined;
+  startString?: string | undefined;
+  _startString?: Element | undefined;
   /**
    * Identifies when the current status.  I.e. When initially created, when achieved, when cancelled, etc.
    * To see the date for past statuses, query history.
@@ -18658,7 +18544,7 @@ export interface GraphDefinitionNode extends BackboneElement {
   type: ('Account'|'ActivityDefinition'|'ActorDefinition'|'AdministrableProductDefinition'|'AdverseEvent'|'AllergyIntolerance'|'Appointment'|'AppointmentResponse'|'ArtifactAssessment'|'AuditEvent'|'Basic'|'Binary'|'BiologicallyDerivedProduct'|'BiologicallyDerivedProductDispense'|'BodyStructure'|'Bundle'|'CanonicalResource'|'CapabilityStatement'|'CarePlan'|'CareTeam'|'ChargeItem'|'ChargeItemDefinition'|'Citation'|'Claim'|'ClaimResponse'|'ClinicalImpression'|'ClinicalUseDefinition'|'CodeSystem'|'Communication'|'CommunicationRequest'|'CompartmentDefinition'|'Composition'|'ConceptMap'|'Condition'|'ConditionDefinition'|'Consent'|'Contract'|'Coverage'|'CoverageEligibilityRequest'|'CoverageEligibilityResponse'|'DetectedIssue'|'Device'|'DeviceAssociation'|'DeviceDefinition'|'DeviceDispense'|'DeviceMetric'|'DeviceRequest'|'DeviceUsage'|'DiagnosticReport'|'DocumentReference'|'DomainResource'|'Encounter'|'EncounterHistory'|'Endpoint'|'EnrollmentRequest'|'EnrollmentResponse'|'EpisodeOfCare'|'EventDefinition'|'Evidence'|'EvidenceReport'|'EvidenceVariable'|'ExampleScenario'|'ExplanationOfBenefit'|'FamilyMemberHistory'|'Flag'|'FormularyItem'|'GenomicStudy'|'Goal'|'GraphDefinition'|'Group'|'GuidanceResponse'|'HealthcareService'|'ImagingSelection'|'ImagingStudy'|'Immunization'|'ImmunizationEvaluation'|'ImmunizationRecommendation'|'ImplementationGuide'|'Ingredient'|'InsurancePlan'|'InventoryItem'|'InventoryReport'|'Invoice'|'Library'|'Linkage'|'List'|'Location'|'ManufacturedItemDefinition'|'Measure'|'MeasureReport'|'Medication'|'MedicationAdministration'|'MedicationDispense'|'MedicationKnowledge'|'MedicationRequest'|'MedicationStatement'|'MedicinalProductDefinition'|'MessageDefinition'|'MessageHeader'|'MetadataResource'|'MolecularSequence'|'NamingSystem'|'NutritionIntake'|'NutritionOrder'|'NutritionProduct'|'Observation'|'ObservationDefinition'|'OperationDefinition'|'OperationOutcome'|'Organization'|'OrganizationAffiliation'|'PackagedProductDefinition'|'Parameters'|'Patient'|'PaymentNotice'|'PaymentReconciliation'|'Permission'|'Person'|'PlanDefinition'|'Practitioner'|'PractitionerRole'|'Procedure'|'Provenance'|'Questionnaire'|'QuestionnaireResponse'|'RegulatedAuthorization'|'RelatedPerson'|'RequestOrchestration'|'Requirements'|'ResearchStudy'|'ResearchSubject'|'Resource'|'RiskAssessment'|'Schedule'|'SearchParameter'|'ServiceRequest'|'Slot'|'Specimen'|'SpecimenDefinition'|'StructureDefinition'|'StructureMap'|'Subscription'|'SubscriptionStatus'|'SubscriptionTopic'|'Substance'|'SubstanceDefinition'|'SubstanceNucleicAcid'|'SubstancePolymer'|'SubstanceProtein'|'SubstanceReferenceInformation'|'SubstanceSourceMaterial'|'SupplyDelivery'|'SupplyRequest'|'Task'|'TerminologyCapabilities'|'TestPlan'|'TestReport'|'TestScript'|'Transport'|'ValueSet'|'VerificationResult'|'VisionPrescription'|'BodySite'|'CatalogEntry'|'Conformance'|'DataElement'|'DeviceComponent'|'DeviceUseRequest'|'DeviceUseStatement'|'DiagnosticOrder'|'DocumentManifest'|'EffectEvidenceSynthesis'|'EligibilityRequest'|'EligibilityResponse'|'ExpansionProfile'|'ImagingManifest'|'ImagingObjectSelection'|'Media'|'MedicationOrder'|'MedicationUsage'|'MedicinalProduct'|'MedicinalProductAuthorization'|'MedicinalProductContraindication'|'MedicinalProductIndication'|'MedicinalProductIngredient'|'MedicinalProductInteraction'|'MedicinalProductManufactured'|'MedicinalProductPackaged'|'MedicinalProductPharmaceutical'|'MedicinalProductUndesirableEffect'|'Order'|'OrderResponse'|'ProcedureRequest'|'ProcessRequest'|'ProcessResponse'|'ReferralRequest'|'RequestGroup'|'ResearchDefinition'|'ResearchElementDefinition'|'RiskEvidenceSynthesis'|'Sequence'|'ServiceDefinition'|'SubstanceSpecification');
   _type?: Element | undefined;
 }
-export interface GraphDefinition {
+export interface GraphDefinition extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'GraphDefinition';
   /**
@@ -18780,8 +18666,8 @@ export interface GraphDefinition {
    * Indicates the mechanism used to compare versions to determine which is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
 /**
  * Include / Exclude group members by Trait
@@ -18806,8 +18692,8 @@ export interface GroupCharacteristic extends BackboneElement {
    * The value of the trait that holds (or does not hold - see 'exclude') for members of the group.
    * For Range, it means members of the group have a value that falls somewhere within the specified range.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * The value of the trait that holds (or does not hold - see 'exclude') for members of the group.
    * For Range, it means members of the group have a value that falls somewhere within the specified range.
@@ -18850,7 +18736,7 @@ export interface GroupMember extends BackboneElement {
 /**
  * If both Group.characteristic and Group.member are present, then the members are the individuals who were found who met the characteristic.  It's possible that there might be other candidate members who meet the characteristic and aren't (yet) in the list.  All members SHALL have the listed characteristics.
  */
-export interface Group {
+export interface Group extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Group';
   /**
@@ -18911,7 +18797,7 @@ export interface Group {
   type: ('person'|'animal'|'practitioner'|'device'|'careteam'|'healthcareservice'|'location'|'organization'|'relatedperson'|'specimen');
   _type?: Element | undefined;
 }
-export interface GuidanceResponse {
+export interface GuidanceResponse extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'GuidanceResponse';
   /**
@@ -18934,8 +18820,8 @@ export interface GuidanceResponse {
   /**
    * An identifier, CodeableConcept or canonical reference to the guidance that was requested.
    */
-  modulestring?: string | undefined;
-  _modulestring?: Element | undefined;
+  moduleString?: string | undefined;
+  _moduleString?: Element | undefined;
   /**
    * An identifier, CodeableConcept or canonical reference to the guidance that was requested.
    */
@@ -18996,7 +18882,7 @@ export interface HealthcareServiceEligibility extends BackboneElement {
   comment?: string | undefined;
   _comment?: Element | undefined;
 }
-export interface HealthcareService {
+export interface HealthcareService extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'HealthcareService';
   /**
@@ -19199,7 +19085,7 @@ export interface ImagingSelectionPerformer extends BackboneElement {
    */
   function?: CodeableConcept | undefined;
 }
-export interface ImagingSelection {
+export interface ImagingSelection extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ImagingSelection';
   /**
@@ -19384,7 +19270,7 @@ export interface ImagingStudySeries extends BackboneElement {
   uid: string;
   _uid?: Element | undefined;
 }
-export interface ImagingStudy {
+export interface ImagingStudy extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ImagingStudy';
   /**
@@ -19546,7 +19432,7 @@ export interface ImmunizationReaction extends BackboneElement {
   reported?: boolean | undefined;
   _reported?: Element | undefined;
 }
-export interface Immunization {
+export interface Immunization extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Immunization';
   /**
@@ -19611,8 +19497,8 @@ export interface Immunization {
    * Date vaccine administered or was to be administered.
    * When immunizations are given a specific date and time should always be known.   When immunizations are patient reported, a specific date might not be known.  Although partial dates are allowed, an adult patient might not be able to recall the year a childhood immunization was given. An exact date is always preferable, but the use of the String data type is acceptable when an exact date is not known. A small number of vaccines (e.g. live oral typhoid vaccine) are given as a series of patient self-administered dose over a span of time. In cases like this, often, only the first dose (typically a provider supervised dose) is recorded with the occurrence indicating the date/time of the first dose.
    */
-  occurrencestring: string;
-  _occurrencestring?: Element | undefined;
+  occurrenceString: string;
+  _occurrenceString?: Element | undefined;
   /**
    * The patient who either received or did not receive the immunization.
    */
@@ -19677,7 +19563,7 @@ export interface Immunization {
    */
   vaccineCode: CodeableConcept;
 }
-export interface ImmunizationEvaluation {
+export interface ImmunizationEvaluation extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ImmunizationEvaluation';
   /**
@@ -19816,7 +19702,7 @@ export interface ImmunizationRecommendationRecommendation extends BackboneElemen
    */
   vaccineCode?: CodeableConcept[] | undefined;
 }
-export interface ImmunizationRecommendation {
+export interface ImmunizationRecommendation extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ImmunizationRecommendation';
   /**
@@ -19883,8 +19769,8 @@ export interface ImplementationGuideDefinitionPage extends BackboneElement {
    * Indicates the URL or the actual content to provide for the page.
    * If absent and the page isn't a generated page, this may be inferred from the page name by checking input locations.  String is used for XHTML content - sent as an escaped string.  FHIR tooling can't support 'direct' XHTML anywhere other than in narrative.
    */
-  sourcestring?: string | undefined;
-  _sourcestring?: Element | undefined;
+  sourceString?: string | undefined;
+  _sourceString?: Element | undefined;
   /**
    * A short title used to represent this page in navigational structures such as table of contents, bread crumbs, etc.
    */
@@ -20129,7 +20015,7 @@ export interface ImplementationGuideManifest extends BackboneElement {
    */
   resource: ImplementationGuideManifestResource[];
 }
-export interface ImplementationGuide {
+export interface ImplementationGuide extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ImplementationGuide';
   /**
@@ -20273,8 +20159,8 @@ export interface ImplementationGuide {
    * Indicates the mechanism used to compare versions to determine which is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
 /**
  * An organization that manufactures this ingredient
@@ -20397,7 +20283,7 @@ export interface IngredientSubstance extends BackboneElement {
    */
   strength?: IngredientSubstanceStrength[] | undefined;
 }
-export interface Ingredient {
+export interface Ingredient extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Ingredient';
   /**
@@ -20595,7 +20481,7 @@ export interface InsurancePlanPlan extends BackboneElement {
    */
   type?: CodeableConcept | undefined;
 }
-export interface InsurancePlan {
+export interface InsurancePlan extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'InsurancePlan';
   /**
@@ -20701,8 +20587,8 @@ export interface InventoryItemCharacteristic extends BackboneElement {
    * The value of the attribute.
    * The string value is used for characteristics that are descriptive and not codeable information. CodeableConcept.text is used when the characteristic is discrete and could otherwise be coded but for which there is no code available.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * The value of the attribute.
    * The string value is used for characteristics that are descriptive and not codeable information. CodeableConcept.text is used when the characteristic is discrete and could otherwise be coded but for which there is no code available.
@@ -20712,13 +20598,13 @@ export interface InventoryItemCharacteristic extends BackboneElement {
    * The value of the attribute.
    * The string value is used for characteristics that are descriptive and not codeable information. CodeableConcept.text is used when the characteristic is discrete and could otherwise be coded but for which there is no code available.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * The value of the attribute.
    * The string value is used for characteristics that are descriptive and not codeable information. CodeableConcept.text is used when the characteristic is discrete and could otherwise be coded but for which there is no code available.
    */
-  valuenumber?: number | undefined;
+  valueNumber?: number | undefined;
   /**
    * The value of the attribute.
    * The string value is used for characteristics that are descriptive and not codeable information. CodeableConcept.text is used when the characteristic is discrete and could otherwise be coded but for which there is no code available.
@@ -20814,7 +20700,7 @@ export interface InventoryItemResponsibleOrganization extends BackboneElement {
    */
   role: CodeableConcept;
 }
-export interface InventoryItem {
+export interface InventoryItem extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'InventoryItem';
   /**
@@ -20914,7 +20800,7 @@ export interface InventoryReportInventoryListing extends BackboneElement {
    */
   location?: Reference | undefined;
 }
-export interface InventoryReport {
+export interface InventoryReport extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'InventoryReport';
   /**
@@ -20984,8 +20870,8 @@ export interface InvoiceLineItem extends BackboneElement {
   /**
    * Date/time(s) range when this service was delivered or completed.
    */
-  servicedstring?: string | undefined;
-  _servicedstring?: Element | undefined;
+  servicedString?: string | undefined;
+  _servicedString?: Element | undefined;
   /**
    * Date/time(s) range when this service was delivered or completed.
    */
@@ -21004,7 +20890,7 @@ export interface InvoiceParticipant extends BackboneElement {
    */
   role?: CodeableConcept | undefined;
 }
-export interface Invoice {
+export interface Invoice extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Invoice';
   /**
@@ -21059,8 +20945,8 @@ export interface Invoice {
   /**
    * Date/time(s) range of services included in this invoice.
    */
-  periodstring?: string | undefined;
-  _periodstring?: Element | undefined;
+  periodString?: string | undefined;
+  _periodString?: Element | undefined;
   /**
    * Date/time(s) range of services included in this invoice.
    */
@@ -21097,7 +20983,7 @@ export interface Invoice {
    */
   type?: CodeableConcept | undefined;
 }
-export interface Library {
+export interface Library extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Library';
   /**
@@ -21289,8 +21175,8 @@ export interface Library {
    * Indicates the mechanism used to compare versions to determine which is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
 /**
  * Item to be linked
@@ -21306,7 +21192,7 @@ export interface LinkageItem extends BackboneElement {
   type: ('source'|'alternate'|'historical');
   _type?: Element | undefined;
 }
-export interface Linkage {
+export interface Linkage extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Linkage';
   /**
@@ -21350,7 +21236,7 @@ export interface ListEntry extends BackboneElement {
    */
   item: Reference;
 }
-export interface List {
+export interface List extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'List';
   /**
@@ -21437,7 +21323,7 @@ export interface LocationPosition extends BackboneElement {
    */
   longitude: number;
 }
-export interface Location {
+export interface Location extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Location';
   /**
@@ -21600,8 +21486,8 @@ export interface ManufacturedItemDefinitionProperty extends BackboneElement {
   /**
    * A value for the characteristic.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * A value for the characteristic.
    */
@@ -21609,8 +21495,8 @@ export interface ManufacturedItemDefinitionProperty extends BackboneElement {
   /**
    * A value for the characteristic.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * A value for the characteristic.
    */
@@ -21620,7 +21506,7 @@ export interface ManufacturedItemDefinitionProperty extends BackboneElement {
    */
   valueReference?: Reference | undefined;
 }
-export interface ManufacturedItemDefinition {
+export interface ManufacturedItemDefinition extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ManufacturedItemDefinition';
   /**
@@ -21893,7 +21779,7 @@ export interface MeasureTerm extends BackboneElement {
   definition?: string | undefined;
   _definition?: Element | undefined;
 }
-export interface Measure {
+export interface Measure extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Measure';
   /**
@@ -22150,8 +22036,8 @@ export interface Measure {
    * Indicates the mechanism used to compare versions to determine which is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
 /**
  * The populations in the group
@@ -22201,8 +22087,8 @@ export interface MeasureReportGroupStratifierStratumComponent extends BackboneEl
   /**
    * The stratum component value.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * The stratum component value.
    */
@@ -22267,8 +22153,8 @@ export interface MeasureReportGroupStratifierStratum extends BackboneElement {
   /**
    * The measure score for this stratum, calculated as appropriate for the measure type and scoring method, and based on only the members of this stratum.
    */
-  measureScorestring?: string | undefined;
-  _measureScorestring?: Element | undefined;
+  measureScoreString?: string | undefined;
+  _measureScoreString?: Element | undefined;
   /**
    * The measure score for this stratum, calculated as appropriate for the measure type and scoring method, and based on only the members of this stratum.
    */
@@ -22292,8 +22178,8 @@ export interface MeasureReportGroupStratifierStratum extends BackboneElement {
   /**
    * The value for this stratum, expressed as a CodeableConcept. When defining stratifiers on complex values, the value must be rendered such that the value for each stratum within the stratifier is unique.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * The value for this stratum, expressed as a CodeableConcept. When defining stratifiers on complex values, the value must be rendered such that the value for each stratum within the stratifier is unique.
    */
@@ -22349,8 +22235,8 @@ export interface MeasureReportGroup extends BackboneElement {
   /**
    * The measure score for this population group, calculated as appropriate for the measure type and scoring method, and based on the contents of the populations defined in the group.
    */
-  measureScorestring?: string | undefined;
-  _measureScorestring?: Element | undefined;
+  measureScoreString?: string | undefined;
+  _measureScoreString?: Element | undefined;
   /**
    * The measure score for this population group, calculated as appropriate for the measure type and scoring method, and based on the contents of the populations defined in the group.
    */
@@ -22380,7 +22266,7 @@ export interface MeasureReportGroup extends BackboneElement {
    */
   subject?: Reference | undefined;
 }
-export interface MeasureReport {
+export interface MeasureReport extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'MeasureReport';
   /**
@@ -22507,7 +22393,7 @@ export interface MedicationIngredient extends BackboneElement {
    */
   strengthRatio?: Ratio | undefined;
 }
-export interface Medication {
+export interface Medication extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Medication';
   /**
@@ -22606,7 +22492,7 @@ export interface MedicationAdministrationPerformer extends BackboneElement {
    */
   function?: CodeableConcept | undefined;
 }
-export interface MedicationAdministration {
+export interface MedicationAdministration extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'MedicationAdministration';
   /**
@@ -22656,8 +22542,8 @@ export interface MedicationAdministration {
   /**
    * A specific date/time or interval of time during which the administration took place (or did not take place). For many administrations, such as swallowing a tablet the use of dateTime is more appropriate.
    */
-  occurencestring?: string | undefined;
-  _occurencestring?: Element | undefined;
+  occurenceString?: string | undefined;
+  _occurenceString?: Element | undefined;
   /**
    * A specific date/time or interval of time during which the administration took place (or did not take place). For many administrations, such as swallowing a tablet the use of dateTime is more appropriate.
    */
@@ -22747,7 +22633,7 @@ export interface MedicationDispenseSubstitution extends BackboneElement {
   wasSubstituted: boolean;
   _wasSubstituted?: Element | undefined;
 }
-export interface MedicationDispense {
+export interface MedicationDispense extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'MedicationDispense';
   /**
@@ -22919,8 +22805,8 @@ export interface MedicationKnowledgeDefinitionalDrugCharacteristic extends Backb
    * Description of the characteristic.
    * The description should be provided as a CodeableConcept, SimpleQuantity or an image.  The description can be a string only when these others are not available.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * Description of the characteristic.
    * The description should be provided as a CodeableConcept, SimpleQuantity or an image.  The description can be a string only when these others are not available.
@@ -23062,8 +22948,8 @@ export interface MedicationKnowledgeMedicineClassification extends BackboneEleme
   /**
    * Either a textual source of the classification or a reference to an online source.
    */
-  sourcestring?: string | undefined;
-  _sourcestring?: Element | undefined;
+  sourceString?: string | undefined;
+  _sourceString?: Element | undefined;
   /**
    * The type of category for the medication (for example, therapeutic classification, therapeutic sub-classification).
    */
@@ -23213,7 +23099,7 @@ export interface MedicationKnowledgeStorageGuideline extends BackboneElement {
    */
   stabilityDuration?: Duration | undefined;
 }
-export interface MedicationKnowledge {
+export interface MedicationKnowledge extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'MedicationKnowledge';
   /**
@@ -23371,8 +23257,8 @@ export interface MedicationRequestSubstitution extends BackboneElement {
    * True if the prescriber allows a different drug to be dispensed from what was prescribed.
    * This element is labeled as a modifier because whether substitution is allow or not, it cannot be ignored.
    */
-  allowedboolean?: boolean | undefined;
-  _allowedboolean?: Element | undefined;
+  allowedBoolean?: boolean | undefined;
+  _allowedBoolean?: Element | undefined;
   /**
    * True if the prescriber allows a different drug to be dispensed from what was prescribed.
    * This element is labeled as a modifier because whether substitution is allow or not, it cannot be ignored.
@@ -23383,7 +23269,7 @@ export interface MedicationRequestSubstitution extends BackboneElement {
    */
   reason?: CodeableConcept | undefined;
 }
-export interface MedicationRequest {
+export interface MedicationRequest extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'MedicationRequest';
   /**
@@ -23568,7 +23454,7 @@ export interface MedicationStatementAdherence extends BackboneElement {
    */
   reason?: CodeableConcept | undefined;
 }
-export interface MedicationStatement {
+export interface MedicationStatement extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'MedicationStatement';
   /**
@@ -23599,8 +23485,8 @@ export interface MedicationStatement {
    * The interval of time during which it is being asserted that the patient is/was/will be taking the medication (or was not taking, when the MedicationStatement.adherence element is Not Taking).
    * This attribute reflects the period over which the patient consumed the medication and is expected to be populated on the majority of Medication Statements. If the medication is still being taken and is expected to continue indefinitely at the time the usage is recorded, the "end" date will be omitted.  If the end date is known, then it is included as the "end date".  The date/time attribute supports a variety of dates - year, year/month and exact date.  If something more than this is required, this should be conveyed as text.
    */
-  effectivestring?: string | undefined;
-  _effectivestring?: Element | undefined;
+  effectiveString?: string | undefined;
+  _effectiveString?: Element | undefined;
   /**
    * The interval of time during which it is being asserted that the patient is/was/will be taking the medication (or was not taking, when the MedicationStatement.adherence element is Not Taking).
    * This attribute reflects the period over which the patient consumed the medication and is expected to be populated on the majority of Medication Statements. If the medication is still being taken and is expected to continue indefinitely at the time the usage is recorded, the "end" date will be omitted.  If the end date is known, then it is included as the "end date".  The date/time attribute supports a variety of dates - year, year/month and exact date.  If something more than this is required, this should be conveyed as text.
@@ -23680,8 +23566,8 @@ export interface MedicinalProductDefinitionCharacteristic extends BackboneElemen
    * A value for the characteristic.text.
    * Text, as markdown, is intended to be used only when the item cannot ever reasonably be coded. Otherwise, for cases where a code is not available, but is feasible, use CodeableConcept.text.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * A value for the characteristic.text.
    * Text, as markdown, is intended to be used only when the item cannot ever reasonably be coded. Otherwise, for cases where a code is not available, but is feasible, use CodeableConcept.text.
@@ -23691,13 +23577,13 @@ export interface MedicinalProductDefinitionCharacteristic extends BackboneElemen
    * A value for the characteristic.text.
    * Text, as markdown, is intended to be used only when the item cannot ever reasonably be coded. Otherwise, for cases where a code is not available, but is feasible, use CodeableConcept.text.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * A value for the characteristic.text.
    * Text, as markdown, is intended to be used only when the item cannot ever reasonably be coded. Otherwise, for cases where a code is not available, but is feasible, use CodeableConcept.text.
    */
-  valuenumber?: number | undefined;
+  valueNumber?: number | undefined;
   /**
    * A value for the characteristic.text.
    * Text, as markdown, is intended to be used only when the item cannot ever reasonably be coded. Otherwise, for cases where a code is not available, but is feasible, use CodeableConcept.text.
@@ -23804,7 +23690,7 @@ export interface MedicinalProductDefinitionOperation extends BackboneElement {
    */
   type?: CodeableReference | undefined;
 }
-export interface MedicinalProductDefinition {
+export interface MedicinalProductDefinition extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'MedicinalProductDefinition';
   /**
@@ -23973,7 +23859,7 @@ export interface MessageDefinitionFocus extends BackboneElement {
 /**
  * This would be a MIF-level artifact.
  */
-export interface MessageDefinition {
+export interface MessageDefinition extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'MessageDefinition';
   /**
@@ -24028,8 +23914,8 @@ export interface MessageDefinition {
   /**
    * Event code or link to the EventDefinition.
    */
-  eventstring?: string | undefined;
-  _eventstring?: Element | undefined;
+  eventString?: string | undefined;
+  _eventString?: Element | undefined;
   /**
    * A Boolean value to indicate that this message definition is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.
    * Allows filtering of message definitions that are appropriate for use versus not.
@@ -24132,8 +24018,8 @@ export interface MessageDefinition {
    * Indicates the mechanism used to compare versions to determine which is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
 /**
  * Message destination application(s)
@@ -24149,8 +24035,8 @@ export interface MessageHeaderDestination extends BackboneElement {
    * Indicates where the message should be routed.
    * The url may be a non-resolvable URI for systems that do not use standard network-based addresses.
    */
-  endpointstring?: string | undefined;
-  _endpointstring?: Element | undefined;
+  endpointString?: string | undefined;
+  _endpointString?: Element | undefined;
   /**
    * Human-readable name for the target system.
    */
@@ -24202,8 +24088,8 @@ export interface MessageHeaderSource extends BackboneElement {
    * Identifies the routing target to send acknowledgements to.
    * The url may be a non-resolvable URI for systems that do not use standard network-based addresses.
    */
-  endpointstring?: string | undefined;
-  _endpointstring?: Element | undefined;
+  endpointString?: string | undefined;
+  _endpointString?: Element | undefined;
   /**
    * Human-readable name for the source system.
    */
@@ -24220,7 +24106,7 @@ export interface MessageHeaderSource extends BackboneElement {
   version?: string | undefined;
   _version?: Element | undefined;
 }
-export interface MessageHeader {
+export interface MessageHeader extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'MessageHeader';
   /**
@@ -24242,8 +24128,8 @@ export interface MessageHeader {
    * Code that identifies the event this message represents and connects it with its definition. Events defined as part of the FHIR specification are defined by the implementation.  Alternatively a canonical uri to the EventDefinition.
    * The time of the event will be found in the focus resource. The time of the message will be found in [Bundle.timestamp](bundle-definitions.html#Bundle.timestamp).
    */
-  eventstring?: string | undefined;
-  _eventstring?: Element | undefined;
+  eventString?: string | undefined;
+  _eventString?: Element | undefined;
   /**
    * Code that identifies the event this message represents and connects it with its definition. Events defined as part of the FHIR specification are defined by the implementation.  Alternatively a canonical uri to the EventDefinition.
    * The time of the event will be found in the focus resource. The time of the message will be found in [Bundle.timestamp](bundle-definitions.html#Bundle.timestamp).
@@ -24276,58 +24162,6 @@ export interface MessageHeader {
    * The source application from which this message originated.
    */
   source: MessageHeaderSource;
-}
-export interface MetadataResource {
-  /** Resource Type Name (for serialization) */
-  readonly resourceType: string;
-  /**
-   * The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.
-   * The 'date' element may be more recent than the approval date because of minor changes or editorial corrections.
-   * See guidance around (not) making local changes to elements [here](canonicalresource.html#localization).
-   */
-  approvalDate?: string | undefined;
-  _approvalDate?: Element | undefined;
-  /**
-   * An individiual or organization primarily involved in the creation and maintenance of the {{title}}.
-   */
-  author?: ContactDetail[] | undefined;
-  /**
-   * An individual or organization primarily responsible for internal coherence of the {{title}}.
-   */
-  editor?: ContactDetail[] | undefined;
-  /**
-   * The period during which the {{title}} content was or is planned to be in active use.
-   * The effective period for a {{title}}  determines when the content is applicable for usage and is independent of publication and review dates. For example, a measure intended to be used for the year 2016 might be published in 2015.
-   * See guidance around (not) making local changes to elements [here](canonicalresource.html#localization).
-   */
-  effectivePeriod?: Period | undefined;
-  /**
-   * An individual or organization asserted by the publisher to be responsible for officially endorsing the {{title}} for use in some setting.
-   * See guidance around (not) making local changes to elements [here](canonicalresource.html#localization).
-   */
-  endorser?: ContactDetail[] | undefined;
-  /**
-   * The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date.
-   * If specified, this date follows the original approval date.
-   */
-  lastReviewDate?: string | undefined;
-  _lastReviewDate?: Element | undefined;
-  /**
-   * Related artifacts such as additional documentation, justification, dependencies, bibliographic references, and predecessor and successor artifacts.
-   * Each related artifact is either an attachment, or a reference to another resource, but not both.
-   */
-  relatedArtifact?: RelatedArtifact[] | undefined;
-  /**
-   * An individual or organization asserted by the publisher to be primarily responsible for review of some aspect of the {{title}}.
-   * See guidance around (not) making local changes to elements [here](canonicalresource.html#localization).
-   */
-  reviewer?: ContactDetail[] | undefined;
-  /**
-   * Descriptive topics related to the content of the {{title}}. Topics provide a high-level categorization as well as keywords for the {{title}} that can be useful for filtering and searching.
-   * This element provides topical categorization and keywords for the {{title}}, as opposed to the more structured context-of-use information provided in the useContext element.
-   * DEPRECATION NOTE: For consistency, implementations are encouraged to migrate to using the new 'topic' code in the useContext element.  (I.e. useContext.code indicating http://terminology.hl7.org/CodeSystem/usage-context-type#topic and useContext.valueCodeableConcept indicating the topic)
-   */
-  topic?: CodeableConcept[] | undefined;
 }
 /**
  * Changes in sequence from the starting sequence
@@ -24392,8 +24226,8 @@ export interface MolecularSequenceRelativeStartingSequence extends BackboneEleme
    *   1.  a simple string of IUPAC codes
    *   1.  a reference to another MolecularSequence resource.
    */
-  sequencestring?: string | undefined;
-  _sequencestring?: Element | undefined;
+  sequenceString?: string | undefined;
+  _sequenceString?: Element | undefined;
   /**
    * An absolute reference to a strand. The Watson strand is the strand whose 5'-end is on the short arm of the chromosome, and the Crick strand as the one whose 5'-end is on the long arm.
    */
@@ -24433,7 +24267,7 @@ export interface MolecularSequenceRelative extends BackboneElement {
    */
   startingSequence?: MolecularSequenceRelativeStartingSequence | undefined;
 }
-export interface MolecularSequence {
+export interface MolecularSequence extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'MolecularSequence';
   /**
@@ -24519,7 +24353,7 @@ export interface NamingSystemUniqueId extends BackboneElement {
   value: string;
   _value?: Element | undefined;
 }
-export interface NamingSystem {
+export interface NamingSystem extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'NamingSystem';
   /**
@@ -24702,8 +24536,8 @@ export interface NamingSystem {
    * Indicates the mechanism used to compare versions to determine which NamingSystem is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
 /**
  * What food or fluid product or item was consumed
@@ -24767,7 +24601,7 @@ export interface NutritionIntakePerformer extends BackboneElement {
    */
   function?: CodeableConcept | undefined;
 }
-export interface NutritionIntake {
+export interface NutritionIntake extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'NutritionIntake';
   /**
@@ -24823,8 +24657,8 @@ export interface NutritionIntake {
    * The interval of time during which it is being asserted that the patient is/was consuming the food or fluid.
    * This attribute reflects the period over which the patient consumed the food fluid and is expected to be populated on the majority of NutritionIntake. If the food or fluid is still being taken and is expected to continue indefinitely at the time the usage is recorded, the "end" date will be omitted.  If the end date is known, then it is included as the "end date".  The date/time attribute supports a variety of dates - year, year/month and exact date.  If something more than this is required, this should be conveyed as text.
    */
-  occurrencestring?: string | undefined;
-  _occurrencestring?: Element | undefined;
+  occurrenceString?: string | undefined;
+  _occurrenceString?: Element | undefined;
   /**
    * The interval of time during which it is being asserted that the patient is/was consuming the food or fluid.
    * This attribute reflects the period over which the patient consumed the food fluid and is expected to be populated on the majority of NutritionIntake. If the food or fluid is still being taken and is expected to continue indefinitely at the time the usage is recorded, the "end" date will be omitted.  If the end date is known, then it is included as the "end date".  The date/time attribute supports a variety of dates - year, year/month and exact date.  If something more than this is required, this should be conveyed as text.
@@ -24850,8 +24684,8 @@ export interface NutritionIntake {
   /**
    * The person or organization that provided the information about the consumption of this food or fluid. Note: Use derivedFrom when a NutritionIntake is derived from other resources.
    */
-  reportedboolean?: boolean | undefined;
-  _reportedboolean?: Element | undefined;
+  reportedBoolean?: boolean | undefined;
+  _reportedBoolean?: Element | undefined;
   /**
    * The person or organization that provided the information about the consumption of this food or fluid. Note: Use derivedFrom when a NutritionIntake is derived from other resources.
    */
@@ -25104,7 +24938,7 @@ export interface NutritionOrderSupplement extends BackboneElement {
 /**
  * Referenced by an Order Request (workflow).
  */
-export interface NutritionOrder {
+export interface NutritionOrder extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'NutritionOrder';
   /**
@@ -25234,14 +25068,14 @@ export interface NutritionProductCharacteristic extends BackboneElement {
    * The actual characteristic value corresponding to the type.
    * The description should be provided as a CodeableConcept, SimpleQuantity or an image.  The description can be a string only when these others are not available.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * The actual characteristic value corresponding to the type.
    * The description should be provided as a CodeableConcept, SimpleQuantity or an image.  The description can be a string only when these others are not available.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * The actual characteristic value corresponding to the type.
    * The description should be provided as a CodeableConcept, SimpleQuantity or an image.  The description can be a string only when these others are not available.
@@ -25318,7 +25152,7 @@ export interface NutritionProductNutrient extends BackboneElement {
    */
   item?: CodeableReference | undefined;
 }
-export interface NutritionProduct {
+export interface NutritionProduct extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'NutritionProduct';
   /**
@@ -25418,8 +25252,8 @@ export interface ObservationComponent extends BackboneElement {
    * - The usage of valueReference is restricted to the MolecularSequence resource when used as a definitional resource, not as a patient-specific finding. .
    * - For additional guidance, see the [Notes section](observation.html#notes) below.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * The information determined as a result of making the observation, if the information has a simple value.
    * Used when observation has a set of component observations:
@@ -25447,8 +25281,8 @@ export interface ObservationComponent extends BackboneElement {
    * - The usage of valueReference is restricted to the MolecularSequence resource when used as a definitional resource, not as a patient-specific finding. .
    * - For additional guidance, see the [Notes section](observation.html#notes) below.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * The information determined as a result of making the observation, if the information has a simple value.
    * Used when observation has a set of component observations:
@@ -25462,7 +25296,7 @@ export interface ObservationComponent extends BackboneElement {
    * - The usage of valueReference is restricted to the MolecularSequence resource when used as a definitional resource, not as a patient-specific finding. .
    * - For additional guidance, see the [Notes section](observation.html#notes) below.
    */
-  valuenumber?: number | undefined;
+  valueNumber?: number | undefined;
   /**
    * The information determined as a result of making the observation, if the information has a simple value.
    * Used when observation has a set of component observations:
@@ -25608,7 +25442,7 @@ export interface ObservationTriggeredBy extends BackboneElement {
 /**
  * Used for simple observations such as device measurements, laboratory atomic results, vital signs, height, weight, smoking status, comments, etc.  Other resources are used to provide context for observations such as laboratory reports, etc.
  */
-export interface Observation {
+export interface Observation extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Observation';
   /**
@@ -25660,8 +25494,8 @@ export interface Observation {
    * The time or time-period the observed value is asserted as being true. For biological subjects - e.g. human patients - this is usually called the "physiologically relevant time". This is usually either the time of the procedure or of specimen collection, but very often the source of the date/time is not known, only the date/time itself.
    * At least a date should be present unless this observation is a historical report.  For recording imprecise or "fuzzy" times (For example, a blood glucose measurement taken "after breakfast") use the [Timing](datatypes.html#timing) datatype which allow the measurement to be tied to regular life events.
    */
-  effectivestring?: string | undefined;
-  _effectivestring?: Element | undefined;
+  effectiveString?: string | undefined;
+  _effectiveString?: Element | undefined;
   /**
    * The time or time-period the observed value is asserted as being true. For biological subjects - e.g. human patients - this is usually called the "physiologically relevant time". This is usually either the time of the procedure or of specimen collection, but very often the source of the date/time is not known, only the date/time itself.
    * At least a date should be present unless this observation is a historical report.  For recording imprecise or "fuzzy" times (For example, a blood glucose measurement taken "after breakfast") use the [Timing](datatypes.html#timing) datatype which allow the measurement to be tied to regular life events.
@@ -25695,8 +25529,8 @@ export interface Observation {
    * The reference to a FHIR ObservationDefinition resource that provides the definition that is adhered to in whole or in part by this Observation instance.
    * ObservationDefinition can be referenced by its canonical url using instantiatesCanonical, or by a name or an identifier using the appropriate sub-elements of instantiatesReference.
    */
-  instantiatesstring?: string | undefined;
-  _instantiatesstring?: Element | undefined;
+  instantiatesString?: string | undefined;
+  _instantiatesString?: Element | undefined;
   /**
    * The reference to a FHIR ObservationDefinition resource that provides the definition that is adhered to in whole or in part by this Observation instance.
    * ObservationDefinition can be referenced by its canonical url using instantiatesCanonical, or by a name or an identifier using the appropriate sub-elements of instantiatesReference.
@@ -25782,8 +25616,8 @@ export interface Observation {
    * - The usage of valueReference is restricted to the MolecularSequence resource when used as a definitional resource, not as a patient-specific finding. .
    * - For additional guidance, see the [Notes section](observation.html#notes) below.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * The information determined as a result of making the observation, if the information has a simple value.
    * - An observation may have:
@@ -25809,8 +25643,8 @@ export interface Observation {
    * - The usage of valueReference is restricted to the MolecularSequence resource when used as a definitional resource, not as a patient-specific finding. .
    * - For additional guidance, see the [Notes section](observation.html#notes) below.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * The information determined as a result of making the observation, if the information has a simple value.
    * - An observation may have:
@@ -25823,7 +25657,7 @@ export interface Observation {
    * - The usage of valueReference is restricted to the MolecularSequence resource when used as a definitional resource, not as a patient-specific finding. .
    * - For additional guidance, see the [Notes section](observation.html#notes) below.
    */
-  valuenumber?: number | undefined;
+  valueNumber?: number | undefined;
   /**
    * The information determined as a result of making the observation, if the information has a simple value.
    * - An observation may have:
@@ -25990,7 +25824,7 @@ export interface ObservationDefinitionQualifiedValue extends BackboneElement {
 /**
  * An instance of this resource informs the consumer of a health-related service (such as a lab diagnostic test or panel) about how the observations used or produced by this service will look like.
  */
-export interface ObservationDefinition {
+export interface ObservationDefinition extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ObservationDefinition';
   /**
@@ -26198,8 +26032,8 @@ export interface ObservationDefinition {
    * Indicates the mechanism used to compare versions to determine which is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
 /**
  * Define overloaded variants for when  generating code
@@ -26325,7 +26159,7 @@ export interface OperationDefinitionParameter extends BackboneElement {
   use: ('in'|'out');
   _use?: Element | undefined;
 }
-export interface OperationDefinition {
+export interface OperationDefinition extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'OperationDefinition';
   /**
@@ -26507,8 +26341,8 @@ export interface OperationDefinition {
    * Indicates the mechanism used to compare versions to determine which is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
 /**
  * A single issue associated with the action
@@ -26553,7 +26387,7 @@ export interface OperationOutcomeIssue extends BackboneElement {
 /**
  * Can result from the failure of a REST call or be part of the response message returned from a request message.
  */
-export interface OperationOutcome {
+export interface OperationOutcome extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'OperationOutcome';
   /**
@@ -26582,7 +26416,7 @@ export interface OrganizationQualification extends BackboneElement {
    */
   period?: Period | undefined;
 }
-export interface Organization {
+export interface Organization extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Organization';
   /**
@@ -26639,7 +26473,7 @@ export interface Organization {
    */
   type?: CodeableConcept[] | undefined;
 }
-export interface OrganizationAffiliation {
+export interface OrganizationAffiliation extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'OrganizationAffiliation';
   /**
@@ -26737,8 +26571,8 @@ export interface PackagedProductDefinitionPackagingProperty extends BackboneElem
   /**
    * A value for the characteristic.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * A value for the characteristic.
    */
@@ -26746,8 +26580,8 @@ export interface PackagedProductDefinitionPackagingProperty extends BackboneElem
   /**
    * A value for the characteristic.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * A value for the characteristic.
    */
@@ -26803,7 +26637,7 @@ export interface PackagedProductDefinitionPackaging extends BackboneElement {
    */
   type?: CodeableConcept | undefined;
 }
-export interface PackagedProductDefinition {
+export interface PackagedProductDefinition extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'PackagedProductDefinition';
   /**
@@ -26912,13 +26746,13 @@ export interface ParametersParameter extends BackboneElement {
   /**
    * Conveys the content if the parameter is a data type.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * Conveys the content if the parameter is a data type.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * Conveys the content if the parameter is a data type.
    */
@@ -26950,7 +26784,7 @@ export interface ParametersParameter extends BackboneElement {
   /**
    * Conveys the content if the parameter is a data type.
    */
-  valuenumber?: number | undefined;
+  valueNumber?: number | undefined;
   /**
    * Conveys the content if the parameter is a data type.
    */
@@ -27043,7 +26877,7 @@ export interface ParametersParameter extends BackboneElement {
 /**
  * The parameters that may be used are defined by the OperationDefinition resource.
  */
-export interface Parameters {
+export interface Parameters extends Resource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Parameters';
   /**
@@ -27120,7 +26954,7 @@ export interface PatientLink extends BackboneElement {
   type: ('replaced-by'|'replaces'|'refer'|'seealso');
   _type?: Element | undefined;
 }
-export interface Patient {
+export interface Patient extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Patient';
   /**
@@ -27157,14 +26991,14 @@ export interface Patient {
    * Indicates if the individual is deceased or not.
    * If there's no value in the instance, it means there is no statement on whether or not the individual is deceased. Most systems will interpret the absence of a value as a sign of the person being alive.
    */
-  deceasedboolean?: boolean | undefined;
-  _deceasedboolean?: Element | undefined;
+  deceasedBoolean?: boolean | undefined;
+  _deceasedBoolean?: Element | undefined;
   /**
    * Indicates if the individual is deceased or not.
    * If there's no value in the instance, it means there is no statement on whether or not the individual is deceased. Most systems will interpret the absence of a value as a sign of the person being alive.
    */
-  deceasedstring?: string | undefined;
-  _deceasedstring?: Element | undefined;
+  deceasedString?: string | undefined;
+  _deceasedString?: Element | undefined;
   /**
    * Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes.
    * The gender might not match the biological sex as determined by genetics or the individual's preferred identification. Note that for both humans and particularly animals, there are other legitimate possibilities than male and female, though the vast majority of systems and contexts only support male and female.  Systems providing decision support or enforcing business rules should ideally do this on the basis of Observations dealing with the specific sex or gender aspect of interest (anatomical, chromosomal, social, etc.)  However, because these observations are infrequently recorded, defaulting to the administrative gender is common practice.  Where such defaulting occurs, rule enforcement should allow for the variation between administrative and biological, chromosomal and other gender aspects.  For example, an alert about a hysterectomy on a male should be handled as a warning or overridable error, not a "hard" error.  See the Patient Gender and Sex section for additional information about communicating patient gender and sex.
@@ -27200,13 +27034,13 @@ export interface Patient {
    * Indicates whether the patient is part of a multiple (boolean) or indicates the actual birth order (integer).
    * Where the valueInteger is provided, the number is the birth number in the sequence. E.g. The middle birth in triplets would be valueInteger=2 and the third born would have valueInteger=3 If a boolean value was provided for this triplets example, then all 3 patient records would have valueBoolean=true (the ordering is not indicated).
    */
-  multipleBirthboolean?: boolean | undefined;
-  _multipleBirthboolean?: Element | undefined;
+  multipleBirthBoolean?: boolean | undefined;
+  _multipleBirthBoolean?: Element | undefined;
   /**
    * Indicates whether the patient is part of a multiple (boolean) or indicates the actual birth order (integer).
    * Where the valueInteger is provided, the number is the birth number in the sequence. E.g. The middle birth in triplets would be valueInteger=2 and the third born would have valueInteger=3 If a boolean value was provided for this triplets example, then all 3 patient records would have valueBoolean=true (the ordering is not indicated).
    */
-  multipleBirthnumber?: number | undefined;
+  multipleBirthNumber?: number | undefined;
   /**
    * A name associated with the individual.
    * A patient may have multiple names with different uses or applicable periods. For animals, the name is a "HumanName" in the sense that is assigned and used by humans and has the same patterns. Animal names may be communicated as given names, and optionally may include a family name.
@@ -27226,7 +27060,7 @@ export interface Patient {
    */
   telecom?: ContactPoint[] | undefined;
 }
-export interface PaymentNotice {
+export interface PaymentNotice extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'PaymentNotice';
   /**
@@ -27339,12 +27173,12 @@ export interface PaymentReconciliationAllocation extends BackboneElement {
   /**
    * Identifies the claim line item, encounter or other sub-element being paid. Note payment may be partial, that is not match the then outstanding balance or amount incurred.
    */
-  targetItemnumber?: number | undefined;
+  targetItemNumber?: number | undefined;
   /**
    * Identifies the claim line item, encounter or other sub-element being paid. Note payment may be partial, that is not match the then outstanding balance or amount incurred.
    */
-  targetItemstring?: string | undefined;
-  _targetItemstring?: Element | undefined;
+  targetItemString?: string | undefined;
+  _targetItemString?: Element | undefined;
   /**
    * Code to indicate the nature of the payment.
    * For example: payment, adjustment, funds advance, etc.
@@ -27366,7 +27200,7 @@ export interface PaymentReconciliationProcessNote extends BackboneElement {
   type?: ('display'|'print'|'printoper') | undefined;
   _type?: Element | undefined;
 }
-export interface PaymentReconciliation {
+export interface PaymentReconciliation extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'PaymentReconciliation';
   /**
@@ -27593,7 +27427,7 @@ export interface PermissionRule extends BackboneElement {
   type?: ('deny'|'permit') | undefined;
   _type?: Element | undefined;
 }
-export interface Permission {
+export interface Permission extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Permission';
   /**
@@ -27664,7 +27498,7 @@ export interface PersonLink extends BackboneElement {
 /**
  * The Person resource does justice to person registries that keep track of persons regardless of their role. The Person resource is also a primary resource to point to for people acting in a particular role such as SubjectofCare, Practitioner, and Agent. Very few attributes are specific to any role and so Person is kept lean. Most attributes are expected to be tied to the role the Person plays rather than the Person himself. Examples of that are Guardian (SubjectofCare), ContactParty (SubjectOfCare, Practitioner), and multipleBirthInd (SubjectofCare).
  */
-export interface Person {
+export interface Person extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Person';
   /**
@@ -27693,14 +27527,14 @@ export interface Person {
    * Indicates if the individual is deceased or not.
    * If there's no value in the instance, it means there is no statement on whether or not the individual is deceased. Most systems will interpret the absence of a value as a sign of the person being alive.
    */
-  deceasedboolean?: boolean | undefined;
-  _deceasedboolean?: Element | undefined;
+  deceasedBoolean?: boolean | undefined;
+  _deceasedBoolean?: Element | undefined;
   /**
    * Indicates if the individual is deceased or not.
    * If there's no value in the instance, it means there is no statement on whether or not the individual is deceased. Most systems will interpret the absence of a value as a sign of the person being alive.
    */
-  deceasedstring?: string | undefined;
-  _deceasedstring?: Element | undefined;
+  deceasedString?: string | undefined;
+  _deceasedString?: Element | undefined;
   /**
    * Administrative Gender.
    * The gender might not match the biological sex as determined by genetics, or the individual's preferred identification. Note that for both humans and particularly animals, there are other legitimate possibilities than M and F, though a clear majority of systems and contexts only support M and F.
@@ -27902,8 +27736,8 @@ export interface PlanDefinitionAction extends BackboneElement {
    * A reference to an ActivityDefinition that describes the action to be taken in detail, a MessageDefinition describing a message to be snet, a PlanDefinition that describes a series of actions to be taken, a Questionnaire that should be filled out, a SpecimenDefinition describing a specimen to be collected, or an ObservationDefinition that specifies what observation should be captured.
    * Note that the definition is optional, and if no definition is specified, a dynamicValue with a root ($this) path can be used to define the entire resource dynamically.
    */
-  definitionstring?: string | undefined;
-  _definitionstring?: Element | undefined;
+  definitionString?: string | undefined;
+  _definitionString?: Element | undefined;
   /**
    * A brief description of the action used to provide a summary to display to the user.
    */
@@ -27990,8 +27824,8 @@ export interface PlanDefinitionAction extends BackboneElement {
    * The subject of an action overrides the subject at a parent action or on the root of the PlanDefinition if specified.
    * In addition, because the subject needs to be resolved during realization, use of subjects in actions (or in the ActivityDefinition referenced by the action) resolves based on the set of subjects supplied in context and by type (i.e. the patient subject would resolve to a resource of type Patient).
    */
-  subjectstring?: string | undefined;
-  _subjectstring?: Element | undefined;
+  subjectString?: string | undefined;
+  _subjectString?: Element | undefined;
   /**
    * A code, group definition, or canonical reference that describes the intended subject of the action and its children, if any. Canonical references are allowed to support the definition of protocols for drug and substance quality specifications, and is allowed to reference a MedicinalProductDefinition, SubstanceDefinition, AdministrableProductDefinition, ManufacturedItemDefinition, or PackagedProductDefinition resource.
    * The subject of an action overrides the subject at a parent action or on the root of the PlanDefinition if specified.
@@ -28100,8 +27934,8 @@ export interface PlanDefinitionGoalTarget extends BackboneElement {
    * The target value of the measure to be achieved to signify fulfillment of the goal, e.g. 150 pounds or 7.0%, or in the case of pharmaceutical quality - NMT 0.6%, Clear solution, etc. Either the high or low or both values of the range can be specified. When a low value is missing, it indicates that the goal is achieved at any value at or below the high value. Similarly, if the high value is missing, it indicates that the goal is achieved at any value at or above the low value.
    * A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the goal.target.measure defines a coded value.
    */
-  detailboolean?: boolean | undefined;
-  _detailboolean?: Element | undefined;
+  detailBoolean?: boolean | undefined;
+  _detailBoolean?: Element | undefined;
   /**
    * The target value of the measure to be achieved to signify fulfillment of the goal, e.g. 150 pounds or 7.0%, or in the case of pharmaceutical quality - NMT 0.6%, Clear solution, etc. Either the high or low or both values of the range can be specified. When a low value is missing, it indicates that the goal is achieved at any value at or below the high value. Similarly, if the high value is missing, it indicates that the goal is achieved at any value at or above the low value.
    * A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the goal.target.measure defines a coded value.
@@ -28111,7 +27945,7 @@ export interface PlanDefinitionGoalTarget extends BackboneElement {
    * The target value of the measure to be achieved to signify fulfillment of the goal, e.g. 150 pounds or 7.0%, or in the case of pharmaceutical quality - NMT 0.6%, Clear solution, etc. Either the high or low or both values of the range can be specified. When a low value is missing, it indicates that the goal is achieved at any value at or below the high value. Similarly, if the high value is missing, it indicates that the goal is achieved at any value at or above the low value.
    * A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the goal.target.measure defines a coded value.
    */
-  detailnumber?: number | undefined;
+  detailNumber?: number | undefined;
   /**
    * The target value of the measure to be achieved to signify fulfillment of the goal, e.g. 150 pounds or 7.0%, or in the case of pharmaceutical quality - NMT 0.6%, Clear solution, etc. Either the high or low or both values of the range can be specified. When a low value is missing, it indicates that the goal is achieved at any value at or below the high value. Similarly, if the high value is missing, it indicates that the goal is achieved at any value at or above the low value.
    * A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the goal.target.measure defines a coded value.
@@ -28131,8 +27965,8 @@ export interface PlanDefinitionGoalTarget extends BackboneElement {
    * The target value of the measure to be achieved to signify fulfillment of the goal, e.g. 150 pounds or 7.0%, or in the case of pharmaceutical quality - NMT 0.6%, Clear solution, etc. Either the high or low or both values of the range can be specified. When a low value is missing, it indicates that the goal is achieved at any value at or below the high value. Similarly, if the high value is missing, it indicates that the goal is achieved at any value at or above the low value.
    * A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the goal.target.measure defines a coded value.
    */
-  detailstring?: string | undefined;
-  _detailstring?: Element | undefined;
+  detailString?: string | undefined;
+  _detailString?: Element | undefined;
   /**
    * Indicates the timeframe after the start of the goal in which the goal should be met.
    */
@@ -28176,7 +28010,7 @@ export interface PlanDefinitionGoal extends BackboneElement {
    */
   target?: PlanDefinitionGoalTarget[] | undefined;
 }
-export interface PlanDefinition {
+export interface PlanDefinition extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'PlanDefinition';
   /**
@@ -28198,8 +28032,8 @@ export interface PlanDefinition {
   /**
    * If a CodeableConcept is present, it indicates the pre-condition for performing the service.  For example "pain", "on flare-up", etc.
    */
-  asNeededboolean?: boolean | undefined;
-  _asNeededboolean?: Element | undefined;
+  asNeededBoolean?: boolean | undefined;
+  _asNeededBoolean?: Element | undefined;
   /**
    * If a CodeableConcept is present, it indicates the pre-condition for performing the service.  For example "pain", "on flare-up", etc.
    */
@@ -28326,8 +28160,8 @@ export interface PlanDefinition {
    * A code, group definition, or canonical reference that describes  or identifies the intended subject of the plan definition. Canonical references are allowed to support the definition of protocols for drug and substance quality specifications, and is allowed to reference a MedicinalProductDefinition, SubstanceDefinition, AdministrableProductDefinition, ManufacturedItemDefinition, or PackagedProductDefinition resource.
    * Note that the choice of canonical for the subject element was introduced in R4B to support pharmaceutical quality use cases. To ensure as much backwards-compatibility as possible, it is recommended to only use the new canonical type with these use cases.
    */
-  subjectstring?: string | undefined;
-  _subjectstring?: Element | undefined;
+  subjectString?: string | undefined;
+  _subjectString?: Element | undefined;
   /**
    * A code, group definition, or canonical reference that describes  or identifies the intended subject of the plan definition. Canonical references are allowed to support the definition of protocols for drug and substance quality specifications, and is allowed to reference a MedicinalProductDefinition, SubstanceDefinition, AdministrableProductDefinition, ManufacturedItemDefinition, or PackagedProductDefinition resource.
    * Note that the choice of canonical for the subject element was introduced in R4B to support pharmaceutical quality use cases. To ensure as much backwards-compatibility as possible, it is recommended to only use the new canonical type with these use cases.
@@ -28391,8 +28225,8 @@ export interface PlanDefinition {
    * Indicates the mechanism used to compare versions to determine which is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
 /**
  * A language which may be used to communicate with the practitioner
@@ -28434,7 +28268,7 @@ export interface PractitionerQualification extends BackboneElement {
    */
   period?: Period | undefined;
 }
-export interface Practitioner {
+export interface Practitioner extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Practitioner';
   /**
@@ -28465,14 +28299,14 @@ export interface Practitioner {
    * Indicates if the practitioner is deceased or not.
    * If there's no value in the instance, it means there is no statement on whether or not the practitioner is deceased. Most systems will interpret the absence of a value as a sign of the person being alive.
    */
-  deceasedboolean?: boolean | undefined;
-  _deceasedboolean?: Element | undefined;
+  deceasedBoolean?: boolean | undefined;
+  _deceasedBoolean?: Element | undefined;
   /**
    * Indicates if the practitioner is deceased or not.
    * If there's no value in the instance, it means there is no statement on whether or not the practitioner is deceased. Most systems will interpret the absence of a value as a sign of the person being alive.
    */
-  deceasedstring?: string | undefined;
-  _deceasedstring?: Element | undefined;
+  deceasedString?: string | undefined;
+  _deceasedString?: Element | undefined;
   /**
    * Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.
    */
@@ -28509,7 +28343,7 @@ export interface Practitioner {
    */
   telecom?: ContactPoint[] | undefined;
 }
-export interface PractitionerRole {
+export interface PractitionerRole extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'PractitionerRole';
   /**
@@ -28616,7 +28450,7 @@ export interface ProcedurePerformer extends BackboneElement {
    */
   period?: Period | undefined;
 }
-export interface Procedure {
+export interface Procedure extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Procedure';
   /**
@@ -28693,8 +28527,8 @@ export interface Procedure {
    * This indicates when the procedure actually occurred or is occurring, not when it was asked/requested/ordered to occur. For the latter, look at the occurence element of the Request this Procedure is "basedOn". The status code allows differentiation of whether the timing reflects a historic event or an ongoing event. Ongoing events should not include an upper bound in the Period or Timing.bounds.
    * Age is generally used when the patient reports an age at which the procedure was performed. Range is generally used when the patient reports an age range when the procedure was performed, such as sometime between 20-25 years old.  dateTime supports a range of precision due to some procedures being reported as past procedures that might not have millisecond precision while other procedures performed and documented during the encounter might have more precise UTC timestamps with timezone.
    */
-  occurrencestring?: string | undefined;
-  _occurrencestring?: Element | undefined;
+  occurrenceString?: string | undefined;
+  _occurrenceString?: Element | undefined;
   /**
    * Estimated or actual date, date-time, period, or age when the procedure did occur or is occurring.  Allows a period to support complex procedures that span more than one date, and also allows for the length of the procedure to be captured.
    * This indicates when the procedure actually occurred or is occurring, not when it was asked/requested/ordered to occur. For the latter, look at the occurence element of the Request this Procedure is "basedOn". The status code allows differentiation of whether the timing reflects a historic event or an ongoing event. Ongoing events should not include an upper bound in the Period or Timing.bounds.
@@ -28749,8 +28583,8 @@ export interface Procedure {
   /**
    * Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.  It may also indicate the source of the report.
    */
-  reportedboolean?: boolean | undefined;
-  _reportedboolean?: Element | undefined;
+  reportedBoolean?: boolean | undefined;
+  _reportedBoolean?: Element | undefined;
   /**
    * Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.  It may also indicate the source of the report.
    */
@@ -28828,7 +28662,7 @@ export interface ProvenanceEntity extends BackboneElement {
 /**
  * Some parties may be duplicated between the target resource and its provenance.  For instance, the prescriber is usually (but not always) the author of the prescription resource. This resource is defined with close consideration for W3C Provenance.
  */
-export interface Provenance {
+export interface Provenance extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Provenance';
   /**
@@ -28864,8 +28698,8 @@ export interface Provenance {
    * The period during which the activity occurred.
    * The period can be a little arbitrary; where possible, the time should correspond to human assessment of the activity time.
    */
-  occurredstring?: string | undefined;
-  _occurredstring?: Element | undefined;
+  occurredString?: string | undefined;
+  _occurredString?: Element | undefined;
   /**
    * The period during which the activity occurred.
    * The period can be a little arbitrary; where possible, the time should correspond to human assessment of the activity time.
@@ -28916,13 +28750,13 @@ export interface QuestionnaireItemAnswerOption extends BackboneElement {
    * A potential answer that's allowed as the answer to this question.
    * The data type of the value must agree with the item.type.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * A potential answer that's allowed as the answer to this question.
    * The data type of the value must agree with the item.type.
    */
-  valuenumber?: number | undefined;
+  valueNumber?: number | undefined;
   /**
    * A potential answer that's allowed as the answer to this question.
    * The data type of the value must agree with the item.type.
@@ -28937,8 +28771,8 @@ export interface QuestionnaireItemEnableWhen extends BackboneElement {
   /**
    * A value that the referenced question is tested using the specified operator in order for the item to be enabled.  If there are multiple answers, a match on any of the answers suffices.  If different behavior is desired (all must match, at least 2 must match, etc.), consider using the enableWhenExpression extension.
    */
-  answerboolean?: boolean | undefined;
-  _answerboolean?: Element | undefined;
+  answerBoolean?: boolean | undefined;
+  _answerBoolean?: Element | undefined;
   /**
    * A value that the referenced question is tested using the specified operator in order for the item to be enabled.  If there are multiple answers, a match on any of the answers suffices.  If different behavior is desired (all must match, at least 2 must match, etc.), consider using the enableWhenExpression extension.
    */
@@ -28946,12 +28780,12 @@ export interface QuestionnaireItemEnableWhen extends BackboneElement {
   /**
    * A value that the referenced question is tested using the specified operator in order for the item to be enabled.  If there are multiple answers, a match on any of the answers suffices.  If different behavior is desired (all must match, at least 2 must match, etc.), consider using the enableWhenExpression extension.
    */
-  answerstring?: string | undefined;
-  _answerstring?: Element | undefined;
+  answerString?: string | undefined;
+  _answerString?: Element | undefined;
   /**
    * A value that the referenced question is tested using the specified operator in order for the item to be enabled.  If there are multiple answers, a match on any of the answers suffices.  If different behavior is desired (all must match, at least 2 must match, etc.), consider using the enableWhenExpression extension.
    */
-  answernumber?: number | undefined;
+  answerNumber?: number | undefined;
   /**
    * A value that the referenced question is tested using the specified operator in order for the item to be enabled.  If there are multiple answers, a match on any of the answers suffices.  If different behavior is desired (all must match, at least 2 must match, etc.), consider using the enableWhenExpression extension.
    */
@@ -28986,8 +28820,8 @@ export interface QuestionnaireItemInitial extends BackboneElement {
    * The actual value to for an initial answer.
    * The type of the initial value must be consistent with the type of the item.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * The actual value to for an initial answer.
    * The type of the initial value must be consistent with the type of the item.
@@ -28997,13 +28831,13 @@ export interface QuestionnaireItemInitial extends BackboneElement {
    * The actual value to for an initial answer.
    * The type of the initial value must be consistent with the type of the item.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * The actual value to for an initial answer.
    * The type of the initial value must be consistent with the type of the item.
    */
-  valuenumber?: number | undefined;
+  valueNumber?: number | undefined;
   /**
    * The actual value to for an initial answer.
    * The type of the initial value must be consistent with the type of the item.
@@ -29125,7 +28959,7 @@ export interface QuestionnaireItem extends BackboneElement {
   type: ('group'|'display'|'question'|'boolean'|'decimal'|'integer'|'date'|'dateTime'|'time'|'string'|'text'|'url'|'coding'|'attachment'|'reference'|'quantity');
   _type?: Element | undefined;
 }
-export interface Questionnaire {
+export interface Questionnaire extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Questionnaire';
   /**
@@ -29277,8 +29111,8 @@ export interface Questionnaire {
    * Indicates the mechanism used to compare versions to determine which is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
 /**
  * The response(s) to the question
@@ -29299,8 +29133,8 @@ export interface QuestionnaireResponseItemAnswer extends BackboneElement {
    * The answer (or one of the answers) provided by the respondent to the question.
    * More complex structures (Attachment, Resource and Quantity) will typically be limited to electronic forms that can expose an appropriate user interface to capture the components and enforce the constraints of a complex data type.  Additional complex types can be introduced through extensions. Must match the datatype specified by Questionnaire.item.type in the corresponding Questionnaire.     Note that a question is answered using one of the possible choices defined with answerOption, answerValueSet or some other means and the answer has a complex data type, all elements within the answer in the QuestionnaireResponse **SHOULD** match the elements defined corresponding choice value in the Questionnaire.  However, it is possible that not all elements will be propagated.  Also, some systems might use language translations resulting in different displays.  Comparison of value to the values defined in the Questionnaire (whether by answerOption, answerValueSet or answerExpression) **SHALL NOT** pay attention to Coding.display, Reference.display, Quantity.unit unless those are the only elements present.  As well, systems are not required to check for a match on any extensions (e.g. ordinal values, translations, etc.).  Systems **MAY** enforce that if extensions such as ordinal values are present in both Questionnaire and QuestionnaireResponse, they match.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * The answer (or one of the answers) provided by the respondent to the question.
    * More complex structures (Attachment, Resource and Quantity) will typically be limited to electronic forms that can expose an appropriate user interface to capture the components and enforce the constraints of a complex data type.  Additional complex types can be introduced through extensions. Must match the datatype specified by Questionnaire.item.type in the corresponding Questionnaire.     Note that a question is answered using one of the possible choices defined with answerOption, answerValueSet or some other means and the answer has a complex data type, all elements within the answer in the QuestionnaireResponse **SHOULD** match the elements defined corresponding choice value in the Questionnaire.  However, it is possible that not all elements will be propagated.  Also, some systems might use language translations resulting in different displays.  Comparison of value to the values defined in the Questionnaire (whether by answerOption, answerValueSet or answerExpression) **SHALL NOT** pay attention to Coding.display, Reference.display, Quantity.unit unless those are the only elements present.  As well, systems are not required to check for a match on any extensions (e.g. ordinal values, translations, etc.).  Systems **MAY** enforce that if extensions such as ordinal values are present in both Questionnaire and QuestionnaireResponse, they match.
@@ -29310,13 +29144,13 @@ export interface QuestionnaireResponseItemAnswer extends BackboneElement {
    * The answer (or one of the answers) provided by the respondent to the question.
    * More complex structures (Attachment, Resource and Quantity) will typically be limited to electronic forms that can expose an appropriate user interface to capture the components and enforce the constraints of a complex data type.  Additional complex types can be introduced through extensions. Must match the datatype specified by Questionnaire.item.type in the corresponding Questionnaire.     Note that a question is answered using one of the possible choices defined with answerOption, answerValueSet or some other means and the answer has a complex data type, all elements within the answer in the QuestionnaireResponse **SHOULD** match the elements defined corresponding choice value in the Questionnaire.  However, it is possible that not all elements will be propagated.  Also, some systems might use language translations resulting in different displays.  Comparison of value to the values defined in the Questionnaire (whether by answerOption, answerValueSet or answerExpression) **SHALL NOT** pay attention to Coding.display, Reference.display, Quantity.unit unless those are the only elements present.  As well, systems are not required to check for a match on any extensions (e.g. ordinal values, translations, etc.).  Systems **MAY** enforce that if extensions such as ordinal values are present in both Questionnaire and QuestionnaireResponse, they match.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * The answer (or one of the answers) provided by the respondent to the question.
    * More complex structures (Attachment, Resource and Quantity) will typically be limited to electronic forms that can expose an appropriate user interface to capture the components and enforce the constraints of a complex data type.  Additional complex types can be introduced through extensions. Must match the datatype specified by Questionnaire.item.type in the corresponding Questionnaire.     Note that a question is answered using one of the possible choices defined with answerOption, answerValueSet or some other means and the answer has a complex data type, all elements within the answer in the QuestionnaireResponse **SHOULD** match the elements defined corresponding choice value in the Questionnaire.  However, it is possible that not all elements will be propagated.  Also, some systems might use language translations resulting in different displays.  Comparison of value to the values defined in the Questionnaire (whether by answerOption, answerValueSet or answerExpression) **SHALL NOT** pay attention to Coding.display, Reference.display, Quantity.unit unless those are the only elements present.  As well, systems are not required to check for a match on any extensions (e.g. ordinal values, translations, etc.).  Systems **MAY** enforce that if extensions such as ordinal values are present in both Questionnaire and QuestionnaireResponse, they match.
    */
-  valuenumber?: number | undefined;
+  valueNumber?: number | undefined;
   /**
    * The answer (or one of the answers) provided by the respondent to the question.
    * More complex structures (Attachment, Resource and Quantity) will typically be limited to electronic forms that can expose an appropriate user interface to capture the components and enforce the constraints of a complex data type.  Additional complex types can be introduced through extensions. Must match the datatype specified by Questionnaire.item.type in the corresponding Questionnaire.     Note that a question is answered using one of the possible choices defined with answerOption, answerValueSet or some other means and the answer has a complex data type, all elements within the answer in the QuestionnaireResponse **SHOULD** match the elements defined corresponding choice value in the Questionnaire.  However, it is possible that not all elements will be propagated.  Also, some systems might use language translations resulting in different displays.  Comparison of value to the values defined in the Questionnaire (whether by answerOption, answerValueSet or answerExpression) **SHALL NOT** pay attention to Coding.display, Reference.display, Quantity.unit unless those are the only elements present.  As well, systems are not required to check for a match on any extensions (e.g. ordinal values, translations, etc.).  Systems **MAY** enforce that if extensions such as ordinal values are present in both Questionnaire and QuestionnaireResponse, they match.
@@ -29365,7 +29199,7 @@ export interface QuestionnaireResponseItem extends BackboneElement {
 /**
  * The QuestionnaireResponse contains enough information about the questions asked and their organization that it can be interpreted somewhat independently from the Questionnaire it is based on.  I.e. You don't need access to the Questionnaire in order to extract basic information from a QuestionnaireResponse.
  */
-export interface QuestionnaireResponse {
+export interface QuestionnaireResponse extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'QuestionnaireResponse';
   /**
@@ -29439,8 +29273,8 @@ export interface RegulatedAuthorizationCase extends BackboneElement {
   /**
    * Relevant date for this case.
    */
-  datestring?: string | undefined;
-  _datestring?: Element | undefined;
+  dateString?: string | undefined;
+  _dateString?: Element | undefined;
   /**
    * Relevant date for this case.
    */
@@ -29458,7 +29292,7 @@ export interface RegulatedAuthorizationCase extends BackboneElement {
    */
   type?: CodeableConcept | undefined;
 }
-export interface RegulatedAuthorization {
+export interface RegulatedAuthorization extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'RegulatedAuthorization';
   /**
@@ -29541,7 +29375,7 @@ export interface RelatedPersonCommunication extends BackboneElement {
   preferred?: boolean | undefined;
   _preferred?: Element | undefined;
 }
-export interface RelatedPerson {
+export interface RelatedPerson extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'RelatedPerson';
   /**
@@ -29684,8 +29518,8 @@ export interface RequestOrchestrationActionParticipant extends BackboneElement {
   /**
    * A reference to the actual participant.
    */
-  actorstring?: string | undefined;
-  _actorstring?: Element | undefined;
+  actorString?: string | undefined;
+  _actorString?: Element | undefined;
   /**
    * A reference to the actual participant.
    */
@@ -29768,8 +29602,8 @@ export interface RequestOrchestrationAction extends BackboneElement {
    * A reference to an ActivityDefinition that describes the action to be taken in detail, a PlanDefinition that describes a series of actions to be taken, a Questionnaire that should be filled out, a SpecimenDefinition describing a specimen to be collected, or an ObservationDefinition that specifies what observation should be captured.
    * Note that the definition is optional, and if no definition is specified, a dynamicValue with a root ($this) path can be used to define the entire resource dynamically.
    */
-  definitionstring?: string | undefined;
-  _definitionstring?: Element | undefined;
+  definitionString?: string | undefined;
+  _definitionString?: Element | undefined;
   /**
    * A short description of the action used to provide a summary to display to the user.
    */
@@ -29864,8 +29698,8 @@ export interface RequestOrchestrationAction extends BackboneElement {
    * An optional value describing when the action should be performed.
    * The intent of the timing element is to provide timing for when the action should be performed. The timing may be absolute (specified as a dateTime or Period) or relative (specified as an Age, Duration, or Range), or it may be a more complex, potentially repeating timing specified using Timing.
    */
-  timingstring?: string | undefined;
-  _timingstring?: Element | undefined;
+  timingString?: string | undefined;
+  _timingString?: Element | undefined;
   /**
    * An optional value describing when the action should be performed.
    * The intent of the timing element is to provide timing for when the action should be performed. The timing may be absolute (specified as a dateTime or Period) or relative (specified as an Age, Duration, or Range), or it may be a more complex, potentially repeating timing specified using Timing.
@@ -29902,7 +29736,7 @@ export interface RequestOrchestrationAction extends BackboneElement {
    */
   type?: CodeableConcept | undefined;
 }
-export interface RequestOrchestration {
+export interface RequestOrchestration extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'RequestOrchestration';
   /**
@@ -30048,7 +29882,7 @@ export interface RequirementsStatement extends BackboneElement {
    */
   source?: Reference[] | undefined;
 }
-export interface Requirements {
+export interface Requirements extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Requirements';
   /**
@@ -30178,8 +30012,8 @@ export interface Requirements {
    * Indicates the mechanism used to compare versions to determine which is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
 /**
  * Sponsors, collaborators, and other parties
@@ -30342,7 +30176,7 @@ export interface ResearchStudyRecruitment extends BackboneElement {
 /**
  * Need to make sure we encompass public health studies.
  */
-export interface ResearchStudy {
+export interface ResearchStudy extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ResearchStudy';
   /**
@@ -30523,7 +30357,7 @@ export interface ResearchSubjectProgress extends BackboneElement {
 /**
  * Need to make sure we encompass public health studies.
  */
-export interface ResearchSubject {
+export interface ResearchSubject extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ResearchSubject';
   /**
@@ -30569,7 +30403,7 @@ export interface ResearchSubject {
    */
   subject: Reference;
 }
-export interface Resource {
+export interface Resource extends Base {
   /** Resource Type Name (for serialization) */
   readonly resourceType: string;
   /**
@@ -30608,7 +30442,7 @@ export interface RiskAssessmentPrediction extends BackboneElement {
    * Indicates how likely the outcome is (in the specified timeframe).
    * If range is used, it represents the lower and upper bounds of certainty; e.g. 40-60%  Decimal values are expressed as percentages as well (max = 100).
    */
-  probabilitynumber?: number | undefined;
+  probabilityNumber?: number | undefined;
   /**
    * Indicates how likely the outcome is (in the specified timeframe).
    * If range is used, it represents the lower and upper bounds of certainty; e.g. 40-60%  Decimal values are expressed as percentages as well (max = 100).
@@ -30638,7 +30472,7 @@ export interface RiskAssessmentPrediction extends BackboneElement {
    */
   whenRange?: Range | undefined;
 }
-export interface RiskAssessment {
+export interface RiskAssessment extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'RiskAssessment';
   /**
@@ -30681,8 +30515,8 @@ export interface RiskAssessment {
   /**
    * The date (and possibly time) the risk assessment was performed.
    */
-  occurrencestring?: string | undefined;
-  _occurrencestring?: Element | undefined;
+  occurrenceString?: string | undefined;
+  _occurrenceString?: Element | undefined;
   /**
    * The date (and possibly time) the risk assessment was performed.
    */
@@ -30714,7 +30548,7 @@ export interface RiskAssessment {
    */
   subject: Reference;
 }
-export interface Schedule {
+export interface Schedule extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Schedule';
   /**
@@ -30779,7 +30613,7 @@ export interface SearchParameterComponent extends BackboneElement {
 /**
  * In FHIR, search is not performed directly on a resource (by XML or JSON path), but on a named parameter that maps into the resource content.
  */
-export interface SearchParameter {
+export interface SearchParameter extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'SearchParameter';
   /**
@@ -30970,8 +30804,8 @@ export interface SearchParameter {
    * Indicates the mechanism used to compare versions to determine which is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
 /**
  * The parameter details for the service being requested
@@ -30985,8 +30819,8 @@ export interface ServiceRequestOrderDetailParameter extends BackboneElement {
    * Indicates a value for the order detail.
    * CodeableConcept values are indented to express concepts that would normally be coded - when a code is not available for a concept, CodeableConcept.text can be used. When the data is a text or not a single identifiable concept, string should be used.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * Indicates a value for the order detail.
    * CodeableConcept values are indented to express concepts that would normally be coded - when a code is not available for a concept, CodeableConcept.text can be used. When the data is a text or not a single identifiable concept, string should be used.
@@ -31016,8 +30850,8 @@ export interface ServiceRequestOrderDetailParameter extends BackboneElement {
    * Indicates a value for the order detail.
    * CodeableConcept values are indented to express concepts that would normally be coded - when a code is not available for a concept, CodeableConcept.text can be used. When the data is a text or not a single identifiable concept, string should be used.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
 }
 /**
  * Additional order information
@@ -31040,21 +30874,21 @@ export interface ServiceRequestPatientInstruction extends BackboneElement {
   /**
    * Instructions in terms that are understood by the patient or consumer.
    */
-  instructionstring?: string | undefined;
-  _instructionstring?: Element | undefined;
+  instructionString?: string | undefined;
+  _instructionString?: Element | undefined;
   /**
    * Instructions in terms that are understood by the patient or consumer.
    */
   instructionReference?: Reference | undefined;
 }
-export interface ServiceRequest {
+export interface ServiceRequest extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ServiceRequest';
   /**
    * If a CodeableConcept is present, it indicates the pre-condition for performing the service.  For example "pain", "on flare-up", etc.
    */
-  asNeededboolean?: boolean | undefined;
-  _asNeededboolean?: Element | undefined;
+  asNeededBoolean?: boolean | undefined;
+  _asNeededBoolean?: Element | undefined;
   /**
    * If a CodeableConcept is present, it indicates the pre-condition for performing the service.  For example "pain", "on flare-up", etc.
    */
@@ -31139,8 +30973,8 @@ export interface ServiceRequest {
   /**
    * The date/time at which the requested service should occur.
    */
-  occurrencestring?: string | undefined;
-  _occurrencestring?: Element | undefined;
+  occurrenceString?: string | undefined;
+  _occurrenceString?: Element | undefined;
   /**
    * The date/time at which the requested service should occur.
    */
@@ -31232,7 +31066,7 @@ export interface ServiceRequest {
    */
   supportingInfo?: CodeableReference[] | undefined;
 }
-export interface Slot {
+export interface Slot extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Slot';
   /**
@@ -31298,8 +31132,8 @@ export interface SpecimenCollection extends BackboneElement {
   /**
    * Time when specimen was collected from subject - the physiologically relevant time.
    */
-  collectedstring?: string | undefined;
-  _collectedstring?: Element | undefined;
+  collectedString?: string | undefined;
+  _collectedString?: Element | undefined;
   /**
    * Time when specimen was collected from subject - the physiologically relevant time.
    */
@@ -31390,14 +31224,14 @@ export interface SpecimenProcessing extends BackboneElement {
   /**
    * A record of the time or period when the specimen processing occurred.  For example the time of sample fixation or the period of time the sample was in formalin.
    */
-  timestring?: string | undefined;
-  _timestring?: Element | undefined;
+  timeString?: string | undefined;
+  _timeString?: Element | undefined;
   /**
    * A record of the time or period when the specimen processing occurred.  For example the time of sample fixation or the period of time the sample was in formalin.
    */
   timePeriod?: Period | undefined;
 }
-export interface Specimen {
+export interface Specimen extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Specimen';
   /**
@@ -31519,8 +31353,8 @@ export interface SpecimenDefinitionTypeTestedContainer extends BackboneElement {
   /**
    * The minimum volume to be conditioned in the container.
    */
-  minimumVolumestring?: string | undefined;
-  _minimumVolumestring?: Element | undefined;
+  minimumVolumeString?: string | undefined;
+  _minimumVolumeString?: Element | undefined;
   /**
    * Special processing that should be applied to the container for this kind of specimen.
    */
@@ -31602,7 +31436,7 @@ export interface SpecimenDefinitionTypeTested extends BackboneElement {
    */
   type?: CodeableConcept | undefined;
 }
-export interface SpecimenDefinition {
+export interface SpecimenDefinition extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'SpecimenDefinition';
   /**
@@ -31766,8 +31600,8 @@ export interface SpecimenDefinition {
    * Indicates the mechanism used to compare versions to determine which is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
 /**
  * If an extension, where it can be used in instances
@@ -31829,7 +31663,7 @@ export interface StructureDefinitionSnapshot extends BackboneElement {
    */
   element: ElementDefinition[];
 }
-export interface StructureDefinition {
+export interface StructureDefinition extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'StructureDefinition';
   /**
@@ -32006,8 +31840,8 @@ export interface StructureDefinition {
    * Indicates the mechanism used to compare versions to determine which is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
 /**
  * Definition of the constant value used in the map rules
@@ -32132,17 +31966,17 @@ export interface StructureMapGroupRuleTargetParameter extends BackboneElement {
   /**
    * Parameter value - variable or literal.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * Parameter value - variable or literal.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * Parameter value - variable or literal.
    */
-  valuenumber?: number | undefined;
+  valueNumber?: number | undefined;
 }
 /**
  * Content to create because of this mapping rule
@@ -32276,7 +32110,7 @@ export interface StructureMapStructure extends BackboneElement {
   url: string;
   _url?: Element | undefined;
 }
-export interface StructureMap {
+export interface StructureMap extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'StructureMap';
   /**
@@ -32404,8 +32238,8 @@ export interface StructureMap {
    * Indicates the mechanism used to compare versions to determine which is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
 /**
  * Criteria for narrowing the subscription topic stream
@@ -32455,7 +32289,7 @@ export interface SubscriptionParameter extends BackboneElement {
   value: string;
   _value?: Element | undefined;
 }
-export interface Subscription {
+export interface Subscription extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Subscription';
   /**
@@ -32567,7 +32401,7 @@ export interface SubscriptionStatusNotificationEvent extends BackboneElement {
   timestamp?: string | undefined;
   _timestamp?: Element | undefined;
 }
-export interface SubscriptionStatus {
+export interface SubscriptionStatus extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'SubscriptionStatus';
   /**
@@ -32750,7 +32584,7 @@ export interface SubscriptionTopicResourceTrigger extends BackboneElement {
   supportedInteraction?: ('create'|'update'|'delete')[] | undefined;
   _supportedInteraction?: Element[] | undefined;
 }
-export interface SubscriptionTopic {
+export interface SubscriptionTopic extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'SubscriptionTopic';
   /**
@@ -32899,8 +32733,8 @@ export interface SubscriptionTopic {
    * Indicates the mechanism used to compare versions to determine which is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
 /**
  * Composition information about the substance
@@ -32919,7 +32753,7 @@ export interface SubstanceIngredient extends BackboneElement {
    */
   substanceReference?: Reference | undefined;
 }
-export interface Substance {
+export interface Substance extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Substance';
   /**
@@ -33024,8 +32858,8 @@ export interface SubstanceDefinitionMoiety extends BackboneElement {
   /**
    * Quantitative value for this moiety.
    */
-  amountstring?: string | undefined;
-  _amountstring?: Element | undefined;
+  amountString?: string | undefined;
+  _amountString?: Element | undefined;
   /**
    * Identifier by which this moiety substance is known.
    */
@@ -33158,8 +32992,8 @@ export interface SubstanceDefinitionProperty extends BackboneElement {
   /**
    * A value for the property.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * A value for the property.
    */
@@ -33167,8 +33001,8 @@ export interface SubstanceDefinitionProperty extends BackboneElement {
   /**
    * A value for the property.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * A value for the property.
    */
@@ -33189,8 +33023,8 @@ export interface SubstanceDefinitionRelationship extends BackboneElement {
   /**
    * A numeric factor for the relationship, for instance to express that the salt of a substance has some percentage of the active substance in relation to some other.
    */
-  amountstring?: string | undefined;
-  _amountstring?: Element | undefined;
+  amountString?: string | undefined;
+  _amountString?: Element | undefined;
   /**
    * An operator for the amount, for example "average", "approximately", "less than".
    */
@@ -33307,7 +33141,7 @@ export interface SubstanceDefinitionStructure extends BackboneElement {
    */
   technique?: CodeableConcept[] | undefined;
 }
-export interface SubstanceDefinition {
+export interface SubstanceDefinition extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'SubstanceDefinition';
   /**
@@ -33490,7 +33324,7 @@ export interface SubstanceNucleicAcidSubunit extends BackboneElement {
    */
   threePrime?: CodeableConcept | undefined;
 }
-export interface SubstanceNucleicAcid {
+export interface SubstanceNucleicAcid extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'SubstanceNucleicAcid';
   /**
@@ -33637,7 +33471,7 @@ export interface SubstancePolymerRepeat extends BackboneElement {
    */
   repeatUnitAmountType?: CodeableConcept | undefined;
 }
-export interface SubstancePolymer {
+export interface SubstancePolymer extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'SubstancePolymer';
   /**
@@ -33710,7 +33544,7 @@ export interface SubstanceProteinSubunit extends BackboneElement {
    */
   subunit?: number | undefined;
 }
-export interface SubstanceProtein {
+export interface SubstanceProtein extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'SubstanceProtein';
   /**
@@ -33780,8 +33614,8 @@ export interface SubstanceReferenceInformationTarget extends BackboneElement {
   /**
    * Todo.
    */
-  amountstring?: string | undefined;
-  _amountstring?: Element | undefined;
+  amountString?: string | undefined;
+  _amountString?: Element | undefined;
   /**
    * Todo.
    */
@@ -33811,7 +33645,7 @@ export interface SubstanceReferenceInformationTarget extends BackboneElement {
    */
   type?: CodeableConcept | undefined;
 }
-export interface SubstanceReferenceInformation {
+export interface SubstanceReferenceInformation extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'SubstanceReferenceInformation';
   /**
@@ -33961,7 +33795,7 @@ export interface SubstanceSourceMaterialPartDescription extends BackboneElement 
    */
   partLocation?: CodeableConcept | undefined;
 }
-export interface SubstanceSourceMaterial {
+export interface SubstanceSourceMaterial extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'SubstanceSourceMaterial';
   /**
@@ -34037,7 +33871,7 @@ export interface SupplyDeliverySuppliedItem extends BackboneElement {
    */
   quantity?: Quantity | undefined;
 }
-export interface SupplyDelivery {
+export interface SupplyDelivery extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'SupplyDelivery';
   /**
@@ -34057,8 +33891,8 @@ export interface SupplyDelivery {
    * The date or time(s) the activity occurred.
    * [The list of types may be constrained as appropriate for the type of event].
    */
-  occurrencestring?: string | undefined;
-  _occurrencestring?: Element | undefined;
+  occurrenceString?: string | undefined;
+  _occurrenceString?: Element | undefined;
   /**
    * The date or time(s) the activity occurred.
    * [The list of types may be constrained as appropriate for the type of event].
@@ -34114,8 +33948,8 @@ export interface SupplyRequestParameter extends BackboneElement {
    * The value of the device detail.
    * Range means device should have a value that falls somewhere within the specified range.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * The value of the device detail.
    * Range means device should have a value that falls somewhere within the specified range.
@@ -34132,7 +33966,7 @@ export interface SupplyRequestParameter extends BackboneElement {
    */
   valueRange?: Range | undefined;
 }
-export interface SupplyRequest {
+export interface SupplyRequest extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'SupplyRequest';
   /**
@@ -34173,8 +34007,8 @@ export interface SupplyRequest {
   /**
    * When the request should be fulfilled.
    */
-  occurrencestring?: string | undefined;
-  _occurrencestring?: Element | undefined;
+  occurrenceString?: string | undefined;
+  _occurrenceString?: Element | undefined;
   /**
    * When the request should be fulfilled.
    */
@@ -34246,13 +34080,13 @@ export interface TaskInput extends BackboneElement {
   /**
    * The value of the input parameter as a basic type.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * The value of the input parameter as a basic type.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * The value of the input parameter as a basic type.
    */
@@ -34284,7 +34118,7 @@ export interface TaskInput extends BackboneElement {
   /**
    * The value of the input parameter as a basic type.
    */
-  valuenumber?: number | undefined;
+  valueNumber?: number | undefined;
   /**
    * The value of the input parameter as a basic type.
    */
@@ -34405,13 +34239,13 @@ export interface TaskOutput extends BackboneElement {
   /**
    * The value of the Output parameter as a basic type.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * The value of the Output parameter as a basic type.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * The value of the Output parameter as a basic type.
    */
@@ -34443,7 +34277,7 @@ export interface TaskOutput extends BackboneElement {
   /**
    * The value of the Output parameter as a basic type.
    */
-  valuenumber?: number | undefined;
+  valueNumber?: number | undefined;
   /**
    * The value of the Output parameter as a basic type.
    */
@@ -34566,7 +34400,7 @@ export interface TaskRestriction extends BackboneElement {
    */
   repetitions?: number | undefined;
 }
-export interface Task {
+export interface Task extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Task';
   /**
@@ -34909,7 +34743,7 @@ export interface TerminologyCapabilitiesValidateCode extends BackboneElement {
   translations: boolean;
   _translations?: Element | undefined;
 }
-export interface TerminologyCapabilities {
+export interface TerminologyCapabilities extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'TerminologyCapabilities';
   /**
@@ -35063,8 +34897,8 @@ export interface TerminologyCapabilities {
    * Indicates the mechanism used to compare versions to determine which is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
 /**
  * The required criteria to execute the test plan - e.g. preconditions, previous tests
@@ -35126,8 +34960,8 @@ export interface TestPlanTestCaseTestData extends BackboneElement {
   /**
    * Pointer to a definition of test resources - narrative or structured e.g. synthetic data generation, etc.
    */
-  sourcestring?: string | undefined;
-  _sourcestring?: Element | undefined;
+  sourceString?: string | undefined;
+  _sourceString?: Element | undefined;
   /**
    * The type of test data description, e.g. 'synthea'.
    */
@@ -35148,8 +34982,8 @@ export interface TestPlanTestCaseTestRunScript extends BackboneElement {
   /**
    * The actual content of the cases - references to TestScripts or externally defined content.
    */
-  sourcestring?: string | undefined;
-  _sourcestring?: Element | undefined;
+  sourceString?: string | undefined;
+  _sourceString?: Element | undefined;
 }
 /**
  * The actual test to be executed
@@ -35194,7 +35028,7 @@ export interface TestPlanTestCase extends BackboneElement {
    */
   testRun?: TestPlanTestCaseTestRun[] | undefined;
 }
-export interface TestPlan {
+export interface TestPlan extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'TestPlan';
   /**
@@ -35329,8 +35163,8 @@ export interface TestPlan {
    * Indicates the mechanism used to compare versions to determine which is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
 /**
  * A participant in the test execution, either the execution engine, a client, or a server
@@ -35360,8 +35194,8 @@ export interface TestReportSetupActionAssertRequirement extends BackboneElement 
   /**
    * Link or reference providing traceability to the testing requirement for this test.
    */
-  linkstring?: string | undefined;
-  _linkstring?: Element | undefined;
+  linkString?: string | undefined;
+  _linkString?: Element | undefined;
 }
 /**
  * The assertion to perform
@@ -35486,7 +35320,7 @@ export interface TestReportTest extends BackboneElement {
   name?: string | undefined;
   _name?: Element | undefined;
 }
-export interface TestReport {
+export interface TestReport extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'TestReport';
   /**
@@ -35713,8 +35547,8 @@ export interface TestScriptSetupActionAssertRequirement extends BackboneElement 
   /**
    * Link or reference providing traceability to the testing requirement for this test.
    */
-  linkstring?: string | undefined;
-  _linkstring?: Element | undefined;
+  linkString?: string | undefined;
+  _linkString?: Element | undefined;
 }
 /**
  * The assertion to perform
@@ -36123,7 +35957,7 @@ export interface TestScriptVariable extends BackboneElement {
   sourceId?: string | undefined;
   _sourceId?: Element | undefined;
 }
-export interface TestScript {
+export interface TestScript extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'TestScript';
   /**
@@ -36277,8 +36111,8 @@ export interface TestScript {
    * Indicates the mechanism used to compare versions to determine which is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
 /**
  * Information used to perform transport
@@ -36312,13 +36146,13 @@ export interface TransportInput extends BackboneElement {
   /**
    * The value of the input parameter as a basic type.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * The value of the input parameter as a basic type.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * The value of the input parameter as a basic type.
    */
@@ -36350,7 +36184,7 @@ export interface TransportInput extends BackboneElement {
   /**
    * The value of the input parameter as a basic type.
    */
-  valuenumber?: number | undefined;
+  valueNumber?: number | undefined;
   /**
    * The value of the input parameter as a basic type.
    */
@@ -36471,13 +36305,13 @@ export interface TransportOutput extends BackboneElement {
   /**
    * The value of the Output parameter as a basic type.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * The value of the Output parameter as a basic type.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * The value of the Output parameter as a basic type.
    */
@@ -36509,7 +36343,7 @@ export interface TransportOutput extends BackboneElement {
   /**
    * The value of the Output parameter as a basic type.
    */
-  valuenumber?: number | undefined;
+  valueNumber?: number | undefined;
   /**
    * The value of the Output parameter as a basic type.
    */
@@ -36617,7 +36451,7 @@ export interface TransportRestriction extends BackboneElement {
    */
   repetitions?: number | undefined;
 }
-export interface Transport {
+export interface Transport extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Transport';
   /**
@@ -36927,13 +36761,13 @@ export interface ValueSetExpansionContainsPropertySubProperty extends BackboneEl
   /**
    * The value of this subproperty.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * The value of this subproperty.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * The value of this subproperty.
    */
@@ -36941,7 +36775,7 @@ export interface ValueSetExpansionContainsPropertySubProperty extends BackboneEl
   /**
    * The value of this subproperty.
    */
-  valuenumber?: number | undefined;
+  valueNumber?: number | undefined;
 }
 /**
  * Property value for the concept
@@ -36959,13 +36793,13 @@ export interface ValueSetExpansionContainsProperty extends BackboneElement {
   /**
    * The value of this property.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * The value of this property.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * The value of this property.
    */
@@ -36973,7 +36807,7 @@ export interface ValueSetExpansionContainsProperty extends BackboneElement {
   /**
    * The value of this property.
    */
-  valuenumber?: number | undefined;
+  valueNumber?: number | undefined;
 }
 /**
  * Codes in the value set
@@ -37041,17 +36875,17 @@ export interface ValueSetExpansionParameter extends BackboneElement {
   /**
    * The value of the parameter.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * The value of the parameter.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * The value of the parameter.
    */
-  valuenumber?: number | undefined;
+  valueNumber?: number | undefined;
 }
 /**
  * Additional information supplied about each concept
@@ -37131,7 +36965,7 @@ export interface ValueSetScope extends BackboneElement {
   inclusionCriteria?: string | undefined;
   _inclusionCriteria?: Element | undefined;
 }
-export interface ValueSet {
+export interface ValueSet extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ValueSet';
   /**
@@ -37309,8 +37143,8 @@ export interface ValueSet {
    * Indicates the mechanism used to compare versions to determine which ValueSet is more current.
    * If set as a string, this is a FHIRPath expression that has two additional context variables passed in - %version1 and %version2 and will return a negative number if version1 is newer, a positive number if version2 and a 0 if the version ordering can't be successfully be determined.
    */
-  versionAlgorithmstring?: string | undefined;
-  _versionAlgorithmstring?: Element | undefined;
+  versionAlgorithmString?: string | undefined;
+  _versionAlgorithmString?: Element | undefined;
 }
 /**
  * Information about the entity attesting to information
@@ -37404,7 +37238,7 @@ export interface VerificationResultValidator extends BackboneElement {
    */
   organization: Reference;
 }
-export interface VerificationResult {
+export interface VerificationResult extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'VerificationResult';
   /**
@@ -37551,7 +37385,7 @@ export interface VisionPrescriptionLensSpecification extends BackboneElement {
    */
   sphere?: number | undefined;
 }
-export interface VisionPrescription {
+export interface VisionPrescription extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'VisionPrescription';
   /**

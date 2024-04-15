@@ -90,30 +90,6 @@ public class LangInfo : ILanguage
 
     /// <summary>Dictionary mapping FHIR primitive types to language equivalents.</summary>
     private static readonly Dictionary<string, string> _primitiveTypeMap = [];
-        //{
-        //    { "base", "base" },
-        //    { "base64Binary", "base64Binary" },
-        //    { "boolean", "boolean" },
-        //    { "canonical", "canonical" },
-        //    { "code", "code" },
-        //    { "date", "date" },
-        //    { "dateTime", "dateTime" },
-        //    { "decimal", "decimal" },
-        //    { "id", "id" },
-        //    { "instant", "instant" },
-        //    { "integer", "integer" },
-        //    { "integer64", "integer64" },
-        //    { "markdown", "markdown" },
-        //    { "oid", "oid" },
-        //    { "positiveInt", "positiveInt" },
-        //    { "string", "string" },
-        //    { "time", "time" },
-        //    { "unsignedInt", "unsignedInt" },
-        //    { "uri", "uri" },
-        //    { "url", "url" },
-        //    { "uuid", "uuid" },
-        //    { "xhtml", "xhtml" },
-        //};
 
     /// <summary>Gets the FHIR primitive type map.</summary>
     public Dictionary<string, string> FhirPrimitiveTypeMap => _primitiveTypeMap;
@@ -155,6 +131,8 @@ public class LangInfo : ILanguage
             WriteStructures(definitions.PrimitiveTypesByName.Values, "Primitive Types");
             WriteStructures(definitions.ComplexTypesByName.Values, "Complex Types");
             WriteStructures(definitions.ResourcesByName.Values, "Resources");
+
+            WriteStructures(definitions.InterfacesByName.Values, "Interfaces");
 
             WriteStructures(definitions.ProfilesByUrl.Values, "Profiles");
 
@@ -442,7 +420,7 @@ public class LangInfo : ILanguage
     {
         bool indented = false;
 
-        // check for artifacts that thave alternative renderings
+        // check for artifacts that have alternative renderings
         switch (sd.cgArtifactClass())
         {
             case CodeGenCommon.Models.FhirArtifactClassEnum.Extension:
@@ -492,6 +470,14 @@ public class LangInfo : ILanguage
         else if (rootElement != null)
         {
             WriteElement(sd, rootElement, true);
+        }
+
+        if (sd.cgArtifactClass() == CodeGenCommon.Models.FhirArtifactClassEnum.Interface)
+        {
+            foreach (StructureDefinition resourceSd in _definitions.ResourcesForInterface(sd).OrderBy(s => s.Name))
+            {
+                _writer.WriteLineIndented($"+ Implemented by: {resourceSd.Name}: {resourceSd.Url}");
+            }
         }
 
         // write elements
@@ -714,11 +700,6 @@ public class LangInfo : ILanguage
     /// <param name="complex">    The complex.</param>
     private void WriteElements(StructureDefinition sd, IEnumerable<ElementDefinition> elements)
     {
-        //if (sd.Name.Equals("Observationbmi"))
-        //{
-        //    Console.Write("");
-        //}
-
         foreach (ElementDefinition element in elements.OrderBy(s => s.cgFieldOrder()))
         {
             WriteElement(sd, element);

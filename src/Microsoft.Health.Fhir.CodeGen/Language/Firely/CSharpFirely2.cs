@@ -13,9 +13,11 @@
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Reflection.Metadata;
+using System.Resources;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Xml.Linq;
+using Fhir.Metrics;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Utility;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
@@ -225,7 +227,7 @@ public sealed class CSharpFirely2 : ILanguage
         "http://hl7.org/fhir/ValueSet/type-restful-interaction",
         "http://hl7.org/fhir/ValueSet/system-restful-interaction",
 
-        // For these valuesets the algorithm to determine whather a vs is shared
+        // For these valuesets the algorithm to determine whether a vs is shared
         // is still considering core extensions too. When this is corrected,
         // these can probably go.
         "http://hl7.org/fhir/ValueSet/constraint-severity",
@@ -484,14 +486,14 @@ public sealed class CSharpFirely2 : ILanguage
 
             if (options.ExportStructures.Contains(CodeGenCommon.Models.FhirArtifactClassEnum.PrimitiveType))
             {
-                WritePrimitiveTypes(_info.PrimitiveTypesByName.Values.OrderBy(sd => sd.Name), ref dummy, subset);
+                WritePrimitiveTypes(_info.PrimitiveTypesByName.Values, ref dummy, subset);
             }
 
             AddModels(allPrimitives, _info.PrimitiveTypesByName.Values);
 
             if (options.ExportStructures.Contains(CodeGenCommon.Models.FhirArtifactClassEnum.ComplexType))
             {
-                WriteComplexDataTypes(_info.ComplexTypesByName.Values.OrderBy(sd => sd.Name), ref dummy, subset);
+                WriteComplexDataTypes(_info.ComplexTypesByName.Values, ref dummy, subset);
             }
 
             AddModels(allComplexTypes, _info.ComplexTypesByName.Values);
@@ -499,10 +501,15 @@ public sealed class CSharpFirely2 : ILanguage
 
             if (options.ExportStructures.Contains(CodeGenCommon.Models.FhirArtifactClassEnum.Resource))
             {
-                WriteResources(_info.ResourcesByName.Values.OrderBy(sd => sd.Name), ref dummy, subset);
+                WriteResources(_info.ResourcesByName.Values, ref dummy, subset);
             }
 
             AddModels(allResources, _info.ResourcesByName.Values);
+
+            if (options.ExportStructures.Contains(CodeGenCommon.Models.FhirArtifactClassEnum.Interface))
+            {
+                WriteInterfaces(_info.InterfacesByName.Values, ref dummy, subset);
+            }
 
             if (subset.HasFlag(GenSubset.Satellite))
             {
@@ -1069,7 +1076,7 @@ public sealed class CSharpFirely2 : ILanguage
                            can be represented using enums in the POCO classes (using <c>Code&lt;T&gt;</c>). All other coded members
                            use <c>Code</c>, <c>Coding</c> or <c>CodeableConcept</c>.
                            Consequently, we only need to generate enums for valuesets that are used as
-                           required bindings anywhere in the datamodel. */
+                           required bindings anywhere in the data model. */
                         continue;
                     }
 
@@ -1126,7 +1133,65 @@ public sealed class CSharpFirely2 : ILanguage
         }
     }
 
-    /// <summary>Writes the complex data types.</summary>
+    private void WriteInterfaces(
+        IEnumerable<StructureDefinition> complexes,
+        ref Dictionary<string, WrittenModelInfo> writtenModels,
+        GenSubset subset)
+    {
+        foreach (StructureDefinition complex in complexes.OrderBy(c => c.Name))
+        {
+            //if (_exclusionSet.Contains(complex.Name))
+            //{
+            //    continue;
+            //}
+
+            // for now, we only generate interfaces when running in the satellite configuration
+            if (subset.HasFlag(GenSubset.Satellite))
+            {
+                WriteInterface(complex, ref writtenModels, subset);
+            }
+        }
+    }
+
+    private void WriteInterface(
+        StructureDefinition complex,
+        ref Dictionary<string, WrittenModelInfo> writtenModels,
+        GenSubset subset)
+    {
+        string exportName = "I" + complex.Name.ToPascalCase();
+
+        //writtenModels.Add(
+        //    complex.Name,
+        //    new WrittenModelInfo()
+        //    {
+        //        FhirName = complex.Name,
+        //        CsName = $"{Namespace}.{exportName}",
+        //        IsAbstract = complex.Abstract == true,
+        //    });
+
+        string filename = Path.Combine(_exportDirectory, "Generated", $"{exportName}.cs");
+
+        _modelWriter.WriteLineIndented($"// {exportName}.cs");
+
+        using (FileStream stream = new(filename, FileMode.Create))
+        using (ExportStreamWriter writer = new(stream))
+        {
+            _writer = writer;
+
+            WriteHeaderComplexDataType();
+
+            WriteNamespaceOpen();
+
+            WriteInterfaceComponent(complex.cgComponent(), exportName, subset, ref writtenModels);
+
+            WriteNamespaceClose();
+
+            WriteFooter();
+        }
+    }
+
+
+    /// <summary>Write C# classes for FHIR resources.</summary>
     /// <param name="complexes">    The complex data types.</param>
     /// <param name="writtenModels">[in,out] The written models.</param>
     /// <param name="subset"></param>
@@ -1151,7 +1216,7 @@ public sealed class CSharpFirely2 : ILanguage
         }
     }
 
-    /// <summary>Writes a complex data type.</summary>
+    /// <summary>Write a C# class for a FHIR resource.</summary>
     /// <param name="complex">      The complex data type.</param>
     /// <param name="writtenModels">[in,out] The written models.</param>
     /// <param name="subset"></param>
@@ -1260,6 +1325,267 @@ public sealed class CSharpFirely2 : ILanguage
             WriteNamespaceClose();
 
             WriteFooter();
+        }
+    }
+
+    private void WriteInterfaceComponent(
+        ComponentDefinition complex,
+        string exportName,
+        GenSubset subset,
+        ref Dictionary<string, WrittenModelInfo> writtenModels)
+    {
+        string complexName = complex.cgName();
+
+        List<WrittenElementInfo> exportedElements = [];
+
+        WriteIndentedComment($"{complex.Element.Short}");
+
+        //WriteSerializable();
+
+        string fhirTypeConstructor = $"\"{complexName}\",\"{complex.cgUrl()}\"";
+
+        //_writer.WriteLineIndented($"[FhirType({fhirTypeConstructor}, IsResource=true)]");
+
+        StructureDefinition? parentInterface = _info.GetParentInterface(complex.Structure);
+
+        if (parentInterface == null)
+        {
+            _writer.WriteLineIndented($"public interface {exportName}");
+        }
+        else
+        {
+            string parentInterfaceExportName = "I" + parentInterface.Name.ToPascalCase();
+
+            _writer.WriteLineIndented(
+                $"public interface" +
+                    $" {exportName}" +
+                    $" : {Namespace}.{parentInterfaceExportName}");
+        }
+
+
+        // open class
+        OpenScope();
+
+        // right now, no interfaces have components - TODO: determine naming convention if this comes up
+        //foreach (ComponentDefinition component in complex.cgChildComponents(_info))
+        //{
+        //    string componentExportName;
+        //    if (string.IsNullOrEmpty(component.cgExplicitName()))
+        //    {
+        //        componentExportName =
+        //            $"{component.cgName(NamingConvention.PascalCase)}Component";
+        //    }
+        //    else
+        //    {
+        //        // Consent.provisionActorComponent is explicit lower case...
+        //        componentExportName =
+        //            $"{component.cgExplicitName()}" +
+        //            $"Component";
+        //    }
+        //    WriteBackboneComponent(
+        //        component,
+        //        componentExportName,
+        //        exportName,
+        //        subset);
+        //}
+
+        WriteInterfaceElements(complex, exportName, ref exportedElements);
+
+        // close class
+        CloseScope();
+
+        // get the list of resources that implement this interface
+        foreach (StructureDefinition resourceSd in _info.ResourcesForInterface(complex.Structure).OrderBy(s => s.Name))
+        {
+            // check if this is a model we have written (do not write for resources out of our subset)
+            if (!writtenModels.ContainsKey(resourceSd.Name))
+            {
+                continue;
+            }
+
+            string resourceExportName = resourceSd.Name.ToPascalCase();
+
+            _writer.WriteLineIndented($"public partial class {resourceExportName} : {exportName}");
+
+            // open class
+            OpenScope();
+
+            // get the elements for this resource and put them into a dictionary for easy lookup.
+            // note that we can restrict to top level since interfaces are currently only top level
+            // use the name as determined by BuildElementInfo for the key
+            Dictionary<string, ElementDefinition> resourceElements = resourceSd.cgElements(topLevelOnly: true)
+                .ToDictionary(e => e.cgName().Replace("[x]", string.Empty));
+
+            // iterate over the elements of the interface we exported
+            foreach (WrittenElementInfo interfaceEi in exportedElements)
+            {
+                string pn = exportName + "." + interfaceEi.PropertyName;
+
+                WrittenElementInfo? resourceEi = null;
+                if (resourceElements.TryGetValue(interfaceEi.FhirElementName ?? string.Empty, out ElementDefinition? resourceEd))
+                {
+                    resourceEi = BuildElementInfo(resourceExportName, resourceEd);
+                }
+
+                WriteInterfaceElementGettersAndSetters(
+                    resourceExportName,
+                    resourceEd,
+                    resourceEi,
+                    exportName,
+                    interfaceEi);
+            }
+
+            // close class
+            CloseScope();
+        }
+    }
+
+    private void WriteInterfaceElementGettersAndSetters(
+        string resourceExportName,
+        ElementDefinition? resourceEd,
+        WrittenElementInfo? resourceEi,
+        string interfaceExportName,
+        WrittenElementInfo interfaceEi)
+    {
+        string pn = interfaceExportName + "." + interfaceEi.PropertyName;
+        string rt = resourceEi?.PropertyType?.Replace("Hl7.Fhir.Model.", string.Empty) ?? string.Empty;
+        string it = interfaceEi.PropertyType?.Replace("Hl7.Fhir.Model.", string.Empty) ?? string.Empty;
+
+        if ((resourceEd == null) || (resourceEi == null))
+        {
+            _writer.WriteLineIndented("[IgnoreDataMember]");
+            _writer.WriteLineIndented($"{it} {pn}");
+            OpenScope();
+            _writer.WriteLineIndented($"get {{ return null; }}");
+            _writer.WriteLineIndented($"set {{ throw new NotImplementedException(\"Resource {resourceExportName} does not implement {interfaceExportName}.{interfaceEi.FhirElementName}\");}}");
+            CloseScope();
+        }
+        else if (interfaceEi.PropertyType == resourceEi.PropertyType)
+        {
+            _writer.WriteLineIndented("[IgnoreDataMember]");
+            _writer.WriteLineIndented($"{it} {pn}" +
+                $" {{" +
+                $" get => {resourceEi.PropertyName};" +
+                $" set {{ {resourceEi.PropertyName} =  value; }}" +
+                $" }}");
+            _writer.WriteLine();
+        }
+        // a resource is allowed to have a scalar in place of a list
+        else if (interfaceEi.PropertyType == "List<" + resourceEi.PropertyType + ">")
+        {
+            _writer.WriteLineIndented("[IgnoreDataMember]");
+            _writer.WriteLineIndented($"{it} {pn}");
+            OpenScope();
+            _writer.WriteLineIndented($"get {{ return new {it}() {{ {resourceEi.PropertyName} }}; }}");
+
+            _writer.WriteLineIndented("set");
+            OpenScope();
+            _writer.WriteLineIndented($"if (value.Count == 1) {{ {resourceEi.PropertyName} = value.First(); }}");
+            _writer.WriteLineIndented($"else {{ throw new NotImplementedException(\"Resource {resourceExportName} can only have a single {pn} value\"); }}");
+            CloseScope();
+
+            CloseScope();
+        }
+        else
+        {
+            _writer.WriteLineIndented($"// {resourceExportName}.{resourceEi.PropertyName} ({resourceEi.PropertyType}) is incompatible with {interfaceExportName}.{interfaceEi.FhirElementName} ({interfaceEi.PropertyType})");
+            _writer.WriteLineIndented("[IgnoreDataMember]");
+            _writer.WriteLineIndented($"{it} {pn}");
+            OpenScope();
+            _writer.WriteLineIndented($"get {{ return null; }}");
+            _writer.WriteLineIndented($"set {{ throw new NotImplementedException(\"{resourceExportName}.{resourceEi.PropertyName} ({resourceEi.PropertyType}) is incompatible with {interfaceExportName}.{interfaceEi.FhirElementName} ({interfaceEi.PropertyType})\");}}");
+            CloseScope();
+        }
+
+        if (interfaceEi.IsPrimitive)
+        {
+            string ppn = interfaceExportName + "." + interfaceEi.PrimitiveHelperName;
+            string prt = ((resourceEi?.IsList ?? false) ? "List<" + resourceEi.PrimitiveHelperType + ">" : resourceEi?.PrimitiveHelperType ?? string.Empty).Replace("Hl7.Fhir.Model.", string.Empty);
+            string pit = (interfaceEi.IsList ? "List<" + interfaceEi.PrimitiveHelperType + ">" : interfaceEi.PrimitiveHelperType ?? string.Empty).Replace("Hl7.Fhir.Model.", string.Empty);
+
+            if ((resourceEd == null) || (resourceEi == null))
+            {
+                _writer.WriteLineIndented("[IgnoreDataMember]");
+                _writer.WriteLineIndented($"{pit} {ppn}");
+                OpenScope();
+                _writer.WriteLineIndented($"get {{ return null; }}");
+                _writer.WriteLineIndented($"set {{ throw new NotImplementedException(\"Resource {resourceExportName} does not implement {interfaceExportName}.{interfaceEi.FhirElementName}\");}}");
+                CloseScope();
+            }
+            else if (interfaceEi.PropertyType == resourceEi.PropertyType)
+            {
+                _writer.WriteLineIndented("[IgnoreDataMember]");
+                _writer.WriteLineIndented($"{pit} {ppn}" +
+                    $" {{" +
+                    $" get => {resourceEi.PrimitiveHelperName};" +
+                    $" set {{ {resourceEi.PrimitiveHelperName} =  value; }}" +
+                    $" }}");
+                _writer.WriteLine();
+            }
+            // a resource is allowed to have a scalar in place of a list
+            else if (interfaceEi.PropertyType == "List<" + resourceEi.PropertyType + ">")
+            {
+                _writer.WriteLineIndented("[IgnoreDataMember]");
+                _writer.WriteLineIndented($"{pit} {ppn}");
+                OpenScope();
+                _writer.WriteLineIndented($"get {{ return new {pit}() {{ {resourceEi.PrimitiveHelperType} }}; }}");
+
+                _writer.WriteLineIndented("set");
+                OpenScope();
+                _writer.WriteLineIndented($"if (value.Count == 1) {{ {resourceEi.PrimitiveHelperName} = value.First(); }}");
+                _writer.WriteLineIndented($"else {{ throw new NotImplementedException(\"Resource {resourceExportName} can only have a single {ppn} value\"); }}");
+                CloseScope();
+
+                CloseScope();
+            }
+            else
+            {
+                _writer.WriteLineIndented($"// {resourceExportName}.{resourceEi.PropertyName} ({prt}) is incompatible with {interfaceExportName}.{interfaceEi.FhirElementName} ({pit})");
+                _writer.WriteLineIndented("[IgnoreDataMember]");
+                _writer.WriteLineIndented($" {pit} {ppn}");
+                OpenScope();
+                _writer.WriteLineIndented($"get {{ return null; }}");
+                _writer.WriteLineIndented($"set {{ throw new NotImplementedException(\"{resourceExportName}.{resourceEi.PropertyName} ({resourceEi.PrimitiveHelperType}) is incompatible with {interfaceExportName}.{interfaceEi.FhirElementName} ({interfaceEi.PrimitiveHelperType})\");}}");
+                CloseScope();
+            }
+        }
+    }
+
+    private void WriteInterfaceElements(
+        ComponentDefinition complex,
+        string exportedComplexName,
+        ref List<WrittenElementInfo> exportedElements)
+    {
+        var elementsToGenerate = complex.cgGetChildren()
+            .Where(e => !e.cgIsInherited(complex.Structure))
+            .OrderBy(e => e.cgFieldOrder());
+
+        int orderOffset = complex.Element.cgFieldOrder();
+
+        string structureName = complex.cgName();
+
+        foreach (ElementDefinition element in elementsToGenerate)
+        {
+            WrittenElementInfo ei = BuildElementInfo(exportedComplexName, element);
+            exportedElements.Add(ei);
+
+            string name = element.cgName().Replace("[x]", string.Empty);
+            var since = _sinceAttributes.TryGetValue(element.Path, out string? s) ? s : null;
+            var until = _untilAttributes.TryGetValue(element.Path, out (string, string) u) ? u : default((string, string)?);
+
+            var description = attributeDescriptionWithSinceInfo(name, element.Short.Replace("{{title}}", structureName), since, until);
+
+            if (ei.IsPrimitive)
+            {
+                WriteIndentedComment(element.Short.Replace("{{title}}", structureName));
+                _writer.WriteLineIndented($"/// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>");
+                _writer.WriteLineIndented($"{ei.PrimitiveHelperType?.Replace("Hl7.Fhir.Model.", string.Empty) ?? string.Empty} {ei.PrimitiveHelperName} {{ get; set; }}");
+                _writer.WriteLine();
+            }
+
+            if (description is not null) WriteIndentedComment(description);
+            _writer.WriteLineIndented($"{ei.PropertyType?.Replace("Hl7.Fhir.Model.", string.Empty) ?? string.Empty} {ei.PropertyName} {{ get; set; }}");
+            _writer.WriteLine();
         }
     }
 
@@ -1456,10 +1782,10 @@ public sealed class CSharpFirely2 : ILanguage
         }
     }
 
-    private bool tryFindElementInComplex(ComponentDefinition cplx, string name, out ElementDefinition elem)
+    private bool tryFindElementInComplex(ComponentDefinition component, string name, out ElementDefinition elem)
     {
-        if (cplx.Structure.cgTryGetElementByPath(name, out elem!)) return true;
-        if (cplx.Structure.cgTryGetElementByPath(name + "[x]", out elem!)) return true;
+        if (component.Structure.cgTryGetElementByPath(name, out elem!)) return true;
+        if (component.Structure.cgTryGetElementByPath(name + "[x]", out elem!)) return true;
 
         return false;
     }
@@ -1791,7 +2117,7 @@ public sealed class CSharpFirely2 : ILanguage
         // ginoc 2024.03.12: Release has happened and these are no longer needed - leaving here but commented out until confirmed
         /*
         // TODO: the following renames (repairs) should be removed when release 4B is official and there is an
-        //   explicitname in the definition for attributes:
+        //   explicit name in the definition for attributes:
         //   - Statistic.attributeEstimate.attributeEstimate
         //   - Citation.contributorship.summary
 
@@ -2525,7 +2851,7 @@ public sealed class CSharpFirely2 : ILanguage
         // ginoc 2024.03.12: Release has happened and these are no longer needed - leaving here but commented out until confirmed
         /*
         // TODO: the following renames (repairs) should be removed when release 4B is official and there is an
-        //   explicitname in the definition for attributes:
+        //   explicit name in the definition for attributes:
         //   - Statistic.attributeEstimate.attributeEstimate
         //   - Citation.contributorship.summary
 
@@ -2733,7 +3059,7 @@ public sealed class CSharpFirely2 : ILanguage
         // The FHIR primitives are all part of the base subset.
         if (subset is not GenSubset.Base) return;
 
-        foreach (StructureDefinition primitive in primitives)
+        foreach (StructureDefinition primitive in primitives.OrderBy(sd => sd.Name))
         {
             if (_exclusionSet.Contains(primitive.Name))
             {

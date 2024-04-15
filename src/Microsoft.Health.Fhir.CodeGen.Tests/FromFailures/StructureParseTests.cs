@@ -19,6 +19,8 @@ public class StructureParseTests
 {
     [Theory]
     [FileData("TestData/R4B/ValueSet-nhin-purposeofuse.json")]
+    [Trait("Category", "Issues")]
+    [Trait("FhirVersion", "R4B")]
     public void TestParseR4BValueSetNhinPOU(string json)
     {
         Hl7.Fhir.ElementModel.ISourceNode sn = FhirJsonNode.Parse(json);
@@ -44,6 +46,8 @@ public class StructureParseTests
 
     [Theory]
     [FileData("TestData/R5/StructureDefinition-integer64.json")]
+    [Trait("Category", "Issues")]
+    [Trait("FhirVersion", "R5")]
     public void TestParseR5StructureInt64(string json)
     {
         FhirJsonPocoDeserializer parser = new(new FhirJsonPocoDeserializerSettings()

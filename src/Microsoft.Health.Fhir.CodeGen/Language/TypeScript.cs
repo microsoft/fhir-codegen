@@ -199,30 +199,30 @@ public class TypeScript : ILanguage
 
     /// <summary>Dictionary mapping FHIR primitive types to language equivalents.</summary>
     private static readonly Dictionary<string, string> _primitiveTypeMap = new()
-        {
-            { "base", "Object" },
-            { "base64Binary", "string" },
-            { "boolean", "boolean" },
-            { "canonical", "string" },
-            { "code", "string" },
-            { "date", "string" },
-            { "dateTime", "string" },
-            { "decimal", "number" },
-            { "id", "string" },
-            { "instant", "string" },
-            { "integer", "number" },
-            { "integer64", "string" },       // int64 serializes as string, need to add custom handling here
-            { "markdown", "string" },
-            { "oid", "string" },
-            { "positiveInt", "number" },
-            { "string", "string" },
-            { "time", "string" },
-            { "unsignedInt", "number" },
-            { "uri", "string" },
-            { "url", "string" },
-            { "uuid", "string" },
-            { "xhtml", "string" },
-        };
+    {
+        { "base", "Object" },
+        { "base64Binary", "string" },
+        { "boolean", "boolean" },
+        { "canonical", "string" },
+        { "code", "string" },
+        { "date", "string" },
+        { "dateTime", "string" },
+        { "decimal", "number" },
+        { "id", "string" },
+        { "instant", "string" },
+        { "integer", "number" },
+        { "integer64", "string" },       // int64 serializes as string, need to add custom handling here
+        { "markdown", "string" },
+        { "oid", "string" },
+        { "positiveInt", "number" },
+        { "string", "string" },
+        { "time", "string" },
+        { "unsignedInt", "number" },
+        { "uri", "string" },
+        { "url", "string" },
+        { "uuid", "string" },
+        { "xhtml", "string" },
+    };
 
     /// <summary>Gets the reserved words.</summary>
     /// <value>The reserved words.</value>
@@ -584,7 +584,7 @@ public class TypeScript : ILanguage
             // get each component
             foreach (ComponentDefinition component in sd.cgComponents(_dc, null, true, false).OrderBy(c => c.Element?.Path ?? string.Empty, FhirDotNestComparer.Instance))
             {
-                WriteInterface(component, isResource && !component.Element.Path.Contains('.'));
+                WriteTsInterface(component, isResource && !component.Element.Path.Contains('.'));
             }
         }
     }
@@ -592,7 +592,7 @@ public class TypeScript : ILanguage
     /// <summary>Writes a StructureDefinition.</summary>
     /// <param name="cd">        The ComponentDefinition we are writing from.</param>
     /// <param name="isResource">True if is resource, false if not.</param>
-    private void WriteInterface(
+    private void WriteTsInterface(
         ComponentDefinition cd,
         bool isResource)
     {
@@ -617,7 +617,7 @@ public class TypeScript : ILanguage
 
         if (string.IsNullOrEmpty(typeName) ||
             (cd.Element.Path == "Element") ||
-            (cd.Element.Path == cd.Structure.Name))
+            (cd.Element.Path == typeName))
         {
             exportName = cd.cgNameRooted(NamingConvention.PascalCase);
             //exportName = cd.Element.cgNameForExport(NamingConvention.PascalCase);
@@ -805,7 +805,7 @@ public class TypeScript : ILanguage
 
         IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> elementTypes = ed.cgTypes();
 
-        if (!elementTypes.Any())
+        if (elementTypes.Count == 0)
         {
             // check for a backbone element
             if (_dc.HasChildElements(ed.Path))
@@ -836,11 +836,20 @@ public class TypeScript : ILanguage
             foreach (ElementDefinition.TypeRefComponent elementType in elementTypes.Values.OrderBy(et => et.Code))
             {
                 string name = FhirSanitizationUtils.ToConvention(baseName, ed.Path, nameConvention, concatenatePath, concatenationDelimiter);
-                string type = _primitiveTypeMap.TryGetValue(elementType.cgName(), out string? mapped)
-                    ? mapped
-                    : FhirSanitizationUtils.ToConvention(elementType.cgName(), string.Empty, typeConvention);
 
-                string combined = $"{name}{type}";
+                string type;
+                string combined;
+
+                if (_primitiveTypeMap.TryGetValue(elementType.cgName(), out string? mapped))
+                {
+                    type = mapped;
+                    combined = name + type.ToPascalCase();
+                }
+                else
+                {
+                    type = FhirSanitizationUtils.ToConvention(elementType.cgName(), string.Empty, typeConvention);
+                    combined = name + type;
+                }
 
                 _ = values.TryAdd(combined, type);
             }
@@ -865,8 +874,19 @@ public class TypeScript : ILanguage
                 }
             }
 
-            if (types.Equals("BackboneElement", StringComparison.Ordinal))
+            if ((types == "BackboneElement") || (types == "Element"))
             {
+                // check for a backbone element
+                if (_dc.HasChildElements(ed.Path))
+                {
+                    values.Add(
+                        FhirSanitizationUtils.ToConvention(baseName, ed.Path, nameConvention, concatenatePath, concatenationDelimiter),
+                        FhirSanitizationUtils.ToConvention(ed.Path, string.Empty, typeConvention));
+
+                    return values;
+                }
+
+                // if there are no types, use the base type
                 values.Add(
                     FhirSanitizationUtils.ToConvention(baseName, ed.Path, nameConvention, concatenatePath, concatenationDelimiter),
                     FhirSanitizationUtils.ToConvention(ed.Path, string.Empty, typeConvention));

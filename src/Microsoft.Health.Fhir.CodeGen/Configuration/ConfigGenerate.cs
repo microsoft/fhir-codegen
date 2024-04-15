@@ -17,6 +17,7 @@ public class ConfigGenerate : ConfigRoot
         FhirArtifactClassEnum.PrimitiveType,
         FhirArtifactClassEnum.ComplexType,
         FhirArtifactClassEnum.Resource,
+        FhirArtifactClassEnum.Interface,
         FhirArtifactClassEnum.Extension,
         FhirArtifactClassEnum.Operation,
         FhirArtifactClassEnum.SearchParameter,

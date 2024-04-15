@@ -14,7 +14,7 @@
   // Option: "Packages" = ""
   // Option: "OfflineMode" = "False"
 // Minimum TypeScript Version: 3.7
-export interface Address {
+export interface Address extends Element {
   /**
    * The name of the city, town, village or other community or delivery center.
    */
@@ -65,9 +65,9 @@ export interface Address {
   use?: ('home'|'work'|'temp'|'old') | undefined;
   _use?: Element | undefined;
 }
-export interface Age extends Quantity {
+export interface Age {
 }
-export interface Annotation {
+export interface Annotation extends Element {
   /**
    * The individual responsible for making the annotation.
    */
@@ -75,8 +75,8 @@ export interface Annotation {
   /**
    * The individual responsible for making the annotation.
    */
-  authorstring?: string | undefined;
-  _authorstring?: Element | undefined;
+  authorString?: string | undefined;
+  _authorString?: Element | undefined;
   /**
    * The text of the annotation.
    */
@@ -88,7 +88,7 @@ export interface Annotation {
   time?: string | undefined;
   _time?: Element | undefined;
 }
-export interface Attachment {
+export interface Attachment extends Element {
   /**
    * Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate.
    */
@@ -129,13 +129,13 @@ export interface Attachment {
   url?: string | undefined;
   _url?: Element | undefined;
 }
-export interface BackboneElement {
+export interface BackboneElement extends Element {
   /**
    * May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
    */
   modifierExtension?: Extension[] | undefined;
 }
-export interface CodeableConcept {
+export interface CodeableConcept extends Element {
   /**
    * A reference to a code defined by a terminology system.
    */
@@ -146,7 +146,7 @@ export interface CodeableConcept {
   text?: string | undefined;
   _text?: Element | undefined;
 }
-export interface Coding {
+export interface Coding extends Element {
   /**
    * A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination).
    */
@@ -173,7 +173,7 @@ export interface Coding {
   version?: string | undefined;
   _version?: Element | undefined;
 }
-export interface ContactPoint {
+export interface ContactPoint extends Element {
   /**
    * Time period when the contact point was/is in use.
    */
@@ -198,11 +198,11 @@ export interface ContactPoint {
   value?: string | undefined;
   _value?: Element | undefined;
 }
-export interface Count extends Quantity {
+export interface Count {
 }
-export interface Distance extends Quantity {
+export interface Distance {
 }
-export interface Duration extends Quantity {
+export interface Duration {
 }
 export interface Element {
   /**
@@ -255,8 +255,8 @@ export interface ElementDefinitionBinding extends Element {
   /**
    * Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.
    */
-  valueSetstring?: string | undefined;
-  _valueSetstring?: Element | undefined;
+  valueSetString?: string | undefined;
+  _valueSetString?: Element | undefined;
 }
 /**
  * Condition that must evaluate to true
@@ -353,7 +353,7 @@ export interface ElementDefinitionType extends Element {
   profile?: string[] | undefined;
   _profile?: Element[] | undefined;
 }
-export interface ElementDefinition {
+export interface ElementDefinition extends Element {
   /**
    * Identifies additional names by which this element might also be known.
    */
@@ -362,11 +362,11 @@ export interface ElementDefinition {
   /**
    * Information about the base definition of the element, provided to make it unncessary for tools to trace the deviation of the element through the derived and related profiles. This information is only provided where the element definition represents a constraint on another element definition, and must be present if there is a base element definition.
    */
-  base?: Element | undefined;
+  base?: ElementDefinitionBase | undefined;
   /**
    * Binds to a value set if this element is coded (code, Coding, CodeableConcept).
    */
-  binding?: Element | undefined;
+  binding?: ElementDefinitionBinding | undefined;
   /**
    * A code that provides the meaning for the element according to a particular terminology.
    */
@@ -384,7 +384,7 @@ export interface ElementDefinition {
   /**
    * Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the context of the instance.
    */
-  constraint?: Element[] | undefined;
+  constraint?: ElementDefinitionConstraint[] | undefined;
   /**
    * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
    */
@@ -400,13 +400,13 @@ export interface ElementDefinition {
   /**
    * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
    */
-  defaultValuestring?: string | undefined;
-  _defaultValuestring?: Element | undefined;
+  defaultValueString?: string | undefined;
+  _defaultValueString?: Element | undefined;
   /**
    * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
    */
-  defaultValueboolean?: boolean | undefined;
-  _defaultValueboolean?: Element | undefined;
+  defaultValueBoolean?: boolean | undefined;
+  _defaultValueBoolean?: Element | undefined;
   /**
    * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
    */
@@ -422,7 +422,7 @@ export interface ElementDefinition {
   /**
    * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
    */
-  defaultValuenumber?: number | undefined;
+  defaultValueNumber?: number | undefined;
   /**
    * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
    */
@@ -487,13 +487,13 @@ export interface ElementDefinition {
   /**
    * A sample value for this element demonstrating the type of information that would typically be captured.
    */
-  examplestring?: string | undefined;
-  _examplestring?: Element | undefined;
+  exampleString?: string | undefined;
+  _exampleString?: Element | undefined;
   /**
    * A sample value for this element demonstrating the type of information that would typically be captured.
    */
-  exampleboolean?: boolean | undefined;
-  _exampleboolean?: Element | undefined;
+  exampleBoolean?: boolean | undefined;
+  _exampleBoolean?: Element | undefined;
   /**
    * A sample value for this element demonstrating the type of information that would typically be captured.
    */
@@ -509,7 +509,7 @@ export interface ElementDefinition {
   /**
    * A sample value for this element demonstrating the type of information that would typically be captured.
    */
-  examplenumber?: number | undefined;
+  exampleNumber?: number | undefined;
   /**
    * A sample value for this element demonstrating the type of information that would typically be captured.
    */
@@ -569,13 +569,13 @@ export interface ElementDefinition {
   /**
    * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
    */
-  fixedstring?: string | undefined;
-  _fixedstring?: Element | undefined;
+  fixedString?: string | undefined;
+  _fixedString?: Element | undefined;
   /**
    * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
    */
-  fixedboolean?: boolean | undefined;
-  _fixedboolean?: Element | undefined;
+  fixedBoolean?: boolean | undefined;
+  _fixedBoolean?: Element | undefined;
   /**
    * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
    */
@@ -591,7 +591,7 @@ export interface ElementDefinition {
   /**
    * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
    */
-  fixednumber?: number | undefined;
+  fixedNumber?: number | undefined;
   /**
    * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
    */
@@ -654,7 +654,7 @@ export interface ElementDefinition {
   /**
    * Identifies a concept from an external specification that roughly corresponds to this element.
    */
-  mapping?: Element[] | undefined;
+  mapping?: ElementDefinitionMapping[] | undefined;
   /**
    * The maximum number of times this element is permitted to appear in the instance.
    */
@@ -679,13 +679,13 @@ export interface ElementDefinition {
   /**
    * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
    */
-  maxValuestring?: string | undefined;
-  _maxValuestring?: Element | undefined;
+  maxValueString?: string | undefined;
+  _maxValueString?: Element | undefined;
   /**
    * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
    */
-  maxValueboolean?: boolean | undefined;
-  _maxValueboolean?: Element | undefined;
+  maxValueBoolean?: boolean | undefined;
+  _maxValueBoolean?: Element | undefined;
   /**
    * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
    */
@@ -701,7 +701,7 @@ export interface ElementDefinition {
   /**
    * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
    */
-  maxValuenumber?: number | undefined;
+  maxValueNumber?: number | undefined;
   /**
    * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
    */
@@ -770,13 +770,13 @@ export interface ElementDefinition {
   /**
    * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
    */
-  minValuestring?: string | undefined;
-  _minValuestring?: Element | undefined;
+  minValueString?: string | undefined;
+  _minValueString?: Element | undefined;
   /**
    * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
    */
-  minValueboolean?: boolean | undefined;
-  _minValueboolean?: Element | undefined;
+  minValueBoolean?: boolean | undefined;
+  _minValueBoolean?: Element | undefined;
   /**
    * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
    */
@@ -792,7 +792,7 @@ export interface ElementDefinition {
   /**
    * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
    */
-  minValuenumber?: number | undefined;
+  minValueNumber?: number | undefined;
   /**
    * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
    */
@@ -872,13 +872,13 @@ export interface ElementDefinition {
   /**
    * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
    */
-  patternstring?: string | undefined;
-  _patternstring?: Element | undefined;
+  patternString?: string | undefined;
+  _patternString?: Element | undefined;
   /**
    * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
    */
-  patternboolean?: boolean | undefined;
-  _patternboolean?: Element | undefined;
+  patternBoolean?: boolean | undefined;
+  _patternBoolean?: Element | undefined;
   /**
    * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
    */
@@ -894,7 +894,7 @@ export interface ElementDefinition {
   /**
    * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
    */
-  patternnumber?: number | undefined;
+  patternNumber?: number | undefined;
   /**
    * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
    */
@@ -957,13 +957,13 @@ export interface ElementDefinition {
   /**
    * Indicates that the element is sliced into a set of alternative definitions (i.e. in a structure definition, there are multiple different constraints on a single element in the base resource). Slicing can be used in any resource that has cardinality ..* on the base resource, or any resource with a choice of types. The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set).
    */
-  slicing?: Element | undefined;
+  slicing?: ElementDefinitionSlicing | undefined;
   /**
    * The data type or resource that the value of this element is permitted to be.
    */
-  type?: Element[] | undefined;
+  type?: ElementDefinitionType[] | undefined;
 }
-export interface Extension {
+export interface Extension extends Element {
   /**
    * Source of the definition for the extension code - a logical name or a URL.
    */
@@ -984,13 +984,13 @@ export interface Extension {
   /**
    * Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).
    */
@@ -1006,7 +1006,7 @@ export interface Extension {
   /**
    * Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).
    */
-  valuenumber?: number | undefined;
+  valueNumber?: number | undefined;
   /**
    * Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).
    */
@@ -1052,7 +1052,7 @@ export interface Extension {
    */
   valueTiming?: Timing | undefined;
 }
-export interface HumanName {
+export interface HumanName extends Element {
   /**
    * The part of a name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.
    */
@@ -1088,7 +1088,7 @@ export interface HumanName {
   use?: ('usual'|'official'|'temp'|'nickname'|'anonymous'|'old'|'maiden') | undefined;
   _use?: Element | undefined;
 }
-export interface Identifier {
+export interface Identifier extends Element {
   /**
    * Organization that issued/manages the identifier.
    */
@@ -1117,7 +1117,7 @@ export interface Identifier {
   value?: string | undefined;
   _value?: Element | undefined;
 }
-export interface Meta {
+export interface Meta extends Element {
   /**
    * When the resource last changed - e.g. when the version changed.
    */
@@ -1142,9 +1142,9 @@ export interface Meta {
   versionId?: string | undefined;
   _versionId?: Element | undefined;
 }
-export interface Money extends Quantity {
+export interface Money {
 }
-export interface Narrative {
+export interface Narrative extends Element {
   /**
    * The actual narrative content, a stripped down version of XHTML.
    */
@@ -1156,7 +1156,7 @@ export interface Narrative {
   status: ('generated'|'extensions'|'additional'|'empty');
   _status?: Element | undefined;
 }
-export interface Period {
+export interface Period extends Element {
   /**
    * The end of the period. If the end of the period is missing, it means that the period is ongoing. The start may be in the past, and the end date in the future, which means that period is expected/planned to end at that time.
    */
@@ -1168,7 +1168,7 @@ export interface Period {
   start?: string | undefined;
   _start?: Element | undefined;
 }
-export interface Quantity {
+export interface Quantity extends Element {
   /**
    * A computer processable form of the unit in some unit representation system.
    */
@@ -1194,7 +1194,7 @@ export interface Quantity {
    */
   value?: number | undefined;
 }
-export interface Range {
+export interface Range extends Element {
   /**
    * The high limit. The boundary is inclusive.
    */
@@ -1204,7 +1204,7 @@ export interface Range {
    */
   low?: Quantity | undefined;
 }
-export interface Ratio {
+export interface Ratio extends Element {
   /**
    * The value of the denominator.
    */
@@ -1214,7 +1214,7 @@ export interface Ratio {
    */
   numerator?: Quantity | undefined;
 }
-export interface Reference {
+export interface Reference extends Element {
   /**
    * Plain text narrative that identifies the resource in addition to the resource reference.
    */
@@ -1226,7 +1226,7 @@ export interface Reference {
   reference?: string | undefined;
   _reference?: Element | undefined;
 }
-export interface SampledData {
+export interface SampledData extends Element {
   /**
    * A series of data points which are decimal values separated by a single space (character u20). The special values "E" (error), "L" (below detection limit) and "U" (above detection limit) can also be used in place of a decimal value.
    */
@@ -1257,7 +1257,7 @@ export interface SampledData {
    */
   upperLimit?: number | undefined;
 }
-export interface Signature {
+export interface Signature extends Element {
   /**
    * The base64 encoding of the Signature content.
    */
@@ -1284,10 +1284,10 @@ export interface Signature {
   /**
    * A reference to an application-usable description of the person that signed the certificate (e.g. the signature used their private key).
    */
-  whostring?: string | undefined;
-  _whostring?: Element | undefined;
+  whoString?: string | undefined;
+  _whoString?: Element | undefined;
 }
-export interface SimpleQuantity extends Quantity {
+export interface SimpleQuantity {
 }
 /**
  * When the event is to occur
@@ -1349,7 +1349,7 @@ export interface TimingRepeat extends Element {
   when?: ('HS'|'WAKE'|'C'|'CM'|'CD'|'CV'|'AC'|'ACM'|'ACD'|'ACV'|'PC'|'PCM'|'PCD'|'PCV') | undefined;
   _when?: Element | undefined;
 }
-export interface Timing {
+export interface Timing extends Element {
   /**
    * A code for the timing pattern. Some codes such as BID are ubiquitous, but many institutions define their own additional codes.
    */
@@ -1362,9 +1362,9 @@ export interface Timing {
   /**
    * A set of rules that describe when the event should occur.
    */
-  repeat?: Element | undefined;
+  repeat?: TimingRepeat | undefined;
 }
-export interface Account {
+export interface Account extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Account';
   /**
@@ -1456,7 +1456,7 @@ export interface AllergyIntoleranceReaction extends BackboneElement {
    */
   substance?: CodeableConcept | undefined;
 }
-export interface AllergyIntolerance {
+export interface AllergyIntolerance extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'AllergyIntolerance';
   /**
@@ -1546,7 +1546,7 @@ export interface AppointmentParticipant extends BackboneElement {
    */
   type?: CodeableConcept[] | undefined;
 }
-export interface Appointment {
+export interface Appointment extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Appointment';
   /**
@@ -1603,7 +1603,7 @@ export interface Appointment {
    */
   type?: CodeableConcept | undefined;
 }
-export interface AppointmentResponse {
+export interface AppointmentResponse extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'AppointmentResponse';
   /**
@@ -1829,7 +1829,7 @@ export interface AuditEventSource extends BackboneElement {
    */
   type?: Coding[] | undefined;
 }
-export interface AuditEvent {
+export interface AuditEvent extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'AuditEvent';
   /**
@@ -1849,7 +1849,7 @@ export interface AuditEvent {
    */
   source: AuditEventSource;
 }
-export interface Basic {
+export interface Basic extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Basic';
   /**
@@ -1874,7 +1874,7 @@ export interface Basic {
    */
   subject?: Reference | undefined;
 }
-export interface Binary {
+export interface Binary extends Resource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Binary';
   /**
@@ -1888,7 +1888,7 @@ export interface Binary {
   contentType: string;
   _contentType?: Element | undefined;
 }
-export interface BodySite {
+export interface BodySite extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'BodySite';
   /**
@@ -2036,7 +2036,7 @@ export interface BundleLink extends BackboneElement {
   url: string;
   _url?: Element | undefined;
 }
-export interface Bundle<BundleContentType = FhirResource> {
+export interface Bundle<BundleContentType = FhirResource> extends Resource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Bundle';
   /**
@@ -2126,8 +2126,8 @@ export interface CarePlanActivityDetail extends BackboneElement {
   /**
    * The period, timing or frequency upon which the described activity is to occur.
    */
-  scheduledstring?: string | undefined;
-  _scheduledstring?: Element | undefined;
+  scheduledString?: string | undefined;
+  _scheduledString?: Element | undefined;
   /**
    * The period, timing or frequency upon which the described activity is to occur.
    */
@@ -2190,7 +2190,7 @@ export interface CarePlanRelatedPlan extends BackboneElement {
    */
   plan: Reference;
 }
-export interface CarePlan {
+export interface CarePlan extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'CarePlan';
   /**
@@ -2532,7 +2532,7 @@ export interface ClaimPayee extends BackboneElement {
    */
   type?: Coding | undefined;
 }
-export interface Claim {
+export interface Claim extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Claim';
   /**
@@ -2918,7 +2918,7 @@ export interface ClaimResponseNote extends BackboneElement {
    */
   type?: Coding | undefined;
 }
-export interface ClaimResponse {
+export interface ClaimResponse extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ClaimResponse';
   /**
@@ -3071,7 +3071,7 @@ export interface ClinicalImpressionRuledOut extends BackboneElement {
   reason?: string | undefined;
   _reason?: Element | undefined;
 }
-export interface ClinicalImpression {
+export interface ClinicalImpression extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ClinicalImpression';
   /**
@@ -3168,10 +3168,10 @@ export interface CommunicationPayload extends BackboneElement {
   /**
    * A communicated content (or for multi-part communications, one portion of the communication).
    */
-  contentstring?: string | undefined;
-  _contentstring?: Element | undefined;
+  contentString?: string | undefined;
+  _contentString?: Element | undefined;
 }
-export interface Communication {
+export interface Communication extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Communication';
   /**
@@ -3245,10 +3245,10 @@ export interface CommunicationRequestPayload extends BackboneElement {
   /**
    * The communicated content (or for multi-part communications, one portion of the communication).
    */
-  contentstring?: string | undefined;
-  _contentstring?: Element | undefined;
+  contentString?: string | undefined;
+  _contentString?: Element | undefined;
 }
-export interface CommunicationRequest {
+export interface CommunicationRequest extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'CommunicationRequest';
   /**
@@ -3295,8 +3295,8 @@ export interface CommunicationRequest {
   /**
    * The time when this communication is to occur.
    */
-  scheduledstring?: string | undefined;
-  _scheduledstring?: Element | undefined;
+  scheduledString?: string | undefined;
+  _scheduledString?: Element | undefined;
   /**
    * The time when this communication is to occur.
    */
@@ -3390,7 +3390,7 @@ export interface CompositionSection extends BackboneElement {
   title?: string | undefined;
   _title?: Element | undefined;
 }
-export interface Composition {
+export interface Composition extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Composition';
   /**
@@ -3540,7 +3540,7 @@ export interface ConceptMapElement extends BackboneElement {
    */
   target?: ConceptMapElementTarget[] | undefined;
 }
-export interface ConceptMap {
+export interface ConceptMap extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ConceptMap';
   /**
@@ -3597,8 +3597,8 @@ export interface ConceptMap {
   /**
    * The source value set that specifies the concepts that are being mapped.
    */
-  sourcestring?: string | undefined;
-  _sourcestring?: Element | undefined;
+  sourceString?: string | undefined;
+  _sourceString?: Element | undefined;
   /**
    * The status of the concept map.
    */
@@ -3611,8 +3611,8 @@ export interface ConceptMap {
   /**
    * The target value set provides context to the mappings. Note that the mapping is made between concepts, not between value sets, but the value set provides important context about how the concept mapping choices are made.
    */
-  targetstring?: string | undefined;
-  _targetstring?: Element | undefined;
+  targetString?: string | undefined;
+  _targetString?: Element | undefined;
   /**
    * An absolute URL that is used to identify this concept map when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this concept map is (or will be) published.
    */
@@ -3654,19 +3654,19 @@ export interface ConditionStage extends BackboneElement {
    */
   summary?: CodeableConcept | undefined;
 }
-export interface Condition {
+export interface Condition extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Condition';
   /**
    * The date or estimated date that the condition resolved or went into remission. This is called "abatement" because of the many overloaded connotations associated with "remission" or "resolution" - Conditions are never really resolved, but they can abate.
    */
-  abatementboolean?: boolean | undefined;
-  _abatementboolean?: Element | undefined;
+  abatementBoolean?: boolean | undefined;
+  _abatementBoolean?: Element | undefined;
   /**
    * The date or estimated date that the condition resolved or went into remission. This is called "abatement" because of the many overloaded connotations associated with "remission" or "resolution" - Conditions are never really resolved, but they can abate.
    */
-  abatementstring?: string | undefined;
-  _abatementstring?: Element | undefined;
+  abatementString?: string | undefined;
+  _abatementString?: Element | undefined;
   /**
    * The date or estimated date that the condition resolved or went into remission. This is called "abatement" because of the many overloaded connotations associated with "remission" or "resolution" - Conditions are never really resolved, but they can abate.
    */
@@ -3725,8 +3725,8 @@ export interface Condition {
   /**
    * Estimated or actual date or date-time  the condition began, in the opinion of the clinician.
    */
-  onsetstring?: string | undefined;
-  _onsetstring?: Element | undefined;
+  onsetString?: string | undefined;
+  _onsetString?: Element | undefined;
   /**
    * Estimated or actual date or date-time  the condition began, in the opinion of the clinician.
    */
@@ -4127,7 +4127,7 @@ export interface ConformanceSoftware extends BackboneElement {
   version?: string | undefined;
   _version?: Element | undefined;
 }
-export interface Conformance {
+export interface Conformance extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Conformance';
   /**
@@ -4451,7 +4451,7 @@ export interface ContractValuedItem extends BackboneElement {
    */
   unitPrice?: Quantity | undefined;
 }
-export interface Contract {
+export interface Contract extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Contract';
   /**
@@ -4532,7 +4532,7 @@ export interface Contract {
    */
   valuedItem?: ContractValuedItem[] | undefined;
 }
-export interface Coverage {
+export interface Coverage extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Coverage';
   /**
@@ -4634,7 +4634,7 @@ export interface DataElementMapping extends BackboneElement {
   uri?: string | undefined;
   _uri?: Element | undefined;
 }
-export interface DataElement {
+export interface DataElement extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'DataElement';
   /**
@@ -4721,7 +4721,7 @@ export interface DetectedIssueMitigation extends BackboneElement {
   date?: string | undefined;
   _date?: Element | undefined;
 }
-export interface DetectedIssue {
+export interface DetectedIssue extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'DetectedIssue';
   /**
@@ -4769,7 +4769,7 @@ export interface DetectedIssue {
   severity?: ('high'|'moderate'|'low') | undefined;
   _severity?: Element | undefined;
 }
-export interface Device {
+export interface Device extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Device';
   /**
@@ -4864,7 +4864,7 @@ export interface DeviceComponentProductionSpecification extends BackboneElement 
    */
   specType?: CodeableConcept | undefined;
 }
-export interface DeviceComponent {
+export interface DeviceComponent extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'DeviceComponent';
   /**
@@ -4930,7 +4930,7 @@ export interface DeviceMetricCalibration extends BackboneElement {
   type?: ('unspecified'|'offset'|'gain'|'two-point') | undefined;
   _type?: Element | undefined;
 }
-export interface DeviceMetric {
+export interface DeviceMetric extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'DeviceMetric';
   /**
@@ -4977,7 +4977,7 @@ export interface DeviceMetric {
    */
   unit?: CodeableConcept | undefined;
 }
-export interface DeviceUseRequest {
+export interface DeviceUseRequest extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'DeviceUseRequest';
   /**
@@ -5040,8 +5040,8 @@ export interface DeviceUseRequest {
   /**
    * The timing schedule for the use of the device The Schedule data type allows many different expressions, for example. "Every 8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:"; "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".
    */
-  timingstring?: string | undefined;
-  _timingstring?: Element | undefined;
+  timingString?: string | undefined;
+  _timingString?: Element | undefined;
   /**
    * The timing schedule for the use of the device The Schedule data type allows many different expressions, for example. "Every 8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:"; "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".
    */
@@ -5051,7 +5051,7 @@ export interface DeviceUseRequest {
    */
   timingTiming?: Timing | undefined;
 }
-export interface DeviceUseStatement {
+export interface DeviceUseStatement extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'DeviceUseStatement';
   /**
@@ -5091,8 +5091,8 @@ export interface DeviceUseStatement {
   /**
    * How often the device was used.
    */
-  timingstring?: string | undefined;
-  _timingstring?: Element | undefined;
+  timingString?: string | undefined;
+  _timingString?: Element | undefined;
   /**
    * How often the device was used.
    */
@@ -5155,7 +5155,7 @@ export interface DiagnosticOrderItem extends BackboneElement {
   status?: ('proposed'|'draft'|'planned'|'requested'|'received'|'accepted'|'in-progress'|'review'|'completed'|'cancelled'|'suspended'|'rejected'|'failed') | undefined;
   _status?: Element | undefined;
 }
-export interface DiagnosticOrder {
+export interface DiagnosticOrder extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'DiagnosticOrder';
   /**
@@ -5223,7 +5223,7 @@ export interface DiagnosticReportImage extends BackboneElement {
    */
   link: Reference;
 }
-export interface DiagnosticReport {
+export interface DiagnosticReport extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'DiagnosticReport';
   /**
@@ -5246,8 +5246,8 @@ export interface DiagnosticReport {
   /**
    * The time or time-period the observed values are related to. When the subject of the report is a patient, this is usually either the time of the procedure or of specimen collection(s), but very often the source of the date/time is not known, only the date/time itself.
    */
-  effectivestring?: string | undefined;
-  _effectivestring?: Element | undefined;
+  effectiveString?: string | undefined;
+  _effectiveString?: Element | undefined;
   /**
    * The time or time-period the observed values are related to. When the subject of the report is a patient, this is usually either the time of the procedure or of specimen collection(s), but very often the source of the date/time is not known, only the date/time itself.
    */
@@ -5329,7 +5329,7 @@ export interface DocumentManifestRelated extends BackboneElement {
    */
   ref?: Reference | undefined;
 }
-export interface DocumentManifest {
+export interface DocumentManifest extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'DocumentManifest';
   /**
@@ -5458,7 +5458,7 @@ export interface DocumentReferenceRelatesTo extends BackboneElement {
    */
   target: Reference;
 }
-export interface DocumentReference {
+export interface DocumentReference extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'DocumentReference';
   /**
@@ -5534,7 +5534,7 @@ export interface DocumentReference {
    */
   type: CodeableConcept;
 }
-export interface DomainResource {
+export interface DomainResource extends Resource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: string;
   /**
@@ -5554,7 +5554,7 @@ export interface DomainResource {
    */
   text?: Narrative | undefined;
 }
-export interface EligibilityRequest {
+export interface EligibilityRequest extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'EligibilityRequest';
   /**
@@ -5587,7 +5587,7 @@ export interface EligibilityRequest {
    */
   target?: Reference | undefined;
 }
-export interface EligibilityResponse {
+export interface EligibilityResponse extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'EligibilityResponse';
   /**
@@ -5732,7 +5732,7 @@ export interface EncounterStatusHistory extends BackboneElement {
   status: ('planned'|'arrived'|'in-progress'|'onleave'|'finished'|'cancelled');
   _status?: Element | undefined;
 }
-export interface Encounter {
+export interface Encounter extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Encounter';
   /**
@@ -5814,7 +5814,7 @@ export interface Encounter {
    */
   type?: CodeableConcept[] | undefined;
 }
-export interface EnrollmentRequest {
+export interface EnrollmentRequest extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'EnrollmentRequest';
   /**
@@ -5859,7 +5859,7 @@ export interface EnrollmentRequest {
    */
   target?: Reference | undefined;
 }
-export interface EnrollmentResponse {
+export interface EnrollmentResponse extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'EnrollmentResponse';
   /**
@@ -5937,7 +5937,7 @@ export interface EpisodeOfCareStatusHistory extends BackboneElement {
   status: ('planned'|'waitlist'|'active'|'onhold'|'finished'|'cancelled');
   _status?: Element | undefined;
 }
-export interface EpisodeOfCare {
+export interface EpisodeOfCare extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'EpisodeOfCare';
   /**
@@ -5986,7 +5986,7 @@ export interface EpisodeOfCare {
    */
   type?: CodeableConcept[] | undefined;
 }
-export interface ExplanationOfBenefit {
+export interface ExplanationOfBenefit extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ExplanationOfBenefit';
   /**
@@ -6060,14 +6060,14 @@ export interface FamilyMemberHistoryCondition extends BackboneElement {
   /**
    * Either the age of onset, range of approximate age or descriptive string can be recorded.  For conditions with multiple occurrences, this describes the first known occurrence.
    */
-  onsetstring?: string | undefined;
-  _onsetstring?: Element | undefined;
+  onsetString?: string | undefined;
+  _onsetString?: Element | undefined;
   /**
    * Indicates what happened as a result of this condition.  If the condition resulted in death, deceased date is captured on the relation.
    */
   outcome?: CodeableConcept | undefined;
 }
-export interface FamilyMemberHistory {
+export interface FamilyMemberHistory extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'FamilyMemberHistory';
   /**
@@ -6081,13 +6081,13 @@ export interface FamilyMemberHistory {
   /**
    * The actual or approximate age of the relative at the time the family member history is recorded.
    */
-  agestring?: string | undefined;
-  _agestring?: Element | undefined;
+  ageString?: string | undefined;
+  _ageString?: Element | undefined;
   /**
    * The actual or approximate date of birth of the relative.
    */
-  bornstring?: string | undefined;
-  _bornstring?: Element | undefined;
+  bornString?: string | undefined;
+  _bornString?: Element | undefined;
   /**
    * The actual or approximate date of birth of the relative.
    */
@@ -6104,13 +6104,13 @@ export interface FamilyMemberHistory {
   /**
    * Deceased flag or the actual or approximate age of the relative at the time of death for the family member history record.
    */
-  deceasedboolean?: boolean | undefined;
-  _deceasedboolean?: Element | undefined;
+  deceasedBoolean?: boolean | undefined;
+  _deceasedBoolean?: Element | undefined;
   /**
    * Deceased flag or the actual or approximate age of the relative at the time of death for the family member history record.
    */
-  deceasedstring?: string | undefined;
-  _deceasedstring?: Element | undefined;
+  deceasedString?: string | undefined;
+  _deceasedString?: Element | undefined;
   /**
    * Deceased flag or the actual or approximate age of the relative at the time of death for the family member history record.
    */
@@ -6151,7 +6151,7 @@ export interface FamilyMemberHistory {
   status: ('partial'|'completed'|'entered-in-error'|'health-unknown');
   _status?: Element | undefined;
 }
-export interface Flag {
+export interface Flag extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Flag';
   /**
@@ -6201,7 +6201,7 @@ export interface GoalOutcome extends BackboneElement {
    */
   resultReference?: Reference | undefined;
 }
-export interface Goal {
+export interface Goal extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Goal';
   /**
@@ -6244,8 +6244,8 @@ export interface Goal {
   /**
    * The date or event after which the goal should begin being pursued.
    */
-  startstring?: string | undefined;
-  _startstring?: Element | undefined;
+  startString?: string | undefined;
+  _startString?: Element | undefined;
   /**
    * Indicates whether the goal has been reached and is still considered relevant.
    */
@@ -6267,8 +6267,8 @@ export interface Goal {
   /**
    * Indicates either the date or the duration after start by which the goal should be met.
    */
-  targetstring?: string | undefined;
-  _targetstring?: Element | undefined;
+  targetString?: string | undefined;
+  _targetString?: Element | undefined;
   /**
    * Indicates either the date or the duration after start by which the goal should be met.
    */
@@ -6294,8 +6294,8 @@ export interface GroupCharacteristic extends BackboneElement {
   /**
    * The value of the trait that holds (or does not hold - see 'exclude') for members of the group.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * The value of the trait that holds (or does not hold - see 'exclude') for members of the group.
    */
@@ -6327,7 +6327,7 @@ export interface GroupMember extends BackboneElement {
    */
   period?: Period | undefined;
 }
-export interface Group {
+export interface Group extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Group';
   /**
@@ -6418,7 +6418,7 @@ export interface HealthcareServiceServiceType extends BackboneElement {
    */
   type: CodeableConcept;
 }
-export interface HealthcareService {
+export interface HealthcareService extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'HealthcareService';
   /**
@@ -6598,7 +6598,7 @@ export interface ImagingObjectSelectionStudy extends BackboneElement {
   url?: string | undefined;
   _url?: Element | undefined;
 }
-export interface ImagingObjectSelection {
+export interface ImagingObjectSelection extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ImagingObjectSelection';
   /**
@@ -6720,7 +6720,7 @@ export interface ImagingStudySeries extends BackboneElement {
   url?: string | undefined;
   _url?: Element | undefined;
 }
-export interface ImagingStudy {
+export interface ImagingStudy extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ImagingStudy';
   /**
@@ -6864,7 +6864,7 @@ export interface ImmunizationVaccinationProtocol extends BackboneElement {
    */
   targetDisease: CodeableConcept[];
 }
-export interface Immunization {
+export interface Immunization extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Immunization';
   /**
@@ -7033,7 +7033,7 @@ export interface ImmunizationRecommendationRecommendation extends BackboneElemen
    */
   vaccineCode: CodeableConcept;
 }
-export interface ImmunizationRecommendation {
+export interface ImmunizationRecommendation extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ImmunizationRecommendation';
   /**
@@ -7127,8 +7127,8 @@ export interface ImplementationGuidePackageResource extends BackboneElement {
   /**
    * Where this resource is found.
    */
-  sourcestring?: string | undefined;
-  _sourcestring?: Element | undefined;
+  sourceString?: string | undefined;
+  _sourceString?: Element | undefined;
 }
 /**
  * Group of resources as used in .page.package
@@ -7188,7 +7188,7 @@ export interface ImplementationGuidePage extends BackboneElement {
   type?: ('Account'|'AllergyIntolerance'|'Appointment'|'AppointmentResponse'|'AuditEvent'|'Basic'|'Binary'|'BodySite'|'Bundle'|'CarePlan'|'Claim'|'ClaimResponse'|'ClinicalImpression'|'Communication'|'CommunicationRequest'|'Composition'|'ConceptMap'|'Condition'|'Conformance'|'Contract'|'Coverage'|'DataElement'|'DetectedIssue'|'Device'|'DeviceComponent'|'DeviceMetric'|'DeviceUseRequest'|'DeviceUseStatement'|'DiagnosticOrder'|'DiagnosticReport'|'DocumentManifest'|'DocumentReference'|'DomainResource'|'EligibilityRequest'|'EligibilityResponse'|'Encounter'|'EnrollmentRequest'|'EnrollmentResponse'|'EpisodeOfCare'|'ExplanationOfBenefit'|'FamilyMemberHistory'|'Flag'|'Goal'|'Group'|'HealthcareService'|'ImagingObjectSelection'|'ImagingStudy'|'Immunization'|'ImmunizationRecommendation'|'ImplementationGuide'|'List'|'Location'|'Media'|'Medication'|'MedicationAdministration'|'MedicationDispense'|'MedicationOrder'|'MedicationStatement'|'MessageHeader'|'NamingSystem'|'NutritionOrder'|'Observation'|'OperationDefinition'|'OperationOutcome'|'Order'|'OrderResponse'|'Organization'|'Parameters'|'Patient'|'PaymentNotice'|'PaymentReconciliation'|'Person'|'Practitioner'|'Procedure'|'ProcedureRequest'|'ProcessRequest'|'ProcessResponse'|'Provenance'|'Questionnaire'|'QuestionnaireResponse'|'ReferralRequest'|'RelatedPerson'|'Resource'|'RiskAssessment'|'Schedule'|'SearchParameter'|'Slot'|'Specimen'|'StructureDefinition'|'Subscription'|'Substance'|'SupplyDelivery'|'SupplyRequest'|'TestScript'|'ValueSet'|'VisionPrescription')[] | undefined;
   _type?: Element[] | undefined;
 }
-export interface ImplementationGuide {
+export interface ImplementationGuide extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ImplementationGuide';
   /**
@@ -7294,7 +7294,7 @@ export interface ListEntry extends BackboneElement {
    */
   item: Reference;
 }
-export interface List {
+export interface List extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'List';
   /**
@@ -7372,7 +7372,7 @@ export interface LocationPosition extends BackboneElement {
    */
   longitude: number;
 }
-export interface Location {
+export interface Location extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Location';
   /**
@@ -7428,7 +7428,7 @@ export interface Location {
    */
   type?: CodeableConcept | undefined;
 }
-export interface Media {
+export interface Media extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Media';
   /**
@@ -7550,7 +7550,7 @@ export interface MedicationProduct extends BackboneElement {
    */
   ingredient?: MedicationProductIngredient[] | undefined;
 }
-export interface Medication {
+export interface Medication extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Medication';
   /**
@@ -7613,7 +7613,7 @@ export interface MedicationAdministrationDosage extends BackboneElement {
   text?: string | undefined;
   _text?: Element | undefined;
 }
-export interface MedicationAdministration {
+export interface MedicationAdministration extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'MedicationAdministration';
   /**
@@ -7627,8 +7627,8 @@ export interface MedicationAdministration {
   /**
    * A specific date/time or interval of time during which the administration took place (or did not take place, when the 'notGiven' attribute is true). For many administrations, such as swallowing a tablet the use of dateTime is more appropriate.
    */
-  effectiveTimestring?: string | undefined;
-  _effectiveTimestring?: Element | undefined;
+  effectiveTimeString?: string | undefined;
+  _effectiveTimeString?: Element | undefined;
   /**
    * A specific date/time or interval of time during which the administration took place (or did not take place, when the 'notGiven' attribute is true). For many administrations, such as swallowing a tablet the use of dateTime is more appropriate.
    */
@@ -7696,8 +7696,8 @@ export interface MedicationDispenseDosageInstruction extends BackboneElement {
   /**
    * Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).    Specifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule.
    */
-  asNeededboolean?: boolean | undefined;
-  _asNeededboolean?: Element | undefined;
+  asNeededBoolean?: boolean | undefined;
+  _asNeededBoolean?: Element | undefined;
   /**
    * Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).    Specifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule.
    */
@@ -7765,7 +7765,7 @@ export interface MedicationDispenseSubstitution extends BackboneElement {
    */
   type: CodeableConcept;
 }
-export interface MedicationDispense {
+export interface MedicationDispense extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'MedicationDispense';
   /**
@@ -7881,8 +7881,8 @@ export interface MedicationOrderDosageInstruction extends BackboneElement {
   /**
    * Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).
    */
-  asNeededboolean?: boolean | undefined;
-  _asNeededboolean?: Element | undefined;
+  asNeededBoolean?: boolean | undefined;
+  _asNeededBoolean?: Element | undefined;
   /**
    * Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).
    */
@@ -7946,7 +7946,7 @@ export interface MedicationOrderSubstitution extends BackboneElement {
    */
   type: CodeableConcept;
 }
-export interface MedicationOrder {
+export interface MedicationOrder extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'MedicationOrder';
   /**
@@ -8029,8 +8029,8 @@ export interface MedicationStatementDosage extends BackboneElement {
   /**
    * Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).    Specifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule.
    */
-  asNeededboolean?: boolean | undefined;
-  _asNeededboolean?: Element | undefined;
+  asNeededBoolean?: boolean | undefined;
+  _asNeededBoolean?: Element | undefined;
   /**
    * Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).    Specifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule.
    */
@@ -8081,7 +8081,7 @@ export interface MedicationStatementDosage extends BackboneElement {
    */
   timing?: Timing | undefined;
 }
-export interface MedicationStatement {
+export interface MedicationStatement extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'MedicationStatement';
   /**
@@ -8096,8 +8096,8 @@ export interface MedicationStatement {
   /**
    * The interval of time during which it is being asserted that the patient was taking the medication (or was not taking, when the wasNotGiven element is true).
    */
-  effectivestring?: string | undefined;
-  _effectivestring?: Element | undefined;
+  effectiveString?: string | undefined;
+  _effectiveString?: Element | undefined;
   /**
    * The interval of time during which it is being asserted that the patient was taking the medication (or was not taking, when the wasNotGiven element is true).
    */
@@ -8221,7 +8221,7 @@ export interface MessageHeaderSource extends BackboneElement {
   version?: string | undefined;
   _version?: Element | undefined;
 }
-export interface MessageHeader {
+export interface MessageHeader extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'MessageHeader';
   /**
@@ -8308,7 +8308,7 @@ export interface NamingSystemUniqueId extends BackboneElement {
   value: string;
   _value?: Element | undefined;
 }
-export interface NamingSystem {
+export interface NamingSystem extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'NamingSystem';
   /**
@@ -8520,7 +8520,7 @@ export interface NutritionOrderSupplement extends BackboneElement {
    */
   type?: CodeableConcept | undefined;
 }
-export interface NutritionOrder {
+export interface NutritionOrder extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'NutritionOrder';
   /**
@@ -8601,8 +8601,8 @@ export interface ObservationComponent extends BackboneElement {
   /**
    * The information determined as a result of making the observation, if the information has a simple value.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * The information determined as a result of making the observation, if the information has a simple value.
    */
@@ -8664,7 +8664,7 @@ export interface ObservationRelated extends BackboneElement {
   type?: ('has-member'|'derived-from'|'sequel-to'|'replaces'|'qualified-by'|'interfered-by') | undefined;
   _type?: Element | undefined;
 }
-export interface Observation {
+export interface Observation extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Observation';
   /**
@@ -8699,8 +8699,8 @@ export interface Observation {
   /**
    * The time or time-period the observed value is asserted as being true. For biological subjects - e.g. human patients - this is usually called the "physiologically relevant time". This is usually either the time of the procedure or of specimen collection, but very often the source of the date/time is not known, only the date/time itself.
    */
-  effectivestring?: string | undefined;
-  _effectivestring?: Element | undefined;
+  effectiveString?: string | undefined;
+  _effectiveString?: Element | undefined;
   /**
    * The time or time-period the observed value is asserted as being true. For biological subjects - e.g. human patients - this is usually called the "physiologically relevant time". This is usually either the time of the procedure or of specimen collection, but very often the source of the date/time is not known, only the date/time itself.
    */
@@ -8762,8 +8762,8 @@ export interface Observation {
   /**
    * The information determined as a result of making the observation, if the information has a simple value.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * The information determined as a result of making the observation, if the information has a simple value.
    */
@@ -8815,8 +8815,8 @@ export interface OperationDefinitionParameterBinding extends BackboneElement {
   /**
    * Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.
    */
-  valueSetstring?: string | undefined;
-  _valueSetstring?: Element | undefined;
+  valueSetString?: string | undefined;
+  _valueSetString?: Element | undefined;
 }
 /**
  * Parameters for the operation/query
@@ -8864,7 +8864,7 @@ export interface OperationDefinitionParameter extends BackboneElement {
   use: ('in'|'out');
   _use?: Element | undefined;
 }
-export interface OperationDefinition {
+export interface OperationDefinition extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'OperationDefinition';
   /**
@@ -8989,7 +8989,7 @@ export interface OperationOutcomeIssue extends BackboneElement {
   severity: ('fatal'|'error'|'warning'|'information');
   _severity?: Element | undefined;
 }
-export interface OperationOutcome {
+export interface OperationOutcome extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'OperationOutcome';
   /**
@@ -9010,7 +9010,7 @@ export interface OrderWhen extends BackboneElement {
    */
   schedule?: Timing | undefined;
 }
-export interface Order {
+export interface Order extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Order';
   /**
@@ -9051,7 +9051,7 @@ export interface Order {
    */
   when?: OrderWhen | undefined;
 }
-export interface OrderResponse {
+export interface OrderResponse extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'OrderResponse';
   /**
@@ -9107,7 +9107,7 @@ export interface OrganizationContact extends BackboneElement {
    */
   telecom?: ContactPoint[] | undefined;
 }
-export interface Organization {
+export interface Organization extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Organization';
   /**
@@ -9177,13 +9177,13 @@ export interface ParametersParameter extends BackboneElement {
   /**
    * If the parameter is a data type.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * If the parameter is a data type.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * If the parameter is a data type.
    */
@@ -9199,7 +9199,7 @@ export interface ParametersParameter extends BackboneElement {
   /**
    * If the parameter is a data type.
    */
-  valuenumber?: number | undefined;
+  valueNumber?: number | undefined;
   /**
    * If the parameter is a data type.
    */
@@ -9245,7 +9245,7 @@ export interface ParametersParameter extends BackboneElement {
    */
   valueTiming?: Timing | undefined;
 }
-export interface Parameters {
+export interface Parameters extends Resource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Parameters';
   /**
@@ -9332,7 +9332,7 @@ export interface PatientLink extends BackboneElement {
   type: ('replace'|'refer'|'seealso');
   _type?: Element | undefined;
 }
-export interface Patient {
+export interface Patient extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Patient';
   /**
@@ -9368,13 +9368,13 @@ export interface Patient {
   /**
    * Indicates if the individual is deceased or not.
    */
-  deceasedboolean?: boolean | undefined;
-  _deceasedboolean?: Element | undefined;
+  deceasedBoolean?: boolean | undefined;
+  _deceasedBoolean?: Element | undefined;
   /**
    * Indicates if the individual is deceased or not.
    */
-  deceasedstring?: string | undefined;
-  _deceasedstring?: Element | undefined;
+  deceasedString?: string | undefined;
+  _deceasedString?: Element | undefined;
   /**
    * Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes.
    */
@@ -9399,12 +9399,12 @@ export interface Patient {
   /**
    * Indicates whether the patient is part of a multiple or indicates the actual birth order.
    */
-  multipleBirthboolean?: boolean | undefined;
-  _multipleBirthboolean?: Element | undefined;
+  multipleBirthBoolean?: boolean | undefined;
+  _multipleBirthBoolean?: Element | undefined;
   /**
    * Indicates whether the patient is part of a multiple or indicates the actual birth order.
    */
-  multipleBirthnumber?: number | undefined;
+  multipleBirthNumber?: number | undefined;
   /**
    * A name associated with the individual.
    */
@@ -9418,7 +9418,7 @@ export interface Patient {
    */
   telecom?: ContactPoint[] | undefined;
 }
-export interface PaymentNotice {
+export interface PaymentNotice extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'PaymentNotice';
   /**
@@ -9511,7 +9511,7 @@ export interface PaymentReconciliationNote extends BackboneElement {
    */
   type?: Coding | undefined;
 }
-export interface PaymentReconciliation {
+export interface PaymentReconciliation extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'PaymentReconciliation';
   /**
@@ -9592,7 +9592,7 @@ export interface PersonLink extends BackboneElement {
    */
   target: Reference;
 }
-export interface Person {
+export interface Person extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Person';
   /**
@@ -9689,7 +9689,7 @@ export interface PractitionerQualification extends BackboneElement {
    */
   period?: Period | undefined;
 }
-export interface Practitioner {
+export interface Practitioner extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Practitioner';
   /**
@@ -9766,7 +9766,7 @@ export interface ProcedurePerformer extends BackboneElement {
    */
   role?: CodeableConcept | undefined;
 }
-export interface Procedure {
+export interface Procedure extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Procedure';
   /**
@@ -9821,8 +9821,8 @@ export interface Procedure {
   /**
    * The date(time)/period over which the procedure was performed. Allows a period to support complex procedures that span more than one date, and also allows for the length of the procedure to be captured.
    */
-  performedstring?: string | undefined;
-  _performedstring?: Element | undefined;
+  performedString?: string | undefined;
+  _performedString?: Element | undefined;
   /**
    * The date(time)/period over which the procedure was performed. Allows a period to support complex procedures that span more than one date, and also allows for the length of the procedure to be captured.
    */
@@ -9865,14 +9865,14 @@ export interface Procedure {
    */
   used?: Reference[] | undefined;
 }
-export interface ProcedureRequest {
+export interface ProcedureRequest extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ProcedureRequest';
   /**
    * If a CodeableConcept is present, it indicates the pre-condition for performing the procedure.
    */
-  asNeededboolean?: boolean | undefined;
-  _asNeededboolean?: Element | undefined;
+  asNeededBoolean?: boolean | undefined;
+  _asNeededBoolean?: Element | undefined;
   /**
    * If a CodeableConcept is present, it indicates the pre-condition for performing the procedure.
    */
@@ -9926,8 +9926,8 @@ export interface ProcedureRequest {
   /**
    * The timing schedule for the proposed or ordered procedure. The Schedule data type allows many different expressions.  E.g. "Every 8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:"; "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".
    */
-  scheduledstring?: string | undefined;
-  _scheduledstring?: Element | undefined;
+  scheduledString?: string | undefined;
+  _scheduledString?: Element | undefined;
   /**
    * The timing schedule for the proposed or ordered procedure. The Schedule data type allows many different expressions.  E.g. "Every 8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:"; "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".
    */
@@ -9955,7 +9955,7 @@ export interface ProcessRequestItem extends BackboneElement {
    */
   sequenceLinkId: number;
 }
-export interface ProcessRequest {
+export interface ProcessRequest extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ProcessRequest';
   /**
@@ -10043,7 +10043,7 @@ export interface ProcessResponseNotes extends BackboneElement {
    */
   type?: Coding | undefined;
 }
-export interface ProcessResponse {
+export interface ProcessResponse extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ProcessResponse';
   /**
@@ -10164,7 +10164,7 @@ export interface ProvenanceEntity extends BackboneElement {
    */
   type: Coding;
 }
-export interface Provenance {
+export interface Provenance extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Provenance';
   /**
@@ -10298,7 +10298,7 @@ export interface QuestionnaireGroup extends BackboneElement {
   title?: string | undefined;
   _title?: Element | undefined;
 }
-export interface Questionnaire {
+export interface Questionnaire extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Questionnaire';
   /**
@@ -10354,8 +10354,8 @@ export interface QuestionnaireResponseGroupQuestionAnswer extends BackboneElemen
   /**
    * The answer (or one of the answers) provided by the respondent to the question.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * The answer (or one of the answers) provided by the respondent to the question.
    */
@@ -10363,12 +10363,12 @@ export interface QuestionnaireResponseGroupQuestionAnswer extends BackboneElemen
   /**
    * The answer (or one of the answers) provided by the respondent to the question.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * The answer (or one of the answers) provided by the respondent to the question.
    */
-  valuenumber?: number | undefined;
+  valueNumber?: number | undefined;
   /**
    * The answer (or one of the answers) provided by the respondent to the question.
    */
@@ -10429,7 +10429,7 @@ export interface QuestionnaireResponseGroup extends BackboneElement {
   title?: string | undefined;
   _title?: Element | undefined;
 }
-export interface QuestionnaireResponse {
+export interface QuestionnaireResponse extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'QuestionnaireResponse';
   /**
@@ -10471,7 +10471,7 @@ export interface QuestionnaireResponse {
    */
   subject?: Reference | undefined;
 }
-export interface ReferralRequest {
+export interface ReferralRequest extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ReferralRequest';
   /**
@@ -10543,7 +10543,7 @@ export interface ReferralRequest {
    */
   type?: CodeableConcept | undefined;
 }
-export interface RelatedPerson {
+export interface RelatedPerson extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'RelatedPerson';
   /**
@@ -10627,7 +10627,7 @@ export interface RiskAssessmentPrediction extends BackboneElement {
   /**
    * How likely is the outcome (in the specified timeframe).
    */
-  probabilitynumber?: number | undefined;
+  probabilityNumber?: number | undefined;
   /**
    * How likely is the outcome (in the specified timeframe).
    */
@@ -10650,7 +10650,7 @@ export interface RiskAssessmentPrediction extends BackboneElement {
    */
   whenRange?: Range | undefined;
 }
-export interface RiskAssessment {
+export interface RiskAssessment extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'RiskAssessment';
   /**
@@ -10696,7 +10696,7 @@ export interface RiskAssessment {
    */
   subject?: Reference | undefined;
 }
-export interface Schedule {
+export interface Schedule extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Schedule';
   /**
@@ -10735,7 +10735,7 @@ export interface SearchParameterContact extends BackboneElement {
    */
   telecom?: ContactPoint[] | undefined;
 }
-export interface SearchParameter {
+export interface SearchParameter extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'SearchParameter';
   /**
@@ -10813,7 +10813,7 @@ export interface SearchParameter {
   xpathUsage?: ('normal'|'phonetic'|'nearby'|'distance'|'other') | undefined;
   _xpathUsage?: Element | undefined;
 }
-export interface Slot {
+export interface Slot extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Slot';
   /**
@@ -10865,8 +10865,8 @@ export interface SpecimenCollection extends BackboneElement {
   /**
    * Time when specimen was collected from subject - the physiologically relevant time.
    */
-  collectedstring?: string | undefined;
-  _collectedstring?: Element | undefined;
+  collectedString?: string | undefined;
+  _collectedString?: Element | undefined;
   /**
    * Time when specimen was collected from subject - the physiologically relevant time.
    */
@@ -10941,7 +10941,7 @@ export interface SpecimenTreatment extends BackboneElement {
    */
   procedure?: CodeableConcept | undefined;
 }
-export interface Specimen {
+export interface Specimen extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Specimen';
   /**
@@ -11044,7 +11044,7 @@ export interface StructureDefinitionSnapshot extends BackboneElement {
    */
   element: ElementDefinition[];
 }
-export interface StructureDefinition {
+export interface StructureDefinition extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'StructureDefinition';
   /**
@@ -11191,7 +11191,7 @@ export interface SubscriptionChannel extends BackboneElement {
   type: ('rest-hook'|'websocket'|'email'|'sms'|'message');
   _type?: Element | undefined;
 }
-export interface Subscription {
+export interface Subscription extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Subscription';
   /**
@@ -11263,7 +11263,7 @@ export interface SubstanceInstance extends BackboneElement {
    */
   quantity?: Quantity | undefined;
 }
-export interface Substance {
+export interface Substance extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'Substance';
   /**
@@ -11292,7 +11292,7 @@ export interface Substance {
    */
   instance?: SubstanceInstance[] | undefined;
 }
-export interface SupplyDelivery {
+export interface SupplyDelivery extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'SupplyDelivery';
   /**
@@ -11355,7 +11355,7 @@ export interface SupplyRequestWhen extends BackboneElement {
    */
   schedule?: Timing | undefined;
 }
-export interface SupplyRequest {
+export interface SupplyRequest extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'SupplyRequest';
   /**
@@ -11786,7 +11786,7 @@ export interface TestScriptVariable extends BackboneElement {
   sourceId?: string | undefined;
   _sourceId?: Element | undefined;
 }
-export interface TestScript {
+export interface TestScript extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'TestScript';
   /**
@@ -12101,17 +12101,17 @@ export interface ValueSetExpansionParameter extends BackboneElement {
   /**
    * The value of the parameter.
    */
-  valueboolean?: boolean | undefined;
-  _valueboolean?: Element | undefined;
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
   /**
    * The value of the parameter.
    */
-  valuestring?: string | undefined;
-  _valuestring?: Element | undefined;
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
   /**
    * The value of the parameter.
    */
-  valuenumber?: number | undefined;
+  valueNumber?: number | undefined;
 }
 /**
  * Used when the value set is "expanded"
@@ -12144,7 +12144,7 @@ export interface ValueSetExpansion extends BackboneElement {
    */
   total?: number | undefined;
 }
-export interface ValueSet {
+export interface ValueSet extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'ValueSet';
   /**
@@ -12307,7 +12307,7 @@ export interface VisionPrescriptionDispense extends BackboneElement {
    */
   sphere?: number | undefined;
 }
-export interface VisionPrescription {
+export interface VisionPrescription extends DomainResource {
   /** Resource Type Name (for serialization) */
   readonly resourceType: 'VisionPrescription';
   /**

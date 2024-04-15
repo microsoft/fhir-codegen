@@ -55,6 +55,7 @@ public partial class DefinitionCollection
     private readonly Dictionary<string, StructureDefinition> _primitiveTypesByName = [];
     private readonly Dictionary<string, StructureDefinition> _complexTypesByName = [];
     private readonly Dictionary<string, StructureDefinition> _resourcesByName = [];
+    private readonly Dictionary<string, StructureDefinition> _interfacesByName = [];
     private readonly Dictionary<string, StructureDefinition> _logicalModelsByName = [];
     private readonly Dictionary<string, StructureDefinition> _extensionsByUrl = [];
     private readonly Dictionary<string, Dictionary<string, StructureDefinition>> _extensionsByPath = [];
@@ -122,7 +123,8 @@ public partial class DefinitionCollection
         // lookup the structure locally because the parameter may be a copy or read only
         if ((!_complexTypesByName.TryGetValue(destinationSd.Name, out StructureDefinition? sd)) &&
             (!_resourcesByName.TryGetValue(destinationSd.Name, out sd)) &&
-            (!_profilesByUrl.TryGetValue(destinationSd.Url, out sd)))
+            (!_profilesByUrl.TryGetValue(destinationSd.Url, out sd)) &&
+            (!_interfacesByName.TryGetValue(destinationSd.Url, out sd)))
         {
             throw new Exception($"Failed to find StructureDefinition id: {destinationSd.Id}, name: {destinationSd.Name}, url: {destinationSd.Url}");
         }
@@ -173,7 +175,8 @@ public partial class DefinitionCollection
         // lookup the structure locally because the parameter may be a copy or read only
         if ((!_complexTypesByName.TryGetValue(destinationSd.Name, out StructureDefinition? sd)) &&
             (!_resourcesByName.TryGetValue(destinationSd.Name, out sd)) &&
-            (!_profilesByUrl.TryGetValue(destinationSd.Url, out sd)))
+            (!_profilesByUrl.TryGetValue(destinationSd.Url, out sd)) &&
+            (!_interfacesByName.TryGetValue(destinationSd.Url, out sd)))
         {
             throw new Exception($"Failed to find StructureDefinition id: {destinationSd.Id}, name: {destinationSd.Name}, url: {destinationSd.Url}");
         }
@@ -611,11 +614,11 @@ public partial class DefinitionCollection
 
         return searchConceptRecursive(cs.Concept!) ?? defaultValue;
 
-        string? searchConceptRecursive(List<CodeSystem.ConceptDefinitionComponent> defs)
+        string? searchConceptRecursive(List<CodeSystem.ConceptDefinitionComponent> conceptDefinitions)
         {
             string? val = null;
 
-            foreach (CodeSystem.ConceptDefinitionComponent c in defs)
+            foreach (CodeSystem.ConceptDefinitionComponent c in conceptDefinitions)
             {
                 if (c.Code == code)
                 {
@@ -1380,7 +1383,7 @@ public partial class DefinitionCollection
         TrackResource(sd);
     }
 
-    /// <summary>Gets the name of the resources by.</summary>
+    /// <summary>Gets listing of resources, by Name.</summary>
     public IReadOnlyDictionary<string, StructureDefinition> ResourcesByName => _resourcesByName;
 
     /// <summary>Adds a resource.</summary>
@@ -1398,6 +1401,99 @@ public partial class DefinitionCollection
 
         _resourcesByName[sd.Name] = sd;
         TrackResource(sd);
+    }
+
+    /// <summary>Gets the listing of interfaces, by Name.</summary>
+    public IReadOnlyDictionary<string, StructureDefinition> InterfacesByName => _interfacesByName;
+
+    /// <summary>Adds an interface.</summary>
+    /// <param name="sd">The structure definition.</param>
+    public void AddInterface(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion)
+    {
+        // DSTU2 did not include the publication status extension, add it here for consistency
+        if (fhirVersion == FhirReleases.FhirSequenceCodes.DSTU2)
+        {
+            sd.AddExtension(CommonDefinitions.ExtUrlStandardStatus, new Code("draft"));
+        }
+
+        // add field orders to elements
+        ProcessElements(FhirArtifactClassEnum.Resource, sd, fhirVersion);
+
+        _interfacesByName[sd.Name] = sd;
+        TrackResource(sd);
+    }
+
+    /// <summary>Finds all resources that claim to implement the specified interface.</summary>
+    /// <param name="interfaceSd">            The interface SD.</param>
+    /// <param name="includeChildInterfaces">(Optional) True to include, false to exclude the child
+    ///  interfaces.</param>
+    /// <returns>
+    /// An enumerator that allows foreach to be used to process resources for interface in this
+    /// collection.
+    /// </returns>
+    public IEnumerable<StructureDefinition> ResourcesForInterface(StructureDefinition interfaceSd, bool includeChildInterfaces = true)
+    {
+        HashSet<string> implementationUrls = [interfaceSd.Url];
+
+        if (includeChildInterfaces)
+        {
+            FindChildInterfaces(interfaceSd.Url, implementationUrls);
+        }
+
+        foreach (StructureDefinition sd in _resourcesByName.Values)
+        {
+            if ((sd.GetExtension(CommonDefinitions.ExtUrlImplements)?.Value is FhirUri valueUri) &&
+                implementationUrls.Contains(valueUri.Value))
+            {
+                yield return sd;
+            }
+        }
+    }
+
+    /// <summary>Searches for known parent interfaces.</summary>
+    /// <param name="url">       URL of the resource.</param>
+    /// <param name="interfaces">The interfaces.</param>
+    private void FindChildInterfaces(string url, HashSet<string> interfaces)
+    {
+        // first, check for additional interfaces that contain this interface
+        foreach (StructureDefinition sd in _interfacesByName.Values)
+        {
+            if ((sd.GetExtension(CommonDefinitions.ExtUrlImplements)?.Value is FhirUri valueUri) &&
+                (valueUri.Value == url))
+            {
+                // add this interface
+                interfaces.Add(sd.Url);
+
+                // recurse
+                FindChildInterfaces(sd.Url, interfaces);
+            }
+        }
+    }
+
+    /// <summary>Gets the parent interface.</summary>
+    /// <param name="sd">The structure definition.</param>
+    /// <returns>The parent interface.</returns>
+    public StructureDefinition? GetParentInterface(StructureDefinition sd)
+    {
+        if (sd.GetExtension(CommonDefinitions.ExtUrlImplements)?.Value is FhirUri valueUri)
+        {
+            if (_interfacesByName.TryGetValue(valueUri.Value, out StructureDefinition? parent))
+            {
+                return parent;
+            }
+
+            int lastSlashIndex = valueUri.Value.LastIndexOf('/');
+            if (lastSlashIndex != -1)
+            {
+                string parentName = valueUri.Value.Substring(lastSlashIndex + 1);
+                if (_interfacesByName.TryGetValue(parentName, out parent))
+                {
+                    return parent;
+                }
+            }
+        }
+
+        return null;
     }
 
     /// <summary>Gets the name of the logical models by.</summary>

@@ -45,38 +45,38 @@ public class FhirPackageTestFixture
             CachePath = "~/.fhir",
         });
 
-        EntriesR5 = new List<PackageCacheEntry>()
-        {
+        EntriesR5 =
+        [
             Load("hl7.fhir.r5.core#5.0.0"),
             Load("hl7.fhir.r5.expansions#5.0.0"),
             Load("hl7.fhir.uv.extensions#1.0.0"),
-        };
+        ];
 
-        EntriesR4B = new List<PackageCacheEntry>()
-        {
+        EntriesR4B =
+        [
             Load("hl7.fhir.r4b.core#4.3.0"),
             Load("hl7.fhir.r4b.expansions#4.3.0"),
             Load("hl7.fhir.uv.extensions#1.0.0"),
-        };
+        ];
 
-        EntriesR4 = new List<PackageCacheEntry>()
-        {
+        EntriesR4 =
+        [
             Load("hl7.fhir.r4.core#4.0.1"),
             Load("hl7.fhir.r4.expansions#4.0.1"),
             Load("hl7.fhir.uv.extensions#1.0.0"),
-        };
+        ];
 
-        EntriesR3 = new List<PackageCacheEntry>()
-        {
+        EntriesR3 =
+        [
             Load("hl7.fhir.r3.core#3.0.2"),
             Load("hl7.fhir.r3.expansions#3.0.2"),
-        };
+        ];
 
-        EntriesR2 = new List<PackageCacheEntry>()
-        {
+        EntriesR2 =
+        [
             Load("hl7.fhir.r2.core#1.0.2"),
             Load("hl7.fhir.r2.expansions#1.0.2"),
-        };
+        ];
     }
 
     /// <summary>Loads.</summary>
@@ -140,6 +140,9 @@ public class FhirPackageTestsR5 : IClassFixture<FhirPackageTestFixture>
     [Theory]
     [InlineData(LoaderOptions.JsonDeserializationModel.Poco)]
     [InlineData(LoaderOptions.JsonDeserializationModel.SystemTextJson)]
+    [Trait("Category", "Parse")]
+    [Trait("Format", "Json")]
+    [Trait("FhirVersion", "R5")]
     internal void ParseCorePackage(LoaderOptions.JsonDeserializationModel jsonModel)
     {
         PackageLoader loader = new(_fixture.Cache, new() { JsonModel = jsonModel });
@@ -208,6 +211,9 @@ public class FhirPackageTestsR4B : IClassFixture<FhirPackageTestFixture>
     /// </summary>
     /// <param name="jsonModel">The JSON deserialization model.</param>
     [Fact]
+    [Trait("Category", "Parse")]
+    [Trait("Format", "Json")]
+    [Trait("FhirVersion", "R4B")]
     internal void ParseCorePackage()
     {
         PackageLoader loader = new(_fixture.Cache, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
@@ -276,6 +282,9 @@ public class FhirPackageTestsR4 : IClassFixture<FhirPackageTestFixture>
     /// </summary>
     /// <param name="jsonModel">The JSON deserialization model.</param>
     [Fact]
+    [Trait("Category", "Parse")]
+    [Trait("Format", "Json")]
+    [Trait("FhirVersion", "R4")]
     internal void ParseCorePackage()
     {
         PackageLoader loader = new(_fixture.Cache, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
@@ -344,6 +353,9 @@ public class FhirPackageTestsR3 : IClassFixture<FhirPackageTestFixture>
     /// </summary>
     /// <param name="jsonModel">The JSON deserialization model.</param>
     [Fact]
+    [Trait("Category", "Parse")]
+    [Trait("Format", "Json")]
+    [Trait("FhirVersion", "R3")]
     internal void ParseCorePackage()
     {
         PackageLoader loader = new(_fixture.Cache, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
@@ -412,6 +424,9 @@ public class FhirPackageTestsR2 : IClassFixture<FhirPackageTestFixture>
     /// </summary>
     /// <param name="jsonModel">The JSON deserialization model.</param>
     [Fact]
+    [Trait("Category", "Parse")]
+    [Trait("Format", "Json")]
+    [Trait("FhirVersion", "R2")]
     internal void ParseCorePackage()
     {
         PackageLoader loader = new(_fixture.Cache, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });

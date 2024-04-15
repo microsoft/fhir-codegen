@@ -15284,6 +15284,7 @@ Resources: 143
   ?patient: patient=reference (trial-use)
   ?prescriber: prescriber=reference (trial-use)
   ?status: status=token (trial-use)
+Interfaces: 0
 Profiles: 43
 - Actual Group: (actualgroup) Group (trial-use FMM: 1)
   ^group[1..1]: Element (W5: administrative.group)

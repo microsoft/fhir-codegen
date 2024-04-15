@@ -6459,6 +6459,7 @@ Resources: 96
   ?identifier: identifier=token
   ?patient: patient=reference
   ?prescriber: prescriber=reference
+Interfaces: 0
 Profiles: 107
 - ArgonautProfileForCarePlan: (argonaut-careplan) CarePlan
   ^carePlan[0..*]: CarePlan (W5: clinical.careprovision)

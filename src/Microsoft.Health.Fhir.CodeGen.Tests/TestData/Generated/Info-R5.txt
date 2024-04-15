@@ -1537,7 +1537,7 @@ Complex Types: 48
   - additionalInfo[0..*]: url
   - maxParticipants[0..1]: positiveInt
   - sessionKey[0..1]: string
-Resources: 162
+Resources: 160
 - Account: DomainResource (trial-use FMM: 2) (abstract: False)
   ^account[0..*]: Element (W5: financial.support)
   !act-1: local error: condition.reference.empty().not() implies dateOfDiagnosis.empty()
@@ -2769,54 +2769,6 @@ Resources: 162
     -subscription-notification-bundle: http://hl7.org/fhir/StructureDefinition/subscription-notification-bundle (SubscriptionNotificationBundle)
     -transaction-bundle: http://hl7.org/fhir/StructureDefinition/transaction-bundle (TransactionBundle)
     -transaction-response-bundle: http://hl7.org/fhir/StructureDefinition/transaction-response-bundle (TransactionResponseBundle)
-- CanonicalResource: DomainResource (normative FMM: 5) (abstract: True)
-  ^canonicalResource[1..1]: Element constraints: cnl-0 (W5: conformance.behavior)
-  !cnl-0: local warning: name.exists() implies name.matches('^[A-Z]([A-Za-z0-9_]){1,254}$')
-  !cnl-1: local warning: exists() implies matches('^[^|# ]+$')
-  !dom-2: inherited error: contained.contained.empty()
-  !dom-3: inherited error: contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().ofType(canonical) | %resource.descendants().ofType(uri) | %resource.descendants().ofType(url))) or descendants().where(reference = '#').exists() or descendants().where(ofType(canonical) = '#').exists() or descendants().where(ofType(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
-  !dom-4: inherited error: contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
-  !dom-5: inherited error: contained.meta.security.empty()
-  !dom-6: inherited warning: text.`div`.exists()
-  !ele-1: inherited error: hasValue() or (children().count() > id.count())
-  !ext-1: inherited error: extension.exists() != value.exists()
-  - id[0..1]: id *simple*
-  - meta[0..1]: Meta
-  - implicitRules[0..1]: uri
-  - language[0..1]: code binding name: Language
-  - text[0..1]: Narrative conditions: dom-6
-  - contained[0..*]: Resource conditions: dom-2, dom-3, dom-4, dom-5
-  - extension[0..*]: Extension
-  - modifierExtension[0..*]: Extension
-  - url[0..1]: uri constraints: cnl-1 (W5: FiveWs.identifier)
-  - identifier[0..*]: Identifier (W5: FiveWs.identifier)
-  - version[0..1]: string (W5: FiveWs.version)
-  - versionAlgorithm[x][0..1]: Coding|string
-  - name[0..1]: string conditions: cnl-0
-  - title[0..1]: string
-  - status[1..1]: code binding name: PublicationStatus (W5: FiveWs.status)
-    {draft|active|retired|unknown}
-  - experimental[0..1]: boolean (W5: FiveWs.class)
-  - date[0..1]: dateTime (W5: FiveWs.recorded)
-  - publisher[0..1]: string (W5: FiveWs.witness)
-  - contact[0..*]: ContactDetail
-  - description[0..1]: markdown
-  - useContext[0..*]: UsageContext
-  - jurisdiction[0..*]: CodeableConcept binding name: Jurisdiction
-  - purpose[0..1]: markdown (W5: FiveWs.why[x])
-  - copyright[0..1]: markdown
-  - copyrightLabel[0..1]: string
-  Extensions: 2
-  +http://hl7.org/fhir/StructureDefinition/canonicalresource-short-description [0..*]
-    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/canonicalresource-short-description
-    - value[x][1..1]: string
-  +http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version [0..1]
-    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version
-    - value[x][1..1]: code
-  CanonicalResource/$current-canonical (trial-use FMM: 1)
-    In: url: Uri[1..1]
-    In: status: Code[0..*]
-    Out: result: CanonicalResource[0..1]
 - CapabilityStatement: DomainResource (normative FMM: 5) (abstract: False)
   ^capabilityStatement[0..*]: Element constraints: cnl-0, cpb-1, cpb-2, cpb-3, cpb-4, cpb-7, cpb-14, cpb-15, cpb-16 (W5: conformance.behavior)
   !cnl-0: local warning: name.exists() implies name.matches('^[A-Z]([A-Za-z0-9_]){1,254}$')
@@ -11108,50 +11060,6 @@ Resources: 162
   ?sender: sender=reference (trial-use)
   ?source: source=string (trial-use)
   ?target: target=reference (trial-use)
-- MetadataResource: DomainResource (normative FMM: 5) (abstract: True)
-  ^metadataResource[1..1]: Element (W5: conformance.behavior)
-  !cnl-1: local warning: exists() implies matches('^[^|# ]+$')
-  !ele-1: inherited error: hasValue() or (children().count() > id.count())
-  !ext-1: inherited error: extension.exists() != value.exists()
-  - id[0..1]: id *simple*
-  - meta[0..1]: Meta
-  - implicitRules[0..1]: uri
-  - language[0..1]: code binding name: Language
-  - text[0..1]: Narrative conditions: dom-6
-  - contained[0..*]: Resource conditions: dom-2, dom-3, dom-4, dom-5
-  - extension[0..*]: Extension
-  - modifierExtension[0..*]: Extension
-  - url[0..1]: uri constraints: cnl-1 (W5: FiveWs.identifier)
-  - identifier[0..*]: Identifier (W5: FiveWs.identifier)
-  - version[0..1]: string (W5: FiveWs.version)
-  - versionAlgorithm[x][0..1]: Coding|string
-  - name[0..1]: string conditions: cnl-0
-  - title[0..1]: string
-  - status[1..1]: code binding name: PublicationStatus (W5: FiveWs.status)
-    {draft|active|retired|unknown}
-  - experimental[0..1]: boolean (W5: FiveWs.class)
-  - date[0..1]: dateTime (W5: FiveWs.recorded)
-  - publisher[0..1]: string (W5: FiveWs.witness)
-  - contact[0..*]: ContactDetail
-  - description[0..1]: markdown
-  - useContext[0..*]: UsageContext
-  - jurisdiction[0..*]: CodeableConcept binding name: Jurisdiction
-  - purpose[0..1]: markdown (W5: FiveWs.why[x])
-  - copyright[0..1]: markdown
-  - copyrightLabel[0..1]: string
-  - approvalDate[0..1]: date
-  - lastReviewDate[0..1]: date
-  - effectivePeriod[0..1]: Period
-  - topic[0..*]: CodeableConcept binding name: DefinitionTopic
-  - author[0..*]: ContactDetail
-  - editor[0..*]: ContactDetail
-  - reviewer[0..*]: ContactDetail
-  - endorser[0..*]: ContactDetail
-  - relatedArtifact[0..*]: RelatedArtifact
-  Extensions: 1
-  +http://hl7.org/fhir/StructureDefinition/metadataresource-publish-date [0..1]
-    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/metadataresource-publish-date
-    - value[x][1..1]: date
 - MolecularSequence: DomainResource (trial-use FMM: 1) (abstract: False)
   ^molecularSequence[0..*]: Element (W5: clinical.diagnostics)
   !dom-2: inherited error: contained.contained.empty()
@@ -17324,6 +17232,99 @@ Resources: 162
   ?patient: patient=reference (trial-use)
   ?prescriber: prescriber=reference (trial-use)
   ?status: status=token (trial-use)
+Interfaces: 2
+- CanonicalResource: DomainResource (normative FMM: 5) (abstract: True)
+  ^canonicalResource[1..1]: Element constraints: cnl-0 (W5: conformance.behavior)
+  !cnl-0: local warning: name.exists() implies name.matches('^[A-Z]([A-Za-z0-9_]){1,254}$')
+  !cnl-1: local warning: exists() implies matches('^[^|# ]+$')
+  !dom-2: inherited error: contained.contained.empty()
+  !dom-3: inherited error: contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().ofType(canonical) | %resource.descendants().ofType(uri) | %resource.descendants().ofType(url))) or descendants().where(reference = '#').exists() or descendants().where(ofType(canonical) = '#').exists() or descendants().where(ofType(canonical) = '#').exists()).not()).trace('unmatched', id).empty()
+  !dom-4: inherited error: contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()
+  !dom-5: inherited error: contained.meta.security.empty()
+  !dom-6: inherited warning: text.`div`.exists()
+  !ele-1: inherited error: hasValue() or (children().count() > id.count())
+  !ext-1: inherited error: extension.exists() != value.exists()
+  - id[0..1]: id *simple*
+  - meta[0..1]: Meta
+  - implicitRules[0..1]: uri
+  - language[0..1]: code binding name: Language
+  - text[0..1]: Narrative conditions: dom-6
+  - contained[0..*]: Resource conditions: dom-2, dom-3, dom-4, dom-5
+  - extension[0..*]: Extension
+  - modifierExtension[0..*]: Extension
+  - url[0..1]: uri constraints: cnl-1 (W5: FiveWs.identifier)
+  - identifier[0..*]: Identifier (W5: FiveWs.identifier)
+  - version[0..1]: string (W5: FiveWs.version)
+  - versionAlgorithm[x][0..1]: Coding|string
+  - name[0..1]: string conditions: cnl-0
+  - title[0..1]: string
+  - status[1..1]: code binding name: PublicationStatus (W5: FiveWs.status)
+    {draft|active|retired|unknown}
+  - experimental[0..1]: boolean (W5: FiveWs.class)
+  - date[0..1]: dateTime (W5: FiveWs.recorded)
+  - publisher[0..1]: string (W5: FiveWs.witness)
+  - contact[0..*]: ContactDetail
+  - description[0..1]: markdown
+  - useContext[0..*]: UsageContext
+  - jurisdiction[0..*]: CodeableConcept binding name: Jurisdiction
+  - purpose[0..1]: markdown (W5: FiveWs.why[x])
+  - copyright[0..1]: markdown
+  - copyrightLabel[0..1]: string
+  Extensions: 2
+  +http://hl7.org/fhir/StructureDefinition/canonicalresource-short-description [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/canonicalresource-short-description
+    - value[x][1..1]: string
+  +http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version
+    - value[x][1..1]: code
+  CanonicalResource/$current-canonical (trial-use FMM: 1)
+    In: url: Uri[1..1]
+    In: status: Code[0..*]
+    Out: result: CanonicalResource[0..1]
+- MetadataResource: DomainResource (normative FMM: 5) (abstract: True)
+  ^metadataResource[1..1]: Element (W5: conformance.behavior)
+  !cnl-1: local warning: exists() implies matches('^[^|# ]+$')
+  !ele-1: inherited error: hasValue() or (children().count() > id.count())
+  !ext-1: inherited error: extension.exists() != value.exists()
+  - id[0..1]: id *simple*
+  - meta[0..1]: Meta
+  - implicitRules[0..1]: uri
+  - language[0..1]: code binding name: Language
+  - text[0..1]: Narrative conditions: dom-6
+  - contained[0..*]: Resource conditions: dom-2, dom-3, dom-4, dom-5
+  - extension[0..*]: Extension
+  - modifierExtension[0..*]: Extension
+  - url[0..1]: uri constraints: cnl-1 (W5: FiveWs.identifier)
+  - identifier[0..*]: Identifier (W5: FiveWs.identifier)
+  - version[0..1]: string (W5: FiveWs.version)
+  - versionAlgorithm[x][0..1]: Coding|string
+  - name[0..1]: string conditions: cnl-0
+  - title[0..1]: string
+  - status[1..1]: code binding name: PublicationStatus (W5: FiveWs.status)
+    {draft|active|retired|unknown}
+  - experimental[0..1]: boolean (W5: FiveWs.class)
+  - date[0..1]: dateTime (W5: FiveWs.recorded)
+  - publisher[0..1]: string (W5: FiveWs.witness)
+  - contact[0..*]: ContactDetail
+  - description[0..1]: markdown
+  - useContext[0..*]: UsageContext
+  - jurisdiction[0..*]: CodeableConcept binding name: Jurisdiction
+  - purpose[0..1]: markdown (W5: FiveWs.why[x])
+  - copyright[0..1]: markdown
+  - copyrightLabel[0..1]: string
+  - approvalDate[0..1]: date
+  - lastReviewDate[0..1]: date
+  - effectivePeriod[0..1]: Period
+  - topic[0..*]: CodeableConcept binding name: DefinitionTopic
+  - author[0..*]: ContactDetail
+  - editor[0..*]: ContactDetail
+  - reviewer[0..*]: ContactDetail
+  - endorser[0..*]: ContactDetail
+  - relatedArtifact[0..*]: RelatedArtifact
+  Extensions: 1
+  +http://hl7.org/fhir/StructureDefinition/metadataresource-publish-date [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/metadataresource-publish-date
+    - value[x][1..1]: date
 Profiles: 66
 - ActualGroup: (actualgroup) Group (trial-use FMM: 0)
   ^group[1..1]: Element (W5: administrative.group)

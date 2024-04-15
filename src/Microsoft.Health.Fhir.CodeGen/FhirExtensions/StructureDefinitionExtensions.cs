@@ -71,6 +71,11 @@ public static class StructureDefinitionExtensions
                         }
                     }
 
+                    if (sd.GetBoolExtension(CommonDefinitions.ExtUrlIsInterface) == true)
+                    {
+                        return FhirArtifactClassEnum.Interface;
+                    }
+
                     return FhirArtifactClassEnum.Resource;
                 }
         }

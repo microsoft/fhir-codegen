@@ -51,6 +51,8 @@ public enum FhirArtifactClassEnum
     [Description("StructureDefinition for a Logical Model (e.g., the Event pattern).")]
     LogicalModel,
 
+    [Description("StructureDefinition for a FHIR Interface (e.g., CanonicalResource")]
+    Interface,
 
     /// <summary>CapabilityStatement resource.</summary>
     CapabilityStatement,

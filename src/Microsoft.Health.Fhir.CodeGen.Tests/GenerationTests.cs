@@ -37,7 +37,7 @@ public class GenerationTestFixture
     public IEnumerable<PackageCacheEntry> EntriesR2;
 
     /// <summary>True to write generated files.</summary>
-    public static bool WriteGeneratedFiles = false;
+    public static bool WriteGeneratedFiles = true;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="GenerationTestFixture"/> class.
@@ -129,6 +129,8 @@ public class GenerationTestsR5 : IClassFixture<GenerationTestFixture>
     [Theory]
     [InlineData("Info", "TestData/Generated/Info-R5.txt")]
     [InlineData("TypeScript", "TestData/Generated/TypeScript-R5.ts")]
+    [Trait("Category", "Generation")]
+    [Trait("FhirVersion", "R5")]
     internal void TestLangR5(string langName, string filePath)
     {
         // Get the absolute path to the file
@@ -227,6 +229,8 @@ public class GenerationTestsR4B : IClassFixture<GenerationTestFixture>
     [Theory]
     [InlineData("Info", "TestData/Generated/Info-R4B.txt")]
     [InlineData("TypeScript", "TestData/Generated/TypeScript-R4B.ts")]
+    [Trait("Category", "Generation")]
+    [Trait("FhirVersion", "R4B")]
     internal void TestLangR4B(string langName, string filePath)
     {
         // Get the absolute path to the file
@@ -325,6 +329,8 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
     [Theory]
     [InlineData("Info", "TestData/Generated/Info-R4.txt")]
     [InlineData("TypeScript", "TestData/Generated/TypeScript-R4.ts")]
+    [Trait("Category", "Generation")]
+    [Trait("FhirVersion", "R4")]
     internal void TestLangR4(string langName, string filePath)
     {
         // Get the absolute path to the file
@@ -423,6 +429,8 @@ public class GenerationTestsR3 : IClassFixture<GenerationTestFixture>
     [Theory]
     [InlineData("Info", "TestData/Generated/Info-R3.txt")]
     [InlineData("TypeScript", "TestData/Generated/TypeScript-R3.ts")]
+    [Trait("Category", "Generation")]
+    [Trait("FhirVersion", "R3")]
     internal void TestLangR3(string langName, string filePath)
     {
         // Get the absolute path to the file
@@ -521,6 +529,8 @@ public class GenerationTestsR2 : IClassFixture<GenerationTestFixture>
     [Theory]
     [InlineData("Info", "TestData/Generated/Info-R2.txt")]
     [InlineData("TypeScript", "TestData/Generated/TypeScript-R2.ts")]
+    [Trait("Category", "Generation")]
+    [Trait("FhirVersion", "R2")]
     internal void TestLangR2(string langName, string filePath)
     {
         // Get the absolute path to the file

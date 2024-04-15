@@ -17,6 +17,9 @@ public static class CommonDefinitions
     public const string ExtUrlWorkGroup = "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg";
     public const string ExtUrlCategory = "http://hl7.org/fhir/StructureDefinition/structuredefinition-category";
 
+    public const string ExtUrlIsInterface = "http://hl7.org/fhir/StructureDefinition/structuredefinition-interface";
+    public const string ExtUrlImplements = "http://hl7.org/fhir/StructureDefinition/structuredefinition-implements";
+
     public const string ExtUrlBestPractice = "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice";
     public const string ExtUrlBestPracticeExplanation = "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice-explanation";
 

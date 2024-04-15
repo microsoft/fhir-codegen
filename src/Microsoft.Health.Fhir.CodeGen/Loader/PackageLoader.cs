@@ -600,6 +600,10 @@ public class PackageLoader
                                     case FhirArtifactClassEnum.Resource:
                                         definitions.AddResource(r, packageFhirVersion);
                                         break;
+
+                                    case FhirArtifactClassEnum.Interface:
+                                        definitions.AddInterface(r, packageFhirVersion);
+                                        break;
                                 }
                             }
                             break;

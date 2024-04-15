@@ -8759,6 +8759,7 @@ Resources: 119
   ?identifier: identifier=token
   ?patient: patient=reference
   ?prescriber: prescriber=reference
+Interfaces: 0
 Profiles: 33
 - Vital Signs Profile: (bmi) vitalsigns
   ^observation[0..*]: Element (W5: clinical.diagnostics)

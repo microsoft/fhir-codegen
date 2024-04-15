@@ -1,0 +1,74 @@
+<Playlist Version="2.0">
+  <Rule Name="Includes" Match="Any">
+    <Rule Match="All">
+      <Property Name="Solution" />
+      <Rule Match="Any">
+        <Rule Match="All">
+          <Property Name="Project" Value="Microsoft.Health.Fhir.CodeGen.Tests" />
+          <Rule Match="Any">
+            <Rule Match="All">
+              <Property Name="Namespace" Value="Microsoft.Health.Fhir.CodeGen.Tests" />
+              <Rule Match="Any">
+                <Rule Match="All">
+                  <Property Name="Class" Value="GenerationTestsR5" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="Microsoft.Health.Fhir.CodeGen.Tests.GenerationTestsR5.TestLangR5" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Microsoft.Health.Fhir.CodeGen.Tests.GenerationTestsR5.TestLangR5(langName: &quot;TypeScript&quot;, filePath: &quot;TestData/Generated/TypeScript-R5.ts&quot;)" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+                <Rule Match="All">
+                  <Property Name="Class" Value="GenerationTestsR4B" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="Microsoft.Health.Fhir.CodeGen.Tests.GenerationTestsR4B.TestLangR4B" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Microsoft.Health.Fhir.CodeGen.Tests.GenerationTestsR4B.TestLangR4B(langName: &quot;TypeScript&quot;, filePath: &quot;TestData/Generated/TypeScript-R4B.ts&quot;)" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+                <Rule Match="All">
+                  <Property Name="Class" Value="GenerationTestsR4" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="Microsoft.Health.Fhir.CodeGen.Tests.GenerationTestsR4.TestLangR4" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Microsoft.Health.Fhir.CodeGen.Tests.GenerationTestsR4.TestLangR4(langName: &quot;TypeScript&quot;, filePath: &quot;TestData/Generated/TypeScript-R4.ts&quot;)" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+                <Rule Match="All">
+                  <Property Name="Class" Value="GenerationTestsR3" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="Microsoft.Health.Fhir.CodeGen.Tests.GenerationTestsR3.TestLangR3" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Microsoft.Health.Fhir.CodeGen.Tests.GenerationTestsR3.TestLangR3(langName: &quot;TypeScript&quot;, filePath: &quot;TestData/Generated/TypeScript-R3.ts&quot;)" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+                <Rule Match="All">
+                  <Property Name="Class" Value="GenerationTestsR2" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="Microsoft.Health.Fhir.CodeGen.Tests.GenerationTestsR2.TestLangR2" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Microsoft.Health.Fhir.CodeGen.Tests.GenerationTestsR2.TestLangR2(langName: &quot;TypeScript&quot;, filePath: &quot;TestData/Generated/TypeScript-R2.ts&quot;)" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+              </Rule>
+            </Rule>
+          </Rule>
+        </Rule>
+      </Rule>
+    </Rule>
+  </Rule>
+</Playlist>
