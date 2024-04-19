@@ -1260,8 +1260,40 @@ public partial class DefinitionCollection
     /// Adds a value set to the definition collection.
     /// </summary>
     /// <param name="valueSet">The value set to be added.</param>
-    public void AddValueSet(ValueSet valueSet)
+    public void AddValueSet(ValueSet valueSet, FhirReleases.FhirSequenceCodes fhirVersion)
     {
+        // DSTU2 has embedded CodeSystems
+        if ((fhirVersion == FhirReleases.FhirSequenceCodes.DSTU2) &&
+            (valueSet.Contained.Count != 0))
+        {
+            foreach (Resource contained in valueSet.Contained)
+            {
+                if (contained is CodeSystem cs)
+                {
+                    // use the same id
+                    if (string.IsNullOrEmpty(cs.Id))
+                    {
+                        cs.Id = valueSet.Id;
+                    }
+
+                    AddCodeSystem(cs);
+
+                    // use all values from the code system
+                    valueSet.Compose ??= new();
+
+                    if (valueSet.Compose.Include == null)
+                    {
+                        valueSet.Compose.Include = [];
+                    }
+
+                    valueSet.Compose.Include.Add(new ValueSet.ConceptSetComponent
+                    {
+                        SystemElement = new FhirUri($"{cs.Url}"),
+                    });
+                }
+            }
+        }
+
         string vsUrl = valueSet.Url;
 
         if (!vsUrl.Contains('|'))
@@ -1337,6 +1369,111 @@ public partial class DefinitionCollection
         TrackResource(valueSet);
     }
 
+    ///// <summary>Interface to check if a resource has a 'URL' element.</summary>
+    //private interface IHasUrl
+    //{
+    //    string Url { get; set; }
+    //}
+
+    /// <summary>
+    /// Adds a resource to the definition collection based on its type.
+    /// </summary>
+    /// <param name="r">The resource to add.</param>
+    /// <param name="fhirVersion">The FHIR version of the resource.</param>
+    /// <param name="canonicalSource">The canonical source of the resource.</param>
+    public void AddResource(object r, FhirReleases.FhirSequenceCodes fhirVersion, string canonicalSource)
+    {
+        // This was an issue with Azure FHIR server and I believe has been corrected
+        //// check for canonical URLs that are listed as "[base]"
+        //if (r is IHasUrl withUrl)
+        //{
+        //    if (withUrl.Url.StartsWith("[base]", StringComparison.Ordinal))
+        //    {
+        //        withUrl.Url = canonicalSource;
+        //    }
+        //}
+
+        // process the resource according to its type
+        switch (r)
+        {
+            case CodeSystem cs:
+                AddCodeSystem(cs);
+                break;
+
+            case ValueSet vs:
+                AddValueSet(vs, fhirVersion);
+                break;
+
+            case StructureDefinition sd:
+                AddStructureDefinition(sd, fhirVersion);
+                break;
+
+            case CapabilityStatement caps:
+                AddCapabilityStatement(caps, canonicalSource);
+                break;
+
+            case SearchParameter sp:
+                AddSearchParameter(sp);
+                break;
+
+            case OperationDefinition op:
+                AddOperation(op);
+                break;
+
+            case ImplementationGuide ig:
+                AddImplementationGuide(ig);
+                break;
+
+            case CompartmentDefinition cd:
+                AddCompartment(cd);
+                break;
+
+            default:
+                // ignore everything else
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Adds a <see cref="StructureDefinition"/> to the collection in the correct artifact class set.
+    /// </summary>
+    /// <param name="sd">The <see cref="StructureDefinition"/> to add.</param>
+    /// <param name="fhirVersion">The <see cref="FhirReleases.FhirSequenceCodes"/> representing the FHIR version.</param>
+    public void AddStructureDefinition(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion)
+    {
+        switch (sd.cgArtifactClass())
+        {
+            case FhirArtifactClassEnum.PrimitiveType:
+                AddPrimitiveType(sd, fhirVersion);
+                break;
+
+            case FhirArtifactClassEnum.LogicalModel:
+                AddLogicalModel(sd, fhirVersion);
+                break;
+
+            case FhirArtifactClassEnum.Extension:
+                AddExtension(sd, fhirVersion);
+                break;
+
+            case FhirArtifactClassEnum.Profile:
+                AddProfile(sd, fhirVersion);
+                break;
+
+            case FhirArtifactClassEnum.ComplexType:
+                AddComplexType(sd, fhirVersion);
+                break;
+
+            case FhirArtifactClassEnum.Resource:
+                AddResource(sd, fhirVersion);
+                break;
+
+            case FhirArtifactClassEnum.Interface:
+                AddInterface(sd, fhirVersion);
+                break;
+        }
+
+    }
+
     /// <summary>Gets the name of the primitive types by.</summary>
     public IReadOnlyDictionary<string, StructureDefinition> PrimitiveTypesByName => _primitiveTypesByName;
 
@@ -1381,6 +1518,25 @@ public partial class DefinitionCollection
 
         _complexTypesByName[sd.Name] = sd;
         TrackResource(sd);
+    }
+
+    public IEnumerable<string> GetResourceParents(string resourceName)
+    {
+        HashSet<string> names = [];
+
+        if (_resourcesByName.TryGetValue(resourceName, out StructureDefinition? sd))
+        {
+            names.Add(sd.Name);
+
+            string bt = sd.cgBaseTypeName();
+
+            if (!string.IsNullOrEmpty(bt) && (bt != sd.Name))
+            {
+                names.UnionWith(GetResourceParents(bt));
+            }
+        }
+
+        return names;
     }
 
     /// <summary>Gets listing of resources, by Name.</summary>
@@ -1785,11 +1941,16 @@ public partial class DefinitionCollection
 
     public IReadOnlyDictionary<string, CapabilityStatement> CapabilityStatementsByUrl => _capabilityStatementsByUrl;
 
-    public void AddCapabilityStatement(CapabilityStatement cs, CachePackageManifest source)
+    /// <summary>
+    /// Adds a capability statement to the definition collection.
+    /// </summary>
+    /// <param name="cs">The capability statement to add.</param>
+    /// <param name="canonicalSource">The canonical source of the capability statement.</param>
+    public void AddCapabilityStatement(CapabilityStatement cs, string canonicalSource = "")
     {
         if (string.IsNullOrEmpty(cs.Url))
         {
-            cs.Url = source.CanonicalUrl.EndsWith('/') ? source.CanonicalUrl + cs.Id : source.CanonicalUrl + "/" + cs.Id;
+            cs.Url = canonicalSource.EndsWith('/') ? canonicalSource + cs.Id : canonicalSource + "/" + cs.Id;
         }
 
         _capabilityStatementsByUrl[cs.Url] = cs;
@@ -1810,5 +1971,54 @@ public partial class DefinitionCollection
     {
         _compartmentsByUrl[compartmentDefinition.Url] = compartmentDefinition;
         TrackResource(compartmentDefinition);
+    }
+
+    /// <summary>
+    /// Tries to find an element in the structure definition by its path.
+    /// </summary>
+    /// <param name="path">The path of the element.</param>
+    /// <param name="sd">The found structure definition.</param>
+    /// <param name="ed">The found element definition.</param>
+    /// <returns><c>true</c> if the element is found; otherwise, <c>false</c>.</returns>
+    public bool TryFindElementByPath(
+        string path,
+        [NotNullWhen(true)] out StructureDefinition? sd,
+        [NotNullWhen(true)] out ElementDefinition? ed)
+    {
+        sd = null;
+        ed = null;
+
+        if (string.IsNullOrEmpty(path))
+        {
+            return false;
+        }
+
+        string[] parts = path.Split('.');
+        string structureName = parts[0];
+
+        if (_resourcesByName.TryGetValue(structureName, out sd))
+        {
+            if (parts.Length == 1)
+            {
+                ed = sd.cgRootElement();
+                return ed != null;
+            }
+
+            // check to see if we can find this element in this sd
+            return sd.cgTryGetElementByPath(path, out ed);
+        }
+
+        if (_complexTypesByName.TryGetValue(structureName, out sd))
+        {
+            if (parts.Length == 1)
+            {
+                ed = sd.cgRootElement();
+                return ed != null;
+            }
+
+            return sd.cgTryGetElementByPath(path, out ed);
+        }
+
+        return false;
     }
 }

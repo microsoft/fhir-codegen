@@ -13,6 +13,9 @@
     <None Update="TestData\Generated\*.*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="TestData\R4\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="TestData\R4B\*.*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -47,6 +50,10 @@
     <Content Include="TestData\Generated\Info-R5.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="TestData\R4\CapabilityStatement-candle-local.json" />
   </ItemGroup>
 
 </Project>

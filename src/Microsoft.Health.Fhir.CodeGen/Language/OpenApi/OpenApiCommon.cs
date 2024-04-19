@@ -6,6 +6,7 @@
 using System.ComponentModel;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using static Microsoft.Health.Fhir.CodeGen.Language.OpenApi.OpenApiCommon;
 
 namespace Microsoft.Health.Fhir.CodeGen.Language.OpenApi;
 
@@ -31,24 +32,27 @@ public static class OpenApiCommon
     public enum OaFileFormat
     {
         /// <summary>Export JSON files.</summary>
-        [Description("Export JSON file(s).")]
-        Json,
+        [Description("Export JSON file(s)")]
+        JSON,
 
         /// <summary>Export YAML files.</summary>
-        [Description("Export YAML file(s).")]
-        Yaml
+        [Description("Export YAML file(s)")]
+        YAML,
     }
 
     /// <summary>How much schema should be included in the output.</summary>
     public enum OaSchemaLevelCodes
     {
         /// <summary>No schema - just use 'objects'.</summary>
+        [Description("No schema - just use 'objects'")]
         None,
 
         /// <summary>Resources are named, but are defined as 'objects'.</summary>
+        [Description("Resources are named, but are defined as 'objects'")]
         Names,
 
-        /// <summary>Resources inlcude elements.</summary>
+        /// <summary>Resources include elements.</summary>
+        [Description("Resources include elements")]
         Detailed
     }
 
@@ -56,9 +60,11 @@ public static class OpenApiCommon
     public enum OaSchemaStyleCodes
     {
         /// <summary>Schemas use references.</summary>
+        [Description("Schemas use references")]
         References,
 
         /// <summary>Schemas are all inlined.</summary>
+        [Description("Schemas are all inlined")]
         Inline,
     }
 
@@ -66,21 +72,27 @@ public static class OpenApiCommon
     public enum OaFhirMimeCodes
     {
         /// <summary>Select FHIR MIME types based on capability statement options.</summary>
-        FromCapabilities,
+        [Description("Select FHIR MIME types based on capability statement options")]
+        Capabilities,
 
         /// <summary>Support application/fhir+json.</summary>
-        FhirJson,
+        [Description("Support application/fhir+json")]
+        JSON,
 
         /// <summary>Support application/fhir+xml.</summary>
-        FhirXml,
+        [Description("Support application/fhir+xml")]
+        XML,
 
         /// <summary>Support application/fhir+json and application/fhir+xml.</summary>
+        [Description("Support application/fhir+json and application/fhir+xml")]
         Common,
 
         /// <summary>Support application/x-turtle.</summary>
-        FhirTurtle,
+        [Description("Support application/x-turtle")]
+        Turtle,
 
         /// <summary>All known FHIR MIME types.</summary>
+        [Description("All known FHIR MIME types")]
         All,
     }
 
@@ -88,34 +100,43 @@ public static class OpenApiCommon
     public enum OaPatchMimeCodes
     {
         /// <summary>Select Patch MIME types based on capability statement options.</summary>
-        FromCapabilities,
+        [Description("Select Patch MIME types based on capability statement options")]
+        Capabilities,
 
         /// <summary>Allow application/json.</summary>
-        Json,
+        [Description("Allow application/json")]
+        JSON,
 
         /// <summary>Allow application/xml.</summary>
-        Xml,
+        [Description("Allow application/xml")]
+        XML,
 
         /// <summary>Allow configured FHIR MIME types.</summary>
-        FhirMime,
+        [Description("Allow configured FHIR MIME types")]
+        FhirMIME,
 
         /// <summary>Allow all valid patch MIME types.</summary>
+        [Description("Allow all valid patch MIME types")]
         All,
     }
 
     /// <summary>Values that represent HTTP Get vs. Post options.</summary>
-    public enum OaHttpSupportCodes
+    public enum OaHttpMethods
     {
         /// <summary>Enable search via GET and POST.</summary>
+        [Description("Enable GET and POST")]
         Both,
 
         /// <summary>Only enable search via GET.</summary>
+        [Description("Only GET")]
         Get,
 
         /// <summary>Only enable search via POST.</summary>
+        [Description("Only POST")]
         Post,
 
         /// <summary>Do not allow search.</summary>
+        [Description("Disabled")]
         None,
     }
 
@@ -123,16 +144,95 @@ public static class OpenApiCommon
     public enum OaSearchPostParameterLocationCodes
     {
         /// <summary>POST search parameters only appear in the body.</summary>
+        [Description("POST search parameters only appear in the body")]
         Body,
 
         /// <summary>POST search parameters only appear in the query.</summary>
+        [Description("POST search parameters only appear in the query")]
         Query,
 
         /// <summary>POST search parameters can be in the query or body.</summary>
+        [Description("POST search parameters can be in the query or body")]
         Both,
 
         /// <summary>Do not enumerate POST search parameters.</summary>
+        [Description("Do not enumerate POST search parameters")]
         None,
+    }
+
+    /// <summary>Values that represent true, false, or from capability statement.</summary>
+    public enum OaCapabilityBoolean
+    {
+        /// <summary>Use the setting from a CapabilityStatement.</summary>
+        [Description("Use the setting from a CapabilityStatement")]
+        Capabilities,
+
+        [Description("False")]
+        False,
+
+        [Description("True")]
+        True,
+    }
+
+
+    /// <summary>Values that represent naming conventions for OpenAPI.</summary>
+    public enum OaNamingConventionCodes
+    {
+        /// <summary>An enum constant representing the PascalCase option.</summary>
+        [Description("PascalCase")]
+        Pascal,
+
+        /// <summary>An enum constant representing the camelCase option.</summary>
+        [Description("camelCase")]
+        Camel,
+
+        /// <summary>An enum constant representing the UPPERCASE option.</summary>
+        [Description("UPPERCASE")]
+        Upper,
+
+        /// <summary>An enum constant representing the lowercase option.</summary>
+        [Description("lowercase")]
+        Lower,
+    }
+
+    /// <summary>Values that represent expanded interaction codes.</summary>
+    public enum OaExpandedInteractionCodes
+    {
+        Capabilities,
+
+        Read,
+        ReadConditional,
+        VRead,
+
+        HistoryInstance,
+        HistoryType,
+        HistorySystem,
+
+        SearchType,
+        SearchSystem,
+        SearchCompartment,
+
+        Create,
+        CreateConditional,
+
+        Update,
+        UpdateConditional,
+
+        Patch,
+        PatchConditional,
+
+        Delete,
+        DeleteConditionalSingle,
+        DeleteConditionalMultiple,
+
+        DeleteHistory,
+        DeleteHistoryVersion,
+
+        BatchOrTransaction,
+
+        OperationSystem,
+        OperationType,
+        OperationInstance,
     }
 
     /// <summary>Values that represent oa Operation level codes.</summary>
@@ -227,54 +327,90 @@ public static class OpenApiCommon
         { "xhtml", "string" },
     };
 
-    ///// <summary>(Immutable) The read only interactions.</summary>
-    //public static readonly HashSet<FhirCapResource.FhirInteractionCodes> _resInteracionHashRO = new()
-    //{
-    //    FhirCapResource.FhirInteractionCodes.Read,
-    //    FhirCapResource.FhirInteractionCodes.VRead,
-    //    FhirCapResource.FhirInteractionCodes.HistoryInstance,
-    //    FhirCapResource.FhirInteractionCodes.Search,
-    //    FhirCapResource.FhirInteractionCodes.SearchType,
-    //};
+    /// <summary>(Immutable) The read only interactions (cRud).</summary>
+    public static readonly HashSet<OaExpandedInteractionCodes> _resInteractionHashRO =
+    [
+        OaExpandedInteractionCodes.Read,
+        OaExpandedInteractionCodes.ReadConditional,
+        OaExpandedInteractionCodes.VRead,
+        OaExpandedInteractionCodes.HistoryInstance,
+        OaExpandedInteractionCodes.HistoryType,
+        OaExpandedInteractionCodes.SearchType,
+    ];
 
-    ///// <summary>(Immutable) The read only interactions.</summary>
-    //public static readonly FhirCapResource.FhirInteractionCodes[] _resInteractionsRO = new[]
-    //{
-    //    FhirCapResource.FhirInteractionCodes.Read,
-    //    FhirCapResource.FhirInteractionCodes.VRead,
-    //    FhirCapResource.FhirInteractionCodes.HistoryInstance,
-    //    FhirCapResource.FhirInteractionCodes.Search,
-    //    FhirCapResource.FhirInteractionCodes.SearchType,
-    //};
+    ///// <summary>(Immutable) The read only interactions (cRud).</summary>
+    //public static readonly OaExpandedInteractionCodes[] _resInteractionsRO =
+    //[
+    //    OaExpandedInteractionCodes.Read,
+    //    OaExpandedInteractionCodes.ReadConditional,
+    //    OaExpandedInteractionCodes.VRead,
+    //    OaExpandedInteractionCodes.HistoryInstance,
+    //    OaExpandedInteractionCodes.HistoryType,
+    //    OaExpandedInteractionCodes.SearchType,
+    //];
 
-    ///// <summary>(Immutable) The write only interactions.</summary>
-    //public static readonly HashSet<FhirCapResource.FhirInteractionCodes> _resInteactionHashWO = new()
-    //{
-    //    FhirCapResource.FhirInteractionCodes.Update,
-    //    FhirCapResource.FhirInteractionCodes.Patch,
-    //    FhirCapResource.FhirInteractionCodes.Create,
-    //};
+    /// <summary>(Immutable) The write only interactions (CrUd).</summary>
+    public static readonly HashSet<OaExpandedInteractionCodes> _resInteractionHashWO =
+    [
+        OaExpandedInteractionCodes.Create,
+        OaExpandedInteractionCodes.CreateConditional,
+        OaExpandedInteractionCodes.Update,
+        OaExpandedInteractionCodes.UpdateConditional,
+        OaExpandedInteractionCodes.Patch,
+        OaExpandedInteractionCodes.PatchConditional,
+    ];
 
-    ///// <summary>(Immutable) The write only interactions.</summary>
-    //public static readonly FhirCapResource.FhirInteractionCodes[] _resInteractionsWO = new[]
-    //{
-    //    FhirCapResource.FhirInteractionCodes.Update,
-    //    FhirCapResource.FhirInteractionCodes.Patch,
-    //    FhirCapResource.FhirInteractionCodes.Create,
-    //};
+    ///// <summary>(Immutable) The write only interactions (CrUd).</summary>
+    //public static readonly OaExpandedInteractionCodes[] _resInteractionsWO =
+    //[
+    //    OaExpandedInteractionCodes.Create,
+    //    OaExpandedInteractionCodes.CreateConditional,
+    //    OaExpandedInteractionCodes.Update,
+    //    OaExpandedInteractionCodes.UpdateConditional,
+    //    OaExpandedInteractionCodes.Patch,
+    //    OaExpandedInteractionCodes.PatchConditional,
+    //];
 
-    //public static readonly FhirCapResource.FhirInteractionCodes[] _resInteractionsRW = new[]
-    //{
-    //    FhirCapResource.FhirInteractionCodes.Read,
-    //    FhirCapResource.FhirInteractionCodes.VRead,
-    //    FhirCapResource.FhirInteractionCodes.HistoryInstance,
-    //    FhirCapResource.FhirInteractionCodes.Search,
-    //    FhirCapResource.FhirInteractionCodes.SearchType,
-    //    FhirCapResource.FhirInteractionCodes.Update,
-    //    FhirCapResource.FhirInteractionCodes.Patch,
-    //    FhirCapResource.FhirInteractionCodes.Create,
-    //    FhirCapResource.FhirInteractionCodes.Delete,
-    //};
+    ///// <summary>(Immutable) The read and write resource interactions (CRUd).</summary>
+    //public static readonly OaExpandedInteractionCodes[] _resInteractionsRW =
+    //[
+    //    OaExpandedInteractionCodes.Read,
+    //    OaExpandedInteractionCodes.ReadConditional,
+    //    OaExpandedInteractionCodes.VRead,
+    //    OaExpandedInteractionCodes.HistoryInstance,
+    //    OaExpandedInteractionCodes.HistoryType,
+    //    OaExpandedInteractionCodes.SearchType,
+    //    OaExpandedInteractionCodes.Create,
+    //    OaExpandedInteractionCodes.CreateConditional,
+    //    OaExpandedInteractionCodes.Update,
+    //    OaExpandedInteractionCodes.UpdateConditional,
+    //    OaExpandedInteractionCodes.Patch,
+    //    OaExpandedInteractionCodes.PatchConditional,
+    //];
+
+    /// <summary>(Immutable) All allowed resource-based (type or instance) interactions (CRUD+).</summary>
+    //public static readonly HashSet<OaExpandedInteractionCodes> _resInteractionsHashAll =
+    //[
+    //    OaExpandedInteractionCodes.Read,
+    //    OaExpandedInteractionCodes.ReadConditional,
+    //    OaExpandedInteractionCodes.VRead,
+    //    OaExpandedInteractionCodes.HistoryInstance,
+    //    OaExpandedInteractionCodes.HistoryType,
+    //    OaExpandedInteractionCodes.SearchType,
+    //    OaExpandedInteractionCodes.Create,
+    //    OaExpandedInteractionCodes.CreateConditional,
+    //    OaExpandedInteractionCodes.Update,
+    //    OaExpandedInteractionCodes.UpdateConditional,
+    //    OaExpandedInteractionCodes.Patch,
+    //    OaExpandedInteractionCodes.PatchConditional,
+    //    OaExpandedInteractionCodes.Delete,
+    //    OaExpandedInteractionCodes.DeleteConditionalSingle,
+    //    OaExpandedInteractionCodes.DeleteConditionalMultiple,
+    //    OaExpandedInteractionCodes.DeleteHistory,
+    //    OaExpandedInteractionCodes.DeleteHistoryVersion,
+    //    OaExpandedInteractionCodes.Operation,
+    //];
+
 
     /// <summary>(Immutable) The reserved words.</summary>
     public static readonly HashSet<string> _reservedWords = [];
@@ -346,6 +482,12 @@ public static class OpenApiCommon
     /// </summary>
     static OpenApiCommon()
     {
+        _httpCommonParameters = new()
+        {
+            ["_format"] = BuildStringParameter("_format", "Override the HTTP content negotiation"),
+            ["_pretty"] = BuildStringParameter("_pretty", "Ask for a pretty printed response for human convenience"),
+        };
+
         _httpReadParameters = new()
         {
             ["_elements"] = BuildStringParameter("_elements", "Ask for a particular set of elements to be returned"),
@@ -353,10 +495,17 @@ public static class OpenApiCommon
             ["_summary"] = BuildStringParameter("_summary", "Return only portions of resources, based on pre-defined levels"),
         };
 
-        _httpCommonParameters = new()
+        _searchResultParameters = new()
         {
-            ["_format"] = BuildStringParameter("_format", "Override the HTTP content negotiation"),
-            ["_pretty"] = BuildStringParameter("_pretty", "Ask for a pretty printed response for human convenience"),
+            ["_contained"] = BuildStringParameter("_contained", "Request different types of handling for contained resources"),
+            ["_count"] = BuildNumberParameter("_count", "Limit the number of match results per page of response"),
+            //["_elements"] = BuildStringParameter("_elements", "Request that only a specific set of elements be returned for resources"),
+            ["_graph"] = BuildStringParameter("_graph", "Include additional resources according to a GraphDefinition"),
+            ["_include"] = BuildStringParameter("_include", "Include additional resources, based on following links forward across references"),
+            ["_revinclude"] = BuildStringParameter("_revinclude", "Include additional resources, based on following reverse links across references"),
+            ["_score"] = BuildStringParameter("_score", "Request match relevance in results"),
+            ["_sort"] = BuildStringParameter("_sort", "Request which order results should be returned in"),
+            ["_total"] = BuildStringParameter("_total", "Request a precision of the total number of results for a request"),
         };
 
         _searchCommonParameters = new()
@@ -376,17 +525,13 @@ public static class OpenApiCommon
             ["_text"] = BuildStringParameter("_text", "Perform searches against the narrative content of a resource"),
         };
 
-        _searchResultParameters = new()
+        _historyParameters = new()
         {
-            ["_contained"] = BuildStringParameter("_contained", "Request different types of handling for contained resources"),
             ["_count"] = BuildNumberParameter("_count", "Limit the number of match results per page of response"),
-            //["_elements"] = BuildStringParameter("_elements", "Request that only a specific set of elements be returned for resources"),
-            ["_graph"] = BuildStringParameter("_graph", "Include additional resources according to a GraphDefinition"),
-            ["_include"] = BuildStringParameter("_include", "Include additional resources, based on following links forward across references"),
-            ["_revinclude"] = BuildStringParameter("_revinclude", "Include additional resources, based on following reverse links across references"),
-            ["_score"] = BuildStringParameter("_score", "Request match relevance in results"),
+            ["_since"] = BuildStringParameter("_since", "Only include resource versions that were created at or after the given instant in time"),
+            ["_at"] = BuildStringParameter("_at", "Only include resource versions that were current at some point during the time period specified in the date time value"),
+            ["_list"] = BuildStringParameter("_list", "Only include resource versions that are referenced in the specified list"),
             ["_sort"] = BuildStringParameter("_sort", "Request which order results should be returned in"),
-            ["_total"] = BuildStringParameter("_total", "Request a precision of the total number of results for a request"),
         };
 
         _searchRootParameters = new()
@@ -398,15 +543,6 @@ public static class OpenApiCommon
         {
             [PathComponentLogicalId] = BuildPathParameter(PathComponentLogicalId, "Resource Logical ID"),
             [PathComponentVersionId] = BuildPathParameter(PathComponentVersionId, "Resource Version Number"),
-        };
-
-        _historyParameters = new()
-        {
-            ["_count"] = BuildNumberParameter("_count", "Limit the number of match results per page of response"),
-            ["_since"] = BuildStringParameter("_since", "Only include resource versions that were created at or after the given instant in time"),
-            ["_at"] = BuildStringParameter("_at", "Only include resource versions that were current at some point during the time period specified in the date time value"),
-            ["_list"] = BuildStringParameter("_list", "Only include resource versions that are referenced in the specified list"),
-            ["_sort"] = BuildStringParameter("_sort", "Request which order results should be returned in"),
         };
 
         _httpRequestHeaders = new()

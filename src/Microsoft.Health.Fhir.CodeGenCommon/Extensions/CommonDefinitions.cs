@@ -51,4 +51,6 @@ public static class CommonDefinitions
     public const string FhirUrlPrefix = "http://hl7.org/fhir/";
     public const string FhirPathUrlPrefix = "http://hl7.org/fhirpath/";
     public const string THOCsUrlPrefix = "http://terminology.hl7.org/CodeSystem/";
+
+    public const string ExtUrlSmartOAuth = "http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris";
 }

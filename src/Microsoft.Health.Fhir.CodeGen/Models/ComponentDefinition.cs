@@ -4,6 +4,7 @@
 // </copyright>
 
 
+using System.Diagnostics.CodeAnalysis;
 using Hl7.Fhir.Model;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
@@ -31,6 +32,27 @@ public record class ComponentDefinition
     public required bool IsRootOfStructure { get; init; }
 
     /// <summary>
+    /// Initializes a new instance of the <see cref="ComponentDefinition"/> class.
+    /// </summary>
+    /// <remarks>
+    /// This constructor is used to create a new instance of the ComponentDefinition class.
+    /// </remarks>
+    public ComponentDefinition() { }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ComponentDefinition"/> class.
+    /// </summary>
+    /// <param name="sd">The structure definition.</param>
+    [SetsRequiredMembers]
+    public ComponentDefinition(StructureDefinition sd)
+    {
+        Structure = sd;
+        Element = sd.cgRootElement()
+            ?? throw new InvalidOperationException($"StructureDefinition {sd.Url} does not have a root element.");
+        IsRootOfStructure = true;
+    }
+
+    /// <summary>
     /// Gets the URL for code generation.
     /// </summary>
     /// <returns>A string representing the URL.</returns>
@@ -45,6 +67,15 @@ public record class ComponentDefinition
     /// <returns>A string representing the code generation name.</returns>
     /// <remarks>Firely uses this version</remarks>
     public string cgName(NamingConvention convention = NamingConvention.PascalCase) => Element.cgNameForExport(convention);
+
+    /// <summary>Get a short description for a component.</summary>
+    /// <returns>A string.</returns>
+    public string cgShort() =>
+        !string.IsNullOrEmpty(Element?.Short) ? Element.Short
+        : !string.IsNullOrEmpty(Element?.Definition) ? Element.Definition
+        : !string.IsNullOrEmpty(Structure?.Description) ? Structure.Description
+        : !string.IsNullOrEmpty(Structure?.Purpose) ? Structure.Purpose
+        : string.Empty;
 
     /// <summary>Cg name rooted.</summary>
     /// <param name="convention">(Optional) The convention.</param>
@@ -93,7 +124,7 @@ public record class ComponentDefinition
     }
 
     /// <summary>
-    /// Enumerates cg get children in this collection.
+    /// Enumerates the elements contained in this component.
     /// </summary>
     /// <param name="includeDescendants">(Optional) True to include, false to exclude the descendants.</param>
     /// <returns>An enumerator that allows foreach to be used to process cg get children in this collection.</returns>

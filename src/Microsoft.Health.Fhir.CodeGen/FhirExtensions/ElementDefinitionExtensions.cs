@@ -47,6 +47,13 @@ public static class ElementDefinitionExtensions
         return ed.Path.Split('.').Last();
     }
 
+    /// <summary>Get a short description for a component.</summary>
+    /// <returns>A string.</returns>
+    public static string cgShort(this ElementDefinition ed) =>
+        !string.IsNullOrEmpty(ed.Short) ? ed.Short
+        : !string.IsNullOrEmpty(ed.Definition) ? ed.Definition
+        : string.Empty;
+
     /// <summary>Get the URL for a root element or a relative URL for components.</summary>
     /// <param name="ed">        The ed to act on.</param>
     /// <param name="sd">        The SD.</param>

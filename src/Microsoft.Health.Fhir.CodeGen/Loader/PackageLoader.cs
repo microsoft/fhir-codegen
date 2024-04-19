@@ -20,11 +20,12 @@ using Microsoft.Health.Fhir.CodeGenCommon.Models;
 namespace Microsoft.Health.Fhir.CodeGen.Loader;
 
 /// <summary>A package loader.</summary>
-public class PackageLoader
+public class PackageLoader : IDisposable
 {
-
     /// <summary>(Immutable) The cache.</summary>
     private readonly IFhirPackageClient _cache;
+
+    private bool _disposedValue = false;
 
     /// <summary>(Immutable) The sorted order for definition types we want to load.</summary>
     private static readonly string[] _sortedLoadOrder =
@@ -40,6 +41,9 @@ public class PackageLoader
         "CompartmentDefinition",
     ];
 
+    private LoaderOptions.JsonDeserializationModel _jsonModel;
+
+    /// <summary>Options for controlling the JSON.</summary>
     private JsonSerializerOptions _jsonOptions;
 
     /// <summary>The lenient JSON parser.</summary>
@@ -47,24 +51,6 @@ public class PackageLoader
 
     /// <summary>The lenient XML parser.</summary>
     private FhirXmlPocoDeserializer _xmlParser;
-
-    /// <summary>A load functions.</summary>
-    private class LoadFunctions
-    {
-        public required Func<string, string, CapabilityStatement?> ParseCapabilityStatement;
-        public required Func<string, string, CodeSystem?> ParseCodeSystem;
-        public required Func<string, string, CompartmentDefinition?> ParseCompartmentDef;
-        public required Func<string, string, ImplementationGuide?> ParseImplementationGuide;
-        public required Func<string, string, OperationDefinition?> ParseOperationDef;
-        public required Func<string, string, SearchParameter?> ParseSearchParam;
-        public required Func<string, string, StructureDefinition?> ParseStructureDef;
-        public required Func<string, string, ValueSet?> ParseValueSet;
-    }
-
-    private LoadFunctions _loadFunctionsR5;
-    private LoadFunctions _loadFunctionsR4B;
-    private LoadFunctions _loadFunctionsR3;
-    private LoadFunctions _loadFunctionsR2;
 
     private Microsoft.Health.Fhir.CrossVersion.Converter_43_50? _converter_43_50 = null;
     private Microsoft.Health.Fhir.CrossVersion.Converter_30_50? _converter_30_50 = null;
@@ -84,78 +70,7 @@ public class PackageLoader
 
         _xmlParser = new(opts.FhirXmlSettings);
 
-        switch (opts.JsonModel)
-        {
-            default:
-            case LoaderOptions.JsonDeserializationModel.Poco:
-                {
-                    _loadFunctionsR5 = new()
-                    {
-                        ParseCapabilityStatement = ParseContentsPoco<CapabilityStatement>,
-                        ParseCodeSystem = ParseContentsPoco<CodeSystem>,
-                        ParseCompartmentDef = ParseContentsPoco<CompartmentDefinition>,
-                        ParseImplementationGuide = ParseContentsPoco<ImplementationGuide>,
-                        ParseOperationDef = ParseContentsPoco<OperationDefinition>,
-                        ParseSearchParam = ParseContentsPoco<SearchParameter>,
-                        ParseStructureDef = ParseContentsPoco<StructureDefinition>,
-                        ParseValueSet = ParseContentsPoco<ValueSet>,
-                    };
-                }
-                break;
-
-            case LoaderOptions.JsonDeserializationModel.Default:
-            case LoaderOptions.JsonDeserializationModel.SystemTextJson:
-                {
-                    _loadFunctionsR5 = new()
-                    {
-                        ParseCapabilityStatement = ParseContentsSystemTextStream<CapabilityStatement>,
-                        ParseCodeSystem = ParseContentsSystemTextStream<CodeSystem>,
-                        ParseCompartmentDef = ParseContentsSystemTextStream<CompartmentDefinition>,
-                        ParseImplementationGuide = ParseContentsSystemTextStream<ImplementationGuide>,
-                        ParseOperationDef = ParseContentsSystemTextStream<OperationDefinition>,
-                        ParseSearchParam = ParseContentsSystemTextStream<SearchParameter>,
-                        ParseStructureDef = ParseContentsSystemTextStream<StructureDefinition>,
-                        ParseValueSet = ParseContentsSystemTextStream<ValueSet>,
-                    };
-                }
-                break;
-        }
-        
-        _loadFunctionsR4B = new()
-        {
-            ParseCapabilityStatement = ParseContents43<CapabilityStatement>,
-            ParseCodeSystem = ParseContents43<CodeSystem>,
-            ParseCompartmentDef = ParseContents43<CompartmentDefinition>,
-            ParseImplementationGuide = ParseContents43<ImplementationGuide>,
-            ParseOperationDef = ParseContents43<OperationDefinition>,
-            ParseSearchParam = ParseContents43<SearchParameter>,
-            ParseStructureDef = ParseContents43<StructureDefinition>,
-            ParseValueSet = ParseContents43<ValueSet>,
-        };
-
-        _loadFunctionsR3 = new()
-        {
-            ParseCapabilityStatement = ParseContents30<CapabilityStatement>,
-            ParseCodeSystem = ParseContents30<CodeSystem>,
-            ParseCompartmentDef = ParseContents30<CompartmentDefinition>,
-            ParseImplementationGuide = ParseContents30<ImplementationGuide>,
-            ParseOperationDef = ParseContents30<OperationDefinition>,
-            ParseSearchParam = ParseContents30<SearchParameter>,
-            ParseStructureDef = ParseContents30<StructureDefinition>,
-            ParseValueSet = ParseContents30<ValueSet>,
-        };
-
-        _loadFunctionsR2 = new()
-        {
-            ParseCapabilityStatement = ParseContents20<CapabilityStatement>,
-            ParseCodeSystem = ParseContents20<CodeSystem>,
-            ParseCompartmentDef = ParseContents20<CompartmentDefinition>,
-            ParseImplementationGuide = ParseContents20<ImplementationGuide>,
-            ParseOperationDef = ParseContents20<OperationDefinition>,
-            ParseSearchParam = ParseContents20<SearchParameter>,
-            ParseStructureDef = ParseContents20<StructureDefinition>,
-            ParseValueSet = ParseContents20<ValueSet>,
-        };
+        _jsonModel = opts.JsonModel;
     }
 
     /// <summary>Adds all interaction parameters to a core definition collection.</summary>
@@ -410,14 +325,11 @@ public class PackageLoader
                 ? FhirReleases.FhirVersionToSequence(manifest.AllFhirVersions.First())
                 : definitions.FhirSequence;
 
-            // set the load functions for the correct version of FHIR
-            LoadFunctions lf;
-
+            // create the converter we need
             switch (definitions.FhirSequence)
             {
                 case FhirReleases.FhirSequenceCodes.DSTU2:
                     {
-                        lf = _loadFunctionsR2;
                         if (_converter_20_50 == null)
                         {
                             lock (_convertLockObject)
@@ -430,7 +342,6 @@ public class PackageLoader
 
                 case FhirReleases.FhirSequenceCodes.STU3:
                     {
-                        lf = _loadFunctionsR3;
                         if (_converter_30_50 == null)
                         {
                             lock (_convertLockObject)
@@ -444,7 +355,6 @@ public class PackageLoader
                 case FhirReleases.FhirSequenceCodes.R4:
                 case FhirReleases.FhirSequenceCodes.R4B:
                     {
-                        lf = _loadFunctionsR4B;
                         if (_converter_43_50 == null)
                         {
                             lock (_convertLockObject)
@@ -458,7 +368,6 @@ public class PackageLoader
                 default:
                 case FhirReleases.FhirSequenceCodes.R5:
                     {
-                        lf = _loadFunctionsR5;
                     }
                     break;
             }
@@ -505,6 +414,20 @@ public class PackageLoader
             {
                 string rt = _sortedLoadOrder[i];
 
+                Type? netType = Hl7.Fhir.Model.ModelInfo.GetTypeForFhirType(rt);
+
+                if (netType == null)
+                {
+                    if (rt == "Conformance")
+                    {
+                        netType = typeof(CapabilityStatement);
+                    }
+                    else
+                    {
+                        throw new Exception($"Failed to find .NET type for FHIR type {rt}");
+                    }
+                }
+
                 foreach (int fi in sortedFileIndexes[i])
                 {
                     PackageContents.PackageFile pFile = packageContents.Files[fi];
@@ -519,140 +442,50 @@ public class PackageLoader
 
                     string fileExtension = Path.GetExtension(pFile.FileName);
 
-                    switch (rt)
+                    object? r;
+
+                    switch (definitions.FhirSequence)
                     {
-                        case "CodeSystem":
+                        case FhirReleases.FhirSequenceCodes.DSTU2:
                             {
-                                CodeSystem? r = lf.ParseCodeSystem(fileExtension, path)
-                                    ?? throw new Exception($"Failed to parse CodeSystem file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
-                                definitions.AddCodeSystem(r);
+                                r = ParseContents20(fileExtension, path);
                             }
                             break;
 
-                        case "ValueSet":
+                        case FhirReleases.FhirSequenceCodes.STU3:
                             {
-                                ValueSet? r = lf.ParseValueSet(fileExtension, path) ??
-                                    throw new Exception($"Failed to parse ValueSet file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
+                                r = ParseContents30(fileExtension, path);
+                            }
+                            break;
 
-                                // DSTU2 has embedded CodeSystems
-                                if ((packageFhirVersion == FhirReleases.FhirSequenceCodes.DSTU2) &&
-                                    r.Contained.Count != 0)
+                        case FhirReleases.FhirSequenceCodes.R4:
+                        case FhirReleases.FhirSequenceCodes.R4B:
+                            {
+                                r = ParseContents43(fileExtension, path);
+                            }
+                            break;
+
+                        default:
+                        case FhirReleases.FhirSequenceCodes.R5:
+                            {
+                                if (_jsonModel == LoaderOptions.JsonDeserializationModel.SystemTextJson)
                                 {
-                                    foreach (Resource contained in r.Contained)
-                                    {
-                                        if (contained is CodeSystem cs)
-                                        {
-                                            // use the same id
-                                            if (string.IsNullOrEmpty(cs.Id))
-                                            {
-                                                cs.Id = r.Id;
-                                            }
-
-                                            definitions.AddCodeSystem(cs);
-
-                                            // use all values from the code system
-                                            r.Compose ??= new();
-
-                                            if (r.Compose.Include == null)
-                                            {
-                                                r.Compose.Include = [];
-                                            }
-
-                                            r.Compose.Include.Add(new ValueSet.ConceptSetComponent
-                                            {
-                                                SystemElement = new FhirUri($"{cs.Url}"),
-                                            });
-                                        }
-                                    }
+                                    r = ParseContentsSystemTextStream(fileExtension, path, netType);
                                 }
-
-                                definitions.AddValueSet(r);
-                            }
-                            break;
-
-                        case "StructureDefinition":
-                            {
-                                StructureDefinition? r = lf.ParseStructureDef(fileExtension, path) ??
-                                    throw new Exception($"Failed to parse StructureDefinition file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
-
-                                switch (r.cgArtifactClass())
+                                else
                                 {
-                                    case FhirArtifactClassEnum.PrimitiveType:
-                                        definitions.AddPrimitiveType(r, packageFhirVersion);
-                                        break;
-
-                                    case FhirArtifactClassEnum.LogicalModel:
-                                        definitions.AddLogicalModel(r, packageFhirVersion);
-                                        break;
-
-                                    case FhirArtifactClassEnum.Extension:
-                                        definitions.AddExtension(r, packageFhirVersion);
-                                        break;
-
-                                    case FhirArtifactClassEnum.Profile:
-                                        definitions.AddProfile(r, packageFhirVersion);
-                                        break;
-
-                                    case FhirArtifactClassEnum.ComplexType:
-                                        definitions.AddComplexType(r, packageFhirVersion);
-                                        break;
-
-                                    case FhirArtifactClassEnum.Resource:
-                                        definitions.AddResource(r, packageFhirVersion);
-                                        break;
-
-                                    case FhirArtifactClassEnum.Interface:
-                                        definitions.AddInterface(r, packageFhirVersion);
-                                        break;
+                                    r = ParseContentsPoco(fileExtension, path);
                                 }
-                            }
-                            break;
-                        case "SearchParameter":
-                            {
-                                SearchParameter? r = lf.ParseSearchParam(fileExtension, path) ??
-                                    throw new Exception($"Failed to parse SearchParameter file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
-
-                                definitions.AddSearchParameter(r);
-                            }
-                            break;
-
-                        case "OperationDefinition":
-                            {
-                                OperationDefinition? r = lf.ParseOperationDef(fileExtension, path) ??
-                                    throw new Exception($"Failed to parse OperationDefinition file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
-
-                                definitions.AddOperation(r);
-                            }
-                            break;
-
-                        case "Conformance":
-                        case "CapabilityStatement":
-                            {
-                                CapabilityStatement? r = lf.ParseCapabilityStatement(fileExtension, path) ??
-                                    throw new Exception($"Failed to parse CapabilityStatement file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
-
-                                definitions.AddCapabilityStatement(r, manifest);
-                            }
-                            break;
-
-                        case "ImplementationGuide":
-                            {
-                                ImplementationGuide? r = lf.ParseImplementationGuide(fileExtension, path) ??
-                                    throw new Exception($"Failed to parse ImplementationGuide file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
-
-                                definitions.AddImplementationGuide(r);
-                            }
-                            break;
-
-                        case "CompartmentDefinition":
-                            {
-                                CompartmentDefinition? r = lf.ParseCompartmentDef(fileExtension, path) ??
-                                    throw new Exception($"Failed to parse CompartmentDefinition file {cachedPackage.ResolvedDirective}:{pFile.FileName}");
-
-                                definitions.AddCompartment(r);
                             }
                             break;
                     }
+
+                    if (r == null)
+                    {
+                        throw new Exception($"Failed to parse {rt} {cachedPackage.ResolvedDirective}:{pFile.FileName}");
+                    }
+
+                    definitions.AddResource(r, packageFhirVersion, manifest.CanonicalUrl);
                 }
             }
 
@@ -666,31 +499,6 @@ public class PackageLoader
             }
         }
 
-        // clean up
-        if (_converter_43_50 != null)
-        {
-            lock (_convertLockObject)
-            {
-                _converter_43_50 = null;
-            }
-        }
-
-        if (_converter_30_50 != null)
-        {
-            lock (_convertLockObject)
-            {
-                _converter_30_50 = null;
-            }
-        }
-
-        if (_converter_20_50 != null)
-        {
-            lock (_convertLockObject)
-            {
-                _converter_20_50 = null;
-            }
-        }
-
         return definitions;
     }
 
@@ -699,7 +507,7 @@ public class PackageLoader
     /// <param name="format">Describes the format to use.</param>
     /// <param name="path">  Full pathname of the file.</param>
     /// <returns>A TResource?</returns>
-    public TResource? ParseContentsPoco<TResource>(string format, string path) where TResource : Resource, new()
+    public object? ParseContentsPoco(string format, string path)
     {
         string content = File.ReadAllTextAsync(path).Result;
 
@@ -714,14 +522,7 @@ public class PackageLoader
                 {
                     // always use lenient parsing
                     Resource parsed = _jsonParser.DeserializeResource(content);
-                    if (parsed is TResource resource)
-                    {
-                        return resource;
-                    }
-                    else
-                    {
-                        return null;
-                    }
+                    return parsed;
                 }
                 catch (Exception ex)
                 {
@@ -745,14 +546,7 @@ public class PackageLoader
                 {
                     // always use lenient parsing
                     Resource parsed = _xmlParser.DeserializeResource(content);
-                    if (parsed is TResource resource)
-                    {
-                        return resource;
-                    }
-                    else
-                    {
-                        return null;
-                    }
+                    return parsed;
                 }
                 catch (Exception ex)
                 {
@@ -780,7 +574,7 @@ public class PackageLoader
     /// <param name="format">Describes the format to use.</param>
     /// <param name="path">  Full pathname of the file.</param>
     /// <returns>An asynchronous result that yields a TResource?</returns>
-    public TResource? ParseContents43<TResource>(string format, string path) where TResource : Resource, new()
+    public object? ParseContents43(string format, string path)
     {
         switch (format.ToLowerInvariant())
         {
@@ -792,7 +586,7 @@ public class PackageLoader
                 try
                 {
                     Hl7.Fhir.ElementModel.ISourceNode sn = FhirJsonNode.Parse(File.ReadAllText(path));
-                    return _converter_43_50!.Convert(sn) as TResource;
+                    return _converter_43_50!.Convert(sn);
                 }
                 catch (Exception ex)
                 {
@@ -815,7 +609,7 @@ public class PackageLoader
                 try
                 {
                     Hl7.Fhir.ElementModel.ISourceNode sn = FhirXmlNode.Parse(File.ReadAllText(path));
-                    return _converter_43_50!.Convert(sn) as TResource;
+                    return _converter_43_50!.Convert(sn);
                 }
                 catch (Exception ex)
                 {
@@ -838,7 +632,7 @@ public class PackageLoader
         }
     }
 
-    public TResource? ParseContents30<TResource>(string format, string path) where TResource : Resource, new()
+    public object? ParseContents30(string format, string path)
     {
         switch (format.ToLowerInvariant())
         {
@@ -850,7 +644,7 @@ public class PackageLoader
                 try
                 {
                     Hl7.Fhir.ElementModel.ISourceNode sn = FhirJsonNode.Parse(File.ReadAllText(path));
-                    return _converter_30_50!.Convert(sn) as TResource;
+                    return _converter_30_50!.Convert(sn);
                 }
                 catch (Exception ex)
                 {
@@ -873,7 +667,7 @@ public class PackageLoader
                 try
                 {
                     Hl7.Fhir.ElementModel.ISourceNode sn = FhirXmlNode.Parse(File.ReadAllText(path));
-                    return _converter_30_50!.Convert(sn) as TResource;
+                    return _converter_30_50!.Convert(sn);
                 }
                 catch (Exception ex)
                 {
@@ -896,7 +690,7 @@ public class PackageLoader
         }
     }
 
-    public TResource? ParseContents20<TResource>(string format, string path) where TResource : Resource, new()
+    public object? ParseContents20(string format, string path)
     {
         switch (format.ToLowerInvariant())
         {
@@ -908,7 +702,7 @@ public class PackageLoader
                 try
                 {
                     Hl7.Fhir.ElementModel.ISourceNode sn = FhirJsonNode.Parse(File.ReadAllText(path));
-                    return _converter_20_50!.Convert(sn) as TResource;
+                    return _converter_20_50!.Convert(sn);
                 }
                 catch (Exception ex)
                 {
@@ -931,7 +725,7 @@ public class PackageLoader
                 try
                 {
                     Hl7.Fhir.ElementModel.ISourceNode sn = FhirXmlNode.Parse(File.ReadAllText(path));
-                    return _converter_20_50!.Convert(sn) as TResource;
+                    return _converter_20_50!.Convert(sn);
                 }
                 catch (Exception ex)
                 {
@@ -961,7 +755,7 @@ public class PackageLoader
     /// <returns>
     /// The parsed resource of type <typeparamref name="TResource"/> or null if parsing fails.
     /// </returns>
-    public TResource? ParseContentsSystemTextStream<TResource>(string format, string path) where TResource : Resource, new()
+    public object? ParseContentsSystemTextStream(string format, string path, Type resourceType)
     {
         switch (format.ToLowerInvariant())
         {
@@ -974,7 +768,7 @@ public class PackageLoader
                 {
                     using (FileStream fs = new(path, FileMode.Open, FileAccess.Read, FileShare.Read))
                     {
-                        return JsonSerializer.Deserialize<TResource>(fs, _jsonOptions);
+                        return JsonSerializer.Deserialize(fs, resourceType, _jsonOptions);
                     }
                 }
                 catch (Exception ex)
@@ -1001,14 +795,7 @@ public class PackageLoader
 
                     // always use lenient parsing
                     Resource parsed = _xmlParser.DeserializeResource(content);
-                    if (parsed is TResource resource)
-                    {
-                        return resource;
-                    }
-                    else
-                    {
-                        return null;
-                    }
+                    return parsed;
                 }
                 catch (Exception ex)
                 {
@@ -1063,4 +850,58 @@ public class PackageLoader
     }
 
 
+    /// <summary>
+    /// Releases the unmanaged resources used by the <see cref="FhirCache"/>
+    /// and optionally releases the managed resources.
+    /// </summary>
+    /// <param name="disposing">True to release both managed and unmanaged resources; false to
+    ///  release only unmanaged resources.</param>
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!_disposedValue)
+        {
+            if (disposing)
+            {
+                // TODO: dispose managed state (managed objects)
+                if (_converter_43_50 != null)
+                {
+                    lock (_convertLockObject)
+                    {
+                        _converter_43_50 = null;
+                    }
+                }
+
+                if (_converter_30_50 != null)
+                {
+                    lock (_convertLockObject)
+                    {
+                        _converter_30_50 = null;
+                    }
+                }
+
+                if (_converter_20_50 != null)
+                {
+                    lock (_convertLockObject)
+                    {
+                        _converter_20_50 = null;
+                    }
+                }
+            }
+
+            // TODO: free unmanaged resources (unmanaged objects) and override finalizer
+            // TODO: set large fields to null
+            _disposedValue = true;
+        }
+    }
+
+    /// <summary>
+    /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged
+    /// resources.
+    /// </summary>
+    void IDisposable.Dispose()
+    {
+        // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+        Dispose(disposing: true);
+        GC.SuppressFinalize(this);
+    }
 }

@@ -29,6 +29,8 @@ using Microsoft.Health.Fhir.CodeGen.Loader;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using System.Resources;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Health.Fhir.CodeGen.Net;
+using Microsoft.Health.Fhir.CodeGenCommon.Smart;
 
 namespace fhir_codegen;
 
@@ -506,6 +508,38 @@ public class Program
             DefinitionCollection? loaded = loader.LoadPackages(packages.First().Name, packages)
                 ?? throw new Exception($"Could not load packages: {string.Join(',', rootConfig.Packages)}");
 
+            // check for a FHIR server URL
+            if ((rootConfig is ConfigGenerate genConfig) &&
+                !string.IsNullOrEmpty(genConfig.FhirServerUrl))
+            {
+                // parse any HTTP headers the caller has provided
+                Dictionary<string, List<string>> headers = ParseHttpHeaderArgs(genConfig.FhirServerHeaders);
+
+                // create our server connector
+                ServerConnector serverConnector = new(genConfig.FhirServerUrl, headers, loader);
+
+                // try to get the capability statement
+                if (serverConnector.TryGetCapabilities(out _, out _, out Hl7.Fhir.Model.CapabilityStatement? capStatement, out FhirReleases.FhirSequenceCodes? serverFhirVersion))
+                {
+                    genConfig.ServerCapabilities = capStatement;
+
+                    if (genConfig.ResolveServerCanonicals)
+                    {
+                        serverConnector.TryResolveCanonicals(capStatement, loaded, genConfig.ResolveExternalCanonicals, out _);
+                    }
+                }
+
+                // try to get SMART config
+                if (serverConnector.TryGetSmartConfig(out _, out _, out SmartWellKnown? smartConfig))
+                {
+                    genConfig.ServerSmartConfig = smartConfig;
+                }
+                else if ((capStatement != null) && serverConnector.TryBuildSmartConfig(capStatement, out smartConfig))
+                {
+                    genConfig.ServerSmartConfig = smartConfig;
+                }
+            }
+
             // call the export method on the language object
             iLang.Export(config, loaded);
         }
@@ -523,6 +557,42 @@ public class Program
 
         return 10;
     }
+
+    private static Dictionary<string, List<string>> ParseHttpHeaderArgs(List<string> argValues)
+    {
+        if (argValues.Count == 0)
+        {
+            return [];
+        }
+
+        Dictionary<string, List<string>> headers = [];
+
+        foreach (string header in argValues)
+        {
+            int separatorLocation = header.IndexOf('=');
+
+            if (separatorLocation == -1)
+            {
+                // ignore
+                continue;
+            }
+
+            string key = header.Substring(0, separatorLocation).Trim();
+            string value = header.Substring(separatorLocation + 1).Trim();
+
+            if (headers.TryGetValue(key, out List<string>? parsedValues))
+            {
+                parsedValues.Append(value);
+            }
+            else
+            {
+                headers.Add(key, [value]);
+            }
+        }
+
+        return headers;
+    }
+
 
     public static async Task<int> DoGenerateReflection(SCL.Parsing.ParseResult pr)
     {

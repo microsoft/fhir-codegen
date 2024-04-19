@@ -5,8 +5,10 @@
 
 
 using FluentAssertions;
+using Hl7.Fhir.Model;
 using Microsoft.Health.Fhir.CodeGen.Language;
 using Microsoft.Health.Fhir.CodeGen.Language.Info;
+using Microsoft.Health.Fhir.CodeGen.Language.OpenApi;
 using Microsoft.Health.Fhir.CodeGen.Loader;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGen.Tests.Extensions;
@@ -20,6 +22,9 @@ public class GenerationTestFixture
 {
     /// <summary>The cache.</summary>
     public IFhirPackageClient Cache;
+
+    /// <summary>The package loader.</summary>
+    public PackageLoader? Loader = null;
 
     /// <summary>The FHIR R5 package entries.</summary>
     public IEnumerable<PackageCacheEntry> EntriesR5;
@@ -112,9 +117,9 @@ public class GenerationTestsR5 : IClassFixture<GenerationTestFixture>
         _testOutputHelper = testOutputHelper;
         _fixture = fixture;
 
-        PackageLoader loader = new(_fixture.Cache, new());
+        _fixture.Loader = new(_fixture.Cache, new());
 
-        DefinitionCollection? loaded = loader.LoadPackages(_fixture.EntriesR5.First().Name, _fixture.EntriesR5);
+        DefinitionCollection? loaded = _fixture.Loader.LoadPackages(_fixture.EntriesR5.First().Name, _fixture.EntriesR5);
 
         loaded.Should().NotBeNull();
 
@@ -212,9 +217,9 @@ public class GenerationTestsR4B : IClassFixture<GenerationTestFixture>
         _testOutputHelper = testOutputHelper;
         _fixture = fixture;
 
-        PackageLoader loader = new(_fixture.Cache, new());
+        _fixture.Loader = new(_fixture.Cache, new());
 
-        DefinitionCollection? loaded = loader.LoadPackages(_fixture.EntriesR4B.First().Name, _fixture.EntriesR4B);
+        DefinitionCollection? loaded = _fixture.Loader.LoadPackages(_fixture.EntriesR4B.First().Name, _fixture.EntriesR4B);
 
         loaded.Should().NotBeNull();
 
@@ -312,9 +317,9 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
         _testOutputHelper = testOutputHelper;
         _fixture = fixture;
 
-        PackageLoader loader = new(_fixture.Cache, new());
+        _fixture.Loader = new(_fixture.Cache, new());
 
-        DefinitionCollection? loaded = loader.LoadPackages(_fixture.EntriesR4.First().Name, _fixture.EntriesR4);
+        DefinitionCollection? loaded = _fixture.Loader.LoadPackages(_fixture.EntriesR4.First().Name, _fixture.EntriesR4);
 
         loaded.Should().NotBeNull();
 
@@ -327,11 +332,16 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
     }
 
     [Theory]
-    [InlineData("Info", "TestData/Generated/Info-R4.txt")]
-    [InlineData("TypeScript", "TestData/Generated/TypeScript-R4.ts")]
+    [InlineData("Info", "TestData/Generated/Info-R4.txt", "")]
+    [InlineData("TypeScript", "TestData/Generated/TypeScript-R4.ts", "")]
+    //[InlineData("OpenApi-Json-Inline-None", "TestData/Generated/OpenApi-R4-Inline-None.json")]
+    [InlineData("OpenApi-Json-Inline-None-Candle-Filtered", "TestData/Generated/OpenApi-R4-Inline-None-Candle-Filtered.json", "TestData/R4/CapabilityStatement-candle-local.json")]
+    [InlineData("OpenApi-Yaml-Inline-None-Candle-Filtered", "TestData/Generated/OpenApi-R4-Inline-None-Candle-Filtered.yaml", "TestData/R4/CapabilityStatement-candle-local.json")]
+    [InlineData("OpenApi-Yaml-Inline-Names-Candle-Filtered", "TestData/Generated/OpenApi-R4-Inline-Names-Candle-Filtered.yaml", "TestData/R4/CapabilityStatement-candle-local.json")]
+    [InlineData("OpenApi-Yaml-Inline-Detailed-Candle-Filtered", "TestData/Generated/OpenApi-R4-Inline-Detailed-Candle-Filtered.yaml", "TestData/R4/CapabilityStatement-candle-local.json")]
     [Trait("Category", "Generation")]
     [Trait("FhirVersion", "R4")]
-    internal void TestLangR4(string langName, string filePath)
+    internal void TestLangR4(string langName, string filePath, string csPath)
     {
         // Get the absolute path to the file
         string path = Path.IsPathRooted(filePath)
@@ -344,6 +354,12 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
         }
 
         string data = File.ReadAllText(path);
+
+        csPath = string.IsNullOrEmpty(csPath)
+            ? string.Empty
+            : Path.IsPathRooted(csPath)
+                ? csPath
+                : Path.GetRelativePath(Directory.GetCurrentDirectory(), csPath);
 
         using (MemoryStream ms = new())
         {
@@ -370,6 +386,149 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
                         exportLang.Export(options, _loaded);
                     }
                     break;
+
+                case "OpenApi-Json-Inline-None":
+                    {
+                        // note that we can only use the WriteStream for OpenApi if MultiFile is off
+                        OpenApiOptions options = new()
+                        {
+                            WriteStream = ms,
+                            MultiFile = false,
+                            OpenApiVersion = OpenApiCommon.OaVersion.v3,
+                            FileFormat = OpenApiCommon.OaFileFormat.JSON,
+                            SchemaStyle = OpenApiCommon.OaSchemaStyleCodes.Inline,
+                            SchemaLevel = OpenApiCommon.OaSchemaLevelCodes.None,
+                        };
+
+                        LangOpenApi exportLang = new();
+                        exportLang.Export(options, _loaded);
+                    }
+                    break;
+
+                case "OpenApi-Json-Inline-None-Candle-Filtered":
+                    {
+                        if (string.IsNullOrEmpty(csPath))
+                        {
+                            throw new ArgumentException($"Missing csPath for {langName}");
+                        }
+
+                        object? csObj = _fixture.Loader?.ParseContents43("application/fhir+json", csPath);
+
+                        CapabilityStatement? cs = csObj is CapabilityStatement c
+                            ? c
+                            : throw new ArgumentException("Failed to parse CapabilityStatement");
+
+                        // note that we can only use the WriteStream for OpenApi if MultiFile is off
+                        OpenApiOptions options = new()
+                        {
+                            WriteStream = ms,
+                            MultiFile = false,
+                            OpenApiVersion = OpenApiCommon.OaVersion.v3,
+                            FileFormat = OpenApiCommon.OaFileFormat.JSON,
+                            SchemaStyle = OpenApiCommon.OaSchemaStyleCodes.Inline,
+                            SchemaLevel = OpenApiCommon.OaSchemaLevelCodes.None,
+                            ServerCapabilities = cs,
+                            ExportKeys = [ "Patient", "Observation" ]
+                        };
+
+                        LangOpenApi exportLang = new();
+                        exportLang.Export(options, _loaded);
+                    }
+                    break;
+
+                case "OpenApi-Yaml-Inline-None-Candle-Filtered":
+                    {
+                        if (string.IsNullOrEmpty(csPath))
+                        {
+                            throw new ArgumentException($"Missing csPath for {langName}");
+                        }
+
+                        object? csObj = _fixture.Loader?.ParseContents43("application/fhir+json", csPath);
+
+                        CapabilityStatement? cs = csObj is CapabilityStatement c
+                            ? c
+                            : throw new ArgumentException("Failed to parse CapabilityStatement");
+
+                        // note that we can only use the WriteStream for OpenApi if MultiFile is off
+                        OpenApiOptions options = new()
+                        {
+                            WriteStream = ms,
+                            MultiFile = false,
+                            OpenApiVersion = OpenApiCommon.OaVersion.v3,
+                            FileFormat = OpenApiCommon.OaFileFormat.YAML,
+                            SchemaStyle = OpenApiCommon.OaSchemaStyleCodes.Inline,
+                            SchemaLevel = OpenApiCommon.OaSchemaLevelCodes.None,
+                            ServerCapabilities = cs,
+                            ExportKeys = ["Patient", "Observation"]
+                        };
+
+                        LangOpenApi exportLang = new();
+                        exportLang.Export(options, _loaded);
+                    }
+                    break;
+
+                case "OpenApi-Yaml-Inline-Names-Candle-Filtered":
+                    {
+                        if (string.IsNullOrEmpty(csPath))
+                        {
+                            throw new ArgumentException($"Missing csPath for {langName}");
+                        }
+
+                        object? csObj = _fixture.Loader?.ParseContents43("application/fhir+json", csPath);
+
+                        CapabilityStatement? cs = csObj is CapabilityStatement c
+                            ? c
+                            : throw new ArgumentException("Failed to parse CapabilityStatement");
+
+                        // note that we can only use the WriteStream for OpenApi if MultiFile is off
+                        OpenApiOptions options = new()
+                        {
+                            WriteStream = ms,
+                            MultiFile = false,
+                            OpenApiVersion = OpenApiCommon.OaVersion.v3,
+                            FileFormat = OpenApiCommon.OaFileFormat.YAML,
+                            SchemaStyle = OpenApiCommon.OaSchemaStyleCodes.Inline,
+                            SchemaLevel = OpenApiCommon.OaSchemaLevelCodes.Names,
+                            ServerCapabilities = cs,
+                            ExportKeys = ["Patient", "Observation"]
+                        };
+
+                        LangOpenApi exportLang = new();
+                        exportLang.Export(options, _loaded);
+                    }
+                    break;
+
+                case "OpenApi-Yaml-Inline-Detailed-Candle-Filtered":
+                    {
+                        if (string.IsNullOrEmpty(csPath))
+                        {
+                            throw new ArgumentException($"Missing csPath for {langName}");
+                        }
+
+                        object? csObj = _fixture.Loader?.ParseContents43("application/fhir+json", csPath);
+
+                        CapabilityStatement? cs = csObj is CapabilityStatement c
+                            ? c
+                            : throw new ArgumentException("Failed to parse CapabilityStatement");
+
+                        // note that we can only use the WriteStream for OpenApi if MultiFile is off
+                        OpenApiOptions options = new()
+                        {
+                            WriteStream = ms,
+                            MultiFile = false,
+                            OpenApiVersion = OpenApiCommon.OaVersion.v3,
+                            FileFormat = OpenApiCommon.OaFileFormat.YAML,
+                            SchemaStyle = OpenApiCommon.OaSchemaStyleCodes.Inline,
+                            SchemaLevel = OpenApiCommon.OaSchemaLevelCodes.Detailed,
+                            ServerCapabilities = cs,
+                            ExportKeys = ["Patient", "Observation"]
+                        };
+
+                        LangOpenApi exportLang = new();
+                        exportLang.Export(options, _loaded);
+                    }
+                    break;
+
                 default:
                     throw new ArgumentException($"Unknown language: {langName}");
             }
@@ -412,9 +571,9 @@ public class GenerationTestsR3 : IClassFixture<GenerationTestFixture>
         _testOutputHelper = testOutputHelper;
         _fixture = fixture;
 
-        PackageLoader loader = new(_fixture.Cache, new());
+        _fixture.Loader = new(_fixture.Cache, new());
 
-        DefinitionCollection? loaded = loader.LoadPackages(_fixture.EntriesR3.First().Name, _fixture.EntriesR3);
+        DefinitionCollection? loaded = _fixture.Loader.LoadPackages(_fixture.EntriesR3.First().Name, _fixture.EntriesR3);
 
         loaded.Should().NotBeNull();
 
@@ -512,9 +671,9 @@ public class GenerationTestsR2 : IClassFixture<GenerationTestFixture>
         _testOutputHelper = testOutputHelper;
         _fixture = fixture;
 
-        PackageLoader loader = new(_fixture.Cache, new());
+        _fixture.Loader = new(_fixture.Cache, new());
 
-        DefinitionCollection? loaded = loader.LoadPackages(_fixture.EntriesR2.First().Name, _fixture.EntriesR2);
+        DefinitionCollection? loaded = _fixture.Loader.LoadPackages(_fixture.EntriesR2.First().Name, _fixture.EntriesR2);
 
         loaded.Should().NotBeNull();
 
