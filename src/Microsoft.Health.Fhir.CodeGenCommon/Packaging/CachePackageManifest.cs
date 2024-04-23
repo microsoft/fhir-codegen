@@ -16,8 +16,8 @@ namespace Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 /// </remarks>
 public record class CachePackageManifest
 {
-    /// <summary>A package mantainer.</summary>
-    public record class PackageMantainer
+    /// <summary>A package maintainer.</summary>
+    public record class PackageMaintainer
     {
         /// <summary>Gets or sets the name.</summary>
         [JsonPropertyName("name")]
@@ -51,7 +51,7 @@ public record class CachePackageManifest
         Dependencies = other.Dependencies.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
         Keywords = other.Keywords.Select(k => k);
         Author = other.Author;
-        Mantainers = other.Mantainers.Select(m => m with { });
+        Maintainers = other.Maintainers.Select(m => m with { });
         License = other.License;
         Jurisdiction = other.Jurisdiction;
         Directories = other.Directories.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
@@ -153,9 +153,9 @@ public record class CachePackageManifest
     [JsonPropertyName("author")]
     public string Author { get; init; } = string.Empty;
 
-    /// <summary>Gets or sets the mantainers.</summary>
+    /// <summary>Gets or sets the maintainers.</summary>
     [JsonPropertyName("maintainers")]
-    public IEnumerable<PackageMantainer> Mantainers { get; init; } = [];
+    public IEnumerable<PackageMaintainer> Maintainers { get; init; } = [];
 
     /// <summary>Gets or sets the SPDX-convention license name.</summary>
     [JsonPropertyName("license")]
@@ -163,14 +163,14 @@ public record class CachePackageManifest
 
     /// <summary>Gets the jurisdiction.</summary>
     /// <remarks>
-    /// From the CommonJuridictionCodes (http://hl7.org/fhir/ValueSet/jurisdiction-common) from the
+    /// From the CommonJurisdictionCodes (http://hl7.org/fhir/ValueSet/jurisdiction-common) from the
     /// fhir.tx.support.* package (fhir.tx.support.r3, fhir.tx.support.r4, ...)
     /// </remarks>
     [JsonPropertyName("jurisdiction")]
     public string Jurisdiction { get; init; } = string.Empty;
 
     /// <summary>
-    /// Gets package directories - values are unprefixed relative paths from the package directory
+    /// Gets package directories - values are un-prefixed relative paths from the package directory
     /// directory.
     /// </summary>
     /// <remarks>

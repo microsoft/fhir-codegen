@@ -35,6 +35,21 @@
             "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\temp\\fhir-net-sdk -p hl7.fhir.r5.core#5.0.0 -p hl7.fhir.r5.expansions#5.0.0 --subset satellite",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
+        "Firely IG Backport": {
+            "commandName": "Project",
+            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.uv.subscriptions-backport#1.1.0",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "Firely IG US Core": {
+            "commandName": "Project",
+            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.us.core#3.1.0 -p hl7.fhir.us.core#6.1.0",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "Firely IG Extensions Pack": {
+            "commandName": "Project",
+            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.uv.extensions#current",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
         "http": {
             "commandName": "Project",
             "launchBrowser": true,

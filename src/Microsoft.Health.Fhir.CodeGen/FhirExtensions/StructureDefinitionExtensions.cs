@@ -8,6 +8,7 @@ using System.Diagnostics.CodeAnalysis;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Specification.Navigation;
 using Microsoft.Health.Fhir.CodeGen.Models;
+using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 
@@ -135,6 +136,11 @@ public static class StructureDefinitionExtensions
         return sd.cgRootElement()?.cgBaseTypeName(dc, false, typeMap) ?? string.Empty;
     }
 
+    /// <summary>A StructureDefinition extension method that cg name.</summary>
+    /// <param name="sd">The SD to act on.</param>
+    /// <returns>A string.</returns>
+    public static string cgName(this StructureDefinition sd) => sd.Name ?? sd.Id.ToPascalCase();
+
     /// <summary>
     /// Enumerates property elements in this structure - skips the root and slices.
     /// </summary>
@@ -142,6 +148,7 @@ public static class StructureDefinitionExtensions
     /// <param name="forBackbonePath">(Optional) Full pathname of for backbone file.</param>
     /// <param name="topLevelOnly">   (Optional) True to return only top level elements.</param>
     /// <param name="includeRoot">    (Optional) True to include, false to exclude the root.</param>
+    /// <param name="skipSlices">     (Optional) True to skip slices.</param>
     /// <returns>
     /// An enumerator that allows foreach to be used to process cg elements in this collection.
     /// </returns>

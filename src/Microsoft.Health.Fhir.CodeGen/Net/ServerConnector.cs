@@ -696,7 +696,12 @@ public class ServerConnector : IDisposable
         }
 
         // add this canonical to the definition collection
-        definitionCollection.AddResource(r, _serverFhirVersion ?? FhirReleases.FhirSequenceCodes.Unknown, canonicalUrl);
+        definitionCollection.AddResource(
+            r,
+            _serverFhirVersion ?? FhirReleases.FhirSequenceCodes.Unknown,
+            "codegen.local",
+            "0.0.0",
+            canonicalUrl);
 
         return true;
     }

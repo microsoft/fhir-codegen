@@ -926,8 +926,11 @@ public partial class DefinitionCollection
 
     /// <summary>Adds a code system.</summary>
     /// <param name="codeSystem">The code system.</param>
-    public void AddCodeSystem(CodeSystem codeSystem)
+    public void AddCodeSystem(CodeSystem codeSystem, string packageId, string packageVersion)
     {
+        // add the package source
+        AddPackageSource(codeSystem, packageId, packageVersion);
+
         _codeSystemsByUrl[codeSystem.Url] = codeSystem;
         TrackResource(codeSystem);
     }
@@ -1260,7 +1263,7 @@ public partial class DefinitionCollection
     /// Adds a value set to the definition collection.
     /// </summary>
     /// <param name="valueSet">The value set to be added.</param>
-    public void AddValueSet(ValueSet valueSet, FhirReleases.FhirSequenceCodes fhirVersion)
+    public void AddValueSet(ValueSet valueSet, FhirReleases.FhirSequenceCodes fhirVersion, string packageId, string packageVersion)
     {
         // DSTU2 has embedded CodeSystems
         if ((fhirVersion == FhirReleases.FhirSequenceCodes.DSTU2) &&
@@ -1276,7 +1279,7 @@ public partial class DefinitionCollection
                         cs.Id = valueSet.Id;
                     }
 
-                    AddCodeSystem(cs);
+                    AddCodeSystem(cs, packageId, packageVersion);
 
                     // use all values from the code system
                     valueSet.Compose ??= new();
@@ -1365,6 +1368,9 @@ public partial class DefinitionCollection
             return;
         }
 
+        // add the package source
+        AddPackageSource(valueSet, packageId, packageVersion);
+
         _valueSetsByVersionedUrl[vsUrl] = valueSet;
         TrackResource(valueSet);
     }
@@ -1381,7 +1387,7 @@ public partial class DefinitionCollection
     /// <param name="r">The resource to add.</param>
     /// <param name="fhirVersion">The FHIR version of the resource.</param>
     /// <param name="canonicalSource">The canonical source of the resource.</param>
-    public void AddResource(object r, FhirReleases.FhirSequenceCodes fhirVersion, string canonicalSource)
+    public void AddResource(object r, FhirReleases.FhirSequenceCodes fhirVersion, string packageId, string packageVersion, string canonicalSource)
     {
         // This was an issue with Azure FHIR server and I believe has been corrected
         //// check for canonical URLs that are listed as "[base]"
@@ -1397,35 +1403,35 @@ public partial class DefinitionCollection
         switch (r)
         {
             case CodeSystem cs:
-                AddCodeSystem(cs);
+                AddCodeSystem(cs, packageId, packageVersion);
                 break;
 
             case ValueSet vs:
-                AddValueSet(vs, fhirVersion);
+                AddValueSet(vs, fhirVersion, packageId, packageVersion);
                 break;
 
             case StructureDefinition sd:
-                AddStructureDefinition(sd, fhirVersion);
+                AddStructureDefinition(sd, fhirVersion, packageId, packageVersion);
                 break;
 
             case CapabilityStatement caps:
-                AddCapabilityStatement(caps, canonicalSource);
+                AddCapabilityStatement(caps, packageId, packageVersion, canonicalSource);
                 break;
 
             case SearchParameter sp:
-                AddSearchParameter(sp);
+                AddSearchParameter(sp, packageId, packageVersion);
                 break;
 
             case OperationDefinition op:
-                AddOperation(op);
+                AddOperation(op, packageId, packageVersion);
                 break;
 
             case ImplementationGuide ig:
-                AddImplementationGuide(ig);
+                AddImplementationGuide(ig, packageId, packageVersion);
                 break;
 
             case CompartmentDefinition cd:
-                AddCompartment(cd);
+                AddCompartment(cd, packageId, packageVersion);
                 break;
 
             default:
@@ -1439,36 +1445,36 @@ public partial class DefinitionCollection
     /// </summary>
     /// <param name="sd">The <see cref="StructureDefinition"/> to add.</param>
     /// <param name="fhirVersion">The <see cref="FhirReleases.FhirSequenceCodes"/> representing the FHIR version.</param>
-    public void AddStructureDefinition(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion)
+    public void AddStructureDefinition(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion, string packageId, string packageVersion)
     {
         switch (sd.cgArtifactClass())
         {
             case FhirArtifactClassEnum.PrimitiveType:
-                AddPrimitiveType(sd, fhirVersion);
+                AddPrimitiveType(sd, fhirVersion, packageId, packageVersion);
                 break;
 
             case FhirArtifactClassEnum.LogicalModel:
-                AddLogicalModel(sd, fhirVersion);
+                AddLogicalModel(sd, fhirVersion, packageId, packageVersion);
                 break;
 
             case FhirArtifactClassEnum.Extension:
-                AddExtension(sd, fhirVersion);
+                AddExtension(sd, fhirVersion, packageId, packageVersion);
                 break;
 
             case FhirArtifactClassEnum.Profile:
-                AddProfile(sd, fhirVersion);
+                AddProfile(sd, fhirVersion, packageId, packageVersion);
                 break;
 
             case FhirArtifactClassEnum.ComplexType:
-                AddComplexType(sd, fhirVersion);
+                AddComplexType(sd, fhirVersion, packageId, packageVersion);
                 break;
 
             case FhirArtifactClassEnum.Resource:
-                AddResource(sd, fhirVersion);
+                AddStructure(sd, fhirVersion, packageId, packageVersion);
                 break;
 
             case FhirArtifactClassEnum.Interface:
-                AddInterface(sd, fhirVersion);
+                AddInterface(sd, fhirVersion, packageId, packageVersion);
                 break;
         }
 
@@ -1479,13 +1485,16 @@ public partial class DefinitionCollection
 
     /// <summary>Adds a primitive type.</summary>
     /// <param name="sd">The structure definition.</param>
-    public void AddPrimitiveType(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion)
+    public void AddPrimitiveType(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion, string packageId, string packageVersion)
     {
         // DSTU2 did not include the publication status extension, add it here for consistency
         if (fhirVersion == FhirReleases.FhirSequenceCodes.DSTU2)
         {
             sd.AddExtension(CommonDefinitions.ExtUrlStandardStatus, new Code("draft"));
         }
+
+        // add the package source
+        AddPackageSource(sd, packageId, packageVersion);
 
         // add field orders to elements
         ProcessElements(FhirArtifactClassEnum.PrimitiveType, sd, fhirVersion);
@@ -1505,13 +1514,16 @@ public partial class DefinitionCollection
 
     /// <summary>Adds a complex type.</summary>
     /// <param name="sd">The structure definition.</param>
-    public void AddComplexType(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion)
+    public void AddComplexType(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion, string packageId, string packageVersion)
     {
         if (fhirVersion == FhirReleases.FhirSequenceCodes.DSTU2)
         {
             // DSTU2 did not include the publication status extension, add it here for consistency
             sd.AddExtension(CommonDefinitions.ExtUrlStandardStatus, new Code("draft"));
         }
+
+        // add the package source
+        AddPackageSource(sd, packageId, packageVersion);
 
         // add field orders to elements
         ProcessElements(FhirArtifactClassEnum.ComplexType, sd, fhirVersion);
@@ -1539,18 +1551,66 @@ public partial class DefinitionCollection
         return names;
     }
 
+    private void AddPackageSource(DomainResource r, string packageId, string version)
+    {
+        Extension? ext = r.GetExtension(CommonDefinitions.ExtUrlPackageSource);
+        if (ext != null)
+        {
+            return;
+        }
+
+        ext = new Extension()
+        {
+            Url = CommonDefinitions.ExtUrlPackageSource,
+            Extension =
+            [
+                new Extension()
+                {
+                    Url = "packageId",
+                    Value = new FhirString(packageId)
+                },
+                new Extension()
+                {
+                    Url = "version",
+                    Value = new FhirString(version)
+                }
+            ]
+        };
+
+        r.Extension.Add(ext);
+    }
+
+    public bool TryGetPackageSource(DomainResource r, out string packageId, out string packageVersion)
+    {
+        Extension? ext = r.GetExtension(CommonDefinitions.ExtUrlPackageSource);
+        if (ext != null)
+        {
+            packageId = string.Empty;
+            packageVersion = string.Empty;
+            return false;
+        }
+
+        packageId = ext.GetStringExtension("packageId");
+        packageVersion = ext.GetStringExtension("version");
+
+        return !string.IsNullOrEmpty(packageId) && !string.IsNullOrEmpty(packageVersion);
+    }
+
     /// <summary>Gets listing of resources, by Name.</summary>
     public IReadOnlyDictionary<string, StructureDefinition> ResourcesByName => _resourcesByName;
 
     /// <summary>Adds a resource.</summary>
     /// <param name="sd">The structure definition.</param>
-    public void AddResource(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion)
+    public void AddStructure(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion, string packageId, string packageVersion)
     {
         // DSTU2 did not include the publication status extension, add it here for consistency
         if (fhirVersion == FhirReleases.FhirSequenceCodes.DSTU2)
         {
             sd.AddExtension(CommonDefinitions.ExtUrlStandardStatus, new Code("draft"));
         }
+
+        // add the package source
+        AddPackageSource(sd, packageId, packageVersion);
 
         // add field orders to elements
         ProcessElements(FhirArtifactClassEnum.Resource, sd, fhirVersion);
@@ -1564,13 +1624,16 @@ public partial class DefinitionCollection
 
     /// <summary>Adds an interface.</summary>
     /// <param name="sd">The structure definition.</param>
-    public void AddInterface(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion)
+    public void AddInterface(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion, string packageId, string packageVersion)
     {
         // DSTU2 did not include the publication status extension, add it here for consistency
         if (fhirVersion == FhirReleases.FhirSequenceCodes.DSTU2)
         {
             sd.AddExtension(CommonDefinitions.ExtUrlStandardStatus, new Code("draft"));
         }
+
+        // add the package source
+        AddPackageSource(sd, packageId, packageVersion);
 
         // add field orders to elements
         ProcessElements(FhirArtifactClassEnum.Resource, sd, fhirVersion);
@@ -1657,8 +1720,11 @@ public partial class DefinitionCollection
 
     /// <summary>Adds a logical model.</summary>
     /// <param name="sd">The structure definition.</param>
-    public void AddLogicalModel(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion)
+    public void AddLogicalModel(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion, string packageId, string packageVersion)
     {
+        // add the package source
+        AddPackageSource(sd, packageId, packageVersion);
+
         // add field orders to elements
         ProcessElements(FhirArtifactClassEnum.LogicalModel, sd, fhirVersion);
 
@@ -1674,8 +1740,11 @@ public partial class DefinitionCollection
 
     /// <summary>Adds an extension.</summary>
     /// <param name="sd">The structure definition.</param>
-    public void AddExtension(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion)
+    public void AddExtension(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion, string packageId, string packageVersion)
     {
+        // add the package source
+        AddPackageSource(sd, packageId, packageVersion);
+
         // add field orders to elements
         ProcessElements(FhirArtifactClassEnum.Extension, sd, fhirVersion);
 
@@ -1729,8 +1798,11 @@ public partial class DefinitionCollection
 
     /// <summary>Adds a profile.</summary>
     /// <param name="sd">The structure definition.</param>
-    public void AddProfile(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion)
+    public void AddProfile(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion, string packageId, string packageVersion)
     {
+        // add the package source
+        AddPackageSource(sd, packageId, packageVersion);
+
         // add field orders to elements
         ProcessElements(FhirArtifactClassEnum.Profile, sd, fhirVersion);
 
@@ -1772,7 +1844,7 @@ public partial class DefinitionCollection
     /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>
     /// <param name="sp">            The search parameter.</param>
     /// <param name="doNotOverwrite">(Optional) True to do not overwrite.</param>
-    public void AddSearchParameter(SearchParameter sp, bool doNotOverwrite = false)
+    public void AddSearchParameter(SearchParameter sp, string packageId, string packageVersion, bool doNotOverwrite = false)
     {
         if (string.IsNullOrEmpty(sp.Url))
         {
@@ -1784,6 +1856,9 @@ public partial class DefinitionCollection
         {
             return;
         }
+
+        // add the package source
+        AddPackageSource(sp, packageId, packageVersion);
 
         _searchParamsByUrl[sp.Url] = sp;
         TrackResource(sp);
@@ -1889,8 +1964,11 @@ public partial class DefinitionCollection
 
     /// <summary>Adds an operation.</summary>
     /// <param name="op">The operation.</param>
-    public void AddOperation(OperationDefinition op)
+    public void AddOperation(OperationDefinition op, string packageId, string packageVersion)
     {
+        // add the package source
+        AddPackageSource(op, packageId, packageVersion);
+
         // add field orders to parameters
         ProcessParameters(op);
 
@@ -1946,12 +2024,15 @@ public partial class DefinitionCollection
     /// </summary>
     /// <param name="cs">The capability statement to add.</param>
     /// <param name="canonicalSource">The canonical source of the capability statement.</param>
-    public void AddCapabilityStatement(CapabilityStatement cs, string canonicalSource = "")
+    public void AddCapabilityStatement(CapabilityStatement cs, string packageId, string packageVersion, string canonicalSource = "")
     {
         if (string.IsNullOrEmpty(cs.Url))
         {
             cs.Url = canonicalSource.EndsWith('/') ? canonicalSource + cs.Id : canonicalSource + "/" + cs.Id;
         }
+
+        // add the package source
+        AddPackageSource(cs, packageId, packageVersion);
 
         _capabilityStatementsByUrl[cs.Url] = cs;
         TrackResource(cs);
@@ -1959,16 +2040,22 @@ public partial class DefinitionCollection
 
     public IReadOnlyDictionary<string, ImplementationGuide> ImplementationGuidesByUrl => _implementationGuidesByUrl;
 
-    public void AddImplementationGuide(ImplementationGuide ig)
+    public void AddImplementationGuide(ImplementationGuide ig, string packageId, string packageVersion)
     {
+        // add the package source
+        AddPackageSource(ig, packageId, packageVersion);
+
         _implementationGuidesByUrl[ig.Url] = ig;
         TrackResource(ig);
     }
 
     public IReadOnlyDictionary<string, CompartmentDefinition> CompartmentsByUrl => _compartmentsByUrl;
 
-    public void AddCompartment(CompartmentDefinition compartmentDefinition)
+    public void AddCompartment(CompartmentDefinition compartmentDefinition, string packageId, string packageVersion)
     {
+        // add the package source
+        AddPackageSource(compartmentDefinition, packageId, packageVersion);
+
         _compartmentsByUrl[compartmentDefinition.Url] = compartmentDefinition;
         TrackResource(compartmentDefinition);
     }

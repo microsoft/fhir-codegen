@@ -85,7 +85,7 @@ internal record class RegistryPackageManifest
                 if (string.IsNullOrEmpty(manifest.Versions[key].PackageKind) ||
                     (manifest.Versions[key].PackageKind == "??"))
                 {
-                    if (FhirCache.PackageIsFhirCore(name))
+                    if (FhirPackageUtils.PackageIsFhirCore(name))
                     {
                         manifest.Versions[key].PackageKind = "Core";
                     }

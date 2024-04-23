@@ -59,9 +59,13 @@ public static class OpenApiCommon
     /// <summary>Values that represent how schemas should be built.</summary>
     public enum OaSchemaStyleCodes
     {
-        /// <summary>Schemas use references.</summary>
-        [Description("Schemas use references")]
-        References,
+        /// <summary>Schemas use references at the type level.</summary>
+        [Description("Schemas use type-level references")]
+        TypeReferences,
+
+        /// <summary>Schemas use references at the backbone-element level.</summary>
+        [Description("Schemas use backbone-level references")]
+        BackboneReferences,
 
         /// <summary>Schemas are all inlined.</summary>
         [Description("Schemas are all inlined")]

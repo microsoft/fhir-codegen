@@ -82,11 +82,18 @@ public static class CSharpFirelyCommon
     }
 
     /// <summary>Writes an indented comment.</summary>
-    /// <param name="writer">The writer to write the comment to.</param>
-    /// <param name="value">The value.</param>
-    /// <param name="isSummary">(Optional) True if is summary, false if not.</param>
-    /// <param name="singleLine">(Optional) True if this is a short comment using a single line comment prefix. Implies isSummary = false.</param>
-    public static void WriteIndentedComment(this ExportStreamWriter writer, string value, bool isSummary = true, bool singleLine = false)
+    /// <param name="writer">    The writer to write the comment to.</param>
+    /// <param name="value">     The value.</param>
+    /// <param name="isSummary"> (Optional) True if is summary, false if not.</param>
+    /// <param name="singleLine">(Optional) True if this is a short comment using a single line
+    ///  comment prefix. Implies isSummary = false.</param>
+    /// <param name="isRemarks"> (Optional) True if is remarks, false if not.</param>
+    public static void WriteIndentedComment(
+        this ExportStreamWriter writer,
+        string value,
+        bool isSummary = true,
+        bool singleLine = false,
+        bool isRemarks = false)
     {
         if (string.IsNullOrEmpty(value))
         {
@@ -101,6 +108,11 @@ public static class CSharpFirelyCommon
         if (isSummary)
         {
             writer.WriteLineIndented("/// <summary>");
+        }
+
+        if (isRemarks)
+        {
+            writer.WriteLineIndented("/// <remarks>");
         }
 
         string comment = value
@@ -121,6 +133,11 @@ public static class CSharpFirelyCommon
         if (isSummary)
         {
             writer.WriteLineIndented("/// </summary>");
+        }
+
+        if (isRemarks)
+        {
+            writer.WriteLineIndented("/// </remarks>");
         }
     }
 

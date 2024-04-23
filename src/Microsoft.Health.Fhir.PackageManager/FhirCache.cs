@@ -99,14 +99,6 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
     /// <summary>Occurs when a package has been downloaded or deleted.</summary>
     public event EventHandler<EventArgs>? OnChanged = null;
 
-    /// <summary>Test if a name matches known core packages.</summary>
-    /// <returns>A RegEx.</returns>
-    [GeneratedRegex("^hl7\\.fhir\\.r\\d+[A-Za-z]?\\.(core|expansions|examples|search|elements|corexml)$")]
-    internal static partial Regex MatchCorePackageNames();
-
-    /// <summary>Test if a name matches known core packages.</summary>
-    internal static Regex _matchCorePackageNames = MatchCorePackageNames();
-
     /// <summary>Test if a name is the correct root for a core package.</summary>
     /// <returns>A RegEx.</returns>
     [GeneratedRegex("^hl7\\.fhir\\.r\\d+[A-Za-z]?$")]
@@ -1744,7 +1736,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
         }
 
         // determine type of package name
-        if (PackageIsFhirCore(current.PackageId))
+        if (FhirPackageUtils.PackageIsFhirCore(current.PackageId))
         {
             current = current with
             {
@@ -2651,6 +2643,46 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
         return false;
     }
 
+    internal bool TryResolveVersionExact(ref FhirDirective directive)
+    {
+        if (directive.VersionType != DirectiveVersionCodes.Exact)
+        {
+            return false;
+        }
+
+        // get manifests from each registry if we have not done so
+        if (directive.Manifests.Count == 0)
+        {
+            _ = TryGetRegistryManifests(ref directive);
+        }
+
+        Dictionary<Uri, HashSet<string>> knownVersions = [];
+        Dictionary<Uri, string> matchingVersions = [];
+
+        // traverse our manifests and build a list of known versions per registry
+        foreach ((Uri uri, RegistryPackageManifest manifest) in directive.Manifests)
+        {
+            if (manifest.Versions == null || manifest.Versions.Count == 0)
+            {
+                continue;
+            }
+
+            if (manifest.Versions.TryGetValue(directive.PackageVersion, out FhirPackageVersionInfo? pi))
+            {
+                directive = directive with
+                {
+                    PackageVersion = directive.PackageVersion,
+                    VersionType = DirectiveVersionCodes.Exact,
+                    ResolvedTarballUrl = pi.Distribution?.TarballUrl ?? string.Empty,
+                    ResolvedSha = pi.Distribution?.HashSHA ?? string.Empty,
+                };
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     /// <summary>Attempts to resolve version latest.</summary>
     /// <param name="directive">[out] The parsed directive.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
@@ -2962,7 +2994,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
                     entry.FhirVersion.Equals(forFhirVersion.ToLiteral(), StringComparison.OrdinalIgnoreCase) ||
                     entry.FhirVersion.Equals(forFhirVersion.ToRLiteral(), StringComparison.OrdinalIgnoreCase))
                 {
-                    if (PackageIsFhirCore(entry.Name))
+                    if (FhirPackageUtils.PackageIsFhirCore(entry.Name))
                     {
                         directive = directive with
                         {
@@ -3100,6 +3132,26 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
                         Version = cached.Version,
                     };
                 }
+
+                // attempt to resolve the exact version
+                if (TryResolveVersionExact(ref directive))
+                {
+                    resolvableDirectives = UpdateDirectives(directive);
+
+                    // we now have an exact version, check for a local copy
+                    if (TryGetCacheRec(resolvableDirectives, out cached))
+                    {
+                        return new()
+                        {
+                            FhirVersion = cached.FhirVersion,
+                            Directory = Path.Combine(_cachePackageDirectory, cached.CacheDirective),
+                            ResolvedDirective = cached.CacheDirective,
+                            Name = cached.PackageName,
+                            Version = cached.Version,
+                        };
+                    }
+                }
+
                 break;
             case DirectiveVersionCodes.Partial:
                 {
@@ -3327,6 +3379,14 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
                         }
                     case DirectiveNameTypeCodes.GuideWithoutSuffix:
                         {
+                            if (string.IsNullOrEmpty(directive.FhirRelease))
+                            {
+                                return
+                                [
+                                    $"{directive.PackageId}#{directive.PackageVersion}",
+                                ];
+                            }
+
                             return
                             [
                                 $"{directive.PackageId}#{directive.PackageVersion}",
@@ -3370,10 +3430,18 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
                     }
                 case DirectiveNameTypeCodes.GuideWithoutSuffix:
                     {
+                        if (string.IsNullOrEmpty(directive.FhirRelease))
+                        {
+                            return
+                            [
+                                directive.Directive,
+                            ];
+                        }
+
                         return
                         [
                             directive.Directive,
-                            directive.PackageId.Replace("#", $".{FhirVersionToRLiteral(directive.FhirRelease)}"),
+                            directive.PackageId.Replace("#", $".{FhirVersionToRLiteral(directive.FhirRelease)}#"),
                         ];
                     }
 
@@ -3649,18 +3717,6 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
 
         // return failure info
         return (false, FhirSequenceCodes.Unknown, string.Empty);
-    }
-
-    /// <summary>Package is FHIR core.</summary>
-    /// <param name="packageName">Name of the package.</param>
-    /// <returns>True if it succeeds, false if it fails.</returns>
-    internal static bool PackageIsFhirCore(string packageName)
-    {
-        string name = packageName.Contains('#')
-            ? packageName.Substring(0, packageName.IndexOf('#'))
-            : packageName;
-
-        return _matchCorePackageNames.IsMatch(name);
     }
 
     /// <summary>

@@ -186,9 +186,9 @@ public class PackageLoader : IDisposable
 
     /// <summary>Adds a missing core search parameters to a core definition collection.</summary>
     /// <param name="dc">The device-context.</param>
-    private void AddMissingCoreSearchParameters(DefinitionCollection dc)
+    private void AddMissingCoreSearchParameters(DefinitionCollection dc, string packageId, string packageVersion)
     {
-        dc.AddSearchParameter(doNotOverwrite: true, sp: new()
+        dc.AddSearchParameter(new()
         {
             Id = "Resource-content",
             Name = "_content",
@@ -200,9 +200,9 @@ public class PackageLoader : IDisposable
             Description = "Search on the entire content of the resource.",
             Base = [ VersionIndependentResourceTypesAll.Resource ],
             Type = SearchParamType.Special,
-        });
+        }, packageId, packageVersion, true);
 
-        dc.AddSearchParameter(doNotOverwrite: true, sp: new()
+        dc.AddSearchParameter(new()
         {
             Id = "Resource-filter",
             Name = "_filter",
@@ -214,9 +214,9 @@ public class PackageLoader : IDisposable
             Description = "Filter search parameter which supports a more sophisticated grammar for searching.",
             Base = [ VersionIndependentResourceTypesAll.Resource ],
             Type = SearchParamType.Special,
-        });
+        }, packageId, packageVersion, true);
 
-        dc.AddSearchParameter(doNotOverwrite: true, sp: new()
+        dc.AddSearchParameter(new()
         {
             Id = "Resource-text",
             Name = "_text",
@@ -228,9 +228,9 @@ public class PackageLoader : IDisposable
             Description = "Search the narrative content of a resource.",
             Base = [ VersionIndependentResourceTypesAll.Resource ],
             Type = SearchParamType.String,
-        });
+        }, packageId, packageVersion, true);
 
-        dc.AddSearchParameter(doNotOverwrite: true, sp: new()
+        dc.AddSearchParameter(new()
         {
             Id = "Resource-list",
             Name = "_list",
@@ -243,11 +243,11 @@ public class PackageLoader : IDisposable
             Base = [ VersionIndependentResourceTypesAll.Resource ],
             Type = SearchParamType.Reference,
             Target = [ VersionIndependentResourceTypesAll.List ],
-        });
+        }, packageId, packageVersion, true);
 
         if (dc.FhirSequence >= FhirReleases.FhirSequenceCodes.R4)
         {
-            dc.AddSearchParameter(doNotOverwrite: true, sp: new()
+            dc.AddSearchParameter(new()
             {
                 Id = "Resource-has",
                 Name = "_has",
@@ -259,9 +259,9 @@ public class PackageLoader : IDisposable
                 Description = "For selecting resources based on the properties of resources that refer to them.",
                 Base = [ VersionIndependentResourceTypesAll.Resource ],
                 Type = SearchParamType.Special,
-            });
+            }, packageId, packageVersion, true);
 
-            dc.AddSearchParameter(doNotOverwrite: true, sp: new()
+            dc.AddSearchParameter(new()
             {
                 Id = "Resource-type",
                 Name = "_type",
@@ -273,7 +273,7 @@ public class PackageLoader : IDisposable
                 Description = "For filtering resources based on their type in searches across resource types.",
                 Base = [ VersionIndependentResourceTypesAll.Resource ],
                 Type = SearchParamType.Token,
-            });
+            }, packageId, packageVersion, true);
         }
     }
 
@@ -485,7 +485,7 @@ public class PackageLoader : IDisposable
                         throw new Exception($"Failed to parse {rt} {cachedPackage.ResolvedDirective}:{pFile.FileName}");
                     }
 
-                    definitions.AddResource(r, packageFhirVersion, manifest.CanonicalUrl);
+                    definitions.AddResource(r, packageFhirVersion, manifest.Name, manifest.Version, manifest.CanonicalUrl);
                 }
             }
 
@@ -493,7 +493,7 @@ public class PackageLoader : IDisposable
             if (manifest.Type.Equals("core", StringComparison.OrdinalIgnoreCase) ||
                 manifest.Type.Equals("fhir.core", StringComparison.OrdinalIgnoreCase))
             {
-                AddMissingCoreSearchParameters(definitions);
+                AddMissingCoreSearchParameters(definitions, manifest.Name, manifest.Version);
                 AddAllInteractionParameters(definitions);
                 AddSearchResultParameters(definitions);
             }

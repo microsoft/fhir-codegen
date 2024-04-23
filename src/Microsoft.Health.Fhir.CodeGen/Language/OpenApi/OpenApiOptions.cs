@@ -100,12 +100,12 @@ public class OpenApiOptions : ConfigGenerate
     [ConfigOption(
         ArgName = "--schema-level",
         Description = "The level of detail to include in the schema.")]
-    public OaSchemaLevelCodes SchemaLevel { get; set; } = OaSchemaLevelCodes.None;
+    public OaSchemaLevelCodes SchemaLevel { get; set; } = OaSchemaLevelCodes.Names;
 
     private static ConfigurationOption SchemaLevelParameter { get; } = new()
     {
         Name = "SchemaLevel",
-        DefaultValue = OaSchemaLevelCodes.None,
+        DefaultValue = OaSchemaLevelCodes.Names,
         CliOption = new System.CommandLine.Option<OaSchemaLevelCodes>("--schema-level", "The level of detail to include in the schema.")
         {
             Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
@@ -117,12 +117,12 @@ public class OpenApiOptions : ConfigGenerate
     [ConfigOption(
         ArgName = "--schema-style",
         Description = "The style of schema to use.")]
-    public OaSchemaStyleCodes SchemaStyle { get; set; } = OaSchemaStyleCodes.References;
+    public OaSchemaStyleCodes SchemaStyle { get; set; } = OaSchemaStyleCodes.TypeReferences;
 
     private static ConfigurationOption SchemaStyleParameter { get; } = new()
     {
         Name = "SchemaStyle",
-        DefaultValue = OaSchemaStyleCodes.References,
+        DefaultValue = OaSchemaStyleCodes.TypeReferences,
         CliOption = new System.CommandLine.Option<OaSchemaStyleCodes>("--schema-style", "The style of schema to use.")
         {
             Arity = System.CommandLine.ArgumentArity.ZeroOrOne,

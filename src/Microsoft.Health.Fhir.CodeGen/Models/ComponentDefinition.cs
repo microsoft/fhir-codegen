@@ -124,13 +124,6 @@ public record class ComponentDefinition
     }
 
     /// <summary>
-    /// Enumerates the elements contained in this component.
-    /// </summary>
-    /// <param name="includeDescendants">(Optional) True to include, false to exclude the descendants.</param>
-    /// <returns>An enumerator that allows foreach to be used to process cg get children in this collection.</returns>
-    public IEnumerable<ElementDefinition> cgGetChildren(bool includeDescendants = false) => Structure.cgElements(Element.Path, !includeDescendants, false);
-
-    /// <summary>
     /// Gets the child component definitions for code generation.
     /// </summary>
     /// <param name="dc">The definition collection.</param>
@@ -144,4 +137,46 @@ public record class ComponentDefinition
     /// </summary>
     /// <returns>A string representing the validation regular expression.</returns>
     public string cgValidationRegEx() => Element?.cgValidationRegEx() ?? string.Empty;
+
+    /// <summary>
+    /// Enumerates the elements contained in this component.
+    /// </summary>
+    /// <param name="includeDescendants">(Optional) True to include, false to exclude the descendants.</param>
+    /// <returns>An enumerator that allows foreach to be used to process cg get children in this collection.</returns>
+    public IEnumerable<ElementDefinition> cgGetChildren(
+        bool includeDescendants = false,
+        bool skipSlices = true)
+    {
+        IEnumerable<ElementDefinition> source;
+
+        int dotCount = Element.Path.Count(c => c == '.');
+        int colonCount = Element.ElementId.Count(c => c == ':');
+
+        // filter based on the backbone path we want
+        // we want child elements of the requested path, so append an additional dot
+        source = (Structure.Snapshot != null) && (Structure.Snapshot.Element.Count != 0)
+            ? Structure.Snapshot.Element.Where(e => e.ElementId.StartsWith(Element.ElementId + ".", StringComparison.Ordinal))
+            : Structure.Differential.Element.Where(e => e.ElementId.StartsWith(Element.ElementId + ".", StringComparison.Ordinal));
+
+        // traverse our filtered elements
+        foreach (ElementDefinition e in source)
+        {
+            // skip slices and their children
+            if (skipSlices && (e.ElementId.Count(c => c == ':') > colonCount))
+            {
+                continue;
+            }
+
+            // if top level only, we need exactly one dot more than the forBackbonePath
+            if (!includeDescendants)
+            {
+                if (e.Path.Count(c => c == '.') != dotCount + 1)
+                {
+                    continue;
+                }
+            }
+
+            yield return e;
+        }
+    }
 }

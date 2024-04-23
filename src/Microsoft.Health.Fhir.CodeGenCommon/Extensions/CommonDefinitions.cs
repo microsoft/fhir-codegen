@@ -26,6 +26,8 @@ public static class CommonDefinitions
     public const string ExtUrlCapExpectation = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation";
     public const string ExtUrlCapSearchParamCombo = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-search-parameter-combination";
 
+    public const string ExtUrlPackageSource = "http://hl7.org/fhir/StructureDefinition/package-source";
+
     public const string ExtUrlSdRegex = "http://hl7.org/fhir/StructureDefinition/regex";
     public const string ExtUrlSdRegex2 = "http://hl7.org/fhir/StructureDefinition/structuredefinition-regex";
 

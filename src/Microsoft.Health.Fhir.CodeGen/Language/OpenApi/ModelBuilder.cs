@@ -3693,61 +3693,76 @@ public partial class ModelBuilder
                 break;
 
             case OaSchemaLevelCodes.Detailed:
-                {
-                    if (_options.SchemaStyle == OaSchemaStyleCodes.Inline)
-                    {
-                        foreach (StructureDefinition sd in GetFilteredResources(true))
-                        {
-                            string name = BuildTypeName(sd.Name);
-
-                            if (schemas.ContainsKey(name))
-                            {
-                                continue;
-                            }
-
-                            OpenApiSchema schema = new OpenApiSchema();
-
-                            BuildInlineSchema(
-                                ref schema,
-                                new ComponentDefinition(sd));
-
-                            schemas.Add(name, schema);
-                        }
-                    }
-
-                    //if (_options.SchemaStyle == OaSchemaStyleCodes.References)
-                    //{
-                    //    foreach (FhirComplex complex in _dc.ComplexTypes.Values.OrderBy(c => c.Name))
-                    //    {
-                    //        BuildSchema(
-                    //            schemas,
-                    //            complex,
-                    //            null,
-                    //            false);
-                    //    }
-
-                    //    foreach (FhirComplex complex in GetFilteredResources(true))
-                    //    {
-                    //        string name = BuildTypeNameFromPath(complex.Path);
-
-                    //        if (schemas.ContainsKey(name))
-                    //        {
-                    //            continue;
-                    //        }
-
-                    //        BuildSchema(
-                    //            schemas,
-                    //            complex,
-                    //            null,
-                    //            true);
-                    //    }
-                    //}
-                }
+                BuildDetailedSchemas(schemas);
                 break;
         }
 
         return schemas;
     }
+
+    private void BuildDetailedSchemas(Dictionary<string, OpenApiSchema> schemas)
+    {
+        switch (_options.SchemaStyle)
+        {
+            case OaSchemaStyleCodes.TypeReferences:
+                {
+                    //foreach (FhirComplex complex in _dc.ComplexTypes.Values.OrderBy(c => c.Name))
+                    //{
+                    //    BuildSchema(
+                    //        schemas,
+                    //        complex,
+                    //        null,
+                    //        false);
+                    //}
+
+                    //foreach (FhirComplex complex in GetFilteredResources(true))
+                    //{
+                    //    string name = BuildTypeNameFromPath(complex.Path);
+
+                    //    if (schemas.ContainsKey(name))
+                    //    {
+                    //        continue;
+                    //    }
+
+                    //    BuildSchema(
+                    //        schemas,
+                    //        complex,
+                    //        null,
+                    //        true);
+                    //}
+                }
+                break;
+
+            case OaSchemaStyleCodes.BackboneReferences:
+                break;
+
+            case OaSchemaStyleCodes.Inline:
+                {
+                    foreach (StructureDefinition sd in GetFilteredResources(true))
+                    {
+                        string name = BuildTypeName(sd.Name);
+
+                        if (schemas.ContainsKey(name))
+                        {
+                            continue;
+                        }
+
+                        OpenApiSchema schema = new OpenApiSchema();
+
+                        BuildInlineSchema(
+                            ref schema,
+                            new ComponentDefinition(sd));
+
+                        schemas.Add(name, schema);
+                    }
+                }
+                break;
+
+            default:
+                break;
+        }
+    }
+
 
     private void BuildInlineSchema(
         ref OpenApiSchema schema,
@@ -3795,7 +3810,7 @@ public partial class ModelBuilder
 
         IEnumerable<ElementDefinition> elements =
             dataTypeSd?.cgElements(topLevelOnly: true, includeRoot: false)
-            ?? cd.cgGetChildren(false).OrderBy(ed => ed.cgFieldOrder());
+            ?? cd.cgGetChildren(includeDescendants: false).OrderBy(ed => ed.cgFieldOrder());
 
         // traverse elements at this level
         foreach (ElementDefinition ed in elements)

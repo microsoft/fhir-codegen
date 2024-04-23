@@ -4,12 +4,6 @@
 // </copyright>
 
 
-// <copyright file="Firely2.cs" company="Microsoft Corporation">
-//     Copyright (c) Microsoft Corporation. All rights reserved.
-//     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
-// </copyright>
-
-
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Reflection.Metadata;
@@ -398,11 +392,6 @@ public sealed class CSharpFirely2 : ILanguage
     /// <param name="serverInfo">     Information describing the server.</param>
     /// <param name="options">        Options for controlling the operation.</param>
     /// <param name="exportDirectory">Directory to write files.</param>
-    //void ILanguage.Export(
-    //    FhirVersionInfo info,
-    //    FhirCapabilityStatement serverInfo,
-    //    ExporterOptions options,
-    //    string exportDirectory)
     public void Export(object untypedOptions, DefinitionCollection info)
     {
         if (untypedOptions is not FirelyGenOptions options)
@@ -1643,7 +1632,7 @@ public sealed class CSharpFirely2 : ILanguage
 
         if (isPatientClass) interfaces.Add($"{Namespace}.IPatient");
 
-        var identifierElement = complex.cgGetChildren(false).SingleOrDefault(isIdentifierProperty);
+        var identifierElement = complex.cgGetChildren(includeDescendants: false).SingleOrDefault(isIdentifierProperty);
         if (identifierElement is not null)
         {
             if (identifierElement.cgIsArray())
@@ -2336,9 +2325,13 @@ public sealed class CSharpFirely2 : ILanguage
             string display = FhirSanitizationUtils.SanitizeForValue(concept.Display);
 
             if (concept.System != defaultSystem)
+            {
                 _writer.WriteLineIndented($"[EnumLiteral(\"{codeValue}\", \"{concept.System}\"), Description(\"{display}\")]");
+            }
             else
+            {
                 _writer.WriteLineIndented($"[EnumLiteral(\"{codeValue}\"), Description(\"{display}\")]");
+            }
 
             if (usedLiterals.Contains(codeName))
             {
