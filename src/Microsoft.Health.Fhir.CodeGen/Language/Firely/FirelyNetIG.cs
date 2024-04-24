@@ -40,10 +40,20 @@ public class FirelyNetIG : ILanguage
     private Dictionary<string, ExportStreamWriter> _definitionWriters = [];
 
     /// <summary>The extension writers.</summary>
-    private Dictionary<string, ExportStreamWriter> _extensionWriters = [];
+    private Dictionary<string, ExportStreamWriter> _extensionWritersExt = [];
+    private Dictionary<string, ExportStreamWriter> _extensionWritersVal = [];
 
     private const string _extGetterPrefixScalar = "Get an Extension representing the ";
     private const string _extGetterPrefixArray = "Get any Extensions representing the ";
+
+    private const string _extValueGetterPrefixScalar = "Get the ";
+    private const string _extValueGetterPrefixArray = "Get all of the ";
+
+    private const string _extSetterPrefixScalar = "Set an Extension representing the ";
+    private const string _extSetterPrefixArray = "Set any Extensions representing the ";
+
+    private const string _extValueSetterPrefixScalar = "Set the ";
+    private const string _extValueSetterPrefixArray = "Set all of the ";
 
     private record struct PackageData
     {
@@ -149,7 +159,8 @@ public class FirelyNetIG : ILanguage
     private void WriteExtensionAccessors(
         ExtensionData extData,
         ComponentDefinition extCd,
-        ExportStreamWriter writer)
+        ExportStreamWriter extWriter,
+        ExportStreamWriter valWriter)
     {
         bool isArray = extCd.Element.cgIsArray();
 
@@ -236,21 +247,58 @@ public class FirelyNetIG : ILanguage
                     // write a comment
                     if (isArray)
                     {
-                        writer.WriteIndentedComment(_extGetterPrefixArray + extData.Summary, isSummary: true);
+                        extWriter.WriteIndentedComment(_extGetterPrefixArray + extData.Summary, isSummary: true);
                     }
                     else
                     {
-                        writer.WriteIndentedComment(_extGetterPrefixScalar + extData.Summary, isSummary: true);
+                        extWriter.WriteIndentedComment(_extGetterPrefixScalar + extData.Summary, isSummary: true);
                     }
 
-                    writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
+                    extWriter.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
 
                     // write a getter, which returns either a single extension or an enumerable of extensions
-                    writer.WriteLineIndented($"public static {returnType} {extData.Name}Get(this {sdkType} o) =>");
-                    writer.WriteLineIndented($"  o.{getAlias}(Definitions.{extData.Name});");
-                    writer.WriteLine();
+                    extWriter.WriteLineIndented($"public static {returnType} {extData.Name}Get(this {sdkType} o) =>");
+                    extWriter.WriteLineIndented($"  o.{getAlias}(Definitions.{extData.Name});");
+                    extWriter.WriteLine();
 
-                    // handle complex extensions
+                    // write a comment
+                    if (isArray)
+                    {
+                        extWriter.WriteIndentedComment(_extSetterPrefixArray + extData.Summary, isSummary: true);
+                    }
+                    else
+                    {
+                        extWriter.WriteIndentedComment(_extSetterPrefixScalar + extData.Summary, isSummary: true);
+                    }
+
+                    extWriter.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
+
+                    if (isArray)
+                    {
+                        extWriter.WriteLineIndented($"public static void {extData.Name}Set(this {sdkType} o, {returnType}? val)");
+                        OpenScope(extWriter);      // setter function open
+                        extWriter.WriteLineIndented($"o.RemoveExtension(Definitions.{extData.Name});");
+                        extWriter.WriteLineIndented("if (val == null) return;");
+                        extWriter.WriteLineIndented("if (!val.Any()) return;");
+                        extWriter.WriteLineIndented("foreach (Extension e in val)");
+                        OpenScope(extWriter);      // foreach open
+                        extWriter.WriteLineIndented($"if (e.Url != Definitions.{extData.Name}) e.Url = Definitions.{extData.Name};");
+                        extWriter.WriteLineIndented("o.Extension.Add(e);");
+                        CloseScope(extWriter, suppressNewline: true);     // foreach close
+                        CloseScope(extWriter);      // setter function close
+                    }
+                    else
+                    {
+                        extWriter.WriteLineIndented($"public static void {extData.Name}Set(this {sdkType} o, {returnType} val)");
+                        OpenScope(extWriter);      // setter function open
+                        extWriter.WriteLineIndented($"o.RemoveExtension(Definitions.{extData.Name});");
+                        extWriter.WriteLineIndented("if (val == null) return;");
+                        extWriter.WriteLineIndented($"if (val.Url != Definitions.{extData.Name}) val.Url = Definitions.{extData.Name};");
+                        extWriter.WriteLineIndented("o.Extension.Add(val);");
+                        CloseScope(extWriter);      // setter function close
+                    }
+
+                    // write type-specific accessors
                     if (extData.Children.Length != 0)
                     {
                         // check to see if all sub-extensions resolve to a single type
@@ -259,14 +307,14 @@ public class FirelyNetIG : ILanguage
                             // write a comment
                             if (isArray)
                             {
-                                writer.WriteIndentedComment(_extGetterPrefixArray + extData.Summary, isSummary: true);
+                                valWriter.WriteIndentedComment(_extValueGetterPrefixArray + extData.Summary, isSummary: true);
                             }
                             else
                             {
-                                writer.WriteIndentedComment(_extGetterPrefixScalar + extData.Summary, isSummary: true);
+                                valWriter.WriteIndentedComment(_extValueGetterPrefixScalar + extData.Summary, isSummary: true);
                             }
 
-                            writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
+                            valWriter.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
 
                             // we can make a tuple return
                             List<KeyValuePair<string, string>> extensionTuple = BuildReturnTuple(extData);
@@ -275,48 +323,112 @@ public class FirelyNetIG : ILanguage
 
                             if (isArray)
                             {
-                                writer.WriteLineIndented($"public static IEnumerable<({retTuple})> {extData.Name}GetValues(this {sdkType} o)");
-                                OpenScope(writer);      // function open
-                                writer.WriteLineIndented($"IEnumerable<Extension> roots = o.GetExtensions(Definitions.{extData.Name});");
-                                writer.WriteLineIndented("if (!roots.Any()) yield break;");
-                                writer.WriteLineIndented($"foreach (Extension root in roots)");
-                                OpenScope(writer);      // foreach open
+                                valWriter.WriteLineIndented($"public static IEnumerable<({retTuple})> {extData.Name}GetValues(this {sdkType} o)");
+                                OpenScope(valWriter);      // function open
+                                valWriter.WriteLineIndented($"IEnumerable<Extension> roots = o.GetExtensions(Definitions.{extData.Name});");
+                                valWriter.WriteLineIndented("if (!roots.Any()) yield break;");
+                                valWriter.WriteLineIndented($"foreach (Extension root in roots)");
+                                OpenScope(valWriter);      // foreach open
 
                                 // pull values from the extension tree
-                                WriteSubExtensionTupleRecurse(writer, extData, "root");
+                                WriteSubExtensionGetTupleRecurse(valWriter, extData, "root");
 
                                 // add to our list
-                                writer.WriteLineIndented($"yield return ({string.Join(", ", extensionTuple.Select(kvp => "val" + kvp.Key))});");
+                                valWriter.WriteLineIndented($"yield return ({string.Join(", ", extensionTuple.Select(kvp => "val" + kvp.Key))});");
 
-                                CloseScope(writer, suppressNewline:true);     // foreach close
-                                CloseScope(writer);     // function close
+                                CloseScope(valWriter, suppressNewline:true);     // foreach close
+                                CloseScope(valWriter);     // function close
                             }
                             else
                             {
-                                writer.WriteLineIndented($"public static ({retTuple})? {extData.Name}GetValue(this {sdkType} o)");
-                                OpenScope(writer);
-                                writer.WriteLineIndented($"Extension? root = o.GetExtension(Definitions.{extData.Name});");
-                                writer.WriteLineIndented("if (root == null) return null;");
+                                valWriter.WriteLineIndented($"public static ({retTuple})? {extData.Name}GetValue(this {sdkType} o)");
+                                OpenScope(valWriter);
+                                valWriter.WriteLineIndented($"Extension? root = o.GetExtension(Definitions.{extData.Name});");
+                                valWriter.WriteLineIndented("if (root == null) return null;");
 
                                 // pull values from the extension tree
-                                WriteSubExtensionTupleRecurse(writer, extData, "root");
+                                WriteSubExtensionGetTupleRecurse(valWriter, extData, "root");
 
-                                writer.WriteLineIndented($"return ({string.Join(", ", extensionTuple.Select(kvp => "val" + kvp.Key))});");
+                                valWriter.WriteLineIndented($"return ({string.Join(", ", extensionTuple.Select(kvp => "val" + kvp.Key))});");
 
-                                CloseScope(writer);
+                                CloseScope(valWriter);
+                            }
+
+                            // write a comment
+                            if (isArray)
+                            {
+                                valWriter.WriteIndentedComment(_extValueSetterPrefixArray + extData.Summary, isSummary: true);
+                            }
+                            else
+                            {
+                                valWriter.WriteIndentedComment(_extValueSetterPrefixScalar + extData.Summary, isSummary: true);
+                            }
+
+                            valWriter.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
+
+                            if (isArray)
+                            {
+                                string innerType = string.Join(", ", extensionTuple.Select(kvp => $"{kvp.Value}? val{kvp.Key}"));
+
+                                valWriter.WriteLineIndented($"public static void {extData.Name}Set(" +
+                                    $"this {sdkType} o, " +
+                                    $"IEnumerable<({innerType})> values)");
+                                OpenScope(valWriter);      // setter function open
+                                valWriter.WriteLineIndented($"o.RemoveExtension(Definitions.{extData.Name});");
+
+                                valWriter.WriteLineIndented($"if (values == null) return;");
+                                valWriter.WriteLineIndented($"if (!values.Any()) return;");
+
+                                valWriter.WriteLineIndented($"foreach (({innerType}) in values)");
+                                OpenScope(valWriter);       // foreach open
+
+                                valWriter.WriteLineIndented($"Extension root = new Extension() {{ Url = Definitions.{extData.Name} }};");
+                                valWriter.WriteLineIndented($"bool rootAdded = false;");
+
+                                // pull values from the extension tree
+                                WriteSubExtensionSetTupleRecurse(valWriter, extData, "root");
+
+                                valWriter.WriteLineIndented($"if (rootAdded) o.Extension.Add(root);");
+
+                                CloseScope(valWriter, suppressNewline:true);      // foreach close
+                                CloseScope(valWriter);     // setter function close
+                            }
+                            else
+                            {
+                                valWriter.WriteLineIndented($"public static void {extData.Name}Set(" +
+                                    $"this {sdkType} o, " +
+                                    $"{string.Join(", ", extensionTuple.Select(kvp => $"{kvp.Value}? val{kvp.Key}"))})");
+                                OpenScope(valWriter);      // setter function open
+                                valWriter.WriteLineIndented($"o.RemoveExtension(Definitions.{extData.Name});");
+
+                                valWriter.WriteLineIndented($"if ({string.Join(" && ", extensionTuple.Select(kvp => $"(val{kvp.Key} == null)"))}) return;");
+
+                                valWriter.WriteLineIndented($"Extension root = new Extension() {{ Url = Definitions.{extData.Name} }};");
+
+                                // pull values from the extension tree
+                                WriteSubExtensionSetTupleRecurse(valWriter, extData, "root");
+
+                                valWriter.WriteLineIndented($"o.Extension.Add(root);");
+
+                                CloseScope(valWriter);     // setter function close
                             }
                         }
                     }
                     else if (extData.ValueElement != null)
                     {
+                        ElementDefinition.TypeRefComponent[] valueTypes = extData.ValueElement.cgTypes().Values.ToArray();
+
                         // check the possible return types for this extension
-                        foreach (ElementDefinition.TypeRefComponent valueType in extData.ValueElement.cgTypes().Values)
+                        foreach (ElementDefinition.TypeRefComponent valueType in valueTypes)
                         {
                             string type = valueType.cgName();
+                            string fhirNetType = TypeNameMappings.TryGetValue(type, out string? v) ? v : type;
+                            bool isPrimitive = false;
 
                             if (PrimitiveTypeMap.TryGetValue(type, out mappedType))
                             {
                                 type = mappedType;
+                                isPrimitive = true;
                             }
 
                             if (type.EndsWith('?'))
@@ -327,80 +439,224 @@ public class FirelyNetIG : ILanguage
                             // write a comment
                             if (isArray)
                             {
-                                writer.WriteIndentedComment(_extGetterPrefixArray + extData.Summary, isSummary: true);
+                                valWriter.WriteIndentedComment(_extValueGetterPrefixArray + extData.Summary, isSummary: true);
                             }
                             else
                             {
-                                writer.WriteIndentedComment(_extGetterPrefixScalar + extData.Summary, isSummary: true);
+                                valWriter.WriteIndentedComment(_extValueGetterPrefixScalar + extData.Summary, isSummary: true);
                             }
 
-                            writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
+                            valWriter.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
 
                             // build the getter name
-                            string valueGetterName = extData.Name + "Get" + type.ToPascalCase();
+                            string valueGetterName = extData.Name + "Get" + (valueTypes.Length > 1 ? type.ToPascalCase() : string.Empty);
 
                             if (isArray)
                             {
-                                writer.WriteLineIndented($"public static IEnumerable<{type}> {valueGetterName}(this {sdkType} o) =>");
-                                writer.WriteLineIndented($"  o.GetExtensions(Definitions.{extData.Name});");
+                                valWriter.WriteLineIndented($"public static IEnumerable<{type}> {valueGetterName}(this {sdkType} o) =>");
+                                valWriter.WriteLineIndented($"  o.GetExtensions(Definitions.{extData.Name});");
                             }
                             else
                             {
-                                writer.WriteLineIndented($"public static {type}? {valueGetterName}(this {sdkType} o) =>");
+                                valWriter.WriteLineIndented($"public static {type}? {valueGetterName}(this {sdkType} o) =>");
 
                                 switch (type)
                                 {
                                     case "bool":
-                                        writer.WriteLineIndented($"  o.GetBoolExtension(Definitions.{extData.Name});");
+                                        valWriter.WriteLineIndented($"  o.GetBoolExtension(Definitions.{extData.Name});");
                                         break;
 
                                     case "int":
-                                        writer.WriteLineIndented($"  o.GetIntegerExtension(Definitions.{extData.Name});");
+                                        valWriter.WriteLineIndented($"  o.GetIntegerExtension(Definitions.{extData.Name});");
                                         break;
 
                                     case "string":
-                                        writer.WriteLineIndented($"  o.GetStringExtension(Definitions.{extData.Name});");
+                                        valWriter.WriteLineIndented($"  o.GetStringExtension(Definitions.{extData.Name});");
                                         break;
 
                                     default:
-                                        writer.WriteLineIndented($"  o.GetExtensionValue<{type}>(Definitions.{extData.Name});");
+                                        valWriter.WriteLineIndented($"  o.GetExtensionValue<{type}>(Definitions.{extData.Name});");
                                         break;
                                 }
                             }
 
-                            writer.WriteLine();
+                            valWriter.WriteLine();
+
+
+                            // write a comment
+                            if (isArray)
+                            {
+                                valWriter.WriteIndentedComment(_extValueSetterPrefixArray + extData.Summary, isSummary: true);
+                            }
+                            else
+                            {
+                                valWriter.WriteIndentedComment(_extValueSetterPrefixScalar + extData.Summary, isSummary: true);
+                            }
+
+                            valWriter.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
+
+                            if (isArray)
+                            {
+                                valWriter.WriteLineIndented($"public static void {extData.Name}Set(this {sdkType} o, IEnumerable<{type}>? val)");
+                                OpenScope(valWriter);      // setter function open
+                                valWriter.WriteLineIndented($"o.RemoveExtension(Definitions.{extData.Name});");
+                                valWriter.WriteLineIndented("if (val == null) return;");
+                                valWriter.WriteLineIndented("if (!val.Any()) return;");
+                                valWriter.WriteLineIndented($"foreach ({type} v in val)");
+                                OpenScope(valWriter);      // foreach open
+
+                                // need to pull the original type so we can create the correct datatype
+                                if (isPrimitive)
+                                {
+                                    valWriter.WriteLineIndented($"o.AddExtension(Definitions.{extData.Name}, new {fhirNetType}(v));");
+                                }
+                                else
+                                {
+                                    valWriter.WriteLineIndented($"o.AddExtension(Definitions.{extData.Name}, v);");
+                                }
+
+                                CloseScope(valWriter, suppressNewline:true);     // foreach close
+                                CloseScope(valWriter);      // setter function close
+                            }
+                            else
+                            {
+                                valWriter.WriteLineIndented($"public static void {extData.Name}Set(this {sdkType} o, {type}? val)");
+                                OpenScope(valWriter);      // setter function open
+                                valWriter.WriteLineIndented($"o.RemoveExtension(Definitions.{extData.Name});");
+                                valWriter.WriteLineIndented("if (val == null) return;");
+                                // need to pull the original type so we can create the correct datatype
+                                if (isPrimitive)
+                                {
+                                    valWriter.WriteLineIndented($"o.AddExtension(Definitions.{extData.Name}, new {fhirNetType}(val));");
+                                }
+                                else
+                                {
+                                    valWriter.WriteLineIndented($"o.AddExtension(Definitions.{extData.Name}, val);");
+                                }
+                                CloseScope(valWriter);      // setter function close
+                            }
                         }
                     }
                 }
             }
-            else
+            else            // if we cannot resolve the context, just write something generic
             {
                 // write a comment
                 if (isArray)
                 {
-                    writer.WriteIndentedComment(_extGetterPrefixArray + extData.Summary, isSummary: true);
+                    extWriter.WriteIndentedComment(_extGetterPrefixArray + extData.Summary, isSummary: true);
                 }
                 else
                 {
-                    writer.WriteIndentedComment(_extGetterPrefixScalar + extData.Summary, isSummary: true);
+                    extWriter.WriteIndentedComment(_extGetterPrefixScalar + extData.Summary, isSummary: true);
                 }
 
-                writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
+                extWriter.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
 
                 // build the getter name
-                string getterName = extData.Name.EndsWith("Extension", StringComparison.Ordinal)
-                    ? extData.Name + "Get"
-                    : extData.Name + "GetExt";
+                string getterName = extData.Name + "Get";
 
                 // write a getter, which returns either a single extension or an enumerable of extensions
-                writer.WriteLineIndented($"public static {returnType} {getterName}(this Element e) =>");
-                writer.WriteLineIndented($"  e.{getAlias}(Definitions.{extData.Name});");
-                writer.WriteLine();
+                extWriter.WriteLineIndented($"public static {returnType} {getterName}(this Element e) =>");
+                extWriter.WriteLineIndented($"  e.{getAlias}(Definitions.{extData.Name});");
+                extWriter.WriteLine();
             }
         }
     }
 
-    private void WriteSubExtensionTupleRecurse(ExportStreamWriter writer, ExtensionData extData, string parentVarName)
+    private void WriteSubExtensionSetTupleRecurse(ExportStreamWriter writer, ExtensionData extData, string parentVarName)
+    {
+        if (extData.ValueElement != null)
+        {
+            string typeName;
+
+            if (extData.ValueElement.Type.Any())
+            {
+                typeName = extData.ValueElement.Type.First().cgName();
+            }
+            else
+            {
+                typeName = extData.ValueElement.cgBaseTypeName(_info, false);
+            }
+
+            string fhirNetType = TypeNameMappings.TryGetValue(typeName, out string? v) ? v : typeName;
+            bool isPrimitive = false;
+
+            if (PrimitiveTypeMap.TryGetValue(typeName, out string? mappedType))
+            {
+                typeName = mappedType;
+                isPrimitive = true;
+            }
+
+            if (typeName.EndsWith('?'))
+            {
+                typeName = typeName.Substring(0, typeName.Length - 1);
+            }
+
+            if (extData.ValueElement.cgIsArray())
+            {
+                writer.WriteLineIndented($"if (val{extData.Name} != null)");
+                OpenScope(writer);          // if open
+                writer.WriteLineIndented($"foreach ({typeName} vt{extData.Name} in val{extData.Name})");
+                OpenScope(writer);          // foreach open
+
+                if (isPrimitive)
+                {
+                    writer.WriteLineIndented($"{parentVarName}.AddExtension(Definitions.{extData.Name}, new {fhirNetType}(val{extData.Name}));");
+                }
+                else
+                {
+                    writer.WriteLineIndented($"{parentVarName}.AddExtension(Definitions.{extData.Name}, val{extData.Name});");
+                }
+
+                CloseScope(writer);         // foreach close
+                writer.WriteLineIndented($"{parentVarName}Added = true;");
+                CloseScope(writer);         // if close
+            }
+            else if (isPrimitive)
+            {
+                writer.WriteLineIndented($"if (val{extData.Name} != null)");
+                OpenScope(writer);          // if open
+                writer.WriteLineIndented($"{parentVarName}.AddExtension(Definitions.{extData.Name}, new {fhirNetType}(val{extData.Name}));");
+                writer.WriteLineIndented($"{parentVarName}Added = true;");
+                CloseScope(writer);         // if close
+            }
+            else
+            {
+                writer.WriteLineIndented($"if (val{extData.Name} != null)");
+                OpenScope(writer);          // if open
+                writer.WriteLineIndented($"{parentVarName}.AddExtension(Definitions.{extData.Name}, val{extData.Name});");
+                writer.WriteLineIndented($"{parentVarName}Added = true;");
+                CloseScope(writer);         // if close
+            }
+
+            return;
+        }
+
+        foreach (ExtensionData extensionData in extData.Children)
+        {
+            if (extensionData.Children.Length != 0)
+            {
+                writer.WriteLineIndented($"Extension ext{extensionData.Name} = new Extension() {{ Url = Definitions.{extensionData.Name} }};");
+                writer.WriteLineIndented($"bool ext{extensionData.Name}Added = false;");
+
+                // nest through children
+                foreach (ExtensionData child in extensionData.Children)
+                {
+                    WriteSubExtensionSetTupleRecurse(writer, child, $"ext{extensionData.Name}");
+                }
+
+                writer.WriteLineIndented($"if (ext{extensionData.Name}Added) {parentVarName}.Extension.Add(ext{extensionData.Name});");
+
+                continue;
+            }
+
+            WriteSubExtensionSetTupleRecurse(writer, extensionData, parentVarName);
+        }
+    }
+
+
+    private void WriteSubExtensionGetTupleRecurse(ExportStreamWriter writer, ExtensionData extData, string parentVarName)
     {
         if (extData.ValueElement != null)
         {
@@ -468,14 +724,14 @@ public class FirelyNetIG : ILanguage
                 // nest through children
                 foreach (ExtensionData child in extensionData.Children)
                 {
-                    WriteSubExtensionTupleRecurse(writer, child, $"ext{extensionData.Name}");
+                    WriteSubExtensionGetTupleRecurse(writer, child, $"ext{extensionData.Name}");
                 }
 
                 CloseScope(writer);
                 continue;
             }
 
-            WriteSubExtensionTupleRecurse(writer, extensionData, parentVarName);
+            WriteSubExtensionGetTupleRecurse(writer, extensionData, parentVarName);
         }
     }
 
@@ -793,11 +1049,17 @@ public class FirelyNetIG : ILanguage
         }
         _definitionWriters.Clear();
 
-        foreach (ExportStreamWriter writer in _extensionWriters.Values)
+        foreach (ExportStreamWriter writer in _extensionWritersExt.Values)
         {
             CloseAndDispose(writer);
         }
-        _extensionWriters.Clear();
+        _extensionWritersExt.Clear();
+
+        foreach (ExportStreamWriter writer in _extensionWritersVal.Values)
+        {
+            CloseAndDispose(writer);
+        }
+        _extensionWritersVal.Clear();
 
         return;
 
@@ -898,7 +1160,7 @@ public class FirelyNetIG : ILanguage
 
     private ExportStreamWriter GetExtensionWriter(PackageData packageData)
     {
-        if (_extensionWriters.TryGetValue(packageData.Key, out ExportStreamWriter? writer))
+        if (_extensionWritersExt.TryGetValue(packageData.Key, out ExportStreamWriter? writer))
         {
             return writer;
         }
@@ -913,7 +1175,7 @@ public class FirelyNetIG : ILanguage
 
         FileStream stream = new(filename, FileMode.Create);
         writer = new ExportStreamWriter(stream);
-        _extensionWriters[packageData.Key] = writer;
+        _extensionWritersExt[packageData.Key] = writer;
 
         WriteHeader(writer);
 
@@ -922,6 +1184,37 @@ public class FirelyNetIG : ILanguage
         WriteIndentedComment(writer, $"Extension accessors for the {packageData.Key} package");
 
         writer.WriteLineIndented($"public static class Extensions");
+        writer.OpenScope();
+
+        return writer;
+    }
+
+    private ExportStreamWriter GetExtensionValueWriter(PackageData packageData)
+    {
+        if (_extensionWritersVal.TryGetValue(packageData.Key, out ExportStreamWriter? writer))
+        {
+            return writer;
+        }
+
+        string directory = Path.Combine(_options.OutputDirectory, packageData.FilenamePrefix);
+        if (!Directory.Exists(directory))
+        {
+            Directory.CreateDirectory(directory);
+        }
+
+        string filename = Path.Combine(_options.OutputDirectory, packageData.FilenamePrefix, $"ExtensionValues.cs");
+
+        FileStream stream = new(filename, FileMode.Create);
+        writer = new ExportStreamWriter(stream);
+        _extensionWritersVal[packageData.Key] = writer;
+
+        WriteHeader(writer);
+
+        WriteNamespaceOpen(writer, packageData.Namespace);
+
+        WriteIndentedComment(writer, $"Value-based extension accessors for the {packageData.Key} package");
+
+        writer.WriteLineIndented($"public static class ExtensionValues");
         writer.OpenScope();
 
         return writer;
@@ -962,9 +1255,10 @@ public class FirelyNetIG : ILanguage
 
         // get an extension writer
         ExportStreamWriter extensionWriter = GetExtensionWriter(packageData);
+        ExportStreamWriter extensionValueWriter = GetExtensionValueWriter(packageData);
 
         // recursively write our extension accessors
-        WriteExtensionAccessors(extData, cd, extensionWriter);
+        WriteExtensionAccessors(extData, cd, extensionWriter, extensionValueWriter);
     }
 
     /// <summary>Recursively writes extension urls.</summary>
