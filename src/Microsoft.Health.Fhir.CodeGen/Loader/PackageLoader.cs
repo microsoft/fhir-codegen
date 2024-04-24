@@ -282,15 +282,23 @@ public class PackageLoader : IDisposable
     /// <param name="name">    The name.</param>
     /// <param name="packages">The cached package.</param>
     /// <returns>An asynchronous result that yields the package.</returns>
-    public DefinitionCollection? LoadPackages(string name, IEnumerable<PackageCacheEntry> packages)
+    public DefinitionCollection? LoadPackages(string name, IEnumerable<PackageCacheEntry> packages, bool loadDependencies = false, DefinitionCollection? inProgress = null)
     {
-        DefinitionCollection definitions = new()
+        DefinitionCollection definitions = inProgress ?? new()
         {
             Name = name,
         };
 
         foreach (PackageCacheEntry cachedPackage in packages)
         {
+            if (definitions.Manifests.ContainsKey(cachedPackage.ResolvedDirective))
+            {
+                Console.WriteLine($"Skipping already loaded dependency: {cachedPackage.ResolvedDirective}");
+                continue;
+            }
+
+            Console.WriteLine($"Processing {cachedPackage.ResolvedDirective}...");
+
             CachePackageManifest? manifest = _cache.GetManifest(cachedPackage) ?? throw new Exception("Failed to load package manifest");
 
             definitions.Manifests.Add(cachedPackage.ResolvedDirective, manifest);
@@ -372,6 +380,18 @@ public class PackageLoader : IDisposable
                     break;
             }
 
+            // if we are resolving dependencies, do those now
+            if (loadDependencies && (cachedPackage.ResolvedDependencies.Length != 0))
+            {
+                LoadPackages(name, cachedPackage.ResolvedDependencies, true, definitions);
+                Console.WriteLine($"Dependencies resolved - loading package {cachedPackage.ResolvedDirective}...");
+            }
+            else
+            {
+                Console.WriteLine($"Loading {cachedPackage.ResolvedDirective}...");
+            }
+
+            // grab the contents of our package
             PackageContents? packageContents = _cache.GetIndexedContents(cachedPackage) ?? throw new Exception("Failed to load package contents");
 
             if (string.IsNullOrEmpty(cachedPackage.Directory))

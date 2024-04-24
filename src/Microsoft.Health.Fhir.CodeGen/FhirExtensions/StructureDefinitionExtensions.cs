@@ -4,6 +4,7 @@
 // </copyright>
 
 
+using System.Data.SqlTypes;
 using System.Diagnostics.CodeAnalysis;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Specification.Navigation;
@@ -156,7 +157,8 @@ public static class StructureDefinitionExtensions
         this StructureDefinition sd,
         string forBackbonePath = "",
         bool topLevelOnly = false,
-        bool includeRoot = true)
+        bool includeRoot = true,
+        bool skipSlices = true)
     {
         IEnumerable<ElementDefinition> source;
 
@@ -190,7 +192,7 @@ public static class StructureDefinitionExtensions
         foreach (ElementDefinition e in source)
         {
             // skip slices and their children
-            if (e.ElementId.Contains(':'))
+            if (skipSlices && e.ElementId.Contains(':'))
             {
                 continue;
             }

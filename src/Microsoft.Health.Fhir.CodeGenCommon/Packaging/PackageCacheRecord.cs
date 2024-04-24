@@ -13,9 +13,13 @@ namespace Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 /// <param name="ResolvedDirective">The resolved directive in '[name]#[version or literal]' style.</param>
 /// <param name="Name">             Name of the resolved package.</param>
 /// <param name="Version">          The the resolved version (version string, not literal such as 'latest').</param>
-public record struct PackageCacheEntry(
-    FhirSequenceCodes FhirVersion,
-    string Directory,
-    string ResolvedDirective,
-    string Name,
-    string Version);
+public record class PackageCacheEntry
+{
+    public required FhirSequenceCodes FhirVersion { get; init; }
+    public required string Directory { get; init; }
+    public required string ResolvedDirective { get; init; }
+    public required string Name { get; init; }
+    public required string Version { get; init; }
+
+    public PackageCacheEntry[] ResolvedDependencies = [];
+}

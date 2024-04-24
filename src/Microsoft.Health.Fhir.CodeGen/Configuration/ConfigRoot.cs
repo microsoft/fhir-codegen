@@ -87,6 +87,24 @@ public class ConfigRoot : ICodeGenConfig
         },
     };
 
+    [ConfigOption(
+        ArgName = "--resolve-dependencies",
+        EnvName = "Resolve_Dependencies",
+        Description = "Resolve package dependencies.")]
+    public bool ResolvePackageDependencies { get; set; } = false;
+
+    private static ConfigurationOption ResolvePackageDependenciesParameter { get; } = new()
+    {
+        Name = "ResolvePackageDependencies",
+        EnvVarName = "Resolve_Dependencies",
+        DefaultValue = false,
+        CliOption = new System.CommandLine.Option<bool>("--resolve-dependencies", "Resolve package dependencies.")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
+
     /// <summary>
     /// Gets or sets a value indicating whether the offline mode.
     /// </summary>
@@ -119,6 +137,7 @@ public class ConfigRoot : ICodeGenConfig
         FhirCacheDirectoryParameter,
         OutputDirectoryParameter,
         PackagesParameter,
+        ResolvePackageDependenciesParameter,
         OfflineModeParameter,
     ];
 
@@ -362,6 +381,9 @@ public class ConfigRoot : ICodeGenConfig
                     break;
                 case "OfflineMode":
                     OfflineMode = GetOpt(parseResult, opt.CliOption, OfflineMode);
+                    break;
+                case "ResolvePackageDependencies":
+                    ResolvePackageDependencies = GetOpt(parseResult, opt.CliOption, ResolvePackageDependencies);
                     break;
             }
         }

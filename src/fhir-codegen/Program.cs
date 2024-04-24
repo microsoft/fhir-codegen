@@ -485,11 +485,11 @@ public class Program
 
                 if (package.StartsWith("http", StringComparison.OrdinalIgnoreCase))
                 {
-                    entry = await cache.FindOrDownloadPackageByUrl(package);
+                    entry = await cache.FindOrDownloadPackageByUrl(package, rootConfig.ResolvePackageDependencies);
                 }
                 else
                 {
-                    entry = await cache.FindOrDownloadPackageByDirective(package);
+                    entry = await cache.FindOrDownloadPackageByDirective(package, rootConfig.ResolvePackageDependencies);
                 }
 
                 if (entry is null)
@@ -505,7 +505,7 @@ public class Program
                 JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
             });
 
-            DefinitionCollection? loaded = loader.LoadPackages(packages.First().Name, packages)
+            DefinitionCollection? loaded = loader.LoadPackages(packages.First().Name, packages, rootConfig.ResolvePackageDependencies)
                 ?? throw new Exception($"Could not load packages: {string.Join(',', rootConfig.Packages)}");
 
             // check for a FHIR server URL

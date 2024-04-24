@@ -1583,7 +1583,7 @@ public partial class DefinitionCollection
     public bool TryGetPackageSource(DomainResource r, out string packageId, out string packageVersion)
     {
         Extension? ext = r.GetExtension(CommonDefinitions.ExtUrlPackageSource);
-        if (ext != null)
+        if (ext == null)
         {
             packageId = string.Empty;
             packageVersion = string.Empty;
@@ -2058,6 +2058,101 @@ public partial class DefinitionCollection
 
         _compartmentsByUrl[compartmentDefinition.Url] = compartmentDefinition;
         TrackResource(compartmentDefinition);
+    }
+
+    /// <summary>Attempts to resolve element tree.</summary>
+    /// <param name="id">             The identifier.</param>
+    /// <param name="sd">             [out] The found structure definition.</param>
+    /// <param name="elementSequence">[out] The element sequence.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool TryResolveElementTree(
+        string path,
+        [NotNullWhen(true)] out StructureDefinition? sd,
+        [NotNullWhen(true)] out ElementDefinition[] elementSequence)
+    {
+        sd = null;
+
+        List<ElementDefinition> sequence = [];
+
+        if (string.IsNullOrEmpty(path))
+        {
+            elementSequence = [];
+            return false;
+        }
+
+        string[] parts = path.Split('.');
+        string structureName = parts[0];
+
+        if (_resourcesByName.TryGetValue(structureName, out sd))
+        {
+            if (parts.Length == 1)
+            {
+                if (sd.cgRootElement() is ElementDefinition ed)
+                {
+                    sequence.Add(ed);
+                    elementSequence = sequence.ToArray();
+                    return true;
+                }
+
+                elementSequence = [];
+                return false;
+            }
+
+            // iterate over the path components
+            for (int i = 0; i < parts.Length; i++)
+            {
+                string currentPath = string.Join('.', parts.Take(i + 1));
+
+                if (sd.cgTryGetElementByPath(currentPath, out ElementDefinition? currentEd))
+                {
+                    sequence.Add(currentEd);
+                    continue;
+                }
+
+                elementSequence = [];
+                return false;
+            }
+
+            elementSequence = sequence.ToArray();
+            return elementSequence.Length != 0;
+        }
+
+        if (_complexTypesByName.TryGetValue(structureName, out sd))
+        {
+            if (parts.Length == 1)
+            {
+                if (sd.cgRootElement() is ElementDefinition ed)
+                {
+                    sequence.Add(ed);
+                    elementSequence = sequence.ToArray();
+                    return true;
+                }
+
+                elementSequence = [];
+                return false;
+            }
+
+            // iterate over the path components
+            for (int i = 1; i < parts.Length; i++)
+            {
+                string currentPath = string.Join('.', parts.Take(i + 1));
+
+                if (sd.cgTryGetElementById(currentPath, out ElementDefinition? currentEd))
+                {
+                    sequence.Add(currentEd);
+                    continue;
+                }
+
+                elementSequence = [];
+                return false;
+            }
+
+            elementSequence = sequence.ToArray();
+            return elementSequence.Length != 0;
+        }
+
+        elementSequence = [];
+        return false;
     }
 
     /// <summary>

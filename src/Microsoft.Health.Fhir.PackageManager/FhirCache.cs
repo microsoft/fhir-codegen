@@ -390,6 +390,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
                 ResolvedDirective = pcr.CacheDirective,
                 Name = pcr.PackageName,
                 Version = pcr.Version,
+                ResolvedDependencies = [],
             };
         }
         catch (Exception ex)
@@ -433,7 +434,9 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
 
         if (includeDependencies)
         {
-            CachePackageManifest? manifest = GetManifest(package.Value);
+            List<PackageCacheEntry> dependencies = [];
+
+            CachePackageManifest? manifest = GetManifest(package);
 
             if (manifest == null)
             {
@@ -450,9 +453,14 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
                 if (dependencyPackage == null)
                 {
                     // log the error, but continue
-                    _logger.LogError($"Failed to resolve dependent package {dependencyDirective} requested by {package.Value.ResolvedDirective}");
+                    _logger.LogError($"Failed to resolve dependent package {dependencyDirective} requested by {package.ResolvedDirective}");
+                    continue;
                 }
+
+                dependencies.Add(dependencyPackage);
             }
+
+            package = package with { ResolvedDependencies = dependencies.ToArray() };
         }
 
         return package;
@@ -3319,15 +3327,22 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
         {
             Uri dlUri = new(url);
 
-            (downloaded, resolvedFhirVersion, resolvedDirective) = await DownloadAndExtract(
-                dlUri,
-                dlDir,
-                directive.Directive,
-                cancellationToken);
-
-            if (downloaded)
+            try
             {
-                break;
+                (downloaded, resolvedFhirVersion, resolvedDirective) = await DownloadAndExtract(
+                    dlUri,
+                    dlDir,
+                    directive.Directive,
+                    cancellationToken);
+
+                if (downloaded)
+                {
+                    break;
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Failed to download {inputDirective}: {ex.Message}{((ex.InnerException != null) ? ex.InnerException.Message : string.Empty)}");
             }
         }
 

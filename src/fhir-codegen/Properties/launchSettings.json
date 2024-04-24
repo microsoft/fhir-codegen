@@ -37,17 +37,22 @@
         },
         "Firely IG Backport": {
             "commandName": "Project",
-            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.uv.subscriptions-backport#1.1.0",
+            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.uv.subscriptions-backport#1.1.0 --resolve-dependencies true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely IG US Core": {
             "commandName": "Project",
-            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.us.core#3.1.0 -p hl7.fhir.us.core#6.1.0",
+            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.us.core#6.1.0 --resolve-dependencies true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely IG Extensions Pack": {
             "commandName": "Project",
-            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.uv.extensions#current",
+            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.uv.extensions#current --resolve-dependencies true",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "Firely IG SDC": {
+            "commandName": "Project",
+            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.uv.sdc#latest --resolve-dependencies true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "http": {
