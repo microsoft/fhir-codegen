@@ -56,7 +56,7 @@ public partial class DefinitionCollection
     private readonly Dictionary<string, StructureDefinition> _complexTypesByName = [];
     private readonly Dictionary<string, StructureDefinition> _resourcesByName = [];
     private readonly Dictionary<string, StructureDefinition> _interfacesByName = [];
-    private readonly Dictionary<string, StructureDefinition> _logicalModelsByName = [];
+    private readonly Dictionary<string, StructureDefinition> _logicalModelsByUrl = [];
     private readonly Dictionary<string, StructureDefinition> _extensionsByUrl = [];
     private readonly Dictionary<string, Dictionary<string, StructureDefinition>> _extensionsByPath = [];
     private readonly Dictionary<string, StructureDefinition> _profilesByUrl = [];
@@ -928,6 +928,17 @@ public partial class DefinitionCollection
     /// <param name="codeSystem">The code system.</param>
     public void AddCodeSystem(CodeSystem codeSystem, string packageId, string packageVersion)
     {
+        // check to see if this resource already exists
+        if (_codeSystemsByUrl.TryGetValue(codeSystem.Url, out CodeSystem? prev) &&
+            TryGetPackageSource(prev, out string prevPackageId, out _))
+        {
+            // official examples packages contain all the definitions, but we want the ones from core
+            if (prevPackageId.Contains(".core") && !packageId.Contains(".core"))
+            {
+                return;
+            }
+        }
+
         // add the package source
         AddPackageSource(codeSystem, packageId, packageVersion);
 
@@ -980,6 +991,23 @@ public partial class DefinitionCollection
         }
 
         return [];
+    }
+
+    public IEnumerable<StructureElementCollection> AllBindingsForVs(string valueSetUrl)
+    {
+        string url = VersionedUrlForVs(valueSetUrl);
+
+        if (!_coreBindingEdsByPathByValueSet.TryGetValue(url, out List<StructureElementCollection>? core))
+        {
+            core = [];
+        }
+
+        if (!_extendedBindingEdsByPathByValueSet.TryGetValue(url, out List<StructureElementCollection>? extended))
+        {
+            extended = [];
+        }
+
+        return core.Union(extended);
     }
 
     /// <summary>Strongest core binding.</summary>
@@ -1304,6 +1332,17 @@ public partial class DefinitionCollection
             vsUrl = $"{vsUrl}|{valueSet.Version}";
         }
 
+        // check to see if this resource already exists
+        if (_valueSetsByVersionedUrl.TryGetValue(vsUrl, out ValueSet? prev) &&
+            TryGetPackageSource(prev, out string prevPackageId, out _))
+        {
+            // official examples packages contain all the definitions, but we want the ones from core
+            if (prevPackageId.Contains(".core") && !packageId.Contains(".core"))
+            {
+                return;
+            }
+        }
+
         string unversioned = UnversionedUrlForVs(valueSet.Url);
 
         if (_valueSetVersions.TryGetValue(unversioned, out string[]? versions))
@@ -1470,14 +1509,13 @@ public partial class DefinitionCollection
                 break;
 
             case FhirArtifactClassEnum.Resource:
-                AddStructure(sd, fhirVersion, packageId, packageVersion);
+                AddResourceDefinition(sd, fhirVersion, packageId, packageVersion);
                 break;
 
             case FhirArtifactClassEnum.Interface:
                 AddInterface(sd, fhirVersion, packageId, packageVersion);
                 break;
         }
-
     }
 
     /// <summary>Gets the name of the primitive types by.</summary>
@@ -1487,6 +1525,17 @@ public partial class DefinitionCollection
     /// <param name="sd">The structure definition.</param>
     public void AddPrimitiveType(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion, string packageId, string packageVersion)
     {
+        // check to see if this resource already exists
+        if (_primitiveTypesByName.TryGetValue(sd.Name, out StructureDefinition? prev) &&
+            TryGetPackageSource(prev, out string prevPackageId, out _))
+        {
+            // official examples packages contain all the definitions, but we want the ones from core
+            if (prevPackageId.Contains(".core") && !packageId.Contains(".core"))
+            {
+                return;
+            }
+        }
+
         // DSTU2 did not include the publication status extension, add it here for consistency
         if (fhirVersion == FhirReleases.FhirSequenceCodes.DSTU2)
         {
@@ -1516,6 +1565,17 @@ public partial class DefinitionCollection
     /// <param name="sd">The structure definition.</param>
     public void AddComplexType(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion, string packageId, string packageVersion)
     {
+        // check to see if this resource already exists
+        if (_complexTypesByName.TryGetValue(sd.Name, out StructureDefinition? prev) &&
+            TryGetPackageSource(prev, out string prevPackageId, out _))
+        {
+            // official examples packages contain all the definitions, but we want the ones from core
+            if (prevPackageId.Contains(".core") && !packageId.Contains(".core"))
+            {
+                return;
+            }
+        }
+
         if (fhirVersion == FhirReleases.FhirSequenceCodes.DSTU2)
         {
             // DSTU2 did not include the publication status extension, add it here for consistency
@@ -1601,8 +1661,19 @@ public partial class DefinitionCollection
 
     /// <summary>Adds a resource.</summary>
     /// <param name="sd">The structure definition.</param>
-    public void AddStructure(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion, string packageId, string packageVersion)
+    public void AddResourceDefinition(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion, string packageId, string packageVersion)
     {
+        // check to see if this resource already exists
+        if (_resourcesByName.TryGetValue(sd.Name, out StructureDefinition? prev) &&
+            TryGetPackageSource(prev, out string prevPackageId, out _))
+        {
+            // official examples packages contain all the definitions, but we want the ones from core
+            if (prevPackageId.Contains(".core") && !packageId.Contains(".core"))
+            {
+                return;
+            }
+        }
+
         // DSTU2 did not include the publication status extension, add it here for consistency
         if (fhirVersion == FhirReleases.FhirSequenceCodes.DSTU2)
         {
@@ -1626,6 +1697,17 @@ public partial class DefinitionCollection
     /// <param name="sd">The structure definition.</param>
     public void AddInterface(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion, string packageId, string packageVersion)
     {
+        // check to see if this resource already exists
+        if (_interfacesByName.TryGetValue(sd.Name, out StructureDefinition? prev) &&
+            TryGetPackageSource(prev, out string prevPackageId, out _))
+        {
+            // official examples packages contain all the definitions, but we want the ones from core
+            if (prevPackageId.Contains(".core") && !packageId.Contains(".core"))
+            {
+                return;
+            }
+        }
+
         // DSTU2 did not include the publication status extension, add it here for consistency
         if (fhirVersion == FhirReleases.FhirSequenceCodes.DSTU2)
         {
@@ -1716,19 +1798,30 @@ public partial class DefinitionCollection
     }
 
     /// <summary>Gets the name of the logical models by.</summary>
-    public IReadOnlyDictionary<string, StructureDefinition> LogicalModelsByName => _logicalModelsByName;
+    public IReadOnlyDictionary<string, StructureDefinition> LogicalModelsByName => _logicalModelsByUrl;
 
     /// <summary>Adds a logical model.</summary>
     /// <param name="sd">The structure definition.</param>
     public void AddLogicalModel(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion, string packageId, string packageVersion)
     {
+        // check to see if this resource already exists
+        if (_logicalModelsByUrl.TryGetValue(sd.Url, out StructureDefinition? prev) &&
+            TryGetPackageSource(prev, out string prevPackageId, out _))
+        {
+            // official examples packages contain all the definitions, but we want the ones from core
+            if (prevPackageId.Contains(".core") && !packageId.Contains(".core"))
+            {
+                return;
+            }
+        }
+
         // add the package source
         AddPackageSource(sd, packageId, packageVersion);
 
         // add field orders to elements
         ProcessElements(FhirArtifactClassEnum.LogicalModel, sd, fhirVersion);
 
-        _logicalModelsByName[sd.Url] = sd;
+        _logicalModelsByUrl[sd.Url] = sd;
         TrackResource(sd);
     }
 
@@ -1742,6 +1835,17 @@ public partial class DefinitionCollection
     /// <param name="sd">The structure definition.</param>
     public void AddExtension(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion, string packageId, string packageVersion)
     {
+        // check to see if this resource already exists
+        if (_extensionsByUrl.TryGetValue(sd.Url, out StructureDefinition? prev) &&
+            TryGetPackageSource(prev, out string prevPackageId, out _))
+        {
+            // official examples packages contain all the definitions, but we want the ones from core
+            if (prevPackageId.Contains(".core") && !packageId.Contains(".core"))
+            {
+                return;
+            }
+        }
+
         // add the package source
         AddPackageSource(sd, packageId, packageVersion);
 
@@ -1800,6 +1904,17 @@ public partial class DefinitionCollection
     /// <param name="sd">The structure definition.</param>
     public void AddProfile(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion, string packageId, string packageVersion)
     {
+        // check to see if this resource already exists
+        if (_profilesByUrl.TryGetValue(sd.Url, out StructureDefinition? prev) &&
+            TryGetPackageSource(prev, out string prevPackageId, out _))
+        {
+            // official examples packages contain all the definitions, but we want the ones from core
+            if (prevPackageId.Contains(".core") && !packageId.Contains(".core"))
+            {
+                return;
+            }
+        }
+
         // add the package source
         AddPackageSource(sd, packageId, packageVersion);
 
@@ -1850,6 +1965,17 @@ public partial class DefinitionCollection
         {
             // best guess at a canonical URL for this
             sp.Url = string.Join('/', MainPackageCanonical, "SearchParameter", sp.Id).Replace("//", "/");
+        }
+
+        // check to see if this resource already exists
+        if (_searchParamsByUrl.TryGetValue(sp.Url, out SearchParameter? prev) &&
+            TryGetPackageSource(prev, out string prevPackageId, out _))
+        {
+            // official examples packages contain all the definitions, but we want the ones from core
+            if (prevPackageId.Contains(".core") && !packageId.Contains(".core"))
+            {
+                return;
+            }
         }
 
         if (doNotOverwrite && _searchParamsByUrl.ContainsKey(sp.Url))
@@ -1966,6 +2092,17 @@ public partial class DefinitionCollection
     /// <param name="op">The operation.</param>
     public void AddOperation(OperationDefinition op, string packageId, string packageVersion)
     {
+        // check to see if this resource already exists
+        if (_operationsByUrl.TryGetValue(op.Url, out OperationDefinition? prev) &&
+            TryGetPackageSource(prev, out string prevPackageId, out _))
+        {
+            // official examples packages contain all the definitions, but we want the ones from core
+            if (prevPackageId.Contains(".core") && !packageId.Contains(".core"))
+            {
+                return;
+            }
+        }
+
         // add the package source
         AddPackageSource(op, packageId, packageVersion);
 
@@ -2031,6 +2168,17 @@ public partial class DefinitionCollection
             cs.Url = canonicalSource.EndsWith('/') ? canonicalSource + cs.Id : canonicalSource + "/" + cs.Id;
         }
 
+        // check to see if this resource already exists
+        if (_capabilityStatementsByUrl.TryGetValue(cs.Url, out CapabilityStatement? prev) &&
+            TryGetPackageSource(prev, out string prevPackageId, out _))
+        {
+            // official examples packages contain all the definitions, but we want the ones from core
+            if (prevPackageId.Contains(".core") && !packageId.Contains(".core"))
+            {
+                return;
+            }
+        }
+
         // add the package source
         AddPackageSource(cs, packageId, packageVersion);
 
@@ -2042,6 +2190,17 @@ public partial class DefinitionCollection
 
     public void AddImplementationGuide(ImplementationGuide ig, string packageId, string packageVersion)
     {
+        // check to see if this resource already exists
+        if (_implementationGuidesByUrl.TryGetValue(ig.Url, out ImplementationGuide? prev) &&
+            TryGetPackageSource(prev, out string prevPackageId, out _))
+        {
+            // official examples packages contain all the definitions, but we want the ones from core
+            if (prevPackageId.Contains(".core") && !packageId.Contains(".core"))
+            {
+                return;
+            }
+        }
+
         // add the package source
         AddPackageSource(ig, packageId, packageVersion);
 
@@ -2053,6 +2212,17 @@ public partial class DefinitionCollection
 
     public void AddCompartment(CompartmentDefinition compartmentDefinition, string packageId, string packageVersion)
     {
+        // check to see if this resource already exists
+        if (_compartmentsByUrl.TryGetValue(compartmentDefinition.Url, out CompartmentDefinition? prev) &&
+            TryGetPackageSource(prev, out string prevPackageId, out _))
+        {
+            // official examples packages contain all the definitions, but we want the ones from core
+            if (prevPackageId.Contains(".core") && !packageId.Contains(".core"))
+            {
+                return;
+            }
+        }
+
         // add the package source
         AddPackageSource(compartmentDefinition, packageId, packageVersion);
 

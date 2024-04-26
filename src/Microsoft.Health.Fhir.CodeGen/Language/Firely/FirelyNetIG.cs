@@ -4,21 +4,30 @@
 // </copyright>
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.CommandLine;
+using System.ComponentModel;
+using System.Data;
+using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
+using Hl7.Fhir.Rest;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
 using Microsoft.Health.Fhir.CodeGen.Extensions;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGen.Models;
+using Microsoft.Health.Fhir.CodeGen.Utils;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 
 using static Microsoft.Health.Fhir.CodeGen.Language.Firely.CSharpFirelyCommon;
+using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 
 namespace Microsoft.Health.Fhir.CodeGen.Language.Firely;
 
@@ -40,8 +49,18 @@ public class FirelyNetIG : ILanguage
     private Dictionary<string, ExportStreamWriter> _definitionWriters = [];
 
     /// <summary>The extension writers.</summary>
-    private Dictionary<string, ExportStreamWriter> _extensionWritersExt = [];
-    private Dictionary<string, ExportStreamWriter> _extensionWritersVal = [];
+    private Dictionary<string, ExportStreamWriter> _extensionWriters = [];
+
+    /// <summary>The value set writers.</summary>
+    private Dictionary<string, ExportStreamWriter> _valueSetWriters = [];
+
+    private const string _classNameDefinitions = "Definitions";
+    private const string _classNameExtensions = "ExtensionUtils";
+    private const string _classNameValueSets = "ValueSetUtils";
+    private const string _namespaceSuffixProfiles = ".Profiles";
+
+    private const string _extUrlPrefix = "ExtUrl";
+    private const string _tupleValuePrefix = "val";
 
     private const string _extGetterPrefixScalar = "Get an Extension representing the ";
     private const string _extGetterPrefixArray = "Get any Extensions representing the ";
@@ -55,6 +74,13 @@ public class FirelyNetIG : ILanguage
     private const string _extValueSetterPrefixScalar = "Set the ";
     private const string _extValueSetterPrefixArray = "Set all of the ";
 
+    private Dictionary<string, CSharpFirely2.WrittenValueSetInfo> _valueSetInfoByUrl = [];
+    private Dictionary<string, string> _valueSetNameMaps = [];
+
+    /// <summary>The package data by directive.</summary>
+    private Dictionary<string, PackageData> _packageDataByDirective = [];
+    private Dictionary<string, HashSet<string>> _extensionNamesByPackageDirective = [];
+
     private record struct PackageData
     {
         public required string Key { get; set; }
@@ -63,8 +89,11 @@ public class FirelyNetIG : ILanguage
         public required string Namespace { get; init; }
         public required string ClassPrefix { get; init; }
         public required string VersionSanitized { get; init; }
-        public required string FilenamePrefix { get; init; }
+        public required string FolderName { get; init; }
     }
+
+    /// <summary>URL of the extension data by.</summary>
+    private Dictionary<string, ExtensionData> _extensionDataByUrl = [];
 
     private record class ExtensionData()
     {
@@ -74,9 +103,24 @@ public class FirelyNetIG : ILanguage
         public required string Summary { get; init; }
         public required string Remarks { get; init; }
         public required bool IsComplex { get; init; }
+        public required bool IsArray { get; init; }
+        public required string ParentName { get; init; }
+        public required string DefinitionDirective { get; init; }
+        public required ExtensionContextRec[] Contexts { get; init; }
         public required ElementDefinition? ValueElement { get; init; }
+        public required CSharpFirely2.WrittenElementInfo? ElementInfo { get; init; }
         public required ExtensionData[] Children { get; init; }
     }
+
+    private record class ExtensionContextRec
+    {
+        public required StructureDefinition.ContextComponent AllowedContext { get; init; }
+
+        public required ComponentDefinition? ContextTarget { get; init; }
+
+        public required CSharpFirely2.WrittenElementInfo? ContextElementInfo { get; init; }
+    }
+
 
     /// <summary>FHIR information we are exporting.</summary>
     private DefinitionCollection _info = null!;
@@ -84,9 +128,68 @@ public class FirelyNetIG : ILanguage
     /// <summary>Options for controlling the export.</summary>
     private FirelyNetIGOptions _options = null!;
 
+    public enum ExtensionAccessorExportCodes
+    {
+        [Description("Do not export export extension accessor functions.")]
+        None,
+
+        [Description("Export extension accessor functions based on Extension objects.")]
+        ExtensionAccessors,
+
+        [Description("Export extension accessor functions that use tuples for values.")]
+        ValueTupleAccessors,
+
+        [Description("Export extension accessor functions that use record classes for values.")]
+        ValueRecordAccessors,
+    }
+
     public Type ConfigType => typeof(FirelyNetIGOptions);
     public class FirelyNetIGOptions : ConfigGenerate
     {
+        [ConfigOption(
+            ArgName = "--extension-accessors",
+            Description = "Style to export extension accessors with.")]
+        public ExtensionAccessorExportCodes ExtensionAccessorExport { get; set; } = ExtensionAccessorExportCodes.ExtensionAccessors;
+
+        private static ConfigurationOption ExtensionAccessorExportParameter { get; } = new()
+        {
+            Name = "ExtensionAccessorExport",
+            DefaultValue = ExtensionAccessorExportCodes.ExtensionAccessors,
+            CliOption = new System.CommandLine.Option<ExtensionAccessorExportCodes>("--extension-accessors", "Style to export extension accessors with.")
+            {
+                Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+                IsRequired = false,
+            },
+        };
+
+        private static readonly ConfigurationOption[] _options =
+        [
+            ExtensionAccessorExportParameter,
+        ];
+
+        public override ConfigurationOption[] GetOptions()
+        {
+            return [.. base.GetOptions(), .. _options];
+        }
+
+        public override void Parse(System.CommandLine.Parsing.ParseResult parseResult)
+        {
+            // parse base properties
+            base.Parse(parseResult);
+
+            // iterate over options for ones we are interested in
+            foreach (ConfigurationOption opt in _options)
+            {
+                switch (opt.Name)
+                {
+                    case "ExtensionAccessorExport":
+                        ExtensionAccessorExport = GetOpt(parseResult, opt.CliOption, ExtensionAccessorExport);
+                        break;
+                }
+            }
+        }
+
+
         //private const string DefaultNamespace = "Hl7.Fhir.{realm}.{package}-{version}";
 
         ///// <summary>Gets or sets the namespace.</summary>
@@ -138,436 +241,578 @@ public class FirelyNetIG : ILanguage
             Directory.CreateDirectory(options.OutputDirectory);
         }
 
-        Dictionary<string, ExtensionData> exportedExtensions = [];
+        // need to process ValueSets so that we know which ones have enums
+        ProcessValueSets();
 
         // write extension contents
         foreach (StructureDefinition sd in _info.ExtensionsByUrl.Values)
         {
-            WriteExtension(sd, exportedExtensions);
+            WriteExtension(sd);
         }
 
         // write profile contents
-        //foreach (StructureDefinition sd in _info.ProfilesByUrl.Values)
-        //{
-        //    WriteProfile(sd, exportedExtensions);
-        //}
+        foreach (StructureDefinition sd in _info.ProfilesByUrl.Values)
+        {
+            WriteProfile(sd);
+        }
 
         CloseWriters();
     }
 
-
-    private void WriteExtensionAccessors(
-        ExtensionData extData,
-        ComponentDefinition extCd,
-        ExportStreamWriter extWriter,
-        ExportStreamWriter valWriter)
+    /// <summary>
+    /// Process all value sets.
+    /// This is a hybrid processor that matches both
+    /// CSharpFirely2.WriteSharedValueSets and CSharpFirely2.WriteEnums.
+    /// Essentially, it tracks manual exclusions and determines the
+    /// correct namespace based on bindings.
+    /// </summary>
+    private void ProcessValueSets()
     {
-        bool isArray = extCd.Element.cgIsArray();
+        Dictionary<string, HashSet<string>> usedEnumsByPackage = [];
 
-        StructureDefinition.ContextComponent[] contexts = extCd?.Structure.Context?.ToArray()
-            ?? [new() { Type = StructureDefinition.ExtensionContextType.Element, Expression = "Element" }];
-
-        string returnType = isArray ? "IEnumerable<Extension>" : "Extension?";
-        string getAlias = isArray ? "GetExtensions" : "GetExtension";
-
-        HashSet<string> usedTypes = [];
-
-        // if there is a context of "Element", all other contexts are noise
-        if (contexts.Any(ctx => ctx.Expression == "Element"))
+        // traverse all versions of all value sets
+        foreach ((string unversionedUrl, string[] versions) in _info.ValueSetVersions.OrderBy(kvp => kvp.Key))
         {
-            contexts = [new() { Type = StructureDefinition.ExtensionContextType.Element, Expression = "Element" }];
-        }
-
-        // iterate over all the allowed contexts
-        foreach (StructureDefinition.ContextComponent ctx in contexts)
-        {
-            // for now, only handle element contexts
-            if (ctx.Type != StructureDefinition.ExtensionContextType.Element)
+            // check for exclusions
+            if (CSharpFirely2._exclusionSet.Contains(unversionedUrl))
             {
                 continue;
             }
 
-            // check to see if everything in the path sequence is a scalar
-            if (_info.TryResolveElementTree(ctx.Expression, out StructureDefinition? baseSd, out ElementDefinition[] elements))
+            // traverse value sets starting with highest version
+            foreach (string vsVersion in versions.OrderDescending())
             {
-                if (elements.Length == 0)
+                if (!_info.TryGetValueSet(unversionedUrl, vsVersion, out ValueSet? unexpandedVs))
                 {
                     continue;
                 }
 
-                ElementDefinition contextElement = elements.Last();
+                IEnumerable < StructureElementCollection> bindings = _info.AllBindingsForVs(unexpandedVs.Url);
+                Hl7.Fhir.Model.BindingStrength? strongestBinding = _info.StrongestBinding(bindings);
 
-                ComponentDefinition contextCd = new()
+                if (strongestBinding != Hl7.Fhir.Model.BindingStrength.Required)
                 {
-                    Structure = baseSd,
-                    Element = contextElement,
-                    IsRootOfStructure = elements.Length == 1,
-                };
-
-                string[] contextTypes;
-
-                if (elements.Length == 1)
-                {
-                    contextTypes = [baseSd.Name.ToPascalCase()];
-                }
-                else
-                {
-                    contextTypes = contextElement.cgTypes().Keys.ToArray();
-
-                    if (contextTypes.Length == 0)
-                    {
-                        contextTypes = [contextElement.cgBaseTypeName(_info, false)];
-                    }
+                    /* Since required bindings cannot be extended, those are the only bindings that
+                       can be represented using enums in the POCO classes (using <c>Code&lt;T&gt;</c>). All other coded members
+                       use <c>Code</c>, <c>Coding</c> or <c>CodeableConcept</c>.
+                       Consequently, we only need to generate enums for valuesets that are used as
+                       required bindings anywhere in the data model. */
+                    continue;
                 }
 
-                // traverse the types for this element
-                foreach (string typeName in contextTypes)
+                if (!_info.TryExpandVs(unversionedUrl + "|" + vsVersion, out ValueSet? vs))
                 {
-                    string sdkType = _info.HasChildElements(contextElement.Path)
-                        ? GetFirelyComponentType(contextCd)
-                        : typeName;
+                    continue;
+                }
 
-                    if (PrimitiveTypeMap.TryGetValue(sdkType, out string? mappedType))
-                    {
-                        sdkType = mappedType;
-                    }
+                IEnumerable<string> referencedBy = bindings.cgExtractBaseTypes(_info);
 
-                    if (TypeNameMappings.TryGetValue(sdkType, out mappedType))
-                    {
-                        sdkType = mappedType;
-                    }
+                string vsClassName = string.Empty;
 
-                    if (usedTypes.Contains(sdkType))
+                if ((referencedBy.Count() < 2) && !CSharpFirely2._explicitSharedValueSets.Contains((_info.FhirSequence.ToString(), vs.Url)))
+                {
+                    /* ValueSets that are used in a single POCO are generated as a nested enum inside that
+                     * POCO, not here in the shared valuesets */
+
+                    vsClassName = referencedBy.First();
+                }
+
+                if (!_info.TryGetPackageSource(vs, out string packageId, out string packageVersion))
+                {
+                    packageId = _info.MainPackageId;
+                    packageVersion = _info.MainPackageVersion;
+                }
+
+                if (!usedEnumsByPackage.TryGetValue($"{packageId}#{packageVersion}", out HashSet<string>? usedEnumNames))
+                {
+                    usedEnumNames = [];
+                    usedEnumsByPackage.Add($"{packageId}#{packageVersion}", usedEnumNames);
+                }
+
+                ProcessValueSet(vs, vsClassName, usedEnumNames, packageId, packageVersion);
+            }
+        }
+    }
+
+    private void ProcessValueSet(ValueSet vs, string className, HashSet<string> usedEnumNames, string packageId, string packageVersion)
+    {
+        if (_valueSetInfoByUrl.ContainsKey(vs.Url))
+        {
+            return;
+        }
+
+        string name = (vs.Name ?? vs.Id)
+            .Replace(" ", string.Empty, StringComparison.Ordinal)
+            .Replace("_", string.Empty, StringComparison.Ordinal);
+
+        string nameSanitized = FhirSanitizationUtils.SanitizeForProperty(name, [], NamingConvention.PascalCase);
+
+        // Enums and their containing classes cannot have the same name,
+        // so we have to correct these here
+        if (CSharpFirely2._enumNamesOverride.TryGetValue(vs.Url, out var replacementName))
+        {
+            nameSanitized = replacementName;
+        }
+
+        if (usedEnumNames.Contains(nameSanitized))
+        {
+            return;
+        }
+
+        usedEnumNames.Add(nameSanitized);
+
+        // set our value set info
+        _valueSetInfoByUrl.Add(
+            vs.Url,
+            new CSharpFirely2.WrittenValueSetInfo()
+            {
+                ClassName = className,
+                ValueSetName = nameSanitized,
+            });
+
+        // do not write the value set if it is in a core package
+        if (FhirPackageUtils.PackageIsFhirRelease(packageId))
+        {
+            return;
+        }
+
+        PackageData packageData = GetPackageData(packageId, packageVersion);
+
+        // build an updated name for the value set
+        string defaultName = $"Hl7.Fhir.Model.Extension.{nameSanitized}";
+        string fixedName = packageData.Namespace + "." + nameSanitized;
+
+        if (defaultName != fixedName)
+        {
+            if (_valueSetNameMaps.ContainsKey(defaultName))
+            {
+                Console.Write("");
+            }
+            else
+            {
+                // add the mapping to the global list
+                _valueSetNameMaps.Add(defaultName, fixedName);
+            }
+        }
+
+        // get a writer for the value set
+        ExportStreamWriter writer = GetValueSetWriter(packageData);
+
+        IEnumerable<string> referencedCodeSystems = vs.cgReferencedCodeSystems();
+        if (referencedCodeSystems.Count() == 1)
+        {
+            WriteIndentedComment(
+                writer,
+                $"{vs.Description}\n" +
+                $"(url: {vs.Url})\n" +
+                $"(system: {referencedCodeSystems.First()})");
+        }
+        else
+        {
+            WriteIndentedComment(
+                writer,
+                $"{vs.Description}\n" +
+                $"(url: {vs.Url})\n" +
+                $"(systems: {referencedCodeSystems.Count()})");
+        }
+
+        IEnumerable<FhirConcept> concepts = vs.cgGetFlatConcepts(_info);
+
+        string defaultSystem = concepts.Select(c => c.System)
+                        .GroupBy(c => c)
+                        .OrderByDescending(c => c.Count())
+                        .First().Key;
+
+        writer.WriteLineIndented($"[FhirEnumeration(\"{name}\", \"{vs.Url}\", \"{defaultSystem}\")]");
+
+        writer.WriteLineIndented($"public enum {nameSanitized}");
+
+        OpenScope(writer);      // open enum
+
+        HashSet<string> usedLiterals = [];
+
+        foreach (FhirConcept concept in concepts)
+        {
+            string codeName = ConvertEnumValue(concept.Code);
+            string codeValue = FhirSanitizationUtils.SanitizeForValue(concept.Code);
+            string description = string.IsNullOrEmpty(concept.Definition)
+                ? $"MISSING DESCRIPTION\n(system: {concept.System})"
+                : $"{concept.Definition}\n(system: {concept.System})";
+
+            if (concept.HasProperty("status", "deprecated"))
+            {
+                description += "\nThis enum is DEPRECATED.";
+            }
+
+            WriteIndentedComment(writer, description);
+
+            string display = FhirSanitizationUtils.SanitizeForValue(concept.Display);
+
+            if (concept.System != defaultSystem)
+            {
+                writer.WriteLineIndented($"[EnumLiteral(\"{codeValue}\", \"{concept.System}\"), Description(\"{display}\")]");
+            }
+            else
+            {
+                writer.WriteLineIndented($"[EnumLiteral(\"{codeValue}\"), Description(\"{display}\")]");
+            }
+
+            if (usedLiterals.Contains(codeName))
+            {
+                // start at 2 so that the unadorned version makes sense as v1
+                for (int i = 2; i < 1000; i++)
+                {
+                    if (usedLiterals.Contains($"{codeName}_{i}"))
                     {
                         continue;
                     }
 
-                    usedTypes.Add(sdkType);
-
-                    // write a comment
-                    if (isArray)
-                    {
-                        extWriter.WriteIndentedComment(_extGetterPrefixArray + extData.Summary, isSummary: true);
-                    }
-                    else
-                    {
-                        extWriter.WriteIndentedComment(_extGetterPrefixScalar + extData.Summary, isSummary: true);
-                    }
-
-                    extWriter.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
-
-                    // write a getter, which returns either a single extension or an enumerable of extensions
-                    extWriter.WriteLineIndented($"public static {returnType} {extData.Name}Get(this {sdkType} o) =>");
-                    extWriter.WriteLineIndented($"  o.{getAlias}(Definitions.{extData.Name});");
-                    extWriter.WriteLine();
-
-                    // write a comment
-                    if (isArray)
-                    {
-                        extWriter.WriteIndentedComment(_extSetterPrefixArray + extData.Summary, isSummary: true);
-                    }
-                    else
-                    {
-                        extWriter.WriteIndentedComment(_extSetterPrefixScalar + extData.Summary, isSummary: true);
-                    }
-
-                    extWriter.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
-
-                    if (isArray)
-                    {
-                        extWriter.WriteLineIndented($"public static void {extData.Name}Set(this {sdkType} o, {returnType}? val)");
-                        OpenScope(extWriter);      // setter function open
-                        extWriter.WriteLineIndented($"o.RemoveExtension(Definitions.{extData.Name});");
-                        extWriter.WriteLineIndented("if (val == null) return;");
-                        extWriter.WriteLineIndented("if (!val.Any()) return;");
-                        extWriter.WriteLineIndented("foreach (Extension e in val)");
-                        OpenScope(extWriter);      // foreach open
-                        extWriter.WriteLineIndented($"if (e.Url != Definitions.{extData.Name}) e.Url = Definitions.{extData.Name};");
-                        extWriter.WriteLineIndented("o.Extension.Add(e);");
-                        CloseScope(extWriter, suppressNewline: true);     // foreach close
-                        CloseScope(extWriter);      // setter function close
-                    }
-                    else
-                    {
-                        extWriter.WriteLineIndented($"public static void {extData.Name}Set(this {sdkType} o, {returnType} val)");
-                        OpenScope(extWriter);      // setter function open
-                        extWriter.WriteLineIndented($"o.RemoveExtension(Definitions.{extData.Name});");
-                        extWriter.WriteLineIndented("if (val == null) return;");
-                        extWriter.WriteLineIndented($"if (val.Url != Definitions.{extData.Name}) val.Url = Definitions.{extData.Name};");
-                        extWriter.WriteLineIndented("o.Extension.Add(val);");
-                        CloseScope(extWriter);      // setter function close
-                    }
-
-                    // write type-specific accessors
-                    if (extData.Children.Length != 0)
-                    {
-                        // check to see if all sub-extensions resolve to a single type
-                        if (ExtensionResolvesToSingleType(extData))
-                        {
-                            // write a comment
-                            if (isArray)
-                            {
-                                valWriter.WriteIndentedComment(_extValueGetterPrefixArray + extData.Summary, isSummary: true);
-                            }
-                            else
-                            {
-                                valWriter.WriteIndentedComment(_extValueGetterPrefixScalar + extData.Summary, isSummary: true);
-                            }
-
-                            valWriter.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
-
-                            // we can make a tuple return
-                            List<KeyValuePair<string, string>> extensionTuple = BuildReturnTuple(extData);
-
-                            string retTuple = string.Join(", ", extensionTuple.Select(t => $"{t.Value}? {t.Key}"));
-
-                            if (isArray)
-                            {
-                                valWriter.WriteLineIndented($"public static IEnumerable<({retTuple})> {extData.Name}GetValues(this {sdkType} o)");
-                                OpenScope(valWriter);      // function open
-                                valWriter.WriteLineIndented($"IEnumerable<Extension> roots = o.GetExtensions(Definitions.{extData.Name});");
-                                valWriter.WriteLineIndented("if (!roots.Any()) yield break;");
-                                valWriter.WriteLineIndented($"foreach (Extension root in roots)");
-                                OpenScope(valWriter);      // foreach open
-
-                                // pull values from the extension tree
-                                WriteSubExtensionGetTupleRecurse(valWriter, extData, "root");
-
-                                // add to our list
-                                valWriter.WriteLineIndented($"yield return ({string.Join(", ", extensionTuple.Select(kvp => "val" + kvp.Key))});");
-
-                                CloseScope(valWriter, suppressNewline:true);     // foreach close
-                                CloseScope(valWriter);     // function close
-                            }
-                            else
-                            {
-                                valWriter.WriteLineIndented($"public static ({retTuple})? {extData.Name}GetValue(this {sdkType} o)");
-                                OpenScope(valWriter);
-                                valWriter.WriteLineIndented($"Extension? root = o.GetExtension(Definitions.{extData.Name});");
-                                valWriter.WriteLineIndented("if (root == null) return null;");
-
-                                // pull values from the extension tree
-                                WriteSubExtensionGetTupleRecurse(valWriter, extData, "root");
-
-                                valWriter.WriteLineIndented($"return ({string.Join(", ", extensionTuple.Select(kvp => "val" + kvp.Key))});");
-
-                                CloseScope(valWriter);
-                            }
-
-                            // write a comment
-                            if (isArray)
-                            {
-                                valWriter.WriteIndentedComment(_extValueSetterPrefixArray + extData.Summary, isSummary: true);
-                            }
-                            else
-                            {
-                                valWriter.WriteIndentedComment(_extValueSetterPrefixScalar + extData.Summary, isSummary: true);
-                            }
-
-                            valWriter.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
-
-                            if (isArray)
-                            {
-                                string innerType = string.Join(", ", extensionTuple.Select(kvp => $"{kvp.Value}? val{kvp.Key}"));
-
-                                valWriter.WriteLineIndented($"public static void {extData.Name}Set(" +
-                                    $"this {sdkType} o, " +
-                                    $"IEnumerable<({innerType})> values)");
-                                OpenScope(valWriter);      // setter function open
-                                valWriter.WriteLineIndented($"o.RemoveExtension(Definitions.{extData.Name});");
-
-                                valWriter.WriteLineIndented($"if (values == null) return;");
-                                valWriter.WriteLineIndented($"if (!values.Any()) return;");
-
-                                valWriter.WriteLineIndented($"foreach (({innerType}) in values)");
-                                OpenScope(valWriter);       // foreach open
-
-                                valWriter.WriteLineIndented($"Extension root = new Extension() {{ Url = Definitions.{extData.Name} }};");
-                                valWriter.WriteLineIndented($"bool rootAdded = false;");
-
-                                // pull values from the extension tree
-                                WriteSubExtensionSetTupleRecurse(valWriter, extData, "root");
-
-                                valWriter.WriteLineIndented($"if (rootAdded) o.Extension.Add(root);");
-
-                                CloseScope(valWriter, suppressNewline:true);      // foreach close
-                                CloseScope(valWriter);     // setter function close
-                            }
-                            else
-                            {
-                                valWriter.WriteLineIndented($"public static void {extData.Name}Set(" +
-                                    $"this {sdkType} o, " +
-                                    $"{string.Join(", ", extensionTuple.Select(kvp => $"{kvp.Value}? val{kvp.Key}"))})");
-                                OpenScope(valWriter);      // setter function open
-                                valWriter.WriteLineIndented($"o.RemoveExtension(Definitions.{extData.Name});");
-
-                                valWriter.WriteLineIndented($"if ({string.Join(" && ", extensionTuple.Select(kvp => $"(val{kvp.Key} == null)"))}) return;");
-
-                                valWriter.WriteLineIndented($"Extension root = new Extension() {{ Url = Definitions.{extData.Name} }};");
-
-                                // pull values from the extension tree
-                                WriteSubExtensionSetTupleRecurse(valWriter, extData, "root");
-
-                                valWriter.WriteLineIndented($"o.Extension.Add(root);");
-
-                                CloseScope(valWriter);     // setter function close
-                            }
-                        }
-                    }
-                    else if (extData.ValueElement != null)
-                    {
-                        ElementDefinition.TypeRefComponent[] valueTypes = extData.ValueElement.cgTypes().Values.ToArray();
-
-                        // check the possible return types for this extension
-                        foreach (ElementDefinition.TypeRefComponent valueType in valueTypes)
-                        {
-                            string type = valueType.cgName();
-                            string fhirNetType = TypeNameMappings.TryGetValue(type, out string? v) ? v : type;
-                            bool isPrimitive = false;
-
-                            if (PrimitiveTypeMap.TryGetValue(type, out mappedType))
-                            {
-                                type = mappedType;
-                                isPrimitive = true;
-                            }
-
-                            if (type.EndsWith('?'))
-                            {
-                                type = type.Substring(0, type.Length - 1);
-                            }
-
-                            // write a comment
-                            if (isArray)
-                            {
-                                valWriter.WriteIndentedComment(_extValueGetterPrefixArray + extData.Summary, isSummary: true);
-                            }
-                            else
-                            {
-                                valWriter.WriteIndentedComment(_extValueGetterPrefixScalar + extData.Summary, isSummary: true);
-                            }
-
-                            valWriter.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
-
-                            // build the getter name
-                            string valueGetterName = extData.Name + "Get" + (valueTypes.Length > 1 ? type.ToPascalCase() : string.Empty);
-
-                            if (isArray)
-                            {
-                                valWriter.WriteLineIndented($"public static IEnumerable<{type}> {valueGetterName}(this {sdkType} o) =>");
-                                valWriter.WriteLineIndented($"  o.GetExtensions(Definitions.{extData.Name});");
-                            }
-                            else
-                            {
-                                valWriter.WriteLineIndented($"public static {type}? {valueGetterName}(this {sdkType} o) =>");
-
-                                switch (type)
-                                {
-                                    case "bool":
-                                        valWriter.WriteLineIndented($"  o.GetBoolExtension(Definitions.{extData.Name});");
-                                        break;
-
-                                    case "int":
-                                        valWriter.WriteLineIndented($"  o.GetIntegerExtension(Definitions.{extData.Name});");
-                                        break;
-
-                                    case "string":
-                                        valWriter.WriteLineIndented($"  o.GetStringExtension(Definitions.{extData.Name});");
-                                        break;
-
-                                    default:
-                                        valWriter.WriteLineIndented($"  o.GetExtensionValue<{type}>(Definitions.{extData.Name});");
-                                        break;
-                                }
-                            }
-
-                            valWriter.WriteLine();
-
-
-                            // write a comment
-                            if (isArray)
-                            {
-                                valWriter.WriteIndentedComment(_extValueSetterPrefixArray + extData.Summary, isSummary: true);
-                            }
-                            else
-                            {
-                                valWriter.WriteIndentedComment(_extValueSetterPrefixScalar + extData.Summary, isSummary: true);
-                            }
-
-                            valWriter.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
-
-                            if (isArray)
-                            {
-                                valWriter.WriteLineIndented($"public static void {extData.Name}Set(this {sdkType} o, IEnumerable<{type}>? val)");
-                                OpenScope(valWriter);      // setter function open
-                                valWriter.WriteLineIndented($"o.RemoveExtension(Definitions.{extData.Name});");
-                                valWriter.WriteLineIndented("if (val == null) return;");
-                                valWriter.WriteLineIndented("if (!val.Any()) return;");
-                                valWriter.WriteLineIndented($"foreach ({type} v in val)");
-                                OpenScope(valWriter);      // foreach open
-
-                                // need to pull the original type so we can create the correct datatype
-                                if (isPrimitive)
-                                {
-                                    valWriter.WriteLineIndented($"o.AddExtension(Definitions.{extData.Name}, new {fhirNetType}(v));");
-                                }
-                                else
-                                {
-                                    valWriter.WriteLineIndented($"o.AddExtension(Definitions.{extData.Name}, v);");
-                                }
-
-                                CloseScope(valWriter, suppressNewline:true);     // foreach close
-                                CloseScope(valWriter);      // setter function close
-                            }
-                            else
-                            {
-                                valWriter.WriteLineIndented($"public static void {extData.Name}Set(this {sdkType} o, {type}? val)");
-                                OpenScope(valWriter);      // setter function open
-                                valWriter.WriteLineIndented($"o.RemoveExtension(Definitions.{extData.Name});");
-                                valWriter.WriteLineIndented("if (val == null) return;");
-                                // need to pull the original type so we can create the correct datatype
-                                if (isPrimitive)
-                                {
-                                    valWriter.WriteLineIndented($"o.AddExtension(Definitions.{extData.Name}, new {fhirNetType}(val));");
-                                }
-                                else
-                                {
-                                    valWriter.WriteLineIndented($"o.AddExtension(Definitions.{extData.Name}, val);");
-                                }
-                                CloseScope(valWriter);      // setter function close
-                            }
-                        }
-                    }
+                    codeName = $"{codeName}_{i}";
+                    break;
                 }
             }
-            else            // if we cannot resolve the context, just write something generic
+
+            usedLiterals.Add(codeName);
+
+            writer.WriteLineIndented($"{codeName},");
+        }
+
+        CloseScope(writer);     // close enum
+    }
+
+    private void WriteExtensionAccessors(
+        ExtensionData extData,
+        ExportStreamWriter writer)
+    {
+        switch (_options.ExtensionAccessorExport)
+        {
+            case ExtensionAccessorExportCodes.ExtensionAccessors:
+                WriteExtensionAccessorsExt(extData, writer);
+                break;
+
+            case ExtensionAccessorExportCodes.ValueTupleAccessors:
+                WriteExtensionAccessorsTuples(extData, writer);
+                break;
+
+            case ExtensionAccessorExportCodes.ValueRecordAccessors:
+                WriteExtensionAccessorsRecords(extData, writer);
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    private void WriteExtensionAccessorsTuples(ExtensionData extData, ExportStreamWriter writer)
+    {
+        foreach (ExtensionContextRec ctx in extData.Contexts)
+        {
+            string contextType = ctx.ContextElementInfo?.ElementType ?? "Element";
+
+            // check for simple extensions
+            if ((extData.ValueElement != null) && (extData.ElementInfo != null))
             {
-                // write a comment
-                if (isArray)
+                string elementType = extData.ElementInfo.IsPrimitive ? extData.ElementInfo.PrimitiveHelperType! : extData.ElementInfo.ElementType!;
+
+                // write a getter comment
+                if (extData.ElementInfo.IsList)
                 {
-                    extWriter.WriteIndentedComment(_extGetterPrefixArray + extData.Summary, isSummary: true);
+                    writer.WriteIndentedComment(_extValueGetterPrefixArray + extData.Summary, isSummary: true);
+                    writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
                 }
                 else
                 {
-                    extWriter.WriteIndentedComment(_extGetterPrefixScalar + extData.Summary, isSummary: true);
+                    writer.WriteIndentedComment(_extValueGetterPrefixScalar + extData.Summary, isSummary: true);
+                    writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
                 }
 
-                extWriter.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
-
                 // build the getter name
-                string getterName = extData.Name + "Get";
+                //string valueGetterName = extData.Name + "Get" + (extData.ValueInfo.Length > 1 ? type.ToPascalCase() : string.Empty);
 
-                // write a getter, which returns either a single extension or an enumerable of extensions
-                extWriter.WriteLineIndented($"public static {returnType} {getterName}(this Element e) =>");
-                extWriter.WriteLineIndented($"  e.{getAlias}(Definitions.{extData.Name});");
-                extWriter.WriteLine();
+                if (extData.ElementInfo.IsList)
+                {
+                    writer.WriteLineIndented($"public static IEnumerable<{extData.ElementInfo.ElementType}> {extData.Name}Get(this {contextType} o) =>");
+                    writer.WriteLineIndented($"  o.GetExtensions({_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
+                }
+                else
+                {
+                    writer.WriteLineIndented($"public static {elementType}? {extData.Name}Get(this {contextType} o) =>");
+
+                    switch (elementType)
+                    {
+                        case "bool":
+                            writer.WriteLineIndented($"  o.GetBoolExtension({_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
+                            break;
+
+                        case "int":
+                            writer.WriteLineIndented($"  o.GetIntegerExtension({_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
+                            break;
+
+                        case "string":
+                            writer.WriteLineIndented($"  o.GetStringExtension({_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
+                            break;
+
+                        default:
+                            writer.WriteLineIndented($"  o.GetExtensionValue<{elementType}>({_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
+                            break;
+                    }
+                }
+
+                writer.WriteLine();
+
+                // write a setter comment
+                if (extData.ElementInfo.IsList)
+                {
+                    writer.WriteIndentedComment(_extValueSetterPrefixArray + extData.Summary, isSummary: true);
+                    writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
+                }
+                else
+                {
+                    writer.WriteIndentedComment(_extValueSetterPrefixScalar + extData.Summary, isSummary: true);
+                    writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
+                }
+
+                // build the setter for either a single value or an array
+                if (extData.ElementInfo.IsList)
+                {
+                    writer.WriteLineIndented($"public static void {extData.Name}Set(this {contextType} o, IEnumerable<{elementType}>? val)");
+                    OpenScope(writer);      // setter function open
+                    writer.WriteLineIndented($"o.RemoveExtension({_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
+                    writer.WriteLineIndented("if (val == null) return;");
+                    writer.WriteLineIndented("if (!val.Any()) return;");
+                    writer.WriteLineIndented($"foreach ({elementType} v in val)");
+                    OpenScope(writer);      // foreach open
+
+                    // need to pull the original type so we can create the correct datatype
+                    if (extData.ElementInfo.IsPrimitive)
+                    {
+                        writer.WriteLineIndented($"o.AddExtension({_classNameDefinitions}.{_extUrlPrefix}{extData.Name}, new {extData.ElementInfo.ElementType}(v));");
+                    }
+                    else
+                    {
+                        writer.WriteLineIndented($"o.AddExtension({_classNameDefinitions}.{_extUrlPrefix}{extData.Name}, v);");
+                    }
+
+                    CloseScope(writer, suppressNewline: true);     // foreach close
+                    CloseScope(writer);      // setter function close
+                }
+                else
+                {
+                    writer.WriteLineIndented($"public static void {extData.Name}Set(this {contextType} o, {elementType}? val)");
+                    OpenScope(writer);      // setter function open
+                    writer.WriteLineIndented($"o.RemoveExtension({_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
+                    writer.WriteLineIndented("if (val == null) return;");
+                    // need to pull the original type so we can create the correct datatype
+                    if (extData.ElementInfo.IsPrimitive)
+                    {
+                        writer.WriteLineIndented($"o.AddExtension({_classNameDefinitions}.{_extUrlPrefix}{extData.Name}, new {extData.ElementInfo.ElementType}(val));");
+                    }
+                    else
+                    {
+                        writer.WriteLineIndented($"o.AddExtension({_classNameDefinitions}.{_extUrlPrefix}{extData.Name}, val);");
+                    }
+
+                    CloseScope(writer);      // setter function close
+                }
+            }
+            else
+            {
+                // write a comment for the getter
+                if (extData.IsArray)
+                {
+                    writer.WriteIndentedComment(_extValueGetterPrefixArray + extData.Summary, isSummary: true);
+                    writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
+                }
+                else
+                {
+                    writer.WriteIndentedComment(_extValueGetterPrefixScalar + extData.Summary, isSummary: true);
+                    writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
+                }
+
+                // we can make a tuple return
+                List<KeyValuePair<string, string>> extensionTuple = BuildReturnTuple(extData);
+
+                string retTuple = string.Join(", ", extensionTuple.Select(t => $"{t.Value}? {t.Key}"));
+
+                if (extData.IsArray)
+                {
+                    writer.WriteLineIndented($"public static IEnumerable<({retTuple})> {extData.Name}GetValues(this {contextType} o)");
+                    OpenScope(writer);      // function open
+                    writer.WriteLineIndented($"IEnumerable<Extension> roots = o.GetExtensions({_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
+                    writer.WriteLineIndented("if (!roots.Any()) yield break;");
+                    writer.WriteLineIndented($"foreach (Extension root in roots)");
+                    OpenScope(writer);      // foreach open
+
+                    // pull values from the extension tree
+                    WriteSubExtensionGetTupleRecurse(writer, extData, "root");
+
+                    // add to our list
+                    writer.WriteLineIndented($"yield return ({string.Join(", ", extensionTuple.Select(kvp => kvp.Key))});");
+
+                    CloseScope(writer, suppressNewline: true);     // foreach close
+                    CloseScope(writer);     // function close
+                }
+                else
+                {
+                    writer.WriteLineIndented($"public static ({retTuple})? {extData.Name}GetValue(this {contextType} o)");
+                    OpenScope(writer);
+                    writer.WriteLineIndented($"Extension? root = o.GetExtension({_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
+                    writer.WriteLineIndented("if (root == null) return null;");
+
+                    // pull values from the extension tree
+                    WriteSubExtensionGetTupleRecurse(writer, extData, "root");
+
+                    writer.WriteLineIndented($"return ({string.Join(", ", extensionTuple.Select(kvp => kvp.Key))});");
+
+                    CloseScope(writer);
+                }
+
+                // write a comment for the setter
+                if (extData.IsArray)
+                {
+                    writer.WriteIndentedComment(_extValueSetterPrefixArray + extData.Summary, isSummary: true);
+                    writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
+                }
+                else
+                {
+                    writer.WriteIndentedComment(_extValueSetterPrefixScalar + extData.Summary, isSummary: true);
+                    writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
+                }
+
+                // write a setter for either a single value or an array
+                if (extData.IsArray)
+                {
+                    string innerType = string.Join(", ", extensionTuple.Select(kvp => $"{kvp.Value}? {kvp.Key}"));
+
+                    writer.WriteLineIndented($"public static void {extData.Name}Set(" +
+                        $"this {contextType} o, " +
+                        $"IEnumerable<({innerType})> values)");
+                    OpenScope(writer);      // setter function open
+                    writer.WriteLineIndented($"o.RemoveExtension({_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
+
+                    writer.WriteLineIndented($"if (values == null) return;");
+                    writer.WriteLineIndented($"if (!values.Any()) return;");
+
+                    writer.WriteLineIndented($"foreach (({innerType}) in values)");
+                    OpenScope(writer);       // foreach open
+
+                    if (string.IsNullOrEmpty(extData.ParentName))
+                    {
+                        writer.WriteLineIndented($"Extension root = new Extension() {{ Url = {_classNameDefinitions}.{_extUrlPrefix}{extData.Name} }};");
+                    }
+                    else
+                    {
+                        writer.WriteLineIndented($"Extension root = new Extension() {{ Url = {_classNameDefinitions}.{_extUrlPrefix}{extData.ParentName}{extData.Name} }};");
+                    }
+                    writer.WriteLineIndented($"bool rootAdded = false;");
+
+                    // pull values from the extension tree
+                    WriteSubExtensionSetTupleRecurse(writer, extData, "root");
+
+                    writer.WriteLineIndented($"if (rootAdded) o.Extension.Add(root);");
+
+                    CloseScope(writer, suppressNewline: true);      // foreach close
+                    CloseScope(writer);     // setter function close
+                }
+                else
+                {
+                    writer.WriteLineIndented($"public static void {extData.Name}Set(" +
+                        $"this {contextType} o, " +
+                        $"{string.Join(", ", extensionTuple.Select(kvp => $"{kvp.Value}? {kvp.Key}"))})");
+                    OpenScope(writer);      // setter function open
+                    writer.WriteLineIndented($"o.RemoveExtension({_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
+
+                    writer.WriteLineIndented($"if ({string.Join(" && ", extensionTuple.Select(kvp => $"({kvp.Key} == null)"))}) return;");
+
+                    writer.WriteLineIndented($"Extension root = new Extension() {{ Url = {_classNameDefinitions}.{_extUrlPrefix}{extData.Name} }};");
+
+                    // pull values from the extension tree
+                    WriteSubExtensionSetTupleRecurse(writer, extData, "root");
+
+                    writer.WriteLineIndented($"o.Extension.Add(root);");
+
+                    CloseScope(writer);     // setter function close
+                }
             }
         }
+    }
+
+    private void WriteExtensionAccessorsRecords(ExtensionData extData, ExportStreamWriter writer) { }
+
+
+    private void WriteExtensionAccessorsExt(ExtensionData extData, ExportStreamWriter writer)
+    {
+        string returnType = extData.IsArray ? "IEnumerable<Extension>" : "Extension?";
+        string getAlias = extData.IsArray ? "GetExtensions" : "GetExtension";
+
+        foreach (ExtensionContextRec ctx in extData.Contexts)
+        {
+            string contextType = ctx.ContextElementInfo?.ElementType ?? "Element";
+
+            // write a comment for the getter
+            if (extData.IsArray)
+            {
+                writer.WriteIndentedComment(_extGetterPrefixArray + extData.Summary, isSummary: true);
+                writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
+            }
+            else
+            {
+                writer.WriteIndentedComment(_extGetterPrefixScalar + extData.Summary, isSummary: true);
+                writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
+            }
+
+            // write a getter, which returns either a single extension or an enumerable of extensions
+            writer.WriteLineIndented($"public static {returnType} {extData.Name}Get(this {contextType} o) =>");
+            writer.WriteLineIndented($"  o.{getAlias}({_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
+            writer.WriteLine();
+
+            // write a comment for the setter
+            if (extData.IsArray)
+            {
+                writer.WriteIndentedComment(_extSetterPrefixArray + extData.Summary, isSummary: true);
+                writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
+            }
+            else
+            {
+                writer.WriteIndentedComment(_extSetterPrefixScalar + extData.Summary, isSummary: true);
+                writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
+            }
+
+            // write the appropriate setter (single or array)
+            if (extData.IsArray)
+            {
+                writer.WriteLineIndented($"public static void {extData.Name}Set(this {contextType} o, {returnType}? val)");
+                OpenScope(writer);      // setter function open
+                writer.WriteLineIndented($"o.RemoveExtension({_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
+                writer.WriteLineIndented("if (val == null) return;");
+                writer.WriteLineIndented("if (!val.Any()) return;");
+                writer.WriteLineIndented("foreach (Extension e in val)");
+                OpenScope(writer);      // foreach open
+                writer.WriteLineIndented($"if (e.Url != {_classNameDefinitions}.{_extUrlPrefix}{extData.Name}) e.Url = {_classNameDefinitions}.{_extUrlPrefix}{extData.Name};");
+                writer.WriteLineIndented("o.Extension.Add(e);");
+                CloseScope(writer, suppressNewline: true);     // foreach close
+                CloseScope(writer);      // setter function close
+            }
+            else
+            {
+                writer.WriteLineIndented($"public static void {extData.Name}Set(this {contextType} o, {returnType} val)");
+                OpenScope(writer);      // setter function open
+                writer.WriteLineIndented($"o.RemoveExtension({_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
+                writer.WriteLineIndented("if (val == null) return;");
+                writer.WriteLineIndented($"if (val.Url != {_classNameDefinitions}.{_extUrlPrefix}{extData.Name}) val.Url = {_classNameDefinitions}.{_extUrlPrefix}{extData.Name};");
+                writer.WriteLineIndented("o.Extension.Add(val);");
+                CloseScope(writer);      // setter function close
+            }
+        }
+
     }
 
     private void WriteSubExtensionSetTupleRecurse(ExportStreamWriter writer, ExtensionData extData, string parentVarName)
     {
         if (extData.ValueElement != null)
         {
+            string valName = _tupleValuePrefix + extData.Name;
+            string extName = _extUrlPrefix + extData.ParentName + extData.Name;
             string typeName;
 
             if (extData.ValueElement.Type.Any())
@@ -595,18 +840,18 @@ public class FirelyNetIG : ILanguage
 
             if (extData.ValueElement.cgIsArray())
             {
-                writer.WriteLineIndented($"if (val{extData.Name} != null)");
+                writer.WriteLineIndented($"if ({valName} != null)");
                 OpenScope(writer);          // if open
-                writer.WriteLineIndented($"foreach ({typeName} vt{extData.Name} in val{extData.Name})");
+                writer.WriteLineIndented($"foreach ({typeName} vt{extData.Name} in {valName})");
                 OpenScope(writer);          // foreach open
 
                 if (isPrimitive)
                 {
-                    writer.WriteLineIndented($"{parentVarName}.AddExtension(Definitions.{extData.Name}, new {fhirNetType}(val{extData.Name}));");
+                    writer.WriteLineIndented($"{parentVarName}.AddExtension({_classNameDefinitions}.{extName}, new {fhirNetType}({valName}));");
                 }
                 else
                 {
-                    writer.WriteLineIndented($"{parentVarName}.AddExtension(Definitions.{extData.Name}, val{extData.Name});");
+                    writer.WriteLineIndented($"{parentVarName}.AddExtension({_classNameDefinitions}.{extName}, {valName});");
                 }
 
                 CloseScope(writer);         // foreach close
@@ -615,17 +860,17 @@ public class FirelyNetIG : ILanguage
             }
             else if (isPrimitive)
             {
-                writer.WriteLineIndented($"if (val{extData.Name} != null)");
+                writer.WriteLineIndented($"if ({valName} != null)");
                 OpenScope(writer);          // if open
-                writer.WriteLineIndented($"{parentVarName}.AddExtension(Definitions.{extData.Name}, new {fhirNetType}(val{extData.Name}));");
+                writer.WriteLineIndented($"{parentVarName}.AddExtension({_classNameDefinitions}.{extName}, new {fhirNetType}({valName}));");
                 writer.WriteLineIndented($"{parentVarName}Added = true;");
                 CloseScope(writer);         // if close
             }
             else
             {
-                writer.WriteLineIndented($"if (val{extData.Name} != null)");
+                writer.WriteLineIndented($"if ({valName} != null)");
                 OpenScope(writer);          // if open
-                writer.WriteLineIndented($"{parentVarName}.AddExtension(Definitions.{extData.Name}, val{extData.Name});");
+                writer.WriteLineIndented($"{parentVarName}.AddExtension({_classNameDefinitions}.{extName}, {valName});");
                 writer.WriteLineIndented($"{parentVarName}Added = true;");
                 CloseScope(writer);         // if close
             }
@@ -635,9 +880,12 @@ public class FirelyNetIG : ILanguage
 
         foreach (ExtensionData extensionData in extData.Children)
         {
+            //string valName = _tupleValuePrefix + extensionData.Name;
+            string extName = _extUrlPrefix + extensionData.ParentName + extensionData.Name;
+
             if (extensionData.Children.Length != 0)
             {
-                writer.WriteLineIndented($"Extension ext{extensionData.Name} = new Extension() {{ Url = Definitions.{extensionData.Name} }};");
+                writer.WriteLineIndented($"Extension ext{extensionData.Name} = new Extension() {{ Url = {_classNameDefinitions}.{extName} }};");
                 writer.WriteLineIndented($"bool ext{extensionData.Name}Added = false;");
 
                 // nest through children
@@ -658,54 +906,38 @@ public class FirelyNetIG : ILanguage
 
     private void WriteSubExtensionGetTupleRecurse(ExportStreamWriter writer, ExtensionData extData, string parentVarName)
     {
-        if (extData.ValueElement != null)
+        if ((extData.ValueElement != null) && (extData.ElementInfo != null))
         {
-            string typeName;
+            string elementType = extData.ElementInfo.IsPrimitive ? extData.ElementInfo.PrimitiveHelperType! : extData.ElementInfo.ElementType!;
 
-            if (extData.ValueElement.Type.Any())
+            string valName = _tupleValuePrefix + extData.Name;
+            string extName = extData.ParentName + extData.Name;
+
+            if (extData.ElementInfo.IsList)
             {
-                typeName = extData.ValueElement.Type.First().cgName();
+                writer.WriteLineIndented($"IEnumerable<{elementType}>? {valName} = {parentVarName}" +
+                    $".GetExtensions({_classNameDefinitions}.{extName})" +
+                    $".Where(e => e.Value is not null && e.Value is {elementType})" +
+                    $".Select(e => ({elementType})e;");
             }
             else
             {
-                typeName = extData.ValueElement.cgBaseTypeName(_info, false);
-            }
-
-            if (PrimitiveTypeMap.TryGetValue(typeName, out string? mappedType))
-            {
-                typeName = mappedType;
-            }
-
-            if (typeName.EndsWith('?'))
-            {
-                typeName = typeName.Substring(0, typeName.Length - 1);
-            }
-
-            if (extData.ValueElement.cgIsArray())
-            {
-                writer.WriteLineIndented($"IEnumerable<{typeName}>? val{extData.Name} = {parentVarName}" +
-                    $".GetExtensions(Definitions.{extData.Name})" +
-                    $".Where(e => e.Value is not null && e.Value is {typeName})" +
-                    $".Select(e => ({typeName});");
-            }
-            else
-            {
-                switch (typeName)
+                switch (elementType)
                 {
                     case "bool":
-                        writer.WriteLineIndented($"{typeName}? val{extData.Name} = {parentVarName}.GetBoolExtension(Definitions.{extData.Name});");
+                        writer.WriteLineIndented($"{elementType}? {valName} = {parentVarName}.GetBoolExtension({_classNameDefinitions}.{_extUrlPrefix}{extName});");
                         break;
 
                     case "int":
-                        writer.WriteLineIndented($"{typeName}? val{extData.Name} = {parentVarName}.GetIntegerExtension(Definitions.{extData.Name});");
+                        writer.WriteLineIndented($"{elementType}? {valName} = {parentVarName}.GetIntegerExtension({_classNameDefinitions}.{_extUrlPrefix}{extName});");
                         break;
 
                     case "string":
-                        writer.WriteLineIndented($"{typeName}? val{extData.Name} = {parentVarName}.GetStringExtension(Definitions.{extData.Name});");
+                        writer.WriteLineIndented($"{elementType}? {valName} = {parentVarName}.GetStringExtension({_classNameDefinitions}.{_extUrlPrefix}{extName});");
                         break;
 
                     default:
-                        writer.WriteLineIndented($"{typeName}? val{extData.Name} = {parentVarName}.GetExtensionValue<{typeName}>(Definitions.{extData.Name});");
+                        writer.WriteLineIndented($"{elementType}? {valName} = {parentVarName}.GetExtensionValue<{elementType}>({_classNameDefinitions}.{_extUrlPrefix}{extName});");
                         break;
                 }
             }
@@ -717,7 +949,7 @@ public class FirelyNetIG : ILanguage
         {
             if (extensionData.Children.Length != 0)
             {
-                writer.WriteLineIndented($"Extension? ext{extensionData.Name} = {parentVarName}.GetExtension(Definitions.{extensionData.Name});");
+                writer.WriteLineIndented($"Extension? ext{extensionData.Name} = {parentVarName}.GetExtension({_classNameDefinitions}.{_extUrlPrefix}{extensionData.Name});");
                 writer.WriteLineIndented($"if (ext{extensionData.Name} != null)");
                 OpenScope(writer);
 
@@ -737,210 +969,235 @@ public class FirelyNetIG : ILanguage
 
     private List<KeyValuePair<string, string>> BuildReturnTuple(ExtensionData extData)
     {
-        if (extData.ValueElement != null)
+        string valName = _tupleValuePrefix + extData.Name;
+
+        if ((extData.ValueElement != null) && (extData.ElementInfo != null))
         {
-            string typeName;
+            string elementType = extData.ElementInfo.IsPrimitive ? extData.ElementInfo.PrimitiveHelperType! : extData.ElementInfo.ElementType!;
 
-            if (extData.ValueElement.Type.Any())
+            if (extData.ElementInfo.IsList)
             {
-                typeName = extData.ValueElement.Type.First().cgName();
-            }
-            else
-            {
-                typeName = extData.ValueElement.cgBaseTypeName(_info, false);
+                return [new KeyValuePair<string, string>(valName, "IEnumerable<" + elementType + ">"),];
             }
 
-            if (PrimitiveTypeMap.TryGetValue(typeName, out string? mappedType))
-            {
-                typeName = mappedType;
-            }
-
-            if (typeName.EndsWith('?'))
-            {
-                typeName = typeName.Substring(0, typeName.Length - 1);
-            }
-
-            if (extData.ValueElement.cgIsArray())
-            {
-                typeName = "IEnumerable<" + typeName + ">";
-            }
-
-            return [new KeyValuePair<string, string>(extData.Name, typeName),];
+            return [new KeyValuePair<string, string>(valName, elementType),];
         }
 
-        List<KeyValuePair<string, string>> tupleTypes = [];
+        // if we are in the root, do not nest into the tuple
+        if (string.IsNullOrEmpty(extData.ParentName))
+        {
+            List<KeyValuePair<string, string>> tupleTypes = [];
+
+            foreach (ExtensionData extensionData in extData.Children)
+            {
+                tupleTypes.AddRange(BuildReturnTuple(extensionData));
+            }
+
+            return tupleTypes;
+        }
+
+        List<KeyValuePair<string, string>> subTypes = [];
 
         foreach (ExtensionData extensionData in extData.Children)
         {
-            tupleTypes.AddRange(BuildReturnTuple(extensionData));
+            subTypes.AddRange(BuildReturnTuple(extensionData));
         }
 
-        return tupleTypes;
+        return [new KeyValuePair<string, string>(valName, "(" + string.Join(", ", subTypes.Select(kvp => kvp.Value + "? " + kvp.Key)) + ")"), ];
     }
 
-    private bool ExtensionResolvesToSingleType(ExtensionData extData)
+
+    private void WriteProfile(StructureDefinition sd)
     {
-        if (extData.ValueElement != null)
+        if (!_info.TryGetPackageSource(sd, out string packageId, out string packageVersion))
         {
-            return extData.ValueElement.cgTypes().Count == 1;
+            packageId = _info.MainPackageId;
+            packageVersion = _info.MainPackageVersion;
         }
 
-        if (extData.Children.Length > 0)
+        if (FhirPackageUtils.PackageIsFhirRelease(packageId))
         {
-            return extData.Children.All(ExtensionResolvesToSingleType);
+            // skip core packages
+            return;
         }
 
-        return false;
+        PackageData packageData = GetPackageData(packageId, packageVersion);
+
+        string name = string.IsNullOrEmpty(sd.Name)
+            ? sd.Id.ToPascalCase()
+            : sd.Name.ToPascalCase();
+
+        // remove any hyphens from the name
+        name = name.Replace('-', '_');
+
+        string filename = Path.Combine(_options.OutputDirectory, packageData.FolderName, $"{name}.cs");
+
+        if (!Directory.Exists(Path.GetDirectoryName(filename)))
+        {
+            Directory.CreateDirectory(Path.GetDirectoryName(filename)!);
+        }
+
+        using (FileStream stream = new(filename, FileMode.Create))
+        using (ExportStreamWriter writer = new(stream))
+        {
+            WriteHeader(writer, [packageData.Namespace]);
+
+            WriteNamespaceOpen(writer, packageData.Namespace + _namespaceSuffixProfiles);
+
+            if (!string.IsNullOrEmpty(sd.Description))
+            {
+                WriteIndentedComment(writer, sd.Description, isSummary: true);
+            }
+            else
+            {
+                WriteIndentedComment(writer, sd.Title, isSummary: true);
+            }
+
+            // check for must-support elements
+            IEnumerable<ElementDefinition> mustSupports = sd.cgElements().Where(ed => ed.MustSupport == true);
+
+            if (mustSupports.Any())
+            {
+                writer.WriteLineIndented("/// <remarks>");
+                writer.WriteIndentedComment("Must support elements:", isSummary: false);
+
+                foreach (ElementDefinition ms in mustSupports)
+                {
+                    writer.WriteIndentedComment($"- {ms.Path}: {ms.cgShort()}", isSummary: false);
+                }
+
+                writer.WriteLineIndented("/// </remarks>");
+            }
+
+            writer.WriteLineIndented($"public static class {name}");
+            OpenScope(writer);      // class
+
+            // write the profile URL
+            WriteIndentedComment(writer, "The official URL for this profile.", isSummary: true);
+            writer.WriteLineIndented($"public const string ProfileUrl = \"{sd.Url}\"");
+            writer.WriteLine();
+
+            // write the profile version
+            if (!string.IsNullOrEmpty(sd.Version))
+            {
+                WriteIndentedComment(writer, "The declared version of this profile.", isSummary: true);
+                writer.WriteLineIndented($"public const string ProfileVersion = \"{sd.Version}\"");
+                writer.WriteLine();
+            }
+            else
+            {
+                WriteIndentedComment(writer, "The package version of this profile.", isSummary: true);
+                writer.WriteLineIndented($"public const string ProfileVersion = \"{packageData.PackageVersion}\"");
+                writer.WriteLine();
+            }
+            // check for all elements that are slices
+            ElementDefinition[] slices = sd.cgElements(skipSlices: false).Where(ed => ed.ElementId.LastIndexOf(':') > ed.ElementId.LastIndexOf('.')).ToArray();
+
+            foreach (ElementDefinition ed in slices)
+            {
+                string sliceName = string.IsNullOrEmpty(ed.SliceName) ? ed.ElementId.Substring(ed.ElementId.LastIndexOf(':') + 1) : ed.SliceName;
+
+                writer.WriteLineIndented($"// Slice: {ed.ElementId} ({sliceName})");
+
+                // get the parent that defines the slicing
+                if (!sd.cgTryGetSlicingParent(ed, out ElementDefinition? slicingEd))
+                {
+                    writer.WriteLineIndented($"// Could not resolve the parent element for: {ed.ElementId}.");
+
+                    // TODO(ginoc): extensions can be implicitly sliced
+                    continue;
+                }
+
+                writer.WriteLineIndented($"// Slicing Parent: {slicingEd.ElementId}");
+
+                // get all the elements for this slice
+                IEnumerable<ElementDefinition> sliceElements = sd.cgElementsForSlice(ed, sliceName);
+
+                // use our sliced element and parent to get the discriminators
+                IEnumerable<SliceDiscriminator> sliceDiscriminators = sd.cgDiscriminatedValues(_info, slicingEd, sliceName, sliceElements);
+
+                foreach (SliceDiscriminator discriminator in sliceDiscriminators)
+                {
+                    writer.WriteLineIndented("// Discriminator:");
+                    writer.WriteLineIndented($"//                Id: {discriminator.Id}");
+                    writer.WriteLineIndented($"//              Type: {discriminator.Type}");
+                    writer.WriteLineIndented($"//              Path: {discriminator.Path}");
+                    writer.WriteLineIndented($"//   PostResolvePath: {discriminator.PostResolvePath}");
+                    writer.WriteLineIndented($"//             Value: {discriminator.Value}");
+                    writer.WriteLineIndented($"//         IsBinding: {discriminator.IsBinding}");
+                    writer.WriteLineIndented($"//       BindingName: {discriminator.BindingName}");
+
+                    bool isExtensionSlice = discriminator.Path.EndsWith(".extension.url", StringComparison.Ordinal);
+
+                    if (isExtensionSlice)
+                    {
+                        // figure out the path we want to root our C# extension on
+                        string rootPath = slicingEd.Path.Substring(0, slicingEd.Path.Length - ".extension.url".Length);
+
+                        string extUrl = discriminator.Value.ToString() ?? string.Empty;
+
+                        // try to resolve this extension
+                        if (TryGetExtensionData(extUrl, out ExtensionData? extData) &&
+                            TryGetPackageData(extData.DefinitionDirective, out PackageData extPackageData))
+                        {
+                            // we have a definition we can link to
+                            writer.WriteLineIndented($"// Slice uses extension: {extPackageData.Namespace}.{extData.Name.ToPascalCase()}");
+                        }
+                        else
+                        {
+                            writer.WriteLineIndented($"// Could not resolve extension: {extUrl}");
+                        }
+                    }
+                    else
+                    {
+                        // figure out the path we want to root our C# extension on
+                        string rootPath = slicingEd.Path;
+
+                        writer.WriteLineIndented($"// Non-extension slice...");
+                    }
+
+                }
+
+                writer.WriteLine();
+
+                //    string sliceName = !string.IsNullOrEmpty(ed.SliceName)
+                //        ? ed.SliceName
+                //        : ed.ElementId.Substring(ed.ElementId.LastIndexOf(':') + 1);
+
+                //    // get the types for this slice
+                //    ElementDefinition.TypeRefComponent[] edTypes = ed.cgTypes().Values.ToArray();
+
+                //    foreach (ElementDefinition.TypeRefComponent edType in edTypes)
+                //    {
+                //        string typeName = edType.cgName();
+
+                //        switch (typeName)
+                //        {
+                //            case "Extension":
+                //                {
+                //                    // iterate over each profile
+                //                    foreach (string profileUrl in edType.Profile)
+                //                    {
+                //                        WriteProfileExtensionAccessors(
+                //                            writer,
+                //                            sd,
+                //                            name,
+                //                            ed,
+                //                            sliceName,
+                //                            profileUrl,
+                //                            exportedExtensions);
+                //                    }
+                //                }
+                //                break;
+                //        }
+                //    }
+            }
+
+            CloseScope(writer);     // class
+
+            WriteNamespaceClose(writer);
+        }
     }
-
-    /// <summary>Gets the Firely Net SDK component type.</summary>
-    /// <param name="cd">The component definition.</param>
-    /// <returns>The Firely Net SDK component type.</returns>
-    private string GetFirelyComponentType(ComponentDefinition cd)
-    {
-        if (cd.IsRootOfStructure)
-        {
-            return cd.Structure.Name.ToPascalCase();
-        }
-
-        string structureName = cd.Structure.Name.ToPascalCase();
-
-        if (string.IsNullOrEmpty(cd.cgExplicitName()))
-        {
-            return $"{structureName}.{cd.cgName(FhirNameConventionExtensions.NamingConvention.PascalCase)}Component";
-        }
-
-        return $"{structureName}.{cd.cgExplicitName()}Component";
-    }
-
-
-    //private void WriteProfile(StructureDefinition sd, Dictionary<string, ExtensionData> exportedExtensions)
-    //{
-    //    if (!_info.TryGetPackageSource(sd, out string packageId, out string packageVersion))
-    //    {
-    //        packageId = _info.MainPackageId;
-    //        packageVersion = _info.MainPackageVersion;
-    //    }
-
-    //    if (FhirPackageUtils.PackageIsFhirCore(packageId))
-    //    {
-    //        // skip core packages
-    //        return;
-    //    }
-
-    //    PackageData packageData = GetPackageData(packageId, packageVersion);
-
-    //    string name = string.IsNullOrEmpty(sd.Name)
-    //        ? sd.Id.ToPascalCase()
-    //        : sd.Name.ToPascalCase();
-
-    //    // remove any hyphens from the name
-    //    name = name.Replace('-', '_');
-
-    //    string filename = Path.Combine(_options.OutputDirectory, packageData.FilenamePrefix, $"{name}.cs");
-
-    //    if (!Directory.Exists(Path.GetDirectoryName(filename)))
-    //    {
-    //        Directory.CreateDirectory(Path.GetDirectoryName(filename)!);
-    //    }
-
-    //    using (FileStream stream = new(filename, FileMode.Create))
-    //    using (ExportStreamWriter writer = new(stream))
-    //    {
-    //        WriteHeader(writer, [packageData.Namespace]);
-
-    //        WriteNamespaceOpen(writer, packageData.Namespace + ".Profiles");
-
-    //        if (!string.IsNullOrEmpty(sd.Description))
-    //        {
-    //            WriteIndentedComment(writer, sd.Description, isSummary: true);
-    //        }
-    //        else
-    //        {
-    //            WriteIndentedComment(writer, sd.Title, isSummary: true);
-    //        }
-
-    //        // check for must-support elements
-    //        IEnumerable<ElementDefinition> mustSupports = sd.cgElements().Where(ed => ed.MustSupport == true);
-
-    //        if (mustSupports.Any())
-    //        {
-    //            writer.WriteLineIndented("/// <remarks>");
-    //            writer.WriteIndentedComment("Must support elements:", isSummary: false);
-
-    //            foreach (ElementDefinition ms in mustSupports)
-    //            {
-    //                writer.WriteIndentedComment($"- {ms.Path}: {ms.cgShort()}", isSummary: false);
-    //            }
-
-    //            writer.WriteLineIndented("/// </remarks>");
-    //        }
-
-    //        writer.WriteLineIndented($"public static class {name}");
-    //        OpenScope(writer);      // class
-
-    //        // write the profile URL
-    //        WriteIndentedComment(writer, "The official URL for this profile.", isSummary: true);
-    //        writer.WriteLineIndented($"public const string ProfileUrl = \"{sd.Url}\"");
-    //        writer.WriteLine();
-
-    //        // write the profile version
-    //        if (!string.IsNullOrEmpty(sd.Version))
-    //        {
-    //            WriteIndentedComment(writer, "The declared version of this profile.", isSummary: true);
-    //            writer.WriteLineIndented($"public const string ProfileVersion = \"{sd.Version}\"");
-    //            writer.WriteLine();
-    //        }
-    //        else
-    //        {
-    //            WriteIndentedComment(writer, "The package version of this profile.", isSummary: true);
-    //            writer.WriteLineIndented($"public const string ProfileVersion = \"{packageData.PackageVersion}\"");
-    //            writer.WriteLine();
-    //        }
-
-    //        // check for all elements that are slices
-    //        ElementDefinition[] slices = sd.cgElements(skipSlices: false).Where(ed => ed.ElementId.LastIndexOf(':') > ed.ElementId.LastIndexOf('.')).ToArray();
-
-    //        foreach (ElementDefinition ed in slices)
-    //        {
-    //            string sliceName = !string.IsNullOrEmpty(ed.SliceName)
-    //                ? ed.SliceName
-    //                : ed.ElementId.Substring(ed.ElementId.LastIndexOf(':') + 1);
-
-    //            // get the types for this slice
-    //            ElementDefinition.TypeRefComponent[] edTypes = ed.cgTypes().Values.ToArray();
-
-    //            foreach (ElementDefinition.TypeRefComponent edType in edTypes)
-    //            {
-    //                string typeName = edType.cgName();
-
-    //                switch (typeName)
-    //                {
-    //                    case "Extension":
-    //                        {
-    //                            // iterate over each profile
-    //                            foreach (string profileUrl in edType.Profile)
-    //                            {
-    //                                WriteProfileExtensionAccessors(
-    //                                    writer,
-    //                                    sd,
-    //                                    name,
-    //                                    ed,
-    //                                    sliceName,
-    //                                    profileUrl,
-    //                                    exportedExtensions);
-    //                            }
-    //                        }
-    //                        break;
-    //                }
-    //            }
-    //        }
-
-    //        CloseScope(writer);     // class
-
-    //        WriteNamespaceClose(writer);
-    //    }
-    //}
 
     //private void WriteProfileExtensionAccessors(
     //    ExportStreamWriter writer,
@@ -997,7 +1254,7 @@ public class FirelyNetIG : ILanguage
 
     //                if (exportedExt != null)
     //                {
-    //                    writer.WriteLineIndented($"  r.{getAlias}(Definitions.{exportedExt.Name})");
+    //                    writer.WriteLineIndented($"  r.{getAlias}({_classNameDefinitions}.{exportedExt.Name})");
     //                }
     //                else
     //                {
@@ -1011,7 +1268,7 @@ public class FirelyNetIG : ILanguage
 
     //                if (exportedExt != null)
     //                {
-    //                    writer.WriteLineIndented($"  c.{getAlias}(Definitions.{exportedExt.Name})");
+    //                    writer.WriteLineIndented($"  c.{getAlias}({_classNameDefinitions}.{exportedExt.Name})");
     //                }
     //                else
     //                {
@@ -1026,7 +1283,7 @@ public class FirelyNetIG : ILanguage
 
     //            if (exportedExt != null)
     //            {
-    //                writer.WriteLineIndented($"  e.{getAlias}(Definitions.{exportedExt.Name})");
+    //                writer.WriteLineIndented($"  e.{getAlias}({_classNameDefinitions}.{exportedExt.Name})");
     //            }
     //            else
     //            {
@@ -1049,17 +1306,17 @@ public class FirelyNetIG : ILanguage
         }
         _definitionWriters.Clear();
 
-        foreach (ExportStreamWriter writer in _extensionWritersExt.Values)
+        foreach (ExportStreamWriter writer in _extensionWriters.Values)
         {
             CloseAndDispose(writer);
         }
-        _extensionWritersExt.Clear();
+        _extensionWriters.Clear();
 
-        foreach (ExportStreamWriter writer in _extensionWritersVal.Values)
+        foreach (ExportStreamWriter writer in _valueSetWriters.Values)
         {
             CloseAndDispose(writer);
         }
-        _extensionWritersVal.Clear();
+        _valueSetWriters.Clear();
 
         return;
 
@@ -1075,6 +1332,30 @@ public class FirelyNetIG : ILanguage
         }
     }
 
+    /// <summary>Attempts to get package data a PackageData from the given string.</summary>
+    /// <param name="directive">  The directive.</param>
+    /// <param name="packageData">[out] Information describing the package.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    private bool TryGetPackageData(string directive, out PackageData packageData)
+    {
+        string[] components = directive.Split('#');
+        if (components.Length != 2)
+        {
+            // invalid directive
+            packageData = default;
+            return false;
+        }
+
+        if (_packageDataByDirective.TryGetValue(directive, out packageData))
+        {
+            return true;
+        }
+
+        packageData = GetPackageData(components[0], components[1]);
+
+        return true;
+    }
+
     /// <summary>Gets package data.</summary>
     /// <param name="packageId">     Identifier for the package.</param>
     /// <param name="packageVersion">The package version.</param>
@@ -1083,6 +1364,13 @@ public class FirelyNetIG : ILanguage
         string packageId,
         string packageVersion)
     {
+        string directive = $"{packageId}#{packageVersion}";
+
+        if (_packageDataByDirective.TryGetValue(directive, out PackageData pd))
+        {
+            return pd;
+        }
+
         string versionSanitized = SanitizeVersion(packageVersion);
 
         if (packageId.StartsWith("hl7.fhir.", StringComparison.OrdinalIgnoreCase))
@@ -1102,7 +1390,7 @@ public class FirelyNetIG : ILanguage
                 name = packageId.ToPascalCase();
             }
 
-            return new()
+            pd = new()
             {
                 Key = packageId + "#" + packageVersion,
                 PackageId = packageId,
@@ -1110,11 +1398,15 @@ public class FirelyNetIG : ILanguage
                 Namespace = $"Hl7.Fhir.Packages.{realm}.{name}_{versionSanitized}",
                 ClassPrefix = $"{realm.ToPascalCase()}{name.ToPascalCase()}",
                 VersionSanitized = versionSanitized,
-                FilenamePrefix = $"{realm.ToPascalCase()}{name.ToPascalCase()}_{versionSanitized}",
+                FolderName = $"{realm.ToPascalCase()}{name.ToPascalCase()}_{versionSanitized}",
             };
+
+            _packageDataByDirective.Add(directive, pd);
+
+            return pd;
         }
 
-        return new()
+        pd = new()
         {
             Key = packageId + "#" + packageVersion,
             PackageId = packageId,
@@ -1122,8 +1414,12 @@ public class FirelyNetIG : ILanguage
             Namespace = $"Hl7.Fhir.Packages.{packageId.ToPascalCase()}_{versionSanitized}",
             ClassPrefix = packageId.ToPascalCase(),
             VersionSanitized = versionSanitized,
-            FilenamePrefix = $"{packageId.ToPascalCase()}_{versionSanitized}",
+            FolderName = $"{packageId.ToPascalCase()}_{versionSanitized}",
         };
+
+        _packageDataByDirective.Add(directive, pd);
+
+        return pd;
     }
 
     private ExportStreamWriter GetDefinitionWriter(PackageData packageData)
@@ -1133,14 +1429,14 @@ public class FirelyNetIG : ILanguage
             return writer;
         }
 
-        string directory = Path.Combine(_options.OutputDirectory, packageData.FilenamePrefix);
+        string directory = Path.Combine(_options.OutputDirectory, packageData.FolderName);
         if (!Directory.Exists(directory))
         {
             Directory.CreateDirectory(directory);
         }
 
         //string filename = Path.Combine(_options.OutputDirectory, $"{packageData.FilenamePrefix}.cs");
-        string filename = Path.Combine(_options.OutputDirectory, packageData.FilenamePrefix, $"Definitions.cs");
+        string filename = Path.Combine(_options.OutputDirectory, packageData.FolderName, $"{_classNameDefinitions}.cs");
 
         FileStream stream = new(filename, FileMode.Create);
         writer = new ExportStreamWriter(stream);
@@ -1152,7 +1448,7 @@ public class FirelyNetIG : ILanguage
 
         WriteIndentedComment(writer, $"Definitions common to the {packageData.Key} package");
 
-        writer.WriteLineIndented($"public static class Definitions");
+        writer.WriteLineIndented($"public static class {_classNameDefinitions}");
         writer.OpenScope();
 
         return writer;
@@ -1160,22 +1456,22 @@ public class FirelyNetIG : ILanguage
 
     private ExportStreamWriter GetExtensionWriter(PackageData packageData)
     {
-        if (_extensionWritersExt.TryGetValue(packageData.Key, out ExportStreamWriter? writer))
+        if (_extensionWriters.TryGetValue(packageData.Key, out ExportStreamWriter? writer))
         {
             return writer;
         }
 
-        string directory = Path.Combine(_options.OutputDirectory, packageData.FilenamePrefix);
+        string directory = Path.Combine(_options.OutputDirectory, packageData.FolderName);
         if (!Directory.Exists(directory))
         {
             Directory.CreateDirectory(directory);
         }
 
-        string filename = Path.Combine(_options.OutputDirectory, packageData.FilenamePrefix, $"Extensions.cs");
+        string filename = Path.Combine(_options.OutputDirectory, packageData.FolderName, $"{_classNameExtensions}.cs");
 
         FileStream stream = new(filename, FileMode.Create);
         writer = new ExportStreamWriter(stream);
-        _extensionWritersExt[packageData.Key] = writer;
+        _extensionWriters[packageData.Key] = writer;
 
         WriteHeader(writer);
 
@@ -1183,57 +1479,52 @@ public class FirelyNetIG : ILanguage
 
         WriteIndentedComment(writer, $"Extension accessors for the {packageData.Key} package");
 
-        writer.WriteLineIndented($"public static class Extensions");
+        writer.WriteLineIndented($"public static class {_classNameExtensions}");
         writer.OpenScope();
 
         return writer;
     }
 
-    private ExportStreamWriter GetExtensionValueWriter(PackageData packageData)
+    private ExportStreamWriter GetValueSetWriter(PackageData packageData)
     {
-        if (_extensionWritersVal.TryGetValue(packageData.Key, out ExportStreamWriter? writer))
+        if (_valueSetWriters.TryGetValue(packageData.Key, out ExportStreamWriter? writer))
         {
             return writer;
         }
 
-        string directory = Path.Combine(_options.OutputDirectory, packageData.FilenamePrefix);
+        string directory = Path.Combine(_options.OutputDirectory, packageData.FolderName);
         if (!Directory.Exists(directory))
         {
             Directory.CreateDirectory(directory);
         }
 
-        string filename = Path.Combine(_options.OutputDirectory, packageData.FilenamePrefix, $"ExtensionValues.cs");
+        string filename = Path.Combine(_options.OutputDirectory, packageData.FolderName, $"{_classNameValueSets}.cs");
 
         FileStream stream = new(filename, FileMode.Create);
         writer = new ExportStreamWriter(stream);
-        _extensionWritersVal[packageData.Key] = writer;
+        _valueSetWriters[packageData.Key] = writer;
 
         WriteHeader(writer);
 
         WriteNamespaceOpen(writer, packageData.Namespace);
 
-        WriteIndentedComment(writer, $"Value-based extension accessors for the {packageData.Key} package");
+        WriteIndentedComment(writer, $"ValueSet definitions and utility functions for the {packageData.Key} package");
 
-        writer.WriteLineIndented($"public static class ExtensionValues");
+        writer.WriteLineIndented($"public static class {_classNameValueSets}");
         writer.OpenScope();
 
         return writer;
     }
 
+
     /// <summary>Writes an extension.</summary>
     /// <param name="sd">The SD.</param>
-    private void WriteExtension(StructureDefinition sd, Dictionary<string, ExtensionData> exportedExtensions)
+    private void WriteExtension(StructureDefinition sd)
     {
         if (!_info.TryGetPackageSource(sd, out string packageId, out string packageVersion))
         {
             packageId = _info.MainPackageId;
             packageVersion = _info.MainPackageVersion;
-        }
-
-        if (FhirPackageUtils.PackageIsFhirCore(packageId))
-        {
-            // skip core packages
-            return;
         }
 
         PackageData packageData = GetPackageData(packageId, packageVersion);
@@ -1250,33 +1541,28 @@ public class FirelyNetIG : ILanguage
         // recursively write our extension urls into definitions
         WriteExtensionDefinition(extData, definitionWriter);
 
-        // add our extension to the exported extensions
-        exportedExtensions.Add(cd.Structure.Url, extData);
-
         // get an extension writer
         ExportStreamWriter extensionWriter = GetExtensionWriter(packageData);
-        ExportStreamWriter extensionValueWriter = GetExtensionValueWriter(packageData);
 
-        // recursively write our extension accessors
-        WriteExtensionAccessors(extData, cd, extensionWriter, extensionValueWriter);
+        WriteExtensionAccessors(extData, extensionWriter);
     }
 
     /// <summary>Recursively writes extension urls.</summary>
     /// <param name="extData">     Information describing the extension.</param>
     /// <param name="writer">      The currently in-use text writer.</param>
     /// <param name="parentPrefix">(Optional) The parent prefix.</param>
-    private void WriteExtensionDefinition(ExtensionData extData, ExportStreamWriter writer, string parentPrefix = "")
+    private void WriteExtensionDefinition(ExtensionData extData, ExportStreamWriter writer)
     {
         writer.WriteIndentedComment(extData.Summary, isSummary: true);
         writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
 
-        if (string.IsNullOrEmpty(parentPrefix))
+        if (string.IsNullOrEmpty(extData.ParentName))
         {
-            writer.WriteLineIndented($"public const string ExtUrl{extData.Name} = \"{extData.Url}\";");
+            writer.WriteLineIndented($"public const string {_extUrlPrefix}{extData.Name} = \"{extData.Url}\";");
         }
         else
         {
-            writer.WriteLineIndented($"public const string ExtUrl{parentPrefix}{extData.Name} = \"{extData.Url}\";");
+            writer.WriteLineIndented($"public const string {_extUrlPrefix}{extData.ParentName}{extData.Name} = \"{extData.Url}\";");
         }
 
         writer.WriteLine();
@@ -1284,8 +1570,56 @@ public class FirelyNetIG : ILanguage
         // write any sub-extensions
         foreach (ExtensionData childData in extData.Children)
         {
-            WriteExtensionDefinition(childData, writer, parentPrefix + extData.Name);
+            WriteExtensionDefinition(childData, writer);
         }
+    }
+
+    private bool TryGetExtensionData(string url, [NotNullWhen(true)] out ExtensionData? extensionData)
+    {
+        // try to resolve this extension
+        if (_info.TryResolveByCanonicalUri(url, out Resource? extR) &&
+            (extR is StructureDefinition extSd))
+        {
+            // build a component definition for this extension
+            ComponentDefinition extCd = new(extSd);
+
+            // get extension data for this extension
+            extensionData = GetExtensionData(extCd);
+
+            return true;
+        }
+
+        extensionData = null;
+        return false;
+    }
+
+
+    internal CSharpFirely2.WrittenElementInfo BuildElementInfo(
+        string exportedComplexName,
+        ElementDefinition element)
+    {
+        CSharpFirely2.WrittenElementInfo ei = CSharpFirely2.BuildElementInfo(_info, exportedComplexName, element, _valueSetInfoByUrl);
+
+        // the Firely builder assumes all ValueSets are in the HL7.Fhir.Model namespace, so we need to fix any that are not
+        if (ei.ElementType?.StartsWith("Code<", StringComparison.Ordinal) ?? false)
+        {
+            string srcType = ei.PrimitiveHelperType ?? string.Empty;
+
+            if (srcType.EndsWith('?'))
+            {
+                srcType = srcType.Substring(0, srcType.Length - 1);
+            }
+
+            if (_valueSetNameMaps.TryGetValue(srcType, out string? fixedType))
+            {
+                ei.ElementType = ei.ElementType?.Replace(srcType, fixedType, StringComparison.Ordinal);
+                ei.PrimitiveHelperName = ei.PrimitiveHelperName?.Replace(srcType, fixedType, StringComparison.Ordinal);
+                ei.PrimitiveHelperType = ei.PrimitiveHelperType?.Replace(srcType, fixedType, StringComparison.Ordinal);
+                ei.PropertyType = ei.PropertyType?.Replace(srcType, fixedType, StringComparison.Ordinal);
+            }
+        }
+
+        return ei;
     }
 
 
@@ -1296,7 +1630,8 @@ public class FirelyNetIG : ILanguage
     /// <returns>The extension data.</returns>
     private ExtensionData GetExtensionData(
         ComponentDefinition cd,
-        string? parentExtUrl = null)
+        string? parentExtUrl = null,
+        ComponentDefinition? parentCd = null)
     {
         string summary = cd.cgShort();
         string remarks;
@@ -1305,7 +1640,7 @@ public class FirelyNetIG : ILanguage
         ElementDefinition? valueElement = null;
         List<ExtensionData> childExtensions = [];
 
-        string contexts = cd.IsRootOfStructure
+        string contextString = cd.IsRootOfStructure
             ? "Allowed Contexts: " + string.Join(", ", cd.Structure.Context.Select(GetContextString))
             : "Allowed Contexts: " + (parentExtUrl ?? "Parent extension");
 
@@ -1330,6 +1665,11 @@ public class FirelyNetIG : ILanguage
             {
                 url = cd.Element.ElementId.Substring(cd.Element.ElementId.LastIndexOf(":") + 1);
             }
+        }
+
+        if (_extensionDataByUrl.TryGetValue(url, out ExtensionData? extData))
+        {
+            return extData;
         }
 
         // check for being a 'simple' extension (no sub-extensions)
@@ -1360,7 +1700,7 @@ public class FirelyNetIG : ILanguage
                 types = "Allowed Types: " + string.Join(", ", valueTypes.Select(t => t.cgName()).Distinct());
             }
 
-            remarks = $"{contexts}\n{types}";
+            remarks = $"{contextString}\n{types}";
         }
         else
         {
@@ -1377,24 +1717,247 @@ public class FirelyNetIG : ILanguage
                         Element = child,
                         IsRootOfStructure = false,
                     },
-                    parentExtUrl: cd.Structure.Url));
+                    parentExtUrl: cd.Structure.Url,
+                    parentCd: cd));
             }
 
-            remarks = $"{contexts}\nSub-extensions:\n - {string.Join("\n - ", childExtensions.Select(child => child.Url))}";
+            remarks = $"{contextString}\nSub-extensions:\n - {string.Join("\n - ", childExtensions.Select(child => child.Url))}";
         }
 
-        return new ExtensionData()
+        string directive;
+        if (_info.TryGetPackageSource(cd.Structure, out string packageId, out string packageVersion))
+        {
+            directive = $"{packageId}#{packageVersion}";
+        }
+        else
+        {
+            directive = $"{_info.MainPackageId}#{_info.MainPackageVersion}";
+        }
+
+        string name;
+        string parentName;
+
+        // check for root-level extension name conflicts
+        if (cd.IsRootOfStructure)
+        {
+            name = cd.Structure.cgName().ToPascalCase(removeDelimiters: true);
+            parentName = string.Empty;
+
+            if (!_extensionNamesByPackageDirective.TryGetValue(directive, out HashSet<string>? usedNames))
+            {
+                usedNames = [];
+            }
+
+            if (usedNames.Contains(name))
+            {
+                int i = 1;
+                string newName = name + i;
+
+                while (usedNames.Contains(newName))
+                {
+                    i++;
+                    newName = name + "_" + i;
+                }
+
+                name = newName;
+            }
+
+            usedNames.Add(name);
+        }
+        else
+        {
+            name = url.ToPascalCase(removeDelimiters: true);
+            parentName = cd.Structure.cgName().ToPascalCase(removeDelimiters: true);
+        }
+
+        List<ExtensionContextRec> extensionContexts = [];
+
+        if (cd.IsRootOfStructure)
+        {
+            // build context information based on extension contexts
+            StructureDefinition.ContextComponent[] contexts = cd.Structure.Context?.ToArray() ?? [];
+
+            // if any context is "Element", we can just use the default rec we create for empty contexts
+            if (contexts.Any(ctx => ctx.Expression == "Element"))
+            {
+                contexts = [];
+            }
+
+            // iterate over all the allowed contexts
+            foreach (StructureDefinition.ContextComponent ctx in contexts)
+            {
+                if (ctx.Type == StructureDefinition.ExtensionContextType.Extension)
+                {
+                    extensionContexts.Add(new()
+                    {
+                        AllowedContext = ctx,
+                        ContextTarget = ctx.Expression == parentExtUrl ? parentCd : null,
+                        //ContextTypes = [ new ExtensionContextTypeRec()
+                        //{
+                        //    FhirType = "Extension",
+                        //    SdkType = "Extension",
+                        //}],
+                        ContextElementInfo = BuildElementInfo(string.Empty, parentCd == null ? cd.Element : parentCd.Element),
+                        //ContextElementInfo = new()
+                        //{
+                        //    FhirElementName = "extension",
+                        //    PropertyName = "Extension",
+                        //    PropertyType = $"List<Hl7.Fhir.Model.Extension>",
+                        //    ElementType = "Hl7.Fhir.Model.Extension",
+                        //    IsList = true,
+                        //    IsChoice = false,
+                        //    IsPrimitive = false,
+                        //    PrimitiveHelperName = null,
+                        //    PrimitiveHelperType = null
+                        //},
+                    });
+
+                    continue;
+                }
+
+                // for now, only handle element contexts
+                if (ctx.Type != StructureDefinition.ExtensionContextType.Element)
+                {
+                    Console.WriteLine($"Skipping {cd.Structure.Url} context {ctx.Type}:{ctx.Expression}");
+                    continue;
+                }
+
+                // resolve the path the extension is attached to
+                if (_info.TryResolveElementTree(ctx.Expression, out StructureDefinition? baseSd, out ElementDefinition[] elements) &&
+                    (elements.Length > 0))
+                {
+                    ElementDefinition contextElement = elements.Last();
+
+                    ComponentDefinition contextCd = new()
+                    {
+                        Structure = baseSd,
+                        Element = contextElement,
+                        IsRootOfStructure = elements.Length == 1,
+                    };
+
+                    //string[] contextTypes;
+
+                    //if (elements.Length == 1)
+                    //{
+                    //    contextTypes = [baseSd.Name.ToPascalCase()];
+                    //}
+                    //else
+                    //{
+                    //    contextTypes = contextElement.cgTypes().Keys.ToArray();
+
+                    //    if (contextTypes.Length == 0)
+                    //    {
+                    //        contextTypes = [contextElement.cgBaseTypeName(_info, false)];
+                    //    }
+                    //}
+
+                    //List<ExtensionContextTypeRec> contextTypeRecs = [];
+
+                    //// traverse the types for this element
+                    //foreach (string fhirType in contextTypes)
+                    //{
+                    //    string sdkType = _info.HasChildElements(contextElement.Path)
+                    //        ? GetFirelyComponentType(contextCd)
+                    //        : fhirType;
+
+                    //    if (PrimitiveTypeMap.TryGetValue(sdkType, out string? mappedType))
+                    //    {
+                    //        sdkType = mappedType;
+                    //    }
+
+                    //    if (TypeNameMappings.TryGetValue(sdkType, out mappedType))
+                    //    {
+                    //        sdkType = mappedType;
+                    //    }
+
+                    //    contextTypeRecs.Add(new()
+                    //    {
+                    //        FhirType = fhirType,
+                    //        SdkType = sdkType,
+                    //    });
+                    //}
+
+                    extensionContexts.Add(new()
+                    {
+                        AllowedContext = ctx,
+                        ContextTarget = contextCd,
+                        //ContextTypes = contextTypeRecs.Distinct().ToArray(),
+                        ContextElementInfo = BuildElementInfo(contextCd.Structure.cgName(), contextCd.Element),
+                    });
+                }
+            }
+
+            // if there were no contexts, add an "Element" context
+            if (contexts.Length == 0)
+            {
+                ComponentDefinition? targetCd = null;
+
+                if (_info.ComplexTypesByName.TryGetValue("Element", out StructureDefinition? elementSd))
+                {
+                    targetCd = new(elementSd);
+                }
+
+                extensionContexts.Add(new()
+                {
+                    AllowedContext = new StructureDefinition.ContextComponent()
+                    {
+                        Type = StructureDefinition.ExtensionContextType.Element,
+                        Expression = "Element",
+                    },
+                    ContextTarget = targetCd,
+                    //ContextTypes = [ new ExtensionContextTypeRec()
+                    //{
+                    //    FhirType = "Element",
+                    //    SdkType = "Element",
+                    //}],
+                    ContextElementInfo = BuildElementInfo(string.Empty, parentCd == null ? cd.Element : parentCd.Element),
+                });
+            }
+        }
+        else
+        {
+            // context is parent extension
+            extensionContexts.Add(new()
+            {
+                AllowedContext = new StructureDefinition.ContextComponent()
+                {
+                    Type = StructureDefinition.ExtensionContextType.Extension,
+                    Expression = parentExtUrl,
+                },
+                ContextTarget = parentCd,
+                //ContextTypes = [ new ExtensionContextTypeRec()
+                //{
+                //    FhirType = "Extension",
+                //    SdkType = "Extension",
+                //}],
+                ContextElementInfo = BuildElementInfo(string.Empty, parentCd == null ? cd.Element : parentCd.Element),
+            });
+        }
+
+        // create our extension data
+        extData = new ExtensionData()
         {
             Component = cd,
-            Name = cd.IsRootOfStructure ? cd.Structure.cgName() : url.ToPascalCase(),
+            Name = name,
             Url = url,
             Summary = summary,
             Remarks = remarks,
             IsComplex = isComplex,
+            IsArray = cd.Element.cgCardinalityMax() != 1,
+            ParentName = parentName,
+            DefinitionDirective = directive,
+            Contexts = extensionContexts.ToArray(),
             ValueElement = valueElement,
+            ElementInfo = valueElement == null ? null : BuildElementInfo(string.Empty, valueElement),
             Children = childExtensions.ToArray(),
         };
+
+        _extensionDataByUrl.Add(url, extData);
+
+        return extData;
     }
+
+
 
     /// <summary>Gets a comment-formatted string for an Extension context.</summary>
     /// <param name="ctx">The context.</param>

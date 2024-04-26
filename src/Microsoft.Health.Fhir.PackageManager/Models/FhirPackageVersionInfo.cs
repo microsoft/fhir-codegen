@@ -48,7 +48,7 @@ internal record class FhirPackageVersionInfo
             _name = value;
 
             // if we are a core package, set what info we can
-            if (FhirPackageUtils.PackageIsFhirCore(_name))
+            if (FhirPackageUtils.PackageIsFhirRelease(_name))
             {
                 // we are a core package, set the package kind
                 if (string.IsNullOrEmpty(_packageKind))
@@ -105,7 +105,7 @@ internal record class FhirPackageVersionInfo
             if (string.IsNullOrEmpty(value) || value.Equals("??", StringComparison.Ordinal))
             {
                 // check to see if the name is a core package name
-                if (FhirPackageUtils.PackageIsFhirCore(_name))
+                if (FhirPackageUtils.PackageIsFhirRelease(_name))
                 {
                     _fhirVersion = FhirReleases.FhirVersionToLiteral(_name.Split('.')[2]);
                     return;
@@ -155,7 +155,7 @@ internal record class FhirPackageVersionInfo
             if (string.IsNullOrEmpty(value) || value.Equals("??", StringComparison.Ordinal))
             {
                 // check to see if the name is a core package name
-                if (FhirPackageUtils.PackageIsFhirCore(_name))
+                if (FhirPackageUtils.PackageIsFhirRelease(_name))
                 {
                     _packageKind = "Core";
                     return;

@@ -65,7 +65,7 @@ public sealed class CSharpFirely2 : ILanguage
     private string _exportDirectory = string.Empty;
 
     /// <summary>Structures to skip generating.</summary>
-    private static readonly HashSet<string> _exclusionSet =
+    internal static readonly HashSet<string> _exclusionSet =
     [
         /* Since Base defines its methods abstractly, the pattern for generating it
             * is sufficiently different from derived classes that it makes sense not
@@ -120,7 +120,7 @@ public sealed class CSharpFirely2 : ILanguage
     /// <summary>
     /// List of types introduced in R5 that are retrospectively introduced in R3 and R4.
     /// </summary>
-    private static readonly List<WrittenModelInfo> _sharedR5DataTypes =
+    internal static readonly List<WrittenModelInfo> _sharedR5DataTypes =
     [
         new WrittenModelInfo { CsName = "BackboneType", FhirName = "BackboneType", IsAbstract = true },
         new WrittenModelInfo { CsName = "Base", FhirName = "Base", IsAbstract = true },
@@ -232,7 +232,7 @@ public sealed class CSharpFirely2 : ILanguage
     /// <summary>
     ///  List of all valuesets that we should publish as a shared Enum although there is only 1 reference to it.
     /// </summary>
-    private static readonly List<(string, string)> _explicitSharedValueSets =
+    internal static readonly List<(string, string)> _explicitSharedValueSets =
     [
         // This enum should go to Template-binding.cs because otherwise it will introduce a breaking change.
         ("R4", "http://hl7.org/fhir/ValueSet/messageheader-response-request"),
@@ -261,7 +261,7 @@ public sealed class CSharpFirely2 : ILanguage
     /// The list of elements that would normally be represented using a CodeOfT enum, but that we
     /// want to be generated as a normal Code instead.
     /// </summary>
-    private readonly List<string> _codedElementOverrides =
+    private static readonly List<string> _codedElementOverrides =
     [
         "CapabilityStatement.rest.resource.type"
     ];
@@ -270,7 +270,7 @@ public sealed class CSharpFirely2 : ILanguage
     /// Some valuesets have names that are the same as element names or are just not nice - use this collection
     /// to change the name of the generated enum as required.
     /// </summary>
-    private readonly Dictionary<string, string> _enumNamesOverride = new()
+    internal static readonly Dictionary<string, string> _enumNamesOverride = new()
     {
         ["http://hl7.org/fhir/ValueSet/characteristic-combination"] = "CharacteristicCombinationCode",
         ["http://hl7.org/fhir/ValueSet/claim-use"] = "ClaimUseCode",
@@ -2417,18 +2417,22 @@ public sealed class CSharpFirely2 : ILanguage
         }
     }
 
-    private WrittenElementInfo BuildCodedElementInfo(ElementDefinition element)
+    private static WrittenElementInfo BuildCodedElementInfo(
+        DefinitionCollection info,
+        ElementDefinition element,
+        Dictionary<string, WrittenValueSetInfo> writtenValueSets)
     {
         bool hasDefinedEnum = true;
 
         if ((element.Binding?.Strength != Hl7.Fhir.Model.BindingStrength.Required) ||
-            (!_info.TryExpandVs(element.Binding.ValueSet, out ValueSet? vs)) ||
+            (!info.TryExpandVs(element.Binding.ValueSet, out ValueSet? vs)) ||
             _exclusionSet.Contains(vs.Url) ||
-            (_codedElementOverrides.Contains(element.Path) && _info.FhirSequence >= FhirReleases.FhirSequenceCodes.R4)
-            )
+            (_codedElementOverrides.Contains(element.Path) && info.FhirSequence >= FhirReleases.FhirSequenceCodes.R4) ||
+            !writtenValueSets.TryGetValue(vs.Url, out WrittenValueSetInfo vsInfo))
         {
             hasDefinedEnum = false;
             vs = null;
+            vsInfo = default;
         }
 
         string codeLiteral;
@@ -2439,8 +2443,8 @@ public sealed class CSharpFirely2 : ILanguage
 
         if (hasDefinedEnum)
         {
-            string vsClass = _writtenValueSets[vs!.Url].ClassName;
-            string vsName = _writtenValueSets[vs.Url].ValueSetName;
+            string vsClass = vsInfo.ClassName!;      // writtenValueSets[vs!.Url].ClassName;
+            string vsName = vsInfo.ValueSetName!;    // writtenValueSets[vs.Url].ValueSetName;
 
             if (string.IsNullOrEmpty(vsClass))
             {
@@ -2455,7 +2459,7 @@ public sealed class CSharpFirely2 : ILanguage
                 if (vsName.ToUpperInvariant() == pascal.ToUpperInvariant())
                 {
                     throw new InvalidOperationException($"Using the name '{pascal}' for the property would lead to a compiler error. " +
-                        $"Change the name of the valueset '{vs.Url}' by adapting the _enumNamesOverride variable in the generator and rerun.");
+                        $"Change the name of the valueset '{vs!.Url}' by adapting the _enumNamesOverride variable in the generator and rerun.");
                 }
             }
 
@@ -2666,12 +2670,23 @@ public sealed class CSharpFirely2 : ILanguage
         };
     }
 
-    private WrittenElementInfo BuildElementInfo(string exportedComplexName, ElementDefinition element)
+    internal WrittenElementInfo BuildElementInfo(
+        string exportedComplexName,
+        ElementDefinition element)
+    {
+        return BuildElementInfo(_info, exportedComplexName, element, _writtenValueSets);
+    }
+
+    internal static WrittenElementInfo BuildElementInfo(
+        DefinitionCollection info,
+        string exportedComplexName,
+        ElementDefinition element,
+        Dictionary<string, WrittenValueSetInfo> writtenValueSets)
     {
         string type;
         var name = element.cgName().Replace("[x]", string.Empty);
 
-        string btName = element.cgBaseTypeName(_info, true);
+        string btName = element.cgBaseTypeName(info, true);
 
         if (!string.IsNullOrEmpty(btName))
         {
@@ -2688,7 +2703,7 @@ public sealed class CSharpFirely2 : ILanguage
 
         // Elements of type Code or Code<T> have their own naming/types, so handle those separately.
         if (type == "code")
-            return BuildCodedElementInfo(element);
+            return BuildCodedElementInfo(info, element, writtenValueSets);
 
         /* This is an exception - we want to share Meta across different FHIR versions,
          * so we use the "most common" type to the versions, which
@@ -2839,7 +2854,7 @@ public sealed class CSharpFirely2 : ILanguage
     /// <summary>Builds type from path.</summary>
     /// <param name="type">The type.</param>
     /// <returns>A string.</returns>
-    private string BuildTypeFromPath(ElementDefinition ed, string type)
+    private static string BuildTypeFromPath(ElementDefinition ed, string type)
     {
         // ginoc 2024.03.12: Release has happened and these are no longer needed - leaving here but commented out until confirmed
         /*
@@ -3416,14 +3431,14 @@ public sealed class CSharpFirely2 : ILanguage
     }
 
     /// <summary>Information about a written value set.</summary>
-    private struct WrittenValueSetInfo
+    internal struct WrittenValueSetInfo
     {
         internal string ClassName;
         internal string ValueSetName;
     }
 
     /// <summary>Information about the written element.</summary>
-    private class WrittenElementInfo
+    internal class WrittenElementInfo
     {
         internal string? FhirElementName;
         internal string? PropertyName;
@@ -3438,7 +3453,7 @@ public sealed class CSharpFirely2 : ILanguage
     }
 
     /// <summary>Information about the written model.</summary>
-    private struct WrittenModelInfo
+    internal struct WrittenModelInfo
     {
         internal string FhirName;
         internal string CsName;

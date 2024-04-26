@@ -41,6 +41,13 @@ public class PackageLoader : IDisposable
         "CompartmentDefinition",
     ];
 
+    /// <summary>True to automatically load expansions.</summary>
+    private bool _autoLoadExpansions;
+
+    /// <summary>True to load dependencies when loading packages.</summary>
+    private bool _loadDependencies;
+
+    /// <summary>The JSON model.</summary>
     private LoaderOptions.JsonDeserializationModel _jsonModel;
 
     /// <summary>Options for controlling the JSON.</summary>
@@ -71,6 +78,9 @@ public class PackageLoader : IDisposable
         _xmlParser = new(opts.FhirXmlSettings);
 
         _jsonModel = opts.JsonModel;
+
+        _autoLoadExpansions = opts.AutoLoadExpansions;
+        _loadDependencies = opts.ResolvePackageDependencies;
     }
 
     /// <summary>Adds all interaction parameters to a core definition collection.</summary>
@@ -282,7 +292,7 @@ public class PackageLoader : IDisposable
     /// <param name="name">    The name.</param>
     /// <param name="packages">The cached package.</param>
     /// <returns>An asynchronous result that yields the package.</returns>
-    public DefinitionCollection? LoadPackages(string name, IEnumerable<PackageCacheEntry> packages, bool loadDependencies = false, DefinitionCollection? inProgress = null)
+    public DefinitionCollection? LoadPackages(string name, IEnumerable<PackageCacheEntry> packages, DefinitionCollection? inProgress = null)
     {
         DefinitionCollection definitions = inProgress ?? new()
         {
@@ -291,6 +301,25 @@ public class PackageLoader : IDisposable
 
         foreach (PackageCacheEntry cachedPackage in packages)
         {
+            // check if we are flagged to load expansions and this is a core package
+            if (_autoLoadExpansions && FhirPackageUtils.PackageIsFhirCore(cachedPackage.Name))
+            {
+                string expansionPackageName = cachedPackage.Name.Replace(".core", ".expansions");
+                string expansionDirective = expansionPackageName + "#" + cachedPackage.Version;
+
+                Console.WriteLine($"Auto-loading core expansions: {cachedPackage.ResolvedDirective}...");
+
+                PackageCacheEntry? expansion = _cache.FindOrDownloadPackageByDirective(expansionDirective).Result;
+
+                if (expansion is null)
+                {
+                    throw new Exception($"Could not find or download expansion package: {expansionDirective}");
+                }
+
+                LoadPackages(name, [expansion], definitions);
+            }
+
+            // skip if we have already loaded this package
             if (definitions.Manifests.ContainsKey(cachedPackage.ResolvedDirective))
             {
                 Console.WriteLine($"Skipping already loaded dependency: {cachedPackage.ResolvedDirective}");
@@ -381,9 +410,9 @@ public class PackageLoader : IDisposable
             }
 
             // if we are resolving dependencies, do those now
-            if (loadDependencies && (cachedPackage.ResolvedDependencies.Length != 0))
+            if (_loadDependencies && (cachedPackage.ResolvedDependencies.Length != 0))
             {
-                LoadPackages(name, cachedPackage.ResolvedDependencies, true, definitions);
+                LoadPackages(name, cachedPackage.ResolvedDependencies, definitions);
                 Console.WriteLine($"Dependencies resolved - loading package {cachedPackage.ResolvedDirective}...");
             }
             else

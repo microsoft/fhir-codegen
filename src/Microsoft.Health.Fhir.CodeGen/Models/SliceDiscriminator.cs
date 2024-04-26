@@ -20,8 +20,8 @@ public record class SliceDiscriminator
     /// <summary>Gets or initializes the full pathname of the file.</summary>
     public required string Path { get; init; }
 
-    /// <summary>Gets or initializes the full pathname of the post resovle file.</summary>
-    public required string PostResovlePath { get; init; }
+    /// <summary>Gets or initializes the full pathname of the post resolve file.</summary>
+    public required string PostResolvePath { get; init; }
 
     /// <summary>Gets or initializes the identifier.</summary>
     public required string Id { get; init; }

@@ -88,6 +88,24 @@ public class ConfigRoot : ICodeGenConfig
     };
 
     [ConfigOption(
+        ArgName = "--auto-load-expansions",
+        EnvName = "Auto_Load_Expansions",
+        Description = "When loading core packages, load the expansions packages automatically.")]
+    public bool AutoLoadExpansions { get; set; } = true;
+
+    private static ConfigurationOption AutoLoadExpansionsParameter { get; } = new()
+    {
+        Name = "AutoLoadExpansions",
+        EnvVarName = "Auto_Load_Expansions",
+        DefaultValue = true,
+        CliOption = new System.CommandLine.Option<bool>("--auto-load-expansions", "When loading core packages, load the expansions packages automatically.")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
+
+    [ConfigOption(
         ArgName = "--resolve-dependencies",
         EnvName = "Resolve_Dependencies",
         Description = "Resolve package dependencies.")]
@@ -137,6 +155,7 @@ public class ConfigRoot : ICodeGenConfig
         FhirCacheDirectoryParameter,
         OutputDirectoryParameter,
         PackagesParameter,
+        AutoLoadExpansionsParameter,
         ResolvePackageDependenciesParameter,
         OfflineModeParameter,
     ];
@@ -378,6 +397,9 @@ public class ConfigRoot : ICodeGenConfig
                     break;
                 case "Packages":
                     Packages = GetOptArray(parseResult, opt.CliOption, Packages);
+                    break;
+                case "AutoLoadExpansions":
+                    AutoLoadExpansions = GetOpt(parseResult, opt.CliOption, AutoLoadExpansions);
                     break;
                 case "OfflineMode":
                     OfflineMode = GetOpt(parseResult, opt.CliOption, OfflineMode);

@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Utility;
 using Hl7.FhirPath.Sprache;
@@ -31,10 +32,52 @@ public static class StructureDefSlicing
         string sliceName,
         bool includeRoot = true)
     {
-        string sliceId = $"{slicingEd.Path}:{sliceName}";
         return (sd.Snapshot != null) && (sd.Snapshot.Element.Count != 0)
-            ? sd.Snapshot.Element.Where(e => e.ElementId.StartsWith(sliceId, StringComparison.Ordinal)).Skip(includeRoot ? 0 : 1)
-            : sd.Differential.Element.Where(e => e.ElementId.StartsWith(sliceId, StringComparison.Ordinal)).Skip(includeRoot ? 0 : 1);
+            ? sd.Snapshot.Element.Where(e => e.ElementId.StartsWith(slicingEd.ElementId, StringComparison.Ordinal)).Skip(includeRoot ? 0 : 1)
+            : sd.Differential.Element.Where(e => e.ElementId.StartsWith(slicingEd.ElementId, StringComparison.Ordinal)).Skip(includeRoot ? 0 : 1);
+    }
+
+    /// <summary>Enumerates cg elements with slices in this collection.</summary>
+    /// <param name="sd">The SD to act on.</param>
+    /// <returns>
+    /// An enumerator that allows foreach to be used to process cg elements with slices in this
+    /// collection.
+    /// </returns>
+    public static IEnumerable<ElementDefinition> cgElementsWithSlices(this StructureDefinition sd)
+    {
+        List<ElementDefinition> source = (sd.Snapshot != null) && (sd.Snapshot.Element.Count != 0)
+            ? sd.Snapshot.Element
+            : sd.Differential.Element;
+
+        for (int i = 0; i < (source.Count - 1); i++)
+        {
+            if (source[i + 1].ElementId.StartsWith(source[i].ElementId + ":", StringComparison.Ordinal))
+            {
+                yield return source[i];
+            }
+        }
+    }
+
+    /// <summary>Tries to get the parent element that defines the slicing rules for a sliced element.</summary>
+    /// <param name="sd">           The SD to act on.</param>
+    /// <param name="slicedElement">The sliced element.</param>
+    /// <param name="parentEd">     [out] The parent ed.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public static bool cgTryGetSlicingParent(
+        this StructureDefinition sd,
+        ElementDefinition slicedElement,
+        [NotNullWhen(true)] out ElementDefinition? parentEd)
+    {
+        string parentId = slicedElement.ElementId.Substring(0, slicedElement.ElementId.LastIndexOf(':'));
+
+        if ((sd.Snapshot != null) && (sd.Snapshot.Element.Count != 0))
+        {
+            parentEd = sd.Snapshot.Element.FirstOrDefault(e => e.ElementId == parentId);
+            return parentEd != null;
+        }
+
+        parentEd = null;
+        return false;
     }
 
     /// <summary>Enumerates cg discriminated values in this collection.</summary>
@@ -187,7 +230,7 @@ public static class StructureDefSlicing
                     DiscriminatorType = (ElementDefinition.DiscriminatorType)discriminator.Type!,
                     Type = discriminator.Type.GetLiteral()!,
                     Path = ed.Path,
-                    PostResovlePath = postResolve,
+                    PostResolvePath = postResolve,
                     Id = ed.ElementId,
                     Value = new FhirString(et.Code),
                 });
@@ -223,7 +266,7 @@ public static class StructureDefSlicing
                         DiscriminatorType = (ElementDefinition.DiscriminatorType)discriminator.Type!,
                         Type = discriminator.Type.GetLiteral()!,
                         Path = ed.Path,
-                        PostResovlePath = postResolve,
+                        PostResolvePath = postResolve,
                         Id = ed.ElementId,
                         Value = new FhirString(t.Code),
                     });
@@ -241,7 +284,7 @@ public static class StructureDefSlicing
                         DiscriminatorType = (ElementDefinition.DiscriminatorType)discriminator.Type!,
                         Type = discriminator.Type.GetLiteral()!,
                         Path = ed.Path,
-                        PostResovlePath = postResolve,
+                        PostResolvePath = postResolve,
                         Id = ed.ElementId,
                         Value = new FhirString(t.Code),
                     });
@@ -273,7 +316,7 @@ public static class StructureDefSlicing
                 DiscriminatorType = (ElementDefinition.DiscriminatorType)discriminator.Type!,
                 Type = discriminator.Type.GetLiteral()!,
                 Path = ed.Path,
-                PostResovlePath = postResolve,
+                PostResolvePath = postResolve,
                 Id = ed.ElementId,
                 Value = new FhirBoolean(true),
             });
@@ -299,7 +342,7 @@ public static class StructureDefSlicing
                     DiscriminatorType = (ElementDefinition.DiscriminatorType)discriminator.Type!,
                     Type = discriminator.Type.GetLiteral()!,
                     Path = ed.Path,
-                    PostResovlePath = postResolve,
+                    PostResolvePath = postResolve,
                     Id = ed.ElementId,
                     Value = new FhirBoolean(true),
                 });
@@ -339,7 +382,7 @@ public static class StructureDefSlicing
                     DiscriminatorType = (ElementDefinition.DiscriminatorType)discriminator.Type!,
                     Type = discriminator.Type.GetLiteral()!,
                     Path = ed.Path,
-                    PostResovlePath = postResolve,
+                    PostResolvePath = postResolve,
                     Id = ed.ElementId,
                     Value = new FhirString(profile),
                 });
@@ -377,7 +420,7 @@ public static class StructureDefSlicing
                         DiscriminatorType = (ElementDefinition.DiscriminatorType)discriminator.Type!,
                         Type = discriminator.Type.GetLiteral()!,
                         Path = ed.Path,
-                        PostResovlePath = postResolve,
+                        PostResolvePath = postResolve,
                         Id = ed.ElementId,
                         Value = new FhirString(t.Profile.First()),
                     });
@@ -431,7 +474,7 @@ public static class StructureDefSlicing
                     DiscriminatorType = (ElementDefinition.DiscriminatorType)discriminator.Type!,
                     Type = discriminator.Type.GetLiteral()!,
                     Path = ed.Path,
-                    PostResovlePath = postResolve,
+                    PostResolvePath = postResolve,
                     Id = ed.ElementId,
                     Value = ed.Fixed,
                 });
@@ -445,7 +488,7 @@ public static class StructureDefSlicing
                     DiscriminatorType = (ElementDefinition.DiscriminatorType)discriminator.Type!,
                     Type = discriminator.Type.GetLiteral()!,
                     Path = ed.Path,
-                    PostResovlePath = postResolve,
+                    PostResolvePath = postResolve,
                     Id = ed.ElementId,
                     Value = ed.Pattern,
                 });
@@ -490,7 +533,7 @@ public static class StructureDefSlicing
                         DiscriminatorType = (ElementDefinition.DiscriminatorType)discriminator.Type!,
                         Type = discriminator.Type.GetLiteral()!,
                         Path = ed.Path + ".url",
-                        PostResovlePath = postResolve,
+                        PostResolvePath = postResolve,
                         Id = ed.ElementId,
                         Value = new FhirString(profile),
                     });
@@ -528,7 +571,7 @@ public static class StructureDefSlicing
                             DiscriminatorType = (ElementDefinition.DiscriminatorType)discriminator.Type!,
                             Type = discriminator.Type.GetLiteral()!,
                             Path = ed.Path,
-                            PostResovlePath = postResolve,
+                            PostResolvePath = postResolve,
                             Id = ed.ElementId,
                             Value = new FhirString(tr.Profile.First()),
                         });
@@ -617,7 +660,7 @@ public static class StructureDefSlicing
                             DiscriminatorType = (ElementDefinition.DiscriminatorType)discriminator.Type!,
                             Type = discriminator.Type.GetLiteral()!,
                             Path = tEd.Path,
-                            PostResovlePath = postResolve,
+                            PostResolvePath = postResolve,
                             Id = tEd.ElementId,
                             Value = tEd.Fixed,
                         });
@@ -631,7 +674,7 @@ public static class StructureDefSlicing
                             DiscriminatorType = (ElementDefinition.DiscriminatorType)discriminator.Type!,
                             Type = discriminator.Type.GetLiteral()!,
                             Path = tEd.Path,
-                            PostResovlePath = postResolve,
+                            PostResolvePath = postResolve,
                             Id = tEd.ElementId,
                             Value = tEd.Pattern,
                         });
@@ -645,7 +688,7 @@ public static class StructureDefSlicing
                             DiscriminatorType = (ElementDefinition.DiscriminatorType)discriminator.Type!,
                             Type = discriminator.Type.GetLiteral()!,
                             Path = tEd.Path,
-                            PostResovlePath = postResolve,
+                            PostResolvePath = postResolve,
                             Id = tEd.ElementId,
                             IsBinding = true,
                             BindingName = tEd.Binding.GetExtensionValue<FhirString>(CommonDefinitions.ExtUrlBindingName)?.Value ?? string.Empty,
@@ -672,7 +715,7 @@ public static class StructureDefSlicing
                                 DiscriminatorType = (ElementDefinition.DiscriminatorType)discriminator.Type!,
                                 Type = discriminator.Type.GetLiteral()!,
                                 Path = tEd.Path,
-                                PostResovlePath = postResolve,
+                                PostResolvePath = postResolve,
                                 Id = tEd.ElementId,
                                 Value = new FhirString(tTr.Profile.First()),
                             });
@@ -729,7 +772,7 @@ public static class StructureDefSlicing
                             DiscriminatorType = (ElementDefinition.DiscriminatorType)discriminator.Type!,
                             Type = discriminator.Type.GetLiteral()!,
                             Path = sourcePath,
-                            PostResovlePath = postResolve,
+                            PostResolvePath = postResolve,
                             Id = tEd.ElementId,
                             Value = tEd.Fixed,
                         });
@@ -743,7 +786,7 @@ public static class StructureDefSlicing
                             DiscriminatorType = (ElementDefinition.DiscriminatorType)discriminator.Type!,
                             Type = discriminator.Type.GetLiteral()!,
                             Path = sourcePath,
-                            PostResovlePath = postResolve,
+                            PostResolvePath = postResolve,
                             Id = tEd.ElementId,
                             Value = tEd.Pattern,
                         });
@@ -757,7 +800,7 @@ public static class StructureDefSlicing
                             DiscriminatorType = (ElementDefinition.DiscriminatorType)discriminator.Type!,
                             Type = discriminator.Type.GetLiteral()!,
                             Path = sourcePath,
-                            PostResovlePath = postResolve,
+                            PostResolvePath = postResolve,
                             Id = tEd.ElementId,
                             IsBinding = true,
                             BindingName = tEd.Binding.GetExtensionValue<FhirString>(CommonDefinitions.ExtUrlBindingName)?.Value ?? string.Empty,
@@ -783,7 +826,7 @@ public static class StructureDefSlicing
                                 DiscriminatorType = (ElementDefinition.DiscriminatorType)discriminator.Type!,
                                 Type = discriminator.Type.GetLiteral()!,
                                 Path = sourcePath,
-                                PostResovlePath = postResolve.Substring(0, postResolve.LastIndexOf('.')),
+                                PostResolvePath = postResolve.Substring(0, postResolve.LastIndexOf('.')),
                                 Id = tEd.ElementId,
                                 Value = new FhirString(tTr.Profile.First()),
                             });

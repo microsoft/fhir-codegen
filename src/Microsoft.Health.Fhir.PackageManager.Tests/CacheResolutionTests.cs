@@ -109,7 +109,7 @@ public class CacheResolutionTests : IClassFixture<CacheResolutionTestFixture>
             return;
         }
 
-        package.Value.ResolvedDirective.Should().BeEquivalentTo(expectedResolution);
+        package.ResolvedDirective.Should().BeEquivalentTo(expectedResolution);
     }
 }
 

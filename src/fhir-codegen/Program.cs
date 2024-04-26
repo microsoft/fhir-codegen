@@ -503,9 +503,11 @@ public class Program
             PackageLoader loader = new(cache, new()
             {
                 JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
+                AutoLoadExpansions = rootConfig.AutoLoadExpansions,
+                ResolvePackageDependencies = rootConfig.ResolvePackageDependencies,
             });
 
-            DefinitionCollection? loaded = loader.LoadPackages(packages.First().Name, packages, rootConfig.ResolvePackageDependencies)
+            DefinitionCollection? loaded = loader.LoadPackages(packages.First().Name, packages)
                 ?? throw new Exception($"Could not load packages: {string.Join(',', rootConfig.Packages)}");
 
             // check for a FHIR server URL
@@ -555,7 +557,7 @@ public class Program
             }
         }
 
-        return 10;
+        return 0;
     }
 
     private static Dictionary<string, List<string>> ParseHttpHeaderArgs(List<string> argValues)

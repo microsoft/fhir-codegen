@@ -37,22 +37,22 @@
         },
         "Firely IG Backport": {
             "commandName": "Project",
-            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.uv.subscriptions-backport#1.1.0 --resolve-dependencies true",
+            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.uv.subscriptions-backport#1.1.0 --auto-load-expansions --resolve-dependencies true --extension-accessors ValueTupleAccessors --include-experimental",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely IG US Core": {
             "commandName": "Project",
-            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.us.core#6.1.0 --resolve-dependencies true",
+            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.us.core#6.1.0 --auto-load-expansions --resolve-dependencies true --extension-accessors ValueTupleAccessors --include-experimental",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely IG Extensions Pack": {
             "commandName": "Project",
-            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.uv.extensions#current --resolve-dependencies true",
+            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.uv.extensions#current --auto-load-expansions --resolve-dependencies true --extension-accessors ValueTupleAccessors --include-experimental",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely IG SDC": {
             "commandName": "Project",
-            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.uv.sdc#latest --resolve-dependencies true",
+            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.uv.sdc#latest --auto-load-expansions --resolve-dependencies true --extension-accessors ValueTupleAccessors --include-experimental",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "http": {

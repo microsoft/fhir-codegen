@@ -1744,7 +1744,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
         }
 
         // determine type of package name
-        if (FhirPackageUtils.PackageIsFhirCore(current.PackageId))
+        if (FhirPackageUtils.PackageIsFhirRelease(current.PackageId))
         {
             current = current with
             {
@@ -3002,7 +3002,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
                     entry.FhirVersion.Equals(forFhirVersion.ToLiteral(), StringComparison.OrdinalIgnoreCase) ||
                     entry.FhirVersion.Equals(forFhirVersion.ToRLiteral(), StringComparison.OrdinalIgnoreCase))
                 {
-                    if (FhirPackageUtils.PackageIsFhirCore(entry.Name))
+                    if (FhirPackageUtils.PackageIsFhirRelease(entry.Name))
                     {
                         directive = directive with
                         {

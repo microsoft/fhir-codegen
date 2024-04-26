@@ -902,9 +902,9 @@ public class LangInfo : ILanguage
 
                 foreach (SliceDiscriminator discriminator in dvs)
                 {
-                    string path = string.IsNullOrEmpty(discriminator.PostResovlePath)
+                    string path = string.IsNullOrEmpty(discriminator.PostResolvePath)
                         ? discriminator.Path
-                        : string.Join(".", discriminator.Path, "resolve()", discriminator.PostResovlePath);
+                        : string.Join(".", discriminator.Path, "resolve()", discriminator.PostResolvePath);
 
                     if (discriminator.IsBinding)
                     {

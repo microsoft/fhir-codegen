@@ -60,4 +60,15 @@ public record class LoaderOptions
         DisableBase64Decoding = false,
         Validator = null,
     };
+
+    /// <summary>
+    /// Resolve package dependencies during load.
+    /// </summary>
+    public bool ResolvePackageDependencies { get; init; } = false;
+
+
+    /// <summary>
+    /// When loading core packages, load the expansions packages automatically.
+    /// </summary>
+    public bool AutoLoadExpansions { get; init; } = true;
 }
