@@ -31,6 +31,7 @@ using System.Resources;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Health.Fhir.CodeGen.Net;
 using Microsoft.Health.Fhir.CodeGenCommon.Smart;
+using Microsoft.Health.Fhir.CodeGen.CompareTool;
 
 namespace fhir_codegen;
 
@@ -97,6 +98,7 @@ public class Program
         return command switch
         {
             "generate" => await DoGenerate(pr),
+            "compare" => await DoCompare(pr),
             //case "interactive":
             //    return await DoInteractive(pr);
             //case "web":
@@ -220,7 +222,7 @@ public class Program
         // TODO(ginoc): Set the command handler
         rootCommand.AddCommand(interactiveCommand);
 
-        // create our generate command
+        // create our webserver command
         SCL.Command webCommand = new("web", "Launch into a locally-hosted web UI.");
         foreach (SCL.Option option in BuildCliOptions(typeof(ConfigFluentUi), typeof(ConfigRoot), envConfig))
         {
@@ -231,6 +233,18 @@ public class Program
 
         // TODO(ginoc): Set the command handler
         rootCommand.AddCommand(webCommand);
+
+        // create our compare command
+        SCL.Command compareCommand = new("compare", "Compare two sets of packages.");
+        foreach (SCL.Option option in BuildCliOptions(typeof(ConfigCompare), typeof(ConfigRoot), envConfig))
+        {
+            // note that 'global' here is just recursive DOWNWARD
+            compareCommand.AddGlobalOption(option);
+            TrackIfEnum(option);
+        }
+
+        // TODO(ginoc): Set the command handler
+        rootCommand.AddCommand(compareCommand);
 
         return rootCommand;
 
@@ -554,6 +568,109 @@ public class Program
             else
             {
                 Console.WriteLine($"RunGenerate <<< caught: {ex.Message}");
+            }
+        }
+
+        return 0;
+    }
+
+    public static async Task<int> DoCompare(SCL.Parsing.ParseResult pr)
+    {
+        try
+        {
+            // create our configuration object
+            ConfigCompare config = new();
+
+            // parse the arguments into the configuration object
+            config.Parse(pr);
+
+            // create our cache object to load packages with
+            IFhirPackageClient cache = FhirCache.Create(new FhirPackageClientSettings()
+            {
+                CachePath = config.FhirCacheDirectory,
+            });
+
+            List<PackageCacheEntry> packagesLeft = [];
+
+            // load packages
+            foreach (string package in config.Packages)
+            {
+                PackageCacheEntry? entry;
+
+                if (package.StartsWith("http", StringComparison.OrdinalIgnoreCase))
+                {
+                    entry = await cache.FindOrDownloadPackageByUrl(package, config.ResolvePackageDependencies);
+                }
+                else
+                {
+                    entry = await cache.FindOrDownloadPackageByDirective(package, config.ResolvePackageDependencies);
+                }
+
+                if (entry is null)
+                {
+                    throw new Exception($"Could not find or download package {package}");
+                }
+
+                packagesLeft.Add((PackageCacheEntry)entry);
+            }
+
+            PackageLoader loaderLeft = new(cache, new()
+            {
+                JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
+                AutoLoadExpansions = config.AutoLoadExpansions,
+                ResolvePackageDependencies = config.ResolvePackageDependencies,
+            });
+
+            DefinitionCollection? loadedLeft = loaderLeft.LoadPackages(packagesLeft.First().Name, packagesLeft)
+                ?? throw new Exception($"Could not load left-hand-side packages: {string.Join(',', config.Packages)}");
+
+            List<PackageCacheEntry> packagesRight = [];
+
+            // load packages
+            foreach (string package in config.ComparePackages)
+            {
+                PackageCacheEntry? entry;
+
+                if (package.StartsWith("http", StringComparison.OrdinalIgnoreCase))
+                {
+                    entry = await cache.FindOrDownloadPackageByUrl(package, config.ResolvePackageDependencies);
+                }
+                else
+                {
+                    entry = await cache.FindOrDownloadPackageByDirective(package, config.ResolvePackageDependencies);
+                }
+
+                if (entry is null)
+                {
+                    throw new Exception($"Could not find or download package {package}");
+                }
+
+                packagesRight.Add((PackageCacheEntry)entry);
+            }
+
+            PackageLoader loaderRight = new(cache, new()
+            {
+                JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
+                AutoLoadExpansions = config.AutoLoadExpansions,
+                ResolvePackageDependencies = config.ResolvePackageDependencies,
+            });
+
+            DefinitionCollection? loadedRight = loaderLeft.LoadPackages(packagesRight.First().Name, packagesRight)
+                ?? throw new Exception($"Could not load right-hand-side packages: {string.Join(',', config.Packages)}");
+
+            PackageComparer comparer = new(config, loadedLeft, loadedRight);
+
+            comparer.Compare();
+        }
+        catch (Exception ex)
+        {
+            if (ex.InnerException != null)
+            {
+                Console.WriteLine($"RunCompare <<< caught: {ex.Message}::{ex.InnerException.Message}");
+            }
+            else
+            {
+                Console.WriteLine($"RunCompare <<< caught: {ex.Message}");
             }
         }
 
