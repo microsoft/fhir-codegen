@@ -2936,6 +2936,36 @@ public sealed class CSharpFirely2 : ILanguage
         out string allowedTypes,
         out string resourceReferences)
     {
+        BuildElementOptionalFlags(
+            _info,
+            element,
+            subset,
+            out summary,
+            out isModifier,
+            out choice,
+            out allowedTypes,
+            out resourceReferences);
+    }
+
+    /// <summary>Builds element optional flags.</summary>
+    /// <param name="info">              The definition information.</param>
+    /// <param name="element">           The element.</param>
+    /// <param name="subset">            .</param>
+    /// <param name="summary">           [out] The summary.</param>
+    /// <param name="isModifier">        [out].</param>
+    /// <param name="choice">            [out] The choice.</param>
+    /// <param name="allowedTypes">      [out] List of types of the allowed.</param>
+    /// <param name="resourceReferences">[out] The resource references.</param>
+    internal static void BuildElementOptionalFlags(
+        DefinitionCollection info,
+        ElementDefinition element,
+        GenSubset subset,
+        out string summary,
+        out string isModifier,
+        out string choice,
+        out string allowedTypes,
+        out string resourceReferences)
+    {
         choice = string.Empty;
         allowedTypes = string.Empty;
         resourceReferences = string.Empty;
@@ -2960,13 +2990,13 @@ public sealed class CSharpFirely2 : ILanguage
             {
                 string firstType = elementTypes.First().Key;
 
-                if (_info.PrimitiveTypesByName.ContainsKey(firstType) ||
-                    _info.ComplexTypesByName.ContainsKey(firstType))
+                if (info.PrimitiveTypesByName.ContainsKey(firstType) ||
+                    info.ComplexTypesByName.ContainsKey(firstType))
                 {
                     choice = ", Choice=ChoiceType.DatatypeChoice";
                 }
 
-                if (_info.ResourcesByName.ContainsKey(firstType))
+                if (info.ResourcesByName.ContainsKey(firstType))
                 {
                     choice = ", Choice=ChoiceType.ResourceChoice";
                 }
