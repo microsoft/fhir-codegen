@@ -464,8 +464,7 @@ public static class StructureDefSlicing
         string id = $"{slicingEd.Path}:{sliceName}{relativePath}";
         string path = $"{slicingEd.Path}{relativePath}";
 
-        foreach (ElementDefinition ed in sliceElements.Where(e => e.Path == path))
-        //foreach (ElementDefinition ed in sliceElements.Where(e => e.ElementId.Equals(id, StringComparison.Ordinal)))
+        foreach (ElementDefinition ed in sliceElements.Where(e => e.ElementId.Equals(id, StringComparison.Ordinal)))
         {
             if (ed.Fixed != null)
             {
@@ -539,6 +538,65 @@ public static class StructureDefSlicing
                     });
 
                     continue;
+                }
+            }
+
+            // check to see if this is a standalone definition in a differential
+            if (result.Count == 0)
+            {
+                if (slicingEd.Path.EndsWith(".extension", StringComparison.Ordinal) &&
+                    (sliceElements.Count() == 1))
+                {
+                    ElementDefinition diffEd = sliceElements.First();
+
+                    if ((diffEd.Type.Count == 1) &&
+                        (diffEd.Type[0].Code == "Extension") &&
+                        diffEd.Type[0].Profile.Any())
+                    {
+                        // we want the current element's parent
+                        string parentPath = slicingEd.Path.Substring(0, slicingEd.Path.LastIndexOf('.'));
+                        string extPath = parentPath.Contains(".extension", StringComparison.Ordinal)
+                            ? "E" + parentPath.Substring(parentPath.LastIndexOf(".extension", StringComparison.Ordinal))[2..]
+                            : string.Empty;
+
+                        if (dc.TryFindElementByPath(parentPath, out StructureDefinition? parentSd, out ElementDefinition? parentEd))
+                        {
+                            result.Add(new()
+                            {
+                                DiscriminatorType = (ElementDefinition.DiscriminatorType)discriminator.Type!,
+                                Type = discriminator.Type.GetLiteral()!,
+                                Path = parentEd.Path + ".url",
+                                PostResolvePath = postResolve,
+                                Id = parentEd.ElementId,
+                                Value = new FhirString(diffEd.Type[0].Profile.First()),
+                            });
+                        }
+                        else if (!string.IsNullOrEmpty(extPath) &&
+                            dc.TryFindElementByPath(extPath, out StructureDefinition? extSd, out ElementDefinition? extEd))
+                        {
+                            result.Add(new()
+                            {
+                                DiscriminatorType = (ElementDefinition.DiscriminatorType)discriminator.Type!,
+                                Type = discriminator.Type.GetLiteral()!,
+                                Path = diffEd.Path + ".url",
+                                PostResolvePath = postResolve,
+                                Id = extEd.ElementId,
+                                Value = new FhirString(diffEd.Type[0].Profile.First()),
+                            });
+                        }
+                        else
+                        {
+                            result.Add(new()
+                            {
+                                DiscriminatorType = (ElementDefinition.DiscriminatorType)discriminator.Type!,
+                                Type = discriminator.Type.GetLiteral()!,
+                                Path = diffEd.Path + ".url",
+                                PostResolvePath = postResolve,
+                                Id = diffEd.ElementId,
+                                Value = new FhirString(diffEd.Type[0].Profile.First()),
+                            });
+                        }
+                    }
                 }
             }
         }

@@ -40,8 +40,8 @@ public class Extension_30_50 : ICrossVersionProcessor<Extension>, ICrossVersionE
 				break;
 
 			case "_valueBase64Binary":
-				_converter._element.Process(node, current.Value);
-				break;
+                _converter._element.Process(node, current.Value);
+                break;
 
 			case "valueBoolean":
 				current.Value = new FhirBoolean(_converter._primitive.GetBoolOpt(node));

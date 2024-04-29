@@ -15,6 +15,7 @@ using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Hl7.Fhir.ElementModel;
@@ -33,7 +34,7 @@ using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionEx
 
 namespace Microsoft.Health.Fhir.CodeGen.Language.Firely;
 
-public class FirelyNetIG : ILanguage
+public partial class FirelyNetIG : ILanguage
 {
     /// <summary>(Immutable) Name of the language.</summary>
     private const string LanguageName = "FirelyNetIg";
@@ -88,6 +89,10 @@ public class FirelyNetIG : ILanguage
     private Dictionary<string, PackageData> _packageDataByDirective = [];
     private Dictionary<string, HashSet<string>> _extensionNamesByPackageDirective = [];
 
+    [GeneratedRegex(".+(\\.extension(\\:[^.]+)?\\.url)")]
+    private static partial Regex FindExtensionPathRegex();
+
+
     private record struct PackageData
     {
         public required string Key { get; set; }
@@ -116,6 +121,7 @@ public class FirelyNetIG : ILanguage
         public required ElementDefinition? ValueElement { get; init; }
         public required CSharpFirely2.WrittenElementInfo? ElementInfo { get; init; }
         public required ExtensionData[] Children { get; init; }
+        public required string ValueTypeName { get; init; }
     }
 
     private record class ExtensionContextRec
@@ -125,6 +131,7 @@ public class FirelyNetIG : ILanguage
         public required ComponentDefinition? ContextTarget { get; init; }
 
         public required CSharpFirely2.WrittenElementInfo? ContextElementInfo { get; init; }
+        public required string ContextTypeName { get; init; }
     }
 
 
@@ -401,6 +408,13 @@ public class FirelyNetIG : ILanguage
             }
         }
 
+        IEnumerable<FhirConcept> concepts = vs.cgGetFlatConcepts(_info);
+
+        if (!concepts.Any())
+        {
+            return;
+        }
+
         // get a writer for the value set
         ExportStreamWriter writer = GetValueSetWriter(packageData);
 
@@ -421,8 +435,6 @@ public class FirelyNetIG : ILanguage
                 $"(url: {vs.Url})\n" +
                 $"(systems: {referencedCodeSystems.Count()})");
         }
-
-        IEnumerable<FhirConcept> concepts = vs.cgGetFlatConcepts(_info);
 
         string defaultSystem = concepts.Select(c => c.System)
                         .GroupBy(c => c)
@@ -513,7 +525,7 @@ public class FirelyNetIG : ILanguage
     {
         foreach (ExtensionContextRec ctx in extData.Contexts)
         {
-            string contextType = ctx.ContextElementInfo?.ElementType ?? "Element";
+            string contextType = ctx.ContextTypeName;
 
             // check for simple extensions
             if ((extData.ValueElement != null) && (extData.ElementInfo != null))
@@ -749,14 +761,7 @@ public class FirelyNetIG : ILanguage
 
         foreach (ExtensionContextRec ctx in extData.Contexts)
         {
-            string contextType = ctx.ContextTarget?.IsRootOfStructure == true
-                ? ctx.ContextTarget.Element.Path
-                : ctx.ContextElementInfo?.ElementType ?? "Element";
-
-            if (!contextType.Contains('.'))
-            {
-                contextType = "Hl7.Fhir.Model." + contextType;
-            }
+            string contextType = ctx.ContextTypeName;
 
             //writer.WriteLineIndented($"// Exported for {ctx.AllowedContext.Type}:{ctx.AllowedContext.Expression}.");
 
@@ -770,11 +775,11 @@ public class FirelyNetIG : ILanguage
             //    writer.WriteLineIndented($"// Type: {ctx.ContextElementInfo.ElementType}.");
             //}
 
+            string elementType = extData.ValueTypeName;
+
             // check for simple extensions
             if (extData.ElementInfo != null)
             {
-                string elementType = extData.ElementInfo.IsPrimitive ? extData.ElementInfo.PrimitiveHelperType! : extData.ElementInfo.ElementType!;
-
                 // write a getter comment
                 if (extData.ElementInfo.IsList)
                 {
@@ -786,9 +791,6 @@ public class FirelyNetIG : ILanguage
                     writer.WriteIndentedComment(_extValueGetterPrefixScalar + extData.Summary, isSummary: true);
                     writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
                 }
-
-                // build the getter name
-                //string valueGetterName = extData.Name + "Get" + (extData.ValueInfo.Length > 1 ? type.ToPascalCase() : string.Empty);
 
                 if (extData.ElementInfo.IsList)
                 {
@@ -882,9 +884,9 @@ public class FirelyNetIG : ILanguage
             else
             {
                 // write the accessor class
-                if (WriteExtensionAccessorClass(writer, extData, usedRecordTypes, out string recClassName))
+                if (WriteExtensionAccessorClass(writer, extData, usedRecordTypes))
                 {
-                    usedRecordTypes.Add(recClassName);
+                    usedRecordTypes.Add(elementType);
                 }
 
                 // write a comment for the getter
@@ -901,7 +903,7 @@ public class FirelyNetIG : ILanguage
 
                 if (extData.IsList)
                 {
-                    writer.WriteLineIndented($"public static IEnumerable<{recClassName}> {extData.Name}Get(this {contextType} o)");
+                    writer.WriteLineIndented($"public static IEnumerable<{elementType}> {extData.Name}Get(this {contextType} o)");
                     OpenScope(writer);      // function open
                     writer.WriteLineIndented($"IEnumerable<Extension> roots = o.GetExtensions({_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
                     writer.WriteLineIndented("if (!roots.Any()) yield break;");
@@ -912,7 +914,7 @@ public class FirelyNetIG : ILanguage
                     WriteExtensionRecordPropertyReads(writer, extData, "root");
 
                     // add to our list
-                    writer.WriteLineIndented($"yield return new {recClassName}()");
+                    writer.WriteLineIndented($"yield return new {elementType}()");
                     WriteExtensionRecordCreateFromProperties(writer, extData);
 
                     CloseScope(writer, suppressNewline: true);     // foreach close
@@ -920,7 +922,7 @@ public class FirelyNetIG : ILanguage
                 }
                 else
                 {
-                    writer.WriteLineIndented($"public static {recClassName}? {extData.Name}Get(this {contextType} o)");
+                    writer.WriteLineIndented($"public static {elementType}? {extData.Name}Get(this {contextType} o)");
                     OpenScope(writer);
                     writer.WriteLineIndented($"Extension? root = o.GetExtension({_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
                     writer.WriteLineIndented("if (root == null) return null;");
@@ -928,7 +930,7 @@ public class FirelyNetIG : ILanguage
                     // pull values from the extension tree
                     WriteExtensionRecordPropertyReads(writer, extData, "root");
 
-                    writer.WriteLineIndented($"return new {recClassName}()");
+                    writer.WriteLineIndented($"return new {elementType}()");
                     WriteExtensionRecordCreateFromProperties(writer, extData);
 
                     CloseScope(writer);
@@ -949,56 +951,18 @@ public class FirelyNetIG : ILanguage
                 // write a setter for either a single value or an array
                 if (extData.IsList)
                 {
-                    writer.WriteLineIndented($"public static void {extData.Name}Set(this {contextType} o, IEnumerable<{recClassName}> values)");
+                    writer.WriteLineIndented($"public static void {extData.Name}Set(this {contextType} o, IEnumerable<{elementType}> values)");
                     OpenScope(writer);      // setter function open
                     writer.WriteLineIndented($"o.RemoveExtension({_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
-
                     WriteExtensionRecordPropertyWrites(writer, extData, "o", "values");
-
-
-                    //writer.WriteLineIndented($"if (values == null) return;");
-                    //writer.WriteLineIndented($"if (!values.Any()) return;");
-
-                    //writer.WriteLineIndented($"foreach ({recClassName} val{extData.Name} in values)");
-                    //OpenScope(writer);       // foreach open
-
-                    //if (string.IsNullOrEmpty(extData.ParentName))
-                    //{
-                    //    writer.WriteLineIndented($"Extension root = new Extension() {{ Url = {_classNameDefinitions}.{_extUrlPrefix}{extData.Name} }};");
-                    //}
-                    //else
-                    //{
-                    //    writer.WriteLineIndented($"Extension root = new Extension() {{ Url = {_classNameDefinitions}.{_extUrlPrefix}{extData.ParentName}{extData.Name} }};");
-                    //}
-                    //writer.WriteLineIndented($"bool rootAdded = false;");
-
-                    //// pull values from the extension tree
-                    //WriteExtensionRecordPropertyWrites(writer, extData, "root");
-
-                    //writer.WriteLineIndented($"if (rootAdded) o.Extension.Add(root);");
-
-                    //CloseScope(writer, suppressNewline: true);      // foreach close
                     CloseScope(writer);     // setter function close
                 }
                 else
                 {
-                    writer.WriteLineIndented($"public static void {extData.Name}Set(this {contextType} o, {recClassName}? value)");
+                    writer.WriteLineIndented($"public static void {extData.Name}Set(this {contextType} o, {elementType}? value)");
                     OpenScope(writer);      // setter function open
                     writer.WriteLineIndented($"o.RemoveExtension({_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
-
                     WriteExtensionRecordPropertyWrites(writer, extData, "o", "value");
-
-                    //WriteExtensionRecordPropertyWrites(writer, extData, $"val{extData.Name}");
-
-                    //writer.WriteLineIndented($"if ({string.Join(" && ", extData.Children.Select(propEx => $"({propEx.Name}{_recordValueSuffix} == null)"))}) return;");
-
-                    //writer.WriteLineIndented($"Extension root = new Extension() {{ Url = {_classNameDefinitions}.{_extUrlPrefix}{extData.Name} }};");
-
-                    //// pull values from the extension tree
-                    //WriteExtensionRecordPropertyWrites(writer, extData, "root");
-
-                    //writer.WriteLineIndented($"o.Extension.Add(root);");
-
                     CloseScope(writer);     // setter function close
                 }
             }
@@ -1013,7 +977,7 @@ public class FirelyNetIG : ILanguage
 
         foreach (ExtensionContextRec ctx in extData.Contexts)
         {
-            string contextType = ctx.ContextElementInfo?.ElementType ?? "Element";
+            string contextType = ctx.ContextTypeName;
 
             // write a comment for the getter
             if (extData.IsList)
@@ -1432,14 +1396,9 @@ public class FirelyNetIG : ILanguage
         CloseScope(writer, suppressNewline:true);     // if close
     }
 
-    private bool WriteExtensionAccessorClass(ExportStreamWriter writer, ExtensionData extData, HashSet<string> usedRecordTypes, out string recClassName)
+    private bool WriteExtensionAccessorClass(ExportStreamWriter writer, ExtensionData extData, HashSet<string> usedRecordTypes)
     {
-        // build our class name
-        recClassName = string.IsNullOrEmpty(extData.ParentName)
-            ? extData.Name + _recordClassSuffix
-            : extData.ParentName + extData.Name + _recordClassSuffix;
-
-        if (usedRecordTypes.Contains(recClassName))
+        if (usedRecordTypes.Contains(extData.ValueTypeName))
         {
             return false;
         }
@@ -1458,7 +1417,7 @@ public class FirelyNetIG : ILanguage
         }
 
         // open our class
-        writer.WriteLineIndented($"public record class {recClassName}");
+        writer.WriteLineIndented($"public record class {extData.ValueTypeName}");
         OpenScope(writer);
 
         // traverse our sub-extensions to use as properties
@@ -1518,7 +1477,7 @@ public class FirelyNetIG : ILanguage
         {
             if ((subExtData.ValueElement == null) || (subExtData.ElementInfo == null))
             {
-                WriteExtensionAccessorClass(writer, subExtData, usedRecordTypes, out _);
+                WriteExtensionAccessorClass(writer, subExtData, usedRecordTypes);
             }
         }
 
@@ -1685,12 +1644,63 @@ public class FirelyNetIG : ILanguage
                     writer.WriteLineIndented($"//         IsBinding: {discriminator.IsBinding}");
                     writer.WriteLineIndented($"//       BindingName: {discriminator.BindingName}");
 
-                    bool isExtensionSlice = discriminator.Path.EndsWith(".extension.url", StringComparison.Ordinal);
+                    //bool isExtensionSlice = discriminator.Path.EndsWith(".extension.url", StringComparison.Ordinal);
+                    bool isExtensionSlice = FindExtensionPathRegex().IsMatch(discriminator.Path);
 
                     if (isExtensionSlice)
                     {
                         // figure out the path we want to root our C# extension on
-                        string rootPath = slicingEd.Path.Substring(0, slicingEd.Path.Length - ".extension.url".Length);
+                        //string rootPath = discriminator.Path[..^14];
+                        string rootPath = discriminator.Path.Substring(0, discriminator.Path.LastIndexOf(".extension", StringComparison.Ordinal));
+                        //string rootId = discriminator.Id.EndsWith(".url", StringComparison.Ordinal) ? discriminator.Id[..^4] : discriminator.Id;
+                        string rootId = FindExtensionPathRegex().IsMatch(discriminator.Id)
+                            ? discriminator.Id.Substring(0, discriminator.Id.LastIndexOf(".extension", StringComparison.Ordinal))
+                            : discriminator.Id;
+
+                        StructureDefinition? contextSd;
+                        ElementDefinition? contextElement;
+                        ComponentDefinition contextCd;
+
+                        if (sd.cgTryGetElementById(rootId, out contextElement))
+                        {
+                            contextSd = sd;
+                            contextCd = new()
+                            {
+                                Structure = sd,
+                                Element = contextElement,
+                                IsRootOfStructure = !contextElement.Path.Contains('.'),
+                            };
+                        }
+                        // resolve the root path element
+                        else if (sd.cgTryGetElementByPath(rootPath, out contextElement))
+                        {
+                            contextSd = sd;
+                            contextCd = new()
+                            {
+                                Structure = sd,
+                                Element = contextElement,
+                                IsRootOfStructure = !contextElement.Path.Contains('.'),
+                            };
+                        }
+                        else if (_info.TryFindElementByPath(rootPath, out contextSd, out contextElement))
+                        {
+                            contextCd = new()
+                            {
+                                Structure = contextSd,
+                                Element = contextElement,
+                                IsRootOfStructure = !contextElement.Path.Contains('.'),
+                            };
+                        }
+                        else if (_info.ComplexTypesByName.TryGetValue("Element", out contextSd))
+                        {
+                            contextCd = new(contextSd);
+                            contextElement = contextCd.Element;
+                        }
+                        else
+                        {
+                            // this should never happen
+                            throw new Exception($"Cannot resolve profile slice info: {sd.Name} ({sd.Url}) : {discriminator.Id}");
+                        }
 
                         string extUrl = discriminator.Value.ToString() ?? string.Empty;
 
@@ -1700,6 +1710,9 @@ public class FirelyNetIG : ILanguage
                         {
                             // we have a definition we can link to
                             writer.WriteLineIndented($"// Slice uses extension: {extPackageData.Namespace}.{extData.Name.ToPascalCase()}");
+
+                            // write a getter
+                            WriteProfileSliceExtensionAccessors(writer, sd, sliceName, contextCd, extData);
                         }
                         else
                         {
@@ -1756,6 +1769,72 @@ public class FirelyNetIG : ILanguage
             WriteNamespaceClose(writer);
         }
     }
+
+    private void WriteProfileSliceExtensionAccessors(
+        ExportStreamWriter writer,
+        StructureDefinition profileSd,
+        string sliceName,
+        ComponentDefinition contextCd,
+        ExtensionData extData)
+    {
+        string fnBase = profileSd.cgName().ToPascalCase() + sliceName.ToPascalCase();
+        string extValueType = extData.ValueTypeName;
+
+        string contextType;
+        if (contextCd.IsRootOfStructure == true)
+        {
+            contextType = contextCd.Element.Path;
+        }
+        else
+        {
+            // we are okay using a narrower type than the extension in the profile context
+            CSharpFirely2.WrittenElementInfo? ei = BuildElementInfo(contextCd.Structure.cgName(), contextCd.Element);
+
+            contextType = ei?.ElementType ?? "Hl7.Fhir.Model.Element";
+
+            //// need to find the context info
+            //ExtensionContextRec? ctx = extData.Contexts.FirstOrDefault(ctx => ctx.ContextTarget?.Element.Path == contextCd.Element.Path);
+
+            //if ((ctx is null) && contextCd.DerivesFromDataType(_info))
+            //{
+            //    ctx = extData.Contexts.FirstOrDefault(ctx => ctx.ContextElementInfo?.ElementType == "Hl7.Fhir.Model.DataType");
+            //}
+
+            //contextType = ctx?.ContextTypeName ?? "Hl7.Fhir.Model.Element";
+        }
+
+        if (!contextType.Contains('.'))
+        {
+            contextType = "Hl7.Fhir.Model." + contextType;
+        }
+
+        if (TryGetPackageData(extData.DefinitionDirective, out PackageData extPackageData))
+        {
+            if (extData.IsList)
+            {
+                writer.WriteLineIndented($"public static IEnumerable<{extValueType}> {fnBase}Get(this {contextType} o) =>");
+                writer.WriteLineIndented($"  {extPackageData.Namespace}.{extData.Name.ToPascalCase()}Get(o);");
+
+                writer.WriteLineIndented($"public static void {fnBase}Set(this {contextType} o, IEnumerable<{extValueType}>? val) =>");
+                writer.WriteLineIndented($"  {extPackageData.Namespace}.{extData.Name.ToPascalCase()}Set(o, val);");
+
+            }
+            else
+            {
+                writer.WriteLineIndented($"public static {extValueType}? {fnBase}Get(this {contextType} o) =>");
+                writer.WriteLineIndented($"  {extPackageData.Namespace}.{extData.Name.ToPascalCase()}Get(o);");
+
+
+                writer.WriteLineIndented($"public static void {fnBase}Set(this {contextType} o, {extValueType}? val) =>");
+                writer.WriteLineIndented($"  {extPackageData.Namespace}.{extData.Name.ToPascalCase()}Set(o, val);");
+            }
+        }
+        else
+        {
+            throw new Exception($"Could not get package information for extension: {extData.Name} ({extData.Url})");
+        }
+    }
+
 
     //private void WriteProfileExtensionAccessors(
     //    ExportStreamWriter writer,
@@ -2225,7 +2304,14 @@ public class FirelyNetIG : ILanguage
         string? parentExtUrl = null,
         ComponentDefinition? parentCd = null)
     {
-        string summary = cd.cgShort();
+        string summary = cd.IsRootOfStructure ? cd.Structure.Description : cd.cgShort();
+
+        // check for empty summaries or summaries that are codes (note we cannot use code check because the codes are on a sub-element)
+        if (string.IsNullOrEmpty(summary) || summary.Contains('|'))
+        {
+            summary = cd.cgDefinition();
+        }
+
         string remarks;
         string url;
         ElementDefinition? valueElement = null;
@@ -2379,6 +2465,7 @@ public class FirelyNetIG : ILanguage
                         AllowedContext = ctx,
                         ContextTarget = ctx.Expression == parentExtUrl ? parentCd : null,
                         ContextElementInfo = BuildElementInfo(string.Empty, parentCd == null ? cd.Element : parentCd.Element),
+                        ContextTypeName = "Hl7.Fhir.Model.Extension",
                     });
 
                     continue;
@@ -2411,6 +2498,7 @@ public class FirelyNetIG : ILanguage
                                 },
                                 ContextTarget = targetCd,
                                 ContextElementInfo = BuildElementInfo(string.Empty, parentCd == null ? cd.Element : parentCd.Element),
+                                ContextTypeName = "Hl7.Fhir.Model.Element",
                             });
 
                             continue;
@@ -2427,6 +2515,8 @@ public class FirelyNetIG : ILanguage
                                 targetCd = new(targetExtension);
                             }
 
+                            CSharpFirely2.WrittenElementInfo? ei = BuildElementInfo(string.Empty, targetCd == null ? cd.Element : targetCd.Element);
+
                             extensionContexts.Add(new()
                             {
                                 AllowedContext = new StructureDefinition.ContextComponent()
@@ -2435,7 +2525,10 @@ public class FirelyNetIG : ILanguage
                                     Expression = ctx.Expression,
                                 },
                                 ContextTarget = targetCd,
-                                ContextElementInfo = BuildElementInfo(string.Empty, targetCd == null ? cd.Element : targetCd.Element),
+                                ContextElementInfo = ei,
+                                ContextTypeName = targetCd?.IsRootOfStructure == true
+                                    ? targetCd.Element.Path
+                                    : ei?.ElementType ?? "Hl7.Fhir.Model.Extension",
                             });
 
                             // nothing more to do for this context
@@ -2463,11 +2556,16 @@ public class FirelyNetIG : ILanguage
                         IsRootOfStructure = elements.Length == 1,
                     };
 
+                    CSharpFirely2.WrittenElementInfo? ei = BuildElementInfo(contextCd.Structure.cgName(), contextCd.Element);
+
                     extensionContexts.Add(new()
                     {
                         AllowedContext = ctx,
                         ContextTarget = contextCd,
                         ContextElementInfo = BuildElementInfo(contextCd.Structure.cgName(), contextCd.Element),
+                        ContextTypeName = contextCd?.IsRootOfStructure == true
+                            ? contextCd.Element.Path
+                            : ei?.ElementType ?? "Hl7.Fhir.Model.Element",
                     });
                 }
             }
@@ -2496,6 +2594,7 @@ public class FirelyNetIG : ILanguage
                         IsList = false,
                         IsCodedEnum = false,
                     },
+                    ContextTypeName = "Hl7.Fhir.Model.DataType",
                 });
             }
 
@@ -2520,7 +2619,22 @@ public class FirelyNetIG : ILanguage
                     },
                     ContextTarget = targetCd,
                     ContextElementInfo = BuildElementInfo(string.Empty, parentCd == null ? cd.Element : parentCd.Element),
+                    ContextTypeName = "Hl7.Fhir.Model.Element",
                 });
+            }
+
+            // check for contexts that use element linking, which result in the same element
+            IEnumerable<IGrouping<string, ExtensionContextRec>> groupedContexts = extensionContexts.GroupBy(ctx => ctx.ContextTypeName);
+            foreach (var groupedContext in groupedContexts)
+            {
+                if (groupedContext.Count() > 1)
+                {
+                    // remove all but the first context
+                    foreach (ExtensionContextRec ctx in groupedContext.Skip(1))
+                    {
+                        extensionContexts.Remove(ctx);
+                    }
+                }
             }
 
             // if there were no contexts, add an "Element" context
@@ -2542,6 +2656,7 @@ public class FirelyNetIG : ILanguage
                     },
                     ContextTarget = targetCd,
                     ContextElementInfo = BuildElementInfo(string.Empty, parentCd == null ? cd.Element : parentCd.Element),
+                    ContextTypeName = "Hl7.Fhir.Model.Element",
                 });
             }
         }
@@ -2557,7 +2672,23 @@ public class FirelyNetIG : ILanguage
                 },
                 ContextTarget = parentCd,
                 ContextElementInfo = BuildElementInfo(string.Empty, parentCd == null ? cd.Element : parentCd.Element),
+                ContextTypeName = "Hl7.Fhir.Model.Extension",
             });
+        }
+
+        CSharpFirely2.WrittenElementInfo? valueElementInfo = valueElement == null ? null : BuildElementInfo(string.Empty, valueElement);
+
+        string valueTypeName;
+
+        if (valueElementInfo != null)
+        {
+            valueTypeName = valueElementInfo.IsPrimitive ? valueElementInfo.PrimitiveHelperType! : valueElementInfo.ElementType!;
+        }
+        else
+        {
+            valueTypeName = string.IsNullOrEmpty(parentName)
+                ? name + _recordClassSuffix
+                : parentName + name + _recordClassSuffix;
         }
 
         // create our extension data
@@ -2573,8 +2704,9 @@ public class FirelyNetIG : ILanguage
             DefinitionDirective = directive,
             Contexts = extensionContexts.ToArray(),
             ValueElement = valueElement,
-            ElementInfo = valueElement == null ? null : BuildElementInfo(string.Empty, valueElement),
+            ElementInfo = valueElementInfo,
             Children = childExtensions.ToArray(),
+            ValueTypeName = valueTypeName,
         };
 
         _extensionDataByUrl.Add(url, extData);

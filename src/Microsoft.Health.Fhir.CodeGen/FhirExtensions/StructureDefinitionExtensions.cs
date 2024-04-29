@@ -335,6 +335,12 @@ public static class StructureDefinitionExtensions
         }
     }
 
+    public static bool cgTryGetRootElement(this StructureDefinition sd, [NotNullWhen(true)] out ElementDefinition? ed)
+    {
+        ed = cgRootElement(sd);
+        return ed != null;
+    }
+
     /// <summary>A StructureDefinition extension method that cg root element.</summary>
     /// <param name="sd">The SD to act on.</param>
     /// <returns>An ElementDefinition?</returns>

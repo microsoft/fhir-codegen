@@ -71,8 +71,16 @@ public record class ComponentDefinition
     /// <summary>Get a short description for a component.</summary>
     /// <returns>A string.</returns>
     public string cgShort() =>
-        !string.IsNullOrEmpty(Element?.Short) ? Element.Short
+        (!string.IsNullOrEmpty(Element?.Short) && !Element.cgHasCodes()) ? Element.Short
         : !string.IsNullOrEmpty(Element?.Definition) ? Element.Definition
+        : !string.IsNullOrEmpty(Structure?.Description) ? Structure.Description
+        : !string.IsNullOrEmpty(Structure?.Purpose) ? Structure.Purpose
+        : string.Empty;
+
+    /// <summary>Get a description for a component</summary>
+    /// <returns>A string.</returns>
+    public string cgDefinition() =>
+        !string.IsNullOrEmpty(Element?.Definition) ? Element.Definition
         : !string.IsNullOrEmpty(Structure?.Description) ? Structure.Description
         : !string.IsNullOrEmpty(Structure?.Purpose) ? Structure.Purpose
         : string.Empty;
@@ -178,5 +186,31 @@ public record class ComponentDefinition
 
             yield return e;
         }
+    }
+
+    public bool DerivesFromDataType(DefinitionCollection dc)
+    {
+        string btName = cgBaseTypeName(dc, false);
+
+        if ((btName == "DataType") || (btName == "Hl7.Fhir.Model.DataType"))
+        {
+            return true;
+        }
+
+        return dc.PrimitiveTypesByName.ContainsKey(btName) || dc.ComplexTypesByName.ContainsKey(btName);
+    }
+
+    public bool DerivesFromElement(DefinitionCollection dc)
+    {
+        string btName = cgBaseTypeName(dc, false);
+
+        if ((btName == "Element") || (btName == "Hl7.Fhir.Model.Element") ||
+            (btName == "BackboneElement") || (btName == "Hl7.Fhir.Model.BackboneElement"))
+        {
+            return true;
+        }
+
+        return !dc.PrimitiveTypesByName.ContainsKey(btName) && !dc.ComplexTypesByName.ContainsKey(btName);
+
     }
 }

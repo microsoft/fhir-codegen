@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Hl7.Fhir.R5" Version="5.7.0" />
+    <PackageReference Include="Hl7.Fhir.R5" Version="5.8.0" />
   </ItemGroup>
 
   <ItemGroup>

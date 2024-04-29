@@ -207,7 +207,7 @@ public class ServerConnector : IDisposable
             Console.WriteLine($"\t   Software Name: {capabilities.Software.Name}");
             Console.WriteLine($"\tSoftware Version: {capabilities.Software.Version}");
             Console.WriteLine($"\t    Release Date: {capabilities.Software.ReleaseDate}");
-            Console.WriteLine($"\t     Description: {capabilities.Implementation.Description}");
+            Console.WriteLine($"\t     Description: {capabilities.Implementation?.Description}");
             Console.WriteLine($"\t       Resources: {capabilities.Rest.FirstOrDefault()?.Resource.Count}");
 
             return true;
@@ -221,8 +221,6 @@ public class ServerConnector : IDisposable
             serverFhirVersion = null;
             return false;
         }
-
-        return false;
     }
 
     /// <summary>

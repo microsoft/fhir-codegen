@@ -105,7 +105,7 @@ public class FhirPackageTestsR5 : IClassFixture<FhirPackageTestFixture>
     private const int _countValueSetsByUrl = 887;               // 788 in core, 848 in +extensions, 887 in +expansions
     private const int _countPrimitiveTypesByName = 21;
     private const int _countComplexTypesByName = 48;
-    private const int _countResourcesByName = 162;
+    private const int _countResourcesByName = 160;              // 157 concrete resources, 3 abstract
     private const int _countLogicalModelsByName = 10;
     private const int _countExtensionsByUrl = 512;              // 0 in core, 512 in +extensions
     private const int _countProfilesByUrl = 66;

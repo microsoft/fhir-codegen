@@ -16,8 +16,13 @@ public class Element_20_50 : ICrossVersionProcessor<Element>
 		_converter = converter;
 	}
 
-	public void Process(ISourceNode node, Element current)
+	public void Process(ISourceNode node, Element? current)
 	{
+        if (current is null)
+        {
+            return;
+        }
+
 		switch (node.Name)
 		{
 			case "id":
