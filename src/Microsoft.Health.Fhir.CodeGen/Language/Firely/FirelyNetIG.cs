@@ -2369,12 +2369,6 @@ public class FirelyNetIG : ILanguage
             // build context information based on extension contexts
             StructureDefinition.ContextComponent[] contexts = cd.Structure.Context?.ToArray() ?? [];
 
-            // if any context is "Element", we can just use the default rec we create for empty contexts
-            if (contexts.Any(ctx => ctx.Expression == "Element"))
-            {
-                contexts = [];
-            }
-
             // iterate over all the allowed contexts
             foreach (StructureDefinition.ContextComponent ctx in contexts)
             {
@@ -2388,6 +2382,65 @@ public class FirelyNetIG : ILanguage
                     });
 
                     continue;
+                }
+
+                switch (ctx.Type)
+                {
+                    case StructureDefinition.ExtensionContextType.Element:
+                        // do nothing - fall through to longer processing
+                        break;
+
+                    case StructureDefinition.ExtensionContextType.Fhirpath:
+                        {
+                            // TODO(ginoc): need to figure out if this is worth supporting in more detail
+                            Console.WriteLine($"Using Element for FHIRPath context: {cd.Structure.Name} ({cd.Structure.Url}): \"{ctx.Expression}\"");
+
+                            ComponentDefinition? targetCd = null;
+
+                            if (_info.ComplexTypesByName.TryGetValue("Element", out StructureDefinition? elementSd))
+                            {
+                                targetCd = new(elementSd);
+                            }
+
+                            extensionContexts.Add(new()
+                            {
+                                AllowedContext = new StructureDefinition.ContextComponent()
+                                {
+                                    Type = StructureDefinition.ExtensionContextType.Element,
+                                    Expression = "Element",
+                                },
+                                ContextTarget = targetCd,
+                                ContextElementInfo = BuildElementInfo(string.Empty, parentCd == null ? cd.Element : parentCd.Element),
+                            });
+
+                            continue;
+                        }
+                        //break;
+
+                    case StructureDefinition.ExtensionContextType.Extension:
+                        {
+                            ComponentDefinition? targetCd = null;
+
+                            if (_info.TryResolveByCanonicalUri(ctx.Expression, out Resource? targetResolved) &&
+                                targetResolved is StructureDefinition targetExtension)
+                            {
+                                targetCd = new(targetExtension);
+                            }
+
+                            extensionContexts.Add(new()
+                            {
+                                AllowedContext = new StructureDefinition.ContextComponent()
+                                {
+                                    Type = StructureDefinition.ExtensionContextType.Extension,
+                                    Expression = ctx.Expression,
+                                },
+                                ContextTarget = targetCd,
+                                ContextElementInfo = BuildElementInfo(string.Empty, targetCd == null ? cd.Element : targetCd.Element),
+                            });
+
+                            // nothing more to do for this context
+                            continue;
+                        }
                 }
 
                 // for now, only handle element contexts
@@ -2420,9 +2473,9 @@ public class FirelyNetIG : ILanguage
             }
 
             // if there is a context for 'DataType' (forced by choice type), we want to add a single context for all 'DataType' types
-            if (extensionContexts.Any(ctx => ctx.ContextElementInfo?.ElementType == "Hl7.Fhir.Model.DataType"))
+            if (extensionContexts.Any(ExtensionContextIsExplicitlyDataType))
             {
-                extensionContexts.RemoveAll(ctx => ExtensionContextDerivesFromDataType(ctx) || (ctx.ContextElementInfo?.ElementType == "Hl7.Fhir.Model.DataType"));
+                extensionContexts.RemoveAll(ExtensionContextDerivesFromDataType);
 
                 // generate a fake element information
                 extensionContexts.Add(new()
@@ -2444,7 +2497,30 @@ public class FirelyNetIG : ILanguage
                         IsCodedEnum = false,
                     },
                 });
+            }
 
+            // if there is a context for 'Element' (e.g., all elements), we want to remove any other element-based contexts
+            if (extensionContexts.Any(ExtensionContextIsExplicitlyElement))
+            {
+                extensionContexts.RemoveAll(ExtensionContextDerivesFromDataType);
+
+                ComponentDefinition? targetCd = null;
+
+                if (_info.ComplexTypesByName.TryGetValue("Element", out StructureDefinition? elementSd))
+                {
+                    targetCd = new(elementSd);
+                }
+
+                extensionContexts.Add(new()
+                {
+                    AllowedContext = new StructureDefinition.ContextComponent()
+                    {
+                        Type = StructureDefinition.ExtensionContextType.Element,
+                        Expression = "Element",
+                    },
+                    ContextTarget = targetCd,
+                    ContextElementInfo = BuildElementInfo(string.Empty, parentCd == null ? cd.Element : parentCd.Element),
+                });
             }
 
             // if there were no contexts, add an "Element" context
@@ -2506,8 +2582,20 @@ public class FirelyNetIG : ILanguage
         return extData;
     }
 
+    private bool ExtensionContextIsExplicitlyDataType(ExtensionContextRec ctx) => ctx.ContextElementInfo?.ElementType switch
+    {
+        "Hl7.Fhir.Model.DataType" => true,
+        "DataType" => true,
+        _ => false,
+    };
+
     private bool ExtensionContextDerivesFromDataType(ExtensionContextRec ctx)
     {
+        if (ExtensionContextIsExplicitlyDataType(ctx))
+        {
+            return true;
+        }
+
         if (ctx.ContextTarget == null)
         {
             return false;
@@ -2516,7 +2604,32 @@ public class FirelyNetIG : ILanguage
         string btName = ctx.ContextTarget.cgBaseTypeName(_info, false);
 
         return _info.PrimitiveTypesByName.ContainsKey(btName) || _info.ComplexTypesByName.ContainsKey(btName);
-    }   
+    }
+
+    private bool ExtensionContextIsExplicitlyElement(ExtensionContextRec ctx) => ctx.ContextElementInfo?.ElementType switch
+    {
+        "Hl7.Fhir.Model.Element" => true,
+        "Element" => true,
+        _ => false,
+    };
+
+    private bool ExtensionContextDerivesFromElement(ExtensionContextRec ctx)
+    {
+        if (ExtensionContextIsExplicitlyElement(ctx))
+        {
+            return true;
+        }
+
+        if (ctx.ContextTarget == null)
+        {
+            return false;
+        }
+
+        string btName = ctx.ContextTarget.cgBaseTypeName(_info, false);
+
+        return !_info.PrimitiveTypesByName.ContainsKey(btName) && !_info.ComplexTypesByName.ContainsKey(btName);
+    }
+
 
     /// <summary>Gets a comment-formatted string for an Extension context.</summary>
     /// <param name="ctx">The context.</param>

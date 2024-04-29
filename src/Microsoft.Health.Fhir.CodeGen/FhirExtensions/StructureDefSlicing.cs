@@ -193,7 +193,7 @@ public static class StructureDefSlicing
         }
 
         // check for incorrect path nesting - using the parent path
-        if (slicingPath.EndsWith(path))
+        if ((!string.IsNullOrEmpty(slicingPath)) && slicingPath.EndsWith(path))
         {
             return string.Empty;
         }
