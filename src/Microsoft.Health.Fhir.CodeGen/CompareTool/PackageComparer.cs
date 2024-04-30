@@ -76,6 +76,10 @@ public class PackageComparer
         public required string Title { get; init; }
         public required string Description { get; init; }
         public required string Purpose { get; init; }
+
+        public required int SnapshotCount { get; init; }
+
+        public required int DifferentialCount { get; init; }
     }
 
     public record class PackageComparison
@@ -86,6 +90,9 @@ public class PackageComparer
         public required string RightPackageVersion { get; init; }
 
         public required Dictionary<string, ComparisonRecord<StructureInfoRec>> PrimitiveTypes { get; init; }
+        public required Dictionary<string, ComparisonRecord<StructureInfoRec>> ComplexTypes { get; init; }
+        public required Dictionary<string, ComparisonRecord<StructureInfoRec>> Resources { get; init; }
+        public required Dictionary<string, ComparisonRecord<StructureInfoRec>> LogicalModels { get; init; }
     }
 
     public class ComparisonRecord<T>
@@ -93,7 +100,7 @@ public class PackageComparer
         public required T? Left { get; init; }
         public required T? Right { get; init; }
 
-        public required bool Match { get; init; }
+        public required bool NamedMatch { get; init; }
 
         public T? AiPrediction { get; init; }
         public int AiConfidence { get; init; } = 0;
@@ -129,35 +136,105 @@ public class PackageComparer
 
         using ExportStreamWriter mdWriter = new(mdFullFilename);
 
-        Dictionary<string, ComparisonRecord<StructureInfoRec>> primitives = ComparePackageStructures(mdWriter, _left.PrimitiveTypesByName, _right.PrimitiveTypesByName);
+        mdWriter.WriteLine($"Comparison of {_left.MainPackageId}#{_left.MainPackageVersion} and {_right.MainPackageId}#{_right.MainPackageVersion}");
+        mdWriter.WriteLine($"Generated at {DateTime.Now.ToString("F")}");
+        mdWriter.WriteLine();
+        mdWriter.WriteLine();
+
+        Dictionary<string, ComparisonRecord<StructureInfoRec>> primitives = ComparePackageStructures(_left.PrimitiveTypesByName, _right.PrimitiveTypesByName);
         WriteStructureComparison(mdWriter, "Primitive Types", primitives);
 
-        Dictionary<string, ComparisonRecord<StructureInfoRec>> complexTypes = ComparePackageStructures(mdWriter, _left.ComplexTypesByName, _right.ComplexTypesByName);
+        Dictionary<string, ComparisonRecord<StructureInfoRec>> complexTypes = ComparePackageStructures(_left.ComplexTypesByName, _right.ComplexTypesByName);
         WriteStructureComparison(mdWriter, "Complex Types", complexTypes);
 
-        Dictionary<string, ComparisonRecord<StructureInfoRec>> resources = ComparePackageStructures(mdWriter, _left.ResourcesByName, _right.ResourcesByName);
+        Dictionary<string, ComparisonRecord<StructureInfoRec>> resources = ComparePackageStructures(_left.ResourcesByName, _right.ResourcesByName);
         WriteStructureComparison(mdWriter, "Resources", resources);
+
+        Dictionary<string, ComparisonRecord<StructureInfoRec>> logical = ComparePackageStructures(_left.LogicalModelsByName, _right.LogicalModelsByName);
+        WriteStructureComparison(mdWriter, "Logical Models", logical);
+
+        PackageComparison packageComparison = new()
+        {
+            LeftPackageId = _left.MainPackageId,
+            LeftPackageVersion = _left.MainPackageVersion,
+            RightPackageId = _right.MainPackageId,
+            RightPackageVersion = _right.MainPackageVersion,
+            PrimitiveTypes = primitives,
+            ComplexTypes = complexTypes,
+            Resources = resources,
+            LogicalModels = logical,
+        };
 
         mdWriter.Flush();
         mdWriter.Close();
         mdWriter.Dispose();
     }
 
-    private void WriteStructureComparison(ExportStreamWriter writer, string header, Dictionary<string, ComparisonRecord<StructureInfoRec>> comparsions)
+    private void WriteStructureConceptMap(PackageComparison pc)
     {
-        writer.WriteLine("# " + header);
-        writer.WriteLine("| Key | Name | Title | Description | Status | Name | Title | Description | AiName | AiTitle | AIDesc |");
-        writer.WriteLine("| --- | ---- | ----- | ----------- | ------ | ---- | ----- | ----------- | ------ | ------- | ------ |");
 
-        foreach ((string key, ComparisonRecord<StructureInfoRec> c) in comparsions.OrderBy(kvp => kvp.Key))
+    }
+
+    private void WriteElementConceptMap(PackageComparison pc)
+    {
+
+    }
+
+    private string SanitizeForTable(string value) => value.Replace("|", "\\|").Replace('\n', ' ').Replace('\r', ' ');
+
+    private void WriteStructureComparison(ExportStreamWriter writer, string header, Dictionary<string, ComparisonRecord<StructureInfoRec>> comparisonDict)
+    {
+        writer.WriteLine("## " + header);
+        writer.WriteLine("| Key | Name | Description | In Snap | In Diff | Status | Name | Description | In Snap | In Diff |");
+        writer.WriteLine("| --- | ---- | ----------- | ------- | ------- | ------ | ---- | ----------- | ------- | ------- |");
+
+        foreach ((string key, ComparisonRecord<StructureInfoRec> c) in comparisonDict.OrderBy(kvp => kvp.Key))
         {
             writer.WriteLine(
                 $"{key} |" +
-                $" {c.Left?.Name} | {c.Left?.Title} | {c.Left?.Description} |" +
-                $" {(c.Match ? "Match" : "-")} |" +
-                $" {c.Right?.Name} | {c.Right?.Title} | {c.Right?.Description} |" +
-                $" {c.AiPrediction?.Name} | {c.AiPrediction?.Title} | {c.AiPrediction?.Description} |");
+                $" {c.Left?.Name ?? "-"} | {SanitizeForTable(c.Left?.Description ?? "-")} | {c.Left?.SnapshotCount.ToString() ?? "-"} | {c.Left?.DifferentialCount.ToString() ?? "-"} |" +
+                $" {GetStatusString(c)} |" +
+                $" {c.Right?.Name ?? "-"} | {SanitizeForTable(c.Right?.Description ?? "-")} | {c.Right?.SnapshotCount.ToString() ?? "-"} | {c.Right?.DifferentialCount.ToString() ?? "-"} ");
         }
+
+        writer.WriteLine();
+        writer.WriteLine();
+        writer.WriteLine();
+
+        //writer.WriteLine("# " + header);
+        //writer.WriteLine("| Key | Name | Title | Description | Status | Name | Title | Description | AiName | AiTitle | AIDesc |");
+        //writer.WriteLine("| --- | ---- | ----- | ----------- | ------ | ---- | ----- | ----------- | ------ | ------- | ------ |");
+
+        //foreach ((string key, ComparisonRecord<StructureInfoRec> c) in comparisonDict.OrderBy(kvp => kvp.Key))
+        //{
+        //    writer.WriteLine(
+        //        $"{key} |" +
+        //        $" {c.Left?.Name ?? "-"} | {c.Left?.Title ?? "-"} | {c.Left?.Description ?? "-"} |" +
+        //        $" {(c.Match ? "Match" : "-")} |" +
+        //        $" {c.Right?.Name ?? "-"} | {c.Right?.Title ?? "-"} | {c.Right?.Description ?? "-"} |" +
+        //        $" {c.AiPrediction?.Name} | {c.AiPrediction?.Title} | {c.AiPrediction?.Description} |");
+        //}
+
+    }
+
+    private string GetStatusString(ComparisonRecord<StructureInfoRec> c)
+    {
+        if (c.NamedMatch)
+        {
+            return "NamedMatch";
+        }
+
+        if (c.Left == null)
+        {
+            return "Added";
+        }
+
+        if (c.Right == null)
+        {
+            return "Removed";
+        }
+
+        return "Modified";
     }
 
     private void LoadKnownChanges()
@@ -166,14 +243,13 @@ public class PackageComparer
     }
 
     private Dictionary<string, ComparisonRecord<StructureInfoRec>> ComparePackageStructures(
-        ExportStreamWriter mdWriter,
         IReadOnlyDictionary<string, StructureDefinition> leftStructures,
         IReadOnlyDictionary<string, StructureDefinition> rightStructures)
     {
         Dictionary<string, StructureInfoRec> left = leftStructures.ToDictionary(kvp => kvp.Key, kvp => GetInfo(kvp.Value));
         Dictionary<string, StructureInfoRec> right = rightStructures.ToDictionary(kvp => kvp.Key, kvp => GetInfo(kvp.Value));
 
-        Dictionary<string, ComparisonRecord<StructureInfoRec>> comparsion = [];
+        Dictionary<string, ComparisonRecord<StructureInfoRec>> comparison = [];
 
         HashSet<string> keysLeft = left.Keys.ToHashSet() ?? [];
         HashSet<string> keysRight = right.Keys.ToHashSet() ?? [];
@@ -187,11 +263,11 @@ public class PackageComparer
         // add our matches
         foreach (string key in keyIntersection)
         {
-            comparsion.Add(key, new()
+            comparison.Add(key, new()
             {
                 Left = left[key],
                 Right = right[key],
-                Match = true,
+                NamedMatch = true,
             });
         }
 
@@ -200,24 +276,24 @@ public class PackageComparer
 
         foreach (string key in keysLeft)
         {
-            if (TryAskOllama(left[key], unusedRight, out StructureInfoRec? guess, out _))
-            {
-                comparsion.Add(key, new()
-                {
-                    Left = left[key],
-                    Right = null,
-                    Match = false,
-                    AiPrediction = guess,
-                });
+            //if (TryAskOllama(left[key], unusedRight, out StructureInfoRec? guess, out _))
+            //{
+            //    comparison.Add(key, new()
+            //    {
+            //        Left = left[key],
+            //        Right = null,
+            //        Match = false,
+            //        AiPrediction = guess,
+            //    });
 
-                continue;
-            }
+            //    continue;
+            //}
 
-            comparsion.Add(key, new()
+            comparison.Add(key, new()
             {
                 Left = left[key],
                 Right = null,
-                Match = false,
+                NamedMatch = false,
             });
         }
 
@@ -226,28 +302,28 @@ public class PackageComparer
 
         foreach (string key in keysRight)
         {
-            if (TryAskOllama(right[key], unusedLeft, out StructureInfoRec? guess, out _))
-            {
-                comparsion.Add(key, new()
-                {
-                    Left = null,
-                    Right = right[key],
-                    Match = false,
-                    AiPrediction = guess,
-                });
+            //if (TryAskOllama(right[key], unusedLeft, out StructureInfoRec? guess, out _))
+            //{
+            //    comparison.Add(key, new()
+            //    {
+            //        Left = null,
+            //        Right = right[key],
+            //        Match = false,
+            //        AiPrediction = guess,
+            //    });
 
-                continue;
-            }
+            //    continue;
+            //}
 
-            comparsion.Add(key, new()
+            comparison.Add(key, new()
             {
                 Left = null,
                 Right = right[key],
-                Match = false,
+                NamedMatch = false,
             });
         }
 
-        return comparsion;
+        return comparison;
     }
 
     private StructureInfoRec GetInfo(StructureDefinition sd)
@@ -258,22 +334,62 @@ public class PackageComparer
             Title = sd.Title,
             Description = sd.Description,
             Purpose = sd.Purpose,
+            SnapshotCount = sd.Snapshot?.Element.Count ?? 0,
+            DifferentialCount = sd.Differential?.Element.Count ?? 0,
         };
     }
 
     private class OllamaQuery
     {
+        /// <summary>Required: the model name.</summary>
         [JsonPropertyName("model")]
         public required string Model { get; set; }
 
+        /// <summary>The prompt to generate a response for.</summary>
         [JsonPropertyName("prompt")]
         public required string Prompt { get; set; }
 
-        [JsonPropertyName("format")]
-        public string Format { get; set; } = "json";
+        /// <summary>Optional list of base64-encoded images (for multimodal models such as llava)</summary>
+        [JsonPropertyName("images")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string[]? Images { get; set; } = null;
 
+        /// <summary>The format to return a response in. Currently the only accepted value is json</summary>
+        [JsonPropertyName("format")]
+        public string Format { get; } = "json";
+
+        /// <summary>Additional model parameters listed in the documentation for the Model file such as temperature</summary>
+        [JsonPropertyName("options")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? Options { get; set; } = null;
+
+        /// <summary>System message to (overrides what is defined in the Model file).</summary>
+        [JsonPropertyName("system")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? System { get; set; } = null;
+
+        /// <summary>The prompt template to use (overrides what is defined in the Model file)</summary>
+        [JsonPropertyName("template")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? Template { get; set; } = null;
+
+        /// <summary>The context parameter returned from a previous request to /generate, this can be used to keep a short conversational memory</summary>
+        [JsonPropertyName("context")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public int[]? Context { get; set; } = null;
+
+        /// <summary>If false the response will be returned as a single response object, rather than a stream of objects.</summary>
         [JsonPropertyName("stream")]
-        public bool Stream { get; set; } = false;
+        public required bool Stream { get; set; }
+
+        /// <summary>If true no formatting will be applied to the prompt. You may choose to use the raw parameter if you are specifying a full templated prompt in your request to the API</summary>
+        [JsonPropertyName("raw")]
+        public bool Raw { get; set; } = false;
+
+        /// <summary>Controls how long the model will stay loaded into memory following the request (default: 5m)</summary>
+        [JsonPropertyName("keep_alive")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? KeepAliveDuration { get; set; } = null;
     }
 
 
@@ -316,7 +432,7 @@ public class PackageComparer
 
     private bool TryAskOllama(
         StructureInfoRec known,
-        IEnumerable<StructureInfoRec> possibles,
+        IEnumerable<StructureInfoRec> possibleMatches,
         [NotNullWhen(true)] out StructureInfoRec? guess,
         [NotNullWhen(true)] out int? confidence)
     {
@@ -329,23 +445,39 @@ public class PackageComparer
 
         try
         {
+            string system = """
+                You are a modeling expert comparing definitions between model structures.
+                When presented with a model definition and a set of possible matches, you are asked to select the most likely match.
+                You are to respond with ONLY the json representation of the model that you believe is the best match.
+                The model definition is a structure with the following properties: Name, Title, Description, and Purpose.
+                """;
+
             //string prompt =
             //    $"Given the following definition:\n{System.Web.HttpUtility.JavaScriptStringEncode(JsonSerializer.Serialize(known))}\n" +
-            //    $"Please select the most likely match from the following definitions:\n{System.Web.HttpUtility.JavaScriptStringEncode(JsonSerializer.Serialize(possibles))}." +
+            //    $"Please select the most likely match from the following definitions:\n{System.Web.HttpUtility.JavaScriptStringEncode(JsonSerializer.Serialize(possibleMatches))}." +
             //    $" Respond in JSON with only the definition in the same format.";
 
-            string prompt =
-                $"Given the following definition:\n{JsonSerializer.Serialize(known)}\n" +
-                $"Please select the most likely match from the following definitions:\n{JsonSerializer.Serialize(possibles)}." +
-                $" Respond in JSON with only the definition in the same format.";
+            string prompt = $$$"""
+                Given the following definition:
+                {{{JsonSerializer.Serialize(known)}}}
+                Please select the most likely match from the following definitions:
+                {{{JsonSerializer.Serialize(possibleMatches)}}}
+                """;
+
+                //$"Given the following definition:\n{JsonSerializer.Serialize(known)}\n" +
+                //$"Please select the most likely match from the following definitions:\n{JsonSerializer.Serialize(possibleMatches)}." +
+                //$" Respond in JSON with only the definition in the same format.";
 
             // build our prompt
             OllamaQuery query = new()
             {
                 Model = _config.OllamaModel,
+                System = system,
                 Prompt = prompt,
+                Stream = false,
             };
 
+            Console.WriteLine("--------------");
             Console.WriteLine($"query:\n{JsonSerializer.Serialize(query)}");
 
             HttpRequestMessage request = new HttpRequestMessage()
@@ -383,6 +515,7 @@ public class PackageComparer
             }
 
             Console.WriteLine($"response:\n{json}");
+            Console.WriteLine("--------------");
 
 
             OllamaResponse? olResponse = JsonSerializer.Deserialize<OllamaResponse>(json);

@@ -57,7 +57,12 @@
         },
         "Compare 40-43": {
             "commandName": "Project",
-            "commandLineArgs": "compare --output-path ..\\..\\temp\\compare -p hl7.fhir.r4.core#4.0.1 -c hl7.fhir.r4b.core#4.3.0 --auto-load-expansions --resolve-dependencies true --ollama-url http://192.168.50.199:11434 --ollama-model llama3",
+            "commandLineArgs": "compare --output-path ..\\..\\temp\\compare -p hl7.fhir.r4.core#4.0.1 -c hl7.fhir.r4b.core#4.3.0 --auto-load-expansions --resolve-dependencies true",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "Compare 40-50": {
+            "commandName": "Project",
+            "commandLineArgs": "compare --output-path ..\\..\\temp\\compare -p hl7.fhir.r4.core#4.0.1 -c hl7.fhir.r5.core#5.0.0 --auto-load-expansions --resolve-dependencies true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "http": {
