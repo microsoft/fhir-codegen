@@ -89,7 +89,7 @@ public partial class FirelyNetIG : ILanguage
     private Dictionary<string, PackageData> _packageDataByDirective = [];
     private Dictionary<string, HashSet<string>> _extensionNamesByPackageDirective = [];
 
-    [GeneratedRegex(".+(\\.extension(\\:[^.]+)?\\.url)")]
+    [GeneratedRegex(".+(\\.extension(\\:[^.]+)?(\\.url)?)")]
     private static partial Regex FindExtensionPathRegex();
 
 
