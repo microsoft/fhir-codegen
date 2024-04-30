@@ -60,7 +60,7 @@ public class ConfigCompare : ConfigRoot
     {
         Name = "Ollama_Url",
         DefaultValue = string.Empty,
-        CliOption = new System.CommandLine.Option<string[]>("--ollama-url", "Base URL for Ollama evaluation.")
+        CliOption = new System.CommandLine.Option<string>("--ollama-url", "Base URL for Ollama evaluation.")
         {
             Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
             IsRequired = false,
@@ -77,7 +77,7 @@ public class ConfigCompare : ConfigRoot
     {
         Name = "Ollama_Model",
         DefaultValue = string.Empty,
-        CliOption = new System.CommandLine.Option<string[]>("--ollama-model", "Model name for Ollama evaluation.")
+        CliOption = new System.CommandLine.Option<string>("--ollama-model", "Model name for Ollama evaluation.")
         {
             Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
             IsRequired = false,

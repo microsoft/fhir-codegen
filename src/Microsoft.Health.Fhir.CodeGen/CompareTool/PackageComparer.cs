@@ -8,15 +8,18 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Xml;
 using Hl7.Fhir.Model;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
 using Microsoft.Health.Fhir.CodeGen.Language;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
+using static Hl7.Fhir.Model.VerificationResult;
 
 namespace Microsoft.Health.Fhir.CodeGen.CompareTool;
 
@@ -126,8 +129,35 @@ public class PackageComparer
 
         using ExportStreamWriter mdWriter = new(mdFullFilename);
 
-        Dictionary<string, ComparisonRecord<StructureInfoRec>> primitives = CompareStructures(mdWriter, _left.PrimitiveTypesByName, _right.PrimitiveTypesByName);
+        Dictionary<string, ComparisonRecord<StructureInfoRec>> primitives = ComparePackageStructures(mdWriter, _left.PrimitiveTypesByName, _right.PrimitiveTypesByName);
+        WriteStructureComparison(mdWriter, "Primitive Types", primitives);
 
+        Dictionary<string, ComparisonRecord<StructureInfoRec>> complexTypes = ComparePackageStructures(mdWriter, _left.ComplexTypesByName, _right.ComplexTypesByName);
+        WriteStructureComparison(mdWriter, "Complex Types", complexTypes);
+
+        Dictionary<string, ComparisonRecord<StructureInfoRec>> resources = ComparePackageStructures(mdWriter, _left.ResourcesByName, _right.ResourcesByName);
+        WriteStructureComparison(mdWriter, "Resources", resources);
+
+        mdWriter.Flush();
+        mdWriter.Close();
+        mdWriter.Dispose();
+    }
+
+    private void WriteStructureComparison(ExportStreamWriter writer, string header, Dictionary<string, ComparisonRecord<StructureInfoRec>> comparsions)
+    {
+        writer.WriteLine("# " + header);
+        writer.WriteLine("| Key | Name | Title | Description | Status | Name | Title | Description | AiName | AiTitle | AIDesc |");
+        writer.WriteLine("| --- | ---- | ----- | ----------- | ------ | ---- | ----- | ----------- | ------ | ------- | ------ |");
+
+        foreach ((string key, ComparisonRecord<StructureInfoRec> c) in comparsions.OrderBy(kvp => kvp.Key))
+        {
+            writer.WriteLine(
+                $"{key} |" +
+                $" {c.Left?.Name} | {c.Left?.Title} | {c.Left?.Description} |" +
+                $" {(c.Match ? "Match" : "-")} |" +
+                $" {c.Right?.Name} | {c.Right?.Title} | {c.Right?.Description} |" +
+                $" {c.AiPrediction?.Name} | {c.AiPrediction?.Title} | {c.AiPrediction?.Description} |");
+        }
     }
 
     private void LoadKnownChanges()
@@ -135,7 +165,7 @@ public class PackageComparer
         // TODO(ginoc): implement
     }
 
-    private Dictionary<string, ComparisonRecord<StructureInfoRec>> CompareStructures(
+    private Dictionary<string, ComparisonRecord<StructureInfoRec>> ComparePackageStructures(
         ExportStreamWriter mdWriter,
         IReadOnlyDictionary<string, StructureDefinition> leftStructures,
         IReadOnlyDictionary<string, StructureDefinition> rightStructures)
@@ -166,9 +196,55 @@ public class PackageComparer
         }
 
         // traverse keys in left that do not exist in right
+        IEnumerable<StructureInfoRec> unusedRight = right.Where(kvp => keysRight.Contains(kvp.Key)).Select(kvp => kvp.Value);
+
         foreach (string key in keysLeft)
         {
-            // 
+            if (TryAskOllama(left[key], unusedRight, out StructureInfoRec? guess, out _))
+            {
+                comparsion.Add(key, new()
+                {
+                    Left = left[key],
+                    Right = null,
+                    Match = false,
+                    AiPrediction = guess,
+                });
+
+                continue;
+            }
+
+            comparsion.Add(key, new()
+            {
+                Left = left[key],
+                Right = null,
+                Match = false,
+            });
+        }
+
+
+        IEnumerable<StructureInfoRec> unusedLeft = left.Where(kvp => keysRight.Contains(kvp.Key)).Select(kvp => kvp.Value);
+
+        foreach (string key in keysRight)
+        {
+            if (TryAskOllama(right[key], unusedLeft, out StructureInfoRec? guess, out _))
+            {
+                comparsion.Add(key, new()
+                {
+                    Left = null,
+                    Right = right[key],
+                    Match = false,
+                    AiPrediction = guess,
+                });
+
+                continue;
+            }
+
+            comparsion.Add(key, new()
+            {
+                Left = null,
+                Right = right[key],
+                Match = false,
+            });
         }
 
         return comparsion;
@@ -197,7 +273,7 @@ public class PackageComparer
         public string Format { get; set; } = "json";
 
         [JsonPropertyName("stream")]
-        public bool Stream = false;
+        public bool Stream { get; set; } = false;
     }
 
 
@@ -251,36 +327,102 @@ public class PackageComparer
             return false;
         }
 
-        string prompt =
-            $"Given the following definition: {JsonSerializer.Serialize(known)}," +
-            $" please select the most likely match from the following definitions: {JsonSerializer.Serialize(possibles)}." +
-            $" Respond in JSON, keeping the definition in the same format.";
-
-        // build our prompt
-        OllamaQuery query = new()
+        try
         {
-            Model = _config.OllamaModel,
-            Prompt = prompt,
-        };
+            //string prompt =
+            //    $"Given the following definition:\n{System.Web.HttpUtility.JavaScriptStringEncode(JsonSerializer.Serialize(known))}\n" +
+            //    $"Please select the most likely match from the following definitions:\n{System.Web.HttpUtility.JavaScriptStringEncode(JsonSerializer.Serialize(possibles))}." +
+            //    $" Respond in JSON with only the definition in the same format.";
 
-        HttpRequestMessage request = new HttpRequestMessage()
-        {
-            Method = HttpMethod.Post,
-            RequestUri = _ollamaUri,
-            Headers =
+            string prompt =
+                $"Given the following definition:\n{JsonSerializer.Serialize(known)}\n" +
+                $"Please select the most likely match from the following definitions:\n{JsonSerializer.Serialize(possibles)}." +
+                $" Respond in JSON with only the definition in the same format.";
+
+            // build our prompt
+            OllamaQuery query = new()
             {
-                Accept =
+                Model = _config.OllamaModel,
+                Prompt = prompt,
+            };
+
+            Console.WriteLine($"query:\n{JsonSerializer.Serialize(query)}");
+
+            HttpRequestMessage request = new HttpRequestMessage()
+            {
+                Method = HttpMethod.Post,
+                Content = new StringContent(JsonSerializer.Serialize(query), Encoding.UTF8, "application/json"),
+                RequestUri = _ollamaUri,
+                Headers =
                 {
-                    new MediaTypeWithQualityHeaderValue("application/json"),
+                    Accept =
+                    {
+                        new MediaTypeWithQualityHeaderValue("application/json"),
+                    },
                 },
-            },
-        };
+            };
+
+            HttpResponseMessage response = _httpClient.SendAsync(request).Result;
+            System.Net.HttpStatusCode statusCode = response.StatusCode;
+
+            if (statusCode != System.Net.HttpStatusCode.OK)
+            {
+                Console.WriteLine($"Request to {request.RequestUri} failed! Returned: {response.StatusCode}");
+                guess = null;
+                confidence = 0;
+                return false;
+            }
+
+            string json = response.Content.ReadAsStringAsync().Result;
+            if (string.IsNullOrEmpty(json))
+            {
+                Console.WriteLine($"Request to {request.RequestUri} returned empty body!");
+                guess = null;
+                confidence = 0;
+                return false;
+            }
+
+            Console.WriteLine($"response:\n{json}");
+
+
+            OllamaResponse? olResponse = JsonSerializer.Deserialize<OllamaResponse>(json);
+
+            if (olResponse == null )
+            {
+                Console.WriteLine($"Failed to deserialize response: {json}");
+                guess = null;
+                confidence = 0;
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(olResponse.Response))
+            {
+                Console.WriteLine($"Ollama response is empty: {json}");
+                guess = null;
+                confidence = 0;
+                return false;
+            }
+
+            guess = JsonSerializer.Deserialize<StructureInfoRec>(olResponse.Response);
+            if (guess == null)
+            {
+                Console.WriteLine($"Failed to deserialize response property: {olResponse.Response}");
+                guess = null;
+                confidence = 0;
+                return false;
+            }
+
+            confidence = -1;
+            return true;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"TryAskOllama <<< caught: {ex.Message}{(string.IsNullOrEmpty(ex.InnerException?.Message) ? string.Empty : ex.InnerException.Message)}");
+        }
 
         guess = null;
         confidence = 0;
         return false;
-
-
     }
 
     private string SanitizeVersion(string version)
