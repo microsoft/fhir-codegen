@@ -20,7 +20,7 @@ public class ConfigCompare : ConfigRoot
     /// <summary>
     /// Gets or sets the configuration option for the packages to load.
     /// </summary>
-    private static ConfigurationOption ComparePackagesParameter { get; } = new()
+    private static ConfigurationOption ComparePackagesParameter => new()
     {
         Name = "Compare_Package",
         DefaultValue = Array.Empty<string>(),
@@ -38,7 +38,7 @@ public class ConfigCompare : ConfigRoot
         Description = "Source path for known version changes.")]
     public string KnownChangePath { get; set; } = "./renames";
 
-    private static ConfigurationOption KnownChangePathParameter { get; } = new()
+    private static ConfigurationOption KnownChangePathParameter => new()
     {
         Name = "Known_Change_Path",
         DefaultValue = "./known-changes",
@@ -56,7 +56,7 @@ public class ConfigCompare : ConfigRoot
         Description = "Base URL for Ollama evaluation.")]
     public string OllamaUrl { get; set; } = string.Empty;
 
-    private static ConfigurationOption OllamaUrlParameter { get; } = new()
+    private static ConfigurationOption OllamaUrlParameter => new()
     {
         Name = "Ollama_Url",
         DefaultValue = string.Empty,
@@ -73,7 +73,7 @@ public class ConfigCompare : ConfigRoot
         ArgArity = "0..1",
         Description = "Model name for Ollama evaluation.")]
     public string OllamaModel { get; set; } = string.Empty;
-    private static ConfigurationOption OllamaModelParameter { get; } = new()
+    private static ConfigurationOption OllamaModelParameter => new()
     {
         Name = "Ollama_Model",
         DefaultValue = string.Empty,

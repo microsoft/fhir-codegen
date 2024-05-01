@@ -65,6 +65,11 @@
             "commandLineArgs": "compare --output-path ..\\..\\temp\\compare -p hl7.fhir.r4.core#4.0.1 -c hl7.fhir.r5.core#5.0.0 --auto-load-expansions --resolve-dependencies true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
+        "Cross Version Review": {
+            "commandName": "Project",
+            "commandLineArgs": "cross-version",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
         "http": {
             "commandName": "Project",
             "launchBrowser": true,

@@ -3,7 +3,7 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using SCL = System.CommandLine; // this is present to disambuite Option from System.CommandLine and Microsoft.FluentUI.AspNetCore.Components
+using SCL = System.CommandLine; // this is present to disambiguate Option from System.CommandLine and Microsoft.FluentUI.AspNetCore.Components
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 //using fhir_codegen.Components;
@@ -99,6 +99,7 @@ public class Program
         {
             "generate" => await DoGenerate(pr),
             "compare" => await DoCompare(pr),
+            "cross-version" => await CrossVersionInteractive.DoCrossVersionReview(pr),
             //case "interactive":
             //    return await DoInteractive(pr);
             //case "web":
@@ -245,6 +246,18 @@ public class Program
 
         // TODO(ginoc): Set the command handler
         rootCommand.AddCommand(compareCommand);
+
+        // create our compare command
+        SCL.Command cviCommand = new("cross-version", "Interactively review cross-version definitions.");
+        foreach (SCL.Option option in BuildCliOptions(typeof(ConfigCrossVersionInteractive), typeof(ConfigRoot), envConfig))
+        {
+            // note that 'global' here is just recursive DOWNWARD
+            cviCommand.AddGlobalOption(option);
+            TrackIfEnum(option);
+        }
+
+        // TODO(ginoc): Set the command handler
+        rootCommand.AddCommand(cviCommand);
 
         return rootCommand;
 
@@ -666,11 +679,11 @@ public class Program
         {
             if (ex.InnerException != null)
             {
-                Console.WriteLine($"RunCompare <<< caught: {ex.Message}::{ex.InnerException.Message}");
+                Console.WriteLine($"DoCompare <<< caught: {ex.Message}::{ex.InnerException.Message}");
             }
             else
             {
-                Console.WriteLine($"RunCompare <<< caught: {ex.Message}");
+                Console.WriteLine($"DoCompare <<< caught: {ex.Message}");
             }
         }
 
