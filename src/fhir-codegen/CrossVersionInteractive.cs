@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.Health.Fhir.CodeGen.CompareTool;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
@@ -16,6 +17,7 @@ using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using Microsoft.Health.Fhir.PackageManager;
 using Terminal.Gui;
+using static Microsoft.Health.Fhir.CodeGen.CompareTool.PackageComparer;
 
 namespace fhir_codegen;
 
@@ -62,12 +64,84 @@ internal class CrossVersionInteractive
     private CrossVersionInteractive(ConfigCrossVersionInteractive config)
     {
         _config = config;
+
+        // check for existing package selection
+        if (!string.IsNullOrEmpty(config.LeftPackageDirective))
+        {
+            if (FhirReleases.TryGetSequence(config.LeftPackageDirective.Split('#').First(), out FhirReleases.FhirSequenceCodes leftSeq))
+            {
+                _releaseLeft = _releases.Where(i => i.Sequence == leftSeq).FirstOrDefault();
+            }
+        }
+
+        if (!string.IsNullOrEmpty(config.RightPackageDirective))
+        {
+            if (FhirReleases.TryGetSequence(config.RightPackageDirective.Split('#').First(), out FhirReleases.FhirSequenceCodes rightSeq))
+            {
+                _releaseRight = _releases.Where(i => i.Sequence == rightSeq).FirstOrDefault();
+            }
+        }
+
+        if ((_releaseLeft is not null) && (_releaseRight is not null))
+        {
+            // jump to loading packages
+            _nextState = UiStateCodes.LoadPackages;
+        }
+
+        if (!string.IsNullOrEmpty(config.ExistingComparisonPath))
+        {
+            string filename = config.ExistingComparisonPath.EndsWith(".json", StringComparison.OrdinalIgnoreCase)
+                ? config.ExistingComparisonPath
+                : Path.Combine(config.ExistingComparisonPath, "comparison.json");
+
+            if (TryLoadExistingComparison(filename))
+            {
+                // jump to process overview
+                _nextState = UiStateCodes.ProcessOverview;
+            }
+        }
+    }
+
+    private bool TryLoadExistingComparison(string filename)
+    {
+        if (File.Exists(filename))
+        {
+            using FileStream jsonFs = new(filename, FileMode.Open, FileAccess.Read);
+            {
+                try
+                {
+                    _comparison = JsonSerializer.Deserialize<PackageComparer.PackageComparison>(jsonFs);
+
+                    // grab package information from comparison
+                    if ((_comparison is not null) &&
+                        FhirReleases.TryGetSequence(_comparison.LeftPackageId, out FhirReleases.FhirSequenceCodes leftSeq))
+                    {
+                        _releaseLeft = _releases.Where(i => i.Sequence == leftSeq).FirstOrDefault();
+                    }
+
+                    if ((_comparison is not null) &&
+                        FhirReleases.TryGetSequence(_comparison.RightPackageId, out FhirReleases.FhirSequenceCodes rightSeq))
+                    {
+                        _releaseRight = _releases.Where(i => i.Sequence == rightSeq).FirstOrDefault();
+                    }
+
+                    return true;
+                }
+                finally
+                {
+                    jsonFs.Close();
+                }
+            }
+        }
+
+        return false;
     }
 
     internal enum UiStateCodes
     {
         Unknown,
         Default,
+        SelectExisting,
         SelectPackages,
         LoadPackages,
         Compare,
@@ -79,7 +153,7 @@ internal class CrossVersionInteractive
         Done,
     }
 
-    private UiStateCodes _state = UiStateCodes.Default;
+    private UiStateCodes _nextState = UiStateCodes.Default;
 
     private List<FhirReleases.PublishedReleaseInformation> _releases = FhirReleases.FhirPublishedVersions.Values.Where(i => i.IsSequenceOfficial).OrderBy(i => i.Sequence).ToList();
 
@@ -98,16 +172,17 @@ internal class CrossVersionInteractive
     private void Run()
     {
         Application.Init();
+        //Application.QuitKey = Key.Q.WithCtrl;
 
         MenuBarItem menus = new MenuBarItem("_File", new MenuItem[] {
             new MenuItem ("_Quit", "", () => {
-                _state = UiStateCodes.Done;
+                _nextState = UiStateCodes.Done;
                 Application.RequestStop();
             })
         });
 
         // loop until the user quits
-        while ((_state != UiStateCodes.Done) && (_state != UiStateCodes.Unknown))
+        while ((_nextState != UiStateCodes.Done) && (_nextState != UiStateCodes.Unknown))
         {
             if (ConfigurationManager.Themes != null)
             {
@@ -143,12 +218,13 @@ internal class CrossVersionInteractive
                 Height = Dim.Fill(),
             };
 
-            UiStateCodes current = _state;
+            UiStateCodes current = _nextState;
             // reset state before running the next UI
-            _state = UiStateCodes.Unknown;
+            _nextState = UiStateCodes.Unknown;
 
             AddUiForState(current, contentWindow);
             mainWindow.Add(contentWindow);
+
             //AddUiForState(current, mainWindow);
 
             Application.Run(mainWindow);
@@ -168,34 +244,66 @@ internal class CrossVersionInteractive
             case UiStateCodes.Default:
                 {
                     AddDefaultUi(w);
-                    _state = UiStateCodes.Default;
                 }
                 break;
+
+            case UiStateCodes.SelectExisting:
+                {
+                    throw new NotImplementedException();
+                }
+                //break;
 
             case UiStateCodes.SelectPackages:
                 {
                     AddSelectPackageUi(w);
-                    _state = (_releaseLeft is null || _releaseRight is null) ? UiStateCodes.Default : UiStateCodes.LoadPackages;
                 }
                 break;
 
             case UiStateCodes.LoadPackages:
                 {
                     AddLoadPackageUi(w);
-                    _state = UiStateCodes.LoadPackages;
                 }
                 break;
 
             case UiStateCodes.Compare:
                 {
                     AddCompareUi(w);
-                    _state = UiStateCodes.Compare;
+                }
+                break;
+
+            case UiStateCodes.ProcessOverview:
+                {
+                    AddProcessOverviewUi(w);
+                }
+                break;
+
+            case UiStateCodes.ProcessValueSets:
+                {
+                    //_nextState = UiStateCodes.ProcessValueSets;
+                }
+                break;
+
+            case UiStateCodes.ProcessPrimitiveTypes:
+                {
+                    //_nextState = UiStateCodes.ProcessPrimitiveTypes;
+                }
+                break;
+
+            case UiStateCodes.ProcessComplexTypes:
+                {
+                    //_nextState = UiStateCodes.ProcessComplexTypes;
+                }
+                break;
+
+            case UiStateCodes.ProcessResources:
+                {
+                    //_nextState = UiStateCodes.ProcessResources;
                 }
                 break;
 
             case UiStateCodes.Done:
                 {
-                    _state = UiStateCodes.Done;
+                    //_nextState = UiStateCodes.Done;
                 }
                 break;
         }
@@ -203,9 +311,108 @@ internal class CrossVersionInteractive
 
     private void AddProcessOverviewUi(Window w)
     {
+        (Label labelLeft, Label labelRight) = AddLeftAndRightLabels(w);
 
+        Label labelVs = new()
+        {
+            X = 0,
+            Y = Pos.Bottom(labelRight) + 1,
+            Width = 20,
+            Height = 1,
+            Text = "   Value Sets: " + _comparison?.ValueSets.Count,
+        };
+        w.Add(labelVs);
+
+        Button buttonVs = new()
+        {
+            X = 21,
+            Y = Pos.Top(labelVs),
+            Height = 1,
+            Text = "Process _Value Sets",
+            HotKey = Key.V,
+        };
+        buttonVs.Accept += (s, e) =>
+        {
+            _nextState = UiStateCodes.ProcessValueSets;
+            Application.RequestStop();
+        };
+        w.Add(buttonVs);
+
+        Label labelPrimitives = new()
+        {
+            X = 0,
+            Y = Pos.Bottom(labelVs),
+            Width = 20,
+            Height = 1,
+            Text = "   Primitives: " + _comparison?.PrimitiveTypes.Count,
+        };
+        w.Add(labelPrimitives);
+
+        Button buttonPrimitives = new()
+        {
+            X = 21,
+            Y = Pos.Top(labelPrimitives),
+            Height = 1,
+            Text = "Process _Primitives",
+            HotKey = Key.P,
+        };
+        buttonPrimitives.Accept += (s, e) =>
+        {
+            _nextState = UiStateCodes.ProcessPrimitiveTypes;
+            Application.RequestStop();
+        };
+        w.Add(buttonPrimitives);
+
+        Label labelComplexTypes = new()
+        {
+            X = 0,
+            Y = Pos.Bottom(labelPrimitives),
+            Width = 20,
+            Height = 1,
+            Text = "Complex Types: " + _comparison?.ComplexTypes.Count,
+        };
+        w.Add(labelComplexTypes);
+
+        Button buttonComplexTypes = new()
+        {
+            X = 21,
+            Y = Pos.Top(labelComplexTypes),
+            Height = 1,
+            Text = "Process _Complex Types",
+            HotKey = Key.C,
+        };
+        buttonComplexTypes.Accept += (s, e) =>
+        {
+            _nextState = UiStateCodes.ProcessComplexTypes;
+            Application.RequestStop();
+        };
+        w.Add(buttonComplexTypes);
+
+        Label labelResources = new()
+        {
+            X = 0,
+            Y = Pos.Bottom(labelComplexTypes),
+            Width = 20,
+            Height = 1,
+            Text = "    Resources: " + _comparison?.Resources.Count,
+        };
+        w.Add(labelResources);
+
+        Button buttonResources = new()
+        {
+            X = 21,
+            Y = Pos.Top(labelResources),
+            Height = 1,
+            Text = "Process _Resources",
+            HotKey = Key.R,
+        };
+        buttonResources.Accept += (s, e) =>
+        {
+            _nextState = UiStateCodes.ProcessResources;
+            Application.RequestStop();
+        };
+        w.Add(buttonResources);
     }
-
 
     private (Label labelLeft, Label labelRight) AddLeftAndRightLabels(Window w)
     {
@@ -234,20 +441,37 @@ internal class CrossVersionInteractive
 
     private void AddDefaultUi(Window w)
     {
-        Button selectButton = new()
+        Button selectPackagesButton = new()
         {
             Text = "Select _Packages",
             X = 0,
             Y = _topY,
+            HotKey = Key.P,
         };
 
-        selectButton.Accept += (s, e) =>
+        selectPackagesButton.Accept += (s, e) =>
         {
-            _state = UiStateCodes.SelectPackages;
+            _nextState = UiStateCodes.SelectPackages;
             Application.RequestStop();
         };
 
-        w.Add(selectButton);
+        w.Add(selectPackagesButton);
+
+        Button selectExistingButton = new()
+        {
+            Text = "Select _Existing",
+            X = 0,
+            Y = _topY,
+            HotKey = Key.E,
+        };
+
+        selectExistingButton.Accept += (s, e) =>
+        {
+            _nextState = UiStateCodes.SelectExisting;
+            Application.RequestStop();
+        };
+
+        w.Add(selectExistingButton);
     }
 
     private void AddCompareUi(Window w)
@@ -299,8 +523,7 @@ internal class CrossVersionInteractive
                 (bool success, string message) = await TryCompareAsync();
                 if (success)
                 {
-                    _state = UiStateCodes.ProcessOverview;
-                    Application.RequestStop();
+                    _nextState = UiStateCodes.ProcessOverview;
                 }
                 else
                 {
@@ -312,7 +535,10 @@ internal class CrossVersionInteractive
                     buttonCompare.Visible = true;
 
                     MessageBox.ErrorQuery(40, 7, "Error", message, "Ok");
+                    _nextState = UiStateCodes.Default;
                 }
+
+                Application.RequestStop();
             });
         };
 
@@ -378,8 +604,7 @@ internal class CrossVersionInteractive
                 (bool success, string message) = await TryLoadPackagesAsync();
                 if (success)
                 {
-                    _state = UiStateCodes.Compare;
-                    Application.RequestStop();
+                    _nextState = UiStateCodes.Compare;
                 }
                 else
                 {
@@ -391,11 +616,11 @@ internal class CrossVersionInteractive
                     buttonLoad.Visible = true;
 
                     MessageBox.ErrorQuery(40, 7, "Error", message, "Ok");
+                    _nextState = UiStateCodes.Default;
                 }
-            });
 
-            //_state = UiStateCodes.LoadingPackages;
-            //Application.RequestStop();
+                Application.RequestStop();
+            });
         };
 
         w.Add(buttonLoad);
@@ -430,6 +655,7 @@ internal class CrossVersionInteractive
         {
             _releaseLeft = null;
             _releaseRight = null;
+            _nextState = UiStateCodes.Default;
             Application.RequestStop(d);
         };
 
@@ -478,6 +704,8 @@ internal class CrossVersionInteractive
                     break;
                 }
             }
+
+            _nextState = (_releaseLeft is null || _releaseRight is null) ? UiStateCodes.Default : UiStateCodes.LoadPackages;
 
             Application.RequestStop(d);
         };

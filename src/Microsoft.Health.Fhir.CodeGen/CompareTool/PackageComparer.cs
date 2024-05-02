@@ -371,6 +371,17 @@ public class PackageComparer
         mdWriter.Close();
         mdWriter.Dispose();
 
+        if (_config.SaveComparisonResult)
+        {
+            string jsonFilename = Path.Combine(outputDir, "comparison.json");
+
+            using FileStream jsonFs = new(jsonFilename, FileMode.Create, FileAccess.Write);
+            using Utf8JsonWriter jsonWriter = new(jsonFs, new JsonWriterOptions() { Indented = false, });
+            {
+                JsonSerializer.Serialize(jsonWriter, packageComparison);
+            }
+        }
+
         return packageComparison;
     }
 

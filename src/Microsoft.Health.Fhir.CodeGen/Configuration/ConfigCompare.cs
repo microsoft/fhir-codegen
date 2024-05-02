@@ -49,6 +49,23 @@ public class ConfigCompare : ConfigRoot
         },
     };
 
+    [ConfigOption(
+               ArgName = "--save-comparison-result",
+               EnvName = "Save_Comparison_Result",
+               ArgArity = "0..1",
+               Description = "Save the comparison result to a file.")]
+    public bool SaveComparisonResult { get; set; } = false;
+    private static ConfigurationOption SaveComparisonResultParameter => new()
+    {
+        Name = "Save_Comparison_Result",
+        DefaultValue = false,
+        CliOption = new System.CommandLine.Option<bool>("--save-comparison-result", "Save the comparison result to a file.")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
+
     //[ConfigOption(
     //    ArgName = "--known-change-path",
     //    EnvName = "Known_Change_Path",
@@ -107,6 +124,7 @@ public class ConfigCompare : ConfigRoot
     [
         ComparePackagesParameter,
         NoOutputParameter,
+        SaveComparisonResultParameter,
         //KnownChangePathParameter,
         //OllamaUrlParameter,
         //OllamaModelParameter,
@@ -134,6 +152,9 @@ public class ConfigCompare : ConfigRoot
                     break;
                 case "No_Output":
                     NoOutput = GetOpt(parseResult, opt.CliOption, NoOutput);
+                    break;
+                case "Save_Comparison_Result":
+                    SaveComparisonResult = GetOpt(parseResult, opt.CliOption, SaveComparisonResult);
                     break;
                 //case "Known_Change_Path":
                 //    KnownChangePath = GetOpt(parseResult, opt.CliOption, KnownChangePath);
