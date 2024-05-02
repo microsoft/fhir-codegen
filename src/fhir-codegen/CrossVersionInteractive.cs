@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Health.Fhir.CodeGen.CompareTool;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
 using Microsoft.Health.Fhir.CodeGen.Loader;
 using Microsoft.Health.Fhir.CodeGen.Models;
@@ -70,6 +71,11 @@ internal class CrossVersionInteractive
         SelectPackages,
         LoadPackages,
         Compare,
+        ProcessOverview,
+        ProcessValueSets,
+        ProcessPrimitiveTypes,
+        ProcessComplexTypes,
+        ProcessResources,
         Done,
     }
 
@@ -83,7 +89,7 @@ internal class CrossVersionInteractive
     private DefinitionCollection? _dcLeft = null;
     private DefinitionCollection? _dcRight = null;
 
-    private bool _packagesLoaded = false;
+    private PackageComparer.PackageComparison? _comparison = null;
 
     private int _topY = 0;
 
@@ -168,17 +174,7 @@ internal class CrossVersionInteractive
 
             case UiStateCodes.SelectPackages:
                 {
-                    _packagesLoaded = false;
-
-                    try
-                    {
-                        AddSelectPackageUi(w);
-                    }
-                    catch (Exception)
-                    {
-                        // do nothing for now..
-                    }
-
+                    AddSelectPackageUi(w);
                     _state = (_releaseLeft is null || _releaseRight is null) ? UiStateCodes.Default : UiStateCodes.LoadPackages;
                 }
                 break;
@@ -192,7 +188,7 @@ internal class CrossVersionInteractive
 
             case UiStateCodes.Compare:
                 {
-                    (Label labelLeft, Label labelRight) = AddLeftAndRightLabels(w);
+                    AddCompareUi(w);
                     _state = UiStateCodes.Compare;
                 }
                 break;
@@ -204,6 +200,12 @@ internal class CrossVersionInteractive
                 break;
         }
     }
+
+    private void AddProcessOverviewUi(Window w)
+    {
+
+    }
+
 
     private (Label labelLeft, Label labelRight) AddLeftAndRightLabels(Window w)
     {
@@ -294,10 +296,10 @@ internal class CrossVersionInteractive
 
             Task.Run(async () =>
             {
-                (bool success, string message) = await TryLoadPackagesAsync();
+                (bool success, string message) = await TryCompareAsync();
                 if (success)
                 {
-                    _state = UiStateCodes.Compare;
+                    _state = UiStateCodes.ProcessOverview;
                     Application.RequestStop();
                 }
                 else
@@ -485,14 +487,25 @@ internal class CrossVersionInteractive
 
     private async Task<(bool success, string message)> TryCompareAsync()
     {
-        if ((_releaseLeft is null) || (_releaseRight is null))
+        if ((_dcLeft is null) || (_dcRight is null))
         {
-            return (false, "Two FHIR packages are required.");
+            return (false, "Two loaded FHIR packages are required.");
         }
+
+        await Task.Delay(0);
 
         try
         {
-            
+            ConfigCompare compareConfig = new()
+            {
+                FhirCacheDirectory = _config.FhirCacheDirectory,
+                NoOutput = true,
+            };
+
+            PackageComparer comparer = new(compareConfig, _dcLeft, _dcRight);
+
+            _comparison = comparer.Compare();
+
             return (true, string.Empty);
         }
         catch (Exception ex)

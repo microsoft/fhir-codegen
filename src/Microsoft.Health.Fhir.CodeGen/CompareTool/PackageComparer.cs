@@ -189,7 +189,7 @@ public class PackageComparer
         //}
     }
 
-    public void Compare()
+    public PackageComparison Compare()
     {
         Console.WriteLine(
             $"Comparing {_left.MainPackageId}#{_left.MainPackageVersion}" +
@@ -370,6 +370,8 @@ public class PackageComparer
         mdWriter.Flush();
         mdWriter.Close();
         mdWriter.Dispose();
+
+        return packageComparison;
     }
 
     private Dictionary<string, ValueSet> GetValueSets(DefinitionCollection dc)
@@ -482,7 +484,7 @@ public class PackageComparer
         writer.WriteLine("| Key | System | Code | Description | Status | System | Code | Description |");
         writer.WriteLine("| --- | ------ | ---- | ----------- | ------ | ------ | ---- | ----------- |");
 
-        foreach ((string key, ComparisonRecord<ConceptInfoRec> c) in cRec.Children)
+        foreach ((string key, ComparisonRecord<ConceptInfoRec> c) in cRec.Children.OrderBy(kvp => kvp.Key))
         {
             writer.WriteLine(
                 $"{key} |" +
@@ -1554,6 +1556,9 @@ public class PackageComparer
                 {
                     _ = leftConcepts.TryAdd(concept.Key, concept);
                 }
+
+                leftInfo = leftInfo! with { ConceptCount = leftConcepts.Count };
+                left[key] = leftInfo;
             }
 
             if (rightInput.TryGetValue(key, out ValueSet? rightVs))
@@ -1563,6 +1568,9 @@ public class PackageComparer
                 {
                     _ = rightConcepts.TryAdd(concept.Key, concept);
                 }
+
+                rightInfo = rightInfo! with { ConceptCount = rightConcepts.Count };
+                right[key] = rightInfo;
             }
 
             // compare our concepts

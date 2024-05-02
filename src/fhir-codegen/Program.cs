@@ -673,7 +673,7 @@ public class Program
 
             PackageComparer comparer = new(config, loadedLeft, loadedRight);
 
-            comparer.Compare();
+            _ = comparer.Compare();
         }
         catch (Exception ex)
         {
