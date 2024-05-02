@@ -32,65 +32,84 @@ public class ConfigCompare : ConfigRoot
     };
 
     [ConfigOption(
-        ArgName = "--known-change-path",
-        EnvName = "Known_Change_Path",
+        ArgName = "--no-output",
+        EnvName = "No_Output",
         ArgArity = "0..1",
-        Description = "Source path for known version changes.")]
-    public string KnownChangePath { get; set; } = "./renames";
+        Description = "Do not output the comparison result.")]
+    public bool NoOutput { get; set; } = false;
 
-    private static ConfigurationOption KnownChangePathParameter => new()
+    private static ConfigurationOption NoOutputParameter => new()
     {
-        Name = "Known_Change_Path",
-        DefaultValue = "./known-changes",
-        CliOption = new System.CommandLine.Option<string[]>("--known-change-path", "Source path for known version changes.")
+        Name = "No_Output",
+        DefaultValue = false,
+        CliOption = new System.CommandLine.Option<bool>("--no-output", "Do not output the comparison result.")
         {
             Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
             IsRequired = false,
         },
     };
 
-    [ConfigOption(
-        ArgName = "--ollama-url",
-        EnvName = "Ollama_Url",
-        ArgArity = "0..1",
-        Description = "Base URL for Ollama evaluation.")]
+    //[ConfigOption(
+    //    ArgName = "--known-change-path",
+    //    EnvName = "Known_Change_Path",
+    //    ArgArity = "0..1",
+    //    Description = "Source path for known version changes.")]
+    //public string KnownChangePath { get; set; } = "./renames";
+
+    //private static ConfigurationOption KnownChangePathParameter => new()
+    //{
+    //    Name = "Known_Change_Path",
+    //    DefaultValue = "./known-changes",
+    //    CliOption = new System.CommandLine.Option<string[]>("--known-change-path", "Source path for known version changes.")
+    //    {
+    //        Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+    //        IsRequired = false,
+    //    },
+    //};
+
+    //[ConfigOption(
+    //    ArgName = "--ollama-url",
+    //    EnvName = "Ollama_Url",
+    //    ArgArity = "0..1",
+    //    Description = "Base URL for Ollama evaluation.")]
     public string OllamaUrl { get; set; } = string.Empty;
 
-    private static ConfigurationOption OllamaUrlParameter => new()
-    {
-        Name = "Ollama_Url",
-        DefaultValue = string.Empty,
-        CliOption = new System.CommandLine.Option<string>("--ollama-url", "Base URL for Ollama evaluation.")
-        {
-            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
-            IsRequired = false,
-        },
-    };
+    //private static ConfigurationOption OllamaUrlParameter => new()
+    //{
+    //    Name = "Ollama_Url",
+    //    DefaultValue = string.Empty,
+    //    CliOption = new System.CommandLine.Option<string>("--ollama-url", "Base URL for Ollama evaluation.")
+    //    {
+    //        Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+    //        IsRequired = false,
+    //    },
+    //};
 
-    [ConfigOption(
-        ArgName = "--ollama-model",
-        EnvName = "Ollama_Model",
-        ArgArity = "0..1",
-        Description = "Model name for Ollama evaluation.")]
+    //[ConfigOption(
+    //    ArgName = "--ollama-model",
+    //    EnvName = "Ollama_Model",
+    //    ArgArity = "0..1",
+    //    Description = "Model name for Ollama evaluation.")]
     public string OllamaModel { get; set; } = string.Empty;
-    private static ConfigurationOption OllamaModelParameter => new()
-    {
-        Name = "Ollama_Model",
-        DefaultValue = string.Empty,
-        CliOption = new System.CommandLine.Option<string>("--ollama-model", "Model name for Ollama evaluation.")
-        {
-            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
-            IsRequired = false,
-        },
-    };
+    //private static ConfigurationOption OllamaModelParameter => new()
+    //{
+    //    Name = "Ollama_Model",
+    //    DefaultValue = string.Empty,
+    //    CliOption = new System.CommandLine.Option<string>("--ollama-model", "Model name for Ollama evaluation.")
+    //    {
+    //        Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+    //        IsRequired = false,
+    //    },
+    //};
 
 
     private static readonly ConfigurationOption[] _options =
     [
         ComparePackagesParameter,
-        KnownChangePathParameter,
-        OllamaUrlParameter,
-        OllamaModelParameter,
+        NoOutputParameter,
+        //KnownChangePathParameter,
+        //OllamaUrlParameter,
+        //OllamaModelParameter,
     ];
 
     /// <summary>Gets the array of configuration options.</summary>
@@ -113,15 +132,18 @@ public class ConfigCompare : ConfigRoot
                 case "Compare_Package":
                     ComparePackages = GetOptArray(parseResult, opt.CliOption, ComparePackages);
                     break;
-                case "Known_Change_Path":
-                    KnownChangePath = GetOpt(parseResult, opt.CliOption, KnownChangePath);
+                case "No_Output":
+                    NoOutput = GetOpt(parseResult, opt.CliOption, NoOutput);
                     break;
-                case "Ollama_Url":
-                    OllamaUrl = GetOpt(parseResult, opt.CliOption, OllamaUrl);
-                    break;
-                case "Ollama_Model":
-                    OllamaModel = GetOpt(parseResult, opt.CliOption, OllamaModel);
-                    break;
+                //case "Known_Change_Path":
+                //    KnownChangePath = GetOpt(parseResult, opt.CliOption, KnownChangePath);
+                //    break;
+                //case "Ollama_Url":
+                //    OllamaUrl = GetOpt(parseResult, opt.CliOption, OllamaUrl);
+                //    break;
+                //case "Ollama_Model":
+                //    OllamaModel = GetOpt(parseResult, opt.CliOption, OllamaModel);
+                //    break;
             }
         }
     }

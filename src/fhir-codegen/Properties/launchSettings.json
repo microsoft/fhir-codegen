@@ -60,9 +60,9 @@
             "commandLineArgs": "compare --output-path ..\\..\\temp\\compare -p hl7.fhir.r4.core#4.0.1 -c hl7.fhir.r4b.core#4.3.0 --auto-load-expansions --resolve-dependencies true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
-        "Compare 40-50": {
+        "Compare 43-50": {
             "commandName": "Project",
-            "commandLineArgs": "compare --output-path ..\\..\\temp\\compare -p hl7.fhir.r4.core#4.0.1 -c hl7.fhir.r5.core#5.0.0 --auto-load-expansions --resolve-dependencies true",
+            "commandLineArgs": "compare --output-path ..\\..\\temp\\compare -p hl7.fhir.r4b.core#4.3.0 -c hl7.fhir.r5.core#5.0.0 --auto-load-expansions --resolve-dependencies true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Cross Version Review": {

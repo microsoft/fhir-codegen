@@ -9,7 +9,11 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Health.Fhir.CodeGen.Configuration;
+using Microsoft.Health.Fhir.CodeGen.Loader;
+using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
+using Microsoft.Health.Fhir.PackageManager;
 using Terminal.Gui;
 
 namespace fhir_codegen;
@@ -18,13 +22,18 @@ internal class CrossVersionInteractive
 {
     private static CrossVersionInteractive _instance = null!;
 
+    private ConfigCrossVersionInteractive _config;
+
     public static async Task<int> DoCrossVersionReview(System.CommandLine.Parsing.ParseResult pr)
     {
+        ConfigCrossVersionInteractive config = new();
+        config.Parse(pr);
+
         try
         {
             if (_instance is null)
             {
-                _instance = new CrossVersionInteractive();
+                _instance = new CrossVersionInteractive(config);
             }
 
             _instance.Run();
@@ -49,21 +58,30 @@ internal class CrossVersionInteractive
         return 0;
     }
 
+    private CrossVersionInteractive(ConfigCrossVersionInteractive config)
+    {
+        _config = config;
+    }
+
     internal enum UiStateCodes
     {
         Unknown,
-        Main,
-        SelectingPackages,
-        LoadingPackages,
+        Default,
+        SelectPackages,
+        LoadPackages,
+        Compare,
         Done,
     }
 
-    private UiStateCodes _state = UiStateCodes.Main;
+    private UiStateCodes _state = UiStateCodes.Default;
 
     private List<FhirReleases.PublishedReleaseInformation> _releases = FhirReleases.FhirPublishedVersions.Values.Where(i => i.IsSequenceOfficial).OrderBy(i => i.Sequence).ToList();
 
-    private FhirReleases.PublishedReleaseInformation? _left = null;
-    private FhirReleases.PublishedReleaseInformation? _right = null;
+    private FhirReleases.PublishedReleaseInformation? _releaseLeft = null;
+    private FhirReleases.PublishedReleaseInformation? _releaseRight = null;
+
+    private DefinitionCollection? _dcLeft = null;
+    private DefinitionCollection? _dcRight = null;
 
     private bool _packagesLoaded = false;
 
@@ -75,20 +93,6 @@ internal class CrossVersionInteractive
     {
         Application.Init();
 
-
-        //MenuBar menu = new()
-        //{
-        //    Menus =
-        //    [
-        //        new MenuBarItem ("_File", new MenuItem [] {
-        //            new MenuItem ("_Quit", "", () => {
-        //                _state = UiStateCodes.Done;
-        //                Application.RequestStop();
-        //            })
-        //        }),
-        //    ]
-        //};
-
         MenuBarItem menus = new MenuBarItem("_File", new MenuItem[] {
             new MenuItem ("_Quit", "", () => {
                 _state = UiStateCodes.Done;
@@ -96,8 +100,7 @@ internal class CrossVersionInteractive
             })
         });
 
-        //Application.Top.Add(menu, mainWindow);
-
+        // loop until the user quits
         while ((_state != UiStateCodes.Done) && (_state != UiStateCodes.Unknown))
         {
             if (ConfigurationManager.Themes != null)
@@ -156,36 +159,44 @@ internal class CrossVersionInteractive
     {
         switch (state)
         {
-            case UiStateCodes.Main:
+            case UiStateCodes.Default:
                 {
-                    AddMainUi(w);
-                    _state = UiStateCodes.Main;
+                    AddDefaultUi(w);
+                    _state = UiStateCodes.Default;
                 }
                 break;
 
-            case UiStateCodes.SelectingPackages:
+            case UiStateCodes.SelectPackages:
                 {
                     _packagesLoaded = false;
 
                     try
                     {
-                        w.Add(BuildSelectionUi());
+                        AddSelectPackageUi(w);
                     }
                     catch (Exception)
                     {
                         // do nothing for now..
                     }
 
-                    _state = (_left is null || _right is null) ? UiStateCodes.Main : UiStateCodes.LoadingPackages;
+                    _state = (_releaseLeft is null || _releaseRight is null) ? UiStateCodes.Default : UiStateCodes.LoadPackages;
                 }
                 break;
 
-            case UiStateCodes.LoadingPackages:
+            case UiStateCodes.LoadPackages:
                 {
-                    AddLoadingUi(w);
-                    _state = UiStateCodes.LoadingPackages;
+                    AddLoadPackageUi(w);
+                    _state = UiStateCodes.LoadPackages;
                 }
                 break;
+
+            case UiStateCodes.Compare:
+                {
+                    (Label labelLeft, Label labelRight) = AddLeftAndRightLabels(w);
+                    _state = UiStateCodes.Compare;
+                }
+                break;
+
             case UiStateCodes.Done:
                 {
                     _state = UiStateCodes.Done;
@@ -194,7 +205,7 @@ internal class CrossVersionInteractive
         }
     }
 
-    private void AddLoadingUi(Window w)
+    private (Label labelLeft, Label labelRight) AddLeftAndRightLabels(Window w)
     {
         Label labelLeft = new()
         {
@@ -202,7 +213,7 @@ internal class CrossVersionInteractive
             Y = _topY,
             Width = Dim.Percent(100),
             Height = 1,
-            Text = $" Left package: hl7.fhir.{_left?.Sequence.ToRLiteral().ToLowerInvariant()}.core#{_left?.Version}",
+            Text = $" Left package: hl7.fhir.{_releaseLeft?.Sequence.ToRLiteral().ToLowerInvariant()}.core#{_releaseLeft?.Version}",
         };
         w.Add(labelLeft);
 
@@ -212,77 +223,103 @@ internal class CrossVersionInteractive
             Y = Pos.Bottom(labelLeft),
             Width = Dim.Percent(100),
             Height = 1,
-            Text = $"Right package: hl7.fhir.{_right?.Sequence.ToRLiteral().ToLowerInvariant()}.core#{_right?.Version}",
+            Text = $"Right package: hl7.fhir.{_releaseRight?.Sequence.ToRLiteral().ToLowerInvariant()}.core#{_releaseRight?.Version}",
         };
         w.Add(labelRight);
 
-        Label labelLoading = new()
+        return (labelLeft, labelRight);
+    }
+
+    private void AddDefaultUi(Window w)
+    {
+        Button selectButton = new()
+        {
+            Text = "Select _Packages",
+            X = 0,
+            Y = _topY,
+        };
+
+        selectButton.Accept += (s, e) =>
+        {
+            _state = UiStateCodes.SelectPackages;
+            Application.RequestStop();
+        };
+
+        w.Add(selectButton);
+    }
+
+    private void AddCompareUi(Window w)
+    {
+        (Label labelLeft, Label labelRight) = AddLeftAndRightLabels(w);
+
+        Button buttonCompare = new()
         {
             X = 0,
-            Y = Pos.Bottom(labelRight) + 2,
-            Width = 10,
+            Y = Pos.Bottom(labelRight),
             Height = 1,
-            Text = "Loading..."
+            Text = "_Compare Packages",
         };
-        w.Add(labelLoading);
+
+        Label labelComparing = new()
+        {
+            X = 0,
+            Y = Pos.Bottom(labelRight),
+            Width = 12,
+            Height = 1,
+            Text = "Comparing...",
+            Visible = false,
+        };
+        w.Add(labelComparing);
 
         SpinnerView spinnerView = new SpinnerView()
         {
-            X = Pos.Right(labelLoading),
-            Y = Pos.Top(labelLoading),
+            X = Pos.Right(labelComparing),
+            Y = Pos.Top(labelComparing),
             Width = 10,
             Height = 1,
-            AutoSpin = true,
-            SpinDelay = 125,
-            SpinBounce = true,
-            Visible = true,
-            Style = new SpinnerStyle.Points(),
+            AutoSpin = false,
+            Visible = false,
         };
         w.Add(spinnerView);
-        //spinnerView.AutoSpin = true;
+
+        buttonCompare.Accept += (s, e) =>
+        {
+            buttonCompare.Visible = false;
+            labelComparing.Visible = true;
+            spinnerView.Visible = true;
+            spinnerView.SpinDelay = 125;
+            spinnerView.AutoSpin = true;
+
+            w.SetNeedsDisplay();
+
+            Task.Run(async () =>
+            {
+                (bool success, string message) = await TryLoadPackagesAsync();
+                if (success)
+                {
+                    _state = UiStateCodes.Compare;
+                    Application.RequestStop();
+                }
+                else
+                {
+                    _dcLeft = null;
+                    _dcRight = null;
+                    labelComparing.Visible = false;
+                    spinnerView.AutoSpin = false;
+                    spinnerView.Visible = false;
+                    buttonCompare.Visible = true;
+
+                    MessageBox.ErrorQuery(40, 7, "Error", message, "Ok");
+                }
+            });
+        };
+
+        w.Add(buttonCompare);
     }
 
-    private void AddMainUi(Window w)
+    private void AddLoadPackageUi(Window w)
     {
-        if ((_left is null) || (_right is null))
-        {
-            Button selectButton = new()
-            {
-                Text = "Select _Packages",
-                X = 0,
-                Y = _topY,
-            };
-
-            selectButton.Accept += (s, e) =>
-            {
-                _state = UiStateCodes.SelectingPackages;
-                Application.RequestStop();
-            };
-
-            w.Add(selectButton);
-
-            return;
-        }
-
-        Label labelLeft = new()
-        {
-            X = 0,
-            Y = _topY,
-            Width = Dim.Percent(100),
-            Height = 1,
-            Text = $" Left package: hl7.fhir.{_left?.Sequence.ToRLiteral().ToLowerInvariant()}.core#{_left?.Version}",
-        };
-        w.Add(labelLeft);
-
-        Label labelRight = new()
-        {
-            X = 0,
-            Y = Pos.Bottom(labelLeft),
-            Width = Dim.Percent(100),
-            Height = 1,
-            Text = $"Right package: hl7.fhir.{_right?.Sequence.ToRLiteral().ToLowerInvariant()}.core#{_right?.Version}",
-        };
-        w.Add(labelRight);
+        (Label labelLeft, Label labelRight) = AddLeftAndRightLabels(w);
 
         Button buttonLoad = new()
         {
@@ -310,10 +347,10 @@ internal class CrossVersionInteractive
             Width = 10,
             Height = 1,
             AutoSpin = false,
-            SpinDelay = 125,
-            SpinBounce = true,
+            //SpinDelay = 125,
+            //SpinBounce = true,
             Visible = false,
-            Style = new SpinnerStyle.Points(),
+            //Style = new SpinnerStyle.Points(),
         };
         w.Add(spinnerView);
 
@@ -322,6 +359,8 @@ internal class CrossVersionInteractive
             buttonLoad.Visible = false;
             labelLoading.Visible = true;
             spinnerView.Visible = true;
+            spinnerView.SpinDelay = 125;
+            spinnerView.AutoSpin = true;
 
             //_uiRefreshTimer = new()
             //{
@@ -332,6 +371,27 @@ internal class CrossVersionInteractive
 
             w.SetNeedsDisplay();
 
+            Task.Run(async () =>
+            {
+                (bool success, string message) = await TryLoadPackagesAsync();
+                if (success)
+                {
+                    _state = UiStateCodes.Compare;
+                    Application.RequestStop();
+                }
+                else
+                {
+                    _dcLeft = null;
+                    _dcRight = null;
+                    labelLoading.Visible = false;
+                    spinnerView.AutoSpin = false;
+                    spinnerView.Visible = false;
+                    buttonLoad.Visible = true;
+
+                    MessageBox.ErrorQuery(40, 7, "Error", message, "Ok");
+                }
+            });
+
             //_state = UiStateCodes.LoadingPackages;
             //Application.RequestStop();
         };
@@ -339,7 +399,7 @@ internal class CrossVersionInteractive
         w.Add(buttonLoad);
     }
 
-    private Dialog BuildSelectionUi()
+    private void AddSelectPackageUi(Window w)
     {
         Button cancelButton = new()
         {
@@ -366,26 +426,10 @@ internal class CrossVersionInteractive
 
         cancelButton.Accept += (s, e) =>
         {
-            _left = null;
-            _right = null;
+            _releaseLeft = null;
+            _releaseRight = null;
             Application.RequestStop(d);
         };
-
-        //d.Title = "Select packages for crossing...";
-
-        //d.X = 0;
-        //d.Y = 0;
-        //d.Width = Dim.Fill();
-        //d.Height = Dim.Fill();
-
-        //Label labelSelectedLeft = new()
-        //{
-        //    X = 0,
-        //    Y = 0,
-        //    Width = Dim.Percent(50),
-        //    Text = _left?.Description ?? "Select Left Version",
-        //};
-        //w.Add(labelSelectedLeft);
 
         ListView selectLeft = new()
         {
@@ -398,27 +442,7 @@ internal class CrossVersionInteractive
             AllowsMultipleSelection = false,
         };
         selectLeft.SetSource(_releases);
-        //selectLeft.OpenSelectedItem += (s, e) =>
-        //{
-        //    //labelSelectedLeft.Text = _releases[e.Item].Description;
-        //    //labelSelectedLeft.Draw();
-        //    _left = _releases[e.Item];
-        //    if ((_right is not null) && (_left is not null))
-        //    {
-        //        _state = UiStateCodes.Main;
-        //        Application.RequestStop();
-        //    }
-        //};
         d.Add(selectLeft);
-
-        //Label labelSelectedRight = new()
-        //{
-        //    X = Pos.Right(labelSelectedLeft) + 1,
-        //    Y = 0,
-        //    Width = Dim.Percent(50),
-        //    Text = _right?.Description ?? "Select Right Version",
-        //};
-        //w.Add(labelSelectedRight);
 
         ListView selectRight = new()
         {
@@ -431,17 +455,6 @@ internal class CrossVersionInteractive
             AllowsMultipleSelection = false,
         };
         selectRight.SetSource(_releases);
-        //selectRight.OpenSelectedItem += (s, e) =>
-        //{
-        //    //labelSelectedRight.Text = _releases[e.Item].Description;
-        //    //labelSelectedRight.Draw();
-        //    _right = _releases[e.Item];
-        //    if ((_right is not null) && (_left is not null))
-        //    {
-        //        _state = UiStateCodes.Main;
-        //        Application.RequestStop();
-        //    }
-        //};
         d.Add(selectRight);
 
         okButton.Accept += (s, e) =>
@@ -450,7 +463,7 @@ internal class CrossVersionInteractive
             {
                 if (selectLeft.Source.IsMarked(i))
                 {
-                    _left = _releases[i];
+                    _releaseLeft = _releases[i];
                     break;
                 }
             }
@@ -459,7 +472,7 @@ internal class CrossVersionInteractive
             {
                 if (selectRight.Source.IsMarked(i))
                 {
-                    _right = _releases[i];
+                    _releaseRight = _releases[i];
                     break;
                 }
             }
@@ -467,8 +480,87 @@ internal class CrossVersionInteractive
             Application.RequestStop(d);
         };
 
+        w.Add(d);
+    }
 
-        return d;
+    private async Task<(bool success, string message)> TryCompareAsync()
+    {
+        if ((_releaseLeft is null) || (_releaseRight is null))
+        {
+            return (false, "Two FHIR packages are required.");
+        }
+
+        try
+        {
+            
+            return (true, string.Empty);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"TryCompareAsync <<< caught: {ex.Message}");
+            return (false, ex.Message + (ex.InnerException is null ? string.Empty : ": " + ex.InnerException.Message));
+        }
+    }
+
+
+    private async Task<(bool success, string message)> TryLoadPackagesAsync()
+    {
+        if ((_releaseLeft is null) || (_releaseRight is null))
+        {
+            return (false, "Two FHIR packages are required.");
+        }
+
+        try
+        {
+            // create our cache object to load packages with
+            IFhirPackageClient cache = FhirCache.Create(new FhirPackageClientSettings()
+            {
+                CachePath = _config.FhirCacheDirectory,
+            });
+
+            string directiveLeft = $"hl7.fhir.{_releaseLeft.Value.Sequence.ToRLiteral().ToLowerInvariant()}.core#{_releaseLeft.Value.Version}";
+            PackageCacheEntry? packageLeft = await cache.FindOrDownloadPackageByDirective(directiveLeft, true);
+
+            if (packageLeft is null)
+            {
+                return (false, $"Could not find package for directive: {directiveLeft}");
+            }
+
+            string directiveRight = $"hl7.fhir.{_releaseRight.Value.Sequence.ToRLiteral().ToLowerInvariant()}.core#{_releaseRight.Value.Version}";
+            PackageCacheEntry? packageRight = await cache.FindOrDownloadPackageByDirective(directiveRight, true);
+
+            if (packageRight is null)
+            {
+                return (false, $"Could not find package for directive: {directiveRight}");
+            }
+
+            PackageLoader loaderLeft = new(cache, new()
+            {
+                JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
+                AutoLoadExpansions = true,
+                ResolvePackageDependencies = true,
+            });
+
+            _dcLeft = loaderLeft.LoadPackages(packageLeft.Name, [ packageLeft ])
+                ?? throw new Exception($"Could not load left-hand-side package: {directiveLeft}");
+
+            PackageLoader loaderRight = new(cache, new()
+            {
+                JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
+                AutoLoadExpansions = true,
+                ResolvePackageDependencies = true,
+            });
+
+            _dcRight = loaderRight.LoadPackages(packageRight.Name, [ packageRight ])
+                ?? throw new Exception($"Could not load right-hand-side package: {directiveRight}");
+
+            return (true, string.Empty);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"TryLoadPackagesAsync <<< caught: {ex.Message}");
+            return (false, ex.Message + (ex.InnerException is null ? string.Empty : ": " + ex.InnerException.Message));
+        }
     }
 
 }
