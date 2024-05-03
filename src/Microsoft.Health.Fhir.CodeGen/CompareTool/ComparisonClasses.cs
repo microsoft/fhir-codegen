@@ -14,23 +14,34 @@ using System.Xml.Linq;
 
 namespace Microsoft.Health.Fhir.CodeGen.CompareTool;
 
-
 internal static class ComparisonUtils
 {
     internal const string _leftSide = "Source";
     internal const string _rightSide = "Destination";
 
     internal static string SanitizeForTable(string value) => string.IsNullOrEmpty(value) ? string.Empty : value.Replace("|", "\\|").Replace("\n", "<br/>").Replace("\r", "<br/>");
+
+    internal static string[] GetEmptyValueArray(string prefix, int count)
+    {
+        if (string.IsNullOrEmpty(prefix))
+        {
+            return Enumerable.Repeat("-", count).ToArray();
+        }
+
+        List<string> values = [ prefix ];
+        values.AddRange(Enumerable.Repeat("-", count - 1));
+        return values.ToArray();
+    }
 }
 
 public interface IComparisonRecord
 {
     string Key { get; init; }
     string GetStatusString();
-    string GetMarkdownTable();
-    string GetMarkdownSummaryTable();
-    string GetMarkdownDetailTable();
-    string GetMarkdownDetailTableRow();
+    void GetTableData(out string[] header, out string[] left, out string[] right);
+    Dictionary<string, int> GetStatusCounts();
+    IEnumerable<string[]> GetChildrenDetailTableRows();
+    string[] GetDetailTableRow();
 }
 
 public interface IComparisonRecord<T> : IComparisonRecord where T : IInfoRec
@@ -76,35 +87,49 @@ public class ComparisonRecord<T> : IComparisonRecord<T> where T : IInfoRec
         return Relationship?.ToString() ?? "-";
     }
 
-    public string GetMarkdownTable()
+    public void GetTableData(out string[] header, out string[] left, out string[] right)
     {
         if ((Left is null) && (Right is null))
         {
-            return string.Empty;
+            header = Array.Empty<string>();
+            left = Array.Empty<string>();
+            right = Array.Empty<string>();
+            return;
         }
 
         if (Left is null)
         {
-            return string.Join('\n', Right!.GetMarkdownTableHeader(), Right.GetMarkdownTableValueMissing(ComparisonUtils._leftSide), Right.GetMarkdownTableValue(ComparisonUtils._rightSide));
+            int colCount = Right!.TableColumnCount + 1;
+            header = Right!.GetTableHeader("Side");
+            left = ComparisonUtils.GetEmptyValueArray("Source", colCount);
+            right = Right.GetTableValue("Destination");
+            return;
         }
 
         if (Right is null)
         {
-            return string.Join('\n', Left!.GetMarkdownTableHeader(), Left.GetMarkdownTableValue(ComparisonUtils._leftSide), Left.GetMarkdownTableValueMissing(ComparisonUtils._rightSide));
+            int colCount = Left!.TableColumnCount + 1;
+            header = Left!.GetTableHeader("Side");
+            left = Left.GetTableValue("Source");
+            right = ComparisonUtils.GetEmptyValueArray("Destination", colCount);
+            return;
         }
 
-        return string.Join('\n', Left!.GetMarkdownTableHeader(), Left.GetMarkdownTableValue(ComparisonUtils._leftSide), Right.GetMarkdownTableValue(ComparisonUtils._rightSide));
+        header = Left!.GetTableHeader("Side");
+        left = Left.GetTableValue("Source");
+        right = Right.GetTableValue("Destination");
     }
 
-    public string GetMarkdownSummaryTable() => string.Empty;
-    public string GetMarkdownDetailTable() => string.Empty;
+    public Dictionary<string, int> GetStatusCounts() => [];
+    public IEnumerable<string[]> GetChildrenDetailTableRows() => Enumerable.Empty<string[]>();
 
-    public string GetMarkdownDetailTableRow() =>
-        $"{Key} |" +
-        $" {(Left == null ? "N" : "Y")} |" +
-        $" {(Right == null ? "N" : "Y")} |" +
-        $" {GetStatusString()} |" +
-        $" {ComparisonUtils.SanitizeForTable(Message)} |";
+    public string[] GetDetailTableRow() => [
+        Key,
+        (Left == null ? "N" : "Y"),
+        (Right == null ? "N" : "Y"),
+        GetStatusString(),
+        ComparisonUtils.SanitizeForTable(Message),
+    ];
 
     //public T? AiPrediction { get; init; }
     //public int AiConfidence { get; init; } = 0;
@@ -114,11 +139,9 @@ public class ComparisonRecord<T, U> : ComparisonRecord<T>, IComparisonRecord<T, 
 {
     public required Dictionary<string, ComparisonRecord<U>> Children { get; init; }
 
-    public new string GetMarkdownSummaryTable()
+    public new Dictionary<string, int> GetStatusCounts()
     {
-        StringBuilder sb = new();
-
-        Dictionary<string, int> counts = new Dictionary<string, int>();
+        Dictionary<string, int> counts = [];
 
         // build summary data
         foreach (ComparisonRecord<U> c in Children.Values)
@@ -132,36 +155,15 @@ public class ComparisonRecord<T, U> : ComparisonRecord<T>, IComparisonRecord<T, 
             counts[status] = count + 1;
         }
 
-        sb.AppendLine("| Status | Count |");
-        sb.AppendLine("| ------ | ----- |");
-        foreach ((string status, int count) in counts.OrderBy(kvp => kvp.Key))
-        {
-            sb.AppendLine($"{status} | {count} |");
-        }
-        sb.AppendLine();
-
-        return sb.ToString();
+        return counts;
     }
 
-    public new string GetMarkdownDetailTable()
+    public new IEnumerable<string[]> GetChildrenDetailTableRows()
     {
-        StringBuilder sb = new();
-
-        sb.AppendLine("| Key | Source | Dest | Status | Message |");
-        sb.AppendLine("| --- | ------ | ---- | ------ | ------- |");
-
         foreach ((string key, ComparisonRecord<U> c) in Children.OrderBy(kvp => kvp.Key))
         {
-            sb.AppendLine(
-                $"{key} |" +
-                $" {(c.Left == null ? "N" : "Y")} |" +
-                $" {(c.Right == null ? "N" : "Y")} |" +
-                $" {c.GetStatusString()} |" +
-                $" {ComparisonUtils.SanitizeForTable(c.Message)} |");
+            yield return c.GetDetailTableRow();
         }
-
-        sb.AppendLine();
-        return sb.ToString();
     }
 }
 
@@ -169,11 +171,9 @@ public class ComparisonRecord<T, U, V> : ComparisonRecord<T>, IComparisonRecord<
 {
     public required Dictionary<string, ComparisonRecord<U, V>> Children { get; init; }
 
-    public new string GetMarkdownSummaryTable()
+    public new Dictionary<string, int> GetStatusCounts()
     {
-        StringBuilder sb = new();
-
-        Dictionary<string, int> counts = new Dictionary<string, int>();
+        Dictionary<string, int> counts = [];
 
         // build summary data
         foreach (ComparisonRecord<U, V> c in Children.Values)
@@ -187,45 +187,24 @@ public class ComparisonRecord<T, U, V> : ComparisonRecord<T>, IComparisonRecord<
             counts[status] = count + 1;
         }
 
-        sb.AppendLine("| Status | Count |");
-        sb.AppendLine("| ------ | ----- |");
-        foreach ((string status, int count) in counts.OrderBy(kvp => kvp.Key))
-        {
-            sb.AppendLine($"{status} | {count} |");
-        }
-        sb.AppendLine();
-
-        return sb.ToString();
+        return counts;
     }
 
-    public new string GetMarkdownDetailTable()
+    public new IEnumerable<string[]> GetChildrenDetailTableRows()
     {
-        StringBuilder sb = new();
-
-        sb.AppendLine("| Key | Source | Dest | Status | Message |");
-        sb.AppendLine("| --- | ------ | ---- | ------ | ------- |");
-
-        foreach ((string key, ComparisonRecord<U, V> c) in Children.OrderBy(kvp => kvp.Key))
+        foreach ((string key, ComparisonRecord<U> c) in Children.OrderBy(kvp => kvp.Key))
         {
-            sb.AppendLine(
-                $"{key} |" +
-                $" {(c.Left == null ? "N" : "Y")} |" +
-                $" {(c.Right == null ? "N" : "Y")} |" +
-                $" {c.GetStatusString()} |" +
-                $" {ComparisonUtils.SanitizeForTable(c.Message)} |");
+            yield return c.GetDetailTableRow();
         }
-
-        sb.AppendLine();
-        return sb.ToString();
     }
 }
 
 
 public interface IInfoRec
 {
-    string GetMarkdownTableHeader();
-    string GetMarkdownTableValue(string side);
-    string GetMarkdownTableValueMissing(string side);
+    int TableColumnCount { get; }
+    string[] GetTableHeader(string prefixColHeader = "");
+    string[] GetTableValue(string prefixColValue = "");
 }
 
 public record class ConceptInfoRec : IInfoRec
@@ -234,13 +213,14 @@ public record class ConceptInfoRec : IInfoRec
     public required string Code { get; init; }
     public required string Description { get; init; }
 
-    private const string _tableHeader = "| Side | System | Code | Description |\n| --- | --- | --- | --- |";
+    public int TableColumnCount => 3;
+    public string[] GetTableHeader(string prefixColHeader = "") => string.IsNullOrEmpty(prefixColHeader)
+        ? ["System", "Code", "Description"]
+        : [prefixColHeader, "System", "Code", "Description"];
 
-    public string GetMarkdownTableHeader() => _tableHeader;
-    public string GetMarkdownTableValue(string side) =>
-        $"{side} | {System} | {Code} | {ComparisonUtils.SanitizeForTable(Description)} |";
-    public string GetMarkdownTableValueMissing(string side) =>
-        $"{side} | - | - | - |";
+    public string[] GetTableValue(string prefixColValue = "") => string.IsNullOrEmpty(prefixColValue)
+        ? [System, Code, ComparisonUtils.SanitizeForTable(Description)]
+        : [prefixColValue, System, Code, ComparisonUtils.SanitizeForTable(Description)];
 }
 
 public record class ValueSetInfoRec : IInfoRec
@@ -251,13 +231,13 @@ public record class ValueSetInfoRec : IInfoRec
     public required string Description { get; init; }
     public required int ConceptCount { get; init; }
 
-    private const string _tableHeader = "| Side | Name | Url | Title | Description |\n| --- | --- | --- | --- | --- |";
-
-    public string GetMarkdownTableHeader() => _tableHeader;
-    public string GetMarkdownTableValue(string side) =>
-        $"{side} | {Name} | {Url} | {ComparisonUtils.SanitizeForTable(Title)} | {ComparisonUtils.SanitizeForTable(Description)} |";
-    public string GetMarkdownTableValueMissing(string side) =>
-        $"{side} | - | - | - | - |";
+    public int TableColumnCount => 4;
+    public string[] GetTableHeader(string prefixColHeader = "") => string.IsNullOrEmpty(prefixColHeader)
+        ? ["Url", "Name", "Title", "Description"]
+        : [prefixColHeader, "Url", "Name", "Title", "Description"];
+    public string[] GetTableValue(string prefixColValue = "") => string.IsNullOrEmpty(prefixColValue)
+        ? [Url, Name, ComparisonUtils.SanitizeForTable(Title), ComparisonUtils.SanitizeForTable(Description)]
+        : [prefixColValue, Url, Name, ComparisonUtils.SanitizeForTable(Title), ComparisonUtils.SanitizeForTable(Description)];
 }
 
 public record class ElementTypeInfoRec : IInfoRec
@@ -266,13 +246,13 @@ public record class ElementTypeInfoRec : IInfoRec
     public required List<string> Profiles { get; init; }
     public required List<string> TargetProfiles { get; init; }
 
-    private const string _tableHeader = "| Side | Name | Profiles | Target Profiles |\n| --- | --- | --- | --- |";
-
-    public string GetMarkdownTableHeader() => _tableHeader;
-    public string GetMarkdownTableValue(string side) =>
-        $"{side} | {Name} | {string.Join(", ", Profiles)} | {string.Join(", ", TargetProfiles)} |";
-    public string GetMarkdownTableValueMissing(string side) =>
-        $"{side} | - | - | - |";
+    public int TableColumnCount => 3;
+    public string[] GetTableHeader(string prefixColHeader = "") => string.IsNullOrEmpty(prefixColHeader)
+        ? ["Name", "Profiles", "Target Profiles"]
+        : [prefixColHeader, "Name", "Profiles", "Target Profiles"];
+    public string[] GetTableValue(string prefixColValue = "") => string.IsNullOrEmpty(prefixColValue)
+        ? [Name, string.Join(", ", Profiles), string.Join(", ", TargetProfiles)]
+        : [prefixColValue, Name, string.Join(", ", Profiles), string.Join(", ", TargetProfiles)];
 }
 
 public record class ElementInfoRec : IInfoRec
@@ -290,24 +270,13 @@ public record class ElementInfoRec : IInfoRec
 
     public required string BindingValueSet { get; init; }
 
-    private const string _tableHeader = "| Side | Path | Short | Definition | Card | Binding |\n| --- | --- | --- | --- | --- | --- |";
-
-    public string GetMarkdownTableHeader() => _tableHeader;
-    public string GetMarkdownTableValue(string side) =>
-        $"{side} |" +
-        $" {Path} |" +
-        $" {ComparisonUtils.SanitizeForTable(Short)} |" +
-        $" {ComparisonUtils.SanitizeForTable(Definition)} |" +
-        $" {MinCardinality}..{MaxCardinalityString} |" +
-        $" {ValueSetBindingStrength} {BindingValueSet} |";
-    public string GetMarkdownTableValueMissing(string side) =>
-        $"{side} |" +
-        $" - |" +
-        $" - |" +
-        $" - |" +
-        $" - |" +
-        $" - |";
-
+    public int TableColumnCount => 5;
+    public string[] GetTableHeader(string prefixColHeader = "") => string.IsNullOrEmpty(prefixColHeader)
+        ? ["Name", "Path", "Short", "Definition", "Card", "Binding"]
+        : [prefixColHeader, "Name", "Path", "Short", "Definition", "Card", "Binding"];
+    public string[] GetTableValue(string prefixColValue = "") => string.IsNullOrEmpty(prefixColValue)
+        ? [Name, Path, Short, Definition, $"{MinCardinality}..{MaxCardinalityString}", $"{ValueSetBindingStrength} {BindingValueSet}"]
+        : [prefixColValue, Name, Path, Short, Definition, $"{MinCardinality}..{MaxCardinalityString}", $"{ValueSetBindingStrength} {BindingValueSet}"];
 }
 
 public record class StructureInfoRec : IInfoRec
@@ -321,22 +290,13 @@ public record class StructureInfoRec : IInfoRec
 
     public required int DifferentialCount { get; init; }
 
-    private const string _tableHeader = "| Side | Name | Title | Description | Snapshot | Differential |\n| --- | --- | --- | --- | --- | --- |";
-    public string GetMarkdownTableHeader() => _tableHeader;
-    public string GetMarkdownTableValue(string side) =>
-        $"{side} |" +
-        $" {Name} |" +
-        $" {ComparisonUtils.SanitizeForTable(Title)} |" +
-        $" {ComparisonUtils.SanitizeForTable(Description)} |" +
-        $" {SnapshotCount} |" +
-        $" {DifferentialCount} |";
-    public string GetMarkdownTableValueMissing(string side) =>
-        $"{side} |" +
-        $" - |" +
-        $" - |" +
-        $" - |" +
-        $" - |" +
-        $" - |";
+    public int TableColumnCount => 5;
+    public string[] GetTableHeader(string prefixColHeader = "") => string.IsNullOrEmpty(prefixColHeader)
+        ? ["Name", "Title", "Description", "Snapshot", "Differential"]
+        : [prefixColHeader, "Name", "Title", "Description", "Snapshot", "Differential"];
+    public string[] GetTableValue(string prefixColValue = "") => string.IsNullOrEmpty(prefixColValue)
+        ? [Name, ComparisonUtils.SanitizeForTable(Title), ComparisonUtils.SanitizeForTable(Description), SnapshotCount.ToString(), DifferentialCount.ToString()]
+        : [prefixColValue, Name, ComparisonUtils.SanitizeForTable(Title), ComparisonUtils.SanitizeForTable(Description), SnapshotCount.ToString(), DifferentialCount.ToString()];
 }
 
 public record class PackageComparison

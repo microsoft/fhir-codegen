@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
@@ -378,12 +379,60 @@ public class PackageComparer
 
         foreach (IComparisonRecord c in values.OrderBy(cr => cr.Key))
         {
-            writer.WriteLine(c.GetMarkdownDetailTableRow());
+            writer.WriteLine("| " + string.Join(" | ", c.GetDetailTableRow()) + " |");
         }
 
         writer.WriteLine();
 
         writer.WriteLine("</details>");
+        writer.WriteLine();
+    }
+
+    private void WriteComparisonRecDataTable(ExportStreamWriter writer, IComparisonRecord cRec)
+    {
+        cRec.GetTableData(out string[] tdHeader, out string[] tdLeft, out string[] tdRight);
+        writer.WriteLine("| " + string.Join(" | ", tdHeader) + " |");
+        writer.WriteLine("| " + string.Join(" | ", Enumerable.Repeat("---", tdHeader.Length)) + " |");
+        writer.WriteLine("| " + string.Join(" | ", tdLeft) + " |");
+        writer.WriteLine("| " + string.Join(" | ", tdRight) + " |");
+        writer.WriteLine();
+    }
+
+    private void WriteComparisonChildDetails(ExportStreamWriter writer, IComparisonRecord cRec)
+    {
+        IEnumerable<string[]> rows = cRec.GetChildrenDetailTableRows();
+
+        writer.WriteLine("| Key | Source | Dest | Status | Message |");
+        writer.WriteLine("| --- | ------ | ---- | ------ | ------- |");
+
+        foreach (string[] row in rows)
+        {
+            writer.WriteLine("| " + string.Join(" | ", row) + " |");
+        }
+
+        writer.WriteLine();
+    }
+
+    private void WriteComparisonRecResult(ExportStreamWriter writer, IComparisonRecord cRec)
+    {
+        writer.WriteLine();
+        writer.WriteLine($"#### Comparison Result: {cRec.GetStatusString()}");
+        writer.WriteLine();
+
+    }
+
+    private void WriteComparisonRecStatusTable(ExportStreamWriter writer, IComparisonRecord cRec)
+    {
+        Dictionary<string, int> counts = cRec.GetStatusCounts();
+
+        writer.WriteLine("| Status | Count |");
+        writer.WriteLine("| ------ | ----- |");
+
+        foreach ((string status, int count) in counts.OrderBy(kvp => kvp.Key))
+        {
+            writer.WriteLine($"{status} | {count} |");
+        }
+
         writer.WriteLine();
     }
 
@@ -397,15 +446,10 @@ public class PackageComparer
             writer.WriteLine("## " + header);
         }
 
-        writer.WriteLine(cRec.GetMarkdownTable());
-
-        writer.WriteLine();
-        writer.WriteLine($"#### Comparison Result: {cRec.GetStatusString()}");
-        writer.WriteLine();
-        writer.WriteLine();
-
-        writer.WriteLine(cRec.GetMarkdownSummaryTable());
-        writer.WriteLine(cRec.GetMarkdownDetailTable());
+        WriteComparisonRecDataTable(writer, cRec);
+        WriteComparisonRecResult(writer, cRec);
+        WriteComparisonRecStatusTable(writer, cRec);
+        WriteComparisonChildDetails(writer, cRec);
     }
 
 
