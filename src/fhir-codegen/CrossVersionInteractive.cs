@@ -110,7 +110,7 @@ internal class CrossVersionInteractive
             {
                 try
                 {
-                    _comparison = JsonSerializer.Deserialize<PackageComparer.PackageComparison>(jsonFs);
+                    _comparison = JsonSerializer.Deserialize<PackageComparison>(jsonFs);
 
                     // grab package information from comparison
                     if ((_comparison is not null) &&
@@ -163,7 +163,7 @@ internal class CrossVersionInteractive
     private DefinitionCollection? _dcLeft = null;
     private DefinitionCollection? _dcRight = null;
 
-    private PackageComparer.PackageComparison? _comparison = null;
+    private PackageComparison? _comparison = null;
 
     private int _topY = 0;
 

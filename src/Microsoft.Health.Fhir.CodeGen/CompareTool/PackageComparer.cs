@@ -51,106 +51,6 @@ public class PackageComparer
         public required Dictionary<string, string> LeftRightPath { get; init; }
     }
 
-    public record class ConceptInfoRec
-    {
-        public required string System { get; init; }
-        public required string Code { get; init; }
-        public required string Description { get; init; }
-    }
-
-    public record class ValueSetInfoRec
-    {
-        public required string Url { get; init; }
-        public required string Name { get; init; }
-        public required string Title { get; init; }
-        public required string Description { get; init; }
-        public required int ConceptCount { get; init; }
-    }
-
-    public record class ElementTypeInfoRec
-    {
-        public required string Name { get; init; }
-        public required List<string> Profiles { get; init; }
-        public required List<string> TargetProfiles { get; init; }
-    }
-
-    public record class ElementInfoRec
-    {
-        public required string Name { get; init; }
-        public required string Path { get; init; }
-        public required string Short { get; init; }
-        public required string Definition { get; init; }
-
-        public required int MinCardinality { get; init; }
-        public required int MaxCardinality { get; init; }
-        public required string MaxCardinalityString { get; init; }
-
-        public required BindingStrength? ValueSetBindingStrength { get; init; }
-
-        public required string BindingValueSet { get; init; }
-    }
-
-    public record class StructureInfoRec
-    {
-        public required string Name { get; init; }
-        public required string Title { get; init; }
-        public required string Description { get; init; }
-        public required string Purpose { get; init; }
-
-        public required int SnapshotCount { get; init; }
-
-        public required int DifferentialCount { get; init; }
-    }
-
-    public record class PackageComparison
-    {
-        public required string LeftPackageId { get; init; }
-        public required string LeftPackageVersion { get; init; }
-        public required string RightPackageId { get; init; }
-        public required string RightPackageVersion { get; init; }
-
-        public required Dictionary<string, ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>> ValueSets { get; init; }
-        public required Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> PrimitiveTypes { get; init; }
-        public required Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> ComplexTypes { get; init; }
-        public required Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> Resources { get; init; }
-        public required Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> LogicalModels { get; init; }
-    }
-
-    public class ComparisonRecord<T>
-    {
-        public required T? Left { get; init; }
-        public required T? Right { get; init; }
-        public required bool NamedMatch { get; init; }
-        public required CMR? Relationship { get; init; }
-        public required string Message { get; init; }
-
-        //public T? AiPrediction { get; init; }
-        //public int AiConfidence { get; init; } = 0;
-    }
-
-    public class ComparisonRecord<T, U>
-    {
-        public required T? Left { get; init; }
-        public required T? Right { get; init; }
-        public required bool NamedMatch { get; init; }
-        public required CMR? Relationship { get; init; }
-        public required string Message { get; init; }
-        public required Dictionary<string, ComparisonRecord<U>> Children { get; init; }
-
-    }
-
-    public class ComparisonRecord<T, U, V>
-    {
-        public required T? Left { get; init; }
-        public required T? Right { get; init; }
-
-        public required bool NamedMatch { get; init; }
-
-        public required CMR? Relationship { get; init; }
-        public required string Message { get; init; }
-        public required Dictionary<string, ComparisonRecord<U, V>> Children { get; init; }
-    }
-
     private static readonly HashSet<string> _exclusionSet =
     [
         /* UCUM is used as a required binding in a codeable concept. Since we do not
@@ -209,21 +109,13 @@ public class PackageComparer
 
         string mdFullFilename = Path.Combine(outputDir, mdFilename);
 
-        using ExportStreamWriter mdWriter = new(mdFullFilename);
-
-        if (!_config.NoOutput)
-        {
-            mdWriter.WriteLine($"Comparison of {_left.MainPackageId}#{_left.MainPackageVersion} and {_right.MainPackageId}#{_right.MainPackageVersion}");
-            mdWriter.WriteLine($"Generated at {DateTime.Now.ToString("F")}");
-            mdWriter.WriteLine();
-            mdWriter.WriteLine();
-        }
+        using ExportStreamWriter? mdWriter = _config.NoOutput ? null : CreateMarkdownWriter(mdFullFilename);
 
         // need to expand every value set for comparison
         _vsComparisons = Compare(GetValueSets(_left), GetValueSets(_right));
-        if (!_config.NoOutput)
+        if (mdWriter is not null)
         {
-            WriteComparison(mdWriter, "Value Sets", _vsComparisons);
+            WriteComparisonOverview(mdWriter, "Value Sets", _vsComparisons.Values);
 
             string subDir = Path.Combine(outputDir, "ValueSets");
             if (!Directory.Exists(subDir))
@@ -240,17 +132,17 @@ public class PackageComparer
                         ? Path.Combine(subDir, $"{_leftPrefix}_{c.Left.Name.ToPascalCase()}.md")
                         : Path.Combine(subDir, $"{_leftPrefix}_{c.Left.Name.ToPascalCase()}_{_rightPrefix}_{c.Right.Name.ToPascalCase()}.md");
 
-                using ExportStreamWriter writer = new(filename);
+                using ExportStreamWriter writer = CreateMarkdownWriter(filename);
                 {
-                    WriteComparison(writer, string.Empty, c);
+                    WriteComparisonFile(writer, string.Empty, c);
                 }
             }
         }
 
         Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> primitives = Compare(_left.PrimitiveTypesByName, _right.PrimitiveTypesByName);
-        if (!_config.NoOutput)
+        if (mdWriter is not null)
         {
-            WriteComparison(mdWriter, "Primitive Types", primitives);
+            WriteComparisonOverview(mdWriter, "Primitive Types", primitives.Values);
 
             string subDir = Path.Combine(outputDir, "PrimitiveTypes");
             if (!Directory.Exists(subDir))
@@ -267,17 +159,17 @@ public class PackageComparer
                         ? Path.Combine(subDir, $"{_leftPrefix}_{c.Left.Name.ToPascalCase()}.md")
                         : Path.Combine(subDir, $"{_leftPrefix}_{c.Left.Name.ToPascalCase()}_{_rightPrefix}_{c.Right.Name.ToPascalCase()}.md");
 
-                using ExportStreamWriter writer = new(filename);
+                using ExportStreamWriter writer = CreateMarkdownWriter(filename);
                 {
-                    WriteComparison(writer, string.Empty, c);
+                    WriteComparisonFile(writer, string.Empty, c);
                 }
             }
         }
 
         Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> complexTypes = Compare(_left.ComplexTypesByName, _right.ComplexTypesByName);
-        if (!_config.NoOutput)
+        if (mdWriter is not null)
         {
-            WriteComparison(mdWriter, "Complex Types", complexTypes);
+            WriteComparisonOverview(mdWriter, "Complex Types", complexTypes.Values);
 
             string subDir = Path.Combine(outputDir, "ComplexTypes");
             if (!Directory.Exists(subDir))
@@ -294,18 +186,18 @@ public class PackageComparer
                         ? Path.Combine(subDir, $"{_leftPrefix}_{c.Left.Name.ToPascalCase()}.md")
                         : Path.Combine(subDir, $"{_leftPrefix}_{c.Left.Name.ToPascalCase()}_{_rightPrefix}_{c.Right.Name.ToPascalCase()}.md");
 
-                using ExportStreamWriter writer = new(filename);
+                using ExportStreamWriter writer = CreateMarkdownWriter(filename);
                 {
-                    WriteComparison(writer, string.Empty, c);
+                    WriteComparisonFile(writer, string.Empty, c);
                 }
             }
 
         }
 
         Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> resources = Compare(_left.ResourcesByName, _right.ResourcesByName);
-        if (!_config.NoOutput)
+        if (mdWriter is not null)
         {
-            WriteComparison(mdWriter, "Resources", resources);
+            WriteComparisonOverview(mdWriter, "Resources", resources.Values);
 
             string subDir = Path.Combine(outputDir, "Resources");
             if (!Directory.Exists(subDir))
@@ -322,17 +214,17 @@ public class PackageComparer
                         ? Path.Combine(subDir, $"{_leftPrefix}_{c.Left.Name.ToPascalCase()}.md")
                         : Path.Combine(subDir, $"{_leftPrefix}_{c.Left.Name.ToPascalCase()}_{_rightPrefix}_{c.Right.Name.ToPascalCase()}.md");
 
-                using ExportStreamWriter writer = new(filename);
+                using ExportStreamWriter writer = CreateMarkdownWriter(filename);
                 {
-                    WriteComparison(writer, string.Empty, c);
+                    WriteComparisonFile(writer, string.Empty, c);
                 }
             }
         }
 
         Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> logical = Compare(_left.LogicalModelsByName, _right.LogicalModelsByName);
-        if (!_config.NoOutput)
+        if (mdWriter is not null)
         {
-            WriteComparison(mdWriter, "Logical Models", logical);
+            WriteComparisonOverview(mdWriter, "Logical Models", logical.Values);
 
             string subDir = Path.Combine(outputDir, "LogicalModels");
             if (!Directory.Exists(subDir))
@@ -349,9 +241,9 @@ public class PackageComparer
                         ? Path.Combine(subDir, $"{_leftPrefix}_{c.Left.Name.ToPascalCase()}.md")
                         : Path.Combine(subDir, $"{_leftPrefix}_{c.Left.Name.ToPascalCase()}_{_rightPrefix}_{c.Right.Name.ToPascalCase()}.md");
 
-                using ExportStreamWriter writer = new(filename);
+                using ExportStreamWriter writer = CreateMarkdownWriter(filename);
                 {
-                    WriteComparison(writer, string.Empty, c);
+                    WriteComparisonFile(writer, string.Empty, c);
                 }
             }
         }
@@ -369,9 +261,12 @@ public class PackageComparer
             LogicalModels = logical,
         };
 
-        mdWriter.Flush();
-        mdWriter.Close();
-        mdWriter.Dispose();
+        if (mdWriter is not null)
+        {
+            mdWriter.Flush();
+            mdWriter.Close();
+            mdWriter.Dispose();
+        }
 
         if (_config.SaveComparisonResult)
         {
@@ -436,18 +331,16 @@ public class PackageComparer
 
     }
 
-    private string SanitizeForTable(string value) => string.IsNullOrEmpty(value) ? string.Empty : value.Replace("|", "\\|").Replace("\n", "<br/>").Replace("\r", "<br/>");
-
-    private void WriteComparisonSummaryTable<T, U, V>(
+    private void WriteComparisonSummaryTableDict(
         ExportStreamWriter writer,
-        ComparisonRecord<T, U, V> cRec)
+        IEnumerable<IComparisonRecord> values)
     {
         Dictionary<string, int> counts = new Dictionary<string, int>();
 
         // build summary data
-        foreach (ComparisonRecord<U, V> c in cRec.Children.Values)
+        foreach (IComparisonRecord c in values)
         {
-            string status = GetStatusString(c);
+            string status = c.GetStatusString();
             if (!counts.TryGetValue(status, out int count))
             {
                 count = 0;
@@ -466,357 +359,77 @@ public class PackageComparer
         writer.WriteLine();
     }
 
-    private void WriteComparisonSummaryTable<T, U>(
-        ExportStreamWriter writer,
-        ComparisonRecord<T, U> cRec)
-    {
-        Dictionary<string, int> counts = new Dictionary<string, int>();
-
-        // build summary data
-        foreach (ComparisonRecord<U> c in cRec.Children.Values)
-        {
-            string status = GetStatusString(c);
-            if (!counts.TryGetValue(status, out int count))
-            {
-                count = 0;
-            }
-
-            counts[status] = count + 1;
-        }
-
-        writer.WriteLine("| Status | Count |");
-        writer.WriteLine("| ------ | ----- |");
-        foreach ((string status, int count) in counts.OrderBy(kvp => kvp.Key))
-        {
-            writer.WriteLine($"{status} | {count} |");
-        }
-        writer.WriteLine();
-        writer.WriteLine();
-    }
-
-    private void WriteComparisonSummaryTable<T, U>(
-        ExportStreamWriter writer,
-        Dictionary<string, ComparisonRecord<T, U>> dict)
-    {
-        Dictionary<string, int> counts = new Dictionary<string, int>();
-
-        // build summary data
-        foreach (ComparisonRecord<T, U> c in dict.Values)
-        {
-            string status = GetStatusString(c);
-            if (!counts.TryGetValue(status, out int count))
-            {
-                count = 0;
-            }
-
-            counts[status] = count + 1;
-        }
-
-        writer.WriteLine("| Status | Count |");
-        writer.WriteLine("| ------ | ----- |");
-        foreach ((string status, int count) in counts.OrderBy(kvp => kvp.Key))
-        {
-            writer.WriteLine($"{status} | {count} |");
-        }
-        writer.WriteLine();
-        writer.WriteLine();
-    }
-
-    private void WriteComparisonDetailTable<T, U>(
-        ExportStreamWriter writer,
-        ComparisonRecord<T, U> cRec)
-    {
-        writer.WriteLine("| Key | Source | Dest | Status | Message |");
-        writer.WriteLine("| --- | ------ | ---- | ------ | ------- |");
-
-        foreach ((string key, ComparisonRecord<U> c) in cRec.Children.OrderBy(kvp => kvp.Key))
-        {
-            writer.WriteLine(
-                $"{key} |" +
-                $" {(c.Left == null ? "N" : "Y")} |" +
-                $" {(c.Right == null ? "N" : "Y")} |" +
-                $" {GetStatusString(c)} |" +
-                $" {SanitizeForTable(c.Message)} |");
-        }
-
-        writer.WriteLine();
-        writer.WriteLine();
-    }
-
-    private void WriteComparisonDetailTable<T, U, V>(
-        ExportStreamWriter writer,
-        ComparisonRecord<T, U, V> cRec)
-    {
-        writer.WriteLine("| Key | Source | Dest | Status | Message |");
-        writer.WriteLine("| --- | ------ | ---- | ------ | ------- |");
-
-        foreach ((string key, ComparisonRecord<U, V> c) in cRec.Children.OrderBy(kvp => kvp.Key))
-        {
-            writer.WriteLine(
-                $"{key} |" +
-                $" {(c.Left == null ? "N" : "Y")} |" +
-                $" {(c.Right == null ? "N" : "Y")} |" +
-                $" {GetStatusString(c)} |" +
-                $" {SanitizeForTable(c.Message)} |");
-        }
-
-        writer.WriteLine();
-        writer.WriteLine();
-    }
-
-
-    private void WriteComparisonSummaryTable<T, U, V>(
-        ExportStreamWriter writer,
-        Dictionary<string, ComparisonRecord<T, U, V>> dict)
-    {
-        Dictionary<string, int> counts = new Dictionary<string, int>();
-
-        // build summary data
-        foreach (ComparisonRecord<T, U, V> c in dict.Values)
-        {
-            string status = GetStatusString(c);
-            if (!counts.TryGetValue(status, out int count))
-            {
-                count = 0;
-            }
-
-            counts[status] = count + 1;
-        }
-
-        writer.WriteLine("| Status | Count |");
-        writer.WriteLine("| ------ | ----- |");
-        foreach ((string status, int count) in counts.OrderBy(kvp => kvp.Key))
-        {
-            writer.WriteLine($"{status} | {count} |");
-        }
-        writer.WriteLine();
-        writer.WriteLine();
-    }
-
-    private void WriteComparisonDetailTable<T, U>(
-        ExportStreamWriter writer,
-        Dictionary<string, ComparisonRecord<T, U>> dict)
-    {
-        writer.WriteLine("| Key | Source | Dest | Status | Message |");
-        writer.WriteLine("| --- | ------ | ---- | ------ | ------- |");
-
-        foreach ((string key, ComparisonRecord<T, U> c) in dict.OrderBy(kvp => kvp.Key))
-        {
-            writer.WriteLine(
-                $"{key} |" +
-                $" {(c.Left == null ? "N" : "Y")} |" +
-                $" {(c.Right == null ? "N" : "Y")} |" +
-                $" {GetStatusString(c)} |" +
-                $" {SanitizeForTable(c.Message)} |");
-        }
-
-        writer.WriteLine();
-        writer.WriteLine();
-    }
-
-    private void WriteComparisonDetailTable<T, U, V>(
-        ExportStreamWriter writer,
-        Dictionary<string, ComparisonRecord<T, U, V>> dict)
-    {
-        writer.WriteLine("| Key | Source | Dest | Status | Message |");
-        writer.WriteLine("| --- | ------ | ---- | ------ | ------- |");
-
-        foreach ((string key, ComparisonRecord<T, U, V> c) in dict.OrderBy(kvp => kvp.Key))
-        {
-            writer.WriteLine(
-                $"{key} |" +
-                $" {(c.Left == null ? "N" : "Y")} |" +
-                $" {(c.Right == null ? "N" : "Y")} |" +
-                $" {GetStatusString(c)} |" +
-                $" {SanitizeForTable(c.Message)} |");
-        }
-
-        writer.WriteLine();
-        writer.WriteLine();
-    }
-
-
-    private void WriteComparison(
+    private void WriteComparisonOverview(
         ExportStreamWriter writer,
         string header,
-        Dictionary<string, ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>> comparisonDict)
+        IEnumerable<IComparisonRecord> values)
     {
         writer.WriteLine("## " + header);
 
-        WriteComparisonSummaryTable(writer, comparisonDict);
-        WriteComparisonDetailTable(writer, comparisonDict);
-    }
+        WriteComparisonSummaryTableDict(writer, values);
 
-    private void WriteComparisonObjectHeader(
-        ExportStreamWriter writer,
-        ValueSetInfoRec? left,
-        ValueSetInfoRec? right,
-        CMR? relationship)
-    {
-        writer.WriteLine("| Side | Name | Url | Title | Description |");
-        writer.WriteLine("| ---- | ---- | --- | ----- | ----------- |");
+        writer.WriteLine("<details>");
+        writer.WriteLine("<summary>Entry details</summary>");
 
+        writer.WriteLine();
 
-        if (left is null)
-        {
-            writer.WriteLine("Source | - | - | - | - |");
-        }
-        else
-        {
-            writer.WriteLine($"Source | {left.Name} | {left.Url} | {SanitizeForTable(left.Title)} | {SanitizeForTable(left.Description)} |");
-        }
+        writer.WriteLine("| Key | Source | Dest | Status | Message |");
+        writer.WriteLine("| --- | ------ | ---- | ------ | ------- |");
 
-        if (right is null)
+        foreach (IComparisonRecord c in values.OrderBy(cr => cr.Key))
         {
-            writer.WriteLine($"Destination | - | - | - | - |");
-        }
-        else
-        {
-            writer.WriteLine($"Destination | {right.Name} | {right.Url} | {SanitizeForTable(right.Title)} | {SanitizeForTable(right.Description)} |");
+            writer.WriteLine(c.GetMarkdownDetailTableRow());
         }
 
         writer.WriteLine();
-        writer.WriteLine($"#### Comparison Result: {GetStatusString(left, right, relationship)}");
-        writer.WriteLine();
+
+        writer.WriteLine("</details>");
         writer.WriteLine();
     }
 
-    private void WriteComparisonObjectHeader(
-        ExportStreamWriter writer,
-        StructureInfoRec? left,
-        StructureInfoRec? right,
-        CMR? relationship)
-    {
-        writer.WriteLine("| Side | Name | Title | Description | Snapshot | Differential |");
-        writer.WriteLine("| ---- | ---- | ----- | ----------- | -------- | ------------ |");
-
-
-        if (left is null)
-        {
-            writer.WriteLine("Source | - | - | - | - | - |");
-        }
-        else
-        {
-            writer.WriteLine($"Source | {left.Name} | {SanitizeForTable(left.Title)} | {SanitizeForTable(left.Description)} | {left.SnapshotCount} | {left.DifferentialCount} |");
-        }
-
-        if (right is null)
-        {
-            writer.WriteLine("Destination | - | - | - | - | - |");
-        }
-        else
-        {
-            writer.WriteLine($"Destination | {right.Name} | {SanitizeForTable(right.Title)} | {SanitizeForTable(right.Description)} | {right.SnapshotCount} | {right.DifferentialCount} |");
-        }
-
-        writer.WriteLine();
-        writer.WriteLine($"Comparison Result: {GetStatusString(left, right, relationship)}");
-        writer.WriteLine();
-        writer.WriteLine();
-    }
-
-    private void WriteComparison(
+    private void WriteComparisonFile(
         ExportStreamWriter writer,
         string header,
-        ComparisonRecord<ValueSetInfoRec, ConceptInfoRec> cRec)
+        IComparisonRecord cRec)
     {
-        writer.WriteLine($"Comparison of {_left.MainPackageId}#{_left.MainPackageVersion} and {_right.MainPackageId}#{_right.MainPackageVersion}");
-        writer.WriteLine($"Generated at {DateTime.Now.ToString("F")}");
-        writer.WriteLine();
-
         if (!string.IsNullOrEmpty(header))
         {
             writer.WriteLine("## " + header);
         }
 
-        WriteComparisonObjectHeader(writer, cRec.Left, cRec.Right, cRec.Relationship);
-        WriteComparisonSummaryTable(writer, cRec);
-        WriteComparisonDetailTable(writer, cRec);
-    }
+        writer.WriteLine(cRec.GetMarkdownTable());
 
-    private void WriteComparison(
-        ExportStreamWriter writer,
-        string header,
-        Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> comparisonDict)
-    {
-        writer.WriteLine("## " + header);
-
-        WriteComparisonSummaryTable(writer, comparisonDict);
-        WriteComparisonDetailTable(writer, comparisonDict);
-    }
-
-    private void WriteComparison(
-        ExportStreamWriter writer,
-        string header,
-        ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec> cRec)
-    {
-        writer.WriteLine($"Comparison of {_left.MainPackageId}#{_left.MainPackageVersion} and {_right.MainPackageId}#{_right.MainPackageVersion}");
-        writer.WriteLine($"Generated at {DateTime.Now.ToString("F")}");
+        writer.WriteLine();
+        writer.WriteLine($"#### Comparison Result: {cRec.GetStatusString()}");
+        writer.WriteLine();
         writer.WriteLine();
 
-        if (!string.IsNullOrEmpty(header))
-        {
-            writer.WriteLine("## " + header);
-        }
-
-        WriteComparisonObjectHeader(writer, cRec.Left, cRec.Right, cRec.Relationship);
-        WriteComparisonSummaryTable(writer, cRec);
-        WriteComparisonDetailTable(writer, cRec);
-
-        //writer.WriteLine("| Key | Name | Path | Short | Card | Binding | Status | Name | Path | Short | Card | Binding |");
-        //writer.WriteLine("| --- | ---- | ---- | ----- | ---- | ------- | ------ | ---- | ---- | ----- | ---- | ------- |");
-
-        //foreach ((string key, ComparisonRecord<ElementInfoRec, ElementTypeInfoRec> c) in cRec.Children.OrderBy(kvp => kvp.Key))
-        //{
-        //    string l = c.Left is null
-        //        ? "- | - | - | - | -" :
-        //        $"{c.Left.Name} |" +
-        //        $" {c.Left.Path} |" +
-        //        $" {SanitizeForTable(c.Left.Short)} |" +
-        //        $" {c.Left.MinCardinality}..{(c.Left.MaxCardinality == -1 ? "*" : c.Left.MaxCardinality.ToString())} |" +
-        //        $" {c.Left.BindingValueSet}";
-
-        //    string r = c.Right is null
-        //        ? "- | - | - | - | -" :
-        //        $"{c.Right.Name} |" +
-        //        $" {c.Right.Path} |" +
-        //        $" {SanitizeForTable(c.Right.Short)} |" +
-        //        $" {c.Right.MinCardinality}..{(c.Right.MaxCardinality == -1 ? "*" : c.Right.MaxCardinality.ToString())} |" +
-        //        $" {c.Right.BindingValueSet}";
-
-        //    writer.WriteLine($"{key} | {l} | {GetStatusString(c)} | {r} |");
-
-        //    // write our type info
-        //    writer.WriteLine($"| - Type Details <td colspan=11>{GetTypeString(c.Children)}");
-        //}
+        writer.WriteLine(cRec.GetMarkdownSummaryTable());
+        writer.WriteLine(cRec.GetMarkdownDetailTable());
     }
 
 
-    private string GetStatusString(object? left, object? right, CMR? relationship)
+    private ExportStreamWriter CreateMarkdownWriter(string filename, bool writeGenerationHeader = true)
     {
-        if (left is null)
+        ExportStreamWriter writer = new(filename);
+
+        if (writeGenerationHeader)
         {
-            return "Added";
+            writer.WriteLine($"Comparison of {_left.MainPackageId}#{_left.MainPackageVersion} and {_right.MainPackageId}#{_right.MainPackageVersion}");
+            writer.WriteLine($"Generated at {DateTime.Now.ToString("F")}");
+            writer.WriteLine();
         }
 
-        if (right is null)
-        {
-            return "Removed";
-        }
-
-        return relationship?.ToString() ?? "-";
+        return writer;
     }
 
-    private string GetStatusString<T,U,V>(ComparisonRecord<T, U, V> c) => GetStatusString(c.Left, c.Right, c.Relationship);
-    private string GetStatusString<T,U>(ComparisonRecord<T, U> c) => GetStatusString(c.Left, c.Right, c.Relationship);
-    private string GetStatusString<T>(ComparisonRecord<T> c) => GetStatusString(c.Left, c.Right, c.Relationship);
 
     private void LoadKnownChanges()
     {
         // TODO(ginoc): implement
     }
 
-    private bool TryCompare(ConceptInfoRec? left, ConceptInfoRec? right, [NotNullWhen(true)] out ComparisonRecord<ConceptInfoRec>? c)
+    private bool TryCompare(string conceptCode, ConceptInfoRec? left, ConceptInfoRec? right, [NotNullWhen(true)] out ComparisonRecord<ConceptInfoRec>? c)
     {
         if ((left is null) && (right is null))
         {
@@ -828,11 +441,12 @@ public class PackageComparer
         {
             c = new()
             {
+                Key = conceptCode,
                 Left = null,
                 Right = right,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_rightPrefix} added code {right!.Code}",
+                Message = $"{_rightPrefix} added code {conceptCode}",
             };
             return true;
         }
@@ -841,11 +455,12 @@ public class PackageComparer
         {
             c = new()
             {
+                Key = conceptCode,
                 Left = left,
                 Right = null,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_rightPrefix} removed code {left.Code}",
+                Message = $"{_rightPrefix} removed code {conceptCode}",
             };
             return true;
         }
@@ -869,6 +484,7 @@ public class PackageComparer
         // note that we can only be here if the codes have already matched, so we are always equivalent
         c = new()
         {
+            Key = conceptCode,
             Left = left,
             Right = right,
             NamedMatch = true,
@@ -887,10 +503,10 @@ public class PackageComparer
     /// <param name="c">The comparison record of the elements.</param>
     /// <returns>True if the comparison is successful, false otherwise.</returns>
     private bool TryCompare(
-            string elementName,
-            ElementTypeInfoRec? left,
-            ElementTypeInfoRec? right,
-            [NotNullWhen(true)] out ComparisonRecord<ElementTypeInfoRec>? c)
+        string typeName,
+        ElementTypeInfoRec? left,
+        ElementTypeInfoRec? right,
+        [NotNullWhen(true)] out ComparisonRecord<ElementTypeInfoRec>? c)
     {
         if ((left is null) && (right is null))
         {
@@ -902,11 +518,12 @@ public class PackageComparer
         {
             c = new()
             {
+                Key = typeName,
                 Left = null,
                 Right = right,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_rightPrefix}:{elementName} added type {right!.Name}",
+                Message = $"{_rightPrefix} added type {typeName}",
             };
             return true;
         }
@@ -915,11 +532,12 @@ public class PackageComparer
         {
             c = new()
             {
+                Key = typeName,
                 Left = left,
                 Right = null,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_rightPrefix}:{elementName} removed type {left.Name}",
+                Message = $"{_rightPrefix} removed type {typeName}",
             };
             return true;
         }
@@ -996,11 +614,12 @@ public class PackageComparer
         }
 
         string message = messages.Count == 0
-            ? $"{_rightPrefix}:{elementName} type {right.Name} is equivalent."
-            : $"{_rightPrefix}:{elementName} type " + string.Join(" and ", messages);
+            ? $"{_rightPrefix} type {right.Name} is equivalent."
+            : $"{_rightPrefix} type " + string.Join(" and ", messages);
 
         c = new()
         {
+            Key = typeName,
             Left = left,
             Right = right,
             NamedMatch = true,
@@ -1039,6 +658,7 @@ public class PackageComparer
         {
             c = new()
             {
+                Key = url,
                 Left = null,
                 Right = right,
                 NamedMatch = false,
@@ -1053,6 +673,7 @@ public class PackageComparer
         {
             c = new()
             {
+                Key = url,
                 Left = left,
                 Right = null,
                 NamedMatch = false,
@@ -1068,6 +689,7 @@ public class PackageComparer
         {
             c = new()
             {
+                Key = url,
                 Left = left,
                 Right = right,
                 NamedMatch = true,
@@ -1112,6 +734,7 @@ public class PackageComparer
 
         c = new()
         {
+            Key = url,
             Left = left,
             Right = right,
             NamedMatch = true,
@@ -1123,7 +746,7 @@ public class PackageComparer
     }
 
     private bool TryCompare(
-        string path,
+        string edPath,
         ElementInfoRec? left,
         ElementInfoRec? right,
         Dictionary<string, ComparisonRecord<ElementTypeInfoRec>> typeComparison,
@@ -1139,11 +762,12 @@ public class PackageComparer
         {
             c = new()
             {
+                Key = edPath,
                 Left = null,
                 Right = right,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_rightPrefix} added element {path}",
+                Message = $"{_rightPrefix} added element {edPath}",
                 Children = typeComparison,
             };
             return true;
@@ -1153,11 +777,12 @@ public class PackageComparer
         {
             c = new()
             {
+                Key = edPath,
                 Left = left,
                 Right = null,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_rightPrefix} removed element {path}",
+                Message = $"{_rightPrefix} removed element {edPath}",
                 Children = typeComparison,
             };
             return true;
@@ -1390,12 +1015,13 @@ public class PackageComparer
 
         // build our message
         string message = messages.Count == 0
-            ? $"{_rightPrefix}:{path} is equivalent."
-            : $"{_rightPrefix}:{path} " + string.Join(" and ", messages);
+            ? $"{_rightPrefix}:{edPath} is equivalent."
+            : $"{_rightPrefix}:{edPath} " + string.Join(" and ", messages);
 
         // return our info
         c = new()
         {
+            Key = edPath,
             Left = left,
             Right = right,
             NamedMatch = true,
@@ -1408,7 +1034,7 @@ public class PackageComparer
 
 
     private bool TryCompare(
-        string name,
+        string sdName,
         StructureInfoRec? left,
         StructureInfoRec? right,
         Dictionary<string, ComparisonRecord<ElementInfoRec, ElementTypeInfoRec>> elementComparison,
@@ -1424,11 +1050,12 @@ public class PackageComparer
         {
             c = new()
             {
+                Key = sdName,
                 Left = null,
                 Right = right,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_rightPrefix} added {name}",
+                Message = $"{_rightPrefix} added {sdName}",
                 Children = elementComparison,
             };
             return true;
@@ -1438,11 +1065,12 @@ public class PackageComparer
         {
             c = new()
             {
+                Key = sdName,
                 Left = left,
                 Right = null,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_rightPrefix} removed {name}",
+                Message = $"{_rightPrefix} removed {sdName}",
                 Children = elementComparison,
             };
             return true;
@@ -1453,11 +1081,12 @@ public class PackageComparer
         {
             c = new()
             {
+                Key = sdName,
                 Left = left,
                 Right = right,
                 NamedMatch = true,
                 Relationship = CMR.Equivalent,
-                Message = $"{_rightPrefix}:{name} is equivalent",
+                Message = $"{_rightPrefix}:{sdName} is equivalent",
                 Children = elementComparison,
             };
             return true;
@@ -1489,15 +1118,16 @@ public class PackageComparer
 
         string message = relationship switch
         {
-            CMR.Equivalent => $"{_rightPrefix}:{name} is equivalent",
-            CMR.RelatedTo => $"{_rightPrefix}:{name} is related to {_leftPrefix}:{name} (see elements for details)",
-            CMR.SourceIsNarrowerThanTarget => $"{_rightPrefix}:{name} subsumes {_leftPrefix}:{name}",
-            CMR.SourceIsBroaderThanTarget => $"{_rightPrefix}:{name} is subsumed by {_leftPrefix}:{name}",
-            _ => $"{_rightPrefix}:{name} is related to {_leftPrefix}:{name} (see elements for details)",
+            CMR.Equivalent => $"{_rightPrefix}:{sdName} is equivalent",
+            CMR.RelatedTo => $"{_rightPrefix}:{sdName} is related to {_leftPrefix}:{sdName} (see elements for details)",
+            CMR.SourceIsNarrowerThanTarget => $"{_rightPrefix}:{sdName} subsumes {_leftPrefix}:{sdName}",
+            CMR.SourceIsBroaderThanTarget => $"{_rightPrefix}:{sdName} is subsumed by {_leftPrefix}:{sdName}",
+            _ => $"{_rightPrefix}:{sdName} is related to {_leftPrefix}:{sdName} (see elements for details)",
         };
 
         c = new()
         {
+            Key = sdName,
             Left = left,
             Right = right,
             NamedMatch = true,
@@ -1519,14 +1149,14 @@ public class PackageComparer
 
         IEnumerable<string> keys = left.Keys.Union(right.Keys).Distinct();
 
-        foreach (string key in keys)
+        foreach (string conceptCode in keys)
         {
-            _ = left.TryGetValue(key, out ConceptInfoRec? leftInfo);
-            _ = right.TryGetValue(key, out ConceptInfoRec? rightInfo);
+            _ = left.TryGetValue(conceptCode, out ConceptInfoRec? leftInfo);
+            _ = right.TryGetValue(conceptCode, out ConceptInfoRec? rightInfo);
 
-            if (TryCompare(leftInfo, rightInfo, out ComparisonRecord<ConceptInfoRec>? c))
+            if (TryCompare(conceptCode, leftInfo, rightInfo, out ComparisonRecord<ConceptInfoRec>? c))
             {
-                comparison.Add(key, c);
+                comparison.Add(conceptCode, c);
             }
         }
 
@@ -1544,15 +1174,15 @@ public class PackageComparer
 
         IEnumerable<string> keys = left.Keys.Union(right.Keys).Distinct();
 
-        foreach (string key in keys)
+        foreach (string url in keys)
         {
-            _ = left.TryGetValue(key, out ValueSetInfoRec? leftInfo);
-            _ = right.TryGetValue(key, out ValueSetInfoRec? rightInfo);
+            _ = left.TryGetValue(url, out ValueSetInfoRec? leftInfo);
+            _ = right.TryGetValue(url, out ValueSetInfoRec? rightInfo);
 
             Dictionary<string, FhirConcept> leftConcepts = [];
             Dictionary<string, FhirConcept> rightConcepts = [];
 
-            if (leftInput.TryGetValue(key, out ValueSet? leftVs))
+            if (leftInput.TryGetValue(url, out ValueSet? leftVs))
             {
                 IEnumerable<FhirConcept> flat = leftVs.cgGetFlatConcepts(_left);
                 foreach (FhirConcept concept in flat)
@@ -1561,10 +1191,10 @@ public class PackageComparer
                 }
 
                 leftInfo = leftInfo! with { ConceptCount = leftConcepts.Count };
-                left[key] = leftInfo;
+                left[url] = leftInfo;
             }
 
-            if (rightInput.TryGetValue(key, out ValueSet? rightVs))
+            if (rightInput.TryGetValue(url, out ValueSet? rightVs))
             {
                 IEnumerable<FhirConcept> flat = rightVs.cgGetFlatConcepts(_left);
                 foreach (FhirConcept concept in flat)
@@ -1573,15 +1203,15 @@ public class PackageComparer
                 }
 
                 rightInfo = rightInfo! with { ConceptCount = rightConcepts.Count };
-                right[key] = rightInfo;
+                right[url] = rightInfo;
             }
 
             // compare our concepts
             Dictionary<string, ComparisonRecord<ConceptInfoRec>> conceptComparison = Compare(leftConcepts, rightConcepts);
 
-            if (TryCompare(key, leftInfo, rightInfo, conceptComparison, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? c))
+            if (TryCompare(url, leftInfo, rightInfo, conceptComparison, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? c))
             {
-                comparison.Add(key, c);
+                comparison.Add(url, c);
             }
         }
 
@@ -1600,14 +1230,14 @@ public class PackageComparer
         IEnumerable<string> keys = left.Keys.Union(right.Keys).Distinct();
 
         // add our comparisons
-        foreach (string key in keys)
+        foreach (string typeName in keys)
         {
-            _ = left.TryGetValue(key, out ElementTypeInfoRec? leftInfo);
-            _ = right.TryGetValue(key, out ElementTypeInfoRec? rightInfo);
+            _ = left.TryGetValue(typeName, out ElementTypeInfoRec? leftInfo);
+            _ = right.TryGetValue(typeName, out ElementTypeInfoRec? rightInfo);
 
-            if (TryCompare(key, leftInfo, rightInfo, out ComparisonRecord<ElementTypeInfoRec>? c))
+            if (TryCompare(typeName, leftInfo, rightInfo, out ComparisonRecord<ElementTypeInfoRec>? c))
             {
-                comparison.Add(key, c);
+                comparison.Add(typeName, c);
             }
         }
 
@@ -1626,12 +1256,12 @@ public class PackageComparer
         IEnumerable<string> keys = leftInfoDict.Keys.Union(rightInfoDict.Keys).Distinct();
 
         // add our matches
-        foreach (string key in keys)
+        foreach (string edPath in keys)
         {
             IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> leftTypes;
             IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> rightTypes;
 
-            if (leftDict.TryGetValue(key, out ElementDefinition? leftEd))
+            if (leftDict.TryGetValue(edPath, out ElementDefinition? leftEd))
             {
                 leftTypes = leftEd.cgTypes();
             }
@@ -1640,7 +1270,7 @@ public class PackageComparer
                 leftTypes = new Dictionary<string, ElementDefinition.TypeRefComponent>();
             }
 
-            if (rightDict.TryGetValue(key, out ElementDefinition? rightEd))
+            if (rightDict.TryGetValue(edPath, out ElementDefinition? rightEd))
             {
                 rightTypes = rightEd.cgTypes();
             }
@@ -1649,15 +1279,15 @@ public class PackageComparer
                 rightTypes = new Dictionary<string, ElementDefinition.TypeRefComponent>();
             }
 
-            _ = leftInfoDict.TryGetValue(key, out ElementInfoRec? leftInfo);
-            _ = rightInfoDict.TryGetValue(key, out ElementInfoRec? rightInfo);
+            _ = leftInfoDict.TryGetValue(edPath, out ElementInfoRec? leftInfo);
+            _ = rightInfoDict.TryGetValue(edPath, out ElementInfoRec? rightInfo);
 
             // perform type comparison
             Dictionary<string, ComparisonRecord<ElementTypeInfoRec>> typeComparison = Compare(leftTypes, rightTypes);
 
-            if (TryCompare(key, leftInfo, rightInfo, typeComparison, out ComparisonRecord<ElementInfoRec, ElementTypeInfoRec>? c))
+            if (TryCompare(edPath, leftInfo, rightInfo, typeComparison, out ComparisonRecord<ElementInfoRec, ElementTypeInfoRec>? c))
             {
-                comparison.Add(key, c);
+                comparison.Add(edPath, c);
             }
         }
 
@@ -1676,15 +1306,15 @@ public class PackageComparer
         IEnumerable<string> keys = left.Keys.Union(right.Keys).Distinct();
 
         // add our matches
-        foreach (string key in keys)
+        foreach (string sdName in keys)
         {
-            _ = left.TryGetValue(key, out StructureInfoRec? leftInfo);
-            _ = right.TryGetValue(key, out StructureInfoRec? rightInfo);
+            _ = left.TryGetValue(sdName, out StructureInfoRec? leftInfo);
+            _ = right.TryGetValue(sdName, out StructureInfoRec? rightInfo);
 
             Dictionary<string, ElementDefinition> leftElements;
             Dictionary<string, ElementDefinition> rightElements;
 
-            if (leftInput.TryGetValue(key, out StructureDefinition? leftSd))
+            if (leftInput.TryGetValue(sdName, out StructureDefinition? leftSd))
             {
                 leftElements = leftSd.cgElements().ToDictionary(e => e.Path);
             }
@@ -1693,7 +1323,7 @@ public class PackageComparer
                 leftElements = [];
             }
 
-            if (rightInput.TryGetValue(key, out StructureDefinition? rightSd))
+            if (rightInput.TryGetValue(sdName, out StructureDefinition? rightSd))
             {
                 rightElements = rightSd.cgElements().ToDictionary(e => e.Path);
             }
@@ -1705,9 +1335,9 @@ public class PackageComparer
             // perform element comparison
             Dictionary<string, ComparisonRecord<ElementInfoRec, ElementTypeInfoRec>> elementComparison = Compare(leftElements, rightElements);
 
-            if (TryCompare(key, leftInfo, rightInfo, elementComparison, out ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>? c))
+            if (TryCompare(sdName, leftInfo, rightInfo, elementComparison, out ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>? c))
             {
-                comparison.Add(key, c);
+                comparison.Add(sdName, c);
             }
         }
 
