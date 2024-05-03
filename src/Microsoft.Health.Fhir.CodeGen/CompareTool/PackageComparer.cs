@@ -15,6 +15,7 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
+using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Model;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
@@ -24,7 +25,7 @@ using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using static Hl7.Fhir.Model.VerificationResult;
 using static Microsoft.Health.Fhir.CodeGen.CompareTool.PackageComparer;
-using static Microsoft.Health.Fhir.CodeGen.Language.OpenApi.OpenApiCommon;
+using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 
 namespace Microsoft.Health.Fhir.CodeGen.CompareTool;
 
@@ -82,6 +83,7 @@ public class PackageComparer
 
         public required int MinCardinality { get; init; }
         public required int MaxCardinality { get; init; }
+        public required string MaxCardinalityString { get; init; }
 
         public required BindingStrength? ValueSetBindingStrength { get; init; }
 
@@ -119,7 +121,7 @@ public class PackageComparer
         public required T? Left { get; init; }
         public required T? Right { get; init; }
         public required bool NamedMatch { get; init; }
-        public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; init; }
+        public required CMR? Relationship { get; init; }
         public required string Message { get; init; }
 
         //public T? AiPrediction { get; init; }
@@ -131,7 +133,7 @@ public class PackageComparer
         public required T? Left { get; init; }
         public required T? Right { get; init; }
         public required bool NamedMatch { get; init; }
-        public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; init; }
+        public required CMR? Relationship { get; init; }
         public required string Message { get; init; }
         public required Dictionary<string, ComparisonRecord<U>> Children { get; init; }
 
@@ -144,7 +146,7 @@ public class PackageComparer
 
         public required bool NamedMatch { get; init; }
 
-        public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; init; }
+        public required CMR? Relationship { get; init; }
         public required string Message { get; init; }
         public required Dictionary<string, ComparisonRecord<U, V>> Children { get; init; }
     }
@@ -434,7 +436,205 @@ public class PackageComparer
 
     }
 
-    private string SanitizeForTable(string value) => value.Replace("|", "\\|").Replace('\n', ' ').Replace('\r', ' ');
+    private string SanitizeForTable(string value) => string.IsNullOrEmpty(value) ? string.Empty : value.Replace("|", "\\|").Replace("\n", "<br/>").Replace("\r", "<br/>");
+
+    private void WriteComparisonSummaryTable<T, U, V>(
+        ExportStreamWriter writer,
+        ComparisonRecord<T, U, V> cRec)
+    {
+        Dictionary<string, int> counts = new Dictionary<string, int>();
+
+        // build summary data
+        foreach (ComparisonRecord<U, V> c in cRec.Children.Values)
+        {
+            string status = GetStatusString(c);
+            if (!counts.TryGetValue(status, out int count))
+            {
+                count = 0;
+            }
+
+            counts[status] = count + 1;
+        }
+
+        writer.WriteLine("| Status | Count |");
+        writer.WriteLine("| ------ | ----- |");
+        foreach ((string status, int count) in counts.OrderBy(kvp => kvp.Key))
+        {
+            writer.WriteLine($"{status} | {count} |");
+        }
+        writer.WriteLine();
+        writer.WriteLine();
+    }
+
+    private void WriteComparisonSummaryTable<T, U>(
+        ExportStreamWriter writer,
+        ComparisonRecord<T, U> cRec)
+    {
+        Dictionary<string, int> counts = new Dictionary<string, int>();
+
+        // build summary data
+        foreach (ComparisonRecord<U> c in cRec.Children.Values)
+        {
+            string status = GetStatusString(c);
+            if (!counts.TryGetValue(status, out int count))
+            {
+                count = 0;
+            }
+
+            counts[status] = count + 1;
+        }
+
+        writer.WriteLine("| Status | Count |");
+        writer.WriteLine("| ------ | ----- |");
+        foreach ((string status, int count) in counts.OrderBy(kvp => kvp.Key))
+        {
+            writer.WriteLine($"{status} | {count} |");
+        }
+        writer.WriteLine();
+        writer.WriteLine();
+    }
+
+    private void WriteComparisonSummaryTable<T, U>(
+        ExportStreamWriter writer,
+        Dictionary<string, ComparisonRecord<T, U>> dict)
+    {
+        Dictionary<string, int> counts = new Dictionary<string, int>();
+
+        // build summary data
+        foreach (ComparisonRecord<T, U> c in dict.Values)
+        {
+            string status = GetStatusString(c);
+            if (!counts.TryGetValue(status, out int count))
+            {
+                count = 0;
+            }
+
+            counts[status] = count + 1;
+        }
+
+        writer.WriteLine("| Status | Count |");
+        writer.WriteLine("| ------ | ----- |");
+        foreach ((string status, int count) in counts.OrderBy(kvp => kvp.Key))
+        {
+            writer.WriteLine($"{status} | {count} |");
+        }
+        writer.WriteLine();
+        writer.WriteLine();
+    }
+
+    private void WriteComparisonDetailTable<T, U>(
+        ExportStreamWriter writer,
+        ComparisonRecord<T, U> cRec)
+    {
+        writer.WriteLine("| Key | Source | Dest | Status | Message |");
+        writer.WriteLine("| --- | ------ | ---- | ------ | ------- |");
+
+        foreach ((string key, ComparisonRecord<U> c) in cRec.Children.OrderBy(kvp => kvp.Key))
+        {
+            writer.WriteLine(
+                $"{key} |" +
+                $" {(c.Left == null ? "N" : "Y")} |" +
+                $" {(c.Right == null ? "N" : "Y")} |" +
+                $" {GetStatusString(c)} |" +
+                $" {SanitizeForTable(c.Message)} |");
+        }
+
+        writer.WriteLine();
+        writer.WriteLine();
+    }
+
+    private void WriteComparisonDetailTable<T, U, V>(
+        ExportStreamWriter writer,
+        ComparisonRecord<T, U, V> cRec)
+    {
+        writer.WriteLine("| Key | Source | Dest | Status | Message |");
+        writer.WriteLine("| --- | ------ | ---- | ------ | ------- |");
+
+        foreach ((string key, ComparisonRecord<U, V> c) in cRec.Children.OrderBy(kvp => kvp.Key))
+        {
+            writer.WriteLine(
+                $"{key} |" +
+                $" {(c.Left == null ? "N" : "Y")} |" +
+                $" {(c.Right == null ? "N" : "Y")} |" +
+                $" {GetStatusString(c)} |" +
+                $" {SanitizeForTable(c.Message)} |");
+        }
+
+        writer.WriteLine();
+        writer.WriteLine();
+    }
+
+
+    private void WriteComparisonSummaryTable<T, U, V>(
+        ExportStreamWriter writer,
+        Dictionary<string, ComparisonRecord<T, U, V>> dict)
+    {
+        Dictionary<string, int> counts = new Dictionary<string, int>();
+
+        // build summary data
+        foreach (ComparisonRecord<T, U, V> c in dict.Values)
+        {
+            string status = GetStatusString(c);
+            if (!counts.TryGetValue(status, out int count))
+            {
+                count = 0;
+            }
+
+            counts[status] = count + 1;
+        }
+
+        writer.WriteLine("| Status | Count |");
+        writer.WriteLine("| ------ | ----- |");
+        foreach ((string status, int count) in counts.OrderBy(kvp => kvp.Key))
+        {
+            writer.WriteLine($"{status} | {count} |");
+        }
+        writer.WriteLine();
+        writer.WriteLine();
+    }
+
+    private void WriteComparisonDetailTable<T, U>(
+        ExportStreamWriter writer,
+        Dictionary<string, ComparisonRecord<T, U>> dict)
+    {
+        writer.WriteLine("| Key | Source | Dest | Status | Message |");
+        writer.WriteLine("| --- | ------ | ---- | ------ | ------- |");
+
+        foreach ((string key, ComparisonRecord<T, U> c) in dict.OrderBy(kvp => kvp.Key))
+        {
+            writer.WriteLine(
+                $"{key} |" +
+                $" {(c.Left == null ? "N" : "Y")} |" +
+                $" {(c.Right == null ? "N" : "Y")} |" +
+                $" {GetStatusString(c)} |" +
+                $" {SanitizeForTable(c.Message)} |");
+        }
+
+        writer.WriteLine();
+        writer.WriteLine();
+    }
+
+    private void WriteComparisonDetailTable<T, U, V>(
+        ExportStreamWriter writer,
+        Dictionary<string, ComparisonRecord<T, U, V>> dict)
+    {
+        writer.WriteLine("| Key | Source | Dest | Status | Message |");
+        writer.WriteLine("| --- | ------ | ---- | ------ | ------- |");
+
+        foreach ((string key, ComparisonRecord<T, U, V> c) in dict.OrderBy(kvp => kvp.Key))
+        {
+            writer.WriteLine(
+                $"{key} |" +
+                $" {(c.Left == null ? "N" : "Y")} |" +
+                $" {(c.Right == null ? "N" : "Y")} |" +
+                $" {GetStatusString(c)} |" +
+                $" {SanitizeForTable(c.Message)} |");
+        }
+
+        writer.WriteLine();
+        writer.WriteLine();
+    }
+
 
     private void WriteComparison(
         ExportStreamWriter writer,
@@ -442,19 +642,75 @@ public class PackageComparer
         Dictionary<string, ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>> comparisonDict)
     {
         writer.WriteLine("## " + header);
-        writer.WriteLine("| Key | Name | Description | Concepts | Status | Name | Description | Concepts |");
-        writer.WriteLine("| --- | ---- | ----------- | -------- | ------ | ---- | ----------- | -------- |");
 
-        foreach ((string key, ComparisonRecord<ValueSetInfoRec, ConceptInfoRec> c) in comparisonDict.OrderBy(kvp => kvp.Key))
+        WriteComparisonSummaryTable(writer, comparisonDict);
+        WriteComparisonDetailTable(writer, comparisonDict);
+    }
+
+    private void WriteComparisonObjectHeader(
+        ExportStreamWriter writer,
+        ValueSetInfoRec? left,
+        ValueSetInfoRec? right,
+        CMR? relationship)
+    {
+        writer.WriteLine("| Side | Name | Url | Title | Description |");
+        writer.WriteLine("| ---- | ---- | --- | ----- | ----------- |");
+
+
+        if (left is null)
         {
-            writer.WriteLine(
-                $"{key} |" +
-                $" {c.Left?.Name ?? "-"} | {SanitizeForTable(c.Left?.Description ?? "-")} | {c.Left?.ConceptCount.ToString() ?? "-"} |" +
-                $" {GetStatusString(c)} |" +
-                $" {c.Right?.Name ?? "-"} | {SanitizeForTable(c.Right?.Description ?? "-")} | {c.Right?.ConceptCount.ToString() ?? "-"} |");
+            writer.WriteLine("Source | - | - | - | - |");
+        }
+        else
+        {
+            writer.WriteLine($"Source | {left.Name} | {left.Url} | {SanitizeForTable(left.Title)} | {SanitizeForTable(left.Description)} |");
+        }
+
+        if (right is null)
+        {
+            writer.WriteLine($"Destination | - | - | - | - |");
+        }
+        else
+        {
+            writer.WriteLine($"Destination | {right.Name} | {right.Url} | {SanitizeForTable(right.Title)} | {SanitizeForTable(right.Description)} |");
         }
 
         writer.WriteLine();
+        writer.WriteLine($"#### Comparison Result: {GetStatusString(left, right, relationship)}");
+        writer.WriteLine();
+        writer.WriteLine();
+    }
+
+    private void WriteComparisonObjectHeader(
+        ExportStreamWriter writer,
+        StructureInfoRec? left,
+        StructureInfoRec? right,
+        CMR? relationship)
+    {
+        writer.WriteLine("| Side | Name | Title | Description | Snapshot | Differential |");
+        writer.WriteLine("| ---- | ---- | ----- | ----------- | -------- | ------------ |");
+
+
+        if (left is null)
+        {
+            writer.WriteLine("Source | - | - | - | - | - |");
+        }
+        else
+        {
+            writer.WriteLine($"Source | {left.Name} | {SanitizeForTable(left.Title)} | {SanitizeForTable(left.Description)} | {left.SnapshotCount} | {left.DifferentialCount} |");
+        }
+
+        if (right is null)
+        {
+            writer.WriteLine("Destination | - | - | - | - | - |");
+        }
+        else
+        {
+            writer.WriteLine($"Destination | {right.Name} | {SanitizeForTable(right.Title)} | {SanitizeForTable(right.Description)} | {right.SnapshotCount} | {right.DifferentialCount} |");
+        }
+
+        writer.WriteLine();
+        writer.WriteLine($"Comparison Result: {GetStatusString(left, right, relationship)}");
         writer.WriteLine();
         writer.WriteLine();
     }
@@ -473,36 +729,9 @@ public class PackageComparer
             writer.WriteLine("## " + header);
         }
 
-        if (cRec.Left is not null)
-        {
-            writer.WriteLine($"* Left: {cRec.Left.Name} - {cRec.Left.Url}");
-            writer.WriteLine($"  {cRec.Left.Title}");
-            writer.WriteLine($"  {cRec.Left.Description}");
-        }
-
-        if (cRec.Right is not null)
-        {
-            writer.WriteLine($"* Right: {cRec.Right.Name} - {cRec.Right.Url}");
-            writer.WriteLine($"  {cRec.Right.Title}");
-            writer.WriteLine($"  {cRec.Right.Description}");
-        }
-
-        writer.WriteLine($"* Result: {GetStatusString(cRec)}");
-
-        writer.WriteLine();
-        writer.WriteLine();
-
-        writer.WriteLine("| Key | System | Code | Description | Status | System | Code | Description |");
-        writer.WriteLine("| --- | ------ | ---- | ----------- | ------ | ------ | ---- | ----------- |");
-
-        foreach ((string key, ComparisonRecord<ConceptInfoRec> c) in cRec.Children.OrderBy(kvp => kvp.Key))
-        {
-            writer.WriteLine(
-                $"{key} |" +
-                $" {c.Left?.System ?? "-"} | {c.Left?.Code ?? "-"} | {SanitizeForTable(c.Left?.Description ?? "-")} |" +
-                $" {GetStatusString(c)} |" +
-                $" {c.Right?.System ?? "-"} | {c.Right?.Code ?? "-"} | {SanitizeForTable(c.Right?.Description ?? "-")} |");
-        }
+        WriteComparisonObjectHeader(writer, cRec.Left, cRec.Right, cRec.Relationship);
+        WriteComparisonSummaryTable(writer, cRec);
+        WriteComparisonDetailTable(writer, cRec);
     }
 
     private void WriteComparison(
@@ -511,36 +740,9 @@ public class PackageComparer
         Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> comparisonDict)
     {
         writer.WriteLine("## " + header);
-        writer.WriteLine("| Key | Name | Description | In Snap | In Diff | Status | Name | Description | In Snap | In Diff |");
-        writer.WriteLine("| --- | ---- | ----------- | ------- | ------- | ------ | ---- | ----------- | ------- | ------- |");
 
-        foreach ((string key, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec> c) in comparisonDict.OrderBy(kvp => kvp.Key))
-        {
-            writer.WriteLine(
-                $"{key} |" +
-                $" {c.Left?.Name ?? "-"} | {SanitizeForTable(c.Left?.Description ?? "-")} | {c.Left?.SnapshotCount.ToString() ?? "-"} | {c.Left?.DifferentialCount.ToString() ?? "-"} |" +
-                $" {GetStatusString(c)} |" +
-                $" {c.Right?.Name ?? "-"} | {SanitizeForTable(c.Right?.Description ?? "-")} | {c.Right?.SnapshotCount.ToString() ?? "-"} | {c.Right?.DifferentialCount.ToString() ?? "-"} ");
-        }
-
-        writer.WriteLine();
-        writer.WriteLine();
-        writer.WriteLine();
-
-        //writer.WriteLine("# " + header);
-        //writer.WriteLine("| Key | Name | Title | Description | Status | Name | Title | Description | AiName | AiTitle | AIDesc |");
-        //writer.WriteLine("| --- | ---- | ----- | ----------- | ------ | ---- | ----- | ----------- | ------ | ------- | ------ |");
-
-        //foreach ((string key, ComparisonRecord<StructureInfoRec> c) in comparisonDict.OrderBy(kvp => kvp.Key))
-        //{
-        //    writer.WriteLine(
-        //        $"{key} |" +
-        //        $" {c.Left?.Name ?? "-"} | {c.Left?.Title ?? "-"} | {c.Left?.Description ?? "-"} |" +
-        //        $" {(c.Match ? "Match" : "-")} |" +
-        //        $" {c.Right?.Name ?? "-"} | {c.Right?.Title ?? "-"} | {c.Right?.Description ?? "-"} |" +
-        //        $" {c.AiPrediction?.Name} | {c.AiPrediction?.Title} | {c.AiPrediction?.Description} |");
-        //}
-
+        WriteComparisonSummaryTable(writer, comparisonDict);
+        WriteComparisonDetailTable(writer, comparisonDict);
     }
 
     private void WriteComparison(
@@ -557,133 +759,57 @@ public class PackageComparer
             writer.WriteLine("## " + header);
         }
 
-        if (cRec.Left is not null)
-        {
-            writer.WriteLine($"* Left: {cRec.Left.Name} (Snapshot: {cRec.Left.SnapshotCount} - Differential: {cRec.Left.DifferentialCount})");
-            writer.WriteLine($"  {cRec.Left.Title}");
-            writer.WriteLine($"  {cRec.Left.Description}");
-        }
+        WriteComparisonObjectHeader(writer, cRec.Left, cRec.Right, cRec.Relationship);
+        WriteComparisonSummaryTable(writer, cRec);
+        WriteComparisonDetailTable(writer, cRec);
 
-        if (cRec.Right is not null)
-        {
-            writer.WriteLine($"* Right: {cRec.Right.Name} (Snapshot: {cRec.Right.SnapshotCount} - Differential: {cRec.Right.DifferentialCount})");
-            writer.WriteLine($"  {cRec.Right.Title}");
-            writer.WriteLine($"  {cRec.Right.Description}");
-        }
+        //writer.WriteLine("| Key | Name | Path | Short | Card | Binding | Status | Name | Path | Short | Card | Binding |");
+        //writer.WriteLine("| --- | ---- | ---- | ----- | ---- | ------- | ------ | ---- | ---- | ----- | ---- | ------- |");
 
-        writer.WriteLine($"* Result: {GetStatusString(cRec)}");
+        //foreach ((string key, ComparisonRecord<ElementInfoRec, ElementTypeInfoRec> c) in cRec.Children.OrderBy(kvp => kvp.Key))
+        //{
+        //    string l = c.Left is null
+        //        ? "- | - | - | - | -" :
+        //        $"{c.Left.Name} |" +
+        //        $" {c.Left.Path} |" +
+        //        $" {SanitizeForTable(c.Left.Short)} |" +
+        //        $" {c.Left.MinCardinality}..{(c.Left.MaxCardinality == -1 ? "*" : c.Left.MaxCardinality.ToString())} |" +
+        //        $" {c.Left.BindingValueSet}";
 
-        writer.WriteLine();
-        writer.WriteLine();
+        //    string r = c.Right is null
+        //        ? "- | - | - | - | -" :
+        //        $"{c.Right.Name} |" +
+        //        $" {c.Right.Path} |" +
+        //        $" {SanitizeForTable(c.Right.Short)} |" +
+        //        $" {c.Right.MinCardinality}..{(c.Right.MaxCardinality == -1 ? "*" : c.Right.MaxCardinality.ToString())} |" +
+        //        $" {c.Right.BindingValueSet}";
 
-        writer.WriteLine("| Key | Name | Path | Short | Card | Binding | Status | Name | Path | Short | Card | Binding |");
-        writer.WriteLine("| --- | ---- | ---- | ----- | ---- | ------- | ------ | ---- | ---- | ----- | ---- | ------- |");
+        //    writer.WriteLine($"{key} | {l} | {GetStatusString(c)} | {r} |");
 
-        foreach ((string key, ComparisonRecord<ElementInfoRec, ElementTypeInfoRec> c) in cRec.Children.OrderBy(kvp => kvp.Key))
-        {
-            string l = c.Left is null
-                ? "- | - | - | - | -" :
-                $"{c.Left.Name} |" +
-                $" {c.Left.Path} |" +
-                $" {SanitizeForTable(c.Left.Short)} |" +
-                $" {c.Left.MinCardinality}..{(c.Left.MaxCardinality == -1 ? "*" : c.Left.MaxCardinality.ToString())} |" +
-                $" {c.Left.BindingValueSet}";
-
-            string r = c.Right is null
-                ? "- | - | - | - | -" :
-                $"{c.Right.Name} |" +
-                $" {c.Right.Path} |" +
-                $" {SanitizeForTable(c.Right.Short)} |" +
-                $" {c.Right.MinCardinality}..{(c.Right.MaxCardinality == -1 ? "*" : c.Right.MaxCardinality.ToString())} |" +
-                $" {c.Right.BindingValueSet}";
-
-            writer.WriteLine($"{key} | {l} | {GetStatusString(c)} | {r} |");
-
-            // write our type info
-            writer.WriteLine($"| - Type Details <td colspan=11>{GetTypeString(c.Children)}");
-        }
+        //    // write our type info
+        //    writer.WriteLine($"| - Type Details <td colspan=11>{GetTypeString(c.Children)}");
+        //}
     }
 
-    private string GetTypeString(Dictionary<string, ComparisonRecord<ElementTypeInfoRec>> typeInfo)
+
+    private string GetStatusString(object? left, object? right, CMR? relationship)
     {
-        StringBuilder sb = new();
-
-        IEnumerable<string> values = typeInfo.Values.Where(ti => ti.Relationship == ConceptMap.ConceptMapRelationship.Equivalent).Select(ti => ti.Left!.Name);
-        if (values.Any())
-        {
-            sb.Append("Equivalent: ");
-            sb.Append(string.Join(", ", values));
-            sb.Append("<br/>");
-        }
-
-        values = typeInfo.Values.Where(ti => ti.Right is null).Select(typeInfo => typeInfo.Left!.Name);
-        if (values.Any())
-        {
-            sb.Append("Removed: ");
-            sb.Append(string.Join(", ", values));
-            sb.Append("<br/>");
-        }
-
-        values = typeInfo.Values.Where(ti => ti.Left is null).Select(typeInfo => typeInfo.Right!.Name);
-        if (values.Any())
-        {
-            sb.Append("Added: ");
-            sb.Append(string.Join(", ", values));
-            sb.Append("<br/>");
-        }
-
-        values = typeInfo.Values.Where(ti => ti.Left is not null && ti.Right is not null && ti.Relationship != ConceptMap.ConceptMapRelationship.Equivalent).Select(typeInfo => typeInfo.Left!.Name);
-        if (values.Any())
-        {
-            sb.Append("Modified: ");
-            sb.Append(string.Join(", ", values));
-        }
-
-        return sb.ToString();
-    }
-
-    private string GetStatusString<T,U,V>(ComparisonRecord<T, U, V> c)
-    {
-        if (c.Left == null)
+        if (left is null)
         {
             return "Added";
         }
 
-        if (c.Right == null)
+        if (right is null)
         {
             return "Removed";
         }
 
-        return c.Relationship?.ToString() ?? "-";
+        return relationship?.ToString() ?? "-";
     }
-    private string GetStatusString<T,U>(ComparisonRecord<T, U> c)
-    {
-        if (c.Left == null)
-        {
-            return "Added";
-        }
 
-        if (c.Right == null)
-        {
-            return "Removed";
-        }
-
-        return c.Relationship?.ToString() ?? "-";
-    }
-    private string GetStatusString<T>(ComparisonRecord<T> c)
-    {
-        if (c.Left == null)
-        {
-            return "Added";
-        }
-
-        if (c.Right == null)
-        {
-            return "Removed";
-        }
-
-        return c.Relationship?.ToString() ?? "-";
-    }
+    private string GetStatusString<T,U,V>(ComparisonRecord<T, U, V> c) => GetStatusString(c.Left, c.Right, c.Relationship);
+    private string GetStatusString<T,U>(ComparisonRecord<T, U> c) => GetStatusString(c.Left, c.Right, c.Relationship);
+    private string GetStatusString<T>(ComparisonRecord<T> c) => GetStatusString(c.Left, c.Right, c.Relationship);
 
     private void LoadKnownChanges()
     {
@@ -706,7 +832,7 @@ public class PackageComparer
                 Right = right,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_leftPrefix} has no concept matching {_rightPrefix}:{right!.System}:{right.Code}",
+                Message = $"{_rightPrefix} added code {right!.Code}",
             };
             return true;
         }
@@ -719,72 +845,35 @@ public class PackageComparer
                 Right = null,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_leftPrefix}:{left.System}:{left.Code} has no matching concept in {_rightPrefix}",
+                Message = $"{_rightPrefix} removed code {left.Code}",
             };
             return true;
         }
 
-        if (left.System == right.System)
+        List<string> messages = [];
+
+        if (left.System != right.System)
         {
-            if (left.Code == right.Code)
-            {
-                if (left.Description == right.Description)
-                {
-                    c = new()
-                    {
-                        Left = left,
-                        Right = right,
-                        NamedMatch = true,
-                        Relationship = ConceptMap.ConceptMapRelationship.Equivalent,
-                        Message = $"{_leftPrefix}:{left.System}:{left.Code} is equivalent to {_rightPrefix}:{right.System}:{right.Code}",
-                    };
-                    return true;
-                }
-
-                c = new()
-                {
-                    Left = left,
-                    Right = right,
-                    NamedMatch = true,
-                    Relationship = ConceptMap.ConceptMapRelationship.Equivalent,
-                    Message =
-                    $"{_leftPrefix}:{left.System}:{left.Code} has a different description ({left.Description})" +
-                    $" compared to {_rightPrefix}:{right.System}:{right.Code} ({right.Description})",
-                };
-                return true;
-            }
-
-            c = new()
-            {
-                Left = left,
-                Right = right,
-                NamedMatch = true,
-                Relationship = null,
-                Message = $"{_leftPrefix}:{left.System}:{left.Code} relationship cannot be determined against {_rightPrefix}:{right.System}:{right.Code}",
-            };
-            return true;
+            messages.Add($"has a different system");
         }
 
-        if (left.Code == right.Code)
+        if (left.Description != right.Description)
         {
-            c = new()
-            {
-                Left = left,
-                Right = right,
-                NamedMatch = true,
-                Relationship = ConceptMap.ConceptMapRelationship.RelatedTo,
-                Message = $"{_leftPrefix}:{left.System}:{left.Code} is related to {_rightPrefix}:{right.System}:{right.Code} - codes match but system does not",
-            };
-            return true;
+            messages.Add($"has a different description");
         }
 
+        string message = messages.Count == 0
+            ? $"{_rightPrefix} code is equivalent"
+            : $"{_rightPrefix} " + string.Join(" and ", messages);
+
+        // note that we can only be here if the codes have already matched, so we are always equivalent
         c = new()
         {
             Left = left,
             Right = right,
             NamedMatch = true,
-            Relationship = null,
-            Message = $"{_leftPrefix}:{left.System}:{left.Code} relationship cannot be determined against {_rightPrefix}:{right.System}:{right.Code}",
+            Relationship = CMR.Equivalent,
+            Message = message,
         };
         return true;
     }
@@ -817,7 +906,7 @@ public class PackageComparer
                 Right = right,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_leftPrefix}:{elementName} has no type matching {_rightPrefix}:{elementName}:{right!.Name}",
+                Message = $"{_rightPrefix}:{elementName} added type {right!.Name}",
             };
             return true;
         }
@@ -830,7 +919,7 @@ public class PackageComparer
                 Right = null,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_leftPrefix}:{elementName}:{left.Name} has no type matching {_rightPrefix}:{elementName}",
+                Message = $"{_rightPrefix}:{elementName} removed type {left.Name}",
             };
             return true;
         }
@@ -841,112 +930,97 @@ public class PackageComparer
             throw new Exception("Type names do not match");
         }
 
-        if (left.Profiles.Count == right.Profiles.Count)
+        // once we know the types are the same, we want to determine all differences in profiles and target profiles
+        List<string> addedProfiles = [];
+        List<string> removedProfiles = [];
+
+        HashSet<string> scratch = right.Profiles.ToHashSet();
+
+        foreach (string lp in left.Profiles)
         {
-            // if the profiles are different, we are done
-            if (left.Profiles.Any(p => !right.Profiles.Contains(p)))
+            if (scratch.Contains(lp))
             {
-                c = new()
-                {
-                    Left = left,
-                    Right = right,
-                    NamedMatch = true,
-                    Relationship = ConceptMap.ConceptMapRelationship.RelatedTo,
-                    Message =
-                        $"{_leftPrefix}:{elementName}:{left.Name} has different profiles" +
-                        $" compared to {_rightPrefix}:{elementName}:{right.Name}",
-                };
-                return true;
+                scratch.Remove(lp);
+                continue;
             }
-        }
-        else if (left.Profiles.Count > right.Profiles.Count)
-        {
-            c = new()
-            {
-                Left = left,
-                Right = right,
-                NamedMatch = true,
-                Relationship = ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget,
-                Message =
-                    $"{_leftPrefix}:{elementName}:{left.Name} has additional profiles ({left.Profiles.Count})" +
-                    $" compared to {_rightPrefix}:{elementName}:{right.Name} ({right.Profiles.Count})",
-            };
-            return true;
-        }
-        else
-        {
-            c = new()
-            {
-                Left = left,
-                Right = right,
-                NamedMatch = true,
-                Relationship = ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget,
-                Message =
-                    $"{_leftPrefix}:{elementName}:{left.Name} has fewer profiles ({left.Profiles.Count})" +
-                    $" compared to {_rightPrefix}:{elementName}:{right.Name} ({right.Profiles.Count})",
-            };
-            return true;
+
+            removedProfiles.Add(lp);
         }
 
-        if (left.TargetProfiles.Count == right.TargetProfiles.Count)
+        addedProfiles.AddRange(scratch);
+
+        List<string> addedTargets = [];
+        List<string> removedTargets = [];
+
+        scratch = right.TargetProfiles.ToHashSet();
+
+        foreach (string lp in left.TargetProfiles)
         {
-            // if the target profiles are different, we are done
-            if (left.TargetProfiles.Any(p => !right.TargetProfiles.Contains(p)))
+            if (scratch.Contains(lp))
             {
-                c = new()
-                {
-                    Left = left,
-                    Right = right,
-                    NamedMatch = true,
-                    Relationship = ConceptMap.ConceptMapRelationship.RelatedTo,
-                    Message =
-                        $"{_leftPrefix}:{elementName}:{left.Name} has different target profiles" +
-                        $" compared to {_rightPrefix}:{elementName}:{right.Name}",
-                };
-                return true;
+                scratch.Remove(lp);
+                continue;
             }
+
+            removedTargets.Add(lp);
         }
-        else if (left.TargetProfiles.Count > right.TargetProfiles.Count)
+
+        addedTargets.AddRange(scratch);
+
+        // start with assuming the types are equivalent
+        CMR relationship = CMR.Equivalent;
+        List<string> messages = [];
+
+        if (addedProfiles.Any())
         {
-            c = new()
-            {
-                Left = left,
-                Right = right,
-                NamedMatch = true,
-                Relationship = ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget,
-                Message =
-                    $"{_leftPrefix}:{elementName}:{left.Name} has additional target profiles ({left.TargetProfiles.Count})" +
-                    $" compared to {_rightPrefix}:{elementName}:{right.Name} ({right.TargetProfiles.Count})",
-            };
-            return true;
+            relationship = ApplyRelationship(relationship, CMR.SourceIsNarrowerThanTarget);
+            messages.Add($"added profiles: {string.Join(", ", addedProfiles)}");
         }
-        else
+
+        if (removedProfiles.Any())
         {
-            c = new()
-            {
-                Left = left,
-                Right = right,
-                NamedMatch = true,
-                Relationship = ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget,
-                Message =
-                    $"{_leftPrefix}:{elementName}:{left.Name} has fewer target profiles ({left.TargetProfiles.Count})" +
-                    $" compared to {_rightPrefix}:{elementName}:{right.Name} ({right.TargetProfiles.Count})",
-            };
-            return true;
+            relationship = ApplyRelationship(relationship, CMR.SourceIsBroaderThanTarget);
+            messages.Add($"removed profiles: {string.Join(", ", removedProfiles)}");
         }
+
+        if (addedTargets.Any())
+        {
+            relationship = ApplyRelationship(relationship, CMR.SourceIsNarrowerThanTarget);
+            messages.Add($"added target profiles: {string.Join(", ", addedTargets)}");
+        }
+
+        if (removedTargets.Any())
+        {
+            relationship = ApplyRelationship(relationship, CMR.SourceIsBroaderThanTarget);
+            messages.Add($"removed target profiles: {string.Join(", ", removedTargets)}");
+        }
+
+        string message = messages.Count == 0
+            ? $"{_rightPrefix}:{elementName} type {right.Name} is equivalent."
+            : $"{_rightPrefix}:{elementName} type " + string.Join(" and ", messages);
 
         c = new()
         {
             Left = left,
             Right = right,
             NamedMatch = true,
-            Relationship = ConceptMap.ConceptMapRelationship.Equivalent,
-            Message =
-                $"{_leftPrefix}:{elementName}:{left.Name} is equivalent to" +
-                $" {_rightPrefix}:{elementName}:{right.Name} ({right.TargetProfiles.Count})",
+            Relationship = relationship,
+            Message = message,
         };
         return true;
     }
+
+    private CMR ApplyRelationship(CMR existing, CMR? change) => existing switch
+    {
+        CMR.Equivalent => change ?? CMR.Equivalent,
+        CMR.RelatedTo => (change == CMR.NotRelatedTo) ? CMR.NotRelatedTo : existing,
+        CMR.SourceIsNarrowerThanTarget => (change == CMR.SourceIsNarrowerThanTarget || change == CMR.Equivalent)
+            ? CMR.SourceIsNarrowerThanTarget : CMR.RelatedTo,
+        CMR.SourceIsBroaderThanTarget => (change == CMR.SourceIsBroaderThanTarget || change == CMR.Equivalent)
+            ? CMR.SourceIsBroaderThanTarget : CMR.RelatedTo,
+        CMR.NotRelatedTo => change ?? existing,
+        _ => change ?? existing,
+    };
 
     private bool TryCompare(
         string url,
@@ -969,7 +1043,7 @@ public class PackageComparer
                 Right = right,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_leftPrefix} has no value set matching {_rightPrefix}:{url}",
+                Message = $"{_rightPrefix} added value set: {url}",
                 Children = conceptComparison,
             };
             return true;
@@ -983,79 +1057,66 @@ public class PackageComparer
                 Right = null,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_leftPrefix}:{url} has no value set matching {_rightPrefix}",
+                Message = $"{_rightPrefix} removed value set: {url}",
                 Children = conceptComparison,
             };
             return true;
         }
 
-        if (conceptComparison.Values.All(cc => cc.Relationship == ConceptMap.ConceptMapRelationship.Equivalent))
+        // check for all concepts being equivalent
+        if (conceptComparison.Values.All(cc => cc.Relationship == CMR.Equivalent))
         {
             c = new()
             {
                 Left = left,
                 Right = right,
                 NamedMatch = true,
-                Relationship = ConceptMap.ConceptMapRelationship.Equivalent,
-                Message = $"{_leftPrefix}:{url} is equivalent to {_rightPrefix}:{url}",
+                Relationship = CMR.Equivalent,
+                Message = $"{_rightPrefix}:{url} is equivalent",
                 Children = conceptComparison,
             };
             return true;
         }
 
-        bool leftHasUnmatched = conceptComparison.Values.Any(cc => cc.Right is null);
-        bool rightHasUnmatched = conceptComparison.Values.Any(cc => cc.Left is null);
-
-        if (leftHasUnmatched && rightHasUnmatched)
+        CMR relationship = CMR.Equivalent;
+        foreach (ComparisonRecord<ConceptInfoRec> ec in conceptComparison.Values)
         {
-            c = new()
+            if (ec.Relationship == CMR.Equivalent)
             {
-                Left = left,
-                Right = right,
-                NamedMatch = false,
-                Relationship = ConceptMap.ConceptMapRelationship.RelatedTo,
-                Message = $"{_leftPrefix}:{url} has concepts that do not match {_rightPrefix}:{url} (both directions)",
-                Children = conceptComparison,
-            };
-            return true;
+                continue;
+            }
+
+            if (ec.Left is null)
+            {
+                relationship = ApplyRelationship(relationship, CMR.SourceIsNarrowerThanTarget);
+                continue;
+            }
+
+            if (ec.Right is null)
+            {
+                relationship = ApplyRelationship(relationship, CMR.SourceIsBroaderThanTarget);
+                continue;
+            }
+
+            relationship = ApplyRelationship(relationship, ec.Relationship);
         }
 
-        if (leftHasUnmatched)
+        string message = relationship switch
         {
-            c = new()
-            {
-                Left = left,
-                Right = right,
-                NamedMatch = false,
-                Relationship = ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget,
-                Message = $"{_leftPrefix}:{url} subsumes {_rightPrefix}:{url}",
-                Children = conceptComparison,
-            };
-            return true;
-        }
+            CMR.Equivalent => $"{_rightPrefix}:{url} is equivalent",
+            CMR.RelatedTo => $"{_rightPrefix}:{url} is related to {_leftPrefix}:{url} (see concepts for details)",
+            CMR.SourceIsNarrowerThanTarget => $"{_rightPrefix}:{url} subsumes {_leftPrefix}:{url}",
+            CMR.SourceIsBroaderThanTarget => $"{_rightPrefix}:{url} is subsumed by {_leftPrefix}:{url}",
+            _ => $"{_rightPrefix}:{url} is related to {_leftPrefix}:{url} (see concepts for details)",
+        };
 
-        if (rightHasUnmatched)
-        {
-            c = new()
-            {
-                Left = left,
-                Right = right,
-                NamedMatch = false,
-                Relationship = ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget,
-                Message = $"{_leftPrefix}:{url} is subsumbed by {_rightPrefix}:{url}",
-                Children = conceptComparison,
-            };
-            return true;
-        }
-
-        // should never get here, but assume there is some relationship
         c = new()
         {
             Left = left,
             Right = right,
-            NamedMatch = false,
-            Relationship = ConceptMap.ConceptMapRelationship.RelatedTo,
-            Message = $"{_leftPrefix}:{url} is related but not equivalent to {_rightPrefix}:{url}",
+            NamedMatch = true,
+            Relationship = relationship,
+            Message = message,
             Children = conceptComparison,
         };
         return true;
@@ -1082,7 +1143,7 @@ public class PackageComparer
                 Right = right,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_leftPrefix} has no element matching {_rightPrefix}:{path}",
+                Message = $"{_rightPrefix} added element {path}",
                 Children = typeComparison,
             };
             return true;
@@ -1096,306 +1157,250 @@ public class PackageComparer
                 Right = null,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_leftPrefix}:{path} cannot find a matching element in {_leftPrefix}",
+                Message = $"{_rightPrefix} removed element {path}",
                 Children = typeComparison,
             };
             return true;
         }
 
+        // start with assuming the elements are equivalent
+        CMR relationship = CMR.Equivalent;
+        List<string> messages = [];
+
         // check for optional becoming mandatory
         if ((left.MinCardinality == 0) && (right.MinCardinality != 0))
         {
-            c = new()
-            {
-                Left = left,
-                Right = right,
-                NamedMatch = true,
-                Relationship = ConceptMap.ConceptMapRelationship.RelatedTo,
-                Message = $"{_leftPrefix}:{path} changed from optional to {_rightPrefix}:{path} mandatory ({right.MinCardinality})",
-                Children = typeComparison,
-            };
-            return true;
+            relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+            messages.Add("made the element mandatory");
         }
 
         // check for source allowing fewer than destination requires
         if (left.MinCardinality < right.MinCardinality)
         {
-            c = new()
-            {
-                Left = left,
-                Right = right,
-                NamedMatch = true,
-                Relationship = ConceptMap.ConceptMapRelationship.RelatedTo,
-                Message = $"{_leftPrefix}:{path} has a lower minimum cardinality ({left.MinCardinality}) compared to {_rightPrefix}:{path} ({right.MinCardinality})",
-                Children = typeComparison,
-            };
-            return true;
+            relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+            messages.Add($"increased the minimum cardinality from {left.MinCardinality} to {right.MinCardinality}");
         }
 
         // check for element being constrained out
         if ((left.MaxCardinality != 0) && (right.MaxCardinality == 0))
         {
-            c = new()
-            {
-                Left = left,
-                Right = right,
-                NamedMatch = true,
-                Relationship = ConceptMap.ConceptMapRelationship.RelatedTo,
-                Message = $"{_leftPrefix}:{path} has been constrained out in {_rightPrefix}:{path}",
-                Children = typeComparison,
-            };
+            relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+            messages.Add("constrained the element out (max cardinality of 0)");
         }
 
         // check for changing from scalar to array
         if ((left.MaxCardinality == 1) && (right.MaxCardinality != 1))
         {
-            c = new()
-            {
-                Left = left,
-                Right = right,
-                NamedMatch = true,
-                Relationship = ConceptMap.ConceptMapRelationship.RelatedTo,
-                Message = $"{_leftPrefix}:{path} changed from scalar to array {_rightPrefix}:{path} ({right.MaxCardinality})",
-                Children = typeComparison,
-            };
-            return true;
+            relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+            messages.Add($"changed from scalar to array (max cardinality from {left.MaxCardinalityString} to {right.MaxCardinalityString})");
+        }
+
+        // check for changing from array to scalar
+        if ((left.MaxCardinality != 1) && (right.MaxCardinality == 1))
+        {
+            relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+            messages.Add($"changed from array to scalar (max cardinality from {left.MaxCardinalityString} to {right.MaxCardinalityString})");
         }
 
         // check for source allowing more than destination allows
         if ((right.MaxCardinality != -1) &&
             (left.MaxCardinality > right.MaxCardinality))
         {
-            c = new()
-            {
-                Left = left,
-                Right = right,
-                NamedMatch = true,
-                Relationship = ConceptMap.ConceptMapRelationship.RelatedTo,
-                Message = $"{_leftPrefix}:{path} allows more repetitions ({left.MaxCardinality}) than {_rightPrefix}:{path} ({right.MaxCardinality})",
-                Children = typeComparison,
-            };
-            return true;
+            relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+            messages.Add($"allows more repetitions (max cardinality from {left.MaxCardinalityString} to {right.MaxCardinalityString})");
         }
 
         // check to see if there was not a required binding and now there is
-        if ((left.ValueSetBindingStrength != BindingStrength.Required) && (right.ValueSetBindingStrength == BindingStrength.Required))
+        if ((left.ValueSetBindingStrength is not null) || (right.ValueSetBindingStrength is not null))
         {
-            c = new()
+            if ((left.ValueSetBindingStrength != BindingStrength.Required) && (right.ValueSetBindingStrength == BindingStrength.Required))
             {
-                Left = left,
-                Right = right,
-                NamedMatch = true,
-                Relationship = ConceptMap.ConceptMapRelationship.RelatedTo,
-                Message = $"{_leftPrefix}:{path} did not have the required binding in {_rightPrefix}:{path} ({right.BindingValueSet})",
-                Children = typeComparison,
-            };
-            return true;
+                relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+
+                if (left.ValueSetBindingStrength is null)
+                {
+                    messages.Add($"added a required binding to {right.BindingValueSet}");
+                }
+                else
+                {
+                    messages.Add($"made the binding required (from {left.ValueSetBindingStrength}) for {right.BindingValueSet}");
+                }
+            }
+            else if (left.ValueSetBindingStrength != right.ValueSetBindingStrength)
+            {
+                relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+                if (left.ValueSetBindingStrength is null)
+                {
+                    messages.Add($"added a binding requirement - {right.ValueSetBindingStrength} {right.BindingValueSet}");
+                }
+                else if (right.ValueSetBindingStrength is null)
+                {
+                    messages.Add($"removed a binding requirement - {left.ValueSetBindingStrength} {left.BindingValueSet}");
+                }
+                else
+                {
+                    messages.Add($"changed the binding strength from {left.ValueSetBindingStrength} to {right.ValueSetBindingStrength}");
+                }
+            }
+
+            // check to see if we need to lookup a binding comparison
+            if ((left.ValueSetBindingStrength == BindingStrength.Required) && (right.ValueSetBindingStrength == BindingStrength.Required))
+            {
+                // TODO(ginoc): For sanity right now, we assume that the value sets are from the matching releases
+                // at some point, we need to check specific versions in case there are explicit references
+
+                string unversionedLeft = left.BindingValueSet.Split('|')[0];
+                string unversionedRight = right.BindingValueSet.Split('|')[0];
+
+                // if the types are code, we only need to compare codes
+                if (typeComparison.ContainsKey("code"))
+                {
+                    // check for same value set
+                    if (unversionedLeft == unversionedRight)
+                    {
+                        // look for the value set comparison
+                        if (_vsComparisons.TryGetValue(unversionedLeft, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? boundVsInfo))
+                        {
+                            // we are okay with equivalent and narrower
+                            if (boundVsInfo.Relationship == CMR.Equivalent ||
+                                boundVsInfo.Relationship == CMR.SourceIsNarrowerThanTarget)
+                            {
+                                relationship = ApplyRelationship(relationship, (CMR)boundVsInfo.Relationship);
+                                messages.Add($"has compatible required binding for code type: {left.BindingValueSet} and {right.BindingValueSet} ({boundVsInfo.Relationship})");
+                            }
+
+                            // check to see if the codes are the same but the systems are different (ok in codes)
+                            else if (boundVsInfo.Children.Values.All(cc => cc.Left?.Code == cc.Right?.Code))
+                            {
+                                relationship = ApplyRelationship(relationship, CMR.Equivalent);
+                                messages.Add($"has compatible required binding for code type: {left.BindingValueSet} and {right.BindingValueSet} (codes match, though systems are different)");
+                            }
+                            else
+                            {
+                                relationship = ApplyRelationship(relationship, boundVsInfo.Relationship);
+                                messages.Add($"has INCOMPATIBLE required binding for code type: {left.BindingValueSet} and {right.BindingValueSet}");
+                            }
+                        }
+                        else if (_exclusionSet.Contains(unversionedLeft))
+                        {
+                            relationship = ApplyRelationship(relationship, CMR.Equivalent);
+                            messages.Add($"{unversionedLeft} is exempted and assumed equivalent");
+                        }
+                        else
+                        {
+                            relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+                            messages.Add($"(failed to compare required binding of {left.BindingValueSet})");
+                        }
+                    }
+                    // since these are codes only, we can look for the value set comparisons and check codes across them
+                    else if (!_vsComparisons.TryGetValue(unversionedLeft, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? leftVsI) ||
+                             !_vsComparisons.TryGetValue(unversionedRight, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? rightVsI))
+                    {
+                        relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+                        messages.Add($"(failed to compare required binding of {left.BindingValueSet} and {right.BindingValueSet})");
+                    }
+
+                    // check for any codes from the left binding source not being present in the right binding destination
+                    else if (leftVsI.Children.Values.Any(lc => !rightVsI.Children.Values.Any(rc => lc.Left?.Code == rc.Right?.Code)))
+                    {
+                        relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+                        messages.Add($"has INCOMPATIBLE required binding for code type: {left.BindingValueSet} and {right.BindingValueSet}");
+                    }
+                    else if (_exclusionSet.Contains(unversionedLeft) && _exclusionSet.Contains(unversionedRight))
+                    {
+                        relationship = ApplyRelationship(relationship, CMR.Equivalent);
+                        messages.Add($"{unversionedLeft} and {unversionedRight} are exempted and assumed equivalent");
+                    }
+                    else
+                    {
+                        relationship = ApplyRelationship(relationship, leftVsI.Children.Count == rightVsI.Children.Count ? CMR.Equivalent : CMR.SourceIsNarrowerThanTarget);
+                        messages.Add($"has compatible required binding for code type: {left.BindingValueSet} and {right.BindingValueSet}");
+                    }
+                }
+
+                // check for any non-code types (need to match system)
+                if (typeComparison.Any(t => t.Key != "code"))
+                {
+                    // check for same value set (non-code type)
+                    if (unversionedLeft == unversionedRight)
+                    {
+                        // look for the value set comparison
+                        if (!_vsComparisons.TryGetValue(unversionedLeft, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? boundVsInfo))
+                        {
+                            relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+                            messages.Add($"(failed to compare required binding of {left.BindingValueSet} and {right.BindingValueSet})");
+                        }
+                        // we are okay with equivalent and narrower
+                        else if (boundVsInfo.Relationship == CMR.Equivalent ||
+                                 boundVsInfo.Relationship == CMR.SourceIsNarrowerThanTarget)
+                        {
+                            relationship = ApplyRelationship(relationship, (CMR)boundVsInfo.Relationship);
+                            messages.Add($"has compatible required binding for non-code type: {left.BindingValueSet} and {right.BindingValueSet} ({boundVsInfo.Relationship})");
+                        }
+                        else if (_exclusionSet.Contains(unversionedLeft))
+                        {
+                            relationship = ApplyRelationship(relationship, CMR.Equivalent);
+                            messages.Add($"{unversionedLeft} is exempted and assumed equivalent");
+                        }
+                        else
+                        {
+                            relationship = ApplyRelationship(relationship, boundVsInfo.Relationship);
+                            messages.Add($"has INCOMPATIBLE required binding for non-code type: {left.BindingValueSet} and {right.BindingValueSet}");
+                        }
+                    }
+                    // since these are not only codes, but are different value sets, we can look for the value set comparisons and check system+codes across them
+                    else if (!_vsComparisons.TryGetValue(unversionedLeft, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? leftVs) ||
+                             !_vsComparisons.TryGetValue(unversionedRight, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? rightVs))
+                    {
+                        relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+                        messages.Add($"(failed to compare required binding of {left.BindingValueSet} and {right.BindingValueSet})");
+                    }
+                    // check for any keys (system+code) from the left binding source not being present in the right binding destination
+                    else if (leftVs.Children.Keys.Any(lk => !rightVs.Children.ContainsKey(lk)))
+                    {
+                        relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+                        messages.Add($"has INCOMPATIBLE required binding for non-code type: {left.BindingValueSet} and {right.BindingValueSet}");
+                    }
+                    else if (_exclusionSet.Contains(unversionedLeft) && _exclusionSet.Contains(unversionedRight))
+                    {
+                        relationship = ApplyRelationship(relationship, CMR.Equivalent);
+                        messages.Add($"{unversionedLeft} and {unversionedRight} are exempted and assumed equivalent");
+                    }
+                    else
+                    {
+                        relationship = ApplyRelationship(relationship, leftVs.Children.Count == rightVs.Children.Count ? CMR.Equivalent : CMR.SourceIsNarrowerThanTarget);
+                        messages.Add($"has compatible required binding for code type: {left.BindingValueSet} and {right.BindingValueSet}");
+                    }
+                }
+            }
         }
 
-        // check to see if we need to lookup a binding comparison
-        if ((left.ValueSetBindingStrength == BindingStrength.Required) && (right.ValueSetBindingStrength == BindingStrength.Required))
+        // process our type comparisons and promote messages
+        foreach (ComparisonRecord<ElementTypeInfoRec> tc in typeComparison.Values)
         {
-            // if the types are code, we only need to compare codes
-            if (typeComparison.ContainsKey("code"))
+            // skip equivalent types
+            if (tc.Relationship == CMR.Equivalent)
             {
-                // check for same value set
-                if (left.BindingValueSet == right.BindingValueSet)
-                {
-                    // look for the value set comparison
-                    if (!_vsComparisons.TryGetValue(left.BindingValueSet, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? boundVsInfo))
-                    {
-                        c = new()
-                        {
-                            Left = left,
-                            Right = right,
-                            NamedMatch = true,
-                            Relationship = ConceptMap.ConceptMapRelationship.RelatedTo,
-                            Message = $"{_leftPrefix}:{path} could not compare required binding ({left.BindingValueSet}) with {_rightPrefix}:{path} ({right.BindingValueSet})",
-                            Children = typeComparison,
-                        };
-                        return true;
-                    }
-
-                    // we are okay with equivalent and narrower
-                    if (boundVsInfo.Relationship == ConceptMap.ConceptMapRelationship.Equivalent ||
-                        boundVsInfo.Relationship == ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget)
-                    {
-                        c = new()
-                        {
-                            Left = left,
-                            Right = right,
-                            NamedMatch = true,
-                            Relationship = boundVsInfo.Relationship,
-                            Message = $"{_leftPrefix}:{path} required binding ({left.BindingValueSet}) is compatible with {_rightPrefix}:{path} ({right.BindingValueSet}) - {boundVsInfo.Relationship}",
-                            Children = typeComparison,
-                        };
-                        return true;
-                    }
-
-                    // check to see if the codes are the same but the systems are different (ok in codes)
-                    if (boundVsInfo.Children.Values.All(cc => cc.Left?.Code == cc.Right?.Code))
-                    {
-                        c = new()
-                        {
-                            Left = left,
-                            Right = right,
-                            NamedMatch = true,
-                            Relationship = ConceptMap.ConceptMapRelationship.Equivalent,
-                            Message = $"{_leftPrefix}:{path} required binding ({left.BindingValueSet}) is compatible with {_rightPrefix}:{path} ({right.BindingValueSet})",
-                            Children = typeComparison,
-                        };
-                    }
-
-                    c = new()
-                    {
-                        Left = left,
-                        Right = right,
-                        NamedMatch = true,
-                        Relationship = boundVsInfo.Relationship,
-                        Message = $"{_leftPrefix}:{path} required binding ({left.BindingValueSet}) is NOT compatible with {_rightPrefix}:{path} ({right.BindingValueSet}) - {boundVsInfo.Relationship}",
-                        Children = typeComparison,
-                    };
-                    return true;
-                }
-
-                // since these are codes only, we can look for the value set comparisons and check codes across them
-                if (!_vsComparisons.TryGetValue(left.BindingValueSet, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? leftVsI) ||
-                    !_vsComparisons.TryGetValue(right.BindingValueSet, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? rightVsI))
-                {
-                    c = new()
-                    {
-                        Left = left,
-                        Right = right,
-                        NamedMatch = true,
-                        Relationship = ConceptMap.ConceptMapRelationship.RelatedTo,
-                        Message = $"{_leftPrefix}:{path} could not compare required binding ({left.BindingValueSet}) with required binding {_rightPrefix}:{path} ({right.BindingValueSet})",
-                        Children = typeComparison,
-                    };
-                    return true;
-                }
-
-                // check for any codes from the left binding source not being present in the right binding destination
-                if (leftVsI.Children.Values.Any(lc => !rightVsI.Children.Values.Any(rc => lc.Left?.Code == rc.Right?.Code)))
-                {
-                    c = new()
-                    {
-                        Left = left,
-                        Right = right,
-                        NamedMatch = true,
-                        Relationship = ConceptMap.ConceptMapRelationship.RelatedTo,
-                        Message = $"{_leftPrefix}:{path} required binding ({left.BindingValueSet}) is NOT compatible with {_rightPrefix}:{path} ({right.BindingValueSet})",
-                        Children = typeComparison,
-                    };
-                }
-
-                // definitions are compatible
-                c = new()
-                {
-                    Left = left,
-                    Right = right,
-                    NamedMatch = true,
-                    Relationship = leftVsI.Children.Count == rightVsI.Children.Count ? ConceptMap.ConceptMapRelationship.Equivalent : ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget,
-                    Message = $"{_leftPrefix}:{path} required binding ({left.BindingValueSet}) is compatible with {_rightPrefix}:{path} ({right.BindingValueSet})",
-                    Children = typeComparison,
-                };
+                continue;
             }
 
-            // check for same value set
-            if (left.BindingValueSet == right.BindingValueSet)
-            {
-                // look for the value set comparison
-                if (!_vsComparisons.TryGetValue(left.BindingValueSet, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? boundVsInfo))
-                {
-                    c = new()
-                    {
-                        Left = left,
-                        Right = right,
-                        NamedMatch = true,
-                        Relationship = ConceptMap.ConceptMapRelationship.RelatedTo,
-                        Message = $"{_leftPrefix}:{path} could not compare required binding ({left.BindingValueSet}) with {_rightPrefix}:{path} ({right.BindingValueSet})",
-                        Children = typeComparison,
-                    };
-                    return true;
-                }
-
-                // we are okay with equivalent and narrower
-                if (boundVsInfo.Relationship == ConceptMap.ConceptMapRelationship.Equivalent ||
-                    boundVsInfo.Relationship == ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget)
-                {
-                    c = new()
-                    {
-                        Left = left,
-                        Right = right,
-                        NamedMatch = true,
-                        Relationship = boundVsInfo.Relationship,
-                        Message = $"{_leftPrefix}:{path} required binding ({left.BindingValueSet}) is compatible with {_rightPrefix}:{path} ({right.BindingValueSet}) - {boundVsInfo.Relationship}",
-                        Children = typeComparison,
-                    };
-                    return true;
-                }
-
-                c = new()
-                {
-                    Left = left,
-                    Right = right,
-                    NamedMatch = true,
-                    Relationship = boundVsInfo.Relationship,
-                    Message = $"{_leftPrefix}:{path} required binding ({left.BindingValueSet}) is NOT compatible with {_rightPrefix}:{path} ({right.BindingValueSet}) - {boundVsInfo.Relationship}",
-                    Children = typeComparison,
-                };
-                return true;
-            }
-
-            // since these are not only codes, but are different value sets, we can look for the value set comparisons and check system+codes across them
-            if (!_vsComparisons.TryGetValue(left.BindingValueSet, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? leftVs) ||
-                !_vsComparisons.TryGetValue(right.BindingValueSet, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? rightVs))
-            {
-                c = new()
-                {
-                    Left = left,
-                    Right = right,
-                    NamedMatch = true,
-                    Relationship = ConceptMap.ConceptMapRelationship.RelatedTo,
-                    Message = $"{_leftPrefix}:{path} could not compare required binding ({left.BindingValueSet}) with required binding {_rightPrefix}:{path} ({right.BindingValueSet})",
-                    Children = typeComparison,
-                };
-                return true;
-            }
-
-            // check for any keys (system+code) from the left binding source not being present in the right binding destination
-            if (leftVs.Children.Keys.Any(lk => !rightVs.Children.ContainsKey(lk)))
-            {
-                c = new()
-                {
-                    Left = left,
-                    Right = right,
-                    NamedMatch = true,
-                    Relationship = ConceptMap.ConceptMapRelationship.RelatedTo,
-                    Message = $"{_leftPrefix}:{path} required binding ({left.BindingValueSet}) is NOT compatible with {_rightPrefix}:{path} ({right.BindingValueSet})",
-                    Children = typeComparison,
-                };
-            }
-
-            // definitions are compatible
-            c = new()
-            {
-                Left = left,
-                Right = right,
-                NamedMatch = true,
-                Relationship = leftVs.Children.Count == rightVs.Children.Count ? ConceptMap.ConceptMapRelationship.Equivalent : ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget,
-                Message = $"{_leftPrefix}:{path} required binding ({left.BindingValueSet}) is compatible with {_rightPrefix}:{path} ({right.BindingValueSet})",
-                Children = typeComparison,
-            };
+            relationship = ApplyRelationship(relationship, tc.Relationship);
+            messages.Add($"has change due to type change: {tc.Message}");
         }
 
-        // definitions are compatible
+        // build our message
+        string message = messages.Count == 0
+            ? $"{_rightPrefix}:{path} is equivalent."
+            : $"{_rightPrefix}:{path} " + string.Join(" and ", messages);
+
+        // return our info
         c = new()
         {
             Left = left,
             Right = right,
             NamedMatch = true,
-            Relationship = ConceptMap.ConceptMapRelationship.Equivalent,
-            Message = $"{_leftPrefix}:{path} is equivalent to {_rightPrefix}:{path}",
+            Relationship = relationship,
+            Message = message,
             Children = typeComparison,
         };
         return true;
@@ -1423,7 +1428,7 @@ public class PackageComparer
                 Right = right,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_leftPrefix} has no structure matching {_rightPrefix}:{name}",
+                Message = $"{_rightPrefix} added {name}",
                 Children = elementComparison,
             };
             return true;
@@ -1437,80 +1442,67 @@ public class PackageComparer
                 Right = null,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_leftPrefix}:{name} has no structure matching {_rightPrefix}",
+                Message = $"{_rightPrefix} removed {name}",
                 Children = elementComparison,
             };
             return true;
         }
 
         // check for all elements being the same
-        if (elementComparison.Values.All(ec => ec.Relationship == ConceptMap.ConceptMapRelationship.Equivalent))
+        if (elementComparison.Values.All(ec => ec.Relationship == CMR.Equivalent))
         {
             c = new()
             {
                 Left = left,
                 Right = right,
                 NamedMatch = true,
-                Relationship = ConceptMap.ConceptMapRelationship.Equivalent,
-                Message = $"{_leftPrefix}:{name} is equivalent to {_rightPrefix}:{name}",
+                Relationship = CMR.Equivalent,
+                Message = $"{_rightPrefix}:{name} is equivalent",
                 Children = elementComparison,
             };
             return true;
         }
 
-        bool leftHasUnmatched = elementComparison.Values.Any(cc => cc.Right is null);
-        bool rightHasUnmatched = elementComparison.Values.Any(cc => cc.Left is null);
+        CMR relationship = CMR.Equivalent;
 
-        if (leftHasUnmatched && rightHasUnmatched)
+        foreach (ComparisonRecord<ElementInfoRec, ElementTypeInfoRec> ec in elementComparison.Values)
         {
-            c = new()
+            if (ec.Relationship == CMR.Equivalent)
             {
-                Left = left,
-                Right = right,
-                NamedMatch = false,
-                Relationship = ConceptMap.ConceptMapRelationship.RelatedTo,
-                Message = $"{_leftPrefix}:{name} has elements that do not match {_rightPrefix}:{name} (both directions)",
-                Children = elementComparison,
-            };
-            return true;
+                continue;
+            }
+
+            if (ec.Left is null)
+            {
+                relationship = ApplyRelationship(relationship, CMR.SourceIsNarrowerThanTarget);
+                continue;
+            }
+
+            if (ec.Right is null)
+            {
+                relationship = ApplyRelationship(relationship, CMR.SourceIsBroaderThanTarget);
+                continue;
+            }
+
+            relationship = ApplyRelationship(relationship, ec.Relationship);
         }
 
-        if (leftHasUnmatched)
+        string message = relationship switch
         {
-            c = new()
-            {
-                Left = left,
-                Right = right,
-                NamedMatch = false,
-                Relationship = ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget,
-                Message = $"{_leftPrefix}:{name} subsumes {_rightPrefix}:{name}",
-                Children = elementComparison,
-            };
-            return true;
-        }
+            CMR.Equivalent => $"{_rightPrefix}:{name} is equivalent",
+            CMR.RelatedTo => $"{_rightPrefix}:{name} is related to {_leftPrefix}:{name} (see elements for details)",
+            CMR.SourceIsNarrowerThanTarget => $"{_rightPrefix}:{name} subsumes {_leftPrefix}:{name}",
+            CMR.SourceIsBroaderThanTarget => $"{_rightPrefix}:{name} is subsumed by {_leftPrefix}:{name}",
+            _ => $"{_rightPrefix}:{name} is related to {_leftPrefix}:{name} (see elements for details)",
+        };
 
-        if (rightHasUnmatched)
-        {
-            c = new()
-            {
-                Left = left,
-                Right = right,
-                NamedMatch = false,
-                Relationship = ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget,
-                Message = $"{_leftPrefix}:{name} is subsumbed by {_rightPrefix}:{name}",
-                Children = elementComparison,
-            };
-            return true;
-        }
-
-        // should never get here, but assume there is some relationship
         c = new()
         {
             Left = left,
             Right = right,
-            NamedMatch = false,
-            Relationship = ConceptMap.ConceptMapRelationship.RelatedTo,
-            Message = $"{_leftPrefix}:{name} is related but not equivalent to {_rightPrefix}:{name}",
+            NamedMatch = true,
+            Relationship = relationship,
+            Message = message,
             Children = elementComparison,
         };
         return true;
@@ -1764,6 +1756,7 @@ public class PackageComparer
             Definition = ed.Definition,
             MinCardinality = ed.cgCardinalityMin(),
             MaxCardinality = ed.cgCardinalityMax(),
+            MaxCardinalityString = ed.Max,
             ValueSetBindingStrength = ed.Binding?.Strength,
             BindingValueSet = ed.Binding?.ValueSet ?? string.Empty,
         };
