@@ -66,6 +66,24 @@ public class ConfigCompare : ConfigRoot
         },
     };
 
+    [ConfigOption(
+        ArgName = "--cross-version-repo-path",
+        EnvName = "Cross_Version_Repo_Path",
+        ArgArity = "0..1",
+        Description = "Path to a local HL7/fhir-cross-version clone.")]
+    public string CrossVersionRepoPath { get; set; } = string.Empty;
+
+    private static ConfigurationOption CrossVersionRepoPathParameter => new()
+    {
+        Name = "Cross_Version_Repo_Path",
+        DefaultValue = string.Empty,
+        CliOption = new System.CommandLine.Option<string>("--cross-version-repo-path", "Path to a local HL7/fhir-cross-version clone.")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
+
     //[ConfigOption(
     //    ArgName = "--known-change-path",
     //    EnvName = "Known_Change_Path",
@@ -125,6 +143,7 @@ public class ConfigCompare : ConfigRoot
         ComparePackagesParameter,
         NoOutputParameter,
         SaveComparisonResultParameter,
+        CrossVersionRepoPathParameter,
         //KnownChangePathParameter,
         //OllamaUrlParameter,
         //OllamaModelParameter,
@@ -155,6 +174,9 @@ public class ConfigCompare : ConfigRoot
                     break;
                 case "Save_Comparison_Result":
                     SaveComparisonResult = GetOpt(parseResult, opt.CliOption, SaveComparisonResult);
+                    break;
+                case "Cross_Version_Repo_Path":
+                    CrossVersionRepoPath = GetOpt(parseResult, opt.CliOption, CrossVersionRepoPath);
                     break;
                 //case "Known_Change_Path":
                 //    KnownChangePath = GetOpt(parseResult, opt.CliOption, KnownChangePath);

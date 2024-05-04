@@ -85,7 +85,7 @@ public class CacheResolutionTests : IClassFixture<CacheResolutionTestFixture>
     [InlineData("hl7.fhir.uv.subscriptions-backport.r4b#1.1.x", true, "hl7.fhir.uv.subscriptions-backport.r4b#1.1.0")]
     [InlineData("hl7.fhir.uv.subscriptions-backport.r4b#1.1", true, "hl7.fhir.uv.subscriptions-backport.r4b#1.1.0")]
     [InlineData("hl7.fhir.uv.patient-corrections#dev", true, "hl7.fhir.uv.patient-corrections#dev")]
-    internal async void ResolveDirective(
+    internal async Task ResolveDirective(
         string directive,
         bool shouldSucceed,
         string expectedResolution = "")

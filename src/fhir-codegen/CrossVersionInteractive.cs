@@ -730,7 +730,12 @@ internal class CrossVersionInteractive
                 NoOutput = true,
             };
 
-            PackageComparer comparer = new(compareConfig, _dcLeft, _dcRight);
+            IFhirPackageClient cache = FhirCache.Create(new FhirPackageClientSettings()
+            {
+                CachePath = _config.FhirCacheDirectory,
+            });
+
+            PackageComparer comparer = new(compareConfig, cache, _dcLeft, _dcRight);
 
             _comparison = comparer.Compare();
 

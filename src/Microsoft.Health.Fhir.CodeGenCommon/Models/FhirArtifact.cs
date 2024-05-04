@@ -61,7 +61,8 @@ public enum FhirArtifactClassEnum
     [Description("CompartmentDefinition resource (e.g., PatientCompartment).")]
     Compartment,
 
-    /// <summary>ConceptMap.</summary>
+    /// <summary>Concept Map - A statement of relationships from one set of concepts to one or more other concepts - either concepts in code systems, or data element/data element concepts, or classes in class models.</summary>
+    [Description("A statement of relationships from one set of concepts to one or more other concepts - either concepts in code systems, or data element/data element concepts, or classes in class models.")]
     ConceptMap,
 
     /// <summary>NamingSystem.</summary>

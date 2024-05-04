@@ -19,12 +19,16 @@ using System.Xml.Linq;
 using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Language.Debugging;
 using Hl7.Fhir.Model;
+using Hl7.Fhir.Utility;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGen.Language;
+using Microsoft.Health.Fhir.CodeGen.Loader;
 using Microsoft.Health.Fhir.CodeGen.Models;
+using Microsoft.Health.Fhir.CodeGen.Utils;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
+using Microsoft.Health.Fhir.PackageManager;
 using static Hl7.Fhir.Model.VerificationResult;
 using static Microsoft.Health.Fhir.CodeGen.CompareTool.PackageComparer;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
@@ -33,11 +37,19 @@ namespace Microsoft.Health.Fhir.CodeGen.CompareTool;
 
 public class PackageComparer
 {
+    private IFhirPackageClient _cache;
+
     private DefinitionCollection _left;
     private DefinitionCollection _right;
 
-    private string _leftPrefix;
-    private string _rightPrefix;
+    private DefinitionCollection? _maps;
+    private Dictionary<string, List<string>> _knownValueSetMaps = [];
+    private string _mapCanonical = string.Empty;
+
+    private string _leftRLiteral;
+    private string _leftShortVersion;
+    private string _rightRLiteral;
+    private string _rightShortVersion;
 
     private ConfigCompare _config;
 
@@ -74,14 +86,17 @@ public class PackageComparer
         "http://hl7.org/fhir/ValueSet/mimetypes",
     ];
 
-    public PackageComparer(ConfigCompare config, DefinitionCollection left, DefinitionCollection right)
+    public PackageComparer(ConfigCompare config, IFhirPackageClient cache, DefinitionCollection left, DefinitionCollection right)
     {
         _config = config;
+        _cache = cache;
         _left = left;
         _right = right;
 
-        _leftPrefix = left.FhirSequence.ToRLiteral();
-        _rightPrefix = right.FhirSequence.ToRLiteral();
+        _leftRLiteral = left.FhirSequence.ToRLiteral();
+        _leftShortVersion = left.FhirSequence.ToShortVersion();
+        _rightRLiteral = right.FhirSequence.ToRLiteral();
+        _rightShortVersion = right.FhirSequence.ToShortVersion();
 
         //if (!string.IsNullOrEmpty(config.OllamaUrl) &&
         //    !string.IsNullOrEmpty(config.OllamaModel))
@@ -99,7 +114,15 @@ public class PackageComparer
             $"Comparing {_left.MainPackageId}#{_left.MainPackageVersion}" +
             $" and {_right.MainPackageId}#{_right.MainPackageVersion}");
 
-        string outputDir = Path.Combine(_config.OutputDirectory, $"{_leftPrefix}_{_rightPrefix}");
+        if (!string.IsNullOrEmpty(_config.CrossVersionRepoPath))
+        {
+            if (!TryLoadFhirCrossVersionMaps())
+            {
+                throw new Exception("Failed to load requested cross-version maps");
+            }
+        }
+
+        string outputDir = Path.Combine(_config.OutputDirectory, $"{_leftRLiteral}_{_rightRLiteral}");
 
         if (!Directory.Exists(outputDir))
         {
@@ -125,14 +148,10 @@ public class PackageComparer
                 Directory.CreateDirectory(subDir);
             }
 
-            HashSet<string> usedKeys = [];
-
             foreach (ComparisonRecord<ValueSetInfoRec, ConceptInfoRec> c in _vsComparisons.Values)
             {
-                string key = GetUnusedKey(c.Key.Split('/')[^1].ToPascalCase(), usedKeys);
-                usedKeys.Add(key);
-
-                string filename = Path.Combine(subDir, $"{key}.md");
+                string name = GetName(c.Left, c.Right);
+                string filename = Path.Combine(subDir, $"{name}.md");
 
                 using ExportStreamWriter writer = CreateMarkdownWriter(filename);
                 {
@@ -152,14 +171,10 @@ public class PackageComparer
                 Directory.CreateDirectory(subDir);
             }
 
-            HashSet<string> usedKeys = [];
-
             foreach (ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec> c in primitives.Values)
             {
-                string key = GetUnusedKey(c.Key.ToPascalCase(), usedKeys);
-                usedKeys.Add(key);
-
-                string filename = Path.Combine(subDir, $"{key}.md");
+                string name = GetName(c.Left, c.Right);
+                string filename = Path.Combine(subDir, $"{name}.md");
 
                 using ExportStreamWriter writer = CreateMarkdownWriter(filename);
                 {
@@ -179,14 +194,10 @@ public class PackageComparer
                 Directory.CreateDirectory(subDir);
             }
 
-            HashSet<string> usedKeys = [];
-
             foreach (ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec> c in complexTypes.Values)
             {
-                string key = GetUnusedKey(c.Key.ToPascalCase(), usedKeys);
-                usedKeys.Add(key);
-
-                string filename = Path.Combine(subDir, $"{key}.md");
+                string name = GetName(c.Left, c.Right);
+                string filename = Path.Combine(subDir, $"{name}.md");
 
                 using ExportStreamWriter writer = CreateMarkdownWriter(filename);
                 {
@@ -206,14 +217,10 @@ public class PackageComparer
                 Directory.CreateDirectory(subDir);
             }
 
-            HashSet<string> usedKeys = [];
-
             foreach (ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec> c in resources.Values)
             {
-                string key = GetUnusedKey(c.Key.ToPascalCase(), usedKeys);
-                usedKeys.Add(key);
-
-                string filename = Path.Combine(subDir, $"{key}.md");
+                string name = GetName(c.Left, c.Right);
+                string filename = Path.Combine(subDir, $"{name}.md");
 
                 using ExportStreamWriter writer = CreateMarkdownWriter(filename);
                 {
@@ -233,14 +240,10 @@ public class PackageComparer
                 Directory.CreateDirectory(subDir);
             }
 
-            HashSet<string> usedKeys = [];
-
             foreach (ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec> c in logical.Values)
             {
-                string key = GetUnusedKey(c.Key.Split('/')[^1].ToPascalCase(), usedKeys);
-                usedKeys.Add(key);
-
-                string filename = Path.Combine(subDir, $"{key}.md");
+                string name = GetName(c.Left, c.Right);
+                string filename = Path.Combine(subDir, $"{name}.md");
 
                 using ExportStreamWriter writer = CreateMarkdownWriter(filename);
                 {
@@ -283,6 +286,172 @@ public class PackageComparer
         return packageComparison;
     }
 
+    private string SanitizeForName(string value)
+    {
+        return FhirSanitizationUtils.SanitizeForProperty(value);
+    }
+
+    private bool TryLoadFhirCrossVersionMaps()
+    {
+        Console.WriteLine($"Loading fhir-cross-version concept maps for conversion from {_leftRLiteral} to {_rightRLiteral}...");
+
+        PackageLoader loader = new(_cache, new()
+        {
+            JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
+            AutoLoadExpansions = false,
+            ResolvePackageDependencies = false,
+        });
+
+        string inputPath = Path.Combine(_config.CrossVersionRepoPath, "input");
+
+        if (!Directory.Exists(inputPath))
+        {
+            throw new DirectoryNotFoundException($"Could not find fhir-cross-version input directory: {inputPath}");
+        }
+
+        _mapCanonical = $"http://hl7.org/fhir/uv/xver/{_leftRLiteral.ToLowerInvariant()}-{_rightRLiteral.ToLowerInvariant()}";
+
+        // create our maps collection
+        _maps = new()
+        {
+            Name = "FHIR Cross Version Maps",
+            FhirVersion = FHIRVersion.N5_0_0,
+            FhirVersionLiteral = "5.0.0",
+            FhirSequence = FhirReleases.FhirSequenceCodes.R5,
+            MainPackageId = $"hl7.fhir.uv.xver.{_leftRLiteral.ToLowerInvariant()}-{_rightRLiteral.ToLowerInvariant()}",
+            MainPackageVersion = "0.0.1",
+            MainPackageCanonical = _mapCanonical,
+        };
+
+        // load concept maps for codes
+        if (!TryLoadCrossVersionConceptMaps(loader, "codes"))
+        {
+            throw new Exception($"Failed to load cross-version code concept maps");
+        }
+
+        if (!TryLoadCrossVersionConceptMaps(loader, "types"))
+        {
+            throw new Exception($"Failed to load cross-version type concept maps");
+        }
+
+        if (!TryLoadCrossVersionConceptMaps(loader, "resources"))
+        {
+            throw new Exception($"Failed to load cross-version resource concept maps");
+        }
+
+        if (!TryLoadCrossVersionConceptMaps(loader, "elements"))
+        {
+            throw new Exception($"Failed to load cross-version element concept maps");
+        }
+
+        return true;
+    }
+
+    private bool TryLoadCrossVersionConceptMaps(PackageLoader loader, string key)
+    {
+        string path = Path.Combine(_config.CrossVersionRepoPath, "input", key);
+        if (!Directory.Exists(path))
+        {
+            throw new DirectoryNotFoundException($"Could not find fhir-cross-version/input/{key} directory: {path}");
+        }
+
+        string filenameFilter = "-" + _leftRLiteral[1..] + "to" + _rightRLiteral[1..] + ".json";
+
+        string[] files = Directory.GetFiles(path, $"ConceptMap*{filenameFilter}", SearchOption.TopDirectoryOnly);
+
+        foreach (string filename in files)
+        {
+            try
+            {
+                object? loaded = loader.ParseContentsSystemTextStream("fhir+json", filename, typeof(ConceptMap));
+                if (loaded is not ConceptMap cm)
+                {
+                    Console.WriteLine($"Error loading {filename}: could not parse as ConceptMap");
+                    continue;
+                }
+
+                // fix urls so we can find things
+                switch (key)
+                {
+                    case "codes":
+                        {
+                            (string url, string leftName, string rightName) = BuildCanonicalForCodeMap(cm);
+
+                            if (_maps!.ConceptMapsByUrl.ContainsKey(url))
+                            {
+                                Console.WriteLine($"Skipping duplicate concept map definition for {url}...");
+                                continue;
+                            }
+
+                            // update our info
+                            cm.Id = $"{_leftRLiteral}-{leftName}-{_rightRLiteral}-{rightName}";
+                            cm.Url = url;
+                            cm.Name = "Map Concepts from " + leftName + " to " + rightName;
+                            cm.Title = $"Cross-version map for concepts from {_leftRLiteral} {leftName} to {_rightRLiteral} {rightName}";
+
+                            // try to manufacture correct value set URLs based on what we have
+                            cm.SourceScope = new Canonical($"{_left.MainPackageCanonical}/ValueSet/{leftName}|{_left.MainPackageVersion}");
+                            cm.TargetScope = new Canonical($"{_right.MainPackageCanonical}/ValueSet/{rightName}|{_right.MainPackageVersion}");
+
+                            string leftUrl = $"{_left.MainPackageCanonical}/ValueSet/{leftName}";
+                            string rightUrl = $"{_right.MainPackageCanonical}/ValueSet/{rightName}";
+
+                            if (cm.Group?.Count == 1)
+                            {
+                                cm.Group[0].Source = leftUrl;
+                                cm.Group[0].Target = rightUrl;
+                            }
+
+                            // add to our listing of value set maps
+                            if (_knownValueSetMaps.TryGetValue(leftName, out List<string>? rightList))
+                            {
+                                rightList.Add(rightUrl);
+                            }
+                            else
+                            {
+                                _knownValueSetMaps.Add(leftName, [rightUrl]);
+                            }
+                        }
+                        break;
+                    case "types":
+                        cm.Url = _maps!.MainPackageCanonical + "/ConceptMap/DataTypes";
+                        break;
+                    case "resources":
+                        cm.Url = _maps!.MainPackageCanonical + "/ConceptMap/Resources";
+                        break;
+                    case "elements":
+                        cm.Url = _maps!.MainPackageCanonical + "/ConceptMap/Elements";
+                        break;
+                }
+
+                // add this to our maps
+                _maps!.AddConceptMap(cm, _maps.MainPackageId, _maps.MainPackageVersion);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error loading {filename}: {ex.Message}");
+            }
+        }
+
+        return true;
+    }
+
+    private (string url, string leftName, string rightName) BuildCanonicalForCodeMap(ConceptMap cm) =>
+        BuildCanonicalForCodeMap(cm.Group?.FirstOrDefault()?.Source ?? cm.Url, cm.Group?.FirstOrDefault()?.Target ?? cm.Url);
+
+    private (string url, string leftName, string rightName) BuildCanonicalForCodeMap(string leftVsUrl, string rightVsUrl)
+    {
+        string leftVsMapName = leftVsUrl.Split('/', '#')[^1];
+        string rightVsMapName = rightVsUrl.Split('/', '#')[^1];
+
+        if (leftVsMapName == rightVsMapName)
+        {
+            return ($"{_mapCanonical}/ConceptMap/ValueSet-{leftVsMapName.ToPascalCase()}", leftVsMapName, rightVsMapName);
+        }
+
+        return ($"{_mapCanonical}/ConceptMap/ValueSet-{leftVsMapName.ToPascalCase()}-{rightVsMapName.ToPascalCase()}", leftVsMapName, rightVsMapName);
+    }
+
     private string GetUnusedKey(string key, HashSet<string> usedKeys)
     {
         if (!usedKeys.Contains(key))
@@ -306,6 +475,17 @@ public class PackageComparer
     {
         Dictionary<string, ValueSet> valueSets = [];
 
+        HashSet<string> mappedSets = [];
+
+        foreach ((string left, List<string> rights) in _knownValueSetMaps)
+        {
+            mappedSets.Add(left);
+            foreach (string right in rights)
+            {
+                mappedSets.Add(right);
+            }
+        }
+
         foreach ((string unversionedUrl, string[] versions) in dc.ValueSetVersions.OrderBy(kvp => kvp.Key))
         {
             if (_exclusionSet.Contains(unversionedUrl))
@@ -317,16 +497,20 @@ public class PackageComparer
             string vsVersion = versions.OrderDescending().First();
             string versionedUrl = unversionedUrl + "|" + vsVersion;
 
-            IEnumerable<StructureElementCollection> coreBindingsVersioned = dc.CoreBindingsForVs(versionedUrl);
-            Hl7.Fhir.Model.BindingStrength? strongestBindingV = dc.StrongestBinding(coreBindingsVersioned);
-
-            IEnumerable<StructureElementCollection> coreBindingsUnversioned = dc.CoreBindingsForVs(unversionedUrl);
-            Hl7.Fhir.Model.BindingStrength? strongestBindingU = dc.StrongestBinding(coreBindingsUnversioned);
-
-            if ((strongestBindingV != Hl7.Fhir.Model.BindingStrength.Required) &&
-                (strongestBindingU != Hl7.Fhir.Model.BindingStrength.Required))
+            // only check bindings if we do not have a map
+            if (!mappedSets.Contains(unversionedUrl))
             {
-                continue;
+                IEnumerable<StructureElementCollection> coreBindingsVersioned = dc.CoreBindingsForVs(versionedUrl);
+                Hl7.Fhir.Model.BindingStrength? strongestBindingV = dc.StrongestBinding(coreBindingsVersioned);
+
+                IEnumerable<StructureElementCollection> coreBindingsUnversioned = dc.CoreBindingsForVs(unversionedUrl);
+                Hl7.Fhir.Model.BindingStrength? strongestBindingU = dc.StrongestBinding(coreBindingsUnversioned);
+
+                if ((strongestBindingV != Hl7.Fhir.Model.BindingStrength.Required) &&
+                    (strongestBindingU != Hl7.Fhir.Model.BindingStrength.Required))
+                {
+                    continue;
+                }
             }
 
             // always expand based on the versioned
@@ -520,11 +704,12 @@ public class PackageComparer
             {
                 TableColumns = ConceptInfoRec.TableColumns,
                 Key = conceptCode,
+                CompositeName = GetName(lSource, rSource),
                 Left = [],
                 Right = rSource,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_rightPrefix} added code {conceptCode}",
+                Message = $"{_rightRLiteral} added code {conceptCode}",
             };
             return true;
         }
@@ -535,11 +720,12 @@ public class PackageComparer
             {
                 TableColumns = ConceptInfoRec.TableColumns,
                 Key = conceptCode,
+                CompositeName = GetName(lSource, rSource),
                 Left = lSource,
                 Right = [],
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_rightPrefix} removed code {conceptCode}",
+                Message = $"{_rightRLiteral} removed code {conceptCode}",
             };
             return true;
         }
@@ -554,18 +740,24 @@ public class PackageComparer
             ConceptInfoRec left = lSource.Count == 1 ? lSource[0] : lSource[sourceIndex];
             ConceptInfoRec right = rSource.Count == 1 ? rSource[0] : rSource[sourceIndex];
 
+            if (left.Code != right.Code)
+            {
+                messages.Add($"it has been mapped to {right.Code}");
+                continue;
+            }
+
             if (left.System != right.System)
             {
-                messages.Add($"has a different system");
+                messages.Add($"{right.Code} has a different system");
             }
 
             if (left.Description != right.Description)
             {
-                messages.Add($"has a different description");
+                messages.Add($"{right.Code} has a different description");
             }
         }
 
-        string message = $"{_rightPrefix} code {conceptCode} is {relationship}" +
+        string message = $"{_rightRLiteral} code {conceptCode} is {relationship}" +
             (messages.Count == 0 ? string.Empty : (" because " + string.Join(" and ", messages.Distinct())));
 
         // note that we can only be here if the codes have already matched, so we are always equivalent
@@ -573,6 +765,7 @@ public class PackageComparer
         {
             TableColumns = ConceptInfoRec.TableColumns,
             Key = conceptCode,
+            CompositeName = GetName(lSource, rSource),
             Left = lSource,
             Right = rSource,
             NamedMatch = true,
@@ -580,6 +773,31 @@ public class PackageComparer
             Message = message,
         };
         return true;
+    }
+
+    private string GetName(List<ConceptInfoRec> l, List<ConceptInfoRec> r)
+    {
+        if (l.Count == 0 && r.Count == 0)
+        {
+            return string.Empty;
+        }
+
+        if (l.Count == 0)
+        {
+            return $"{_rightRLiteral}_{SanitizeForName(r[0].Code)}";
+        }
+
+        if (r.Count == 0)
+        {
+            return $"{_leftRLiteral}_{SanitizeForName(l[0].Code)}";
+        }
+
+        if (l.Count == 1 && r.Count == 1)
+        {
+            return $"{_leftRLiteral}_{SanitizeForName(l[0].Code)}_{_rightRLiteral}_{SanitizeForName(r[0].Code)}";
+        }
+
+        return $"{_leftRLiteral}_{string.Join('_', l.Select(i => SanitizeForName(i.Code)))}_{_rightRLiteral}_{string.Join('_', r.Select(i => SanitizeForName(i.Code)))}";
     }
 
     private (CMR initialRelationship, int maxIndex) GetInitialRelationship<T>(List<T> lSource, List<T> rSource)
@@ -628,11 +846,12 @@ public class PackageComparer
             {
                 TableColumns = ElementTypeInfoRec.TableColumns,
                 Key = typeName,
+                CompositeName = GetName(lSource, rSource),
                 Left = [],
                 Right = rSource,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_rightPrefix} added type {typeName}",
+                Message = $"{_rightRLiteral} added type {typeName}",
             };
             return true;
         }
@@ -643,11 +862,12 @@ public class PackageComparer
             {
                 TableColumns = ElementTypeInfoRec.TableColumns,
                 Key = typeName,
+                CompositeName = GetName(lSource, rSource),
                 Left = lSource,
                 Right = [],
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_rightPrefix} removed type {typeName}",
+                Message = $"{_rightRLiteral} removed type {typeName}",
             };
             return true;
         }
@@ -730,13 +950,14 @@ public class PackageComparer
             }
         }
 
-        string message = $"{_rightPrefix} type {typeName} is {relationship}" +
+        string message = $"{_rightRLiteral} type {typeName} is {relationship}" +
             (messages.Count == 0 ? string.Empty : (" because " + string.Join(" and ", messages.Distinct())));
 
         c = new()
         {
             TableColumns = ElementTypeInfoRec.TableColumns,
             Key = typeName,
+            CompositeName = GetName(lSource, rSource),
             Left = lSource,
             Right = rSource,
             NamedMatch = true,
@@ -744,6 +965,31 @@ public class PackageComparer
             Message = message,
         };
         return true;
+    }
+
+    private string GetName(List<ElementTypeInfoRec> l, List<ElementTypeInfoRec> r)
+    {
+        if (l.Count == 0 && r.Count == 0)
+        {
+            return string.Empty;
+        }
+
+        if (l.Count == 0)
+        {
+            return $"{_rightRLiteral}_{SanitizeForName(r[0].Name)}";
+        }
+
+        if (r.Count == 0)
+        {
+            return $"{_leftRLiteral}_{SanitizeForName(l[0].Name)}";
+        }
+
+        if (l.Count == 1 && r.Count == 1)
+        {
+            return $"{_leftRLiteral}_{SanitizeForName(l[0].Name)}_{_rightRLiteral}_{SanitizeForName(r[0].Name)}";
+        }
+
+        return $"{_leftRLiteral}_{string.Join('_', l.Select(i => SanitizeForName(i.Name)))}_{_rightRLiteral}_{string.Join('_', r.Select(i => SanitizeForName(i.Name)))}";
     }
 
     private CMR ApplyRelationship(CMR existing, CMR? change) => existing switch
@@ -782,11 +1028,12 @@ public class PackageComparer
             {
                 TableColumns = ValueSetInfoRec.TableColumns,
                 Key = url,
+                CompositeName = GetName(lSource, rSource),
                 Left = [],
                 Right = rSource,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_rightPrefix} added value set: {url}",
+                Message = $"{_rightRLiteral} added value set: {url}",
                 Children = conceptComparison,
             };
             return true;
@@ -798,11 +1045,12 @@ public class PackageComparer
             {
                 TableColumns = ValueSetInfoRec.TableColumns,
                 Key = url,
+                CompositeName = GetName(lSource, rSource),
                 Left = lSource,
                 Right = [],
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_rightPrefix} removed value set: {url}",
+                Message = $"{_rightRLiteral} removed value set: {url}",
                 Children = conceptComparison,
             };
             return true;
@@ -817,11 +1065,12 @@ public class PackageComparer
             {
                 TableColumns = ValueSetInfoRec.TableColumns,
                 Key = url,
+                CompositeName = GetName(lSource, rSource),
                 Left = lSource,
                 Right = rSource,
                 NamedMatch = true,
                 Relationship = CMR.Equivalent,
-                Message = $"{_rightPrefix}:{url} is equivalent",
+                Message = $"{_rightRLiteral}:{url} is equivalent",
                 Children = conceptComparison,
             };
             return true;
@@ -859,17 +1108,18 @@ public class PackageComparer
 
         string message = relationship switch
         {
-            CMR.Equivalent => $"{_rightPrefix}:{url} is equivalent",
-            CMR.RelatedTo => $"{_rightPrefix}:{url} is related to {_leftPrefix}:{url} (see concepts for details)",
-            CMR.SourceIsNarrowerThanTarget => $"{_rightPrefix}:{url} subsumes {_leftPrefix}:{url}",
-            CMR.SourceIsBroaderThanTarget => $"{_rightPrefix}:{url} is subsumed by {_leftPrefix}:{url}",
-            _ => $"{_rightPrefix}:{url} is related to {_leftPrefix}:{url} (see concepts for details)",
+            CMR.Equivalent => $"{_rightRLiteral}:{url} is equivalent",
+            CMR.RelatedTo => $"{_rightRLiteral}:{url} is related to {_leftRLiteral}:{url} (see concepts for details)",
+            CMR.SourceIsNarrowerThanTarget => $"{_rightRLiteral}:{url} subsumes {_leftRLiteral}:{url}",
+            CMR.SourceIsBroaderThanTarget => $"{_rightRLiteral}:{url} is subsumed by {_leftRLiteral}:{url}",
+            _ => $"{_rightRLiteral}:{url} is related to {_leftRLiteral}:{url} (see concepts for details)",
         };
 
         c = new()
         {
             TableColumns = ValueSetInfoRec.TableColumns,
             Key = url,
+            CompositeName = GetName(lSource, rSource),
             Left = lSource,
             Right = rSource,
             NamedMatch = true,
@@ -878,6 +1128,31 @@ public class PackageComparer
             Children = conceptComparison,
         };
         return true;
+    }
+
+    private string GetName(List<ValueSetInfoRec> l, List<ValueSetInfoRec> r)
+    {
+        if (l.Count == 0 && r.Count == 0)
+        {
+            return string.Empty;
+        }
+
+        if (l.Count == 0)
+        {
+            return $"{_rightRLiteral}_{SanitizeForName(r[0].Name)}";
+        }
+
+        if (r.Count == 0)
+        {
+            return $"{_leftRLiteral}_{SanitizeForName(l[0].Name)}";
+        }
+
+        if (l.Count == 1 && r.Count == 1)
+        {
+            return $"{_leftRLiteral}_{SanitizeForName(l[0].Name)}_{_rightRLiteral}_{SanitizeForName(r[0].Name)}";
+        }
+
+        return $"{_leftRLiteral}_{string.Join('_', l.Select(i => SanitizeForName(i.Name)))}_{_rightRLiteral}_{string.Join('_', r.Select(i => SanitizeForName(i.Name)))}";
     }
 
     private bool TryCompare(
@@ -904,11 +1179,12 @@ public class PackageComparer
             {
                 TableColumns = ElementInfoRec.TableColumns,
                 Key = edPath,
+                CompositeName = GetName(lSource, rSource),
                 Left = [],
                 Right = rSource,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_rightPrefix} added element {edPath}",
+                Message = $"{_rightRLiteral} added element {edPath}",
                 Children = typeComparison,
             };
             return true;
@@ -920,11 +1196,12 @@ public class PackageComparer
             {
                 TableColumns = ElementInfoRec.TableColumns,
                 Key = edPath,
+                CompositeName = GetName(lSource, rSource),
                 Left = lSource,
                 Right = [],
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_rightPrefix} removed element {edPath}",
+                Message = $"{_rightRLiteral} removed element {edPath}",
                 Children = typeComparison,
             };
             return true;
@@ -1163,7 +1440,7 @@ public class PackageComparer
         }
 
         // build our message
-        string message = $"{_rightPrefix} element {edPath} is {relationship}" +
+        string message = $"{_rightRLiteral} element {edPath} is {relationship}" +
             (messages.Count == 0 ? string.Empty : (" because " + string.Join(" and ", messages.Distinct())));
 
         // return our info
@@ -1171,6 +1448,7 @@ public class PackageComparer
         {
             TableColumns = ElementInfoRec.TableColumns,
             Key = edPath,
+            CompositeName = GetName(lSource, rSource),
             Left = lSource,
             Right = rSource,
             NamedMatch = true,
@@ -1179,6 +1457,31 @@ public class PackageComparer
             Children = typeComparison,
         };
         return true;
+    }
+
+    private string GetName(List<ElementInfoRec> l, List<ElementInfoRec> r)
+    {
+        if (l.Count == 0 && r.Count == 0)
+        {
+            return string.Empty;
+        }
+
+        if (l.Count == 0)
+        {
+            return $"{_rightRLiteral}_{SanitizeForName(r[0].Name)}";
+        }
+
+        if (r.Count == 0)
+        {
+            return $"{_leftRLiteral}_{SanitizeForName(l[0].Name)}";
+        }
+
+        if (l.Count == 1 && r.Count == 1)
+        {
+            return $"{_leftRLiteral}_{SanitizeForName(l[0].Name)}_{_rightRLiteral}_{SanitizeForName(r[0].Name)}";
+        }
+
+        return $"{_leftRLiteral}_{string.Join('_', l.Select(i => SanitizeForName(i.Name)))}_{_rightRLiteral}_{string.Join('_', r.Select(i => SanitizeForName(i.Name)))}";
     }
 
 
@@ -1206,11 +1509,12 @@ public class PackageComparer
             {
                 TableColumns = StructureInfoRec.TableColumns,
                 Key = sdName,
+                CompositeName = GetName(lSource, rSource),
                 Left = [],
                 Right = rSource,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_rightPrefix} added {sdName}",
+                Message = $"{_rightRLiteral} added {sdName}",
                 Children = elementComparison,
             };
             return true;
@@ -1222,11 +1526,12 @@ public class PackageComparer
             {
                 TableColumns = StructureInfoRec.TableColumns,
                 Key = sdName,
+                CompositeName = GetName(lSource, rSource),
                 Left = lSource,
                 Right = [],
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_rightPrefix} removed {sdName}",
+                Message = $"{_rightRLiteral} removed {sdName}",
                 Children = elementComparison,
             };
             return true;
@@ -1239,11 +1544,12 @@ public class PackageComparer
             {
                 TableColumns = StructureInfoRec.TableColumns,
                 Key = sdName,
+                CompositeName = GetName(lSource, rSource),
                 Left = lSource,
                 Right = rSource,
                 NamedMatch = true,
                 Relationship = CMR.Equivalent,
-                Message = $"{_rightPrefix}:{sdName} is equivalent",
+                Message = $"{_rightRLiteral}:{sdName} is equivalent",
                 Children = elementComparison,
             };
             return true;
@@ -1276,17 +1582,18 @@ public class PackageComparer
 
         string message = relationship switch
         {
-            CMR.Equivalent => $"{_rightPrefix}:{sdName} is equivalent",
-            CMR.RelatedTo => $"{_rightPrefix}:{sdName} is related to {_leftPrefix}:{sdName} (see elements for details)",
-            CMR.SourceIsNarrowerThanTarget => $"{_rightPrefix}:{sdName} subsumes {_leftPrefix}:{sdName}",
-            CMR.SourceIsBroaderThanTarget => $"{_rightPrefix}:{sdName} is subsumed by {_leftPrefix}:{sdName}",
-            _ => $"{_rightPrefix}:{sdName} is related to {_leftPrefix}:{sdName} (see elements for details)",
+            CMR.Equivalent => $"{_rightRLiteral}:{sdName} is equivalent",
+            CMR.RelatedTo => $"{_rightRLiteral}:{sdName} is related to {_leftRLiteral}:{sdName} (see elements for details)",
+            CMR.SourceIsNarrowerThanTarget => $"{_rightRLiteral}:{sdName} subsumes {_leftRLiteral}:{sdName}",
+            CMR.SourceIsBroaderThanTarget => $"{_rightRLiteral}:{sdName} is subsumed by {_leftRLiteral}:{sdName}",
+            _ => $"{_rightRLiteral}:{sdName} is related to {_leftRLiteral}:{sdName} (see elements for details)",
         };
 
         c = new()
         {
             TableColumns = StructureInfoRec.TableColumns,
             Key = sdName,
+            CompositeName = GetName(lSource, rSource),
             Left = lSource,
             Right = rSource,
             NamedMatch = true,
@@ -1297,9 +1604,35 @@ public class PackageComparer
         return true;
     }
 
+    private string GetName(List<StructureInfoRec> l, List<StructureInfoRec> r)
+    {
+        if (l.Count == 0 && r.Count == 0)
+        {
+            return string.Empty;
+        }
+
+        if (l.Count == 0)
+        {
+            return $"{_rightRLiteral}_{SanitizeForName(r[0].Name)}";
+        }
+
+        if (r.Count == 0)
+        {
+            return $"{_leftRLiteral}_{SanitizeForName(l[0].Name)}";
+        }
+
+        if (l.Count == 1 && r.Count == 1)
+        {
+            return $"{_leftRLiteral}_{SanitizeForName(l[0].Name)}_{_rightRLiteral}_{SanitizeForName(r[0].Name)}";
+        }
+
+        return $"{_leftRLiteral}_{string.Join('_', l.Select(i => SanitizeForName(i.Name)))}_{_rightRLiteral}_{string.Join('_', r.Select(i => SanitizeForName(i.Name)))}";
+    }
+
     private Dictionary<string, ComparisonRecord<ConceptInfoRec>> Compare(
         IReadOnlyDictionary<string, FhirConcept> leftConcepts,
-        IReadOnlyDictionary<string, FhirConcept> rightConcepts)
+        IReadOnlyDictionary<string, FhirConcept> rightConcepts,
+        ConceptMap? cm)
     {
         Dictionary<string, ConceptInfoRec> left = leftConcepts.ToDictionary(kvp => kvp.Key, kvp => GetInfo(kvp.Value));
         Dictionary<string, ConceptInfoRec> right = rightConcepts.ToDictionary(kvp => kvp.Key, kvp => GetInfo(kvp.Value));
@@ -1310,8 +1643,31 @@ public class PackageComparer
 
         foreach (string conceptCode in keys)
         {
+            ConceptMap.SourceElementComponent? ce = cm?.Group.FirstOrDefault()?.Element.Where(e => e.Code == conceptCode).FirstOrDefault();
+
             List<ConceptInfoRec> leftInfoSource = left.TryGetValue(conceptCode, out ConceptInfoRec? leftInfo) ? [leftInfo] : [];
-            List <ConceptInfoRec> rightInfoSource = right.TryGetValue(conceptCode, out ConceptInfoRec? rightInfo) ? [rightInfo] : [];
+            List<ConceptInfoRec> rightInfoSource;
+            //rightInfoSource = rightInfoSource = right.TryGetValue(conceptCode, out ConceptInfoRec? rightInfo) ? [rightInfo] : [];
+            if (ce is not null)
+            {
+                rightInfoSource = [];
+
+                foreach (ConceptMap.TargetElementComponent te in ce.Target)
+                {
+                    if (right.TryGetValue(te.Code, out ConceptInfoRec? rightInfo))
+                    {
+                        rightInfoSource.Add(rightInfo);
+                    }
+                    else
+                    {
+                        throw new Exception($"Concept {te.Code} not found in right set");
+                    }
+                }
+            }
+            else
+            {
+                rightInfoSource = right.TryGetValue(conceptCode, out ConceptInfoRec? rightInfo) ? [rightInfo] : [];
+            }
 
             if (TryCompare(conceptCode, leftInfoSource, rightInfoSource, out ComparisonRecord<ConceptInfoRec>? c))
             {
@@ -1335,42 +1691,71 @@ public class PackageComparer
 
         foreach (string url in keys)
         {
-            List<ValueSetInfoRec> leftInfoSource = left.TryGetValue(url, out ValueSetInfoRec? leftInfo) ? [leftInfo] : [];
-            List<ValueSetInfoRec> rightInfoSource = right.TryGetValue(url, out ValueSetInfoRec? rightInfo) ? [rightInfo] : [];
-
-            Dictionary<string, FhirConcept> leftConcepts = [];
-            Dictionary<string, FhirConcept> rightConcepts = [];
-
-            if (leftInput.TryGetValue(url, out ValueSet? leftVs))
+            List<string> rightUrls = _knownValueSetMaps.TryGetValue(url, out List<string>? vsTargets) ? vsTargets : [];
+            if (rightUrls.Count == 0)
             {
-                IEnumerable<FhirConcept> flat = leftVs.cgGetFlatConcepts(_left);
-                foreach (FhirConcept concept in flat)
-                {
-                    _ = leftConcepts.TryAdd(concept.Key, concept);
-                }
-
-                leftInfo = leftInfo! with { ConceptCount = leftConcepts.Count };
-                left[url] = leftInfo;
+                rightUrls = [url];
+            }
+            else if (!rightUrls.Contains(url))
+            {
+                rightUrls.Add(url);
             }
 
-            if (rightInput.TryGetValue(url, out ValueSet? rightVs))
+            foreach (string rightUrl in rightUrls)
             {
-                IEnumerable<FhirConcept> flat = rightVs.cgGetFlatConcepts(_left);
-                foreach (FhirConcept concept in flat)
+                ConceptMap? cm = null;
+
+                // check to see if we have loaded maps
+                if (_maps is not null)
                 {
-                    _ = rightConcepts.TryAdd(concept.Key, concept);
+                    // get our map url
+                    (string mapUrl, string leftVsName, string rightVsName) = BuildCanonicalForCodeMap(url, rightUrl);
+
+                    if (_maps.TryResolveByCanonicalUri(mapUrl, out Resource? r) &&
+                        (r is ConceptMap))
+                    {
+                        // we have a map, so we need to add it to our input
+                        cm = r as ConceptMap;
+                    }
                 }
 
-                rightInfo = rightInfo! with { ConceptCount = rightConcepts.Count };
-                right[url] = rightInfo;
-            }
+                List<ValueSetInfoRec> leftInfoSource = left.TryGetValue(url, out ValueSetInfoRec? leftInfo) ? [leftInfo] : [];
+                List<ValueSetInfoRec> rightInfoSource = right.TryGetValue(rightUrl, out ValueSetInfoRec? rightInfo) ? [rightInfo] : [];
 
-            // compare our concepts
-            Dictionary<string, ComparisonRecord<ConceptInfoRec>> conceptComparison = Compare(leftConcepts, rightConcepts);
+                Dictionary<string, FhirConcept> leftConcepts = [];
+                Dictionary<string, FhirConcept> rightConcepts = [];
 
-            if (TryCompare(url, leftInfoSource, rightInfoSource, conceptComparison, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? c))
-            {
-                comparison.Add(url, c);
+                if (leftInput.TryGetValue(url, out ValueSet? leftVs))
+                {
+                    IEnumerable<FhirConcept> flat = leftVs.cgGetFlatConcepts(_left);
+                    foreach (FhirConcept concept in flat)
+                    {
+                        _ = leftConcepts.TryAdd(concept.Code, concept);
+                    }
+
+                    leftInfo = leftInfo! with { ConceptCount = leftConcepts.Count };
+                    left[url] = leftInfo;
+                }
+
+                if (rightInput.TryGetValue(rightUrl, out ValueSet? rightVs))
+                {
+                    IEnumerable<FhirConcept> flat = rightVs.cgGetFlatConcepts(_right);
+                    foreach (FhirConcept concept in flat)
+                    {
+                        _ = rightConcepts.TryAdd(concept.Code, concept);
+                    }
+
+                    rightInfo = rightInfo! with { ConceptCount = rightConcepts.Count };
+                    right[rightUrl] = rightInfo;
+                }
+
+                // compare our concepts
+                Dictionary<string, ComparisonRecord<ConceptInfoRec>> conceptComparison = Compare(leftConcepts, rightConcepts, cm);
+
+                if (TryCompare(url, leftInfoSource, rightInfoSource, conceptComparison, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? c))
+                {
+                    comparison.Add(url, c);
+                }
             }
         }
 

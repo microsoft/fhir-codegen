@@ -23,6 +23,7 @@ internal static class ComparisonUtils
 public interface IComparisonRecord
 {
     string Key { get; init; }
+    string CompositeName { get; init; }
     bool NamedMatch { get; init; }
     Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; init; }
     string Message { get; init; }
@@ -58,6 +59,7 @@ public class ComparisonRecord<T> : IComparisonRecord<T> where T : IInfoRec
     private const string _rightSide = "Destination";
 
     public required string Key { get; init; }
+    public required string CompositeName { get; init; }
     public required List<T> Left { get; init; }
     public required List<T> Right { get; init; }
     public required bool NamedMatch { get; init; }

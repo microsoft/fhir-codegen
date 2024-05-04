@@ -78,6 +78,8 @@ public partial class DefinitionCollection
     private readonly Dictionary<string, string[]> _valueSetVersions = [];
     private readonly Dictionary<string, string> _valueSetUrlsById = [];
 
+    private readonly Dictionary<string, ConceptMap> _conceptMapsByUrl = [];
+
     private readonly Dictionary<string, List<StructureElementCollection>> _coreBindingEdsByPathByValueSet = [];
     private readonly Dictionary<string, List<StructureElementCollection>> _extendedBindingEdsByPathByValueSet = [];
 
@@ -946,6 +948,28 @@ public partial class DefinitionCollection
         TrackResource(codeSystem);
     }
 
+    public IReadOnlyDictionary<string, ConceptMap> ConceptMapsByUrl => _conceptMapsByUrl;
+
+    public void AddConceptMap(ConceptMap cm, string packageId, string packageVersion)
+    {
+        // check to see if this resource already exists
+        if (_conceptMapsByUrl.TryGetValue(cm.Url, out ConceptMap? prev) &&
+            TryGetPackageSource(prev, out string prevPackageId, out _))
+        {
+            // official examples packages contain all the definitions, but we want the ones from core
+            if (prevPackageId.Contains(".core") && !packageId.Contains(".core"))
+            {
+                return;
+            }
+        }
+
+        // add the package source
+        AddPackageSource(cm, packageId, packageVersion);
+
+        _conceptMapsByUrl[cm.Url] = cm;
+        TrackResource(cm);
+    }
+
     /// <summary>Gets the value set versions.</summary>
     public IReadOnlyDictionary<string, string[]> ValueSetVersions => _valueSetVersions;
 
@@ -1378,6 +1402,9 @@ public partial class DefinitionCollection
 
                 // copy the existing expansion into the new record
                 existing.Expansion.CopyTo(valueSet.Expansion);
+
+                // update to the more complete definition + the expansion
+                _valueSetsByVersionedUrl[vsUrl] = valueSet;
             }
             else if ((valueSet.Expansion != null) && (existing.Expansion != null))
             {
@@ -1471,6 +1498,10 @@ public partial class DefinitionCollection
 
             case CompartmentDefinition cd:
                 AddCompartment(cd, packageId, packageVersion);
+                break;
+
+            case ConceptMap cm:
+                AddConceptMap(cm, packageId, packageVersion);
                 break;
 
             default:

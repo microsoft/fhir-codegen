@@ -671,7 +671,7 @@ public class Program
             DefinitionCollection? loadedRight = loaderLeft.LoadPackages(packagesRight.First().Name, packagesRight)
                 ?? throw new Exception($"Could not load right-hand-side packages: {string.Join(',', config.Packages)}");
 
-            PackageComparer comparer = new(config, loadedLeft, loadedRight);
+            PackageComparer comparer = new(config, cache, loadedLeft, loadedRight);
 
             _ = comparer.Compare();
         }
