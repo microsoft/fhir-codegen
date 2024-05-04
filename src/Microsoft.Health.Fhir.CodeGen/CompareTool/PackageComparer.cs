@@ -17,6 +17,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.Language.Debugging;
 using Hl7.Fhir.Model;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
@@ -124,14 +125,14 @@ public class PackageComparer
                 Directory.CreateDirectory(subDir);
             }
 
+            HashSet<string> usedKeys = [];
+
             foreach (ComparisonRecord<ValueSetInfoRec, ConceptInfoRec> c in _vsComparisons.Values)
             {
-                string filename =
-                    (c.Left is null)
-                    ? Path.Combine(subDir, $"{_rightPrefix}_{c.Right!.Name.ToPascalCase()}.md")
-                    : (c.Right is null)
-                        ? Path.Combine(subDir, $"{_leftPrefix}_{c.Left.Name.ToPascalCase()}.md")
-                        : Path.Combine(subDir, $"{_leftPrefix}_{c.Left.Name.ToPascalCase()}_{_rightPrefix}_{c.Right.Name.ToPascalCase()}.md");
+                string key = GetUnusedKey(c.Key.Split('/')[^1].ToPascalCase(), usedKeys);
+                usedKeys.Add(key);
+
+                string filename = Path.Combine(subDir, $"{key}.md");
 
                 using ExportStreamWriter writer = CreateMarkdownWriter(filename);
                 {
@@ -151,14 +152,14 @@ public class PackageComparer
                 Directory.CreateDirectory(subDir);
             }
 
+            HashSet<string> usedKeys = [];
+
             foreach (ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec> c in primitives.Values)
             {
-                string filename =
-                    (c.Left is null)
-                    ? Path.Combine(subDir, $"{_rightPrefix}_{c.Right!.Name.ToPascalCase()}.md")
-                    : (c.Right is null)
-                        ? Path.Combine(subDir, $"{_leftPrefix}_{c.Left.Name.ToPascalCase()}.md")
-                        : Path.Combine(subDir, $"{_leftPrefix}_{c.Left.Name.ToPascalCase()}_{_rightPrefix}_{c.Right.Name.ToPascalCase()}.md");
+                string key = GetUnusedKey(c.Key.ToPascalCase(), usedKeys);
+                usedKeys.Add(key);
+
+                string filename = Path.Combine(subDir, $"{key}.md");
 
                 using ExportStreamWriter writer = CreateMarkdownWriter(filename);
                 {
@@ -178,21 +179,20 @@ public class PackageComparer
                 Directory.CreateDirectory(subDir);
             }
 
+            HashSet<string> usedKeys = [];
+
             foreach (ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec> c in complexTypes.Values)
             {
-                string filename =
-                    (c.Left is null)
-                    ? Path.Combine(subDir, $"{_rightPrefix}_{c.Right!.Name.ToPascalCase()}.md")
-                    : (c.Right is null)
-                        ? Path.Combine(subDir, $"{_leftPrefix}_{c.Left.Name.ToPascalCase()}.md")
-                        : Path.Combine(subDir, $"{_leftPrefix}_{c.Left.Name.ToPascalCase()}_{_rightPrefix}_{c.Right.Name.ToPascalCase()}.md");
+                string key = GetUnusedKey(c.Key.ToPascalCase(), usedKeys);
+                usedKeys.Add(key);
+
+                string filename = Path.Combine(subDir, $"{key}.md");
 
                 using ExportStreamWriter writer = CreateMarkdownWriter(filename);
                 {
                     WriteComparisonFile(writer, string.Empty, c);
                 }
             }
-
         }
 
         Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> resources = Compare(_left.ResourcesByName, _right.ResourcesByName);
@@ -206,14 +206,14 @@ public class PackageComparer
                 Directory.CreateDirectory(subDir);
             }
 
+            HashSet<string> usedKeys = [];
+
             foreach (ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec> c in resources.Values)
             {
-                string filename =
-                    (c.Left is null)
-                    ? Path.Combine(subDir, $"{_rightPrefix}_{c.Right!.Name.ToPascalCase()}.md")
-                    : (c.Right is null)
-                        ? Path.Combine(subDir, $"{_leftPrefix}_{c.Left.Name.ToPascalCase()}.md")
-                        : Path.Combine(subDir, $"{_leftPrefix}_{c.Left.Name.ToPascalCase()}_{_rightPrefix}_{c.Right.Name.ToPascalCase()}.md");
+                string key = GetUnusedKey(c.Key.ToPascalCase(), usedKeys);
+                usedKeys.Add(key);
+
+                string filename = Path.Combine(subDir, $"{key}.md");
 
                 using ExportStreamWriter writer = CreateMarkdownWriter(filename);
                 {
@@ -233,14 +233,14 @@ public class PackageComparer
                 Directory.CreateDirectory(subDir);
             }
 
+            HashSet<string> usedKeys = [];
+
             foreach (ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec> c in logical.Values)
             {
-                string filename =
-                    (c.Left is null)
-                    ? Path.Combine(subDir, $"{_rightPrefix}_{c.Right!.Name.ToPascalCase()}.md")
-                    : (c.Right is null)
-                        ? Path.Combine(subDir, $"{_leftPrefix}_{c.Left.Name.ToPascalCase()}.md")
-                        : Path.Combine(subDir, $"{_leftPrefix}_{c.Left.Name.ToPascalCase()}_{_rightPrefix}_{c.Right.Name.ToPascalCase()}.md");
+                string key = GetUnusedKey(c.Key.Split('/')[^1].ToPascalCase(), usedKeys);
+                usedKeys.Add(key);
+
+                string filename = Path.Combine(subDir, $"{key}.md");
 
                 using ExportStreamWriter writer = CreateMarkdownWriter(filename);
                 {
@@ -281,6 +281,25 @@ public class PackageComparer
         }
 
         return packageComparison;
+    }
+
+    private string GetUnusedKey(string key, HashSet<string> usedKeys)
+    {
+        if (!usedKeys.Contains(key))
+        {
+            return key;
+        }
+
+        int inc = 2;
+        string test = key;
+
+        while (usedKeys.Contains(test))
+        {
+            test = $"{key}_{inc}";
+            inc++;
+        }
+
+        return test;
     }
 
     private Dictionary<string, ValueSet> GetValueSets(DefinitionCollection dc)
@@ -390,11 +409,20 @@ public class PackageComparer
 
     private void WriteComparisonRecDataTable(ExportStreamWriter writer, IComparisonRecord cRec)
     {
-        cRec.GetTableData(out string[] tdHeader, out string[] tdLeft, out string[] tdRight);
+        cRec.GetTableData(out string[] tdHeader, out List<string[]> tdLeft, out List<string[]> tdRight);
         writer.WriteLine("| " + string.Join(" | ", tdHeader) + " |");
         writer.WriteLine("| " + string.Join(" | ", Enumerable.Repeat("---", tdHeader.Length)) + " |");
-        writer.WriteLine("| " + string.Join(" | ", tdLeft) + " |");
-        writer.WriteLine("| " + string.Join(" | ", tdRight) + " |");
+
+        foreach (string[] td in tdLeft)
+        {
+            writer.WriteLine("| " + string.Join(" | ", td) + " |");
+        }
+
+        foreach (string[] td in tdRight)
+        {
+            writer.WriteLine("| " + string.Join(" | ", td) + " |");
+        }
+
         writer.WriteLine();
     }
 
@@ -473,21 +501,27 @@ public class PackageComparer
         // TODO(ginoc): implement
     }
 
-    private bool TryCompare(string conceptCode, ConceptInfoRec? left, ConceptInfoRec? right, [NotNullWhen(true)] out ComparisonRecord<ConceptInfoRec>? c)
+    private bool TryCompare(string conceptCode, List<ConceptInfoRec> lSource, List<ConceptInfoRec> rSource, [NotNullWhen(true)] out ComparisonRecord<ConceptInfoRec>? c)
     {
-        if ((left is null) && (right is null))
+        if ((lSource.Count == 0) && (rSource.Count == 0))
         {
             c = null;
             return false;
         }
 
-        if (left is null)
+        if ((lSource.Count > 1) && (rSource.Count > 1))
+        {
+            throw new Exception("Cannot compare multiple source to multiple destination records!");
+        }
+
+        if (lSource.Count == 0)
         {
             c = new()
             {
+                TableColumns = ConceptInfoRec.TableColumns,
                 Key = conceptCode,
-                Left = null,
-                Right = right,
+                Left = [],
+                Right = rSource,
                 NamedMatch = false,
                 Relationship = null,
                 Message = $"{_rightPrefix} added code {conceptCode}",
@@ -495,13 +529,14 @@ public class PackageComparer
             return true;
         }
 
-        if (right is null)
+        if (rSource.Count == 0)
         {
             c = new()
             {
+                TableColumns = ConceptInfoRec.TableColumns,
                 Key = conceptCode,
-                Left = left,
-                Right = null,
+                Left = lSource,
+                Right = [],
                 NamedMatch = false,
                 Relationship = null,
                 Message = $"{_rightPrefix} removed code {conceptCode}",
@@ -509,33 +544,57 @@ public class PackageComparer
             return true;
         }
 
+        // initial relationship is based on the number of comparison records
+        (CMR relationship, int maxIndex) = GetInitialRelationship(lSource, rSource);
+
         List<string> messages = [];
 
-        if (left.System != right.System)
+        for (int sourceIndex = 0; sourceIndex < maxIndex; sourceIndex++)
         {
-            messages.Add($"has a different system");
+            ConceptInfoRec left = lSource.Count == 1 ? lSource[0] : lSource[sourceIndex];
+            ConceptInfoRec right = rSource.Count == 1 ? rSource[0] : rSource[sourceIndex];
+
+            if (left.System != right.System)
+            {
+                messages.Add($"has a different system");
+            }
+
+            if (left.Description != right.Description)
+            {
+                messages.Add($"has a different description");
+            }
         }
 
-        if (left.Description != right.Description)
-        {
-            messages.Add($"has a different description");
-        }
-
-        string message = messages.Count == 0
-            ? $"{_rightPrefix} code is equivalent"
-            : $"{_rightPrefix} " + string.Join(" and ", messages);
+        string message = $"{_rightPrefix} code {conceptCode} is {relationship}" +
+            (messages.Count == 0 ? string.Empty : (" because " + string.Join(" and ", messages.Distinct())));
 
         // note that we can only be here if the codes have already matched, so we are always equivalent
         c = new()
         {
+            TableColumns = ConceptInfoRec.TableColumns,
             Key = conceptCode,
-            Left = left,
-            Right = right,
+            Left = lSource,
+            Right = rSource,
             NamedMatch = true,
-            Relationship = CMR.Equivalent,
+            Relationship = relationship,
             Message = message,
         };
         return true;
+    }
+
+    private (CMR initialRelationship, int maxIndex) GetInitialRelationship<T>(List<T> lSource, List<T> rSource)
+    {
+        if (lSource.Count == 1 && rSource.Count == 1)
+        {
+            return (CMR.Equivalent, 1);
+        }
+
+        if (lSource.Count > 1)
+        {
+            return (CMR.SourceIsNarrowerThanTarget, lSource.Count);
+        }
+
+        return (CMR.SourceIsBroaderThanTarget, rSource.Count);
     }
 
     /// <summary>
@@ -548,23 +607,29 @@ public class PackageComparer
     /// <returns>True if the comparison is successful, false otherwise.</returns>
     private bool TryCompare(
         string typeName,
-        ElementTypeInfoRec? left,
-        ElementTypeInfoRec? right,
+        List<ElementTypeInfoRec> lSource,
+        List<ElementTypeInfoRec> rSource,
         [NotNullWhen(true)] out ComparisonRecord<ElementTypeInfoRec>? c)
     {
-        if ((left is null) && (right is null))
+        if ((lSource.Count == 0) && (rSource.Count == 0))
         {
             c = null;
             return false;
         }
 
-        if (left is null)
+        if ((lSource.Count > 1) && (rSource.Count > 1))
+        {
+            throw new Exception("Cannot compare multiple source to multiple destination records!");
+        }
+
+        if (lSource.Count == 0)
         {
             c = new()
             {
+                TableColumns = ElementTypeInfoRec.TableColumns,
                 Key = typeName,
-                Left = null,
-                Right = right,
+                Left = [],
+                Right = rSource,
                 NamedMatch = false,
                 Relationship = null,
                 Message = $"{_rightPrefix} added type {typeName}",
@@ -572,13 +637,14 @@ public class PackageComparer
             return true;
         }
 
-        if (right is null)
+        if (rSource.Count == 0)
         {
             c = new()
             {
+                TableColumns = ElementTypeInfoRec.TableColumns,
                 Key = typeName,
-                Left = left,
-                Right = null,
+                Left = lSource,
+                Right = [],
                 NamedMatch = false,
                 Relationship = null,
                 Message = $"{_rightPrefix} removed type {typeName}",
@@ -586,86 +652,93 @@ public class PackageComparer
             return true;
         }
 
-        // TODO: check existing type maps
-        if (left.Name != right.Name)
-        {
-            throw new Exception("Type names do not match");
-        }
+        //// TODO: check existing type maps
+        //if (left.Name != right.Name)
+        //{
+        //    throw new Exception("Type names do not match");
+        //}
 
-        // once we know the types are the same, we want to determine all differences in profiles and target profiles
-        List<string> addedProfiles = [];
-        List<string> removedProfiles = [];
+        // initial relationship is based on the number of comparison records
+        (CMR relationship, int maxIndex) = GetInitialRelationship(lSource, rSource);
 
-        HashSet<string> scratch = right.Profiles.ToHashSet();
-
-        foreach (string lp in left.Profiles)
-        {
-            if (scratch.Contains(lp))
-            {
-                scratch.Remove(lp);
-                continue;
-            }
-
-            removedProfiles.Add(lp);
-        }
-
-        addedProfiles.AddRange(scratch);
-
-        List<string> addedTargets = [];
-        List<string> removedTargets = [];
-
-        scratch = right.TargetProfiles.ToHashSet();
-
-        foreach (string lp in left.TargetProfiles)
-        {
-            if (scratch.Contains(lp))
-            {
-                scratch.Remove(lp);
-                continue;
-            }
-
-            removedTargets.Add(lp);
-        }
-
-        addedTargets.AddRange(scratch);
-
-        // start with assuming the types are equivalent
-        CMR relationship = CMR.Equivalent;
         List<string> messages = [];
 
-        if (addedProfiles.Any())
+        for (int sourceIndex = 0; sourceIndex < maxIndex; sourceIndex++)
         {
-            relationship = ApplyRelationship(relationship, CMR.SourceIsNarrowerThanTarget);
-            messages.Add($"added profiles: {string.Join(", ", addedProfiles)}");
+            ElementTypeInfoRec left = lSource.Count == 1 ? lSource[0] : lSource[sourceIndex];
+            ElementTypeInfoRec right = rSource.Count == 1 ? rSource[0] : rSource[sourceIndex];
+
+            // once we know the types are the same, we want to determine all differences in profiles and target profiles
+            List<string> addedProfiles = [];
+            List<string> removedProfiles = [];
+
+            HashSet<string> scratch = right.Profiles.ToHashSet();
+
+            foreach (string lp in left.Profiles)
+            {
+                if (scratch.Contains(lp))
+                {
+                    scratch.Remove(lp);
+                    continue;
+                }
+
+                removedProfiles.Add(lp);
+            }
+
+            addedProfiles.AddRange(scratch);
+
+            List<string> addedTargets = [];
+            List<string> removedTargets = [];
+
+            scratch = right.TargetProfiles.ToHashSet();
+
+            foreach (string lp in left.TargetProfiles)
+            {
+                if (scratch.Contains(lp))
+                {
+                    scratch.Remove(lp);
+                    continue;
+                }
+
+                removedTargets.Add(lp);
+            }
+
+            addedTargets.AddRange(scratch);
+
+            if (addedProfiles.Any())
+            {
+                relationship = ApplyRelationship(relationship, CMR.SourceIsNarrowerThanTarget);
+                messages.Add($"{right.Name} added profiles: {string.Join(", ", addedProfiles)}");
+            }
+
+            if (removedProfiles.Any())
+            {
+                relationship = ApplyRelationship(relationship, CMR.SourceIsBroaderThanTarget);
+                messages.Add($"{right.Name} removed profiles: {string.Join(", ", removedProfiles)}");
+            }
+
+            if (addedTargets.Any())
+            {
+                relationship = ApplyRelationship(relationship, CMR.SourceIsNarrowerThanTarget);
+                messages.Add($"{right.Name} added target profiles: {string.Join(", ", addedTargets)}");
+            }
+
+            if (removedTargets.Any())
+            {
+                relationship = ApplyRelationship(relationship, CMR.SourceIsBroaderThanTarget);
+                messages.Add($"{right.Name} removed target profiles: {string.Join(", ", removedTargets)}");
+            }
         }
 
-        if (removedProfiles.Any())
-        {
-            relationship = ApplyRelationship(relationship, CMR.SourceIsBroaderThanTarget);
-            messages.Add($"removed profiles: {string.Join(", ", removedProfiles)}");
-        }
-
-        if (addedTargets.Any())
-        {
-            relationship = ApplyRelationship(relationship, CMR.SourceIsNarrowerThanTarget);
-            messages.Add($"added target profiles: {string.Join(", ", addedTargets)}");
-        }
-
-        if (removedTargets.Any())
-        {
-            relationship = ApplyRelationship(relationship, CMR.SourceIsBroaderThanTarget);
-            messages.Add($"removed target profiles: {string.Join(", ", removedTargets)}");
-        }
-
-        string message = messages.Count == 0
-            ? $"{_rightPrefix} type {right.Name} is equivalent."
-            : $"{_rightPrefix} type " + string.Join(" and ", messages);
+        string message = $"{_rightPrefix} type {typeName} is {relationship}" +
+            (messages.Count == 0 ? string.Empty : (" because " + string.Join(" and ", messages.Distinct())));
 
         c = new()
         {
+            TableColumns = ElementTypeInfoRec.TableColumns,
             Key = typeName,
-            Left = left,
-            Right = right,
+            Left = lSource,
+            Right = rSource,
             NamedMatch = true,
             Relationship = relationship,
             Message = message,
@@ -687,24 +760,30 @@ public class PackageComparer
 
     private bool TryCompare(
         string url,
-        ValueSetInfoRec? left,
-        ValueSetInfoRec? right,
+        List<ValueSetInfoRec> lSource,
+        List<ValueSetInfoRec> rSource,
         Dictionary<string, ComparisonRecord<ConceptInfoRec>> conceptComparison,
         [NotNullWhen(true)] out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? c)
     {
-        if ((left is null) && (right is null))
+        if ((lSource.Count == 0) && (rSource.Count == 0))
         {
             c = null;
             return false;
         }
 
-        if (left is null)
+        if ((lSource.Count > 1) && (rSource.Count > 1))
+        {
+            throw new Exception("Cannot compare multiple source to multiple destination records!");
+        }
+
+        if (lSource.Count == 0)
         {
             c = new()
             {
+                TableColumns = ValueSetInfoRec.TableColumns,
                 Key = url,
-                Left = null,
-                Right = right,
+                Left = [],
+                Right = rSource,
                 NamedMatch = false,
                 Relationship = null,
                 Message = $"{_rightPrefix} added value set: {url}",
@@ -713,13 +792,14 @@ public class PackageComparer
             return true;
         }
 
-        if (right is null)
+        if (rSource.Count == 0)
         {
             c = new()
             {
+                TableColumns = ValueSetInfoRec.TableColumns,
                 Key = url,
-                Left = left,
-                Right = null,
+                Left = lSource,
+                Right = [],
                 NamedMatch = false,
                 Relationship = null,
                 Message = $"{_rightPrefix} removed value set: {url}",
@@ -729,13 +809,16 @@ public class PackageComparer
         }
 
         // check for all concepts being equivalent
-        if (conceptComparison.Values.All(cc => cc.Relationship == CMR.Equivalent))
+        if ((lSource.Count == 1) &&
+            (rSource.Count == 1) &&
+            conceptComparison.Values.All(cc => cc.Relationship == CMR.Equivalent))
         {
             c = new()
             {
+                TableColumns = ValueSetInfoRec.TableColumns,
                 Key = url,
-                Left = left,
-                Right = right,
+                Left = lSource,
+                Right = rSource,
                 NamedMatch = true,
                 Relationship = CMR.Equivalent,
                 Message = $"{_rightPrefix}:{url} is equivalent",
@@ -744,27 +827,34 @@ public class PackageComparer
             return true;
         }
 
-        CMR relationship = CMR.Equivalent;
-        foreach (ComparisonRecord<ConceptInfoRec> ec in conceptComparison.Values)
+        (CMR relationship, int maxIndex) = GetInitialRelationship(lSource, rSource);
+
+        for (int sourceIndex = 0; sourceIndex < maxIndex; sourceIndex++)
         {
-            if (ec.Relationship == CMR.Equivalent)
-            {
-                continue;
-            }
+            ValueSetInfoRec left = lSource.Count == 1 ? lSource[0] : lSource[sourceIndex];
+            ValueSetInfoRec right = rSource.Count == 1 ? rSource[0] : rSource[sourceIndex];
 
-            if (ec.Left is null)
+            foreach (ComparisonRecord<ConceptInfoRec> ec in conceptComparison.Values)
             {
-                relationship = ApplyRelationship(relationship, CMR.SourceIsNarrowerThanTarget);
-                continue;
-            }
+                if (ec.Relationship == CMR.Equivalent)
+                {
+                    continue;
+                }
 
-            if (ec.Right is null)
-            {
-                relationship = ApplyRelationship(relationship, CMR.SourceIsBroaderThanTarget);
-                continue;
-            }
+                if (ec.Left.Count == 0)
+                {
+                    relationship = ApplyRelationship(relationship, CMR.SourceIsNarrowerThanTarget);
+                    continue;
+                }
 
-            relationship = ApplyRelationship(relationship, ec.Relationship);
+                if (ec.Right.Count == 0)
+                {
+                    relationship = ApplyRelationship(relationship, CMR.SourceIsBroaderThanTarget);
+                    continue;
+                }
+
+                relationship = ApplyRelationship(relationship, ec.Relationship);
+            }
         }
 
         string message = relationship switch
@@ -778,9 +868,10 @@ public class PackageComparer
 
         c = new()
         {
+            TableColumns = ValueSetInfoRec.TableColumns,
             Key = url,
-            Left = left,
-            Right = right,
+            Left = lSource,
+            Right = rSource,
             NamedMatch = true,
             Relationship = relationship,
             Message = message,
@@ -791,24 +882,30 @@ public class PackageComparer
 
     private bool TryCompare(
         string edPath,
-        ElementInfoRec? left,
-        ElementInfoRec? right,
+        List<ElementInfoRec> lSource,
+        List<ElementInfoRec> rSource,
         Dictionary<string, ComparisonRecord<ElementTypeInfoRec>> typeComparison,
         [NotNullWhen(true)] out ComparisonRecord<ElementInfoRec, ElementTypeInfoRec>? c)
     {
-        if ((left is null) && (right is null))
+        if ((lSource.Count == 0) && (rSource.Count == 0))
         {
             c = null;
             return false;
         }
 
-        if (left is null)
+        if ((lSource.Count > 1) && (rSource.Count > 1))
+        {
+            throw new Exception("Cannot compare multiple source to multiple destination records!");
+        }
+
+        if (lSource.Count == 0)
         {
             c = new()
             {
+                TableColumns = ElementInfoRec.TableColumns,
                 Key = edPath,
-                Left = null,
-                Right = right,
+                Left = [],
+                Right = rSource,
                 NamedMatch = false,
                 Relationship = null,
                 Message = $"{_rightPrefix} added element {edPath}",
@@ -817,13 +914,14 @@ public class PackageComparer
             return true;
         }
 
-        if (right is null)
+        if (rSource.Count == 0)
         {
             c = new()
             {
+                TableColumns = ElementInfoRec.TableColumns,
                 Key = edPath,
-                Left = left,
-                Right = null,
+                Left = lSource,
+                Right = [],
                 NamedMatch = false,
                 Relationship = null,
                 Message = $"{_rightPrefix} removed element {edPath}",
@@ -832,242 +930,249 @@ public class PackageComparer
             return true;
         }
 
-        // start with assuming the elements are equivalent
-        CMR relationship = CMR.Equivalent;
+        // initial relationship is based on the number of comparison records
+        (CMR relationship, int maxIndex) = GetInitialRelationship(lSource, rSource);
+
         List<string> messages = [];
 
-        // check for optional becoming mandatory
-        if ((left.MinCardinality == 0) && (right.MinCardinality != 0))
+        for (int sourceIndex = 0; sourceIndex < maxIndex; sourceIndex++)
         {
-            relationship = ApplyRelationship(relationship, CMR.RelatedTo);
-            messages.Add("made the element mandatory");
-        }
+            ElementInfoRec left = lSource.Count == 1 ? lSource[0] : lSource[sourceIndex];
+            ElementInfoRec right = rSource.Count == 1 ? rSource[0] : rSource[sourceIndex];
 
-        // check for source allowing fewer than destination requires
-        if (left.MinCardinality < right.MinCardinality)
-        {
-            relationship = ApplyRelationship(relationship, CMR.RelatedTo);
-            messages.Add($"increased the minimum cardinality from {left.MinCardinality} to {right.MinCardinality}");
-        }
-
-        // check for element being constrained out
-        if ((left.MaxCardinality != 0) && (right.MaxCardinality == 0))
-        {
-            relationship = ApplyRelationship(relationship, CMR.RelatedTo);
-            messages.Add("constrained the element out (max cardinality of 0)");
-        }
-
-        // check for changing from scalar to array
-        if ((left.MaxCardinality == 1) && (right.MaxCardinality != 1))
-        {
-            relationship = ApplyRelationship(relationship, CMR.RelatedTo);
-            messages.Add($"changed from scalar to array (max cardinality from {left.MaxCardinalityString} to {right.MaxCardinalityString})");
-        }
-
-        // check for changing from array to scalar
-        if ((left.MaxCardinality != 1) && (right.MaxCardinality == 1))
-        {
-            relationship = ApplyRelationship(relationship, CMR.RelatedTo);
-            messages.Add($"changed from array to scalar (max cardinality from {left.MaxCardinalityString} to {right.MaxCardinalityString})");
-        }
-
-        // check for source allowing more than destination allows
-        if ((right.MaxCardinality != -1) &&
-            (left.MaxCardinality > right.MaxCardinality))
-        {
-            relationship = ApplyRelationship(relationship, CMR.RelatedTo);
-            messages.Add($"allows more repetitions (max cardinality from {left.MaxCardinalityString} to {right.MaxCardinalityString})");
-        }
-
-        // check to see if there was not a required binding and now there is
-        if ((left.ValueSetBindingStrength is not null) || (right.ValueSetBindingStrength is not null))
-        {
-            if ((left.ValueSetBindingStrength != BindingStrength.Required) && (right.ValueSetBindingStrength == BindingStrength.Required))
+            // check for optional becoming mandatory
+            if ((left.MinCardinality == 0) && (right.MinCardinality != 0))
             {
                 relationship = ApplyRelationship(relationship, CMR.RelatedTo);
-
-                if (left.ValueSetBindingStrength is null)
-                {
-                    messages.Add($"added a required binding to {right.BindingValueSet}");
-                }
-                else
-                {
-                    messages.Add($"made the binding required (from {left.ValueSetBindingStrength}) for {right.BindingValueSet}");
-                }
+                messages.Add($"{right.Name} made the element mandatory");
             }
-            else if (left.ValueSetBindingStrength != right.ValueSetBindingStrength)
+
+            // check for source allowing fewer than destination requires
+            if (left.MinCardinality < right.MinCardinality)
             {
                 relationship = ApplyRelationship(relationship, CMR.RelatedTo);
-                if (left.ValueSetBindingStrength is null)
-                {
-                    messages.Add($"added a binding requirement - {right.ValueSetBindingStrength} {right.BindingValueSet}");
-                }
-                else if (right.ValueSetBindingStrength is null)
-                {
-                    messages.Add($"removed a binding requirement - {left.ValueSetBindingStrength} {left.BindingValueSet}");
-                }
-                else
-                {
-                    messages.Add($"changed the binding strength from {left.ValueSetBindingStrength} to {right.ValueSetBindingStrength}");
-                }
+                messages.Add($"{right.Name} increased the minimum cardinality from {left.MinCardinality} to {right.MinCardinality}");
             }
 
-            // check to see if we need to lookup a binding comparison
-            if ((left.ValueSetBindingStrength == BindingStrength.Required) && (right.ValueSetBindingStrength == BindingStrength.Required))
+            // check for element being constrained out
+            if ((left.MaxCardinality != 0) && (right.MaxCardinality == 0))
             {
-                // TODO(ginoc): For sanity right now, we assume that the value sets are from the matching releases
-                // at some point, we need to check specific versions in case there are explicit references
+                relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+                messages.Add($"{right.Name} constrained the element out (max cardinality of 0)");
+            }
 
-                string unversionedLeft = left.BindingValueSet.Split('|')[0];
-                string unversionedRight = right.BindingValueSet.Split('|')[0];
+            // check for changing from scalar to array
+            if ((left.MaxCardinality == 1) && (right.MaxCardinality != 1))
+            {
+                relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+                messages.Add($"{right.Name} changed from scalar to array (max cardinality from {left.MaxCardinalityString} to {right.MaxCardinalityString})");
+            }
 
-                // if the types are code, we only need to compare codes
-                if (typeComparison.ContainsKey("code"))
+            // check for changing from array to scalar
+            if ((left.MaxCardinality != 1) && (right.MaxCardinality == 1))
+            {
+                relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+                messages.Add($"{right.Name} changed from array to scalar (max cardinality from {left.MaxCardinalityString} to {right.MaxCardinalityString})");
+            }
+
+            // check for source allowing more than destination allows
+            if ((right.MaxCardinality != -1) &&
+                (left.MaxCardinality > right.MaxCardinality))
+            {
+                relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+                messages.Add($"{right.Name} allows more repetitions (max cardinality from {left.MaxCardinalityString} to {right.MaxCardinalityString})");
+            }
+
+            // check to see if there was not a required binding and now there is
+            if ((left.ValueSetBindingStrength is not null) || (right.ValueSetBindingStrength is not null))
+            {
+                if ((left.ValueSetBindingStrength != BindingStrength.Required) && (right.ValueSetBindingStrength == BindingStrength.Required))
                 {
-                    // check for same value set
-                    if (unversionedLeft == unversionedRight)
+                    relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+
+                    if (left.ValueSetBindingStrength is null)
                     {
-                        // look for the value set comparison
-                        if (_vsComparisons.TryGetValue(unversionedLeft, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? boundVsInfo))
-                        {
-                            // we are okay with equivalent and narrower
-                            if (boundVsInfo.Relationship == CMR.Equivalent ||
-                                boundVsInfo.Relationship == CMR.SourceIsNarrowerThanTarget)
-                            {
-                                relationship = ApplyRelationship(relationship, (CMR)boundVsInfo.Relationship);
-                                messages.Add($"has compatible required binding for code type: {left.BindingValueSet} and {right.BindingValueSet} ({boundVsInfo.Relationship})");
-                            }
+                        messages.Add($"{right.Name} added a required binding to {right.BindingValueSet}");
+                    }
+                    else
+                    {
+                        messages.Add($"{right.Name} made the binding required (from {left.ValueSetBindingStrength}) for {right.BindingValueSet}");
+                    }
+                }
+                else if (left.ValueSetBindingStrength != right.ValueSetBindingStrength)
+                {
+                    relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+                    if (left.ValueSetBindingStrength is null)
+                    {
+                        messages.Add($"{right.Name} added a binding requirement - {right.ValueSetBindingStrength} {right.BindingValueSet}");
+                    }
+                    else if (right.ValueSetBindingStrength is null)
+                    {
+                        messages.Add($"{right.Name} removed a binding requirement - {left.ValueSetBindingStrength} {left.BindingValueSet}");
+                    }
+                    else
+                    {
+                        messages.Add($"{right.Name} changed the binding strength from {left.ValueSetBindingStrength} to {right.ValueSetBindingStrength}");
+                    }
+                }
 
-                            // check to see if the codes are the same but the systems are different (ok in codes)
-                            else if (boundVsInfo.Children.Values.All(cc => cc.Left?.Code == cc.Right?.Code))
+                // check to see if we need to lookup a binding comparison
+                if ((left.ValueSetBindingStrength == BindingStrength.Required) && (right.ValueSetBindingStrength == BindingStrength.Required))
+                {
+                    // TODO(ginoc): For sanity right now, we assume that the value sets are from the matching releases
+                    // at some point, we need to check specific versions in case there are explicit references
+
+                    string unversionedLeft = left.BindingValueSet.Split('|')[0];
+                    string unversionedRight = right.BindingValueSet.Split('|')[0];
+
+                    // if the types are code, we only need to compare codes
+                    if (typeComparison.ContainsKey("code"))
+                    {
+                        // check for same value set
+                        if (unversionedLeft == unversionedRight)
+                        {
+                            // look for the value set comparison
+                            if (_vsComparisons.TryGetValue(unversionedLeft, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? boundVsInfo))
+                            {
+                                // we are okay with equivalent and narrower
+                                if (boundVsInfo.Relationship == CMR.Equivalent ||
+                                    boundVsInfo.Relationship == CMR.SourceIsNarrowerThanTarget)
+                                {
+                                    relationship = ApplyRelationship(relationship, (CMR)boundVsInfo.Relationship);
+                                    messages.Add($"{right.Name} has compatible required binding for code type: {left.BindingValueSet} and {right.BindingValueSet} ({boundVsInfo.Relationship})");
+                                }
+
+                                // check to see if the codes are the same but the systems are different (ok in codes)
+                                else if (boundVsInfo.Children.Values.All(cc => (cc.Left.Count == 1) && (cc.Right.Count == 1) && cc.Left[0].Code == cc.Right[0].Code))
+                                {
+                                    relationship = ApplyRelationship(relationship, CMR.Equivalent);
+                                    messages.Add($"{right.Name} has compatible required binding for code type: {left.BindingValueSet} and {right.BindingValueSet} (codes match, though systems are different)");
+                                }
+                                else
+                                {
+                                    relationship = ApplyRelationship(relationship, boundVsInfo.Relationship);
+                                    messages.Add($"{right.Name} has INCOMPATIBLE required binding for code type: {left.BindingValueSet} and {right.BindingValueSet}");
+                                }
+                            }
+                            else if (_exclusionSet.Contains(unversionedLeft))
                             {
                                 relationship = ApplyRelationship(relationship, CMR.Equivalent);
-                                messages.Add($"has compatible required binding for code type: {left.BindingValueSet} and {right.BindingValueSet} (codes match, though systems are different)");
+                                messages.Add($"{right.Name} using {unversionedLeft} is exempted and assumed equivalent");
+                            }
+                            else
+                            {
+                                relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+                                messages.Add($"({right.Name} failed to compare required binding of {left.BindingValueSet})");
+                            }
+                        }
+                        // since these are codes only, we can look for the value set comparisons and check codes across them
+                        else if (!_vsComparisons.TryGetValue(unversionedLeft, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? leftVsI) ||
+                                 !_vsComparisons.TryGetValue(unversionedRight, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? rightVsI))
+                        {
+                            relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+                            messages.Add($"({right.Name} failed to compare required binding of {left.BindingValueSet} and {right.BindingValueSet})");
+                        }
+
+                        // check for any codes from the left binding source not being present in the right binding destination
+                        else if (leftVsI.Children.Values.Any(lc => (lc.Left.Count != 1) || (lc.Right.Count != 1) || !rightVsI.Children.Values.Any(rc => lc.Left[0].Code == rc.Right[0].Code)))
+                        {
+                            relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+                            messages.Add($"{right.Name} has INCOMPATIBLE required binding for code type: {left.BindingValueSet} and {right.BindingValueSet}");
+                        }
+                        else if (_exclusionSet.Contains(unversionedLeft) && _exclusionSet.Contains(unversionedRight))
+                        {
+                            relationship = ApplyRelationship(relationship, CMR.Equivalent);
+                            messages.Add($"{right.Name} using {unversionedRight} is exempted and assumed equivalent");
+                        }
+                        else
+                        {
+                            relationship = ApplyRelationship(relationship, leftVsI.Children.Count == rightVsI.Children.Count ? CMR.Equivalent : CMR.SourceIsNarrowerThanTarget);
+                            messages.Add($"{right.Name} has compatible required binding for code type: {left.BindingValueSet} and {right.BindingValueSet}");
+                        }
+                    }
+
+                    // check for any non-code types (need to match system)
+                    if (typeComparison.Any(t => t.Key != "code"))
+                    {
+                        // check for same value set (non-code type)
+                        if (unversionedLeft == unversionedRight)
+                        {
+                            // look for the value set comparison
+                            if (!_vsComparisons.TryGetValue(unversionedLeft, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? boundVsInfo))
+                            {
+                                relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+                                messages.Add($"({right.Name} failed to compare required binding of {left.BindingValueSet} and {right.BindingValueSet})");
+                            }
+                            // we are okay with equivalent and narrower
+                            else if (boundVsInfo.Relationship == CMR.Equivalent ||
+                                     boundVsInfo.Relationship == CMR.SourceIsNarrowerThanTarget)
+                            {
+                                relationship = ApplyRelationship(relationship, (CMR)boundVsInfo.Relationship);
+                                messages.Add($"{right.Name} has compatible required binding for non-code type: {left.BindingValueSet} and {right.BindingValueSet} ({boundVsInfo.Relationship})");
+                            }
+                            else if (_exclusionSet.Contains(unversionedLeft))
+                            {
+                                relationship = ApplyRelationship(relationship, CMR.Equivalent);
+                                messages.Add($"{right.Name} using {unversionedRight} is exempted and assumed equivalent");
                             }
                             else
                             {
                                 relationship = ApplyRelationship(relationship, boundVsInfo.Relationship);
-                                messages.Add($"has INCOMPATIBLE required binding for code type: {left.BindingValueSet} and {right.BindingValueSet}");
+                                messages.Add($"{right.Name} has INCOMPATIBLE required binding for non-code type: {left.BindingValueSet} and {right.BindingValueSet}");
                             }
                         }
-                        else if (_exclusionSet.Contains(unversionedLeft))
+                        // since these are not only codes, but are different value sets, we can look for the value set comparisons and check system+codes across them
+                        else if (!_vsComparisons.TryGetValue(unversionedLeft, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? leftVs) ||
+                                 !_vsComparisons.TryGetValue(unversionedRight, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? rightVs))
+                        {
+                            relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+                            messages.Add($"({right.Name} failed to compare required binding of {left.BindingValueSet} and {right.BindingValueSet})");
+                        }
+                        // check for any keys (system+code) from the left binding source not being present in the right binding destination
+                        else if (leftVs.Children.Keys.Any(lk => !rightVs.Children.ContainsKey(lk)))
+                        {
+                            relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+                            messages.Add($"{right.Name} has INCOMPATIBLE required binding for non-code type: {left.BindingValueSet} and {right.BindingValueSet}");
+                        }
+                        else if (_exclusionSet.Contains(unversionedLeft) && _exclusionSet.Contains(unversionedRight))
                         {
                             relationship = ApplyRelationship(relationship, CMR.Equivalent);
-                            messages.Add($"{unversionedLeft} is exempted and assumed equivalent");
+                            messages.Add($"{right.Name} using {unversionedRight} is exempted and assumed equivalent");
                         }
                         else
                         {
-                            relationship = ApplyRelationship(relationship, CMR.RelatedTo);
-                            messages.Add($"(failed to compare required binding of {left.BindingValueSet})");
+                            relationship = ApplyRelationship(relationship, leftVs.Children.Count == rightVs.Children.Count ? CMR.Equivalent : CMR.SourceIsNarrowerThanTarget);
+                            messages.Add($"{right.Name} has compatible required binding for code type: {left.BindingValueSet} and {right.BindingValueSet}");
                         }
-                    }
-                    // since these are codes only, we can look for the value set comparisons and check codes across them
-                    else if (!_vsComparisons.TryGetValue(unversionedLeft, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? leftVsI) ||
-                             !_vsComparisons.TryGetValue(unversionedRight, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? rightVsI))
-                    {
-                        relationship = ApplyRelationship(relationship, CMR.RelatedTo);
-                        messages.Add($"(failed to compare required binding of {left.BindingValueSet} and {right.BindingValueSet})");
-                    }
-
-                    // check for any codes from the left binding source not being present in the right binding destination
-                    else if (leftVsI.Children.Values.Any(lc => !rightVsI.Children.Values.Any(rc => lc.Left?.Code == rc.Right?.Code)))
-                    {
-                        relationship = ApplyRelationship(relationship, CMR.RelatedTo);
-                        messages.Add($"has INCOMPATIBLE required binding for code type: {left.BindingValueSet} and {right.BindingValueSet}");
-                    }
-                    else if (_exclusionSet.Contains(unversionedLeft) && _exclusionSet.Contains(unversionedRight))
-                    {
-                        relationship = ApplyRelationship(relationship, CMR.Equivalent);
-                        messages.Add($"{unversionedLeft} and {unversionedRight} are exempted and assumed equivalent");
-                    }
-                    else
-                    {
-                        relationship = ApplyRelationship(relationship, leftVsI.Children.Count == rightVsI.Children.Count ? CMR.Equivalent : CMR.SourceIsNarrowerThanTarget);
-                        messages.Add($"has compatible required binding for code type: {left.BindingValueSet} and {right.BindingValueSet}");
-                    }
-                }
-
-                // check for any non-code types (need to match system)
-                if (typeComparison.Any(t => t.Key != "code"))
-                {
-                    // check for same value set (non-code type)
-                    if (unversionedLeft == unversionedRight)
-                    {
-                        // look for the value set comparison
-                        if (!_vsComparisons.TryGetValue(unversionedLeft, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? boundVsInfo))
-                        {
-                            relationship = ApplyRelationship(relationship, CMR.RelatedTo);
-                            messages.Add($"(failed to compare required binding of {left.BindingValueSet} and {right.BindingValueSet})");
-                        }
-                        // we are okay with equivalent and narrower
-                        else if (boundVsInfo.Relationship == CMR.Equivalent ||
-                                 boundVsInfo.Relationship == CMR.SourceIsNarrowerThanTarget)
-                        {
-                            relationship = ApplyRelationship(relationship, (CMR)boundVsInfo.Relationship);
-                            messages.Add($"has compatible required binding for non-code type: {left.BindingValueSet} and {right.BindingValueSet} ({boundVsInfo.Relationship})");
-                        }
-                        else if (_exclusionSet.Contains(unversionedLeft))
-                        {
-                            relationship = ApplyRelationship(relationship, CMR.Equivalent);
-                            messages.Add($"{unversionedLeft} is exempted and assumed equivalent");
-                        }
-                        else
-                        {
-                            relationship = ApplyRelationship(relationship, boundVsInfo.Relationship);
-                            messages.Add($"has INCOMPATIBLE required binding for non-code type: {left.BindingValueSet} and {right.BindingValueSet}");
-                        }
-                    }
-                    // since these are not only codes, but are different value sets, we can look for the value set comparisons and check system+codes across them
-                    else if (!_vsComparisons.TryGetValue(unversionedLeft, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? leftVs) ||
-                             !_vsComparisons.TryGetValue(unversionedRight, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? rightVs))
-                    {
-                        relationship = ApplyRelationship(relationship, CMR.RelatedTo);
-                        messages.Add($"(failed to compare required binding of {left.BindingValueSet} and {right.BindingValueSet})");
-                    }
-                    // check for any keys (system+code) from the left binding source not being present in the right binding destination
-                    else if (leftVs.Children.Keys.Any(lk => !rightVs.Children.ContainsKey(lk)))
-                    {
-                        relationship = ApplyRelationship(relationship, CMR.RelatedTo);
-                        messages.Add($"has INCOMPATIBLE required binding for non-code type: {left.BindingValueSet} and {right.BindingValueSet}");
-                    }
-                    else if (_exclusionSet.Contains(unversionedLeft) && _exclusionSet.Contains(unversionedRight))
-                    {
-                        relationship = ApplyRelationship(relationship, CMR.Equivalent);
-                        messages.Add($"{unversionedLeft} and {unversionedRight} are exempted and assumed equivalent");
-                    }
-                    else
-                    {
-                        relationship = ApplyRelationship(relationship, leftVs.Children.Count == rightVs.Children.Count ? CMR.Equivalent : CMR.SourceIsNarrowerThanTarget);
-                        messages.Add($"has compatible required binding for code type: {left.BindingValueSet} and {right.BindingValueSet}");
                     }
                 }
             }
-        }
 
-        // process our type comparisons and promote messages
-        foreach (ComparisonRecord<ElementTypeInfoRec> tc in typeComparison.Values)
-        {
-            // skip equivalent types
-            if (tc.Relationship == CMR.Equivalent)
+            // process our type comparisons and promote messages
+            foreach (ComparisonRecord<ElementTypeInfoRec> tc in typeComparison.Values)
             {
-                continue;
-            }
+                // skip equivalent types
+                if (tc.Relationship == CMR.Equivalent)
+                {
+                    continue;
+                }
 
-            relationship = ApplyRelationship(relationship, tc.Relationship);
-            messages.Add($"has change due to type change: {tc.Message}");
+                relationship = ApplyRelationship(relationship, tc.Relationship);
+                messages.Add($"{right.Name} has change due to type change: {tc.Message}");
+            }
         }
 
         // build our message
-        string message = messages.Count == 0
-            ? $"{_rightPrefix}:{edPath} is equivalent."
-            : $"{_rightPrefix}:{edPath} " + string.Join(" and ", messages);
+        string message = $"{_rightPrefix} element {edPath} is {relationship}" +
+            (messages.Count == 0 ? string.Empty : (" because " + string.Join(" and ", messages.Distinct())));
 
         // return our info
         c = new()
         {
+            TableColumns = ElementInfoRec.TableColumns,
             Key = edPath,
-            Left = left,
-            Right = right,
+            Left = lSource,
+            Right = rSource,
             NamedMatch = true,
             Relationship = relationship,
             Message = message,
@@ -1079,24 +1184,30 @@ public class PackageComparer
 
     private bool TryCompare(
         string sdName,
-        StructureInfoRec? left,
-        StructureInfoRec? right,
+        List<StructureInfoRec> lSource,
+        List<StructureInfoRec> rSource,
         Dictionary<string, ComparisonRecord<ElementInfoRec, ElementTypeInfoRec>> elementComparison,
         [NotNullWhen(true)] out ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>? c)
     {
-        if ((left is null) && (right is null))
+        if ((lSource.Count == 0) && (rSource.Count == 0))
         {
             c = null;
             return false;
         }
 
-        if (left is null)
+        if ((lSource.Count > 1) && (rSource.Count > 1))
+        {
+            throw new Exception("Cannot compare multiple source to multiple destination records!");
+        }
+
+        if (lSource.Count == 0)
         {
             c = new()
             {
+                TableColumns = StructureInfoRec.TableColumns,
                 Key = sdName,
-                Left = null,
-                Right = right,
+                Left = [],
+                Right = rSource,
                 NamedMatch = false,
                 Relationship = null,
                 Message = $"{_rightPrefix} added {sdName}",
@@ -1105,13 +1216,14 @@ public class PackageComparer
             return true;
         }
 
-        if (right is null)
+        if (rSource.Count == 0)
         {
             c = new()
             {
+                TableColumns = StructureInfoRec.TableColumns,
                 Key = sdName,
-                Left = left,
-                Right = null,
+                Left = lSource,
+                Right = [],
                 NamedMatch = false,
                 Relationship = null,
                 Message = $"{_rightPrefix} removed {sdName}",
@@ -1125,9 +1237,10 @@ public class PackageComparer
         {
             c = new()
             {
+                TableColumns = StructureInfoRec.TableColumns,
                 Key = sdName,
-                Left = left,
-                Right = right,
+                Left = lSource,
+                Right = rSource,
                 NamedMatch = true,
                 Relationship = CMR.Equivalent,
                 Message = $"{_rightPrefix}:{sdName} is equivalent",
@@ -1136,7 +1249,8 @@ public class PackageComparer
             return true;
         }
 
-        CMR relationship = CMR.Equivalent;
+        // initial relationship is based on the number of comparison records
+        (CMR relationship, _) = GetInitialRelationship(lSource, rSource);
 
         foreach (ComparisonRecord<ElementInfoRec, ElementTypeInfoRec> ec in elementComparison.Values)
         {
@@ -1145,13 +1259,13 @@ public class PackageComparer
                 continue;
             }
 
-            if (ec.Left is null)
+            if (ec.Left.Count == 0)
             {
                 relationship = ApplyRelationship(relationship, CMR.SourceIsNarrowerThanTarget);
                 continue;
             }
 
-            if (ec.Right is null)
+            if (ec.Right.Count == 0)
             {
                 relationship = ApplyRelationship(relationship, CMR.SourceIsBroaderThanTarget);
                 continue;
@@ -1171,9 +1285,10 @@ public class PackageComparer
 
         c = new()
         {
+            TableColumns = StructureInfoRec.TableColumns,
             Key = sdName,
-            Left = left,
-            Right = right,
+            Left = lSource,
+            Right = rSource,
             NamedMatch = true,
             Relationship = relationship,
             Message = message,
@@ -1195,10 +1310,10 @@ public class PackageComparer
 
         foreach (string conceptCode in keys)
         {
-            _ = left.TryGetValue(conceptCode, out ConceptInfoRec? leftInfo);
-            _ = right.TryGetValue(conceptCode, out ConceptInfoRec? rightInfo);
+            List<ConceptInfoRec> leftInfoSource = left.TryGetValue(conceptCode, out ConceptInfoRec? leftInfo) ? [leftInfo] : [];
+            List <ConceptInfoRec> rightInfoSource = right.TryGetValue(conceptCode, out ConceptInfoRec? rightInfo) ? [rightInfo] : [];
 
-            if (TryCompare(conceptCode, leftInfo, rightInfo, out ComparisonRecord<ConceptInfoRec>? c))
+            if (TryCompare(conceptCode, leftInfoSource, rightInfoSource, out ComparisonRecord<ConceptInfoRec>? c))
             {
                 comparison.Add(conceptCode, c);
             }
@@ -1220,8 +1335,8 @@ public class PackageComparer
 
         foreach (string url in keys)
         {
-            _ = left.TryGetValue(url, out ValueSetInfoRec? leftInfo);
-            _ = right.TryGetValue(url, out ValueSetInfoRec? rightInfo);
+            List<ValueSetInfoRec> leftInfoSource = left.TryGetValue(url, out ValueSetInfoRec? leftInfo) ? [leftInfo] : [];
+            List<ValueSetInfoRec> rightInfoSource = right.TryGetValue(url, out ValueSetInfoRec? rightInfo) ? [rightInfo] : [];
 
             Dictionary<string, FhirConcept> leftConcepts = [];
             Dictionary<string, FhirConcept> rightConcepts = [];
@@ -1253,7 +1368,7 @@ public class PackageComparer
             // compare our concepts
             Dictionary<string, ComparisonRecord<ConceptInfoRec>> conceptComparison = Compare(leftConcepts, rightConcepts);
 
-            if (TryCompare(url, leftInfo, rightInfo, conceptComparison, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? c))
+            if (TryCompare(url, leftInfoSource, rightInfoSource, conceptComparison, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? c))
             {
                 comparison.Add(url, c);
             }
@@ -1276,10 +1391,10 @@ public class PackageComparer
         // add our comparisons
         foreach (string typeName in keys)
         {
-            _ = left.TryGetValue(typeName, out ElementTypeInfoRec? leftInfo);
-            _ = right.TryGetValue(typeName, out ElementTypeInfoRec? rightInfo);
+            List<ElementTypeInfoRec> leftInfoSource = left.TryGetValue(typeName, out ElementTypeInfoRec? leftInfo) ? [leftInfo] : [];
+            List<ElementTypeInfoRec> rightInfoSource = right.TryGetValue(typeName, out ElementTypeInfoRec? rightInfo) ? [rightInfo] : [];
 
-            if (TryCompare(typeName, leftInfo, rightInfo, out ComparisonRecord<ElementTypeInfoRec>? c))
+            if (TryCompare(typeName, leftInfoSource, rightInfoSource, out ComparisonRecord<ElementTypeInfoRec>? c))
             {
                 comparison.Add(typeName, c);
             }
@@ -1323,13 +1438,13 @@ public class PackageComparer
                 rightTypes = new Dictionary<string, ElementDefinition.TypeRefComponent>();
             }
 
-            _ = leftInfoDict.TryGetValue(edPath, out ElementInfoRec? leftInfo);
-            _ = rightInfoDict.TryGetValue(edPath, out ElementInfoRec? rightInfo);
+            List<ElementInfoRec> leftInfoSource = leftInfoDict.TryGetValue(edPath, out ElementInfoRec? leftInfo) ? [leftInfo] : [];
+            List<ElementInfoRec> rightInfoSource = rightInfoDict.TryGetValue(edPath, out ElementInfoRec? rightInfo) ? [rightInfo] : [];
 
             // perform type comparison
             Dictionary<string, ComparisonRecord<ElementTypeInfoRec>> typeComparison = Compare(leftTypes, rightTypes);
 
-            if (TryCompare(edPath, leftInfo, rightInfo, typeComparison, out ComparisonRecord<ElementInfoRec, ElementTypeInfoRec>? c))
+            if (TryCompare(edPath, leftInfoSource, rightInfoSource, typeComparison, out ComparisonRecord<ElementInfoRec, ElementTypeInfoRec>? c))
             {
                 comparison.Add(edPath, c);
             }
@@ -1352,9 +1467,9 @@ public class PackageComparer
         // add our matches
         foreach (string sdName in keys)
         {
-            _ = left.TryGetValue(sdName, out StructureInfoRec? leftInfo);
-            _ = right.TryGetValue(sdName, out StructureInfoRec? rightInfo);
-
+            List<StructureInfoRec> leftInfoSource = left.TryGetValue(sdName, out StructureInfoRec? leftInfo) ? [leftInfo] : [];
+            List<StructureInfoRec> rightInfoSource = right.TryGetValue(sdName, out StructureInfoRec? rightInfo) ? [rightInfo] : [];
+            
             Dictionary<string, ElementDefinition> leftElements;
             Dictionary<string, ElementDefinition> rightElements;
 
@@ -1379,7 +1494,7 @@ public class PackageComparer
             // perform element comparison
             Dictionary<string, ComparisonRecord<ElementInfoRec, ElementTypeInfoRec>> elementComparison = Compare(leftElements, rightElements);
 
-            if (TryCompare(sdName, leftInfo, rightInfo, elementComparison, out ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>? c))
+            if (TryCompare(sdName, leftInfoSource, rightInfoSource, elementComparison, out ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>? c))
             {
                 comparison.Add(sdName, c);
             }

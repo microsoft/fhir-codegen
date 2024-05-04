@@ -11,34 +11,26 @@ using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using Hl7.Fhir.Model;
 
 namespace Microsoft.Health.Fhir.CodeGen.CompareTool;
 
 internal static class ComparisonUtils
 {
-    internal const string _leftSide = "Source";
-    internal const string _rightSide = "Destination";
-
     internal static string SanitizeForTable(string value) => string.IsNullOrEmpty(value) ? string.Empty : value.Replace("|", "\\|").Replace("\n", "<br/>").Replace("\r", "<br/>");
-
-    internal static string[] GetEmptyValueArray(string prefix, int count)
-    {
-        if (string.IsNullOrEmpty(prefix))
-        {
-            return Enumerable.Repeat("-", count).ToArray();
-        }
-
-        List<string> values = [ prefix ];
-        values.AddRange(Enumerable.Repeat("-", count - 1));
-        return values.ToArray();
-    }
 }
 
 public interface IComparisonRecord
 {
     string Key { get; init; }
+    bool NamedMatch { get; init; }
+    Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; init; }
+    string Message { get; init; }
+    string[] TableColumns { get; init; }
+
+
     string GetStatusString();
-    void GetTableData(out string[] header, out string[] left, out string[] right);
+    void GetTableData(out string[] header, out List<string[]> left, out List<string[]> right);
     Dictionary<string, int> GetStatusCounts();
     IEnumerable<string[]> GetChildrenDetailTableRows();
     string[] GetDetailTableRow();
@@ -46,11 +38,8 @@ public interface IComparisonRecord
 
 public interface IComparisonRecord<T> : IComparisonRecord where T : IInfoRec
 {
-    T? Left { get; init; }
-    T? Right { get; init; }
-    bool NamedMatch { get; init; }
-    Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; init; }
-    string Message { get; init; }
+    List<T> Left { get; init; }
+    List<T> Right { get; init; }
 }
 
 public interface IComparisonRecord<T, U> : IComparisonRecord<T> where T : IInfoRec where U : IInfoRec
@@ -65,21 +54,26 @@ public interface IComparisonRecord<T, U, V> : IComparisonRecord<T> where T : IIn
 
 public class ComparisonRecord<T> : IComparisonRecord<T> where T : IInfoRec
 {
+    private const string _leftSide = "Source";
+    private const string _rightSide = "Destination";
+
     public required string Key { get; init; }
-    public required T? Left { get; init; }
-    public required T? Right { get; init; }
+    public required List<T> Left { get; init; }
+    public required List<T> Right { get; init; }
     public required bool NamedMatch { get; init; }
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; init; }
     public required string Message { get; init; }
 
+    public required string[] TableColumns { get; init; }
+
     public string GetStatusString()
     {
-        if (Left is null)
+        if (Left.Count == 0)
         {
             return "Added";
         }
 
-        if (Right is null)
+        if (Right.Count == 0)
         {
             return "Removed";
         }
@@ -87,37 +81,31 @@ public class ComparisonRecord<T> : IComparisonRecord<T> where T : IInfoRec
         return Relationship?.ToString() ?? "-";
     }
 
-    public void GetTableData(out string[] header, out string[] left, out string[] right)
+    public void GetTableData(
+        out string[] header,
+        out List<string[]> left,
+        out List<string[]> right)
     {
-        if ((Left is null) && (Right is null))
+        int colCount = TableColumns.Length + 1;
+        header = ["Side", .. TableColumns];
+
+        if (Left.Count == 0)
         {
-            header = Array.Empty<string>();
-            left = Array.Empty<string>();
-            right = Array.Empty<string>();
-            return;
+            left = [[_leftSide, .. Enumerable.Repeat("-", colCount).ToArray()]];
+        }
+        else
+        {
+            left = Left.Select(i => (string[])[_leftSide, .. i.GetTableRow()]).ToList();
         }
 
-        if (Left is null)
+        if (Right.Count == 0)
         {
-            int colCount = Right!.TableColumnCount + 1;
-            header = Right!.GetTableHeader("Side");
-            left = ComparisonUtils.GetEmptyValueArray("Source", colCount);
-            right = Right.GetTableValue("Destination");
-            return;
+            right = [[_rightSide, .. Enumerable.Repeat("-", colCount).ToArray()]];
         }
-
-        if (Right is null)
+        else
         {
-            int colCount = Left!.TableColumnCount + 1;
-            header = Left!.GetTableHeader("Side");
-            left = Left.GetTableValue("Source");
-            right = ComparisonUtils.GetEmptyValueArray("Destination", colCount);
-            return;
+            right = Right.Select(i => (string[])[_rightSide, .. i.GetTableRow()]).ToList();
         }
-
-        header = Left!.GetTableHeader("Side");
-        left = Left.GetTableValue("Source");
-        right = Right.GetTableValue("Destination");
     }
 
     public Dictionary<string, int> GetStatusCounts() => [];
@@ -125,8 +113,8 @@ public class ComparisonRecord<T> : IComparisonRecord<T> where T : IInfoRec
 
     public string[] GetDetailTableRow() => [
         Key,
-        (Left == null ? "N" : "Y"),
-        (Right == null ? "N" : "Y"),
+        Left.Count.ToString(),
+        Right.Count.ToString(),
         GetStatusString(),
         ComparisonUtils.SanitizeForTable(Message),
     ];
@@ -202,101 +190,80 @@ public class ComparisonRecord<T, U, V> : ComparisonRecord<T>, IComparisonRecord<
 
 public interface IInfoRec
 {
-    int TableColumnCount { get; }
-    string[] GetTableHeader(string prefixColHeader = "");
-    string[] GetTableValue(string prefixColValue = "");
+    static string[] TableColumns => [];
+    string[] GetTableRow();
 }
 
 public record class ConceptInfoRec : IInfoRec
 {
+    public static string[] TableColumns => ["System", "Code", "Description"];
+
     public required string System { get; init; }
     public required string Code { get; init; }
     public required string Description { get; init; }
 
-    public int TableColumnCount => 3;
-    public string[] GetTableHeader(string prefixColHeader = "") => string.IsNullOrEmpty(prefixColHeader)
-        ? ["System", "Code", "Description"]
-        : [prefixColHeader, "System", "Code", "Description"];
-
-    public string[] GetTableValue(string prefixColValue = "") => string.IsNullOrEmpty(prefixColValue)
-        ? [System, Code, ComparisonUtils.SanitizeForTable(Description)]
-        : [prefixColValue, System, Code, ComparisonUtils.SanitizeForTable(Description)];
+    public string[] GetTableRow() => [System, Code, ComparisonUtils.SanitizeForTable(Description)];
 }
 
 public record class ValueSetInfoRec : IInfoRec
 {
+    public static string[] TableColumns => ["Url", "Name", "Title", "Description"];
+
     public required string Url { get; init; }
     public required string Name { get; init; }
     public required string Title { get; init; }
     public required string Description { get; init; }
     public required int ConceptCount { get; init; }
 
-    public int TableColumnCount => 4;
-    public string[] GetTableHeader(string prefixColHeader = "") => string.IsNullOrEmpty(prefixColHeader)
-        ? ["Url", "Name", "Title", "Description"]
-        : [prefixColHeader, "Url", "Name", "Title", "Description"];
-    public string[] GetTableValue(string prefixColValue = "") => string.IsNullOrEmpty(prefixColValue)
-        ? [Url, Name, ComparisonUtils.SanitizeForTable(Title), ComparisonUtils.SanitizeForTable(Description)]
-        : [prefixColValue, Url, Name, ComparisonUtils.SanitizeForTable(Title), ComparisonUtils.SanitizeForTable(Description)];
+    public string[] GetTableRow() => [Url, Name, ComparisonUtils.SanitizeForTable(Title), ComparisonUtils.SanitizeForTable(Description)];
 }
 
 public record class ElementTypeInfoRec : IInfoRec
 {
+    public static string[] TableColumns => ["Name", "Profiles", "Target Profiles"];
+
     public required string Name { get; init; }
     public required List<string> Profiles { get; init; }
     public required List<string> TargetProfiles { get; init; }
 
-    public int TableColumnCount => 3;
-    public string[] GetTableHeader(string prefixColHeader = "") => string.IsNullOrEmpty(prefixColHeader)
-        ? ["Name", "Profiles", "Target Profiles"]
-        : [prefixColHeader, "Name", "Profiles", "Target Profiles"];
-    public string[] GetTableValue(string prefixColValue = "") => string.IsNullOrEmpty(prefixColValue)
-        ? [Name, string.Join(", ", Profiles), string.Join(", ", TargetProfiles)]
-        : [prefixColValue, Name, string.Join(", ", Profiles), string.Join(", ", TargetProfiles)];
+    public string[] GetTableRow() => [Name, string.Join(", ", Profiles), string.Join(", ", TargetProfiles)];
 }
 
 public record class ElementInfoRec : IInfoRec
 {
+    public static string[] TableColumns => ["Name", "Path", "Short", "Definition", "Card", "Binding"];
+
     public required string Name { get; init; }
     public required string Path { get; init; }
     public required string Short { get; init; }
     public required string Definition { get; init; }
-
     public required int MinCardinality { get; init; }
     public required int MaxCardinality { get; init; }
     public required string MaxCardinalityString { get; init; }
-
     public required Hl7.Fhir.Model.BindingStrength? ValueSetBindingStrength { get; init; }
-
     public required string BindingValueSet { get; init; }
 
-    public int TableColumnCount => 5;
-    public string[] GetTableHeader(string prefixColHeader = "") => string.IsNullOrEmpty(prefixColHeader)
-        ? ["Name", "Path", "Short", "Definition", "Card", "Binding"]
-        : [prefixColHeader, "Name", "Path", "Short", "Definition", "Card", "Binding"];
-    public string[] GetTableValue(string prefixColValue = "") => string.IsNullOrEmpty(prefixColValue)
-        ? [Name, Path, Short, Definition, $"{MinCardinality}..{MaxCardinalityString}", $"{ValueSetBindingStrength} {BindingValueSet}"]
-        : [prefixColValue, Name, Path, Short, Definition, $"{MinCardinality}..{MaxCardinalityString}", $"{ValueSetBindingStrength} {BindingValueSet}"];
+    public string[] GetTableRow() => [Name, Path, Short, Definition, $"{MinCardinality}..{MaxCardinalityString}", $"{ValueSetBindingStrength} {BindingValueSet}"];
 }
 
 public record class StructureInfoRec : IInfoRec
 {
+    public static string[] TableColumns => ["Name", "Title", "Description", "Snapshot", "Differential"];
+
     public required string Name { get; init; }
     public required string Title { get; init; }
     public required string Description { get; init; }
     public required string Purpose { get; init; }
-
     public required int SnapshotCount { get; init; }
-
     public required int DifferentialCount { get; init; }
 
-    public int TableColumnCount => 5;
-    public string[] GetTableHeader(string prefixColHeader = "") => string.IsNullOrEmpty(prefixColHeader)
-        ? ["Name", "Title", "Description", "Snapshot", "Differential"]
-        : [prefixColHeader, "Name", "Title", "Description", "Snapshot", "Differential"];
-    public string[] GetTableValue(string prefixColValue = "") => string.IsNullOrEmpty(prefixColValue)
-        ? [Name, ComparisonUtils.SanitizeForTable(Title), ComparisonUtils.SanitizeForTable(Description), SnapshotCount.ToString(), DifferentialCount.ToString()]
-        : [prefixColValue, Name, ComparisonUtils.SanitizeForTable(Title), ComparisonUtils.SanitizeForTable(Description), SnapshotCount.ToString(), DifferentialCount.ToString()];
+    public string[] GetTableRow() => [
+        Name,
+        ComparisonUtils.SanitizeForTable(Title),
+        ComparisonUtils.SanitizeForTable(Description),
+        SnapshotCount.ToString(),
+        DifferentialCount.ToString()
+        ];
 }
 
 public record class PackageComparison
