@@ -685,7 +685,11 @@ public class PackageComparer
         // TODO(ginoc): implement
     }
 
-    private bool TryCompare(string conceptCode, List<ConceptInfoRec> lSource, List<ConceptInfoRec> rSource, [NotNullWhen(true)] out ComparisonRecord<ConceptInfoRec>? c)
+    private bool TryCompare(
+        string conceptCode,
+        List<ConceptInfoRec> lSource,
+        List<ConceptInfoRec> rSource,
+        [NotNullWhen(true)] out ComparisonRecord<ConceptInfoRec>? c)
     {
         if ((lSource.Count == 0) && (rSource.Count == 0))
         {
@@ -725,7 +729,7 @@ public class PackageComparer
                 Right = [],
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_rightRLiteral} removed code {conceptCode}",
+                Message = $"{_rightRLiteral} removed {_leftRLiteral} code {conceptCode}",
             };
             return true;
         }
@@ -742,23 +746,41 @@ public class PackageComparer
 
             if (left.Code != right.Code)
             {
-                messages.Add($"it has been mapped to {right.Code}");
+                messages.Add($"{_leftRLiteral} code {left.Code} has a map to {_rightRLiteral} code {right.Code}");
                 continue;
+            }
+            else if (maxIndex != 1)
+            {
+                messages.Add($"{_leftRLiteral} code {left.Code} has a map to {_rightRLiteral} code {right.Code}");
             }
 
             if (left.System != right.System)
             {
-                messages.Add($"{right.Code} has a different system");
+                messages.Add($"{_rightRLiteral} code {right.Code} has a different system than {_leftRLiteral} code {left.Code}");
             }
 
             if (left.Description != right.Description)
             {
-                messages.Add($"{right.Code} has a different description");
+                messages.Add($"{_rightRLiteral} code {right.Code} has a different description than {_leftRLiteral} code {left.Code}");
             }
         }
 
-        string message = $"{_rightRLiteral} code {conceptCode} is {relationship}" +
-            (messages.Count == 0 ? string.Empty : (" because " + string.Join(" and ", messages.Distinct())));
+        string message = lSource.Any(i => i.Code == conceptCode)
+            ? $"{_leftRLiteral} code {conceptCode} "
+            : $"{_rightRLiteral} new code {conceptCode} ";
+
+        if (relationship == CMR.Equivalent)
+        {
+            message += $"is equivalent to the {_leftRLiteral} concept";
+        }
+        else if (messages.Count == 0)
+        {
+            message += $"maps as: {relationship} for {_rightRLiteral}";
+        }
+        else
+        {
+            message += $" maps as: {relationship} for {_rightRLiteral} because " + string.Join(" and ", messages);
+        }
 
         // note that we can only be here if the codes have already matched, so we are always equivalent
         c = new()
@@ -1643,29 +1665,99 @@ public class PackageComparer
 
         foreach (string conceptCode in keys)
         {
-            ConceptMap.SourceElementComponent? ce = cm?.Group.FirstOrDefault()?.Element.Where(e => e.Code == conceptCode).FirstOrDefault();
-
-            List<ConceptInfoRec> leftInfoSource = left.TryGetValue(conceptCode, out ConceptInfoRec? leftInfo) ? [leftInfo] : [];
+            List<ConceptInfoRec> leftInfoSource;
             List<ConceptInfoRec> rightInfoSource;
-            //rightInfoSource = rightInfoSource = right.TryGetValue(conceptCode, out ConceptInfoRec? rightInfo) ? [rightInfo] : [];
-            if (ce is not null)
+
+            // prefer using a map if we have one
+            if (cm != null)
             {
+                HashSet<string> usedSourceCodes = [];
+                HashSet<string> usedTargetCodes = [];
+
+                leftInfoSource = [];
                 rightInfoSource = [];
 
-                foreach (ConceptMap.TargetElementComponent te in ce.Target)
+                // check to see if the source element has a map
+                ConceptMap.SourceElementComponent? sourceMap = cm?.Group.FirstOrDefault()?.Element.Where(e => e.Code == conceptCode).FirstOrDefault();
+
+                // if we have a mapping from the current source, we want to use the target mappings
+                if (sourceMap is not null)
                 {
-                    if (right.TryGetValue(te.Code, out ConceptInfoRec? rightInfo))
+                    // pull information about our mapped source concept
+                    if (!left.TryGetValue(conceptCode, out ConceptInfoRec? mapSourceInfo))
                     {
-                        rightInfoSource.Add(rightInfo);
+                        throw new Exception($"Concept {conceptCode} is mapped as a source but not defined in the left set");
                     }
-                    else
+
+                    leftInfoSource.Add(mapSourceInfo);
+                    usedSourceCodes.Add(conceptCode);
+
+                    // traverse the map targets to pull target information
+                    foreach (ConceptMap.TargetElementComponent te in sourceMap.Target)
                     {
-                        throw new Exception($"Concept {te.Code} not found in right set");
+                        if (usedTargetCodes.Contains(te.Code))
+                        {
+                            continue;
+                        }
+
+                        if (!right.TryGetValue(te.Code, out ConceptInfoRec? mappedTargetInfo))
+                        {
+                            throw new Exception($"Concept {te.Code} is mapped as a target but not defined in right set");
+                        }
+
+                        rightInfoSource.Add(mappedTargetInfo);
+                        usedTargetCodes.Add(te.Code);
+                    }
+                }
+
+                if ((usedTargetCodes.Count == 0) &&
+                    right.TryGetValue(conceptCode, out ConceptInfoRec? rightConceptCodeInfo))
+                {
+                    rightInfoSource.Add(rightConceptCodeInfo);
+                    usedTargetCodes.Add(conceptCode);
+                }
+
+                // also pull the list of target mappings to see if this code is mapped *from* any other source
+                List<ConceptMap.SourceElementComponent> targetMaps = cm?.Group.FirstOrDefault()?.Element.Where(e => e.Target.Any(t => usedTargetCodes.Contains(t.Code)))?.ToList() ?? [];
+
+                // traverse all mappings that this target appears in
+                foreach (ConceptMap.SourceElementComponent mapElement in targetMaps)
+                {
+                    // check if this has already been added
+                    if (!usedSourceCodes.Contains(mapElement.Code))
+                    {
+                        // pull information about our mapped source concept
+                        if (!left.TryGetValue(mapElement.Code, out ConceptInfoRec? mapSourceInfo))
+                        {
+                            throw new Exception($"Concept {mapElement.Code} is mapped as a source but not defined in the left set");
+                        }
+
+                        leftInfoSource.Add(mapSourceInfo);
+                        usedSourceCodes.Add(mapElement.Code);
+                    }
+
+                    // traverse the map targets to pull target information
+                    foreach (ConceptMap.TargetElementComponent te in mapElement.Target)
+                    {
+                        if (usedTargetCodes.Contains(te.Code))
+                        {
+                            continue;
+                        }
+
+                        if (!right.TryGetValue(te.Code, out ConceptInfoRec? mappedTargetInfo))
+                        {
+                            throw new Exception($"Concept {te.Code} is mapped as a target but not defined in right set");
+                        }
+
+                        rightInfoSource.Add(mappedTargetInfo);
+                        usedTargetCodes.Add(te.Code);
                     }
                 }
             }
             else
             {
+                // without a map, just try to get the matching source and destination codes
+                leftInfoSource = left.TryGetValue(conceptCode, out ConceptInfoRec? leftInfo) ? [leftInfo] : [];
                 rightInfoSource = right.TryGetValue(conceptCode, out ConceptInfoRec? rightInfo) ? [rightInfo] : [];
             }
 
