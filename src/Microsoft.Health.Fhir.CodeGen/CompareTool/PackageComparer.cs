@@ -713,7 +713,7 @@ public class PackageComparer
                 Right = rSource,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_rightRLiteral} added code {conceptCode}",
+                Message = $"{_rightRLiteral} new code {conceptCode} does not have a {_leftRLiteral} equivalent",
             };
             return true;
         }
@@ -765,21 +765,26 @@ public class PackageComparer
             }
         }
 
-        string message = lSource.Any(i => i.Code == conceptCode)
-            ? $"{_leftRLiteral} code {conceptCode} "
-            : $"{_rightRLiteral} new code {conceptCode} ";
+        string message;
 
         if (relationship == CMR.Equivalent)
         {
-            message += $"is equivalent to the {_leftRLiteral} concept";
+            message = lSource.Any(i => i.Code == conceptCode)
+                ? $"{_rightRLiteral} code {rSource[0].Code} is equivalent to the {_leftRLiteral} code {conceptCode}"
+                : $"{_rightRLiteral} new code {conceptCode} is equivalent to the {_leftRLiteral} code {lSource[0].Code}";
         }
         else if (messages.Count == 0)
         {
-            message += $"maps as: {relationship} for {_rightRLiteral}";
+            message = lSource.Any(i => i.Code == conceptCode)
+                ? $"{_leftRLiteral} code {conceptCode} maps as: {relationship} for {_rightRLiteral}"
+                : $"{_rightRLiteral} new code {conceptCode} maps as: {relationship} for {_leftRLiteral}";
         }
         else
         {
-            message += $" maps as: {relationship} for {_rightRLiteral} because " + string.Join(" and ", messages);
+            message = lSource.Any(i => i.Code == conceptCode)
+                ? $"{_leftRLiteral} code {conceptCode} maps as: {relationship} for {_rightRLiteral} because {string.Join(" and ", messages)}"
+                : $"{_rightRLiteral} new code {conceptCode} maps as: {relationship} for {_leftRLiteral} because {string.Join(" and ", messages)}";
+
         }
 
         // note that we can only be here if the codes have already matched, so we are always equivalent
