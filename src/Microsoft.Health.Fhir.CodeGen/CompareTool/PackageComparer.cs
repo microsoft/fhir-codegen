@@ -137,7 +137,8 @@ public class PackageComparer
         using ExportStreamWriter? mdWriter = _config.NoOutput ? null : CreateMarkdownWriter(mdFullFilename);
 
         // need to expand every value set for comparison
-        _vsComparisons = Compare(GetValueSets(_left), GetValueSets(_right));
+        Dictionary<string, ValueSet> vsLeft = GetValueSets(_left);
+        _vsComparisons = Compare(vsLeft, GetValueSets(_right, vsLeft));
         if (mdWriter is not null)
         {
             WriteComparisonOverview(mdWriter, "Value Sets", _vsComparisons.Values);
@@ -471,8 +472,10 @@ public class PackageComparer
         return test;
     }
 
-    private Dictionary<string, ValueSet> GetValueSets(DefinitionCollection dc)
+    private Dictionary<string, ValueSet> GetValueSets(DefinitionCollection dc, Dictionary<string, ValueSet>? other = null)
     {
+        other ??= [];
+
         Dictionary<string, ValueSet> valueSets = [];
 
         HashSet<string> mappedSets = [];
@@ -497,8 +500,8 @@ public class PackageComparer
             string vsVersion = versions.OrderDescending().First();
             string versionedUrl = unversionedUrl + "|" + vsVersion;
 
-            // only check bindings if we do not have a map
-            if (!mappedSets.Contains(unversionedUrl))
+            // only check bindings if we do not have a map and it was not in the other set
+            if ((!mappedSets.Contains(unversionedUrl)) && (!other.ContainsKey(unversionedUrl)))
             {
                 IEnumerable<StructureElementCollection> coreBindingsVersioned = dc.CoreBindingsForVs(versionedUrl);
                 Hl7.Fhir.Model.BindingStrength? strongestBindingV = dc.StrongestBinding(coreBindingsVersioned);
