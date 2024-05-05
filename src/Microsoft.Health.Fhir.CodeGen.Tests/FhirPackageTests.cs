@@ -161,7 +161,7 @@ public class FhirPackageTestsR5 : IClassFixture<FhirPackageTestFixture>
         loaded.PrimitiveTypesByName.Should().HaveCount(_countPrimitiveTypesByName, string.Join("\n", loaded.PrimitiveTypesByName.Keys.OrderBy(v => v)));
         loaded.ComplexTypesByName.Should().HaveCount(_countComplexTypesByName, string.Join("\n", loaded.ComplexTypesByName.Keys.OrderBy(v => v)));
         loaded.ResourcesByName.Should().HaveCount(_countResourcesByName, string.Join("\n", loaded.ResourcesByName.Keys.OrderBy(v => v)));
-        loaded.LogicalModelsByName.Should().HaveCount(_countLogicalModelsByName, string.Join("\n", loaded.LogicalModelsByName.Keys.OrderBy(v => v)));
+        loaded.LogicalModelsByUrl.Should().HaveCount(_countLogicalModelsByName, string.Join("\n", loaded.LogicalModelsByUrl.Keys.OrderBy(v => v)));
         loaded.ExtensionsByUrl.Should().HaveCount(_countExtensionsByUrl, string.Join("\n", loaded.ExtensionsByUrl.Keys.OrderBy(v => v)));
         loaded.ProfilesByUrl.Should().HaveCount(_countProfilesByUrl, string.Join("\n", loaded.ProfilesByUrl.Keys.OrderBy(v => v)));
         loaded.SearchParametersByUrl.Should().HaveCount(_countSearchParametersByUrl);
@@ -232,7 +232,7 @@ public class FhirPackageTestsR4B : IClassFixture<FhirPackageTestFixture>
         loaded.PrimitiveTypesByName.Should().HaveCount(_countPrimitiveTypesByName, string.Join("\n", loaded.PrimitiveTypesByName.Keys.OrderBy(v => v)));
         loaded.ComplexTypesByName.Should().HaveCount(_countComplexTypesByName, string.Join("\n", loaded.ComplexTypesByName.Keys.OrderBy(v => v)));
         loaded.ResourcesByName.Should().HaveCount(_countResourcesByName, string.Join("\n", loaded.ResourcesByName.Keys.OrderBy(v => v)));
-        loaded.LogicalModelsByName.Should().HaveCount(_countLogicalModelsByName, string.Join("\n", loaded.LogicalModelsByName.Keys.OrderBy(v => v)));
+        loaded.LogicalModelsByUrl.Should().HaveCount(_countLogicalModelsByName, string.Join("\n", loaded.LogicalModelsByUrl.Keys.OrderBy(v => v)));
         loaded.ExtensionsByUrl.Should().HaveCount(_countExtensionsByUrl, string.Join("\n", loaded.ExtensionsByUrl.Keys.OrderBy(v => v)));
         loaded.ProfilesByUrl.Should().HaveCount(_countProfilesByUrl, string.Join("\n", loaded.ProfilesByUrl.Keys.OrderBy(v => v)));
         loaded.SearchParametersByUrl.Should().HaveCount(_countSearchParametersByUrl);
@@ -303,7 +303,7 @@ public class FhirPackageTestsR4 : IClassFixture<FhirPackageTestFixture>
         loaded.PrimitiveTypesByName.Should().HaveCount(_countPrimitiveTypesByName, string.Join("\n", loaded.PrimitiveTypesByName.Keys.OrderBy(v => v)));
         loaded.ComplexTypesByName.Should().HaveCount(_countComplexTypesByName, string.Join("\n", loaded.ComplexTypesByName.Keys.OrderBy(v => v)));
         loaded.ResourcesByName.Should().HaveCount(_countResourcesByName, string.Join("\n", loaded.ResourcesByName.Keys.OrderBy(v => v)));
-        loaded.LogicalModelsByName.Should().HaveCount(_countLogicalModelsByName, string.Join("\n", loaded.LogicalModelsByName.Keys.OrderBy(v => v)));
+        loaded.LogicalModelsByUrl.Should().HaveCount(_countLogicalModelsByName, string.Join("\n", loaded.LogicalModelsByUrl.Keys.OrderBy(v => v)));
         loaded.ExtensionsByUrl.Should().HaveCount(_countExtensionsByUrl, string.Join("\n", loaded.ExtensionsByUrl.Keys.OrderBy(v => v)));
         loaded.ProfilesByUrl.Should().HaveCount(_countProfilesByUrl, string.Join("\n", loaded.ProfilesByUrl.Keys.OrderBy(v => v)));
         loaded.SearchParametersByUrl.Should().HaveCount(_countSearchParametersByUrl);
@@ -374,7 +374,7 @@ public class FhirPackageTestsR3 : IClassFixture<FhirPackageTestFixture>
         loaded.PrimitiveTypesByName.Should().HaveCount(_countPrimitiveTypesByName, string.Join("\n", loaded.PrimitiveTypesByName.Keys.OrderBy(v => v)));
         loaded.ComplexTypesByName.Should().HaveCount(_countComplexTypesByName, string.Join("\n", loaded.ComplexTypesByName.Keys.OrderBy(v => v)));
         loaded.ResourcesByName.Should().HaveCount(_countResourcesByName, string.Join("\n", loaded.ResourcesByName.Keys.OrderBy(v => v)));
-        loaded.LogicalModelsByName.Should().HaveCount(_countLogicalModelsByName, string.Join("\n", loaded.LogicalModelsByName.Keys.OrderBy(v => v)));
+        loaded.LogicalModelsByUrl.Should().HaveCount(_countLogicalModelsByName, string.Join("\n", loaded.LogicalModelsByUrl.Keys.OrderBy(v => v)));
         loaded.ExtensionsByUrl.Should().HaveCount(_countExtensionsByUrl, string.Join("\n", loaded.ExtensionsByUrl.Keys.OrderBy(v => v)));
         loaded.ProfilesByUrl.Should().HaveCount(_countProfilesByUrl, string.Join("\n", loaded.ProfilesByUrl.Keys.OrderBy(v => v)));
         loaded.SearchParametersByUrl.Should().HaveCount(_countSearchParametersByUrl);
@@ -445,7 +445,7 @@ public class FhirPackageTestsR2 : IClassFixture<FhirPackageTestFixture>
         loaded.PrimitiveTypesByName.Should().HaveCount(_countPrimitiveTypesByName, string.Join("\n", loaded.PrimitiveTypesByName.Keys.OrderBy(v => v)));
         loaded.ComplexTypesByName.Should().HaveCount(_countComplexTypesByName, string.Join("\n", loaded.ComplexTypesByName.Keys.OrderBy(v => v)));
         loaded.ResourcesByName.Should().HaveCount(_countResourcesByName, string.Join("\n", loaded.ResourcesByName.Keys.OrderBy(v => v)));
-        loaded.LogicalModelsByName.Should().HaveCount(_countLogicalModelsByName, string.Join("\n", loaded.LogicalModelsByName.Keys.OrderBy(v => v)));
+        loaded.LogicalModelsByUrl.Should().HaveCount(_countLogicalModelsByName, string.Join("\n", loaded.LogicalModelsByUrl.Keys.OrderBy(v => v)));
         loaded.ExtensionsByUrl.Should().HaveCount(_countExtensionsByUrl, string.Join("\n", loaded.ExtensionsByUrl.Keys.OrderBy(v => v)));
         loaded.ProfilesByUrl.Should().HaveCount(_countProfilesByUrl, string.Join("\n", loaded.ProfilesByUrl.Keys.OrderBy(v => v)));
         loaded.SearchParametersByUrl.Should().HaveCount(_countSearchParametersByUrl);

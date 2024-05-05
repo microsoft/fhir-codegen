@@ -49,7 +49,7 @@ public class PackageComparer
     private DefinitionCollection? _maps;
     private Dictionary<string, List<string>> _knownValueSetMaps = [];
     private string _mapCanonical = string.Empty;
-    private ConceptMap? _dataTypeConceptMap = null;
+    private ConceptMap? _typeConceptMap = null;
 
     private string _leftRLiteral;
     //private string _leftShortVersion;
@@ -239,28 +239,29 @@ public class PackageComparer
             }
         }
 
-        Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> logical = Compare(FhirArtifactClassEnum.LogicalModel, _left.LogicalModelsByName, _right.LogicalModelsByName);
-        if (mdWriter is not null)
-        {
-            WriteComparisonOverview(mdWriter, "Logical Models", logical.Values);
+        // TODO(ginoc): Logical models are tracked by URL in collections, but structure mapping is done by name.
+        //Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> logical = Compare(FhirArtifactClassEnum.LogicalModel, _left.LogicalModelsByUrl, _right.LogicalModelsByUrl);
+        //if (mdWriter is not null)
+        //{
+        //    WriteComparisonOverview(mdWriter, "Logical Models", logical.Values);
 
-            string subDir = Path.Combine(outputDir, "LogicalModels");
-            if (!Directory.Exists(subDir))
-            {
-                Directory.CreateDirectory(subDir);
-            }
+        //    string subDir = Path.Combine(outputDir, "LogicalModels");
+        //    if (!Directory.Exists(subDir))
+        //    {
+        //        Directory.CreateDirectory(subDir);
+        //    }
 
-            foreach (ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec> c in logical.Values)
-            {
-                string name = GetName(c.Left, c.Right);
-                string filename = Path.Combine(subDir, $"{name}.md");
+        //    foreach (ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec> c in logical.Values)
+        //    {
+        //        string name = GetName(c.Left, c.Right);
+        //        string filename = Path.Combine(subDir, $"{name}.md");
 
-                using ExportStreamWriter writer = CreateMarkdownWriter(filename);
-                {
-                    WriteComparisonFile(writer, string.Empty, c);
-                }
-            }
-        }
+        //        using ExportStreamWriter writer = CreateMarkdownWriter(filename);
+        //        {
+        //            WriteComparisonFile(writer, string.Empty, c);
+        //        }
+        //    }
+        //}
 
         PackageComparison packageComparison = new()
         {
@@ -272,7 +273,7 @@ public class PackageComparer
             PrimitiveTypes = primitives,
             ComplexTypes = complexTypes,
             Resources = resources,
-            LogicalModels = logical,
+            //LogicalModels = logical,
         };
 
         if (mdWriter is not null)
@@ -294,11 +295,6 @@ public class PackageComparer
         }
 
         return packageComparison;
-    }
-
-    private string SanitizeForName(string value)
-    {
-        return FhirSanitizationUtils.SanitizeForProperty(value);
     }
 
     private bool TryLoadFhirCrossVersionMaps()
@@ -443,7 +439,7 @@ public class PackageComparer
                                 cm.Group[0].Target = $"{_right.MainPackageCanonical}/ValueSet/data-types";
                             }
 
-                            _dataTypeConceptMap = cm;
+                            _typeConceptMap = cm;
                         }
                         break;
                     case "resources":
@@ -957,22 +953,10 @@ public class PackageComparer
             return string.Empty;
         }
 
-        if (l.Count == 0)
-        {
-            return $"{_rightRLiteral}_{SanitizeForName(r[0].Code)}";
-        }
-
-        if (r.Count == 0)
-        {
-            return $"{_leftRLiteral}_{SanitizeForName(l[0].Code)}";
-        }
-
-        if (l.Count == 1 && r.Count == 1)
-        {
-            return $"{_leftRLiteral}_{SanitizeForName(l[0].Code)}_{_rightRLiteral}_{SanitizeForName(r[0].Code)}";
-        }
-
-        return $"{_leftRLiteral}_{string.Join('_', l.Select(i => SanitizeForName(i.Code)))}_{_rightRLiteral}_{string.Join('_', r.Select(i => SanitizeForName(i.Code)))}";
+        return
+            (l.Count == 0 ? _leftRLiteral : $"{_leftRLiteral}_{string.Join('_', l.Select(i => i.Code.ForName()).Order())}") +
+            "_" +
+            (r.Count == 0 ? _rightRLiteral : $"{_rightRLiteral}_{string.Join('_', r.Select(i => i.Code.ForName()).Order())}");
     }
 
     private (CMR initialRelationship, int maxIndex) GetInitialRelationship<T>(List<T> lSource, List<T> rSource)
@@ -1180,22 +1164,10 @@ public class PackageComparer
             return string.Empty;
         }
 
-        if (l.Count == 0)
-        {
-            return $"{_rightRLiteral}_{SanitizeForName(r[0].Name)}";
-        }
-
-        if (r.Count == 0)
-        {
-            return $"{_leftRLiteral}_{SanitizeForName(l[0].Name)}";
-        }
-
-        if (l.Count == 1 && r.Count == 1)
-        {
-            return $"{_leftRLiteral}_{SanitizeForName(l[0].Name)}_{_rightRLiteral}_{SanitizeForName(r[0].Name)}";
-        }
-
-        return $"{_leftRLiteral}_{string.Join('_', l.Select(i => SanitizeForName(i.Name)))}_{_rightRLiteral}_{string.Join('_', r.Select(i => SanitizeForName(i.Name)))}";
+        return
+            (l.Count == 0 ? _leftRLiteral : $"{_leftRLiteral}_{string.Join('_', l.Select(i => i.Name.ForName()).Order())}") +
+            "_" +
+            (r.Count == 0 ? _rightRLiteral : $"{_rightRLiteral}_{string.Join('_', r.Select(i => i.Name.ForName()).Order())}");
     }
 
     private CMR ApplyRelationship(CMR existing, CMR? change) => existing switch
@@ -1380,22 +1352,10 @@ public class PackageComparer
             return string.Empty;
         }
 
-        if (l.Count == 0)
-        {
-            return $"{_rightRLiteral}_{SanitizeForName(r[0].Name)}";
-        }
-
-        if (r.Count == 0)
-        {
-            return $"{_leftRLiteral}_{SanitizeForName(l[0].Name)}";
-        }
-
-        if (l.Count == 1 && r.Count == 1)
-        {
-            return $"{_leftRLiteral}_{SanitizeForName(l[0].Name)}_{_rightRLiteral}_{SanitizeForName(r[0].Name)}";
-        }
-
-        return $"{_leftRLiteral}_{string.Join('_', l.Select(i => SanitizeForName(i.Name)))}_{_rightRLiteral}_{string.Join('_', r.Select(i => SanitizeForName(i.Name)))}";
+        return
+            (l.Count == 0 ? _leftRLiteral : $"{_leftRLiteral}_{string.Join('_', l.Select(i => i.Name.ForName()).Order())}") +
+            "_" +
+            (r.Count == 0 ? _rightRLiteral : $"{_rightRLiteral}_{string.Join('_', r.Select(i => i.Name.ForName()).Order())}");
     }
 
     private bool TryCompare(
@@ -1740,22 +1700,10 @@ public class PackageComparer
             return string.Empty;
         }
 
-        if (l.Count == 0)
-        {
-            return $"{_rightRLiteral}_{SanitizeForName(r[0].Name)}";
-        }
-
-        if (r.Count == 0)
-        {
-            return $"{_leftRLiteral}_{SanitizeForName(l[0].Name)}";
-        }
-
-        if (l.Count == 1 && r.Count == 1)
-        {
-            return $"{_leftRLiteral}_{SanitizeForName(l[0].Name)}_{_rightRLiteral}_{SanitizeForName(r[0].Name)}";
-        }
-
-        return $"{_leftRLiteral}_{string.Join('_', l.Select(i => SanitizeForName(i.Name)))}_{_rightRLiteral}_{string.Join('_', r.Select(i => SanitizeForName(i.Name)))}";
+        return
+            (l.Count == 0 ? _leftRLiteral : $"{_leftRLiteral}_{string.Join('_', l.Select(i => i.Name.ForName()).Order())}") +
+            "_" +
+            (r.Count == 0 ? _rightRLiteral : $"{_rightRLiteral}_{string.Join('_', r.Select(i => i.Name.ForName()).Order())}");
     }
 
 
@@ -1925,20 +1873,22 @@ public class PackageComparer
 
         if (l.Count == 0)
         {
-            return $"{_rightRLiteral}_{SanitizeForName(r[0].Name)}";
+            return $"{_rightRLiteral}_{r[0].Name.ForName()}";
         }
 
         if (r.Count == 0)
         {
-            return $"{_leftRLiteral}_{SanitizeForName(l[0].Name)}";
+            return $"{_leftRLiteral}_{l[0].Name.ForName()}";
         }
 
         if (l.Count == 1 && r.Count == 1)
         {
-            return $"{_leftRLiteral}_{SanitizeForName(l[0].Name)}_{_rightRLiteral}_{SanitizeForName(r[0].Name)}";
+            return $"{_leftRLiteral}_{l[0].Name.ForName()}_{_rightRLiteral}_{r[0].Name.ForName()}";
         }
 
-        return $"{_leftRLiteral}_{string.Join('_', l.Select(i => SanitizeForName(i.Name)))}_{_rightRLiteral}_{string.Join('_', r.Select(i => SanitizeForName(i.Name)))}";
+        return
+            $"{_leftRLiteral}_{string.Join('_', l.Select(i => i.Name.ForName()).Order())}" +
+            $"_{_rightRLiteral}_{string.Join('_', r.Select(i => i.Name.ForName()).Order())}";
     }
 
     private Dictionary<string, ComparisonRecord<ConceptInfoRec>> Compare(
@@ -1960,7 +1910,7 @@ public class PackageComparer
             List<ConceptInfoRec> rightInfoSource;
 
             // prefer using a map if we have one
-            if (cm != null)
+            if (cm is not null)
             {
                 HashSet<string> usedSourceCodes = [];
                 HashSet<string> usedTargetCodes = [];
@@ -2001,6 +1951,7 @@ public class PackageComparer
                     }
                 }
 
+                // if we did not find a source mapping from the source, still add as a target concept if it is in the right set
                 if ((usedTargetCodes.Count == 0) &&
                     right.TryGetValue(conceptCode, out ConceptInfoRec? rightConceptCodeInfo))
                 {
@@ -2236,39 +2187,200 @@ public class PackageComparer
 
         IEnumerable<string> keys = left.Keys.Union(right.Keys).Distinct();
 
+        HashSet<string> usedCompositeNames = [];
+
         // add our matches
         foreach (string sdName in keys)
         {
-            List<StructureInfoRec> leftInfoSource = left.TryGetValue(sdName, out StructureInfoRec? leftInfo) ? [leftInfo] : [];
-            List<StructureInfoRec> rightInfoSource = right.TryGetValue(sdName, out StructureInfoRec? rightInfo) ? [rightInfo] : [];
-            
-            Dictionary<string, ElementDefinition> leftElements;
-            Dictionary<string, ElementDefinition> rightElements;
+            List<StructureInfoRec> leftInfoSource;  // = left.TryGetValue(sdName, out StructureInfoRec? leftInfo) ? [leftInfo] : [];
+            List<StructureInfoRec> rightInfoSource; // = right.TryGetValue(sdName, out StructureInfoRec? rightInfo) ? [rightInfo] : [];
 
-            if (leftInput.TryGetValue(sdName, out StructureDefinition? leftSd))
+            ConceptMap? cm = artifactClass switch
             {
-                leftElements = leftSd.cgElements().ToDictionary(e => e.Path);
+                FhirArtifactClassEnum.PrimitiveType => _typeConceptMap,
+                _ => null
+            };
+
+            // prefer using a map if we have one
+            if (cm is not null)
+            {
+                HashSet<string> usedSourceNames = [];
+                HashSet<string> usedTargetNames = [];
+
+                leftInfoSource = [];
+                rightInfoSource = [];
+
+                // check to see if the source element has a map
+                ConceptMap.SourceElementComponent? sourceMap = cm?.Group.FirstOrDefault()?.Element.Where(e => e.Code == sdName).FirstOrDefault();
+
+                // if we have a mapping from the current source, we want to use the target mappings
+                if (sourceMap is not null)
+                {
+                    // pull information about our mapped source concept
+                    if (!left.TryGetValue(sdName, out StructureInfoRec? mapSourceInfo))
+                    {
+                        throw new Exception($"Structure {sdName} is mapped as a source but not defined in the left set");
+                    }
+
+                    leftInfoSource.Add(mapSourceInfo);
+                    usedSourceNames.Add(sdName);
+
+                    // traverse the map targets to pull target information
+                    foreach (ConceptMap.TargetElementComponent te in sourceMap.Target)
+                    {
+                        if (usedTargetNames.Contains(te.Code))
+                        {
+                            continue;
+                        }
+
+                        if (!right.TryGetValue(te.Code, out StructureInfoRec? mappedTargetInfo))
+                        {
+                            throw new Exception($"Structure {te.Code} is mapped as a target but not defined in right set");
+                        }
+
+                        rightInfoSource.Add(mappedTargetInfo);
+                        usedTargetNames.Add(te.Code);
+                    }
+                }
+
+                // if we did not find a source mapping from the source, still add as a target structure if it is in the right set
+                if ((usedTargetNames.Count == 0) &&
+                    right.TryGetValue(sdName, out StructureInfoRec? rightStructureInfo))
+                {
+                    rightInfoSource.Add(rightStructureInfo);
+                    usedTargetNames.Add(sdName);
+                }
+
+                // also pull the list of target mappings to see if this code is mapped *from* any other source
+                List<ConceptMap.SourceElementComponent> targetMaps = cm?.Group.FirstOrDefault()?.Element.Where(e => e.Target.Any(t => usedTargetNames.Contains(t.Code)))?.ToList() ?? [];
+
+                // traverse all mappings that this target appears in
+                foreach (ConceptMap.SourceElementComponent mapElement in targetMaps)
+                {
+                    // check if this has already been added
+                    if (!usedSourceNames.Contains(mapElement.Code))
+                    {
+                        // pull information about our mapped source concept
+                        if (!left.TryGetValue(mapElement.Code, out StructureInfoRec? mapSourceInfo))
+                        {
+                            throw new Exception($"Structure {mapElement.Code} is mapped as a source but not defined in the left set");
+                        }
+
+                        leftInfoSource.Add(mapSourceInfo);
+                        usedSourceNames.Add(mapElement.Code);
+                    }
+
+                    // traverse the map targets to pull target information
+                    foreach (ConceptMap.TargetElementComponent te in mapElement.Target)
+                    {
+                        if (usedTargetNames.Contains(te.Code))
+                        {
+                            continue;
+                        }
+
+                        if (!right.TryGetValue(te.Code, out StructureInfoRec? mappedTargetInfo))
+                        {
+                            throw new Exception($"Structure {te.Code} is mapped as a target but not defined in right set");
+                        }
+
+                        rightInfoSource.Add(mappedTargetInfo);
+                        usedTargetNames.Add(te.Code);
+                    }
+                }
             }
             else
             {
-                leftElements = [];
+                // without a map, just try to get the matching source and destination codes
+                leftInfoSource = left.TryGetValue(sdName, out StructureInfoRec? leftInfo) ? [leftInfo] : [];
+                rightInfoSource = right.TryGetValue(sdName, out StructureInfoRec? rightInfo) ? [rightInfo] : [];
             }
 
-            if (rightInput.TryGetValue(sdName, out StructureDefinition? rightSd))
+            Dictionary<string, ElementDefinition> leftElements = [];
+            Dictionary<string, ElementDefinition> rightElements = [];
+
+            // need to build up the set of elements for each side
+            foreach (StructureInfoRec leftSi in leftInfoSource)
             {
-                rightElements = rightSd.cgElements().ToDictionary(e => e.Path);
+                if (!leftInput.TryGetValue(leftSi.Name, out StructureDefinition? leftSd))
+                {
+                    throw new Exception($"Have structure info for {leftSi.Name} but failed to retrieve definition");
+                }
+
+                foreach (ElementDefinition ed in leftSd.cgElements())
+                {
+                    leftElements.Add(ed.Path, ed);
+                }
             }
-            else
+
+            foreach (StructureInfoRec rightSi in rightInfoSource)
             {
-                rightElements = [];
+                if (!rightInput.TryGetValue(rightSi.Name, out StructureDefinition? rightSd))
+                {
+                    throw new Exception($"Have structure info for {rightSi.Name} but failed to retrieve definition");
+                }
+
+                foreach (ElementDefinition ed in rightSd.cgElements())
+                {
+                    rightElements.Add(ed.Path, ed);
+                }
             }
+
+            //if (leftInfoSource.Count == 0)
+            //{
+            //    leftElements = [];
+            //}
+            //else if (leftInfoSource.Count == 1)
+            //{
+            //    //if (leftInput.TryGetValue(sdName, out StructureDefinition? leftSd))
+            //    if (leftInput.TryGetValue(leftInfoSource[0].Name, out StructureDefinition? leftSd))
+            //    {
+            //        leftElements = leftSd.cgElements().ToDictionary(e => e.Path);
+            //    }
+            //    else
+            //    {
+            //        leftElements = [];
+            //    }
+
+            //    //leftElements = leftSd.cgElements().ToDictionary(e => e.Path);
+            //}
+            //else
+            //{
+            //    throw new Exception("TODO");
+            //}
+
+            //if (rightInfoSource.Count == 0)
+            //{
+            //    rightElements = [];
+            //}
+            //else if (rightInfoSource.Count == 1)
+            //{
+            //    //if (rightInput.TryGetValue(sdName, out StructureDefinition? rightSd))
+            //    if (rightInput.TryGetValue(rightInfoSource[0].Name, out StructureDefinition? rightSd))
+            //    {
+            //        rightElements = rightSd.cgElements().ToDictionary(e => e.Path);
+            //    }
+            //    else
+            //    {
+            //        rightElements = [];
+            //    }
+
+            //    //rightElements = rightSd.cgElements().ToDictionary(e => e.Path);
+            //}
+            //else
+            //{
+            //    throw new Exception("TODO");
+            //}
 
             // perform element comparison
             Dictionary<string, ComparisonRecord<ElementInfoRec, ElementTypeInfoRec>> elementComparison = Compare(artifactClass, leftElements, rightElements);
 
             if (TryCompare(artifactClass, sdName, leftInfoSource, rightInfoSource, elementComparison, out ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>? c))
             {
-                comparison.Add(sdName, c);
+                if (!usedCompositeNames.Contains(c.CompositeName))
+                {
+                    comparison.Add(sdName, c);
+                    usedCompositeNames.Add(c.CompositeName);
+                }
             }
         }
 
@@ -2553,10 +2665,5 @@ public class PackageComparer
         guess = null;
         confidence = 0;
         return false;
-    }
-
-    private string SanitizeVersion(string version)
-    {
-        return version.Replace('.', '_').Replace('-', '_');
     }
 }

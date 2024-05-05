@@ -12,12 +12,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
+using Microsoft.Health.Fhir.CodeGen.Utils;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 namespace Microsoft.Health.Fhir.CodeGen.CompareTool;
 
 internal static class ComparisonUtils
 {
+    internal static string ForName(this string value) => FhirSanitizationUtils.SanitizeForProperty(value);
+    internal static string ForVersion(this string value) => value.Replace('.', '_').Replace('-', '_');
     internal static string ForMdTable(this string value) => string.IsNullOrEmpty(value) ? string.Empty : value.Replace("|", "\\|").Replace("\n", "<br/>").Replace("\r", "<br/>");
 }
 
@@ -263,5 +266,5 @@ public record class PackageComparison
     public required Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> PrimitiveTypes { get; init; }
     public required Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> ComplexTypes { get; init; }
     public required Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> Resources { get; init; }
-    public required Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> LogicalModels { get; init; }
+    //public required Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> LogicalModels { get; init; }
 }

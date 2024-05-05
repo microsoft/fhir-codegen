@@ -1829,7 +1829,7 @@ public partial class DefinitionCollection
     }
 
     /// <summary>Gets the name of the logical models by.</summary>
-    public IReadOnlyDictionary<string, StructureDefinition> LogicalModelsByName => _logicalModelsByUrl;
+    public IReadOnlyDictionary<string, StructureDefinition> LogicalModelsByUrl => _logicalModelsByUrl;
 
     /// <summary>Adds a logical model.</summary>
     /// <param name="sd">The structure definition.</param>
