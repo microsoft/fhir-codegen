@@ -34,6 +34,8 @@ using static Microsoft.Health.Fhir.CodeGen.CompareTool.PackageComparer;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 using static Microsoft.Health.Fhir.CodeGen.CompareTool.ComparisonUtils;
 using System.Runtime.InteropServices.JavaScript;
+using Hl7.Fhir.Rest;
+using Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 namespace Microsoft.Health.Fhir.CodeGen.CompareTool;
 
@@ -47,11 +49,12 @@ public class PackageComparer
     private DefinitionCollection? _maps;
     private Dictionary<string, List<string>> _knownValueSetMaps = [];
     private string _mapCanonical = string.Empty;
+    private ConceptMap? _dataTypeConceptMap = null;
 
     private string _leftRLiteral;
-    private string _leftShortVersion;
+    //private string _leftShortVersion;
     private string _rightRLiteral;
-    private string _rightShortVersion;
+    //private string _rightShortVersion;
 
     private const string _leftTableLiteral = "Source";
     private const string _rightTableLiteral = "Destination";
@@ -100,9 +103,9 @@ public class PackageComparer
         _right = right;
 
         _leftRLiteral = left.FhirSequence.ToRLiteral();
-        _leftShortVersion = left.FhirSequence.ToShortVersion();
+        //_leftShortVersion = left.FhirSequence.ToShortVersion();
         _rightRLiteral = right.FhirSequence.ToRLiteral();
-        _rightShortVersion = right.FhirSequence.ToShortVersion();
+        //_rightShortVersion = right.FhirSequence.ToShortVersion();
 
         //if (!string.IsNullOrEmpty(config.OllamaUrl) &&
         //    !string.IsNullOrEmpty(config.OllamaModel))
@@ -144,7 +147,7 @@ public class PackageComparer
 
         // need to expand every value set for comparison
         Dictionary<string, ValueSet> vsLeft = GetValueSets(_left);
-        _vsComparisons = Compare(vsLeft, GetValueSets(_right, vsLeft));
+        _vsComparisons = Compare(FhirArtifactClassEnum.ValueSet, vsLeft, GetValueSets(_right, vsLeft));
         if (mdWriter is not null)
         {
             WriteComparisonOverview(mdWriter, "Value Sets", _vsComparisons.Values);
@@ -167,7 +170,7 @@ public class PackageComparer
             }
         }
 
-        Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> primitives = Compare(_left.PrimitiveTypesByName, _right.PrimitiveTypesByName);
+        Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> primitives = Compare(FhirArtifactClassEnum.PrimitiveType, _left.PrimitiveTypesByName, _right.PrimitiveTypesByName);
         if (mdWriter is not null)
         {
             WriteComparisonOverview(mdWriter, "Primitive Types", primitives.Values);
@@ -190,7 +193,7 @@ public class PackageComparer
             }
         }
 
-        Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> complexTypes = Compare(_left.ComplexTypesByName, _right.ComplexTypesByName);
+        Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> complexTypes = Compare(FhirArtifactClassEnum.ComplexType, _left.ComplexTypesByName, _right.ComplexTypesByName);
         if (mdWriter is not null)
         {
             WriteComparisonOverview(mdWriter, "Complex Types", complexTypes.Values);
@@ -213,7 +216,7 @@ public class PackageComparer
             }
         }
 
-        Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> resources = Compare(_left.ResourcesByName, _right.ResourcesByName);
+        Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> resources = Compare(FhirArtifactClassEnum.Resource, _left.ResourcesByName, _right.ResourcesByName);
         if (mdWriter is not null)
         {
             WriteComparisonOverview(mdWriter, "Resources", resources.Values);
@@ -236,7 +239,7 @@ public class PackageComparer
             }
         }
 
-        Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> logical = Compare(_left.LogicalModelsByName, _right.LogicalModelsByName);
+        Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> logical = Compare(FhirArtifactClassEnum.LogicalModel, _left.LogicalModelsByName, _right.LogicalModelsByName);
         if (mdWriter is not null)
         {
             WriteComparisonOverview(mdWriter, "Logical Models", logical.Values);
@@ -421,7 +424,27 @@ public class PackageComparer
                         }
                         break;
                     case "types":
-                        cm.Url = _maps!.MainPackageCanonical + "/ConceptMap/DataTypes";
+                        {
+                            string url = _maps!.MainPackageCanonical + "/ConceptMap/DataTypes";
+
+                            // update our info
+                            cm.Id = $"{_leftRLiteral}-datatypes-{_rightRLiteral}";
+                            cm.Url = url;
+                            cm.Name = $"Map Concepts representing data types from {_leftRLiteral} to {_rightRLiteral}";
+                            cm.Title = $"Cross-version map for concepts for data types from {_leftRLiteral} to {_rightRLiteral}";
+
+                            // try to manufacture correct value set URLs based on what we have
+                            cm.SourceScope = new Canonical($"{_left.MainPackageCanonical}/ValueSet/data-types|{_left.MainPackageVersion}");
+                            cm.TargetScope = new Canonical($"{_right.MainPackageCanonical}/ValueSet/data-types|{_right.MainPackageVersion}");
+
+                            if (cm.Group?.Count == 1)
+                            {
+                                cm.Group[0].Source = $"{_left.MainPackageCanonical}/ValueSet/data-types";
+                                cm.Group[0].Target = $"{_right.MainPackageCanonical}/ValueSet/data-types";
+                            }
+
+                            _dataTypeConceptMap = cm;
+                        }
                         break;
                     case "resources":
                         cm.Url = _maps!.MainPackageCanonical + "/ConceptMap/Resources";
@@ -802,6 +825,7 @@ public class PackageComparer
     }
 
     private bool TryCompare(
+        FhirArtifactClassEnum artifactClass,
         string conceptCode,
         List<ConceptInfoRec> lSource,
         List<ConceptInfoRec> rSource,
@@ -822,6 +846,7 @@ public class PackageComparer
         {
             c = new()
             {
+                ComparisonArtifactType = artifactClass,
                 Key = conceptCode,
                 CompositeName = GetName(lSource, rSource),
                 Left = [],
@@ -839,6 +864,7 @@ public class PackageComparer
         {
             c = new()
             {
+                ComparisonArtifactType = artifactClass,
                 Key = conceptCode,
                 CompositeName = GetName(lSource, rSource),
                 Left = lSource,
@@ -910,6 +936,7 @@ public class PackageComparer
         // note that we can only be here if the codes have already matched, so we are always equivalent
         c = new()
         {
+            ComparisonArtifactType = artifactClass,
             Key = conceptCode,
             CompositeName = GetName(lSource, rSource),
             Left = lSource,
@@ -966,12 +993,15 @@ public class PackageComparer
     /// <summary>
     /// Tries to compare the type information for two elements and returns a comparison record.
     /// </summary>
-    /// <param name="elementName">The name of the element.</param>
-    /// <param name="left">The left element type info to compare.</param>
-    /// <param name="right">The right element type info to compare.</param>
-    /// <param name="c">The comparison record of the elements.</param>
+    /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>
+    /// <param name="typeName">     The name of the element.</param>
+    /// <param name="lSource">      The left element type info to compare.</param>
+    /// <param name="rSource">      The right element type info to compare.</param>
+    /// <param name="c">            [out] The comparison record of the elements.</param>
+    /// <param name="artifactClass">The artifact class.</param>
     /// <returns>True if the comparison is successful, false otherwise.</returns>
     private bool TryCompare(
+        FhirArtifactClassEnum artifactClass,
         string typeName,
         List<ElementTypeInfoRec> lSource,
         List<ElementTypeInfoRec> rSource,
@@ -992,6 +1022,7 @@ public class PackageComparer
         {
             c = new()
             {
+                ComparisonArtifactType = artifactClass,
                 Key = typeName,
                 CompositeName = GetName(lSource, rSource),
                 Left = [],
@@ -1009,6 +1040,7 @@ public class PackageComparer
         {
             c = new()
             {
+                ComparisonArtifactType = artifactClass,
                 Key = typeName,
                 CompositeName = GetName(lSource, rSource),
                 Left = lSource,
@@ -1127,6 +1159,7 @@ public class PackageComparer
 
         c = new()
         {
+            ComparisonArtifactType = artifactClass,
             Key = typeName,
             CompositeName = GetName(lSource, rSource),
             Left = lSource,
@@ -1178,6 +1211,7 @@ public class PackageComparer
     };
 
     private bool TryCompare(
+        FhirArtifactClassEnum artifactClass,
         string url,
         List<ValueSetInfoRec> lSource,
         List<ValueSetInfoRec> rSource,
@@ -1199,6 +1233,7 @@ public class PackageComparer
         {
             c = new()
             {
+                ComparisonArtifactType = artifactClass,
                 Key = url,
                 CompositeName = GetName(lSource, rSource),
                 Left = [],
@@ -1217,6 +1252,7 @@ public class PackageComparer
         {
             c = new()
             {
+                ComparisonArtifactType = artifactClass,
                 Key = url,
                 CompositeName = GetName(lSource, rSource),
                 Left = lSource,
@@ -1241,6 +1277,7 @@ public class PackageComparer
         {
             c = new()
             {
+                ComparisonArtifactType = artifactClass,
                 Key = url,
                 CompositeName = GetName(lSource, rSource),
                 Left = lSource,
@@ -1321,6 +1358,7 @@ public class PackageComparer
 
         c = new()
         {
+            ComparisonArtifactType = artifactClass,
             Key = url,
             CompositeName = GetName(lSource, rSource),
             Left = lSource,
@@ -1361,6 +1399,7 @@ public class PackageComparer
     }
 
     private bool TryCompare(
+        FhirArtifactClassEnum artifactClass,
         string edPath,
         List<ElementInfoRec> lSource,
         List<ElementInfoRec> rSource,
@@ -1382,6 +1421,7 @@ public class PackageComparer
         {
             c = new()
             {
+                ComparisonArtifactType = artifactClass,
                 Key = edPath,
                 CompositeName = GetName(lSource, rSource),
                 Left = [],
@@ -1400,6 +1440,7 @@ public class PackageComparer
         {
             c = new()
             {
+                ComparisonArtifactType = artifactClass,
                 Key = edPath,
                 CompositeName = GetName(lSource, rSource),
                 Left = lSource,
@@ -1677,6 +1718,7 @@ public class PackageComparer
         // return our info
         c = new()
         {
+            ComparisonArtifactType = artifactClass,
             Key = edPath,
             CompositeName = GetName(lSource, rSource),
             Left = lSource,
@@ -1718,6 +1760,7 @@ public class PackageComparer
 
 
     private bool TryCompare(
+        FhirArtifactClassEnum artifactClass,
         string sdName,
         List<StructureInfoRec> lSource,
         List<StructureInfoRec> rSource,
@@ -1739,6 +1782,7 @@ public class PackageComparer
         {
             c = new()
             {
+                ComparisonArtifactType = artifactClass,
                 Key = sdName,
                 CompositeName = GetName(lSource, rSource),
                 Left = [],
@@ -1757,6 +1801,7 @@ public class PackageComparer
         {
             c = new()
             {
+                ComparisonArtifactType = artifactClass,
                 Key = sdName,
                 CompositeName = GetName(lSource, rSource),
                 Left = lSource,
@@ -1779,6 +1824,7 @@ public class PackageComparer
         {
             c = new()
             {
+                ComparisonArtifactType = artifactClass,
                 Key = sdName,
                 CompositeName = GetName(lSource, rSource),
                 Left = lSource,
@@ -1855,6 +1901,7 @@ public class PackageComparer
 
         c = new()
         {
+            ComparisonArtifactType = artifactClass,
             Key = sdName,
             CompositeName = GetName(lSource, rSource),
             Left = lSource,
@@ -1895,6 +1942,7 @@ public class PackageComparer
     }
 
     private Dictionary<string, ComparisonRecord<ConceptInfoRec>> Compare(
+        FhirArtifactClassEnum artifactClass,
         IReadOnlyDictionary<string, FhirConcept> leftConcepts,
         IReadOnlyDictionary<string, FhirConcept> rightConcepts,
         ConceptMap? cm)
@@ -2004,7 +2052,7 @@ public class PackageComparer
                 rightInfoSource = right.TryGetValue(conceptCode, out ConceptInfoRec? rightInfo) ? [rightInfo] : [];
             }
 
-            if (TryCompare(conceptCode, leftInfoSource, rightInfoSource, out ComparisonRecord<ConceptInfoRec>? c))
+            if (TryCompare(artifactClass, conceptCode, leftInfoSource, rightInfoSource, out ComparisonRecord<ConceptInfoRec>? c))
             {
                 comparison.Add(conceptCode, c);
             }
@@ -2014,6 +2062,7 @@ public class PackageComparer
     }
 
     private Dictionary<string, ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>> Compare(
+        FhirArtifactClassEnum artifactClass,
         IReadOnlyDictionary<string, ValueSet> leftInput,
         IReadOnlyDictionary<string, ValueSet> rightInput)
     {
@@ -2085,9 +2134,9 @@ public class PackageComparer
                 }
 
                 // compare our concepts
-                Dictionary<string, ComparisonRecord<ConceptInfoRec>> conceptComparison = Compare(leftConcepts, rightConcepts, cm);
+                Dictionary<string, ComparisonRecord<ConceptInfoRec>> conceptComparison = Compare(artifactClass, leftConcepts, rightConcepts, cm);
 
-                if (TryCompare(url, leftInfoSource, rightInfoSource, conceptComparison, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? c))
+                if (TryCompare(artifactClass, url, leftInfoSource, rightInfoSource, conceptComparison, out ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>? c))
                 {
                     comparison.Add(url, c);
                 }
@@ -2098,6 +2147,7 @@ public class PackageComparer
     }
 
     private Dictionary<string, ComparisonRecord<ElementTypeInfoRec>> Compare(
+        FhirArtifactClassEnum artifactClass,
         IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> leftInput,
         IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> rightInput)
     {
@@ -2114,7 +2164,7 @@ public class PackageComparer
             List<ElementTypeInfoRec> leftInfoSource = left.TryGetValue(typeName, out ElementTypeInfoRec? leftInfo) ? [leftInfo] : [];
             List<ElementTypeInfoRec> rightInfoSource = right.TryGetValue(typeName, out ElementTypeInfoRec? rightInfo) ? [rightInfo] : [];
 
-            if (TryCompare(typeName, leftInfoSource, rightInfoSource, out ComparisonRecord<ElementTypeInfoRec>? c))
+            if (TryCompare(artifactClass, typeName, leftInfoSource, rightInfoSource, out ComparisonRecord<ElementTypeInfoRec>? c))
             {
                 comparison.Add(typeName, c);
             }
@@ -2124,6 +2174,7 @@ public class PackageComparer
     }
 
     private Dictionary<string, ComparisonRecord<ElementInfoRec, ElementTypeInfoRec>> Compare(
+        FhirArtifactClassEnum artifactClass,
         IReadOnlyDictionary<string, ElementDefinition> leftDict,
         IReadOnlyDictionary<string, ElementDefinition> rightDict)
     {
@@ -2162,9 +2213,9 @@ public class PackageComparer
             List<ElementInfoRec> rightInfoSource = rightInfoDict.TryGetValue(edPath, out ElementInfoRec? rightInfo) ? [rightInfo] : [];
 
             // perform type comparison
-            Dictionary<string, ComparisonRecord<ElementTypeInfoRec>> typeComparison = Compare(leftTypes, rightTypes);
+            Dictionary<string, ComparisonRecord<ElementTypeInfoRec>> typeComparison = Compare(artifactClass, leftTypes, rightTypes);
 
-            if (TryCompare(edPath, leftInfoSource, rightInfoSource, typeComparison, out ComparisonRecord<ElementInfoRec, ElementTypeInfoRec>? c))
+            if (TryCompare(artifactClass, edPath, leftInfoSource, rightInfoSource, typeComparison, out ComparisonRecord<ElementInfoRec, ElementTypeInfoRec>? c))
             {
                 comparison.Add(edPath, c);
             }
@@ -2174,6 +2225,7 @@ public class PackageComparer
     }
 
     private Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> Compare(
+        FhirArtifactClassEnum artifactClass,
         IReadOnlyDictionary<string, StructureDefinition> leftInput,
         IReadOnlyDictionary<string, StructureDefinition> rightInput)
     {
@@ -2212,9 +2264,9 @@ public class PackageComparer
             }
 
             // perform element comparison
-            Dictionary<string, ComparisonRecord<ElementInfoRec, ElementTypeInfoRec>> elementComparison = Compare(leftElements, rightElements);
+            Dictionary<string, ComparisonRecord<ElementInfoRec, ElementTypeInfoRec>> elementComparison = Compare(artifactClass, leftElements, rightElements);
 
-            if (TryCompare(sdName, leftInfoSource, rightInfoSource, elementComparison, out ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>? c))
+            if (TryCompare(artifactClass, sdName, leftInfoSource, rightInfoSource, elementComparison, out ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>? c))
             {
                 comparison.Add(sdName, c);
             }

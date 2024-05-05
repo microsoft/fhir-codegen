@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
+using Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 namespace Microsoft.Health.Fhir.CodeGen.CompareTool;
 
@@ -23,6 +24,7 @@ internal static class ComparisonUtils
 public interface IComparisonRecord
 {
     //string RecordTypeDiscriminator { get; }
+    FhirArtifactClassEnum ComparisonArtifactType { get; init; }
     string Key { get; init; }
     bool KeyInLeft { get; init; }
     bool KeyInRight { get; init; }
@@ -57,6 +59,7 @@ public interface IComparisonRecord<T, U, V> : IComparisonRecord<T>
 public class ComparisonRecord<T> : IComparisonRecord<T>
 {
     //public required string RecordTypeDiscriminator { get; init; }
+    public required FhirArtifactClassEnum ComparisonArtifactType { get; init; }
     public required string Key { get; init; }
     public required string CompositeName { get; init; }
     public required List<T> Left { get; init; }
