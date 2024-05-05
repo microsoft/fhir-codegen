@@ -32,6 +32,8 @@ using Microsoft.Health.Fhir.PackageManager;
 using static Hl7.Fhir.Model.VerificationResult;
 using static Microsoft.Health.Fhir.CodeGen.CompareTool.PackageComparer;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
+using static Microsoft.Health.Fhir.CodeGen.CompareTool.ComparisonUtils;
+using System.Runtime.InteropServices.JavaScript;
 
 namespace Microsoft.Health.Fhir.CodeGen.CompareTool;
 
@@ -50,6 +52,10 @@ public class PackageComparer
     private string _leftShortVersion;
     private string _rightRLiteral;
     private string _rightShortVersion;
+
+    private const string _leftTableLiteral = "Source";
+    private const string _rightTableLiteral = "Destination";
+
 
     private ConfigCompare _config;
 
@@ -453,25 +459,6 @@ public class PackageComparer
         return ($"{_mapCanonical}/ConceptMap/ValueSet-{leftVsMapName.ToPascalCase()}-{rightVsMapName.ToPascalCase()}", leftVsMapName, rightVsMapName);
     }
 
-    private string GetUnusedKey(string key, HashSet<string> usedKeys)
-    {
-        if (!usedKeys.Contains(key))
-        {
-            return key;
-        }
-
-        int inc = 2;
-        string test = key;
-
-        while (usedKeys.Contains(test))
-        {
-            test = $"{key}_{inc}";
-            inc++;
-        }
-
-        return test;
-    }
-
     private Dictionary<string, ValueSet> GetValueSets(DefinitionCollection dc, Dictionary<string, ValueSet>? other = null)
     {
         other ??= [];
@@ -585,7 +572,7 @@ public class PackageComparer
 
         foreach (IComparisonRecord c in values.OrderBy(cr => cr.Key))
         {
-            writer.WriteLine("| " + string.Join(" | ", c.GetDetailTableRow()) + " |");
+            writer.WriteLine("| " + string.Join(" | ", c.GetComparisonRow()) + " |");
         }
 
         writer.WriteLine();
@@ -594,9 +581,110 @@ public class PackageComparer
         writer.WriteLine();
     }
 
-    private void WriteComparisonRecDataTable(ExportStreamWriter writer, IComparisonRecord cRec)
+    private void WriteComparisonRecDataTable<T>(ExportStreamWriter writer, IComparisonRecord<T> cRec)
     {
-        cRec.GetTableData(out string[] tdHeader, out List<string[]> tdLeft, out List<string[]> tdRight);
+        string[] tdHeader;
+        string[][] tdLeft;
+        string[][] tdRight;
+
+        switch (cRec)
+        {
+            case IComparisonRecord<ConceptInfoRec> conceptInfoRecs:
+                {
+                    tdHeader = ["Side", "System", "Code", "Description"];
+                    tdLeft = conceptInfoRecs.Left.Select(ci => (string[])[_leftTableLiteral, ci.System, ci.Code, ci.Description.ForMdTable()]).ToArray();
+                    tdRight = conceptInfoRecs.Right.Select(ci => (string[])[_rightTableLiteral, ci.System, ci.Code, ci.Description.ForMdTable()]).ToArray();
+                }
+                break;
+
+            case IComparisonRecord<ValueSetInfoRec> valueSetInfoRecs:
+                {
+                    tdHeader = ["Side", "Url", "Name", "Title", "Description"];
+                    tdLeft = valueSetInfoRecs.Left
+                        .Select(vsi => (string[])[_leftTableLiteral, vsi.Url, vsi.Name, vsi.Title.ForMdTable(), vsi.Description.ForMdTable()])
+                        .ToArray();
+                    tdRight = valueSetInfoRecs.Right
+                        .Select(vsi => (string[])[_rightTableLiteral, vsi.Url, vsi.Name, vsi.Title.ForMdTable(), vsi.Description.ForMdTable()])
+                        .ToArray();
+                }
+                break;
+
+            case IComparisonRecord<ElementTypeInfoRec> elementTypeInfoRecs:
+                {
+                    tdHeader = ["Side", "Name", "Profiles", "Target Profiles"];
+                    tdLeft = elementTypeInfoRecs.Left
+                        .Select(eti => (string[])[_leftTableLiteral, eti.Name, string.Join(", ", eti.Profiles), string.Join(", ", eti.TargetProfiles)])
+                        .ToArray();
+                    tdRight = elementTypeInfoRecs.Right
+                        .Select(eti => (string[])[_rightTableLiteral, eti.Name, string.Join(", ", eti.Profiles), string.Join(", ", eti.TargetProfiles)])
+                        .ToArray();
+                }
+                break;
+
+            case IComparisonRecord<ElementInfoRec> elementInfoRecs:
+                {
+                    tdHeader = ["Side", "Name", "Path", "Short", "Definition", "Card", "Binding"];
+                    tdLeft = elementInfoRecs.Left
+                        .Select(ei => (string[])[
+                            _leftTableLiteral,
+                            ei.Name,
+                            ei.Path,
+                            ei.Short.ForMdTable(),
+                            ei.Definition.ForMdTable(),
+                            $"{ei.MinCardinality}..{ei.MaxCardinalityString}",
+                            $"{ei.ValueSetBindingStrength} {ei.BindingValueSet}"])
+                        .ToArray();
+                    tdRight = elementInfoRecs.Right
+                        .Select(ei => (string[])[
+                            _rightTableLiteral,
+                            ei.Name,
+                            ei.Path,
+                            ei.Short.ForMdTable(),
+                            ei.Definition.ForMdTable(),
+                            $"{ei.MinCardinality}..{ei.MaxCardinalityString}",
+                            $"{ei.ValueSetBindingStrength} {ei.BindingValueSet}"])
+                        .ToArray();
+                }
+                break;
+
+            case IComparisonRecord<StructureInfoRec> structureInfoRecs:
+                {
+                    tdHeader = ["Side", "Name", "Title", "Description", "Snapshot", "Differential"];
+                    tdLeft = structureInfoRecs.Left
+                        .Select(si => (string[])[
+                            _leftTableLiteral,
+                            si.Name,
+                            si.Title.ForMdTable(),
+                            si.Description.ForMdTable(),
+                            si.SnapshotCount.ToString(),
+                            si.DifferentialCount.ToString()])
+                        .ToArray();
+                    tdRight = structureInfoRecs.Right
+                        .Select(si => (string[])[
+                            _rightTableLiteral,
+                            si.Name,
+                            si.Title.ForMdTable(),
+                            si.Description.ForMdTable(),
+                            si.SnapshotCount.ToString(),
+                            si.DifferentialCount.ToString()])
+                        .ToArray();
+                }
+                break;
+
+            default:
+                throw new Exception($"Unknown comparison record type: {cRec.GetType().Name}");
+        }
+
+        if (tdLeft.Length == 0)
+        {
+            tdLeft = [[_leftTableLiteral, .. Enumerable.Repeat("-", tdHeader.Length).ToArray()]];
+        }
+
+        if (tdRight.Length == 0)
+        {
+            tdRight = [[_rightTableLiteral, .. Enumerable.Repeat("-", tdHeader.Length).ToArray()]];
+        }
+
         writer.WriteLine("| " + string.Join(" | ", tdHeader) + " |");
         writer.WriteLine("| " + string.Join(" | ", Enumerable.Repeat("---", tdHeader.Length)) + " |");
 
@@ -613,9 +701,30 @@ public class PackageComparer
         writer.WriteLine();
     }
 
-    private void WriteComparisonChildDetails(ExportStreamWriter writer, IComparisonRecord cRec)
+
+    //private void WriteComparisonRecDataTable<T>(ExportStreamWriter writer, IComparisonRecord<T> cRec)
+    //    where T : IInfoRec
+    //{
+    //    cRec.GetTableData(out string[] tdHeader, out List<string[]> tdLeft, out List<string[]> tdRight);
+    //    writer.WriteLine("| " + string.Join(" | ", tdHeader) + " |");
+    //    writer.WriteLine("| " + string.Join(" | ", Enumerable.Repeat("---", tdHeader.Length)) + " |");
+
+    //    foreach (string[] td in tdLeft)
+    //    {
+    //        writer.WriteLine("| " + string.Join(" | ", td) + " |");
+    //    }
+
+    //    foreach (string[] td in tdRight)
+    //    {
+    //        writer.WriteLine("| " + string.Join(" | ", td) + " |");
+    //    }
+
+    //    writer.WriteLine();
+    //}
+
+    private void WriteComparisonChildDetails(ExportStreamWriter writer, IComparisonRecord cRec, bool inLeft = true, bool inRight = true)
     {
-        IEnumerable<string[]> rows = cRec.GetChildrenDetailTableRows();
+        IEnumerable<string[]> rows = cRec.GetChildComparisonRows(inLeft, inRight);
 
         writer.WriteLine("| Key | Source | Dest | Status | Message |");
         writer.WriteLine("| --- | ------ | ---- | ------ | ------- |");
@@ -636,9 +745,9 @@ public class PackageComparer
 
     }
 
-    private void WriteComparisonRecStatusTable(ExportStreamWriter writer, IComparisonRecord cRec)
+    private void WriteComparisonRecStatusTable(ExportStreamWriter writer, IComparisonRecord cRec, bool inLeft = true, bool inRight = true)
     {
-        Dictionary<string, int> counts = cRec.GetStatusCounts();
+        Dictionary<string, int> counts = cRec.GetStatusCounts(inLeft, inRight);
 
         writer.WriteLine("| Status | Count |");
         writer.WriteLine("| ------ | ----- |");
@@ -651,10 +760,10 @@ public class PackageComparer
         writer.WriteLine();
     }
 
-    private void WriteComparisonFile(
+    private void WriteComparisonFile<T>(
         ExportStreamWriter writer,
         string header,
-        IComparisonRecord cRec)
+        IComparisonRecord<T> cRec)
     {
         if (!string.IsNullOrEmpty(header))
         {
@@ -663,8 +772,18 @@ public class PackageComparer
 
         WriteComparisonRecDataTable(writer, cRec);
         WriteComparisonRecResult(writer, cRec);
-        WriteComparisonRecStatusTable(writer, cRec);
-        WriteComparisonChildDetails(writer, cRec);
+
+        writer.WriteLine();
+        writer.WriteLine($"### {_leftRLiteral} Details");
+        writer.WriteLine();
+        WriteComparisonRecStatusTable(writer, cRec, inLeft: true, inRight: false);
+        WriteComparisonChildDetails(writer, cRec, inLeft: true, inRight: false);
+
+        writer.WriteLine();
+        writer.WriteLine($"### {_rightRLiteral} Details");
+        writer.WriteLine();
+        WriteComparisonRecStatusTable(writer, cRec, inLeft: false, inRight: true);
+        WriteComparisonChildDetails(writer, cRec, inLeft: false, inRight: true);
     }
 
 
@@ -680,12 +799,6 @@ public class PackageComparer
         }
 
         return writer;
-    }
-
-
-    private void LoadKnownChanges()
-    {
-        // TODO(ginoc): implement
     }
 
     private bool TryCompare(
@@ -709,11 +822,12 @@ public class PackageComparer
         {
             c = new()
             {
-                TableColumns = ConceptInfoRec.TableColumns,
                 Key = conceptCode,
                 CompositeName = GetName(lSource, rSource),
                 Left = [],
+                KeyInLeft = false,
                 Right = rSource,
+                KeyInRight = true,
                 NamedMatch = false,
                 Relationship = null,
                 Message = $"{_rightRLiteral} new code {conceptCode} does not have a {_leftRLiteral} equivalent",
@@ -725,11 +839,12 @@ public class PackageComparer
         {
             c = new()
             {
-                TableColumns = ConceptInfoRec.TableColumns,
                 Key = conceptCode,
                 CompositeName = GetName(lSource, rSource),
                 Left = lSource,
+                KeyInLeft = true,
                 Right = [],
+                KeyInRight = false,
                 NamedMatch = false,
                 Relationship = null,
                 Message = $"{_rightRLiteral} removed {_leftRLiteral} code {conceptCode}",
@@ -768,36 +883,39 @@ public class PackageComparer
             }
         }
 
+        bool keyInLeft = lSource.Any(i => i.Code == conceptCode);
+        bool keyInRight = rSource.Any(i => i.Code == conceptCode);
+
         string message;
 
         if (relationship == CMR.Equivalent)
         {
-            message = lSource.Any(i => i.Code == conceptCode)
+            message = keyInLeft
                 ? $"{_rightRLiteral} code {rSource[0].Code} is equivalent to the {_leftRLiteral} code {conceptCode}"
                 : $"{_rightRLiteral} new code {conceptCode} is equivalent to the {_leftRLiteral} code {lSource[0].Code}";
         }
         else if (messages.Count == 0)
         {
-            message = lSource.Any(i => i.Code == conceptCode)
+            message = keyInLeft
                 ? $"{_leftRLiteral} code {conceptCode} maps as: {relationship} for {_rightRLiteral}"
                 : $"{_rightRLiteral} new code {conceptCode} maps as: {relationship} for {_leftRLiteral}";
         }
         else
         {
-            message = lSource.Any(i => i.Code == conceptCode)
+            message = keyInLeft
                 ? $"{_leftRLiteral} code {conceptCode} maps as: {relationship} for {_rightRLiteral} because {string.Join(" and ", messages)}"
                 : $"{_rightRLiteral} new code {conceptCode} maps as: {relationship} for {_leftRLiteral} because {string.Join(" and ", messages)}";
-
         }
 
         // note that we can only be here if the codes have already matched, so we are always equivalent
         c = new()
         {
-            TableColumns = ConceptInfoRec.TableColumns,
             Key = conceptCode,
             CompositeName = GetName(lSource, rSource),
             Left = lSource,
+            KeyInLeft = keyInLeft,
             Right = rSource,
+            KeyInRight = keyInRight,
             NamedMatch = true,
             Relationship = relationship,
             Message = message,
@@ -874,11 +992,12 @@ public class PackageComparer
         {
             c = new()
             {
-                TableColumns = ElementTypeInfoRec.TableColumns,
                 Key = typeName,
                 CompositeName = GetName(lSource, rSource),
                 Left = [],
+                KeyInLeft = false,
                 Right = rSource,
+                KeyInRight = true,
                 NamedMatch = false,
                 Relationship = null,
                 Message = $"{_rightRLiteral} added type {typeName}",
@@ -890,11 +1009,12 @@ public class PackageComparer
         {
             c = new()
             {
-                TableColumns = ElementTypeInfoRec.TableColumns,
                 Key = typeName,
                 CompositeName = GetName(lSource, rSource),
                 Left = lSource,
+                KeyInLeft = true,
                 Right = [],
+                KeyInRight = false,
                 NamedMatch = false,
                 Relationship = null,
                 Message = $"{_rightRLiteral} removed type {typeName}",
@@ -980,16 +1100,39 @@ public class PackageComparer
             }
         }
 
-        string message = $"{_rightRLiteral} type {typeName} is {relationship}" +
-            (messages.Count == 0 ? string.Empty : (" because " + string.Join(" and ", messages.Distinct())));
+        bool keyInLeft = lSource.Any(i => i.Name == typeName);
+        bool keyInRight = rSource.Any(i => i.Name == typeName);
+
+        string message;
+
+        if (relationship == CMR.Equivalent)
+        {
+            message = keyInLeft
+                ? $"{_rightRLiteral} type {rSource[0].Name} is equivalent to the {_leftRLiteral} type {typeName}"
+                : $"{_rightRLiteral} new type {typeName} is equivalent to the {_leftRLiteral} type {lSource[0].Name}";
+        }
+        else if (messages.Count == 0)
+        {
+            message = keyInLeft
+                ? $"{_leftRLiteral} type {typeName} maps as: {relationship} for {_rightRLiteral}"
+                : $"{_rightRLiteral} new type {typeName} maps as: {relationship} for {_leftRLiteral}";
+        }
+        else
+        {
+            message = keyInLeft
+                ? $"{_leftRLiteral} type {typeName} maps as: {relationship} for {_rightRLiteral} because {string.Join(" and ", messages)}"
+                : $"{_rightRLiteral} new type {typeName} maps as: {relationship} for {_leftRLiteral} because {string.Join(" and ", messages)}";
+
+        }
 
         c = new()
         {
-            TableColumns = ElementTypeInfoRec.TableColumns,
             Key = typeName,
             CompositeName = GetName(lSource, rSource),
             Left = lSource,
+            KeyInLeft = keyInLeft,
             Right = rSource,
+            KeyInRight = keyInRight,
             NamedMatch = true,
             Relationship = relationship,
             Message = message,
@@ -1056,11 +1199,12 @@ public class PackageComparer
         {
             c = new()
             {
-                TableColumns = ValueSetInfoRec.TableColumns,
                 Key = url,
                 CompositeName = GetName(lSource, rSource),
                 Left = [],
+                KeyInLeft = false,
                 Right = rSource,
+                KeyInRight = true,
                 NamedMatch = false,
                 Relationship = null,
                 Message = $"{_rightRLiteral} added value set: {url}",
@@ -1073,11 +1217,12 @@ public class PackageComparer
         {
             c = new()
             {
-                TableColumns = ValueSetInfoRec.TableColumns,
                 Key = url,
                 CompositeName = GetName(lSource, rSource),
                 Left = lSource,
+                KeyInLeft = true,
                 Right = [],
+                KeyInRight = false,
                 NamedMatch = false,
                 Relationship = null,
                 Message = $"{_rightRLiteral} removed value set: {url}",
@@ -1086,6 +1231,9 @@ public class PackageComparer
             return true;
         }
 
+        bool keyInLeft = lSource.Any(i => i.Url == url);
+        bool keyInRight = rSource.Any(i => i.Url == url);
+
         // check for all concepts being equivalent
         if ((lSource.Count == 1) &&
             (rSource.Count == 1) &&
@@ -1093,14 +1241,15 @@ public class PackageComparer
         {
             c = new()
             {
-                TableColumns = ValueSetInfoRec.TableColumns,
                 Key = url,
                 CompositeName = GetName(lSource, rSource),
                 Left = lSource,
+                KeyInLeft = keyInLeft,
                 Right = rSource,
+                KeyInRight = keyInRight,
                 NamedMatch = true,
                 Relationship = CMR.Equivalent,
-                Message = $"{_rightRLiteral}:{url} is equivalent",
+                Message = $"{_rightRLiteral} {rSource[0].Url} is equivalent to {_leftRLiteral} {lSource[0].Url}",
                 Children = conceptComparison,
             };
             return true;
@@ -1136,22 +1285,48 @@ public class PackageComparer
             }
         }
 
-        string message = relationship switch
+        //string message = relationship switch
+        //{
+        //    CMR.Equivalent => $"{_rightRLiteral}:{url} is equivalent",
+        //    CMR.RelatedTo => $"{_rightRLiteral}:{url} is related to {_leftRLiteral}:{url} (see concepts for details)",
+        //    CMR.SourceIsNarrowerThanTarget => $"{_rightRLiteral}:{url} subsumes {_leftRLiteral}:{url}",
+        //    CMR.SourceIsBroaderThanTarget => $"{_rightRLiteral}:{url} is subsumed by {_leftRLiteral}:{url}",
+        //    _ => $"{_rightRLiteral}:{url} is related to {_leftRLiteral}:{url} (see concepts for details)",
+        //};
+
+        string message;
+
+        if (keyInLeft)
         {
-            CMR.Equivalent => $"{_rightRLiteral}:{url} is equivalent",
-            CMR.RelatedTo => $"{_rightRLiteral}:{url} is related to {_leftRLiteral}:{url} (see concepts for details)",
-            CMR.SourceIsNarrowerThanTarget => $"{_rightRLiteral}:{url} subsumes {_leftRLiteral}:{url}",
-            CMR.SourceIsBroaderThanTarget => $"{_rightRLiteral}:{url} is subsumed by {_leftRLiteral}:{url}",
-            _ => $"{_rightRLiteral}:{url} is related to {_leftRLiteral}:{url} (see concepts for details)",
-        };
+            message = relationship switch
+            {
+                CMR.Equivalent => $"{_rightRLiteral} ValueSet {rSource[0].Url} is equivalent to the {_leftRLiteral} ValueSet {url}",
+                CMR.RelatedTo => $"{_rightRLiteral} ValueSet {rSource[0].Url} is related to {_leftRLiteral} ValueSet {url} (see concepts for details)",
+                CMR.SourceIsNarrowerThanTarget => $"{_rightRLiteral} ValueSet {rSource[0].Url} subsumes {_leftRLiteral} ValueSet {url}",
+                CMR.SourceIsBroaderThanTarget => $"{_rightRLiteral} ValueSet {rSource[0].Url} is subsumed by {_leftRLiteral} ValueSet {url}",
+                _ => $"{_rightRLiteral} ValueSet {rSource[0].Url} is related to {_leftRLiteral} ValueSet {url} (see concepts for details)",
+            };
+        }
+        else
+        {
+            message = relationship switch
+            {
+                CMR.Equivalent => $"{_rightRLiteral} new ValueSet {url} is equivalent to the {_leftRLiteral} ValueSet {lSource[0].Url}",
+                CMR.RelatedTo => $"{_rightRLiteral} new ValueSet {url} is related to {_leftRLiteral} ValueSet {lSource[0].Url} (see concepts for details)",
+                CMR.SourceIsNarrowerThanTarget => $"{_rightRLiteral} new ValueSet {url} subsumes {_leftRLiteral} ValueSet {lSource[0].Url}",
+                CMR.SourceIsBroaderThanTarget => $"{_rightRLiteral} new ValueSet {url} is subsumed by {_leftRLiteral} ValueSet {lSource[0].Url}",
+                _ => $"{_rightRLiteral} new ValueSet {url} is related to {_leftRLiteral} ValueSet {lSource[0].Url} (see concepts for details)",
+            };
+        }
 
         c = new()
         {
-            TableColumns = ValueSetInfoRec.TableColumns,
             Key = url,
             CompositeName = GetName(lSource, rSource),
             Left = lSource,
+            KeyInLeft = keyInLeft,
             Right = rSource,
+            KeyInRight = keyInRight,
             NamedMatch = true,
             Relationship = relationship,
             Message = message,
@@ -1207,11 +1382,12 @@ public class PackageComparer
         {
             c = new()
             {
-                TableColumns = ElementInfoRec.TableColumns,
                 Key = edPath,
                 CompositeName = GetName(lSource, rSource),
                 Left = [],
+                KeyInLeft = false,
                 Right = rSource,
+                KeyInRight = true,
                 NamedMatch = false,
                 Relationship = null,
                 Message = $"{_rightRLiteral} added element {edPath}",
@@ -1224,11 +1400,12 @@ public class PackageComparer
         {
             c = new()
             {
-                TableColumns = ElementInfoRec.TableColumns,
                 Key = edPath,
                 CompositeName = GetName(lSource, rSource),
                 Left = lSource,
+                KeyInLeft = true,
                 Right = [],
+                KeyInRight = false,
                 NamedMatch = false,
                 Relationship = null,
                 Message = $"{_rightRLiteral} removed element {edPath}",
@@ -1470,17 +1647,42 @@ public class PackageComparer
         }
 
         // build our message
-        string message = $"{_rightRLiteral} element {edPath} is {relationship}" +
-            (messages.Count == 0 ? string.Empty : (" because " + string.Join(" and ", messages.Distinct())));
+        //string message = $"{_rightRLiteral} element {edPath} is {relationship}" +
+        //    (messages.Count == 0 ? string.Empty : (" because " + string.Join(" and ", messages.Distinct())));
+
+        bool keyInLeft = lSource.Any(i => i.Path == edPath);
+        bool keyInRight = rSource.Any(i => i.Path == edPath);
+
+        string message;
+
+        if (relationship == CMR.Equivalent)
+        {
+            message = keyInLeft
+                ? $"{_rightRLiteral} element {rSource[0].Path} is equivalent to the {_leftRLiteral} element {edPath}"
+                : $"{_rightRLiteral} new element {edPath} is equivalent to the {_leftRLiteral} element {lSource[0].Path}";
+        }
+        else if (messages.Count == 0)
+        {
+            message = keyInLeft
+                ? $"{_leftRLiteral} element {edPath} maps as: {relationship} for {_rightRLiteral}"
+                : $"{_rightRLiteral} new element {edPath} maps as: {relationship} for {_leftRLiteral}";
+        }
+        else
+        {
+            message = keyInLeft
+                ? $"{_leftRLiteral} element {edPath} maps as: {relationship} for {_rightRLiteral} because {string.Join(" and ", messages)}"
+                : $"{_rightRLiteral} new element {edPath} maps as: {relationship} for {_leftRLiteral} because {string.Join(" and ", messages)}";
+        }
 
         // return our info
         c = new()
         {
-            TableColumns = ElementInfoRec.TableColumns,
             Key = edPath,
             CompositeName = GetName(lSource, rSource),
             Left = lSource,
+            KeyInLeft = keyInLeft,
             Right = rSource,
+            KeyInRight = keyInRight,
             NamedMatch = true,
             Relationship = relationship,
             Message = message,
@@ -1537,11 +1739,12 @@ public class PackageComparer
         {
             c = new()
             {
-                TableColumns = StructureInfoRec.TableColumns,
                 Key = sdName,
                 CompositeName = GetName(lSource, rSource),
                 Left = [],
+                KeyInLeft = false,
                 Right = rSource,
+                KeyInRight = true,
                 NamedMatch = false,
                 Relationship = null,
                 Message = $"{_rightRLiteral} added {sdName}",
@@ -1554,11 +1757,12 @@ public class PackageComparer
         {
             c = new()
             {
-                TableColumns = StructureInfoRec.TableColumns,
                 Key = sdName,
                 CompositeName = GetName(lSource, rSource),
                 Left = lSource,
+                KeyInLeft = true,
                 Right = [],
+                KeyInRight = false,
                 NamedMatch = false,
                 Relationship = null,
                 Message = $"{_rightRLiteral} removed {sdName}",
@@ -1567,16 +1771,20 @@ public class PackageComparer
             return true;
         }
 
+        bool keyInLeft = lSource.Any(i => i.Name == sdName);
+        bool keyInRight = rSource.Any(i => i.Name == sdName);
+
         // check for all elements being the same
         if (elementComparison.Values.All(ec => ec.Relationship == CMR.Equivalent))
         {
             c = new()
             {
-                TableColumns = StructureInfoRec.TableColumns,
                 Key = sdName,
                 CompositeName = GetName(lSource, rSource),
                 Left = lSource,
+                KeyInLeft = keyInLeft,
                 Right = rSource,
+                KeyInRight = keyInRight,
                 NamedMatch = true,
                 Relationship = CMR.Equivalent,
                 Message = $"{_rightRLiteral}:{sdName} is equivalent",
@@ -1610,22 +1818,49 @@ public class PackageComparer
             relationship = ApplyRelationship(relationship, ec.Relationship);
         }
 
-        string message = relationship switch
+        //string message = relationship switch
+        //{
+        //    CMR.Equivalent => $"{_rightRLiteral}:{sdName} is equivalent",
+        //    CMR.RelatedTo => $"{_rightRLiteral}:{sdName} is related to {_leftRLiteral}:{sdName} (see elements for details)",
+        //    CMR.SourceIsNarrowerThanTarget => $"{_rightRLiteral}:{sdName} subsumes {_leftRLiteral}:{sdName}",
+        //    CMR.SourceIsBroaderThanTarget => $"{_rightRLiteral}:{sdName} is subsumed by {_leftRLiteral}:{sdName}",
+        //    _ => $"{_rightRLiteral}:{sdName} is related to {_leftRLiteral}:{sdName} (see elements for details)",
+        //};
+
+
+        string message;
+
+        if (keyInLeft)
         {
-            CMR.Equivalent => $"{_rightRLiteral}:{sdName} is equivalent",
-            CMR.RelatedTo => $"{_rightRLiteral}:{sdName} is related to {_leftRLiteral}:{sdName} (see elements for details)",
-            CMR.SourceIsNarrowerThanTarget => $"{_rightRLiteral}:{sdName} subsumes {_leftRLiteral}:{sdName}",
-            CMR.SourceIsBroaderThanTarget => $"{_rightRLiteral}:{sdName} is subsumed by {_leftRLiteral}:{sdName}",
-            _ => $"{_rightRLiteral}:{sdName} is related to {_leftRLiteral}:{sdName} (see elements for details)",
-        };
+            message = relationship switch
+            {
+                CMR.Equivalent => $"{_rightRLiteral} structure {rSource[0].Name} is equivalent to the {_leftRLiteral} structure {sdName}",
+                CMR.RelatedTo => $"{_rightRLiteral} structure {rSource[0].Name} is related to {_leftRLiteral} structure {sdName} (see elements for details)",
+                CMR.SourceIsNarrowerThanTarget => $"{_rightRLiteral} structure {rSource[0].Name} subsumes {_leftRLiteral} structure {sdName}",
+                CMR.SourceIsBroaderThanTarget => $"{_rightRLiteral} structure {rSource[0].Name} is subsumed by {_leftRLiteral} structure {sdName}",
+                _ => $"{_rightRLiteral} structure {rSource[0].Name} is related to {_leftRLiteral} structure {sdName} (see elements for details)",
+            };
+        }
+        else
+        {
+            message = relationship switch
+            {
+                CMR.Equivalent => $"{_rightRLiteral} new structure {sdName} is equivalent to the {_leftRLiteral} structure {lSource[0].Name}",
+                CMR.RelatedTo => $"{_rightRLiteral} new structure {sdName} is related to {_leftRLiteral} structure {lSource[0].Name} (see elements for details)",
+                CMR.SourceIsNarrowerThanTarget => $"{_rightRLiteral} new structure {sdName} subsumes {_leftRLiteral} structure {lSource[0].Name}",
+                CMR.SourceIsBroaderThanTarget => $"{_rightRLiteral} new structure {sdName} is subsumed by {_leftRLiteral} structure {lSource[0].Name}",
+                _ => $"{_rightRLiteral} new structure {sdName} is related to {_leftRLiteral} structure {lSource[0].Name} (see elements for details)",
+            };
+        }
 
         c = new()
         {
-            TableColumns = StructureInfoRec.TableColumns,
             Key = sdName,
             CompositeName = GetName(lSource, rSource),
             Left = lSource,
+            KeyInLeft = keyInLeft,
             Right = rSource,
+            KeyInRight = keyInRight,
             NamedMatch = true,
             Relationship = relationship,
             Message = message,
