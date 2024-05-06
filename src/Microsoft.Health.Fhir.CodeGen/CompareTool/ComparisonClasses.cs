@@ -265,6 +265,7 @@ public record class ElementInfoRec
 public record class StructureInfoRec
 {
     public required string Name { get; init; }
+    public required string Url { get; init; }
     public required string Title { get; init; }
     public required string Description { get; init; }
     public required string Purpose { get; init; }

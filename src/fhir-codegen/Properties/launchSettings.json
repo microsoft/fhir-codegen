@@ -62,12 +62,12 @@
         },
         "Compare 43-50": {
             "commandName": "Project",
-            "commandLineArgs": "compare --output-path ..\\..\\temp\\compare -p hl7.fhir.r4b.core#4.3.0 -c hl7.fhir.r5.core#5.0.0 --auto-load-expansions --resolve-dependencies true --save-comparison-result --cross-version-repo-path ..\\..\\..\\fhir-cross-version",
+            "commandLineArgs": "compare -p hl7.fhir.r4b.core#4.3.0 -c hl7.fhir.r5.core#5.0.0 --auto-load-expansions --resolve-dependencies true --save-comparison-result --cross-version-v1-repo-path ..\\..\\..\\fhir-cross-version  --cross-version-v2-repo-path ..\\..\\..\\fhir-cross-version-forked",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Cross Version Review": {
             "commandName": "Project",
-            "commandLineArgs": "cross-version --output-path ..\\..\\temp\\cross-version --existing-comparison-path ..\\..\\temp\\compare\\R4B_R5",
+            "commandLineArgs": "cross-version --output-path ..\\..\\temp\\cross-version",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "http": {
