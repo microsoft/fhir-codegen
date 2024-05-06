@@ -100,6 +100,12 @@ public partial class DefinitionCollection
     /// <summary>(Immutable) The local transmit.</summary>
     private readonly LocalTerminologyService _localTx;
 
+    private readonly static HashSet<string> _notActuallyLimitedExpansions = [
+        "http://hl7.org/fhir/ValueSet/age-units",
+        "http://hl7.org/fhir/ValueSet/units-of-time",
+        "http://hl7.org/fhir/ValueSet/event-timing",
+    ];
+
     /// <summary>
     /// Initializes a new instance of the <see cref="DefinitionCollection"/> class.
     /// </summary>
@@ -1310,7 +1316,6 @@ public partial class DefinitionCollection
         return bindingStrengthByType;
     }
 
-
     /// <summary>
     /// Adds a value set to the definition collection.
     /// </summary>
@@ -1345,6 +1350,19 @@ public partial class DefinitionCollection
                     {
                         SystemElement = new FhirUri($"{cs.Url}"),
                     });
+                }
+            }
+        }
+
+        // check for value sets that are incorrectly flagged as limited expansions
+        if (_notActuallyLimitedExpansions.Contains(valueSet.Url))
+        {
+            for (int i = 0; i < (valueSet.Expansion?.Parameter?.Count ?? 0); i++)
+            {
+                if (valueSet.Expansion!.Parameter[i].Name == "limitedExpansion")
+                {
+                    valueSet.Expansion.Parameter[i].Value = new FhirBoolean(false);
+                    break;
                 }
             }
         }
