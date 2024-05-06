@@ -771,12 +771,15 @@ public class PackageComparer
         writer.WriteLine();
     }
 
-    private void WriteComparisonChildDetails(ExportStreamWriter writer, IComparisonRecord cRec, bool inLeft = true, bool inRight = true)
+    private void WriteComparisonChildDetails(ExportStreamWriter writer, IComparisonRecord cRec, bool inLeft = true, bool inRight = true, bool useDetails = true)
     {
         writer.WriteLine();
-        writer.WriteLine("<details>");
-        writer.WriteLine("<summary>Content details</summary>");
-        writer.WriteLine();
+        if (useDetails)
+        {
+            writer.WriteLine("<details>");
+            writer.WriteLine("<summary>Content details</summary>");
+            writer.WriteLine();
+        }
 
         IEnumerable<string[]> rows = cRec.GetChildComparisonRows(inLeft, inRight);
 
@@ -789,8 +792,12 @@ public class PackageComparer
         }
 
         writer.WriteLine();
-        writer.WriteLine("</details>");
-        writer.WriteLine();
+
+        if (useDetails)
+        {
+            writer.WriteLine("</details>");
+            writer.WriteLine();
+        }
     }
 
     //private void WriteComparisonTypeConversions(ExportStreamWriter writer, IComparisonRecord cRec)
@@ -885,19 +892,19 @@ public class PackageComparer
             writer.WriteLine($"### Union of {_leftRLiteral} and {_rightRLiteral}");
             writer.WriteLine();
             WriteComparisonRecStatusTable(writer, cRec, inLeft: true, inRight: true);
-            WriteComparisonChildDetails(writer, cRec, inLeft: true, inRight: true);
+            WriteComparisonChildDetails(writer, cRec, inLeft: true, inRight: true, useDetails: false);
 
             writer.WriteLine();
             writer.WriteLine($"### {_leftRLiteral} Detail");
             writer.WriteLine();
             WriteComparisonRecStatusTable(writer, cRec, inLeft: true, inRight: false);
-            WriteComparisonChildDetails(writer, cRec, inLeft: true, inRight: false);
+            WriteComparisonChildDetails(writer, cRec, inLeft: true, inRight: false, useDetails: false);
 
             writer.WriteLine();
             writer.WriteLine($"### {_rightRLiteral} Detail");
             writer.WriteLine();
             WriteComparisonRecStatusTable(writer, cRec, inLeft: false, inRight: true);
-            WriteComparisonChildDetails(writer, cRec, inLeft: false, inRight: true);
+            WriteComparisonChildDetails(writer, cRec, inLeft: false, inRight: true, useDetails: false);
         }
     }
 
@@ -1506,6 +1513,7 @@ public class PackageComparer
         List<ElementInfoRec> lSource,
         List<ElementInfoRec> rSource,
         Dictionary<string, ComparisonRecord<ElementTypeInfoRec>> typeComparison,
+        CMR? mappedRelationship,
         [NotNullWhen(true)] out ComparisonRecord<ElementInfoRec, ElementTypeInfoRec>? c)
     {
         if ((lSource.Count == 0) && (rSource.Count == 0))
@@ -1574,6 +1582,12 @@ public class PackageComparer
 
         // initial relationship is based on the number of comparison records
         (CMR relationship, int maxIndex) = GetInitialRelationship(lSource, rSource);
+
+        // check for an existing relationship
+        if (mappedRelationship is not null)
+        {
+            relationship = mappedRelationship.Value;
+        }
 
         List<string> messages = [];
 
@@ -2369,7 +2383,8 @@ public class PackageComparer
     private Dictionary<string, ComparisonRecord<ElementInfoRec, ElementTypeInfoRec>> CompareElements(
         FhirArtifactClassEnum artifactClass,
         List<(StructureDefinition sd, StructureInfoRec si)> leftSource,
-        List<(StructureDefinition sd, StructureInfoRec si)> rightSource)
+        List<(StructureDefinition sd, StructureInfoRec si)> rightSource,
+        Dictionary<string, (string target, CMR relationship)> elementMappings)
     {
         Dictionary<string, ElementDefinition> leftElements = [];
         Dictionary<string, ElementDefinition> rightElements = [];
@@ -2401,6 +2416,8 @@ public class PackageComparer
         // add our matches
         foreach (string edPath in keys)
         {
+            string rightPath = edPath;
+
             IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> leftTypes;
             IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> rightTypes;
 
@@ -2413,7 +2430,23 @@ public class PackageComparer
                 leftTypes = new Dictionary<string, ElementDefinition.TypeRefComponent>();
             }
 
-            if (rightElements.TryGetValue(edPath, out ElementDefinition? rightEd))
+            CMR? mappedRelationship = null;
+
+            // check for an element mapping
+            if (elementMappings.TryGetValue(edPath, out (string target, CMR relationship) mapped))
+            {
+                if (rightElements.TryGetValue(mapped.target, out ElementDefinition? rightEd))
+                {
+                    rightTypes = rightEd.cgTypes();
+                    mappedRelationship = mapped.relationship;
+                    rightPath = mapped.target;
+                }
+                else
+                {
+                    rightTypes = new Dictionary<string, ElementDefinition.TypeRefComponent>();
+                }
+            }
+            else if (rightElements.TryGetValue(edPath, out ElementDefinition? rightEd))
             {
                 rightTypes = rightEd.cgTypes();
             }
@@ -2423,12 +2456,12 @@ public class PackageComparer
             }
 
             List<ElementInfoRec> leftInfoSource = leftInfoDict.TryGetValue(edPath, out ElementInfoRec? leftInfo) ? [leftInfo] : [];
-            List<ElementInfoRec> rightInfoSource = rightInfoDict.TryGetValue(edPath, out ElementInfoRec? rightInfo) ? [rightInfo] : [];
+            List<ElementInfoRec> rightInfoSource = rightInfoDict.TryGetValue(rightPath, out ElementInfoRec? rightInfo) ? [rightInfo] : [];
 
             // perform type comparison
             Dictionary<string, ComparisonRecord<ElementTypeInfoRec>> typeComparison = CompareElementTypes(artifactClass, leftTypes, rightTypes);
 
-            if (TryCompareElement(artifactClass, edPath, leftInfoSource, rightInfoSource, typeComparison, out ComparisonRecord<ElementInfoRec, ElementTypeInfoRec>? c))
+            if (TryCompareElement(artifactClass, edPath, leftInfoSource, rightInfoSource, typeComparison, mappedRelationship, out ComparisonRecord<ElementInfoRec, ElementTypeInfoRec>? c))
             {
                 comparison.Add(edPath, c);
             }
@@ -2844,7 +2877,28 @@ public class PackageComparer
 
         HashSet<string> usedCompositeNames = [];
 
-        // add our matches
+        // for now, we have a global element map.  Once we have resource-specific ones, load those per structure in the loop
+        ConceptMap? elementMap = artifactClass switch
+        {
+            FhirArtifactClassEnum.ComplexType => _elementConceptMap,
+            FhirArtifactClassEnum.Resource => _elementConceptMap,
+            _ => null
+        };
+
+        Dictionary<string, (string target, CMR relationship)> elementMappings = [];
+
+        if (elementMap is not null)
+        {
+            foreach (ConceptMap.SourceElementComponent sourceElement in elementMap.Group.FirstOrDefault()?.Element ?? [])
+            {
+                foreach (ConceptMap.TargetElementComponent targetElement in sourceElement.Target)
+                {
+                    elementMappings.Add(sourceElement.Code, (targetElement.Code, targetElement.Relationship ?? CMR.RelatedTo));
+                }
+            }
+        }
+
+        // traverse all of the structures we know about
         foreach (string sdName in keys)
         {
             List<(StructureDefinition sd, StructureInfoRec si)> leftSource;  // = left.TryGetValue(sdName, out StructureInfoRec? leftInfo) ? [leftInfo] : [];
@@ -2969,8 +3023,9 @@ public class PackageComparer
             //    }
             //}
 
+
             // perform element comparison
-            Dictionary<string, ComparisonRecord<ElementInfoRec, ElementTypeInfoRec>> elementComparison = CompareElements(artifactClass, leftSource, rightSource);
+            Dictionary<string, ComparisonRecord<ElementInfoRec, ElementTypeInfoRec>> elementComparison = CompareElements(artifactClass, leftSource, rightSource, elementMappings);
 
             if (TryCompareStructure(artifactClass, sdName, leftSource, rightSource, elementComparison, out ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>? c))
             {
