@@ -140,14 +140,17 @@ public class ComparisonRecord<T, U> : ComparisonRecord<T>, IComparisonRecord<T, 
 
     public new IEnumerable<string[]> GetChildComparisonRows(bool inLeft = true, bool inRight = true)
     {
+        bool checkLeft = inLeft && !inRight;
+        bool checkRight = inRight && !inLeft;
+
         foreach ((string key, ComparisonRecord<U> c) in Children.OrderBy(kvp => kvp.Key))
         {
-            if (inLeft && !c.KeyInLeft)
+            if (checkLeft && !c.KeyInLeft)
             {
                 continue;
             }
 
-            if (inRight && !c.KeyInRight)
+            if (checkRight && !c.KeyInRight)
             {
                 continue;
             }
@@ -192,14 +195,17 @@ public class ComparisonRecord<T, U, V> : ComparisonRecord<T>, IComparisonRecord<
 
     public new IEnumerable<string[]> GetChildComparisonRows(bool inLeft = true, bool inRight = true)
     {
+        bool checkLeft = inLeft && !inRight;
+        bool checkRight = inRight && !inLeft;
+
         foreach ((string key, ComparisonRecord<U> c) in Children.OrderBy(kvp => kvp.Key))
         {
-            if (inLeft && !c.KeyInLeft)
+            if (checkLeft && !c.KeyInLeft)
             {
                 continue;
             }
 
-            if (inRight && !c.KeyInRight)
+            if (checkRight && !c.KeyInRight)
             {
                 continue;
             }

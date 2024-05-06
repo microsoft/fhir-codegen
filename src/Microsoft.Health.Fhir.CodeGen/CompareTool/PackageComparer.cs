@@ -46,12 +46,14 @@ public class PackageComparer
     private DefinitionCollection _left;
     private DefinitionCollection _right;
 
-    private HashSet<FhirArtifactClassEnum> _leftOnlyClasses = [ FhirArtifactClassEnum.PrimitiveType ];
+    private HashSet<FhirArtifactClassEnum> _leftOnlyClasses = [];
 
     private DefinitionCollection? _maps;
     private Dictionary<string, List<string>> _knownValueSetMaps = [];
     private string _mapCanonical = string.Empty;
+
     private ConceptMap? _typeConceptMap = null;
+    private ConceptMap? _resourceConceptMap = null;
 
     private string _leftRLiteral;
     //private string _leftShortVersion;
@@ -445,7 +447,27 @@ public class PackageComparer
                         }
                         break;
                     case "resources":
-                        cm.Url = _maps!.MainPackageCanonical + "/ConceptMap/Resources";
+                        {
+                            string url = _maps!.MainPackageCanonical + "/ConceptMap/Resources";
+
+                            // update our info
+                            cm.Id = $"{_leftRLiteral}-resources-{_rightRLiteral}";
+                            cm.Url = url;
+                            cm.Name = $"Map Concepts representing resource from {_leftRLiteral} to {_rightRLiteral}";
+                            cm.Title = $"Cross-version map for concepts for resources from {_leftRLiteral} to {_rightRLiteral}";
+
+                            // try to manufacture correct value set URLs based on what we have
+                            cm.SourceScope = new Canonical($"{_left.MainPackageCanonical}/ValueSet/resources|{_left.MainPackageVersion}");
+                            cm.TargetScope = new Canonical($"{_right.MainPackageCanonical}/ValueSet/resources|{_right.MainPackageVersion}");
+
+                            if (cm.Group?.Count == 1)
+                            {
+                                cm.Group[0].Source = $"{_left.MainPackageCanonical}/ValueSet/resources";
+                                cm.Group[0].Target = $"{_right.MainPackageCanonical}/ValueSet/resources";
+                            }
+
+                            _resourceConceptMap = cm;
+                        }
                         break;
                     case "elements":
                         cm.Url = _maps!.MainPackageCanonical + "/ConceptMap/Elements";
@@ -722,29 +744,13 @@ public class PackageComparer
         writer.WriteLine();
     }
 
-
-    //private void WriteComparisonRecDataTable<T>(ExportStreamWriter writer, IComparisonRecord<T> cRec)
-    //    where T : IInfoRec
-    //{
-    //    cRec.GetTableData(out string[] tdHeader, out List<string[]> tdLeft, out List<string[]> tdRight);
-    //    writer.WriteLine("| " + string.Join(" | ", tdHeader) + " |");
-    //    writer.WriteLine("| " + string.Join(" | ", Enumerable.Repeat("---", tdHeader.Length)) + " |");
-
-    //    foreach (string[] td in tdLeft)
-    //    {
-    //        writer.WriteLine("| " + string.Join(" | ", td) + " |");
-    //    }
-
-    //    foreach (string[] td in tdRight)
-    //    {
-    //        writer.WriteLine("| " + string.Join(" | ", td) + " |");
-    //    }
-
-    //    writer.WriteLine();
-    //}
-
     private void WriteComparisonChildDetails(ExportStreamWriter writer, IComparisonRecord cRec, bool inLeft = true, bool inRight = true)
     {
+        writer.WriteLine();
+        writer.WriteLine("<details>");
+        writer.WriteLine("<summary>Content details</summary>");
+        writer.WriteLine();
+
         IEnumerable<string[]> rows = cRec.GetChildComparisonRows(inLeft, inRight);
 
         writer.WriteLine("| Key | Source | Dest | Status | Message |");
@@ -755,6 +761,8 @@ public class PackageComparer
             writer.WriteLine("| " + string.Join(" | ", row) + " |");
         }
 
+        writer.WriteLine();
+        writer.WriteLine("</details>");
         writer.WriteLine();
     }
 
@@ -794,13 +802,19 @@ public class PackageComparer
         WriteComparisonRecResult(writer, cRec);
 
         writer.WriteLine();
-        writer.WriteLine($"### {_leftRLiteral} Details");
+        writer.WriteLine($"### Union of {_leftRLiteral} and {_rightRLiteral}");
+        writer.WriteLine();
+        WriteComparisonRecStatusTable(writer, cRec, inLeft: true, inRight: true);
+        WriteComparisonChildDetails(writer, cRec, inLeft: true, inRight: true);
+
+        writer.WriteLine();
+        writer.WriteLine($"### {_leftRLiteral} Detail");
         writer.WriteLine();
         WriteComparisonRecStatusTable(writer, cRec, inLeft: true, inRight: false);
         WriteComparisonChildDetails(writer, cRec, inLeft: true, inRight: false);
 
         writer.WriteLine();
-        writer.WriteLine($"### {_rightRLiteral} Details");
+        writer.WriteLine($"### {_rightRLiteral} Detail");
         writer.WriteLine();
         WriteComparisonRecStatusTable(writer, cRec, inLeft: false, inRight: true);
         WriteComparisonChildDetails(writer, cRec, inLeft: false, inRight: true);
@@ -2253,6 +2267,8 @@ public class PackageComparer
             ConceptMap? cm = artifactClass switch
             {
                 FhirArtifactClassEnum.PrimitiveType => _typeConceptMap,
+                FhirArtifactClassEnum.ComplexType => _typeConceptMap,
+                FhirArtifactClassEnum.Resource => _resourceConceptMap,
                 _ => null
             };
 
@@ -2274,28 +2290,33 @@ public class PackageComparer
                     // pull information about our mapped source concept
                     if (!left.TryGetValue(sdName, out StructureInfoRec? mapSourceInfo))
                     {
-                        throw new Exception($"Structure {sdName} is mapped as a source but not defined in the left set");
+                        Console.WriteLine($"Removing {sdName} from the concept map, it does not actually exist...");
+                        cm!.Group[0].Element.Remove(sourceMap);
+
+                        //throw new Exception($"Structure {sdName} is mapped as a source but not defined in the left set");
                     }
-
-                    leftInfoSource.Add(mapSourceInfo);
-                    usedSourceNames.Add(sdName);
-
-                    // traverse the map targets to pull target information
-                    foreach (ConceptMap.TargetElementComponent te in sourceMap.Target)
+                    else
                     {
-                        // check if already added
-                        if (usedTargetNames.Contains(te.Code))
-                        {
-                            continue;
-                        }
+                        leftInfoSource.Add(mapSourceInfo);
+                        usedSourceNames.Add(sdName);
 
-                        if (!right.TryGetValue(te.Code, out StructureInfoRec? mappedTargetInfo))
+                        // traverse the map targets to pull target information
+                        foreach (ConceptMap.TargetElementComponent te in sourceMap.Target)
                         {
-                            throw new Exception($"Structure {te.Code} is mapped as a target but not defined in right set");
-                        }
+                            // check if already added
+                            if (usedTargetNames.Contains(te.Code))
+                            {
+                                continue;
+                            }
 
-                        rightInfoSource.Add(mappedTargetInfo);
-                        usedTargetNames.Add(te.Code);
+                            if (!right.TryGetValue(te.Code, out StructureInfoRec? mappedTargetInfo))
+                            {
+                                throw new Exception($"Structure {te.Code} is mapped as a target but not defined in right set");
+                            }
+
+                            rightInfoSource.Add(mappedTargetInfo);
+                            usedTargetNames.Add(te.Code);
+                        }
                     }
                 }
 
