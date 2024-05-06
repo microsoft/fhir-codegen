@@ -52,6 +52,8 @@ public class PackageComparer
     private Dictionary<string, List<string>> _knownValueSetMaps = [];
     private string _mapCanonical = string.Empty;
 
+    private Dictionary<string, CMR> _typeRelationships = [];
+
     private ConceptMap? _typeConceptMap = null;
     private ConceptMap? _resourceConceptMap = null;
     private ConceptMap? _elementConceptMap = null;
@@ -865,16 +867,15 @@ public class PackageComparer
             writer.WriteLine("| Source | Target | Relationship | Message |");
             writer.WriteLine("| ------ | ------ | ------------ | ------- |");
 
-            if (cRec.KeyInLeft && cRec.KeyInRight)
+            if ((cRec.TypeSerializationInfo is null) || (cRec.TypeSerializationInfo.Count == 0))
             {
-                writer.WriteLine($"| {cRec.Key} | {cRec.Key} | {cRec.Relationship} | {cRec.Message}");
+                writer.WriteLine($"| {cRec.Key} | {cRec.Key} | {cRec.Relationship?.ToString() ?? "-"} | {cRec.Message}");
             }
-
-            if (cRec.AdditionalSerializations?.Count > 0)
+            else
             {
-                foreach (SerializationMapInfo smi in cRec.AdditionalSerializations.Values.OrderBy(smi => smi.Target))
+                foreach (SerializationMapInfo smi in cRec.TypeSerializationInfo.Values.OrderBy(smi => smi.Target))
                 {
-                    writer.WriteLine($"| {smi.Source} | {smi.Target} | {smi.Relationship?.ToString() ?? "-"} | {smi.Message} |");
+                    writer.WriteLine($"| {smi.Source} | {smi.Target} | {smi.Relationship} | {smi.Message} |");
                 }
             }
         }
@@ -2631,6 +2632,15 @@ public class PackageComparer
                     comparison.Add(sdName, c);
                     usedCompositeNames.Add(c.CompositeName);
                 }
+
+                foreach (SerializationMapInfo smi in c.TypeSerializationInfo?.Values ?? Enumerable.Empty<SerializationMapInfo>())
+                {
+                    string trName = $"{smi.Source}_{smi.Target}";
+                    if (!_typeRelationships.ContainsKey(trName))
+                    {
+                        _typeRelationships.Add(trName, smi.Relationship!);
+                    }
+                }
             }
         }
 
@@ -2719,7 +2729,7 @@ public class PackageComparer
         (CMR relationship, int maxIndex) = GetInitialRelationship(lSource, rSource);
         string message = string.Empty;
 
-        Dictionary<string, SerializationMapInfo> additionalSerializations = [];
+        Dictionary<string, SerializationMapInfo> serializations = [];
 
         // primitive types are always compared 1:1
         for (int sourceIndex = 0; sourceIndex < maxIndex; sourceIndex++)
@@ -2733,6 +2743,16 @@ public class PackageComparer
                 // for primitives, a match needs to represent equivalence for sanity elsewhere
                 relationship = CMR.Equivalent;
                 message = $"{_rightRLiteral} primitive {rightSi.Name} is equivalent to the {_leftRLiteral} primitive {leftSi.Name}";
+
+                // also add a serialization info
+                serializations.Add(leftSi.Name, new()
+                {
+                    Source = leftSi.Name,
+                    Target = rightSi.Name,
+                    Relationship = rightRelationship ?? CMR.SourceIsNarrowerThanTarget,
+                    Message = $"{_rightRLiteral} new type {rightSi.Name} has a serialization mapping from {_leftRLiteral} type {leftSi.Name}",
+                });
+
                 continue;
             }
 
@@ -2747,17 +2767,17 @@ public class PackageComparer
             {
                 Source = leftSi.Name,
                 Target = rightSi.Name,
-                Relationship = rightRelationship,
+                Relationship = rightRelationship ?? CMR.SourceIsNarrowerThanTarget,
                 Message = $"{_rightRLiteral} new type {rightSi.Name} has a serialization mapping from {_leftRLiteral} type {leftSi.Name}",
             };
 
             if (keyInLeft)
             {
-                additionalSerializations.Add(rightSi.Name, serializationInfo);
+                serializations.Add(rightSi.Name, serializationInfo);
             }
             else if (keyInRight)
             {
-                additionalSerializations.Add(leftSi.Name, serializationInfo);
+                serializations.Add(leftSi.Name, serializationInfo);
             }
         }
 
@@ -2799,7 +2819,7 @@ public class PackageComparer
             NamedMatch = true,
             Relationship = relationship,
             Message = message,
-            AdditionalSerializations = additionalSerializations.Count == 0 ? null : additionalSerializations,
+            TypeSerializationInfo = serializations.Count == 0 ? null : serializations,
         };
         return true;
     }

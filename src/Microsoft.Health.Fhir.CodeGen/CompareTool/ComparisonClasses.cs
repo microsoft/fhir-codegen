@@ -29,7 +29,7 @@ public record class SerializationMapInfo
 {
     public required string Source { get; init; }
     public required string Target { get; init; }
-    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; init; }
+    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship Relationship { get; init; }
     public required string Message { get; init; }
 }
 
@@ -44,7 +44,7 @@ public interface IComparisonRecord
     bool NamedMatch { get; init; }
     Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; init; }
     string Message { get; init; }
-    Dictionary<string, SerializationMapInfo>? AdditionalSerializations { get; init; }
+    Dictionary<string, SerializationMapInfo>? TypeSerializationInfo { get; init; }
 
     string GetStatusString();
     Dictionary<string, int> GetStatusCounts(bool inLeft = true, bool inRight = true);
@@ -82,7 +82,7 @@ public class ComparisonRecord<T> : IComparisonRecord<T>
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; init; }
     public required string Message { get; init; }
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    public Dictionary<string, SerializationMapInfo>? AdditionalSerializations { get; init; } = null;
+    public Dictionary<string, SerializationMapInfo>? TypeSerializationInfo { get; init; } = null;
 
 
     public string GetStatusString()
