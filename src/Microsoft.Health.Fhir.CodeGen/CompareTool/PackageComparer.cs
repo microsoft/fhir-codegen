@@ -54,6 +54,7 @@ public class PackageComparer
 
     private ConceptMap? _typeConceptMap = null;
     private ConceptMap? _resourceConceptMap = null;
+    private ConceptMap? _elementConceptMap = null;
 
     private string _leftRLiteral;
     //private string _leftShortVersion;
@@ -431,7 +432,7 @@ public class PackageComparer
                             cm.Id = $"{_leftRLiteral}-datatypes-{_rightRLiteral}";
                             cm.Url = url;
                             cm.Name = $"Map Concepts representing data types from {_leftRLiteral} to {_rightRLiteral}";
-                            cm.Title = $"Cross-version map for concepts for data types from {_leftRLiteral} to {_rightRLiteral}";
+                            cm.Title = $"Cross-version map for concepts of data types from {_leftRLiteral} to {_rightRLiteral}";
 
                             // try to manufacture correct value set URLs based on what we have
                             cm.SourceScope = new Canonical($"{_left.MainPackageCanonical}/ValueSet/data-types|{_left.MainPackageVersion}");
@@ -454,7 +455,7 @@ public class PackageComparer
                             cm.Id = $"{_leftRLiteral}-resources-{_rightRLiteral}";
                             cm.Url = url;
                             cm.Name = $"Map Concepts representing resource from {_leftRLiteral} to {_rightRLiteral}";
-                            cm.Title = $"Cross-version map for concepts for resources from {_leftRLiteral} to {_rightRLiteral}";
+                            cm.Title = $"Cross-version map for concepts of resources from {_leftRLiteral} to {_rightRLiteral}";
 
                             // try to manufacture correct value set URLs based on what we have
                             cm.SourceScope = new Canonical($"{_left.MainPackageCanonical}/ValueSet/resources|{_left.MainPackageVersion}");
@@ -470,7 +471,27 @@ public class PackageComparer
                         }
                         break;
                     case "elements":
-                        cm.Url = _maps!.MainPackageCanonical + "/ConceptMap/Elements";
+                        {
+                            string url = _maps!.MainPackageCanonical + "/ConceptMap/Elements";
+
+                            // update our info
+                            cm.Id = $"{_leftRLiteral}-elements-{_rightRLiteral}";
+                            cm.Url = url;
+                            cm.Name = $"Map Concepts representing elements from {_leftRLiteral} to {_rightRLiteral}";
+                            cm.Title = $"Cross-version map for concepts of elements from {_leftRLiteral} to {_rightRLiteral}";
+
+                            // try to manufacture correct value set URLs based on what we have
+                            cm.SourceScope = new Canonical($"{_left.MainPackageCanonical}/ValueSet/elements|{_left.MainPackageVersion}");
+                            cm.TargetScope = new Canonical($"{_right.MainPackageCanonical}/ValueSet/elements|{_right.MainPackageVersion}");
+
+                            if (cm.Group?.Count == 1)
+                            {
+                                cm.Group[0].Source = $"{_left.MainPackageCanonical}/ValueSet/elements";
+                                cm.Group[0].Target = $"{_right.MainPackageCanonical}/ValueSet/elements";
+                            }
+
+                            _elementConceptMap = cm;
+                        }
                         break;
                 }
 
@@ -1767,8 +1788,8 @@ public class PackageComparer
     private bool TryCompare(
         FhirArtifactClassEnum artifactClass,
         string sdName,
-        List<StructureInfoRec> lSource,
-        List<StructureInfoRec> rSource,
+        List<(StructureDefinition sd, StructureInfoRec si)> lSource,
+        List<(StructureDefinition sd, StructureInfoRec si)> rSource,
         Dictionary<string, ComparisonRecord<ElementInfoRec, ElementTypeInfoRec>> elementComparison,
         [NotNullWhen(true)] out ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>? c)
     {
@@ -1798,7 +1819,7 @@ public class PackageComparer
                 CompositeName = GetName(lSource, rSource),
                 Left = [],
                 KeyInLeft = false,
-                Right = rSource,
+                Right = rSource.Select(s => s.si).ToList(),
                 KeyInRight = true,
                 NamedMatch = false,
                 Relationship = null,
@@ -1815,7 +1836,7 @@ public class PackageComparer
                 ComparisonArtifactType = artifactClass,
                 Key = sdName,
                 CompositeName = GetName(lSource, rSource),
-                Left = lSource,
+                Left = lSource.Select(s => s.si).ToList(),
                 KeyInLeft = true,
                 Right = [],
                 KeyInRight = false,
@@ -1827,8 +1848,8 @@ public class PackageComparer
             return true;
         }
 
-        bool keyInLeft = lSource.Any(i => i.Name == sdName);
-        bool keyInRight = rSource.Any(i => i.Name == sdName);
+        bool keyInLeft = lSource.Any(s => s.si.Name == sdName);
+        bool keyInRight = rSource.Any(s => s.si.Name == sdName);
 
         if (_leftOnlyClasses.Contains(artifactClass) && !keyInLeft)
         {
@@ -1844,9 +1865,9 @@ public class PackageComparer
                 ComparisonArtifactType = artifactClass,
                 Key = sdName,
                 CompositeName = GetName(lSource, rSource),
-                Left = lSource,
+                Left = lSource.Select(s => s.si).ToList(),
                 KeyInLeft = keyInLeft,
-                Right = rSource,
+                Right = rSource.Select(s => s.si).ToList(),
                 KeyInRight = keyInRight,
                 NamedMatch = true,
                 Relationship = CMR.Equivalent,
@@ -1897,22 +1918,22 @@ public class PackageComparer
         {
             message = relationship switch
             {
-                CMR.Equivalent => $"{_rightRLiteral} structure {rSource[0].Name} is equivalent to the {_leftRLiteral} structure {sdName}",
-                CMR.RelatedTo => $"{_rightRLiteral} structure {rSource[0].Name} is related to {_leftRLiteral} structure {sdName} (see elements for details)",
-                CMR.SourceIsNarrowerThanTarget => $"{_rightRLiteral} structure {rSource[0].Name} subsumes {_leftRLiteral} structure {sdName}",
-                CMR.SourceIsBroaderThanTarget => $"{_rightRLiteral} structure {rSource[0].Name} is subsumed by {_leftRLiteral} structure {sdName}",
-                _ => $"{_rightRLiteral} structure {rSource[0].Name} is related to {_leftRLiteral} structure {sdName} (see elements for details)",
+                CMR.Equivalent => $"{_rightRLiteral} structure {rSource[0].si.Name} is equivalent to the {_leftRLiteral} structure {sdName}",
+                CMR.RelatedTo => $"{_rightRLiteral} structure {rSource[0].si.Name} is related to {_leftRLiteral} structure {sdName} (see elements for details)",
+                CMR.SourceIsNarrowerThanTarget => $"{_rightRLiteral} structure {rSource[0].si.Name} subsumes {_leftRLiteral} structure {sdName}",
+                CMR.SourceIsBroaderThanTarget => $"{_rightRLiteral} structure {rSource[0].si.Name} is subsumed by {_leftRLiteral} structure {sdName}",
+                _ => $"{_rightRLiteral} structure {rSource[0].si.Name} is related to {_leftRLiteral} structure {sdName} (see elements for details)",
             };
         }
         else
         {
             message = relationship switch
             {
-                CMR.Equivalent => $"{_rightRLiteral} new structure {sdName} is equivalent to the {_leftRLiteral} structure {lSource[0].Name}",
-                CMR.RelatedTo => $"{_rightRLiteral} new structure {sdName} is related to {_leftRLiteral} structure {lSource[0].Name} (see elements for details)",
-                CMR.SourceIsNarrowerThanTarget => $"{_rightRLiteral} new structure {sdName} subsumes {_leftRLiteral} structure {lSource[0].Name}",
-                CMR.SourceIsBroaderThanTarget => $"{_rightRLiteral} new structure {sdName} is subsumed by {_leftRLiteral} structure {lSource[0].Name}",
-                _ => $"{_rightRLiteral} new structure {sdName} is related to {_leftRLiteral} structure {lSource[0].Name} (see elements for details)",
+                CMR.Equivalent => $"{_rightRLiteral} new structure {sdName} is equivalent to the {_leftRLiteral} structure {lSource[0].si.Name}",
+                CMR.RelatedTo => $"{_rightRLiteral} new structure {sdName} is related to {_leftRLiteral} structure {lSource[0].si.Name} (see elements for details)",
+                CMR.SourceIsNarrowerThanTarget => $"{_rightRLiteral} new structure {sdName} subsumes {_leftRLiteral} structure {lSource[0].si.Name}",
+                CMR.SourceIsBroaderThanTarget => $"{_rightRLiteral} new structure {sdName} is subsumed by {_leftRLiteral} structure {lSource[0].si.Name}",
+                _ => $"{_rightRLiteral} new structure {sdName} is related to {_leftRLiteral} structure {lSource[0].si.Name} (see elements for details)",
             };
         }
 
@@ -1921,9 +1942,9 @@ public class PackageComparer
             ComparisonArtifactType = artifactClass,
             Key = sdName,
             CompositeName = GetName(lSource, rSource),
-            Left = lSource,
+            Left = lSource.Select(s => s.si).ToList(),
             KeyInLeft = keyInLeft,
-            Right = rSource,
+            Right = rSource.Select(s => s.si).ToList(),
             KeyInRight = keyInRight,
             NamedMatch = true,
             Relationship = relationship,
@@ -1959,6 +1980,34 @@ public class PackageComparer
             $"{_leftRLiteral}_{string.Join('_', l.Select(i => i.Name.ForName()).Order())}" +
             $"_{_rightRLiteral}_{string.Join('_', r.Select(i => i.Name.ForName()).Order())}";
     }
+
+    private string GetName(List<(StructureDefinition sd, StructureInfoRec si)> l, List<(StructureDefinition sd, StructureInfoRec si)> r)
+    {
+        if (l.Count == 0 && r.Count == 0)
+        {
+            return string.Empty;
+        }
+
+        if (l.Count == 0)
+        {
+            return $"{_rightRLiteral}_{r[0].si.Name.ForName()}";
+        }
+
+        if (r.Count == 0)
+        {
+            return $"{_leftRLiteral}_{l[0].si.Name.ForName()}";
+        }
+
+        if (l.Count == 1 && r.Count == 1)
+        {
+            return $"{_leftRLiteral}_{l[0].si.Name.ForName()}_{_rightRLiteral}_{r[0].si.Name.ForName()}";
+        }
+
+        return
+            $"{_leftRLiteral}_{string.Join('_', l.Select(s => s.si.Name.ForName()).Order())}" +
+            $"_{_rightRLiteral}_{string.Join('_', r.Select(s => s.si.Name.ForName()).Order())}";
+    }
+
 
     private Dictionary<string, ComparisonRecord<ConceptInfoRec>> Compare(
         FhirArtifactClassEnum artifactClass,
@@ -2195,11 +2244,31 @@ public class PackageComparer
 
     private Dictionary<string, ComparisonRecord<ElementInfoRec, ElementTypeInfoRec>> Compare(
         FhirArtifactClassEnum artifactClass,
-        IReadOnlyDictionary<string, ElementDefinition> leftDict,
-        IReadOnlyDictionary<string, ElementDefinition> rightDict)
+        List<(StructureDefinition sd, StructureInfoRec si)> leftSource,
+        List<(StructureDefinition sd, StructureInfoRec si)> rightSource)
     {
-        Dictionary<string, ElementInfoRec> leftInfoDict = leftDict.ToDictionary(kvp => kvp.Value.Path, kvp => GetInfo(kvp.Value));
-        Dictionary<string, ElementInfoRec> rightInfoDict = rightDict.ToDictionary(kvp => kvp.Value.Path, kvp => GetInfo(kvp.Value));
+        Dictionary<string, ElementDefinition> leftElements = [];
+        Dictionary<string, ElementDefinition> rightElements = [];
+
+        // need to build up the set of elements for each side
+        foreach ((StructureDefinition leftSd, StructureInfoRec leftSi) in leftSource)
+        {
+            foreach (ElementDefinition ed in leftSd.cgElements())
+            {
+                leftElements.Add(ed.Path, ed);
+            }
+        }
+
+        foreach ((StructureDefinition rightSd, StructureInfoRec rightSi) in rightSource)
+        {
+            foreach (ElementDefinition ed in rightSd.cgElements())
+            {
+                rightElements.Add(ed.Path, ed);
+            }
+        }
+
+        Dictionary<string, ElementInfoRec> leftInfoDict = leftElements.ToDictionary(kvp => kvp.Value.Path, kvp => GetInfo(kvp.Value));
+        Dictionary<string, ElementInfoRec> rightInfoDict = rightElements.ToDictionary(kvp => kvp.Value.Path, kvp => GetInfo(kvp.Value));
 
         Dictionary<string, ComparisonRecord<ElementInfoRec, ElementTypeInfoRec>> comparison = [];
 
@@ -2211,7 +2280,7 @@ public class PackageComparer
             IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> leftTypes;
             IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> rightTypes;
 
-            if (leftDict.TryGetValue(edPath, out ElementDefinition? leftEd))
+            if (leftElements.TryGetValue(edPath, out ElementDefinition? leftEd))
             {
                 leftTypes = leftEd.cgTypes();
             }
@@ -2220,7 +2289,7 @@ public class PackageComparer
                 leftTypes = new Dictionary<string, ElementDefinition.TypeRefComponent>();
             }
 
-            if (rightDict.TryGetValue(edPath, out ElementDefinition? rightEd))
+            if (rightElements.TryGetValue(edPath, out ElementDefinition? rightEd))
             {
                 rightTypes = rightEd.cgTypes();
             }
@@ -2244,6 +2313,57 @@ public class PackageComparer
         return comparison;
     }
 
+    //private Dictionary<string, ComparisonRecord<ElementInfoRec, ElementTypeInfoRec>> Compare(
+    //    FhirArtifactClassEnum artifactClass,
+    //    IReadOnlyDictionary<string, ElementDefinition> leftDict,
+    //    IReadOnlyDictionary<string, ElementDefinition> rightDict)
+    //{
+    //    Dictionary<string, ElementInfoRec> leftInfoDict = leftDict.ToDictionary(kvp => kvp.Value.Path, kvp => GetInfo(kvp.Value));
+    //    Dictionary<string, ElementInfoRec> rightInfoDict = rightDict.ToDictionary(kvp => kvp.Value.Path, kvp => GetInfo(kvp.Value));
+
+    //    Dictionary<string, ComparisonRecord<ElementInfoRec, ElementTypeInfoRec>> comparison = [];
+
+    //    IEnumerable<string> keys = leftInfoDict.Keys.Union(rightInfoDict.Keys).Distinct();
+
+    //    // add our matches
+    //    foreach (string edPath in keys)
+    //    {
+    //        IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> leftTypes;
+    //        IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> rightTypes;
+
+    //        if (leftDict.TryGetValue(edPath, out ElementDefinition? leftEd))
+    //        {
+    //            leftTypes = leftEd.cgTypes();
+    //        }
+    //        else
+    //        {
+    //            leftTypes = new Dictionary<string, ElementDefinition.TypeRefComponent>();
+    //        }
+
+    //        if (rightDict.TryGetValue(edPath, out ElementDefinition? rightEd))
+    //        {
+    //            rightTypes = rightEd.cgTypes();
+    //        }
+    //        else
+    //        {
+    //            rightTypes = new Dictionary<string, ElementDefinition.TypeRefComponent>();
+    //        }
+
+    //        List<ElementInfoRec> leftInfoSource = leftInfoDict.TryGetValue(edPath, out ElementInfoRec? leftInfo) ? [leftInfo] : [];
+    //        List<ElementInfoRec> rightInfoSource = rightInfoDict.TryGetValue(edPath, out ElementInfoRec? rightInfo) ? [rightInfo] : [];
+
+    //        // perform type comparison
+    //        Dictionary<string, ComparisonRecord<ElementTypeInfoRec>> typeComparison = Compare(artifactClass, leftTypes, rightTypes);
+
+    //        if (TryCompare(artifactClass, edPath, leftInfoSource, rightInfoSource, typeComparison, out ComparisonRecord<ElementInfoRec, ElementTypeInfoRec>? c))
+    //        {
+    //            comparison.Add(edPath, c);
+    //        }
+    //    }
+
+    //    return comparison;
+    //}
+
     private Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> Compare(
         FhirArtifactClassEnum artifactClass,
         IReadOnlyDictionary<string, StructureDefinition> leftInput,
@@ -2261,8 +2381,8 @@ public class PackageComparer
         // add our matches
         foreach (string sdName in keys)
         {
-            List<StructureInfoRec> leftInfoSource;  // = left.TryGetValue(sdName, out StructureInfoRec? leftInfo) ? [leftInfo] : [];
-            List<StructureInfoRec> rightInfoSource; // = right.TryGetValue(sdName, out StructureInfoRec? rightInfo) ? [rightInfo] : [];
+            List<(StructureDefinition sd, StructureInfoRec si)> leftSource;  // = left.TryGetValue(sdName, out StructureInfoRec? leftInfo) ? [leftInfo] : [];
+            List<(StructureDefinition sd, StructureInfoRec si)> rightSource; // = right.TryGetValue(sdName, out StructureInfoRec? rightInfo) ? [rightInfo] : [];
 
             ConceptMap? cm = artifactClass switch
             {
@@ -2278,8 +2398,8 @@ public class PackageComparer
                 HashSet<string> usedSourceNames = [];
                 HashSet<string> usedTargetNames = [];
 
-                leftInfoSource = [];
-                rightInfoSource = [];
+                leftSource = [];
+                rightSource = [];
 
                 // check to see if the source element has a map
                 ConceptMap.SourceElementComponent? sourceMap = cm?.Group.FirstOrDefault()?.Element.Where(e => e.Code == sdName).FirstOrDefault();
@@ -2297,7 +2417,7 @@ public class PackageComparer
                     }
                     else
                     {
-                        leftInfoSource.Add(mapSourceInfo);
+                        leftSource.Add((leftInput[sdName], mapSourceInfo));
                         usedSourceNames.Add(sdName);
 
                         // traverse the map targets to pull target information
@@ -2314,7 +2434,7 @@ public class PackageComparer
                                 throw new Exception($"Structure {te.Code} is mapped as a target but not defined in right set");
                             }
 
-                            rightInfoSource.Add(mappedTargetInfo);
+                            rightSource.Add((rightInput[te.Code], mappedTargetInfo));
                             usedTargetNames.Add(te.Code);
                         }
                     }
@@ -2324,7 +2444,7 @@ public class PackageComparer
                 if ((usedTargetNames.Count == 0) &&
                     right.TryGetValue(sdName, out StructureInfoRec? rightStructureInfo))
                 {
-                    rightInfoSource.Add(rightStructureInfo);
+                    rightSource.Add((rightInput[sdName], rightStructureInfo));
                     usedTargetNames.Add(sdName);
                 }
 
@@ -2343,7 +2463,7 @@ public class PackageComparer
                             throw new Exception($"Structure {mapElement.Code} is mapped as a source but not defined in the left set");
                         }
 
-                        leftInfoSource.Add(mapSourceInfo);
+                        leftSource.Add((leftInput[mapElement.Code], mapSourceInfo));
                         usedSourceNames.Add(mapElement.Code);
                     }
 
@@ -2360,7 +2480,7 @@ public class PackageComparer
                             throw new Exception($"Structure {te.Code} is mapped as a target but not defined in right set");
                         }
 
-                        rightInfoSource.Add(mappedTargetInfo);
+                        rightSource.Add((rightInput[te.Code], mappedTargetInfo));
                         usedTargetNames.Add(te.Code);
                     }
                 }
@@ -2368,8 +2488,8 @@ public class PackageComparer
             else
             {
                 // without a map, just try to get the matching source and destination codes
-                leftInfoSource = left.TryGetValue(sdName, out StructureInfoRec? leftInfo) ? [leftInfo] : [];
-                rightInfoSource = right.TryGetValue(sdName, out StructureInfoRec? rightInfo) ? [rightInfo] : [];
+                leftSource = left.TryGetValue(sdName, out StructureInfoRec? leftInfo) ? [(leftInput[sdName], leftInfo)] : [];
+                rightSource = right.TryGetValue(sdName, out StructureInfoRec? rightInfo) ? [(rightInput[sdName], rightInfo)] : [];
             }
 
             //// if we have relationships from a map, we want to look for extra relationships that we can filter
@@ -2384,40 +2504,12 @@ public class PackageComparer
             //    }
             //}
 
-            Dictionary<string, ElementDefinition> leftElements = [];
-            Dictionary<string, ElementDefinition> rightElements = [];
 
-            // need to build up the set of elements for each side
-            foreach (StructureInfoRec leftSi in leftInfoSource)
-            {
-                if (!leftInput.TryGetValue(leftSi.Name, out StructureDefinition? leftSd))
-                {
-                    throw new Exception($"Have structure info for {leftSi.Name} but failed to retrieve definition");
-                }
-
-                foreach (ElementDefinition ed in leftSd.cgElements())
-                {
-                    leftElements.Add(ed.Path, ed);
-                }
-            }
-
-            foreach (StructureInfoRec rightSi in rightInfoSource)
-            {
-                if (!rightInput.TryGetValue(rightSi.Name, out StructureDefinition? rightSd))
-                {
-                    throw new Exception($"Have structure info for {rightSi.Name} but failed to retrieve definition");
-                }
-
-                foreach (ElementDefinition ed in rightSd.cgElements())
-                {
-                    rightElements.Add(ed.Path, ed);
-                }
-            }
 
             // perform element comparison
-            Dictionary<string, ComparisonRecord<ElementInfoRec, ElementTypeInfoRec>> elementComparison = Compare(artifactClass, leftElements, rightElements);
+            Dictionary<string, ComparisonRecord<ElementInfoRec, ElementTypeInfoRec>> elementComparison = Compare(artifactClass, leftSource, rightSource);
 
-            if (TryCompare(artifactClass, sdName, leftInfoSource, rightInfoSource, elementComparison, out ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>? c))
+            if (TryCompare(artifactClass, sdName, leftSource, rightSource, elementComparison, out ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>? c))
             {
                 if (!usedCompositeNames.Contains(c.CompositeName))
                 {
