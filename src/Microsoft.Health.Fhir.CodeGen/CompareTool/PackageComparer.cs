@@ -165,8 +165,9 @@ public class PackageComparer
 
             foreach (ComparisonRecord<ValueSetInfoRec, ConceptInfoRec> c in _vsComparisons.Values)
             {
-                string name = GetName(c.Left, c.Right);
-                string filename = Path.Combine(subDir, $"{name}.md");
+                //string name = GetName(c.Left, c.Right);
+                //string filename = Path.Combine(subDir, $"{name}.md");
+                string filename = Path.Combine(subDir, $"{c.CompositeName}.md");
 
                 using ExportStreamWriter writer = CreateMarkdownWriter(filename);
                 {
@@ -175,7 +176,7 @@ public class PackageComparer
             }
         }
 
-        Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> primitives = Compare(FhirArtifactClassEnum.PrimitiveType, _left.PrimitiveTypesByName, _right.PrimitiveTypesByName);
+        Dictionary<string, ComparisonRecord<StructureInfoRec>> primitives = ComparePrimitives(FhirArtifactClassEnum.PrimitiveType, _left.PrimitiveTypesByName, _right.PrimitiveTypesByName);
         if (mdWriter is not null)
         {
             WriteComparisonOverview(mdWriter, "Primitive Types", primitives.Values);
@@ -186,10 +187,11 @@ public class PackageComparer
                 Directory.CreateDirectory(subDir);
             }
 
-            foreach (ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec> c in primitives.Values)
+            foreach (ComparisonRecord<StructureInfoRec> c in primitives.Values)
             {
-                string name = GetName(c.Left, c.Right);
-                string filename = Path.Combine(subDir, $"{name}.md");
+                //string name = GetName(c.Left, c.Right);
+                //string filename = Path.Combine(subDir, $"{name}.md");
+                string filename = Path.Combine(subDir, $"{c.CompositeName}.md");
 
                 using ExportStreamWriter writer = CreateMarkdownWriter(filename);
                 {
@@ -211,8 +213,9 @@ public class PackageComparer
 
             foreach (ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec> c in complexTypes.Values)
             {
-                string name = GetName(c.Left, c.Right);
-                string filename = Path.Combine(subDir, $"{name}.md");
+                //string name = GetName(c.Left, c.Right);
+                //string filename = Path.Combine(subDir, $"{name}.md");
+                string filename = Path.Combine(subDir, $"{c.CompositeName}.md");
 
                 using ExportStreamWriter writer = CreateMarkdownWriter(filename);
                 {
@@ -234,8 +237,9 @@ public class PackageComparer
 
             foreach (ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec> c in resources.Values)
             {
-                string name = GetName(c.Left, c.Right);
-                string filename = Path.Combine(subDir, $"{name}.md");
+                //string name = GetName(c.Left, c.Right);
+                //string filename = Path.Combine(subDir, $"{name}.md");
+                string filename = Path.Combine(subDir, $"{c.CompositeName}.md");
 
                 using ExportStreamWriter writer = CreateMarkdownWriter(filename);
                 {
@@ -787,6 +791,35 @@ public class PackageComparer
         writer.WriteLine();
     }
 
+    //private void WriteComparisonTypeConversions(ExportStreamWriter writer, IComparisonRecord cRec)
+    //{
+    //    //if ((cRec.AdditionalSerializations is null) ||
+    //    //    (cRec.AdditionalSerializations.Count == 0))
+    //    //{
+    //    //    return;
+    //    //}
+
+    //    writer.WriteLine();
+    //    writer.WriteLine($"#### Conversions");
+    //    writer.WriteLine();
+    //    //writer.WriteLine("<details>");
+    //    //writer.WriteLine("<summary>Additional Serializations</summary>");
+    //    //writer.WriteLine();
+
+    //    writer.WriteLine("| Target | Relationship | Message |");
+    //    writer.WriteLine("| ------ | ------------ | ------- |");
+
+    //    foreach (SerializationMapInfo smi in cRec.AdditionalSerializations.Values.OrderBy(smi => smi.Target))
+    //    {
+    //        writer.WriteLine($"| {smi.Target} | {smi.Relationship?.ToString() ?? "-"} | {smi.Message} |");
+    //    }
+
+    //    //writer.WriteLine();
+    //    //writer.WriteLine("</details>");
+    //    writer.WriteLine();
+    //}
+
+
     private void WriteComparisonRecResult(ExportStreamWriter writer, IComparisonRecord cRec)
     {
         writer.WriteLine();
@@ -822,23 +855,49 @@ public class PackageComparer
         WriteComparisonRecDataTable(writer, cRec);
         WriteComparisonRecResult(writer, cRec);
 
-        writer.WriteLine();
-        writer.WriteLine($"### Union of {_leftRLiteral} and {_rightRLiteral}");
-        writer.WriteLine();
-        WriteComparisonRecStatusTable(writer, cRec, inLeft: true, inRight: true);
-        WriteComparisonChildDetails(writer, cRec, inLeft: true, inRight: true);
+        if (cRec.ComparisonArtifactType == FhirArtifactClassEnum.PrimitiveType)
+        {
+            writer.WriteLine();
+            writer.WriteLine($"### Primitive type mapping");
+            writer.WriteLine();
+            writer.WriteLine();
 
-        writer.WriteLine();
-        writer.WriteLine($"### {_leftRLiteral} Detail");
-        writer.WriteLine();
-        WriteComparisonRecStatusTable(writer, cRec, inLeft: true, inRight: false);
-        WriteComparisonChildDetails(writer, cRec, inLeft: true, inRight: false);
+            writer.WriteLine("| Source | Target | Relationship | Message |");
+            writer.WriteLine("| ------ | ------ | ------------ | ------- |");
 
-        writer.WriteLine();
-        writer.WriteLine($"### {_rightRLiteral} Detail");
-        writer.WriteLine();
-        WriteComparisonRecStatusTable(writer, cRec, inLeft: false, inRight: true);
-        WriteComparisonChildDetails(writer, cRec, inLeft: false, inRight: true);
+            if (cRec.KeyInLeft && cRec.KeyInRight)
+            {
+                writer.WriteLine($"| {cRec.Key} | {cRec.Key} | {cRec.Relationship} | {cRec.Message}");
+            }
+
+            if (cRec.AdditionalSerializations?.Count > 0)
+            {
+                foreach (SerializationMapInfo smi in cRec.AdditionalSerializations.Values.OrderBy(smi => smi.Target))
+                {
+                    writer.WriteLine($"| {smi.Source} | {smi.Target} | {smi.Relationship?.ToString() ?? "-"} | {smi.Message} |");
+                }
+            }
+        }
+        else
+        {
+            writer.WriteLine();
+            writer.WriteLine($"### Union of {_leftRLiteral} and {_rightRLiteral}");
+            writer.WriteLine();
+            WriteComparisonRecStatusTable(writer, cRec, inLeft: true, inRight: true);
+            WriteComparisonChildDetails(writer, cRec, inLeft: true, inRight: true);
+
+            writer.WriteLine();
+            writer.WriteLine($"### {_leftRLiteral} Detail");
+            writer.WriteLine();
+            WriteComparisonRecStatusTable(writer, cRec, inLeft: true, inRight: false);
+            WriteComparisonChildDetails(writer, cRec, inLeft: true, inRight: false);
+
+            writer.WriteLine();
+            writer.WriteLine($"### {_rightRLiteral} Detail");
+            writer.WriteLine();
+            WriteComparisonRecStatusTable(writer, cRec, inLeft: false, inRight: true);
+            WriteComparisonChildDetails(writer, cRec, inLeft: false, inRight: true);
+        }
     }
 
 
@@ -1007,7 +1066,22 @@ public class PackageComparer
             (r.Count == 0 ? _rightRLiteral : $"{_rightRLiteral}_{string.Join('_', r.Select(i => i.Code.ForName()).Order())}");
     }
 
-    private (CMR initialRelationship, int maxIndex) GetInitialRelationship<T>(List<T> lSource, List<T> rSource)
+    //private (CMR initialRelationship, int maxIndex) GetInitialRelationship<T>(List<T> lSource, List<T> rSource)
+    //{
+    //    if (lSource.Count == 1 && rSource.Count == 1)
+    //    {
+    //        return (CMR.Equivalent, 1);
+    //    }
+
+    //    if (lSource.Count > 1)
+    //    {
+    //        return (CMR.SourceIsNarrowerThanTarget, lSource.Count);
+    //    }
+
+    //    return (CMR.SourceIsBroaderThanTarget, rSource.Count);
+    //}
+
+    private (CMR initialRelationship, int maxIndex) GetInitialRelationship<T, U>(List<T> lSource, List<U> rSource)
     {
         if (lSource.Count == 1 && rSource.Count == 1)
         {
@@ -1021,6 +1095,7 @@ public class PackageComparer
 
         return (CMR.SourceIsBroaderThanTarget, rSource.Count);
     }
+
 
     /// <summary>
     /// Tries to compare the type information for two elements and returns a comparison record.
@@ -2008,6 +2083,54 @@ public class PackageComparer
             $"_{_rightRLiteral}_{string.Join('_', r.Select(s => s.si.Name.ForName()).Order())}";
     }
 
+    private string GetName(List<(StructureDefinition sd, StructureInfoRec si)> left, List<(StructureDefinition sd, StructureInfoRec si, CMR? r)> right)
+    {
+        if (left.Count == 0 && right.Count == 0)
+        {
+            return string.Empty;
+        }
+
+        if (left.Count == 0)
+        {
+            return $"{_rightRLiteral}_{right[0].si.Name.ForName()}";
+        }
+
+        if (right.Count == 0)
+        {
+            return $"{_leftRLiteral}_{left[0].si.Name.ForName()}";
+        }
+
+        if (left.Count == 1 && right.Count == 1)
+        {
+            return $"{_leftRLiteral}_{left[0].si.Name.ForName()}_{_rightRLiteral}_{right[0].si.Name.ForName()}";
+        }
+
+        int equivalentIndex = right.FindIndex(t => t.r == CMR.Equivalent);
+
+        if (equivalentIndex == -1)
+        {
+            return $"{_rightRLiteral}_{string.Join('_', right.Select(s => s.si.Name.ForName()).Order())}";
+
+            //return
+            //    $"{_leftRLiteral}_{string.Join('_', left.Select(s => s.si.Name.ForName()).Order())}" +
+            //    $"_{_rightRLiteral}_{string.Join('_', right.Select(s => s.si.Name.ForName()).Order())}";
+        }
+
+        string eqName = right[equivalentIndex].si.Name;
+
+        if (right.Count == 1)
+        {
+            return
+                $"{_leftRLiteral}_{string.Join('_', left.Select(s => s.si.Name.ForName()).Order())}" +
+                $"_{_rightRLiteral}_{eqName.ForName()}";
+        }
+
+        // we want equivalent listed first
+        return
+            $"{_leftRLiteral}_{string.Join('_', left.Select(s => s.si.Name.ForName()).Order())}" +
+            $"_{_rightRLiteral}_{eqName.ForName()}_{string.Join('_', right.Where(s => s.si.Name != eqName).Select(s => s.si.Name.ForName()).Order())}";
+    }
+
 
     private Dictionary<string, ComparisonRecord<ConceptInfoRec>> Compare(
         FhirArtifactClassEnum artifactClass,
@@ -2364,11 +2487,334 @@ public class PackageComparer
     //    return comparison;
     //}
 
+    private Dictionary<string, ComparisonRecord<StructureInfoRec>> ComparePrimitives(
+        FhirArtifactClassEnum artifactClass,
+        IReadOnlyDictionary<string, StructureDefinition> leftInput,
+        IReadOnlyDictionary<string, StructureDefinition> rightInput)
+    {
+        if (artifactClass != FhirArtifactClassEnum.PrimitiveType)
+        {
+            throw new Exception("Can only compare primitive types with this method");
+        }
+
+        Dictionary<string, StructureInfoRec> left = leftInput.ToDictionary(kvp => kvp.Key, kvp => GetInfo(kvp.Value));
+        Dictionary<string, StructureInfoRec> right = rightInput.ToDictionary(kvp => kvp.Key, kvp => GetInfo(kvp.Value));
+
+        Dictionary<string, ComparisonRecord<StructureInfoRec>> comparison = [];
+
+        IEnumerable<string> keys = left.Keys.Union(right.Keys).Distinct();
+
+        HashSet<string> usedCompositeNames = [];
+
+        // add our matches
+        foreach (string sdName in keys)
+        {
+            List<(StructureDefinition sd, StructureInfoRec si)> leftSource;  // = left.TryGetValue(sdName, out StructureInfoRec? leftInfo) ? [leftInfo] : [];
+            List<(StructureDefinition sd, StructureInfoRec si, CMR? r)> rightSource; // = right.TryGetValue(sdName, out StructureInfoRec? rightInfo) ? [rightInfo] : [];
+
+            ConceptMap? cm = artifactClass switch
+            {
+                FhirArtifactClassEnum.PrimitiveType => _typeConceptMap,
+                FhirArtifactClassEnum.ComplexType => _typeConceptMap,
+                FhirArtifactClassEnum.Resource => _resourceConceptMap,
+                _ => null
+            };
+
+            // prefer using a map if we have one
+            if (cm is not null)
+            {
+                HashSet<string> usedSourceNames = [];
+                HashSet<string> usedTargetNames = [];
+
+                leftSource = [];
+                rightSource = [];
+
+                // check to see if the source element has a map
+                ConceptMap.SourceElementComponent? sourceMap = cm?.Group.FirstOrDefault()?.Element.Where(e => e.Code == sdName).FirstOrDefault();
+
+                // if we have a mapping from the current source, we want to use the target mappings
+                if (sourceMap is not null)
+                {
+                    // pull information about our mapped source concept
+                    if (!left.TryGetValue(sdName, out StructureInfoRec? mapSourceInfo))
+                    {
+                        Console.WriteLine($"Removing {sdName} from the concept map, it does not actually exist...");
+                        cm!.Group[0].Element.Remove(sourceMap);
+
+                        //throw new Exception($"Structure {sdName} is mapped as a source but not defined in the left set");
+                    }
+                    else
+                    {
+                        leftSource.Add((leftInput[sdName], mapSourceInfo));
+                        usedSourceNames.Add(sdName);
+
+                        // traverse the map targets to pull target information
+                        foreach (ConceptMap.TargetElementComponent te in sourceMap.Target)
+                        {
+                            // check if already added
+                            if (usedTargetNames.Contains(te.Code))
+                            {
+                                continue;
+                            }
+
+                            if (!right.TryGetValue(te.Code, out StructureInfoRec? mappedTargetInfo))
+                            {
+                                throw new Exception($"Structure {te.Code} is mapped as a target but not defined in right set");
+                            }
+
+                            rightSource.Add((rightInput[te.Code], mappedTargetInfo, te.Relationship));
+                            usedTargetNames.Add(te.Code);
+                        }
+                    }
+                }
+
+                // if we did not find a source mapping from the source, still add as a target structure if it is in the right set
+                if ((usedTargetNames.Count == 0) &&
+                    right.TryGetValue(sdName, out StructureInfoRec? rightStructureInfo))
+                {
+                    rightSource.Add((rightInput[sdName], rightStructureInfo, leftSource.Count == 0 ? null : CMR.Equivalent));
+                    usedTargetNames.Add(sdName);
+                }
+
+                // only pull target mappings if we are in a left-hand (source) comparison for primitives
+                if (!left.ContainsKey(sdName))
+                {
+                    // also pull the list of target mappings to see if this code is mapped *from* any other source
+                    List<ConceptMap.SourceElementComponent> targetMaps = cm?.Group.FirstOrDefault()?.Element.Where(e => e.Target.Any(t => usedTargetNames.Contains(t.Code)))?.ToList() ?? [];
+
+                    // traverse all mappings that this target appears in
+                    foreach (ConceptMap.SourceElementComponent mapElement in targetMaps)
+                    {
+                        // check if this has already been added
+                        if (!usedSourceNames.Contains(mapElement.Code))
+                        {
+                            // pull information about our mapped source concept
+                            if (!left.TryGetValue(mapElement.Code, out StructureInfoRec? mapSourceInfo))
+                            {
+                                throw new Exception($"Structure {mapElement.Code} is mapped as a source but not defined in the left set");
+                            }
+
+                            leftSource.Add((leftInput[mapElement.Code], mapSourceInfo));
+                            usedSourceNames.Add(mapElement.Code);
+                        }
+
+                        // traverse the map targets to pull target information
+                        foreach (ConceptMap.TargetElementComponent te in mapElement.Target)
+                        {
+                            if (usedTargetNames.Contains(te.Code))
+                            {
+                                continue;
+                            }
+
+                            if (!right.TryGetValue(te.Code, out StructureInfoRec? mappedTargetInfo))
+                            {
+                                throw new Exception($"Structure {te.Code} is mapped as a target but not defined in right set");
+                            }
+
+                            rightSource.Add((rightInput[te.Code], mappedTargetInfo, te.Relationship));
+                            usedTargetNames.Add(te.Code);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                // without a map, just try to get the matching source and destination codes
+                leftSource = left.TryGetValue(sdName, out StructureInfoRec? leftInfo) ? [(leftInput[sdName], leftInfo)] : [];
+                rightSource = right.TryGetValue(sdName, out StructureInfoRec? rightInfo) ? [(rightInput[sdName], rightInfo, null)] : [];
+            }
+
+            if (TryComparePrimitives(sdName, leftSource, rightSource, out ComparisonRecord<StructureInfoRec>? c))
+            {
+                if (!usedCompositeNames.Contains(c.CompositeName))
+                {
+                    comparison.Add(sdName, c);
+                    usedCompositeNames.Add(c.CompositeName);
+                }
+            }
+        }
+
+        return comparison;
+    }
+
+    private bool TryComparePrimitives(
+        string sdName,
+        List<(StructureDefinition sd, StructureInfoRec si)> lSource,
+        List<(StructureDefinition sd, StructureInfoRec si, CMR? r)> rSource,
+        [NotNullWhen(true)] out ComparisonRecord<StructureInfoRec>? c)
+    {
+        if ((lSource.Count == 0) && (rSource.Count == 0))
+        {
+            c = null;
+            return false;
+        }
+
+        bool keyInLeft = lSource.Any(s => s.si.Name == sdName);
+        bool keyInRight = rSource.Any(s => s.si.Name == sdName);
+
+        if ((lSource.Count > 1) && (rSource.Count > 1))
+        {
+            // if we are in primitives, we can filter out multiple source to multiple destination records
+            if (keyInRight && !keyInLeft)
+            {
+                rSource = rSource.Where(rSource => rSource.si.Name == sdName).ToList();
+            }
+            else
+            {
+                throw new Exception("Cannot compare multiple source to multiple destination records!");
+            }
+        }
+
+        FhirArtifactClassEnum artifactClass = FhirArtifactClassEnum.PrimitiveType;
+
+        if (lSource.Count == 0)
+        {
+            if (_leftOnlyClasses.Contains(artifactClass))
+            {
+                c = null;
+                return false;
+            }
+
+            c = new()
+            {
+                ComparisonArtifactType = artifactClass,
+                Key = sdName,
+                CompositeName = GetName(lSource, rSource),
+                Left = [],
+                KeyInLeft = keyInLeft,
+                Right = rSource.Select(s => s.si).ToList(),
+                KeyInRight = keyInRight,
+                NamedMatch = false,
+                Relationship = null,
+                Message = $"{_rightRLiteral} added {sdName}",
+            };
+            return true;
+        }
+
+        if (rSource.Count == 0)
+        {
+            c = new()
+            {
+                ComparisonArtifactType = artifactClass,
+                Key = sdName,
+                CompositeName = GetName(lSource, rSource),
+                Left = lSource.Select(s => s.si).ToList(),
+                KeyInLeft = keyInLeft,
+                Right = [],
+                KeyInRight = keyInRight,
+                NamedMatch = false,
+                Relationship = null,
+                Message = $"{_rightRLiteral} removed {sdName}",
+            };
+            return true;
+        }
+
+
+        if (_leftOnlyClasses.Contains(artifactClass) && !keyInLeft)
+        {
+            c = null;
+            return false;
+        }
+
+        (CMR relationship, int maxIndex) = GetInitialRelationship(lSource, rSource);
+        string message = string.Empty;
+
+        Dictionary<string, SerializationMapInfo> additionalSerializations = [];
+
+        // primitive types are always compared 1:1
+        for (int sourceIndex = 0; sourceIndex < maxIndex; sourceIndex++)
+        {
+            (StructureDefinition leftSd, StructureInfoRec leftSi) = lSource.Count == 1 ? lSource[0] : lSource[sourceIndex];
+            (StructureDefinition rightSd, StructureInfoRec rightSi, CMR? rightRelationship) = rSource.Count == 1 ? rSource[0] : rSource[sourceIndex];
+
+            // check for being the same type
+            if (leftSi.Name == rightSi.Name)
+            {
+                // for primitives, a match needs to represent equivalence for sanity elsewhere
+                relationship = CMR.Equivalent;
+                message = $"{_rightRLiteral} primitive {rightSi.Name} is equivalent to the {_leftRLiteral} primitive {leftSi.Name}";
+                continue;
+            }
+
+            if (rightRelationship is null)
+            {
+                // when adding types, they are narrower than whatever is serializing from them
+                rightRelationship = CMR.SourceIsNarrowerThanTarget;
+            }
+
+            // add a serialization map if we have another type here
+            SerializationMapInfo serializationInfo = new()
+            {
+                Source = leftSi.Name,
+                Target = rightSi.Name,
+                Relationship = rightRelationship,
+                Message = $"{_rightRLiteral} new type {rightSi.Name} has a serialization mapping from {_leftRLiteral} type {leftSi.Name}",
+            };
+
+            if (keyInLeft)
+            {
+                additionalSerializations.Add(rightSi.Name, serializationInfo);
+            }
+            else if (keyInRight)
+            {
+                additionalSerializations.Add(leftSi.Name, serializationInfo);
+            }
+        }
+
+        if (string.IsNullOrEmpty(message))
+        {
+            if (keyInLeft)
+            {
+                message = relationship switch
+                {
+                    CMR.Equivalent => $"{_rightRLiteral} type {rSource[0].si.Name} is equivalent to the {_leftRLiteral} type {sdName}",
+                    CMR.RelatedTo => $"{_rightRLiteral} type {rSource[0].si.Name} is related to {_leftRLiteral} type {sdName}",
+                    CMR.SourceIsNarrowerThanTarget => $"{_rightRLiteral} type {rSource[0].si.Name} subsumes {_leftRLiteral} type {sdName}",
+                    CMR.SourceIsBroaderThanTarget => $"{_rightRLiteral} type {rSource[0].si.Name} is subsumed by {_leftRLiteral} type {sdName}",
+                    _ => $"{_rightRLiteral} type {rSource[0].si.Name} is related to {_leftRLiteral} type {sdName}",
+                };
+            }
+            else
+            {
+                message = relationship switch
+                {
+                    CMR.Equivalent => $"{_rightRLiteral} new type {sdName} is equivalent to the {_leftRLiteral} type {lSource[0].si.Name}",
+                    CMR.RelatedTo => $"{_rightRLiteral} new type {sdName} is related to {_leftRLiteral} type {lSource[0].si.Name}",
+                    CMR.SourceIsNarrowerThanTarget => $"{_rightRLiteral} new type {sdName} subsumes {_leftRLiteral} type {lSource[0].si.Name}",
+                    CMR.SourceIsBroaderThanTarget => $"{_rightRLiteral} new type {sdName} is subsumed by {_leftRLiteral} type {lSource[0].si.Name}",
+                    _ => $"{_rightRLiteral} new type {sdName} is related to {_leftRLiteral} type {lSource[0].si.Name}",
+                };
+            }
+        }
+
+        c = new()
+        {
+            ComparisonArtifactType = artifactClass,
+            Key = sdName,
+            CompositeName = GetName(lSource, rSource),
+            Left = lSource.Select(s => s.si).ToList(),
+            KeyInLeft = keyInLeft,
+            Right = rSource.Select(s => s.si).ToList(),
+            KeyInRight = keyInRight,
+            NamedMatch = true,
+            Relationship = relationship,
+            Message = message,
+            AdditionalSerializations = additionalSerializations.Count == 0 ? null : additionalSerializations,
+        };
+        return true;
+    }
+
+
     private Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> Compare(
         FhirArtifactClassEnum artifactClass,
         IReadOnlyDictionary<string, StructureDefinition> leftInput,
         IReadOnlyDictionary<string, StructureDefinition> rightInput)
     {
+        if (artifactClass == FhirArtifactClassEnum.PrimitiveType)
+        {
+            throw new Exception("Primitive types cannot be compared as generic structures!");
+        }
+
         Dictionary<string, StructureInfoRec> left = leftInput.ToDictionary(kvp => kvp.Key, kvp => GetInfo(kvp.Value));
         Dictionary<string, StructureInfoRec> right = rightInput.ToDictionary(kvp => kvp.Key, kvp => GetInfo(kvp.Value));
 
@@ -2386,7 +2832,6 @@ public class PackageComparer
 
             ConceptMap? cm = artifactClass switch
             {
-                FhirArtifactClassEnum.PrimitiveType => _typeConceptMap,
                 FhirArtifactClassEnum.ComplexType => _typeConceptMap,
                 FhirArtifactClassEnum.Resource => _resourceConceptMap,
                 _ => null
@@ -2503,8 +2948,6 @@ public class PackageComparer
             //        targetRelationships.Remove(key);
             //    }
             //}
-
-
 
             // perform element comparison
             Dictionary<string, ComparisonRecord<ElementInfoRec, ElementTypeInfoRec>> elementComparison = Compare(artifactClass, leftSource, rightSource);

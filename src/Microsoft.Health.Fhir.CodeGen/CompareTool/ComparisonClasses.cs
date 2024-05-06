@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
@@ -24,6 +25,14 @@ internal static class ComparisonUtils
     internal static string ForMdTable(this string value) => string.IsNullOrEmpty(value) ? string.Empty : value.Replace("|", "\\|").Replace("\n", "<br/>").Replace("\r", "<br/>");
 }
 
+public record class SerializationMapInfo
+{
+    public required string Source { get; init; }
+    public required string Target { get; init; }
+    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; init; }
+    public required string Message { get; init; }
+}
+
 public interface IComparisonRecord
 {
     //string RecordTypeDiscriminator { get; }
@@ -35,7 +44,7 @@ public interface IComparisonRecord
     bool NamedMatch { get; init; }
     Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; init; }
     string Message { get; init; }
-
+    Dictionary<string, SerializationMapInfo>? AdditionalSerializations { get; init; }
 
     string GetStatusString();
     Dictionary<string, int> GetStatusCounts(bool inLeft = true, bool inRight = true);
@@ -72,6 +81,8 @@ public class ComparisonRecord<T> : IComparisonRecord<T>
     public required bool NamedMatch { get; init; }
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; init; }
     public required string Message { get; init; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public Dictionary<string, SerializationMapInfo>? AdditionalSerializations { get; init; } = null;
 
 
     public string GetStatusString()
@@ -269,7 +280,7 @@ public record class PackageComparison
     public required string RightPackageVersion { get; init; }
 
     public required Dictionary<string, ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>> ValueSets { get; init; }
-    public required Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> PrimitiveTypes { get; init; }
+    public required Dictionary<string, ComparisonRecord<StructureInfoRec>> PrimitiveTypes { get; init; }
     public required Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> ComplexTypes { get; init; }
     public required Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> Resources { get; init; }
     //public required Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> LogicalModels { get; init; }
