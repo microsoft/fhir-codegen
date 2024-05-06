@@ -46,6 +46,8 @@ public class PackageComparer
     private DefinitionCollection _left;
     private DefinitionCollection _right;
 
+    private HashSet<FhirArtifactClassEnum> _leftOnlyClasses = [ FhirArtifactClassEnum.PrimitiveType ];
+
     private DefinitionCollection? _maps;
     private Dictionary<string, List<string>> _knownValueSetMaps = [];
     private string _mapCanonical = string.Empty;
@@ -761,7 +763,6 @@ public class PackageComparer
         writer.WriteLine();
         writer.WriteLine($"#### Comparison Result: {cRec.GetStatusString()}");
         writer.WriteLine();
-
     }
 
     private void WriteComparisonRecStatusTable(ExportStreamWriter writer, IComparisonRecord cRec, bool inLeft = true, bool inRight = true)
@@ -840,6 +841,12 @@ public class PackageComparer
 
         if (lSource.Count == 0)
         {
+            if (_leftOnlyClasses.Contains(artifactClass))
+            {
+                c = null;
+                return false;
+            }
+
             c = new()
             {
                 ComparisonArtifactType = artifactClass,
@@ -874,6 +881,15 @@ public class PackageComparer
             return true;
         }
 
+        bool keyInLeft = lSource.Any(i => i.Code == conceptCode);
+        bool keyInRight = rSource.Any(i => i.Code == conceptCode);
+
+        if (_leftOnlyClasses.Contains(artifactClass) && !keyInLeft)
+        {
+            c = null;
+            return false;
+        }
+
         // initial relationship is based on the number of comparison records
         (CMR relationship, int maxIndex) = GetInitialRelationship(lSource, rSource);
 
@@ -904,9 +920,6 @@ public class PackageComparer
                 messages.Add($"{_rightRLiteral} code {right.Code} has a different description than {_leftRLiteral} code {left.Code}");
             }
         }
-
-        bool keyInLeft = lSource.Any(i => i.Code == conceptCode);
-        bool keyInRight = rSource.Any(i => i.Code == conceptCode);
 
         string message;
 
@@ -1004,6 +1017,12 @@ public class PackageComparer
 
         if (lSource.Count == 0)
         {
+            if (_leftOnlyClasses.Contains(artifactClass))
+            {
+                c = null;
+                return false;
+            }
+
             c = new()
             {
                 ComparisonArtifactType = artifactClass,
@@ -1038,11 +1057,14 @@ public class PackageComparer
             return true;
         }
 
-        //// TODO: check existing type maps
-        //if (left.Name != right.Name)
-        //{
-        //    throw new Exception("Type names do not match");
-        //}
+        bool keyInLeft = lSource.Any(i => i.Name == typeName);
+        bool keyInRight = rSource.Any(i => i.Name == typeName);
+
+        if (_leftOnlyClasses.Contains(artifactClass) && !keyInLeft)
+        {
+            c = null;
+            return false;
+        }
 
         // initial relationship is based on the number of comparison records
         (CMR relationship, int maxIndex) = GetInitialRelationship(lSource, rSource);
@@ -1115,9 +1137,6 @@ public class PackageComparer
                 messages.Add($"{right.Name} removed target profiles: {string.Join(", ", removedTargets)}");
             }
         }
-
-        bool keyInLeft = lSource.Any(i => i.Name == typeName);
-        bool keyInRight = rSource.Any(i => i.Name == typeName);
 
         string message;
 
@@ -1203,6 +1222,12 @@ public class PackageComparer
 
         if (lSource.Count == 0)
         {
+            if (_leftOnlyClasses.Contains(artifactClass))
+            {
+                c = null;
+                return false;
+            }
+
             c = new()
             {
                 ComparisonArtifactType = artifactClass,
@@ -1241,6 +1266,12 @@ public class PackageComparer
 
         bool keyInLeft = lSource.Any(i => i.Url == url);
         bool keyInRight = rSource.Any(i => i.Url == url);
+
+        if (_leftOnlyClasses.Contains(artifactClass) && !keyInLeft)
+        {
+            c = null;
+            return false;
+        }
 
         // check for all concepts being equivalent
         if ((lSource.Count == 1) &&
@@ -1379,6 +1410,12 @@ public class PackageComparer
 
         if (lSource.Count == 0)
         {
+            if (_leftOnlyClasses.Contains(artifactClass))
+            {
+                c = null;
+                return false;
+            }
+
             c = new()
             {
                 ComparisonArtifactType = artifactClass,
@@ -1413,6 +1450,15 @@ public class PackageComparer
                 Children = typeComparison,
             };
             return true;
+        }
+
+        bool keyInLeft = lSource.Any(i => i.Path == edPath);
+        bool keyInRight = rSource.Any(i => i.Path == edPath);
+
+        if (_leftOnlyClasses.Contains(artifactClass) && !keyInLeft)
+        {
+            c = null;
+            return false;
         }
 
         // initial relationship is based on the number of comparison records
@@ -1651,9 +1697,6 @@ public class PackageComparer
         //string message = $"{_rightRLiteral} element {edPath} is {relationship}" +
         //    (messages.Count == 0 ? string.Empty : (" because " + string.Join(" and ", messages.Distinct())));
 
-        bool keyInLeft = lSource.Any(i => i.Path == edPath);
-        bool keyInRight = rSource.Any(i => i.Path == edPath);
-
         string message;
 
         if (relationship == CMR.Equivalent)
@@ -1728,6 +1771,12 @@ public class PackageComparer
 
         if (lSource.Count == 0)
         {
+            if (_leftOnlyClasses.Contains(artifactClass))
+            {
+                c = null;
+                return false;
+            }
+
             c = new()
             {
                 ComparisonArtifactType = artifactClass,
@@ -1766,6 +1815,12 @@ public class PackageComparer
 
         bool keyInLeft = lSource.Any(i => i.Name == sdName);
         bool keyInRight = rSource.Any(i => i.Name == sdName);
+
+        if (_leftOnlyClasses.Contains(artifactClass) && !keyInLeft)
+        {
+            c = null;
+            return false;
+        }
 
         // check for all elements being the same
         if (elementComparison.Values.All(ec => ec.Relationship == CMR.Equivalent))
@@ -2228,6 +2283,7 @@ public class PackageComparer
                     // traverse the map targets to pull target information
                     foreach (ConceptMap.TargetElementComponent te in sourceMap.Target)
                     {
+                        // check if already added
                         if (usedTargetNames.Contains(te.Code))
                         {
                             continue;
@@ -2295,6 +2351,18 @@ public class PackageComparer
                 rightInfoSource = right.TryGetValue(sdName, out StructureInfoRec? rightInfo) ? [rightInfo] : [];
             }
 
+            //// if we have relationships from a map, we want to look for extra relationships that we can filter
+            //if ((targetRelationships.Count != 0) &&
+            //    targetRelationships.Any(kvp => IsEquivalenceMapping(kvp.Value)) &&
+            //    targetRelationships.Any(kvp => !IsEquivalenceMapping(kvp.Value)))
+            //{
+            //    // remove the non-equivalence mappings
+            //    foreach (string key in targetRelationships.Where(kvp => !IsEquivalenceMapping(kvp.Value)).Select(kvp => kvp.Key))
+            //    {
+            //        targetRelationships.Remove(key);
+            //    }
+            //}
+
             Dictionary<string, ElementDefinition> leftElements = [];
             Dictionary<string, ElementDefinition> rightElements = [];
 
@@ -2325,52 +2393,6 @@ public class PackageComparer
                 }
             }
 
-            //if (leftInfoSource.Count == 0)
-            //{
-            //    leftElements = [];
-            //}
-            //else if (leftInfoSource.Count == 1)
-            //{
-            //    //if (leftInput.TryGetValue(sdName, out StructureDefinition? leftSd))
-            //    if (leftInput.TryGetValue(leftInfoSource[0].Name, out StructureDefinition? leftSd))
-            //    {
-            //        leftElements = leftSd.cgElements().ToDictionary(e => e.Path);
-            //    }
-            //    else
-            //    {
-            //        leftElements = [];
-            //    }
-
-            //    //leftElements = leftSd.cgElements().ToDictionary(e => e.Path);
-            //}
-            //else
-            //{
-            //    throw new Exception("TODO");
-            //}
-
-            //if (rightInfoSource.Count == 0)
-            //{
-            //    rightElements = [];
-            //}
-            //else if (rightInfoSource.Count == 1)
-            //{
-            //    //if (rightInput.TryGetValue(sdName, out StructureDefinition? rightSd))
-            //    if (rightInput.TryGetValue(rightInfoSource[0].Name, out StructureDefinition? rightSd))
-            //    {
-            //        rightElements = rightSd.cgElements().ToDictionary(e => e.Path);
-            //    }
-            //    else
-            //    {
-            //        rightElements = [];
-            //    }
-
-            //    //rightElements = rightSd.cgElements().ToDictionary(e => e.Path);
-            //}
-            //else
-            //{
-            //    throw new Exception("TODO");
-            //}
-
             // perform element comparison
             Dictionary<string, ComparisonRecord<ElementInfoRec, ElementTypeInfoRec>> elementComparison = Compare(artifactClass, leftElements, rightElements);
 
@@ -2386,6 +2408,16 @@ public class PackageComparer
 
         return comparison;
     }
+
+    private bool IsEquivalenceMapping(CMR? relationship) => relationship switch
+    {
+        CMR.Equivalent => true,
+        CMR.SourceIsNarrowerThanTarget => true,
+        CMR.SourceIsBroaderThanTarget => true,
+        CMR.RelatedTo => false,
+        CMR.NotRelatedTo => false,
+        _ => false,
+    };
 
     private ConceptInfoRec GetInfo(FhirConcept c)
     {
