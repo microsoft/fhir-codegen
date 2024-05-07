@@ -124,15 +124,18 @@ public class ComparisonRecord<T, U> : ComparisonRecord<T>, IComparisonRecord<T, 
     {
         Dictionary<string, int> counts = [];
 
+        bool checkLeft = inLeft && !inRight;
+        bool checkRight = inRight && !inLeft;
+
         // build summary data
         foreach (ComparisonRecord<U> c in Children.Values)
         {
-            if (inLeft && !c.KeyInLeft)
+            if (checkLeft && !c.KeyInLeft)
             {
                 continue;
             }
 
-            if (inRight && !c.KeyInRight)
+            if (checkRight && !c.KeyInRight)
             {
                 continue;
             }
@@ -179,15 +182,18 @@ public class ComparisonRecord<T, U, V> : ComparisonRecord<T>, IComparisonRecord<
     {
         Dictionary<string, int> counts = [];
 
+        bool checkLeft = inLeft && !inRight;
+        bool checkRight = inRight && !inLeft;
+
         // build summary data
         foreach (ComparisonRecord<U, V> c in Children.Values)
         {
-            if (inLeft && !c.KeyInLeft)
+            if (checkLeft && !c.KeyInLeft)
             {
                 continue;
             }
 
-            if (inRight && !c.KeyInRight)
+            if (checkRight && !c.KeyInRight)
             {
                 continue;
             }

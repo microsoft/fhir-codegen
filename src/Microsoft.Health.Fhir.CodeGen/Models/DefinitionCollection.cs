@@ -79,6 +79,7 @@ public partial class DefinitionCollection
     private readonly Dictionary<string, string> _valueSetUrlsById = [];
 
     private readonly Dictionary<string, ConceptMap> _conceptMapsByUrl = [];
+    private readonly Dictionary<string, StructureMap> _structureMapsByUrl = [];
 
     private readonly Dictionary<string, List<StructureElementCollection>> _coreBindingEdsByPathByValueSet = [];
     private readonly Dictionary<string, List<StructureElementCollection>> _extendedBindingEdsByPathByValueSet = [];
@@ -955,7 +956,6 @@ public partial class DefinitionCollection
     }
 
     public IReadOnlyDictionary<string, ConceptMap> ConceptMapsByUrl => _conceptMapsByUrl;
-
     public void AddConceptMap(ConceptMap cm, string packageId, string packageVersion)
     {
         // check to see if this resource already exists
@@ -974,6 +974,27 @@ public partial class DefinitionCollection
 
         _conceptMapsByUrl[cm.Url] = cm;
         TrackResource(cm);
+    }
+
+    public IReadOnlyDictionary<string, StructureMap> StructureMapsByUrl => _structureMapsByUrl;
+    public void AddStructureMap(StructureMap sm, string packageId, string packageVersion)
+    {
+        // check to see if this resource already exists
+        if (_structureMapsByUrl.TryGetValue(sm.Url, out StructureMap? prev) &&
+            TryGetPackageSource(prev, out string prevPackageId, out _))
+        {
+            // official examples packages contain all the definitions, but we want the ones from core
+            if (prevPackageId.Contains(".core") && !packageId.Contains(".core"))
+            {
+                return;
+            }
+        }
+
+        // add the package source
+        AddPackageSource(sm, packageId, packageVersion);
+
+        _structureMapsByUrl[sm.Url] = sm;
+        TrackResource(sm);
     }
 
     /// <summary>Gets the value set versions.</summary>

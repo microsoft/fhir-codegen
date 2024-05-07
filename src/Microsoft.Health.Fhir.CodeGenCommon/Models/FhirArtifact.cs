@@ -68,7 +68,8 @@ public enum FhirArtifactClassEnum
     /// <summary>NamingSystem.</summary>
     NamingSystem,
 
-    /// <summary>StructureMap.</summary>
+    /// <summary>Structure Map - A Map of relationships between 2 structures that can be used to transform data..</summary>
+    [Description("A Map of relationships between 2 structures that can be used to transform data.")]
     StructureMap,
 
 

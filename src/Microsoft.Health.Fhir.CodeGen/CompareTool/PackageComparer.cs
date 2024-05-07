@@ -52,8 +52,8 @@ public class PackageComparer
     private HashSet<FhirArtifactClassEnum> _leftOnlyClasses = [];
 
     private DefinitionCollection? _maps;
-    private Dictionary<string, List<string>> _knownValueSetMaps = [];
-    private Dictionary<string, ConceptMap> _structureElementMaps = [];
+    private Dictionary<string, List<string>> _valueSetConceptMaps = [];
+    private Dictionary<string, ConceptMap> _elementConceptMaps = [];
     private string _mapCanonical = string.Empty;
 
     private Dictionary<string, CMR> _typeRelationships = [];
@@ -396,8 +396,113 @@ public class PackageComparer
             MainPackageCanonical = _mapCanonical,
         };
 
-        return TryLoadCrossVersionConceptMaps(loader);
+        if (!TryLoadCrossVersionConceptMaps(loader))
+        {
+            throw new Exception("Failed to load cross-version maps");
+        }
+
+
+
+        return true;
     }
+
+    //private bool TryLoadCrossVersionStructureMaps(PackageLoader loader)
+    //{
+    //    string sourcePath = Path.Combine(_config.CrossVersionRepoPathV1, "temp", $"{_leftRLiteral}_{_rightRLiteral}");
+    //    if (!Directory.Exists(sourcePath))
+    //    {
+    //        throw new DirectoryNotFoundException($"Could not find fhir-cross-version structure map source directory: {sourcePath}");
+    //    }
+
+    //    string filenameFilter = "*.json";
+
+    //    string[] files = Directory.GetFiles(sourcePath, filenameFilter, SearchOption.TopDirectoryOnly);
+
+    //    foreach (string filename in files)
+    //    {
+    //        try
+    //        {
+    //            object? loaded = loader.ParseContentsSystemTextStream("fhir+json", filename, typeof(StructureMap));
+    //            if (loaded is not StructureMap sm)
+    //            {
+    //                Console.WriteLine($"Error loading {filename}: could not parse as StructureMap");
+    //                continue;
+    //            }
+
+    //            string url = sm.Url ?? throw new Exception($"StructureMap {filename} is missing a URL");
+
+    //            if (sm.Structure.Count < 2)
+    //            {
+    //                Console.WriteLine($"Skipping StructureMap {url} with {sm.Structure.Count} structures...");
+    //                throw new Exception($"StructureMap {url} does not have enough structures: {string.Join(", ", sm.Structure.Select(s => $"{s.Url}:{s.Mode}:{s.Alias}"))}");
+    //            }
+
+    //            StructureMap.StructureComponent? leftStructure = sm.Structure.FirstOrDefault(s => s.Mode == StructureMap.StructureMapModelMode.Source);
+
+    //            if (leftStructure is null)
+    //            {
+    //                throw new Exception($"StructureMap {url} does not have a source structure");
+    //            }
+
+    //            string leftName = leftStructure.Url.Split('/', '#')[^1];
+
+    //            List<StructureMap.StructureComponent> rightStructures = sm.Structure.Where(s => s.Mode == StructureMap.StructureMapModelMode.Target).ToList();
+
+    //            if (rightStructures.Count == 0)
+    //            {
+    //                throw new Exception($"StructureMap {url} does not have a target structure");
+    //            }
+
+    //            if (_maps!.StructureMapsByUrl.ContainsKey(url))
+    //            {
+    //                Console.WriteLine($"Skipping duplicate structure map definition for {url}...");
+    //                continue;
+    //            }
+
+    //            // fix our structure URLs to be canonicals
+    //            leftStructure.Url = $"{_left.MainPackageCanonical}/StructureDefinition/{leftStructure.Url}|{_left.MainPackageVersion}";
+
+    //            // update our info
+    //            sm.Id = $"{_leftRLiteral}-{leftName}-{_rightRLiteral}-{rightName}";
+    //            sm.Url = url;
+    //            sm.Name = "Map Concepts from " + leftName + " to " + rightName;
+    //            sm.Title = $"Cross-version map for concepts from {_leftRLiteral} {leftName} to {_rightRLiteral} {rightName}";
+
+    //            // try to manufacture correct value set URLs based on what we have
+    //            sm.SourceScope = new Canonical($"{_left.MainPackageCanonical}/ValueSet/{leftName}|{_left.MainPackageVersion}");
+    //            sm.TargetScope = new Canonical($"{_right.MainPackageCanonical}/ValueSet/{rightName}|{_right.MainPackageVersion}");
+
+    //            string leftUrl = $"{_left.MainPackageCanonical}/ValueSet/{leftName}";
+    //            string rightUrl = $"{_right.MainPackageCanonical}/ValueSet/{rightName}";
+
+    //            if (sm.Group?.Count == 1)
+    //            {
+    //                sm.Group[0].Source = leftUrl;
+    //                sm.Group[0].Target = rightUrl;
+    //            }
+
+    //            // add to our listing of value set maps
+    //            if (_valueSetConceptMaps.TryGetValue(leftName, out List<string>? rightList))
+    //            {
+    //                rightList.Add(rightUrl);
+    //            }
+    //            else
+    //            {
+    //                _valueSetConceptMaps.Add(leftName, [rightUrl]);
+    //            }
+
+
+
+    //            // add this to our maps
+    //            _maps!.AddStructureMap(sm, _maps.MainPackageId, _maps.MainPackageVersion);
+    //        }
+    //        catch (Exception ex)
+    //        {
+    //            Console.WriteLine($"Error loading {filename}: {ex.Message}");
+    //        }
+    //    }
+
+    //}
 
     private bool TryLoadCrossVersionConceptMaps(PackageLoader loader)
     {
@@ -549,13 +654,13 @@ public class PackageComparer
                             }
 
                             // add to our listing of value set maps
-                            if (_knownValueSetMaps.TryGetValue(leftName, out List<string>? rightList))
+                            if (_valueSetConceptMaps.TryGetValue(leftName, out List<string>? rightList))
                             {
                                 rightList.Add(rightUrl);
                             }
                             else
                             {
-                                _knownValueSetMaps.Add(leftName, [rightUrl]);
+                                _valueSetConceptMaps.Add(leftName, [rightUrl]);
                             }
                         }
                         break;
@@ -584,7 +689,7 @@ public class PackageComparer
                                 throw new Exception($"Invalid left canonical in {cm.Url}");
                             }
 
-                            _structureElementMaps.Add(leftName, cm);
+                            _elementConceptMaps.Add(leftName, cm);
                         }
                         break;
 
@@ -600,7 +705,7 @@ public class PackageComparer
                                 throw new Exception($"Invalid left canonical in {cm.Url}");
                             }
 
-                            _structureElementMaps.Add(leftName, cm);
+                            _elementConceptMaps.Add(leftName, cm);
                         }
                         break;
                 }
@@ -673,13 +778,13 @@ public class PackageComparer
                             }
 
                             // add to our listing of value set maps
-                            if (_knownValueSetMaps.TryGetValue(leftName, out List<string>? rightList))
+                            if (_valueSetConceptMaps.TryGetValue(leftName, out List<string>? rightList))
                             {
                                 rightList.Add(rightUrl);
                             }
                             else
                             {
-                                _knownValueSetMaps.Add(leftName, [rightUrl]);
+                                _valueSetConceptMaps.Add(leftName, [rightUrl]);
                             }
                         }
                         break;
@@ -1278,7 +1383,7 @@ public class PackageComparer
 
         HashSet<string> mappedSets = [];
 
-        foreach ((string left, List<string> rights) in _knownValueSetMaps)
+        foreach ((string left, List<string> rights) in _valueSetConceptMaps)
         {
             mappedSets.Add(left);
             foreach (string right in rights)
@@ -3023,7 +3128,7 @@ public class PackageComparer
 
         foreach (string url in keys)
         {
-            List<string> rightUrls = _knownValueSetMaps.TryGetValue(url, out List<string>? vsTargets) ? vsTargets : [];
+            List<string> rightUrls = _valueSetConceptMaps.TryGetValue(url, out List<string>? vsTargets) ? vsTargets : [];
             if (rightUrls.Count == 0)
             {
                 rightUrls = [url];
@@ -3743,7 +3848,7 @@ public class PackageComparer
             // for now, we have a global element map.  Once we have resource-specific ones, load those per structure in the loop
             ConceptMap? elementMap = artifactClass switch
             {
-                FhirArtifactClassEnum.ComplexType => _structureElementMaps.TryGetValue(sdName, out ConceptMap? map) ? map : _elementMapV1,
+                FhirArtifactClassEnum.ComplexType => _elementConceptMaps.TryGetValue(sdName, out ConceptMap? map) ? map : _elementMapV1,
                 FhirArtifactClassEnum.Resource => _elementMapV1,
                 _ => null
             };
