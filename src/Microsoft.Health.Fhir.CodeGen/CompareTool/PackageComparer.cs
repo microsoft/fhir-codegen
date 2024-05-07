@@ -49,23 +49,15 @@ public class PackageComparer
     private DefinitionCollection _left;
     private DefinitionCollection _right;
 
-    private HashSet<FhirArtifactClassEnum> _leftOnlyClasses = [];
+    private CrossVersionMapCollection? _crossVersion = null;
 
-    private DefinitionCollection? _maps;
-    private Dictionary<string, List<string>> _valueSetConceptMaps = [];
-    private Dictionary<string, ConceptMap> _elementConceptMaps = [];
-    private string _mapCanonical = string.Empty;
+    private HashSet<FhirArtifactClassEnum> _leftOnlyClasses = [];
 
     private Dictionary<string, CMR> _typeRelationships = [];
 
-    private ConceptMap? _dataTypeMap = null;
-    private ConceptMap? _resourceTypeMap = null;
-    private ConceptMap? _elementMapV1 = null;
 
     private string _leftRLiteral;
-    //private string _leftShortVersion;
     private string _rightRLiteral;
-    //private string _rightShortVersion;
 
     private const string _leftTableLiteral = "Source";
     private const string _rightTableLiteral = "Destination";
@@ -86,7 +78,7 @@ public class PackageComparer
         public required Dictionary<string, string> LeftRightPath { get; init; }
     }
 
-    private static readonly HashSet<string> _exclusionSet =
+    internal static readonly HashSet<string> _exclusionSet =
     [
         /* UCUM is used as a required binding in a codeable concept. Since we do not
          * use enums in this situation, it is not useful to generate this valueset
@@ -105,6 +97,12 @@ public class PackageComparer
          * starter value sets.  TODO: consider if we want to generate constants for those.
          */
         "http://hl7.org/fhir/ValueSet/mimetypes",
+
+        /* ISO 3166 is large and has not changed since used in this context - do not map it
+         * This should not need to be in the list - it is a system not a value set
+         */
+        //"urn:iso:std:iso:3166",
+        //"urn:iso:std:iso:3166:-2",
     ];
 
     public PackageComparer(ConfigCompare config, IFhirPackageClient cache, DefinitionCollection left, DefinitionCollection right)
@@ -137,17 +135,27 @@ public class PackageComparer
             $"Comparing {_left.MainPackageId}#{_left.MainPackageVersion}" +
             $" and {_right.MainPackageId}#{_right.MainPackageVersion}");
 
-        if (!string.IsNullOrEmpty(_config.CrossVersionRepoPathV1))
+        // check for loading cross-version maps
+        if (!string.IsNullOrEmpty(_config.CrossVersionMapSourcePath))
         {
-            if (!TryLoadFhirCrossVersionMaps())
+            _crossVersion = new(_cache, _left, _right);
+
+            if (!_crossVersion.TryLoadConceptMaps(_config.CrossVersionMapSourcePath))
             {
                 throw new Exception("Failed to load requested cross-version maps");
             }
         }
 
-        string outputDir = string.IsNullOrEmpty(_config.CrossVersionRepoPathV2)
+        // check if we are saving cross version maps and did not load any
+        if ((_crossVersion is null) && (_config.MapSaveStyle != ConfigCompare.ComparisonMapSaveStyle.None))
+        {
+            // create our cross-version map collection
+            _crossVersion = new(_cache, _left, _right);
+        }
+
+        string outputDir = string.IsNullOrEmpty(_config.CrossVersionMapDestinationPath)
             ? Path.Combine(_config.OutputDirectory, $"{_leftRLiteral}_{_rightRLiteral}")
-            : Path.Combine(_config.CrossVersionRepoPathV2, $"{_leftRLiteral}_{_rightRLiteral}");
+            : Path.Combine(_config.CrossVersionMapDestinationPath, $"{_leftRLiteral}_{_rightRLiteral}");
 
         if (!Directory.Exists(outputDir))
         {
@@ -199,18 +207,16 @@ public class PackageComparer
             }
 
             // write out the resource type map
-            if (mdWriter is not null)
+            if (_config.MapSaveStyle != ConfigCompare.ComparisonMapSaveStyle.None)
             {
-                WriteValueSetMap(conceptMapDir, _vsComparisons.Values);
-            }
+                string mapSubDir = Path.Combine(conceptMapDir, "ValueSets");
+                if (!Directory.Exists(mapSubDir))
+                {
+                    Directory.CreateDirectory(mapSubDir);
+                }
 
-            string mapSubDir = Path.Combine(conceptMapDir, "ValueSets");
-            if (!Directory.Exists(mapSubDir))
-            {
-                Directory.CreateDirectory(mapSubDir);
+                WriteValueSetMaps(mapSubDir, _vsComparisons.Values);
             }
-
-            WriteValueSetMaps(mapSubDir, _vsComparisons.Values);
         }
 
         Dictionary<string, ComparisonRecord<StructureInfoRec>> primitives = ComparePrimitives(FhirArtifactClassEnum.PrimitiveType, _left.PrimitiveTypesByName, _right.PrimitiveTypesByName);
@@ -371,40 +377,40 @@ public class PackageComparer
         return packageComparison;
     }
 
-    private bool TryLoadFhirCrossVersionMaps()
-    {
-        Console.WriteLine($"Loading fhir-cross-version concept maps for conversion from {_leftRLiteral} to {_rightRLiteral}...");
+    //private bool TryLoadFhirCrossVersionMaps()
+    //{
+    //    Console.WriteLine($"Loading fhir-cross-version concept maps for conversion from {_leftRLiteral} to {_rightRLiteral}...");
 
-        PackageLoader loader = new(_cache, new()
-        {
-            JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
-            AutoLoadExpansions = false,
-            ResolvePackageDependencies = false,
-        });
+    //    PackageLoader loader = new(_cache, new()
+    //    {
+    //        JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
+    //        AutoLoadExpansions = false,
+    //        ResolvePackageDependencies = false,
+    //    });
 
-        _mapCanonical = $"http://hl7.org/fhir/uv/xver/{_leftRLiteral.ToLowerInvariant()}-{_rightRLiteral.ToLowerInvariant()}";
+    //    _mapCanonical = $"http://hl7.org/fhir/uv/xver/{_leftRLiteral.ToLowerInvariant()}-{_rightRLiteral.ToLowerInvariant()}";
 
-        // create our maps collection
-        _maps = new()
-        {
-            Name = "FHIR Cross Version Maps",
-            FhirVersion = FHIRVersion.N5_0_0,
-            FhirVersionLiteral = "5.0.0",
-            FhirSequence = FhirReleases.FhirSequenceCodes.R5,
-            MainPackageId = $"hl7.fhir.uv.xver.{_leftRLiteral.ToLowerInvariant()}-{_rightRLiteral.ToLowerInvariant()}",
-            MainPackageVersion = "0.0.1",
-            MainPackageCanonical = _mapCanonical,
-        };
+    //    // create our maps collection
+    //    _maps = new()
+    //    {
+    //        Name = "FHIR Cross Version Maps",
+    //        FhirVersion = FHIRVersion.N5_0_0,
+    //        FhirVersionLiteral = "5.0.0",
+    //        FhirSequence = FhirReleases.FhirSequenceCodes.R5,
+    //        MainPackageId = $"hl7.fhir.uv.xver.{_leftRLiteral.ToLowerInvariant()}-{_rightRLiteral.ToLowerInvariant()}",
+    //        MainPackageVersion = "0.0.1",
+    //        MainPackageCanonical = _mapCanonical,
+    //    };
 
-        if (!TryLoadCrossVersionConceptMaps(loader))
-        {
-            throw new Exception("Failed to load cross-version maps");
-        }
+    //    if (!TryLoadCrossVersionConceptMaps(loader))
+    //    {
+    //        throw new Exception("Failed to load cross-version maps");
+    //    }
 
 
 
-        return true;
-    }
+    //    return true;
+    //}
 
     //private bool TryLoadCrossVersionStructureMaps(PackageLoader loader)
     //{
@@ -504,417 +510,395 @@ public class PackageComparer
 
     //}
 
-    private bool TryLoadCrossVersionConceptMaps(PackageLoader loader)
-    {
-        // TODO: load these!
-        // prefer v2 maps
-        //if (!string.IsNullOrEmpty(_config.CrossVersionRepoPathV2))
-        //{
-        //    if (!TryLoadCrossVersionConceptMapsV2(loader, ConceptMapType.ValueSetConcepts))
-        //    {
-        //        throw new Exception($"Failed to load cross-version value set concept maps");
-        //    }
+    //private bool TryLoadCrossVersionConceptMaps(PackageLoader loader)
+    //{
+    //    // TODO: load these!
+    //    // prefer v2 maps
+    //    //if (!string.IsNullOrEmpty(_config.CrossVersionRepoPathV2))
+    //    //{
+    //    //    if (!TryLoadCrossVersionConceptMapsV2(loader, ConceptMapType.ValueSetConcepts))
+    //    //    {
+    //    //        throw new Exception($"Failed to load cross-version value set concept maps");
+    //    //    }
 
-        //    if (!TryLoadCrossVersionConceptMapsV2(loader, ConceptMapType.DataTypeMap))
-        //    {
-        //        throw new Exception($"Failed to load cross-version type concept map");
-        //    }
+    //    //    if (!TryLoadCrossVersionConceptMapsV2(loader, ConceptMapType.DataTypeMap))
+    //    //    {
+    //    //        throw new Exception($"Failed to load cross-version type concept map");
+    //    //    }
 
-        //    if (!TryLoadCrossVersionConceptMapsV2(loader, ConceptMapType.ComplexTypeElements))
-        //    {
-        //        throw new Exception($"Failed to load cross-version complex type concept maps");
-        //    }
+    //    //    if (!TryLoadCrossVersionConceptMapsV2(loader, ConceptMapType.ComplexTypeElements))
+    //    //    {
+    //    //        throw new Exception($"Failed to load cross-version complex type concept maps");
+    //    //    }
 
-        //    if (!TryLoadCrossVersionConceptMapsV2(loader, ConceptMapType.ResourceElements))
-        //    {
-        //        throw new Exception($"Failed to load cross-version resource concept maps");
-        //    }
+    //    //    if (!TryLoadCrossVersionConceptMapsV2(loader, ConceptMapType.ResourceElements))
+    //    //    {
+    //    //        throw new Exception($"Failed to load cross-version resource concept maps");
+    //    //    }
 
-        //    return true;
-        //}
+    //    //    return true;
+    //    //}
 
-        if (!string.IsNullOrEmpty(_config.CrossVersionRepoPathV1))
-        {
-            if (!TryLoadCrossVersionConceptMapsV1(loader, "codes"))
-            {
-                throw new Exception($"Failed to load cross-version code concept maps");
-            }
+    //    if (!string.IsNullOrEmpty(_config.CrossVersionRepoPathV1))
+    //    {
+    //        if (!TryLoadCrossVersionConceptMapsV1(loader, "codes"))
+    //        {
+    //            throw new Exception($"Failed to load cross-version code concept maps");
+    //        }
 
-            if (!TryLoadCrossVersionConceptMapsV1(loader, "types"))
-            {
-                throw new Exception($"Failed to load cross-version type concept maps");
-            }
+    //        if (!TryLoadCrossVersionConceptMapsV1(loader, "types"))
+    //        {
+    //            throw new Exception($"Failed to load cross-version type concept maps");
+    //        }
 
-            if (!TryLoadCrossVersionConceptMapsV1(loader, "resources"))
-            {
-                throw new Exception($"Failed to load cross-version resource concept maps");
-            }
+    //        if (!TryLoadCrossVersionConceptMapsV1(loader, "resources"))
+    //        {
+    //            throw new Exception($"Failed to load cross-version resource concept maps");
+    //        }
 
-            if (!TryLoadCrossVersionConceptMapsV1(loader, "elements"))
-            {
-                throw new Exception($"Failed to load cross-version element concept maps");
-            }
+    //        if (!TryLoadCrossVersionConceptMapsV1(loader, "elements"))
+    //        {
+    //            throw new Exception($"Failed to load cross-version element concept maps");
+    //        }
 
-            return true;
-        }
+    //        return true;
+    //    }
 
-        return false;
-    }
+    //    return false;
+    //}
 
-    private enum ConceptMapType
-    {
-        ValueSetConcepts,
-        DataTypeMap,
-        ResourceTypeMap,
-        ComplexTypeElements,
-        ResourceElements,
-    }
 
-    private bool TryLoadCrossVersionConceptMapsV2(PackageLoader loader, ConceptMapType key)
-    {
-        string sourcePath = Path.Combine(_config.CrossVersionRepoPathV2, $"{_leftRLiteral}_{_rightRLiteral}", "maps");
-        if (!Directory.Exists(sourcePath))
-        {
-            throw new DirectoryNotFoundException($"Could not find fhir-cross-version/{_leftRLiteral}_{_rightRLiteral}/maps directory: {sourcePath}");
-        }
+    //private bool TryLoadCrossVersionConceptMapsV2(PackageLoader loader, ConceptMapType key)
+    //{
+    //    string sourcePath = Path.Combine(_config.CrossVersionRepoPathV2, $"{_leftRLiteral}_{_rightRLiteral}", "maps");
+    //    if (!Directory.Exists(sourcePath))
+    //    {
+    //        throw new DirectoryNotFoundException($"Could not find fhir-cross-version/{_leftRLiteral}_{_rightRLiteral}/maps directory: {sourcePath}");
+    //    }
 
-        string filenameFilter;
+    //    string filenameFilter;
 
-        switch (key)
-        {
-            case ConceptMapType.ValueSetConcepts:
-                sourcePath = Path.Combine(sourcePath, "ValueSets");
-                filenameFilter = $"ConceptMap-{_leftRLiteral}-*-{_rightRLiteral}-*.json";
-                break;
+    //    switch (key)
+    //    {
+    //        case ConceptMapType.ValueSetConcepts:
+    //            sourcePath = Path.Combine(sourcePath, "ValueSets");
+    //            filenameFilter = $"ConceptMap-{_leftRLiteral}-*-{_rightRLiteral}-*.json";
+    //            break;
 
-            case ConceptMapType.DataTypeMap:
-                filenameFilter = $"ConceptMap-{_leftRLiteral}-data-types-{_rightRLiteral}.json";
-                break;
+    //        case ConceptMapType.DataTypeMap:
+    //            filenameFilter = $"ConceptMap-{_leftRLiteral}-data-types-{_rightRLiteral}.json";
+    //            break;
 
-            case ConceptMapType.ResourceTypeMap:
-                filenameFilter = $"ConceptMap-{_leftRLiteral}-resource-types-{_rightRLiteral}.json";
-                break;
+    //        case ConceptMapType.ResourceTypeMap:
+    //            filenameFilter = $"ConceptMap-{_leftRLiteral}-resource-types-{_rightRLiteral}.json";
+    //            break;
 
-            case ConceptMapType.ComplexTypeElements:
-                sourcePath = Path.Combine(sourcePath, "ComplexTypes");
-                filenameFilter = $"ConceptMap-{_leftRLiteral}-*-{_rightRLiteral}-*.json";
-                break;
+    //        case ConceptMapType.ComplexTypeElements:
+    //            sourcePath = Path.Combine(sourcePath, "ComplexTypes");
+    //            filenameFilter = $"ConceptMap-{_leftRLiteral}-*-{_rightRLiteral}-*.json";
+    //            break;
 
-            case ConceptMapType.ResourceElements:
-                sourcePath = Path.Combine(sourcePath, "Resources");
-                filenameFilter = $"ConceptMap-{_leftRLiteral}-*-{_rightRLiteral}-*.json";
-                break;
+    //        case ConceptMapType.ResourceElements:
+    //            sourcePath = Path.Combine(sourcePath, "Resources");
+    //            filenameFilter = $"ConceptMap-{_leftRLiteral}-*-{_rightRLiteral}-*.json";
+    //            break;
 
-            default:
-                throw new ArgumentException($"Unknown key: {key}");
-        }
+    //        default:
+    //            throw new ArgumentException($"Unknown key: {key}");
+    //    }
 
-        string[] files = Directory.GetFiles(sourcePath, filenameFilter, SearchOption.TopDirectoryOnly);
+    //    string[] files = Directory.GetFiles(sourcePath, filenameFilter, SearchOption.TopDirectoryOnly);
 
-        foreach (string filename in files)
-        {
-            try
-            {
-                object? loaded = loader.ParseContentsSystemTextStream("fhir+json", filename, typeof(ConceptMap));
-                if (loaded is not ConceptMap cm)
-                {
-                    Console.WriteLine($"Error loading {filename}: could not parse as ConceptMap");
-                    continue;
-                }
+    //    foreach (string filename in files)
+    //    {
+    //        try
+    //        {
+    //            object? loaded = loader.ParseContentsSystemTextStream("fhir+json", filename, typeof(ConceptMap));
+    //            if (loaded is not ConceptMap cm)
+    //            {
+    //                Console.WriteLine($"Error loading {filename}: could not parse as ConceptMap");
+    //                continue;
+    //            }
 
-                // fix urls so we can find things
-                switch (key)
-                {
-                    case ConceptMapType.ValueSetConcepts:
-                        {
-                            if (_maps!.ConceptMapsByUrl.ContainsKey(cm.Url))
-                            {
-                                Console.WriteLine($"Skipping duplicate concept map definition for {cm.Url}...");
-                                continue;
-                            }
+    //            // fix urls so we can find things
+    //            switch (key)
+    //            {
+    //                case ConceptMapType.ValueSetConcepts:
+    //                    {
+    //                        if (_maps!.ConceptMapsByUrl.ContainsKey(cm.Url))
+    //                        {
+    //                            Console.WriteLine($"Skipping duplicate concept map definition for {cm.Url}...");
+    //                            continue;
+    //                        }
 
-                            string leftName;
-                            if (cm.SourceScope is Canonical leftCanonical)
-                            {
-                                leftName = leftCanonical.Uri?.Split(['/', '#'])[^1] ?? throw new Exception($"Invalid left canonical in {cm.Url}");
-                            }
-                            else
-                            {
-                                throw new Exception($"Invalid left canonical in {cm.Url}");
-                            }
+    //                        string leftName;
+    //                        if (cm.SourceScope is Canonical leftCanonical)
+    //                        {
+    //                            leftName = leftCanonical.Uri?.Split(['/', '#'])[^1] ?? throw new Exception($"Invalid left canonical in {cm.Url}");
+    //                        }
+    //                        else
+    //                        {
+    //                            throw new Exception($"Invalid left canonical in {cm.Url}");
+    //                        }
 
-                            string rightUrl;
-                            if (cm.TargetScope is Canonical rightCanonical)
-                            {
-                                rightUrl = rightCanonical.Uri ?? throw new Exception($"Invalid right canonical in {cm.Url}");
-                            }
-                            else
-                            {
-                                throw new Exception($"Invalid right canonical in {cm.Url}");
-                            }
+    //                        string rightUrl;
+    //                        if (cm.TargetScope is Canonical rightCanonical)
+    //                        {
+    //                            rightUrl = rightCanonical.Uri ?? throw new Exception($"Invalid right canonical in {cm.Url}");
+    //                        }
+    //                        else
+    //                        {
+    //                            throw new Exception($"Invalid right canonical in {cm.Url}");
+    //                        }
 
-                            // add to our listing of value set maps
-                            if (_valueSetConceptMaps.TryGetValue(leftName, out List<string>? rightList))
-                            {
-                                rightList.Add(rightUrl);
-                            }
-                            else
-                            {
-                                _valueSetConceptMaps.Add(leftName, [rightUrl]);
-                            }
-                        }
-                        break;
+    //                        // add to our listing of value set maps
+    //                        if (_valueSetConceptMaps.TryGetValue(leftName, out List<string>? rightList))
+    //                        {
+    //                            rightList.Add(rightUrl);
+    //                        }
+    //                        else
+    //                        {
+    //                            _valueSetConceptMaps.Add(leftName, [rightUrl]);
+    //                        }
+    //                    }
+    //                    break;
 
-                    case ConceptMapType.DataTypeMap:
-                        {
-                            _dataTypeMap = cm;
-                        }
-                        break;
+    //                case ConceptMapType.DataTypeMap:
+    //                    {
+    //                        _dataTypeMap = cm;
+    //                    }
+    //                    break;
 
-                    case ConceptMapType.ResourceTypeMap:
-                        {
-                            _resourceTypeMap = cm;
-                        }
-                        break;
+    //                case ConceptMapType.ResourceTypeMap:
+    //                    {
+    //                        _resourceTypeMap = cm;
+    //                    }
+    //                    break;
 
-                    case ConceptMapType.ComplexTypeElements:
-                        {
-                            string leftName;
-                            if (cm.SourceScope is Canonical leftCanonical)
-                            {
-                                leftName = leftCanonical.Uri?.Split(['/', '#'])[^1] ?? throw new Exception($"Invalid left canonical in {cm.Url}");
-                            }
-                            else
-                            {
-                                throw new Exception($"Invalid left canonical in {cm.Url}");
-                            }
+    //                case ConceptMapType.ComplexTypeElements:
+    //                    {
+    //                        string leftName;
+    //                        if (cm.SourceScope is Canonical leftCanonical)
+    //                        {
+    //                            leftName = leftCanonical.Uri?.Split(['/', '#'])[^1] ?? throw new Exception($"Invalid left canonical in {cm.Url}");
+    //                        }
+    //                        else
+    //                        {
+    //                            throw new Exception($"Invalid left canonical in {cm.Url}");
+    //                        }
 
-                            _elementConceptMaps.Add(leftName, cm);
-                        }
-                        break;
+    //                        _elementConceptMaps.Add(leftName, cm);
+    //                    }
+    //                    break;
 
-                    case ConceptMapType.ResourceElements:
-                        {
-                            string leftName;
-                            if (cm.SourceScope is Canonical leftCanonical)
-                            {
-                                leftName = leftCanonical.Uri?.Split(['/', '#'])[^1] ?? throw new Exception($"Invalid left canonical in {cm.Url}");
-                            }
-                            else
-                            {
-                                throw new Exception($"Invalid left canonical in {cm.Url}");
-                            }
+    //                case ConceptMapType.ResourceElements:
+    //                    {
+    //                        string leftName;
+    //                        if (cm.SourceScope is Canonical leftCanonical)
+    //                        {
+    //                            leftName = leftCanonical.Uri?.Split(['/', '#'])[^1] ?? throw new Exception($"Invalid left canonical in {cm.Url}");
+    //                        }
+    //                        else
+    //                        {
+    //                            throw new Exception($"Invalid left canonical in {cm.Url}");
+    //                        }
 
-                            _elementConceptMaps.Add(leftName, cm);
-                        }
-                        break;
-                }
+    //                        _elementConceptMaps.Add(leftName, cm);
+    //                    }
+    //                    break;
+    //            }
 
-                // add this to our maps
-                _maps!.AddConceptMap(cm, _maps.MainPackageId, _maps.MainPackageVersion);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error loading {filename}: {ex.Message}");
-            }
-        }
+    //            // add this to our maps
+    //            _maps!.AddConceptMap(cm, _maps.MainPackageId, _maps.MainPackageVersion);
+    //        }
+    //        catch (Exception ex)
+    //        {
+    //            Console.WriteLine($"Error loading {filename}: {ex.Message}");
+    //        }
+    //    }
 
-        return true;
-    }
+    //    return true;
+    //}
 
-    private bool TryLoadCrossVersionConceptMapsV1(PackageLoader loader, string key)
-    {
-        string pathV1 = Path.Combine(_config.CrossVersionRepoPathV1, "input", key);
-        if (!Directory.Exists(pathV1))
-        {
-            throw new DirectoryNotFoundException($"Could not find fhir-cross-version/input/{key} directory: {pathV1}");
-        }
 
-        string filenameFilter = "-" + _leftRLiteral[1..] + "to" + _rightRLiteral[1..] + ".json";
+    //private bool TryLoadCrossVersionConceptMapsV1(PackageLoader loader, string key)
+    //{
+    //    string pathV1 = Path.Combine(_config.CrossVersionRepoPathV1, "input", key);
+    //    if (!Directory.Exists(pathV1))
+    //    {
+    //        throw new DirectoryNotFoundException($"Could not find fhir-cross-version/input/{key} directory: {pathV1}");
+    //    }
 
-        string[] files = Directory.GetFiles(pathV1, $"ConceptMap*{filenameFilter}", SearchOption.TopDirectoryOnly);
+    //    string filenameFilter = "-" + _leftRLiteral[1..] + "to" + _rightRLiteral[1..] + ".json";
 
-        foreach (string filename in files)
-        {
-            try
-            {
-                object? loaded = loader.ParseContentsSystemTextStream("fhir+json", filename, typeof(ConceptMap));
-                if (loaded is not ConceptMap cm)
-                {
-                    Console.WriteLine($"Error loading {filename}: could not parse as ConceptMap");
-                    continue;
-                }
+    //    string[] files = Directory.GetFiles(pathV1, $"ConceptMap*{filenameFilter}", SearchOption.TopDirectoryOnly);
 
-                // fix urls so we can find things
-                switch (key)
-                {
-                    case "codes":
-                        {
-                            (string url, string leftName, string rightName) = BuildCanonicalForValueSetMap(cm);
+    //    foreach (string filename in files)
+    //    {
+    //        try
+    //        {
+    //            object? loaded = loader.ParseContentsSystemTextStream("fhir+json", filename, typeof(ConceptMap));
+    //            if (loaded is not ConceptMap cm)
+    //            {
+    //                Console.WriteLine($"Error loading {filename}: could not parse as ConceptMap");
+    //                continue;
+    //            }
 
-                            if (_maps!.ConceptMapsByUrl.ContainsKey(url))
-                            {
-                                Console.WriteLine($"Skipping duplicate concept map definition for {url}...");
-                                continue;
-                            }
+    //            // fix urls so we can find things
+    //            switch (key)
+    //            {
+    //                case "codes":
+    //                    {
+    //                        (string url, string leftName, string rightName) = BuildCanonicalForValueSetMap(cm);
 
-                            // update our info
-                            cm.Id = $"{_leftRLiteral}-{leftName}-{_rightRLiteral}-{rightName}";
-                            cm.Url = url;
-                            cm.Name = "Map Concepts from " + leftName + " to " + rightName;
-                            cm.Title = $"Cross-version map for concepts from {_leftRLiteral} {leftName} to {_rightRLiteral} {rightName}";
+    //                        if (_maps!.ConceptMapsByUrl.ContainsKey(url))
+    //                        {
+    //                            Console.WriteLine($"Skipping duplicate concept map definition for {url}...");
+    //                            continue;
+    //                        }
 
-                            // try to manufacture correct value set URLs based on what we have
-                            cm.SourceScope = new Canonical($"{_left.MainPackageCanonical}/ValueSet/{leftName}|{_left.MainPackageVersion}");
-                            cm.TargetScope = new Canonical($"{_right.MainPackageCanonical}/ValueSet/{rightName}|{_right.MainPackageVersion}");
+    //                        // update our info
+    //                        cm.Id = $"{_leftRLiteral}-{leftName}-{_rightRLiteral}-{rightName}";
+    //                        cm.Url = url;
+    //                        cm.Name = "Map Concepts from " + leftName + " to " + rightName;
+    //                        cm.Title = $"Cross-version map for concepts from {_leftRLiteral} {leftName} to {_rightRLiteral} {rightName}";
 
-                            string leftUrl = $"{_left.MainPackageCanonical}/ValueSet/{leftName}";
-                            string rightUrl = $"{_right.MainPackageCanonical}/ValueSet/{rightName}";
+    //                        // try to manufacture correct value set URLs based on what we have
+    //                        cm.SourceScope = new Canonical($"{_left.MainPackageCanonical}/ValueSet/{leftName}|{_left.MainPackageVersion}");
+    //                        cm.TargetScope = new Canonical($"{_right.MainPackageCanonical}/ValueSet/{rightName}|{_right.MainPackageVersion}");
 
-                            if (cm.Group?.Count == 1)
-                            {
-                                cm.Group[0].Source = leftUrl;
-                                cm.Group[0].Target = rightUrl;
-                            }
+    //                        string leftUrl = $"{_left.MainPackageCanonical}/ValueSet/{leftName}";
+    //                        string rightUrl = $"{_right.MainPackageCanonical}/ValueSet/{rightName}";
 
-                            // add to our listing of value set maps
-                            if (_valueSetConceptMaps.TryGetValue(leftName, out List<string>? rightList))
-                            {
-                                rightList.Add(rightUrl);
-                            }
-                            else
-                            {
-                                _valueSetConceptMaps.Add(leftName, [rightUrl]);
-                            }
-                        }
-                        break;
-                    case "types":
-                        {
-                            string url = _maps!.MainPackageCanonical + "/ConceptMap/DataTypes";
+    //                        if (cm.Group?.Count == 1)
+    //                        {
+    //                            cm.Group[0].Source = leftUrl;
+    //                            cm.Group[0].Target = rightUrl;
+    //                        }
 
-                            // update our info
-                            cm.Id = $"{_leftRLiteral}-datatypes-{_rightRLiteral}";
-                            cm.Url = url;
-                            cm.Name = $"Map Concepts representing data types from {_leftRLiteral} to {_rightRLiteral}";
-                            cm.Title = $"Cross-version map for concepts of data types from {_leftRLiteral} to {_rightRLiteral}";
+    //                        // add to our listing of value set maps
+    //                        if (_valueSetConceptMaps.TryGetValue(leftName, out List<string>? rightList))
+    //                        {
+    //                            rightList.Add(rightUrl);
+    //                        }
+    //                        else
+    //                        {
+    //                            _valueSetConceptMaps.Add(leftName, [rightUrl]);
+    //                        }
+    //                    }
+    //                    break;
+    //                case "types":
+    //                    {
+    //                        string url = _maps!.MainPackageCanonical + "/ConceptMap/DataTypes";
 
-                            // try to manufacture correct value set URLs based on what we have
-                            cm.SourceScope = new Canonical($"{_left.MainPackageCanonical}/ValueSet/data-types|{_left.MainPackageVersion}");
-                            cm.TargetScope = new Canonical($"{_right.MainPackageCanonical}/ValueSet/data-types|{_right.MainPackageVersion}");
+    //                        // update our info
+    //                        cm.Id = $"{_leftRLiteral}-datatypes-{_rightRLiteral}";
+    //                        cm.Url = url;
+    //                        cm.Name = $"Map Concepts representing data types from {_leftRLiteral} to {_rightRLiteral}";
+    //                        cm.Title = $"Cross-version map for concepts of data types from {_leftRLiteral} to {_rightRLiteral}";
 
-                            if (cm.Group?.Count == 1)
-                            {
-                                cm.Group[0].Source = $"{_left.MainPackageCanonical}/ValueSet/data-types";
-                                cm.Group[0].Target = $"{_right.MainPackageCanonical}/ValueSet/data-types";
-                            }
+    //                        // try to manufacture correct value set URLs based on what we have
+    //                        cm.SourceScope = new Canonical($"{_left.MainPackageCanonical}/ValueSet/data-types|{_left.MainPackageVersion}");
+    //                        cm.TargetScope = new Canonical($"{_right.MainPackageCanonical}/ValueSet/data-types|{_right.MainPackageVersion}");
 
-                            _dataTypeMap = cm;
-                        }
-                        break;
-                    case "resources":
-                        {
-                            string url = _maps!.MainPackageCanonical + "/ConceptMap/Resources";
+    //                        if (cm.Group?.Count == 1)
+    //                        {
+    //                            cm.Group[0].Source = $"{_left.MainPackageCanonical}/ValueSet/data-types";
+    //                            cm.Group[0].Target = $"{_right.MainPackageCanonical}/ValueSet/data-types";
+    //                        }
 
-                            // update our info
-                            cm.Id = $"{_leftRLiteral}-resources-{_rightRLiteral}";
-                            cm.Url = url;
-                            cm.Name = $"Map Concepts representing resource from {_leftRLiteral} to {_rightRLiteral}";
-                            cm.Title = $"Cross-version map for concepts of resources from {_leftRLiteral} to {_rightRLiteral}";
+    //                        _dataTypeMap = cm;
+    //                    }
+    //                    break;
+    //                case "resources":
+    //                    {
+    //                        string url = _maps!.MainPackageCanonical + "/ConceptMap/Resources";
 
-                            // try to manufacture correct value set URLs based on what we have
-                            cm.SourceScope = new Canonical($"{_left.MainPackageCanonical}/ValueSet/resources|{_left.MainPackageVersion}");
-                            cm.TargetScope = new Canonical($"{_right.MainPackageCanonical}/ValueSet/resources|{_right.MainPackageVersion}");
+    //                        // update our info
+    //                        cm.Id = $"{_leftRLiteral}-resources-{_rightRLiteral}";
+    //                        cm.Url = url;
+    //                        cm.Name = $"Map Concepts representing resource from {_leftRLiteral} to {_rightRLiteral}";
+    //                        cm.Title = $"Cross-version map for concepts of resources from {_leftRLiteral} to {_rightRLiteral}";
 
-                            if (cm.Group?.Count == 1)
-                            {
-                                cm.Group[0].Source = $"{_left.MainPackageCanonical}/ValueSet/resources";
-                                cm.Group[0].Target = $"{_right.MainPackageCanonical}/ValueSet/resources";
-                            }
+    //                        // try to manufacture correct value set URLs based on what we have
+    //                        cm.SourceScope = new Canonical($"{_left.MainPackageCanonical}/ValueSet/resources|{_left.MainPackageVersion}");
+    //                        cm.TargetScope = new Canonical($"{_right.MainPackageCanonical}/ValueSet/resources|{_right.MainPackageVersion}");
 
-                            _resourceTypeMap = cm;
-                        }
-                        break;
-                    case "elements":
-                        {
-                            string url = _maps!.MainPackageCanonical + "/ConceptMap/Elements";
+    //                        if (cm.Group?.Count == 1)
+    //                        {
+    //                            cm.Group[0].Source = $"{_left.MainPackageCanonical}/ValueSet/resources";
+    //                            cm.Group[0].Target = $"{_right.MainPackageCanonical}/ValueSet/resources";
+    //                        }
 
-                            // update our info
-                            cm.Id = $"{_leftRLiteral}-elements-{_rightRLiteral}";
-                            cm.Url = url;
-                            cm.Name = $"Map Concepts representing elements from {_leftRLiteral} to {_rightRLiteral}";
-                            cm.Title = $"Cross-version map for concepts of elements from {_leftRLiteral} to {_rightRLiteral}";
+    //                        _resourceTypeMap = cm;
+    //                    }
+    //                    break;
+    //                case "elements":
+    //                    {
+    //                        string url = _maps!.MainPackageCanonical + "/ConceptMap/Elements";
 
-                            // try to manufacture correct value set URLs based on what we have
-                            cm.SourceScope = new Canonical($"{_left.MainPackageCanonical}/ValueSet/elements|{_left.MainPackageVersion}");
-                            cm.TargetScope = new Canonical($"{_right.MainPackageCanonical}/ValueSet/elements|{_right.MainPackageVersion}");
+    //                        // update our info
+    //                        cm.Id = $"{_leftRLiteral}-elements-{_rightRLiteral}";
+    //                        cm.Url = url;
+    //                        cm.Name = $"Map Concepts representing elements from {_leftRLiteral} to {_rightRLiteral}";
+    //                        cm.Title = $"Cross-version map for concepts of elements from {_leftRLiteral} to {_rightRLiteral}";
 
-                            if (cm.Group?.Count == 1)
-                            {
-                                cm.Group[0].Source = $"{_left.MainPackageCanonical}/ValueSet/elements";
-                                cm.Group[0].Target = $"{_right.MainPackageCanonical}/ValueSet/elements";
-                            }
+    //                        // try to manufacture correct value set URLs based on what we have
+    //                        cm.SourceScope = new Canonical($"{_left.MainPackageCanonical}/ValueSet/elements|{_left.MainPackageVersion}");
+    //                        cm.TargetScope = new Canonical($"{_right.MainPackageCanonical}/ValueSet/elements|{_right.MainPackageVersion}");
 
-                            _elementMapV1 = cm;
-                        }
-                        break;
-                }
+    //                        if (cm.Group?.Count == 1)
+    //                        {
+    //                            cm.Group[0].Source = $"{_left.MainPackageCanonical}/ValueSet/elements";
+    //                            cm.Group[0].Target = $"{_right.MainPackageCanonical}/ValueSet/elements";
+    //                        }
 
-                // add this to our maps
-                _maps!.AddConceptMap(cm, _maps.MainPackageId, _maps.MainPackageVersion);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error loading {filename}: {ex.Message}");
-            }
-        }
+    //                        _elementMapV1 = cm;
+    //                    }
+    //                    break;
+    //            }
 
-        return true;
-    }
+    //            // add this to our maps
+    //            _maps!.AddConceptMap(cm, _maps.MainPackageId, _maps.MainPackageVersion);
+    //        }
+    //        catch (Exception ex)
+    //        {
+    //            Console.WriteLine($"Error loading {filename}: {ex.Message}");
+    //        }
+    //    }
 
-    private void WriteValueSetMap(
-    string outputDir,
-    IEnumerable<ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>> valueSets)
-    {
-        if (TryBuildConceptMapForValueSets(valueSets, out ConceptMap? cm))
-        {
-            string filename = Path.Combine(outputDir, $"ConceptMap-{_leftRLiteral}-value-sets-{_rightRLiteral}.json");
-
-            try
-            {
-                using FileStream fs = new(filename, FileMode.Create, FileAccess.Write);
-                using Utf8JsonWriter writer = new(fs, new JsonWriterOptions() { Indented = true, });
-                {
-                    JsonSerializer.Serialize(writer, cm, _firelySerializerOptions);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error writing {filename}: {ex.Message} {ex.InnerException?.Message}");
-            }
-        }
-    }
+    //    return true;
+    //}
 
 
     private void WriteResourceTypeMap(
         string outputDir,
         IEnumerable<ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> resources)
     {
-        if (TryBuildConceptMapForResourceTypes(resources, out ConceptMap? cm))
+        if (_crossVersion is null)
         {
-            string filename = Path.Combine(outputDir, $"ConceptMap-{_leftRLiteral}-resource-types-{_rightRLiteral}.json");
+            return;
+        }
 
-            try
+        ConceptMap? cm = _crossVersion.GetSourceResourceTypeConceptMap(resources);
+        if (cm is null)
+        {
+            return;
+        }
+
+        string filename = Path.Combine(outputDir, $"ConceptMap-{cm.Id}.json");
+
+        try
+        {
+            using FileStream fs = new(filename, FileMode.Create, FileAccess.Write);
+            using Utf8JsonWriter writer = new(fs, new JsonWriterOptions() { Indented = true, });
             {
-                using FileStream fs = new(filename, FileMode.Create, FileAccess.Write);
-                using Utf8JsonWriter writer = new(fs, new JsonWriterOptions() { Indented = true, });
-                {
-                    JsonSerializer.Serialize(writer, cm, _firelySerializerOptions);
-                }
+                JsonSerializer.Serialize(writer, cm, _firelySerializerOptions);
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error writing {filename}: {ex.Message} {ex.InnerException?.Message}");
-            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error writing {filename}: {ex.Message} {ex.InnerException?.Message}");
         }
     }
 
@@ -923,9 +907,49 @@ public class PackageComparer
         IEnumerable<ComparisonRecord<StructureInfoRec>> primitiveTypes,
         IEnumerable<ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> complexTypes)
     {
-        if (TryBuildConceptMapForDataTypes(primitiveTypes, complexTypes, out ConceptMap? cm))
+        if (_crossVersion is null)
         {
-            string filename = Path.Combine(outputDir, $"ConceptMap-{_leftRLiteral}-data-types-{_rightRLiteral}.json");
+            return;
+        }
+
+        ConceptMap? cm = _crossVersion.GetSourceDataTypesConceptMap(primitiveTypes, complexTypes);
+        if (cm is null)
+        {
+            return;
+        }
+        string filename = Path.Combine(outputDir, $"ConceptMap-{cm.Id}.json");
+
+        try
+        {
+            using FileStream fs = new(filename, FileMode.Create, FileAccess.Write);
+            using Utf8JsonWriter writer = new(fs, new JsonWriterOptions() { Indented = true, });
+            {
+                JsonSerializer.Serialize(writer, cm, _firelySerializerOptions);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error writing {filename}: {ex.Message} {ex.InnerException?.Message}");
+        }
+    }
+
+
+    private void WriteStructureMaps(string outputDir, IEnumerable<ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> values)
+    {
+        if (_crossVersion is null)
+        {
+            return;
+        }
+
+        foreach (ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec> c in values)
+        {
+            ConceptMap? cm = _crossVersion.TryGetSourceStructureElementConceptMap(c);
+            if (cm is null)
+            {
+                continue;
+            }
+
+            string filename = Path.Combine(outputDir, $"ConceptMap-{cm.Id}.json");
 
             try
             {
@@ -942,438 +966,39 @@ public class PackageComparer
         }
     }
 
-    private bool TryBuildConceptMapForDataTypes(
-        IEnumerable<ComparisonRecord<StructureInfoRec>> primitiveTypes,
-        IEnumerable<ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> complexTypes,
-        [NotNullWhen(true)] out ConceptMap? cm)
-    { 
-        cm = new();
-
-        string url = _maps!.MainPackageCanonical + "/ConceptMap/DataTypes";
-
-        // update our info
-        cm.Id = $"{_leftRLiteral}-data-types-{_rightRLiteral}";
-        cm.Url = url;
-        cm.Name = $"Map Concepts representing data types from {_leftRLiteral} to {_rightRLiteral}";
-        cm.Title = $"Cross-version map for concepts of data types from {_leftRLiteral} to {_rightRLiteral}";
-
-        // try to manufacture correct value set URLs based on what we have
-        cm.SourceScope = new Canonical($"{_left.MainPackageCanonical}/ValueSet/data-types|{_left.MainPackageVersion}");
-        cm.TargetScope = new Canonical($"{_right.MainPackageCanonical}/ValueSet/data-types|{_right.MainPackageVersion}");
-
-        ConceptMap.GroupComponent group = new();
-
-        group.Source = $"{_left.MainPackageCanonical}/ValueSet/data-types";
-        group.Target = $"{_right.MainPackageCanonical}/ValueSet/data-types";
-
-        // traverse primitive types
-        foreach (ComparisonRecord<StructureInfoRec> c in primitiveTypes.Where(ci => ci.KeyInLeft == true))
-        {
-            // skip primitives that do not have serialization-based conversion info
-            if ((c.TypeSerializationInfo is null) || (c.TypeSerializationInfo.Count == 0))
-            {
-                continue;
-            }
-
-            // add mappings based on primitive serialization info
-            group.Element.Add(new()
-            {
-                Code = c.Key,
-                Display = c.Left[0].Description,
-                Target = c.TypeSerializationInfo.Values.Where(tsi => tsi.Source == c.Key).Select(tsi => new ConceptMap.TargetElementComponent()
-                {
-                    Code = tsi.Target,
-                    Display = _right.PrimitiveTypesByName.TryGetValue(tsi.Target, out StructureDefinition? tSd) ? tSd.Description : string.Empty,
-                    Relationship = tsi.Relationship,
-                    Comment = tsi.Message,
-                }).ToList(),
-            });
-        }
-
-        // traverse complex types
-        foreach (IComparisonRecord<StructureInfoRec> c in complexTypes.Where(cti => cti.KeyInLeft == true).OrderBy(cti => cti.Key))
-        {
-            // put an entry with no map if there is no target
-            if (c.Right.Count == 0)
-            {
-                group.Element.Add(new()
-                {
-                    Code = c.Key,
-                    NoMap = true,
-                    Display = c.Left[0].Description,
-                });
-
-                continue;
-            }
-
-            // add mappings based on record info
-            group.Element.Add(new()
-            {
-                Code = c.Key,
-                Display = c.Left[0].Description,
-                Target = c.Right.Select(target => new ConceptMap.TargetElementComponent()
-                {
-                    Code = target.Name,
-                    Display = target.Description,
-                    Relationship = c.Relationship,
-                    Comment = c.Message,
-                }).ToList(),
-            });
-        }
-
-        cm.Group.Add(group);
-        return true;
-    }
-
-    private bool TryBuildConceptMapForValueSets(
-    IEnumerable<ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>> valueSets,
-    [NotNullWhen(true)] out ConceptMap? cm)
-    {
-        cm = new();
-
-        string url = _maps!.MainPackageCanonical + "/ConceptMap/ValueSets";
-
-        // update our info
-        cm.Id = $"{_leftRLiteral}-value-sets-{_rightRLiteral}";
-        cm.Url = url;
-        cm.Name = $"Map Concepts representing value set maps from {_leftRLiteral} to {_rightRLiteral}";
-        cm.Title = $"Cross-version map for concepts of value sets from {_leftRLiteral} to {_rightRLiteral}";
-
-        // try to manufacture correct value set URLs based on what we have
-        cm.SourceScope = new Canonical($"{_left.MainPackageCanonical}/ValueSet/value-sets|{_left.MainPackageVersion}");
-        cm.TargetScope = new Canonical($"{_right.MainPackageCanonical}/ValueSet/value-sets|{_right.MainPackageVersion}");
-
-        ConceptMap.GroupComponent group = new();
-
-        group.Source = $"{_left.MainPackageCanonical}/ValueSet/value-sets";
-        group.Target = $"{_right.MainPackageCanonical}/ValueSet/value-sets";
-
-        // traverse resources types
-        foreach (IComparisonRecord<ValueSetInfoRec, ConceptInfoRec> c in valueSets.Where(cti => cti.KeyInLeft == true).OrderBy(cti => cti.Key))
-        {
-            // put an entry with no map if there is no target
-            if (c.Right.Count == 0)
-            {
-                group.Element.Add(new()
-                {
-                    Code = c.Key,
-                    NoMap = true,
-                    Display = c.Left[0].Description,
-                });
-
-                continue;
-            }
-
-            // add mappings based on record info
-            group.Element.Add(new()
-            {
-                Code = c.Key,
-                Display = c.Left[0].Description,
-                Target = c.Right.Select(target => new ConceptMap.TargetElementComponent()
-                {
-                    Code = target.Name,
-                    Display = target.Description,
-                    Relationship = c.Relationship,
-                    Comment = c.Message,
-                }).ToList(),
-            });
-        }
-
-        cm.Group.Add(group);
-        return true;
-    }
-
-    private bool TryBuildConceptMapForResourceTypes(
-        IEnumerable<ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> resources,
-        [NotNullWhen(true)] out ConceptMap? cm)
-    {
-        cm = new();
-
-        string url = _maps!.MainPackageCanonical + "/ConceptMap/ResourceTypes";
-
-        // update our info
-        cm.Id = $"{_leftRLiteral}-resource-types-{_rightRLiteral}";
-        cm.Url = url;
-        cm.Name = $"Map Concepts representing resource types from {_leftRLiteral} to {_rightRLiteral}";
-        cm.Title = $"Cross-version map for concepts of resource types from {_leftRLiteral} to {_rightRLiteral}";
-
-        // try to manufacture correct value set URLs based on what we have
-        cm.SourceScope = new Canonical($"{_left.MainPackageCanonical}/ValueSet/resource-types|{_left.MainPackageVersion}");
-        cm.TargetScope = new Canonical($"{_right.MainPackageCanonical}/ValueSet/resource-types|{_right.MainPackageVersion}");
-
-        ConceptMap.GroupComponent group = new();
-
-        group.Source = $"{_left.MainPackageCanonical}/ValueSet/resource-types";
-        group.Target = $"{_right.MainPackageCanonical}/ValueSet/resource-types";
-
-        // traverse resources types
-        foreach (IComparisonRecord<StructureInfoRec> c in resources.Where(cti => cti.KeyInLeft == true).OrderBy(cti => cti.Key))
-        {
-            // put an entry with no map if there is no target
-            if (c.Right.Count == 0)
-            {
-                group.Element.Add(new()
-                {
-                    Code = c.Key,
-                    NoMap = true,
-                    Display = c.Left[0].Description,
-                });
-
-                continue;
-            }
-
-            // add mappings based on record info
-            group.Element.Add(new()
-            {
-                Code = c.Key,
-                Display = c.Left[0].Description,
-                Target = c.Right.Select(target => new ConceptMap.TargetElementComponent()
-                {
-                    Code = target.Name,
-                    Display = target.Description,
-                    Relationship = c.Relationship,
-                    Comment = c.Message,
-                }).ToList(),
-            });
-        }
-
-        cm.Group.Add(group);
-        return true;
-    }
-
-    private void WriteStructureMaps(string outputDir, IEnumerable<ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> values)
-    {
-        foreach (ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec> c in values)
-        {
-            if (TryBuildConceptMapForStructure(c, out ConceptMap? cm))
-            {
-                string filename = Path.Combine(outputDir, $"ConceptMap-{c.CompositeName}.json");
-
-                try
-                {
-                    using FileStream fs = new(filename, FileMode.Create, FileAccess.Write);
-                    using Utf8JsonWriter writer = new(fs, new JsonWriterOptions() { Indented = true, });
-                    {
-                        JsonSerializer.Serialize(writer, cm, _firelySerializerOptions);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error writing {filename}: {ex.Message} {ex.InnerException?.Message}");
-                }
-            }
-        }
-    }
-
-    private bool TryBuildConceptMapForStructure(ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec> cRec, [NotNullWhen(true)] out ConceptMap? cm)
-    {
-        // we cannot write maps that do not have both a source and a target
-        if ((cRec.Left.Count == 0) || (cRec.Right.Count == 0))
-        {
-            cm = null;
-            return false;
-        }
-
-        if (cRec.Left.Count > 1)
-        {
-            throw new Exception($"Cannot build concept map for structures with more than source: {cRec.Key}");
-        }
-
-        cm = new();
-
-        string leftName = cRec.Left[0].Name.ToPascalCase();
-        string rightNameUnderscore = string.Join("_", cRec.Right.Select(r => r.Name.ToPascalCase()));
-        string rightNameAnd = string.Join(" and ", cRec.Right.Select(r => r.Name.ToPascalCase()));
-
-        string url = BuildCanonicalForStructureDefinitionMap(leftName, rightNameUnderscore);
-
-        // update our info
-        cm.Id = cRec.CompositeName;
-        cm.Url = url;
-        cm.Name = "Map Concepts from " + leftName + " to " + rightNameAnd;
-        cm.Title = $"Cross-version map for concepts from {_leftRLiteral} {leftName} to {_rightRLiteral} {rightNameAnd}";
-
-        // try to manufacture correct value set URLs based on what we have
-        cm.SourceScope = new Canonical($"{cRec.Left[0].Url}|{_left.MainPackageVersion}");
-        cm.TargetScope = new Canonical($"{cRec.Right[0].Url}|{_right.MainPackageVersion}");
-
-        ConceptMap.GroupComponent group = new();
-
-        group.Source = cRec.Left[0].Url;
-        group.Target = cRec.Right[0].Url;
-
-        // traverse elements that exist in our source
-        foreach ((string elementKey, ComparisonRecord<ElementInfoRec, ElementTypeInfoRec> elementComparison) in cRec.Children.Where(kvp => kvp.Value.KeyInLeft == true).OrderBy(kvp => kvp.Key))
-        {
-            // put an entry with no map if there is no target
-            if (elementComparison.Right.Count == 0)
-            {
-                group.Element.Add(new()
-                {
-                    Code = elementKey,
-                    NoMap = true,
-                    Display = elementComparison.Left[0].Short,
-                });
-
-                continue;
-            }
-
-            group.Element.Add(new()
-            {
-                Code = elementKey,
-                Display = elementComparison.Left[0].Short,
-                Target = elementComparison.Right.Select(target => new ConceptMap.TargetElementComponent()
-                {
-                    Code = target.Path,
-                    Display = target.Short,
-                    Relationship = elementComparison.Relationship,
-                    Comment = elementComparison.Message,
-                }).ToList(),
-            });
-        }
-
-        // check for a value set that could not map anything
-        if (group.Element.Count == 0)
-        {
-            Console.WriteLine($"Not writing ConceptMap for {cRec.CompositeName} - no concepts are mapped to target!");
-            cm = null;
-            return false;
-        }
-
-        cm.Group.Add(group);
-        return true;
-    }
-
     private void WriteValueSetMaps(string outputDir, IEnumerable<ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>> values)
     {
+        if (_crossVersion is null)
+        {
+            return;
+        }
+
         foreach (ComparisonRecord<ValueSetInfoRec, ConceptInfoRec> c in values)
         {
-            if (TryBuildConceptMapForValueSet(c, out ConceptMap? cm))
+            ConceptMap? cm = _crossVersion.GetSourceValueSetConceptMap(c);
+            if (cm is null)
             {
-                string filename = Path.Combine(outputDir, $"ConceptMap-{c.CompositeName}.json");
-
-                try
-                {
-                    using FileStream fs = new(filename, FileMode.Create, FileAccess.Write);
-                    using Utf8JsonWriter writer = new(fs, new JsonWriterOptions() { Indented = true, });
-                    {
-                        JsonSerializer.Serialize(writer, cm, _firelySerializerOptions);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error writing {filename}: {ex.Message} {ex.InnerException?.Message}");
-                }
-            }
-        }
-    }
-
-    private bool TryBuildConceptMapForValueSet(ComparisonRecord<ValueSetInfoRec, ConceptInfoRec> cRec, [NotNullWhen(true)] out ConceptMap? cm)
-    {
-        // we cannot write maps that do not have both a source and a target
-        if ((cRec.Left.Count == 0) || (cRec.Right.Count == 0))
-        {
-            cm = null;
-            return false;
-        }
-
-        // for now, we only support 1:1 mappings
-        if ((cRec.Left.Count != 1) || (cRec.Right.Count != 1))
-        {
-            throw new Exception("Cannot build concept map for value sets with more than one mapping");
-        }
-
-        if (cRec.Children.Count == 0)
-        {
-            throw new Exception("Cannot process a comparison with no mappings!");
-        }
-
-        cm = new();
-
-        (string url, string leftName, string rightName) = BuildCanonicalForValueSetMap(cRec.Left[0].Url, cRec.Right[0].Url);
-
-        // update our info
-        cm.Id = cRec.CompositeName;
-        cm.Url = url;
-        cm.Name = "Map Concepts from " + leftName + " to " + rightName;
-        cm.Title = $"Cross-version map for concepts from {_leftRLiteral} {leftName} to {_rightRLiteral} {rightName}";
-
-        // try to manufacture correct value set URLs based on what we have
-        cm.SourceScope = new Canonical($"{cRec.Left[0].Url}|{_left.MainPackageVersion}");
-        cm.TargetScope = new Canonical($"{cRec.Right[0].Url}|{_right.MainPackageVersion}");
-
-        ConceptMap.GroupComponent group = new();
-
-        group.Source = cRec.Left[0].Url;
-        group.Target = cRec.Right[0].Url;
-
-        // traverse concepts that exist in our source
-        foreach ((string conceptKey, ComparisonRecord<ConceptInfoRec> conceptComparison) in cRec.Children.Where(kvp => kvp.Value.KeyInLeft == true).OrderBy(kvp => kvp.Key))
-        {
-            // put an entry with no map if there is no target
-            if (conceptComparison.Right.Count == 0)
-            {
-                group.Element.Add(new()
-                {
-                    Code = conceptKey,
-                    NoMap = true,
-                    Display = conceptComparison.Left[0].Description,
-                });
-
                 continue;
             }
 
-            group.Element.Add(new()
+            string filename = Path.Combine(outputDir, $"ConceptMap-{cm.Id}.json");
+
+            try
             {
-                Code = conceptKey,
-                Display = conceptComparison.Left[0].Description,
-                Target = conceptComparison.Right.Select(target => new ConceptMap.TargetElementComponent()
+                using FileStream fs = new(filename, FileMode.Create, FileAccess.Write);
+                using Utf8JsonWriter writer = new(fs, new JsonWriterOptions() { Indented = true, });
                 {
-                    Code = target.Code,
-                    Display = target.Description,
-                    Relationship = conceptComparison.Relationship,
-                    Comment = conceptComparison.Message,
-                }).ToList(),
-            });
+                    JsonSerializer.Serialize(writer, cm, _firelySerializerOptions);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error writing {filename}: {ex.Message} {ex.InnerException?.Message}");
+            }
         }
-
-        // check for a value set that could not map anything
-        if (group.Element.Count == 0)
-        {
-            Console.WriteLine($"Not writing ConceptMap for {cRec.CompositeName} - no concepts are mapped to target!");
-            cm = null;
-            return false;
-        }
-
-        cm.Group.Add(group);
-        return true;
     }
 
-    private (string url, string leftName, string rightName) BuildCanonicalForValueSetMap(ConceptMap cm) =>
-        BuildCanonicalForValueSetMap(cm.Group?.FirstOrDefault()?.Source ?? cm.Url, cm.Group?.FirstOrDefault()?.Target ?? cm.Url);
 
-    private (string url, string leftName, string rightName) BuildCanonicalForValueSetMap(string leftVsUrl, string rightVsUrl)
-    {
-        string leftVsMapName = leftVsUrl.Split('/', '#')[^1];
-        string rightVsMapName = rightVsUrl.Split('/', '#')[^1];
-
-        if (leftVsMapName == rightVsMapName)
-        {
-            return ($"{_mapCanonical}/ConceptMap/ValueSet-{leftVsMapName.ToPascalCase()}", leftVsMapName, rightVsMapName);
-        }
-
-        return ($"{_mapCanonical}/ConceptMap/ValueSet-{leftVsMapName.ToPascalCase()}-{rightVsMapName.ToPascalCase()}", leftVsMapName, rightVsMapName);
-    }
-
-    private string BuildCanonicalForStructureDefinitionMap(string leftName, string rightName)
-    {
-        if (leftName == rightName)
-        {
-            return $"{_mapCanonical}/ConceptMap/StructureDefinition-{leftName.ToPascalCase()}";
-        }
-
-        return $"{_mapCanonical}/ConceptMap/StructureDefinition-{leftName.ToPascalCase()}-{rightName.ToPascalCase()}";
-    }
 
     private Dictionary<string, ValueSet> GetValueSets(DefinitionCollection dc, Dictionary<string, ValueSet>? other = null)
     {
@@ -1381,16 +1006,7 @@ public class PackageComparer
 
         Dictionary<string, ValueSet> valueSets = [];
 
-        HashSet<string> mappedSets = [];
-
-        foreach ((string left, List<string> rights) in _valueSetConceptMaps)
-        {
-            mappedSets.Add(left);
-            foreach (string right in rights)
-            {
-                mappedSets.Add(right);
-            }
-        }
+        HashSet<string> mappedSets = _crossVersion?.GetAllReferencedValueSetUrls() ?? [];
 
         foreach ((string unversionedUrl, string[] versions) in dc.ValueSetVersions.OrderBy(kvp => kvp.Key))
         {
@@ -3014,14 +2630,22 @@ public class PackageComparer
             // prefer using a map if we have one
             if (cm is not null)
             {
+                _ = leftConcepts.TryGetValue(conceptCode, out FhirConcept? leftConcept);
+                _ = rightConcepts.TryGetValue(conceptCode, out FhirConcept? rightConcept);
+
                 HashSet<string> usedSourceCodes = [];
                 HashSet<string> usedTargetCodes = [];
 
                 leftInfoSource = [];
                 rightInfoSource = [];
 
-                // check to see if the source element has a map
-                ConceptMap.SourceElementComponent? sourceMap = cm?.Group.FirstOrDefault()?.Element.Where(e => e.Code == conceptCode).FirstOrDefault();
+                // check to see if the source concept has a map
+                ConceptMap.SourceElementComponent? sourceMap = cm?
+                    .Group
+                    .FirstOrDefault(g => string.IsNullOrEmpty(leftConcept?.System) || g.Source == leftConcept.System)?
+                    .Element
+                    .Where(e => e.Code == conceptCode)
+                    .FirstOrDefault();
 
                 // if we have a mapping from the current source, we want to use the target mappings
                 if (sourceMap is not null)
@@ -3062,7 +2686,11 @@ public class PackageComparer
                 }
 
                 // also pull the list of target mappings to see if this code is mapped *from* any other source
-                List<ConceptMap.SourceElementComponent> targetMaps = cm?.Group.FirstOrDefault()?.Element.Where(e => e.Target.Any(t => usedTargetCodes.Contains(t.Code)))?.ToList() ?? [];
+                List<ConceptMap.SourceElementComponent> targetMaps = cm?
+                    .Group
+                    .FirstOrDefault(g => string.IsNullOrEmpty(rightConcept?.System) || g.Source == rightConcept.System)?
+                    .Element
+                    .Where(e => e.Target.Any(t => usedTargetCodes.Contains(t.Code)))?.ToList() ?? [];
 
                 // traverse all mappings that this target appears in
                 foreach (ConceptMap.SourceElementComponent mapElement in targetMaps)
@@ -3128,7 +2756,11 @@ public class PackageComparer
 
         foreach (string url in keys)
         {
-            List<string> rightUrls = _valueSetConceptMaps.TryGetValue(url, out List<string>? vsTargets) ? vsTargets : [];
+            Dictionary<string, ConceptMap> mapsByRightUrl =
+                (_crossVersion?.GetMapsForVs(url) ?? [])
+                .ToDictionary(cm => (cm.TargetScope is FhirUri t) ? t.Value : throw new Exception($"Cannot have VS map without target: {cm.Url}"));
+
+            List<string> rightUrls = mapsByRightUrl.Keys.ToList();
             if (rightUrls.Count == 0)
             {
                 rightUrls = [url];
@@ -3140,21 +2772,7 @@ public class PackageComparer
 
             foreach (string rightUrl in rightUrls)
             {
-                ConceptMap? cm = null;
-
-                // check to see if we have loaded maps
-                if (_maps is not null)
-                {
-                    // get our map url
-                    (string mapUrl, string leftVsName, string rightVsName) = BuildCanonicalForValueSetMap(url, rightUrl);
-
-                    if (_maps.TryResolveByCanonicalUri(mapUrl, out Resource? r) &&
-                        (r is ConceptMap))
-                    {
-                        // we have a map, so we need to add it to our input
-                        cm = r as ConceptMap;
-                    }
-                }
+                _ = mapsByRightUrl.TryGetValue(rightUrl, out ConceptMap? cm);
 
                 List<ValueSetInfoRec> leftInfoSource = left.TryGetValue(url, out ValueSetInfoRec? leftInfo) ? [leftInfo] : [];
                 List<ValueSetInfoRec> rightInfoSource = right.TryGetValue(rightUrl, out ValueSetInfoRec? rightInfo) ? [rightInfo] : [];
@@ -3394,7 +3012,7 @@ public class PackageComparer
 
             ConceptMap? cm = artifactClass switch
             {
-                FhirArtifactClassEnum.PrimitiveType => _dataTypeMap,
+                FhirArtifactClassEnum.PrimitiveType => _crossVersion?.DataTypeMap,
                 _ => null
             };
 
@@ -3728,8 +3346,8 @@ public class PackageComparer
 
             ConceptMap? cm = artifactClass switch
             {
-                FhirArtifactClassEnum.ComplexType => _dataTypeMap,
-                FhirArtifactClassEnum.Resource => _resourceTypeMap,
+                FhirArtifactClassEnum.ComplexType => _crossVersion?.DataTypeMap,
+                FhirArtifactClassEnum.Resource => _crossVersion?.ResourceTypeMap,
                 _ => null
             };
 
@@ -3846,12 +3464,7 @@ public class PackageComparer
             //}
 
             // for now, we have a global element map.  Once we have resource-specific ones, load those per structure in the loop
-            ConceptMap? elementMap = artifactClass switch
-            {
-                FhirArtifactClassEnum.ComplexType => _elementConceptMaps.TryGetValue(sdName, out ConceptMap? map) ? map : _elementMapV1,
-                FhirArtifactClassEnum.Resource => _elementMapV1,
-                _ => null
-            };
+            ConceptMap? elementMap = _crossVersion?.ElementTypeMap(sdName);
 
             Dictionary<string, (string target, CMR relationship)> elementMappings = [];
 

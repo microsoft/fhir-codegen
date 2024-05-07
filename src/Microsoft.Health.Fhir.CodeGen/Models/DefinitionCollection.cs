@@ -79,6 +79,7 @@ public partial class DefinitionCollection
     private readonly Dictionary<string, string> _valueSetUrlsById = [];
 
     private readonly Dictionary<string, ConceptMap> _conceptMapsByUrl = [];
+    private readonly Dictionary<string, List<ConceptMap>> _conceptMapsBySourceUrl = [];
     private readonly Dictionary<string, StructureMap> _structureMapsByUrl = [];
 
     private readonly Dictionary<string, List<StructureElementCollection>> _coreBindingEdsByPathByValueSet = [];
@@ -974,7 +975,21 @@ public partial class DefinitionCollection
 
         _conceptMapsByUrl[cm.Url] = cm;
         TrackResource(cm);
+
+        if (cm.Group.Count == 0)
+        {
+            if (_conceptMapsBySourceUrl.TryGetValue(cm.Group[0].Source, out List<ConceptMap>? maps))
+            {
+                maps.Add(cm);
+            }
+            else
+            {
+                _conceptMapsBySourceUrl.Add(cm.Group[0].Source, [cm]);
+            }
+        }
     }
+
+    public List<ConceptMap> ConceptMapsForSource(string src) => _conceptMapsBySourceUrl.TryGetValue(src, out List<ConceptMap>? maps) ? maps : [];
 
     public IReadOnlyDictionary<string, StructureMap> StructureMapsByUrl => _structureMapsByUrl;
     public void AddStructureMap(StructureMap sm, string packageId, string packageVersion)

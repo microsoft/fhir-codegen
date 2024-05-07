@@ -55,4 +55,6 @@ public static class CommonDefinitions
     public const string THOCsUrlPrefix = "http://terminology.hl7.org/CodeSystem/";
 
     public const string ExtUrlSmartOAuth = "http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris";
+
+    public const string ExtUrlConceptMapAdditionalUrls = "http://ginoc.io/fhir/StructureDefinition/conceptmap-additional-urls";
 }

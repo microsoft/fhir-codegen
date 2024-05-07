@@ -4,6 +4,7 @@
 // </copyright>
 
 
+using System.ComponentModel;
 using Microsoft.Health.Fhir.CodeGen.Extensions;
 
 namespace Microsoft.Health.Fhir.CodeGen.Configuration;
@@ -67,17 +68,17 @@ public class ConfigCompare : ConfigRoot
     };
 
     [ConfigOption(
-        ArgName = "--cross-version-v1-repo-path",
-        EnvName = "Cross_Version_V1_Repo_Path",
+        ArgName = "--map-source-path",
+        EnvName = "Map_Source_Path",
         ArgArity = "0..1",
-        Description = "Path to a local v1 HL7/fhir-cross-version clone.")]
-    public string CrossVersionRepoPathV1 { get; set; } = string.Empty;
+        Description = "Path to FHIR maps to load (e.g., clone of HL7/fhir-cross-version).")]
+    public string CrossVersionMapSourcePath { get; set; } = string.Empty;
 
-    private static ConfigurationOption CrossVersionRepoPathV1Parameter => new()
+    private static ConfigurationOption CrossVersionMapSourcePathParameter => new()
     {
-        Name = "Cross_Version_V1_Repo_Path",
+        Name = "Map_Source_Path",
         DefaultValue = string.Empty,
-        CliOption = new System.CommandLine.Option<string>("--cross-version-v1-repo-path", "Path to a local v1 HL7/fhir-cross-version clone.")
+        CliOption = new System.CommandLine.Option<string>("--map-source-path", "Path to FHIR maps to load (e.g., clone of HL7/fhir-cross-version).")
         {
             Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
             IsRequired = false,
@@ -85,23 +86,52 @@ public class ConfigCompare : ConfigRoot
     };
 
     [ConfigOption(
-        ArgName = "--cross-version-v2-repo-path",
-        EnvName = "Cross_Version_V2_Repo_Path",
+        ArgName = "--map-destination-path",
+        EnvName = "Map_Destination_Path",
         ArgArity = "0..1",
-        Description = "Path to a local v2 HL7/fhir-cross-version clone.")]
-    public string CrossVersionRepoPathV2 { get; set; } = string.Empty;
+        Description = "Path to directory to save FHIR maps to (e.g., clone of HL7/fhir-cross-version).")]
+    public string CrossVersionMapDestinationPath { get; set; } = string.Empty;
 
-    private static ConfigurationOption CrossVersionRepoPathV2Parameter => new()
+    private static ConfigurationOption CrossVersionMapDestinationPathParameter => new()
     {
-        Name = "Cross_Version_V2_Repo_Path",
+        Name = "Map_Destination_Path",
         DefaultValue = string.Empty,
-        CliOption = new System.CommandLine.Option<string>("--cross-version-v2-repo-path", "Path to a local v2 HL7/fhir-cross-version clone.")
+        CliOption = new System.CommandLine.Option<string>("--map-destination-path", "Path to directory to save FHIR maps to (e.g., clone of HL7/fhir-cross-version).")
         {
             Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
             IsRequired = false,
         },
     };
 
+    public enum ComparisonMapSaveStyle
+    {
+        [Description("Official maps in the style of HL7/fhir-cross-version")]
+        Official,
+
+        [Description("Source maps in the internally-defined style")]
+        Source,
+
+        [Description("Do not save maps")]
+        None,
+    }
+
+    [ConfigOption(
+        ArgName = "--map-save-style",
+        EnvName = "Map_Save_Style",
+        ArgArity = "0..1",
+        Description = "Style of saving the comparison maps.")]
+    public ComparisonMapSaveStyle MapSaveStyle { get; set; } = ComparisonMapSaveStyle.Official;
+
+    public static ConfigurationOption MapSaveStyleParameter => new()
+    {
+        Name = "Map_Save_Style",
+        DefaultValue = ComparisonMapSaveStyle.Official,
+        CliOption = new System.CommandLine.Option<ComparisonMapSaveStyle>("--map-save-style", "Style of saving the comparison maps.")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
 
     //[ConfigOption(
     //    ArgName = "--known-change-path",
@@ -162,8 +192,9 @@ public class ConfigCompare : ConfigRoot
         ComparePackagesParameter,
         NoOutputParameter,
         SaveComparisonResultParameter,
-        CrossVersionRepoPathV1Parameter,
-        CrossVersionRepoPathV2Parameter,
+        CrossVersionMapSourcePathParameter,
+        CrossVersionMapDestinationPathParameter,
+        MapSaveStyleParameter,
         //KnownChangePathParameter,
         //OllamaUrlParameter,
         //OllamaModelParameter,
@@ -195,11 +226,14 @@ public class ConfigCompare : ConfigRoot
                 case "Save_Comparison_Result":
                     SaveComparisonResult = GetOpt(parseResult, opt.CliOption, SaveComparisonResult);
                     break;
-                case "Cross_Version_V1_Repo_Path":
-                    CrossVersionRepoPathV1 = GetOpt(parseResult, opt.CliOption, CrossVersionRepoPathV1);
+                case "Map_Source_Path":
+                    CrossVersionMapSourcePath = GetOpt(parseResult, opt.CliOption, CrossVersionMapSourcePath);
                     break;
-                case "Cross_Version_V2_Repo_Path":
-                    CrossVersionRepoPathV2 = GetOpt(parseResult, opt.CliOption, CrossVersionRepoPathV2);
+                case "Map_Destination_Path":
+                    CrossVersionMapDestinationPath = GetOpt(parseResult, opt.CliOption, CrossVersionMapDestinationPath);
+                    break;
+                case "Map_Save_Style":
+                    MapSaveStyle = GetOpt(parseResult, opt.CliOption, MapSaveStyle);
                     break;
                 //case "Known_Change_Path":
                 //    KnownChangePath = GetOpt(parseResult, opt.CliOption, KnownChangePath);
