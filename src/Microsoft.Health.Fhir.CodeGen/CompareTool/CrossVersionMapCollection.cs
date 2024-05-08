@@ -392,7 +392,7 @@ public class CrossVersionMapCollection
                             cm.Id = localConceptMapId;
                             cm.Url = localUrl;
                             cm.Name = localConceptMapId;
-                            cm.Title = GetConceptMapTitle("data types");
+                            cm.Title = GetConceptMapTitle("data type");
 
                             string sourceLocalUrl = BuildUrl("{0}/{1}/{2}", _leftPackageCanonical, "ValueSet", "data-types");
                             string targetLocalUrl = BuildUrl("{0}/{1}/{2}", _rightPackageCanonical, "ValueSet", "data-types");
@@ -423,7 +423,7 @@ public class CrossVersionMapCollection
                             cm.Id = localConceptMapId;
                             cm.Url = localUrl;
                             cm.Name = localConceptMapId;
-                            cm.Title = GetConceptMapTitle("resource types");
+                            cm.Title = GetConceptMapTitle("resource type");
 
                             string sourceLocalUrl = BuildUrl("{0}/{1}/{2}", _leftPackageCanonical, "ValueSet", "resources");
                             string targetLocalUrl = BuildUrl("{0}/{1}/{2}", _rightPackageCanonical, "ValueSet", "resources");
@@ -454,7 +454,7 @@ public class CrossVersionMapCollection
                             cm.Id = localConceptMapId;
                             cm.Url = localUrl;
                             cm.Name = localConceptMapId;
-                            cm.Title = GetConceptMapTitle("elements");
+                            cm.Title = GetConceptMapTitle("element");
 
                             string sourceLocalUrl = BuildUrl("{0}/{1}/{2}", _leftPackageCanonical, "ValueSet", "elements");
                             string targetLocalUrl = BuildUrl("{0}/{1}/{2}", _rightPackageCanonical, "ValueSet", "elements");
@@ -1057,7 +1057,7 @@ public class CrossVersionMapCollection
         return value;
     }
 
-    public string NameFromUrl(string url) => RemoveLeftToRight(url.Split('/', '#')[^1].Split('|')[0]);
+    public string NameFromUrl(string url) => RemoveLeftToRight(url.Split('/', '#')[^1].Split('|')[0]).ToPascalCase();
 
     //public bool TryConvertUrlOfficialToSource(
     //    string officialUrl,

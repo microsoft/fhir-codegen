@@ -232,8 +232,6 @@ public class PackageComparer
 
             foreach (ComparisonRecord<StructureInfoRec> c in primitives.Values)
             {
-                //string name = GetName(c.Left, c.Right);
-                //string filename = Path.Combine(subDir, $"{name}.md");
                 string filename = Path.Combine(mdSubDir, $"{c.CompositeName}.md");
 
                 using ExportStreamWriter writer = CreateMarkdownWriter(filename);
@@ -256,8 +254,6 @@ public class PackageComparer
 
             foreach (ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec> c in complexTypes.Values)
             {
-                //string name = GetName(c.Left, c.Right);
-                //string filename = Path.Combine(subDir, $"{name}.md");
                 string filename = Path.Combine(mdSubDir, $"{c.CompositeName}.md");
 
                 using ExportStreamWriter writer = CreateMarkdownWriter(filename);
@@ -266,19 +262,22 @@ public class PackageComparer
                 }
             }
 
-            string mapSubDir = Path.Combine(conceptMapDir, "ComplexTypes");
-            if (!Directory.Exists(mapSubDir))
+            if (_config.MapSaveStyle != ConfigCompare.ComparisonMapSaveStyle.None)
             {
-                Directory.CreateDirectory(mapSubDir);
+                string mapSubDir = Path.Combine(conceptMapDir, "ComplexTypes");
+                if (!Directory.Exists(mapSubDir))
+                {
+                    Directory.CreateDirectory(mapSubDir);
+                }
+
+                WriteStructureMaps(mapSubDir, complexTypes.Values);
             }
 
-            WriteStructureMaps(mapSubDir, complexTypes.Values);
-        }
-
-        // write out the data type map
-        if (mdWriter is not null)
-        {
-            WriteDataTypeMap(conceptMapDir, primitives.Values, complexTypes.Values);
+            // write out the data type map
+            if (_config.MapSaveStyle != ConfigCompare.ComparisonMapSaveStyle.None)
+            {
+                WriteDataTypeMap(conceptMapDir, primitives.Values, complexTypes.Values);
+            }
         }
 
         Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> resources = CompareStructures(FhirArtifactClassEnum.Resource, _left.ResourcesByName, _right.ResourcesByName);
@@ -305,18 +304,18 @@ public class PackageComparer
             }
 
             // write out the resource type map
-            if (mdWriter is not null)
+            if (_config.MapSaveStyle != ConfigCompare.ComparisonMapSaveStyle.None)
             {
                 WriteResourceTypeMap(conceptMapDir, resources.Values);
-            }
 
-            string mapSubDir = Path.Combine(conceptMapDir, "Resources");
-            if (!Directory.Exists(mapSubDir))
-            {
-                Directory.CreateDirectory(mapSubDir);
-            }
+                string mapSubDir = Path.Combine(conceptMapDir, "Resources");
+                if (!Directory.Exists(mapSubDir))
+                {
+                    Directory.CreateDirectory(mapSubDir);
+                }
 
-            WriteStructureMaps(mapSubDir, resources.Values);
+                WriteStructureMaps(mapSubDir, resources.Values);
+            }
         }
 
         // TODO(ginoc): Logical models are tracked by URL in collections, but structure mapping is done by name.
@@ -3234,6 +3233,12 @@ public class PackageComparer
             // check for being the same type
             if (leftSi.Name == rightSi.Name)
             {
+                // check for extra mapping record that is not a match
+                if (sdName != leftSd.Name)
+                {
+                    continue;
+                }
+
                 // for primitives, a match needs to represent equivalence for sanity elsewhere
                 relationship = CMR.Equivalent;
                 message = $"{_rightRLiteral} primitive {rightSi.Name} is equivalent to the {_leftRLiteral} primitive {leftSi.Name}";
