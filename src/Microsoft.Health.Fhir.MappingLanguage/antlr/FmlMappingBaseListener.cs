@@ -60,6 +60,18 @@ public partial class FmlMappingBaseListener : IFmlMappingListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitHeader([NotNull] FmlMappingParser.HeaderContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.mapId"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterMapId([NotNull] FmlMappingParser.MapIdContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.mapId"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitMapId([NotNull] FmlMappingParser.MapIdContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="FmlMappingParser.mapUrl"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
@@ -107,6 +119,18 @@ public partial class FmlMappingBaseListener : IFmlMappingListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitMapStatus([NotNull] FmlMappingParser.MapStatusContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.mapDescription"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterMapDescription([NotNull] FmlMappingParser.MapDescriptionContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.mapDescription"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitMapDescription([NotNull] FmlMappingParser.MapDescriptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="FmlMappingParser.stringValue"/>.
 	/// <para>The default implementation does nothing.</para>

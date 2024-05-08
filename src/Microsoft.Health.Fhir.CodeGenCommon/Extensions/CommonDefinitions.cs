@@ -57,4 +57,6 @@ public static class CommonDefinitions
     public const string ExtUrlSmartOAuth = "http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris";
 
     public const string ExtUrlConceptMapAdditionalUrls = "http://ginoc.io/fhir/StructureDefinition/conceptmap-additional-urls";
+
+    public const string ExtUrlComment = "http://ginoc.io/fhir/StructureDefinition/comment";
 }

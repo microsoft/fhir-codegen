@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace Microsoft.Health.Fhir.MappingLanguage;
 
 public class FhirMappingLanguage
 {
-    public void TryParse(string fml)
+    public bool TryParse(string fml, [NotNullWhen(true)] out Hl7.Fhir.Model.StructureMap? structureMap)
     {
         try
         {
@@ -25,12 +26,18 @@ public class FhirMappingLanguage
 
             FmlMappingParser.StructureMapContext structureMapContext = fmlParser.structureMap();
 
-            FmlVisitor visitor = new FmlVisitor();
+            FmlToStructureMapVisitor visitor = new FmlToStructureMapVisitor();
             visitor.Visit(structureMapContext);
+
+            structureMap = visitor.ParsedStructureMap;
+            return structureMap is not null;
         }
         catch (Exception ex)
         {
             Console.WriteLine(ex.Message);
         }
+
+        structureMap = null;
+        return false;
     }
 }

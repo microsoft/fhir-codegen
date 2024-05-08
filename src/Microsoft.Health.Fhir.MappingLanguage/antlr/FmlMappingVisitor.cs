@@ -44,6 +44,12 @@ public interface IFmlMappingVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitHeader([NotNull] FmlMappingParser.HeaderContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="FmlMappingParser.mapId"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitMapId([NotNull] FmlMappingParser.MapIdContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="FmlMappingParser.mapUrl"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -67,6 +73,12 @@ public interface IFmlMappingVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitMapStatus([NotNull] FmlMappingParser.MapStatusContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="FmlMappingParser.mapDescription"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitMapDescription([NotNull] FmlMappingParser.MapDescriptionContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="FmlMappingParser.stringValue"/>.
 	/// </summary>

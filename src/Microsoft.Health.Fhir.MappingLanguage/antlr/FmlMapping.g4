@@ -12,8 +12,11 @@ structureMap
   ;
 
 header
-  : mapUrl mapName mapTitle mapStatus
-  ;
+  : (mapId | mapUrl | mapName | mapTitle | mapStatus | mapDescription)* ;
+
+mapId
+	: LINE_COMMENT* 'map' url '=' identifier
+	;
 
 mapUrl
 	: HEADER_URL '=' stringValue
@@ -29,6 +32,10 @@ mapTitle
 
 mapStatus
 	: HEADER_STATUS '=' stringValue
+	;
+
+mapDescription
+	: HEADER_DESCRIPTION '=' stringValue
 	;
 
 stringValue
@@ -47,7 +54,7 @@ identifier
   ;
 
 structure
-	: 'uses' url structureAlias? 'as'  modelMode
+	: LINE_COMMENT* 'uses' url structureAlias? 'as'  modelMode
 	;
 
 structureAlias
@@ -55,15 +62,15 @@ structureAlias
   ;
 
 imports
-	: 'imports' url
+	: LINE_COMMENT* 'imports' url
 	;
 
 const 
-  : 'let' ID '=' fhirPath ';' // which might just be a literal
+  : LINE_COMMENT* 'let' ID '=' fhirPath ';' // which might just be a literal
   ;
 
 group
-	: 'group' ID parameters extends? typeMode? rules
+	: LINE_COMMENT* 'group' ID parameters extends? typeMode? rules
 	;
 
 rules
@@ -91,7 +98,7 @@ type
   ;
 
 rule
- 	: ruleSources ('->' ruleTargets)? dependent? ruleName? ';'
+ 	: LINE_COMMENT* ruleSources ('->' ruleTargets)? dependent? ruleName? ';'
  	;
 
 ruleName
@@ -301,20 +308,30 @@ DOUBLE_QUOTED_STRING
   // : '"' ( ~["\r\n] )* '"' 
   ;
 
+
+// note that these need to be expressed like this to avoid greedy collection of the header keys as other tokens
 HEADER_URL
   : '/// url'
   ;
 
+// note that these need to be expressed like this to avoid greedy collection of the header keys as other tokens
 HEADER_NAME
   : '/// name'
   ;
 
+// note that these need to be expressed like this to avoid greedy collection of the header keys as other tokens
 HEADER_TITLE
   : '/// title'
   ;
 
+// note that these need to be expressed like this to avoid greedy collection of the header keys as other tokens
 HEADER_STATUS
   : '/// status'
+  ;
+
+// note that these need to be expressed like this to avoid greedy collection of the header keys as other tokens
+HEADER_DESCRIPTION
+  : '/// description'
   ;
 
 // Pipe whitespace to the HIDDEN channel to support retrieving source text through the parser.
@@ -323,11 +340,11 @@ WS
     ;
 
 COMMENT
-        : '/*' .*? '*/' -> channel(HIDDEN)
+        : '/*' .*? '*/' // -> channel(HIDDEN)
         ;
 
 LINE_COMMENT
-        : '//' ~[/\r\n] ~[\r\n]* -> channel(HIDDEN)
+        : '//' ~[/\r\n] ~[\r\n]* // -> channel(HIDDEN)
         ;
 
 fragment ESC

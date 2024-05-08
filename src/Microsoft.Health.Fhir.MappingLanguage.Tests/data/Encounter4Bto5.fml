@@ -8,6 +8,7 @@ uses "http://hl7.org/fhir/5.0/Encounter" alias EncounterR5 as target
 
 imports "http://hl7.org/fhir/uv/xver/StructureMap/*4Bto5"
 
+// initial group comment
 group Encounter(source src : EncounterR4B, target tgt : EncounterR5) extends DomainResource <<type+>> {
   src.identifier -> tgt.identifier;
   src.status as v -> tgt.status = translate(v, 'http://hl7.org/fhir/uv/xver/ConceptMap/enc.status-4bto5', 'code');

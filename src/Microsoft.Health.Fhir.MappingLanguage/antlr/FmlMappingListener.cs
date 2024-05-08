@@ -51,6 +51,16 @@ public interface IFmlMappingListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitHeader([NotNull] FmlMappingParser.HeaderContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.mapId"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterMapId([NotNull] FmlMappingParser.MapIdContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.mapId"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitMapId([NotNull] FmlMappingParser.MapIdContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="FmlMappingParser.mapUrl"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -90,6 +100,16 @@ public interface IFmlMappingListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitMapStatus([NotNull] FmlMappingParser.MapStatusContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.mapDescription"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterMapDescription([NotNull] FmlMappingParser.MapDescriptionContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.mapDescription"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitMapDescription([NotNull] FmlMappingParser.MapDescriptionContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="FmlMappingParser.stringValue"/>.
 	/// </summary>
