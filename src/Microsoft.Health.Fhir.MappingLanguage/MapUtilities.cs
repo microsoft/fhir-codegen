@@ -77,7 +77,7 @@ internal static partial class MapUtilities
         return !_invalidTokenRegexForLower().IsMatch(value);
     }
 
-    /// <summary>Query if 'url' is absolute URL, according to org.hl7.fhir.utilities.Utilites tests.</summary>
+    /// <summary>Query if 'url' is absolute URL, according to org.hl7.fhir.utilities.Utilities tests.</summary>
     /// <param name="url">URL of the resource.</param>
     /// <returns>True if absolute url, false if not.</returns>
     internal static bool IsAbsoluteUrl(string url)
