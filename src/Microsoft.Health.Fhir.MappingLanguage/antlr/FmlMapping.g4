@@ -8,42 +8,26 @@
 // structureMap : mapId conceptMap* structure* imports* group+
 
 structureMap
-  : header structure* imports* const* group+ EOF
+  : metadataDeclaration*? mapDeclaration? structureDeclaration*? importDeclaration*? constantDeclaration*? groupDeclaration+ EOF
   ;
 
-header
-  : (mapId | mapUrl | mapName | mapTitle | mapStatus | mapDescription)* ;
+// header
+//   : (map | mapUrl | mapName | mapTitle | mapStatus | mapDescription)* ;
 
-mapId
-	: LINE_COMMENT* 'map' url '=' identifier
+mapDeclaration
+	: LINE_COMMENT* 'map' url '=' identifier INLINE_COMMENT?
 	;
 
-mapUrl
-	: HEADER_URL '=' stringValue
-	;
+metadataDeclaration
+  : METADATA_PREFIX qualifiedIdentifier '=' (literal | markdownLiteral | constant)? INLINE_COMMENT?  // value is optional to allow descendant maps to remove values from parents
+  ;
 
-mapName
-	: HEADER_NAME '=' stringValue
-	;
-
-mapTitle
-	: HEADER_TITLE '=' stringValue
-	;
-
-mapStatus
-	: HEADER_STATUS '=' stringValue
-	;
-
-mapDescription
-	: HEADER_DESCRIPTION '=' stringValue
-	;
-
-stringValue
-  : DOUBLE_QUOTED_STRING
+markdownLiteral
+  : TRIPLE_QUOTED_STRING_LITERAL
   ;
 
 url
-  : STRING
+  : SINGLE_QUOTED_STRING
   | DOUBLE_QUOTED_STRING
   ;
 
@@ -53,7 +37,7 @@ identifier
   | DELIMITED_IDENTIFIER
   ;
 
-structure
+structureDeclaration
 	: LINE_COMMENT* 'uses' url structureAlias? 'as'  modelMode
 	;
 
@@ -61,20 +45,24 @@ structureAlias
   : 'alias' identifier
   ;
 
-imports
+importDeclaration
 	: LINE_COMMENT* 'imports' url
 	;
 
-const 
-  : LINE_COMMENT* 'let' ID '=' fhirPath ';' // which might just be a literal
+constantDeclaration 
+  : LINE_COMMENT* 'let' ID '=' fpExpression ';' // which might just be a literal
   ;
 
-group
-	: LINE_COMMENT* 'group' ID parameters extends? typeMode? rules
+groupDeclaration
+	: LINE_COMMENT* 'group' ID parameters extends? typeMode? groupExpressions
 	;
 
-rules
-  : '{' rule* '}'
+// fhirPath
+//   : fpExpression
+//   ;
+
+groupExpressions
+  : '{' expression* '}'
   ;
 
 typeMode
@@ -90,35 +78,46 @@ parameters
   ;
 
 parameter
-  : inputMode ID type?
+  : inputMode ID typeIdentifier?
   ;
 
-type
+typeIdentifier
   : ':' identifier
   ;
 
-rule
- 	: LINE_COMMENT* ruleSources ('->' ruleTargets)? dependent? ruleName? ';'
+expression
+ 	: LINE_COMMENT* qualifiedIdentifier '->' qualifiedIdentifier ';'                  #mapSimpleCopy
+ 	| LINE_COMMENT* fpExpression ';'                                                  #mapFhirPath               
+  | LINE_COMMENT* mapExpression ';'                                                 #mapFhirMarkup
  	;
 
-ruleName
-  : ID
+mapExpression
+  : mapExpressionSource (',' mapExpressionSource)* ('->' mapExpressionTarget)? dependentExpression? mapExpressionName?
   ;
 
-ruleSources
-  : ruleSource (',' ruleSource)*
+// mapLine
+//   : LINE_COMMENT* 
+//   ;
+
+// mapLine
+//  	: LINE_COMMENT* fpExpression ';'
+//  	| LINE_COMMENT* mapLineSources ('->' mapLineTargets)? dependent? mapLineName? ';'
+//  	;
+
+mapExpressionName
+  : DOUBLE_QUOTED_STRING
   ;
 
-ruleSource
-  :  ruleContext sourceType? sourceCardinality? sourceDefault? sourceListMode? alias? whereClause? checkClause? log?
+// mapLineSources
+//   : mapLineSource (',' mapLineSource)*
+//   ;
+
+mapExpressionSource
+  :  qualifiedIdentifier typeIdentifier? sourceCardinality? sourceDefault? sourceListMode? alias? whereClause? checkClause? log?
   ;
 
-ruleTargets
-  : ruleTarget (',' ruleTarget)*
-  ;
-
-sourceType
-  : ':' identifier
+mapExpressionTarget
+  : mapLineTarget (',' mapLineTarget)*
   ;
 
 sourceCardinality
@@ -130,12 +129,12 @@ upperBound
   | '*'
   ;
 
-ruleContext
-  : identifier ('.' identifier)*
+qualifiedIdentifier
+  : identifier ('.' identifier '[x]'?)*
   ;
 
 sourceDefault
-  : 'default' '(' fhirPath ')'
+  : 'default' '(' fpExpression ')'
   ;
 
 alias
@@ -143,29 +142,29 @@ alias
   ;
 
 whereClause
-  : 'where' '(' fhirPath ')'
+  : 'where' '(' fpExpression ')'
   ;
 
 checkClause
-  : 'check' '(' fhirPath ')'
+  : 'check' '(' fpExpression ')'
   ;
 
 log
-  : 'log' '(' fhirPath ')'
+  : 'log' '(' fpExpression ')'
   ;
 
-dependent
-  : 'then' (invocation (',' invocation)* rules? | rules)
+dependentExpression
+  : 'then' (invocation (',' invocation)* groupExpressions? | groupExpressions)
   ;
 
-ruleTarget
-  : ruleContext ('=' transform)? alias? targetListMode?
+mapLineTarget
+  : qualifiedIdentifier ('=' transform)? alias? targetListMode?
   | invocation alias?     // alias is not required when simply invoking a group
   ;
 
 transform
   : literal           // trivial constant transform
-  | ruleContext       // 'copy' transform
+  | qualifiedIdentifier       // 'copy' transform
   | invocation        // other named transforms
   ;
 
@@ -182,19 +181,102 @@ param
   | ID
   ;
 
-fhirPath
-  : literal       // insert reference to FhirPath grammar here
+fpExpression
+        : fpTerm                                                      #termExpression
+        | fpExpression '.' fpInvocation                               #invocationExpression
+        | fpExpression '[' fpExpression ']'                           #indexerExpression
+        | ('+' | '-') fpExpression                                    #polarityExpression
+        | fpExpression ('*' | '/' | 'div' | 'mod') fpExpression       #multiplicativeExpression
+        | fpExpression ('+' | '-' | '&') fpExpression                 #additiveExpression
+        | fpExpression ('is' | 'as') fpTypeSpecifier                  #typeExpression
+        | fpExpression '|' fpExpression                               #unionExpression
+        | fpExpression ('<=' | '<' | '>' | '>=') fpExpression         #inequalityExpression
+        | fpExpression ('=' | '~' | '!=' | '!~') fpExpression         #equalityExpression
+        | fpExpression ('in' | 'contains') fpExpression               #membershipExpression
+        | fpExpression 'and' fpExpression                             #andExpression
+        | fpExpression ('or' | 'xor') fpExpression                    #orExpression
+        | fpExpression 'implies' fpExpression                         #impliesExpression
+        //| (IDENTIFIER)? '=>' fpExpression                           #lambdaExpression
+        ;
+
+fpTerm
+        : fpInvocation                                            #invocationTerm
+        | literal                                                 #literalTerm
+        | fpExternalConstant                                      #externalConstantTerm
+        | '(' fpExpression ')'                                    #parenthesizedTerm
+        ;
+
+fpInvocation                          // Terms that can be used after the function/member invocation '.'
+        : fpFunction                                            #functionInvocation
+        | identifier                                            #memberInvocation
+        | '$this'                                               #thisInvocation
+        | '$index'                                              #indexInvocation
+        | '$total'                                              #totalInvocation
+        ;
+
+fpExternalConstant
+        : '%' ( identifier | SINGLE_QUOTED_STRING )
+        ;
+
+fpFunction
+        : identifier '(' fpParamList? ')'
+        ;
+
+fpParamList
+        : fpExpression (',' fpExpression)*
+        ;
+
+fpTypeSpecifier
+        : qualifiedIdentifier
+        ;
+
+constant
+  : ID
   ;
 
+
 literal
-  : INTEGER
-  | NUMBER
-  | STRING
-  | DATETIME
-  | DATE
-  | TIME
-  | BOOL
+  : NULL_LITERAL                                          #nullLiteral
+  | BOOL                                                  #booleanLiteral
+  | fpQuantity                                            #quantityLiteral
+  | LONG_INTEGER                                          #longNumberLiteral
+  | (INTEGER | DECIMAL)                                   #numberLiteral
+  | DATE                                                  #dateLiteral
+  | DATE_TIME                                             #dateTimeLiteral
+  | TIME                                                  #timeLiteral
+  | SINGLE_QUOTED_STRING                                  #stringLiteral
+  | DOUBLE_QUOTED_STRING                                  #quotedStringLiteral
   ;
+
+  // : BOOL
+  // | DATE
+  // | DATE_TIME
+  // | TIME
+  // | NUMBER
+  // // | ID            // added to allow for constant use
+  // | DELIMITED_IDENTIFIER
+  // | SINGLE_QUOTED_STRING
+  // | DOUBLE_QUOTED_STRING
+  // ;
+
+// note that quantity has to require units here because if not there is no differentiator from a bare number
+fpQuantity
+    : (INTEGER | DECIMAL) fpUnit
+    ;
+
+fpUnit
+    : fpDateTimePrecision
+    | fpPluralDateTimePrecision
+    | SINGLE_QUOTED_STRING // UCUM syntax for units of measure
+    ;
+
+fpDateTimePrecision
+        : 'year' | 'month' | 'week' | 'day' | 'hour' | 'minute' | 'second' | 'millisecond'
+        ;
+
+fpPluralDateTimePrecision
+        : 'years' | 'months' | 'weeks' | 'days' | 'hours' | 'minutes' | 'seconds' | 'milliseconds'
+        ;
 
 groupTypeMode
   : 'types' | 'type+'
@@ -245,58 +327,75 @@ modelMode           // StructureMapModelMode binding
     Lexical rules from FhirPath
 *****************************************************************/
 
+NULL_LITERAL
+  : '{' '}'
+  ;
+
 BOOL
-        : 'true'
-        | 'false'
-        ;
+    : 'true'
+    | 'false'
+    ;
 
 DATE
-        : '@' DATEFORMAT
-        ;
+    : '@' DATE_FORMAT
+    ;
 
-DATETIME
-        : '@' DATEFORMAT 'T' (TIMEFORMAT TIMEZONEOFFSETFORMAT?)?
-        ;
+DATE_TIME
+    : '@' DATE_FORMAT 'T' (TIME_FORMAT TIMEZONE_OFFSET_FORMAT?)?
+    ;
 
 TIME
-        : '@' 'T' TIMEFORMAT
-        ;
+    : '@' 'T' TIME_FORMAT
+    ;
 
-fragment DATEFORMAT
-        : [0-9][0-9][0-9][0-9] ('-'[0-9][0-9] ('-'[0-9][0-9])?)?
-        ;
+fragment DATE_FORMAT
+    : [0-9][0-9][0-9][0-9] ('-'[0-9][0-9] ('-'[0-9][0-9])?)?
+    ;
 
-fragment TIMEFORMAT
-        : [0-9][0-9] (':'[0-9][0-9] (':'[0-9][0-9] ('.'[0-9]+)?)?)?
-        ;
+fragment TIME_FORMAT
+    : [0-9][0-9] (':'[0-9][0-9] (':'[0-9][0-9] ('.'[0-9]+)?)?)?
+    ;
 
-fragment TIMEZONEOFFSETFORMAT
-        : ('Z' | ('+' | '-') [0-9][0-9]':'[0-9][0-9])
-        ;
+fragment TIMEZONE_OFFSET_FORMAT
+    : ('Z' | ('+' | '-') [0-9][0-9]':'[0-9][0-9])
+    ;
 
-ID
-        : ([A-Za-z])([A-Za-z0-9])*
-        ;
+LONG_INTEGER
+    : [0-9]+ 'L'
+    ;
 
-IDENTIFIER
-        : ([A-Za-z] | '_')([A-Za-z0-9] | '_')*            // Added _ to support CQL (FHIR could constrain it out)
-        ;
-
-DELIMITED_IDENTIFIER
-        : '`' (ESC | .)*? '`'
-        ;
-
-STRING
-        : '\'' (ESC | .)*? '\''
-        ;
+DECIMAL
+    : [0-9]* '.' [0-9]+
+    ;
 
 INTEGER
     : [0-9]+
     ;
 
-// Also allows leading zeroes now (just like CQL and XSD)
-NUMBER
-    : INTEGER ('.' [0-9]+)?
+// // Also allows leading zeroes now (just like CQL and XSD)
+// NUMBER
+//     : [0-9]+('.' [0-9]+)?
+//     ;
+
+ID
+    : ([A-Za-z])([A-Za-z0-9])*
+    ;
+
+
+// FHIR_ELEMENT_PATH_WITH_SLICE
+//   : ID ('.' ID (':' ID)? '[x]'?)*
+//   ;
+
+IDENTIFIER
+    : ([A-Za-z] | '_')([A-Za-z0-9] | '_')*            // Added _ to support CQL (FHIR could constrain it out)
+    ;
+
+DELIMITED_IDENTIFIER
+    : '`' (ESC | .)*? '`'
+    ;
+
+SINGLE_QUOTED_STRING
+    : '\'' (ESC | .)*? '\''
     ;
 
 // SINGLE_QUOTED_STRING
@@ -308,44 +407,33 @@ DOUBLE_QUOTED_STRING
   // : '"' ( ~["\r\n] )* '"' 
   ;
 
-
-// note that these need to be expressed like this to avoid greedy collection of the header keys as other tokens
-HEADER_URL
-  : '/// url'
+// note that this throws warnings in the ANTLR compiler because we need to detect 
+TRIPLE_QUOTED_STRING_LITERAL
+  : '"""' [\r\n] (.)*? [\r\n] '"""' [\r\n]
   ;
 
-// note that these need to be expressed like this to avoid greedy collection of the header keys as other tokens
-HEADER_NAME
-  : '/// name'
-  ;
-
-// note that these need to be expressed like this to avoid greedy collection of the header keys as other tokens
-HEADER_TITLE
-  : '/// title'
-  ;
-
-// note that these need to be expressed like this to avoid greedy collection of the header keys as other tokens
-HEADER_STATUS
-  : '/// status'
-  ;
-
-// note that these need to be expressed like this to avoid greedy collection of the header keys as other tokens
-HEADER_DESCRIPTION
-  : '/// description'
-  ;
 
 // Pipe whitespace to the HIDDEN channel to support retrieving source text through the parser.
 WS
     : [ \r\n\t]+ -> channel(HIDDEN)
     ;
 
-COMMENT
+C_STYLE_COMMENT
         : '/*' .*? '*/' // -> channel(HIDDEN)
         ;
 
+METADATA_PREFIX
+      : '/// '
+      ;
+
 LINE_COMMENT
-        : '//' ~[/\r\n] ~[\r\n]* // -> channel(HIDDEN)
+        : '//' ~[/] ~[\r\n]* // -> channel(HIDDEN)
         ;
+
+INLINE_COMMENT
+  : [ \t]* C_STYLE_COMMENT
+  | [ \t]* LINE_COMMENT
+  ;
 
 fragment ESC
         : '\\' (["'\\/fnrt] | UNICODE)    // allow \", \', \\, \/, \f, etc. and \uXXX
