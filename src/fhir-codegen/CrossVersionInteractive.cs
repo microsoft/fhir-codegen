@@ -34,7 +34,7 @@ internal class CrossVersionInteractive
 
         try
         {
-            if (_instance is null)
+            if (_instance == null)
             {
                 _instance = new CrossVersionInteractive(config);
             }
@@ -82,7 +82,7 @@ internal class CrossVersionInteractive
             }
         }
 
-        if ((_releaseLeft is not null) && (_releaseRight is not null))
+        if ((_releaseLeft != null) && (_releaseRight != null))
         {
             // jump to loading packages
             _nextState = UiStateCodes.LoadPackages;
@@ -113,13 +113,13 @@ internal class CrossVersionInteractive
                     _comparison = JsonSerializer.Deserialize<PackageComparison>(jsonFs);
 
                     // grab package information from comparison
-                    if ((_comparison is not null) &&
+                    if ((_comparison != null) &&
                         FhirReleases.TryGetSequence(_comparison.LeftPackageId, out FhirReleases.FhirSequenceCodes leftSeq))
                     {
                         _releaseLeft = _releases.Where(i => i.Sequence == leftSeq).FirstOrDefault();
                     }
 
-                    if ((_comparison is not null) &&
+                    if ((_comparison != null) &&
                         FhirReleases.TryGetSequence(_comparison.RightPackageId, out FhirReleases.FhirSequenceCodes rightSeq))
                     {
                         _releaseRight = _releases.Where(i => i.Sequence == rightSeq).FirstOrDefault();
@@ -705,7 +705,7 @@ internal class CrossVersionInteractive
                 }
             }
 
-            _nextState = (_releaseLeft is null || _releaseRight is null) ? UiStateCodes.Default : UiStateCodes.LoadPackages;
+            _nextState = (_releaseLeft == null || _releaseRight == null) ? UiStateCodes.Default : UiStateCodes.LoadPackages;
 
             Application.RequestStop(d);
         };
@@ -715,7 +715,7 @@ internal class CrossVersionInteractive
 
     private async Task<(bool success, string message)> TryCompareAsync()
     {
-        if ((_dcLeft is null) || (_dcRight is null))
+        if ((_dcLeft == null) || (_dcRight == null))
         {
             return (false, "Two loaded FHIR packages are required.");
         }
@@ -744,14 +744,14 @@ internal class CrossVersionInteractive
         catch (Exception ex)
         {
             Console.WriteLine($"TryCompareAsync <<< caught: {ex.Message}");
-            return (false, ex.Message + (ex.InnerException is null ? string.Empty : ": " + ex.InnerException.Message));
+            return (false, ex.Message + (ex.InnerException == null ? string.Empty : ": " + ex.InnerException.Message));
         }
     }
 
 
     private async Task<(bool success, string message)> TryLoadPackagesAsync()
     {
-        if ((_releaseLeft is null) || (_releaseRight is null))
+        if ((_releaseLeft == null) || (_releaseRight == null))
         {
             return (false, "Two FHIR packages are required.");
         }
@@ -767,7 +767,7 @@ internal class CrossVersionInteractive
             string directiveLeft = $"hl7.fhir.{_releaseLeft.Value.Sequence.ToRLiteral().ToLowerInvariant()}.core#{_releaseLeft.Value.Version}";
             PackageCacheEntry? packageLeft = await cache.FindOrDownloadPackageByDirective(directiveLeft, true);
 
-            if (packageLeft is null)
+            if (packageLeft == null)
             {
                 return (false, $"Could not find package for directive: {directiveLeft}");
             }
@@ -775,7 +775,7 @@ internal class CrossVersionInteractive
             string directiveRight = $"hl7.fhir.{_releaseRight.Value.Sequence.ToRLiteral().ToLowerInvariant()}.core#{_releaseRight.Value.Version}";
             PackageCacheEntry? packageRight = await cache.FindOrDownloadPackageByDirective(directiveRight, true);
 
-            if (packageRight is null)
+            if (packageRight == null)
             {
                 return (false, $"Could not find package for directive: {directiveRight}");
             }
@@ -805,7 +805,7 @@ internal class CrossVersionInteractive
         catch (Exception ex)
         {
             Console.WriteLine($"TryLoadPackagesAsync <<< caught: {ex.Message}");
-            return (false, ex.Message + (ex.InnerException is null ? string.Empty : ": " + ex.InnerException.Message));
+            return (false, ex.Message + (ex.InnerException == null ? string.Empty : ": " + ex.InnerException.Message));
         }
     }
 

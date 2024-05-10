@@ -441,7 +441,7 @@ public class Program
         foreach (ConfigurationOption opt in config.GetOptions())
         {
             // need to configure default values
-            if ((envConfig is not null) &&
+            if ((envConfig != null) &&
                 (!string.IsNullOrEmpty(opt.EnvVarName)))
             {
                 opt.CliOption.SetDefaultValueFactory(() => envConfig.GetSection(opt.EnvVarName).GetChildren().Select(c => c.Value));
@@ -519,7 +519,7 @@ public class Program
                     entry = await cache.FindOrDownloadPackageByDirective(package, rootConfig.ResolvePackageDependencies);
                 }
 
-                if (entry is null)
+                if (entry == null)
                 {
                     throw new Exception($"Could not find or download package {package}");
                 }
@@ -619,7 +619,7 @@ public class Program
                     entry = await cache.FindOrDownloadPackageByDirective(package, config.ResolvePackageDependencies);
                 }
 
-                if (entry is null)
+                if (entry == null)
                 {
                     throw new Exception($"Could not find or download package {package}");
                 }
@@ -653,7 +653,7 @@ public class Program
                     entry = await cache.FindOrDownloadPackageByDirective(package, config.ResolvePackageDependencies);
                 }
 
-                if (entry is null)
+                if (entry == null)
                 {
                     throw new Exception($"Could not find or download package {package}");
                 }

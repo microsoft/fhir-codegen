@@ -93,7 +93,7 @@ group EncounterDiagnosis(source src, target tgt) extends BackboneElement {
         }
 
         sm.Should().NotBeNull();
-        if (sm is null)
+        if (sm == null)
         {
             return;
         }
@@ -124,7 +124,7 @@ group EncounterDiagnosis(source src, target tgt) extends BackboneElement {
         }
 
         sm.Should().NotBeNull();
-        if (sm is null)
+        if (sm == null)
         {
             return;
         }

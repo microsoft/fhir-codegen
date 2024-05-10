@@ -40,7 +40,7 @@ public class FhirMappingLanguage
                 structureMap.Name = structureMap.Id;
             }
 
-            return structureMap is not null;
+            return structureMap != null;
         }
         catch (Exception ex)
         {

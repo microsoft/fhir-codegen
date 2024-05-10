@@ -803,7 +803,7 @@ public class CrossVersionMapCollection
         foreach (ComparisonRecord<StructureInfoRec> c in primitiveTypes.Where(ci => ci.KeyInLeft == true))
         {
             // skip primitives that do not have serialization-based conversion info
-            if ((c.TypeSerializationInfo is null) || (c.TypeSerializationInfo.Count == 0))
+            if ((c.TypeSerializationInfo == null) || (c.TypeSerializationInfo.Count == 0))
             {
                 continue;
             }

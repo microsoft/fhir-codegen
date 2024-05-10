@@ -177,7 +177,7 @@ public class ConfigRoot : ICodeGenConfig
 
         object? parsed = parseResult.GetValueForOption(opt);
 
-        if ((parsed is not null) &&
+        if ((parsed != null) &&
             (parsed is T typed))
         {
             return typed;
@@ -198,7 +198,7 @@ public class ConfigRoot : ICodeGenConfig
 
         object? parsed = parseResult.GetValueForOption(opt);
 
-        if (parsed is null)
+        if (parsed == null)
         {
             return defaultValue;
         }
@@ -258,7 +258,7 @@ public class ConfigRoot : ICodeGenConfig
 
         object? parsed = parseResult.GetValueForOption(opt);
 
-        if (parsed is null)
+        if (parsed == null)
         {
             return defaultValue;
         }

@@ -100,7 +100,7 @@ public static class LanguageManager
                 throw new Exception($"Could not create instance of {localType.Name} - {ex.Message}");
             }
 
-            if (language is null)
+            if (language == null)
             {
                 throw new Exception($"Could not create instance of {localType.Name}");
             }

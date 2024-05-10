@@ -147,7 +147,7 @@ public partial class ModelBuilder
             _allowedResourceInteractions.Add(OaExpandedInteractionCodes.Read);
         }
 
-        if ((_options.ConditionalRead is not null) &&
+        if ((_options.ConditionalRead != null) &&
             (_options.ConditionalRead != CapabilityStatement.ConditionalReadStatus.NotSupported))
         {
             _requiredResourceInteractions.Add(OaExpandedInteractionCodes.ReadConditional);
@@ -659,7 +659,7 @@ public partial class ModelBuilder
     /// <returns>A CapabilityStatement.ConditionalReadStatus.</returns>
     private CapabilityStatement.ConditionalReadStatus ResolveConditionalRead(string resourceName)
     {
-        if (_options.ConditionalRead is not null)
+        if (_options.ConditionalRead != null)
         {
             return _options.ConditionalRead.Value;
         }
@@ -2806,7 +2806,7 @@ public partial class ModelBuilder
             {
                 case CapabilityStatement.TypeRestfulInteraction.Read:
                     interactions.Add(OaExpandedInteractionCodes.Read);
-                    if ((rComp.ConditionalRead is not null) &&
+                    if ((rComp.ConditionalRead != null) &&
                         (rComp.ConditionalRead != CapabilityStatement.ConditionalReadStatus.NotMatch))
                     {
                         interactions.Add(OaExpandedInteractionCodes.ReadConditional);

@@ -18,7 +18,7 @@ public class Element_20_50 : ICrossVersionProcessor<Element>
 
 	public void Process(ISourceNode node, Element? current)
 	{
-        if (current is null)
+        if (current == null)
         {
             return;
         }

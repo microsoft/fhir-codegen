@@ -311,7 +311,7 @@ public class PackageLoader : IDisposable
 
                 PackageCacheEntry? expansion = _cache.FindOrDownloadPackageByDirective(expansionDirective).Result;
 
-                if (expansion is null)
+                if (expansion == null)
                 {
                     throw new Exception($"Could not find or download expansion package: {expansionDirective}");
                 }

@@ -147,7 +147,7 @@ public class PackageComparer
         }
 
         // check if we are saving cross version maps and did not load any
-        if ((_crossVersion is null) && (_config.MapSaveStyle != ConfigCompare.ComparisonMapSaveStyle.None))
+        if ((_crossVersion == null) && (_config.MapSaveStyle != ConfigCompare.ComparisonMapSaveStyle.None))
         {
             // create our cross-version map collection
             _crossVersion = new(_cache, _left, _right);
@@ -184,7 +184,7 @@ public class PackageComparer
         // need to expand every value set for comparison
         Dictionary<string, ValueSet> vsLeft = GetValueSets(_left);
         _vsComparisons = CompareValueSets(FhirArtifactClassEnum.ValueSet, vsLeft, GetValueSets(_right, vsLeft));
-        if (mdWriter is not null)
+        if (mdWriter != null)
         {
             WriteComparisonOverview(mdWriter, "Value Sets", _vsComparisons.Values);
 
@@ -220,7 +220,7 @@ public class PackageComparer
         }
 
         Dictionary<string, ComparisonRecord<StructureInfoRec>> primitives = ComparePrimitives(FhirArtifactClassEnum.PrimitiveType, _left.PrimitiveTypesByName, _right.PrimitiveTypesByName);
-        if (mdWriter is not null)
+        if (mdWriter != null)
         {
             WriteComparisonOverview(mdWriter, "Primitive Types", primitives.Values);
 
@@ -242,7 +242,7 @@ public class PackageComparer
         }
 
         Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> complexTypes = CompareStructures(FhirArtifactClassEnum.ComplexType, _left.ComplexTypesByName, _right.ComplexTypesByName);
-        if (mdWriter is not null)
+        if (mdWriter != null)
         {
             WriteComparisonOverview(mdWriter, "Complex Types", complexTypes.Values);
 
@@ -281,7 +281,7 @@ public class PackageComparer
         }
 
         Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> resources = CompareStructures(FhirArtifactClassEnum.Resource, _left.ResourcesByName, _right.ResourcesByName);
-        if (mdWriter is not null)
+        if (mdWriter != null)
         {
             WriteComparisonOverview(mdWriter, "Resources", resources.Values);
 
@@ -320,7 +320,7 @@ public class PackageComparer
 
         // TODO(ginoc): Logical models are tracked by URL in collections, but structure mapping is done by name.
         //Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> logical = Compare(FhirArtifactClassEnum.LogicalModel, _left.LogicalModelsByUrl, _right.LogicalModelsByUrl);
-        //if (mdWriter is not null)
+        //if (mdWriter != null)
         //{
         //    WriteComparisonOverview(mdWriter, "Logical Models", logical.Values);
 
@@ -355,7 +355,7 @@ public class PackageComparer
             //LogicalModels = logical,
         };
 
-        if (mdWriter is not null)
+        if (mdWriter != null)
         {
             mdWriter.Flush();
             mdWriter.Close();
@@ -444,7 +444,7 @@ public class PackageComparer
 
     //            StructureMap.StructureComponent? leftStructure = sm.Structure.FirstOrDefault(s => s.Mode == StructureMap.StructureMapModelMode.Source);
 
-    //            if (leftStructure is null)
+    //            if (leftStructure == null)
     //            {
     //                throw new Exception($"StructureMap {url} does not have a source structure");
     //            }
@@ -874,13 +874,13 @@ public class PackageComparer
         string outputDir,
         IEnumerable<ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> resources)
     {
-        if (_crossVersion is null)
+        if (_crossVersion == null)
         {
             return;
         }
 
         ConceptMap? cm = _crossVersion.GetSourceResourceTypeConceptMap(resources);
-        if (cm is null)
+        if (cm == null)
         {
             return;
         }
@@ -906,13 +906,13 @@ public class PackageComparer
         IEnumerable<ComparisonRecord<StructureInfoRec>> primitiveTypes,
         IEnumerable<ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> complexTypes)
     {
-        if (_crossVersion is null)
+        if (_crossVersion == null)
         {
             return;
         }
 
         ConceptMap? cm = _crossVersion.GetSourceDataTypesConceptMap(primitiveTypes, complexTypes);
-        if (cm is null)
+        if (cm == null)
         {
             return;
         }
@@ -935,7 +935,7 @@ public class PackageComparer
 
     private void WriteStructureMaps(string outputDir, IEnumerable<ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> values)
     {
-        if (_crossVersion is null)
+        if (_crossVersion == null)
         {
             return;
         }
@@ -943,7 +943,7 @@ public class PackageComparer
         foreach (ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec> c in values)
         {
             ConceptMap? cm = _crossVersion.TryGetSourceStructureElementConceptMap(c);
-            if (cm is null)
+            if (cm == null)
             {
                 continue;
             }
@@ -967,7 +967,7 @@ public class PackageComparer
 
     private void WriteValueSetMaps(string outputDir, IEnumerable<ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>> values)
     {
-        if (_crossVersion is null)
+        if (_crossVersion == null)
         {
             return;
         }
@@ -975,7 +975,7 @@ public class PackageComparer
         foreach (ComparisonRecord<ValueSetInfoRec, ConceptInfoRec> c in values)
         {
             ConceptMap? cm = _crossVersion.GetSourceValueSetConceptMap(c);
-            if (cm is null)
+            if (cm == null)
             {
                 continue;
             }
@@ -1263,7 +1263,7 @@ public class PackageComparer
 
     //private void WriteComparisonTypeConversions(ExportStreamWriter writer, IComparisonRecord cRec)
     //{
-    //    //if ((cRec.AdditionalSerializations is null) ||
+    //    //if ((cRec.AdditionalSerializations == null) ||
     //    //    (cRec.AdditionalSerializations.Count == 0))
     //    //{
     //    //    return;
@@ -1335,7 +1335,7 @@ public class PackageComparer
             writer.WriteLine("| Source | Target | Relationship | Message |");
             writer.WriteLine("| ------ | ------ | ------------ | ------- |");
 
-            if ((cRec.TypeSerializationInfo is null) || (cRec.TypeSerializationInfo.Count == 0))
+            if ((cRec.TypeSerializationInfo == null) || (cRec.TypeSerializationInfo.Count == 0))
             {
                 writer.WriteLine($"| {cRec.Key} | {cRec.Key} | {cRec.Relationship?.ToString() ?? "-"} | {cRec.Message}");
             }
@@ -2045,7 +2045,7 @@ public class PackageComparer
         (CMR relationship, int maxIndex) = GetInitialRelationship(lSource, rSource);
 
         // check for an existing relationship
-        if (mappedRelationship is not null)
+        if (mappedRelationship != null)
         {
             relationship = mappedRelationship.Value;
         }
@@ -2101,13 +2101,13 @@ public class PackageComparer
             }
 
             // check to see if there was not a required binding and now there is
-            if ((left.ValueSetBindingStrength is not null) || (right.ValueSetBindingStrength is not null))
+            if ((left.ValueSetBindingStrength != null) || (right.ValueSetBindingStrength != null))
             {
                 if ((left.ValueSetBindingStrength != BindingStrength.Required) && (right.ValueSetBindingStrength == BindingStrength.Required))
                 {
                     relationship = ApplyRelationship(relationship, CMR.RelatedTo);
 
-                    if (left.ValueSetBindingStrength is null)
+                    if (left.ValueSetBindingStrength == null)
                     {
                         messages.Add($"{right.Name} added a required binding to {right.BindingValueSet}");
                     }
@@ -2119,11 +2119,11 @@ public class PackageComparer
                 else if (left.ValueSetBindingStrength != right.ValueSetBindingStrength)
                 {
                     relationship = ApplyRelationship(relationship, CMR.RelatedTo);
-                    if (left.ValueSetBindingStrength is null)
+                    if (left.ValueSetBindingStrength == null)
                     {
                         messages.Add($"{right.Name} added a binding requirement - {right.ValueSetBindingStrength} {right.BindingValueSet}");
                     }
-                    else if (right.ValueSetBindingStrength is null)
+                    else if (right.ValueSetBindingStrength == null)
                     {
                         messages.Add($"{right.Name} removed a binding requirement - {left.ValueSetBindingStrength} {left.BindingValueSet}");
                     }
@@ -2627,7 +2627,7 @@ public class PackageComparer
             List<ConceptInfoRec> rightInfoSource;
 
             // prefer using a map if we have one
-            if (cm is not null)
+            if (cm != null)
             {
                 _ = leftConcepts.TryGetValue(conceptCode, out FhirConcept? leftConcept);
                 _ = rightConcepts.TryGetValue(conceptCode, out FhirConcept? rightConcept);
@@ -2647,7 +2647,7 @@ public class PackageComparer
                     .FirstOrDefault();
 
                 // if we have a mapping from the current source, we want to use the target mappings
-                if (sourceMap is not null)
+                if (sourceMap != null)
                 {
                     // pull information about our mapped source concept
                     if (!left.TryGetValue(conceptCode, out ConceptInfoRec? mapSourceInfo))
@@ -3016,7 +3016,7 @@ public class PackageComparer
             };
 
             // prefer using a map if we have one
-            if (cm is not null)
+            if (cm != null)
             {
                 HashSet<string> usedSourceNames = [];
                 HashSet<string> usedTargetNames = [];
@@ -3028,7 +3028,7 @@ public class PackageComparer
                 ConceptMap.SourceElementComponent? sourceMap = cm?.Group.FirstOrDefault()?.Element.Where(e => e.Code == sdName).FirstOrDefault();
 
                 // if we have a mapping from the current source, we want to use the target mappings
-                if (sourceMap is not null)
+                if (sourceMap != null)
                 {
                     // pull information about our mapped source concept
                     if (!left.TryGetValue(sdName, out StructureInfoRec? mapSourceInfo))
@@ -3255,7 +3255,7 @@ public class PackageComparer
                 continue;
             }
 
-            if (rightRelationship is null)
+            if (rightRelationship == null)
             {
                 // when adding types, the source is broader than whatever it is serializing to
                 rightRelationship = CMR.SourceIsBroaderThanTarget;
@@ -3357,7 +3357,7 @@ public class PackageComparer
             };
 
             // prefer using a map if we have one
-            if (cm is not null)
+            if (cm != null)
             {
                 HashSet<string> usedSourceNames = [];
                 HashSet<string> usedTargetNames = [];
@@ -3369,7 +3369,7 @@ public class PackageComparer
                 ConceptMap.SourceElementComponent? sourceMap = cm?.Group.FirstOrDefault()?.Element.Where(e => e.Code == sdName).FirstOrDefault();
 
                 // if we have a mapping from the current source, we want to use the target mappings
-                if (sourceMap is not null)
+                if (sourceMap != null)
                 {
                     // pull information about our mapped source concept
                     if (!left.TryGetValue(sdName, out StructureInfoRec? mapSourceInfo))
@@ -3473,7 +3473,7 @@ public class PackageComparer
 
             Dictionary<string, (string target, CMR relationship)> elementMappings = [];
 
-            if (elementMap is not null)
+            if (elementMap != null)
             {
                 foreach (ConceptMap.SourceElementComponent sourceElement in elementMap.Group.FirstOrDefault()?.Element ?? [])
                 {

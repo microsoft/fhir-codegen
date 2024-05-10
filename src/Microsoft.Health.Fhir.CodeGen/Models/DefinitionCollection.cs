@@ -617,7 +617,7 @@ public partial class DefinitionCollection
             return defaultValue;
         }
 
-        if (cs.Concept is null)
+        if (cs.Concept == null)
         {
             return defaultValue;
         }
@@ -635,13 +635,13 @@ public partial class DefinitionCollection
                     return c.Definition;
                 }
 
-                if (c.Concept is null)
+                if (c.Concept == null)
                 {
                     continue;
                 }
 
                 val = searchConceptRecursive(c.Concept);
-                if (val is not null)
+                if (val != null)
                 {
                     return val;
                 }
@@ -724,7 +724,7 @@ public partial class DefinitionCollection
 
                         // search for the structure element collection that contains the structure definition
                         StructureElementCollection? matchingElementCollection = bindings.FirstOrDefault(e => e.Structure.Url == sd.Url);
-                        if (matchingElementCollection is null)
+                        if (matchingElementCollection == null)
                         {
                             matchingElementCollection = new StructureElementCollection { Structure = sd, Elements = [] };
                             bindings.Add(matchingElementCollection);
@@ -760,7 +760,7 @@ public partial class DefinitionCollection
 
                         // search for the structure element collection that contains the structure definition
                         StructureElementCollection? matchingElementCollection = bindings.FirstOrDefault(e => e.Structure.Url == sd.Url);
-                        if (matchingElementCollection is null)
+                        if (matchingElementCollection == null)
                         {
                             matchingElementCollection = new StructureElementCollection { Structure = sd, Elements = [] };
                             bindings.Add(matchingElementCollection);
@@ -814,7 +814,7 @@ public partial class DefinitionCollection
 
                             // search for the structure element collection that contains the structure definition
                             StructureElementCollection? matchingElementCollection = bindings.FirstOrDefault(e => e.Structure.Url == currentSd.Url);
-                            if (matchingElementCollection is null)
+                            if (matchingElementCollection == null)
                             {
                                 matchingElementCollection = new StructureElementCollection { Structure = currentSd, Elements = [] };
                                 bindings.Add(matchingElementCollection);
@@ -2079,7 +2079,7 @@ public partial class DefinitionCollection
             if (rt == null)
             {
                 // TODO(ginoc): Check to see if this is actually possible
-                throw new Exception("SearchParameter.Base is null");
+                throw new Exception("SearchParameter.Base == null");
                 //continue;
             }
 
@@ -2088,7 +2088,7 @@ public partial class DefinitionCollection
             if (string.IsNullOrEmpty(spBase))
             {
                 // TODO(ginoc): Check to see if this is actually possible
-                throw new Exception("SearchParameter.Base is null");
+                throw new Exception("SearchParameter.Base == null");
             }
 
             // check for a base of "Resource" and add to the global list

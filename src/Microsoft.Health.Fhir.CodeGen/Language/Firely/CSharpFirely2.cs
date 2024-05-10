@@ -1572,7 +1572,7 @@ public sealed class CSharpFirely2 : ILanguage
                 _writer.WriteLine();
             }
 
-            if (description is not null) WriteIndentedComment(description);
+            if (description != null) WriteIndentedComment(description);
             _writer.WriteLineIndented($"{ei.PropertyType?.Replace("Hl7.Fhir.Model.", string.Empty) ?? string.Empty} {ei.PropertyName} {{ get; set; }}");
             _writer.WriteLine();
         }
@@ -1623,7 +1623,7 @@ public sealed class CSharpFirely2 : ILanguage
         string abstractFlag = isAbstract ? " abstract" : string.Empty;
         List<string> interfaces = [];
 
-        if (_cqlModelInfo?.patientClassName is not null)
+        if (_cqlModelInfo?.patientClassName != null)
         {
             // Just skip the model alias, I am currently not bothered enough to be more precise
             var className = _cqlModelInfo.patientClassName.Split('.')[1];
@@ -1633,7 +1633,7 @@ public sealed class CSharpFirely2 : ILanguage
         if (isPatientClass) interfaces.Add($"{Namespace}.IPatient");
 
         var identifierElement = complex.cgGetChildren(includeDescendants: false).SingleOrDefault(isIdentifierProperty);
-        if (identifierElement is not null)
+        if (identifierElement != null)
         {
             if (identifierElement.cgIsArray())
                 interfaces.Add("IIdentifiable<List<Identifier>>");
@@ -1643,11 +1643,11 @@ public sealed class CSharpFirely2 : ILanguage
 
         var primaryCodeElementInfo = isResource ? getPrimaryCodedElementInfo(complex, exportName) : null;
 
-        if (primaryCodeElementInfo is not null)
+        if (primaryCodeElementInfo != null)
             interfaces.Add($"ICoded<{primaryCodeElementInfo.PropertyType}>");
 
         var modifierElement = complex.cgGetChild("modifierExtension");
-        if (modifierElement is not null)
+        if (modifierElement != null)
         {
             if (!modifierElement.cgIsInherited(complex.Structure))
             {
@@ -1708,7 +1708,7 @@ public sealed class CSharpFirely2 : ILanguage
 
         WriteElements(complex, exportName, ref exportedElements, subset);
 
-        if (identifierElement is not null)
+        if (identifierElement != null)
         {
             if (identifierElement.cgIsArray())
                 _writer.WriteLineIndented("List<Identifier> IIdentifiable<List<Identifier>>.Identifier { get => Identifier; set => Identifier = value; }");
@@ -1718,7 +1718,7 @@ public sealed class CSharpFirely2 : ILanguage
             _writer.WriteLine(string.Empty);
         }
 
-        if (primaryCodeElementInfo is not null)
+        if (primaryCodeElementInfo != null)
         {
             _writer.WriteLineIndented($"{primaryCodeElementInfo.PropertyType} ICoded<{primaryCodeElementInfo.PropertyType}>.Code {{ get => {primaryCodeElementInfo.PropertyName}; set => {primaryCodeElementInfo.PropertyName} = value; }}");
             _writer.WriteLineIndented($"IEnumerable<Coding> ICoded.ToCodings() => {primaryCodeElementInfo.PropertyName}.ToCodings();");
@@ -1729,7 +1729,7 @@ public sealed class CSharpFirely2 : ILanguage
         {
             var birthdayProperty = exportedElements.SingleOrDefault(ee => ee.FhirElementName + ".value" == _cqlModelInfo?.patientBirthDatePropertyName);
 
-            if (birthdayProperty is not null)
+            if (birthdayProperty != null)
             {
                 _writer.WriteLineIndented($"Hl7.Fhir.Model.Date {Namespace}.IPatient.BirthDate => {birthdayProperty.PropertyName};");
                 _writer.WriteLine(string.Empty);
@@ -1759,10 +1759,10 @@ public sealed class CSharpFirely2 : ILanguage
                 ? (complex.cgName() + "." + classInfo.primaryCodePath)
                 : null;
 
-            var elem = primaryCodePath is not null ? (tryFindElementInComplex(complex, primaryCodePath, out var e) ? e : null) : null;
-            var primaryCodeElementInfo = elem is not null ? BuildElementInfo(exportName, elem) : null;
+            var elem = primaryCodePath != null ? (tryFindElementInComplex(complex, primaryCodePath, out var e) ? e : null) : null;
+            var primaryCodeElementInfo = elem != null ? BuildElementInfo(exportName, elem) : null;
 
-            if (primaryCodePath is not null && primaryCodeElementInfo is null)
+            if (primaryCodePath != null && primaryCodeElementInfo == null)
             {
                 Console.WriteLine($"Warning: Cannot locate primary code path {primaryCodePath}, so no ICoded<T> was added to this type's signature.");
             }
@@ -1812,7 +1812,7 @@ public sealed class CSharpFirely2 : ILanguage
     }
 
 
-    private string NullCheck(WrittenElementInfo info) => info.PropertyName + (!info.IsList ? " is not null" : "?.Any() == true");
+    private string NullCheck(WrittenElementInfo info) => info.PropertyName + (!info.IsList ? " != null" : "?.Any() == true");
 
     private void WriteDictionaryPairs(IEnumerable<WrittenElementInfo> exportedElements)
     {
@@ -2512,7 +2512,7 @@ public sealed class CSharpFirely2 : ILanguage
         attributeText += ")]";
         _writer.WriteLineIndented(attributeText);
 
-        if (until is not null)
+        if (until != null)
         {
             _writer.WriteLineIndented($"[NotMapped(Since=FhirRelease.{until.Value.Item1})]");
         }
@@ -2564,7 +2564,7 @@ public sealed class CSharpFirely2 : ILanguage
             _ => attributeDescriptionWithSinceInfo(name, element.Short, since, until)
         };
 
-        if (description is not null) WriteIndentedComment(description);
+        if (description != null) WriteIndentedComment(description);
 
         if (element.Path == "OperationOutcome.issue.severity")
         {
@@ -2662,9 +2662,9 @@ public sealed class CSharpFirely2 : ILanguage
             (_, _, null) => null,
             (not null, _, _) => baseDescription +
                              $". Note: Element was introduced in {since}, do not use when working with older releases.",
-            (_, (var release, ""), _) when until is not null => baseDescription +
+            (_, (var release, ""), _) when until != null => baseDescription +
                              $". Note: Element is deprecated since {release}, do not use with {release} and newer releases.",
-            (_, (var release, var replacedBy), _) when until is not null => baseDescription +
+            (_, (var release, var replacedBy), _) when until != null => baseDescription +
                              $". Note: Element is replaced by '{replacedBy}' since {release}. Do not use this element '{name}' with {release} and newer releases.",
             _ => baseDescription
         };
@@ -3075,7 +3075,7 @@ public sealed class CSharpFirely2 : ILanguage
         _writer.WriteLine(string.Empty);
     }
 
-    /// <summary>Query if 'typeName' is nullable.</summary>
+    /// <summary>Query if 'typeName' == nullable.</summary>
     /// <param name="typeName">Name of the type.</param>
     /// <returns>True if nullable, false if not.</returns>
     private static bool IsNullable(string typeName) => typeName switch

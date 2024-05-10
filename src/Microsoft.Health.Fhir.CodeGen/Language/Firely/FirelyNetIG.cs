@@ -1142,7 +1142,7 @@ public partial class FirelyNetIG : ILanguage
             {
                 writer.WriteLineIndented($"IEnumerable<{elementType}>? {valName} = {parentVarName}" +
                     $".GetExtensions({_classNameDefinitions}.{extName})" +
-                    $".Where(e => e.Value is not null && e.Value is {elementType})" +
+                    $".Where(e => e.Value != null && e.Value is {elementType})" +
                     $".Select(e => ({elementType})e;");
             }
             else
@@ -1205,7 +1205,7 @@ public partial class FirelyNetIG : ILanguage
             {
                 writer.WriteLineIndented($"IEnumerable<{elementType}>? {valName} = {parentVarName}" +
                     $".GetExtensions({_classNameDefinitions}.{extName})" +
-                    $".Where(e => e.Value is not null && e.Value is {elementType})" +
+                    $".Where(e => e.Value != null && e.Value is {elementType})" +
                     $".Select(e => ({elementType})e;");
             }
             else
@@ -1484,6 +1484,85 @@ public partial class FirelyNetIG : ILanguage
         return true;
     }
 
+    private bool WriteProfileAccessorClass(ExportStreamWriter writer, StructureDefinition sd, ProfileSliceInfo sliceData)
+    {
+        //if (usedRecordTypes.Contains(profileData.SliceName))
+        //{
+        //    return false;
+        //}
+
+        // write a comment for the accessor record class
+        writer.WriteIndentedComment($"Record class to access the contents of the {sliceData.SliceName} slice\nElement Id: {sliceData.Id}", isSummary: true);
+        //writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
+
+        // open our class
+        writer.WriteLineIndented($"public record class {sliceData.ValueTypeName}");
+        OpenScope(writer);
+
+        //// traverse our sub-extensions to use as properties
+        //foreach (ProfileSliceInfo subData in sliceData.ChildSlicesBySliceId.OrderBy(kvp => kvp.Key).Select(kvp => kvp.Value))
+        //{
+        //    string et;
+
+        //    // check if we have type information
+        //    if ((subExtData.ValueElement != null) && (subExtData.ElementInfo != null))
+        //    {
+        //        et = subExtData.ElementInfo.IsPrimitive ? subExtData.ElementInfo.PrimitiveHelperType! : subExtData.ElementInfo.ElementType!;
+
+        //        // get optional flags
+        //        BuildElementOptionalFlags(
+        //            subExtData.ValueElement,
+        //            out string summary,
+        //            out string isModifier,
+        //            out string choice,
+        //            out string allowedTypes,
+        //            out string resourceReferences);
+
+        //        // write our comments
+        //        WriteIndentedComment(
+        //            writer,
+        //            subExtData.Summary +
+        //            (string.IsNullOrEmpty(choice) ? string.Empty : "\nChoice type: " + choice[9..]) +
+        //            (string.IsNullOrEmpty(allowedTypes) ? string.Empty : "\nAllowed Types: " + allowedTypes[14..^2]) +
+        //            (string.IsNullOrEmpty(resourceReferences) ? string.Empty : "\nReferences: " + resourceReferences[12..^2]),
+        //            isSummary: true);
+        //        WriteIndentedComment(writer, subExtData.Remarks, isSummary: false, isRemarks: true);
+        //    }
+        //    else
+        //    {
+        //        et = extData.Name + subExtData.Name + _recordClassSuffix;
+
+        //        // write our comments
+        //        WriteIndentedComment(writer, subExtData.Summary, isSummary: true);
+        //        WriteIndentedComment(writer, subExtData.Remarks, isSummary: false, isRemarks: true);
+        //    }
+
+        //    // write this property
+        //    if (subExtData.IsList)
+        //    {
+        //        writer.WriteLineIndented($"public List<{et}>? {subExtData.Name}{_recordValueSuffix} {{ get; init; }}");
+        //    }
+        //    else
+        //    {
+        //        writer.WriteLineIndented($"public {et}? {subExtData.Name}{_recordValueSuffix} {{ get; init; }}");
+        //    }
+        //}
+
+        // close our record class
+        CloseScope(writer);
+
+        //// check for sub-extensions that we need to nest into
+        //foreach (ExtensionData subExtData in extData.Children)
+        //{
+        //    if ((subExtData.ValueElement == null) || (subExtData.ElementInfo == null))
+        //    {
+        //        WriteExtensionAccessorClass(writer, subExtData, usedRecordTypes);
+        //    }
+        //}
+
+        return true;
+    }
+
     private List<KeyValuePair<string, string>> BuildReturnTuple(ExtensionData extData)
     {
         string valName = _processingValuePrefix + extData.Name;
@@ -1523,6 +1602,18 @@ public partial class FirelyNetIG : ILanguage
         return [new KeyValuePair<string, string>(valName, "(" + string.Join(", ", subTypes.Select(kvp => kvp.Value + "? " + kvp.Key)) + ")"), ];
     }
 
+    private record class ProfileSliceInfo
+    {
+        public required string Id { get; init; }
+        public required string ParentPath { get; init; }
+        public required string Path { get; init; }
+        public required string ElementName { get; init; }
+        public required string SliceName { get; init; }
+        public required string ValueTypeName { get; init; }
+        public required ElementDefinition Element { get; init; }
+        public required ElementDefinition? ElementThatDefinedThisSlicing { get; init; }
+        public Dictionary<string, ProfileSliceInfo> ChildSlicesBySliceId { get; init; } = [];
+    }
 
     private void WriteProfile(StructureDefinition sd)
     {
@@ -1607,166 +1698,370 @@ public partial class FirelyNetIG : ILanguage
                 writer.WriteLineIndented($"public const string ProfileVersion = \"{packageData.PackageVersion}\"");
                 writer.WriteLine();
             }
-            // check for all elements that are slices
-            ElementDefinition[] slices = sd.cgElements(skipSlices: false).Where(ed => ed.ElementId.LastIndexOf(':') > ed.ElementId.LastIndexOf('.')).ToArray();
 
-            foreach (ElementDefinition ed in slices)
+            Dictionary<string, ProfileSliceInfo> profileSlices = [];
+
+            // traverse all elements
+            foreach (ElementDefinition ed in sd.cgElements(skipSlices: false))
             {
-                string sliceName = string.IsNullOrEmpty(ed.SliceName) ? ed.ElementId.Substring(ed.ElementId.LastIndexOf(':') + 1) : ed.SliceName;
+                string id = ed.ElementId;
+                string[] pathComponents = ed.Path.Split('.');
 
-                writer.WriteLineIndented($"// Slice: {ed.ElementId} ({sliceName})");
+                Dictionary<string, ProfileSliceInfo> currentDict = profileSlices;
 
-                // get the parent that defines the slicing
-                if (!sd.cgTryGetSlicingParent(ed, out ElementDefinition? slicingEd))
+                int firstColonLoc = ed.ElementId.IndexOf(':');
+                while (firstColonLoc != -1)
                 {
-                    writer.WriteLineIndented($"// Could not resolve the parent element for: {ed.ElementId}.");
+                    int endOfSliceNameLoc = ed.ElementId.IndexOfAny([':', '.'], firstColonLoc + 1);
 
-                    // TODO(ginoc): extensions can be implicitly sliced
-                    continue;
-                }
-
-                writer.WriteLineIndented($"// Slicing Parent: {slicingEd.ElementId}");
-
-                // get all the elements for this slice
-                IEnumerable<ElementDefinition> sliceElements = sd.cgElementsForSlice(ed, sliceName);
-
-                // use our sliced element and parent to get the discriminators
-                IEnumerable<SliceDiscriminator> sliceDiscriminators = sd.cgDiscriminatedValues(_info, slicingEd, sliceName, sliceElements);
-
-                foreach (SliceDiscriminator discriminator in sliceDiscriminators)
-                {
-                    writer.WriteLineIndented("// Discriminator:");
-                    writer.WriteLineIndented($"//                Id: {discriminator.Id}");
-                    writer.WriteLineIndented($"//              Type: {discriminator.Type}");
-                    writer.WriteLineIndented($"//              Path: {discriminator.Path}");
-                    writer.WriteLineIndented($"//   PostResolvePath: {discriminator.PostResolvePath}");
-                    writer.WriteLineIndented($"//             Value: {discriminator.Value}");
-                    writer.WriteLineIndented($"//         IsBinding: {discriminator.IsBinding}");
-                    writer.WriteLineIndented($"//       BindingName: {discriminator.BindingName}");
-
-                    //bool isExtensionSlice = discriminator.Path.EndsWith(".extension.url", StringComparison.Ordinal);
-                    bool isExtensionSlice = FindExtensionPathRegex().IsMatch(discriminator.Path);
-
-                    if (isExtensionSlice)
+                    if (endOfSliceNameLoc == -1)
                     {
-                        // figure out the path we want to root our C# extension on
-                        //string rootPath = discriminator.Path[..^14];
-                        string rootPath = discriminator.Path.Substring(0, discriminator.Path.LastIndexOf(".extension", StringComparison.Ordinal));
-                        //string rootId = discriminator.Id.EndsWith(".url", StringComparison.Ordinal) ? discriminator.Id[..^4] : discriminator.Id;
-                        string rootId = FindExtensionPathRegex().IsMatch(discriminator.Id)
-                            ? discriminator.Id.Substring(0, discriminator.Id.LastIndexOf(".extension", StringComparison.Ordinal))
-                            : discriminator.Id;
-
-                        StructureDefinition? contextSd;
-                        ElementDefinition? contextElement;
-                        ComponentDefinition contextCd;
-
-                        if (sd.cgTryGetElementById(rootId, out contextElement))
-                        {
-                            contextSd = sd;
-                            contextCd = new()
-                            {
-                                Structure = sd,
-                                Element = contextElement,
-                                IsRootOfStructure = !contextElement.Path.Contains('.'),
-                            };
-                        }
-                        // resolve the root path element
-                        else if (sd.cgTryGetElementByPath(rootPath, out contextElement))
-                        {
-                            contextSd = sd;
-                            contextCd = new()
-                            {
-                                Structure = sd,
-                                Element = contextElement,
-                                IsRootOfStructure = !contextElement.Path.Contains('.'),
-                            };
-                        }
-                        else if (_info.TryFindElementByPath(rootPath, out contextSd, out contextElement))
-                        {
-                            contextCd = new()
-                            {
-                                Structure = contextSd,
-                                Element = contextElement,
-                                IsRootOfStructure = !contextElement.Path.Contains('.'),
-                            };
-                        }
-                        else if (_info.ComplexTypesByName.TryGetValue("Element", out contextSd))
-                        {
-                            contextCd = new(contextSd);
-                            contextElement = contextCd.Element;
-                        }
-                        else
-                        {
-                            // this should never happen
-                            throw new Exception($"Cannot resolve profile slice info: {sd.Name} ({sd.Url}) : {discriminator.Id}");
-                        }
-
-                        string extUrl = discriminator.Value.ToString() ?? string.Empty;
-
-                        // try to resolve this extension
-                        if (TryGetExtensionData(extUrl, out ExtensionData? extData) &&
-                            TryGetPackageData(extData.DefinitionDirective, out PackageData extPackageData))
-                        {
-                            // we have a definition we can link to
-                            writer.WriteLineIndented($"// Slice uses extension: {extPackageData.Namespace}.{extData.Name.ToPascalCase()}");
-
-                            // write a getter
-                            WriteProfileSliceExtensionAccessors(writer, sd, sliceName, contextCd, extData);
-                        }
-                        else
-                        {
-                            writer.WriteLineIndented($"// Could not resolve extension: {extUrl}");
-                        }
-                    }
-                    else
-                    {
-                        // figure out the path we want to root our C# extension on
-                        string rootPath = slicingEd.Path;
-
-                        writer.WriteLineIndented($"// Non-extension slice...");
+                        endOfSliceNameLoc = ed.ElementId.Length;
                     }
 
+                    string sliceId = id[..endOfSliceNameLoc];
+                    string sliceName = ed.ElementId.Substring(firstColonLoc + 1, endOfSliceNameLoc - firstColonLoc - 1);
+
+                    if (!currentDict.TryGetValue(sliceId, out ProfileSliceInfo? psi))
+                    {
+                        int dotCount = sliceId.Count(c => c == '.');
+
+                        psi = new ProfileSliceInfo
+                        {
+                            Id = sliceId,
+                            ParentPath = string.Join('.', pathComponents[..dotCount]),
+                            Path = string.Join('.', pathComponents[..(dotCount + 1)]),
+                            ElementName = pathComponents[dotCount],
+                            SliceName = sliceName,
+                            ValueTypeName = sd.Name.ToPascalCase() + sliceName.ToPascalCase(),
+                            Element = ed,
+                            ElementThatDefinedThisSlicing = sd.cgTryGetSlicingParent(ed, out ElementDefinition? slicingEd) ? slicingEd : null,
+                        };
+
+                        currentDict[sliceId] = psi;
+                    }
+
+                    firstColonLoc = ed.ElementId.IndexOf(':', firstColonLoc + 1);
+                    if (firstColonLoc != -1)
+                    {
+                        currentDict = psi.ChildSlicesBySliceId;
+                    }
                 }
-
-                writer.WriteLine();
-
-                //    string sliceName = !string.IsNullOrEmpty(ed.SliceName)
-                //        ? ed.SliceName
-                //        : ed.ElementId.Substring(ed.ElementId.LastIndexOf(':') + 1);
-
-                //    // get the types for this slice
-                //    ElementDefinition.TypeRefComponent[] edTypes = ed.cgTypes().Values.ToArray();
-
-                //    foreach (ElementDefinition.TypeRefComponent edType in edTypes)
-                //    {
-                //        string typeName = edType.cgName();
-
-                //        switch (typeName)
-                //        {
-                //            case "Extension":
-                //                {
-                //                    // iterate over each profile
-                //                    foreach (string profileUrl in edType.Profile)
-                //                    {
-                //                        WriteProfileExtensionAccessors(
-                //                            writer,
-                //                            sd,
-                //                            name,
-                //                            ed,
-                //                            sliceName,
-                //                            profileUrl,
-                //                            exportedExtensions);
-                //                    }
-                //                }
-                //                break;
-                //        }
-                //    }
             }
+
+            WriteProfileSlices(writer, sd, profileSlices);
+
+            //// get all elements that are 'first level' slices (i.e., not a slice of a slice)
+            //ElementDefinition[] slices = sd.cgElements(skipSlices: false).Where(ed => ed.ElementId.LastIndexOf(':') > ed.ElementId.LastIndexOf('.')).ToArray();
+
+            //foreach (ElementDefinition ed in slices)
+            //{
+            //    string sliceName = string.IsNullOrEmpty(ed.SliceName) ? ed.ElementId.Substring(ed.ElementId.LastIndexOf(':') + 1) : ed.SliceName;
+
+            //    writer.WriteLineIndented($"// Slice: {ed.ElementId} ({sliceName})");
+
+            //    // get the parent that defines the slicing
+            //    if (!sd.cgTryGetSlicingParent(ed, out ElementDefinition? slicingEd))
+            //    {
+            //        writer.WriteLineIndented($"// Could not resolve the parent element for: {ed.ElementId}.");
+
+            //        // TODO(ginoc): extensions can be implicitly sliced
+            //        continue;
+            //    }
+
+            //    writer.WriteLineIndented($"// Slicing Parent: {slicingEd.ElementId}");
+
+            //    // get all the elements for this slice
+            //    IEnumerable<ElementDefinition> sliceElements = sd.cgElementsForSlice(ed, sliceName);
+
+            //    // use our sliced element and parent to get the discriminators
+            //    IEnumerable<SliceDiscriminator> sliceDiscriminators = sd.cgDiscriminatedValues(_info, slicingEd, sliceName, sliceElements);
+
+            //    foreach (SliceDiscriminator discriminator in sliceDiscriminators)
+            //    {
+            //        writer.WriteLineIndented("// Discriminator:");
+            //        writer.WriteLineIndented($"//                Id: {discriminator.Id}");
+            //        writer.WriteLineIndented($"//              Type: {discriminator.Type}");
+            //        writer.WriteLineIndented($"//              Path: {discriminator.Path}");
+            //        writer.WriteLineIndented($"//   PostResolvePath: {discriminator.PostResolvePath}");
+            //        writer.WriteLineIndented($"//             Value: {discriminator.Value}");
+            //        writer.WriteLineIndented($"//         IsBinding: {discriminator.IsBinding}");
+            //        writer.WriteLineIndented($"//       BindingName: {discriminator.BindingName}");
+
+            //        //bool isExtensionSlice = discriminator.Path.EndsWith(".extension.url", StringComparison.Ordinal);
+            //        bool isExtensionSlice = FindExtensionPathRegex().IsMatch(discriminator.Path);
+
+            //        if (isExtensionSlice)
+            //        {
+            //            // figure out the path we want to root our C# extension on
+            //            //string rootPath = discriminator.Path[..^14];
+            //            string rootPath = discriminator.Path.Substring(0, discriminator.Path.LastIndexOf(".extension", StringComparison.Ordinal));
+            //            //string rootId = discriminator.Id.EndsWith(".url", StringComparison.Ordinal) ? discriminator.Id[..^4] : discriminator.Id;
+            //            string rootId = FindExtensionPathRegex().IsMatch(discriminator.Id)
+            //                ? discriminator.Id.Substring(0, discriminator.Id.LastIndexOf(".extension", StringComparison.Ordinal))
+            //                : discriminator.Id;
+
+            //            StructureDefinition? contextSd;
+            //            ElementDefinition? contextElement;
+            //            ComponentDefinition contextCd;
+
+            //            if (sd.cgTryGetElementById(rootId, out contextElement))
+            //            {
+            //                contextSd = sd;
+            //                contextCd = new()
+            //                {
+            //                    Structure = sd,
+            //                    Element = contextElement,
+            //                    IsRootOfStructure = !contextElement.Path.Contains('.'),
+            //                };
+            //            }
+            //            // resolve the root path element
+            //            else if (sd.cgTryGetElementByPath(rootPath, out contextElement))
+            //            {
+            //                contextSd = sd;
+            //                contextCd = new()
+            //                {
+            //                    Structure = sd,
+            //                    Element = contextElement,
+            //                    IsRootOfStructure = !contextElement.Path.Contains('.'),
+            //                };
+            //            }
+            //            else if (_info.TryFindElementByPath(rootPath, out contextSd, out contextElement))
+            //            {
+            //                contextCd = new()
+            //                {
+            //                    Structure = contextSd,
+            //                    Element = contextElement,
+            //                    IsRootOfStructure = !contextElement.Path.Contains('.'),
+            //                };
+            //            }
+            //            else if (_info.ComplexTypesByName.TryGetValue("Element", out contextSd))
+            //            {
+            //                contextCd = new(contextSd);
+            //                contextElement = contextCd.Element;
+            //            }
+            //            else
+            //            {
+            //                // this should never happen
+            //                throw new Exception($"Cannot resolve profile slice info: {sd.Name} ({sd.Url}) : {discriminator.Id}");
+            //            }
+
+            //            string extUrl = discriminator.Value.ToString() ?? string.Empty;
+
+            //            // try to resolve this extension
+            //            if (TryGetExtensionData(extUrl, out ExtensionData? extData) &&
+            //                TryGetPackageData(extData.DefinitionDirective, out PackageData extPackageData))
+            //            {
+            //                // we have a definition we can link to
+            //                writer.WriteLineIndented($"// Slice uses extension: {extPackageData.Namespace}.{extData.Name.ToPascalCase()}");
+
+            //                // write a getter
+            //                WriteProfileSliceExtensionAccessors(writer, sd, sliceName, contextCd, extData);
+            //            }
+            //            else
+            //            {
+            //                writer.WriteLineIndented($"// Could not resolve extension: {extUrl}");
+            //            }
+            //        }
+            //        else
+            //        {
+            //            // figure out the path we want to root our C# extension on
+            //            string rootPath = slicingEd.Path;
+
+            //            writer.WriteLineIndented($"// Non-extension slice...");
+            //        }
+
+            //    }
+
+            //    writer.WriteLine();
+
+            //    //    string sliceName = !string.IsNullOrEmpty(ed.SliceName)
+            //    //        ? ed.SliceName
+            //    //        : ed.ElementId.Substring(ed.ElementId.LastIndexOf(':') + 1);
+
+            //    //    // get the types for this slice
+            //    //    ElementDefinition.TypeRefComponent[] edTypes = ed.cgTypes().Values.ToArray();
+
+            //    //    foreach (ElementDefinition.TypeRefComponent edType in edTypes)
+            //    //    {
+            //    //        string typeName = edType.cgName();
+
+            //    //        switch (typeName)
+            //    //        {
+            //    //            case "Extension":
+            //    //                {
+            //    //                    // iterate over each profile
+            //    //                    foreach (string profileUrl in edType.Profile)
+            //    //                    {
+            //    //                        WriteProfileExtensionAccessors(
+            //    //                            writer,
+            //    //                            sd,
+            //    //                            name,
+            //    //                            ed,
+            //    //                            sliceName,
+            //    //                            profileUrl,
+            //    //                            exportedExtensions);
+            //    //                    }
+            //    //                }
+            //    //                break;
+            //    //        }
+            //    //    }
+            //}
 
             CloseScope(writer);     // class
 
             WriteNamespaceClose(writer);
+        }
+    }
+
+    private void WriteProfileSlices(
+        ExportStreamWriter writer,
+        StructureDefinition sd,
+        Dictionary<string, ProfileSliceInfo> slices)
+    {
+        foreach (ProfileSliceInfo psi in slices.OrderBy(kvp => kvp.Key).Select(kvp => kvp.Value))
+        {
+            ElementDefinition ed = psi.Element;
+
+            string sliceName = string.IsNullOrEmpty(ed.SliceName) ? ed.ElementId.Substring(ed.ElementId.LastIndexOf(':') + 1) : ed.SliceName;
+
+
+            // get the parent that defines the slicing
+            ElementDefinition? slicingEd = psi.ElementThatDefinedThisSlicing;
+            if (slicingEd == null)
+            {
+                writer.WriteLineIndented($"// Slice: {ed.ElementId} ({sliceName})");
+                writer.WriteLineIndented($"// Could not resolve the parent element for: {ed.ElementId}.");
+
+                // TODO(ginoc): extensions can be implicitly sliced
+                continue;
+            }
+
+            if (psi.ChildSlicesBySliceId.Count != 0)
+            {
+                WriteProfileAccessorClass(writer, sd, psi);
+            }
+
+            writer.WriteLineIndented($"// Slice: {ed.ElementId} ({sliceName})");
+            writer.WriteLineIndented($"// Slicing Parent: {slicingEd.ElementId}");
+
+            // use child slices to build a record type that can bundle with the primary extension
+            if (psi.ChildSlicesBySliceId.Count != 0)
+            {
+                foreach (ProfileSliceInfo childPsi in psi.ChildSlicesBySliceId.Values)
+                {
+                    writer.WriteLineIndented($"// Child Slice: {childPsi.Element.ElementId} ({childPsi.SliceName})");
+
+                    if (childPsi.ChildSlicesBySliceId.Count != 0)
+                    {
+                        writer.WriteLineIndented($"// Unhandled deeply-nested slice pattern in: {sd.Url} : {childPsi.Id}");
+                    }
+                }
+            }
+
+            // get all the elements for this slice
+            IEnumerable<ElementDefinition> sliceElements = sd.cgElementsForSlice(ed, sliceName);
+
+            // use our sliced element and parent to get the discriminators
+            IEnumerable<SliceDiscriminator> sliceDiscriminators = sd.cgDiscriminatedValues(_info, slicingEd, sliceName, sliceElements);
+
+            foreach (SliceDiscriminator discriminator in sliceDiscriminators)
+            {
+                writer.WriteLineIndented("// Discriminator:");
+                writer.WriteLineIndented($"//                Id: {discriminator.Id}");
+                writer.WriteLineIndented($"//              Type: {discriminator.Type}");
+                writer.WriteLineIndented($"//              Path: {discriminator.Path}");
+                writer.WriteLineIndented($"//   PostResolvePath: {discriminator.PostResolvePath}");
+                writer.WriteLineIndented($"//             Value: {discriminator.Value}");
+                writer.WriteLineIndented($"//         IsBinding: {discriminator.IsBinding}");
+                writer.WriteLineIndented($"//       BindingName: {discriminator.BindingName}");
+
+                //bool isExtensionSlice = discriminator.Path.EndsWith(".extension.url", StringComparison.Ordinal);
+                bool isExtensionSlice = FindExtensionPathRegex().IsMatch(discriminator.Path);
+
+                if (isExtensionSlice)
+                {
+                    // figure out the path we want to root our C# extension on
+                    //string rootPath = discriminator.Path[..^14];
+                    string rootPath = discriminator.Path.Substring(0, discriminator.Path.LastIndexOf(".extension", StringComparison.Ordinal));
+                    //string rootId = discriminator.Id.EndsWith(".url", StringComparison.Ordinal) ? discriminator.Id[..^4] : discriminator.Id;
+                    string rootId = FindExtensionPathRegex().IsMatch(discriminator.Id)
+                        ? discriminator.Id.Substring(0, discriminator.Id.LastIndexOf(".extension", StringComparison.Ordinal))
+                        : discriminator.Id;
+
+                    StructureDefinition? contextSd;
+                    ElementDefinition? contextElement;
+                    ComponentDefinition contextCd;
+
+                    if (sd.cgTryGetElementById(rootId, out contextElement))
+                    {
+                        contextSd = sd;
+                        contextCd = new()
+                        {
+                            Structure = sd,
+                            Element = contextElement,
+                            IsRootOfStructure = !contextElement.Path.Contains('.'),
+                        };
+                    }
+                    // resolve the root path element
+                    else if (sd.cgTryGetElementByPath(rootPath, out contextElement))
+                    {
+                        contextSd = sd;
+                        contextCd = new()
+                        {
+                            Structure = sd,
+                            Element = contextElement,
+                            IsRootOfStructure = !contextElement.Path.Contains('.'),
+                        };
+                    }
+                    else if (_info.TryFindElementByPath(rootPath, out contextSd, out contextElement))
+                    {
+                        contextCd = new()
+                        {
+                            Structure = contextSd,
+                            Element = contextElement,
+                            IsRootOfStructure = !contextElement.Path.Contains('.'),
+                        };
+                    }
+                    else if (_info.ComplexTypesByName.TryGetValue("Element", out contextSd))
+                    {
+                        contextCd = new(contextSd);
+                        contextElement = contextCd.Element;
+                    }
+                    else
+                    {
+                        // this should never happen
+                        throw new Exception($"Cannot resolve profile slice info: {sd.Name} ({sd.Url}) : {discriminator.Id}");
+                    }
+
+                    string extUrl = discriminator.Value.ToString() ?? string.Empty;
+
+                    // try to resolve this extension
+                    if (TryGetExtensionData(extUrl, out ExtensionData? extData) &&
+                        TryGetPackageData(extData.DefinitionDirective, out PackageData extPackageData))
+                    {
+                        // we have a definition we can link to
+                        writer.WriteLineIndented($"// Slice uses extension: {extPackageData.Namespace}.{extData.Name.ToPascalCase()}");
+
+                        // write a getter
+                        WriteProfileSliceExtensionAccessors(writer, sd, sliceName, contextCd, extData);
+                    }
+                    else
+                    {
+                        writer.WriteLineIndented($"// Could not resolve extension: {extUrl}");
+                    }
+                }
+                else
+                {
+                    // figure out the path we want to root our C# extension on
+                    string rootPath = slicingEd.Path;
+
+                    writer.WriteLineIndented($"// Non-extension slice...");
+                }
+
+            }
+
+            writer.WriteLine();
         }
     }
 
@@ -1795,7 +2090,7 @@ public partial class FirelyNetIG : ILanguage
             //// need to find the context info
             //ExtensionContextRec? ctx = extData.Contexts.FirstOrDefault(ctx => ctx.ContextTarget?.Element.Path == contextCd.Element.Path);
 
-            //if ((ctx is null) && contextCd.DerivesFromDataType(_info))
+            //if ((ctx == null) && contextCd.DerivesFromDataType(_info))
             //{
             //    ctx = extData.Contexts.FirstOrDefault(ctx => ctx.ContextElementInfo?.ElementType == "Hl7.Fhir.Model.DataType");
             //}

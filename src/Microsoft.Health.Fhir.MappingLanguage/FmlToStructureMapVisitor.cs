@@ -64,7 +64,7 @@ public class FmlToStructureMapVisitor : FmlMappingBaseVisitor<object>
             (ParserRuleContext?)ctx.markdownLiteral() ??
             null;
 
-        if (c is null)
+        if (c == null)
         {
             return base.VisitMetadataDeclaration(ctx);
         }
@@ -74,7 +74,7 @@ public class FmlToStructureMapVisitor : FmlMappingBaseVisitor<object>
         //string value = ctx.literal()?.GetText() ?? ctx.constant()?.GetText() ?? ctx.markdownLiteral()?.GetText() ?? string.Empty;
         dynamic? value = GetValue(c);
 
-        if (value is null)
+        if (value == null)
         {
             return base.VisitMetadataDeclaration(ctx);
         }
@@ -84,7 +84,7 @@ public class FmlToStructureMapVisitor : FmlMappingBaseVisitor<object>
         string[] pathComponents = elementPath.Split('.');
         for(int i = 0; i < pathComponents.Length; i++)
         {
-            if (obj is null)
+            if (obj == null)
             {
                 return base.VisitMetadataDeclaration(ctx);
             }
@@ -373,7 +373,7 @@ public class FmlToStructureMapVisitor : FmlMappingBaseVisitor<object>
 
     //public override object VisitRule([NotNull] FmlMappingParser.RuleContext ctx)
     //{
-    //    if (_currentGroup is null)
+    //    if (_currentGroup == null)
     //    {
     //        throw new Exception("Rule found outside of a group");
     //    }
