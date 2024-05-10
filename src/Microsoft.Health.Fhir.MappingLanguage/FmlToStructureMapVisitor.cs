@@ -20,6 +20,7 @@ using System.Diagnostics.Metrics;
 using Newtonsoft.Json.Linq;
 using System.Reflection;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
+using System.Globalization;
 
 namespace Microsoft.Health.Fhir.MappingLanguage;
 
@@ -54,11 +55,27 @@ public class FmlToStructureMapVisitor : FmlMappingBaseVisitor<object>
 
         string elementPath = ctx.qualifiedIdentifier()?.GetText() ?? string.Empty;
 
+        if (string.IsNullOrEmpty(elementPath))
+        {
+            return base.VisitMetadataDeclaration(ctx);
+        }
+
+        ParserRuleContext? c = (ParserRuleContext?)ctx.literal() ??
+            (ParserRuleContext?)ctx.constant() ??
+            (ParserRuleContext?)ctx.markdownLiteral() ??
+            null;
+
+        if (c is null)
+        {
+            return base.VisitMetadataDeclaration(ctx);
+        }
+
         // need to get the correct type here (e.g., bool)
         // need to add utility function to strip quotes from types like DOUBLE_QUOTED_STRING
-        string value = ctx.literal()?.GetText() ?? ctx.constant()?.GetText() ?? ctx.markdownLiteral()?.GetText() ?? string.Empty;
+        //string value = ctx.literal()?.GetText() ?? ctx.constant()?.GetText() ?? ctx.markdownLiteral()?.GetText() ?? string.Empty;
+        dynamic? value = GetValue(c);
 
-        if (string.IsNullOrEmpty(elementPath))
+        if (value is null)
         {
             return base.VisitMetadataDeclaration(ctx);
         }
@@ -83,55 +100,193 @@ public class FmlToStructureMapVisitor : FmlMappingBaseVisitor<object>
 
             if (i == pathComponents.Length - 1)
             {
-                // set the value
-                property.SetValue(obj, value);
-                break;
+                try
+                {
+                    if (property.PropertyType.IsAssignableFrom(value.GetType()))
+                    {
+                        // set the value
+                        property.SetValue(obj, value);
+                    }
+                    else if (property.PropertyType.IsGenericType &&
+                        (property.PropertyType.GetGenericArguments().FirstOrDefault() is Type t) &&
+                        t.IsEnum)
+                    {
+                        property.SetValue(obj, Hl7.Fhir.Utility.EnumUtility.ParseLiteral(value, t));
+                    }
+
+                    break;
+                }
+                catch
+                {
+                    break;
+                }
             }
 
             obj = property.GetValue(obj);
         }
 
-
-        //// old header format id
-        //if (ctx.mapId()?.FirstOrDefault() is MapIdContext mapIdCtx)
-        //{
-        //}
-
-        //// new header format url
-        //if (ctx.mapUrl()?.FirstOrDefault() is MapUrlContext mapUrlCtx)
-        //{
-        //    _map!.Url = ExtractString(mapUrlCtx);
-        //}
-
-        //// new header format name
-        //if ((ctx.mapName()?.FirstOrDefault() is MapNameContext mapNameCtx) &&
-        //    ExtractString(mapNameCtx) is string mapName)
-        //{
-        //    _map!.Id = mapName;
-        //    _map!.Name = mapName;
-        //}
-
-        //// new header format title
-        //if (ctx.mapTitle()?.FirstOrDefault() is MapTitleContext mapTitleCtx)
-        //{
-        //    _map!.Title = ExtractString(mapTitleCtx);
-        //}
-
-        //// new header format status
-        //if ((ctx.mapStatus()?.FirstOrDefault() is MapStatusContext mapStatusCtx) &&
-        //    (ExtractString(mapStatusCtx) is string mapStatus))
-        //{
-        //    _map!.Status = Hl7.Fhir.Utility.EnumUtility.ParseLiteral<PublicationStatus>(mapStatus);
-        //}
-
-        //// new header format description
-        //if (ctx.mapDescription()?.FirstOrDefault() is MapDescriptionContext mapDescriptionCtx)
-        //{
-        //    _map!.Description = ExtractString(mapDescriptionCtx);
-        //}
-
-
         return base.VisitMetadataDeclaration(ctx);
+    }
+
+
+
+    //      NULL_LITERAL = 85, BOOL = 86, DATE = 87, 
+    //DATE_TIME = 88, TIME = 89, LONG_INTEGER = 90, DECIMAL = 91, INTEGER = 92, ID = 93, 
+    //IDENTIFIER = 94, DELIMITED_IDENTIFIER = 95, SINGLE_QUOTED_STRING = 96, DOUBLE_QUOTED_STRING = 97, 
+    //TRIPLE_QUOTED_STRING_LITERAL = 98, WS = 99, C_STYLE_COMMENT = 100, METADATA_PREFIX = 101, 
+    //LINE_COMMENT = 102, INLINE_COMMENT = 103
+
+    private static string? GetString(ParserRuleContext c) => c.Stop.Type switch
+    {
+        NULL_LITERAL => null,
+        BOOL => c.GetText() ,
+        DATE => c.Stop.Text.StartsWith('@') ? c.Stop.Text[1..] : c.Stop.Text,
+        DATE_TIME => c.Stop.Text.StartsWith('@') ? c.Stop.Text : c.Stop.Text,
+        TIME => c.Stop.Text.StartsWith('@') ? c.Stop.Text : c.Stop.Text,
+        LONG_INTEGER => c.GetText(),
+        DECIMAL => c.GetText(),
+        INTEGER => c.GetText(),
+        ID => c.GetText(),
+        IDENTIFIER => c.Stop.Text.Length > 1 && c.Stop.Text[0] == '\'' && c.Stop.Text[^1] == '\'' ? c.Stop.Text[1..^1] : c.Stop.Text,
+        DELIMITED_IDENTIFIER => c.Stop.Text[1..^1],
+        SINGLE_QUOTED_STRING => c.Stop.Text[1..^1],
+        DOUBLE_QUOTED_STRING => c.Stop.Text[1..^1],
+        C_STYLE_COMMENT => c.Stop.Text.Length > 4 ? c.Stop.Text[2..^2] : c.Stop.Text,
+        LINE_COMMENT => c.Stop.Text.Length > 2 ? c.Stop.Text[2..] : c.Stop.Text,
+        _ => null,
+    };
+
+    private static dynamic? GetValue(ParserRuleContext c) => c.Stop.Type switch
+    {
+        NULL_LITERAL => null,
+        BOOL => c.Stop.Text == "true" ? true : false,
+        DATE => c.Stop.Text.StartsWith('@') ? (TryParseDateString(c.Stop.Text[1..], out DateTimeOffset s, out _) ? s : null) : (TryParseDateString(c.Stop.Text, out s, out _) ? s : null),
+        DATE_TIME => c.Stop.Text.StartsWith('@') ? (TryParseDateString(c.Stop.Text[1..], out DateTimeOffset s, out _) ? s : null) : (TryParseDateString(c.Stop.Text, out s, out _) ? s : null),
+        TIME => c.Stop.Text.StartsWith('@') ? (TryParseDateString(c.Stop.Text[1..], out DateTimeOffset s, out _) ? s : null) : (TryParseDateString(c.Stop.Text, out s, out _) ? s : null),
+        LONG_INTEGER => long.TryParse(c.Stop.Text, out long value) ? value : null,
+        DECIMAL => decimal.TryParse(c.Stop.Text, out decimal value) ? value : null,
+        INTEGER => int.TryParse(c.Stop.Text, out int value) ? value : null,
+        ID => c.Stop.Text,
+        IDENTIFIER => c.Stop.Text.Length > 1 && c.Stop.Text[0] == '\'' && c.Stop.Text[^1] == '\'' ? c.Stop.Text[1..^1] : c.Stop.Text,
+        DELIMITED_IDENTIFIER => c.Stop.Text[1..^1],
+        SINGLE_QUOTED_STRING => c.Stop.Text[1..^1],
+        DOUBLE_QUOTED_STRING => c.Stop.Text[1..^1],
+        C_STYLE_COMMENT => c.Stop.Text.Length > 4 ? c.Stop.Text[2..^2] : c.Stop.Text,
+        LINE_COMMENT => c.Stop.Text.Length > 2 ? c.Stop.Text[2..] : c.Stop.Text,
+        _ => null,
+    };
+
+    private static DataType? GetFhirValue(ParserRuleContext c) => c.Stop.Type switch
+    {
+        NULL_LITERAL => null,
+        BOOL => c.Stop.Text == "true" ? new FhirBoolean(true) : new FhirBoolean(false),
+        DATE => c.Stop.Text.StartsWith('@') ? new FhirDateTime(c.Stop.Text[1..]) : new FhirDateTime(c.Stop.Text),
+        DATE_TIME => c.Stop.Text.StartsWith('@') ? new FhirDateTime(c.Stop.Text) : new FhirDateTime(c.Stop.Text),
+        TIME => c.Stop.Text.StartsWith('@') ? new Time(c.Stop.Text) : new Time(c.Stop.Text),
+        LONG_INTEGER => long.TryParse(c.Stop.Text, out long value) ? new Integer64(value) : null,
+        DECIMAL => decimal.TryParse(c.Stop.Text, out decimal value) ? new FhirDecimal(value) : null,
+        INTEGER => int.TryParse(c.Stop.Text, out int value) ? new Integer64(value) : null,
+        ID => new Id(c.Stop.Text),
+        IDENTIFIER => c.Stop.Text.Length > 1 && c.Stop.Text[0] == '\'' && c.Stop.Text[^1] == '\'' ? new FhirString(c.Stop.Text[1..^1]) : new FhirString(c.Stop.Text),
+        DELIMITED_IDENTIFIER => new FhirString(c.Stop.Text[1..^1]),
+        SINGLE_QUOTED_STRING => new FhirString(c.Stop.Text[1..^1]),
+        DOUBLE_QUOTED_STRING => new FhirString(c.Stop.Text[1..^1]),
+        C_STYLE_COMMENT => c.Stop.Text.Length > 4 ? new FhirString(c.Stop.Text[2..^2]) : new FhirString(c.Stop.Text),
+        LINE_COMMENT => c.Stop.Text.Length > 2 ? new FhirString(c.Stop.Text[2..]) : new FhirString(c.Stop.Text),
+        _ => null,
+    };
+
+    public static bool TryParseDateString(string dateString, out DateTimeOffset start, out DateTimeOffset end)
+    {
+        if (string.IsNullOrEmpty(dateString))
+        {
+            start = DateTimeOffset.MinValue;
+            end = DateTimeOffset.MaxValue;
+            return false;
+        }
+
+        // need to check for just year because DateTime refuses to parse that
+        if (dateString.Length == 4)
+        {
+            start = new DateTimeOffset(int.Parse(dateString), 1, 1, 0, 0, 0, TimeSpan.Zero);
+            end = start.AddYears(1).AddTicks(-1);
+            return true;
+        }
+
+        // note that we are using DateTime and converting to DateTimeOffset to work through TZ stuff without manually parsing each format precision
+        if (!DateTime.TryParse(dateString, null, DateTimeStyles.RoundtripKind, out DateTime dt))
+        {
+            Console.WriteLine($"Failed to parse date: {dateString}");
+            start = DateTimeOffset.MinValue;
+            end = DateTimeOffset.MaxValue;
+            return false;
+        }
+
+        start = new DateTimeOffset(dt, TimeSpan.Zero);
+
+        switch (dateString.Length)
+        {
+            // YYYY
+            case 4:
+                end = start.AddYears(1).AddTicks(-1);
+                break;
+
+            // YYYY-MM
+            case 7:
+                end = start.AddMonths(1).AddTicks(-1);
+                break;
+
+            // YYYY-MM-DD
+            case 10:
+                end = start.AddDays(1).AddTicks(-1);
+                break;
+
+            // Note: this is not defined as valid, but wanted to support it
+            // YYYY-MM-DDThh
+            case 13:
+                end = start.AddHours(1).AddTicks(-1);
+                break;
+
+            // YYYY-MM-DDThh:mm
+            case 16:
+                end = start.AddMinutes(1).AddTicks(-1);
+                break;
+
+            // Note: servers are allowed to ignore fractional seconds - I am chosing to do so.
+
+            // YYYY-MM-DDThh:mm:ss
+            case 19:
+            // YYYY-MM-DDThh:mm:ssZ
+            case 20:
+            // YYYY-MM-DDThh:mm:ss+zz
+            // YYYY-MM-DDThh:mm:ss.fZ
+            case 22:
+            // YYYY-MM-DDThh:mm:ss.ffZ
+            case 23:
+            // YYYY-MM-DDThh:mm:ss.fffZ
+            case 24:
+            // YYYY-MM-DDThh:mm:ss+zz:zz
+            // YYYY-MM-DDThh:mm:ss.ffffZ
+            case 25:
+            // YYYY-MM-DDThh:mm:ss.f+zz:zz
+            case 27:
+            // YYYY-MM-DDThh:mm:ss.ff+zz:zz
+            case 28:
+            // YYYY-MM-DDThh:mm:ss.fff+zz:zz
+            case 29:
+            // YYYY-MM-DDThh:mm:ss.ffff+zz:zz
+            case 30:
+                end = start.AddSeconds(1).AddTicks(-1);
+                break;
+
+            default:
+                Console.WriteLine($"Invalid date format: {dateString}");
+                start = DateTimeOffset.MinValue;
+                end = DateTimeOffset.MaxValue;
+                return false;
+        }
+
+        return true;
     }
 
     public override object VisitMapDeclaration([NotNull] MapDeclarationContext ctx)
@@ -149,8 +304,14 @@ public class FmlToStructureMapVisitor : FmlMappingBaseVisitor<object>
         return base.VisitMapDeclaration(ctx);
     }
 
+    //private static string StringFromNode()
+    //{
 
-    //public override object VisitStructure([NotNull] StructureContext ctx)
+    //}
+
+
+
+    //public override object VisitStructureDeclaration([NotNull] StructureDeclarationContext ctx)
     //{
     //    StructureMap.StructureComponent sc = new();
 
@@ -177,7 +338,7 @@ public class FmlToStructureMapVisitor : FmlMappingBaseVisitor<object>
 
     //    _map!.Structure.Add(sc);
 
-    //    return base.VisitStructure(ctx);
+    //    return base.VisitStructureDeclaration(ctx);
     //}
 
     //public override object VisitImports([NotNull] ImportsContext ctx)

@@ -30,6 +30,16 @@ public class FhirMappingLanguage
             visitor.Visit(structureMapContext);
 
             structureMap = visitor.ParsedStructureMap;
+
+            if (string.IsNullOrEmpty(structureMap?.Id) && (!string.IsNullOrEmpty(structureMap?.Name)))
+            {
+                structureMap.Id = structureMap.Name;
+            }
+            else if (string.IsNullOrEmpty(structureMap?.Name) && !string.IsNullOrEmpty(structureMap?.Id))
+            {
+                structureMap.Name = structureMap.Id;
+            }
+
             return structureMap is not null;
         }
         catch (Exception ex)
