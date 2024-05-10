@@ -34,7 +34,6 @@ public class FmlToStructureMapVisitor : FmlMappingBaseVisitor<object>
     /// </remarks>
     private const string _unspecifiedVarName = "vvv";
 
-
     private StructureMap? _map = null;
 
     public StructureMap? ParsedStructureMap => _map;
@@ -90,9 +89,10 @@ public class FmlToStructureMapVisitor : FmlMappingBaseVisitor<object>
                 return base.VisitMetadataDeclaration(ctx);
             }
 
-            // TODO(ginoc): need to actually lookup the Firely name in case it is different
-            string pathComponent = pathComponents[i].ToPascalCase();
-            PropertyInfo? property = obj.GetType().GetProperty(pathComponent, BindingFlags.Public | BindingFlags.Instance);
+            // TODO(ginoc): do we need to actually lookup the Firely name in case it is different?
+            PropertyInfo? property = obj.GetType().GetProperty(pathComponents[i], BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase)
+                ?? obj.GetType().GetProperty("Element" + pathComponents[i], BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase)
+                ?? obj.GetType().GetProperty(pathComponents[i] + "Element", BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase);
             if (property == null)
             {
                 return base.VisitMetadataDeclaration(ctx);
@@ -113,6 +113,15 @@ public class FmlToStructureMapVisitor : FmlMappingBaseVisitor<object>
                     {
                         property.SetValue(obj, Hl7.Fhir.Utility.EnumUtility.ParseLiteral(value, t));
                     }
+                    else if ((GetFhirValue(c) is DataType fhirValue) &&
+                        property.PropertyType.IsAssignableFrom(fhirValue.GetType()))
+                    {
+                        property.SetValue(obj, fhirValue);
+                    }
+                    else
+                    {
+                        break;
+                    }
 
                     break;
                 }
@@ -127,14 +136,6 @@ public class FmlToStructureMapVisitor : FmlMappingBaseVisitor<object>
 
         return base.VisitMetadataDeclaration(ctx);
     }
-
-
-
-    //      NULL_LITERAL = 85, BOOL = 86, DATE = 87, 
-    //DATE_TIME = 88, TIME = 89, LONG_INTEGER = 90, DECIMAL = 91, INTEGER = 92, ID = 93, 
-    //IDENTIFIER = 94, DELIMITED_IDENTIFIER = 95, SINGLE_QUOTED_STRING = 96, DOUBLE_QUOTED_STRING = 97, 
-    //TRIPLE_QUOTED_STRING_LITERAL = 98, WS = 99, C_STYLE_COMMENT = 100, METADATA_PREFIX = 101, 
-    //LINE_COMMENT = 102, INLINE_COMMENT = 103
 
     private static string? GetString(ParserRuleContext c) => c.Stop.Type switch
     {
@@ -160,9 +161,9 @@ public class FmlToStructureMapVisitor : FmlMappingBaseVisitor<object>
     {
         NULL_LITERAL => null,
         BOOL => c.Stop.Text == "true" ? true : false,
-        DATE => c.Stop.Text.StartsWith('@') ? (TryParseDateString(c.Stop.Text[1..], out DateTimeOffset s, out _) ? s : null) : (TryParseDateString(c.Stop.Text, out s, out _) ? s : null),
-        DATE_TIME => c.Stop.Text.StartsWith('@') ? (TryParseDateString(c.Stop.Text[1..], out DateTimeOffset s, out _) ? s : null) : (TryParseDateString(c.Stop.Text, out s, out _) ? s : null),
-        TIME => c.Stop.Text.StartsWith('@') ? (TryParseDateString(c.Stop.Text[1..], out DateTimeOffset s, out _) ? s : null) : (TryParseDateString(c.Stop.Text, out s, out _) ? s : null),
+        DATE => TryParseDateString(c.Stop.Text, out DateTimeOffset value) ? value : null,
+        DATE_TIME => TryParseDateString(c.Stop.Text, out DateTimeOffset value) ? value : null,
+        TIME => TryParseDateString(c.Stop.Text, out DateTimeOffset value) ? value : null,
         LONG_INTEGER => long.TryParse(c.Stop.Text, out long value) ? value : null,
         DECIMAL => decimal.TryParse(c.Stop.Text, out decimal value) ? value : null,
         INTEGER => int.TryParse(c.Stop.Text, out int value) ? value : null,
@@ -196,20 +197,23 @@ public class FmlToStructureMapVisitor : FmlMappingBaseVisitor<object>
         _ => null,
     };
 
-    public static bool TryParseDateString(string dateString, out DateTimeOffset start, out DateTimeOffset end)
+    public static bool TryParseDateString(string dateString, out DateTimeOffset dto)
     {
         if (string.IsNullOrEmpty(dateString))
         {
-            start = DateTimeOffset.MinValue;
-            end = DateTimeOffset.MaxValue;
+            dto = DateTimeOffset.MinValue;
             return false;
+        }
+
+        if (dateString.StartsWith('@'))
+        {
+            dateString = dateString[1..];
         }
 
         // need to check for just year because DateTime refuses to parse that
         if (dateString.Length == 4)
         {
-            start = new DateTimeOffset(int.Parse(dateString), 1, 1, 0, 0, 0, TimeSpan.Zero);
-            end = start.AddYears(1).AddTicks(-1);
+            dto = new DateTimeOffset(int.Parse(dateString), 1, 1, 0, 0, 0, TimeSpan.Zero);
             return true;
         }
 
@@ -217,74 +221,11 @@ public class FmlToStructureMapVisitor : FmlMappingBaseVisitor<object>
         if (!DateTime.TryParse(dateString, null, DateTimeStyles.RoundtripKind, out DateTime dt))
         {
             Console.WriteLine($"Failed to parse date: {dateString}");
-            start = DateTimeOffset.MinValue;
-            end = DateTimeOffset.MaxValue;
+            dto = DateTimeOffset.MinValue;
             return false;
         }
 
-        start = new DateTimeOffset(dt, TimeSpan.Zero);
-
-        switch (dateString.Length)
-        {
-            // YYYY
-            case 4:
-                end = start.AddYears(1).AddTicks(-1);
-                break;
-
-            // YYYY-MM
-            case 7:
-                end = start.AddMonths(1).AddTicks(-1);
-                break;
-
-            // YYYY-MM-DD
-            case 10:
-                end = start.AddDays(1).AddTicks(-1);
-                break;
-
-            // Note: this is not defined as valid, but wanted to support it
-            // YYYY-MM-DDThh
-            case 13:
-                end = start.AddHours(1).AddTicks(-1);
-                break;
-
-            // YYYY-MM-DDThh:mm
-            case 16:
-                end = start.AddMinutes(1).AddTicks(-1);
-                break;
-
-            // Note: servers are allowed to ignore fractional seconds - I am chosing to do so.
-
-            // YYYY-MM-DDThh:mm:ss
-            case 19:
-            // YYYY-MM-DDThh:mm:ssZ
-            case 20:
-            // YYYY-MM-DDThh:mm:ss+zz
-            // YYYY-MM-DDThh:mm:ss.fZ
-            case 22:
-            // YYYY-MM-DDThh:mm:ss.ffZ
-            case 23:
-            // YYYY-MM-DDThh:mm:ss.fffZ
-            case 24:
-            // YYYY-MM-DDThh:mm:ss+zz:zz
-            // YYYY-MM-DDThh:mm:ss.ffffZ
-            case 25:
-            // YYYY-MM-DDThh:mm:ss.f+zz:zz
-            case 27:
-            // YYYY-MM-DDThh:mm:ss.ff+zz:zz
-            case 28:
-            // YYYY-MM-DDThh:mm:ss.fff+zz:zz
-            case 29:
-            // YYYY-MM-DDThh:mm:ss.ffff+zz:zz
-            case 30:
-                end = start.AddSeconds(1).AddTicks(-1);
-                break;
-
-            default:
-                Console.WriteLine($"Invalid date format: {dateString}");
-                start = DateTimeOffset.MinValue;
-                end = DateTimeOffset.MaxValue;
-                return false;
-        }
+        dto = new DateTimeOffset(dt, TimeSpan.Zero);
 
         return true;
     }
@@ -298,17 +239,11 @@ public class FmlToStructureMapVisitor : FmlMappingBaseVisitor<object>
         string comment = string.Join('\n', ctx.LINE_COMMENT()?.Select(c => c.GetText()[2..]) ?? Enumerable.Empty<string>());
         _map!.Description = comment;
 
-        _map!.Url = ctx.url().GetText();
-        _map!.Id = ctx.identifier().GetText();
+        _map!.Url = GetString(ctx.url());
+        _map!.Id = GetString(ctx.identifier());
 
         return base.VisitMapDeclaration(ctx);
     }
-
-    //private static string StringFromNode()
-    //{
-
-    //}
-
 
 
     //public override object VisitStructureDeclaration([NotNull] StructureDeclarationContext ctx)
@@ -613,152 +548,4 @@ public class FmlToStructureMapVisitor : FmlMappingBaseVisitor<object>
     //    return base.VisitRule(ctx);
     //}
 
-    //private static DataType? ParseValueForParam(string value)
-    //{
-    //    if (string.IsNullOrEmpty(value))
-    //    {
-    //        return null;
-    //    }
-
-    //    switch (value[0])
-    //    {
-    //        case '\'':
-    //        case '"':
-    //            return new FhirString(value[1..^1]);
-    //        case '@':
-    //        case '%':
-    //        //case '-':
-    //        //case '+':
-    //            return new FhirString(value);
-
-    //        case 't':
-    //            return value.Equals("true", StringComparison.Ordinal) ? new FhirBoolean(true) : new Id(value);
-
-    //        case 'f':
-    //            return value.Equals("false", StringComparison.Ordinal) ? new FhirBoolean(true) : new Id(value);
-
-    //        case '{':
-    //            return (value.Length == 2 && value[1] == '}') ? new FhirString(value) : new Id(value);
-    //    }
-
-    //    if (int.TryParse(value, out var intVal))
-    //    {
-    //        return new Integer(intVal);
-    //    }
-
-    //    if (decimal.TryParse(value, out decimal decimalVal))
-    //    {
-    //        return new FhirDecimal(decimalVal);
-    //    }
-
-    //    return new Id(value);
-    //}
-
-
-    //private static bool TryGetStringValue(StringValueContext ctx, [CA.NotNullWhen(true)] out string? value)
-    //{
-    //    // get to the terminal node we are interested in
-    //    if ((ctx.ChildCount == 0) ||
-    //        (ctx.children[0] is not ITerminalNode node))
-    //    {
-    //        value = null;
-    //        return false;
-    //    }
-
-    //    switch (node.Symbol.Type)
-    //    {
-    //        case STRING:
-    //            value = node.Symbol.Text;
-    //            return true;
-
-    //        case DOUBLE_QUOTED_STRING:
-    //            value = node.Symbol.Text[1..^1];
-    //            return true;
-
-    //        default:
-    //            value = null;
-    //            return false;
-    //    }
-    //}
-
-    //private static bool TryGetStringValue(IdentifierContext ctx, [CA.NotNullWhen(true)] out string? value)
-    //{
-    //    // get to the terminal node we are interested in
-    //    if ((ctx.ChildCount == 0) ||
-    //        (ctx.children[0] is not ITerminalNode node))
-    //    {
-    //        value = null;
-    //        return false;
-    //    }
-
-    //    switch (node.Symbol.Type)
-    //    {
-    //        case ID:
-    //        case IDENTIFIER:
-    //            value = node.Symbol.Text;
-    //            return true;
-
-    //        case DELIMITED_IDENTIFIER:
-    //            value = node.Symbol.Text[1..^1];
-    //            return true;
-
-    //        default:
-    //            value = null;
-    //            return false;
-    //    }
-    //}
-
-    //private static bool TryGetStringValue(UrlContext ctx, [CA.NotNullWhen(true)] out string? value)
-    //{
-    //    // get to the terminal node we are interested in
-    //    if ((ctx.ChildCount == 0) ||
-    //        (ctx.children[0] is not ITerminalNode node))
-    //    {
-    //        value = null;
-    //        return false;
-    //    }
-
-    //    switch (node.Symbol.Type)
-    //    {
-    //        case STRING:
-    //            value = node.Symbol.Text;
-    //            return true;
-
-    //        case DOUBLE_QUOTED_STRING:
-    //            value = node.Symbol.Text[1..^1];
-    //            return true;
-
-    //        default:
-    //            value = null;
-    //            return false;
-    //    }
-    //}
-
-    //private static string ExtractString(ParserRuleContext ctx)
-    //{
-    //    if (ctx.ChildCount == 0)
-    //    {
-    //        return ctx.GetText();
-    //    }
-
-    //    if ((ctx.GetRuleContext<StringValueContext>(0) is StringValueContext stringValueCtx) &&
-    //        TryGetStringValue(stringValueCtx, out string? value))
-    //    {
-    //        return value;
-    //    }
-
-    //    if ((ctx.GetRuleContext<IdentifierContext>(0) is IdentifierContext identifierCtx) &&
-    //        TryGetStringValue(identifierCtx, out value))
-    //    {
-    //        return value;
-    //    }
-
-    //    if ((ctx.GetRuleContext<UrlContext>(0) is UrlContext urlCtx) &&
-    //        TryGetStringValue(urlCtx, out value))
-    //    {
-    //        return value;
-    //    }
-
-    //    return ctx.GetText();
-    //}
 }

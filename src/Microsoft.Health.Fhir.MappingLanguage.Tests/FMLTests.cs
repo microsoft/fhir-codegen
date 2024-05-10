@@ -11,6 +11,104 @@ namespace Microsoft.Health.Fhir.MappingLanguage.Tests;
 
 public class FMLTests
 {
+    [Fact]
+    internal void FmlParseTest01()
+    {
+        string content = """"
+/// url = "http://example.org/fhir/StructureDefinition/test"
+/// id = "Fml4to5"
+/// name = "FhirMarkup4to5"
+/// title = "Test FML file to exercise core parsing"
+/// status = "draft"
+/// description = """
+This was challenging to code into the grammar.
+It should all be working now though
+"""
+/// jurisdiction =
+/// jurisdiction.coding = // remove an inherited jurisdiction coding
+
+/// jurisdiction.coding.code = 'AQ'
+
+// use R4 Encounter as the source
+uses "http://hl7.org/fhir/4.0/Encounter" alias EncounterR4 as source
+
+// use the R5 Encounter as the target
+uses "http://hl7.org/fhir/5.0/Encounter" alias EncounterR5 as target
+
+/* the following is used in the conversion maps, but is not actually a canonical */
+imports "http://hl7.org/fhir/uv/xver/StructureMap/*4to5"
+
+let constFhirPathFn = combine(3, 4);
+let constFhirPathFnParen = (combine(3, 4));
+let constFhirPathSpecial = $this.status;
+let constStringLit = 'one';
+let constInt = 2;
+let constDecimal = 3.0;
+let constBool = true;
+let constDoubleQuoted = "http://example.org";
+let constDate = @2024-05-09;
+let constNull = {};
+
+// comment before a group
+// with a second line 
+group Encounter(source src : EncounterR4, target tgt : EncounterR5) extends DomainResource <<type+>> {
+    src.identifier -> tgt.identifier;     // basic copy
+    // translate code
+    src.status as v -> tgt.status = translate(v, 'http://hl7.org/fhir/uv/xver/ConceptMap/enc.status-4to5', 'code');
+
+    // create a CodeableConcept, dependent rule to apply as coding
+    src.class as s ->  tgt.class = create('CodeableConcept') as t,  t.coding as tc then Coding(s, tc);
+
+    // nested function copy with dependent rule
+    src.participant as s -> tgt.participant as t then EncounterParticipant(s, t);
+
+    // nested function copy with dependent rule, split onto multiple lines
+    src.diagnosis as s -> tgt.diagnosis as t then
+        EncounterDiagnosis(s, t);
+}
+
+/* a multi-line C-Style comment
+ * that spans multiple lines
+ */
+group EncounterParticipant(source src, target tgt) extends BackboneElement {
+  src.type -> tgt.type;
+  src.period -> tgt.period;
+  src.individual -> tgt.actor;
+}
+
+group EncounterDiagnosis(source src, target tgt) extends BackboneElement {
+  src.condition -> tgt.condition;
+  src.use -> tgt.use;
+}
+}
+"""";
+        FhirMappingLanguage fml = new();
+
+        bool success = fml.TryParse(content, out Hl7.Fhir.Model.StructureMap? sm);
+
+        success.Should().BeTrue();
+        if (!success)
+        {
+            return;
+        }
+
+        sm.Should().NotBeNull();
+        if (sm is null)
+        {
+            return;
+        }
+
+        sm.Url.Should().Be("http://example.org/fhir/StructureDefinition/test");
+        sm.Id.Should().Be("Fml4to5");
+        sm.Name.Should().Be("FhirMarkup4to5");
+        sm.Title.Should().Be("Test FML file to exercise core parsing");
+        sm.Status.Should().Be(Hl7.Fhir.Model.PublicationStatus.Draft);
+        sm.Description.Should().Be("This was challenging to code into the grammar.\nIt should all be working now though\n");
+        sm.Jurisdiction.Count.Should().Be(1);
+        sm.Jurisdiction[0].Coding.Count.Should().Be(1);
+        sm.Jurisdiction[0].Coding[0].Code.Should().Be("AQ");
+    }
+
     [Theory]
     [FileData("data/Encounter4Bto5.fml")]
     internal void TestParseEncounter4Bto5(string content)
