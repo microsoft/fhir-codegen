@@ -6,6 +6,7 @@
 using Hl7.Fhir.Model;
 using Microsoft.Health.Fhir.CodeGen.Utils;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
+using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 
 namespace Microsoft.Health.Fhir.CodeGen.Models;
 

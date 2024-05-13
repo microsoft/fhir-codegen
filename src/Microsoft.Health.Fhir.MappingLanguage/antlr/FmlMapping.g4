@@ -19,7 +19,7 @@ mapDeclaration
 	;
 
 metadataDeclaration
-  : METADATA_PREFIX qualifiedIdentifier '=' (literal | markdownLiteral | constant)? INLINE_COMMENT?  // value is optional to allow descendant maps to remove values from parents
+  : METADATA_PREFIX qualifiedIdentifier '=' (literal | markdownLiteral)? INLINE_COMMENT?  // value is optional to allow descendant maps to remove values from parents
   ;
 
 markdownLiteral
@@ -38,7 +38,7 @@ identifier
   ;
 
 structureDeclaration
-	: LINE_COMMENT* 'uses' url structureAlias? 'as'  modelMode
+	: LINE_COMMENT* 'uses' url structureAlias? 'as'  modelMode INLINE_COMMENT?
 	;
 
 structureAlias
@@ -46,15 +46,15 @@ structureAlias
   ;
 
 importDeclaration
-	: LINE_COMMENT* 'imports' url
+	: LINE_COMMENT* 'imports' url INLINE_COMMENT?
 	;
 
 constantDeclaration 
-  : LINE_COMMENT* 'let' ID '=' fpExpression ';' // which might just be a literal
+  : LINE_COMMENT* 'let' ID '=' fpExpression ';' INLINE_COMMENT? // which might just be a literal
   ;
 
 groupDeclaration
-	: LINE_COMMENT* 'group' ID parameters extends? typeMode? groupExpressions
+	: LINE_COMMENT* 'group' ID parameters extends? typeMode? INLINE_COMMENT? groupExpressions
 	;
 
 // fhirPath
@@ -86,9 +86,9 @@ typeIdentifier
   ;
 
 expression
- 	: LINE_COMMENT* qualifiedIdentifier '->' qualifiedIdentifier ';'                  #mapSimpleCopy
- 	| LINE_COMMENT* fpExpression ';'                                                  #mapFhirPath               
-  | LINE_COMMENT* mapExpression ';'                                                 #mapFhirMarkup
+ 	: LINE_COMMENT* qualifiedIdentifier '->' qualifiedIdentifier ';'  INLINE_COMMENT?  #mapSimpleCopy
+ 	| LINE_COMMENT* fpExpression ';'                                  INLINE_COMMENT?  #mapFhirPath               
+  | LINE_COMMENT* mapExpression ';'                                 INLINE_COMMENT?  #mapFhirMarkup
  	;
 
 mapExpression
@@ -185,19 +185,63 @@ fpExpression
         : fpTerm                                                      #termExpression
         | fpExpression '.' fpInvocation                               #invocationExpression
         | fpExpression '[' fpExpression ']'                           #indexerExpression
-        | ('+' | '-') fpExpression                                    #polarityExpression
-        | fpExpression ('*' | '/' | 'div' | 'mod') fpExpression       #multiplicativeExpression
-        | fpExpression ('+' | '-' | '&') fpExpression                 #additiveExpression
-        | fpExpression ('is' | 'as') fpTypeSpecifier                  #typeExpression
-        | fpExpression '|' fpExpression                               #unionExpression
-        | fpExpression ('<=' | '<' | '>' | '>=') fpExpression         #inequalityExpression
-        | fpExpression ('=' | '~' | '!=' | '!~') fpExpression         #equalityExpression
-        | fpExpression ('in' | 'contains') fpExpression               #membershipExpression
-        | fpExpression 'and' fpExpression                             #andExpression
-        | fpExpression ('or' | 'xor') fpExpression                    #orExpression
-        | fpExpression 'implies' fpExpression                         #impliesExpression
+        | fpPolarityLiteral fpExpression                              #polarityExpression
+        | fpExpression fpMultiplicativeLiteral fpExpression           #multiplicativeExpression
+        | fpExpression fpAdditiveLiteral fpExpression                 #additiveExpression
+        | fpExpression fpTypeAssertionLiteral fpTypeSpecifier         #typeExpression
+        | fpExpression fpUnionLiteral fpExpression                    #unionExpression
+        | fpExpression fpInequalityLiteral fpExpression               #inequalityExpression
+        | fpExpression fpEqualityLiteral fpExpression                 #equalityExpression
+        | fpExpression fpMembershipLiteral fpExpression               #membershipExpression
+        | fpExpression fpAndLiteral fpExpression                      #andExpression
+        | fpExpression fpOrLiteral fpExpression                       #orExpression
+        | fpExpression fpImpliesLiteral fpExpression                  #impliesExpression
         //| (IDENTIFIER)? '=>' fpExpression                           #lambdaExpression
         ;
+
+fpPolarityLiteral
+  : '+' | '-'
+  ;
+
+fpMultiplicativeLiteral
+  : '*' | '/' | 'div' | 'mod'
+  ;
+
+fpAdditiveLiteral
+  : '+' | '-' | '&'
+  ;
+
+fpTypeAssertionLiteral
+  : 'is' | 'as'
+  ;
+
+fpUnionLiteral
+  : '|'
+  ;
+
+fpInequalityLiteral
+  : '<=' | '<' | '>' | '>='
+  ;
+
+fpEqualityLiteral
+  : '=' | '~' | '!=' | '!~'
+  ;
+
+fpMembershipLiteral
+  : 'in' | 'contains'
+  ;
+
+fpAndLiteral
+  : 'and'
+  ;
+
+fpOrLiteral
+  : 'or' | 'xor'
+  ;
+
+fpImpliesLiteral
+  : 'implies'
+  ;
 
 fpTerm
         : fpInvocation                                            #invocationTerm

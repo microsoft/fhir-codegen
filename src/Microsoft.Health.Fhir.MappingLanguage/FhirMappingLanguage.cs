@@ -15,7 +15,44 @@ namespace Microsoft.Health.Fhir.MappingLanguage;
 
 public class FhirMappingLanguage
 {
-    public bool TryParse(string fml, [NotNullWhen(true)] out Hl7.Fhir.Model.StructureMap? structureMap)
+    //public bool TryParse(string fml, [NotNullWhen(true)] out Hl7.Fhir.Model.StructureMap? structureMap)
+    //{
+    //    try
+    //    {
+    //        AntlrInputStream inputStream = new AntlrInputStream(fml);
+    //        FmlMappingLexer fmlLexer = new FmlMappingLexer(inputStream);
+    //        CommonTokenStream commonTokenStream = new CommonTokenStream(fmlLexer);
+    //        FmlMappingParser fmlParser = new FmlMappingParser(commonTokenStream);
+
+    //        FmlMappingParser.StructureMapContext structureMapContext = fmlParser.structureMap();
+
+    //        FmlToStructureMapVisitor visitor = new();
+    //        visitor.Visit(structureMapContext);
+
+    //        structureMap = visitor.ParsedStructureMap;
+
+    //        if (string.IsNullOrEmpty(structureMap?.Id) && (!string.IsNullOrEmpty(structureMap?.Name)))
+    //        {
+    //            structureMap.Id = structureMap.Name;
+    //        }
+    //        else if (string.IsNullOrEmpty(structureMap?.Name) && !string.IsNullOrEmpty(structureMap?.Id))
+    //        {
+    //            structureMap.Name = structureMap.Id;
+    //        }
+
+    //        return structureMap != null;
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        Console.WriteLine(ex.Message);
+    //    }
+
+    //    structureMap = null;
+    //    return false;
+    //}
+
+
+    public bool TryParse(string fml, [NotNullWhen(true)] out FhirStructureMap? map)
     {
         try
         {
@@ -26,28 +63,19 @@ public class FhirMappingLanguage
 
             FmlMappingParser.StructureMapContext structureMapContext = fmlParser.structureMap();
 
-            FmlToStructureMapVisitor visitor = new FmlToStructureMapVisitor();
+            FmlParseVisitor visitor = new();
             visitor.Visit(structureMapContext);
 
-            structureMap = visitor.ParsedStructureMap;
+            map = visitor.GetCurrentMap();
 
-            if (string.IsNullOrEmpty(structureMap?.Id) && (!string.IsNullOrEmpty(structureMap?.Name)))
-            {
-                structureMap.Id = structureMap.Name;
-            }
-            else if (string.IsNullOrEmpty(structureMap?.Name) && !string.IsNullOrEmpty(structureMap?.Id))
-            {
-                structureMap.Name = structureMap.Id;
-            }
-
-            return structureMap != null;
+            return map != null;
         }
         catch (Exception ex)
         {
             Console.WriteLine(ex.Message);
         }
 
-        structureMap = null;
+        map = null;
         return false;
     }
 }

@@ -11,7 +11,7 @@ using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Text;
 
-namespace Microsoft.Health.Fhir.CodeGen.Utils;
+namespace Microsoft.Health.Fhir.CodeGenCommon.Utils;
 
 /// <summary>A FHIR sanitization utilities.</summary>
 public abstract partial class FhirSanitizationUtils
@@ -46,6 +46,7 @@ public abstract partial class FhirSanitizationUtils
         { new char[2] { '=', '=' }, "_double_equals_" },
         { new char[3] { '=', '=', '=' }, "_triple_equals_" },
         { new char[2] { '!', '=' }, "_not_equal_" },
+        { new char[2] { '!', '~' }, "_not_equivalent_" },
         { new char[2] { '<', '>' }, "_not_equal_" },
         { new char[2] { '<', '=' }, "_less_or_equal_" },
         { new char[1] { '<' }, "_less_than_" },
@@ -107,6 +108,7 @@ public abstract partial class FhirSanitizationUtils
         { new char[2] { '=', '=' }, "DoubleEquals" },
         { new char[3] { '=', '=', '=' }, "TripleEquals" },
         { new char[2] { '!', '=' }, "NotEqual" },
+        { new char[2] { '!', '~' }, "NotEquivalent" },
         { new char[2] { '<', '>' }, "NotEqual" },
         { new char[2] { '<', '=' }, "LessOrEqual" },
         { new char[1] { '<' }, "LessThan" },

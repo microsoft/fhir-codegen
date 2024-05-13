@@ -694,6 +694,138 @@ public partial class FmlMappingBaseListener : IFmlMappingListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitTypeExpression([NotNull] FmlMappingParser.TypeExpressionContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.fpPolarityLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterFpPolarityLiteral([NotNull] FmlMappingParser.FpPolarityLiteralContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.fpPolarityLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitFpPolarityLiteral([NotNull] FmlMappingParser.FpPolarityLiteralContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.fpMultiplicativeLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterFpMultiplicativeLiteral([NotNull] FmlMappingParser.FpMultiplicativeLiteralContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.fpMultiplicativeLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitFpMultiplicativeLiteral([NotNull] FmlMappingParser.FpMultiplicativeLiteralContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.fpAdditiveLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterFpAdditiveLiteral([NotNull] FmlMappingParser.FpAdditiveLiteralContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.fpAdditiveLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitFpAdditiveLiteral([NotNull] FmlMappingParser.FpAdditiveLiteralContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.fpTypeAssertionLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterFpTypeAssertionLiteral([NotNull] FmlMappingParser.FpTypeAssertionLiteralContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.fpTypeAssertionLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitFpTypeAssertionLiteral([NotNull] FmlMappingParser.FpTypeAssertionLiteralContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.fpUnionLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterFpUnionLiteral([NotNull] FmlMappingParser.FpUnionLiteralContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.fpUnionLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitFpUnionLiteral([NotNull] FmlMappingParser.FpUnionLiteralContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.fpInequalityLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterFpInequalityLiteral([NotNull] FmlMappingParser.FpInequalityLiteralContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.fpInequalityLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitFpInequalityLiteral([NotNull] FmlMappingParser.FpInequalityLiteralContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.fpEqualityLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterFpEqualityLiteral([NotNull] FmlMappingParser.FpEqualityLiteralContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.fpEqualityLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitFpEqualityLiteral([NotNull] FmlMappingParser.FpEqualityLiteralContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.fpMembershipLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterFpMembershipLiteral([NotNull] FmlMappingParser.FpMembershipLiteralContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.fpMembershipLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitFpMembershipLiteral([NotNull] FmlMappingParser.FpMembershipLiteralContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.fpAndLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterFpAndLiteral([NotNull] FmlMappingParser.FpAndLiteralContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.fpAndLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitFpAndLiteral([NotNull] FmlMappingParser.FpAndLiteralContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.fpOrLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterFpOrLiteral([NotNull] FmlMappingParser.FpOrLiteralContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.fpOrLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitFpOrLiteral([NotNull] FmlMappingParser.FpOrLiteralContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.fpImpliesLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterFpImpliesLiteral([NotNull] FmlMappingParser.FpImpliesLiteralContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.fpImpliesLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitFpImpliesLiteral([NotNull] FmlMappingParser.FpImpliesLiteralContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by the <c>invocationTerm</c>
 	/// labeled alternative in <see cref="FmlMappingParser.fpTerm"/>.
 	/// <para>The default implementation does nothing.</para>

@@ -585,6 +585,116 @@ public interface IFmlMappingListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitTypeExpression([NotNull] FmlMappingParser.TypeExpressionContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.fpPolarityLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterFpPolarityLiteral([NotNull] FmlMappingParser.FpPolarityLiteralContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.fpPolarityLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitFpPolarityLiteral([NotNull] FmlMappingParser.FpPolarityLiteralContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.fpMultiplicativeLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterFpMultiplicativeLiteral([NotNull] FmlMappingParser.FpMultiplicativeLiteralContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.fpMultiplicativeLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitFpMultiplicativeLiteral([NotNull] FmlMappingParser.FpMultiplicativeLiteralContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.fpAdditiveLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterFpAdditiveLiteral([NotNull] FmlMappingParser.FpAdditiveLiteralContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.fpAdditiveLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitFpAdditiveLiteral([NotNull] FmlMappingParser.FpAdditiveLiteralContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.fpTypeAssertionLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterFpTypeAssertionLiteral([NotNull] FmlMappingParser.FpTypeAssertionLiteralContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.fpTypeAssertionLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitFpTypeAssertionLiteral([NotNull] FmlMappingParser.FpTypeAssertionLiteralContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.fpUnionLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterFpUnionLiteral([NotNull] FmlMappingParser.FpUnionLiteralContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.fpUnionLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitFpUnionLiteral([NotNull] FmlMappingParser.FpUnionLiteralContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.fpInequalityLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterFpInequalityLiteral([NotNull] FmlMappingParser.FpInequalityLiteralContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.fpInequalityLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitFpInequalityLiteral([NotNull] FmlMappingParser.FpInequalityLiteralContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.fpEqualityLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterFpEqualityLiteral([NotNull] FmlMappingParser.FpEqualityLiteralContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.fpEqualityLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitFpEqualityLiteral([NotNull] FmlMappingParser.FpEqualityLiteralContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.fpMembershipLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterFpMembershipLiteral([NotNull] FmlMappingParser.FpMembershipLiteralContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.fpMembershipLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitFpMembershipLiteral([NotNull] FmlMappingParser.FpMembershipLiteralContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.fpAndLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterFpAndLiteral([NotNull] FmlMappingParser.FpAndLiteralContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.fpAndLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitFpAndLiteral([NotNull] FmlMappingParser.FpAndLiteralContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.fpOrLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterFpOrLiteral([NotNull] FmlMappingParser.FpOrLiteralContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.fpOrLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitFpOrLiteral([NotNull] FmlMappingParser.FpOrLiteralContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.fpImpliesLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterFpImpliesLiteral([NotNull] FmlMappingParser.FpImpliesLiteralContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.fpImpliesLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitFpImpliesLiteral([NotNull] FmlMappingParser.FpImpliesLiteralContext context);
+	/// <summary>
 	/// Enter a parse tree produced by the <c>invocationTerm</c>
 	/// labeled alternative in <see cref="FmlMappingParser.fpTerm"/>.
 	/// </summary>

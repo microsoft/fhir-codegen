@@ -15,6 +15,7 @@ using System.Xml.Linq;
 using Hl7.Fhir.Model;
 using Microsoft.Health.Fhir.CodeGen.Utils;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
+using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 
 namespace Microsoft.Health.Fhir.CodeGen.CompareTool;
 

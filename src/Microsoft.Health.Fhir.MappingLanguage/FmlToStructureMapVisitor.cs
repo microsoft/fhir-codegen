@@ -21,6 +21,7 @@ using Newtonsoft.Json.Linq;
 using System.Reflection;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using System.Globalization;
+using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 
 namespace Microsoft.Health.Fhir.MappingLanguage;
 
@@ -40,6 +41,13 @@ public class FmlToStructureMapVisitor : FmlMappingBaseVisitor<object>
 
     public override object VisitStructureMap([NotNull] StructureMapContext ctx)
     {
+        //string value = string.Join('\n',
+        //    FmlMappingParser.DefaultVocabulary.Select((v, i) => { Microsoft.Health.Fhir.CodeGenCommon.Utils.FhirSanitizationUtils.SanitizeForCode(v, [], out string name, out _); return $"{name} = {i + 1},"; }));
+
+        //102;
+
+        string val = AntlrUtils.BuildLiteralEnums();
+
         _map = new();
 
         return base.VisitStructureMap(ctx);
@@ -49,7 +57,7 @@ public class FmlToStructureMapVisitor : FmlMappingBaseVisitor<object>
     {
         Console.WriteLine(
           $"Meta {ctx.qualifiedIdentifier()?.GetText()}:" +
-          $" {ctx.literal()?.GetText() ?? ctx.constant()?.GetText() ?? ctx.markdownLiteral()?.GetText()}" +
+          $" {ctx.literal()?.GetText() ?? ctx.markdownLiteral()?.GetText()}" +
           $" comment: {ctx.INLINE_COMMENT()?.GetText()}");
 
         string elementPath = ctx.qualifiedIdentifier()?.GetText() ?? string.Empty;
@@ -60,7 +68,7 @@ public class FmlToStructureMapVisitor : FmlMappingBaseVisitor<object>
         }
 
         ParserRuleContext? c = (ParserRuleContext?)ctx.literal() ??
-            (ParserRuleContext?)ctx.constant() ??
+            //(ParserRuleContext?)ctx.constant() ??
             (ParserRuleContext?)ctx.markdownLiteral() ??
             null;
 

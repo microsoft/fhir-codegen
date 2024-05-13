@@ -361,6 +361,72 @@ public interface IFmlMappingVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitTypeExpression([NotNull] FmlMappingParser.TypeExpressionContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="FmlMappingParser.fpPolarityLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitFpPolarityLiteral([NotNull] FmlMappingParser.FpPolarityLiteralContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="FmlMappingParser.fpMultiplicativeLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitFpMultiplicativeLiteral([NotNull] FmlMappingParser.FpMultiplicativeLiteralContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="FmlMappingParser.fpAdditiveLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitFpAdditiveLiteral([NotNull] FmlMappingParser.FpAdditiveLiteralContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="FmlMappingParser.fpTypeAssertionLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitFpTypeAssertionLiteral([NotNull] FmlMappingParser.FpTypeAssertionLiteralContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="FmlMappingParser.fpUnionLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitFpUnionLiteral([NotNull] FmlMappingParser.FpUnionLiteralContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="FmlMappingParser.fpInequalityLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitFpInequalityLiteral([NotNull] FmlMappingParser.FpInequalityLiteralContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="FmlMappingParser.fpEqualityLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitFpEqualityLiteral([NotNull] FmlMappingParser.FpEqualityLiteralContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="FmlMappingParser.fpMembershipLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitFpMembershipLiteral([NotNull] FmlMappingParser.FpMembershipLiteralContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="FmlMappingParser.fpAndLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitFpAndLiteral([NotNull] FmlMappingParser.FpAndLiteralContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="FmlMappingParser.fpOrLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitFpOrLiteral([NotNull] FmlMappingParser.FpOrLiteralContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="FmlMappingParser.fpImpliesLiteral"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitFpImpliesLiteral([NotNull] FmlMappingParser.FpImpliesLiteralContext context);
+	/// <summary>
 	/// Visit a parse tree produced by the <c>invocationTerm</c>
 	/// labeled alternative in <see cref="FmlMappingParser.fpTerm"/>.
 	/// </summary>
