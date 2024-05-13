@@ -88,7 +88,7 @@ typeIdentifier
 expression
  	: LINE_COMMENT* qualifiedIdentifier '->' qualifiedIdentifier ';'  INLINE_COMMENT?  #mapSimpleCopy
  	| LINE_COMMENT* fpExpression ';'                                  INLINE_COMMENT?  #mapFhirPath               
-  | LINE_COMMENT* mapExpression ';'                                 INLINE_COMMENT?  #mapFhirMarkup
+    | LINE_COMMENT* mapExpression ';'                                 INLINE_COMMENT?  #mapFhirMarkup
  	;
 
 mapExpression

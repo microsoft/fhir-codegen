@@ -28,7 +28,7 @@ internal static class VisitorUtilities
 
         return new LiteralValue()
         {
-            ValueAsString = c.GetText(),
+            ValueAsString = GetString(c) ?? string.Empty,
             Value = GetValue(c),
             FhirValue = GetFhirValue(c),
             TokenType = (FmlTokenTypeCodes)c.Stop.Type,
@@ -52,6 +52,7 @@ internal static class VisitorUtilities
         DOUBLE_QUOTED_STRING => c.Stop.Text[1..^1],
         C_STYLE_COMMENT => c.Stop.Text.Length > 4 ? c.Stop.Text[2..^2] : c.Stop.Text,
         LINE_COMMENT => c.Stop.Text.Length > 2 ? c.Stop.Text[2..] : c.Stop.Text,
+        TRIPLE_QUOTED_STRING_LITERAL => c.Stop.Text.Trim().Length > 5 ? c.Stop.Text.Trim()[3..^3].Trim() : c.Stop.Text.Trim(),
         _ => null,
     };
 
@@ -72,6 +73,7 @@ internal static class VisitorUtilities
         DOUBLE_QUOTED_STRING => tn.Symbol.Text[1..^1],
         C_STYLE_COMMENT => tn.Symbol.Text.Length > 4 ? tn.Symbol.Text[2..^2] : tn.Symbol.Text,
         LINE_COMMENT => tn.Symbol.Text.Length > 2 ? tn.Symbol.Text[2..] : tn.Symbol.Text,
+        TRIPLE_QUOTED_STRING_LITERAL => tn.Symbol.Text.Trim().Length > 5 ? tn.Symbol.Text.Trim()[3..^3].Trim() : tn.Symbol.Text.Trim(),
         _ => string.Empty,
     };
 
@@ -93,6 +95,7 @@ internal static class VisitorUtilities
         DOUBLE_QUOTED_STRING => c.Stop.Text[1..^1],
         C_STYLE_COMMENT => c.Stop.Text.Length > 4 ? c.Stop.Text[2..^2] : c.Stop.Text,
         LINE_COMMENT => c.Stop.Text.Length > 2 ? c.Stop.Text[2..] : c.Stop.Text,
+        TRIPLE_QUOTED_STRING_LITERAL => c.Stop.Text.Trim().Length > 5 ? c.Stop.Text.Trim()[3..^3].Trim() : c.Stop.Text.Trim(),
         _ => null,
     };
 
@@ -113,6 +116,7 @@ internal static class VisitorUtilities
         DOUBLE_QUOTED_STRING => new FhirString(c.Stop.Text[1..^1]),
         C_STYLE_COMMENT => c.Stop.Text.Length > 4 ? new FhirString(c.Stop.Text[2..^2]) : new FhirString(c.Stop.Text),
         LINE_COMMENT => c.Stop.Text.Length > 2 ? new FhirString(c.Stop.Text[2..]) : new FhirString(c.Stop.Text),
+        TRIPLE_QUOTED_STRING_LITERAL => c.Stop.Text.Trim().Length > 5 ? new Markdown(c.Stop.Text.Trim()[3..^3].Trim()) : new Markdown(c.Stop.Text.Trim()),
         _ => null,
     };
 

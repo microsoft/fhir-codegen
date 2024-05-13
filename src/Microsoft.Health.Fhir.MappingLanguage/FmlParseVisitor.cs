@@ -64,7 +64,7 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
     {
         MetadataDeclaration value = new()
         {
-            ElementPath = ctx.qualifiedIdentifier().GetText(),
+            ElementPath = GetString(ctx.qualifiedIdentifier())!,
             Literal = GetLiteral(ctx.literal()),
             MarkdownValue = GetString(ctx.markdownLiteral()),
             InlineComment = GetString(ctx.INLINE_COMMENT()) ?? string.Empty,
