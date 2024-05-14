@@ -2847,7 +2847,7 @@ public class PackageComparer
         FhirArtifactClassEnum artifactClass,
         List<(StructureDefinition sd, StructureInfoRec si)> leftSource,
         List<(StructureDefinition sd, StructureInfoRec si)> rightSource,
-        Dictionary<string, (string target, CMR relationship)> elementMappings)
+        Dictionary<string, ElementConceptMapTarget> elementMappings)
     {
         Dictionary<string, ElementDefinition> leftElements = [];
         Dictionary<string, ElementDefinition> rightElements = [];
@@ -2896,7 +2896,7 @@ public class PackageComparer
             CMR? mappedRelationship = null;
 
             // check for an element mapping
-            if (elementMappings.TryGetValue(edPath, out (string target, CMR relationship) mapped))
+            if (elementMappings.TryGetValue(edPath, out ElementConceptMapTarget mapped))
             {
                 if (rightElements.TryGetValue(mapped.target, out ElementDefinition? rightEd))
                 {
@@ -3220,6 +3220,13 @@ public class PackageComparer
         }
 
         (CMR relationship, int maxIndex) = GetInitialRelationship(lSource, rSource);
+
+        if ((rSource.Count == 1) &&
+            (rSource[0].r != null))
+        {
+            relationship = rSource[0].r!.Value;
+        }
+
         string message = string.Empty;
 
         Dictionary<string, SerializationMapInfo> serializations = [];
@@ -3239,7 +3246,7 @@ public class PackageComparer
                     continue;
                 }
 
-                // for primitives, a match needs to represent equivalence for sanity elsewhere
+                // for primitives, a name-match needs to represent equivalence for sanity elsewhere
                 relationship = CMR.Equivalent;
                 message = $"{_rightRLiteral} primitive {rightSi.Name} is equivalent to the {_leftRLiteral} primitive {leftSi.Name}";
 
@@ -3376,7 +3383,7 @@ public class PackageComparer
                     {
                         Console.WriteLine($"Removing {sdName} from the concept map, it does not actually exist...");
                         cm!.Group[0].Element.Remove(sourceMap);
-
+                        
                         //throw new Exception($"Structure {sdName} is mapped as a source but not defined in the left set");
                     }
                     else
@@ -3395,11 +3402,27 @@ public class PackageComparer
 
                             if (!right.TryGetValue(te.Code, out StructureInfoRec? mappedTargetInfo))
                             {
-                                throw new Exception($"Structure {te.Code} is mapped as a target but not defined in right set");
-                            }
+                                // check if this is an invalid 1:1 mapping
+                                if (sourceMap.Target.Count == 1)
+                                {
+                                    Console.WriteLine($"Removing {sdName} from the concept map, it is a map for a target that does not actually exist...");
+                                    cm!.Group[0].Element.Remove(sourceMap);
 
-                            rightSource.Add((rightInput[te.Code], mappedTargetInfo));
-                            usedTargetNames.Add(te.Code);
+                                    // do not attempt to use this map
+                                    leftSource = [];
+                                    usedSourceNames.Clear();
+                                    mapSourceInfo = null;
+                                }
+                                else
+                                {
+                                    throw new Exception($"Structure {te.Code} is mapped as a target but not defined in right set");
+                                }
+                            }
+                            else
+                            {
+                                rightSource.Add((rightInput[te.Code], mappedTargetInfo));
+                                usedTargetNames.Add(te.Code);
+                            }
                         }
                     }
                 }
@@ -3471,15 +3494,16 @@ public class PackageComparer
             // for now, we have a global element map.  Once we have resource-specific ones, load those per structure in the loop
             ConceptMap? elementMap = _crossVersion?.ElementTypeMap(sdName);
 
-            Dictionary<string, (string target, CMR relationship)> elementMappings = [];
+            Dictionary<string, ElementConceptMapTarget> elementMappings = [];
 
             if (elementMap != null)
             {
+                // if this appears more than once, we need to evaluate for each source record
                 foreach (ConceptMap.SourceElementComponent sourceElement in elementMap.Group.FirstOrDefault()?.Element ?? [])
                 {
                     foreach (ConceptMap.TargetElementComponent targetElement in sourceElement.Target)
                     {
-                        elementMappings.Add(sourceElement.Code, (targetElement.Code, targetElement.Relationship ?? CMR.RelatedTo));
+                        elementMappings.Add(sourceElement.Code, new(targetElement.Code, targetElement.Relationship ?? CMR.RelatedTo));
                     }
                 }
             }
@@ -3512,6 +3536,8 @@ public class PackageComparer
 
         return comparison;
     }
+
+    private record struct ElementConceptMapTarget(string target, CMR relationship);
 
     private bool IsEquivalenceMapping(CMR? relationship) => relationship switch
     {
