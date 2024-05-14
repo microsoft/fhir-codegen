@@ -305,6 +305,9 @@ public class CrossVersionMapCollection
                                 }
                             }
 
+                            string unversionedSourceUrl = sourceScopeUrl.Contains('|') ? sourceScopeUrl.Split('|')[0] : sourceScopeUrl;
+                            string unversionedTargetUrl = targetScopeUrl.Contains('|') ? targetScopeUrl.Split('|')[0] : targetScopeUrl;
+
                             if (string.IsNullOrEmpty(sourceScopeUrl) || string.IsNullOrEmpty(targetScopeUrl))
                             {
                                 throw new Exception($"Cannot resolve scope references in {filename}");
@@ -345,8 +348,8 @@ public class CrossVersionMapCollection
                             cm.AddExtension(CommonDefinitions.ExtUrlConceptMapAdditionalUrls, new FhirUrl(originalMapUrl));
 
                             // try to manufacture correct value set URLs based on what we have
-                            cm.SourceScope = new Canonical(sourceScopeUrl + "|" + _leftPackageVersion);
-                            cm.TargetScope = new Canonical(targetScopeUrl + "|" + _rightPackageVersion);
+                            cm.SourceScope = new Canonical(unversionedSourceUrl + "|" + _leftPackageVersion);
+                            cm.TargetScope = new Canonical(unversionedTargetUrl + "|" + _rightPackageVersion);
 
                             foreach (ConceptMap.GroupComponent group in cm.Group)
                             {
@@ -359,18 +362,18 @@ public class CrossVersionMapCollection
 
                                 if (group.Target.Contains(_rightShortVersionUrlSegment, StringComparison.Ordinal))
                                 {
-                                    group.Target = group.Target.Replace(_leftShortVersionUrlSegment, "/");
+                                    group.Target = group.Target.Replace(_rightShortVersionUrlSegment, "/");
                                 }
                             }
 
                             // add to our listing of value set maps
-                            if (_vsUrlsWithMaps.TryGetValue(sourceScopeUrl, out List<string>? rightList))
+                            if (_vsUrlsWithMaps.TryGetValue(unversionedSourceUrl, out List<string>? rightList))
                             {
-                                rightList.Add(targetScopeUrl);
+                                rightList.Add(unversionedTargetUrl);
                             }
                             else
                             {
-                                _vsUrlsWithMaps.Add(sourceScopeUrl, [targetScopeUrl]);
+                                _vsUrlsWithMaps.Add(unversionedSourceUrl, [targetScopeUrl]);
                             }
 
                         }
@@ -1265,11 +1268,22 @@ public class CrossVersionMapCollection
         {
             return targets;
         }
+        else if (sourceUrl.Contains('|') &&
+                 _vsUrlsWithMaps.TryGetValue(sourceUrl.Split('|')[0], out targets))
+        {
+            return targets;
+        }
 
         return [];
     }
 
-    public List<ConceptMap> GetMapsForVs(string sourceVsUrl) =>_dc.ConceptMapsForSource(sourceVsUrl);
+    public List<ConceptMap> GetMapsForVs(string sourceVsUrl) => _dc.ConceptMapsForSource(sourceVsUrl);
+
+    public bool TryGetMapsForVs(string sourceVsUrl, [NotNullWhen(true)] out List<ConceptMap>? maps)
+    {
+        maps = _dc.ConceptMapsForSource(sourceVsUrl);
+        return maps.Count > 0;
+    }
 
     public ConceptMap? DataTypeMap => _dataTypeMap;
 

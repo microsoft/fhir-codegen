@@ -976,20 +976,34 @@ public partial class DefinitionCollection
         _conceptMapsByUrl[cm.Url] = cm;
         TrackResource(cm);
 
-        if (cm.Group.Count == 0)
+        if ((cm.SourceScope is Canonical sourceCanonical) && (!string.IsNullOrEmpty(sourceCanonical.Uri)))
         {
-            if (_conceptMapsBySourceUrl.TryGetValue(cm.Group[0].Source, out List<ConceptMap>? maps))
+            if (_conceptMapsBySourceUrl.TryGetValue(sourceCanonical.Uri, out List<ConceptMap>? maps))
             {
                 maps.Add(cm);
             }
             else
             {
-                _conceptMapsBySourceUrl.Add(cm.Group[0].Source, [cm]);
+                _conceptMapsBySourceUrl.Add(sourceCanonical.Uri, [cm]);
+            }
+        }
+        else if ((cm.SourceScope is FhirUri sourceUri) && (!string.IsNullOrEmpty(sourceUri.Value)))
+        {
+            if (_conceptMapsBySourceUrl.TryGetValue(sourceUri.Value, out List<ConceptMap>? maps))
+            {
+                maps.Add(cm);
+            }
+            else
+            {
+                _conceptMapsBySourceUrl.Add(sourceUri.Value, [cm]);
             }
         }
     }
 
-    public List<ConceptMap> ConceptMapsForSource(string src) => _conceptMapsBySourceUrl.TryGetValue(src, out List<ConceptMap>? maps) ? maps : [];
+    public List<ConceptMap> ConceptMapsForSource(string src) =>
+        _conceptMapsBySourceUrl.TryGetValue(src, out List<ConceptMap>? maps)
+        ? maps
+        : (src.Contains('|') ? (_conceptMapsBySourceUrl.TryGetValue(src.Split('|')[0], out maps) ? maps : []) : []);
 
     public IReadOnlyDictionary<string, StructureMap> StructureMapsByUrl => _structureMapsByUrl;
     public void AddStructureMap(StructureMap sm, string packageId, string packageVersion)

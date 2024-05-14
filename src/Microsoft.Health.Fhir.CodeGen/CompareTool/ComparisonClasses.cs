@@ -16,6 +16,7 @@ using Hl7.Fhir.Model;
 using Microsoft.Health.Fhir.CodeGen.Utils;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Utils;
+using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 
 namespace Microsoft.Health.Fhir.CodeGen.CompareTool;
 
@@ -36,7 +37,6 @@ public record class SerializationMapInfo
 
 public interface IComparisonRecord
 {
-    //string RecordTypeDiscriminator { get; }
     FhirArtifactClassEnum ComparisonArtifactType { get; init; }
     string Key { get; init; }
     bool KeyInLeft { get; init; }
@@ -52,6 +52,85 @@ public interface IComparisonRecord
     IEnumerable<string[]> GetChildComparisonRows(bool inLeft, bool inRight);
     string[] GetComparisonRow();
 }
+
+public record class ConceptComparisonDetails
+{
+    /// <summary>Gets or initializes the target concepts in this comparison.</summary>
+    public required ConceptInfoRec Target { get; init; }
+
+    /// <summary>
+    /// Gets or initializes the relationship between the source and target.
+    /// </summary>
+    public required CMR? Relationship { get; init; }
+
+    /// <summary>Gets or initializes the message for this mapping.</summary>
+    public required string Message { get; init; }
+
+    /// <summary>
+    /// Gets or initializes a value indicating whether this mapping is preferred.
+    /// </summary>
+    public bool IsPreferred { get; init; }
+
+    public string GetStatusString()
+    {
+        return Relationship?.ToString() ?? "-";
+    }
+}
+
+public record class ConceptComparison
+{
+    /// <summary>Gets or initializes the source concept in this comparison.</summary>
+    public required ConceptInfoRec Source { get; init; }
+
+    public required List<ConceptComparisonDetails> TargetMappings { get; init; }
+
+    public required CMR? Relationship { get; init; }
+
+    public required string Message { get; init; }
+
+    public string GetStatusString()
+    {
+        if (TargetMappings.Count == 0)
+        {
+            return "DoesNotExistInTarget";
+        }
+
+        return Relationship?.ToString() ?? "-";
+    }
+}
+
+public record class ValueSetComparison
+{
+    public required string SourceUrl { get; init; }
+    public required string SourceName { get; init; }
+    public required string SourceTitle { get; init; }
+    public required string SourceDescription { get; init; }
+
+    public required string TargetUrl { get; init; }
+    public required string TargetName { get; init; }
+    public required string TargetTitle { get; init; }
+    public required string TargetDescription { get; init; }
+
+    /// <summary>Gets or initializes the composite name for this record.</summary>
+    public required string CompositeName { get; init; }
+
+    /// <summary>Gets or initializes the concept comparisons, keyed by source concept.</summary>
+    public required Dictionary<string, ConceptComparison> ConceptComparisons { get; init; }
+
+    public required CMR? Relationship { get; init; }
+    public required string Message { get; init; }
+
+    public string GetStatusString()
+    {
+        if (ConceptComparisons.Count == 0)
+        {
+            return "DoesNotExistInTarget";
+        }
+
+        return Relationship?.ToString() ?? "-";
+    }
+}
+
 
 public interface IComparisonRecord<T> : IComparisonRecord
 {
@@ -287,7 +366,7 @@ public record class PackageComparison
     public required string RightPackageId { get; init; }
     public required string RightPackageVersion { get; init; }
 
-    public required Dictionary<string, ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>> ValueSets { get; init; }
+    public required Dictionary<string, List<ValueSetComparison>> ValueSets { get; init; }
     public required Dictionary<string, ComparisonRecord<StructureInfoRec>> PrimitiveTypes { get; init; }
     public required Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> ComplexTypes { get; init; }
     public required Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> Resources { get; init; }
