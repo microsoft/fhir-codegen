@@ -41,12 +41,7 @@ public class FmlToStructureMapVisitor : FmlMappingBaseVisitor<object>
 
     public override object VisitStructureMap([NotNull] StructureMapContext ctx)
     {
-        //string value = string.Join('\n',
-        //    FmlMappingParser.DefaultVocabulary.Select((v, i) => { Microsoft.Health.Fhir.CodeGenCommon.Utils.FhirSanitizationUtils.SanitizeForCode(v, [], out string name, out _); return $"{name} = {i + 1},"; }));
-
-        //102;
-
-        string val = AntlrUtils.BuildLiteralEnums();
+        //string val = AntlrUtils.BuildLiteralEnums();
 
         _map = new();
 
@@ -57,8 +52,8 @@ public class FmlToStructureMapVisitor : FmlMappingBaseVisitor<object>
     {
         Console.WriteLine(
           $"Meta {ctx.qualifiedIdentifier()?.GetText()}:" +
-          $" {ctx.literal()?.GetText() ?? ctx.markdownLiteral()?.GetText()}" +
-          $" comment: {ctx.INLINE_COMMENT()?.GetText()}");
+          $" {ctx.literal()?.GetText() ?? ctx.markdownLiteral()?.GetText()}");
+          //$" comment: {ctx.INLINE_COMMENT()?.GetText()}");
 
         string elementPath = ctx.qualifiedIdentifier()?.GetText() ?? string.Empty;
 
@@ -90,7 +85,7 @@ public class FmlToStructureMapVisitor : FmlMappingBaseVisitor<object>
         object? obj = _map!;
 
         string[] pathComponents = elementPath.Split('.');
-        for(int i = 0; i < pathComponents.Length; i++)
+        for (int i = 0; i < pathComponents.Length; i++)
         {
             if (obj == null)
             {
@@ -148,7 +143,7 @@ public class FmlToStructureMapVisitor : FmlMappingBaseVisitor<object>
     private static string? GetString(ParserRuleContext c) => c.Stop.Type switch
     {
         NULL_LITERAL => null,
-        BOOL => c.GetText() ,
+        BOOL => c.GetText(),
         DATE => c.Stop.Text.StartsWith('@') ? c.Stop.Text[1..] : c.Stop.Text,
         DATE_TIME => c.Stop.Text.StartsWith('@') ? c.Stop.Text : c.Stop.Text,
         TIME => c.Stop.Text.StartsWith('@') ? c.Stop.Text : c.Stop.Text,
@@ -160,7 +155,7 @@ public class FmlToStructureMapVisitor : FmlMappingBaseVisitor<object>
         DELIMITED_IDENTIFIER => c.Stop.Text[1..^1],
         SINGLE_QUOTED_STRING => c.Stop.Text[1..^1],
         DOUBLE_QUOTED_STRING => c.Stop.Text[1..^1],
-        C_STYLE_COMMENT => c.Stop.Text.Length > 4 ? c.Stop.Text[2..^2] : c.Stop.Text,
+        BLOCK_COMMENT => c.Stop.Text.Length > 4 ? c.Stop.Text[2..^2] : c.Stop.Text,
         LINE_COMMENT => c.Stop.Text.Length > 2 ? c.Stop.Text[2..] : c.Stop.Text,
         _ => null,
     };
@@ -180,7 +175,7 @@ public class FmlToStructureMapVisitor : FmlMappingBaseVisitor<object>
         DELIMITED_IDENTIFIER => c.Stop.Text[1..^1],
         SINGLE_QUOTED_STRING => c.Stop.Text[1..^1],
         DOUBLE_QUOTED_STRING => c.Stop.Text[1..^1],
-        C_STYLE_COMMENT => c.Stop.Text.Length > 4 ? c.Stop.Text[2..^2] : c.Stop.Text,
+        BLOCK_COMMENT => c.Stop.Text.Length > 4 ? c.Stop.Text[2..^2] : c.Stop.Text,
         LINE_COMMENT => c.Stop.Text.Length > 2 ? c.Stop.Text[2..] : c.Stop.Text,
         _ => null,
     };
@@ -200,7 +195,7 @@ public class FmlToStructureMapVisitor : FmlMappingBaseVisitor<object>
         DELIMITED_IDENTIFIER => new FhirString(c.Stop.Text[1..^1]),
         SINGLE_QUOTED_STRING => new FhirString(c.Stop.Text[1..^1]),
         DOUBLE_QUOTED_STRING => new FhirString(c.Stop.Text[1..^1]),
-        C_STYLE_COMMENT => c.Stop.Text.Length > 4 ? new FhirString(c.Stop.Text[2..^2]) : new FhirString(c.Stop.Text),
+        BLOCK_COMMENT => c.Stop.Text.Length > 4 ? new FhirString(c.Stop.Text[2..^2]) : new FhirString(c.Stop.Text),
         LINE_COMMENT => c.Stop.Text.Length > 2 ? new FhirString(c.Stop.Text[2..]) : new FhirString(c.Stop.Text),
         _ => null,
     };
@@ -244,8 +239,8 @@ public class FmlToStructureMapVisitor : FmlMappingBaseVisitor<object>
         //Console.WriteLine($"Map Id/Name: {ctx.identifier()?.GetText()}");
 
         // markdown type - join with newlines
-        string comment = string.Join('\n', ctx.LINE_COMMENT()?.Select(c => c.GetText()[2..]) ?? Enumerable.Empty<string>());
-        _map!.Description = comment;
+        //string comment = string.Join('\n', ctx.LINE_COMMENT()?.Select(c => c.GetText()[2..]) ?? Enumerable.Empty<string>());
+        //_map!.Description = comment;
 
         _map!.Url = GetString(ctx.url());
         _map!.Id = GetString(ctx.identifier());

@@ -15,11 +15,11 @@ structureMap
 //   : (map | mapUrl | mapName | mapTitle | mapStatus | mapDescription)* ;
 
 mapDeclaration
-	: LINE_COMMENT* 'map' url '=' identifier INLINE_COMMENT?
+	: 'map' url '=' identifier
 	;
 
 metadataDeclaration
-  : METADATA_PREFIX qualifiedIdentifier '=' (literal | markdownLiteral)? INLINE_COMMENT?  // value is optional to allow descendant maps to remove values from parents
+  : METADATA_PREFIX qualifiedIdentifier '=' (literal | markdownLiteral)?  // value is optional to allow descendant maps to remove values from parents
   ;
 
 markdownLiteral
@@ -38,7 +38,7 @@ identifier
   ;
 
 structureDeclaration
-	: LINE_COMMENT* 'uses' url structureAlias? 'as'  modelMode INLINE_COMMENT?
+	: 'uses' url structureAlias? 'as'  modelMode 
 	;
 
 structureAlias
@@ -46,15 +46,15 @@ structureAlias
   ;
 
 importDeclaration
-	: LINE_COMMENT* 'imports' url INLINE_COMMENT?
+	: 'imports' url
 	;
 
 constantDeclaration 
-  : LINE_COMMENT* 'let' ID '=' fpExpression ';' INLINE_COMMENT? // which might just be a literal
+  : 'let' ID '=' fpExpression ';' // which might just be a literal
   ;
 
 groupDeclaration
-	: LINE_COMMENT* 'group' ID parameters extends? typeMode? INLINE_COMMENT? groupExpressions
+	: 'group' ID parameters extends? typeMode? groupExpressions
 	;
 
 // fhirPath
@@ -86,9 +86,9 @@ typeIdentifier
   ;
 
 expression
- 	: LINE_COMMENT* qualifiedIdentifier '->' qualifiedIdentifier ';'  INLINE_COMMENT?  #mapSimpleCopy
- 	| LINE_COMMENT* fpExpression ';'                                  INLINE_COMMENT?  #mapFhirPath               
-    | LINE_COMMENT* mapExpression ';'                                 INLINE_COMMENT?  #mapFhirMarkup
+ 	: qualifiedIdentifier '->' qualifiedIdentifier ';'  #mapSimpleCopy
+ 	| fpExpression ';'                                  #mapFhirPath               
+  | mapExpression ';'                                 #mapFhirMarkup
  	;
 
 mapExpression
@@ -96,12 +96,12 @@ mapExpression
   ;
 
 // mapLine
-//   : LINE_COMMENT* 
+//   : 
 //   ;
 
 // mapLine
-//  	: LINE_COMMENT* fpExpression ';'
-//  	| LINE_COMMENT* mapLineSources ('->' mapLineTargets)? dependent? mapLineName? ';'
+//  	: fpExpression ';'
+//  	| mapLineSources ('->' mapLineTargets)? dependent? mapLineName? ';'
 //  	;
 
 mapExpressionName
@@ -451,9 +451,8 @@ DOUBLE_QUOTED_STRING
   // : '"' ( ~["\r\n] )* '"' 
   ;
 
-// note that this throws warnings in the ANTLR compiler because we need to detect 
 TRIPLE_QUOTED_STRING_LITERAL
-  : '"""' [\r\n] (.)*? [\r\n] '"""' [\r\n]
+  : '"""' [\r\n] (.)*? [\r\n] '"""' ('\r\n'|'\r'|'\n'|EOF)
   ;
 
 
@@ -462,8 +461,8 @@ WS
     : [ \r\n\t]+ -> channel(HIDDEN)
     ;
 
-C_STYLE_COMMENT
-        : '/*' .*? '*/' // -> channel(HIDDEN)
+BLOCK_COMMENT
+        : '/*' .*? '*/' -> channel(HIDDEN)
         ;
 
 METADATA_PREFIX
@@ -471,13 +470,13 @@ METADATA_PREFIX
       ;
 
 LINE_COMMENT
-        : '//' ~[/] ~[\r\n]* // -> channel(HIDDEN)
+        : '//' ~[/] ~[\r\n]* -> channel(HIDDEN)
         ;
 
-INLINE_COMMENT
-  : [ \t]* C_STYLE_COMMENT
-  | [ \t]* LINE_COMMENT
-  ;
+// INLINE_COMMENT
+//   : [ \t]* C_STYLE_COMMENT
+//   | [ \t]* LINE_COMMENT
+//   ;
 
 fragment ESC
         : '\\' (["'\\/fnrt] | UNICODE)    // allow \", \', \\, \/, \f, etc. and \uXXX

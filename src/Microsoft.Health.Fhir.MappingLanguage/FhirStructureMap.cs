@@ -194,10 +194,10 @@ public enum FmlTokenTypeCodes : int
     DoubleQuotedString = FmlMappingParser.DOUBLE_QUOTED_STRING,
     TripleQuotedStringLiteral = FmlMappingParser.TRIPLE_QUOTED_STRING_LITERAL,
     Whitespace = FmlMappingParser.WS,
-    CStyleComment = FmlMappingParser.C_STYLE_COMMENT,
+    BlockComment = FmlMappingParser.BLOCK_COMMENT,
     TripleSlash = FmlMappingParser.METADATA_PREFIX,
     LineComment = FmlMappingParser.LINE_COMMENT,
-    InlineComment = FmlMappingParser.INLINE_COMMENT,
+    //InlineComment = FmlMappingParser.INLINE_COMMENT,
 }
 
 public enum FmlPolarityCodes : int
@@ -302,49 +302,66 @@ public enum FmlImpliesOpCodes : int
     Implies = 104 + 1,
 }
 
-public record class MetadataDeclaration
+public record class ParsedCommentNode
+{
+    public required string NodeText { get; init; }
+    public required int Line { get; init; }
+    public required int Column { get; init; }
+    public required int TokenIndex { get; init; }
+    public required int StartIndex { get; init; }
+    public required int StopIndex { get; init; }
+
+    public required int LastWsStartIndex { get; init; }
+    public required int LastWsStopIndex { get; init; }
+    public required bool LastWsHasNewline { get; init; }
+}
+
+public record class FmlNode
+{
+    public required string RawText { get; init; }
+    public required List<string> PrefixComments { get; init; } = [];
+    public required List<string> PostfixComments { get; init; } = [];
+
+    public required int Line { get; init; }
+    public required int Column { get; init; }
+    public required int StartIndex { get; init; }
+    public required int StopIndex { get; init; }
+}
+
+public record class MetadataDeclaration : FmlNode
 {
     public required string ElementPath { get; init; }
     public required LiteralValue? Literal { get; init; }
     public required string? MarkdownValue { get; init; }
-    public required string InlineComment { get; init; }
 }
 
-public record class MapDeclaration
+public record class MapDeclaration : FmlNode
 {
-    public required List<string> LineComments { get; init; }
     public required string Url { get; init; }
     public required string Identifier { get; init; }
     public required FmlTokenTypeCodes IdentifierTokenType { get; init; }
-    public required string InlineComment { get; init; }
 }
 
-public record class StructureDeclaration
+public record class StructureDeclaration : FmlNode
 {
-    public required List<string> LineComments { get; init; }
     public required string Url { get; init; }
     public required string? Alias { get; init; }
     public required string ModelModeLiteral { get; init; }
     public required Hl7.Fhir.Model.StructureMap.StructureMapModelMode? ModelMode { get; init; }
-    public required string InlineComment { get; init; }
 }
 
-public record class ImportDeclaration
+public record class ImportDeclaration : FmlNode
 {
-    public required List<string> LineComments { get; init; }
     public required string Url { get; init; }
-    public required string InlineComment { get; init; }
 }
 
-public record class ConstantDeclaration
+public record class ConstantDeclaration : FmlNode
 {
-    public required List<string> LineComments { get; init; }
     public required string Name { get; init; }
     public required FpExpression Value { get; init; }
-    public required string InlineComment { get; init; }
 }
 
-public record class GroupParameter
+public record class GroupParameter : FmlNode
 {
     public required string InputModeLiteral { get; init; }
     public required Hl7.Fhir.Model.StructureMap.StructureMapInputMode? InputMode { get; init; }
@@ -352,13 +369,13 @@ public record class GroupParameter
     public required string? TypeIdentifier { get; init; }
 }
 
-public record class MapSimpleCopyExpression
+public record class MapSimpleCopyExpression : FmlNode
 {
     public required string Source { get; init; }
     public required string Target { get; init; }
 }
 
-public record class FmlExpressionSource
+public record class FmlExpressionSource : FmlNode
 {
     public required string Identifier { get; init; }
     public required string? TypeIdentifier { get; init; }
@@ -375,26 +392,26 @@ public record class FmlExpressionSource
     public required FpExpression? LogExpression { get; init; }
 }
 
-public record class FmlInvocationParam
+public record class FmlInvocationParam : FmlNode
 {
     public required LiteralValue? Literal { get; init; }
     public required string? Identifier { get; init; }
 }
 
-public record class FmlInvocation
+public record class FmlInvocation : FmlNode
 {
     public required string Identifier { get; init; }
     public required List<FmlInvocationParam> Parameters { get; init; }
 }
 
-public record class FmlTargetTransform
+public record class FmlTargetTransform : FmlNode
 {
     public required LiteralValue? Literal { get; init; }
     public required string? Identifier { get; init; }
     public required FmlInvocation? Invocation { get; init; }
 }
 
-public record class FmlExpressionTarget
+public record class FmlExpressionTarget : FmlNode
 {
     public required string Identifier { get; init; }
     public required FmlTargetTransform? Transform { get; init; }
@@ -404,13 +421,13 @@ public record class FmlExpressionTarget
     public required Hl7.Fhir.Model.StructureMap.StructureMapTargetListMode? TargetListMode { get; init; }
 }
 
-public record class FmlDependentExpression
+public record class FmlDependentExpression : FmlNode
 {
     public required List<FmlInvocation> Invocations { get; init; }
     public required List<GroupExpression> Expressions { get; init; }
 }
 
-public record class FmlGroupExpression
+public record class FmlGroupExpression : FmlNode
 {
     public required List<FmlExpressionSource> Sources { get; init; }
     public required List<FmlExpressionTarget> Targets { get; init; }
@@ -418,35 +435,31 @@ public record class FmlGroupExpression
     public required string? Name { get; init; }
 }
 
-public record class GroupExpression
+public record class GroupExpression : FmlNode
 {
-    public required List<string> LineComments { get; init; }
     public MapSimpleCopyExpression? SimpleCopyExpression { get; init; } = null;
     public FpExpression? FhirPathExpression { get; init; } = null;
     public FmlGroupExpression? MappingExpression { get; init; } = null;
-    public string? InlineComment { get; init; }
 }
 
-public record class GroupDeclaration
+public record class GroupDeclaration : FmlNode
 {
-    public required List<string> LineComments { get; init; }
     public required string Name { get; init; }
     public required List<GroupParameter> Parameters { get; init; }
     public required string? ExtendsIdentifier { get; init; }
     public required string? TypeModeLiteral { get; init; }
     public required Hl7.Fhir.Model.StructureMap.StructureMapGroupTypeMode? TypeMode { get; init; }
-    public required string InlineComment { get; init; }
     public required List<GroupExpression> Expressions { get; init; }
 }
 
-public record class FpFunction
+public record class FpFunction : FmlNode
 {
     public required string Identifier { get; init; }
     public required FmlTokenTypeCodes IdentifierTokenType { get; init; }
     public required List<FpExpression?> Parameters { get; init; }
 }
 
-public record class FpInvocation
+public record class FpInvocation : FmlNode
 {
     public FpFunction? FunctionInvocation { get; init; }
     public string? MemberInvocation { get; init; }
@@ -456,7 +469,7 @@ public record class FpInvocation
     public bool? TotalInvocation { get; init; }
 }
 
-public record class LiteralValue
+public record class LiteralValue : FmlNode
 {
     public required string ValueAsString { get; init; }
     public required dynamic? Value { get; init; }
@@ -464,7 +477,7 @@ public record class LiteralValue
     public required FmlTokenTypeCodes TokenType { get; init; }
 }
 
-public record class FpTerm
+public record class FpTerm : FmlNode
 {
     public FpInvocation? InvocationTerm { get; init; }
     public LiteralValue? LiteralTerm { get; init; }
@@ -473,19 +486,19 @@ public record class FpTerm
     public FpExpression? ParenthesizedTerm { get; init; }
 }
 
-public record class FpInvocationExpression
+public record class FpInvocationExpression : FmlNode
 {
     public required FpExpression Expression { get; init; }
     public required FpInvocation Invocation { get; init; }
 }
 
-public record class FpIndexerExpression
+public record class FpIndexerExpression : FmlNode
 {
     public required FpExpression Expression { get; init; }
     public required FpExpression Index { get; init; }
 }
 
-public record class FpPolarityExpression
+public record class FpPolarityExpression : FmlNode
 {
     public required FmlPolarityCodes Polarity { get; init; }
     public required string Literal { get; init; }
@@ -494,7 +507,7 @@ public record class FpPolarityExpression
 
 }
 
-public record class FpBinaryExpression<T>
+public record class FpBinaryExpression<T> : FmlNode
 {
     public required FpExpression Left { get; init; }
     public required T Operator { get; init; }
@@ -502,7 +515,7 @@ public record class FpBinaryExpression<T>
     public required FpExpression Right { get; init; }
 }
 
-public record class FpTypeExpression
+public record class FpTypeExpression : FmlNode
 {
     public required FpExpression Expression { get; init; }
     public required string TypeAssignmentLiteral { get; init; }
@@ -510,7 +523,7 @@ public record class FpTypeExpression
 }
 
 
-public record class FpExpression
+public record class FpExpression : FmlNode
 {
     public required string Expression { get; init; }
     public required FmlRuleCodes ExpressionRule { get; init; }

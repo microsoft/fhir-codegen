@@ -22,17 +22,26 @@ using Newtonsoft.Json.Linq;
 using System.Reflection;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using System.Globalization;
+using System.Collections;
 
 namespace Microsoft.Health.Fhir.MappingLanguage;
 
 public class FmlParseVisitor : FmlMappingBaseVisitor<object>
 {
+    private Dictionary<int, ParsedCommentNode> _comments;
+    private int _lastStopIndex = -1;
+
     private Dictionary<string, MetadataDeclaration> _metaByPath = [];
     private MapDeclaration? _mapDirective = null;
     private Dictionary<string, StructureDeclaration> _structuresByUrl = [];
     private Dictionary<string, ImportDeclaration> _importsByUrl = [];
     private Dictionary<string, ConstantDeclaration> _constantsByName = [];
     private Dictionary<string, GroupDeclaration> _groupsByName = [];
+
+    public FmlParseVisitor(Dictionary<int, ParsedCommentNode>? comments = null)
+    {
+        _comments = comments ?? [];
+    }
 
     public FhirStructureMap GetCurrentMap()
     {
@@ -60,14 +69,31 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
         return base.VisitStructureMap(ctx);
     }
 
-    public override object VisitMetadataDeclaration([NotNull] MetadataDeclarationContext ctx)
+    private List<string> GetPrefixComments(ParserRuleContext ctx)
+    {
+        return VisitorUtilities.GetPrefixComments(ctx, _comments);
+    }
+
+    private List<string> GetPostfixComments(ParserRuleContext ctx)
+    {
+        return VisitorUtilities.GetPostfixComments(ctx, _comments);
+    }
+
+    public override object VisitMetadataDeclaration([NotNull] MetadataDeclarationContext context)
     {
         MetadataDeclaration value = new()
         {
-            ElementPath = GetString(ctx.qualifiedIdentifier())!,
-            Literal = GetLiteral(ctx.literal()),
-            MarkdownValue = GetString(ctx.markdownLiteral()),
-            InlineComment = GetString(ctx.INLINE_COMMENT()) ?? string.Empty,
+            ElementPath = GetString(context.qualifiedIdentifier())!,
+            Literal = GetLiteral(context.literal(), _comments),
+            MarkdownValue = GetString(context.markdownLiteral()),
+
+            RawText = context.Start.InputStream.GetText(new Interval(context.Start.StartIndex, context.Stop.StopIndex)),
+            PrefixComments = GetPrefixComments(context),
+            PostfixComments = GetPostfixComments(context),
+            Line = context.Start.Line,
+            Column = context.Start.Column,
+            StartIndex = context.Start.StartIndex,
+            StopIndex = context.Stop.StopIndex,
         };
 
         if (!string.IsNullOrEmpty(value.ElementPath))
@@ -75,18 +101,25 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
             _metaByPath[value.ElementPath] = value;
         }
 
-        return base.VisitMetadataDeclaration(ctx);
+        return base.VisitMetadataDeclaration(context);
     }
+
 
     public override object VisitMapDeclaration([NotNull] MapDeclarationContext context)
     {
         _mapDirective = new()
         {
-            LineComments = context.LINE_COMMENT()?.Select(x => GetString(x)).ToList() ?? [],
             Url = context.url().GetText(),
             Identifier = context.identifier().GetText(),
             IdentifierTokenType = (FmlTokenTypeCodes)context.identifier().Stop.Type,
-            InlineComment = GetString(context.INLINE_COMMENT()) ?? string.Empty,
+
+            RawText = context.Start.InputStream.GetText(new Interval(context.Start.StartIndex, context.Stop.StopIndex)),
+            PrefixComments = GetPrefixComments(context),
+            PostfixComments = GetPostfixComments(context),
+            Line = context.Start.Line,
+            Column = context.Start.Column,
+            StartIndex = context.Start.StartIndex,
+            StopIndex = context.Stop.StopIndex,
         };
 
         return base.VisitMapDeclaration(context);
@@ -96,12 +129,18 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
     {
         StructureDeclaration value = new()
         {
-            LineComments = context.LINE_COMMENT()?.Select(x => GetString(x)).ToList() ?? [],
             Url = context.url().GetText(),
             Alias = context.structureAlias()?.GetText(),
             ModelModeLiteral = context.modelMode().GetText(),
             ModelMode = GetEnum<StructureMap.StructureMapModelMode>(context.modelMode().GetText()),
-            InlineComment = GetString(context.INLINE_COMMENT()) ?? string.Empty,
+
+            RawText = context.Start.InputStream.GetText(new Interval(context.Start.StartIndex, context.Stop.StopIndex)),
+            PrefixComments = GetPrefixComments(context),
+            PostfixComments = GetPostfixComments(context),
+            Line = context.Start.Line,
+            Column = context.Start.Column,
+            StartIndex = context.Start.StartIndex,
+            StopIndex = context.Stop.StopIndex,
         };
 
         _structuresByUrl.Add(value.Url, value);
@@ -113,9 +152,15 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
     {
         ImportDeclaration value = new()
         {
-            LineComments = context.LINE_COMMENT()?.Select(x => GetString(x)).ToList() ?? [],
             Url = context.url().GetText(),
-            InlineComment = GetString(context.INLINE_COMMENT()) ?? string.Empty,
+
+            RawText = context.Start.InputStream.GetText(new Interval(context.Start.StartIndex, context.Stop.StopIndex)),
+            PrefixComments = GetPrefixComments(context),
+            PostfixComments = GetPostfixComments(context),
+            Line = context.Start.Line,
+            Column = context.Start.Column,
+            StartIndex = context.Start.StartIndex,
+            StopIndex = context.Stop.StopIndex,
         };
 
         _importsByUrl.Add(value.Url, value);
@@ -127,10 +172,16 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
     {
         ConstantDeclaration value = new()
         {
-            LineComments = context.LINE_COMMENT()?.Select(x => GetString(x)).ToList() ?? [],
             Name = context.ID().GetText(),
             Value = ExtractFpExpression(context.fpExpression())!,
-            InlineComment = GetString(context.INLINE_COMMENT()) ?? string.Empty,
+
+            RawText = context.Start.InputStream.GetText(new Interval(context.Start.StartIndex, context.Stop.StopIndex)),
+            PrefixComments = GetPrefixComments(context),
+            PostfixComments = GetPostfixComments(context),
+            Line = context.Start.Line,
+            Column = context.Start.Column,
+            StartIndex = context.Start.StartIndex,
+            StopIndex = context.Stop.StopIndex,
         };
 
         _constantsByName.Add(value.Name, value);
@@ -150,6 +201,14 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                 InputMode = GetEnum<StructureMap.StructureMapInputMode>(GetString(parameterContext.inputMode())!),
                 Identifier = GetString(parameterContext.ID())!,
                 TypeIdentifier = GetString(parameterContext.typeIdentifier()?.identifier())!,
+
+                RawText = parameterContext.Start.InputStream.GetText(new Interval(context.Start.StartIndex, context.Stop.StopIndex)),
+                PrefixComments = GetPrefixComments(parameterContext),
+                PostfixComments = GetPostfixComments(parameterContext),
+                Line = parameterContext.Start.Line,
+                Column = parameterContext.Start.Column,
+                StartIndex = parameterContext.Start.StartIndex,
+                StopIndex = parameterContext.Stop.StopIndex,
             });
         }
 
@@ -162,14 +221,20 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
 
         GroupDeclaration value = new()
         {
-            LineComments = context.LINE_COMMENT()?.Select(x => GetString(x)).ToList() ?? [],
             Name = context.ID().GetText(),
             Parameters = parameters,
             ExtendsIdentifier = GetString(context.extends()),
             TypeModeLiteral = GetString(context.typeMode()),
             TypeMode = GetTypeMode(GetString(context.typeMode())),              // note this is handled differently because the FML values are different than the FHIR values
-            InlineComment = GetString(context.INLINE_COMMENT()) ?? string.Empty,
             Expressions = expressions,
+
+            RawText = context.Start.InputStream.GetText(new Interval(context.Start.StartIndex, context.Stop.StopIndex)),
+            PrefixComments = GetPrefixComments(context),
+            PostfixComments = GetPostfixComments(context),
+            Line = context.Start.Line,
+            Column = context.Start.Column,
+            StartIndex = context.Start.StartIndex,
+            StopIndex = context.Stop.StopIndex,
         };
 
         _groupsByName.Add(value.Name, value);
@@ -186,17 +251,16 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
             "<<type>>" => StructureMap.StructureMapGroupTypeMode.Types,
             _ => null,
         };
-
     }
 
-    private GroupExpression? ExtractGroupExpression(ExpressionContext? expressionContext)
+    private GroupExpression? ExtractGroupExpression(ExpressionContext? ctx)
     {
-        if (expressionContext == null)
+        if (ctx == null)
         {
             return null;
         }
 
-        switch (expressionContext)
+        switch (ctx)
         {
             case MapSimpleCopyContext mapSimpleCopy:
                 {
@@ -207,30 +271,56 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
 
                     return new GroupExpression
                     {
-                        LineComments = mapSimpleCopy.LINE_COMMENT()?.Select(x => GetString(x)).ToList() ?? [],
                         SimpleCopyExpression = new()
                         {
                             Source = GetString(mapSimpleCopy.qualifiedIdentifier()[0])!,
                             Target = GetString(mapSimpleCopy.qualifiedIdentifier()[1])!,
+
+                            RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                            PrefixComments = GetPrefixComments(ctx),
+                            PostfixComments = GetPostfixComments(ctx),
+                            Line = ctx.Start.Line,
+                            Column = ctx.Start.Column,
+                            StartIndex = ctx.Start.StartIndex,
+                            StopIndex = ctx.Stop.StopIndex,
                         },
-                        InlineComment = GetString(mapSimpleCopy.INLINE_COMMENT()) ?? string.Empty,
+
+                        RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                        PrefixComments = GetPrefixComments(ctx),
+                        PostfixComments = GetPostfixComments(ctx),
+                        Line = ctx.Start.Line,
+                        Column = ctx.Start.Column,
+                        StartIndex = ctx.Start.StartIndex,
+                        StopIndex = ctx.Stop.StopIndex,
                     };
                 }
 
             case MapFhirPathContext mapFhirPath:
                 return new GroupExpression
                 {
-                    LineComments = mapFhirPath.LINE_COMMENT()?.Select(x => GetString(x)).ToList() ?? [],
                     FhirPathExpression = ExtractFpExpression(mapFhirPath.fpExpression()),
-                    InlineComment = GetString(mapFhirPath.INLINE_COMMENT()) ?? string.Empty,
+
+                    RawText = mapFhirPath.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                    PrefixComments = GetPrefixComments(mapFhirPath),
+                    PostfixComments = GetPostfixComments(mapFhirPath),
+                    Line = mapFhirPath.Start.Line,
+                    Column = mapFhirPath.Start.Column,
+                    StartIndex = mapFhirPath.Start.StartIndex,
+                    StopIndex = mapFhirPath.Stop.StopIndex,
                 };
 
             case MapFhirMarkupContext mapFhirMarkup:
                 return new GroupExpression
                 {
-                    LineComments = mapFhirMarkup.LINE_COMMENT()?.Select(x => GetString(x)).ToList() ?? [],
                     MappingExpression = ExtractFmlMappingExpression(mapFhirMarkup.mapExpression()),
-                    InlineComment = GetString(mapFhirMarkup.INLINE_COMMENT()) ?? string.Empty,
+
+                    RawText = mapFhirMarkup.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                    PrefixComments = GetPrefixComments(mapFhirMarkup),
+                    PostfixComments = GetPostfixComments(mapFhirMarkup),
+                    Line = mapFhirMarkup.Start.Line,
+                    Column = mapFhirMarkup.Start.Column,
+                    StartIndex = mapFhirMarkup.Start.StartIndex,
+                    StopIndex = mapFhirMarkup.Stop.StopIndex,
                 };
         }
 
@@ -259,6 +349,14 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                 WhereClause = ExtractFpExpression(sourceContext.whereClause()?.fpExpression()),
                 CheckClause = ExtractFpExpression(sourceContext.checkClause()?.fpExpression()),
                 LogExpression = ExtractFpExpression(sourceContext.log()?.fpExpression()),
+
+                RawText = sourceContext.Start.InputStream.GetText(new Interval(sourceContext.Start.StartIndex, sourceContext.Stop.StopIndex)),
+                PrefixComments = GetPrefixComments(sourceContext),
+                PostfixComments = GetPostfixComments(sourceContext),
+                Line = sourceContext.Start.Line,
+                Column = sourceContext.Start.Column,
+                StartIndex = sourceContext.Start.StartIndex,
+                StopIndex = sourceContext.Stop.StopIndex,
             });
         }
 
@@ -268,16 +366,32 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
             targets.Add(new()
             {
                 Identifier = GetString(targetContext.qualifiedIdentifier())!,
-                Transform = targetContext.transform() == null ? null :new FmlTargetTransform()
+                Transform = targetContext.transform() == null ? null : new FmlTargetTransform()
                 {
-                    Literal = GetLiteral(targetContext.transform()?.literal()),
+                    Literal = GetLiteral(targetContext.transform()?.literal(), _comments),
                     Identifier = GetString(targetContext.transform()?.qualifiedIdentifier()),
                     Invocation = ExtractInvocation(targetContext.transform()?.invocation()),
+
+                    RawText = targetContext.transform().Start.InputStream.GetText(new Interval(targetContext.transform().Start.StartIndex, targetContext.transform().Stop.StopIndex)),
+                    PrefixComments = GetPrefixComments(targetContext.transform()),
+                    PostfixComments = GetPostfixComments(targetContext.transform()),
+                    Line = targetContext.transform().Start.Line,
+                    Column = targetContext.transform().Start.Column,
+                    StartIndex = targetContext.transform().Start.StartIndex,
+                    StopIndex = targetContext.transform().Stop.StopIndex,
                 },
                 Invocation = ExtractInvocation(targetContext.invocation()),
                 Alias = GetString(targetContext.alias()),
                 TargetListModeLiteral = GetString(targetContext.targetListMode()),
                 TargetListMode = GetEnum<StructureMap.StructureMapTargetListMode>(GetString(targetContext.targetListMode())),
+
+                RawText = targetContext.Start.InputStream.GetText(new Interval(targetContext.Start.StartIndex, targetContext.Stop.StopIndex)),
+                PrefixComments = GetPrefixComments(targetContext),
+                PostfixComments = GetPostfixComments(targetContext),
+                Line = targetContext.Start.Line,
+                Column = targetContext.Start.Column,
+                StartIndex = targetContext.Start.StartIndex,
+                StopIndex = targetContext.Stop.StopIndex,
             });
         }
 
@@ -287,6 +401,14 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
             Targets = targets,
             DependentExpression = ExtractDependentExpression(ctx.dependentExpression()),
             Name = GetString(ctx.mapExpressionName()),
+
+            RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+            PrefixComments = GetPrefixComments(ctx),
+            PostfixComments = GetPostfixComments(ctx),
+            Line = ctx.Start.Line,
+            Column = ctx.Start.Column,
+            StartIndex = ctx.Start.StartIndex,
+            StopIndex = ctx.Stop.StopIndex,
         };
 
         FmlDependentExpression? ExtractDependentExpression(DependentExpressionContext? ctx)
@@ -312,6 +434,14 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
             {
                 Invocations = invocations,
                 Expressions = expressions,
+
+                RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                PrefixComments = GetPrefixComments(ctx),
+                PostfixComments = GetPostfixComments(ctx),
+                Line = ctx.Start.Line,
+                Column = ctx.Start.Column,
+                StartIndex = ctx.Start.StartIndex,
+                StopIndex = ctx.Stop.StopIndex,
             };
         }
 
@@ -328,7 +458,15 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                 p.Add(new()
                 {
                     Identifier = GetString(param.ID())!,
-                    Literal = GetLiteral(param.literal()),
+                    Literal = GetLiteral(param.literal(), _comments),
+
+                    RawText = param.Start.InputStream.GetText(new Interval(param.Start.StartIndex, param.Stop.StopIndex)),
+                    PrefixComments = GetPrefixComments(param),
+                    PostfixComments = GetPostfixComments(param),
+                    Line = param.Start.Line,
+                    Column = param.Start.Column,
+                    StartIndex = param.Start.StartIndex,
+                    StopIndex = param.Stop.StopIndex,
                 });
             }
 
@@ -336,6 +474,14 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
             {
                 Identifier = GetString(ctx.identifier())!,
                 Parameters = p,
+
+                RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                PrefixComments = GetPrefixComments(ctx),
+                PostfixComments = GetPostfixComments(ctx),
+                Line = ctx.Start.Line,
+                Column = ctx.Start.Column,
+                StartIndex = ctx.Start.StartIndex,
+                StopIndex = ctx.Stop.StopIndex,
             };
         }
     }
@@ -355,6 +501,14 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                     Expression = ctx.GetText(),
                     ExpressionRule = (FmlRuleCodes)ctx.RuleIndex,
                     TermExpression = extractFpTerm(termContext.fpTerm()),
+
+                    RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                    PrefixComments = GetPrefixComments(ctx),
+                    PostfixComments = GetPostfixComments(ctx),
+                    Line = ctx.Start.Line,
+                    Column = ctx.Start.Column,
+                    StartIndex = ctx.Start.StartIndex,
+                    StopIndex = ctx.Stop.StopIndex,
                 };
 
             case InvocationExpressionContext invocationContext:
@@ -366,7 +520,23 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                     {
                         Expression = ExtractFpExpression(invocationContext.fpExpression()) ?? throw new Exception("InvocationExpression missing required Expression"),
                         Invocation = extractFpInvocation(invocationContext.fpInvocation()) ?? throw new Exception("InvocationExpression missing required Invocation"),
+
+                        RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                        PrefixComments = GetPrefixComments(ctx),
+                        PostfixComments = GetPostfixComments(ctx),
+                        Line = ctx.Start.Line,
+                        Column = ctx.Start.Column,
+                        StartIndex = ctx.Start.StartIndex,
+                        StopIndex = ctx.Stop.StopIndex,
                     },
+
+                    RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                    PrefixComments = GetPrefixComments(ctx),
+                    PostfixComments = GetPostfixComments(ctx),
+                    Line = ctx.Start.Line,
+                    Column = ctx.Start.Column,
+                    StartIndex = ctx.Start.StartIndex,
+                    StopIndex = ctx.Stop.StopIndex,
                 };
 
             case IndexerExpressionContext indexerContext:
@@ -374,7 +544,6 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                     if (indexerContext.fpExpression() == null || indexerContext.fpExpression().Length != 2)
                     {
                         throw new Exception("IndexerExpression missing required Expression and Indexer");
-
                     }
 
                     return new FpExpression
@@ -385,7 +554,23 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                         {
                             Expression = ExtractFpExpression(indexerContext.fpExpression()[0])!,
                             Index = ExtractFpExpression(indexerContext.fpExpression()[1])!,
+
+                            RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                            PrefixComments = GetPrefixComments(ctx),
+                            PostfixComments = GetPostfixComments(ctx),
+                            Line = ctx.Start.Line,
+                            Column = ctx.Start.Column,
+                            StartIndex = ctx.Start.StartIndex,
+                            StopIndex = ctx.Stop.StopIndex,
                         },
+
+                        RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                        PrefixComments = GetPrefixComments(ctx),
+                        PostfixComments = GetPostfixComments(ctx),
+                        Line = ctx.Start.Line,
+                        Column = ctx.Start.Column,
+                        StartIndex = ctx.Start.StartIndex,
+                        StopIndex = ctx.Stop.StopIndex,
                     };
                 }
 
@@ -400,7 +585,23 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                         Polarity = (FmlPolarityCodes)polarityContext.fpPolarityLiteral().Stop.Type,
                         Literal = polarityContext.fpPolarityLiteral().GetText(),
                         IsPositive = polarityContext.Start.TokenIndex == (int)FmlPolarityCodes.Positive,
+
+                        RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                        PrefixComments = GetPrefixComments(ctx),
+                        PostfixComments = GetPostfixComments(ctx),
+                        Line = ctx.Start.Line,
+                        Column = ctx.Start.Column,
+                        StartIndex = ctx.Start.StartIndex,
+                        StopIndex = ctx.Stop.StopIndex,
                     },
+
+                    RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                    PrefixComments = GetPrefixComments(ctx),
+                    PostfixComments = GetPostfixComments(ctx),
+                    Line = ctx.Start.Line,
+                    Column = ctx.Start.Column,
+                    StartIndex = ctx.Start.StartIndex,
+                    StopIndex = ctx.Stop.StopIndex,
                 };
 
             case MultiplicativeExpressionContext multiplicativeContext:
@@ -420,7 +621,23 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                             OperatorLiteral = multiplicativeContext.fpMultiplicativeLiteral().GetText(),
                             Operator = (FmlMultiplicativeOpCodes)multiplicativeContext.fpMultiplicativeLiteral().Stop.Type,
                             Right = ExtractFpExpression(multiplicativeContext.fpExpression()[1])!,
+
+                            RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                            PrefixComments = GetPrefixComments(ctx),
+                            PostfixComments = GetPostfixComments(ctx),
+                            Line = ctx.Start.Line,
+                            Column = ctx.Start.Column,
+                            StartIndex = ctx.Start.StartIndex,
+                            StopIndex = ctx.Stop.StopIndex,
                         },
+
+                        RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                        PrefixComments = GetPrefixComments(ctx),
+                        PostfixComments = GetPostfixComments(ctx),
+                        Line = ctx.Start.Line,
+                        Column = ctx.Start.Column,
+                        StartIndex = ctx.Start.StartIndex,
+                        StopIndex = ctx.Stop.StopIndex,
                     };
                 }
 
@@ -441,7 +658,23 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                             OperatorLiteral = additiveContext.fpAdditiveLiteral().GetText(),
                             Operator = (FmlAdditiveOpCodes)additiveContext.fpAdditiveLiteral().Stop.Type,
                             Right = ExtractFpExpression(additiveContext.fpExpression()[1])!,
+
+                            RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                            PrefixComments = GetPrefixComments(ctx),
+                            PostfixComments = GetPostfixComments(ctx),
+                            Line = ctx.Start.Line,
+                            Column = ctx.Start.Column,
+                            StartIndex = ctx.Start.StartIndex,
+                            StopIndex = ctx.Stop.StopIndex,
                         },
+
+                        RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                        PrefixComments = GetPrefixComments(ctx),
+                        PostfixComments = GetPostfixComments(ctx),
+                        Line = ctx.Start.Line,
+                        Column = ctx.Start.Column,
+                        StartIndex = ctx.Start.StartIndex,
+                        StopIndex = ctx.Stop.StopIndex,
                     };
                 }
 
@@ -455,7 +688,23 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                         Expression = ExtractFpExpression(typeContext.fpExpression())!,
                         TypeAssignmentLiteral = typeContext.fpTypeAssertionLiteral().GetText(),
                         TypeIdentifier = GetString(typeContext.fpTypeSpecifier()) ?? throw new Exception("TypeExpression missing required Type Identifier"),
+
+                        RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                        PrefixComments = GetPrefixComments(ctx),
+                        PostfixComments = GetPostfixComments(ctx),
+                        Line = ctx.Start.Line,
+                        Column = ctx.Start.Column,
+                        StartIndex = ctx.Start.StartIndex,
+                        StopIndex = ctx.Stop.StopIndex,
                     },
+
+                    RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                    PrefixComments = GetPrefixComments(ctx),
+                    PostfixComments = GetPostfixComments(ctx),
+                    Line = ctx.Start.Line,
+                    Column = ctx.Start.Column,
+                    StartIndex = ctx.Start.StartIndex,
+                    StopIndex = ctx.Stop.StopIndex,
                 };
 
             case UnionExpressionContext unionContext:
@@ -475,7 +724,23 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                             OperatorLiteral = unionContext.fpUnionLiteral().GetText(),
                             Operator = (FmlUnionOpCodes)unionContext.fpUnionLiteral().Stop.Type,
                             Right = ExtractFpExpression(unionContext.fpExpression()[1])!,
+
+                            RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                            PrefixComments = GetPrefixComments(ctx),
+                            PostfixComments = GetPostfixComments(ctx),
+                            Line = ctx.Start.Line,
+                            Column = ctx.Start.Column,
+                            StartIndex = ctx.Start.StartIndex,
+                            StopIndex = ctx.Stop.StopIndex,
                         },
+
+                        RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                        PrefixComments = GetPrefixComments(ctx),
+                        PostfixComments = GetPostfixComments(ctx),
+                        Line = ctx.Start.Line,
+                        Column = ctx.Start.Column,
+                        StartIndex = ctx.Start.StartIndex,
+                        StopIndex = ctx.Stop.StopIndex,
                     };
                 }
 
@@ -496,7 +761,23 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                             OperatorLiteral = inequalityContext.fpInequalityLiteral().GetText(),
                             Operator = (FmlInequalityOpCodes)inequalityContext.fpInequalityLiteral().Stop.Type,
                             Right = ExtractFpExpression(inequalityContext.fpExpression()[1])!,
+
+                            RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                            PrefixComments = GetPrefixComments(ctx),
+                            PostfixComments = GetPostfixComments(ctx),
+                            Line = ctx.Start.Line,
+                            Column = ctx.Start.Column,
+                            StartIndex = ctx.Start.StartIndex,
+                            StopIndex = ctx.Stop.StopIndex,
                         },
+
+                        RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                        PrefixComments = GetPrefixComments(ctx),
+                        PostfixComments = GetPostfixComments(ctx),
+                        Line = ctx.Start.Line,
+                        Column = ctx.Start.Column,
+                        StartIndex = ctx.Start.StartIndex,
+                        StopIndex = ctx.Stop.StopIndex,
                     };
                 }
 
@@ -517,7 +798,23 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                             OperatorLiteral = equalityContext.fpEqualityLiteral().GetText(),
                             Operator = (FmlEqualityOpCodes)equalityContext.fpEqualityLiteral().Stop.Type,
                             Right = ExtractFpExpression(equalityContext.fpExpression()[1])!,
+
+                            RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                            PrefixComments = GetPrefixComments(ctx),
+                            PostfixComments = GetPostfixComments(ctx),
+                            Line = ctx.Start.Line,
+                            Column = ctx.Start.Column,
+                            StartIndex = ctx.Start.StartIndex,
+                            StopIndex = ctx.Stop.StopIndex,
                         },
+
+                        RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                        PrefixComments = GetPrefixComments(ctx),
+                        PostfixComments = GetPostfixComments(ctx),
+                        Line = ctx.Start.Line,
+                        Column = ctx.Start.Column,
+                        StartIndex = ctx.Start.StartIndex,
+                        StopIndex = ctx.Stop.StopIndex,
                     };
                 }
 
@@ -538,7 +835,23 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                             OperatorLiteral = membershipContext.fpMembershipLiteral().GetText(),
                             Operator = (FmlMembershipOpCodes)membershipContext.fpMembershipLiteral().Stop.Type,
                             Right = ExtractFpExpression(membershipContext.fpExpression()[1])!,
+
+                            RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                            PrefixComments = GetPrefixComments(ctx),
+                            PostfixComments = GetPostfixComments(ctx),
+                            Line = ctx.Start.Line,
+                            Column = ctx.Start.Column,
+                            StartIndex = ctx.Start.StartIndex,
+                            StopIndex = ctx.Stop.StopIndex,
                         },
+
+                        RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                        PrefixComments = GetPrefixComments(ctx),
+                        PostfixComments = GetPostfixComments(ctx),
+                        Line = ctx.Start.Line,
+                        Column = ctx.Start.Column,
+                        StartIndex = ctx.Start.StartIndex,
+                        StopIndex = ctx.Stop.StopIndex,
                     };
                 }
 
@@ -559,7 +872,23 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                             OperatorLiteral = andContext.fpAndLiteral().GetText(),
                             Operator = (FmlAndOpCodes)andContext.fpAndLiteral().Stop.Type,
                             Right = ExtractFpExpression(andContext.fpExpression()[1])!,
+
+                            RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                            PrefixComments = GetPrefixComments(ctx),
+                            PostfixComments = GetPostfixComments(ctx),
+                            Line = ctx.Start.Line,
+                            Column = ctx.Start.Column,
+                            StartIndex = ctx.Start.StartIndex,
+                            StopIndex = ctx.Stop.StopIndex,
                         },
+
+                        RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                        PrefixComments = GetPrefixComments(ctx),
+                        PostfixComments = GetPostfixComments(ctx),
+                        Line = ctx.Start.Line,
+                        Column = ctx.Start.Column,
+                        StartIndex = ctx.Start.StartIndex,
+                        StopIndex = ctx.Stop.StopIndex,
                     };
                 }
 
@@ -580,7 +909,23 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                             OperatorLiteral = orContext.fpOrLiteral().GetText(),
                             Operator = (FmlOrOpCodes)orContext.fpOrLiteral().Stop.Type,
                             Right = ExtractFpExpression(orContext.fpExpression()[1])!,
+
+                            RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                            PrefixComments = GetPrefixComments(ctx),
+                            PostfixComments = GetPostfixComments(ctx),
+                            Line = ctx.Start.Line,
+                            Column = ctx.Start.Column,
+                            StartIndex = ctx.Start.StartIndex,
+                            StopIndex = ctx.Stop.StopIndex,
                         },
+
+                        RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                        PrefixComments = GetPrefixComments(ctx),
+                        PostfixComments = GetPostfixComments(ctx),
+                        Line = ctx.Start.Line,
+                        Column = ctx.Start.Column,
+                        StartIndex = ctx.Start.StartIndex,
+                        StopIndex = ctx.Stop.StopIndex,
                     };
                 }
 
@@ -601,7 +946,23 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                             OperatorLiteral = impliesContext.fpImpliesLiteral().GetText(),
                             Operator = (FmlImpliesOpCodes)impliesContext.fpImpliesLiteral().Stop.Type,
                             Right = ExtractFpExpression(impliesContext.fpExpression()[1])!,
+
+                            RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                            PrefixComments = GetPrefixComments(ctx),
+                            PostfixComments = GetPostfixComments(ctx),
+                            Line = ctx.Start.Line,
+                            Column = ctx.Start.Column,
+                            StartIndex = ctx.Start.StartIndex,
+                            StopIndex = ctx.Stop.StopIndex,
                         },
+
+                        RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                        PrefixComments = GetPrefixComments(ctx),
+                        PostfixComments = GetPostfixComments(ctx),
+                        Line = ctx.Start.Line,
+                        Column = ctx.Start.Column,
+                        StartIndex = ctx.Start.StartIndex,
+                        StopIndex = ctx.Stop.StopIndex,
                     };
                 }
         }
@@ -622,12 +983,28 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                     return new FpTerm
                     {
                         InvocationTerm = extractFpInvocation(invocation.fpInvocation()),
+
+                        RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                        PrefixComments = GetPrefixComments(ctx),
+                        PostfixComments = GetPostfixComments(ctx),
+                        Line = ctx.Start.Line,
+                        Column = ctx.Start.Column,
+                        StartIndex = ctx.Start.StartIndex,
+                        StopIndex = ctx.Stop.StopIndex,
                     };
 
                 case LiteralTermContext literal:
                     return new FpTerm
                     {
-                        LiteralTerm = GetLiteral(literal.literal()),
+                        LiteralTerm = GetLiteral(literal.literal(), _comments),
+
+                        RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                        PrefixComments = GetPrefixComments(ctx),
+                        PostfixComments = GetPostfixComments(ctx),
+                        Line = ctx.Start.Line,
+                        Column = ctx.Start.Column,
+                        StartIndex = ctx.Start.StartIndex,
+                        StopIndex = ctx.Stop.StopIndex,
                     };
 
                 case ExternalConstantTermContext external:
@@ -635,12 +1012,28 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                     {
                         ExternalConstantTerm = external.fpExternalConstant().identifier().GetText(),
                         ExternalConstantTokenType = (FmlTokenTypeCodes)external.fpExternalConstant().identifier().Stop.Type,
+
+                        RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                        PrefixComments = GetPrefixComments(ctx),
+                        PostfixComments = GetPostfixComments(ctx),
+                        Line = ctx.Start.Line,
+                        Column = ctx.Start.Column,
+                        StartIndex = ctx.Start.StartIndex,
+                        StopIndex = ctx.Stop.StopIndex,
                     };
 
                 case ParenthesizedTermContext parenthesized:
                     return new FpTerm
                     {
                         ParenthesizedTerm = ExtractFpExpression(parenthesized.fpExpression()),
+
+                        RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                        PrefixComments = GetPrefixComments(ctx),
+                        PostfixComments = GetPostfixComments(ctx),
+                        Line = ctx.Start.Line,
+                        Column = ctx.Start.Column,
+                        StartIndex = ctx.Start.StartIndex,
+                        StopIndex = ctx.Stop.StopIndex,
                     };
             }
 
@@ -660,6 +1053,14 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                     return new FpInvocation
                     {
                         FunctionInvocation = extractFpFunction(functionInvocation.fpFunction()),
+
+                        RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                        PrefixComments = GetPrefixComments(ctx),
+                        PostfixComments = GetPostfixComments(ctx),
+                        Line = ctx.Start.Line,
+                        Column = ctx.Start.Column,
+                        StartIndex = ctx.Start.StartIndex,
+                        StopIndex = ctx.Stop.StopIndex,
                     };
 
                 case MemberInvocationContext memberInvocation:
@@ -667,24 +1068,56 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                     {
                         MemberInvocation = memberInvocation.identifier().GetText(),
                         MemberInvocationTokenType = (FmlTokenTypeCodes?)memberInvocation.identifier()?.Stop.Type,
+
+                        RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                        PrefixComments = GetPrefixComments(ctx),
+                        PostfixComments = GetPostfixComments(ctx),
+                        Line = ctx.Start.Line,
+                        Column = ctx.Start.Column,
+                        StartIndex = ctx.Start.StartIndex,
+                        StopIndex = ctx.Stop.StopIndex,
                     };
 
                 case ThisInvocationContext thisInvocation:
                     return new FpInvocation
                     {
                         ThisInvocation = true,
+
+                        RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                        PrefixComments = GetPrefixComments(ctx),
+                        PostfixComments = GetPostfixComments(ctx),
+                        Line = ctx.Start.Line,
+                        Column = ctx.Start.Column,
+                        StartIndex = ctx.Start.StartIndex,
+                        StopIndex = ctx.Stop.StopIndex,
                     };
 
                 case IndexInvocationContext indexInvocation:
                     return new FpInvocation
                     {
                         IndexInvocation = true,
+
+                        RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                        PrefixComments = GetPrefixComments(ctx),
+                        PostfixComments = GetPostfixComments(ctx),
+                        Line = ctx.Start.Line,
+                        Column = ctx.Start.Column,
+                        StartIndex = ctx.Start.StartIndex,
+                        StopIndex = ctx.Stop.StopIndex,
                     };
 
                 case TotalInvocationContext totalInvocation:
                     return new FpInvocation
                     {
                         TotalInvocation = true,
+
+                        RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                        PrefixComments = GetPrefixComments(ctx),
+                        PostfixComments = GetPostfixComments(ctx),
+                        Line = ctx.Start.Line,
+                        Column = ctx.Start.Column,
+                        StartIndex = ctx.Start.StartIndex,
+                        StopIndex = ctx.Stop.StopIndex,
                     };
             }
 
@@ -703,6 +1136,14 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                 Identifier = ctx.identifier().GetText(),
                 IdentifierTokenType = (FmlTokenTypeCodes)ctx.identifier().Stop.Type,
                 Parameters = ctx.fpParamList()?.fpExpression()?.Select(ExtractFpExpression).ToList() ?? [],
+
+                RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                PrefixComments = GetPrefixComments(ctx),
+                PostfixComments = GetPostfixComments(ctx),
+                Line = ctx.Start.Line,
+                Column = ctx.Start.Column,
+                StartIndex = ctx.Start.StartIndex,
+                StopIndex = ctx.Stop.StopIndex,
             };
         }
     }

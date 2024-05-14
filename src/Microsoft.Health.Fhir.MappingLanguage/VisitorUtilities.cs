@@ -9,6 +9,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
 using Hl7.Fhir.Model;
@@ -19,7 +20,38 @@ namespace Microsoft.Health.Fhir.MappingLanguage;
 
 internal static class VisitorUtilities
 {
-    internal static LiteralValue? GetLiteral(ParserRuleContext? c)
+    internal static List<string> GetPrefixComments(ParserRuleContext ctx, Dictionary<int, ParsedCommentNode> parsedComments)
+    {
+        List<string> comments = [];
+
+        int nextLoc = ctx.Start.StartIndex;
+
+        while (parsedComments.TryGetValue(nextLoc, out ParsedCommentNode? comment))
+        {
+            comments.Add(comment.NodeText);
+            //nextLoc = nextLoc == comment.StartIndex - 1 ? -1 : comment.StartIndex - 1;
+            nextLoc = nextLoc == comment.LastWsStartIndex - 1 ? -1 : comment.LastWsStartIndex - 1;
+        }
+
+        return comments;
+    }
+
+    internal static List<string> GetPostfixComments(ParserRuleContext ctx, Dictionary<int, ParsedCommentNode> parsedComments)
+    {
+        List<string> comments = [];
+
+        int nextLoc = ctx.Stop.StopIndex + 1;
+
+        while (parsedComments.TryGetValue(nextLoc, out ParsedCommentNode? comment) && (comment.LastWsHasNewline == false))
+        {
+            comments.Add(comment.NodeText);
+            nextLoc = nextLoc == comment.StopIndex + 1 ? -1 : comment.StopIndex + 1;
+        }
+
+        return comments;
+    }
+
+    internal static LiteralValue? GetLiteral(ParserRuleContext? c, Dictionary<int, ParsedCommentNode>? parsedComments = null)
     {
         if (c == null)
         {
@@ -32,6 +64,14 @@ internal static class VisitorUtilities
             Value = GetValue(c),
             FhirValue = GetFhirValue(c),
             TokenType = (FmlTokenTypeCodes)c.Stop.Type,
+
+            RawText = c.GetText() ?? string.Empty,
+            PrefixComments = parsedComments == null ? [] : GetPrefixComments(c, parsedComments),
+            PostfixComments = parsedComments == null ? [] : GetPostfixComments(c, parsedComments),
+            Line = c.Start.Line,
+            Column = c.Start.Column,
+            StartIndex = c.Start.StartIndex,
+            StopIndex = c.Stop.StopIndex,
         };
     }
 
@@ -50,8 +90,8 @@ internal static class VisitorUtilities
         DELIMITED_IDENTIFIER => c.Stop.Text[1..^1],
         SINGLE_QUOTED_STRING => c.Stop.Text[1..^1],
         DOUBLE_QUOTED_STRING => c.Stop.Text[1..^1],
-        C_STYLE_COMMENT => c.Stop.Text.Length > 4 ? c.Stop.Text[2..^2] : c.Stop.Text,
-        LINE_COMMENT => c.Stop.Text.Length > 2 ? c.Stop.Text[2..] : c.Stop.Text,
+        BLOCK_COMMENT => c.Stop.Text.Length > 4 ? c.Stop.Text[2..^2].Trim() : c.Stop.Text.Trim(),
+        LINE_COMMENT => c.Stop.Text.Length > 2 ? c.Stop.Text[2..].Trim() : c.Stop.Text.Trim(),
         TRIPLE_QUOTED_STRING_LITERAL => c.Stop.Text.Trim().Length > 5 ? c.Stop.Text.Trim()[3..^3].Trim() : c.Stop.Text.Trim(),
         _ => null,
     };
@@ -71,9 +111,30 @@ internal static class VisitorUtilities
         DELIMITED_IDENTIFIER => tn.Symbol.Text[1..^1],
         SINGLE_QUOTED_STRING => tn.Symbol.Text[1..^1],
         DOUBLE_QUOTED_STRING => tn.Symbol.Text[1..^1],
-        C_STYLE_COMMENT => tn.Symbol.Text.Length > 4 ? tn.Symbol.Text[2..^2] : tn.Symbol.Text,
-        LINE_COMMENT => tn.Symbol.Text.Length > 2 ? tn.Symbol.Text[2..] : tn.Symbol.Text,
+        BLOCK_COMMENT => tn.Symbol.Text.Length > 4 ? tn.Symbol.Text[2..^2].Trim() : tn.Symbol.Text.Trim(),
+        LINE_COMMENT => tn.Symbol.Text.Length > 2 ? tn.Symbol.Text[2..].Trim() : tn.Symbol.Text.Trim(),
         TRIPLE_QUOTED_STRING_LITERAL => tn.Symbol.Text.Trim().Length > 5 ? tn.Symbol.Text.Trim()[3..^3].Trim() : tn.Symbol.Text.Trim(),
+        _ => string.Empty,
+    };
+
+    internal static string GetString(IToken? tn) => tn?.Type switch
+    {
+        NULL_LITERAL => string.Empty,
+        BOOL => tn.Text,
+        DATE => tn.Text.StartsWith('@') ? tn.Text[1..] : tn.Text,
+        DATE_TIME => tn.Text.StartsWith('@') ? tn.Text : tn.Text,
+        TIME => tn.Text.StartsWith('@') ? tn.Text : tn.Text,
+        LONG_INTEGER => tn.Text,
+        DECIMAL => tn.Text,
+        INTEGER => tn.Text,
+        ID => tn.Text,
+        IDENTIFIER => tn.Text.Length > 1 && tn.Text[0] == '\'' && tn.Text[^1] == '\'' ? tn.Text[1..^1] : tn.Text,
+        DELIMITED_IDENTIFIER => tn.Text[1..^1],
+        SINGLE_QUOTED_STRING => tn.Text[1..^1],
+        DOUBLE_QUOTED_STRING => tn.Text[1..^1],
+        BLOCK_COMMENT => tn.Text.Length > 4 ? tn.Text[2..^2].Trim() : tn.Text.Trim(),
+        LINE_COMMENT => tn.Text.Length > 2 ? tn.Text[2..].Trim() : tn.Text.Trim(),
+        TRIPLE_QUOTED_STRING_LITERAL => tn.Text.Trim().Length > 5 ? tn.Text.Trim()[3..^3].Trim() : tn.Text.Trim(),
         _ => string.Empty,
     };
 
@@ -93,8 +154,8 @@ internal static class VisitorUtilities
         DELIMITED_IDENTIFIER => c.Stop.Text[1..^1],
         SINGLE_QUOTED_STRING => c.Stop.Text[1..^1],
         DOUBLE_QUOTED_STRING => c.Stop.Text[1..^1],
-        C_STYLE_COMMENT => c.Stop.Text.Length > 4 ? c.Stop.Text[2..^2] : c.Stop.Text,
-        LINE_COMMENT => c.Stop.Text.Length > 2 ? c.Stop.Text[2..] : c.Stop.Text,
+        BLOCK_COMMENT => c.Stop.Text.Length > 4 ? c.Stop.Text[2..^2].Trim() : c.Stop.Text.Trim(),
+        LINE_COMMENT => c.Stop.Text.Length > 2 ? c.Stop.Text[2..].Trim() : c.Stop.Text.Trim(),
         TRIPLE_QUOTED_STRING_LITERAL => c.Stop.Text.Trim().Length > 5 ? c.Stop.Text.Trim()[3..^3].Trim() : c.Stop.Text.Trim(),
         _ => null,
     };
@@ -114,8 +175,8 @@ internal static class VisitorUtilities
         DELIMITED_IDENTIFIER => new FhirString(c.Stop.Text[1..^1]),
         SINGLE_QUOTED_STRING => new FhirString(c.Stop.Text[1..^1]),
         DOUBLE_QUOTED_STRING => new FhirString(c.Stop.Text[1..^1]),
-        C_STYLE_COMMENT => c.Stop.Text.Length > 4 ? new FhirString(c.Stop.Text[2..^2]) : new FhirString(c.Stop.Text),
-        LINE_COMMENT => c.Stop.Text.Length > 2 ? new FhirString(c.Stop.Text[2..]) : new FhirString(c.Stop.Text),
+        BLOCK_COMMENT => c.Stop.Text.Length > 4 ? new FhirString(c.Stop.Text[2..^2].Trim()) : new FhirString(c.Stop.Text.Trim()),
+        LINE_COMMENT => c.Stop.Text.Length > 2 ? new FhirString(c.Stop.Text[2..].Trim()) : new FhirString(c.Stop.Text.Trim()),
         TRIPLE_QUOTED_STRING_LITERAL => c.Stop.Text.Trim().Length > 5 ? new Markdown(c.Stop.Text.Trim()[3..^3].Trim()) : new Markdown(c.Stop.Text.Trim()),
         _ => null,
     };
