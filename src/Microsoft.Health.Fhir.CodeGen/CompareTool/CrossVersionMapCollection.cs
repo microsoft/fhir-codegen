@@ -19,6 +19,7 @@ using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using Microsoft.Health.Fhir.PackageManager;
+using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 
 namespace Microsoft.Health.Fhir.CodeGen.CompareTool;
 
@@ -493,7 +494,7 @@ public class CrossVersionMapCollection
                                     continue;
                                 }
 
-                                string elementMapId = $"{_sourceRLiteral}-{typeName}-{_targetRLiteral}";
+                                string elementMapId = $"{_sourceRLiteral}-{typeName}-{_targetRLiteral}-{typeName}";
                                 string elementMapUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: elementMapId, resourceType: "ConceptMap");
 
                                 string elementSourceUrl = BuildUrl("{0}/{1}/{2}", _sourcePackageCanonical, "StructureDefinition", typeName);
@@ -535,13 +536,15 @@ public class CrossVersionMapCollection
         return true;
     }
 
-    private string FilenameForMap(CrossVersionMapTypeCodes mapType, string name = "") => mapType switch
+    private string FilenameForMap(CrossVersionMapTypeCodes mapType, string name = "", string targetName = "") => mapType switch
     {
         CrossVersionMapTypeCodes.ValueSetConcepts => $"ConceptMap-{_sourceRLiteral}-{name}-{_targetRLiteral}.json",
         CrossVersionMapTypeCodes.DataTypeConcepts => $"ConceptMap-{_sourceRLiteral}-data-types-{_targetRLiteral}.json",
         CrossVersionMapTypeCodes.ResourceTypeConcepts => $"ConceptMap-{_sourceRLiteral}-resource-types-{_targetRLiteral}.json",
         CrossVersionMapTypeCodes.ComplexTypeElementConcepts => $"ConceptMap-{_sourceRLiteral}-{name}-{_targetRLiteral}.json",
-        CrossVersionMapTypeCodes.ResourceElementConcepts => $"ConceptMap-{_sourceRLiteral}-{name}-{_targetRLiteral}.json",
+        CrossVersionMapTypeCodes.ResourceElementConcepts => string.IsNullOrEmpty(targetName)
+        ? $"ConceptMap-{_sourceRLiteral}-{name}-{_targetRLiteral}.json"
+        : $"ConceptMap-{_sourceRLiteral}-{name}-{_targetRLiteral}-{targetName}.json",
         _ => throw new ArgumentException($"Unknown map type: {mapType}"),
     };
 
@@ -680,7 +683,7 @@ public class CrossVersionMapCollection
         ValueSetComparison vsc)
     {
         // we cannot write maps that do not have both a source and a target
-        if (string.IsNullOrEmpty(vsc.SourceUrl) || string.IsNullOrEmpty(vsc.TargetUrl))
+        if (string.IsNullOrEmpty(vsc.Source.Url) || string.IsNullOrEmpty(vsc.Target.Url))
         {
             return null;
         }
@@ -690,11 +693,11 @@ public class CrossVersionMapCollection
             throw new Exception("Cannot process a comparison with no mappings!");
         }
 
-        string localConceptMapId = $"{_sourceRLiteral}-{vsc.SourceName}-{_targetRLiteral}-{vsc.TargetName}";
+        string localConceptMapId = $"{_sourceRLiteral}-{vsc.Source.NamePascal}-{_targetRLiteral}-{vsc.Target.NamePascal}";
         string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
 
-        string sourceUrl = vsc.SourceUrl;
-        string targetUrl = vsc.TargetUrl;
+        string sourceUrl = vsc.Source.Url;
+        string targetUrl = vsc.Target.Url;
 
         string sourceCanonical = $"{sourceUrl}|{_sourcePackageVersion}";
         string targetCanonical = $"{targetUrl}|{_targetPackageVersion}";
@@ -708,7 +711,7 @@ public class CrossVersionMapCollection
             cm.Id = localConceptMapId;
             cm.Url = localUrl;
             cm.Name = localConceptMapId;
-            cm.Title = GetConceptMapTitle(vsc.SourceName);
+            cm.Title = GetConceptMapTitle(vsc.Source.Name);
 
             cm.SourceScope = new Canonical(sourceCanonical);
             cm.TargetScope = new Canonical(targetCanonical);
@@ -812,9 +815,22 @@ public class CrossVersionMapCollection
         return cm;
     }
 
+    //private CMR ApplyRelationship(CMR existing, CMR? change) => existing switch
+    //{
+    //    CMR.Equivalent => change ?? CMR.Equivalent,
+    //    CMR.RelatedTo => (change == CMR.NotRelatedTo) ? CMR.NotRelatedTo : existing,
+    //    CMR.SourceIsNarrowerThanTarget => (change == CMR.SourceIsNarrowerThanTarget || change == CMR.Equivalent)
+    //        ? CMR.SourceIsNarrowerThanTarget : CMR.RelatedTo,
+    //    CMR.SourceIsBroaderThanTarget => (change == CMR.SourceIsBroaderThanTarget || change == CMR.Equivalent)
+    //        ? CMR.SourceIsBroaderThanTarget : CMR.RelatedTo,
+    //    CMR.NotRelatedTo => change ?? existing,
+    //    _ => change ?? existing,
+    //};
+
+
     public ConceptMap? GetSourceDataTypesConceptMap(
-        IEnumerable<ComparisonRecord<StructureInfoRec>> primitiveTypes,
-        IEnumerable<ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> complexTypes)
+        Dictionary<string, List<PrimitiveTypeComparison>> primitiveTypes,
+        Dictionary<string, List<StructureComparison>> complexTypes)
     {
         string localConceptMapId = $"{_sourceRLiteral}-types-{_targetRLiteral}";
         string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
@@ -846,58 +862,112 @@ public class CrossVersionMapCollection
         group.Target = targetUrl;
 
         // traverse primitive types
-        foreach (ComparisonRecord<StructureInfoRec> c in primitiveTypes.Where(ci => ci.KeyInLeft == true))
+        foreach ((string key, List<PrimitiveTypeComparison> comparisons) in primitiveTypes.OrderBy(kvp => kvp.Key))
         {
-            // skip primitives that do not have serialization-based conversion info
-            if ((c.TypeSerializationInfo == null) || (c.TypeSerializationInfo.Count == 0))
-            {
-                continue;
-            }
-
-            // add mappings based on primitive serialization info
-            group.Element.Add(new()
-            {
-                Code = c.Key,
-                Display = c.Left[0].Description,
-                Target = c.TypeSerializationInfo.Values.Where(tsi => tsi.Source == c.Key).Select(tsi => new ConceptMap.TargetElementComponent()
-                {
-                    Code = tsi.Target,
-                    Display = c.Right.Where(si => si.Name == tsi.Target).FirstOrDefault()?.Description ?? $"Primitive type {tsi.Target}",
-                    Relationship = tsi.Relationship,
-                    Comment = tsi.Message,
-                }).ToList(),
-            });
-        }
-
-        // traverse complex types
-        foreach (IComparisonRecord<StructureInfoRec> c in complexTypes.Where(cti => cti.KeyInLeft == true).OrderBy(cti => cti.Key))
-        {
-            // put an entry with no map if there is no target
-            if (c.Right.Count == 0)
+            if (comparisons.Count == 0)
             {
                 group.Element.Add(new()
                 {
-                    Code = c.Key,
+                    Code = key,
+                    Display = $"Primitive type {_sourceRLiteral} `{key}` does not exist in {_targetRLiteral} and has no mappings.",
                     NoMap = true,
-                    Display = c.Left[0].Description,
                 });
 
                 continue;
             }
 
-            // add mappings based on record info
-            group.Element.Add(new()
+            List<ConceptMap.TargetElementComponent> targets = [];
+
+            foreach (PrimitiveTypeComparison c in comparisons.OrderBy(c => c.TargetTypeLiteral))
             {
-                Code = c.Key,
-                Display = c.Left[0].Description,
-                Target = c.Right.Select(target => new ConceptMap.TargetElementComponent()
+                if (c.Target == null)
                 {
-                    Code = target.Name,
-                    Display = target.Description,
+                    Console.WriteLine($"Not adding {c.SourceTypeLiteral} - no target exists");
+                    continue;
+                }
+
+                targets.Add(new ConceptMap.TargetElementComponent()
+                {
+                    Code = c.TargetTypeLiteral,
+                    Display = c.Target.Description,
                     Relationship = c.Relationship,
                     Comment = c.Message,
-                }).ToList(),
+                });
+            }
+
+            if (targets.Count == 0)
+            {
+                group.Element.Add(new()
+                {
+                    Code = key,
+                    Display = $"Primitive type {_sourceRLiteral} `{key}` does not exist in {_targetRLiteral} and has no mappings.",
+                    NoMap = true,
+                });
+
+                continue;
+            }
+
+            group.Element.Add(new()
+            {
+                Code = key,
+                Display = $"Primitive type {_sourceRLiteral} `{key}` maps to {string.Join(" and ", targets.Select(tm => $"`{tm.Code}`"))}.",
+                Target = targets,
             });
+        }
+
+        // traverse complex types
+        foreach ((string key, List<StructureComparison> comparisons) in complexTypes.OrderBy(kvp => kvp.Key))
+        {
+            if (comparisons.Count == 0)
+            {
+                group.Element.Add(new()
+                {
+                    Code = key,
+                    Display = $"Complex type {_sourceRLiteral} `{key}` does not exist in {_targetRLiteral} and has no mappings.",
+                    NoMap = true,
+                });
+
+                continue;
+            }
+
+            List<ConceptMap.TargetElementComponent> targets = [];
+
+            foreach (StructureComparison c in comparisons.OrderBy(c => c.Source.Name))
+            {
+                if (c.Target == null)
+                {
+                    Console.WriteLine($"Not adding {c.Source.Name} - no target exists");
+                    continue;
+                }
+
+                targets.Add(new ConceptMap.TargetElementComponent()
+                {
+                    Code = c.Target.Name,
+                    Display = c.Target.Description,
+                    Relationship = c.Relationship,
+                    Comment = c.Message,
+                });
+            }
+
+            if (targets.Count == 0)
+            {
+                group.Element.Add(new()
+                {
+                    Code = key,
+                    Display = $"Complex type {_sourceRLiteral} `{key}` does not exist in {_targetRLiteral} and has no mappings.",
+                    NoMap = true,
+                });
+
+                continue;
+            }
+
+            group.Element.Add(new()
+            {
+                Code = key,
+                Display = $"Complex type {_sourceRLiteral} `{key}` maps to {string.Join(" and ", targets.Select(tm => $"`{tm.Code}`"))}.",
+                Target = targets,
+            });
+
         }
 
         cm.Group.Add(group);
@@ -907,7 +977,7 @@ public class CrossVersionMapCollection
 
 
     public ConceptMap? GetSourceResourceTypeConceptMap(
-        IEnumerable<ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> resources)
+        Dictionary<string, List<StructureComparison>> resources)
     {
         string localConceptMapId = $"{_sourceRLiteral}-resources-{_targetRLiteral}";
         string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
@@ -939,33 +1009,56 @@ public class CrossVersionMapCollection
         group.Target = targetUrl;
 
         // traverse resources types
-        foreach (IComparisonRecord<StructureInfoRec> c in resources.Where(cti => cti.KeyInLeft == true).OrderBy(cti => cti.Key))
+        foreach ((string key, List<StructureComparison> comparisons) in resources.OrderBy(kvp => kvp.Key))
         {
-            // put an entry with no map if there is no target
-            if (c.Right.Count == 0)
+            if (comparisons.Count == 0)
             {
                 group.Element.Add(new()
                 {
-                    Code = c.Key,
+                    Code = key,
+                    Display = $"Resource {_sourceRLiteral} `{key}` does not exist in {_targetRLiteral} and has no mappings.",
                     NoMap = true,
-                    Display = c.Left[0].Description,
                 });
 
                 continue;
             }
 
-            // add mappings based on record info
-            group.Element.Add(new()
+            List<ConceptMap.TargetElementComponent> targets = [];
+
+            foreach (StructureComparison c in comparisons.OrderBy(c => c.Source.Name))
             {
-                Code = c.Key,
-                Display = c.Left[0].Description,
-                Target = c.Right.Select(target => new ConceptMap.TargetElementComponent()
+                if (c.Target == null)
                 {
-                    Code = target.Name,
-                    Display = target.Description,
+                    Console.WriteLine($"Not adding {c.Source.Name} - no target exists");
+                    continue;
+                }
+
+                targets.Add(new ConceptMap.TargetElementComponent()
+                {
+                    Code = c.Target.Name,
+                    Display = c.Target.Description,
                     Relationship = c.Relationship,
                     Comment = c.Message,
-                }).ToList(),
+                });
+            }
+
+            if (targets.Count == 0)
+            {
+                group.Element.Add(new()
+                {
+                    Code = key,
+                    Display = $"Resource {_sourceRLiteral} `{key}` does not exist in {_targetRLiteral} and has no mappings.",
+                    NoMap = true,
+                });
+
+                continue;
+            }
+
+            group.Element.Add(new()
+            {
+                Code = key,
+                Display = $"Resource {_sourceRLiteral} `{key}` maps to {string.Join(" and ", targets.Select(tm => $"`{tm.Code}`"))}.",
+                Target = targets,
             });
         }
 
@@ -976,27 +1069,22 @@ public class CrossVersionMapCollection
 
 
     public ConceptMap? TryGetSourceStructureElementConceptMap(
-        ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec> cRec)
+        StructureComparison cRec)
     {
-        // we cannot write maps that do not have both a source and a target
-        if ((cRec.Left.Count == 0) || (cRec.Right.Count == 0))
+        if (cRec.Target == null)
         {
+            Console.WriteLine($"Not writing {cRec.Source.Name} - no target exists");
             return null;
         }
 
-        if (cRec.Left.Count > 1)
-        {
-            throw new Exception($"Cannot build concept map for structures with more than source: {cRec.Key}");
-        }
+        string sourceName = cRec.Source.Name;
+        string targetName = cRec.Target.Name;
 
-        string leftName = cRec.Left[0].Name;
-        string rightName = cRec.Right[0].Name;
-
-        string localConceptMapId = $"{_sourceRLiteral}-{leftName}-{_targetRLiteral}";
+        string localConceptMapId = cRec.CompositeName;          // $"{_sourceRLiteral}-{sourceName}-{_targetRLiteral}";
         string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
 
-        string sourceUrl = cRec.Left[0].Url;
-        string targetUrl = cRec.Right[0].Url;
+        string sourceUrl = cRec.Source.Url;
+        string targetUrl = cRec.Target.Url;
 
         string sourceCanonical = $"{sourceUrl}|{_sourcePackageVersion}";
         string targetCanonical = $"{targetUrl}|{_targetPackageVersion}";
@@ -1010,7 +1098,7 @@ public class CrossVersionMapCollection
             cm.Id = localConceptMapId;
             cm.Url = localUrl;
             cm.Name = localConceptMapId;
-            cm.Title = GetConceptMapTitle(leftName);
+            cm.Title = GetConceptMapTitle(sourceName);
 
             cm.SourceScope = new Canonical(sourceCanonical);
             cm.TargetScope = new Canonical(targetCanonical);
@@ -1018,20 +1106,20 @@ public class CrossVersionMapCollection
 
         ConceptMap.GroupComponent group = new();
 
-        group.Source = cRec.Left[0].Url;
-        group.Target = cRec.Right[0].Url;
+        group.Source = cRec.Source.Url;
+        group.Target = cRec.Target.Url;
 
         // traverse elements that exist in our source
-        foreach ((string elementKey, ComparisonRecord<ElementInfoRec, ElementTypeInfoRec> elementComparison) in cRec.Children.Where(kvp => kvp.Value.KeyInLeft == true).OrderBy(kvp => kvp.Key))
+        foreach ((string path, ElementComparison elementComparison) in cRec.ElementComparisons.OrderBy(kvp => kvp.Key))
         {
             // put an entry with no map if there is no target
-            if (elementComparison.Right.Count == 0)
+            if (elementComparison.TargetMappings.Count == 0)
             {
                 group.Element.Add(new()
                 {
-                    Code = elementKey,
+                    Code = path,
                     NoMap = true,
-                    Display = elementComparison.Left[0].Short,
+                    Display = elementComparison.Source.Short,
                 });
 
                 continue;
@@ -1039,12 +1127,12 @@ public class CrossVersionMapCollection
 
             group.Element.Add(new()
             {
-                Code = elementKey,
-                Display = elementComparison.Left[0].Short,
-                Target = elementComparison.Right.Select(target => new ConceptMap.TargetElementComponent()
+                Code = path,
+                Display = elementComparison.Source.Short,
+                Target = elementComparison.TargetMappings.Select(tm => new ConceptMap.TargetElementComponent()
                 {
-                    Code = target.Path,
-                    Display = target.Short,
+                    Code = tm.Target.Path,
+                    Display = tm.Target.Short,
                     Relationship = elementComparison.Relationship,
                     Comment = elementComparison.Message,
                 }).ToList(),
@@ -1136,11 +1224,11 @@ public class CrossVersionMapCollection
         return [];
     }
 
-    public List<ConceptMap> GetMapsForVs(string sourceVsUrl) => _dc.ConceptMapsForSource(sourceVsUrl);
+    public List<ConceptMap> GetMapsForSource(string sourceUrl) => _dc.ConceptMapsForSource(sourceUrl);
 
-    public bool TryGetMapsForVs(string sourceVsUrl, [NotNullWhen(true)] out List<ConceptMap>? maps)
+    public bool TryGetMapsForSource(string sourceUrl, [NotNullWhen(true)] out List<ConceptMap>? maps)
     {
-        maps = _dc.ConceptMapsForSource(sourceVsUrl);
+        maps = _dc.ConceptMapsForSource(sourceUrl);
         return maps.Count > 0;
     }
 

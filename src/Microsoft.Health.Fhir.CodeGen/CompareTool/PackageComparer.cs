@@ -214,10 +214,10 @@ public class PackageComparer
             }
         }
 
-        Dictionary<string, ComparisonRecord<StructureInfoRec>> primitives = ComparePrimitives(FhirArtifactClassEnum.PrimitiveType, _source.PrimitiveTypesByName, _target.PrimitiveTypesByName);
+        Dictionary<string, List<PrimitiveTypeComparison>> primitives = ComparePrimitives(_source.PrimitiveTypesByName, _target.PrimitiveTypesByName);
         if (mdWriter != null)
         {
-            WriteComparisonOverview(mdWriter, "Primitive Types", primitives.Values);
+            WriteComparisonOverview(mdWriter, "Primitive Types", primitives);
 
             string mdSubDir = Path.Combine(pageDir, "PrimitiveTypes");
             if (!Directory.Exists(mdSubDir))
@@ -225,21 +225,47 @@ public class PackageComparer
                 Directory.CreateDirectory(mdSubDir);
             }
 
-            foreach (ComparisonRecord<StructureInfoRec> c in primitives.Values)
+            foreach (List<PrimitiveTypeComparison> cs in primitives.Values)
             {
-                string filename = Path.Combine(mdSubDir, $"{c.CompositeName}.md");
-
-                using ExportStreamWriter writer = CreateMarkdownWriter(filename);
+                foreach (PrimitiveTypeComparison c in cs)
                 {
-                    WriteComparisonFile(writer, string.Empty, c);
+                    string filename = Path.Combine(mdSubDir, $"{c.CompositeName}.md");
+
+                    using ExportStreamWriter writer = CreateMarkdownWriter(filename);
+                    {
+                        WriteComparisonFile(writer, string.Empty, c);
+                    }
                 }
             }
         }
 
-        Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> complexTypes = CompareStructures(FhirArtifactClassEnum.ComplexType, _source.ComplexTypesByName, _target.ComplexTypesByName);
+        //Dictionary<string, ComparisonRecord<StructureInfoRec>> oldPrimitives = ComparePrimitives(FhirArtifactClassEnum.PrimitiveType, _source.PrimitiveTypesByName, _target.PrimitiveTypesByName);
+        //Dictionary<string, ComparisonRecord<StructureInfoRec>> primitives = ComparePrimitives(FhirArtifactClassEnum.PrimitiveType, _source.PrimitiveTypesByName, _target.PrimitiveTypesByName);
+        //if (mdWriter != null)
+        //{
+        //    WriteComparisonOverview(mdWriter, "Primitive Types", primitives.Values);
+
+        //    string mdSubDir = Path.Combine(pageDir, "PrimitiveTypes");
+        //    if (!Directory.Exists(mdSubDir))
+        //    {
+        //        Directory.CreateDirectory(mdSubDir);
+        //    }
+
+        //    foreach (ComparisonRecord<StructureInfoRec> c in primitives.Values)
+        //    {
+        //        string filename = Path.Combine(mdSubDir, $"{c.CompositeName}.md");
+
+        //        using ExportStreamWriter writer = CreateMarkdownWriter(filename);
+        //        {
+        //            WriteComparisonFile(writer, string.Empty, c);
+        //        }
+        //    }
+        //}
+
+        Dictionary<string, List<StructureComparison>> complexTypes = CompareStructures(_source.ComplexTypesByName, _target.ComplexTypesByName);
         if (mdWriter != null)
         {
-            WriteComparisonOverview(mdWriter, "Complex Types", complexTypes.Values);
+            WriteComparisonOverview(mdWriter, "Complex Types", complexTypes);
 
             string mdSubDir = Path.Combine(pageDir, "ComplexTypes");
             if (!Directory.Exists(mdSubDir))
@@ -247,13 +273,16 @@ public class PackageComparer
                 Directory.CreateDirectory(mdSubDir);
             }
 
-            foreach (ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec> c in complexTypes.Values)
+            foreach (List<StructureComparison> vcs in complexTypes.Values)
             {
-                string filename = Path.Combine(mdSubDir, $"{c.CompositeName}.md");
-
-                using ExportStreamWriter writer = CreateMarkdownWriter(filename);
+                foreach (StructureComparison c in vcs)
                 {
-                    WriteComparisonFile(writer, string.Empty, c);
+                    string filename = Path.Combine(mdSubDir, $"{c.CompositeName}.md");
+
+                    using ExportStreamWriter writer = CreateMarkdownWriter(filename);
+                    {
+                        WriteComparisonFile(writer, string.Empty, c);
+                    }
                 }
             }
 
@@ -265,20 +294,59 @@ public class PackageComparer
                     Directory.CreateDirectory(mapSubDir);
                 }
 
-                WriteStructureMaps(mapSubDir, complexTypes.Values);
+                WriteStructureMaps(mapSubDir, complexTypes.Values.SelectMany(l => l.Select(s => s)));
             }
 
             // write out the data type map
             if (_config.MapSaveStyle != ConfigCompare.ComparisonMapSaveStyle.None)
             {
-                WriteDataTypeMap(conceptMapDir, primitives.Values, complexTypes.Values);
+                WriteDataTypeMap(conceptMapDir, primitives, complexTypes);
             }
         }
 
-        Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> resources = CompareStructures(FhirArtifactClassEnum.Resource, _source.ResourcesByName, _target.ResourcesByName);
+        //Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> complexTypes = CompareStructures(FhirArtifactClassEnum.ComplexType, _source.ComplexTypesByName, _target.ComplexTypesByName);
+        //if (mdWriter != null)
+        //{
+        //    WriteComparisonOverview(mdWriter, "Complex Types", complexTypes.Values);
+
+        //    string mdSubDir = Path.Combine(pageDir, "ComplexTypes");
+        //    if (!Directory.Exists(mdSubDir))
+        //    {
+        //        Directory.CreateDirectory(mdSubDir);
+        //    }
+
+        //    foreach (ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec> c in complexTypes.Values)
+        //    {
+        //        string filename = Path.Combine(mdSubDir, $"{c.CompositeName}.md");
+
+        //        using ExportStreamWriter writer = CreateMarkdownWriter(filename);
+        //        {
+        //            WriteComparisonFile(writer, string.Empty, c);
+        //        }
+        //    }
+
+        //    if (_config.MapSaveStyle != ConfigCompare.ComparisonMapSaveStyle.None)
+        //    {
+        //        string mapSubDir = Path.Combine(conceptMapDir, "ComplexTypes");
+        //        if (!Directory.Exists(mapSubDir))
+        //        {
+        //            Directory.CreateDirectory(mapSubDir);
+        //        }
+
+        //        WriteStructureMaps(mapSubDir, complexTypes.Values);
+        //    }
+
+        //    // write out the data type map
+        //    if (_config.MapSaveStyle != ConfigCompare.ComparisonMapSaveStyle.None)
+        //    {
+        //        WriteDataTypeMap(conceptMapDir, oldPrimitives.Values, complexTypes.Values);
+        //    }
+        //}
+
+        Dictionary<string, List<StructureComparison>> resources = CompareStructures(_source.ResourcesByName, _target.ResourcesByName);
         if (mdWriter != null)
         {
-            WriteComparisonOverview(mdWriter, "Resources", resources.Values);
+            WriteComparisonOverview(mdWriter, "Resources", resources);
 
             string mdSubDir = Path.Combine(pageDir, "Resources");
             if (!Directory.Exists(mdSubDir))
@@ -286,22 +354,25 @@ public class PackageComparer
                 Directory.CreateDirectory(mdSubDir);
             }
 
-            foreach (ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec> c in resources.Values)
+            foreach (List<StructureComparison> vcs in complexTypes.Values)
             {
-                //string name = GetName(c.Left, c.Right);
-                //string filename = Path.Combine(subDir, $"{name}.md");
-                string filename = Path.Combine(mdSubDir, $"{c.CompositeName}.md");
-
-                using ExportStreamWriter writer = CreateMarkdownWriter(filename);
+                foreach (StructureComparison c in vcs)
                 {
-                    WriteComparisonFile(writer, string.Empty, c);
+                    //string name = GetName(c.Left, c.Right);
+                    //string filename = Path.Combine(subDir, $"{name}.md");
+                    string filename = Path.Combine(mdSubDir, $"{c.CompositeName}.md");
+
+                    using ExportStreamWriter writer = CreateMarkdownWriter(filename);
+                    {
+                        WriteComparisonFile(writer, string.Empty, c);
+                    }
                 }
             }
 
             // write out the resource type map
             if (_config.MapSaveStyle != ConfigCompare.ComparisonMapSaveStyle.None)
             {
-                WriteResourceTypeMap(conceptMapDir, resources.Values);
+                WriteResourceTypeMap(conceptMapDir, resources);
 
                 string mapSubDir = Path.Combine(conceptMapDir, "Resources");
                 if (!Directory.Exists(mapSubDir))
@@ -309,7 +380,7 @@ public class PackageComparer
                     Directory.CreateDirectory(mapSubDir);
                 }
 
-                WriteStructureMaps(mapSubDir, resources.Values);
+                WriteStructureMaps(mapSubDir, resources.Values.SelectMany(l => l.Select(s => s)));
             }
         }
 
@@ -373,7 +444,7 @@ public class PackageComparer
 
     private void WriteResourceTypeMap(
         string outputDir,
-        IEnumerable<ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> resources)
+        Dictionary<string, List<StructureComparison>> resources)
     {
         if (_crossVersion == null)
         {
@@ -404,51 +475,19 @@ public class PackageComparer
 
     private void WriteDataTypeMap(
         string outputDir,
-        IEnumerable<ComparisonRecord<StructureInfoRec>> primitiveTypes,
-        IEnumerable<ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> complexTypes)
-    {
-        if (_crossVersion == null)
+        Dictionary<string, List<PrimitiveTypeComparison>> primitiveTypes,
+        Dictionary<string, List<StructureComparison>> complexTypes)
         {
-            return;
-        }
-
-        ConceptMap? cm = _crossVersion.GetSourceDataTypesConceptMap(primitiveTypes, complexTypes);
-        if (cm == null)
-        {
-            return;
-        }
-        string filename = Path.Combine(outputDir, $"ConceptMap-{cm.Id}.json");
-
-        try
-        {
-            using FileStream fs = new(filename, FileMode.Create, FileAccess.Write);
-            using Utf8JsonWriter writer = new(fs, new JsonWriterOptions() { Indented = true, });
+            if (_crossVersion == null)
             {
-                JsonSerializer.Serialize(writer, cm, _firelySerializerOptions);
+                return;
             }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error writing {filename}: {ex.Message} {ex.InnerException?.Message}");
-        }
-    }
 
-
-    private void WriteStructureMaps(string outputDir, IEnumerable<ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> values)
-    {
-        if (_crossVersion == null)
-        {
-            return;
-        }
-
-        foreach (ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec> c in values)
-        {
-            ConceptMap? cm = _crossVersion.TryGetSourceStructureElementConceptMap(c);
+            ConceptMap? cm = _crossVersion.GetSourceDataTypesConceptMap(primitiveTypes, complexTypes);
             if (cm == null)
             {
-                continue;
+                return;
             }
-
             string filename = Path.Combine(outputDir, $"ConceptMap-{cm.Id}.json");
 
             try
@@ -464,7 +503,70 @@ public class PackageComparer
                 Console.WriteLine($"Error writing {filename}: {ex.Message} {ex.InnerException?.Message}");
             }
         }
-    }
+
+    //private void WriteDataTypeMap(
+    //    string outputDir,
+    //    IEnumerable<ComparisonRecord<StructureInfoRec>> primitiveTypes,
+    //    IEnumerable<ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> complexTypes)
+    //{
+    //    if (_crossVersion == null)
+    //    {
+    //        return;
+    //    }
+
+    //    ConceptMap? cm = _crossVersion.GetSourceDataTypesConceptMap(primitiveTypes, complexTypes);
+    //    if (cm == null)
+    //    {
+    //        return;
+    //    }
+    //    string filename = Path.Combine(outputDir, $"ConceptMap-{cm.Id}.json");
+
+    //    try
+    //    {
+    //        using FileStream fs = new(filename, FileMode.Create, FileAccess.Write);
+    //        using Utf8JsonWriter writer = new(fs, new JsonWriterOptions() { Indented = true, });
+    //        {
+    //            JsonSerializer.Serialize(writer, cm, _firelySerializerOptions);
+    //        }
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        Console.WriteLine($"Error writing {filename}: {ex.Message} {ex.InnerException?.Message}");
+    //    }
+    //}
+
+
+    //private void WriteStructureMaps(string outputDir, IEnumerable<ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> values)
+    //{
+    //    if (_crossVersion == null)
+    //    {
+    //        return;
+    //    }
+
+    //    foreach (ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec> c in values)
+    //    {
+    //        ConceptMap? cm = _crossVersion.TryGetSourceStructureElementConceptMap(c);
+    //        if (cm == null)
+    //        {
+    //            continue;
+    //        }
+
+    //        string filename = Path.Combine(outputDir, $"ConceptMap-{cm.Id}.json");
+
+    //        try
+    //        {
+    //            using FileStream fs = new(filename, FileMode.Create, FileAccess.Write);
+    //            using Utf8JsonWriter writer = new(fs, new JsonWriterOptions() { Indented = true, });
+    //            {
+    //                JsonSerializer.Serialize(writer, cm, _firelySerializerOptions);
+    //            }
+    //        }
+    //        catch (Exception ex)
+    //        {
+    //            Console.WriteLine($"Error writing {filename}: {ex.Message} {ex.InnerException?.Message}");
+    //        }
+    //    }
+    //}
 
     private void WriteValueSetMaps(string outputDir, IEnumerable<ValueSetComparison> values)
     {
@@ -498,6 +600,37 @@ public class PackageComparer
         }
     }
 
+    private void WriteStructureMaps(string outputDir, IEnumerable<StructureComparison> values)
+    {
+        if (_crossVersion == null)
+        {
+            return;
+        }
+
+        foreach (StructureComparison c in values)
+        {
+            ConceptMap? cm = _crossVersion.TryGetSourceStructureElementConceptMap(c);
+            if (cm == null)
+            {
+                continue;
+            }
+
+            string filename = Path.Combine(outputDir, $"ConceptMap-{cm.Id}.json");
+
+            try
+            {
+                using FileStream fs = new(filename, FileMode.Create, FileAccess.Write);
+                using Utf8JsonWriter writer = new(fs, new JsonWriterOptions() { Indented = true, });
+                {
+                    JsonSerializer.Serialize(writer, cm, _firelySerializerOptions);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error writing {filename}: {ex.Message} {ex.InnerException?.Message}");
+            }
+        }
+    }
 
 
     private Dictionary<string, ValueSet> GetValueSets(DefinitionCollection dc, Dictionary<string, ValueSet>? other = null)
@@ -606,6 +739,68 @@ public class PackageComparer
         writer.WriteLine();
     }
 
+    private void WriteComparisonSummaryTableDict(
+        ExportStreamWriter writer,
+        Dictionary<string, List<StructureComparison>> values)
+    {
+        Dictionary<string, int> counts = [];
+
+        // build summary data
+        foreach (List<StructureComparison> vcs in values.Values)
+        {
+            foreach (StructureComparison c in vcs)
+            {
+                string status = c.GetStatusString();
+                if (!counts.TryGetValue(status, out int count))
+                {
+                    count = 0;
+                }
+
+                counts[status] = count + 1;
+            }
+        }
+
+        writer.WriteLine("| Status | Count |");
+        writer.WriteLine("| ------ | ----- |");
+        foreach ((string status, int count) in counts.OrderBy(kvp => kvp.Key))
+        {
+            writer.WriteLine($"{status} | {count} |");
+        }
+        writer.WriteLine();
+        writer.WriteLine();
+    }
+
+    private void WriteComparisonSummaryTableDict(
+        ExportStreamWriter writer,
+        Dictionary<string, List<PrimitiveTypeComparison>> values)
+    {
+        Dictionary<string, int> counts = [];
+
+        // build summary data
+        foreach (List<PrimitiveTypeComparison> vcs in values.Values)
+        {
+            foreach (PrimitiveTypeComparison c in vcs)
+            {
+                string status = c.GetStatusString();
+                if (!counts.TryGetValue(status, out int count))
+                {
+                    count = 0;
+                }
+
+                counts[status] = count + 1;
+            }
+        }
+
+        writer.WriteLine("| Status | Count |");
+        writer.WriteLine("| ------ | ----- |");
+        foreach ((string status, int count) in counts.OrderBy(kvp => kvp.Key))
+        {
+            writer.WriteLine($"{status} | {count} |");
+        }
+        writer.WriteLine();
+        writer.WriteLine();
+    }
+
     private void WriteComparisonOverview(
         ExportStreamWriter writer,
         string header,
@@ -625,7 +820,64 @@ public class PackageComparer
 
         foreach (ValueSetComparison c in values.Values.SelectMany(vc => vc).OrderBy(c => c.CompositeName))
         {
-            writer.WriteLine($"| {c.CompositeName} | {c.SourceUrl} | {c.TargetUrl} | {c.GetStatusString()} | {c.Message} |");
+            writer.WriteLine($"| {c.CompositeName} | {c.Source.Url} | {c.Target?.Url} | {c.GetStatusString()} | {c.Message} |");
+        }
+
+        writer.WriteLine();
+
+        writer.WriteLine("</details>");
+        writer.WriteLine();
+    }
+
+    private void WriteComparisonOverview(
+        ExportStreamWriter writer,
+        string header,
+        Dictionary<string, List<StructureComparison>> values)
+    {
+        writer.WriteLine("## " + header);
+
+        WriteComparisonSummaryTableDict(writer, values);
+
+        writer.WriteLine("<details>");
+        writer.WriteLine("<summary>Entry details</summary>");
+
+        writer.WriteLine();
+
+        writer.WriteLine("| Name | Source | Dest | Status | Message |");
+        writer.WriteLine("| ---- | ------ | ---- | ------ | ------- |");
+
+        foreach (StructureComparison c in values.Values.SelectMany(vc => vc).OrderBy(c => c.CompositeName))
+        {
+            writer.WriteLine($"| {c.CompositeName} | {c.Source.Url} | {c.Target?.Url} | {c.GetStatusString()} | {c.Message} |");
+        }
+
+        writer.WriteLine();
+
+        writer.WriteLine("</details>");
+        writer.WriteLine();
+    }
+
+
+    private void WriteComparisonOverview(
+        ExportStreamWriter writer,
+        string header,
+        Dictionary<string, List<PrimitiveTypeComparison>> values)
+    {
+        writer.WriteLine("## " + header);
+
+        WriteComparisonSummaryTableDict(writer, values);
+
+        writer.WriteLine("<details>");
+        writer.WriteLine("<summary>Entry details</summary>");
+
+        writer.WriteLine();
+
+        writer.WriteLine("| Name | Source | Dest | Status | Message |");
+        writer.WriteLine("| ---- | ------ | ---- | ------ | ------- |");
+
+        foreach (PrimitiveTypeComparison c in values.Values.SelectMany(vc => vc).OrderBy(c => c.CompositeName))
+        {
+            writer.WriteLine($"| {c.CompositeName} | {c.Source.Name} | {c.Target?.Name ?? "-"} | {c.GetStatusString()} | {c.Message} |");
         }
 
         writer.WriteLine();
@@ -922,8 +1174,8 @@ public class PackageComparer
     private void WriteComparisonRecDataTable(ExportStreamWriter writer, ValueSetComparison v)
     {
         string[] tdHeader = ["Side", "Url", "Name", "Title", "Description"];
-        string[] tdLeft = [_sourceTableLiteral, v.SourceUrl, v.SourceName, v.SourceTitle.ForMdTable(), v.SourceDescription.ForMdTable()];
-        string[] tdRight = [_targetTableLiteral, v.TargetUrl, v.TargetName, v.TargetTitle.ForMdTable(), v.TargetDescription.ForMdTable()];
+        string[] tdLeft = [_sourceTableLiteral, v.Source.Url, v.Source.Name, v.Source.Title.ForMdTable(), v.Source.Description.ForMdTable()];
+        string[] tdRight = [_targetTableLiteral, v.Target?.Url ?? "-", v.Target?.Name ?? "-", v.Target?.Title.ForMdTable() ?? "-", v.Target?.Description.ForMdTable() ?? "-"];
 
         writer.WriteLine("| " + string.Join(" | ", tdHeader) + " |");
         writer.WriteLine("| " + string.Join(" | ", Enumerable.Repeat("---", tdHeader.Length)) + " |");
@@ -932,6 +1184,41 @@ public class PackageComparer
 
         writer.WriteLine();
     }
+
+    private void WriteComparisonRecDataTable(ExportStreamWriter writer, PrimitiveTypeComparison v)
+    {
+        string[] tdHeader = ["Side", "Url", "Name", "Description"];
+        string[] tdLeft = [_sourceTableLiteral, v.Source.Url, v.Source.Name, v.Source.Description.ForMdTable()];
+        string[] tdRight = [_targetTableLiteral, v.Target?.Url ?? "-", v.Target?.Name ?? "-", v.Target?.Description.ForMdTable() ?? "-"];
+
+        writer.WriteLine("| " + string.Join(" | ", tdHeader) + " |");
+        writer.WriteLine("| " + string.Join(" | ", Enumerable.Repeat("---", tdHeader.Length)) + " |");
+        writer.WriteLine("| " + string.Join(" | ", tdLeft) + " |");
+        writer.WriteLine("| " + string.Join(" | ", tdRight) + " |");
+
+        writer.WriteLine();
+    }
+
+    private void WriteComparisonRecDataTable(ExportStreamWriter writer, StructureComparison s)
+    {
+        string[] tdHeader = ["Side", "Name", "Title", "Description", "Snapshot", "Differential"];
+        string[] tdLeft = [_sourceTableLiteral, s.Source.Name, s.Source.Title.ForMdTable(), s.Source.Description.ForMdTable(), s.Source.SnapshotCount.ToString(), s.Source.DifferentialCount.ToString()];
+        string[] tdRight = [
+            _targetTableLiteral,
+            s.Target?.Name ?? "-",
+            s.Target?.Title.ForMdTable() ?? "-",
+            s.Target?.Description.ForMdTable() ?? "-",
+            s.Target?.SnapshotCount.ToString() ?? "-",
+            s.Target?.DifferentialCount.ToString() ?? "-"];
+
+        writer.WriteLine("| " + string.Join(" | ", tdHeader) + " |");
+        writer.WriteLine("| " + string.Join(" | ", Enumerable.Repeat("---", tdHeader.Length)) + " |");
+        writer.WriteLine("| " + string.Join(" | ", tdLeft) + " |");
+        writer.WriteLine("| " + string.Join(" | ", tdRight) + " |");
+
+        writer.WriteLine();
+    }
+
 
     private void WriteComparisonRecResult(ExportStreamWriter writer, string statusString)
     {
@@ -967,6 +1254,33 @@ public class PackageComparer
         writer.WriteLine();
     }
 
+    private void WriteComparisonRecStatusTable(ExportStreamWriter writer, StructureComparison s)
+    {
+        Dictionary<string, int> counts = [];
+
+        // build summary data
+        foreach (ElementComparison c in s.ElementComparisons.Values)
+        {
+            string status = c.GetStatusString();
+            if (!counts.TryGetValue(status, out int count))
+            {
+                count = 0;
+            }
+
+            counts[status] = count + 1;
+        }
+
+        writer.WriteLine("| Status | Count |");
+        writer.WriteLine("| ------ | ----- |");
+
+        foreach ((string status, int count) in counts.OrderBy(kvp => kvp.Key))
+        {
+            writer.WriteLine($"{status} | {count} |");
+        }
+
+        writer.WriteLine();
+    }
+
     private void WriteComparisonChildDetails(ExportStreamWriter writer, ValueSetComparison cRec, bool useDetails = true)
     {
         writer.WriteLine();
@@ -977,22 +1291,82 @@ public class PackageComparer
             writer.WriteLine();
         }
 
-        writer.WriteLine("| Key | Source | Dest | Status | Message |");
-        writer.WriteLine("| --- | ------ | ---- | ------ | ------- |");
+        writer.WriteLine("| Source | Target | Status | Message |");
+        writer.WriteLine("| ------ | ------ | ------ | ------- |");
 
         foreach ((string code, ConceptComparison cc) in cRec.ConceptComparisons)
         {
             if (cc.TargetMappings.Count == 0)
             {
-                writer.WriteLine($"| {cc.Source.Code} | {cc.Source.Code} | - | {cc.GetStatusString()} | {cc.Message} |");
+                writer.WriteLine($"| {cc.Source.Code} | - | {cc.GetStatusString()} | {cc.Message} |");
                 continue;
             }
 
             foreach (ConceptComparisonDetails cd in cc.TargetMappings)
             {
-                writer.WriteLine($"| {cc.Source.Code} | {cc.Source.Code} | {cd.Target.Code} | {cd.GetStatusString()} | {cd.Message} |");
+                writer.WriteLine($"| {cc.Source.Code} | {cd.Target.Code} | {cd.GetStatusString()} | {cd.Message} |");
             }
         }
+
+        writer.WriteLine();
+
+        if (useDetails)
+        {
+            writer.WriteLine("</details>");
+            writer.WriteLine();
+        }
+    }
+
+    private void WriteComparisonChildDetails(ExportStreamWriter writer, StructureComparison cRec, bool useDetails = true)
+    {
+        writer.WriteLine();
+        if (useDetails)
+        {
+            writer.WriteLine("<details>");
+            writer.WriteLine("<summary>Content details</summary>");
+            writer.WriteLine();
+        }
+
+        writer.WriteLine("| Source | Target | Status | Message |");
+        writer.WriteLine("| ------ | ------ | ------ | ------- |");
+
+        foreach ((string path, ElementComparison ec) in cRec.ElementComparisons)
+        {
+            if (ec.TargetMappings.Count == 0)
+            {
+                writer.WriteLine($"| {ec.Source.Path} | - | {ec.GetStatusString()} | {ec.Message} |");
+                continue;
+            }
+
+            foreach (ElementComparisonDetails cd in ec.TargetMappings)
+            {
+                writer.WriteLine($"| {ec.Source.Path} | {cd.Target.Path} | {cd.GetStatusString()} | {cd.Message} |");
+            }
+        }
+
+        writer.WriteLine();
+
+        if (useDetails)
+        {
+            writer.WriteLine("</details>");
+            writer.WriteLine();
+        }
+    }
+
+    private void WriteComparisonChildDetails(ExportStreamWriter writer, PrimitiveTypeComparison cRec, bool useDetails = true)
+    {
+        writer.WriteLine();
+        if (useDetails)
+        {
+            writer.WriteLine("<details>");
+            writer.WriteLine("<summary>Content details</summary>");
+            writer.WriteLine();
+        }
+
+        writer.WriteLine("| Source | Target | Status | Message |");
+        writer.WriteLine("| ------ | ------ | ------ | ------- |");
+
+        writer.WriteLine($"| {cRec.Source.Name} | {cRec.Target?.Name ?? "-"} | {cRec.GetStatusString()} | {cRec.Message.ForMdTable()} |");
 
         writer.WriteLine();
 
@@ -1021,8 +1395,47 @@ public class PackageComparer
         writer.WriteLine();
         WriteComparisonRecStatusTable(writer, cRec);
         WriteComparisonChildDetails(writer, cRec, useDetails: false);
-
     }
+
+    private void WriteComparisonFile(
+        ExportStreamWriter writer,
+        string header,
+        PrimitiveTypeComparison cRec)
+    {
+        if (!string.IsNullOrEmpty(header))
+        {
+            writer.WriteLine("## " + header);
+        }
+
+        WriteComparisonRecDataTable(writer, cRec);
+        WriteComparisonRecResult(writer, cRec.GetStatusString());
+
+        writer.WriteLine();
+        writer.WriteLine("### Mapping details");
+        writer.WriteLine();
+        WriteComparisonChildDetails(writer, cRec, useDetails: false);
+    }
+
+    private void WriteComparisonFile(
+        ExportStreamWriter writer,
+        string header,
+        StructureComparison cRec)
+    {
+        if (!string.IsNullOrEmpty(header))
+        {
+            writer.WriteLine("## " + header);
+        }
+
+        WriteComparisonRecDataTable(writer, cRec);
+        WriteComparisonRecResult(writer, cRec.GetStatusString());
+
+        writer.WriteLine();
+        writer.WriteLine("### Mapping details");
+        writer.WriteLine();
+        WriteComparisonRecStatusTable(writer, cRec);
+        WriteComparisonChildDetails(writer, cRec, useDetails: false);
+    }
+
 
 
     private ExportStreamWriter CreateMarkdownWriter(string filename, bool writeGenerationHeader = true)
@@ -1291,7 +1704,7 @@ public class PackageComparer
             return false;
         }
 
-        valueSetComparison = vcs.FirstOrDefault(vc => vc.TargetUrl == targetUrl);
+        valueSetComparison = vcs.FirstOrDefault(vc => vc.Target.Url == targetUrl);
         return valueSetComparison != null;
     }
 
@@ -1906,7 +2319,7 @@ public class PackageComparer
 
             // check to see if we have any maps for this source value set
             if ((_crossVersion != null) &&
-                _crossVersion.TryGetMapsForVs(sourceVs.Url, out List<ConceptMap>? conceptMaps))
+                _crossVersion.TryGetMapsForSource(sourceVs.Url, out List<ConceptMap>? conceptMaps))
             {
                 // traverse our list of concept maps
                 foreach (ConceptMap cm in conceptMaps)
@@ -2062,7 +2475,7 @@ public class PackageComparer
                 {
                     Target = GetInfo(targetConcept),
                     Relationship = CMR.Equivalent,
-                    Message = "Name equality with no explicit maps is assumed to be equivalent",
+                    Message = $"{_sourceRLiteral} `{sourceConcept.Code}` is assumed equivalent to {_targetRLiteral} `{targetConcept.Code}` (no map, but codes match)",
                     IsPreferred = true,
                 });
             }
@@ -2130,14 +2543,8 @@ public class PackageComparer
 
         comparison = new()
         {
-            SourceUrl = UnversionedUrl(sourceVs.Url),
-            SourceName = sourceName,
-            SourceTitle = sourceVs.Title,
-            SourceDescription = sourceVs.Description,
-            TargetUrl = UnversionedUrl(targetVs.Url),
-            TargetName = targetName,
-            TargetTitle = targetVs.Title,
-            TargetDescription = targetVs.Description,
+            Source = GetInfo(sourceVs),
+            Target = GetInfo(targetVs),
             CompositeName = $"{_sourceRLiteral}-{sourceName}-{_targetRLiteral}-{targetName}",
             ConceptComparisons = conceptComparisons,
             Relationship = vsRelationship,
@@ -2210,6 +2617,15 @@ public class PackageComparer
         1 => mapTargetElement.Relationship ?? CMR.Equivalent,
         _ => ApplyRelationship(mapTargetElement.Relationship ?? CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
     };
+
+    string MessageForPrimitiveRelationship(CMR? r, ConceptMap.SourceElementComponent se, ConceptMap.TargetElementComponent te) => r switch
+    {
+        null => $"{_sourceRLiteral} `{se.Code}` has no mapping into {_targetRLiteral} primitives.",
+        CMR.Equivalent => $"{_sourceRLiteral} `{se.Code}` is equivalent to {_targetRLiteral} `{te.Code}`.",
+        CMR.SourceIsBroaderThanTarget => $"{_sourceRLiteral} `{se.Code}` is broader than {_targetRLiteral} {te.Code} and requires mapping choice. `{se.Code}` maps to {string.Join(" and ", se.Target.Select(t => $"`{t.Code}`"))}.",
+        _ => $"{_sourceRLiteral} `{se.Code}` maps as {r} to the target {_targetRLiteral} `{te.Code}`.",
+    };
+
 
     string MessageForComparisonRelationship(CMR? r, StructureDefinition sourceSd, StructureDefinition targetSd) => r switch
     {
@@ -2396,41 +2812,118 @@ public class PackageComparer
     {
         Dictionary<string, List<PrimitiveTypeComparison>> results = [];
 
-        // loop over the source primitive types
-        foreach ((string sourceName, StructureDefinition sourceSd) in sourcePrimitives)
+        Dictionary<string, Dictionary<string, List<ConceptMap.SourceElementComponent>>> mapsByTargetNameBySourceName = [];
+
+        // check to see if we have a primitive type map
+        if ((_crossVersion != null) &&
+            (_crossVersion?.DataTypeMap is ConceptMap cm))
         {
-            HashSet<string> testedTargetNames = [];
-
-            if (!results.TryGetValue(sourceName, out List<PrimitiveTypeComparison>? comparisons))
+            // build a mappings dictionary
+            foreach (ConceptMap.SourceElementComponent primitiveSE in cm.Group.SelectMany(g => g.Element))
             {
-                comparisons = [];
-                results.Add(sourceName, comparisons);
-            }
+                string sourceKey = primitiveSE.Code;
 
-            // check to see if we have a primitive type map
-            if ((_crossVersion != null) &&
-                (_crossVersion?.DataTypeMap is ConceptMap cm))
-            {
-                // check for our type in the type map
-                IEnumerable<ConceptMap.SourceElementComponent> primitiveSEs = cm.Group.SelectMany(g => g.Element.Where(e => e.Code == sourceName));
-
-                foreach (ConceptMap.SourceElementComponent primitiveSE in primitiveSEs)
+                if (!mapsByTargetNameBySourceName.TryGetValue(sourceKey, out Dictionary<string, List<ConceptMap.SourceElementComponent>>? targetMaps))
                 {
-                    foreach (ConceptMap.TargetElementComponent primitiveTE in primitiveSE.Target)
-                    {
-                        if (targetPrimitives.TryGetValue(primitiveTE.Code, out StructureDefinition? targetSd))
-                        {
-                            testedTargetNames.Add(primitiveTE.Code);
+                    targetMaps = [];
+                    mapsByTargetNameBySourceName.Add(sourceKey, targetMaps);
+                }
 
-                            // primitive comparison is just based on names, so we can do it inline
-                            CMR? relationship = GetDefaultRelationship(primitiveTE, primitiveSE.Target);
-                        }
+                foreach (ConceptMap.TargetElementComponent primitiveTE in primitiveSE.Target)
+                {
+                    if (!targetMaps.TryGetValue(primitiveTE.Code, out List<ConceptMap.SourceElementComponent>? elementMaps))
+                    {
+                        elementMaps = [];
+                        targetMaps.Add(primitiveTE.Code, elementMaps);
                     }
+
+                    elementMaps.Add(primitiveSE);
                 }
             }
         }
 
-        throw new NotImplementedException();
+        // loop over the source primitive types
+        foreach ((string sourceCode, StructureDefinition sourceSd) in sourcePrimitives)
+        {
+            StructureInfoRec sourceInfo = GetInfo(sourceSd);
+
+            HashSet< string> testedTargetNames = [];
+
+            if (!results.TryGetValue(sourceCode, out List<PrimitiveTypeComparison>? comparisons))
+            {
+                comparisons = [];
+                results.Add(sourceCode, comparisons);
+            }
+
+            // check to see if we have a map for this source type
+            if (mapsByTargetNameBySourceName.TryGetValue(sourceCode, out Dictionary<string, List<ConceptMap.SourceElementComponent>>? targetMaps))
+            {
+                foreach ((string targetCode, List<ConceptMap.SourceElementComponent> mapSourceElements) in targetMaps)
+                {
+                    foreach (ConceptMap.SourceElementComponent mapSourceElement in mapSourceElements)
+                    {
+                        foreach (ConceptMap.TargetElementComponent mapTargetElement in mapSourceElement.Target)
+                        {
+                            CMR? relationship = GetDefaultRelationship(mapTargetElement, mapSourceElement.Target);
+                            string message = string.IsNullOrEmpty(mapTargetElement.Comment)
+                                ? MessageForPrimitiveRelationship(relationship, mapSourceElement, mapTargetElement)
+                                : mapTargetElement.Comment;
+
+                            if (targetPrimitives.TryGetValue(mapTargetElement.Code, out StructureDefinition? targetSd))
+                            {
+                                comparisons.Add(new()
+                                {
+                                    SourceTypeLiteral = sourceCode,
+                                    Source = sourceInfo,
+                                    TargetTypeLiteral = mapTargetElement.Code,
+                                    Target = GetInfo(targetSd),
+                                    CompositeName = $"{_sourceRLiteral}-{sourceSd.Name.ToCamelCase()}-{_targetRLiteral}-{targetSd.Name.ToCamelCase()}",
+                                    Relationship = relationship,
+                                    Message = message,
+                                });
+                            }
+                            else
+                            {
+                                comparisons.Add(new()
+                                {
+                                    SourceTypeLiteral = sourceCode,
+                                    Source = sourceInfo,
+                                    TargetTypeLiteral = mapTargetElement.Code,
+                                    Target = new()
+                                    {
+                                        Name = mapTargetElement.Code,
+                                        Url = string.Empty,
+                                        Title = string.Empty,
+                                        Description = string.Empty,
+                                        Purpose = string.Empty,
+                                        SnapshotCount = 0,
+                                        DifferentialCount = 0,
+                                    },
+                                    CompositeName = $"{_sourceRLiteral}-{sourceSd.Name.ToCamelCase()}-{_targetRLiteral}-{mapTargetElement.Code.ToCamelCase()}",
+                                    Relationship = relationship,
+                                    Message = message,
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            else if (targetPrimitives.TryGetValue(sourceCode, out StructureDefinition? targetSd))
+            {
+                comparisons.Add(new()
+                {
+                    SourceTypeLiteral = sourceCode,
+                    Source = sourceInfo,
+                    TargetTypeLiteral = sourceCode,
+                    Target = GetInfo(targetSd),
+                    CompositeName = $"{_sourceRLiteral}-{sourceSd.Name.ToCamelCase()}-{_targetRLiteral}-{targetSd.Name.ToCamelCase()}",
+                    Relationship = CMR.Equivalent,
+                    Message = $"{_sourceRLiteral} `{sourceCode}` is assumed equivalent to {_targetRLiteral} `{sourceCode}` (no map, but names match)",
+                });
+            }
+        }
+
+        return results;
     }
 
 
@@ -2780,6 +3273,314 @@ public class PackageComparer
         return true;
     }
 
+    private Dictionary<string, List<StructureComparison>> CompareStructures(
+        IReadOnlyDictionary<string, StructureDefinition> sourceStructures,
+        IReadOnlyDictionary<string, StructureDefinition> targetStructures)
+    {
+        Dictionary<string, List<StructureComparison>> results = [];
+
+        // loop over the source structures
+        foreach ((string sourceSdName, StructureDefinition sourceSd) in sourceStructures)
+        {
+            HashSet<string> testedTargetNames = [];
+
+            if (!results.TryGetValue(sourceSdName, out List<StructureComparison>? comparisons))
+            {
+                comparisons = [];
+                results.Add(sourceSdName, comparisons);
+            }
+
+            // check to see if we have any maps for this source value set
+            if ((_crossVersion != null) &&
+                _crossVersion.TryGetMapsForSource(sourceSd.Url, out List<ConceptMap>? conceptMaps))
+            {
+                // traverse our list of concept maps
+                foreach (ConceptMap cm in conceptMaps)
+                {
+                    // check to see if we have a target value set
+                    if ((cm.TargetScope is Canonical targetCanonical) &&
+                        targetStructures.TryGetValue(targetCanonical.Uri ?? string.Empty, out StructureDefinition? mappedTargetSd))
+                    {
+                        testedTargetNames.Add(targetCanonical.Uri!);
+
+                        // test this mapping
+                        if (TryCompareStructureElements(sourceSd, mappedTargetSd, cm, out StructureComparison? mappedComparison))
+                        {
+                            comparisons.Add(mappedComparison);
+                        }
+                    }
+                }
+            }
+
+            // make sure that we tested direct source -> target if it exists
+            if (!testedTargetNames.Contains(sourceSdName) &&
+                targetStructures.TryGetValue(sourceSdName, out StructureDefinition? targetSd))
+            {
+                if (TryCompareStructureElements(sourceSd, targetSd, null, out StructureComparison? directComparison))
+                {
+                    comparisons.Add(directComparison);
+                }
+            }
+        }
+
+        return results;
+    }
+
+    private bool TryCompareStructureElements(
+        StructureDefinition sourceSd,
+        StructureDefinition targetSd,
+        ConceptMap? sdConceptMap,
+        [NotNullWhen(true)] out StructureComparison? comparison)
+    {
+        Dictionary<string, ElementDefinition> sourceElements = sourceSd.cgElements().ToDictionary(c => c.Path);
+        Dictionary<string, ElementDefinition> targetElements = targetSd.cgElements().ToDictionary(c => c.Path);
+
+        Dictionary<string, ElementComparison> elementComparisons = [];
+
+        Dictionary<string, Dictionary<string, List<ConceptMap.SourceElementComponent>>> mapsByTargetPathBySourcePath = [];
+
+        // build a mapping lookup if we have one
+        if (sdConceptMap != null)
+        {
+            // traverse the groups in our map - each group represents a system
+            foreach (ConceptMap.GroupComponent cmGroup in sdConceptMap.Group)
+            {
+                string groupSourceSystem = cmGroup.Source ?? UnversionedUrl(sourceSd.Url);
+                string groupTargetSystem = cmGroup.Target ?? UnversionedUrl(targetSd.Url);
+
+                // add all the elements from this group to our lookup
+                foreach (ConceptMap.SourceElementComponent cmElement in cmGroup.Element)
+                {
+                    string sourceKey = cmElement.Code;
+
+                    if (!mapsByTargetPathBySourcePath.TryGetValue(sourceKey, out Dictionary<string, List<ConceptMap.SourceElementComponent>>? targetMaps))
+                    {
+                        targetMaps = [];
+                        mapsByTargetPathBySourcePath.Add(sourceKey, targetMaps);
+                    }
+
+                    if (!targetMaps.TryGetValue(groupTargetSystem, out List<ConceptMap.SourceElementComponent>? elementMaps))
+                    {
+                        elementMaps = [];
+                        targetMaps.Add(groupTargetSystem, elementMaps);
+                    }
+
+                    elementMaps.Add(cmElement);
+                }
+            }
+        }
+
+        Dictionary<string, HashSet<string>> targetsMappedToSources = [];
+
+        // traverse the source elements to do comparison tests
+        foreach (ElementDefinition sourceEd in sourceElements.Values)
+        {
+            ElementInfoRec sourceEdInfo = GetInfo(sourceEd);
+            List<ElementComparisonDetails> elementComparisonDetails = [];
+
+            string sourceKey = sourceEd.Path;
+
+            // check to see if we have a map for this source element
+            if (mapsByTargetPathBySourcePath.TryGetValue(sourceKey, out Dictionary<string, List<ConceptMap.SourceElementComponent>>? targetMaps))
+            {
+                foreach ((string targetSystem, List<ConceptMap.SourceElementComponent> mapSourceElements) in targetMaps)
+                {
+                    foreach (ConceptMap.SourceElementComponent mapSourceElement in mapSourceElements)
+                    {
+                        foreach (ConceptMap.TargetElementComponent mapTargetElement in mapSourceElement.Target)
+                        {
+                            CMR? relationship = GetDefaultRelationship(mapTargetElement, mapSourceElement.Target);
+                            string message = string.IsNullOrEmpty(mapTargetElement.Comment)
+                                ? MessageForElementRelationship(relationship, mapSourceElement, mapTargetElement)
+                                : mapTargetElement.Comment;
+
+                            string targetCombined = mapTargetElement.Code;
+                            if (!targetsMappedToSources.TryGetValue(targetCombined, out HashSet<string>? sourceCodes))
+                            {
+                                sourceCodes = new();
+                                targetsMappedToSources.Add(targetCombined, sourceCodes);
+                            }
+
+                            sourceCodes.Add(sourceKey);
+
+                            if (targetElements.TryGetValue(mapTargetElement.Code, out ElementDefinition? targetElementFromMap))
+                            {
+                                elementComparisonDetails.Add(new()
+                                {
+                                    Target = GetInfo(targetElementFromMap),
+                                    Relationship = relationship,
+                                    Message = message,
+                                });
+                            }
+                            else
+                            {
+                                throw new Exception("Target element does not exist!");
+                                //elementComparisonDetails.Add(new()
+                                //{
+                                //    Target = new()
+                                //    {
+                                //        System = targetSystem,
+                                //        Code = mapTargetElement.Code,
+                                //        Description = string.Empty,
+                                //    },
+                                //    Relationship = relationship,
+                                //    Message = message,
+                                //    IsPreferred = conceptComparisonDetails.Count == 0,
+                                //});
+                            }
+                        }
+                    }
+                }
+            }
+            else if (targetElements.TryGetValue(sourceKey, out ElementDefinition? targetElement))
+            {
+                string targetCombined = targetElement.Path;
+                if (!targetsMappedToSources.TryGetValue(targetCombined, out HashSet<string>? sourceElementPaths))
+                {
+                    sourceElementPaths = new();
+                    targetsMappedToSources.Add(targetCombined, sourceElementPaths);
+                }
+
+                sourceElementPaths.Add(sourceKey);
+
+                // create a 'default' comparison state
+                elementComparisonDetails.Add(new()
+                {
+                    Target = GetInfo(targetElement),
+                    Relationship = CMR.Equivalent,
+                    Message = $"{_sourceRLiteral} `{sourceEd.Path}` is assumed equivalent to {_targetRLiteral} `{targetElement.Path}` (no map, but paths match)",
+                });
+            }
+
+            ElementComparison cc = new()
+            {
+                Source = sourceEdInfo,
+                TargetMappings = elementComparisonDetails,
+                Relationship = RelationshipForDetails(elementComparisonDetails),
+                Message = MessageForDetails(elementComparisonDetails, sourceEdInfo, targetSd),
+            };
+
+            elementComparisons.Add(sourceEd.Path, cc);
+        }
+
+
+        // check our target -> sources to see if we need to mark items as narrower
+        foreach ((string targetPath, HashSet<string> sourceKeys) in targetsMappedToSources)
+        {
+            if (string.IsNullOrEmpty(targetPath))
+            {
+                throw new Exception();
+            }
+
+            if (sourceKeys.Count == 1)
+            {
+                continue;
+            }
+
+            foreach (string sourceKey in sourceKeys)
+            {
+                string sourceConcept = sourceKey.Split('#')[^1];
+
+                if (elementComparisons.TryGetValue(sourceConcept, out ElementComparison? ec) &&
+                    (ec.Relationship == CMR.Equivalent))
+                {
+                    string msg = $"{_sourceRLiteral} `{ec.Source.Path}` is narrower than {_targetRLiteral} `{targetPath}` and is compatible." +
+                            $" `{targetPath}` is mapped from {string.Join(" and ", sourceKeys.Order().Select(sk => $"`{sk}`"))}.";
+
+                    ElementComparison updated = ec with
+                    {
+                        Relationship = CMR.SourceIsNarrowerThanTarget,
+                        Message = msg,
+                        TargetMappings = ec.TargetMappings
+                            .Select(tc => tc.Target.Path != targetPath
+                                ? tc
+                                : tc with
+                                {
+                                    Relationship = CMR.SourceIsNarrowerThanTarget,
+                                    Message = msg,
+                                })
+                            .ToList(),
+                    };
+
+                    elementComparisons[sourceConcept] = updated;
+                }
+            }
+        }
+
+        string sourceName = sourceSd.Name.ToPascalCase();
+        string targetName = targetSd.Name.ToPascalCase();
+
+        CMR? sdRelationship = RelationshipForComparisons(elementComparisons);
+
+        comparison = new()
+        {
+            Source = GetInfo(sourceSd),
+            Target = GetInfo(targetSd),
+            CompositeName = $"{_sourceRLiteral}-{sourceName}-{_targetRLiteral}-{targetName}",
+            ElementComparisons = elementComparisons,
+            Relationship = sdRelationship,
+            Message = MessageForComparisonRelationship(sdRelationship, sourceSd, targetSd),
+        };
+        return true;
+
+
+        string MessageForElementRelationship(CMR? r, ConceptMap.SourceElementComponent se, ConceptMap.TargetElementComponent te) => r switch
+        {
+            null => $"{_sourceRLiteral} `{se.Code}` has no mapping into {_targetRLiteral} {targetSd.Url}.",
+            CMR.Equivalent => $"{_sourceRLiteral} `{se.Code}` is equivalent to {_targetRLiteral} `{te.Code}`.",
+            CMR.SourceIsBroaderThanTarget => $"{_sourceRLiteral} `{se.Code}` is broader than {_targetRLiteral} {te.Code} and requires mapping choice. `{se.Code}` maps to {string.Join(" and ", se.Target.Select(t => $"`{t.Code}`"))}.",
+            _ => $"{_sourceRLiteral} `{se.Code}` maps as {r} to the target {_targetRLiteral} `{te.Code}`.",
+        };
+
+        CMR? RelationshipForDetails(List<ElementComparisonDetails> details) => details.Count switch
+        {
+            0 => CMR.NotRelatedTo,
+            1 => CMR.Equivalent,
+            _ => CMR.SourceIsBroaderThanTarget,
+        };
+
+        string MessageForDetails(List<ElementComparisonDetails> details, ElementInfoRec sourceInfo, StructureDefinition targetSd) => details.Count switch
+        {
+            0 => $"{_sourceRLiteral} `{sourceInfo.Path}` does not appear in the target and has no mapping for {targetSd.Url}.",
+            1 => details[0].Message,
+            _ => $"{_sourceRLiteral} `{sourceInfo.Path}` maps to multiple elements in {targetSd.Url}.",
+        };
+
+        string MessageForComparisonRelationship(CMR? r, StructureDefinition sourceSd, StructureDefinition targetSd) => r switch
+        {
+            null => $"There is no mapping from {_sourceRLiteral} {sourceSd.Url} to {_targetRLiteral} {targetSd.Url}.",
+            CMR.Equivalent => $"{_sourceRLiteral} {sourceSd.Url} is equivalent to {_targetRLiteral} {targetSd.Url}.",
+            CMR.SourceIsBroaderThanTarget => $"{_sourceRLiteral} {sourceSd.Url} is broader than {_targetRLiteral} {targetSd.Url} and requires mapping choices for conversion.",
+            _ => $"{_sourceRLiteral} {sourceSd.Url} maps as {r} to {_targetRLiteral} {targetSd.Url}.",
+        };
+
+        CMR? RelationshipForComparisons(Dictionary<string, ElementComparison> comparisons) => comparisons.Count switch
+        {
+            0 => CMR.NotRelatedTo,
+            1 => comparisons.First().Value.Relationship,
+            _ => comparisons.All(kvp => IsEquivalentOrNotPresent(kvp.Value))
+                ? CMR.Equivalent
+                : comparisons.All(kvp => IsEquivalentOrBroader(kvp.Value))
+                ? CMR.SourceIsBroaderThanTarget
+                : comparisons.All(kvp => IsEquivalentOrNarrower(kvp.Value))
+                ? CMR.SourceIsNarrowerThanTarget
+                : CMR.RelatedTo,
+        };
+
+        bool IsEquivalentOrNotPresent(ElementComparison cc) =>
+            cc.Relationship == CMR.Equivalent ||
+            cc.TargetMappings.Count == 0;
+
+        bool IsEquivalentOrBroader(ElementComparison cc) =>
+            cc.Relationship == CMR.Equivalent ||
+            cc.Relationship == CMR.SourceIsBroaderThanTarget ||
+            cc.TargetMappings.Count == 0;
+
+        bool IsEquivalentOrNarrower(ElementComparison cc) =>
+            cc.Relationship == CMR.Equivalent ||
+            cc.Relationship == CMR.SourceIsNarrowerThanTarget ||
+            cc.TargetMappings.Count == 0;
+    }
 
     private Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> CompareStructures(
         FhirArtifactClassEnum artifactClass,
@@ -3013,11 +3814,11 @@ public class PackageComparer
     {
         return new()
         {
-            Url = vs.Url,
+            Url = UnversionedUrl(vs.Url),
             Name = vs.Name,
+            NamePascal = vs.Name.ToPascalCase(),
             Title = vs.Title,
             Description = vs.Description,
-            ConceptCount = 0,       // will be filled in later
         };
     }
 
@@ -3044,6 +3845,7 @@ public class PackageComparer
             MaxCardinalityString = ed.Max,
             ValueSetBindingStrength = ed.Binding?.Strength,
             BindingValueSet = ed.Binding?.ValueSet ?? string.Empty,
+            Types = ed.Type.Select(GetInfo).ToDictionary(i => i.Name),
         };
     }
 
