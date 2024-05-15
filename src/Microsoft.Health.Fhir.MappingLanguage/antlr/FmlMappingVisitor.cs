@@ -38,6 +38,42 @@ public interface IFmlMappingVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitStructureMap([NotNull] FmlMappingParser.StructureMapContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="FmlMappingParser.conceptMapDeclaration"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitConceptMapDeclaration([NotNull] FmlMappingParser.ConceptMapDeclarationContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="FmlMappingParser.conceptMapPrefix"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitConceptMapPrefix([NotNull] FmlMappingParser.ConceptMapPrefixContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="FmlMappingParser.conceptMapCodeMap"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitConceptMapCodeMap([NotNull] FmlMappingParser.ConceptMapCodeMapContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="FmlMappingParser.conceptMapSource"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitConceptMapSource([NotNull] FmlMappingParser.ConceptMapSourceContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="FmlMappingParser.conceptMapTarget"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitConceptMapTarget([NotNull] FmlMappingParser.ConceptMapTargetContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="FmlMappingParser.code"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitCode([NotNull] FmlMappingParser.CodeContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="FmlMappingParser.mapDeclaration"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

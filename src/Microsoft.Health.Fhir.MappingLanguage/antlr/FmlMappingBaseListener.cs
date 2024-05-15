@@ -48,6 +48,78 @@ public partial class FmlMappingBaseListener : IFmlMappingListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitStructureMap([NotNull] FmlMappingParser.StructureMapContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.conceptMapDeclaration"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterConceptMapDeclaration([NotNull] FmlMappingParser.ConceptMapDeclarationContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.conceptMapDeclaration"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitConceptMapDeclaration([NotNull] FmlMappingParser.ConceptMapDeclarationContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.conceptMapPrefix"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterConceptMapPrefix([NotNull] FmlMappingParser.ConceptMapPrefixContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.conceptMapPrefix"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitConceptMapPrefix([NotNull] FmlMappingParser.ConceptMapPrefixContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.conceptMapCodeMap"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterConceptMapCodeMap([NotNull] FmlMappingParser.ConceptMapCodeMapContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.conceptMapCodeMap"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitConceptMapCodeMap([NotNull] FmlMappingParser.ConceptMapCodeMapContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.conceptMapSource"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterConceptMapSource([NotNull] FmlMappingParser.ConceptMapSourceContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.conceptMapSource"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitConceptMapSource([NotNull] FmlMappingParser.ConceptMapSourceContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.conceptMapTarget"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterConceptMapTarget([NotNull] FmlMappingParser.ConceptMapTargetContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.conceptMapTarget"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitConceptMapTarget([NotNull] FmlMappingParser.ConceptMapTargetContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="FmlMappingParser.code"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterCode([NotNull] FmlMappingParser.CodeContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="FmlMappingParser.code"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitCode([NotNull] FmlMappingParser.CodeContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="FmlMappingParser.mapDeclaration"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>

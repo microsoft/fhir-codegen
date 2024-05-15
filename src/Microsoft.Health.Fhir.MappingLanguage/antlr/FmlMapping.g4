@@ -8,11 +8,34 @@
 // structureMap : mapId conceptMap* structure* imports* group+
 
 structureMap
-  : metadataDeclaration*? mapDeclaration? structureDeclaration*? importDeclaration*? constantDeclaration*? groupDeclaration+ EOF
+  : metadataDeclaration*? conceptMapDeclaration*? mapDeclaration? structureDeclaration*? importDeclaration*? constantDeclaration*? groupDeclaration+ EOF
   ;
 
-// header
-//   : (map | mapUrl | mapName | mapTitle | mapStatus | mapDescription)* ;
+conceptMapDeclaration
+  : 'conceptmap' url '{' conceptMapPrefix+ conceptMapCodeMap+ '}'
+  ;
+
+conceptMapPrefix
+  : 'prefix' ID '=' url
+  ;
+
+conceptMapCodeMap
+  : conceptMapSource '-' conceptMapTarget
+  ;
+
+conceptMapSource
+  : ID ':' code
+  ;
+
+conceptMapTarget
+  : ID ':' code
+  ;
+
+code
+  : ID
+  | SINGLE_QUOTED_STRING
+  | DOUBLE_QUOTED_STRING
+  ;
 
 mapDeclaration
 	: 'map' url '=' identifier

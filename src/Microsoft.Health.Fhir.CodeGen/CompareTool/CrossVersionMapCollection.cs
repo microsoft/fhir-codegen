@@ -42,28 +42,28 @@ public class CrossVersionMapCollection
 
     private IFhirPackageClient _cache = null!;
 
-    private DefinitionCollection _left;
-    private DefinitionCollection _right;
+    private DefinitionCollection _source;
+    private DefinitionCollection _target;
     private DefinitionCollection _dc = null!;
     
     private string _mapCanonical = string.Empty;
 
-    private FhirReleases.FhirSequenceCodes _leftFhirSequence;
-    private string _leftPackageCanonical;
-    private string _leftRLiteral;
-    private string _leftShortVersionUrlSegment;
-    private string _leftPackageVersion;
+    private FhirReleases.FhirSequenceCodes _sourceFhirSequence;
+    private string _sourcePackageCanonical;
+    private string _sourceRLiteral;
+    private string _sourceShortVersionUrlSegment;
+    private string _sourcePackageVersion;
 
-    private FhirReleases.FhirSequenceCodes _rightFhirSequence;
-    private string _rightPackageCanonical;
-    private string _rightRLiteral;
-    private string _rightShortVersionUrlSegment;
-    private string _rightPackageVersion;
+    private FhirReleases.FhirSequenceCodes _targetFhirSequence;
+    private string _targetPackageCanonical;
+    private string _targetRLiteral;
+    private string _targetShortVersionUrlSegment;
+    private string _targetPackageVersion;
 
-    private string _leftToRightWithR;
-    private int _leftToRightWithRLen;
-    private string _leftToRightNoR;
-    private int _leftToRightNoRLen;
+    private string _sourceToTargetWithR;
+    private int _sourceToTargetWithRLen;
+    private string _sourceToTargetNoR;
+    private int _sourceToTargetNoRLen;
 
     private Dictionary<string, string> _urlMap = [];
 
@@ -77,8 +77,8 @@ public class CrossVersionMapCollection
 
     public CrossVersionMapCollection(
         IFhirPackageClient cache,
-        DefinitionCollection left,
-        DefinitionCollection right)
+        DefinitionCollection source,
+        DefinitionCollection target)
     {
         _cache = cache;
         _loader = new(_cache, new()
@@ -88,26 +88,26 @@ public class CrossVersionMapCollection
             ResolvePackageDependencies = false,
         });
 
-        _left = left;
+        _source = source;
 
-        _leftPackageCanonical = left.MainPackageCanonical;
-        _leftFhirSequence = left.FhirSequence;
-        _leftRLiteral = left.FhirSequence.ToRLiteral();
-        _leftShortVersionUrlSegment = "/" + left.FhirSequence.ToShortVersion() + "/";
-        _leftPackageVersion = left.FhirVersionLiteral;
+        _sourcePackageCanonical = source.MainPackageCanonical;
+        _sourceFhirSequence = source.FhirSequence;
+        _sourceRLiteral = source.FhirSequence.ToRLiteral();
+        _sourceShortVersionUrlSegment = "/" + source.FhirSequence.ToShortVersion() + "/";
+        _sourcePackageVersion = source.FhirVersionLiteral;
 
-        _right = right;
+        _target = target;
 
-        _rightPackageCanonical = right.MainPackageCanonical;
-        _rightFhirSequence = right.FhirSequence;
-        _rightRLiteral = right.FhirSequence.ToRLiteral();
-        _rightShortVersionUrlSegment = "/" + right.FhirSequence.ToShortVersion() + "/";
-        _rightPackageVersion = right.FhirVersionLiteral;
+        _targetPackageCanonical = target.MainPackageCanonical;
+        _targetFhirSequence = target.FhirSequence;
+        _targetRLiteral = target.FhirSequence.ToRLiteral();
+        _targetShortVersionUrlSegment = "/" + target.FhirSequence.ToShortVersion() + "/";
+        _targetPackageVersion = target.FhirVersionLiteral;
 
-        _leftToRightWithR = $"{_leftRLiteral}to{_rightRLiteral}";
-        _leftToRightWithRLen = _leftToRightWithR.Length;
-        _leftToRightNoR = $"{_leftRLiteral[1..]}to{_rightRLiteral[1..]}";
-        _leftToRightNoRLen = _leftToRightNoR.Length;
+        _sourceToTargetWithR = $"{_sourceRLiteral}to{_targetRLiteral}";
+        _sourceToTargetWithRLen = _sourceToTargetWithR.Length;
+        _sourceToTargetNoR = $"{_sourceRLiteral[1..]}to{_targetRLiteral[1..]}";
+        _sourceToTargetNoRLen = _sourceToTargetNoR.Length;
 
         //_mapCanonical = $"http://hl7.org/fhir/uv/xver/{_leftRLiteral.ToLowerInvariant()}-{_rightRLiteral.ToLowerInvariant()}";
         _mapCanonical = BuildUrl("{0}{3}-{5}", _canonicalRootCrossVersion);
@@ -119,7 +119,7 @@ public class CrossVersionMapCollection
             FhirVersion = FHIRVersion.N5_0_0,
             FhirVersionLiteral = "5.0.0",
             FhirSequence = FhirReleases.FhirSequenceCodes.R5,
-            MainPackageId = $"hl7.fhir.uv.xver.{_leftRLiteral.ToLowerInvariant()}-{_rightRLiteral.ToLowerInvariant()}",
+            MainPackageId = $"hl7.fhir.uv.xver.{_sourceRLiteral.ToLowerInvariant()}-{_targetRLiteral.ToLowerInvariant()}",
             MainPackageVersion = "0.0.1",
             MainPackageCanonical = _mapCanonical,
         };
@@ -194,7 +194,7 @@ public class CrossVersionMapCollection
 
     private bool TryLoadSourceConceptMaps(string crossRepoPath)
     {
-        Console.WriteLine($"Loading fhir-cross-version-source concept maps for conversion from {_leftRLiteral} to {_rightRLiteral}...");
+        Console.WriteLine($"Loading fhir-cross-version-source concept maps for conversion from {_sourceRLiteral} to {_targetRLiteral}...");
 
         if (!TryLoadSourceConceptMaps(crossRepoPath, CrossVersionMapTypeCodes.ValueSetConcepts))
         {
@@ -226,7 +226,7 @@ public class CrossVersionMapCollection
 
     private bool TryLoadOfficialConceptMaps(string fhirCrossRepoPath)
     {
-        Console.WriteLine($"Loading fhir-cross-version concept maps for conversion from {_leftRLiteral} to {_rightRLiteral}...");
+        Console.WriteLine($"Loading fhir-cross-version concept maps for conversion from {_sourceRLiteral} to {_targetRLiteral}...");
 
         if (!TryLoadOfficialConceptMaps(fhirCrossRepoPath, "codes"))
         {
@@ -261,7 +261,7 @@ public class CrossVersionMapCollection
         }
 
         // files appear similar to ConceptMap-types-4bto5.json
-        string[] files = Directory.GetFiles(path, $"ConceptMap*-{_leftToRightNoR}.json", SearchOption.TopDirectoryOnly);
+        string[] files = Directory.GetFiles(path, $"ConceptMap*-{_sourceToTargetNoR}.json", SearchOption.TopDirectoryOnly);
 
         foreach (string filename in files)
         {
@@ -291,7 +291,7 @@ public class CrossVersionMapCollection
                             if (cm.SourceScope is FhirUri originalSourceUri)
                             {
                                 string elementPath = originalSourceUri.Value.Split('#')[^1];
-                                if (_left.TryFindElementByPath(elementPath, out StructureDefinition? sd, out ElementDefinition? ed))
+                                if (_source.TryFindElementByPath(elementPath, out StructureDefinition? sd, out ElementDefinition? ed))
                                 {
                                     sourceScopeUrl = ed.Binding?.ValueSet ?? string.Empty;
                                 }
@@ -300,7 +300,7 @@ public class CrossVersionMapCollection
                             if (cm.TargetScope is FhirUri originalTargetUri)
                             {
                                 string elementPath = originalTargetUri.Value.Split('#')[^1];
-                                if (_right.TryFindElementByPath(elementPath, out StructureDefinition? sd, out ElementDefinition? ed))
+                                if (_target.TryFindElementByPath(elementPath, out StructureDefinition? sd, out ElementDefinition? ed))
                                 {
                                     targetScopeUrl = ed.Binding?.ValueSet ?? string.Empty;
                                 }
@@ -325,7 +325,7 @@ public class CrossVersionMapCollection
 
                             string originalMapUrl = cm.Url;
 
-                            string localConceptMapId = $"{_leftRLiteral}-{leftName}-{_rightRLiteral}-{rightName}";
+                            string localConceptMapId = $"{_sourceRLiteral}-{leftName}-{_targetRLiteral}-{rightName}";
                             string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
 
                             // if we have a mapping for this value set pair already, just track the source name
@@ -349,21 +349,21 @@ public class CrossVersionMapCollection
                             cm.AddExtension(CommonDefinitions.ExtUrlConceptMapAdditionalUrls, new FhirUrl(originalMapUrl));
 
                             // try to manufacture correct value set URLs based on what we have
-                            cm.SourceScope = new Canonical(unversionedSourceUrl + "|" + _leftPackageVersion);
-                            cm.TargetScope = new Canonical(unversionedTargetUrl + "|" + _rightPackageVersion);
+                            cm.SourceScope = new Canonical(unversionedSourceUrl + "|" + _sourcePackageVersion);
+                            cm.TargetScope = new Canonical(unversionedTargetUrl + "|" + _targetPackageVersion);
 
                             foreach (ConceptMap.GroupComponent group in cm.Group)
                             {
                                 // fix the source and target value set URLs if they have had versions inserted
 
-                                if (group.Source.Contains(_leftShortVersionUrlSegment, StringComparison.Ordinal))
+                                if (group.Source.Contains(_sourceShortVersionUrlSegment, StringComparison.Ordinal))
                                 {
-                                    group.Source = group.Source.Replace(_leftShortVersionUrlSegment, "/");
+                                    group.Source = group.Source.Replace(_sourceShortVersionUrlSegment, "/");
                                 }
 
-                                if (group.Target.Contains(_rightShortVersionUrlSegment, StringComparison.Ordinal))
+                                if (group.Target.Contains(_targetShortVersionUrlSegment, StringComparison.Ordinal))
                                 {
-                                    group.Target = group.Target.Replace(_rightShortVersionUrlSegment, "/");
+                                    group.Target = group.Target.Replace(_targetShortVersionUrlSegment, "/");
                                 }
                             }
 
@@ -389,7 +389,7 @@ public class CrossVersionMapCollection
 
                             string officialUrl = cm.Url;
 
-                            string localConceptMapId = $"{_leftRLiteral}-types-{_rightRLiteral}";
+                            string localConceptMapId = $"{_sourceRLiteral}-types-{_targetRLiteral}";
                             string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
 
                             // update our info
@@ -398,11 +398,11 @@ public class CrossVersionMapCollection
                             cm.Name = localConceptMapId;
                             cm.Title = GetConceptMapTitle("data type");
 
-                            string sourceLocalUrl = BuildUrl("{0}/{1}/{2}", _leftPackageCanonical, "ValueSet", "data-types");
-                            string targetLocalUrl = BuildUrl("{0}/{1}/{2}", _rightPackageCanonical, "ValueSet", "data-types");
+                            string sourceLocalUrl = BuildUrl("{0}/{1}/{2}", _sourcePackageCanonical, "ValueSet", "data-types");
+                            string targetLocalUrl = BuildUrl("{0}/{1}/{2}", _targetPackageCanonical, "ValueSet", "data-types");
 
-                            cm.SourceScope = new Canonical($"{sourceLocalUrl}|{_leftPackageVersion}");
-                            cm.TargetScope = new Canonical($"{targetLocalUrl}|{_rightPackageVersion}");
+                            cm.SourceScope = new Canonical($"{sourceLocalUrl}|{_sourcePackageVersion}");
+                            cm.TargetScope = new Canonical($"{targetLocalUrl}|{_targetPackageVersion}");
 
                             cm.Group[0].Source = sourceLocalUrl;
                             cm.Group[0].Target = targetLocalUrl;
@@ -420,7 +420,7 @@ public class CrossVersionMapCollection
 
                             string officialUrl = cm.Url;
 
-                            string localConceptMapId = $"{_leftRLiteral}-resources-{_rightRLiteral}";
+                            string localConceptMapId = $"{_sourceRLiteral}-resources-{_targetRLiteral}";
                             string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
 
                             // update our info
@@ -429,11 +429,11 @@ public class CrossVersionMapCollection
                             cm.Name = localConceptMapId;
                             cm.Title = GetConceptMapTitle("resource type");
 
-                            string sourceLocalUrl = BuildUrl("{0}/{1}/{2}", _leftPackageCanonical, "ValueSet", "resources");
-                            string targetLocalUrl = BuildUrl("{0}/{1}/{2}", _rightPackageCanonical, "ValueSet", "resources");
+                            string sourceLocalUrl = BuildUrl("{0}/{1}/{2}", _sourcePackageCanonical, "ValueSet", "resources");
+                            string targetLocalUrl = BuildUrl("{0}/{1}/{2}", _targetPackageCanonical, "ValueSet", "resources");
 
-                            cm.SourceScope = new Canonical($"{sourceLocalUrl}|{_leftPackageVersion}");
-                            cm.TargetScope = new Canonical($"{targetLocalUrl}|{_rightPackageVersion}");
+                            cm.SourceScope = new Canonical($"{sourceLocalUrl}|{_sourcePackageVersion}");
+                            cm.TargetScope = new Canonical($"{targetLocalUrl}|{_targetPackageVersion}");
 
                             cm.Group[0].Source = sourceLocalUrl;
                             cm.Group[0].Target = targetLocalUrl;
@@ -451,7 +451,7 @@ public class CrossVersionMapCollection
 
                             string officialUrl = cm.Url;
 
-                            string localConceptMapId = $"{_leftRLiteral}-elements-{_rightRLiteral}";
+                            string localConceptMapId = $"{_sourceRLiteral}-elements-{_targetRLiteral}";
                             string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
 
                             // update our info
@@ -460,11 +460,11 @@ public class CrossVersionMapCollection
                             cm.Name = localConceptMapId;
                             cm.Title = GetConceptMapTitle("element");
 
-                            string sourceLocalUrl = BuildUrl("{0}/{1}/{2}", _leftPackageCanonical, "ValueSet", "elements");
-                            string targetLocalUrl = BuildUrl("{0}/{1}/{2}", _rightPackageCanonical, "ValueSet", "elements");
+                            string sourceLocalUrl = BuildUrl("{0}/{1}/{2}", _sourcePackageCanonical, "ValueSet", "elements");
+                            string targetLocalUrl = BuildUrl("{0}/{1}/{2}", _targetPackageCanonical, "ValueSet", "elements");
 
-                            cm.SourceScope = new Canonical($"{sourceLocalUrl}|{_leftPackageVersion}");
-                            cm.TargetScope = new Canonical($"{targetLocalUrl}|{_rightPackageVersion}");
+                            cm.SourceScope = new Canonical($"{sourceLocalUrl}|{_sourcePackageVersion}");
+                            cm.TargetScope = new Canonical($"{targetLocalUrl}|{_targetPackageVersion}");
 
                             cm.Group[0].Source = sourceLocalUrl;
                             cm.Group[0].Target = targetLocalUrl;
@@ -493,13 +493,13 @@ public class CrossVersionMapCollection
                                     continue;
                                 }
 
-                                string elementMapId = $"{_leftRLiteral}-{typeName}-{_rightRLiteral}";
+                                string elementMapId = $"{_sourceRLiteral}-{typeName}-{_targetRLiteral}";
                                 string elementMapUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: elementMapId, resourceType: "ConceptMap");
 
-                                string elementSourceUrl = BuildUrl("{0}/{1}/{2}", _leftPackageCanonical, "StructureDefinition", typeName);
+                                string elementSourceUrl = BuildUrl("{0}/{1}/{2}", _sourcePackageCanonical, "StructureDefinition", typeName);
                                 string elementTargetUrl = elements[0].Target.Count != 0
-                                    ? BuildUrl("{0}/{1}/{2}", _rightPackageCanonical, "StructureDefinition", elements[0].Target[0].Code.Split('.')[0])
-                                    : BuildUrl("{0}/{1}/{2}", _rightPackageCanonical, "StructureDefinition", typeName);
+                                    ? BuildUrl("{0}/{1}/{2}", _targetPackageCanonical, "StructureDefinition", elements[0].Target[0].Code.Split('.')[0])
+                                    : BuildUrl("{0}/{1}/{2}", _targetPackageCanonical, "StructureDefinition", typeName);
 
                                 ConceptMap elementMap = new()
                                 {
@@ -507,8 +507,8 @@ public class CrossVersionMapCollection
                                     Url = elementMapUrl,
                                     Name = elementMapId,
                                     Title = GetConceptMapTitle(typeName),
-                                    SourceScope = new Canonical($"{elementSourceUrl}|{_leftPackageVersion}"),
-                                    TargetScope = new Canonical($"{elementTargetUrl}|{_rightPackageVersion}"),
+                                    SourceScope = new Canonical($"{elementSourceUrl}|{_sourcePackageVersion}"),
+                                    TargetScope = new Canonical($"{elementTargetUrl}|{_targetPackageVersion}"),
                                     Group = [new ConceptMap.GroupComponent
                                     {
                                         Source = elementSourceUrl,
@@ -537,11 +537,11 @@ public class CrossVersionMapCollection
 
     private string FilenameForMap(CrossVersionMapTypeCodes mapType, string name = "") => mapType switch
     {
-        CrossVersionMapTypeCodes.ValueSetConcepts => $"ConceptMap-{_leftRLiteral}-{name}-{_rightRLiteral}.json",
-        CrossVersionMapTypeCodes.DataTypeConcepts => $"ConceptMap-{_leftRLiteral}-data-types-{_rightRLiteral}.json",
-        CrossVersionMapTypeCodes.ResourceTypeConcepts => $"ConceptMap-{_leftRLiteral}-resource-types-{_rightRLiteral}.json",
-        CrossVersionMapTypeCodes.ComplexTypeElementConcepts => $"ConceptMap-{_leftRLiteral}-{name}-{_rightRLiteral}.json",
-        CrossVersionMapTypeCodes.ResourceElementConcepts => $"ConceptMap-{_leftRLiteral}-{name}-{_rightRLiteral}.json",
+        CrossVersionMapTypeCodes.ValueSetConcepts => $"ConceptMap-{_sourceRLiteral}-{name}-{_targetRLiteral}.json",
+        CrossVersionMapTypeCodes.DataTypeConcepts => $"ConceptMap-{_sourceRLiteral}-data-types-{_targetRLiteral}.json",
+        CrossVersionMapTypeCodes.ResourceTypeConcepts => $"ConceptMap-{_sourceRLiteral}-resource-types-{_targetRLiteral}.json",
+        CrossVersionMapTypeCodes.ComplexTypeElementConcepts => $"ConceptMap-{_sourceRLiteral}-{name}-{_targetRLiteral}.json",
+        CrossVersionMapTypeCodes.ResourceElementConcepts => $"ConceptMap-{_sourceRLiteral}-{name}-{_targetRLiteral}.json",
         _ => throw new ArgumentException($"Unknown map type: {mapType}"),
     };
 
@@ -555,10 +555,10 @@ public class CrossVersionMapCollection
 
     private bool TryLoadSourceConceptMaps(string crossRepoPath, CrossVersionMapTypeCodes mapType)
     {
-        string rootPath = Path.Combine(crossRepoPath, $"{_leftRLiteral}_{_rightRLiteral}", "maps");
+        string rootPath = Path.Combine(crossRepoPath, $"{_sourceRLiteral}_{_targetRLiteral}", "maps");
         if (!Directory.Exists(rootPath))
         {
-            throw new DirectoryNotFoundException($"Could not find {_leftRLiteral}_{_rightRLiteral}/maps directory: {rootPath}");
+            throw new DirectoryNotFoundException($"Could not find {_sourceRLiteral}_{_targetRLiteral}/maps directory: {rootPath}");
         }
 
         string filenameFilter = FilenameForMap(mapType, "*");
@@ -690,14 +690,14 @@ public class CrossVersionMapCollection
             throw new Exception("Cannot process a comparison with no mappings!");
         }
 
-        string localConceptMapId = $"{_leftRLiteral}-{vsc.SourceName}-{_rightRLiteral}-{vsc.TargetName}";
+        string localConceptMapId = $"{_sourceRLiteral}-{vsc.SourceName}-{_targetRLiteral}-{vsc.TargetName}";
         string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
 
         string sourceUrl = vsc.SourceUrl;
         string targetUrl = vsc.TargetUrl;
 
-        string sourceCanonical = $"{sourceUrl}|{_leftPackageVersion}";
-        string targetCanonical = $"{targetUrl}|{_rightPackageVersion}";
+        string sourceCanonical = $"{sourceUrl}|{_sourcePackageVersion}";
+        string targetCanonical = $"{targetUrl}|{_targetPackageVersion}";
 
         // check to see if we need to create a new concept map
         if (!_dc.ConceptMapsByUrl.TryGetValue(localUrl, out ConceptMap? cm))
@@ -816,14 +816,14 @@ public class CrossVersionMapCollection
         IEnumerable<ComparisonRecord<StructureInfoRec>> primitiveTypes,
         IEnumerable<ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> complexTypes)
     {
-        string localConceptMapId = $"{_leftRLiteral}-types-{_rightRLiteral}";
+        string localConceptMapId = $"{_sourceRLiteral}-types-{_targetRLiteral}";
         string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
 
-        string sourceUrl = BuildUrl("{0}/{1}/{2}", _leftPackageCanonical, "ValueSet", "data-types");
-        string targetUrl = BuildUrl("{0}/{1}/{2}", _rightPackageCanonical, "ValueSet", "data-types");
+        string sourceUrl = BuildUrl("{0}/{1}/{2}", _sourcePackageCanonical, "ValueSet", "data-types");
+        string targetUrl = BuildUrl("{0}/{1}/{2}", _targetPackageCanonical, "ValueSet", "data-types");
 
-        string sourceCanonical = $"{sourceUrl}|{_leftPackageVersion}";
-        string targetCanonical = $"{targetUrl}|{_rightPackageVersion}";
+        string sourceCanonical = $"{sourceUrl}|{_sourcePackageVersion}";
+        string targetCanonical = $"{targetUrl}|{_targetPackageVersion}";
 
         // check to see if we need to create a new concept map
         if (!_dc.ConceptMapsByUrl.TryGetValue(localUrl, out ConceptMap? cm))
@@ -909,14 +909,14 @@ public class CrossVersionMapCollection
     public ConceptMap? GetSourceResourceTypeConceptMap(
         IEnumerable<ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> resources)
     {
-        string localConceptMapId = $"{_leftRLiteral}-resources-{_rightRLiteral}";
+        string localConceptMapId = $"{_sourceRLiteral}-resources-{_targetRLiteral}";
         string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
 
-        string sourceUrl = BuildUrl("{0}/{1}/{2}", _leftPackageCanonical, "ValueSet", "resources");
-        string targetUrl = BuildUrl("{0}/{1}/{2}", _rightPackageCanonical, "ValueSet", "resources");
+        string sourceUrl = BuildUrl("{0}/{1}/{2}", _sourcePackageCanonical, "ValueSet", "resources");
+        string targetUrl = BuildUrl("{0}/{1}/{2}", _targetPackageCanonical, "ValueSet", "resources");
 
-        string sourceCanonical = $"{sourceUrl}|{_leftPackageVersion}";
-        string targetCanonical = $"{targetUrl}|{_rightPackageVersion}";
+        string sourceCanonical = $"{sourceUrl}|{_sourcePackageVersion}";
+        string targetCanonical = $"{targetUrl}|{_targetPackageVersion}";
 
         // check to see if we need to create a new concept map
         if (!_dc.ConceptMapsByUrl.TryGetValue(localUrl, out ConceptMap? cm))
@@ -992,14 +992,14 @@ public class CrossVersionMapCollection
         string leftName = cRec.Left[0].Name;
         string rightName = cRec.Right[0].Name;
 
-        string localConceptMapId = $"{_leftRLiteral}-{leftName}-{_rightRLiteral}";
+        string localConceptMapId = $"{_sourceRLiteral}-{leftName}-{_targetRLiteral}";
         string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
 
         string sourceUrl = cRec.Left[0].Url;
         string targetUrl = cRec.Right[0].Url;
 
-        string sourceCanonical = $"{sourceUrl}|{_leftPackageVersion}";
-        string targetCanonical = $"{targetUrl}|{_rightPackageVersion}";
+        string sourceCanonical = $"{sourceUrl}|{_sourcePackageVersion}";
+        string targetCanonical = $"{targetUrl}|{_targetPackageVersion}";
 
         // check to see if we need to create a new concept map
         if (!_dc.ConceptMapsByUrl.TryGetValue(localUrl, out ConceptMap? cm))
@@ -1063,9 +1063,9 @@ public class CrossVersionMapCollection
         return cm;
     }
 
-    private string GetConceptMapTitle(string name) => $"Concept map to convert a FHIR {_leftRLiteral} {name} into FHIR {_rightRLiteral}";
+    private string GetConceptMapTitle(string name) => $"Concept map to convert a FHIR {_sourceRLiteral} {name} into FHIR {_targetRLiteral}";
 
-    private string GetConceptMapTitle(string leftName, string rightName) => $"Concept map to convert a FHIR {_leftRLiteral} {leftName} into a FHIR {_rightRLiteral} {rightName}";
+    private string GetConceptMapTitle(string leftName, string rightName) => $"Concept map to convert a FHIR {_sourceRLiteral} {leftName} into a FHIR {_targetRLiteral} {rightName}";
 
     /// <summary>Applies the canonical format.</summary>
     /// <param name="formatString">The format string.</param>
@@ -1076,28 +1076,28 @@ public class CrossVersionMapCollection
     /// 0 = canonical, 1 = resourceType, 2 = name, 3 = leftRLiteral, 4 = reserved, 5 = rightRLiteral, 6 = reserved
     /// </remarks>
     private string BuildUrl(string formatString, string canonical, string resourceType = "", string name = "") =>
-        string.Format(formatString, canonical, resourceType, name, _leftRLiteral, "", _rightRLiteral, "");
+        string.Format(formatString, canonical, resourceType, name, _sourceRLiteral, "", _targetRLiteral, "");
 
     private string RemoveLeftToRight(string value)
     {
-        if (value.EndsWith(_leftToRightNoR, StringComparison.Ordinal))
+        if (value.EndsWith(_sourceToTargetNoR, StringComparison.Ordinal))
         {
-            if (value[^(_leftToRightNoRLen + 1)] == '-')
+            if (value[^(_sourceToTargetNoRLen + 1)] == '-')
             {
-                return value[..^(_leftToRightNoRLen + 1)];
+                return value[..^(_sourceToTargetNoRLen + 1)];
             }
 
-            return value[..^_leftToRightNoR.Length];
+            return value[..^_sourceToTargetNoR.Length];
         }
 
-        if (value.EndsWith(_leftToRightWithR, StringComparison.OrdinalIgnoreCase))
+        if (value.EndsWith(_sourceToTargetWithR, StringComparison.OrdinalIgnoreCase))
         {
-            if (value[^(_leftToRightWithRLen + 1)] == '-')
+            if (value[^(_sourceToTargetWithRLen + 1)] == '-')
             {
-                return value[..^(_leftToRightWithRLen + 1)];
+                return value[..^(_sourceToTargetWithRLen + 1)];
             }
 
-            return value[..^_leftToRightWithR.Length];
+            return value[..^_sourceToTargetWithR.Length];
         }
 
         return value;

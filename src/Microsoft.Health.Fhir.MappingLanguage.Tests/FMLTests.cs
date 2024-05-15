@@ -12,6 +12,14 @@ namespace Microsoft.Health.Fhir.MappingLanguage.Tests;
 public class FMLTests
 {
     [Fact]
+    internal void TestBuildingLiteralEnums()
+    {
+        List<string> lines = AntlrUtils.BuildLiteralEnums();
+
+        lines.Should().NotBeNullOrEmpty();
+    }
+
+    [Fact]
     internal void FmlParseTest01()
     {
         string content = """"

@@ -47,8 +47,8 @@ public class PackageComparer
 {
     private IFhirPackageClient _cache;
 
-    private DefinitionCollection _left;
-    private DefinitionCollection _right;
+    private DefinitionCollection _source;
+    private DefinitionCollection _target;
 
     private CrossVersionMapCollection? _crossVersion = null;
 
@@ -57,11 +57,11 @@ public class PackageComparer
     private Dictionary<string, CMR> _typeRelationships = [];
 
 
-    private string _leftRLiteral;
-    private string _rightRLiteral;
+    private string _sourceRLiteral;
+    private string _targetRLiteral;
 
-    private const string _leftTableLiteral = "Source";
-    private const string _rightTableLiteral = "Target";
+    private const string _sourceTableLiteral = "Source";
+    private const string _targetTableLiteral = "Target";
 
     private readonly JsonSerializerOptions _firelySerializerOptions;
 
@@ -71,13 +71,6 @@ public class PackageComparer
     private Uri? _ollamaUri = null;
 
     private Dictionary<string, List<ValueSetComparison>> _vsComparisons = [];
-
-    public record class PackagePathRenames
-    {
-        public required string PackageDirectiveLeft { get; init; }
-        public required string PackageDirectiveRight { get; init; }
-        public required Dictionary<string, string> LeftRightPath { get; init; }
-    }
 
     internal static readonly HashSet<string> _exclusionSet =
     [
@@ -106,17 +99,15 @@ public class PackageComparer
         //"urn:iso:std:iso:3166:-2",
     ];
 
-    public PackageComparer(ConfigCompare config, IFhirPackageClient cache, DefinitionCollection left, DefinitionCollection right)
+    public PackageComparer(ConfigCompare config, IFhirPackageClient cache, DefinitionCollection source, DefinitionCollection target)
     {
         _config = config;
         _cache = cache;
-        _left = left;
-        _right = right;
+        _source = source;
+        _target = target;
 
-        _leftRLiteral = left.FhirSequence.ToRLiteral();
-        //_leftShortVersion = left.FhirSequence.ToShortVersion();
-        _rightRLiteral = right.FhirSequence.ToRLiteral();
-        //_rightShortVersion = right.FhirSequence.ToShortVersion();
+        _sourceRLiteral = source.FhirSequence.ToRLiteral();
+        _targetRLiteral = target.FhirSequence.ToRLiteral();
 
         _firelySerializerOptions = new JsonSerializerOptions().ForFhir(ModelInfo.ModelInspector).Pretty();
 
@@ -133,13 +124,13 @@ public class PackageComparer
     public PackageComparison Compare()
     {
         Console.WriteLine(
-            $"Comparing {_left.MainPackageId}#{_left.MainPackageVersion}" +
-            $" and {_right.MainPackageId}#{_right.MainPackageVersion}");
+            $"Comparing {_source.MainPackageId}#{_source.MainPackageVersion}" +
+            $" and {_target.MainPackageId}#{_target.MainPackageVersion}");
 
         // check for loading cross-version maps
         if (!string.IsNullOrEmpty(_config.CrossVersionMapSourcePath))
         {
-            _crossVersion = new(_cache, _left, _right);
+            _crossVersion = new(_cache, _source, _target);
 
             if (!_crossVersion.TryLoadConceptMaps(_config.CrossVersionMapSourcePath))
             {
@@ -151,12 +142,12 @@ public class PackageComparer
         if ((_crossVersion == null) && (_config.MapSaveStyle != ConfigCompare.ComparisonMapSaveStyle.None))
         {
             // create our cross-version map collection
-            _crossVersion = new(_cache, _left, _right);
+            _crossVersion = new(_cache, _source, _target);
         }
 
         string outputDir = string.IsNullOrEmpty(_config.CrossVersionMapDestinationPath)
-            ? Path.Combine(_config.OutputDirectory, $"{_leftRLiteral}_{_rightRLiteral}")
-            : Path.Combine(_config.CrossVersionMapDestinationPath, $"{_leftRLiteral}_{_rightRLiteral}");
+            ? Path.Combine(_config.OutputDirectory, $"{_sourceRLiteral}_{_targetRLiteral}")
+            : Path.Combine(_config.CrossVersionMapDestinationPath, $"{_sourceRLiteral}_{_targetRLiteral}");
 
         if (!Directory.Exists(outputDir))
         {
@@ -183,8 +174,8 @@ public class PackageComparer
         using ExportStreamWriter? mdWriter = _config.NoOutput ? null : CreateMarkdownWriter(mdFullFilename);
 
         // need to expand every value set for comparison
-        Dictionary<string, ValueSet> vsLeft = GetValueSets(_left);
-        _vsComparisons = CompareValueSets(vsLeft, GetValueSets(_right));
+        Dictionary<string, ValueSet> vsLeft = GetValueSets(_source);
+        _vsComparisons = CompareValueSets(vsLeft, GetValueSets(_target));
         if (mdWriter != null)
         {
             WriteComparisonOverview(mdWriter, "Value Sets", _vsComparisons);
@@ -223,7 +214,7 @@ public class PackageComparer
             }
         }
 
-        Dictionary<string, ComparisonRecord<StructureInfoRec>> primitives = ComparePrimitives(FhirArtifactClassEnum.PrimitiveType, _left.PrimitiveTypesByName, _right.PrimitiveTypesByName);
+        Dictionary<string, ComparisonRecord<StructureInfoRec>> primitives = ComparePrimitives(FhirArtifactClassEnum.PrimitiveType, _source.PrimitiveTypesByName, _target.PrimitiveTypesByName);
         if (mdWriter != null)
         {
             WriteComparisonOverview(mdWriter, "Primitive Types", primitives.Values);
@@ -245,7 +236,7 @@ public class PackageComparer
             }
         }
 
-        Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> complexTypes = CompareStructures(FhirArtifactClassEnum.ComplexType, _left.ComplexTypesByName, _right.ComplexTypesByName);
+        Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> complexTypes = CompareStructures(FhirArtifactClassEnum.ComplexType, _source.ComplexTypesByName, _target.ComplexTypesByName);
         if (mdWriter != null)
         {
             WriteComparisonOverview(mdWriter, "Complex Types", complexTypes.Values);
@@ -284,7 +275,7 @@ public class PackageComparer
             }
         }
 
-        Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> resources = CompareStructures(FhirArtifactClassEnum.Resource, _left.ResourcesByName, _right.ResourcesByName);
+        Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> resources = CompareStructures(FhirArtifactClassEnum.Resource, _source.ResourcesByName, _target.ResourcesByName);
         if (mdWriter != null)
         {
             WriteComparisonOverview(mdWriter, "Resources", resources.Values);
@@ -348,10 +339,10 @@ public class PackageComparer
 
         PackageComparison packageComparison = new()
         {
-            LeftPackageId = _left.MainPackageId,
-            LeftPackageVersion = _left.MainPackageVersion,
-            RightPackageId = _right.MainPackageId,
-            RightPackageVersion = _right.MainPackageVersion,
+            LeftPackageId = _source.MainPackageId,
+            LeftPackageVersion = _source.MainPackageVersion,
+            RightPackageId = _target.MainPackageId,
+            RightPackageVersion = _target.MainPackageVersion,
             ValueSets = _vsComparisons,
             PrimitiveTypes = primitives,
             ComplexTypes = complexTypes,
@@ -682,8 +673,8 @@ public class PackageComparer
             case IComparisonRecord<ConceptInfoRec> conceptInfoRecs:
                 {
                     tdHeader = ["Side", "System", "Code", "Description"];
-                    tdLeft = conceptInfoRecs.Left.Select(ci => (string[])[_leftTableLiteral, ci.System, ci.Code, ci.Description.ForMdTable()]).ToArray();
-                    tdRight = conceptInfoRecs.Right.Select(ci => (string[])[_rightTableLiteral, ci.System, ci.Code, ci.Description.ForMdTable()]).ToArray();
+                    tdLeft = conceptInfoRecs.Left.Select(ci => (string[])[_sourceTableLiteral, ci.System, ci.Code, ci.Description.ForMdTable()]).ToArray();
+                    tdRight = conceptInfoRecs.Right.Select(ci => (string[])[_targetTableLiteral, ci.System, ci.Code, ci.Description.ForMdTable()]).ToArray();
                 }
                 break;
 
@@ -691,10 +682,10 @@ public class PackageComparer
                 {
                     tdHeader = ["Side", "Url", "Name", "Title", "Description"];
                     tdLeft = valueSetInfoRecs.Left
-                        .Select(vsi => (string[])[_leftTableLiteral, vsi.Url, vsi.Name, vsi.Title.ForMdTable(), vsi.Description.ForMdTable()])
+                        .Select(vsi => (string[])[_sourceTableLiteral, vsi.Url, vsi.Name, vsi.Title.ForMdTable(), vsi.Description.ForMdTable()])
                         .ToArray();
                     tdRight = valueSetInfoRecs.Right
-                        .Select(vsi => (string[])[_rightTableLiteral, vsi.Url, vsi.Name, vsi.Title.ForMdTable(), vsi.Description.ForMdTable()])
+                        .Select(vsi => (string[])[_targetTableLiteral, vsi.Url, vsi.Name, vsi.Title.ForMdTable(), vsi.Description.ForMdTable()])
                         .ToArray();
                 }
                 break;
@@ -703,10 +694,10 @@ public class PackageComparer
                 {
                     tdHeader = ["Side", "Name", "Profiles", "Target Profiles"];
                     tdLeft = elementTypeInfoRecs.Left
-                        .Select(eti => (string[])[_leftTableLiteral, eti.Name, string.Join(", ", eti.Profiles), string.Join(", ", eti.TargetProfiles)])
+                        .Select(eti => (string[])[_sourceTableLiteral, eti.Name, string.Join(", ", eti.Profiles), string.Join(", ", eti.TargetProfiles)])
                         .ToArray();
                     tdRight = elementTypeInfoRecs.Right
-                        .Select(eti => (string[])[_rightTableLiteral, eti.Name, string.Join(", ", eti.Profiles), string.Join(", ", eti.TargetProfiles)])
+                        .Select(eti => (string[])[_targetTableLiteral, eti.Name, string.Join(", ", eti.Profiles), string.Join(", ", eti.TargetProfiles)])
                         .ToArray();
                 }
                 break;
@@ -716,7 +707,7 @@ public class PackageComparer
                     tdHeader = ["Side", "Name", "Path", "Short", "Definition", "Card", "Binding"];
                     tdLeft = elementInfoRecs.Left
                         .Select(ei => (string[])[
-                            _leftTableLiteral,
+                            _sourceTableLiteral,
                             ei.Name,
                             ei.Path,
                             ei.Short.ForMdTable(),
@@ -726,7 +717,7 @@ public class PackageComparer
                         .ToArray();
                     tdRight = elementInfoRecs.Right
                         .Select(ei => (string[])[
-                            _rightTableLiteral,
+                            _targetTableLiteral,
                             ei.Name,
                             ei.Path,
                             ei.Short.ForMdTable(),
@@ -742,7 +733,7 @@ public class PackageComparer
                     tdHeader = ["Side", "Name", "Title", "Description", "Snapshot", "Differential"];
                     tdLeft = structureInfoRecs.Left
                         .Select(si => (string[])[
-                            _leftTableLiteral,
+                            _sourceTableLiteral,
                             si.Name,
                             si.Title.ForMdTable(),
                             si.Description.ForMdTable(),
@@ -751,7 +742,7 @@ public class PackageComparer
                         .ToArray();
                     tdRight = structureInfoRecs.Right
                         .Select(si => (string[])[
-                            _rightTableLiteral,
+                            _targetTableLiteral,
                             si.Name,
                             si.Title.ForMdTable(),
                             si.Description.ForMdTable(),
@@ -767,12 +758,12 @@ public class PackageComparer
 
         if (tdLeft.Length == 0)
         {
-            tdLeft = [[_leftTableLiteral, .. Enumerable.Repeat("-", tdHeader.Length).ToArray()]];
+            tdLeft = [[_sourceTableLiteral, .. Enumerable.Repeat("-", tdHeader.Length).ToArray()]];
         }
 
         if (tdRight.Length == 0)
         {
-            tdRight = [[_rightTableLiteral, .. Enumerable.Repeat("-", tdHeader.Length).ToArray()]];
+            tdRight = [[_targetTableLiteral, .. Enumerable.Repeat("-", tdHeader.Length).ToArray()]];
         }
 
         writer.WriteLine("| " + string.Join(" | ", tdHeader) + " |");
@@ -909,19 +900,19 @@ public class PackageComparer
         else
         {
             writer.WriteLine();
-            writer.WriteLine($"### Union of {_leftRLiteral} and {_rightRLiteral}");
+            writer.WriteLine($"### Union of {_sourceRLiteral} and {_targetRLiteral}");
             writer.WriteLine();
             WriteComparisonRecStatusTable(writer, cRec, inLeft: true, inRight: true);
             WriteComparisonChildDetails(writer, cRec, inLeft: true, inRight: true, useDetails: false);
 
             writer.WriteLine();
-            writer.WriteLine($"### {_leftRLiteral} Detail");
+            writer.WriteLine($"### {_sourceRLiteral} Detail");
             writer.WriteLine();
             WriteComparisonRecStatusTable(writer, cRec, inLeft: true, inRight: false);
             WriteComparisonChildDetails(writer, cRec, inLeft: true, inRight: false, useDetails: false);
 
             writer.WriteLine();
-            writer.WriteLine($"### {_rightRLiteral} Detail");
+            writer.WriteLine($"### {_targetRLiteral} Detail");
             writer.WriteLine();
             WriteComparisonRecStatusTable(writer, cRec, inLeft: false, inRight: true);
             WriteComparisonChildDetails(writer, cRec, inLeft: false, inRight: true, useDetails: false);
@@ -931,8 +922,8 @@ public class PackageComparer
     private void WriteComparisonRecDataTable(ExportStreamWriter writer, ValueSetComparison v)
     {
         string[] tdHeader = ["Side", "Url", "Name", "Title", "Description"];
-        string[] tdLeft = [_leftTableLiteral, v.SourceUrl, v.SourceName, v.SourceTitle.ForMdTable(), v.SourceDescription.ForMdTable()];
-        string[] tdRight = [_rightTableLiteral, v.TargetUrl, v.TargetName, v.TargetTitle.ForMdTable(), v.TargetDescription.ForMdTable()];
+        string[] tdLeft = [_sourceTableLiteral, v.SourceUrl, v.SourceName, v.SourceTitle.ForMdTable(), v.SourceDescription.ForMdTable()];
+        string[] tdRight = [_targetTableLiteral, v.TargetUrl, v.TargetName, v.TargetTitle.ForMdTable(), v.TargetDescription.ForMdTable()];
 
         writer.WriteLine("| " + string.Join(" | ", tdHeader) + " |");
         writer.WriteLine("| " + string.Join(" | ", Enumerable.Repeat("---", tdHeader.Length)) + " |");
@@ -1040,7 +1031,7 @@ public class PackageComparer
 
         if (writeGenerationHeader)
         {
-            writer.WriteLine($"Comparison of {_left.MainPackageId}#{_left.MainPackageVersion} and {_right.MainPackageId}#{_right.MainPackageVersion}");
+            writer.WriteLine($"Comparison of {_source.MainPackageId}#{_source.MainPackageVersion} and {_target.MainPackageId}#{_target.MainPackageVersion}");
             writer.WriteLine($"Generated at {DateTime.Now.ToString("F")}");
             writer.WriteLine();
         }
@@ -1112,7 +1103,7 @@ public class PackageComparer
                 KeyInRight = true,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_rightRLiteral} added type {typeName}",
+                Message = $"{_targetRLiteral} added type {typeName}",
             };
             return true;
         }
@@ -1130,7 +1121,7 @@ public class PackageComparer
                 KeyInRight = false,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_rightRLiteral} removed type {typeName}",
+                Message = $"{_targetRLiteral} removed type {typeName}",
             };
             return true;
         }
@@ -1221,20 +1212,20 @@ public class PackageComparer
         if (relationship == CMR.Equivalent)
         {
             message = keyInLeft
-                ? $"{_rightRLiteral} type {rSource[0].Name} is equivalent to the {_leftRLiteral} type {typeName}"
-                : $"{_rightRLiteral} new type {typeName} is equivalent to the {_leftRLiteral} type {lSource[0].Name}";
+                ? $"{_targetRLiteral} type {rSource[0].Name} is equivalent to the {_sourceRLiteral} type {typeName}"
+                : $"{_targetRLiteral} new type {typeName} is equivalent to the {_sourceRLiteral} type {lSource[0].Name}";
         }
         else if (messages.Count == 0)
         {
             message = keyInLeft
-                ? $"{_leftRLiteral} type {typeName} maps as: {relationship} for {_rightRLiteral}"
-                : $"{_rightRLiteral} new type {typeName} maps as: {relationship} for {_leftRLiteral}";
+                ? $"{_sourceRLiteral} type {typeName} maps as: {relationship} for {_targetRLiteral}"
+                : $"{_targetRLiteral} new type {typeName} maps as: {relationship} for {_sourceRLiteral}";
         }
         else
         {
             message = keyInLeft
-                ? $"{_leftRLiteral} type {typeName} maps as: {relationship} for {_rightRLiteral} because {string.Join(" and ", messages)}"
-                : $"{_rightRLiteral} new type {typeName} maps as: {relationship} for {_leftRLiteral} because {string.Join(" and ", messages)}";
+                ? $"{_sourceRLiteral} type {typeName} maps as: {relationship} for {_targetRLiteral} because {string.Join(" and ", messages)}"
+                : $"{_targetRLiteral} new type {typeName} maps as: {relationship} for {_sourceRLiteral} because {string.Join(" and ", messages)}";
 
         }
 
@@ -1262,9 +1253,9 @@ public class PackageComparer
         }
 
         return
-            (l.Count == 0 ? _leftRLiteral : $"{_leftRLiteral}_{string.Join('_', l.Select(i => i.Name.ForName()).Order())}") +
+            (l.Count == 0 ? _sourceRLiteral : $"{_sourceRLiteral}_{string.Join('_', l.Select(i => i.Name.ForName()).Order())}") +
             "_" +
-            (r.Count == 0 ? _rightRLiteral : $"{_rightRLiteral}_{string.Join('_', r.Select(i => i.Name.ForName()).Order())}");
+            (r.Count == 0 ? _targetRLiteral : $"{_targetRLiteral}_{string.Join('_', r.Select(i => i.Name.ForName()).Order())}");
     }
 
     private CMR ApplyRelationship(CMR existing, CMR? change) => existing switch
@@ -1287,9 +1278,9 @@ public class PackageComparer
         }
 
         return
-            (l.Count == 0 ? _leftRLiteral : $"{_leftRLiteral}_{string.Join('_', l.Select(i => i.Name.ForName()).Order())}") +
+            (l.Count == 0 ? _sourceRLiteral : $"{_sourceRLiteral}_{string.Join('_', l.Select(i => i.Name.ForName()).Order())}") +
             "_" +
-            (r.Count == 0 ? _rightRLiteral : $"{_rightRLiteral}_{string.Join('_', r.Select(i => i.Name.ForName()).Order())}");
+            (r.Count == 0 ? _targetRLiteral : $"{_targetRLiteral}_{string.Join('_', r.Select(i => i.Name.ForName()).Order())}");
     }
 
     private bool TryGetVsComparison(string sourceUrl, string targetUrl, [NotNullWhen(true)] out ValueSetComparison? valueSetComparison)
@@ -1344,7 +1335,7 @@ public class PackageComparer
                 KeyInRight = true,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_rightRLiteral} added element {edPath}",
+                Message = $"{_targetRLiteral} added element {edPath}",
                 Children = typeComparison,
             };
             return true;
@@ -1363,7 +1354,7 @@ public class PackageComparer
                 KeyInRight = false,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_rightRLiteral} removed element {edPath}",
+                Message = $"{_targetRLiteral} removed element {edPath}",
                 Children = typeComparison,
             };
             return true;
@@ -1573,20 +1564,20 @@ public class PackageComparer
         if (relationship == CMR.Equivalent)
         {
             message = keyInLeft
-                ? $"{_rightRLiteral} element {rSource[0].Path} is equivalent to the {_leftRLiteral} element {edPath}"
-                : $"{_rightRLiteral} new element {edPath} is equivalent to the {_leftRLiteral} element {lSource[0].Path}";
+                ? $"{_targetRLiteral} element {rSource[0].Path} is equivalent to the {_sourceRLiteral} element {edPath}"
+                : $"{_targetRLiteral} new element {edPath} is equivalent to the {_sourceRLiteral} element {lSource[0].Path}";
         }
         else if (messages.Count == 0)
         {
             message = keyInLeft
-                ? $"{_leftRLiteral} element {edPath} maps as: {relationship} for {_rightRLiteral}"
-                : $"{_rightRLiteral} new element {edPath} maps as: {relationship} for {_leftRLiteral}";
+                ? $"{_sourceRLiteral} element {edPath} maps as: {relationship} for {_targetRLiteral}"
+                : $"{_targetRLiteral} new element {edPath} maps as: {relationship} for {_sourceRLiteral}";
         }
         else
         {
             message = keyInLeft
-                ? $"{_leftRLiteral} element {edPath} maps as: {relationship} for {_rightRLiteral} because {string.Join(" and ", messages)}"
-                : $"{_rightRLiteral} new element {edPath} maps as: {relationship} for {_leftRLiteral} because {string.Join(" and ", messages)}";
+                ? $"{_sourceRLiteral} element {edPath} maps as: {relationship} for {_targetRLiteral} because {string.Join(" and ", messages)}"
+                : $"{_targetRLiteral} new element {edPath} maps as: {relationship} for {_sourceRLiteral} because {string.Join(" and ", messages)}";
         }
 
         // return our info
@@ -1615,9 +1606,9 @@ public class PackageComparer
         }
 
         return
-            (l.Count == 0 ? _leftRLiteral : $"{_leftRLiteral}_{string.Join('_', l.Select(i => i.Name.ForName()).Order())}") +
+            (l.Count == 0 ? _sourceRLiteral : $"{_sourceRLiteral}_{string.Join('_', l.Select(i => i.Name.ForName()).Order())}") +
             "_" +
-            (r.Count == 0 ? _rightRLiteral : $"{_rightRLiteral}_{string.Join('_', r.Select(i => i.Name.ForName()).Order())}");
+            (r.Count == 0 ? _targetRLiteral : $"{_targetRLiteral}_{string.Join('_', r.Select(i => i.Name.ForName()).Order())}");
     }
 
 
@@ -1659,7 +1650,7 @@ public class PackageComparer
                 KeyInRight = true,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_rightRLiteral} added {sdName}",
+                Message = $"{_targetRLiteral} added {sdName}",
                 Children = elementComparison,
             };
             return true;
@@ -1678,7 +1669,7 @@ public class PackageComparer
                 KeyInRight = false,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_rightRLiteral} removed {sdName}",
+                Message = $"{_targetRLiteral} removed {sdName}",
                 Children = elementComparison,
             };
             return true;
@@ -1707,7 +1698,7 @@ public class PackageComparer
                 KeyInRight = keyInRight,
                 NamedMatch = true,
                 Relationship = CMR.Equivalent,
-                Message = $"{_rightRLiteral}:{sdName} is equivalent",
+                Message = $"{_targetRLiteral}:{sdName} is equivalent",
                 Children = elementComparison,
             };
             return true;
@@ -1754,22 +1745,22 @@ public class PackageComparer
         {
             message = relationship switch
             {
-                CMR.Equivalent => $"{_rightRLiteral} structure {rSource[0].si.Name} is equivalent to the {_leftRLiteral} structure {sdName}",
-                CMR.RelatedTo => $"{_rightRLiteral} structure {rSource[0].si.Name} is related to {_leftRLiteral} structure {sdName} (see elements for details)",
-                CMR.SourceIsNarrowerThanTarget => $"{_rightRLiteral} structure {rSource[0].si.Name} subsumes {_leftRLiteral} structure {sdName}",
-                CMR.SourceIsBroaderThanTarget => $"{_rightRLiteral} structure {rSource[0].si.Name} is subsumed by {_leftRLiteral} structure {sdName}",
-                _ => $"{_rightRLiteral} structure {rSource[0].si.Name} is related to {_leftRLiteral} structure {sdName} (see elements for details)",
+                CMR.Equivalent => $"{_targetRLiteral} structure {rSource[0].si.Name} is equivalent to the {_sourceRLiteral} structure {sdName}",
+                CMR.RelatedTo => $"{_targetRLiteral} structure {rSource[0].si.Name} is related to {_sourceRLiteral} structure {sdName} (see elements for details)",
+                CMR.SourceIsNarrowerThanTarget => $"{_targetRLiteral} structure {rSource[0].si.Name} subsumes {_sourceRLiteral} structure {sdName}",
+                CMR.SourceIsBroaderThanTarget => $"{_targetRLiteral} structure {rSource[0].si.Name} is subsumed by {_sourceRLiteral} structure {sdName}",
+                _ => $"{_targetRLiteral} structure {rSource[0].si.Name} is related to {_sourceRLiteral} structure {sdName} (see elements for details)",
             };
         }
         else
         {
             message = relationship switch
             {
-                CMR.Equivalent => $"{_rightRLiteral} new structure {sdName} is equivalent to the {_leftRLiteral} structure {lSource[0].si.Name}",
-                CMR.RelatedTo => $"{_rightRLiteral} new structure {sdName} is related to {_leftRLiteral} structure {lSource[0].si.Name} (see elements for details)",
-                CMR.SourceIsNarrowerThanTarget => $"{_rightRLiteral} new structure {sdName} subsumes {_leftRLiteral} structure {lSource[0].si.Name}",
-                CMR.SourceIsBroaderThanTarget => $"{_rightRLiteral} new structure {sdName} is subsumed by {_leftRLiteral} structure {lSource[0].si.Name}",
-                _ => $"{_rightRLiteral} new structure {sdName} is related to {_leftRLiteral} structure {lSource[0].si.Name} (see elements for details)",
+                CMR.Equivalent => $"{_targetRLiteral} new structure {sdName} is equivalent to the {_sourceRLiteral} structure {lSource[0].si.Name}",
+                CMR.RelatedTo => $"{_targetRLiteral} new structure {sdName} is related to {_sourceRLiteral} structure {lSource[0].si.Name} (see elements for details)",
+                CMR.SourceIsNarrowerThanTarget => $"{_targetRLiteral} new structure {sdName} subsumes {_sourceRLiteral} structure {lSource[0].si.Name}",
+                CMR.SourceIsBroaderThanTarget => $"{_targetRLiteral} new structure {sdName} is subsumed by {_sourceRLiteral} structure {lSource[0].si.Name}",
+                _ => $"{_targetRLiteral} new structure {sdName} is related to {_sourceRLiteral} structure {lSource[0].si.Name} (see elements for details)",
             };
         }
 
@@ -1799,22 +1790,22 @@ public class PackageComparer
 
         if (l.Count == 0)
         {
-            return $"{_rightRLiteral}_{r[0].Name.ForName()}";
+            return $"{_targetRLiteral}_{r[0].Name.ForName()}";
         }
 
         if (r.Count == 0)
         {
-            return $"{_leftRLiteral}_{l[0].Name.ForName()}";
+            return $"{_sourceRLiteral}_{l[0].Name.ForName()}";
         }
 
         if (l.Count == 1 && r.Count == 1)
         {
-            return $"{_leftRLiteral}_{l[0].Name.ForName()}_{_rightRLiteral}_{r[0].Name.ForName()}";
+            return $"{_sourceRLiteral}_{l[0].Name.ForName()}_{_targetRLiteral}_{r[0].Name.ForName()}";
         }
 
         return
-            $"{_leftRLiteral}_{string.Join('_', l.Select(i => i.Name.ForName()).Order())}" +
-            $"_{_rightRLiteral}_{string.Join('_', r.Select(i => i.Name.ForName()).Order())}";
+            $"{_sourceRLiteral}_{string.Join('_', l.Select(i => i.Name.ForName()).Order())}" +
+            $"_{_targetRLiteral}_{string.Join('_', r.Select(i => i.Name.ForName()).Order())}";
     }
 
     private string GetName(List<(StructureDefinition sd, StructureInfoRec si)> l, List<(StructureDefinition sd, StructureInfoRec si)> r)
@@ -1826,22 +1817,22 @@ public class PackageComparer
 
         if (l.Count == 0)
         {
-            return $"{_rightRLiteral}_{r[0].si.Name.ForName()}";
+            return $"{_targetRLiteral}_{r[0].si.Name.ForName()}";
         }
 
         if (r.Count == 0)
         {
-            return $"{_leftRLiteral}_{l[0].si.Name.ForName()}";
+            return $"{_sourceRLiteral}_{l[0].si.Name.ForName()}";
         }
 
         if (l.Count == 1 && r.Count == 1)
         {
-            return $"{_leftRLiteral}_{l[0].si.Name.ForName()}_{_rightRLiteral}_{r[0].si.Name.ForName()}";
+            return $"{_sourceRLiteral}_{l[0].si.Name.ForName()}_{_targetRLiteral}_{r[0].si.Name.ForName()}";
         }
 
         return
-            $"{_leftRLiteral}_{string.Join('_', l.Select(s => s.si.Name.ForName()).Order())}" +
-            $"_{_rightRLiteral}_{string.Join('_', r.Select(s => s.si.Name.ForName()).Order())}";
+            $"{_sourceRLiteral}_{string.Join('_', l.Select(s => s.si.Name.ForName()).Order())}" +
+            $"_{_targetRLiteral}_{string.Join('_', r.Select(s => s.si.Name.ForName()).Order())}";
     }
 
     private string GetName(List<(StructureDefinition sd, StructureInfoRec si)> left, List<(StructureDefinition sd, StructureInfoRec si, CMR? r)> right)
@@ -1853,24 +1844,24 @@ public class PackageComparer
 
         if (left.Count == 0)
         {
-            return $"{_rightRLiteral}_{right[0].si.Name.ForName()}";
+            return $"{_targetRLiteral}_{right[0].si.Name.ForName()}";
         }
 
         if (right.Count == 0)
         {
-            return $"{_leftRLiteral}_{left[0].si.Name.ForName()}";
+            return $"{_sourceRLiteral}_{left[0].si.Name.ForName()}";
         }
 
         if (left.Count == 1 && right.Count == 1)
         {
-            return $"{_leftRLiteral}_{left[0].si.Name.ForName()}_{_rightRLiteral}_{right[0].si.Name.ForName()}";
+            return $"{_sourceRLiteral}_{left[0].si.Name.ForName()}_{_targetRLiteral}_{right[0].si.Name.ForName()}";
         }
 
         int equivalentIndex = right.FindIndex(t => t.r == CMR.Equivalent);
 
         if (equivalentIndex == -1)
         {
-            return $"{_rightRLiteral}_{string.Join('_', right.Select(s => s.si.Name.ForName()).Order())}";
+            return $"{_targetRLiteral}_{string.Join('_', right.Select(s => s.si.Name.ForName()).Order())}";
 
             //return
             //    $"{_leftRLiteral}_{string.Join('_', left.Select(s => s.si.Name.ForName()).Order())}" +
@@ -1882,14 +1873,14 @@ public class PackageComparer
         if (right.Count == 1)
         {
             return
-                $"{_leftRLiteral}_{string.Join('_', left.Select(s => s.si.Name.ForName()).Order())}" +
-                $"_{_rightRLiteral}_{eqName.ForName()}";
+                $"{_sourceRLiteral}_{string.Join('_', left.Select(s => s.si.Name.ForName()).Order())}" +
+                $"_{_targetRLiteral}_{eqName.ForName()}";
         }
 
         // we want equivalent listed first
         return
-            $"{_leftRLiteral}_{string.Join('_', left.Select(s => s.si.Name.ForName()).Order())}" +
-            $"_{_rightRLiteral}_{eqName.ForName()}_{string.Join('_', right.Where(s => s.si.Name != eqName).Select(s => s.si.Name.ForName()).Order())}";
+            $"{_sourceRLiteral}_{string.Join('_', left.Select(s => s.si.Name.ForName()).Order())}" +
+            $"_{_targetRLiteral}_{eqName.ForName()}_{string.Join('_', right.Where(s => s.si.Name != eqName).Select(s => s.si.Name.ForName()).Order())}";
     }
 
     /// <summary>Compare a set of  value sets.</summary>
@@ -1955,8 +1946,8 @@ public class PackageComparer
         ConceptMap? vsConceptMap,
         [NotNullWhen(true)] out ValueSetComparison? comparison)
     {
-        Dictionary<string, FhirConcept> sourceConcepts = sourceVs.cgGetFlatConcepts(_left).ToDictionary(c => c.Code);
-        Dictionary<string, FhirConcept> targetConcepts = targetVs.cgGetFlatConcepts(_right).ToDictionary(c => c.Code);
+        Dictionary<string, FhirConcept> sourceConcepts = sourceVs.cgGetFlatConcepts(_source).ToDictionary(c => c.Code);
+        Dictionary<string, FhirConcept> targetConcepts = targetVs.cgGetFlatConcepts(_target).ToDictionary(c => c.Code);
 
         Dictionary<string, ConceptComparison> conceptComparisons = [];
 
@@ -1993,6 +1984,8 @@ public class PackageComparer
             }
         }
 
+        Dictionary<string, HashSet<string>> targetsMappedToSources = [];
+
         // traverse the source concepts to do comparison tests
         foreach (FhirConcept sourceConcept in sourceConcepts.Values)
         {
@@ -2014,6 +2007,15 @@ public class PackageComparer
                             string message = string.IsNullOrEmpty(mapTargetElement.Comment)
                                 ? MessageForConceptRelationship(relationship, mapSourceElement, mapTargetElement)
                                 : mapTargetElement.Comment;
+
+                            string targetCombined = $"{targetSystem}#{mapTargetElement.Code}";
+                            if (!targetsMappedToSources.TryGetValue(targetCombined, out HashSet<string>? sourceCodes))
+                            {
+                                sourceCodes = new();
+                                targetsMappedToSources.Add(targetCombined, sourceCodes);
+                            }
+
+                            sourceCodes.Add(sourceKey);
 
                             if (targetConcepts.TryGetValue(mapTargetElement.Code, out FhirConcept? targetConceptFromMap))
                             {
@@ -2046,6 +2048,15 @@ public class PackageComparer
             }
             else if (targetConcepts.TryGetValue(sourceConcept.Code, out FhirConcept? targetConcept))
             {
+                string targetCombined = $"{targetConcept.System}#{targetConcept.Code}";
+                if (!targetsMappedToSources.TryGetValue(targetCombined, out HashSet<string>? sourceCodes))
+                {
+                    sourceCodes = new();
+                    targetsMappedToSources.Add(targetCombined, sourceCodes);
+                }
+
+                sourceCodes.Add(sourceKey);
+
                 // create a 'default' comparison state
                 conceptComparisonDetails.Add(new()
                 {
@@ -2067,6 +2078,51 @@ public class PackageComparer
             conceptComparisons.Add(sourceConcept.Code, cc);
         }
 
+        // check our target -> sources to see if we need to mark items as narrower
+        foreach ((string targetCombined, HashSet<string> sourceKeys) in targetsMappedToSources)
+        {
+            if (string.IsNullOrEmpty(targetCombined))
+            {
+                throw new Exception();
+            }
+
+            if (sourceKeys.Count == 1)
+            {
+                continue;
+            }
+
+            string targetCode = targetCombined.Split('#')[^1];
+
+            foreach (string sourceKey in sourceKeys)
+            {
+                string sourceConcept = sourceKey.Split('#')[^1];
+
+                if (conceptComparisons.TryGetValue(sourceConcept, out ConceptComparison? cc) &&
+                    (cc.Relationship == CMR.Equivalent))
+                {
+                    string msg = $"{_sourceRLiteral} `{cc.Source.Code}` is narrower than {_targetRLiteral} `{targetCode}` and is compatible." +
+                            $" `{targetCode}` is mapped from {string.Join(" and ", sourceKeys.Order().Select(sk => $"`{sk.Split('#')[^1]}`"))}.";
+
+                    ConceptComparison updated = cc with
+                    {
+                        Relationship = CMR.SourceIsNarrowerThanTarget,
+                        Message = msg,
+                        TargetMappings = cc.TargetMappings
+                            .Select(tc => tc.Target.Code != targetCode
+                                ? tc
+                                : tc with
+                                {
+                                    Relationship = CMR.SourceIsNarrowerThanTarget,
+                                    Message = msg,
+                                })
+                            .ToList(),
+                    };
+
+                    conceptComparisons[sourceConcept] = updated;
+                }
+            }
+        }
+
         string sourceName = sourceVs.Name.ToPascalCase();
         string targetName = targetVs.Name.ToPascalCase();
 
@@ -2082,19 +2138,13 @@ public class PackageComparer
             TargetName = targetName,
             TargetTitle = targetVs.Title,
             TargetDescription = targetVs.Description,
-            CompositeName = $"{_leftRLiteral}-{sourceName}-{_rightRLiteral}-{targetName}",
+            CompositeName = $"{_sourceRLiteral}-{sourceName}-{_targetRLiteral}-{targetName}",
             ConceptComparisons = conceptComparisons,
             Relationship = vsRelationship,
             Message = MessageForComparisonRelationship(vsRelationship, sourceVs, targetVs),
         };
         return true;
 
-        CMR? GetDefaultRelationship(ConceptMap.TargetElementComponent mapTargetElement, List<ConceptMap.TargetElementComponent> targets) => targets.Count switch
-        {
-            0 => mapTargetElement.Relationship ?? CMR.NotRelatedTo,
-            1 => mapTargetElement.Relationship ?? CMR.Equivalent,
-            _ => ApplyRelationship(mapTargetElement.Relationship ?? CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
-        };
 
         CMR? RelationshipForDetails(List<ConceptComparisonDetails> details) => details.Count switch
         {
@@ -2107,39 +2157,67 @@ public class PackageComparer
         {
             0 => CMR.NotRelatedTo,
             1 => comparisons.First().Value.Relationship,
-            _ => comparisons.Any(kvp => kvp.Value.Relationship != CMR.Equivalent)
-                ? (comparisons.Any(kvp => !IsEquivalentOrBroader(kvp.Value)) ? CMR.RelatedTo : CMR.SourceIsBroaderThanTarget)
-                : CMR.Equivalent,
+            _ => comparisons.All(kvp => IsEquivalentOrNotPresent(kvp.Value))
+                ? CMR.Equivalent
+                : comparisons.All(kvp => IsEquivalentOrBroader(kvp.Value))
+                ? CMR.SourceIsBroaderThanTarget
+                : comparisons.All(kvp => IsEquivalentOrNarrower(kvp.Value))
+                ? CMR.SourceIsNarrowerThanTarget
+                : CMR.RelatedTo,
         };
+
+        bool IsEquivalentOrNotPresent(ConceptComparison cc) =>
+            cc.Relationship == CMR.Equivalent ||
+            cc.TargetMappings.Count == 0;
 
         bool IsEquivalentOrBroader(ConceptComparison cc) =>
             cc.Relationship == CMR.Equivalent ||
             cc.Relationship == CMR.SourceIsBroaderThanTarget ||
             cc.TargetMappings.Count == 0;
 
+        bool IsEquivalentOrNarrower(ConceptComparison cc) =>
+            cc.Relationship == CMR.Equivalent ||
+            cc.Relationship == CMR.SourceIsNarrowerThanTarget ||
+            cc.TargetMappings.Count == 0;
+
         string MessageForConceptRelationship(CMR? r, ConceptMap.SourceElementComponent se, ConceptMap.TargetElementComponent te) => r switch
         {
-            null => $"{_leftRLiteral} `{se.Code}` has no mapping into {_rightRLiteral} {targetVs.Url}.",
-            CMR.Equivalent => $"{_leftRLiteral} `{se.Code}` is equivalent to {_rightRLiteral} `{te.Code}`.",
-            CMR.SourceIsBroaderThanTarget => $"{_leftRLiteral} `{se.Code}` is broader than {_rightRLiteral} {te.Code} and is compatible for conversion. `{se.Code}` maps to {string.Join(" and ", se.Target.Select(t => $"`{t.Code}`"))}.",
-            _ => $"{_leftRLiteral} `{se.Code}` maps as {r} to the target {_rightRLiteral} `{te.Code}`.",
+            null => $"{_sourceRLiteral} `{se.Code}` has no mapping into {_targetRLiteral} {targetVs.Url}.",
+            CMR.Equivalent => $"{_sourceRLiteral} `{se.Code}` is equivalent to {_targetRLiteral} `{te.Code}`.",
+            CMR.SourceIsBroaderThanTarget => $"{_sourceRLiteral} `{se.Code}` is broader than {_targetRLiteral} {te.Code} and requires mapping choice. `{se.Code}` maps to {string.Join(" and ", se.Target.Select(t => $"`{t.Code}`"))}.",
+            _ => $"{_sourceRLiteral} `{se.Code}` maps as {r} to the target {_targetRLiteral} `{te.Code}`.",
         };
 
         string MessageForDetails(List<ConceptComparisonDetails> details, FhirConcept sourceConcept, ValueSet targetVs) => details.Count switch
         {
-            0 => $"{_leftRLiteral} `{sourceConcept.Code}` does not appear in the target and has no mapping for {targetVs.Url}.",
+            0 => $"{_sourceRLiteral} `{sourceConcept.Code}` does not appear in the target and has no mapping for {targetVs.Url}.",
             1 => details[0].Message,
-            _ => $"{_leftRLiteral} `{sourceConcept.Code}` maps to multiple concepts in {targetVs.Url}.",
+            _ => $"{_sourceRLiteral} `{sourceConcept.Code}` maps to multiple concepts in {targetVs.Url}.",
         };
 
         string MessageForComparisonRelationship(CMR? r, ValueSet sourceVs, ValueSet targetVs) => r switch
         {
-            null => $"There is no mapping from {_leftRLiteral} {sourceVs.Url} to {_rightRLiteral} {targetVs.Url}.",
-            CMR.Equivalent => $"{_leftRLiteral} {sourceVs.Url} is equivalent to {_rightRLiteral} {targetVs.Url}.",
-            CMR.SourceIsBroaderThanTarget => $"{_leftRLiteral} {sourceVs.Url} is broader than {_rightRLiteral} {targetVs.Url} and is compatible for conversion.",
-            _ => $"{_leftRLiteral} {sourceVs.Url} maps as {r} to {_rightRLiteral} {targetVs.Url}.",
+            null => $"There is no mapping from {_sourceRLiteral} {sourceVs.Url} to {_targetRLiteral} {targetVs.Url}.",
+            CMR.Equivalent => $"{_sourceRLiteral} {sourceVs.Url} is equivalent to {_targetRLiteral} {targetVs.Url}.",
+            CMR.SourceIsBroaderThanTarget => $"{_sourceRLiteral} {sourceVs.Url} is broader than {_targetRLiteral} {targetVs.Url} and requires mapping choices for conversion.",
+            _ => $"{_sourceRLiteral} {sourceVs.Url} maps as {r} to {_targetRLiteral} {targetVs.Url}.",
         };
     }
+
+    private CMR? GetDefaultRelationship(ConceptMap.TargetElementComponent mapTargetElement, List<ConceptMap.TargetElementComponent> targets) => targets.Count switch
+    {
+        0 => mapTargetElement.Relationship ?? CMR.NotRelatedTo,
+        1 => mapTargetElement.Relationship ?? CMR.Equivalent,
+        _ => ApplyRelationship(mapTargetElement.Relationship ?? CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+    };
+
+    string MessageForComparisonRelationship(CMR? r, StructureDefinition sourceSd, StructureDefinition targetSd) => r switch
+    {
+        null => $"There is no mapping from {_sourceRLiteral} `{sourceSd.Name}` to {_targetRLiteral} `{targetSd.Name}`.",
+        CMR.Equivalent => $"{_sourceRLiteral} `{sourceSd.Name}` is equivalent to {_targetRLiteral} `{targetSd.Name}`.",
+        CMR.SourceIsBroaderThanTarget => $"{_sourceRLiteral} `{sourceSd.Name}` is broader than {_targetRLiteral} `{targetSd.Name}` and requires mapping choices for conversion.",
+        _ => $"{_sourceRLiteral} `{sourceSd.Name}` maps as {r} to {_targetRLiteral} `{targetSd.Name}`.",
+    };
 
     private string UnversionedUrl(string url) => url.Contains('|') ? url.Split('|')[0] : url;
 
@@ -2311,6 +2389,50 @@ public class PackageComparer
 
     //    return comparison;
     //}
+
+    private Dictionary<string, List<PrimitiveTypeComparison>> ComparePrimitives(
+        IReadOnlyDictionary<string, StructureDefinition> sourcePrimitives,
+        IReadOnlyDictionary<string, StructureDefinition> targetPrimitives)
+    {
+        Dictionary<string, List<PrimitiveTypeComparison>> results = [];
+
+        // loop over the source primitive types
+        foreach ((string sourceName, StructureDefinition sourceSd) in sourcePrimitives)
+        {
+            HashSet<string> testedTargetNames = [];
+
+            if (!results.TryGetValue(sourceName, out List<PrimitiveTypeComparison>? comparisons))
+            {
+                comparisons = [];
+                results.Add(sourceName, comparisons);
+            }
+
+            // check to see if we have a primitive type map
+            if ((_crossVersion != null) &&
+                (_crossVersion?.DataTypeMap is ConceptMap cm))
+            {
+                // check for our type in the type map
+                IEnumerable<ConceptMap.SourceElementComponent> primitiveSEs = cm.Group.SelectMany(g => g.Element.Where(e => e.Code == sourceName));
+
+                foreach (ConceptMap.SourceElementComponent primitiveSE in primitiveSEs)
+                {
+                    foreach (ConceptMap.TargetElementComponent primitiveTE in primitiveSE.Target)
+                    {
+                        if (targetPrimitives.TryGetValue(primitiveTE.Code, out StructureDefinition? targetSd))
+                        {
+                            testedTargetNames.Add(primitiveTE.Code);
+
+                            // primitive comparison is just based on names, so we can do it inline
+                            CMR? relationship = GetDefaultRelationship(primitiveTE, primitiveSE.Target);
+                        }
+                    }
+                }
+            }
+        }
+
+        throw new NotImplementedException();
+    }
+
 
     private Dictionary<string, ComparisonRecord<StructureInfoRec>> ComparePrimitives(
         FhirArtifactClassEnum artifactClass,
@@ -2518,7 +2640,7 @@ public class PackageComparer
                 KeyInRight = keyInRight,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_rightRLiteral} added {sdName}",
+                Message = $"{_targetRLiteral} added {sdName}",
             };
             return true;
         }
@@ -2536,7 +2658,7 @@ public class PackageComparer
                 KeyInRight = keyInRight,
                 NamedMatch = false,
                 Relationship = null,
-                Message = $"{_rightRLiteral} removed {sdName}",
+                Message = $"{_targetRLiteral} removed {sdName}",
             };
             return true;
         }
@@ -2576,7 +2698,7 @@ public class PackageComparer
 
                 // for primitives, a name-match needs to represent equivalence for sanity elsewhere
                 relationship = CMR.Equivalent;
-                message = $"{_rightRLiteral} primitive {rightSi.Name} is equivalent to the {_leftRLiteral} primitive {leftSi.Name}";
+                message = $"{_targetRLiteral} primitive {rightSi.Name} is equivalent to the {_sourceRLiteral} primitive {leftSi.Name}";
 
                 // also add a serialization info
                 serializations.Add(leftSi.Name, new()
@@ -2584,7 +2706,7 @@ public class PackageComparer
                     Source = leftSi.Name,
                     Target = rightSi.Name,
                     Relationship = rightRelationship ?? CMR.SourceIsBroaderThanTarget,
-                    Message = $"{_rightRLiteral} primitive {rightSi.Name} is equivalent to the {_leftRLiteral} primitive {leftSi.Name}",
+                    Message = $"{_targetRLiteral} primitive {rightSi.Name} is equivalent to the {_sourceRLiteral} primitive {leftSi.Name}",
                 });
 
                 continue;
@@ -2602,7 +2724,7 @@ public class PackageComparer
                 Source = leftSi.Name,
                 Target = rightSi.Name,
                 Relationship = rightRelationship ?? CMR.SourceIsBroaderThanTarget,
-                Message = $"{_rightRLiteral} new type {rightSi.Name} has a serialization mapping from {_leftRLiteral} type {leftSi.Name}",
+                Message = $"{_targetRLiteral} new type {rightSi.Name} has a serialization mapping from {_sourceRLiteral} type {leftSi.Name}",
             };
 
             if (keyInLeft)
@@ -2621,22 +2743,22 @@ public class PackageComparer
             {
                 message = relationship switch
                 {
-                    CMR.Equivalent => $"{_rightRLiteral} type {rSource[0].si.Name} is equivalent to the {_leftRLiteral} type {sdName}",
-                    CMR.RelatedTo => $"{_rightRLiteral} type {rSource[0].si.Name} is related to {_leftRLiteral} type {sdName}",
-                    CMR.SourceIsNarrowerThanTarget => $"{_rightRLiteral} type {rSource[0].si.Name} subsumes {_leftRLiteral} type {sdName}",
-                    CMR.SourceIsBroaderThanTarget => $"{_rightRLiteral} type {rSource[0].si.Name} is subsumed by {_leftRLiteral} type {sdName}",
-                    _ => $"{_rightRLiteral} type {rSource[0].si.Name} is related to {_leftRLiteral} type {sdName}",
+                    CMR.Equivalent => $"{_targetRLiteral} type {rSource[0].si.Name} is equivalent to the {_sourceRLiteral} type {sdName}",
+                    CMR.RelatedTo => $"{_targetRLiteral} type {rSource[0].si.Name} is related to {_sourceRLiteral} type {sdName}",
+                    CMR.SourceIsNarrowerThanTarget => $"{_targetRLiteral} type {rSource[0].si.Name} subsumes {_sourceRLiteral} type {sdName}",
+                    CMR.SourceIsBroaderThanTarget => $"{_targetRLiteral} type {rSource[0].si.Name} is subsumed by {_sourceRLiteral} type {sdName}",
+                    _ => $"{_targetRLiteral} type {rSource[0].si.Name} is related to {_sourceRLiteral} type {sdName}",
                 };
             }
             else
             {
                 message = relationship switch
                 {
-                    CMR.Equivalent => $"{_rightRLiteral} new type {sdName} is equivalent to the {_leftRLiteral} type {lSource[0].si.Name}",
-                    CMR.RelatedTo => $"{_rightRLiteral} new type {sdName} is related to {_leftRLiteral} type {lSource[0].si.Name}",
-                    CMR.SourceIsNarrowerThanTarget => $"{_rightRLiteral} new type {sdName} subsumes {_leftRLiteral} type {lSource[0].si.Name}",
-                    CMR.SourceIsBroaderThanTarget => $"{_rightRLiteral} new type {sdName} is subsumed by {_leftRLiteral} type {lSource[0].si.Name}",
-                    _ => $"{_rightRLiteral} new type {sdName} is related to {_leftRLiteral} type {lSource[0].si.Name}",
+                    CMR.Equivalent => $"{_targetRLiteral} new type {sdName} is equivalent to the {_sourceRLiteral} type {lSource[0].si.Name}",
+                    CMR.RelatedTo => $"{_targetRLiteral} new type {sdName} is related to {_sourceRLiteral} type {lSource[0].si.Name}",
+                    CMR.SourceIsNarrowerThanTarget => $"{_targetRLiteral} new type {sdName} subsumes {_sourceRLiteral} type {lSource[0].si.Name}",
+                    CMR.SourceIsBroaderThanTarget => $"{_targetRLiteral} new type {sdName} is subsumed by {_sourceRLiteral} type {lSource[0].si.Name}",
+                    _ => $"{_targetRLiteral} new type {sdName} is related to {_sourceRLiteral} type {lSource[0].si.Name}",
                 };
             }
         }

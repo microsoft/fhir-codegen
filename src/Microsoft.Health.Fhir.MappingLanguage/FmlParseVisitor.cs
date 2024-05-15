@@ -32,6 +32,7 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
     private int _lastStopIndex = -1;
 
     private Dictionary<string, MetadataDeclaration> _metaByPath = [];
+    private Dictionary<string, EmbeddedConceptMapDeclaration> _embeddedConceptMapsByUrl = [];
     private MapDeclaration? _mapDirective = null;
     private Dictionary<string, StructureDeclaration> _structuresByUrl = [];
     private Dictionary<string, ImportDeclaration> _importsByUrl = [];
@@ -48,6 +49,7 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
         return new FhirStructureMap()
         {
             MetadataByPath = _metaByPath,
+            EmbeddedConceptMapsByUrl = _embeddedConceptMapsByUrl,
             MapDirective = _mapDirective,
             StructuresByUrl = _structuresByUrl,
             ImportsByUrl = _importsByUrl,
@@ -104,6 +106,68 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
         return base.VisitMetadataDeclaration(context);
     }
 
+    public override object VisitConceptMapDeclaration([NotNull] ConceptMapDeclarationContext context)
+    {
+        Dictionary<string, EmbeddedConceptMapPrefix> prefixes = [];
+
+        foreach (ConceptMapPrefixContext prefixContext in context.conceptMapPrefix())
+        {
+            string id = GetString(prefixContext.ID())!;
+            prefixes.Add(id, new EmbeddedConceptMapPrefix
+            {
+                Prefix = id,
+                Url = GetString(prefixContext.url()) ?? throw new Exception($"Embedded concept maps require a URL ({context.url().GetText()}:{prefixContext.ID().GetText()})"),
+
+                RawText = prefixContext.Start.InputStream.GetText(new Interval(prefixContext.Start.StartIndex, prefixContext.Stop.StopIndex)),
+                PrefixComments = GetPrefixComments(prefixContext),
+                PostfixComments = GetPostfixComments(prefixContext),
+                Line = prefixContext.Start.Line,
+                Column = prefixContext.Start.Column,
+                StartIndex = prefixContext.Start.StartIndex,
+                StopIndex = prefixContext.Stop.StopIndex,
+            });
+        }
+
+        List<EmbeddedConceptMapCodeMap> codeMaps = [];
+
+        foreach (ConceptMapCodeMapContext codeMapContext in context.conceptMapCodeMap())
+        {
+            codeMaps.Add(new()
+            {
+                SourcePrefix = GetString(codeMapContext.conceptMapSource().ID())!,
+                SourceCode = GetString(codeMapContext.conceptMapSource().code())!,
+                TargetPrefix = GetString(codeMapContext.conceptMapTarget().ID())!,
+                TargetCode = GetString(codeMapContext.conceptMapTarget().code())!,
+
+                RawText = codeMapContext.Start.InputStream.GetText(new Interval(codeMapContext.Start.StartIndex, codeMapContext.Stop.StopIndex)),
+                PrefixComments = GetPrefixComments(codeMapContext),
+                PostfixComments = GetPostfixComments(codeMapContext),
+                Line = codeMapContext.Start.Line,
+                Column = codeMapContext.Start.Column,
+                StartIndex = codeMapContext.Start.StartIndex,
+                StopIndex = codeMapContext.Stop.StopIndex,
+            });
+        }
+
+        string url = context.url().GetText();
+
+        _embeddedConceptMapsByUrl.Add(url, new()
+        {
+            Url = url,
+            Prefixes = prefixes,
+            CodeMaps = codeMaps,
+
+            RawText = context.Start.InputStream.GetText(new Interval(context.Start.StartIndex, context.Stop.StopIndex)),
+            PrefixComments = GetPrefixComments(context),
+            PostfixComments = GetPostfixComments(context),
+            Line = context.Start.Line,
+            Column = context.Start.Column,
+            StartIndex = context.Start.StartIndex,
+            StopIndex = context.Stop.StopIndex,
+        });
+
+        return base.VisitConceptMapDeclaration(context);
+    }
 
     public override object VisitMapDeclaration([NotNull] MapDeclarationContext context)
     {

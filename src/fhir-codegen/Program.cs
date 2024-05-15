@@ -99,7 +99,7 @@ public class Program
         {
             "generate" => await DoGenerate(pr),
             "compare" => await DoCompare(pr),
-            "cross-version" => await CrossVersionInteractive.DoCrossVersionReview(pr),
+            //"cross-version" => await CrossVersionInteractive.DoCrossVersionReview(pr),
             "gui" => Gui.RunGui(pr),
             //case "interactive":
             //    return await DoInteractive(pr);
@@ -248,17 +248,17 @@ public class Program
         // TODO(ginoc): Set the command handler
         rootCommand.AddCommand(compareCommand);
 
-        // create our cross-version interactive command
-        SCL.Command cviCommand = new("cross-version", "Interactively review cross-version definitions.");
-        foreach (SCL.Option option in BuildCliOptions(typeof(ConfigCrossVersionInteractive), typeof(ConfigRoot), envConfig))
-        {
-            // note that 'global' here is just recursive DOWNWARD
-            cviCommand.AddGlobalOption(option);
-            TrackIfEnum(option);
-        }
+        //// create our cross-version interactive command
+        //SCL.Command cviCommand = new("cross-version", "Interactively review cross-version definitions.");
+        //foreach (SCL.Option option in BuildCliOptions(typeof(ConfigCrossVersionInteractive), typeof(ConfigRoot), envConfig))
+        //{
+        //    // note that 'global' here is just recursive DOWNWARD
+        //    cviCommand.AddGlobalOption(option);
+        //    TrackIfEnum(option);
+        //}
 
-        // TODO(ginoc): Set the command handler
-        rootCommand.AddCommand(cviCommand);
+        //// TODO(ginoc): Set the command handler
+        //rootCommand.AddCommand(cviCommand);
 
         // create our UI command
         SCL.Command guiCommand = new("gui", "Launch the GUI.");

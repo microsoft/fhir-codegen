@@ -10,11 +10,11 @@ namespace Microsoft.Health.Fhir.MappingLanguage;
 
 internal static class AntlrUtils
 {
-    internal static string BuildLiteralEnums()
+    internal static List<string> BuildLiteralEnums()
     {
         HashSet<string> hs = [];
         List<string> lines = [];
-        for (int i = 1; i < 104; i++)
+        for (int i = 1; i < 105; i++)
         {
             string enumValue = FmlMappingParser.DefaultVocabulary.GetSymbolicName(i);
 
@@ -154,8 +154,6 @@ internal static class AntlrUtils
             lines.Add($"{name.ToPascalCase()} = {enumValue},");
         }
 
-        string enums = string.Join('\n', lines);
-        Console.WriteLine(enums);
-        return enums;
+        return lines;
     }
 }

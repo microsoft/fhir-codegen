@@ -131,6 +131,32 @@ public record class ValueSetComparison
     }
 }
 
+public record class PrimitiveTypeComparison
+{
+    public required string SourceTypeLiteral { get; init; }
+    public required string SourceName { get; init; }
+    public required string SourceDescription { get; init; }
+
+    public required string TargetTypeLiteral { get; init; }
+    public required string TargetName { get; init; }
+    public required string TargetDescription { get; init; }
+
+    /// <summary>Gets or initializes the composite name for this record.</summary>
+    public required string CompositeName { get; init; }
+
+    public required CMR? Relationship { get; init; }
+    public required string Message { get; init; }
+
+    public string GetStatusString()
+    {
+        if (string.IsNullOrEmpty(TargetTypeLiteral))
+        {
+            return "DoesNotExistInTarget";
+        }
+
+        return Relationship?.ToString() ?? "-";
+    }
+}
 
 public interface IComparisonRecord<T> : IComparisonRecord
 {
