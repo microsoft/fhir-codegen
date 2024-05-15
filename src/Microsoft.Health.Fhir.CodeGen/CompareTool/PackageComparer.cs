@@ -210,17 +210,17 @@ public class PackageComparer
                 }
             }
 
-            //    // write out the resource type map
-            //    if (_config.MapSaveStyle != ConfigCompare.ComparisonMapSaveStyle.None)
-            //    {
-            //        string mapSubDir = Path.Combine(conceptMapDir, "ValueSets");
-            //        if (!Directory.Exists(mapSubDir))
-            //        {
-            //            Directory.CreateDirectory(mapSubDir);
-            //        }
+            // write out the value set maps
+            if (_config.MapSaveStyle != ConfigCompare.ComparisonMapSaveStyle.None)
+            {
+                string mapSubDir = Path.Combine(conceptMapDir, "ValueSets");
+                if (!Directory.Exists(mapSubDir))
+                {
+                    Directory.CreateDirectory(mapSubDir);
+                }
 
-            //        WriteValueSetMaps(mapSubDir, _vsComparisons.Values);
-            //    }
+                WriteValueSetMaps(mapSubDir, _vsComparisons.Values.SelectMany(vl => vl.Select(v => v)));
+            }
         }
 
         //_vsComparisons = CompareValueSets(FhirArtifactClassEnum.ValueSet, vsLeft, GetValueSets(_right, vsLeft));
@@ -511,14 +511,14 @@ public class PackageComparer
         }
     }
 
-    private void WriteValueSetMaps(string outputDir, IEnumerable<ComparisonRecord<ValueSetInfoRec, ConceptInfoRec>> values)
+    private void WriteValueSetMaps(string outputDir, IEnumerable<ValueSetComparison> values)
     {
         if (_crossVersion == null)
         {
             return;
         }
 
-        foreach (ComparisonRecord<ValueSetInfoRec, ConceptInfoRec> c in values)
+        foreach (ValueSetComparison c in values)
         {
             ConceptMap? cm = _crossVersion.GetSourceValueSetConceptMap(c);
             if (cm == null)
@@ -2437,7 +2437,7 @@ public class PackageComparer
                 Source = sourceConceptInfo,
                 TargetMappings = conceptComparisonDetails,
                 Relationship = RelationshipForDetails(conceptComparisonDetails),
-                Message = MessageForDetails(conceptComparisonDetails),
+                Message = MessageForDetails(conceptComparisonDetails, sourceConcept, targetVs),
             };
 
             conceptComparisons.Add(sourceConcept.Code, cc);
@@ -2461,7 +2461,7 @@ public class PackageComparer
             CompositeName = $"{_leftRLiteral}-{sourceName}-{_rightRLiteral}-{targetName}",
             ConceptComparisons = conceptComparisons,
             Relationship = vsRelationship,
-            Message = MessageForComparisonRelationship(vsRelationship),
+            Message = MessageForComparisonRelationship(vsRelationship, sourceVs, targetVs),
         };
         return true;
 
@@ -2490,25 +2490,25 @@ public class PackageComparer
 
         string MessageForConceptRelationship(CMR? r, ConceptMap.SourceElementComponent se, ConceptMap.TargetElementComponent te) => r switch
         {
-            null => $"There is no mapping for {sourceVs.Url}#{se.Code} into {targetVs.Url}.",
-            CMR.Equivalent => $"{se.Code} is equivalent to {te.Code}.",
-            CMR.SourceIsBroaderThanTarget => $"{se.Code} is broader than {te.Code} and is compatible for conversion. {se.Code} maps to {string.Join(" and ", se.Target.Select(t => t.Code))}.",
-            _ => $"{se.Code} maps as {r} to the target {te.Code}.",
+            null => $"{_leftRLiteral} `{se.Code}` has no mapping into {_rightRLiteral} {targetVs.Url}.",
+            CMR.Equivalent => $"{_leftRLiteral} `{se.Code}` is equivalent to {_rightRLiteral} `{te.Code}`.",
+            CMR.SourceIsBroaderThanTarget => $"{_leftRLiteral} `{se.Code}` is broader than {_rightRLiteral} {te.Code} and is compatible for conversion. `{se.Code}` maps to {string.Join(" and ", se.Target.Select(t => $"`{t.Code}`"))}.",
+            _ => $"{_leftRLiteral} `{se.Code}` maps as {r} to the target {_rightRLiteral} `{te.Code}`.",
         };
 
-        string MessageForDetails(List<ConceptComparisonDetails> details) => details.Count switch
+        string MessageForDetails(List<ConceptComparisonDetails> details, FhirConcept sourceConcept, ValueSet targetVs) => details.Count switch
         {
-            0 => "Concept does not appear in the target and there is no mapping available.",
+            0 => $"{_leftRLiteral} `{sourceConcept.Code}` does not appear in the target and has no mapping for {targetVs.Url}.",
             1 => details[0].Message,
-            _ => "The source concept maps to multiple target concepts.",
+            _ => $"{_leftRLiteral} `{sourceConcept.Code}` maps to multiple concepts in {targetVs.Url}.",
         };
 
-        string MessageForComparisonRelationship(CMR? r) => r switch
+        string MessageForComparisonRelationship(CMR? r, ValueSet sourceVs, ValueSet targetVs) => r switch
         {
-            null => "There is no conversion defined between these value sets.",
-            CMR.Equivalent => "The value sets are fully equivalent.",
-            CMR.SourceIsBroaderThanTarget => "The source value set is broader than the target value set, and is compatible for conversion.",
-            _ => $"The source value set maps as {r} to the target.",
+            null => $"There is no mapping from {_leftRLiteral} {sourceVs.Url} to {_rightRLiteral} {targetVs.Url}.",
+            CMR.Equivalent => $"{_leftRLiteral} {sourceVs.Url} is equivalent to {_rightRLiteral} {targetVs.Url}.",
+            CMR.SourceIsBroaderThanTarget => $"{_leftRLiteral} {sourceVs.Url} is broader than {_rightRLiteral} {targetVs.Url} and is compatible for conversion.",
+            _ => $"{_leftRLiteral} {sourceVs.Url} maps as {r} to {_rightRLiteral} {targetVs.Url}.",
         };
     }
 

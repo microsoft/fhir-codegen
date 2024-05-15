@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
+using Hl7.Fhir.Utility;
 using Microsoft.Extensions.Logging;
 using Microsoft.Health.Fhir.CodeGen.Loader;
 using Microsoft.Health.Fhir.CodeGen.Models;
@@ -676,33 +677,24 @@ public class CrossVersionMapCollection
 
 
     public ConceptMap? GetSourceValueSetConceptMap(
-        ComparisonRecord<ValueSetInfoRec, ConceptInfoRec> cRec)
+        ValueSetComparison vsc)
     {
         // we cannot write maps that do not have both a source and a target
-        if ((cRec.Left.Count == 0) || (cRec.Right.Count == 0))
+        if (string.IsNullOrEmpty(vsc.SourceUrl) || string.IsNullOrEmpty(vsc.TargetUrl))
         {
             return null;
         }
 
-        // for now, we only support 1:1 mappings
-        if ((cRec.Left.Count != 1) || (cRec.Right.Count != 1))
-        {
-            throw new Exception("Cannot build concept map for value sets with more than one mapping");
-        }
-
-        if (cRec.Children.Count == 0)
+        if (vsc.ConceptComparisons.Count == 0)
         {
             throw new Exception("Cannot process a comparison with no mappings!");
         }
 
-        string leftName = cRec.Left[0].Name;
-        string rightName = cRec.Right[0].Name;
-
-        string localConceptMapId = $"{_leftRLiteral}-{leftName}-{_rightRLiteral}-{rightName}";
+        string localConceptMapId = $"{_leftRLiteral}-{vsc.SourceName}-{_rightRLiteral}-{vsc.TargetName}";
         string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
 
-        string sourceUrl = cRec.Left[0].Url;
-        string targetUrl = cRec.Right[0].Url;
+        string sourceUrl = vsc.SourceUrl;
+        string targetUrl = vsc.TargetUrl;
 
         string sourceCanonical = $"{sourceUrl}|{_leftPackageVersion}";
         string targetCanonical = $"{targetUrl}|{_rightPackageVersion}";
@@ -716,55 +708,108 @@ public class CrossVersionMapCollection
             cm.Id = localConceptMapId;
             cm.Url = localUrl;
             cm.Name = localConceptMapId;
-            cm.Title = GetConceptMapTitle(leftName);
+            cm.Title = GetConceptMapTitle(vsc.SourceName);
 
             cm.SourceScope = new Canonical(sourceCanonical);
             cm.TargetScope = new Canonical(targetCanonical);
         }
 
-        ConceptMap.GroupComponent group = new();
+        Dictionary<string, ConceptMap.GroupComponent> groups = [];
 
-        group.Source = cRec.Left[0].Url;
-        group.Target = cRec.Right[0].Url;
+        string primaryTargetSystem = vsc.ConceptComparisons.Values
+            .SelectMany(cc => cc.TargetMappings.Select(t => t.Target.System))
+            .GroupBy(s => s)
+            .OrderByDescending(c => c.Count())
+            .FirstOrDefault()?.Key ?? vsc.ConceptComparisons.First().Value.Source.System;
 
         // traverse concepts that exist in our source
-        foreach ((string conceptKey, ComparisonRecord<ConceptInfoRec> conceptComparison) in cRec.Children.Where(kvp => kvp.Value.KeyInLeft == true).OrderBy(kvp => kvp.Key))
+        foreach ((string code, ConceptComparison cc) in vsc.ConceptComparisons.OrderBy(kvp => kvp.Key))
         {
-            // put an entry with no map if there is no target
-            if (conceptComparison.Right.Count == 0)
+            string sourceSystem = cc.Source.System;
+            string noTargetKey = $"{sourceSystem}-{primaryTargetSystem}";
+
+            if (cc.TargetMappings.Count == 0)
             {
-                group.Element.Add(new()
+                if (!groups.TryGetValue(noTargetKey, out ConceptMap.GroupComponent? noTargetGroup))
                 {
-                    Code = conceptKey,
+                    noTargetGroup = new()
+                    {
+                        Source = sourceUrl,
+                        Target = targetUrl,
+                    };
+
+                    groups.Add(noTargetKey, noTargetGroup);
+                }
+
+                noTargetGroup.Element.Add(new()
+                {
+                    Code = cc.Source.Code,
+                    Display = cc.Source.Description,
                     NoMap = true,
-                    Display = conceptComparison.Left[0].Description,
                 });
 
                 continue;
             }
 
-            group.Element.Add(new()
+            Dictionary<string, List<ConceptMap.TargetElementComponent>> elementTargetsBySystem = [];
+
+            foreach (ConceptComparisonDetails targetMapping in cc.TargetMappings)
             {
-                Code = conceptKey,
-                Display = conceptComparison.Left[0].Description,
-                Target = conceptComparison.Right.Select(target => new ConceptMap.TargetElementComponent()
+                string targetSystem = targetMapping.Target.System;
+                string key = string.IsNullOrEmpty(targetSystem)
+                    ? noTargetKey
+                    : $"{sourceSystem}-{targetSystem}";
+
+                if (!elementTargetsBySystem.TryGetValue(key, out List<ConceptMap.TargetElementComponent>? elementTargets))
                 {
-                    Code = target.Code,
-                    Display = target.Description,
-                    Relationship = conceptComparison.Relationship,
-                    Comment = conceptComparison.Message,
-                }).ToList(),
-            });
+                    elementTargets = [];
+                    elementTargetsBySystem.Add(key, elementTargets);
+                }
+
+                elementTargets.Add(new()
+                {
+                    Code = targetMapping.Target.Code,
+                    Display = targetMapping.Target.Description,
+                    Relationship = targetMapping.Relationship,
+                    Comment = targetMapping.Message,
+                });
+            }
+
+            foreach ((string targetSystem, List<ConceptMap.TargetElementComponent> targets) in elementTargetsBySystem)
+            {
+                string key = string.IsNullOrEmpty(targetSystem)
+                    ? noTargetKey
+                    : $"{sourceSystem}-{targetSystem}";
+
+                if (!groups.TryGetValue(key, out ConceptMap.GroupComponent? group))
+                {
+                    group = new()
+                    {
+                        Source = sourceUrl,
+                        Target = targetUrl,
+                    };
+
+                    groups.Add(key, group);
+                }
+
+                group.Element.Add(new()
+                {
+                    Code = cc.Source.Code,
+                    Display = cc.Source.Description,
+                    Target = targets,
+                });
+            }
         }
 
         // check for a value set that could not map anything
-        if (group.Element.Count == 0)
+        if (groups.Count == 0)
         {
-            Console.WriteLine($"Not writing ConceptMap for {cRec.CompositeName} - no concepts are mapped to target!");
+            Console.WriteLine($"Not updating ConceptMap for {vsc.CompositeName} - no concepts are mapped to target!");
             return null;
         }
 
-        cm.Group.Add(group);
+        cm.Group.Clear();
+        cm.Group.AddRange(groups.Values);
 
         return cm;
     }

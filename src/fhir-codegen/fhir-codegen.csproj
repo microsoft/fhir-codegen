@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -7,7 +7,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>fhir_codegen</RootNamespace>
     <AssemblyName>$(AssemblyName.Replace(' ', '_'))</AssemblyName>
-    <StaticWebAssetBasePath Condition="$(StaticWebAssetBasePath) == ''">/</StaticWebAssetBasePath>
+    <!--<StaticWebAssetBasePath Condition="$(StaticWebAssetBasePath) == ''">/</StaticWebAssetBasePath>-->
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -19,12 +19,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\**" />
+    <EmbeddedResource Remove="wwwroot\**" />
+    <None Remove="wwwroot\**" />
+  </ItemGroup>
+
+  <!--<ItemGroup>
     <None Include="bin\Release\net8.0\publish\wwwroot\**\*.*" Pack="true" PackagePath="staticwebassets\%(RecursiveDir)%(FileName)%(Extension)">
       <Link>wwwroot\_content\%(RecursiveDir)%(FileName)%(Extension)</Link>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <IncludeInPackage>true</IncludeInPackage>
     </None>
-  </ItemGroup>
+  </ItemGroup>-->
 
   <ItemGroup>
 	<PackageReference Include="Hl7.Fhir.R5" Version="5.8.1" />
