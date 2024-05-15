@@ -73,7 +73,7 @@ public class CrossVersionMapCollection
 
     private ConceptMap? _dataTypeMap = null;
     private ConceptMap? _resourceTypeMap = null;
-    private Dictionary<string, ConceptMap> _elementConceptMaps = [];
+    //private Dictionary<string, ConceptMap> _elementConceptMaps = [];
 
 
     public CrossVersionMapCollection(
@@ -518,7 +518,8 @@ public class CrossVersionMapCollection
                                     }],
                                 };
 
-                                _elementConceptMaps.Add(typeName, elementMap);
+                                //_elementConceptMaps.Add(typeName, elementMap);
+                                _dc.AddConceptMap(elementMap, _dc.MainPackageId, _dc.MainPackageVersion);
                             }
                         }
                         break;
@@ -645,7 +646,7 @@ public class CrossVersionMapCollection
                                 throw new Exception($"Invalid left canonical in {cm.Url}");
                             }
 
-                            _elementConceptMaps.Add(leftName, cm);
+                            //_elementConceptMaps.Add(leftName, cm);
                         }
                         break;
 
@@ -661,7 +662,7 @@ public class CrossVersionMapCollection
                                 throw new Exception($"Invalid left canonical in {cm.Url}");
                             }
 
-                            _elementConceptMaps.Add(leftName, cm);
+                            //_elementConceptMaps.Add(leftName, cm);
                         }
                         break;
                 }
@@ -1236,5 +1237,5 @@ public class CrossVersionMapCollection
 
     public ConceptMap? ResourceTypeMap => _resourceTypeMap;
 
-    public ConceptMap? ElementTypeMap(string sdName) => _elementConceptMaps.TryGetValue(sdName, out ConceptMap? cm) ? cm : null;
+    //public ConceptMap? ElementTypeMap(string sdName) => _elementConceptMaps.TryGetValue(sdName, out ConceptMap? cm) ? cm : null;
 }

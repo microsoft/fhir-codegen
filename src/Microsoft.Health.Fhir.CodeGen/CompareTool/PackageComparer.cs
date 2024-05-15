@@ -354,7 +354,7 @@ public class PackageComparer
                 Directory.CreateDirectory(mdSubDir);
             }
 
-            foreach (List<StructureComparison> vcs in complexTypes.Values)
+            foreach (List<StructureComparison> vcs in resources.Values)
             {
                 foreach (StructureComparison c in vcs)
                 {
@@ -1294,7 +1294,7 @@ public class PackageComparer
         writer.WriteLine("| Source | Target | Status | Message |");
         writer.WriteLine("| ------ | ------ | ------ | ------- |");
 
-        foreach ((string code, ConceptComparison cc) in cRec.ConceptComparisons)
+        foreach ((string code, ConceptComparison cc) in cRec.ConceptComparisons.OrderBy(kvp => kvp.Key))
         {
             if (cc.TargetMappings.Count == 0)
             {
@@ -1330,7 +1330,7 @@ public class PackageComparer
         writer.WriteLine("| Source | Target | Status | Message |");
         writer.WriteLine("| ------ | ------ | ------ | ------- |");
 
-        foreach ((string path, ElementComparison ec) in cRec.ElementComparisons)
+        foreach ((string path, ElementComparison ec) in cRec.ElementComparisons.OrderBy(kvp => kvp.Key))
         {
             if (ec.TargetMappings.Count == 0)
             {
@@ -3743,7 +3743,7 @@ public class PackageComparer
             //}
 
             // for now, we have a global element map.  Once we have resource-specific ones, load those per structure in the loop
-            ConceptMap? elementMap = _crossVersion?.ElementTypeMap(sdName);
+            ConceptMap? elementMap = null;// _crossVersion?.ElementTypeMap(sdName);
 
             Dictionary<string, ElementConceptMapTarget> elementMappings = [];
 
