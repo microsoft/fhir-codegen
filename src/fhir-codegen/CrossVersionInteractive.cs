@@ -184,10 +184,10 @@ internal class CrossVersionInteractive
         // loop until the user quits
         while ((_nextState != UiStateCodes.Done) && (_nextState != UiStateCodes.Unknown))
         {
-            if (ConfigurationManager.Themes != null)
+            if (Terminal.Gui.ConfigurationManager.Themes != null)
             {
-                ConfigurationManager.Themes.Theme = "Default";
-                ConfigurationManager.Apply();
+                Terminal.Gui.ConfigurationManager.Themes.Theme = "Default";
+                Terminal.Gui.ConfigurationManager.Apply();
             }
 
             Window mainWindow = new()
