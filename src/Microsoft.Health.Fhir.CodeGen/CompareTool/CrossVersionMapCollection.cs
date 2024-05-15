@@ -726,7 +726,7 @@ public class CrossVersionMapCollection
         foreach ((string code, ConceptComparison cc) in vsc.ConceptComparisons.OrderBy(kvp => kvp.Key))
         {
             string sourceSystem = cc.Source.System;
-            string noTargetKey = $"{sourceSystem}-{primaryTargetSystem}";
+            string noTargetKey = $"{sourceSystem}||{primaryTargetSystem}";
 
             if (cc.TargetMappings.Count == 0)
             {
@@ -734,8 +734,8 @@ public class CrossVersionMapCollection
                 {
                     noTargetGroup = new()
                     {
-                        Source = sourceUrl,
-                        Target = targetUrl,
+                        Source = sourceSystem,
+                        Target = primaryTargetSystem,
                     };
 
                     groups.Add(noTargetKey, noTargetGroup);
@@ -758,7 +758,7 @@ public class CrossVersionMapCollection
                 string targetSystem = targetMapping.Target.System;
                 string key = string.IsNullOrEmpty(targetSystem)
                     ? noTargetKey
-                    : $"{sourceSystem}-{targetSystem}";
+                    : $"{sourceSystem}||{targetSystem}";
 
                 if (!elementTargetsBySystem.TryGetValue(key, out List<ConceptMap.TargetElementComponent>? elementTargets))
                 {
@@ -775,18 +775,16 @@ public class CrossVersionMapCollection
                 });
             }
 
-            foreach ((string targetSystem, List<ConceptMap.TargetElementComponent> targets) in elementTargetsBySystem)
+            foreach ((string key, List<ConceptMap.TargetElementComponent> targets) in elementTargetsBySystem)
             {
-                string key = string.IsNullOrEmpty(targetSystem)
-                    ? noTargetKey
-                    : $"{sourceSystem}-{targetSystem}";
-
                 if (!groups.TryGetValue(key, out ConceptMap.GroupComponent? group))
                 {
+                    string[] components = key.Split("||");
+
                     group = new()
                     {
-                        Source = sourceUrl,
-                        Target = targetUrl,
+                        Source = components[0],
+                        Target = components[1],
                     };
 
                     groups.Add(key, group);
@@ -1106,190 +1104,6 @@ public class CrossVersionMapCollection
     }
 
     public string NameFromUrl(string url) => RemoveLeftToRight(url.Split('/', '#')[^1].Split('|')[0]).ToPascalCase();
-
-    //public bool TryConvertUrlOfficialToSource(
-    //    string officialUrl,
-    //    [NotNullWhen(true)] out string? localUrl,
-    //    [NotNullWhen(true)] out string? name,
-    //    bool appendCanonicalLeft = false,
-    //    bool appendCanonicalRight = false,
-    //    string resourceTypeIfMissing = "")
-    //{
-    //    if (_urlMap.TryGetValue(officialUrl, out localUrl))
-    //    {
-    //        name = RemoveLeftToRight(localUrl.Split('/')[^1]);
-
-    //        if (appendCanonicalLeft)
-    //        {
-    //            localUrl += $"|{_leftPackageVersion}";
-    //        }
-
-    //        if (appendCanonicalRight)
-    //        {
-    //            localUrl += $"|{_rightPackageVersion}";
-    //        }
-
-    //        return true;
-    //    }
-
-    //    if (officialUrl.StartsWith("urn:", StringComparison.Ordinal))
-    //    {
-    //        localUrl = officialUrl;
-    //        name = string.Join('-', officialUrl.Split(':')[^2]).ToPascalCase();
-    //        return true;
-    //    }
-
-    //    int offset;
-
-    //    if (officialUrl.StartsWith(_canonicalRootHl7, StringComparison.Ordinal))
-    //    {
-    //        offset = 0;
-    //    }
-    //    else if (officialUrl.StartsWith(_canonicalRootTHO, StringComparison.Ordinal) ||
-    //        officialUrl.StartsWith(_canonicalRootCi, StringComparison.Ordinal))
-    //    {
-    //        offset = 1;
-    //    }
-    //    else
-    //    {
-    //        localUrl = officialUrl;
-    //        name = officialUrl.ToPascalCase();
-    //        return true;
-    //    }
-
-    //    string[] components = officialUrl.Split('/', StringSplitOptions.RemoveEmptyEntries);
-
-    //    // name is always last component from here on out
-    //    name = components[^1].Split('|')[0].Split('#')[^1];
-
-    //    //if (components.Length < (5 - offset))
-    //    //{
-    //    //    throw new ArgumentException($"Invalid official URL: {officialUrl}");
-    //    //}
-
-    //    // check for a cross-version concept map url - we can only convert the literals of these if we don't have a mapped value
-    //    if ((components.Length == (6 - offset)) &&
-    //        (components[3-offset] == "uv") &&
-    //        (components[5-offset] == "ConceptMap"))
-    //    {
-    //        name = name switch
-    //        {
-    //            "elements" => "Elements",
-    //            "resources" => "Resources",
-    //            "types" => "DataTypes",
-    //            _ => name,
-    //        };
-
-    //        localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, resourceType: "ConceptMap", name: name);
-
-    //        if (appendCanonicalLeft)
-    //        {
-    //            localUrl += $"|{_leftPackageVersion}";
-    //        }
-
-    //        if (appendCanonicalRight)
-    //        {
-    //            localUrl += $"|{_rightPackageVersion}";
-    //        }
-
-    //        return true;
-    //    }
-
-    //    // check for root + version + resource type + name
-    //    if ((components.Length == (6 - offset)) &&
-    //        ((components[3-offset] == _leftShortVersion) || (components[3-offset] == _rightShortVersion)))
-    //    {
-    //        localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, resourceType: components[4-offset], name: name);
-
-    //        if (appendCanonicalLeft)
-    //        {
-    //            localUrl += $"|{_leftPackageVersion}";
-    //        }
-
-    //        if (appendCanonicalRight)
-    //        {
-    //            localUrl += $"|{_rightPackageVersion}";
-    //        }
-
-    //        return true;
-    //    }
-
-    //    // check for root + version + name
-    //    if ((components.Length == (5 - offset)) &&
-    //        ((components[3-offset] == _leftShortVersion) || (components[3-offset] == _rightShortVersion)))
-    //    {
-    //        if (string.IsNullOrEmpty(resourceTypeIfMissing))
-    //        {
-    //            localUrl = BuildUrl("{0}/{2}", _mapCanonical, name: name);
-    //        }
-    //        else
-    //        {
-    //            localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, resourceType: resourceTypeIfMissing, name: name);
-    //        }
-
-    //        if (appendCanonicalLeft)
-    //        {
-    //            localUrl += $"|{_leftPackageVersion}";
-    //        }
-
-    //        if (appendCanonicalRight)
-    //        {
-    //            localUrl += $"|{_rightPackageVersion}";
-    //        }
-
-    //        return true;
-    //    }
-
-    //    // check for root + resource + name
-    //    if (components.Length == (5 - offset))
-    //    {
-    //        localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, resourceType: components[3 - offset], name: name);
-
-    //        if (appendCanonicalLeft)
-    //        {
-    //            localUrl += $"|{_leftPackageVersion}";
-    //        }
-
-    //        if (appendCanonicalRight)
-    //        {
-    //            localUrl += $"|{_rightPackageVersion}";
-    //        }
-
-    //        return true;
-    //    }
-
-    //    // check for root + name
-    //    if (components.Length == (4 - offset))
-    //    {
-    //        if (string.IsNullOrEmpty(resourceTypeIfMissing))
-    //        {
-    //            localUrl = BuildUrl("{0}/{2}", _mapCanonical, name: name);
-    //        }
-    //        else
-    //        {
-    //            localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, resourceType: resourceTypeIfMissing, name: name);
-    //        }
-
-    //        if (appendCanonicalLeft)
-    //        {
-    //            localUrl += $"|{_leftPackageVersion}";
-    //        }
-
-    //        if (appendCanonicalRight)
-    //        {
-    //            localUrl += $"|{_rightPackageVersion}";
-    //        }
-
-    //        return true;
-    //    }
-
-
-    //    // don't know what this url format is, fail and see if there are more patterns to follow
-
-    //    name = null;
-    //    localUrl = null;
-    //    return false;
-    //}
 
     public HashSet<string> GetAllReferencedValueSetUrls()
     {
