@@ -3,7 +3,6 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-
 using Hl7.Fhir.Language.Debugging;
 using System.Diagnostics;
 using System.Net;
@@ -56,8 +55,10 @@ public class PackageLoader : IDisposable
     /// <summary>The lenient JSON parser.</summary>
     private FhirJsonPocoDeserializer _jsonParser;
 
+#if !DISABLE_XML
     /// <summary>The lenient XML parser.</summary>
     private FhirXmlPocoDeserializer _xmlParser;
+#endif
 
     private Microsoft.Health.Fhir.CrossVersion.Converter_43_50? _converter_43_50 = null;
     private Microsoft.Health.Fhir.CrossVersion.Converter_30_50? _converter_30_50 = null;
@@ -75,8 +76,9 @@ public class PackageLoader : IDisposable
         _jsonOptions = opts.FhirJsonOptions;
         _jsonParser = new(opts.FhirJsonSettings);
 
+#if !DISABLE_XML
         _xmlParser = new(opts.FhirXmlSettings);
-
+#endif
         _jsonModel = opts.JsonModel;
 
         _autoLoadExpansions = opts.AutoLoadExpansions;
@@ -591,6 +593,9 @@ public class PackageLoader : IDisposable
             case "fhir+xml":
             case "application/xml":
             case "application/fhir+xml":
+#if DISABLE_XML
+                throw new Exception("XML is currently disabled");
+#else
                 try
                 {
                     // always use lenient parsing
@@ -609,7 +614,7 @@ public class PackageLoader : IDisposable
                     }
                     return null;
                 }
-
+#endif
             default:
                 {
                     Console.WriteLine($"Unsupported parse format: {format}");
@@ -838,6 +843,9 @@ public class PackageLoader : IDisposable
             case "fhir+xml":
             case "application/xml":
             case "application/fhir+xml":
+#if DISABLE_XML
+                throw new Exception("XML is currently disabled");
+#else
                 try
                 {
                     string content = File.ReadAllText(path);
@@ -858,7 +866,7 @@ public class PackageLoader : IDisposable
                     }
                     return null;
                 }
-
+#endif
             default:
                 {
                     Console.WriteLine($"Unsupported parse format: {format}");

@@ -52,6 +52,9 @@ public record class LoaderOptions
         Validator = null,
     };
 
+#if DISABLE_XML
+    public object FhirXmlSettings { get; init; } = new();
+#else
     /// <summary>
     /// Gets or sets the FHIR XML settings.
     /// </summary>
@@ -60,6 +63,7 @@ public record class LoaderOptions
         DisableBase64Decoding = false,
         Validator = null,
     };
+#endif
 
     /// <summary>
     /// Resolve package dependencies during load.
