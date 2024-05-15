@@ -70,6 +70,11 @@
             "commandLineArgs": "compare -p hl7.fhir.r5.core#5.0.0 -c hl7.fhir.r4b.core#4.3.0 --auto-load-expansions --resolve-dependencies true --save-comparison-result --map-source-path ..\\..\\..\\fhir-cross-version  --map-destination-path ..\\..\\..\\fhir-cross-version-source --map-save-style Source",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
+        "Gui": {
+            "commandName": "Project",
+            "commandLineArgs": "gui",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
         "Cross Version Review": {
             "commandName": "Project",
             "commandLineArgs": "cross-version --output-path ..\\..\\temp\\cross-version",

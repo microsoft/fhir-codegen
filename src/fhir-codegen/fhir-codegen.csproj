@@ -7,7 +7,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>fhir_codegen</RootNamespace>
     <AssemblyName>$(AssemblyName.Replace(' ', '_'))</AssemblyName>
-    <!--<StaticWebAssetBasePath Condition="$(StaticWebAssetBasePath) == ''">/</StaticWebAssetBasePath>-->
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -19,20 +18,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="wwwroot\**" />
-    <EmbeddedResource Remove="wwwroot\**" />
-    <None Remove="wwwroot\**" />
-  </ItemGroup>
-
-  <!--<ItemGroup>
-    <None Include="bin\Release\net8.0\publish\wwwroot\**\*.*" Pack="true" PackagePath="staticwebassets\%(RecursiveDir)%(FileName)%(Extension)">
-      <Link>wwwroot\_content\%(RecursiveDir)%(FileName)%(Extension)</Link>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <IncludeInPackage>true</IncludeInPackage>
-    </None>
-  </ItemGroup>-->
-
-  <ItemGroup>
+	<PackageReference Include="Avalonia" Version="11.0.10" />
+	<PackageReference Include="Avalonia.AvaloniaEdit" Version="11.0.6" />
+	<PackageReference Include="Avalonia.Desktop" Version="11.0.10" />
+	<PackageReference Include="Avalonia.Diagnostics" Version="11.0.10" />
+	<PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.10" />
+	<PackageReference Include="Avalonia.ReactiveUI" Version="11.0.10" />
+	<PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.10" />
 	<PackageReference Include="Hl7.Fhir.R5" Version="5.8.1" />
 	<PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
 	<PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0" />
