@@ -128,7 +128,7 @@ public class PackageComparer
         {
             _crossVersion = new(_cache, _source, _target);
 
-            if (!_crossVersion.TryLoadConceptMaps(_config.CrossVersionMapSourcePath))
+            if (!_crossVersion.TryLoadCrossVersionMaps(_config.CrossVersionMapSourcePath))
             {
                 throw new Exception("Failed to load requested cross-version maps");
             }
@@ -927,7 +927,7 @@ public class PackageComparer
 
             foreach (ConceptComparisonDetails cd in cc.TargetMappings)
             {
-                writer.WriteLine($"| {cc.Source.Code} | {cd.Target.Code} | {cd.GetStatusString()} | {cd.Message} |");
+                writer.WriteLine($"| {cc.Source.Code} | {cd.Target?.Code ?? "-"} | {cd.GetStatusString()} | {cd.Message} |");
             }
         }
 
@@ -963,7 +963,7 @@ public class PackageComparer
 
             foreach (ElementComparisonDetails cd in ec.TargetMappings)
             {
-                writer.WriteLine($"| {ec.Source.Path} | {cd.Target.Path} | {cd.GetStatusString()} | {cd.Message} |");
+                writer.WriteLine($"| {ec.Source.Path} | {cd.Target?.Path ?? "-"} | {cd.GetStatusString()} | {cd.Message} |");
             }
         }
 
@@ -1342,7 +1342,7 @@ public class PackageComparer
                         Relationship = CMR.SourceIsNarrowerThanTarget,
                         Message = msg,
                         TargetMappings = cc.TargetMappings
-                            .Select(tc => tc.Target.Code != targetCode
+                            .Select(tc => tc.Target?.Code != targetCode
                                 ? tc
                                 : tc with
                                 {
@@ -2023,7 +2023,7 @@ public class PackageComparer
                         }
 
                         // check to see if the codes are the same but the systems are different (ok in codes)
-                        else if (boundVsInfo.ConceptComparisons.Values.All(cc => cc.TargetMappings.Any(tc => tc.Target.Code == cc.Source.Code)))
+                        else if (boundVsInfo.ConceptComparisons.Values.All(cc => cc.TargetMappings.Any(tc => tc.Target?.Code == cc.Source.Code)))
                         {
                             relationship = ApplyRelationship(relationship, CMR.Equivalent);
                             messages.Add($"{targetInfo.Name} has compatible required binding for code type: {sourceInfo.BindingValueSet} and {targetInfo.BindingValueSet} (codes match, though systems are different)");

@@ -191,12 +191,19 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
 
     public override object VisitStructureDeclaration([NotNull] StructureDeclarationContext context)
     {
+        (string v, FmlTokenTypeCodes tt)? modelMode = GetGrammarLiteral(
+            context,
+            (int)FmlTokenTypeCodes.Source,
+            (int)FmlTokenTypeCodes.Queried,
+            (int)FmlTokenTypeCodes.Target,
+            (int)FmlTokenTypeCodes.Produced);
+
         StructureDeclaration value = new()
         {
             Url = context.url().GetText(),
-            Alias = context.structureAlias()?.GetText(),
-            ModelModeLiteral = context.modelMode().GetText(),
-            ModelMode = GetEnum<StructureMap.StructureMapModelMode>(context.modelMode().GetText()),
+            Alias = context.identifier()?.GetText(),
+            ModelModeLiteral = modelMode?.v ?? string.Empty,
+            ModelMode = modelMode == null ? null : GetEnum<StructureMap.StructureMapModelMode>(modelMode?.v),
 
             RawText = context.Start.InputStream.GetText(new Interval(context.Start.StartIndex, context.Stop.StopIndex)),
             PrefixComments = GetPrefixComments(context),
@@ -259,10 +266,15 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
 
         foreach (ParameterContext parameterContext in context.parameters().parameter())
         {
+            (string v, FmlTokenTypeCodes tt)? inputMode = GetGrammarLiteral(
+                parameterContext,
+                (int)FmlTokenTypeCodes.Source,
+                (int)FmlTokenTypeCodes.Target);
+
             parameters.Add(new GroupParameter
             {
-                InputModeLiteral = GetString(parameterContext.inputMode())!,
-                InputMode = GetEnum<StructureMap.StructureMapInputMode>(GetString(parameterContext.inputMode())!),
+                InputModeLiteral = inputMode?.v ?? string.Empty,
+                InputMode = inputMode == null ? null : GetEnum<StructureMap.StructureMapInputMode>(inputMode?.v),
                 Identifier = GetString(parameterContext.ID())!,
                 TypeIdentifier = GetString(parameterContext.typeIdentifier()?.identifier())!,
 
@@ -401,16 +413,24 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
         List<FmlExpressionSource> sources = [];
         foreach (MapExpressionSourceContext sourceContext in ctx.mapExpressionSource())
         {
+            (string v, FmlTokenTypeCodes tt)? listMode = GetGrammarLiteral(
+                sourceContext,
+                (int)FmlTokenTypeCodes.First,
+                (int)FmlTokenTypeCodes.NotFirst,
+                (int)FmlTokenTypeCodes.Last,
+                (int)FmlTokenTypeCodes.NotLast,
+                (int)FmlTokenTypeCodes.OnlyOne);
+
             sources.Add(new()
             {
                 Identifier = GetString(sourceContext.qualifiedIdentifier())!,
                 TypeIdentifier = GetString(sourceContext.typeIdentifier()?.identifier())!,
                 Cardinality = GetString(sourceContext.sourceCardinality())!,
                 DefaultExpression = ExtractFpExpression(sourceContext.sourceDefault()?.fpExpression()),
-                ListModeLiteral = GetString(sourceContext.sourceListMode()),
-                ListMode = GetEnum<StructureMap.StructureMapSourceListMode>(GetString(sourceContext.sourceListMode())),
+                ListModeLiteral = listMode?.v,
+                ListMode = listMode == null ? null : GetEnum<StructureMap.StructureMapSourceListMode>(listMode?.v),
                 Alias = GetString(sourceContext.alias()),
-                WhereClause = ExtractFpExpression(sourceContext.whereClause()?.fpExpression()),
+                WhereClause = ExtractFpExpression(sourceContext.whereClause()?.fpExpression()), //ExtractWhereClause(sourceContext.whereClause()),
                 CheckClause = ExtractFpExpression(sourceContext.checkClause()?.fpExpression()),
                 LogExpression = ExtractFpExpression(sourceContext.log()?.fpExpression()),
 
@@ -427,6 +447,13 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
         List<FmlExpressionTarget> targets = [];
         foreach (MapLineTargetContext targetContext in ctx.mapExpressionTarget()?.mapLineTarget() ?? [])
         {
+            (string v, FmlTokenTypeCodes tt)? targetListMode = GetGrammarLiteral(
+                targetContext,
+                (int)FmlTokenTypeCodes.First,
+                (int)FmlTokenTypeCodes.Share,
+                (int)FmlTokenTypeCodes.Last,
+                (int)FmlTokenTypeCodes.Single);
+
             targets.Add(new()
             {
                 Identifier = GetString(targetContext.qualifiedIdentifier())!,
@@ -446,8 +473,8 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                 },
                 Invocation = ExtractInvocation(targetContext.invocation()),
                 Alias = GetString(targetContext.alias()),
-                TargetListModeLiteral = GetString(targetContext.targetListMode()),
-                TargetListMode = GetEnum<StructureMap.StructureMapTargetListMode>(GetString(targetContext.targetListMode())),
+                TargetListModeLiteral = targetListMode?.v,
+                TargetListMode = targetListMode == null ? null : GetEnum<StructureMap.StructureMapTargetListMode>(targetListMode?.v),
 
                 RawText = targetContext.Start.InputStream.GetText(new Interval(targetContext.Start.StartIndex, targetContext.Stop.StopIndex)),
                 PrefixComments = GetPrefixComments(targetContext),
@@ -550,6 +577,155 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
         }
     }
 
+    //private FpExpression? ExtractWhereClause(WhereClauseContext? ctx)
+    //{
+    //    if (ctx == null)
+    //    {
+    //        return null;
+    //    }
+
+    //    switch (ctx)
+    //    {
+    //        case CorrectWhereContext correct:
+    //            return ExtractFpExpression(correct.fpExpression());
+
+    //        case IncorrectWhereContext incorrect:
+    //            {
+    //                QualifiedIdentifierContext[] ids = incorrect.qualifiedIdentifier();
+    //                LiteralContext[] literals = incorrect.literal();
+
+    //                if (ids.Length != literals.Length)
+    //                {
+    //                    throw new Exception("IncorrectWhereContext missing required ID and Literal pairs");
+    //                }
+
+    //                if (ids.Length == 0)
+    //                {
+    //                    return null;
+    //                }
+
+    //                List<FpExpression> assignments = [];
+
+    //                for (int i = 0; i < ids.Length; i++)
+    //                {
+    //                    QualifiedIdentifierContext id = ids[i];
+    //                    LiteralContext lc = literals[i];
+
+    //                    assignments.Add(BuildFp(BuildEq(id, lc)));
+    //                }
+
+    //                while (assignments.Count > 1)
+    //                {
+    //                    assignments[0] = BuildAnd(assignments[0], assignments[1]);
+    //                    assignments.RemoveAt(1);
+    //                }
+
+    //                return assignments[0];
+    //            }
+
+    //        default:
+    //            throw new Exception("Unhandled WhereClauseContext type");
+    //    }
+
+    //    FpExpression BuildAnd(FpExpression left, FpExpression right)
+    //    {
+    //        return new FpExpression()
+    //        {
+    //            Expression = left.Expression + " and " + right.Expression,
+    //            ExpressionRule = FmlRuleCodes.FpExpression,
+
+    //            AndExpression = new()
+    //            {
+    //                Left = left,
+    //                Operator = FmlAndOpCodes.And,
+    //                OperatorLiteral = "and",
+    //                Right = right,
+
+    //                RawText = ctx.Start.InputStream.GetText(new Interval(left.StartIndex, right.StopIndex)),
+    //                PrefixComments = [],
+    //                PostfixComments = [],
+    //                Line = left.Line,
+    //                Column = left.Column,
+    //                StartIndex = left.StartIndex,
+    //                StopIndex = right.StopIndex,
+    //            },
+
+    //            RawText = ctx.Start.InputStream.GetText(new Interval(left.StartIndex, right.StopIndex)),
+    //            PrefixComments = [],
+    //            PostfixComments = [],
+    //            Line = left.Line,
+    //            Column = left.Column,
+    //            StartIndex = left.StartIndex,
+    //            StopIndex = right.StopIndex,
+    //        };
+    //    }
+
+    //    FpExpression BuildFp(FpBinaryExpression<FmlEqualityOpCodes> exp)
+    //    {
+    //        return new FpExpression()
+    //        {
+    //            Expression = exp.Left.Expression + " = " + exp.Right.Expression,
+    //            ExpressionRule = FmlRuleCodes.FpExpression,
+
+    //            EqualityExpression = exp,
+
+    //            RawText = exp.RawText,
+    //            PrefixComments = [],
+    //            PostfixComments = [],
+    //            Line = exp.Line,
+    //            Column = exp.Column,
+    //            StartIndex = exp.StartIndex,
+    //            StopIndex = exp.StopIndex,
+    //        };
+    //    }
+
+    //    FpBinaryExpression<FmlEqualityOpCodes> BuildEq(QualifiedIdentifierContext id, LiteralContext lc)
+    //    {
+    //        return new()
+    //        {
+    //            Left = new FpExpression()
+    //            {
+    //                Expression = id.GetText(),// GetString(id),
+    //                ExpressionRule = FmlRuleCodes.Code,
+
+    //                RawText = ctx.Start.InputStream.GetText(new Interval(id.Start.StartIndex, id.Stop.StopIndex)),
+    //                PrefixComments = [],
+    //                PostfixComments = [],
+    //                Line = id.Stop.Line,
+    //                Column = id.Start.Column,
+    //                StartIndex = id.Start.StartIndex,
+    //                StopIndex = id.Stop.StopIndex,
+    //            },
+
+    //            Operator = FmlEqualityOpCodes.Equal,
+    //            OperatorLiteral = "=",
+
+    //            Right = new FpExpression()
+    //            {
+    //                Expression = GetString(lc) ?? lc.GetText(),
+    //                ExpressionRule = (FmlRuleCodes)lc.RuleIndex,
+
+    //                RawText = ctx.Start.InputStream.GetText(new Interval(lc.Start.StartIndex, lc.Stop.StopIndex)),
+    //                PrefixComments = [],
+    //                PostfixComments = [],
+    //                Line = lc.Start.Line,
+    //                Column = lc.Start.Column,
+    //                StartIndex = lc.Start.StartIndex,
+    //                StopIndex = lc.Stop.StopIndex,
+    //            },
+
+    //            RawText = ctx.Start.InputStream.GetText(new Interval(id.Start.StartIndex, lc.Stop.StopIndex)),
+    //            PrefixComments = [],
+    //            PostfixComments = [],
+    //            Line = id.Start.Line,
+    //            Column = id.Start.Column,
+    //            StartIndex = id.Start.StartIndex,
+    //            StopIndex = lc.Stop.StopIndex,
+    //        };
+    //    }
+    //}
+
+
     private FpExpression? ExtractFpExpression(FpExpressionContext? ctx)
     {
         if (ctx == null)
@@ -639,16 +815,31 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                 }
 
             case PolarityExpressionContext polarityContext:
-                return new FpExpression
                 {
-                    Expression = ctx.GetText(),
-                    ExpressionRule = (FmlRuleCodes)ctx.RuleIndex,
-                    PolarityExpression = new()
+                    (string v, FmlTokenTypeCodes tt)? fpOp = GetGrammarLiteral(
+                        polarityContext,
+                        (int)FmlPolarityCodes.Positive,
+                        (int)FmlPolarityCodes.Negative);
+
+                    return new FpExpression
                     {
-                        Expression = ExtractFpExpression(polarityContext.fpExpression())!,
-                        Polarity = (FmlPolarityCodes)polarityContext.fpPolarityLiteral().Stop.Type,
-                        Literal = polarityContext.fpPolarityLiteral().GetText(),
-                        IsPositive = polarityContext.Start.TokenIndex == (int)FmlPolarityCodes.Positive,
+                        Expression = ctx.GetText(),
+                        ExpressionRule = (FmlRuleCodes)ctx.RuleIndex,
+                        PolarityExpression = new()
+                        {
+                            Expression = ExtractFpExpression(polarityContext.fpExpression())!,
+                            Polarity = (FmlPolarityCodes)fpOp!.Value.tt,
+                            Literal = fpOp!.Value.v,
+                            IsPositive = polarityContext.Start.TokenIndex == (int)FmlPolarityCodes.Positive,
+
+                            RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                            PrefixComments = GetPrefixComments(ctx),
+                            PostfixComments = GetPostfixComments(ctx),
+                            Line = ctx.Start.Line,
+                            Column = ctx.Start.Column,
+                            StartIndex = ctx.Start.StartIndex,
+                            StopIndex = ctx.Stop.StopIndex,
+                        },
 
                         RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
                         PrefixComments = GetPrefixComments(ctx),
@@ -657,16 +848,8 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                         Column = ctx.Start.Column,
                         StartIndex = ctx.Start.StartIndex,
                         StopIndex = ctx.Stop.StopIndex,
-                    },
-
-                    RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
-                    PrefixComments = GetPrefixComments(ctx),
-                    PostfixComments = GetPostfixComments(ctx),
-                    Line = ctx.Start.Line,
-                    Column = ctx.Start.Column,
-                    StartIndex = ctx.Start.StartIndex,
-                    StopIndex = ctx.Stop.StopIndex,
-                };
+                    };
+                }
 
             case MultiplicativeExpressionContext multiplicativeContext:
                 {
@@ -675,6 +858,13 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                         throw new Exception("MultiplicativeExpression missing required Left and Right");
                     }
 
+                    (string v, FmlTokenTypeCodes tt)? fpOp = GetGrammarLiteral(
+                        multiplicativeContext,
+                        (int)FmlMultiplicativeOpCodes.Multiply,
+                        (int)FmlMultiplicativeOpCodes.Divide,
+                        (int)FmlMultiplicativeOpCodes.Div,
+                        (int)FmlMultiplicativeOpCodes.Modulo);
+
                     return new FpExpression
                     {
                         Expression = ctx.GetText(),
@@ -682,8 +872,8 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                         MultiplicativeExpression = new()
                         {
                             Left = ExtractFpExpression(multiplicativeContext.fpExpression()[0])!,
-                            OperatorLiteral = multiplicativeContext.fpMultiplicativeLiteral().GetText(),
-                            Operator = (FmlMultiplicativeOpCodes)multiplicativeContext.fpMultiplicativeLiteral().Stop.Type,
+                            Operator = (FmlMultiplicativeOpCodes)fpOp!.Value.tt,
+                            OperatorLiteral = fpOp!.Value.v,
                             Right = ExtractFpExpression(multiplicativeContext.fpExpression()[1])!,
 
                             RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
@@ -712,6 +902,12 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                         throw new Exception("AdditiveExpression missing required Left and Right");
                     }
 
+                    (string v, FmlTokenTypeCodes tt)? fpOp = GetGrammarLiteral(
+                        additiveContext,
+                        (int)FmlAdditiveOpCodes.Add,
+                        (int)FmlAdditiveOpCodes.And,
+                        (int)FmlAdditiveOpCodes.Subtract);
+
                     return new FpExpression
                     {
                         Expression = ctx.GetText(),
@@ -719,8 +915,8 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                         AdditiveExpression = new()
                         {
                             Left = ExtractFpExpression(additiveContext.fpExpression()[0])!,
-                            OperatorLiteral = additiveContext.fpAdditiveLiteral().GetText(),
-                            Operator = (FmlAdditiveOpCodes)additiveContext.fpAdditiveLiteral().Stop.Type,
+                            Operator = (FmlAdditiveOpCodes)fpOp!.Value.tt,
+                            OperatorLiteral = fpOp?.v ?? string.Empty,
                             Right = ExtractFpExpression(additiveContext.fpExpression()[1])!,
 
                             RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
@@ -743,15 +939,30 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                 }
 
             case TypeExpressionContext typeContext:
-                return new FpExpression
                 {
-                    Expression = ctx.GetText(),
-                    ExpressionRule = (FmlRuleCodes)ctx.RuleIndex,
-                    TypeExpression = new()
+                    (string v, FmlTokenTypeCodes tt)? fpOp = GetGrammarLiteral(
+                        typeContext,
+                        (int)FmlTokenTypeCodes.Is,
+                        (int)FmlTokenTypeCodes.As);
+
+                    return new FpExpression
                     {
-                        Expression = ExtractFpExpression(typeContext.fpExpression())!,
-                        TypeAssignmentLiteral = typeContext.fpTypeAssertionLiteral().GetText(),
-                        TypeIdentifier = GetString(typeContext.fpTypeSpecifier()) ?? throw new Exception("TypeExpression missing required Type Identifier"),
+                        Expression = ctx.GetText(),
+                        ExpressionRule = (FmlRuleCodes)ctx.RuleIndex,
+                        TypeExpression = new()
+                        {
+                            Expression = ExtractFpExpression(typeContext.fpExpression())!,
+                            TypeAssignmentLiteral = fpOp!.Value.v,
+                            TypeIdentifier = GetString(typeContext.fpTypeSpecifier()) ?? throw new Exception("TypeExpression missing required Type Identifier"),
+
+                            RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
+                            PrefixComments = GetPrefixComments(ctx),
+                            PostfixComments = GetPostfixComments(ctx),
+                            Line = ctx.Start.Line,
+                            Column = ctx.Start.Column,
+                            StartIndex = ctx.Start.StartIndex,
+                            StopIndex = ctx.Stop.StopIndex,
+                        },
 
                         RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
                         PrefixComments = GetPrefixComments(ctx),
@@ -760,16 +971,8 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                         Column = ctx.Start.Column,
                         StartIndex = ctx.Start.StartIndex,
                         StopIndex = ctx.Stop.StopIndex,
-                    },
-
-                    RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
-                    PrefixComments = GetPrefixComments(ctx),
-                    PostfixComments = GetPostfixComments(ctx),
-                    Line = ctx.Start.Line,
-                    Column = ctx.Start.Column,
-                    StartIndex = ctx.Start.StartIndex,
-                    StopIndex = ctx.Stop.StopIndex,
-                };
+                    };
+                }
 
             case UnionExpressionContext unionContext:
                 {
@@ -778,6 +981,10 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                         throw new Exception("UnionExpression missing required Left and Right");
                     }
 
+                    (string v, FmlTokenTypeCodes tt)? fpOp = GetGrammarLiteral(
+                        unionContext,
+                        (int)FmlUnionOpCodes.Union);
+
                     return new FpExpression
                     {
                         Expression = ctx.GetText(),
@@ -785,8 +992,8 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                         UnionExpression = new()
                         {
                             Left = ExtractFpExpression(unionContext.fpExpression()[0])!,
-                            OperatorLiteral = unionContext.fpUnionLiteral().GetText(),
-                            Operator = (FmlUnionOpCodes)unionContext.fpUnionLiteral().Stop.Type,
+                            OperatorLiteral = fpOp!.Value.v,
+                            Operator = (FmlUnionOpCodes)fpOp!.Value.tt,
                             Right = ExtractFpExpression(unionContext.fpExpression()[1])!,
 
                             RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
@@ -815,6 +1022,13 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                         throw new Exception("InequalityExpression missing required Left and Right");
                     }
 
+                    (string v, FmlTokenTypeCodes tt)? fpOp = GetGrammarLiteral(
+                        inequalityContext,
+                        (int)FmlInequalityOpCodes.LessThan,
+                        (int)FmlInequalityOpCodes.LessThanOrEqual,
+                        (int)FmlInequalityOpCodes.GreaterThan,
+                        (int)FmlInequalityOpCodes.GreaterThanOrEqual);
+
                     return new FpExpression
                     {
                         Expression = ctx.GetText(),
@@ -822,8 +1036,8 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                         InequalityExpression = new()
                         {
                             Left = ExtractFpExpression(inequalityContext.fpExpression()[0])!,
-                            OperatorLiteral = inequalityContext.fpInequalityLiteral().GetText(),
-                            Operator = (FmlInequalityOpCodes)inequalityContext.fpInequalityLiteral().Stop.Type,
+                            Operator = (FmlInequalityOpCodes)fpOp!.Value.tt,
+                            OperatorLiteral = fpOp!.Value.v,
                             Right = ExtractFpExpression(inequalityContext.fpExpression()[1])!,
 
                             RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
@@ -852,6 +1066,13 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                         throw new Exception("EqualityExpression missing required Left and Right");
                     }
 
+                    (string v, FmlTokenTypeCodes tt)? fpOp = GetGrammarLiteral(
+                        equalityContext,
+                        (int)FmlEqualityOpCodes.Equal,
+                        (int)FmlEqualityOpCodes.Equivalent,
+                        (int)FmlEqualityOpCodes.NotEqual,
+                        (int)FmlEqualityOpCodes.NotEquivalent);
+
                     return new FpExpression
                     {
                         Expression = ctx.GetText(),
@@ -859,8 +1080,8 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                         EqualityExpression = new()
                         {
                             Left = ExtractFpExpression(equalityContext.fpExpression()[0])!,
-                            OperatorLiteral = equalityContext.fpEqualityLiteral().GetText(),
-                            Operator = (FmlEqualityOpCodes)equalityContext.fpEqualityLiteral().Stop.Type,
+                            Operator = (FmlEqualityOpCodes)fpOp!.Value.tt,
+                            OperatorLiteral = fpOp!.Value.v,
                             Right = ExtractFpExpression(equalityContext.fpExpression()[1])!,
 
                             RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
@@ -889,6 +1110,11 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                         throw new Exception("MembershipExpression missing required Left and Right");
                     }
 
+                    (string v, FmlTokenTypeCodes tt)? fpOp = GetGrammarLiteral(
+                        membershipContext,
+                        (int)FmlMembershipOpCodes.In,
+                        (int)FmlMembershipOpCodes.Contains);
+
                     return new FpExpression
                     {
                         Expression = ctx.GetText(),
@@ -896,8 +1122,8 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                         MembershipExpression = new()
                         {
                             Left = ExtractFpExpression(membershipContext.fpExpression()[0])!,
-                            OperatorLiteral = membershipContext.fpMembershipLiteral().GetText(),
-                            Operator = (FmlMembershipOpCodes)membershipContext.fpMembershipLiteral().Stop.Type,
+                            Operator = (FmlMembershipOpCodes)fpOp!.Value.tt,
+                            OperatorLiteral = fpOp!.Value.v,
                             Right = ExtractFpExpression(membershipContext.fpExpression()[1])!,
 
                             RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
@@ -926,6 +1152,10 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                         throw new Exception("AndExpression missing required Left and Right");
                     }
 
+                    (string v, FmlTokenTypeCodes tt)? fpOp = GetGrammarLiteral(
+                        andContext,
+                        (int)FmlAndOpCodes.And);
+
                     return new FpExpression
                     {
                         Expression = ctx.GetText(),
@@ -933,8 +1163,8 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                         AndExpression = new()
                         {
                             Left = ExtractFpExpression(andContext.fpExpression()[0])!,
-                            OperatorLiteral = andContext.fpAndLiteral().GetText(),
-                            Operator = (FmlAndOpCodes)andContext.fpAndLiteral().Stop.Type,
+                            Operator = (FmlAndOpCodes)fpOp!.Value.tt,
+                            OperatorLiteral = fpOp!.Value.v,
                             Right = ExtractFpExpression(andContext.fpExpression()[1])!,
 
                             RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
@@ -963,6 +1193,11 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                         throw new Exception("OrExpression missing required Left and Right");
                     }
 
+                    (string v, FmlTokenTypeCodes tt)? fpOp = GetGrammarLiteral(
+                        orContext,
+                        (int)FmlOrOpCodes.Or,
+                        (int)FmlOrOpCodes.Xor);
+
                     return new FpExpression
                     {
                         Expression = ctx.GetText(),
@@ -970,8 +1205,8 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                         OrExpression = new()
                         {
                             Left = ExtractFpExpression(orContext.fpExpression()[0])!,
-                            OperatorLiteral = orContext.fpOrLiteral().GetText(),
-                            Operator = (FmlOrOpCodes)orContext.fpOrLiteral().Stop.Type,
+                            Operator = (FmlOrOpCodes)fpOp!.Value.tt,
+                            OperatorLiteral = fpOp!.Value.v,
                             Right = ExtractFpExpression(orContext.fpExpression()[1])!,
 
                             RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
@@ -1000,6 +1235,10 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                         throw new Exception("ImpliesExpression missing required Left and Right");
                     }
 
+                    (string v, FmlTokenTypeCodes tt)? fpOp = GetGrammarLiteral(
+                        impliesContext,
+                        (int)FmlImpliesOpCodes.Implies);
+
                     return new FpExpression
                     {
                         Expression = ctx.GetText(),
@@ -1007,8 +1246,8 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                         ImpliesExpression = new()
                         {
                             Left = ExtractFpExpression(impliesContext.fpExpression()[0])!,
-                            OperatorLiteral = impliesContext.fpImpliesLiteral().GetText(),
-                            Operator = (FmlImpliesOpCodes)impliesContext.fpImpliesLiteral().Stop.Type,
+                            Operator = (FmlImpliesOpCodes)fpOp!.Value.tt,
+                            OperatorLiteral = fpOp!.Value.v,
                             Right = ExtractFpExpression(impliesContext.fpExpression()[1])!,
 
                             RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
@@ -1197,8 +1436,8 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
 
             return new FpFunction
             {
-                Identifier = ctx.identifier().GetText(),
-                IdentifierTokenType = (FmlTokenTypeCodes)ctx.identifier().Stop.Type,
+                Identifier = ctx.qualifiedIdentifier().GetText(),
+                IdentifierTokenType = (FmlTokenTypeCodes)ctx.qualifiedIdentifier().Stop.Type,
                 Parameters = ctx.fpParamList()?.fpExpression()?.Select(ExtractFpExpression).ToList() ?? [],
 
                 RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),

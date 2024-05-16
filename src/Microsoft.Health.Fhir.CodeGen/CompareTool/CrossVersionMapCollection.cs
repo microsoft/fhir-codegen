@@ -18,6 +18,7 @@ using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
+using Microsoft.Health.Fhir.MappingLanguage;
 using Microsoft.Health.Fhir.PackageManager;
 using Microsoft.OpenApi.Any;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
@@ -76,6 +77,7 @@ public class CrossVersionMapCollection
     private ConceptMap? _resourceTypeMap = null;
     //private Dictionary<string, ConceptMap> _elementConceptMaps = [];
 
+    private Dictionary<string, FhirStructureMap> _structureMapsByCompositeName = [];
 
     public CrossVersionMapCollection(
         IFhirPackageClient cache,
@@ -171,7 +173,7 @@ public class CrossVersionMapCollection
         return false;
     }
 
-    public bool TryLoadConceptMaps(string path)
+    public bool TryLoadCrossVersionMaps(string path)
     {
         bool isOfficial = PathHasFhirCrossVersionOfficial(path);
         bool isSource = PathHasFhirCrossVersionSource(path);
@@ -183,7 +185,7 @@ public class CrossVersionMapCollection
 
         if (isOfficial)
         {
-            return TryLoadOfficialConceptMaps(path);
+            return TryLoadOfficialConceptMaps(path) && TryLoadOfficialStructureMaps(path);
         }
 
         if (isSource)
@@ -251,8 +253,71 @@ public class CrossVersionMapCollection
         }
 
         return true;
-
     }
+
+    private bool TryLoadOfficialStructureMaps(string fhirCrossRepoPath)
+    {
+        Console.WriteLine($"Loading fhir-cross-version structure maps for conversion from {_sourceRLiteral} to {_targetRLiteral}...");
+
+        string path = Path.Combine(fhirCrossRepoPath, "input", _sourceToTargetWithR);
+        if (!Directory.Exists(path))
+        {
+            throw new DirectoryNotFoundException($"Could not find fhir-cross-version/input/{_sourceToTargetWithR} directory: {path}");
+        }
+
+        // files have different styles in each directory, but we want all FML files anyway
+        string[] files = Directory.GetFiles(path, $"*.fml", SearchOption.TopDirectoryOnly);
+
+        FhirMappingLanguage fml = new();
+
+        foreach (string filename in files)
+        {
+            try
+            {
+                string fmlContent = File.ReadAllText(filename);
+
+                if (!fml.TryParse(fmlContent, out FhirStructureMap? sm))
+                {
+                    Console.WriteLine($"Error loading {filename}: could not parse");
+                    continue;
+                }
+
+                // extract the name root
+                string name;
+
+                if (sm.MetadataByPath.TryGetValue("name", out MetadataDeclaration? nameMeta))
+                {
+                    name = nameMeta.Literal?.ValueAsString ?? throw new Exception($"Cross-version structure maps require a metadata name property: {filename}");
+                }
+                else
+                {
+                    name = Path.GetFileNameWithoutExtension(filename);
+                }
+
+                if (name.EndsWith(_sourceToTargetNoR, StringComparison.OrdinalIgnoreCase))
+                {
+                    name = name[..^_sourceToTargetNoRLen];
+                }
+
+                if (name.Equals("primitives", StringComparison.OrdinalIgnoreCase))
+                {
+                    // handle the primitive type map
+                }
+                else
+                {
+                    _structureMapsByCompositeName.Add($"{_sourceRLiteral}-{name}-{_targetRLiteral}-{name}", sm);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error loading {filename}: {ex.Message}");
+            }
+        }
+
+        return true;
+    }
+
+
 
     private bool TryLoadOfficialConceptMaps(string fhirCrossRepoPath, string key)
     {
@@ -685,7 +750,7 @@ public class CrossVersionMapCollection
         ValueSetComparison vsc)
     {
         // we cannot write maps that do not have both a source and a target
-        if (string.IsNullOrEmpty(vsc.Source.Url) || string.IsNullOrEmpty(vsc.Target.Url))
+        if (string.IsNullOrEmpty(vsc.Source.Url) || string.IsNullOrEmpty(vsc.Target?.Url))
         {
             return null;
         }
@@ -722,7 +787,7 @@ public class CrossVersionMapCollection
         Dictionary<string, ConceptMap.GroupComponent> groups = [];
 
         string primaryTargetSystem = vsc.ConceptComparisons.Values
-            .SelectMany(cc => cc.TargetMappings.Select(t => t.Target.System))
+            .SelectMany(cc => cc.TargetMappings.Select(t => t.Target?.System ?? string.Empty))
             .GroupBy(s => s)
             .OrderByDescending(c => c.Count())
             .FirstOrDefault()?.Key ?? vsc.ConceptComparisons.First().Value.Source.System;
@@ -760,7 +825,7 @@ public class CrossVersionMapCollection
 
             foreach (ConceptComparisonDetails targetMapping in cc.TargetMappings)
             {
-                string targetSystem = targetMapping.Target.System;
+                string targetSystem = targetMapping.Target?.System ?? primaryTargetSystem;
                 string key = string.IsNullOrEmpty(targetSystem)
                     ? noTargetKey
                     : $"{sourceSystem}||{targetSystem}";
@@ -773,8 +838,8 @@ public class CrossVersionMapCollection
 
                 elementTargets.Add(new()
                 {
-                    Code = targetMapping.Target.Code,
-                    Display = targetMapping.Target.Description,
+                    Code = targetMapping.Target?.Code ?? string.Empty,
+                    Display = targetMapping.Target?.Description ?? string.Empty,
                     Relationship = targetMapping.Relationship,
                     Comment = targetMapping.Message,
                 });
@@ -1133,8 +1198,8 @@ public class CrossVersionMapCollection
                 Display = elementComparison.Source.Short,
                 Target = elementComparison.TargetMappings.Select(tm => new ConceptMap.TargetElementComponent()
                 {
-                    Code = tm.Target.Path,
-                    Display = tm.Target.Short,
+                    Code = tm.Target?.Path ?? path,
+                    Display = tm.Target?.Short ?? string.Empty,
                     Relationship = elementComparison.Relationship,
                     Comment = elementComparison.Message,
                 }).ToList(),

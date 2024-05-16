@@ -61,15 +61,7 @@ identifier
   ;
 
 structureDeclaration
-	: 'uses' url structureAlias? 'as'  modelMode 
-	;
-
-structureAlias
-  : 'alias' identifier
-  ;
-
-importDeclaration
-	: 'imports' url
+	: 'uses' url ('alias' identifier)? 'as' ('source' | 'queried' | 'target' | 'produced') 
 	;
 
 constantDeclaration 
@@ -80,28 +72,24 @@ groupDeclaration
 	: 'group' ID parameters extends? typeMode? groupExpressions
 	;
 
-// fhirPath
-//   : fpExpression
-//   ;
+parameters
+  : '(' parameter (',' parameter)+ ')'
+  ;
+
+parameter
+  : ('source' | 'target') ID typeIdentifier?
+  ;
 
 groupExpressions
   : '{' expression* '}'
   ;
 
 typeMode
-  : '<<' groupTypeMode '>>'
+  : '<<' ('types' | 'type+') '>>'
   ;
 
 extends
   : 'extends' ID
-  ;
-
-parameters
-  : '(' parameter (',' parameter)+ ')'
-  ;
-
-parameter
-  : inputMode ID typeIdentifier?
   ;
 
 typeIdentifier
@@ -136,7 +124,15 @@ mapExpressionName
 //   ;
 
 mapExpressionSource
-  :  qualifiedIdentifier typeIdentifier? sourceCardinality? sourceDefault? sourceListMode? alias? whereClause? checkClause? log?
+  : qualifiedIdentifier 
+    typeIdentifier? 
+    sourceCardinality? 
+    sourceDefault? 
+    ('first' | 'not_first' | 'last' | 'not_last' | 'only_one')? 
+    alias? 
+    whereClause? 
+    checkClause? 
+    log?
   ;
 
 mapExpressionTarget
@@ -153,7 +149,9 @@ upperBound
   ;
 
 qualifiedIdentifier
-  : identifier ('.' identifier '[x]'?)*
+  : (ID | IDENTIFIER | 'imports' | 'source' | 'target' | 'group' | 'prefix' | 'map' | 'uses' | 'let' | 'types' | 'extends' | 'where' | 'check' | 'alias' | 'div' | 'contains') 
+    ('.' (ID | IDENTIFIER | 'imports' | 'source' | 'target' | 'group' | 'prefix' | 'map' | 'uses' | 'let' | 'types' | 'extends' | 'where' | 'check' | 'alias' | 'div' | 'contains'))*
+  // : identifier ('.' identifier '[x]'?)*
   ;
 
 sourceDefault
@@ -165,7 +163,13 @@ alias
   ;
 
 whereClause
-  : 'where' '(' fpExpression ')'
+  // : 'where' 
+  //   qualifiedIdentifier 
+  //   ('=' | '!=' | '>' | '>=' | '<' | '<=' ) 
+  //   literal 
+  //   ('and' qualifiedIdentifier ('=' | '!=' | '>' | '>=' | '<' | '<=' ) literal)*?   #incorrectWhere
+  : 'where'  fpExpression
+  // | 'where' '(' fpExpression ')'                                                    #correctWhere
   ;
 
 checkClause
@@ -180,8 +184,12 @@ dependentExpression
   : 'then' (invocation (',' invocation)* groupExpressions? | groupExpressions)
   ;
 
+importDeclaration
+	: 'imports' url
+	;
+
 mapLineTarget
-  : qualifiedIdentifier ('=' transform)? alias? targetListMode?
+  : qualifiedIdentifier ('=' transform)? alias? ('first' | 'share' | 'last' | 'single')?
   | invocation alias?     // alias is not required when simply invoking a group
   ;
 
@@ -208,63 +216,19 @@ fpExpression
         : fpTerm                                                      #termExpression
         | fpExpression '.' fpInvocation                               #invocationExpression
         | fpExpression '[' fpExpression ']'                           #indexerExpression
-        | fpPolarityLiteral fpExpression                              #polarityExpression
-        | fpExpression fpMultiplicativeLiteral fpExpression           #multiplicativeExpression
-        | fpExpression fpAdditiveLiteral fpExpression                 #additiveExpression
-        | fpExpression fpTypeAssertionLiteral fpTypeSpecifier         #typeExpression
-        | fpExpression fpUnionLiteral fpExpression                    #unionExpression
-        | fpExpression fpInequalityLiteral fpExpression               #inequalityExpression
-        | fpExpression fpEqualityLiteral fpExpression                 #equalityExpression
-        | fpExpression fpMembershipLiteral fpExpression               #membershipExpression
-        | fpExpression fpAndLiteral fpExpression                      #andExpression
-        | fpExpression fpOrLiteral fpExpression                       #orExpression
-        | fpExpression fpImpliesLiteral fpExpression                  #impliesExpression
+        | ('+' | '-') fpExpression                                    #polarityExpression
+        | fpExpression ('*' | '/' | 'div' | 'mod') fpExpression       #multiplicativeExpression
+        | fpExpression ('+' | '-' | '&') fpExpression                 #additiveExpression
+        | fpExpression ('is' | 'as') fpTypeSpecifier                  #typeExpression
+        | fpExpression ('|') fpExpression                             #unionExpression
+        | fpExpression ('<=' | '<' | '>' | '>=') fpExpression         #inequalityExpression
+        | fpExpression ('=' | '~' | '!=' | '!~') fpExpression         #equalityExpression
+        | fpExpression ('in' | 'contains') fpExpression               #membershipExpression
+        | fpExpression ('and') fpExpression                           #andExpression
+        | fpExpression ('or' | 'xor') fpExpression                    #orExpression
+        | fpExpression ('implies') fpExpression                       #impliesExpression
         //| (IDENTIFIER)? '=>' fpExpression                           #lambdaExpression
         ;
-
-fpPolarityLiteral
-  : '+' | '-'
-  ;
-
-fpMultiplicativeLiteral
-  : '*' | '/' | 'div' | 'mod'
-  ;
-
-fpAdditiveLiteral
-  : '+' | '-' | '&'
-  ;
-
-fpTypeAssertionLiteral
-  : 'is' | 'as'
-  ;
-
-fpUnionLiteral
-  : '|'
-  ;
-
-fpInequalityLiteral
-  : '<=' | '<' | '>' | '>='
-  ;
-
-fpEqualityLiteral
-  : '=' | '~' | '!=' | '!~'
-  ;
-
-fpMembershipLiteral
-  : 'in' | 'contains'
-  ;
-
-fpAndLiteral
-  : 'and'
-  ;
-
-fpOrLiteral
-  : 'or' | 'xor'
-  ;
-
-fpImpliesLiteral
-  : 'implies'
-  ;
 
 fpTerm
         : fpInvocation                                            #invocationTerm
@@ -286,7 +250,8 @@ fpExternalConstant
         ;
 
 fpFunction
-        : identifier '(' fpParamList? ')'
+        // : identifier '(' fpParamList? ')'
+        : qualifiedIdentifier '(' fpParamList? ')'
         ;
 
 fpParamList
@@ -313,6 +278,7 @@ literal
   | TIME                                                  #timeLiteral
   | SINGLE_QUOTED_STRING                                  #stringLiteral
   | DOUBLE_QUOTED_STRING                                  #quotedStringLiteral
+  | ID                                                    #idLiteral
   ;
 
   // : BOOL
@@ -328,44 +294,10 @@ literal
 
 // note that quantity has to require units here because if not there is no differentiator from a bare number
 fpQuantity
-    : (INTEGER | DECIMAL) fpUnit
+    : (INTEGER | DECIMAL) ('year' | 'month' | 'week' | 'day' | 'hour' | 'minute' | 'second' | 'millisecond')          #quantityWithDate
+    | (INTEGER | DECIMAL) ('years' | 'months' | 'weeks' | 'days' | 'hours' | 'minutes' | 'seconds' | 'milliseconds')  #quantityWithDatePlural
+    | (INTEGER | DECIMAL) SINGLE_QUOTED_STRING                                                                        #quantityWithUcum // UCUM syntax for units of measure
     ;
-
-fpUnit
-    : fpDateTimePrecision
-    | fpPluralDateTimePrecision
-    | SINGLE_QUOTED_STRING // UCUM syntax for units of measure
-    ;
-
-fpDateTimePrecision
-        : 'year' | 'month' | 'week' | 'day' | 'hour' | 'minute' | 'second' | 'millisecond'
-        ;
-
-fpPluralDateTimePrecision
-        : 'years' | 'months' | 'weeks' | 'days' | 'hours' | 'minutes' | 'seconds' | 'milliseconds'
-        ;
-
-groupTypeMode
-  : 'types' | 'type+'
-  ;
-
-sourceListMode
-  : 'first' | 'not_first' | 'last' | 'not_last' | 'only_one'
-  ;
-
-targetListMode
-  : 'first' | 'share' | 'last' | 'single'
-  ;
-
-inputMode
-  : 'source' | 'target'
-  ;
-
-modelMode           // StructureMapModelMode binding
-  : 'source' | 'queried' | 'target' | 'produced'
-  ;
-
-
 
     /*
      * Syntax for embedded ConceptMaps excluded for now

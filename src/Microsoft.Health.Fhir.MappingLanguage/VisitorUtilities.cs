@@ -51,6 +51,43 @@ internal static class VisitorUtilities
         return comments;
     }
 
+    internal static (string value, FmlTokenTypeCodes matchedToken)? GetGrammarLiteral(ParserRuleContext c, params int[] literalsToMatch)
+    {
+        HashSet<int> hash = literalsToMatch.ToHashSet();
+
+        // first pass just check terminal nodes
+        foreach (IParseTree child in c.children)
+        {
+            if (child is not ITerminalNode tn)
+            {
+                continue;
+            }
+
+            if (hash.Contains(tn.Symbol.Type))
+            {
+                return (GetString(tn), (FmlTokenTypeCodes)tn.Symbol.Type);
+            }
+        }
+
+        // if we are still here, recurse into non-terminal nodes
+        foreach (IParseTree child in c.children)
+        {
+            if (child is not ParserRuleContext cc)
+            {
+                continue;
+            }
+
+            (string v, FmlTokenTypeCodes tt)? res = GetGrammarLiteral(cc, literalsToMatch);
+
+            if (res != null)
+            {
+                return res;
+            }
+        }
+
+        return null;
+    }
+
     internal static LiteralValue? GetLiteral(ParserRuleContext? c, Dictionary<int, ParsedCommentNode>? parsedComments = null)
     {
         if (c == null)
@@ -77,6 +114,7 @@ internal static class VisitorUtilities
 
     internal static string? GetString(ParserRuleContext? c) => c?.Stop.Type switch
     {
+        null => null,
         NULL_LITERAL => null,
         BOOL => c.GetText(),
         DATE => c.Stop.Text.StartsWith('@') ? c.Stop.Text[1..] : c.Stop.Text,
@@ -93,11 +131,12 @@ internal static class VisitorUtilities
         BLOCK_COMMENT => c.Stop.Text.Length > 4 ? c.Stop.Text[2..^2].Trim() : c.Stop.Text.Trim(),
         LINE_COMMENT => c.Stop.Text.Length > 2 ? c.Stop.Text[2..].Trim() : c.Stop.Text.Trim(),
         TRIPLE_QUOTED_STRING_LITERAL => c.Stop.Text.Trim().Length > 5 ? c.Stop.Text.Trim()[3..^3].Trim() : c.Stop.Text.Trim(),
-        _ => null,
+        _ => c.Stop.Text.Trim(),
     };
 
     internal static string GetString(ITerminalNode? tn) => tn?.Symbol.Type switch
     {
+        null => string.Empty,
         NULL_LITERAL => string.Empty,
         BOOL => tn.GetText(),
         DATE => tn.Symbol.Text.StartsWith('@') ? tn.Symbol.Text[1..] : tn.Symbol.Text,
@@ -114,11 +153,12 @@ internal static class VisitorUtilities
         BLOCK_COMMENT => tn.Symbol.Text.Length > 4 ? tn.Symbol.Text[2..^2].Trim() : tn.Symbol.Text.Trim(),
         LINE_COMMENT => tn.Symbol.Text.Length > 2 ? tn.Symbol.Text[2..].Trim() : tn.Symbol.Text.Trim(),
         TRIPLE_QUOTED_STRING_LITERAL => tn.Symbol.Text.Trim().Length > 5 ? tn.Symbol.Text.Trim()[3..^3].Trim() : tn.Symbol.Text.Trim(),
-        _ => string.Empty,
+        _ => tn?.Symbol.Text.Trim() ?? string.Empty,
     };
 
     internal static string GetString(IToken? tn) => tn?.Type switch
     {
+        null => string.Empty,
         NULL_LITERAL => string.Empty,
         BOOL => tn.Text,
         DATE => tn.Text.StartsWith('@') ? tn.Text[1..] : tn.Text,
@@ -135,12 +175,13 @@ internal static class VisitorUtilities
         BLOCK_COMMENT => tn.Text.Length > 4 ? tn.Text[2..^2].Trim() : tn.Text.Trim(),
         LINE_COMMENT => tn.Text.Length > 2 ? tn.Text[2..].Trim() : tn.Text.Trim(),
         TRIPLE_QUOTED_STRING_LITERAL => tn.Text.Trim().Length > 5 ? tn.Text.Trim()[3..^3].Trim() : tn.Text.Trim(),
-        _ => string.Empty,
+        _ => tn?.Text ?? string.Empty,
     };
 
 
-    internal static dynamic? GetValue(ParserRuleContext c) => c.Stop.Type switch
+    internal static dynamic? GetValue(ParserRuleContext? c) => c?.Stop.Type switch
     {
+        null => null,
         NULL_LITERAL => null,
         BOOL => c.Stop.Text == "true" ? true : false,
         DATE => TryParseDateString(c.Stop.Text, out DateTimeOffset value) ? value : null,
@@ -157,11 +198,12 @@ internal static class VisitorUtilities
         BLOCK_COMMENT => c.Stop.Text.Length > 4 ? c.Stop.Text[2..^2].Trim() : c.Stop.Text.Trim(),
         LINE_COMMENT => c.Stop.Text.Length > 2 ? c.Stop.Text[2..].Trim() : c.Stop.Text.Trim(),
         TRIPLE_QUOTED_STRING_LITERAL => c.Stop.Text.Trim().Length > 5 ? c.Stop.Text.Trim()[3..^3].Trim() : c.Stop.Text.Trim(),
-        _ => null,
+        _ => c?.Stop.Text.Trim(),
     };
 
-    internal static Hl7.Fhir.Model.DataType? GetFhirValue(ParserRuleContext c) => c.Stop.Type switch
+    internal static Hl7.Fhir.Model.DataType? GetFhirValue(ParserRuleContext? c) => c?.Stop.Type switch
     {
+        null => null,
         NULL_LITERAL => null,
         BOOL => c.Stop.Text == "true" ? new FhirBoolean(true) : new FhirBoolean(false),
         DATE => c.Stop.Text.StartsWith('@') ? new FhirDateTime(c.Stop.Text[1..]) : new FhirDateTime(c.Stop.Text),
@@ -178,7 +220,7 @@ internal static class VisitorUtilities
         BLOCK_COMMENT => c.Stop.Text.Length > 4 ? new FhirString(c.Stop.Text[2..^2].Trim()) : new FhirString(c.Stop.Text.Trim()),
         LINE_COMMENT => c.Stop.Text.Length > 2 ? new FhirString(c.Stop.Text[2..].Trim()) : new FhirString(c.Stop.Text.Trim()),
         TRIPLE_QUOTED_STRING_LITERAL => c.Stop.Text.Trim().Length > 5 ? new Markdown(c.Stop.Text.Trim()[3..^3].Trim()) : new Markdown(c.Stop.Text.Trim()),
-        _ => null,
+        _ => string.IsNullOrEmpty(c?.Stop.Text) ? null : new FhirString(c.Stop.Text),
     };
 
     internal static T? GetEnum<T>(string? value)

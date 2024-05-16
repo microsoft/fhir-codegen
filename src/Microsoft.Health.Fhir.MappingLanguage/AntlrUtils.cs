@@ -14,7 +14,7 @@ internal static class AntlrUtils
     {
         HashSet<string> hs = [];
         List<string> lines = [];
-        for (int i = 1; i < 105; i++)
+        for (int i = 1; i < 104; i++)
         {
             string enumValue = FmlMappingParser.DefaultVocabulary.GetSymbolicName(i);
 

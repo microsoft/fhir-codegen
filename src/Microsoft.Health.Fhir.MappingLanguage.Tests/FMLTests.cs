@@ -60,6 +60,10 @@ let constNull = {};
 // comment before a group
 // with a second line 
 group Encounter(source src : EncounterR4, target tgt : EncounterR5) extends DomainResource <<type+>> {
+    src.source -> tgt.source;
+
+//    s.header as s1 ->  tgt.parameter as t,  t.name = (%s1.substring(0, %s1.indexOf(': '))),  t.value = (%s1.substring(%s1.indexOf(': ') + 1));
+
     src.identifier -> tgt.identifier;     // basic copy
     // translate code
     src.status as v -> tgt.status = translate(v, 'http://hl7.org/fhir/uv/xver/ConceptMap/enc.status-4to5', 'code');

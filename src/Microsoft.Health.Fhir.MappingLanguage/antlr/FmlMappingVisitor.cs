@@ -110,18 +110,6 @@ public interface IFmlMappingVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitStructureDeclaration([NotNull] FmlMappingParser.StructureDeclarationContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="FmlMappingParser.structureAlias"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitStructureAlias([NotNull] FmlMappingParser.StructureAliasContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="FmlMappingParser.importDeclaration"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitImportDeclaration([NotNull] FmlMappingParser.ImportDeclarationContext context);
-	/// <summary>
 	/// Visit a parse tree produced by <see cref="FmlMappingParser.constantDeclaration"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -133,6 +121,18 @@ public interface IFmlMappingVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitGroupDeclaration([NotNull] FmlMappingParser.GroupDeclarationContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="FmlMappingParser.parameters"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitParameters([NotNull] FmlMappingParser.ParametersContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="FmlMappingParser.parameter"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitParameter([NotNull] FmlMappingParser.ParameterContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="FmlMappingParser.groupExpressions"/>.
 	/// </summary>
@@ -151,18 +151,6 @@ public interface IFmlMappingVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitExtends([NotNull] FmlMappingParser.ExtendsContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="FmlMappingParser.parameters"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitParameters([NotNull] FmlMappingParser.ParametersContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="FmlMappingParser.parameter"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitParameter([NotNull] FmlMappingParser.ParameterContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="FmlMappingParser.typeIdentifier"/>.
 	/// </summary>
@@ -268,6 +256,12 @@ public interface IFmlMappingVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitDependentExpression([NotNull] FmlMappingParser.DependentExpressionContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="FmlMappingParser.importDeclaration"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitImportDeclaration([NotNull] FmlMappingParser.ImportDeclarationContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="FmlMappingParser.mapLineTarget"/>.
 	/// </summary>
@@ -396,72 +390,6 @@ public interface IFmlMappingVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitTypeExpression([NotNull] FmlMappingParser.TypeExpressionContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="FmlMappingParser.fpPolarityLiteral"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitFpPolarityLiteral([NotNull] FmlMappingParser.FpPolarityLiteralContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="FmlMappingParser.fpMultiplicativeLiteral"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitFpMultiplicativeLiteral([NotNull] FmlMappingParser.FpMultiplicativeLiteralContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="FmlMappingParser.fpAdditiveLiteral"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitFpAdditiveLiteral([NotNull] FmlMappingParser.FpAdditiveLiteralContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="FmlMappingParser.fpTypeAssertionLiteral"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitFpTypeAssertionLiteral([NotNull] FmlMappingParser.FpTypeAssertionLiteralContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="FmlMappingParser.fpUnionLiteral"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitFpUnionLiteral([NotNull] FmlMappingParser.FpUnionLiteralContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="FmlMappingParser.fpInequalityLiteral"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitFpInequalityLiteral([NotNull] FmlMappingParser.FpInequalityLiteralContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="FmlMappingParser.fpEqualityLiteral"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitFpEqualityLiteral([NotNull] FmlMappingParser.FpEqualityLiteralContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="FmlMappingParser.fpMembershipLiteral"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitFpMembershipLiteral([NotNull] FmlMappingParser.FpMembershipLiteralContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="FmlMappingParser.fpAndLiteral"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitFpAndLiteral([NotNull] FmlMappingParser.FpAndLiteralContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="FmlMappingParser.fpOrLiteral"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitFpOrLiteral([NotNull] FmlMappingParser.FpOrLiteralContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="FmlMappingParser.fpImpliesLiteral"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitFpImpliesLiteral([NotNull] FmlMappingParser.FpImpliesLiteralContext context);
 	/// <summary>
 	/// Visit a parse tree produced by the <c>invocationTerm</c>
 	/// labeled alternative in <see cref="FmlMappingParser.fpTerm"/>.
@@ -626,57 +554,31 @@ public interface IFmlMappingVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitQuotedStringLiteral([NotNull] FmlMappingParser.QuotedStringLiteralContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="FmlMappingParser.fpQuantity"/>.
+	/// Visit a parse tree produced by the <c>idLiteral</c>
+	/// labeled alternative in <see cref="FmlMappingParser.literal"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitFpQuantity([NotNull] FmlMappingParser.FpQuantityContext context);
+	Result VisitIdLiteral([NotNull] FmlMappingParser.IdLiteralContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="FmlMappingParser.fpUnit"/>.
+	/// Visit a parse tree produced by the <c>quantityWithDate</c>
+	/// labeled alternative in <see cref="FmlMappingParser.fpQuantity"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitFpUnit([NotNull] FmlMappingParser.FpUnitContext context);
+	Result VisitQuantityWithDate([NotNull] FmlMappingParser.QuantityWithDateContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="FmlMappingParser.fpDateTimePrecision"/>.
+	/// Visit a parse tree produced by the <c>quantityWithDatePlural</c>
+	/// labeled alternative in <see cref="FmlMappingParser.fpQuantity"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitFpDateTimePrecision([NotNull] FmlMappingParser.FpDateTimePrecisionContext context);
+	Result VisitQuantityWithDatePlural([NotNull] FmlMappingParser.QuantityWithDatePluralContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="FmlMappingParser.fpPluralDateTimePrecision"/>.
+	/// Visit a parse tree produced by the <c>quantityWithUcum</c>
+	/// labeled alternative in <see cref="FmlMappingParser.fpQuantity"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitFpPluralDateTimePrecision([NotNull] FmlMappingParser.FpPluralDateTimePrecisionContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="FmlMappingParser.groupTypeMode"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitGroupTypeMode([NotNull] FmlMappingParser.GroupTypeModeContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="FmlMappingParser.sourceListMode"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitSourceListMode([NotNull] FmlMappingParser.SourceListModeContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="FmlMappingParser.targetListMode"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitTargetListMode([NotNull] FmlMappingParser.TargetListModeContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="FmlMappingParser.inputMode"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitInputMode([NotNull] FmlMappingParser.InputModeContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="FmlMappingParser.modelMode"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitModelMode([NotNull] FmlMappingParser.ModelModeContext context);
+	Result VisitQuantityWithUcum([NotNull] FmlMappingParser.QuantityWithUcumContext context);
 }

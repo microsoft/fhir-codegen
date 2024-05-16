@@ -23,6 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.Health.Fhir.CodeGenCommon\Microsoft.Health.Fhir.CodeGenCommon.csproj" />
     <ProjectReference Include="..\Microsoft.Health.Fhir.CrossVersion\Microsoft.Health.Fhir.CrossVersion.csproj" />
+    <ProjectReference Include="..\Microsoft.Health.Fhir.MappingLanguage\Microsoft.Health.Fhir.MappingLanguage.csproj" />
     <ProjectReference Include="..\Microsoft.Health.Fhir.PackageManager\Microsoft.Health.Fhir.PackageManager.csproj" />
   </ItemGroup>
 

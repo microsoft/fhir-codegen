@@ -20,70 +20,56 @@ namespace Microsoft.Health.Fhir.MappingLanguage;
 public enum FmlRuleCodes : int
 {
     StructureMap = 0,
-    MapDeclaration = 1,
-    MetadataDeclaration = 2,
-    MarkdownLiteral = 3,
-    Url = 4,
-    Identifier = 5,
-    StructureDeclaration = 6,
-    StructureAlias = 7,
-    ImportDeclaration = 8,
-    ConstantDeclaration = 9,
-    GroupDeclaration = 10,
-    GroupExpressions = 11,
-    TypeMode = 12,
-    Extends = 13,
-    Parameters = 14,
-    Parameter = 15,
-    TypeIdentifier = 16,
-    Expression = 17,
-    MapExpression = 18,
-    MapExpressionName = 19,
-    MapExpressionSource = 20,
-    MapExpressionTarget = 21,
-    SourceCardinality = 22,
-    UpperBound = 23,
-    QualifiedIdentifier = 24,
-    SourceDefault = 25,
-    Alias = 26,
-    WhereClause = 27,
-    CheckClause = 28,
-    Log = 29,
-    DependentExpression = 30,
-    MapLineTarget = 31,
-    Transform = 32,
-    Invocation = 33,
-    ParamList = 34,
-    Param = 35,
-    FpExpression = 36,
-    FpPolarityLiteral = 37,
-    FpMultiplicativeLiteral = 38,
-    FpAdditiveLiteral = 39,
-    FpTypeAssertionLiteral = 40,
-    FpUnionLiteral = 41,
-    FpInequalityLiteral = 42,
-    FpEqualityLiteral = 43,
-    FpMembershipLiteral = 44,
-    FpAndLiteral = 45,
-    FpOrLiteral = 46,
-    FpImpliesLiteral = 47,
-    FpTerm = 48,
-    FpInvocation = 49,
-    FpExternalConstant = 50,
-    FpFunction = 51,
-    FpParamList = 52,
-    FpTypeSpecifier = 53,
-    Constant = 54,
-    Literal = 55,
-    FpQuantity = 56,
-    FpUnit = 57,
-    FpDateTimePrecision = 58,
-    FpPluralDateTimePrecision = 59,
-    GroupTypeMode = 60,
-    SourceListMode = 61,
-    TargetListMode = 62,
-    InputMode = 63,
-    ModelMode = 64,
+    ConceptMapDeclaration = 1,
+    ConceptMapPrefix = 2,
+    ConceptMapCodeMap = 3,
+    ConceptMapSource = 4,
+    ConceptMapTarget = 5,
+    Code = 6,
+    MapDeclaration = 7,
+    MetadataDeclaration = 8,
+    MarkdownLiteral = 9,
+    Url = 10,
+    Identifier = 11,
+    StructureDeclaration = 12,
+    ConstantDeclaration = 13,
+    GroupDeclaration = 14,
+    Parameters = 15,
+    Parameter = 16,
+    GroupExpressions = 17,
+    TypeMode = 18,
+    Extends = 19,
+    TypeIdentifier = 20,
+    Expression = 21,
+    MapExpression = 22,
+    MapExpressionName = 23,
+    MapExpressionSource = 24,
+    MapExpressionTarget = 25,
+    SourceCardinality = 26,
+    UpperBound = 27,
+    QualifiedIdentifier = 28,
+    SourceDefault = 29,
+    Alias = 30,
+    WhereClause = 31,
+    CheckClause = 32,
+    Log = 33,
+    DependentExpression = 34,
+    ImportDeclaration = 35,
+    MapLineTarget = 36,
+    Transform = 37,
+    Invocation = 38,
+    ParamList = 39,
+    Param = 40,
+    FpExpression = 41,
+    FpTerm = 42,
+    FpInvocation = 43,
+    FpExternalConstant = 44,
+    FpFunction = 45,
+    FpParamList = 46,
+    FpTypeSpecifier = 47,
+    Constant = 48,
+    Literal = 49,
+    FpQuantity = 50,
 }
 
 /// <summary>Values that represent fml token type codes - these are token types from the lexer.</summary>
@@ -104,83 +90,82 @@ public enum FmlTokenTypeCodes : int
     Colon = FmlMappingParser.T__6,
     Map = FmlMappingParser.T__7,
     Uses = FmlMappingParser.T__8,
-    As = FmlMappingParser.T__9,
-    Alias = FmlMappingParser.T__10,
-    Imports = FmlMappingParser.T__11,
-    Let = FmlMappingParser.T__12,
-    Semicolon = FmlMappingParser.T__13,
-    Group = FmlMappingParser.T__14,
-    DoubleLessThan = FmlMappingParser.T__15,
-    DoubleGreaterThan = FmlMappingParser.T__16,
-    Extends = FmlMappingParser.T__17,
+    Alias = FmlMappingParser.T__9,
+    As = FmlMappingParser.T__10,
+    Source = FmlMappingParser.T__11,
+    Queried = FmlMappingParser.T__12,
+    Target = FmlMappingParser.T__13,
+    Produced = FmlMappingParser.T__14,
+    Let = FmlMappingParser.T__15,
+    Semicolon = FmlMappingParser.T__16,
+    Group = FmlMappingParser.T__17,
     OpenParenthesis = FmlMappingParser.T__18,
     Comma = FmlMappingParser.T__19,
     CloseParenthesis = FmlMappingParser.T__20,
-    Arrow = FmlMappingParser.T__21,
-    DoubleDot = FmlMappingParser.T__22,
-    Asterisk = FmlMappingParser.T__23,
-    Dot = FmlMappingParser.T__24,
-    X = FmlMappingParser.T__25,
-    Default = FmlMappingParser.T__26,
-    Where = FmlMappingParser.T__27,
-    Check = FmlMappingParser.T__28,
-    Log = FmlMappingParser.T__29,
-    Then = FmlMappingParser.T__30,
-    OpenSquareBracket = FmlMappingParser.T__31,
-    CloseSquareBracket = FmlMappingParser.T__32,
-    Plus = FmlMappingParser.T__33,
-    Slash = FmlMappingParser.T__34,
-    Div = FmlMappingParser.T__35,
-    Mod = FmlMappingParser.T__36,
-    Ampersand = FmlMappingParser.T__37,
-    Is = FmlMappingParser.T__38,
-    Pipe = FmlMappingParser.T__39,
-    LessOrEqual = FmlMappingParser.T__40,
-    LessThan = FmlMappingParser.T__41,
-    GreaterThan = FmlMappingParser.T__42,
-    GreaterOrEqual = FmlMappingParser.T__43,
-    Tilde = FmlMappingParser.T__44,
-    NotEqual = FmlMappingParser.T__45,
-    NotEquivalent = FmlMappingParser.T__46,
-    In = FmlMappingParser.T__47,
-    Contains = FmlMappingParser.T__48,
-    And = FmlMappingParser.T__49,
-    Or = FmlMappingParser.T__50,
-    Xor = FmlMappingParser.T__51,
-    Implies = FmlMappingParser.T__52,
-    DollarThis = FmlMappingParser.T__53,
-    DollarIndex = FmlMappingParser.T__54,
-    DollarTotal = FmlMappingParser.T__55,
-    Percent = FmlMappingParser.T__56,
-    Year = FmlMappingParser.T__57,
-    Month = FmlMappingParser.T__58,
-    Week = FmlMappingParser.T__59,
-    Day = FmlMappingParser.T__60,
-    Hour = FmlMappingParser.T__61,
-    Minute = FmlMappingParser.T__62,
-    Second = FmlMappingParser.T__63,
-    Millisecond = FmlMappingParser.T__64,
-    Years = FmlMappingParser.T__65,
-    Months = FmlMappingParser.T__66,
-    Weeks = FmlMappingParser.T__67,
-    Days = FmlMappingParser.T__68,
-    Hours = FmlMappingParser.T__69,
-    Minutes = FmlMappingParser.T__70,
-    Seconds = FmlMappingParser.T__71,
-    Milliseconds = FmlMappingParser.T__72,
-    Types = FmlMappingParser.T__73,
-    TypePlus = FmlMappingParser.T__74,
-    First = FmlMappingParser.T__75,
-    NotFirst = FmlMappingParser.T__76,
-    Last = FmlMappingParser.T__77,
-    NotLast = FmlMappingParser.T__78,
-    OnlyOne = FmlMappingParser.T__79,
-    Share = FmlMappingParser.T__80,
-    Single = FmlMappingParser.T__81,
-    Source = FmlMappingParser.T__82,
-    Target = FmlMappingParser.T__83,
-    Queried = FmlMappingParser.T__84,
-    Produced = FmlMappingParser.T__85,
+    DoubleLessThan = FmlMappingParser.T__21,
+    Types = FmlMappingParser.T__22,
+    TypePlus = FmlMappingParser.T__23,
+    DoubleGreaterThan = FmlMappingParser.T__24,
+    Extends = FmlMappingParser.T__25,
+    Arrow = FmlMappingParser.T__26,
+    First = FmlMappingParser.T__27,
+    NotFirst = FmlMappingParser.T__28,
+    Last = FmlMappingParser.T__29,
+    NotLast = FmlMappingParser.T__30,
+    OnlyOne = FmlMappingParser.T__31,
+    DoubleDot = FmlMappingParser.T__32,
+    Asterisk = FmlMappingParser.T__33,
+    Imports = FmlMappingParser.T__34,
+    Where = FmlMappingParser.T__35,
+    Check = FmlMappingParser.T__36,
+    Div = FmlMappingParser.T__37,
+    Contains = FmlMappingParser.T__38,
+    Dot = FmlMappingParser.T__39,
+    Default = FmlMappingParser.T__40,
+    Log = FmlMappingParser.T__41,
+    Then = FmlMappingParser.T__42,
+    Share = FmlMappingParser.T__43,
+    Single = FmlMappingParser.T__44,
+    OpenSquareBracket = FmlMappingParser.T__45,
+    CloseSquareBracket = FmlMappingParser.T__46,
+    Plus = FmlMappingParser.T__47,
+    Slash = FmlMappingParser.T__48,
+    Mod = FmlMappingParser.T__49,
+    Ampersand = FmlMappingParser.T__50,
+    Is = FmlMappingParser.T__51,
+    Pipe = FmlMappingParser.T__52,
+    LessOrEqual = FmlMappingParser.T__53,
+    LessThan = FmlMappingParser.T__54,
+    GreaterThan = FmlMappingParser.T__55,
+    GreaterOrEqual = FmlMappingParser.T__56,
+    Tilde = FmlMappingParser.T__57,
+    NotEqual = FmlMappingParser.T__58,
+    NotEquivalent = FmlMappingParser.T__59,
+    In = FmlMappingParser.T__60,
+    And = FmlMappingParser.T__61,
+    Or = FmlMappingParser.T__62,
+    Xor = FmlMappingParser.T__63,
+    Implies = FmlMappingParser.T__64,
+    DollarThis = FmlMappingParser.T__65,
+    DollarIndex = FmlMappingParser.T__66,
+    DollarTotal = FmlMappingParser.T__67,
+    Percent = FmlMappingParser.T__68,
+    Year = FmlMappingParser.T__69,
+    Month = FmlMappingParser.T__70,
+    Week = FmlMappingParser.T__71,
+    Day = FmlMappingParser.T__72,
+    Hour = FmlMappingParser.T__73,
+    Minute = FmlMappingParser.T__74,
+    Second = FmlMappingParser.T__75,
+    Millisecond = FmlMappingParser.T__76,
+    Years = FmlMappingParser.T__77,
+    Months = FmlMappingParser.T__78,
+    Weeks = FmlMappingParser.T__79,
+    Days = FmlMappingParser.T__80,
+    Hours = FmlMappingParser.T__81,
+    Minutes = FmlMappingParser.T__82,
+    Seconds = FmlMappingParser.T__83,
+    Milliseconds = FmlMappingParser.T__84,
     NullLiteral = FmlMappingParser.NULL_LITERAL,
     Bool = FmlMappingParser.BOOL,
     Date = FmlMappingParser.DATE,
@@ -204,103 +189,103 @@ public enum FmlTokenTypeCodes : int
 public enum FmlPolarityCodes : int
 {
     // '+' : 84 + 1
-    Positive = 84 + 1,
+    Positive = FmlTokenTypeCodes.Plus,
 
     // '-' : 85 + 1
-    Negative = 85 + 1,
+    Negative = FmlTokenTypeCodes.Minus,
 }
 
 public enum FmlMultiplicativeOpCodes : int
 {
     // '*': 74 + 1
-    Multiply = 74 + 1,
+    Multiply = FmlTokenTypeCodes.Asterisk,
 
     // '/': 86 + 1
-    Divide = 86 + 1,
+    Divide = FmlTokenTypeCodes.Slash,
 
     // 'div': 87 + 1
-    Div = 87 + 1,
+    Div = FmlTokenTypeCodes.Div,
 
     // 'mod': 88 + 1
-    Modulo = 88 + 1,
+    Modulo = FmlTokenTypeCodes.Mod,
 }
 
 public enum FmlUnionOpCodes : int
 {
     // '|': 91 + 1
-    Union = 91 + 1,
+    Union = FmlTokenTypeCodes.Pipe,
 }
 
 public enum FmlAdditiveOpCodes : int
 {
     // '+': 84 + 1
-    Add = 84 + 1,
+    Add = FmlTokenTypeCodes.Plus,
 
     // '&': 89 + 1
-    And = 89 + 1,
+    And = FmlTokenTypeCodes.Ampersand,
 
     // '-': 85 + 1
-    Subtract = 85 + 1,
+    Subtract = FmlTokenTypeCodes.Minus,
 }
 
 public enum FmlInequalityOpCodes : int
 {
     // '<': 93 + 1
-    LessThan = 93 + 1,
+    LessThan = FmlTokenTypeCodes.LessThan,
 
     // '<=': 92 + 1
-    LessThanOrEqual = 92 + 1,
+    LessThanOrEqual = FmlTokenTypeCodes.LessOrEqual,
 
     // '>': 94 + 1
-    GreaterThan = 94 + 1,
+    GreaterThan = FmlTokenTypeCodes.GreaterThan,
 
     // '>=': 95 + 1
-    GreaterThanOrEqual = 95 + 1,
+    GreaterThanOrEqual = FmlTokenTypeCodes.GreaterOrEqual,
 }
 
 public enum FmlEqualityOpCodes : int
 {
     // '=': 55 + 1
-    Equal = 55 + 1,
+    Equal = FmlTokenTypeCodes.Equals,
 
     // '~': 96 + 1
-    Equivalent = 96 + 1,
+    Equivalent = FmlTokenTypeCodes.Tilde,
 
     // '!=': 97 + 1
-    NotEqual = 97 + 1,
+    NotEqual = FmlTokenTypeCodes.NotEqual,
 
     // '!~': 98 + 1
-    NotEquivalent = 98 + 1,
+    NotEquivalent = FmlTokenTypeCodes.NotEquivalent,
 }
 
 public enum FmlMembershipOpCodes : int
 {
     // 'in': 99 + 1
-    In = 99 + 1,
+    In = FmlTokenTypeCodes.In,
 
     // 'contains': 100 + 1
-    Contains = 100 + 1,
+    Contains = FmlTokenTypeCodes.Contains,
 }
 
 public enum FmlAndOpCodes : int
 {
     // 'and': 101 + 1
-    And = 101 + 1,
+    And = FmlTokenTypeCodes.And,
 }
 
 public enum FmlOrOpCodes : int
 {
     // 'or': 102 + 1
-    Or = 102 + 1,
+    Or = FmlTokenTypeCodes.Or,
 
     // 'xor': 103 + 1
-    Xor = 103 + 1,
+    Xor = FmlTokenTypeCodes.Xor,
 }
 
 public enum FmlImpliesOpCodes : int
 {
     // 'implies': 104 + 1
-    Implies = 104 + 1,
+    Implies = FmlTokenTypeCodes.Implies,
 }
 
 public record class ParsedCommentNode
