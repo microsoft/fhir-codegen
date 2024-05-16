@@ -924,7 +924,7 @@ public partial class FirelyNetIG : ILanguage
                 else
                 {
                     writer.WriteLineIndented($"public static {elementType}? {extData.Name}Get(this {contextType} o)");
-                    OpenScope(writer);
+                    OpenScope(writer);      // function open
                     writer.WriteLineIndented($"Extension? root = o.GetExtension({_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
                     writer.WriteLineIndented("if (root == null) return null;");
 
@@ -934,7 +934,7 @@ public partial class FirelyNetIG : ILanguage
                     writer.WriteLineIndented($"return new {elementType}()");
                     WriteExtensionRecordCreateFromProperties(writer, extData);
 
-                    CloseScope(writer);
+                    CloseScope(writer);     // function close
                 }
 
                 // write a comment for the setter
@@ -1207,7 +1207,7 @@ public partial class FirelyNetIG : ILanguage
                 writer.WriteLineIndented($"IEnumerable<{elementType}>? {valName} = {parentVarName}" +
                     $".GetExtensions({_classNameDefinitions}.{extName})" +
                     $".Where(e => e.Value != null && e.Value is {elementType})" +
-                    $".Select(e => ({elementType})e;");
+                    $".Select(e => ({elementType})e);");
             }
             else
             {
@@ -1253,6 +1253,86 @@ public partial class FirelyNetIG : ILanguage
             }
 
             WriteExtensionRecordPropertyReads(writer, extensionData, parentVarName);
+        }
+    }
+
+    private void WriteProfileExtRecordPropertyReads(ExportStreamWriter writer, ProfileSliceInfo psi, string parentVarName)
+    {
+        if (psi.ValueExtData == null)
+        {
+            return;
+        }
+
+        if ((psi.ValueExtData.ValueElement != null) && (psi.ValueExtData.ElementInfo != null))
+        {
+            bool isList = psi.ValueExtData.IsList && psi.Element.cgCardinalityMax() > 1;
+
+            string elementType = psi.ValueExtData.ElementInfo.IsPrimitive ? psi.ValueExtData.ElementInfo.PrimitiveHelperType! : psi.ValueExtData.ElementInfo.ElementType!;
+
+            string valName = _processingValuePrefix + psi.ValueExtData.Name;
+            string extName = psi.ValueExtData.ParentName + psi.ValueExtData.Name;
+
+            if (isList)
+            {
+                writer.WriteLineIndented($"IEnumerable<{elementType}>? {valName} = {parentVarName}" +
+                    $".GetExtensions({_classNameDefinitions}.{extName})" +
+                    $".Where(e => e.Value != null && e.Value is {elementType})" +
+                    $".Select(e => ({elementType})e);");
+            }
+            else
+            {
+                switch (elementType)
+                {
+                    case "bool":
+                        writer.WriteLineIndented($"{elementType}? {valName} = {parentVarName}.Value is FhirBoolean vb ? vb.Value : null;");
+                        break;
+
+                    case "int":
+                        writer.WriteLineIndented($"{elementType}? {valName} = {parentVarName}.Value is Integer vi ? vi.Value : null;");
+                        break;
+
+                    case "string":
+                        writer.WriteLineIndented($"{elementType}? {valName} = {parentVarName}.Value is FhirString vs ? vs.Value : null;");
+                        break;
+
+                    default:
+                        writer.WriteLineIndented($"{elementType}? {valName} = {parentVarName}.Value is {elementType} vv ? vv : null;");
+                        break;
+                }
+            }
+
+            writer.WriteLine();
+            //return;
+        }
+
+
+        foreach (ProfileSliceInfo childPsi in psi.ChildSlicesBySliceId.Values)
+        {
+            if (childPsi.ValueExtData == null)
+            {
+                throw new Exception(parentVarName + " has a child slice with no value extension data.");
+            }
+
+            //if (childPsi.ChildSlicesBySliceId.Count != 0)
+            //{
+            //    writer.WriteLineIndented($"Extension? ext{childPsi.ValueExtData.Name} = {parentVarName}.GetExtension({_classNameDefinitions}.{_extUrlPrefix}{childPsi.ValueExtData.Name});");
+            //    writer.WriteLineIndented($"if (ext{childPsi.ValueExtData.Name} != null)");
+            //    OpenScope(writer);
+
+            //    // nest through children
+            //    foreach (ProfileSliceInfo grandchild in childPsi.ChildSlicesBySliceId.Values)
+            //    {
+            //        WriteProfileRecordPropertyReads(writer, grandchild, $"ext{childPsi.ValueExtData.Name}");
+            //    }
+
+            //    CloseScope(writer);
+            //    continue;
+            //}
+
+            string childVarName = _processingExtPrefix + childPsi.ValueExtData.Name;
+
+            writer.WriteLineIndented($"Extension? {childVarName} = {parentVarName}.Value.GetExtension({_classNameDefinitions}.{_extUrlPrefix}{childPsi.ValueExtData.Name});");
+            WriteProfileExtRecordPropertyReads(writer, childPsi, childVarName + "?");
         }
     }
 
@@ -2180,7 +2260,7 @@ public partial class FirelyNetIG : ILanguage
                     writer.WriteLineIndented($"// Slice uses extension: {extPackageData.Namespace}.{extData.Name.ToPascalCase()}");
 
                     // write a getter
-                    WriteProfileSliceExtensionAccessors(writer, sd, sliceName, contextCd, extData);
+                    WriteProfileSliceExtensionAccessors(writer, sd, psi, contextCd);
                 }
                 else
                 {
@@ -2203,12 +2283,21 @@ public partial class FirelyNetIG : ILanguage
     private void WriteProfileSliceExtensionAccessors(
         ExportStreamWriter writer,
         StructureDefinition profileSd,
-        string sliceName,
-        ComponentDefinition contextCd,
-        ExtensionData extData)
+        ProfileSliceInfo psi,
+        ComponentDefinition contextCd)
     {
-        string fnBase = profileSd.cgName().ToPascalCase() + sliceName.ToPascalCase();
-        string extValueType = extData.ValueTypeName;
+        if (psi.ValueExtData == null)
+        {
+            throw new Exception($"Could not resolve extension data for slice: {psi.Id}");
+        }
+
+        if (!TryGetPackageData(psi.ValueExtData.DefinitionDirective, out PackageData extPackageData))
+        {
+            throw new Exception($"Could not get package information for extension: {psi.ValueExtData.Name} ({psi.ValueExtData.Url})");
+        }
+
+        string fnBase = profileSd.cgName().ToPascalCase() + psi.SliceName.ToPascalCase();
+        string extValueType = (psi.ChildSlicesBySliceId.Count == 0) ? psi.ValueExtData.ValueTypeName : psi.ValueTypeName;
 
         string contextType;
         if (contextCd.IsRootOfStructure == true)
@@ -2238,31 +2327,70 @@ public partial class FirelyNetIG : ILanguage
             contextType = "Hl7.Fhir.Model." + contextType;
         }
 
-        if (TryGetPackageData(extData.DefinitionDirective, out PackageData extPackageData))
+        if (psi.ChildSlicesBySliceId.Count == 0)
         {
-            if (extData.IsList)
+            if (psi.ValueExtData.IsList)
             {
                 writer.WriteLineIndented($"public static IEnumerable<{extValueType}> {fnBase}Get(this {contextType} o) =>");
-                writer.WriteLineIndented($"  {extPackageData.Namespace}.{extData.Name.ToPascalCase()}Get(o);");
+                writer.WriteLineIndented($"  {extPackageData.Namespace}.{psi.ValueExtData.Name.ToPascalCase()}Get(o);");
 
                 writer.WriteLineIndented($"public static void {fnBase}Set(this {contextType} o, IEnumerable<{extValueType}>? val) =>");
-                writer.WriteLineIndented($"  {extPackageData.Namespace}.{extData.Name.ToPascalCase()}Set(o, val);");
+                writer.WriteLineIndented($"  {extPackageData.Namespace}.{psi.ValueExtData.Name.ToPascalCase()}Set(o, val);");
 
             }
             else
             {
                 writer.WriteLineIndented($"public static {extValueType}? {fnBase}Get(this {contextType} o) =>");
-                writer.WriteLineIndented($"  {extPackageData.Namespace}.{extData.Name.ToPascalCase()}Get(o);");
+                writer.WriteLineIndented($"  {extPackageData.Namespace}.{psi.ValueExtData.Name.ToPascalCase()}Get(o);");
 
 
                 writer.WriteLineIndented($"public static void {fnBase}Set(this {contextType} o, {extValueType}? val) =>");
-                writer.WriteLineIndented($"  {extPackageData.Namespace}.{extData.Name.ToPascalCase()}Set(o, val);");
+                writer.WriteLineIndented($"  {extPackageData.Namespace}.{psi.ValueExtData.Name.ToPascalCase()}Set(o, val);");
             }
+
+            // without sub-slices, we can write a simple getter/setter and be done
+
+            return;
+        }
+
+        if (psi.ValueExtData.IsList)
+        {
+            writer.WriteLineIndented($"public static IEnumerable<{extValueType}> {fnBase}Get(this {contextType} o)");
+            OpenScope(writer);
+            writer.WriteLineIndented($"  {extPackageData.Namespace}.{psi.ValueExtData.Name.ToPascalCase()}Get(o);");
+            CloseScope(writer);
+
+
+            writer.WriteLineIndented($"public static void {fnBase}Set(this {contextType} o, IEnumerable<{extValueType}>? val)");
+            OpenScope(writer);
+            writer.WriteLineIndented($"  {extPackageData.Namespace}.{psi.ValueExtData.Name.ToPascalCase()}Set(o, val);");
+            CloseScope(writer);
+
         }
         else
         {
-            throw new Exception($"Could not get package information for extension: {extData.Name} ({extData.Url})");
+            writer.WriteLineIndented($"//  {extPackageData.Namespace}.{psi.ValueExtData.Name.ToPascalCase()}Get(o);");
+            writer.WriteLineIndented($"public static {extValueType}? {fnBase}Get(this {contextType} o)");
+
+            OpenScope(writer);      // function open
+            writer.WriteLineIndented($"Extension? root = o.GetExtension({_classNameDefinitions}.{_extUrlPrefix}{psi.ValueExtData.Name});");
+            writer.WriteLineIndented("if (root == null) return null;");
+
+            // pull values from the extension tree
+            WriteProfileExtRecordPropertyReads(writer, psi, "root");
+
+            writer.WriteLineIndented($"return new {extValueType}()");
+            WriteExtensionRecordCreateFromProperties(writer, psi.ValueExtData);
+            CloseScope(writer);     // function close
+
+
+            writer.WriteLineIndented($"public static void {fnBase}Set(this {contextType} o, {extValueType}? val)");
+            OpenScope(writer);
+            writer.WriteLineIndented($"  {extPackageData.Namespace}.{psi.ValueExtData.Name.ToPascalCase()}Set(o, val);");
+            CloseScope(writer);
         }
+
+
     }
 
 
