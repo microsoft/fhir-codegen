@@ -64,11 +64,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
              * the generated CopyTo() and IsExact() methods diverge too much to be useful. */
             "Extension",
 
-            /* Narrative has a special `div` element, serialized as an element frm the
-             * XHTML namespace, not using a normal FHIR primitive. This makes this class
-             * deviate in ways we cannot achieve with the generator. */
-            "Narrative",
-
             /* These two types are interfaces rather than classes (at least, for now)
              * so we're not generating them. Also, all types deriving from these
              * are generated to derive from DomainResource instead */
@@ -1472,9 +1467,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
                 else
                 {
+                    // A long time ago we decided that in this function, XHtml
+                    // is returned as a FHIR string, so that's what we need to do.
+                    var yr = info.FhirElementName switch
+                    {
+                        "div" => $"new FhirString({info.PropertyName}.Value)",
+                        _ => $"{info.PropertyName}"
+
+                    };
+
                     _writer.WriteLineIndented(
                         $"if ({info.PropertyName} != null)" +
-                            $" yield return new ElementValue(\"{info.FhirElementName}\", {info.PropertyName});");
+                            $" yield return new ElementValue(\"{info.FhirElementName}\", {yr});");
                 }
             }
 
@@ -1504,9 +1508,18 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 }
                 else
                 {
+                    // A long time ago we decided that in this function, XHtml
+                    // is returned as a FHIR string, so that's what we need to do.
+
+                    var yr = info.FhirElementName switch
+                    {
+                        "div" => $"new FhirString({info.PropertyName}.Value)",
+                        _ => $"{info.PropertyName}"
+
+                    };
                     _writer.WriteLineIndented(
                         $"if ({info.PropertyName} != null)" +
-                            $" yield return {info.PropertyName};");
+                            $" yield return {yr};");
                 }
             }
 
@@ -2039,9 +2052,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             return ei;
         }
 
-        private void BuildFhirElementAttribute(string name, string summary, string isModifier, FhirElement element, string choice, string fiveWs, string since = null, (string, string)? until = null)
+        private void BuildFhirElementAttribute(string name, string summary, string isModifier, FhirElement element, string choice, string fiveWs, string since = null, (string, string)? until = null, string? xmlSerialization = null)
         {
-            string attributeText = $"[FhirElement(\"{name}\"{summary}{isModifier}, Order={GetOrder(element)}{choice}{fiveWs}";
+            var xmlser = xmlSerialization is null ? null : $", XmlSerialization = XmlRepresentation.{xmlSerialization}";
+            string attributeText = $"[FhirElement(\"{name}\"{xmlser}{summary}{isModifier}, Order={GetOrder(element)}{choice}{fiveWs}";
             if (since is { })
             {
                 attributeText += $", Since=FhirRelease.{since}";
@@ -2103,6 +2117,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _ => attributeDescriptionWithSinceInfo(name, element.ShortDescription, since, until)
             };
 
+            var xmlserialization = element.Path == "Narrative.div" ? "XHtml" : null;
+
             if (description is not null) WriteIndentedComment(description);
 
             if (element.Path == "OperationOutcome.issue.severity")
@@ -2119,7 +2135,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
             else
             {
-                BuildFhirElementAttribute(name, summary, isModifier, element, choice, fiveWs, since, until);
+                BuildFhirElementAttribute(name, summary, isModifier, element, choice, fiveWs, since, until, xmlserialization);
             }
 
             if (element.Path == "Meta.profile")
@@ -2451,10 +2467,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             out string allowedTypes,
             out string resourceReferences)
         {
+            // TODO: We should follow what is specified in R5 - so div/status
+            // are actually *not* in summary. Wait until SDK6.0 before we get this
+            // code out.
+            var isReallySummary = element.Path switch
+            {
+                "Narrative.div" => true,
+                "Narrative.status" => true,
+                _ => element.IsSummary
+            };
+
             choice = string.Empty;
             allowedTypes = string.Empty;
             resourceReferences = string.Empty;
-            summary = element.IsSummary ? ", InSummary=true" : string.Empty;
+            summary = isReallySummary ? ", InSummary=true" : string.Empty;
             isModifier = element.IsModifier ? ", IsModifier=true" : string.Empty;
 
             if (element.ElementTypes != null)
@@ -3001,5 +3027,3 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
     }
 }
-
-
