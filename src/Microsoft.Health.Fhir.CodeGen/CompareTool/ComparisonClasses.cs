@@ -53,7 +53,7 @@ public record class ComparisonTopLevelBase<T> : ComparisonBase
 
 public record class ComparisonDetailsBase<T> : ComparisonBase
 {
-    public required T Target { get; init; }
+    public required T? Target { get; init; }
 }
 
 public record class ConceptComparisonDetails : ComparisonDetailsBase<ConceptInfoRec>
@@ -125,9 +125,18 @@ public record class ElementComparison : ComparisonBase
 
 public record class ElementComparisonDetails : ComparisonDetailsBase<ElementInfoRec>
 {
+    public required Dictionary<string, ElementTypeComparison> TypeComparisons { get; init; }
 }
 
+public record class ElementTypeComparison : ComparisonBase
+{
+    public required ElementTypeInfoRec Source { get; init; }
+    public required List<ElementTypeComparisonDetails> TargetTypes { get; init; }
+}
 
+public record class ElementTypeComparisonDetails : ComparisonDetailsBase<ElementTypeInfoRec>
+{
+}
 
 
 public record class ConceptInfoRec

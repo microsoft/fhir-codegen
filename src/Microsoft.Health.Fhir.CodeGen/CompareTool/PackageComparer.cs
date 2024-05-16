@@ -214,10 +214,11 @@ public class PackageComparer
             }
         }
 
-        Dictionary<string, List<PrimitiveTypeComparison>> primitives = ComparePrimitives(_source.PrimitiveTypesByName, _target.PrimitiveTypesByName);
+        Dictionary<string, List<PrimitiveTypeComparison>> primitiveComparisons = ComparePrimitives(_source.PrimitiveTypesByName, _target.PrimitiveTypesByName);
+        _crossVersion?.UpdateDataTypeMap(primitiveComparisons);
         if (mdWriter != null)
         {
-            WriteComparisonOverview(mdWriter, "Primitive Types", primitives);
+            WriteComparisonOverview(mdWriter, "Primitive Types", primitiveComparisons);
 
             string mdSubDir = Path.Combine(pageDir, "PrimitiveTypes");
             if (!Directory.Exists(mdSubDir))
@@ -225,7 +226,7 @@ public class PackageComparer
                 Directory.CreateDirectory(mdSubDir);
             }
 
-            foreach (List<PrimitiveTypeComparison> cs in primitives.Values)
+            foreach (List<PrimitiveTypeComparison> cs in primitiveComparisons.Values)
             {
                 foreach (PrimitiveTypeComparison c in cs)
                 {
@@ -262,10 +263,11 @@ public class PackageComparer
         //    }
         //}
 
-        Dictionary<string, List<StructureComparison>> complexTypes = CompareStructures(_source.ComplexTypesByName, _target.ComplexTypesByName);
+        Dictionary<string, List<StructureComparison>> complexTypeComparisons = CompareStructures(_source.ComplexTypesByName, _target.ComplexTypesByName);
+        _crossVersion?.UpdateDataTypeMap(complexTypeComparisons);
         if (mdWriter != null)
         {
-            WriteComparisonOverview(mdWriter, "Complex Types", complexTypes);
+            WriteComparisonOverview(mdWriter, "Complex Types", complexTypeComparisons);
 
             string mdSubDir = Path.Combine(pageDir, "ComplexTypes");
             if (!Directory.Exists(mdSubDir))
@@ -273,7 +275,7 @@ public class PackageComparer
                 Directory.CreateDirectory(mdSubDir);
             }
 
-            foreach (List<StructureComparison> vcs in complexTypes.Values)
+            foreach (List<StructureComparison> vcs in complexTypeComparisons.Values)
             {
                 foreach (StructureComparison c in vcs)
                 {
@@ -294,13 +296,13 @@ public class PackageComparer
                     Directory.CreateDirectory(mapSubDir);
                 }
 
-                WriteStructureMaps(mapSubDir, complexTypes.Values.SelectMany(l => l.Select(s => s)));
+                WriteStructureMaps(mapSubDir, complexTypeComparisons.Values.SelectMany(l => l.Select(s => s)));
             }
 
             // write out the data type map
             if (_config.MapSaveStyle != ConfigCompare.ComparisonMapSaveStyle.None)
             {
-                WriteDataTypeMap(conceptMapDir, primitives, complexTypes);
+                WriteDataTypeMap(conceptMapDir, primitiveComparisons, complexTypeComparisons);
             }
         }
 
@@ -415,8 +417,8 @@ public class PackageComparer
             RightPackageId = _target.MainPackageId,
             RightPackageVersion = _target.MainPackageVersion,
             ValueSets = _vsComparisons,
-            PrimitiveTypes = primitives,
-            ComplexTypes = complexTypes,
+            PrimitiveTypes = primitiveComparisons,
+            ComplexTypes = complexTypeComparisons,
             Resources = resources,
             //LogicalModels = logical,
         };
@@ -483,7 +485,7 @@ public class PackageComparer
                 return;
             }
 
-            ConceptMap? cm = _crossVersion.GetSourceDataTypesConceptMap(primitiveTypes, complexTypes);
+            ConceptMap? cm = _crossVersion.DataTypeMap ?? _crossVersion.GetSourceDataTypesConceptMap(primitiveTypes, complexTypes);
             if (cm == null)
             {
                 return;
@@ -1631,14 +1633,14 @@ public class PackageComparer
         else if (messages.Count == 0)
         {
             message = keyInLeft
-                ? $"{_sourceRLiteral} type {typeName} maps as: {relationship} for {_targetRLiteral}"
-                : $"{_targetRLiteral} new type {typeName} maps as: {relationship} for {_sourceRLiteral}";
+                ? $"{_sourceRLiteral} type {typeName} maps as {relationship} for {_targetRLiteral}"
+                : $"{_targetRLiteral} new type {typeName} maps as {relationship} for {_sourceRLiteral}";
         }
         else
         {
             message = keyInLeft
-                ? $"{_sourceRLiteral} type {typeName} maps as: {relationship} for {_targetRLiteral} because {string.Join(" and ", messages)}"
-                : $"{_targetRLiteral} new type {typeName} maps as: {relationship} for {_sourceRLiteral} because {string.Join(" and ", messages)}";
+                ? $"{_sourceRLiteral} type {typeName} maps as {relationship} for {_targetRLiteral} because {string.Join(" and ", messages)}"
+                : $"{_targetRLiteral} new type {typeName} maps as {relationship} for {_sourceRLiteral} because {string.Join(" and ", messages)}";
 
         }
 
@@ -1983,14 +1985,14 @@ public class PackageComparer
         else if (messages.Count == 0)
         {
             message = keyInLeft
-                ? $"{_sourceRLiteral} element {edPath} maps as: {relationship} for {_targetRLiteral}"
-                : $"{_targetRLiteral} new element {edPath} maps as: {relationship} for {_sourceRLiteral}";
+                ? $"{_sourceRLiteral} element {edPath} maps as {relationship} for {_targetRLiteral}"
+                : $"{_targetRLiteral} new element {edPath} maps as {relationship} for {_sourceRLiteral}";
         }
         else
         {
             message = keyInLeft
-                ? $"{_sourceRLiteral} element {edPath} maps as: {relationship} for {_targetRLiteral} because {string.Join(" and ", messages)}"
-                : $"{_targetRLiteral} new element {edPath} maps as: {relationship} for {_sourceRLiteral} because {string.Join(" and ", messages)}";
+                ? $"{_sourceRLiteral} element {edPath} maps as {relationship} for {_targetRLiteral} because {string.Join(" and ", messages)}"
+                : $"{_targetRLiteral} new element {edPath} maps as {relationship} for {_sourceRLiteral} because {string.Join(" and ", messages)}";
         }
 
         // return our info
@@ -2416,7 +2418,7 @@ public class PackageComparer
                     {
                         foreach (ConceptMap.TargetElementComponent mapTargetElement in mapSourceElement.Target)
                         {
-                            CMR? relationship = GetDefaultRelationship(mapTargetElement, mapSourceElement.Target);
+                            CMR? relationship = mapTargetElement.Relationship ?? CMR.Equivalent;        // GetDefaultRelationship(mapTargetElement, mapSourceElement.Target);
                             string message = string.IsNullOrEmpty(mapTargetElement.Comment)
                                 ? MessageForConceptRelationship(relationship, mapSourceElement, mapTargetElement)
                                 : mapTargetElement.Comment;
@@ -2847,7 +2849,7 @@ public class PackageComparer
         {
             StructureInfoRec sourceInfo = GetInfo(sourceSd);
 
-            HashSet< string> testedTargetNames = [];
+            HashSet<string> testedTargetNames = [];
 
             if (!results.TryGetValue(sourceCode, out List<PrimitiveTypeComparison>? comparisons))
             {
@@ -2864,7 +2866,13 @@ public class PackageComparer
                     {
                         foreach (ConceptMap.TargetElementComponent mapTargetElement in mapSourceElement.Target)
                         {
-                            CMR? relationship = GetDefaultRelationship(mapTargetElement, mapSourceElement.Target);
+                            if (testedTargetNames.Contains(mapTargetElement.Code))
+                            {
+                                continue;
+                            }
+                            testedTargetNames.Add(mapTargetElement.Code);
+
+                            CMR? relationship = mapTargetElement.Relationship ?? CMR.Equivalent;        //  GetDefaultRelationship(mapTargetElement, mapSourceElement.Target);
                             string message = string.IsNullOrEmpty(mapTargetElement.Comment)
                                 ? MessageForPrimitiveRelationship(relationship, mapSourceElement, mapTargetElement)
                                 : mapTargetElement.Comment;
@@ -3372,6 +3380,9 @@ public class PackageComparer
 
         Dictionary<string, HashSet<string>> targetsMappedToSources = [];
 
+        // be optimistic
+        CMR elementRelationship = CMR.Equivalent;
+
         // traverse the source elements to do comparison tests
         foreach (ElementDefinition sourceEd in sourceElements.Values)
         {
@@ -3389,7 +3400,7 @@ public class PackageComparer
                     {
                         foreach (ConceptMap.TargetElementComponent mapTargetElement in mapSourceElement.Target)
                         {
-                            CMR? relationship = GetDefaultRelationship(mapTargetElement, mapSourceElement.Target);
+                            CMR relationship = mapTargetElement.Relationship ?? CMR.Equivalent;     //  GetDefaultRelationship(mapTargetElement, mapSourceElement.Target) ?? CMR.Equivalent;
                             string message = string.IsNullOrEmpty(mapTargetElement.Comment)
                                 ? MessageForElementRelationship(relationship, mapSourceElement, mapTargetElement)
                                 : mapTargetElement.Comment;
@@ -3405,12 +3416,10 @@ public class PackageComparer
 
                             if (targetElements.TryGetValue(mapTargetElement.Code, out ElementDefinition? targetElementFromMap))
                             {
-                                elementComparisonDetails.Add(new()
-                                {
-                                    Target = GetInfo(targetElementFromMap),
-                                    Relationship = relationship,
-                                    Message = message,
-                                });
+                                ElementComparisonDetails ecd = CompareElement(sourceEd, targetElementFromMap, mapTargetElement.Relationship);
+                                relationship = ApplyRelationship(relationship, ecd.Relationship);
+                                elementRelationship = ApplyRelationship(elementRelationship, relationship);
+                                elementComparisonDetails.Add(ecd);
                             }
                             else
                             {
@@ -3443,26 +3452,29 @@ public class PackageComparer
 
                 sourceElementPaths.Add(sourceKey);
 
-                // create a 'default' comparison state
-                elementComparisonDetails.Add(new()
-                {
-                    Target = GetInfo(targetElement),
-                    Relationship = CMR.Equivalent,
-                    Message = $"{_sourceRLiteral} `{sourceEd.Path}` is assumed equivalent to {_targetRLiteral} `{targetElement.Path}` (no map, but paths match)",
-                });
+                ElementComparisonDetails ecd = CompareElement(sourceEd, targetElement, CMR.Equivalent);
+                elementRelationship = ApplyRelationship(elementRelationship, ecd.Relationship);
+                elementComparisonDetails.Add(ecd);
+
+                //// create a 'default' comparison state
+                //elementComparisonDetails.Add(new()
+                //{
+                //    Target = GetInfo(targetElement),
+                //    Relationship = CMR.Equivalent,
+                //    Message = $"{_sourceRLiteral} `{sourceEd.Path}` is assumed equivalent to {_targetRLiteral} `{targetElement.Path}` (no map, but paths match)",
+                //});
             }
 
             ElementComparison cc = new()
             {
                 Source = sourceEdInfo,
                 TargetMappings = elementComparisonDetails,
-                Relationship = RelationshipForDetails(elementComparisonDetails),
+                Relationship = elementRelationship,         //  RelationshipForDetails(elementComparisonDetails),
                 Message = MessageForDetails(elementComparisonDetails, sourceEdInfo, targetSd),
             };
 
             elementComparisons.Add(sourceEd.Path, cc);
         }
-
 
         // check our target -> sources to see if we need to mark items as narrower
         foreach ((string targetPath, HashSet<string> sourceKeys) in targetsMappedToSources)
@@ -3492,7 +3504,7 @@ public class PackageComparer
                         Relationship = CMR.SourceIsNarrowerThanTarget,
                         Message = msg,
                         TargetMappings = ec.TargetMappings
-                            .Select(tc => tc.Target.Path != targetPath
+                            .Select(tc => tc.Target?.Path != targetPath
                                 ? tc
                                 : tc with
                                 {
@@ -3526,39 +3538,39 @@ public class PackageComparer
 
         string MessageForElementRelationship(CMR? r, ConceptMap.SourceElementComponent se, ConceptMap.TargetElementComponent te) => r switch
         {
-            null => $"{_sourceRLiteral} `{se.Code}` has no mapping into {_targetRLiteral} {targetSd.Url}.",
-            CMR.Equivalent => $"{_sourceRLiteral} `{se.Code}` is equivalent to {_targetRLiteral} `{te.Code}`.",
-            CMR.SourceIsBroaderThanTarget => $"{_sourceRLiteral} `{se.Code}` is broader than {_targetRLiteral} {te.Code} and requires mapping choice. `{se.Code}` maps to {string.Join(" and ", se.Target.Select(t => $"`{t.Code}`"))}.",
-            _ => $"{_sourceRLiteral} `{se.Code}` maps as {r} to the target {_targetRLiteral} `{te.Code}`.",
+            null => $"{_sourceRLiteral} {sourceSd.Name} `{se.Code}` has no mapping into {_targetRLiteral} {targetSd.Name}.",
+            CMR.Equivalent => $"{_sourceRLiteral} {sourceSd.Name} `{se.Code}` is equivalent to {_targetRLiteral} `{te.Code}`.",
+            CMR.SourceIsBroaderThanTarget => $"{_sourceRLiteral} {sourceSd.Name} `{se.Code}` is broader than {_targetRLiteral} {te.Code} and requires mapping choice. `{se.Code}` maps to {string.Join(" and ", se.Target.Select(t => $"`{t.Code}`"))}.",
+            _ => $"{_sourceRLiteral} {sourceSd.Name} `{se.Code}` maps as {r} to the target {_targetRLiteral} {targetSd.Name} `{te.Code}`.",
         };
 
-        CMR? RelationshipForDetails(List<ElementComparisonDetails> details) => details.Count switch
-        {
-            0 => CMR.NotRelatedTo,
-            1 => CMR.Equivalent,
-            _ => CMR.SourceIsBroaderThanTarget,
-        };
+        //CMR? RelationshipForDetails(List<ElementComparisonDetails> details) => details.Count switch
+        //{
+        //    0 => CMR.NotRelatedTo,
+        //    1 => CMR.Equivalent,
+        //    _ => CMR.SourceIsBroaderThanTarget,
+        //};
 
         string MessageForDetails(List<ElementComparisonDetails> details, ElementInfoRec sourceInfo, StructureDefinition targetSd) => details.Count switch
         {
-            0 => $"{_sourceRLiteral} `{sourceInfo.Path}` does not appear in the target and has no mapping for {targetSd.Url}.",
+            0 => $"{_sourceRLiteral} `{sourceInfo.Path}` does not appear in the target and has no mapping for `{targetSd.Name}`.",
             1 => details[0].Message,
-            _ => $"{_sourceRLiteral} `{sourceInfo.Path}` maps to multiple elements in {targetSd.Url}.",
+            _ => $"{_sourceRLiteral} `{sourceInfo.Path}` maps to multiple elements in `{targetSd.Name}`.",
         };
 
         string MessageForComparisonRelationship(CMR? r, StructureDefinition sourceSd, StructureDefinition targetSd) => r switch
         {
-            null => $"There is no mapping from {_sourceRLiteral} {sourceSd.Url} to {_targetRLiteral} {targetSd.Url}.",
-            CMR.Equivalent => $"{_sourceRLiteral} {sourceSd.Url} is equivalent to {_targetRLiteral} {targetSd.Url}.",
-            CMR.SourceIsBroaderThanTarget => $"{_sourceRLiteral} {sourceSd.Url} is broader than {_targetRLiteral} {targetSd.Url} and requires mapping choices for conversion.",
-            _ => $"{_sourceRLiteral} {sourceSd.Url} maps as {r} to {_targetRLiteral} {targetSd.Url}.",
+            null => $"There is no mapping from {_sourceRLiteral} `{sourceSd.Name}` to {_targetRLiteral} `{targetSd.Name}`.",
+            CMR.Equivalent => $"{_sourceRLiteral} `{sourceSd.Name}` is equivalent to {_targetRLiteral} `{targetSd.Name}`.",
+            CMR.SourceIsBroaderThanTarget => $"{_sourceRLiteral} `{sourceSd.Name}` is broader than {_targetRLiteral} `{targetSd.Name}` and requires mapping choices for conversion.",
+            _ => $"{_sourceRLiteral} `{sourceSd.Name}` maps as {r} to {_targetRLiteral} `{targetSd.Name}`.",
         };
 
         CMR? RelationshipForComparisons(Dictionary<string, ElementComparison> comparisons) => comparisons.Count switch
         {
             0 => CMR.NotRelatedTo,
             1 => comparisons.First().Value.Relationship,
-            _ => comparisons.All(kvp => IsEquivalentOrNotPresent(kvp.Value))
+            _ => comparisons.All(kvp => IsEquivalent(kvp.Value))
                 ? CMR.Equivalent
                 : comparisons.All(kvp => IsEquivalentOrBroader(kvp.Value))
                 ? CMR.SourceIsBroaderThanTarget
@@ -3567,9 +3579,7 @@ public class PackageComparer
                 : CMR.RelatedTo,
         };
 
-        bool IsEquivalentOrNotPresent(ElementComparison cc) =>
-            cc.Relationship == CMR.Equivalent ||
-            cc.TargetMappings.Count == 0;
+        bool IsEquivalent(ElementComparison cc) => cc.Relationship == CMR.Equivalent;
 
         bool IsEquivalentOrBroader(ElementComparison cc) =>
             cc.Relationship == CMR.Equivalent ||
@@ -3578,8 +3588,418 @@ public class PackageComparer
 
         bool IsEquivalentOrNarrower(ElementComparison cc) =>
             cc.Relationship == CMR.Equivalent ||
-            cc.Relationship == CMR.SourceIsNarrowerThanTarget ||
-            cc.TargetMappings.Count == 0;
+            cc.Relationship == CMR.SourceIsNarrowerThanTarget;
+    }
+
+    private ElementComparisonDetails CompareElement(
+        ElementDefinition sourceEd,
+        ElementDefinition? targetEd,
+        CMR? initialRelationship)
+    {
+        if (targetEd == null)
+        {
+            return new()
+            {
+                Target = null,
+                Relationship = null,
+                TypeComparisons = [],
+                Message = $"{_sourceRLiteral} `{sourceEd.Path}` does not exist in {_targetRLiteral} and no mapping is available.",
+            };
+        }
+
+        // be optimistic if we don't have a mapped value
+        CMR relationship = initialRelationship ?? CMR.Equivalent;
+
+        ElementInfoRec sourceInfo = GetInfo(sourceEd);
+        ElementInfoRec targetInfo = GetInfo(targetEd);
+
+        IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> sourceTypes = sourceEd.cgTypes();
+        IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> targetTypes = targetEd.cgTypes();
+
+        List<string> messages = [];
+
+        // check for optional becoming mandatory
+        if ((sourceInfo.MinCardinality == 0) && (targetInfo.MinCardinality != 0))
+        {
+            relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+            messages.Add($"{targetInfo.Name} made the element mandatory");
+        }
+
+        // check for source allowing fewer than destination requires
+        if (sourceInfo.MinCardinality < targetInfo.MinCardinality)
+        {
+            relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+            messages.Add($"{targetInfo.Name} increased the minimum cardinality from {sourceInfo.MinCardinality} to {targetInfo.MinCardinality}");
+        }
+
+        // check for element being constrained out
+        if ((sourceInfo.MaxCardinality != 0) && (targetInfo.MaxCardinality == 0))
+        {
+            relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+            messages.Add($"{targetInfo.Name} constrained the element out (max cardinality of 0)");
+        }
+
+        // check for changing from scalar to array
+        if ((sourceInfo.MaxCardinality == 1) && (targetInfo.MaxCardinality != 1))
+        {
+            relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+            messages.Add($"{targetInfo.Name} changed from scalar to array (max cardinality from {sourceInfo.MaxCardinalityString} to {targetInfo.MaxCardinalityString})");
+        }
+
+        // check for changing from array to scalar
+        if ((sourceInfo.MaxCardinality != 1) && (targetInfo.MaxCardinality == 1))
+        {
+            relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+            messages.Add($"{targetInfo.Name} changed from array to scalar (max cardinality from {sourceInfo.MaxCardinalityString} to {targetInfo.MaxCardinalityString})");
+        }
+
+        // check for source allowing more than destination allows
+        if ((targetInfo.MaxCardinality != -1) &&
+            (sourceInfo.MaxCardinality > targetInfo.MaxCardinality))
+        {
+            relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+            messages.Add($"{targetInfo.Name} allows more repetitions (max cardinality from {sourceInfo.MaxCardinalityString} to {targetInfo.MaxCardinalityString})");
+        }
+
+        // check to see if there was not a required binding and now there is
+        if ((sourceInfo.ValueSetBindingStrength != null) || (targetInfo.ValueSetBindingStrength != null))
+        {
+            if ((sourceInfo.ValueSetBindingStrength != BindingStrength.Required) && (targetInfo.ValueSetBindingStrength == BindingStrength.Required))
+            {
+                relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+
+                if (sourceInfo.ValueSetBindingStrength == null)
+                {
+                    messages.Add($"{targetInfo.Name} added a required binding to {targetInfo.BindingValueSet}");
+                }
+                else
+                {
+                    messages.Add($"{targetInfo.Name} made the binding required (from {sourceInfo.ValueSetBindingStrength}) for {targetInfo.BindingValueSet}");
+                }
+            }
+            else if (sourceInfo.ValueSetBindingStrength != targetInfo.ValueSetBindingStrength)
+            {
+                relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+                if (sourceInfo.ValueSetBindingStrength == null)
+                {
+                    messages.Add($"{targetInfo.Name} added a binding requirement - {targetInfo.ValueSetBindingStrength} {targetInfo.BindingValueSet}");
+                }
+                else if (targetInfo.ValueSetBindingStrength == null)
+                {
+                    messages.Add($"{targetInfo.Name} removed a binding requirement - {sourceInfo.ValueSetBindingStrength} {sourceInfo.BindingValueSet}");
+                }
+                else
+                {
+                    messages.Add($"{targetInfo.Name} changed the binding strength from {sourceInfo.ValueSetBindingStrength} to {targetInfo.ValueSetBindingStrength}");
+                }
+            }
+
+            // check to see if we need to lookup a binding comparison
+            if ((sourceInfo.ValueSetBindingStrength == BindingStrength.Required) && (targetInfo.ValueSetBindingStrength == BindingStrength.Required))
+            {
+                // TODO(ginoc): For sanity right now, we assume that the value sets are from the matching releases
+                // at some point, we need to check specific versions in case there are explicit references
+
+                string unversionedLeft = sourceInfo.BindingValueSet.Split('|')[0];
+                string unversionedRight = targetInfo.BindingValueSet.Split('|')[0];
+
+                // if there is a code type, we need to perform a code-only comparison
+                if (sourceTypes.ContainsKey("code"))
+                {
+                    // look for the value set comparison
+                    if (TryGetVsComparison(unversionedLeft, unversionedRight, out ValueSetComparison? boundVsInfo))
+                    {
+                        // we are okay with equivalent and narrower
+                        if (boundVsInfo.Relationship == CMR.Equivalent ||
+                            boundVsInfo.Relationship == CMR.SourceIsNarrowerThanTarget)
+                        {
+                            relationship = ApplyRelationship(relationship, (CMR)boundVsInfo.Relationship);
+                            messages.Add($"{targetInfo.Name} has compatible required binding for code type: {sourceInfo.BindingValueSet} and {targetInfo.BindingValueSet} ({boundVsInfo.Relationship})");
+                        }
+
+                        // check to see if the codes are the same but the systems are different (ok in codes)
+                        else if (boundVsInfo.ConceptComparisons.Values.All(cc => cc.TargetMappings.Any(tc => tc.Target.Code == cc.Source.Code)))
+                        {
+                            relationship = ApplyRelationship(relationship, CMR.Equivalent);
+                            messages.Add($"{targetInfo.Name} has compatible required binding for code type: {sourceInfo.BindingValueSet} and {targetInfo.BindingValueSet} (codes match, though systems are different)");
+                        }
+                        else
+                        {
+                            relationship = ApplyRelationship(relationship, boundVsInfo.Relationship);
+                            messages.Add($"{targetInfo.Name} has INCOMPATIBLE required binding for code type: {sourceInfo.BindingValueSet} and {targetInfo.BindingValueSet}");
+                        }
+                    }
+                    else if (_exclusionSet.Contains(unversionedRight))
+                    {
+                        relationship = ApplyRelationship(relationship, CMR.Equivalent);
+                        messages.Add($"{targetInfo.Name} using {unversionedRight} is exempted and assumed equivalent");
+                    }
+                    else
+                    {
+                        relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+                        messages.Add($"({targetInfo.Name} failed to compare required binding of {sourceInfo.BindingValueSet} and {targetInfo.BindingValueSet})");
+                    }
+                }
+
+                // if there are any non-code types, we need to perform a code+system comparison
+                if (sourceTypes.Any(t => t.Key != "code"))
+                {
+                    // check for same value set (non-code type)
+                    if (TryGetVsComparison(unversionedLeft, unversionedRight, out ValueSetComparison? boundVsInfo))
+                    {
+                        if ((boundVsInfo.Relationship == CMR.Equivalent) ||
+                            (boundVsInfo.Relationship == CMR.SourceIsNarrowerThanTarget))
+                        {
+                            // we are okay with equivalent and narrower
+                            relationship = ApplyRelationship(relationship, (CMR)boundVsInfo.Relationship);
+                            messages.Add($"{targetInfo.Name} has compatible required binding for non-code type: {sourceInfo.BindingValueSet} and {targetInfo.BindingValueSet} ({boundVsInfo.Relationship})");
+                        }
+                        else
+                        {
+                            relationship = ApplyRelationship(relationship, boundVsInfo.Relationship);
+                            messages.Add($"{targetInfo.Name} has INCOMPATIBLE required binding for code type: {sourceInfo.BindingValueSet} and {targetInfo.BindingValueSet}");
+                        }
+                    }
+                    else if (_exclusionSet.Contains(unversionedRight))
+                    {
+                        relationship = ApplyRelationship(relationship, CMR.Equivalent);
+                        messages.Add($"{targetInfo.Name} using {unversionedRight} is exempted and assumed equivalent");
+                    }
+                    else
+                    {
+                        relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+                        messages.Add($"({targetInfo.Name} failed to compare required binding of {sourceInfo.BindingValueSet} and {targetInfo.BindingValueSet})");
+                    }
+                }
+            }
+        }
+
+        // perform element type comparison
+        Dictionary<string, ElementTypeComparison> etComparisons = CompareElementTypes(sourceInfo, targetInfo);
+
+        // process our type comparisons and promote messages
+        foreach (ElementTypeComparison etc in etComparisons.Values)
+        {
+            // skip equivalent types
+            if (etc.Relationship == CMR.Equivalent)
+            {
+                continue;
+            }
+
+            relationship = ApplyRelationship(relationship, etc.Relationship);
+            messages.Add($"{targetInfo.Name} has change due to type change: {etc.Message}");
+        }
+
+
+        return new()
+        {
+            Target = targetInfo,
+            Relationship = relationship,
+            TypeComparisons = etComparisons,
+            Message = $"{_sourceRLiteral} `{sourceEd.Path}` maps as {relationship} to {_targetRLiteral} `{targetInfo.Path}`"
+                + (messages.Count == 0 ? string.Empty : (" - " + string.Join("; ", messages))),
+        };
+    }
+
+    private Dictionary<string, ElementTypeComparison> CompareElementTypes(
+        ElementInfoRec sourceInfo,
+        ElementInfoRec? targetInfo)
+    {
+        if (targetInfo == null)
+        {
+            // do not bother with comparing against a target that does not exist
+            return [];
+        }
+
+        Dictionary<string, ElementTypeComparison> results = [];
+
+        Dictionary<string, ConceptMap.SourceElementComponent> dataTypeMaps =
+            _crossVersion?.DataTypeMap?.Group.FirstOrDefault()?.Element.ToDictionary(e => e.Code) ?? [];
+
+        HashSet<string> usedTargetTypes = [];
+
+        List<string> elementMessages = [];
+
+        // traverse source types
+        foreach ((string sourceTypeName, ElementTypeInfoRec sourceTypeInfo) in sourceInfo.Types)
+        {
+            ElementTypeInfoRec? targetTypeInfo = null;
+
+            // get any type mappings for this source type
+            Dictionary<string, List<(string typeName, CMR? relationship, string comment)>> mappedTargetTypes = [];
+
+            if (dataTypeMaps.TryGetValue(sourceTypeName, out ConceptMap.SourceElementComponent? sourceMap))
+            {
+                foreach (ConceptMap.TargetElementComponent tec in sourceMap.Target)
+                {
+                    if (mappedTargetTypes.TryGetValue(tec.Code, out List<(string typeName, CMR? relationship, string comment)>? mttList))
+                    {
+                        mttList.Add((tec.Code, tec.Relationship, tec.Comment));
+                    }
+                    else
+                    {
+                        mappedTargetTypes.Add(tec.Code, [(tec.Code, tec.Relationship, tec.Comment)]);
+                    }
+                }
+            }
+
+            //Dictionary<string, (string typeName, CMR? relationship, string comment)> mappedTargetTypes = dataTypeMaps.TryGetValue(sourceTypeName, out ConceptMap.SourceElementComponent? sourceMap)
+            //    ? sourceMap.Target.ToDictionary(t => t.Code, t => (t.Code, t.Relationship, t.Comment))
+            //    : [];
+
+            // if there is no type mapping, check for a direct match
+            if ((mappedTargetTypes.Count == 0) &&
+                (!targetInfo.Types.TryGetValue(sourceTypeName, out targetTypeInfo)))
+            {
+                string msg = $"{_sourceRLiteral} type {sourceTypeName} does not exist in {_targetRLiteral}";
+                elementMessages.Add(msg);
+
+                // this type cannot be mapped
+                results.Add(sourceTypeName, new()
+                {
+                    Source = sourceTypeInfo,
+                    TargetTypes = [],
+                    Relationship = CMR.SourceIsBroaderThanTarget,
+                    Message = msg,
+                });
+
+                continue;
+            }
+
+            // be optimistic
+            CMR sourceTypeRelationship = CMR.Equivalent;
+
+            if (targetTypeInfo != null)
+            {
+                string msg = $"{_targetRLiteral} {targetTypeInfo.Name} is assumed equivalent to {_sourceRLiteral} {sourceTypeInfo.Name}";
+
+                // be optimistic if we don't have a mapped relationship
+                mappedTargetTypes.Add(targetTypeInfo.Name, [(targetTypeInfo.Name, CMR.Equivalent, msg)]);
+            }
+
+            List<ElementTypeComparisonDetails> details = [];
+
+            // traverse possible target types
+            foreach ((string targetTypeName, CMR? typeRelationship, string comment) in mappedTargetTypes.Values.SelectMany(v => v))
+            {
+                if (!targetInfo.Types.TryGetValue(targetTypeName, out targetTypeInfo))
+                {
+                    // hope another valid type exists
+                    continue;
+                }
+
+                _ = usedTargetTypes.Add(targetTypeName);
+
+                List<string> addedProfiles = [];
+                List<string> removedProfiles = [];
+
+                HashSet<string> scratch = targetTypeInfo.Profiles.ToHashSet();
+
+                foreach (string sp in sourceTypeInfo.Profiles)
+                {
+                    if (scratch.Contains(sp))
+                    {
+                        scratch.Remove(sp);
+                        continue;
+                    }
+
+                    removedProfiles.Add(sp);
+                }
+
+                addedProfiles.AddRange(scratch);
+
+                List<string> addedTargets = [];
+                List<string> removedTargets = [];
+
+                scratch = targetTypeInfo.TargetProfiles.ToHashSet();
+
+                foreach (string sp in sourceTypeInfo.TargetProfiles)
+                {
+                    if (scratch.Contains(sp))
+                    {
+                        scratch.Remove(sp);
+                        continue;
+                    }
+
+                    removedTargets.Add(sp);
+                }
+
+                addedTargets.AddRange(scratch);
+
+                // be optimistic if we don't have a mapped relationship
+                CMR relationship = typeRelationship ?? CMR.Equivalent;
+                List<string> typeMessages = [];
+
+                if (addedProfiles.Any())
+                {
+                    relationship = ApplyRelationship(relationship, CMR.SourceIsNarrowerThanTarget);
+                    typeMessages.Add($"{targetTypeInfo.Name} added profiles: {string.Join(", ", addedProfiles)}");
+                }
+
+                if (removedProfiles.Any())
+                {
+                    relationship = ApplyRelationship(relationship, CMR.SourceIsBroaderThanTarget);
+                    typeMessages.Add($"{targetTypeInfo.Name} removed profiles: {string.Join(", ", removedProfiles)}");
+                }
+
+                if (addedTargets.Any())
+                {
+                    relationship = ApplyRelationship(relationship, CMR.SourceIsNarrowerThanTarget);
+                    typeMessages.Add($"{targetTypeInfo.Name} added target profiles: {string.Join(", ", addedTargets)}");
+                }
+
+                if (removedTargets.Any())
+                {
+                    relationship = ApplyRelationship(relationship, CMR.SourceIsBroaderThanTarget);
+                    typeMessages.Add($"{targetTypeInfo.Name} removed target profiles: {string.Join(", ", removedTargets)}");
+                }
+
+                // apply our ending relationship to the next level up
+                sourceTypeRelationship = ApplyRelationship(sourceTypeRelationship, relationship);
+
+                // add our details
+                details.Add(new ()
+                {
+                    Target = targetTypeInfo,
+                    Relationship = relationship,
+                    Message = comment + (typeMessages.Count == 0 ? string.Empty : $" - {string.Join("; ", typeMessages)})"),
+                });
+            }
+
+            if (details.Count == 0)
+            {
+                string msg = $"{_sourceRLiteral} {sourceInfo.Name} {sourceTypeName} has no equivalent or mapped type in {_targetRLiteral} {targetInfo.Name}";
+                elementMessages.Add(msg);
+
+                //elementRelationship = ApplyRelationship(sourceTypeRelationship, CMR.SourceIsBroaderThanTarget);
+
+                // this type cannot be mapped
+                results.Add(sourceTypeName, new()
+                {
+                    Source = sourceTypeInfo,
+                    TargetTypes = [],
+                    Relationship = CMR.SourceIsBroaderThanTarget,
+                    Message = msg,
+                });
+
+                continue;
+            }
+
+            //elementRelationship = ApplyRelationship(sourceTypeRelationship, elementRelationship);
+
+            string eMsg = $"{_sourceRLiteral} `{sourceInfo.Name}` `{sourceTypeName}` maps as {sourceTypeRelationship} for {_targetRLiteral} `{targetInfo.Name}`";
+            elementMessages.Add(eMsg);
+
+            results.Add(sourceTypeName, new()
+            {
+                Source = sourceTypeInfo,
+                TargetTypes = details,
+                Relationship = sourceTypeRelationship,
+                Message = eMsg,
+            });
+        }
+
+        return results;
     }
 
     private Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> CompareStructures(

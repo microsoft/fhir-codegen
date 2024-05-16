@@ -19,6 +19,7 @@ using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using Microsoft.Health.Fhir.PackageManager;
+using Microsoft.OpenApi.Any;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 
 namespace Microsoft.Health.Fhir.CodeGen.CompareTool;
@@ -1237,5 +1238,292 @@ public class CrossVersionMapCollection
 
     public ConceptMap? ResourceTypeMap => _resourceTypeMap;
 
-    //public ConceptMap? ElementTypeMap(string sdName) => _elementConceptMaps.TryGetValue(sdName, out ConceptMap? cm) ? cm : null;
+    public void UpdateDataTypeMap(Dictionary<string, List<PrimitiveTypeComparison>> primitiveTypes)
+    {
+        string localConceptMapId = $"{_sourceRLiteral}-types-{_targetRLiteral}";
+        string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
+
+        string sourceUrl = BuildUrl("{0}/{1}/{2}", _sourcePackageCanonical, "ValueSet", "data-types");
+        string targetUrl = BuildUrl("{0}/{1}/{2}", _targetPackageCanonical, "ValueSet", "data-types");
+
+        string sourceCanonical = $"{sourceUrl}|{_sourcePackageVersion}";
+        string targetCanonical = $"{targetUrl}|{_targetPackageVersion}";
+
+        // check to see if we need to create a new concept map
+        if (!_dc.ConceptMapsByUrl.TryGetValue(localUrl, out ConceptMap? cm))
+        {
+            cm = new();
+
+            // update our info
+            cm.Id = localConceptMapId;
+            cm.Url = localUrl;
+            cm.Name = localConceptMapId;
+            cm.Title = GetConceptMapTitle("data types");
+
+            cm.SourceScope = new Canonical(sourceCanonical);
+            cm.TargetScope = new Canonical(targetCanonical);
+        }
+
+        if (cm.Group.Count == 0)
+        {
+            cm.Group.Add(new()
+            {
+                Source = sourceUrl,
+                Target = targetUrl,
+            });
+        }
+
+        ConceptMap.GroupComponent group = cm.Group[0];
+
+        HashSet<string> updatedTypes = [];
+
+        // traverse our group and update any primitive we find
+        foreach (ConceptMap.SourceElementComponent se in group.Element)
+        {
+            if (primitiveTypes.TryGetValue(se.Code, out List<PrimitiveTypeComparison>? comparisons))
+            {
+                updatedTypes.Add(se.Code);
+
+                if (comparisons.Count == 0)
+                {
+                    se.NoMap = true;
+                    se.Display = $"Primitive type {_sourceRLiteral} `{se.Code}` does not exist in {_targetRLiteral} and has no mappings.";
+                    continue;
+                }
+
+                List<ConceptMap.TargetElementComponent> targets = [];
+
+                foreach (PrimitiveTypeComparison c in comparisons.OrderBy(c => c.TargetTypeLiteral))
+                {
+                    if (c.Target == null)
+                    {
+                        Console.WriteLine($"Not adding {c.SourceTypeLiteral} - no target exists");
+                        continue;
+                    }
+
+                    targets.Add(new ConceptMap.TargetElementComponent()
+                    {
+                        Code = c.TargetTypeLiteral,
+                        Display = c.Target.Description,
+                        Relationship = c.Relationship,
+                        Comment = c.Message,
+                    });
+                }
+
+                if (targets.Count == 0)
+                {
+                    se.NoMap = true;
+                    se.Display = $"Primitive type {_sourceRLiteral} `{se.Code}` does not exist in {_targetRLiteral} and has no mappings.";
+                }
+                else
+                {
+                    se.Target = targets;
+                }
+            }
+        }
+
+        // traverse primitive types to add any missing records
+        foreach ((string key, List<PrimitiveTypeComparison> comparisons) in primitiveTypes.OrderBy(kvp => kvp.Key))
+        {
+            if (updatedTypes.Contains(key))
+            {
+                continue;
+            }
+
+            if (comparisons.Count == 0)
+            {
+                group.Element.Add(new()
+                {
+                    Code = key,
+                    Display = $"Primitive type {_sourceRLiteral} `{key}` does not exist in {_targetRLiteral} and has no mappings.",
+                    NoMap = true,
+                });
+
+                continue;
+            }
+
+            List<ConceptMap.TargetElementComponent> targets = [];
+
+            foreach (PrimitiveTypeComparison c in comparisons.OrderBy(c => c.TargetTypeLiteral))
+            {
+                if (c.Target == null)
+                {
+                    Console.WriteLine($"Not adding {c.SourceTypeLiteral} - no target exists");
+                    continue;
+                }
+
+                targets.Add(new ConceptMap.TargetElementComponent()
+                {
+                    Code = c.TargetTypeLiteral,
+                    Display = c.Target.Description,
+                    Relationship = c.Relationship,
+                    Comment = c.Message,
+                });
+            }
+
+            if (targets.Count == 0)
+            {
+                group.Element.Add(new()
+                {
+                    Code = key,
+                    Display = $"Primitive type {_sourceRLiteral} `{key}` does not exist in {_targetRLiteral} and has no mappings.",
+                    NoMap = true,
+                });
+
+                continue;
+            }
+
+            group.Element.Add(new()
+            {
+                Code = key,
+                Display = $"Primitive type {_sourceRLiteral} `{key}` maps to {string.Join(" and ", targets.Select(tm => $"`{tm.Code}`"))}.",
+                Target = targets,
+            });
+        }
+    }
+
+
+    public void UpdateDataTypeMap(Dictionary<string, List<StructureComparison>> complexTypes)
+    {
+        string localConceptMapId = $"{_sourceRLiteral}-types-{_targetRLiteral}";
+        string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
+
+        string sourceUrl = BuildUrl("{0}/{1}/{2}", _sourcePackageCanonical, "ValueSet", "data-types");
+        string targetUrl = BuildUrl("{0}/{1}/{2}", _targetPackageCanonical, "ValueSet", "data-types");
+
+        string sourceCanonical = $"{sourceUrl}|{_sourcePackageVersion}";
+        string targetCanonical = $"{targetUrl}|{_targetPackageVersion}";
+
+        // check to see if we need to create a new concept map
+        if (!_dc.ConceptMapsByUrl.TryGetValue(localUrl, out ConceptMap? cm))
+        {
+            cm = new();
+
+            // update our info
+            cm.Id = localConceptMapId;
+            cm.Url = localUrl;
+            cm.Name = localConceptMapId;
+            cm.Title = GetConceptMapTitle("data types");
+
+            cm.SourceScope = new Canonical(sourceCanonical);
+            cm.TargetScope = new Canonical(targetCanonical);
+        }
+
+        if (cm.Group.Count == 0)
+        {
+            cm.Group.Add(new()
+            {
+                Source = sourceUrl,
+                Target = targetUrl,
+            });
+        }
+
+        ConceptMap.GroupComponent group = cm.Group[0];
+
+        HashSet<string> updatedTypes = [];
+
+        // traverse our group and update any primitive we find
+        foreach (ConceptMap.SourceElementComponent se in group.Element)
+        {
+            if (complexTypes.TryGetValue(se.Code, out List<StructureComparison>? comparisons))
+            {
+                updatedTypes.Add(se.Code);
+
+                if (comparisons.Count == 0)
+                {
+                    se.NoMap = true;
+                    se.Display = $"Complex type {_sourceRLiteral} `{se.Code}` does not exist in {_targetRLiteral} and has no mappings.";
+                    continue;
+                }
+
+                List<ConceptMap.TargetElementComponent> targets = [];
+
+                foreach (StructureComparison c in comparisons.OrderBy(c => c.Target?.Name ?? c.CompositeName))
+                {
+                    if (c.Target == null)
+                    {
+                        Console.WriteLine($"Not adding {c.CompositeName} - no target exists");
+                        continue;
+                    }
+
+                    targets.Add(new ConceptMap.TargetElementComponent()
+                    {
+                        Code = c.Target.Name,
+                        Display = c.Target.Description,
+                        Relationship = c.Relationship,
+                        Comment = c.Message,
+                    });
+                }
+
+                if (targets.Count == 0)
+                {
+                    se.NoMap = true;
+                    se.Display = $"Complex type {_sourceRLiteral} `{se.Code}` does not exist in {_targetRLiteral} and has no mappings.";
+                }
+                else
+                {
+                    se.Target = targets;
+                }
+            }
+        }
+        
+        // traverse complex types to add any missing records
+        foreach ((string key, List<StructureComparison> comparisons) in complexTypes.OrderBy(kvp => kvp.Key))
+        {
+            if (updatedTypes.Contains(key))
+            {
+                continue;
+            }
+
+            if (comparisons.Count == 0)
+            {
+                group.Element.Add(new()
+                {
+                    Code = key,
+                    Display = $"Primitive type {_sourceRLiteral} `{key}` does not exist in {_targetRLiteral} and has no mappings.",
+                    NoMap = true,
+                });
+
+                continue;
+            }
+
+            List<ConceptMap.TargetElementComponent> targets = [];
+
+            foreach (StructureComparison c in comparisons.OrderBy(c => c.Target?.Name ?? c.CompositeName))
+            {
+                if (c.Target == null)
+                {
+                    Console.WriteLine($"Not adding {c.CompositeName} - no target exists");
+                    continue;
+                }
+
+                targets.Add(new ConceptMap.TargetElementComponent()
+                {
+                    Code = c.Target.Name,
+                    Display = c.Target.Description,
+                    Relationship = c.Relationship,
+                    Comment = c.Message,
+                });
+            }
+
+            if (targets.Count == 0)
+            {
+                group.Element.Add(new()
+                {
+                    Code = key,
+                    Display = $"Complex type {_sourceRLiteral} `{key}` does not exist in {_targetRLiteral} and has no mappings.",
+                    NoMap = true,
+                });
+
+                continue;
+            }
+
+            group.Element.Add(new()
+            {
+                Code = key,
+                Display = $"Complex type {_sourceRLiteral} `{key}` maps to {string.Join(" and ", targets.Select(tm => $"`{tm.Code}`"))}.",
+                Target = targets,
+            });
+        }
+    }
 }
