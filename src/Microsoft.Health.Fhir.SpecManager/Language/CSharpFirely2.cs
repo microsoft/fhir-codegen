@@ -3,6 +3,7 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 using System.IO;
+using Microsoft.Health.Fhir.SpecManager.Language.Firely;
 using Microsoft.Health.Fhir.SpecManager.Manager;
 using Ncqa.Cql.Model;
 
@@ -57,7 +58,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             /* Element has the special `id` element, that is both an attribute in the
              * XML serialization and is not using a FHIR primitive for representation. Consequently,
              * the generated CopyTo() and IsExact() methods diverge too much to be useful. */
-            "Element",
+            //"Element",
 
             /* Extension has the special `url` element, that is both an attribute in the
              * XML serialization and is not using a FHIR primitive for representation. Consequently,
@@ -366,7 +367,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>Gets the FHIR primitive type map.</summary>
         /// <value>The FHIR primitive type map.</value>
-        Dictionary<string, string> ILanguage.FhirPrimitiveTypeMap => CSharpFirelyCommon.PrimitiveTypeMap;
+        Dictionary<string, string> ILanguage.FhirPrimitiveTypeMap => CSharpFirelyCommon.FhirPrimitiveTypeMap;
 
         /// <summary>Gets the reserved words.</summary>
         /// <value>The reserved words.</value>
@@ -1984,53 +1985,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         private WrittenElementInfo BuildCodedElementInfo(FhirElement element)
         {
-            bool hasDefinedEnum = true;
-
-            if ((element.BindingStrength != "required") ||
-                (!_info.TryGetValueSet(element.ValueSet, out FhirValueSet vs)) ||
-                _exclusionSet.Contains(vs.URL) ||
-                (_codedElementOverrides.Contains(element.Path) && _info.FhirSequence >= FhirPackageCommon.FhirSequenceEnum.R4)
-                )
-            {
-                hasDefinedEnum = false;
-                vs = null;
-            }
-
-            string codeLiteral;
-            string enumClass;
-            string optional;
-            string pascal = FhirUtils.ToConvention(element.Name, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
-
-            if (hasDefinedEnum)
-            {
-                string vsClass = _writtenValueSets[vs.URL].ClassName;
-                string vsName = _writtenValueSets[vs.URL].ValueSetName;
-
-                if (string.IsNullOrEmpty(vsClass))
-                {
-                    codeLiteral = $"Code<{Namespace}.{vsName}>";
-                    enumClass = $"{Namespace}.{vsName}";
-                }
-                else
-                {
-                    codeLiteral = $"Code<{Namespace}.{vsClass}.{vsName}>";
-                    enumClass = $"{Namespace}.{vsClass}.{vsName}";
-
-                    if (vsName.ToUpperInvariant() == pascal.ToUpperInvariant())
-                    {
-                        throw new InvalidOperationException($"Using the name '{pascal}' for the property would lead to a compiler error. " +
-                            $"Change the name of the valueset '{vs.URL}' by adapting the _enumNamesOverride variable in the generator and rerun.");
-                    }
-                }
-
-                optional = "?";
-            }
-            else
-            {
-                codeLiteral = $"{Namespace}.Code";
-                enumClass = "string";
-                optional = string.Empty;
-            }
 
 
             bool isList = element.CardinalityMax != 1;
@@ -2045,14 +1999,14 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 IsChoice = element.Name.Contains("[x]", StringComparison.Ordinal),
                 PrimitiveHelperName = pascal,
                 PrimitiveHelperType = $"{enumClass}{optional}",
-                IsPrimitive = true, // All coded elements are either Code or Code<T> - so primitives
+                IsFhirPrimitive = true, // All coded elements are either Code or Code<T> - so primitives
                 IsCodedEnum = hasDefinedEnum
             };
 
             return ei;
         }
 
-        private void BuildFhirElementAttribute(string name, string summary, string isModifier, FhirElement element, string choice, string fiveWs, string since = null, (string, string)? until = null, string? xmlSerialization = null)
+        private void BuildFhirElementAttribute(string name, string summary, string isModifier, FhirElement element, string choice, string fiveWs, string since = null, (string, string)? until = null, string xmlSerialization = null)
         {
             var xmlser = xmlSerialization is null ? null : $", XmlSerialization = XmlRepresentation.{xmlSerialization}";
             string attributeText = $"[FhirElement(\"{name}\"{xmlser}{summary}{isModifier}, Order={GetOrder(element)}{choice}{fiveWs}";
@@ -2225,88 +2179,132 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             };
         }
 
-        private WrittenElementInfo BuildElementInfo(string exportedComplexName, FhirElement element)
+        private PrimitiveTypeReference BuildTypeReferenceForCode(FhirElement element)
         {
-            string type;
-            var name = element.Name.Replace("[x]", string.Empty);
+            bool hasDefinedEnum = true;
 
-            if (!string.IsNullOrEmpty(element.BaseTypeName))
+            if ((element.BindingStrength != "required") ||
+                (!_info.TryGetValueSet(element.ValueSet, out FhirValueSet vs)) ||
+                _exclusionSet.Contains(vs.URL) ||
+                (_codedElementOverrides.Contains(element.Path) && _info.FhirSequence >= FhirPackageCommon.FhirSequenceEnum.R4)
+               )
             {
-                type = element.BaseTypeName;
-            }
-            else if (element.ElementTypes.Count == 1)
-            {
-                type = element.ElementTypes.First().Value.Name;
-            }
-            else
-            {
-                type = "DataType";
+                return PrimitiveTypeReference.GetTypeReference("code");
             }
 
-            // Elements of type Code or Code<T> have their own naming/types, so handle those separately.
-            if (type == "code")
-                return BuildCodedElementInfo(element);
+            string codeLiteral;
+            string enumClass;
+            string optional;
 
-            /* This is an exception - we want to share Meta across different FHIR versions,
-             * so we use the "most common" type to the versions, which
-             * is uri rather than the more specific canonical. */
-            if (element.Path == "Meta.profile")
+            if (hasDefinedEnum)
             {
-                type = "uri";
-            }
+                string vsClass = _writtenValueSets[vs.URL].ClassName;
+                string vsName = _writtenValueSets[vs.URL].ValueSetName;
 
-            bool isPrimitive = false;
-
-            if (type.Contains('.'))
-            {
-                type = BuildTypeFromPath(type);
-            }
-
-            string nativeType = type;
-            string optional = string.Empty;
-
-            if (CSharpFirelyCommon.PrimitiveTypeMap.ContainsKey(nativeType))
-            {
-                nativeType = CSharpFirelyCommon.PrimitiveTypeMap[nativeType];
-
-                if (IsNullable(nativeType))
+                if (string.IsNullOrEmpty(vsClass))
                 {
-                    optional = "?";
+                    codeLiteral = $"Code<{Namespace}.{vsName}>";
+                    enumClass = $"{Namespace}.{vsName}";
+                }
+                else
+                {
+                    codeLiteral = $"Code<{Namespace}.{vsClass}.{vsName}>";
+                    enumClass = $"{Namespace}.{vsClass}.{vsName}";
+
+                    string pascal = FhirUtils.ToConvention(element.Name, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
+                    if (string.Equals(vsName, pascal, StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        throw new InvalidOperationException($"Using the name '{pascal}' for the property would lead to a compiler error. " +
+                                                            $"Change the name of the valueset '{vs.URL}' by adapting the _enumNamesOverride variable in the generator and rerun.");
+                    }
                 }
 
-                isPrimitive = true;
+                optional = "?";
             }
-            else
-            {
-                nativeType = $"{Namespace}.{type}";
-            }
+        }
 
-            if (CSharpFirelyCommon.TypeNameMappings.ContainsKey(type))
-            {
-                type = CSharpFirelyCommon.TypeNameMappings[type];
-            }
-            else
-            {
-                type = FhirUtils.SanitizedToConvention(type, FhirTypeBase.NamingConvention.PascalCase);
-            }
-
-            WrittenElementInfo ei;
+        private TypeReference DetermineTypeReferenceForFhirElement(FhirElement element)
+        {
+            var typeRef = determineTypeReferenceForFhirElementName();
             bool isList = element.CardinalityMax != 1;
+
+            return isList ? new ListType(typeRef) : typeRef;
+
+            TypeReference determineTypeReferenceForFhirElementName()
+            {
+                if (element.Path is "Meta.profile")
+                {
+                    /* we want to share Meta across different FHIR versions,
+                    * so we use the "most common" type to the versions, which
+                    * is uri rather than the more specific canonical. */
+                    return PrimitiveTypeReference.GetTypeReference("uri");
+                }
+
+                if (element.Path is "Element.id" or "Extension.url")
+                {
+                    /* these two properties formally use a CQL primitive (at least,
+                    * that's how they are encoded in the structuredefinition. */
+                    return CqlTypeReference.SystemString;
+                }
+
+                var initialTypeName = getTypeNameFromElement(element);
+
+                // Elements that use multiple datatypes are of type DataType
+                // TODO: Probably need the list of types later to be able to render the
+                // AllowedTypes.
+                if (initialTypeName == "DataType")
+                    return new ChoiceTypeReference();
+
+                // Elements of type Code or Code<T> have their own naming/types, so handle those separately.
+                if (initialTypeName == "code")
+                    return BuildTypeReferenceForCode(element);
+
+                if (PrimitiveTypeReference.IsFhirPrimitiveType(initialTypeName))
+                    return PrimitiveTypeReference.GetTypeReference(initialTypeName);
+
+                // Otherwise, this is a "normal" name for a complex type.
+                return new ComplexTypeReference(initialTypeName, getPocoNameForComplexTypeReference(initialTypeName));
+
+                static string getTypeNameFromElement(FhirElement element)
+                {
+                    if (!string.IsNullOrEmpty(element.BaseTypeName))
+                        return element.BaseTypeName;
+
+                    return element.ElementTypes.Count == 1
+                        ? element.ElementTypes.First().Value.Name
+                        : "DataType";
+                }
+
+                string getPocoNameForComplexTypeReference(string name)
+                {
+                    return name.Contains('.')
+                        ? BuildTypeNameForNestedComplexType(name)
+                        : TypeReference.MapTypeName(name);
+                }
+            }
+        }
+
+        private WrittenElementInfo BuildElementInfo(string exportedComplexName, FhirElement element)
+        {
+            var typeRef = DetermineTypeReferenceForFhirElement(element);
+
+            if (typeRef is CodedTypeReference)
+                return BuildCodedElementInfo(element);
+
+            var name = element.Name.Replace("[x]", string.Empty);
             string pascal = FhirUtils.ToConvention(name, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
 
-            ei = new WrittenElementInfo()
+            return new WrittenElementInfo()
             {
                 FhirElementName = name,
-                PropertyName = isPrimitive ? $"{pascal}Element" : pascal,
-                PropertyType = isList ? $"List<{Namespace}.{type}>" : $"{Namespace}.{type}",
-                ElementType = $"{Namespace}.{type}",
-                IsList = isList,
-                IsChoice = element.Name.Contains("[x]", StringComparison.Ordinal),
-                IsPrimitive = isPrimitive,
-                PrimitiveHelperName = isPrimitive ? (pascal == exportedComplexName ? $"{pascal}_" : pascal) : null,              // Since properties cannot have the same name as their enclosing types, we'll add a '_' suffix if this happens.
-                PrimitiveHelperType = isPrimitive ? nativeType + optional : null
+                PropertyName = typeRef is PrimitiveTypeReference ? $"{pascal}Element" : pascal,
+                PropertyType = typeRef,
+                PrimitiveHelperName =
+                    typeRef is PrimitiveTypeReference
+                        ? (pascal == exportedComplexName ? $"{pascal}_" : pascal)
+                        : null, // Since properties cannot have the same name as their enclosing types, we'll add a '_' suffix if this happens.
+                PrimitiveHelperType = isFhirPrimitive ? nativeType + optional : null
             };
-            return ei;
         }
 
         private void writeElementGettersAndSetters(FhirElement element, WrittenElementInfo ei)
@@ -2338,7 +2336,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLine(string.Empty);
             }
 
-            if (ei.IsPrimitive)
+            if (ei.IsFhirPrimitive)
             {
                 WriteIndentedComment(element.ShortDescription);
                 _writer.WriteLineIndented($"/// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>");
@@ -2396,7 +2394,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Builds type from path.</summary>
         /// <param name="type">The type.</param>
         /// <returns>A string.</returns>
-        private string BuildTypeFromPath(string type)
+        private string BuildTypeNameForNestedComplexType(string type)
         {
             // TODO: the following renames (repairs) should be removed when release 4B is official and there is an
             //   explicitname in the definition for attributes:
@@ -2668,9 +2666,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 exportName = primitive.NameForExport(FhirTypeBase.NamingConvention.PascalCase);
             }
 
-            if (CSharpFirelyCommon.PrimitiveTypeMap.ContainsKey(primitive.Name))
+            if (CSharpFirelyCommon.FhirPrimitiveTypeMap.ContainsKey(primitive.Name))
             {
-                typeName = CSharpFirelyCommon.PrimitiveTypeMap[primitive.Name];
+                typeName = CSharpFirelyCommon.FhirPrimitiveTypeMap[primitive.Name];
             }
             else
             {
@@ -2759,16 +2757,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented($"get {{ return ({typeName})ObjectValue; }}");
                 _writer.WriteLineIndented("set { ObjectValue = value; OnPropertyChanged(\"Value\"); }");
                 CloseScope();
-
-                /* Generate validator for simple string-based values that have a regex to validate them.
-                 * Skip validator for some types for which we have more performant, hand-written validators.
-                 */
-                //if (!string.IsNullOrEmpty(primitive.ValidationRegEx) &&
-                //    exportName != "FhirString" && exportName != "FhirUri" && exportName != "Markdown")
-                //{
-                //    _writer.WriteLineIndented("public static bool IsValidValue(string value) => Regex.IsMatch(value, \"^\" + PATTERN + \"$\", RegexOptions.Singleline);");
-                //    _writer.WriteLine(string.Empty);
-                //}
 
                 // close class
                 CloseScope();
@@ -3008,14 +2996,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         {
             internal string FhirElementName;
             internal string PropertyName;
-            internal string PropertyType;
-            internal bool IsPrimitive;
+            internal TypeReference PropertyType;
             internal string PrimitiveHelperName;
             internal string PrimitiveHelperType;
-            internal bool IsList;
             internal bool IsChoice;
-            internal string ElementType;
-            internal bool IsCodedEnum;
         }
 
         /// <summary>Information about the written model.</summary>

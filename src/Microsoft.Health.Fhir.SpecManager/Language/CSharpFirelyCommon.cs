@@ -11,7 +11,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
     internal static class CSharpFirelyCommon
     {
         /// <summary>Dictionary mapping FHIR primitive types to language equivalents (see Template-Model.tt#1252).</summary>
-        public static readonly Dictionary<string, string> PrimitiveTypeMap = new Dictionary<string, string>()
+        public static readonly Dictionary<string, string> FhirPrimitiveTypeMap = new()
         {
             { "base64Binary", "byte[]" },
             { "boolean", "bool?" },

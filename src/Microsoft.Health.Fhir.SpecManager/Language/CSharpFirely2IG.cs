@@ -208,7 +208,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         /// <summary>Gets the FHIR primitive type map.</summary>
         /// <value>The FHIR primitive type map.</value>
-        Dictionary<string, string> ILanguage.FhirPrimitiveTypeMap => CSharpFirelyCommon.PrimitiveTypeMap;
+        Dictionary<string, string> ILanguage.FhirPrimitiveTypeMap => CSharpFirelyCommon.FhirPrimitiveTypeMap;
 
         /// <summary>Gets the reserved words.</summary>
         /// <value>The reserved words.</value>
@@ -3024,7 +3024,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 type = BuildTypeFromPath(type);
             }
 
-            if (CSharpFirelyCommon.PrimitiveTypeMap.ContainsKey(type))
+            if (CSharpFirelyCommon.FhirPrimitiveTypeMap.ContainsKey(type))
             {
                 noElement = false;
             }
