@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Utility;
 using Microsoft.Extensions.Logging;
@@ -77,7 +78,7 @@ public class CrossVersionMapCollection
     private ConceptMap? _resourceTypeMap = null;
     //private Dictionary<string, ConceptMap> _elementConceptMaps = [];
 
-    private Dictionary<string, FhirStructureMap> _structureMapsByCompositeName = [];
+    private Dictionary<string, FhirStructureMap> _fmlByCompositeName = [];
 
     public CrossVersionMapCollection(
         IFhirPackageClient cache,
@@ -196,7 +197,7 @@ public class CrossVersionMapCollection
         return false;
     }
 
-    private bool TryLoadSourceConceptMaps(string crossRepoPath)
+    internal bool TryLoadSourceConceptMaps(string crossRepoPath)
     {
         Console.WriteLine($"Loading fhir-cross-version-source concept maps for conversion from {_sourceRLiteral} to {_targetRLiteral}...");
 
@@ -228,7 +229,7 @@ public class CrossVersionMapCollection
         return true;
     }
 
-    private bool TryLoadOfficialConceptMaps(string fhirCrossRepoPath)
+    internal bool TryLoadOfficialConceptMaps(string fhirCrossRepoPath)
     {
         Console.WriteLine($"Loading fhir-cross-version concept maps for conversion from {_sourceRLiteral} to {_targetRLiteral}...");
 
@@ -255,7 +256,7 @@ public class CrossVersionMapCollection
         return true;
     }
 
-    private bool TryLoadOfficialStructureMaps(string fhirCrossRepoPath)
+    internal bool TryLoadOfficialStructureMaps(string fhirCrossRepoPath)
     {
         Console.WriteLine($"Loading fhir-cross-version structure maps for conversion from {_sourceRLiteral} to {_targetRLiteral}...");
 
@@ -268,7 +269,7 @@ public class CrossVersionMapCollection
         // files have different styles in each directory, but we want all FML files anyway
         string[] files = Directory.GetFiles(path, $"*.fml", SearchOption.TopDirectoryOnly);
 
-        FhirMappingLanguage fml = new();
+        FhirMappingLanguage fmlParser = new();
 
         foreach (string filename in files)
         {
@@ -276,7 +277,7 @@ public class CrossVersionMapCollection
             {
                 string fmlContent = File.ReadAllText(filename);
 
-                if (!fml.TryParse(fmlContent, out FhirStructureMap? sm))
+                if (!fmlParser.TryParse(fmlContent, out FhirStructureMap? fml))
                 {
                     Console.WriteLine($"Error loading {filename}: could not parse");
                     continue;
@@ -285,7 +286,7 @@ public class CrossVersionMapCollection
                 // extract the name root
                 string name;
 
-                if (sm.MetadataByPath.TryGetValue("name", out MetadataDeclaration? nameMeta))
+                if (fml.MetadataByPath.TryGetValue("name", out MetadataDeclaration? nameMeta))
                 {
                     name = nameMeta.Literal?.ValueAsString ?? throw new Exception($"Cross-version structure maps require a metadata name property: {filename}");
                 }
@@ -301,12 +302,11 @@ public class CrossVersionMapCollection
 
                 if (name.Equals("primitives", StringComparison.OrdinalIgnoreCase))
                 {
-                    // handle the primitive type map
+                    // skip primitive type map - we have that information internally already
+                    continue;
                 }
-                else
-                {
-                    _structureMapsByCompositeName.Add($"{_sourceRLiteral}-{name}-{_targetRLiteral}-{name}", sm);
-                }
+
+                _fmlByCompositeName.Add($"{_sourceRLiteral}-{name}-{_targetRLiteral}-{name}", fml);
             }
             catch (Exception ex)
             {
@@ -317,6 +317,138 @@ public class CrossVersionMapCollection
         return true;
     }
 
+    public record class FmlTargetInfo
+    {
+        public required GroupExpression FhirMappingExpression { get; init; }
+        public bool IsSimpleCopy { get; init; } = false;
+        public bool HasTransform { get; init; } = false;
+        public string TransformName { get; init; } = string.Empty;
+        public string TranslateReference {  get; init; } = string.Empty;
+        public string TranslateType {  get; init; } = string.Empty;
+    }
+
+    public static void ProcessCrossVersionFml(string name, FhirStructureMap fml, Dictionary<string, Dictionary<string, FmlTargetInfo>> fmlPathLookup)
+    {
+        if (fml.GroupsByName.Count == 0)
+        {
+            throw new Exception($"Cannot process FML for {name} - no groups found!");
+        }
+
+        if (!fml.GroupsByName.TryGetValue(name, out GroupDeclaration? group))
+        {
+            throw new Exception($"Cannot process FML for {name} - group {name} is not found");
+        }
+
+        string groupSourceVar = string.Empty;
+        string groupTargetVar = string.Empty;
+
+        // parse out the source and target names from the group
+        foreach (GroupParameter gp in group.Parameters)
+        {
+            switch (gp.InputMode)
+            {
+                case StructureMap.StructureMapInputMode.Source:
+                    groupSourceVar = gp.Identifier;
+                    break;
+
+                case StructureMap.StructureMapInputMode.Target:
+                    groupTargetVar = gp.Identifier;
+                    break;
+            }
+        }
+
+        if (string.IsNullOrEmpty(groupSourceVar) || string.IsNullOrEmpty(groupTargetVar))
+        {
+            throw new Exception("Failed to parse group parameters");
+        }
+
+        int groupSourceVarLen = groupSourceVar.Length;
+        int groupTargetVarLen = groupTargetVar.Length;
+
+        // iterate over expressions in this group
+        foreach (GroupExpression exp in group.Expressions)
+        {
+            if (exp.SimpleCopyExpression != null)
+            {
+                string sourceName = exp.SimpleCopyExpression.Source.StartsWith(groupSourceVar, StringComparison.Ordinal)
+                    ? exp.SimpleCopyExpression.Source[(groupSourceVarLen + 1)..]
+                    : exp.SimpleCopyExpression.Source;
+
+                string targetName = exp.SimpleCopyExpression.Target.StartsWith(groupTargetVar, StringComparison.Ordinal)
+                    ? exp.SimpleCopyExpression.Target[(groupTargetVarLen + 1)..]
+                    : exp.SimpleCopyExpression.Target;
+
+                if (!fmlPathLookup.TryGetValue(sourceName, out Dictionary<string, FmlTargetInfo>? expsByTarget))
+                {
+                    expsByTarget = [];
+                    fmlPathLookup.Add(sourceName, expsByTarget);
+                }
+
+                expsByTarget.Add(targetName, new()
+                {
+                    FhirMappingExpression = exp,
+                    IsSimpleCopy = true,
+                });
+            }
+
+            if (exp.MappingExpression != null)
+            {
+                foreach (FmlExpressionSource source in exp.MappingExpression.Sources)
+                {
+                    string sourceName = source.Identifier.StartsWith(groupSourceVar, StringComparison.Ordinal)
+                        ? source.Identifier[(groupSourceVarLen + 1)..]
+                        : source.Identifier;
+
+                    if (!fmlPathLookup.TryGetValue(sourceName, out Dictionary<string, FmlTargetInfo>? expsByTarget))
+                    {
+                        expsByTarget = [];
+                        fmlPathLookup.Add(sourceName, expsByTarget);
+                    }
+
+                    foreach (FmlExpressionTarget target in exp.MappingExpression.Targets)
+                    {
+                        string targetName = target.Identifier.StartsWith(groupTargetVar, StringComparison.Ordinal)
+                            ? target.Identifier[(groupTargetVarLen + 1)..]
+                            : target.Identifier;
+
+                        // extract dependent expressions
+
+                        string transformName = target.Transform?.Invocation?.Identifier ?? string.Empty;
+
+                        switch (transformName)
+                        {
+                            case "translate":
+                                expsByTarget[targetName] = new()
+                                {
+                                    FhirMappingExpression = exp,
+                                    HasTransform = target.Transform != null,
+                                    TransformName = transformName,
+                                    TranslateReference = ((target.Transform?.Invocation?.Parameters.Count ?? 0) > 1)
+                                        ? target.Transform!.Invocation!.Parameters[1]!.Literal?.ValueAsString ?? string.Empty
+                                        : string.Empty,
+                                    TranslateType = ((target.Transform?.Invocation?.Parameters.Count ?? 0) > 2)
+                                        ? target.Transform!.Invocation!.Parameters[2]!.Literal?.ValueAsString ?? string.Empty
+                                        : string.Empty,
+                                };
+                                break;
+
+                            default:
+                                expsByTarget[targetName] = new()
+                                {
+                                    FhirMappingExpression = exp,
+                                    HasTransform = target.Transform != null,
+                                    TransformName = transformName,
+                                };
+                                break;
+                        }
+
+
+                    }
+
+                }
+            }
+        }
+    }
 
 
     private bool TryLoadOfficialConceptMaps(string fhirCrossRepoPath, string key)

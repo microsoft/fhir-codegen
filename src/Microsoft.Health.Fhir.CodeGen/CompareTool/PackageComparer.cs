@@ -39,6 +39,7 @@ using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using System.Security.AccessControl;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification;
+using System.Collections.Frozen;
 
 namespace Microsoft.Health.Fhir.CodeGen.CompareTool;
 

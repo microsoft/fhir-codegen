@@ -27,15 +27,6 @@ internal static class ComparisonUtils
     internal static string ForMdTable(this string value) => string.IsNullOrEmpty(value) ? string.Empty : value.Replace("|", "\\|").Replace("\n", "<br/>").Replace("\r", "<br/>");
 }
 
-public record class SerializationMapInfo
-{
-    public required string Source { get; init; }
-    public required string Target { get; init; }
-    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship Relationship { get; init; }
-    public required string Message { get; init; }
-}
-
-
 public record class ComparisonBase
 {
     public required CMR? Relationship { get; init; }
