@@ -178,7 +178,6 @@ internal static class VisitorUtilities
         _ => tn?.Text ?? string.Empty,
     };
 
-
     internal static dynamic? GetValue(ParserRuleContext? c) => c?.Stop.Type switch
     {
         null => null,

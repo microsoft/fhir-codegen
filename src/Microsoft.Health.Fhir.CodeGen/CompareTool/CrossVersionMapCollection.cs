@@ -325,6 +325,7 @@ public class CrossVersionMapCollection
         public string TransformName { get; init; } = string.Empty;
         public string TranslateReference {  get; init; } = string.Empty;
         public string TranslateType {  get; init; } = string.Empty;
+        public bool IsComplexTransform { get; init; } = false;
     }
 
     public static void ProcessCrossVersionFml(string name, FhirStructureMap fml, Dictionary<string, Dictionary<string, FmlTargetInfo>> fmlPathLookup)
@@ -339,6 +340,16 @@ public class CrossVersionMapCollection
             throw new Exception($"Cannot process FML for {name} - group {name} is not found");
         }
 
+        ProcessCrossVersionGroup(fml, name, name, group, fmlPathLookup);
+    }
+
+    private static void ProcessCrossVersionGroup(
+        FhirStructureMap fml,
+        string sourcePrefix,
+        string targetPrefix,
+        GroupDeclaration group,
+        Dictionary<string, Dictionary<string, FmlTargetInfo>> fmlPathLookup)
+    {
         string groupSourceVar = string.Empty;
         string groupTargetVar = string.Empty;
 
@@ -378,6 +389,10 @@ public class CrossVersionMapCollection
                     ? exp.SimpleCopyExpression.Target[(groupTargetVarLen + 1)..]
                     : exp.SimpleCopyExpression.Target;
 
+                // add our current name prefix
+                sourceName = $"{sourcePrefix}.{sourceName}";
+                targetName = $"{targetPrefix}.{targetName}";
+
                 if (!fmlPathLookup.TryGetValue(sourceName, out Dictionary<string, FmlTargetInfo>? expsByTarget))
                 {
                     expsByTarget = [];
@@ -389,6 +404,8 @@ public class CrossVersionMapCollection
                     FhirMappingExpression = exp,
                     IsSimpleCopy = true,
                 });
+
+                continue;
             }
 
             if (exp.MappingExpression != null)
@@ -398,6 +415,9 @@ public class CrossVersionMapCollection
                     string sourceName = source.Identifier.StartsWith(groupSourceVar, StringComparison.Ordinal)
                         ? source.Identifier[(groupSourceVarLen + 1)..]
                         : source.Identifier;
+
+                    // add our current name prefix
+                    sourceName = $"{sourcePrefix}.{sourceName}";
 
                     if (!fmlPathLookup.TryGetValue(sourceName, out Dictionary<string, FmlTargetInfo>? expsByTarget))
                     {
@@ -411,7 +431,8 @@ public class CrossVersionMapCollection
                             ? target.Identifier[(groupTargetVarLen + 1)..]
                             : target.Identifier;
 
-                        // extract dependent expressions
+                        // add our current name prefix
+                        targetName = $"{targetPrefix}.{targetName}";
 
                         string transformName = target.Transform?.Invocation?.Identifier ?? string.Empty;
 
@@ -433,20 +454,41 @@ public class CrossVersionMapCollection
                                 break;
 
                             default:
+                                //if (!string.IsNullOrEmpty(transformName))
+                                //{
+                                //    Console.Write("");
+                                //}
                                 expsByTarget[targetName] = new()
                                 {
                                     FhirMappingExpression = exp,
                                     HasTransform = target.Transform != null,
                                     TransformName = transformName,
+                                    IsComplexTransform = !string.IsNullOrEmpty(transformName),
                                 };
                                 break;
                         }
 
-
+                        // try to nest into a dependent expression if there is one
+                        if (exp.MappingExpression.DependentExpression != null)
+                        {
+                            foreach (FmlInvocation dependentInvocation in exp.MappingExpression.DependentExpression.Invocations)
+                            {
+                                string fnName = dependentInvocation.Identifier;
+                                if (fml.GroupsByName.TryGetValue(fnName, out GroupDeclaration? dependentGroup))
+                                {
+                                    ProcessCrossVersionGroup(fml, sourceName, targetName, dependentGroup, fmlPathLookup);
+                                }
+                            }
+                        }
                     }
 
                 }
+
+                continue;
             }
+
+            Console.Write("");
+
         }
     }
 

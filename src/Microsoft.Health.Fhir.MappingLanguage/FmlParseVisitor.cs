@@ -472,7 +472,7 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                     StopIndex = targetContext.transform().Stop.StopIndex,
                 },
                 Invocation = ExtractInvocation(targetContext.invocation()),
-                Alias = GetString(targetContext.alias()),
+                Alias = targetContext.alias().children[^1] is ITerminalNode tn ? GetString(tn) : null,
                 TargetListModeLiteral = targetListMode?.v,
                 TargetListMode = targetListMode == null ? null : GetEnum<StructureMap.StructureMapTargetListMode>(targetListMode?.v),
 
