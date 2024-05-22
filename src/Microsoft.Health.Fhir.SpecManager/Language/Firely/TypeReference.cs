@@ -2,6 +2,7 @@
 
 namespace Microsoft.Health.Fhir.SpecManager.Language.Firely
 {
+
     public abstract record TypeReference(string Name)
     {
         public abstract string PropertyTypeString { get; }
@@ -44,8 +45,24 @@ namespace Microsoft.Health.Fhir.SpecManager.Language.Firely
                 ? tr
                 : throw new InvalidOperationException($"Unknown FHIR primitive {name}");
 
-        public string ConveniencePropertyTypeString =>
-            ConveniencePropertyType.Name + (ConveniencePropertyType.IsValueType ? "?" : "");
+        public virtual string ConveniencePropertyTypeString =>
+            AliasCsName(ConveniencePropertyType) + (ConveniencePropertyType.IsValueType ? "?" : "");
+
+        private static string AliasCsName(Type csType)
+        {
+            // This isn't complete, but good enough for now.
+            return csType.Name switch
+            {
+                "String" => "string",
+                "Boolean" => "bool",
+                "Decimal" => "decimal",
+                "Int32" => "int",
+                "Int64" => "long",
+                "Byte[]" => "byte[]",
+                "DateTimeOffset" => "DateTimeOffset",
+                var other => $"System.{other}"
+            };
+        }
 
         public override string PropertyTypeString => $"Hl7.Fhir.Model.{PocoTypeName}";
     }
@@ -69,9 +86,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language.Firely
     public record ChoiceTypeReference() : ComplexTypeReference("DataType", "DataType");
 
     public record CodedTypeReference(string EnumName, string? EnumClassName)
-        : PrimitiveTypeReference("code", EnumName, typeof(Enum));
+        : PrimitiveTypeReference("code", EnumName, typeof(Enum))
+    {
+        public override string PropertyTypeString => $"Code<{EnumNameString}>";
 
-    public record ListType(TypeReference Element) : TypeReference("List")
+        public override string ConveniencePropertyTypeString => EnumNameString + "?";
+
+        private string EnumNameString => EnumClassName is not null ?
+            $"Hl7.Fhir.Model.{EnumClassName}.{EnumName}" : $"Hl7.Fhir.Model.{EnumName}";
+    }
+
+    public record ListTypeReference(TypeReference Element) : TypeReference("List")
     {
         public override string PropertyTypeString => $"List<{Element.PropertyTypeString}>";
     }

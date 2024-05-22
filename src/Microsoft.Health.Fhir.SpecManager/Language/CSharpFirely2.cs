@@ -58,7 +58,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             /* Element has the special `id` element, that is both an attribute in the
              * XML serialization and is not using a FHIR primitive for representation. Consequently,
              * the generated CopyTo() and IsExact() methods diverge too much to be useful. */
-            //"Element",
+            "Element",
 
             /* Extension has the special `url` element, that is both an attribute in the
              * XML serialization and is not using a FHIR primitive for representation. Consequently,
@@ -1206,10 +1206,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     interfaces.Add("IIdentifiable<Identifier>");
             }
 
-            var primaryCodeElementInfo = isResource ? getPrimaryCodedElementInfo(complex, exportName) : null;
+            WrittenElementInfo primaryCodeElementInfo = isResource ? getPrimaryCodedElementInfo(complex, exportName) : null;
 
             if (primaryCodeElementInfo is not null)
-                interfaces.Add($"ICoded<{primaryCodeElementInfo.PropertyType}>");
+                interfaces.Add($"ICoded<{primaryCodeElementInfo.PropertyType.PropertyTypeString}>");
 
             string modifierElementName = complex.Elements.Keys.SingleOrDefault(k => k.EndsWith(".modifierExtension", StringComparison.InvariantCulture));
             if (modifierElementName != null)
@@ -1288,7 +1288,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             if (primaryCodeElementInfo is not null)
             {
-                _writer.WriteLineIndented($"{primaryCodeElementInfo.PropertyType} ICoded<{primaryCodeElementInfo.PropertyType}>.Code {{ get => {primaryCodeElementInfo.PropertyName}; set => {primaryCodeElementInfo.PropertyName} = value; }}");
+                _writer.WriteLineIndented($"{primaryCodeElementInfo.PropertyType.PropertyTypeString} " +
+                                          $"ICoded<{primaryCodeElementInfo.PropertyType.PropertyTypeString}>.Code " +
+                                          $"{{ get => {primaryCodeElementInfo.PropertyName}; " +
+                                          $"set => {primaryCodeElementInfo.PropertyName} = value; }}");
                 _writer.WriteLineIndented($"IEnumerable<Coding> ICoded.ToCodings() => {primaryCodeElementInfo.PropertyName}.ToCodings();");
                 _writer.WriteLine(string.Empty);
             }
@@ -1379,7 +1382,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
 
-        private string NullCheck(WrittenElementInfo info) => info.PropertyName + (!info.IsList ? " is not null" : "?.Any() == true");
+        private string NullCheck(WrittenElementInfo info) =>
+            info.PropertyName +
+            (info.PropertyType is not ListTypeReference ? " is not null" : "?.Any() == true");
 
         private void WriteDictionaryPairs(IEnumerable<WrittenElementInfo> exportedElements)
         {
@@ -1458,7 +1463,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             foreach (WrittenElementInfo info in exportedElements)
             {
-                if (info.IsList)
+                if (info.PropertyType is ListTypeReference)
                 {
                     _writer.WriteLineIndented(
                         $"foreach (var elem in {info.PropertyName})" +
@@ -1470,7 +1475,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 {
                     // A long time ago we decided that in this function, XHtml
                     // is returned as a FHIR string, so that's what we need to do.
-                    var yr = info.FhirElementName switch
+                    string yr = info.FhirElementName switch
                     {
                         "div" => $"new FhirString({info.PropertyName}.Value)",
                         _ => $"{info.PropertyName}"
@@ -1501,7 +1506,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             foreach (WrittenElementInfo info in exportedElements)
             {
-                if (info.IsList)
+                if (info.PropertyType is ListTypeReference)
                 {
                     _writer.WriteLineIndented(
                         $"foreach (var elem in {info.PropertyName})" +
@@ -1606,17 +1611,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             foreach (WrittenElementInfo info in exportedElements)
             {
-                if (info.IsList)
+                if (info.PropertyType is ListTypeReference)
                 {
                     _writer.WriteLineIndented(
                         $"if({info.PropertyName} != null)" +
-                            $" dest.{info.PropertyName} = new {info.PropertyType}({info.PropertyName}.DeepCopy());");
+                            $" dest.{info.PropertyName} = new {info.PropertyType.PropertyTypeString}({info.PropertyName}.DeepCopy());");
                 }
                 else
                 {
                     _writer.WriteLineIndented(
                         $"if({info.PropertyName} != null)" +
-                            $" dest.{info.PropertyName} = ({info.PropertyType}){info.PropertyName}.DeepCopy();");
+                            $" dest.{info.PropertyName} = ({info.PropertyType.PropertyTypeString}){info.PropertyName}.DeepCopy();");
                 }
             }
 
@@ -1983,29 +1988,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
         }
 
-        private WrittenElementInfo BuildCodedElementInfo(FhirElement element)
-        {
-
-
-            bool isList = element.CardinalityMax != 1;
-
-            var ei = new WrittenElementInfo()
-            {
-                FhirElementName = element.Name.Replace("[x]", string.Empty),
-                PropertyName = $"{pascal}Element",
-                PropertyType = isList ? $"List<{codeLiteral}>" : codeLiteral,
-                ElementType = codeLiteral,
-                IsList = isList,
-                IsChoice = element.Name.Contains("[x]", StringComparison.Ordinal),
-                PrimitiveHelperName = pascal,
-                PrimitiveHelperType = $"{enumClass}{optional}",
-                IsFhirPrimitive = true, // All coded elements are either Code or Code<T> - so primitives
-                IsCodedEnum = hasDefinedEnum
-            };
-
-            return ei;
-        }
-
         private void BuildFhirElementAttribute(string name, string summary, string isModifier, FhirElement element, string choice, string fiveWs, string since = null, (string, string)? until = null, string xmlSerialization = null)
         {
             var xmlser = xmlSerialization is null ? null : $", XmlSerialization = XmlRepresentation.{xmlSerialization}";
@@ -2115,7 +2097,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 _writer.WriteLineIndented($"[DeclaredType(Type = typeof(Markdown), Since = FhirRelease.R5)]");
             }
 
-            if (ei.IsCodedEnum)
+            if (TryGetPrimitiveType(ei.PropertyType, out var ptr) && ptr is CodedTypeReference)
             {
                 _writer.WriteLineIndented("[DeclaredType(Type = typeof(Code))]");
             }
@@ -2181,10 +2163,8 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
         private PrimitiveTypeReference BuildTypeReferenceForCode(FhirElement element)
         {
-            bool hasDefinedEnum = true;
-
-            if ((element.BindingStrength != "required") ||
-                (!_info.TryGetValueSet(element.ValueSet, out FhirValueSet vs)) ||
+            if (element.BindingStrength != "required" ||
+                !_info.TryGetValueSet(element.ValueSet, out FhirValueSet vs) ||
                 _exclusionSet.Contains(vs.URL) ||
                 (_codedElementOverrides.Contains(element.Path) && _info.FhirSequence >= FhirPackageCommon.FhirSequenceEnum.R4)
                )
@@ -2192,35 +2172,24 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 return PrimitiveTypeReference.GetTypeReference("code");
             }
 
-            string codeLiteral;
-            string enumClass;
-            string optional;
+            string vsClass = _writtenValueSets[vs.URL].ClassName;
+            string vsName = _writtenValueSets[vs.URL].ValueSetName;
 
-            if (hasDefinedEnum)
+            if (string.IsNullOrEmpty(vsClass))
             {
-                string vsClass = _writtenValueSets[vs.URL].ClassName;
-                string vsName = _writtenValueSets[vs.URL].ValueSetName;
-
-                if (string.IsNullOrEmpty(vsClass))
-                {
-                    codeLiteral = $"Code<{Namespace}.{vsName}>";
-                    enumClass = $"{Namespace}.{vsName}";
-                }
-                else
-                {
-                    codeLiteral = $"Code<{Namespace}.{vsClass}.{vsName}>";
-                    enumClass = $"{Namespace}.{vsClass}.{vsName}";
-
-                    string pascal = FhirUtils.ToConvention(element.Name, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
-                    if (string.Equals(vsName, pascal, StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        throw new InvalidOperationException($"Using the name '{pascal}' for the property would lead to a compiler error. " +
-                                                            $"Change the name of the valueset '{vs.URL}' by adapting the _enumNamesOverride variable in the generator and rerun.");
-                    }
-                }
-
-                optional = "?";
+                return new CodedTypeReference(vsName, null);
             }
+
+            string pascal =
+                FhirUtils.ToConvention(element.Name, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
+            if (string.Equals(vsName, pascal, StringComparison.InvariantCultureIgnoreCase))
+            {
+                throw new InvalidOperationException(
+                    $"Using the name '{pascal}' for the property would lead to a compiler error. " +
+                    $"Change the name of the valueset '{vs.URL}' by adapting the _enumNamesOverride variable in the generator and rerun.");
+            }
+
+            return new CodedTypeReference(vsName, vsClass);
         }
 
         private TypeReference DetermineTypeReferenceForFhirElement(FhirElement element)
@@ -2228,7 +2197,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             var typeRef = determineTypeReferenceForFhirElementName();
             bool isList = element.CardinalityMax != 1;
 
-            return isList ? new ListType(typeRef) : typeRef;
+            return isList ? new ListTypeReference(typeRef) : typeRef;
 
             TypeReference determineTypeReferenceForFhirElementName()
             {
@@ -2284,110 +2253,132 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
         }
 
+        private static bool TryGetPrimitiveType(TypeReference tr, out PrimitiveTypeReference ptr)
+        {
+            if (tr is PrimitiveTypeReference p)
+            {
+                ptr = p;
+                return true;
+            }
+
+            if (tr is ListTypeReference { Element: PrimitiveTypeReference pltr })
+            {
+                ptr = pltr;
+                return true;
+            }
+
+            ptr = null;
+            return false;
+        }
+
         private WrittenElementInfo BuildElementInfo(string exportedComplexName, FhirElement element)
         {
             var typeRef = DetermineTypeReferenceForFhirElement(element);
 
-            if (typeRef is CodedTypeReference)
-                return BuildCodedElementInfo(element);
-
-            var name = element.Name.Replace("[x]", string.Empty);
+            string name = element.Name.Replace("[x]", string.Empty);
             string pascal = FhirUtils.ToConvention(name, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
+            bool forPrimitiveType = TryGetPrimitiveType(typeRef, out _);
 
-            return new WrittenElementInfo()
-            {
-                FhirElementName = name,
-                PropertyName = typeRef is PrimitiveTypeReference ? $"{pascal}Element" : pascal,
-                PropertyType = typeRef,
-                PrimitiveHelperName =
-                    typeRef is PrimitiveTypeReference
+            return new WrittenElementInfo(
+                FhirElementName: name,
+                PropertyName: forPrimitiveType ? $"{pascal}Element" : pascal,
+                PropertyType: typeRef,
+                PrimitiveHelperName: forPrimitiveType
                         ? (pascal == exportedComplexName ? $"{pascal}_" : pascal)
-                        : null, // Since properties cannot have the same name as their enclosing types, we'll add a '_' suffix if this happens.
-                PrimitiveHelperType = isFhirPrimitive ? nativeType + optional : null
-            };
+                        : null // Since properties cannot have the same name as their enclosing types, we'll add a '_' suffix if this happens.
+            );
         }
 
         private void writeElementGettersAndSetters(FhirElement element, WrittenElementInfo ei)
         {
             _writer.WriteLineIndented("[DataMember]");
 
-            if (!ei.IsList)
+            if (ei.PropertyType is not ListTypeReference)
             {
-                _writer.WriteLineIndented($"public {ei.PropertyType} {ei.PropertyName}");
+                _writer.WriteLineIndented($"public {ei.PropertyType.PropertyTypeString} {ei.PropertyName}");
 
                 OpenScope();
                 _writer.WriteLineIndented($"get {{ return _{ei.PropertyName}; }}");
                 _writer.WriteLineIndented($"set {{ _{ei.PropertyName} = value; OnPropertyChanged(\"{ei.PropertyName}\"); }}");
                 CloseScope();
 
-                _writer.WriteLineIndented($"private {ei.PropertyType} _{ei.PropertyName};");
+                _writer.WriteLineIndented($"private {ei.PropertyType.PropertyTypeString} _{ei.PropertyName};");
                 _writer.WriteLine(string.Empty);
             }
             else
             {
-                _writer.WriteLineIndented($"public {ei.PropertyType} {ei.PropertyName}");
+                _writer.WriteLineIndented($"public {ei.PropertyType.PropertyTypeString} {ei.PropertyName}");
 
                 OpenScope();
-                _writer.WriteLineIndented($"get {{ if(_{ei.PropertyName}==null) _{ei.PropertyName} = new {ei.PropertyType}(); return _{ei.PropertyName}; }}");
+                _writer.WriteLineIndented($"get {{ if(_{ei.PropertyName}==null) _{ei.PropertyName} =" +
+                                          $" new {ei.PropertyType.PropertyTypeString}(); return _{ei.PropertyName}; }}");
                 _writer.WriteLineIndented($"set {{ _{ei.PropertyName} = value; OnPropertyChanged(\"{ei.PropertyName}\"); }}");
                 CloseScope();
 
-                _writer.WriteLineIndented($"private {ei.PropertyType} _{ei.PropertyName};");
+                _writer.WriteLineIndented($"private {ei.PropertyType.PropertyTypeString} _{ei.PropertyName};");
                 _writer.WriteLine(string.Empty);
             }
 
-            if (ei.IsFhirPrimitive)
+            bool needsPrimitiveProperty = ei.PropertyType is
+                PrimitiveTypeReference or
+                ListTypeReference { Element: PrimitiveTypeReference };
+
+            if (!needsPrimitiveProperty)
             {
-                WriteIndentedComment(element.ShortDescription);
-                _writer.WriteLineIndented($"/// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>");
+                return;
+            }
 
-                _writer.WriteLineIndented("[IgnoreDataMember]");
+            WriteIndentedComment(element.ShortDescription);
+            _writer.WriteLineIndented($"/// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>");
 
-                if (!ei.IsList)
-                {
-                    _writer.WriteLineIndented($"public {ei.PrimitiveHelperType} {ei.PrimitiveHelperName}");
+            _writer.WriteLineIndented("[IgnoreDataMember]");
 
-                    OpenScope();
-                    _writer.WriteLineIndented($"get {{ return {ei.PropertyName} != null ? {ei.PropertyName}.Value : null; }}");
-                    _writer.WriteLineIndented("set");
-                    OpenScope();
+            if (ei.PropertyType is PrimitiveTypeReference ptr)
+            {
+                _writer.WriteLineIndented($"public {ptr.ConveniencePropertyTypeString} {ei.PrimitiveHelperName}");
 
-                    _writer.WriteLineIndented($"if (value == null)");
+                OpenScope();
+                _writer.WriteLineIndented($"get {{ return {ei.PropertyName} != null ? {ei.PropertyName}.Value : null; }}");
+                _writer.WriteLineIndented("set");
+                OpenScope();
 
-                    _writer.IncreaseIndent();
-                    _writer.WriteLineIndented($"{ei.PropertyName} = null;");
-                    _writer.DecreaseIndent();
-                    _writer.WriteLineIndented("else");
-                    _writer.IncreaseIndent();
-                    _writer.WriteLineIndented($"{ei.PropertyName} = new {ei.PropertyType}(value);");
-                    _writer.DecreaseIndent();
-                    _writer.WriteLineIndented($"OnPropertyChanged(\"{ei.PrimitiveHelperName}\");");
-                    CloseScope(suppressNewline: true);
-                    CloseScope();
-                }
-                else
-                {
-                    _writer.WriteLineIndented($"public IEnumerable<{ei.PrimitiveHelperType}> {ei.PrimitiveHelperName}");
+                _writer.WriteLineIndented($"if (value == null)");
 
-                    OpenScope();
-                    _writer.WriteLineIndented($"get {{ return {ei.PropertyName} != null ? {ei.PropertyName}.Select(elem => elem.Value) : null; }}");
-                    _writer.WriteLineIndented("set");
-                    OpenScope();
+                _writer.IncreaseIndent();
+                _writer.WriteLineIndented($"{ei.PropertyName} = null;");
+                _writer.DecreaseIndent();
+                _writer.WriteLineIndented("else");
+                _writer.IncreaseIndent();
+                _writer.WriteLineIndented($"{ei.PropertyName} = new {ei.PropertyType.PropertyTypeString}(value);");
+                _writer.DecreaseIndent();
+                _writer.WriteLineIndented($"OnPropertyChanged(\"{ei.PrimitiveHelperName}\");");
+                CloseScope(suppressNewline: true);
+                CloseScope();
+            }
+            else if(ei.PropertyType is ListTypeReference { Element: PrimitiveTypeReference lptr })
+            {
+                _writer.WriteLineIndented($"public IEnumerable<{lptr.ConveniencePropertyTypeString}> {ei.PrimitiveHelperName}");
 
-                    _writer.WriteLineIndented($"if (value == null)");
+                OpenScope();
+                _writer.WriteLineIndented($"get {{ return {ei.PropertyName} != null ? {ei.PropertyName}.Select(elem => elem.Value) : null; }}");
+                _writer.WriteLineIndented("set");
+                OpenScope();
 
-                    _writer.IncreaseIndent();
-                    _writer.WriteLineIndented($"{ei.PropertyName} = null;");
-                    _writer.DecreaseIndent();
-                    _writer.WriteLineIndented("else");
-                    _writer.IncreaseIndent();
-                    _writer.WriteLineIndented($"{ei.PropertyName} = new {ei.PropertyType}(value.Select(elem=>new {ei.ElementType}(elem)));");
-                    _writer.DecreaseIndent();
+                _writer.WriteLineIndented($"if (value == null)");
 
-                    _writer.WriteLineIndented($"OnPropertyChanged(\"{ei.PrimitiveHelperName}\");");
-                    CloseScope(suppressNewline: true);
-                    CloseScope();
-                }
+                _writer.IncreaseIndent();
+                _writer.WriteLineIndented($"{ei.PropertyName} = null;");
+                _writer.DecreaseIndent();
+                _writer.WriteLineIndented("else");
+                _writer.IncreaseIndent();
+                _writer.WriteLineIndented($"{ei.PropertyName} = " +
+                                          $"new {ei.PropertyType.PropertyTypeString}" +
+                                          $"(value.Select(elem=>new {lptr.PropertyTypeString}(elem)));");
+                _writer.DecreaseIndent();
+
+                _writer.WriteLineIndented($"OnPropertyChanged(\"{ei.PrimitiveHelperName}\");");
+                CloseScope(suppressNewline: true);
+                CloseScope();
             }
         }
 
@@ -2992,15 +2983,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         }
 
         /// <summary>Information about the written element.</summary>
-        private class WrittenElementInfo
-        {
-            internal string FhirElementName;
-            internal string PropertyName;
-            internal TypeReference PropertyType;
-            internal string PrimitiveHelperName;
-            internal string PrimitiveHelperType;
-            internal bool IsChoice;
-        }
+        private record WrittenElementInfo(
+            string FhirElementName,
+            string PropertyName,
+            TypeReference PropertyType,
+            string PrimitiveHelperName);
 
         /// <summary>Information about the written model.</summary>
         private struct WrittenModelInfo
