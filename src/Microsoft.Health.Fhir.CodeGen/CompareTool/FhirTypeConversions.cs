@@ -487,12 +487,12 @@ public class FhirTypeConversions
                         Message = "xhtml to xhtml is an exact match",
                     }
                 },
-                { "uri", new FhirTypeConversionInfoRec()
+                { "string", new FhirTypeConversionInfoRec()
                     {
-                        Source = "url",
-                        Target = "uri",
+                        Source = "xhtml",
+                        Target = "string",
                         Relationship = CMR.Equivalent,
-                        Message = "url (added R4) to uri is lossless because they are the same format",
+                        Message = "xhtml to string is lossless because strings can contain all XHTML data",
                     }
                 },
             }

@@ -256,7 +256,7 @@ public partial class FirelyNetIG : ILanguage
         }
 
         // need to process ValueSets so that we know which ones have enums
-        ProcessValueSets();
+        ProcessAndWriteValueSets();
 
         // write extension contents
         foreach (StructureDefinition sd in _info.ExtensionsByUrl.Values)
@@ -280,8 +280,9 @@ public partial class FirelyNetIG : ILanguage
     /// Essentially, it tracks manual exclusions and determines the
     /// correct namespace based on bindings.
     /// </summary>
-    private void ProcessValueSets()
+    private void ProcessAndWriteValueSets()
     {
+        HashSet<string> processedValueSets = [];
         Dictionary<string, HashSet<string>> usedEnumsByPackage = [];
 
         // traverse all versions of all value sets
@@ -301,35 +302,39 @@ public partial class FirelyNetIG : ILanguage
                     continue;
                 }
 
-                IEnumerable < StructureElementCollection> bindings = _info.AllBindingsForVs(unexpandedVs.Url);
-                Hl7.Fhir.Model.BindingStrength? strongestBinding = _info.StrongestBinding(bindings);
-
-                if (strongestBinding != Hl7.Fhir.Model.BindingStrength.Required)
+                if (processedValueSets.Contains(unexpandedVs.Url))
                 {
-                    /* Since required bindings cannot be extended, those are the only bindings that
-                       can be represented using enums in the POCO classes (using <c>Code&lt;T&gt;</c>). All other coded members
-                       use <c>Code</c>, <c>Coding</c> or <c>CodeableConcept</c>.
-                       Consequently, we only need to generate enums for valuesets that are used as
-                       required bindings anywhere in the data model. */
                     continue;
                 }
+
+                processedValueSets.Add(unexpandedVs.Url);
+
+                //IEnumerable<StructureElementCollection> bindings = _info.AllBindingsForVs(unexpandedVs.Url);
+                //Hl7.Fhir.Model.BindingStrength? strongestBinding = _info.StrongestBinding(bindings);
+
+                //if (strongestBinding != Hl7.Fhir.Model.BindingStrength.Required)
+                //{
+                //    /* Since required bindings cannot be extended, those are the only bindings that
+                //       can be represented using enums in the POCO classes (using <c>Code&lt;T&gt;</c>). All other coded members
+                //       use <c>Code</c>, <c>Coding</c> or <c>CodeableConcept</c>.
+                //       Consequently, we only need to generate enums for valuesets that are used as
+                //       required bindings anywhere in the data model. */
+                //    continue;
+                //}
 
                 if (!_info.TryExpandVs(unversionedUrl + "|" + vsVersion, out ValueSet? vs))
                 {
                     continue;
                 }
 
-                IEnumerable<string> referencedBy = bindings.cgExtractBaseTypes(_info);
+                //IEnumerable<string> referencedBy = bindings.cgExtractBaseTypes(_info);
 
-                string vsClassName = string.Empty;
+                //string vsClassName = string.Empty;
 
-                if ((referencedBy.Count() < 2) && !CSharpFirely2._explicitSharedValueSets.Contains((_info.FhirSequence.ToString(), vs.Url)))
-                {
-                    /* ValueSets that are used in a single POCO are generated as a nested enum inside that
-                     * POCO, not here in the shared valuesets */
-
-                    vsClassName = referencedBy.First();
-                }
+                //if ((referencedBy.Count() < 2) && !CSharpFirely2._explicitSharedValueSets.Contains((_info.FhirSequence.ToString(), vs.Url)))
+                //{
+                //    vsClassName = referencedBy.First();
+                //}
 
                 if (!_info.TryGetPackageSource(vs, out string packageId, out string packageVersion))
                 {
@@ -343,17 +348,22 @@ public partial class FirelyNetIG : ILanguage
                     usedEnumsByPackage.Add($"{packageId}#{packageVersion}", usedEnumNames);
                 }
 
-                ProcessValueSet(vs, vsClassName, usedEnumNames, packageId, packageVersion);
+                ProcessAndWriteValueSet(vs, usedEnumNames, packageId, packageVersion);
             }
         }
     }
 
-    private void ProcessValueSet(ValueSet vs, string className, HashSet<string> usedEnumNames, string packageId, string packageVersion)
+    private void ProcessAndWriteValueSet(
+        ValueSet vs,
+        //string className,
+        HashSet<string> usedEnumNames,
+        string packageId,
+        string packageVersion)
     {
-        if (_valueSetInfoByUrl.ContainsKey(vs.Url))
-        {
-            return;
-        }
+        //if (_valueSetInfoByUrl.ContainsKey(vs.Url))
+        //{
+        //    return;
+        //}
 
         string name = (vs.Name ?? vs.Id)
             .Replace(" ", string.Empty, StringComparison.Ordinal)
@@ -375,14 +385,22 @@ public partial class FirelyNetIG : ILanguage
 
         usedEnumNames.Add(nameSanitized);
 
-        // set our value set info
-        _valueSetInfoByUrl.Add(
-            vs.Url,
-            new CSharpFirely2.WrittenValueSetInfo()
-            {
-                ClassName = className,
-                ValueSetName = nameSanitized,
-            });
+        //IEnumerable<StructureElementCollection> bindings = _info.AllBindingsForVs(vs.Url);
+        //Hl7.Fhir.Model.BindingStrength? strongestBinding = _info.StrongestBinding(bindings);
+
+        //// check for required bindings
+        //if (strongestBinding == Hl7.Fhir.Model.BindingStrength.Required)
+        //{
+        //    // set our value set info
+        //    _valueSetInfoByUrl.Add(
+        //        vs.Url,
+        //        new CSharpFirely2.WrittenValueSetInfo()
+        //        {
+        //            ClassName = string.Empty,       // className,
+        //            ValueSetName = nameSanitized,
+        //        });
+
+        //}
 
         // do not write the value set if it is in a core package
         if (FhirPackageUtils.PackageIsFhirRelease(packageId))
@@ -393,8 +411,8 @@ public partial class FirelyNetIG : ILanguage
         PackageData packageData = GetPackageData(packageId, packageVersion);
 
         // build an updated name for the value set
-        string defaultName = $"Hl7.Fhir.Model.Extension.{nameSanitized}";
-        string fixedName = packageData.Namespace + "." + nameSanitized;
+        string defaultName = $"Hl7.Fhir.Model.ValueSet.{nameSanitized}";
+        string fixedName = packageData.Namespace + ".Vs" + nameSanitized;
 
         if (defaultName != fixedName)
         {
@@ -416,8 +434,10 @@ public partial class FirelyNetIG : ILanguage
             return;
         }
 
+        string vsName = "Vs" + nameSanitized;
+
         // get a writer for the value set
-        ExportStreamWriter writer = GetValueSetWriter(packageData);
+        ExportStreamWriter writer = GetValueSetWriter(packageData, vsName);
 
         IEnumerable<string> referencedCodeSystems = vs.cgReferencedCodeSystems();
         if (referencedCodeSystems.Count() == 1)
@@ -437,20 +457,24 @@ public partial class FirelyNetIG : ILanguage
                 $"(systems: {referencedCodeSystems.Count()})");
         }
 
-        string defaultSystem = concepts.Select(c => c.System)
-                        .GroupBy(c => c)
-                        .OrderByDescending(c => c.Count())
-                        .First().Key;
+        writer.WriteLineIndented($"public static class {vsName}");
+        writer.OpenScope();             // open class
 
-        writer.WriteLineIndented($"[FhirEnumeration(\"{name}\", \"{vs.Url}\", \"{defaultSystem}\")]");
+        //string defaultSystem = concepts.Select(c => c.System)
+        //                .GroupBy(c => c)
+        //                .OrderByDescending(c => c.Count())
+        //                .First().Key;
 
-        writer.WriteLineIndented($"public enum {nameSanitized}");
+        //writer.WriteLineIndented($"[FhirEnumeration(\"{name}\", \"{vs.Url}\", \"{defaultSystem}\")]");
 
-        OpenScope(writer);      // open enum
+        //writer.WriteLineIndented($"public enum {nameSanitized}");
+        //OpenScope(writer);      // open enum
+
+        List<string> switchStatements = [];
 
         HashSet<string> usedLiterals = [];
 
-        foreach (FhirConcept concept in concepts)
+        foreach (FhirConcept concept in concepts.OrderBy(c => c.Code))
         {
             string codeName = ConvertEnumValue(concept.Code);
             string codeValue = FhirSanitizationUtils.SanitizeForValue(concept.Code);
@@ -467,14 +491,14 @@ public partial class FirelyNetIG : ILanguage
 
             string display = FhirSanitizationUtils.SanitizeForValue(concept.Display);
 
-            if (concept.System != defaultSystem)
-            {
-                writer.WriteLineIndented($"[EnumLiteral(\"{codeValue}\", \"{concept.System}\"), Description(\"{display}\")]");
-            }
-            else
-            {
-                writer.WriteLineIndented($"[EnumLiteral(\"{codeValue}\"), Description(\"{display}\")]");
-            }
+            //if (concept.System != defaultSystem)
+            //{
+            //    writer.WriteLineIndented($"[EnumLiteral(\"{codeValue}\", \"{concept.System}\"), Description(\"{display}\")]");
+            //}
+            //else
+            //{
+            //    writer.WriteLineIndented($"[EnumLiteral(\"{codeValue}\"), Description(\"{display}\")]");
+            //}
 
             if (usedLiterals.Contains(codeName))
             {
@@ -493,10 +517,50 @@ public partial class FirelyNetIG : ILanguage
 
             usedLiterals.Add(codeName);
 
-            writer.WriteLineIndented($"{codeName},");
+            //writer.WriteLineIndented($"{codeName},");
+
+            if (string.IsNullOrEmpty(concept.Display))
+            {
+                writer.WriteLineIndented($"public static Hl7.Fhir.Model.Coding {codeName} => new Hl7.Fhir.Model.Coding(" +
+                    $"\"{concept.System}\", " +
+                    $"\"{concept.Code}\");");
+            }
+            else
+            {
+                writer.WriteLineIndented($"public static Hl7.Fhir.Model.Coding {codeName} => new Hl7.Fhir.Model.Coding(" +
+                    $"\"{concept.System}\", " +
+                    $"\"{concept.Code}\", " +
+                    $"\"{concept.Display}\");");
+            }
+
+            switchStatements.Add($"case (\"{concept.System}\", \"{concept.Code}\"): yield return c;");
         }
 
-        CloseScope(writer);     // close enum
+        // write utility functions
+        WriteIndentedComment(writer, "From a set of codes, return the ones from this value set.");
+        writer.WriteLineIndented("public static IEnumerable<Hl7.Fhir.Model.Coding> FilterForThisSet(IEnumerable<Hl7.Fhir.Model.Coding> values)");
+        OpenScope(writer);      // open function
+
+        writer.WriteLineIndented($"if (!values.Any) yield break;");
+        writer.WriteLineIndented($"foreach (Hl7.Fhir.Model.Coding c in values)");
+        OpenScope(writer);      // open foreach
+
+        writer.WriteLineIndented($"switch (c.System, c.Code)");
+        OpenScope(writer);      // open switch
+
+        foreach (string statement in switchStatements)
+        {
+            writer.WriteLineIndented(statement);
+        }
+
+        CloseScope(writer, suppressNewline: true);     // close switch
+        CloseScope(writer, suppressNewline: true);     // close foreach
+        CloseScope(writer, suppressNewline: true);     // close function
+        CloseScope(writer);     // close class
+
+        WriteNamespaceClose(writer);
+        WriteFooter(writer);
+        writer.Dispose();
     }
 
     private void WriteExtensionAccessors(
@@ -2710,12 +2774,12 @@ public partial class FirelyNetIG : ILanguage
         return writer;
     }
 
-    private ExportStreamWriter GetValueSetWriter(PackageData packageData)
+    private ExportStreamWriter GetValueSetWriter(PackageData packageData, string name)
     {
-        if (_valueSetWriters.TryGetValue(packageData.Key, out ExportStreamWriter? writer))
-        {
-            return writer;
-        }
+        //if (_valueSetWriters.TryGetValue(packageData.Key, out ExportStreamWriter? writer))
+        //{
+        //    return writer;
+        //}
 
         string directory = Path.Combine(_options.OutputDirectory, packageData.FolderName);
         if (!Directory.Exists(directory))
@@ -2723,20 +2787,31 @@ public partial class FirelyNetIG : ILanguage
             Directory.CreateDirectory(directory);
         }
 
-        string filename = Path.Combine(_options.OutputDirectory, packageData.FolderName, $"{_classNameValueSets}.cs");
+        //string filename = Path.Combine(_options.OutputDirectory, packageData.FolderName, $"{_classNameValueSets}.cs");
+        string filename = Path.Combine(_options.OutputDirectory, packageData.FolderName, $"{name}.cs");
 
         FileStream stream = new(filename, FileMode.Create);
-        writer = new ExportStreamWriter(stream);
-        _valueSetWriters[packageData.Key] = writer;
+        ExportStreamWriter? writer = new ExportStreamWriter(stream);
+        //_valueSetWriters[packageData.Key] = writer;
 
         WriteHeader(writer);
 
         WriteNamespaceOpen(writer, packageData.Namespace);
 
-        WriteIndentedComment(writer, $"ValueSet definitions and utility functions for the {packageData.Key} package");
+        //if (string.IsNullOrEmpty(name))
+        //{
+        //    WriteIndentedComment(writer, $"ValueSet definitions and utility functions for the {packageData.Key} package");
 
-        writer.WriteLineIndented($"public static class {_classNameValueSets}");
-        writer.OpenScope();
+        //    writer.WriteLineIndented($"public static class {_classNameValueSets}");
+        //}
+        //else
+        //{
+        //    WriteIndentedComment(writer, $"Definitions for the {name} ValueSet in the {packageData.Key} package");
+
+        //    writer.WriteLineIndented($"public static class {name}");
+        //}
+
+        //writer.OpenScope();
 
         return writer;
     }
