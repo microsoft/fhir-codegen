@@ -58,7 +58,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             /* Element has the special `id` element, that is both an attribute in the
              * XML serialization and is not using a FHIR primitive for representation. Consequently,
              * the generated CopyTo() and IsExact() methods diverge too much to be useful. */
-            "Element",
+            //"Element",
 
             /* Extension has the special `url` element, that is both an attribute in the
              * XML serialization and is not using a FHIR primitive for representation. Consequently,
@@ -243,8 +243,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             ["http://hl7.org/fhir/ValueSet/coverage-kind"] = "CoverageKindCode",
             ["http://hl7.org/fhir/ValueSet/fhir-types"] = "FHIRAllTypes"
         };
-
-        private record SinceVersion(FhirPackageCommon.FhirSequenceEnum Since);
 
         private readonly Dictionary<string, string> _sinceAttributes = new()
         {
@@ -581,7 +579,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     fixedFieldName: null, fixedFieldValue: null, patternFieldName: null, patternFieldValue: null,
                     isInherited: false, modifiesParent: false, bindingStrength: null, bindingName: null, valueSet: null, representations: null,
                     mappings: null
-                    ); ;
+                    );
 
                 constraintComplex.Elements.Add(xPathElement.Path, xPathElement);
             }
@@ -1065,7 +1063,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 WriteNamespaceOpen();
 
-                WriteComponent(complex, exportName, true, 0, subset);
+                WriteComponent(complex, exportName, true, subset);
 
                 WriteNamespaceClose();
 
@@ -1127,34 +1125,31 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             _modelWriter.WriteLineIndented($"// {exportName}.cs");
 
-            using (FileStream stream = new FileStream(filename, FileMode.Create))
-            using (ExportStreamWriter writer = new ExportStreamWriter(stream))
-            {
-                _writer = writer;
+            using FileStream stream = new FileStream(filename, FileMode.Create);
+            using ExportStreamWriter writer = new ExportStreamWriter(stream);
 
-                WriteHeaderComplexDataType();
+            _writer = writer;
 
-                WriteNamespaceOpen();
+            WriteHeaderComplexDataType();
 
-                WriteComponent(complex, exportName, false, 0, subset);
+            WriteNamespaceOpen();
 
-                WriteNamespaceClose();
+            WriteComponent(complex, exportName, false, subset);
 
-                WriteFooter();
-            }
+            WriteNamespaceClose();
+
+            WriteFooter();
         }
 
         /// <summary>Writes a component.</summary>
         /// <param name="complex">              The complex data type.</param>
         /// <param name="exportName">           Name of the export.</param>
         /// <param name="isResource">           True if is resource, false if not.</param>
-        /// <param name="depth">                The depth.</param>
         /// <param name="subset"></param>
         private void WriteComponent(
             FhirComplex complex,
             string exportName,
             bool isResource,
-            int depth,
             GenSubset subset)
         {
             bool isAbstract = complex.IsAbstract;
@@ -1324,20 +1319,20 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             // close class
             CloseScope();
 
-            WrittenElementInfo getPrimaryCodedElementInfo(FhirComplex complex, string exportName)
+            WrittenElementInfo getPrimaryCodedElementInfo(FhirComplex c, string en)
             {
-                var primaryCodePath = _cqlModelClassInfo?.TryGetValue(complex.Name, out var classInfo) == true && !string.IsNullOrEmpty(classInfo.primaryCodePath) ?
-                                    (complex.Name + "." + classInfo.primaryCodePath) : null;
+                string primaryCodePath = _cqlModelClassInfo?.TryGetValue(c.Name, out var classInfo) == true && !string.IsNullOrEmpty(classInfo.primaryCodePath) ?
+                                    (c.Name + "." + classInfo.primaryCodePath) : null;
 
-                var elem = primaryCodePath is not null ? (tryFindElementInComplex(complex, primaryCodePath, out var e) ? e : null) : null;
-                var primaryCodeElementInfo = elem is not null ? BuildElementInfo(exportName, elem) : null;
+                var elem = primaryCodePath is not null ? (tryFindElementInComplex(c, primaryCodePath, out var e) ? e : null) : null;
+                var pcEi = elem is not null ? BuildElementInfo(en, elem) : null;
 
-                if (primaryCodePath is not null && primaryCodeElementInfo is null)
+                if (primaryCodePath is not null && pcEi is null)
                 {
                     Console.WriteLine($"Warning: Cannot locate primary code path {primaryCodePath}, so no ICoded<T> was added to this type's signature.");
                 }
 
-                return primaryCodeElementInfo;
+                return pcEi;
             }
         }
 
@@ -1475,9 +1470,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 {
                     // A long time ago we decided that in this function, XHtml
                     // is returned as a FHIR string, so that's what we need to do.
-                    string yr = info.FhirElementName switch
+                    string yr = info.FhirElementPath switch
                     {
-                        "div" => $"new FhirString({info.PropertyName}.Value)",
+                        "Narrative.div" => $"new FhirString({info.PropertyName}.Value)",
+                        "Element.id" => $"new FhirString({info.PropertyName})",
                         _ => $"{info.PropertyName}"
 
                     };
@@ -1517,9 +1513,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     // A long time ago we decided that in this function, XHtml
                     // is returned as a FHIR string, so that's what we need to do.
 
-                    var yr = info.FhirElementName switch
+                    string yr = info.FhirElementPath switch
                     {
-                        "div" => $"new FhirString({info.PropertyName}.Value)",
+                        "Narrative.div" => $"new FhirString({info.PropertyName}.Value)",
+                        "Element.id" => $"new FhirString({info.PropertyName})",
                         _ => $"{info.PropertyName}"
 
                     };
@@ -1550,9 +1547,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
             foreach (WrittenElementInfo info in exportedElements)
             {
-                _writer.WriteLineIndented(
-                    $"if( !DeepComparable.Matches({info.PropertyName}, otherT.{info.PropertyName}))" +
-                        $" return false;");
+                if (info.PropertyType is CqlTypeReference)
+                {
+                    _writer.WriteLineIndented(
+                        $"if( {info.PropertyName} != otherT.{info.PropertyName} )" +
+                            $" return false;");
+                }
+                else
+                    _writer.WriteLineIndented(
+                        $"if( !DeepComparable.Matches({info.PropertyName}, otherT.{info.PropertyName}))" +
+                            $" return false;");
             }
 
             _writer.WriteLine(string.Empty);
@@ -1578,8 +1582,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             foreach (WrittenElementInfo info in exportedElements)
             {
                 _writer.WriteLineIndented(
-                    $"if( !DeepComparable.IsExactly({info.PropertyName}, otherT.{info.PropertyName}))" +
-                        $" return false;");
+                    info.PropertyType is CqlTypeReference ?
+                        $"if({info.PropertyName} != otherT.{info.PropertyName}) return false;"
+                        : $"if( !DeepComparable.IsExactly({info.PropertyName}, otherT.{info.PropertyName}))" +
+                          $" return false;");
             }
 
             _writer.WriteLine(string.Empty);
@@ -1620,8 +1626,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 else
                 {
                     _writer.WriteLineIndented(
-                        $"if({info.PropertyName} != null)" +
-                            $" dest.{info.PropertyName} = ({info.PropertyType.PropertyTypeString}){info.PropertyName}.DeepCopy();");
+                        $"if({info.PropertyName} != null) dest.{info.PropertyName} = " +
+                           (info.PropertyType is CqlTypeReference ?
+                            $"{info.PropertyName};" :
+                            $"({info.PropertyType.PropertyTypeString}){info.PropertyName}.DeepCopy();"));
                 }
             }
 
@@ -2050,10 +2058,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 "Signature.onBehalfOf" => element.ShortDescription + ".\nNote: Since R4 the type of this element should be a fixed type (ResourceReference). For backwards compatibility it remains of type DataType.",
                 "Signature.when" => element.ShortDescription + ".\nNote: Since R5 the cardinality is expanded to 0..1 (previous it was 1..1).",
                 "Signature.type" => element.ShortDescription + ".\nNote: Since R5 the cardinality is expanded to 0..* (previous it was 1..*).",
-                _ => attributeDescriptionWithSinceInfo(name, element.ShortDescription, since, until)
+                _ => AttributeDescriptionWithSinceInfo(name, element.ShortDescription, since, until)
             };
 
-            var xmlserialization = element.Path == "Narrative.div" ? "XHtml" : null;
+            string xmlserialization = element.Path == "Narrative.div" ? "XHtml" :
+                ei.PropertyType is CqlTypeReference ? "XmlAttr" :
+                null;
 
             if (description is not null) WriteIndentedComment(description);
 
@@ -2074,7 +2084,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 BuildFhirElementAttribute(name, summary, isModifier, element, choice, fiveWs, since, until, xmlserialization);
             }
 
-            if (element.Path == "Meta.profile")
+            if (ei.PropertyType is CqlTypeReference ctr)
+            {
+                _writer.WriteLineIndented($"[DeclaredType(Type = typeof({ctr.DeclaredTypeString}))]");
+            }
+            else if (element.Path == "Meta.profile")
             {
                 _writer.WriteLineIndented($"[DeclaredType(Type = typeof(Canonical), Since = FhirRelease.R4)]");
             }
@@ -2146,17 +2160,17 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             writeElementGettersAndSetters(element, ei);
         }
 
-        private string attributeDescriptionWithSinceInfo(string name, string baseDescription, string since = null, (string, string)? until = null)
+        private static string AttributeDescriptionWithSinceInfo(string name, string baseDescription, string since = null, (string, string)? until = null)
         {
             return (since, until, baseDescription) switch
             {
                 (_, _, null) => null,
                 (not null, _, _) => baseDescription +
                                  $". Note: Element was introduced in {since}, do not use when working with older releases.",
-                (_, (var release, ""), _) when until is not null => baseDescription +
-                                 $". Note: Element is deprecated since {release}, do not use with {release} and newer releases.",
-                (_, (var release, var replacedBy), _) when until is not null => baseDescription +
-                                 $". Note: Element is replaced by '{replacedBy}' since {release}. Do not use this element '{name}' with {release} and newer releases.",
+                (_, (var release, ""), _) => baseDescription +
+                                             $". Note: Element is deprecated since {release}, do not use with {release} and newer releases.",
+                (_, (var release, var replacedBy), _) => baseDescription +
+                                                         $". Note: Element is replaced by '{replacedBy}' since {release}. Do not use this element '{name}' with {release} and newer releases.",
                 _ => baseDescription
             };
         }
@@ -2276,11 +2290,15 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             var typeRef = DetermineTypeReferenceForFhirElement(element);
 
             string name = element.Name.Replace("[x]", string.Empty);
-            string pascal = FhirUtils.ToConvention(name, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
+            string pascal =
+                element.Path == "Element.id"
+                    ? "ElementId"
+                    : FhirUtils.ToConvention(name, string.Empty, FhirTypeBase.NamingConvention.PascalCase);
             bool forPrimitiveType = TryGetPrimitiveType(typeRef, out _);
 
             return new WrittenElementInfo(
                 FhirElementName: name,
+                FhirElementPath: element.Path,
                 PropertyName: forPrimitiveType ? $"{pascal}Element" : pascal,
                 PropertyType: typeRef,
                 PrimitiveHelperName: forPrimitiveType
@@ -2594,27 +2612,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _writer.WriteLine(string.Empty);
         }
 
-        /// <summary>Query if 'typeName' is nullable.</summary>
-        /// <param name="typeName">Name of the type.</param>
-        /// <returns>True if nullable, false if not.</returns>
-        private static bool IsNullable(string typeName)
-        {
-            // nullable reference types are not allowed in current C#
-            switch (typeName)
-            {
-                case "bool":
-                case "decimal":
-                case "DateTime":
-                case "int":
-                case "long":
-                case "uint":
-                case "Guid":
-                    return true;
-            }
-
-            return false;
-        }
-
         /// <summary>Writes a primitive types.</summary>
         /// <param name="primitives">   The primitives.</param>
         /// <param name="writtenModels">[in,out] The written models.</param>
@@ -2835,6 +2832,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _writer.WriteLineIndented("using Hl7.Fhir.Specification;");
             _writer.WriteLineIndented("using Hl7.Fhir.Utility;");
             _writer.WriteLineIndented("using Hl7.Fhir.Validation;");
+            _writer.WriteLineIndented("using SystemPrimitive = Hl7.Fhir.ElementModel.Types;");
             _writer.WriteLine(string.Empty);
 
             WriteCopyright();
@@ -2985,9 +2983,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
         /// <summary>Information about the written element.</summary>
         private record WrittenElementInfo(
             string FhirElementName,
+            string FhirElementPath,
             string PropertyName,
             TypeReference PropertyType,
-            string PrimitiveHelperName);
+            string PrimitiveHelperName)
+        {
+            //public string FhirElementName => FhirElementPath.Split('.').Last();
+        }
 
         /// <summary>Information about the written model.</summary>
         private struct WrittenModelInfo

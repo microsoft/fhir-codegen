@@ -1,103 +1,103 @@
 #nullable enable
 
-namespace Microsoft.Health.Fhir.SpecManager.Language.Firely
+namespace Microsoft.Health.Fhir.SpecManager.Language.Firely;
+
+public abstract record TypeReference(string Name)
 {
+    public abstract string PropertyTypeString { get; }
 
-    public abstract record TypeReference(string Name)
+    internal static string MapTypeName(string name)
     {
-        public abstract string PropertyTypeString { get; }
+        if (CSharpFirelyCommon.TypeNameMappings.TryGetValue(name, out string? mapping))
+            return mapping;
 
-        internal static string MapTypeName(string name)
-        {
-            if (CSharpFirelyCommon.TypeNameMappings.TryGetValue(name, out string? mapping))
-                return mapping;
-
-            return FhirUtils.SanitizedToConvention(name, FhirTypeBase.NamingConvention.PascalCase);
-        }
+        return FhirUtils.SanitizedToConvention(name, FhirTypeBase.NamingConvention.PascalCase);
     }
 
-    public record PrimitiveTypeReference(string Name, string PocoTypeName, Type ConveniencePropertyType) : TypeReference(Name)
-    {
-        public static PrimitiveTypeReference ForTypeName(string name, Type propertyType) =>
-            new(name, MapTypeName(name), propertyType);
+    internal static string RenderNetType(Type t) =>
+        AliasCsName(t) + (t.IsValueType ? "?" : "");
 
-        public static readonly IReadOnlyCollection<PrimitiveTypeReference> PrimitiveList = new PrimitiveTypeReference[]
+    private static string AliasCsName(Type csType)
+    {
+        // This isn't complete, but good enough for now.
+        return csType.Name switch
         {
-            ForTypeName("base64Binary", typeof(byte[])), ForTypeName("boolean", typeof(bool)),
-            ForTypeName("canonical", typeof(string)), ForTypeName("code", typeof(string)),
-            ForTypeName("date", typeof(string)), ForTypeName("dateTime", typeof(string)),
-            ForTypeName("decimal", typeof(decimal)), ForTypeName("id", typeof(string)),
-            ForTypeName("instant", typeof(DateTimeOffset)), ForTypeName("integer", typeof(int)),
-            ForTypeName("integer64", typeof(long)), ForTypeName("oid", typeof(string)),
-            ForTypeName("positiveInt", typeof(int)), ForTypeName("string", typeof(string)),
-            ForTypeName("time", typeof(string)), ForTypeName("unsignedInt", typeof(int)),
-            ForTypeName("uri", typeof(string)), ForTypeName("url", typeof(string)),
-            ForTypeName("xhtml", typeof(string)), ForTypeName("markdown", typeof(string))
+            "String" => "string",
+            "Boolean" => "bool",
+            "Decimal" => "decimal",
+            "Int32" => "int",
+            "Int64" => "long",
+            "Byte[]" => "byte[]",
+            "DateTimeOffset" => "DateTimeOffset",
+            var other => $"System.{other}"
         };
-
-        private static readonly Dictionary<string, PrimitiveTypeReference> s_primitiveDictionary =
-            PrimitiveList.ToDictionary(ptr => ptr.Name);
-
-        public static bool IsFhirPrimitiveType(string name) => s_primitiveDictionary.ContainsKey(name);
-
-        public static PrimitiveTypeReference GetTypeReference(string name) =>
-            s_primitiveDictionary.TryGetValue(name, out var tr)
-                ? tr
-                : throw new InvalidOperationException($"Unknown FHIR primitive {name}");
-
-        public virtual string ConveniencePropertyTypeString =>
-            AliasCsName(ConveniencePropertyType) + (ConveniencePropertyType.IsValueType ? "?" : "");
-
-        private static string AliasCsName(Type csType)
-        {
-            // This isn't complete, but good enough for now.
-            return csType.Name switch
-            {
-                "String" => "string",
-                "Boolean" => "bool",
-                "Decimal" => "decimal",
-                "Int32" => "int",
-                "Int64" => "long",
-                "Byte[]" => "byte[]",
-                "DateTimeOffset" => "DateTimeOffset",
-                var other => $"System.{other}"
-            };
-        }
-
-        public override string PropertyTypeString => $"Hl7.Fhir.Model.{PocoTypeName}";
     }
+}
 
-    public record CqlTypeReference(string Name, Type ConveniencePropertyType) : TypeReference(Name)
+public record PrimitiveTypeReference(string Name, string PocoTypeName, Type ConveniencePropertyType)
+    : TypeReference(Name)
+{
+    public static PrimitiveTypeReference ForTypeName(string name, Type propertyType) =>
+        new(name, MapTypeName(name), propertyType);
+
+    public static readonly IReadOnlyCollection<PrimitiveTypeReference> PrimitiveList = new PrimitiveTypeReference[]
     {
-        public static readonly CqlTypeReference SystemString = new("String", typeof(string));
+        ForTypeName("base64Binary", typeof(byte[])), ForTypeName("boolean", typeof(bool)),
+        ForTypeName("canonical", typeof(string)), ForTypeName("code", typeof(string)),
+        ForTypeName("date", typeof(string)), ForTypeName("dateTime", typeof(string)),
+        ForTypeName("decimal", typeof(decimal)), ForTypeName("id", typeof(string)),
+        ForTypeName("instant", typeof(DateTimeOffset)), ForTypeName("integer", typeof(int)),
+        ForTypeName("integer64", typeof(long)), ForTypeName("oid", typeof(string)),
+        ForTypeName("positiveInt", typeof(int)), ForTypeName("string", typeof(string)),
+        ForTypeName("time", typeof(string)), ForTypeName("unsignedInt", typeof(int)),
+        ForTypeName("uri", typeof(string)), ForTypeName("url", typeof(string)),
+        ForTypeName("xhtml", typeof(string)), ForTypeName("markdown", typeof(string))
+    };
 
-        public override string PropertyTypeString => $"SystemPrimitive.{Name}";
+    private static readonly Dictionary<string, PrimitiveTypeReference> s_primitiveDictionary =
+        PrimitiveList.ToDictionary(ptr => ptr.Name);
 
-        public string ConveniencePropertyTypeString =>
-            ConveniencePropertyType.Name + (ConveniencePropertyType.IsValueType ? "?" : "");
+    public static bool IsFhirPrimitiveType(string name) => s_primitiveDictionary.ContainsKey(name);
 
-    }
+    public static PrimitiveTypeReference GetTypeReference(string name) =>
+        s_primitiveDictionary.TryGetValue(name, out var tr)
+            ? tr
+            : throw new InvalidOperationException($"Unknown FHIR primitive {name}");
 
-    public record ComplexTypeReference(string Name, string PocoTypeName) : TypeReference(Name)
-    {
-        public override string PropertyTypeString => $"Hl7.Fhir.Model.{PocoTypeName}";
-    }
+    public virtual string ConveniencePropertyTypeString => RenderNetType(ConveniencePropertyType);
 
-    public record ChoiceTypeReference() : ComplexTypeReference("DataType", "DataType");
+    public override string PropertyTypeString => $"Hl7.Fhir.Model.{PocoTypeName}";
+}
 
-    public record CodedTypeReference(string EnumName, string? EnumClassName)
-        : PrimitiveTypeReference("code", EnumName, typeof(Enum))
-    {
-        public override string PropertyTypeString => $"Code<{EnumNameString}>";
+public record CqlTypeReference(string Name, Type PropertyType) : TypeReference(Name)
+{
+    public static readonly CqlTypeReference SystemString = new("String", typeof(string));
 
-        public override string ConveniencePropertyTypeString => EnumNameString + "?";
+    public string DeclaredTypeString => $"SystemPrimitive.{Name}";
 
-        private string EnumNameString => EnumClassName is not null ?
-            $"Hl7.Fhir.Model.{EnumClassName}.{EnumName}" : $"Hl7.Fhir.Model.{EnumName}";
-    }
+    public override string PropertyTypeString => RenderNetType(PropertyType);
+}
 
-    public record ListTypeReference(TypeReference Element) : TypeReference("List")
-    {
-        public override string PropertyTypeString => $"List<{Element.PropertyTypeString}>";
-    }
+public record ComplexTypeReference(string Name, string PocoTypeName) : TypeReference(Name)
+{
+    public override string PropertyTypeString => $"Hl7.Fhir.Model.{PocoTypeName}";
+}
+
+public record ChoiceTypeReference() : ComplexTypeReference("DataType", "DataType");
+
+public record CodedTypeReference(string EnumName, string? EnumClassName)
+    : PrimitiveTypeReference("code", EnumName, typeof(Enum))
+{
+    public override string PropertyTypeString => $"Code<{EnumNameString}>";
+
+    public override string ConveniencePropertyTypeString => EnumNameString + "?";
+
+    private string EnumNameString => EnumClassName is not null
+        ? $"Hl7.Fhir.Model.{EnumClassName}.{EnumName}"
+        : $"Hl7.Fhir.Model.{EnumName}";
+}
+
+public record ListTypeReference(TypeReference Element) : TypeReference("List")
+{
+    public override string PropertyTypeString => $"List<{Element.PropertyTypeString}>";
 }
