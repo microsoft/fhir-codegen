@@ -228,15 +228,25 @@ public sealed class CSharpFirely2 : ILanguage
     ];
 
     /// <summary>
-    /// (Immutable) ValueSets that cannot be generated as shared even though they are.
+    /// (Immutable) ValueSets that need special handling for backwards compatibility
     /// </summary>
-    private static readonly HashSet<string> _explicitNotSharedValueSets =
-    [
-        "http://hl7.org/fhir/ValueSet/consent-data-meaning",
-        "http://hl7.org/fhir/ValueSet/consent-provision-type",
-        "http://hl7.org/fhir/ValueSet/encounter-status",
-        "http://hl7.org/fhir/ValueSet/list-mode",
-    ];
+    /// <remarks>
+    /// Plan to remove in SDK v6.0
+    /// </remarks>
+    private static readonly Dictionary<string, ValueSetWriteLocationRec> _oddValueSetBehaviors = new()
+    {
+        { "http://hl7.org/fhir/ValueSet/consent-data-meaning", new ValueSetWriteLocationRec() { AllowShared = false, } },
+        { "http://hl7.org/fhir/ValueSet/consent-provision-type", new ValueSetWriteLocationRec() { AllowShared = false, }},
+        { "http://hl7.org/fhir/ValueSet/encounter-status", new ValueSetWriteLocationRec() { AllowShared = false, }},
+        { "http://hl7.org/fhir/ValueSet/list-mode", new ValueSetWriteLocationRec() { AllowShared = false, }},
+        { "http://hl7.org/fhir/ValueSet/timezones", new ValueSetWriteLocationRec() { AllowShared = true, ForceInResources = ["Appointment"] }},
+    };
+
+    internal record class ValueSetWriteLocationRec
+    {
+        public required bool AllowShared { get; init; }
+        public HashSet<string> ForceInResources { get; init; } = [];
+    }
 
     /// <summary>
     ///  List of all valuesets that we should publish as a shared Enum although there is only 1 reference to it.
@@ -1081,7 +1091,8 @@ public sealed class CSharpFirely2 : ILanguage
             // traverse all versions of all value sets
             foreach ((string unversionedUrl, string[] versions) in _info.ValueSetVersions.OrderBy(kvp => kvp.Key))
             {
-                if (_exclusionSet.Contains(unversionedUrl) || _explicitNotSharedValueSets.Contains(unversionedUrl))
+                if (_exclusionSet.Contains(unversionedUrl) ||
+                    (_oddValueSetBehaviors.TryGetValue(unversionedUrl, out ValueSetWriteLocationRec? oddInfo) && (oddInfo.AllowShared == false)))
                 {
                     continue;
                 }
@@ -2602,6 +2613,7 @@ public sealed class CSharpFirely2 : ILanguage
         var since = _sinceAttributes.TryGetValue(path, out string? s) ? s : null;
         var until = _untilAttributes.TryGetValue(path, out (string, string) u) ? u : default((string, string)?);
 
+        // TODO: Modify these elements in ModifyDefinitionsForConsistency
         var description = path switch
         {
             "Signature.who" => element.Short + ".\nNote 1: Since R4 the type of this element should be a fixed type (ResourceReference). For backwards compatibility it remains of type DataType.\nNote 2: Since R5 the cardinality is expanded to 0..1 (previous it was 1..1).",
@@ -2810,7 +2822,7 @@ public sealed class CSharpFirely2 : ILanguage
                     // check to see if the referenced element has an explicit name
                     if (info.TryFindElementByPath(btn, out StructureDefinition? targetSd, out ElementDefinition? targetEd))
                     {
-                        return BuildTypeFromPath(targetEd, btn);
+                        return BuildTypeNameForNestedComplexType(targetEd, btn);
                     }
 
                     return btn;
@@ -2974,75 +2986,11 @@ public sealed class CSharpFirely2 : ILanguage
         }
     }
 
-    /// <summary>Builds type from path.</summary>
-    /// <param name="type">The type.</param>
-    /// <returns>A string.</returns>
-    private static string BuildTypeFromPath(ElementDefinition ed, string type)
-    {
-        // ginoc 2024.03.12: Release has happened and these are no longer needed - leaving here but commented out until confirmed
-        /*
-        // TODO: the following renames (repairs) should be removed when release 4B is official and there is an
-        //   explicit name in the definition for attributes:
-        //   - Statistic.attributeEstimate.attributeEstimate
-        //   - Citation.contributorship.summary
-
-        if (type.StartsWith("Citation") || type.StartsWith("Statistic") || type.StartsWith("DeviceDefinition"))
-        {
-            string parentName = type.Substring(0, type.IndexOf('.'));
-            var sillyBackboneName = type.Substring(parentName.Length);
-            type = parentName + "." + capitalizeThoseSillyBackboneNames(sillyBackboneName) + "Component";
-        }
-        // end of repair
-        */
-
-        string explicitTypeName = ed.cgExplicitName();
-
-        if (!string.IsNullOrEmpty(explicitTypeName))
-        {
-            string parentName = type.Substring(0, type.IndexOf('.'));
-            type = $"{parentName}" +
-                $".{explicitTypeName}" +
-                $"Component";
-        }
-        else
-        {
-            //StringBuilder sb = new StringBuilder();
-
-            string[] components = type.Split('.');
-
-            if (components.Length > 1)
-            {
-                type = string.Join('.', components[0], components.Last().ToPascalCase()) + "Component";
-            }
-
-            //for (int i = 0; i < components.Length; i++)
-            //{
-            //    if (i == 0)
-            //    {
-            //        sb.Append(components[i]);
-            //        continue;
-            //    }
-
-            //    if (i == 1)
-            //    {
-            //        sb.Append(".");
-            //    }
-
-            //    // AdverseEvent.suspectEntity.Causality does not prefix?
-            //    if (i == components.Length - 1)
-            //    {
-            //        sb.Append(FhirSanitizationUtils.SanitizedToConvention(components[i], NamingConvention.PascalCase));
-            //    }
-            //}
-
-            //sb.Append("Component");
-            //type = sb.ToString();
-        }
-
-        return type;
-    }
-
-    /// <summary>Builds type from path.</summary>
+    /// <summary>
+    /// Determine the type name for an element that has child elements, based on the definition and
+    /// the declared type.
+    /// </summary>
+    /// <param name="ed">  The ed.</param>
     /// <param name="type">The type.</param>
     /// <returns>A string.</returns>
     private static string BuildTypeNameForNestedComplexType(ElementDefinition ed, string type)
