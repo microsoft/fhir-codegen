@@ -2593,6 +2593,7 @@ public sealed class CSharpFirely2 : ILanguage
         exportedElements.Add(ei);
 
         BuildElementOptionalFlags(
+            _info,
             element,
             subset,
             out string summary,
@@ -3038,34 +3039,6 @@ public sealed class CSharpFirely2 : ILanguage
     }
 
     /// <summary>Builds element optional flags.</summary>
-    /// <param name="element">           The element.</param>
-    /// <param name="subset"></param>
-    /// <param name="summary">           [out] The summary.</param>
-    /// <param name="isModifier"></param>
-    /// <param name="choice">            [out] The choice.</param>
-    /// <param name="allowedTypes">      [out] List of types of the allowed.</param>
-    /// <param name="resourceReferences">[out] The resource references.</param>
-    private void BuildElementOptionalFlags(
-        ElementDefinition element,
-        GenSubset subset,
-        out string summary,
-        out string isModifier,
-        out string choice,
-        out string allowedTypes,
-        out string resourceReferences)
-    {
-        BuildElementOptionalFlags(
-            _info,
-            element,
-            subset,
-            out summary,
-            out isModifier,
-            out choice,
-            out allowedTypes,
-            out resourceReferences);
-    }
-
-    /// <summary>Builds element optional flags.</summary>
     /// <param name="info">              The definition information.</param>
     /// <param name="element">           The element.</param>
     /// <param name="subset">            .</param>
@@ -3084,17 +3057,6 @@ public sealed class CSharpFirely2 : ILanguage
         out string allowedTypes,
         out string resourceReferences)
     {
-        //// TODO: We should follow what is specified in R5 - so div/status
-        //// are actually *not* in summary. Wait until SDK6.0 before we get this
-        //// code out.
-        //// TODO: Move this into the ModifyDefinitionsForConsistency method
-        //var isReallySummary = element.Path switch
-        //{
-        //    "Narrative.div" => true,
-        //    "Narrative.status" => true,
-        //    _ => element.IsSummary
-        //};
-
         choice = string.Empty;
         allowedTypes = string.Empty;
         resourceReferences = string.Empty;
