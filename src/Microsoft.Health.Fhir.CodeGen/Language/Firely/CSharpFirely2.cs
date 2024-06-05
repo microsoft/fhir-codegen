@@ -3,14 +3,16 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+using System.Numerics;
 using System.Reflection.Metadata;
 using System.Resources;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Xml.Linq;
+using Antlr4.Runtime.Tree.Xpath;
 using Fhir.Metrics;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Utility;
@@ -78,26 +80,21 @@ public sealed class CSharpFirely2 : ILanguage
             * different enough that it does not make sense to generate them. */
         "PrimitiveType",
 
-        /* Element has the special `id` element, that is both an attribute in the
-            * XML serialization and is not using a FHIR primitive for representation. Consequently,
-            * the generated CopyTo() and IsExact() methods diverge too much to be useful. */
-        "Element",
+            /* Element has the special `id` element, that is both an attribute in the
+             * XML serialization and is not using a FHIR primitive for representation. Consequently,
+             * the generated CopyTo() and IsExact() methods diverge too much to be useful. */
+            //"Element",
 
         /* Extension has the special `url` element, that is both an attribute in the
             * XML serialization and is not using a FHIR primitive for representation. Consequently,
             * the generated CopyTo() and IsExact() methods diverge too much to be useful. */
         "Extension",
 
-        /* Narrative has a special `div` element, serialized as an element frm the
-            * XHTML namespace, not using a normal FHIR primitive. This makes this class
-            * deviate in ways we cannot achieve with the generator. */
-        "Narrative",
-
-        /* These two types are interfaces rather than classes (at least, for now)
-            * so we're not generating them. Also, all types deriving from these
-            * are generated to derive from DomainResource instead */
-        "CanonicalResource",
-        "MetadataResource",
+            /* These two types are interfaces rather than classes (at least, for now)
+             * so we're not generating them. Also, all types deriving from these
+             * are generated to derive from DomainResource instead */
+            "CanonicalResource",
+            "MetadataResource",
 
         /* UCUM is used as a required binding in a codeable concept. Since we do not
             * use enums in this situation, it is not useful to generate this valueset
@@ -196,7 +193,7 @@ public sealed class CSharpFirely2 : ILanguage
     /// <summary>
     /// List of all valuesets that we publish in the base subset
     /// </summary>
-    private static readonly List<string> _baseSubsetValueSets =
+    private static readonly HashSet<string> _baseSubsetValueSets =
     [
         "http://hl7.org/fhir/ValueSet/publication-status",
         "http://hl7.org/fhir/ValueSet/FHIR-version",
@@ -209,7 +206,7 @@ public sealed class CSharpFirely2 : ILanguage
     /// <summary>
     /// List of all valuesets that we publish in the conformance subset.
     /// </summary>
-    private static readonly List<string> _conformanceSubsetValueSets =
+    private static readonly HashSet<string> _conformanceSubsetValueSets =
     [
         "http://hl7.org/fhir/ValueSet/capability-statement-kind",
         "http://hl7.org/fhir/ValueSet/binding-strength",
@@ -228,6 +225,17 @@ public sealed class CSharpFirely2 : ILanguage
         "http://hl7.org/fhir/ValueSet/constraint-severity",
 
         "http://hl7.org/fhir/ValueSet/codesystem-content-mode"
+    ];
+
+    /// <summary>
+    /// (Immutable) ValueSets that cannot be generated as shared even though they are.
+    /// </summary>
+    private static readonly HashSet<string> _explicitNotSharedValueSets =
+    [
+        "http://hl7.org/fhir/ValueSet/consent-data-meaning",
+        "http://hl7.org/fhir/ValueSet/consent-provision-type",
+        "http://hl7.org/fhir/ValueSet/encounter-status",
+        "http://hl7.org/fhir/ValueSet/list-mode",
     ];
 
     /// <summary>
@@ -300,7 +308,7 @@ public sealed class CSharpFirely2 : ILanguage
         ["ValueSet.scope"] = "R5",
         ["Bundle.issues"] = "R5",
         ["CapabilityStatement.rest.resource.conditionalPatch"] = "R5",
-        ["CapabilityStatement.versionAlgorithm[x]"] = "R5",
+        ["CapabilityStatement.versionAlgorithm"] = "R5",
         ["CapabilityStatement.copyrightLabel"] = "R5",
         ["CapabilityStatement.acceptLanguage"] = "R5",
         ["CapabilityStatement.identifier"] = "R5",
@@ -315,7 +323,7 @@ public sealed class CSharpFirely2 : ILanguage
         ["CodeSystem.endorser"] = "R5",
         ["CodeSystem.relatedArtifact"] = "R5",
         ["CodeSystem.copyrightLabel"] = "R5",
-        ["CodeSystem.versionAlgorithm[x]"] = "R5",
+        ["CodeSystem.versionAlgorithm"] = "R5",
         ["ElementDefinition.constraint.suppress"] = "R5",
         ["ElementDefinition.mustHaveValue"] = "R5",
         ["ElementDefinition.valueAlternatives"] = "R5",
@@ -334,13 +342,13 @@ public sealed class CSharpFirely2 : ILanguage
         ["ElementDefinition.binding.additional.shortDoco"] = "R5",
         ["ElementDefinition.binding.additional.usage"] = "R5",
         ["ElementDefinition.binding.additional.any"] = "R5",
-        ["StructureDefinition.versionAlgorithm[x]"] = "R5",
+        ["StructureDefinition.versionAlgorithm"] = "R5",
         ["StructureDefinition.copyrightLabel"] = "R5",
         ["ValueSet.compose.include.concept.designation.additionalUse"] = "R5",
         ["ValueSet.expansion.next"] = "R5",
         ["ValueSet.expansion.contains.property.subProperty"] = "R5",
         ["ValueSet.expansion.contains.property.subProperty.code"] = "R5",
-        ["ValueSet.expansion.contains.property.subProperty.value[x]"] = "R5",
+        ["ValueSet.expansion.contains.property.subProperty.value"] = "R5",
         ["ValueSet.approvalDate"] = "R5",
         ["ValueSet.lastReviewDate"] = "R5",
         ["ValueSet.effectivePeriod"] = "R5",
@@ -351,7 +359,7 @@ public sealed class CSharpFirely2 : ILanguage
         ["ValueSet.endorser"] = "R5",
         ["ValueSet.relatedArtifact"] = "R5",
         ["ValueSet.copyrightLabel"] = "R5",
-        ["ValueSet.versionAlgorithm[x]"] = "R5",
+        ["ValueSet.versionAlgorithm"] = "R5",
         ["Attachment.height"] = "R5",
         ["Attachment.width"] = "R5",
         ["Attachment.frames"] = "R5",
@@ -361,6 +369,7 @@ public sealed class CSharpFirely2 : ILanguage
         ["RelatedArtifact.resourceReference"] = "R5",
         ["RelatedArtifact.publicationStatus"] = "R5",
         ["RelatedArtifact.publicationDate"] = "R5",
+        ["Signature.data"] = "R4",
         ["Signature.who"] = "R4",
         ["Signature.onBehalfOf"] = "R4",
         ["Signature.sigFormat"] = "R4",
@@ -443,10 +452,10 @@ public sealed class CSharpFirely2 : ILanguage
             Directory.CreateDirectory(Path.Combine(_exportDirectory, "Generated"));
         }
 
-        string cqlmodelResourceKey = options.CqlModel;
-        if (!string.IsNullOrEmpty(cqlmodelResourceKey))
+        string cqlModelResourceKey = options.CqlModel;
+        if (!string.IsNullOrEmpty(cqlModelResourceKey))
         {
-            _cqlModelInfo = Ncqa.Cql.Model.CqlModels.LoadEmbeddedResource(cqlmodelResourceKey);
+            _cqlModelInfo = Ncqa.Cql.Model.CqlModels.LoadEmbeddedResource(cqlModelResourceKey);
             _cqlModelClassInfo = Ncqa.Cql.Model.CqlModels.ClassesByName(_cqlModelInfo);
         }
 
@@ -530,11 +539,13 @@ public sealed class CSharpFirely2 : ILanguage
                 edContent.Min = 1;
                 edContent.Max = "1";
 
-                edContent.RemoveExtension(CommonDefinitions.ExtUrlEdFieldOrder);
-                edContent.RemoveExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder);
+                edContent.cgSetFieldOrder(edData.cgFieldOrder(), edData.cgComponentFieldOrder());
 
-                edContent.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(edData.cgFieldOrder()));
-                edContent.AddExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, new Integer(edData.cgComponentFieldOrder()));
+                //edContent.RemoveExtension(CommonDefinitions.ExtUrlEdFieldOrder);
+                //edContent.RemoveExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder);
+
+                //edContent.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(edData.cgFieldOrder()));
+                //edContent.AddExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, new Integer(edData.cgComponentFieldOrder()));
 
                 // add our element and track info, note that we are not increasing
                 // the orders since they are duplicate elements from different versions
@@ -559,20 +570,22 @@ public sealed class CSharpFirely2 : ILanguage
                 edBlob.Min = 0;
                 edBlob.Max = "1";
 
-                edBlob.RemoveExtension(CommonDefinitions.ExtUrlEdFieldOrder);
-                edBlob.RemoveExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder);
+                edBlob.cgSetFieldOrder(edData.cgFieldOrder(), edData.cgComponentFieldOrder());
 
-                edBlob.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(edData.cgFieldOrder() + 1));
-                edBlob.AddExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, new Integer(edData.cgComponentFieldOrder() + 1));
+                //edBlob.RemoveExtension(CommonDefinitions.ExtUrlEdFieldOrder);
+                //edBlob.RemoveExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder);
+
+                //edBlob.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(edData.cgFieldOrder() + 1));
+                //edBlob.AddExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, new Integer(edData.cgComponentFieldOrder() + 1));
 
                 // add our element and track info
-                _ = _info.TryInsertElement(sdSignature, edBlob, true);
+                _ = _info.TryInsertElement(sdSignature, edBlob, false);
             }
 
-            if (!sdSignature.cgTryGetElementByPath("Signature.contentType", out _))
+            if (!sdSignature.cgTryGetElementByPath("Signature.contentType", out ElementDefinition? edContentType))
             {
                 // create a new element for the contentType (values pulled from STU3)
-                ElementDefinition edContentType = new()
+                edContentType = new()
                 {
                     ElementId = "Signature.contentType",
                     Path = "Signature.contentType",
@@ -604,14 +617,21 @@ public sealed class CSharpFirely2 : ILanguage
                     }
                 };
 
-                edContentType.RemoveExtension(CommonDefinitions.ExtUrlEdFieldOrder);
-                edContentType.RemoveExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder);
+                edContentType.cgSetFieldOrder(7, 6);
 
-                edContentType.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(6), true);
-                edContentType.AddExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, new Integer(6), true);
+                //edContentType.RemoveExtension(CommonDefinitions.ExtUrlEdFieldOrder);
+                //edContentType.RemoveExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder);
+
+                //edContentType.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(6), true);
+                //edContentType.AddExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, new Integer(6), true);
 
                 // add our element and track info
-                _ = _info.TryInsertElement(sdSignature, edContentType, true);
+                _ = _info.TryInsertElement(sdSignature, edContentType, false);
+            }
+            else
+            {
+                // move the current element to after onBehalfOf
+                edContentType.cgSetFieldOrder(7, 6);
             }
 
             if (sdSignature.cgTryGetElementById("Signature.who", out ElementDefinition? edWho))
@@ -619,9 +639,10 @@ public sealed class CSharpFirely2 : ILanguage
                 // make it a choice type by adding uri, like it was in STU3
                 edWho.ElementId = "Signature.who[x]";
                 edWho.Path = "Signature.who[x]";
+                edWho.Base.Path = "Signature.who[x]";
                 edWho.Type.Add(new() { Code = "uri" });
 
-                _ = _info.TryUpdateElement(sdSignature, edWho);
+                //_ = _info.TryUpdateElement(sdSignature, edWho);
             }
 
             if (sdSignature.cgTryGetElementById("Signature.onBehalfOf", out ElementDefinition? edOnBehalfOf))
@@ -629,9 +650,16 @@ public sealed class CSharpFirely2 : ILanguage
                 // make it a choice type by adding uri, like it was in STU3
                 edOnBehalfOf.ElementId = "Signature.onBehalfOf[x]";
                 edOnBehalfOf.Path = "Signature.onBehalfOf[x]";
+                edOnBehalfOf.Base.Path = "Signature.onBehalfOf[x]";
                 edOnBehalfOf.Type.Add(new() { Code = "uri" });
 
-                _ = _info.TryUpdateElement(sdSignature, edOnBehalfOf);
+                int prevFO = edOnBehalfOf.cgFieldOrder();
+                int prevCFO = edOnBehalfOf.cgComponentFieldOrder();
+
+                // TODO: fix the order (should be 6th total, 5th in component)
+                edOnBehalfOf.cgSetFieldOrder(6, 5);
+
+                //_ = _info.TryUpdateElement(sdSignature, edOnBehalfOf, prevFO, prevCFO);
             }
         }
 
@@ -667,12 +695,15 @@ public sealed class CSharpFirely2 : ILanguage
                 MustSupport = false,
             };
 
-            edFocus.RemoveExtension(CommonDefinitions.ExtUrlEdFieldOrder);
-            edFocus.RemoveExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder);
+            edFocus.cgSetFieldOrder(123, 3);
 
-            edFocus.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(123), true);
-            edFocus.AddExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, new Integer(3), true);
+            //edFocus.RemoveExtension(CommonDefinitions.ExtUrlEdFieldOrder);
+            //edFocus.RemoveExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder);
 
+            //edFocus.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(123), true);
+            //edFocus.AddExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, new Integer(3), true);
+
+            // TODO(ginoc): This insertion is currently pushing exclusionCriteria to Order=60 in file (componentOrder 5) - it should not
             // add our element and track info
             _ = _info.TryInsertElement(sdValueSet, edFocus, true);
         }
@@ -707,11 +738,13 @@ public sealed class CSharpFirely2 : ILanguage
                 IsSummary = true,
             };
 
-            edXPath.RemoveExtension(CommonDefinitions.ExtUrlEdFieldOrder);
-            edXPath.RemoveExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder);
+            edXPath.cgSetFieldOrder(65, 7);
 
-            edXPath.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(65), true);
-            edXPath.AddExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, new Integer(7), true);
+            //edXPath.RemoveExtension(CommonDefinitions.ExtUrlEdFieldOrder);
+            //edXPath.RemoveExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder);
+
+            //edXPath.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(65), true);
+            //edXPath.AddExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, new Integer(7), true);
 
             // add our element and track info
             _ = _info.TryInsertElement(sdElementDefinition, edXPath, true);
@@ -719,7 +752,7 @@ public sealed class CSharpFirely2 : ILanguage
 
         // We need to modify the (R4+-based) definition of RelatedArtifact, to include
         // the pre-R4 element "url".
-        if (_info.ResourcesByName.TryGetValue("RelatedArtifact", out StructureDefinition? sdRelatedArtifact) &&
+        if (_info.ComplexTypesByName.TryGetValue("RelatedArtifact", out StructureDefinition? sdRelatedArtifact) &&
             !sdRelatedArtifact.cgTryGetElementById("RelatedArtifact.url", out _))
         {
             // create a new element for the url (values pulled from STU3)
@@ -733,18 +766,28 @@ public sealed class CSharpFirely2 : ILanguage
                 Min = 0,
                 Max = "1",
                 Base = new() { Path = "RelatedArtifact.url", Min = 0, Max = "1" },
-                Type = [new() { Code = "uri" }],
+                Type = [new() { Code = "url" }],
                 IsSummary = true,
             };
 
-            edUrl.RemoveExtension(CommonDefinitions.ExtUrlEdFieldOrder);
-            edUrl.RemoveExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder);
-
-            edUrl.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(6), true);
-            edUrl.AddExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, new Integer(6), true);
+            edUrl.cgSetFieldOrder(8, 7);
 
             // add our element and track info
             _ = _info.TryInsertElement(sdRelatedArtifact, edUrl, true);
+        }
+
+        // need to modify the summary status of narrative elements - remove this for SDK 6.0
+        if (_info.ComplexTypesByName.TryGetValue("Narrative", out StructureDefinition? sdNarrative))
+        {
+            if (sdNarrative.cgTryGetElementById("Narrative.status", out ElementDefinition? edStatus))
+            {
+                edStatus.IsSummary = true;
+            }
+
+            if (sdNarrative.cgTryGetElementById("Narrative.div", out ElementDefinition? edDiv))
+            {
+                edDiv.IsSummary = true;
+            }
         }
     }
 
@@ -1038,7 +1081,7 @@ public sealed class CSharpFirely2 : ILanguage
             // traverse all versions of all value sets
             foreach ((string unversionedUrl, string[] versions) in _info.ValueSetVersions.OrderBy(kvp => kvp.Key))
             {
-                if (_exclusionSet.Contains(unversionedUrl))
+                if (_exclusionSet.Contains(unversionedUrl) || _explicitNotSharedValueSets.Contains(unversionedUrl))
                 {
                     continue;
                 }
@@ -1079,7 +1122,6 @@ public sealed class CSharpFirely2 : ILanguage
 
                         continue;
                     }
-
 
                     // If this is a shared valueset that will be generated in the base or conformance subset,
                     // don't also generate it here.
@@ -1239,7 +1281,7 @@ public sealed class CSharpFirely2 : ILanguage
 
             WriteNamespaceOpen();
 
-            WriteComponent(complex.cgComponent(), exportName, true, 0, subset);
+            WriteComponent(complex.cgComponent(), exportName, true, subset);
 
             WriteNamespaceClose();
 
@@ -1301,21 +1343,20 @@ public sealed class CSharpFirely2 : ILanguage
 
         _modelWriter.WriteLineIndented($"// {exportName}.cs");
 
-        using (FileStream stream = new(filename, FileMode.Create))
-        using (ExportStreamWriter writer = new(stream))
-        {
-            _writer = writer;
+        using FileStream stream = new FileStream(filename, FileMode.Create);
+        using ExportStreamWriter writer = new ExportStreamWriter(stream);
 
-            WriteHeaderComplexDataType();
+        _writer = writer;
 
-            WriteNamespaceOpen();
+        WriteHeaderComplexDataType();
 
-            WriteComponent(complex.cgComponent(), exportName, false, 0, subset);
+        WriteNamespaceOpen();
 
-            WriteNamespaceClose();
+        WriteComponent(complex.cgComponent(), exportName, false, subset);
 
-            WriteFooter();
-        }
+        WriteNamespaceClose();
+
+        WriteFooter();
     }
 
     private void WriteInterfaceComponent(
@@ -1404,7 +1445,7 @@ public sealed class CSharpFirely2 : ILanguage
             // note that we can restrict to top level since interfaces are currently only top level
             // use the name as determined by BuildElementInfo for the key
             Dictionary<string, ElementDefinition> resourceElements = resourceSd.cgElements(topLevelOnly: true)
-                .ToDictionary(e => e.cgName().Replace("[x]", string.Empty));
+                .ToDictionary(e => e.cgName(removeChoiceMarker: true));
 
             // iterate over the elements of the interface we exported
             foreach (WrittenElementInfo interfaceEi in exportedElements)
@@ -1438,8 +1479,8 @@ public sealed class CSharpFirely2 : ILanguage
         WrittenElementInfo interfaceEi)
     {
         string pn = interfaceExportName + "." + interfaceEi.PropertyName;
-        string rt = resourceEi?.PropertyType?.Replace("Hl7.Fhir.Model.", string.Empty) ?? string.Empty;
-        string it = interfaceEi.PropertyType?.Replace("Hl7.Fhir.Model.", string.Empty) ?? string.Empty;
+        string rt = resourceEi?.PropertyType.PropertyTypeString ?? string.Empty;
+        string it = interfaceEi.PropertyType.PropertyTypeString;
 
         if ((resourceEd == null) || (resourceEi == null))
         {
@@ -1461,16 +1502,22 @@ public sealed class CSharpFirely2 : ILanguage
             _writer.WriteLine();
         }
         // a resource is allowed to have a scalar in place of a list
-        else if (interfaceEi.PropertyType == "List<" + resourceEi.PropertyType + ">")
+        else if (interfaceEi.PropertyType is ListTypeReference)
         {
             _writer.WriteLineIndented("[IgnoreDataMember]");
             _writer.WriteLineIndented($"{it} {pn}");
             OpenScope();
-            _writer.WriteLineIndented($"get {{ return new {it}() {{ {resourceEi.PropertyName} }}; }}");
+            //_writer.WriteLineIndented($"get {{ return new {it}() {{ {resourceEi.PropertyName} }}; }}");
+            _writer.WriteLineIndented("get");
+            OpenScope();        // getter
+            _writer.WriteLineIndented($"if ({resourceEi.PropertyName} == null) return new {it}();");
+            _writer.WriteLineIndented($"return new {it}() {{ {resourceEi.PropertyName} }};");
+            CloseScope();       // getter
 
             _writer.WriteLineIndented("set");
             OpenScope();
-            _writer.WriteLineIndented($"if (value.Count == 1) {{ {resourceEi.PropertyName} = value.First(); }}");
+            _writer.WriteLineIndented($"if (value.Count == 0) {{ {resourceEi.PropertyName} = null; }}");
+            _writer.WriteLineIndented($"else if (value.Count == 1) {{ {resourceEi.PropertyName} = value.First(); }}");
             _writer.WriteLineIndented($"else {{ throw new NotImplementedException(\"Resource {resourceExportName} can only have a single {pn} value\"); }}");
             CloseScope();
 
@@ -1487,57 +1534,60 @@ public sealed class CSharpFirely2 : ILanguage
             CloseScope();
         }
 
-        if (interfaceEi.IsPrimitive)
+        if (!TryGetPrimitiveType(interfaceEi.PropertyType, out PrimitiveTypeReference? interfacePtr))
         {
-            string ppn = interfaceExportName + "." + interfaceEi.PrimitiveHelperName;
-            string prt = ((resourceEi?.IsList ?? false) ? "List<" + resourceEi.PrimitiveHelperType + ">" : resourceEi?.PrimitiveHelperType ?? string.Empty).Replace("Hl7.Fhir.Model.", string.Empty);
-            string pit = (interfaceEi.IsList ? "List<" + interfaceEi.PrimitiveHelperType + ">" : interfaceEi.PrimitiveHelperType ?? string.Empty).Replace("Hl7.Fhir.Model.", string.Empty);
+            return;
+        }
 
-            if ((resourceEd == null) || (resourceEi == null))
-            {
-                _writer.WriteLineIndented("[IgnoreDataMember]");
-                _writer.WriteLineIndented($"{pit} {ppn}");
-                OpenScope();
-                _writer.WriteLineIndented($"get {{ return null; }}");
-                _writer.WriteLineIndented($"set {{ throw new NotImplementedException(\"Resource {resourceExportName} does not implement {interfaceExportName}.{interfaceEi.FhirElementName}\");}}");
-                CloseScope();
-            }
-            else if (interfaceEi.PropertyType == resourceEi.PropertyType)
-            {
-                _writer.WriteLineIndented("[IgnoreDataMember]");
-                _writer.WriteLineIndented($"{pit} {ppn}" +
-                    $" {{" +
-                    $" get => {resourceEi.PrimitiveHelperName};" +
-                    $" set {{ {resourceEi.PrimitiveHelperName} =  value; }}" +
-                    $" }}");
-                _writer.WriteLine();
-            }
-            // a resource is allowed to have a scalar in place of a list
-            else if (interfaceEi.PropertyType == "List<" + resourceEi.PropertyType + ">")
-            {
-                _writer.WriteLineIndented("[IgnoreDataMember]");
-                _writer.WriteLineIndented($"{pit} {ppn}");
-                OpenScope();
-                _writer.WriteLineIndented($"get {{ return new {pit}() {{ {resourceEi.PrimitiveHelperType} }}; }}");
+        string ppn = interfaceExportName + "." + interfaceEi.PrimitiveHelperName;
+        string prt = (resourceEi?.PropertyType is PrimitiveTypeReference rPTR) ? rPTR.ConveniencePropertyTypeString : string.Empty;
+        string pit = interfacePtr.ConveniencePropertyTypeString;
 
-                _writer.WriteLineIndented("set");
-                OpenScope();
-                _writer.WriteLineIndented($"if (value.Count == 1) {{ {resourceEi.PrimitiveHelperName} = value.First(); }}");
-                _writer.WriteLineIndented($"else {{ throw new NotImplementedException(\"Resource {resourceExportName} can only have a single {ppn} value\"); }}");
-                CloseScope();
+        if ((resourceEd == null) || (resourceEi == null))
+        {
+            _writer.WriteLineIndented("[IgnoreDataMember]");
+            _writer.WriteLineIndented($"{pit} {ppn}");
+            OpenScope();
+            _writer.WriteLineIndented($"get {{ return null; }}");
+            _writer.WriteLineIndented($"set {{ throw new NotImplementedException(\"Resource {resourceExportName} does not implement {interfaceExportName}.{interfaceEi.FhirElementName}\");}}");
+            CloseScope();
+        }
+        else if (interfaceEi.PropertyType == resourceEi.PropertyType)
+        {
+            _writer.WriteLineIndented("[IgnoreDataMember]");
+            _writer.WriteLineIndented($"{pit} {ppn}" +
+                $" {{" +
+                $" get => {resourceEi.PrimitiveHelperName};" +
+                $" set {{ {resourceEi.PrimitiveHelperName} =  value; }}" +
+                $" }}");
+            _writer.WriteLine();
+        }
+        // a resource is allowed to have a scalar in place of a list
+        //else if (interfaceEi.PropertyType == "List<" + resourceEi.PropertyType + ">")
+        else if (interfaceEi.PropertyType is ListTypeReference)
+        {
+            _writer.WriteLineIndented("[IgnoreDataMember]");
+            _writer.WriteLineIndented($"{pit} {ppn}");
+            OpenScope();
+            _writer.WriteLineIndented($"get {{ return new {pit}() {{ {resourceEi.PropertyType.PropertyTypeString} }}; }}");
 
-                CloseScope();
-            }
-            else
-            {
-                _writer.WriteLineIndented($"// {resourceExportName}.{resourceEi.PropertyName} ({prt}) is incompatible with {interfaceExportName}.{interfaceEi.FhirElementName} ({pit})");
-                _writer.WriteLineIndented("[IgnoreDataMember]");
-                _writer.WriteLineIndented($" {pit} {ppn}");
-                OpenScope();
-                _writer.WriteLineIndented($"get {{ return null; }}");
-                _writer.WriteLineIndented($"set {{ throw new NotImplementedException(\"{resourceExportName}.{resourceEi.PropertyName} ({resourceEi.PrimitiveHelperType}) is incompatible with {interfaceExportName}.{interfaceEi.FhirElementName} ({interfaceEi.PrimitiveHelperType})\");}}");
-                CloseScope();
-            }
+            _writer.WriteLineIndented("set");
+            OpenScope();
+            _writer.WriteLineIndented($"if (value.Count == 1) {{ {resourceEi.PrimitiveHelperName} = value.First(); }}");
+            _writer.WriteLineIndented($"else {{ throw new NotImplementedException(\"Resource {resourceExportName} can only have a single {ppn} value\"); }}");
+            CloseScope();
+
+            CloseScope();
+        }
+        else
+        {
+            _writer.WriteLineIndented($"// {resourceExportName}.{resourceEi.PropertyName} ({prt}) is incompatible with {interfaceExportName}.{interfaceEi.FhirElementName} ({pit})");
+            _writer.WriteLineIndented("[IgnoreDataMember]");
+            _writer.WriteLineIndented($" {pit} {ppn}");
+            OpenScope();
+            _writer.WriteLineIndented($"get {{ return null; }}");
+            _writer.WriteLineIndented($"set {{ throw new NotImplementedException(\"{resourceExportName}.{resourceEi.PropertyName} ({resourceEi.PropertyType.PropertyTypeString}) is incompatible with {interfaceExportName}.{interfaceEi.FhirElementName} ({interfaceEi.PropertyType.PropertyTypeString})\");}}");
+            CloseScope();
         }
     }
 
@@ -1559,23 +1609,57 @@ public sealed class CSharpFirely2 : ILanguage
             WrittenElementInfo ei = BuildElementInfo(exportedComplexName, element);
             exportedElements.Add(ei);
 
-            string name = element.cgName().Replace("[x]", string.Empty);
+            string name = element.cgName(removeChoiceMarker: true);
             var since = _sinceAttributes.TryGetValue(element.Path, out string? s) ? s : null;
             var until = _untilAttributes.TryGetValue(element.Path, out (string, string) u) ? u : default((string, string)?);
 
-            var description = attributeDescriptionWithSinceInfo(name, element.Short.Replace("{{title}}", structureName), since, until);
+            var description = AttributeDescriptionWithSinceInfo(name, element.Short.Replace("{{title}}", structureName), since, until);
 
-            if (ei.IsPrimitive)
+            if (TryGetPrimitiveType(ei.PropertyType, out PrimitiveTypeReference? eiPTR))
             {
                 WriteIndentedComment(element.Short.Replace("{{title}}", structureName));
                 _writer.WriteLineIndented($"/// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>");
-                _writer.WriteLineIndented($"{ei.PrimitiveHelperType?.Replace("Hl7.Fhir.Model.", string.Empty) ?? string.Empty} {ei.PrimitiveHelperName} {{ get; set; }}");
+                _writer.WriteLineIndented($"{eiPTR.ConveniencePropertyTypeString} {ei.PrimitiveHelperName} {{ get; set; }}");
                 _writer.WriteLine();
             }
 
+            //if (ei.IsPrimitive)
+            //{
+            //    WriteIndentedComment(element.Short.Replace("{{title}}", structureName));
+            //    _writer.WriteLineIndented($"/// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>");
+            //    _writer.WriteLineIndented($"{ei.PrimitiveHelperType?.Replace("Hl7.Fhir.Model.", string.Empty) ?? string.Empty} {ei.PrimitiveHelperName} {{ get; set; }}");
+            //    _writer.WriteLine();
+            //}
+
             if (description != null) WriteIndentedComment(description);
-            _writer.WriteLineIndented($"{ei.PropertyType?.Replace("Hl7.Fhir.Model.", string.Empty) ?? string.Empty} {ei.PropertyName} {{ get; set; }}");
+            _writer.WriteLineIndented($"{ei.PropertyType.PropertyTypeString ?? string.Empty} {ei.PropertyName} {{ get; set; }}");
             _writer.WriteLine();
+        }
+    }
+
+    private void WriteComponentComment(ComponentDefinition cd)
+    {
+        string literalShort = cd.Element.Short;
+        string literalDefinition = cd.Element.Definition;
+        string literalComment = cd.Element.Comment;
+
+        if (!string.IsNullOrEmpty(literalShort))
+        {
+            WriteIndentedComment(literalShort);
+            WriteIndentedComment(string.Join("\n", literalDefinition, literalComment), isSummary: false, isRemarks: true);
+        }
+        else if (!string.IsNullOrEmpty(literalDefinition))
+        {
+            WriteIndentedComment(literalDefinition);
+
+            if (!string.IsNullOrEmpty(literalComment))
+            {
+                WriteIndentedComment(literalComment, isSummary: false, isRemarks: true);
+            }
+        }
+        else if (!string.IsNullOrEmpty(literalComment))
+        {
+            WriteIndentedComment(literalComment);
         }
     }
 
@@ -1589,7 +1673,6 @@ public sealed class CSharpFirely2 : ILanguage
         ComponentDefinition complex,
         string exportName,
         bool isResource,
-        int depth,
         GenSubset subset)
     {
         string complexName = complex.cgName();
@@ -1597,7 +1680,13 @@ public sealed class CSharpFirely2 : ILanguage
 
         List<WrittenElementInfo> exportedElements = [];
 
-        WriteIndentedComment($"{complex.Element.Short}");
+        WriteComponentComment(complex);
+        //WriteIndentedComment($"{complex.cgDefinition()}");
+
+        //if (!string.IsNullOrEmpty(complex.cgComment()))
+        //{
+        //    WriteIndentedComment(complex.cgComment(), isSummary: false, isRemarks: true);
+        //}
 
         WriteSerializable();
 
@@ -1633,13 +1722,18 @@ public sealed class CSharpFirely2 : ILanguage
 
         if (isPatientClass) interfaces.Add($"{Namespace}.IPatient");
 
-        var identifierElement = complex.cgGetChildren(includeDescendants: false).SingleOrDefault(isIdentifierProperty);
-        if (identifierElement != null)
+        ElementDefinition? identifierElement = null;
+
+        if (isResource)
         {
-            if (identifierElement.cgIsArray())
-                interfaces.Add("IIdentifiable<List<Identifier>>");
-            else
-                interfaces.Add("IIdentifiable<Identifier>");
+            identifierElement = complex.cgGetChildren(includeDescendants: false).SingleOrDefault(isIdentifierProperty);
+            if (identifierElement != null)
+            {
+                if (identifierElement.cgIsArray())
+                    interfaces.Add("IIdentifiable<List<Identifier>>");
+                else
+                    interfaces.Add("IIdentifiable<Identifier>");
+            }
         }
 
         var primaryCodeElementInfo = isResource ? getPrimaryCodedElementInfo(complex, exportName) : null;
@@ -1813,7 +1907,9 @@ public sealed class CSharpFirely2 : ILanguage
     }
 
 
-    private string NullCheck(WrittenElementInfo info) => info.PropertyName + (!info.IsList ? " != null" : "?.Any() == true");
+    private string NullCheck(WrittenElementInfo info) =>
+        info.PropertyName +
+        (info.PropertyType is not ListTypeReference ? " is not null" : "?.Any() == true");
 
     private void WriteDictionaryPairs(IEnumerable<WrittenElementInfo> exportedElements)
     {
@@ -1892,7 +1988,7 @@ public sealed class CSharpFirely2 : ILanguage
 
         foreach (WrittenElementInfo info in exportedElements)
         {
-            if (info.IsList)
+            if (info.PropertyType is ListTypeReference)
             {
                 _writer.WriteLineIndented(
                     $"foreach (var elem in {info.PropertyName})" +
@@ -1902,9 +1998,19 @@ public sealed class CSharpFirely2 : ILanguage
             }
             else
             {
+                // A long time ago we decided that in this function, XHtml
+                // is returned as a FHIR string, so that's what we need to do.
+                string yr = info.FhirElementPath switch
+                {
+                    "Narrative.div" => $"new FhirString({info.PropertyName}.Value)",
+                    "Element.id" => $"new FhirString({info.PropertyName})",
+                    _ => $"{info.PropertyName}"
+
+                };
+
                 _writer.WriteLineIndented(
                     $"if ({info.PropertyName} != null)" +
-                        $" yield return new ElementValue(\"{info.FhirElementName}\", {info.PropertyName});");
+                        $" yield return new ElementValue(\"{info.FhirElementName}\", {yr});");
             }
         }
 
@@ -1926,7 +2032,7 @@ public sealed class CSharpFirely2 : ILanguage
 
         foreach (WrittenElementInfo info in exportedElements)
         {
-            if (info.IsList)
+            if (info.PropertyType is ListTypeReference)
             {
                 _writer.WriteLineIndented(
                     $"foreach (var elem in {info.PropertyName})" +
@@ -1934,9 +2040,19 @@ public sealed class CSharpFirely2 : ILanguage
             }
             else
             {
+                // A long time ago we decided that in this function, XHtml
+                // is returned as a FHIR string, so that's what we need to do.
+
+                string yr = info.FhirElementPath switch
+                {
+                    "Narrative.div" => $"new FhirString({info.PropertyName}.Value)",
+                    "Element.id" => $"new FhirString({info.PropertyName})",
+                    _ => $"{info.PropertyName}"
+
+                };
                 _writer.WriteLineIndented(
                     $"if ({info.PropertyName} != null)" +
-                        $" yield return {info.PropertyName};");
+                        $" yield return {yr};");
             }
         }
 
@@ -1961,9 +2077,16 @@ public sealed class CSharpFirely2 : ILanguage
 
         foreach (WrittenElementInfo info in exportedElements)
         {
-            _writer.WriteLineIndented(
-                $"if( !DeepComparable.Matches({info.PropertyName}, otherT.{info.PropertyName}))" +
-                    $" return false;");
+            if (info.PropertyType is CqlTypeReference)
+            {
+                _writer.WriteLineIndented(
+                    $"if( {info.PropertyName} != otherT.{info.PropertyName} )" +
+                        $" return false;");
+            }
+            else
+                _writer.WriteLineIndented(
+                    $"if( !DeepComparable.Matches({info.PropertyName}, otherT.{info.PropertyName}))" +
+                        $" return false;");
         }
 
         _writer.WriteLine(string.Empty);
@@ -1989,8 +2112,10 @@ public sealed class CSharpFirely2 : ILanguage
         foreach (WrittenElementInfo info in exportedElements)
         {
             _writer.WriteLineIndented(
-                $"if( !DeepComparable.IsExactly({info.PropertyName}, otherT.{info.PropertyName}))" +
-                    $" return false;");
+                info.PropertyType is CqlTypeReference ?
+                    $"if({info.PropertyName} != otherT.{info.PropertyName}) return false;"
+                    : $"if( !DeepComparable.IsExactly({info.PropertyName}, otherT.{info.PropertyName}))" +
+                      $" return false;");
         }
 
         _writer.WriteLine(string.Empty);
@@ -2022,17 +2147,19 @@ public sealed class CSharpFirely2 : ILanguage
 
         foreach (WrittenElementInfo info in exportedElements)
         {
-            if (info.IsList)
+            if (info.PropertyType is ListTypeReference)
             {
                 _writer.WriteLineIndented(
                     $"if({info.PropertyName} != null)" +
-                        $" dest.{info.PropertyName} = new {info.PropertyType}({info.PropertyName}.DeepCopy());");
+                        $" dest.{info.PropertyName} = new {info.PropertyType.PropertyTypeString}({info.PropertyName}.DeepCopy());");
             }
             else
             {
                 _writer.WriteLineIndented(
-                    $"if({info.PropertyName} != null)" +
-                        $" dest.{info.PropertyName} = ({info.PropertyType}){info.PropertyName}.DeepCopy();");
+                    $"if({info.PropertyName} != null) dest.{info.PropertyName} = " +
+                       (info.PropertyType is CqlTypeReference ?
+                        $"{info.PropertyName};" :
+                        $"({info.PropertyType.PropertyTypeString}){info.PropertyName}.DeepCopy();"));
             }
         }
 
@@ -2075,7 +2202,8 @@ public sealed class CSharpFirely2 : ILanguage
         CloseScope();
 
         _writer.WriteLineIndented("// TODO: Add code to enforce these constraints:");
-        WriteIndentedComment(complex.Structure.Purpose, isSummary: false, singleLine: true);
+        WriteComponentComment(complex);
+        //WriteIndentedComment(complex.Structure.Purpose, isSummary: false, singleLine: true);
 
         // close class
         CloseScope();
@@ -2100,7 +2228,7 @@ public sealed class CSharpFirely2 : ILanguage
     {
         List<WrittenElementInfo> exportedElements = [];
 
-        WriteIndentedComment($"{complex.Element.Short}");
+        WriteComponentComment(complex);
 
         string explicitName = complex.cgExplicitName();
 
@@ -2417,94 +2545,10 @@ public sealed class CSharpFirely2 : ILanguage
                 orderOffset);
         }
     }
-
-    private static WrittenElementInfo BuildCodedElementInfo(
-        DefinitionCollection info,
-        ElementDefinition element,
-        Dictionary<string, WrittenValueSetInfo> writtenValueSets)
+    private void BuildFhirElementAttribute(string name, string summary, string? isModifier, ElementDefinition element, int orderOffset, string choice, string fiveWs, string? since = null, (string, string)? until = null, string? xmlSerialization = null)
     {
-        bool hasDefinedEnum = true;
-
-        if ((element.Binding?.Strength != Hl7.Fhir.Model.BindingStrength.Required) ||
-            (!info.TryExpandVs(element.Binding.ValueSet, out ValueSet? vs)) ||
-            _exclusionSet.Contains(vs.Url) ||
-            (_codedElementOverrides.Contains(element.Path) && info.FhirSequence >= FhirReleases.FhirSequenceCodes.R4) ||
-            !writtenValueSets.TryGetValue(vs.Url, out WrittenValueSetInfo vsInfo))
-        {
-            hasDefinedEnum = false;
-            vs = null;
-            vsInfo = default;
-        }
-
-        string codeLiteral;
-        string enumClass;
-        string optional;
-        string rawName = element.cgName();
-        string pascal = rawName.ToPascalCase();
-
-        if (hasDefinedEnum)
-        {
-            string vsClass = vsInfo.ClassName!;      // writtenValueSets[vs!.Url].ClassName;
-            string vsName = vsInfo.ValueSetName!;    // writtenValueSets[vs.Url].ValueSetName;
-
-            if (string.IsNullOrEmpty(vsClass))
-            {
-                codeLiteral = $"Code<{Namespace}.{vsName}>";
-                enumClass = $"{Namespace}.{vsName}";
-            }
-            else
-            {
-                codeLiteral = $"Code<{Namespace}.{vsClass}.{vsName}>";
-                enumClass = $"{Namespace}.{vsClass}.{vsName}";
-
-                if (vsName.ToUpperInvariant() == pascal.ToUpperInvariant())
-                {
-                    throw new InvalidOperationException($"Using the name '{pascal}' for the property would lead to a compiler error. " +
-                        $"Change the name of the valueset '{vs!.Url}' by adapting the _enumNamesOverride variable in the generator and rerun.");
-                }
-            }
-
-            optional = "?";
-        }
-        else
-        {
-            codeLiteral = $"{Namespace}.Code";
-            enumClass = "string";
-            optional = string.Empty;
-        }
-
-
-        bool isList = element.cgIsArray();
-
-        var ei = new WrittenElementInfo()
-        {
-            FhirElementName = rawName.Replace("[x]", string.Empty, StringComparison.Ordinal),
-            PropertyName = $"{pascal}Element",
-            PropertyType = isList ? $"List<{codeLiteral}>" : codeLiteral,
-            ElementType = codeLiteral,
-            IsList = isList,
-            IsChoice = rawName.Contains("[x]", StringComparison.Ordinal),
-            PrimitiveHelperName = pascal,
-            PrimitiveHelperType = $"{enumClass}{optional}",
-            IsPrimitive = true, // All coded elements are either Code or Code<T> - so primitives
-            IsCodedEnum = hasDefinedEnum
-        };
-
-        return ei;
-    }
-
-    private void BuildFhirElementAttribute(
-        string name,
-        string summary,
-        string? isModifier,
-        ElementDefinition element,
-        int offset,
-        string choice,
-        string fiveWs,
-        string? since = null,
-        (string, string)? until = null)
-    {
-        string attributeText = $"[FhirElement(\"{name}\"{summary}{isModifier}, Order={GetOrder(element)}{choice}{fiveWs}";
+        var xmlser = xmlSerialization is null ? null : $", XmlSerialization = XmlRepresentation.{xmlSerialization}";
+        string attributeText = $"[FhirElement(\"{name}\"{xmlser}{summary}{isModifier}, Order={GetOrder(element)}{choice}{fiveWs}";
         if (since is { })
         {
             attributeText += $", Since=FhirRelease.{since}";
@@ -2532,7 +2576,7 @@ public sealed class CSharpFirely2 : ILanguage
         GenSubset subset,
         int orderOffset)
     {
-        string name = element.cgName().Replace("[x]", string.Empty);
+        string name = element.cgName(removeChoiceMarker: true);
 
         WrittenElementInfo ei = BuildElementInfo(exportedComplexName, element);
         exportedElements.Add(ei);
@@ -2553,51 +2597,61 @@ public sealed class CSharpFirely2 : ILanguage
             fiveWs = $", FiveWs=\"{element.cgFiveWs()}\"";
         }
 
-        var since = _sinceAttributes.TryGetValue(element.Path, out string? s) ? s : null;
-        var until = _untilAttributes.TryGetValue(element.Path, out (string, string) u) ? u : default((string, string)?);
+        string path = element.cgPath();
 
-        var description = element.Path switch
+        var since = _sinceAttributes.TryGetValue(path, out string? s) ? s : null;
+        var until = _untilAttributes.TryGetValue(path, out (string, string) u) ? u : default((string, string)?);
+
+        var description = path switch
         {
             "Signature.who" => element.Short + ".\nNote 1: Since R4 the type of this element should be a fixed type (ResourceReference). For backwards compatibility it remains of type DataType.\nNote 2: Since R5 the cardinality is expanded to 0..1 (previous it was 1..1).",
             "Signature.onBehalfOf" => element.Short + ".\nNote: Since R4 the type of this element should be a fixed type (ResourceReference). For backwards compatibility it remains of type DataType.",
             "Signature.when" => element.Short + ".\nNote: Since R5 the cardinality is expanded to 0..1 (previous it was 1..1).",
             "Signature.type" => element.Short + ".\nNote: Since R5 the cardinality is expanded to 0..* (previous it was 1..*).",
-            _ => attributeDescriptionWithSinceInfo(name, element.Short, since, until)
+            _ => AttributeDescriptionWithSinceInfo(name, element.Short, since, until)
         };
 
-        if (description != null) WriteIndentedComment(description);
+        string? xmlSerialization = path == "Narrative.div" ? "XHtml" :
+            ei.PropertyType is CqlTypeReference ? "XmlAttr" :
+            null;
 
-        if (element.Path == "OperationOutcome.issue.severity")
+        if (description is not null) WriteIndentedComment(description);
+
+        if (path == "OperationOutcome.issue.severity")
         {
             BuildFhirElementAttribute(name, summary, ", IsModifier=true", element, orderOffset, choice, fiveWs);
             BuildFhirElementAttribute(name, summary, null, element, orderOffset, choice, fiveWs, since: "R4");
         }
-        else if (element.Path is "Signature.who" or "Signature.onBehalfOf")
+        else if (path is "Signature.who" or "Signature.onBehalfOf")
         {
             BuildFhirElementAttribute(name, summary, isModifier, element, orderOffset, ", Choice = ChoiceType.DatatypeChoice", fiveWs);
             BuildFhirElementAttribute(name, summary, isModifier, element, orderOffset, "", fiveWs, since: since);
             _writer.WriteLineIndented($"[DeclaredType(Type = typeof(ResourceReference), Since = FhirRelease.R4)]");
-            _writer.WriteLineIndented($"[AllowedTypes(typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.ResourceReference))]");
+            //_writer.WriteLineIndented($"[AllowedTypes(typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.ResourceReference))]");
         }
         else
         {
-            BuildFhirElementAttribute(name, summary, isModifier, element, orderOffset, choice, fiveWs, since, until);
+            BuildFhirElementAttribute(name, summary, isModifier, element, orderOffset, choice, fiveWs, since, until, xmlSerialization);
         }
 
-        if (element.Path == "Meta.profile")
+        if (ei.PropertyType is CqlTypeReference ctr)
+        {
+            _writer.WriteLineIndented($"[DeclaredType(Type = typeof({ctr.DeclaredTypeString}))]");
+        }
+        else if (path == "Meta.profile")
         {
             _writer.WriteLineIndented($"[DeclaredType(Type = typeof(Canonical), Since = FhirRelease.R4)]");
         }
-        else if (element.Path == "Bundle.link.relation")
+        else if (path == "Bundle.link.relation")
         {
             _writer.WriteLineIndented($"[DeclaredType(Type = typeof(Code), Since = FhirRelease.R5)]");
         }
-        else if (element.Path == "Attachment.size")
+        else if (path == "Attachment.size")
         {
             _writer.WriteLineIndented($"[DeclaredType(Type = typeof(UnsignedInt), Since = FhirRelease.STU3)]");
             _writer.WriteLineIndented($"[DeclaredType(Type = typeof(Integer64), Since = FhirRelease.R5)]");
         }
-        else if (element.Path is
+        else if (path is
             "ElementDefinition.constraint.requirements" or
             "ElementDefinition.binding.description" or
             "ElementDefinition.mapping.comment" or
@@ -2607,7 +2661,7 @@ public sealed class CSharpFirely2 : ILanguage
             _writer.WriteLineIndented($"[DeclaredType(Type = typeof(Markdown), Since = FhirRelease.R5)]");
         }
 
-        if (ei.IsCodedEnum)
+        if (TryGetPrimitiveType(ei.PropertyType, out var ptr) && ptr is CodedTypeReference)
         {
             _writer.WriteLineIndented("[DeclaredType(Type = typeof(Code))]");
         }
@@ -2630,7 +2684,7 @@ public sealed class CSharpFirely2 : ILanguage
 
         if (!string.IsNullOrEmpty(resourceReferences))
         {
-            if (element.Path is "Signature.who" or "Signature.onBehalfOf")
+            if (path is "Signature.who" or "Signature.onBehalfOf")
             {
                 _writer.WriteLineIndented($"[References(\"Practitioner\",\"RelatedPerson\",\"Patient\",\"Device\",\"Organization\")]");
                 _writer.WriteLineIndented($"[References(\"Practitioner\",\"PractitionerRole\",\"RelatedPerson\",\"Patient\",\"Device\",\"Organization\", Since=FhirRelease.R4)]");
@@ -2656,19 +2710,142 @@ public sealed class CSharpFirely2 : ILanguage
         writeElementGettersAndSetters(element, ei);
     }
 
-    private string? attributeDescriptionWithSinceInfo(string name, string baseDescription, string? since = null, (string, string)? until = null)
+
+    private static string? AttributeDescriptionWithSinceInfo(string name, string baseDescription, string? since = null, (string, string)? until = null)
     {
         return (since, until, baseDescription) switch
         {
             (_, _, null) => null,
             (not null, _, _) => baseDescription +
                              $". Note: Element was introduced in {since}, do not use when working with older releases.",
-            (_, (var release, ""), _) when until != null => baseDescription +
-                             $". Note: Element is deprecated since {release}, do not use with {release} and newer releases.",
-            (_, (var release, var replacedBy), _) when until != null => baseDescription +
-                             $". Note: Element is replaced by '{replacedBy}' since {release}. Do not use this element '{name}' with {release} and newer releases.",
+            (_, (var release, ""), _) => baseDescription +
+                                         $". Note: Element is deprecated since {release}, do not use with {release} and newer releases.",
+            (_, (var release, var replacedBy), _) => baseDescription +
+                                                     $". Note: Element is replaced by '{replacedBy}' since {release}. Do not use this element '{name}' with {release} and newer releases.",
             _ => baseDescription
         };
+    }
+
+    private static PrimitiveTypeReference BuildTypeReferenceForCode(DefinitionCollection info, ElementDefinition element, Dictionary<string, WrittenValueSetInfo> writtenValueSets)
+    {
+        if ((element.Binding?.Strength != Hl7.Fhir.Model.BindingStrength.Required) ||
+            (!info.TryExpandVs(element.Binding.ValueSet, out ValueSet? vs)) ||
+            _exclusionSet.Contains(vs.Url) ||
+            (_codedElementOverrides.Contains(element.Path) && info.FhirSequence >= FhirReleases.FhirSequenceCodes.R4) ||
+            !writtenValueSets.TryGetValue(vs.Url, out WrittenValueSetInfo vsInfo))
+        {
+            return PrimitiveTypeReference.GetTypeReference("code");
+        }
+
+        string vsClass = vsInfo.ClassName;
+        string vsName = vsInfo.ValueSetName;
+
+        if (string.IsNullOrEmpty(vsClass))
+        {
+            return new CodedTypeReference(vsName, null);
+        }
+
+        string pascal = element.cgName().ToPascalCase();
+        if (string.Equals(vsName, pascal, StringComparison.InvariantCultureIgnoreCase))
+        {
+            throw new InvalidOperationException(
+                $"Using the name '{pascal}' for the property would lead to a compiler error. " +
+                $"Change the name of the valueset '{vs.Url}' by adapting the _enumNamesOverride variable in the generator and rerun.");
+        }
+
+        return new CodedTypeReference(vsName, vsClass);
+    }
+
+    private static TypeReference DetermineTypeReferenceForFhirElement(
+        DefinitionCollection info,
+        ElementDefinition element,
+        Dictionary<string, WrittenValueSetInfo> writtenValueSets)
+    {
+        var typeRef = determineTypeReferenceForFhirElementName();
+        bool isList = element.cgCardinalityMax() != 1;
+
+        return isList ? new ListTypeReference(typeRef) : typeRef;
+
+        TypeReference determineTypeReferenceForFhirElementName()
+        {
+            if (element.Path is "Meta.profile")
+            {
+                /* we want to share Meta across different FHIR versions,
+                * so we use the "most common" type to the versions, which
+                * is uri rather than the more specific canonical. */
+                return PrimitiveTypeReference.GetTypeReference("uri");
+            }
+
+            if (element.Path is "Element.id" or "Extension.url")
+            {
+                /* these two properties formally use a CQL primitive (at least,
+                * that's how they are encoded in the StructureDefinition. */
+                return CqlTypeReference.SystemString;
+            }
+
+            var initialTypeName = getTypeNameFromElement();
+
+            // Elements that use multiple datatypes are of type DataType
+            // TODO: Probably need the list of types later to be able to render the
+            // AllowedTypes.
+            if (initialTypeName == "DataType")
+                return new ChoiceTypeReference();
+
+            // Elements of type Code or Code<T> have their own naming/types, so handle those separately.
+            if (initialTypeName == "code")
+                return BuildTypeReferenceForCode(info, element, writtenValueSets);
+
+            if (PrimitiveTypeReference.IsFhirPrimitiveType(initialTypeName))
+                return PrimitiveTypeReference.GetTypeReference(initialTypeName);
+
+            // Otherwise, this is a "normal" name for a complex type.
+            return new ComplexTypeReference(initialTypeName, getPocoNameForComplexTypeReference(initialTypeName));
+
+            string getTypeNameFromElement()
+            {
+                string btn = element.cgBaseTypeName(info, true);
+                if (!string.IsNullOrEmpty(btn))
+                {
+                    // TODO(ginoc): this should move into cgBaseTypeName();
+                    // check to see if the referenced element has an explicit name
+                    if (info.TryFindElementByPath(btn, out StructureDefinition? targetSd, out ElementDefinition? targetEd))
+                    {
+                        return BuildTypeFromPath(targetEd, btn);
+                    }
+
+                    return btn;
+                }
+
+                return element.Type.Count == 1
+                    ? element.Type.First().cgName()
+                    : "DataType";
+            }
+
+            string getPocoNameForComplexTypeReference(string name)
+            {
+                return name.Contains('.')
+                    ? BuildTypeNameForNestedComplexType(element, name)
+                    : TypeReference.MapTypeName(name);
+            }
+        }
+    }
+
+    internal static bool TryGetPrimitiveType(TypeReference tr, [NotNullWhen(true)] out PrimitiveTypeReference? ptr)
+    {
+        if (tr is PrimitiveTypeReference p)
+        {
+            ptr = p;
+            return true;
+        }
+
+        if (tr is ListTypeReference { Element: PrimitiveTypeReference pltr })
+        {
+            ptr = pltr;
+            return true;
+        }
+
+        ptr = null;
+        return false;
     }
 
     internal WrittenElementInfo BuildElementInfo(
@@ -2684,171 +2861,116 @@ public sealed class CSharpFirely2 : ILanguage
         ElementDefinition element,
         Dictionary<string, WrittenValueSetInfo> writtenValueSets)
     {
-        string type;
-        var name = element.cgName().Replace("[x]", string.Empty);
+        var typeRef = DetermineTypeReferenceForFhirElement(info, element, writtenValueSets);
 
-        string btName = element.cgBaseTypeName(info, true);
+        string name = element.cgName(removeChoiceMarker: true);
+        string pascal =
+            element.Path == "Element.id"
+                ? "ElementId"
+                : name.ToPascalCase();
+        bool forPrimitiveType = TryGetPrimitiveType(typeRef, out _);
 
-        if (!string.IsNullOrEmpty(btName))
-        {
-            type = btName;
-        }
-        else if (element.Type.Count == 1)
-        {
-            type = element.Type.First().Code;
-        }
-        else
-        {
-            type = "DataType";
-        }
-
-        // Elements of type Code or Code<T> have their own naming/types, so handle those separately.
-        if (type == "code")
-            return BuildCodedElementInfo(info, element, writtenValueSets);
-
-        /* This is an exception - we want to share Meta across different FHIR versions,
-         * so we use the "most common" type to the versions, which
-         * is uri rather than the more specific canonical. */
-        if (element.Path == "Meta.profile")
-        {
-            type = "uri";
-        }
-
-        bool isPrimitive = false;
-
-        if (type.Contains('.'))
-        {
-            type = BuildTypeFromPath(element, type);
-        }
-
-        string nativeType = type;
-        string optional = string.Empty;
-
-        if (PrimitiveTypeMap.TryGetValue(nativeType, out string? ptmValue))
-        {
-            nativeType = ptmValue;
-
-            if (IsNullable(nativeType))
-            {
-                optional = "?";
-            }
-
-            isPrimitive = true;
-        }
-        else
-        {
-            nativeType = $"{Namespace}.{type}";
-        }
-
-        if (TypeNameMappings.TryGetValue(type, out string? tmValue))
-        {
-            type = tmValue;
-        }
-        else if (!type.Contains('.'))
-        {
-            type = type.ToPascalCase();
-        }
-
-        WrittenElementInfo ei;
-        bool isList = element.cgIsArray();
-        string pascal = name.ToPascalCase();
-
-        ei = new WrittenElementInfo()
-        {
-            FhirElementName = name,
-            PropertyName = isPrimitive ? $"{pascal}Element" : pascal,
-            PropertyType = isList ? $"List<{Namespace}.{type}>" : $"{Namespace}.{type}",
-            ElementType = $"{Namespace}.{type}",
-            IsList = isList,
-            IsChoice = element.cgName().Contains("[x]", StringComparison.Ordinal),
-            IsPrimitive = isPrimitive,
-            PrimitiveHelperName = isPrimitive ? (pascal == exportedComplexName ? $"{pascal}_" : pascal) : null,              // Since properties cannot have the same name as their enclosing types, we'll add a '_' suffix if this happens.
-            PrimitiveHelperType = isPrimitive ? nativeType + optional : null
-        };
-        return ei;
+        return new WrittenElementInfo(
+            FhirElementName: name,
+            FhirElementPath: element.Path,
+            PropertyName: forPrimitiveType ? $"{pascal}Element" : pascal,
+            PropertyType: typeRef,
+            PrimitiveHelperName: forPrimitiveType
+                    ? (pascal == exportedComplexName ? $"{pascal}_" : pascal)
+                    : null // Since properties cannot have the same name as their enclosing types, we'll add a '_' suffix if this happens.
+        );
     }
 
     private void writeElementGettersAndSetters(ElementDefinition element, WrittenElementInfo ei)
     {
         _writer.WriteLineIndented("[DataMember]");
 
-        if (!ei.IsList)
+        if (ei.PropertyType is not ListTypeReference)
         {
-            _writer.WriteLineIndented($"public {ei.PropertyType} {ei.PropertyName}");
+            _writer.WriteLineIndented($"public {ei.PropertyType.PropertyTypeString} {ei.PropertyName}");
 
             OpenScope();
             _writer.WriteLineIndented($"get {{ return _{ei.PropertyName}; }}");
             _writer.WriteLineIndented($"set {{ _{ei.PropertyName} = value; OnPropertyChanged(\"{ei.PropertyName}\"); }}");
             CloseScope();
 
-            _writer.WriteLineIndented($"private {ei.PropertyType} _{ei.PropertyName};");
+            _writer.WriteLineIndented($"private {ei.PropertyType.PropertyTypeString} _{ei.PropertyName};");
             _writer.WriteLine(string.Empty);
         }
         else
         {
-            _writer.WriteLineIndented($"public {ei.PropertyType} {ei.PropertyName}");
+            _writer.WriteLineIndented($"public {ei.PropertyType.PropertyTypeString} {ei.PropertyName}");
 
             OpenScope();
-            _writer.WriteLineIndented($"get {{ if(_{ei.PropertyName}==null) _{ei.PropertyName} = new {ei.PropertyType}(); return _{ei.PropertyName}; }}");
+            _writer.WriteLineIndented($"get {{ if(_{ei.PropertyName}==null) _{ei.PropertyName} =" +
+                                      $" new {ei.PropertyType.PropertyTypeString}(); return _{ei.PropertyName}; }}");
             _writer.WriteLineIndented($"set {{ _{ei.PropertyName} = value; OnPropertyChanged(\"{ei.PropertyName}\"); }}");
             CloseScope();
 
-            _writer.WriteLineIndented($"private {ei.PropertyType} _{ei.PropertyName};");
+            _writer.WriteLineIndented($"private {ei.PropertyType.PropertyTypeString} _{ei.PropertyName};");
             _writer.WriteLine(string.Empty);
         }
 
-        if (ei.IsPrimitive)
+        bool needsPrimitiveProperty = ei.PropertyType is
+            PrimitiveTypeReference or
+            ListTypeReference { Element: PrimitiveTypeReference };
+
+        if (!needsPrimitiveProperty)
         {
-            WriteIndentedComment(element.Short);
-            _writer.WriteLineIndented($"/// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>");
+            return;
+        }
 
-            _writer.WriteLineIndented("[IgnoreDataMember]");
+        WriteIndentedComment(element.Short);
+        _writer.WriteLineIndented($"/// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>");
 
-            if (!ei.IsList)
-            {
-                _writer.WriteLineIndented($"public {ei.PrimitiveHelperType} {ei.PrimitiveHelperName}");
+        _writer.WriteLineIndented("[IgnoreDataMember]");
 
-                OpenScope();
-                _writer.WriteLineIndented($"get {{ return {ei.PropertyName} != null ? {ei.PropertyName}.Value : null; }}");
-                _writer.WriteLineIndented("set");
-                OpenScope();
+        if (ei.PropertyType is PrimitiveTypeReference ptr)
+        {
+            _writer.WriteLineIndented($"public {ptr.ConveniencePropertyTypeString} {ei.PrimitiveHelperName}");
 
-                _writer.WriteLineIndented($"if (value == null)");
+            OpenScope();
+            _writer.WriteLineIndented($"get {{ return {ei.PropertyName} != null ? {ei.PropertyName}.Value : null; }}");
+            _writer.WriteLineIndented("set");
+            OpenScope();
 
-                _writer.IncreaseIndent();
-                _writer.WriteLineIndented($"{ei.PropertyName} = null;");
-                _writer.DecreaseIndent();
-                _writer.WriteLineIndented("else");
-                _writer.IncreaseIndent();
-                _writer.WriteLineIndented($"{ei.PropertyName} = new {ei.PropertyType}(value);");
-                _writer.DecreaseIndent();
-                _writer.WriteLineIndented($"OnPropertyChanged(\"{ei.PrimitiveHelperName}\");");
-                CloseScope(suppressNewline: true);
-                CloseScope();
-            }
-            else
-            {
-                _writer.WriteLineIndented($"public IEnumerable<{ei.PrimitiveHelperType}> {ei.PrimitiveHelperName}");
+            _writer.WriteLineIndented($"if (value == null)");
 
-                OpenScope();
-                _writer.WriteLineIndented($"get {{ return {ei.PropertyName} != null ? {ei.PropertyName}.Select(elem => elem.Value) : null; }}");
-                _writer.WriteLineIndented("set");
-                OpenScope();
+            _writer.IncreaseIndent();
+            _writer.WriteLineIndented($"{ei.PropertyName} = null;");
+            _writer.DecreaseIndent();
+            _writer.WriteLineIndented("else");
+            _writer.IncreaseIndent();
+            _writer.WriteLineIndented($"{ei.PropertyName} = new {ei.PropertyType.PropertyTypeString}(value);");
+            _writer.DecreaseIndent();
+            _writer.WriteLineIndented($"OnPropertyChanged(\"{ei.PrimitiveHelperName}\");");
+            CloseScope(suppressNewline: true);
+            CloseScope();
+        }
+        else if (ei.PropertyType is ListTypeReference { Element: PrimitiveTypeReference lptr })
+        {
+            _writer.WriteLineIndented($"public IEnumerable<{lptr.ConveniencePropertyTypeString}> {ei.PrimitiveHelperName}");
 
-                _writer.WriteLineIndented($"if (value == null)");
+            OpenScope();
+            _writer.WriteLineIndented($"get {{ return {ei.PropertyName} != null ? {ei.PropertyName}.Select(elem => elem.Value) : null; }}");
+            _writer.WriteLineIndented("set");
+            OpenScope();
 
-                _writer.IncreaseIndent();
-                _writer.WriteLineIndented($"{ei.PropertyName} = null;");
-                _writer.DecreaseIndent();
-                _writer.WriteLineIndented("else");
-                _writer.IncreaseIndent();
-                _writer.WriteLineIndented($"{ei.PropertyName} = new {ei.PropertyType}(value.Select(elem=>new {ei.ElementType}(elem)));");
-                _writer.DecreaseIndent();
+            _writer.WriteLineIndented($"if (value == null)");
 
-                _writer.WriteLineIndented($"OnPropertyChanged(\"{ei.PrimitiveHelperName}\");");
-                CloseScope(suppressNewline: true);
-                CloseScope();
-            }
+            _writer.IncreaseIndent();
+            _writer.WriteLineIndented($"{ei.PropertyName} = null;");
+            _writer.DecreaseIndent();
+            _writer.WriteLineIndented("else");
+            _writer.IncreaseIndent();
+            _writer.WriteLineIndented($"{ei.PropertyName} = " +
+                                      $"new {ei.PropertyType.PropertyTypeString}" +
+                                      $"(value.Select(elem=>new {lptr.PropertyTypeString}(elem)));");
+            _writer.DecreaseIndent();
+
+            _writer.WriteLineIndented($"OnPropertyChanged(\"{ei.PrimitiveHelperName}\");");
+            CloseScope(suppressNewline: true);
+            CloseScope();
         }
     }
 
@@ -2920,6 +3042,53 @@ public sealed class CSharpFirely2 : ILanguage
         return type;
     }
 
+    /// <summary>Builds type from path.</summary>
+    /// <param name="type">The type.</param>
+    /// <returns>A string.</returns>
+    private static string BuildTypeNameForNestedComplexType(ElementDefinition ed, string type)
+    {
+        // ginoc 2024.03.12: Release has happened and these are no longer needed - leaving here but commented out until confirmed
+        /*
+        // TODO: the following renames (repairs) should be removed when release 4B is official and there is an
+        //   explicit name in the definition for attributes:
+        //   - Statistic.attributeEstimate.attributeEstimate
+        //   - Citation.contributorship.summary
+
+        if (type.StartsWith("Citation") || type.StartsWith("Statistic") || type.StartsWith("DeviceDefinition"))
+        {
+            string parentName = type.Substring(0, type.IndexOf('.'));
+            var sillyBackboneName = type.Substring(parentName.Length);
+            type = parentName + "." + capitalizeThoseSillyBackboneNames(sillyBackboneName) + "Component";
+        }
+        // end of repair
+        */
+
+        string explicitTypeName = ed.cgExplicitName();
+
+        if (!string.IsNullOrEmpty(explicitTypeName))
+        {
+            string parentName = type.Substring(0, type.IndexOf('.'));
+            type = $"{parentName}" +
+                $".{explicitTypeName}" +
+                $"Component";
+        }
+        else if (type.EndsWith("Component", StringComparison.Ordinal))
+        {
+            return type;
+        }
+        else
+        {
+            string[] components = type.Split('.');
+
+            if (components.Length > 1)
+            {
+                type = string.Join('.', components[0], components.Last().ToPascalCase()) + "Component";
+            }
+        }
+
+        return type;
+    }
+
     /// <summary>Builds element optional flags.</summary>
     /// <param name="element">           The element.</param>
     /// <param name="subset"></param>
@@ -2967,6 +3136,17 @@ public sealed class CSharpFirely2 : ILanguage
         out string allowedTypes,
         out string resourceReferences)
     {
+        //// TODO: We should follow what is specified in R5 - so div/status
+        //// are actually *not* in summary. Wait until SDK6.0 before we get this
+        //// code out.
+        //// TODO: Move this into the ModifyDefinitionsForConsistency method
+        //var isReallySummary = element.Path switch
+        //{
+        //    "Narrative.div" => true,
+        //    "Narrative.status" => true,
+        //    _ => element.IsSummary
+        //};
+
         choice = string.Empty;
         allowedTypes = string.Empty;
         resourceReferences = string.Empty;
@@ -3076,16 +3256,6 @@ public sealed class CSharpFirely2 : ILanguage
         _writer.WriteLine(string.Empty);
     }
 
-    /// <summary>Query if 'typeName' == nullable.</summary>
-    /// <param name="typeName">Name of the type.</param>
-    /// <returns>True if nullable, false if not.</returns>
-    private static bool IsNullable(string typeName) => typeName switch
-    {
-        // nullable reference types are not allowed in current C#
-        "bool" or "decimal" or "DateTime" or "int" or "long" or "uint" or "Guid" => true,
-        _ => false,
-    };
-
     /// <summary>Writes a primitive types.</summary>
     /// <param name="primitives">   The primitives.</param>
     /// <param name="writtenModels">[in,out] The written models.</param>
@@ -3119,7 +3289,7 @@ public sealed class CSharpFirely2 : ILanguage
         string exportName;
         string typeName;
 
-        if (TypeNameMappings.TryGetValue(primitive.Name, out string? tmValue))
+        if (CSharpFirelyCommon.TypeNameMappings.TryGetValue(primitive.Name, out string? tmValue))
         {
             exportName = tmValue;
         }
@@ -3128,7 +3298,7 @@ public sealed class CSharpFirely2 : ILanguage
             exportName = primitive.Name.ToPascalCase();
         }
 
-        if (PrimitiveTypeMap.TryGetValue(primitive.Name, out string? ptmValue))
+        if (CSharpFirelyCommon.PrimitiveTypeMap.TryGetValue(primitive.Name, out string? ptmValue))
         {
             typeName = ptmValue;
         }
@@ -3159,13 +3329,18 @@ public sealed class CSharpFirely2 : ILanguage
 
             WriteNamespaceOpen();
 
-            if (!string.IsNullOrEmpty(primitive.cgpComment()))
+            if (!string.IsNullOrEmpty(primitive.cgpDefinition()))
             {
-                WriteIndentedComment($"Primitive Type {primitive.Name}\n{primitive.cgpComment()}");
+                WriteIndentedComment($"Primitive Type {primitive.Name}\n{primitive.cgpDefinition()}");
             }
             else
             {
                 WriteIndentedComment($"Primitive Type {primitive.Name}");
+            }
+
+            if (!string.IsNullOrEmpty(primitive.cgpComment()))
+            {
+                WriteIndentedComment(primitive.cgpComment(), isSummary: false, isRemarks: true);
             }
 
             _writer.WriteLineIndented("[System.Diagnostics.DebuggerDisplay(@\"\\{Value={Value}}\")]");
@@ -3220,18 +3395,8 @@ public sealed class CSharpFirely2 : ILanguage
             _writer.WriteLineIndented("set { ObjectValue = value; OnPropertyChanged(\"Value\"); }");
             CloseScope();
 
-            /* Generate validator for simple string-based values that have a regex to validate them.
-             * Skip validator for some types for which we have more performant, hand-written validators.
-             */
-        //if (!string.IsNullOrEmpty(primitive.ValidationRegEx) &&
-        //    exportName != "FhirString" && exportName != "FhirUri" && exportName != "Markdown")
-        //{
-        //    _writer.WriteLineIndented("public static bool IsValidValue(string value) => Regex.IsMatch(value, \"^\" + PATTERN + \"$\", RegexOptions.Singleline);");
-        //    _writer.WriteLine(string.Empty);
-        //}
-
-        // close class
-        CloseScope();
+            // close class
+            CloseScope();
 
             WriteNamespaceClose();
 
@@ -3316,6 +3481,7 @@ public sealed class CSharpFirely2 : ILanguage
         _writer.WriteLineIndented("using Hl7.Fhir.Specification;");
         _writer.WriteLineIndented("using Hl7.Fhir.Utility;");
         _writer.WriteLineIndented("using Hl7.Fhir.Validation;");
+        _writer.WriteLineIndented("using SystemPrimitive = Hl7.Fhir.ElementModel.Types;");
         _writer.WriteLine(string.Empty);
 
         WriteCopyright();
@@ -3414,8 +3580,8 @@ public sealed class CSharpFirely2 : ILanguage
     /// <param name="value">    The value.</param>
     /// <param name="isSummary">(Optional) True if is summary, false if not.</param>
     /// <param name="singleLine"></param>
-    private void WriteIndentedComment(string value, bool isSummary = true, bool singleLine = false)
-        => _writer.WriteIndentedComment(value, isSummary, singleLine);
+    private void WriteIndentedComment(string value, bool isSummary = true, bool singleLine = false, bool isRemarks = false)
+        => _writer.WriteIndentedComment(value.TrimEnd(), isSummary, singleLine, isRemarks);
 
     /// <summary>Adds a set of FhirTypes to a total set of exportable WrittenModelInfos.</summary>
     private static void AddModels(
@@ -3469,18 +3635,14 @@ public sealed class CSharpFirely2 : ILanguage
     }
 
     /// <summary>Information about the written element.</summary>
-    internal class WrittenElementInfo
+    internal record WrittenElementInfo(
+        string FhirElementName,
+        string FhirElementPath,
+        string PropertyName,
+        TypeReference PropertyType,
+        string? PrimitiveHelperName)
     {
-        internal string? FhirElementName;
-        internal string? PropertyName;
-        internal string? PropertyType;
-        internal bool IsPrimitive;
-        internal string? PrimitiveHelperName;
-        internal string? PrimitiveHelperType;
-        internal bool IsList;
-        internal bool IsChoice;
-        internal string? ElementType;
-        internal bool IsCodedEnum;
+        //public string FhirElementName => FhirElementPath.Split('.').Last();
     }
 
     /// <summary>Information about the written model.</summary>

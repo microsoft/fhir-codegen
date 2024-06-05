@@ -128,7 +128,17 @@ public partial class DefinitionCollection
         _parentElementsAndType.TryGetValue(path, out string? type) &&
         ((type == "BackboneElement") || (type == "Element"));
 
-    internal bool TryUpdateElement(StructureDefinition destinationSd, ElementDefinition ed)
+    /// <summary>Attempts to update an element within a structure, based on the field orders provided or pulled from the element.</summary>
+    /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>
+    /// <param name="destinationSd">     Destination SD.</param>
+    /// <param name="ed">                The <see cref="ElementDefinition"/> to add the missing ID to.</param>
+    /// <param name="previousFieldOrder">(Optional) The previous field order.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    internal bool TryUpdateElement(
+        StructureDefinition destinationSd,
+        ElementDefinition ed,
+        int? previousFieldOrder = null,
+        int? previousComponentFieldOrder = null)
     {
         // lookup the structure locally because the parameter may be a copy or read only
         if ((!_complexTypesByName.TryGetValue(destinationSd.Name, out StructureDefinition? sd)) &&
@@ -139,15 +149,12 @@ public partial class DefinitionCollection
             throw new Exception($"Failed to find StructureDefinition id: {destinationSd.Id}, name: {destinationSd.Name}, url: {destinationSd.Url}");
         }
 
-        int sdFieldOrder = ed.GetIntegerExtension(CommonDefinitions.ExtUrlEdFieldOrder) ?? -1;
-        int componentFieldOrder = ed.GetIntegerExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder) ?? -1;
+        int sdFieldOrder = previousFieldOrder ?? ed.cgFieldOrder();                             // ed.GetIntegerExtension(CommonDefinitions.ExtUrlEdFieldOrder) ?? -1;
+        int componentFieldOrder = previousComponentFieldOrder ?? ed.cgComponentFieldOrder();    // ed.GetIntegerExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder) ?? -1;
 
         if ((sdFieldOrder == -1) || (componentFieldOrder == -1))
         {
-            throw new Exception(
-                $"ElementDefinitions must be annotated with extensions: " +
-                $"{CommonDefinitions.ExtUrlEdFieldOrder} and " +
-                $"{CommonDefinitions.ExtUrlEdComponentFieldOrder}");
+            throw new Exception("ElementDefinitions must be annotated with field order!");
         }
 
         // check for adding to snapshot
@@ -191,15 +198,12 @@ public partial class DefinitionCollection
             throw new Exception($"Failed to find StructureDefinition id: {destinationSd.Id}, name: {destinationSd.Name}, url: {destinationSd.Url}");
         }
 
-        int sdFieldOrder = ed.GetIntegerExtension(CommonDefinitions.ExtUrlEdFieldOrder) ?? -1;
-        int componentFieldOrder = ed.GetIntegerExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder) ?? -1;
+        int sdFieldOrder = ed.cgFieldOrder();                   // ed.GetIntegerExtension(CommonDefinitions.ExtUrlEdFieldOrder) ?? -1;
+        int componentFieldOrder = ed.cgComponentFieldOrder();   // ed.GetIntegerExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder) ?? -1;
 
         if ((sdFieldOrder == -1) || (componentFieldOrder == -1))
         {
-            throw new Exception(
-                $"ElementDefinitions to insert must be annotated with extensions: " +
-                $"{CommonDefinitions.ExtUrlEdFieldOrder} and " +
-                $"{CommonDefinitions.ExtUrlEdComponentFieldOrder}");
+            throw new Exception("ElementDefinitions to insert must be annotated with field order!");
         }
 
         int lastDot = ed.Path.LastIndexOf('.');
@@ -231,17 +235,18 @@ public partial class DefinitionCollection
                     // increase the order of all subsequent elements
                     foreach (ElementDefinition e in sd.Snapshot.Element.Skip(matchIndex + 1))
                     {
-                        int currentOrder = e.cgFieldOrder();
-                        e.SetIntegerExtension(CommonDefinitions.ExtUrlEdFieldOrder, currentOrder + 1);
+                        int order = e.cgFieldOrder() + 1;
 
+                        int componentOrder = e.cgComponentFieldOrder();
                         int currentLastDot = e.Path.LastIndexOf('.');
                         string currentParentPath = currentLastDot == -1 ? e.Path : e.Path.Substring(0, currentLastDot);
 
                         if (currentParentPath == parentPath)
                         {
-                            int currentComponentOrder = e.GetIntegerExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder) ?? -1;
-                            e.SetIntegerExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, currentComponentOrder + 1);
+                            componentOrder++;
                         }
+
+                        e.cgSetFieldOrder(order, componentOrder);
                     }
                 }
             }
@@ -267,17 +272,18 @@ public partial class DefinitionCollection
                     // increase the order of all subsequent elements
                     foreach (ElementDefinition e in sd.Differential.Element.Skip(matchIndex + 1))
                     {
-                        int currentOrder = e.cgFieldOrder();
-                        e.SetIntegerExtension(CommonDefinitions.ExtUrlEdFieldOrder, currentOrder + 1);
+                        int order = e.cgFieldOrder() + 1;
+                        int componentOrder = e.cgComponentFieldOrder();
 
                         int currentLastDot = e.Path.LastIndexOf('.');
                         string currentParentPath = currentLastDot == -1 ? e.Path : e.Path.Substring(0, currentLastDot);
 
                         if (currentParentPath == parentPath)
                         {
-                            int currentComponentOrder = e.GetIntegerExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder) ?? -1;
-                            e.SetIntegerExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, currentComponentOrder + 1);
+                            componentOrder++;
                         }
+
+                        e.cgSetFieldOrder(order, componentOrder);
                     }
                 }
             }
@@ -336,8 +342,8 @@ public partial class DefinitionCollection
 
             int fo = allFieldOrders.Count;
             allFieldOrders.Add(ed.ElementId, fo);
-            ed.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(fo));
-            ed.AddExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, new Integer(componentFieldOrder));
+
+            ed.cgSetFieldOrder(fo, componentFieldOrder);
 
             //// add to lookup dict
             //_elementSdLookup.Add($"{ed.Path}|{ed.ElementId}", sd);
@@ -484,8 +490,7 @@ public partial class DefinitionCollection
                 }
             }
 
-            ed.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(fo));
-            ed.AddExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder, new Integer(componentFieldOrder));
+            ed.cgSetFieldOrder(fo, componentFieldOrder);
         }
 
         // DSTU2 and STU3 do not always declare types on root elements
@@ -869,7 +874,7 @@ public partial class DefinitionCollection
                 inFieldOrder.Add(pc.Name, fo);
             }
 
-            pc.AddExtension(CommonDefinitions.ExtUrlEdFieldOrder, new Integer(fo));
+            pc.cgSetFieldOrder(fo);
         }
     }
 

@@ -32,6 +32,7 @@ using Ncqa.Cql.Model;
 using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 using static Microsoft.Health.Fhir.CodeGen.Language.Firely.CSharpFirelyCommon;
 using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
+using static Hl7.Fhir.Model.CodeSystem;
 
 namespace Microsoft.Health.Fhir.CodeGen.Language.Firely;
 
@@ -595,10 +596,14 @@ public partial class FirelyNetIG : ILanguage
             // check for simple extensions
             if ((extData.ValueElement != null) && (extData.ElementInfo != null))
             {
-                string elementType = extData.ElementInfo.IsPrimitive ? extData.ElementInfo.PrimitiveHelperType! : extData.ElementInfo.ElementType!;
+                ListTypeReference? extLTR = extData.ElementInfo.PropertyType is ListTypeReference ltr ? ltr : null;
+                _ = CSharpFirely2.TryGetPrimitiveType(extData.ElementInfo.PropertyType, out PrimitiveTypeReference? extPTR);
+
+                //string elementType = extData.ElementInfo.IsPrimitive ? extData.ElementInfo.PrimitiveHelperType! : extData.ElementInfo.ElementType!;
+                string elementType = extPTR?.ConveniencePropertyTypeString ?? extData.ElementInfo.PropertyType.PropertyTypeString;
 
                 // write a getter comment
-                if (extData.ElementInfo.IsList)
+                if (extLTR != null)
                 {
                     writer.WriteIndentedComment(_extValueGetterPrefixArray + extData.Summary, isSummary: true);
                     writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
@@ -612,9 +617,9 @@ public partial class FirelyNetIG : ILanguage
                 // build the getter name
                 //string valueGetterName = extData.Name + "Get" + (extData.ValueInfo.Length > 1 ? type.ToPascalCase() : string.Empty);
 
-                if (extData.ElementInfo.IsList)
+                if (extLTR != null)
                 {
-                    writer.WriteLineIndented($"public static IEnumerable<{extData.ElementInfo.ElementType}> {extData.Name}Get(this {contextType} o) =>");
+                    writer.WriteLineIndented($"public static IEnumerable<{extLTR.Element.PropertyTypeString}> {extData.Name}Get(this {contextType} o) =>");
                     writer.WriteLineIndented($"  o.GetExtensions({_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
                 }
                 else
@@ -644,7 +649,7 @@ public partial class FirelyNetIG : ILanguage
                 writer.WriteLine();
 
                 // write a setter comment
-                if (extData.ElementInfo.IsList)
+                if (extLTR != null)
                 {
                     writer.WriteIndentedComment(_extValueSetterPrefixArray + extData.Summary, isSummary: true);
                     writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
@@ -656,7 +661,7 @@ public partial class FirelyNetIG : ILanguage
                 }
 
                 // build the setter for either a single value or an array
-                if (extData.ElementInfo.IsList)
+                if (extLTR != null)
                 {
                     writer.WriteLineIndented($"public static void {extData.Name}Set(this {contextType} o, IEnumerable<{elementType}>? val)");
                     OpenScope(writer);      // setter function open
@@ -667,9 +672,9 @@ public partial class FirelyNetIG : ILanguage
                     OpenScope(writer);      // foreach open
 
                     // need to pull the original type so we can create the correct datatype
-                    if (extData.ElementInfo.IsPrimitive)
+                    if (extPTR != null)
                     {
-                        writer.WriteLineIndented($"o.AddExtension({_classNameDefinitions}.{_extUrlPrefix}{extData.Name}, new {extData.ElementInfo.ElementType}(v));");
+                        writer.WriteLineIndented($"o.AddExtension({_classNameDefinitions}.{_extUrlPrefix}{extData.Name}, new {extPTR.ConveniencePropertyTypeString}(v));");
                     }
                     else
                     {
@@ -685,10 +690,11 @@ public partial class FirelyNetIG : ILanguage
                     OpenScope(writer);      // setter function open
                     writer.WriteLineIndented($"o.RemoveExtension({_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
                     writer.WriteLineIndented("if (val == null) return;");
+
                     // need to pull the original type so we can create the correct datatype
-                    if (extData.ElementInfo.IsPrimitive)
+                    if (extPTR != null)
                     {
-                        writer.WriteLineIndented($"o.AddExtension({_classNameDefinitions}.{_extUrlPrefix}{extData.Name}, new {extData.ElementInfo.ElementType}(val));");
+                        writer.WriteLineIndented($"o.AddExtension({_classNameDefinitions}.{_extUrlPrefix}{extData.Name}, new {extPTR.ConveniencePropertyTypeString}(val));");
                     }
                     else
                     {
@@ -845,8 +851,11 @@ public partial class FirelyNetIG : ILanguage
             // check for simple extensions
             if (extData.ElementInfo != null)
             {
+                ListTypeReference? extLTR = extData.ElementInfo.PropertyType is ListTypeReference ltr ? ltr : null;
+                _ = CSharpFirely2.TryGetPrimitiveType(extData.ElementInfo.PropertyType, out PrimitiveTypeReference? extPTR);
+
                 // write a getter comment
-                if (extData.ElementInfo.IsList)
+                if (extLTR != null)
                 {
                     writer.WriteIndentedComment(_extValueGetterPrefixArray + extData.Summary, isSummary: true);
                     writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
@@ -857,9 +866,9 @@ public partial class FirelyNetIG : ILanguage
                     writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
                 }
 
-                if (extData.ElementInfo.IsList)
+                if (extLTR != null)
                 {
-                    writer.WriteLineIndented($"public static IEnumerable<{extData.ElementInfo.ElementType}> {extData.Name}Get(this {contextType} o) =>");
+                    writer.WriteLineIndented($"public static IEnumerable<{extLTR.Element.PropertyTypeString}> {extData.Name}Get(this {contextType} o) =>");
                     writer.WriteLineIndented($"  o.GetExtensions({_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
                 }
                 else
@@ -892,7 +901,7 @@ public partial class FirelyNetIG : ILanguage
                 writer.WriteLine();
 
                 // write a setter comment
-                if (extData.ElementInfo.IsList)
+                if (extLTR != null)
                 {
                     writer.WriteIndentedComment(_extValueSetterPrefixArray + extData.Summary, isSummary: true);
                     writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
@@ -904,7 +913,7 @@ public partial class FirelyNetIG : ILanguage
                 }
 
                 // build the setter for either a single value or an array
-                if (extData.ElementInfo.IsList)
+                if (extLTR != null)
                 {
                     writer.WriteLineIndented($"public static void {extData.Name}Set(this {contextType} o, IEnumerable<{elementType}>? val)");
                     OpenScope(writer);      // setter function open
@@ -915,9 +924,9 @@ public partial class FirelyNetIG : ILanguage
                     OpenScope(writer);      // foreach open
 
                     // need to pull the original type so we can create the correct datatype
-                    if (extData.ElementInfo.IsPrimitive)
+                    if (extPTR != null)
                     {
-                        writer.WriteLineIndented($"o.AddExtension({_classNameDefinitions}.{_extUrlPrefix}{extData.Name}, new {extData.ElementInfo.ElementType}(v));");
+                        writer.WriteLineIndented($"o.AddExtension({_classNameDefinitions}.{_extUrlPrefix}{extData.Name}, new {extPTR.ConveniencePropertyTypeString}(v));");
                     }
                     else
                     {
@@ -933,10 +942,11 @@ public partial class FirelyNetIG : ILanguage
                     OpenScope(writer);      // setter function open
                     writer.WriteLineIndented($"o.RemoveExtension({_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
                     writer.WriteLineIndented("if (val == null) return;");
+
                     // need to pull the original type so we can create the correct datatype
-                    if (extData.ElementInfo.IsPrimitive)
+                    if (extPTR != null)
                     {
-                        writer.WriteLineIndented($"o.AddExtension({_classNameDefinitions}.{_extUrlPrefix}{extData.Name}, new {extData.ElementInfo.ElementType}(val));");
+                        writer.WriteLineIndented($"o.AddExtension({_classNameDefinitions}.{_extUrlPrefix}{extData.Name}, new {extPTR.ConveniencePropertyTypeString}(val));");
                     }
                     else
                     {
@@ -1198,12 +1208,13 @@ public partial class FirelyNetIG : ILanguage
     {
         if ((extData.ValueElement != null) && (extData.ElementInfo != null))
         {
-            string elementType = extData.ElementInfo.IsPrimitive ? extData.ElementInfo.PrimitiveHelperType! : extData.ElementInfo.ElementType!;
+            ListTypeReference? extLTR = extData.ElementInfo.PropertyType is ListTypeReference ltr ? ltr : null;
+            string elementType = extLTR?.Element.PropertyTypeString ?? extData.ElementInfo.PropertyType.PropertyTypeString;
 
             string valName = _processingValuePrefix + extData.Name;
             string extName = extData.ParentName + extData.Name;
 
-            if (extData.ElementInfo.IsList)
+            if (extLTR != null)
             {
                 writer.WriteLineIndented($"IEnumerable<{elementType}>? {valName} = {parentVarName}" +
                     $".GetExtensions({_classNameDefinitions}.{extName})" +
@@ -1261,7 +1272,8 @@ public partial class FirelyNetIG : ILanguage
     {
         if ((extData.ValueElement != null) && (extData.ElementInfo != null))
         {
-            string elementType = extData.ElementInfo.IsPrimitive ? extData.ElementInfo.PrimitiveHelperType! : extData.ElementInfo.ElementType!;
+            ListTypeReference? extLTR = extData.ElementInfo.PropertyType is ListTypeReference ltr ? ltr : null;
+            string elementType = extLTR?.Element.PropertyTypeString ?? extData.ElementInfo.PropertyType.PropertyTypeString;
 
             string valName = _processingValuePrefix + extData.Name;
             string extName = extData.ParentName + extData.Name;
@@ -1347,7 +1359,9 @@ public partial class FirelyNetIG : ILanguage
         {
             bool isList = psi.ValueExtData.IsList && psi.Element.cgCardinalityMax() > 1;
 
-            string elementType = psi.ValueExtData.ElementInfo.IsPrimitive ? psi.ValueExtData.ElementInfo.PrimitiveHelperType! : psi.ValueExtData.ElementInfo.ElementType!;
+            ListTypeReference? extLTR = psi.ValueExtData.ElementInfo.PropertyType is ListTypeReference ltr ? ltr : null;
+            string elementType = extLTR?.Element.PropertyTypeString ?? psi.ValueExtData.ElementInfo.PropertyType.PropertyTypeString;
+            //string elementType = psi.ValueExtData.ElementInfo.IsPrimitive ? psi.ValueExtData.ElementInfo.PrimitiveHelperType! : psi.ValueExtData.ElementInfo.ElementType!;
 
             string valName = _processingValuePrefix + psi.ValueExtData.Name;
             string extName = psi.ValueExtData.ParentName + psi.ValueExtData.Name;
@@ -1466,9 +1480,13 @@ public partial class FirelyNetIG : ILanguage
             writer.WriteLineIndented($"if ({valName} != null)");
             OpenScope(writer);      // if open
 
-            string elementType = extData.ElementInfo.IsPrimitive ? extData.ElementInfo.PrimitiveHelperType! : extData.ElementInfo.ElementType!;
+            ListTypeReference? extLTR = extData.ElementInfo.PropertyType is ListTypeReference ltr ? ltr : null;
+            _ = CSharpFirely2.TryGetPrimitiveType(extData.ElementInfo.PropertyType, out PrimitiveTypeReference? extPTR);
 
-            if (extData.ElementInfo.IsList)
+            //string elementType = extData.ElementInfo.IsPrimitive ? extData.ElementInfo.PrimitiveHelperType! : extData.ElementInfo.ElementType!;
+            string elementType = extPTR?.ConveniencePropertyTypeString ?? extData.ElementInfo.PropertyType.PropertyTypeString;
+
+            if (extLTR != null)
             {
                 string iteratorValName = _processingValuePrefix + extData.Name + _processingArraySuffix;
                 string iteratorBoolName = _processingExtAddPrefix + extData.Name + _processingArraySuffix;
@@ -1486,9 +1504,9 @@ public partial class FirelyNetIG : ILanguage
 
                 writer.WriteLineIndented($"if ({_processingValuePrefix}{extData.Name}{_processingArraySuffix} == null) continue;");
 
-                if (extData.ElementInfo.IsPrimitive)
+                if (extPTR != null)
                 {
-                    writer.WriteLineIndented($"{parentObjectName}.AddExtension({extensionLiteral}, new {extData.ElementInfo.ElementType!}({iteratorValName}));");
+                    writer.WriteLineIndented($"{parentObjectName}.AddExtension({extensionLiteral}, new {extPTR.ConveniencePropertyTypeString}({iteratorValName}));");
                 }
                 else
                 {
@@ -1509,9 +1527,9 @@ public partial class FirelyNetIG : ILanguage
 
                 CloseScope(writer);         // if close
             }
-            else if (extData.ElementInfo.IsPrimitive)
+            if (extPTR != null)
             {
-                writer.WriteLineIndented($"{parentObjectName}.AddExtension({extensionLiteral}, new {extData.ElementInfo.ElementType!}({valName}));");
+                writer.WriteLineIndented($"{parentObjectName}.AddExtension({extensionLiteral}, new {extPTR.ConveniencePropertyTypeString}({valName}));");
                 if (!string.IsNullOrEmpty(parentBoolName))
                 {
                     writer.WriteLineIndented($"{parentBoolName} = true;");
@@ -1605,7 +1623,11 @@ public partial class FirelyNetIG : ILanguage
             // check if we have type information
             if ((subExtData.ValueElement != null) && (subExtData.ElementInfo != null))
             {
-                et = subExtData.ElementInfo.IsPrimitive ? subExtData.ElementInfo.PrimitiveHelperType! : subExtData.ElementInfo.ElementType!;
+                ListTypeReference? subExtLTR = subExtData.ElementInfo.PropertyType is ListTypeReference ltr ? ltr : null;
+                _ = CSharpFirely2.TryGetPrimitiveType(subExtData.ElementInfo.PropertyType, out PrimitiveTypeReference? subExtPTR);
+
+                et = subExtPTR?.ConveniencePropertyTypeString ?? subExtData.ElementInfo.PropertyType.PropertyTypeString;
+                //et = subExtData.ElementInfo.IsPrimitive ? subExtData.ElementInfo.PrimitiveHelperType! : subExtData.ElementInfo.ElementType!;
 
                 // get optional flags
                 BuildElementOptionalFlags(
@@ -1781,9 +1803,13 @@ public partial class FirelyNetIG : ILanguage
 
         if ((extData.ValueElement != null) && (extData.ElementInfo != null))
         {
-            string elementType = extData.ElementInfo.IsPrimitive ? extData.ElementInfo.PrimitiveHelperType! : extData.ElementInfo.ElementType!;
+            ListTypeReference? extLTR = extData.ElementInfo.PropertyType is ListTypeReference ltr ? ltr : null;
+            _ = CSharpFirely2.TryGetPrimitiveType(extData.ElementInfo.PropertyType, out PrimitiveTypeReference? extPTR);
 
-            if (extData.ElementInfo.IsList)
+            //string elementType = extData.ElementInfo.IsPrimitive ? extData.ElementInfo.PrimitiveHelperType! : extData.ElementInfo.ElementType!;
+            string elementType = extPTR?.ConveniencePropertyTypeString ?? extData.ElementInfo.PropertyType.PropertyTypeString;
+
+            if (extLTR != null)
             {
                 return [new KeyValuePair<string, string>(valName, "IEnumerable<" + elementType + ">"),];
             }
@@ -2405,7 +2431,7 @@ public partial class FirelyNetIG : ILanguage
             // we are okay using a narrower type than the extension in the profile context
             CSharpFirely2.WrittenElementInfo? ei = BuildElementInfo(contextCd.Structure.cgName(), contextCd.Element);
 
-            contextType = ei?.ElementType ?? "Hl7.Fhir.Model.Element";
+            contextType = ei?.PropertyType.PropertyTypeString ?? "Hl7.Fhir.Model.Element";
 
             //// need to find the context info
             //ExtensionContextRec? ctx = extData.Contexts.FirstOrDefault(ctx => ctx.ContextTarget?.Element.Path == contextCd.Element.Path);
@@ -2898,44 +2924,46 @@ public partial class FirelyNetIG : ILanguage
         string exportedComplexName,
         ElementDefinition element)
     {
-        CSharpFirely2.WrittenElementInfo ei = CSharpFirely2.BuildElementInfo(_info, exportedComplexName, element, _valueSetInfoByUrl);
+        return CSharpFirely2.BuildElementInfo(_info, exportedComplexName, element, _valueSetInfoByUrl);
+        //CSharpFirely2.WrittenElementInfo ei = CSharpFirely2.BuildElementInfo(_info, exportedComplexName, element, _valueSetInfoByUrl);
 
-        // for our use, we are going to make every type optional, so strip all of them here for sanity
-        if (ei.ElementType?.EndsWith('?') ?? false)
-        {
-            ei.ElementType = ei.ElementType[..^1];
-        }
+        //// for our use, we are going to make every type optional, so strip all of them here for sanity
+        //if ((ei.PropertyType is PrimitiveTypeReference eiPTR) && eiPTR.ConveniencePropertyType.IsValueType)
+        ////if (ei.ElementType?.EndsWith('?') ?? false)
+        //{
+        //    ei.ElementType = ei.ElementType[..^1];
+        //}
 
-        if (ei.PrimitiveHelperName?.EndsWith('?') ?? false)
-        {
-            ei.PrimitiveHelperName = ei.PrimitiveHelperName[..^1];
-        }
+        //if (ei.PrimitiveHelperName?.EndsWith('?') ?? false)
+        //{
+        //    ei.PrimitiveHelperName = ei.PrimitiveHelperName[..^1];
+        //}
 
-        if (ei.PrimitiveHelperType?.EndsWith('?') ?? false)
-        {
-            ei.PrimitiveHelperType = ei.PrimitiveHelperType[..^1];
-        }
+        //if (ei.PrimitiveHelperType?.EndsWith('?') ?? false)
+        //{
+        //    ei.PrimitiveHelperType = ei.PrimitiveHelperType[..^1];
+        //}
 
-        if (ei.PropertyType?.EndsWith('?') ?? false)
-        {
-            ei.PropertyType = ei.PropertyType[..^1];
-        }
+        //if (ei.PropertyType?.EndsWith('?') ?? false)
+        //{
+        //    ei.PropertyType = ei.PropertyType[..^1];
+        //}
 
-        // the Firely builder assumes all ValueSets are in the HL7.Fhir.Model namespace, so we need to fix any that are not
-        if (ei.ElementType?.StartsWith("Code<", StringComparison.Ordinal) ?? false)
-        {
-            string srcType = ei.PrimitiveHelperType ?? string.Empty;
+        //// the Firely builder assumes all ValueSets are in the HL7.Fhir.Model namespace, so we need to fix any that are not
+        //if (ei.ElementType?.StartsWith("Code<", StringComparison.Ordinal) ?? false)
+        //{
+        //    string srcType = ei.PrimitiveHelperType ?? string.Empty;
 
-            if (_valueSetNameMaps.TryGetValue(srcType, out string? fixedType))
-            {
-                ei.ElementType = ei.ElementType?.Replace(srcType, fixedType, StringComparison.Ordinal);
-                ei.PrimitiveHelperName = ei.PrimitiveHelperName?.Replace(srcType, fixedType, StringComparison.Ordinal);
-                ei.PrimitiveHelperType = ei.PrimitiveHelperType?.Replace(srcType, fixedType, StringComparison.Ordinal);
-                ei.PropertyType = ei.PropertyType?.Replace(srcType, fixedType, StringComparison.Ordinal);
-            }
-        }
+        //    if (_valueSetNameMaps.TryGetValue(srcType, out string? fixedType))
+        //    {
+        //        ei.ElementType = ei.ElementType?.Replace(srcType, fixedType, StringComparison.Ordinal);
+        //        ei.PrimitiveHelperName = ei.PrimitiveHelperName?.Replace(srcType, fixedType, StringComparison.Ordinal);
+        //        ei.PrimitiveHelperType = ei.PrimitiveHelperType?.Replace(srcType, fixedType, StringComparison.Ordinal);
+        //        ei.PropertyType = ei.PropertyType?.Replace(srcType, fixedType, StringComparison.Ordinal);
+        //    }
+        //}
 
-        return ei;
+        //return ei;
     }
 
     private void BuildElementOptionalFlags(
@@ -3191,7 +3219,7 @@ public partial class FirelyNetIG : ILanguage
                                 ContextElementInfo = ei,
                                 ContextTypeName = targetCd?.IsRootOfStructure == true
                                     ? targetCd.Element.Path
-                                    : ei?.ElementType ?? "Hl7.Fhir.Model.Extension",
+                                    : ei?.PropertyType.PropertyTypeString ?? "Hl7.Fhir.Model.Extension",
                             });
 
                             // nothing more to do for this context
@@ -3228,7 +3256,7 @@ public partial class FirelyNetIG : ILanguage
                         ContextElementInfo = BuildElementInfo(contextCd.Structure.cgName(), contextCd.Element),
                         ContextTypeName = contextCd?.IsRootOfStructure == true
                             ? contextCd.Element.Path
-                            : ei?.ElementType ?? "Hl7.Fhir.Model.Element",
+                            : ei?.PropertyType.PropertyTypeString ?? "Hl7.Fhir.Model.Element",
                     });
                 }
             }
@@ -3247,16 +3275,17 @@ public partial class FirelyNetIG : ILanguage
                         Expression = "DataType",
                     },
                     ContextTarget = null,
-                    ContextElementInfo = new CSharpFirely2.WrittenElementInfo()
-                    {
-                        ElementType = "Hl7.Fhir.Model.DataType",
-                        PropertyType = "Hl7.Fhir.Model.DataType",
-                        IsPrimitive = false,
-                        IsChoice = true,
-                        FhirElementName = "",
-                        IsList = false,
-                        IsCodedEnum = false,
-                    },
+                    ContextElementInfo = new("", "", "", new ChoiceTypeReference(), null),
+                    //ContextElementInfo = new CSharpFirely2.WrittenElementInfo()
+                    //{
+                    //    ElementType = "Hl7.Fhir.Model.DataType",
+                    //    PropertyType = "Hl7.Fhir.Model.DataType",
+                    //    IsPrimitive = false,
+                    //    IsChoice = true,
+                    //    FhirElementName = "",
+                    //    IsList = false,
+                    //    IsCodedEnum = false,
+                    //},
                     ContextTypeName = "Hl7.Fhir.Model.DataType",
                 });
             }
@@ -3341,11 +3370,16 @@ public partial class FirelyNetIG : ILanguage
 
         CSharpFirely2.WrittenElementInfo? valueElementInfo = valueElement == null ? null : BuildElementInfo(string.Empty, valueElement);
 
+
         string valueTypeName;
 
         if (valueElementInfo != null)
         {
-            valueTypeName = valueElementInfo.IsPrimitive ? valueElementInfo.PrimitiveHelperType! : valueElementInfo.ElementType!;
+            ListTypeReference? extLTR = valueElementInfo.PropertyType is ListTypeReference ltr ? ltr : null;
+            _ = CSharpFirely2.TryGetPrimitiveType(valueElementInfo.PropertyType, out PrimitiveTypeReference? extPTR);
+
+            //valueTypeName = valueElementInfo.IsPrimitive ? valueElementInfo.PrimitiveHelperType! : valueElementInfo.ElementType!;
+            valueTypeName = extPTR?.ConveniencePropertyTypeString ?? valueElementInfo.PropertyType.PropertyTypeString;
         }
         else
         {
@@ -3377,7 +3411,7 @@ public partial class FirelyNetIG : ILanguage
         return extData;
     }
 
-    private bool ExtensionContextIsExplicitlyDataType(ExtensionContextRec ctx) => ctx.ContextElementInfo?.ElementType switch
+    private bool ExtensionContextIsExplicitlyDataType(ExtensionContextRec ctx) => ctx.ContextElementInfo?.PropertyType.PropertyTypeString switch
     {
         "Hl7.Fhir.Model.DataType" => true,
         "DataType" => true,
@@ -3401,7 +3435,7 @@ public partial class FirelyNetIG : ILanguage
         return _info.PrimitiveTypesByName.ContainsKey(btName) || _info.ComplexTypesByName.ContainsKey(btName);
     }
 
-    private bool ExtensionContextIsExplicitlyElement(ExtensionContextRec ctx) => ctx.ContextElementInfo?.ElementType switch
+    private bool ExtensionContextIsExplicitlyElement(ExtensionContextRec ctx) => ctx.ContextElementInfo?.PropertyType.PropertyTypeString switch
     {
         "Hl7.Fhir.Model.Element" => true,
         "Element" => true,

@@ -85,6 +85,11 @@ public record class ComponentDefinition
         : !string.IsNullOrEmpty(Structure?.Purpose) ? Structure.Purpose
         : string.Empty;
 
+    public string cgComment() =>
+        !string.IsNullOrEmpty(Element?.Comment) ? Element.Comment
+        : !string.IsNullOrEmpty(Structure?.Purpose) ? Structure.Purpose
+        : string.Empty;
+
     /// <summary>Cg name rooted.</summary>
     /// <param name="convention">(Optional) The convention.</param>
     /// <returns>A string.</returns>

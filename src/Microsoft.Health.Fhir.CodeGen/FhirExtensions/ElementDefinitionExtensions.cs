@@ -6,6 +6,7 @@
 
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
+using Hl7.Fhir.Utility;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGen.Utils;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
@@ -17,10 +18,57 @@ namespace Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 /// <summary>An element definition extensions.</summary>
 public static class ElementDefinitionExtensions
 {
-    /// <summary>Gets the field order.</summary>
-    public static int cgFieldOrder(this ElementDefinition ed) => ed.GetExtensionValue<Hl7.Fhir.Model.Integer>(CommonDefinitions.ExtUrlEdFieldOrder)?.Value ?? -1;
+    public record class ElementFieldOrder
+    {
+        public required int FieldOrder { get; init; }
+        public required int ComponentFieldOrder { get; init; }
+    }
 
-    public static int cgComponentFieldOrder(this ElementDefinition ed) => ed.GetExtensionValue<Hl7.Fhir.Model.Integer>(CommonDefinitions.ExtUrlEdComponentFieldOrder)?.Value ?? -1;
+    /// <summary>An ElementDefinition extension method that sets the field orders for an element.</summary>
+    /// <param name="ed">                 The ElementDefinition to act on.</param>
+    /// <param name="fieldOrder">         The field order.</param>
+    /// <param name="componentFieldOrder">The component field order.</param>
+    public static void cgSetFieldOrder(this ElementDefinition ed, int fieldOrder, int componentFieldOrder)
+    {
+        ElementFieldOrder efo = new()
+        {
+            FieldOrder = fieldOrder,
+            ComponentFieldOrder = componentFieldOrder,
+        };
+
+        if (ed.HasAnnotation<ElementFieldOrder>())
+        {
+            ed.RemoveAnnotations<ElementFieldOrder>();
+        }
+
+        ed.AddAnnotation(efo);
+    }
+
+    /// <summary>Gets the field order (order within the structure it is defined by).</summary>
+    public static int cgFieldOrder(this ElementDefinition ed)
+    {
+        if (ed.TryGetAnnotation(out ElementFieldOrder? efo))
+        {
+            return efo!.FieldOrder;
+        }
+
+        return -1;
+    }
+    //public static int cgFieldOrder(this ElementDefinition ed) => ed.GetExtensionValue<Hl7.Fhir.Model.Integer>(CommonDefinitions.ExtUrlEdFieldOrder)?.Value ?? -1;
+
+    /// <summary>Gets the component field order for an element (order within its parent path).</summary>
+    /// <param name="ed">The ElementDefinition to act on.</param>
+    /// <returns>An int.</returns>
+    public static int cgComponentFieldOrder(this ElementDefinition ed)
+    {
+        if (ed.TryGetAnnotation(out ElementFieldOrder? efo))
+        {
+            return efo!.ComponentFieldOrder;
+        }
+
+        return -1;
+    }
+    //public static int cgComponentFieldOrder(this ElementDefinition ed) => ed.GetExtensionValue<Hl7.Fhir.Model.Integer>(CommonDefinitions.ExtUrlEdComponentFieldOrder)?.Value ?? -1;
 
     /// <summary>Gets the full path of the base definition.</summary>
     public static string cgBasePath(this ElementDefinition ed) => ed.Base?.Path ?? string.Empty;
@@ -29,10 +77,11 @@ public static class ElementDefinitionExtensions
     public static string cgExplicitName(this ElementDefinition ed) => ed.GetExtensionValue<FhirString>(CommonDefinitions.ExtUrlExplicitTypeName)?.ToString() ?? string.Empty;
 
     /// <summary>Gets the short name of this element, or explicit name if there is one.</summary>
-    /// <param name="ed">               The ed to act on.</param>
-    /// <param name="allowExplicitName">(Optional) True to allow, false to suppress the explicit name.</param>
+    /// <param name="ed">                The ed to act on.</param>
+    /// <param name="allowExplicitName"> (Optional) True to allow, false to suppress the explicit name.</param>
+    /// <param name="removeChoiceMarker">(Optional) True to remove choice marker (strip [x]).</param>
     /// <returns>A string.</returns>
-    public static string cgName(this ElementDefinition ed, bool allowExplicitName = false)
+    public static string cgName(this ElementDefinition ed, bool allowExplicitName = false, bool removeChoiceMarker = false)
     {
         if (allowExplicitName)
         {
@@ -44,8 +93,20 @@ public static class ElementDefinitionExtensions
             }
         }
 
+        if (removeChoiceMarker && ed.Path.EndsWith("[x]", StringComparison.Ordinal))
+        {
+            return ed.Path.Split('.').Last()[0..^3];
+        }
+
         return ed.Path.Split('.').Last();
     }
+
+    /// <summary>Get the path of the element, but strip off any choice-type markers ([x]).</summary>
+    /// <param name="ed">The ed to act on.</param>
+    /// <returns>A string.</returns>
+    public static string cgPath(this ElementDefinition ed) => ed.Path.EndsWith("[x]", StringComparison.Ordinal)
+        ? ed.Path[0..^3]
+        : ed.Path;
 
     /// <summary>Get a short description for a component.</summary>
     /// <returns>A string.</returns>
@@ -159,13 +220,18 @@ public static class ElementDefinitionExtensions
         ?? false;
 
     /// <summary>Gets the base type name for the given ElementDefinition.</summary>
-    /// <param name="ed">     The ElementDefinition.</param>
-    /// <param name="typeMap">(Optional) The dictionary containing type mappings.</param>
+    /// <param name="ed">                            The ElementDefinition.</param>
+    /// <param name="dc">                            The device-context.</param>
+    /// <param name="usePathForElementsWithChildren">True to use path for elements with children.
+    ///  False will return either Element or BackboneElement for any element that has children.</param>
+    /// <param name="typeMap">                       (Optional) The dictionary containing type
+    ///  mappings.</param>
+    /// <param name="namingConvention">              (Optional) The naming convention.</param>
     /// <returns>The base type name.</returns>
     public static string cgBaseTypeName(
         this ElementDefinition ed,
         DefinitionCollection dc,
-        bool usePathForParents,
+        bool usePathForElementsWithChildren,
         Dictionary<string, string>? typeMap = null,
         NamingConvention namingConvention = NamingConvention.PascalCase)
     {
@@ -214,7 +280,7 @@ public static class ElementDefinitionExtensions
         // check for having child elements
         if (dc.IsBackboneElement(ed.Path))       // (dc.HasChildElements(ed.Path))
         {
-            if (usePathForParents)
+            if (usePathForElementsWithChildren)
             {
                 return ed.Path;
             }

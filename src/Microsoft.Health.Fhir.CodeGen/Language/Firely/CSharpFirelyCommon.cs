@@ -11,8 +11,9 @@ namespace Microsoft.Health.Fhir.CodeGen.Language.Firely;
 
 public static class CSharpFirelyCommon
 {
+
     /// <summary>Dictionary mapping FHIR primitive types to language equivalents (see Template-Model.tt#1252).</summary>
-    public static readonly Dictionary<string, string> PrimitiveTypeMap = new()
+    public static readonly Dictionary<string, string> PrimitiveTypeMap = new Dictionary<string, string>()
     {
         { "base64Binary", "byte[]" },
         { "boolean", "bool?" },
@@ -32,6 +33,7 @@ public static class CSharpFirelyCommon
         { "unsignedInt", "int?" },
         { "uri", "string" },
         { "url", "string" },
+        { "uuid", "string" },
         { "xhtml", "string" },
         { "markdown", "string" }
     };
@@ -49,18 +51,21 @@ public static class CSharpFirelyCommon
         { "xhtml", "XHtml" },
     };
 
-    /// <summary>Primitive types that have a specific validation attribute on their Value property.</summary>
-    public static readonly Dictionary<string, string> PrimitiveValidationPatterns = new()
-    {
-        ["uri"] = "UriPattern",
-        ["uuid"] = "UuidPattern",
-        ["id"] = "IdPattern",
-        ["date"] = "DatePattern",
-        ["dateTime"] = "DateTimePattern",
-        ["oid"] = "OidPattern",
-        ["code"] = "CodePattern",
-        ["time"] = "TimePattern",
-    };
+        /// <summary>Primitive types that have a specific validation attribute on their Value property.</summary>
+        public static readonly Dictionary<string, string> PrimitiveValidationPatterns = new()
+        {
+            ["uri"] = "UriPattern",
+            ["uuid"] = "UuidPattern",
+            ["id"] = "IdPattern",
+            ["date"] = "DatePattern",
+            ["dateTime"] = "DateTimePattern",
+            ["oid"] = "OidPattern",
+            ["code"] = "CodePattern",
+            ["time"] = "TimePattern",
+            ["string"] = "StringPattern",
+            ["markdown"] = "StringPattern",
+            ["xhtml"] = "NarrativeXhtmlPattern"
+        };
 
     /// <summary>
     /// Determines the subset of code to generate.

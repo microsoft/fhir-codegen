@@ -137,6 +137,17 @@ public static class StructureDefinitionExtensions
         return sd.cgRootElement()?.cgBaseTypeName(dc, false, typeMap) ?? string.Empty;
     }
 
+    /// <summary>Get the description of a StructureDefinition.</summary>
+    public static string cgDefinition(this StructureDefinition sd) => !string.IsNullOrEmpty(sd.Description)
+        ? sd.Description
+        : sd.Purpose;
+
+    /// <summary>Get the comment for a primitive datatype.</summary>
+    public static string cgComment(this StructureDefinition sd) => (sd.Snapshot != null) && (sd.Snapshot.Element.Count != 0)
+        ? sd.Snapshot.Element[0].Comment
+        : sd.Differential.Element.Count != 0 ? sd.Differential.Element[0].Comment : string.Empty;
+
+
     /// <summary>A StructureDefinition extension method that cg name.</summary>
     /// <param name="sd">The SD to act on.</param>
     /// <returns>A string.</returns>

@@ -4,14 +4,43 @@
 // </copyright>
 
 using Hl7.Fhir.Model;
+using Hl7.Fhir.Utility;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 
 namespace Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 
 public static class OpDefParameterExtensions
 {
+    public record class ParameterFieldOrder
+    {
+        public required int FieldOrder { get; init; }
+    }
+
+    public static void cgSetFieldOrder(this OperationDefinition.ParameterComponent pc, int fieldOrder)
+    {
+        ParameterFieldOrder pfo = new()
+        {
+            FieldOrder = fieldOrder,
+        };
+
+        if (pc.HasAnnotation<ParameterFieldOrder>())
+        {
+            pc.RemoveAnnotations<ParameterFieldOrder>();
+        }
+
+        pc.AddAnnotation(pfo);
+    }
+
     /// <summary>Gets the field order.</summary>
-    public static int cgFieldOrder(this OperationDefinition.ParameterComponent pc) => pc.GetExtensionValue<Hl7.Fhir.Model.Integer>(CommonDefinitions.ExtUrlEdFieldOrder)?.Value ?? -1;
+    public static int cgFieldOrder(this OperationDefinition.ParameterComponent pc)
+    {
+        if (pc.TryGetAnnotation(out ParameterFieldOrder? pfo))
+        {
+            return pfo!.FieldOrder;
+        }
+
+        return -1;
+    }
 
     public static string cgCardinality(this OperationDefinition.ParameterComponent pc) => $"{pc.Min ?? 0}..{pc.Max ?? "*"}";
 

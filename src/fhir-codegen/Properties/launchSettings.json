@@ -7,32 +7,32 @@
         },
         "Firely 5.x Base": {
             "commandName": "Project",
-            "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\temp\\fhir-net-sdk -p hl7.fhir.r5.core#5.0.0 -p hl7.fhir.r5.expansions#5.0.0 --subset base",
+            "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Base\\Model -p hl7.fhir.r5.core#5.0.0 -p hl7.fhir.r5.expansions#5.0.0 --subset base",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely 5.x Conformance": {
             "commandName": "Project",
-            "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\temp\\fhir-net-sdk -p hl7.fhir.r5.core#5.0.0 -p hl7.fhir.r5.expansions#5.0.0 --subset conformance",
+            "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Conformance\\Model -p hl7.fhir.r5.core#5.0.0 -p hl7.fhir.r5.expansions#5.0.0 --subset conformance",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely 5.x STU3": {
             "commandName": "Project",
-            "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\temp\\fhir-net-sdk -p hl7.fhir.r3.core#3.0.2 -p hl7.fhir.r3.expansions#3.0.2 --subset satellite",
+            "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.STU3\\Model -p hl7.fhir.r3.core#3.0.2 -p hl7.fhir.r3.expansions#3.0.2 --subset satellite",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely 5.x R4": {
             "commandName": "Project",
-            "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\temp\\fhir-net-sdk -p hl7.fhir.r4.core#4.0.1 -p hl7.fhir.r4.expansions#4.0.1 --subset satellite --cql-model Fhir401",
+            "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.R4\\Model -p hl7.fhir.r4.core#4.0.1 -p hl7.fhir.r4.expansions#4.0.1 --subset satellite --cql-model Fhir401",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely 5.x R4B": {
             "commandName": "Project",
-            "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\temp\\fhir-net-sdk -p hl7.fhir.r4b.core#4.3.0 -p hl7.fhir.r4b.expansions#4.3.0 --subset satellite",
+            "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.R4B\\Model -p hl7.fhir.r4b.core#4.3.0 -p hl7.fhir.r4b.expansions#4.3.0 --subset satellite",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely 5.x R5": {
             "commandName": "Project",
-            "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\temp\\fhir-net-sdk -p hl7.fhir.r5.core#5.0.0 -p hl7.fhir.r5.expansions#5.0.0 --subset satellite",
+            "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.R5\\Model -p hl7.fhir.r5.core#5.0.0 -p hl7.fhir.r5.expansions#5.0.0 --subset satellite",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely IG Backport": {
