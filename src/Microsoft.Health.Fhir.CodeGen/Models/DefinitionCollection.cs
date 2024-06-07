@@ -106,6 +106,7 @@ public partial class DefinitionCollection
         "http://hl7.org/fhir/ValueSet/age-units",
         "http://hl7.org/fhir/ValueSet/units-of-time",
         "http://hl7.org/fhir/ValueSet/event-timing",
+        "http://hl7.org/fhir/ValueSet/timezones",
     ];
 
     /// <summary>
@@ -127,6 +128,46 @@ public partial class DefinitionCollection
     public bool IsBackboneElement(string path) =>
         _parentElementsAndType.TryGetValue(path, out string? type) &&
         ((type == "BackboneElement") || (type == "Element"));
+
+    public async System.Threading.Tasks.Task<bool> TryGenerateMissingSnapshots()
+    {
+        bool success = true;
+        Hl7.Fhir.Specification.Snapshot.SnapshotGenerator snapshotGenerator = new(this);
+
+        await CreateSnapshots(_complexTypesByName.Values);
+        await CreateSnapshots(_resourcesByName.Values);
+        await CreateSnapshots(_interfacesByName.Values);
+        await CreateSnapshots(_extensionsByUrl.Values);
+        await CreateSnapshots(_profilesByUrl.Values);
+
+        return success;
+
+        async System.Threading.Tasks.Task CreateSnapshots(IEnumerable<StructureDefinition> sds)
+        {
+            foreach (StructureDefinition sd in sds)
+            {
+                if (sd.Snapshot == null)
+                {
+                    // create a new snapshot
+                    sd.Snapshot = new StructureDefinition.SnapshotComponent();
+                }
+
+                if (sd.Snapshot.Element.Count != 0)
+                {
+                    // already has elements
+                    continue;
+                }
+
+                sd.Snapshot.Element = await snapshotGenerator.GenerateAsync(sd);
+
+                if (sd.Snapshot.Element.Count == 0)
+                {
+                    success = false;
+                    Console.WriteLine($"Failed to generate snapshot for {sd.Url} ({sd.Name})");
+                }
+            }
+        }
+    }
 
     /// <summary>Attempts to update an element within a structure, based on the field orders provided or pulled from the element.</summary>
     /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>

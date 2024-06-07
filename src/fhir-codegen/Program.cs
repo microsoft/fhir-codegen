@@ -548,7 +548,7 @@ public class Program
                 ResolvePackageDependencies = rootConfig.ResolvePackageDependencies,
             });
 
-            DefinitionCollection? loaded = loader.LoadPackages(packages.First().Name, packages)
+            DefinitionCollection? loaded = loader.LoadPackages(packages.First().Name, packages).Result
                 ?? throw new Exception($"Could not load packages: {string.Join(',', rootConfig.Packages)}");
 
             // check for a FHIR server URL
@@ -648,7 +648,7 @@ public class Program
                 ResolvePackageDependencies = config.ResolvePackageDependencies,
             });
 
-            DefinitionCollection? loadedLeft = loaderLeft.LoadPackages(packagesLeft.First().Name, packagesLeft)
+            DefinitionCollection? loadedLeft = loaderLeft.LoadPackages(packagesLeft.First().Name, packagesLeft).Result
                 ?? throw new Exception($"Could not load left-hand-side packages: {string.Join(',', config.Packages)}");
 
             List<PackageCacheEntry> packagesRight = [];
@@ -682,7 +682,7 @@ public class Program
                 ResolvePackageDependencies = config.ResolvePackageDependencies,
             });
 
-            DefinitionCollection? loadedRight = loaderLeft.LoadPackages(packagesRight.First().Name, packagesRight)
+            DefinitionCollection? loadedRight = loaderLeft.LoadPackages(packagesRight.First().Name, packagesRight).Result
                 ?? throw new Exception($"Could not load right-hand-side packages: {string.Join(',', config.Packages)}");
 
             PackageComparer comparer = new(config, cache, loadedLeft, loadedRight);

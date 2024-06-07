@@ -3,6 +3,7 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System.Collections.Immutable;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
@@ -228,25 +229,30 @@ public sealed class CSharpFirely2 : ILanguage
     ];
 
     /// <summary>
+    /// Information about special handling for specific value sets (for backwards compatibility of
+    /// generated code)
+    /// </summary>
+    internal record class ValueSetBehaviorOverrides
+    {
+        public required bool AllowShared { get; init; }
+        public HashSet<string> ForceInClasses { get; init; } = [];
+    }
+
+    /// <summary>
     /// (Immutable) ValueSets that need special handling for backwards compatibility
     /// </summary>
     /// <remarks>
     /// Plan to remove in SDK v6.0
     /// </remarks>
-    private static readonly Dictionary<string, ValueSetWriteLocationRec> _oddValueSetBehaviors = new()
+    private static readonly Dictionary<string, ValueSetBehaviorOverrides> _valueSetBehaviorOverrides = new()
     {
-        { "http://hl7.org/fhir/ValueSet/consent-data-meaning", new ValueSetWriteLocationRec() { AllowShared = false, } },
-        { "http://hl7.org/fhir/ValueSet/consent-provision-type", new ValueSetWriteLocationRec() { AllowShared = false, }},
-        { "http://hl7.org/fhir/ValueSet/encounter-status", new ValueSetWriteLocationRec() { AllowShared = false, }},
-        { "http://hl7.org/fhir/ValueSet/list-mode", new ValueSetWriteLocationRec() { AllowShared = false, }},
-        { "http://hl7.org/fhir/ValueSet/timezones", new ValueSetWriteLocationRec() { AllowShared = true, ForceInResources = ["Appointment"] }},
+        { "http://hl7.org/fhir/ValueSet/consent-data-meaning", new ValueSetBehaviorOverrides() { AllowShared = false, } },
+        { "http://hl7.org/fhir/ValueSet/consent-provision-type", new ValueSetBehaviorOverrides() { AllowShared = false, }},
+        { "http://hl7.org/fhir/ValueSet/encounter-status", new ValueSetBehaviorOverrides() { AllowShared = false, }},
+        { "http://hl7.org/fhir/ValueSet/list-mode", new ValueSetBehaviorOverrides() { AllowShared = false, }},
+        //{ "http://hl7.org/fhir/ValueSet/timezones", new ValueSetBehaviorOverrides() { AllowShared = true, ForceInClasses = ["Appointment"] }},
+        //{ "http://hl7.org/fhir/ValueSet/timezones", new ValueSetBehaviorOverrides() { AllowShared = true, ForceInClasses = ["Appointment"] }},
     };
-
-    internal record class ValueSetWriteLocationRec
-    {
-        public required bool AllowShared { get; init; }
-        public HashSet<string> ForceInResources { get; init; } = [];
-    }
 
     /// <summary>
     ///  List of all valuesets that we should publish as a shared Enum although there is only 1 reference to it.
@@ -1092,7 +1098,7 @@ public sealed class CSharpFirely2 : ILanguage
             foreach ((string unversionedUrl, string[] versions) in _info.ValueSetVersions.OrderBy(kvp => kvp.Key))
             {
                 if (_exclusionSet.Contains(unversionedUrl) ||
-                    (_oddValueSetBehaviors.TryGetValue(unversionedUrl, out ValueSetWriteLocationRec? oddInfo) && (oddInfo.AllowShared == false)))
+                    (_valueSetBehaviorOverrides.TryGetValue(unversionedUrl, out ValueSetBehaviorOverrides? oddInfo) && (oddInfo.AllowShared == false)))
                 {
                     continue;
                 }
@@ -1650,28 +1656,93 @@ public sealed class CSharpFirely2 : ILanguage
 
     private void WriteComponentComment(ComponentDefinition cd)
     {
-        string literalShort = cd.Element.Short;
-        string literalDefinition = cd.Element.Definition;
-        string literalComment = cd.Element.Comment;
+        List<string> strings = [];
 
-        if (!string.IsNullOrEmpty(literalShort))
+        if (!string.IsNullOrEmpty(cd.Element.Short))
         {
-            WriteIndentedComment(literalShort);
-            WriteIndentedComment(string.Join("\n", literalDefinition, literalComment), isSummary: false, isRemarks: true);
+            strings.Add(cd.Element.Short);
         }
-        else if (!string.IsNullOrEmpty(literalDefinition))
-        {
-            WriteIndentedComment(literalDefinition);
 
-            if (!string.IsNullOrEmpty(literalComment))
-            {
-                WriteIndentedComment(literalComment, isSummary: false, isRemarks: true);
-            }
-        }
-        else if (!string.IsNullOrEmpty(literalComment))
+        if (!string.IsNullOrEmpty(cd.Element.Definition) &&
+            !cd.Element.Definition.Equals(cd.Element.Short, StringComparison.Ordinal) &&
+            !cd.Element.Definition.Equals(cd.Element.Short + ".", StringComparison.Ordinal))
         {
-            WriteIndentedComment(literalComment);
+            strings.Add(cd.Element.Definition);
         }
+
+        if (!string.IsNullOrEmpty(cd.Element.Comment) &&
+            !cd.Element.Comment.Equals(cd.Element.Short, StringComparison.Ordinal) &&
+            !cd.Element.Comment.Equals(cd.Element.Definition, StringComparison.Ordinal))
+        {
+            strings.Add(cd.Element.Comment);
+        }
+
+        switch (strings.Count)
+        {
+            case 0:
+                WriteIndentedComment("MISSING DESCRIPTION");
+                return;
+
+            case 1:
+                WriteIndentedComment(strings[0]);
+                return;
+
+            case 2:
+                WriteIndentedComment(strings[0]);
+                WriteIndentedComment(strings[1], isSummary: false, isRemarks: true);
+                return;
+
+            case 3:
+                WriteIndentedComment(strings[0]);
+                WriteIndentedComment(string.Join("\n", strings[1..]), isSummary: false, isRemarks: true);
+                return;
+        }
+
+        //string literalShort = cd.Element.Short;
+        //string literalDefinition = cd.Element.Definition == cd.Element.Short ? string.Empty : cd.Element.Definition;
+        //string literalComment = (cd.Element.Comment == cd.Element.Short) || (cd.Element.Comment == cd.Element.Definition) ? string.Empty : cd.Element.Comment;
+
+
+        //// use the short as the summary if it is present
+        //if (!string.IsNullOrEmpty(cd.Element.Short))
+        //{
+        //    WriteIndentedComment(cd.Element.Short);
+
+        //    // for remarks, we want the definition and description, but only what is different that short and each other
+        //    string remarks = cd.Element.Definition == cd.Element.Comment
+        //        ? cd.Element.Definition
+        //        : string.Join("\n", cd.Element.Definition, cd.Element.Comment);
+
+        //    // check for same short and definition
+        //    if (literalShort == literalDefinition)
+        //    {
+        //        if (literalComment != literalShort)
+        //        {
+        //            WriteIndentedComment(literalComment, isSummary: false, isRemarks: true);
+        //        }
+        //    }
+        //    else if (literalComment == literalDefinition)
+        //    {
+        //        WriteIndentedComment(literalDefinition, isSummary: false, isRemarks: true);
+        //    }
+        //    else
+        //    {
+        //        WriteIndentedComment(string.Join("\n", literalDefinition, literalComment), isSummary: false, isRemarks: true);
+        //    }
+        //}
+        //else if (!string.IsNullOrEmpty(literalDefinition))
+        //{
+        //    WriteIndentedComment(literalDefinition);
+
+        //    if (!string.IsNullOrEmpty(literalComment) && (literalComment != literalDefinition))
+        //    {
+        //        WriteIndentedComment(literalComment, isSummary: false, isRemarks: true);
+        //    }
+        //}
+        //else if (!string.IsNullOrEmpty(literalComment))
+        //{
+        //    WriteIndentedComment(literalComment);
+        //}
     }
 
     /// <summary>Writes a component.</summary>
@@ -2334,9 +2405,12 @@ public sealed class CSharpFirely2 : ILanguage
     private void WriteEnums(
         ComponentDefinition complex,
         string className,
-        HashSet<string>? usedEnumNames = null)
+        HashSet<string>? usedEnumNames = null,
+        HashSet<string>? processedValueSets = null)
     {
         usedEnumNames ??= [];
+
+        processedValueSets ??= [];
 
         IEnumerable<ElementDefinition> childElements = complex.cgGetChildren();
 
@@ -2349,13 +2423,25 @@ public sealed class CSharpFirely2 : ILanguage
                     _info.TryExpandVs(element.Binding.ValueSet, out ValueSet? vs))
                 {
                     WriteEnum(vs, className, usedEnumNames);
+                    processedValueSets.Add(vs.Url);
                 }
             }
         }
 
         foreach (ComponentDefinition component in complex.cgChildComponents(_info))
         {
-            WriteEnums(component, className, usedEnumNames);
+            WriteEnums(component, className, usedEnumNames, processedValueSets);
+        }
+
+        // after processing, we need to look for value sets we are forcing in
+        foreach ((string url, ValueSetBehaviorOverrides behaviors) in _valueSetBehaviorOverrides)
+        {
+            if (behaviors.ForceInClasses.Contains(className) &&
+                _info.TryExpandVs(url, out ValueSet? vs) &&
+                !processedValueSets.Contains(vs.Url))
+            {
+                WriteEnum(vs, className, usedEnumNames);
+            }
         }
     }
 
@@ -2370,20 +2456,28 @@ public sealed class CSharpFirely2 : ILanguage
         HashSet<string> usedEnumNames,
         bool silent = false)
     {
-        if (_writtenValueSets.ContainsKey(vs.Url))
+        if (_valueSetBehaviorOverrides.TryGetValue(vs.Url, out ValueSetBehaviorOverrides? behaviors) &&
+            behaviors.ForceInClasses.Contains(className))
         {
-            return;
+            // skip other checks
         }
-
-        if (_exclusionSet.Contains(vs.Url))
+        else
         {
-            return;
-        }
+            if (_writtenValueSets.ContainsKey(vs.Url))
+            {
+                return;
+            }
 
-        //if (vs.IsLimitedExpansion())
-        //{
-        //    return;
-        //}
+            if (_exclusionSet.Contains(vs.Url))
+            {
+                return;
+            }
+
+            //if (vs.IsLimitedExpansion())
+            //{
+            //    return;
+            //}
+        }
 
         string name = (vs.Name ?? vs.Id)
             .Replace(" ", string.Empty, StringComparison.Ordinal)

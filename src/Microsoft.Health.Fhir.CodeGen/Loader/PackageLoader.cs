@@ -294,7 +294,10 @@ public class PackageLoader : IDisposable
     /// <param name="name">    The name.</param>
     /// <param name="packages">The cached package.</param>
     /// <returns>An asynchronous result that yields the package.</returns>
-    public DefinitionCollection? LoadPackages(string name, IEnumerable<PackageCacheEntry> packages, DefinitionCollection? inProgress = null)
+    public async Task<DefinitionCollection?> LoadPackages(
+        string name,
+        IEnumerable<PackageCacheEntry> packages,
+        DefinitionCollection? inProgress = null)
     {
         DefinitionCollection definitions = inProgress ?? new()
         {
@@ -318,7 +321,7 @@ public class PackageLoader : IDisposable
                     throw new Exception($"Could not find or download expansion package: {expansionDirective}");
                 }
 
-                LoadPackages(name, [expansion], definitions);
+                await LoadPackages(name, [expansion], definitions);
             }
 
             // skip if we have already loaded this package
@@ -414,7 +417,7 @@ public class PackageLoader : IDisposable
             // if we are resolving dependencies, do those now
             if (_loadDependencies && (cachedPackage.ResolvedDependencies.Length != 0))
             {
-                LoadPackages(name, cachedPackage.ResolvedDependencies, definitions);
+                await LoadPackages(name, cachedPackage.ResolvedDependencies, definitions);
                 Console.WriteLine($"Dependencies resolved - loading package {cachedPackage.ResolvedDirective}...");
             }
             else
@@ -549,6 +552,9 @@ public class PackageLoader : IDisposable
                 AddSearchResultParameters(definitions);
             }
         }
+
+        // generate any missing Snapshots - note this has to be done after all resources are loaded so dependencies can be resolved
+        _ = await definitions.TryGenerateMissingSnapshots();
 
         return definitions;
     }
