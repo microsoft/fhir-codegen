@@ -600,7 +600,9 @@ public partial class FirelyNetIG : ILanguage
             //    writer.WriteLineIndented($"// Type: {ctx.ContextElementInfo.ElementType}.");
             //}
 
-            string elementType = extData.ValueTypeName;
+            string elementType = extData.ValueTypeName.EndsWith('?')
+                ? extData.ValueTypeName[0..^1]
+                : extData.ValueTypeName;
 
             // check for simple extensions
             if (extData.ElementInfo != null)
@@ -1542,7 +1544,9 @@ public partial class FirelyNetIG : ILanguage
 
                             if (discriminators.Length > 1)
                             {
-                                throw new Exception($"Found multiple discriminators for {id}");
+                                Console.WriteLine($"Found multiple discriminators for {id} in {sd.Url} ({sd.Name})");
+                                break;
+                                //throw new Exception($"Found multiple discriminators for {id}");
                             }
  
                             if (discriminators.Length == 1)
@@ -3067,7 +3071,7 @@ public partial class FirelyNetIG : ILanguage
         {
             foreach (string usingStatement in additionalUsingLibs)
             {
-                writer.WriteLineIndented("using " + usingStatement);
+                writer.WriteLineIndented("using " + usingStatement + ";");
             }
         }
 

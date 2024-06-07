@@ -1697,52 +1697,6 @@ public sealed class CSharpFirely2 : ILanguage
                 WriteIndentedComment(string.Join("\n", strings[1..]), isSummary: false, isRemarks: true);
                 return;
         }
-
-        //string literalShort = cd.Element.Short;
-        //string literalDefinition = cd.Element.Definition == cd.Element.Short ? string.Empty : cd.Element.Definition;
-        //string literalComment = (cd.Element.Comment == cd.Element.Short) || (cd.Element.Comment == cd.Element.Definition) ? string.Empty : cd.Element.Comment;
-
-
-        //// use the short as the summary if it is present
-        //if (!string.IsNullOrEmpty(cd.Element.Short))
-        //{
-        //    WriteIndentedComment(cd.Element.Short);
-
-        //    // for remarks, we want the definition and description, but only what is different that short and each other
-        //    string remarks = cd.Element.Definition == cd.Element.Comment
-        //        ? cd.Element.Definition
-        //        : string.Join("\n", cd.Element.Definition, cd.Element.Comment);
-
-        //    // check for same short and definition
-        //    if (literalShort == literalDefinition)
-        //    {
-        //        if (literalComment != literalShort)
-        //        {
-        //            WriteIndentedComment(literalComment, isSummary: false, isRemarks: true);
-        //        }
-        //    }
-        //    else if (literalComment == literalDefinition)
-        //    {
-        //        WriteIndentedComment(literalDefinition, isSummary: false, isRemarks: true);
-        //    }
-        //    else
-        //    {
-        //        WriteIndentedComment(string.Join("\n", literalDefinition, literalComment), isSummary: false, isRemarks: true);
-        //    }
-        //}
-        //else if (!string.IsNullOrEmpty(literalDefinition))
-        //{
-        //    WriteIndentedComment(literalDefinition);
-
-        //    if (!string.IsNullOrEmpty(literalComment) && (literalComment != literalDefinition))
-        //    {
-        //        WriteIndentedComment(literalComment, isSummary: false, isRemarks: true);
-        //    }
-        //}
-        //else if (!string.IsNullOrEmpty(literalComment))
-        //{
-        //    WriteIndentedComment(literalComment);
-        //}
     }
 
     /// <summary>Writes a component.</summary>
