@@ -416,6 +416,7 @@ public record class FmlTargetTransform : FmlNode
     public required LiteralValue? Literal { get; init; }
     public required string? Identifier { get; init; }
     public required FmlInvocation? Invocation { get; init; }
+    public required FpExpression? fpExpression { get; init; }
 }
 
 public record class FmlExpressionTarget : FmlNode

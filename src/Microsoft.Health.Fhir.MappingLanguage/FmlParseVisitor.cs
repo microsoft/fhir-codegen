@@ -371,20 +371,6 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                     };
                 }
 
-            //case MapFhirPathContext mapFhirPath:
-            //    return new GroupExpression
-            //    {
-            //        FhirPathExpression = ExtractFpExpression(mapFhirPath.fpExpression()),
-
-            //        RawText = mapFhirPath.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
-            //        PrefixComments = GetPrefixComments(mapFhirPath),
-            //        PostfixComments = GetPostfixComments(mapFhirPath),
-            //        Line = mapFhirPath.Start.Line,
-            //        Column = mapFhirPath.Start.Column,
-            //        StartIndex = mapFhirPath.Start.StartIndex,
-            //        StopIndex = mapFhirPath.Stop.StopIndex,
-            //    };
-
             case MapFhirMarkupContext mapFhirMarkup:
                 return new GroupExpression
                 {
@@ -461,29 +447,22 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
             var tt = targetContext.transform();
             if (tt != null)
             {
-                if (tt.Start.StartIndex >  tt.Stop.StopIndex)
+                var shortcutFhirpathExpressionTransform = tt.fpExpression();
+                transform = new FmlTargetTransform()
                 {
-                    System.Diagnostics.Trace.WriteLine($"Invalid parse: {tt.Start.StartIndex},{tt.Stop.StopIndex}");
-                }
-                else
-                {
-                    var shortcutFhirpathExpressionTransform = tt.fpExpression();
-                    transform = new FmlTargetTransform()
-                    {
-                        Literal = GetLiteral(tt?.literal(), _comments),
-                        Identifier = GetString(tt?.qualifiedIdentifier()),
-                        Invocation = ExtractInvocation(tt?.invocation()),
-                        fpExpression = ExtractFpExpression(shortcutFhirpathExpressionTransform),
+                    Literal = GetLiteral(tt.literal(), _comments),
+                    Identifier = GetString(tt.qualifiedIdentifier()),
+                    Invocation = ExtractInvocation(tt.invocation()),
+                    fpExpression = ExtractFpExpression(shortcutFhirpathExpressionTransform),
 
-                        RawText = tt.Start.InputStream.GetText(new Interval(tt.Start.StartIndex, tt.Stop.StopIndex)),
-                        PrefixComments = GetPrefixComments(tt),
-                        PostfixComments = GetPostfixComments(tt),
-                        Line = tt.Start.Line,
-                        Column = tt.Start.Column,
-                        StartIndex = tt.Start.StartIndex,
-                        StopIndex = tt.Stop.StopIndex,
-                    };
-                }
+                    RawText = tt.Start.InputStream.GetText(new Interval(tt.Start.StartIndex, tt.Stop.StopIndex)),
+                    PrefixComments = GetPrefixComments(tt),
+                    PostfixComments = GetPostfixComments(tt),
+                    Line = tt.Start.Line,
+                    Column = tt.Start.Column,
+                    StartIndex = tt.Start.StartIndex,
+                    StopIndex = tt.Stop.StopIndex,
+                };
             }
             var target = new FmlExpressionTarget()
             {
