@@ -235,6 +235,7 @@ public sealed class CSharpFirely2 : ILanguage
     internal record class ValueSetBehaviorOverrides
     {
         public required bool AllowShared { get; init; }
+        public required bool AllowInClasses { get; init; }
         public HashSet<string> ForceInClasses { get; init; } = [];
     }
 
@@ -246,10 +247,11 @@ public sealed class CSharpFirely2 : ILanguage
     /// </remarks>
     private static readonly Dictionary<string, ValueSetBehaviorOverrides> _valueSetBehaviorOverrides = new()
     {
-        { "http://hl7.org/fhir/ValueSet/consent-data-meaning", new ValueSetBehaviorOverrides() { AllowShared = false, } },
-        { "http://hl7.org/fhir/ValueSet/consent-provision-type", new ValueSetBehaviorOverrides() { AllowShared = false, }},
-        { "http://hl7.org/fhir/ValueSet/encounter-status", new ValueSetBehaviorOverrides() { AllowShared = false, }},
-        { "http://hl7.org/fhir/ValueSet/list-mode", new ValueSetBehaviorOverrides() { AllowShared = false, }},
+        { "http://hl7.org/fhir/ValueSet/consent-data-meaning", new ValueSetBehaviorOverrides() { AllowShared = true, AllowInClasses = true, } },
+        { "http://hl7.org/fhir/ValueSet/consent-provision-type", new ValueSetBehaviorOverrides() { AllowShared = true, AllowInClasses = true, }},
+        { "http://hl7.org/fhir/ValueSet/encounter-status", new ValueSetBehaviorOverrides() { AllowShared = true, AllowInClasses = true, }},
+        { "http://hl7.org/fhir/ValueSet/list-mode", new ValueSetBehaviorOverrides() { AllowShared = true, AllowInClasses = true, }},
+        { "http://hl7.org/fhir/ValueSet/color-codes", new ValueSetBehaviorOverrides() { AllowShared = false, AllowInClasses = false, }},
         //{ "http://hl7.org/fhir/ValueSet/timezones", new ValueSetBehaviorOverrides() { AllowShared = true, ForceInClasses = ["Appointment"] }},
         //{ "http://hl7.org/fhir/ValueSet/timezones", new ValueSetBehaviorOverrides() { AllowShared = true, ForceInClasses = ["Appointment"] }},
     };
@@ -2268,6 +2270,21 @@ public sealed class CSharpFirely2 : ILanguage
 
         string explicitName = complex.cgExplicitName();
 
+        /* TODO(ginoc): 2024.06.28 - Special cases to remove in SDK 6.0
+         * - Evidence.statistic.attributeEstimate.attributeEstimate the explicit name is duplicative and was not passed through.
+         * - Citation.citedArtifact.contributorship.summary had a generator prefix.
+         */
+
+        switch (explicitName)
+        {
+            case "AttributeEstimateAttributeEstimate":
+                explicitName = "AttributeEstimate";
+                break;
+            case "ContributorshipSummary":
+                explicitName = "CitedArtifactContributorshipSummary";
+                break;
+        }
+
         // ginoc 2024.03.12: Release has happened and these are no longer needed - leaving here but commented out until confirmed
         /*
         // TODO: the following renames (repairs) should be removed when release 4B is official and there is an
@@ -2285,9 +2302,11 @@ public sealed class CSharpFirely2 : ILanguage
         // end of repair
         */
 
-        string explicitNamePart = string.IsNullOrEmpty(explicitName) ?
-            complex.cgName(NamingConvention.PascalCase) :
-            explicitName;
+        bool useConcatenationInName = complex.Structure.Name == "Citation";
+
+        string explicitNamePart = string.IsNullOrEmpty(explicitName)
+            ? complex.cgName(NamingConvention.PascalCase, useConcatenationInName, useConcatenationInName)
+            : explicitName;
         string componentName = parentExportName + "#" + explicitNamePart;
 
         WriteSerializable();
@@ -2330,18 +2349,33 @@ public sealed class CSharpFirely2 : ILanguage
         foreach (ComponentDefinition component in complex.cgChildComponents(_info))
         {
             string componentExportName;
+            string componentExplicitName = component.cgExplicitName();
 
-            if (string.IsNullOrEmpty(component.cgExplicitName()))
+            if (string.IsNullOrEmpty(componentExplicitName))
             {
                 componentExportName =
-                    $"{component.cgName(NamingConvention.PascalCase)}Component";
+                    $"{component.cgName(NamingConvention.PascalCase, useConcatenationInName, useConcatenationInName)}Component";
             }
             else
             {
-                // Consent.provisionActorComponent is explicit lower case...
-                componentExportName =
-                    $"{component.cgExplicitName()}" +
-                    $"Component";
+                /* TODO(ginoc): 2024.06.28 - Special cases to remove in SDK 6.0
+                 * - Evidence.statistic.attributeEstimate.attributeEstimate the explicit name is duplicative and was not passed through.
+                 * - Citation.citedArtifact.contributorship.summary had a generator prefix.
+                 */
+
+                switch (componentExplicitName)
+                {
+                    case "AttributeEstimateAttributeEstimate":
+                        componentExportName = "AttributeEstimateComponent";
+                        break;
+                    case "ContributorshipSummary":
+                        componentExportName = "CitedArtifactContributorshipSummaryComponent";
+                        break;
+                    default:
+                        // Consent.provisionActorComponent is explicit lower case...
+                        componentExportName = $"{component.cgExplicitName()}Component";
+                        break;
+                }
             }
 
             WriteBackboneComponent(
@@ -2410,28 +2444,35 @@ public sealed class CSharpFirely2 : ILanguage
         HashSet<string> usedEnumNames,
         bool silent = false)
     {
-        if (_valueSetBehaviorOverrides.TryGetValue(vs.Url, out ValueSetBehaviorOverrides? behaviors) &&
-            behaviors.ForceInClasses.Contains(className))
+        bool passes = false;
+
+        if (_valueSetBehaviorOverrides.TryGetValue(vs.Url, out ValueSetBehaviorOverrides? behaviors))
         {
-            // skip other checks
-        }
-        else
-        {
-            if (_writtenValueSets.ContainsKey(vs.Url))
+            if (behaviors.ForceInClasses.Contains(className))
+            {
+                // skip other checks
+                passes = true;
+            }
+            else if (behaviors.AllowInClasses == false)
             {
                 return;
             }
-
-            if (_exclusionSet.Contains(vs.Url))
-            {
-                return;
-            }
-
-            //if (vs.IsLimitedExpansion())
-            //{
-            //    return;
-            //}
         }
+
+        if (passes || _writtenValueSets.ContainsKey(vs.Url))
+        {
+            return;
+        }
+
+        if (passes || _exclusionSet.Contains(vs.Url))
+        {
+            return;
+        }
+
+        //if (vs.IsLimitedExpansion())
+        //{
+        //    return;
+        //}
 
         string name = (vs.Name ?? vs.Id)
             .Replace(" ", string.Empty, StringComparison.Ordinal)
@@ -3064,6 +3105,21 @@ public sealed class CSharpFirely2 : ILanguage
 
         if (!string.IsNullOrEmpty(explicitTypeName))
         {
+            /* TODO(ginoc): 2024.06.28 - Special cases to remove in SDK 6.0
+             * - Evidence.statistic.attributeEstimate.attributeEstimate the explicit name is duplicative and was not passed through.
+             * - Citation.citedArtifact.contributorship.summary had a generator prefix.
+             */
+
+            switch (explicitTypeName)
+            {
+                case "AttributeEstimateAttributeEstimate":
+                    explicitTypeName = "AttributeEstimate";
+                    break;
+                case "ContributorshipSummary":
+                    explicitTypeName = "CitedArtifactContributorshipSummary";
+                    break;
+            }
+
             string parentName = type.Substring(0, type.IndexOf('.'));
             type = $"{parentName}" +
                 $".{explicitTypeName}" +
@@ -3077,9 +3133,14 @@ public sealed class CSharpFirely2 : ILanguage
         {
             string[] components = type.Split('.');
 
-            if (components.Length > 1)
+            // citation needs special handling
+            if ((components.Length > 2) && ed.Path.StartsWith("Citation.", StringComparison.Ordinal))
             {
-                type = string.Join('.', components[0], components.Last().ToPascalCase()) + "Component";
+                type = string.Join('.', components[0], string.Join(string.Empty, components[1..].ToPascalCase())) + "Component";
+            }
+            else if (components.Length > 1)
+            {
+                type = string.Join('.', components[0], components[^1].ToPascalCase()) + "Component";
             }
         }
 

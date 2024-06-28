@@ -56,4 +56,10 @@
     <Page Include="TestData\R4\CapabilityStatement-candle-local.json" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="TestData\R5\expansions\ValueSet-units-of-time.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

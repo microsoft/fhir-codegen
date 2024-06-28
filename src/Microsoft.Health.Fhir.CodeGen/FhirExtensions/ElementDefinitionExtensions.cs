@@ -379,20 +379,25 @@ public static class ElementDefinitionExtensions
     /// <summary>An ElementDefinition extension method that cg name for export.</summary>
     /// <exception cref="ArgumentException">Thrown when one or more arguments have unsupported or
     ///  illegal values.</exception>
-    /// <param name="ed">                    The ed to act on.</param>
-    /// <param name="convention">            The convention.</param>
-    /// <param name="concatenatePath">       (Optional) True to concatenate path.</param>
-    /// <param name="concatenationDelimiter">(Optional) The concatenation delimiter.</param>
-    /// <param name="reservedWords">         (Optional) The reserved words.</param>
+    /// <param name="ed">                              The ed to act on.</param>
+    /// <param name="convention">                      The convention.</param>
+    /// <param name="concatenatePath">                 (Optional) True to concatenate path.</param>
+    /// <param name="concatenationDelimiter">          (Optional) The concatenation delimiter.</param>
+    /// <param name="reservedWords">                   (Optional) The reserved words.</param>
+    /// <param name="skipStructureNameInConcatenation">(Optional) True to skip structure name in
+    ///  concatenation.</param>
     /// <returns>A string.</returns>
     public static string cgNameForExport(
         this ElementDefinition ed,
         NamingConvention convention,
         bool concatenatePath = false,
         string concatenationDelimiter = "",
-        HashSet<string>? reservedWords = null)
+        HashSet<string>? reservedWords = null,
+        bool skipStructureNameInConcatenation = false)
     {
         string name = ed.Path.Split('.').Last();
+
+        int startIndex = skipStructureNameInConcatenation ? ed.Path.IndexOf('.') + 1 : 0;
 
         switch (convention)
         {
@@ -424,7 +429,9 @@ public static class ElementDefinitionExtensions
                 {
                     if (concatenatePath)
                     {
-                        string value = ed.Path.ToPascalCase(true, concatenationDelimiter);
+                        string value = skipStructureNameInConcatenation
+                            ? ed.Path[startIndex..].ToPascalCase(true, concatenationDelimiter)
+                            : ed.Path.ToPascalCase(true, concatenationDelimiter);
 
                         if ((reservedWords != null) &&
                             reservedWords.Contains(value))
@@ -452,7 +459,9 @@ public static class ElementDefinitionExtensions
 
                     if (concatenatePath)
                     {
-                        value = ed.Path.ToCamelCase(true, concatenationDelimiter);
+                        value = skipStructureNameInConcatenation
+                            ? ed.Path[startIndex..].ToCamelCase(true, concatenationDelimiter)
+                            : ed.Path.ToCamelCase(true, concatenationDelimiter);
 
                         if ((reservedWords != null) &&
                             reservedWords.Contains(value))
@@ -482,7 +491,9 @@ public static class ElementDefinitionExtensions
 
                     if (concatenatePath)
                     {
-                        value = ed.Path.ToUpperCase(true, concatenationDelimiter);
+                        value = skipStructureNameInConcatenation
+                            ? ed.Path[startIndex..].ToUpperCase(true, concatenationDelimiter)
+                            : ed.Path.ToUpperCase(true, concatenationDelimiter);
 
                         if ((reservedWords != null) &&
                             reservedWords.Contains(value))
@@ -510,7 +521,9 @@ public static class ElementDefinitionExtensions
 
                     if (concatenatePath)
                     {
-                        value = ed.Path.ToLowerCase(true, concatenationDelimiter);
+                        value = skipStructureNameInConcatenation
+                            ? ed.Path[startIndex..].ToLowerCase(true, concatenationDelimiter)
+                            : ed.Path.ToLowerCase(true, concatenationDelimiter);
 
                         if ((reservedWords != null) &&
                             reservedWords.Contains(value))

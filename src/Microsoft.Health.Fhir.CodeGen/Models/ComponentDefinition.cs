@@ -58,15 +58,24 @@ public record class ComponentDefinition
     /// <returns>A string representing the URL.</returns>
     public string cgUrl() => Element?.cgUrl(Structure) ?? Structure.Url;
 
+    /// <summary>Cg explicit name.</summary>
+    /// <returns>A string.</returns>
     public string cgExplicitName() => Element?.cgExplicitName() ?? string.Empty;
 
-    /// <summary>
-    /// Gets the code generation name.
-    /// </summary>
-    /// <param name="convention">The naming convention.</param>
+    /// <summary>Gets the code generation name.</summary>
+    /// <remarks>Note: Firely generation uses this version.</remarks>
+    /// <param name="convention">                      (Optional) The naming convention.</param>
+    /// <param name="concatenatePath">                 (Optional) True to concatenate path.</param>
+    /// <param name="skipStructureNameInConcatenation">(Optional) True to skip structure name in
+    ///  concatenation.</param>
     /// <returns>A string representing the code generation name.</returns>
-    /// <remarks>Firely uses this version</remarks>
-    public string cgName(NamingConvention convention = NamingConvention.PascalCase) => Element.cgNameForExport(convention);
+    public string cgName(
+        NamingConvention convention = NamingConvention.PascalCase,
+        bool concatenatePath = false,
+        bool skipStructureNameInConcatenation = false) => Element.cgNameForExport(
+            convention,
+            concatenatePath: concatenatePath,
+            skipStructureNameInConcatenation: skipStructureNameInConcatenation);
 
     /// <summary>Get a short description for a component.</summary>
     /// <returns>A string.</returns>

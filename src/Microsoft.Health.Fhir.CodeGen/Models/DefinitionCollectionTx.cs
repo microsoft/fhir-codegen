@@ -5,6 +5,7 @@
 
 
 using System.Diagnostics.CodeAnalysis;
+using System.Xml.Linq;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Specification.Source;
 using Hl7.Fhir.Specification.Terminology;
@@ -24,6 +25,8 @@ public partial class DefinitionCollection : IAsyncResourceResolver
     {
         Parameters p = [];
         p.Parameter.Add(new() { Name = "url", Value = new FhirUri(uri) });
+        p.Parameter.Add(new() { Name = "includeDesignations", Value = new FhirBoolean(false) });
+        //p.Parameter.Add(new() { Name = "displayLanguage", Value = new Code("en") });
 
         try
         {

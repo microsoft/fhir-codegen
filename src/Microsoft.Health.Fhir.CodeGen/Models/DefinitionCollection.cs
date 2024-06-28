@@ -107,6 +107,8 @@ public partial class DefinitionCollection
         "http://hl7.org/fhir/ValueSet/units-of-time",
         "http://hl7.org/fhir/ValueSet/event-timing",
         "http://hl7.org/fhir/ValueSet/timezones",
+        "http://hl7.org/fhir/ValueSet/languages",
+        "http://hl7.org/fhir/ValueSet/currencies",
     ];
 
     /// <summary>
@@ -114,7 +116,12 @@ public partial class DefinitionCollection
     /// </summary>
     public DefinitionCollection()
     {
-        _localTx = new LocalTerminologyService(this);
+        ValueSetExpanderSettings valueSetExpanderSettings = new()
+        {
+            IncludeDesignations = false,
+        };
+
+        _localTx = new LocalTerminologyService(this, valueSetExpanderSettings);
     }
 
     /// <summary>Query if 'path' has child elements.</summary>
