@@ -1826,7 +1826,6 @@ public sealed class CSharpFirely2 : ILanguage
             }
             else
             {
-                // Consent.provisionActorComponent is explicit lower case...
                 componentExportName =
                     $"{component.cgExplicitName()}" +
                     $"Component";
@@ -2274,7 +2273,6 @@ public sealed class CSharpFirely2 : ILanguage
          * - Evidence.statistic.attributeEstimate.attributeEstimate the explicit name is duplicative and was not passed through.
          * - Citation.citedArtifact.contributorship.summary had a generator prefix.
          */
-
         switch (explicitName)
         {
             case "AttributeEstimateAttributeEstimate":
@@ -2376,6 +2374,26 @@ public sealed class CSharpFirely2 : ILanguage
                         componentExportName = $"{component.cgExplicitName()}Component";
                         break;
                 }
+
+                ///* TODO(ginoc): 2024.06.28 - Special cases to remove in SDK 6.0
+                // * - Consent.provision is explicit lower case in R4B and earlier
+                // * - Consent.provision.actor is explicit lower case in R4B and earlier
+                // */
+                //if (_info.FhirSequence < FhirReleases.FhirSequenceCodes.R5)
+                //{
+                //    switch (complex.Element.Path)
+                //    {
+                //        case "Consent.provision":
+                //            componentExportName = "provisionComponent";
+                //            break;
+                //        case "Consent.provision.actor":
+                //            componentExportName = "provisionActorComponent";
+                //            break;
+                //        case "Consent.provision.data":
+                //            componentExportName = "provisionDataComponent";
+                //            break;
+                //    }
+                //}
             }
 
             WriteBackboneComponent(
@@ -3121,27 +3139,37 @@ public sealed class CSharpFirely2 : ILanguage
             }
 
             string parentName = type.Substring(0, type.IndexOf('.'));
-            type = $"{parentName}" +
+            return $"{parentName}" +
                 $".{explicitTypeName}" +
                 $"Component";
         }
-        else if (type.EndsWith("Component", StringComparison.Ordinal))
-        {
-            return type;
-        }
-        else
-        {
-            string[] components = type.Split('.');
 
-            // citation needs special handling
-            if ((components.Length > 2) && ed.Path.StartsWith("Citation.", StringComparison.Ordinal))
+        // check for *possibly* already processed
+        if (type.EndsWith("Component", StringComparison.Ordinal))
+        {
+            // if the path does not end in component, we are good
+            if (!ed.Path.EndsWith("Component", StringComparison.Ordinal))
             {
-                type = string.Join('.', components[0], string.Join(string.Empty, components[1..].ToPascalCase())) + "Component";
+                return type;
             }
-            else if (components.Length > 1)
+            // check for already appending a 'Component' literal
+            else if (type.EndsWith("ComponentComponent", StringComparison.Ordinal))
             {
-                type = string.Join('.', components[0], components[^1].ToPascalCase()) + "Component";
+                return type;
             }
+        }
+        
+        string[] components = type.Split('.');
+
+        // citation needs special handling
+        if ((components.Length > 2) && ed.Path.StartsWith("Citation.", StringComparison.Ordinal))
+        {
+            return string.Join('.', components[0], string.Join(string.Empty, components[1..].ToPascalCase())) + "Component";
+        }
+
+        if (components.Length > 1)
+        {
+            return string.Join('.', components[0], components[^1].ToPascalCase()) + "Component";
         }
 
         return type;
