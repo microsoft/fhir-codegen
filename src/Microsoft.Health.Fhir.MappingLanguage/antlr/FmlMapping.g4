@@ -38,8 +38,8 @@ code
   ;
 
 mapDeclaration
-	: 'map' url '=' identifier
-	;
+  : 'map' url '=' identifier
+  ;
 
 metadataDeclaration
   : METADATA_PREFIX qualifiedIdentifier '=' (literal | markdownLiteral)?  // value is optional to allow descendant maps to remove values from parents
@@ -61,16 +61,16 @@ identifier
   ;
 
 structureDeclaration
-	: 'uses' url ('alias' identifier)? 'as' ('source' | 'queried' | 'target' | 'produced') 
-	;
+  : 'uses' url ('alias' identifier)? 'as' ('source' | 'queried' | 'target' | 'produced') 
+  ;
 
 constantDeclaration 
   : 'let' ID '=' fpExpression ';' // which might just be a literal
   ;
 
 groupDeclaration
-	: 'group' ID parameters extends? typeMode? groupExpressions
-	;
+  : 'group' ID parameters extends? typeMode? groupExpressions
+  ;
 
 parameters
   : '(' parameter (',' parameter)+ ')'
@@ -98,7 +98,7 @@ typeIdentifier
 
 expression
  	: qualifiedIdentifier '->' qualifiedIdentifier ';'  #mapSimpleCopy
- 	| fpExpression ';'                                  #mapFhirPath               
+//  	| fpExpression ';'                                  #mapFhirPath               
   | mapExpression ';'                                 #mapFhirMarkup
  	;
 
@@ -197,6 +197,7 @@ transform
   : literal           // trivial constant transform
   | qualifiedIdentifier       // 'copy' transform
   | invocation        // other named transforms
+  | '(' fpExpression ')'      // fhirpath based expressions
   ;
 
 invocation

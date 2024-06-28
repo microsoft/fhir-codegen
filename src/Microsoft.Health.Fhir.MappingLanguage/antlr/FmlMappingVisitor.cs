@@ -165,13 +165,6 @@ public interface IFmlMappingVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitMapSimpleCopy([NotNull] FmlMappingParser.MapSimpleCopyContext context);
 	/// <summary>
-	/// Visit a parse tree produced by the <c>mapFhirPath</c>
-	/// labeled alternative in <see cref="FmlMappingParser.expression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitMapFhirPath([NotNull] FmlMappingParser.MapFhirPathContext context);
-	/// <summary>
 	/// Visit a parse tree produced by the <c>mapFhirMarkup</c>
 	/// labeled alternative in <see cref="FmlMappingParser.expression"/>.
 	/// </summary>

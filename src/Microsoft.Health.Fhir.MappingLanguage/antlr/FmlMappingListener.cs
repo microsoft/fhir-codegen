@@ -253,18 +253,6 @@ public interface IFmlMappingListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitMapSimpleCopy([NotNull] FmlMappingParser.MapSimpleCopyContext context);
 	/// <summary>
-	/// Enter a parse tree produced by the <c>mapFhirPath</c>
-	/// labeled alternative in <see cref="FmlMappingParser.expression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterMapFhirPath([NotNull] FmlMappingParser.MapFhirPathContext context);
-	/// <summary>
-	/// Exit a parse tree produced by the <c>mapFhirPath</c>
-	/// labeled alternative in <see cref="FmlMappingParser.expression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitMapFhirPath([NotNull] FmlMappingParser.MapFhirPathContext context);
-	/// <summary>
 	/// Enter a parse tree produced by the <c>mapFhirMarkup</c>
 	/// labeled alternative in <see cref="FmlMappingParser.expression"/>.
 	/// </summary>
