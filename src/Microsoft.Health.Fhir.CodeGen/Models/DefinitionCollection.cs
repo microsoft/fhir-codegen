@@ -1507,6 +1507,52 @@ public partial class DefinitionCollection
             _valueSetUrlsById[valueSet.Id] = vsUrl;
         }
 
+        /* TODO(ginoc): 2024.07.01 - Firely Issue Workaround
+         * https://github.com/FirelyTeam/firely-net-sdk/issues/2809
+         * - Units of Time is loading with Chinese translation instead of default values
+         */
+        if ((unversioned == "http://hl7.org/fhir/ValueSet/units-of-time") &&
+            (valueSet.Expansion?.Contains.Any() ?? false) &&
+            !char.IsAsciiLetter(valueSet.Expansion.Contains.First().Display[0]))
+        {
+            foreach (ValueSet.ContainsComponent cc in valueSet.Expansion.Contains)
+            {
+                if (!char.IsAsciiLetter(cc.Display[0]))
+                {
+                    switch (cc.Code)
+                    {
+                        case "s":
+                            cc.Display = "second";
+                            break;
+
+                        case "min":
+                            cc.Display = "minute";
+                            break;
+
+                        case "h":
+                            cc.Display = "hour";
+                            break;
+
+                        case "d":
+                            cc.Display = "day";
+                            break;
+
+                        case "wk":
+                            cc.Display = "week";
+                            break;
+
+                        case "mo":
+                            cc.Display = "month";
+                            break;
+
+                        case "a":
+                            cc.Display = "year";
+                            break;
+                    }
+                }
+            }
+        }
+
         if (_valueSetsByVersionedUrl.TryGetValue(vsUrl, out ValueSet? existing) && (existing != null))
         {
             // sort out unexpanded vs expanded vs multiple expansions

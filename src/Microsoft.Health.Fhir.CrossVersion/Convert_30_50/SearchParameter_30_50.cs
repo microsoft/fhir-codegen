@@ -199,7 +199,7 @@ public class SearchParameter_30_50 : ICrossVersionProcessor<SearchParameter>, IC
 			switch (node.Name)
 			{
 				case "definition":
-					current.DefinitionElement = new Canonical(node.Text);
+					current.DefinitionElement = new Canonical(node.Children().First().Text);
 					break;
 
 				case "expression":
