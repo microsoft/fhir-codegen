@@ -1777,7 +1777,9 @@ public sealed class CSharpFirely2 : ILanguage
         var primaryCodeElementInfo = isResource ? getPrimaryCodedElementInfo(complex, exportName) : null;
 
         if (primaryCodeElementInfo != null)
-            interfaces.Add($"ICoded<{primaryCodeElementInfo.PropertyType}>");
+        {
+            interfaces.Add($"ICoded<{primaryCodeElementInfo.PropertyType.PropertyTypeString}>");
+        }
 
         var modifierElement = complex.cgGetChild("modifierExtension");
         if (modifierElement != null)
@@ -1852,7 +1854,7 @@ public sealed class CSharpFirely2 : ILanguage
 
         if (primaryCodeElementInfo != null)
         {
-            _writer.WriteLineIndented($"{primaryCodeElementInfo.PropertyType} ICoded<{primaryCodeElementInfo.PropertyType}>.Code {{ get => {primaryCodeElementInfo.PropertyName}; set => {primaryCodeElementInfo.PropertyName} = value; }}");
+            _writer.WriteLineIndented($"{primaryCodeElementInfo.PropertyType.PropertyTypeString} ICoded<{primaryCodeElementInfo.PropertyType.PropertyTypeString}>.Code {{ get => {primaryCodeElementInfo.PropertyName}; set => {primaryCodeElementInfo.PropertyName} = value; }}");
             _writer.WriteLineIndented($"IEnumerable<Coding> ICoded.ToCodings() => {primaryCodeElementInfo.PropertyName}.ToCodings();");
             _writer.WriteLine(string.Empty);
         }
@@ -2542,6 +2544,20 @@ public sealed class CSharpFirely2 : ILanguage
                 $"(systems: {referencedCodeSystems.Count()})");
         }
 
+        /* TODO(ginoc): 2024.07.01 - Special cases to remove in SDK 6.0
+         * - ValueSet http://hl7.org/fhir/ValueSet/item-type used to enumerate the non-selectable 'question' code
+         */
+        if ((vs.Url == "http://hl7.org/fhir/ValueSet/item-type") &&
+            !vs.Expansion.Contains.Any(vsContains => vsContains.Code == "question"))
+        {
+            vs.Expansion.Contains.Insert(2, new ValueSet.ContainsComponent()
+            {
+                System = "http://hl7.org/fhir/item-type",
+                Code = "question",
+                Display = "Question",
+            });
+        }
+
         IEnumerable<FhirConcept> concepts = vs.cgGetFlatConcepts(_info);
 
         var defaultSystem = GetDefaultCodeSystem(concepts);
@@ -3152,11 +3168,14 @@ public sealed class CSharpFirely2 : ILanguage
             {
                 return type;
             }
+
             // check for already appending a 'Component' literal
-            else if (type.EndsWith("ComponentComponent", StringComparison.Ordinal))
+            if (type.EndsWith("ComponentComponent", StringComparison.Ordinal))
             {
                 return type;
             }
+
+            // fall through to continue processing
         }
         
         string[] components = type.Split('.');
