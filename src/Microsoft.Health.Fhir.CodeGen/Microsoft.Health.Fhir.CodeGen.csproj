@@ -32,9 +32,5 @@
       <LogicalName>Fhir401</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Language\Ruby\" />
-  </ItemGroup>
   
 </Project>
