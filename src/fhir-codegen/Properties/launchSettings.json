@@ -60,6 +60,31 @@
             "commandLineArgs": "generate OpenApi --fhir-server-url https://secure.server.fire.ly/ -p hl7.fhir.r4.core#4.0.1 --output-path ..\\..\\generated\\FS-OpenApi-R4 --include-experimental --schema-level names --metadata true --multi-file true --single-responses false --resolve-server-canonicals false --resolve-external-canonicals false --basic-scopes-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
+        "TypeScript R2": {
+            "commandName": "Project",
+            "commandLineArgs": "generate TypeScript --output-path ..\\..\\generated --output-filename TypeScript_R2.ts -p hl7.fhir.r2.core#1.0.2 -p hl7.fhir.r2.expansions#1.0.2",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "TypeScript R3": {
+            "commandName": "Project",
+            "commandLineArgs": "generate TypeScript --output-path ..\\..\\generated --output-filename TypeScript_R3.ts -p hl7.fhir.r3.core#3.0.2 -p hl7.fhir.r3.expansions#3.0.2",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "TypeScript R4": {
+            "commandName": "Project",
+            "commandLineArgs": "generate TypeScript --output-path ..\\..\\generated --output-filename TypeScript_R4.ts -p hl7.fhir.r4.core#4.0.1 -p hl7.fhir.r4.expansions#4.0.1",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "TypeScript R4B": {
+            "commandName": "Project",
+            "commandLineArgs": "generate TypeScript --output-path ..\\..\\generated --output-filename TypeScript_R4B.ts -p hl7.fhir.r4b.core#4.3.0 -p hl7.fhir.r4b.expansions#4.3.0",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "TypeScript R5": {
+            "commandName": "Project",
+            "commandLineArgs": "generate TypeScript --output-path ..\\..\\generated --output-filename TypeScript_R5.ts -p hl7.fhir.r5.core#5.0.0 -p hl7.fhir.r5.expansions#5.0.0",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
         "Compare x-y": {
             "commandName": "Project",
             "commandLineArgs": "compare -p hl7.fhir.r2.core#1.0.2 -c hl7.fhir.r3.core#3.0.2 --auto-load-expansions --resolve-dependencies true --map-source-path ..\\..\\..\\fhir-cross-version  --map-destination-path ..\\..\\..\\fhir-cross-version-source --map-save-style Source",

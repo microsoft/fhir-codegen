@@ -42,7 +42,9 @@ public class LangOpenApi : ILanguage
 
         if (config.ServerCapabilities != null)
         {
-            string fileId = definitions.FhirSequence.ToRLiteral();
+            string fileId = string.IsNullOrEmpty(config.OutputFilename)
+                ? definitions.FhirSequence.ToRLiteral()
+                : config.OutputFilename;
 
             if (config.MultiFile)
             {
