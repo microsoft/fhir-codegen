@@ -59,12 +59,14 @@ public partial class FirelyNetIG : ILanguage
     /// <summary>The value set writers.</summary>
     private Dictionary<string, ExportStreamWriter> _valueSetWriters = [];
 
-    private const string _classNameDefinitions = "Definitions";
-    private const string _classNameExtensions = "ExtensionUtils";
+    private const string _classNameDefinitions = "CanonicalUrls";
+    private const string _classNameExtensions = "ExtensionAccessors";
     private const string _classNameValueSets = "ValueSetUtils";
     private const string _namespaceSuffixProfiles = ".Profiles";
 
-    private const string _extUrlPrefix = "ExtUrl";
+    private const string _extUrlPrefix = "Extension";
+    private const string _profileUrlPrefix = "Profile";
+
     private const string _processingValuePrefix = "val";
     private const string _processingExtPrefix = "ext";
     private const string _processingExtAddPrefix = "addExt";
@@ -257,21 +259,87 @@ public partial class FirelyNetIG : ILanguage
         // need to process ValueSets so that we know which ones have enums
         ProcessAndWriteValueSets();
 
+        HashSet<string> writtenCanonicals = new();
+
         Dictionary<string, HashSet<string>> writtenExtensionDefinitions = new();
+
+        // TODO: iterate over all canonicals so we can add their URLs...
 
         // write extension contents
         foreach (StructureDefinition sd in _info.ExtensionsByUrl.Values)
         {
             WriteExtension(sd, writtenExtensionDefinitions);
+            writtenCanonicals.Add(sd.Url);
         }
 
         // write profile contents
         foreach (StructureDefinition sd in _info.ProfilesByUrl.Values)
         {
             WriteProfile(sd);
+            writtenCanonicals.Add(sd.Url);
+        }
+
+        IEnumerator<IConformanceResource> conformanceEnumerator = _info.CanonicalEnumerator;
+        while (conformanceEnumerator.MoveNext())
+        {
+            IConformanceResource cr = conformanceEnumerator.Current;
+            if (writtenCanonicals.Contains(cr.Url))
+            {
+                continue;
+            }
+
+            WriteCanonicalUrl(cr);
+
+            writtenCanonicals.Add(cr.Url);
         }
 
         CloseWriters();
+    }
+
+
+    /// <summary>Writes an extension.</summary>
+    /// <param name="sd">The SD.</param>
+    private void WriteCanonicalUrl(IConformanceResource cr)
+    {
+        if (cr is not DomainResource r)
+        {
+            return;
+        }
+
+        if (!_info.TryGetPackageSource(r, out string packageId, out string packageVersion))
+        {
+            packageId = _info.MainPackageId;
+            packageVersion = _info.MainPackageVersion;
+        }
+
+        PackageData packageData = GetPackageData(packageId, packageVersion);
+
+        // get a definition writer
+        ExportStreamWriter writer = GetCanonicalUrlWriter(packageData);
+
+        writer.WriteIndentedComment(cr.Description, isSummary: true);
+        writer.WriteIndentedComment(cr.Purpose, isSummary: false, isRemarks: true);
+
+        string name;
+
+        if (string.IsNullOrEmpty(cr.Name) ||
+            ((r.TypeName == "ValueSet") && FhirPackageUtils.PackageIsFhirRelease(packageId)))
+        {
+            name = CleanName(r.Id);
+        }
+        else
+        {
+            name = CleanName(cr.Name);
+        }
+
+        writer.WriteLineIndented($"public const string {r.TypeName}{name} = \"{cr.Url}\";");
+
+        writer.WriteLine();
+    }
+
+    private static string CleanName(string name)
+    {
+        return FhirSanitizationUtils.SanitizeForProperty(name, [], NamingConvention.PascalCase);
     }
 
     /// <summary>
@@ -386,23 +454,6 @@ public partial class FirelyNetIG : ILanguage
 
         usedEnumNames.Add(nameSanitized);
 
-        //IEnumerable<StructureElementCollection> bindings = _info.AllBindingsForVs(vs.Url);
-        //Hl7.Fhir.Model.BindingStrength? strongestBinding = _info.StrongestBinding(bindings);
-
-        //// check for required bindings
-        //if (strongestBinding == Hl7.Fhir.Model.BindingStrength.Required)
-        //{
-        //    // set our value set info
-        //    _valueSetInfoByUrl.Add(
-        //        vs.Url,
-        //        new CSharpFirely2.WrittenValueSetInfo()
-        //        {
-        //            ClassName = string.Empty,       // className,
-        //            ValueSetName = nameSanitized,
-        //        });
-
-        //}
-
         // do not write the value set if it is in a core package
         if (FhirPackageUtils.PackageIsFhirRelease(packageId))
         {
@@ -461,16 +512,6 @@ public partial class FirelyNetIG : ILanguage
         writer.WriteLineIndented($"public static class {vsName}");
         writer.OpenScope();             // open class
 
-        //string defaultSystem = concepts.Select(c => c.System)
-        //                .GroupBy(c => c)
-        //                .OrderByDescending(c => c.Count())
-        //                .First().Key;
-
-        //writer.WriteLineIndented($"[FhirEnumeration(\"{name}\", \"{vs.Url}\", \"{defaultSystem}\")]");
-
-        //writer.WriteLineIndented($"public enum {nameSanitized}");
-        //OpenScope(writer);      // open enum
-
         List<string> switchStatements = [];
 
         HashSet<string> usedLiterals = [];
@@ -492,15 +533,6 @@ public partial class FirelyNetIG : ILanguage
 
             string display = FhirSanitizationUtils.SanitizeForValue(concept.Display);
 
-            //if (concept.System != defaultSystem)
-            //{
-            //    writer.WriteLineIndented($"[EnumLiteral(\"{codeValue}\", \"{concept.System}\"), Description(\"{display}\")]");
-            //}
-            //else
-            //{
-            //    writer.WriteLineIndented($"[EnumLiteral(\"{codeValue}\"), Description(\"{display}\")]");
-            //}
-
             if (usedLiterals.Contains(codeName))
             {
                 // start at 2 so that the unadorned version makes sense as v1
@@ -518,8 +550,6 @@ public partial class FirelyNetIG : ILanguage
 
             usedLiterals.Add(codeName);
 
-            //writer.WriteLineIndented($"{codeName},");
-
             if (string.IsNullOrEmpty(concept.Display))
             {
                 writer.WriteLineIndented($"public static Hl7.Fhir.Model.Coding {codeName} => new Hl7.Fhir.Model.Coding(" +
@@ -534,7 +564,7 @@ public partial class FirelyNetIG : ILanguage
                     $"\"{concept.Display}\");");
             }
 
-            switchStatements.Add($"case (\"{concept.System}\", \"{concept.Code}\"): yield return c;");
+            switchStatements.Add($"case (\"{concept.System}\", \"{concept.Code}\"): yield return c; break;");
         }
 
         // write utility functions
@@ -542,7 +572,7 @@ public partial class FirelyNetIG : ILanguage
         writer.WriteLineIndented("public static IEnumerable<Hl7.Fhir.Model.Coding> FilterForThisSet(IEnumerable<Hl7.Fhir.Model.Coding> values)");
         OpenScope(writer);      // open function
 
-        writer.WriteLineIndented($"if (!values.Any) yield break;");
+        writer.WriteLineIndented($"if (!values.Any()) yield break;");
         writer.WriteLineIndented($"foreach (Hl7.Fhir.Model.Coding c in values)");
         OpenScope(writer);      // open foreach
 
@@ -1450,6 +1480,35 @@ public partial class FirelyNetIG : ILanguage
         public Dictionary<string, ProfileSliceInfo> ChildSlicesBySliceId { get; init; } = [];
     }
 
+    private void WriteProfileComments(StructureDefinition sd, ExportStreamWriter writer)
+    {
+
+        if (!string.IsNullOrEmpty(sd.Description))
+        {
+            WriteIndentedComment(writer, sd.Description, isSummary: true);
+        }
+        else
+        {
+            WriteIndentedComment(writer, sd.Title, isSummary: true);
+        }
+
+        // check for must-support elements
+        IEnumerable<ElementDefinition> mustSupports = sd.cgElements().Where(ed => ed.MustSupport == true);
+
+        if (mustSupports.Any())
+        {
+            writer.WriteLineIndented("/// <remarks>");
+            writer.WriteIndentedComment("Must support elements:", isSummary: false);
+
+            foreach (ElementDefinition ms in mustSupports)
+            {
+                writer.WriteIndentedComment($"- {ms.Path}: {ms.cgShort()}", isSummary: false);
+            }
+
+            writer.WriteLineIndented("/// </remarks>");
+        }
+    }
+
     private void WriteProfile(StructureDefinition sd)
     {
         if (!_info.TryGetPackageSource(sd, out string packageId, out string packageVersion))
@@ -1458,11 +1517,11 @@ public partial class FirelyNetIG : ILanguage
             packageVersion = _info.MainPackageVersion;
         }
 
-        if (FhirPackageUtils.PackageIsFhirRelease(packageId))
-        {
-            // skip core packages
-            return;
-        }
+        //if (FhirPackageUtils.PackageIsFhirRelease(packageId))
+        //{
+        //    // skip core packages
+        //    return;
+        //}
 
         PackageData packageData = GetPackageData(packageId, packageVersion);
 
@@ -1472,6 +1531,14 @@ public partial class FirelyNetIG : ILanguage
 
         // remove any hyphens from the name
         name = name.Replace('-', '_');
+
+        // get a canonical url writer
+        ExportStreamWriter canonicalUrlWriter = GetCanonicalUrlWriter(packageData);
+
+        WriteProfileComments(sd, canonicalUrlWriter);
+
+        canonicalUrlWriter.WriteLineIndented($"public const string Profile{name} = \"{sd.Url}\";");
+        canonicalUrlWriter.WriteLine();
 
         string filename = Path.Combine(_options.OutputDirectory, packageData.FolderName, $"{name}.cs");
 
@@ -1487,50 +1554,27 @@ public partial class FirelyNetIG : ILanguage
 
             WriteNamespaceOpen(writer, packageData.Namespace + _namespaceSuffixProfiles);
 
-            if (!string.IsNullOrEmpty(sd.Description))
-            {
-                WriteIndentedComment(writer, sd.Description, isSummary: true);
-            }
-            else
-            {
-                WriteIndentedComment(writer, sd.Title, isSummary: true);
-            }
-
-            // check for must-support elements
-            IEnumerable<ElementDefinition> mustSupports = sd.cgElements().Where(ed => ed.MustSupport == true);
-
-            if (mustSupports.Any())
-            {
-                writer.WriteLineIndented("/// <remarks>");
-                writer.WriteIndentedComment("Must support elements:", isSummary: false);
-
-                foreach (ElementDefinition ms in mustSupports)
-                {
-                    writer.WriteIndentedComment($"- {ms.Path}: {ms.cgShort()}", isSummary: false);
-                }
-
-                writer.WriteLineIndented("/// </remarks>");
-            }
+            WriteProfileComments(sd, writer);
 
             writer.WriteLineIndented($"public static class {name}");
             OpenScope(writer);      // class
 
             // write the profile URL
             WriteIndentedComment(writer, "The official URL for this profile.", isSummary: true);
-            writer.WriteLineIndented($"public const string ProfileUrl = \"{sd.Url}\"");
+            writer.WriteLineIndented($"public const string ProfileUrl = \"{sd.Url}\";");
             writer.WriteLine();
 
             // write the profile version
             if (!string.IsNullOrEmpty(sd.Version))
             {
                 WriteIndentedComment(writer, "The declared version of this profile.", isSummary: true);
-                writer.WriteLineIndented($"public const string ProfileVersion = \"{sd.Version}\"");
+                writer.WriteLineIndented($"public const string ProfileVersion = \"{sd.Version}\";");
                 writer.WriteLine();
             }
             else
             {
                 WriteIndentedComment(writer, "The package version of this profile.", isSummary: true);
-                writer.WriteLineIndented($"public const string ProfileVersion = \"{packageData.PackageVersion}\"");
+                writer.WriteLineIndented($"public const string ProfileVersion = \"{packageData.PackageVersion}\";");
                 writer.WriteLine();
             }
 
@@ -2047,20 +2091,20 @@ public partial class FirelyNetIG : ILanguage
             if (psi.ValueExtData.IsList)
             {
                 writer.WriteLineIndented($"public static IEnumerable<{extValueType}> {fnBase}Get(this {contextType} o) =>");
-                writer.WriteLineIndented($"  {extPackageData.Namespace}.{psi.ValueExtData.Name.ToPascalCase()}Get(o);");
+                writer.WriteLineIndented($"  {extPackageData.Namespace}.{_classNameExtensions}.{psi.ValueExtData.Name.ToPascalCase()}Get(o);");
 
                 writer.WriteLineIndented($"public static void {fnBase}Set(this {contextType} o, IEnumerable<{extValueType}>? val) =>");
-                writer.WriteLineIndented($"  {extPackageData.Namespace}.{psi.ValueExtData.Name.ToPascalCase()}Set(o, val);");
+                writer.WriteLineIndented($"  {extPackageData.Namespace}.{_classNameExtensions}.{psi.ValueExtData.Name.ToPascalCase()}Set(o, val);");
 
             }
             else
             {
                 writer.WriteLineIndented($"public static {extValueType}? {fnBase}Get(this {contextType} o) =>");
-                writer.WriteLineIndented($"  {extPackageData.Namespace}.{psi.ValueExtData.Name.ToPascalCase()}Get(o);");
+                writer.WriteLineIndented($"  {extPackageData.Namespace}.{_classNameExtensions}.{psi.ValueExtData.Name.ToPascalCase()}Get(o);");
 
 
                 writer.WriteLineIndented($"public static void {fnBase}Set(this {contextType} o, {extValueType}? val) =>");
-                writer.WriteLineIndented($"  {extPackageData.Namespace}.{psi.ValueExtData.Name.ToPascalCase()}Set(o, val);");
+                writer.WriteLineIndented($"  {extPackageData.Namespace}.{_classNameExtensions}.{psi.ValueExtData.Name.ToPascalCase()}Set(o, val);");
             }
 
             // without sub-slices, we can write a simple getter/setter and be done
@@ -2072,13 +2116,13 @@ public partial class FirelyNetIG : ILanguage
         {
             writer.WriteLineIndented($"public static IEnumerable<{extValueType}> {fnBase}Get(this {contextType} o)");
             OpenScope(writer);
-            writer.WriteLineIndented($"  {extPackageData.Namespace}.{psi.ValueExtData.Name.ToPascalCase()}Get(o);");
+            writer.WriteLineIndented($"  {extPackageData.Namespace}.{_classNameExtensions}.{psi.ValueExtData.Name.ToPascalCase()}Get(o);");
             CloseScope(writer);
 
 
             writer.WriteLineIndented($"public static void {fnBase}Set(this {contextType} o, IEnumerable<{extValueType}>? val)");
             OpenScope(writer);
-            writer.WriteLineIndented($"  {extPackageData.Namespace}.{psi.ValueExtData.Name.ToPascalCase()}Set(o, val);");
+            writer.WriteLineIndented($"  {extPackageData.Namespace}.{_classNameExtensions}.{psi.ValueExtData.Name.ToPascalCase()}Set(o, val);");
             CloseScope(writer);
 
         }
@@ -2099,7 +2143,7 @@ public partial class FirelyNetIG : ILanguage
 
             writer.WriteLineIndented($"public static void {fnBase}Set(this {contextType} o, {extValueType}? val)");
             OpenScope(writer);
-            writer.WriteLineIndented($"  {extPackageData.Namespace}.{psi.ValueExtData.Name.ToPascalCase()}Set(o, val);");
+            writer.WriteLineIndented($"  {extPackageData.Namespace}.{_classNameExtensions}.{psi.ValueExtData.Name.ToPascalCase()}Set(o, val);");
             CloseScope(writer);
         }
 
@@ -2330,7 +2374,7 @@ public partial class FirelyNetIG : ILanguage
         return pd;
     }
 
-    private ExportStreamWriter GetDefinitionWriter(PackageData packageData)
+    private ExportStreamWriter GetCanonicalUrlWriter(PackageData packageData)
     {
         if (_definitionWriters.TryGetValue(packageData.Key, out ExportStreamWriter? writer))
         {
@@ -2449,7 +2493,7 @@ public partial class FirelyNetIG : ILanguage
         PackageData packageData = GetPackageData(packageId, packageVersion);
 
         // get a definition writer
-        ExportStreamWriter definitionWriter = GetDefinitionWriter(packageData);
+        ExportStreamWriter canonicalUrlWriter = GetCanonicalUrlWriter(packageData);
 
         // build a component for our extension
         ComponentDefinition cd = new(sd);
@@ -2458,7 +2502,7 @@ public partial class FirelyNetIG : ILanguage
         ExtensionData extData = GetExtensionData(cd);
 
         // recursively write our extension urls into definitions
-        WriteExtensionDefinition(extData, definitionWriter, writtenExtensionDefinitions);
+        WriteCanonicalUrl(extData, canonicalUrlWriter, writtenExtensionDefinitions);
 
         // get an extension writer
         ExportStreamWriter extensionWriter = GetExtensionWriter(packageData);
@@ -2467,27 +2511,27 @@ public partial class FirelyNetIG : ILanguage
     }
 
     /// <summary>Recursively writes extension urls.</summary>
-    /// <param name="extData">     Information describing the extension.</param>
-    /// <param name="writer">      The currently in-use text writer.</param>
-    /// <param name="parentPrefix">(Optional) The parent prefix.</param>
-    private void WriteExtensionDefinition(ExtensionData extData, ExportStreamWriter writer, Dictionary<string, HashSet<string>> writtenExtensionDefinitions)
+    /// <param name="extData">                    Information describing the extension.</param>
+    /// <param name="writer">                     The currently in-use text writer.</param>
+    /// <param name="writtenExtensionDefinitions">The written extension definitions for tracking.</param>
+    private void WriteCanonicalUrl(ExtensionData extData, ExportStreamWriter writer, Dictionary<string, HashSet<string>> writtenExtensionDefinitions)
     {
         string name = string.IsNullOrEmpty(extData.ParentName) ? extData.Name : extData.ParentName + extData.Name;
 
         if (writtenExtensionDefinitions.TryGetValue(name, out HashSet<string>? writtenContexts) &&
-            writtenContexts.Contains("definitions"))
+            writtenContexts.Contains(_classNameDefinitions))
         {
             return;
         }
 
         if (writtenContexts == null)
         {
-            writtenContexts = new() { "definitions" };
+            writtenContexts = new() { _classNameDefinitions };
             writtenExtensionDefinitions.Add(name, writtenContexts);
         }
         else
         {
-            writtenContexts.Add("definitions");
+            writtenContexts.Add(_classNameDefinitions);
         }
 
         writer.WriteIndentedComment(extData.Summary, isSummary: true);
@@ -2500,7 +2544,7 @@ public partial class FirelyNetIG : ILanguage
         // write any sub-extensions
         foreach (ExtensionData childData in extData.Children)
         {
-            WriteExtensionDefinition(childData, writer, writtenExtensionDefinitions);
+            WriteCanonicalUrl(childData, writer, writtenExtensionDefinitions);
         }
     }
 

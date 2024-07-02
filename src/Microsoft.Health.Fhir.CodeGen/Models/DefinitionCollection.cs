@@ -5,6 +5,7 @@
 
 
 using System;
+using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Xml.Linq;
@@ -1853,6 +1854,38 @@ public partial class DefinitionCollection
 
         return !string.IsNullOrEmpty(packageId) && !string.IsNullOrEmpty(packageVersion);
     }
+
+    public class VersionedResourceEnumerator<T> : IEnumerator<T>
+    {
+        IDictionary<string, Dictionary<string, T>> _source;
+        IEnumerator<KeyValuePair<string, Dictionary<string, T>>> _sourceEnumerator;
+
+        public VersionedResourceEnumerator(IDictionary<string, Dictionary<string, T>> source)
+        {
+            _source = source;
+            _sourceEnumerator = _source.GetEnumerator();
+        }
+        public T Current => _sourceEnumerator.Current.Value.OrderByDescending(v => v.Key).First().Value;
+
+        object IEnumerator.Current => _sourceEnumerator.Current.Value.OrderByDescending(v => v.Key).First().Value!;
+
+        public void Dispose()
+        {
+            if (_sourceEnumerator != null)
+            {
+                _sourceEnumerator.Dispose();
+            }
+
+            if (_source != null)
+            {
+                _source = null!;
+            }
+        }
+        public bool MoveNext() => _sourceEnumerator.MoveNext();
+        public void Reset() => _sourceEnumerator.Reset();
+    }
+
+    public VersionedResourceEnumerator<IConformanceResource> CanonicalEnumerator => new(_canonicalResources);
 
     /// <summary>Gets listing of resources, by Name.</summary>
     public IReadOnlyDictionary<string, StructureDefinition> ResourcesByName => _resourcesByName;
