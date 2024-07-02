@@ -110,6 +110,22 @@ public class ConfigGenerate : ConfigRoot
         },
     };
 
+    /// <summary>Gets or sets URL of the smart configuration.</summary>
+    public string SmartConfigUrl { get; set; } = string.Empty;
+
+    /// <summary>Gets the smart configuration URL parameter.</summary>
+    private static ConfigurationOption SmartConfigUrlParameter { get; } = new()
+    {
+        Name = "SmartConfigUrl",
+        EnvVarName = "Smart_Config_Url",
+        DefaultValue = string.Empty,
+        CliOption = new System.CommandLine.Option<string>("--smart-config-url", "URL to pull a .well-known/smart-configuration file from, if different from [base]/.well-known/smart-configuration.  Requires application/json (per spec).")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
+
     /// <summary>Gets or sets the FHIR server headers.</summary>
     [ConfigOption(
         ArgName = "--fhir-server-header",
@@ -181,6 +197,7 @@ public class ConfigGenerate : ConfigRoot
         ExportKeysParameter,
         IncludeExperimentalParameter,
         FhirServerUrlParameter,
+        SmartConfigUrlParameter,
         FhirServerHeadersParameter,
         ResolveServerCanonicalsParameter,
         ResolveExternalCanonicalsParameter,
@@ -216,6 +233,9 @@ public class ConfigGenerate : ConfigRoot
                     break;
                 case "FhirServerUrl":
                     FhirServerUrl = GetOpt(parseResult, opt.CliOption, FhirServerUrl);
+                    break;
+                case "SmartConfigUrl":
+                    SmartConfigUrl = GetOpt(parseResult, opt.CliOption, SmartConfigUrl);
                     break;
                 case "FhirServerHeaders":
                     FhirServerHeaders = GetOpt(parseResult, opt.CliOption, FhirServerHeaders);

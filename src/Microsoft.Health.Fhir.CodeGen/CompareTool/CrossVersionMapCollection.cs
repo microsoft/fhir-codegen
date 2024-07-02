@@ -508,7 +508,7 @@ public class CrossVersionMapCollection
         {
             try
             {
-                object? loaded = _loader.ParseContentsSystemTextStream("fhir+json", filename, typeof(ConceptMap));
+                object? loaded = _loader.ParseContentsSystemTextStream("fhir+json", typeof(ConceptMap), path: filename);
                 if (loaded is not ConceptMap cm)
                 {
                     Console.WriteLine($"Error loading {filename}: could not parse as ConceptMap");
@@ -814,7 +814,7 @@ public class CrossVersionMapCollection
         {
             try
             {
-                object? loaded = _loader.ParseContentsSystemTextStream("fhir+json", filename, typeof(ConceptMap));
+                object? loaded = _loader.ParseContentsSystemTextStream("fhir+json", typeof(ConceptMap), path: filename);
                 if (loaded is not ConceptMap cm)
                 {
                     Console.WriteLine($"Error loading {filename}: could not parse as ConceptMap");

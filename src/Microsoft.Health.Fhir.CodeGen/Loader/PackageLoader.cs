@@ -502,20 +502,20 @@ public class PackageLoader : IDisposable
                     {
                         case FhirReleases.FhirSequenceCodes.DSTU2:
                             {
-                                r = ParseContents20(fileExtension, path);
+                                r = ParseContents20(fileExtension, path: path);
                             }
                             break;
 
                         case FhirReleases.FhirSequenceCodes.STU3:
                             {
-                                r = ParseContents30(fileExtension, path);
+                                r = ParseContents30(fileExtension, path: path);
                             }
                             break;
 
                         case FhirReleases.FhirSequenceCodes.R4:
                         case FhirReleases.FhirSequenceCodes.R4B:
                             {
-                                r = ParseContents43(fileExtension, path);
+                                r = ParseContents43(fileExtension, path: path);
                             }
                             break;
 
@@ -524,7 +524,7 @@ public class PackageLoader : IDisposable
                             {
                                 if (_jsonModel == LoaderOptions.JsonDeserializationModel.SystemTextJson)
                                 {
-                                    r = ParseContentsSystemTextStream(fileExtension, path, netType);
+                                    r = ParseContentsSystemTextStream(fileExtension, netType, path: path);
                                 }
                                 else
                                 {
@@ -560,14 +560,13 @@ public class PackageLoader : IDisposable
     }
 
     /// <summary>Parse contents.</summary>
-    /// <typeparam name="TResource">Type of the resource.</typeparam>
-    /// <param name="format">Describes the format to use.</param>
-    /// <param name="path">  Full pathname of the file.</param>
+    /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>
+    /// <param name="format"> Describes the format to use.</param>
+    /// <param name="path">   (Optional) Full pathname of the file.</param>
+    /// <param name="content">(Optional) The content.</param>
     /// <returns>A TResource?</returns>
-    public object? ParseContentsPoco(string format, string path)
+    public object? ParseContentsPoco(string format, string path = "", string content = "")
     {
-        string content = File.ReadAllTextAsync(path).Result;
-
         switch (format.ToLowerInvariant())
         {
             case ".json":
@@ -577,6 +576,11 @@ public class PackageLoader : IDisposable
             case "application/fhir+json":
                 try
                 {
+                    if (string.IsNullOrEmpty(content))
+                    {
+                        content = File.ReadAllTextAsync(path).Result;
+                    }
+
                     // always use lenient parsing
                     Resource parsed = _jsonParser.DeserializeResource(content);
                     return parsed;
@@ -604,6 +608,11 @@ public class PackageLoader : IDisposable
 #else
                 try
                 {
+                    if (string.IsNullOrEmpty(content))
+                    {
+                        content = File.ReadAllTextAsync(path).Result;
+                    }
+
                     // always use lenient parsing
                     Resource parsed = _xmlParser.DeserializeResource(content);
                     return parsed;
@@ -634,7 +643,7 @@ public class PackageLoader : IDisposable
     /// <param name="format">Describes the format to use.</param>
     /// <param name="path">  Full pathname of the file.</param>
     /// <returns>An asynchronous result that yields a TResource?</returns>
-    public object? ParseContents43(string format, string path)
+    public object? ParseContents43(string format, string path = "", string content = "")
     {
         switch (format.ToLowerInvariant())
         {
@@ -645,7 +654,12 @@ public class PackageLoader : IDisposable
             case "application/fhir+json":
                 try
                 {
-                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirJsonNode.Parse(File.ReadAllText(path));
+                    if (string.IsNullOrEmpty(content))
+                    {
+                        content = File.ReadAllText(path);
+                    }
+
+                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirJsonNode.Parse(content);
                     return _converter_43_50!.Convert(sn);
                 }
                 catch (Exception ex)
@@ -668,7 +682,12 @@ public class PackageLoader : IDisposable
             case "application/fhir+xml":
                 try
                 {
-                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirXmlNode.Parse(File.ReadAllText(path));
+                    if (string.IsNullOrEmpty(content))
+                    {
+                        content = File.ReadAllText(path);
+                    }
+
+                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirXmlNode.Parse(content);
                     return _converter_43_50!.Convert(sn);
                 }
                 catch (Exception ex)
@@ -692,7 +711,7 @@ public class PackageLoader : IDisposable
         }
     }
 
-    public object? ParseContents30(string format, string path)
+    public object? ParseContents30(string format, string path = "", string content = "")
     {
         switch (format.ToLowerInvariant())
         {
@@ -703,7 +722,12 @@ public class PackageLoader : IDisposable
             case "application/fhir+json":
                 try
                 {
-                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirJsonNode.Parse(File.ReadAllText(path));
+                    if (string.IsNullOrEmpty(content))
+                    {
+                        content = File.ReadAllText(path);
+                    }
+
+                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirJsonNode.Parse(content);
                     return _converter_30_50!.Convert(sn);
                 }
                 catch (Exception ex)
@@ -726,7 +750,12 @@ public class PackageLoader : IDisposable
             case "application/fhir+xml":
                 try
                 {
-                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirXmlNode.Parse(File.ReadAllText(path));
+                    if (string.IsNullOrEmpty(content))
+                    {
+                        content = File.ReadAllTextAsync(path).Result;
+                    }
+
+                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirXmlNode.Parse(content);
                     return _converter_30_50!.Convert(sn);
                 }
                 catch (Exception ex)
@@ -750,7 +779,7 @@ public class PackageLoader : IDisposable
         }
     }
 
-    public object? ParseContents20(string format, string path)
+    public object? ParseContents20(string format, string path = "", string content = "")
     {
         switch (format.ToLowerInvariant())
         {
@@ -761,7 +790,12 @@ public class PackageLoader : IDisposable
             case "application/fhir+json":
                 try
                 {
-                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirJsonNode.Parse(File.ReadAllText(path));
+                    if (string.IsNullOrEmpty(content))
+                    {
+                        content = File.ReadAllTextAsync(path).Result;
+                    }
+
+                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirJsonNode.Parse(content);
                     return _converter_20_50!.Convert(sn);
                 }
                 catch (Exception ex)
@@ -784,7 +818,12 @@ public class PackageLoader : IDisposable
             case "application/fhir+xml":
                 try
                 {
-                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirXmlNode.Parse(File.ReadAllText(path));
+                    if (string.IsNullOrEmpty(content))
+                    {
+                        content = File.ReadAllTextAsync(path).Result;
+                    }
+
+                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirXmlNode.Parse(content);
                     return _converter_20_50!.Convert(sn);
                 }
                 catch (Exception ex)
@@ -809,13 +848,15 @@ public class PackageLoader : IDisposable
     }
 
     /// <summary>Parse the contents of a resource in the specified format.</summary>
-    /// <typeparam name="TResource">The type of the resource.</typeparam>
-    /// <param name="format">The format of the content.</param>
-    /// <param name="path">  Full pathname of the file.</param>
+    /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>
+    /// <param name="format">      The format of the content.</param>
+    /// <param name="resourceType">Type of the resource.</param>
+    /// <param name="path">        (Optional) Full pathname of the file.</param>
+    /// <param name="content">     (Optional) The content.</param>
     /// <returns>
     /// The parsed resource of type <typeparamref name="TResource"/> or null if parsing fails.
     /// </returns>
-    public object? ParseContentsSystemTextStream(string format, string path, Type resourceType)
+    public object? ParseContentsSystemTextStream(string format, Type resourceType, string path = "", string content = "")
     {
         switch (format.ToLowerInvariant())
         {
@@ -826,6 +867,11 @@ public class PackageLoader : IDisposable
             case "application/fhir+json":
                 try
                 {
+                    if (!string.IsNullOrEmpty(content))
+                    {
+                        return JsonSerializer.Deserialize(content, resourceType, _jsonOptions);
+                    }
+
                     using (FileStream fs = new(path, FileMode.Open, FileAccess.Read, FileShare.Read))
                     {
                         return JsonSerializer.Deserialize(fs, resourceType, _jsonOptions);
@@ -854,7 +900,10 @@ public class PackageLoader : IDisposable
 #else
                 try
                 {
-                    string content = File.ReadAllText(path);
+                    if (string.IsNullOrEmpty(content))
+                    {
+                        content = File.ReadAllText(path);
+                    }
 
                     // always use lenient parsing
                     Resource parsed = _xmlParser.DeserializeResource(content);

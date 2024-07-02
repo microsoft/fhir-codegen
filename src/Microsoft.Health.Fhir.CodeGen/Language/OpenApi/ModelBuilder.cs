@@ -427,10 +427,20 @@ public partial class ModelBuilder
             Reference = new OpenApiReference() { Id = schema.Name, Type = ReferenceType.SecurityScheme }
         };
 
-        doc.SecurityRequirements.Add(new OpenApiSecurityRequirement()
+        if (_options.BasicScopesOnly)
         {
-            { schemeRef, _smartConfig?.SupportedScopes.ToArray() ?? [] }
-        });
+            doc.SecurityRequirements.Add(new OpenApiSecurityRequirement()
+            {
+                { schemeRef, _smartConfig?.SupportedScopes.Where(s => !s.Contains('/')).ToArray() ?? [] }
+            });
+        }
+        else
+        {
+            doc.SecurityRequirements.Add(new OpenApiSecurityRequirement()
+            {
+                { schemeRef, _smartConfig?.SupportedScopes.ToArray() ?? [] }
+            });
+        }
     }
 
     /// <summary>Consolidate resource parameters.</summary>
@@ -476,22 +486,22 @@ public partial class ModelBuilder
         {
             if (_httpCommonParameters.ContainsKey(code))
             {
-                p.Add(code, _httpCommonParameters[code]);
+                _ = p.TryAdd(code, _httpCommonParameters[code]);
                 continue;
             }
 
-            p.Add(code, BuildStringParameter(code, string.Empty));
+            _ = p.TryAdd(code, BuildStringParameter(code, string.Empty));
         }
 
         foreach (string code in _options.HttpReadHash)
         {
             if (_httpReadParameters.ContainsKey(code))
             {
-                p.Add(code, _httpReadParameters[code]);
+                _ = p.TryAdd(code, _httpReadParameters[code]);
                 continue;
             }
 
-            p.Add(code, BuildStringParameter(code, string.Empty));
+            _ = p.TryAdd(code, BuildStringParameter(code, string.Empty));
         }
 
         if (_options.ExportSearchParams)
@@ -500,28 +510,28 @@ public partial class ModelBuilder
             {
                 if (_searchCommonParameters.ContainsKey(code))
                 {
-                    p.Add(code, _searchCommonParameters[code]);
+                    _ = p.TryAdd(code, _searchCommonParameters[code]);
                     continue;
                 }
 
-                p.Add(code, BuildStringParameter(code, string.Empty));
+                _ = p.TryAdd(code, BuildStringParameter(code, string.Empty));
             }
 
             foreach (string code in _options.SearchResultHash)
             {
                 if (_searchResultParameters.ContainsKey(code))
                 {
-                    p.Add(code, _searchResultParameters[code]);
+                    _ = p.TryAdd(code, _searchResultParameters[code]);
                     continue;
                 }
 
-                p.Add(code, BuildStringParameter(code, string.Empty));
+                _ = p.TryAdd(code, BuildStringParameter(code, string.Empty));
             }
         }
 
         foreach ((string code, OpenApiParameter parameter) in _pathParameters)
         {
-            p.Add(code, parameter);
+            _ = p.TryAdd(code, parameter);
         }
 
         if ((_options.InteractionHistoryType == OaCapabilityBoolean.True) ||
@@ -529,7 +539,7 @@ public partial class ModelBuilder
         {
             foreach ((string code, OpenApiParameter parameter) in _historyParameters)
             {
-                p.Add(code, parameter);
+                _ = p.TryAdd(code, parameter);
             }
         }
         else if ((_options.InteractionHistoryType == OaCapabilityBoolean.Capabilities) &&
@@ -537,7 +547,7 @@ public partial class ModelBuilder
         {
             foreach ((string code, OpenApiParameter parameter) in _historyParameters)
             {
-                p.Add(code, parameter);
+                _ = p.TryAdd(code, parameter);
             }
         }
         else if ((_options.InteractionHistoryInstance == OaCapabilityBoolean.Capabilities) &&
@@ -545,7 +555,7 @@ public partial class ModelBuilder
         {
             foreach ((string code, OpenApiParameter parameter) in _historyParameters)
             {
-                p.Add(code, parameter);
+                _ = p.TryAdd(code, parameter);
             }
         }
 
@@ -553,7 +563,7 @@ public partial class ModelBuilder
         {
             foreach ((string code, OpenApiParameter parameter) in _httpRequestHeaders)
             {
-                p.Add(code, parameter);
+                _ = p.TryAdd(code, parameter);
             }
         }
 
@@ -3584,13 +3594,13 @@ public partial class ModelBuilder
         }
 
         return new List<OpenApiServer>()
+        {
+            new OpenApiServer()
             {
-                new OpenApiServer()
-                {
-                    Url = _caps.Url,
-                    Description = description,
-                },
-            };
+                Url = string.IsNullOrEmpty(_fhirBaseUrl) ? _caps.Url : _fhirBaseUrl,
+                Description = description,
+            },
+        };
     }
 
     /// <summary>Builds document information.</summary>

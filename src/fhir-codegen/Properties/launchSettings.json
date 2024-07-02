@@ -55,6 +55,11 @@
             "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.uv.sdc#3.0.0 --auto-load-expansions --resolve-dependencies true --extension-accessors ValueRecordAccessors --include-experimental",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
+        "Firely OpenApi": {
+            "commandName": "Project",
+            "commandLineArgs": "generate OpenApi --fhir-server-url https://secure.server.fire.ly/ -p hl7.fhir.r4.core#4.0.1 --output-path ..\\..\\generated\\FS-OpenApi-R4 --include-experimental --schema-level names --metadata true --multi-file true --single-responses false --resolve-server-canonicals false --resolve-external-canonicals false --basic-scopes-only true",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
         "Compare x-y": {
             "commandName": "Project",
             "commandLineArgs": "compare -p hl7.fhir.r2.core#1.0.2 -c hl7.fhir.r3.core#3.0.2 --auto-load-expansions --resolve-dependencies true --map-source-path ..\\..\\..\\fhir-cross-version  --map-destination-path ..\\..\\..\\fhir-cross-version-source --map-save-style Source",

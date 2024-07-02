@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Firely Server - System Operations",
-    "version": "1.0.0"
+    "title": "Firely Server 5.7.0+67b969784dfa0e8d1f95d34c3b0be8e4e4bfebb2 CapabilityStatement - System Operations",
+    "version": "5.7.0+67b969784dfa0e8d1f95d34c3b0be8e4e4bfebb2"
   },
   "servers": [
     {
@@ -43,7 +43,7 @@
         "tags": [
           "System"
         ],
-        "summary": "search-sytem: Search all resources",
+        "summary": "search-system: Search all resources",
         "operationId": "SearchSystemGet",
         "parameters": [
           {
@@ -173,6 +173,151 @@
           },
           "404": {
             "description": "NOT FOUND",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "System"
+        ],
+        "summary": "bundle-system: Submit a batch or transaction",
+        "operationId": "BundleSystemPost",
+        "requestBody": {
+          "description": "Bundle being submitted",
+          "content": {
+            "application/fhir+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Bundle"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Bundle"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bundle"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bundle"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "BAD REQUEST",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "NOT AUTHORIZED",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "METHOD NOT ALLOWED",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "CONFLICT",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "CONFLICT",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "UNPROCESSABLE",
             "content": {
               "application/fhir+json": {
                 "schema": {
@@ -386,15 +531,15 @@
     "schemas": {
       "CapabilityStatement": {
         "type": "object",
-        "description": "A statement of system capabilities"
+        "description": "A Capability Statement documents a set of capabilities (behaviors) of a FHIR Server for a particular version of FHIR that may be used as a statement of actual server functionality or a statement of required or desired server implementation."
       },
       "Bundle": {
         "type": "object",
-        "description": "Contains a collection of resources"
+        "description": "A container for a collection of resources."
       },
       "OperationOutcome": {
         "type": "object",
-        "description": "Information about the success/failure of an action"
+        "description": "A collection of error, warning, or information messages that result from a system action."
       }
     },
     "parameters": {
@@ -611,6 +756,7 @@
       "openId": [
         "openid",
         "profile",
+        "roles",
         "fhirUser",
         "offline_access"
       ]

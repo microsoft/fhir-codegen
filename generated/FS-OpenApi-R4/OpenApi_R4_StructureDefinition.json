@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Firely Server - StructureDefinition",
-    "version": "1.0.0"
+    "title": "Firely Server 5.7.0+67b969784dfa0e8d1f95d34c3b0be8e4e4bfebb2 CapabilityStatement - StructureDefinition",
+    "version": "5.7.0+67b969784dfa0e8d1f95d34c3b0be8e4e4bfebb2"
   },
   "servers": [
     {
@@ -515,19 +515,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/StructureDefinition"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/StructureDefinition"
-                }
-              }
-            }
+            "description": "OK"
           },
           "202": {
             "description": "ACCEPTED"
@@ -625,7 +613,18 @@
         ],
         "requestBody": {
           "description": "Patch to apply to a FHIR StructureDefinition record",
-          "content": { },
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/StructureDefinition"
+              }
+            },
+            "application/xml-patch+xml": {
+              "schema": {
+                "$ref": "#/components/schemas/StructureDefinition"
+              }
+            }
+          },
           "required": true
         },
         "responses": {
@@ -1074,6 +1073,183 @@
         }
       ]
     },
+    "/StructureDefinition/{logical_id}/_history": {
+      "get": {
+        "tags": [
+          "StructureDefinition"
+        ],
+        "summary": "history-instance: Get the change history of a specific StructureDefinition resource",
+        "operationId": "HistoryInstanceStructureDefinition",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/logical_id"
+          },
+          {
+            "$ref": "#/components/parameters/_elements"
+          },
+          {
+            "$ref": "#/components/parameters/_summary"
+          },
+          {
+            "$ref": "#/components/parameters/_count"
+          },
+          {
+            "$ref": "#/components/parameters/_since"
+          },
+          {
+            "$ref": "#/components/parameters/_at"
+          },
+          {
+            "$ref": "#/components/parameters/_list"
+          },
+          {
+            "$ref": "#/components/parameters/_sort"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bundle"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bundle"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/_format"
+        },
+        {
+          "$ref": "#/components/parameters/_pretty"
+        }
+      ]
+    },
+    "/StructureDefinition/_history": {
+      "get": {
+        "tags": [
+          "StructureDefinition"
+        ],
+        "summary": "history-type: Get the change history of all StructureDefinition resources",
+        "operationId": "HistoryTypeStructureDefinition",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/_elements"
+          },
+          {
+            "$ref": "#/components/parameters/_summary"
+          },
+          {
+            "$ref": "#/components/parameters/_count"
+          },
+          {
+            "$ref": "#/components/parameters/_since"
+          },
+          {
+            "$ref": "#/components/parameters/_at"
+          },
+          {
+            "$ref": "#/components/parameters/_list"
+          },
+          {
+            "$ref": "#/components/parameters/_sort"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bundle"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bundle"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/_format"
+        },
+        {
+          "$ref": "#/components/parameters/_pretty"
+        }
+      ]
+    },
     "/StructureDefinition/_search": {
       "post": {
         "tags": [
@@ -1361,7 +1537,7 @@
           "StructureDefinition"
         ],
         "summary": "vread: Read StructureDefinition instance with specific version",
-        "operationId": "VReadStructureDefinition",
+        "operationId": "VRead$StructureDefinition",
         "parameters": [
           {
             "$ref": "#/components/parameters/logical_id"
@@ -1767,25 +1943,228 @@
           "$ref": "#/components/parameters/_pretty"
         }
       ]
+    },
+    "/StructureDefinition/{logical_id}/$validate": {
+      "post": {
+        "tags": [
+          "StructureDefinition"
+        ],
+        "summary": "operation: The validate operation checks whether the attached content would be acceptable either generally, as a create, an update or as a delete to an existing resource.  The action the server takes depends on the mode parameter:  \n\n* [mode not provided]: The server checks the content of the resource against any schema, constraint rules, and other general terminology rules \n* create: The server checks the content, and then checks that the content would be acceptable as a create (e.g. that the content would not violate any uniqueness constraints) \n* update: The server checks the content, and then checks that it would accept it as an update against the nominated specific resource (e.g. that there are no changes to immutable fields the server does not allow to change, and checking version integrity if appropriate) \n* delete: The server ignores the content, and checks that the nominated resource is allowed to be deleted (e.g. checking referential integrity rules)  \n\nModes update and delete can only be used when the operation is invoked at the resource instance level.   The return from this operation is an [OperationOutcome](operationoutcome.html)\n\nNote that this operation is not the only way to validate resources - see [Validating Resources](validation.html) for further information.",
+        "operationId": "StructureDefinitionInstanceValidatePost",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/logical_id"
+          },
+          {
+            "name": "mode",
+            "in": "query",
+            "description": "Default is 'no action'; (e.g. general validation)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "profile",
+            "in": "query",
+            "description": "If this is nominated, then the resource is validated against this specific profile. If a profile is nominated, and the server cannot validate against the nominated profile, it SHALL return an error",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Must be present unless the mode is \"delete\"",
+          "content": {
+            "application/fhir+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Resource"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Resource"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/_format"
+        },
+        {
+          "$ref": "#/components/parameters/_pretty"
+        }
+      ]
+    },
+    "/StructureDefinition/$validate": {
+      "post": {
+        "tags": [
+          "StructureDefinition"
+        ],
+        "summary": "operation: The validate operation checks whether the attached content would be acceptable either generally, as a create, an update or as a delete to an existing resource.  The action the server takes depends on the mode parameter:  \n\n* [mode not provided]: The server checks the content of the resource against any schema, constraint rules, and other general terminology rules \n* create: The server checks the content, and then checks that the content would be acceptable as a create (e.g. that the content would not violate any uniqueness constraints) \n* update: The server checks the content, and then checks that it would accept it as an update against the nominated specific resource (e.g. that there are no changes to immutable fields the server does not allow to change, and checking version integrity if appropriate) \n* delete: The server ignores the content, and checks that the nominated resource is allowed to be deleted (e.g. checking referential integrity rules)  \n\nModes update and delete can only be used when the operation is invoked at the resource instance level.   The return from this operation is an [OperationOutcome](operationoutcome.html)\n\nNote that this operation is not the only way to validate resources - see [Validating Resources](validation.html) for further information.",
+        "operationId": "StructureDefinitionValidatePost",
+        "parameters": [
+          {
+            "name": "mode",
+            "in": "query",
+            "description": "Default is 'no action'; (e.g. general validation)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "profile",
+            "in": "query",
+            "description": "If this is nominated, then the resource is validated against this specific profile. If a profile is nominated, and the server cannot validate against the nominated profile, it SHALL return an error",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Must be present unless the mode is \"delete\"",
+          "content": {
+            "application/fhir+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Resource"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Resource"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/_format"
+        },
+        {
+          "$ref": "#/components/parameters/_pretty"
+        }
+      ]
     }
   },
   "components": {
     "schemas": {
       "StructureDefinition": {
         "type": "object",
-        "description": "Structural Definition"
+        "description": "A definition of a FHIR structure. This resource is used to describe the underlying resources, data types defined in FHIR, and also for describing extensions and constraints on resources and data types."
       },
       "OperationOutcome": {
         "type": "object",
-        "description": "Information about the success/failure of an action"
+        "description": "A collection of error, warning, or information messages that result from a system action."
       },
       "Bundle": {
         "type": "object",
-        "description": "Contains a collection of resources"
+        "description": "A container for a collection of resources."
       },
       "Parameters": {
         "type": "object",
-        "description": "Operation Request or Response"
+        "description": "This resource is a non-persisted resource used to pass information into and back from an [operation](operations.html). It has no other use, and there is no RESTful endpoint associated with it."
+      },
+      "Resource": {
+        "type": "object",
+        "description": "This is the base resource type for everything."
       }
     },
     "parameters": {
@@ -1793,7 +2172,6 @@
         "name": "_format",
         "in": "query",
         "description": "Override the HTTP content negotiation",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -1802,7 +2180,6 @@
         "name": "_pretty",
         "in": "query",
         "description": "Ask for a pretty printed response for human convenience",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -1811,7 +2188,6 @@
         "name": "_elements",
         "in": "query",
         "description": "Ask for a particular set of elements to be returned",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -1820,7 +2196,6 @@
         "name": "_summary",
         "in": "query",
         "description": "Return only portions of resources, based on pre-defined levels",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -1829,7 +2204,6 @@
         "name": "_content",
         "in": "query",
         "description": "Search on the entire content of the resource",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -1838,7 +2212,6 @@
         "name": "_filter",
         "in": "query",
         "description": "Provide an inline query expression",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -1847,7 +2220,6 @@
         "name": "_id",
         "in": "query",
         "description": "Logical id of this artifact",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -1856,7 +2228,6 @@
         "name": "_in",
         "in": "query",
         "description": "Allows for the retrieval of resources that are active members of a CareTeam, Group, or List",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -1865,7 +2236,6 @@
         "name": "_language",
         "in": "query",
         "description": "Language of the resource content",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -1874,7 +2244,6 @@
         "name": "_lastUpdated",
         "in": "query",
         "description": "When the resource version last changed",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -1883,7 +2252,6 @@
         "name": "_list",
         "in": "query",
         "description": "Allows for the retrieval of resources that are referenced by a List resource or by one of the pre-defined functional lists",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -1892,7 +2260,6 @@
         "name": "_profile",
         "in": "query",
         "description": "Profiles this resource claims to conform to",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -1901,7 +2268,6 @@
         "name": "_query",
         "in": "query",
         "description": "A custom search profile that describes a specific defined query operation",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -1910,7 +2276,6 @@
         "name": "_security",
         "in": "query",
         "description": "Security Labels applied to this resource",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -1919,7 +2284,6 @@
         "name": "_source",
         "in": "query",
         "description": "Identifies where the resource comes from",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -1928,7 +2292,6 @@
         "name": "_tag",
         "in": "query",
         "description": "Tags applied to this resource",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -1937,7 +2300,6 @@
         "name": "_text",
         "in": "query",
         "description": "Perform searches against the narrative content of a resource",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -1946,7 +2308,6 @@
         "name": "_contained",
         "in": "query",
         "description": "Request different types of handling for contained resources",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -1955,7 +2316,6 @@
         "name": "_count",
         "in": "query",
         "description": "Limit the number of match results per page of response",
-        "style": "form",
         "schema": {
           "type": "number"
         }
@@ -1964,7 +2324,6 @@
         "name": "_graph",
         "in": "query",
         "description": "Include additional resources according to a GraphDefinition",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -1973,7 +2332,6 @@
         "name": "_include",
         "in": "query",
         "description": "Include additional resources, based on following links forward across references",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -1982,7 +2340,6 @@
         "name": "_revinclude",
         "in": "query",
         "description": "Include additional resources, based on following reverse links across references",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -1991,7 +2348,6 @@
         "name": "_score",
         "in": "query",
         "description": "Request match relevance in results",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2000,7 +2356,6 @@
         "name": "_sort",
         "in": "query",
         "description": "Request which order results should be returned in",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2009,7 +2364,6 @@
         "name": "_total",
         "in": "query",
         "description": "Request a precision of the total number of results for a request",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2018,7 +2372,6 @@
         "name": "_has",
         "in": "query",
         "description": "Enables querying a reverse chain",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2035,7 +2388,6 @@
         "name": "base",
         "in": "query",
         "description": "Marks this as a profile of the base",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2052,7 +2404,6 @@
         "name": "context",
         "in": "query",
         "description": "A use context assigned to the activity definition",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2061,7 +2412,6 @@
         "name": "context-quantity",
         "in": "query",
         "description": "A quantity- or range-valued use context assigned to the activity definition",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2070,7 +2420,6 @@
         "name": "context-type",
         "in": "query",
         "description": "A type of use context assigned to the activity definition",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2079,7 +2428,6 @@
         "name": "context-type-quantity",
         "in": "query",
         "description": "A use context type and quantity- or range-based value assigned to the activity definition",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2088,7 +2436,6 @@
         "name": "context-type-value",
         "in": "query",
         "description": "A use context type and value assigned to the activity definition",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2097,7 +2444,6 @@
         "name": "date",
         "in": "query",
         "description": "The activity definition publication date",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2114,7 +2460,6 @@
         "name": "description",
         "in": "query",
         "description": "The description of the activity definition",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2123,7 +2468,6 @@
         "name": "experimental",
         "in": "query",
         "description": "For testing purposes, not real usage",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2140,7 +2484,6 @@
         "name": "identifier",
         "in": "query",
         "description": "Account number",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2149,7 +2492,6 @@
         "name": "jurisdiction",
         "in": "query",
         "description": "Intended jurisdiction for the activity definition",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2158,7 +2500,6 @@
         "name": "keyword",
         "in": "query",
         "description": "Used to search for the study",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2167,7 +2508,6 @@
         "name": "kind",
         "in": "query",
         "description": "codesystem | identifier | root",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2176,7 +2516,6 @@
         "name": "name",
         "in": "query",
         "description": "Human-readable label",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2193,7 +2532,6 @@
         "name": "publisher",
         "in": "query",
         "description": "Name of the publisher of the activity definition",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2202,7 +2540,6 @@
         "name": "status",
         "in": "query",
         "description": "active | inactive | entered-in-error | on-hold | unknown",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2211,7 +2548,6 @@
         "name": "title",
         "in": "query",
         "description": "The human-friendly name of the activity definition",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2220,7 +2556,6 @@
         "name": "type",
         "in": "query",
         "description": "E.g. patient, expense, depreciation",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2229,7 +2564,6 @@
         "name": "url",
         "in": "query",
         "description": "The uri that identifies the activity definition",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2246,7 +2580,6 @@
         "name": "version",
         "in": "query",
         "description": "The business version of the activity definition",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2256,7 +2589,22 @@
         "in": "path",
         "description": "Resource Logical ID",
         "required": true,
-        "style": "simple",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_since": {
+        "name": "_since",
+        "in": "query",
+        "description": "Only include resource versions that were created at or after the given instant in time",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_at": {
+        "name": "_at",
+        "in": "query",
+        "description": "Only include resource versions that were current at some point during the time period specified in the date time value",
         "schema": {
           "type": "string"
         }
@@ -2266,7 +2614,6 @@
         "in": "path",
         "description": "Resource Version Number",
         "required": true,
-        "style": "simple",
         "schema": {
           "type": "string"
         }
@@ -2284,6 +2631,7 @@
       "openId": [
         "openid",
         "profile",
+        "roles",
         "fhirUser",
         "offline_access"
       ]
@@ -2292,7 +2640,7 @@
   "tags": [
     {
       "name": "StructureDefinition",
-      "description": "Structural Definition"
+      "description": "A definition of a FHIR structure. This resource is used to describe the underlying resources, data types defined in FHIR, and also for describing extensions and constraints on resources and data types."
     }
   ]
 }

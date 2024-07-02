@@ -488,83 +488,83 @@ public static class OpenApiCommon
     {
         _httpCommonParameters = new()
         {
-            ["_format"] = BuildStringParameter("_format", "Override the HTTP content negotiation"),
-            ["_pretty"] = BuildStringParameter("_pretty", "Ask for a pretty printed response for human convenience"),
+            { "_format", BuildStringParameter("_format", "Override the HTTP content negotiation") },
+            { "_pretty", BuildStringParameter("_pretty", "Ask for a pretty printed response for human convenience") },
         };
 
         _httpReadParameters = new()
         {
-            ["_elements"] = BuildStringParameter("_elements", "Ask for a particular set of elements to be returned"),
-            //["_summary"] = BuildSummaryParameter(),
-            ["_summary"] = BuildStringParameter("_summary", "Return only portions of resources, based on pre-defined levels"),
+            { "_elements", BuildStringParameter("_elements", "Ask for a particular set of elements to be returned") },
+            //{ "_summary", BuildSummaryParameter() },
+            { "_summary", BuildStringParameter("_summary", "Return only portions of resources, based on pre-defined levels") },
         };
 
         _searchResultParameters = new()
         {
-            ["_contained"] = BuildStringParameter("_contained", "Request different types of handling for contained resources"),
-            ["_count"] = BuildNumberParameter("_count", "Limit the number of match results per page of response"),
-            //["_elements"] = BuildStringParameter("_elements", "Request that only a specific set of elements be returned for resources"),
-            ["_graph"] = BuildStringParameter("_graph", "Include additional resources according to a GraphDefinition"),
-            ["_include"] = BuildStringParameter("_include", "Include additional resources, based on following links forward across references"),
-            ["_revinclude"] = BuildStringParameter("_revinclude", "Include additional resources, based on following reverse links across references"),
-            ["_score"] = BuildStringParameter("_score", "Request match relevance in results"),
-            ["_sort"] = BuildStringParameter("_sort", "Request which order results should be returned in"),
-            ["_total"] = BuildStringParameter("_total", "Request a precision of the total number of results for a request"),
+            { "_contained", BuildStringParameter("_contained", "Request different types of handling for contained resources") },
+            { "_count", BuildNumberParameter("_count", "Limit the number of match results per page of response") },
+            //{ "_elements", BuildStringParameter("_elements", "Request that only a specific set of elements be returned for resources") },
+            { "_graph", BuildStringParameter("_graph", "Include additional resources according to a GraphDefinition") },
+            { "_include", BuildStringParameter("_include", "Include additional resources, based on following links forward across references") },
+            { "_revinclude", BuildStringParameter("_revinclude", "Include additional resources, based on following reverse links across references") },
+            { "_score", BuildStringParameter("_score", "Request match relevance in results") },
+            { "_sort", BuildStringParameter("_sort", "Request which order results should be returned in") },
+            { "_total", BuildStringParameter("_total", "Request a precision of the total number of results for a request")  },
         };
 
         _searchCommonParameters = new()
         {
-            ["_content"] = BuildStringParameter("_content", "Search on the entire content of the resource"),
-            ["_filter"] = BuildStringParameter("_filter", "Provide an inline query expression"),
-            ["_id"] = BuildStringParameter("_id", "Logical id of this artifact"),
-            ["_in"] = BuildStringParameter("_in", "Allows for the retrieval of resources that are active members of a CareTeam, Group, or List"),
-            ["_language"] = BuildStringParameter("_language", "Language of the resource content"),
-            ["_lastUpdated"] = BuildStringParameter("_lastUpdated", "When the resource version last changed"),
-            ["_list"] = BuildStringParameter("_list", "Allows for the retrieval of resources that are referenced by a List resource or by one of the pre-defined functional lists"),
-            ["_profile"] = BuildStringParameter("_profile", "Profiles this resource claims to conform to"),
-            ["_query"] = BuildStringParameter("_query", "A custom search profile that describes a specific defined query operation"),
-            ["_security"] = BuildStringParameter("_security", "Security Labels applied to this resource"),
-            ["_source"] = BuildStringParameter("_source", "Identifies where the resource comes from"),
-            ["_tag"] = BuildStringParameter("_tag", "Tags applied to this resource"),
-            ["_text"] = BuildStringParameter("_text", "Perform searches against the narrative content of a resource"),
+            {"_content", BuildStringParameter("_content", "Search on the entire content of the resource") },
+            {"_filter", BuildStringParameter("_filter", "Provide an inline query expression") },
+            {"_id", BuildStringParameter("_id", "Logical id of this artifact") },
+            {"_in", BuildStringParameter("_in", "Allows for the retrieval of resources that are active members of a CareTeam, Group, or List") },
+            {"_language", BuildStringParameter("_language", "Language of the resource content") },
+            {"_lastUpdated", BuildStringParameter("_lastUpdated", "When the resource version last changed") },
+            {"_list", BuildStringParameter("_list", "Allows for the retrieval of resources that are referenced by a List resource or by one of the pre-defined functional lists") },
+            {"_profile", BuildStringParameter("_profile", "Profiles this resource claims to conform to") },
+            {"_query", BuildStringParameter("_query", "A custom search profile that describes a specific defined query operation") },
+            {"_security", BuildStringParameter("_security", "Security Labels applied to this resource") },
+            {"_source", BuildStringParameter("_source", "Identifies where the resource comes from") },
+            {"_tag", BuildStringParameter("_tag", "Tags applied to this resource") },
+            {"_text", BuildStringParameter("_text", "Perform searches against the narrative content of a resource")  },
         };
 
         _historyParameters = new()
         {
-            ["_count"] = BuildNumberParameter("_count", "Limit the number of match results per page of response"),
-            ["_since"] = BuildStringParameter("_since", "Only include resource versions that were created at or after the given instant in time"),
-            ["_at"] = BuildStringParameter("_at", "Only include resource versions that were current at some point during the time period specified in the date time value"),
-            ["_list"] = BuildStringParameter("_list", "Only include resource versions that are referenced in the specified list"),
-            ["_sort"] = BuildStringParameter("_sort", "Request which order results should be returned in"),
+            { "_count", BuildNumberParameter("_count", "Limit the number of match results per page of response") },
+            { "_since", BuildStringParameter("_since", "Only include resource versions that were created at or after the given instant in time") },
+            { "_at", BuildStringParameter("_at", "Only include resource versions that were current at some point during the time period specified in the date time value") },
+            { "_list", BuildStringParameter("_list", "Only include resource versions that are referenced in the specified list") },
+            { "_sort", BuildStringParameter("_sort", "Request which order results should be returned in") },
         };
 
         _searchRootParameters = new()
         {
-            ["_type"] = BuildStringParameter("_type", "A resource type filter"),
+            { "_type", BuildStringParameter("_type", "A resource type filter") },
         };
 
         _pathParameters = new()
         {
-            [PathComponentLogicalId] = BuildPathParameter(PathComponentLogicalId, "Resource Logical ID"),
-            [PathComponentVersionId] = BuildPathParameter(PathComponentVersionId, "Resource Version Number"),
+            { PathComponentLogicalId, BuildPathParameter(PathComponentLogicalId, "Resource Logical ID") },
+            { PathComponentVersionId, BuildPathParameter(PathComponentVersionId, "Resource Version Number") },
         };
 
         _httpRequestHeaders = new()
         {
-            ["Accept"] = BuildStringParameter("Accept", "Content-negotiation for MIME Type and FHIR Version", ParameterLocation.Header),
-            ["If-Match"] = BuildStringParameter("If-Match", "ETag-based matching for conditional requests", ParameterLocation.Header),
-            ["If-Modified-Since"] = BuildStringParameter("If-Modified-Since", "Date-based matching for conditional read requests", ParameterLocation.Header),
-            ["If-None-Exist"] = BuildStringParameter("If-None-Exist", "HL7 defined extension header to prevent the creation of duplicate resources", ParameterLocation.Header),
-            ["If-None-Match"] = BuildStringParameter("If-None-Match", "ETag-based matching for conditional requests", ParameterLocation.Header),
-            ["Prefer"] = BuildStringParameter("Prefer", "Request various behaviors specific to a single request", ParameterLocation.Header),
+            { "Accept", BuildStringParameter("Accept", "Content-negotiation for MIME Type and FHIR Version", ParameterLocation.Header) },
+            { "If-Match", BuildStringParameter("If-Match", "ETag-based matching for conditional requests", ParameterLocation.Header) },
+            { "If-Modified-Since", BuildStringParameter("If-Modified-Since", "Date-based matching for conditional read requests", ParameterLocation.Header) },
+            { "If-None-Exist", BuildStringParameter("If-None-Exist", "HL7 defined extension header to prevent the creation of duplicate resources", ParameterLocation.Header) },
+            { "If-None-Match", BuildStringParameter("If-None-Match", "ETag-based matching for conditional requests", ParameterLocation.Header) },
+            { "Prefer", BuildStringParameter("Prefer", "Request various behaviors specific to a single request", ParameterLocation.Header) },
         };
 
         _httpResponseHeaders = new()
         {
-            ["ETag"] = BuildStringParameter("ETag", "The value from .meta.versionId as a weak ETag, prefixed with W/ and enclosed in quotes", ParameterLocation.Header),
-            ["Last-Modified"] = BuildStringParameter("Last-Modified", "The value from .meta.lastUpdated, which is a FHIR instant, converted to the proper format", ParameterLocation.Header),
-            ["Location"] = BuildStringParameter("Location", "The URL to redirect a request to", ParameterLocation.Header),
-            ["Content-Location"] = BuildStringParameter("Content-Location", "Indicates an alternate location for the returned data", ParameterLocation.Header),
+            { "ETag", BuildStringParameter("ETag", "The value from .meta.versionId as a weak ETag, prefixed with W/ and enclosed in quotes", ParameterLocation.Header) },
+            { "Last-Modified", BuildStringParameter("Last-Modified", "The value from .meta.lastUpdated, which is a FHIR instant, converted to the proper format", ParameterLocation.Header) },
+            { "Location", BuildStringParameter("Location", "The URL to redirect a request to", ParameterLocation.Header) },
+            { "Content-Location", BuildStringParameter("Content-Location", "Indicates an alternate location for the returned data", ParameterLocation.Header) },
         };
 
     }

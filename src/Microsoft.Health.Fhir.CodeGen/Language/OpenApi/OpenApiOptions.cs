@@ -17,12 +17,12 @@ public class OpenApiOptions : ConfigGenerate
     [ConfigOption(
         ArgName = "--oas-version",
         Description = "Open API version to use.")]
-    public OaVersion OpenApiVersion { get; set; } = OaVersion.v2;
+    public OaVersion OpenApiVersion { get; set; } = OaVersion.v3;
 
     private static ConfigurationOption OpenApiVersionParameter { get; } = new()
     {
         Name = "OasVersion",
-        DefaultValue = OaVersion.v2,
+        DefaultValue = OaVersion.v3,
         CliOption = new System.CommandLine.Option<OaVersion>("--oas-version", "Open API version to export as.")
         {
             Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
@@ -57,6 +57,19 @@ public class OpenApiOptions : ConfigGenerate
         Name = "Title",
         DefaultValue = "",
         CliOption = new System.CommandLine.Option<string>("--title", "Title to use in Info section, defaults to 'FHIR [FhirSequence].[VersionString]'.")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
+
+    public bool BasicScopesOnly { get; set; } = false;
+
+    private static ConfigurationOption BasicScopesOnlyParameter { get; } = new()
+    {
+        Name = "BasicScopesOnly",
+        DefaultValue = false,
+        CliOption = new System.CommandLine.Option<bool>("--basic-scopes-only", "If only basic scopes should be included.")
         {
             Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
             IsRequired = false,
@@ -987,7 +1000,7 @@ public class OpenApiOptions : ConfigGenerate
         },
     };
 
-    private string _httpCommonParams = string.Join(',', OpenApiCommon._httpCommonParameters);
+    private string _httpCommonParams = string.Join(',', OpenApiCommon._httpCommonParameters.Keys);
     private HashSet<string> _httpCommonHash = OpenApiCommon._httpCommonParameters.Keys.ToHashSet();
     public HashSet<string> HttpCommonParamsHash => _httpCommonHash;
 
@@ -1007,7 +1020,7 @@ public class OpenApiOptions : ConfigGenerate
     private static ConfigurationOption HttpCommonParamsParameter { get; } = new()
     {
         Name = "HttpCommonParams",
-        DefaultValue = string.Join(',', OpenApiCommon._httpCommonParameters),
+        DefaultValue = string.Join(',', OpenApiCommon._httpCommonParameters.Keys),
         CliOption = new System.CommandLine.Option<string>("--http-common-params", "Comma-separated list of common parameters to include in HTTP requests.")
         {
             Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
@@ -1016,7 +1029,7 @@ public class OpenApiOptions : ConfigGenerate
     };
 
 
-    private string _httpReadParams = string.Join(',', OpenApiCommon._httpReadParameters);
+    private string _httpReadParams = string.Join(',', OpenApiCommon._httpReadParameters.Keys);
     private HashSet<string> _httpReadHash = OpenApiCommon._httpReadParameters.Keys.ToHashSet();
     public HashSet<string> HttpReadHash => _httpReadHash;
 
@@ -1037,7 +1050,7 @@ public class OpenApiOptions : ConfigGenerate
     private static ConfigurationOption HttpReadParamsParameter { get; } = new()
     {
         Name = "HttpReadParams",
-        DefaultValue = string.Join(',', OpenApiCommon._httpReadParameters),
+        DefaultValue = string.Join(',', OpenApiCommon._httpReadParameters.Keys),
         CliOption = new System.CommandLine.Option<string>("--http-read-params", "Comma-separated list of common parameters to include in HTTP read requests.")
         {
             Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
@@ -1045,7 +1058,7 @@ public class OpenApiOptions : ConfigGenerate
         },
     };
 
-    private string _searchResultParams = string.Join(',', OpenApiCommon._searchResultParameters);
+    private string _searchResultParams = string.Join(',', OpenApiCommon._searchResultParameters.Keys);
     private HashSet<string> _searchResultHash = OpenApiCommon._searchResultParameters.Keys.ToHashSet();
     public HashSet<string> SearchResultHash => _searchResultHash;
     /// <summary>Gets or sets options for controlling the search result.</summary>
@@ -1064,7 +1077,7 @@ public class OpenApiOptions : ConfigGenerate
     private static ConfigurationOption SearchResultParamsParameter { get; } = new()
     {
         Name = "SearchResultParams",
-        DefaultValue = string.Join(',', OpenApiCommon._searchResultParameters),
+        DefaultValue = string.Join(',', OpenApiCommon._searchResultParameters.Keys),
         CliOption = new System.CommandLine.Option<string>("--search-result-params", "Comma-separated list of common parameters to include in search results.")
         {
             Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
@@ -1099,7 +1112,7 @@ public class OpenApiOptions : ConfigGenerate
         },
     };
 
-    private string _historyParams = string.Join(',', OpenApiCommon._historyParameters);
+    private string _historyParams = string.Join(',', OpenApiCommon._historyParameters.Keys);
     private HashSet<string> _historyHash = OpenApiCommon._historyParameters.Keys.ToHashSet();
     public HashSet<string> HistoryHash => _historyHash;
     /// <summary>Gets or sets options for controlling the history.</summary>
@@ -1118,7 +1131,7 @@ public class OpenApiOptions : ConfigGenerate
     private static ConfigurationOption HistoryParamsParameter { get; } = new()
     {
         Name = "HistoryParams",
-        DefaultValue = string.Join(',', OpenApiCommon._historyParameters),
+        DefaultValue = string.Join(',', OpenApiCommon._historyParameters.Keys),
         CliOption = new System.CommandLine.Option<string>("--history-params", "Comma-separated list of common parameters to include in history.")
         {
             Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
@@ -1131,6 +1144,7 @@ public class OpenApiOptions : ConfigGenerate
         OpenApiVersionParameter,
         FileFormatParameter,
         TitleParameter,
+        BasicScopesOnlyParameter,
         DefinitionVersionParameter,
         ExtensionSupportParameter,
         SchemaLevelParameter,
@@ -1220,6 +1234,9 @@ public class OpenApiOptions : ConfigGenerate
                     break;
                 case "Title":
                     Title = GetOpt(parseResult, opt.CliOption, Title);
+                    break;
+                case "BasicScopesOnly":
+                    BasicScopesOnly = GetOpt(parseResult, opt.CliOption, BasicScopesOnly);
                     break;
                 case "DefinitionVersion":
                     DefinitionVersion = GetOpt(parseResult, opt.CliOption, DefinitionVersion);
