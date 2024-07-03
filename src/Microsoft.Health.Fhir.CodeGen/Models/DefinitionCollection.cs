@@ -5,6 +5,7 @@
 
 
 using System;
+using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Xml.Linq;
@@ -1507,6 +1508,52 @@ public partial class DefinitionCollection
             _valueSetUrlsById[valueSet.Id] = vsUrl;
         }
 
+        /* TODO(ginoc): 2024.07.01 - Firely Issue Workaround
+         * https://github.com/FirelyTeam/firely-net-sdk/issues/2809
+         * - Units of Time is loading with Chinese translation instead of default values
+         */
+        if ((unversioned == "http://hl7.org/fhir/ValueSet/units-of-time") &&
+            (valueSet.Expansion?.Contains.Any() ?? false) &&
+            !char.IsAsciiLetter(valueSet.Expansion.Contains.First().Display[0]))
+        {
+            foreach (ValueSet.ContainsComponent cc in valueSet.Expansion.Contains)
+            {
+                if (!char.IsAsciiLetter(cc.Display[0]))
+                {
+                    switch (cc.Code)
+                    {
+                        case "s":
+                            cc.Display = "second";
+                            break;
+
+                        case "min":
+                            cc.Display = "minute";
+                            break;
+
+                        case "h":
+                            cc.Display = "hour";
+                            break;
+
+                        case "d":
+                            cc.Display = "day";
+                            break;
+
+                        case "wk":
+                            cc.Display = "week";
+                            break;
+
+                        case "mo":
+                            cc.Display = "month";
+                            break;
+
+                        case "a":
+                            cc.Display = "year";
+                            break;
+                    }
+                }
+            }
+        }
+
         if (_valueSetsByVersionedUrl.TryGetValue(vsUrl, out ValueSet? existing) && (existing != null))
         {
             // sort out unexpanded vs expanded vs multiple expansions
@@ -1807,6 +1854,38 @@ public partial class DefinitionCollection
 
         return !string.IsNullOrEmpty(packageId) && !string.IsNullOrEmpty(packageVersion);
     }
+
+    public class VersionedResourceEnumerator<T> : IEnumerator<T>
+    {
+        IDictionary<string, Dictionary<string, T>> _source;
+        IEnumerator<KeyValuePair<string, Dictionary<string, T>>> _sourceEnumerator;
+
+        public VersionedResourceEnumerator(IDictionary<string, Dictionary<string, T>> source)
+        {
+            _source = source;
+            _sourceEnumerator = _source.GetEnumerator();
+        }
+        public T Current => _sourceEnumerator.Current.Value.OrderByDescending(v => v.Key).First().Value;
+
+        object IEnumerator.Current => _sourceEnumerator.Current.Value.OrderByDescending(v => v.Key).First().Value!;
+
+        public void Dispose()
+        {
+            if (_sourceEnumerator != null)
+            {
+                _sourceEnumerator.Dispose();
+            }
+
+            if (_source != null)
+            {
+                _source = null!;
+            }
+        }
+        public bool MoveNext() => _sourceEnumerator.MoveNext();
+        public void Reset() => _sourceEnumerator.Reset();
+    }
+
+    public VersionedResourceEnumerator<IConformanceResource> CanonicalEnumerator => new(_canonicalResources);
 
     /// <summary>Gets listing of resources, by Name.</summary>
     public IReadOnlyDictionary<string, StructureDefinition> ResourcesByName => _resourcesByName;

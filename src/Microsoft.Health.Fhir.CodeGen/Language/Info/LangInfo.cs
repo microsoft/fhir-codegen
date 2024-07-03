@@ -117,10 +117,10 @@ public class LangInfo : ILanguage
 
         _definitions = definitions;
 
-        // TODO(ginoc): actually open the file
         // create a filename for writing (single file for now)
-        string filename = Path.Combine(config.OutputDirectory, $"Info_{definitions.FhirSequence.ToRLiteral()}.txt");
-        //using (FileStream stream = new(filename, FileMode.Create))
+        string filename = string.IsNullOrEmpty(config.OutputFilename)
+            ? Path.Combine(config.OutputDirectory, $"Info_{definitions.FhirSequence.ToRLiteral()}.txt")
+            : Path.Combine(config.OutputDirectory, config.OutputFilename);
 
         using (config.WriteStream == null
             ? _writer = new ExportStreamWriter(new FileStream(filename, FileMode.Create), System.Text.Encoding.UTF8, 1024, true)

@@ -31,6 +31,7 @@ namespace Microsoft.Health.Fhir.CodeGen.Net;
 public class ServerConnector : IDisposable
 {
     private string _fhirUrl;
+    private string _smartUrl;
     private Dictionary<string, List<string>> _headers;
     private PackageLoader _packageLoader;
     private HttpClient _client;
@@ -38,14 +39,16 @@ public class ServerConnector : IDisposable
 
     private bool _disposedValue = false;
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="ServerConnector"/> class.
-    /// </summary>
-    /// <param name="fhirUrl">The FHIR server URL.</param>
-    /// <param name="headers">The headers to be included in the HTTP requests.</param>
-    /// <param name="packageLoader">The package loader used for parsing capability statements.</param>
+    /// <summary>Initializes a new instance of the <see cref="ServerConnector"/> class.</summary>
+    /// <exception cref="ArgumentException">Thrown when one or more arguments have unsupported or
+    ///  illegal values.</exception>
+    /// <param name="fhirUrl">       The FHIR server URL.</param>
+    /// <param name="smartConfigUrl">Override URL for smart configuration.</param>
+    /// <param name="headers">       The headers to be included in the HTTP requests.</param>
+    /// <param name="packageLoader"> The package loader used for parsing capability statements.</param>
     public ServerConnector(
         string fhirUrl,
+        string smartConfigUrl,
         Dictionary<string, List<string>> headers,
         PackageLoader packageLoader)
     {
@@ -55,6 +58,7 @@ public class ServerConnector : IDisposable
         }
 
         _fhirUrl = fhirUrl;
+        _smartUrl = smartConfigUrl;
         _headers = headers;
         _client = new();
         _packageLoader = packageLoader;
@@ -136,7 +140,7 @@ public class ServerConnector : IDisposable
             {
                 case FhirReleases.FhirSequenceCodes.DSTU2:
                     {
-                        r = _packageLoader.ParseContents20("application/fhir+json", json);
+                        r = _packageLoader.ParseContents20("application/fhir+json", content: json);
                         if (r is CapabilityStatement cs)
                         {
                             capabilities = cs;
@@ -146,7 +150,7 @@ public class ServerConnector : IDisposable
 
                 case FhirReleases.FhirSequenceCodes.STU3:
                     {
-                        r = _packageLoader.ParseContents30("application/fhir+json", json);
+                        r = _packageLoader.ParseContents30("application/fhir+json", content: json);
                         if (r is CapabilityStatement cs)
                         {
                             capabilities = cs;
@@ -157,7 +161,7 @@ public class ServerConnector : IDisposable
                 case FhirReleases.FhirSequenceCodes.R4:
                 case FhirReleases.FhirSequenceCodes.R4B:
                     {
-                        r = _packageLoader.ParseContents43("application/fhir+json", json);
+                        r = _packageLoader.ParseContents43("application/fhir+json", content: json);
                         if (r is CapabilityStatement cs)
                         {
                             capabilities = cs;
@@ -168,7 +172,7 @@ public class ServerConnector : IDisposable
                 case FhirReleases.FhirSequenceCodes.R5:
                 default:
                     {
-                        r = _packageLoader.ParseContentsSystemTextStream("application/fhir+json", json, typeof(CapabilityStatement));
+                        r = _packageLoader.ParseContentsSystemTextStream("application/fhir+json", typeof(CapabilityStatement), content: json);
                         if (r is CapabilityStatement cs)
                         {
                             capabilities = cs;
@@ -282,7 +286,11 @@ public class ServerConnector : IDisposable
 
         try
         {
-            if (_fhirUrl.EndsWith("metadata", StringComparison.OrdinalIgnoreCase))
+            if (!string.IsNullOrEmpty(_smartUrl))
+            {
+                requestUri = new Uri(_smartUrl);
+            }
+            else if (_fhirUrl.EndsWith("metadata", StringComparison.OrdinalIgnoreCase))
             {
                 requestUri = new Uri(string.Concat(_fhirUrl.AsSpan(_fhirUrl.Length - 8), "/.well-known/smart-configuration"));
             }

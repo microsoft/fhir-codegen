@@ -63,6 +63,21 @@ public class ConfigRoot : ICodeGenConfig
         },
     };
 
+    /// <summary>Gets or sets the filename of the output file.</summary>
+    public string OutputFilename { get; set; } = string.Empty;
+
+    private static ConfigurationOption OutputFilenameParameter { get; } = new()
+    {
+        Name = "OutputFilename",
+        EnvVarName = "Output_Filename",
+        DefaultValue = string.Empty,
+        CliOption = new System.CommandLine.Option<string>("--output-filename", "Filename to write output.")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
+
     /// <summary>
     /// Gets or sets the packages to load.
     /// </summary>
@@ -154,6 +169,7 @@ public class ConfigRoot : ICodeGenConfig
     [
         FhirCacheDirectoryParameter,
         OutputDirectoryParameter,
+        OutputFilenameParameter,
         PackagesParameter,
         AutoLoadExpansionsParameter,
         ResolvePackageDependenciesParameter,
@@ -394,6 +410,9 @@ public class ConfigRoot : ICodeGenConfig
 
                         OutputDirectory = dir;
                     }
+                    break;
+                case "OutputFilename":
+                    OutputFilename = GetOpt(parseResult, opt.CliOption, OutputFilename);
                     break;
                 case "Packages":
                     Packages = GetOptArray(parseResult, opt.CliOption, Packages);

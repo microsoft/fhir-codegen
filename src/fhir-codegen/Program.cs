@@ -559,7 +559,7 @@ public class Program
                 Dictionary<string, List<string>> headers = ParseHttpHeaderArgs(genConfig.FhirServerHeaders);
 
                 // create our server connector
-                ServerConnector serverConnector = new(genConfig.FhirServerUrl, headers, loader);
+                ServerConnector serverConnector = new(genConfig.FhirServerUrl, genConfig.SmartConfigUrl, headers, loader);
 
                 // try to get the capability statement
                 if (serverConnector.TryGetCapabilities(out _, out _, out Hl7.Fhir.Model.CapabilityStatement? capStatement, out FhirReleases.FhirSequenceCodes? serverFhirVersion))

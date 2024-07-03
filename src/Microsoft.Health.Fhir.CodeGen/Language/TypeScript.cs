@@ -330,7 +330,9 @@ public class TypeScript : ILanguage
         }
 
         // create a filename for writing (single file for now)
-        string filename = Path.Combine(config.OutputDirectory, $"{definitions.FhirSequence.ToRLiteral()}.ts");
+        string filename = string.IsNullOrEmpty(config.OutputFilename)
+            ? Path.Combine(config.OutputDirectory, $"{definitions.FhirSequence.ToRLiteral()}.ts")
+            : Path.Combine(config.OutputDirectory, config.OutputFilename);
 
         using (config.WriteStream == null
             ? _writer = new ExportStreamWriter(new FileStream(filename, FileMode.Create), System.Text.Encoding.UTF8, 1024, true)
@@ -590,6 +592,23 @@ public class TypeScript : ILanguage
         }
     }
 
+    private static string BuildCommentString(StructureDefinition sd)
+    {
+        string[] values = (!string.IsNullOrEmpty(sd.Description) && !string.IsNullOrEmpty(sd.Title) && sd.Description.StartsWith(sd.Title))
+            ? new[] { sd.Description, sd.Purpose }
+            : new[] { sd.Title, sd.Description, sd.Purpose };
+
+        return string.Join('\n', values.Where(s => !string.IsNullOrEmpty(s)).Distinct()).Trim();
+    }
+
+    private static string BuildCommentString(ElementDefinition ed)
+    {
+        string[] values = (!string.IsNullOrEmpty(ed.Definition) && !string.IsNullOrEmpty(ed.Short) && ed.Definition.StartsWith(ed.Short))
+            ? new[] { ed.Definition, ed.Comment }
+            : new[] { ed.Short, ed.Definition, ed.Comment };
+        return string.Join('\n', values.Where(s => !string.IsNullOrEmpty(s)).Distinct()).Trim();
+    }
+
     /// <summary>Writes a StructureDefinition.</summary>
     /// <param name="cd">        The ComponentDefinition we are writing from.</param>
     /// <param name="isResource">True if is resource, false if not.</param>
@@ -602,15 +621,15 @@ public class TypeScript : ILanguage
 
         if (cd.IsRootOfStructure)
         {
-            WriteIndentedComment(cd.Structure.cgpComment());
+            //WriteIndentedComment(cd.Structure.cgpComment());
+            WriteIndentedComment(BuildCommentString(cd.Structure));
 
             // get the base type name from the root element
             typeName = cd.Structure.cgBaseTypeName(_dc, _primitiveTypeMap);
         }
         else
         {
-            string comment = string.Join('\n', cd.Element.Short, cd.Element.Comment).Trim();
-            WriteIndentedComment(comment);
+            WriteIndentedComment(BuildCommentString(cd.Element));
 
             // get the base type name from the root element of this path
             typeName = cd.Element.cgBaseTypeName(_dc, false, _primitiveTypeMap);
@@ -927,8 +946,8 @@ public class TypeScript : ILanguage
 
         foreach ((string exportName, string elementTypes) in values)
         {
-            string comment = string.Join('\n', ed.Definition, ed.Comment).Trim();
-            WriteIndentedComment(comment);
+            //string comment = string.Join('\n', ed.Definition, ed.Comment).Trim();
+            WriteIndentedComment(BuildCommentString(ed));
 
             IEnumerable<string> codes = ed.cgCodes(_dc);
 
