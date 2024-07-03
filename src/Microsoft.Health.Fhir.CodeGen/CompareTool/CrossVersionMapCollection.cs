@@ -353,6 +353,9 @@ public class CrossVersionMapCollection
         string groupSourceVar = string.Empty;
         string groupTargetVar = string.Empty;
 
+        // TODO: we should be better about detecting this. Either track the call tree during a recursive descent or
+        // determine the behavior based off of element definition named references.
+
         // Skip (re-)processing some known recursive points
         if (sourcePrefix == "QuestionnaireResponse.item.item" || targetPrefix == "QuestionnaireResponse.item.item"
             || sourcePrefix == "Questionnaire.item.item" || targetPrefix == "Questionnaire.item.item"
@@ -407,13 +410,13 @@ public class CrossVersionMapCollection
                 sourceName = $"{sourcePrefix}.{sourceName}";
                 targetName = $"{targetPrefix}.{targetName}";
 
-                if (!fmlPathLookup.TryGetValue(sourceName, out Dictionary<string, FmlTargetInfo>? expsByTarget))
+                if (!fmlPathLookup.TryGetValue(sourceName, out Dictionary<string, FmlTargetInfo>? expressionsByTarget))
                 {
-                    expsByTarget = [];
-                    fmlPathLookup.Add(sourceName, expsByTarget);
+                    expressionsByTarget = [];
+                    fmlPathLookup.Add(sourceName, expressionsByTarget);
                 }
 
-                expsByTarget.Add(targetName, new()
+                expressionsByTarget.Add(targetName, new()
                 {
                     FhirMappingExpression = exp,
                     IsSimpleCopy = true,
@@ -433,27 +436,27 @@ public class CrossVersionMapCollection
                     // add our current name prefix
                     sourceName = $"{sourcePrefix}.{sourceName}";
 
-                    if (!fmlPathLookup.TryGetValue(sourceName, out Dictionary<string, FmlTargetInfo>? expsByTarget))
+                    if (!fmlPathLookup.TryGetValue(sourceName, out Dictionary<string, FmlTargetInfo>? expressionsByTarget))
                     {
-                        expsByTarget = [];
-                        fmlPathLookup.Add(sourceName, expsByTarget);
+                        expressionsByTarget = [];
+                        fmlPathLookup.Add(sourceName, expressionsByTarget);
                     }
 
                     foreach (FmlExpressionTarget target in exp.MappingExpression.Targets)
                     {
                         string targetName = target.Identifier?.StartsWith(groupTargetVar, StringComparison.Ordinal) == true && target.Identifier.Length > groupTargetVarLen
                             ? target.Identifier[(groupTargetVarLen + 1)..]
-                            : target.Identifier;
+                            : target.Identifier ?? string.Empty;
 
                         // add our current name prefix
-                        targetName = $"{targetPrefix}.{targetName}";
+                        targetName = string.IsNullOrEmpty(targetName) ? targetPrefix : $"{targetPrefix}.{targetName}";
 
                         string transformName = target.Transform?.Invocation?.Identifier ?? string.Empty;
 
                         switch (transformName)
                         {
                             case "translate":
-                                expsByTarget[targetName] = new()
+                                expressionsByTarget[targetName] = new()
                                 {
                                     FhirMappingExpression = exp,
                                     HasTransform = target.Transform != null,
@@ -472,7 +475,7 @@ public class CrossVersionMapCollection
                                 //{
                                 //    Console.Write("");
                                 //}
-                                expsByTarget[targetName] = new()
+                                expressionsByTarget[targetName] = new()
                                 {
                                     FhirMappingExpression = exp,
                                     HasTransform = target.Transform != null,

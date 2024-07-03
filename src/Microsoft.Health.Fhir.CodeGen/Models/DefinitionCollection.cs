@@ -1508,9 +1508,8 @@ public partial class DefinitionCollection
             _valueSetUrlsById[valueSet.Id] = vsUrl;
         }
 
-        /* TODO(ginoc): 2024.07.01 - Firely Issue Workaround
-         * https://github.com/FirelyTeam/firely-net-sdk/issues/2809
-         * - Units of Time is loading with Chinese translation instead of default values
+        /* ginoc: 2024.07.01 - Issues with published expansions
+         * - R4, R4B, R5: Units of Time expansion only contains the Chinese translation instead of default values
          */
         if ((unversioned == "http://hl7.org/fhir/ValueSet/units-of-time") &&
             (valueSet.Expansion?.Contains.Any() ?? false) &&
