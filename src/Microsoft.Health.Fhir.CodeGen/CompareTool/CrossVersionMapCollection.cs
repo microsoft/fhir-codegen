@@ -353,6 +353,20 @@ public class CrossVersionMapCollection
         string groupSourceVar = string.Empty;
         string groupTargetVar = string.Empty;
 
+        // Skip (re-)processing some known recursive points
+        if (sourcePrefix == "QuestionnaireResponse.item.item" || targetPrefix == "QuestionnaireResponse.item.item"
+            || sourcePrefix == "Questionnaire.item.item" || targetPrefix == "Questionnaire.item.item"
+            || sourcePrefix == "QuestionnaireResponse.item.answer.item.answer" || targetPrefix == "QuestionnaireResponse.item.answer.item.answer"
+            || sourcePrefix == "GraphDefinition.link.target.link"
+            )
+            return;
+
+        if (sourcePrefix.Length > 2048 || targetPrefix.Length > 2048)
+        {
+            System.Diagnostics.Trace.WriteLine($"{fml.MapDirective?.Url ?? fml.MetadataByPath["url"]?.Literal?.Value} {group.Name} Path likely in a recursive loop {sourcePrefix} -> {targetPrefix}");
+            throw new ApplicationException($"Path likely in a recursive loop {sourcePrefix} -> {targetPrefix}");
+        }
+
         // parse out the source and target names from the group
         foreach (GroupParameter gp in group.Parameters)
         {
@@ -474,7 +488,7 @@ public class CrossVersionMapCollection
                             foreach (FmlInvocation dependentInvocation in exp.MappingExpression.DependentExpression.Invocations)
                             {
                                 string fnName = dependentInvocation.Identifier;
-                                if (fml.GroupsByName.TryGetValue(fnName, out GroupDeclaration? dependentGroup))
+                                if (fnName != group.Name && fml.GroupsByName.TryGetValue(fnName, out GroupDeclaration? dependentGroup))
                                 {
                                     ProcessCrossVersionGroup(fml, sourceName, targetName, dependentGroup, fmlPathLookup);
                                 }
