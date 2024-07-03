@@ -55,6 +55,8 @@ internal static class VisitorUtilities
     {
         HashSet<int> hash = literalsToMatch.ToHashSet();
 
+        if (c.children == null) return null;
+
         // first pass just check terminal nodes
         foreach (IParseTree child in c.children)
         {
