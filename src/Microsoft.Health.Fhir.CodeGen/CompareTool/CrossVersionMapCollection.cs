@@ -412,7 +412,7 @@ public class CrossVersionMapCollection
             {
                 foreach (FmlExpressionSource source in exp.MappingExpression.Sources)
                 {
-                    string sourceName = source.Identifier.StartsWith(groupSourceVar, StringComparison.Ordinal)
+                    string sourceName = source.Identifier.StartsWith(groupSourceVar, StringComparison.Ordinal) && source.Identifier.Length > groupSourceVarLen
                         ? source.Identifier[(groupSourceVarLen + 1)..]
                         : source.Identifier;
 
@@ -427,7 +427,7 @@ public class CrossVersionMapCollection
 
                     foreach (FmlExpressionTarget target in exp.MappingExpression.Targets)
                     {
-                        string targetName = target.Identifier.StartsWith(groupTargetVar, StringComparison.Ordinal)
+                        string targetName = target.Identifier?.StartsWith(groupTargetVar, StringComparison.Ordinal) == true && target.Identifier.Length > groupTargetVarLen
                             ? target.Identifier[(groupTargetVarLen + 1)..]
                             : target.Identifier;
 
