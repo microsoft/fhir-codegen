@@ -106,22 +106,9 @@ mapExpression
   : mapExpressionSource (',' mapExpressionSource)* ('->' mapExpressionTarget)? dependentExpression? mapExpressionName?
   ;
 
-// mapLine
-//   : 
-//   ;
-
-// mapLine
-//  	: fpExpression ';'
-//  	| mapLineSources ('->' mapLineTargets)? dependent? mapLineName? ';'
-//  	;
-
 mapExpressionName
   : DOUBLE_QUOTED_STRING
   ;
-
-// mapLineSources
-//   : mapLineSource (',' mapLineSource)*
-//   ;
 
 mapExpressionSource
   : qualifiedIdentifier 
@@ -149,8 +136,8 @@ upperBound
   ;
 
 qualifiedIdentifier
-  : (ID | IDENTIFIER | 'imports' | 'source' | 'target' | 'group' | 'prefix' | 'map' | 'uses' | 'let' | 'types' | 'extends' | 'where' | 'check' | 'alias' | 'div' | 'contains') 
-    ('.' (ID | IDENTIFIER | 'imports' | 'source' | 'target' | 'group' | 'prefix' | 'map' | 'uses' | 'let' | 'types' | 'extends' | 'where' | 'check' | 'alias' | 'div' | 'contains'))*
+  : (ID | IDENTIFIER | 'imports' | 'source' | 'target' | 'group' | 'prefix' | 'map' | 'uses' | 'let' | 'types' | 'extends' | 'where' | 'check' | 'alias' | 'div' | 'contains' | 'as' | 'is') 
+    ('.' (ID | IDENTIFIER | 'imports' | 'source' | 'target' | 'group' | 'prefix' | 'map' | 'uses' | 'let' | 'types' | 'extends' | 'where' | 'check' | 'alias' | 'div' | 'contains' | 'as' | 'is'))*
   // : identifier ('.' identifier '[x]'?)*
   ;
 
@@ -163,11 +150,6 @@ alias
   ;
 
 whereClause
-  // : 'where' 
-  //   qualifiedIdentifier 
-  //   ('=' | '!=' | '>' | '>=' | '<' | '<=' ) 
-  //   literal 
-  //   ('and' qualifiedIdentifier ('=' | '!=' | '>' | '>=' | '<' | '<=' ) literal)*?   #incorrectWhere
   : 'where'  fpExpression
   // | 'where' '(' fpExpression ')'                                                    #correctWhere
   ;
@@ -190,6 +172,7 @@ importDeclaration
 
 mapLineTarget
   : qualifiedIdentifier ('=' transform)? alias? ('first' | 'share' | 'last' | 'single')?
+  | '(' fpExpression ')' alias? ('first' | 'share' | 'last' | 'single')?     // pure fhirpath based variables
   | invocation alias?     // alias is not required when simply invoking a group
   ;
 

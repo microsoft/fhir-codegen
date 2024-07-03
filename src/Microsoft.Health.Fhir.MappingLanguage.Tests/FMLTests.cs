@@ -3,7 +3,10 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System.IO;
+using System.Text;
 using FluentAssertions;
+using Hl7.Fhir.Utility;
 using Microsoft.Health.Fhir.MappingLanguage.Tests.Extensions;
 using Xunit.Abstractions;
 
@@ -11,12 +14,46 @@ namespace Microsoft.Health.Fhir.MappingLanguage.Tests;
 
 public class FMLTests
 {
+    public FMLTests(ITestOutputHelper outputWriter)
+    {
+        Console.SetOut(new TestWriter(outputWriter));
+    }
+
     [Fact]
     internal void TestBuildingLiteralEnums()
     {
+        // Output what should be in the enum to the console (test output)
         List<string> lines = AntlrUtils.BuildLiteralEnums();
+        Console.WriteLine(String.Join("\n", lines));
 
+        // Now check that the actual code matches what it should be
         lines.Should().NotBeNullOrEmpty();
+
+        var evs = typeof(MappingLanguage.FmlTokenTypeCodes).GetEnumValues();
+        Assert.Equal(evs.Length, lines.Count);
+        foreach (var ev in evs)
+        {
+            var line = lines.FirstOrDefault(v => v.StartsWith($"{ev} = "));
+            if (line != null)
+                lines.Remove(line);
+            else
+                Console.WriteLine($"Missing: {ev}");
+        }
+        Assert.Equal(0, lines.Count); // should be no lines left over
+
+        // Also test the other enum
+        var rcs = typeof(MappingLanguage.FmlRuleCodes).GetEnumValues();
+        FmlMappingParser.ruleNames.Length.Should().Be(rcs.Length);
+        bool hasIssues = false;
+        foreach (var rc in rcs)
+        {
+            if (!FmlMappingParser.ruleNames.Contains($"{rc}", StringComparer.OrdinalIgnoreCase))
+            {
+                Console.WriteLine($"FmlMappingParser.ruleNames: {rc} is not in the enum");
+                hasIssues = true;
+            }
+        }
+        Assert.False(hasIssues);
     }
 
     [Fact]
@@ -342,4 +379,34 @@ group Encounter(source src : EncounterR4, target tgt : EncounterR5) extends Doma
     //    group.TypeMode.Should().BeNull();
 
     //}
+}
+public class TestWriter : TextWriter
+{
+    public ITestOutputHelper OutputWriter { get; }
+
+    public override Encoding Encoding => Encoding.ASCII;
+
+    public TestWriter(ITestOutputHelper outputWriter)
+    {
+        OutputWriter = outputWriter;
+    }
+    StringBuilder cache = new();
+    public override void Write(char value)
+    {
+        if (value == '\n')
+        {
+            OutputWriter.WriteLine(cache.ToString());
+            cache.Clear();
+        }
+        else
+        {
+            cache.Append(value);
+        }
+    }
+    public override void Flush()
+    {
+        if (cache.Length == 0) return;
+        OutputWriter.WriteLine(cache.ToString());
+        cache.Clear();
+    }
 }
