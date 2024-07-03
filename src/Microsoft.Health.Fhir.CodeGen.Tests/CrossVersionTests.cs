@@ -25,21 +25,22 @@ public class CrossVersionTests
         Console.SetOut(new TestWriter(outputWriter));
     }
 
-    [Theory]
-    [InlineData("C:\\git\\fhir-cross-version\\input\\R2toR3", "2to3")]
-    [InlineData("C:\\git\\fhir-cross-version\\input\\R3toR2", "3to2")]
-    [InlineData("C:\\git\\fhir-cross-version\\input\\R3toR4", "3to4")]
-    [InlineData("C:\\git\\fhir-cross-version\\input\\R4toR3", "4to3")]
-    [InlineData("C:\\git\\fhir-cross-version\\input\\R4toR5", "4to5")]
-    [InlineData("C:\\git\\fhir-cross-version\\input\\R5toR4", "5to4")]
-    [InlineData("C:\\git\\fhir-cross-version\\input\\R4BtoR5", "4Bto5")]
-    [InlineData("C:\\git\\fhir-cross-version\\input\\R5toR4B", "5to4B")]
+    [Theory(DisplayName = "TestLoadingFml")]
+    [InlineData("R2toR3", "2to3")]
+    [InlineData("R3toR2", "3to2")]
+    [InlineData("R3toR4", "3to4")]
+    [InlineData("R4toR3", "4to3")]
+    [InlineData("R4toR5", "4to5")]
+    [InlineData("R5toR4", "5to4")]
+    [InlineData("R4BtoR5", "4Bto5")]
+    [InlineData("R5toR4B", "5to4B")]
     public void TestLoadingFml(string path, string versionToVersion)
     {
+        string prefixPath = @"C:\git\fhir-cross-version\input\";
         int versionToVersionLen = versionToVersion.Length;
 
         // files have different styles in each directory, but we want all FML files anyway
-        string[] files = Directory.GetFiles(path, $"*.fml", SearchOption.TopDirectoryOnly);
+        string[] files = Directory.GetFiles(prefixPath+path, $"*.fml", SearchOption.TopDirectoryOnly);
 
         FhirMappingLanguage content = new();
 
