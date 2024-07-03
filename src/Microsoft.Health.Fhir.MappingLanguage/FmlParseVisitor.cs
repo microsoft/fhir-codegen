@@ -386,7 +386,7 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                 };
         }
 
-        throw new Exception("Unhandled GroupExpression type");
+        throw new Exception($"Unhandled GroupExpression type: @{ctx.Start.Line}:{ctx.Start.Column}");
     }
 
     private FmlGroupExpression? ExtractFmlMappingExpression(MapExpressionContext? ctx)
