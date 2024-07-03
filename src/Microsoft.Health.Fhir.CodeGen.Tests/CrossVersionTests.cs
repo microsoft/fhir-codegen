@@ -45,6 +45,7 @@ public class CrossVersionTests
 
         Dictionary<string, Dictionary<string, FmlTargetInfo>> fmlPathLookup = [];
 
+        int errorCount = 0;
         foreach (string filename in files)
         {
             string fmlContent = File.ReadAllText(filename);
@@ -52,6 +53,7 @@ public class CrossVersionTests
             if (!content.TryParse(fmlContent, out FhirStructureMap? fml))
             {
                 Console.WriteLine($"Error loading {filename}: could not parse");
+                errorCount++;
                 continue;
             }
 
@@ -87,10 +89,12 @@ public class CrossVersionTests
             catch (Exception ex)
             {
                 Console.WriteLine($"Error Processing {filename}: {ex.Message}");
+                errorCount++;
             }
 
             //ProcessCrossVersionFml(string name, FhirStructureMap fml, Dictionary<string, List<GroupExpression>> fmlPathLookup)
         }
+        errorCount.Should().Be(0, "Should be no parsing/processing errors");
     }
 }
 
