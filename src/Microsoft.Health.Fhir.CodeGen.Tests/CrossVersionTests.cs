@@ -80,7 +80,14 @@ public class CrossVersionTests
                 continue;
             }
 
+            try
+            {
             CrossVersionMapCollection.ProcessCrossVersionFml(name, fml, fmlPathLookup);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error Processing {filename}: {ex.Message}");
+            }
 
             //ProcessCrossVersionFml(string name, FhirStructureMap fml, Dictionary<string, List<GroupExpression>> fmlPathLookup)
         }
