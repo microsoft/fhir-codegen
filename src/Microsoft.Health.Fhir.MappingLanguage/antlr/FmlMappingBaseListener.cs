@@ -302,20 +302,6 @@ public partial class FmlMappingBaseListener : IFmlMappingListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitMapSimpleCopy([NotNull] FmlMappingParser.MapSimpleCopyContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by the <c>mapFhirPath</c>
-	/// labeled alternative in <see cref="FmlMappingParser.expression"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterMapFhirPath([NotNull] FmlMappingParser.MapFhirPathContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>mapFhirPath</c>
-	/// labeled alternative in <see cref="FmlMappingParser.expression"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitMapFhirPath([NotNull] FmlMappingParser.MapFhirPathContext context) { }
-	/// <summary>
 	/// Enter a parse tree produced by the <c>mapFhirMarkup</c>
 	/// labeled alternative in <see cref="FmlMappingParser.expression"/>.
 	/// <para>The default implementation does nothing.</para>

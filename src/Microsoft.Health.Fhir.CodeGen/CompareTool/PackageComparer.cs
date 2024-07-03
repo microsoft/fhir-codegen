@@ -270,7 +270,7 @@ public class PackageComparer
                     Directory.CreateDirectory(mapSubDir);
                 }
 
-                WriteStructureMaps(mapSubDir, complexTypeComparisons.Values.SelectMany(l => l.Select(s => s)));
+                WriteStructureBasedConceptMaps(mapSubDir, complexTypeComparisons.Values.SelectMany(l => l.Select(s => s)));
             }
 
             // write out the data type map
@@ -317,7 +317,7 @@ public class PackageComparer
                     Directory.CreateDirectory(mapSubDir);
                 }
 
-                WriteStructureMaps(mapSubDir, resources.Values.SelectMany(l => l.Select(s => s)));
+                WriteStructureBasedConceptMaps(mapSubDir, resources.Values.SelectMany(l => l.Select(s => s)));
             }
         }
 
@@ -537,7 +537,7 @@ public class PackageComparer
         }
     }
 
-    private void WriteStructureMaps(string outputDir, IEnumerable<StructureComparison> values)
+    private void WriteStructureBasedConceptMaps(string outputDir, IEnumerable<StructureComparison> values)
     {
         if (_crossVersion == null)
         {

@@ -371,20 +371,6 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                     };
                 }
 
-            case MapFhirPathContext mapFhirPath:
-                return new GroupExpression
-                {
-                    FhirPathExpression = ExtractFpExpression(mapFhirPath.fpExpression()),
-
-                    RawText = mapFhirPath.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
-                    PrefixComments = GetPrefixComments(mapFhirPath),
-                    PostfixComments = GetPostfixComments(mapFhirPath),
-                    Line = mapFhirPath.Start.Line,
-                    Column = mapFhirPath.Start.Column,
-                    StartIndex = mapFhirPath.Start.StartIndex,
-                    StopIndex = mapFhirPath.Stop.StopIndex,
-                };
-
             case MapFhirMarkupContext mapFhirMarkup:
                 return new GroupExpression
                 {
@@ -400,7 +386,7 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                 };
         }
 
-        throw new Exception("Unhandled GroupExpression type");
+        throw new Exception($"Unhandled GroupExpression type: @{ctx.Start.Line}:{ctx.Start.Column}");
     }
 
     private FmlGroupExpression? ExtractFmlMappingExpression(MapExpressionContext? ctx)
@@ -454,25 +440,36 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                 (int)FmlTokenTypeCodes.Last,
                 (int)FmlTokenTypeCodes.Single);
 
-            targets.Add(new()
+            string? alias = null;
+            if (targetContext.alias() != null && targetContext.alias().children[^1] is ITerminalNode tn)
+                alias = GetString(tn);
+            FmlTargetTransform? transform = null;
+            var tt = targetContext.transform();
+            if (tt != null)
+            {
+                var shortcutFhirpathExpressionTransform = tt.fpExpression();
+                transform = new FmlTargetTransform()
+                {
+                    Literal = GetLiteral(tt.literal(), _comments),
+                    Identifier = GetString(tt.qualifiedIdentifier()),
+                    Invocation = ExtractInvocation(tt.invocation()),
+                    fpExpression = ExtractFpExpression(shortcutFhirpathExpressionTransform),
+
+                    RawText = tt.Start.InputStream.GetText(new Interval(tt.Start.StartIndex, tt.Stop.StopIndex)),
+                    PrefixComments = GetPrefixComments(tt),
+                    PostfixComments = GetPostfixComments(tt),
+                    Line = tt.Start.Line,
+                    Column = tt.Start.Column,
+                    StartIndex = tt.Start.StartIndex,
+                    StopIndex = tt.Stop.StopIndex,
+                };
+            }
+            var target = new FmlExpressionTarget()
             {
                 Identifier = GetString(targetContext.qualifiedIdentifier())!,
-                Transform = targetContext.transform() == null ? null : new FmlTargetTransform()
-                {
-                    Literal = GetLiteral(targetContext.transform()?.literal(), _comments),
-                    Identifier = GetString(targetContext.transform()?.qualifiedIdentifier()),
-                    Invocation = ExtractInvocation(targetContext.transform()?.invocation()),
-
-                    RawText = targetContext.transform().Start.InputStream.GetText(new Interval(targetContext.transform().Start.StartIndex, targetContext.transform().Stop.StopIndex)),
-                    PrefixComments = GetPrefixComments(targetContext.transform()),
-                    PostfixComments = GetPostfixComments(targetContext.transform()),
-                    Line = targetContext.transform().Start.Line,
-                    Column = targetContext.transform().Start.Column,
-                    StartIndex = targetContext.transform().Start.StartIndex,
-                    StopIndex = targetContext.transform().Stop.StopIndex,
-                },
+                Transform = transform,
                 Invocation = ExtractInvocation(targetContext.invocation()),
-                Alias = targetContext.alias().children[^1] is ITerminalNode tn ? GetString(tn) : null,
+                Alias = alias,
                 TargetListModeLiteral = targetListMode?.v,
                 TargetListMode = targetListMode == null ? null : GetEnum<StructureMap.StructureMapTargetListMode>(targetListMode?.v),
 
@@ -483,7 +480,8 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                 Column = targetContext.Start.Column,
                 StartIndex = targetContext.Start.StartIndex,
                 StopIndex = targetContext.Stop.StopIndex,
-            });
+            };
+            targets.Add(target);
         }
 
         return new FmlGroupExpression()

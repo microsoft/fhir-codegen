@@ -20,26 +20,33 @@ namespace Microsoft.Health.Fhir.CodeGen.Tests;
 
 public class CrossVersionTests
 {
-    [Theory]
-    [InlineData("C:\\git\\fhir-cross-version\\input\\R2toR3", "2to3")]
-    [InlineData("C:\\git\\fhir-cross-version\\input\\R3toR2", "3to2")]
-    [InlineData("C:\\git\\fhir-cross-version\\input\\R3toR4", "3to4")]
-    [InlineData("C:\\git\\fhir-cross-version\\input\\R4toR3", "4to3")]
-    [InlineData("C:\\git\\fhir-cross-version\\input\\R4toR5", "4to5")]
-    [InlineData("C:\\git\\fhir-cross-version\\input\\R5toR4", "5to4")]
-    [InlineData("C:\\git\\fhir-cross-version\\input\\R4BtoR5", "4Bto5")]
-    [InlineData("C:\\git\\fhir-cross-version\\input\\R5toR4B", "5to4B")]
+    public CrossVersionTests(ITestOutputHelper outputWriter)
+    {
+        Console.SetOut(new TestWriter(outputWriter));
+    }
+
+    [Theory(DisplayName = "TestLoadingFml")]
+    [InlineData("R2toR3", "2to3")]
+    [InlineData("R3toR2", "3to2")]
+    [InlineData("R3toR4", "3to4")]
+    [InlineData("R4toR3", "4to3")]
+    [InlineData("R4toR5", "4to5")]
+    [InlineData("R5toR4", "5to4")]
+    [InlineData("R4BtoR5", "4Bto5")]
+    [InlineData("R5toR4B", "5to4B")]
     public void TestLoadingFml(string path, string versionToVersion)
     {
+        string prefixPath = @"C:\git\fhir-cross-version\input\";
         int versionToVersionLen = versionToVersion.Length;
 
         // files have different styles in each directory, but we want all FML files anyway
-        string[] files = Directory.GetFiles(path, $"*.fml", SearchOption.TopDirectoryOnly);
+        string[] files = Directory.GetFiles(prefixPath+path, $"*.fml", SearchOption.TopDirectoryOnly);
 
         FhirMappingLanguage content = new();
 
         Dictionary<string, Dictionary<string, FmlTargetInfo>> fmlPathLookup = [];
 
+        int errorCount = 0;
         foreach (string filename in files)
         {
             string fmlContent = File.ReadAllText(filename);
@@ -47,6 +54,7 @@ public class CrossVersionTests
             if (!content.TryParse(fmlContent, out FhirStructureMap? fml))
             {
                 Console.WriteLine($"Error loading {filename}: could not parse");
+                errorCount++;
                 continue;
             }
 
@@ -75,9 +83,49 @@ public class CrossVersionTests
                 continue;
             }
 
+            try
+            {
             CrossVersionMapCollection.ProcessCrossVersionFml(name, fml, fmlPathLookup);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error Processing {filename}: {ex.Message}");
+                errorCount++;
+            }
 
             //ProcessCrossVersionFml(string name, FhirStructureMap fml, Dictionary<string, List<GroupExpression>> fmlPathLookup)
         }
+        errorCount.Should().Be(0, "Should be no parsing/processing errors");
+    }
+}
+
+public class TestWriter : TextWriter
+{
+    public ITestOutputHelper OutputWriter { get; }
+
+    public override Encoding Encoding => Encoding.ASCII;
+
+    public TestWriter(ITestOutputHelper outputWriter)
+    {
+        OutputWriter = outputWriter;
+    }
+    StringBuilder cache = new();
+    public override void Write(char value)
+    {
+        if (value == '\n')
+        {
+            OutputWriter.WriteLine(cache.ToString());
+            cache.Clear();
+        }
+        else
+        {
+            cache.Append(value);
+        }
+    }
+    public override void Flush()
+    {
+        if (cache.Length == 0) return;
+        OutputWriter.WriteLine(cache.ToString());
+        cache.Clear();
     }
 }
