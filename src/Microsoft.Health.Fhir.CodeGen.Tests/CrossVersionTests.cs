@@ -20,6 +20,11 @@ namespace Microsoft.Health.Fhir.CodeGen.Tests;
 
 public class CrossVersionTests
 {
+    public CrossVersionTests(ITestOutputHelper outputWriter)
+    {
+        Console.SetOut(new TestWriter(outputWriter));
+    }
+
     [Theory]
     [InlineData("C:\\git\\fhir-cross-version\\input\\R2toR3", "2to3")]
     [InlineData("C:\\git\\fhir-cross-version\\input\\R3toR2", "3to2")]
@@ -79,5 +84,36 @@ public class CrossVersionTests
 
             //ProcessCrossVersionFml(string name, FhirStructureMap fml, Dictionary<string, List<GroupExpression>> fmlPathLookup)
         }
+    }
+}
+
+public class TestWriter : TextWriter
+{
+    public ITestOutputHelper OutputWriter { get; }
+
+    public override Encoding Encoding => Encoding.ASCII;
+
+    public TestWriter(ITestOutputHelper outputWriter)
+    {
+        OutputWriter = outputWriter;
+    }
+    StringBuilder cache = new();
+    public override void Write(char value)
+    {
+        if (value == '\n')
+        {
+            OutputWriter.WriteLine(cache.ToString());
+            cache.Clear();
+        }
+        else
+        {
+            cache.Append(value);
+        }
+    }
+    public override void Flush()
+    {
+        if (cache.Length == 0) return;
+        OutputWriter.WriteLine(cache.ToString());
+        cache.Clear();
     }
 }
