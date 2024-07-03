@@ -43,7 +43,7 @@ public class DirectoryContentsAttribute : DataAttribute
         // Get the absolute path to the directory
         string path = Path.IsPathRooted(_path)
             ? _path
-            : Path.GetRelativePath(Directory.GetCurrentDirectory(), _path);
+            : FindRelativeDir(string.Empty, _path);
 
         if (!Directory.Exists(path))
         {
@@ -59,4 +59,33 @@ public class DirectoryContentsAttribute : DataAttribute
 
         return new object[][] { [.. data] };
     }
+
+    internal static string FindRelativeDir(
+        string startDir,
+        string dirName,
+        bool throwIfNotFound = true)
+    {
+        string currentDir = string.IsNullOrEmpty(startDir) ? Path.GetDirectoryName(AppContext.BaseDirectory) ?? string.Empty : startDir;
+        string testDir = Path.Combine(currentDir, dirName);
+
+        while (!Directory.Exists(testDir))
+        {
+            currentDir = Path.GetFullPath(Path.Combine(currentDir, ".."));
+
+            if (currentDir == Path.GetPathRoot(currentDir))
+            {
+                if (throwIfNotFound)
+                {
+                    throw new DirectoryNotFoundException($"Could not find directory {dirName}!");
+                }
+
+                return string.Empty;
+            }
+
+            testDir = Path.Combine(currentDir, dirName);
+        }
+
+        return testDir;
+    }
 }
+

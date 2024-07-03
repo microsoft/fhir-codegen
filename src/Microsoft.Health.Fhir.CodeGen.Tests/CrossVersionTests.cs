@@ -3,11 +3,13 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System.Text;
 using System.Xml.Linq;
 using FluentAssertions;
 using Microsoft.Health.Fhir.CodeGen.CompareTool;
 using Microsoft.Health.Fhir.CodeGen.Loader;
 using Microsoft.Health.Fhir.CodeGen.Models;
+using Microsoft.Health.Fhir.CodeGen.Tests.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using Microsoft.Health.Fhir.MappingLanguage;
 using Microsoft.Health.Fhir.PackageManager;
@@ -25,22 +27,27 @@ public class CrossVersionTests
         Console.SetOut(new TestWriter(outputWriter));
     }
 
+    private static string FindRelativeDir(string path)
+    {
+        return DirectoryContentsAttribute.FindRelativeDir(string.Empty, path, true);
+    }
+
     [Theory(DisplayName = "TestLoadingFml")]
-    [InlineData("R2toR3", "2to3")]
-    [InlineData("R3toR2", "3to2")]
-    [InlineData("R3toR4", "3to4")]
-    [InlineData("R4toR3", "4to3")]
-    [InlineData("R4toR5", "4to5")]
-    [InlineData("R5toR4", "5to4")]
-    [InlineData("R4BtoR5", "4Bto5")]
-    [InlineData("R5toR4B", "5to4B")]
+    [InlineData("fhir-cross-version//input//R2toR3", "2to3")]
+    [InlineData("fhir-cross-version//input//R3toR2", "3to2")]
+    [InlineData("fhir-cross-version//input//R3toR4", "3to4")]
+    [InlineData("fhir-cross-version//input//R4toR3", "4to3")]
+    [InlineData("fhir-cross-version//input//R4toR5", "4to5")]
+    [InlineData("fhir-cross-version//input//R5toR4", "5to4")]
+    [InlineData("fhir-cross-version//input//R4BtoR5", "4Bto5")]
+    [InlineData("fhir-cross-version//input//R5toR4B", "5to4B")]
     public void TestLoadingFml(string path, string versionToVersion)
     {
-        string prefixPath = @"C:\git\fhir-cross-version\input\";
+        //string prefixPath = @"C:\git\fhir-cross-version\input\";
         int versionToVersionLen = versionToVersion.Length;
 
         // files have different styles in each directory, but we want all FML files anyway
-        string[] files = Directory.GetFiles(prefixPath+path, $"*.fml", SearchOption.TopDirectoryOnly);
+        string[] files = Directory.GetFiles(FindRelativeDir(path), $"*.fml", SearchOption.TopDirectoryOnly);
 
         FhirMappingLanguage content = new();
 
@@ -85,7 +92,7 @@ public class CrossVersionTests
 
             try
             {
-            CrossVersionMapCollection.ProcessCrossVersionFml(name, fml, fmlPathLookup);
+                CrossVersionMapCollection.ProcessCrossVersionFml(name, fml, fmlPathLookup);
             }
             catch (Exception ex)
             {
@@ -103,13 +110,15 @@ public class TestWriter : TextWriter
 {
     public ITestOutputHelper OutputWriter { get; }
 
-    public override Encoding Encoding => Encoding.ASCII;
+    public override System.Text.Encoding Encoding => System.Text.Encoding.ASCII;
 
     public TestWriter(ITestOutputHelper outputWriter)
     {
         OutputWriter = outputWriter;
     }
+
     StringBuilder cache = new();
+
     public override void Write(char value)
     {
         if (value == '\n')
