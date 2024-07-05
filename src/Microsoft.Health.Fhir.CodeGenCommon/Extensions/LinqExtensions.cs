@@ -36,6 +36,29 @@ public static class LinqExtensions
     }
 
     /// <summary>
+    /// An Array extension method that applies an operation to all items in this collection.
+    /// </summary>
+    /// <typeparam name="T">The type of the elements in the array.</typeparam>
+    /// <param name="ie">The array to act on.</param>
+    /// <param name="action">The action to apply to each element.</param>
+    /// <returns>True if the action succeeds for all elements, false otherwise.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static bool ForEach<T>(this Array ie, Func<T, bool, bool> action)
+    {
+        int lastIndex = ie.Length - 1;
+        int i = 0;
+        foreach (T e in ie)
+        {
+            if (!action(e, (i++ == lastIndex)))
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /// <summary>
     /// An IEnumerable&lt;T&gt; extension method that applies an operation to all items in this
     /// collection.
     /// </summary>
