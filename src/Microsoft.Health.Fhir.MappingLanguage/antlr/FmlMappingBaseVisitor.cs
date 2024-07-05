@@ -32,7 +32,7 @@ using ParserRuleContext = Antlr4.Runtime.ParserRuleContext;
 /// <typeparam name="Result">The return type of the visit operation.</typeparam>
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.13.1")]
 [System.Diagnostics.DebuggerNonUserCode]
-[System.CLSCompliant(false)]
+//[System.CLSCompliant(false)]
 public partial class FmlMappingBaseVisitor<Result> : AbstractParseTreeVisitor<Result>, IFmlMappingVisitor<Result> {
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="FmlMappingParser.structureMap"/>.

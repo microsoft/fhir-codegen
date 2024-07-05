@@ -39,7 +39,7 @@ public class FMLTests
             else
                 Console.WriteLine($"Missing: {ev}");
         }
-        Assert.Equal(0, lines.Count); // should be no lines left over
+        Assert.Empty(lines); // should be no lines left over
 
         // Also test the other enum
         var rcs = typeof(MappingLanguage.FmlRuleCodes).GetEnumValues();

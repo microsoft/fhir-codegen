@@ -29,7 +29,7 @@ namespace Microsoft.Health.Fhir.MappingLanguage;
 public class FmlParseVisitor : FmlMappingBaseVisitor<object>
 {
     private Dictionary<int, ParsedCommentNode> _comments;
-    private int _lastStopIndex = -1;
+    //private int _lastStopIndex = -1;
 
     private Dictionary<string, MetadataDeclaration> _metaByPath = [];
     private Dictionary<string, EmbeddedConceptMapDeclaration> _embeddedConceptMapsByUrl = [];
