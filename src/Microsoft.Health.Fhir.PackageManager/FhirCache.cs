@@ -2115,10 +2115,10 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
             // note that we are just using 'main' and 'master' as default branches - not fully correct, but default branches are not identified
             IEnumerable<FhirQasRec> matching = string.IsNullOrEmpty(ciBranch)
                 ? igs.Where(x => x.PackageId.Equals(packageId, StringComparison.OrdinalIgnoreCase) &&
-                    (x.RespositoryUrl.EndsWith("/main/qa.json", StringComparison.OrdinalIgnoreCase) ||
-                     x.RespositoryUrl.EndsWith("/master/qa.json", StringComparison.OrdinalIgnoreCase)))
+                    (x.RepositoryUrl.EndsWith("/main/qa.json", StringComparison.OrdinalIgnoreCase) ||
+                     x.RepositoryUrl.EndsWith("/master/qa.json", StringComparison.OrdinalIgnoreCase)))
                 : igs.Where(x => x.PackageId.Equals(packageId, StringComparison.OrdinalIgnoreCase) &&
-                    x.RespositoryUrl.EndsWith($"/{ciBranch}/qa.json", StringComparison.OrdinalIgnoreCase));
+                    x.RepositoryUrl.EndsWith($"/{ciBranch}/qa.json", StringComparison.OrdinalIgnoreCase));
 
             if (!matching.Any())
             {
@@ -2132,10 +2132,10 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
 
                             matching = string.IsNullOrEmpty(ciBranch)
                                 ? igs.Where(x => x.PackageId.Equals(packageId, StringComparison.OrdinalIgnoreCase) &&
-                                    (x.RespositoryUrl.EndsWith("/main/qa.json", StringComparison.OrdinalIgnoreCase) ||
-                                     x.RespositoryUrl.EndsWith("/master/qa.json", StringComparison.OrdinalIgnoreCase)))
+                                    (x.RepositoryUrl.EndsWith("/main/qa.json", StringComparison.OrdinalIgnoreCase) ||
+                                     x.RepositoryUrl.EndsWith("/master/qa.json", StringComparison.OrdinalIgnoreCase)))
                                 : igs.Where(x => x.PackageId.Equals(packageId, StringComparison.OrdinalIgnoreCase) &&
-                                    x.RespositoryUrl.EndsWith($"/{ciBranch}/qa.json", StringComparison.OrdinalIgnoreCase));
+                                    x.RepositoryUrl.EndsWith($"/{ciBranch}/qa.json", StringComparison.OrdinalIgnoreCase));
                         }
                         break;
                     case DirectiveNameTypeCodes.GuideWithoutSuffix:
@@ -2145,10 +2145,10 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
 
                             matching = string.IsNullOrEmpty(ciBranch)
                                 ? igs.Where(x => x.PackageId.Equals(packageId, StringComparison.OrdinalIgnoreCase) &&
-                                    (x.RespositoryUrl.EndsWith("/main/qa.json", StringComparison.OrdinalIgnoreCase) ||
-                                     x.RespositoryUrl.EndsWith("/master/qa.json", StringComparison.OrdinalIgnoreCase)))
+                                    (x.RepositoryUrl.EndsWith("/main/qa.json", StringComparison.OrdinalIgnoreCase) ||
+                                     x.RepositoryUrl.EndsWith("/master/qa.json", StringComparison.OrdinalIgnoreCase)))
                                 : igs.Where(x => x.PackageId.Equals(packageId, StringComparison.OrdinalIgnoreCase) &&
-                                    x.RespositoryUrl.EndsWith($"/{ciBranch}/qa.json", StringComparison.OrdinalIgnoreCase));
+                                    x.RepositoryUrl.EndsWith($"/{ciBranch}/qa.json", StringComparison.OrdinalIgnoreCase));
                         }
                         break;
 
@@ -2247,7 +2247,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
 
         FhirDirective DirectiveForQasRec(FhirDirective directive, FhirQasRec rec)
         {
-            string ciUrl = $"{_ciUri}ig/{rec.RespositoryUrl.Substring(0, rec.RespositoryUrl.Length - 8)}";
+            string ciUrl = $"{_ciUri}ig/{rec.RepositoryUrl.Substring(0, rec.RepositoryUrl.Length - 8)}";
 
             string tarUrl;
             string fhirRelease;
@@ -2275,8 +2275,8 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
                 FhirRelease = fhirRelease,
                 PackageVersion = rec.GuideVersion,
                 CiUrl = ciUrl,
-                CiOrg = GetOrg(rec.RespositoryUrl),
-                CiBranch = GetBranch(rec.RespositoryUrl),
+                CiOrg = GetOrg(rec.RepositoryUrl),
+                CiBranch = GetBranch(rec.RepositoryUrl),
                 BuildDate = rec.BuildDate,
                 ResolvedTarballUrl = tarUrl,
                 ResolvedSha = string.Empty,
@@ -2326,7 +2326,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
                     ? inputUrl
                     : (inputUrl.EndsWith('/') ? inputUrl + "qa.json" : inputUrl + "qa.json");
 
-                IEnumerable<FhirQasRec> matching = igs.Where(x => x.RespositoryUrl.Equals(searchUrl, StringComparison.OrdinalIgnoreCase));
+                IEnumerable<FhirQasRec> matching = igs.Where(x => x.RepositoryUrl.Equals(searchUrl, StringComparison.OrdinalIgnoreCase));
 
                 if (matching.Any())
                 {
@@ -2337,17 +2337,17 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
 
                     resolved = new()
                     {
-                        Directive = GetDirective(rec.PackageId, rec.RespositoryUrl),
+                        Directive = GetDirective(rec.PackageId, rec.RepositoryUrl),
                         PackageId = rec.PackageId,
                         NameType = DirectiveNameTypeCodes.GuideWithoutSuffix,
                         FhirRelease = rec.FhirVersion,
                         PackageVersion = rec.GuideVersion,
                         VersionType = DirectiveVersionCodes.ContinuousIntegration,
-                        CiBranch = GetBranch(rec.RespositoryUrl),
-                        CiUrl = $"{_ciUri}ig/{rec.RespositoryUrl.Substring(0, rec.RespositoryUrl.Length - 8)}",
-                        CiOrg = GetOrg(rec.RespositoryUrl),
+                        CiBranch = GetBranch(rec.RepositoryUrl),
+                        CiUrl = $"{_ciUri}ig/{rec.RepositoryUrl.Substring(0, rec.RepositoryUrl.Length - 8)}",
+                        CiOrg = GetOrg(rec.RepositoryUrl),
                         BuildDate = rec.BuildDate,
-                        ResolvedTarballUrl = $"{_ciUri}ig/{rec.RespositoryUrl.Substring(0, rec.RespositoryUrl.Length - 8)}/package.tgz",
+                        ResolvedTarballUrl = $"{_ciUri}ig/{rec.RepositoryUrl.Substring(0, rec.RepositoryUrl.Length - 8)}/package.tgz",
                         ResolvedSha = string.Empty,
                     };
 
@@ -2390,17 +2390,17 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
 
                     resolved = new()
                     {
-                        Directive = GetDirective(rec.PackageId, rec.RespositoryUrl),
+                        Directive = GetDirective(rec.PackageId, rec.RepositoryUrl),
                         PackageId = rec.PackageId,
                         NameType = DirectiveNameTypeCodes.GuideWithoutSuffix,
                         FhirRelease = rec.FhirVersion,
                         PackageVersion = rec.GuideVersion,
                         VersionType = DirectiveVersionCodes.ContinuousIntegration,
-                        CiBranch = GetBranch(rec.RespositoryUrl),
-                        CiUrl = $"{_ciUri}ig/{rec.RespositoryUrl.Substring(0, rec.RespositoryUrl.Length - 8)}",
-                        CiOrg = GetOrg(rec.RespositoryUrl),
+                        CiBranch = GetBranch(rec.RepositoryUrl),
+                        CiUrl = $"{_ciUri}ig/{rec.RepositoryUrl.Substring(0, rec.RepositoryUrl.Length - 8)}",
+                        CiOrg = GetOrg(rec.RepositoryUrl),
                         BuildDate = rec.BuildDate,
-                        ResolvedTarballUrl = $"{_ciUri}ig/{rec.RespositoryUrl.Substring(0, rec.RespositoryUrl.Length - 8)}/package.tgz",
+                        ResolvedTarballUrl = $"{_ciUri}ig/{rec.RepositoryUrl.Substring(0, rec.RepositoryUrl.Length - 8)}/package.tgz",
                         ResolvedSha = string.Empty,
                     };
 

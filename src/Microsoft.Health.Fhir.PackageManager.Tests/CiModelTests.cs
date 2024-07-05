@@ -60,14 +60,14 @@ public class CiModelTests
         qas![0].PackageId.Should().Be("hl7.fhir.uv.subscriptions-backport");
         qas![0].GuideVersion.Should().Be("1.1.0");
         qas![0].FhirVersion.Should().Be("4.3.0");
-        qas![0].RespositoryUrl.Should().Be("HL7/fhir-subscription-backport-ig/branches/propose-changes/qa.json");
+        qas![0].RepositoryUrl.Should().Be("HL7/fhir-subscription-backport-ig/branches/propose-changes/qa.json");
 
         qas![1].Url.Should().Be("http://hl7.org/fhir/uv/subscriptions-backport/ImplementationGuide/hl7.fhir.uv.subscriptions-backport");
         qas![1].Name.Should().Be("SubscriptionsR5Backport");
         qas![1].PackageId.Should().Be("hl7.fhir.uv.subscriptions-backport");
         qas![1].GuideVersion.Should().Be("1.1.0");
         qas![1].FhirVersion.Should().Be("4.3.0");
-        qas![1].RespositoryUrl.Should().Be("HL7/fhir-subscription-backport-ig/branches/master/qa.json");
+        qas![1].RepositoryUrl.Should().Be("HL7/fhir-subscription-backport-ig/branches/master/qa.json");
     }
 
     [Theory]
@@ -108,7 +108,7 @@ public class CiModelTests
             rec.GuideVersion.Should().NotBeNullOrEmpty();
             rec.FhirVersion.Should().NotBeNullOrEmpty();
             FhirReleases.FhirVersionToSequence(rec.FhirVersion).Should().NotBe(FhirReleases.FhirSequenceCodes.Unknown);
-            rec.RespositoryUrl.Should().NotBeNullOrEmpty();
+            rec.RepositoryUrl.Should().NotBeNullOrEmpty();
         }
     }
 }
