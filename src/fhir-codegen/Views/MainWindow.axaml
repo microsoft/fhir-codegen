@@ -28,10 +28,13 @@
                 <Button HorizontalAlignment="Left"
                         Width="32"
                         Height="32"
-                        Margin="7 10"
+                        Margin="8 8"
+                        Background="Transparent"
                         Command="{Binding TriggerPaneCommand}">
-                    <PathIcon Height="11" Data="{StaticResource LineHorizontal3Regular}" />
+                    <PathIcon Data="{StaticResource line_horizontal_3_regular}" />
                 </Button>
+
+                
                 <!--<ListBox Margin="2 0 -100 0" Padding="0" ItemsSource="{Binding Items}"
                          SelectedItem="{Binding SelectedListItem}">
                     <ListBox.Styles>
