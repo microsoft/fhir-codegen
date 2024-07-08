@@ -756,7 +756,15 @@ public sealed class CSharpFirely2 : ILanguage
                 IsSummary = true,
             };
 
-            edXPath.cgSetFieldOrder(65, 7);
+            // try to get the offsets from ElementDefinition.constraint.expression (we want to be after that element)
+            if (sdElementDefinition.cgTryGetElementById("ElementDefinition.constraint.expression", out ElementDefinition? edConstraintExpression))
+            {
+                edXPath.cgSetFieldOrder(edConstraintExpression.cgFieldOrder() + 1, edConstraintExpression.cgComponentFieldOrder() + 1);
+            }
+            else
+            {
+                edXPath.cgSetFieldOrder(66, 8);
+            }
 
             //edXPath.RemoveExtension(CommonDefinitions.ExtUrlEdFieldOrder);
             //edXPath.RemoveExtension(CommonDefinitions.ExtUrlEdComponentFieldOrder);
@@ -1510,7 +1518,7 @@ public sealed class CSharpFirely2 : ILanguage
             _writer.WriteLineIndented($"set {{ throw new NotImplementedException(\"Resource {resourceExportName} does not implement {interfaceExportName}.{interfaceEi.FhirElementName}\");}}");
             CloseScope();
         }
-        else if (interfaceEi.PropertyType == resourceEi.PropertyType)
+        else if (interfaceEi.PropertyType.PropertyTypeString == resourceEi.PropertyType.PropertyTypeString)
         {
             _writer.WriteLineIndented("[IgnoreDataMember]");
             _writer.WriteLineIndented($"{it} {pn}" +
@@ -1521,7 +1529,8 @@ public sealed class CSharpFirely2 : ILanguage
             _writer.WriteLine();
         }
         // a resource is allowed to have a scalar in place of a list
-        else if (interfaceEi.PropertyType is ListTypeReference)
+        else if ((interfaceEi.PropertyType is ListTypeReference interfaceLTR) &&
+            (interfaceLTR.Element.PropertyTypeString == resourceEi.PropertyType.PropertyTypeString))
         {
             _writer.WriteLineIndented("[IgnoreDataMember]");
             _writer.WriteLineIndented($"{it} {pn}");
@@ -1544,7 +1553,11 @@ public sealed class CSharpFirely2 : ILanguage
         }
         else
         {
-            _writer.WriteLineIndented($"// {resourceExportName}.{resourceEi.PropertyName} ({resourceEi.PropertyType}) is incompatible with {interfaceExportName}.{interfaceEi.FhirElementName} ({interfaceEi.PropertyType})");
+            WriteIndentedComment(
+                $"{resourceExportName}.{resourceEi.PropertyName} ({resourceEi.PropertyType}) is incompatible with\n" +
+                $"{interfaceExportName}.{interfaceEi.FhirElementName} ({interfaceEi.PropertyType})",
+                isSummary: false,
+                isRemarks: true);
             _writer.WriteLineIndented("[IgnoreDataMember]");
             _writer.WriteLineIndented($"{it} {pn}");
             OpenScope();

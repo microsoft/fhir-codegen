@@ -54,7 +54,7 @@ public class FirelyGenOptions : ConfigGenerate
     /// <summary>Gets or sets the cql model.</summary>
     [ConfigOption(
         ArgName = "--cql-model",
-        Description = "Name of the Cql model for which metadata attributes should be added to the pocos. 'Fhir401' is the only valid value at the moment.")]
+        Description = "Name of the Cql model for which metadata attributes should be added to the POCOs. 'Fhir401' is the only valid value at the moment.")]
     public string CqlModel { get; set; } = string.Empty;
 
     private static ConfigurationOption CqlModelParameter { get; } = new()
