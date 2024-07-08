@@ -2624,7 +2624,7 @@ public sealed class CSharpFirely2 : ILanguage
             string codeValue = FhirSanitizationUtils.SanitizeForValue(concept.Code);
             string description = string.IsNullOrEmpty(concept.Definition)
                 ? $"MISSING DESCRIPTION\n(system: {concept.System})"
-                : $"{concept.Definition}\n(system: {concept.System})";
+                : $"{FhirSanitizationUtils.SanitizeForValue(concept.Definition)}\n(system: {concept.System})";
 
             if (concept.HasProperty("status", "deprecated"))
             {
