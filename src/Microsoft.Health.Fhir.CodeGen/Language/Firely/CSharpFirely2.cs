@@ -2202,7 +2202,7 @@ public sealed class CSharpFirely2 : ILanguage
             if (info.PropertyType is ListTypeReference)
             {
                 _writer.WriteLineIndented(
-                    $"if({info.PropertyName} != null)" +
+                    $"if({info.PropertyName}.Any())" +
                         $" dest.{info.PropertyName} = new {info.PropertyType.PropertyTypeString}({info.PropertyName}.DeepCopy());");
             }
             else
@@ -2253,8 +2253,8 @@ public sealed class CSharpFirely2 : ILanguage
         _writer.WriteLineIndented($"return CopyTo(new {exportName}());");
         CloseScope();
 
-        _writer.WriteLineIndented("// TODO: Add code to enforce these constraints:");
-        WriteComponentComment(complex);
+        //_writer.WriteLineIndented("// TODO: Add code to enforce these constraints:");
+        //WriteComponentComment(complex);
         //WriteIndentedComment(complex.Structure.Purpose, isSummary: false, singleLine: true);
 
         // close class
@@ -3225,7 +3225,7 @@ public sealed class CSharpFirely2 : ILanguage
 
             // fall through to continue processing
         }
-        
+
         string[] components = type.Split('.');
 
         // citation needs special handling
