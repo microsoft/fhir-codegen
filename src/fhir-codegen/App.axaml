@@ -7,5 +7,6 @@
 
     <Application.Styles>
         <FluentTheme />
+        <StyleInclude Source="avares://fhir-codegen/Icons.axaml" />
     </Application.Styles>
 </Application>

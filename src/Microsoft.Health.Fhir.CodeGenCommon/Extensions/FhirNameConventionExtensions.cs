@@ -45,9 +45,12 @@ public static class FhirNameConventionExtensions
 
         /// <summary>Lower case, separated by hyphens.</summary>
         LowerKebab,
+
+        /// <summary>Pascal case, separated by an arbitrary delimiter.</summary>
+        PascalDelimited,
     }
 
-    public static string ToConvention(this string word, NamingConvention convention) => convention switch
+    public static string ToConvention(this string word, NamingConvention convention, string delimiter = "") => convention switch
     {
         NamingConvention.None => word,
         NamingConvention.LanguageControlled => word,
@@ -58,6 +61,7 @@ public static class FhirNameConventionExtensions
         NamingConvention.UpperCase => word.ToUpperCase(),
         NamingConvention.LowerCase => word.ToLowerCase(),
         NamingConvention.LowerKebab => word.ToLowerKebabCase(),
+        NamingConvention.PascalDelimited => word.ToPascalDelimited(delimiter),
         _ => word,
     };
 
@@ -468,6 +472,57 @@ public static class FhirNameConventionExtensions
         }
 
         return string.Join('.', words.Select(w => w.ToPascalDotCase()));
+    }
+
+    /// <summary>
+    /// A string extension method that converts this object to a pascal dot case.
+    /// </summary>
+    /// <param name="word">            The word to act on.</param>
+    /// <returns>The given data converted to a string.</returns>
+    public static string ToPascalDelimited(this string word, string delimiter)
+    {
+        if (string.IsNullOrEmpty(word))
+        {
+            return string.Empty;
+        }
+
+        return string.Join(delimiter, word.Split(_wordDelimiters, _wordSplitOptions).Select(w => w.ToPascalCase(false)));
+    }
+
+    /// <summary>A string extension method that converts this object to a pascal dot case.</summary>
+    /// <param name="words">           The words.</param>
+    /// <returns>The given data converted to a string.</returns>
+    public static string[] ToPascalDelimited(this string[] words, string delimiter)
+    {
+        if (words.Length == 0)
+        {
+            return [];
+        }
+
+        string[] output = new string[words.Length];
+
+        for (int i = 0; i < words.Length; i++)
+        {
+            output[i] = ToPascalDelimited(words[i], delimiter);
+        }
+
+        return output;
+    }
+
+    /// <summary>
+    /// An IEnumerable&lt;string&gt; extension method that converts this object to a pascal dot case
+    /// word.
+    /// </summary>
+    /// <param name="words">           The words.</param>
+    /// <returns>The given data converted to a string.</returns>
+    public static string ToPascalDelimitedWord(this IEnumerable<string> words, string delimiter)
+    {
+        if (!(words?.Any() ?? false))
+        {
+            return string.Empty;
+        }
+
+        return string.Join(delimiter, words.Select(w => w.ToPascalDelimited(delimiter)));
     }
 
     /// <summary>

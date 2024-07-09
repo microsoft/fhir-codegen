@@ -64,5 +64,5 @@ internal class FhirQasRec
     public string ToolingVersion { get; set; } = string.Empty;
 
     [JsonPropertyName("repo")]
-    public string RespositoryUrl { get; set; } = string.Empty;
+    public string RepositoryUrl { get; set; } = string.Empty;
 }

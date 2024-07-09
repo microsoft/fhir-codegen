@@ -247,6 +247,7 @@ public abstract partial class FhirSanitizationUtils
             NamingConvention.LowerCase => value.ToLowerCase(true, concatenationDelimiter),
             NamingConvention.LowerKebab => value.ToLowerKebabCase(true),
             NamingConvention.None => value,
+            NamingConvention.PascalDelimited => value.ToPascalDelimited(concatenationDelimiter),
             _ => throw new ArgumentException($"Invalid Naming Convention: {convention}"),
         };
     }

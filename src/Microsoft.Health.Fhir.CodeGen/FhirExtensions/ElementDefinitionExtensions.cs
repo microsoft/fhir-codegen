@@ -318,21 +318,34 @@ public static class ElementDefinitionExtensions
         (ed.Binding?.Strength == BindingStrength.Required) && (ed.Type?.Any(tr => tr.Code == "code") ?? false);
 
     /// <summary>Gets the required codes for this element.</summary>
-    /// <param name="ed">       The ed to act on.</param>
-    /// <param name="valueSets">Sets the value belongs to.</param>
+    /// <param name="ed">                     The ed to act on.</param>
+    /// <param name="definitions">            Sets the value belongs to.</param>
+    /// <param name="onlyRequiredBindings">   (Optional) True to only include codes for elements with required bindings.</param>
+    /// <param name="onlyTypesWithoutSystems">(Optional) True to restrict to elements without systems
+    ///  (e.g., include code, exclude coding).</param>
     /// <returns>
     /// An enumerator that allows foreach to be used to process cg codes in this collection.
     /// </returns>
-    public static IEnumerable<string> cgCodes(this ElementDefinition ed, DefinitionCollection definitions)
+    public static IEnumerable<string> cgCodes(
+        this ElementDefinition ed,
+        DefinitionCollection definitions,
+        bool onlyRequiredBindings = true,
+        bool onlyTypesWithoutSystems = true)
     {
+        if (ed.Binding == null)
+        {
+            return [];
+        }
+
         // if the binding is not required, we don't need to generate the codes
-        if ((ed.Binding == null) || (ed.Binding.Strength != BindingStrength.Required))
+        if (onlyRequiredBindings && (ed.Binding.Strength != BindingStrength.Required))
         {
             return [];
         }
 
         // only generate codes for elements of type code, string, uri, url, or canonical
-        if (!ed.Type.Any(tr =>
+        if (onlyTypesWithoutSystems &&
+            !ed.Type.Any(tr =>
                 (tr.Code == "code") ||
                 (tr.Code == "string") ||
                 (tr.Code == "uri") ||
