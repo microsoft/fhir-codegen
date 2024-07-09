@@ -133,7 +133,7 @@ internal static class VisitorUtilities
         BLOCK_COMMENT => c.Stop.Text.Length > 4 ? c.Stop.Text[2..^2].Trim() : c.Stop.Text.Trim(),
         LINE_COMMENT => c.Stop.Text.Length > 2 ? c.Stop.Text[2..].Trim() : c.Stop.Text.Trim(),
         TRIPLE_QUOTED_STRING_LITERAL => c.Stop.Text.Trim().Length > 5 ? c.Stop.Text.Trim()[3..^3].Trim() : c.Stop.Text.Trim(),
-        _ => c.Stop.Text.Trim(),
+        _ => c.GetText().Trim(),
     };
 
     internal static string GetString(ITerminalNode? tn) => tn?.Symbol.Type switch

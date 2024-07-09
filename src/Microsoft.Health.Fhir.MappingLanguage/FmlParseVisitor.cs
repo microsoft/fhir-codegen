@@ -300,8 +300,8 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
             Name = context.ID().GetText(),
             Parameters = parameters,
             ExtendsIdentifier = GetString(context.extends()),
-            TypeModeLiteral = GetString(context.typeMode()),
-            TypeMode = GetTypeMode(GetString(context.typeMode())),              // note this is handled differently because the FML values are different than the FHIR values
+            TypeModeLiteral = context.typeMode()?.GetText(),
+            TypeMode = GetTypeMode(context.typeMode()?.GetText()),              // note this is handled differently because the FML values are different than the FHIR values
             Expressions = expressions,
 
             RawText = context.Start.InputStream.GetText(new Interval(context.Start.StartIndex, context.Stop.StopIndex)),
@@ -321,10 +321,10 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
         {
             "type+" => StructureMap.StructureMapGroupTypeMode.TypeAndTypes,
             "<<type+>>" => StructureMap.StructureMapGroupTypeMode.TypeAndTypes,
-            "type-and-types" => StructureMap.StructureMapGroupTypeMode.TypeAndTypes,
-            "<<type-and-types>>" => StructureMap.StructureMapGroupTypeMode.TypeAndTypes,
-            "type" => StructureMap.StructureMapGroupTypeMode.Types,
-            "<<type>>" => StructureMap.StructureMapGroupTypeMode.Types,
+            // "type-and-types" => StructureMap.StructureMapGroupTypeMode.TypeAndTypes,
+            // "<<type-and-types>>" => StructureMap.StructureMapGroupTypeMode.TypeAndTypes,
+            "types" => StructureMap.StructureMapGroupTypeMode.Types,
+            "<<types>>" => StructureMap.StructureMapGroupTypeMode.Types,
             _ => null,
         };
     }
@@ -415,7 +415,7 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                 DefaultExpression = ExtractFpExpression(sourceContext.sourceDefault()?.fpExpression()),
                 ListModeLiteral = listMode?.v,
                 ListMode = listMode == null ? null : GetEnum<StructureMap.StructureMapSourceListMode>(listMode?.v),
-                Alias = GetString(sourceContext.alias()),
+                Alias = GetString(sourceContext.alias()?.identifier()),
                 WhereClause = ExtractFpExpression(sourceContext.whereClause()?.fpExpression()), //ExtractWhereClause(sourceContext.whereClause()),
                 CheckClause = ExtractFpExpression(sourceContext.checkClause()?.fpExpression()),
                 LogExpression = ExtractFpExpression(sourceContext.log()?.fpExpression()),
@@ -440,9 +440,7 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                 (int)FmlTokenTypeCodes.Last,
                 (int)FmlTokenTypeCodes.Single);
 
-            string? alias = null;
-            if (targetContext.alias() != null && targetContext.alias().children[^1] is ITerminalNode tn)
-                alias = GetString(tn);
+            string? alias = GetString(targetContext.alias()?.identifier());
             FmlTargetTransform? transform = null;
             var tt = targetContext.transform();
             if (tt != null)
