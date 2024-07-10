@@ -3,23 +3,12 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System.Collections.Immutable;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.Numerics;
-using System.Reflection.Metadata;
-using System.Resources;
-using System.Runtime.Serialization;
 using System.Text;
-using System.Xml.Linq;
-using Antlr4.Runtime.Tree.Xpath;
-using Fhir.Metrics;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Utility;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGen.Models;
-using Microsoft.Health.Fhir.CodeGen.Utils;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using Microsoft.Health.Fhir.CodeGenCommon.Utils;
@@ -71,35 +60,14 @@ public sealed class CSharpFirely2 : ILanguage
     /// <summary>Structures to skip generating.</summary>
     internal static readonly HashSet<string> _exclusionSet =
     [
-        /* Since Base defines its methods abstractly, the pattern for generating it
-            * is sufficiently different from derived classes that it makes sense not
-            * to generate the methods (it's pretty empty too - no members on this abstract class) */
-        "Base",
-
-        /* PrimitiveType defines the magic `ObjectValue` member used by all derived
-            * primitives to store their value. This makes the CopyTo(), IsExact() methods
-            * different enough that it does not make sense to generate them. */
-        "PrimitiveType",
-
-            /* Element has the special `id` element, that is both an attribute in the
-             * XML serialization and is not using a FHIR primitive for representation. Consequently,
-             * the generated CopyTo() and IsExact() methods diverge too much to be useful. */
-            //"Element",
-
-        /* Extension has the special `url` element, that is both an attribute in the
-            * XML serialization and is not using a FHIR primitive for representation. Consequently,
-            * the generated CopyTo() and IsExact() methods diverge too much to be useful. */
-        "Extension",
-
-            /* These two types are interfaces rather than classes (at least, for now)
-             * so we're not generating them. Also, all types deriving from these
-             * are generated to derive from DomainResource instead */
-            "CanonicalResource",
-            "MetadataResource",
+        /* These two types are generated as interfaces, so require special handling and
+         * are not to be treated as normal resources. */
+        "CanonicalResource",
+        "MetadataResource",
 
         /* UCUM is used as a required binding in a codeable concept. Since we do not
-            * use enums in this situation, it is not useful to generate this valueset
-            */
+         * use enums in this situation, it is not useful to generate this valueset
+         */
         "http://hl7.org/fhir/ValueSet/ucum-units",
 
         /* R5 made Resource.language a required binding to all-languages, which contains
@@ -1732,13 +1700,6 @@ public sealed class CSharpFirely2 : ILanguage
         List<WrittenElementInfo> exportedElements = [];
 
         WriteComponentComment(complex);
-        //WriteIndentedComment($"{complex.cgDefinition()}");
-
-        //if (!string.IsNullOrEmpty(complex.cgComment()))
-        //{
-        //    WriteIndentedComment(complex.cgComment(), isSummary: false, isRemarks: true);
-        //}
-
         WriteSerializable();
 
         string fhirTypeConstructor = $"\"{complexName}\",\"{complex.cgUrl()}\"";
@@ -1804,11 +1765,16 @@ public sealed class CSharpFirely2 : ILanguage
         }
 
         string interfacesSuffix = interfaces.Count != 0 ? $", {string.Join(", ", interfaces)}" : string.Empty;
+        string classDeclaration = $"public{abstractFlag} partial class" +
+                                  $" {exportName}";
 
-        _writer.WriteLineIndented(
-            $"public{abstractFlag} partial class" +
-                $" {exportName}" +
-                $" : {Namespace}.{DetermineExportedBaseTypeName(complex.cgBaseTypeName(_info, false))}{interfacesSuffix}");
+        if (complex.Structure.BaseDefinition is not null)
+        {
+            classDeclaration +=
+                $" : {Namespace}.{DetermineExportedBaseTypeName(complex.cgBaseTypeName(_info, false))}{interfacesSuffix}";
+        }
+
+        _writer.WriteLineIndented(classDeclaration);
 
         // open class
         OpenScope();
@@ -1885,17 +1851,17 @@ public sealed class CSharpFirely2 : ILanguage
 
         WriteCopyTo(exportName, exportedElements);
 
-        if (!isAbstract)
+        if (!isAbstract || exportName == "Base")
         {
             WriteDeepCopy(exportName);
         }
 
         WriteMatches(exportName, exportedElements);
         WriteIsExactly(exportName, exportedElements);
-        WriteChildren(exportedElements);
-        WriteNamedChildren(exportedElements);
+        WriteChildren(exportName, exportedElements);
+        WriteNamedChildren(exportName, exportedElements);
 
-        WriteIDictionarySupport(exportedElements);
+        WriteIDictionarySupport(exportName, exportedElements);
 
         // close class
         CloseScope();
@@ -1952,19 +1918,26 @@ public sealed class CSharpFirely2 : ILanguage
         return baseTypeName;
     }
 
-    private void WriteIDictionarySupport(IEnumerable<WrittenElementInfo> exportedElements)
+    private void WriteIDictionarySupport(string exportName, IEnumerable<WrittenElementInfo> exportedElements)
     {
-        WriteDictionaryTryGetValue(exportedElements);
-        WriteDictionaryPairs(exportedElements);
+        WriteDictionaryTryGetValue(exportName, exportedElements);
+        WriteDictionaryPairs(exportName, exportedElements);
     }
 
 
-    private string NullCheck(WrittenElementInfo info) =>
-        info.PropertyName +
-        (info.PropertyType is not ListTypeReference ? " is not null" : "?.Any() == true");
+    private string NullCheck(string propertyName, bool isList) =>
+        propertyName + (isList ? "?.Any() == true" : " is not null");
 
-    private void WriteDictionaryPairs(IEnumerable<WrittenElementInfo> exportedElements)
+    private void WriteDictionaryPairs(string exportName, IEnumerable<WrittenElementInfo> exportedElements)
     {
+        // Base implementation differs from subclasses.
+        if (exportName == "Base")
+        {
+            _writer.WriteLineIndented("protected virtual IEnumerable<KeyValuePair<string, object>> GetElementPairs() => Enumerable.Empty<KeyValuePair<string, object>>();");
+            _writer.WriteLine(string.Empty);
+            return;
+        }
+
         if (!exportedElements.Any())
         {
             return;
@@ -1977,15 +1950,26 @@ public sealed class CSharpFirely2 : ILanguage
         foreach (WrittenElementInfo info in exportedElements)
         {
             string elementProp = $"\"{info.FhirElementName}\"";
-            _writer.WriteLineIndented($"if ({NullCheck(info)}) yield return new " +
+            _writer.WriteLineIndented($"if ({NullCheck(info.PropertyName, info.PropertyType is ListTypeReference)}) yield return new " +
                 $"KeyValuePair<string,object>({elementProp},{info.PropertyName});");
         }
 
         CloseScope();
     }
 
-    private void WriteDictionaryTryGetValue(IEnumerable<WrittenElementInfo> exportedElements)
+    private void WriteDictionaryTryGetValue(string exportName, IEnumerable<WrittenElementInfo> exportedElements)
     {
+        // Base implementation differs from subclasses.
+        if (exportName == "Base")
+        {
+            _writer.WriteLineIndented("protected virtual bool TryGetValue(string key, out object value)");
+            OpenScope();
+            _writer.WriteLineIndented("value = default;");
+            _writer.WriteLineIndented("return false;");
+            CloseScope();
+            return;
+        }
+
         // Don't override anything if there are no additional elements.
         if (!exportedElements.Any())
         {
@@ -2001,15 +1985,18 @@ public sealed class CSharpFirely2 : ILanguage
 
         foreach (WrittenElementInfo info in exportedElements)
         {
-            _writer.WriteLineIndented($"case \"{info.FhirElementName}\":");
+            writeCase(info.FhirElementName, info.PropertyName, info.PropertyType is ListTypeReference);
+        }
+
+        void writeCase(string key, string propName, bool isList)
+        {
+            _writer.WriteLineIndented($"case \"{key}\":");
             _writer.IncreaseIndent();
 
-            _writer.WriteLineIndented($"value = {info.PropertyName};");
-            _writer.WriteLineIndented($"return {NullCheck(info)};");
+            _writer.WriteLineIndented($"value = {propName};");
+            _writer.WriteLineIndented($"return {NullCheck(propName, isList)};");
 
             _writer.DecreaseIndent();
-
-            //hasChoices |= info.IsChoice;
         }
 
         _writer.WriteLineIndented("default:");
@@ -2027,12 +2014,37 @@ public sealed class CSharpFirely2 : ILanguage
     }
 
     /// <summary>Writes the children of this item.</summary>
+    /// <param name="exportName">Name of the exported class.</param>
     /// <param name="exportedElements">The exported elements.</param>
-    private void WriteNamedChildren(
+    private void WriteNamedChildren(string exportName,
         List<WrittenElementInfo> exportedElements)
     {
+        // Base implementation differs from subclasses.
+        if (exportName == "Base")
+        {
+            _writer.WriteIndentedComment("""
+                                         Enumerate all child nodes.
+                                         Return a sequence of child elements, components and/or properties.
+                                         Child nodes are returned as tuples with the name and the node itself, in the order defined
+                                         by the FHIR specification.
+                                         First returns child nodes inherited from any base class(es), recursively.
+                                         Finally returns child nodes defined by the current class.
+                                         """);
+            _writer.WriteLineIndented("[IgnoreDataMember]");
+            _writer.WriteLineIndented("public virtual IEnumerable<ElementValue> NamedChildren => Enumerable.Empty<ElementValue>();");
+            _writer.WriteLine(string.Empty);
+            return;
+        }
+
+        // Don't override anything if there are no additional elements.
+        if (!exportedElements.Any())
+        {
+            return;
+        }
+
         _writer.WriteLineIndented("[IgnoreDataMember]");
         _writer.WriteLineIndented("public override IEnumerable<ElementValue> NamedChildren");
+
         OpenScope();
         _writer.WriteLineIndented("get");
         OpenScope();
@@ -2050,15 +2062,7 @@ public sealed class CSharpFirely2 : ILanguage
             }
             else
             {
-                // A long time ago we decided that in this function, XHtml
-                // is returned as a FHIR string, so that's what we need to do.
-                string yr = info.FhirElementPath switch
-                {
-                    "Narrative.div" => $"new FhirString({info.PropertyName}.Value)",
-                    "Element.id" => $"new FhirString({info.PropertyName})",
-                    _ => $"{info.PropertyName}"
-
-                };
+                string yr = NamedChildrenFhirTypeWrapper(info);
 
                 _writer.WriteLineIndented(
                     $"if ({info.PropertyName} != null)" +
@@ -2070,13 +2074,52 @@ public sealed class CSharpFirely2 : ILanguage
         CloseScope();
     }
 
+    // For a limited set of exceptional elements, the Children functions return a
+    // complex FHIR type wrapper.
+    private static string NamedChildrenFhirTypeWrapper(WrittenElementInfo info)
+    {
+
+        return info.FhirElementPath switch
+        {
+            "Narrative.div" => $"new FhirString({info.PropertyName}.Value)",
+            "Element.id" => $"new FhirString({info.PropertyName})",
+            "Extension.url" => $"new FhirUri({info.PropertyName})",
+            _ => $"{info.PropertyName}"
+        };
+    }
+
     /// <summary>Writes the children of this item.</summary>
+    /// <param name="exportName">Name of the exported class.</param>
     /// <param name="exportedElements">The exported elements.</param>
-    private void WriteChildren(
+    private void WriteChildren(string exportName,
         List<WrittenElementInfo> exportedElements)
     {
+        // Base implementation differs from subclasses.
+        if (exportName == "Base")
+        {
+            _writer.WriteIndentedComment(
+                                      """
+                                      Enumerate all child nodes.
+                                      Return a sequence of child elements, components and/or properties.
+                                      Child nodes are returned in the order defined by the FHIR specification.
+                                      First returns child nodes inherited from any base class(es), recursively.
+                                      Finally returns child nodes defined by the current class.
+                                      """);
+            _writer.WriteLineIndented("[IgnoreDataMember]");
+            _writer.WriteLineIndented("public virtual IEnumerable<Base> Children => Enumerable.Empty<Base>();");
+            _writer.WriteLine(string.Empty);
+            return;
+        }
+
+        // Don't override anything if there are no additional elements.
+        if (!exportedElements.Any())
+        {
+            return;
+        }
+
         _writer.WriteLineIndented("[IgnoreDataMember]");
         _writer.WriteLineIndented("public override IEnumerable<Base> Children");
+
         OpenScope();
         _writer.WriteLineIndented("get");
         OpenScope();
@@ -2092,16 +2135,7 @@ public sealed class CSharpFirely2 : ILanguage
             }
             else
             {
-                // A long time ago we decided that in this function, XHtml
-                // is returned as a FHIR string, so that's what we need to do.
-
-                string yr = info.FhirElementPath switch
-                {
-                    "Narrative.div" => $"new FhirString({info.PropertyName}.Value)",
-                    "Element.id" => $"new FhirString({info.PropertyName})",
-                    _ => $"{info.PropertyName}"
-
-                };
+                string yr = NamedChildrenFhirTypeWrapper(info);
                 _writer.WriteLineIndented(
                     $"if ({info.PropertyName} != null)" +
                         $" yield return {yr};");
@@ -2113,13 +2147,29 @@ public sealed class CSharpFirely2 : ILanguage
     }
 
     /// <summary>Writes the matches.</summary>
-    /// <param name="exportName">      Name of the export.</param>
+    /// <param name="exportName">Name of the exported class.</param>
     /// <param name="exportedElements">The exported elements.</param>
     private void WriteMatches(
         string exportName,
         List<WrittenElementInfo> exportedElements)
     {
         _writer.WriteLineIndented("///<inheritdoc />");
+
+        // Base implementation differs from subclasses.
+        if (exportName == "Base")
+        {
+            _writer.WriteLineIndented("public virtual bool Matches(IDeepComparable other) => other is Base;");
+            _writer.WriteLine(string.Empty);
+            return;
+        }
+
+        if (exportName == "PrimitiveType")
+        {
+            _writer.WriteLineIndented("public override bool Matches(IDeepComparable other) => IsExactly(other);");
+            _writer.WriteLine(string.Empty);
+            return;
+        }
+
         _writer.WriteLineIndented("public override bool Matches(IDeepComparable other)");
         OpenScope();
         _writer.WriteLineIndented($"var otherT = other as {exportName};");
@@ -2154,24 +2204,50 @@ public sealed class CSharpFirely2 : ILanguage
         string exportName,
         List<WrittenElementInfo> exportedElements)
     {
+        // Base implementation differs from subclasses.
+        if (exportName == "Base")
+        {
+            _writer.WriteLineIndented("public virtual bool IsExactly(IDeepComparable other) => other is Base;");
+            _writer.WriteLine(string.Empty);
+            return;
+        }
+
         _writer.WriteLineIndented("public override bool IsExactly(IDeepComparable other)");
+
         OpenScope();
         _writer.WriteLineIndented($"var otherT = other as {exportName};");
         _writer.WriteLineIndented("if(otherT == null) return false;");
         _writer.WriteLine(string.Empty);
+
         _writer.WriteLineIndented("if(!base.IsExactly(otherT)) return false;");
 
         foreach (WrittenElementInfo info in exportedElements)
         {
             _writer.WriteLineIndented(
-                info.PropertyType is CqlTypeReference ?
-                    $"if({info.PropertyName} != otherT.{info.PropertyName}) return false;"
+                info.PropertyType is CqlTypeReference
+                    ? $"if({info.PropertyName} != otherT.{info.PropertyName}) return false;"
                     : $"if( !DeepComparable.IsExactly({info.PropertyName}, otherT.{info.PropertyName}))" +
                       $" return false;");
         }
 
         _writer.WriteLine(string.Empty);
-        _writer.WriteLineIndented("return true;");
+
+        if (exportName == "PrimitiveType")
+        {
+            _writer.WriteLineIndented("var otherValue = otherT.ObjectValue;");
+
+            _writer.WriteLineIndented("if (ObjectValue is byte[] bytes && otherValue is byte[] bytesOther)");
+            _writer.IncreaseIndent();
+            _writer.WriteLineIndented("return Enumerable.SequenceEqual(bytes, bytesOther);");
+            _writer.DecreaseIndent();
+            _writer.WriteLineIndented("else");
+            _writer.IncreaseIndent();
+            _writer.WriteLineIndented("return Equals(ObjectValue, otherT.ObjectValue);");
+            _writer.DecreaseIndent();
+            _writer.WriteLine(string.Empty);
+        }
+        else
+            _writer.WriteLineIndented("return true;");
 
         CloseScope();
     }
@@ -2185,7 +2261,8 @@ public sealed class CSharpFirely2 : ILanguage
         string exportName,
         List<WrittenElementInfo> exportedElements)
     {
-        _writer.WriteLineIndented("public override IDeepCopyable CopyTo(IDeepCopyable other)");
+        var specifier = exportName == "Base" ? "virtual" : "override";
+        _writer.WriteLineIndented($"public {specifier} IDeepCopyable CopyTo(IDeepCopyable other)");
         OpenScope();
         _writer.WriteLineIndented($"var dest = other as {exportName};");
         _writer.WriteLine(string.Empty);
@@ -2195,7 +2272,18 @@ public sealed class CSharpFirely2 : ILanguage
         _writer.WriteLineIndented("throw new ArgumentException(\"Can only copy to an object of the same type\", \"other\");");
         CloseScope();
 
-        _writer.WriteLineIndented("base.CopyTo(dest);");
+        if (exportName == "Base")
+        {
+            _writer.WriteLineIndented("if (_annotations is not null)");
+            _writer.IncreaseIndent();
+            _writer.WriteLineIndented("dest.annotations.AddRange(annotations);");
+            _writer.DecreaseIndent();
+            _writer.WriteLine(string.Empty);
+        }
+        else
+        {
+            _writer.WriteLineIndented("base.CopyTo(dest);");
+        }
 
         foreach (WrittenElementInfo info in exportedElements)
         {
@@ -2215,6 +2303,9 @@ public sealed class CSharpFirely2 : ILanguage
             }
         }
 
+        if (exportName == "PrimitiveType")
+            _writer.WriteLineIndented("if (ObjectValue != null) dest.ObjectValue = ObjectValue;");
+
         _writer.WriteLineIndented("return dest;");
 
         CloseScope();
@@ -2225,6 +2316,17 @@ public sealed class CSharpFirely2 : ILanguage
     private void WriteDeepCopy(
         string exportName)
     {
+        // Base implementation differs from subclasses.
+        if (exportName == "Base")
+        {
+            _writer.WriteLineIndented("public virtual IDeepCopyable DeepCopy() =>");
+            _writer.IncreaseIndent();
+            _writer.WriteLineIndented("CopyTo((IDeepCopyable)Activator.CreateInstance(GetType())!);");
+            _writer.DecreaseIndent();
+            _writer.WriteLine(string.Empty);
+            return;
+        }
+
         _writer.WriteLineIndented("public override IDeepCopyable DeepCopy()");
         OpenScope();
         _writer.WriteLineIndented($"return CopyTo(new {exportName}());");
@@ -2350,9 +2452,9 @@ public sealed class CSharpFirely2 : ILanguage
         {
             WriteMatches(exportName, exportedElements);
             WriteIsExactly(exportName, exportedElements);
-            WriteChildren(exportedElements);
-            WriteNamedChildren(exportedElements);
-            WriteIDictionarySupport(exportedElements);
+            WriteChildren(exportName, exportedElements);
+            WriteNamedChildren(exportName, exportedElements);
+            WriteIDictionarySupport(exportName, exportedElements);
         }
 
         // close class
@@ -2782,7 +2884,7 @@ public sealed class CSharpFirely2 : ILanguage
 
         string path = element.cgPath();
 
-        var since = _sinceAttributes.TryGetValue(path, out string? s) ? s : null;
+        var since = _sinceAttributes.GetValueOrDefault(path);
         var until = _untilAttributes.TryGetValue(path, out (string, string) u) ? u : default((string, string)?);
 
         // TODO: Modify these elements in ModifyDefinitionsForConsistency
@@ -2811,7 +2913,6 @@ public sealed class CSharpFirely2 : ILanguage
             BuildFhirElementAttribute(name, summary, isModifier, element, orderOffset, ", Choice = ChoiceType.DatatypeChoice", fiveWs);
             BuildFhirElementAttribute(name, summary, isModifier, element, orderOffset, "", fiveWs, since: since);
             _writer.WriteLineIndented($"[DeclaredType(Type = typeof(ResourceReference), Since = FhirRelease.R4)]");
-            //_writer.WriteLineIndented($"[AllowedTypes(typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.ResourceReference))]");
         }
         else
         {
@@ -2855,9 +2956,9 @@ public sealed class CSharpFirely2 : ILanguage
             _writer.WriteLineIndented($"[Binding(\"{element.cgBindingName()}\")]");
         }
 
-        // Generate the [AllowedTypes] and [ResourceReference] attributes, except when we are
-        // generating datatypes and resources in the base subset, since this list probably contains
-        // classes that we have not yet moved to that subset.
+        if (element.cgIsSimple() && element.Type.Count == 1 && element.Type.Single().cgName() == "uri")
+            _writer.WriteLineIndented("[UriPattern]");
+
         bool notClsCompliant = !string.IsNullOrEmpty(allowedTypes) ||
             !string.IsNullOrEmpty(resourceReferences);
 
@@ -3264,7 +3365,12 @@ public sealed class CSharpFirely2 : ILanguage
         choice = string.Empty;
         allowedTypes = string.Empty;
         resourceReferences = string.Empty;
-        summary = element.IsSummary == true ? ", InSummary=true" : string.Empty;
+
+        // We think it's a bug that extension's members are not marked as "in summary", so correct that here.
+        bool inSummary = element.IsSummary == true ||
+                         element.Path == "Extension.url" || element.Path == "Extension.value[x]";
+
+        summary = inSummary ? ", InSummary=true" : string.Empty;
         isModifier = element.IsModifier == true ? ", IsModifier=true" : string.Empty;
 
         IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> elementTypes = element.cgTypes();
@@ -3364,8 +3470,8 @@ public sealed class CSharpFirely2 : ILanguage
     private void WritePropertyTypeName(string name)
     {
         WriteIndentedComment("FHIR Type Name");
-
-        _writer.WriteLineIndented($"public override string TypeName {{ get {{ return \"{name}\"; }} }}");
+        var specifier = name == "Base" ? "virtual" : "override";
+        _writer.WriteLineIndented($"public {specifier} string TypeName {{ get {{ return \"{name}\"; }} }}");
 
         _writer.WriteLine(string.Empty);
     }
@@ -3403,7 +3509,7 @@ public sealed class CSharpFirely2 : ILanguage
         string exportName;
         string typeName;
 
-        if (CSharpFirelyCommon.TypeNameMappings.TryGetValue(primitive.Name, out string? tmValue))
+        if (TypeNameMappings.TryGetValue(primitive.Name, out string? tmValue))
         {
             exportName = tmValue;
         }
@@ -3412,7 +3518,7 @@ public sealed class CSharpFirely2 : ILanguage
             exportName = primitive.Name.ToPascalCase();
         }
 
-        if (CSharpFirelyCommon.PrimitiveTypeMap.TryGetValue(primitive.Name, out string? ptmValue))
+        if (PrimitiveTypeMap.TryGetValue(primitive.Name, out string? ptmValue))
         {
             typeName = ptmValue;
         }
