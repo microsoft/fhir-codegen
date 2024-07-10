@@ -717,7 +717,11 @@ public class LangInfo : ILanguage
     {
         string propertyType = string.Empty;
 
-        if (ed.Type.Count != 0)
+        if (!ed.Path.Contains('.'))
+        {
+            propertyType = sd.Name;
+        }
+        else if (ed.Type.Count != 0)
         {
             IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> types = ed.cgTypes();
 
@@ -737,7 +741,7 @@ public class LangInfo : ILanguage
                     targets = "(" + string.Join("|", et.cgTargetProfiles().Keys) + ")";
                 }
 
-                propertyType = $"{propertyType}{joiner}{name}{profiles}{targets}";
+                propertyType = $"{propertyType}{joiner}{et.cgName()}{profiles}{targets}";
             }
         }
 

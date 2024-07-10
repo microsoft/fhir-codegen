@@ -38,9 +38,18 @@ public static partial class FhirPackageUtils
 
     public static bool PackageIsFhirRelease(string packageName)
     {
-        string name = packageName.Contains('#')
-            ? packageName.Substring(0, packageName.IndexOf('#'))
-            : packageName;
+        string name = packageName;
+
+        if (name.StartsWith('@'))
+        {
+            name = name[1..];
+        }
+
+        name = name.Contains('@')
+            ? name.Split('@')[0]
+            : name.Contains('#')
+            ? name.Split('#')[0]
+            : name;
 
         return _matchFhirReleasePackageNames.IsMatch(name);
     }

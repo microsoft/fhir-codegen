@@ -23,7 +23,6 @@ using System.CommandLine.Help;
 using System.CommandLine.Invocation;
 using System.Collections;
 using Hl7.Fhir.Utility;
-using Microsoft.Health.Fhir.PackageManager;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using Microsoft.Health.Fhir.CodeGen.Loader;
 using Microsoft.Health.Fhir.CodeGen.Models;
@@ -511,44 +510,49 @@ public class Program
                 throw new Exception($"Language type must implement ILanguage, {languageName} ({langType.Name})");
             }
 
-            // create our cache object to load packages with
-            IFhirPackageClient cache = FhirCache.Create(new FhirPackageClientSettings()
+            //// create our cache object to load packages with
+            //IFhirPackageClient cache = FhirCache.Create(new FhirPackageClientSettings()
+            //{
+            //    CachePath = rootConfig.FhirCacheDirectory,
+            //});
+
+            //List<PackageCacheEntry> packages = [];
+
+            //// load packages
+            //foreach (string package in rootConfig.Packages)
+            //{
+            //    PackageCacheEntry? entry;
+
+            //    if (package.StartsWith("http", StringComparison.OrdinalIgnoreCase))
+            //    {
+            //        entry = await cache.FindOrDownloadPackageByUrl(package, rootConfig.ResolvePackageDependencies);
+            //    }
+            //    else
+            //    {
+            //        entry = await cache.FindOrDownloadPackageByDirective(package, rootConfig.ResolvePackageDependencies);
+            //    }
+
+            //    if (entry == null)
+            //    {
+            //        throw new Exception($"Could not find or download package {package}");
+            //    }
+
+            //    packages.Add((PackageCacheEntry)entry);
+            //}
+
+            PackageLoader loader = new(new()
             {
                 CachePath = rootConfig.FhirCacheDirectory,
-            });
-
-            List<PackageCacheEntry> packages = [];
-
-            // load packages
-            foreach (string package in rootConfig.Packages)
-            {
-                PackageCacheEntry? entry;
-
-                if (package.StartsWith("http", StringComparison.OrdinalIgnoreCase))
-                {
-                    entry = await cache.FindOrDownloadPackageByUrl(package, rootConfig.ResolvePackageDependencies);
-                }
-                else
-                {
-                    entry = await cache.FindOrDownloadPackageByDirective(package, rootConfig.ResolvePackageDependencies);
-                }
-
-                if (entry == null)
-                {
-                    throw new Exception($"Could not find or download package {package}");
-                }
-
-                packages.Add((PackageCacheEntry)entry);
-            }
-
-            PackageLoader loader = new(cache, new()
-            {
+                UseOfficialFhirRegistries = rootConfig.UseOfficialRegistries,
+                AdditionalFhirRegistryUrls = rootConfig.AdditionalFhirRegistryUrls,
+                AdditionalNpmRegistryUrls = rootConfig.AdditionalNpmRegistryUrls,
+                OfflineMode = rootConfig.OfflineMode,
                 JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
                 AutoLoadExpansions = rootConfig.AutoLoadExpansions,
                 ResolvePackageDependencies = rootConfig.ResolvePackageDependencies,
             });
 
-            DefinitionCollection? loaded = loader.LoadPackages(packages.First().Name, packages).Result
+            DefinitionCollection? loaded = await loader.LoadPackages(rootConfig.Packages)
                 ?? throw new Exception($"Could not load packages: {string.Join(',', rootConfig.Packages)}");
 
             // check for a FHIR server URL
@@ -611,81 +615,92 @@ public class Program
             // parse the arguments into the configuration object
             config.Parse(pr);
 
-            // create our cache object to load packages with
-            IFhirPackageClient cache = FhirCache.Create(new FhirPackageClientSettings()
+            //// create our cache object to load packages with
+            //IFhirPackageClient cache = FhirCache.Create(new FhirPackageClientSettings()
+            //{
+            //    CachePath = config.FhirCacheDirectory,
+            //});
+
+            //List<PackageCacheEntry> packagesLeft = [];
+
+            //// load packages
+            //foreach (string package in config.Packages)
+            //{
+            //    PackageCacheEntry? entry;
+
+            //    if (package.StartsWith("http", StringComparison.OrdinalIgnoreCase))
+            //    {
+            //        entry = await cache.FindOrDownloadPackageByUrl(package, config.ResolvePackageDependencies);
+            //    }
+            //    else
+            //    {
+            //        entry = await cache.FindOrDownloadPackageByDirective(package, config.ResolvePackageDependencies);
+            //    }
+
+            //    if (entry == null)
+            //    {
+            //        throw new Exception($"Could not find or download package {package}");
+            //    }
+
+            //    packagesLeft.Add((PackageCacheEntry)entry);
+            //}
+
+            PackageLoader loaderLeft = new(new()
             {
                 CachePath = config.FhirCacheDirectory,
-            });
-
-            List<PackageCacheEntry> packagesLeft = [];
-
-            // load packages
-            foreach (string package in config.Packages)
-            {
-                PackageCacheEntry? entry;
-
-                if (package.StartsWith("http", StringComparison.OrdinalIgnoreCase))
-                {
-                    entry = await cache.FindOrDownloadPackageByUrl(package, config.ResolvePackageDependencies);
-                }
-                else
-                {
-                    entry = await cache.FindOrDownloadPackageByDirective(package, config.ResolvePackageDependencies);
-                }
-
-                if (entry == null)
-                {
-                    throw new Exception($"Could not find or download package {package}");
-                }
-
-                packagesLeft.Add((PackageCacheEntry)entry);
-            }
-
-            PackageLoader loaderLeft = new(cache, new()
-            {
+                UseOfficialFhirRegistries = config.UseOfficialRegistries,
+                AdditionalFhirRegistryUrls = config.AdditionalFhirRegistryUrls,
+                AdditionalNpmRegistryUrls = config.AdditionalNpmRegistryUrls,
+                OfflineMode = config.OfflineMode,
                 JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
                 AutoLoadExpansions = config.AutoLoadExpansions,
                 ResolvePackageDependencies = config.ResolvePackageDependencies,
             });
 
-            DefinitionCollection? loadedLeft = loaderLeft.LoadPackages(packagesLeft.First().Name, packagesLeft).Result
+
+            DefinitionCollection? loadedLeft = await loaderLeft.LoadPackages(config.Packages)
                 ?? throw new Exception($"Could not load left-hand-side packages: {string.Join(',', config.Packages)}");
 
-            List<PackageCacheEntry> packagesRight = [];
+            //List<PackageCacheEntry> packagesRight = [];
 
-            // load packages
-            foreach (string package in config.ComparePackages)
+            //// load packages
+            //foreach (string package in config.ComparePackages)
+            //{
+            //    PackageCacheEntry? entry;
+
+            //    if (package.StartsWith("http", StringComparison.OrdinalIgnoreCase))
+            //    {
+            //        entry = await cache.FindOrDownloadPackageByUrl(package, config.ResolvePackageDependencies);
+            //    }
+            //    else
+            //    {
+            //        entry = await cache.FindOrDownloadPackageByDirective(package, config.ResolvePackageDependencies);
+            //    }
+
+            //    if (entry == null)
+            //    {
+            //        throw new Exception($"Could not find or download package {package}");
+            //    }
+
+            //    packagesRight.Add((PackageCacheEntry)entry);
+            //}
+
+            PackageLoader loaderRight = new(new()
             {
-                PackageCacheEntry? entry;
-
-                if (package.StartsWith("http", StringComparison.OrdinalIgnoreCase))
-                {
-                    entry = await cache.FindOrDownloadPackageByUrl(package, config.ResolvePackageDependencies);
-                }
-                else
-                {
-                    entry = await cache.FindOrDownloadPackageByDirective(package, config.ResolvePackageDependencies);
-                }
-
-                if (entry == null)
-                {
-                    throw new Exception($"Could not find or download package {package}");
-                }
-
-                packagesRight.Add((PackageCacheEntry)entry);
-            }
-
-            PackageLoader loaderRight = new(cache, new()
-            {
+                CachePath = config.FhirCacheDirectory,
+                UseOfficialFhirRegistries = config.UseOfficialRegistries,
+                AdditionalFhirRegistryUrls = config.AdditionalFhirRegistryUrls,
+                AdditionalNpmRegistryUrls = config.AdditionalNpmRegistryUrls,
+                OfflineMode = config.OfflineMode,
                 JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
                 AutoLoadExpansions = config.AutoLoadExpansions,
                 ResolvePackageDependencies = config.ResolvePackageDependencies,
             });
 
-            DefinitionCollection? loadedRight = loaderLeft.LoadPackages(packagesRight.First().Name, packagesRight).Result
+            DefinitionCollection? loadedRight = await loaderLeft.LoadPackages(config.ComparePackages)
                 ?? throw new Exception($"Could not load right-hand-side packages: {string.Join(',', config.Packages)}");
 
-            PackageComparer comparer = new(config, cache, loadedLeft, loadedRight);
+            PackageComparer comparer = new(config, loadedLeft, loadedRight);
 
             _ = comparer.Compare();
         }

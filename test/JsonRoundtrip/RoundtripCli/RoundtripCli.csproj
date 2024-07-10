@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Hl7.Fhir.R4" Version="5.8.1" />
+    <PackageReference Include="Hl7.Fhir.R4" Version="5.8.2" />
     <PackageReference Include="System.CommandLine.DragonFruit" Version="0.4.0-alpha.22272.1" />
   </ItemGroup>
 

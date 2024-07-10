@@ -26,7 +26,8 @@
 	<PackageReference Include="Avalonia.ReactiveUI" Version="11.0.11" />
 	<PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.11" />
 	<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-	<PackageReference Include="Hl7.Fhir.R5" Version="5.8.1" />
+	<PackageReference Include="Firely.Fhir.Packages" Version="4.6.0" />
+	<PackageReference Include="Hl7.Fhir.R5" Version="5.8.2" />
 	<PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
 	<PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0" />
 	<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
@@ -37,6 +38,5 @@
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.Health.Fhir.CodeGenCommon\Microsoft.Health.Fhir.CodeGenCommon.csproj" />
     <ProjectReference Include="..\Microsoft.Health.Fhir.CodeGen\Microsoft.Health.Fhir.CodeGen.csproj" />
-    <ProjectReference Include="..\Microsoft.Health.Fhir.PackageManager\Microsoft.Health.Fhir.PackageManager.csproj" />
   </ItemGroup>
 </Project>

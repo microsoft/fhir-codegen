@@ -9,6 +9,7 @@ using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Xml.Linq;
+using Firely.Fhir.Packages;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Specification.Terminology;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
@@ -46,10 +47,10 @@ public partial class DefinitionCollection
     public string MainPackageVersion { get; set; } = string.Empty;
 
     /// <summary>Gets or sets the manifest.</summary>
-    public Dictionary<string, CachePackageManifest> Manifests { get; set; } = [];
+    public Dictionary<string, PackageManifest> Manifests { get; set; } = [];
 
     /// <summary>Gets or sets the contents.</summary>
-    public Dictionary<string, PackageContents> ContentListings { get; set; } = [];
+    public Dictionary<string, CanonicalIndex> ContentListings { get; set; } = [];
 
     //private readonly Dictionary<ElementDefinition, StructureDefinition> _elementSdLookup = new();
 

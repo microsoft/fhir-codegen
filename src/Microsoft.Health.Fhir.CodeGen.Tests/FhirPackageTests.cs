@@ -7,8 +7,6 @@ using FluentAssertions;
 using Microsoft.Health.Fhir.CodeGen.Loader;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
-using Microsoft.Health.Fhir.PackageManager;
-using Microsoft.Health.Fhir.PackageManager.Models;
 using Xunit.Abstractions;
 using Xunit.Sdk;
 
@@ -17,82 +15,52 @@ namespace Microsoft.Health.Fhir.CodeGen.Tests;
 /// <summary>A FHIR package test fixture.</summary>
 public class FhirPackageTestFixture
 {
-    /// <summary>The cache.</summary>
-    public IFhirPackageClient Cache;
+    public readonly string? CachePath = null;
 
     /// <summary>The FHIR R5 package entries.</summary>
-    public IEnumerable<PackageCacheEntry> EntriesR5;
+    public readonly string[] EntriesR5 =
+    [
+        "hl7.fhir.r5.core#5.0.0",
+        "hl7.fhir.r5.expansions#5.0.0",
+        "hl7.fhir.uv.extensions#1.0.0",
+    ];
+
 
     /// <summary>The FHIR R4B package entries.</summary>
-    public IEnumerable<PackageCacheEntry> EntriesR4B;
+    public readonly string[] EntriesR4B =
+    [
+        "hl7.fhir.r4b.core#4.3.0",
+        "hl7.fhir.r4b.expansions#4.3.0",
+        "hl7.fhir.uv.extensions#1.0.0",
+    ];
 
     /// <summary>The FHIR R4 package entries.</summary>
-    public IEnumerable<PackageCacheEntry> EntriesR4;
+    public readonly string[] EntriesR4 =
+    [
+        "hl7.fhir.r4.core#4.0.1",
+        "hl7.fhir.r4.expansions#4.0.1",
+        "hl7.fhir.uv.extensions#1.0.0",
+    ];
 
     /// <summary>The FHIR STU3 package entries.</summary>
-    public IEnumerable<PackageCacheEntry> EntriesR3;
+    public readonly string[] EntriesR3 =
+    [
+        "hl7.fhir.r3.core#3.0.2",
+        "hl7.fhir.r3.expansions#3.0.2",
+    ];
 
     /// <summary>The FHIR DSTU2 package entries.</summary>
-    public IEnumerable<PackageCacheEntry> EntriesR2;
+    public readonly string[] EntriesR2 =
+    [
+        "hl7.fhir.r2.core#1.0.2",
+        "hl7.fhir.r2.expansions#1.0.2",
+    ];
 
     /// <summary>
     /// Initializes a new instance of the <see cref="FhirPackageTestFixture"/> class.
     /// </summary>
     public FhirPackageTestFixture()
     {
-        Cache = FhirCache.Create(new FhirPackageClientSettings()
-        {
-            CachePath = "~/.fhir",
-        });
-
-        EntriesR5 =
-        [
-            Load("hl7.fhir.r5.core#5.0.0"),
-            Load("hl7.fhir.r5.expansions#5.0.0"),
-            Load("hl7.fhir.uv.extensions#1.0.0"),
-        ];
-
-        EntriesR4B =
-        [
-            Load("hl7.fhir.r4b.core#4.3.0"),
-            Load("hl7.fhir.r4b.expansions#4.3.0"),
-            Load("hl7.fhir.uv.extensions#1.0.0"),
-        ];
-
-        EntriesR4 =
-        [
-            Load("hl7.fhir.r4.core#4.0.1"),
-            Load("hl7.fhir.r4.expansions#4.0.1"),
-            Load("hl7.fhir.uv.extensions#1.0.0"),
-        ];
-
-        EntriesR3 =
-        [
-            Load("hl7.fhir.r3.core#3.0.2"),
-            Load("hl7.fhir.r3.expansions#3.0.2"),
-        ];
-
-        EntriesR2 =
-        [
-            Load("hl7.fhir.r2.core#1.0.2"),
-            Load("hl7.fhir.r2.expansions#1.0.2"),
-        ];
-    }
-
-    /// <summary>Loads.</summary>
-    /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>
-    /// <param name="directive">The directive to load.</param>
-    /// <returns>A PackageCacheEntry.</returns>
-    private PackageCacheEntry Load(string directive)
-    {
-        PackageCacheEntry? p = Cache.FindOrDownloadPackageByDirective(directive, false).Result;
-
-        if (p == null)
-        {
-            throw new Exception($"Failed to load {directive}");
-        }
-
-        return (PackageCacheEntry)p;
     }
 }
 
@@ -145,9 +113,9 @@ public class FhirPackageTestsR5 : IClassFixture<FhirPackageTestFixture>
     [Trait("FhirVersion", "R5")]
     internal async Task ParseCorePackage(LoaderOptions.JsonDeserializationModel jsonModel)
     {
-        PackageLoader loader = new(_fixture.Cache, new() { JsonModel = jsonModel });
+        PackageLoader loader = new(new() { CachePath = _fixture.CachePath, JsonModel = jsonModel });
 
-        DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR5.First().Name, _fixture.EntriesR5);
+        DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR5);
 
         loaded.Should().NotBeNull();
 
@@ -216,9 +184,9 @@ public class FhirPackageTestsR4B : IClassFixture<FhirPackageTestFixture>
     [Trait("FhirVersion", "R4B")]
     internal async Task ParseCorePackage()
     {
-        PackageLoader loader = new(_fixture.Cache, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
+        PackageLoader loader = new(new() { CachePath = _fixture.CachePath, JsonModel = LoaderOptions.JsonDeserializationModel.Default });
 
-        DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR4B.First().Name, _fixture.EntriesR4B);
+        DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR4B);
 
         loaded.Should().NotBeNull();
 
@@ -287,9 +255,9 @@ public class FhirPackageTestsR4 : IClassFixture<FhirPackageTestFixture>
     [Trait("FhirVersion", "R4")]
     internal async Task ParseCorePackage()
     {
-        PackageLoader loader = new(_fixture.Cache, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
+        PackageLoader loader = new(new() { CachePath = _fixture.CachePath, JsonModel = LoaderOptions.JsonDeserializationModel.Default });
 
-        DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR4.First().Name, _fixture.EntriesR4);
+        DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR4);
 
         loaded.Should().NotBeNull();
 
@@ -358,9 +326,9 @@ public class FhirPackageTestsR3 : IClassFixture<FhirPackageTestFixture>
     [Trait("FhirVersion", "R3")]
     internal async Task ParseCorePackage()
     {
-        PackageLoader loader = new(_fixture.Cache, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
+        PackageLoader loader = new(new() { CachePath = _fixture.CachePath, JsonModel = LoaderOptions.JsonDeserializationModel.Default });
 
-        DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR3.First().Name, _fixture.EntriesR3);
+        DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR3);
 
         loaded.Should().NotBeNull();
 
@@ -429,9 +397,9 @@ public class FhirPackageTestsR2 : IClassFixture<FhirPackageTestFixture>
     [Trait("FhirVersion", "R2")]
     internal async Task ParseCorePackage()
     {
-        PackageLoader loader = new(_fixture.Cache, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
+        PackageLoader loader = new(new() { CachePath = _fixture.CachePath, JsonModel = LoaderOptions.JsonDeserializationModel.Default });
 
-        DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR2.First().Name, _fixture.EntriesR2);
+        DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR2);
 
         loaded.Should().NotBeNull();
 

@@ -15,7 +15,6 @@ using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using Microsoft.Health.Fhir.MappingLanguage;
-using Microsoft.Health.Fhir.PackageManager;
 
 namespace Microsoft.Health.Fhir.CodeGen.CompareTool;
 
@@ -36,8 +35,6 @@ public class CrossVersionMapCollection
     }
 
     private PackageLoader _loader = null!;
-
-    private IFhirPackageClient _cache = null!;
 
     private DefinitionCollection _source;
     private DefinitionCollection _target;
@@ -74,12 +71,10 @@ public class CrossVersionMapCollection
     private Dictionary<string, FhirStructureMap> _fmlByCompositeName = [];
 
     public CrossVersionMapCollection(
-        IFhirPackageClient cache,
         DefinitionCollection source,
         DefinitionCollection target)
     {
-        _cache = cache;
-        _loader = new(_cache, new()
+        _loader = new(new()
         {
             JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
             AutoLoadExpansions = false,

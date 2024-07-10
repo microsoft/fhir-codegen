@@ -3,11 +3,10 @@ using Hl7.Fhir.Rest;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification.Source;
 using Hl7.Fhir.Utility;
-using Microsoft.Extensions.Logging;
+//using Microsoft.Extensions.Logging;
 using Microsoft.Health.Fhir.CodeGen.Loader;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
-using Microsoft.Health.Fhir.PackageManager;
 
 namespace Microsoft.Health.Fhir.CodeGen.Tests;
 
@@ -155,37 +154,26 @@ internal class CrossVersionResolver : IAsyncResourceResolver
 
     public async System.Threading.Tasks.Task Initialize(string[] versions)
     {
-        var cache = FhirCache.Create(new FhirPackageClientSettings()
-        {
-            CachePath = "~/.fhir",
-        });
-
-        PackageLoader loader = new(cache, new() { AutoLoadExpansions = false, ResolvePackageDependencies = false });
+        PackageLoader loader = new(new() { AutoLoadExpansions = false, ResolvePackageDependencies = false });
         if (versions.Contains("5"))
-            r5 = await LoadPackage(loader, cache, "hl7.fhir.r5.core#5.0.0");
+            r5 = await LoadPackage(loader, "hl7.fhir.r5.core#5.0.0");
         if (versions.Contains("4B"))
-            r4b = await LoadPackage(loader, cache, "hl7.fhir.r4b.core#4.3.0");
+            r4b = await LoadPackage(loader, "hl7.fhir.r4b.core#4.3.0");
         if (versions.Contains("4"))
-            r4 = await LoadPackage(loader, cache, "hl7.fhir.r4.core#4.0.1");
+            r4 = await LoadPackage(loader, "hl7.fhir.r4.core#4.0.1");
         if (versions.Contains("3"))
-            stu3 = await LoadPackage(loader, cache, "hl7.fhir.r3.core#3.0.2");
+            stu3 = await LoadPackage(loader, "hl7.fhir.r3.core#3.0.2");
         if (versions.Contains("2"))
-            dstu2 = await LoadPackage(loader, cache, "hl7.fhir.r2.core#1.0.2");
+            dstu2 = await LoadPackage(loader, "hl7.fhir.r2.core#1.0.2");
     }
 
     /// <summary>Loads.</summary>
     /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>
     /// <param name="directive">The directive to load.</param>
     /// <returns>A PackageCacheEntry.</returns>
-    private async Task<DefinitionCollection> LoadPackage(PackageLoader loader, IFhirPackageClient cache, string directive)
+    private async Task<DefinitionCollection> LoadPackage(PackageLoader loader, string directive)
     {
-        PackageCacheEntry? p = cache.FindOrDownloadPackageByDirective(directive, false).Result;
-        if (p == null)
-        {
-            throw new ApplicationException($"Failed to load {directive}");
-        }
-
-        DefinitionCollection? loaded = await loader.LoadPackages("hl7.fhir.r2.core", [(PackageCacheEntry)p]);
+        DefinitionCollection? loaded = await loader.LoadPackages([directive]);
         if (loaded == null)
         {
             throw new ApplicationException($"Failed to load package {directive} into cache");

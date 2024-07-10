@@ -28,7 +28,6 @@ using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGen.Utils;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
-using Microsoft.Health.Fhir.PackageManager;
 using static Hl7.Fhir.Model.VerificationResult;
 using static Microsoft.Health.Fhir.CodeGen.CompareTool.PackageComparer;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
@@ -45,8 +44,6 @@ namespace Microsoft.Health.Fhir.CodeGen.CompareTool;
 
 public class PackageComparer
 {
-    private IFhirPackageClient _cache;
-
     private DefinitionCollection _source;
     private DefinitionCollection _target;
 
@@ -96,10 +93,9 @@ public class PackageComparer
         //"urn:iso:std:iso:3166:-2",
     ];
 
-    public PackageComparer(ConfigCompare config, IFhirPackageClient cache, DefinitionCollection source, DefinitionCollection target)
+    public PackageComparer(ConfigCompare config, DefinitionCollection source, DefinitionCollection target)
     {
         _config = config;
-        _cache = cache;
         _source = source;
         _target = target;
 
@@ -127,7 +123,7 @@ public class PackageComparer
         // check for loading cross-version maps
         if (!string.IsNullOrEmpty(_config.CrossVersionMapSourcePath))
         {
-            _crossVersion = new(_cache, _source, _target);
+            _crossVersion = new(_source, _target);
 
             if (!_crossVersion.TryLoadCrossVersionMaps(_config.CrossVersionMapSourcePath))
             {
@@ -139,7 +135,7 @@ public class PackageComparer
         if ((_crossVersion == null) && (_config.MapSaveStyle != ConfigCompare.ComparisonMapSaveStyle.None))
         {
             // create our cross-version map collection
-            _crossVersion = new(_cache, _source, _target);
+            _crossVersion = new(_source, _target);
         }
 
         string outputDir = string.IsNullOrEmpty(_config.CrossVersionMapDestinationPath)

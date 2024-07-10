@@ -87,7 +87,7 @@ internal record class FhirDirective
     /// <summary>Gets or sets URL of the ci.</summary>
     public string CiUrl { get; set; } = string.Empty;
 
-    /// <summary>Gets or sets the ci organisation.</summary>
+    /// <summary>Gets or sets the ci organization.</summary>
     public string CiOrg { get; set; } = string.Empty;
 
     /// <summary>Gets or sets the ci branch.</summary>

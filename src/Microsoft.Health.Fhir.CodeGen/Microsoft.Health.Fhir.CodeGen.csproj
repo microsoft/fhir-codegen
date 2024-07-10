@@ -15,7 +15,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Hl7.Fhir.R5" Version="5.8.1" />
+    <PackageReference Include="Firely.Fhir.Packages" Version="4.6.0" />
+    <PackageReference Include="Hl7.Fhir.R5" Version="5.8.2" />
     <PackageReference Include="Microsoft.OpenApi" Version="1.6.15" />
     <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
   </ItemGroup>
@@ -24,7 +25,6 @@
     <ProjectReference Include="..\Microsoft.Health.Fhir.CodeGenCommon\Microsoft.Health.Fhir.CodeGenCommon.csproj" />
     <ProjectReference Include="..\Microsoft.Health.Fhir.CrossVersion\Microsoft.Health.Fhir.CrossVersion.csproj" />
     <ProjectReference Include="..\Microsoft.Health.Fhir.MappingLanguage\Microsoft.Health.Fhir.MappingLanguage.csproj" />
-    <ProjectReference Include="..\Microsoft.Health.Fhir.PackageManager\Microsoft.Health.Fhir.PackageManager.csproj" />
   </ItemGroup>
 
   <ItemGroup>
