@@ -5,6 +5,7 @@
 
 using System.Diagnostics.CodeAnalysis;
 using Hl7.Fhir.Model;
+using Hl7.Fhir.Rest;
 using Hl7.Fhir.Specification;
 using Hl7.Fhir.Specification.Navigation;
 using Hl7.Fhir.Specification.Source;
@@ -425,13 +426,8 @@ public class CrossVersionMapCollection
                 }
                 else if (type != "string")
                 {
-                    issues.Add(new OperationOutcome.IssueComponent()
-                    {
-                        Code = OperationOutcome.IssueType.NotFound,
-                        Severity = OperationOutcome.IssueSeverity.Error,
-                        Details = new CodeableConcept() { Text = $"Group {group.Name} parameter {gp.Identifier} at @{gp.Line}:{gp.Column} has no type `{gp.TypeIdentifier}`" }
-                    });
-                    Console.WriteLine($"Error: Group {group.Name} parameter {gp.Identifier} at @{gp.Line}:{gp.Column} has no type `{gp.TypeIdentifier}`");
+                    string msg = $"Group {group.Name} parameter {gp.Identifier} at @{gp.Line}:{gp.Column} has no type `{gp.TypeIdentifier}`";
+                    ReportIssue(issues, msg, OperationOutcome.IssueType.NotFound);
                 }
             }
             else if (gp.ParameterElementDefinition != null)
@@ -460,6 +456,8 @@ public class CrossVersionMapCollection
         // Now scan for dependencies in rules
         foreach(var rule in group.Expressions)
         {
+            Console.Write($"     ");
+
             // deduce the datatypes for the variables
             Dictionary<string, TypedParameter?> parameterTypesByNameForRule = parameterTypesByName.ShallowCopy();
             if (rule.MappingExpression != null)
@@ -474,19 +472,21 @@ public class CrossVersionMapCollection
                         {
                             TypedParameter? tpV = ResolveIdentifierType(source.Identifier, source.Alias, parameterTypesByNameForRule, source, sourceResolver, issues);
                             parameterTypesByNameForRule.Add(source.Alias, tpV);
+                            Console.Write($"{source.Identifier} as {source.Alias} : {tpV?.Element?.DebugString() ?? "?"}");
                         }
                         catch (ApplicationException e)
                         {
-                            issues.Add(new OperationOutcome.IssueComponent()
-                            {
-                                Code = OperationOutcome.IssueType.Exception,
-                                Severity = OperationOutcome.IssueSeverity.Error,
-                                Details = new CodeableConcept() { Text = e.Message }
-                            });
-                            Console.WriteLine($"Error: can't assign variable `{source.Alias}`: {e.Message}");
+                            string msg = $"Error: can't assign variable `{source.Alias}`: {e.Message}";
+                            ReportIssue(issues, msg, OperationOutcome.IssueType.Exception);
                         }
                     }
+                    else
+                    {
+                        Console.Write($"{source.Identifier}");
+                    }
                 }
+
+                Console.Write($"  =>  ");
 
                 foreach (var target in rule.MappingExpression.Targets)
                 {
@@ -501,6 +501,7 @@ public class CrossVersionMapCollection
                             if (target.Identifier != null)
                             {
                                 tpV = ResolveIdentifierType(target.Identifier, target.Alias, parameterTypesByNameForRule, target, targetResolver, issues);
+                                Console.Write($"{target.Identifier} as {target.Alias} : {tpV?.Element?.DebugString() ?? "?"}");
                             }
                             else if (target.Invocation != null)
                             {
@@ -511,15 +512,41 @@ public class CrossVersionMapCollection
                         }
                         catch(ApplicationException e)
                         {
-                            issues.Add(new OperationOutcome.IssueComponent()
-                            {
-                                Code = OperationOutcome.IssueType.Exception,
-                                Severity = OperationOutcome.IssueSeverity.Error,
-                                Details = new CodeableConcept() { Text = e.Message }
-                            });
-                            Console.WriteLine($"Error: can't assign variable `{target.Alias}`: {e.Message}");
+                            string msg = $"Error: can't assign variable `{target.Alias}`: {e.Message}";
+                            ReportIssue(issues, msg, OperationOutcome.IssueType.Exception);
                         }
                     }
+                    else
+                    {
+                        Console.Write($"{target.Identifier}");
+                    }
+                }
+            }
+
+            if (rule.SimpleCopyExpression != null)
+            {
+                try
+                {
+                    var sourcetpV = ResolveIdentifierType(rule.SimpleCopyExpression.Source, null, parameterTypesByNameForRule, rule.SimpleCopyExpression, sourceResolver, issues);
+                    Console.Write($"{rule.SimpleCopyExpression.Source} : {sourcetpV?.Element?.DebugString() ?? "?"}");
+                }
+                catch(ApplicationException ex)
+                {
+                    string msg = $"Can't resolve simple source `{rule.SimpleCopyExpression.Source}`: {ex.Message}";
+                    ReportIssue(issues, msg, OperationOutcome.IssueType.Exception);
+                }
+
+                Console.Write($"  =>  ");
+
+                try
+                {
+                    var targettpV = ResolveIdentifierType(rule.SimpleCopyExpression.Target, null, parameterTypesByNameForRule, rule.SimpleCopyExpression, targetResolver, issues);
+                    Console.Write($"{rule.SimpleCopyExpression.Target} : {targettpV?.Element?.DebugString() ?? "?"}");
+                }
+                catch (ApplicationException ex)
+                {
+                    string msg = $"Can't resolve simple target `{rule.SimpleCopyExpression.Target}`: {ex.Message}";
+                    ReportIssue(issues, msg, OperationOutcome.IssueType.Exception);
                 }
             }
 
@@ -529,16 +556,13 @@ public class CrossVersionMapCollection
             {
                 foreach (var i in de.Invocations)
                 {
-                    Console.Write($"      => {i.Identifier}( ");
+                    Console.Write("\n        ");
+                    Console.Write($" then {i.Identifier}( ");
                     if (!fml.GroupsByName.ContainsKey(i.Identifier) && !typeGroups.ContainsKey(i.Identifier))
                     {
-                        issues.Add(new OperationOutcome.IssueComponent()
-                        {
-                            Code = OperationOutcome.IssueType.NotFound,
-                            Severity = OperationOutcome.IssueSeverity.Error,
-                            Details = new CodeableConcept() { Text = $"Calling non existent dependent group {i.Identifier}" }
-                        });
-                        Console.WriteLine($"... ) - Error: Calling non existent dependent group {i.Identifier} at @{i.Line}:{i.Column}");
+                        Console.WriteLine($"... )");
+                        string msg = $"Calling non existent dependent group {i.Identifier} at @{i.Line}:{i.Column}";
+                        ReportIssue(issues, msg, OperationOutcome.IssueType.NotFound);
                     }
                     else
                     {
@@ -546,6 +570,8 @@ public class CrossVersionMapCollection
                         // walk the parameters
                         for (int nParam = 0; nParam < dg.Parameters.Count; nParam++)
                         {
+                            if (nParam > 0)
+                                Console.Write(", ");
                             var gp = dg.Parameters[nParam];
                             string? type = gp.TypeIdentifier;
                             // lookup the type in the aliases
@@ -560,33 +586,22 @@ public class CrossVersionMapCollection
                             if (nParam < i.Parameters.Count)
                             {
                                 var cp = i.Parameters[nParam];
-                                Console.Write($" = {cp.Literal?.ValueAsString}");
+                                Console.Write($"{cp.Literal?.ValueAsString}");
                                 // Check in the rule source/target aliases
                                 if (rule.MappingExpression != null)
                                 {
                                     string? variableName = cp.Literal?.ValueAsString;
                                     if (variableName == null)
                                     {
-                                        var msg = $"No Variable name provided for parameter {i} calling dependent group {i.Identifier} at @{cp.Line}:{cp.Column}";
-                                        issues.Add(new OperationOutcome.IssueComponent()
-                                        {
-                                            Code = OperationOutcome.IssueType.NotFound,
-                                            Severity = OperationOutcome.IssueSeverity.Error,
-                                            Details = new CodeableConcept() { Text = msg }
-                                        });
-                                        Console.WriteLine($"\nError: {msg}");
+                                        string msg = $"No Variable name provided for parameter {i} calling dependent group {i.Identifier} at @{cp.Line}:{cp.Column}";
+                                        ReportIssue(issues, msg, OperationOutcome.IssueType.NotFound);
                                     }
                                     else
                                     {
                                         if (!parameterTypesByNameForRule.ContainsKey(variableName))
                                         {
-                                            issues.Add(new OperationOutcome.IssueComponent()
-                                            {
-                                                Code = OperationOutcome.IssueType.NotFound,
-                                                Severity = OperationOutcome.IssueSeverity.Error,
-                                                Details = new CodeableConcept() { Text = $"Variable not found `{variableName}` calling dependent group {i.Identifier} at @{cp.Literal?.Line}:{cp.Literal?.Column}" }
-                                            });
-                                            Console.WriteLine($"\nError: Variable not found `{variableName}` calling dependent group {i.Identifier} at @{cp.Literal?.Line}:{cp.Literal?.Column}");
+                                            string msg = $"Variable not found `{variableName}` calling dependent group {i.Identifier} at @{cp.Literal?.Line}:{cp.Literal?.Column}";
+                                            ReportIssue(issues, msg, OperationOutcome.IssueType.NotFound);
                                         }
                                         else
                                         {
@@ -603,13 +618,8 @@ public class CrossVersionMapCollection
                                                 {
                                                     if (gp.ParameterElementDefinition.ToString() != gpv.Element.ToString())
                                                     {
-                                                        issues.Add(new OperationOutcome.IssueComponent()
-                                                        {
-                                                            Code = OperationOutcome.IssueType.Conflict,
-                                                            Severity = OperationOutcome.IssueSeverity.Error,
-                                                            Details = new CodeableConcept() { Text = $"Mismatched type `{cp.Literal?.ValueAsString}` calling dependent group {i.Identifier} at @{cp.Literal?.Line}:{cp.Literal?.Column} - {gp.ParameterElementDefinition.DebugString()} != {gpv.Element.DebugString()}" }
-                                                        });
-                                                        Console.WriteLine($"Error: Mismatched type `{cp.Literal?.ValueAsString}` calling dependent group {i.Identifier} at @{cp.Literal?.Line}:{cp.Literal?.Column} - {gp.ParameterElementDefinition.DebugString()} != {gpv.Element.DebugString()}");
+                                                        string msg = $"Mismatched type `{cp.Literal?.ValueAsString}` calling dependent group {i.Identifier} at @{cp.Literal?.Line}:{cp.Literal?.Column} - {gp.ParameterElementDefinition.DebugString()} != {gpv.Element.DebugString()}";
+                                                        ReportIssue(issues, msg, OperationOutcome.IssueType.Conflict);
                                                     }
                                                 }
                                             }
@@ -623,8 +633,23 @@ public class CrossVersionMapCollection
                     }
                 }
             }
+            else
+            {
+                Console.WriteLine();
+            }
         }
         return issues;
+    }
+
+    private static void ReportIssue(List<OperationOutcome.IssueComponent> issues, string message, OperationOutcome.IssueType code, OperationOutcome.IssueSeverity severity = OperationOutcome.IssueSeverity.Error)
+    {
+        issues.Add(new OperationOutcome.IssueComponent()
+        {
+            Code = code,
+            Severity = severity,
+            Details = new CodeableConcept() { Text = message }
+        });
+        Console.WriteLine("Error: " + message);
     }
 
     private static TypedParameter? ResolveIdentifierType(string identifier, string alias, Dictionary<string, TypedParameter?> parameterTypesByNameForRule, FmlNode sourceOrTargetNode, IAsyncResourceResolver resolver, List<OperationOutcome.IssueComponent> issues)
@@ -644,6 +669,14 @@ public class CrossVersionMapCollection
                         var node = sw.Child(childProps.First());
                         if (node != null)
                         {
+                            if (node.Current.Current.ContentReference != null)
+                            {
+                                // Need to walk into the node further
+                                if (StructureDefinitionWalker.TryFollowContentReference(node.Current, s => resolver.FindStructureDefinitionAsync(s).WaitResult(), out var r))
+                                {
+                                    node = new StructureDefinitionWalker(r, resolver);
+                                }
+                            }
                             tp = new TypedParameter
                             {
                                 Definition = node.Current.StructureDefinition,
