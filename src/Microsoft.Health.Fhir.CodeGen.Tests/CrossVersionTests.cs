@@ -30,14 +30,14 @@ public class CrossVersionTests
     }
 
     [Theory(DisplayName = "TestLoadingFml")]
-    [InlineData("fhir-cross-version//input//R2toR3", "2to3")]
-    [InlineData("fhir-cross-version//input//R3toR2", "3to2")]
-    [InlineData("fhir-cross-version//input//R3toR4", "3to4")]
-    [InlineData("fhir-cross-version//input//R4toR3", "4to3")]
-    [InlineData("fhir-cross-version//input//R4toR5", "4to5")]
-    [InlineData("fhir-cross-version//input//R5toR4", "5to4")]
-    [InlineData("fhir-cross-version//input//R4BtoR5", "4Bto5")]
-    [InlineData("fhir-cross-version//input//R5toR4B", "5to4B")]
+    [InlineData("fhir-cross-version/input/R2toR3", "2to3")]
+    [InlineData("fhir-cross-version/input/R3toR2", "3to2")]
+    [InlineData("fhir-cross-version/input/R3toR4", "3to4")]
+    [InlineData("fhir-cross-version/input/R4toR3", "4to3")]
+    [InlineData("fhir-cross-version/input/R4toR5", "4to5")]
+    [InlineData("fhir-cross-version/input/R5toR4", "5to4")]
+    [InlineData("fhir-cross-version/input/R4BtoR5", "4Bto5")]
+    [InlineData("fhir-cross-version/input/R5toR4B", "5to4B")]
     public void TestLoadingFml(string path, string versionToVersion)
     {
         //string prefixPath = @"C:\git\fhir-cross-version\input\";
@@ -117,14 +117,14 @@ public class CrossVersionTests
     }
 
     [Theory(DisplayName = "TestFmlGroupParameterTypes")]
-    [InlineData("fhir-cross-version//input//R2toR3", "2to3")]
-    [InlineData("fhir-cross-version//input//R3toR2", "3to2")]
-    [InlineData("fhir-cross-version//input//R3toR4", "3to4")]
-    [InlineData("fhir-cross-version//input//R4toR3", "4to3")]
-    [InlineData("fhir-cross-version//input//R4toR5", "4to5")]
-    [InlineData("fhir-cross-version//input//R5toR4", "5to4")]
-    [InlineData("fhir-cross-version//input//R4BtoR5", "4Bto5")]
-    [InlineData("fhir-cross-version//input//R5toR4B", "5to4B")]
+    [InlineData("fhir-cross-version/input/R2toR3", "2to3")]
+    [InlineData("fhir-cross-version/input/R3toR2", "3to2")]
+    [InlineData("fhir-cross-version/input/R3toR4", "3to4")]
+    [InlineData("fhir-cross-version/input/R4toR3", "4to3")]
+    [InlineData("fhir-cross-version/input/R4toR5", "4to5")]
+    [InlineData("fhir-cross-version/input/R5toR4", "5to4")]
+    [InlineData("fhir-cross-version/input/R4BtoR5", "4Bto5")]
+    [InlineData("fhir-cross-version/input/R5toR4B", "5to4B")]
     public async System.Threading.Tasks.Task TestFmlGroupParameterTypes(string path, string versionToVersion)
     {
         int versionToVersionLen = versionToVersion.Length;

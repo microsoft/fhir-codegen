@@ -5,7 +5,7 @@
 
 using System.Diagnostics.CodeAnalysis;
 using Hl7.Fhir.Model;
-using Hl7.Fhir.Specification;
+using Hl7.Fhir.Rest;
 using Hl7.Fhir.Specification.Navigation;
 using Hl7.Fhir.Specification.Source;
 using Hl7.Fhir.Utility;
@@ -402,7 +402,7 @@ public class CrossVersionMapCollection
         foreach (var gp in group.Parameters)
         {
             if (gp != group.Parameters.First())
-                Console.Write(",");
+                Console.Write(", ");
             TypedParameter? tp = null;
             string ? type = gp.TypeIdentifier;
             // lookup the type in the aliases
@@ -425,13 +425,8 @@ public class CrossVersionMapCollection
                 }
                 else if (type != "string")
                 {
-                    issues.Add(new OperationOutcome.IssueComponent()
-                    {
-                        Code = OperationOutcome.IssueType.NotFound,
-                        Severity = OperationOutcome.IssueSeverity.Error,
-                        Details = new CodeableConcept() { Text = $"Group {group.Name} parameter {gp.Identifier} at @{gp.Line}:{gp.Column} has no type `{gp.TypeIdentifier}`" }
-                    });
-                    Console.WriteLine($"Error: Group {group.Name} parameter {gp.Identifier} at @{gp.Line}:{gp.Column} has no type `{gp.TypeIdentifier}`");
+                    string msg = $"Group {group.Name} parameter {gp.Identifier} at @{gp.Line}:{gp.Column} has no type `{gp.TypeIdentifier}`";
+                    ReportIssue(issues, msg, OperationOutcome.IssueType.NotFound);
                 }
             }
             else if (gp.ParameterElementDefinition != null)
@@ -460,174 +455,232 @@ public class CrossVersionMapCollection
         // Now scan for dependencies in rules
         foreach(var rule in group.Expressions)
         {
-            // deduce the datatypes for the variables
-            Dictionary<string, TypedParameter?> parameterTypesByNameForRule = parameterTypesByName.ShallowCopy();
-            if (rule.MappingExpression != null)
+            VerifyFmlGroupRule("     ", fml, group, _aliasedTypes, sourceResolver, targetResolver, typeGroups, issues, parameterTypesByName, rule);
+        }
+        return issues;
+    }
+
+    private static void VerifyFmlGroupRule(string prefix, FhirStructureMap fml, GroupDeclaration group, Dictionary<string, StructureDefinition?> _aliasedTypes, IAsyncResourceResolver sourceResolver, IAsyncResourceResolver targetResolver, Dictionary<string, GroupDeclaration> typeGroups, List<OperationOutcome.IssueComponent> issues, Dictionary<string, TypedParameter?> parameterTypesByName, GroupExpression rule)
+    {
+        Console.Write(prefix);
+
+        // deduce the datatypes for the variables
+        Dictionary<string, TypedParameter?> parameterTypesByNameForRule = parameterTypesByName.ShallowCopy();
+        if (rule.MappingExpression != null)
+        {
+            foreach (var source in rule.MappingExpression.Sources)
             {
-                foreach (var source in rule.MappingExpression.Sources)
+                if (source != rule.MappingExpression.Sources.First())
+                    Console.Write(", ");
+
+                Console.Write($"{source.Identifier}");
+                TypedParameter? tpV = null;
+                try
                 {
-                    if (source.Alias != null)
-                    {
-                        if (parameterTypesByNameForRule.ContainsKey(source.Alias))
-                            throw new ApplicationException($"Duplicate source parameter name in {group.Name} at @{source.Line}:{source.Column}");
-                        try
-                        {
-                            TypedParameter? tpV = ResolveIdentifierType(source.Identifier, source.Alias, parameterTypesByNameForRule, source, sourceResolver, issues);
-                            parameterTypesByNameForRule.Add(source.Alias, tpV);
-                        }
-                        catch (ApplicationException e)
-                        {
-                            issues.Add(new OperationOutcome.IssueComponent()
-                            {
-                                Code = OperationOutcome.IssueType.Exception,
-                                Severity = OperationOutcome.IssueSeverity.Error,
-                                Details = new CodeableConcept() { Text = e.Message }
-                            });
-                            Console.WriteLine($"Error: can't assign variable `{source.Alias}`: {e.Message}");
-                        }
-                    }
+                    tpV = ResolveIdentifierType(source.Identifier, parameterTypesByNameForRule, source, sourceResolver, issues);
                 }
-
-                foreach (var target in rule.MappingExpression.Targets)
+                catch (ApplicationException e)
                 {
-                    if (target.Alias != null)
-                    {
-                        if (parameterTypesByNameForRule.ContainsKey(target.Alias))
-                            throw new ApplicationException($"Duplicate target parameter name in {group.Name} at @{target.Line}:{target.Column}");
-
-                        try
-                        {
-                            TypedParameter? tpV = null;
-                            if (target.Identifier != null)
-                            {
-                                tpV = ResolveIdentifierType(target.Identifier, target.Alias, parameterTypesByNameForRule, target, targetResolver, issues);
-                            }
-                            else if (target.Invocation != null)
-                            {
-                                // deduce the return type of the invocation
-                                Console.Write($" Invocation: {target.Invocation.Identifier}(?)");
-                            }
-                            parameterTypesByNameForRule.Add(target.Alias, tpV);
-                        }
-                        catch(ApplicationException e)
-                        {
-                            issues.Add(new OperationOutcome.IssueComponent()
-                            {
-                                Code = OperationOutcome.IssueType.Exception,
-                                Severity = OperationOutcome.IssueSeverity.Error,
-                                Details = new CodeableConcept() { Text = e.Message }
-                            });
-                            Console.WriteLine($"Error: can't assign variable `{target.Alias}`: {e.Message}");
-                        }
-                    }
+                    string msg = $"Can't resolve type of source identifier `{source.Identifier}`: {e.Message}";
+                    ReportIssue(issues, msg, OperationOutcome.IssueType.Exception);
                 }
-            }
-
-            // Scan any dependent group calls
-            var de = rule.MappingExpression?.DependentExpression;
-            if (de != null)
-            {
-                foreach (var i in de.Invocations)
+                if (source.Alias != null)
                 {
-                    Console.Write($"      => {i.Identifier}( ");
-                    if (!fml.GroupsByName.ContainsKey(i.Identifier) && !typeGroups.ContainsKey(i.Identifier))
+                    Console.Write($" as {source.Alias}");
+                    if (parameterTypesByNameForRule.ContainsKey(source.Alias))
                     {
-                        issues.Add(new OperationOutcome.IssueComponent()
-                        {
-                            Code = OperationOutcome.IssueType.NotFound,
-                            Severity = OperationOutcome.IssueSeverity.Error,
-                            Details = new CodeableConcept() { Text = $"Calling non existent dependent group {i.Identifier}" }
-                        });
-                        Console.WriteLine($"... ) - Error: Calling non existent dependent group {i.Identifier} at @{i.Line}:{i.Column}");
+                        string msg = $"Duplicate source parameter name `{source.Alias}` in {group.Name} at @{source.Line}:{source.Column}";
+                        ReportIssue(issues, msg, OperationOutcome.IssueType.Duplicate);
                     }
                     else
                     {
-                        var dg = fml.GroupsByName.ContainsKey(i.Identifier) ? fml.GroupsByName[i.Identifier] : typeGroups[i.Identifier];
-                        // walk the parameters
-                        for (int nParam = 0; nParam < dg.Parameters.Count; nParam++)
-                        {
-                            var gp = dg.Parameters[nParam];
-                            string? type = gp.TypeIdentifier;
-                            // lookup the type in the aliases
-                            if (type != null && !type.Contains('/') && _aliasedTypes.ContainsKey(type))
-                            {
-                                var sd = _aliasedTypes[type];
-                                if (sd != null)
-                                    type = $"{sd.Url}|{sd.Version}";
-                            }
+                        parameterTypesByNameForRule.Add(source.Alias, tpV);
+                    }
+                }
+                Console.Write($" : {tpV?.Element?.DebugString() ?? "?"}");
+            }
 
-                            // which value should we use
-                            if (nParam < i.Parameters.Count)
+            Console.Write($"  =>  ");
+
+            foreach (var target in rule.MappingExpression.Targets)
+            {
+                if (target != rule.MappingExpression.Targets.First())
+                    Console.Write(", ");
+
+                TypedParameter? tpV = null;
+                if (target.Identifier != null)
+                {
+                    Console.Write($"{target.Identifier}");
+                    try
+                    {
+                        tpV = ResolveIdentifierType(target.Identifier, parameterTypesByNameForRule, target, targetResolver, issues);
+                    }
+                    catch (ApplicationException e)
+                    {
+                        string msg = $"Can't resolve type of target identifier `{target.Identifier}`: {e.Message}";
+                        ReportIssue(issues, msg, OperationOutcome.IssueType.Exception);
+                    }
+                }
+                else if (target.Invocation != null)
+                {
+                    // deduce the return type of the invocation
+                    Console.Write($" Invocation: {target.Invocation.Identifier}(???)");
+                }
+
+                if (target.Alias != null)
+                {
+                    Console.Write($" as {target.Alias}");
+                    if (parameterTypesByNameForRule.ContainsKey(target.Alias))
+                    {
+                        string msg = $"Duplicate target parameter name `{target.Alias}` in {group.Name} at @{target.Line}:{target.Column}";
+                        ReportIssue(issues, msg, OperationOutcome.IssueType.Duplicate);
+                    }
+                    else
+                    {
+                        parameterTypesByNameForRule.Add(target.Alias, tpV);
+                    }
+                }
+                Console.Write($" : {tpV?.Element?.DebugString() ?? "?"}");
+            }
+        }
+
+        if (rule.SimpleCopyExpression != null)
+        {
+            try
+            {
+                var sourcetpV = ResolveIdentifierType(rule.SimpleCopyExpression.Source, parameterTypesByNameForRule, rule.SimpleCopyExpression, sourceResolver, issues);
+                Console.Write($"{rule.SimpleCopyExpression.Source} : {sourcetpV?.Element?.DebugString() ?? "?"}");
+            }
+            catch (ApplicationException ex)
+            {
+                string msg = $"Can't resolve simple source `{rule.SimpleCopyExpression.Source}`: {ex.Message}";
+                ReportIssue(issues, msg, OperationOutcome.IssueType.Exception);
+            }
+
+            Console.Write($"  =>  ");
+
+            try
+            {
+                var targettpV = ResolveIdentifierType(rule.SimpleCopyExpression.Target, parameterTypesByNameForRule, rule.SimpleCopyExpression, targetResolver, issues);
+                Console.Write($"{rule.SimpleCopyExpression.Target} : {targettpV?.Element?.DebugString() ?? "?"}");
+            }
+            catch (ApplicationException ex)
+            {
+                string msg = $"Can't resolve simple target `{rule.SimpleCopyExpression.Target}`: {ex.Message}";
+                ReportIssue(issues, msg, OperationOutcome.IssueType.Exception);
+            }
+        }
+
+        // Scan any dependent group calls
+        var de = rule.MappingExpression?.DependentExpression;
+        if (de != null)
+        {
+            foreach (var i in de.Invocations)
+            {
+                Console.Write("\n        "+prefix);
+                Console.Write($" then {i.Identifier}( ");
+                if (!fml.GroupsByName.ContainsKey(i.Identifier) && !typeGroups.ContainsKey(i.Identifier))
+                {
+                    Console.WriteLine($"... )");
+                    string msg = $"Calling non existent dependent group {i.Identifier} at @{i.Line}:{i.Column}";
+                    ReportIssue(issues, msg, OperationOutcome.IssueType.NotFound);
+                }
+                else
+                {
+                    var dg = fml.GroupsByName.ContainsKey(i.Identifier) ? fml.GroupsByName[i.Identifier] : typeGroups[i.Identifier];
+                    // walk the parameters
+                    for (int nParam = 0; nParam < dg.Parameters.Count; nParam++)
+                    {
+                        if (nParam > 0)
+                            Console.Write(", ");
+                        var gp = dg.Parameters[nParam];
+                        string? type = gp.TypeIdentifier;
+                        // lookup the type in the aliases
+                        if (type != null && !type.Contains('/') && _aliasedTypes.ContainsKey(type))
+                        {
+                            var sd = _aliasedTypes[type];
+                            if (sd != null)
+                                type = $"{sd.Url}|{sd.Version}";
+                        }
+
+                        // which value should we use
+                        if (nParam < i.Parameters.Count)
+                        {
+                            var cp = i.Parameters[nParam];
+                            Console.Write($"{cp.Literal?.ValueAsString}");
+                            // Check in the rule source/target aliases
+                            if (rule.MappingExpression != null)
                             {
-                                var cp = i.Parameters[nParam];
-                                Console.Write($" = {cp.Literal?.ValueAsString}");
-                                // Check in the rule source/target aliases
-                                if (rule.MappingExpression != null)
+                                string? variableName = cp.Literal?.ValueAsString;
+                                if (variableName == null)
                                 {
-                                    string? variableName = cp.Literal?.ValueAsString;
-                                    if (variableName == null)
+                                    string msg = $"No Variable name provided for parameter {i} calling dependent group {i.Identifier} at @{cp.Line}:{cp.Column}";
+                                    ReportIssue(issues, msg, OperationOutcome.IssueType.NotFound);
+                                }
+                                else
+                                {
+                                    if (!parameterTypesByNameForRule.ContainsKey(variableName))
                                     {
-                                        var msg = $"No Variable name provided for parameter {i} calling dependent group {i.Identifier} at @{cp.Line}:{cp.Column}";
-                                        issues.Add(new OperationOutcome.IssueComponent()
-                                        {
-                                            Code = OperationOutcome.IssueType.NotFound,
-                                            Severity = OperationOutcome.IssueSeverity.Error,
-                                            Details = new CodeableConcept() { Text = msg }
-                                        });
-                                        Console.WriteLine($"\nError: {msg}");
+                                        string msg = $"Variable not found `{variableName}` calling dependent group {i.Identifier} at @{cp.Literal?.Line}:{cp.Literal?.Column}";
+                                        ReportIssue(issues, msg, OperationOutcome.IssueType.NotFound);
                                     }
                                     else
                                     {
-                                        if (!parameterTypesByNameForRule.ContainsKey(variableName))
+                                        var gpv = parameterTypesByNameForRule[variableName];
+                                        type = gpv?.ToString() ?? "??";
+                                        // Console.Write($"({type})");
+                                        if (gpv != null)
                                         {
-                                            issues.Add(new OperationOutcome.IssueComponent()
+                                            if (gp.ParameterElementDefinition == null)
                                             {
-                                                Code = OperationOutcome.IssueType.NotFound,
-                                                Severity = OperationOutcome.IssueSeverity.Error,
-                                                Details = new CodeableConcept() { Text = $"Variable not found `{variableName}` calling dependent group {i.Identifier} at @{cp.Literal?.Line}:{cp.Literal?.Column}" }
-                                            });
-                                            Console.WriteLine($"\nError: Variable not found `{variableName}` calling dependent group {i.Identifier} at @{cp.Literal?.Line}:{cp.Literal?.Column}");
-                                        }
-                                        else
-                                        {
-                                            var gpv = parameterTypesByNameForRule[variableName];
-                                            type = gpv?.ToString() ?? "??";
-                                            // Console.Write($"({type})");
-                                            if (gpv != null)
+                                                gp.ParameterElementDefinition = gpv.Element;
+                                            }
+                                            else
                                             {
-                                                if (gp.ParameterElementDefinition == null)
+                                                if (gp.ParameterElementDefinition.ToString() != gpv.Element.ToString())
                                                 {
-                                                    gp.ParameterElementDefinition = gpv.Element;
-                                                }
-                                                else
-                                                {
-                                                    if (gp.ParameterElementDefinition.ToString() != gpv.Element.ToString())
-                                                    {
-                                                        issues.Add(new OperationOutcome.IssueComponent()
-                                                        {
-                                                            Code = OperationOutcome.IssueType.Conflict,
-                                                            Severity = OperationOutcome.IssueSeverity.Error,
-                                                            Details = new CodeableConcept() { Text = $"Mismatched type `{cp.Literal?.ValueAsString}` calling dependent group {i.Identifier} at @{cp.Literal?.Line}:{cp.Literal?.Column} - {gp.ParameterElementDefinition.DebugString()} != {gpv.Element.DebugString()}" }
-                                                        });
-                                                        Console.WriteLine($"Error: Mismatched type `{cp.Literal?.ValueAsString}` calling dependent group {i.Identifier} at @{cp.Literal?.Line}:{cp.Literal?.Column} - {gp.ParameterElementDefinition.DebugString()} != {gpv.Element.DebugString()}");
-                                                    }
+                                                    string msg = $"Mismatched type `{cp.Literal?.ValueAsString}` calling dependent group {i.Identifier} at @{cp.Literal?.Line}:{cp.Literal?.Column} - {gp.ParameterElementDefinition.DebugString()} != {gpv.Element.DebugString()}";
+                                                    ReportIssue(issues, msg, OperationOutcome.IssueType.Conflict);
                                                 }
                                             }
                                         }
                                     }
                                 }
                             }
-                            Console.Write($" {gp.Identifier} : {type ?? gp.ParameterElementDefinition?.Path ?? "?"}");
                         }
-                        Console.WriteLine(" )");
+                        Console.Write($" {gp.Identifier} : {type ?? gp.ParameterElementDefinition?.Path ?? "?"}");
                     }
+                    Console.WriteLine(" )");
+                }
+            }
+
+            if (de.Expressions.Any())
+            {
+                // process any expressions as a result of any
+                foreach (var childRule in de.Expressions)
+                {
+                    VerifyFmlGroupRule(prefix + "     ", fml, group, _aliasedTypes, sourceResolver, targetResolver, typeGroups, issues, parameterTypesByNameForRule, childRule);
                 }
             }
         }
-        return issues;
+        else
+        {
+            Console.WriteLine();
+        }
     }
 
-    private static TypedParameter? ResolveIdentifierType(string identifier, string alias, Dictionary<string, TypedParameter?> parameterTypesByNameForRule, FmlNode sourceOrTargetNode, IAsyncResourceResolver resolver, List<OperationOutcome.IssueComponent> issues)
+    private static void ReportIssue(List<OperationOutcome.IssueComponent> issues, string message, OperationOutcome.IssueType code, OperationOutcome.IssueSeverity severity = OperationOutcome.IssueSeverity.Error)
+    {
+        issues.Add(new OperationOutcome.IssueComponent()
+        {
+            Code = code,
+            Severity = severity,
+            Details = new CodeableConcept() { Text = message }
+        });
+        Console.WriteLine("\nError: " + message);
+    }
+
+    private static TypedParameter? ResolveIdentifierType(string identifier, Dictionary<string, TypedParameter?> parameterTypesByNameForRule, FmlNode sourceOrTargetNode, IAsyncResourceResolver resolver, List<OperationOutcome.IssueComponent> issues)
     {
         IEnumerable<string> parts = identifier.Split('.');
         // Get the base type for this variable
@@ -644,6 +697,14 @@ public class CrossVersionMapCollection
                         var node = sw.Child(childProps.First());
                         if (node != null)
                         {
+                            if (node.Current.Current.ContentReference != null)
+                            {
+                                // Need to walk into the node further
+                                if (StructureDefinitionWalker.TryFollowContentReference(node.Current, s => resolver.FindStructureDefinitionAsync(s).WaitResult(), out var r))
+                                {
+                                    node = new StructureDefinitionWalker(r, resolver);
+                                }
+                            }
                             tp = new TypedParameter
                             {
                                 Definition = node.Current.StructureDefinition,
@@ -653,7 +714,7 @@ public class CrossVersionMapCollection
                     }
                     catch (Exception ex)
                     {
-                        if (ex is StructureDefinitionWalkerException swe && !sw.Current.Elements.Any(e => e.Path == sw.Current.Path + "." + childProps.First() && e.IsPrimitiveValueConstraint()))
+                        // if (ex is StructureDefinitionWalkerException swe && !sw.Current.Elements.Any(e => e.Path == sw.Current.Path + "." + childProps.First() && e.IsPrimitiveValueConstraint()))
                             throw new ApplicationException($"{ex.Message} @{sourceOrTargetNode.Line}:{sourceOrTargetNode.Column}", ex);
                     }
 
