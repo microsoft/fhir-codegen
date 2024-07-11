@@ -445,7 +445,7 @@ public class CrossVersionMapCollection
             else
                 Console.Write($" : {type ?? "?"}");
         }
-        Console.WriteLine(" )");
+        Console.Write(" )\n  {\n");
 
         // Check if the group extends any other groups
         if (group.ExtendsIdentifier != null)
@@ -458,6 +458,7 @@ public class CrossVersionMapCollection
         {
             VerifyFmlGroupRule("     ", fml, group, _aliasedTypes, sourceResolver, targetResolver, typeGroups, issues, parameterTypesByName, rule);
         }
+        Console.WriteLine("  }");
         return issues;
     }
 
