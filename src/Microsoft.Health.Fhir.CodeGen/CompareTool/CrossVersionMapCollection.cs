@@ -377,7 +377,7 @@ public class CrossVersionMapCollection
 
     public class TypedParameter
     {
-        public StructureDefinition Definition { get; init; }
+        public IAsyncResourceResolver Resolver { get; init; }
         public ElementDefinitionNavigator Element { get; init; }
 
         public override string ToString()
@@ -406,6 +406,7 @@ public class CrossVersionMapCollection
             TypedParameter? tp = null;
             string ? type = gp.TypeIdentifier;
             // lookup the type in the aliases
+            var resolver = gp.InputMode == StructureMap.StructureMapInputMode.Source ? sourceResolver : targetResolver;
             if (type != null)
             {
                 if (!type.Contains('/') && _aliasedTypes.ContainsKey(type))
@@ -413,10 +414,10 @@ public class CrossVersionMapCollection
                     var sd = _aliasedTypes[type];
                     if (sd != null)
                     {
-                        var sw = new StructureDefinitionWalker(sd, gp.InputMode == StructureMap.StructureMapInputMode.Source ? sourceResolver : targetResolver);
+                        var sw = new StructureDefinitionWalker(sd, resolver);
                         tp = new TypedParameter
                         {
-                            Definition = sd,
+                            Resolver = resolver,
                             Element = sw.Current
                         };
                         type = $"{sd.Url}|{sd.Version}";
@@ -433,7 +434,7 @@ public class CrossVersionMapCollection
             {
                 tp = new TypedParameter
                 {
-                    Definition = gp.ParameterElementDefinition.StructureDefinition,
+                    Resolver = resolver,
                     Element = gp.ParameterElementDefinition
                 };
             }
@@ -477,7 +478,7 @@ public class CrossVersionMapCollection
                 TypedParameter? tpV = null;
                 try
                 {
-                    tpV = ResolveIdentifierType(source.Identifier, parameterTypesByNameForRule, source, sourceResolver, issues);
+                    tpV = ResolveIdentifierType(source.Identifier, parameterTypesByNameForRule, source, issues);
                 }
                 catch (ApplicationException e)
                 {
@@ -500,7 +501,7 @@ public class CrossVersionMapCollection
                 Console.Write($" : {tpV?.Element?.DebugString() ?? "?"}");
             }
 
-            Console.Write($"  =>  ");
+            Console.Write($"  ==>  ");
 
             foreach (var target in rule.MappingExpression.Targets)
             {
@@ -508,12 +509,12 @@ public class CrossVersionMapCollection
                     Console.Write(", ");
 
                 TypedParameter? tpV = null;
-                if (target.Identifier != null)
+                if (!string.IsNullOrEmpty(target.Identifier))
                 {
                     Console.Write($"{target.Identifier}");
                     try
                     {
-                        tpV = ResolveIdentifierType(target.Identifier, parameterTypesByNameForRule, target, targetResolver, issues);
+                        tpV = ResolveIdentifierType(target.Identifier, parameterTypesByNameForRule, target, issues);
                     }
                     catch (ApplicationException e)
                     {
@@ -521,10 +522,66 @@ public class CrossVersionMapCollection
                         ReportIssue(issues, msg, OperationOutcome.IssueType.Exception);
                     }
                 }
-                else if (target.Invocation != null)
+                if (target.Invocation != null)
                 {
                     // deduce the return type of the invocation
-                    Console.Write($" Invocation: {target.Invocation.Identifier}(???)");
+                    Console.Write($" {target.Invocation.Identifier}(");
+                    foreach (var p in target.Invocation.Parameters)
+                    {
+                        if (p != target.Invocation.Parameters.First())
+                            Console.Write(",");
+
+                        TypedParameter? parameterTypeV = null;
+                        if (!string.IsNullOrEmpty(p.Identifier))
+                        {
+                            Console.Write($"{p.Identifier}");
+                            try
+                            {
+                                parameterTypeV = ResolveIdentifierType(p.Identifier, parameterTypesByNameForRule, p, issues); // is this the correct place?
+                            }
+                            catch (ApplicationException e)
+                            {
+                                string msg = $"Can't resolve type of target identifier `{target.Identifier}`: {e.Message}";
+                                ReportIssue(issues, msg, OperationOutcome.IssueType.Exception);
+                            }
+                        }
+                        if (p.Literal != null)
+                        {
+                            // TODO: resolve the type of the literal
+                            Console.Write($" {p.Literal.RawText}");
+                        }
+                        Console.Write($" : {parameterTypeV?.Element?.DebugString() ?? "?"}");
+
+                    }
+                    Console.Write(" )");
+                    switch (target.Invocation.Identifier)
+                    {
+                        case "create":
+                            break;
+                    }
+                }
+
+                if (target.Transform != null)
+                {
+                    Console.Write(" = transform");
+                    if (target.Transform.Literal != null)
+                        Console.Write(" literal");
+                    if (!string.IsNullOrEmpty(target.Transform.Identifier))
+                    {
+                        Console.Write($" {target.Transform.Identifier}");
+                        try
+                        {
+                            tpV = ResolveIdentifierType(target.Transform.Identifier, parameterTypesByNameForRule, target.Transform, issues);
+                        }
+                        catch (ApplicationException e)
+                        {
+                            string msg = $"Can't resolve type of target transform identifier `{target.Transform.Identifier}`: {e.Message}";
+                            ReportIssue(issues, msg, OperationOutcome.IssueType.Exception);
+                        }
+
+                    }
+                    if (target.Transform.Invocation != null)
+                        Console.Write(" invocation");
                 }
 
                 if (target.Alias != null)
@@ -548,7 +605,7 @@ public class CrossVersionMapCollection
         {
             try
             {
-                var sourcetpV = ResolveIdentifierType(rule.SimpleCopyExpression.Source, parameterTypesByNameForRule, rule.SimpleCopyExpression, sourceResolver, issues);
+                var sourcetpV = ResolveIdentifierType(rule.SimpleCopyExpression.Source, parameterTypesByNameForRule, rule.SimpleCopyExpression, issues);
                 Console.Write($"{rule.SimpleCopyExpression.Source} : {sourcetpV?.Element?.DebugString() ?? "?"}");
             }
             catch (ApplicationException ex)
@@ -557,11 +614,11 @@ public class CrossVersionMapCollection
                 ReportIssue(issues, msg, OperationOutcome.IssueType.Exception);
             }
 
-            Console.Write($"  =>  ");
+            Console.Write($"  ==>  ");
 
             try
             {
-                var targettpV = ResolveIdentifierType(rule.SimpleCopyExpression.Target, parameterTypesByNameForRule, rule.SimpleCopyExpression, targetResolver, issues);
+                var targettpV = ResolveIdentifierType(rule.SimpleCopyExpression.Target, parameterTypesByNameForRule, rule.SimpleCopyExpression, issues);
                 Console.Write($"{rule.SimpleCopyExpression.Target} : {targettpV?.Element?.DebugString() ?? "?"}");
             }
             catch (ApplicationException ex)
@@ -656,6 +713,7 @@ public class CrossVersionMapCollection
 
             if (de.Expressions.Any())
             {
+                Console.Write('\n');
                 // process any expressions as a result of any
                 foreach (var childRule in de.Expressions)
                 {
@@ -680,7 +738,7 @@ public class CrossVersionMapCollection
         Console.WriteLine("\nError: " + message);
     }
 
-    private static TypedParameter? ResolveIdentifierType(string identifier, Dictionary<string, TypedParameter?> parameterTypesByNameForRule, FmlNode sourceOrTargetNode, IAsyncResourceResolver resolver, List<OperationOutcome.IssueComponent> issues)
+    private static TypedParameter? ResolveIdentifierType(string identifier, Dictionary<string, TypedParameter?> parameterTypesByNameForRule, FmlNode sourceOrTargetNode, List<OperationOutcome.IssueComponent> issues)
     {
         IEnumerable<string> parts = identifier.Split('.');
         // Get the base type for this variable
@@ -691,7 +749,7 @@ public class CrossVersionMapCollection
                 var childProps = parts.Skip(1);
                 while (childProps.Any())
                 {
-                    var sw = new StructureDefinitionWalker(tp.Element, resolver);
+                    var sw = new StructureDefinitionWalker(tp.Element, tp.Resolver);
                     try
                     {
                         var node = sw.Child(childProps.First());
@@ -700,14 +758,14 @@ public class CrossVersionMapCollection
                             if (node.Current.Current.ContentReference != null)
                             {
                                 // Need to walk into the node further
-                                if (StructureDefinitionWalker.TryFollowContentReference(node.Current, s => resolver.FindStructureDefinitionAsync(s).WaitResult(), out var r))
+                                if (StructureDefinitionWalker.TryFollowContentReference(node.Current, s => tp.Resolver.FindStructureDefinitionAsync(s).WaitResult(), out var r))
                                 {
-                                    node = new StructureDefinitionWalker(r, resolver);
+                                    node = new StructureDefinitionWalker(r, tp.Resolver);
                                 }
                             }
                             tp = new TypedParameter
                             {
-                                Definition = node.Current.StructureDefinition,
+                                Resolver = tp.Resolver,
                                 Element = node.Current
                             };
                         }
