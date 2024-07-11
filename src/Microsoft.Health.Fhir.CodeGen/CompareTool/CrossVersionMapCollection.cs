@@ -524,48 +524,18 @@ public class CrossVersionMapCollection
                 }
                 if (target.Invocation != null)
                 {
-                    // deduce the return type of the invocation
-                    Console.Write($" {target.Invocation.Identifier}(");
-                    foreach (var p in target.Invocation.Parameters)
-                    {
-                        if (p != target.Invocation.Parameters.First())
-                            Console.Write(",");
-
-                        TypedParameter? parameterTypeV = null;
-                        if (!string.IsNullOrEmpty(p.Identifier))
-                        {
-                            Console.Write($"{p.Identifier}");
-                            try
-                            {
-                                parameterTypeV = ResolveIdentifierType(p.Identifier, parameterTypesByNameForRule, p, issues); // is this the correct place?
-                            }
-                            catch (ApplicationException e)
-                            {
-                                string msg = $"Can't resolve type of target identifier `{target.Identifier}`: {e.Message}";
-                                ReportIssue(issues, msg, OperationOutcome.IssueType.Exception);
-                            }
-                        }
-                        if (p.Literal != null)
-                        {
-                            // TODO: resolve the type of the literal
-                            Console.Write($" {p.Literal.RawText}");
-                        }
-                        Console.Write($" : {parameterTypeV?.Element?.DebugString() ?? "?"}");
-
-                    }
-                    Console.Write(" )");
-                    switch (target.Invocation.Identifier)
-                    {
-                        case "create":
-                            break;
-                    }
+                    VerifyInvocation(issues, parameterTypesByNameForRule, target.Invocation);
                 }
 
                 if (target.Transform != null)
                 {
                     Console.Write(" = transform");
                     if (target.Transform.Literal != null)
-                        Console.Write(" literal");
+                    {
+                        Console.Write($" {target.Transform.Literal.RawText}");
+                        if (target.Transform.Literal.TokenType == FmlTokenTypeCodes.Id)
+                            ReportIssue(issues, $"Invalid token type `{target.Transform.Literal.TokenType}` parsing literal - likely should have been a target.transform.identifier @{target.Transform.Literal.Line}:{target.Transform.Literal.Column}", OperationOutcome.IssueType.Invalid);
+                    }
                     if (!string.IsNullOrEmpty(target.Transform.Identifier))
                     {
                         Console.Write($" {target.Transform.Identifier}");
@@ -581,7 +551,7 @@ public class CrossVersionMapCollection
 
                     }
                     if (target.Transform.Invocation != null)
-                        Console.Write(" invocation");
+                        VerifyInvocation(issues, parameterTypesByNameForRule, target.Transform.Invocation);
                 }
 
                 if (target.Alias != null)
@@ -664,11 +634,11 @@ public class CrossVersionMapCollection
                         if (nParam < i.Parameters.Count)
                         {
                             var cp = i.Parameters[nParam];
-                            Console.Write($"{cp.Literal?.ValueAsString}");
+                            Console.Write($"{cp.Identifier ?? cp.Literal?.ValueAsString}");
                             // Check in the rule source/target aliases
                             if (rule.MappingExpression != null)
                             {
-                                string? variableName = cp.Literal?.ValueAsString;
+                                string? variableName = cp.Identifier ?? cp.Literal?.ValueAsString;
                                 if (variableName == null)
                                 {
                                     string msg = $"No Variable name provided for parameter {i} calling dependent group {i.Identifier} at @{cp.Line}:{cp.Column}";
@@ -696,7 +666,7 @@ public class CrossVersionMapCollection
                                             {
                                                 if (gp.ParameterElementDefinition.ToString() != gpv.Element.ToString())
                                                 {
-                                                    string msg = $"Mismatched type `{cp.Literal?.ValueAsString}` calling dependent group {i.Identifier} at @{cp.Literal?.Line}:{cp.Literal?.Column} - {gp.ParameterElementDefinition.DebugString()} != {gpv.Element.DebugString()}";
+                                                    string msg = $"Mismatched type `{cp.Identifier ?? cp.Literal?.ValueAsString}` calling dependent group {i.Identifier} at @{cp.Literal?.Line}:{cp.Literal?.Column} - {gp.ParameterElementDefinition.DebugString()} != {gpv.Element.DebugString()}";
                                                     ReportIssue(issues, msg, OperationOutcome.IssueType.Conflict);
                                                 }
                                             }
@@ -724,6 +694,46 @@ public class CrossVersionMapCollection
         else
         {
             Console.WriteLine();
+        }
+    }
+
+    private static void VerifyInvocation(List<OperationOutcome.IssueComponent> issues, Dictionary<string, TypedParameter?> parameterTypesByNameForRule, FmlInvocation invocation)
+    {
+        // deduce the return type of the invocation
+        Console.Write($" {invocation.Identifier}(");
+        foreach (var p in invocation.Parameters)
+        {
+            if (p != invocation.Parameters.First())
+                Console.Write(",");
+
+            TypedParameter? parameterTypeV = null;
+            if (!string.IsNullOrEmpty(p.Identifier))
+            {
+                Console.Write($"{p.Identifier}");
+                try
+                {
+                    parameterTypeV = ResolveIdentifierType(p.Identifier, parameterTypesByNameForRule, p, issues); // is this the correct place?
+                    p.ParameterElementDefinition = parameterTypeV?.Element;
+                }
+                catch (ApplicationException e)
+                {
+                    string msg = $"Can't resolve type of parameter identifier `{p.Identifier}`: {e.Message}";
+                    ReportIssue(issues, msg, OperationOutcome.IssueType.Exception);
+                }
+            }
+            if (p.Literal != null)
+            {
+                // TODO: resolve the type of the literal
+                Console.Write($" {p.Literal.RawText}");
+            }
+            Console.Write($" : {parameterTypeV?.Element?.DebugString() ?? "?"}");
+        }
+        Console.Write(" )");
+        switch (invocation.Identifier)
+        {
+            case "create":
+                // Check that the first parameter is a string, and that it has resolved properly.
+                break;
         }
     }
 
@@ -780,8 +790,9 @@ public class CrossVersionMapCollection
                 }
                 return tp;
             }
+            return null;
         }
-        return null;
+        throw new ApplicationException($"Identifier `{parts.First()}` is not in scope @{sourceOrTargetNode.Line}:{sourceOrTargetNode.Column}");
     }
 
     private static void ProcessCrossVersionGroup(

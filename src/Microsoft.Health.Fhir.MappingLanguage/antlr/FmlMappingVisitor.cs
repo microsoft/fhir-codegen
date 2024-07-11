@@ -29,7 +29,7 @@ using IToken = Antlr4.Runtime.IToken;
 /// </summary>
 /// <typeparam name="Result">The return type of the visit operation.</typeparam>
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.13.1")]
-//[System.CLSCompliant(false)]
+[System.CLSCompliant(false)]
 public interface IFmlMappingVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="FmlMappingParser.structureMap"/>.
@@ -546,13 +546,6 @@ public interface IFmlMappingVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitQuotedStringLiteral([NotNull] FmlMappingParser.QuotedStringLiteralContext context);
-	/// <summary>
-	/// Visit a parse tree produced by the <c>idLiteral</c>
-	/// labeled alternative in <see cref="FmlMappingParser.literal"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitIdLiteral([NotNull] FmlMappingParser.IdLiteralContext context);
 	/// <summary>
 	/// Visit a parse tree produced by the <c>quantityWithDate</c>
 	/// labeled alternative in <see cref="FmlMappingParser.fpQuantity"/>.

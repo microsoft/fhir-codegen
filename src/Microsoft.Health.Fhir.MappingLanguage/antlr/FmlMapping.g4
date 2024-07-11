@@ -262,7 +262,6 @@ literal
   | TIME                                                  #timeLiteral
   | SINGLE_QUOTED_STRING                                  #stringLiteral
   | DOUBLE_QUOTED_STRING                                  #quotedStringLiteral
-  | ID                                                    #idLiteral
   ;
 
   // : BOOL

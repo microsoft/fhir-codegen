@@ -31,7 +31,7 @@ using Antlr4.Runtime.Tree;
 using DFA = Antlr4.Runtime.Dfa.DFA;
 
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.13.1")]
-//[System.CLSCompliant(false)]
+[System.CLSCompliant(false)]
 public partial class FmlMappingParser : Parser {
 	protected static DFA[] decisionToDFA;
 	protected static PredictionContextCache sharedContextCache = new PredictionContextCache();
@@ -823,7 +823,6 @@ public partial class FmlMappingParser : Parser {
 			case LONG_INTEGER:
 			case DECIMAL:
 			case INTEGER:
-			case ID:
 			case SINGLE_QUOTED_STRING:
 			case DOUBLE_QUOTED_STRING:
 				{
@@ -3141,21 +3140,32 @@ public partial class FmlMappingParser : Parser {
 		try {
 			State = 422;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,44,Context) ) {
-			case 1:
+			switch (TokenStream.LA(1)) {
+			case NULL_LITERAL:
+			case BOOL:
+			case DATE:
+			case DATE_TIME:
+			case TIME:
+			case LONG_INTEGER:
+			case DECIMAL:
+			case INTEGER:
+			case SINGLE_QUOTED_STRING:
+			case DOUBLE_QUOTED_STRING:
 				EnterOuterAlt(_localctx, 1);
 				{
 				State = 420;
 				literal();
 				}
 				break;
-			case 2:
+			case ID:
 				EnterOuterAlt(_localctx, 2);
 				{
 				State = 421;
 				Match(ID);
 				}
 				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -3954,8 +3964,30 @@ public partial class FmlMappingParser : Parser {
 		try {
 			State = 480;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,48,Context) ) {
-			case 1:
+			switch (TokenStream.LA(1)) {
+			case T__3:
+			case T__7:
+			case T__8:
+			case T__9:
+			case T__10:
+			case T__11:
+			case T__13:
+			case T__15:
+			case T__17:
+			case T__22:
+			case T__25:
+			case T__34:
+			case T__35:
+			case T__36:
+			case T__37:
+			case T__38:
+			case T__39:
+			case T__65:
+			case T__66:
+			case T__67:
+			case ID:
+			case IDENTIFIER:
+			case DELIMITED_IDENTIFIER:
 				_localctx = new InvocationTermContext(_localctx);
 				EnterOuterAlt(_localctx, 1);
 				{
@@ -3963,7 +3995,16 @@ public partial class FmlMappingParser : Parser {
 				fpInvocation();
 				}
 				break;
-			case 2:
+			case NULL_LITERAL:
+			case BOOL:
+			case DATE:
+			case DATE_TIME:
+			case TIME:
+			case LONG_INTEGER:
+			case DECIMAL:
+			case INTEGER:
+			case SINGLE_QUOTED_STRING:
+			case DOUBLE_QUOTED_STRING:
 				_localctx = new LiteralTermContext(_localctx);
 				EnterOuterAlt(_localctx, 2);
 				{
@@ -3971,7 +4012,7 @@ public partial class FmlMappingParser : Parser {
 				literal();
 				}
 				break;
-			case 3:
+			case T__68:
 				_localctx = new ExternalConstantTermContext(_localctx);
 				EnterOuterAlt(_localctx, 3);
 				{
@@ -3979,7 +4020,7 @@ public partial class FmlMappingParser : Parser {
 				fpExternalConstant();
 				}
 				break;
-			case 4:
+			case T__18:
 				_localctx = new ParenthesizedTermContext(_localctx);
 				EnterOuterAlt(_localctx, 4);
 				{
@@ -3991,6 +4032,8 @@ public partial class FmlMappingParser : Parser {
 				Match(T__20);
 				}
 				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -4613,26 +4656,6 @@ public partial class FmlMappingParser : Parser {
 			else return visitor.VisitChildren(this);
 		}
 	}
-	public partial class IdLiteralContext : LiteralContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ID() { return GetToken(FmlMappingParser.ID, 0); }
-		public IdLiteralContext(LiteralContext context) { CopyFrom(context); }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			IFmlMappingListener typedListener = listener as IFmlMappingListener;
-			if (typedListener != null) typedListener.EnterIdLiteral(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			IFmlMappingListener typedListener = listener as IFmlMappingListener;
-			if (typedListener != null) typedListener.ExitIdLiteral(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IFmlMappingVisitor<TResult> typedVisitor = visitor as IFmlMappingVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitIdLiteral(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
 	public partial class BooleanLiteralContext : LiteralContext {
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BOOL() { return GetToken(FmlMappingParser.BOOL, 0); }
 		public BooleanLiteralContext(LiteralContext context) { CopyFrom(context); }
@@ -4723,7 +4746,7 @@ public partial class FmlMappingParser : Parser {
 		EnterRule(_localctx, 98, RULE_literal);
 		int _la;
 		try {
-			State = 524;
+			State = 523;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,53,Context) ) {
 			case 1:
@@ -4811,14 +4834,6 @@ public partial class FmlMappingParser : Parser {
 				{
 				State = 522;
 				Match(DOUBLE_QUOTED_STRING);
-				}
-				break;
-			case 11:
-				_localctx = new IdLiteralContext(_localctx);
-				EnterOuterAlt(_localctx, 11);
-				{
-				State = 523;
-				Match(ID);
 				}
 				break;
 			}
@@ -4917,14 +4932,14 @@ public partial class FmlMappingParser : Parser {
 		EnterRule(_localctx, 100, RULE_fpQuantity);
 		int _la;
 		try {
-			State = 532;
+			State = 531;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,54,Context) ) {
 			case 1:
 				_localctx = new QuantityWithDateContext(_localctx);
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 526;
+				State = 525;
 				_la = TokenStream.LA(1);
 				if ( !(_la==DECIMAL || _la==INTEGER) ) {
 				ErrorHandler.RecoverInline(this);
@@ -4933,7 +4948,7 @@ public partial class FmlMappingParser : Parser {
 					ErrorHandler.ReportMatch(this);
 				    Consume();
 				}
-				State = 527;
+				State = 526;
 				_la = TokenStream.LA(1);
 				if ( !(((((_la - 70)) & ~0x3f) == 0 && ((1L << (_la - 70)) & 255L) != 0)) ) {
 				ErrorHandler.RecoverInline(this);
@@ -4948,7 +4963,7 @@ public partial class FmlMappingParser : Parser {
 				_localctx = new QuantityWithDatePluralContext(_localctx);
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 528;
+				State = 527;
 				_la = TokenStream.LA(1);
 				if ( !(_la==DECIMAL || _la==INTEGER) ) {
 				ErrorHandler.RecoverInline(this);
@@ -4957,7 +4972,7 @@ public partial class FmlMappingParser : Parser {
 					ErrorHandler.ReportMatch(this);
 				    Consume();
 				}
-				State = 529;
+				State = 528;
 				_la = TokenStream.LA(1);
 				if ( !(((((_la - 78)) & ~0x3f) == 0 && ((1L << (_la - 78)) & 255L) != 0)) ) {
 				ErrorHandler.RecoverInline(this);
@@ -4972,7 +4987,7 @@ public partial class FmlMappingParser : Parser {
 				_localctx = new QuantityWithUcumContext(_localctx);
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 530;
+				State = 529;
 				_la = TokenStream.LA(1);
 				if ( !(_la==DECIMAL || _la==INTEGER) ) {
 				ErrorHandler.RecoverInline(this);
@@ -4981,7 +4996,7 @@ public partial class FmlMappingParser : Parser {
 					ErrorHandler.ReportMatch(this);
 				    Consume();
 				}
-				State = 531;
+				State = 530;
 				Match(SINGLE_QUOTED_STRING);
 				}
 				break;
@@ -5023,7 +5038,7 @@ public partial class FmlMappingParser : Parser {
 	}
 
 	private static int[] _serializedATN = {
-		4,1,103,535,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,
+		4,1,103,534,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,
 		7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,2,14,7,14,
 		2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,7,20,2,21,7,21,
 		2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,2,27,7,27,2,28,7,28,
@@ -5063,15 +5078,15 @@ public partial class FmlMappingParser : Parser {
 		43,1,43,1,43,1,43,3,43,488,8,43,1,44,1,44,1,44,3,44,493,8,44,1,45,1,45,
 		1,45,3,45,498,8,45,1,45,1,45,1,46,1,46,1,46,5,46,505,8,46,10,46,12,46,
 		508,9,46,1,47,1,47,1,48,1,48,1,49,1,49,1,49,1,49,1,49,1,49,1,49,1,49,1,
-		49,1,49,1,49,3,49,525,8,49,1,50,1,50,1,50,1,50,1,50,1,50,3,50,533,8,50,
-		1,50,5,105,111,120,126,132,1,82,51,0,2,4,6,8,10,12,14,16,18,20,22,24,26,
-		28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,64,66,68,70,72,74,
-		76,78,80,82,84,86,88,90,92,94,96,98,100,0,21,2,0,94,94,97,98,1,0,97,98,
-		1,0,94,96,1,0,12,15,2,0,12,12,14,14,1,0,23,24,1,0,28,32,2,0,34,34,93,93,
+		49,1,49,3,49,524,8,49,1,50,1,50,1,50,1,50,1,50,1,50,3,50,532,8,50,1,50,
+		5,105,111,120,126,132,1,82,51,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,
+		30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,64,66,68,70,72,74,76,
+		78,80,82,84,86,88,90,92,94,96,98,100,0,21,2,0,94,94,97,98,1,0,97,98,1,
+		0,94,96,1,0,12,15,2,0,12,12,14,14,1,0,23,24,1,0,28,32,2,0,34,34,93,93,
 		9,0,4,4,8,12,14,14,16,16,18,18,23,23,26,26,35,40,94,95,3,0,28,28,30,30,
 		45,46,2,0,6,6,49,49,3,0,34,34,38,38,50,51,3,0,6,6,49,49,52,52,1,0,54,57,
 		2,0,5,5,58,60,2,0,39,39,61,61,1,0,63,64,2,0,11,11,40,40,1,0,92,93,1,0,
-		70,77,1,0,78,85,567,0,105,1,0,0,0,2,142,1,0,0,0,4,157,1,0,0,0,6,162,1,
+		70,77,1,0,78,85,565,0,105,1,0,0,0,2,142,1,0,0,0,4,157,1,0,0,0,6,162,1,
 		0,0,0,8,166,1,0,0,0,10,170,1,0,0,0,12,174,1,0,0,0,14,176,1,0,0,0,16,181,
 		1,0,0,0,18,188,1,0,0,0,20,190,1,0,0,0,22,192,1,0,0,0,24,194,1,0,0,0,26,
 		203,1,0,0,0,28,209,1,0,0,0,30,220,1,0,0,0,32,230,1,0,0,0,34,235,1,0,0,
@@ -5081,7 +5096,7 @@ public partial class FmlMappingParser : Parser {
 		342,1,0,0,0,66,347,1,0,0,0,68,352,1,0,0,0,70,367,1,0,0,0,72,394,1,0,0,
 		0,74,403,1,0,0,0,76,405,1,0,0,0,78,412,1,0,0,0,80,422,1,0,0,0,82,428,1,
 		0,0,0,84,480,1,0,0,0,86,487,1,0,0,0,88,489,1,0,0,0,90,494,1,0,0,0,92,501,
-		1,0,0,0,94,509,1,0,0,0,96,511,1,0,0,0,98,524,1,0,0,0,100,532,1,0,0,0,102,
+		1,0,0,0,94,509,1,0,0,0,96,511,1,0,0,0,98,523,1,0,0,0,100,531,1,0,0,0,102,
 		104,3,16,8,0,103,102,1,0,0,0,104,107,1,0,0,0,105,106,1,0,0,0,105,103,1,
 		0,0,0,106,111,1,0,0,0,107,105,1,0,0,0,108,110,3,2,1,0,109,108,1,0,0,0,
 		110,113,1,0,0,0,111,112,1,0,0,0,111,109,1,0,0,0,112,115,1,0,0,0,113,111,
@@ -5194,17 +5209,17 @@ public partial class FmlMappingParser : Parser {
 		500,91,1,0,0,0,501,506,3,82,41,0,502,503,5,20,0,0,503,505,3,82,41,0,504,
 		502,1,0,0,0,505,508,1,0,0,0,506,504,1,0,0,0,506,507,1,0,0,0,507,93,1,0,
 		0,0,508,506,1,0,0,0,509,510,3,56,28,0,510,95,1,0,0,0,511,512,5,94,0,0,
-		512,97,1,0,0,0,513,525,5,86,0,0,514,525,5,87,0,0,515,525,3,100,50,0,516,
-		525,5,91,0,0,517,525,7,18,0,0,518,525,5,88,0,0,519,525,5,89,0,0,520,525,
-		5,90,0,0,521,525,5,97,0,0,522,525,5,98,0,0,523,525,5,94,0,0,524,513,1,
-		0,0,0,524,514,1,0,0,0,524,515,1,0,0,0,524,516,1,0,0,0,524,517,1,0,0,0,
-		524,518,1,0,0,0,524,519,1,0,0,0,524,520,1,0,0,0,524,521,1,0,0,0,524,522,
-		1,0,0,0,524,523,1,0,0,0,525,99,1,0,0,0,526,527,7,18,0,0,527,533,7,19,0,
-		0,528,529,7,18,0,0,529,533,7,20,0,0,530,531,7,18,0,0,531,533,5,97,0,0,
-		532,526,1,0,0,0,532,528,1,0,0,0,532,530,1,0,0,0,533,101,1,0,0,0,55,105,
-		111,115,120,126,132,138,148,153,186,198,213,216,226,233,239,262,269,274,
-		277,280,286,289,292,295,298,301,304,307,314,328,358,362,365,373,376,379,
-		385,388,392,394,403,408,417,422,428,468,470,480,487,492,497,506,524,532
+		512,97,1,0,0,0,513,524,5,86,0,0,514,524,5,87,0,0,515,524,3,100,50,0,516,
+		524,5,91,0,0,517,524,7,18,0,0,518,524,5,88,0,0,519,524,5,89,0,0,520,524,
+		5,90,0,0,521,524,5,97,0,0,522,524,5,98,0,0,523,513,1,0,0,0,523,514,1,0,
+		0,0,523,515,1,0,0,0,523,516,1,0,0,0,523,517,1,0,0,0,523,518,1,0,0,0,523,
+		519,1,0,0,0,523,520,1,0,0,0,523,521,1,0,0,0,523,522,1,0,0,0,524,99,1,0,
+		0,0,525,526,7,18,0,0,526,532,7,19,0,0,527,528,7,18,0,0,528,532,7,20,0,
+		0,529,530,7,18,0,0,530,532,5,97,0,0,531,525,1,0,0,0,531,527,1,0,0,0,531,
+		529,1,0,0,0,532,101,1,0,0,0,55,105,111,115,120,126,132,138,148,153,186,
+		198,213,216,226,233,239,262,269,274,277,280,286,289,292,295,298,301,304,
+		307,314,328,358,362,365,373,376,379,385,388,392,394,403,408,417,422,428,
+		468,470,480,487,492,497,506,523,531
 	};
 
 	public static readonly ATN _ATN =
