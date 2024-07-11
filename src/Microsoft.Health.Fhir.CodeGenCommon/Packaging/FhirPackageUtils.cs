@@ -14,7 +14,7 @@ namespace Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 
 public static partial class FhirPackageUtils
 {
-
+#if NET8_0_OR_GREATER
     /// <summary>Test if a name matches known core packages.</summary>
     /// <returns>A RegEx.</returns>
     [GeneratedRegex("^hl7\\.fhir\\.r\\d+[A-Za-z]?\\.(core|expansions|examples|search|elements|corexml)$")]
@@ -25,7 +25,16 @@ public static partial class FhirPackageUtils
     /// </summary>
     /// <returns>A regular expression.</returns>
     private static Regex _matchFhirReleasePackageNames = MatchFhirReleasePackageNames();
+#else
+    /// <summary>
+    /// Gets the regular expression for matching known core package names.
+    /// </summary>
+    /// <returns>A regular expression.</returns>
+    private static readonly Regex _matchFhirReleasePackageNames =
+        new Regex("^hl7\\.fhir\\.r\\d+[A-Za-z]?\\.(core|expansions|examples|search|elements|corexml)$", RegexOptions.Compiled);
+#endif
 
+#if NET8_0_OR_GREATER
     [GeneratedRegex("^hl7\\.fhir\\.r\\d+[A-Za-z]?\\.core$")]
     public static partial Regex MatchCorePackageOnly();
 
@@ -34,13 +43,19 @@ public static partial class FhirPackageUtils
     /// </summary>
     /// <returns>A regular expression.</returns>
     private static Regex _matchCorePackageOnly = MatchCorePackageOnly();
-
+#else
+    /// <summary>
+    /// Gets the regular expression for matching known core package names.
+    /// </summary>
+    /// <returns>A regular expression.</returns>
+    private static readonly Regex _matchCorePackageOnly = new Regex("^hl7\\.fhir\\.r\\d+[A-Za-z]?\\.core$", RegexOptions.Compiled);
+#endif
 
     public static bool PackageIsFhirRelease(string packageName)
     {
         string name = packageName;
 
-        if (name.StartsWith('@'))
+        if (name.StartsWith("@", StringComparison.Ordinal))
         {
             name = name[1..];
         }
