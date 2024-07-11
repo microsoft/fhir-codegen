@@ -1431,7 +1431,7 @@ public class CrossVersionMapCollection
 
                     group = new()
                     {
-                        Source = key.Substring(0, loc),
+                        Source = key[..loc],
                         Target = key[(loc + 2)..],
                     };
 

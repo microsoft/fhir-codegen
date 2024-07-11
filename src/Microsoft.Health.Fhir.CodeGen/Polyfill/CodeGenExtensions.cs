@@ -52,12 +52,16 @@ namespace Microsoft.Health.Fhir.CodeGen.Polyfill
     {
         public static bool StartsWith(this string str, char value)
         {
-            return str.StartsWith(value.ToString());
+            return string.IsNullOrEmpty(str)
+                ? false
+                : str[0] == value;
         }
 
         public static bool EndsWith(this string str, char value)
         {
-            return str.EndsWith(value.ToString());
+            return string.IsNullOrEmpty(str)
+                ? false
+                : str[^1] == value;
         }
 
         public static bool Contains(this string str, string value, StringComparison _)
@@ -69,6 +73,8 @@ namespace Microsoft.Health.Fhir.CodeGen.Polyfill
         {
             return str.Replace(search, replace);
         }
+
+        public static string AsSpan(this string value, int start) => value.Substring(start);
     }
 
     internal static class CollectionExtensions

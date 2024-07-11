@@ -381,7 +381,7 @@ public class ConfigRoot : ICodeGenConfig
 
                 if (dirName.Length > 1)
                 {
-                    dirName = dirName.Substring(2);
+                    dirName = dirName[2..];
                 }
                 else
                 {
@@ -403,7 +403,7 @@ public class ConfigRoot : ICodeGenConfig
             else
             {
                 // skip the separator
-                currentDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), startDir.Substring(2));
+                currentDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), startDir[2..]);
             }
         }
         else

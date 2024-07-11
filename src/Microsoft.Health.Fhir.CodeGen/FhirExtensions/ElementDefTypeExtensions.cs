@@ -44,7 +44,7 @@ public static class ElementDefTypeExtensions
         }
         else
         {
-            return tr.Code.Substring(lastSlash + 1);
+            return tr.Code[(lastSlash + 1)..];
         }
     }
 

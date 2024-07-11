@@ -738,8 +738,8 @@ public class Program
                 continue;
             }
 
-            string key = header.Substring(0, separatorLocation).Trim();
-            string value = header.Substring(separatorLocation + 1).Trim();
+            string key = header[..separatorLocation].Trim();
+            string value = header[(separatorLocation + 1)..].Trim();
 
             if (headers.TryGetValue(key, out List<string>? parsedValues))
             {

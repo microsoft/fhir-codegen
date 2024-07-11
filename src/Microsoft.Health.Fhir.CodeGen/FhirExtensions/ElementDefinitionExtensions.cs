@@ -258,7 +258,7 @@ public static class ElementDefinitionExtensions
 
             if (ed.ContentReference.StartsWith('#'))
             {
-                value = ed.ContentReference.Substring(1);
+                value = ed.ContentReference[1..];
                 return (typeMap?.TryGetValue(value, out mapped) ?? false)
                     ? mapped : value;
             }

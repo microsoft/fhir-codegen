@@ -166,21 +166,21 @@ public static class StructureDefSlicing
 
         if (path.StartsWith("$this.", StringComparison.Ordinal))
         {
-            path = discriminatorPath.Substring(5);
+            path = discriminatorPath[5..];
         }
 
         int resolveIndex = path.IndexOf("resolve()", StringComparison.Ordinal);
 
         if (resolveIndex != -1)
         {
-            postResolve = path.Substring(resolveIndex + 9);
+            postResolve = path[(resolveIndex + 9)..];
 
             if (postResolve.StartsWith('.'))
             {
-                postResolve = postResolve.Substring(1);
+                postResolve = postResolve[1..];
             }
 
-            path = path.Substring(0, resolveIndex);
+            path = path[..resolveIndex];
         }
 
         // TODO(ginoc): need to sort out allowed 'ofType()' processing and mangle the path appropriately - need an example to test against
@@ -249,8 +249,12 @@ public static class StructureDefSlicing
         {
             // check for the last component of the path being a type
             id = $"{slicingEd.Path}:{sliceName}{relativePath}";
-            string eType = id.Substring(id.LastIndexOf('.') + 1);
-            id = id.Substring(0, id.LastIndexOf('.'));
+
+            int lastIdDotIndex = id.LastIndexOf('.');
+
+            string eType = id[(lastIdDotIndex + 1)..];
+            id = id[..lastIdDotIndex];
+
             path = path.Substring(0, path.LastIndexOf('.'));
 
             foreach (ElementDefinition ed in sliceElements.Where(e => e.Path == path))
