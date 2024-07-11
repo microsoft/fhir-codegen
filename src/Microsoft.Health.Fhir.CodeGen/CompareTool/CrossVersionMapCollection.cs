@@ -486,6 +486,44 @@ public class CrossVersionMapCollection
                     string msg = $"Can't resolve type of source identifier `{source.Identifier}`: {e.Message}";
                     ReportIssue(issues, msg, OperationOutcome.IssueType.Exception);
                 }
+
+                if (!string.IsNullOrEmpty(source.TypeIdentifier))
+                {
+                    // Cast down to this type
+                    Console.Write($".ofType({source.TypeIdentifier})");
+                    string typeName = source.TypeIdentifier;
+                    if (!typeName.Contains(':')) // assume this is a FHIR type
+                        typeName = "http://hl7.org/fhir/StructureDefinition/" + typeName;
+                    var sdCastType = sourceResolver.FindStructureDefinitionAsync(typeName).WaitResult();
+                    if (sdCastType == null)
+                    {
+                        string msg = $"Unable to resolve type cast `{typeName}` in {group.Name} at @{source.Line}:{source.Column}";
+                        ReportIssue(issues, msg, OperationOutcome.IssueType.Duplicate);
+                    }
+                    else
+                    {
+                        var sw = new StructureDefinitionWalker(sdCastType, sourceResolver);
+                        tpV = new PropertyOrTypeDetails
+                        {
+                            Resolver = sourceResolver,
+                            Element = sw.Current
+                        };
+                    }
+                }
+
+                // Cardinality constraints
+                if (!string.IsNullOrEmpty(source.Cardinality))
+                {
+                    Console.Write($"[{source.Cardinality}]");
+                }
+
+                // Source Default value
+                if (source.DefaultExpression != null)
+                {
+                    Console.Write($" DEFAULT({source.DefaultExpression.RawText})");
+                }
+
+                Console.Write($" : {tpV?.Element?.DebugString() ?? "?"}");
                 if (source.Alias != null)
                 {
                     Console.Write($" as {source.Alias}");
@@ -499,10 +537,9 @@ public class CrossVersionMapCollection
                         parameterTypesByNameForRule.Add(source.Alias, tpV);
                     }
                 }
-                Console.Write($" : {tpV?.Element?.DebugString() ?? "?"}");
             }
 
-            Console.Write($"  ==>  ");
+            Console.Write($"  -->  ");
 
             foreach (var target in rule.MappingExpression.Targets)
             {
@@ -522,10 +559,11 @@ public class CrossVersionMapCollection
                         string msg = $"Can't resolve type of target identifier `{target.Identifier}`: {e.Message}";
                         ReportIssue(issues, msg, OperationOutcome.IssueType.Exception);
                     }
+                    Console.Write($" : {tpV?.Element?.DebugString() ?? "?"}");
                 }
                 if (target.Invocation != null)
                 {
-                    VerifyInvocation(issues, parameterTypesByNameForRule, target.Invocation);
+                    tpV = VerifyInvocation(issues, parameterTypesByNameForRule, target.Invocation, targetResolver);
                 }
 
                 if (target.Transform != null)
@@ -552,7 +590,8 @@ public class CrossVersionMapCollection
 
                     }
                     if (target.Transform.Invocation != null)
-                        VerifyInvocation(issues, parameterTypesByNameForRule, target.Transform.Invocation);
+                        tpV = VerifyInvocation(issues, parameterTypesByNameForRule, target.Transform.Invocation, targetResolver);
+                    Console.Write($" : {tpV?.Element?.DebugString() ?? "?"}");
                 }
 
                 if (target.Alias != null)
@@ -568,7 +607,6 @@ public class CrossVersionMapCollection
                         parameterTypesByNameForRule.Add(target.Alias, tpV);
                     }
                 }
-                Console.Write($" : {tpV?.Element?.DebugString() ?? "?"}");
             }
         }
 
@@ -585,7 +623,7 @@ public class CrossVersionMapCollection
                 ReportIssue(issues, msg, OperationOutcome.IssueType.Exception);
             }
 
-            Console.Write($"  ==>  ");
+            Console.Write($"  -->  ");
 
             try
             {
@@ -698,7 +736,7 @@ public class CrossVersionMapCollection
         }
     }
 
-    private static void VerifyInvocation(List<OperationOutcome.IssueComponent> issues, Dictionary<string, PropertyOrTypeDetails?> parameterTypesByNameForRule, FmlInvocation invocation)
+    private static PropertyOrTypeDetails? VerifyInvocation(List<OperationOutcome.IssueComponent> issues, Dictionary<string, PropertyOrTypeDetails?> parameterTypesByNameForRule, FmlInvocation invocation, IAsyncResourceResolver targetResolver)
     {
         // deduce the return type of the invocation
         Console.Write($" {invocation.Identifier}(");
@@ -734,8 +772,38 @@ public class CrossVersionMapCollection
         {
             case "create":
                 // Check that the first parameter is a string, and that it has resolved properly.
+                var literal = invocation.Parameters.FirstOrDefault()?.Literal;
+                if (literal != null)
+                {
+                    string? typeName = literal.ValueAsString;
+                    if (!typeName.Contains(':')) // assume this is a FHIR type
+                        typeName = "http://hl7.org/fhir/StructureDefinition/" + typeName;
+                    var sdCastType = targetResolver.FindStructureDefinitionAsync(typeName).WaitResult();
+                    if (sdCastType == null)
+                    {
+                        string msg = $"Unable to resolve type `{typeName}` to create at @{literal.Line}:{literal.Column}";
+                        ReportIssue(issues, msg, OperationOutcome.IssueType.Duplicate);
+                    }
+                    else
+                    {
+                        var sw = new StructureDefinitionWalker(sdCastType, targetResolver);
+                        return new PropertyOrTypeDetails
+                        {
+                            Resolver = targetResolver,
+                            Element = sw.Current
+                        };
+                    }
+                }
+                else
+                {
+                    string msg = $"No type parameter for create at @{invocation.Line}:{invocation.Column}";
+                    ReportIssue(issues, msg, OperationOutcome.IssueType.Duplicate);
+                }
                 break;
         }
+
+        // unknown return type detected
+        return null;
     }
 
     private static void ReportIssue(List<OperationOutcome.IssueComponent> issues, string message, OperationOutcome.IssueType code, OperationOutcome.IssueSeverity severity = OperationOutcome.IssueSeverity.Error)
