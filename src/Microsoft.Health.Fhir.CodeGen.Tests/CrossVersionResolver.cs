@@ -105,7 +105,7 @@ internal class VersionFilterResolver : IAsyncResourceResolver
         if (!string.IsNullOrWhiteSpace(cu.Version()))
         {
             if (cu.Version() != _fixedVersion)
-                return null;
+                return null!;
         }
         var result = await _source.ResolveByCanonicalUriAsync(cu.BaseCanonicalUrl());
         return result;
@@ -118,7 +118,7 @@ internal class VersionFilterResolver : IAsyncResourceResolver
         if (!string.IsNullOrWhiteSpace(cu.Version()))
         {
             if (cu.Version() != _fixedVersion)
-                return null;
+                return null!;
         }
         return await _source.ResolveByUriAsync(cu.BaseCanonicalUrl());
     }

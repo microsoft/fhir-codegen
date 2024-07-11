@@ -3,8 +3,6 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
 namespace Microsoft.Health.Fhir.MappingLanguage.Expression;
 
 /// <summary>An expression node.</summary>

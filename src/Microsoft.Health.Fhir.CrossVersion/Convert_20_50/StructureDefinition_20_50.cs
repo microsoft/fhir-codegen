@@ -91,7 +91,12 @@ public class StructureDefinition_20_50 : ICrossVersionProcessor<StructureDefinit
         if (v.Name.Contains(' '))
         {
             v.Title = v.Name;
+#if NET8_0_OR_GREATER
             v.Name = string.Join(string.Empty, v.Name.Split(' ', '-', StringSplitOptions.RemoveEmptyEntries).Select(n => n = char.ToUpperInvariant(n[0]) + n.Substring(1)));
+#else
+            string[] nameComps = v.Name.Split(' ', '-');
+            v.Name = string.Join(string.Empty, nameComps.Where(c => !string.IsNullOrEmpty(c)).Select(n => n = char.ToUpperInvariant(n[0]) + n.Substring(1)));
+#endif
         }
 
         //// if they are not the same, the name is actually the title

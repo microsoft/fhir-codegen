@@ -11,7 +11,10 @@ using Hl7.Fhir.Utility;
 using Hl7.FhirPath.Sprache;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+
+#if NETSTANDARD2_0
+using Microsoft.Health.Fhir.CodeGen.Polyfill;
+#endif
 
 namespace Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 
@@ -820,7 +823,7 @@ public static class StructureDefSlicing
                 }
 
                 // see if we can find a matching element there
-                string tId = string.Join('.', transitive.Type, postResolve);
+                string tId = string.Join(".", transitive.Type, postResolve);
                 if (transitive.cgTryGetElementById(tId, out ElementDefinition? tEd) && (tEd != null))
                 {
                     if (tEd.Fixed != null)

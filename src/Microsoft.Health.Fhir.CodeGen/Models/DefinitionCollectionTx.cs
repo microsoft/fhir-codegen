@@ -11,6 +11,10 @@ using Hl7.Fhir.Specification.Source;
 using Hl7.Fhir.Specification.Terminology;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 
+#if NETSTANDARD2_0
+using Microsoft.Health.Fhir.CodeGen.Polyfill;
+#endif
+
 namespace Microsoft.Health.Fhir.CodeGen.Models;
 
 public partial class DefinitionCollection : IAsyncResourceResolver

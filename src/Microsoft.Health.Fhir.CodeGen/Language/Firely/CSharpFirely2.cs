@@ -15,6 +15,10 @@ using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 using static Microsoft.Health.Fhir.CodeGen.Language.Firely.CSharpFirelyCommon;
 using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 
+#if NETSTANDARD2_0
+using Microsoft.Health.Fhir.CodeGen.Polyfill;
+#endif
+
 namespace Microsoft.Health.Fhir.CodeGen.Language.Firely;
 
 public sealed class CSharpFirely2 : ILanguage
@@ -942,7 +946,7 @@ public sealed class CSharpFirely2 : ILanguage
                 string urlComponent = $", Url = \"{sp.Url}\"";
 
                 string[] components = sp.Component?.Select(c => $"""new SearchParamComponent("{c.Definition}", "{c.Expression}")""").ToArray() ?? [];
-                string strComponents = (components.Length > 0) ? $", Component = new SearchParamComponent[] {{ {string.Join(',', components)} }}" : string.Empty;
+                string strComponents = (components.Length > 0) ? $", Component = new SearchParamComponent[] {{ {string.Join(",", components)} }}" : string.Empty;
 
                 _writer.WriteLineIndented(
                     $"new SearchParamDefinition() " +
@@ -1677,7 +1681,7 @@ public sealed class CSharpFirely2 : ILanguage
 
             case 3:
                 WriteIndentedComment(strings[0]);
-                WriteIndentedComment(string.Join("\n", strings[1..]), isSummary: false, isRemarks: true);
+                WriteIndentedComment(string.Join("\n", strings.Skip(1)), isSummary: false, isRemarks: true);
                 return;
         }
     }
@@ -2542,7 +2546,7 @@ public sealed class CSharpFirely2 : ILanguage
             foreach (ElementDefinition element in childElements)
             {
                 if ((!string.IsNullOrEmpty(element.Binding?.ValueSet)) &&
-                    (element.Binding.Strength == Hl7.Fhir.Model.BindingStrength.Required) &&
+                    (element.Binding!.Strength == Hl7.Fhir.Model.BindingStrength.Required) &&
                     _info.TryExpandVs(element.Binding.ValueSet, out ValueSet? vs))
                 {
                     WriteEnum(vs, className, usedEnumNames);
@@ -3332,12 +3336,12 @@ public sealed class CSharpFirely2 : ILanguage
         // citation needs special handling
         if ((components.Length > 2) && ed.Path.StartsWith("Citation.", StringComparison.Ordinal))
         {
-            return string.Join('.', components[0], string.Join(string.Empty, components[1..].ToPascalCase())) + "Component";
+            return string.Join(".", components[0], string.Join(string.Empty, components.Skip(1).ToPascalCase())) + "Component";
         }
 
         if (components.Length > 1)
         {
-            return string.Join('.', components[0], components[^1].ToPascalCase()) + "Component";
+            return string.Join(".", components[0], components[^1].ToPascalCase()) + "Component";
         }
 
         return type;
@@ -3458,7 +3462,7 @@ public sealed class CSharpFirely2 : ILanguage
             foreach ((string etName, ElementDefinition.TypeRefComponent elementType) in elementTypes.Where(kvp => (kvp.Key == "Reference") && kvp.Value.TargetProfile.Any()))
             {
                 resourceReferences = "[References(" +
-                    string.Join(',', elementType.cgTargetProfiles().Keys.Select(name => "\"" + name + "\"")) +
+                    string.Join(",", elementType.cgTargetProfiles().Keys.Select(name => "\"" + name + "\"")) +
                     ")]";
                 break;
             }

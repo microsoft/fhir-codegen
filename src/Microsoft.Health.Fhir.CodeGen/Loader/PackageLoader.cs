@@ -526,9 +526,9 @@ public class PackageLoader : IDisposable
             // update the collection FHIR version based on the first package we come across with one
             if (string.IsNullOrEmpty(definitions.FhirVersionLiteral) && (!string.IsNullOrEmpty(packageFhirVersionLiteral)))
             {
-                definitions.FhirVersionLiteral = packageFhirVersionLiteral;
+                definitions.FhirVersionLiteral = packageFhirVersionLiteral!;
 
-                definitions.FhirSequence = FhirReleases.FhirVersionToSequence(packageFhirVersionLiteral);
+                definitions.FhirSequence = FhirReleases.FhirVersionToSequence(packageFhirVersionLiteral!);
 
                 definitions.FhirVersion = definitions.FhirSequence switch
                 {
@@ -544,7 +544,7 @@ public class PackageLoader : IDisposable
 
             FhirReleases.FhirSequenceCodes packageFhirVersion = string.IsNullOrEmpty(packageFhirVersionLiteral)
                 ? definitions.FhirSequence
-                : FhirReleases.FhirVersionToSequence(packageFhirVersionLiteral);
+                : FhirReleases.FhirVersionToSequence(packageFhirVersionLiteral ?? string.Empty);
 
             // create the converter we need
             switch (definitions.FhirSequence)
@@ -763,7 +763,11 @@ public class PackageLoader : IDisposable
                 {
                     if (string.IsNullOrEmpty(content))
                     {
+#if NET8_0_OR_GREATER
                         content = File.ReadAllTextAsync(path).Result;
+#else
+                        content = File.ReadAllText(path);
+#endif
                     }
 
                     // always use lenient parsing
@@ -937,7 +941,11 @@ public class PackageLoader : IDisposable
                 {
                     if (string.IsNullOrEmpty(content))
                     {
+#if NET8_0_OR_GREATER
                         content = File.ReadAllTextAsync(path).Result;
+#else
+                        content = File.ReadAllText(path);
+#endif
                     }
 
                     Hl7.Fhir.ElementModel.ISourceNode sn = FhirXmlNode.Parse(content);
@@ -977,7 +985,11 @@ public class PackageLoader : IDisposable
                 {
                     if (string.IsNullOrEmpty(content))
                     {
+#if NET8_0_OR_GREATER
                         content = File.ReadAllTextAsync(path).Result;
+#else
+                        content = File.ReadAllText(path);
+#endif
                     }
 
                     Hl7.Fhir.ElementModel.ISourceNode sn = FhirJsonNode.Parse(content);
@@ -1005,7 +1017,11 @@ public class PackageLoader : IDisposable
                 {
                     if (string.IsNullOrEmpty(content))
                     {
+#if NET8_0_OR_GREATER
                         content = File.ReadAllTextAsync(path).Result;
+#else
+                        content = File.ReadAllText(path);
+#endif
                     }
 
                     Hl7.Fhir.ElementModel.ISourceNode sn = FhirXmlNode.Parse(content);

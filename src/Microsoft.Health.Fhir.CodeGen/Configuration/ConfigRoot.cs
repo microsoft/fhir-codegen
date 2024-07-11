@@ -8,6 +8,10 @@ using System.Collections.Generic;
 using System.CommandLine.Parsing;
 using Microsoft.Health.Fhir.CodeGen.Extensions;
 
+#if NETSTANDARD2_0
+using Microsoft.Health.Fhir.CodeGen.Polyfill;
+#endif
+
 namespace Microsoft.Health.Fhir.CodeGen.Configuration;
 
 /// <summary>

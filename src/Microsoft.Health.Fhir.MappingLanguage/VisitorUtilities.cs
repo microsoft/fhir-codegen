@@ -53,7 +53,7 @@ internal static class VisitorUtilities
 
     internal static (string value, FmlTokenTypeCodes matchedToken)? GetGrammarLiteral(ParserRuleContext c, params int[] literalsToMatch)
     {
-        HashSet<int> hash = literalsToMatch.ToHashSet();
+        HashSet<int> hash = new HashSet<int>(literalsToMatch);
 
         if (c.children == null) return null;
 
@@ -119,9 +119,9 @@ internal static class VisitorUtilities
         null => null,
         NULL_LITERAL => null,
         BOOL => c.GetText(),
-        DATE => c.Stop.Text.StartsWith('@') ? c.Stop.Text[1..] : c.Stop.Text,
-        DATE_TIME => c.Stop.Text.StartsWith('@') ? c.Stop.Text : c.Stop.Text,
-        TIME => c.Stop.Text.StartsWith('@') ? c.Stop.Text : c.Stop.Text,
+        DATE => c.Stop.Text.StartsWith("@") ? c.Stop.Text[1..] : c.Stop.Text,
+        DATE_TIME => c.Stop.Text.StartsWith("@") ? c.Stop.Text : c.Stop.Text,
+        TIME => c.Stop.Text.StartsWith("@") ? c.Stop.Text : c.Stop.Text,
         LONG_INTEGER => c.GetText(),
         DECIMAL => c.GetText(),
         INTEGER => c.GetText(),
@@ -141,9 +141,9 @@ internal static class VisitorUtilities
         null => string.Empty,
         NULL_LITERAL => string.Empty,
         BOOL => tn.GetText(),
-        DATE => tn.Symbol.Text.StartsWith('@') ? tn.Symbol.Text[1..] : tn.Symbol.Text,
-        DATE_TIME => tn.Symbol.Text.StartsWith('@') ? tn.Symbol.Text : tn.Symbol.Text,
-        TIME => tn.Symbol.Text.StartsWith('@') ? tn.Symbol.Text : tn.Symbol.Text,
+        DATE => tn.Symbol.Text.StartsWith("@") ? tn.Symbol.Text[1..] : tn.Symbol.Text,
+        DATE_TIME => tn.Symbol.Text.StartsWith("@") ? tn.Symbol.Text : tn.Symbol.Text,
+        TIME => tn.Symbol.Text.StartsWith("@") ? tn.Symbol.Text : tn.Symbol.Text,
         LONG_INTEGER => tn.GetText(),
         DECIMAL => tn.GetText(),
         INTEGER => tn.GetText(),
@@ -163,9 +163,9 @@ internal static class VisitorUtilities
         null => string.Empty,
         NULL_LITERAL => string.Empty,
         BOOL => tn.Text,
-        DATE => tn.Text.StartsWith('@') ? tn.Text[1..] : tn.Text,
-        DATE_TIME => tn.Text.StartsWith('@') ? tn.Text : tn.Text,
-        TIME => tn.Text.StartsWith('@') ? tn.Text : tn.Text,
+        DATE => tn.Text.StartsWith("@") ? tn.Text[1..] : tn.Text,
+        DATE_TIME => tn.Text.StartsWith("@") ? tn.Text : tn.Text,
+        TIME => tn.Text.StartsWith("@") ? tn.Text : tn.Text,
         LONG_INTEGER => tn.Text,
         DECIMAL => tn.Text,
         INTEGER => tn.Text,
@@ -207,9 +207,9 @@ internal static class VisitorUtilities
         null => null,
         NULL_LITERAL => null,
         BOOL => c.Stop.Text == "true" ? new FhirBoolean(true) : new FhirBoolean(false),
-        DATE => c.Stop.Text.StartsWith('@') ? new FhirDateTime(c.Stop.Text[1..]) : new FhirDateTime(c.Stop.Text),
-        DATE_TIME => c.Stop.Text.StartsWith('@') ? new FhirDateTime(c.Stop.Text) : new FhirDateTime(c.Stop.Text),
-        TIME => c.Stop.Text.StartsWith('@') ? new Time(c.Stop.Text) : new Time(c.Stop.Text),
+        DATE => c.Stop.Text.StartsWith("@") ? new FhirDateTime(c.Stop.Text[1..]) : new FhirDateTime(c.Stop.Text),
+        DATE_TIME => c.Stop.Text.StartsWith("@") ? new FhirDateTime(c.Stop.Text) : new FhirDateTime(c.Stop.Text),
+        TIME => c.Stop.Text.StartsWith("@") ? new Time(c.Stop.Text) : new Time(c.Stop.Text),
         LONG_INTEGER => long.TryParse(c.Stop.Text, out long value) ? new Integer64(value) : null,
         DECIMAL => decimal.TryParse(c.Stop.Text, out decimal value) ? new FhirDecimal(value) : null,
         INTEGER => int.TryParse(c.Stop.Text, out int value) ? new Integer64(value) : null,
@@ -243,7 +243,7 @@ internal static class VisitorUtilities
             return false;
         }
 
-        if (dateString.StartsWith('@'))
+        if (dateString.StartsWith("@"))
         {
             dateString = dateString[1..];
         }

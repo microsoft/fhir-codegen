@@ -6,10 +6,8 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Net.Http.Headers;
-using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -32,13 +30,12 @@ using static Hl7.Fhir.Model.VerificationResult;
 using static Microsoft.Health.Fhir.CodeGen.CompareTool.PackageComparer;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 using static Microsoft.Health.Fhir.CodeGen.CompareTool.ComparisonUtils;
-using System.Runtime.InteropServices.JavaScript;
 using Hl7.Fhir.Rest;
-using Microsoft.Health.Fhir.CodeGenCommon.Models;
-using System.Security.AccessControl;
 using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Specification;
-using System.Collections.Frozen;
+
+#if NETSTANDARD2_0
+using Microsoft.Health.Fhir.CodeGen.Polyfill;
+#endif
 
 namespace Microsoft.Health.Fhir.CodeGen.CompareTool;
 
@@ -914,7 +911,7 @@ public class PackageComparer
         writer.WriteLine("| Source | Target | Status | Message |");
         writer.WriteLine("| ------ | ------ | ------ | ------- |");
 
-        foreach ((string code, ConceptComparison cc) in cRec.ConceptComparisons.OrderBy(kvp => kvp.Key))
+        foreach (ConceptComparison cc in cRec.ConceptComparisons.OrderBy(kvp => kvp.Key).Select(kvp => kvp.Value))
         {
             if (cc.TargetMappings.Count == 0)
             {
@@ -950,7 +947,7 @@ public class PackageComparer
         writer.WriteLine("| Source | Target | Status | Message |");
         writer.WriteLine("| ------ | ------ | ------ | ------- |");
 
-        foreach ((string path, ElementComparison ec) in cRec.ElementComparisons.OrderBy(kvp => kvp.Key))
+        foreach (ElementComparison ec in cRec.ElementComparisons.OrderBy(kvp => kvp.Key).Select(kvp => kvp.Value))
         {
             if (ec.TargetMappings.Count == 0)
             {
@@ -2195,7 +2192,7 @@ public class PackageComparer
                 List<string> addedProfiles = [];
                 List<string> removedProfiles = [];
 
-                HashSet<string> scratch = targetTypeInfo.Profiles.ToHashSet();
+                HashSet<string> scratch = new HashSet<string>(targetTypeInfo.Profiles);
 
                 foreach (string sp in sourceTypeInfo.Profiles)
                 {
@@ -2213,7 +2210,7 @@ public class PackageComparer
                 List<string> addedTargets = [];
                 List<string> removedTargets = [];
 
-                scratch = targetTypeInfo.TargetProfiles.ToHashSet();
+                scratch = new HashSet<string>(targetTypeInfo.TargetProfiles);
 
                 foreach (string sp in sourceTypeInfo.TargetProfiles)
                 {
@@ -2579,7 +2576,7 @@ public class PackageComparer
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"TryAskOllama <<< caught: {ex.Message}{(string.IsNullOrEmpty(ex.InnerException?.Message) ? string.Empty : ex.InnerException.Message)}");
+            Console.WriteLine($"TryAskOllama <<< caught: {ex.Message}{(string.IsNullOrEmpty(ex.InnerException?.Message) ? string.Empty : ex.InnerException!.Message)}");
         }
 
         guess = null;

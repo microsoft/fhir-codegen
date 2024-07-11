@@ -127,7 +127,7 @@ public class ElementDefinition_20_50 : ICrossVersionProcessor<ElementDefinition>
         {
             string lookupName;
 
-            if (v.ContentReference.Contains('.', StringComparison.Ordinal))
+            if (v.ContentReference.Contains('.'))
             {
                 lookupName = v.ContentReference;
             }

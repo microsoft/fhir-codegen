@@ -16,6 +16,10 @@ using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using Microsoft.Health.Fhir.MappingLanguage;
 
+#if NETSTANDARD2_0
+using Microsoft.Health.Fhir.CodeGen.Polyfill;
+#endif
+
 namespace Microsoft.Health.Fhir.CodeGen.CompareTool;
 
 public class CrossVersionMapCollection
@@ -1329,7 +1333,7 @@ public class CrossVersionMapCollection
             throw new Exception("Cannot process a comparison with no mappings!");
         }
 
-        string localConceptMapId = $"{_sourceRLiteral}-{vsc.Source.NamePascal}-{_targetRLiteral}-{vsc.Target.NamePascal}";
+        string localConceptMapId = $"{_sourceRLiteral}-{vsc.Source.NamePascal}-{_targetRLiteral}-{vsc.Target!.NamePascal}";
         string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
 
         string sourceUrl = vsc.Source.Url;
@@ -1418,12 +1422,17 @@ public class CrossVersionMapCollection
             {
                 if (!groups.TryGetValue(key, out ConceptMap.GroupComponent? group))
                 {
-                    string[] components = key.Split("||");
+                    int loc = key.IndexOf("||");
+
+                    if (loc == -1)
+                    {
+                        throw new Exception($"Invalid key: {key}");
+                    }
 
                     group = new()
                     {
-                        Source = components[0],
-                        Target = components[1],
+                        Source = key.Substring(0, loc),
+                        Target = key[(loc + 2)..],
                     };
 
                     groups.Add(key, group);

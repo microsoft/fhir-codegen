@@ -15,6 +15,10 @@ using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGen.Utils;
 using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 
+#if NETSTANDARD2_0
+using Microsoft.Health.Fhir.CodeGen.Polyfill;
+#endif
+
 namespace Microsoft.Health.Fhir.CodeGen.Language;
 
 public class TypeScript : ILanguage
@@ -598,7 +602,7 @@ public class TypeScript : ILanguage
             ? new[] { sd.Description, sd.Purpose }
             : new[] { sd.Title, sd.Description, sd.Purpose };
 
-        return string.Join('\n', values.Where(s => !string.IsNullOrEmpty(s)).Distinct()).Trim();
+        return string.Join("\n", values.Where(s => !string.IsNullOrEmpty(s)).Distinct()).Trim();
     }
 
     private static string BuildCommentString(ElementDefinition ed)
@@ -611,7 +615,7 @@ public class TypeScript : ILanguage
         string[] values = skipShort
             ? new[] { ed.Definition, ed.Comment }
             : new[] { ed.Short, ed.Definition, ed.Comment };
-        return string.Join('\n', values.Where(s => !string.IsNullOrEmpty(s)).Distinct()).Trim();
+        return string.Join("\n", values.Where(s => !string.IsNullOrEmpty(s)).Distinct()).Trim();
     }
 
     /// <summary>Writes a StructureDefinition.</summary>

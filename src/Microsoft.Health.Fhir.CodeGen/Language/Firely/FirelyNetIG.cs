@@ -34,6 +34,10 @@ using static Microsoft.Health.Fhir.CodeGen.Language.Firely.CSharpFirelyCommon;
 using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 using static Hl7.Fhir.Model.CodeSystem;
 
+#if NETSTANDARD2_0
+using Microsoft.Health.Fhir.CodeGen.Polyfill;
+#endif
+
 namespace Microsoft.Health.Fhir.CodeGen.Language.Firely;
 
 public partial class FirelyNetIG : ILanguage
@@ -93,8 +97,13 @@ public partial class FirelyNetIG : ILanguage
     private Dictionary<string, PackageData> _packageDataByDirective = [];
     private Dictionary<string, HashSet<string>> _extensionNamesByPackageDirective = [];
 
+#if NET8_0_OR_GREATER
     [GeneratedRegex(".+(\\.extension(\\:[^.]+)?(\\.url)?)")]
     private static partial Regex FindExtensionPathRegex();
+    private static readonly Regex _findExtensionPathRegex = FindExtensionPathRegex();
+#else
+    private static readonly Regex _findExtensionPathRegex = new Regex(".+(\\.extension(\\:[^.]+)?(\\.url)?)", RegexOptions.Compiled);
+#endif
 
 
     private record struct PackageData
@@ -1365,7 +1374,7 @@ public partial class FirelyNetIG : ILanguage
         writer.WriteLineIndented($"public record class {sliceData.ValueTypeName}");
         OpenScope(writer);
 
-        //bool isExtensionSlice = sliceData.Discriminator == null ? false : FindExtensionPathRegex().IsMatch(sliceData.Discriminator.Path);
+        //bool isExtensionSlice = sliceData.Discriminator == null ? false : _findExtensionPathRegex.IsMatch(sliceData.Discriminator.Path);
 
         // first we need to write a property for the slice itself
         if (sliceData.ValueExtData != null)
@@ -1630,7 +1639,7 @@ public partial class FirelyNetIG : ILanguage
                             { 
                                 discriminator = discriminators[0];
 
-                                bool isExtensionSlice = FindExtensionPathRegex().IsMatch(discriminator.Path);
+                                bool isExtensionSlice = _findExtensionPathRegex.IsMatch(discriminator.Path);
 
                                 if (isExtensionSlice)
                                 {
@@ -1638,7 +1647,7 @@ public partial class FirelyNetIG : ILanguage
                                     //string rootPath = discriminator.Path[..^14];
                                     string rootPath = discriminator.Path.Substring(0, discriminator.Path.LastIndexOf(".extension", StringComparison.Ordinal));
                                     //string rootId = discriminator.Id.EndsWith(".url", StringComparison.Ordinal) ? discriminator.Id[..^4] : discriminator.Id;
-                                    string rootId = FindExtensionPathRegex().IsMatch(discriminator.Id)
+                                    string rootId = _findExtensionPathRegex.IsMatch(discriminator.Id)
                                         ? discriminator.Id.Substring(0, discriminator.Id.LastIndexOf(".extension", StringComparison.Ordinal))
                                         : discriminator.Id;
 
@@ -1699,8 +1708,8 @@ public partial class FirelyNetIG : ILanguage
                         psi = new ProfileSliceInfo
                         {
                             Id = sliceId,
-                            ParentPath = string.Join('.', pathComponents[..dotCount]),
-                            Path = string.Join('.', pathComponents[..(dotCount + 1)]),
+                            ParentPath = string.Join(".", pathComponents.Take(dotCount)),
+                            Path = string.Join(".", pathComponents.Take(dotCount + 1)),
                             ElementName = pathComponents[dotCount],
                             SliceName = sliceName,
                             AccessorTypeName = sd.Name.ToPascalCase() + sliceName.ToPascalCase(),
@@ -1763,7 +1772,7 @@ public partial class FirelyNetIG : ILanguage
             //        writer.WriteLineIndented($"//       BindingName: {discriminator.BindingName}");
 
             //        //bool isExtensionSlice = discriminator.Path.EndsWith(".extension.url", StringComparison.Ordinal);
-            //        bool isExtensionSlice = FindExtensionPathRegex().IsMatch(discriminator.Path);
+            //        bool isExtensionSlice = _findExtensionPathRegex.IsMatch(discriminator.Path);
 
             //        if (isExtensionSlice)
             //        {
@@ -1771,7 +1780,7 @@ public partial class FirelyNetIG : ILanguage
             //            //string rootPath = discriminator.Path[..^14];
             //            string rootPath = discriminator.Path.Substring(0, discriminator.Path.LastIndexOf(".extension", StringComparison.Ordinal));
             //            //string rootId = discriminator.Id.EndsWith(".url", StringComparison.Ordinal) ? discriminator.Id[..^4] : discriminator.Id;
-            //            string rootId = FindExtensionPathRegex().IsMatch(discriminator.Id)
+            //            string rootId = _findExtensionPathRegex.IsMatch(discriminator.Id)
             //                ? discriminator.Id.Substring(0, discriminator.Id.LastIndexOf(".extension", StringComparison.Ordinal))
             //                : discriminator.Id;
 
@@ -1952,7 +1961,7 @@ public partial class FirelyNetIG : ILanguage
             writer.WriteLineIndented($"//       BindingName: {discriminator.BindingName}");
 
             //bool isExtensionSlice = discriminator.Path.EndsWith(".extension.url", StringComparison.Ordinal);
-            bool isExtensionSlice = FindExtensionPathRegex().IsMatch(discriminator.Path);
+            bool isExtensionSlice = _findExtensionPathRegex.IsMatch(discriminator.Path);
 
             if (isExtensionSlice)
             {
@@ -1960,7 +1969,7 @@ public partial class FirelyNetIG : ILanguage
                 //string rootPath = discriminator.Path[..^14];
                 string rootPath = discriminator.Path.Substring(0, discriminator.Path.LastIndexOf(".extension", StringComparison.Ordinal));
                 //string rootId = discriminator.Id.EndsWith(".url", StringComparison.Ordinal) ? discriminator.Id[..^4] : discriminator.Id;
-                string rootId = FindExtensionPathRegex().IsMatch(discriminator.Id)
+                string rootId = _findExtensionPathRegex.IsMatch(discriminator.Id)
                     ? discriminator.Id.Substring(0, discriminator.Id.LastIndexOf(".extension", StringComparison.Ordinal))
                     : discriminator.Id;
 
@@ -2334,7 +2343,7 @@ public partial class FirelyNetIG : ILanguage
             if (components.Length > 3)
             {
                 realm = components[2].ToPascalCase();
-                name = string.Join('.', components[3..]).ToPascalCase();
+                name = string.Join(".", components.Skip(3)).ToPascalCase();
             }
             else
             {

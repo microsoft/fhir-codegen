@@ -17,7 +17,6 @@ using static Microsoft.Health.Fhir.MappingLanguage.VisitorUtilities;
 using Antlr4.Runtime;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using Hl7.Fhir.Model;
-using System.Diagnostics.Metrics;
 using Newtonsoft.Json.Linq;
 using System.Reflection;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;

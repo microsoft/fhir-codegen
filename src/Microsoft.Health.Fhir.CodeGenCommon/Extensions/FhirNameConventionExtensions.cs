@@ -94,21 +94,21 @@ public static class FhirNameConventionExtensions
     /// <param name="removeDelimiters">(Optional) True to remove delimiters.</param>
     /// <param name="joinDelimiter">   (Optional) The word delimiter to use when joining.</param>
     /// <returns>Word as a string.</returns>
-    public static string[] ToPascalCase(this string[] words, bool removeDelimiters = true, string joinDelimiter = "")
+    public static string[] ToPascalCase(this IEnumerable<string> words, bool removeDelimiters = true, string joinDelimiter = "")
     {
-        if (words.Length == 0)
+        if (!words.Any())
         {
             return [];
         }
 
-        string[] output = new string[words.Length];
+        List<string> output = [];
 
-        for (int i = 0; i < words.Length; i++)
+        foreach (string word in words)
         {
-            output[i] = ToPascalCase(words[i], removeDelimiters, joinDelimiter);
+            output.Add(ToPascalCase(word, removeDelimiters, joinDelimiter));
         }
 
-        return output;
+        return output.ToArray();
     }
 
     /// <summary>

@@ -24,6 +24,10 @@ using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 using static Microsoft.Health.Fhir.CodeGen.Language.OpenApi.OpenApiCommon;
 using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 
+#if NETSTANDARD2_0
+using Microsoft.Health.Fhir.CodeGen.Polyfill;
+#endif
+
 namespace Microsoft.Health.Fhir.CodeGen.Language.OpenApi;
 
 public partial class ModelBuilder
@@ -72,9 +76,14 @@ public partial class ModelBuilder
     private long _totalQueryParameters = 0;
     private long _totalParamInstances = 0;
 
+#if NET8_0_OR_GREATER
     // Match Markdown links [xxxxx](yyyy.html), where xxxx is a capitalized string
     [GeneratedRegex("(\\[[A-Z].*\\])\\((.*.html)\\)")]
     private static partial Regex MarkdownLinkRegex();
+    private static readonly Regex _markdownLinkRegex = MarkdownLinkRegex();
+#else
+    private static readonly Regex _markdownLinkRegex = new Regex("(\\[[A-Z].*\\])\\((.*.html)\\)", RegexOptions.Compiled);
+#endif
 
     /// <summary>Initializes a new instance of the <see cref="ModelBuilder"/> class.</summary>
     /// <param name="info">   The information.</param>
@@ -1122,12 +1131,12 @@ public partial class ModelBuilder
             foreach (string? resourceName in fhirOp.Resource.Select(r => r.GetLiteral()))
             {
                 if (string.IsNullOrEmpty(resourceName) ||
-                    !resources.ContainsKey(resourceName))
+                    !resources.ContainsKey(resourceName!))
                 {
                     continue;
                 }
 
-                StructureDefinition resource = resources[resourceName];
+                StructureDefinition resource = resources[resourceName!];
 
                 BuildResourceOperationOasPaths(
                     paths,
@@ -2911,7 +2920,7 @@ public partial class ModelBuilder
 
         if (_capResources.TryGetValue(resourceName, out CapabilityStatement.ResourceComponent? rComp))
         {
-            capabilityInteractions = InteractionsFor(rComp).ToHashSet();
+            capabilityInteractions = new(InteractionsFor(rComp));
         }
         else
         {
@@ -2950,7 +2959,7 @@ public partial class ModelBuilder
         }
 
         // we need to get parent resources to find operations that are defined on (e.g.) Resource
-        HashSet<string> resourceAndParents = _dc.GetResourceParents(resourceName).ToHashSet();
+        HashSet<string> resourceAndParents = new(_dc.GetResourceParents(resourceName));
 
         if (!resourceAndParents.Any())
         {
@@ -3145,7 +3154,7 @@ public partial class ModelBuilder
                 //string fixedDoc = string.IsNullOrEmpty(doc) ? string.Empty : Regex.Replace(doc, pattern, "$1(http://hl7.org/fhir/$2)");    // prefix those links with HL7 FHIR spec base
                 string fixedDoc = string.IsNullOrEmpty(capSp.Documentation)
                     ? string.Empty :
-                    MarkdownLinkRegex().Replace(capSp.Documentation, "$1(http://hl7.org/fhir/$2)");    // prefix those links with HL7 FHIR spec base
+                    _markdownLinkRegex.Replace(capSp.Documentation, "$1(http://hl7.org/fhir/$2)");    // prefix those links with HL7 FHIR spec base
 
                 // create a 'local' canonical for referencing
                 searchParameters.Add(new SearchParameter()
@@ -3221,7 +3230,7 @@ public partial class ModelBuilder
 
             Uri uriBase = string.IsNullOrEmpty(_caps?.Url)
                 ? new Uri("http://fhir-codegen-local/SearchParameter")
-                : new Uri(_caps.Url);
+                : new Uri(_caps!.Url);
 
             // if we have any query operations, make sure _query is added to this resource
             if (!used.Contains("_query"))
@@ -3249,7 +3258,7 @@ public partial class ModelBuilder
 
             Uri uriBase = string.IsNullOrEmpty(_caps?.Url)
                 ? new Uri("http://fhir-codegen-local/SearchParameter")
-                : new Uri(_caps.Url);
+                : new Uri(_caps!.Url);
 
             // if we have any query operations, make sure _query is added to this resource
             if (!used.Contains("_query"))
@@ -3582,11 +3591,11 @@ public partial class ModelBuilder
 
         if (!string.IsNullOrEmpty(_caps.Implementation?.Description))
         {
-            description = SanitizeDescription(_caps.Implementation.Description);
+            description = SanitizeDescription(_caps.Implementation!.Description);
         }
         else if (!string.IsNullOrEmpty(_caps.Software?.Name))
         {
-            description = SanitizeDescription(_caps.Software.Name);
+            description = SanitizeDescription(_caps.Software!.Name);
         }
         else
         {
@@ -3616,11 +3625,11 @@ public partial class ModelBuilder
         }
         else if (!string.IsNullOrEmpty(_caps?.Title))
         {
-            title = _caps.Title;
+            title = _caps!.Title;
         }
         else if (!string.IsNullOrEmpty(_caps?.Software.Name))
         {
-            title = _caps.Software.Name;
+            title = _caps!.Software.Name;
         }
         else
         {
@@ -3635,7 +3644,7 @@ public partial class ModelBuilder
         }
         else if (!string.IsNullOrEmpty(_caps?.Software.Version))
         {
-            version = _caps.Software.Version;
+            version = _caps!.Software.Version;
         }
         else if (_caps?.FhirVersion != null)
         {
@@ -4281,7 +4290,7 @@ public partial class ModelBuilder
             return _options.PerformDescriptionValidation ? "N/A." : string.Empty;
         }
 
-        value = MarkdownLinkRegex().Replace(value, "$1(http://hl7.org/fhir/$2)");    // prefix those links with HL7 FHIR spec base
+        value = _markdownLinkRegex.Replace(value, "$1(http://hl7.org/fhir/$2)");    // prefix those links with HL7 FHIR spec base
 
         if (!_options.PerformDescriptionValidation)
         {
