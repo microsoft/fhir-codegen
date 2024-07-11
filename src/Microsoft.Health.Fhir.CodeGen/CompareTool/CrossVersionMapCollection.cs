@@ -563,7 +563,7 @@ public class CrossVersionMapCollection
                 }
                 if (target.Invocation != null)
                 {
-                    tpV = VerifyInvocation(issues, parameterTypesByNameForRule, target.Invocation, targetResolver);
+                    tpV = VerifyInvocation(group, issues, parameterTypesByNameForRule, target.Invocation, targetResolver);
                 }
 
                 if (target.Transform != null)
@@ -571,9 +571,9 @@ public class CrossVersionMapCollection
                     Console.Write(" = transform");
                     if (target.Transform.Literal != null)
                     {
-                        Console.Write($" {target.Transform.Literal.RawText}");
-                        if (target.Transform.Literal.TokenType == FmlTokenTypeCodes.Id)
-                            ReportIssue(issues, $"Invalid token type `{target.Transform.Literal.TokenType}` parsing literal - likely should have been a target.transform.identifier @{target.Transform.Literal.Line}:{target.Transform.Literal.Column}", OperationOutcome.IssueType.Invalid);
+                        var literal = target.Transform.Literal;
+                        Console.Write($" {literal.RawText}");
+                        tpV = ResolveLiteralDataType(group, sourceResolver, issues, literal);
                     }
                     if (!string.IsNullOrEmpty(target.Transform.Identifier))
                     {
@@ -590,7 +590,7 @@ public class CrossVersionMapCollection
 
                     }
                     if (target.Transform.Invocation != null)
-                        tpV = VerifyInvocation(issues, parameterTypesByNameForRule, target.Transform.Invocation, targetResolver);
+                        tpV = VerifyInvocation(group, issues, parameterTypesByNameForRule, target.Transform.Invocation, targetResolver);
                     Console.Write($" : {tpV?.Element?.DebugString() ?? "?"}");
                 }
 
@@ -736,10 +736,59 @@ public class CrossVersionMapCollection
         }
     }
 
-    private static PropertyOrTypeDetails? VerifyInvocation(List<OperationOutcome.IssueComponent> issues, Dictionary<string, PropertyOrTypeDetails?> parameterTypesByNameForRule, FmlInvocation invocation, IAsyncResourceResolver targetResolver)
+    private static PropertyOrTypeDetails? ResolveLiteralDataType(GroupDeclaration group, IAsyncResourceResolver sourceResolver, List<OperationOutcome.IssueComponent> issues, LiteralValue literal)
+    {
+        if (literal.TokenType == FmlTokenTypeCodes.Id)
+            ReportIssue(issues, $"Invalid token type `{literal.TokenType}` parsing literal - likely should have been a target.transform.identifier @{literal.Line}:{literal.Column}", OperationOutcome.IssueType.Invalid);
+        // todo: resolve this type
+        string? typeName = null;
+        switch (literal.TokenType)
+        {
+            case FmlTokenTypeCodes.SingleQuotedString: typeName = "string"; break;
+            case FmlTokenTypeCodes.DoubleQuotedString: typeName = "string"; break;
+            case FmlTokenTypeCodes.Bool: typeName = "boolean"; break;
+            case FmlTokenTypeCodes.Date: typeName = "date"; break;
+            case FmlTokenTypeCodes.DateTime: typeName = "dateTime"; break;
+            case FmlTokenTypeCodes.Time: typeName = "time"; break;
+            case FmlTokenTypeCodes.Integer: typeName = "integer"; break;
+            case FmlTokenTypeCodes.LongInteger: typeName = "integer64"; break;
+            case FmlTokenTypeCodes.Decimal: typeName = "decimal"; break;
+                // quantity?
+        }
+        return ResolveDataTypeFromName(group, sourceResolver, issues, literal, typeName);
+    }
+
+    private static PropertyOrTypeDetails? ResolveDataTypeFromName(GroupDeclaration group, IAsyncResourceResolver sourceResolver, List<OperationOutcome.IssueComponent> issues, FmlNode literal, string? typeName)
+    {
+        if (typeName != null)
+        {
+            if (!typeName.Contains(':')) // assume this is a FHIR type
+                typeName = "http://hl7.org/fhir/StructureDefinition/" + typeName;
+            var sdCastType = sourceResolver.FindStructureDefinitionAsync(typeName).WaitResult();
+            if (sdCastType == null)
+            {
+                string msg = $"Unable to resolve type `{typeName}` in {group.Name} at @{literal.Line}:{literal.Column}";
+                ReportIssue(issues, msg, OperationOutcome.IssueType.Duplicate);
+            }
+            else
+            {
+                var sw = new StructureDefinitionWalker(sdCastType, sourceResolver);
+                return new PropertyOrTypeDetails
+                {
+                    Resolver = sourceResolver,
+                    Element = sw.Current
+                };
+            }
+        }
+
+        return null;
+    }
+
+    private static PropertyOrTypeDetails? VerifyInvocation(GroupDeclaration group, List<OperationOutcome.IssueComponent> issues, Dictionary<string, PropertyOrTypeDetails?> parameterTypesByNameForRule, FmlInvocation invocation, IAsyncResourceResolver targetResolver)
     {
         // deduce the return type of the invocation
         Console.Write($" {invocation.Identifier}(");
+        PropertyOrTypeDetails? parameterTypeForFirstParam = null;
         foreach (var p in invocation.Parameters)
         {
             if (p != invocation.Parameters.First())
@@ -764,7 +813,10 @@ public class CrossVersionMapCollection
             {
                 // TODO: resolve the type of the literal
                 Console.Write($" {p.Literal.RawText}");
+                parameterTypeV = ResolveLiteralDataType(group, targetResolver, issues, p.Literal);
             }
+            if (p == invocation.Parameters.First())
+                parameterTypeForFirstParam = parameterTypeV;
             Console.Write($" : {parameterTypeV?.Element?.DebugString() ?? "?"}");
         }
         Console.Write(" )");
@@ -775,30 +827,71 @@ public class CrossVersionMapCollection
                 var literal = invocation.Parameters.FirstOrDefault()?.Literal;
                 if (literal != null)
                 {
-                    string? typeName = literal.ValueAsString;
-                    if (!typeName.Contains(':')) // assume this is a FHIR type
-                        typeName = "http://hl7.org/fhir/StructureDefinition/" + typeName;
-                    var sdCastType = targetResolver.FindStructureDefinitionAsync(typeName).WaitResult();
-                    if (sdCastType == null)
-                    {
-                        string msg = $"Unable to resolve type `{typeName}` to create at @{literal.Line}:{literal.Column}";
-                        ReportIssue(issues, msg, OperationOutcome.IssueType.Duplicate);
-                    }
-                    else
-                    {
-                        var sw = new StructureDefinitionWalker(sdCastType, targetResolver);
-                        return new PropertyOrTypeDetails
-                        {
-                            Resolver = targetResolver,
-                            Element = sw.Current
-                        };
-                    }
+                    string typeName = literal.ValueAsString;
+                    return ResolveDataTypeFromName(group, targetResolver, issues, literal, typeName);
                 }
                 else
                 {
                     string msg = $"No type parameter for create at @{invocation.Line}:{invocation.Column}";
                     ReportIssue(issues, msg, OperationOutcome.IssueType.Duplicate);
                 }
+                break;
+
+            case "copy":
+                return parameterTypeForFirstParam;
+
+            case "truncate":
+                return ResolveDataTypeFromName(group, targetResolver, issues, invocation, "string");
+
+            case "escape":
+                return ResolveDataTypeFromName(group, targetResolver, issues, invocation, "string");
+
+            // cast?
+
+            case "append":
+                return ResolveDataTypeFromName(group, targetResolver, issues, invocation, "string");
+
+            case "translate":
+                // Check that the parameters are correct for the translate operation
+                if (invocation.Parameters.Count < 2)
+                {
+                    string msg = $"Translate missing transform parameters at @{invocation.Line}:{invocation.Column}";
+                    ReportIssue(issues, msg, OperationOutcome.IssueType.Duplicate);
+                }
+                // This will just return the datatype of the first parameter (as it's meant to just convert that value with the definition in the second parameter)
+                return parameterTypeForFirstParam;
+
+            case "reference":
+                return ResolveDataTypeFromName(group, targetResolver, issues, invocation, "string");
+
+            // dateOp?
+
+            case "uuid":
+                return ResolveDataTypeFromName(group, targetResolver, issues, invocation, "uuid");
+
+            case "pointer":
+                return ResolveDataTypeFromName(group, targetResolver, issues, invocation, "string");
+
+            // case "evaluate": // FHIRpath expression - wish I could use the Fhirpath static validator here
+
+            case "cc":
+                return ResolveDataTypeFromName(group, targetResolver, issues, invocation, "CodeableConcept");
+
+            case "c":
+                return ResolveDataTypeFromName(group, targetResolver, issues, invocation, "Coding");
+
+            case "qty":
+                return ResolveDataTypeFromName(group, targetResolver, issues, invocation, "Quantity");
+
+            case "id":
+                return ResolveDataTypeFromName(group, targetResolver, issues, invocation, "Identifier");
+
+            case "cp":
+                return ResolveDataTypeFromName(group, targetResolver, issues, invocation, "ContactPoint");
+
+            default:
+                string msgUnhandled = $"Invocation of `{invocation.Identifier}` not handled yet at @{invocation.Line}:{invocation.Column}";
+                ReportIssue(issues, msgUnhandled, OperationOutcome.IssueType.Duplicate);
                 break;
         }
 
