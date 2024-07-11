@@ -603,7 +603,12 @@ public class TypeScript : ILanguage
 
     private static string BuildCommentString(ElementDefinition ed)
     {
-        string[] values = (!string.IsNullOrEmpty(ed.Definition) && !string.IsNullOrEmpty(ed.Short) && ed.Definition.StartsWith(ed.Short))
+        bool skipShort = !string.IsNullOrEmpty(ed.Definition) && !string.IsNullOrEmpty(ed.Short) && ed.Definition.StartsWith(ed.Short);
+
+        // check for a code element and the short containing codes
+        skipShort = skipShort || (ed.cgHasCodes() && ed.Short.Split('|').Length > 2);
+
+        string[] values = skipShort
             ? new[] { ed.Definition, ed.Comment }
             : new[] { ed.Short, ed.Definition, ed.Comment };
         return string.Join('\n', values.Where(s => !string.IsNullOrEmpty(s)).Distinct()).Trim();

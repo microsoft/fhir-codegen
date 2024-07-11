@@ -719,7 +719,16 @@ public class LangInfo : ILanguage
 
         if (!ed.Path.Contains('.'))
         {
-            propertyType = sd.Name;
+            string baseTypeName = ed.cgBaseTypeName(_definitions, false);
+
+            if (!string.IsNullOrEmpty(baseTypeName))
+            {
+                propertyType = baseTypeName + "::" + sd.Name;
+            }
+            else
+            {
+                propertyType = sd.Name;
+            }
         }
         else if (ed.Type.Count != 0)
         {

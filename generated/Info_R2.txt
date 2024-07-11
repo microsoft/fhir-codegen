@@ -1,4 +1,4 @@
-﻿Contents of: hl7.fhir.r2.expansions@1.0.2, hl7.fhir.r2.core@1.0.2
+Contents of: hl7.fhir.r2.expansions@1.0.2, hl7.fhir.r2.core@1.0.2
   Primitive Naming Style: CamelCase
   Element Naming Style: CamelCase
   Complex Type / Resource Naming Style: PascalCase
@@ -50,7 +50,7 @@ Primitive Types: 18
 - xhtml: xhtml::xhtml (draft)
 Complex Types: 28
 - Address: Element (draft) (abstract: False)
-  ^address[0..*]: Address
+  ^address[0..*]: Element::Address
   - id[0..1]: id
   - extension[0..*]: Extension
   - use[0..1]: code
@@ -66,7 +66,7 @@ Complex Types: 28
   - country[0..1]: string
   - period[0..1]: Period
 - Age: Quantity (draft) (abstract: False)
-  ^quantity[0..*]: Age constraints: age-1, qty-3
+  ^quantity[0..*]: Quantity::Age constraints: age-1, qty-3
   !age-1: local error: 
   !qty-3: local error: 
   - id[0..1]: id
@@ -85,14 +85,14 @@ Complex Types: 28
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType
     - valueCode[1..1]: code
 - Annotation: Element (draft) (abstract: False)
-  ^annotation[0..*]: Annotation
+  ^annotation[0..*]: Element::Annotation
   - id[0..1]: id
   - extension[0..*]: Extension
   - author[x][0..1]: Reference(Practitioner|Patient|RelatedPerson)|string
   - time[0..1]: dateTime
   - text[1..1]: string
 - Attachment: Element (draft) (abstract: False)
-  ^attachment[0..*]: Attachment constraints: att-1
+  ^attachment[0..*]: Element::Attachment constraints: att-1
   !att-1: local error: 
   - id[0..1]: id
   - extension[0..*]: Extension
@@ -105,18 +105,18 @@ Complex Types: 28
   - title[0..1]: string
   - creation[0..1]: dateTime
 - BackboneElement: Element (draft) (abstract: False)
-  ^backboneElement[0..*]: BackboneElement
+  ^backboneElement[0..*]: Element::BackboneElement
   - id[0..1]: id
   - extension[0..*]: Extension
   - modifierExtension[0..*]: Extension
 - CodeableConcept: Element (draft) (abstract: False)
-  ^codeableConcept[0..*]: CodeableConcept
+  ^codeableConcept[0..*]: Element::CodeableConcept
   - id[0..1]: id
   - extension[0..*]: Extension
   - coding[0..*]: Coding
   - text[0..1]: string
 - Coding: Element (draft) (abstract: False)
-  ^coding[0..*]: Coding
+  ^coding[0..*]: Element::Coding
   - id[0..1]: id
   - extension[0..*]: Extension
   - system[0..1]: uri
@@ -125,7 +125,7 @@ Complex Types: 28
   - display[0..1]: string
   - userSelected[0..1]: boolean
 - ContactPoint: Element (draft) (abstract: False)
-  ^contactPoint[0..*]: ContactPoint constraints: cpt-2
+  ^contactPoint[0..*]: Element::ContactPoint constraints: cpt-2
   !cpt-2: local error: 
   - id[0..1]: id
   - extension[0..*]: Extension
@@ -137,7 +137,7 @@ Complex Types: 28
   - rank[0..1]: positiveInt
   - period[0..1]: Period
 - Count: Quantity (draft) (abstract: False)
-  ^quantity[0..*]: Count constraints: cnt-1, qty-3
+  ^quantity[0..*]: Quantity::Count constraints: cnt-1, qty-3
   !cnt-1: local error: 
   !qty-3: local error: 
   - id[0..1]: id
@@ -156,7 +156,7 @@ Complex Types: 28
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType
     - valueCode[1..1]: code
 - Distance: Quantity (draft) (abstract: False)
-  ^quantity[0..*]: Distance constraints: dis-1, qty-3
+  ^quantity[0..*]: Quantity::Distance constraints: dis-1, qty-3
   !dis-1: local error: 
   !qty-3: local error: 
   - id[0..1]: id
@@ -175,7 +175,7 @@ Complex Types: 28
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType
     - valueCode[1..1]: code
 - Duration: Quantity (draft) (abstract: False)
-  ^quantity[0..*]: Duration constraints: drt-1, qty-3
+  ^quantity[0..*]: Quantity::Duration constraints: drt-1, qty-3
   !drt-1: local error: 
   !qty-3: local error: 
   - id[0..1]: id
@@ -194,12 +194,12 @@ Complex Types: 28
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType
     - valueCode[1..1]: code
 - Element: Element (draft) (abstract: True)
-  ^element[0..*]: Element constraints: ele-1 conditions: ele-1
+  ^element[0..*]: Element::Element constraints: ele-1 conditions: ele-1
   !ele-1: local error: 
   - id[0..1]: id
   - extension[0..*]: Extension
 - ElementDefinition: Element (draft) (abstract: False)
-  ^elementDefinition[0..*]: ElementDefinition constraints: eld-2, eld-5, eld-6, eld-7, eld-8, eld-11, eld-13, eld-14, eld-15
+  ^elementDefinition[0..*]: Element::ElementDefinition constraints: eld-2, eld-5, eld-6, eld-7, eld-8, eld-11, eld-13, eld-14, eld-15
   !eld-1: local error: 
   !eld-2: local error: 
   !eld-3: local error: 
@@ -319,13 +319,13 @@ Complex Types: 28
     - language[0..1]: code
     - map[1..1]: string
 - Extension: Element (draft) (abstract: False)
-  ^extension[0..*]: Extension
+  ^extension[0..*]: Extension::Extension
   - id[0..1]: id
   - extension[0..*]: Extension
   - url[1..1]: uri
   - value[x][0..1]: Address|Annotation|Attachment|base64Binary|boolean|code|CodeableConcept|Coding|ContactPoint|date|dateTime|decimal|HumanName|id|Identifier|instant|integer|markdown|Meta|oid|Period|positiveInt|Quantity|Range|Ratio|Reference|SampledData|Signature|string|time|Timing|unsignedInt|uri
 - HumanName: Element (draft) (abstract: False)
-  ^humanName[0..*]: HumanName
+  ^humanName[0..*]: Element::HumanName
   - id[0..1]: id
   - extension[0..*]: Extension
   - use[0..1]: code
@@ -353,7 +353,7 @@ Complex Types: 28
       - valueCode[1..1]: code
   - period[0..1]: Period
 - Identifier: Element (draft) (abstract: False)
-  ^identifier[0..*]: Identifier
+  ^identifier[0..*]: Element::Identifier
   - id[0..1]: id
   - extension[0..*]: Extension
   - use[0..1]: code
@@ -364,7 +364,7 @@ Complex Types: 28
   - period[0..1]: Period
   - assigner[0..1]: Reference(Organization)
 - Meta: Element (draft) (abstract: False)
-  ^meta[0..*]: Meta
+  ^meta[0..*]: Element::Meta
   - id[0..1]: id
   - extension[0..*]: Extension
   - versionId[0..1]: id
@@ -373,7 +373,7 @@ Complex Types: 28
   - security[0..*]: Coding
   - tag[0..*]: Coding
 - Money: Quantity (draft) (abstract: False)
-  ^quantity[0..*]: Money constraints: mny-1, qty-3
+  ^quantity[0..*]: Quantity::Money constraints: mny-1, qty-3
   !mny-1: local error: 
   !qty-3: local error: 
   - id[0..1]: id
@@ -392,7 +392,7 @@ Complex Types: 28
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType
     - valueCode[1..1]: code
 - Narrative: Element (draft) (abstract: False)
-  ^narrative[0..*]: Narrative
+  ^narrative[0..*]: Element::Narrative
   !txt-1: local error: 
   !txt-2: local error: 
   !txt-3: local error: 
@@ -402,14 +402,14 @@ Complex Types: 28
     {generated|extensions|additional|empty}
   - div[1..1]: xhtml constraints: txt-1, txt-2, txt-3
 - Period: Element (draft) (abstract: False)
-  ^period[0..*]: Period constraints: per-1
+  ^period[0..*]: Element::Period constraints: per-1
   !per-1: local error: 
   - id[0..1]: id
   - extension[0..*]: Extension
   - start[0..1]: dateTime conditions: per-1
   - end[0..1]: dateTime conditions: per-1
 - Quantity: Element (draft) (abstract: False)
-  ^quantity[0..*]: Quantity constraints: qty-3
+  ^quantity[0..*]: Element::Quantity constraints: qty-3
   !qty-3: local error: 
   - id[0..1]: id
   - extension[0..*]: Extension
@@ -420,28 +420,28 @@ Complex Types: 28
   - system[0..1]: uri conditions: qty-3
   - code[0..1]: code
 - Range: Element (draft) (abstract: False)
-  ^range[0..*]: Range constraints: rng-2
+  ^range[0..*]: Element::Range constraints: rng-2
   !rng-2: local error: 
   - id[0..1]: id
   - extension[0..*]: Extension
   - low[0..1]: Quantity(SimpleQuantity) conditions: rng-2
   - high[0..1]: Quantity(SimpleQuantity) conditions: rng-2
 - Ratio: Element (draft) (abstract: False)
-  ^ratio[0..*]: Ratio constraints: rat-1
+  ^ratio[0..*]: Element::Ratio constraints: rat-1
   !rat-1: local error: 
   - id[0..1]: id
   - extension[0..*]: Extension
   - numerator[0..1]: Quantity
   - denominator[0..1]: Quantity
 - Reference: Element (draft) (abstract: False)
-  ^reference[0..*]: Reference constraints: ref-1
+  ^reference[0..*]: Element::Reference constraints: ref-1
   !ref-1: local error: 
   - id[0..1]: id
   - extension[0..*]: Extension
   - reference[0..1]: string conditions: ref-1
   - display[0..1]: string
 - SampledData: Element (draft) (abstract: False)
-  ^sampledData[0..*]: SampledData
+  ^sampledData[0..*]: Element::SampledData
   - id[0..1]: id
   - extension[0..*]: Extension
   - origin[1..1]: Quantity(SimpleQuantity)
@@ -453,7 +453,7 @@ Complex Types: 28
   - dimensions[1..1]: positiveInt
   - data[1..1]: string
 - Signature: Element (draft) (abstract: False)
-  ^signature[0..*]: Signature
+  ^signature[0..*]: Element::Signature
   - id[0..1]: id
   - extension[0..*]: Extension
   - type[1..*]: Coding
@@ -462,7 +462,7 @@ Complex Types: 28
   - contentType[1..1]: code
   - blob[1..1]: base64Binary
 - SimpleQuantity: Quantity (draft) (abstract: False)
-  ^quantity[0..*]: SimpleQuantity constraints: qty-3, sqty-1
+  ^quantity[0..*]: Quantity::SimpleQuantity constraints: qty-3, sqty-1
   !qty-3: local error: 
   !sqty-1: local error: 
   - id[0..1]: id
@@ -481,7 +481,7 @@ Complex Types: 28
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType
     - valueCode[1..1]: code
 - Timing: Element (draft) (abstract: False)
-  ^timing[0..*]: Timing
+  ^timing[0..*]: Element::Timing
   !tim-1: local error: 
   !tim-2: local error: 
   !tim-3: local error: 
@@ -513,7 +513,7 @@ Complex Types: 28
   - code[0..1]: CodeableConcept
 Resources: 96
 - Account: DomainResource (draft FMM: 0) (abstract: False)
-  ^account[0..*]: Account (W5: financial.support)
+  ^account[0..*]: DomainResource::Account (W5: financial.support)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -543,7 +543,7 @@ Resources: 96
   ?subject: subject=reference
   ?type: type=token
 - AllergyIntolerance: DomainResource (draft FMM: 1) (abstract: False)
-  ^allergyIntolerance[0..*]: AllergyIntolerance (W5: clinical.general)
+  ^allergyIntolerance[0..*]: DomainResource::AllergyIntolerance (W5: clinical.general)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -637,7 +637,7 @@ Resources: 96
     -daf-allergyintolerance: http://hl7.org/fhir/StructureDefinition/daf-allergyintolerance (U.S.DataAccessFramework(DAF)AllergyIntoleranceProfile)
     -qicore-allergyintolerance: http://hl7.org/fhir/StructureDefinition/qicore-allergyintolerance (QICore-AllergyIntolerance)
 - Appointment: DomainResource (draft FMM: 1) (abstract: False)
-  ^appointment[0..*]: Appointment constraints: app-2, app-3 (W5: workflow.scheduling)
+  ^appointment[0..*]: DomainResource::Appointment constraints: app-2, app-3 (W5: workflow.scheduling)
   !app-1: local error: 
   !app-2: local error: 
   !app-3: local error: 
@@ -680,7 +680,7 @@ Resources: 96
   ?practitioner: practitioner=reference
   ?status: status=token
 - AppointmentResponse: DomainResource (draft FMM: 1) (abstract: False)
-  ^appointmentResponse[0..*]: AppointmentResponse constraints: apr-1 (W5: workflow.scheduling)
+  ^appointmentResponse[0..*]: DomainResource::AppointmentResponse constraints: apr-1 (W5: workflow.scheduling)
   !apr-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -707,7 +707,7 @@ Resources: 96
   ?patient: patient=reference
   ?practitioner: practitioner=reference
 - AuditEvent: DomainResource (draft FMM: 2) (abstract: False)
-  ^auditEvent[0..*]: AuditEvent (W5: infrastructure.information)
+  ^auditEvent[0..*]: DomainResource::AuditEvent (W5: infrastructure.information)
   !sev-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -797,7 +797,7 @@ Resources: 96
   Profiles[AuditEvent]: 1
     -ehrsrle-auditevent: http://hl7.org/fhir/StructureDefinition/ehrsrle-auditevent (EHRSFMRecordLifecycleEvent-AuditEvent)
 - Basic: DomainResource (draft FMM: 1) (abstract: False)
-  ^basic[0..*]: Basic (W5: infrastructure.structure)
+  ^basic[0..*]: DomainResource::Basic (W5: infrastructure.structure)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -849,7 +849,7 @@ Resources: 96
   Profiles[Basic]: 1
     -qicore-adverseevent: http://hl7.org/fhir/StructureDefinition/qicore-adverseevent (QICore-AdverseEvent)
 - Binary: Resource (draft FMM: 1) (abstract: False)
-  ^binary[0..*]: Binary (W5: infrastructure.structure)
+  ^binary[0..*]: Resource::Binary (W5: infrastructure.structure)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -858,7 +858,7 @@ Resources: 96
   - content[1..1]: base64Binary
   ?contenttype: contenttype=token
 - BodySite: DomainResource (draft FMM: 0) (abstract: False)
-  ^bodySite[0..*]: BodySite (W5: clinical.diagnostics)
+  ^bodySite[0..*]: DomainResource::BodySite (W5: clinical.diagnostics)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -879,7 +879,7 @@ Resources: 96
   Profiles[BodySite]: 1
     -qicore-bodysite: http://hl7.org/fhir/StructureDefinition/qicore-bodysite (QICore-BodySite)
 - Bundle: Resource (draft FMM: 2) (abstract: False)
-  ^bundle[0..*]: Bundle constraints: bdl-1, bdl-2, bdl-3, bdl-4, bdl-7 (W5: infrastructure.structure)
+  ^bundle[0..*]: Resource::Bundle constraints: bdl-1, bdl-2, bdl-3, bdl-4, bdl-7 (W5: infrastructure.structure)
   !bdl-1: local error: 
   !bdl-2: local error: 
   !bdl-3: local error: 
@@ -946,7 +946,7 @@ Resources: 96
   ?message: message=reference
   ?type: type=token
 - CarePlan: DomainResource (draft FMM: 1) (abstract: False)
-  ^carePlan[0..*]: CarePlan (W5: clinical.careprovision)
+  ^carePlan[0..*]: DomainResource::CarePlan (W5: clinical.careprovision)
   !cpl-3: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -1030,7 +1030,7 @@ Resources: 96
   Profiles[CarePlan]: 1
     -argonaut-careplan: http://hl7.org/fhir/StructureDefinition/argonaut-careplan (ArgonautProfileForCarePlan)
 - Claim: DomainResource (draft FMM: 0) (abstract: False)
-  ^claim[0..*]: Claim (W5: financial.billing)
+  ^claim[0..*]: DomainResource::Claim (W5: financial.billing)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -1156,7 +1156,7 @@ Resources: 96
   ?provider: provider=reference
   ?use: use=token
 - ClaimResponse: DomainResource (draft FMM: 0) (abstract: False)
-  ^claimResponse[0..*]: ClaimResponse (W5: financial.billing)
+  ^claimResponse[0..*]: DomainResource::ClaimResponse (W5: financial.billing)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -1281,7 +1281,7 @@ Resources: 96
     - originalRuleset[0..1]: Coding
   ?identifier: identifier=token
 - ClinicalImpression: DomainResource (draft FMM: 0) (abstract: False)
-  ^clinicalImpression[0..*]: ClinicalImpression (W5: clinical.general)
+  ^clinicalImpression[0..*]: DomainResource::ClinicalImpression (W5: clinical.general)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -1338,7 +1338,7 @@ Resources: 96
   ?trigger: trigger=reference
   ?trigger-code: trigger-code=token
 - Communication: DomainResource (draft FMM: 1) (abstract: False)
-  ^communication[0..*]: Communication (W5: workflow.encounter)
+  ^communication[0..*]: DomainResource::Communication (W5: workflow.encounter)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -1387,7 +1387,7 @@ Resources: 96
   Profiles[Communication]: 1
     -qicore-communication: http://hl7.org/fhir/StructureDefinition/qicore-communication (QICore-Communication)
 - CommunicationRequest: DomainResource (draft FMM: 1) (abstract: False)
-  ^communicationRequest[0..*]: CommunicationRequest (W5: workflow.order)
+  ^communicationRequest[0..*]: DomainResource::CommunicationRequest (W5: workflow.order)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -1438,7 +1438,7 @@ Resources: 96
   Profiles[CommunicationRequest]: 1
     -qicore-communicationrequest: http://hl7.org/fhir/StructureDefinition/qicore-communicationrequest (QICore-CommunicationRequest)
 - Composition: DomainResource (draft FMM: 2) (abstract: False)
-  ^composition[0..*]: Composition (W5: infrastructure.documents)
+  ^composition[0..*]: DomainResource::Composition (W5: infrastructure.documents)
   !cmp-1: local error: 
   !cmp-2: local error: 
   - id[0..1]: id
@@ -1520,7 +1520,7 @@ Resources: 96
     -clinicaldocument: http://hl7.org/fhir/StructureDefinition/clinicaldocument (ClinicalDocumentProfileForComposition)
     -measurereport: http://hl7.org/fhir/StructureDefinition/measurereport (ProfileForMeasureReports)
 - ConceptMap: DomainResource (draft FMM: 2) (abstract: False)
-  ^conceptMap[0..*]: ConceptMap (W5: conformance.terminology)
+  ^conceptMap[0..*]: DomainResource::ConceptMap (W5: conformance.terminology)
   !cmd-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -1617,7 +1617,7 @@ Resources: 96
     Out: message: String[0..1]
     Out: match: [0..*]
 - Condition: DomainResource (draft FMM: 2) (abstract: False)
-  ^condition[0..*]: Condition (W5: clinical.general)
+  ^condition[0..*]: DomainResource::Condition (W5: clinical.general)
   !con-1: local error: 
   !con-2: local error: 
   - id[0..1]: id
@@ -1691,7 +1691,7 @@ Resources: 96
     -uslab-cond: http://hl7.org/fhir/StructureDefinition/uslab-cond (USLaboratoryConditionProfile)
     -uslab-reasonforstudy: http://hl7.org/fhir/StructureDefinition/uslab-reasonforstudy (USLaboratoryConditionProfile)
 - Conformance: DomainResource (draft FMM: 2) (abstract: False)
-  ^conformance[1..1]: Conformance constraints: cnf-1, cnf-2, cnf-3, cnf-7, cnf-8, cnf-14, cnf-15 (W5: conformance.behavior)
+  ^conformance[1..1]: DomainResource::Conformance constraints: cnf-1, cnf-2, cnf-3, cnf-7, cnf-8, cnf-14, cnf-15 (W5: conformance.behavior)
   !cnf-1: local error: 
   !cnf-2: local error: 
   !cnf-3: local error: 
@@ -1922,7 +1922,7 @@ Resources: 96
   ?url: url=uri
   ?version: version=token
 - Contract: DomainResource (draft FMM: 0) (abstract: False)
-  ^contract[0..*]: Contract (W5: financial.other)
+  ^contract[0..*]: DomainResource::Contract (W5: financial.other)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2022,7 +2022,7 @@ Resources: 96
   Profiles[Contract]: 1
     -consentdirective: http://hl7.org/fhir/StructureDefinition/consentdirective (ConsentDirective)
 - Coverage: DomainResource (draft FMM: 0) (abstract: False)
-  ^coverage[0..*]: Coverage (W5: financial.support)
+  ^coverage[0..*]: DomainResource::Coverage (W5: financial.support)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2054,7 +2054,7 @@ Resources: 96
   ?subplan: subplan=token
   ?type: type=token
 - DataElement: DomainResource (draft FMM: 1) (abstract: False)
-  ^dataElement[0..*]: DataElement (W5: conformance.content)
+  ^dataElement[0..*]: DomainResource::DataElement (W5: conformance.content)
   !dae-1: local error: 
   !dae-2: local error: 
   - id[0..1]: id
@@ -2141,7 +2141,7 @@ Resources: 96
     -sdc-element: http://hl7.org/fhir/StructureDefinition/sdc-element (StructuredDataCaptureDataElement)
     -sdcde-dataelement: http://hl7.org/fhir/StructureDefinition/sdcde-dataelement (StructuredDataCaptureDataElementExchange)
 - DetectedIssue: DomainResource (draft FMM: 1) (abstract: False)
-  ^detectedIssue[0..*]: DetectedIssue (W5: clinical.general)
+  ^detectedIssue[0..*]: DomainResource::DetectedIssue (W5: clinical.general)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2174,7 +2174,7 @@ Resources: 96
   ?implicated: implicated=reference
   ?patient: patient=reference
 - Device: DomainResource (draft FMM: 1) (abstract: False)
-  ^device[0..*]: Device (W5: administrative.device)
+  ^device[0..*]: DomainResource::Device (W5: administrative.device)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2212,7 +2212,7 @@ Resources: 96
   Profiles[Device]: 1
     -qicore-device: http://hl7.org/fhir/StructureDefinition/qicore-device (QICore-Device)
 - DeviceComponent: DomainResource (draft FMM: 1) (abstract: False)
-  ^deviceComponent[0..*]: DeviceComponent (W5: administrative.device)
+  ^deviceComponent[0..*]: DomainResource::DeviceComponent (W5: administrative.device)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2242,7 +2242,7 @@ Resources: 96
   ?source: source=reference
   ?type: type=token
 - DeviceMetric: DomainResource (draft FMM: 1) (abstract: False)
-  ^deviceMetric[0..*]: DeviceMetric (W5: administrative.device)
+  ^deviceMetric[0..*]: DomainResource::DeviceMetric (W5: administrative.device)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2278,7 +2278,7 @@ Resources: 96
   ?source: source=reference
   ?type: type=token
 - DeviceUseRequest: DomainResource (draft FMM: 0) (abstract: False)
-  ^deviceUseRequest[0..*]: DeviceUseRequest (W5: workflow.order)
+  ^deviceUseRequest[0..*]: DomainResource::DeviceUseRequest (W5: workflow.order)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2312,7 +2312,7 @@ Resources: 96
   Profiles[DeviceUseRequest]: 1
     -qicore-deviceuserequest: http://hl7.org/fhir/StructureDefinition/qicore-deviceuserequest (QICore-DeviceUseRequest)
 - DeviceUseStatement: DomainResource (draft FMM: 0) (abstract: False)
-  ^deviceUseStatement[0..*]: DeviceUseStatement (W5: workflow.order)
+  ^deviceUseStatement[0..*]: DomainResource::DeviceUseStatement (W5: workflow.order)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2336,7 +2336,7 @@ Resources: 96
   Profiles[DeviceUseStatement]: 1
     -qicore-deviceusestatement: http://hl7.org/fhir/StructureDefinition/qicore-deviceusestatement (QICore-DeviceUseStatement)
 - DiagnosticOrder: DomainResource (draft FMM: 1) (abstract: False)
-  ^diagnosticOrder[0..*]: DiagnosticOrder (W5: clinical.diagnostics)
+  ^diagnosticOrder[0..*]: DomainResource::DiagnosticOrder (W5: clinical.diagnostics)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2412,7 +2412,7 @@ Resources: 96
     -qicore-diagnosticorder: http://hl7.org/fhir/StructureDefinition/qicore-diagnosticorder (QICore-DiagnosticOrder)
     -uslab-do: http://hl7.org/fhir/StructureDefinition/uslab-do (USLaboratoryDiagnosticOrderProfile)
 - DiagnosticReport: DomainResource (draft FMM: 3) (abstract: False)
-  ^diagnosticReport[0..*]: DiagnosticReport (W5: clinical.diagnostics)
+  ^diagnosticReport[0..*]: DomainResource::DiagnosticReport (W5: clinical.diagnostics)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2470,7 +2470,7 @@ Resources: 96
     -qicore-diagnosticreport: http://hl7.org/fhir/StructureDefinition/qicore-diagnosticreport (QICore-DiagnosticReport)
     -uslab-dr: http://hl7.org/fhir/StructureDefinition/uslab-dr (USLaboratoryDiagnosticReportProfile)
 - DocumentManifest: DomainResource (draft FMM: 1) (abstract: False)
-  ^documentManifest[0..*]: DocumentManifest (W5: infrastructure.documents)
+  ^documentManifest[0..*]: DomainResource::DocumentManifest (W5: infrastructure.documents)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2517,7 +2517,7 @@ Resources: 96
   Profiles[DocumentManifest]: 1
     -xdsdocumentmanifest: http://hl7.org/fhir/StructureDefinition/xdsdocumentmanifest (XDSProfileForDocumentReference)
 - DocumentReference: DomainResource (draft FMM: 2) (abstract: False)
-  ^documentReference[0..*]: DocumentReference (W5: infrastructure.documents)
+  ^documentReference[0..*]: DomainResource::DocumentReference (W5: infrastructure.documents)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2599,7 +2599,7 @@ Resources: 96
   Profiles[DocumentReference]: 1
     -xdsdocumentreference: http://hl7.org/fhir/StructureDefinition/xdsdocumentreference (XDSProfileForDocumentReference)
 - DomainResource: Resource (draft FMM: 2) (abstract: True)
-  ^domainResource[0..*]: DomainResource constraints: dom-1, dom-2, dom-3, dom-4
+  ^domainResource[0..*]: Resource::DomainResource constraints: dom-1, dom-2, dom-3, dom-4
   !dom-1: local error: 
   !dom-2: local error: 
   !dom-3: local error: 
@@ -2613,7 +2613,7 @@ Resources: 96
   - extension[0..*]: Extension
   - modifierExtension[0..*]: Extension
 - EligibilityRequest: DomainResource (draft FMM: 0) (abstract: False)
-  ^eligibilityRequest[0..*]: EligibilityRequest (W5: financial.support)
+  ^eligibilityRequest[0..*]: DomainResource::EligibilityRequest (W5: financial.support)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2631,7 +2631,7 @@ Resources: 96
   - organization[0..1]: Reference(Organization)
   ?identifier: identifier=token
 - EligibilityResponse: DomainResource (draft FMM: 0) (abstract: False)
-  ^eligibilityResponse[0..*]: EligibilityResponse (W5: financial.support)
+  ^eligibilityResponse[0..*]: DomainResource::EligibilityResponse (W5: financial.support)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2653,7 +2653,7 @@ Resources: 96
   - requestOrganization[0..1]: Reference(Organization)
   ?identifier: identifier=token
 - Encounter: DomainResource (draft FMM: 1) (abstract: False)
-  ^encounter[0..*]: Encounter (W5: workflow.encounter)
+  ^encounter[0..*]: DomainResource::Encounter (W5: workflow.encounter)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2757,7 +2757,7 @@ Resources: 96
     -daf-encounter: http://hl7.org/fhir/StructureDefinition/daf-encounter (U.S.DataAccessFramework(DAF)EncounterProfile)
     -qicore-encounter: http://hl7.org/fhir/StructureDefinition/qicore-encounter (QICore-Encounter)
 - EnrollmentRequest: DomainResource (draft FMM: 0) (abstract: False)
-  ^enrollmentRequest[0..*]: EnrollmentRequest (W5: financial.support)
+  ^enrollmentRequest[0..*]: DomainResource::EnrollmentRequest (W5: financial.support)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2780,7 +2780,7 @@ Resources: 96
   ?patient: patient=reference
   ?subject: subject=reference
 - EnrollmentResponse: DomainResource (draft FMM: 0) (abstract: False)
-  ^enrollmentResponse[0..*]: EnrollmentResponse (W5: financial.support)
+  ^enrollmentResponse[0..*]: DomainResource::EnrollmentResponse (W5: financial.support)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2802,7 +2802,7 @@ Resources: 96
   - requestOrganization[0..1]: Reference(Organization)
   ?identifier: identifier=token
 - EpisodeOfCare: DomainResource (draft FMM: 1) (abstract: False)
-  ^episodeOfCare[0..*]: EpisodeOfCare (W5: workflow.encounter)
+  ^episodeOfCare[0..*]: DomainResource::EpisodeOfCare (W5: workflow.encounter)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2846,7 +2846,7 @@ Resources: 96
   ?team-member: team-member=reference
   ?type: type=token
 - ExplanationOfBenefit: DomainResource (draft FMM: 0) (abstract: False)
-  ^explanationOfBenefit[0..*]: ExplanationOfBenefit (W5: financial.other)
+  ^explanationOfBenefit[0..*]: DomainResource::ExplanationOfBenefit (W5: financial.other)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2868,7 +2868,7 @@ Resources: 96
   - requestOrganization[0..1]: Reference(Organization)
   ?identifier: identifier=token
 - FamilyMemberHistory: DomainResource (draft FMM: 1) (abstract: False)
-  ^familyMemberHistory[0..*]: FamilyMemberHistory constraints: fhs-1 (W5: clinical.general)
+  ^familyMemberHistory[0..*]: DomainResource::FamilyMemberHistory constraints: fhs-1 (W5: clinical.general)
   !fhs-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -2927,7 +2927,7 @@ Resources: 96
     -familymemberhistory-genetic: http://hl7.org/fhir/StructureDefinition/familymemberhistory-genetic (FamilyMemberHistoryForGeneticsAnalysis)
     -qicore-familymemberhistory: http://hl7.org/fhir/StructureDefinition/qicore-familymemberhistory (QICore-FamilyMemberHistory)
 - Flag: DomainResource (draft FMM: 1) (abstract: False)
-  ^flag[0..*]: Flag (W5: workflow.encounter)
+  ^flag[0..*]: DomainResource::Flag (W5: workflow.encounter)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -2960,7 +2960,7 @@ Resources: 96
   Profiles[Flag]: 1
     -qicore-flag: http://hl7.org/fhir/StructureDefinition/qicore-flag (QICore-Flag)
 - Goal: DomainResource (draft FMM: 1) (abstract: False)
-  ^goal[0..*]: Goal (W5: clinical.careprovision)
+  ^goal[0..*]: DomainResource::Goal (W5: clinical.careprovision)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3004,7 +3004,7 @@ Resources: 96
   Profiles[Goal]: 1
     -qicore-goal: http://hl7.org/fhir/StructureDefinition/qicore-goal (QICore-Goal)
 - Group: DomainResource (draft FMM: 1) (abstract: False)
-  ^group[0..*]: Group constraints: grp-1 (W5: administrative.group)
+  ^group[0..*]: DomainResource::Group constraints: grp-1 (W5: administrative.group)
   !grp-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -3047,7 +3047,7 @@ Resources: 96
   ?type: type=token
   ?value: value=token
 - HealthcareService: DomainResource (draft FMM: 1) (abstract: False)
-  ^healthcareService[0..*]: HealthcareService (W5: administrative.group)
+  ^healthcareService[0..*]: DomainResource::HealthcareService (W5: administrative.group)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3105,7 +3105,7 @@ Resources: 96
   ?servicecategory: servicecategory=token
   ?servicetype: servicetype=token
 - ImagingObjectSelection: DomainResource (draft FMM: 1) (abstract: False)
-  ^imagingObjectSelection[0..*]: ImagingObjectSelection (W5: clinical.diagnostics)
+  ^imagingObjectSelection[0..*]: DomainResource::ImagingObjectSelection (W5: clinical.diagnostics)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3153,7 +3153,7 @@ Resources: 96
   ?selected-study: selected-study=uri
   ?title: title=token
 - ImagingStudy: DomainResource (draft FMM: 2) (abstract: False)
-  ^imagingStudy[0..*]: ImagingStudy (W5: clinical.diagnostics)
+  ^imagingStudy[0..*]: DomainResource::ImagingStudy (W5: clinical.diagnostics)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3223,7 +3223,7 @@ Resources: 96
   Profiles[ImagingStudy]: 1
     -qicore-imagingstudy: http://hl7.org/fhir/StructureDefinition/qicore-imagingstudy (QICore-ImagingStudy)
 - Immunization: DomainResource (draft FMM: 1) (abstract: False)
-  ^immunization[0..*]: Immunization constraints: imm-1, imm-2 (W5: clinical.medication)
+  ^immunization[0..*]: DomainResource::Immunization constraints: imm-1, imm-2 (W5: clinical.medication)
   !imm-1: local error: 
   !imm-2: local error: 
   - id[0..1]: id
@@ -3298,7 +3298,7 @@ Resources: 96
     -daf-immunization: http://hl7.org/fhir/StructureDefinition/daf-immunization (U.S.DataAccessFramework(DAF)ImmunizationProfile)
     -qicore-immunization: http://hl7.org/fhir/StructureDefinition/qicore-immunization (QICore-Immunization)
 - ImmunizationRecommendation: DomainResource (draft FMM: 1) (abstract: False)
-  ^immunizationRecommendation[0..*]: ImmunizationRecommendation (W5: clinical.medication)
+  ^immunizationRecommendation[0..*]: DomainResource::ImmunizationRecommendation (W5: clinical.medication)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3345,7 +3345,7 @@ Resources: 96
   Profiles[ImmunizationRecommendation]: 1
     -qicore-immunizationrec: http://hl7.org/fhir/StructureDefinition/qicore-immunizationrec (QICore-ImmunizationRecommendation)
 - ImplementationGuide: DomainResource (draft FMM: 0) (abstract: False)
-  ^implementationGuide[1..1]: ImplementationGuide (W5: conformance.misc)
+  ^implementationGuide[1..1]: DomainResource::ImplementationGuide (W5: conformance.misc)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3428,7 +3428,7 @@ Resources: 96
   ?url: url=uri
   ?version: version=token
 - List: DomainResource (draft FMM: 1) (abstract: False)
-  ^list[0..*]: List constraints: lst-1, lst-2 (W5: infrastructure.documents)
+  ^list[0..*]: DomainResource::List constraints: lst-1, lst-2 (W5: infrastructure.documents)
   !lst-1: local error: 
   !lst-2: local error: 
   - id[0..1]: id
@@ -3485,7 +3485,7 @@ Resources: 96
     -daf-procedurelist: http://hl7.org/fhir/StructureDefinition/daf-procedurelist (U.S.DataAccessFramework(DAF)ListProfile)
     -daf-resultlist: http://hl7.org/fhir/StructureDefinition/daf-resultlist (U.S.DataAccessFramework(DAF)ListProfile)
 - Location: DomainResource (draft FMM: 1) (abstract: False)
-  ^location[0..*]: Location (W5: administrative.entity)
+  ^location[0..*]: DomainResource::Location (W5: administrative.entity)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3536,7 +3536,7 @@ Resources: 96
     -daf-location: http://hl7.org/fhir/StructureDefinition/daf-location (U.S.DataAccessFramework(DAF)LocationProfile)
     -qicore-location: http://hl7.org/fhir/StructureDefinition/qicore-location (QICore-Location)
 - Media: DomainResource (draft FMM: 1) (abstract: False)
-  ^media[0..*]: Media constraints: mda-1, mda-2, mda-3, mda-4 (W5: infrastructure.structure)
+  ^media[0..*]: DomainResource::Media constraints: mda-1, mda-2, mda-3, mda-4 (W5: infrastructure.structure)
   !mda-1: local error: 
   !mda-2: local error: 
   !mda-3: local error: 
@@ -3572,7 +3572,7 @@ Resources: 96
   ?type: type=token
   ?view: view=token
 - Medication: DomainResource (draft FMM: 1) (abstract: False)
-  ^medication[0..*]: Medication (W5: clinical.medication)
+  ^medication[0..*]: DomainResource::Medication (W5: clinical.medication)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3630,7 +3630,7 @@ Resources: 96
     -daf-medication: http://hl7.org/fhir/StructureDefinition/daf-medication (U.S.DataAccessFramework(DAF)MedicationProfile)
     -qicore-medication: http://hl7.org/fhir/StructureDefinition/qicore-medication (QICore-Medication)
 - MedicationAdministration: DomainResource (draft FMM: 1) (abstract: False)
-  ^medicationAdministration[0..*]: MedicationAdministration constraints: mad-2, mad-3 (W5: clinical.medication)
+  ^medicationAdministration[0..*]: DomainResource::MedicationAdministration constraints: mad-2, mad-3 (W5: clinical.medication)
   !mad-1: local error: 
   !mad-2: local error: 
   !mad-3: local error: 
@@ -3681,7 +3681,7 @@ Resources: 96
     -daf-medicationadministration: http://hl7.org/fhir/StructureDefinition/daf-medicationadministration (U.S.DataAccessFramework(DAF)MedicationAdministrationProfile)
     -qicore-medicationadministration: http://hl7.org/fhir/StructureDefinition/qicore-medicationadministration (QICore-MedicationAdministration)
 - MedicationDispense: DomainResource (draft FMM: 1) (abstract: False)
-  ^medicationDispense[0..*]: MedicationDispense constraints: mdd-1 (W5: clinical.medication)
+  ^medicationDispense[0..*]: DomainResource::MedicationDispense constraints: mdd-1 (W5: clinical.medication)
   !mdd-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -3776,7 +3776,7 @@ Resources: 96
     -daf-medicationdispense: http://hl7.org/fhir/StructureDefinition/daf-medicationdispense (U.S.DataAccessFramework(DAF)MedicationDispenseProfile)
     -qicore-medicationdispense: http://hl7.org/fhir/StructureDefinition/qicore-medicationdispense (QICore-MedicationDispense)
 - MedicationOrder: DomainResource (draft FMM: 1) (abstract: False)
-  ^medicationOrder[0..*]: MedicationOrder (W5: clinical.medication)
+  ^medicationOrder[0..*]: DomainResource::MedicationOrder (W5: clinical.medication)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3868,7 +3868,7 @@ Resources: 96
     -daf-medicationorder: http://hl7.org/fhir/StructureDefinition/daf-medicationorder (U.S.DataAccessFramework(DAF)MedicationOrderProfile)
     -qicore-medicationorder: http://hl7.org/fhir/StructureDefinition/qicore-medicationorder (QICore-MedicationOrder)
 - MedicationStatement: DomainResource (draft FMM: 1) (abstract: False)
-  ^medicationStatement[0..*]: MedicationStatement constraints: mst-1, mst-2 (W5: clinical.medication)
+  ^medicationStatement[0..*]: DomainResource::MedicationStatement constraints: mst-1, mst-2 (W5: clinical.medication)
   !mst-1: local error: 
   !mst-2: local error: 
   - id[0..1]: id
@@ -3916,7 +3916,7 @@ Resources: 96
     -daf-medicationstatement: http://hl7.org/fhir/StructureDefinition/daf-medicationstatement (U.S.DataAccessFramework(DAF)MedicationStatementProfile)
     -qicore-medicationstatement: http://hl7.org/fhir/StructureDefinition/qicore-medicationstatement (QICore-MedicationStatement)
 - MessageHeader: DomainResource (draft FMM: 2) (abstract: False)
-  ^messageHeader[0..*]: MessageHeader (W5: infrastructure.exchange)
+  ^messageHeader[0..*]: DomainResource::MessageHeader (W5: infrastructure.exchange)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -3972,7 +3972,7 @@ Resources: 96
   ?target: target=reference
   ?timestamp: timestamp=date
 - NamingSystem: DomainResource (draft FMM: 1) (abstract: False)
-  ^namingSystem[0..*]: NamingSystem constraints: nsd-1, nsd-2, nsd-3 (W5: conformance.terminology)
+  ^namingSystem[0..*]: DomainResource::NamingSystem constraints: nsd-1, nsd-2, nsd-3 (W5: conformance.terminology)
   !nsd-1: local error: 
   !nsd-2: local error: 
   !nsd-3: local error: 
@@ -4027,7 +4027,7 @@ Resources: 96
   ?type: type=token
   ?value: value=string
 - NutritionOrder: DomainResource (draft FMM: 1) (abstract: False)
-  ^nutritionOrder[0..*]: NutritionOrder constraints: nor-1 (W5: clinical.careprovision)
+  ^nutritionOrder[0..*]: DomainResource::NutritionOrder constraints: nor-1 (W5: clinical.careprovision)
   !nor-1: local warning: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -4106,7 +4106,7 @@ Resources: 96
   ?status: status=token
   ?supplement: supplement=token
 - Observation: DomainResource (draft FMM: 3) (abstract: False)
-  ^observation[0..*]: Observation constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  ^observation[0..*]: DomainResource::Observation constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   !obs-3: local error: 
   !obs-6: local error: 
   !obs-7: local error: 
@@ -4307,7 +4307,7 @@ Resources: 96
     -uslab-obsrange: http://hl7.org/fhir/StructureDefinition/uslab-obsrange (USLaboratoryObservationProfile)
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - OperationDefinition: DomainResource (draft FMM: 1) (abstract: False)
-  ^operationDefinition[0..*]: OperationDefinition (W5: conformance.behavior)
+  ^operationDefinition[0..*]: DomainResource::OperationDefinition (W5: conformance.behavior)
   !opd-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -4378,7 +4378,7 @@ Resources: 96
   ?url: url=uri
   ?version: version=token
 - OperationOutcome: DomainResource (draft FMM: 2) (abstract: False)
-  ^operationOutcome[0..*]: OperationOutcome (W5: infrastructure.exchange)
+  ^operationOutcome[0..*]: DomainResource::OperationOutcome (W5: infrastructure.exchange)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -4409,7 +4409,7 @@ Resources: 96
     - diagnostics[0..1]: string
     - location[0..*]: string
 - Order: DomainResource (draft FMM: 0) (abstract: False)
-  ^order[0..*]: Order (W5: workflow.order)
+  ^order[0..*]: DomainResource::Order (W5: workflow.order)
   !ord-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -4442,7 +4442,7 @@ Resources: 96
   ?when: when=date
   ?when_code: when_code=token
 - OrderResponse: DomainResource (draft FMM: 0) (abstract: False)
-  ^orderResponse[0..*]: OrderResponse (W5: workflow.order)
+  ^orderResponse[0..*]: DomainResource::OrderResponse (W5: workflow.order)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -4466,7 +4466,7 @@ Resources: 96
   ?request: request=reference
   ?who: who=reference
 - Organization: DomainResource (draft FMM: 1) (abstract: False)
-  ^organization[0..*]: Organization constraints: org-1 (W5: administrative.group)
+  ^organization[0..*]: DomainResource::Organization constraints: org-1 (W5: administrative.group)
   !org-1: local error: 
   !org-2: local error: 
   !org-3: local error: 
@@ -4524,7 +4524,7 @@ Resources: 96
     -uslab-orderfacility: http://hl7.org/fhir/StructureDefinition/uslab-orderfacility (USLaboratoryOrganizationProfile)
     -uslab-performinglab: http://hl7.org/fhir/StructureDefinition/uslab-performinglab (USLaboratoryOrganizationProfile)
 - Parameters: Resource (draft FMM: 1) (abstract: False)
-  ^parameters[0..*]: Parameters (W5: infrastructure.exchange)
+  ^parameters[0..*]: Resource::Parameters (W5: infrastructure.exchange)
   !inv-1: local error: 
   !inv-2: local error: 
   - id[0..1]: id
@@ -4540,7 +4540,7 @@ Resources: 96
     - resource[0..1]: Resource conditions: inv-1
     - part[0..*]: Parameters.parameter constraints: inv-2
 - Patient: DomainResource (draft FMM: 3) (abstract: False)
-  ^patient[0..*]: Patient (W5: administrative.individual)
+  ^patient[0..*]: DomainResource::Patient (W5: administrative.individual)
   !pat-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -4693,7 +4693,7 @@ Resources: 96
     -uslab-patient: http://hl7.org/fhir/StructureDefinition/uslab-patient (USLaboratoryPatientProfile)
     -uslab-phpatient: http://hl7.org/fhir/StructureDefinition/uslab-phpatient (USLaboratoryPatientProfile)
 - PaymentNotice: DomainResource (draft FMM: 0) (abstract: False)
-  ^paymentNotice[0..*]: PaymentNotice (W5: financial.payment)
+  ^paymentNotice[0..*]: DomainResource::PaymentNotice (W5: financial.payment)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -4714,7 +4714,7 @@ Resources: 96
   - paymentStatus[1..1]: Coding
   ?identifier: identifier=token
 - PaymentReconciliation: DomainResource (draft FMM: 0) (abstract: False)
-  ^paymentReconciliation[0..*]: PaymentReconciliation (W5: financial.payment)
+  ^paymentReconciliation[0..*]: DomainResource::PaymentReconciliation (W5: financial.payment)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -4756,7 +4756,7 @@ Resources: 96
     - text[0..1]: string
   ?identifier: identifier=token
 - Person: DomainResource (draft FMM: 1) (abstract: False)
-  ^person[0..*]: Person (W5: administrative.entity)
+  ^person[0..*]: DomainResource::Person (W5: administrative.entity)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -4802,7 +4802,7 @@ Resources: 96
   ?relatedperson: relatedperson=reference
   ?telecom: telecom=token
 - Practitioner: DomainResource (draft FMM: 1) (abstract: False)
-  ^practitioner[0..*]: Practitioner (W5: administrative.individual)
+  ^practitioner[0..*]: DomainResource::Practitioner (W5: administrative.individual)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -4877,7 +4877,7 @@ Resources: 96
     -uslab-phpract: http://hl7.org/fhir/StructureDefinition/uslab-phpract (USLaboratoryPractitionerProfile)
     -uslab-pract: http://hl7.org/fhir/StructureDefinition/uslab-pract (USLaboratoryPractitionerProfile)
 - Procedure: DomainResource (draft FMM: 1) (abstract: False)
-  ^procedure[0..*]: Procedure constraints: pro-1 (W5: clinical.general)
+  ^procedure[0..*]: DomainResource::Procedure constraints: pro-1 (W5: clinical.general)
   !pro-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -4951,7 +4951,7 @@ Resources: 96
     -daf-procedure: http://hl7.org/fhir/StructureDefinition/daf-procedure (U.S.DataAccessFramework(DAF)ProcedureProfile)
     -qicore-procedure: http://hl7.org/fhir/StructureDefinition/qicore-procedure (QICore-Procedure)
 - ProcedureRequest: DomainResource (draft FMM: 1) (abstract: False)
-  ^procedureRequest[0..*]: ProcedureRequest (W5: clinical.general)
+  ^procedureRequest[0..*]: DomainResource::ProcedureRequest (W5: clinical.general)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5001,7 +5001,7 @@ Resources: 96
   Profiles[ProcedureRequest]: 1
     -qicore-procedurerequest: http://hl7.org/fhir/StructureDefinition/qicore-procedurerequest (QICore-ProcedureRequest)
 - ProcessRequest: DomainResource (draft FMM: 0) (abstract: False)
-  ^processRequest[0..*]: ProcessRequest (W5: workflow.order)
+  ^processRequest[0..*]: DomainResource::ProcessRequest (W5: workflow.order)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5036,7 +5036,7 @@ Resources: 96
   ?organization: organization=reference
   ?provider: provider=reference
 - ProcessResponse: DomainResource (draft FMM: 0) (abstract: False)
-  ^processResponse[0..*]: ProcessResponse (W5: workflow.order)
+  ^processResponse[0..*]: DomainResource::ProcessResponse (W5: workflow.order)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5069,7 +5069,7 @@ Resources: 96
   ?requestorganization: requestorganization=reference
   ?requestprovider: requestprovider=reference
 - Provenance: DomainResource (draft FMM: 1) (abstract: False)
-  ^provenance[0..*]: Provenance (W5: infrastructure.information)
+  ^provenance[0..*]: DomainResource::Provenance (W5: infrastructure.information)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5122,7 +5122,7 @@ Resources: 96
   Profiles[Provenance]: 1
     -ehrsrle-provenance: http://hl7.org/fhir/StructureDefinition/ehrsrle-provenance (EHRSFMRecordLifecycleEvent-Provenance)
 - Questionnaire: DomainResource (draft FMM: 2) (abstract: False)
-  ^questionnaire[0..*]: Questionnaire constraints: que-2, que-3 (W5: infrastructure.information)
+  ^questionnaire[0..*]: DomainResource::Questionnaire constraints: que-2, que-3 (W5: infrastructure.information)
   !que-1: local error: 
   !que-2: local error: 
   !que-3: local error: 
@@ -5309,7 +5309,7 @@ Resources: 96
   Profiles[Questionnaire]: 1
     -sdc-questionnaire: http://hl7.org/fhir/StructureDefinition/sdc-questionnaire (StructuredDataCaptureQuestionnaireDesign)
 - QuestionnaireResponse: DomainResource (draft FMM: 2) (abstract: False)
-  ^questionnaireResponse[0..*]: QuestionnaireResponse (W5: infrastructure.information)
+  ^questionnaireResponse[0..*]: DomainResource::QuestionnaireResponse (W5: infrastructure.information)
   !qrs-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -5376,7 +5376,7 @@ Resources: 96
   Profiles[QuestionnaireResponse]: 1
     -sdc-response: http://hl7.org/fhir/StructureDefinition/sdc-response (StructuredDataCaptureDataCapture)
 - ReferralRequest: DomainResource (draft FMM: 1) (abstract: False)
-  ^referralRequest[0..*]: ReferralRequest (W5: clinical.careprovision)
+  ^referralRequest[0..*]: DomainResource::ReferralRequest (W5: clinical.careprovision)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5417,7 +5417,7 @@ Resources: 96
   Profiles[ReferralRequest]: 1
     -qicore-referralrequest: http://hl7.org/fhir/StructureDefinition/qicore-referralrequest (QICore-ReferralRequest)
 - RelatedPerson: DomainResource (draft FMM: 1) (abstract: False)
-  ^relatedPerson[0..*]: RelatedPerson (W5: administrative.individual)
+  ^relatedPerson[0..*]: DomainResource::RelatedPerson (W5: administrative.individual)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5460,7 +5460,7 @@ Resources: 96
     -daf-relatedperson: http://hl7.org/fhir/StructureDefinition/daf-relatedperson (U.S.DAFRelatedPersonProfile)
     -qicore-relatedperson: http://hl7.org/fhir/StructureDefinition/qicore-relatedperson (QICore-RelatedPerson)
 - Resource: Resource (draft FMM: 2) (abstract: True)
-  ^resource[0..*]: Resource
+  ^resource[0..*]: Element::Resource
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5484,7 +5484,7 @@ Resources: 96
     In: profile: Uri[0..1]
     Out: return: OperationOutcome[1..1]
 - RiskAssessment: DomainResource (draft FMM: 0) (abstract: False)
-  ^riskAssessment[0..*]: RiskAssessment (W5: clinical.general)
+  ^riskAssessment[0..*]: DomainResource::RiskAssessment (W5: clinical.general)
   !ras-1: local error: 
   !ras-2: local error: 
   - id[0..1]: id
@@ -5522,7 +5522,7 @@ Resources: 96
   ?performer: performer=reference
   ?subject: subject=reference
 - Schedule: DomainResource (draft FMM: 1) (abstract: False)
-  ^schedule[0..*]: Schedule (W5: workflow.scheduling)
+  ^schedule[0..*]: DomainResource::Schedule (W5: workflow.scheduling)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5541,7 +5541,7 @@ Resources: 96
   ?identifier: identifier=token
   ?type: type=token
 - SearchParameter: DomainResource (draft FMM: 1) (abstract: False)
-  ^searchParameter[1..1]: SearchParameter constraints: spd-1 (W5: conformance.behavior)
+  ^searchParameter[1..1]: DomainResource::SearchParameter constraints: spd-1 (W5: conformance.behavior)
   !spd-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -5584,7 +5584,7 @@ Resources: 96
   ?type: type=token
   ?url: url=uri
 - Slot: DomainResource (draft FMM: 1) (abstract: False)
-  ^slot[0..*]: Slot (W5: workflow.scheduling)
+  ^slot[0..*]: DomainResource::Slot (W5: workflow.scheduling)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5608,7 +5608,7 @@ Resources: 96
   ?slot-type: slot-type=token
   ?start: start=date
 - Specimen: DomainResource (draft FMM: 1) (abstract: False)
-  ^specimen[0..*]: Specimen (W5: clinical.diagnostics)
+  ^specimen[0..*]: DomainResource::Specimen (W5: clinical.diagnostics)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5687,7 +5687,7 @@ Resources: 96
     -qicore-specimen: http://hl7.org/fhir/StructureDefinition/qicore-specimen (QICore-Specimen)
     -uslab-spec: http://hl7.org/fhir/StructureDefinition/uslab-spec (USLaboratorySpecimenProfile)
 - StructureDefinition: DomainResource (draft FMM: 2) (abstract: False)
-  ^structureDefinition[1..1]: StructureDefinition constraints: sdf-1, sdf-4, sdf-5, sdf-6, sdf-7, sdf-8, sdf-9, sdf-10, sdf-11, sdf-12, sdf-13 (W5: conformance.content)
+  ^structureDefinition[1..1]: DomainResource::StructureDefinition constraints: sdf-1, sdf-4, sdf-5, sdf-6, sdf-7, sdf-8, sdf-9, sdf-10, sdf-11, sdf-12, sdf-13 (W5: conformance.content)
   !sdf-1: local error: 
   !sdf-2: local error: 
   !sdf-3: local error: 
@@ -5805,7 +5805,7 @@ Resources: 96
     In: supportedOnly: Boolean[0..1]
     Out: return: Questionnaire[1..1]
 - Subscription: DomainResource (draft FMM: 1) (abstract: False)
-  ^subscription[0..*]: Subscription (W5: infrastructure.exchange)
+  ^subscription[0..*]: DomainResource::Subscription (W5: infrastructure.exchange)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5839,7 +5839,7 @@ Resources: 96
   ?type: type=token
   ?url: url=uri
 - Substance: DomainResource (draft FMM: 1) (abstract: False)
-  ^substance[0..*]: Substance (W5: administrative.entity)
+  ^substance[0..*]: DomainResource::Substance (W5: administrative.entity)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5876,7 +5876,7 @@ Resources: 96
     -daf-substance: http://hl7.org/fhir/StructureDefinition/daf-substance (DAFSubstanceProfile)
     -qicore-substance: http://hl7.org/fhir/StructureDefinition/qicore-substance (QICore-Substance)
 - SupplyDelivery: DomainResource (draft FMM: 0) (abstract: False)
-  ^supplyDelivery[0..*]: SupplyDelivery (W5: workflow.order)
+  ^supplyDelivery[0..*]: DomainResource::SupplyDelivery (W5: workflow.order)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5903,7 +5903,7 @@ Resources: 96
   ?status: status=token
   ?supplier: supplier=reference
 - SupplyRequest: DomainResource (draft FMM: 0) (abstract: False)
-  ^supplyRequest[0..*]: SupplyRequest (W5: workflow.order)
+  ^supplyRequest[0..*]: DomainResource::SupplyRequest (W5: workflow.order)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -5936,7 +5936,7 @@ Resources: 96
   ?status: status=token
   ?supplier: supplier=reference
 - TestScript: DomainResource (draft FMM: 0) (abstract: False)
-  ^testScript[0..*]: TestScript (W5: conformance.misc)
+  ^testScript[0..*]: DomainResource::TestScript (W5: conformance.misc)
   !inv-1: local error: 
   !inv-2: local error: 
   !inv-3: local error: 
@@ -6112,7 +6112,7 @@ Resources: 96
   ?testscript-test-capability: testscript-test-capability=string
   ?url: url=uri
 - ValueSet: DomainResource (draft FMM: 3) (abstract: False)
-  ^valueSet[0..*]: ValueSet constraints: vsd-2, vsd-5, vsd-7 (W5: conformance.terminology)
+  ^valueSet[0..*]: DomainResource::ValueSet constraints: vsd-2, vsd-5, vsd-7 (W5: conformance.terminology)
   !vsd-1: local error: 
   !vsd-2: local error: 
   !vsd-3: local error: 
@@ -6418,7 +6418,7 @@ Resources: 96
     -sdcde-valueset: http://hl7.org/fhir/StructureDefinition/sdcde-valueset (StructuredDataCaptureDataElementExchangeValueSet)
     -shareablevalueset: http://hl7.org/fhir/StructureDefinition/shareablevalueset (ShareableValueSet)
 - VisionPrescription: DomainResource (draft FMM: 0) (abstract: False)
-  ^visionPrescription[0..*]: VisionPrescription (W5: clinical.careprovision)
+  ^visionPrescription[0..*]: DomainResource::VisionPrescription (W5: clinical.careprovision)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -6462,7 +6462,7 @@ Resources: 96
 Interfaces: 0
 Profiles: 107
 - ArgonautProfileForCarePlan: (argonaut-careplan) CarePlan
-  ^carePlan[0..*]: ArgonautProfileForCarePlan (W5: clinical.careprovision)
+  ^carePlan[0..*]: CarePlan::ArgonautProfileForCarePlan (W5: clinical.careprovision)
   !cpl-3: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -6547,7 +6547,7 @@ Profiles: 107
   Profiles[CarePlan]: 1
     -argonaut-careplan: http://hl7.org/fhir/StructureDefinition/argonaut-careplan (ArgonautProfileForCarePlan)
 - ExampleLipidProfile: (cholesterol) Observation
-  ^observation[1..1]: ExampleLipidProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  ^observation[1..1]: Observation::ExampleLipidProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   !obs-3: local error: 
   !obs-6: local error: 
   !obs-7: local error: 
@@ -6763,7 +6763,7 @@ Profiles: 107
     -uslab-obsrange: http://hl7.org/fhir/StructureDefinition/uslab-obsrange (USLaboratoryObservationProfile)
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - ClinicalDocumentProfileForComposition: (clinicaldocument) Composition
-  ^composition[0..*]: ClinicalDocumentProfileForComposition (W5: infrastructure.documents)
+  ^composition[0..*]: Composition::ClinicalDocumentProfileForComposition (W5: infrastructure.documents)
   !cmp-1: local error: 
   !cmp-2: local error: 
   - id[0..1]: id
@@ -6845,7 +6845,7 @@ Profiles: 107
     -clinicaldocument: http://hl7.org/fhir/StructureDefinition/clinicaldocument (ClinicalDocumentProfileForComposition)
     -measurereport: http://hl7.org/fhir/StructureDefinition/measurereport (ProfileForMeasureReports)
 - ConsentDirective: (consentdirective) Contract
-  ^contract[0..*]: ConsentDirective (W5: financial.other)
+  ^contract[0..*]: Contract::ConsentDirective (W5: financial.other)
   !mny-1: local error: 
   !qty-3: local error: 
   !sqty-1: local error: 
@@ -6948,7 +6948,7 @@ Profiles: 107
   Profiles[Contract]: 1
     -consentdirective: http://hl7.org/fhir/StructureDefinition/consentdirective (ConsentDirective)
 - U.S.DataAccessFramework(DAF)AllergyIntoleranceProfile: (daf-allergyintolerance) AllergyIntolerance
-  ^allergyIntolerance[0..*]: U.S.DataAccessFramework(DAF)AllergyIntoleranceProfile (W5: clinical.general)
+  ^allergyIntolerance[0..*]: AllergyIntolerance::U.S.DataAccessFramework(DAF)AllergyIntoleranceProfile (W5: clinical.general)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7042,7 +7042,7 @@ Profiles: 107
     -daf-allergyintolerance: http://hl7.org/fhir/StructureDefinition/daf-allergyintolerance (U.S.DataAccessFramework(DAF)AllergyIntoleranceProfile)
     -qicore-allergyintolerance: http://hl7.org/fhir/StructureDefinition/qicore-allergyintolerance (QICore-AllergyIntolerance)
 - U.S.DataAccessFramework(DAF)ListProfile: (daf-allergylist) List
-  ^list[0..*]: U.S.DataAccessFramework(DAF)ListProfile constraints: lst-1, lst-2 (W5: infrastructure.documents)
+  ^list[0..*]: List::U.S.DataAccessFramework(DAF)ListProfile constraints: lst-1, lst-2 (W5: infrastructure.documents)
   !lst-1: local error: 
   !lst-2: local error: 
   - id[0..1]: id
@@ -7101,7 +7101,7 @@ Profiles: 107
     -daf-procedurelist: http://hl7.org/fhir/StructureDefinition/daf-procedurelist (U.S.DataAccessFramework(DAF)ListProfile)
     -daf-resultlist: http://hl7.org/fhir/StructureDefinition/daf-resultlist (U.S.DataAccessFramework(DAF)ListProfile)
 - U.S.DataAccessFramework(DAF)Condition(a.k.aProblem)Profile: (daf-condition) Condition
-  ^condition[0..*]: U.S.DataAccessFramework(DAF)Condition(a.k.aProblem)Profile (W5: clinical.general)
+  ^condition[0..*]: Condition::U.S.DataAccessFramework(DAF)Condition(a.k.aProblem)Profile (W5: clinical.general)
   !age-1: local error: 
   !con-1: local error: 
   !con-2: local error: 
@@ -7182,7 +7182,7 @@ Profiles: 107
     -uslab-cond: http://hl7.org/fhir/StructureDefinition/uslab-cond (USLaboratoryConditionProfile)
     -uslab-reasonforstudy: http://hl7.org/fhir/StructureDefinition/uslab-reasonforstudy (USLaboratoryConditionProfile)
 - U.S.DataAccessFramework(DAF)DiagnosticOrderProfile: (daf-diagnosticorder) DiagnosticOrder
-  ^diagnosticOrder[0..*]: U.S.DataAccessFramework(DAF)DiagnosticOrderProfile (W5: clinical.diagnostics)
+  ^diagnosticOrder[0..*]: DiagnosticOrder::U.S.DataAccessFramework(DAF)DiagnosticOrderProfile (W5: clinical.diagnostics)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7293,7 +7293,7 @@ Profiles: 107
     -qicore-diagnosticorder: http://hl7.org/fhir/StructureDefinition/qicore-diagnosticorder (QICore-DiagnosticOrder)
     -uslab-do: http://hl7.org/fhir/StructureDefinition/uslab-do (USLaboratoryDiagnosticOrderProfile)
 - U.S.DataAccessFramework(DAF)DiagnosticReportProfile: (daf-diagnosticreport) DiagnosticReport
-  ^diagnosticReport[0..*]: U.S.DataAccessFramework(DAF)DiagnosticReportProfile (W5: clinical.diagnostics)
+  ^diagnosticReport[0..*]: DiagnosticReport::U.S.DataAccessFramework(DAF)DiagnosticReportProfile (W5: clinical.diagnostics)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7371,7 +7371,7 @@ Profiles: 107
     -qicore-diagnosticreport: http://hl7.org/fhir/StructureDefinition/qicore-diagnosticreport (QICore-DiagnosticReport)
     -uslab-dr: http://hl7.org/fhir/StructureDefinition/uslab-dr (USLaboratoryDiagnosticReportProfile)
 - U.S.DataAccessFramework(DAF)EncounterProfile: (daf-encounter) Encounter
-  ^encounter[0..*]: U.S.DataAccessFramework(DAF)EncounterProfile (W5: workflow.encounter)
+  ^encounter[0..*]: Encounter::U.S.DataAccessFramework(DAF)EncounterProfile (W5: workflow.encounter)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7475,7 +7475,7 @@ Profiles: 107
     -daf-encounter: http://hl7.org/fhir/StructureDefinition/daf-encounter (U.S.DataAccessFramework(DAF)EncounterProfile)
     -qicore-encounter: http://hl7.org/fhir/StructureDefinition/qicore-encounter (QICore-Encounter)
 - U.S.DataAccessFramework(DAF)ListProfile: (daf-encounterlist) List
-  ^list[0..*]: U.S.DataAccessFramework(DAF)ListProfile constraints: lst-1, lst-2 (W5: infrastructure.documents)
+  ^list[0..*]: List::U.S.DataAccessFramework(DAF)ListProfile constraints: lst-1, lst-2 (W5: infrastructure.documents)
   !lst-1: local error: 
   !lst-2: local error: 
   - id[0..1]: id
@@ -7534,7 +7534,7 @@ Profiles: 107
     -daf-procedurelist: http://hl7.org/fhir/StructureDefinition/daf-procedurelist (U.S.DataAccessFramework(DAF)ListProfile)
     -daf-resultlist: http://hl7.org/fhir/StructureDefinition/daf-resultlist (U.S.DataAccessFramework(DAF)ListProfile)
 - U.S.DataAccessFramework(DAF)FamilyMemberHistoryProfile: (daf-familymemberhistory) FamilyMemberHistory
-  ^familyMemberHistory[0..*]: U.S.DataAccessFramework(DAF)FamilyMemberHistoryProfile constraints: fhs-1 (W5: clinical.general)
+  ^familyMemberHistory[0..*]: FamilyMemberHistory::U.S.DataAccessFramework(DAF)FamilyMemberHistoryProfile constraints: fhs-1 (W5: clinical.general)
   !fhs-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -7593,7 +7593,7 @@ Profiles: 107
     -familymemberhistory-genetic: http://hl7.org/fhir/StructureDefinition/familymemberhistory-genetic (FamilyMemberHistoryForGeneticsAnalysis)
     -qicore-familymemberhistory: http://hl7.org/fhir/StructureDefinition/qicore-familymemberhistory (QICore-FamilyMemberHistory)
 - U.S.DataAccessFramework(DAF)ImmunizationProfile: (daf-immunization) Immunization
-  ^immunization[0..*]: U.S.DataAccessFramework(DAF)ImmunizationProfile constraints: imm-1, imm-2 (W5: clinical.medication)
+  ^immunization[0..*]: Immunization::U.S.DataAccessFramework(DAF)ImmunizationProfile constraints: imm-1, imm-2 (W5: clinical.medication)
   !imm-1: local error: 
   !imm-2: local error: 
   !qty-3: local error: 
@@ -7670,7 +7670,7 @@ Profiles: 107
     -daf-immunization: http://hl7.org/fhir/StructureDefinition/daf-immunization (U.S.DataAccessFramework(DAF)ImmunizationProfile)
     -qicore-immunization: http://hl7.org/fhir/StructureDefinition/qicore-immunization (QICore-Immunization)
 - U.S.DataAccessFramework(DAF)ListProfile: (daf-immunizationlist) List
-  ^list[0..*]: U.S.DataAccessFramework(DAF)ListProfile constraints: lst-1, lst-2 (W5: infrastructure.documents)
+  ^list[0..*]: List::U.S.DataAccessFramework(DAF)ListProfile constraints: lst-1, lst-2 (W5: infrastructure.documents)
   !lst-1: local error: 
   !lst-2: local error: 
   - id[0..1]: id
@@ -7729,7 +7729,7 @@ Profiles: 107
     -daf-procedurelist: http://hl7.org/fhir/StructureDefinition/daf-procedurelist (U.S.DataAccessFramework(DAF)ListProfile)
     -daf-resultlist: http://hl7.org/fhir/StructureDefinition/daf-resultlist (U.S.DataAccessFramework(DAF)ListProfile)
 - U.S.DataAccessFramework(DAF)LocationProfile: (daf-location) Location
-  ^location[0..*]: U.S.DataAccessFramework(DAF)LocationProfile (W5: administrative.entity)
+  ^location[0..*]: Location::U.S.DataAccessFramework(DAF)LocationProfile (W5: administrative.entity)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7795,7 +7795,7 @@ Profiles: 107
     -daf-location: http://hl7.org/fhir/StructureDefinition/daf-location (U.S.DataAccessFramework(DAF)LocationProfile)
     -qicore-location: http://hl7.org/fhir/StructureDefinition/qicore-location (QICore-Location)
 - U.S.DataAccessFramework(DAF)MedicationProfile: (daf-medication) Medication
-  ^medication[0..*]: U.S.DataAccessFramework(DAF)MedicationProfile (W5: clinical.medication)
+  ^medication[0..*]: Medication::U.S.DataAccessFramework(DAF)MedicationProfile (W5: clinical.medication)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7853,7 +7853,7 @@ Profiles: 107
     -daf-medication: http://hl7.org/fhir/StructureDefinition/daf-medication (U.S.DataAccessFramework(DAF)MedicationProfile)
     -qicore-medication: http://hl7.org/fhir/StructureDefinition/qicore-medication (QICore-Medication)
 - U.S.DataAccessFramework(DAF)MedicationAdministrationProfile: (daf-medicationadministration) MedicationAdministration
-  ^medicationAdministration[0..*]: U.S.DataAccessFramework(DAF)MedicationAdministrationProfile constraints: mad-2, mad-3 (W5: clinical.medication)
+  ^medicationAdministration[0..*]: MedicationAdministration::U.S.DataAccessFramework(DAF)MedicationAdministrationProfile constraints: mad-2, mad-3 (W5: clinical.medication)
   !mad-1: local error: 
   !mad-2: local error: 
   !mad-3: local error: 
@@ -7909,7 +7909,7 @@ Profiles: 107
     -daf-medicationadministration: http://hl7.org/fhir/StructureDefinition/daf-medicationadministration (U.S.DataAccessFramework(DAF)MedicationAdministrationProfile)
     -qicore-medicationadministration: http://hl7.org/fhir/StructureDefinition/qicore-medicationadministration (QICore-MedicationAdministration)
 - U.S.DataAccessFramework(DAF)MedicationDispenseProfile: (daf-medicationdispense) MedicationDispense
-  ^medicationDispense[0..*]: U.S.DataAccessFramework(DAF)MedicationDispenseProfile constraints: mdd-1 (W5: clinical.medication)
+  ^medicationDispense[0..*]: MedicationDispense::U.S.DataAccessFramework(DAF)MedicationDispenseProfile constraints: mdd-1 (W5: clinical.medication)
   !mdd-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -8009,7 +8009,7 @@ Profiles: 107
     -daf-medicationdispense: http://hl7.org/fhir/StructureDefinition/daf-medicationdispense (U.S.DataAccessFramework(DAF)MedicationDispenseProfile)
     -qicore-medicationdispense: http://hl7.org/fhir/StructureDefinition/qicore-medicationdispense (QICore-MedicationDispense)
 - U.S.DataAccessFramework(DAF)ListProfile: (daf-medicationlist) List
-  ^list[0..*]: U.S.DataAccessFramework(DAF)ListProfile constraints: lst-1, lst-2 (W5: infrastructure.documents)
+  ^list[0..*]: List::U.S.DataAccessFramework(DAF)ListProfile constraints: lst-1, lst-2 (W5: infrastructure.documents)
   !lst-1: local error: 
   !lst-2: local error: 
   - id[0..1]: id
@@ -8067,7 +8067,7 @@ Profiles: 107
     -daf-procedurelist: http://hl7.org/fhir/StructureDefinition/daf-procedurelist (U.S.DataAccessFramework(DAF)ListProfile)
     -daf-resultlist: http://hl7.org/fhir/StructureDefinition/daf-resultlist (U.S.DataAccessFramework(DAF)ListProfile)
 - U.S.DataAccessFramework(DAF)MedicationOrderProfile: (daf-medicationorder) MedicationOrder
-  ^medicationOrder[0..*]: U.S.DataAccessFramework(DAF)MedicationOrderProfile (W5: clinical.medication)
+  ^medicationOrder[0..*]: MedicationOrder::U.S.DataAccessFramework(DAF)MedicationOrderProfile (W5: clinical.medication)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8164,7 +8164,7 @@ Profiles: 107
     -daf-medicationorder: http://hl7.org/fhir/StructureDefinition/daf-medicationorder (U.S.DataAccessFramework(DAF)MedicationOrderProfile)
     -qicore-medicationorder: http://hl7.org/fhir/StructureDefinition/qicore-medicationorder (QICore-MedicationOrder)
 - U.S.DataAccessFramework(DAF)MedicationStatementProfile: (daf-medicationstatement) MedicationStatement
-  ^medicationStatement[0..*]: U.S.DataAccessFramework(DAF)MedicationStatementProfile constraints: mst-1, mst-2 (W5: clinical.medication)
+  ^medicationStatement[0..*]: MedicationStatement::U.S.DataAccessFramework(DAF)MedicationStatementProfile constraints: mst-1, mst-2 (W5: clinical.medication)
   !mst-1: local error: 
   !mst-2: local error: 
   - id[0..1]: id
@@ -8212,7 +8212,7 @@ Profiles: 107
     -daf-medicationstatement: http://hl7.org/fhir/StructureDefinition/daf-medicationstatement (U.S.DataAccessFramework(DAF)MedicationStatementProfile)
     -qicore-medicationstatement: http://hl7.org/fhir/StructureDefinition/qicore-medicationstatement (QICore-MedicationStatement)
 - U.S.DAFOrganizationProfile: (daf-organization) Organization
-  ^organization[0..*]: U.S.DAFOrganizationProfile constraints: org-1 (W5: administrative.group)
+  ^organization[0..*]: Organization::U.S.DAFOrganizationProfile constraints: org-1 (W5: administrative.group)
   !org-1: local error: 
   !org-2: local error: 
   !org-3: local error: 
@@ -8285,7 +8285,7 @@ Profiles: 107
     -uslab-orderfacility: http://hl7.org/fhir/StructureDefinition/uslab-orderfacility (USLaboratoryOrganizationProfile)
     -uslab-performinglab: http://hl7.org/fhir/StructureDefinition/uslab-performinglab (USLaboratoryOrganizationProfile)
 - U.S.DataAccessFramework(DAF)PatientProfile: (daf-patient) Patient
-  ^patient[0..*]: U.S.DataAccessFramework(DAF)PatientProfile (W5: administrative.individual)
+  ^patient[0..*]: Patient::U.S.DataAccessFramework(DAF)PatientProfile (W5: administrative.individual)
   !inv-1: local error: 
   !inv-2: local error: 
   !pat-1: local error: 
@@ -8489,7 +8489,7 @@ Profiles: 107
     -uslab-patient: http://hl7.org/fhir/StructureDefinition/uslab-patient (USLaboratoryPatientProfile)
     -uslab-phpatient: http://hl7.org/fhir/StructureDefinition/uslab-phpatient (USLaboratoryPatientProfile)
 - U.S.DataAccessFramework(DAF)PractitionerProfile: (daf-pract) Practitioner
-  ^practitioner[0..*]: U.S.DataAccessFramework(DAF)PractitionerProfile constraints: inv-1 (W5: administrative.individual)
+  ^practitioner[0..*]: Practitioner::U.S.DataAccessFramework(DAF)PractitionerProfile constraints: inv-1 (W5: administrative.individual)
   !inv-1: local error: 
   !txt-1: local error: 
   !txt-2: local error: 
@@ -8603,7 +8603,7 @@ Profiles: 107
     -uslab-phpract: http://hl7.org/fhir/StructureDefinition/uslab-phpract (USLaboratoryPractitionerProfile)
     -uslab-pract: http://hl7.org/fhir/StructureDefinition/uslab-pract (USLaboratoryPractitionerProfile)
 - U.S.DataAccessFramework(DAF)ListProfile: (daf-problemlist) List
-  ^list[0..*]: U.S.DataAccessFramework(DAF)ListProfile constraints: lst-1, lst-2 (W5: infrastructure.documents)
+  ^list[0..*]: List::U.S.DataAccessFramework(DAF)ListProfile constraints: lst-1, lst-2 (W5: infrastructure.documents)
   !lst-1: local error: 
   !lst-2: local error: 
   - id[0..1]: id
@@ -8662,7 +8662,7 @@ Profiles: 107
     -daf-procedurelist: http://hl7.org/fhir/StructureDefinition/daf-procedurelist (U.S.DataAccessFramework(DAF)ListProfile)
     -daf-resultlist: http://hl7.org/fhir/StructureDefinition/daf-resultlist (U.S.DataAccessFramework(DAF)ListProfile)
 - U.S.DataAccessFramework(DAF)ProcedureProfile: (daf-procedure) Procedure
-  ^procedure[0..*]: U.S.DataAccessFramework(DAF)ProcedureProfile constraints: pro-1 (W5: clinical.general)
+  ^procedure[0..*]: Procedure::U.S.DataAccessFramework(DAF)ProcedureProfile constraints: pro-1 (W5: clinical.general)
   !pro-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -8736,7 +8736,7 @@ Profiles: 107
     -daf-procedure: http://hl7.org/fhir/StructureDefinition/daf-procedure (U.S.DataAccessFramework(DAF)ProcedureProfile)
     -qicore-procedure: http://hl7.org/fhir/StructureDefinition/qicore-procedure (QICore-Procedure)
 - U.S.DataAccessFramework(DAF)ListProfile: (daf-procedurelist) List
-  ^list[0..*]: U.S.DataAccessFramework(DAF)ListProfile constraints: lst-1, lst-2 (W5: infrastructure.documents)
+  ^list[0..*]: List::U.S.DataAccessFramework(DAF)ListProfile constraints: lst-1, lst-2 (W5: infrastructure.documents)
   !lst-1: local error: 
   !lst-2: local error: 
   - id[0..1]: id
@@ -8795,7 +8795,7 @@ Profiles: 107
     -daf-procedurelist: http://hl7.org/fhir/StructureDefinition/daf-procedurelist (U.S.DataAccessFramework(DAF)ListProfile)
     -daf-resultlist: http://hl7.org/fhir/StructureDefinition/daf-resultlist (U.S.DataAccessFramework(DAF)ListProfile)
 - U.S.DAFRelatedPersonProfile: (daf-relatedperson) RelatedPerson
-  ^relatedPerson[0..*]: U.S.DAFRelatedPersonProfile (W5: administrative.individual)
+  ^relatedPerson[0..*]: RelatedPerson::U.S.DAFRelatedPersonProfile (W5: administrative.individual)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8838,7 +8838,7 @@ Profiles: 107
     -daf-relatedperson: http://hl7.org/fhir/StructureDefinition/daf-relatedperson (U.S.DAFRelatedPersonProfile)
     -qicore-relatedperson: http://hl7.org/fhir/StructureDefinition/qicore-relatedperson (QICore-RelatedPerson)
 - U.S.DataAccessFramework(DAF)ListProfile: (daf-resultlist) List
-  ^list[0..*]: U.S.DataAccessFramework(DAF)ListProfile constraints: lst-1, lst-2 (W5: infrastructure.documents)
+  ^list[0..*]: List::U.S.DataAccessFramework(DAF)ListProfile constraints: lst-1, lst-2 (W5: infrastructure.documents)
   !lst-1: local error: 
   !lst-2: local error: 
   - id[0..1]: id
@@ -8897,7 +8897,7 @@ Profiles: 107
     -daf-procedurelist: http://hl7.org/fhir/StructureDefinition/daf-procedurelist (U.S.DataAccessFramework(DAF)ListProfile)
     -daf-resultlist: http://hl7.org/fhir/StructureDefinition/daf-resultlist (U.S.DataAccessFramework(DAF)ListProfile)
 - U.S.DataAccessFramework(DAF)ResultsProfile: (daf-resultobs) Observation
-  ^observation[0..*]: U.S.DataAccessFramework(DAF)ResultsProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  ^observation[0..*]: Observation::U.S.DataAccessFramework(DAF)ResultsProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   !inv-1: local error: 
   !obs-3: local error: 
   !obs-6: local error: 
@@ -9142,7 +9142,7 @@ Profiles: 107
     -uslab-obsrange: http://hl7.org/fhir/StructureDefinition/uslab-obsrange (USLaboratoryObservationProfile)
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - U.S.DataAccessFramework(DAF)SmokingStatusProfile: (daf-smokingstatus) Observation
-  ^observation[0..*]: U.S.DataAccessFramework(DAF)SmokingStatusProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  ^observation[0..*]: Observation::U.S.DataAccessFramework(DAF)SmokingStatusProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   !obs-3: local error: 
   !obs-6: local error: 
   !obs-7: local error: 
@@ -9345,7 +9345,7 @@ Profiles: 107
     -uslab-obsrange: http://hl7.org/fhir/StructureDefinition/uslab-obsrange (USLaboratoryObservationProfile)
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - U.S.DataAccessFramework(DAF)DAFSpecimenProfile: (daf-spec) Specimen
-  ^specimen[0..*]: U.S.DataAccessFramework(DAF)DAFSpecimenProfile (W5: clinical.diagnostics)
+  ^specimen[0..*]: Specimen::U.S.DataAccessFramework(DAF)DAFSpecimenProfile (W5: clinical.diagnostics)
   !inv-2: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -9467,7 +9467,7 @@ Profiles: 107
     -qicore-specimen: http://hl7.org/fhir/StructureDefinition/qicore-specimen (QICore-Specimen)
     -uslab-spec: http://hl7.org/fhir/StructureDefinition/uslab-spec (USLaboratorySpecimenProfile)
 - DAFSubstanceProfile: (daf-substance) Substance
-  ^substance[0..*]: DAFSubstanceProfile (W5: administrative.entity)
+  ^substance[0..*]: Substance::DAFSubstanceProfile (W5: administrative.entity)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9504,7 +9504,7 @@ Profiles: 107
     -daf-substance: http://hl7.org/fhir/StructureDefinition/daf-substance (DAFSubstanceProfile)
     -qicore-substance: http://hl7.org/fhir/StructureDefinition/qicore-substance (QICore-Substance)
 - U.S.DataAccessFramework(DAF)VitalSignsProfile: (daf-vitalsigns) Observation
-  ^observation[0..*]: U.S.DataAccessFramework(DAF)VitalSignsProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  ^observation[0..*]: Observation::U.S.DataAccessFramework(DAF)VitalSignsProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   !obs-3: local error: 
   !obs-6: local error: 
   !obs-7: local error: 
@@ -9735,7 +9735,7 @@ Profiles: 107
     -uslab-obsrange: http://hl7.org/fhir/StructureDefinition/uslab-obsrange (USLaboratoryObservationProfile)
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - DeviceMetricObservation: (devicemetricobservation) Observation
-  ^observation[0..*]: DeviceMetricObservation constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  ^observation[0..*]: Observation::DeviceMetricObservation constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   !obs-3: local error: 
   !obs-6: local error: 
   !obs-7: local error: 
@@ -9936,7 +9936,7 @@ Profiles: 107
     -uslab-obsrange: http://hl7.org/fhir/StructureDefinition/uslab-obsrange (USLaboratoryObservationProfile)
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - EHRSFMRecordLifecycleEvent-AuditEvent: (ehrsrle-auditevent) AuditEvent
-  ^auditEvent[0..*]: EHRSFMRecordLifecycleEvent-AuditEvent (W5: infrastructure.information)
+  ^auditEvent[0..*]: AuditEvent::EHRSFMRecordLifecycleEvent-AuditEvent (W5: infrastructure.information)
   !sev-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -10026,7 +10026,7 @@ Profiles: 107
   Profiles[AuditEvent]: 1
     -ehrsrle-auditevent: http://hl7.org/fhir/StructureDefinition/ehrsrle-auditevent (EHRSFMRecordLifecycleEvent-AuditEvent)
 - EHRSFMRecordLifecycleEvent-Provenance: (ehrsrle-provenance) Provenance
-  ^provenance[0..*]: EHRSFMRecordLifecycleEvent-Provenance (W5: infrastructure.information)
+  ^provenance[0..*]: Provenance::EHRSFMRecordLifecycleEvent-Provenance (W5: infrastructure.information)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -10079,7 +10079,7 @@ Profiles: 107
   Profiles[Provenance]: 1
     -ehrsrle-provenance: http://hl7.org/fhir/StructureDefinition/ehrsrle-provenance (EHRSFMRecordLifecycleEvent-Provenance)
 - DataElementConstraintOnElementDefinitionDataType: (elementdefinition-de) ElementDefinition
-  ^elementDefinition[0..*]: DataElementConstraintOnElementDefinitionDataType constraints: eld-2, eld-5, eld-6, eld-7, eld-8, eld-11, eld-13, eld-14, eld-15
+  ^elementDefinition[0..*]: ElementDefinition::DataElementConstraintOnElementDefinitionDataType constraints: eld-2, eld-5, eld-6, eld-7, eld-8, eld-11, eld-13, eld-14, eld-15
   !eld-1: local error: 
   !eld-2: local error: 
   !eld-3: local error: 
@@ -10236,7 +10236,7 @@ Profiles: 107
   Profiles[ElementDefinition]: 1
     -elementdefinition-de: http://hl7.org/fhir/StructureDefinition/elementdefinition-de (DataElementConstraintOnElementDefinitionDataType)
 - ExampleLipidProfile: (example) DiagnosticReport (experimental)
-  ^diagnosticReport[1..1]: ExampleLipidProfile
+  ^diagnosticReport[1..1]: Resource::ExampleLipidProfile
   - extension[0..*]: Extension
   - text[0..1]: Narrative
   - contained[0..*]: Resource
@@ -10282,7 +10282,7 @@ Profiles: 107
     -qicore-diagnosticreport: http://hl7.org/fhir/StructureDefinition/qicore-diagnosticreport (QICore-DiagnosticReport)
     -uslab-dr: http://hl7.org/fhir/StructureDefinition/uslab-dr (USLaboratoryDiagnosticReportProfile)
 - FamilyMemberHistoryForGeneticsAnalysis: (familymemberhistory-genetic) FamilyMemberHistory
-  ^familyMemberHistory[0..*]: FamilyMemberHistoryForGeneticsAnalysis constraints: fhs-1 (W5: clinical.general)
+  ^familyMemberHistory[0..*]: FamilyMemberHistory::FamilyMemberHistoryForGeneticsAnalysis constraints: fhs-1 (W5: clinical.general)
   !fhs-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -10342,7 +10342,7 @@ Profiles: 107
     -familymemberhistory-genetic: http://hl7.org/fhir/StructureDefinition/familymemberhistory-genetic (FamilyMemberHistoryForGeneticsAnalysis)
     -qicore-familymemberhistory: http://hl7.org/fhir/StructureDefinition/qicore-familymemberhistory (QICore-FamilyMemberHistory)
 - StandardProfileForGenetics: (genetics) Observation
-  ^observation[0..*]: StandardProfileForGenetics constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  ^observation[0..*]: Observation::StandardProfileForGenetics constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   !obs-3: local error: 
   !obs-6: local error: 
   !obs-7: local error: 
@@ -10544,7 +10544,7 @@ Profiles: 107
     -uslab-obsrange: http://hl7.org/fhir/StructureDefinition/uslab-obsrange (USLaboratoryObservationProfile)
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - ExampleLipidProfile: (hdlcholesterol) Observation
-  ^observation[1..1]: ExampleLipidProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  ^observation[1..1]: Observation::ExampleLipidProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   !obs-3: local error: 
   !obs-6: local error: 
   !obs-7: local error: 
@@ -10749,7 +10749,7 @@ Profiles: 107
     -uslab-obsrange: http://hl7.org/fhir/StructureDefinition/uslab-obsrange (USLaboratoryObservationProfile)
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - ExampleLipidProfile: (ldlcholesterol) Observation
-  ^observation[1..1]: ExampleLipidProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  ^observation[1..1]: Observation::ExampleLipidProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   !obs-3: local error: 
   !obs-6: local error: 
   !obs-7: local error: 
@@ -10954,7 +10954,7 @@ Profiles: 107
     -uslab-obsrange: http://hl7.org/fhir/StructureDefinition/uslab-obsrange (USLaboratoryObservationProfile)
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - ExampleLipidProfile: (lipidprofile) DiagnosticReport
-  ^diagnosticReport[1..1]: ExampleLipidProfile (W5: clinical.diagnostics)
+  ^diagnosticReport[1..1]: DiagnosticReport::ExampleLipidProfile (W5: clinical.diagnostics)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11022,7 +11022,7 @@ Profiles: 107
     -qicore-diagnosticreport: http://hl7.org/fhir/StructureDefinition/qicore-diagnosticreport (QICore-DiagnosticReport)
     -uslab-dr: http://hl7.org/fhir/StructureDefinition/uslab-dr (USLaboratoryDiagnosticReportProfile)
 - ProfileForMeasureReports: (measurereport) Composition
-  ^composition[0..*]: ProfileForMeasureReports (W5: infrastructure.documents)
+  ^composition[0..*]: Composition::ProfileForMeasureReports (W5: infrastructure.documents)
   !cmp-1: local error: 
   !cmp-2: local error: 
   - id[0..1]: id
@@ -11104,7 +11104,7 @@ Profiles: 107
     -clinicaldocument: http://hl7.org/fhir/StructureDefinition/clinicaldocument (ClinicalDocumentProfileForComposition)
     -measurereport: http://hl7.org/fhir/StructureDefinition/measurereport (ProfileForMeasureReports)
 - QICore-AdverseEvent: (qicore-adverseevent) Basic
-  ^basic[0..*]: QICore-AdverseEvent (W5: infrastructure.structure)
+  ^basic[0..*]: Basic::QICore-AdverseEvent (W5: infrastructure.structure)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11161,7 +11161,7 @@ Profiles: 107
   Profiles[Basic]: 1
     -qicore-adverseevent: http://hl7.org/fhir/StructureDefinition/qicore-adverseevent (QICore-AdverseEvent)
 - QICore-AllergyIntolerance: (qicore-allergyintolerance) AllergyIntolerance
-  ^allergyIntolerance[0..*]: QICore-AllergyIntolerance constraints: inv-1 (W5: clinical.general)
+  ^allergyIntolerance[0..*]: AllergyIntolerance::QICore-AllergyIntolerance constraints: inv-1 (W5: clinical.general)
   !inv-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -11258,7 +11258,7 @@ Profiles: 107
     -daf-allergyintolerance: http://hl7.org/fhir/StructureDefinition/daf-allergyintolerance (U.S.DataAccessFramework(DAF)AllergyIntoleranceProfile)
     -qicore-allergyintolerance: http://hl7.org/fhir/StructureDefinition/qicore-allergyintolerance (QICore-AllergyIntolerance)
 - QICore-BodySite: (qicore-bodysite) BodySite
-  ^bodySite[0..*]: QICore-BodySite (W5: clinical.diagnostics)
+  ^bodySite[0..*]: BodySite::QICore-BodySite (W5: clinical.diagnostics)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11279,7 +11279,7 @@ Profiles: 107
   Profiles[BodySite]: 1
     -qicore-bodysite: http://hl7.org/fhir/StructureDefinition/qicore-bodysite (QICore-BodySite)
 - QICore-Communication: (qicore-communication) Communication
-  ^communication[0..*]: QICore-Communication (W5: workflow.encounter)
+  ^communication[0..*]: Communication::QICore-Communication (W5: workflow.encounter)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11329,7 +11329,7 @@ Profiles: 107
   Profiles[Communication]: 1
     -qicore-communication: http://hl7.org/fhir/StructureDefinition/qicore-communication (QICore-Communication)
 - QICore-CommunicationRequest: (qicore-communicationrequest) CommunicationRequest
-  ^communicationRequest[0..*]: QICore-CommunicationRequest (W5: workflow.order)
+  ^communicationRequest[0..*]: CommunicationRequest::QICore-CommunicationRequest (W5: workflow.order)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11381,7 +11381,7 @@ Profiles: 107
   Profiles[CommunicationRequest]: 1
     -qicore-communicationrequest: http://hl7.org/fhir/StructureDefinition/qicore-communicationrequest (QICore-CommunicationRequest)
 - QICore-Condition: (qicore-condition) Condition
-  ^condition[0..*]: QICore-Condition (W5: clinical.general)
+  ^condition[0..*]: Condition::QICore-Condition (W5: clinical.general)
   !con-1: local error: 
   !con-2: local error: 
   - id[0..1]: id
@@ -11456,7 +11456,7 @@ Profiles: 107
     -uslab-cond: http://hl7.org/fhir/StructureDefinition/uslab-cond (USLaboratoryConditionProfile)
     -uslab-reasonforstudy: http://hl7.org/fhir/StructureDefinition/uslab-reasonforstudy (USLaboratoryConditionProfile)
 - QICore-Device: (qicore-device) Device
-  ^device[0..*]: QICore-Device (W5: administrative.device)
+  ^device[0..*]: Device::QICore-Device (W5: administrative.device)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11494,7 +11494,7 @@ Profiles: 107
   Profiles[Device]: 1
     -qicore-device: http://hl7.org/fhir/StructureDefinition/qicore-device (QICore-Device)
 - QICore-DeviceUseRequest: (qicore-deviceuserequest) DeviceUseRequest
-  ^deviceUseRequest[0..*]: QICore-DeviceUseRequest (W5: workflow.order)
+  ^deviceUseRequest[0..*]: DeviceUseRequest::QICore-DeviceUseRequest (W5: workflow.order)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11529,7 +11529,7 @@ Profiles: 107
   Profiles[DeviceUseRequest]: 1
     -qicore-deviceuserequest: http://hl7.org/fhir/StructureDefinition/qicore-deviceuserequest (QICore-DeviceUseRequest)
 - QICore-DeviceUseStatement: (qicore-deviceusestatement) DeviceUseStatement
-  ^deviceUseStatement[0..*]: QICore-DeviceUseStatement (W5: workflow.order)
+  ^deviceUseStatement[0..*]: DeviceUseStatement::QICore-DeviceUseStatement (W5: workflow.order)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11553,7 +11553,7 @@ Profiles: 107
   Profiles[DeviceUseStatement]: 1
     -qicore-deviceusestatement: http://hl7.org/fhir/StructureDefinition/qicore-deviceusestatement (QICore-DeviceUseStatement)
 - QICore-DiagnosticOrder: (qicore-diagnosticorder) DiagnosticOrder
-  ^diagnosticOrder[0..*]: QICore-DiagnosticOrder (W5: clinical.diagnostics)
+  ^diagnosticOrder[0..*]: DiagnosticOrder::QICore-DiagnosticOrder (W5: clinical.diagnostics)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11631,7 +11631,7 @@ Profiles: 107
     -qicore-diagnosticorder: http://hl7.org/fhir/StructureDefinition/qicore-diagnosticorder (QICore-DiagnosticOrder)
     -uslab-do: http://hl7.org/fhir/StructureDefinition/uslab-do (USLaboratoryDiagnosticOrderProfile)
 - QICore-DiagnosticReport: (qicore-diagnosticreport) DiagnosticReport
-  ^diagnosticReport[0..*]: QICore-DiagnosticReport (W5: clinical.diagnostics)
+  ^diagnosticReport[0..*]: DiagnosticReport::QICore-DiagnosticReport (W5: clinical.diagnostics)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11691,7 +11691,7 @@ Profiles: 107
     -qicore-diagnosticreport: http://hl7.org/fhir/StructureDefinition/qicore-diagnosticreport (QICore-DiagnosticReport)
     -uslab-dr: http://hl7.org/fhir/StructureDefinition/uslab-dr (USLaboratoryDiagnosticReportProfile)
 - QICore-Encounter: (qicore-encounter) Encounter
-  ^encounter[0..*]: QICore-Encounter (W5: workflow.encounter)
+  ^encounter[0..*]: Encounter::QICore-Encounter (W5: workflow.encounter)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11796,7 +11796,7 @@ Profiles: 107
     -daf-encounter: http://hl7.org/fhir/StructureDefinition/daf-encounter (U.S.DataAccessFramework(DAF)EncounterProfile)
     -qicore-encounter: http://hl7.org/fhir/StructureDefinition/qicore-encounter (QICore-Encounter)
 - QICore-FamilyMemberHistory: (qicore-familymemberhistory) FamilyMemberHistory
-  ^familyMemberHistory[0..*]: QICore-FamilyMemberHistory constraints: fhs-1 (W5: clinical.general)
+  ^familyMemberHistory[0..*]: FamilyMemberHistory::QICore-FamilyMemberHistory constraints: fhs-1 (W5: clinical.general)
   !fhs-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -11856,7 +11856,7 @@ Profiles: 107
     -familymemberhistory-genetic: http://hl7.org/fhir/StructureDefinition/familymemberhistory-genetic (FamilyMemberHistoryForGeneticsAnalysis)
     -qicore-familymemberhistory: http://hl7.org/fhir/StructureDefinition/qicore-familymemberhistory (QICore-FamilyMemberHistory)
 - QICore-Flag: (qicore-flag) Flag
-  ^flag[0..*]: QICore-Flag (W5: workflow.encounter)
+  ^flag[0..*]: Flag::QICore-Flag (W5: workflow.encounter)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11889,7 +11889,7 @@ Profiles: 107
   Profiles[Flag]: 1
     -qicore-flag: http://hl7.org/fhir/StructureDefinition/qicore-flag (QICore-Flag)
 - QICore-Goal: (qicore-goal) Goal
-  ^goal[0..*]: QICore-Goal (W5: clinical.careprovision)
+  ^goal[0..*]: Goal::QICore-Goal (W5: clinical.careprovision)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11934,7 +11934,7 @@ Profiles: 107
   Profiles[Goal]: 1
     -qicore-goal: http://hl7.org/fhir/StructureDefinition/qicore-goal (QICore-Goal)
 - QICore-ImagingStudy: (qicore-imagingstudy) ImagingStudy
-  ^imagingStudy[0..*]: QICore-ImagingStudy (W5: clinical.diagnostics)
+  ^imagingStudy[0..*]: ImagingStudy::QICore-ImagingStudy (W5: clinical.diagnostics)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -12005,7 +12005,7 @@ Profiles: 107
   Profiles[ImagingStudy]: 1
     -qicore-imagingstudy: http://hl7.org/fhir/StructureDefinition/qicore-imagingstudy (QICore-ImagingStudy)
 - QICore-Immunization: (qicore-immunization) Immunization
-  ^immunization[0..*]: QICore-Immunization constraints: imm-1, imm-2 (W5: clinical.medication)
+  ^immunization[0..*]: Immunization::QICore-Immunization constraints: imm-1, imm-2 (W5: clinical.medication)
   !imm-1: local error: 
   !imm-2: local error: 
   - id[0..1]: id
@@ -12080,7 +12080,7 @@ Profiles: 107
     -daf-immunization: http://hl7.org/fhir/StructureDefinition/daf-immunization (U.S.DataAccessFramework(DAF)ImmunizationProfile)
     -qicore-immunization: http://hl7.org/fhir/StructureDefinition/qicore-immunization (QICore-Immunization)
 - QICore-ImmunizationRecommendation: (qicore-immunizationrec) ImmunizationRecommendation
-  ^immunizationRecommendation[0..*]: QICore-ImmunizationRecommendation (W5: clinical.medication)
+  ^immunizationRecommendation[0..*]: ImmunizationRecommendation::QICore-ImmunizationRecommendation (W5: clinical.medication)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -12127,7 +12127,7 @@ Profiles: 107
   Profiles[ImmunizationRecommendation]: 1
     -qicore-immunizationrec: http://hl7.org/fhir/StructureDefinition/qicore-immunizationrec (QICore-ImmunizationRecommendation)
 - QICore-Location: (qicore-location) Location
-  ^location[0..*]: QICore-Location (W5: administrative.entity)
+  ^location[0..*]: Location::QICore-Location (W5: administrative.entity)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -12192,7 +12192,7 @@ Profiles: 107
     -daf-location: http://hl7.org/fhir/StructureDefinition/daf-location (U.S.DataAccessFramework(DAF)LocationProfile)
     -qicore-location: http://hl7.org/fhir/StructureDefinition/qicore-location (QICore-Location)
 - QICore-Medication: (qicore-medication) Medication
-  ^medication[0..*]: QICore-Medication (W5: clinical.medication)
+  ^medication[0..*]: Medication::QICore-Medication (W5: clinical.medication)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -12251,7 +12251,7 @@ Profiles: 107
     -daf-medication: http://hl7.org/fhir/StructureDefinition/daf-medication (U.S.DataAccessFramework(DAF)MedicationProfile)
     -qicore-medication: http://hl7.org/fhir/StructureDefinition/qicore-medication (QICore-Medication)
 - QICore-MedicationAdministration: (qicore-medicationadministration) MedicationAdministration
-  ^medicationAdministration[0..*]: QICore-MedicationAdministration constraints: mad-2, mad-3 (W5: clinical.medication)
+  ^medicationAdministration[0..*]: MedicationAdministration::QICore-MedicationAdministration constraints: mad-2, mad-3 (W5: clinical.medication)
   !mad-1: local error: 
   !mad-2: local error: 
   !mad-3: local error: 
@@ -12302,7 +12302,7 @@ Profiles: 107
     -daf-medicationadministration: http://hl7.org/fhir/StructureDefinition/daf-medicationadministration (U.S.DataAccessFramework(DAF)MedicationAdministrationProfile)
     -qicore-medicationadministration: http://hl7.org/fhir/StructureDefinition/qicore-medicationadministration (QICore-MedicationAdministration)
 - QICore-MedicationDispense: (qicore-medicationdispense) MedicationDispense
-  ^medicationDispense[0..*]: QICore-MedicationDispense constraints: mdd-1 (W5: clinical.medication)
+  ^medicationDispense[0..*]: MedicationDispense::QICore-MedicationDispense constraints: mdd-1 (W5: clinical.medication)
   !mdd-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -12399,7 +12399,7 @@ Profiles: 107
     -daf-medicationdispense: http://hl7.org/fhir/StructureDefinition/daf-medicationdispense (U.S.DataAccessFramework(DAF)MedicationDispenseProfile)
     -qicore-medicationdispense: http://hl7.org/fhir/StructureDefinition/qicore-medicationdispense (QICore-MedicationDispense)
 - QICore-MedicationOrder: (qicore-medicationorder) MedicationOrder
-  ^medicationOrder[0..*]: QICore-MedicationOrder (W5: clinical.medication)
+  ^medicationOrder[0..*]: MedicationOrder::QICore-MedicationOrder (W5: clinical.medication)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -12492,7 +12492,7 @@ Profiles: 107
     -daf-medicationorder: http://hl7.org/fhir/StructureDefinition/daf-medicationorder (U.S.DataAccessFramework(DAF)MedicationOrderProfile)
     -qicore-medicationorder: http://hl7.org/fhir/StructureDefinition/qicore-medicationorder (QICore-MedicationOrder)
 - QICore-MedicationStatement: (qicore-medicationstatement) MedicationStatement
-  ^medicationStatement[0..*]: QICore-MedicationStatement constraints: mst-1, mst-2 (W5: clinical.medication)
+  ^medicationStatement[0..*]: MedicationStatement::QICore-MedicationStatement constraints: mst-1, mst-2 (W5: clinical.medication)
   !mst-1: local error: 
   !mst-2: local error: 
   - id[0..1]: id
@@ -12540,7 +12540,7 @@ Profiles: 107
     -daf-medicationstatement: http://hl7.org/fhir/StructureDefinition/daf-medicationstatement (U.S.DataAccessFramework(DAF)MedicationStatementProfile)
     -qicore-medicationstatement: http://hl7.org/fhir/StructureDefinition/qicore-medicationstatement (QICore-MedicationStatement)
 - QICore-Observation: (qicore-observation) Observation
-  ^observation[0..*]: QICore-Observation constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  ^observation[0..*]: Observation::QICore-Observation constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   !obs-3: local error: 
   !obs-6: local error: 
   !obs-7: local error: 
@@ -12742,7 +12742,7 @@ Profiles: 107
     -uslab-obsrange: http://hl7.org/fhir/StructureDefinition/uslab-obsrange (USLaboratoryObservationProfile)
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - QICore-Organization: (qicore-organization) Organization
-  ^organization[0..*]: QICore-Organization constraints: org-1 (W5: administrative.group)
+  ^organization[0..*]: Organization::QICore-Organization constraints: org-1 (W5: administrative.group)
   !org-1: local error: 
   !org-2: local error: 
   !org-3: local error: 
@@ -12814,7 +12814,7 @@ Profiles: 107
     -uslab-orderfacility: http://hl7.org/fhir/StructureDefinition/uslab-orderfacility (USLaboratoryOrganizationProfile)
     -uslab-performinglab: http://hl7.org/fhir/StructureDefinition/uslab-performinglab (USLaboratoryOrganizationProfile)
 - QICore-Patient: (qicore-patient) Patient
-  ^patient[0..*]: QICore-Patient (W5: administrative.individual)
+  ^patient[0..*]: Patient::QICore-Patient (W5: administrative.individual)
   !pat-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -13007,7 +13007,7 @@ Profiles: 107
     -uslab-patient: http://hl7.org/fhir/StructureDefinition/uslab-patient (USLaboratoryPatientProfile)
     -uslab-phpatient: http://hl7.org/fhir/StructureDefinition/uslab-phpatient (USLaboratoryPatientProfile)
 - QICore-Practitioner: (qicore-practitioner) Practitioner
-  ^practitioner[0..*]: QICore-Practitioner (W5: administrative.individual)
+  ^practitioner[0..*]: Practitioner::QICore-Practitioner (W5: administrative.individual)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -13088,7 +13088,7 @@ Profiles: 107
     -uslab-phpract: http://hl7.org/fhir/StructureDefinition/uslab-phpract (USLaboratoryPractitionerProfile)
     -uslab-pract: http://hl7.org/fhir/StructureDefinition/uslab-pract (USLaboratoryPractitionerProfile)
 - QICore-Procedure: (qicore-procedure) Procedure
-  ^procedure[0..*]: QICore-Procedure constraints: pro-1 (W5: clinical.general)
+  ^procedure[0..*]: Procedure::QICore-Procedure constraints: pro-1 (W5: clinical.general)
   !pro-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -13163,7 +13163,7 @@ Profiles: 107
     -daf-procedure: http://hl7.org/fhir/StructureDefinition/daf-procedure (U.S.DataAccessFramework(DAF)ProcedureProfile)
     -qicore-procedure: http://hl7.org/fhir/StructureDefinition/qicore-procedure (QICore-Procedure)
 - QICore-ProcedureRequest: (qicore-procedurerequest) ProcedureRequest
-  ^procedureRequest[0..*]: QICore-ProcedureRequest (W5: clinical.general)
+  ^procedureRequest[0..*]: ProcedureRequest::QICore-ProcedureRequest (W5: clinical.general)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -13214,7 +13214,7 @@ Profiles: 107
   Profiles[ProcedureRequest]: 1
     -qicore-procedurerequest: http://hl7.org/fhir/StructureDefinition/qicore-procedurerequest (QICore-ProcedureRequest)
 - QICore-ReferralRequest: (qicore-referralrequest) ReferralRequest
-  ^referralRequest[0..*]: QICore-ReferralRequest (W5: clinical.careprovision)
+  ^referralRequest[0..*]: ReferralRequest::QICore-ReferralRequest (W5: clinical.careprovision)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -13256,7 +13256,7 @@ Profiles: 107
   Profiles[ReferralRequest]: 1
     -qicore-referralrequest: http://hl7.org/fhir/StructureDefinition/qicore-referralrequest (QICore-ReferralRequest)
 - QICore-RelatedPerson: (qicore-relatedperson) RelatedPerson
-  ^relatedPerson[0..*]: QICore-RelatedPerson (W5: administrative.individual)
+  ^relatedPerson[0..*]: RelatedPerson::QICore-RelatedPerson (W5: administrative.individual)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -13299,7 +13299,7 @@ Profiles: 107
     -daf-relatedperson: http://hl7.org/fhir/StructureDefinition/daf-relatedperson (U.S.DAFRelatedPersonProfile)
     -qicore-relatedperson: http://hl7.org/fhir/StructureDefinition/qicore-relatedperson (QICore-RelatedPerson)
 - QICore-Specimen: (qicore-specimen) Specimen
-  ^specimen[0..*]: QICore-Specimen (W5: clinical.diagnostics)
+  ^specimen[0..*]: Specimen::QICore-Specimen (W5: clinical.diagnostics)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -13379,7 +13379,7 @@ Profiles: 107
     -qicore-specimen: http://hl7.org/fhir/StructureDefinition/qicore-specimen (QICore-Specimen)
     -uslab-spec: http://hl7.org/fhir/StructureDefinition/uslab-spec (USLaboratorySpecimenProfile)
 - QICore-Substance: (qicore-substance) Substance
-  ^substance[0..*]: QICore-Substance (W5: administrative.entity)
+  ^substance[0..*]: Substance::QICore-Substance (W5: administrative.entity)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -13416,7 +13416,7 @@ Profiles: 107
     -daf-substance: http://hl7.org/fhir/StructureDefinition/daf-substance (DAFSubstanceProfile)
     -qicore-substance: http://hl7.org/fhir/StructureDefinition/qicore-substance (QICore-Substance)
 - StructuredDataCaptureDataElement: (sdc-element) DataElement
-  ^dataElement[0..*]: StructuredDataCaptureDataElement (W5: conformance.content)
+  ^dataElement[0..*]: DataElement::StructuredDataCaptureDataElement (W5: conformance.content)
   !dae-1: local error: 
   !dae-2: local error: 
   !eld-1: local error: 
@@ -13597,7 +13597,7 @@ Profiles: 107
     -sdc-element: http://hl7.org/fhir/StructureDefinition/sdc-element (StructuredDataCaptureDataElement)
     -sdcde-dataelement: http://hl7.org/fhir/StructureDefinition/sdcde-dataelement (StructuredDataCaptureDataElementExchange)
 - StructuredDataCaptureQuestionnaireDesign: (sdc-questionnaire) Questionnaire
-  ^questionnaire[0..*]: StructuredDataCaptureQuestionnaireDesign constraints: que-2, que-3 (W5: infrastructure.information)
+  ^questionnaire[0..*]: Questionnaire::StructuredDataCaptureQuestionnaireDesign constraints: que-2, que-3 (W5: infrastructure.information)
   !inv-1: local error: 
   !inv-2: local error: 
   !que-1: local error: 
@@ -13801,7 +13801,7 @@ Profiles: 107
   Profiles[Questionnaire]: 1
     -sdc-questionnaire: http://hl7.org/fhir/StructureDefinition/sdc-questionnaire (StructuredDataCaptureQuestionnaireDesign)
 - StructuredDataCaptureDataCapture: (sdc-response) QuestionnaireResponse
-  ^questionnaireResponse[0..*]: StructuredDataCaptureDataCapture (W5: infrastructure.information)
+  ^questionnaireResponse[0..*]: QuestionnaireResponse::StructuredDataCaptureDataCapture (W5: infrastructure.information)
   !qrs-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -13868,7 +13868,7 @@ Profiles: 107
   Profiles[QuestionnaireResponse]: 1
     -sdc-response: http://hl7.org/fhir/StructureDefinition/sdc-response (StructuredDataCaptureDataCapture)
 - StructuredDataCaptureValueSet: (sdc-valueset) ValueSet
-  ^valueSet[0..*]: StructuredDataCaptureValueSet constraints: vsd-2, vsd-5, vsd-7 (W5: conformance.terminology)
+  ^valueSet[0..*]: ValueSet::StructuredDataCaptureValueSet constraints: vsd-2, vsd-5, vsd-7 (W5: conformance.terminology)
   !vsd-1: local error: 
   !vsd-2: local error: 
   !vsd-3: local error: 
@@ -14190,7 +14190,7 @@ Profiles: 107
     -sdcde-valueset: http://hl7.org/fhir/StructureDefinition/sdcde-valueset (StructuredDataCaptureDataElementExchangeValueSet)
     -shareablevalueset: http://hl7.org/fhir/StructureDefinition/shareablevalueset (ShareableValueSet)
 - StructuredDataCaptureDataElementExchange: (sdcde-dataelement) DataElement
-  ^dataElement[0..*]: StructuredDataCaptureDataElementExchange constraints: inv-2 (W5: conformance.content)
+  ^dataElement[0..*]: DataElement::StructuredDataCaptureDataElementExchange constraints: inv-2 (W5: conformance.content)
   !dae-1: local error: 
   !dae-2: local error: 
   !eld-1: local error: 
@@ -14480,7 +14480,7 @@ Profiles: 107
     -sdc-element: http://hl7.org/fhir/StructureDefinition/sdc-element (StructuredDataCaptureDataElement)
     -sdcde-dataelement: http://hl7.org/fhir/StructureDefinition/sdcde-dataelement (StructuredDataCaptureDataElementExchange)
 - StructuredDataCaptureDataElementExchangeValueSet: (sdcde-valueset) ValueSet
-  ^valueSet[0..*]: StructuredDataCaptureDataElementExchangeValueSet constraints: vsd-2, vsd-5, vsd-7 (W5: conformance.terminology)
+  ^valueSet[0..*]: ValueSet::StructuredDataCaptureDataElementExchangeValueSet constraints: vsd-2, vsd-5, vsd-7 (W5: conformance.terminology)
   !vsd-1: local error: 
   !vsd-2: local error: 
   !vsd-3: local error: 
@@ -14788,7 +14788,7 @@ Profiles: 107
     -sdcde-valueset: http://hl7.org/fhir/StructureDefinition/sdcde-valueset (StructuredDataCaptureDataElementExchangeValueSet)
     -shareablevalueset: http://hl7.org/fhir/StructureDefinition/shareablevalueset (ShareableValueSet)
 - ShareableValueSet: (shareablevalueset) ValueSet
-  ^valueSet[1..1]: ShareableValueSet constraints: vsd-2, vsd-5, vsd-7 (W5: conformance.terminology)
+  ^valueSet[1..1]: ValueSet::ShareableValueSet constraints: vsd-2, vsd-5, vsd-7 (W5: conformance.terminology)
   !vsd-1: local error: 
   !vsd-2: local error: 
   !vsd-3: local error: 
@@ -15094,7 +15094,7 @@ Profiles: 107
     -sdcde-valueset: http://hl7.org/fhir/StructureDefinition/sdcde-valueset (StructuredDataCaptureDataElementExchangeValueSet)
     -shareablevalueset: http://hl7.org/fhir/StructureDefinition/shareablevalueset (ShareableValueSet)
 - ExampleLipidProfile: (triglyceride) Observation
-  ^observation[1..1]: ExampleLipidProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  ^observation[1..1]: Observation::ExampleLipidProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   !obs-3: local error: 
   !obs-6: local error: 
   !obs-7: local error: 
@@ -15296,7 +15296,7 @@ Profiles: 107
     -uslab-obsrange: http://hl7.org/fhir/StructureDefinition/uslab-obsrange (USLaboratoryObservationProfile)
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - USLaboratoryOrganizationProfile: (uslab-cctarget) Organization
-  ^organization[0..*]: USLaboratoryOrganizationProfile constraints: inv-1, org-1 (W5: administrative.group)
+  ^organization[0..*]: Organization::USLaboratoryOrganizationProfile constraints: inv-1, org-1 (W5: administrative.group)
   !inv-1: local error: 
   !inv-2: local error: 
   !org-1: local error: 
@@ -15413,7 +15413,7 @@ Profiles: 107
     -uslab-orderfacility: http://hl7.org/fhir/StructureDefinition/uslab-orderfacility (USLaboratoryOrganizationProfile)
     -uslab-performinglab: http://hl7.org/fhir/StructureDefinition/uslab-performinglab (USLaboratoryOrganizationProfile)
 - USLaboratoryConditionProfile: (uslab-cond) Condition
-  ^condition[0..*]: USLaboratoryConditionProfile (W5: clinical.general)
+  ^condition[0..*]: Condition::USLaboratoryConditionProfile (W5: clinical.general)
   !con-1: local error: 
   !con-2: local error: 
   - id[0..1]: id
@@ -15509,7 +15509,7 @@ Profiles: 107
     -uslab-cond: http://hl7.org/fhir/StructureDefinition/uslab-cond (USLaboratoryConditionProfile)
     -uslab-reasonforstudy: http://hl7.org/fhir/StructureDefinition/uslab-reasonforstudy (USLaboratoryConditionProfile)
 - USLaboratoryDiagnosticOrderProfile: (uslab-do) DiagnosticOrder
-  ^diagnosticOrder[0..*]: USLaboratoryDiagnosticOrderProfile (W5: clinical.diagnostics)
+  ^diagnosticOrder[0..*]: DiagnosticOrder::USLaboratoryDiagnosticOrderProfile (W5: clinical.diagnostics)
   !inv-2: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -15622,7 +15622,7 @@ Profiles: 107
     -qicore-diagnosticorder: http://hl7.org/fhir/StructureDefinition/qicore-diagnosticorder (QICore-DiagnosticOrder)
     -uslab-do: http://hl7.org/fhir/StructureDefinition/uslab-do (USLaboratoryDiagnosticOrderProfile)
 - USLaboratoryDiagnosticReportProfile: (uslab-dr) DiagnosticReport
-  ^diagnosticReport[0..*]: USLaboratoryDiagnosticReportProfile (W5: clinical.diagnostics)
+  ^diagnosticReport[0..*]: DiagnosticReport::USLaboratoryDiagnosticReportProfile (W5: clinical.diagnostics)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -15700,7 +15700,7 @@ Profiles: 107
     -qicore-diagnosticreport: http://hl7.org/fhir/StructureDefinition/qicore-diagnosticreport (QICore-DiagnosticReport)
     -uslab-dr: http://hl7.org/fhir/StructureDefinition/uslab-dr (USLaboratoryDiagnosticReportProfile)
 - USLaboratoryObservationProfile: (uslab-obscode) Observation
-  ^observation[0..*]: USLaboratoryObservationProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  ^observation[0..*]: Observation::USLaboratoryObservationProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   !inv-1: local error: 
   !inv-4: local error: 
   !obs-3: local error: 
@@ -15938,7 +15938,7 @@ Profiles: 107
     -uslab-obsrange: http://hl7.org/fhir/StructureDefinition/uslab-obsrange (USLaboratoryObservationProfile)
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - USLaboratoryObservationProfile: (uslab-obsother) Observation
-  ^observation[0..*]: USLaboratoryObservationProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  ^observation[0..*]: Observation::USLaboratoryObservationProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   !inv-1: local error: 
   !inv-3: local error: 
   !obs-3: local error: 
@@ -16173,7 +16173,7 @@ Profiles: 107
     -uslab-obsrange: http://hl7.org/fhir/StructureDefinition/uslab-obsrange (USLaboratoryObservationProfile)
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - USLaboratoryObservationProfile: (uslab-obspanel) Observation
-  ^observation[0..*]: USLaboratoryObservationProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  ^observation[0..*]: Observation::USLaboratoryObservationProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   !inv-1: local error: 
   !inv-3: local error: 
   !obs-3: local error: 
@@ -16398,7 +16398,7 @@ Profiles: 107
     -uslab-obsrange: http://hl7.org/fhir/StructureDefinition/uslab-obsrange (USLaboratoryObservationProfile)
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - USLaboratoryObservationProfile: (uslab-obsquantity) Observation
-  ^observation[0..*]: USLaboratoryObservationProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  ^observation[0..*]: Observation::USLaboratoryObservationProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   !inv-1: local error: 
   !inv-3: local error: 
   !obs-3: local error: 
@@ -16675,7 +16675,7 @@ Profiles: 107
     -uslab-obsrange: http://hl7.org/fhir/StructureDefinition/uslab-obsrange (USLaboratoryObservationProfile)
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - USLaboratoryObservationProfile: (uslab-obsrange) Observation
-  ^observation[0..*]: USLaboratoryObservationProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  ^observation[0..*]: Observation::USLaboratoryObservationProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   !inv-1: local error: 
   !inv-3: local error: 
   !obs-3: local error: 
@@ -16952,7 +16952,7 @@ Profiles: 107
     -uslab-obsrange: http://hl7.org/fhir/StructureDefinition/uslab-obsrange (USLaboratoryObservationProfile)
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - USLaboratoryObservationProfile: (uslab-obsratio) Observation
-  ^observation[0..*]: USLaboratoryObservationProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  ^observation[0..*]: Observation::USLaboratoryObservationProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   !inv-1: local error: 
   !inv-3: local error: 
   !obs-3: local error: 
@@ -17187,7 +17187,7 @@ Profiles: 107
     -uslab-obsrange: http://hl7.org/fhir/StructureDefinition/uslab-obsrange (USLaboratoryObservationProfile)
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - USLaboratoryOrganizationProfile: (uslab-orderfacility) Organization
-  ^organization[0..*]: USLaboratoryOrganizationProfile constraints: inv-1, org-1 (W5: administrative.group)
+  ^organization[0..*]: Organization::USLaboratoryOrganizationProfile constraints: inv-1, org-1 (W5: administrative.group)
   !inv-1: local error: 
   !inv-2: local error: 
   !org-1: local error: 
@@ -17295,7 +17295,7 @@ Profiles: 107
     -uslab-orderfacility: http://hl7.org/fhir/StructureDefinition/uslab-orderfacility (USLaboratoryOrganizationProfile)
     -uslab-performinglab: http://hl7.org/fhir/StructureDefinition/uslab-performinglab (USLaboratoryOrganizationProfile)
 - USLaboratoryPatientProfile: (uslab-patient) Patient
-  ^patient[0..*]: USLaboratoryPatientProfile (W5: administrative.individual)
+  ^patient[0..*]: Patient::USLaboratoryPatientProfile (W5: administrative.individual)
   !inv-1: local error: 
   !pat-1: local error: 
   - id[0..1]: id
@@ -17483,7 +17483,7 @@ Profiles: 107
     -uslab-patient: http://hl7.org/fhir/StructureDefinition/uslab-patient (USLaboratoryPatientProfile)
     -uslab-phpatient: http://hl7.org/fhir/StructureDefinition/uslab-phpatient (USLaboratoryPatientProfile)
 - USLaboratoryOrganizationProfile: (uslab-performinglab) Organization
-  ^organization[0..*]: USLaboratoryOrganizationProfile constraints: inv-1, org-1 (W5: administrative.group)
+  ^organization[0..*]: Organization::USLaboratoryOrganizationProfile constraints: inv-1, org-1 (W5: administrative.group)
   !inv-1: local error: 
   !inv-2: local error: 
   !org-1: local error: 
@@ -17591,7 +17591,7 @@ Profiles: 107
     -uslab-orderfacility: http://hl7.org/fhir/StructureDefinition/uslab-orderfacility (USLaboratoryOrganizationProfile)
     -uslab-performinglab: http://hl7.org/fhir/StructureDefinition/uslab-performinglab (USLaboratoryOrganizationProfile)
 - USLaboratoryPatientProfile: (uslab-phpatient) Patient
-  ^patient[0..*]: USLaboratoryPatientProfile (W5: administrative.individual)
+  ^patient[0..*]: Patient::USLaboratoryPatientProfile (W5: administrative.individual)
   !inv-1: local error: 
   !inv-2: local error: 
   !pat-1: local error: 
@@ -17893,7 +17893,7 @@ Profiles: 107
     -uslab-patient: http://hl7.org/fhir/StructureDefinition/uslab-patient (USLaboratoryPatientProfile)
     -uslab-phpatient: http://hl7.org/fhir/StructureDefinition/uslab-phpatient (USLaboratoryPatientProfile)
 - USLaboratoryPractitionerProfile: (uslab-phpract) Practitioner
-  ^practitioner[0..*]: USLaboratoryPractitionerProfile constraints: inv-1 (W5: administrative.individual)
+  ^practitioner[0..*]: Practitioner::USLaboratoryPractitionerProfile constraints: inv-1 (W5: administrative.individual)
   !inv-1: local error: 
   !inv-2: local error: 
   - id[0..1]: id
@@ -18015,7 +18015,7 @@ Profiles: 107
     -uslab-phpract: http://hl7.org/fhir/StructureDefinition/uslab-phpract (USLaboratoryPractitionerProfile)
     -uslab-pract: http://hl7.org/fhir/StructureDefinition/uslab-pract (USLaboratoryPractitionerProfile)
 - USLaboratoryPractitionerProfile: (uslab-pract) Practitioner
-  ^practitioner[0..*]: USLaboratoryPractitionerProfile constraints: inv-1 (W5: administrative.individual)
+  ^practitioner[0..*]: Practitioner::USLaboratoryPractitionerProfile constraints: inv-1 (W5: administrative.individual)
   !inv-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -18120,7 +18120,7 @@ Profiles: 107
     -uslab-phpract: http://hl7.org/fhir/StructureDefinition/uslab-phpract (USLaboratoryPractitionerProfile)
     -uslab-pract: http://hl7.org/fhir/StructureDefinition/uslab-pract (USLaboratoryPractitionerProfile)
 - USLaboratoryConditionProfile: (uslab-reasonforstudy) Condition
-  ^condition[0..*]: USLaboratoryConditionProfile (W5: clinical.general)
+  ^condition[0..*]: Condition::USLaboratoryConditionProfile (W5: clinical.general)
   !con-1: local error: 
   !con-2: local error: 
   - id[0..1]: id
@@ -18216,7 +18216,7 @@ Profiles: 107
     -uslab-cond: http://hl7.org/fhir/StructureDefinition/uslab-cond (USLaboratoryConditionProfile)
     -uslab-reasonforstudy: http://hl7.org/fhir/StructureDefinition/uslab-reasonforstudy (USLaboratoryConditionProfile)
 - USLaboratorySpecimenProfile: (uslab-spec) Specimen
-  ^specimen[0..*]: USLaboratorySpecimenProfile (W5: clinical.diagnostics)
+  ^specimen[0..*]: Specimen::USLaboratorySpecimenProfile (W5: clinical.diagnostics)
   !inv-2: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -18338,7 +18338,7 @@ Profiles: 107
     -qicore-specimen: http://hl7.org/fhir/StructureDefinition/qicore-specimen (QICore-Specimen)
     -uslab-spec: http://hl7.org/fhir/StructureDefinition/uslab-spec (USLaboratorySpecimenProfile)
 - XDSProfileForDocumentReference: (xdsdocumentmanifest) DocumentManifest
-  ^documentManifest[0..*]: XDSProfileForDocumentReference (W5: infrastructure.documents)
+  ^documentManifest[0..*]: DocumentManifest::XDSProfileForDocumentReference (W5: infrastructure.documents)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -18385,7 +18385,7 @@ Profiles: 107
   Profiles[DocumentManifest]: 1
     -xdsdocumentmanifest: http://hl7.org/fhir/StructureDefinition/xdsdocumentmanifest (XDSProfileForDocumentReference)
 - XDSProfileForDocumentReference: (xdsdocumentreference) DocumentReference
-  ^documentReference[0..*]: XDSProfileForDocumentReference (W5: infrastructure.documents)
+  ^documentReference[0..*]: DocumentReference::XDSProfileForDocumentReference (W5: infrastructure.documents)
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri

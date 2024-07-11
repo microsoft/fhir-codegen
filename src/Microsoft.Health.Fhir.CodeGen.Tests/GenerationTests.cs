@@ -19,6 +19,9 @@ namespace Microsoft.Health.Fhir.CodeGen.Tests;
 
 public class GenerationTestFixture
 {
+    /// <summary>True to write generated files.</summary>
+    public static bool WriteGeneratedFiles = false;
+
     /// <summary>The package loader.</summary>
     public PackageLoader? Loader = null;
 
@@ -62,9 +65,6 @@ public class GenerationTestFixture
         "hl7.fhir.r2.core#1.0.2",
         "hl7.fhir.r2.expansions#1.0.2",
     ];
-
-    /// <summary>True to write generated files.</summary>
-    public static bool WriteGeneratedFiles = false;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="GenerationTestFixture"/> class.
