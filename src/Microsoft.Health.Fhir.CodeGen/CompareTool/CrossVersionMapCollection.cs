@@ -375,7 +375,7 @@ public class CrossVersionMapCollection
         return outcome;
     }
 
-    public class TypedParameter
+    public class PropertyOrTypeDetails
     {
         public IAsyncResourceResolver Resolver { get; init; }
         public ElementDefinitionNavigator Element { get; init; }
@@ -398,12 +398,12 @@ public class CrossVersionMapCollection
         Console.Write($"  {group.Name}(");
 
         // Check the types in the group parameters
-        Dictionary<string, TypedParameter?> parameterTypesByName = new ();
+        Dictionary<string, PropertyOrTypeDetails?> parameterTypesByName = new ();
         foreach (var gp in group.Parameters)
         {
             if (gp != group.Parameters.First())
                 Console.Write(", ");
-            TypedParameter? tp = null;
+            PropertyOrTypeDetails? tp = null;
             string ? type = gp.TypeIdentifier;
             // lookup the type in the aliases
             var resolver = gp.InputMode == StructureMap.StructureMapInputMode.Source ? sourceResolver : targetResolver;
@@ -415,7 +415,7 @@ public class CrossVersionMapCollection
                     if (sd != null)
                     {
                         var sw = new StructureDefinitionWalker(sd, resolver);
-                        tp = new TypedParameter
+                        tp = new PropertyOrTypeDetails
                         {
                             Resolver = resolver,
                             Element = sw.Current
@@ -432,7 +432,7 @@ public class CrossVersionMapCollection
             }
             else if (gp.ParameterElementDefinition != null)
             {
-                tp = new TypedParameter
+                tp = new PropertyOrTypeDetails
                 {
                     Resolver = resolver,
                     Element = gp.ParameterElementDefinition
@@ -461,12 +461,12 @@ public class CrossVersionMapCollection
         return issues;
     }
 
-    private static void VerifyFmlGroupRule(string prefix, FhirStructureMap fml, GroupDeclaration group, Dictionary<string, StructureDefinition?> _aliasedTypes, IAsyncResourceResolver sourceResolver, IAsyncResourceResolver targetResolver, Dictionary<string, GroupDeclaration> typeGroups, List<OperationOutcome.IssueComponent> issues, Dictionary<string, TypedParameter?> parameterTypesByName, GroupExpression rule)
+    private static void VerifyFmlGroupRule(string prefix, FhirStructureMap fml, GroupDeclaration group, Dictionary<string, StructureDefinition?> _aliasedTypes, IAsyncResourceResolver sourceResolver, IAsyncResourceResolver targetResolver, Dictionary<string, GroupDeclaration> typeGroups, List<OperationOutcome.IssueComponent> issues, Dictionary<string, PropertyOrTypeDetails?> parameterTypesByName, GroupExpression rule)
     {
         Console.Write(prefix);
 
         // deduce the datatypes for the variables
-        Dictionary<string, TypedParameter?> parameterTypesByNameForRule = parameterTypesByName.ShallowCopy();
+        Dictionary<string, PropertyOrTypeDetails?> parameterTypesByNameForRule = parameterTypesByName.ShallowCopy();
         if (rule.MappingExpression != null)
         {
             foreach (var source in rule.MappingExpression.Sources)
@@ -475,7 +475,7 @@ public class CrossVersionMapCollection
                     Console.Write(", ");
 
                 Console.Write($"{source.Identifier}");
-                TypedParameter? tpV = null;
+                PropertyOrTypeDetails? tpV = null;
                 try
                 {
                     tpV = ResolveIdentifierType(source.Identifier, parameterTypesByNameForRule, source, issues);
@@ -508,7 +508,7 @@ public class CrossVersionMapCollection
                 if (target != rule.MappingExpression.Targets.First())
                     Console.Write(", ");
 
-                TypedParameter? tpV = null;
+                PropertyOrTypeDetails? tpV = null;
                 if (!string.IsNullOrEmpty(target.Identifier))
                 {
                     Console.Write($"{target.Identifier}");
@@ -697,7 +697,7 @@ public class CrossVersionMapCollection
         }
     }
 
-    private static void VerifyInvocation(List<OperationOutcome.IssueComponent> issues, Dictionary<string, TypedParameter?> parameterTypesByNameForRule, FmlInvocation invocation)
+    private static void VerifyInvocation(List<OperationOutcome.IssueComponent> issues, Dictionary<string, PropertyOrTypeDetails?> parameterTypesByNameForRule, FmlInvocation invocation)
     {
         // deduce the return type of the invocation
         Console.Write($" {invocation.Identifier}(");
@@ -706,7 +706,7 @@ public class CrossVersionMapCollection
             if (p != invocation.Parameters.First())
                 Console.Write(",");
 
-            TypedParameter? parameterTypeV = null;
+            PropertyOrTypeDetails? parameterTypeV = null;
             if (!string.IsNullOrEmpty(p.Identifier))
             {
                 Console.Write($"{p.Identifier}");
@@ -748,11 +748,11 @@ public class CrossVersionMapCollection
         Console.WriteLine("\nError: " + message);
     }
 
-    private static TypedParameter? ResolveIdentifierType(string identifier, Dictionary<string, TypedParameter?> parameterTypesByNameForRule, FmlNode sourceOrTargetNode, List<OperationOutcome.IssueComponent> issues)
+    private static PropertyOrTypeDetails? ResolveIdentifierType(string identifier, Dictionary<string, PropertyOrTypeDetails?> parameterTypesByNameForRule, FmlNode sourceOrTargetNode, List<OperationOutcome.IssueComponent> issues)
     {
         IEnumerable<string> parts = identifier.Split('.');
         // Get the base type for this variable
-        if (parameterTypesByNameForRule.TryGetValue(parts.First(), out TypedParameter? tp))
+        if (parameterTypesByNameForRule.TryGetValue(parts.First(), out PropertyOrTypeDetails? tp))
         {
             if (tp != null)
             {
@@ -773,7 +773,7 @@ public class CrossVersionMapCollection
                                     node = new StructureDefinitionWalker(r, tp.Resolver);
                                 }
                             }
-                            tp = new TypedParameter
+                            tp = new PropertyOrTypeDetails
                             {
                                 Resolver = tp.Resolver,
                                 Element = node.Current
