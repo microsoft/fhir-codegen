@@ -17,8 +17,12 @@ namespace Microsoft.Health.Fhir.CodeGen.Tests.FromFailures;
 /// <summary>A structure parse tests.</summary>
 public class ParseTests
 {
+    /// <summary>
+    /// Note that the Expansion is WRONG in several publications
+    /// TODO(ginoc): Remove this test when current build is verified correct.
+    /// </summary>
+    /// <param name="json">The JSON.</param>
     [Theory]
-    //[FileData("TestData/R5/ValueSet-units-of-time.json")]
     [FileData("TestData/R5/expansions/ValueSet-units-of-time.json")]
     [Trait("Category", "Issues")]
     [Trait("FhirVersion", "R5")]
