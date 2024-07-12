@@ -226,8 +226,67 @@ public class CrossVersionTests
                 if (group.TypeMode == StructureMap.StructureMapGroupTypeMode.TypeAndTypes
                     || group.TypeMode == StructureMap.StructureMapGroupTypeMode.Types)
                 {
-                    // Console.WriteLine($"{group.TypeMode} {group.Name}");
-                    typedGroups.Add(group.Name, group);
+                    Console.Write($"{group.TypeMode} {group.Name}");
+
+                    // Check that all the parameters have type declarations
+                    Dictionary<string, StructureDefinition?> aliasedTypes = new();
+                    foreach (var use in fml.StructuresByUrl)
+                    {
+                        // Console.WriteLine($"Use {use.Key} as {use.Value?.Alias}");
+                        var sd = await resolveMapUseCrossVersionType(use.Key.Trim('\"'), use.Value?.Alias);
+                        if (use.Value?.Alias != null)
+                            aliasedTypes.Add(use.Value.Alias, sd);
+                        else if (sd != null && sd.Name != null)
+                            aliasedTypes.Add(use.Value?.Alias ?? sd.Name, sd);
+                    }
+                    string? typeMapping = null;
+                    foreach (var gp in group.Parameters)
+                    {
+                        if (string.IsNullOrEmpty(gp.TypeIdentifier))
+                        {
+                            Console.WriteLine($"\n    * No type provided for parameter `{gp.Identifier}`");
+                            errorCount++;
+                        }
+                        else
+                        {
+                            string? type = gp.TypeIdentifier;
+                            // lookup the type in the aliases
+                            var resolver = gp.InputMode == StructureMap.StructureMapInputMode.Source ? sourceResolver : targetResolver;
+                            if (type != null)
+                            {
+                                if (!type.Contains('/') && aliasedTypes.ContainsKey(type))
+                                {
+                                    var sd = aliasedTypes[type];
+                                    if (sd != null)
+                                    {
+                                        var sw = new StructureDefinitionWalker(sd, resolver);
+                                        type = $"{sd.Url}|{sd.Version}";
+                                        gp.ParameterElementDefinition = sw.Current;
+                                    }
+                                }
+                                else if (type != "string")
+                                {
+                                    Console.WriteLine($"\nGroup {group.Name} parameter {gp.Identifier} at @{gp.Line}:{gp.Column} has no type `{gp.TypeIdentifier}`");
+                                }
+                            }
+                            if (!string.IsNullOrEmpty(typeMapping))
+                                typeMapping += " -> ";
+                            typeMapping += type;
+                        }
+                    }
+                    Console.Write($"\t\t{typeMapping}");
+                    Console.Write("\n");
+
+                    if (typedGroups.ContainsKey(typeMapping))
+                    {
+                        var eg = typedGroups[typeMapping];
+                        Console.WriteLine($"    Error: Group {group.Name} duplicates the type mappings declared in group {eg.Name}");
+                        errorCount++;
+                    }
+                    else
+                    {
+                        typedGroups.Add(typeMapping, group);
+                    }
                 }
                 else
                 {
