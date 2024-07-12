@@ -404,7 +404,7 @@ public class CrossVersionMapCollection
             if (gp != group.Parameters.First())
                 Console.Write(", ");
             PropertyOrTypeDetails? tp = null;
-            string ? type = gp.TypeIdentifier;
+            string? type = gp.TypeIdentifier;
             // lookup the type in the aliases
             var resolver = gp.InputMode == StructureMap.StructureMapInputMode.Source ? sourceResolver : targetResolver;
             if (type != null)
@@ -568,7 +568,7 @@ public class CrossVersionMapCollection
 
                 if (target.Transform != null)
                 {
-                    Console.Write(" = transform");
+                    Console.Write(" = ");
                     if (target.Transform.Literal != null)
                     {
                         var literal = target.Transform.Literal;

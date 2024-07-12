@@ -3,12 +3,9 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System.Formats.Tar;
-using System.IO.Compression;
 using System.Text;
 using FluentAssertions;
 using Hl7.Fhir.Model;
-using Hl7.Fhir.Rest;
 using Hl7.Fhir.Specification.Source;
 using Microsoft.Health.Fhir.CodeGen.CompareTool;
 using Microsoft.Health.Fhir.CodeGen.Tests.Extensions;
@@ -116,7 +113,7 @@ public class CrossVersionTests
         return null!;
     }
 
-    [Theory(DisplayName = "TestFmlGroupParameterTypes")]
+    [Theory(DisplayName = "ValidateCrossVersionMaps")]
     [InlineData("fhir-cross-version/input/R2toR3", "2to3")]
     [InlineData("fhir-cross-version/input/R3toR2", "3to2")]
     [InlineData("fhir-cross-version/input/R3toR4", "3to4")]
@@ -125,9 +122,10 @@ public class CrossVersionTests
     [InlineData("fhir-cross-version/input/R5toR4", "5to4")]
     [InlineData("fhir-cross-version/input/R4BtoR5", "4Bto5")]
     [InlineData("fhir-cross-version/input/R5toR4B", "5to4B")]
-    public async System.Threading.Tasks.Task TestFmlGroupParameterTypes(string path, string versionToVersion)
+    public async System.Threading.Tasks.Task ValidateCrossVersionMaps(string path, string versionToVersion)
     {
         int versionToVersionLen = versionToVersion.Length;
+        int errorCount = 0;
 
         // files have different styles in each directory, but we want all FML files anyway
         string[] files = Directory.GetFiles(FindRelativeDir(path), $"*.fml", SearchOption.TopDirectoryOnly);
@@ -136,19 +134,35 @@ public class CrossVersionTests
 
         Dictionary<string, Dictionary<string, CrossVersionMapCollection.FmlTargetInfo>> fmlPathLookup = [];
 
-        var vers = versionToVersion.Split("to");
         var cvr = new CrossVersionResolver();
-        await cvr.Initialize(vers);
+        var versions = versionToVersion.Split("to");
+        await cvr.Initialize(versions);
         CachedResolver source = new CachedResolver(cvr);
         source.Load += Source_Load;
 
-        var sourceResolver = new CachedResolver(new MultiResolver(OnlyVersion(cvr, vers[0]), cvr));
+        var sourceResolver = new CachedResolver(new MultiResolver(OnlyVersion(cvr, versions[0]), cvr));
         sourceResolver.Load += Source_Load;
 
-        var targetResolver = new CachedResolver(new MultiResolver(OnlyVersion(cvr, vers[1]), cvr));
+        var targetResolver = new CachedResolver(new MultiResolver(OnlyVersion(cvr, versions[1]), cvr));
         targetResolver.Load += Source_Load;
 
-        int errorCount = 0;
+        async Task<StructureDefinition?> resolveMapUseCrossVersionType(string url, string? alias)
+        {
+            if (await source.ResolveByCanonicalUriAsync(url) is StructureDefinition sd)
+            {
+                // Console.WriteLine(" - yup");
+                return sd;
+            }
+            Console.WriteLine($"\nError: Resolving Type {url} as {alias} was not found");
+            errorCount++;
+            return null;
+        }
+        IEnumerable<FhirStructureMap> resolveMaps(string url)
+        {
+            Console.WriteLine($"Resolving Maps {url}");
+            return new List<FhirStructureMap>();
+        }
+
         List<FhirStructureMap> allMaps = new List<FhirStructureMap>();
         foreach (string filename in files)
         {
@@ -227,22 +241,6 @@ public class CrossVersionTests
         {
             try
             {
-                async Task<StructureDefinition?> resolveMapUseCrossVersionType(string url, string? alias)
-                {
-                    if (await source.ResolveByCanonicalUriAsync(url) is StructureDefinition sd)
-                    {
-                        // Console.WriteLine(" - yup");
-                        return sd;
-                    }
-                    Console.WriteLine($"\nError: Resolving Type {url} as {alias} was not found");
-                    errorCount++;
-                    return null;
-                }
-                IEnumerable<FhirStructureMap> resolveMaps(string url)
-                {
-                    Console.WriteLine($"Resolving Maps {url}");
-                    return new List<FhirStructureMap>();
-                }
                 var outcome = await CrossVersionMapCollection.VerifyFmlDataTypes(fml, resolveMapUseCrossVersionType, resolveMaps, sourceResolver, targetResolver, namedGroups);
                 if (!outcome.Success)
                     errorCount++;
