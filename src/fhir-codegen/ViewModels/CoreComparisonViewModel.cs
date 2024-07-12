@@ -8,12 +8,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace fhir_codegen.ViewModels;
 
-public partial class CoreComparisonViewModel : ViewModelBase
+public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewModel
 {
+    public static string Label => "Compare FHIR Releases";
+    public static StreamGeometry? IconGeometry => (Application.Current?.TryGetResource("book_question_mark_regular", out object? icon) ?? false) && icon is StreamGeometry sg
+        ? sg
+        : null;
+
     [ObservableProperty]
     private string _sourcePackageDirective = "";
 

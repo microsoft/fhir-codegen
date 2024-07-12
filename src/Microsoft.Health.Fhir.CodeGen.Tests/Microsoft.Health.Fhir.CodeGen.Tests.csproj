@@ -57,6 +57,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="TestData\Packages\packages-01-empty.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="TestData\R5\expansions\ValueSet-units-of-time.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
