@@ -97,8 +97,7 @@ typeIdentifier
   ;
 
 expression
- 	: qualifiedIdentifier '->' qualifiedIdentifier ';'  #mapSimpleCopy
-//  	| fpExpression ';'                                  #mapFhirPath               
+  : qualifiedIdentifier '->' qualifiedIdentifier mapExpressionName? ';'  #mapSimpleCopy
   | mapExpression ';'                                 #mapFhirMarkup
  	;
 

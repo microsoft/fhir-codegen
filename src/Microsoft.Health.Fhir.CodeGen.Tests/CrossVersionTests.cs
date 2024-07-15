@@ -209,7 +209,15 @@ public class CrossVersionTests
 
         // Prepare a cache of the TYPE based map groups
         Dictionary<string, GroupDeclaration> namedGroups = new Dictionary<string, GroupDeclaration>();
-        Dictionary<string, GroupDeclaration> typedGroups = new Dictionary<string, GroupDeclaration>();
+        Dictionary<string, GroupDeclaration?> typedGroups = new Dictionary<string, GroupDeclaration?>();
+
+        // With a default set of maps from the fhir types to fhirpath primitives
+        typedGroups.Add("http://hl7.org/fhirpath/System.Date -> http://hl7.org/fhirpath/System.DateTime", null);
+        typedGroups.Add("http://hl7.org/fhirpath/System.DateTime -> http://hl7.org/fhirpath/System.Date", null);
+        typedGroups.Add("http://hl7.org/fhirpath/System.String -> http://hl7.org/fhirpath/System.Integer", null);
+        typedGroups.Add("http://hl7.org/fhirpath/System.Integer -> http://hl7.org/fhirpath/System.String", null);
+        typedGroups.Add("http://hl7.org/fhirpath/System.Integer -> http://hl7.org/fhirpath/System.Decimal", null);
+
         foreach (var fml in allMaps)
         {
             foreach (var group in fml.GroupsByName.Values)
@@ -266,7 +274,8 @@ public class CrossVersionTests
                                 }
                                 else if (type != "string")
                                 {
-                                    Console.WriteLine($"\nGroup {group.Name} parameter {gp.Identifier} at @{gp.Line}:{gp.Column} has no type `{gp.TypeIdentifier}`");
+                                    Console.WriteLine($"\nError: Group {group.Name} parameter {gp.Identifier} at @{gp.Line}:{gp.Column} has no type `{gp.TypeIdentifier}`");
+                                    errorCount++;
                                 }
                             }
                             if (!string.IsNullOrEmpty(typeMapping))
@@ -300,7 +309,7 @@ public class CrossVersionTests
         {
             try
             {
-                var outcome = await CrossVersionMapCollection.VerifyFmlDataTypes(fml, resolveMapUseCrossVersionType, resolveMaps, sourceResolver, targetResolver, namedGroups);
+                var outcome = await CrossVersionMapCollection.VerifyFmlDataTypes(fml, resolveMapUseCrossVersionType, resolveMaps, sourceResolver, targetResolver, namedGroups, typedGroups);
                 if (!outcome.Success)
                     errorCount++;
             }
@@ -312,7 +321,7 @@ public class CrossVersionTests
 
             //ProcessCrossVersionFml(string name, FhirStructureMap fml, Dictionary<string, List<GroupExpression>> fmlPathLookup)
         }
-        errorCount.Should().Be(0, "Should be no parsing/processing errors");
+        errorCount.Should().Be(0, "fml errors");
     }
 
     private void Source_Load(object sender, CachedResolver.LoadResourceEventArgs e)

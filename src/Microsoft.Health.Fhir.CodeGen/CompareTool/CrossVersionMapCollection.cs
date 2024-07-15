@@ -340,7 +340,7 @@ public class CrossVersionMapCollection
     }
 
     public static async Task<OperationOutcome> VerifyFmlDataTypes(FhirStructureMap fml, Func<string, string?, Task<StructureDefinition?>> resolveMapUseCrossVersionType, Func<string, IEnumerable<FhirStructureMap>> resolveMaps,
-        IAsyncResourceResolver sourceResolver, IAsyncResourceResolver targetResolver, Dictionary<string, GroupDeclaration> typeGroups)
+        IAsyncResourceResolver sourceResolver, IAsyncResourceResolver targetResolver, Dictionary<string, GroupDeclaration> namedGroups, Dictionary<string, GroupDeclaration> typedGroups)
     {
         Console.WriteLine($"Validating map {fml.MapDirective?.Url ?? fml.MetadataByPath["url"]?.Literal?.ValueAsString}");
 
@@ -368,7 +368,7 @@ public class CrossVersionMapCollection
         OperationOutcome outcome = new OperationOutcome();
         foreach (var group in fml.GroupsByName.Values)
         {
-            var results = VerifyFmlDataTypesForGroup(fml, group, _aliasedTypes, resolveMaps, sourceResolver, targetResolver, typeGroups);
+            var results = VerifyFmlDataTypesForGroup(fml, group, _aliasedTypes, resolveMaps, sourceResolver, targetResolver, namedGroups, typedGroups);
             outcome.Issue.AddRange(results);
         }
         Console.WriteLine();
@@ -392,7 +392,7 @@ public class CrossVersionMapCollection
         GroupDeclaration group,
         Dictionary<string, StructureDefinition?> _aliasedTypes,
         Func<string, IEnumerable<FhirStructureMap>> resolveMaps,
-        IAsyncResourceResolver sourceResolver, IAsyncResourceResolver targetResolver, Dictionary<string, GroupDeclaration> typeGroups)
+        IAsyncResourceResolver sourceResolver, IAsyncResourceResolver targetResolver, Dictionary<string, GroupDeclaration> namedGroups, Dictionary<string, GroupDeclaration> typedGroups)
     {
         List<OperationOutcome.IssueComponent> issues = new List<OperationOutcome.IssueComponent>();
         Console.Write($"  {group.Name}(");
@@ -456,13 +456,13 @@ public class CrossVersionMapCollection
         // Now scan for dependencies in rules
         foreach(var rule in group.Expressions)
         {
-            VerifyFmlGroupRule("     ", fml, group, _aliasedTypes, sourceResolver, targetResolver, typeGroups, issues, parameterTypesByName, rule);
+            VerifyFmlGroupRule("     ", fml, group, _aliasedTypes, sourceResolver, targetResolver, namedGroups, typedGroups, issues, parameterTypesByName, rule);
         }
         Console.WriteLine("  }");
         return issues;
     }
 
-    private static void VerifyFmlGroupRule(string prefix, FhirStructureMap fml, GroupDeclaration group, Dictionary<string, StructureDefinition?> _aliasedTypes, IAsyncResourceResolver sourceResolver, IAsyncResourceResolver targetResolver, Dictionary<string, GroupDeclaration> typeGroups, List<OperationOutcome.IssueComponent> issues, Dictionary<string, PropertyOrTypeDetails?> parameterTypesByName, GroupExpression rule)
+    private static void VerifyFmlGroupRule(string prefix, FhirStructureMap fml, GroupDeclaration group, Dictionary<string, StructureDefinition?> _aliasedTypes, IAsyncResourceResolver sourceResolver, IAsyncResourceResolver targetResolver, Dictionary<string, GroupDeclaration> namedGroups, Dictionary<string, GroupDeclaration> typedGroups, List<OperationOutcome.IssueComponent> issues, Dictionary<string, PropertyOrTypeDetails?> parameterTypesByName, GroupExpression rule)
     {
         Console.Write(prefix);
 
@@ -569,18 +569,19 @@ public class CrossVersionMapCollection
                 if (target.Transform != null)
                 {
                     Console.Write(" = ");
+                    PropertyOrTypeDetails? transformedSourceV = null;
                     if (target.Transform.Literal != null)
                     {
                         var literal = target.Transform.Literal;
                         Console.Write($" {literal.RawText}");
-                        tpV = ResolveLiteralDataType(group, sourceResolver, issues, literal);
+                        transformedSourceV = ResolveLiteralDataType(group, sourceResolver, issues, literal);
                     }
                     if (!string.IsNullOrEmpty(target.Transform.Identifier))
                     {
                         Console.Write($" {target.Transform.Identifier}");
                         try
                         {
-                            tpV = ResolveIdentifierType(target.Transform.Identifier, parameterTypesByNameForRule, target.Transform, issues);
+                            transformedSourceV = ResolveIdentifierType(target.Transform.Identifier, parameterTypesByNameForRule, target.Transform, issues);
                         }
                         catch (ApplicationException e)
                         {
@@ -590,8 +591,24 @@ public class CrossVersionMapCollection
 
                     }
                     if (target.Transform.Invocation != null)
-                        tpV = VerifyInvocation(group, issues, parameterTypesByNameForRule, target.Transform.Invocation, targetResolver);
-                    Console.Write($" : {tpV?.Element?.DebugString() ?? "?"}");
+                        transformedSourceV = VerifyInvocation(group, issues, parameterTypesByNameForRule, target.Transform.Invocation, targetResolver);
+
+                    if (target.Transform.fpExpression != null)
+                    {
+                        // Need to process this!
+                        Console.Write($"( {target.Transform.fpExpression.RawText} )");
+                    }
+
+                    if (transformedSourceV?.Element == null && target.Transform.fpExpression == null) // skipping error for FP expression as that's known
+                    {
+                        string msg = $"No type derived for transform `{target.Transform.RawText}` at @{target.Transform.Line}:{target.Transform.Column} ";
+                        ReportIssue(issues, msg, OperationOutcome.IssueType.Exception);
+                    }
+
+                    Console.Write($" : {transformedSourceV?.Element?.DebugString() ?? "?"}");
+
+                    // Validate that the datatype is compatible
+                    VerifyMapBetweenDatatypes(typedGroups, issues, target.Transform, transformedSourceV, tpV);
                 }
 
                 if (target.Alias != null)
@@ -612,10 +629,11 @@ public class CrossVersionMapCollection
 
         if (rule.SimpleCopyExpression != null)
         {
+            PropertyOrTypeDetails? sourceV = null;
             try
             {
-                var sourcetpV = ResolveIdentifierType(rule.SimpleCopyExpression.Source, parameterTypesByNameForRule, rule.SimpleCopyExpression, issues);
-                Console.Write($"{rule.SimpleCopyExpression.Source} : {sourcetpV?.Element?.DebugString() ?? "?"}");
+                sourceV = ResolveIdentifierType(rule.SimpleCopyExpression.Source, parameterTypesByNameForRule, rule.SimpleCopyExpression, issues);
+                Console.Write($"{rule.SimpleCopyExpression.Source} : {sourceV?.Element?.DebugString() ?? "?"}");
             }
             catch (ApplicationException ex)
             {
@@ -625,16 +643,20 @@ public class CrossVersionMapCollection
 
             Console.Write($"  -->  ");
 
+            PropertyOrTypeDetails? targetV = null;
             try
             {
-                var targettpV = ResolveIdentifierType(rule.SimpleCopyExpression.Target, parameterTypesByNameForRule, rule.SimpleCopyExpression, issues);
-                Console.Write($"{rule.SimpleCopyExpression.Target} : {targettpV?.Element?.DebugString() ?? "?"}");
+                targetV = ResolveIdentifierType(rule.SimpleCopyExpression.Target, parameterTypesByNameForRule, rule.SimpleCopyExpression, issues);
+                Console.Write($"{rule.SimpleCopyExpression.Target} : {targetV?.Element?.DebugString() ?? "?"}");
             }
             catch (ApplicationException ex)
             {
                 string msg = $"Can't resolve simple target `{rule.SimpleCopyExpression.Target}`: {ex.Message}";
                 ReportIssue(issues, msg, OperationOutcome.IssueType.Exception);
             }
+
+            // Verify that there exists a map that goes between these types
+            VerifyMapBetweenDatatypes(typedGroups, issues, rule.SimpleCopyExpression, sourceV, targetV);
         }
 
         // Scan any dependent group calls
@@ -645,7 +667,7 @@ public class CrossVersionMapCollection
             {
                 Console.Write("\n        "+prefix);
                 Console.Write($" then {i.Identifier}( ");
-                if (!fml.GroupsByName.ContainsKey(i.Identifier) && !typeGroups.ContainsKey(i.Identifier))
+                if (!fml.GroupsByName.ContainsKey(i.Identifier) && !namedGroups.ContainsKey(i.Identifier))
                 {
                     Console.WriteLine($"... )");
                     string msg = $"Calling non existent dependent group {i.Identifier} at @{i.Line}:{i.Column}";
@@ -653,7 +675,7 @@ public class CrossVersionMapCollection
                 }
                 else
                 {
-                    var dg = fml.GroupsByName.ContainsKey(i.Identifier) ? fml.GroupsByName[i.Identifier] : typeGroups[i.Identifier];
+                    var dg = fml.GroupsByName.ContainsKey(i.Identifier) ? fml.GroupsByName[i.Identifier] : namedGroups[i.Identifier];
                     // walk the parameters
                     for (int nParam = 0; nParam < dg.Parameters.Count; nParam++)
                     {
@@ -726,7 +748,7 @@ public class CrossVersionMapCollection
                 // process any expressions as a result of any
                 foreach (var childRule in de.Expressions)
                 {
-                    VerifyFmlGroupRule(prefix + "     ", fml, group, _aliasedTypes, sourceResolver, targetResolver, typeGroups, issues, parameterTypesByNameForRule, childRule);
+                    VerifyFmlGroupRule(prefix + "     ", fml, group, _aliasedTypes, sourceResolver, targetResolver, namedGroups, typedGroups, issues, parameterTypesByNameForRule, childRule);
                 }
             }
         }
@@ -734,6 +756,135 @@ public class CrossVersionMapCollection
         {
             Console.WriteLine();
         }
+    }
+
+    private static void VerifyMapBetweenDatatypes(Dictionary<string, GroupDeclaration> typedGroups, List<OperationOutcome.IssueComponent> issues, FmlNode node, PropertyOrTypeDetails? sourceV, PropertyOrTypeDetails? targetV)
+    {
+        if (sourceV != null && targetV != null)
+        {
+            IEnumerable<string> sourceTypeNames = GetTypeNames(sourceV);
+            IEnumerable<string> targetTypeNames = GetTypeNames(targetV);
+            // Just need to ensure that there exists a target type for each source that exists
+            foreach (var stn in sourceTypeNames)
+            {
+                if (targetTypeNames.Contains(stn))
+                    continue;
+
+                IEnumerable<string> lookupsForSource;
+                if (stn.StartsWith("http://hl7.org/fhirpath/"))
+                {
+                    bool sameTypeFound = false;
+                    lookupsForSource = targetTypeNames.Select(ttn =>
+                    {
+                        int versionSeperatorIndex = ttn.IndexOf('|');
+                        var versionLessSourceType = versionSeperatorIndex > 0 ? ttn.Substring(0, versionSeperatorIndex) : ttn;
+                        if (FhirToFhirPathDataTypeMappings.TryGetValue(versionLessSourceType, out var fpTN) && !ttn.StartsWith("http://hl7.org/fhirpath/"))
+                        {
+                            if (stn == fpTN)
+                                sameTypeFound = true;
+                            return $"{stn} -> {fpTN}";
+                        }
+                        return $"{stn} -> {ttn}";
+                    }).ToArray();
+                    if (sameTypeFound)
+                        continue;
+                }
+                else
+                {
+                    int versionSeperatorIndex = stn.IndexOf('|');
+                    var versionLessSourceType = versionSeperatorIndex > 0 ? stn.Substring(0, versionSeperatorIndex) : stn;
+                    if (FhirToFhirPathDataTypeMappings.TryGetValue(versionLessSourceType, out var fpTN) && targetTypeNames.Any(ttn => ttn.StartsWith("http://hl7.org/fhirpath/")))
+                    {
+                        if (targetTypeNames.Contains(fpTN))
+                            continue;
+                        lookupsForSource = targetTypeNames.Where(ttn => !ttn.StartsWith("http://hl7.org/fhirpath/")).Select(ttn => $"{stn} -> {ttn}");
+
+                        lookupsForSource = lookupsForSource.Union(
+                            targetTypeNames.Where(ttn => ttn.StartsWith("http://hl7.org/fhirpath/")).Select(ttn => $"{fpTN} -> {ttn}")
+                            );
+                    }
+                    else
+                    {
+                        lookupsForSource = targetTypeNames.Select(ttn => $"{stn} -> {ttn}");
+                    }
+                }
+
+                if (!lookupsForSource.Any(mapLookup => typedGroups.ContainsKey(mapLookup)))
+                {
+                    string msg = $"There is no target type for mapping from {stn} detected @{node.Line}:{node.Column}";
+                    msg += "\n        " + string.Join("\n        ", lookupsForSource);
+                    ReportIssue(issues, msg, OperationOutcome.IssueType.Exception);
+                }
+            }
+        }
+    }
+
+    private static Dictionary<string, string> FhirToFhirPathDataTypeMappings = new Dictionary<string, string>(
+        [
+            new ("http://hl7.org/fhir/StructureDefinition/boolean", "http://hl7.org/fhirpath/System.Boolean"),
+            new ("http://hl7.org/fhir/StructureDefinition/string", "http://hl7.org/fhirpath/System.String"),
+            new ("http://hl7.org/fhir/StructureDefinition/uri", "http://hl7.org/fhirpath/System.String"),
+            new ("http://hl7.org/fhir/StructureDefinition/code", "http://hl7.org/fhirpath/System.String"),
+            new ("http://hl7.org/fhir/StructureDefinition/oid", "http://hl7.org/fhirpath/System.String"),
+            new ("http://hl7.org/fhir/StructureDefinition/id", "http://hl7.org/fhirpath/System.String"),
+            new ("http://hl7.org/fhir/StructureDefinition/uuid", "http://hl7.org/fhirpath/System.String"),
+            new ("http://hl7.org/fhir/StructureDefinition/markdown", "http://hl7.org/fhirpath/System.String"),
+            new ("http://hl7.org/fhir/StructureDefinition/base64Binary", "http://hl7.org/fhirpath/System.String"),
+            new ("http://hl7.org/fhir/StructureDefinition/integer", "http://hl7.org/fhirpath/System.Integer"),
+            new ("http://hl7.org/fhir/StructureDefinition/unsignedInt", "http://hl7.org/fhirpath/System.Integer"),
+            new ("http://hl7.org/fhir/StructureDefinition/positiveInt", "http://hl7.org/fhirpath/System.Integer"),
+            new ("http://hl7.org/fhir/StructureDefinition/integer64", "http://hl7.org/fhirpath/System.Long"),
+            new ("http://hl7.org/fhir/StructureDefinition/decimal", "http://hl7.org/fhirpath/System.Decimal"),
+            new ("http://hl7.org/fhir/StructureDefinition/date", "http://hl7.org/fhirpath/System.DateTime"),
+            new ("http://hl7.org/fhir/StructureDefinition/dateTime", "http://hl7.org/fhirpath/System.DateTime"),
+            new ("http://hl7.org/fhir/StructureDefinition/instant", "http://hl7.org/fhirpath/System.DateTime"),
+            new ("http://hl7.org/fhir/StructureDefinition/time", "http://hl7.org/fhirpath/System.Time"),
+            new ("http://hl7.org/fhir/StructureDefinition/Quantity", "http://hl7.org/fhirpath/System.Quantity"),
+        ]);
+
+    private static IEnumerable<string> GetTypeNames(PropertyOrTypeDetails ptd)
+    {
+        List<string> typeNames = new List<string>();
+
+        // simple root case, we're not in a child property
+        if (!ptd.Element.Path.Contains("."))
+        {
+            typeNames.Add($"{ptd.Element.StructureDefinition.Url}|{ptd.Element.StructureDefinition.Version}");
+        }
+        else
+        {
+            foreach (var t in ptd.Element.Current.Type)
+            {
+                var typeName = t.Code;
+                if (typeName != null)
+                {
+                    if (!typeName.Contains(':')) // assume this is a FHIR type
+                        typeName = "http://hl7.org/fhir/StructureDefinition/" + typeName;
+                    if (typeName.StartsWith("http://hl7.org/fhirpath/System."))
+                    {
+                        if (!typeNames.Contains(typeName))
+                            typeNames.Add(typeName);
+                    }
+                    else
+                    {
+                        var sdType = ptd.Resolver.FindStructureDefinitionAsync(typeName).WaitResult();
+                        if (sdType != null)
+                        {
+                            var tn = $"{sdType.Url}|{sdType.Version}";
+                            if (!typeNames.Contains(tn))
+                                typeNames.Add(tn);
+                        }
+                    }
+                }
+                else
+                {
+                    var tn = t.Code + "|" + ptd.Element.StructureDefinition.Version;
+                    if (!typeNames.Contains(tn))
+                        typeNames.Add(tn);
+                }
+            }
+        }
+        return typeNames;
     }
 
     private static PropertyOrTypeDetails? ResolveLiteralDataType(GroupDeclaration group, IAsyncResourceResolver sourceResolver, List<OperationOutcome.IssueComponent> issues, LiteralValue literal)
@@ -758,13 +909,13 @@ public class CrossVersionMapCollection
         return ResolveDataTypeFromName(group, sourceResolver, issues, literal, typeName);
     }
 
-    private static PropertyOrTypeDetails? ResolveDataTypeFromName(GroupDeclaration group, IAsyncResourceResolver sourceResolver, List<OperationOutcome.IssueComponent> issues, FmlNode literal, string? typeName)
+    private static PropertyOrTypeDetails? ResolveDataTypeFromName(GroupDeclaration group, IAsyncResourceResolver resolver, List<OperationOutcome.IssueComponent> issues, FmlNode literal, string? typeName)
     {
         if (typeName != null)
         {
             if (!typeName.Contains(':')) // assume this is a FHIR type
                 typeName = "http://hl7.org/fhir/StructureDefinition/" + typeName;
-            var sdCastType = sourceResolver.FindStructureDefinitionAsync(typeName).WaitResult();
+            var sdCastType = resolver.FindStructureDefinitionAsync(typeName).WaitResult();
             if (sdCastType == null)
             {
                 string msg = $"Unable to resolve type `{typeName}` in {group.Name} at @{literal.Line}:{literal.Column}";
@@ -772,10 +923,10 @@ public class CrossVersionMapCollection
             }
             else
             {
-                var sw = new StructureDefinitionWalker(sdCastType, sourceResolver);
+                var sw = new StructureDefinitionWalker(sdCastType, resolver);
                 return new PropertyOrTypeDetails
                 {
-                    Resolver = sourceResolver,
+                    Resolver = resolver,
                     Element = sw.Current
                 };
             }
