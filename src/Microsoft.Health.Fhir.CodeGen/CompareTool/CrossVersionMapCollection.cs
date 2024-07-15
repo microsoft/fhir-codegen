@@ -340,7 +340,7 @@ public class CrossVersionMapCollection
     }
 
     public static async Task<OperationOutcome> VerifyFmlDataTypes(FhirStructureMap fml, Func<string, string?, Task<StructureDefinition?>> resolveMapUseCrossVersionType, Func<string, IEnumerable<FhirStructureMap>> resolveMaps,
-        IAsyncResourceResolver sourceResolver, IAsyncResourceResolver targetResolver, Dictionary<string, GroupDeclaration> namedGroups, Dictionary<string, GroupDeclaration> typedGroups)
+        IAsyncResourceResolver sourceResolver, IAsyncResourceResolver targetResolver, Dictionary<string, GroupDeclaration> namedGroups, Dictionary<string, GroupDeclaration?> typedGroups)
     {
         Console.WriteLine($"Validating map {fml.MapDirective?.Url ?? fml.MetadataByPath["url"]?.Literal?.ValueAsString}");
 
@@ -392,7 +392,7 @@ public class CrossVersionMapCollection
         GroupDeclaration group,
         Dictionary<string, StructureDefinition?> _aliasedTypes,
         Func<string, IEnumerable<FhirStructureMap>> resolveMaps,
-        IAsyncResourceResolver sourceResolver, IAsyncResourceResolver targetResolver, Dictionary<string, GroupDeclaration> namedGroups, Dictionary<string, GroupDeclaration> typedGroups)
+        IAsyncResourceResolver sourceResolver, IAsyncResourceResolver targetResolver, Dictionary<string, GroupDeclaration> namedGroups, Dictionary<string, GroupDeclaration?> typedGroups)
     {
         List<OperationOutcome.IssueComponent> issues = new List<OperationOutcome.IssueComponent>();
         Console.Write($"  {group.Name}(");
@@ -423,11 +423,24 @@ public class CrossVersionMapCollection
                         type = $"{sd.Url}|{sd.Version}";
                         gp.ParameterElementDefinition = sw.Current;
                     }
+                    else
+                    {
+                        string msg = $"Group {group.Name} parameter {gp.Identifier} type `{gp.TypeIdentifier}` is not imported in a use at @{gp.Line}:{gp.Column}";
+                        ReportIssue(issues, msg, OperationOutcome.IssueType.NotFound);
+                    }
                 }
-                else if (type != "string")
+                else
                 {
-                    string msg = $"Group {group.Name} parameter {gp.Identifier} at @{gp.Line}:{gp.Column} has no type `{gp.TypeIdentifier}`";
-                    ReportIssue(issues, msg, OperationOutcome.IssueType.NotFound);
+                    tp = ResolveDataTypeFromName(group, resolver, issues, gp, type);
+                    if (tp != null)
+                    {
+                        gp.ParameterElementDefinition = tp.Element;
+                    }
+                    else
+                    {
+                        string msg = $"Group {group.Name} parameter {gp.Identifier} has no type `{gp.TypeIdentifier}` at @{gp.Line}:{gp.Column}";
+                        ReportIssue(issues, msg, OperationOutcome.IssueType.NotFound);
+                    }
                 }
             }
             else if (gp.ParameterElementDefinition != null)
@@ -462,7 +475,7 @@ public class CrossVersionMapCollection
         return issues;
     }
 
-    private static void VerifyFmlGroupRule(string prefix, FhirStructureMap fml, GroupDeclaration group, Dictionary<string, StructureDefinition?> _aliasedTypes, IAsyncResourceResolver sourceResolver, IAsyncResourceResolver targetResolver, Dictionary<string, GroupDeclaration> namedGroups, Dictionary<string, GroupDeclaration> typedGroups, List<OperationOutcome.IssueComponent> issues, Dictionary<string, PropertyOrTypeDetails?> parameterTypesByName, GroupExpression rule)
+    private static void VerifyFmlGroupRule(string prefix, FhirStructureMap fml, GroupDeclaration group, Dictionary<string, StructureDefinition?> _aliasedTypes, IAsyncResourceResolver sourceResolver, IAsyncResourceResolver targetResolver, Dictionary<string, GroupDeclaration> namedGroups, Dictionary<string, GroupDeclaration?> typedGroups, List<OperationOutcome.IssueComponent> issues, Dictionary<string, PropertyOrTypeDetails?> parameterTypesByName, GroupExpression rule)
     {
         Console.Write(prefix);
 
@@ -758,7 +771,7 @@ public class CrossVersionMapCollection
         }
     }
 
-    private static void VerifyMapBetweenDatatypes(Dictionary<string, GroupDeclaration> typedGroups, List<OperationOutcome.IssueComponent> issues, FmlNode node, PropertyOrTypeDetails? sourceV, PropertyOrTypeDetails? targetV)
+    private static void VerifyMapBetweenDatatypes(Dictionary<string, GroupDeclaration?> typedGroups, List<OperationOutcome.IssueComponent> issues, FmlNode node, PropertyOrTypeDetails? sourceV, PropertyOrTypeDetails? targetV)
     {
         if (sourceV != null && targetV != null)
         {
