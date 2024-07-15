@@ -3592,12 +3592,22 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
 
             IniData data = parser.Parse(File.ReadAllText(_iniFilePath));
 
+            if (!data.Sections.Contains("packages"))
+            {
+                data.Sections.Add("packages");
+            }
+
             if (data["packages"].Contains(directive))
             {
                 data["packages"].Remove(directive);
             }
 
             data["packages"].Add(directive, packageDate);
+
+            if (!data.Sections.Contains("package-sizes"))
+            {
+                data.Sections.Add("package-sizes");
+            }
 
             if (data["package-sizes"].Contains(directive))
             {
