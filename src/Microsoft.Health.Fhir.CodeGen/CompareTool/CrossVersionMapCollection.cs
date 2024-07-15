@@ -516,6 +516,14 @@ public class CrossVersionMapCollection
                     else
                     {
                         var sw = new StructureDefinitionWalker(sdCastType, sourceResolver);
+
+                        // Check that the type being attempted is among the types in the actual property
+                        if (!tpV?.Element?.Current?.Type.Any(t => t.Code == source.TypeIdentifier) == true)
+                        {
+                            string msg = $"Type `{typeName}` is not a valid cast for `{source.Identifier}` in {group.Name} at @{source.Line}:{source.Column}";
+                            ReportIssue(issues, msg, OperationOutcome.IssueType.Duplicate);
+                        }
+
                         tpV = new PropertyOrTypeDetails
                         {
                             Resolver = sourceResolver,
