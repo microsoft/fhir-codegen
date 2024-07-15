@@ -32,7 +32,7 @@ using ParserRuleContext = Antlr4.Runtime.ParserRuleContext;
 /// <typeparam name="Result">The return type of the visit operation.</typeparam>
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.13.1")]
 [System.Diagnostics.DebuggerNonUserCode]
-//[System.CLSCompliant(false)]
+[System.CLSCompliant(false)]
 public partial class FmlMappingBaseVisitor<Result> : AbstractParseTreeVisitor<Result>, IFmlMappingVisitor<Result> {
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="FmlMappingParser.structureMap"/>.
@@ -869,17 +869,6 @@ public partial class FmlMappingBaseVisitor<Result> : AbstractParseTreeVisitor<Re
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	public virtual Result VisitQuotedStringLiteral([NotNull] FmlMappingParser.QuotedStringLiteralContext context) { return VisitChildren(context); }
-	/// <summary>
-	/// Visit a parse tree produced by the <c>idLiteral</c>
-	/// labeled alternative in <see cref="FmlMappingParser.literal"/>.
-	/// <para>
-	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
-	/// on <paramref name="context"/>.
-	/// </para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	public virtual Result VisitIdLiteral([NotNull] FmlMappingParser.IdLiteralContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by the <c>quantityWithDate</c>
 	/// labeled alternative in <see cref="FmlMappingParser.fpQuantity"/>.

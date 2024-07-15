@@ -28,7 +28,7 @@ using IToken = Antlr4.Runtime.IToken;
 /// <see cref="FmlMappingParser"/>.
 /// </summary>
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.13.1")]
-//[System.CLSCompliant(false)]
+[System.CLSCompliant(false)]
 public interface IFmlMappingListener : IParseTreeListener {
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="FmlMappingParser.structureMap"/>.
@@ -900,18 +900,6 @@ public interface IFmlMappingListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitQuotedStringLiteral([NotNull] FmlMappingParser.QuotedStringLiteralContext context);
-	/// <summary>
-	/// Enter a parse tree produced by the <c>idLiteral</c>
-	/// labeled alternative in <see cref="FmlMappingParser.literal"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterIdLiteral([NotNull] FmlMappingParser.IdLiteralContext context);
-	/// <summary>
-	/// Exit a parse tree produced by the <c>idLiteral</c>
-	/// labeled alternative in <see cref="FmlMappingParser.literal"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitIdLiteral([NotNull] FmlMappingParser.IdLiteralContext context);
 	/// <summary>
 	/// Enter a parse tree produced by the <c>quantityWithDate</c>
 	/// labeled alternative in <see cref="FmlMappingParser.fpQuantity"/>.

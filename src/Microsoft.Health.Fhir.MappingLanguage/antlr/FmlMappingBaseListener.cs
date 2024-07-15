@@ -33,7 +33,7 @@ using ParserRuleContext = Antlr4.Runtime.ParserRuleContext;
 /// </summary>
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.13.1")]
 [System.Diagnostics.DebuggerNonUserCode]
-//[System.CLSCompliant(false)]
+[System.CLSCompliant(false)]
 public partial class FmlMappingBaseListener : IFmlMappingListener {
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="FmlMappingParser.structureMap"/>.
@@ -1065,20 +1065,6 @@ public partial class FmlMappingBaseListener : IFmlMappingListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitQuotedStringLiteral([NotNull] FmlMappingParser.QuotedStringLiteralContext context) { }
-	/// <summary>
-	/// Enter a parse tree produced by the <c>idLiteral</c>
-	/// labeled alternative in <see cref="FmlMappingParser.literal"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterIdLiteral([NotNull] FmlMappingParser.IdLiteralContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>idLiteral</c>
-	/// labeled alternative in <see cref="FmlMappingParser.literal"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitIdLiteral([NotNull] FmlMappingParser.IdLiteralContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>quantityWithDate</c>
 	/// labeled alternative in <see cref="FmlMappingParser.fpQuantity"/>.

@@ -3,12 +3,9 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System.Formats.Tar;
-using System.IO.Compression;
 using System.Text;
 using FluentAssertions;
 using Hl7.Fhir.Model;
-using Hl7.Fhir.Rest;
 using Hl7.Fhir.Specification.Source;
 using Microsoft.Health.Fhir.CodeGen.CompareTool;
 using Microsoft.Health.Fhir.CodeGen.Tests.Extensions;
@@ -116,7 +113,7 @@ public class CrossVersionTests
         return null!;
     }
 
-    [Theory(DisplayName = "TestFmlGroupParameterTypes")]
+    [Theory(DisplayName = "ValidateCrossVersionMaps")]
     [InlineData("fhir-cross-version/input/R2toR3", "2to3")]
     [InlineData("fhir-cross-version/input/R3toR2", "3to2")]
     [InlineData("fhir-cross-version/input/R3toR4", "3to4")]
@@ -125,9 +122,10 @@ public class CrossVersionTests
     [InlineData("fhir-cross-version/input/R5toR4", "5to4")]
     [InlineData("fhir-cross-version/input/R4BtoR5", "4Bto5")]
     [InlineData("fhir-cross-version/input/R5toR4B", "5to4B")]
-    public async System.Threading.Tasks.Task TestFmlGroupParameterTypes(string path, string versionToVersion)
+    public async System.Threading.Tasks.Task ValidateCrossVersionMaps(string path, string versionToVersion)
     {
         int versionToVersionLen = versionToVersion.Length;
+        int errorCount = 0;
 
         // files have different styles in each directory, but we want all FML files anyway
         string[] files = Directory.GetFiles(FindRelativeDir(path), $"*.fml", SearchOption.TopDirectoryOnly);
@@ -136,19 +134,35 @@ public class CrossVersionTests
 
         Dictionary<string, Dictionary<string, CrossVersionMapCollection.FmlTargetInfo>> fmlPathLookup = [];
 
-        var vers = versionToVersion.Split("to");
         var cvr = new CrossVersionResolver();
-        await cvr.Initialize(vers);
+        var versions = versionToVersion.Split("to");
+        await cvr.Initialize(versions);
         CachedResolver source = new CachedResolver(cvr);
         source.Load += Source_Load;
 
-        var sourceResolver = new CachedResolver(new MultiResolver(OnlyVersion(cvr, vers[0]), cvr));
+        var sourceResolver = new CachedResolver(new MultiResolver(OnlyVersion(cvr, versions[0]), cvr));
         sourceResolver.Load += Source_Load;
 
-        var targetResolver = new CachedResolver(new MultiResolver(OnlyVersion(cvr, vers[1]), cvr));
+        var targetResolver = new CachedResolver(new MultiResolver(OnlyVersion(cvr, versions[1]), cvr));
         targetResolver.Load += Source_Load;
 
-        int errorCount = 0;
+        async Task<StructureDefinition?> resolveMapUseCrossVersionType(string url, string? alias)
+        {
+            if (await source.ResolveByCanonicalUriAsync(url) is StructureDefinition sd)
+            {
+                // Console.WriteLine(" - yup");
+                return sd;
+            }
+            Console.WriteLine($"\nError: Resolving Type {url} as {alias} was not found");
+            errorCount++;
+            return null;
+        }
+        IEnumerable<FhirStructureMap> resolveMaps(string url)
+        {
+            Console.WriteLine($"Resolving Maps {url}");
+            return new List<FhirStructureMap>();
+        }
+
         List<FhirStructureMap> allMaps = new List<FhirStructureMap>();
         foreach (string filename in files)
         {
@@ -195,7 +209,15 @@ public class CrossVersionTests
 
         // Prepare a cache of the TYPE based map groups
         Dictionary<string, GroupDeclaration> namedGroups = new Dictionary<string, GroupDeclaration>();
-        Dictionary<string, GroupDeclaration> typedGroups = new Dictionary<string, GroupDeclaration>();
+        Dictionary<string, GroupDeclaration?> typedGroups = new Dictionary<string, GroupDeclaration?>();
+
+        // With a default set of maps from the fhir types to fhirpath primitives
+        typedGroups.Add("http://hl7.org/fhirpath/System.Date -> http://hl7.org/fhirpath/System.DateTime", null);
+        typedGroups.Add("http://hl7.org/fhirpath/System.DateTime -> http://hl7.org/fhirpath/System.Date", null);
+        typedGroups.Add("http://hl7.org/fhirpath/System.String -> http://hl7.org/fhirpath/System.Integer", null);
+        typedGroups.Add("http://hl7.org/fhirpath/System.Integer -> http://hl7.org/fhirpath/System.String", null);
+        typedGroups.Add("http://hl7.org/fhirpath/System.Integer -> http://hl7.org/fhirpath/System.Decimal", null);
+
         foreach (var fml in allMaps)
         {
             foreach (var group in fml.GroupsByName.Values)
@@ -212,8 +234,68 @@ public class CrossVersionTests
                 if (group.TypeMode == StructureMap.StructureMapGroupTypeMode.TypeAndTypes
                     || group.TypeMode == StructureMap.StructureMapGroupTypeMode.Types)
                 {
-                    // Console.WriteLine($"{group.TypeMode} {group.Name}");
-                    typedGroups.Add(group.Name, group);
+                    Console.Write($"{group.TypeMode} {group.Name}");
+
+                    // Check that all the parameters have type declarations
+                    Dictionary<string, StructureDefinition?> aliasedTypes = new();
+                    foreach (var use in fml.StructuresByUrl)
+                    {
+                        // Console.WriteLine($"Use {use.Key} as {use.Value?.Alias}");
+                        var sd = await resolveMapUseCrossVersionType(use.Key.Trim('\"'), use.Value?.Alias);
+                        if (use.Value?.Alias != null)
+                            aliasedTypes.Add(use.Value.Alias, sd);
+                        else if (sd != null && sd.Name != null)
+                            aliasedTypes.Add(use.Value?.Alias ?? sd.Name, sd);
+                    }
+                    string? typeMapping = null;
+                    foreach (var gp in group.Parameters)
+                    {
+                        if (string.IsNullOrEmpty(gp.TypeIdentifier))
+                        {
+                            Console.WriteLine($"\n    * No type provided for parameter `{gp.Identifier}`");
+                            errorCount++;
+                        }
+                        else
+                        {
+                            string? type = gp.TypeIdentifier;
+                            // lookup the type in the aliases
+                            var resolver = gp.InputMode == StructureMap.StructureMapInputMode.Source ? sourceResolver : targetResolver;
+                            if (type != null)
+                            {
+                                if (!type.Contains('/') && aliasedTypes.ContainsKey(type))
+                                {
+                                    var sd = aliasedTypes[type];
+                                    if (sd != null)
+                                    {
+                                        var sw = new StructureDefinitionWalker(sd, resolver);
+                                        type = $"{sd.Url}|{sd.Version}";
+                                        gp.ParameterElementDefinition = sw.Current;
+                                    }
+                                }
+                                else if (type != "string")
+                                {
+                                    Console.WriteLine($"\nError: Group {group.Name} parameter {gp.Identifier} at @{gp.Line}:{gp.Column} has no type `{gp.TypeIdentifier}`");
+                                    errorCount++;
+                                }
+                            }
+                            if (!string.IsNullOrEmpty(typeMapping))
+                                typeMapping += " -> ";
+                            typeMapping += type;
+                        }
+                    }
+                    Console.Write($"\t\t{typeMapping}");
+                    Console.Write("\n");
+
+                    if (typedGroups.ContainsKey(typeMapping))
+                    {
+                        var eg = typedGroups[typeMapping];
+                        Console.WriteLine($"    Error: Group {group.Name} duplicates the type mappings declared in group {eg.Name}");
+                        errorCount++;
+                    }
+                    else
+                    {
+                        typedGroups.Add(typeMapping, group);
+                    }
                 }
                 else
                 {
@@ -227,23 +309,7 @@ public class CrossVersionTests
         {
             try
             {
-                async Task<StructureDefinition?> resolveMapUseCrossVersionType(string url, string? alias)
-                {
-                    if (await source.ResolveByCanonicalUriAsync(url) is StructureDefinition sd)
-                    {
-                        // Console.WriteLine(" - yup");
-                        return sd;
-                    }
-                    Console.WriteLine($"\nError: Resolving Type {url} as {alias} was not found");
-                    errorCount++;
-                    return null;
-                }
-                IEnumerable<FhirStructureMap> resolveMaps(string url)
-                {
-                    Console.WriteLine($"Resolving Maps {url}");
-                    return new List<FhirStructureMap>();
-                }
-                var outcome = await CrossVersionMapCollection.VerifyFmlDataTypes(fml, resolveMapUseCrossVersionType, resolveMaps, sourceResolver, targetResolver, namedGroups);
+                var outcome = await CrossVersionMapCollection.VerifyFmlDataTypes(fml, resolveMapUseCrossVersionType, resolveMaps, sourceResolver, targetResolver, namedGroups, typedGroups);
                 if (!outcome.Success)
                     errorCount++;
             }
@@ -255,7 +321,7 @@ public class CrossVersionTests
 
             //ProcessCrossVersionFml(string name, FhirStructureMap fml, Dictionary<string, List<GroupExpression>> fmlPathLookup)
         }
-        errorCount.Should().Be(0, "Should be no parsing/processing errors");
+        errorCount.Should().Be(0, "fml errors");
     }
 
     private void Source_Load(object sender, CachedResolver.LoadResourceEventArgs e)

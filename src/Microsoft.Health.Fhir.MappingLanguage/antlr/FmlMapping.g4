@@ -97,8 +97,7 @@ typeIdentifier
   ;
 
 expression
- 	: qualifiedIdentifier '->' qualifiedIdentifier ';'  #mapSimpleCopy
-//  	| fpExpression ';'                                  #mapFhirPath               
+  : qualifiedIdentifier '->' qualifiedIdentifier mapExpressionName? ';'  #mapSimpleCopy
   | mapExpression ';'                                 #mapFhirMarkup
  	;
 
@@ -136,8 +135,8 @@ upperBound
   ;
 
 qualifiedIdentifier
-  : (ID | IDENTIFIER | 'imports' | 'source' | 'target' | 'group' | 'prefix' | 'map' | 'uses' | 'let' | 'types' | 'extends' | 'where' | 'check' | 'alias' | 'div' | 'contains' | 'as' | 'is') 
-    ('.' (ID | IDENTIFIER | 'imports' | 'source' | 'target' | 'group' | 'prefix' | 'map' | 'uses' | 'let' | 'types' | 'extends' | 'where' | 'check' | 'alias' | 'div' | 'contains' | 'as' | 'is'))*
+  : (ID | IDENTIFIER | 'imports' | 'source' | 'target' | 'group' | 'prefix' | 'map' | 'uses' | 'let' | 'types' | 'extends' | 'where' | 'check' | 'alias' | 'div' | 'contains' | 'as' | 'is' | 'first' | 'last' ) 
+    ('.' (ID | IDENTIFIER | 'imports' | 'source' | 'target' | 'group' | 'prefix' | 'map' | 'uses' | 'let' | 'types' | 'extends' | 'where' | 'check' | 'alias' | 'div' | 'contains' | 'as' | 'is' | 'first' | 'last'))*
   // : identifier ('.' identifier '[x]'?)*
   ;
 
@@ -262,7 +261,6 @@ literal
   | TIME                                                  #timeLiteral
   | SINGLE_QUOTED_STRING                                  #stringLiteral
   | DOUBLE_QUOTED_STRING                                  #quotedStringLiteral
-  | ID                                                    #idLiteral
   ;
 
   // : BOOL
