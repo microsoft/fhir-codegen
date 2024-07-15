@@ -37,8 +37,13 @@ public class FhirDotNestComparer : IComparer<string>
             return 1;
         }
 
+#if NET8_0_OR_GREATER
         string[] xComponents = x.Split('.', StringSplitOptions.RemoveEmptyEntries);
         string[] yComponents = y.Split('.', StringSplitOptions.RemoveEmptyEntries);
+#else
+        string[] xComponents = x.Split('.');
+        string[] yComponents = y.Split('.');
+#endif
 
         // get enumerators for each of the arrays
         using IEnumerator<string> xE = ((IEnumerable<string>)xComponents).GetEnumerator();

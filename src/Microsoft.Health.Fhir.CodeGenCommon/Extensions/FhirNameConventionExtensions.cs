@@ -14,7 +14,11 @@ public static class FhirNameConventionExtensions
     private static readonly char[] _wordDelimiters = [' ', '.', '_', '-'];
 
     /// <summary>(Immutable) Options for controlling the word split.</summary>
+#if NETSTANDARD2_0
+    private static readonly StringSplitOptions _wordSplitOptions = StringSplitOptions.RemoveEmptyEntries;
+#else
     private static readonly StringSplitOptions _wordSplitOptions = StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries;
+#endif
 
     /// <summary>Values that represent naming conventions for item types.</summary>
     public enum NamingConvention
@@ -90,21 +94,21 @@ public static class FhirNameConventionExtensions
     /// <param name="removeDelimiters">(Optional) True to remove delimiters.</param>
     /// <param name="joinDelimiter">   (Optional) The word delimiter to use when joining.</param>
     /// <returns>Word as a string.</returns>
-    public static string[] ToPascalCase(this string[] words, bool removeDelimiters = true, string joinDelimiter = "")
+    public static string[] ToPascalCase(this IEnumerable<string> words, bool removeDelimiters = true, string joinDelimiter = "")
     {
-        if (words.Length == 0)
+        if (!words.Any())
         {
             return [];
         }
 
-        string[] output = new string[words.Length];
+        List<string> output = [];
 
-        for (int i = 0; i < words.Length; i++)
+        foreach (string word in words)
         {
-            output[i] = ToPascalCase(words[i], removeDelimiters, joinDelimiter);
+            output.Add(ToPascalCase(word, removeDelimiters, joinDelimiter));
         }
 
-        return output;
+        return output.ToArray();
     }
 
     /// <summary>
@@ -435,7 +439,7 @@ public static class FhirNameConventionExtensions
             return string.Empty;
         }
 
-        return string.Join('.', word.Split(_wordDelimiters, _wordSplitOptions).Select(w => w.ToPascalCase(false)));
+        return string.Join(".", word.Split(_wordDelimiters, _wordSplitOptions).Select(w => w.ToPascalCase(false)));
     }
 
     /// <summary>A string extension method that converts this object to a pascal dot case.</summary>
@@ -471,7 +475,7 @@ public static class FhirNameConventionExtensions
             return string.Empty;
         }
 
-        return string.Join('.', words.Select(w => w.ToPascalDotCase()));
+        return string.Join(".", words.Select(w => w.ToPascalDotCase()));
     }
 
     /// <summary>
@@ -539,7 +543,7 @@ public static class FhirNameConventionExtensions
 
         string[] words = word.Split(_wordDelimiters, _wordSplitOptions);
 
-        return string.Join('.', words.Take(1).Select(w => w.ToPascalCase(false)), words.Skip(1).Select(w => w.ToCamelCase()));
+        return string.Join(".", words.Take(1).Select(w => w.ToPascalCase(false)), words.Skip(1).Select(w => w.ToCamelCase()));
     }
 
     /// <summary>A string extension method that converts this array of strings to an array of FHIR dot-case strings.</summary>
@@ -575,6 +579,6 @@ public static class FhirNameConventionExtensions
             return string.Empty;
         }
 
-        return string.Join('.', words.Take(1).Select(w => w.ToPascalCase(false)), words.Skip(1).Select(w => w.ToCamelCase()));
+        return string.Join(".", words.Take(1).Select(w => w.ToPascalCase(false)), words.Skip(1).Select(w => w.ToCamelCase()));
     }
 }

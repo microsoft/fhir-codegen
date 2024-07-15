@@ -15,6 +15,10 @@ using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using static Microsoft.Health.Fhir.CodeGen.Language.Info.LangInfo;
 using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 
+#if NETSTANDARD2_0
+using Microsoft.Health.Fhir.CodeGen.Polyfill;
+#endif
+
 namespace Microsoft.Health.Fhir.CodeGen.Language.Info;
 
 /// <summary>Class used to export package/specification information.</summary>
@@ -233,7 +237,7 @@ public class LangInfo : ILanguage
     /// <returns>A string.</returns>
     private string ExternalRefLiteral(IEnumerable<StructureElementCollection> ecs)
     {
-        return string.Join(", ", ecs.Select(ec => $"{ec.Structure.Id}({ec.Structure.cgArtifactClass()}) [{string.Join(',', ec.Elements.Select(ed => ed.Path).Distinct())}]"));
+        return string.Join(", ", ecs.Select(ec => $"{ec.Structure.Id}({ec.Structure.cgArtifactClass()}) [{string.Join(",", ec.Elements.Select(ed => ed.Path).Distinct())}]"));
     }
 
     /// <summary>Writes an unresolved value sets.</summary>
@@ -717,7 +721,20 @@ public class LangInfo : ILanguage
     {
         string propertyType = string.Empty;
 
-        if (ed.Type.Count != 0)
+        if (!ed.Path.Contains('.'))
+        {
+            string baseTypeName = ed.cgBaseTypeName(_definitions, false);
+
+            if (!string.IsNullOrEmpty(baseTypeName))
+            {
+                propertyType = baseTypeName + "::" + sd.Name;
+            }
+            else
+            {
+                propertyType = sd.Name;
+            }
+        }
+        else if (ed.Type.Count != 0)
         {
             IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> types = ed.cgTypes();
 
@@ -737,7 +754,7 @@ public class LangInfo : ILanguage
                     targets = "(" + string.Join("|", et.cgTargetProfiles().Keys) + ")";
                 }
 
-                propertyType = $"{propertyType}{joiner}{name}{profiles}{targets}";
+                propertyType = $"{propertyType}{joiner}{et.cgName()}{profiles}{targets}";
             }
         }
 
@@ -837,7 +854,7 @@ public class LangInfo : ILanguage
         if (codes.Any())
         {
             _writer.IncreaseIndent();
-            _writer.WriteLineIndented($"{{{string.Join('|', codes)}}}");
+            _writer.WriteLineIndented($"{{{string.Join("|", codes)}}}");
             _writer.DecreaseIndent();
         }
 

@@ -44,7 +44,7 @@ public static class ElementDefTypeExtensions
         }
         else
         {
-            return tr.Code.Substring(lastSlash + 1);
+            return tr.Code[(lastSlash + 1)..];
         }
     }
 
@@ -113,13 +113,17 @@ public static class ElementDefTypeExtensions
         }
 
         // need to change "FiveWs.subject[x]" to "FiveWs.subject", but beware of duplicates
+#if NET8_0_OR_GREATER
         HashSet<string> hash = [.. source.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)];
+#else
+        HashSet<string> hash = [.. source.Split(',').Where(v => !string.IsNullOrEmpty(v)).Select(v => v.Trim())];
+#endif
         if (hash.Contains("FiveWs.subject[x]"))
         {
             hash.Remove("FiveWs.subject[x]");
             hash.Add("FiveWs.subject");
         }
 
-        return string.Join(',', hash);
+        return string.Join(",", hash);
     }
 }

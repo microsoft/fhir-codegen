@@ -16,20 +16,40 @@ namespace Microsoft.Health.Fhir.CodeGenCommon.Utils;
 /// <summary>A FHIR sanitization utilities.</summary>
 public abstract partial class FhirSanitizationUtils
 {
-    ///// <summary>The RegEx remove duplicate lines.</summary>
-    //private const string RegexRemoveDuplicateLinesDefinition = "__+";
-
-    ///// <summary>(Immutable) The RegEx remove duplicate whitespace.</summary>
-    //private const string RegexRemoveDuplicateWhitespaceDefinition = "\\s+";
+#if NET8_0_OR_GREATER
+    [GeneratedRegex("__+")]
+    private static partial Regex RegexRemoveDuplicateLines();
 
     /// <summary>The RegEx remove duplicate lines.</summary>
     private static readonly Regex _regexRemoveDuplicateLines = RegexRemoveDuplicateLines();
+#else
+    /// <summary>The RegEx remove duplicate lines.</summary>
+    private static readonly Regex _regexRemoveDuplicateLines = new Regex("__+", RegexOptions.Compiled);
+#endif
+
+#if NET8_0_OR_GREATER
+    [GeneratedRegex("\\s+")]
+    private static partial Regex RegexRemoveDuplicateWhitespace();
 
     /// <summary>The RegEx remove duplicate whitespace.</summary>
     private static readonly Regex _regexRemoveDuplicateWhitespace = RegexRemoveDuplicateWhitespace();
+#else
+    /// <summary>The RegEx remove duplicate whitespace.</summary>
+    private static readonly Regex _regexRemoveDuplicateWhitespace = new Regex("\\s+", RegexOptions.Compiled);
+#endif
+
+#if NET8_0_OR_GREATER
+    [GeneratedRegex("[^ -~]+")]
+    private static partial Regex RegexAsciiEscapingR();
 
     /// <summary>The RegEx ASCII escaping.</summary>
     private static readonly Regex _regexAsciiEscaping = RegexAsciiEscapingR();
+#else
+    /// <summary>The RegEx ASCII escaping.</summary>
+    private static readonly Regex _regexAsciiEscaping = new Regex("[^ -~]+", RegexOptions.Compiled);
+#endif
+
+
 
     /// <summary>(Immutable) The underscore.</summary>
     public static readonly Dictionary<char[], string> ReplacementsWithUnderscores = new(ReplacementComparer.Default)
@@ -362,7 +382,7 @@ public abstract partial class FhirSanitizationUtils
 
         name = input.Trim();
 
-        if (name.Contains(' ', StringComparison.Ordinal))
+        if (name.Contains(' '))
         {
             name = name.Substring(0, name.IndexOf(' '));
         }
@@ -457,19 +477,19 @@ public abstract partial class FhirSanitizationUtils
 
         if (value.StartsWith("http://hl7.org/fhir/", StringComparison.Ordinal))
         {
-            value = string.Concat("FHIR_", value.AsSpan(20));
+            value = string.Concat("FHIR_", value[20..]);
         }
         else if (value.StartsWith("http://hl7.org/fhirpath/", StringComparison.Ordinal))
         {
-            value = string.Concat("FHIRPath_", value.AsSpan(24));
+            value = string.Concat("FHIRPath_", value[24..]);
         }
         else if (value.StartsWith("http://terminology.hl7.org/", StringComparison.Ordinal))
         {
-            value = string.Concat("THO_", value.AsSpan(27));
+            value = string.Concat("THO_", value[27..]);
         }
         else if (value.StartsWith("http://hl7.org/", StringComparison.Ordinal))
         {
-            value = string.Concat("HL7_", value.AsSpan(15));
+            value = string.Concat("HL7_", value[15..]);
         }
         else if (value.StartsWith("https://"))
         {
@@ -481,22 +501,22 @@ public abstract partial class FhirSanitizationUtils
         }
         else if (value.StartsWith("urn:oid:"))
         {
-            value = string.Concat("OID_", value.AsSpan(8));
+            value = string.Concat("OID_", value[8..]);
         }
         else if (value.StartsWith("urn:uuid:"))
         {
-            value = string.Concat("UUID_", value.AsSpan(9));
+            value = string.Concat("UUID_", value[9..]);
         }
-        else if (value.StartsWith('/'))
+        else if (value.StartsWith("/", StringComparison.Ordinal))
         {
-            value = string.Concat("Per", value.AsSpan(1));
+            value = string.Concat("Per", value[1..]);
         }
 
         if (checkForGmt)
         {
-            if (value.Contains("/GMT-", StringComparison.Ordinal))
+            if (value.Contains("/GMT-"))
             {
-                value = value.Replace("/GMT-", "/GMTMinus", StringComparison.Ordinal);
+                value = value.Replace("/GMT-", "/GMTMinus");
             }
         }
 
@@ -590,12 +610,12 @@ public abstract partial class FhirSanitizationUtils
         // remove duplicate underscores caused by prior replacements
         value = _regexRemoveDuplicateLines.Replace(value, "_");
 
-        while (value.StartsWith('_'))
+        while (value.StartsWith("_"))
         {
             value = value.Substring(1);
         }
 
-        while (value.EndsWith('_'))
+        while (value.EndsWith("_"))
         {
             value = value.Remove(value.Length - 1);
         }
@@ -619,13 +639,4 @@ public abstract partial class FhirSanitizationUtils
 
         return value;
     }
-
-    [GeneratedRegex("__+")]
-    private static partial Regex RegexRemoveDuplicateLines();
-
-    [GeneratedRegex("\\s+")]
-    private static partial Regex RegexRemoveDuplicateWhitespace();
-
-    [GeneratedRegex("[^ -~]+")]
-    private static partial Regex RegexAsciiEscapingR();
 }

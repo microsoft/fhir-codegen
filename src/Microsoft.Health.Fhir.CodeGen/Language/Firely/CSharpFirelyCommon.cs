@@ -7,6 +7,10 @@ using System.ComponentModel;
 using Hl7.Fhir.Model;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 
+#if NETSTANDARD2_0
+using Microsoft.Health.Fhir.CodeGen.Polyfill;
+#endif
+
 namespace Microsoft.Health.Fhir.CodeGen.Language.Firely;
 
 public static class CSharpFirelyCommon

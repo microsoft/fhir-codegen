@@ -19,23 +19,23 @@ internal static partial class MapUtilities
         "urn",
     };
 
-    //private static readonly HashSet<string> _urnSchemes = new(StringComparer.Ordinal)
-    //{
-    //    "urn:iso",
-    //    "urn:iso-iec",
-    //    "urn:iso-cie",
-    //    "urn:iso-astm",
-    //    "urn:iso-ieee",
-    //    "urn:iec",
-    //};
-
+#if NET8_0_OR_GREATER
     /// <summary>Invalid token RegEx.</summary>
     /// <returns>A RegEx.</returns>
     [GeneratedRegex(@"[^a-zA-Z0-9_\[\]]")]
-    private static partial Regex _invalidTokenRegex();
+    private static partial Regex InvalidTokenRegex();
+    private static readonly Regex _invalidTokenRegex = InvalidTokenRegex();
+#else
+    private static readonly Regex _invalidTokenRegex = new Regex(@"[^a-zA-Z0-9_\[\]]", RegexOptions.Compiled);
+#endif
 
+#if NET8_0_OR_GREATER
     [GeneratedRegex(@"[^a-z0-9_\[\]]")]
-    private static partial Regex _invalidTokenRegexForLower();
+    private static partial Regex InvalidTokenRegexForLower();
+    private static readonly Regex _invalidTokenRegexForLower = InvalidTokenRegexForLower();
+#else
+    private static readonly Regex _invalidTokenRegexForLower = new Regex(@"[^a-z0-9_\[\]]", RegexOptions.Compiled);
+#endif
 
     /// <summary>Query if 'value' is token.</summary>
     /// <param name="value">The value.</param>
@@ -54,7 +54,7 @@ internal static partial class MapUtilities
         }
 
         // check for any invalid characters
-        return !_invalidTokenRegex().IsMatch(value);
+        return !_invalidTokenRegex.IsMatch(value);
     }
 
     /// <summary>Query if 'value' is lower-case token.</summary>
@@ -74,7 +74,7 @@ internal static partial class MapUtilities
         }
 
         // check for any invalid characters
-        return !_invalidTokenRegexForLower().IsMatch(value);
+        return !_invalidTokenRegexForLower.IsMatch(value);
     }
 
     /// <summary>Query if 'url' is absolute URL, according to org.hl7.fhir.utilities.Utilities tests.</summary>

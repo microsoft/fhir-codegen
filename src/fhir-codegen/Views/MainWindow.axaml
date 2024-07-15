@@ -6,6 +6,7 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="fhir_codegen.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
+        Name="Home"
         Title="FHIR Code Generator">
 
     <Design.DataContext>
@@ -15,8 +16,8 @@
     </Design.DataContext>
 
     <SplitView IsPaneOpen="{Binding IsPaneOpen}"
-               CompactPaneLength="45"
                DisplayMode="CompactInline"
+               CompactPaneLength="44"
                OpenPaneLength="300"
                Background="#1e1e1e"
                PaneBackground="#1e1e1e">
@@ -34,23 +35,17 @@
                     <PathIcon Data="{StaticResource line_horizontal_3_regular}" />
                 </Button>
 
-                
-                <!--<ListBox Margin="2 0 -100 0" Padding="0" ItemsSource="{Binding Items}"
-                         SelectedItem="{Binding SelectedListItem}">
-                    <ListBox.Styles>
-                        <Style Selector="ListBoxItem">
-                            <Setter Property="Padding" Value="12 8"></Setter>
-                        </Style>
-                    </ListBox.Styles>
+                <ListBox ItemsSource="{Binding NavigationItems}"
+                         SelectedItem="{Binding SelectedNavigationItem}">
                     <ListBox.ItemTemplate>
-                        <DataTemplate DataType="{x:Type models:ListItemTemplate}">
-                            <StackPanel Spacing="17" Orientation="Horizontal">
-                                <PathIcon Data="{Binding ListItemIcon}" Width="14" />
+                        <DataTemplate DataType="{x:Type vm:NavigationItemTemplate}">
+                            <StackPanel Spacing="12" Margin="4 4" Orientation="Horizontal">
+                                <PathIcon Data="{Binding IconGeometry}" />
                                 <TextBlock Text="{Binding Label}" />
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
-                </ListBox>-->
+                </ListBox>
             </StackPanel>
         </SplitView.Pane>
 

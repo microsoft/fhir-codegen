@@ -88,9 +88,9 @@ public static class LinqExtensions
     {
         Dictionary<KT, VT> dest = [];
 
-        foreach ((KT key, VT value) in source)
+        foreach (KeyValuePair<KT, VT> kvp in source)
         {
-            dest.Add(key, (VT)value.Clone());
+            dest.Add(kvp.Key, (VT)kvp.Value.Clone());
         }
 
         return dest;
@@ -110,16 +110,16 @@ public static class LinqExtensions
     {
         Dictionary<KT, List<VT>> dest = [];
 
-        foreach ((KT key, List<VT> sourceList) in source)
+        foreach (KeyValuePair<KT, List<VT>> kvp in source)
         {
             List<VT> list = [];
 
-            foreach (VT value in sourceList)
+            foreach (VT value in kvp.Value)
             {
                 list.Add((VT)value.Clone());
             }
 
-            dest.Add(key, list);
+            dest.Add(kvp.Key, list);
         }
 
         return dest;
@@ -135,11 +135,11 @@ public static class LinqExtensions
     {
         Dictionary<string, List<object>> dest = [];
 
-        foreach ((string key, List<object> sourceList) in source)
+        foreach (KeyValuePair<string, List<object>> kvp in source)
         {
             List<object> list = [];
 
-            foreach (object value in sourceList)
+            foreach (object value in kvp.Value)
             {
                 switch (value)
                 {
@@ -148,7 +148,7 @@ public static class LinqExtensions
                 }
             }
 
-            dest.Add(key, list);
+            dest.Add(kvp.Key, list);
         }
 
         return dest;
@@ -168,9 +168,9 @@ public static class LinqExtensions
     {
         Dictionary<KT, VT> dest = [];
 
-        foreach ((KT key, VT value) in source)
+        foreach (KeyValuePair<KT, VT> kvp in source)
         {
-            dest.Add(key, value);
+            dest.Add(kvp.Key, kvp.Value);
         }
 
         return dest;
@@ -189,9 +189,9 @@ public static class LinqExtensions
     {
         Dictionary<KT, List<VT>> dest = [];
 
-        foreach ((KT key, List<VT> value) in source)
+        foreach (KeyValuePair<KT, List<VT>> kvp in source)
         {
-            dest.Add(key, value);
+            dest.Add(kvp.Key, kvp.Value);
         }
 
         return dest;

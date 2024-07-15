@@ -26,12 +26,12 @@
 
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="6.12.0" />
-    <PackageReference Include="Hl7.Fhir.Specification.Data.R5" Version="5.8.1" />
+    <PackageReference Include="Hl7.Fhir.Specification.Data.R5" Version="5.8.2" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
     <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
-    <PackageReference Include="xunit" Version="2.8.1" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.1">
+    <PackageReference Include="xunit" Version="2.9.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
@@ -44,7 +44,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.Health.Fhir.CodeGenCommon\Microsoft.Health.Fhir.CodeGenCommon.csproj" />
     <ProjectReference Include="..\Microsoft.Health.Fhir.CodeGen\Microsoft.Health.Fhir.CodeGen.csproj" />
-    <ProjectReference Include="..\Microsoft.Health.Fhir.PackageManager\Microsoft.Health.Fhir.PackageManager.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -58,6 +57,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="TestData\Packages\packages-01-empty.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="TestData\R5\expansions\ValueSet-units-of-time.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

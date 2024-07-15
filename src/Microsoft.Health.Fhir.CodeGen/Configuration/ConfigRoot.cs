@@ -8,6 +8,10 @@ using System.Collections.Generic;
 using System.CommandLine.Parsing;
 using Microsoft.Health.Fhir.CodeGen.Extensions;
 
+#if NETSTANDARD2_0
+using Microsoft.Health.Fhir.CodeGen.Polyfill;
+#endif
+
 namespace Microsoft.Health.Fhir.CodeGen.Configuration;
 
 /// <summary>
@@ -21,8 +25,8 @@ public class ConfigRoot : ICodeGenConfig
     [ConfigOption(
         ArgName = "--fhir-cache",
         EnvName = "Fhir_Cache",
-        Description = "Location of the FHIR cache.")]
-    public string FhirCacheDirectory { get; set; } = "~/.fhir";
+        Description = "Location of the FHIR cache (none specified defaults to user .fhir directory).")]
+    public string? FhirCacheDirectory { get; set; } = null;
 
     /// <summary>
     /// Gets or sets the configuration option for the FHIR cache directory.
@@ -31,10 +35,66 @@ public class ConfigRoot : ICodeGenConfig
     {
         Name = "FhirCache",
         EnvVarName = "Fhir_Cache",
-        DefaultValue = "~/.fhir",
-        CliOption = new System.CommandLine.Option<string>("--fhir-cache", "Location of the FHIR cache.")
+        DefaultValue = string.Empty,
+        CliOption = new System.CommandLine.Option<string?>("--fhir-cache", "Location of the FHIR cache (none specified defaults to user .fhir directory).")
         {
             Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
+
+    [ConfigOption(
+        ArgName = "--use-official-registries",
+        EnvName = "Use_Official_Registries",
+        Description = "Use official FHIR registries to resolve packages.")]
+    public bool UseOfficialRegistries { get; set; } = true;
+
+    private static ConfigurationOption UseOfficialRegistriesParameter { get; } = new()
+    {
+        Name = "UseOfficialRegistries",
+        EnvVarName = "Use_Official_Registries",
+        DefaultValue = true,
+        CliOption = new System.CommandLine.Option<bool>("--use-official-registries", "Use official FHIR registries to resolve packages.")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
+
+    [ConfigOption(
+        ArgName = "--additional-fhir-registry-urls",
+        EnvName = "Additional_FHIR_Registry_Urls",
+        ArgArity = "0..*",
+        Description = "Additional FHIR registry URLs to use.")]
+    public string[] AdditionalFhirRegistryUrls { get; set; } = Array.Empty<string>();
+
+    private static ConfigurationOption AdditionalFhirRegistryUrlsParameter { get; } = new()
+    {
+        Name = "AdditionalFhirRegistryUrls",
+        EnvVarName = "Additional_FHIR_Registry_Urls",
+        DefaultValue = Array.Empty<string>(),
+        CliOption = new System.CommandLine.Option<string[]>("--additional-fhir-registry-urls", "Additional FHIR registry URLs to use.")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrMore,
+            IsRequired = false,
+        },
+    };
+
+    [ConfigOption(
+    ArgName = "--additional-npm-registry-urls",
+    EnvName = "Additional_NPM_Registry_Urls",
+    ArgArity = "0..*",
+    Description = "Additional NPM registry URLs to use.")]
+    public string[] AdditionalNpmRegistryUrls { get; set; } = Array.Empty<string>();
+
+    private static ConfigurationOption AdditionalNpmRegistryUrlsParameter { get; } = new()
+    {
+        Name = "AdditionalNpmRegistryUrls",
+        EnvVarName = "Additional_NPM_Registry_Urls",
+        DefaultValue = Array.Empty<string>(),
+        CliOption = new System.CommandLine.Option<string[]>("--additional-npm-registry-urls", "Additional NPM registry URLs to use.")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrMore,
             IsRequired = false,
         },
     };
@@ -168,6 +228,9 @@ public class ConfigRoot : ICodeGenConfig
     private static readonly ConfigurationOption[] _options =
     [
         FhirCacheDirectoryParameter,
+        UseOfficialRegistriesParameter,
+        AdditionalFhirRegistryUrlsParameter,
+        AdditionalNpmRegistryUrlsParameter,
         OutputDirectoryParameter,
         OutputFilenameParameter,
         PackagesParameter,
@@ -318,7 +381,7 @@ public class ConfigRoot : ICodeGenConfig
 
                 if (dirName.Length > 1)
                 {
-                    dirName = dirName.Substring(2);
+                    dirName = dirName[2..];
                 }
                 else
                 {
@@ -340,7 +403,7 @@ public class ConfigRoot : ICodeGenConfig
             else
             {
                 // skip the separator
-                currentDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), startDir.Substring(2));
+                currentDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), startDir[2..]);
             }
         }
         else
@@ -381,19 +444,28 @@ public class ConfigRoot : ICodeGenConfig
             {
                 case "FhirCache":
                     {
-                        string dir = GetOpt(parseResult, opt.CliOption, FhirCacheDirectory);
+                        string? dir = GetOpt(parseResult, opt.CliOption, FhirCacheDirectory);
 
-                        if (string.IsNullOrEmpty(dir))
-                        {
-                            dir = FindRelativeDir(string.Empty, ".fhir");
-                        }
-                        else if (!Path.IsPathRooted(dir))
-                        {
-                            dir = FindRelativeDir(string.Empty, dir);
-                        }
+                        //if (string.IsNullOrEmpty(dir))
+                        //{
+                        //    dir = FindRelativeDir(string.Empty, ".fhir");
+                        //}
+                        //else if (!Path.IsPathRooted(dir))
+                        //{
+                        //    dir = FindRelativeDir(string.Empty, dir);
+                        //}
 
-                        FhirCacheDirectory = dir;
+                        FhirCacheDirectory = string.IsNullOrEmpty(dir) ? null : dir;
                     }
+                    break;
+                case "UseOfficialRegistries":
+                    UseOfficialRegistries = GetOpt(parseResult, opt.CliOption, UseOfficialRegistries);
+                    break;
+                case "AdditionalFhirRegistryUrls":
+                    AdditionalFhirRegistryUrls = GetOptArray(parseResult, opt.CliOption, AdditionalFhirRegistryUrls);
+                    break;
+                case "AdditionalNpmRegistryUrls":
+                    AdditionalNpmRegistryUrls = GetOptArray(parseResult, opt.CliOption, AdditionalNpmRegistryUrls);
                     break;
                 case "OutputPath":
                     {
@@ -401,7 +473,7 @@ public class ConfigRoot : ICodeGenConfig
 
                         if (string.IsNullOrEmpty(dir))
                         {
-                            dir = FindRelativeDir(string.Empty, ".fhir");
+                            dir = FindRelativeDir(string.Empty, ".");
                         }
                         else if (!Path.IsPathRooted(dir))
                         {

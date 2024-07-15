@@ -27,6 +27,30 @@ public record class LoaderOptions
     }
 
     /// <summary>
+    /// Gets or initializes the full pathname of the FHIR cache directory (empty/default will use
+    /// '~/.fhir').
+    /// </summary>
+    public string? CachePath { get; init; } = null;
+
+    /// <summary>
+    /// Gets or initializes a value indicating whether this object use official FHIR registries.
+    /// </summary>
+    public bool UseOfficialFhirRegistries { get; init; } = true;
+
+    /// <summary>
+    /// Gets or initializes additional FHIR registry urls.
+    /// </summary>
+    public string[] AdditionalFhirRegistryUrls { get; init; } = [];
+
+    /// <summary>Gets or initializes the additional NPM registry urls.</summary>
+    public string[] AdditionalNpmRegistryUrls { get; init; } = [];
+
+    /// <summary>
+    /// Gets or initializes a value indicating whether to use offline mode (only use the local cache).
+    /// </summary>
+    public bool OfflineMode { get; init; } = false;
+
+    /// <summary>
     /// Gets or sets the JSON model.
     /// </summary>
     public JsonDeserializationModel JsonModel { get; init; } = JsonDeserializationModel.Poco;

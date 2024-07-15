@@ -14,13 +14,20 @@ public record class FhirPackageClientSettings
     /// Gets or initializes the full pathname of the FHIR cache directory (empty/default will use
     /// '~/.fhir').
     /// </summary>
-    public string CachePath { get; init; } = string.Empty;
+    public string? CachePath { get; init; } = null;
 
     /// <summary>
-    /// Gets or initializes additional registry urls (default includes pacakges.fhir.org and
-    /// packages2.fhir.org).
+    /// Gets or initializes a value indicating whether this object use official FHIR registries.
     /// </summary>
-    public IEnumerable<string> AdditionalRegistryUrls { get; init; } = [];
+    public bool UseOfficialFhirRegistries { get; init; } = true;
+
+    /// <summary>
+    /// Gets or initializes additional FHIR registry urls.
+    /// </summary>
+    public string[] AdditionalFhirRegistryUrls { get; init; } = [];
+
+    /// <summary>Gets or initializes the additional NPM registry urls.</summary>
+    public string[] AdditionalNpmRegistryUrls { get; init; } = [];
 
     /// <summary>
     /// Gets or initializes a value indicating whether to use offline mode (only use the local cache).

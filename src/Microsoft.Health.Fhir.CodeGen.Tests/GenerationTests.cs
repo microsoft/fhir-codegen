@@ -13,91 +13,64 @@ using Microsoft.Health.Fhir.CodeGen.Loader;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGen.Tests.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
-using Microsoft.Health.Fhir.PackageManager;
 using Xunit.Abstractions;
 
 namespace Microsoft.Health.Fhir.CodeGen.Tests;
 
 public class GenerationTestFixture
 {
-    /// <summary>The cache.</summary>
-    public IFhirPackageClient Cache;
+    /// <summary>True to write generated files.</summary>
+    public static bool WriteGeneratedFiles = false;
 
     /// <summary>The package loader.</summary>
     public PackageLoader? Loader = null;
 
+    public readonly string? CachePath = null;
+
     /// <summary>The FHIR R5 package entries.</summary>
-    public IEnumerable<PackageCacheEntry> EntriesR5;
+    public readonly string[] EntriesR5 =
+    [
+        "hl7.fhir.r5.core#5.0.0",
+        "hl7.fhir.r5.expansions#5.0.0",
+        "hl7.fhir.uv.extensions#1.0.0",
+    ];
+
 
     /// <summary>The FHIR R4B package entries.</summary>
-    public IEnumerable<PackageCacheEntry> EntriesR4B;
+    public readonly string[] EntriesR4B =
+    [
+        "hl7.fhir.r4b.core#4.3.0",
+        "hl7.fhir.r4b.expansions#4.3.0",
+        "hl7.fhir.uv.extensions#1.0.0",
+    ];
 
     /// <summary>The FHIR R4 package entries.</summary>
-    public IEnumerable<PackageCacheEntry> EntriesR4;
+    public readonly string[] EntriesR4 =
+    [
+        "hl7.fhir.r4.core#4.0.1",
+        "hl7.fhir.r4.expansions#4.0.1",
+        "hl7.fhir.uv.extensions#1.0.0",
+    ];
 
     /// <summary>The FHIR STU3 package entries.</summary>
-    public IEnumerable<PackageCacheEntry> EntriesR3;
+    public readonly string[] EntriesR3 =
+    [
+        "hl7.fhir.r3.core#3.0.2",
+        "hl7.fhir.r3.expansions#3.0.2",
+    ];
 
     /// <summary>The FHIR DSTU2 package entries.</summary>
-    public IEnumerable<PackageCacheEntry> EntriesR2;
-
-    /// <summary>True to write generated files.</summary>
-    public static bool WriteGeneratedFiles = false;
+    public readonly string[] EntriesR2 =
+    [
+        "hl7.fhir.r2.core#1.0.2",
+        "hl7.fhir.r2.expansions#1.0.2",
+    ];
 
     /// <summary>
     /// Initializes a new instance of the <see cref="GenerationTestFixture"/> class.
     /// </summary>
     public GenerationTestFixture()
     {
-        Cache = FhirCache.Create(new FhirPackageClientSettings()
-        {
-            CachePath = "~/.fhir",
-        });
-
-        EntriesR5 =
-        [
-            Load("hl7.fhir.r5.core#5.0.0"),
-            Load("hl7.fhir.r5.expansions#5.0.0"),
-            Load("hl7.fhir.uv.extensions#1.0.0"),
-        ];
-
-        EntriesR4B =
-        [
-            Load("hl7.fhir.r4b.core#4.3.0"),
-            Load("hl7.fhir.r4b.expansions#4.3.0"),
-            Load("hl7.fhir.uv.extensions#1.0.0"),
-        ];
-
-        EntriesR4 =
-        [
-            Load("hl7.fhir.r4.core#4.0.1"),
-            Load("hl7.fhir.r4.expansions#4.0.1"),
-            Load("hl7.fhir.uv.extensions#1.0.0"),
-        ];
-
-        EntriesR3 =
-        [
-            Load("hl7.fhir.r3.core#3.0.2"),
-            Load("hl7.fhir.r3.expansions#3.0.2"),
-        ];
-
-        EntriesR2 =
-        [
-            Load("hl7.fhir.r2.core#1.0.2"),
-            Load("hl7.fhir.r2.expansions#1.0.2"),
-        ];
-    }
-
-    /// <summary>Loads.</summary>
-    /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>
-    /// <param name="directive">The directive to load.</param>
-    /// <returns>A PackageCacheEntry.</returns>
-    private PackageCacheEntry Load(string directive)
-    {
-        PackageCacheEntry? p = Cache.FindOrDownloadPackageByDirective(directive, false).Result
-            ?? throw new Exception($"Failed to load {directive}");
-
-        return (PackageCacheEntry)p;
     }
 }
 
@@ -117,9 +90,9 @@ public class GenerationTestsR5 : IClassFixture<GenerationTestFixture>
         _testOutputHelper = testOutputHelper;
         _fixture = fixture;
 
-        _fixture.Loader = new(_fixture.Cache, new());
+        _fixture.Loader = new(new() { CachePath = _fixture.CachePath });
 
-        DefinitionCollection? loaded = _fixture.Loader.LoadPackages(_fixture.EntriesR5.First().Name, _fixture.EntriesR5).Result;
+        DefinitionCollection? loaded = _fixture.Loader.LoadPackages(_fixture.EntriesR5).Result;
 
         loaded.Should().NotBeNull();
 
@@ -217,9 +190,9 @@ public class GenerationTestsR4B : IClassFixture<GenerationTestFixture>
         _testOutputHelper = testOutputHelper;
         _fixture = fixture;
 
-        _fixture.Loader = new(_fixture.Cache, new());
+        _fixture.Loader = new(new() { CachePath = _fixture.CachePath });
 
-        DefinitionCollection? loaded = _fixture.Loader.LoadPackages(_fixture.EntriesR4B.First().Name, _fixture.EntriesR4B).Result;
+        DefinitionCollection? loaded = _fixture.Loader.LoadPackages(_fixture.EntriesR4B).Result;
 
         loaded.Should().NotBeNull();
 
@@ -317,9 +290,9 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
         _testOutputHelper = testOutputHelper;
         _fixture = fixture;
 
-        _fixture.Loader = new(_fixture.Cache, new());
+        _fixture.Loader = new(new() { CachePath = _fixture.CachePath });
 
-        DefinitionCollection? loaded = _fixture.Loader.LoadPackages(_fixture.EntriesR4.First().Name, _fixture.EntriesR4).Result;
+        DefinitionCollection? loaded = _fixture.Loader.LoadPackages(_fixture.EntriesR4).Result;
 
         loaded.Should().NotBeNull();
 
@@ -571,9 +544,9 @@ public class GenerationTestsR3 : IClassFixture<GenerationTestFixture>
         _testOutputHelper = testOutputHelper;
         _fixture = fixture;
 
-        _fixture.Loader = new(_fixture.Cache, new());
+        _fixture.Loader = new(new() { CachePath = _fixture.CachePath });
 
-        DefinitionCollection? loaded = _fixture.Loader.LoadPackages(_fixture.EntriesR3.First().Name, _fixture.EntriesR3).Result;
+        DefinitionCollection? loaded = _fixture.Loader.LoadPackages(_fixture.EntriesR3).Result;
 
         loaded.Should().NotBeNull();
 
@@ -671,9 +644,9 @@ public class GenerationTestsR2 : IClassFixture<GenerationTestFixture>
         _testOutputHelper = testOutputHelper;
         _fixture = fixture;
 
-        _fixture.Loader = new(_fixture.Cache, new());
+        _fixture.Loader = new(new() { CachePath = _fixture.CachePath });
 
-        DefinitionCollection? loaded = _fixture.Loader.LoadPackages(_fixture.EntriesR2.First().Name, _fixture.EntriesR2).Result;
+        DefinitionCollection? loaded = _fixture.Loader.LoadPackages(_fixture.EntriesR2).Result;
 
         loaded.Should().NotBeNull();
 

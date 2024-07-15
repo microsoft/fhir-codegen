@@ -13,6 +13,10 @@ using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 
+#if NETSTANDARD2_0
+using Microsoft.Health.Fhir.CodeGen.Polyfill;
+#endif
+
 namespace Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 
 /// <summary>An element definition extensions.</summary>
@@ -254,7 +258,7 @@ public static class ElementDefinitionExtensions
 
             if (ed.ContentReference.StartsWith('#'))
             {
-                value = ed.ContentReference.Substring(1);
+                value = ed.ContentReference[1..];
                 return (typeMap?.TryGetValue(value, out mapped) ?? false)
                     ? mapped : value;
             }

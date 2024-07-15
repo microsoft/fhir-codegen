@@ -9,7 +9,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Net;
 using System.Net.Http.Headers;
-using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -22,6 +21,10 @@ using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using Microsoft.Health.Fhir.CodeGenCommon.Smart;
 using static Hl7.Fhir.Model.VerificationResult;
+
+#if NETSTANDARD2_0
+using Microsoft.Health.Fhir.CodeGen.Polyfill;
+#endif
 
 namespace Microsoft.Health.Fhir.CodeGen.Net;
 
@@ -292,7 +295,7 @@ public class ServerConnector : IDisposable
             }
             else if (_fhirUrl.EndsWith("metadata", StringComparison.OrdinalIgnoreCase))
             {
-                requestUri = new Uri(string.Concat(_fhirUrl.AsSpan(_fhirUrl.Length - 8), "/.well-known/smart-configuration"));
+                requestUri = new Uri(string.Concat(_fhirUrl[(_fhirUrl.Length - 8)..], "/.well-known/smart-configuration"));
             }
             else if (_fhirUrl.EndsWith('/'))
             {
@@ -546,7 +549,7 @@ public class ServerConnector : IDisposable
         if (modified.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
         {
             // try swapping to http
-            modified = string.Concat("http://", modified.AsSpan(8));
+            modified = string.Concat("http://", modified[8..]);
 
             if (definitionCollection.CanResolveCanonicalUri(modified))
             {
@@ -558,7 +561,7 @@ public class ServerConnector : IDisposable
         if (modified.StartsWith("http://www.hl7.org", StringComparison.OrdinalIgnoreCase))
         {
             // try swapping to hl7.org
-            modified = string.Concat("http://hl7.org", modified.AsSpan(16));
+            modified = string.Concat("http://hl7.org", modified[16..]);
 
             if (definitionCollection.CanResolveCanonicalUri(modified))
             {

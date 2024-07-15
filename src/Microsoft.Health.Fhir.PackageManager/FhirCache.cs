@@ -262,7 +262,7 @@ public partial class FhirCache : IFhirPackageClient, IDisposable
             cachePath,
             settings?.OfflineMode ?? false,
             null,
-            settings?.AdditionalRegistryUrls ?? []);
+            settings?.AdditionalFhirRegistryUrls ?? []);
 
         return fhirCache;
     }

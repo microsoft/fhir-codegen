@@ -9,6 +9,7 @@ using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Xml.Linq;
+using Firely.Fhir.Packages;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Specification.Terminology;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
@@ -16,6 +17,8 @@ using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
+
+using Microsoft.Health.Fhir.CodeGen.Polyfill;
 
 namespace Microsoft.Health.Fhir.CodeGen.Models;
 
@@ -46,10 +49,10 @@ public partial class DefinitionCollection
     public string MainPackageVersion { get; set; } = string.Empty;
 
     /// <summary>Gets or sets the manifest.</summary>
-    public Dictionary<string, CachePackageManifest> Manifests { get; set; } = [];
+    public Dictionary<string, PackageManifest> Manifests { get; set; } = [];
 
     /// <summary>Gets or sets the contents.</summary>
-    public Dictionary<string, PackageContents> ContentListings { get; set; } = [];
+    public Dictionary<string, CanonicalIndex> ContentListings { get; set; } = [];
 
     //private readonly Dictionary<ElementDefinition, StructureDefinition> _elementSdLookup = new();
 
@@ -599,7 +602,7 @@ public partial class DefinitionCollection
                 if (ed.SliceName.StartsWith(idByDepth[0]))
                 {
                     // append just the last dot component as a slice name
-                    components[depth - 1] += string.Concat(":", ed.SliceName.AsSpan(ed.SliceName.LastIndexOf('.') + 1));
+                    components[depth - 1] += string.Concat(":", ed.SliceName.Substring(ed.SliceName.LastIndexOf('.') + 1));
                 }
                 else
                 {
@@ -616,7 +619,7 @@ public partial class DefinitionCollection
         // add our path components
         idByDepth.AddRange(components.Skip(idByDepth.Count));
 
-        ed.ElementId = string.Join('.', idByDepth);
+        ed.ElementId = string.Join(".", idByDepth);
     }
 
     /// <summary>Consolidate types.</summary>
@@ -1032,13 +1035,13 @@ public partial class DefinitionCollection
 
         if ((cm.SourceScope is Canonical sourceCanonical) && (!string.IsNullOrEmpty(sourceCanonical.Uri)))
         {
-            if (_conceptMapsBySourceUrl.TryGetValue(sourceCanonical.Uri, out List<ConceptMap>? maps))
+            if (_conceptMapsBySourceUrl.TryGetValue(sourceCanonical.Uri!, out List<ConceptMap>? maps))
             {
                 maps.Add(cm);
             }
             else
             {
-                _conceptMapsBySourceUrl.Add(sourceCanonical.Uri, [cm]);
+                _conceptMapsBySourceUrl.Add(sourceCanonical.Uri!, [cm]);
             }
         }
         else if ((cm.SourceScope is FhirUri sourceUri) && (!string.IsNullOrEmpty(sourceUri.Value)))
@@ -1513,11 +1516,11 @@ public partial class DefinitionCollection
          */
         if ((unversioned == "http://hl7.org/fhir/ValueSet/units-of-time") &&
             (valueSet.Expansion?.Contains.Any() ?? false) &&
-            !char.IsAsciiLetter(valueSet.Expansion.Contains.First().Display[0]))
+            !valueSet.Expansion.Contains.First().Display[0].IsAsciiLetter())
         {
             foreach (ValueSet.ContainsComponent cc in valueSet.Expansion.Contains)
             {
-                if (!char.IsAsciiLetter(cc.Display[0]))
+                if (!cc.Display[0].IsAsciiLetter())
                 {
                     switch (cc.Code)
                     {
@@ -2194,7 +2197,7 @@ public partial class DefinitionCollection
         if (string.IsNullOrEmpty(sp.Url))
         {
             // best guess at a canonical URL for this
-            sp.Url = string.Join('/', MainPackageCanonical, "SearchParameter", sp.Id).Replace("//", "/");
+            sp.Url = string.Join("/", MainPackageCanonical, "SearchParameter", sp.Id).Replace("//", "/");
         }
 
         // check to see if this resource already exists
@@ -2501,7 +2504,7 @@ public partial class DefinitionCollection
             // iterate over the path components
             for (int i = 0; i < parts.Length; i++)
             {
-                string currentPath = string.Join('.', parts.Take(i + 1));
+                string currentPath = string.Join(".", parts.Take(i + 1));
 
                 if (sd.cgTryGetElementByPath(currentPath, out ElementDefinition? currentEd))
                 {
@@ -2535,7 +2538,7 @@ public partial class DefinitionCollection
             // iterate over the path components
             for (int i = 1; i < parts.Length; i++)
             {
-                string currentPath = string.Join('.', parts.Take(i + 1));
+                string currentPath = string.Join(".", parts.Take(i + 1));
 
                 if (sd.cgTryGetElementById(currentPath, out ElementDefinition? currentEd))
                 {

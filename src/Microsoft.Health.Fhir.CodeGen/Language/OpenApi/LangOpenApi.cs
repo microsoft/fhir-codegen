@@ -11,6 +11,10 @@ using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Writers;
 using static Microsoft.Health.Fhir.CodeGen.Language.OpenApi.OpenApiCommon;
 
+#if NETSTANDARD2_0
+using Microsoft.Health.Fhir.CodeGen.Polyfill;
+#endif
+
 namespace Microsoft.Health.Fhir.CodeGen.Language.OpenApi;
 
 /// <summary>Class used to export OpenAPI definitions.</summary>
@@ -284,9 +288,14 @@ public class LangOpenApi : ILanguage
         string filename = Path.Combine(config.OutputDirectory, $"{_languageName}_{fileId}.{config.FileFormat.ToString().ToLowerInvariant()}");
 
         //using Stream stream = config.WriteStream ?? new FileStream(filename, FileMode.Create);
+
+        //using StreamWriter sw = config.WriteStream == null
+        //    ? new StreamWriter(new FileStream(filename, FileMode.Create), leaveOpen: false)
+        //    : new StreamWriter(config.WriteStream, leaveOpen: config.WriteStream != null);
+
         using StreamWriter sw = config.WriteStream == null
-            ? new StreamWriter(new FileStream(filename, FileMode.Create), leaveOpen: false)
-            : new StreamWriter(config.WriteStream, leaveOpen: config.WriteStream != null);
+            ? new StreamWriter(new FileStream(filename, FileMode.Create))
+            : new StreamWriter(config.WriteStream);
 
         IOpenApiWriter writer = config.FileFormat switch
         {
@@ -299,5 +308,11 @@ public class LangOpenApi : ILanguage
             config.OpenApiVersion == OaVersion.v2
                 ? Microsoft.OpenApi.OpenApiSpecVersion.OpenApi2_0
                 : Microsoft.OpenApi.OpenApiSpecVersion.OpenApi3_0);
+
+        if (config.WriteStream == null)
+        {
+            sw.Flush();
+            sw.Close();
+        }
     }
 }
