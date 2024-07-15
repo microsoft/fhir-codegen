@@ -839,28 +839,27 @@ public class CrossVersionMapCollection
         }
     }
 
-    private static Dictionary<string, string> FhirToFhirPathDataTypeMappings = new Dictionary<string, string>(
-        [
-            new ("http://hl7.org/fhir/StructureDefinition/boolean", "http://hl7.org/fhirpath/System.Boolean"),
-            new ("http://hl7.org/fhir/StructureDefinition/string", "http://hl7.org/fhirpath/System.String"),
-            new ("http://hl7.org/fhir/StructureDefinition/uri", "http://hl7.org/fhirpath/System.String"),
-            new ("http://hl7.org/fhir/StructureDefinition/code", "http://hl7.org/fhirpath/System.String"),
-            new ("http://hl7.org/fhir/StructureDefinition/oid", "http://hl7.org/fhirpath/System.String"),
-            new ("http://hl7.org/fhir/StructureDefinition/id", "http://hl7.org/fhirpath/System.String"),
-            new ("http://hl7.org/fhir/StructureDefinition/uuid", "http://hl7.org/fhirpath/System.String"),
-            new ("http://hl7.org/fhir/StructureDefinition/markdown", "http://hl7.org/fhirpath/System.String"),
-            new ("http://hl7.org/fhir/StructureDefinition/base64Binary", "http://hl7.org/fhirpath/System.String"),
-            new ("http://hl7.org/fhir/StructureDefinition/integer", "http://hl7.org/fhirpath/System.Integer"),
-            new ("http://hl7.org/fhir/StructureDefinition/unsignedInt", "http://hl7.org/fhirpath/System.Integer"),
-            new ("http://hl7.org/fhir/StructureDefinition/positiveInt", "http://hl7.org/fhirpath/System.Integer"),
-            new ("http://hl7.org/fhir/StructureDefinition/integer64", "http://hl7.org/fhirpath/System.Long"),
-            new ("http://hl7.org/fhir/StructureDefinition/decimal", "http://hl7.org/fhirpath/System.Decimal"),
-            new ("http://hl7.org/fhir/StructureDefinition/date", "http://hl7.org/fhirpath/System.DateTime"),
-            new ("http://hl7.org/fhir/StructureDefinition/dateTime", "http://hl7.org/fhirpath/System.DateTime"),
-            new ("http://hl7.org/fhir/StructureDefinition/instant", "http://hl7.org/fhirpath/System.DateTime"),
-            new ("http://hl7.org/fhir/StructureDefinition/time", "http://hl7.org/fhirpath/System.Time"),
-            new ("http://hl7.org/fhir/StructureDefinition/Quantity", "http://hl7.org/fhirpath/System.Quantity"),
-        ]);
+    private static Dictionary<string, string> FhirToFhirPathDataTypeMappings = new Dictionary<string, string>(){
+            { "http://hl7.org/fhir/StructureDefinition/boolean", "http://hl7.org/fhirpath/System.Boolean" },
+            { "http://hl7.org/fhir/StructureDefinition/string", "http://hl7.org/fhirpath/System.String" },
+            { "http://hl7.org/fhir/StructureDefinition/uri", "http://hl7.org/fhirpath/System.String" },
+            { "http://hl7.org/fhir/StructureDefinition/code", "http://hl7.org/fhirpath/System.String" },
+            { "http://hl7.org/fhir/StructureDefinition/oid", "http://hl7.org/fhirpath/System.String" },
+            { "http://hl7.org/fhir/StructureDefinition/id", "http://hl7.org/fhirpath/System.String" },
+            { "http://hl7.org/fhir/StructureDefinition/uuid", "http://hl7.org/fhirpath/System.String" },
+            { "http://hl7.org/fhir/StructureDefinition/markdown", "http://hl7.org/fhirpath/System.String" },
+            { "http://hl7.org/fhir/StructureDefinition/base64Binary", "http://hl7.org/fhirpath/System.String" },
+            { "http://hl7.org/fhir/StructureDefinition/integer", "http://hl7.org/fhirpath/System.Integer" },
+            { "http://hl7.org/fhir/StructureDefinition/unsignedInt", "http://hl7.org/fhirpath/System.Integer" },
+            { "http://hl7.org/fhir/StructureDefinition/positiveInt", "http://hl7.org/fhirpath/System.Integer" },
+            { "http://hl7.org/fhir/StructureDefinition/integer64", "http://hl7.org/fhirpath/System.Long" },
+            { "http://hl7.org/fhir/StructureDefinition/decimal", "http://hl7.org/fhirpath/System.Decimal" },
+            { "http://hl7.org/fhir/StructureDefinition/date", "http://hl7.org/fhirpath/System.DateTime" },
+            { "http://hl7.org/fhir/StructureDefinition/dateTime", "http://hl7.org/fhirpath/System.DateTime" },
+            { "http://hl7.org/fhir/StructureDefinition/instant", "http://hl7.org/fhirpath/System.DateTime" },
+            { "http://hl7.org/fhir/StructureDefinition/time", "http://hl7.org/fhirpath/System.Time" },
+            { "http://hl7.org/fhir/StructureDefinition/Quantity", "http://hl7.org/fhirpath/System.Quantity" },
+    };
 
     private static IEnumerable<string> GetTypeNames(PropertyOrTypeDetails ptd)
     {
