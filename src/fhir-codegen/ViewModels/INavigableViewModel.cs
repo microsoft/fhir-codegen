@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Media;
+using Material.Icons;
+using Material.Icons.Avalonia;
 
 namespace fhir_codegen.ViewModels;
 
@@ -17,5 +19,5 @@ internal interface INavigableViewModel
 {
     public static string Label { get; } = " - ";
 
-    public static StreamGeometry? IconGeometry { get; }
+    public static MaterialIconKind IconKind { get; }
 }

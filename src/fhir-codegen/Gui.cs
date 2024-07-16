@@ -27,7 +27,12 @@ internal class Gui
         try
         {
             RunningConfiguration = config;
-            BuildAvaloniaApp().StartWithClassicDesktopLifetime([]);
+            BuildAvaloniaApp().StartWithClassicDesktopLifetime([], Avalonia.Controls.ShutdownMode.OnMainWindowClose);
+        }
+        catch (System.Collections.Generic.KeyNotFoundException)
+        {
+            // This is a known issue with Avalonia and Material
+            return 0;
         }
         catch (Exception ex)
         {

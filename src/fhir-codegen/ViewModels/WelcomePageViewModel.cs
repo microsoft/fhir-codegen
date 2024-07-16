@@ -14,6 +14,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
+using Material.Icons;
 using Microsoft.Health.Fhir.CodeGen._ForPackages;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
 using static Microsoft.Health.Fhir.CodeGen._ForPackages.DiskPackageCache;
@@ -39,9 +40,10 @@ public partial class WelcomePageViewModel : ViewModelBase, INavigableViewModel
     }
 
     public static string Label => "Home";
-    public static StreamGeometry? IconGeometry => (Application.Current?.TryGetResource("home_regular", out object? icon) ?? false) && icon is StreamGeometry sg
-        ? sg
-        : null;
+    public static MaterialIconKind IconKind => MaterialIconKind.Home;
+    //public static StreamGeometry? IconGeometry => (Application.Current?.TryGetResource("home_regular", out object? icon) ?? false) && icon is StreamGeometry sg
+    //    ? sg
+    //    : null;
 
     [ObservableProperty]
     private string _header = "FHIR Codegen - FHIR Cache Contents";
@@ -103,10 +105,10 @@ public partial class WelcomePageViewModel : ViewModelBase, INavigableViewModel
 
         DiskPackageCache cache = new(config.FhirCacheDirectory);
 
+        List<InstalledPackageInfoRecord> installedPackages = new();
+
         // first, we need to get the installed package references
         IEnumerable<Firely.Fhir.Packages.PackageReference> internalReferences = cache.GetPackageReferences().Result;
-
-        List<InstalledPackageInfoRecord> installedPackages = new();
 
         // iterate over the internal references and convert them to the public references
         foreach (Firely.Fhir.Packages.PackageReference pr in internalReferences)

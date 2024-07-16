@@ -13,6 +13,7 @@ using Avalonia.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using fhir_codegen.Views;
+using Material.Icons;
 
 namespace fhir_codegen.ViewModels;
 
@@ -23,7 +24,7 @@ public partial class MainWindowViewModel : ViewModelBase
     private bool _isPaneOpen;
 
     [ObservableProperty]
-    private UserControl _currentPage = new WelcomePageView();
+    private ViewModelBase _currentPage = new WelcomePageViewModel();
 
     [ObservableProperty]
     private NavigationItemTemplate? _selectedNavigationItem;
@@ -35,7 +36,7 @@ public partial class MainWindowViewModel : ViewModelBase
             return;
         }
 
-        UserControl? target = (UserControl?)Activator.CreateInstance(value.Target);
+        ViewModelBase? target = (ViewModelBase?)Activator.CreateInstance(value.Target);
 
         if (target == null)
         {
@@ -50,15 +51,15 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         new NavigationItemTemplate
         {
-            Target = typeof(WelcomePageView),
+            Target = typeof(WelcomePageViewModel),
             Label = WelcomePageViewModel.Label,
-            IconGeometry = WelcomePageViewModel.IconGeometry,
+            IconKind = WelcomePageViewModel.IconKind,
         },
         new NavigationItemTemplate
         {
-            Target = typeof(CoreComparisonView),
+            Target = typeof(CoreComparisonViewModel),
             Label = CoreComparisonViewModel.Label,
-            IconGeometry = CoreComparisonViewModel.IconGeometry,
+            IconKind = CoreComparisonViewModel.IconKind,
         },
     };
 
@@ -75,5 +76,5 @@ public class NavigationItemTemplate
 
     public required string Label { get; init; }
 
-    public required StreamGeometry? IconGeometry { get; init; }
+    public required MaterialIconKind IconKind { get; init; }
 }

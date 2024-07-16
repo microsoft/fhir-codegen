@@ -6,5 +6,71 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="fhir_codegen.Views.CoreComparisonView"
              x:DataType="vm:CoreComparisonViewModel">
-  Welcome to Avalonia!
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Vertical" Grid.Row="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Content="{Binding Header}" VerticalAlignment="Center"/>
+                <!--<StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label Content="Moniker Filter:" VerticalAlignment="Center"/>
+                    <TextBox Text="{Binding TableFilter, Mode=TwoWay}" VerticalAlignment="Center" Width="200" />
+                </StackPanel>-->
+            </Grid>
+        </StackPanel>
+
+        <TabControl Grid.Row="1">
+            <TabItem Header="Configuration">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="64" />       <!-- ReleasesOnly -->
+                        <RowDefinition Height="64" />       <!-- SourcePackage -->
+                        <RowDefinition Height="64" />       <!-- RowTargetPacakge -->
+                        <RowDefinition Height="64" />       <!-- RowRunComparison -->
+                        <RowDefinition Height="64" />       <!-- RowErrorMessage -->
+                        <RowDefinition Height="64" />       <!-- RowSourceMaps -->
+                    </Grid.RowDefinitions>
+
+                    <CheckBox Grid.Row="0" Grid.Column="1" IsChecked="{Binding OnlyReleaseVersions}">Only Show Official Releases</CheckBox>
+                    
+                    <Label Grid.Row="1" Grid.Column="0" Content="Source (left) Package:" VerticalAlignment="Center"/>
+                    <ComboBox Grid.Row="1" Grid.Column="1" SelectedIndex="{Binding SourceIndex}" ItemsSource="{Binding CorePackages}"/>
+
+                    <Label Grid.Row="2" Grid.Column="0" Content="Target (right) Package:" VerticalAlignment="Center"/>
+                    <ComboBox Grid.Row="2" Grid.Column="1" SelectedIndex="{Binding TargetIndex}" ItemsSource="{Binding CorePackages}"/>
+
+                    <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+                        <Button Content="Run Comparison" Command="{Binding RunComparisonCommand}" />
+                        <!--<ProgressBar Classes="Circle"/>-->
+                    </StackPanel>
+
+                    <Label Grid.Row="4" Grid.Column="1" Content="{Binding ErrorMessage}" Foreground="Red" />
+
+                    <Label Grid.Row="5" Grid.Column="0" Content="Map source path"/>
+                    <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding CrossVersionDirectory}" />
+                    
+                </Grid>
+            </TabItem>
+            <TabItem Header="Results">
+                
+            </TabItem>
+        </TabControl>
+        
+    </Grid>
 </UserControl>
