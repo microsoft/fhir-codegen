@@ -9,5 +9,17 @@
         <FluentTheme />
         <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"/>
         <StyleInclude Source="avares://fhir-codegen/Icons.axaml" />
+        <Style Selector="Label">
+            <Setter Property="Margin" Value="8"/>
+        </Style>
+        <Style Selector="TextBox">
+            <Setter Property="Margin" Value="8"/>
+        </Style>
+        <Style Selector="Button">
+            <Setter Property="Margin" Value="8"/>
+        </Style>
+        <Style Selector="DataGrid">
+            <Setter Property="Margin" Value="8"/>
+        </Style>
     </Application.Styles>
 </Application>

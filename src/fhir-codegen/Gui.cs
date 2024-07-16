@@ -16,6 +16,8 @@ namespace fhir_codegen;
 
 internal class Gui
 {
+    public static ConfigGui? RunningConfiguration { get; private set; } = null;
+
     [STAThread]
     public static int RunGui(System.CommandLine.Parsing.ParseResult pr)
     {
@@ -24,6 +26,7 @@ internal class Gui
 
         try
         {
+            RunningConfiguration = config;
             BuildAvaloniaApp().StartWithClassicDesktopLifetime([]);
         }
         catch (Exception ex)
