@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Firely Server - CodeSystem",
-    "version": "1.0.0"
+    "title": "Firely Server 5.7.0+67b969784dfa0e8d1f95d34c3b0be8e4e4bfebb2 CapabilityStatement - CodeSystem",
+    "version": "5.7.0+67b969784dfa0e8d1f95d34c3b0be8e4e4bfebb2"
   },
   "servers": [
     {
@@ -479,19 +479,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CodeSystem"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/CodeSystem"
-                }
-              }
-            }
+            "description": "OK"
           },
           "202": {
             "description": "ACCEPTED"
@@ -589,7 +577,18 @@
         ],
         "requestBody": {
           "description": "Patch to apply to a FHIR CodeSystem record",
-          "content": { },
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CodeSystem"
+              }
+            },
+            "application/xml-patch+xml": {
+              "schema": {
+                "$ref": "#/components/schemas/CodeSystem"
+              }
+            }
+          },
           "required": true
         },
         "responses": {
@@ -1020,6 +1019,183 @@
         }
       ]
     },
+    "/CodeSystem/{logical_id}/_history": {
+      "get": {
+        "tags": [
+          "CodeSystem"
+        ],
+        "summary": "history-instance: Get the change history of a specific CodeSystem resource",
+        "operationId": "HistoryInstanceCodeSystem",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/logical_id"
+          },
+          {
+            "$ref": "#/components/parameters/_elements"
+          },
+          {
+            "$ref": "#/components/parameters/_summary"
+          },
+          {
+            "$ref": "#/components/parameters/_count"
+          },
+          {
+            "$ref": "#/components/parameters/_since"
+          },
+          {
+            "$ref": "#/components/parameters/_at"
+          },
+          {
+            "$ref": "#/components/parameters/_list"
+          },
+          {
+            "$ref": "#/components/parameters/_sort"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bundle"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bundle"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/_format"
+        },
+        {
+          "$ref": "#/components/parameters/_pretty"
+        }
+      ]
+    },
+    "/CodeSystem/_history": {
+      "get": {
+        "tags": [
+          "CodeSystem"
+        ],
+        "summary": "history-type: Get the change history of all CodeSystem resources",
+        "operationId": "HistoryTypeCodeSystem",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/_elements"
+          },
+          {
+            "$ref": "#/components/parameters/_summary"
+          },
+          {
+            "$ref": "#/components/parameters/_count"
+          },
+          {
+            "$ref": "#/components/parameters/_since"
+          },
+          {
+            "$ref": "#/components/parameters/_at"
+          },
+          {
+            "$ref": "#/components/parameters/_list"
+          },
+          {
+            "$ref": "#/components/parameters/_sort"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bundle"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bundle"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/_format"
+        },
+        {
+          "$ref": "#/components/parameters/_pretty"
+        }
+      ]
+    },
     "/CodeSystem/_search": {
       "post": {
         "tags": [
@@ -1283,7 +1459,7 @@
           "CodeSystem"
         ],
         "summary": "vread: Read CodeSystem instance with specific version",
-        "operationId": "VReadCodeSystem",
+        "operationId": "VRead$CodeSystem",
         "parameters": [
           {
             "$ref": "#/components/parameters/logical_id"
@@ -1690,86 +1866,6 @@
         }
       ]
     },
-    "/CodeSystem/$lookup": {
-      "post": {
-        "tags": [
-          "CodeSystem"
-        ],
-        "summary": "operation: Given a code/system, or a Coding, get additional details about the concept, including definition, status, designations, and properties. One of the products of this operation is a full decomposition of a code from a structured terminology.\n\nWhen invoking this operation, a client SHALL provide both a system and a code, either using the system+code parameters, or in the coding parameter. Other parameters are optional",
-        "operationId": "CodeSystemLookupPost",
-        "requestBody": {
-          "description": "Input parameters to the operation",
-          "content": {
-            "application/fhir+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Parameters"
-              }
-            },
-            "application/fhir+xml": {
-              "schema": {
-                "$ref": "#/components/schemas/Parameters"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Parameters"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/Parameters"
-                }
-              }
-            }
-          },
-          "410": {
-            "description": "GONE",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/OperationOutcome"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/OperationOutcome"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "NOT FOUND",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/OperationOutcome"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/OperationOutcome"
-                }
-              }
-            }
-          }
-        }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/_format"
-        },
-        {
-          "$ref": "#/components/parameters/_pretty"
-        }
-      ]
-    },
     "/CodeSystem/{logical_id}/$meta": {
       "post": {
         "tags": [
@@ -2099,25 +2195,228 @@
           "$ref": "#/components/parameters/_pretty"
         }
       ]
+    },
+    "/CodeSystem/{logical_id}/$validate": {
+      "post": {
+        "tags": [
+          "CodeSystem"
+        ],
+        "summary": "operation: The validate operation checks whether the attached content would be acceptable either generally, as a create, an update or as a delete to an existing resource.  The action the server takes depends on the mode parameter:  \n\n* [mode not provided]: The server checks the content of the resource against any schema, constraint rules, and other general terminology rules \n* create: The server checks the content, and then checks that the content would be acceptable as a create (e.g. that the content would not violate any uniqueness constraints) \n* update: The server checks the content, and then checks that it would accept it as an update against the nominated specific resource (e.g. that there are no changes to immutable fields the server does not allow to change, and checking version integrity if appropriate) \n* delete: The server ignores the content, and checks that the nominated resource is allowed to be deleted (e.g. checking referential integrity rules)  \n\nModes update and delete can only be used when the operation is invoked at the resource instance level.   The return from this operation is an [OperationOutcome](operationoutcome.html)\n\nNote that this operation is not the only way to validate resources - see [Validating Resources](validation.html) for further information.",
+        "operationId": "CodeSystemInstanceValidatePost",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/logical_id"
+          },
+          {
+            "name": "mode",
+            "in": "query",
+            "description": "Default is 'no action'; (e.g. general validation)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "profile",
+            "in": "query",
+            "description": "If this is nominated, then the resource is validated against this specific profile. If a profile is nominated, and the server cannot validate against the nominated profile, it SHALL return an error",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Must be present unless the mode is \"delete\"",
+          "content": {
+            "application/fhir+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Resource"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Resource"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/_format"
+        },
+        {
+          "$ref": "#/components/parameters/_pretty"
+        }
+      ]
+    },
+    "/CodeSystem/$validate": {
+      "post": {
+        "tags": [
+          "CodeSystem"
+        ],
+        "summary": "operation: The validate operation checks whether the attached content would be acceptable either generally, as a create, an update or as a delete to an existing resource.  The action the server takes depends on the mode parameter:  \n\n* [mode not provided]: The server checks the content of the resource against any schema, constraint rules, and other general terminology rules \n* create: The server checks the content, and then checks that the content would be acceptable as a create (e.g. that the content would not violate any uniqueness constraints) \n* update: The server checks the content, and then checks that it would accept it as an update against the nominated specific resource (e.g. that there are no changes to immutable fields the server does not allow to change, and checking version integrity if appropriate) \n* delete: The server ignores the content, and checks that the nominated resource is allowed to be deleted (e.g. checking referential integrity rules)  \n\nModes update and delete can only be used when the operation is invoked at the resource instance level.   The return from this operation is an [OperationOutcome](operationoutcome.html)\n\nNote that this operation is not the only way to validate resources - see [Validating Resources](validation.html) for further information.",
+        "operationId": "CodeSystemValidatePost",
+        "parameters": [
+          {
+            "name": "mode",
+            "in": "query",
+            "description": "Default is 'no action'; (e.g. general validation)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "profile",
+            "in": "query",
+            "description": "If this is nominated, then the resource is validated against this specific profile. If a profile is nominated, and the server cannot validate against the nominated profile, it SHALL return an error",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Must be present unless the mode is \"delete\"",
+          "content": {
+            "application/fhir+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Resource"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Resource"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationOutcome"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/_format"
+        },
+        {
+          "$ref": "#/components/parameters/_pretty"
+        }
+      ]
     }
   },
   "components": {
     "schemas": {
       "CodeSystem": {
         "type": "object",
-        "description": "Declares the existence of and describes a code system or code system supplement"
+        "description": "The CodeSystem resource is used to declare the existence of and describe a code system or code system supplement and its key properties, and optionally define a part or all of its content."
       },
       "OperationOutcome": {
         "type": "object",
-        "description": "Information about the success/failure of an action"
+        "description": "A collection of error, warning, or information messages that result from a system action."
       },
       "Bundle": {
         "type": "object",
-        "description": "Contains a collection of resources"
+        "description": "A container for a collection of resources."
       },
       "Parameters": {
         "type": "object",
-        "description": "Operation Request or Response"
+        "description": "This resource is a non-persisted resource used to pass information into and back from an [operation](operations.html). It has no other use, and there is no RESTful endpoint associated with it."
+      },
+      "Resource": {
+        "type": "object",
+        "description": "This is the base resource type for everything."
       }
     },
     "parameters": {
@@ -2125,7 +2424,6 @@
         "name": "_format",
         "in": "query",
         "description": "Override the HTTP content negotiation",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2134,7 +2432,6 @@
         "name": "_pretty",
         "in": "query",
         "description": "Ask for a pretty printed response for human convenience",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2143,7 +2440,6 @@
         "name": "_elements",
         "in": "query",
         "description": "Ask for a particular set of elements to be returned",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2152,7 +2448,6 @@
         "name": "_summary",
         "in": "query",
         "description": "Return only portions of resources, based on pre-defined levels",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2161,7 +2456,6 @@
         "name": "_content",
         "in": "query",
         "description": "Search on the entire content of the resource",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2170,7 +2464,6 @@
         "name": "_filter",
         "in": "query",
         "description": "Provide an inline query expression",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2179,7 +2472,6 @@
         "name": "_id",
         "in": "query",
         "description": "Logical id of this artifact",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2188,7 +2480,6 @@
         "name": "_in",
         "in": "query",
         "description": "Allows for the retrieval of resources that are active members of a CareTeam, Group, or List",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2197,7 +2488,6 @@
         "name": "_language",
         "in": "query",
         "description": "Language of the resource content",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2206,7 +2496,6 @@
         "name": "_lastUpdated",
         "in": "query",
         "description": "When the resource version last changed",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2215,7 +2504,6 @@
         "name": "_list",
         "in": "query",
         "description": "Allows for the retrieval of resources that are referenced by a List resource or by one of the pre-defined functional lists",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2224,7 +2512,6 @@
         "name": "_profile",
         "in": "query",
         "description": "Profiles this resource claims to conform to",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2233,7 +2520,6 @@
         "name": "_query",
         "in": "query",
         "description": "A custom search profile that describes a specific defined query operation",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2242,7 +2528,6 @@
         "name": "_security",
         "in": "query",
         "description": "Security Labels applied to this resource",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2251,7 +2536,6 @@
         "name": "_source",
         "in": "query",
         "description": "Identifies where the resource comes from",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2260,7 +2544,6 @@
         "name": "_tag",
         "in": "query",
         "description": "Tags applied to this resource",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2269,7 +2552,6 @@
         "name": "_text",
         "in": "query",
         "description": "Perform searches against the narrative content of a resource",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2278,7 +2560,6 @@
         "name": "_contained",
         "in": "query",
         "description": "Request different types of handling for contained resources",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2287,7 +2568,6 @@
         "name": "_count",
         "in": "query",
         "description": "Limit the number of match results per page of response",
-        "style": "form",
         "schema": {
           "type": "number"
         }
@@ -2296,7 +2576,6 @@
         "name": "_graph",
         "in": "query",
         "description": "Include additional resources according to a GraphDefinition",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2305,7 +2584,6 @@
         "name": "_include",
         "in": "query",
         "description": "Include additional resources, based on following links forward across references",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2314,7 +2592,6 @@
         "name": "_revinclude",
         "in": "query",
         "description": "Include additional resources, based on following reverse links across references",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2323,7 +2600,6 @@
         "name": "_score",
         "in": "query",
         "description": "Request match relevance in results",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2332,7 +2608,6 @@
         "name": "_sort",
         "in": "query",
         "description": "Request which order results should be returned in",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2341,7 +2616,6 @@
         "name": "_total",
         "in": "query",
         "description": "Request a precision of the total number of results for a request",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2350,7 +2624,6 @@
         "name": "_has",
         "in": "query",
         "description": "Enables querying a reverse chain",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2358,8 +2631,7 @@
       "code": {
         "name": "code",
         "in": "query",
-        "description": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Code that identifies the allergy or intolerance\r\n* [Condition](condition.html): Code for the condition\r\n* [DeviceRequest](devicerequest.html): Code for what is being requested/ordered\r\n* [DiagnosticReport](diagnosticreport.html): The code for the report, as opposed to codes for the atomic results, which are the names on the observation resource referred to from the result\r\n* [FamilyMemberHistory](familymemberhistory.html): A search by a condition code\r\n* [List](list.html): What the purpose of this list is\r\n* [Medication](medication.html): Returns medications for a specific code\r\n* [MedicationAdministration](medicationadministration.html): Return administrations of this medication code\r\n* [MedicationDispense](medicationdispense.html): Returns dispenses of this medicine code\r\n* [MedicationRequest](medicationrequest.html): Return prescriptions of this medication code\r\n* [MedicationStatement](medicationstatement.html): Return statements of this medication code\r\n* [Observation](observation.html): The code of the observation type\r\n* [Procedure](procedure.html): A code to identify a  procedure\r\n* [ServiceRequest](servicerequest.html): What is being requested/ordered\r\n",
-        "style": "form",
+        "description": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](http://hl7.org/fhir/allergyintolerance.html): Code that identifies the allergy or intolerance\r\n* [Condition](http://hl7.org/fhir/condition.html): Code for the condition\r\n* [DeviceRequest](http://hl7.org/fhir/devicerequest.html): Code for what is being requested/ordered\r\n* [DiagnosticReport](http://hl7.org/fhir/diagnosticreport.html): The code for the report, as opposed to codes for the atomic results, which are the names on the observation resource referred to from the result\r\n* [FamilyMemberHistory](http://hl7.org/fhir/familymemberhistory.html): A search by a condition code\r\n* [List](http://hl7.org/fhir/list.html): What the purpose of this list is\r\n* [Medication](http://hl7.org/fhir/medication.html): Returns medications for a specific code\r\n* [MedicationAdministration](http://hl7.org/fhir/medicationadministration.html): Return administrations of this medication code\r\n* [MedicationDispense](http://hl7.org/fhir/medicationdispense.html): Returns dispenses of this medicine code\r\n* [MedicationRequest](http://hl7.org/fhir/medicationrequest.html): Return prescriptions of this medication code\r\n* [MedicationStatement](http://hl7.org/fhir/medicationstatement.html): Return statements of this medication code\r\n* [Observation](http://hl7.org/fhir/observation.html): The code of the observation type\r\n* [Procedure](http://hl7.org/fhir/procedure.html): A code to identify a  procedure\r\n* [ServiceRequest](http://hl7.org/fhir/servicerequest.html): What is being requested/ordered",
         "schema": {
           "type": "string"
         }
@@ -2376,7 +2648,6 @@
         "name": "context",
         "in": "query",
         "description": "A use context assigned to the activity definition",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2385,7 +2656,6 @@
         "name": "context-quantity",
         "in": "query",
         "description": "A quantity- or range-valued use context assigned to the activity definition",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2394,7 +2664,6 @@
         "name": "context-type",
         "in": "query",
         "description": "A type of use context assigned to the activity definition",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2403,7 +2672,6 @@
         "name": "context-type-quantity",
         "in": "query",
         "description": "A use context type and quantity- or range-based value assigned to the activity definition",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2412,7 +2680,6 @@
         "name": "context-type-value",
         "in": "query",
         "description": "A use context type and value assigned to the activity definition",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2421,7 +2688,6 @@
         "name": "date",
         "in": "query",
         "description": "The activity definition publication date",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2430,7 +2696,6 @@
         "name": "description",
         "in": "query",
         "description": "The description of the activity definition",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2439,7 +2704,6 @@
         "name": "identifier",
         "in": "query",
         "description": "Account number",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2448,7 +2712,6 @@
         "name": "jurisdiction",
         "in": "query",
         "description": "Intended jurisdiction for the activity definition",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2465,7 +2728,6 @@
         "name": "name",
         "in": "query",
         "description": "Human-readable label",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2474,7 +2736,6 @@
         "name": "publisher",
         "in": "query",
         "description": "Name of the publisher of the activity definition",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2483,7 +2744,6 @@
         "name": "status",
         "in": "query",
         "description": "active | inactive | entered-in-error | on-hold | unknown",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2508,7 +2768,6 @@
         "name": "title",
         "in": "query",
         "description": "The human-friendly name of the activity definition",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2517,7 +2776,6 @@
         "name": "url",
         "in": "query",
         "description": "The uri that identifies the activity definition",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2526,7 +2784,6 @@
         "name": "version",
         "in": "query",
         "description": "The business version of the activity definition",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2536,7 +2793,22 @@
         "in": "path",
         "description": "Resource Logical ID",
         "required": true,
-        "style": "simple",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_since": {
+        "name": "_since",
+        "in": "query",
+        "description": "Only include resource versions that were created at or after the given instant in time",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_at": {
+        "name": "_at",
+        "in": "query",
+        "description": "Only include resource versions that were current at some point during the time period specified in the date time value",
         "schema": {
           "type": "string"
         }
@@ -2546,7 +2818,6 @@
         "in": "path",
         "description": "Resource Version Number",
         "required": true,
-        "style": "simple",
         "schema": {
           "type": "string"
         }
@@ -2564,6 +2835,7 @@
       "openId": [
         "openid",
         "profile",
+        "roles",
         "fhirUser",
         "offline_access"
       ]
@@ -2572,7 +2844,7 @@
   "tags": [
     {
       "name": "CodeSystem",
-      "description": "Declares the existence of and describes a code system or code system supplement"
+      "description": "The CodeSystem resource is used to declare the existence of and describe a code system or code system supplement and its key properties, and optionally define a part or all of its content."
     }
   ]
 }

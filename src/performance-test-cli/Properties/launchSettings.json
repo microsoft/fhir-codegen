@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "performance-test-cli": {
+      "commandName": "Project",
+      "commandLineArgs": "-f *"
+    }
+  }
+}

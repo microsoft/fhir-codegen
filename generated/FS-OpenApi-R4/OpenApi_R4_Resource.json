@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Firely Server - Resource",
-    "version": "1.0.0"
+    "title": "Firely Server 5.7.0+67b969784dfa0e8d1f95d34c3b0be8e4e4bfebb2 CapabilityStatement - Resource",
+    "version": "5.7.0+67b969784dfa0e8d1f95d34c3b0be8e4e4bfebb2"
   },
   "servers": [
     {
@@ -181,11 +181,11 @@
     "schemas": {
       "Parameters": {
         "type": "object",
-        "description": "Operation Request or Response"
+        "description": "This resource is a non-persisted resource used to pass information into and back from an [operation](operations.html). It has no other use, and there is no RESTful endpoint associated with it."
       },
       "OperationOutcome": {
         "type": "object",
-        "description": "Information about the success/failure of an action"
+        "description": "A collection of error, warning, or information messages that result from a system action."
       }
     },
     "parameters": {
@@ -193,7 +193,6 @@
         "name": "_format",
         "in": "query",
         "description": "Override the HTTP content negotiation",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -202,7 +201,6 @@
         "name": "_pretty",
         "in": "query",
         "description": "Ask for a pretty printed response for human convenience",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -212,7 +210,6 @@
         "in": "path",
         "description": "Resource Logical ID",
         "required": true,
-        "style": "simple",
         "schema": {
           "type": "string"
         }
@@ -230,15 +227,13 @@
       "openId": [
         "openid",
         "profile",
+        "roles",
         "fhirUser",
         "offline_access"
       ]
     }
   ],
   "tags": [
-    {
-      "name": "Resource",
-      "description": "Base Resource"
-    }
+    { }
   ]
 }
