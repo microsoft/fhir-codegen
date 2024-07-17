@@ -9,17 +9,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Avalonia.Controls;
+using Avalonia.Interactivity;
 using Avalonia.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using fhir_codegen.Views;
 using Material.Icons;
+using Material.Styles.Themes;
 
 namespace fhir_codegen.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-
     [ObservableProperty]
     private bool _isPaneOpen;
 
@@ -29,6 +30,14 @@ public partial class MainWindowViewModel : ViewModelBase
     [ObservableProperty]
     private NavigationItemTemplate? _selectedNavigationItem;
 
+    //[ObservableProperty]
+    //private MaterialTheme? _theme = Avalonia.Application.Current?.LocateMaterialTheme<MaterialTheme>();
+
+    public MainWindowViewModel(object? args = null)
+        :base()
+    {
+    }
+
     partial void OnSelectedNavigationItemChanged(NavigationItemTemplate? value)
     {
         if (value == null)
@@ -36,8 +45,12 @@ public partial class MainWindowViewModel : ViewModelBase
             return;
         }
 
-        ViewModelBase? target = (ViewModelBase?)Activator.CreateInstance(value.Target);
+        NavigateTo(value.Target);
+    }
 
+    public void NavigateTo(Type targetViewModel, object? args = null)
+    {
+        ViewModelBase? target = (ViewModelBase?)Activator.CreateInstance(targetViewModel, args);
         if (target == null)
         {
             return;

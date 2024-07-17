@@ -550,6 +550,7 @@ public class Program
                 JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
                 AutoLoadExpansions = rootConfig.AutoLoadExpansions,
                 ResolvePackageDependencies = rootConfig.ResolvePackageDependencies,
+                FhirVersion = rootConfig.FhirVersion,
             });
 
             DefinitionCollection? loaded = await loader.LoadPackages(rootConfig.Packages)
@@ -655,6 +656,7 @@ public class Program
                 JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
                 AutoLoadExpansions = config.AutoLoadExpansions,
                 ResolvePackageDependencies = config.ResolvePackageDependencies,
+                FhirVersion = config.FhirVersion,
             });
 
 
@@ -695,6 +697,7 @@ public class Program
                 JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
                 AutoLoadExpansions = config.AutoLoadExpansions,
                 ResolvePackageDependencies = config.ResolvePackageDependencies,
+                FhirVersion = config.FhirVersion,
             });
 
             DefinitionCollection? loadedRight = await loaderLeft.LoadPackages(config.ComparePackages)
@@ -999,37 +1002,37 @@ public class Program
     }
 
 
-    /// <summary>Searches for the FHIR specification directory.</summary>
-    /// <exception cref="DirectoryNotFoundException">Thrown when the requested directory is not
-    ///  present.</exception>
-    /// <param name="dirName">       The name of the directory we are searching for.</param>
-    /// <param name="throwIfNotFound">(Optional) True to throw if not found.</param>
-    /// <returns>The found FHIR directory.</returns>
-    public static string FindRelativeDir(
-        string startDir,
-        string dirName,
-        bool throwIfNotFound = true)
-    {
-        string currentDir = string.IsNullOrEmpty(startDir) ? Path.GetDirectoryName(AppContext.BaseDirectory) ?? string.Empty : startDir;
-        string testDir = Path.Combine(currentDir, dirName);
+    ///// <summary>Searches for the FHIR specification directory.</summary>
+    ///// <exception cref="DirectoryNotFoundException">Thrown when the requested directory is not
+    /////  present.</exception>
+    ///// <param name="dirName">       The name of the directory we are searching for.</param>
+    ///// <param name="throwIfNotFound">(Optional) True to throw if not found.</param>
+    ///// <returns>The found FHIR directory.</returns>
+    //public static string FindRelativeDir(
+    //    string startDir,
+    //    string dirName,
+    //    bool throwIfNotFound = true)
+    //{
+    //    string currentDir = string.IsNullOrEmpty(startDir) ? Path.GetDirectoryName(AppContext.BaseDirectory) ?? string.Empty : startDir;
+    //    string testDir = Path.Combine(currentDir, dirName);
 
-        while (!Directory.Exists(testDir))
-        {
-            currentDir = Path.GetFullPath(Path.Combine(currentDir, ".."));
+    //    while (!Directory.Exists(testDir))
+    //    {
+    //        currentDir = Path.GetFullPath(Path.Combine(currentDir, ".."));
 
-            if (currentDir == Path.GetPathRoot(currentDir))
-            {
-                if (throwIfNotFound)
-                {
-                    throw new DirectoryNotFoundException($"Could not find directory {dirName}!");
-                }
+    //        if (currentDir == Path.GetPathRoot(currentDir))
+    //        {
+    //            if (throwIfNotFound)
+    //            {
+    //                throw new DirectoryNotFoundException($"Could not find directory {dirName}!");
+    //            }
 
-                return string.Empty;
-            }
+    //            return string.Empty;
+    //        }
 
-            testDir = Path.Combine(currentDir, dirName);
-        }
+    //        testDir = Path.Combine(currentDir, dirName);
+    //    }
 
-        return testDir;
-    }
+    //    return testDir;
+    //}
 }

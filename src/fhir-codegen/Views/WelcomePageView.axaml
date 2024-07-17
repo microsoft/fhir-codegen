@@ -40,9 +40,6 @@
         <DataGrid
             Grid.Row="1"
             ItemsSource="{Binding FilteredInstalledPackages}"
-            GridLinesVisibility="All"
-            BorderBrush="Gray"
-            BorderThickness="1"
             IsReadOnly="True"
             CanUserSortColumns="True"
             VerticalAlignment="Stretch"

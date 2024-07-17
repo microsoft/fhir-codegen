@@ -111,6 +111,15 @@ public class PackageComparer
         //}
     }
 
+    /// <summary>
+    /// Compares this optional bool object to another to determine their relative ordering.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>
+    /// <param name="compareExtensions">(Optional) The bool to compare to this object.</param>
+    /// <returns>
+    /// Negative if 'compareExtensions' is less than '', 0 if they are equal, or positive if it is
+    /// greater.
+    /// </returns>
     public PackageComparison Compare()
     {
         Console.WriteLine(
@@ -136,7 +145,7 @@ public class PackageComparer
         }
 
         string outputDir = string.IsNullOrEmpty(_config.CrossVersionMapDestinationPath)
-            ? Path.Combine(_config.OutputDirectory, $"{_sourceRLiteral}_{_targetRLiteral}")
+            ? _config.OutputDirectory
             : Path.Combine(_config.CrossVersionMapDestinationPath, $"{_sourceRLiteral}_{_targetRLiteral}");
 
         if (!Directory.Exists(outputDir))
@@ -314,6 +323,33 @@ public class PackageComparer
             }
         }
 
+        Dictionary<string, List<StructureComparison>> extensions = CompareStructures(_source.ExtensionsByUrl, _target.ExtensionsByUrl);
+        if (mdWriter != null)
+        {
+            WriteComparisonOverview(mdWriter, "Extensions", extensions);
+
+            string mdSubDir = Path.Combine(pageDir, "Extensions");
+            if (!Directory.Exists(mdSubDir))
+            {
+                Directory.CreateDirectory(mdSubDir);
+            }
+
+            foreach (List<StructureComparison> vcs in extensions.Values)
+            {
+                foreach (StructureComparison c in vcs)
+                {
+                    //string name = GetName(c.Left, c.Right);
+                    //string filename = Path.Combine(subDir, $"{name}.md");
+                    string filename = Path.Combine(mdSubDir, $"{c.CompositeName}.md");
+
+                    using ExportStreamWriter writer = CreateMarkdownWriter(filename);
+                    {
+                        WriteComparisonFile(writer, string.Empty, c);
+                    }
+                }
+            }
+        }
+
         // TODO(ginoc): Logical models are tracked by URL in collections, but structure mapping is done by name.
         //Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> logical = Compare(FhirArtifactClassEnum.LogicalModel, _left.LogicalModelsByUrl, _right.LogicalModelsByUrl);
         //if (mdWriter != null)
@@ -349,6 +385,7 @@ public class PackageComparer
             ComplexTypes = complexTypeComparisons,
             Resources = resources,
             //LogicalModels = logical,
+            Extensions = extensions,
         };
 
         if (mdWriter != null)
@@ -1163,6 +1200,27 @@ public class PackageComparer
                     comparisons.Add(directComparison);
                 }
             }
+
+            // check for something that has no counterpart
+            if (comparisons.Count == 0)
+            {
+                comparisons.Add(new()
+                {
+                    Relationship = null,
+                    Message = $"{sourceVs.Url} does not exist in target and has no mapping",
+                    Source = new()
+                    {
+                        Url = sourceVs.Url,
+                        Name = sourceVs.Name,
+                        NamePascal = sourceVs.Name.ToPascalCase(),
+                        Title = sourceVs.Title,
+                        Description = sourceVs.Description,
+                    },
+                    Target = null,
+                    CompositeName = $"{_sourceRLiteral}-{sourceVs.Name}",
+                    ConceptComparisons = [],
+                });
+            }
         }
 
         return results;
@@ -1627,6 +1685,29 @@ public class PackageComparer
                 {
                     comparisons.Add(directComparison);
                 }
+            }
+
+            // check for something that has no counterpart
+            if (comparisons.Count == 0)
+            {
+                comparisons.Add(new()
+                {
+                    Relationship = null,
+                    Message = $"{sourceSdName} does not exist in target and has no mapping",
+                    Source = new()
+                    {
+                        Name = sourceSd.Name,
+                        Url = sourceSd.Url,
+                        Title = sourceSd.Title,
+                        Description = sourceSd.Description,
+                        Purpose = sourceSd.Purpose,
+                        SnapshotCount = sourceSd.Snapshot.Element.Count,
+                        DifferentialCount = sourceSd.Differential.Element.Count,
+                    },
+                    Target = null,
+                    CompositeName = $"{_sourceRLiteral}-{sourceSd.Name}",
+                    ElementComparisons = [],
+                });
             }
         }
 

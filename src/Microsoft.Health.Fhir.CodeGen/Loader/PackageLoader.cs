@@ -66,6 +66,8 @@ public class PackageLoader : IDisposable
     /// <summary>True to load dependencies when loading packages.</summary>
     private bool _loadDependencies;
 
+    private FhirReleases.FhirSequenceCodes _defaultFhirVersion;
+
     /// <summary>The JSON model.</summary>
     private LoaderOptions.JsonDeserializationModel _jsonModel;
 
@@ -117,6 +119,8 @@ public class PackageLoader : IDisposable
                 _packageClients.Add(PackageClient.Create(url, npm: true));
             }
         }
+
+        _defaultFhirVersion = FhirReleases.FhirVersionToSequence(opts.FhirVersion);
 
         _jsonOptions = opts.FhirJsonOptions;
         _jsonParser = new(opts.FhirJsonSettings);
@@ -420,14 +424,146 @@ public class PackageLoader : IDisposable
         return false;
     }
 
+    private void CreateConverterIfRequired(FhirReleases.FhirSequenceCodes fhirSequence)
+    {
+        // create the converter we need
+        switch (fhirSequence)
+        {
+            case FhirReleases.FhirSequenceCodes.DSTU2:
+                {
+                    if (_converter_20_50 == null)
+                    {
+                        lock (_convertLockObject)
+                        {
+                            _converter_20_50 ??= new();
+                        }
+                    }
+                }
+                break;
+
+            case FhirReleases.FhirSequenceCodes.STU3:
+                {
+                    if (_converter_30_50 == null)
+                    {
+                        lock (_convertLockObject)
+                        {
+                            _converter_30_50 ??= new();
+                        }
+                    }
+                }
+                break;
+
+            case FhirReleases.FhirSequenceCodes.R4:
+            case FhirReleases.FhirSequenceCodes.R4B:
+                {
+                    if (_converter_43_50 == null)
+                    {
+                        lock (_convertLockObject)
+                        {
+                            _converter_43_50 ??= new();
+                        }
+                    }
+                }
+                break;
+
+            default:
+            case FhirReleases.FhirSequenceCodes.R5:
+                {
+                }
+                break;
+        }
+    }
+
+    private bool LoadFromDirectory(ref DefinitionCollection? definitions, string sourcePath, string? fhirVersion)
+    {
+        FhirReleases.FhirSequenceCodes fhirSequence = string.IsNullOrEmpty(fhirVersion)
+            ? _defaultFhirVersion
+            : FhirReleases.FhirVersionToSequence(fhirVersion!);
+
+        if (fhirSequence == FhirReleases.FhirSequenceCodes.Unknown)
+        {
+            throw new Exception("Cannot load from a directory with an unknown FHIR version");
+        }
+
+        CreateConverterIfRequired(fhirSequence);
+
+        string? name = Path.GetFileName(sourcePath);
+
+        if (name == null)
+        {
+            throw new Exception($"Failed to get directory name from '{sourcePath}'");
+        }
+
+        string canonical = $"file://{sourcePath}";
+
+        definitions ??= new()
+        {
+            Name = name,
+            FhirSequence = fhirSequence,
+            FhirVersionLiteral = fhirSequence.ToLiteral(),
+            MainPackageId = name,
+            MainPackageVersion = "dev",
+            MainPackageCanonical = canonical,
+        };
+
+        // get files in the directory
+        string[] files = Directory.GetFiles(sourcePath, "*.json", SearchOption.TopDirectoryOnly);
+        foreach (string path in files)
+        {
+            string fileExtension = Path.GetExtension(path);
+
+            object? r;
+
+            switch (fhirSequence)
+            {
+                case FhirReleases.FhirSequenceCodes.DSTU2:
+                    {
+                        r = ParseContents20(fileExtension, path: path);
+                    }
+                    break;
+
+                case FhirReleases.FhirSequenceCodes.STU3:
+                    {
+                        r = ParseContents30(fileExtension, path: path);
+                    }
+                    break;
+
+                case FhirReleases.FhirSequenceCodes.R4:
+                case FhirReleases.FhirSequenceCodes.R4B:
+                    {
+                        r = ParseContents43(fileExtension, path: path);
+                    }
+                    break;
+
+                default:
+                case FhirReleases.FhirSequenceCodes.R5:
+                    {
+                        r = ParseContentsPoco(fileExtension, path);
+                    }
+                    break;
+            }
+
+            if (r == null)
+            {
+                throw new Exception($"Failed to parse '{path}'");
+            }
+
+            definitions.AddResource(r, _defaultFhirVersion, name, "dev", canonical);
+        }
+
+        return true;
+    }
+
     /// <summary>Loads a package.</summary>
     /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>
-    /// <param name="name">    The name.</param>
-    /// <param name="packages">The cached package.</param>
+    /// <param name="packages">   The cached package.</param>
+    /// <param name="definitions">(Optional) The definitions.</param>
+    /// <param name="fhirVersion">(Optional) The FHIR version.</param>
     /// <returns>An asynchronous result that yields the package.</returns>
     public async Task<DefinitionCollection?> LoadPackages(
         IEnumerable<string> packages,
-        DefinitionCollection? definitions = null)
+        DefinitionCollection? definitions = null,
+        string? fhirVersion = null)
     {
         if (!packages.Any())
         {
@@ -436,6 +572,26 @@ public class PackageLoader : IDisposable
 
         foreach (string inputDirective in packages)
         {
+            if (string.IsNullOrEmpty(inputDirective))
+            {
+                continue;
+            }
+
+            // check to see if this is actually a directory
+            if ((inputDirective.IndexOfAny(Path.GetInvalidPathChars()) == -1) &&
+                Directory.Exists(inputDirective))
+            {
+                Console.WriteLine($"Processing directory {inputDirective}...");
+
+                if (!LoadFromDirectory(ref definitions, inputDirective, fhirVersion))
+                {
+                    throw new Exception($"Failed to load package from directory: {inputDirective}");
+                }
+
+                // if we loaded from the directory, just continue
+                continue;
+            }
+
             // TODO(ginoc): PR in to Parse FHIR-style directives, remove when added.
             string directive = inputDirective.Contains('@')
                 ? inputDirective
@@ -546,52 +702,7 @@ public class PackageLoader : IDisposable
                 ? definitions.FhirSequence
                 : FhirReleases.FhirVersionToSequence(packageFhirVersionLiteral ?? string.Empty);
 
-            // create the converter we need
-            switch (definitions.FhirSequence)
-            {
-                case FhirReleases.FhirSequenceCodes.DSTU2:
-                    {
-                        if (_converter_20_50 == null)
-                        {
-                            lock (_convertLockObject)
-                            {
-                                _converter_20_50 ??= new();
-                            }
-                        }
-                    }
-                    break;
-
-                case FhirReleases.FhirSequenceCodes.STU3:
-                    {
-                        if (_converter_30_50 == null)
-                        {
-                            lock (_convertLockObject)
-                            {
-                                _converter_30_50 ??= new();
-                            }
-                        }
-                    }
-                    break;
-
-                case FhirReleases.FhirSequenceCodes.R4:
-                case FhirReleases.FhirSequenceCodes.R4B:
-                    {
-                        if (_converter_43_50 == null)
-                        {
-                            lock (_convertLockObject)
-                            {
-                                _converter_43_50 ??= new();
-                            }
-                        }
-                    }
-                    break;
-
-                default:
-                case FhirReleases.FhirSequenceCodes.R5:
-                    {
-                    }
-                    break;
-            }
+            CreateConverterIfRequired(definitions.FhirSequence);
 
             // if we are resolving dependencies, check them now
             if (_loadDependencies && (manifest.Dependencies?.Any() ?? false))

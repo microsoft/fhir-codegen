@@ -34,12 +34,15 @@
                 </Button>
 
                 <ListBox ItemsSource="{Binding NavigationItems}"
-                         SelectedItem="{Binding SelectedNavigationItem}">
+                         SelectedItem="{Binding SelectedNavigationItem}"
+                         Margin="0">
                     <ListBox.ItemTemplate>
                         <DataTemplate DataType="{x:Type vm:NavigationItemTemplate}">
-                            <StackPanel Spacing="12" Margin="4 4" Orientation="Horizontal">
-                                <materialIcons:MaterialIcon Kind="{Binding IconKind}" Classes="cgInlineIcon" />
-                                <TextBlock Text="{Binding Label}" />
+                            <StackPanel Spacing="12" Margin="0" Orientation="Horizontal">
+                                <Border Classes="cgIconBorder32">
+                                    <materialIcons:MaterialIcon Kind="{Binding IconKind}" Classes="cgIcon24"/>
+                                </Border>
+                                <TextBlock Text="{Binding Label}" VerticalAlignment="Center" />
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>

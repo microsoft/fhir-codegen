@@ -222,6 +222,24 @@ public class ConfigRoot : ICodeGenConfig
         },
     };
 
+    [ConfigOption(
+        ArgName = "--fhir-version",
+        EnvName = "Fhir_Version",
+        Description = "FHIR version to use.")]
+    public string FhirVersion { get; set; } = string.Empty;
+
+    private static ConfigurationOption FhirVersionParameter { get; } = new()
+    {
+        Name = "FhirVersion",
+        EnvVarName = "Fhir_Version",
+        DefaultValue = string.Empty,
+        CliOption = new System.CommandLine.Option<string>("--fhir-version", "FHIR version to use.")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
+
     /// <summary>
     /// Gets all the configuration options.
     /// </summary>
@@ -237,6 +255,7 @@ public class ConfigRoot : ICodeGenConfig
         AutoLoadExpansionsParameter,
         ResolvePackageDependenciesParameter,
         OfflineModeParameter,
+        FhirVersionParameter,
     ];
 
     /// <summary>
@@ -497,6 +516,9 @@ public class ConfigRoot : ICodeGenConfig
                     break;
                 case "ResolvePackageDependencies":
                     ResolvePackageDependencies = GetOpt(parseResult, opt.CliOption, ResolvePackageDependencies);
+                    break;
+                case "FhirVersion":
+                    FhirVersion = GetOpt(parseResult, opt.CliOption, FhirVersion);
                     break;
             }
         }

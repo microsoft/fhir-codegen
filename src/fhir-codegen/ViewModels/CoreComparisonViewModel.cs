@@ -18,13 +18,17 @@ using CommunityToolkit.Mvvm.Input;
 using Hl7.Fhir.Utility;
 using Material.Icons;
 using Microsoft.Health.Fhir.CodeGen._ForPackages;
+using Microsoft.Health.Fhir.CodeGen.CompareTool;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
+using Microsoft.Health.Fhir.CodeGen.Loader;
+using Microsoft.Health.Fhir.CodeGen.Models;
+using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 
 namespace fhir_codegen.ViewModels;
 
 public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewModel
 {
-    public static string Label => "Compare FHIR Releases";
+    public static string Label => "Compare FHIR Definitions";
     public static MaterialIconKind IconKind => MaterialIconKind.Compare;
     //public static StreamGeometry? IconGeometry => (Application.Current?.TryGetResource("book_question_mark_regular", out object? icon) ?? false) && icon is StreamGeometry sg
     //    ? sg
@@ -51,10 +55,43 @@ public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewMode
     private string _crossVersionDirectory = "git/fhir-cross-version";
 
     [ObservableProperty]
-    private int _sourceIndex = 0;
+    private int _sourceReleaseIndex = 0;
 
     [ObservableProperty]
-    private int _targetIndex = 0;
+    private int _targetReleaseIndex = 0;
+
+    [ObservableProperty]
+    private string _sourceDirectory = "C:\\git\\version-modeling\\20191231\\hl7.fhir.r5.core#4.2.0"; // string.Empty;
+
+    [ObservableProperty]
+    private int _sourceDirectoryFhirVersionIndex = 2;
+
+    [ObservableProperty]
+    private string _targetDirectory = "C:\\git\\version-modeling\\20181227\\hl7.fhir.r4.core#4.0.1";    // string.Empty;
+
+    [ObservableProperty]
+    private int _targetDirectoryFhirVersionIndex = 2;
+
+    [ObservableProperty]
+    private string[] _fhirVersions = [ "DSTU2", "STU3", "R4", "R4B", "R5", "R6" ];
+
+    [ObservableProperty]
+    private string _saveDirectory = "C:\\git\\version-modeling\\20191231\\_prev_02_down";
+
+    [ObservableProperty]
+    private List<ValueSetComparison> _valueSetComparisons = [];
+
+    [ObservableProperty]
+    private List<PrimitiveTypeComparison> _primitiveComparisons = [];
+
+    [ObservableProperty]
+    private List<StructureComparison> _complexTypeComparisons = [];
+
+    [ObservableProperty]
+    private List<StructureComparison> _resourceComparisons = [];
+
+    [ObservableProperty]
+    private List<StructureComparison> _extensionComparisons = [];
 
     [ObservableProperty]
     private List<string> _corePackages = [];
@@ -65,7 +102,8 @@ public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewMode
     private static readonly Regex _corePackageRegex = new Regex("^hl7\\.fhir\\.r\\d+[A-Za-z]?\\.(core)$", RegexOptions.Compiled);
     private static readonly HashSet<string> _releaseVersions = [ "1.0.2", "3.0.2", "4.0.1", "4.3.0", "5.0.0", ];
 
-    public CoreComparisonViewModel()
+    public CoreComparisonViewModel(object? args = null)
+        : base()
     {
         // get the current configuration
         ConfigGui? config = Gui.RunningConfiguration;
@@ -105,7 +143,7 @@ public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewMode
     }
 
     [RelayCommand]
-    private void RunComparison()
+    private void RunReleaseComparison()
     {
         if (Processing == true)
         {
@@ -115,7 +153,7 @@ public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewMode
         Processing = true;
         ErrorMessage = null;
 
-        if (SourceIndex == TargetIndex)
+        if (SourceReleaseIndex == TargetReleaseIndex)
         {
             ErrorMessage = "Source and target cannot be the same";
             Processing = false;
@@ -124,12 +162,84 @@ public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewMode
 
         ConfigCompare compareOptions = new()
         {
-            Packages = [ CorePackages[SourceIndex] ],
-            ComparePackages = [ CorePackages[TargetIndex] ],
+            Packages = [ CorePackages[SourceReleaseIndex] ],
+            ComparePackages = [ CorePackages[TargetReleaseIndex] ],
             CrossVersionMapSourcePath = CrossVersionDirectory,
             MapSaveStyle = ConfigCompare.ComparisonMapSaveStyle.None,
             NoOutput = true,
         };
     }
 
+    [RelayCommand]
+    private void RunDirectoryComparison()
+    {
+        if (Processing == true)
+        {
+            return;
+        }
+
+        Task.Run(DoDirectoryComparison);
+    }
+    private async void DoDirectoryComparison()
+    {
+        Processing = true;
+        ErrorMessage = null;
+        ValueSetComparisons = [];
+        PrimitiveComparisons = [];
+        ComplexTypeComparisons = [];
+        ResourceComparisons = [];
+        ExtensionComparisons = [];
+
+        if (string.IsNullOrEmpty(SourceDirectory) || string.IsNullOrEmpty(TargetDirectory) || (SourceDirectory == TargetDirectory))
+        {
+            ErrorMessage = "Source and target are required and cannot be the same";
+            Processing = false;
+            return;
+        }
+
+        PackageLoader loader = new(new());
+        DefinitionCollection? source = await loader.LoadPackages([SourceDirectory], fhirVersion: FhirVersions[SourceDirectoryFhirVersionIndex]);
+
+        if (source == null)
+        {
+            ErrorMessage = "Failed to load source definitions";
+            Processing = false;
+            return;
+        }
+
+        DefinitionCollection? target = await loader.LoadPackages([TargetDirectory], fhirVersion: FhirVersions[TargetDirectoryFhirVersionIndex]);
+
+        if (target == null)
+        {
+            ErrorMessage = "Failed to load target definitions";
+            Processing = false;
+            return;
+        }
+
+        ConfigCompare compareOptions = string.IsNullOrEmpty(SaveDirectory)
+            ? new()
+            {
+                MapSaveStyle = ConfigCompare.ComparisonMapSaveStyle.None,
+                NoOutput = true,
+            }
+            : new()
+            {
+                OutputDirectory = SaveDirectory,
+                //CrossVersionMapDestinationPath = SaveDirectory,
+                MapSaveStyle = ConfigCompare.ComparisonMapSaveStyle.Source,
+                NoOutput = false,
+            };
+
+        PackageComparer comparer = new(compareOptions, source, target);
+
+        PackageComparison results = comparer.Compare();
+        ValueSetComparisons = results.ValueSets.Values.SelectMany(l => l.Select(v => v)).ToList();
+        PrimitiveComparisons = results.PrimitiveTypes.Values.SelectMany(l => l.Select(v => v)).ToList();
+        ComplexTypeComparisons = results.ComplexTypes.Values.SelectMany(l => l.Select(v => v)).ToList();
+        ResourceComparisons = results.Resources.Values.SelectMany(l => l.Select(v => v)).ToList();
+        ExtensionComparisons = results.Extensions.Values.SelectMany(l => l.Select(v => v)).ToList();
+
+        Processing = false;
+        ErrorMessage = null;
+    }
 }

@@ -190,4 +190,5 @@ public record class PackageComparison
     public required Dictionary<string, List<StructureComparison>> ComplexTypes { get; init; }
     public required Dictionary<string, List<StructureComparison>> Resources { get; init; }
     //public required Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> LogicalModels { get; init; }
+    public required Dictionary<string, List<StructureComparison>> Extensions { get; init; }
 }

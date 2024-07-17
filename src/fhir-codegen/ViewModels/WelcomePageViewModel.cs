@@ -93,7 +93,8 @@ public partial class WelcomePageViewModel : ViewModelBase, INavigableViewModel
         FilteredInstalledPackages = new(packages.Where(p => p.Moniker.Contains(filterValue, StringComparison.OrdinalIgnoreCase)));
     }
 
-    public WelcomePageViewModel()
+    public WelcomePageViewModel(object? args = null)
+        :base()
     {
         // get the current configuration
         ConfigGui? config = Gui.RunningConfiguration;

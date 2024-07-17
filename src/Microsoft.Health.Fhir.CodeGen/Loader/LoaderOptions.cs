@@ -50,6 +50,9 @@ public record class LoaderOptions
     /// </summary>
     public bool OfflineMode { get; init; } = false;
 
+    /// <summary>Gets or initializes the FHIR version.</summary>
+    public string FhirVersion { get; init; } = string.Empty;
+
     /// <summary>
     /// Gets or sets the JSON model.
     /// </summary>
