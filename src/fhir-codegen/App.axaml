@@ -41,6 +41,8 @@
         </Style>
         <Style Selector="DataGrid">
             <Setter Property="Margin" Value="8"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Visible"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
         </Style>
         <Style Selector="Label">
             <Setter Property="Margin" Value="8"/>

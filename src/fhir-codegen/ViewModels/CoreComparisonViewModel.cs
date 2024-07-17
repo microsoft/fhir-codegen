@@ -150,6 +150,12 @@ public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewMode
             return;
         }
 
+
+        Task.Run(DoReleaseComparison);
+    }
+
+    private async void DoReleaseComparison()
+    {
         Processing = true;
         ErrorMessage = null;
 
@@ -160,14 +166,49 @@ public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewMode
             return;
         }
 
+        if (SourceReleaseIndex < 0 || SourceReleaseIndex >= CorePackages.Count || TargetReleaseIndex < 0 || TargetReleaseIndex >= CorePackages.Count)
+        {
+            ErrorMessage = "Invalid source or target release index";
+            Processing = false;
+            return;
+        }
+
+        PackageLoader loader = new(new());
+        DefinitionCollection? source = await loader.LoadPackages([CorePackages[SourceReleaseIndex]]);
+
+        if (source == null)
+        {
+            ErrorMessage = "Failed to load source definitions";
+            Processing = false;
+            return;
+        }
+
+        DefinitionCollection? target = await loader.LoadPackages([CorePackages[TargetReleaseIndex]], fhirVersion: FhirVersions[TargetDirectoryFhirVersionIndex]);
+
+        if (target == null)
+        {
+            ErrorMessage = "Failed to load target definitions";
+            Processing = false;
+            return;
+        }
+
         ConfigCompare compareOptions = new()
         {
-            Packages = [ CorePackages[SourceReleaseIndex] ],
-            ComparePackages = [ CorePackages[TargetReleaseIndex] ],
-            CrossVersionMapSourcePath = CrossVersionDirectory,
             MapSaveStyle = ConfigCompare.ComparisonMapSaveStyle.None,
             NoOutput = true,
         };
+
+        PackageComparer comparer = new(compareOptions, source, target);
+
+        PackageComparison results = comparer.Compare();
+        ValueSetComparisons = results.ValueSets.Values.SelectMany(l => l.Select(v => v)).ToList();
+        PrimitiveComparisons = results.PrimitiveTypes.Values.SelectMany(l => l.Select(v => v)).ToList();
+        ComplexTypeComparisons = results.ComplexTypes.Values.SelectMany(l => l.Select(v => v)).ToList();
+        ResourceComparisons = results.Resources.Values.SelectMany(l => l.Select(v => v)).ToList();
+        ExtensionComparisons = results.Extensions.Values.SelectMany(l => l.Select(v => v)).ToList();
+
+        Processing = false;
+        ErrorMessage = null;
     }
 
     [RelayCommand]
