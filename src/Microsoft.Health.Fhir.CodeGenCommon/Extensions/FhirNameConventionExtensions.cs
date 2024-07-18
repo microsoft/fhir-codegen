@@ -11,10 +11,59 @@ namespace Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 public static class FhirNameConventionExtensions
 {
     /// <summary>(Immutable) The word delimiters.</summary>
-    private static readonly char[] _wordDelimiters = new char[] { ' ', '.', '_', '-' };
+    private static readonly char[] _wordDelimiters = [' ', '.', '_', '-'];
 
     /// <summary>(Immutable) Options for controlling the word split.</summary>
-    private static readonly StringSplitOptions _wordSplitOptions = StringSplitOptions.RemoveEmptyEntries & StringSplitOptions.TrimEntries;
+    private static readonly StringSplitOptions _wordSplitOptions = StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries;
+
+    /// <summary>Values that represent naming conventions for item types.</summary>
+    public enum NamingConvention
+    {
+        /// <summary>This feature is not supported / used.</summary>
+        None,
+
+        /// <summary>An enum constant representing the language controlled option.</summary>
+        LanguageControlled,
+
+        /// <summary>Names are standard FHIR dot notation (e.g., path).</summary>
+        FhirDotNotation,
+
+        /// <summary>Names are dot notation, with each first letter capitalized.</summary>
+        PascalDotNotation,
+
+        /// <summary>Names are Pascal Case (first letter capitalized).</summary>
+        PascalCase,
+
+        /// <summary>Names are Camel Case (first letter lower case).</summary>
+        CamelCase,
+
+        /// <summary>Names are all upper case.</summary>
+        UpperCase,
+
+        /// <summary>Names are all lower case.</summary>
+        LowerCase,
+
+        /// <summary>Lower case, separated by hyphens.</summary>
+        LowerKebab,
+
+        /// <summary>Pascal case, separated by an arbitrary delimiter.</summary>
+        PascalDelimited,
+    }
+
+    public static string ToConvention(this string word, NamingConvention convention, string delimiter = "") => convention switch
+    {
+        NamingConvention.None => word,
+        NamingConvention.LanguageControlled => word,
+        NamingConvention.FhirDotNotation => word.ToPascalDotCase(),
+        NamingConvention.PascalDotNotation => word.ToPascalDotCase(),
+        NamingConvention.PascalCase => word.ToPascalCase(),
+        NamingConvention.CamelCase => word.ToCamelCase(),
+        NamingConvention.UpperCase => word.ToUpperCase(),
+        NamingConvention.LowerCase => word.ToLowerCase(),
+        NamingConvention.LowerKebab => word.ToLowerKebabCase(),
+        NamingConvention.PascalDelimited => word.ToPascalDelimited(delimiter),
+        _ => word,
+    };
 
     /// <summary>A string extension method that converts a word to PascalCase.</summary>
     /// <param name="word">            The word to act on.</param>
@@ -43,9 +92,9 @@ public static class FhirNameConventionExtensions
     /// <returns>Word as a string.</returns>
     public static string[] ToPascalCase(this string[] words, bool removeDelimiters = true, string joinDelimiter = "")
     {
-        if (!(words?.Any() ?? false))
+        if (words.Length == 0)
         {
-            return Array.Empty<string>();
+            return [];
         }
 
         string[] output = new string[words.Length];
@@ -67,12 +116,12 @@ public static class FhirNameConventionExtensions
     /// <returns>Words as a string.</returns>
     public static string ToPascalCaseWord(this IEnumerable<string> words, bool removeDelimiters = true, string joinDelimiter = "")
     {
-        if (!(words?.Any() ?? false))
+        if (!words.Any())
         {
             return string.Empty;
         }
 
-        return string.Join(joinDelimiter ?? string.Empty, words.Select(w => w.ToPascalCase(removeDelimiters, joinDelimiter)));
+        return string.Join(joinDelimiter, words.Select(w => w.ToPascalCase(removeDelimiters, joinDelimiter)));
     }
 
     /// <summary>A string extension method that converts a word to a camelCase.</summary>
@@ -104,9 +153,9 @@ public static class FhirNameConventionExtensions
     /// <returns>Word as a string.</returns>
     public static string[] ToCamelCase(this string[] words, bool removeDelimiters = true, string joinDelimiter = "")
     {
-        if (!(words?.Any() ?? false))
+        if (words.Length == 0)
         {
-            return Array.Empty<string>();
+            return [];
         }
 
         string[] output = new string[words.Length];
@@ -191,9 +240,9 @@ public static class FhirNameConventionExtensions
     /// <returns>Words as a string[].</returns>
     public static string[] ToUpperCase(this string[] words, bool removeDelimiters = true, string joinDelimiter = "_")
     {
-        if (!(words?.Any() ?? false))
+        if (words.Length == 0)
         {
-            return Array.Empty<string>();
+            return [];
         }
 
         string[] output = new string[words.Length];
@@ -221,7 +270,7 @@ public static class FhirNameConventionExtensions
             }
         }
 
-        return words.Select(w => w.ToUpperInvariant()).ToArray() ?? Array.Empty<string>();
+        return words.Select(w => w.ToUpperInvariant()).ToArray() ?? [];
     }
 
     /// <summary>
@@ -239,7 +288,7 @@ public static class FhirNameConventionExtensions
             return string.Empty;
         }
 
-        return string.Join(joinDelimiter ?? string.Empty, words.Select(w => w.ToUpperCase(removeDelimiters, joinDelimiter)));
+        return string.Join(joinDelimiter, words.Select(w => w.ToUpperCase(removeDelimiters, joinDelimiter)));
     }
 
     /// <summary>A string extension method that converts this object to a lower case.</summary>
@@ -271,9 +320,9 @@ public static class FhirNameConventionExtensions
     /// <returns>Words as a string[].</returns>
     public static string[] ToLowerCase(this string[] words, bool removeDelimiters = true, string joinDelimiter = "_")
     {
-        if (!(words?.Any() ?? false))
+        if (words.Length == 0)
         {
-            return Array.Empty<string>();
+            return [];
         }
 
         string[] output = new string[words.Length];
@@ -301,7 +350,7 @@ public static class FhirNameConventionExtensions
             }
         }
 
-        return words.Select(w => w.ToLowerInvariant()).ToArray() ?? Array.Empty<string>();
+        return words.Select(w => w.ToLowerInvariant()).ToArray() ?? [];
     }
 
     /// <summary>
@@ -319,7 +368,7 @@ public static class FhirNameConventionExtensions
             return string.Empty;
         }
 
-        return string.Join(joinDelimiter ?? string.Empty, words.Select(w => w.ToLowerCase(removeDelimiters, joinDelimiter)));
+        return string.Join(joinDelimiter, words.Select(w => w.ToLowerCase(removeDelimiters, joinDelimiter)));
     }
 
     /// <summary>
@@ -394,9 +443,9 @@ public static class FhirNameConventionExtensions
     /// <returns>The given data converted to a string.</returns>
     public static string[] ToPascalDotCase(this string[] words)
     {
-        if (!(words?.Any() ?? false))
+        if (words.Length == 0)
         {
-            return Array.Empty<string>();
+            return [];
         }
 
         string[] output = new string[words.Length];
@@ -423,5 +472,109 @@ public static class FhirNameConventionExtensions
         }
 
         return string.Join('.', words.Select(w => w.ToPascalDotCase()));
+    }
+
+    /// <summary>
+    /// A string extension method that converts this object to a pascal dot case.
+    /// </summary>
+    /// <param name="word">            The word to act on.</param>
+    /// <returns>The given data converted to a string.</returns>
+    public static string ToPascalDelimited(this string word, string delimiter)
+    {
+        if (string.IsNullOrEmpty(word))
+        {
+            return string.Empty;
+        }
+
+        return string.Join(delimiter, word.Split(_wordDelimiters, _wordSplitOptions).Select(w => w.ToPascalCase(false)));
+    }
+
+    /// <summary>A string extension method that converts this object to a pascal dot case.</summary>
+    /// <param name="words">           The words.</param>
+    /// <returns>The given data converted to a string.</returns>
+    public static string[] ToPascalDelimited(this string[] words, string delimiter)
+    {
+        if (words.Length == 0)
+        {
+            return [];
+        }
+
+        string[] output = new string[words.Length];
+
+        for (int i = 0; i < words.Length; i++)
+        {
+            output[i] = ToPascalDelimited(words[i], delimiter);
+        }
+
+        return output;
+    }
+
+    /// <summary>
+    /// An IEnumerable&lt;string&gt; extension method that converts this object to a pascal dot case
+    /// word.
+    /// </summary>
+    /// <param name="words">           The words.</param>
+    /// <returns>The given data converted to a string.</returns>
+    public static string ToPascalDelimitedWord(this IEnumerable<string> words, string delimiter)
+    {
+        if (!(words?.Any() ?? false))
+        {
+            return string.Empty;
+        }
+
+        return string.Join(delimiter, words.Select(w => w.ToPascalDelimited(delimiter)));
+    }
+
+    /// <summary>
+    /// A string extension method that converts this string to a FHIR dot case string.
+    /// </summary>
+    /// <param name="word">            The word to act on.</param>
+    /// <returns>The given data converted to a string.</returns>
+    public static string ToFhirDotCase(this string word)
+    {
+        if (string.IsNullOrEmpty(word))
+        {
+            return string.Empty;
+        }
+
+        string[] words = word.Split(_wordDelimiters, _wordSplitOptions);
+
+        return string.Join('.', words.Take(1).Select(w => w.ToPascalCase(false)), words.Skip(1).Select(w => w.ToCamelCase()));
+    }
+
+    /// <summary>A string extension method that converts this array of strings to an array of FHIR dot-case strings.</summary>
+    /// <param name="words">           The words.</param>
+    /// <returns>The given data converted to a string.</returns>
+    public static string[] ToFhirDotCase(this string[] words)
+    {
+        if (words.Length == 0)
+        {
+            return [];
+        }
+
+        string[] output = new string[words.Length];
+
+        for (int i = 0; i < words.Length; i++)
+        {
+            output[i] = ToFhirDotCase(words[i]);
+        }
+
+        return output;
+    }
+
+    /// <summary>
+    /// An IEnumerable&lt;string&gt; extension method that converts this object to a pascal dot case
+    /// word.
+    /// </summary>
+    /// <param name="words">           The words.</param>
+    /// <returns>The given data converted to a string.</returns>
+    public static string ToFhirDotCaseWord(this IEnumerable<string> words)
+    {
+        if (!(words?.Any() ?? false))
+        {
+            return string.Empty;
+        }
+
+        return string.Join('.', words.Take(1).Select(w => w.ToPascalCase(false)), words.Skip(1).Select(w => w.ToCamelCase()));
     }
 }

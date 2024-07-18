@@ -1,0 +1,16 @@
+{
+  "name": "hl7.fhir.r6.core",
+  "version": "6.0.0-cibuild",
+  "fhir-version-list": [
+    "6.0.0"
+  ],
+  "type": "fhir.core",
+  "license": "CC0-1.0",
+  "title": "FHIR R6 package : Core",
+  "description": "Definitions (API, structures and terminologies) for the R6 version of the FHIR standard",
+  "author": "HL7 Inc",
+  "url": "http://hl7.org/fhir/R6",
+  "tools-version": 3,
+  "canonical": "http://hl7.org/fhir",
+  "homepage": "http://hl7.org/fhir"
+}

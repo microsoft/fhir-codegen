@@ -10,7 +10,7 @@ namespace Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 /// <summary>A FHIR enum extensions.</summary>
 public static class FhirEnumExtensions
 {
-    private static Dictionary<Type, EnumValueLookups> _typeLookups = new ();
+    private static Dictionary<Type, EnumValueLookups> _typeLookups = [];
 
     /// <summary>An Enum extension method that converts a value to a literal.</summary>
     /// <param name="fhirEnum">The fhirEnumValue to act on.</param>
@@ -19,7 +19,7 @@ public static class FhirEnumExtensions
     {
         if (fhirEnum == null)
         {
-            return null;
+            return string.Empty;
         }
 
         Type type = fhirEnum.GetType();
@@ -43,24 +43,24 @@ public static class FhirEnumExtensions
     {
         EnumValueLookups lookups = new ()
         {
-            EnumToString = new (),
-            StringToEnum = new (),
+            EnumToString = [],
+            StringToEnum = [],
         };
 
         foreach (Enum value in Enum.GetValues(type))
         {
-            FieldInfo fieldInfo = type.GetField(value.ToString());
+            FieldInfo? fieldInfo = type.GetField(value.ToString());
 
             if (fieldInfo == null)
             {
                 continue;
             }
 
-            FhirLiteralAttribute[] attributes = fieldInfo.GetCustomAttributes(
+            FhirLiteralAttribute[]? attributes = fieldInfo.GetCustomAttributes(
                 typeof(FhirLiteralAttribute),
                 false) as FhirLiteralAttribute[];
 
-            if ((attributes == null) || (attributes.Length == 0))
+            if (!(attributes?.Any() ?? false))
             {
                 continue;
             }
@@ -133,7 +133,7 @@ public static class FhirEnumExtensions
     {
         if (string.IsNullOrEmpty(literal))
         {
-            value = default(T);
+            value = default;
             return false;
         }
 
@@ -156,7 +156,7 @@ public static class FhirEnumExtensions
             return false;
         }
 
-        List<T> data = new();
+        List<T> data = [];
 
         foreach (string sourceVal in source)
         {
@@ -164,16 +164,51 @@ public static class FhirEnumExtensions
             {
                 data.Add(val);
             }
-            else
-            {
-                values = Array.Empty<T>();
-                return false;
-            }
+            // 2023.06.14 - GC - We generally want to pull what we can in a try parse
+            //else
+            //{
+            //    values = Array.Empty<T>();
+            //    return false;
+            //}
         }
 
         values = data.ToArray();
         return true;
     }
+
+    /// <summary>
+    /// An IEnumerable&lt;string&gt; extension method that converts a source to a FHIR enum list.
+    /// </summary>
+    /// <typeparam name="T">Generic type parameter.</typeparam>
+    /// <param name="source">The source to act on.</param>
+    /// <returns>Source as a List&lt;T&gt;</returns>
+    public static List<T> ToFhirEnumList<T>(this IEnumerable<string> source)
+        where T : struct
+    {
+        if (!(source?.Any() ?? false))
+        {
+            return [];
+        }
+
+        List<T> data = [];
+
+        foreach (string sourceVal in source)
+        {
+            if (sourceVal.TryFhirEnum(out T val))
+            {
+                data.Add(val);
+            }
+            // 2023.06.14 - GC - We generally want to pull what we can in a try parse
+            //else
+            //{
+            //    values = Array.Empty<T>();
+            //    return false;
+            //}
+        }
+
+        return data;
+    }
+
 
     /// <summary>
     /// A Type extension method that attempts to parse a FHIR string literal to a FHIR-Literal tagged
@@ -188,7 +223,7 @@ public static class FhirEnumExtensions
     {
         if (string.IsNullOrEmpty(literal))
         {
-            value = default(T);
+            value = default;
             return false;
         }
 
@@ -201,7 +236,7 @@ public static class FhirEnumExtensions
 
         if (!_typeLookups[enumType].StringToEnum.ContainsKey(literal))
         {
-            value = default(T);
+            value = default;
             return false;
         }
 
