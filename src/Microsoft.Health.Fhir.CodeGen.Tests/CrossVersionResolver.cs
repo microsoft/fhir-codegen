@@ -152,19 +152,44 @@ internal class CrossVersionResolver : IAsyncResourceResolver
         //r5 = ZipSource.CreateValidationSource();
     }
 
-    public async System.Threading.Tasks.Task Initialize(string[] versions)
+    public async System.Threading.Tasks.Task<IEnumerable<DefinitionCollection>> Initialize(string[] versions)
     {
+        List<DefinitionCollection> result = new List<DefinitionCollection>();
         PackageLoader loader = new(new() { AutoLoadExpansions = false, ResolvePackageDependencies = false });
-        if (r5 == null && versions.Contains("5"))
+        foreach (var version in versions)
+        {
+            if (version == "5")
+            {
+                if (r5 == null)
             r5 = await LoadPackage(loader, "hl7.fhir.r5.core#5.0.0");
-        if (r4b == null && versions.Contains("4B"))
+                result.Add((DefinitionCollection)r5);
+            }
+            if (version == "4B")
+            {
+                if (r4b == null)
             r4b = await LoadPackage(loader, "hl7.fhir.r4b.core#4.3.0");
-        if (r4 == null && versions.Contains("4"))
+                result.Add((DefinitionCollection)r4b);
+            }
+            if (version == "4")
+            {
+                if (r4 == null)
             r4 = await LoadPackage(loader, "hl7.fhir.r4.core#4.0.1");
-        if (stu3 == null && versions.Contains("3"))
+                result.Add((DefinitionCollection)r4);
+            }
+            if (version == "3")
+            {
+                if (stu3 == null)
             stu3 = await LoadPackage(loader, "hl7.fhir.r3.core#3.0.2");
-        if (dstu2 == null && versions.Contains("2"))
+                result.Add((DefinitionCollection)stu3);
+            }
+            if (version == "2")
+            {
+                if (dstu2 == null)
             dstu2 = await LoadPackage(loader, "hl7.fhir.r2.core#1.0.2");
+                result.Add((DefinitionCollection)dstu2);
+            }
+        }
+        return result;
     }
 
     /// <summary>Loads.</summary>
@@ -198,6 +223,7 @@ internal class CrossVersionResolver : IAsyncResourceResolver
     IAsyncResourceResolver r4;
     IAsyncResourceResolver r4b;
     IAsyncResourceResolver r5;
+
     const string fhirBaseCanonical = "http://hl7.org/fhir/";
 
     public static string ConvertCanonical(string uri)
