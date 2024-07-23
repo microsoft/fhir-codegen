@@ -298,7 +298,7 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
         {
             Name = context.ID().GetText(),
             Parameters = parameters,
-            ExtendsIdentifier = GetString(context.extends()),
+            ExtendsIdentifier = context.extends() == null ? null : GetString(context.extends().ID()),
             TypeModeLiteral = context.typeMode()?.GetText(),
             TypeMode = GetTypeMode(context.typeMode()?.GetText()),              // note this is handled differently because the FML values are different than the FHIR values
             Expressions = expressions,
