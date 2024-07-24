@@ -28,6 +28,8 @@ public class CrossVersionTests
         Console.SetOut(new TestWriter(outputWriter));
     }
 
+    static CrossVersionResolver cvr = new CrossVersionResolver();
+
     private static string FindRelativeDir(string path)
     {
         return DirectoryContentsAttribute.FindRelativeDir(string.Empty, path, true);
@@ -142,7 +144,6 @@ public class CrossVersionTests
 
         Dictionary<string, Dictionary<string, CrossVersionMapCollection.FmlTargetInfo>> fmlPathLookup = [];
 
-        var cvr = new CrossVersionResolver();
         var versions = versionToVersion.Split("to");
         var dcs = (await cvr.Initialize(versions)).ToList();
         CachedResolver source = new CachedResolver(cvr);

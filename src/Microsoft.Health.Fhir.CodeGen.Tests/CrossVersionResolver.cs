@@ -161,31 +161,31 @@ internal class CrossVersionResolver : IAsyncResourceResolver
             if (version == "5")
             {
                 if (r5 == null)
-            r5 = await LoadPackage(loader, "hl7.fhir.r5.core#5.0.0");
+                    r5 = await LoadPackage(loader, "hl7.fhir.r5.core#5.0.0");
                 result.Add((DefinitionCollection)r5);
             }
             if (version == "4B")
             {
                 if (r4b == null)
-            r4b = await LoadPackage(loader, "hl7.fhir.r4b.core#4.3.0");
+                    r4b = await LoadPackage(loader, "hl7.fhir.r4b.core#4.3.0");
                 result.Add((DefinitionCollection)r4b);
             }
             if (version == "4")
             {
                 if (r4 == null)
-            r4 = await LoadPackage(loader, "hl7.fhir.r4.core#4.0.1");
+                    r4 = await LoadPackage(loader, "hl7.fhir.r4.core#4.0.1");
                 result.Add((DefinitionCollection)r4);
             }
             if (version == "3")
             {
                 if (stu3 == null)
-            stu3 = await LoadPackage(loader, "hl7.fhir.r3.core#3.0.2");
+                    stu3 = await LoadPackage(loader, "hl7.fhir.r3.core#3.0.2");
                 result.Add((DefinitionCollection)stu3);
             }
             if (version == "2")
             {
                 if (dstu2 == null)
-            dstu2 = await LoadPackage(loader, "hl7.fhir.r2.core#1.0.2");
+                    dstu2 = await LoadPackage(loader, "hl7.fhir.r2.core#1.0.2");
                 result.Add((DefinitionCollection)dstu2);
             }
         }
