@@ -682,6 +682,12 @@ public class CrossVersionMapCollection
                     }
                 }
             }
+
+            if (!string.IsNullOrEmpty(rule.MappingExpression.Name) && !Hl7.Fhir.Model.Id.IsValidValue(rule.MappingExpression.Name))
+            {
+                string msg = $"Rule name `{rule.MappingExpression.Name}` is invalid in {group.Name} at @{rule.MappingExpression.Line}:{rule.MappingExpression.Column}";
+                ReportIssue(issues, msg, OperationOutcome.IssueType.Duplicate);
+            }
         }
 
         if (rule.SimpleCopyExpression != null)
@@ -720,6 +726,12 @@ public class CrossVersionMapCollection
             {
                 string msg = $"Simple copy not applicable for BackboneElement properties `{sourceV.PropertyPath}` @{rule.SimpleCopyExpression.Line}:{rule.SimpleCopyExpression.Column}";
                 ReportIssue(issues, msg, OperationOutcome.IssueType.Value);
+            }
+
+            if (!string.IsNullOrEmpty(rule.SimpleCopyExpression.Name) && !Hl7.Fhir.Model.Id.IsValidValue(rule.SimpleCopyExpression.Name))
+            {
+                string msg = $"Rule name `{rule.SimpleCopyExpression.Name}` is invalid in {group.Name} at @{rule.SimpleCopyExpression.Line}:{rule.SimpleCopyExpression.Column}";
+                ReportIssue(issues, msg, OperationOutcome.IssueType.Duplicate);
             }
         }
 

@@ -350,6 +350,7 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                         {
                             Source = GetString(mapSimpleCopy.qualifiedIdentifier()[0])!,
                             Target = GetString(mapSimpleCopy.qualifiedIdentifier()[1])!,
+                            Name = mapSimpleCopy.mapExpressionName() != null ? GetString(mapSimpleCopy.mapExpressionName()) : null,
 
                             RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
                             PrefixComments = GetPrefixComments(ctx),
