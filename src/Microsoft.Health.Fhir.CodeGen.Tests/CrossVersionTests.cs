@@ -2,10 +2,14 @@
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
+extern alias stu3;
+extern alias r4;
+extern alias r4b;
 
 using System.Diagnostics;
 using System.Text;
 using FluentAssertions;
+using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Specification.Source;
 using Microsoft.Health.Fhir.CodeGen.CompareTool;
@@ -13,6 +17,7 @@ using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGen.Tests.Extensions;
 using Microsoft.Health.Fhir.MappingLanguage;
 using Xunit.Abstractions;
+
 
 namespace Microsoft.Health.Fhir.CodeGen.Tests;
 
@@ -312,6 +317,8 @@ public class CrossVersionTests
         {
             resolveMapUseCrossVersionType = resolveMapUseCrossVersionType,
             resolveMaps = resolveMaps,
+            source = GetModelOptions(versions[0], sourceResolver, dcs[0]),
+            target = GetModelOptions(versions[1], targetResolver, dcs[1]),
             namedGroups = namedGroups,
             typedGroups = typedGroups,
         };
@@ -334,6 +341,50 @@ public class CrossVersionTests
             //ProcessCrossVersionFml(string name, FhirStructureMap fml, Dictionary<string, List<GroupExpression>> fmlPathLookup)
         }
         Assert.True(errorCount == 0 && warningCount == 0, $"FML Errors: {errorCount}, Warnings: {warningCount}");
+    }
+
+    private static ModelOptions GetModelOptions(string version, CachedResolver resolver, DefinitionCollection package)
+    {
+        ModelInspector inspector = r4.Hl7.Fhir.Model.ModelInfo.ModelInspector;
+        List<string> supportedResources = r4.Hl7.Fhir.Model.ModelInfo.SupportedResources;
+        Type[] openTypes = r4.Hl7.Fhir.Model.ModelInfo.OpenTypes;
+        switch(version)
+        {
+            case "3":
+                inspector = stu3.Hl7.Fhir.Model.ModelInfo.ModelInspector;
+                supportedResources = stu3.Hl7.Fhir.Model.ModelInfo.SupportedResources;
+                openTypes = stu3.Hl7.Fhir.Model.ModelInfo.OpenTypes;
+                break;
+            case "4":
+                inspector = r4.Hl7.Fhir.Model.ModelInfo.ModelInspector;
+                supportedResources = r4.Hl7.Fhir.Model.ModelInfo.SupportedResources;
+                openTypes = r4.Hl7.Fhir.Model.ModelInfo.OpenTypes;
+                break;
+            case "4B":
+                inspector = r4b.Hl7.Fhir.Model.ModelInfo.ModelInspector;
+                supportedResources = r4b.Hl7.Fhir.Model.ModelInfo.SupportedResources;
+                openTypes = r4b.Hl7.Fhir.Model.ModelInfo.OpenTypes;
+                break;
+            case "5":
+                inspector = Hl7.Fhir.Model.ModelInfo.ModelInspector;
+                supportedResources = Hl7.Fhir.Model.ModelInfo.SupportedResources;
+                openTypes = Hl7.Fhir.Model.ModelInfo.OpenTypes;
+                break;
+            default:
+                Debugger.Break();
+                inspector = Hl7.Fhir.Model.ModelInfo.ModelInspector;
+                supportedResources = Hl7.Fhir.Model.ModelInfo.SupportedResources;
+                openTypes = Hl7.Fhir.Model.ModelInfo.OpenTypes;
+                break;
+        }
+        return new ModelOptions
+        {
+            Resolver = resolver,
+            Package = package,
+            MI = inspector,
+            SupportedResources = supportedResources,
+            OpenTypes = openTypes,
+        };
     }
 
     private void Source_Load(object sender, CachedResolver.LoadResourceEventArgs e)

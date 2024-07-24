@@ -15,6 +15,9 @@ using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using Microsoft.Health.Fhir.MappingLanguage;
+using Hl7.Fhir.FhirPath.Validator;
+using Hl7.Fhir.Introspection;
+using Hl7.FhirPath;
 
 #if NETSTANDARD2_0
 using Microsoft.Health.Fhir.CodeGen.Polyfill;
@@ -567,6 +570,27 @@ public class CrossVersionMapCollection
                 {
                     singleSourceVariable = tpV;
                 }
+
+                if (source.WhereClause != null)
+                {
+                    // just output the where clause
+                    Console.Write($" where ({source.WhereClause.RawText})");
+                    ValidateFhirPathExpression(source.WhereClause, group, options, issues, rule, parameterTypesByNameForRule, singleSourceVariable);
+                }
+
+                if (source.CheckClause != null)
+                {
+                    // just output the check clause
+                    Console.Write($" check ({source.CheckClause.RawText})");
+                    ValidateFhirPathExpression(source.CheckClause, group, options, issues, rule, parameterTypesByNameForRule, singleSourceVariable);
+                }
+
+                if (source.LogExpression != null)
+                {
+                    // just output the log clause
+                    Console.Write($" log ({source.LogExpression.RawText})");
+                    ValidateFhirPathExpression(source.LogExpression, group, options, issues, rule, parameterTypesByNameForRule, singleSourceVariable);
+                }
             }
 
             Console.Write($"  -->  ");
@@ -627,6 +651,9 @@ public class CrossVersionMapCollection
                     {
                         // Need to process this!
                         Console.Write($"( {target.Transform.fpExpression.RawText} )");
+                        var fpResultType = ValidateFhirPathExpression(target.Transform.fpExpression, group, options, issues, rule, parameterTypesByNameForRule, singleSourceVariable);
+                        if (fpResultType != null)
+                            transformedSourceV = fpResultType;
                     }
 
                     if (transformedSourceV?.Element == null && target.Transform.fpExpression == null) // skipping error for FP expression as that's known
@@ -793,6 +820,50 @@ public class CrossVersionMapCollection
         {
             Console.WriteLine();
         }
+    }
+
+    private static PropertyOrTypeDetails? ValidateFhirPathExpression(FpExpression expressionNode, GroupDeclaration group, ValidateMapOptions options, List<OperationOutcome.IssueComponent> issues, GroupExpression rule, Dictionary<string, PropertyOrTypeDetails?> parameterTypesByNameForRule, PropertyOrTypeDetails? singleSourceVariable)
+    {
+        PropertyOrTypeDetails? result = null;
+        BaseFhirPathExpressionVisitor fpv = new BaseFhirPathExpressionVisitor(options.source.MI, options.source.SupportedResources, options.source.OpenTypes);
+        fpv.UseVariableAsName = true;
+        FhirPathCompiler fhirPathCompiler = new FhirPathCompiler();
+        // TODO: Add in the resource/rootResource/context as inputs where they can be
+        if (rule.MappingExpression.Sources.Count == 1 && singleSourceVariable != null)
+        {
+            fpv.SetContext(singleSourceVariable.Element.Path);
+        }
+        foreach (var v in parameterTypesByNameForRule)
+        {
+            if (v.Value.Resolver == options.target.Resolver)
+                continue;
+            try
+            {
+                fpv.RegisterVariable(v.Key, v.Value.Element.Path);
+            }
+            catch (Exception ex)
+            {
+                // This one really should be able to resolve here.
+                // though the Static validator only understands the source
+                // type space...
+                fpv.RegisterVariable(v.Key, new FhirPathVisitorProps());
+            }
+        }
+        var exprNode = fhirPathCompiler.Parse(expressionNode.RawText);
+        var r = exprNode.Accept(fpv);
+        if (r != null && r.Types.Count == 1)
+        {
+            // we can leverage this type!
+            result = ResolveDataTypeFromName(group, options.source.Resolver, issues, expressionNode, r.Types[0].ClassMapping.Name);
+        }
+        foreach (var issue in fpv.Outcome.Issue)
+        {
+            if (issue.Details.Text.Contains("did you mean to use the variable"))
+                continue;
+            issues.Add(issue);
+            Console.WriteLine($"\n{issue.Severity.GetDocumentation()}: {issue.Details.Text}");
+        }
+        return result;
     }
 
     private static void VerifyMapBetweenDatatypes(Dictionary<string, GroupDeclaration?> typedGroups, List<OperationOutcome.IssueComponent> issues, FmlNode node, PropertyOrTypeDetails? sourceV, PropertyOrTypeDetails? targetV)
