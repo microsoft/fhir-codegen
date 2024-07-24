@@ -142,7 +142,9 @@ public class PackageComparer
 
             if (!_crossVersion.TryLoadCrossVersionMaps(_config.CrossVersionMapSourcePath))
             {
-                throw new Exception("Failed to load requested cross-version maps");
+                Console.WriteLine("Failed to load requested cross-version maps");
+                _crossVersion = null;
+                //throw new Exception("Failed to load requested cross-version maps");
             }
         }
 
@@ -473,7 +475,7 @@ public class PackageComparer
         {
             if (BuildCrossVersionValueSet(vsComparison) is ValueSet vs)
             {
-                string filename = $"ValueSet-{vs.Id}";
+                string filename = $"ValueSet-{vs.Id}.json";
                 string path = Path.Combine(outputDir, filename);
 
                 File.WriteAllText(path, vs.ToJson(jsonSettings));
@@ -2107,6 +2109,10 @@ public class PackageComparer
         {
             StructureInfoRec sourceInfo = GetInfo(sourceSd);
 
+            string sourceName = sourceSd.Name.StartsWith("http")
+                ? sourceSd.Id
+                : sourceSd.Name;
+
             HashSet<string> testedTargetNames = [];
 
             if (!results.TryGetValue(sourceCode, out List<PrimitiveTypeComparison>? comparisons))
@@ -2137,13 +2143,17 @@ public class PackageComparer
 
                             if (targetPrimitives.TryGetValue(mapTargetElement.Code, out StructureDefinition? targetSd))
                             {
+                                string targetName = targetSd.Name.StartsWith("http")
+                                    ? targetSd.Id
+                                    : targetSd.Name;
+
                                 comparisons.Add(new()
                                 {
                                     SourceTypeLiteral = sourceCode,
                                     Source = sourceInfo,
                                     TargetTypeLiteral = mapTargetElement.Code,
                                     Target = GetInfo(targetSd),
-                                    CompositeName = $"{_sourceRLiteral}-{sourceSd.Name.ToCamelCase()}-{_targetRLiteral}-{targetSd.Name.ToCamelCase()}",
+                                    CompositeName = $"{_sourceRLiteral}-{sourceName.ToCamelCase()}-{_targetRLiteral}-{targetName.ToCamelCase()}",
                                     Relationship = relationship,
                                     Message = message,
                                 });
@@ -2166,7 +2176,7 @@ public class PackageComparer
                                         SnapshotCount = 0,
                                         DifferentialCount = 0,
                                     },
-                                    CompositeName = $"{_sourceRLiteral}-{sourceSd.Name.ToCamelCase()}-{_targetRLiteral}-{mapTargetElement.Code.ToCamelCase()}",
+                                    CompositeName = $"{_sourceRLiteral}-{sourceName.ToCamelCase()}-{_targetRLiteral}-{mapTargetElement.Code.ToCamelCase()}",
                                     Relationship = relationship,
                                     Message = message,
                                 });
@@ -2177,13 +2187,17 @@ public class PackageComparer
             }
             else if (targetPrimitives.TryGetValue(sourceCode, out StructureDefinition? targetSd))
             {
+                string targetName = targetSd.Name.StartsWith("http")
+                    ? targetSd.Id
+                    : targetSd.Name;
+
                 comparisons.Add(new()
                 {
                     SourceTypeLiteral = sourceCode,
                     Source = sourceInfo,
                     TargetTypeLiteral = sourceCode,
                     Target = GetInfo(targetSd),
-                    CompositeName = $"{_sourceRLiteral}-{sourceSd.Name.ToCamelCase()}-{_targetRLiteral}-{targetSd.Name.ToCamelCase()}",
+                    CompositeName = $"{_sourceRLiteral}-{sourceName.ToCamelCase()}-{_targetRLiteral}-{targetName.ToCamelCase()}",
                     Relationship = CMR.Equivalent,
                     Message = $"{_sourceRLiteral} `{sourceCode}` is assumed equivalent to {_targetRLiteral} `{sourceCode}` (no map, but names match)",
                 });
@@ -2246,6 +2260,8 @@ public class PackageComparer
             // check for something that has no counterpart
             if (comparisons.Count == 0)
             {
+                string sourceName = sourceSd.Name.StartsWith("http") ? sourceSd.Id : sourceSd.Name;
+
                 comparisons.Add(new()
                 {
                     Relationship = null,
@@ -2262,7 +2278,7 @@ public class PackageComparer
                         DifferentialCount = sourceSd.Differential.Element.Count,
                     },
                     Target = null,
-                    CompositeName = $"{_sourceRLiteral}-{sourceSd.Name}",
+                    CompositeName = $"{_sourceRLiteral}-{sourceName}",
                     ElementComparisons = sourceSd.cgElements().Select(e => new ElementComparison()
                     {
                         Source = GetInfo(e),
@@ -2462,8 +2478,8 @@ public class PackageComparer
             }
         }
 
-        string sourceName = sourceSd.Name.ToPascalCase();
-        string targetName = targetSd.Name.ToPascalCase();
+        string sourceName = sourceSd.Name.StartsWith("http") ? sourceSd.Id.ToPascalCase() : sourceSd.Name.ToPascalCase();
+        string targetName = targetSd.Name.StartsWith("http") ? targetSd.Id.ToPascalCase() : targetSd.Name.ToPascalCase();
 
         CMR? sdRelationship = RelationshipForComparisons(elementComparisons);
 
