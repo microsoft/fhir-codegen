@@ -53,6 +53,6 @@ public abstract class FileSystemUtils
             testDir = Path.Combine(currentDir, dirName);
         }
 
-        return testDir;
+        return Path.GetFullPath(testDir);
     }
 }

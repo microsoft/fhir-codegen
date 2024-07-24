@@ -1044,6 +1044,12 @@ public class TypeScript : ILanguage
         _writer.WriteLineIndented($"  // Interaction Naming Style: {NamingConvention.None}");
         //_writer.WriteLineIndented($"  // Extension Support: {_options.ExtensionSupport}");
 
+        if (_options.LoadStructures.Length != 0)
+        {
+            string restrictions = string.Join("|", _options.LoadStructures);
+            _writer.WriteLine($"  // Load structures: {restrictions}");
+        }
+
         if (_options.ExportStructures.Length != 0)
         {
             string restrictions = string.Join("|", _options.ExportStructures);

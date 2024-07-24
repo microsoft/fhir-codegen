@@ -80,9 +80,11 @@ public class CrossVersionMapCollection
     {
         _loader = new(new()
         {
-            JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
             AutoLoadExpansions = false,
             ResolvePackageDependencies = false,
+        }, new()
+        {
+            JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
         });
 
         _source = source;

@@ -65,8 +65,6 @@ public record class ConceptComparison : ComparisonBase
     public override string GetStatusString() => TargetMappings.Count == 0 ? "DoesNotExistInTarget" : Relationship?.ToString() ?? "-";
 }
 
-
-
 public record class ValueSetComparison : ComparisonTopLevelBase<ValueSetInfoRec>
 {
     /// <summary>Gets or initializes the concept comparisons, keyed by source concept.</summary>
@@ -74,7 +72,7 @@ public record class ValueSetComparison : ComparisonTopLevelBase<ValueSetInfoRec>
 
     public override string GetStatusString()
     {
-        if (ConceptComparisons.Count == 0)
+        if ((Target == null) || (ConceptComparisons.Count == 0))
         {
             return "DoesNotExistInTarget";
         }
@@ -91,7 +89,7 @@ public record class PrimitiveTypeComparison : ComparisonTopLevelBase<StructureIn
 
     public override string GetStatusString()
     {
-        if (string.IsNullOrEmpty(TargetTypeLiteral))
+        if (Target == null)
         {
             return "DoesNotExistInTarget";
         }
@@ -104,14 +102,31 @@ public record class StructureComparison : ComparisonTopLevelBase<StructureInfoRe
 {
     public required Dictionary<string, ElementComparison> ElementComparisons { get; init; }
 
-    public override string GetStatusString() => ElementComparisons.Count == 0 ? "DoesNotExistInTarget" : Relationship?.ToString() ?? "-"; 
+    public override string GetStatusString()
+    {
+        if ((Target == null) || (ElementComparisons.Count == 0))
+        {
+            return "DoesNotExistInTarget";
+        }
+
+        return Relationship?.ToString() ?? "-";
+    }
 }
 
 public record class ElementComparison : ComparisonBase
 {
     public required ElementInfoRec Source { get; init; }
     public required List<ElementComparisonDetails> TargetMappings { get; init; }
-    public override string GetStatusString() => TargetMappings.Count == 0 ? "DoesNotExistInTarget" : Relationship?.ToString() ?? "-";
+    public override string GetStatusString()
+    {
+        if (TargetMappings.Count == 0)
+        {
+            return "DoesNotExistInTarget";
+        }
+
+        return Relationship?.ToString() ?? "-";
+    }
+
 }
 
 public record class ElementComparisonDetails : ComparisonDetailsBase<ElementInfoRec>
@@ -133,12 +148,15 @@ public record class ElementTypeComparisonDetails : ComparisonDetailsBase<Element
 public record class ConceptInfoRec
 {
     public required string System { get; init; }
+    public required string Version { get; init; }
     public required string Code { get; init; }
+    public required string Display { get; init; }
     public required string Description { get; init; }
 }
 
 public record class ValueSetInfoRec
 {
+    public required string Id { get; init; }
     public required string Url { get; init; }
     public required string Name { get; init; }
     public required string NamePascal { get; init; }
@@ -169,6 +187,7 @@ public record class ElementInfoRec
 
 public record class StructureInfoRec
 {
+    public required string Id { get; init; }
     public required string Name { get; init; }
     public required string Url { get; init; }
     public required string Title { get; init; }

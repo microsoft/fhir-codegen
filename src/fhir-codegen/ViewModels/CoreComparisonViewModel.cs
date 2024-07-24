@@ -173,7 +173,7 @@ public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewMode
             return;
         }
 
-        PackageLoader loader = new(new());
+        PackageLoader loader = new(new(), new());
         DefinitionCollection? source = await loader.LoadPackages([CorePackages[SourceReleaseIndex]]);
 
         if (source == null)
@@ -266,7 +266,6 @@ public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewMode
             : new()
             {
                 OutputDirectory = SaveDirectory,
-                //CrossVersionMapDestinationPath = SaveDirectory,
                 MapSaveStyle = ConfigCompare.ComparisonMapSaveStyle.Source,
                 NoOutput = false,
             };
@@ -274,6 +273,14 @@ public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewMode
         PackageComparer comparer = new(compareOptions, source, target);
 
         PackageComparison results = comparer.Compare();
+
+        if (!string.IsNullOrEmpty(SaveDirectory))
+        {
+            //comparer.WriteComparisonResultJson(results);
+            comparer.WriteMarkdownFiles(results);
+            comparer.WriteMapFiles(results);
+        }
+
         ValueSetComparisons = results.ValueSets.Values.SelectMany(l => l.Select(v => v)).ToList();
         PrimitiveComparisons = results.PrimitiveTypes.Values.SelectMany(l => l.Select(v => v)).ToList();
         ComplexTypeComparisons = results.ComplexTypes.Values.SelectMany(l => l.Select(v => v)).ToList();

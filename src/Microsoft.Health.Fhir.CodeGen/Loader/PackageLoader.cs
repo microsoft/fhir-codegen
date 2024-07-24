@@ -17,6 +17,8 @@ using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Firely.Fhir.Packages;
 using System.Text.RegularExpressions;
 using System.Collections.Concurrent;
+using System.Xml.Linq;
+using Microsoft.Health.Fhir.CodeGen.Configuration;
 
 namespace Microsoft.Health.Fhir.CodeGen.Loader;
 
@@ -60,11 +62,7 @@ public class PackageLoader : IDisposable
         "CompartmentDefinition",
     ];
 
-    /// <summary>True to automatically load expansions.</summary>
-    private bool _autoLoadExpansions;
-
-    /// <summary>True to load dependencies when loading packages.</summary>
-    private bool _loadDependencies;
+    private ConfigRoot _rootConfiguration;
 
     private FhirReleases.FhirSequenceCodes _defaultFhirVersion;
 
@@ -90,37 +88,39 @@ public class PackageLoader : IDisposable
 
     /// <summary>Initializes a new instance of the <see cref="PackageLoader"/> class.</summary>
     /// <param name="opts">    (Optional) Options for controlling the operation.</param>
-    public PackageLoader(LoaderOptions? opts = null)
+    public PackageLoader(ConfigRoot? config = null, LoaderOptions? opts = null)
     {
         // use defaults if nothing was specified
         opts ??= new();
 
-        _cache = new DiskPackageCache(opts.CachePath);
+        _rootConfiguration = config ?? new();
+
+        _cache = new DiskPackageCache(_rootConfiguration.FhirCacheDirectory);
 
         // check if we are using the official registries
-        if (opts.UseOfficialFhirRegistries == true)
+        if (_rootConfiguration.UseOfficialRegistries == true)
         {
             _packageClients.Add(PackageClient.Create("https://packages.fhir.org"));
             _packageClients.Add(PackageClient.Create("https://packages2.fhir.org"));
         }
 
-        if (opts.AdditionalFhirRegistryUrls.Any())
+        if (_rootConfiguration.AdditionalFhirRegistryUrls.Any())
         {
-            foreach (string url in opts.AdditionalFhirRegistryUrls)
+            foreach (string url in _rootConfiguration.AdditionalFhirRegistryUrls)
             {
                 _packageClients.Add(PackageClient.Create(url, npm: false));
             }
         }
 
-        if (opts.AdditionalNpmRegistryUrls.Any())
+        if (_rootConfiguration.AdditionalNpmRegistryUrls.Any())
         {
-            foreach (string url in opts.AdditionalNpmRegistryUrls)
+            foreach (string url in _rootConfiguration.AdditionalNpmRegistryUrls)
             {
                 _packageClients.Add(PackageClient.Create(url, npm: true));
             }
         }
 
-        _defaultFhirVersion = FhirReleases.FhirVersionToSequence(opts.FhirVersion);
+        _defaultFhirVersion = FhirReleases.FhirVersionToSequence(_rootConfiguration.FhirVersion);
 
         _jsonOptions = opts.FhirJsonOptions;
         _jsonParser = new(opts.FhirJsonSettings);
@@ -129,9 +129,6 @@ public class PackageLoader : IDisposable
         _xmlParser = new(opts.FhirXmlSettings);
 #endif
         _jsonModel = opts.JsonModel;
-
-        _autoLoadExpansions = opts.AutoLoadExpansions;
-        _loadDependencies = opts.ResolvePackageDependencies;
     }
 
     /// <summary>Adds all interaction parameters to a core definition collection.</summary>
@@ -570,6 +567,15 @@ public class PackageLoader : IDisposable
             return null;
         }
 
+        // we need to filter structures post parsing if we are not loading all known types
+        bool filterStructureDefinitions = !_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.PrimitiveType) ||
+                                          !_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.ComplexType) ||
+                                          !_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.Resource) ||
+                                          !_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.Extension) ||
+                                          !_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.Profile) ||
+                                          !_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.LogicalModel) ||
+                                          !_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.Interface);
+
         foreach (string inputDirective in packages)
         {
             if (string.IsNullOrEmpty(inputDirective))
@@ -639,7 +645,7 @@ public class PackageLoader : IDisposable
             }
 
             // check if we are flagged to load expansions and this is a core package
-            if (_autoLoadExpansions && FhirPackageUtils.PackageIsFhirCore(packageReference.Name))
+            if (_rootConfiguration.AutoLoadExpansions && FhirPackageUtils.PackageIsFhirCore(packageReference.Name))
             {
                 string expansionPackageName = packageReference.Name.Replace(".core", ".expansions");
                 string expansionDirective = expansionPackageName + "@" + packageReference.Version;
@@ -705,7 +711,7 @@ public class PackageLoader : IDisposable
             CreateConverterIfRequired(definitions.FhirSequence);
 
             // if we are resolving dependencies, check them now
-            if (_loadDependencies && (manifest.Dependencies?.Any() ?? false))
+            if (_rootConfiguration.ResolvePackageDependencies && (manifest.Dependencies?.Any() ?? false))
             {
                 await LoadPackages(manifest.Dependencies.Select(kvp => $"{kvp.Key}@{kvp.Value}"), definitions);
 
@@ -720,6 +726,11 @@ public class PackageLoader : IDisposable
             CanonicalIndex? packageIndex = await _cache.GetCanonicalIndex(packageReference) ?? throw new Exception("Failed to load package contents");
             string packageDirectory = _cache.PackageContentFolder(packageReference);
 
+            if (!Directory.Exists(packageDirectory))
+            {
+                throw new Exception($"Package directory {packageDirectory} does not exist!");
+            }
+
             if (string.IsNullOrEmpty(packageDirectory))
             {
                 throw new Exception("Package directory is empty");
@@ -729,6 +740,8 @@ public class PackageLoader : IDisposable
             {
                 throw new Exception("Package contents are empty");
             }
+
+            string packageRootDirectory = Path.Combine(packageDirectory, "..");
 
             definitions.ContentListings.Add(packageReference.Moniker, packageIndex);
 
@@ -774,15 +787,89 @@ public class PackageLoader : IDisposable
                     }
                 }
 
+                // check to see if we want to load this type
+                switch (rt)
+                {
+                    case "CodeSystem":
+                        if (!_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.CodeSystem))
+                        {
+                            continue;
+                        }
+                        break;
+
+                    case "ValueSet":
+                        if (!_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.ValueSet))
+                        {
+                            continue;
+                        }
+                        break;
+
+                    case "StructureDefinition":
+                        // note: structure definitions can be one of several types and need to be filtered again after parsing
+                        if (_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.PrimitiveType) ||
+                            _rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.ComplexType) ||
+                            _rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.Resource) ||
+                            _rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.Extension) ||
+                            _rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.Profile) ||
+                            _rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.LogicalModel) ||
+                            _rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.Interface))
+                        {
+                            break;
+                        }
+                        continue;
+
+                    case "SearchParameter":
+                        if (!_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.SearchParameter))
+                        {
+                            continue;
+                        }
+                        break;
+
+                    case "OperationDefinition":
+                        if (!_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.Operation))
+                        {
+                            continue;
+                        }
+                        break;
+
+                    case "Conformance":
+                    case "CapabilityStatement":
+                        if (!_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.CapabilityStatement))
+                        {
+                            continue;
+                        }
+                        break;
+
+                    case "ImplementationGuide":
+                        if (!_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.ImplementationGuide))
+                        {
+                            continue;
+                        }
+                        break;
+
+                    case "CompartmentDefinition":
+                        if (!_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.Compartment))
+                        {
+                            continue;
+                        }
+                        break;
+                }
+
                 foreach (int fi in sortedFileIndexes[i])
                 {
                     ResourceMetadata pFile = packageIndex.Files[fi];
 
                     // load the file
-                    string path = Path.Combine(packageDirectory, pFile.FileName);
+                    string path = Path.Combine(packageRootDirectory, pFile.FilePath);
 
                     if (!File.Exists(path))
                     {
+                        if (pFile.FileName.StartsWith("ig-") && pFile.FileName.EndsWith(".json"))
+                        {
+                            // ignore IG artifacts that do not exist - issue in IG publisher for IGs that target multiple FHIR versions
+                            continue;
+                        }
+
                         throw new Exception($"Listed file {packageReference.Moniker}:{pFile.FileName} does not exist (looking for '{path}')");
                     }
 
@@ -831,7 +918,72 @@ public class PackageLoader : IDisposable
                         throw new Exception($"Failed to parse {rt} {packageReference.Moniker}:{pFile.FileName}");
                     }
 
+                    // filter for structure types we are not processing
+                    if (filterStructureDefinitions && r is StructureDefinition sd)
+                    {
+                        if (!_rootConfiguration.LoadStructures.Contains(sd.cgArtifactClass()))
+                        {
+                            // skip this artifact
+                            continue;
+                        }
+                    }
+
                     definitions.AddResource(r, packageFhirVersion, manifest.Name, manifest.Version, manifest.Canonical!);
+                }
+            }
+
+            // check for loading canonical examples
+
+            if (_rootConfiguration.LoadCanonicalExamples)
+            {
+                string exampleDir = Path.Combine(packageDirectory, "examples");
+
+                if (Directory.Exists(exampleDir))
+                {
+                    // get files in the directory
+                    string[] files = Directory.GetFiles(exampleDir, "*.json", SearchOption.TopDirectoryOnly);
+                    foreach (string path in files)
+                    {
+                        string fileExtension = Path.GetExtension(path);
+
+                        object? r;
+
+                        switch (definitions.FhirSequence)
+                        {
+                            case FhirReleases.FhirSequenceCodes.DSTU2:
+                                {
+                                    r = ParseContents20(fileExtension, path: path);
+                                }
+                                break;
+
+                            case FhirReleases.FhirSequenceCodes.STU3:
+                                {
+                                    r = ParseContents30(fileExtension, path: path);
+                                }
+                                break;
+
+                            case FhirReleases.FhirSequenceCodes.R4:
+                            case FhirReleases.FhirSequenceCodes.R4B:
+                                {
+                                    r = ParseContents43(fileExtension, path: path);
+                                }
+                                break;
+
+                            default:
+                            case FhirReleases.FhirSequenceCodes.R5:
+                                {
+                                    r = ParseContentsPoco(fileExtension, path);
+                                }
+                                break;
+                        }
+
+                        if (r == null)
+                        {
+                            throw new Exception($"Failed to parse '{path}'");
+                        }
+
+                        definitions.AddResource(r, _defaultFhirVersion, manifest.Name, manifest.Version, manifest.Canonical!);
+                    }
                 }
             }
 
@@ -840,9 +992,9 @@ public class PackageLoader : IDisposable
                 (manifest.Type == "fhir.core") ||
                 FhirPackageUtils.PackageIsFhirRelease(packageReference.Name))
             {
-                AddMissingCoreSearchParameters(definitions, manifest.Name, manifest.Version);
-                AddAllInteractionParameters(definitions);
-                AddSearchResultParameters(definitions);
+                AddMissingCoreSearchParameters(definitions!, manifest.Name, manifest.Version);
+                AddAllInteractionParameters(definitions!);
+                AddSearchResultParameters(definitions!);
             }
         }
 

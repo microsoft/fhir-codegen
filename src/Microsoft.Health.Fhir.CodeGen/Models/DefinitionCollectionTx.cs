@@ -126,6 +126,33 @@ public partial class DefinitionCollection : IAsyncResourceResolver
         return false;
     }
 
+    public string? GetCanonicalVersion(string uri)
+    {
+        if (uri.Contains('|'))
+        {
+            return uri.Substring(uri.LastIndexOf('|') + 1);
+        }
+
+        string key;
+
+        key = uri;
+
+        if (_canonicalResources.TryGetValue(key, out Dictionary<string, IConformanceResource>? versions) &&
+            (versions != null) &&
+            versions.Count != 0)
+        {
+            return versions.Keys.OrderDescending().First();
+        }
+
+        if ((_allResources.TryGetValue(uri, out Resource? r) || _allResources.TryGetValue(key, out r)) &&
+            (r is IVersionableConformanceResource vcr))
+        {
+            return vcr.Version;
+        }
+
+        return null;
+    }
+
     /// <summary>Determine if we can resolve canonical URI.</summary>
     /// <param name="uri">The canonical url of a (conformance) resource.</param>
     /// <returns>True if we can resolve canonical uri, false if not.</returns>
