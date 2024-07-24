@@ -2672,7 +2672,14 @@ internal static class ElementDefinitionNavigatorExtensions
     {
         // return $"{Definition.Url}|{Definition.Version} # {Element.Path} ({String.Join(",", Element.Current.Type.Select(t => t.Code))})";
         if (includeTypes)
-            return $"{Element.Path}|{Element.StructureDefinition.Version} ({String.Join(",", Element.Current.Type.Select(t => t.Code))})";
+            return $"{Element.Path}|{Element.StructureDefinition.Version} ({String.Join(",", Element.Current.Type.Select(t =>
+            {
+                if (string.IsNullOrWhiteSpace(t.Code))
+                {
+                    System.Diagnostics.Trace.WriteLine($"Element {Element.Path}|{Element.StructureDefinition.Version ?? Element.StructureDefinition.FhirVersion.GetLiteral()} has no type data");
+                }
+                return t.Code;
+            }))})";
         return $"{Element.Path}|{Element.StructureDefinition.Version ?? Element.StructureDefinition.FhirVersion.GetLiteral()}";
     }
 }
