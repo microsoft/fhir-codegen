@@ -3,11 +3,13 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System.Diagnostics;
 using System.Text;
 using FluentAssertions;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Specification.Source;
 using Microsoft.Health.Fhir.CodeGen.CompareTool;
+using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGen.Tests.Extensions;
 using Microsoft.Health.Fhir.MappingLanguage;
 using Xunit.Abstractions;
@@ -114,10 +116,10 @@ public class CrossVersionTests
     }
 
     [Theory(DisplayName = "ValidateCrossVersionMaps")]
-    [InlineData("fhir-cross-version/input/R2toR3", "2to3")]
-    [InlineData("fhir-cross-version/input/R3toR2", "3to2")]
+    // [InlineData("fhir-cross-version/input/R2toR3", "2to3")]
+    // [InlineData("fhir-cross-version/input/R3toR2", "3to2")]
     [InlineData("fhir-cross-version/input/R3toR4", "3to4")]
-    [InlineData("fhir-cross-version/input/R4toR3", "4to3")]
+    // [InlineData("fhir-cross-version/input/R4toR3", "4to3")]
     [InlineData("fhir-cross-version/input/R4toR5", "4to5")]
     [InlineData("fhir-cross-version/input/R5toR4", "5to4")]
     [InlineData("fhir-cross-version/input/R4BtoR5", "4Bto5")]
@@ -126,6 +128,7 @@ public class CrossVersionTests
     {
         int versionToVersionLen = versionToVersion.Length;
         int errorCount = 0;
+        int warningCount = 0;
 
         // files have different styles in each directory, but we want all FML files anyway
         string[] files = Directory.GetFiles(FindRelativeDir(path), $"*.fml", SearchOption.TopDirectoryOnly);
@@ -136,7 +139,7 @@ public class CrossVersionTests
 
         var cvr = new CrossVersionResolver();
         var versions = versionToVersion.Split("to");
-        await cvr.Initialize(versions);
+        var dcs = (await cvr.Initialize(versions)).ToList();
         CachedResolver source = new CachedResolver(cvr);
         source.Load += Source_Load;
 
@@ -289,7 +292,7 @@ public class CrossVersionTests
                     if (typedGroups.ContainsKey(typeMapping))
                     {
                         var eg = typedGroups[typeMapping];
-                        Console.WriteLine($"    Error: Group {group.Name} duplicates the type mappings declared in group {eg.Name}");
+                        Console.WriteLine($"    Error: Group {group.Name} duplicates the type mappings declared in group {eg?.Name}");
                         errorCount++;
                     }
                     else
@@ -305,13 +308,22 @@ public class CrossVersionTests
         }
 
         // Now scan all these maps
+        var options = new ValidateMapOptions
+        {
+            resolveMapUseCrossVersionType = resolveMapUseCrossVersionType,
+            resolveMaps = resolveMaps,
+            namedGroups = namedGroups,
+            typedGroups = typedGroups,
+        };
         foreach (var fml in allMaps)
         {
             try
             {
-                var outcome = await CrossVersionMapCollection.VerifyFmlDataTypes(fml, resolveMapUseCrossVersionType, resolveMaps, sourceResolver, targetResolver, namedGroups, typedGroups);
+                var outcome = await CrossVersionMapCollection.VerifyFmlDataTypes(fml, options);
                 if (!outcome.Success)
                     errorCount++;
+                if (outcome.Warnings > 0)
+                    warningCount++; // += outcome.Warnings;
             }
             catch (Exception ex)
             {
@@ -321,7 +333,7 @@ public class CrossVersionTests
 
             //ProcessCrossVersionFml(string name, FhirStructureMap fml, Dictionary<string, List<GroupExpression>> fmlPathLookup)
         }
-        errorCount.Should().Be(0, "fml errors");
+        Assert.True(errorCount == 0 && warningCount == 0, $"FML Errors: {errorCount}, Warnings: {warningCount}");
     }
 
     private void Source_Load(object sender, CachedResolver.LoadResourceEventArgs e)

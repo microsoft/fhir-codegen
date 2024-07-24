@@ -338,8 +338,7 @@ public class CrossVersionMapCollection
         }
     }
 
-    public static async Task<OperationOutcome> VerifyFmlDataTypes(FhirStructureMap fml, Func<string, string?, Task<StructureDefinition?>> resolveMapUseCrossVersionType, Func<string, IEnumerable<FhirStructureMap>> resolveMaps,
-        IAsyncResourceResolver sourceResolver, IAsyncResourceResolver targetResolver, Dictionary<string, GroupDeclaration> namedGroups, Dictionary<string, GroupDeclaration?> typedGroups)
+    public static async Task<OperationOutcome> VerifyFmlDataTypes(FhirStructureMap fml, ValidateMapOptions options)
     {
         Console.WriteLine($"Validating map {fml.MapDirective?.Url ?? fml.MetadataByPath["url"]?.Literal?.ValueAsString}");
 
@@ -348,7 +347,7 @@ public class CrossVersionMapCollection
         foreach (var use in fml.StructuresByUrl)
         {
             // Console.WriteLine($"Use {use.Key} as {use.Value?.Alias}");
-            var sd = await resolveMapUseCrossVersionType(use.Key.Trim('\"'), use.Value?.Alias);
+            var sd = await options.resolveMapUseCrossVersionType(use.Key.Trim('\"'), use.Value?.Alias);
             if (use.Value?.Alias != null)
                 _aliasedTypes.Add(use.Value.Alias, sd);
             else if (sd != null && sd.Name != null)
@@ -367,7 +366,7 @@ public class CrossVersionMapCollection
         OperationOutcome outcome = new OperationOutcome();
         foreach (var group in fml.GroupsByName.Values)
         {
-            var results = VerifyFmlDataTypesForGroup(fml, group, _aliasedTypes, resolveMaps, sourceResolver, targetResolver, namedGroups, typedGroups);
+            var results = VerifyFmlDataTypesForGroup(fml, group, _aliasedTypes, options);
             outcome.Issue.AddRange(results);
         }
         Console.WriteLine();
@@ -376,8 +375,16 @@ public class CrossVersionMapCollection
 
     public class PropertyOrTypeDetails
     {
-        public IAsyncResourceResolver Resolver { get; init; }
-        public ElementDefinitionNavigator Element { get; init; }
+        public PropertyOrTypeDetails(string propertyPath, ElementDefinitionNavigator element, IAsyncResourceResolver resolver)
+        {
+            PropertyPath = propertyPath;
+            Element = element;
+            Resolver = resolver;
+        }
+
+        public string PropertyPath { get; private set; }
+        public IAsyncResourceResolver Resolver { get; private set; }
+        public ElementDefinitionNavigator Element { get; private set; }
 
         public override string ToString()
         {
@@ -389,9 +396,8 @@ public class CrossVersionMapCollection
     public static List<OperationOutcome.IssueComponent> VerifyFmlDataTypesForGroup(
         FhirStructureMap fml,
         GroupDeclaration group,
-        Dictionary<string, StructureDefinition?> _aliasedTypes,
-        Func<string, IEnumerable<FhirStructureMap>> resolveMaps,
-        IAsyncResourceResolver sourceResolver, IAsyncResourceResolver targetResolver, Dictionary<string, GroupDeclaration> namedGroups, Dictionary<string, GroupDeclaration?> typedGroups)
+        Dictionary<string, StructureDefinition?> _aliasedTypes, ValidateMapOptions options
+        )
     {
         List<OperationOutcome.IssueComponent> issues = new List<OperationOutcome.IssueComponent>();
         Console.Write($"  {group.Name}(");
@@ -405,7 +411,7 @@ public class CrossVersionMapCollection
             PropertyOrTypeDetails? tp = null;
             string? type = gp.TypeIdentifier;
             // lookup the type in the aliases
-            var resolver = gp.InputMode == StructureMap.StructureMapInputMode.Source ? sourceResolver : targetResolver;
+            var resolver = gp.InputMode == StructureMap.StructureMapInputMode.Source ? options.source.Resolver : options.target.Resolver;
             if (type != null)
             {
                 if (!type.Contains('/') && _aliasedTypes.ContainsKey(type))
@@ -414,11 +420,7 @@ public class CrossVersionMapCollection
                     if (sd != null)
                     {
                         var sw = new StructureDefinitionWalker(sd, resolver);
-                        tp = new PropertyOrTypeDetails
-                        {
-                            Resolver = resolver,
-                            Element = sw.Current
-                        };
+                        tp = new PropertyOrTypeDetails(sw.Current.Path, sw.Current, resolver);
                         type = $"{sd.Url}|{sd.Version}";
                         gp.ParameterElementDefinition = sw.Current;
                     }
@@ -444,11 +446,7 @@ public class CrossVersionMapCollection
             }
             else if (gp.ParameterElementDefinition != null)
             {
-                tp = new PropertyOrTypeDetails
-                {
-                    Resolver = resolver,
-                    Element = gp.ParameterElementDefinition
-                };
+                tp = new PropertyOrTypeDetails(gp.ParameterElementDefinition.Path, gp.ParameterElementDefinition, resolver);
             }
             parameterTypesByName.Add(gp.Identifier, tp);
             Console.Write($" {gp.Identifier}");
@@ -460,26 +458,36 @@ public class CrossVersionMapCollection
         Console.Write(" )\n  {\n");
 
         // Check if the group extends any other groups
-        if (group.ExtendsIdentifier != null)
+        if (!string.IsNullOrEmpty(group.ExtendsIdentifier))
         {
+            // Check that the named group exists
+            if (!options.namedGroups.ContainsKey(group.ExtendsIdentifier))
+            {
+                string msg = $"Unable to extends group `{group.ExtendsIdentifier}` in {group.Name} at @{group.Line}:{group.Column}";
+                ReportIssue(issues, msg, OperationOutcome.IssueType.Duplicate);
+            }
+
             // Check that the parameter values are compatible...
+
         }
 
         // Now scan for dependencies in rules
         foreach(var rule in group.Expressions)
         {
-            VerifyFmlGroupRule("     ", fml, group, _aliasedTypes, sourceResolver, targetResolver, namedGroups, typedGroups, issues, parameterTypesByName, rule);
+            VerifyFmlGroupRule("     ", fml, group, _aliasedTypes, options, issues, parameterTypesByName, rule, comparison);
         }
         Console.WriteLine("  }");
+
         return issues;
     }
 
-    private static void VerifyFmlGroupRule(string prefix, FhirStructureMap fml, GroupDeclaration group, Dictionary<string, StructureDefinition?> _aliasedTypes, IAsyncResourceResolver sourceResolver, IAsyncResourceResolver targetResolver, Dictionary<string, GroupDeclaration> namedGroups, Dictionary<string, GroupDeclaration?> typedGroups, List<OperationOutcome.IssueComponent> issues, Dictionary<string, PropertyOrTypeDetails?> parameterTypesByName, GroupExpression rule)
+    private static void VerifyFmlGroupRule(string prefix, FhirStructureMap fml, GroupDeclaration group, Dictionary<string, StructureDefinition?> _aliasedTypes, ValidateMapOptions options, List<OperationOutcome.IssueComponent> issues, Dictionary<string, PropertyOrTypeDetails?> parameterTypesByName, GroupExpression rule, StructureComparison? comparison)
     {
         Console.Write(prefix);
 
         // deduce the datatypes for the variables
         Dictionary<string, PropertyOrTypeDetails?> parameterTypesByNameForRule = parameterTypesByName.ShallowCopy();
+        PropertyOrTypeDetails? singleSourceVariable = null;
         if (rule.MappingExpression != null)
         {
             foreach (var source in rule.MappingExpression.Sources)
@@ -506,7 +514,7 @@ public class CrossVersionMapCollection
                     string typeName = source.TypeIdentifier;
                     if (!typeName.Contains(':')) // assume this is a FHIR type
                         typeName = "http://hl7.org/fhir/StructureDefinition/" + typeName;
-                    var sdCastType = sourceResolver.FindStructureDefinitionAsync(typeName).WaitResult();
+                    var sdCastType = options.source.Resolver.FindStructureDefinitionAsync(typeName).WaitResult();
                     if (sdCastType == null)
                     {
                         string msg = $"Unable to resolve type cast `{typeName}` in {group.Name} at @{source.Line}:{source.Column}";
@@ -514,7 +522,7 @@ public class CrossVersionMapCollection
                     }
                     else
                     {
-                        var sw = new StructureDefinitionWalker(sdCastType, sourceResolver);
+                        var sw = new StructureDefinitionWalker(sdCastType, options.source.Resolver);
 
                         // Check that the type being attempted is among the types in the actual property
                         if (!tpV?.Element?.Current?.Type.Any(t => t.Code == source.TypeIdentifier) == true)
@@ -523,11 +531,7 @@ public class CrossVersionMapCollection
                             ReportIssue(issues, msg, OperationOutcome.IssueType.Duplicate);
                         }
 
-                        tpV = new PropertyOrTypeDetails
-                        {
-                            Resolver = sourceResolver,
-                            Element = sw.Current
-                        };
+                        tpV = new PropertyOrTypeDetails(tpV.PropertyPath, sw.Current, options.source.Resolver);
                     }
                 }
 
@@ -540,6 +544,7 @@ public class CrossVersionMapCollection
                 // Source Default value
                 if (source.DefaultExpression != null)
                 {
+                    // Check the type of the default?
                     Console.Write($" DEFAULT({source.DefaultExpression.RawText})");
                 }
 
@@ -556,6 +561,11 @@ public class CrossVersionMapCollection
                     {
                         parameterTypesByNameForRule.Add(source.Alias, tpV);
                     }
+                }
+
+                if (source == rule.MappingExpression.Sources.First())
+                {
+                    singleSourceVariable = tpV;
                 }
             }
 
@@ -583,7 +593,7 @@ public class CrossVersionMapCollection
                 }
                 if (target.Invocation != null)
                 {
-                    tpV = VerifyInvocation(group, issues, parameterTypesByNameForRule, target.Invocation, targetResolver);
+                    tpV = VerifyInvocation(group, issues, parameterTypesByNameForRule, target.Invocation, options.target.Resolver);
                 }
 
                 if (target.Transform != null)
@@ -594,7 +604,7 @@ public class CrossVersionMapCollection
                     {
                         var literal = target.Transform.Literal;
                         Console.Write($" {literal.RawText}");
-                        transformedSourceV = ResolveLiteralDataType(group, sourceResolver, issues, literal);
+                        transformedSourceV = ResolveLiteralDataType(group, options.source.Resolver, issues, literal);
                     }
                     if (!string.IsNullOrEmpty(target.Transform.Identifier))
                     {
@@ -611,7 +621,7 @@ public class CrossVersionMapCollection
 
                     }
                     if (target.Transform.Invocation != null)
-                        transformedSourceV = VerifyInvocation(group, issues, parameterTypesByNameForRule, target.Transform.Invocation, targetResolver);
+                        transformedSourceV = VerifyInvocation(group, issues, parameterTypesByNameForRule, target.Transform.Invocation, options.target.Resolver);
 
                     if (target.Transform.fpExpression != null)
                     {
@@ -628,7 +638,7 @@ public class CrossVersionMapCollection
                     Console.Write($" : {transformedSourceV?.Element?.DebugString() ?? "?"}");
 
                     // Validate that the datatype is compatible
-                    VerifyMapBetweenDatatypes(typedGroups, issues, target.Transform, transformedSourceV, tpV);
+                    VerifyMapBetweenDatatypes(options.typedGroups, issues, target.Transform, transformedSourceV, tpV);
                 }
 
                 if (target.Alias != null)
@@ -676,7 +686,14 @@ public class CrossVersionMapCollection
             }
 
             // Verify that there exists a map that goes between these types
-            VerifyMapBetweenDatatypes(typedGroups, issues, rule.SimpleCopyExpression, sourceV, targetV);
+            VerifyMapBetweenDatatypes(options.typedGroups, issues, rule.SimpleCopyExpression, sourceV, targetV);
+
+            // If the source or target is a backbone element, then that shouldn't be a simple rule!
+            if (sourceV?.Element?.Current?.Type.FirstOrDefault()?.Code == "BackboneElement")
+            {
+                string msg = $"Simple copy not applicable for BackboneElement properties `{sourceV.PropertyPath}` @{rule.SimpleCopyExpression.Line}:{rule.SimpleCopyExpression.Column}";
+                ReportIssue(issues, msg, OperationOutcome.IssueType.Value);
+            }
         }
 
         // Scan any dependent group calls
@@ -687,7 +704,7 @@ public class CrossVersionMapCollection
             {
                 Console.Write("\n        "+prefix);
                 Console.Write($" then {i.Identifier}( ");
-                if (!fml.GroupsByName.ContainsKey(i.Identifier) && !namedGroups.ContainsKey(i.Identifier))
+                if (!fml.GroupsByName.ContainsKey(i.Identifier) && !options.namedGroups.ContainsKey(i.Identifier))
                 {
                     Console.WriteLine($"... )");
                     string msg = $"Calling non existent dependent group {i.Identifier} at @{i.Line}:{i.Column}";
@@ -695,7 +712,7 @@ public class CrossVersionMapCollection
                 }
                 else
                 {
-                    var dg = fml.GroupsByName.ContainsKey(i.Identifier) ? fml.GroupsByName[i.Identifier] : namedGroups[i.Identifier];
+                    var dg = fml.GroupsByName.ContainsKey(i.Identifier) ? fml.GroupsByName[i.Identifier] : options.namedGroups[i.Identifier];
                     // walk the parameters
                     for (int nParam = 0; nParam < dg.Parameters.Count; nParam++)
                     {
@@ -768,7 +785,7 @@ public class CrossVersionMapCollection
                 // process any expressions as a result of any
                 foreach (var childRule in de.Expressions)
                 {
-                    VerifyFmlGroupRule(prefix + "     ", fml, group, _aliasedTypes, sourceResolver, targetResolver, namedGroups, typedGroups, issues, parameterTypesByNameForRule, childRule);
+                    VerifyFmlGroupRule(prefix + "     ", fml, group, _aliasedTypes, options, issues, parameterTypesByNameForRule, childRule, comparison);
                 }
             }
         }
@@ -943,11 +960,7 @@ public class CrossVersionMapCollection
             else
             {
                 var sw = new StructureDefinitionWalker(sdCastType, resolver);
-                return new PropertyOrTypeDetails
-                {
-                    Resolver = resolver,
-                    Element = sw.Current
-                };
+                return new PropertyOrTypeDetails(null, sw.Current, resolver);
             }
         }
 
@@ -1077,7 +1090,7 @@ public class CrossVersionMapCollection
             Severity = severity,
             Details = new CodeableConcept() { Text = message }
         });
-        Console.WriteLine("\nError: " + message);
+        Console.WriteLine($"\n{severity.GetDocumentation()}: {message}");
     }
 
     private static PropertyOrTypeDetails? ResolveIdentifierType(string identifier, Dictionary<string, PropertyOrTypeDetails?> parameterTypesByNameForRule, FmlNode sourceOrTargetNode, List<OperationOutcome.IssueComponent> issues)
@@ -1105,11 +1118,7 @@ public class CrossVersionMapCollection
                                     node = new StructureDefinitionWalker(r, tp.Resolver);
                                 }
                             }
-                            tp = new PropertyOrTypeDetails
-                            {
-                                Resolver = tp.Resolver,
-                                Element = node.Current
-                            };
+                            tp = new PropertyOrTypeDetails(tp.PropertyPath + "." + childProps.First(), node.Current, tp.Resolver);
                         }
                     }
                     catch (Exception ex)
@@ -1132,7 +1141,7 @@ public class CrossVersionMapCollection
         string sourcePrefix,
         string targetPrefix,
         GroupDeclaration group,
-        Dictionary<string, Dictionary<string, FmlTargetInfo>> fmlPathLookup)
+        Dictionary<string, Dictionary<string, FmlTargetInfo>> fmlPathLookup, IEnumerable<string>? dependentGroupCallStack = null)
     {
         string groupSourceVar = string.Empty;
         string groupTargetVar = string.Empty;
@@ -1277,7 +1286,11 @@ public class CrossVersionMapCollection
                                 string fnName = dependentInvocation.Identifier;
                                 if (fnName != group.Name && fml.GroupsByName.TryGetValue(fnName, out GroupDeclaration? dependentGroup))
                                 {
-                                    ProcessCrossVersionGroup(fml, sourceName, targetName, dependentGroup, fmlPathLookup);
+                                    if (dependentGroupCallStack == null || !dependentGroupCallStack.Contains(fnName))
+                                    {
+                                        var newStack = dependentGroupCallStack?.Append(fnName).ToArray() ?? [fnName];
+                                        ProcessCrossVersionGroup(fml, sourceName, targetName, dependentGroup, fmlPathLookup, newStack);
+                                    }
                                 }
                             }
                         }
@@ -2571,6 +2584,25 @@ public class CrossVersionMapCollection
             });
         }
     }
+}
+
+public record ValidateMapOptions
+{
+    public Func<string, string?, Task<StructureDefinition?>> resolveMapUseCrossVersionType { get; init; }
+    public Func<string, IEnumerable<FhirStructureMap>> resolveMaps { get; init; }
+    public ModelOptions source { get; init; }
+    public ModelOptions target { get; init; }
+    public Dictionary<string, GroupDeclaration> namedGroups { get; init; }
+    public Dictionary<string, GroupDeclaration?> typedGroups { get; init; }
+}
+
+public record ModelOptions
+{
+    public IAsyncResourceResolver Resolver { get; init; }
+    public DefinitionCollection Package { get; init; }
+    public ModelInspector MI { get; init; }
+    public List<string> SupportedResources { get; init; }
+    public Type[] OpenTypes { get; init; }
 }
 
 internal static class ElementDefinitionNavigatorExtensions
