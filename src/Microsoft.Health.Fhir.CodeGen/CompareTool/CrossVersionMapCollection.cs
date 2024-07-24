@@ -1146,19 +1146,9 @@ public class CrossVersionMapCollection
         string groupSourceVar = string.Empty;
         string groupTargetVar = string.Empty;
 
-        // TODO: we should be better about detecting this. Either track the call tree during a recursive descent or
-        // determine the behavior based off of element definition named references.
-
-        // Skip (re-)processing some known recursive points
-        if (sourcePrefix == "QuestionnaireResponse.item.item" || targetPrefix == "QuestionnaireResponse.item.item"
-            || sourcePrefix == "Questionnaire.item.item" || targetPrefix == "Questionnaire.item.item"
-            || sourcePrefix == "QuestionnaireResponse.item.answer.item.answer" || targetPrefix == "QuestionnaireResponse.item.answer.item.answer"
-            || sourcePrefix == "GraphDefinition.link.target.link"
-            )
-            return;
-
         if (sourcePrefix.Length > 2048 || targetPrefix.Length > 2048)
         {
+            // A safety check on missing recursive definitions...
             System.Diagnostics.Trace.WriteLine($"{fml.MapDirective?.Url ?? fml.MetadataByPath["url"]?.Literal?.Value} {group.Name} Path likely in a recursive loop {sourcePrefix} -> {targetPrefix}");
             throw new ApplicationException($"Path likely in a recursive loop {sourcePrefix} -> {targetPrefix}");
         }
