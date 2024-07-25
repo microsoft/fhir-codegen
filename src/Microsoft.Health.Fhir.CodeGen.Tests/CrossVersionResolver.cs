@@ -155,7 +155,7 @@ internal class CrossVersionResolver : IAsyncResourceResolver
     public async System.Threading.Tasks.Task<IEnumerable<DefinitionCollection>> Initialize(string[] versions)
     {
         List<DefinitionCollection> result = new List<DefinitionCollection>();
-        PackageLoader loader = new(new() { AutoLoadExpansions = false, ResolvePackageDependencies = false });
+        PackageLoader loader = new(new() { AutoLoadExpansions = false, ResolvePackageDependencies = false, LoadStructures = [ FhirArtifactClassEnum.Resource, FhirArtifactClassEnum.ComplexType, FhirArtifactClassEnum.PrimitiveType ] });
         foreach (var version in versions)
         {
             if (version == "5")
@@ -198,7 +198,7 @@ internal class CrossVersionResolver : IAsyncResourceResolver
     /// <returns>A PackageCacheEntry.</returns>
     private async Task<DefinitionCollection> LoadPackage(PackageLoader loader, string directive)
     {
-        DefinitionCollection? loaded = await loader.LoadPackages([directive]);
+        DefinitionCollection? loaded = await loader.LoadPackages( [ directive ] );
         if (loaded == null)
         {
             throw new ApplicationException($"Failed to load package {directive} into cache");
