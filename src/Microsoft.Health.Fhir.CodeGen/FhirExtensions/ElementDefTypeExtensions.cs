@@ -48,6 +48,93 @@ public static class ElementDefTypeExtensions
         }
     }
 
+    public static ElementDefinition.TypeRefComponent cgAsR5(this ElementDefinition.TypeRefComponent tr)
+    {
+        // check for already having a primitive type
+        if (!tr.Code.Contains('.'))
+        {
+            return tr;
+        }
+
+        string typeExt = tr.GetExtensionValue<FhirUrl>(CommonDefinitions.ExtUrlFhirType)?.ToString()
+            ?? tr.GetExtensionValue<FhirString>(CommonDefinitions.ExtUrlFhirType)?.ToString()
+            ?? string.Empty;
+
+        string typeKey = tr.Code + "#" + typeExt;
+
+        switch (typeKey)
+        {
+            // R4 Element.id
+            // R4 Resource.id
+            // R5 Element.id
+            case "http://hl7.org/fhirpath/System.String#string":
+            // R4B Element.id
+            // R4B Resource.id
+            // R5 Resource.id
+            case "http://hl7.org/fhirpath/System.String#id":
+                return BuildType("id");
+
+            // R4 Extension.url
+            // R4B Extension.url
+            // R5 Extension.url
+            case "http://hl7.org/fhirpath/System.String#uri":
+                return BuildType("uri");
+        }
+
+        return tr;
+
+        ElementDefinition.TypeRefComponent BuildType(string fhirType) => new ElementDefinition.TypeRefComponent()
+        {
+            Code = "http://hl7.org/fhirpath/System.String",
+            Extension = [new Extension
+                {
+                    Url = CommonDefinitions.ExtUrlFhirType,
+                    Value = new FhirUrl(fhirType),
+                }],
+        };
+    }
+
+    public static ElementDefinition.TypeRefComponent cgExtCompatible(this ElementDefinition.TypeRefComponent tr)
+    {
+        // check for already having a primitive type
+        if (!tr.Code.Contains('.'))
+        {
+            return tr;
+        }
+
+        string typeExt = tr.GetExtensionValue<FhirUrl>(CommonDefinitions.ExtUrlFhirType)?.ToString()
+            ?? tr.GetExtensionValue<FhirString>(CommonDefinitions.ExtUrlFhirType)?.ToString()
+            ?? string.Empty;
+
+        string typeKey = tr.Code + "#" + typeExt;
+
+        switch (typeKey)
+        {
+            // R4 Element.id
+            // R4 Resource.id
+            // R5 Element.id
+            case "http://hl7.org/fhirpath/System.String#string":
+            // R4B Element.id
+            // R4B Resource.id
+            // R5 Resource.id
+            case "http://hl7.org/fhirpath/System.String#id":
+                return BuildType("id");
+
+            // R4 Extension.url
+            // R4B Extension.url
+            // R5 Extension.url
+            case "http://hl7.org/fhirpath/System.String#uri":
+                return BuildType("uri");
+        }
+
+        return tr;
+
+        ElementDefinition.TypeRefComponent BuildType(string fhirType) => new ElementDefinition.TypeRefComponent()
+        {
+            Code = fhirType,
+        };
+    }
+
     /// <summary>Gets the validation regex specific to this type.</summary>
     /// <param name="tr">The TypeRefComponent.</param>
     /// <returns>A string.</returns>

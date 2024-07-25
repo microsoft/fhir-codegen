@@ -3,6 +3,7 @@
         xmlns:vm="using:fhir_codegen.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="fhir_codegen.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
@@ -27,21 +28,21 @@
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Top">
                 <Button HorizontalAlignment="Left"
-                        Width="32"
-                        Height="32"
-                        Margin="8 8"
-                        Background="Transparent"
-                        Command="{Binding TriggerPaneCommand}">
-                    <PathIcon Data="{StaticResource line_horizontal_3_regular}" />
+                        Command="{Binding TriggerPaneCommand}"
+                        Content="{materialIcons:MaterialIconExt Kind=Menu}"
+                        Classes="cgIconButton">
                 </Button>
 
                 <ListBox ItemsSource="{Binding NavigationItems}"
-                         SelectedItem="{Binding SelectedNavigationItem}">
+                         SelectedItem="{Binding SelectedNavigationItem}"
+                         Margin="0">
                     <ListBox.ItemTemplate>
                         <DataTemplate DataType="{x:Type vm:NavigationItemTemplate}">
-                            <StackPanel Spacing="12" Margin="4 4" Orientation="Horizontal">
-                                <PathIcon Data="{Binding IconGeometry}" />
-                                <TextBlock Text="{Binding Label}" />
+                            <StackPanel Spacing="12" Margin="0" Orientation="Horizontal">
+                                <Border Classes="cgIconBorder32">
+                                    <materialIcons:MaterialIcon Kind="{Binding IconKind}" Classes="cgIcon24"/>
+                                </Border>
+                                <TextBlock Text="{Binding Label}" VerticalAlignment="Center" />
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>

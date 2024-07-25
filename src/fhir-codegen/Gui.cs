@@ -16,6 +16,8 @@ namespace fhir_codegen;
 
 internal class Gui
 {
+    public static ConfigGui? RunningConfiguration { get; private set; } = null;
+
     [STAThread]
     public static int RunGui(System.CommandLine.Parsing.ParseResult pr)
     {
@@ -24,7 +26,13 @@ internal class Gui
 
         try
         {
-            BuildAvaloniaApp().StartWithClassicDesktopLifetime([]);
+            RunningConfiguration = config;
+            BuildAvaloniaApp().StartWithClassicDesktopLifetime([], Avalonia.Controls.ShutdownMode.OnMainWindowClose);
+        }
+        catch (System.Collections.Generic.KeyNotFoundException)
+        {
+            // This is a known issue with Avalonia and Material
+            return 0;
         }
         catch (Exception ex)
         {

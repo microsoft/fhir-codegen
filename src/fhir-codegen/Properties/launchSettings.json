@@ -50,6 +50,11 @@
             "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.uv.extensions#current --auto-load-expansions --resolve-dependencies true --extension-accessors ValueRecordAccessors --include-experimental",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
+        "Firely IG NDH": {
+            "commandName": "Project",
+            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.us.ndh#1.0.0-ballot --auto-load-expansions --resolve-dependencies true --extension-accessors ValueRecordAccessors --include-experimental",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
         "Firely IG SDC": {
             "commandName": "Project",
             "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.uv.sdc#3.0.0 --auto-load-expansions --resolve-dependencies true --extension-accessors ValueRecordAccessors --include-experimental",
@@ -117,7 +122,7 @@
         },
         "Compare x-y": {
             "commandName": "Project",
-            "commandLineArgs": "compare -p hl7.fhir.r2.core#1.0.2 -c hl7.fhir.r3.core#3.0.2 --auto-load-expansions --resolve-dependencies true --map-source-path ..\\..\\..\\fhir-cross-version  --map-destination-path ..\\..\\..\\fhir-cross-version-source --map-save-style Source",
+            "commandLineArgs": "compare -c hl7.fhir.r4.core#4.0.1 -p hl7.fhir.r5.core#5.0.0 --auto-load-expansions --resolve-dependencies true --map-source-path ..\\..\\..\\fhir-cross-version  --map-destination-path ..\\..\\..\\fhir-cross-version-source --map-save-style Source",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Compare 43-50": {

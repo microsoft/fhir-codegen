@@ -18,7 +18,9 @@ public class IniData
     {
         CommentCharacters = new[] { ';' },
         CaseSensitive = true,
-        KeyValueAssignmentChar = '='
+        KeyValueAssignmentChar = '=',
+        SortSectionsAlphabetically = false,
+        SortValuesAlphabetically = true,
     };
 
     public class IniOptions
@@ -28,6 +30,10 @@ public class IniData
         public bool CaseSensitive { get; set; } = false;
 
         public char KeyValueAssignmentChar { get; set; } = '=';
+
+        public bool SortSectionsAlphabetically { get; set; } = false;
+
+        public bool SortValuesAlphabetically { get; set; } = false;
     }
 
     public class IniValue
@@ -101,6 +107,10 @@ public class IniData
             {
                 _values[index] = value;
             }
+        }
+
+        public void SortValues()
+        {
         }
     }
 

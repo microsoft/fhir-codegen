@@ -281,12 +281,13 @@ public partial class FirelyNetIG : ILanguage
             writtenCanonicals.Add(sd.Url);
         }
 
-        // write profile contents
-        foreach (StructureDefinition sd in _info.ProfilesByUrl.Values)
-        {
-            WriteProfile(sd);
-            writtenCanonicals.Add(sd.Url);
-        }
+        // TODO(ginoc): finish profile export
+        //// write profile contents
+        //foreach (StructureDefinition sd in _info.ProfilesByUrl.Values)
+        //{
+        //    WriteProfile(sd);
+        //    writtenCanonicals.Add(sd.Url);
+        //}
 
         IEnumerator<IConformanceResource> conformanceEnumerator = _info.CanonicalEnumerator;
         while (conformanceEnumerator.MoveNext())

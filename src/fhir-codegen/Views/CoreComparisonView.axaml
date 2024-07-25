@@ -6,5 +6,162 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="fhir_codegen.Views.CoreComparisonView"
              x:DataType="vm:CoreComparisonViewModel">
-  Welcome to Avalonia!
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Vertical" Grid.Row="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Content="{Binding Header}" VerticalAlignment="Center"/>
+                <!--<StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label Content="Moniker Filter:" VerticalAlignment="Center"/>
+                    <TextBox Text="{Binding TableFilter, Mode=TwoWay}" VerticalAlignment="Center" Width="200" />
+                </StackPanel>-->
+            </Grid>
+        </StackPanel>
+
+        <TabControl Grid.Row="1">
+            <TabItem Header="FHIR Releases">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="64" />       <!-- ReleasesOnly -->
+                        <RowDefinition Height="64" />       <!-- SourceReleaseIndex -->
+                        <RowDefinition Height="64" />       <!-- TargetReleaseIndex -->
+                        <RowDefinition Height="64" />       <!-- RowRunComparison -->
+                        <RowDefinition Height="64" />       <!-- RowErrorMessage -->
+                        <RowDefinition Height="64" />       <!-- RowSourceMaps -->
+                    </Grid.RowDefinitions>
+
+                    <CheckBox Grid.Row="0" Grid.Column="1" IsChecked="{Binding OnlyReleaseVersions}">Only Show Official Releases</CheckBox>
+                    
+                    <Label Grid.Row="1" Grid.Column="0" Content="Source (left) Package:" HorizontalAlignment="Right"/>
+                    <ComboBox Grid.Row="1" Grid.Column="1" SelectedIndex="{Binding SourceReleaseIndex}" ItemsSource="{Binding CorePackages}" HorizontalAlignment="Left"/>
+
+                    <Label Grid.Row="2" Grid.Column="0" Content="Target (right) Package:" HorizontalAlignment="Right"/>
+                    <ComboBox Grid.Row="2" Grid.Column="1" SelectedIndex="{Binding TargetReleaseIndex}" ItemsSource="{Binding CorePackages}" HorizontalAlignment="Left"/>
+
+                    <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Button Content="Run Comparison" Command="{Binding RunReleaseComparisonCommand}" />
+                        <ProgressBar Classes="Circle" IsVisible="{Binding Processing}"/>
+                    </StackPanel>
+
+                    <Label Grid.Row="4" Grid.Column="1" Content="{Binding ErrorMessage}" Foreground="Red" HorizontalAlignment="Left"/>
+
+                    <Label Grid.Row="5" Grid.Column="0" Content="Map source path" HorizontalAlignment="Right"/>
+                    <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding CrossVersionDirectory}" HorizontalAlignment="Left"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Directories">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="64" />       <!-- 0 SourceDirectory -->
+                        <RowDefinition Height="64" />       <!-- 1 SourceDirectoryFhirVersion -->
+                        <RowDefinition Height="64" />       <!-- 2 TargetDirectory -->
+                        <RowDefinition Height="64" />       <!-- 3 TargetDirectoryFhirVersion -->
+                        <RowDefinition Height="64" />       <!-- 4 SaveDirectory -->
+                        <RowDefinition Height="64" />       <!-- 5 RowRunComparison -->
+                        <RowDefinition Height="64" />       <!-- 6 RowErrorMessage -->
+                    </Grid.RowDefinitions>
+                    
+                    <Label Grid.Row="0" Grid.Column="0" Content="Source (left) Package:" HorizontalAlignment="Right"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding SourceDirectory}" HorizontalAlignment="Left"/>
+
+                    <Label Grid.Row="1" Grid.Column="0" Content="Source (left) FHIR Version:" HorizontalAlignment="Right"/>
+                    <ComboBox Grid.Row="1" Grid.Column="1" SelectedIndex="{Binding SourceDirectoryFhirVersionIndex}" ItemsSource="{Binding FhirVersions}" HorizontalAlignment="Left"/>
+
+                    <Label Grid.Row="2" Grid.Column="0" Content="Target (right) Package:" HorizontalAlignment="Right"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding TargetDirectory}" HorizontalAlignment="Left"/>
+
+                    <Label Grid.Row="3" Grid.Column="0" Content="Target (right) FHIR Version:" HorizontalAlignment="Right"/>
+                    <ComboBox Grid.Row="3" Grid.Column="1" SelectedIndex="{Binding TargetDirectoryFhirVersionIndex}" ItemsSource="{Binding FhirVersions}" HorizontalAlignment="Left"/>
+
+                    <Label Grid.Row="4" Grid.Column="0" Content="Save Directory:" HorizontalAlignment="Right"/>
+                    <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding SaveDirectory}" HorizontalAlignment="Left"/>
+
+                    <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Button Content="Run Comparison" Command="{Binding RunDirectoryComparisonCommand}" />
+                        <ProgressBar Classes="Circle" IsVisible="{Binding Processing}"/>
+                    </StackPanel>
+
+                    <Label Grid.Row="5" Grid.Column="1" Content="{Binding ErrorMessage}" Foreground="Red" HorizontalAlignment="Left"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Results">
+                <TabControl>
+                    <TabItem Header="Value Sets">
+                        <DataGrid ItemsSource="{Binding ValueSetComparisons}" IsReadOnly="True">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Resource" Binding="{Binding Path=Source.Name}" Width="*"/>
+                                <DataGridTextColumn Header="Title" Binding="{Binding Path=Source.Title}" Width="*"/>
+                                <DataGridTextColumn Header="Relationship" Binding="{Binding Path=Relationship}" Width="*"/>
+                                <DataGridTextColumn Header="Message" Binding="{Binding Path=Message}" Width="3*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem Header="Primitives">
+                        <DataGrid ItemsSource="{Binding PrimitiveComparisons}" IsReadOnly="True">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Resource" Binding="{Binding Path=Source.Name}" Width="*"/>
+                                <DataGridTextColumn Header="Title" Binding="{Binding Path=Source.Title}" Width="*"/>
+                                <DataGridTextColumn Header="Relationship" Binding="{Binding Path=Relationship}" Width="*"/>
+                                <DataGridTextColumn Header="Message" Binding="{Binding Path=Message}" Width="3*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem Header="Complex Types">
+                        <DataGrid ItemsSource="{Binding ComplexTypeComparisons}" IsReadOnly="True">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Resource" Binding="{Binding Path=Source.Name}" Width="*"/>
+                                <DataGridTextColumn Header="Title" Binding="{Binding Path=Source.Title}" Width="*"/>
+                                <DataGridTextColumn Header="Relationship" Binding="{Binding Path=Relationship}" Width="*"/>
+                                <DataGridTextColumn Header="Message" Binding="{Binding Path=Message}" Width="3*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem Header="Resources">
+                        <DataGrid ItemsSource="{Binding ResourceComparisons}" IsReadOnly="True">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Resource" Binding="{Binding Path=Source.Name}" Width="*"/>
+                                <DataGridTextColumn Header="Title" Binding="{Binding Path=Source.Title}" Width="*"/>
+                                <DataGridTextColumn Header="Relationship" Binding="{Binding Path=Relationship}" Width="*"/>
+                                <DataGridTextColumn Header="Message" Binding="{Binding Path=Message}" Width="3*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem Header="Extensions">
+                        <DataGrid ItemsSource="{Binding ExtensionComparisons}" IsReadOnly="True">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Resource" Binding="{Binding Path=Source.Name}" Width="*"/>
+                                <DataGridTextColumn Header="Title" Binding="{Binding Path=Source.Title}" Width="*"/>
+                                <DataGridTextColumn Header="Relationship" Binding="{Binding Path=Relationship}" Width="*"/>
+                                <DataGridTextColumn Header="Message" Binding="{Binding Path=Message}" Width="3*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+        </TabControl>
+        
+    </Grid>
 </UserControl>

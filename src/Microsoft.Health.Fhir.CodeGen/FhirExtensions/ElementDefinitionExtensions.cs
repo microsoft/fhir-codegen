@@ -137,7 +137,12 @@ public static class ElementDefinitionExtensions
     }
 
     /// <summary>Gets the types.</summary>
-    public static IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> cgTypes(this ElementDefinition ed) => ed.Type.ToDictionary(t => t.cgName(), t => t);
+    public static IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> cgTypes(this ElementDefinition ed, bool coerceToR5 = false) =>
+        coerceToR5
+        ? ed.Type.Select(tr => tr.cgAsR5()).ToDictionary(t => t.cgName(), t => t)
+        : ed.Type.ToDictionary(t => t.cgName(), t => t);
+
+    public static List<ElementDefinition.TypeRefComponent> cgTypesForExt(this ElementDefinition ed) => ed.Type.Select(tr => tr.cgExtCompatible()).ToList();
 
     /// <summary>An ElementDefinition extension method that cg cardinality.</summary>
     /// <param name="ed">The ed to act on.</param>

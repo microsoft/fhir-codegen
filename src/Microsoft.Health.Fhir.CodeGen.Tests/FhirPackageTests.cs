@@ -3,6 +3,7 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System.Text.Json.Nodes;
 using FluentAssertions;
 using Microsoft.Health.Fhir.CodeGen.Loader;
 using Microsoft.Health.Fhir.CodeGen.Models;
@@ -113,7 +114,7 @@ public class FhirPackageTestsR5 : IClassFixture<FhirPackageTestFixture>
     [Trait("FhirVersion", "R5")]
     internal async Task ParseCorePackage(LoaderOptions.JsonDeserializationModel jsonModel)
     {
-        PackageLoader loader = new(new() { CachePath = _fixture.CachePath, JsonModel = jsonModel });
+        PackageLoader loader = new(new() { FhirCacheDirectory = _fixture.CachePath }, new() { JsonModel = jsonModel });
 
         DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR5);
 
@@ -184,7 +185,7 @@ public class FhirPackageTestsR4B : IClassFixture<FhirPackageTestFixture>
     [Trait("FhirVersion", "R4B")]
     internal async Task ParseCorePackage()
     {
-        PackageLoader loader = new(new() { CachePath = _fixture.CachePath, JsonModel = LoaderOptions.JsonDeserializationModel.Default });
+        PackageLoader loader = new(new() { FhirCacheDirectory = _fixture.CachePath }, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
 
         DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR4B);
 
@@ -255,7 +256,7 @@ public class FhirPackageTestsR4 : IClassFixture<FhirPackageTestFixture>
     [Trait("FhirVersion", "R4")]
     internal async Task ParseCorePackage()
     {
-        PackageLoader loader = new(new() { CachePath = _fixture.CachePath, JsonModel = LoaderOptions.JsonDeserializationModel.Default });
+        PackageLoader loader = new(new() { FhirCacheDirectory = _fixture.CachePath }, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
 
         DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR4);
 
@@ -326,7 +327,7 @@ public class FhirPackageTestsR3 : IClassFixture<FhirPackageTestFixture>
     [Trait("FhirVersion", "R3")]
     internal async Task ParseCorePackage()
     {
-        PackageLoader loader = new(new() { CachePath = _fixture.CachePath, JsonModel = LoaderOptions.JsonDeserializationModel.Default });
+        PackageLoader loader = new(new() { FhirCacheDirectory = _fixture.CachePath }, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
 
         DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR3);
 
@@ -397,7 +398,7 @@ public class FhirPackageTestsR2 : IClassFixture<FhirPackageTestFixture>
     [Trait("FhirVersion", "R2")]
     internal async Task ParseCorePackage()
     {
-        PackageLoader loader = new(new() { CachePath = _fixture.CachePath, JsonModel = LoaderOptions.JsonDeserializationModel.Default });
+        PackageLoader loader = new(new() { FhirCacheDirectory = _fixture.CachePath }, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
 
         DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR2);
 

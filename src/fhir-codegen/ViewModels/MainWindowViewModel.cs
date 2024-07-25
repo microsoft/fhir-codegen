@@ -9,24 +9,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Avalonia.Controls;
+using Avalonia.Interactivity;
 using Avalonia.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using fhir_codegen.Views;
+using Material.Icons;
+using Material.Styles.Themes;
 
 namespace fhir_codegen.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-
     [ObservableProperty]
     private bool _isPaneOpen;
 
     [ObservableProperty]
-    private UserControl _currentPage = new WelcomePageView();
+    private ViewModelBase _currentPage = new WelcomePageViewModel();
 
     [ObservableProperty]
     private NavigationItemTemplate? _selectedNavigationItem;
+
+    //[ObservableProperty]
+    //private MaterialTheme? _theme = Avalonia.Application.Current?.LocateMaterialTheme<MaterialTheme>();
+
+    public MainWindowViewModel(object? args = null)
+        :base()
+    {
+    }
 
     partial void OnSelectedNavigationItemChanged(NavigationItemTemplate? value)
     {
@@ -35,8 +45,12 @@ public partial class MainWindowViewModel : ViewModelBase
             return;
         }
 
-        UserControl? target = (UserControl?)Activator.CreateInstance(value.Target);
+        NavigateTo(value.Target);
+    }
 
+    public void NavigateTo(Type targetViewModel, object? args = null)
+    {
+        ViewModelBase? target = (ViewModelBase?)Activator.CreateInstance(targetViewModel, args);
         if (target == null)
         {
             return;
@@ -50,15 +64,15 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         new NavigationItemTemplate
         {
-            Target = typeof(WelcomePageView),
+            Target = typeof(WelcomePageViewModel),
             Label = WelcomePageViewModel.Label,
-            IconGeometry = WelcomePageViewModel.IconGeometry,
+            IconKind = WelcomePageViewModel.IconKind,
         },
         new NavigationItemTemplate
         {
-            Target = typeof(CoreComparisonView),
+            Target = typeof(CoreComparisonViewModel),
             Label = CoreComparisonViewModel.Label,
-            IconGeometry = CoreComparisonViewModel.IconGeometry,
+            IconKind = CoreComparisonViewModel.IconKind,
         },
     };
 
@@ -75,5 +89,5 @@ public class NavigationItemTemplate
 
     public required string Label { get; init; }
 
-    public required StreamGeometry? IconGeometry { get; init; }
+    public required MaterialIconKind IconKind { get; init; }
 }

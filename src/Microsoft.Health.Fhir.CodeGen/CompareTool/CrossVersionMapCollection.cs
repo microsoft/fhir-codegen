@@ -83,9 +83,11 @@ public class CrossVersionMapCollection
     {
         _loader = new(new()
         {
-            JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
             AutoLoadExpansions = false,
             ResolvePackageDependencies = false,
+        }, new()
+        {
+            JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
         });
 
         _source = source;
@@ -258,7 +260,9 @@ public class CrossVersionMapCollection
         string path = Path.Combine(fhirCrossRepoPath, "input", _sourceToTargetWithR);
         if (!Directory.Exists(path))
         {
-            throw new DirectoryNotFoundException($"Could not find fhir-cross-version/input/{_sourceToTargetWithR} directory: {path}");
+            Console.WriteLine($"Could not find fhir-cross-version/input/{_sourceToTargetWithR} directory: {path}");
+            return false;
+            //throw new DirectoryNotFoundException($"Could not find fhir-cross-version/input/{_sourceToTargetWithR} directory: {path}");
         }
 
         // files have different styles in each directory, but we want all FML files anyway

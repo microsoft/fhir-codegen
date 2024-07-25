@@ -14,63 +14,6 @@ namespace Microsoft.Health.Fhir.CodeGen.Configuration;
 /// <summary>Configuration settings when performing a single-pass generation.</summary>
 public class ConfigGenerate : ConfigRoot
 {
-    private static readonly FhirArtifactClassEnum[] _defaultExportStructures =
-    [
-        FhirArtifactClassEnum.PrimitiveType,
-        FhirArtifactClassEnum.ComplexType,
-        FhirArtifactClassEnum.Resource,
-        FhirArtifactClassEnum.Interface,
-        FhirArtifactClassEnum.Extension,
-        FhirArtifactClassEnum.Operation,
-        FhirArtifactClassEnum.SearchParameter,
-        FhirArtifactClassEnum.CodeSystem,
-        FhirArtifactClassEnum.ValueSet,
-        FhirArtifactClassEnum.Profile,
-        FhirArtifactClassEnum.LogicalModel,
-        FhirArtifactClassEnum.Compartment,
-    ];
-
-    /// <summary>Gets or sets the FHIR structures to export, default is all.</summary>
-    [ConfigOption(
-        ArgName = "--structures",
-        EnvName = "Export_Structures",
-        Description = "Types of FHIR structures to export.",
-        ArgArity = "0..*")]
-    public FhirArtifactClassEnum[] ExportStructures { get; set; } = _defaultExportStructures;
-
-    //public HashSet<FhirArtifactClassEnum> ExportStructures { get; set; } = new();
-
-    private static ConfigurationOption ExportStructuresParameter { get; } = new()
-    {
-        Name = "ExportStructures",
-        EnvVarName = "Export_Structures",
-        DefaultValue = _defaultExportStructures,
-        CliOption = new System.CommandLine.Option<FhirArtifactClassEnum[]>("--structures", "Types of FHIR structures to export.")
-        {
-            Arity = System.CommandLine.ArgumentArity.ZeroOrMore,
-            IsRequired = false,
-        },
-    };
-
-    /// <summary>Gets or sets the export keys.</summary>
-    [ConfigOption(
-        ArgName = "--export-keys",
-        EnvName = "Export_Keys",
-        Description = "Keys of FHIR structures to export (e.g., Patient), empty means all.",
-        ArgArity = "0..*")]
-    public HashSet<string> ExportKeys { get; set; } = [];
-
-    private static ConfigurationOption ExportKeysParameter { get; } = new()
-    {
-        Name = "ExportKeys",
-        EnvVarName = "Export_Keys",
-        DefaultValue = new HashSet<string>(),
-        CliOption = new System.CommandLine.Option<HashSet<string>>("--export-keys", "Keys of FHIR structures to export (e.g., Patient), empty means all.")
-        {
-            Arity = System.CommandLine.ArgumentArity.ZeroOrMore,
-            IsRequired = false,
-        },
-    };
 
     /// <summary>Gets a value indicating whether the experimental should be included.</summary>
     [ConfigOption(
@@ -193,8 +136,6 @@ public class ConfigGenerate : ConfigRoot
     /// <summary>(Immutable) Options that get promoted to user-settable options based on this type.</summary>
     private static readonly ConfigurationOption[] _options =
     [
-        ExportStructuresParameter,
-        ExportKeysParameter,
         IncludeExperimentalParameter,
         FhirServerUrlParameter,
         SmartConfigUrlParameter,
@@ -222,12 +163,6 @@ public class ConfigGenerate : ConfigRoot
         {
             switch (opt.Name)
             {
-                case "ExportStructures":
-                    ExportStructures = GetOptArray(parseResult, opt.CliOption, ExportStructures);
-                    break;
-                case "ExportKeys":
-                    ExportKeys = GetOptHash(parseResult, opt.CliOption, ExportKeys);
-                    break;
                 case "IncludeExperimental":
                     IncludeExperimental = GetOpt(parseResult, opt.CliOption, IncludeExperimental);
                     break;

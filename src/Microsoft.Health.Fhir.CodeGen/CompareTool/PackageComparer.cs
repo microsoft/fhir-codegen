@@ -32,6 +32,8 @@ using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 using static Microsoft.Health.Fhir.CodeGen.CompareTool.ComparisonUtils;
 using Hl7.Fhir.Rest;
 using Hl7.Fhir.Serialization;
+using System.Resources;
+using Hl7.Fhir.Specification.Snapshot;
 
 #if NETSTANDARD2_0
 using Microsoft.Health.Fhir.CodeGen.Polyfill;
@@ -41,13 +43,18 @@ namespace Microsoft.Health.Fhir.CodeGen.CompareTool;
 
 public class PackageComparer
 {
+    private const string _crossDefinitionVersion = "1.0.0";
+
     private DefinitionCollection _source;
     private DefinitionCollection _target;
 
     private CrossVersionMapCollection? _crossVersion = null;
 
+    private Hl7.Fhir.Specification.Snapshot.SnapshotGenerator _snapshotGenerator;
+
     private Dictionary<string, CMR> _typeRelationships = [];
 
+    private string _sourceShortVersion;
     private string _sourceRLiteral;
     private string _targetRLiteral;
 
@@ -96,10 +103,13 @@ public class PackageComparer
         _source = source;
         _target = target;
 
+        _sourceShortVersion = source.FhirSequence.ToShortVersion();
         _sourceRLiteral = source.FhirSequence.ToRLiteral();
         _targetRLiteral = target.FhirSequence.ToRLiteral();
 
         _firelySerializerOptions = new JsonSerializerOptions().ForFhir(ModelInfo.ModelInspector).Pretty();
+
+        _snapshotGenerator = new(_source);
 
         //if (!string.IsNullOrEmpty(config.OllamaUrl) &&
         //    !string.IsNullOrEmpty(config.OllamaModel))
@@ -111,6 +121,14 @@ public class PackageComparer
         //}
     }
 
+    /// <summary>
+    /// Compares this optional bool object to another to determine their relative ordering.
+    /// </summary>
+    /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>
+    /// <param name="compareExtensions">(Optional) The bool to compare to this object.</param>
+    /// <returns>
+    /// PackageComparison record with results based on the Source (left) package.
+    /// </returns>
     public PackageComparison Compare()
     {
         Console.WriteLine(
@@ -124,59 +142,124 @@ public class PackageComparer
 
             if (!_crossVersion.TryLoadCrossVersionMaps(_config.CrossVersionMapSourcePath))
             {
-                throw new Exception("Failed to load requested cross-version maps");
+                Console.WriteLine("Failed to load requested cross-version maps");
+                _crossVersion = null;
+                //throw new Exception("Failed to load requested cross-version maps");
             }
         }
 
         // check if we are saving cross version maps and did not load any
-        if ((_crossVersion == null) && (_config.MapSaveStyle != ConfigCompare.ComparisonMapSaveStyle.None))
+        if (_crossVersion == null)
         {
             // create our cross-version map collection
             _crossVersion = new(_source, _target);
         }
 
-        string outputDir = string.IsNullOrEmpty(_config.CrossVersionMapDestinationPath)
-            ? Path.Combine(_config.OutputDirectory, $"{_sourceRLiteral}_{_targetRLiteral}")
-            : Path.Combine(_config.CrossVersionMapDestinationPath, $"{_sourceRLiteral}_{_targetRLiteral}");
 
+        // need to expand every value set for comparison
+        Dictionary<string, ValueSet> vsLeft = GetValueSets(_source);
+        _vsComparisons = CompareValueSets(vsLeft, GetValueSets(_target));
+
+        Dictionary<string, List<PrimitiveTypeComparison>> primitiveComparisons = ComparePrimitives(_source.PrimitiveTypesByName, _target.PrimitiveTypesByName);
+        _crossVersion?.UpdateDataTypeMap(primitiveComparisons);
+
+        Dictionary<string, List<StructureComparison>> complexTypeComparisons = CompareStructures(_source.ComplexTypesByName, _target.ComplexTypesByName);
+        _crossVersion?.UpdateDataTypeMap(complexTypeComparisons);
+
+        Dictionary<string, List<StructureComparison>> resources = CompareStructures(_source.ResourcesByName, _target.ResourcesByName);
+
+        Dictionary<string, List<StructureComparison>> extensions = CompareStructures(_source.ExtensionsByUrl, _target.ExtensionsByUrl);
+
+        // TODO(ginoc): Logical models are tracked by URL in collections, but structure mapping is done by name.
+        //Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> logical = Compare(FhirArtifactClassEnum.LogicalModel, _left.LogicalModelsByUrl, _right.LogicalModelsByUrl);
+
+        PackageComparison packageComparison = new()
+        {
+            LeftPackageId = _source.MainPackageId,
+            LeftPackageVersion = _source.MainPackageVersion,
+            RightPackageId = _target.MainPackageId,
+            RightPackageVersion = _target.MainPackageVersion,
+            ValueSets = _vsComparisons,
+            PrimitiveTypes = primitiveComparisons,
+            ComplexTypes = complexTypeComparisons,
+            Resources = resources,
+            //LogicalModels = logical,
+            Extensions = extensions,
+        };
+
+        return packageComparison;
+    }
+
+    public string GetConfiguredOutputDirectory(string? additionalPathComponent = null)
+    {
+        bool useCrossVersionDest = !string.IsNullOrEmpty(_config.CrossVersionMapDestinationPath);
+
+        string baseDir = useCrossVersionDest
+            ? _config.CrossVersionMapDestinationPath
+            : !string.IsNullOrEmpty(_config.OutputDirectory)
+            ? _config.OutputDirectory
+            : throw new Exception("Cannot write files without an OutputDirectory or CrossVersionMapDestinationPath");
+
+        if (!Path.IsPathRooted(baseDir))
+        {
+            baseDir = FileSystemUtils.FindRelativeDir(string.Empty, baseDir, true);
+        }
+
+        if (!string.IsNullOrEmpty(additionalPathComponent))
+        {
+            return useCrossVersionDest
+                ? Path.Combine(baseDir, $"{_sourceRLiteral}_{_targetRLiteral}", additionalPathComponent)
+                : Path.Combine(baseDir, additionalPathComponent);
+        }
+
+        return useCrossVersionDest
+            ? Path.Combine(baseDir, $"{_sourceRLiteral}_{_targetRLiteral}")
+            : baseDir;
+    }
+
+    public void WriteComparisonResultJson(PackageComparison packageComparison, string? outputDir = null)
+    {
+        outputDir ??= GetConfiguredOutputDirectory();
         if (!Directory.Exists(outputDir))
         {
             Directory.CreateDirectory(outputDir);
         }
 
-        string pageDir = Path.Combine(outputDir, "pages");
-        if (!Directory.Exists(pageDir))
-        {
-            Directory.CreateDirectory(pageDir);
-        }
+        string jsonFilename = Path.Combine(outputDir, "comparison.json");
 
-        string conceptMapDir = Path.Combine(outputDir, "maps");
-        if (!Directory.Exists(conceptMapDir))
+        using FileStream jsonFs = new(jsonFilename, FileMode.Create, FileAccess.Write);
+        using Utf8JsonWriter jsonWriter = new(jsonFs, new JsonWriterOptions() { Indented = false, });
         {
-            Directory.CreateDirectory(conceptMapDir);
+            JsonSerializer.Serialize(jsonWriter, packageComparison);
+        }
+    }
+
+    public void WriteMarkdownFiles(PackageComparison packageComparison, string? outputDir = null)
+    {
+        outputDir ??= GetConfiguredOutputDirectory("pages");
+        if (!Directory.Exists(outputDir))
+        {
+            Directory.CreateDirectory(outputDir);
         }
 
         // build our filename
         string mdFilename = "overview.md";
 
-        string mdFullFilename = Path.Combine(pageDir, mdFilename);
+        string mdFullFilename = Path.Combine(outputDir, mdFilename);
 
-        using ExportStreamWriter? mdWriter = _config.NoOutput ? null : CreateMarkdownWriter(mdFullFilename);
+        using ExportStreamWriter mdWriter = CreateMarkdownWriter(mdFullFilename);
 
-        // need to expand every value set for comparison
-        Dictionary<string, ValueSet> vsLeft = GetValueSets(_source);
-        _vsComparisons = CompareValueSets(vsLeft, GetValueSets(_target));
-        if (mdWriter != null)
+        if (packageComparison.ValueSets.Count != 0)
         {
-            WriteComparisonOverview(mdWriter, "Value Sets", _vsComparisons);
+            WriteComparisonOverview(mdWriter, "Value Sets", packageComparison.ValueSets);
 
-            string mdSubDir = Path.Combine(pageDir, "ValueSets");
+            string mdSubDir = Path.Combine(outputDir, "ValueSets");
             if (!Directory.Exists(mdSubDir))
             {
                 Directory.CreateDirectory(mdSubDir);
             }
 
-            foreach (List<ValueSetComparison> vcs in _vsComparisons.Values)
+            foreach (List<ValueSetComparison> vcs in packageComparison.ValueSets.Values)
             {
                 foreach (ValueSetComparison c in vcs)
                 {
@@ -190,33 +273,19 @@ public class PackageComparer
                     }
                 }
             }
-
-            // write out the value set maps
-            if (_config.MapSaveStyle != ConfigCompare.ComparisonMapSaveStyle.None)
-            {
-                string mapSubDir = Path.Combine(conceptMapDir, "ValueSets");
-                if (!Directory.Exists(mapSubDir))
-                {
-                    Directory.CreateDirectory(mapSubDir);
-                }
-
-                WriteValueSetMaps(mapSubDir, _vsComparisons.Values.SelectMany(vl => vl.Select(v => v)));
-            }
         }
 
-        Dictionary<string, List<PrimitiveTypeComparison>> primitiveComparisons = ComparePrimitives(_source.PrimitiveTypesByName, _target.PrimitiveTypesByName);
-        _crossVersion?.UpdateDataTypeMap(primitiveComparisons);
-        if (mdWriter != null)
+        if (packageComparison.PrimitiveTypes.Count != 0)
         {
-            WriteComparisonOverview(mdWriter, "Primitive Types", primitiveComparisons);
+            WriteComparisonOverview(mdWriter, "Primitive Types", packageComparison.PrimitiveTypes);
 
-            string mdSubDir = Path.Combine(pageDir, "PrimitiveTypes");
+            string mdSubDir = Path.Combine(outputDir, "PrimitiveTypes");
             if (!Directory.Exists(mdSubDir))
             {
                 Directory.CreateDirectory(mdSubDir);
             }
 
-            foreach (List<PrimitiveTypeComparison> cs in primitiveComparisons.Values)
+            foreach (List<PrimitiveTypeComparison> cs in packageComparison.PrimitiveTypes.Values)
             {
                 foreach (PrimitiveTypeComparison c in cs)
                 {
@@ -230,19 +299,17 @@ public class PackageComparer
             }
         }
 
-        Dictionary<string, List<StructureComparison>> complexTypeComparisons = CompareStructures(_source.ComplexTypesByName, _target.ComplexTypesByName);
-        _crossVersion?.UpdateDataTypeMap(complexTypeComparisons);
-        if (mdWriter != null)
+        if (packageComparison.ComplexTypes.Count != 0)
         {
-            WriteComparisonOverview(mdWriter, "Complex Types", complexTypeComparisons);
+            WriteComparisonOverview(mdWriter, "Complex Types", packageComparison.ComplexTypes);
 
-            string mdSubDir = Path.Combine(pageDir, "ComplexTypes");
+            string mdSubDir = Path.Combine(outputDir, "ComplexTypes");
             if (!Directory.Exists(mdSubDir))
             {
                 Directory.CreateDirectory(mdSubDir);
             }
 
-            foreach (List<StructureComparison> vcs in complexTypeComparisons.Values)
+            foreach (List<StructureComparison> vcs in packageComparison.ComplexTypes.Values)
             {
                 foreach (StructureComparison c in vcs)
                 {
@@ -253,43 +320,23 @@ public class PackageComparer
                         WriteComparisonFile(writer, string.Empty, c);
                     }
                 }
-            }
-
-            if (_config.MapSaveStyle != ConfigCompare.ComparisonMapSaveStyle.None)
-            {
-                string mapSubDir = Path.Combine(conceptMapDir, "ComplexTypes");
-                if (!Directory.Exists(mapSubDir))
-                {
-                    Directory.CreateDirectory(mapSubDir);
-                }
-
-                WriteStructureBasedConceptMaps(mapSubDir, complexTypeComparisons.Values.SelectMany(l => l.Select(s => s)));
-            }
-
-            // write out the data type map
-            if (_config.MapSaveStyle != ConfigCompare.ComparisonMapSaveStyle.None)
-            {
-                WriteDataTypeMap(conceptMapDir, primitiveComparisons, complexTypeComparisons);
             }
         }
 
-        Dictionary<string, List<StructureComparison>> resources = CompareStructures(_source.ResourcesByName, _target.ResourcesByName);
-        if (mdWriter != null)
+        if (packageComparison.Resources.Count != 0)
         {
-            WriteComparisonOverview(mdWriter, "Resources", resources);
+            WriteComparisonOverview(mdWriter, "Resources", packageComparison.Resources);
 
-            string mdSubDir = Path.Combine(pageDir, "Resources");
+            string mdSubDir = Path.Combine(outputDir, "Resources");
             if (!Directory.Exists(mdSubDir))
             {
                 Directory.CreateDirectory(mdSubDir);
             }
 
-            foreach (List<StructureComparison> vcs in resources.Values)
+            foreach (List<StructureComparison> vcs in packageComparison.Resources.Values)
             {
                 foreach (StructureComparison c in vcs)
                 {
-                    //string name = GetName(c.Left, c.Right);
-                    //string filename = Path.Combine(subDir, $"{name}.md");
                     string filename = Path.Combine(mdSubDir, $"{c.CompositeName}.md");
 
                     using ExportStreamWriter writer = CreateMarkdownWriter(filename);
@@ -298,79 +345,618 @@ public class PackageComparer
                     }
                 }
             }
+        }
 
-            // write out the resource type map
-            if (_config.MapSaveStyle != ConfigCompare.ComparisonMapSaveStyle.None)
+        if (packageComparison.Extensions.Count != 0)
+        {
+            WriteComparisonOverview(mdWriter, "Extensions", packageComparison.Extensions);
+
+            string mdSubDir = Path.Combine(outputDir, "Extensions");
+            if (!Directory.Exists(mdSubDir))
             {
-                WriteResourceTypeMap(conceptMapDir, resources);
+                Directory.CreateDirectory(mdSubDir);
+            }
 
-                string mapSubDir = Path.Combine(conceptMapDir, "Resources");
-                if (!Directory.Exists(mapSubDir))
+            foreach (List<StructureComparison> vcs in packageComparison.Extensions.Values)
+            {
+                foreach (StructureComparison c in vcs)
                 {
-                    Directory.CreateDirectory(mapSubDir);
-                }
+                    string filename = Path.Combine(mdSubDir, $"{c.CompositeName}.md");
 
-                WriteStructureBasedConceptMaps(mapSubDir, resources.Values.SelectMany(l => l.Select(s => s)));
+                    using ExportStreamWriter writer = CreateMarkdownWriter(filename);
+                    {
+                        WriteComparisonFile(writer, string.Empty, c);
+                    }
+                }
             }
         }
 
         // TODO(ginoc): Logical models are tracked by URL in collections, but structure mapping is done by name.
-        //Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> logical = Compare(FhirArtifactClassEnum.LogicalModel, _left.LogicalModelsByUrl, _right.LogicalModelsByUrl);
-        //if (mdWriter != null)
+        //WriteComparisonOverview(mdWriter, "Logical Models", logical.Values);
+
+        //mdSubDir = Path.Combine(outputDir, "LogicalModels");
+        //if (!Directory.Exists(mdSubDir))
         //{
-        //    WriteComparisonOverview(mdWriter, "Logical Models", logical.Values);
+        //    Directory.CreateDirectory(mdSubDir);
+        //}
 
-        //    string mdSubDir = Path.Combine(pageDir, "LogicalModels");
-        //    if (!Directory.Exists(mdSubDir))
+        //foreach (ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec> c in logical.Values)
+        //{
+        //string filename = Path.Combine(mdSubDir, $"{c.CompositeName}.md");
+
+        //    using ExportStreamWriter writer = CreateMarkdownWriter(filename);
         //    {
-        //        Directory.CreateDirectory(mdSubDir);
-        //    }
-
-        //    foreach (ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec> c in logical.Values)
-        //    {
-        //        string name = GetName(c.Left, c.Right);
-        //        string filename = Path.Combine(mdSubDir, $"{name}.md");
-
-        //        using ExportStreamWriter writer = CreateMarkdownWriter(filename);
-        //        {
-        //            WriteComparisonFile(writer, string.Empty, c);
-        //        }
+        //        WriteComparisonFile(writer, string.Empty, c);
         //    }
         //}
 
-        PackageComparison packageComparison = new()
-        {
-            LeftPackageId = _source.MainPackageId,
-            LeftPackageVersion = _source.MainPackageVersion,
-            RightPackageId = _target.MainPackageId,
-            RightPackageVersion = _target.MainPackageVersion,
-            ValueSets = _vsComparisons,
-            PrimitiveTypes = primitiveComparisons,
-            ComplexTypes = complexTypeComparisons,
-            Resources = resources,
-            //LogicalModels = logical,
-        };
+        mdWriter.Flush();
+        mdWriter.Close();
+        mdWriter.Dispose();
+    }
 
-        if (mdWriter != null)
+    public void WriteMapFiles(PackageComparison packageComparison, string? outputDir = null, ConfigCompare.ComparisonMapSaveStyle? mapSaveStyle = null)
+    {
+        outputDir ??= GetConfiguredOutputDirectory("maps");
+        if (!Directory.Exists(outputDir))
         {
-            mdWriter.Flush();
-            mdWriter.Close();
-            mdWriter.Dispose();
+            Directory.CreateDirectory(outputDir);
         }
 
-        if (_config.SaveComparisonResult)
-        {
-            string jsonFilename = Path.Combine(outputDir, "comparison.json");
+        mapSaveStyle ??= _config.MapSaveStyle;
 
-            using FileStream jsonFs = new(jsonFilename, FileMode.Create, FileAccess.Write);
-            using Utf8JsonWriter jsonWriter = new(jsonFs, new JsonWriterOptions() { Indented = false, });
+        if (packageComparison.ValueSets.Count != 0)
+        {
+            // write out the value set maps
+            string mapSubDir = Path.Combine(outputDir, "ValueSets");
+            if (!Directory.Exists(mapSubDir))
             {
-                JsonSerializer.Serialize(jsonWriter, packageComparison);
+                Directory.CreateDirectory(mapSubDir);
+            }
+
+            WriteValueSetMaps(mapSubDir, packageComparison.ValueSets.Values.SelectMany(vl => vl.Select(v => v)));
+        }
+
+        if ((packageComparison.PrimitiveTypes.Count != 0) || (packageComparison.ComplexTypes.Count != 0))
+        {
+            // write out the data type map
+            WriteDataTypeMap(outputDir, packageComparison.PrimitiveTypes, packageComparison.ComplexTypes);
+        }
+
+        if (packageComparison.ComplexTypes.Count != 0)
+        {
+            string mapSubDir = Path.Combine(outputDir, "ComplexTypes");
+            if (!Directory.Exists(mapSubDir))
+            {
+                Directory.CreateDirectory(mapSubDir);
+            }
+
+            WriteStructureBasedConceptMaps(mapSubDir, packageComparison.ComplexTypes.Values.SelectMany(l => l.Select(s => s)));
+        }
+
+        if (packageComparison.Resources.Count != 0)
+        {
+            // write out the resource type map
+            WriteResourceTypeMap(outputDir, packageComparison.Resources);
+
+            string mapSubDir = Path.Combine(outputDir, "Resources");
+            if (!Directory.Exists(mapSubDir))
+            {
+                Directory.CreateDirectory(mapSubDir);
+            }
+
+            WriteStructureBasedConceptMaps(mapSubDir, packageComparison.Resources.Values.SelectMany(l => l.Select(s => s)));
+        }
+
+        if (packageComparison.Extensions.Count != 0)
+        {
+            string mapSubDir = Path.Combine(outputDir, "Extensions");
+            if (!Directory.Exists(mapSubDir))
+            {
+                Directory.CreateDirectory(mapSubDir);
+            }
+
+            WriteStructureBasedConceptMaps(mapSubDir, packageComparison.Extensions.Values.SelectMany(l => l.Select(s => s)));
+        }
+    }
+
+    public void WriteCrossVersionExtensionArtifacts(PackageComparison packageComparison, string? outputDir = null)
+    {
+        FhirJsonSerializationSettings jsonSettings = new FhirJsonSerializationSettings() { Pretty = true };
+
+        outputDir ??= GetConfiguredOutputDirectory("xver");
+        if (!Directory.Exists(outputDir))
+        {
+            Directory.CreateDirectory(outputDir);
+        }
+
+        // process value sets
+        foreach (ValueSetComparison vsComparison in packageComparison.ValueSets.Values.SelectMany(l => l.Select(v => v)).OrderBy(vs => vs.CompositeName))
+        {
+            if (BuildCrossVersionValueSet(vsComparison) is ValueSet vs)
+            {
+                string filename = $"ValueSet-{vs.Id}.json";
+                string path = Path.Combine(outputDir, filename);
+
+                File.WriteAllText(path, vs.ToJson(jsonSettings));
             }
         }
 
-        return packageComparison;
+        // process complex types
+        foreach (StructureComparison sdComparison in packageComparison.ComplexTypes.Values.SelectMany(l => l.Select(s => s)).OrderBy(s => s.CompositeName))
+        {
+            // check for relationships we can skip
+            if ((sdComparison.Relationship == CMR.Equivalent) ||
+                (sdComparison.Relationship == CMR.SourceIsNarrowerThanTarget))
+            {
+                continue;
+            }
+
+            // grab the structure definition for the source of this comparison
+            if (!_source.ComplexTypesByName.TryGetValue(sdComparison.Source.Id, out StructureDefinition? sourceSd))
+            {
+                throw new Exception($"Could not find listed source complex type: {sdComparison.Source.Id}");
+            }
+
+            // iterate over the elements in this comparison
+            foreach (ElementComparison edComparison in sdComparison.ElementComparisons.Values)
+            {
+                // grab the element definition for the source of this comparison
+                if (!sourceSd.cgTryGetElementByPath(edComparison.Source.Path, out ElementDefinition? sourceEd))
+                {
+                    throw new Exception($"Could not find listed source element: {edComparison.Source.Path}");
+                }
+
+                if (BuildCrossVersionExtension(sdComparison, sourceSd, edComparison, sourceEd, null) is StructureDefinition ext)
+                {
+                    string filename = $"StructureDefinition-{ext.Id}.json";
+                    string path = Path.Combine(outputDir, filename);
+
+                    File.WriteAllText(path, ext.ToJson(jsonSettings));
+                }
+
+                // for data types ONLY, we do not want to nest into the type if it is new (resources can)
+                if (sdComparison.Relationship == null)
+                {
+                    break;
+                }
+            }
+        }
+
+        _ = _source.ResourcesByName.TryGetValue("Basic", out StructureDefinition? basicSd);
+
+        // process resources
+        foreach (StructureComparison sdComparison in packageComparison.Resources.Values.SelectMany(l => l.Select(s => s)).OrderBy(s => s.CompositeName))
+        {
+            // check for relationships we can skip
+            if ((sdComparison.Relationship == CMR.Equivalent) ||
+                (sdComparison.Relationship == CMR.SourceIsNarrowerThanTarget))
+            {
+                continue;
+            }
+
+            // skip the Extension resource
+            if (sdComparison.Source.Id == "Extension")
+            {
+                continue;
+            }
+
+            // grab the structure definition for the source of this comparison
+            if (!_source.ResourcesByName.TryGetValue(sdComparison.Source.Id, out StructureDefinition? sourceSd))
+            {
+                throw new Exception($"Could not find listed source resource: {sdComparison.Source.Id}");
+            }
+
+            // iterate over the elements in this comparison
+            foreach (ElementComparison edComparison in sdComparison.ElementComparisons.Values)
+            {
+                // grab the element definition for the source of this comparison
+                if (!sourceSd.cgTryGetElementByPath(edComparison.Source.Path, out ElementDefinition? sourceEd))
+                {
+                    throw new Exception($"Could not find listed source element: {edComparison.Source.Path}");
+                }
+
+                // TODO(ginoc): For now, we cannot include elements that are narrative type because we cannot make extensions for them
+
+                // if we are adding a new resource, we need to filter out elements that exist in Basic, but not the root
+                if ((sdComparison.Relationship == null) && sourceEd.Path.Contains("."))
+                {
+                    string basicPath = sourceEd.Path.Replace(sdComparison.Source.Id, "Basic");
+                    if (basicSd?.cgTryGetElementByPath(basicPath, out _) ?? false)
+                    {
+                        continue;
+                    }
+                }
+
+                if (BuildCrossVersionExtension(sdComparison, sourceSd, edComparison, sourceEd, basicSd) is StructureDefinition ext)
+                {
+                    string filename = $"StructureDefinition-{ext.Id}.json";
+                    string path = Path.Combine(outputDir, filename);
+
+                    File.WriteAllText(path, ext.ToJson(jsonSettings));
+                }
+            }
+        }
     }
+
+    private StructureDefinition? BuildCrossVersionExtension(
+        StructureComparison sdComparison,
+        StructureDefinition sourceSd,
+        ElementComparison edComparison,
+        ElementDefinition sourceEd,
+        StructureDefinition? basicSd)
+    {
+        // check for relationships with no definitions
+        if ((edComparison.Relationship == CMR.Equivalent) ||
+            (edComparison.Relationship == CMR.SourceIsNarrowerThanTarget))
+        {
+            return null;
+        }
+
+        // do not build extensions for extension elements
+        if ((sourceEd.Type.Count == 1) && (sourceEd.Type[0].Code == "Extension"))
+        {
+            return null;
+        }
+
+        string extensionIdPath = edComparison.Source.Path.Replace("[", "%5B").Replace("]", "%5D");
+
+        // TODO(ginoc): need to determine allowed contexts and replace 'element'
+
+        StructureDefinition ext = new()
+        {
+            Id = extensionIdPath,
+            Url = $"http://hl7.org/fhir/{_sourceShortVersion}/StructureDefinition/extension-{extensionIdPath}",
+            Name = $"XVerExtension{edComparison.Source.Path}",
+            Title = $"Cross-Version Extension for FHIR {_sourceRLiteral}:{edComparison.Source.Path} compared to FHIR {_targetRLiteral}",
+            Description = edComparison.Message,
+            Status = PublicationStatus.Draft,
+            Experimental = true,
+            FhirVersion = FHIRVersion.N5_0_0,
+            Kind = StructureDefinition.StructureDefinitionKind.ComplexType,
+            Abstract = false,
+            Context = [ new() { Type = StructureDefinition.ExtensionContextType.Element, Expression = "element", } ],
+            Type = "Extension",
+            BaseDefinition = "http://hl7.org/fhir/StructureDefinition/Extension",
+            Derivation = StructureDefinition.TypeDerivationRule.Constraint,
+            Differential = new()
+            {
+                Element = new(),
+            },
+        };
+
+        // add this element and any children
+        AddElementToExtension(ext, "Extension", sdComparison, sourceSd, sourceEd, edComparison.Message, basicSd);
+
+        // create a new snapshot
+        ext.Snapshot = new StructureDefinition.SnapshotComponent();
+        ext.Snapshot.Element = _snapshotGenerator.GenerateAsync(ext).Result;
+
+        return ext;
+    }
+
+    public (string? shortText, string? definition, string? comment) GetTextForExtensionElement(ElementDefinition ed, string? reason)
+    {
+        List<string> strings = [];
+
+        if (!string.IsNullOrEmpty(ed.Short))
+        {
+            strings.Add(ed.Short);
+        }
+
+        if (!string.IsNullOrEmpty(ed.Definition) &&
+            !ed.Definition.Equals(ed.Short, StringComparison.Ordinal) &&
+            !ed.Definition.Equals(ed.Short + ".", StringComparison.Ordinal))
+        {
+            strings.Add(ed.Definition);
+        }
+
+        if (!string.IsNullOrEmpty(reason))
+        {
+            strings.Add(reason!);
+        }
+
+        if (!string.IsNullOrEmpty(ed.Comment) &&
+            !ed.Comment.Equals(ed.Short, StringComparison.Ordinal) &&
+            !ed.Comment.Equals(ed.Definition, StringComparison.Ordinal))
+        {
+            strings.Add(ed.Comment);
+        }
+
+        switch (strings.Count)
+        {
+            case 0:
+                return (null, null, null);
+
+            case 1:
+                return (strings[0], null, null);
+
+            case 2:
+                return (strings[0], strings[1], null);
+
+            default:
+                return (strings[0], strings[1], string.Join("\n", strings.Skip(2)));
+        }
+    }
+
+    private void AddElementToExtension(
+        StructureDefinition ext,
+        string elementPath,
+        StructureComparison sdComparison,
+        StructureDefinition sourceSd,
+        ElementDefinition sourceEd,
+        string? reason = null,
+        StructureDefinition? basicSd = null)
+    {
+        // do not build extensions for extension elements
+        if (sourceEd.Type.Count == 1 && sourceEd.Type[0].Code == "Extension")
+        {
+            return;
+        }
+
+        // get the comparison info for this element
+        ElementComparison edComparison = sdComparison.ElementComparisons[sourceEd.Path];
+
+        (string? edShortText, string? edDefinition, string? edComment) = GetTextForExtensionElement(sourceEd, reason);
+
+        ext.Differential.Element.Add(new()
+        {
+            Path = elementPath,
+            Short = edShortText,
+            Definition = edDefinition,
+            Comment = edComment,
+            Min = sourceEd.Min,
+            Max = sourceEd.Max,
+            IsModifier = sourceEd.IsModifier,
+        });
+
+        // check for children
+        ElementDefinition[] children = sourceSd.cgElements(sourceEd.Path, false, false, true).ToArray();
+
+        if (children.Length == 0)
+        {
+            // TODO(ginoc): need to actually map types from earlier versions into complete R5 equivalents here.
+
+            // TODO(ginoc): Bindings are incorrect - need to use the value sets we generate as differentials
+            ext.Differential.Element.Add(new()
+            {
+                Path = elementPath + ".value[x]",
+                Min = 1,
+                Type = GetDifferentialTypes(sourceEd.cgTypesForExt(), edComparison),
+                Binding = sourceEd.Binding,
+            });
+        }
+        else
+        {
+            foreach (ElementDefinition child in children)
+            {
+                if  (basicSd != null)
+                {
+                    string basicPath = sourceEd.Path.Replace(sdComparison.Source.Id, "Basic");
+                    if (basicSd.cgTryGetElementByPath(basicPath, out _))
+                    {
+                        continue;
+                    }
+                }
+
+                // skip the id elements and extensions
+                if ((child.Base?.Path == "Element.id") ||
+                    (child.Base?.Path == "Extension"))
+                {
+                    continue;
+                }
+
+                AddElementToExtension(ext, elementPath + ".extension:" + child.cgName(), sdComparison, sourceSd, child, basicSd: basicSd);
+            }
+        }
+
+        // add the URL based on root or sub-extension
+        if (elementPath == "Extension")
+        {
+            ext.Differential.Element.Add(new()
+            {
+                Path = elementPath + ".url",
+                Fixed = ext.UrlElement,
+            });
+        }
+        else
+        {
+            ext.Differential.Element.Add(new()
+            {
+                Path = elementPath + ".url",
+                Fixed = new FhirUri(sourceEd.cgName(removeChoiceMarker: false).Replace("[", "%5B").Replace("]", "%5D")),
+            });
+        }
+    }
+
+    private List<ElementDefinition.TypeRefComponent> GetDifferentialTypes(
+        List<ElementDefinition.TypeRefComponent> source,
+        ElementComparison edComparison)
+    {
+        List<ElementDefinition.TypeRefComponent> result = [];
+
+        foreach (ElementDefinition.TypeRefComponent sourceTr in source)
+        {
+            ElementTypeComparison? etComparison = edComparison.TargetMappings.FirstOrDefault()?.TypeComparisons[sourceTr.Code];
+
+            if (etComparison == null)
+            {
+                // add this type as is
+                result.Add(sourceTr);
+                continue;
+            }
+
+            // check for types we can skip
+            if ((etComparison.Relationship == CMR.Equivalent) ||
+                (etComparison.Relationship == CMR.SourceIsNarrowerThanTarget))
+            {
+                continue;
+            }
+
+            // start with an empty type
+            ElementDefinition.TypeRefComponent tr = new();
+
+            // iterate over the targets to remove duplicate types/profiles/targetProfiles
+            foreach (ElementTypeComparisonDetails details in etComparison.TargetTypes)
+            {
+                // check for types we should skip
+                if ((details.Relationship == CMR.Equivalent) ||
+                    (details.Relationship == CMR.SourceIsNarrowerThanTarget))
+                {
+                    continue;
+                }
+
+                // add the type
+                tr.Code = sourceTr.Code;
+
+                // check the profiles
+                foreach (string profile in sourceTr.Profile)
+                {
+                    if (details.Target?.Profiles.Contains(profile) == false)
+                    {
+                        tr.ProfileElement.Add(profile);
+                    }
+                }
+
+                // check the target profiles
+                foreach (string targetProfile in sourceTr.TargetProfile)
+                {
+                    if (details.Target?.TargetProfiles.Contains(targetProfile) == false)
+                    {
+                        tr.TargetProfileElement.Add(targetProfile);
+                    }
+                }
+            }
+
+            if (!string.IsNullOrEmpty(tr.Code))
+            {
+                result.Add(tr);
+                continue;
+            }
+
+            //// check to see if there is a matching type on both sides
+            //if (filter.Find(fTR => fTR.Code == sourceTr.Code) is ElementDefinition.TypeRefComponent filterTr)
+            //{
+            //    if ((sourceTr.TargetProfile.Any() == false) && (filterTr.TargetProfile.Any() == false))
+            //    {
+            //        // no target profiles and types match, so skip this
+            //        continue;
+            //    }
+
+            //    List<string> additionalProfiles = sourceTr.TargetProfile.Where(stp => filterTr.TargetProfile.Contains(stp) == false).ToList();
+
+            //    // check for the source having any targets that the filter does not
+            //    if (additionalProfiles.Count != 0)
+            //    {
+            //        // add this type, but only the different profiles
+            //        ElementDefinition.TypeRefComponent filteredTr = (ElementDefinition.TypeRefComponent)sourceTr.DeepCopy();
+            //        filteredTr.TargetProfile = additionalProfiles;
+            //        result.Add(filterTr);
+            //        continue;
+            //    }
+
+            //    // no additional profiles, so skip this
+            //    continue;
+            //}
+
+            //// add this type
+            //result.Add(sourceTr);
+        }
+
+        return result;
+    }
+
+
+    private ValueSet? BuildCrossVersionValueSet(ValueSetComparison comparison)
+    {
+        // check for relationships with no definitions
+        if ((comparison.Relationship == CMR.Equivalent) ||
+            (comparison.Relationship == CMR.SourceIsNarrowerThanTarget))
+        {
+            return null;
+        }
+
+        string sourceDashTarget = $"{_sourceRLiteral}-{_targetRLiteral}";
+        string vsId = $"{sourceDashTarget}-{comparison.Source.Id}";
+
+        ValueSet vs = new()
+        {
+            Url = $"http://hl7.org/fhir/uv/xver/ValueSet/{vsId}",
+            Id = vsId,
+            Version = _crossDefinitionVersion,
+            Name = comparison.Source.Name,
+            Title = comparison.Source.Title,
+            Status = PublicationStatus.Draft,
+            Experimental = true,
+            DateElement = new FhirDateTime(DateTimeOffset.Now),
+            Description = "Cross-version difference of " + comparison.Source.Description,
+            Purpose = comparison.Message,
+            Compose = new()
+            {
+                Include = [],
+            },
+            Expansion = new()
+            {
+                Contains = [],
+            },
+        };
+
+        Dictionary<string, ValueSet.ConceptSetComponent> composeIncludes = [];
+
+        // determine concepts we need to add
+        foreach (ConceptComparison cc in comparison.ConceptComparisons.Values)
+        {
+            // check for relationships with no definitions
+            if ((cc.Relationship == CMR.Equivalent) ||
+                (cc.Relationship == CMR.SourceIsNarrowerThanTarget))
+            {
+                continue;
+            }
+
+            // add to the expansion
+            vs.Expansion.Contains.Add(new()
+            {
+                System = cc.Source.System,
+                Version = cc.Source.Version,
+                Code = cc.Source.Code,
+                Display = cc.Source.Display,
+                Extension = new()
+                {
+                    new Extension("http://hl7.org/fhir/uv/xver/StructureDefinition/cross-version-message", new FhirString(cc.Message)),
+                },
+            });
+
+            // sort out what we need to add to the compose include
+            string key = cc.Source.System + "|" + cc.Source.Version;
+
+            if (!composeIncludes.TryGetValue(key, out ValueSet.ConceptSetComponent? concept))
+            {
+                concept = new();
+                composeIncludes.Add(key, concept);
+            }
+
+            concept.Concept.Add(new()
+            {
+                Code = cc.Source.Code,
+                Display = cc.Source.Display,
+            });
+        }
+
+        // add the compose includes
+        foreach ((string key, ValueSet.ConceptSetComponent concept) in composeIncludes)
+        {
+            string[] parts = key.Split('|');
+            vs.Compose.Include.Add(new()
+            {
+                System = parts[0],
+                Version = parts[1],
+                Concept = concept.Concept,
+            });
+        }
+
+        return vs;
+    }
+
 
     private void WriteResourceTypeMap(
         string outputDir,
@@ -635,7 +1221,7 @@ public class PackageComparer
         writer.WriteLine("| ------ | ----- |");
         foreach ((string status, int count) in counts.OrderBy(kvp => kvp.Key))
         {
-            writer.WriteLine($"{status} | {count} |");
+            writer.WriteLine($"| {status} | {count} |");
         }
         writer.WriteLine();
         writer.WriteLine();
@@ -666,7 +1252,7 @@ public class PackageComparer
         writer.WriteLine("| ------ | ----- |");
         foreach ((string status, int count) in counts.OrderBy(kvp => kvp.Key))
         {
-            writer.WriteLine($"{status} | {count} |");
+            writer.WriteLine($"| {status} | {count} |");
         }
         writer.WriteLine();
         writer.WriteLine();
@@ -697,7 +1283,7 @@ public class PackageComparer
         writer.WriteLine("| ------ | ----- |");
         foreach ((string status, int count) in counts.OrderBy(kvp => kvp.Key))
         {
-            writer.WriteLine($"{status} | {count} |");
+            writer.WriteLine($"| {status} | {count} |");
         }
         writer.WriteLine();
         writer.WriteLine();
@@ -1163,12 +1749,40 @@ public class PackageComparer
                     comparisons.Add(directComparison);
                 }
             }
+
+            // check for something that has no counterpart
+            if (comparisons.Count == 0)
+            {
+                comparisons.Add(new()
+                {
+                    Relationship = null,
+                    Message = $"{sourceVs.Url} does not exist in target and has no mapping",
+                    Source = new()
+                    {
+                        Url = sourceVs.Url,
+                        Id = sourceVs.Id,
+                        Name = sourceVs.Name,
+                        NamePascal = sourceVs.Name.ToPascalCase(),
+                        Title = sourceVs.Title,
+                        Description = sourceVs.Description,
+                    },
+                    Target = null,
+                    CompositeName = $"{_sourceRLiteral}-{sourceVs.Name}",
+                    ConceptComparisons = sourceVs.cgGetFlatConcepts(_source).Select(c => new ConceptComparison()
+                    {
+                        Source = GetInfo(c),
+                        TargetMappings = [],
+                        Relationship = null,
+                        Message = $"{c.Key} does not exist in target and has no mapping",
+                    }).ToDictionary(c => c.Source.Code),
+                });
+            }
         }
 
         return results;
     }
 
-    private bool TryCompareValueSetConcepts(
+    internal bool TryCompareValueSetConcepts(
         ValueSet sourceVs,
         ValueSet targetVs,
         ConceptMap? vsConceptMap,
@@ -1262,7 +1876,9 @@ public class PackageComparer
                                     Target = new()
                                     {
                                         System = targetSystem,
+                                        Version = targetVs.Version,
                                         Code = mapTargetElement.Code,
+                                        Display = mapTargetElement.Display,
                                         Description = string.Empty,
                                     },
                                     Relationship = relationship,
@@ -1399,8 +2015,7 @@ public class PackageComparer
 
         bool IsEquivalentOrNarrower(ConceptComparison cc) =>
             cc.Relationship == CMR.Equivalent ||
-            cc.Relationship == CMR.SourceIsNarrowerThanTarget ||
-            cc.TargetMappings.Count == 0;
+            cc.Relationship == CMR.SourceIsNarrowerThanTarget;
 
         string MessageForConceptRelationship(CMR? r, ConceptMap.SourceElementComponent se, ConceptMap.TargetElementComponent te) => r switch
         {
@@ -1433,7 +2048,7 @@ public class PackageComparer
         _ => ApplyRelationship(mapTargetElement.Relationship ?? CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
     };
 
-    string MessageForPrimitiveRelationship(CMR? r, ConceptMap.SourceElementComponent se, ConceptMap.TargetElementComponent te) => r switch
+    private string MessageForPrimitiveRelationship(CMR? r, ConceptMap.SourceElementComponent se, ConceptMap.TargetElementComponent te) => r switch
     {
         null => $"{_sourceRLiteral} `{se.Code}` has no mapping into {_targetRLiteral} primitives.",
         CMR.Equivalent => $"{_sourceRLiteral} `{se.Code}` is equivalent to {_targetRLiteral} `{te.Code}`.",
@@ -1442,7 +2057,7 @@ public class PackageComparer
     };
 
 
-    string MessageForComparisonRelationship(CMR? r, StructureDefinition sourceSd, StructureDefinition targetSd) => r switch
+    private string MessageForComparisonRelationship(CMR? r, StructureDefinition sourceSd, StructureDefinition targetSd) => r switch
     {
         null => $"There is no mapping from {_sourceRLiteral} `{sourceSd.Name}` to {_targetRLiteral} `{targetSd.Name}`.",
         CMR.Equivalent => $"{_sourceRLiteral} `{sourceSd.Name}` is equivalent to {_targetRLiteral} `{targetSd.Name}`.",
@@ -1494,6 +2109,10 @@ public class PackageComparer
         {
             StructureInfoRec sourceInfo = GetInfo(sourceSd);
 
+            string sourceName = sourceSd.Name.StartsWith("http")
+                ? sourceSd.Id
+                : sourceSd.Name;
+
             HashSet<string> testedTargetNames = [];
 
             if (!results.TryGetValue(sourceCode, out List<PrimitiveTypeComparison>? comparisons))
@@ -1524,13 +2143,17 @@ public class PackageComparer
 
                             if (targetPrimitives.TryGetValue(mapTargetElement.Code, out StructureDefinition? targetSd))
                             {
+                                string targetName = targetSd.Name.StartsWith("http")
+                                    ? targetSd.Id
+                                    : targetSd.Name;
+
                                 comparisons.Add(new()
                                 {
                                     SourceTypeLiteral = sourceCode,
                                     Source = sourceInfo,
                                     TargetTypeLiteral = mapTargetElement.Code,
                                     Target = GetInfo(targetSd),
-                                    CompositeName = $"{_sourceRLiteral}-{sourceSd.Name.ToCamelCase()}-{_targetRLiteral}-{targetSd.Name.ToCamelCase()}",
+                                    CompositeName = $"{_sourceRLiteral}-{sourceName.ToCamelCase()}-{_targetRLiteral}-{targetName.ToCamelCase()}",
                                     Relationship = relationship,
                                     Message = message,
                                 });
@@ -1544,6 +2167,7 @@ public class PackageComparer
                                     TargetTypeLiteral = mapTargetElement.Code,
                                     Target = new()
                                     {
+                                        Id = sourceSd.Id,
                                         Name = mapTargetElement.Code,
                                         Url = string.Empty,
                                         Title = string.Empty,
@@ -1552,7 +2176,7 @@ public class PackageComparer
                                         SnapshotCount = 0,
                                         DifferentialCount = 0,
                                     },
-                                    CompositeName = $"{_sourceRLiteral}-{sourceSd.Name.ToCamelCase()}-{_targetRLiteral}-{mapTargetElement.Code.ToCamelCase()}",
+                                    CompositeName = $"{_sourceRLiteral}-{sourceName.ToCamelCase()}-{_targetRLiteral}-{mapTargetElement.Code.ToCamelCase()}",
                                     Relationship = relationship,
                                     Message = message,
                                 });
@@ -1563,13 +2187,17 @@ public class PackageComparer
             }
             else if (targetPrimitives.TryGetValue(sourceCode, out StructureDefinition? targetSd))
             {
+                string targetName = targetSd.Name.StartsWith("http")
+                    ? targetSd.Id
+                    : targetSd.Name;
+
                 comparisons.Add(new()
                 {
                     SourceTypeLiteral = sourceCode,
                     Source = sourceInfo,
                     TargetTypeLiteral = sourceCode,
                     Target = GetInfo(targetSd),
-                    CompositeName = $"{_sourceRLiteral}-{sourceSd.Name.ToCamelCase()}-{_targetRLiteral}-{targetSd.Name.ToCamelCase()}",
+                    CompositeName = $"{_sourceRLiteral}-{sourceName.ToCamelCase()}-{_targetRLiteral}-{targetName.ToCamelCase()}",
                     Relationship = CMR.Equivalent,
                     Message = $"{_sourceRLiteral} `{sourceCode}` is assumed equivalent to {_targetRLiteral} `{sourceCode}` (no map, but names match)",
                 });
@@ -1628,12 +2256,44 @@ public class PackageComparer
                     comparisons.Add(directComparison);
                 }
             }
+
+            // check for something that has no counterpart
+            if (comparisons.Count == 0)
+            {
+                string sourceName = sourceSd.Name.StartsWith("http") ? sourceSd.Id : sourceSd.Name;
+
+                comparisons.Add(new()
+                {
+                    Relationship = null,
+                    Message = $"{sourceSdName} does not exist in target and has no mapping",
+                    Source = new()
+                    {
+                        Id = sourceSd.Id,
+                        Name = sourceSd.Name,
+                        Url = sourceSd.Url,
+                        Title = sourceSd.Title,
+                        Description = sourceSd.Description,
+                        Purpose = sourceSd.Purpose,
+                        SnapshotCount = sourceSd.Snapshot.Element.Count,
+                        DifferentialCount = sourceSd.Differential.Element.Count,
+                    },
+                    Target = null,
+                    CompositeName = $"{_sourceRLiteral}-{sourceName}",
+                    ElementComparisons = sourceSd.cgElements().Select(e => new ElementComparison()
+                    {
+                        Source = GetInfo(e),
+                        TargetMappings = [],
+                        Relationship = null,
+                        Message = $"{e.Path} does not exist in target and has no mapping",
+                    }).ToDictionary(e => e.Source.Path),
+                });
+            }
         }
 
         return results;
     }
 
-    private bool TryCompareStructureElements(
+    internal bool TryCompareStructureElements(
         StructureDefinition sourceSd,
         StructureDefinition targetSd,
         ConceptMap? sdConceptMap,
@@ -1818,8 +2478,8 @@ public class PackageComparer
             }
         }
 
-        string sourceName = sourceSd.Name.ToPascalCase();
-        string targetName = targetSd.Name.ToPascalCase();
+        string sourceName = sourceSd.Name.StartsWith("http") ? sourceSd.Id.ToPascalCase() : sourceSd.Name.ToPascalCase();
+        string targetName = targetSd.Name.StartsWith("http") ? targetSd.Id.ToPascalCase() : targetSd.Name.ToPascalCase();
 
         CMR? sdRelationship = RelationshipForComparisons(elementComparisons);
 
@@ -1912,8 +2572,8 @@ public class PackageComparer
         ElementInfoRec sourceInfo = GetInfo(sourceEd);
         ElementInfoRec targetInfo = GetInfo(targetEd);
 
-        IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> sourceTypes = sourceEd.cgTypes();
-        IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> targetTypes = targetEd.cgTypes();
+        IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> sourceTypes = sourceEd.cgTypes(coerceToR5: true);
+        IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> targetTypes = targetEd.cgTypes(coerceToR5: true);
 
         List<string> messages = [];
 
@@ -2307,8 +2967,10 @@ public class PackageComparer
         return new()
         {
             System = c.System,
+            Version = c.Version,
             Code = c.Code,
-            Description = c.Display,
+            Display = c.Display,
+            Description = c.Definition,
         };
     }
 
@@ -2317,6 +2979,7 @@ public class PackageComparer
         return new()
         {
             Url = UnversionedUrl(vs.Url),
+            Id = vs.Id,
             Name = vs.Name,
             NamePascal = vs.Name.ToPascalCase(),
             Title = vs.Title,
@@ -2347,7 +3010,7 @@ public class PackageComparer
             MaxCardinalityString = ed.Max,
             ValueSetBindingStrength = ed.Binding?.Strength,
             BindingValueSet = ed.Binding?.ValueSet ?? string.Empty,
-            Types = ed.Type.Select(GetInfo).ToDictionary(i => i.Name),
+            Types = ed.Type.Select(tr => GetInfo(tr.cgAsR5())).ToDictionary(i => string.IsNullOrEmpty(i.Name) ? ed.Path : i.Name),
         };
     }
 
@@ -2355,6 +3018,7 @@ public class PackageComparer
     {
         return new StructureInfoRec()
         {
+            Id = sd.Id,
             Name = sd.Name,
             Url = sd.Url,
             Title = sd.Title,

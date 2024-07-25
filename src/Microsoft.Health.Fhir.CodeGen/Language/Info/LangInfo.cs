@@ -1045,6 +1045,12 @@ public class LangInfo : ILanguage
         _writer.WriteLine($"  Interaction Naming Style: {NamingConvention.PascalCase}");
         //_writer.WriteLine($"  Extension Support: {_options.ExtensionSupport}");
 
+        if (config.LoadStructures.Length != 0)
+        {
+            string restrictions = string.Join("|", config.LoadStructures);
+            _writer.WriteLine($"  Load structures: {restrictions}");
+        }
+
         if (config.ExportStructures.Length != 0)
         {
             string restrictions = string.Join("|", config.ExportStructures);

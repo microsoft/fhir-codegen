@@ -4,6 +4,7 @@
 // </copyright>
 
 
+using System.Text.Json.Nodes;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Configs;
 using Microsoft.Health.Fhir.CodeGen.Loader;
@@ -119,11 +120,7 @@ public class PackageLoadBenchmarks
     {
         CommonSetup();
 
-        _loader = new(new()
-        {
-            CachePath = CachePath,
-            JsonModel = LoaderOptions.JsonDeserializationModel.Poco,
-        });
+        _loader = new(new() { FhirCacheDirectory = CachePath }, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Poco });
     }
 
     /// <summary>
@@ -134,11 +131,7 @@ public class PackageLoadBenchmarks
     {
         CommonSetup();
 
-        _loader = new(new()
-        {
-            CachePath = CachePath,
-            JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
-        });
+        _loader = new(new() { FhirCacheDirectory = CachePath }, new() { JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson });
     }
 
     /// <summary>

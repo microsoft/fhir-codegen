@@ -16,6 +16,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="_ForPackages\IniData.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="brianpos.Fhir.Base.FhirPath.Validator" Version="5.8.2-rc3" />
     <PackageReference Include="Firely.Fhir.Packages" Version="4.6.0" />
     <PackageReference Include="Hl7.Fhir.R5" Version="5.8.2" />

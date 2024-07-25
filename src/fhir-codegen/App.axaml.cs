@@ -1,9 +1,11 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Controls.Templates;
 using Avalonia.Markup.Xaml;
 using fhir_codegen.ViewModels;
 using fhir_codegen.Views;
+using Splat;
 
 namespace fhir_codegen;
 
