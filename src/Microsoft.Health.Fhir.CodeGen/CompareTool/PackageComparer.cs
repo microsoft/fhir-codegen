@@ -97,6 +97,12 @@ public class PackageComparer
         //"urn:iso:std:iso:3166:-2",
     ];
 
+    internal static readonly HashSet<string> _exclusionBaseTypes =
+    [
+        "Element.id",
+        "Extension",
+    ];
+
     public PackageComparer(ConfigCompare config, DefinitionCollection source, DefinitionCollection target)
     {
         _config = config;
@@ -482,6 +488,18 @@ public class PackageComparer
             }
         }
 
+        // determine the types we have that cannot be used as extension values
+        Dictionary<string, List<string>> nonExtensionTypesAndContexts = [];
+        HashSet<string> allowedExtTypes = [];
+
+        if (_target.ResourcesByName.TryGetValue("Extension", out StructureDefinition? targetExtensionSd) &&
+            targetExtensionSd.cgTryGetElementByPath("Extension.value[x]", out ElementDefinition? targetExtensionValueEd))
+        {
+            allowedExtTypes = new(targetExtensionValueEd.cgTypes().Keys);
+        }
+
+        Dictionary<string, string> complexTypeExtensionMap = [];
+
         // process complex types
         foreach (StructureComparison sdComparison in packageComparison.ComplexTypes.Values.SelectMany(l => l.Select(s => s)).OrderBy(s => s.CompositeName))
         {
@@ -507,9 +525,16 @@ public class PackageComparer
                     throw new Exception($"Could not find listed source element: {edComparison.Source.Path}");
                 }
 
-                if (BuildCrossVersionExtension(sdComparison, sourceSd, edComparison, sourceEd, null) is StructureDefinition ext)
+                StructureDefinition? ext = BuildCrossVersionExtension(
+                    sdComparison,
+                    sourceSd,
+                    edComparison,
+                    sourceEd,
+                    allowedExtTypes,
+                    nonExtensionTypesAndContexts);
+                if (ext != null)
                 {
-                    string filename = $"StructureDefinition-{ext.Id}.json";
+                    string filename = $"StructureDefinition-{ext.Id.Replace("%5Bx%5D", "")}.json";
                     string path = Path.Combine(outputDir, filename);
 
                     File.WriteAllText(path, ext.ToJson(jsonSettings));
@@ -518,6 +543,12 @@ public class PackageComparer
                 // for data types ONLY, we do not want to nest into the type if it is new (resources can)
                 if (sdComparison.Relationship == null)
                 {
+                    if (ext != null)
+                    {
+                        // add if we have a datatype extension, add it to our map
+                        complexTypeExtensionMap.Add(sourceSd.Id, ext.Url);
+                    }
+
                     break;
                 }
             }
@@ -556,7 +587,12 @@ public class PackageComparer
                     throw new Exception($"Could not find listed source element: {edComparison.Source.Path}");
                 }
 
-                // TODO(ginoc): For now, we cannot include elements that are narrative type because we cannot make extensions for them
+                // skip Element.id and Extension definitions
+                if ((!string.IsNullOrEmpty(sourceEd.Base?.Path)) &&
+                    _exclusionBaseTypes.Contains(sourceEd.Base!.Path))
+                {
+                    continue;
+                }
 
                 // if we are adding a new resource, we need to filter out elements that exist in Basic, but not the root
                 if ((sdComparison.Relationship == null) && sourceEd.Path.Contains("."))
@@ -568,23 +604,40 @@ public class PackageComparer
                     }
                 }
 
-                if (BuildCrossVersionExtension(sdComparison, sourceSd, edComparison, sourceEd, basicSd) is StructureDefinition ext)
+                StructureDefinition? ext = BuildCrossVersionExtension(
+                    sdComparison,
+                    sourceSd,
+                    edComparison,
+                    sourceEd,
+                    allowedExtTypes,
+                    nonExtensionTypesAndContexts,
+                    basicSd,
+                    complexTypeExtensionMap);
+                if (ext != null)
                 {
-                    string filename = $"StructureDefinition-{ext.Id}.json";
+                    string filename = $"StructureDefinition-{ext.Id.Replace("%5Bx%5D", "")}.json";
                     string path = Path.Combine(outputDir, filename);
 
                     File.WriteAllText(path, ext.ToJson(jsonSettings));
                 }
             }
         }
+
+        // TODO(ginoc): need to process complex types that did not need to be generated for differences but are needed because they are not valid extension types
     }
+
+    private string ExtensionUrlForElementPath(string path) =>
+        $"http://hl7.org/fhir/{_sourceShortVersion}/StructureDefinition/extension-{path.Replace("[", "%5B").Replace("]", "%5D")}";
 
     private StructureDefinition? BuildCrossVersionExtension(
         StructureComparison sdComparison,
         StructureDefinition sourceSd,
         ElementComparison edComparison,
         ElementDefinition sourceEd,
-        StructureDefinition? basicSd)
+        HashSet<string> allowedExtensionTypes,
+        Dictionary<string, List<string>> nonExtensionTypesAndContexts,
+        StructureDefinition? basicSd = null,
+        Dictionary<string, string>? complexTypeExtensionMap = null)
     {
         // check for relationships with no definitions
         if ((edComparison.Relationship == CMR.Equivalent) ||
@@ -601,12 +654,46 @@ public class PackageComparer
 
         string extensionIdPath = edComparison.Source.Path.Replace("[", "%5B").Replace("]", "%5D");
 
-        // TODO(ginoc): need to determine allowed contexts and replace 'element'
+        // determine the context based on the closest path that has a target
+        StructureDefinition.ContextComponent context = new() { Type = StructureDefinition.ExtensionContextType.Element, };
+        string searchPath = sourceEd.Path;
+        while (!string.IsNullOrEmpty(searchPath))
+        {
+            // get the comparison for this path
+            if (sdComparison.ElementComparisons.TryGetValue(searchPath, out ElementComparison? contextComparison))
+            {
+                // check for a target
+                if (contextComparison.TargetMappings.FirstOrDefault()?.Target is ElementInfoRec ctxTarget)
+                {
+                    context.Expression = ctxTarget.Path;
+                    break;
+                }
+            }
+
+            // trim the path down
+            int index = searchPath.LastIndexOf('.');
+            if (index == -1)
+            {
+                searchPath = string.Empty;
+            }
+            else
+            {
+                searchPath = searchPath[..index];
+            }
+        }
+
+        if (string.IsNullOrEmpty(context.Expression))
+        {
+            // check for a structure target, use basic if there is none
+            context.Expression = sdComparison.Target?.Id ?? "Basic";
+        }
+
+        // complex types always have the context of element
 
         StructureDefinition ext = new()
         {
             Id = extensionIdPath,
-            Url = $"http://hl7.org/fhir/{_sourceShortVersion}/StructureDefinition/extension-{extensionIdPath}",
+            Url = ExtensionUrlForElementPath(extensionIdPath),
             Name = $"XVerExtension{edComparison.Source.Path}",
             Title = $"Cross-Version Extension for FHIR {_sourceRLiteral}:{edComparison.Source.Path} compared to FHIR {_targetRLiteral}",
             Description = edComparison.Message,
@@ -615,7 +702,7 @@ public class PackageComparer
             FhirVersion = FHIRVersion.N5_0_0,
             Kind = StructureDefinition.StructureDefinitionKind.ComplexType,
             Abstract = false,
-            Context = [ new() { Type = StructureDefinition.ExtensionContextType.Element, Expression = "element", } ],
+            Context = [ context ],
             Type = "Extension",
             BaseDefinition = "http://hl7.org/fhir/StructureDefinition/Extension",
             Derivation = StructureDefinition.TypeDerivationRule.Constraint,
@@ -626,7 +713,17 @@ public class PackageComparer
         };
 
         // add this element and any children
-        AddElementToExtension(ext, "Extension", sdComparison, sourceSd, sourceEd, edComparison.Message, basicSd);
+        AddElementToExtension(
+            ext,
+            "Extension",
+            sdComparison,
+            sourceSd,
+            sourceEd,
+            allowedExtensionTypes,
+            nonExtensionTypesAndContexts,
+            edComparison.Message,
+            basicSd,
+            complexTypeExtensionMap);
 
         // create a new snapshot
         ext.Snapshot = new StructureDefinition.SnapshotComponent();
@@ -685,8 +782,11 @@ public class PackageComparer
         StructureComparison sdComparison,
         StructureDefinition sourceSd,
         ElementDefinition sourceEd,
+        HashSet<string> allowedExtensionTypes,
+        Dictionary<string, List<string>> nonExtensionTypesAndContexts,
         string? reason = null,
-        StructureDefinition? basicSd = null)
+        StructureDefinition? basicSd = null,
+        Dictionary<string, string>? complexTypeExtensionMap = null)
     {
         // do not build extensions for extension elements
         if (sourceEd.Type.Count == 1 && sourceEd.Type[0].Code == "Extension")
@@ -715,16 +815,116 @@ public class PackageComparer
 
         if (children.Length == 0)
         {
-            // TODO(ginoc): need to actually map types from earlier versions into complete R5 equivalents here.
+            Dictionary<string, string> sliceUrisByType = [];
+            List<ElementDefinition.TypeRefComponent> valueTypes = [];
+            List<string> promotedReferences = [];
 
-            // TODO(ginoc): Bindings are incorrect - need to use the value sets we generate as differentials
-            ext.Differential.Element.Add(new()
+            // get the differential types for this element
+            List<ElementDefinition.TypeRefComponent> requestedValueTypes = GetDifferentialTypes(sourceEd.cgTypesForExt(), edComparison);
+
+            foreach (ElementDefinition.TypeRefComponent tr in requestedValueTypes)
             {
-                Path = elementPath + ".value[x]",
-                Min = 1,
-                Type = GetDifferentialTypes(sourceEd.cgTypesForExt(), edComparison),
-                Binding = sourceEd.Binding,
-            });
+                // check to see if this is in the complex extension map
+                if (complexTypeExtensionMap?.TryGetValue(tr.Code, out string? ctUri) == true)
+                {
+                    // add a slice uri for this
+                    sliceUrisByType.Add(tr.Code, ctUri);
+
+                    continue;
+                }
+
+                // check to see if this points to a resource
+                if (_source.ResourcesByName.ContainsKey(tr.Code))
+                {
+                    if (tr.Code.Contains('/'))
+                    {
+                        promotedReferences.Add(tr.Code);
+                    }
+                    else
+                    {
+                        promotedReferences.Add("http://hl7.org/fhir/StructureDefinition/" + tr.Code);
+                    }
+
+                    continue;
+                }
+
+                // TODO(ginoc): need to sort out what to do with types that are not allowed as extension values
+                // check to see if this type is not allowed in extensions
+                if (allowedExtensionTypes.Contains(tr.Code) == false)
+                {
+                    // add this type to the non-extension types
+                    if (nonExtensionTypesAndContexts.TryGetValue(tr.Code, out List<string>? contexts) == false)
+                    {
+                        contexts = new();
+                        nonExtensionTypesAndContexts.Add(tr.Code, contexts);
+                    }
+
+                    // for now, just add the path to our tracking dictionary
+                    // TODO(ginoc): likely need the extension URL, but need to sort out nested URLs
+                    contexts.Add(sourceEd.Path);
+
+                    // add a slice uri for this
+                    sliceUrisByType.Add(tr.Code, ExtensionUrlForElementPath(tr.Code));
+
+                    continue;
+                }
+
+                // add this type
+                valueTypes.Add(tr);
+            }
+
+            // check for the number of allowed types
+            if (valueTypes.Count == 0)
+            {
+                // not allowed a value if there are no allowed types
+                ext.Differential.Element.Add(new()
+                {
+                    Path = elementPath + ".value[x]",
+                    Max = "0",
+                });
+            }
+            else
+            {
+                // handle any promoted reference types
+                if (promotedReferences.Count != 0)
+                {
+                    ElementDefinition.TypeRefComponent? valueReference = valueTypes.FirstOrDefault(t => t.Code == "Reference");
+                    bool addReference = valueReference == null;
+                    valueReference ??= new() { Code = "Reference", TargetProfile = [], };
+
+                    // set our profiles to match both sets
+                    valueReference.TargetProfile = promotedReferences.Union(valueReference.TargetProfile);
+
+                    if (addReference)
+                    {
+                        valueTypes.Add(valueReference);
+                    }
+                }
+
+                // TODO(ginoc): Bindings are incorrect - need to use the value sets we generate as differentials
+                ext.Differential.Element.Add(new()
+                {
+                    Path = elementPath + ".value[x]",
+                    Min = 1,
+                    Type = valueTypes,
+                    Binding = sourceEd.Binding,
+                });
+            }
+
+            // check for any sub-extension profiles (complex types that do not exist)
+            if (sliceUrisByType.Count != 0)
+            {
+                foreach ((string sliceType, string sliceUri) in sliceUrisByType)
+                {
+                    ext.Differential.Element.Add(new()
+                    {
+                        Path = elementPath + ".extension:" + sliceType,
+                        SliceName = sliceType,
+                        SliceIsConstraining = true,
+                        Type = new() { new() { Code = "Extension", Profile = [ sliceUri ] } },
+                    });
+                }
+            }
         }
         else
         {
@@ -739,14 +939,23 @@ public class PackageComparer
                     }
                 }
 
-                // skip the id elements and extensions
-                if ((child.Base?.Path == "Element.id") ||
-                    (child.Base?.Path == "Extension"))
+                // skip Element.id and Extension definitions
+                if ((!string.IsNullOrEmpty(child.Base?.Path)) &&
+                     _exclusionBaseTypes.Contains(child.Base!.Path))
                 {
                     continue;
                 }
 
-                AddElementToExtension(ext, elementPath + ".extension:" + child.cgName(), sdComparison, sourceSd, child, basicSd: basicSd);
+                AddElementToExtension(
+                    ext,
+                    elementPath + ".extension:" + child.cgName(),
+                    sdComparison,
+                    sourceSd,
+                    child,
+                    allowedExtensionTypes,
+                    nonExtensionTypesAndContexts,
+                    basicSd: basicSd,
+                    complexTypeExtensionMap: complexTypeExtensionMap);
             }
         }
 
