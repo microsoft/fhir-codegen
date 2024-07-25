@@ -461,14 +461,14 @@ public class CrossVersionMapCollection
         // Now scan for dependencies in rules
         foreach(var rule in group.Expressions)
         {
-            VerifyFmlGroupRule("     ", fml, group, _aliasedTypes, options, issues, parameterTypesByName, rule, comparison);
+            VerifyFmlGroupRule("     ", fml, group, _aliasedTypes, options, issues, parameterTypesByName, rule);
         }
         Console.WriteLine("  }");
 
         return issues;
     }
 
-    private static void VerifyFmlGroupRule(string prefix, FhirStructureMap fml, GroupDeclaration group, Dictionary<string, StructureDefinition?> _aliasedTypes, ValidateMapOptions options, List<OperationOutcome.IssueComponent> issues, Dictionary<string, PropertyOrTypeDetails?> parameterTypesByName, GroupExpression rule, StructureComparison? comparison)
+    private static void VerifyFmlGroupRule(string prefix, FhirStructureMap fml, GroupDeclaration group, Dictionary<string, StructureDefinition?> _aliasedTypes, ValidateMapOptions options, List<OperationOutcome.IssueComponent> issues, Dictionary<string, PropertyOrTypeDetails?> parameterTypesByName, GroupExpression rule)
     {
         Console.Write(prefix);
 
@@ -808,7 +808,7 @@ public class CrossVersionMapCollection
                 // process any expressions as a result of any
                 foreach (var childRule in de.Expressions)
                 {
-                    VerifyFmlGroupRule(prefix + "     ", fml, group, _aliasedTypes, options, issues, parameterTypesByNameForRule, childRule, comparison);
+                    VerifyFmlGroupRule(prefix + "     ", fml, group, _aliasedTypes, options, issues, parameterTypesByNameForRule, childRule);
                 }
             }
         }
