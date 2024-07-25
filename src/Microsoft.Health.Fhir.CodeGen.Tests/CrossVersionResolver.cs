@@ -6,6 +6,7 @@ using Hl7.Fhir.Utility;
 //using Microsoft.Extensions.Logging;
 using Microsoft.Health.Fhir.CodeGen.Loader;
 using Microsoft.Health.Fhir.CodeGen.Models;
+using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 
 namespace Microsoft.Health.Fhir.CodeGen.Tests;
@@ -152,19 +153,44 @@ internal class CrossVersionResolver : IAsyncResourceResolver
         //r5 = ZipSource.CreateValidationSource();
     }
 
-    public async System.Threading.Tasks.Task Initialize(string[] versions)
+    public async System.Threading.Tasks.Task<IEnumerable<DefinitionCollection>> Initialize(string[] versions)
     {
-        PackageLoader loader = new(new() { AutoLoadExpansions = false, ResolvePackageDependencies = false });
-        if (r5 == null && versions.Contains("5"))
-            r5 = await LoadPackage(loader, "hl7.fhir.r5.core#5.0.0");
-        if (r4b == null && versions.Contains("4B"))
-            r4b = await LoadPackage(loader, "hl7.fhir.r4b.core#4.3.0");
-        if (r4 == null && versions.Contains("4"))
-            r4 = await LoadPackage(loader, "hl7.fhir.r4.core#4.0.1");
-        if (stu3 == null && versions.Contains("3"))
-            stu3 = await LoadPackage(loader, "hl7.fhir.r3.core#3.0.2");
-        if (dstu2 == null && versions.Contains("2"))
-            dstu2 = await LoadPackage(loader, "hl7.fhir.r2.core#1.0.2");
+        List<DefinitionCollection> result = new List<DefinitionCollection>();
+        PackageLoader loader = new(new() { AutoLoadExpansions = false, ResolvePackageDependencies = false, LoadStructures = [ FhirArtifactClassEnum.Resource, FhirArtifactClassEnum.ComplexType, FhirArtifactClassEnum.PrimitiveType ] });
+        foreach (var version in versions)
+        {
+            if (version == "5")
+            {
+                if (r5 == null)
+                    r5 = await LoadPackage(loader, "hl7.fhir.r5.core#5.0.0");
+                result.Add((DefinitionCollection)r5);
+            }
+            if (version == "4B")
+            {
+                if (r4b == null)
+                    r4b = await LoadPackage(loader, "hl7.fhir.r4b.core#4.3.0");
+                result.Add((DefinitionCollection)r4b);
+            }
+            if (version == "4")
+            {
+                if (r4 == null)
+                    r4 = await LoadPackage(loader, "hl7.fhir.r4.core#4.0.1");
+                result.Add((DefinitionCollection)r4);
+            }
+            if (version == "3")
+            {
+                if (stu3 == null)
+                    stu3 = await LoadPackage(loader, "hl7.fhir.r3.core#3.0.2");
+                result.Add((DefinitionCollection)stu3);
+            }
+            if (version == "2")
+            {
+                if (dstu2 == null)
+                    dstu2 = await LoadPackage(loader, "hl7.fhir.r2.core#1.0.2");
+                result.Add((DefinitionCollection)dstu2);
+            }
+        }
+        return result;
     }
 
     /// <summary>Loads.</summary>
@@ -173,7 +199,7 @@ internal class CrossVersionResolver : IAsyncResourceResolver
     /// <returns>A PackageCacheEntry.</returns>
     private async Task<DefinitionCollection> LoadPackage(PackageLoader loader, string directive)
     {
-        DefinitionCollection? loaded = await loader.LoadPackages([directive]);
+        DefinitionCollection? loaded = await loader.LoadPackages( [ directive ] );
         if (loaded == null)
         {
             throw new ApplicationException($"Failed to load package {directive} into cache");
@@ -198,6 +224,7 @@ internal class CrossVersionResolver : IAsyncResourceResolver
     IAsyncResourceResolver r4;
     IAsyncResourceResolver r4b;
     IAsyncResourceResolver r5;
+
     const string fhirBaseCanonical = "http://hl7.org/fhir/";
 
     public static string ConvertCanonical(string uri)

@@ -298,7 +298,7 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
         {
             Name = context.ID().GetText(),
             Parameters = parameters,
-            ExtendsIdentifier = GetString(context.extends()),
+            ExtendsIdentifier = context.extends() == null ? null : GetString(context.extends().ID()),
             TypeModeLiteral = context.typeMode()?.GetText(),
             TypeMode = GetTypeMode(context.typeMode()?.GetText()),              // note this is handled differently because the FML values are different than the FHIR values
             Expressions = expressions,
@@ -350,6 +350,7 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                         {
                             Source = GetString(mapSimpleCopy.qualifiedIdentifier()[0])!,
                             Target = GetString(mapSimpleCopy.qualifiedIdentifier()[1])!,
+                            Name = mapSimpleCopy.mapExpressionName() != null ? GetString(mapSimpleCopy.mapExpressionName()) : null,
 
                             RawText = ctx.Start.InputStream.GetText(new Interval(ctx.Start.StartIndex, ctx.Stop.StopIndex)),
                             PrefixComments = GetPrefixComments(ctx),

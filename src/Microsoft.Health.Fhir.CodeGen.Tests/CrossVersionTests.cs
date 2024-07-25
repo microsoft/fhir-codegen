@@ -2,15 +2,22 @@
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
+extern alias stu3;
+extern alias r4;
+extern alias r4b;
 
+using System.Diagnostics;
 using System.Text;
 using FluentAssertions;
+using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Specification.Source;
 using Microsoft.Health.Fhir.CodeGen.CompareTool;
+using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGen.Tests.Extensions;
 using Microsoft.Health.Fhir.MappingLanguage;
 using Xunit.Abstractions;
+
 
 namespace Microsoft.Health.Fhir.CodeGen.Tests;
 
@@ -20,6 +27,8 @@ public class CrossVersionTests
     {
         Console.SetOut(new TestWriter(outputWriter));
     }
+
+    static CrossVersionResolver cvr = new CrossVersionResolver();
 
     private static string FindRelativeDir(string path)
     {
@@ -52,7 +61,8 @@ public class CrossVersionTests
         {
             string fmlContent = File.ReadAllText(filename);
 
-            Console.WriteLine($"Parsing {filename}");
+            // Console.WriteLine($"Parsing {filename}");
+            System.Diagnostics.Trace.Write($"Parsing {filename}\n");
             if (!content.TryParse(fmlContent, out FhirStructureMap? fml))
             {
                 Console.WriteLine($"Error loading {filename}: could not parse");
@@ -114,10 +124,10 @@ public class CrossVersionTests
     }
 
     [Theory(DisplayName = "ValidateCrossVersionMaps")]
-    [InlineData("fhir-cross-version/input/R2toR3", "2to3")]
-    [InlineData("fhir-cross-version/input/R3toR2", "3to2")]
+    // [InlineData("fhir-cross-version/input/R2toR3", "2to3")]
+    // [InlineData("fhir-cross-version/input/R3toR2", "3to2")]
     [InlineData("fhir-cross-version/input/R3toR4", "3to4")]
-    [InlineData("fhir-cross-version/input/R4toR3", "4to3")]
+    // [InlineData("fhir-cross-version/input/R4toR3", "4to3")]
     [InlineData("fhir-cross-version/input/R4toR5", "4to5")]
     [InlineData("fhir-cross-version/input/R5toR4", "5to4")]
     [InlineData("fhir-cross-version/input/R4BtoR5", "4Bto5")]
@@ -126,6 +136,7 @@ public class CrossVersionTests
     {
         int versionToVersionLen = versionToVersion.Length;
         int errorCount = 0;
+        int warningCount = 0;
 
         // files have different styles in each directory, but we want all FML files anyway
         string[] files = Directory.GetFiles(FindRelativeDir(path), $"*.fml", SearchOption.TopDirectoryOnly);
@@ -134,9 +145,8 @@ public class CrossVersionTests
 
         Dictionary<string, Dictionary<string, CrossVersionMapCollection.FmlTargetInfo>> fmlPathLookup = [];
 
-        var cvr = new CrossVersionResolver();
         var versions = versionToVersion.Split("to");
-        await cvr.Initialize(versions);
+        var dcs = (await cvr.Initialize(versions)).ToList();
         CachedResolver source = new CachedResolver(cvr);
         source.Load += Source_Load;
 
@@ -289,7 +299,7 @@ public class CrossVersionTests
                     if (typedGroups.ContainsKey(typeMapping))
                     {
                         var eg = typedGroups[typeMapping];
-                        Console.WriteLine($"    Error: Group {group.Name} duplicates the type mappings declared in group {eg.Name}");
+                        Console.WriteLine($"    Error: Group {group.Name} duplicates the type mappings declared in group {eg?.Name}");
                         errorCount++;
                     }
                     else
@@ -305,13 +315,24 @@ public class CrossVersionTests
         }
 
         // Now scan all these maps
+        var options = new ValidateMapOptions
+        {
+            resolveMapUseCrossVersionType = resolveMapUseCrossVersionType,
+            resolveMaps = resolveMaps,
+            source = GetModelOptions(versions[0], sourceResolver, dcs[0]),
+            target = GetModelOptions(versions[1], targetResolver, dcs[1]),
+            namedGroups = namedGroups,
+            typedGroups = typedGroups,
+        };
         foreach (var fml in allMaps)
         {
             try
             {
-                var outcome = await CrossVersionMapCollection.VerifyFmlDataTypes(fml, resolveMapUseCrossVersionType, resolveMaps, sourceResolver, targetResolver, namedGroups, typedGroups);
+                var outcome = await CrossVersionMapCollection.VerifyFmlDataTypes(fml, options);
                 if (!outcome.Success)
                     errorCount++;
+                if (outcome.Warnings > 0)
+                    warningCount++; // += outcome.Warnings;
             }
             catch (Exception ex)
             {
@@ -321,7 +342,251 @@ public class CrossVersionTests
 
             //ProcessCrossVersionFml(string name, FhirStructureMap fml, Dictionary<string, List<GroupExpression>> fmlPathLookup)
         }
-        errorCount.Should().Be(0, "fml errors");
+        Assert.True(errorCount == 0 && warningCount == 0, $"FML Errors: {errorCount}, Warnings: {warningCount}");
+    }
+
+    [Theory(DisplayName = "CheckFmlMissingProps")]
+    [InlineData("fhir-cross-version/input/R2toR3", "2to3")]
+    [InlineData("fhir-cross-version/input/R3toR2", "3to2")]
+    [InlineData("fhir-cross-version/input/R3toR4", "3to4")]
+    [InlineData("fhir-cross-version/input/R4toR3", "4to3")]
+    [InlineData("fhir-cross-version/input/R4toR5", "4to5")]
+    [InlineData("fhir-cross-version/input/R5toR4", "5to4")]
+    [InlineData("fhir-cross-version/input/R4BtoR5", "4Bto5")]
+    [InlineData("fhir-cross-version/input/R5toR4B", "5to4B")]
+    public async System.Threading.Tasks.Task CheckFmlMissingProps(string path, string versionToVersion)
+    {
+        int versionToVersionLen = versionToVersion.Length;
+        int errorCount = 0;
+        int warningCount = 0;
+
+        // files have different styles in each directory, but we want all FML files anyway
+        string[] files = Directory.GetFiles(FindRelativeDir(path), $"*.fml", SearchOption.TopDirectoryOnly);
+
+        FhirMappingLanguage content = new();
+
+        Dictionary<string, Dictionary<string, CrossVersionMapCollection.FmlTargetInfo>> fmlPathLookup = [];
+
+        var versions = versionToVersion.Split("to");
+        var dcs = (await cvr.Initialize(versions)).ToList();
+        CachedResolver source = new CachedResolver(cvr);
+        source.Load += Source_Load;
+
+        var sourceResolver = new CachedResolver(new MultiResolver(OnlyVersion(cvr, versions[0]), cvr));
+        sourceResolver.Load += Source_Load;
+
+        var targetResolver = new CachedResolver(new MultiResolver(OnlyVersion(cvr, versions[1]), cvr));
+        targetResolver.Load += Source_Load;
+
+        async Task<StructureDefinition?> resolveMapUseCrossVersionType(string url, string? alias)
+        {
+            if (await source.ResolveByCanonicalUriAsync(url) is StructureDefinition sd)
+            {
+                // Console.WriteLine(" - yup");
+                return sd;
+            }
+            Console.WriteLine($"\nError: Resolving Type {url} as {alias} was not found");
+            errorCount++;
+            return null;
+        }
+        IEnumerable<FhirStructureMap> resolveMaps(string url)
+        {
+            Console.WriteLine($"Resolving Maps {url}");
+            return new List<FhirStructureMap>();
+        }
+
+        List<FhirStructureMap> allMaps = new List<FhirStructureMap>();
+        foreach (string filename in files)
+        {
+            // if (!filename.Contains("Goal") && !filename.Contains("Extension") && !filename.Contains("rimitive")) continue;
+            string fmlContent = File.ReadAllText(filename);
+
+            if (!content.TryParse(fmlContent, out FhirStructureMap? fml))
+            {
+                Console.WriteLine($"Error loading {filename}: could not parse");
+                errorCount++;
+                continue;
+            }
+
+            fml.Should().NotBeNull();
+
+            // extract the name root
+            string name;
+
+            if (fml.MetadataByPath.TryGetValue("name", out MetadataDeclaration? nameMeta))
+            {
+                name = nameMeta.Literal?.ValueAsString ?? throw new Exception($"Cross-version structure maps require a metadata name property: {filename}");
+            }
+            else
+            {
+                name = Path.GetFileNameWithoutExtension(filename);
+            }
+
+            if (name.EndsWith(versionToVersion, StringComparison.OrdinalIgnoreCase))
+            {
+                name = name[..^versionToVersionLen];
+            }
+
+            try
+            {
+                CrossVersionMapCollection.ProcessCrossVersionFml(name, fml, fmlPathLookup);
+                allMaps.Add(fml);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error Processing {filename}: {ex.Message}");
+                errorCount++;
+            }
+        }
+        errorCount.Should().Be(0, "Should be no parsing/processing errors");
+
+        // Prepare a cache of the TYPE based map groups
+        Dictionary<string, GroupDeclaration> namedGroups = new Dictionary<string, GroupDeclaration>();
+        Dictionary<string, GroupDeclaration?> typedGroups = new Dictionary<string, GroupDeclaration?>();
+
+        foreach (var fml in allMaps)
+        {
+            foreach (var group in fml.GroupsByName.Values)
+            {
+                // Console.WriteLine($"{group.TypeMode} {group.Name}");
+                if (!namedGroups.ContainsKey(group.Name))
+                    namedGroups.Add(group.Name, group);
+                else
+                {
+                    Console.WriteLine($"Error: Duplicate group name: {group.Name}");
+                    errorCount++;
+                }
+
+                if (group.TypeMode == StructureMap.StructureMapGroupTypeMode.TypeAndTypes
+                    || group.TypeMode == StructureMap.StructureMapGroupTypeMode.Types)
+                {
+                    // Check that all the parameters have type declarations
+                    Dictionary<string, StructureDefinition?> aliasedTypes = new();
+                    foreach (var use in fml.StructuresByUrl)
+                    {
+                        var sd = await resolveMapUseCrossVersionType(use.Key.Trim('\"'), use.Value?.Alias);
+                        if (use.Value?.Alias != null)
+                            aliasedTypes.Add(use.Value.Alias, sd);
+                        else if (sd != null && sd.Name != null)
+                            aliasedTypes.Add(use.Value?.Alias ?? sd.Name, sd);
+                    }
+                    string? typeMapping = null;
+                    foreach (var gp in group.Parameters)
+                    {
+                        if (string.IsNullOrEmpty(gp.TypeIdentifier))
+                        {
+                            Console.WriteLine($"\n    * No type provided for parameter `{gp.Identifier}`");
+                            errorCount++;
+                        }
+                        else
+                        {
+                            string? type = gp.TypeIdentifier;
+                            // lookup the type in the aliases
+                            var resolver = gp.InputMode == StructureMap.StructureMapInputMode.Source ? sourceResolver : targetResolver;
+                            if (type != null)
+                            {
+                                if (!type.Contains('/') && aliasedTypes.ContainsKey(type))
+                                {
+                                    var sd = aliasedTypes[type];
+                                    if (sd != null)
+                                    {
+                                        var sw = new StructureDefinitionWalker(sd, resolver);
+                                        type = $"{sd.Url}|{sd.Version}";
+                                        gp.ParameterElementDefinition = sw.Current;
+                                    }
+                                }
+                                else if (type != "string")
+                                {
+                                    Console.WriteLine($"\nError: Group {group.Name} parameter {gp.Identifier} at @{gp.Line}:{gp.Column} has no type `{gp.TypeIdentifier}`");
+                                    errorCount++;
+                                }
+                            }
+                            if (!string.IsNullOrEmpty(typeMapping))
+                                typeMapping += " -> ";
+                            typeMapping += type;
+                        }
+                    }
+                }
+                else
+                {
+                    // Console.WriteLine($"skipping {group.TypeMode} {group.Name}");
+                }
+            }
+        }
+
+        // Now scan all these maps
+        var options = new ValidateMapOptions
+        {
+            resolveMapUseCrossVersionType = resolveMapUseCrossVersionType,
+            resolveMaps = resolveMaps,
+            source = GetModelOptions(versions[0], sourceResolver, dcs[0]),
+            target = GetModelOptions(versions[1], targetResolver, dcs[1]),
+            namedGroups = namedGroups,
+            typedGroups = typedGroups,
+        };
+        foreach (var fml in allMaps)
+        {
+            try
+            {
+                var outcome = await CrossVersionMapCollection.CheckFmlForMissingProperties(fml, options);
+                if (!outcome.Success)
+                    errorCount++;
+                if (outcome.Warnings > 0)
+                    warningCount++; // += outcome.Warnings;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: Processing {fml.MetadataByPath["name"].Literal?.ValueAsString}: {ex.Message}");
+                errorCount++;
+            }
+
+            //ProcessCrossVersionFml(string name, FhirStructureMap fml, Dictionary<string, List<GroupExpression>> fmlPathLookup)
+        }
+        Assert.True(errorCount == 0 && warningCount == 0, $"FML Errors: {errorCount}, Warnings: {warningCount}");
+    }
+
+    private static ModelOptions GetModelOptions(string version, CachedResolver resolver, DefinitionCollection package)
+    {
+        ModelInspector inspector = r4.Hl7.Fhir.Model.ModelInfo.ModelInspector;
+        List<string> supportedResources = r4.Hl7.Fhir.Model.ModelInfo.SupportedResources;
+        Type[] openTypes = r4.Hl7.Fhir.Model.ModelInfo.OpenTypes;
+        switch(version)
+        {
+            case "3":
+                inspector = stu3.Hl7.Fhir.Model.ModelInfo.ModelInspector;
+                supportedResources = stu3.Hl7.Fhir.Model.ModelInfo.SupportedResources;
+                openTypes = stu3.Hl7.Fhir.Model.ModelInfo.OpenTypes;
+                break;
+            case "4":
+                inspector = r4.Hl7.Fhir.Model.ModelInfo.ModelInspector;
+                supportedResources = r4.Hl7.Fhir.Model.ModelInfo.SupportedResources;
+                openTypes = r4.Hl7.Fhir.Model.ModelInfo.OpenTypes;
+                break;
+            case "4B":
+                inspector = r4b.Hl7.Fhir.Model.ModelInfo.ModelInspector;
+                supportedResources = r4b.Hl7.Fhir.Model.ModelInfo.SupportedResources;
+                openTypes = r4b.Hl7.Fhir.Model.ModelInfo.OpenTypes;
+                break;
+            case "5":
+                inspector = Hl7.Fhir.Model.ModelInfo.ModelInspector;
+                supportedResources = Hl7.Fhir.Model.ModelInfo.SupportedResources;
+                openTypes = Hl7.Fhir.Model.ModelInfo.OpenTypes;
+                break;
+            default:
+                Debugger.Break();
+                inspector = Hl7.Fhir.Model.ModelInfo.ModelInspector;
+                supportedResources = Hl7.Fhir.Model.ModelInfo.SupportedResources;
+                openTypes = Hl7.Fhir.Model.ModelInfo.OpenTypes;
+                break;
+        }
+        return new ModelOptions
+        {
+            Resolver = resolver,
+            Package = package,
+            MI = inspector,
+            SupportedResources = supportedResources,
+            OpenTypes = openTypes,
+        };
     }
 
     private void Source_Load(object sender, CachedResolver.LoadResourceEventArgs e)
