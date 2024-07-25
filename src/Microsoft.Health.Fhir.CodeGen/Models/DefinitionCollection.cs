@@ -1839,6 +1839,11 @@ public partial class DefinitionCollection
         };
 
         r.Extension.Add(ext);
+
+        if ((r is IVersionableConformanceResource vcr) && string.IsNullOrEmpty(vcr.Version))
+        {
+            vcr.Version = version;
+        }
     }
 
     public bool TryGetPackageSource(DomainResource r, out string packageId, out string packageVersion)

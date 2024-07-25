@@ -383,6 +383,7 @@ public record class MapSimpleCopyExpression : FmlNode
 {
     public required string Source { get; init; }
     public required string Target { get; init; }
+    public required string? Name { get; init; }
 }
 
 public record class FmlExpressionSource : FmlNode
