@@ -14,7 +14,7 @@ module FHIR
       # The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.
       # The only time that a resource does not have an id is when it is being submitted to the server using a create operation.
       'id' => {
-        'type'=>'string',
+        'type'=>'id',
         'path'=>'Flag.id',
         'min'=>0,
         'max'=>1
@@ -186,7 +186,7 @@ module FHIR
     # Logical id of this artifact
     # The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.
     # The only time that a resource does not have an id is when it is being submitted to the server using a create operation.
-    attr_accessor :id                             # 0-1 string
+    attr_accessor :id                             # 0-1 id
     ##
     # Metadata about the resource
     # The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.

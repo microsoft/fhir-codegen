@@ -193,7 +193,7 @@ public class LangRuby : ILanguage
         string baseName = ed.cgName();
         bool isChoice = false;
 
-        IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> elementTypes = ed.cgTypes();
+        IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> elementTypes = ed.cgTypes(coerceToR5: true);
 
         if (elementTypes.Count == 0)
         {
@@ -484,7 +484,7 @@ public class LangRuby : ILanguage
             {
                 ElementDefinition ed = choiceElements[i];
                 writer.WriteLineIndented(
-                    $"'{ed.cgName()}' => [{string.Join(", ", ed.cgTypes().Keys.Order().Select(v => "'" + v + "'"))}]" +
+                    $"'{ed.cgName()}' => [{string.Join(", ", ed.cgTypes(coerceToR5: true).Keys.Order().Select(v => "'" + v + "'"))}]" +
                     (i < choiceElements.Length - 1 ? "," : string.Empty));
             }
 

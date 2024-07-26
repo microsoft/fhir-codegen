@@ -15,7 +15,7 @@ module FHIR
       # The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.
       # The only time that a resource does not have an id is when it is being submitted to the server using a create operation.
       'id' => {
-        'type'=>'string',
+        'type'=>'id',
         'path'=>'Device.id',
         'min'=>0,
         'max'=>1
@@ -357,7 +357,7 @@ module FHIR
         # Unique id for inter-element referencing
         # Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
         'id' => {
-          'type'=>'string',
+          'type'=>'id',
           'path'=>'UdiCarrier.id',
           'min'=>0,
           'max'=>1
@@ -456,7 +456,7 @@ module FHIR
       ##
       # Unique id for inter-element referencing
       # Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-      attr_accessor :id                             # 0-1 string
+      attr_accessor :id                             # 0-1 id
       ##
       # Additional content defined by implementations
       # May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
@@ -518,7 +518,7 @@ module FHIR
         # Unique id for inter-element referencing
         # Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
         'id' => {
-          'type'=>'string',
+          'type'=>'id',
           'path'=>'DeviceName.id',
           'min'=>0,
           'max'=>1
@@ -571,7 +571,7 @@ module FHIR
       ##
       # Unique id for inter-element referencing
       # Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-      attr_accessor :id                             # 0-1 string
+      attr_accessor :id                             # 0-1 id
       ##
       # Additional content defined by implementations
       # May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
@@ -606,7 +606,7 @@ module FHIR
         # Unique id for inter-element referencing
         # Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
         'id' => {
-          'type'=>'string',
+          'type'=>'id',
           'path'=>'Specialization.id',
           'min'=>0,
           'max'=>1
@@ -653,7 +653,7 @@ module FHIR
       ##
       # Unique id for inter-element referencing
       # Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-      attr_accessor :id                             # 0-1 string
+      attr_accessor :id                             # 0-1 id
       ##
       # Additional content defined by implementations
       # May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
@@ -686,7 +686,7 @@ module FHIR
         # Unique id for inter-element referencing
         # Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
         'id' => {
-          'type'=>'string',
+          'type'=>'id',
           'path'=>'Version.id',
           'min'=>0,
           'max'=>1
@@ -741,7 +741,7 @@ module FHIR
       ##
       # Unique id for inter-element referencing
       # Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-      attr_accessor :id                             # 0-1 string
+      attr_accessor :id                             # 0-1 id
       ##
       # Additional content defined by implementations
       # May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
@@ -777,7 +777,7 @@ module FHIR
         # Unique id for inter-element referencing
         # Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
         'id' => {
-          'type'=>'string',
+          'type'=>'id',
           'path'=>'Property.id',
           'min'=>0,
           'max'=>1
@@ -832,7 +832,7 @@ module FHIR
       ##
       # Unique id for inter-element referencing
       # Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-      attr_accessor :id                             # 0-1 string
+      attr_accessor :id                             # 0-1 id
       ##
       # Additional content defined by implementations
       # May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
@@ -859,7 +859,7 @@ module FHIR
     # Logical id of this artifact
     # The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.
     # The only time that a resource does not have an id is when it is being submitted to the server using a create operation.
-    attr_accessor :id                             # 0-1 string
+    attr_accessor :id                             # 0-1 id
     ##
     # Metadata about the resource
     # The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.
