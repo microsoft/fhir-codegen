@@ -106,6 +106,7 @@ public static class FhirReleases
         { "1.0.0", FhirSequenceCodes.DSTU2 },
         { "1.0.1", FhirSequenceCodes.DSTU2 },
         { "1.0.2", FhirSequenceCodes.DSTU2 },
+        { "2.0", FhirSequenceCodes.DSTU2 },
         { "hl7.fhir.r2", FhirSequenceCodes.DSTU2 },
         { "hl7.fhir.r2.core", FhirSequenceCodes.DSTU2 },
 
@@ -372,6 +373,23 @@ public static class FhirReleases
         FhirSequenceCodes.R4B => "4.3.0",
         FhirSequenceCodes.R5 => "5.0.0",
         FhirSequenceCodes.R6 => "6.0.0",
+        _ => "Unknown"
+    };
+
+    /// <summary>
+    /// The FhirSequenceCodes extension method that converts a sequence to a core package
+    /// directive.
+    /// </summary>
+    /// <param name="sequence">The sequence.</param>
+    /// <returns>Sequence as a string.</returns>
+    public static string ToCorePackageDirective(this FhirSequenceCodes sequence) => sequence switch
+    {
+        FhirSequenceCodes.DSTU2 => "hl7.fhir.r2.core@" + sequence.ToLongVersion(),
+        FhirSequenceCodes.STU3 => "hl7.fhir.r3.core@" + sequence.ToLongVersion(),
+        FhirSequenceCodes.R4 => "hl7.fhir.r4.core@" + sequence.ToLongVersion(),
+        FhirSequenceCodes.R4B => "hl7.fhir.r4b.core@" + sequence.ToLongVersion(),
+        FhirSequenceCodes.R5 => "hl7.fhir.r5.core@" + sequence.ToLongVersion(),
+        FhirSequenceCodes.R6 => "hl7.fhir.r6.core@" + sequence.ToLongVersion(),
         _ => "Unknown"
     };
 

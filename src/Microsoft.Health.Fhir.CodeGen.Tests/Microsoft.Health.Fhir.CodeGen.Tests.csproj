@@ -26,16 +26,10 @@
 
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="6.12.0" />
-    <PackageReference Include="Hl7.Fhir.Specification.Data.R5" Version="5.8.2" />
-    <PackageReference Include="Hl7.Fhir.STU3" Version="5.8.2">
-      <Aliases>stu3</Aliases>
-    </PackageReference>
-    <PackageReference Include="Hl7.Fhir.R4" Version="5.8.2">
-      <Aliases>r4</Aliases>
-    </PackageReference>
-    <PackageReference Include="Hl7.Fhir.R4B" Version="5.8.2">
-      <Aliases>r4b</Aliases>
-    </PackageReference>
+    <PackageReference Include="Hl7.Fhir.Specification.Data.R5" Version="5.9.0" />
+    <PackageReference Include="Hl7.Fhir.STU3" Version="5.9.0" />
+    <PackageReference Include="Hl7.Fhir.R4" Version="5.9.0" />
+    <PackageReference Include="Hl7.Fhir.R4B" Version="5.9.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
     <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
@@ -49,6 +43,21 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>
+
+  <Target Name="AddPackageAliases" BeforeTargets="ResolveReferences" Outputs="%(PackageReference.Identity)">
+    <ItemGroup>
+      <ReferencePath Condition="'%(FileName)'=='Hl7.Fhir.STU3'">
+        <Aliases>stu3</Aliases>
+      </ReferencePath>
+      <ReferencePath Condition="'%(FileName)'=='Hl7.Fhir.R4'">
+        <Aliases>r4</Aliases>
+      </ReferencePath>
+      <ReferencePath Condition="'%(FileName)'=='Hl7.Fhir.R4B'">
+        <Aliases>r4b</Aliases>
+      </ReferencePath>
+    </ItemGroup>
+  </Target>
+
 
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.Health.Fhir.CodeGenCommon\Microsoft.Health.Fhir.CodeGenCommon.csproj" />

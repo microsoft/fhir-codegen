@@ -4,6 +4,7 @@ Contents of: hl7.fhir.r3.expansions@3.0.2, hl7.fhir.r3.core@3.0.2
   Complex Type / Resource Naming Style: PascalCase
   Enum Naming Style: FhirDotNotation
   Interaction Naming Style: PascalCase
+  Load structures: PrimitiveType|ComplexType|Resource|Interface|Extension|Operation|SearchParameter|CodeSystem|ValueSet|Profile|LogicalModel|Compartment
   Export structures: PrimitiveType|ComplexType|Resource|Interface|Extension|Operation|SearchParameter|CodeSystem|ValueSet|Profile|LogicalModel|Compartment
 Primitive Types: 18
 - base64Binary: base64Binary::base64Binary
@@ -14844,7 +14845,7 @@ Value Sets: 1154
   - #VET: veteran health program
   - #VISPOL: vision care policy
   - #WCBPOL: worker's compensation
-- ValueSet: http://hl7.org/fhir/ValueSet/cpt-all| (FMM: 0) (All CPT codes)
+- ValueSet: http://hl7.org/fhir/ValueSet/cpt-all|3.0.2 (FMM: 0) (All CPT codes)
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/cqif-evidence-quality|3.0.2 (FMM: 0) (QualityOfEvidenceRating)
   - #high: High quality
@@ -16095,7 +16096,7 @@ Value Sets: 1154
   - #functional: Functional
   - #non-functional: Non-Functional
   - #unknown: Unknown
-- ValueSet: http://hl7.org/fhir/ValueSet/inactive| (FMM: 0) (Example-inactive)
+- ValueSet: http://hl7.org/fhir/ValueSet/inactive|3.0.2 (FMM: 0) (Example-inactive)
   - #CRT: criterion
   - #EXPEC: expectation
   - #GOL: goal
@@ -18653,7 +18654,7 @@ Value Sets: 1154
   - #[lb_av]: 
   - #g: 
   - #kg: 
-- ValueSet: http://hl7.org/fhir/ValueSet/ucum-common| (FMM: 0) (Common UCUM units)
+- ValueSet: http://hl7.org/fhir/ValueSet/ucum-common|3.0.2 (FMM: 0) (Common UCUM units)
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/ucum-units|3.0.2 (FMM: 0) (UCUM Codes)
   extensions/profiles (1 structures, 1 elements): strongest binding: required, refs: elementdefinition-de(Profile) [ElementDefinition.extension.value[x]]
@@ -25668,6 +25669,8 @@ Value Sets: 1154
   - #SBEXT: Substance Extraction
   - #SPECCOLLECT: Specimen Collection
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActClassROI|2014-03-26 (FMM: 0) (ActClassROI)
+  - #ROIBND: bounded ROI
+  - #ROIOVL: overlay ROI
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActClassSupply|2014-03-26 (FMM: 0) (ActClassSupply)
   - #DIET: diet
   - #SPLY: supply
@@ -26820,6 +26823,17 @@ Value Sets: 1154
   - #RMD: recommendation
   - #RQO: request
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActMoodPredicate|2014-03-26 (FMM: 0) (ActMoodPredicate)
+  - #CRT: criterion
+  - #EVN.CRT: event criterion
+  - #EXPEC: expectation
+  - #GOL: Goal
+  - #GOL.CRT: goal criterion
+  - #INT.CRT: intent criterion
+  - #OPT: option
+  - #PRMS.CRT: promise criterion
+  - #RQO.CRT: request criterion
+  - #RSK: risk
+  - #RSK.CRT: risk criterion
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActPharmacySupplyType|2014-03-26 (FMM: 1) (ActPharmacySupplyType)
   references (1 structures, 1 elements): MedicationDispense.type, strongest binding: example, by type: CodeableConcept:Example
   - #DF: Daily Fill
@@ -27100,6 +27114,23 @@ Value Sets: 1154
   - #T: through
   - #X: exit
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActRelationshipConditional|2014-03-26 (FMM: 0) (ActRelationshipConditional)
+  - #ACTIMM: active immunization against
+  - #ADJUNCT: adjunctive treatment
+  - #BLOCK: blocks
+  - #CIND: has contra-indication
+  - #DIAG: diagnoses
+  - #IMM: immunization against
+  - #MITGT: mitigates
+  - #MTREAT: maintenance treatment
+  - #PALLTREAT: palliates
+  - #PASSIMM: passive immunization against
+  - #PRCN: has pre-condition
+  - #PRYLX: prophylaxis of
+  - #RCVY: recovers
+  - #RSON: has reason
+  - #SYMP: symptomatic relief
+  - #TREAT: treats
+  - #TRIG: has trigger
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActRelationshipFulfills|2014-03-26 (FMM: 0) (ActRelationshipFulfills)
   - #FLFS: fulfills
   - #OCCR: occurrence
@@ -29557,6 +29588,11 @@ Value Sets: 1154
   - #RCT: record target
   - #RCV: receiver
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ParticipationInformationGenerator|2014-03-26 (FMM: 0) (ParticipationInformationGenerator)
+  - #AUT: author (originator)
+  - #ENT: data entry person
+  - #INF: informant
+  - #TRANS: Transcriber
+  - #WIT: witness
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ParticipationInformationTranscriber|2014-03-26 (FMM: 0) (ParticipationInformationTranscriber)
   - #ENT: data entry person
   - #TRANS: Transcriber
@@ -29696,6 +29732,115 @@ Value Sets: 1154
   - #N60: Net 60 days
   - #N90: Net 90 days
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-PersonalRelationshipRoleType|2014-03-26 (FMM: 0) (PersonalRelationshipRoleType)
+  - #ADOPTF: adoptive father
+  - #ADOPTM: adoptive mother
+  - #ADOPTP: adoptive parent
+  - #AUNT: aunt
+  - #BRO: brother
+  - #BROINLAW: brother-in-law
+  - #CHILD: child
+  - #CHLDADOPT: adopted child
+  - #CHLDFOST: foster child
+  - #CHLDINLAW: child-in-law
+  - #COUSN: cousin
+  - #DAU: natural daughter
+  - #DAUADOPT: adopted daughter
+  - #DAUC: daughter
+  - #DAUFOST: foster daughter
+  - #DAUINLAW: daughter in-law
+  - #DOMPART: domestic partner
+  - #EXT: extended family member
+  - #FAMMEMB: family member
+  - #FMRSPS: former spouse
+  - #FRND: unrelated friend
+  - #FTH: father
+  - #FTHFOST: foster father
+  - #FTHINLAW: father-in-law
+  - #FTWIN: fraternal twin
+  - #FTWINBRO: fraternal twin brother
+  - #FTWINSIS: fraternal twin sister
+  - #GESTM: gestational mother
+  - #GGRFTH: great grandfather
+  - #GGRMTH: great grandmother
+  - #GGRPRN: great grandparent
+  - #GRFTH: grandfather
+  - #GRMTH: grandmother
+  - #GRNDCHILD: grandchild
+  - #GRNDDAU: granddaughter
+  - #GRNDSON: grandson
+  - #GRPRN: grandparent
+  - #HBRO: half-brother
+  - #HSIB: half-sibling
+  - #HSIS: half-sister
+  - #HUSB: husband
+  - #INLAW: inlaw
+  - #ITWIN: identical twin
+  - #ITWINBRO: identical twin brother
+  - #ITWINSIS: identical twin sister
+  - #MAUNT: maternal aunt
+  - #MCOUSN: maternal cousin
+  - #MGGRFTH: maternal great-grandfather
+  - #MGGRMTH: maternal great-grandmother
+  - #MGGRPRN: maternal great-grandparent
+  - #MGRFTH: maternal grandfather
+  - #MGRMTH: maternal grandmother
+  - #MGRPRN: maternal grandparent
+  - #MTH: mother
+  - #MTHFOST: foster mother
+  - #MTHINLAW: mother-in-law
+  - #MUNCLE: maternal uncle
+  - #NBOR: neighbor
+  - #NBRO: natural brother
+  - #NCHILD: natural child
+  - #NEPHEW: nephew
+  - #NFTH: natural father
+  - #NFTHF: natural father of fetus
+  - #NIECE: niece
+  - #NIENEPH: niece/nephew
+  - #NMTH: natural mother
+  - #NMTHF: natural mother of fetus
+  - #NPRN: natural parent
+  - #NSIB: natural sibling
+  - #NSIS: natural sister
+  - #ONESELF: self
+  - #PAUNT: paternal aunt
+  - #PCOUSN: paternal cousin
+  - #PGGRFTH: paternal great-grandfather
+  - #PGGRMTH: paternal great-grandmother
+  - #PGGRPRN: paternal great-grandparent
+  - #PGRFTH: paternal grandfather
+  - #PGRMTH: paternal grandmother
+  - #PGRPRN: paternal grandparent
+  - #PRN: parent
+  - #PRNFOST: foster parent
+  - #PRNINLAW: parent in-law
+  - #PUNCLE: paternal uncle
+  - #ROOM: Roommate
+  - #SIB: sibling
+  - #SIBINLAW: sibling in-law
+  - #SIGOTHR: significant other
+  - #SIS: sister
+  - #SISINLAW: sister-in-law
+  - #SON: natural son
+  - #SONADOPT: adopted son
+  - #SONC: son
+  - #SONFOST: foster son
+  - #SONINLAW: son in-law
+  - #SPS: spouse
+  - #STPBRO: stepbrother
+  - #STPCHLD: step child
+  - #STPDAU: stepdaughter
+  - #STPFTH: stepfather
+  - #STPMTH: stepmother
+  - #STPPRN: step parent
+  - #STPSIB: step sibling
+  - #STPSIS: stepsister
+  - #STPSON: stepson
+  - #TWIN: twin
+  - #TWINBRO: twin brother
+  - #TWINSIS: twin sister
+  - #UNCLE: uncle
+  - #WIFE: wife
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-PersonDisabilityType|2016-11-11 (FMM: 0) (v3 Code System PersonDisabilityType)
   - #1: Vision impaired
   - #2: Hearing impaired
@@ -31007,13 +31152,210 @@ Value Sets: 1154
   - #NOK: next of kin
   - #SGNOFF: signing authority or officer
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-RoleClassAssociative|2014-03-26 (FMM: 0) (RoleClassAssociative)
+  - #_RoleClassMutualRelationship: RoleClassMutualRelationship
+  - #_RoleClassPassive: RoleClassPassive
+  - #_RoleClassRelationshipFormal: RoleClassRelationshipFormal
+  - #ACCESS: access
+  - #ADJY: adjacency
+  - #ADMM: Administerable Material
+  - #AFFL: affiliate
+  - #AGNT: agent
+  - #ASSIGNED: assigned entity
+  - #BIRTHPL: birthplace
+  - #BOND: molecular bond
+  - #CAREGIVER: caregiver
+  - #CASEBJ: Case Subject
+  - #CIT: citizen
+  - #CLAIM: claimant
+  - #COMPAR: commissioning party
+  - #CON: contact
+  - #CONC: connection
+  - #CONY: continuity
+  - #COVPTY: covered party
+  - #CRINV: clinical research investigator
+  - #CRSPNSR: clinical research sponsor
+  - #DEATHPLC: place of death
+  - #DEPEN: dependent
+  - #DSDLOC: dedicated service delivery location
+  - #DST: distributed material
+  - #ECON: emergency contact
+  - #EMP: employee
+  - #EXLOC: event location
+  - #EXPR: exposed entity
+  - #GUAR: guarantor
+  - #GUARD: guardian
+  - #HLD: held entity
+  - #HLTHCHRT: health chart
+  - #IDENT: identified entity
+  - #INDIV: individual
+  - #INVSBJ: Investigation Subject
+  - #ISDLOC: incidental service delivery location
+  - #LIC: licensed entity
+  - #MANU: manufactured product
+  - #MIL: military person
+  - #MNT: maintained entity
+  - #NAMED: named insured
+  - #NOK: next of kin
+  - #NOT: notary public
+  - #OWN: owned entity
+  - #PAT: patient
+  - #PAYEE: payee
+  - #PAYOR: invoice payor
+  - #POLHOLD: policy holder
+  - #PROG: program eligible
+  - #PROV: healthcare provider
+  - #PRS: personal relationship
+  - #QUAL: qualified entity
+  - #RESBJ: research subject
+  - #RET: retailed material
+  - #RGPR: regulated product
+  - #SDLOC: service delivery location
+  - #SELF: self
+  - #SGNOFF: signing authority or officer
+  - #SPNSR: coverage sponsor
+  - #STD: student
+  - #SUBSCR: subscriber
+  - #TERR: territory of authority
+  - #THER: therapeutic agent
+  - #UNDWRT: underwriter
+  - #USED: used entity
+  - #WRTE: warranted product
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-RoleClassManufacturedProduct|2014-03-26 (FMM: 0) (RoleClassManufacturedProduct)
   - #MANU: manufactured product
   - #THER: therapeutic agent
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-RoleClassMutualRelationship|2014-03-26 (FMM: 0) (RoleClassMutualRelationship)
+  - #_RoleClassRelationshipFormal: RoleClassRelationshipFormal
+  - #AFFL: affiliate
+  - #AGNT: agent
+  - #ASSIGNED: assigned entity
+  - #CAREGIVER: caregiver
+  - #CASEBJ: Case Subject
+  - #CIT: citizen
+  - #CLAIM: claimant
+  - #COMPAR: commissioning party
+  - #CON: contact
+  - #COVPTY: covered party
+  - #CRINV: clinical research investigator
+  - #CRSPNSR: clinical research sponsor
+  - #DEPEN: dependent
+  - #ECON: emergency contact
+  - #EMP: employee
+  - #GUAR: guarantor
+  - #GUARD: guardian
+  - #INDIV: individual
+  - #INVSBJ: Investigation Subject
+  - #LIC: licensed entity
+  - #MIL: military person
+  - #NAMED: named insured
+  - #NOK: next of kin
+  - #NOT: notary public
+  - #PAT: patient
+  - #PAYEE: payee
+  - #PAYOR: invoice payor
+  - #POLHOLD: policy holder
+  - #PROG: program eligible
+  - #PROV: healthcare provider
+  - #PRS: personal relationship
+  - #QUAL: qualified entity
+  - #RESBJ: research subject
+  - #SELF: self
+  - #SGNOFF: signing authority or officer
+  - #SPNSR: coverage sponsor
+  - #STD: student
+  - #SUBSCR: subscriber
+  - #UNDWRT: underwriter
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-RoleClassPartitive|2014-03-26 (FMM: 0) (RoleClassPartitive)
+  - #ACTI: active ingredient
+  - #ACTIB: active ingredient - basis of strength
+  - #ACTIM: active ingredient - moiety is basis of strength
+  - #ACTIR: active ingredient - reference substance is basis of strength
+  - #ACTM: active moiety
+  - #ADJV: adjuvant
+  - #ADTV: additive
+  - #ALQT: aliquot
+  - #BASE: base
+  - #CNTM: contaminant ingredient
+  - #COLR: color additive
+  - #CONT: content
+  - #EXPAGTCAR: exposure agent carrier
+  - #EXPVECTOR: exposure vector
+  - #FLVR: flavor additive
+  - #FOMITE: fomite
+  - #IACT: inactive ingredient
+  - #INGR: ingredient
+  - #ISLT: isolate
+  - #LOCE: located entity
+  - #MBR: member
+  - #MECH: mechanical ingredient
+  - #PART: part
+  - #PRSV: preservative
+  - #SPEC: specimen
+  - #STBL: stabilizer
+  - #STOR: stored entity
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-RoleClassPassive|2014-03-26 (FMM: 0) (RoleClassPassive)
+  - #ACCESS: access
+  - #ADJY: adjacency
+  - #ADMM: Administerable Material
+  - #BIRTHPL: birthplace
+  - #BOND: molecular bond
+  - #CONC: connection
+  - #CONY: continuity
+  - #DEATHPLC: place of death
+  - #DSDLOC: dedicated service delivery location
+  - #DST: distributed material
+  - #EXLOC: event location
+  - #EXPR: exposed entity
+  - #HLD: held entity
+  - #HLTHCHRT: health chart
+  - #IDENT: identified entity
+  - #ISDLOC: incidental service delivery location
+  - #MANU: manufactured product
+  - #MNT: maintained entity
+  - #OWN: owned entity
+  - #RET: retailed material
+  - #RGPR: regulated product
+  - #SDLOC: service delivery location
+  - #TERR: territory of authority
+  - #THER: therapeutic agent
+  - #USED: used entity
+  - #WRTE: warranted product
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-RoleClassRelationshipFormal|2014-03-26 (FMM: 0) (RoleClassRelationshipFormal)
+  - #AFFL: affiliate
+  - #AGNT: agent
+  - #ASSIGNED: assigned entity
+  - #CASEBJ: Case Subject
+  - #CIT: citizen
+  - #CLAIM: claimant
+  - #COMPAR: commissioning party
+  - #CON: contact
+  - #COVPTY: covered party
+  - #CRINV: clinical research investigator
+  - #CRSPNSR: clinical research sponsor
+  - #DEPEN: dependent
+  - #ECON: emergency contact
+  - #EMP: employee
+  - #GUAR: guarantor
+  - #GUARD: guardian
+  - #INDIV: individual
+  - #INVSBJ: Investigation Subject
+  - #LIC: licensed entity
+  - #MIL: military person
+  - #NAMED: named insured
+  - #NOK: next of kin
+  - #NOT: notary public
+  - #PAT: patient
+  - #PAYEE: payee
+  - #PAYOR: invoice payor
+  - #POLHOLD: policy holder
+  - #PROG: program eligible
+  - #PROV: healthcare provider
+  - #QUAL: qualified entity
+  - #RESBJ: research subject
+  - #SGNOFF: signing authority or officer
+  - #SPNSR: coverage sponsor
+  - #STD: student
+  - #SUBSCR: subscriber
+  - #UNDWRT: underwriter
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-RoleClassRoot|2014-03-26 (FMM: 0) (RoleClassRoot)
   - #_RoleClassAssociative: RoleClassAssociative
   - #_RoleClassMutualRelationship: RoleClassMutualRelationship
@@ -32089,6 +32431,45 @@ Value Sets: 1154
   - #TREAT: treatment
   - #TREAT: 
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-SecurityIntegrityObservationValue|2014-03-26 (FMM: 0) (SecurityIntegrityObservationValue)
+  - #_SECALTINTOBV: alteration integrity
+  - #_SECDATINTOBV: data integrity
+  - #_SECINTCONOBV: integrity confidence
+  - #_SECINTPRVABOBV: provenance asserted by
+  - #_SECINTPRVOBV: provenance
+  - #_SECINTPRVRBOBV: provenance reported by
+  - #ABSTRED: abstracted
+  - #AGGRED: aggregated
+  - #ANONYED: anonymized
+  - #CLINAST: clinician asserted
+  - #CLINRPT: clinician reported
+  - #CRYTOHASH: cryptographic hash function
+  - #DEVAST: device asserted
+  - #DEVRPT: device reported
+  - #DIGSIG: digital signature
+  - #HCPAST: healthcare professional asserted
+  - #HCPRPT: healthcare professional reported
+  - #HRELIABLE: highly reliable
+  - #MAPPED: mapped
+  - #MASKED: masked
+  - #PACQAST: patient acquaintance asserted
+  - #PACQRPT: patient acquaintance reported
+  - #PATAST: patient asserted
+  - #PATRPT: patient reported
+  - #PAYAST: payer asserted
+  - #PAYRPT: payer reported
+  - #PROAST: professional asserted
+  - #PRORPT: professional reported
+  - #PSEUDED: pseudonymized
+  - #REDACTED: redacted
+  - #RELIABLE: reliable
+  - #SDMAST: substitute decision maker asserted
+  - #SDMRPT: substitute decision maker reported
+  - #SUBSETTED: subsetted
+  - #SYNTAC: syntactic transform
+  - #TRSLT: translated
+  - #UNCERTREL: uncertain reliability
+  - #UNRELIABLE: unreliable
+  - #VERSIONED: versioned
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-SecurityPolicy|2014-03-26 (FMM: 0) (SecurityPolicy)
   - #ANONY: anonymize
   - #AOD: accounting of disclosure
@@ -32275,6 +32656,9 @@ Value Sets: 1154
   - #I: include
   - #P: periodic hull
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-SeverityObservation|2014-03-26 (FMM: 0) (SeverityObservation)
+  - #H: High
+  - #L: Low
+  - #M: Moderate
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-SpecimenType|2016-11-11 (FMM: 0) (v3 Code System SpecimenType)
   - #_SpecimenEntityType: SpecimenEntityType
   - #ABS: Abcess
@@ -33149,7 +33533,7 @@ Value Sets: 1154
   references (1 structures, 1 elements): VisionPrescription.dispense.product, strongest binding: example, by type: CodeableConcept:Example
   - #contact: Contact Lens
   - #lens: Lens
-- ValueSet: http://hl7.org/fhir/ValueSet/yesnodontknow| (FMM: 0) (Yes/No/Don't Know)
+- ValueSet: http://hl7.org/fhir/ValueSet/yesnodontknow|3.0.2 (FMM: 0) (Yes/No/Don't Know)
   - #asked: Don't know
   - #N: No
   - #Y: Yes

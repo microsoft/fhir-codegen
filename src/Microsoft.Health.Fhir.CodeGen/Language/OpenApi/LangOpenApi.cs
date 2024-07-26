@@ -287,15 +287,9 @@ public class LangOpenApi : ILanguage
     {
         string filename = Path.Combine(config.OutputDirectory, $"{_languageName}_{fileId}.{config.FileFormat.ToString().ToLowerInvariant()}");
 
-        //using Stream stream = config.WriteStream ?? new FileStream(filename, FileMode.Create);
-
-        //using StreamWriter sw = config.WriteStream == null
-        //    ? new StreamWriter(new FileStream(filename, FileMode.Create), leaveOpen: false)
-        //    : new StreamWriter(config.WriteStream, leaveOpen: config.WriteStream != null);
-
         using StreamWriter sw = config.WriteStream == null
             ? new StreamWriter(new FileStream(filename, FileMode.Create))
-            : new StreamWriter(config.WriteStream);
+            : new StreamWriter(config.WriteStream, System.Text.Encoding.UTF8, 512 * 1024, true);
 
         IOpenApiWriter writer = config.FileFormat switch
         {
@@ -309,9 +303,10 @@ public class LangOpenApi : ILanguage
                 ? Microsoft.OpenApi.OpenApiSpecVersion.OpenApi2_0
                 : Microsoft.OpenApi.OpenApiSpecVersion.OpenApi3_0);
 
+        sw.Flush();
+
         if (config.WriteStream == null)
         {
-            sw.Flush();
             sw.Close();
         }
     }

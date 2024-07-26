@@ -199,7 +199,7 @@ public class ServerConnector : IDisposable
                 // check for an implementation URL
                 if (!string.IsNullOrEmpty(capabilities.Implementation?.Url))
                 {
-                    capabilities.Url = capabilities.Implementation.Url;
+                    capabilities.Url = capabilities.Implementation!.Url;
                 }
                 else
                 {
@@ -629,15 +629,13 @@ public class ServerConnector : IDisposable
         }
         else if (_fhirUrl.EndsWith('/'))
         {
-            url = canonicalUrl.StartsWith('/')
-                ? _fhirUrl + canonicalUrl.Substring(1)
-                : _fhirUrl + canonicalUrl;
+            url = string.Concat(_fhirUrl, canonicalUrl.StartsWith('/') ? canonicalUrl[1..] : canonicalUrl);
         }
         else
         {
             url = canonicalUrl.StartsWith('/')
-                ? _fhirUrl + canonicalUrl
-                : _fhirUrl + "/" + canonicalUrl;
+                ? string.Concat(_fhirUrl, canonicalUrl)
+                : string.Concat(_fhirUrl, "/", canonicalUrl);
         }
 
         // first try the original canonical URL

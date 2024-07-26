@@ -18,17 +18,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-	<PackageReference Include="Avalonia" Version="11.0.11" />
+	<PackageReference Include="Avalonia" Version="11.1.0" />
 	<PackageReference Include="Avalonia.AvaloniaEdit" Version="11.0.6" />
-	<PackageReference Include="Avalonia.Controls.DataGrid" Version="11.0.11" />
-	<PackageReference Include="Avalonia.Desktop" Version="11.0.11" />
-	<PackageReference Include="Avalonia.Diagnostics" Version="11.0.11" />
-	<PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.11" />
-	<PackageReference Include="Avalonia.ReactiveUI" Version="11.0.11" />
-	<PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.11" />
+	<PackageReference Include="Avalonia.Controls.DataGrid" Version="11.1.0" />
+	<PackageReference Include="Avalonia.Desktop" Version="11.1.0" />
+	<PackageReference Include="Avalonia.Diagnostics" Version="11.1.0" />
+	<PackageReference Include="Avalonia.Fonts.Inter" Version="11.1.0" />
+	<PackageReference Include="Avalonia.ReactiveUI" Version="11.1.0" />
+	<PackageReference Include="Avalonia.Themes.Fluent" Version="11.1.0" />
 	<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-	<PackageReference Include="Firely.Fhir.Packages" Version="4.6.0" />
-	<PackageReference Include="Hl7.Fhir.R5" Version="5.8.2" />
+	<PackageReference Include="Firely.Fhir.Packages" Version="4.7.0" />
+	<PackageReference Include="Hl7.Fhir.R5" Version="5.9.0" />
 	<PackageReference Include="Material.Avalonia" Version="3.6.0" />
 	<PackageReference Include="Material.Avalonia.DataGrid" Version="3.6.0" />
 	<PackageReference Include="Material.Avalonia.Dialogs" Version="3.6.0" />

@@ -1864,8 +1864,8 @@ public partial class DefinitionCollection
 
     public class VersionedResourceEnumerator<T> : IEnumerator<T>
     {
-        IDictionary<string, Dictionary<string, T>> _source;
-        IEnumerator<KeyValuePair<string, Dictionary<string, T>>> _sourceEnumerator;
+        private IDictionary<string, Dictionary<string, T>> _source;
+        private IEnumerator<KeyValuePair<string, Dictionary<string, T>>> _sourceEnumerator;
 
         public VersionedResourceEnumerator(IDictionary<string, Dictionary<string, T>> source)
         {

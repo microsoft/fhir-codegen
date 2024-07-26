@@ -90,7 +90,7 @@ public class GenerationTestsR5 : IClassFixture<GenerationTestFixture>
         _testOutputHelper = testOutputHelper;
         _fixture = fixture;
 
-        _fixture.Loader = new(new() { CachePath = _fixture.CachePath });
+        _fixture.Loader = new(new() { FhirCacheDirectory = _fixture.CachePath });
 
         DefinitionCollection? loaded = _fixture.Loader.LoadPackages(_fixture.EntriesR5).Result;
 
@@ -190,7 +190,7 @@ public class GenerationTestsR4B : IClassFixture<GenerationTestFixture>
         _testOutputHelper = testOutputHelper;
         _fixture = fixture;
 
-        _fixture.Loader = new(new() { CachePath = _fixture.CachePath });
+        _fixture.Loader = new(new() { FhirCacheDirectory = _fixture.CachePath });
 
         DefinitionCollection? loaded = _fixture.Loader.LoadPackages(_fixture.EntriesR4B).Result;
 
@@ -290,7 +290,7 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
         _testOutputHelper = testOutputHelper;
         _fixture = fixture;
 
-        _fixture.Loader = new(new() { CachePath = _fixture.CachePath });
+        _fixture.Loader = new(new() { FhirCacheDirectory = _fixture.CachePath });
 
         DefinitionCollection? loaded = _fixture.Loader.LoadPackages(_fixture.EntriesR4).Result;
 
@@ -544,7 +544,7 @@ public class GenerationTestsR3 : IClassFixture<GenerationTestFixture>
         _testOutputHelper = testOutputHelper;
         _fixture = fixture;
 
-        _fixture.Loader = new(new() { CachePath = _fixture.CachePath });
+        _fixture.Loader = new(new() { FhirCacheDirectory = _fixture.CachePath });
 
         DefinitionCollection? loaded = _fixture.Loader.LoadPackages(_fixture.EntriesR3).Result;
 
@@ -644,7 +644,7 @@ public class GenerationTestsR2 : IClassFixture<GenerationTestFixture>
         _testOutputHelper = testOutputHelper;
         _fixture = fixture;
 
-        _fixture.Loader = new(new() { CachePath = _fixture.CachePath });
+        _fixture.Loader = new(new() { FhirCacheDirectory = _fixture.CachePath });
 
         DefinitionCollection? loaded = _fixture.Loader.LoadPackages(_fixture.EntriesR2).Result;
 

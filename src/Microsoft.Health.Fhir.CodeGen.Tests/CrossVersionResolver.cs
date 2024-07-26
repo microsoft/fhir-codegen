@@ -3,6 +3,8 @@ using Hl7.Fhir.Rest;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification.Source;
 using Hl7.Fhir.Utility;
+using Hl7.FhirPath.Sprache;
+
 //using Microsoft.Extensions.Logging;
 using Microsoft.Health.Fhir.CodeGen.Loader;
 using Microsoft.Health.Fhir.CodeGen.Models;
@@ -11,7 +13,8 @@ using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 
 namespace Microsoft.Health.Fhir.CodeGen.Tests;
 
-static class CanonicalExtensions
+// TODO: @brianpos - there are a lot of similar functions in DefinitionCollectionTx, we should discuss on where we can consolidate
+public static class CanonicalExtensions
 {
     public static string? Version(this Canonical url)
     {
@@ -157,37 +160,33 @@ internal class CrossVersionResolver : IAsyncResourceResolver
     {
         List<DefinitionCollection> result = new List<DefinitionCollection>();
         PackageLoader loader = new(new() { AutoLoadExpansions = false, ResolvePackageDependencies = false, LoadStructures = [ FhirArtifactClassEnum.Resource, FhirArtifactClassEnum.ComplexType, FhirArtifactClassEnum.PrimitiveType ] });
-        foreach (var version in versions)
+        foreach (string version in versions)
         {
-            if (version == "5")
+            FhirReleases.FhirSequenceCodes sequence = FhirReleases.FhirVersionToSequence(version);
+            switch (FhirReleases.FhirVersionToSequence(version))
             {
-                if (r5 == null)
-                    r5 = await LoadPackage(loader, "hl7.fhir.r5.core#5.0.0");
-                result.Add((DefinitionCollection)r5);
-            }
-            if (version == "4B")
-            {
-                if (r4b == null)
-                    r4b = await LoadPackage(loader, "hl7.fhir.r4b.core#4.3.0");
-                result.Add((DefinitionCollection)r4b);
-            }
-            if (version == "4")
-            {
-                if (r4 == null)
-                    r4 = await LoadPackage(loader, "hl7.fhir.r4.core#4.0.1");
-                result.Add((DefinitionCollection)r4);
-            }
-            if (version == "3")
-            {
-                if (stu3 == null)
-                    stu3 = await LoadPackage(loader, "hl7.fhir.r3.core#3.0.2");
-                result.Add((DefinitionCollection)stu3);
-            }
-            if (version == "2")
-            {
-                if (dstu2 == null)
-                    dstu2 = await LoadPackage(loader, "hl7.fhir.r2.core#1.0.2");
-                result.Add((DefinitionCollection)dstu2);
+                case FhirReleases.FhirSequenceCodes.DSTU2:
+                    dstu2 ??= await LoadPackage(loader, sequence.ToCorePackageDirective());
+                    result.Add((DefinitionCollection)dstu2);
+                    break;
+                case FhirReleases.FhirSequenceCodes.STU3:
+                    stu3 ??= await LoadPackage(loader, sequence.ToCorePackageDirective());
+                    result.Add((DefinitionCollection)stu3);
+                    break;
+                case FhirReleases.FhirSequenceCodes.R4:
+                    r4 ??= await LoadPackage(loader, sequence.ToCorePackageDirective());
+                    result.Add((DefinitionCollection)r4);
+                    break;
+                case FhirReleases.FhirSequenceCodes.R4B:
+                    r4b ??= await LoadPackage(loader, sequence.ToCorePackageDirective());
+                    result.Add((DefinitionCollection)r4b);
+                    break;
+                case FhirReleases.FhirSequenceCodes.R5:
+                    r5 ??= await LoadPackage(loader, sequence.ToCorePackageDirective());
+                    result.Add((DefinitionCollection)r5);
+                    break;
+                default:
+                    throw new ApplicationException($"Unknown version {version}");
             }
         }
         return result;
@@ -208,24 +207,24 @@ internal class CrossVersionResolver : IAsyncResourceResolver
     }
 
 
-    public IAsyncResourceResolver OnlyDstu2 { get { return new VersionFilterResolver("2.0", dstu2); } }
-    public IAsyncResourceResolver OnlyStu3 { get { return new VersionFilterResolver("3.0", stu3); } }
-    public IAsyncResourceResolver OnlyR4 { get { return new VersionFilterResolver("4.0", r4); } }
-    public IAsyncResourceResolver OnlyR4B { get { return new VersionFilterResolver("4.3", r4b); } }
-    public IAsyncResourceResolver OnlyR5 { get { return new VersionFilterResolver("5.0", r5); } }
+    public IAsyncResourceResolver OnlyDstu2 { get { return new VersionFilterResolver("2.0", dstu2 ?? throw new Exception("Cannot resolve in DSTU2 since it was not initialized!")); } }
+    public IAsyncResourceResolver OnlyStu3 { get { return new VersionFilterResolver("3.0", stu3 ?? throw new Exception("Cannot resolve in STU3 since it was not initialized!")); } }
+    public IAsyncResourceResolver OnlyR4 { get { return new VersionFilterResolver("4.0", r4 ?? throw new Exception("Cannot resolve in R4 since it was not initialized!")); } }
+    public IAsyncResourceResolver OnlyR4B { get { return new VersionFilterResolver("4.3", r4b ?? throw new Exception("Cannot resolve in R4B since it was not initialized!")); } }
+    public IAsyncResourceResolver OnlyR5 { get { return new VersionFilterResolver("5.0", r5 ?? throw new Exception("Cannot resolve in R5 since it was not initialized!")); } }
 
-    void CustomExceptionHandler(object source, ExceptionNotification args)
+    public void CustomExceptionHandler(object source, ExceptionNotification args)
     {
         // System.Diagnostics.Trace.WriteLine(args.Message);
     }
 
-    IAsyncResourceResolver dstu2;
-    IAsyncResourceResolver stu3;
-    IAsyncResourceResolver r4;
-    IAsyncResourceResolver r4b;
-    IAsyncResourceResolver r5;
+    private IAsyncResourceResolver? dstu2;
+    private IAsyncResourceResolver? stu3;
+    private IAsyncResourceResolver? r4;
+    private IAsyncResourceResolver? r4b;
+    private IAsyncResourceResolver? r5;
 
-    const string fhirBaseCanonical = "http://hl7.org/fhir/";
+    private const string fhirBaseCanonical = "http://hl7.org/fhir/";
 
     public static string ConvertCanonical(string uri)
     {
@@ -296,40 +295,159 @@ internal class CrossVersionResolver : IAsyncResourceResolver
     {
         string convertedUrl = ConvertCanonical(uri);
         Canonical cu = new Canonical(convertedUrl);
-        Resource result;
-        if (cu.Version() == "1.0")
-            result = await dstu2.ResolveByCanonicalUriAsync(cu.BaseCanonicalUrl());
-        else if (cu.Version() == "3.0")
-            result = await stu3.ResolveByCanonicalUriAsync(cu.BaseCanonicalUrl());
-        else if (cu.Version() == "4.0")
-            result = await r4.ResolveByCanonicalUriAsync(cu.BaseCanonicalUrl());
-        else if (cu.Version() == "4.3")
-            result = await r4b.ResolveByCanonicalUriAsync(cu.BaseCanonicalUrl());
-        else if (cu.Version() == "5.0")
-            result = await r5.ResolveByCanonicalUriAsync(cu.BaseCanonicalUrl());
-        else
-            result = await r4.ResolveByCanonicalUriAsync(cu.BaseCanonicalUrl());
+        Resource? result = null;
+
+        FhirReleases.FhirSequenceCodes canonicalVersion = FhirReleases.FhirVersionToSequence(cu.Version() ?? string.Empty);
+
+        switch (canonicalVersion)
+        {
+            case FhirReleases.FhirSequenceCodes.DSTU2:
+                if (dstu2 != null)
+                {
+                    result = await dstu2.ResolveByCanonicalUriAsync(cu.BaseCanonicalUrl());
+                }
+                break;
+
+            case FhirReleases.FhirSequenceCodes.STU3:
+                if (stu3 != null)
+                {
+                    result = await stu3.ResolveByCanonicalUriAsync(cu.BaseCanonicalUrl());
+                }
+                break;
+
+            case FhirReleases.FhirSequenceCodes.R4:
+                if (r4 != null)
+                {
+                    result = await r4.ResolveByCanonicalUriAsync(cu.BaseCanonicalUrl());
+                }
+                break;
+
+            case FhirReleases.FhirSequenceCodes.R4B:
+                if (r4b != null)
+                {
+                    result = await r4b.ResolveByCanonicalUriAsync(cu.BaseCanonicalUrl());
+                }
+                break;
+
+            case FhirReleases.FhirSequenceCodes.R5:
+                if (r5 != null)
+                {
+                    result = await r5.ResolveByCanonicalUriAsync(cu.BaseCanonicalUrl());
+                }
+                break;
+
+            default:
+                // try all versions we have until we can resolve or we run out of versions
+                if (r4 != null)
+                {
+                    result = await r4.ResolveByCanonicalUriAsync(cu.BaseCanonicalUrl());
+                }
+
+                if ((result == null) && (r5 != null))
+                {
+                    result = await r5.ResolveByCanonicalUriAsync(cu.BaseCanonicalUrl());
+                }
+
+                if ((result == null) && (r4b != null))
+                {
+                    result = await r4b.ResolveByCanonicalUriAsync(cu.BaseCanonicalUrl());
+                }
+
+                if ((result == null) && (stu3 != null))
+                {
+                    result = await stu3.ResolveByCanonicalUriAsync(cu.BaseCanonicalUrl());
+                }
+
+                if ((result == null) && (dstu2 != null))
+                {
+                    result = await dstu2.ResolveByCanonicalUriAsync(cu.BaseCanonicalUrl());
+                }
+
+                break;
+        }
+
         if (result == null)
         {
             Console.WriteLine($"  * Failed to resolve: {uri} at [{cu.Version()}] {cu.BaseCanonicalUrl()}");
         }
-        return result;
+
+        return result!;
     }
 
     public async Task<Resource> ResolveByUriAsync(string uri)
     {
         string convertedUrl = ConvertCanonical(uri);
         Canonical cu = new Canonical(convertedUrl);
-        if (cu.Version() == "1.0")
-            return await dstu2.ResolveByUriAsync(cu.BaseCanonicalUrl());
-        if (cu.Version() == "3.0")
-            return await stu3.ResolveByUriAsync(cu.BaseCanonicalUrl());
-        if (cu.Version() == "4.0")
-            return await r4.ResolveByUriAsync(cu.BaseCanonicalUrl());
-        if (cu.Version() == "4.3")
-            return await r4b.ResolveByUriAsync(cu.BaseCanonicalUrl());
-        if (cu.Version() == "5.0")
-            return await r5.ResolveByUriAsync(cu.BaseCanonicalUrl());
-        return await r4.ResolveByUriAsync(cu.BaseCanonicalUrl());
+
+        FhirReleases.FhirSequenceCodes canonicalVersion = FhirReleases.FhirVersionToSequence(cu.Version() ?? string.Empty);
+
+        switch (canonicalVersion)
+        {
+            case FhirReleases.FhirSequenceCodes.DSTU2:
+                if (dstu2 != null)
+                {
+                    return await dstu2.ResolveByCanonicalUriAsync(cu.BaseCanonicalUrl());
+                }
+                break;
+
+            case FhirReleases.FhirSequenceCodes.STU3:
+                if (stu3 != null)
+                {
+                    return await stu3.ResolveByCanonicalUriAsync(cu.BaseCanonicalUrl());
+                }
+                break;
+
+            case FhirReleases.FhirSequenceCodes.R4:
+                if (r4 != null)
+                {
+                    return await r4.ResolveByCanonicalUriAsync(cu.BaseCanonicalUrl());
+                }
+                break;
+
+            case FhirReleases.FhirSequenceCodes.R4B:
+                if (r4b != null)
+                {
+                    return await r4b.ResolveByCanonicalUriAsync(cu.BaseCanonicalUrl());
+                }
+                break;
+
+            case FhirReleases.FhirSequenceCodes.R5:
+                if (r5 != null)
+                {
+                    return await r5.ResolveByCanonicalUriAsync(cu.BaseCanonicalUrl());
+                }
+                break;
+
+            default:
+                // try all versions we have until we can resolve or we run out of versions
+                if (r4 != null)
+                {
+                    return await r4.ResolveByCanonicalUriAsync(cu.BaseCanonicalUrl());
+                }
+
+                if (r5 != null)
+                {
+                    return await r5.ResolveByCanonicalUriAsync(cu.BaseCanonicalUrl());
+                }
+
+                if (r4b != null)
+                {
+                    return await r4b.ResolveByCanonicalUriAsync(cu.BaseCanonicalUrl());
+                }
+
+                if (stu3 != null)
+                {
+                    return await stu3.ResolveByCanonicalUriAsync(cu.BaseCanonicalUrl());
+                }
+
+                if (dstu2 != null)
+                {
+                    return await dstu2.ResolveByCanonicalUriAsync(cu.BaseCanonicalUrl());
+                }
+
+                break;
+        }
+
+        return null!;
     }
 }

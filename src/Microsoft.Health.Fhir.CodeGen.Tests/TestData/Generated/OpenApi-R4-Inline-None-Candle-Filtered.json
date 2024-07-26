@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "fhir-candle",
-    "version": "0.2024.418.1247"
+    "version": "0.2024.419.1327"
   },
   "servers": [
     {
@@ -40,20 +40,15 @@
         }
       }
     },
-    "/Observation/{logical_id}": {
-      "put": {
+    "/Observation": {
+      "post": {
         "tags": [
           "Observation"
         ],
-        "summary": "update,create: Update or Create a Observation instance",
-        "operationId": "UpdateOrCreateObservation",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/logical_id"
-          }
-        ],
+        "summary": "create: Create a new Observation instance",
+        "operationId": "CreateObservation",
         "requestBody": {
-          "description": "An updated FHIR Observation",
+          "description": "A FHIR Observation",
           "content": {
             "application/fhir+json": {
               "schema": {
@@ -213,76 +208,78 @@
         "tags": [
           "Observation"
         ],
-        "summary": "read: Read a FHIR Observation",
-        "operationId": "ReadObservation",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/logical_id"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              }
-            }
-          },
-          "410": {
-            "description": "GONE",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "NOT FOUND",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/Observation": {
-      "get": {
-        "tags": [
-          "Observation"
-        ],
         "summary": "search-type: Search for Observation instances",
         "operationId": "SearchObservationGet",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/_elements"
+          },
+          {
+            "$ref": "#/components/parameters/_summary"
+          },
+          {
+            "$ref": "#/components/parameters/_content"
+          },
+          {
+            "$ref": "#/components/parameters/_filter"
+          },
+          {
+            "$ref": "#/components/parameters/_id"
+          },
+          {
+            "$ref": "#/components/parameters/_in"
+          },
+          {
+            "$ref": "#/components/parameters/_language"
+          },
+          {
+            "$ref": "#/components/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/components/parameters/_list"
+          },
+          {
+            "$ref": "#/components/parameters/_profile"
+          },
+          {
+            "$ref": "#/components/parameters/_query"
+          },
+          {
+            "$ref": "#/components/parameters/_security"
+          },
+          {
+            "$ref": "#/components/parameters/_source"
+          },
+          {
+            "$ref": "#/components/parameters/_tag"
+          },
+          {
+            "$ref": "#/components/parameters/_text"
+          },
+          {
+            "$ref": "#/components/parameters/_contained"
+          },
+          {
+            "$ref": "#/components/parameters/_count"
+          },
+          {
+            "$ref": "#/components/parameters/_graph"
+          },
+          {
+            "$ref": "#/components/parameters/_include"
+          },
+          {
+            "$ref": "#/components/parameters/_revinclude"
+          },
+          {
+            "$ref": "#/components/parameters/_score"
+          },
+          {
+            "$ref": "#/components/parameters/_sort"
+          },
+          {
+            "$ref": "#/components/parameters/_total"
+          },
           {
             "$ref": "#/components/parameters/based-on"
           },
@@ -451,7 +448,372 @@
             }
           }
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/_format"
+        },
+        {
+          "$ref": "#/components/parameters/_pretty"
+        }
+      ]
+    },
+    "/Observation/{logical_id}": {
+      "delete": {
+        "tags": [
+          "Observation"
+        ],
+        "summary": "delete: Perform a logical delete on a Observation instance",
+        "operationId": "DeleteObservation",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/logical_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "202": {
+            "description": "ACCEPTED"
+          },
+          "204": {
+            "description": "NO CONTENT"
+          },
+          "400": {
+            "description": "BAD REQUEST",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "NOT AUTHORIZED",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "METHOD NOT ALLOWED",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "CONFLICT",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Observation"
+        ],
+        "summary": "read: Read a FHIR Observation",
+        "operationId": "ReadObservation",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/logical_id"
+          },
+          {
+            "$ref": "#/components/parameters/_elements"
+          },
+          {
+            "$ref": "#/components/parameters/_summary"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Observation"
+        ],
+        "summary": "update,create: Update or Create a Observation instance",
+        "operationId": "UpdateOrCreateObservation",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/logical_id"
+          }
+        ],
+        "requestBody": {
+          "description": "An updated FHIR Observation",
+          "content": {
+            "application/fhir+json": {
+              "schema": {
+                "type": "object",
+                "description": "A FHIR Resource"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "type": "object",
+                "description": "A FHIR Resource"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "BAD REQUEST",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "NOT AUTHORIZED",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "METHOD NOT ALLOWED",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "CONFLICT",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "CONFLICT",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "UNPROCESSABLE",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/_format"
+        },
+        {
+          "$ref": "#/components/parameters/_pretty"
+        }
+      ]
     },
     "/Observation/_search": {
       "post": {
@@ -467,6 +829,98 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "_elements": {
+                    "title": "_elements",
+                    "type": "string"
+                  },
+                  "_summary": {
+                    "title": "_summary",
+                    "type": "string"
+                  },
+                  "_content": {
+                    "title": "_content",
+                    "type": "string"
+                  },
+                  "_filter": {
+                    "title": "_filter",
+                    "type": "string"
+                  },
+                  "_id": {
+                    "title": "_id",
+                    "type": "string"
+                  },
+                  "_in": {
+                    "title": "_in",
+                    "type": "string"
+                  },
+                  "_language": {
+                    "title": "_language",
+                    "type": "string"
+                  },
+                  "_lastUpdated": {
+                    "title": "_lastUpdated",
+                    "type": "string"
+                  },
+                  "_list": {
+                    "title": "_list",
+                    "type": "string"
+                  },
+                  "_profile": {
+                    "title": "_profile",
+                    "type": "string"
+                  },
+                  "_query": {
+                    "title": "_query",
+                    "type": "string"
+                  },
+                  "_security": {
+                    "title": "_security",
+                    "type": "string"
+                  },
+                  "_source": {
+                    "title": "_source",
+                    "type": "string"
+                  },
+                  "_tag": {
+                    "title": "_tag",
+                    "type": "string"
+                  },
+                  "_text": {
+                    "title": "_text",
+                    "type": "string"
+                  },
+                  "_contained": {
+                    "title": "_contained",
+                    "type": "string"
+                  },
+                  "_count": {
+                    "title": "_count",
+                    "type": "string"
+                  },
+                  "_graph": {
+                    "title": "_graph",
+                    "type": "string"
+                  },
+                  "_include": {
+                    "title": "_include",
+                    "type": "string"
+                  },
+                  "_revinclude": {
+                    "title": "_revinclude",
+                    "type": "string"
+                  },
+                  "_score": {
+                    "title": "_score",
+                    "type": "string"
+                  },
+                  "_sort": {
+                    "title": "_sort",
+                    "type": "string"
+                  },
+                  "_total": {
+                    "title": "_total",
+                    "type": "string"
+                  },
                   "based-on": {
                     "title": "based-on",
                     "type": "string"
@@ -678,15 +1132,396 @@
             }
           }
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/_format"
+        },
+        {
+          "$ref": "#/components/parameters/_pretty"
+        }
+      ]
     },
-    "/Observation/{logical_id}/_history": {
+    "/Patient": {
+      "post": {
+        "tags": [
+          "Patient"
+        ],
+        "summary": "create: Create a new Patient instance",
+        "operationId": "CreatePatient",
+        "requestBody": {
+          "description": "A FHIR Patient",
+          "content": {
+            "application/fhir+json": {
+              "schema": {
+                "type": "object",
+                "description": "A FHIR Resource"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "type": "object",
+                "description": "A FHIR Resource"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "BAD REQUEST",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "NOT AUTHORIZED",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "METHOD NOT ALLOWED",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "CONFLICT",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "CONFLICT",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "UNPROCESSABLE",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              }
+            }
+          }
+        }
+      },
       "get": {
         "tags": [
-          "Observation"
+          "Patient"
         ],
-        "summary": "history-instance: Get the change history of a specific Observation resource",
-        "operationId": "HistoryInstanceObservation",
+        "summary": "search-type: Search for Patient instances",
+        "operationId": "SearchPatientGet",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/_elements"
+          },
+          {
+            "$ref": "#/components/parameters/_summary"
+          },
+          {
+            "$ref": "#/components/parameters/_content"
+          },
+          {
+            "$ref": "#/components/parameters/_filter"
+          },
+          {
+            "$ref": "#/components/parameters/_id"
+          },
+          {
+            "$ref": "#/components/parameters/_in"
+          },
+          {
+            "$ref": "#/components/parameters/_language"
+          },
+          {
+            "$ref": "#/components/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/components/parameters/_list"
+          },
+          {
+            "$ref": "#/components/parameters/_profile"
+          },
+          {
+            "$ref": "#/components/parameters/_query"
+          },
+          {
+            "$ref": "#/components/parameters/_security"
+          },
+          {
+            "$ref": "#/components/parameters/_source"
+          },
+          {
+            "$ref": "#/components/parameters/_tag"
+          },
+          {
+            "$ref": "#/components/parameters/_text"
+          },
+          {
+            "$ref": "#/components/parameters/_contained"
+          },
+          {
+            "$ref": "#/components/parameters/_count"
+          },
+          {
+            "$ref": "#/components/parameters/_graph"
+          },
+          {
+            "$ref": "#/components/parameters/_include"
+          },
+          {
+            "$ref": "#/components/parameters/_revinclude"
+          },
+          {
+            "$ref": "#/components/parameters/_score"
+          },
+          {
+            "$ref": "#/components/parameters/_sort"
+          },
+          {
+            "$ref": "#/components/parameters/_total"
+          },
+          {
+            "$ref": "#/components/parameters/active"
+          },
+          {
+            "$ref": "#/components/parameters/address"
+          },
+          {
+            "$ref": "#/components/parameters/address-city"
+          },
+          {
+            "$ref": "#/components/parameters/address-country"
+          },
+          {
+            "$ref": "#/components/parameters/address-postalcode"
+          },
+          {
+            "$ref": "#/components/parameters/address-state"
+          },
+          {
+            "$ref": "#/components/parameters/address-use"
+          },
+          {
+            "$ref": "#/components/parameters/birthdate"
+          },
+          {
+            "$ref": "#/components/parameters/death-date"
+          },
+          {
+            "$ref": "#/components/parameters/deceased"
+          },
+          {
+            "$ref": "#/components/parameters/email"
+          },
+          {
+            "$ref": "#/components/parameters/family"
+          },
+          {
+            "$ref": "#/components/parameters/gender"
+          },
+          {
+            "$ref": "#/components/parameters/general-practitioner"
+          },
+          {
+            "$ref": "#/components/parameters/given"
+          },
+          {
+            "$ref": "#/components/parameters/identifier"
+          },
+          {
+            "$ref": "#/components/parameters/language"
+          },
+          {
+            "$ref": "#/components/parameters/link"
+          },
+          {
+            "$ref": "#/components/parameters/name"
+          },
+          {
+            "$ref": "#/components/parameters/organization"
+          },
+          {
+            "$ref": "#/components/parameters/phone"
+          },
+          {
+            "$ref": "#/components/parameters/phonetic"
+          },
+          {
+            "$ref": "#/components/parameters/telecom"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "GONE",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/_format"
+        },
+        {
+          "$ref": "#/components/parameters/_pretty"
+        }
+      ]
+    },
+    "/Patient/{logical_id}": {
+      "delete": {
+        "tags": [
+          "Patient"
+        ],
+        "summary": "delete: Perform a logical delete on a Patient instance",
+        "operationId": "DeletePatient",
         "parameters": [
           {
             "$ref": "#/components/parameters/logical_id"
@@ -694,7 +1529,16 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "OK"
+          },
+          "202": {
+            "description": "ACCEPTED"
+          },
+          "204": {
+            "description": "NO CONTENT"
+          },
+          "400": {
+            "description": "BAD REQUEST",
             "content": {
               "application/fhir+json": {
                 "schema": {
@@ -710,8 +1554,8 @@
               }
             }
           },
-          "410": {
-            "description": "GONE",
+          "401": {
+            "description": "NOT AUTHORIZED",
             "content": {
               "application/fhir+json": {
                 "schema": {
@@ -743,17 +1587,60 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "METHOD NOT ALLOWED",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "CONFLICT",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "type": "object",
+                  "description": "A FHIR Resource"
+                }
+              }
+            }
           }
         }
-      }
-    },
-    "/Observation/_history": {
+      },
       "get": {
         "tags": [
-          "Observation"
+          "Patient"
         ],
-        "summary": "history-type: Get the change history of all Observation resources",
-        "operationId": "HistoryTypeObservation",
+        "summary": "read: Read a FHIR Patient",
+        "operationId": "ReadPatient",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/logical_id"
+          },
+          {
+            "$ref": "#/components/parameters/_elements"
+          },
+          {
+            "$ref": "#/components/parameters/_summary"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -807,9 +1694,7 @@
             }
           }
         }
-      }
-    },
-    "/Patient/{logical_id}": {
+      },
       "put": {
         "tags": [
           "Patient"
@@ -978,204 +1863,14 @@
           }
         }
       },
-      "get": {
-        "tags": [
-          "Patient"
-        ],
-        "summary": "read: Read a FHIR Patient",
-        "operationId": "ReadPatient",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/logical_id"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              }
-            }
-          },
-          "410": {
-            "description": "GONE",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "NOT FOUND",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              }
-            }
-          }
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/_format"
+        },
+        {
+          "$ref": "#/components/parameters/_pretty"
         }
-      }
-    },
-    "/Patient": {
-      "get": {
-        "tags": [
-          "Patient"
-        ],
-        "summary": "search-type: Search for Patient instances",
-        "operationId": "SearchPatientGet",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/active"
-          },
-          {
-            "$ref": "#/components/parameters/address"
-          },
-          {
-            "$ref": "#/components/parameters/address-city"
-          },
-          {
-            "$ref": "#/components/parameters/address-country"
-          },
-          {
-            "$ref": "#/components/parameters/address-postalcode"
-          },
-          {
-            "$ref": "#/components/parameters/address-state"
-          },
-          {
-            "$ref": "#/components/parameters/address-use"
-          },
-          {
-            "$ref": "#/components/parameters/birthdate"
-          },
-          {
-            "$ref": "#/components/parameters/death-date"
-          },
-          {
-            "$ref": "#/components/parameters/deceased"
-          },
-          {
-            "$ref": "#/components/parameters/email"
-          },
-          {
-            "$ref": "#/components/parameters/family"
-          },
-          {
-            "$ref": "#/components/parameters/gender"
-          },
-          {
-            "$ref": "#/components/parameters/general-practitioner"
-          },
-          {
-            "$ref": "#/components/parameters/given"
-          },
-          {
-            "$ref": "#/components/parameters/identifier"
-          },
-          {
-            "$ref": "#/components/parameters/language"
-          },
-          {
-            "$ref": "#/components/parameters/link"
-          },
-          {
-            "$ref": "#/components/parameters/name"
-          },
-          {
-            "$ref": "#/components/parameters/organization"
-          },
-          {
-            "$ref": "#/components/parameters/phone"
-          },
-          {
-            "$ref": "#/components/parameters/phonetic"
-          },
-          {
-            "$ref": "#/components/parameters/telecom"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              }
-            }
-          },
-          "410": {
-            "description": "GONE",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "NOT FOUND",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              }
-            }
-          }
-        }
-      }
+      ]
     },
     "/Patient/_search": {
       "post": {
@@ -1191,6 +1886,98 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "_elements": {
+                    "title": "_elements",
+                    "type": "string"
+                  },
+                  "_summary": {
+                    "title": "_summary",
+                    "type": "string"
+                  },
+                  "_content": {
+                    "title": "_content",
+                    "type": "string"
+                  },
+                  "_filter": {
+                    "title": "_filter",
+                    "type": "string"
+                  },
+                  "_id": {
+                    "title": "_id",
+                    "type": "string"
+                  },
+                  "_in": {
+                    "title": "_in",
+                    "type": "string"
+                  },
+                  "_language": {
+                    "title": "_language",
+                    "type": "string"
+                  },
+                  "_lastUpdated": {
+                    "title": "_lastUpdated",
+                    "type": "string"
+                  },
+                  "_list": {
+                    "title": "_list",
+                    "type": "string"
+                  },
+                  "_profile": {
+                    "title": "_profile",
+                    "type": "string"
+                  },
+                  "_query": {
+                    "title": "_query",
+                    "type": "string"
+                  },
+                  "_security": {
+                    "title": "_security",
+                    "type": "string"
+                  },
+                  "_source": {
+                    "title": "_source",
+                    "type": "string"
+                  },
+                  "_tag": {
+                    "title": "_tag",
+                    "type": "string"
+                  },
+                  "_text": {
+                    "title": "_text",
+                    "type": "string"
+                  },
+                  "_contained": {
+                    "title": "_contained",
+                    "type": "string"
+                  },
+                  "_count": {
+                    "title": "_count",
+                    "type": "string"
+                  },
+                  "_graph": {
+                    "title": "_graph",
+                    "type": "string"
+                  },
+                  "_include": {
+                    "title": "_include",
+                    "type": "string"
+                  },
+                  "_revinclude": {
+                    "title": "_revinclude",
+                    "type": "string"
+                  },
+                  "_score": {
+                    "title": "_score",
+                    "type": "string"
+                  },
+                  "_sort": {
+                    "title": "_sort",
+                    "type": "string"
+                  },
+                  "_total": {
+                    "title": "_total",
+                    "type": "string"
+                  },
                   "active": {
                     "title": "active",
                     "type": "string"
@@ -1342,18 +2129,92 @@
             }
           }
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/_format"
+        },
+        {
+          "$ref": "#/components/parameters/_pretty"
+        }
+      ]
     },
-    "/Patient/{logical_id}/_history": {
+    "/": {
       "get": {
         "tags": [
-          "Patient"
+          "System"
         ],
-        "summary": "history-instance: Get the change history of a specific Patient resource",
-        "operationId": "HistoryInstancePatient",
+        "summary": "search-system: Search all resources",
+        "operationId": "SearchSystemGet",
         "parameters": [
           {
-            "$ref": "#/components/parameters/logical_id"
+            "$ref": "#/components/parameters/_elements"
+          },
+          {
+            "$ref": "#/components/parameters/_summary"
+          },
+          {
+            "$ref": "#/components/parameters/_content"
+          },
+          {
+            "$ref": "#/components/parameters/_filter"
+          },
+          {
+            "$ref": "#/components/parameters/_id"
+          },
+          {
+            "$ref": "#/components/parameters/_in"
+          },
+          {
+            "$ref": "#/components/parameters/_language"
+          },
+          {
+            "$ref": "#/components/parameters/_lastUpdated"
+          },
+          {
+            "$ref": "#/components/parameters/_list"
+          },
+          {
+            "$ref": "#/components/parameters/_profile"
+          },
+          {
+            "$ref": "#/components/parameters/_query"
+          },
+          {
+            "$ref": "#/components/parameters/_security"
+          },
+          {
+            "$ref": "#/components/parameters/_source"
+          },
+          {
+            "$ref": "#/components/parameters/_tag"
+          },
+          {
+            "$ref": "#/components/parameters/_text"
+          },
+          {
+            "$ref": "#/components/parameters/_contained"
+          },
+          {
+            "$ref": "#/components/parameters/_count"
+          },
+          {
+            "$ref": "#/components/parameters/_graph"
+          },
+          {
+            "$ref": "#/components/parameters/_include"
+          },
+          {
+            "$ref": "#/components/parameters/_revinclude"
+          },
+          {
+            "$ref": "#/components/parameters/_score"
+          },
+          {
+            "$ref": "#/components/parameters/_sort"
+          },
+          {
+            "$ref": "#/components/parameters/_total"
           }
         ],
         "responses": {
@@ -1409,84 +2270,15 @@
             }
           }
         }
-      }
-    },
-    "/Patient/_history": {
-      "get": {
+      },
+      "post": {
         "tags": [
-          "Patient"
+          "System"
         ],
-        "summary": "history-type: Get the change history of all Patient resources",
-        "operationId": "HistoryTypePatient",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              }
-            }
-          },
-          "410": {
-            "description": "GONE",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "NOT FOUND",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/Resource/{logical_id}": {
-      "put": {
-        "tags": [
-          "Resource"
-        ],
-        "summary": "update,create: Update or Create a Resource instance",
-        "operationId": "UpdateOrCreateResource",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/logical_id"
-          }
-        ],
+        "summary": "bundle-system: Submit a batch or transaction",
+        "operationId": "BundleSystemPost",
         "requestBody": {
-          "description": "An updated FHIR Resource",
+          "description": "Bundle being submitted",
           "content": {
             "application/fhir+json": {
               "schema": {
@@ -1642,397 +2434,14 @@
           }
         }
       },
-      "get": {
-        "tags": [
-          "Resource"
-        ],
-        "summary": "read: Read a FHIR Resource",
-        "operationId": "ReadResource",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/logical_id"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              }
-            }
-          },
-          "410": {
-            "description": "GONE",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "NOT FOUND",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/Resource": {
-      "get": {
-        "tags": [
-          "Resource"
-        ],
-        "summary": "search-type: Search for Resource instances",
-        "operationId": "SearchResourceGet",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              }
-            }
-          },
-          "410": {
-            "description": "GONE",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "NOT FOUND",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/Resource/_search": {
-      "post": {
-        "tags": [
-          "Resource"
-        ],
-        "summary": "search-type: Search for Resource instances",
-        "operationId": "SearchResourcePost",
-        "requestBody": {
-          "description": "FHIR search parameters",
-          "content": {
-            "application/x-www-form-urlencoded": {
-              "schema": {
-                "type": "object"
-              }
-            }
-          },
-          "required": true
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/_format"
         },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              }
-            }
-          },
-          "410": {
-            "description": "GONE",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "NOT FOUND",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              }
-            }
-          }
+        {
+          "$ref": "#/components/parameters/_pretty"
         }
-      }
-    },
-    "/Resource/{logical_id}/_history": {
-      "get": {
-        "tags": [
-          "Resource"
-        ],
-        "summary": "history-instance: Get the change history of a specific Resource resource",
-        "operationId": "HistoryInstanceResource",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/logical_id"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              }
-            }
-          },
-          "410": {
-            "description": "GONE",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "NOT FOUND",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/Resource/_history": {
-      "get": {
-        "tags": [
-          "Resource"
-        ],
-        "summary": "history-type: Get the change history of all Resource resources",
-        "operationId": "HistoryTypeResource",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              }
-            }
-          },
-          "410": {
-            "description": "GONE",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "NOT FOUND",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/": {
-      "get": {
-        "tags": [
-          "System"
-        ],
-        "summary": "search-system: Search all resources",
-        "operationId": "SearchSystemGet",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              }
-            }
-          },
-          "410": {
-            "description": "GONE",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "NOT FOUND",
-            "content": {
-              "application/fhir+json": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              },
-              "application/fhir+xml": {
-                "schema": {
-                  "type": "object",
-                  "description": "A FHIR Resource"
-                }
-              }
-            }
-          }
-        }
-      }
+      ]
     },
     "/_search": {
       "post": {
@@ -2046,7 +2455,101 @@
           "content": {
             "application/x-www-form-urlencoded": {
               "schema": {
-                "type": "object"
+                "type": "object",
+                "properties": {
+                  "_elements": {
+                    "title": "_elements",
+                    "type": "string"
+                  },
+                  "_summary": {
+                    "title": "_summary",
+                    "type": "string"
+                  },
+                  "_content": {
+                    "title": "_content",
+                    "type": "string"
+                  },
+                  "_filter": {
+                    "title": "_filter",
+                    "type": "string"
+                  },
+                  "_id": {
+                    "title": "_id",
+                    "type": "string"
+                  },
+                  "_in": {
+                    "title": "_in",
+                    "type": "string"
+                  },
+                  "_language": {
+                    "title": "_language",
+                    "type": "string"
+                  },
+                  "_lastUpdated": {
+                    "title": "_lastUpdated",
+                    "type": "string"
+                  },
+                  "_list": {
+                    "title": "_list",
+                    "type": "string"
+                  },
+                  "_profile": {
+                    "title": "_profile",
+                    "type": "string"
+                  },
+                  "_query": {
+                    "title": "_query",
+                    "type": "string"
+                  },
+                  "_security": {
+                    "title": "_security",
+                    "type": "string"
+                  },
+                  "_source": {
+                    "title": "_source",
+                    "type": "string"
+                  },
+                  "_tag": {
+                    "title": "_tag",
+                    "type": "string"
+                  },
+                  "_text": {
+                    "title": "_text",
+                    "type": "string"
+                  },
+                  "_contained": {
+                    "title": "_contained",
+                    "type": "string"
+                  },
+                  "_count": {
+                    "title": "_count",
+                    "type": "string"
+                  },
+                  "_graph": {
+                    "title": "_graph",
+                    "type": "string"
+                  },
+                  "_include": {
+                    "title": "_include",
+                    "type": "string"
+                  },
+                  "_revinclude": {
+                    "title": "_revinclude",
+                    "type": "string"
+                  },
+                  "_score": {
+                    "title": "_score",
+                    "type": "string"
+                  },
+                  "_sort": {
+                    "title": "_sort",
+                    "type": "string"
+                  },
+                  "_total": {
+                    "title": "_total",
+                    "type": "string"
+                  }
+                }
               }
             }
           },
@@ -2105,11 +2608,219 @@
             }
           }
         }
-      }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/_format"
+        },
+        {
+          "$ref": "#/components/parameters/_pretty"
+        }
+      ]
     }
   },
   "components": {
     "parameters": {
+      "_format": {
+        "name": "_format",
+        "in": "query",
+        "description": "Override the HTTP content negotiation",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_pretty": {
+        "name": "_pretty",
+        "in": "query",
+        "description": "Ask for a pretty printed response for human convenience",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_elements": {
+        "name": "_elements",
+        "in": "query",
+        "description": "Ask for a particular set of elements to be returned",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_summary": {
+        "name": "_summary",
+        "in": "query",
+        "description": "Return only portions of resources, based on pre-defined levels",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_content": {
+        "name": "_content",
+        "in": "query",
+        "description": "Search on the entire content of the resource",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_filter": {
+        "name": "_filter",
+        "in": "query",
+        "description": "Provide an inline query expression",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_id": {
+        "name": "_id",
+        "in": "query",
+        "description": "Logical id of this artifact",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_in": {
+        "name": "_in",
+        "in": "query",
+        "description": "Allows for the retrieval of resources that are active members of a CareTeam, Group, or List",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_language": {
+        "name": "_language",
+        "in": "query",
+        "description": "Language of the resource content",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_lastUpdated": {
+        "name": "_lastUpdated",
+        "in": "query",
+        "description": "When the resource version last changed",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_list": {
+        "name": "_list",
+        "in": "query",
+        "description": "Allows for the retrieval of resources that are referenced by a List resource or by one of the pre-defined functional lists",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_profile": {
+        "name": "_profile",
+        "in": "query",
+        "description": "Profiles this resource claims to conform to",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_query": {
+        "name": "_query",
+        "in": "query",
+        "description": "A custom search profile that describes a specific defined query operation",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_security": {
+        "name": "_security",
+        "in": "query",
+        "description": "Security Labels applied to this resource",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_source": {
+        "name": "_source",
+        "in": "query",
+        "description": "Identifies where the resource comes from",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_tag": {
+        "name": "_tag",
+        "in": "query",
+        "description": "Tags applied to this resource",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_text": {
+        "name": "_text",
+        "in": "query",
+        "description": "Perform searches against the narrative content of a resource",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_contained": {
+        "name": "_contained",
+        "in": "query",
+        "description": "Request different types of handling for contained resources",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_count": {
+        "name": "_count",
+        "in": "query",
+        "description": "Limit the number of match results per page of response",
+        "schema": {
+          "type": "number"
+        }
+      },
+      "_graph": {
+        "name": "_graph",
+        "in": "query",
+        "description": "Include additional resources according to a GraphDefinition",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_include": {
+        "name": "_include",
+        "in": "query",
+        "description": "Include additional resources, based on following links forward across references",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_revinclude": {
+        "name": "_revinclude",
+        "in": "query",
+        "description": "Include additional resources, based on following reverse links across references",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_score": {
+        "name": "_score",
+        "in": "query",
+        "description": "Request match relevance in results",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_sort": {
+        "name": "_sort",
+        "in": "query",
+        "description": "Request which order results should be returned in",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "_total": {
+        "name": "_total",
+        "in": "query",
+        "description": "Request a precision of the total number of results for a request",
+        "schema": {
+          "type": "string"
+        }
+      },
       "logical_id": {
         "name": "logical_id",
         "in": "path",
@@ -2124,6 +2835,230 @@
         "in": "path",
         "description": "Resource Version Number",
         "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "composition": {
+        "name": "composition",
+        "in": "query",
+        "description": "The first resource in the bundle, if the bundle type is \"document\" - this is a composition, and this parameter provides access to search its contents",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "identifier": {
+        "name": "identifier",
+        "in": "query",
+        "description": "Persistent identifier for the bundle",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "message": {
+        "name": "message",
+        "in": "query",
+        "description": "The first resource in the bundle, if the bundle type is \"message\" - this is a message header, and this parameter provides access to search its contents",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "timestamp": {
+        "name": "timestamp",
+        "in": "query",
+        "description": "When the bundle was assembled",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "type": {
+        "name": "type",
+        "in": "query",
+        "description": "document | message | transaction | transaction-response | batch | batch-response | history | searchset | collection",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "context": {
+        "name": "context",
+        "in": "query",
+        "description": "Multiple Resources: \r\n\r\n* [CapabilityStatement](http://hl7.org/fhir/capabilitystatement.html): A use context assigned to the capability statement\r\n* [CodeSystem](http://hl7.org/fhir/codesystem.html): A use context assigned to the code system\r\n* [CompartmentDefinition](http://hl7.org/fhir/compartmentdefinition.html): A use context assigned to the compartment definition\r\n* [ConceptMap](http://hl7.org/fhir/conceptmap.html): A use context assigned to the concept map\r\n* [GraphDefinition](http://hl7.org/fhir/graphdefinition.html): A use context assigned to the graph definition\r\n* [ImplementationGuide](http://hl7.org/fhir/implementationguide.html): A use context assigned to the implementation guide\r\n* [MessageDefinition](http://hl7.org/fhir/messagedefinition.html): A use context assigned to the message definition\r\n* [NamingSystem](http://hl7.org/fhir/namingsystem.html): A use context assigned to the naming system\r\n* [OperationDefinition](http://hl7.org/fhir/operationdefinition.html): A use context assigned to the operation definition\r\n* [SearchParameter](http://hl7.org/fhir/searchparameter.html): A use context assigned to the search parameter\r\n* [StructureDefinition](http://hl7.org/fhir/structuredefinition.html): A use context assigned to the structure definition\r\n* [StructureMap](http://hl7.org/fhir/structuremap.html): A use context assigned to the structure map\r\n* [TerminologyCapabilities](http://hl7.org/fhir/terminologycapabilities.html): A use context assigned to the terminology capabilities\r\n* [ValueSet](http://hl7.org/fhir/valueset.html): A use context assigned to the value set",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "context-quantity": {
+        "name": "context-quantity",
+        "in": "query",
+        "description": "Multiple Resources: \r\n\r\n* [CapabilityStatement](http://hl7.org/fhir/capabilitystatement.html): A quantity- or range-valued use context assigned to the capability statement\r\n* [CodeSystem](http://hl7.org/fhir/codesystem.html): A quantity- or range-valued use context assigned to the code system\r\n* [CompartmentDefinition](http://hl7.org/fhir/compartmentdefinition.html): A quantity- or range-valued use context assigned to the compartment definition\r\n* [ConceptMap](http://hl7.org/fhir/conceptmap.html): A quantity- or range-valued use context assigned to the concept map\r\n* [GraphDefinition](http://hl7.org/fhir/graphdefinition.html): A quantity- or range-valued use context assigned to the graph definition\r\n* [ImplementationGuide](http://hl7.org/fhir/implementationguide.html): A quantity- or range-valued use context assigned to the implementation guide\r\n* [MessageDefinition](http://hl7.org/fhir/messagedefinition.html): A quantity- or range-valued use context assigned to the message definition\r\n* [NamingSystem](http://hl7.org/fhir/namingsystem.html): A quantity- or range-valued use context assigned to the naming system\r\n* [OperationDefinition](http://hl7.org/fhir/operationdefinition.html): A quantity- or range-valued use context assigned to the operation definition\r\n* [SearchParameter](http://hl7.org/fhir/searchparameter.html): A quantity- or range-valued use context assigned to the search parameter\r\n* [StructureDefinition](http://hl7.org/fhir/structuredefinition.html): A quantity- or range-valued use context assigned to the structure definition\r\n* [StructureMap](http://hl7.org/fhir/structuremap.html): A quantity- or range-valued use context assigned to the structure map\r\n* [TerminologyCapabilities](http://hl7.org/fhir/terminologycapabilities.html): A quantity- or range-valued use context assigned to the terminology capabilities\r\n* [ValueSet](http://hl7.org/fhir/valueset.html): A quantity- or range-valued use context assigned to the value set",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "context-type": {
+        "name": "context-type",
+        "in": "query",
+        "description": "Multiple Resources: \r\n\r\n* [CapabilityStatement](http://hl7.org/fhir/capabilitystatement.html): A type of use context assigned to the capability statement\r\n* [CodeSystem](http://hl7.org/fhir/codesystem.html): A type of use context assigned to the code system\r\n* [CompartmentDefinition](http://hl7.org/fhir/compartmentdefinition.html): A type of use context assigned to the compartment definition\r\n* [ConceptMap](http://hl7.org/fhir/conceptmap.html): A type of use context assigned to the concept map\r\n* [GraphDefinition](http://hl7.org/fhir/graphdefinition.html): A type of use context assigned to the graph definition\r\n* [ImplementationGuide](http://hl7.org/fhir/implementationguide.html): A type of use context assigned to the implementation guide\r\n* [MessageDefinition](http://hl7.org/fhir/messagedefinition.html): A type of use context assigned to the message definition\r\n* [NamingSystem](http://hl7.org/fhir/namingsystem.html): A type of use context assigned to the naming system\r\n* [OperationDefinition](http://hl7.org/fhir/operationdefinition.html): A type of use context assigned to the operation definition\r\n* [SearchParameter](http://hl7.org/fhir/searchparameter.html): A type of use context assigned to the search parameter\r\n* [StructureDefinition](http://hl7.org/fhir/structuredefinition.html): A type of use context assigned to the structure definition\r\n* [StructureMap](http://hl7.org/fhir/structuremap.html): A type of use context assigned to the structure map\r\n* [TerminologyCapabilities](http://hl7.org/fhir/terminologycapabilities.html): A type of use context assigned to the terminology capabilities\r\n* [ValueSet](http://hl7.org/fhir/valueset.html): A type of use context assigned to the value set",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "context-type-quantity": {
+        "name": "context-type-quantity",
+        "in": "query",
+        "description": "Multiple Resources: \r\n\r\n* [CapabilityStatement](http://hl7.org/fhir/capabilitystatement.html): A use context type and quantity- or range-based value assigned to the capability statement\r\n* [CodeSystem](http://hl7.org/fhir/codesystem.html): A use context type and quantity- or range-based value assigned to the code system\r\n* [CompartmentDefinition](http://hl7.org/fhir/compartmentdefinition.html): A use context type and quantity- or range-based value assigned to the compartment definition\r\n* [ConceptMap](http://hl7.org/fhir/conceptmap.html): A use context type and quantity- or range-based value assigned to the concept map\r\n* [GraphDefinition](http://hl7.org/fhir/graphdefinition.html): A use context type and quantity- or range-based value assigned to the graph definition\r\n* [ImplementationGuide](http://hl7.org/fhir/implementationguide.html): A use context type and quantity- or range-based value assigned to the implementation guide\r\n* [MessageDefinition](http://hl7.org/fhir/messagedefinition.html): A use context type and quantity- or range-based value assigned to the message definition\r\n* [NamingSystem](http://hl7.org/fhir/namingsystem.html): A use context type and quantity- or range-based value assigned to the naming system\r\n* [OperationDefinition](http://hl7.org/fhir/operationdefinition.html): A use context type and quantity- or range-based value assigned to the operation definition\r\n* [SearchParameter](http://hl7.org/fhir/searchparameter.html): A use context type and quantity- or range-based value assigned to the search parameter\r\n* [StructureDefinition](http://hl7.org/fhir/structuredefinition.html): A use context type and quantity- or range-based value assigned to the structure definition\r\n* [StructureMap](http://hl7.org/fhir/structuremap.html): A use context type and quantity- or range-based value assigned to the structure map\r\n* [TerminologyCapabilities](http://hl7.org/fhir/terminologycapabilities.html): A use context type and quantity- or range-based value assigned to the terminology capabilities\r\n* [ValueSet](http://hl7.org/fhir/valueset.html): A use context type and quantity- or range-based value assigned to the value set",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "context-type-value": {
+        "name": "context-type-value",
+        "in": "query",
+        "description": "Multiple Resources: \r\n\r\n* [CapabilityStatement](http://hl7.org/fhir/capabilitystatement.html): A use context type and value assigned to the capability statement\r\n* [CodeSystem](http://hl7.org/fhir/codesystem.html): A use context type and value assigned to the code system\r\n* [CompartmentDefinition](http://hl7.org/fhir/compartmentdefinition.html): A use context type and value assigned to the compartment definition\r\n* [ConceptMap](http://hl7.org/fhir/conceptmap.html): A use context type and value assigned to the concept map\r\n* [GraphDefinition](http://hl7.org/fhir/graphdefinition.html): A use context type and value assigned to the graph definition\r\n* [ImplementationGuide](http://hl7.org/fhir/implementationguide.html): A use context type and value assigned to the implementation guide\r\n* [MessageDefinition](http://hl7.org/fhir/messagedefinition.html): A use context type and value assigned to the message definition\r\n* [NamingSystem](http://hl7.org/fhir/namingsystem.html): A use context type and value assigned to the naming system\r\n* [OperationDefinition](http://hl7.org/fhir/operationdefinition.html): A use context type and value assigned to the operation definition\r\n* [SearchParameter](http://hl7.org/fhir/searchparameter.html): A use context type and value assigned to the search parameter\r\n* [StructureDefinition](http://hl7.org/fhir/structuredefinition.html): A use context type and value assigned to the structure definition\r\n* [StructureMap](http://hl7.org/fhir/structuremap.html): A use context type and value assigned to the structure map\r\n* [TerminologyCapabilities](http://hl7.org/fhir/terminologycapabilities.html): A use context type and value assigned to the terminology capabilities\r\n* [ValueSet](http://hl7.org/fhir/valueset.html): A use context type and value assigned to the value set",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "date": {
+        "name": "date",
+        "in": "query",
+        "description": "Multiple Resources: \r\n\r\n* [CapabilityStatement](http://hl7.org/fhir/capabilitystatement.html): The capability statement publication date\r\n* [CodeSystem](http://hl7.org/fhir/codesystem.html): The code system publication date\r\n* [CompartmentDefinition](http://hl7.org/fhir/compartmentdefinition.html): The compartment definition publication date\r\n* [ConceptMap](http://hl7.org/fhir/conceptmap.html): The concept map publication date\r\n* [GraphDefinition](http://hl7.org/fhir/graphdefinition.html): The graph definition publication date\r\n* [ImplementationGuide](http://hl7.org/fhir/implementationguide.html): The implementation guide publication date\r\n* [MessageDefinition](http://hl7.org/fhir/messagedefinition.html): The message definition publication date\r\n* [NamingSystem](http://hl7.org/fhir/namingsystem.html): The naming system publication date\r\n* [OperationDefinition](http://hl7.org/fhir/operationdefinition.html): The operation definition publication date\r\n* [SearchParameter](http://hl7.org/fhir/searchparameter.html): The search parameter publication date\r\n* [StructureDefinition](http://hl7.org/fhir/structuredefinition.html): The structure definition publication date\r\n* [StructureMap](http://hl7.org/fhir/structuremap.html): The structure map publication date\r\n* [TerminologyCapabilities](http://hl7.org/fhir/terminologycapabilities.html): The terminology capabilities publication date\r\n* [ValueSet](http://hl7.org/fhir/valueset.html): The value set publication date",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "description": {
+        "name": "description",
+        "in": "query",
+        "description": "Multiple Resources: \r\n\r\n* [CapabilityStatement](http://hl7.org/fhir/capabilitystatement.html): The description of the capability statement\r\n* [CodeSystem](http://hl7.org/fhir/codesystem.html): The description of the code system\r\n* [CompartmentDefinition](http://hl7.org/fhir/compartmentdefinition.html): The description of the compartment definition\r\n* [ConceptMap](http://hl7.org/fhir/conceptmap.html): The description of the concept map\r\n* [GraphDefinition](http://hl7.org/fhir/graphdefinition.html): The description of the graph definition\r\n* [ImplementationGuide](http://hl7.org/fhir/implementationguide.html): The description of the implementation guide\r\n* [MessageDefinition](http://hl7.org/fhir/messagedefinition.html): The description of the message definition\r\n* [NamingSystem](http://hl7.org/fhir/namingsystem.html): The description of the naming system\r\n* [OperationDefinition](http://hl7.org/fhir/operationdefinition.html): The description of the operation definition\r\n* [SearchParameter](http://hl7.org/fhir/searchparameter.html): The description of the search parameter\r\n* [StructureDefinition](http://hl7.org/fhir/structuredefinition.html): The description of the structure definition\r\n* [StructureMap](http://hl7.org/fhir/structuremap.html): The description of the structure map\r\n* [TerminologyCapabilities](http://hl7.org/fhir/terminologycapabilities.html): The description of the terminology capabilities\r\n* [ValueSet](http://hl7.org/fhir/valueset.html): The description of the value set",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "fhirversion": {
+        "name": "fhirversion",
+        "in": "query",
+        "description": "The version of FHIR",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "format": {
+        "name": "format",
+        "in": "query",
+        "description": "formats supported (xml | json | ttl | mime type)",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "guide": {
+        "name": "guide",
+        "in": "query",
+        "description": "Implementation guides supported",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "jurisdiction": {
+        "name": "jurisdiction",
+        "in": "query",
+        "description": "Multiple Resources: \r\n\r\n* [CapabilityStatement](http://hl7.org/fhir/capabilitystatement.html): Intended jurisdiction for the capability statement\r\n* [CodeSystem](http://hl7.org/fhir/codesystem.html): Intended jurisdiction for the code system\r\n* [ConceptMap](http://hl7.org/fhir/conceptmap.html): Intended jurisdiction for the concept map\r\n* [GraphDefinition](http://hl7.org/fhir/graphdefinition.html): Intended jurisdiction for the graph definition\r\n* [ImplementationGuide](http://hl7.org/fhir/implementationguide.html): Intended jurisdiction for the implementation guide\r\n* [MessageDefinition](http://hl7.org/fhir/messagedefinition.html): Intended jurisdiction for the message definition\r\n* [NamingSystem](http://hl7.org/fhir/namingsystem.html): Intended jurisdiction for the naming system\r\n* [OperationDefinition](http://hl7.org/fhir/operationdefinition.html): Intended jurisdiction for the operation definition\r\n* [SearchParameter](http://hl7.org/fhir/searchparameter.html): Intended jurisdiction for the search parameter\r\n* [StructureDefinition](http://hl7.org/fhir/structuredefinition.html): Intended jurisdiction for the structure definition\r\n* [StructureMap](http://hl7.org/fhir/structuremap.html): Intended jurisdiction for the structure map\r\n* [TerminologyCapabilities](http://hl7.org/fhir/terminologycapabilities.html): Intended jurisdiction for the terminology capabilities\r\n* [ValueSet](http://hl7.org/fhir/valueset.html): Intended jurisdiction for the value set",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "mode": {
+        "name": "mode",
+        "in": "query",
+        "description": "Mode - restful (server/client) or messaging (sender/receiver)",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "name": {
+        "name": "name",
+        "in": "query",
+        "description": "Multiple Resources: \r\n\r\n* [CapabilityStatement](http://hl7.org/fhir/capabilitystatement.html): Computationally friendly name of the capability statement\r\n* [CodeSystem](http://hl7.org/fhir/codesystem.html): Computationally friendly name of the code system\r\n* [CompartmentDefinition](http://hl7.org/fhir/compartmentdefinition.html): Computationally friendly name of the compartment definition\r\n* [ConceptMap](http://hl7.org/fhir/conceptmap.html): Computationally friendly name of the concept map\r\n* [GraphDefinition](http://hl7.org/fhir/graphdefinition.html): Computationally friendly name of the graph definition\r\n* [ImplementationGuide](http://hl7.org/fhir/implementationguide.html): Computationally friendly name of the implementation guide\r\n* [MessageDefinition](http://hl7.org/fhir/messagedefinition.html): Computationally friendly name of the message definition\r\n* [NamingSystem](http://hl7.org/fhir/namingsystem.html): Computationally friendly name of the naming system\r\n* [OperationDefinition](http://hl7.org/fhir/operationdefinition.html): Computationally friendly name of the operation definition\r\n* [SearchParameter](http://hl7.org/fhir/searchparameter.html): Computationally friendly name of the search parameter\r\n* [StructureDefinition](http://hl7.org/fhir/structuredefinition.html): Computationally friendly name of the structure definition\r\n* [StructureMap](http://hl7.org/fhir/structuremap.html): Computationally friendly name of the structure map\r\n* [TerminologyCapabilities](http://hl7.org/fhir/terminologycapabilities.html): Computationally friendly name of the terminology capabilities\r\n* [ValueSet](http://hl7.org/fhir/valueset.html): Computationally friendly name of the value set",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "publisher": {
+        "name": "publisher",
+        "in": "query",
+        "description": "Multiple Resources: \r\n\r\n* [CapabilityStatement](http://hl7.org/fhir/capabilitystatement.html): Name of the publisher of the capability statement\r\n* [CodeSystem](http://hl7.org/fhir/codesystem.html): Name of the publisher of the code system\r\n* [CompartmentDefinition](http://hl7.org/fhir/compartmentdefinition.html): Name of the publisher of the compartment definition\r\n* [ConceptMap](http://hl7.org/fhir/conceptmap.html): Name of the publisher of the concept map\r\n* [GraphDefinition](http://hl7.org/fhir/graphdefinition.html): Name of the publisher of the graph definition\r\n* [ImplementationGuide](http://hl7.org/fhir/implementationguide.html): Name of the publisher of the implementation guide\r\n* [MessageDefinition](http://hl7.org/fhir/messagedefinition.html): Name of the publisher of the message definition\r\n* [NamingSystem](http://hl7.org/fhir/namingsystem.html): Name of the publisher of the naming system\r\n* [OperationDefinition](http://hl7.org/fhir/operationdefinition.html): Name of the publisher of the operation definition\r\n* [SearchParameter](http://hl7.org/fhir/searchparameter.html): Name of the publisher of the search parameter\r\n* [StructureDefinition](http://hl7.org/fhir/structuredefinition.html): Name of the publisher of the structure definition\r\n* [StructureMap](http://hl7.org/fhir/structuremap.html): Name of the publisher of the structure map\r\n* [TerminologyCapabilities](http://hl7.org/fhir/terminologycapabilities.html): Name of the publisher of the terminology capabilities\r\n* [ValueSet](http://hl7.org/fhir/valueset.html): Name of the publisher of the value set",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "resource": {
+        "name": "resource",
+        "in": "query",
+        "description": "Name of a resource mentioned in a capability statement",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "resource-profile": {
+        "name": "resource-profile",
+        "in": "query",
+        "description": "A profile id invoked in a capability statement",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "security-service": {
+        "name": "security-service",
+        "in": "query",
+        "description": "OAuth | SMART-on-FHIR | NTLM | Basic | Kerberos | Certificates",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "software": {
+        "name": "software",
+        "in": "query",
+        "description": "Part of the name of a software application",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "status": {
+        "name": "status",
+        "in": "query",
+        "description": "Multiple Resources: \r\n\r\n* [CapabilityStatement](http://hl7.org/fhir/capabilitystatement.html): The current status of the capability statement\r\n* [CodeSystem](http://hl7.org/fhir/codesystem.html): The current status of the code system\r\n* [CompartmentDefinition](http://hl7.org/fhir/compartmentdefinition.html): The current status of the compartment definition\r\n* [ConceptMap](http://hl7.org/fhir/conceptmap.html): The current status of the concept map\r\n* [GraphDefinition](http://hl7.org/fhir/graphdefinition.html): The current status of the graph definition\r\n* [ImplementationGuide](http://hl7.org/fhir/implementationguide.html): The current status of the implementation guide\r\n* [MessageDefinition](http://hl7.org/fhir/messagedefinition.html): The current status of the message definition\r\n* [NamingSystem](http://hl7.org/fhir/namingsystem.html): The current status of the naming system\r\n* [OperationDefinition](http://hl7.org/fhir/operationdefinition.html): The current status of the operation definition\r\n* [SearchParameter](http://hl7.org/fhir/searchparameter.html): The current status of the search parameter\r\n* [StructureDefinition](http://hl7.org/fhir/structuredefinition.html): The current status of the structure definition\r\n* [StructureMap](http://hl7.org/fhir/structuremap.html): The current status of the structure map\r\n* [TerminologyCapabilities](http://hl7.org/fhir/terminologycapabilities.html): The current status of the terminology capabilities\r\n* [ValueSet](http://hl7.org/fhir/valueset.html): The current status of the value set",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "supported-profile": {
+        "name": "supported-profile",
+        "in": "query",
+        "description": "Profiles for use cases supported",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "title": {
+        "name": "title",
+        "in": "query",
+        "description": "Multiple Resources: \r\n\r\n* [CapabilityStatement](http://hl7.org/fhir/capabilitystatement.html): The human-friendly name of the capability statement\r\n* [CodeSystem](http://hl7.org/fhir/codesystem.html): The human-friendly name of the code system\r\n* [ConceptMap](http://hl7.org/fhir/conceptmap.html): The human-friendly name of the concept map\r\n* [ImplementationGuide](http://hl7.org/fhir/implementationguide.html): The human-friendly name of the implementation guide\r\n* [MessageDefinition](http://hl7.org/fhir/messagedefinition.html): The human-friendly name of the message definition\r\n* [OperationDefinition](http://hl7.org/fhir/operationdefinition.html): The human-friendly name of the operation definition\r\n* [StructureDefinition](http://hl7.org/fhir/structuredefinition.html): The human-friendly name of the structure definition\r\n* [StructureMap](http://hl7.org/fhir/structuremap.html): The human-friendly name of the structure map\r\n* [TerminologyCapabilities](http://hl7.org/fhir/terminologycapabilities.html): The human-friendly name of the terminology capabilities\r\n* [ValueSet](http://hl7.org/fhir/valueset.html): The human-friendly name of the value set",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "url": {
+        "name": "url",
+        "in": "query",
+        "description": "Multiple Resources: \r\n\r\n* [CapabilityStatement](http://hl7.org/fhir/capabilitystatement.html): The uri that identifies the capability statement\r\n* [CodeSystem](http://hl7.org/fhir/codesystem.html): The uri that identifies the code system\r\n* [CompartmentDefinition](http://hl7.org/fhir/compartmentdefinition.html): The uri that identifies the compartment definition\r\n* [ConceptMap](http://hl7.org/fhir/conceptmap.html): The uri that identifies the concept map\r\n* [GraphDefinition](http://hl7.org/fhir/graphdefinition.html): The uri that identifies the graph definition\r\n* [ImplementationGuide](http://hl7.org/fhir/implementationguide.html): The uri that identifies the implementation guide\r\n* [MessageDefinition](http://hl7.org/fhir/messagedefinition.html): The uri that identifies the message definition\r\n* [OperationDefinition](http://hl7.org/fhir/operationdefinition.html): The uri that identifies the operation definition\r\n* [SearchParameter](http://hl7.org/fhir/searchparameter.html): The uri that identifies the search parameter\r\n* [StructureDefinition](http://hl7.org/fhir/structuredefinition.html): The uri that identifies the structure definition\r\n* [StructureMap](http://hl7.org/fhir/structuremap.html): The uri that identifies the structure map\r\n* [TerminologyCapabilities](http://hl7.org/fhir/terminologycapabilities.html): The uri that identifies the terminology capabilities\r\n* [ValueSet](http://hl7.org/fhir/valueset.html): The uri that identifies the value set",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "version": {
+        "name": "version",
+        "in": "query",
+        "description": "Multiple Resources: \r\n\r\n* [CapabilityStatement](http://hl7.org/fhir/capabilitystatement.html): The business version of the capability statement\r\n* [CodeSystem](http://hl7.org/fhir/codesystem.html): The business version of the code system\r\n* [CompartmentDefinition](http://hl7.org/fhir/compartmentdefinition.html): The business version of the compartment definition\r\n* [ConceptMap](http://hl7.org/fhir/conceptmap.html): The business version of the concept map\r\n* [GraphDefinition](http://hl7.org/fhir/graphdefinition.html): The business version of the graph definition\r\n* [ImplementationGuide](http://hl7.org/fhir/implementationguide.html): The business version of the implementation guide\r\n* [MessageDefinition](http://hl7.org/fhir/messagedefinition.html): The business version of the message definition\r\n* [OperationDefinition](http://hl7.org/fhir/operationdefinition.html): The business version of the operation definition\r\n* [SearchParameter](http://hl7.org/fhir/searchparameter.html): The business version of the search parameter\r\n* [StructureDefinition](http://hl7.org/fhir/structuredefinition.html): The business version of the structure definition\r\n* [StructureMap](http://hl7.org/fhir/structuremap.html): The business version of the structure map\r\n* [TerminologyCapabilities](http://hl7.org/fhir/terminologycapabilities.html): The business version of the terminology capabilities\r\n* [ValueSet](http://hl7.org/fhir/valueset.html): The business version of the value set",
         "schema": {
           "type": "string"
         }
@@ -2147,7 +3082,7 @@
       "code": {
         "name": "code",
         "in": "query",
-        "description": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Code that identifies the allergy or intolerance\r\n* [Condition](condition.html): Code for the condition\r\n* [DeviceRequest](devicerequest.html): Code for what is being requested/ordered\r\n* [DiagnosticReport](diagnosticreport.html): The code for the report, as opposed to codes for the atomic results, which are the names on the observation resource referred to from the result\r\n* [FamilyMemberHistory](familymemberhistory.html): A search by a condition code\r\n* [List](list.html): What the purpose of this list is\r\n* [Medication](medication.html): Returns medications for a specific code\r\n* [MedicationAdministration](medicationadministration.html): Return administrations of this medication code\r\n* [MedicationDispense](medicationdispense.html): Returns dispenses of this medicine code\r\n* [MedicationRequest](medicationrequest.html): Return prescriptions of this medication code\r\n* [MedicationStatement](medicationstatement.html): Return statements of this medication code\r\n* [Observation](observation.html): The code of the observation type\r\n* [Procedure](procedure.html): A code to identify a  procedure\r\n* [ServiceRequest](servicerequest.html): What is being requested/ordered",
+        "description": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](http://hl7.org/fhir/allergyintolerance.html): Code that identifies the allergy or intolerance\r\n* [Condition](http://hl7.org/fhir/condition.html): Code for the condition\r\n* [DeviceRequest](http://hl7.org/fhir/devicerequest.html): Code for what is being requested/ordered\r\n* [DiagnosticReport](http://hl7.org/fhir/diagnosticreport.html): The code for the report, as opposed to codes for the atomic results, which are the names on the observation resource referred to from the result\r\n* [FamilyMemberHistory](http://hl7.org/fhir/familymemberhistory.html): A search by a condition code\r\n* [List](http://hl7.org/fhir/list.html): What the purpose of this list is\r\n* [Medication](http://hl7.org/fhir/medication.html): Returns medications for a specific code\r\n* [MedicationAdministration](http://hl7.org/fhir/medicationadministration.html): Return administrations of this medication code\r\n* [MedicationDispense](http://hl7.org/fhir/medicationdispense.html): Returns dispenses of this medicine code\r\n* [MedicationRequest](http://hl7.org/fhir/medicationrequest.html): Return prescriptions of this medication code\r\n* [MedicationStatement](http://hl7.org/fhir/medicationstatement.html): Return statements of this medication code\r\n* [Observation](http://hl7.org/fhir/observation.html): The code of the observation type\r\n* [Procedure](http://hl7.org/fhir/procedure.html): A code to identify a  procedure\r\n* [ServiceRequest](http://hl7.org/fhir/servicerequest.html): What is being requested/ordered",
         "schema": {
           "type": "string"
         }
@@ -2288,14 +3223,6 @@
           "type": "string"
         }
       },
-      "date": {
-        "name": "date",
-        "in": "query",
-        "description": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Date first version of the resource instance was recorded\r\n* [CarePlan](careplan.html): Time period plan covers\r\n* [CareTeam](careteam.html): Time period team covers\r\n* [ClinicalImpression](clinicalimpression.html): When the assessment was documented\r\n* [Composition](composition.html): Composition editing time\r\n* [Consent](consent.html): When this Consent was created or indexed\r\n* [DiagnosticReport](diagnosticreport.html): The clinically relevant time of the report\r\n* [Encounter](encounter.html): A date within the period the Encounter lasted\r\n* [EpisodeOfCare](episodeofcare.html): The provided date search value falls within the episode of care's period\r\n* [FamilyMemberHistory](familymemberhistory.html): When history was recorded or last updated\r\n* [Flag](flag.html): Time period when flag is active\r\n* [Immunization](immunization.html): Vaccination  (non)-Administration Date\r\n* [List](list.html): When the list was prepared\r\n* [Observation](observation.html): Obtained date/time. If the obtained element is a period, a date that falls in the period\r\n* [Procedure](procedure.html): When the procedure was performed\r\n* [RiskAssessment](riskassessment.html): When was assessment made?\r\n* [SupplyRequest](supplyrequest.html): When the request was made",
-        "schema": {
-          "type": "string"
-        }
-      },
       "derived-from": {
         "name": "derived-from",
         "in": "query",
@@ -2315,7 +3242,7 @@
       "encounter": {
         "name": "encounter",
         "in": "query",
-        "description": "Multiple Resources: \r\n\r\n* [Composition](composition.html): Context of the Composition\r\n* [DeviceRequest](devicerequest.html): Encounter during which request was created\r\n* [DiagnosticReport](diagnosticreport.html): The Encounter when the order was made\r\n* [DocumentReference](documentreference.html): Context of the document  content\r\n* [Flag](flag.html): Alert relevant during encounter\r\n* [List](list.html): Context in which list created\r\n* [NutritionOrder](nutritionorder.html): Return nutrition orders with this encounter identifier\r\n* [Observation](observation.html): Encounter related to the observation\r\n* [Procedure](procedure.html): Encounter created as part of\r\n* [RiskAssessment](riskassessment.html): Where was assessment performed?\r\n* [ServiceRequest](servicerequest.html): An encounter in which this request is made\r\n* [VisionPrescription](visionprescription.html): Return prescriptions with this encounter identifier",
+        "description": "Multiple Resources: \r\n\r\n* [Composition](http://hl7.org/fhir/composition.html): Context of the Composition\r\n* [DeviceRequest](http://hl7.org/fhir/devicerequest.html): Encounter during which request was created\r\n* [DiagnosticReport](http://hl7.org/fhir/diagnosticreport.html): The Encounter when the order was made\r\n* [DocumentReference](http://hl7.org/fhir/documentreference.html): Context of the document  content\r\n* [Flag](http://hl7.org/fhir/flag.html): Alert relevant during encounter\r\n* [List](http://hl7.org/fhir/list.html): Context in which list created\r\n* [NutritionOrder](http://hl7.org/fhir/nutritionorder.html): Return nutrition orders with this encounter identifier\r\n* [Observation](http://hl7.org/fhir/observation.html): Encounter related to the observation\r\n* [Procedure](http://hl7.org/fhir/procedure.html): Encounter created as part of\r\n* [RiskAssessment](http://hl7.org/fhir/riskassessment.html): Where was assessment performed?\r\n* [ServiceRequest](http://hl7.org/fhir/servicerequest.html): An encounter in which this request is made\r\n* [VisionPrescription](http://hl7.org/fhir/visionprescription.html): Return prescriptions with this encounter identifier",
         "schema": {
           "type": "string"
         }
@@ -2332,14 +3259,6 @@
         "name": "has-member",
         "in": "query",
         "description": "Related resource that belongs to the Observation group",
-        "schema": {
-          "type": "string"
-        }
-      },
-      "identifier": {
-        "name": "identifier",
-        "in": "query",
-        "description": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): External ids for this item\r\n* [CarePlan](careplan.html): External Ids for this plan\r\n* [CareTeam](careteam.html): External Ids for this team\r\n* [Composition](composition.html): Version-independent identifier for the Composition\r\n* [Condition](condition.html): A unique identifier of the condition record\r\n* [Consent](consent.html): Identifier for this record (external references)\r\n* [DetectedIssue](detectedissue.html): Unique id for the detected issue\r\n* [DeviceRequest](devicerequest.html): Business identifier for request/order\r\n* [DiagnosticReport](diagnosticreport.html): An identifier for the report\r\n* [DocumentManifest](documentmanifest.html): Unique Identifier for the set of documents\r\n* [DocumentReference](documentreference.html): Master Version Specific Identifier\r\n* [Encounter](encounter.html): Identifier(s) by which this encounter is known\r\n* [EpisodeOfCare](episodeofcare.html): Business Identifier(s) relevant for this EpisodeOfCare\r\n* [FamilyMemberHistory](familymemberhistory.html): A search by a record identifier\r\n* [Goal](goal.html): External Ids for this goal\r\n* [ImagingStudy](imagingstudy.html): Identifiers for the Study, such as DICOM Study Instance UID and Accession number\r\n* [Immunization](immunization.html): Business identifier\r\n* [List](list.html): Business identifier\r\n* [MedicationAdministration](medicationadministration.html): Return administrations with this external identifier\r\n* [MedicationDispense](medicationdispense.html): Returns dispenses with this external identifier\r\n* [MedicationRequest](medicationrequest.html): Return prescriptions with this external identifier\r\n* [MedicationStatement](medicationstatement.html): Return statements with this external identifier\r\n* [NutritionOrder](nutritionorder.html): Return nutrition orders with this external identifier\r\n* [Observation](observation.html): The unique id for a particular observation\r\n* [Procedure](procedure.html): A unique identifier for a procedure\r\n* [RiskAssessment](riskassessment.html): Unique identifier for the assessment\r\n* [ServiceRequest](servicerequest.html): Identifiers assigned to this order\r\n* [SupplyDelivery](supplydelivery.html): External identifier\r\n* [SupplyRequest](supplyrequest.html): Business Identifier for SupplyRequest\r\n* [VisionPrescription](visionprescription.html): Return prescriptions with this external identifier",
         "schema": {
           "type": "string"
         }
@@ -2363,7 +3282,7 @@
       "patient": {
         "name": "patient",
         "in": "query",
-        "description": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Who the sensitivity is for\r\n* [CarePlan](careplan.html): Who the care plan is for\r\n* [CareTeam](careteam.html): Who care team is for\r\n* [ClinicalImpression](clinicalimpression.html): Patient or group assessed\r\n* [Composition](composition.html): Who and/or what the composition is about\r\n* [Condition](condition.html): Who has the condition?\r\n* [Consent](consent.html): Who the consent applies to\r\n* [DetectedIssue](detectedissue.html): Associated patient\r\n* [DeviceRequest](devicerequest.html): Individual the service is ordered for\r\n* [DeviceUseStatement](deviceusestatement.html): Search by subject - a patient\r\n* [DiagnosticReport](diagnosticreport.html): The subject of the report if a patient\r\n* [DocumentManifest](documentmanifest.html): The subject of the set of documents\r\n* [DocumentReference](documentreference.html): Who/what is the subject of the document\r\n* [Encounter](encounter.html): The patient or group present at the encounter\r\n* [EpisodeOfCare](episodeofcare.html): The patient who is the focus of this episode of care\r\n* [FamilyMemberHistory](familymemberhistory.html): The identity of a subject to list family member history items for\r\n* [Flag](flag.html): The identity of a subject to list flags for\r\n* [Goal](goal.html): Who this goal is intended for\r\n* [ImagingStudy](imagingstudy.html): Who the study is about\r\n* [Immunization](immunization.html): The patient for the vaccination record\r\n* [List](list.html): If all resources have the same subject\r\n* [MedicationAdministration](medicationadministration.html): The identity of a patient to list administrations  for\r\n* [MedicationDispense](medicationdispense.html): The identity of a patient to list dispenses  for\r\n* [MedicationRequest](medicationrequest.html): Returns prescriptions for a specific patient\r\n* [MedicationStatement](medicationstatement.html): Returns statements for a specific patient.\r\n* [NutritionOrder](nutritionorder.html): The identity of the person who requires the diet, formula or nutritional supplement\r\n* [Observation](observation.html): The subject that the observation is about (if patient)\r\n* [Procedure](procedure.html): Search by subject - a patient\r\n* [RiskAssessment](riskassessment.html): Who/what does assessment apply to?\r\n* [ServiceRequest](servicerequest.html): Search by subject - a patient\r\n* [SupplyDelivery](supplydelivery.html): Patient for whom the item is supplied\r\n* [VisionPrescription](visionprescription.html): The identity of a patient to list dispenses for",
+        "description": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](http://hl7.org/fhir/allergyintolerance.html): Who the sensitivity is for\r\n* [CarePlan](http://hl7.org/fhir/careplan.html): Who the care plan is for\r\n* [CareTeam](http://hl7.org/fhir/careteam.html): Who care team is for\r\n* [ClinicalImpression](http://hl7.org/fhir/clinicalimpression.html): Patient or group assessed\r\n* [Composition](http://hl7.org/fhir/composition.html): Who and/or what the composition is about\r\n* [Condition](http://hl7.org/fhir/condition.html): Who has the condition?\r\n* [Consent](http://hl7.org/fhir/consent.html): Who the consent applies to\r\n* [DetectedIssue](http://hl7.org/fhir/detectedissue.html): Associated patient\r\n* [DeviceRequest](http://hl7.org/fhir/devicerequest.html): Individual the service is ordered for\r\n* [DeviceUseStatement](http://hl7.org/fhir/deviceusestatement.html): Search by subject - a patient\r\n* [DiagnosticReport](http://hl7.org/fhir/diagnosticreport.html): The subject of the report if a patient\r\n* [DocumentManifest](http://hl7.org/fhir/documentmanifest.html): The subject of the set of documents\r\n* [DocumentReference](http://hl7.org/fhir/documentreference.html): Who/what is the subject of the document\r\n* [Encounter](http://hl7.org/fhir/encounter.html): The patient or group present at the encounter\r\n* [EpisodeOfCare](http://hl7.org/fhir/episodeofcare.html): The patient who is the focus of this episode of care\r\n* [FamilyMemberHistory](http://hl7.org/fhir/familymemberhistory.html): The identity of a subject to list family member history items for\r\n* [Flag](http://hl7.org/fhir/flag.html): The identity of a subject to list flags for\r\n* [Goal](http://hl7.org/fhir/goal.html): Who this goal is intended for\r\n* [ImagingStudy](http://hl7.org/fhir/imagingstudy.html): Who the study is about\r\n* [Immunization](http://hl7.org/fhir/immunization.html): The patient for the vaccination record\r\n* [List](http://hl7.org/fhir/list.html): If all resources have the same subject\r\n* [MedicationAdministration](http://hl7.org/fhir/medicationadministration.html): The identity of a patient to list administrations  for\r\n* [MedicationDispense](http://hl7.org/fhir/medicationdispense.html): The identity of a patient to list dispenses  for\r\n* [MedicationRequest](http://hl7.org/fhir/medicationrequest.html): Returns prescriptions for a specific patient\r\n* [MedicationStatement](http://hl7.org/fhir/medicationstatement.html): Returns statements for a specific patient.\r\n* [NutritionOrder](http://hl7.org/fhir/nutritionorder.html): The identity of the person who requires the diet, formula or nutritional supplement\r\n* [Observation](http://hl7.org/fhir/observation.html): The subject that the observation is about (if patient)\r\n* [Procedure](http://hl7.org/fhir/procedure.html): Search by subject - a patient\r\n* [RiskAssessment](http://hl7.org/fhir/riskassessment.html): Who/what does assessment apply to?\r\n* [ServiceRequest](http://hl7.org/fhir/servicerequest.html): Search by subject - a patient\r\n* [SupplyDelivery](http://hl7.org/fhir/supplydelivery.html): Patient for whom the item is supplied\r\n* [VisionPrescription](http://hl7.org/fhir/visionprescription.html): The identity of a patient to list dispenses for",
         "schema": {
           "type": "string"
         }
@@ -2380,14 +3299,6 @@
         "name": "specimen",
         "in": "query",
         "description": "Specimen used for this observation",
-        "schema": {
-          "type": "string"
-        }
-      },
-      "status": {
-        "name": "status",
-        "in": "query",
-        "description": "The status of the observation",
         "schema": {
           "type": "string"
         }
@@ -2443,7 +3354,7 @@
       "address": {
         "name": "address",
         "in": "query",
-        "description": "Multiple Resources: \r\n\r\n* [Patient](patient.html): A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text\r\n* [Person](person.html): A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text\r\n* [Practitioner](practitioner.html): A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text\r\n* [RelatedPerson](relatedperson.html): A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text",
+        "description": "Multiple Resources: \r\n\r\n* [Patient](http://hl7.org/fhir/patient.html): A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text\r\n* [Person](http://hl7.org/fhir/person.html): A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text\r\n* [Practitioner](http://hl7.org/fhir/practitioner.html): A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text\r\n* [RelatedPerson](http://hl7.org/fhir/relatedperson.html): A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text",
         "schema": {
           "type": "string"
         }
@@ -2451,7 +3362,7 @@
       "address-city": {
         "name": "address-city",
         "in": "query",
-        "description": "Multiple Resources: \r\n\r\n* [Patient](patient.html): A city specified in an address\r\n* [Person](person.html): A city specified in an address\r\n* [Practitioner](practitioner.html): A city specified in an address\r\n* [RelatedPerson](relatedperson.html): A city specified in an address",
+        "description": "Multiple Resources: \r\n\r\n* [Patient](http://hl7.org/fhir/patient.html): A city specified in an address\r\n* [Person](http://hl7.org/fhir/person.html): A city specified in an address\r\n* [Practitioner](http://hl7.org/fhir/practitioner.html): A city specified in an address\r\n* [RelatedPerson](http://hl7.org/fhir/relatedperson.html): A city specified in an address",
         "schema": {
           "type": "string"
         }
@@ -2459,7 +3370,7 @@
       "address-country": {
         "name": "address-country",
         "in": "query",
-        "description": "Multiple Resources: \r\n\r\n* [Patient](patient.html): A country specified in an address\r\n* [Person](person.html): A country specified in an address\r\n* [Practitioner](practitioner.html): A country specified in an address\r\n* [RelatedPerson](relatedperson.html): A country specified in an address",
+        "description": "Multiple Resources: \r\n\r\n* [Patient](http://hl7.org/fhir/patient.html): A country specified in an address\r\n* [Person](http://hl7.org/fhir/person.html): A country specified in an address\r\n* [Practitioner](http://hl7.org/fhir/practitioner.html): A country specified in an address\r\n* [RelatedPerson](http://hl7.org/fhir/relatedperson.html): A country specified in an address",
         "schema": {
           "type": "string"
         }
@@ -2467,7 +3378,7 @@
       "address-postalcode": {
         "name": "address-postalcode",
         "in": "query",
-        "description": "Multiple Resources: \r\n\r\n* [Patient](patient.html): A postalCode specified in an address\r\n* [Person](person.html): A postal code specified in an address\r\n* [Practitioner](practitioner.html): A postalCode specified in an address\r\n* [RelatedPerson](relatedperson.html): A postal code specified in an address",
+        "description": "Multiple Resources: \r\n\r\n* [Patient](http://hl7.org/fhir/patient.html): A postalCode specified in an address\r\n* [Person](http://hl7.org/fhir/person.html): A postal code specified in an address\r\n* [Practitioner](http://hl7.org/fhir/practitioner.html): A postalCode specified in an address\r\n* [RelatedPerson](http://hl7.org/fhir/relatedperson.html): A postal code specified in an address",
         "schema": {
           "type": "string"
         }
@@ -2475,7 +3386,7 @@
       "address-state": {
         "name": "address-state",
         "in": "query",
-        "description": "Multiple Resources: \r\n\r\n* [Patient](patient.html): A state specified in an address\r\n* [Person](person.html): A state specified in an address\r\n* [Practitioner](practitioner.html): A state specified in an address\r\n* [RelatedPerson](relatedperson.html): A state specified in an address",
+        "description": "Multiple Resources: \r\n\r\n* [Patient](http://hl7.org/fhir/patient.html): A state specified in an address\r\n* [Person](http://hl7.org/fhir/person.html): A state specified in an address\r\n* [Practitioner](http://hl7.org/fhir/practitioner.html): A state specified in an address\r\n* [RelatedPerson](http://hl7.org/fhir/relatedperson.html): A state specified in an address",
         "schema": {
           "type": "string"
         }
@@ -2483,7 +3394,7 @@
       "address-use": {
         "name": "address-use",
         "in": "query",
-        "description": "Multiple Resources: \r\n\r\n* [Patient](patient.html): A use code specified in an address\r\n* [Person](person.html): A use code specified in an address\r\n* [Practitioner](practitioner.html): A use code specified in an address\r\n* [RelatedPerson](relatedperson.html): A use code specified in an address",
+        "description": "Multiple Resources: \r\n\r\n* [Patient](http://hl7.org/fhir/patient.html): A use code specified in an address\r\n* [Person](http://hl7.org/fhir/person.html): A use code specified in an address\r\n* [Practitioner](http://hl7.org/fhir/practitioner.html): A use code specified in an address\r\n* [RelatedPerson](http://hl7.org/fhir/relatedperson.html): A use code specified in an address",
         "schema": {
           "type": "string"
         }
@@ -2491,7 +3402,7 @@
       "birthdate": {
         "name": "birthdate",
         "in": "query",
-        "description": "Multiple Resources: \r\n\r\n* [Patient](patient.html): The patient's date of birth\r\n* [Person](person.html): The person's date of birth\r\n* [RelatedPerson](relatedperson.html): The Related Person's date of birth",
+        "description": "Multiple Resources: \r\n\r\n* [Patient](http://hl7.org/fhir/patient.html): The patient's date of birth\r\n* [Person](http://hl7.org/fhir/person.html): The person's date of birth\r\n* [RelatedPerson](http://hl7.org/fhir/relatedperson.html): The Related Person's date of birth",
         "schema": {
           "type": "string"
         }
@@ -2515,7 +3426,7 @@
       "email": {
         "name": "email",
         "in": "query",
-        "description": "Multiple Resources: \r\n\r\n* [Patient](patient.html): A value in an email contact\r\n* [Person](person.html): A value in an email contact\r\n* [Practitioner](practitioner.html): A value in an email contact\r\n* [PractitionerRole](practitionerrole.html): A value in an email contact\r\n* [RelatedPerson](relatedperson.html): A value in an email contact",
+        "description": "Multiple Resources: \r\n\r\n* [Patient](http://hl7.org/fhir/patient.html): A value in an email contact\r\n* [Person](http://hl7.org/fhir/person.html): A value in an email contact\r\n* [Practitioner](http://hl7.org/fhir/practitioner.html): A value in an email contact\r\n* [PractitionerRole](http://hl7.org/fhir/practitionerrole.html): A value in an email contact\r\n* [RelatedPerson](http://hl7.org/fhir/relatedperson.html): A value in an email contact",
         "schema": {
           "type": "string"
         }
@@ -2523,7 +3434,7 @@
       "family": {
         "name": "family",
         "in": "query",
-        "description": "Multiple Resources: \r\n\r\n* [Patient](patient.html): A portion of the family name of the patient\r\n* [Practitioner](practitioner.html): A portion of the family name",
+        "description": "Multiple Resources: \r\n\r\n* [Patient](http://hl7.org/fhir/patient.html): A portion of the family name of the patient\r\n* [Practitioner](http://hl7.org/fhir/practitioner.html): A portion of the family name",
         "schema": {
           "type": "string"
         }
@@ -2531,7 +3442,7 @@
       "gender": {
         "name": "gender",
         "in": "query",
-        "description": "Multiple Resources: \r\n\r\n* [Patient](patient.html): Gender of the patient\r\n* [Person](person.html): The gender of the person\r\n* [Practitioner](practitioner.html): Gender of the practitioner\r\n* [RelatedPerson](relatedperson.html): Gender of the related person",
+        "description": "Multiple Resources: \r\n\r\n* [Patient](http://hl7.org/fhir/patient.html): Gender of the patient\r\n* [Person](http://hl7.org/fhir/person.html): The gender of the person\r\n* [Practitioner](http://hl7.org/fhir/practitioner.html): Gender of the practitioner\r\n* [RelatedPerson](http://hl7.org/fhir/relatedperson.html): Gender of the related person",
         "schema": {
           "type": "string"
         }
@@ -2547,7 +3458,7 @@
       "given": {
         "name": "given",
         "in": "query",
-        "description": "Multiple Resources: \r\n\r\n* [Patient](patient.html): A portion of the given name of the patient\r\n* [Practitioner](practitioner.html): A portion of the given name",
+        "description": "Multiple Resources: \r\n\r\n* [Patient](http://hl7.org/fhir/patient.html): A portion of the given name of the patient\r\n* [Practitioner](http://hl7.org/fhir/practitioner.html): A portion of the given name",
         "schema": {
           "type": "string"
         }
@@ -2568,14 +3479,6 @@
           "type": "string"
         }
       },
-      "name": {
-        "name": "name",
-        "in": "query",
-        "description": "A server defined search that may match any of the string fields in the HumanName, including family, give, prefix, suffix, suffix, and/or text",
-        "schema": {
-          "type": "string"
-        }
-      },
       "organization": {
         "name": "organization",
         "in": "query",
@@ -2587,7 +3490,7 @@
       "phone": {
         "name": "phone",
         "in": "query",
-        "description": "Multiple Resources: \r\n\r\n* [Patient](patient.html): A value in a phone contact\r\n* [Person](person.html): A value in a phone contact\r\n* [Practitioner](practitioner.html): A value in a phone contact\r\n* [PractitionerRole](practitionerrole.html): A value in a phone contact\r\n* [RelatedPerson](relatedperson.html): A value in a phone contact",
+        "description": "Multiple Resources: \r\n\r\n* [Patient](http://hl7.org/fhir/patient.html): A value in a phone contact\r\n* [Person](http://hl7.org/fhir/person.html): A value in a phone contact\r\n* [Practitioner](http://hl7.org/fhir/practitioner.html): A value in a phone contact\r\n* [PractitionerRole](http://hl7.org/fhir/practitionerrole.html): A value in a phone contact\r\n* [RelatedPerson](http://hl7.org/fhir/relatedperson.html): A value in a phone contact",
         "schema": {
           "type": "string"
         }
@@ -2595,7 +3498,7 @@
       "phonetic": {
         "name": "phonetic",
         "in": "query",
-        "description": "Multiple Resources: \r\n\r\n* [Patient](patient.html): A portion of either family or given name using some kind of phonetic matching algorithm\r\n* [Person](person.html): A portion of name using some kind of phonetic matching algorithm\r\n* [Practitioner](practitioner.html): A portion of either family or given name using some kind of phonetic matching algorithm\r\n* [RelatedPerson](relatedperson.html): A portion of name using some kind of phonetic matching algorithm",
+        "description": "Multiple Resources: \r\n\r\n* [Patient](http://hl7.org/fhir/patient.html): A portion of either family or given name using some kind of phonetic matching algorithm\r\n* [Person](http://hl7.org/fhir/person.html): A portion of name using some kind of phonetic matching algorithm\r\n* [Practitioner](http://hl7.org/fhir/practitioner.html): A portion of either family or given name using some kind of phonetic matching algorithm\r\n* [RelatedPerson](http://hl7.org/fhir/relatedperson.html): A portion of name using some kind of phonetic matching algorithm",
         "schema": {
           "type": "string"
         }
@@ -2603,7 +3506,7 @@
       "telecom": {
         "name": "telecom",
         "in": "query",
-        "description": "Multiple Resources: \r\n\r\n* [Patient](patient.html): The value in any kind of telecom details of the patient\r\n* [Person](person.html): The value in any kind of contact\r\n* [Practitioner](practitioner.html): The value in any kind of contact\r\n* [PractitionerRole](practitionerrole.html): The value in any kind of contact\r\n* [RelatedPerson](relatedperson.html): The value in any kind of contact",
+        "description": "Multiple Resources: \r\n\r\n* [Patient](http://hl7.org/fhir/patient.html): The value in any kind of telecom details of the patient\r\n* [Person](http://hl7.org/fhir/person.html): The value in any kind of contact\r\n* [Practitioner](http://hl7.org/fhir/practitioner.html): The value in any kind of contact\r\n* [PractitionerRole](http://hl7.org/fhir/practitionerrole.html): The value in any kind of contact\r\n* [RelatedPerson](http://hl7.org/fhir/relatedperson.html): The value in any kind of contact",
         "schema": {
           "type": "string"
         }
@@ -2622,10 +3525,6 @@
     {
       "name": "Patient",
       "description": "Demographics and other administrative information about an individual or animal receiving care or other health-related services."
-    },
-    {
-      "name": "Resource",
-      "description": "This is the base resource type for everything."
     }
   ]
 }

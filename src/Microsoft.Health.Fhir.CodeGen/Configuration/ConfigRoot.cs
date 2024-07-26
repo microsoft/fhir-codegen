@@ -199,7 +199,50 @@ public class ConfigRoot : ICodeGenConfig
         },
     };
 
-    private static readonly FhirArtifactClassEnum[] _defaultStructures =
+    private static readonly FhirArtifactClassEnum[] _defaultLoadStructures =
+    [
+        FhirArtifactClassEnum.PrimitiveType,
+        FhirArtifactClassEnum.ComplexType,
+        FhirArtifactClassEnum.Resource,
+        FhirArtifactClassEnum.Interface,
+        FhirArtifactClassEnum.Extension,
+        FhirArtifactClassEnum.Operation,
+        FhirArtifactClassEnum.SearchParameter,
+        FhirArtifactClassEnum.CodeSystem,
+        FhirArtifactClassEnum.ValueSet,
+        FhirArtifactClassEnum.Profile,
+        FhirArtifactClassEnum.LogicalModel,
+        FhirArtifactClassEnum.Compartment,
+        FhirArtifactClassEnum.ConceptMap,
+        FhirArtifactClassEnum.NamingSystem,
+        FhirArtifactClassEnum.StructureMap,
+        FhirArtifactClassEnum.ImplementationGuide,
+        FhirArtifactClassEnum.CapabilityStatement,
+    ];
+
+    /// <summary>Gets or sets the FHIR structures to load, default is all.</summary>
+    [ConfigOption(
+        ArgName = "--load-structures",
+        EnvName = "Load_Structures",
+        Description = "Types of FHIR structures to load.",
+        ArgArity = "0..*")]
+    public FhirArtifactClassEnum[] LoadStructures { get; set; } = _defaultLoadStructures;
+
+    //public HashSet<FhirArtifactClassEnum> ProcessStructures { get; set; } = new();
+
+    private static ConfigurationOption LoadStructuresParameter { get; } = new()
+    {
+        Name = "LoadStructures",
+        EnvVarName = "Load_Structures",
+        DefaultValue = _defaultLoadStructures,
+        CliOption = new System.CommandLine.Option<FhirArtifactClassEnum[]>("--load-structures", "Types of FHIR structures to load.")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrMore,
+            IsRequired = false,
+        },
+    };
+
+    private static readonly FhirArtifactClassEnum[] _defaultExportStructures =
     [
         FhirArtifactClassEnum.PrimitiveType,
         FhirArtifactClassEnum.ComplexType,
@@ -217,33 +260,11 @@ public class ConfigRoot : ICodeGenConfig
 
     /// <summary>Gets or sets the FHIR structures to load, default is all.</summary>
     [ConfigOption(
-        ArgName = "--load-structures",
-        EnvName = "Load_Structures",
-        Description = "Types of FHIR structures to load.",
-        ArgArity = "0..*")]
-    public FhirArtifactClassEnum[] LoadStructures { get; set; } = _defaultStructures;
-
-    //public HashSet<FhirArtifactClassEnum> ProcessStructures { get; set; } = new();
-
-    private static ConfigurationOption LoadStructuresParameter { get; } = new()
-    {
-        Name = "LoadStructures",
-        EnvVarName = "Load_Structures",
-        DefaultValue = _defaultStructures,
-        CliOption = new System.CommandLine.Option<FhirArtifactClassEnum[]>("--load-structures", "Types of FHIR structures to load.")
-        {
-            Arity = System.CommandLine.ArgumentArity.ZeroOrMore,
-            IsRequired = false,
-        },
-    };
-
-    /// <summary>Gets or sets the FHIR structures to load, default is all.</summary>
-    [ConfigOption(
         ArgName = "--export-structures",
         EnvName = "Export_Structures",
         Description = "Types of FHIR structures to export.",
         ArgArity = "0..*")]
-    public FhirArtifactClassEnum[] ExportStructures { get; set; } = _defaultStructures;
+    public FhirArtifactClassEnum[] ExportStructures { get; set; } = _defaultExportStructures;
 
     //public HashSet<FhirArtifactClassEnum> ProcessStructures { get; set; } = new();
 
@@ -251,7 +272,7 @@ public class ConfigRoot : ICodeGenConfig
     {
         Name = "ExportStructures",
         EnvVarName = "Export_Structures",
-        DefaultValue = _defaultStructures,
+        DefaultValue = _defaultExportStructures,
         CliOption = new System.CommandLine.Option<FhirArtifactClassEnum[]>("--export-structures", "Types of FHIR structures to export.")
         {
             Arity = System.CommandLine.ArgumentArity.ZeroOrMore,

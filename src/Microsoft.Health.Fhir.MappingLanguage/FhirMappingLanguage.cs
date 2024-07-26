@@ -186,10 +186,10 @@ public class FhirMappingLanguage
 
 public record FmlParseIssue
 {
-    public int Line { get; init; }
-    public int CharPositionInLine { get; init; }
-    public string Message {  get; init; }
-    public IToken offendingSymbol { get; init; }
+    public required int Line { get; init; }
+    public required int CharPositionInLine { get; init; }
+    public required string Message {  get; init; }
+    public IToken? offendingSymbol { get; init; }
 }
 
 public class FmlParserErrorListener : IAntlrErrorListener<IToken>
@@ -198,7 +198,8 @@ public class FmlParserErrorListener : IAntlrErrorListener<IToken>
     {
         _issues = issues;
     }
-    List<FmlParseIssue> _issues;
+
+    private readonly List<FmlParseIssue> _issues;
 
     public void SyntaxError(TextWriter output, IRecognizer recognizer, IToken offendingSymbol, int line, int charPositionInLine, string msg, RecognitionException e)
     {

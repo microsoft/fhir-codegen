@@ -4,6 +4,7 @@ Contents of: hl7.fhir.r2.expansions@1.0.2, hl7.fhir.r2.core@1.0.2
   Complex Type / Resource Naming Style: PascalCase
   Enum Naming Style: FhirDotNotation
   Interaction Naming Style: PascalCase
+  Load structures: PrimitiveType|ComplexType|Resource|Interface|Extension|Operation|SearchParameter|CodeSystem|ValueSet|Profile|LogicalModel|Compartment
   Export structures: PrimitiveType|ComplexType|Resource|Interface|Extension|Operation|SearchParameter|CodeSystem|ValueSet|Profile|LogicalModel|Compartment
 Primitive Types: 18
 - base64Binary: base64Binary::base64Binary (draft)
@@ -19395,7 +19396,7 @@ Value Sets: 1016
   extensions/profiles (1 structures, 1 elements): strongest binding: example, refs: consentdirective(Profile) [Contract.type]
   - #disclosure: 
   - #privacy: 
-- ValueSet: http://hl7.org/fhir/ValueSet/cpt-all| (All CPT codes)
+- ValueSet: http://hl7.org/fhir/ValueSet/cpt-all|1.0.2 (All CPT codes)
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/daf-bodysite|1.0.2 (Vaccine Administered Body Site)
   extensions/profiles (9 structures, 9 elements): strongest binding: preferred, refs: daf-immunization(Profile) [Immunization.site], daf-medicationadministration(Profile) [MedicationAdministration.dosage.siteCodeableConcept], daf-medicationdispense(Profile) [MedicationDispense.dosageInstruction.siteCodeableConcept], daf-medicationorder(Profile) [MedicationOrder.dosageInstruction.siteCodeableConcept], daf-medicationstatement(Profile) [MedicationStatement.dosage.siteCodeableConcept], qicore-immunization(Profile) [Immunization.site], qicore-medicationdispense(Profile) [MedicationDispense.dosageInstruction.site[x]], qicore-medicationorder(Profile) [MedicationOrder.dosageInstruction.site[x]], qicore-medicationstatement(Profile) [MedicationStatement.dosage.site[x]]
@@ -19841,7 +19842,7 @@ Value Sets: 1016
   - #uri: uri
   - #uuid: uuid
   - #xhtml: XHTML
-- ValueSet: http://hl7.org/fhir/ValueSet/dataelement-sdccode| (DataElement SDC Concept)
+- ValueSet: http://hl7.org/fhir/ValueSet/dataelement-sdccode|1.0.2 (DataElement SDC Concept)
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/dataelement-sdcobjectclass|1.0.2 (DataElement SDC Object Class)
   extensions/profiles (1 structures, 2 elements): strongest binding: example, refs: 11179-objectClass(Extension) [Extension.valueCoding,Extension.value[x]]
@@ -22250,7 +22251,7 @@ Value Sets: 1016
   references (1 structures, 1 elements): Conformance.rest.mode, strongest binding: required, by type: code:Required
   - #client: Client
   - #server: Server
-- ValueSet: http://hl7.org/fhir/ValueSet/restful-interaction| (FHIR Restful Interactions)
+- ValueSet: http://hl7.org/fhir/ValueSet/restful-interaction|1.0.2 (FHIR Restful Interactions)
   - #conformance: conformance
   - #create: create
   - #delete: delete
@@ -22538,13 +22539,13 @@ Value Sets: 1016
   references (2 structures, 2 elements): AllergyIntolerance.reaction.substance, Substance.code, strongest binding: example, by type: CodeableConcept:Example
   extensions/profiles (3 structures, 3 elements): strongest binding: example, refs: daf-substance(Profile) [Substance.code], qicore-allergyintolerance(Profile) [AllergyIntolerance.reaction.substance], qicore-substance(Profile) [Substance.code]
   ! No expansion available
-- ValueSet: http://hl7.org/fhir/ValueSet/substance-ndfrt| (DAF Substance ND-FRT codes)
+- ValueSet: http://hl7.org/fhir/ValueSet/substance-ndfrt|1.0.2 (DAF Substance ND-FRT codes)
   ! No expansion available
-- ValueSet: http://hl7.org/fhir/ValueSet/substance-rxnorm| (DAF Substance RxNorm Codes)
+- ValueSet: http://hl7.org/fhir/ValueSet/substance-rxnorm|1.0.2 (DAF Substance RxNorm Codes)
   ! No expansion available
-- ValueSet: http://hl7.org/fhir/ValueSet/substance-sct| (DAF SNOMED CT Substances Other Than Clinical Drugs)
+- ValueSet: http://hl7.org/fhir/ValueSet/substance-sct|1.0.2 (DAF SNOMED CT Substances Other Than Clinical Drugs)
   ! No expansion available
-- ValueSet: http://hl7.org/fhir/ValueSet/substance-unii| (DAF Substance UNII Codes)
+- ValueSet: http://hl7.org/fhir/ValueSet/substance-unii|1.0.2 (DAF Substance UNII Codes)
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/supplement-type|1.0.2 (Supplement Type Codes)
   references (1 structures, 1 elements): NutritionOrder.supplement.type, strongest binding: example, by type: CodeableConcept:Example
@@ -22794,7 +22795,7 @@ Value Sets: 1016
   - #update: update
   - #validate: validate
   - #vread: vread
-- ValueSet: http://hl7.org/fhir/ValueSet/ucum-common| (Common UCUM units)
+- ValueSet: http://hl7.org/fhir/ValueSet/ucum-common|1.0.2 (Common UCUM units)
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/udi|1.0.2 (UDI Codes)
   references (1 structures, 3 elements): Claim.item.udi, Claim.item.detail.udi, Claim.item.detail.subDetail.udi, strongest binding: example, by type: Coding:Example
@@ -36405,7 +36406,7 @@ Value Sets: 1016
 - ValueSet: http://hl7.org/fhir/ValueSet/vaccine-code|1.0.2 (Vaccine Administered Value Set)
   references (2 structures, 2 elements): Immunization.vaccineCode, ImmunizationRecommendation.recommendation.vaccineCode, strongest binding: example, by type: CodeableConcept:Example
   ! No expansion available
-- ValueSet: http://hl7.org/fhir/ValueSet/valueset-sdc-profile-example| (AHRQ Medication Q1)
+- ValueSet: http://hl7.org/fhir/ValueSet/valueset-sdc-profile-example|1.0.2 (AHRQ Medication Q1)
   - #LA20271-5: Medications
   - #LA20335-8: Biological products
   - #LA20336-6: Nutritional products
@@ -36441,7 +36442,7 @@ Value Sets: 1016
   - #signs: Signs
   - #XFRM: XFRM
   - #XFRM_RPLC: XFRM_RPLC
-- ValueSet: http://hl7.org/fhir/ValueSet/yesnodontknow| (Yes/No/Don't Know)
+- ValueSet: http://hl7.org/fhir/ValueSet/yesnodontknow|1.0.2 (Yes/No/Don't Know)
   - #asked: Don't know
   - #N: No
   - #Y: Yes

@@ -448,7 +448,7 @@ public class CrossVersionMapCollection
         if (!string.IsNullOrEmpty(group.ExtendsIdentifier))
         {
             // Check that the named group exists
-            if (!options.namedGroups.ContainsKey(group.ExtendsIdentifier))
+            if (!options.namedGroups.ContainsKey(group.ExtendsIdentifier!))
             {
                 string msg = $"Unable to extends group `{group.ExtendsIdentifier}` in {group.Name} at @{group.Line}:{group.Column}";
                 ReportIssue(issues, msg, OperationOutcome.IssueType.Duplicate);
@@ -498,7 +498,7 @@ public class CrossVersionMapCollection
                 {
                     // Cast down to this type
                     Console.Write($".ofType({source.TypeIdentifier})");
-                    string typeName = source.TypeIdentifier;
+                    string typeName = source.TypeIdentifier!;
                     if (!typeName.Contains(':')) // assume this is a FHIR type
                         typeName = "http://hl7.org/fhir/StructureDefinition/" + typeName;
                     var sdCastType = options.source.Resolver.FindStructureDefinitionAsync(typeName).WaitResult();
@@ -518,7 +518,8 @@ public class CrossVersionMapCollection
                             ReportIssue(issues, msg, OperationOutcome.IssueType.Duplicate);
                         }
 
-                        tpV = new PropertyOrTypeDetails(tpV.PropertyPath, sw.Current, options.source.Resolver);
+                        // TODO: @brianpos - not sure if we want to pass through empty here, skip the call, or throw an exception if tpV is null here
+                        tpV = new PropertyOrTypeDetails(tpV?.PropertyPath ?? string.Empty, sw.Current, options.source.Resolver);
                     }
                 }
 
@@ -619,7 +620,7 @@ public class CrossVersionMapCollection
                         Console.Write($" {target.Transform.Identifier}");
                         try
                         {
-                            transformedSourceV = ResolveIdentifierType(target.Transform.Identifier, parameterTypesByNameForRule, target.Transform, issues);
+                            transformedSourceV = ResolveIdentifierType(target.Transform.Identifier!, parameterTypesByNameForRule, target.Transform, issues);
                         }
                         catch (ApplicationException e)
                         {
@@ -667,9 +668,9 @@ public class CrossVersionMapCollection
                 }
             }
 
-            if (!string.IsNullOrEmpty(rule.MappingExpression.Name) && !Hl7.Fhir.Model.Id.IsValidValue(rule.MappingExpression.Name))
+            if (!string.IsNullOrEmpty(rule.MappingExpression.Name) && !Hl7.Fhir.Model.Id.IsValidValue(rule.MappingExpression.Name!))
             {
-                string msg = $"Rule name `{rule.MappingExpression.Name}` is invalid in {group.Name} at @{rule.MappingExpression.Line}:{rule.MappingExpression.Column}";
+                string msg = $"Rule name `{rule.MappingExpression.Name}` is invalid in {group.Name} at @{rule.MappingExpression?.Line}:{rule.MappingExpression!.Column}";
                 ReportIssue(issues, msg, OperationOutcome.IssueType.Duplicate);
             }
         }
@@ -712,7 +713,7 @@ public class CrossVersionMapCollection
                 ReportIssue(issues, msg, OperationOutcome.IssueType.Value);
             }
 
-            if (!string.IsNullOrEmpty(rule.SimpleCopyExpression.Name) && !Hl7.Fhir.Model.Id.IsValidValue(rule.SimpleCopyExpression.Name))
+            if (!string.IsNullOrEmpty(rule.SimpleCopyExpression.Name) && !Hl7.Fhir.Model.Id.IsValidValue(rule.SimpleCopyExpression.Name!))
             {
                 string msg = $"Rule name `{rule.SimpleCopyExpression.Name}` is invalid in {group.Name} at @{rule.SimpleCopyExpression.Line}:{rule.SimpleCopyExpression.Column}";
                 ReportIssue(issues, msg, OperationOutcome.IssueType.Duplicate);
@@ -825,19 +826,30 @@ public class CrossVersionMapCollection
         fpv.UseVariableAsName = true;
         FhirPathCompiler fhirPathCompiler = new FhirPathCompiler();
         // TODO: Add in the resource/rootResource/context as inputs where they can be
-        if (rule.MappingExpression.Sources.Count == 1 && singleSourceVariable != null)
+        if (rule.MappingExpression?.Sources.Count == 1 && singleSourceVariable != null)
         {
             fpv.SetContext(singleSourceVariable.Element.Path);
         }
         foreach (var v in parameterTypesByNameForRule)
         {
-            if (v.Value.Resolver == options.target.Resolver)
+            if (v.Value?.Resolver == options.target.Resolver)
+            {
                 continue;
+            }
+
             try
             {
-                fpv.RegisterVariable(v.Key, v.Value.Element.Path);
+                // TODO: @brianpos - I believe this will resolve the nullability warning and avoid throwing but give the same result, is that correct?
+                if (v.Value == null)
+                {
+                    fpv.RegisterVariable(v.Key, new FhirPathVisitorProps());
+                }
+                else
+                {
+                    fpv.RegisterVariable(v.Key, v.Value.Element.Path);
+                }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // This one really should be able to resolve here.
                 // though the Static validator only understands the source
@@ -857,7 +869,7 @@ public class CrossVersionMapCollection
             if (issue.Details.Text.Contains("did you mean to use the variable"))
                 continue;
             issues.Add(issue);
-            Console.WriteLine($"\n{issue.Severity.GetDocumentation()}: {issue.Details.Text}");
+            Console.WriteLine($"\n{issue.Severity?.GetDocumentation()}: {issue.Details.Text}");
         }
         return result;
     }
@@ -1027,7 +1039,9 @@ public class CrossVersionMapCollection
             else
             {
                 var sw = new StructureDefinitionWalker(sdCastType, resolver);
-                return new PropertyOrTypeDetails(null, sw.Current, resolver);
+
+                // TODO: @brianpos - the property type is not treated as nullable anywhere else, so I am using empty string here. Not sure if PropertyPath should be nullable instead.
+                return new PropertyOrTypeDetails(string.Empty, sw.Current, resolver);
             }
         }
 
@@ -1050,7 +1064,7 @@ public class CrossVersionMapCollection
                 Console.Write($"{p.Identifier}");
                 try
                 {
-                    parameterTypeV = ResolveIdentifierType(p.Identifier, parameterTypesByNameForRule, p, issues); // is this the correct place?
+                    parameterTypeV = ResolveIdentifierType(p.Identifier!, parameterTypesByNameForRule, p, issues); // is this the correct place?
                     p.ParameterElementDefinition = parameterTypeV?.Element;
                 }
                 catch (ApplicationException e)
@@ -2810,7 +2824,7 @@ public class CrossVersionMapCollection
         if (!string.IsNullOrEmpty(group.ExtendsIdentifier))
         {
             // Check that the named group exists
-            if (!options.namedGroups.ContainsKey(group.ExtendsIdentifier))
+            if (!options.namedGroups.ContainsKey(group.ExtendsIdentifier!))
             {
                 string msg = $"Unable to extends group `{group.ExtendsIdentifier}` in {group.Name} at @{group.Line}:{group.Column}";
                 ReportIssue(issues, msg, OperationOutcome.IssueType.Duplicate);
@@ -2850,7 +2864,7 @@ public class CrossVersionMapCollection
         foreach (var tm in comparisonElement.Value.TargetMappings)
         {
             var sourceProp = $"{parameterTypesByName.FirstOrDefault().Key}.{comparisonElement.Value.Source.Name}";
-            var targetProp = $"{parameterTypesByName.Skip(1).FirstOrDefault().Key}.{tm.Target.Name}";
+            var targetProp = $"{parameterTypesByName.Skip(1).FirstOrDefault().Key}.{tm.Target?.Name}";
             try
             {
                 var sp = ResolveIdentifierType(sourceProp, parameterTypesByName, group, issues);
@@ -2864,7 +2878,7 @@ public class CrossVersionMapCollection
                     Console.Write($"// {sourceProp} -> {targetProp}; // {tm.Relationship}\n");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.Write($"// {sourceProp} -> {targetProp}; // {tm.Relationship} -- Property doesn't resolve\n");
             }
@@ -2917,7 +2931,7 @@ public class CrossVersionMapCollection
                 {
                     // Cast down to this type
                     Console.Write($".ofType({source.TypeIdentifier})");
-                    string typeName = source.TypeIdentifier;
+                    string typeName = source.TypeIdentifier!;
                     if (!typeName.Contains(':')) // assume this is a FHIR type
                         typeName = "http://hl7.org/fhir/StructureDefinition/" + typeName;
                     var sdCastType = options.source.Resolver.FindStructureDefinitionAsync(typeName).WaitResult();
@@ -2937,7 +2951,8 @@ public class CrossVersionMapCollection
                             ReportIssue(issues, msg, OperationOutcome.IssueType.Duplicate);
                         }
 
-                        tpV = new PropertyOrTypeDetails(tpV.PropertyPath, sw.Current, options.source.Resolver);
+                        // TODO: @brianpos - not sure if we want to pass through empty here, skip the call, or throw an exception if tpV is null here
+                        tpV = new PropertyOrTypeDetails(tpV?.PropertyPath ?? string.Empty, sw.Current, options.source.Resolver);
                     }
                 }
 
@@ -3043,10 +3058,10 @@ public class CrossVersionMapCollection
                     comparison.ElementComparisons.Remove(sourceV.PropertyPath);
                 }
 
-                if (comparison.ElementComparisons.ContainsKey(sourceV.Element?.Path))
+                if (comparison.ElementComparisons.ContainsKey(sourceV.Element.Path))
                 {
                     // remove this element
-                    comparison.ElementComparisons.Remove(sourceV.Element?.Path);
+                    comparison.ElementComparisons.Remove(sourceV.Element.Path);
                 }
             }
         }
@@ -3165,21 +3180,21 @@ public class PropertyOrTypeDetails
 
 public record ValidateMapOptions
 {
-    public Func<string, string?, Task<StructureDefinition?>> resolveMapUseCrossVersionType { get; init; }
-    public Func<string, IEnumerable<FhirStructureMap>> resolveMaps { get; init; }
-    public ModelOptions source { get; init; }
-    public ModelOptions target { get; init; }
-    public Dictionary<string, GroupDeclaration> namedGroups { get; init; }
-    public Dictionary<string, GroupDeclaration?> typedGroups { get; init; }
+    public required Func<string, string?, Task<StructureDefinition?>> resolveMapUseCrossVersionType { get; init; }
+    public required Func<string, IEnumerable<FhirStructureMap>> resolveMaps { get; init; }
+    public required ModelOptions source { get; init; }
+    public required ModelOptions target { get; init; }
+    public required Dictionary<string, GroupDeclaration> namedGroups { get; init; }
+    public required Dictionary<string, GroupDeclaration?> typedGroups { get; init; }
 }
 
 public record ModelOptions
 {
-    public IAsyncResourceResolver Resolver { get; init; }
-    public DefinitionCollection Package { get; init; }
-    public ModelInspector MI { get; init; }
-    public List<string> SupportedResources { get; init; }
-    public Type[] OpenTypes { get; init; }
+    public required IAsyncResourceResolver Resolver { get; init; }
+    public required DefinitionCollection Package { get; init; }
+    public required ModelInspector MI { get; init; }
+    public required List<string> SupportedResources { get; init; }
+    public required Type[] OpenTypes { get; init; }
 }
 
 internal static class ElementDefinitionNavigatorExtensions

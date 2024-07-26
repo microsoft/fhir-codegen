@@ -3,11 +3,11 @@
   // Primitive Naming Style: None
   // Complex Type / Resource Naming Style: PascalCase
   // Interaction Naming Style: None
+  // Load structures: PrimitiveType|ComplexType|Resource|Interface|Extension|Operation|SearchParameter|CodeSystem|ValueSet|Profile|LogicalModel|Compartment
   // Export structures: PrimitiveType|ComplexType|Resource|Interface|Extension|Operation|SearchParameter|CodeSystem|ValueSet|Profile|LogicalModel|Compartment
   // Option: "Namespace" = "fhir{VersionNumber}"
   // Option: "MinTsVersion" = "3.7"
   // Option: "InlineEnums" = "True"
-  // Option: "ExportKeys" = ""
   // Option: "IncludeExperimental" = "False"
   // Option: "FhirServerUrl" = ""
   // Option: "SmartConfigUrl" = ""
@@ -22,7 +22,10 @@
   // Option: "Packages" = ""
   // Option: "AutoLoadExpansions" = "True"
   // Option: "ResolvePackageDependencies" = "False"
+  // Option: "ExportKeys" = ""
+  // Option: "LoadCanonicalExamples" = "False"
   // Option: "OfflineMode" = "False"
+  // Option: "FhirVersion" = ""
 // Minimum TypeScript Version: 3.7
 /**
  * Base StructureDefinition for Address Type

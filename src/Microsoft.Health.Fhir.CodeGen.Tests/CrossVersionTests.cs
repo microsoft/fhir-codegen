@@ -28,7 +28,7 @@ public class CrossVersionTests
         Console.SetOut(new TestWriter(outputWriter));
     }
 
-    static CrossVersionResolver cvr = new CrossVersionResolver();
+    internal static CrossVersionResolver cvr = new CrossVersionResolver();
 
     private static string FindRelativeDir(string path)
     {
@@ -110,7 +110,7 @@ public class CrossVersionTests
         errorCount.Should().Be(0, "Should be no parsing/processing errors");
     }
 
-    IAsyncResourceResolver OnlyVersion(CrossVersionResolver resolver, string version)
+    internal IAsyncResourceResolver OnlyVersion(CrossVersionResolver resolver, string version)
     {
         switch (version)
         {
@@ -293,12 +293,18 @@ public class CrossVersionTests
                             typeMapping += type;
                         }
                     }
+
+                    if (typeMapping == null)
+                    {
+                        // TODO: @brianpos - is this correct to throw?  cannot have null value in typeMapping for the dictionary calls after this
+                        throw new Exception($"    Error: Group {group.Name} has no type mapping!");
+                    }
+
                     Console.Write($"\t\t{typeMapping}");
                     Console.Write("\n");
 
-                    if (typedGroups.ContainsKey(typeMapping))
+                    if (typedGroups.TryGetValue(typeMapping, out GroupDeclaration? eg))
                     {
-                        var eg = typedGroups[typeMapping];
                         Console.WriteLine($"    Error: Group {group.Name} duplicates the type mappings declared in group {eg?.Name}");
                         errorCount++;
                     }
@@ -684,7 +690,7 @@ public class TestWriter : TextWriter
         OutputWriter = outputWriter;
     }
 
-    StringBuilder cache = new();
+    private StringBuilder cache = new();
 
     public override void Write(char value)
     {

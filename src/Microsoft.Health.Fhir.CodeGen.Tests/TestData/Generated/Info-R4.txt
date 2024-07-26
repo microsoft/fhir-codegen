@@ -4,6 +4,7 @@ Contents of: hl7.fhir.r4.expansions@4.0.1, hl7.fhir.r4.core@4.0.1, hl7.fhir.uv.e
   Complex Type / Resource Naming Style: PascalCase
   Enum Naming Style: FhirDotNotation
   Interaction Naming Style: PascalCase
+  Load structures: PrimitiveType|ComplexType|Resource|Interface|Extension|Operation|SearchParameter|CodeSystem|ValueSet|Profile|LogicalModel|Compartment
   Export structures: PrimitiveType|ComplexType|Resource|Interface|Extension|Operation|SearchParameter|CodeSystem|ValueSet|Profile|LogicalModel|Compartment
 Primitive Types: 20
 - base64Binary: base64Binary::base64Binary (normative)
@@ -38691,6 +38692,8 @@ Used when there is a need to limit the number of components to the first, the la
   - #SBEXT: Substance Extraction
   - #SPECCOLLECT: Specimen Collection
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-ActClassROI|2014-03-26 (external FMM: 0) (v3.ActClassROI)
+  - #ROIBND: bounded ROI
+  - #ROIOVL: overlay ROI
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-ActClassSupply|2014-03-26 (external FMM: 0) (v3.ActClassSupply)
   - #DIET: diet
   - #SPLY: supply
@@ -39806,6 +39809,25 @@ Used when there is a need to limit the number of components to the first, the la
   - #LINV: Last Invoice
   - #PAPER: Paper Documentation To Follow
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-ActInvoiceGroupCode|2014-03-26 (external FMM: 0) (v3.ActInvoiceGroupCode)
+  - #_ActInvoiceInterGroupCode: ActInvoiceInterGroupCode
+  - #_ActInvoiceRootGroupCode: ActInvoiceRootGroupCode
+  - #CPINV: clinical product invoice
+  - #CPNDDRGING: compound drug invoice group
+  - #CPNDINDING: compound ingredient invoice group
+  - #CPNDSUPING: compound supply invoice group
+  - #CSINV: clinical service invoice
+  - #CSPINV: clinical service and product
+  - #DRUGING: drug invoice group
+  - #FININV: financial invoice
+  - #FRAMEING: frame invoice group
+  - #LENSING: lens invoice group
+  - #OHSINV: oral health service
+  - #PAINV: preferred accommodation invoice
+  - #PRDING: product invoice group
+  - #RXCINV: Rx compound invoice
+  - #RXDINV: Rx dispense invoice
+  - #SBFINV: sessional or block fee invoice
+  - #VRXINV: vision dispense invoice
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-ActMood|2018-08-12 (external FMM: 0) (v3.ActMood)
   - #_ActMoodActRequest: act request
   - #_ActMoodCompletionTrack: ActMoodCompletionTrack
@@ -39847,6 +39869,17 @@ Used when there is a need to limit the number of components to the first, the la
   - #RMD: recommendation
   - #RQO: request
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-ActMoodPredicate|2014-03-26 (external FMM: 0) (v3.ActMoodPredicate)
+  - #CRT: criterion
+  - #EVN.CRT: event criterion
+  - #EXPEC: expectation
+  - #GOL: Goal
+  - #GOL.CRT: goal criterion
+  - #INT.CRT: intent criterion
+  - #OPT: option
+  - #PRMS.CRT: promise criterion
+  - #RQO.CRT: request criterion
+  - #RSK: risk
+  - #RSK.CRT: risk criterion
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-ActPharmacySupplyType|2014-03-26 (draft FMM: 1) (v3.ActPharmacySupplyType)
   references (1 structures, 1 elements): MedicationDispense.type, strongest binding: example, by type: CodeableConcept:Example
   - #DF: Daily Fill
@@ -40145,6 +40178,23 @@ Used when there is a need to limit the number of components to the first, the la
   - #T: through
   - #X: exit
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-ActRelationshipConditional|2014-03-26 (external FMM: 0) (v3.ActRelationshipConditional)
+  - #ACTIMM: active immunization against
+  - #ADJUNCT: adjunctive treatment
+  - #BLOCK: blocks
+  - #CIND: has contra-indication
+  - #DIAG: diagnoses
+  - #IMM: immunization against
+  - #MITGT: mitigates
+  - #MTREAT: maintenance treatment
+  - #PALLTREAT: palliates
+  - #PASSIMM: passive immunization against
+  - #PRCN: has pre-condition
+  - #PRYLX: prophylaxis of
+  - #RCVY: recovers
+  - #RSON: has reason
+  - #SYMP: symptomatic relief
+  - #TREAT: treats
+  - #TRIG: has trigger
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-ActRelationshipFulfills|2014-03-26 (external FMM: 0) (v3.ActRelationshipFulfills)
   - #FLFS: fulfills
   - #OCCR: occurrence
@@ -41241,6 +41291,9 @@ Used when there is a need to limit the number of components to the first, the la
   - #FT: full-time
   - #PT: part-time
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-employmentStatusODH|2018-08-12 (external FMM: 0) (v3.employmentStatusODH)
+  - #Employed: Employed
+  - #NotInLaborForce: Not In Labor Force
+  - #Unemployed: Unemployed
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-EncounterAdmissionSource|2018-08-12 (external FMM: 0) (v3.EncounterAdmissionSource)
   - #E: emergency
   - #LD: labor and delivery
@@ -43099,6 +43152,11 @@ Used when there is a need to limit the number of components to the first, the la
   - #RCT: record target
   - #RCV: receiver
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-ParticipationInformationGenerator|2014-03-26 (external FMM: 0) (v3.ParticipationInformationGenerator)
+  - #AUT: author (originator)
+  - #ENT: data entry person
+  - #INF: informant
+  - #TRANS: Transcriber
+  - #WIT: witness
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-ParticipationInformationTranscriber|2014-03-26 (external FMM: 0) (v3.ParticipationInformationTranscriber)
   - #ENT: data entry person
   - #TRANS: Transcriber
@@ -43238,6 +43296,115 @@ Used when there is a need to limit the number of components to the first, the la
   - #N60: Net 60 days
   - #N90: Net 90 days
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-PersonalRelationshipRoleType|2014-03-26 (external FMM: 0) (v3.PersonalRelationshipRoleType)
+  - #ADOPTF: adoptive father
+  - #ADOPTM: adoptive mother
+  - #ADOPTP: adoptive parent
+  - #AUNT: aunt
+  - #BRO: brother
+  - #BROINLAW: brother-in-law
+  - #CHILD: child
+  - #CHLDADOPT: adopted child
+  - #CHLDFOST: foster child
+  - #CHLDINLAW: child-in-law
+  - #COUSN: cousin
+  - #DAU: natural daughter
+  - #DAUADOPT: adopted daughter
+  - #DAUC: daughter
+  - #DAUFOST: foster daughter
+  - #DAUINLAW: daughter in-law
+  - #DOMPART: domestic partner
+  - #EXT: extended family member
+  - #FAMMEMB: family member
+  - #FMRSPS: former spouse
+  - #FRND: unrelated friend
+  - #FTH: father
+  - #FTHFOST: foster father
+  - #FTHINLAW: father-in-law
+  - #FTWIN: fraternal twin
+  - #FTWINBRO: fraternal twin brother
+  - #FTWINSIS: fraternal twin sister
+  - #GESTM: gestational mother
+  - #GGRFTH: great grandfather
+  - #GGRMTH: great grandmother
+  - #GGRPRN: great grandparent
+  - #GRFTH: grandfather
+  - #GRMTH: grandmother
+  - #GRNDCHILD: grandchild
+  - #GRNDDAU: granddaughter
+  - #GRNDSON: grandson
+  - #GRPRN: grandparent
+  - #HBRO: half-brother
+  - #HSIB: half-sibling
+  - #HSIS: half-sister
+  - #HUSB: husband
+  - #INLAW: inlaw
+  - #ITWIN: identical twin
+  - #ITWINBRO: identical twin brother
+  - #ITWINSIS: identical twin sister
+  - #MAUNT: maternal aunt
+  - #MCOUSN: maternal cousin
+  - #MGGRFTH: maternal great-grandfather
+  - #MGGRMTH: maternal great-grandmother
+  - #MGGRPRN: maternal great-grandparent
+  - #MGRFTH: maternal grandfather
+  - #MGRMTH: maternal grandmother
+  - #MGRPRN: maternal grandparent
+  - #MTH: mother
+  - #MTHFOST: foster mother
+  - #MTHINLAW: mother-in-law
+  - #MUNCLE: maternal uncle
+  - #NBOR: neighbor
+  - #NBRO: natural brother
+  - #NCHILD: natural child
+  - #NEPHEW: nephew
+  - #NFTH: natural father
+  - #NFTHF: natural father of fetus
+  - #NIECE: niece
+  - #NIENEPH: niece/nephew
+  - #NMTH: natural mother
+  - #NMTHF: natural mother of fetus
+  - #NPRN: natural parent
+  - #NSIB: natural sibling
+  - #NSIS: natural sister
+  - #ONESELF: self
+  - #PAUNT: paternal aunt
+  - #PCOUSN: paternal cousin
+  - #PGGRFTH: paternal great-grandfather
+  - #PGGRMTH: paternal great-grandmother
+  - #PGGRPRN: paternal great-grandparent
+  - #PGRFTH: paternal grandfather
+  - #PGRMTH: paternal grandmother
+  - #PGRPRN: paternal grandparent
+  - #PRN: parent
+  - #PRNFOST: foster parent
+  - #PRNINLAW: parent in-law
+  - #PUNCLE: paternal uncle
+  - #ROOM: Roommate
+  - #SIB: sibling
+  - #SIBINLAW: sibling in-law
+  - #SIGOTHR: significant other
+  - #SIS: sister
+  - #SISINLAW: sister-in-law
+  - #SON: natural son
+  - #SONADOPT: adopted son
+  - #SONC: son
+  - #SONFOST: foster son
+  - #SONINLAW: son in-law
+  - #SPS: spouse
+  - #STPBRO: stepbrother
+  - #STPCHLD: step child
+  - #STPDAU: stepdaughter
+  - #STPFTH: stepfather
+  - #STPMTH: stepmother
+  - #STPPRN: step parent
+  - #STPSIB: step sibling
+  - #STPSIS: stepsister
+  - #STPSON: stepson
+  - #TWIN: twin
+  - #TWINBRO: twin brother
+  - #TWINSIS: twin sister
+  - #UNCLE: uncle
+  - #WIFE: wife
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-PersonDisabilityType|2018-08-12 (external FMM: 0) (v3.PersonDisabilityType)
   - #1: Vision impaired
   - #2: Hearing impaired
@@ -44568,13 +44735,210 @@ Used when there is a need to limit the number of components to the first, the la
   - #NOK: next of kin
   - #SGNOFF: signing authority or officer
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-RoleClassAssociative|2014-03-26 (external FMM: 0) (v3.RoleClassAssociative)
+  - #_RoleClassMutualRelationship: RoleClassMutualRelationship
+  - #_RoleClassPassive: RoleClassPassive
+  - #_RoleClassRelationshipFormal: RoleClassRelationshipFormal
+  - #ACCESS: access
+  - #ADJY: adjacency
+  - #ADMM: Administerable Material
+  - #AFFL: affiliate
+  - #AGNT: agent
+  - #ASSIGNED: assigned entity
+  - #BIRTHPL: birthplace
+  - #BOND: molecular bond
+  - #CAREGIVER: caregiver
+  - #CASEBJ: Case Subject
+  - #CIT: citizen
+  - #CLAIM: claimant
+  - #COMPAR: commissioning party
+  - #CON: contact
+  - #CONC: connection
+  - #CONY: continuity
+  - #COVPTY: covered party
+  - #CRINV: clinical research investigator
+  - #CRSPNSR: clinical research sponsor
+  - #DEATHPLC: place of death
+  - #DEPEN: dependent
+  - #DSDLOC: dedicated service delivery location
+  - #DST: distributed material
+  - #ECON: emergency contact
+  - #EMP: employee
+  - #EXLOC: event location
+  - #EXPR: exposed entity
+  - #GUAR: guarantor
+  - #GUARD: guardian
+  - #HLD: held entity
+  - #HLTHCHRT: health chart
+  - #IDENT: identified entity
+  - #INDIV: individual
+  - #INVSBJ: Investigation Subject
+  - #ISDLOC: incidental service delivery location
+  - #LIC: licensed entity
+  - #MANU: manufactured product
+  - #MIL: military person
+  - #MNT: maintained entity
+  - #NAMED: named insured
+  - #NOK: next of kin
+  - #NOT: notary public
+  - #OWN: owned entity
+  - #PAT: patient
+  - #PAYEE: payee
+  - #PAYOR: invoice payor
+  - #POLHOLD: policy holder
+  - #PROG: program eligible
+  - #PROV: healthcare provider
+  - #PRS: personal relationship
+  - #QUAL: qualified entity
+  - #RESBJ: research subject
+  - #RET: retailed material
+  - #RGPR: regulated product
+  - #SDLOC: service delivery location
+  - #SELF: self
+  - #SGNOFF: signing authority or officer
+  - #SPNSR: coverage sponsor
+  - #STD: student
+  - #SUBSCR: subscriber
+  - #TERR: territory of authority
+  - #THER: therapeutic agent
+  - #UNDWRT: underwriter
+  - #USED: used entity
+  - #WRTE: warranted product
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-RoleClassManufacturedProduct|2014-03-26 (external FMM: 0) (v3.RoleClassManufacturedProduct)
   - #MANU: manufactured product
   - #THER: therapeutic agent
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-RoleClassMutualRelationship|2014-03-26 (external FMM: 0) (v3.RoleClassMutualRelationship)
+  - #_RoleClassRelationshipFormal: RoleClassRelationshipFormal
+  - #AFFL: affiliate
+  - #AGNT: agent
+  - #ASSIGNED: assigned entity
+  - #CAREGIVER: caregiver
+  - #CASEBJ: Case Subject
+  - #CIT: citizen
+  - #CLAIM: claimant
+  - #COMPAR: commissioning party
+  - #CON: contact
+  - #COVPTY: covered party
+  - #CRINV: clinical research investigator
+  - #CRSPNSR: clinical research sponsor
+  - #DEPEN: dependent
+  - #ECON: emergency contact
+  - #EMP: employee
+  - #GUAR: guarantor
+  - #GUARD: guardian
+  - #INDIV: individual
+  - #INVSBJ: Investigation Subject
+  - #LIC: licensed entity
+  - #MIL: military person
+  - #NAMED: named insured
+  - #NOK: next of kin
+  - #NOT: notary public
+  - #PAT: patient
+  - #PAYEE: payee
+  - #PAYOR: invoice payor
+  - #POLHOLD: policy holder
+  - #PROG: program eligible
+  - #PROV: healthcare provider
+  - #PRS: personal relationship
+  - #QUAL: qualified entity
+  - #RESBJ: research subject
+  - #SELF: self
+  - #SGNOFF: signing authority or officer
+  - #SPNSR: coverage sponsor
+  - #STD: student
+  - #SUBSCR: subscriber
+  - #UNDWRT: underwriter
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-RoleClassPartitive|2014-03-26 (external FMM: 0) (v3.RoleClassPartitive)
+  - #ACTI: active ingredient
+  - #ACTIB: active ingredient - basis of strength
+  - #ACTIM: active ingredient - moiety is basis of strength
+  - #ACTIR: active ingredient - reference substance is basis of strength
+  - #ACTM: active moiety
+  - #ADJV: adjuvant
+  - #ADTV: additive
+  - #ALQT: aliquot
+  - #BASE: base
+  - #CNTM: contaminant ingredient
+  - #COLR: color additive
+  - #CONT: content
+  - #EXPAGTCAR: exposure agent carrier
+  - #EXPVECTOR: exposure vector
+  - #FLVR: flavor additive
+  - #FOMITE: fomite
+  - #IACT: inactive ingredient
+  - #INGR: ingredient
+  - #ISLT: isolate
+  - #LOCE: located entity
+  - #MBR: member
+  - #MECH: mechanical ingredient
+  - #PART: part
+  - #PRSV: preservative
+  - #SPEC: specimen
+  - #STBL: stabilizer
+  - #STOR: stored entity
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-RoleClassPassive|2014-03-26 (external FMM: 0) (v3.RoleClassPassive)
+  - #ACCESS: access
+  - #ADJY: adjacency
+  - #ADMM: Administerable Material
+  - #BIRTHPL: birthplace
+  - #BOND: molecular bond
+  - #CONC: connection
+  - #CONY: continuity
+  - #DEATHPLC: place of death
+  - #DSDLOC: dedicated service delivery location
+  - #DST: distributed material
+  - #EXLOC: event location
+  - #EXPR: exposed entity
+  - #HLD: held entity
+  - #HLTHCHRT: health chart
+  - #IDENT: identified entity
+  - #ISDLOC: incidental service delivery location
+  - #MANU: manufactured product
+  - #MNT: maintained entity
+  - #OWN: owned entity
+  - #RET: retailed material
+  - #RGPR: regulated product
+  - #SDLOC: service delivery location
+  - #TERR: territory of authority
+  - #THER: therapeutic agent
+  - #USED: used entity
+  - #WRTE: warranted product
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-RoleClassRelationshipFormal|2014-03-26 (external FMM: 0) (v3.RoleClassRelationshipFormal)
+  - #AFFL: affiliate
+  - #AGNT: agent
+  - #ASSIGNED: assigned entity
+  - #CASEBJ: Case Subject
+  - #CIT: citizen
+  - #CLAIM: claimant
+  - #COMPAR: commissioning party
+  - #CON: contact
+  - #COVPTY: covered party
+  - #CRINV: clinical research investigator
+  - #CRSPNSR: clinical research sponsor
+  - #DEPEN: dependent
+  - #ECON: emergency contact
+  - #EMP: employee
+  - #GUAR: guarantor
+  - #GUARD: guardian
+  - #INDIV: individual
+  - #INVSBJ: Investigation Subject
+  - #LIC: licensed entity
+  - #MIL: military person
+  - #NAMED: named insured
+  - #NOK: next of kin
+  - #NOT: notary public
+  - #PAT: patient
+  - #PAYEE: payee
+  - #PAYOR: invoice payor
+  - #POLHOLD: policy holder
+  - #PROG: program eligible
+  - #PROV: healthcare provider
+  - #QUAL: qualified entity
+  - #RESBJ: research subject
+  - #SGNOFF: signing authority or officer
+  - #SPNSR: coverage sponsor
+  - #STD: student
+  - #SUBSCR: subscriber
+  - #UNDWRT: underwriter
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-RoleClassRoot|2014-03-26 (external FMM: 0) (v3.RoleClassRoot)
   - #_RoleClassAssociative: RoleClassAssociative
   - #_RoleClassMutualRelationship: RoleClassMutualRelationship
@@ -45668,6 +46032,45 @@ Used when there is a need to limit the number of components to the first, the la
   - #TREAT: treatment
   - #TREAT: 
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-SecurityIntegrityObservationValue|2014-03-26 (external FMM: 0) (v3.SecurityIntegrityObservationValue)
+  - #_SECALTINTOBV: alteration integrity
+  - #_SECDATINTOBV: data integrity
+  - #_SECINTCONOBV: integrity confidence
+  - #_SECINTPRVABOBV: provenance asserted by
+  - #_SECINTPRVOBV: provenance
+  - #_SECINTPRVRBOBV: provenance reported by
+  - #ABSTRED: abstracted
+  - #AGGRED: aggregated
+  - #ANONYED: anonymized
+  - #CLINAST: clinician asserted
+  - #CLINRPT: clinician reported
+  - #CRYTOHASH: cryptographic hash function
+  - #DEVAST: device asserted
+  - #DEVRPT: device reported
+  - #DIGSIG: digital signature
+  - #HCPAST: healthcare professional asserted
+  - #HCPRPT: healthcare professional reported
+  - #HRELIABLE: highly reliable
+  - #MAPPED: mapped
+  - #MASKED: masked
+  - #PACQAST: patient acquaintance asserted
+  - #PACQRPT: patient acquaintance reported
+  - #PATAST: patient asserted
+  - #PATRPT: patient reported
+  - #PAYAST: payer asserted
+  - #PAYRPT: payer reported
+  - #PROAST: professional asserted
+  - #PRORPT: professional reported
+  - #PSEUDED: pseudonymized
+  - #REDACTED: redacted
+  - #RELIABLE: reliable
+  - #SDMAST: substitute decision maker asserted
+  - #SDMRPT: substitute decision maker reported
+  - #SUBSETTED: subsetted
+  - #SYNTAC: syntactic transform
+  - #TRSLT: translated
+  - #UNCERTREL: uncertain reliability
+  - #UNRELIABLE: unreliable
+  - #VERSIONED: versioned
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-SecurityPolicy|2014-03-26 (external FMM: 0) (v3.SecurityPolicy)
   - #ACCESSCONSCHEME: access control scheme
   - #ANONY: anonymize
@@ -45858,6 +46261,9 @@ Used when there is a need to limit the number of components to the first, the la
   - #I: include
   - #P: periodic hull
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-SeverityObservation|2014-03-26 (external FMM: 0) (v3.SeverityObservation)
+  - #H: High
+  - #L: Low
+  - #M: Moderate
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-SpecimenType|2018-08-12 (external FMM: 0) (v3.SpecimenType)
   - #_SpecimenEntityType: SpecimenEntityType
   - #ABS: Abcess
@@ -46733,6 +47139,15 @@ Used when there is a need to limit the number of components to the first, the la
   - #UWSE: Unpaid work, self-employed
   - #VW: Voluntary work
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-WorkScheduleODH|2018-08-12 (external FMM: 0) (v3.WorkScheduleODH)
+  - #DS: daytime shift
+  - #EMS: early morning shift
+  - #ES: evening shift
+  - #NS: night shift
+  - #RSWN: rotating shift with nights
+  - #RSWON: rotating shift without nights
+  - #SS: split shift
+  - #VLS: very long shift
+  - #VS: variable shift
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-xBasicConfidentialityKind|2014-03-26 (external FMM: 0) (v3.x_BasicConfidentialityKind)
   - #N: 
   - #R: 
