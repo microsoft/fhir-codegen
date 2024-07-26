@@ -4,7 +4,7 @@ Contents of: hl7.fhir.r4b.expansions@4.3.0, hl7.fhir.r4b.core@4.3.0, hl7.fhir.uv
   Complex Type / Resource Naming Style: PascalCase
   Enum Naming Style: FhirDotNotation
   Interaction Naming Style: PascalCase
-  Load structures: PrimitiveType|ComplexType|Resource|Interface|Extension|Operation|SearchParameter|CodeSystem|ValueSet|Profile|LogicalModel|Compartment
+  Load structures: PrimitiveType|ComplexType|Resource|Interface|Extension|Operation|SearchParameter|CodeSystem|ValueSet|Profile|LogicalModel|Compartment|ConceptMap|NamingSystem|StructureMap|ImplementationGuide|CapabilityStatement
   Export structures: PrimitiveType|ComplexType|Resource|Interface|Extension|Operation|SearchParameter|CodeSystem|ValueSet|Profile|LogicalModel|Compartment
 Primitive Types: 20
 - base64Binary: base64Binary::base64Binary (normative)

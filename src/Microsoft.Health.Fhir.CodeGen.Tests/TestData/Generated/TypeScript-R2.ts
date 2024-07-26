@@ -3,7 +3,7 @@
   // Primitive Naming Style: None
   // Complex Type / Resource Naming Style: PascalCase
   // Interaction Naming Style: None
-  // Load structures: PrimitiveType|ComplexType|Resource|Interface|Extension|Operation|SearchParameter|CodeSystem|ValueSet|Profile|LogicalModel|Compartment
+  // Load structures: PrimitiveType|ComplexType|Resource|Interface|Extension|Operation|SearchParameter|CodeSystem|ValueSet|Profile|LogicalModel|Compartment|ConceptMap|NamingSystem|StructureMap|ImplementationGuide|CapabilityStatement
   // Export structures: PrimitiveType|ComplexType|Resource|Interface|Extension|Operation|SearchParameter|CodeSystem|ValueSet|Profile|LogicalModel|Compartment
   // Option: "Namespace" = "fhir{VersionNumber}"
   // Option: "MinTsVersion" = "3.7"
