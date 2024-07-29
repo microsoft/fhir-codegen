@@ -395,6 +395,7 @@ public record class FmlExpressionSource : FmlNode
     //public required int? CardinalityMaxInt { get; init; }
     //public required string? CardinalityMax { get; init; }
     public required FpExpression? DefaultExpression { get; init; }
+    public required string? DefaultValue { get; init; }
     public required string? ListModeLiteral { get; init; }
     public required Hl7.Fhir.Model.StructureMap.StructureMapSourceListMode? ListMode { get; init; }
     public required string? Alias { get; init; }

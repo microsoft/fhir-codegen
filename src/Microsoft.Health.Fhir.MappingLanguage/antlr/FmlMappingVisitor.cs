@@ -19,6 +19,9 @@
 // Ambiguous reference in cref attribute
 #pragma warning disable 419
 
+// Disable the warning for CLSCompliant
+#pragma warning disable 3021
+
 using Antlr4.Runtime.Misc;
 using Antlr4.Runtime.Tree;
 using IToken = Antlr4.Runtime.IToken;
@@ -29,7 +32,7 @@ using IToken = Antlr4.Runtime.IToken;
 /// </summary>
 /// <typeparam name="Result">The return type of the visit operation.</typeparam>
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.13.1")]
-//[System.CLSCompliant(false)]
+[System.CLSCompliant(false)]
 public interface IFmlMappingVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="FmlMappingParser.structureMap"/>.

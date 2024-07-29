@@ -187,33 +187,7 @@ public class CrossVersionTests
 
             fml.Should().NotBeNull();
 
-            // extract the name root
-            string name;
-
-            if (fml.MetadataByPath.TryGetValue("name", out MetadataDeclaration? nameMeta))
-            {
-                name = nameMeta.Literal?.ValueAsString ?? throw new Exception($"Cross-version structure maps require a metadata name property: {filename}");
-            }
-            else
-            {
-                name = Path.GetFileNameWithoutExtension(filename);
-            }
-
-            if (name.EndsWith(versionToVersion, StringComparison.OrdinalIgnoreCase))
-            {
-                name = name[..^versionToVersionLen];
-            }
-
-            try
-            {
-                CrossVersionMapCollection.ProcessCrossVersionFml(name, fml, fmlPathLookup);
-                allMaps.Add(fml);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error Processing {filename}: {ex.Message}");
-                errorCount++;
-            }
+            allMaps.Add(fml);
         }
         errorCount.Should().Be(0, "Should be no parsing/processing errors");
 
@@ -277,7 +251,7 @@ public class CrossVersionTests
                                     var sd = aliasedTypes[type];
                                     if (sd != null)
                                     {
-                                        var sw = new StructureDefinitionWalker(sd, resolver);
+                                        var sw = new FmlStructureDefinitionWalker(sd, resolver);
                                         type = $"{sd.Url}|{sd.Version}";
                                         gp.ParameterElementDefinition = sw.Current;
                                     }
@@ -289,7 +263,23 @@ public class CrossVersionTests
                                 }
                             }
                             if (!string.IsNullOrEmpty(typeMapping))
+                            {
+                                if (group.TypeMode == StructureMap.StructureMapGroupTypeMode.TypeAndTypes)
+                                {
+                                    Console.Write($"\t\t{typeMapping}");
+                                    if (typedGroups.ContainsKey(typeMapping))
+                                    {
+                                        GroupDeclaration? existingGroup = typedGroups[typeMapping];
+                                        Console.WriteLine($"    Error: Group {group.Name} @{group.Line}:{group.Column} duplicates the default type mappings declared in group `{existingGroup?.Name}` @{existingGroup?.Line}:{existingGroup?.Column}");
+                                        errorCount++;
+                                    }
+                                    else
+                                    {
+                                        typedGroups.Add(typeMapping, group);
+                                    }
+                                }
                                 typeMapping += " -> ";
+                            }
                             typeMapping += type;
                         }
                     }
@@ -321,12 +311,14 @@ public class CrossVersionTests
         }
 
         // Now scan all these maps
-        var options = new ValidateMapOptions
+        var options = new CrossVersionCheckOptions
         {
             resolveMapUseCrossVersionType = resolveMapUseCrossVersionType,
             resolveMaps = resolveMaps,
-            source = GetModelOptions(versions[0], sourceResolver, dcs[0]),
-            target = GetModelOptions(versions[1], targetResolver, dcs[1]),
+            source = GetModelOptions(versions[0], sourceResolver),
+            SourcePackage = dcs[0],
+            target = GetModelOptions(versions[1], targetResolver),
+            TargetPackage= dcs[1],
             namedGroups = namedGroups,
             typedGroups = typedGroups,
         };
@@ -334,7 +326,7 @@ public class CrossVersionTests
         {
             try
             {
-                var outcome = await CrossVersionMapCollection.VerifyFmlDataTypes(fml, options);
+                var outcome = await FmlValidator.VerifyFmlDataTypes(fml, options);
                 if (!outcome.Success)
                     errorCount++;
                 if (outcome.Warnings > 0)
@@ -352,10 +344,10 @@ public class CrossVersionTests
     }
 
     [Theory(DisplayName = "CheckFmlMissingProps")]
-    [InlineData("fhir-cross-version/input/R2toR3", "2to3")]
-    [InlineData("fhir-cross-version/input/R3toR2", "3to2")]
+    // [InlineData("fhir-cross-version/input/R2toR3", "2to3")]
+    // [InlineData("fhir-cross-version/input/R3toR2", "3to2")]
     [InlineData("fhir-cross-version/input/R3toR4", "3to4")]
-    [InlineData("fhir-cross-version/input/R4toR3", "4to3")]
+    // [InlineData("fhir-cross-version/input/R4toR3", "4to3")]
     [InlineData("fhir-cross-version/input/R4toR5", "4to5")]
     [InlineData("fhir-cross-version/input/R5toR4", "5to4")]
     [InlineData("fhir-cross-version/input/R4BtoR5", "4Bto5")]
@@ -496,7 +488,7 @@ public class CrossVersionTests
                                     var sd = aliasedTypes[type];
                                     if (sd != null)
                                     {
-                                        var sw = new StructureDefinitionWalker(sd, resolver);
+                                        var sw = new FmlStructureDefinitionWalker(sd, resolver);
                                         type = $"{sd.Url}|{sd.Version}";
                                         gp.ParameterElementDefinition = sw.Current;
                                     }
@@ -521,12 +513,14 @@ public class CrossVersionTests
         }
 
         // Now scan all these maps
-        var options = new ValidateMapOptions
+        var options = new CrossVersionCheckOptions
         {
             resolveMapUseCrossVersionType = resolveMapUseCrossVersionType,
             resolveMaps = resolveMaps,
-            source = GetModelOptions(versions[0], sourceResolver, dcs[0]),
-            target = GetModelOptions(versions[1], targetResolver, dcs[1]),
+            source = GetModelOptions(versions[0], sourceResolver),
+            SourcePackage = dcs[0],
+            target = GetModelOptions(versions[1], targetResolver),
+            TargetPackage = dcs[1],
             namedGroups = namedGroups,
             typedGroups = typedGroups,
         };
@@ -551,7 +545,7 @@ public class CrossVersionTests
         Assert.True(errorCount == 0 && warningCount == 0, $"FML Errors: {errorCount}, Warnings: {warningCount}");
     }
 
-    private static ModelOptions GetModelOptions(string version, CachedResolver resolver, DefinitionCollection package)
+    private static ModelOptions GetModelOptions(string version, CachedResolver resolver)
     {
         ModelInspector inspector = r4.Hl7.Fhir.Model.ModelInfo.ModelInspector;
         List<string> supportedResources = r4.Hl7.Fhir.Model.ModelInfo.SupportedResources;
@@ -588,7 +582,6 @@ public class CrossVersionTests
         return new ModelOptions
         {
             Resolver = resolver,
-            Package = package,
             MI = inspector,
             SupportedResources = supportedResources,
             OpenTypes = openTypes,

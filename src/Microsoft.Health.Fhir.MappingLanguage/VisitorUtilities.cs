@@ -221,7 +221,7 @@ internal static class VisitorUtilities
         BLOCK_COMMENT => c.Stop.Text.Length > 4 ? new FhirString(c.Stop.Text[2..^2].Trim()) : new FhirString(c.Stop.Text.Trim()),
         LINE_COMMENT => c.Stop.Text.Length > 2 ? new FhirString(c.Stop.Text[2..].Trim()) : new FhirString(c.Stop.Text.Trim()),
         TRIPLE_QUOTED_STRING_LITERAL => c.Stop.Text.Trim().Length > 5 ? new Markdown(c.Stop.Text.Trim()[3..^3].Trim()) : new Markdown(c.Stop.Text.Trim()),
-        _ => string.IsNullOrEmpty(c?.Stop.Text) ? null : new FhirString(c.Stop.Text),
+        _ => string.IsNullOrEmpty(c?.Stop.Text) ? null : new FhirString(c!.Stop.Text),
     };
 
     internal static T? GetEnum<T>(string? value)
