@@ -18,7 +18,7 @@ using Hl7.Fhir.Specification.Source;
 using Hl7.Fhir.Utility;
 using T = System.Threading.Tasks;
 
-namespace Microsoft.Health.Fhir.CodeGen.CompareTool
+namespace Microsoft.Health.Fhir.MappingLanguage
 {
     /// <summary>
     /// This class implements basic functions to walk deeper into a StructureDefinition, 
@@ -29,7 +29,7 @@ namespace Microsoft.Health.Fhir.CodeGen.CompareTool
     /// NOTE: This is a direct port of the Firely routine, except that it can walk into the primitive value property
     ///       (which is required in the FML maps)
     /// </summary>
-    public class StructureDefinitionWalker
+    public class FmlStructureDefinitionWalker
     {
         public IResourceResolver? Resolver => _resolver as IResourceResolver;
         public IAsyncResourceResolver AsyncResolver => _resolver.AsAsync();
@@ -46,7 +46,7 @@ namespace Microsoft.Health.Fhir.CodeGen.CompareTool
         private readonly string[]? _targetProfile;
 
 #pragma warning disable CS0618 // Type or member is obsolete
-        public StructureDefinitionWalker(StructureDefinition sd, ISyncOrAsyncResourceResolver resolver)
+        public FmlStructureDefinitionWalker(StructureDefinition sd, ISyncOrAsyncResourceResolver resolver)
 #pragma warning restore CS0618 // Type or member is obsolete
             : this(ElementDefinitionNavigator.ForSnapshot(sd), resolver)
         {
@@ -54,7 +54,7 @@ namespace Microsoft.Health.Fhir.CodeGen.CompareTool
         }
 
 #pragma warning disable CS0618 // Type or member is obsolete
-        internal StructureDefinitionWalker(ElementDefinitionNavigator element, ISyncOrAsyncResourceResolver resolver)
+        public FmlStructureDefinitionWalker(ElementDefinitionNavigator element, ISyncOrAsyncResourceResolver resolver)
 #pragma warning restore CS0618 // Type or member is obsolete
         {
             Current = element.ShallowCopy();
@@ -65,31 +65,31 @@ namespace Microsoft.Health.Fhir.CodeGen.CompareTool
         }
 
 #pragma warning disable CS0618 // Type or member is obsolete
-        public StructureDefinitionWalker(ElementDefinitionNavigator element, IEnumerable<string> targetProfiles, ISyncOrAsyncResourceResolver resolver) :
+        public FmlStructureDefinitionWalker(ElementDefinitionNavigator element, IEnumerable<string> targetProfiles, ISyncOrAsyncResourceResolver resolver) :
 #pragma warning restore CS0618 // Type or member is obsolete
             this(element, resolver)
         {
             _targetProfile = targetProfiles?.ToArray();
         }
 
-        public StructureDefinitionWalker(StructureDefinitionWalker other)
+        public FmlStructureDefinitionWalker(FmlStructureDefinitionWalker other)
         {
             Current = other.Current.ShallowCopy();
             _resolver = other._resolver;
         }
 
-        public StructureDefinitionWalker FromCanonical(string canonical, IEnumerable<string>? targetProfiles = null) =>
+        public FmlStructureDefinitionWalker FromCanonical(string canonical, IEnumerable<string>? targetProfiles = null) =>
             TaskHelper.Await(() => FromCanonicalAsync(canonical, targetProfiles));
 
-        public async T.Task<StructureDefinitionWalker> FromCanonicalAsync(string canonical, IEnumerable<string>? targetProfiles = null)
+        public async T.Task<FmlStructureDefinitionWalker> FromCanonicalAsync(string canonical, IEnumerable<string>? targetProfiles = null)
         {
             var sd = await AsyncResolver.FindStructureDefinitionAsync(canonical).ConfigureAwait(false);
             if (sd == null)
                 throw new StructureDefinitionWalkerException($"Cannot walk into unknown StructureDefinition with canonical '{canonical}' at '{Current.CanonicalPath()}'");
 
             return (targetProfiles is not null)
-                ? new StructureDefinitionWalker(ElementDefinitionNavigator.ForSnapshot(sd), targetProfiles, _resolver)
-                : new StructureDefinitionWalker(ElementDefinitionNavigator.ForSnapshot(sd), _resolver);
+                ? new FmlStructureDefinitionWalker(ElementDefinitionNavigator.ForSnapshot(sd), targetProfiles, _resolver)
+                : new FmlStructureDefinitionWalker(ElementDefinitionNavigator.ForSnapshot(sd), _resolver);
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace Microsoft.Health.Fhir.CodeGen.CompareTool
         /// <param name="childName"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException">Thrown when there is no childName given.</exception>
-        public StructureDefinitionWalker Child(string childName)
+        public FmlStructureDefinitionWalker Child(string childName)
         {
             if (childName == null) throw Error.ArgumentNull(nameof(childName));
 
@@ -107,9 +107,9 @@ namespace Microsoft.Health.Fhir.CodeGen.CompareTool
             if (definitions.Count == 0)
                 throw new Hl7.Fhir.Specification.StructureDefinitionWalkerException($"Cannot walk into unknown child '{childName}' at '{Current.CanonicalPath()}'.");
             else if (definitions.Count == 1) // Single element, no slice
-                return new StructureDefinitionWalker(definitions.Single(), _resolver);
+                return new FmlStructureDefinitionWalker(definitions.Single(), _resolver);
             else if (definitions.Count == 2) // element with an entry + single slice
-                return new StructureDefinitionWalker(definitions[1], _resolver);
+                return new FmlStructureDefinitionWalker(definitions[1], _resolver);
             else
                 throw new Hl7.Fhir.Specification.StructureDefinitionWalkerException($"Child with name '{childName}' is sliced to more than one choice and cannot be used as a discriminator at '{Current.CanonicalPath()}' ");
         }
@@ -151,7 +151,7 @@ namespace Microsoft.Health.Fhir.CodeGen.CompareTool
         /// This order ensures that local ("inline") constraints for the children in the snapshot take
         /// precedence over following the type.profile link.
         /// </remarks>
-        public IEnumerable<StructureDefinitionWalker> Expand()
+        public IEnumerable<FmlStructureDefinitionWalker> Expand()
         {
             if (Current.HasChildren)
                 return new[] { this };
@@ -162,7 +162,7 @@ namespace Microsoft.Health.Fhir.CodeGen.CompareTool
                     throw new Hl7.Fhir.Specification.StructureDefinitionWalkerException($"The contentReference '{reference}' cannot be resolved.");
 #pragma warning restore CS0618 // Type or member is obsolete
 
-                return new[] { new StructureDefinitionWalker(reference!, _resolver) };
+                return new[] { new FmlStructureDefinitionWalker(reference!, _resolver) };
             }
             else if (Current.Current.Type.Count >= 1)
             {

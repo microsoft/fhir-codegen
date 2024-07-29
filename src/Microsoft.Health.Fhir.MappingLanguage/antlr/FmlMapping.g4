@@ -1,7 +1,10 @@
 /**
  * Define a grammar called FhirMapper
  */
- grammar FmlMapping;
+grammar FmlMapping;
+@header {// Disable the warning for CLSCompliant
+#pragma warning disable 3021
+}
 
 // starting point for parsing a mapping file
 // in case we need nested ConceptMaps, we need to have this rule:
@@ -142,6 +145,7 @@ qualifiedIdentifier
 
 sourceDefault
   : 'default' '(' fpExpression ')'
+  | 'default' DOUBLE_QUOTED_STRING      // very old format from original version
   ;
 
 alias
@@ -149,8 +153,7 @@ alias
   ;
 
 whereClause
-  : 'where'  fpExpression
-  // | 'where' '(' fpExpression ')'                                                    #correctWhere
+  : 'where' '(' fpExpression ')'
   ;
 
 checkClause
