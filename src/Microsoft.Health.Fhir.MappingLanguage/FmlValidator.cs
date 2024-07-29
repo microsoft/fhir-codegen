@@ -929,20 +929,20 @@ public class FmlValidator
 
 public record ValidateMapOptions
 {
-    public Func<string, string?, Task<StructureDefinition?>> resolveMapUseCrossVersionType { get; init; }
-    public Func<string, IEnumerable<FhirStructureMap>> resolveMaps { get; init; }
-    public ModelOptions source { get; init; }
-    public ModelOptions target { get; init; }
-    public Dictionary<string, GroupDeclaration> namedGroups { get; init; }
-    public Dictionary<string, GroupDeclaration?> typedGroups { get; init; }
+    public required Func<string, string?, Task<StructureDefinition?>> resolveMapUseCrossVersionType { get; init; }
+    public required Func<string, IEnumerable<FhirStructureMap>> resolveMaps { get; init; }
+    public required ModelOptions source { get; init; }
+    public required ModelOptions target { get; init; }
+    public required Dictionary<string, GroupDeclaration> namedGroups { get; init; }
+    public required Dictionary<string, GroupDeclaration?> typedGroups { get; init; }
 }
 
 public record ModelOptions
 {
-    public IAsyncResourceResolver Resolver { get; init; }
-    public ModelInspector MI { get; init; }
-    public List<string> SupportedResources { get; init; }
-    public Type[] OpenTypes { get; init; }
+    public required IAsyncResourceResolver Resolver { get; init; }
+    public required ModelInspector MI { get; init; }
+    public required List<string> SupportedResources { get; init; }
+    public required Type[] OpenTypes { get; init; }
 }
 
 internal static class ElementDefinitionNavigatorExtensions
