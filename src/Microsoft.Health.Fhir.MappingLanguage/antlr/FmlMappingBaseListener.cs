@@ -19,6 +19,9 @@
 // Ambiguous reference in cref attribute
 #pragma warning disable 419
 
+// Disable the warning for CLSCompliant
+#pragma warning disable 3021
+
 
 using Antlr4.Runtime.Misc;
 using IErrorNode = Antlr4.Runtime.Tree.IErrorNode;
@@ -33,7 +36,7 @@ using ParserRuleContext = Antlr4.Runtime.ParserRuleContext;
 /// </summary>
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.13.1")]
 [System.Diagnostics.DebuggerNonUserCode]
-//[System.CLSCompliant(false)]
+[System.CLSCompliant(false)]
 public partial class FmlMappingBaseListener : IFmlMappingListener {
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="FmlMappingParser.structureMap"/>.

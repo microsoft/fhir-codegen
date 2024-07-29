@@ -3,6 +3,7 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System.ComponentModel;
 using System.IO;
 using System.Text;
 using FluentAssertions;
@@ -379,6 +380,40 @@ group Encounter(source src : EncounterR4, target tgt : EncounterR5) extends Doma
     //    group.TypeMode.Should().BeNull();
 
     //}
+
+    [Fact]
+    internal void FmlParseDefaultValue()
+    {
+        string content = """"
+/// url = "http://example.org/fhir/StructureDefinition/test"
+/// id = "Fml4to5"
+group Encounter(source src, target tgt) {
+    src.source default (24) -> tgt.source;
+    src.source default "24" -> tgt.source;
+}
+"""";
+        FhirMappingLanguage fml = new();
+
+        bool success = fml.TryParse(content, out FhirStructureMap? map);
+
+        success.Should().BeTrue();
+        if (!success)
+        {
+            return;
+        }
+
+        map.Should().NotBeNull();
+        if (map == null)
+        {
+            return;
+        }
+
+        map.GroupsByName.Count.Should().Be(1);
+        List<GroupExpression> rules = map.GroupsByName.Values.First().Expressions;
+        rules.Count.Should().Be(2);
+        rules[0].MappingExpression!.Sources.First().DefaultExpression!.RawText.Should().Be("24");
+        rules[1].MappingExpression!.Sources.First().DefaultValue.Should().Be("24");
+    }
 }
 public class TestWriter : TextWriter
 {

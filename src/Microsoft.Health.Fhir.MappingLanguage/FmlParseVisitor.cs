@@ -413,6 +413,7 @@ public class FmlParseVisitor : FmlMappingBaseVisitor<object>
                 TypeIdentifier = GetString(sourceContext.typeIdentifier()?.identifier())!,
                 Cardinality = GetString(sourceContext.sourceCardinality())!,
                 DefaultExpression = ExtractFpExpression(sourceContext.sourceDefault()?.fpExpression()),
+                DefaultValue = GetString(sourceContext.sourceDefault()?.DOUBLE_QUOTED_STRING()),
                 ListModeLiteral = listMode?.v,
                 ListMode = listMode == null ? null : GetEnum<StructureMap.StructureMapSourceListMode>(listMode?.v),
                 Alias = GetString(sourceContext.alias()?.identifier()),

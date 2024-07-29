@@ -535,6 +535,11 @@ public class CrossVersionMapCollection
                     // Check the type of the default?
                     Console.Write($" DEFAULT({source.DefaultExpression.RawText})");
                 }
+                if (!string.IsNullOrEmpty(source.DefaultValue))
+                {
+                    // Check the type of the default? - This is the legacy format
+                    Console.Write($" DEFAULT({source.DefaultValue})");
+                }
 
                 Console.Write($" : {tpV?.Element?.DebugString() ?? "?"}");
                 if (source.Alias != null)
