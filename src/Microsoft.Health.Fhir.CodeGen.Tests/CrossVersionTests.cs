@@ -289,7 +289,23 @@ public class CrossVersionTests
                                 }
                             }
                             if (!string.IsNullOrEmpty(typeMapping))
+                            {
+                                if (group.TypeMode == StructureMap.StructureMapGroupTypeMode.TypeAndTypes)
+                                {
+                                    Console.Write($"\t\t{typeMapping}");
+                                    if (typedGroups.ContainsKey(typeMapping))
+                                    {
+                                        GroupDeclaration? existingGroup = typedGroups[typeMapping];
+                                        Console.WriteLine($"    Error: Group {group.Name} @{group.Line}:{group.Column} duplicates the default type mappings declared in group `{existingGroup?.Name}` @{existingGroup?.Line}:{existingGroup?.Column}");
+                                        errorCount++;
+                                    }
+                                    else
+                                    {
+                                        typedGroups.Add(typeMapping, group);
+                                    }
+                                }
                                 typeMapping += " -> ";
+                            }
                             typeMapping += type;
                         }
                     }

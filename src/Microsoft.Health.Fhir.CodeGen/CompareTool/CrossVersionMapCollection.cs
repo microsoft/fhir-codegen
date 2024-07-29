@@ -597,6 +597,11 @@ public class CrossVersionMapCollection
                     try
                     {
                         tpV = ResolveIdentifierType(target.Identifier, parameterTypesByNameForRule, target, issues);
+                        if (!target.Identifier.Contains('.') && target.Transform != null)
+                        {
+                            string msg = $"target in copy transform `{target.Identifier}`: must contain both context and element @{target.Line}:{target.Column}";
+                            ReportIssue(issues, msg, OperationOutcome.IssueType.Value, OperationOutcome.IssueSeverity.Warning);
+                        }
                     }
                     catch (ApplicationException e)
                     {
@@ -625,6 +630,11 @@ public class CrossVersionMapCollection
                         Console.Write($" {target.Transform.Identifier}");
                         try
                         {
+                            if (target.Transform.Identifier.Contains('.'))
+                            {
+                                string msg = $"source in copy transform `{target.Transform.Identifier}`: cannot contain child properties @{target.Transform.Line}:{target.Transform.Column} - consider then statement or fhirpath expression";
+                                ReportIssue(issues, msg, OperationOutcome.IssueType.Value, OperationOutcome.IssueSeverity.Warning);
+                            }
                             transformedSourceV = ResolveIdentifierType(target.Transform.Identifier!, parameterTypesByNameForRule, target.Transform, issues);
                         }
                         catch (ApplicationException e)
@@ -699,6 +709,11 @@ public class CrossVersionMapCollection
             PropertyOrTypeDetails? targetV = null;
             try
             {
+                if (!rule.SimpleCopyExpression.Target.Contains('.'))
+                {
+                    string msg = $"simple target `{rule.SimpleCopyExpression.Target}`: does not contain an element in context.element @{rule.SimpleCopyExpression.Line}:{rule.SimpleCopyExpression.Column}";
+                    ReportIssue(issues, msg, OperationOutcome.IssueType.Value, OperationOutcome.IssueSeverity.Warning);
+                }
                 targetV = ResolveIdentifierType(rule.SimpleCopyExpression.Target, parameterTypesByNameForRule, rule.SimpleCopyExpression, issues);
                 Console.Write($"{rule.SimpleCopyExpression.Target} : {targetV?.Element?.DebugString() ?? "?"}");
             }
@@ -874,7 +889,7 @@ public class CrossVersionMapCollection
             if (issue.Details.Text.Contains("did you mean to use the variable"))
                 continue;
             issues.Add(issue);
-            Console.WriteLine($"\n{issue.Severity?.GetDocumentation()}: {issue.Details.Text}");
+            Console.WriteLine($"\n{issue.Severity?.GetDocumentation()}: {issue.Details.Text} @{expressionNode.Line}:{expressionNode.Column}");
         }
         return result;
     }
