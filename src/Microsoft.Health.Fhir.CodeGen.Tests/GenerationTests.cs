@@ -4,6 +4,7 @@
 // </copyright>
 
 
+using System.IO;
 using FluentAssertions;
 using Hl7.Fhir.Model;
 using Microsoft.Health.Fhir.CodeGen.Language;
@@ -34,7 +35,6 @@ public class GenerationTestFixture
         "hl7.fhir.r5.expansions#5.0.0",
         "hl7.fhir.uv.extensions#1.0.0",
     ];
-
 
     /// <summary>The FHIR R4B package entries.</summary>
     public readonly string[] EntriesR4B =
@@ -71,6 +71,44 @@ public class GenerationTestFixture
     /// </summary>
     public GenerationTestFixture()
     {
+    }
+
+    internal static void CompareGeneration(string existingPath, MemoryStream currentMS)
+    {
+        // make sure the MS is up to date and at the beginning
+        currentMS.Flush();
+        currentMS.Seek(0, SeekOrigin.Begin);
+
+        if (WriteGeneratedFiles)
+        {
+            using (StreamReader sr = new(currentMS))
+            {
+                string current = sr.ReadToEnd();
+
+                File.WriteAllText(existingPath, current);
+                Assert.Fail("Generated files updated, please re-run the test");
+            }
+
+            return;
+        }
+
+        if (!File.Exists(existingPath))
+        {
+            throw new ArgumentException($"Could not find file at path: {existingPath}");
+        }
+
+        using FileStream existingFS = new(existingPath, FileMode.Open, FileAccess.Read);
+
+        // compare files line by line
+        using StreamReader existingReader = new(existingFS);
+        using StreamReader currentReader = new(currentMS);
+
+        int i = 0;
+        while (existingReader.ReadLine() is string previousLine && currentReader.ReadLine() is string currentLine)
+        {
+            i++;
+            currentLine.Should().Be(previousLine, $"Line {i} found:\n\t{currentLine}\nexpected:\n\t{previousLine}");
+        }
     }
 }
 
@@ -116,13 +154,6 @@ public class GenerationTestsR5 : IClassFixture<GenerationTestFixture>
             ? filePath
             : Path.GetRelativePath(Directory.GetCurrentDirectory(), filePath);
 
-        if (!File.Exists(path))
-        {
-            throw new ArgumentException($"Could not find file at path: {path}");
-        }
-
-        string data = File.ReadAllText(path);
-
         using (MemoryStream ms = new())
         {
             switch (langName)
@@ -152,24 +183,7 @@ public class GenerationTestsR5 : IClassFixture<GenerationTestFixture>
                     throw new ArgumentException($"Unknown language: {langName}");
             }
 
-
-            ms.Flush();
-            ms.Seek(0, SeekOrigin.Begin);
-
-            using (StreamReader sr = new(ms))
-            {
-                string current = sr.ReadToEnd();
-
-                // update the current file contents (manual)
-                if (GenerationTestFixture.WriteGeneratedFiles)
-                {
-                    File.WriteAllText(filePath, current);
-                    Assert.Fail("Generated files updated, please re-run the test");
-                }
-
-                // should the types like canonical be canonical::canonical or canonical::string?
-                current.Should().Be(data);
-            }
+            GenerationTestFixture.CompareGeneration(path, ms);
         }
     }
 }
@@ -221,8 +235,6 @@ public class GenerationTestsR4B : IClassFixture<GenerationTestFixture>
             throw new ArgumentException($"Could not find file at path: {path}");
         }
 
-        string data = File.ReadAllText(path);
-
         using (MemoryStream ms = new())
         {
             switch (langName)
@@ -252,24 +264,7 @@ public class GenerationTestsR4B : IClassFixture<GenerationTestFixture>
                     throw new ArgumentException($"Unknown language: {langName}");
             }
 
-
-            ms.Flush();
-            ms.Seek(0, SeekOrigin.Begin);
-
-            using (StreamReader sr = new(ms))
-            {
-                string current = sr.ReadToEnd();
-
-                // update the current file contents (manual)
-                if (GenerationTestFixture.WriteGeneratedFiles)
-                {
-                    File.WriteAllText(filePath, current);
-                    Assert.Fail("Generated files updated, please re-run the test");
-                }
-
-                // should the types like canonical be canonical::canonical or canonical::string?
-                current.Should().Be(data);
-            }
+            GenerationTestFixture.CompareGeneration(path, ms);
         }
     }
 }
@@ -325,8 +320,6 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
         {
             throw new ArgumentException($"Could not find file at path: {path}");
         }
-
-        string data = File.ReadAllText(path);
 
         csPath = string.IsNullOrEmpty(csPath)
             ? string.Empty
@@ -506,24 +499,7 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
                     throw new ArgumentException($"Unknown language: {langName}");
             }
 
-
-            ms.Flush();
-            ms.Seek(0, SeekOrigin.Begin);
-
-            using (StreamReader sr = new(ms))
-            {
-                string current = sr.ReadToEnd();
-
-                // update the current file contents (manual)
-                if (GenerationTestFixture.WriteGeneratedFiles)
-                {
-                    File.WriteAllText(filePath, current);
-                    Assert.Fail("Generated files updated, please re-run the test");
-                }
-
-                // should the types like canonical be canonical::canonical or canonical::string?
-                current.Should().Be(data);
-            }
+            GenerationTestFixture.CompareGeneration(path, ms);
         }
     }
 }
@@ -570,13 +546,6 @@ public class GenerationTestsR3 : IClassFixture<GenerationTestFixture>
             ? filePath
             : Path.GetRelativePath(Directory.GetCurrentDirectory(), filePath);
 
-        if (!File.Exists(path))
-        {
-            throw new ArgumentException($"Could not find file at path: {path}");
-        }
-
-        string data = File.ReadAllText(path);
-
         using (MemoryStream ms = new())
         {
             switch (langName)
@@ -606,24 +575,7 @@ public class GenerationTestsR3 : IClassFixture<GenerationTestFixture>
                     throw new ArgumentException($"Unknown language: {langName}");
             }
 
-
-            ms.Flush();
-            ms.Seek(0, SeekOrigin.Begin);
-
-            using (StreamReader sr = new(ms))
-            {
-                string current = sr.ReadToEnd();
-
-                // update the current file contents (manual)
-                if (GenerationTestFixture.WriteGeneratedFiles)
-                {
-                    File.WriteAllText(filePath, current);
-                    Assert.Fail("Generated files updated, please re-run the test");
-                }
-
-                // should the types like canonical be canonical::canonical or canonical::string?
-                current.Should().Be(data);
-            }
+            GenerationTestFixture.CompareGeneration(path, ms);
         }
     }
 }
@@ -670,11 +622,6 @@ public class GenerationTestsR2 : IClassFixture<GenerationTestFixture>
             ? filePath
             : Path.GetRelativePath(Directory.GetCurrentDirectory(), filePath);
 
-        if (!File.Exists(path))
-        {
-            throw new ArgumentException($"Could not find file at path: {path}");
-        }
-
         string data = File.ReadAllText(path);
 
         using (MemoryStream ms = new())
@@ -706,24 +653,7 @@ public class GenerationTestsR2 : IClassFixture<GenerationTestFixture>
                     throw new ArgumentException($"Unknown language: {langName}");
             }
 
-
-            ms.Flush();
-            ms.Seek(0, SeekOrigin.Begin);
-
-            using (StreamReader sr = new(ms))
-            {
-                string current = sr.ReadToEnd();
-
-                // update the current file contents (manual)
-                if (GenerationTestFixture.WriteGeneratedFiles)
-                {
-                    File.WriteAllText(filePath, current);
-                    Assert.Fail("Generated files updated, please re-run the test");
-                }
-
-                // should the types like canonical be canonical::canonical or canonical::string?
-                current.Should().Be(data);
-            }
+            GenerationTestFixture.CompareGeneration(path, ms);
         }
     }
 }

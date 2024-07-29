@@ -61,7 +61,7 @@ public class LangOpenApi : ILanguage
         }
         else
         {
-            foreach (var cs in definitions.CapabilityStatementsByUrl.Values)
+            foreach (Hl7.Fhir.Model.CapabilityStatement cs in definitions.CapabilityStatementsByUrl.Values)
             {
                 string fileId = cs.Id;
 

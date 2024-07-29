@@ -228,8 +228,6 @@ public class ConfigRoot : ICodeGenConfig
         ArgArity = "0..*")]
     public FhirArtifactClassEnum[] LoadStructures { get; set; } = _defaultLoadStructures;
 
-    //public HashSet<FhirArtifactClassEnum> ProcessStructures { get; set; } = new();
-
     private static ConfigurationOption LoadStructuresParameter { get; } = new()
     {
         Name = "LoadStructures",
