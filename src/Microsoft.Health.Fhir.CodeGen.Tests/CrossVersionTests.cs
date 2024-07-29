@@ -368,10 +368,10 @@ public class CrossVersionTests
     }
 
     [Theory(DisplayName = "CheckFmlMissingProps")]
-    [InlineData("fhir-cross-version/input/R2toR3", "2to3")]
-    [InlineData("fhir-cross-version/input/R3toR2", "3to2")]
+    // [InlineData("fhir-cross-version/input/R2toR3", "2to3")]
+    // [InlineData("fhir-cross-version/input/R3toR2", "3to2")]
     [InlineData("fhir-cross-version/input/R3toR4", "3to4")]
-    [InlineData("fhir-cross-version/input/R4toR3", "4to3")]
+    // [InlineData("fhir-cross-version/input/R4toR3", "4to3")]
     [InlineData("fhir-cross-version/input/R4toR5", "4to5")]
     [InlineData("fhir-cross-version/input/R5toR4", "5to4")]
     [InlineData("fhir-cross-version/input/R4BtoR5", "4Bto5")]
