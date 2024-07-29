@@ -187,23 +187,7 @@ public class CrossVersionTests
 
             fml.Should().NotBeNull();
 
-            // extract the name root
-            string name;
-
-            if (fml.MetadataByPath.TryGetValue("name", out MetadataDeclaration? nameMeta))
-            {
-                name = nameMeta.Literal?.ValueAsString ?? throw new Exception($"Cross-version structure maps require a metadata name property: {filename}");
-            }
-            else
-            {
-                name = Path.GetFileNameWithoutExtension(filename);
-            }
-
-            if (name.EndsWith(versionToVersion, StringComparison.OrdinalIgnoreCase))
-            {
-                name = name[..^versionToVersionLen];
-            }
-
+            allMaps.Add(fml);
         }
         errorCount.Should().Be(0, "Should be no parsing/processing errors");
 
