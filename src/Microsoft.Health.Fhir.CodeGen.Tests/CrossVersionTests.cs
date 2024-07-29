@@ -204,16 +204,6 @@ public class CrossVersionTests
                 name = name[..^versionToVersionLen];
             }
 
-            try
-            {
-                CrossVersionMapCollection.ProcessCrossVersionFml(name, fml, fmlPathLookup);
-                allMaps.Add(fml);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error Processing {filename}: {ex.Message}");
-                errorCount++;
-            }
         }
         errorCount.Should().Be(0, "Should be no parsing/processing errors");
 
@@ -337,12 +327,14 @@ public class CrossVersionTests
         }
 
         // Now scan all these maps
-        var options = new ValidateMapOptions
+        var options = new CrossVersionCheckOptions
         {
             resolveMapUseCrossVersionType = resolveMapUseCrossVersionType,
             resolveMaps = resolveMaps,
-            source = GetModelOptions(versions[0], sourceResolver, dcs[0]),
-            target = GetModelOptions(versions[1], targetResolver, dcs[1]),
+            source = GetModelOptions(versions[0], sourceResolver),
+            SourcePackage = dcs[0],
+            target = GetModelOptions(versions[1], targetResolver),
+            TargetPackage= dcs[1],
             namedGroups = namedGroups,
             typedGroups = typedGroups,
         };
@@ -350,7 +342,7 @@ public class CrossVersionTests
         {
             try
             {
-                var outcome = await CrossVersionMapCollection.VerifyFmlDataTypes(fml, options);
+                var outcome = await FmlValidator.VerifyFmlDataTypes(fml, options);
                 if (!outcome.Success)
                     errorCount++;
                 if (outcome.Warnings > 0)
@@ -537,12 +529,14 @@ public class CrossVersionTests
         }
 
         // Now scan all these maps
-        var options = new ValidateMapOptions
+        var options = new CrossVersionCheckOptions
         {
             resolveMapUseCrossVersionType = resolveMapUseCrossVersionType,
             resolveMaps = resolveMaps,
-            source = GetModelOptions(versions[0], sourceResolver, dcs[0]),
-            target = GetModelOptions(versions[1], targetResolver, dcs[1]),
+            source = GetModelOptions(versions[0], sourceResolver),
+            SourcePackage = dcs[0],
+            target = GetModelOptions(versions[1], targetResolver),
+            TargetPackage = dcs[1],
             namedGroups = namedGroups,
             typedGroups = typedGroups,
         };
@@ -567,7 +561,7 @@ public class CrossVersionTests
         Assert.True(errorCount == 0 && warningCount == 0, $"FML Errors: {errorCount}, Warnings: {warningCount}");
     }
 
-    private static ModelOptions GetModelOptions(string version, CachedResolver resolver, DefinitionCollection package)
+    private static ModelOptions GetModelOptions(string version, CachedResolver resolver)
     {
         ModelInspector inspector = r4.Hl7.Fhir.Model.ModelInfo.ModelInspector;
         List<string> supportedResources = r4.Hl7.Fhir.Model.ModelInfo.SupportedResources;
@@ -604,7 +598,6 @@ public class CrossVersionTests
         return new ModelOptions
         {
             Resolver = resolver,
-            Package = package,
             MI = inspector,
             SupportedResources = supportedResources,
             OpenTypes = openTypes,
