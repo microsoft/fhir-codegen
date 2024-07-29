@@ -390,7 +390,7 @@ public class TestWriter : TextWriter
     {
         OutputWriter = outputWriter;
     }
-    StringBuilder cache = new();
+    private StringBuilder cache = new();
     public override void Write(char value)
     {
         if (value == '\n')
