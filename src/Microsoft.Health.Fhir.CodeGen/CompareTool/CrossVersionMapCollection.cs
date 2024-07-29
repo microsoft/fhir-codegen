@@ -406,7 +406,7 @@ public class CrossVersionMapCollection
                     var sd = _aliasedTypes[type];
                     if (sd != null)
                     {
-                        var sw = new StructureDefinitionWalker(sd, resolver);
+                        var sw = new FmlStructureDefinitionWalker(sd, resolver);
                         tp = new PropertyOrTypeDetails(sw.Current.Path, sw.Current, resolver);
                         type = $"{sd.Url}|{sd.Version}";
                         gp.ParameterElementDefinition = sw.Current;
@@ -509,7 +509,7 @@ public class CrossVersionMapCollection
                     }
                     else
                     {
-                        var sw = new StructureDefinitionWalker(sdCastType, options.source.Resolver);
+                        var sw = new FmlStructureDefinitionWalker(sdCastType, options.source.Resolver);
 
                         // Check that the type being attempted is among the types in the actual property
                         if (!tpV?.Element?.Current?.Type.Any(t => t.Code == source.TypeIdentifier) == true)
@@ -1038,7 +1038,7 @@ public class CrossVersionMapCollection
             }
             else
             {
-                var sw = new StructureDefinitionWalker(sdCastType, resolver);
+                var sw = new FmlStructureDefinitionWalker(sdCastType, resolver);
 
                 // TODO: @brianpos - the property type is not treated as nullable anywhere else, so I am using empty string here. Not sure if PropertyPath should be nullable instead.
                 return new PropertyOrTypeDetails(string.Empty, sw.Current, resolver);
@@ -1185,7 +1185,7 @@ public class CrossVersionMapCollection
                 var childProps = parts.Skip(1);
                 while (childProps.Any())
                 {
-                    var sw = new StructureDefinitionWalker(tp.Element, tp.Resolver);
+                    var sw = new FmlStructureDefinitionWalker(tp.Element, tp.Resolver);
                     try
                     {
                         var node = sw.Child(childProps.First());
@@ -1194,9 +1194,9 @@ public class CrossVersionMapCollection
                             if (node.Current.Current.ContentReference != null)
                             {
                                 // Need to walk into the node further
-                                if (StructureDefinitionWalker.TryFollowContentReference(node.Current, s => tp.Resolver.FindStructureDefinitionAsync(s).WaitResult(), out var r))
+                                if (FmlStructureDefinitionWalker.TryFollowContentReference(node.Current, s => tp.Resolver.FindStructureDefinitionAsync(s).WaitResult(), out var r))
                                 {
-                                    node = new StructureDefinitionWalker(r, tp.Resolver);
+                                    node = new FmlStructureDefinitionWalker(r, tp.Resolver);
                                 }
                             }
                             tp = new PropertyOrTypeDetails(tp.PropertyPath + "." + childProps.First(), node.Current, tp.Resolver);
@@ -2709,7 +2709,7 @@ public class CrossVersionMapCollection
                     var sd = _aliasedTypes[type];
                     if (sd != null)
                     {
-                        var sw = new StructureDefinitionWalker(sd, resolver);
+                        var sw = new FmlStructureDefinitionWalker(sd, resolver);
                         tp = new PropertyOrTypeDetails(sw.Current.Path, sw.Current, resolver);
                         type = $"{sd.Url}|{sd.Version}";
                         gp.ParameterElementDefinition = sw.Current;
@@ -2942,7 +2942,7 @@ public class CrossVersionMapCollection
                     }
                     else
                     {
-                        var sw = new StructureDefinitionWalker(sdCastType, options.source.Resolver);
+                        var sw = new FmlStructureDefinitionWalker(sdCastType, options.source.Resolver);
 
                         // Check that the type being attempted is among the types in the actual property
                         if (!tpV?.Element?.Current?.Type.Any(t => t.Code == source.TypeIdentifier) == true)

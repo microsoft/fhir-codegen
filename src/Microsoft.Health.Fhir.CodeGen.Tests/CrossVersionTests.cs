@@ -277,7 +277,7 @@ public class CrossVersionTests
                                     var sd = aliasedTypes[type];
                                     if (sd != null)
                                     {
-                                        var sw = new StructureDefinitionWalker(sd, resolver);
+                                        var sw = new FmlStructureDefinitionWalker(sd, resolver);
                                         type = $"{sd.Url}|{sd.Version}";
                                         gp.ParameterElementDefinition = sw.Current;
                                     }
@@ -496,7 +496,7 @@ public class CrossVersionTests
                                     var sd = aliasedTypes[type];
                                     if (sd != null)
                                     {
-                                        var sw = new StructureDefinitionWalker(sd, resolver);
+                                        var sw = new FmlStructureDefinitionWalker(sd, resolver);
                                         type = $"{sd.Url}|{sd.Version}";
                                         gp.ParameterElementDefinition = sw.Current;
                                     }
