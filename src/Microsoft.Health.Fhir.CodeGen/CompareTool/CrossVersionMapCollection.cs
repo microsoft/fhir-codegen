@@ -841,7 +841,16 @@ public class CrossVersionMapCollection
             {
                 foreach (FmlExpressionSource source in exp.MappingExpression.Sources)
                 {
-                    string sourceName = source.Identifier.StartsWith(groupSourceVar, StringComparison.Ordinal) && source.Identifier.Length > groupSourceVarLen
+                    // skip elements that do not start with our matching variable
+                    if (!source.Identifier.StartsWith(groupSourceVar, StringComparison.Ordinal))
+                    {
+                        continue;
+                    }
+
+                    string sourceName =
+                        source.Identifier == groupSourceVar
+                        ? string.Empty
+                        : source.Identifier.StartsWith(groupSourceVar, StringComparison.Ordinal)
                         ? source.Identifier[(groupSourceVarLen + 1)..]
                         : source.Identifier;
 
@@ -856,18 +865,11 @@ public class CrossVersionMapCollection
 
                     foreach (FmlExpressionTarget target in exp.MappingExpression.Targets)
                     {
-                        /* TODO: @brianpos - the mapping done this way produces an incorrect path.  E.g. in:
-                         * http://hl7.org/fhir/uv/xver/StructureMap/AdverseEvent5to4
-                         * group AdverseEventParticipant
-                         *  src.actor as v -> tgt = v "reference";
-                         * the resultant target element was AdverseEvent.contributor.tgt
-                         * Fixed by checking for the target being solely the group target var
-                         */
                         string targetName =
-                            target.Identifier?.StartsWith(groupTargetVar, StringComparison.Ordinal) == true
-                            ? target.Identifier.Length == groupTargetVarLen
-                                ? string.Empty
-                                : target.Identifier[(groupTargetVarLen + 1)..]
+                            target.Identifier == groupTargetVar
+                            ? string.Empty
+                            : target.Identifier?.StartsWith(groupTargetVar, StringComparison.Ordinal) == true
+                            ? target.Identifier[(groupTargetVarLen + 1)..]
                             : target.Identifier ?? string.Empty;
 
                         // add our current name prefix
