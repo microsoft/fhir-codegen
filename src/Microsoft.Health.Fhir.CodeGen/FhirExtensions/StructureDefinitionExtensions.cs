@@ -143,10 +143,9 @@ public static class StructureDefinitionExtensions
         : sd.Purpose;
 
     /// <summary>Get the comment for a primitive datatype.</summary>
-    public static string cgComment(this StructureDefinition sd) => (sd.Snapshot != null) && (sd.Snapshot.Element.Count != 0)
+    public static string cgComment(this StructureDefinition sd) => (sd.Snapshot.Element.Count != 0)
         ? sd.Snapshot.Element[0].Comment
-        : sd.Differential.Element.Count != 0 ? sd.Differential.Element[0].Comment : string.Empty;
-
+        : string.Empty;
 
     /// <summary>A StructureDefinition extension method that cg name.</summary>
     /// <param name="sd">The SD to act on.</param>
@@ -178,24 +177,19 @@ public static class StructureDefinitionExtensions
         // filter based on the backbone path we want
         if (string.IsNullOrEmpty(forBackbonePath))
         {
-            // get the correct list of elements (snapshot or differential)
-            source = (sd.Snapshot != null) && (sd.Snapshot.Element.Count != 0)
-                ? sd.Snapshot.Element.Skip(includeRoot ? 0 : 1)
-                : sd.Differential.Element.Skip(includeRoot ? 0 : 1);
+            source = (sd.Snapshot.Element.Count == 0)
+                ? sd.Snapshot.Element
+                : sd.Snapshot.Element.Skip(includeRoot ? 0 : 1);
         }
         else
         {
             // we want child elements of the requested path, so append an additional dot
-            source = (sd.Snapshot != null) && (sd.Snapshot.Element.Count != 0)
-                ? sd.Snapshot.Element.Where(e => e.Path.StartsWith(forBackbonePath + ".", StringComparison.Ordinal))
-                : sd.Differential.Element.Where(e => e.Path.StartsWith(forBackbonePath + ".", StringComparison.Ordinal));
+            source = sd.Snapshot.Element.Where(e => e.Path.StartsWith(forBackbonePath + ".", StringComparison.Ordinal));
 
             // this will filter out the requested path itself, so check if we need the root
             if (includeRoot)
             {
-                yield return (sd.Snapshot != null) && (sd.Snapshot.Element.Count != 0)
-                    ? sd.Snapshot.Element.First(e => e.Path == forBackbonePath)
-                    : sd.Differential.Element.First(e => e.Path == forBackbonePath);
+                yield return sd.Snapshot.Element.First(e => e.Path == forBackbonePath);
             }
         }
 
@@ -234,12 +228,14 @@ public static class StructureDefinitionExtensions
         if ((sd.Snapshot != null) && (sd.Snapshot.Element.Count != 0))
         {
             element = sd.Snapshot.Element.FirstOrDefault(e => e.Path == path);
-            return element != null;
-        }
 
-        if ((sd.Differential != null) && (sd.Differential.Element.Count != 0))
-        {
-            element = sd.Differential.Element.FirstOrDefault(e => e.Path == path);
+            // check for requesting a path that is a choice type without the trailing literal
+            if ((element == null) && !path.EndsWith("[x]"))
+            {
+                string choicePath = path + "[x]";
+                element = sd.Snapshot.Element.FirstOrDefault(e => e.Path == choicePath);
+            }
+
             return element != null;
         }
 
@@ -262,12 +258,6 @@ public static class StructureDefinitionExtensions
             return element != null;
         }
 
-        if ((sd.Differential != null) && (sd.Differential.Element.Count != 0))
-        {
-            element = sd.Differential.Element.FirstOrDefault(e => e.ElementId == id);
-            return element != null;
-        }
-
         element = null;
         return false;
     }
@@ -287,30 +277,13 @@ public static class StructureDefinitionExtensions
     {
         if (includeInherited)
         {
-            if ((sd.Snapshot != null) && (sd.Snapshot.Element.Count != 0))
-            {
-                return sd.Snapshot.Element.SelectMany(e => e.Constraint)
-                    .GroupBy(e => e.Key)
-                    .Select(e => e.First())
-                    .OrderBy(e => e.Key, NaturalComparer.Instance);
-            }
-
-            return sd.Differential.Element.SelectMany(e => e.Constraint)
-                .GroupBy(e => e.Key)
-                .Select(e => e.First())
-                .OrderBy(e => e.Key, NaturalComparer.Instance);
-        }
-
-        if ((sd.Snapshot != null) && (sd.Snapshot.Element.Count != 0))
-        {
             return sd.Snapshot.Element.SelectMany(e => e.Constraint)
-                .Where(e => e.Source == sd.Url)
                 .GroupBy(e => e.Key)
                 .Select(e => e.First())
                 .OrderBy(e => e.Key, NaturalComparer.Instance);
         }
 
-        return sd.Differential.Element.SelectMany(e => e.Constraint)
+        return sd.Snapshot.Element.SelectMany(e => e.Constraint)
             .Where(e => e.Source == sd.Url)
             .GroupBy(e => e.Key)
             .Select(e => e.First())
@@ -355,22 +328,5 @@ public static class StructureDefinitionExtensions
     /// <summary>A StructureDefinition extension method that cg root element.</summary>
     /// <param name="sd">The SD to act on.</param>
     /// <returns>An ElementDefinition?</returns>
-    public static ElementDefinition? cgRootElement(this StructureDefinition sd)
-    {
-        if ((sd.Snapshot != null) && (sd.Snapshot.Element.Count != 0))
-        {
-            return sd.Snapshot.Element.FirstOrDefault();
-        }
-
-        if ((sd.Differential != null) && (sd.Differential.Element.Count != 0))
-        {
-            if (sd.Differential.Element.First().ElementId == sd.Id)
-            {
-                // first element is the root
-                return sd.Differential.Element.First();
-            }
-        }
-
-        return null;
-    }
+    public static ElementDefinition? cgRootElement(this StructureDefinition sd) => sd.Snapshot.Element.FirstOrDefault();
 }

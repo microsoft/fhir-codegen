@@ -2563,6 +2563,20 @@ public partial class DefinitionCollection
         return false;
     }
 
+    /// <summary>Attempts to get structure a StructureDefinition based on the given key.</summary>
+    /// <param name="key">The key (name or url, depending on type) of the structure.</param>
+    /// <param name="sd">     [out] The found structure definition.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool TryGetStructure(string key, [NotNullWhen(true)] out StructureDefinition? sd)
+    {
+        return
+            _resourcesByName.TryGetValue(key, out sd) ||
+            _complexTypesByName.TryGetValue(key, out sd) ||
+            _primitiveTypesByName.TryGetValue(key, out sd) ||
+            _profilesByUrl.TryGetValue(key, out sd) ||
+            _logicalModelsByUrl.TryGetValue(key, out sd);
+    }
+
     /// <summary>
     /// Tries to find an element in the structure definition by its path.
     /// </summary>

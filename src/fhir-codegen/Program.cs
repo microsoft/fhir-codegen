@@ -607,7 +607,7 @@ public class Program
                 if (config.NoOutput != true)
                 {
                     comparer.WriteMarkdownFiles(pc);
-                    //comparer.WriteCrossVersionExtensionArtifacts(pc);
+                    comparer.WriteCrossVersionExtensionArtifacts(pc);
                 }
 
                 if (config.MapSaveStyle != ConfigCompare.ComparisonMapSaveStyle.None)

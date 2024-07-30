@@ -492,7 +492,7 @@ public class PackageComparer
         Dictionary<string, List<string>> nonExtensionTypesAndContexts = [];
         HashSet<string> allowedExtTypes = [];
 
-        if (_target.ResourcesByName.TryGetValue("Extension", out StructureDefinition? targetExtensionSd) &&
+        if (_target.ComplexTypesByName.TryGetValue("Extension", out StructureDefinition? targetExtensionSd) &&
             targetExtensionSd.cgTryGetElementByPath("Extension.value[x]", out ElementDefinition? targetExtensionValueEd))
         {
             allowedExtTypes = new(targetExtensionValueEd.cgTypes().Keys);
@@ -1849,14 +1849,19 @@ public class PackageComparer
     }
 
 
-    private ExportStreamWriter CreateMarkdownWriter(string filename, bool writeGenerationHeader = true)
+    private ExportStreamWriter CreateMarkdownWriter(string filename, bool writeGenerationHeader = true, bool includeGenerationTime = false)
     {
         ExportStreamWriter writer = new(filename);
 
         if (writeGenerationHeader)
         {
             writer.WriteLine($"Comparison of {_source.MainPackageId}#{_source.MainPackageVersion} and {_target.MainPackageId}#{_target.MainPackageVersion}");
-            writer.WriteLine($"Generated at {DateTime.Now.ToString("F")}");
+
+            if (includeGenerationTime)
+            {
+                writer.WriteLine($"Generated at {DateTime.Now.ToString("F")}");
+            }
+
             writer.WriteLine();
         }
 
@@ -1891,7 +1896,6 @@ public class PackageComparer
         CMR.NotRelatedTo => change ?? existing,
         _ => change ?? existing,
     };
-
 
     private bool TryGetVsComparison(string sourceUrl, string targetUrl, [NotNullWhen(true)] out ValueSetComparison? valueSetComparison)
     {
@@ -2441,9 +2445,15 @@ public class PackageComparer
                 // traverse our list of concept maps
                 foreach (ConceptMap cm in conceptMaps)
                 {
+                    if (cm.TargetScope is not Canonical targetCanonical)
+                    {
+                        continue;
+                    }
+
+                    string targetName = (targetCanonical.Uri ?? string.Empty).Split('/')[^1];
+
                     // check to see if we have a target value set
-                    if ((cm.TargetScope is Canonical targetCanonical) &&
-                        targetStructures.TryGetValue(targetCanonical.Uri ?? string.Empty, out StructureDefinition? mappedTargetSd))
+                    if (targetStructures.TryGetValue(targetName, out StructureDefinition? mappedTargetSd))
                     {
                         testedTargetNames.Add(targetCanonical.Uri!);
 
@@ -2548,12 +2558,12 @@ public class PackageComparer
 
         Dictionary<string, HashSet<string>> targetsMappedToSources = [];
 
-        // be optimistic
-        CMR elementRelationship = CMR.Equivalent;
-
         // traverse the source elements to do comparison tests
         foreach (ElementDefinition sourceEd in sourceElements.Values)
         {
+            // be optimistic
+            CMR elementRelationship = CMR.Equivalent;
+
             ElementInfoRec sourceEdInfo = GetInfo(sourceEd);
             List<ElementComparisonDetails> elementComparisonDetails = [];
 
@@ -2589,27 +2599,28 @@ public class PackageComparer
                                 elementRelationship = ApplyRelationship(elementRelationship, relationship);
                                 elementComparisonDetails.Add(ecd);
                             }
-                            else
-                            {
-                                throw new Exception("Target element does not exist!");
-                                //elementComparisonDetails.Add(new()
-                                //{
-                                //    Target = new()
-                                //    {
-                                //        System = targetSystem,
-                                //        Code = mapTargetElement.Code,
-                                //        Description = string.Empty,
-                                //    },
-                                //    Relationship = relationship,
-                                //    Message = message,
-                                //    IsPreferred = conceptComparisonDetails.Count == 0,
-                                //});
-                            }
+                            //else
+                            //{
+                            //    throw new Exception("Target element does not exist!");
+                            //    //elementComparisonDetails.Add(new()
+                            //    //{
+                            //    //    Target = new()
+                            //    //    {
+                            //    //        System = targetSystem,
+                            //    //        Code = mapTargetElement.Code,
+                            //    //        Description = string.Empty,
+                            //    //    },
+                            //    //    Relationship = relationship,
+                            //    //    Message = message,
+                            //    //    IsPreferred = conceptComparisonDetails.Count == 0,
+                            //    //});
+                            //}
                         }
                     }
                 }
             }
-            else if (targetElements.TryGetValue(sourceKey, out ElementDefinition? targetElement))
+            //else if (targetElements.TryGetValue(sourceKey, out ElementDefinition? targetElement))
+            if ((elementComparisonDetails.Count == 0) && targetElements.TryGetValue(sourceKey, out ElementDefinition? targetElement))
             {
                 string targetCombined = targetElement.Path;
                 if (!targetsMappedToSources.TryGetValue(targetCombined, out HashSet<string>? sourceElementPaths))
@@ -2945,19 +2956,32 @@ public class PackageComparer
         // perform element type comparison
         Dictionary<string, ElementTypeComparison> etComparisons = CompareElementTypes(sourceInfo, targetInfo);
 
+        CMR typeRelationship = CMR.Equivalent;
+        bool foundEquivalent = false;
+
         // process our type comparisons and promote messages
         foreach (ElementTypeComparison etc in etComparisons.Values)
         {
             // skip equivalent types
             if (etc.Relationship == CMR.Equivalent)
             {
+                foundEquivalent = true;
                 continue;
             }
 
-            relationship = ApplyRelationship(relationship, etc.Relationship);
+            typeRelationship = ApplyRelationship(typeRelationship, etc.Relationship);
             messages.Add($"{targetInfo.Name} has change due to type change: {etc.Message}");
         }
 
+        // handle the case where the existing type *does* exist
+        if (foundEquivalent && (typeRelationship != CMR.Equivalent))
+        {
+            relationship = ApplyRelationship(relationship, CMR.SourceIsBroaderThanTarget);
+        }
+        else
+        {
+            relationship = ApplyRelationship(relationship, typeRelationship);
+        }
 
         return new()
         {

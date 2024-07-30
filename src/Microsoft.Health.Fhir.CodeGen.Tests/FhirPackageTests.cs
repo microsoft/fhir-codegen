@@ -112,6 +112,7 @@ public class FhirPackageTestsR5 : IClassFixture<FhirPackageTestFixture>
     [Trait("Category", "Parse")]
     [Trait("Format", "Json")]
     [Trait("FhirVersion", "R5")]
+    [Trait("DefaultCache", "true")]
     internal async Task ParseCorePackage(LoaderOptions.JsonDeserializationModel jsonModel)
     {
         PackageLoader loader = new(new() { FhirCacheDirectory = _fixture.CachePath }, new() { JsonModel = jsonModel });
@@ -183,6 +184,7 @@ public class FhirPackageTestsR4B : IClassFixture<FhirPackageTestFixture>
     [Trait("Category", "Parse")]
     [Trait("Format", "Json")]
     [Trait("FhirVersion", "R4B")]
+    [Trait("DefaultCache", "true")]
     internal async Task ParseCorePackage()
     {
         PackageLoader loader = new(new() { FhirCacheDirectory = _fixture.CachePath }, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
@@ -254,6 +256,7 @@ public class FhirPackageTestsR4 : IClassFixture<FhirPackageTestFixture>
     [Trait("Category", "Parse")]
     [Trait("Format", "Json")]
     [Trait("FhirVersion", "R4")]
+    [Trait("DefaultCache", "true")]
     internal async Task ParseCorePackage()
     {
         PackageLoader loader = new(new() { FhirCacheDirectory = _fixture.CachePath }, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
@@ -325,6 +328,7 @@ public class FhirPackageTestsR3 : IClassFixture<FhirPackageTestFixture>
     [Trait("Category", "Parse")]
     [Trait("Format", "Json")]
     [Trait("FhirVersion", "R3")]
+    [Trait("DefaultCache", "true")]
     internal async Task ParseCorePackage()
     {
         PackageLoader loader = new(new() { FhirCacheDirectory = _fixture.CachePath }, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
@@ -396,6 +400,7 @@ public class FhirPackageTestsR2 : IClassFixture<FhirPackageTestFixture>
     [Trait("Category", "Parse")]
     [Trait("Format", "Json")]
     [Trait("FhirVersion", "R2")]
+    [Trait("DefaultCache", "true")]
     internal async Task ParseCorePackage()
     {
         PackageLoader loader = new(new() { FhirCacheDirectory = _fixture.CachePath }, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });

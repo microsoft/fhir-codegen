@@ -18,6 +18,8 @@ using Microsoft.Health.Fhir.MappingLanguage;
 using Hl7.Fhir.FhirPath.Validator;
 using Hl7.Fhir.Introspection;
 using Hl7.FhirPath;
+using System.Text;
+using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 
 #if NETSTANDARD2_0
 using Microsoft.Health.Fhir.CodeGen.Polyfill;
@@ -52,12 +54,14 @@ public class CrossVersionMapCollection
     private FhirReleases.FhirSequenceCodes _sourceFhirSequence;
     private string _sourcePackageCanonical;
     private string _sourceRLiteral;
+    private string _sourceShortVersion;
     private string _sourceShortVersionUrlSegment;
     private string _sourcePackageVersion;
 
     private FhirReleases.FhirSequenceCodes _targetFhirSequence;
     private string _targetPackageCanonical;
     private string _targetRLiteral;
+    private string _targetShortVersion;
     private string _targetShortVersionUrlSegment;
     private string _targetPackageVersion;
 
@@ -95,7 +99,8 @@ public class CrossVersionMapCollection
         _sourcePackageCanonical = source.MainPackageCanonical;
         _sourceFhirSequence = source.FhirSequence;
         _sourceRLiteral = source.FhirSequence.ToRLiteral();
-        _sourceShortVersionUrlSegment = "/" + source.FhirSequence.ToShortVersion() + "/";
+        _sourceShortVersion = source.FhirSequence.ToShortVersion();
+        _sourceShortVersionUrlSegment = "/" + _sourceShortVersion + "/";
         _sourcePackageVersion = source.FhirVersionLiteral;
 
         _target = target;
@@ -103,7 +108,8 @@ public class CrossVersionMapCollection
         _targetPackageCanonical = target.MainPackageCanonical;
         _targetFhirSequence = target.FhirSequence;
         _targetRLiteral = target.FhirSequence.ToRLiteral();
-        _targetShortVersionUrlSegment = "/" + target.FhirSequence.ToShortVersion() + "/";
+        _targetShortVersion = target.FhirSequence.ToShortVersion();
+        _targetShortVersionUrlSegment = "/" + _targetShortVersion + "/";
         _targetPackageVersion = target.FhirVersionLiteral;
 
         _sourceToTargetWithR = $"{_sourceRLiteral}to{_targetRLiteral}";
@@ -183,7 +189,13 @@ public class CrossVersionMapCollection
 
         if (isOfficial)
         {
-            return TryLoadOfficialConceptMaps(path) && TryLoadOfficialStructureMaps(path);
+            if (TryLoadOfficialConceptMaps(path) && TryLoadOfficialStructureMaps(path))
+            {
+                ReconcileElementMapWithFML();
+                return true;
+            }
+
+            return false;
         }
 
         if (isSource)
@@ -314,6 +326,403 @@ public class CrossVersionMapCollection
         }
 
         return true;
+    }
+
+    /// <summary>Reconcile element map with information from Structure Maps.</summary>
+    internal void ReconcileElementMapWithFML()
+    {
+        // if we do not have any structure maps, nothing to do
+        if (_fmlByCompositeName.Count == 0)
+        {
+            return;
+        }
+
+        //StringBuilder addedMaps = new();
+
+        Dictionary<string, Dictionary<string, FmlTargetInfo>> fmlPathLookup = [];
+
+        // iterate over the FML files to see what element maps we can find
+        foreach ((string name, FhirStructureMap fml) in _fmlByCompositeName)
+        {
+            fmlPathLookup.Clear();
+
+            // process each of the groups in the FML to extract path maps
+            foreach ((string groupName, GroupDeclaration group) in fml.GroupsByName)
+            {
+                // process root groups (recurses into dependent groups)
+                if (name.Contains(groupName))
+                {
+                    ProcessCrossVersionGroup(fml, groupName, groupName, group, fmlPathLookup);
+                }
+            }
+
+            ReconcileElementMapFmlPaths(name, fmlPathLookup);
+        }
+
+        //// TODO(ginoc): this would be much more performant by processing everything into dictionaries instead of looking up each time, but worry about that later
+
+        //// look for elements that target other elements
+        //foreach ((string sourcePath, Dictionary<string, FmlTargetInfo> targets) in fmlPathLookup)
+        //{
+        //    // skip things with no targets
+        //    if (targets.Count == 0)
+        //    {
+        //        continue;
+        //    }
+
+        //    // set the default relationship based on the number of targets
+        //    ConceptMap.ConceptMapRelationship initialRelationship = targets.Count == 1
+        //        ? ConceptMap.ConceptMapRelationship.Equivalent
+        //        : ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget;
+
+        //    foreach ((string targetPath, FmlTargetInfo targetInfo) in targets)
+        //    {
+        //        // check for source and target paths being the same
+        //        if (sourcePath == targetPath)
+        //        {
+        //            continue;
+        //        }
+
+        //        // grab the source and target type info to check for mappings
+        //        string sourceTypeName = sourcePath.Split('.')[0];
+        //        string targetTypeName = targetPath.Split('.')[0];
+
+        //        if (!_source.TryGetStructure(sourceTypeName, out StructureDefinition? sourceSd))
+        //        {
+        //            Console.WriteLine($"Could not resolve source type {sourceTypeName} for {sourcePath}");
+        //            continue;
+        //        }
+
+        //        if (!_target.TryGetStructure(sourceTypeName, out StructureDefinition? targetSd))
+        //        {
+        //            Console.WriteLine($"Could not resolve source type {targetTypeName} for {targetPath}");
+        //            continue;
+        //        }
+
+        //        if (!sourceSd.cgTryGetElementByPath(sourcePath, out ElementDefinition? sourceEd))
+        //        {
+        //            Console.WriteLine($"Could not resolve source path {sourcePath} for {sourceTypeName}");
+        //            continue;
+        //        }
+
+        //        if (!targetSd.cgTryGetElementByPath(targetPath, out ElementDefinition? targetEd))
+        //        {
+        //            Console.WriteLine($"Could not resolve target path {targetPath} for {targetTypeName}");
+        //            continue;
+        //        }
+
+        //        //// check for a type map we need to apply
+        //        //if ((_dataTypeMap?.Group.FirstOrDefault()?.Element is List<ConceptMap.SourceElementComponent> values) &&
+        //        //    (values.FirstOrDefault(v => v.Code == sourceType) is ConceptMap.SourceElementComponent sourceEC) &&
+        //        //    sourceEC.Target.Any(t => t.Code != sourceEC.Code))
+        //        //{
+
+        //        //}
+
+        //        // we want to do a mapping between these elements, check to see if there are any for the correct target
+        //        List<ConceptMap> maps = _dc.ConceptMapsForSource(sourceSd.Url)
+        //            .Where(cm => ((cm.TargetScope is Canonical tsc) && (tsc.Uri == targetSd.Url)) || ((cm.TargetScope is FhirUri tsu) && (tsu.Value == targetSd.Url)))
+        //            .ToList();
+
+        //        ConceptMap elementMap;
+
+        //        // check if we need to create a map
+        //        if (maps.Count == 0)
+        //        {
+        //            elementMap = BuildNewElementMap(sourceTypeName, targetTypeName, null);
+        //            _dc.AddConceptMap(elementMap, _dc.MainPackageId, _dc.MainPackageVersion);
+        //        }
+        //        else
+        //        {
+        //            elementMap = maps[0];
+        //        }
+
+        //        ConceptMap.GroupComponent? group = null;
+
+        //        // traverse maps looking for the correct target
+        //        foreach (ConceptMap.GroupComponent cmg in elementMap.Group)
+        //        {
+        //            // check the target
+        //            if (cmg.Target != targetSd.Url)
+        //            {
+        //                continue;
+        //            }
+
+        //            group = cmg;
+        //            break;
+        //        }
+
+        //        if (group == null)
+        //        {
+        //            group = new()
+        //            {
+        //                SourceElement = new Canonical(sourceSd.Url, sourceSd.Version, null),
+        //                TargetElement = new Canonical(targetSd.Url, targetSd.Version, null),
+        //            };
+
+        //            elementMap.Group.Add(group);
+        //        }
+
+        //        ConceptMap.SourceElementComponent? sourceElement = null;
+
+        //        // check to see if this path exists
+        //        foreach (ConceptMap.SourceElementComponent se in group.Element)
+        //        {
+        //            // check the path
+        //            if (se.Code != sourceEd.Path)
+        //            {
+        //                continue;
+        //            }
+
+        //            sourceElement = se;
+        //            break;
+        //        }
+
+        //        if (sourceElement == null)
+        //        {
+        //            sourceElement = new()
+        //            {
+        //                Code = sourceEd.Path,
+        //                Target = [],
+        //            };
+        //        }
+
+        //        ConceptMap.TargetElementComponent? targetElement = null;
+
+        //        // check if this target exists
+        //        foreach (ConceptMap.TargetElementComponent te in sourceElement.Target)
+        //        {
+        //            // check the path
+        //            if (te.Code != targetEd.Path)
+        //            {
+        //                continue;
+        //            }
+
+        //            targetElement = te;
+        //            break;
+        //        }
+
+        //        if (targetElement == null)
+        //        {
+        //            // default everything to equivalent in this step - will restrict based on types later
+                    
+        //            targetElement = new()
+        //            {
+        //                Code = targetEd.Path,
+        //                Relationship = ConceptMap.ConceptMapRelationship.Equivalent,    // RelationshipForFmlTarget(targetInfo),
+        //                Comment = $"Discovered map via FML: {targetInfo.FhirMappingExpression.RawText}",
+        //            };
+
+        //            sourceElement.Target.Add(targetElement);
+
+        //            addedMaps.AppendLine($"FML map: {sourceEd.Path}:{targetEd.Path} - {targetInfo.FhirMappingExpression.RawText}");
+        //        }
+        //    }
+        //}
+
+        //Console.WriteLine("Element maps added from FML:");
+        //Console.WriteLine(addedMaps.ToString());
+    }
+
+    private void ReconcileElementMapFmlPaths(
+        string fmlName,
+        Dictionary<string, Dictionary<string, FmlTargetInfo>> fmlPathLookup)
+    {
+        StringBuilder addedMaps = new();
+
+        // look for elements that target other elements
+        foreach ((string sourcePath, Dictionary<string, FmlTargetInfo> targets) in fmlPathLookup)
+        {
+            // skip items with no targets
+            if (targets.Count == 0)
+            {
+                continue;
+            }
+
+            // set the default relationship based on the number of targets
+            ConceptMap.ConceptMapRelationship initialRelationship = targets.Count == 1
+                ? ConceptMap.ConceptMapRelationship.Equivalent
+                : ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget;
+
+            foreach ((string targetPath, FmlTargetInfo targetInfo) in targets)
+            {
+                // check for source and target paths being the same
+                if (sourcePath == targetPath)
+                {
+                    continue;
+                }
+
+                // grab the source and target type info to check for mappings
+                string sourceTypeName = sourcePath.Split('.')[0];
+                string targetTypeName = targetPath.Split('.')[0];
+
+                // make sure we have a source structure
+                if (!_source.TryGetStructure(sourceTypeName, out StructureDefinition? sourceSd))
+                {
+                    Console.WriteLine($"Could not resolve source type {sourceTypeName} for {sourcePath}");
+                    continue;
+                }
+
+                // make sure the source element exists
+                if (!sourceSd.cgTryGetElementByPath(sourcePath, out ElementDefinition? sourceEd))
+                {
+                    Console.WriteLine($"Could not resolve source path {sourcePath} for {sourceTypeName}");
+                    continue;
+                }
+
+                // skip elements that have child elements - will either be picked up by dependent groups or are not relevant
+                if (_source.HasChildElements(sourceEd.Path))
+                {
+                    continue;
+                }
+
+                // make sure we have a target structure
+                if (!_target.TryGetStructure(sourceTypeName, out StructureDefinition? targetSd))
+                {
+                    Console.WriteLine($"Could not resolve source type {targetTypeName} for {targetPath}");
+                    continue;
+                }
+
+                // make sure the target element exists
+                if (!targetSd.cgTryGetElementByPath(targetPath, out ElementDefinition? targetEd))
+                {
+                    Console.WriteLine($"Could not resolve target path {targetPath} for {targetTypeName}");
+                    continue;
+                }
+
+                // skip elements that have child elements - will either be picked up by dependent groups or are not relevant
+                if (_target.HasChildElements(targetEd.Path))
+                {
+                    continue;
+                }
+
+                //// check for a type map we need to apply
+                //if ((_dataTypeMap?.Group.FirstOrDefault()?.Element is List<ConceptMap.SourceElementComponent> values) &&
+                //    (values.FirstOrDefault(v => v.Code == sourceType) is ConceptMap.SourceElementComponent sourceEC) &&
+                //    sourceEC.Target.Any(t => t.Code != sourceEC.Code))
+                //{
+
+                //}
+
+                // we want to do a mapping between these elements, check to see if there are any for the correct target
+                List<ConceptMap> maps = _dc.ConceptMapsForSource(sourceSd.Url)
+                    .Where(cm => ((cm.TargetScope is Canonical tsc) && (tsc.Uri == targetSd.Url)) || ((cm.TargetScope is FhirUri tsu) && (tsu.Value == targetSd.Url)))
+                    .ToList();
+
+                ConceptMap elementMap;
+
+                // check if we need to create a map
+                if (maps.Count == 0)
+                {
+                    elementMap = BuildNewElementMap(sourceTypeName, targetTypeName, null);
+                    _dc.AddConceptMap(elementMap, _dc.MainPackageId, _dc.MainPackageVersion);
+                }
+                else
+                {
+                    elementMap = maps[0];
+                }
+
+                ConceptMap.GroupComponent? group = null;
+
+                // traverse maps looking for the correct target
+                foreach (ConceptMap.GroupComponent cmg in elementMap.Group)
+                {
+                    // check the source and target
+                    if ((cmg.Source != sourceSd.Url) ||
+                        (cmg.Target != targetSd.Url))
+                    {
+                        continue;
+                    }
+
+                    group = cmg;
+                    break;
+                }
+
+                if (group == null)
+                {
+                    group = new()
+                    {
+                        SourceElement = new Canonical(sourceSd.Url, sourceSd.Version, null),
+                        TargetElement = new Canonical(targetSd.Url, targetSd.Version, null),
+                    };
+
+                    elementMap.Group.Add(group);
+                }
+
+                ConceptMap.SourceElementComponent? groupElement = null;
+
+                // check to see if this path exists within the group
+                foreach (ConceptMap.SourceElementComponent existingGroupElement in group.Element)
+                {
+                    // check the path
+                    if (existingGroupElement.Code != sourceEd.Path)
+                    {
+                        continue;
+                    }
+
+                    groupElement = existingGroupElement;
+                    break;
+                }
+
+                if (groupElement == null)
+                {
+                    groupElement = new()
+                    {
+                        Code = sourceEd.Path,
+                        Target = [],
+                    };
+                    group.Element.Add(groupElement);
+                }
+
+                ConceptMap.TargetElementComponent? targetElement = null;
+
+                // check if this target exists
+                foreach (ConceptMap.TargetElementComponent te in groupElement.Target)
+                {
+                    // check the path
+                    if (te.Code != targetEd.Path)
+                    {
+                        continue;
+                    }
+
+                    targetElement = te;
+                    break;
+                }
+
+                if (targetElement == null)
+                {
+                    // default everything to equivalent in this step - will restrict based on types later
+
+                    targetElement = new()
+                    {
+                        Code = targetEd.Path,
+                        Relationship = ConceptMap.ConceptMapRelationship.Equivalent,    // RelationshipForFmlTarget(targetInfo),
+                        Comment = $"Discovered map via FML {fmlName}: {targetInfo.FhirMappingExpression.RawText}",
+                    };
+
+                    addedMaps.AppendLine($"FML map: {sourceEd.Path}:{targetEd.Path} - {targetInfo.FhirMappingExpression.RawText}");
+
+                    // ensure the concept map has everything
+                    groupElement.Target.Add(targetElement);
+                }
+            }
+        }
+
+        if (addedMaps.Length > 0)
+        {
+            Console.WriteLine($"Element maps added from FML for {fmlName}:");
+            Console.WriteLine(addedMaps.ToString());
+        }
+    }
+
+    private ConceptMap.ConceptMapRelationship? RelationshipForFmlTarget(FmlTargetInfo ti)
+    {
+        if (ti.IsSimpleCopy)
+        {
+            return ConceptMap.ConceptMapRelationship.Equivalent;
+        }
+
+        return ConceptMap.ConceptMapRelationship.RelatedTo;
     }
 
     public record class FmlTargetInfo
@@ -447,8 +856,18 @@ public class CrossVersionMapCollection
 
                     foreach (FmlExpressionTarget target in exp.MappingExpression.Targets)
                     {
-                        string targetName = target.Identifier?.StartsWith(groupTargetVar, StringComparison.Ordinal) == true && target.Identifier.Length > groupTargetVarLen
-                            ? target.Identifier[(groupTargetVarLen + 1)..]
+                        /* TODO: @brianpos - the mapping done this way produces an incorrect path.  E.g. in:
+                         * http://hl7.org/fhir/uv/xver/StructureMap/AdverseEvent5to4
+                         * group AdverseEventParticipant
+                         *  src.actor as v -> tgt = v "reference";
+                         * the resultant target element was AdverseEvent.contributor.tgt
+                         * Fixed by checking for the target being solely the group target var
+                         */
+                        string targetName =
+                            target.Identifier?.StartsWith(groupTargetVar, StringComparison.Ordinal) == true
+                            ? target.Identifier.Length == groupTargetVarLen
+                                ? string.Empty
+                                : target.Identifier[(groupTargetVarLen + 1)..]
                             : target.Identifier ?? string.Empty;
 
                         // add our current name prefix
@@ -515,7 +934,6 @@ public class CrossVersionMapCollection
 
         }
     }
-
 
     private bool TryLoadOfficialConceptMaps(string fhirCrossRepoPath, string key)
     {
@@ -758,29 +1176,10 @@ public class CrossVersionMapCollection
                                     continue;
                                 }
 
-                                string elementMapId = $"{_sourceRLiteral}-{typeName}-{_targetRLiteral}-{typeName}";
-                                string elementMapUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: elementMapId, resourceType: "ConceptMap");
-
-                                string elementSourceUrl = BuildUrl("{0}/{1}/{2}", _sourcePackageCanonical, "StructureDefinition", typeName);
-                                string elementTargetUrl = elements[0].Target.Count != 0
-                                    ? BuildUrl("{0}/{1}/{2}", _targetPackageCanonical, "StructureDefinition", elements[0].Target[0].Code.Split('.')[0])
-                                    : BuildUrl("{0}/{1}/{2}", _targetPackageCanonical, "StructureDefinition", typeName);
-
-                                ConceptMap elementMap = new()
-                                {
-                                    Id = elementMapId,
-                                    Url = elementMapUrl,
-                                    Name = elementMapId,
-                                    Title = GetConceptMapTitle(typeName),
-                                    SourceScope = new Canonical($"{elementSourceUrl}|{_sourcePackageVersion}"),
-                                    TargetScope = new Canonical($"{elementTargetUrl}|{_targetPackageVersion}"),
-                                    Group = [new ConceptMap.GroupComponent
-                                    {
-                                        Source = elementSourceUrl,
-                                        Target = elementTargetUrl,
-                                        Element = elements,
-                                    }],
-                                };
+                                ConceptMap elementMap = BuildNewElementMap(
+                                    typeName,
+                                    elements[0].Target.Count == 0 ? typeName : elements[0].Target[0].Code.Split('.')[0],
+                                    elements);
 
                                 //_elementConceptMaps.Add(typeName, elementMap);
                                 _dc.AddConceptMap(elementMap, _dc.MainPackageId, _dc.MainPackageVersion);
@@ -799,6 +1198,31 @@ public class CrossVersionMapCollection
         }
 
         return true;
+    }
+
+    private ConceptMap BuildNewElementMap(string sourceTypeName, string targetTypeName, List<ConceptMap.SourceElementComponent>? elements)
+    {
+        string elementMapId = $"{_sourceRLiteral}-{sourceTypeName}-{_targetRLiteral}-{targetTypeName}";
+        string elementMapUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: elementMapId, resourceType: "ConceptMap");
+
+        string elementSourceUrl = BuildUrl("{0}/{1}/{2}", _sourcePackageCanonical, "StructureDefinition", sourceTypeName);
+        string elementTargetUrl = BuildUrl("{0}/{1}/{2}", _targetPackageCanonical, "StructureDefinition", targetTypeName);
+
+        return new()
+        {
+            Id = elementMapId,
+            Url = elementMapUrl,
+            Name = elementMapId,
+            Title = GetConceptMapTitle(sourceTypeName),
+            SourceScope = new Canonical($"{elementSourceUrl}|{_sourcePackageVersion}"),
+            TargetScope = new Canonical($"{elementTargetUrl}|{_targetPackageVersion}"),
+            Group = [new ConceptMap.GroupComponent
+            {
+                Source = elementSourceUrl,
+                Target = elementTargetUrl,
+                Element = elements,
+            }],
+        };
     }
 
     private string FilenameForMap(CrossVersionMapTypeCodes mapType, string name = "", string targetName = "") => mapType switch
@@ -1152,7 +1576,7 @@ public class CrossVersionMapCollection
             {
                 if (c.Target == null)
                 {
-                    Console.WriteLine($"Not adding {c.SourceTypeLiteral} - no target exists");
+                    //Console.WriteLine($"Not adding {c.SourceTypeLiteral} - no target exists");
                     continue;
                 }
 
@@ -1206,7 +1630,7 @@ public class CrossVersionMapCollection
             {
                 if (c.Target == null)
                 {
-                    Console.WriteLine($"Not adding {c.Source.Name} - no target exists");
+                    //Console.WriteLine($"Not adding {c.Source.Name} - no target exists");
                     continue;
                 }
 
@@ -1343,7 +1767,7 @@ public class CrossVersionMapCollection
     {
         if (cRec.Target == null)
         {
-            Console.WriteLine($"Not writing {cRec.Source.Name} - no target exists");
+            //Console.WriteLine($"Not writing {cRec.Source.Name} - no target exists");
             return null;
         }
 
@@ -1412,7 +1836,7 @@ public class CrossVersionMapCollection
         // check for a value set that could not map anything
         if (group.Element.Count == 0)
         {
-            Console.WriteLine($"Not writing ConceptMap for {cRec.CompositeName} - no concepts are mapped to target!");
+            //Console.WriteLine($"Not writing ConceptMap for {cRec.CompositeName} - no concepts are mapped to target!");
             return null;
         }
 
@@ -1431,10 +1855,10 @@ public class CrossVersionMapCollection
     /// <param name="name">        The name.</param>
     /// <returns>A string.</returns>
     /// <remarks>
-    /// 0 = canonical, 1 = resourceType, 2 = name, 3 = leftRLiteral, 4 = reserved, 5 = rightRLiteral, 6 = reserved
+    /// 0 = canonical, 1 = resourceType, 2 = name, 3 = leftRLiteral, 4 = leftShortVersion, 5 = rightRLiteral, 6 = rightShortVersion
     /// </remarks>
     private string BuildUrl(string formatString, string canonical, string resourceType = "", string name = "") =>
-        string.Format(formatString, canonical, resourceType, name, _sourceRLiteral, "", _targetRLiteral, "");
+        string.Format(formatString, canonical, resourceType, name, _sourceRLiteral, _sourceShortVersion, _targetRLiteral, _targetShortVersion);
 
     private string RemoveLeftToRight(string value)
     {
