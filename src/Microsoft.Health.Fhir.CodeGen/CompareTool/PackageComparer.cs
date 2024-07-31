@@ -476,14 +476,19 @@ public class PackageComparer
             Directory.CreateDirectory(outputDir);
         }
 
+        Dictionary<string, string> vsDifferentialLookup = [];
+
         // process value sets
         foreach (ValueSetComparison vsComparison in packageComparison.ValueSets.Values.SelectMany(l => l.Select(v => v)).OrderBy(vs => vs.CompositeName))
         {
             if (BuildCrossVersionValueSet(vsComparison) is ValueSet vs)
             {
+                // add this to our lookup table
+                vsDifferentialLookup.Add(vsComparison.Source.Url, vs.Url);
+
+                // write our file
                 string filename = $"ValueSet-{vs.Id}.json";
                 string path = Path.Combine(outputDir, filename);
-
                 File.WriteAllText(path, vs.ToJson(jsonSettings));
             }
         }
@@ -531,7 +536,8 @@ public class PackageComparer
                     edComparison,
                     sourceEd,
                     allowedExtTypes,
-                    nonExtensionTypesAndContexts);
+                    nonExtensionTypesAndContexts,
+                    vsDifferentialLookup);
                 if (ext != null)
                 {
                     string filename = $"StructureDefinition-{ext.Id.Replace("%5Bx%5D", "")}.json";
@@ -540,7 +546,7 @@ public class PackageComparer
                     File.WriteAllText(path, ext.ToJson(jsonSettings));
                 }
 
-                // for data types ONLY, we do not want to nest into the type if it is new (resources can)
+                // for data types, we NEVER want to nest into the type if it is new (resources can)
                 if (sdComparison.Relationship == null)
                 {
                     if (ext != null)
@@ -549,11 +555,13 @@ public class PackageComparer
                         complexTypeExtensionMap.Add(sourceSd.Id, ext.Url);
                     }
 
+                    // done processing this structure
                     break;
                 }
             }
         }
 
+        HashSet<string> pathsWithoutTargets = [];
         _ = _source.ResourcesByName.TryGetValue("Basic", out StructureDefinition? basicSd);
 
         // process resources
@@ -578,9 +586,36 @@ public class PackageComparer
                 throw new Exception($"Could not find listed source resource: {sdComparison.Source.Id}");
             }
 
-            // iterate over the elements in this comparison
-            foreach (ElementComparison edComparison in sdComparison.ElementComparisons.Values)
+            // iterate over the elements in this comparison, sort by ordered path
+            foreach (ElementComparison edComparison in sdComparison.ElementComparisons.Values.OrderBy(ec => ec.Source.Path, FhirDotNestComparer.Instance))
             {
+                // check for this path not having a target
+                if (edComparison.Relationship == null)
+                {
+                    string sourcePath = edComparison.Source.Path;
+                    bool skipThisPath = false;
+
+                    string[] sourcePathComponents = sourcePath.Split('.');
+
+                    for (int i = sourcePathComponents.Length; i >= 0; i--)
+                    {
+                        string testPath = string.Join(".", sourcePathComponents[..i]);
+
+                        if (pathsWithoutTargets.Contains(testPath))
+                        {
+                            skipThisPath = true;
+                            break;
+                        }
+                    }
+
+                    pathsWithoutTargets.Add(sourcePath);
+
+                    if (skipThisPath)
+                    {
+                        continue;
+                    }
+                }
+
                 // grab the element definition for the source of this comparison
                 if (!sourceSd.cgTryGetElementByPath(edComparison.Source.Path, out ElementDefinition? sourceEd))
                 {
@@ -611,6 +646,7 @@ public class PackageComparer
                     sourceEd,
                     allowedExtTypes,
                     nonExtensionTypesAndContexts,
+                    vsDifferentialLookup,
                     basicSd,
                     complexTypeExtensionMap);
                 if (ext != null)
@@ -636,6 +672,7 @@ public class PackageComparer
         ElementDefinition sourceEd,
         HashSet<string> allowedExtensionTypes,
         Dictionary<string, List<string>> nonExtensionTypesAndContexts,
+        Dictionary<string, string> vsDifferentialLookup,
         StructureDefinition? basicSd = null,
         Dictionary<string, string>? complexTypeExtensionMap = null)
     {
@@ -721,6 +758,7 @@ public class PackageComparer
             sourceEd,
             allowedExtensionTypes,
             nonExtensionTypesAndContexts,
+            vsDifferentialLookup,
             edComparison.Message,
             basicSd,
             complexTypeExtensionMap);
@@ -784,6 +822,7 @@ public class PackageComparer
         ElementDefinition sourceEd,
         HashSet<string> allowedExtensionTypes,
         Dictionary<string, List<string>> nonExtensionTypesAndContexts,
+        Dictionary<string, string> vsDifferentialLookup,
         string? reason = null,
         StructureDefinition? basicSd = null,
         Dictionary<string, string>? complexTypeExtensionMap = null)
@@ -819,8 +858,11 @@ public class PackageComparer
             List<ElementDefinition.TypeRefComponent> valueTypes = [];
             List<string> promotedReferences = [];
 
+            // grab the types on the source element, filtered to ones allowed on extensions
+            List<ElementDefinition.TypeRefComponent> sourceTypes = sourceEd.cgTypesForExt();
+
             // get the differential types for this element
-            List<ElementDefinition.TypeRefComponent> requestedValueTypes = GetDifferentialTypes(sourceEd.cgTypesForExt(), edComparison);
+            List<ElementDefinition.TypeRefComponent> requestedValueTypes = GetDifferentialTypes(sourceTypes, edComparison);
 
             foreach (ElementDefinition.TypeRefComponent tr in requestedValueTypes)
             {
@@ -901,13 +943,25 @@ public class PackageComparer
                     }
                 }
 
-                // TODO(ginoc): Bindings are incorrect - need to use the value sets we generate as differentials
+                ElementDefinition.ElementDefinitionBindingComponent? binding = sourceEd.Binding == null
+                    ? null
+                    : (ElementDefinition.ElementDefinitionBindingComponent)sourceEd.Binding.DeepCopy();
+
+                // if we have a binding and a differential for that value set, bind to that instead (same strength)
+                if ((!string.IsNullOrEmpty(binding?.ValueSet)) &&
+                    vsDifferentialLookup.TryGetValue(_source.UnversionedUrlForVs(binding!.ValueSet), out string? differentialUrl))
+                {
+                    binding.Description = $"Allowed values based on differential of {binding!.ValueSet} compared with {_targetRLiteral}";
+                    binding.ValueSetElement = new Canonical(differentialUrl, _crossDefinitionVersion, null);
+                }
+
+                // add our element
                 ext.Differential.Element.Add(new()
                 {
                     Path = elementPath + ".value[x]",
                     Min = 1,
                     Type = valueTypes,
-                    Binding = sourceEd.Binding,
+                    Binding = binding,
                 });
             }
 
@@ -954,6 +1008,7 @@ public class PackageComparer
                     child,
                     allowedExtensionTypes,
                     nonExtensionTypesAndContexts,
+                    vsDifferentialLookup,
                     basicSd: basicSd,
                     complexTypeExtensionMap: complexTypeExtensionMap);
             }
@@ -1008,12 +1063,12 @@ public class PackageComparer
             // iterate over the targets to remove duplicate types/profiles/targetProfiles
             foreach (ElementTypeComparisonDetails details in etComparison.TargetTypes)
             {
-                // check for types we should skip
-                if ((details.Relationship == CMR.Equivalent) ||
-                    (details.Relationship == CMR.SourceIsNarrowerThanTarget))
-                {
-                    continue;
-                }
+                //// check for types we should skip
+                //if ((details.Relationship == CMR.Equivalent) ||
+                //    (details.Relationship == CMR.SourceIsNarrowerThanTarget))
+                //{
+                //    continue;
+                //}
 
                 // add the type
                 tr.Code = sourceTr.Code;
@@ -1885,16 +1940,16 @@ public class PackageComparer
     }
 
 
-    private CMR ApplyRelationship(CMR existing, CMR? change) => existing switch
+    private CMR ApplyRelationship(CMR? existing, CMR? change) => existing switch
     {
         CMR.Equivalent => change ?? CMR.Equivalent,
-        CMR.RelatedTo => (change == CMR.NotRelatedTo) ? CMR.NotRelatedTo : existing,
+        CMR.RelatedTo => (change == CMR.NotRelatedTo) ? CMR.NotRelatedTo : CMR.RelatedTo,
         CMR.SourceIsNarrowerThanTarget => (change == CMR.SourceIsNarrowerThanTarget || change == CMR.Equivalent)
             ? CMR.SourceIsNarrowerThanTarget : CMR.RelatedTo,
         CMR.SourceIsBroaderThanTarget => (change == CMR.SourceIsBroaderThanTarget || change == CMR.Equivalent)
             ? CMR.SourceIsBroaderThanTarget : CMR.RelatedTo,
-        CMR.NotRelatedTo => change ?? existing,
-        _ => change ?? existing,
+        CMR.NotRelatedTo => change ?? CMR.NotRelatedTo,
+        _ => change ?? existing ?? CMR.NotRelatedTo,
     };
 
     private bool TryGetVsComparison(string sourceUrl, string targetUrl, [NotNullWhen(true)] out ValueSetComparison? valueSetComparison)
@@ -2455,7 +2510,7 @@ public class PackageComparer
                     // check to see if we have a target value set
                     if (targetStructures.TryGetValue(targetName, out StructureDefinition? mappedTargetSd))
                     {
-                        testedTargetNames.Add(targetCanonical.Uri!);
+                        testedTargetNames.Add(targetName);
 
                         // test this mapping
                         if (TryCompareStructureElements(sourceSd, mappedTargetSd, cm, out StructureComparison? mappedComparison))
@@ -2561,8 +2616,7 @@ public class PackageComparer
         // traverse the source elements to do comparison tests
         foreach (ElementDefinition sourceEd in sourceElements.Values)
         {
-            // be optimistic
-            CMR elementRelationship = CMR.Equivalent;
+            CMR? elementRelationship = null;
 
             ElementInfoRec sourceEdInfo = GetInfo(sourceEd);
             List<ElementComparisonDetails> elementComparisonDetails = [];
@@ -2578,6 +2632,9 @@ public class PackageComparer
                     {
                         foreach (ConceptMap.TargetElementComponent mapTargetElement in mapSourceElement.Target)
                         {
+                            // be optimistic on first pass
+                            elementRelationship ??= CMR.Equivalent;
+
                             CMR relationship = mapTargetElement.Relationship ?? CMR.Equivalent;     //  GetDefaultRelationship(mapTargetElement, mapSourceElement.Target) ?? CMR.Equivalent;
                             string message = string.IsNullOrEmpty(mapTargetElement.Comment)
                                 ? MessageForElementRelationship(relationship, mapSourceElement, mapTargetElement)
@@ -2622,6 +2679,9 @@ public class PackageComparer
             //else if (targetElements.TryGetValue(sourceKey, out ElementDefinition? targetElement))
             if ((elementComparisonDetails.Count == 0) && targetElements.TryGetValue(sourceKey, out ElementDefinition? targetElement))
             {
+                // be optimistic on first pass
+                elementRelationship ??= CMR.Equivalent;
+
                 string targetCombined = targetElement.Path;
                 if (!targetsMappedToSources.TryGetValue(targetCombined, out HashSet<string>? sourceElementPaths))
                 {
@@ -2788,6 +2848,7 @@ public class PackageComparer
 
         // be optimistic if we don't have a mapped value
         CMR relationship = initialRelationship ?? CMR.Equivalent;
+        CMR? vsRelationship = null;
 
         ElementInfoRec sourceInfo = GetInfo(sourceEd);
         ElementInfoRec targetInfo = GetInfo(targetEd);
@@ -2845,7 +2906,8 @@ public class PackageComparer
         {
             if ((sourceInfo.ValueSetBindingStrength != BindingStrength.Required) && (targetInfo.ValueSetBindingStrength == BindingStrength.Required))
             {
-                relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+                relationship = ApplyRelationship(relationship, CMR.SourceIsNarrowerThanTarget);
+                vsRelationship = ApplyRelationship(vsRelationship, CMR.SourceIsNarrowerThanTarget);
 
                 if (sourceInfo.ValueSetBindingStrength == null)
                 {
@@ -2858,7 +2920,17 @@ public class PackageComparer
             }
             else if (sourceInfo.ValueSetBindingStrength != targetInfo.ValueSetBindingStrength)
             {
-                relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+                if (BindingStrengthComparer.Instance.Compare(sourceInfo.ValueSetBindingStrength, targetInfo.ValueSetBindingStrength) > 0)
+                {
+                    relationship = ApplyRelationship(relationship, CMR.SourceIsNarrowerThanTarget);
+                    vsRelationship = ApplyRelationship(vsRelationship, CMR.SourceIsNarrowerThanTarget);
+                }
+                else
+                {
+                    relationship = ApplyRelationship(relationship, CMR.SourceIsBroaderThanTarget);
+                    vsRelationship = ApplyRelationship(vsRelationship, CMR.SourceIsBroaderThanTarget);
+                }
+
                 if (sourceInfo.ValueSetBindingStrength == null)
                 {
                     messages.Add($"{targetInfo.Name} added a binding requirement - {targetInfo.ValueSetBindingStrength} {targetInfo.BindingValueSet}");
@@ -2893,6 +2965,7 @@ public class PackageComparer
                             boundVsInfo.Relationship == CMR.SourceIsNarrowerThanTarget)
                         {
                             relationship = ApplyRelationship(relationship, (CMR)boundVsInfo.Relationship);
+                            vsRelationship = ApplyRelationship(vsRelationship, (CMR)boundVsInfo.Relationship);
                             messages.Add($"{targetInfo.Name} has compatible required binding for code type: {sourceInfo.BindingValueSet} and {targetInfo.BindingValueSet} ({boundVsInfo.Relationship})");
                         }
 
@@ -2900,22 +2973,26 @@ public class PackageComparer
                         else if (boundVsInfo.ConceptComparisons.Values.All(cc => cc.TargetMappings.Any(tc => tc.Target?.Code == cc.Source.Code)))
                         {
                             relationship = ApplyRelationship(relationship, CMR.Equivalent);
+                            vsRelationship = ApplyRelationship(vsRelationship, CMR.Equivalent);
                             messages.Add($"{targetInfo.Name} has compatible required binding for code type: {sourceInfo.BindingValueSet} and {targetInfo.BindingValueSet} (codes match, though systems are different)");
                         }
                         else
                         {
                             relationship = ApplyRelationship(relationship, boundVsInfo.Relationship);
+                            vsRelationship = ApplyRelationship(vsRelationship, boundVsInfo.Relationship);
                             messages.Add($"{targetInfo.Name} has INCOMPATIBLE required binding for code type: {sourceInfo.BindingValueSet} and {targetInfo.BindingValueSet}");
                         }
                     }
                     else if (_exclusionSet.Contains(unversionedRight))
                     {
                         relationship = ApplyRelationship(relationship, CMR.Equivalent);
+                        vsRelationship = ApplyRelationship(vsRelationship, CMR.Equivalent);
                         messages.Add($"{targetInfo.Name} using {unversionedRight} is exempted and assumed equivalent");
                     }
                     else
                     {
                         relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+                        vsRelationship = ApplyRelationship(vsRelationship, CMR.RelatedTo);
                         messages.Add($"({targetInfo.Name} failed to compare required binding of {sourceInfo.BindingValueSet} and {targetInfo.BindingValueSet})");
                     }
                 }
@@ -2931,22 +3008,26 @@ public class PackageComparer
                         {
                             // we are okay with equivalent and narrower
                             relationship = ApplyRelationship(relationship, (CMR)boundVsInfo.Relationship);
+                            vsRelationship = ApplyRelationship(vsRelationship, (CMR)boundVsInfo.Relationship);
                             messages.Add($"{targetInfo.Name} has compatible required binding for non-code type: {sourceInfo.BindingValueSet} and {targetInfo.BindingValueSet} ({boundVsInfo.Relationship})");
                         }
                         else
                         {
                             relationship = ApplyRelationship(relationship, boundVsInfo.Relationship);
+                            vsRelationship = ApplyRelationship(vsRelationship, boundVsInfo.Relationship);
                             messages.Add($"{targetInfo.Name} has INCOMPATIBLE required binding for code type: {sourceInfo.BindingValueSet} and {targetInfo.BindingValueSet}");
                         }
                     }
                     else if (_exclusionSet.Contains(unversionedRight))
                     {
                         relationship = ApplyRelationship(relationship, CMR.Equivalent);
+                        vsRelationship = ApplyRelationship(vsRelationship, CMR.Equivalent);
                         messages.Add($"{targetInfo.Name} using {unversionedRight} is exempted and assumed equivalent");
                     }
                     else
                     {
                         relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+                        vsRelationship = ApplyRelationship(vsRelationship, CMR.RelatedTo);
                         messages.Add($"({targetInfo.Name} failed to compare required binding of {sourceInfo.BindingValueSet} and {targetInfo.BindingValueSet})");
                     }
                 }
@@ -2954,7 +3035,7 @@ public class PackageComparer
         }
 
         // perform element type comparison
-        Dictionary<string, ElementTypeComparison> etComparisons = CompareElementTypes(sourceInfo, targetInfo);
+        Dictionary<string, ElementTypeComparison> etComparisons = CompareElementTypes(sourceInfo, targetInfo, vsRelationship);
 
         CMR typeRelationship = CMR.Equivalent;
         bool foundEquivalent = false;
@@ -2995,7 +3076,8 @@ public class PackageComparer
 
     private Dictionary<string, ElementTypeComparison> CompareElementTypes(
         ElementInfoRec sourceInfo,
-        ElementInfoRec? targetInfo)
+        ElementInfoRec? targetInfo,
+        CMR? vsRelationship)
     {
         if (targetInfo == null)
         {
@@ -3058,8 +3140,8 @@ public class PackageComparer
                 continue;
             }
 
-            // be optimistic
-            CMR sourceTypeRelationship = CMR.Equivalent;
+            // be optimistic if we do not have a relationship already
+            CMR sourceTypeRelationship = vsRelationship ?? CMR.Equivalent;
 
             if (targetTypeInfo != null)
             {

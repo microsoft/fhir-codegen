@@ -295,168 +295,6 @@ export interface Element {
   _id?: Element | undefined;
 }
 /**
- * Base definition information for tools
- * Information about the base definition of the element, provided to make it unncessary for tools to trace the deviation of the element through the derived and related profiles. This information is only provided where the element definition represents a constraint on another element definition, and must be present if there is a base element definition.
- */
-export interface ElementDefinitionBase extends Element {
-  /**
-   * Max cardinality of the base element
-   * Maximum cardinality of the base element identified by the path.
-   */
-  max: string;
-  _max?: Element | undefined;
-  /**
-   * Min cardinality of the base element
-   * Minimum cardinality of the base element identified by the path.
-   */
-  min: number;
-  /**
-   * Path that identifies the base element
-   * The Path that identifies the base element - this matches the ElementDefinition.path for that element. Across FHIR, there is only one base definition of any element - that is, an element definition on a [[[StructureDefinition]]] without a StructureDefinition.base.
-   */
-  path: string;
-  _path?: Element | undefined;
-}
-/**
- * ValueSet details if this is coded
- * Binds to a value set if this element is coded (code, Coding, CodeableConcept).
- */
-export interface ElementDefinitionBinding extends Element {
-  /**
-   * Human explanation of the value set
-   * Describes the intended use of this particular set of codes.
-   */
-  description?: string | undefined;
-  _description?: Element | undefined;
-  /**
-   * Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the provided value set must be adhered to in the instances.
-   */
-  strength: ('required'|'extensible'|'preferred'|'example');
-  _strength?: Element | undefined;
-  /**
-   * Source of value set
-   * Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.
-   */
-  valueSetReference?: Reference | undefined;
-  /**
-   * Source of value set
-   * Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.
-   */
-  valueSetString?: string | undefined;
-  _valueSetString?: Element | undefined;
-}
-/**
- * Condition that must evaluate to true
- * Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the context of the instance.
- */
-export interface ElementDefinitionConstraint extends Element {
-  /**
-   * Human description of constraint
-   * Text that can be used to describe the constraint in messages identifying that the constraint has been violated.
-   */
-  human: string;
-  _human?: Element | undefined;
-  /**
-   * Target of 'condition' reference above
-   * Allows identification of which elements have their cardinalities impacted by the constraint.  Will not be referenced for constraints that do not affect cardinality.
-   */
-  key: string;
-  _key?: Element | undefined;
-  /**
-   * Why this constraint necessary or appropriate
-   * Description of why this constraint is necessary or appropriate.
-   */
-  requirements?: string | undefined;
-  _requirements?: Element | undefined;
-  /**
-   * error | warning
-   * Identifies the impact constraint violation has on the conformance of the instance.
-   */
-  severity: ('error'|'warning');
-  _severity?: Element | undefined;
-  /**
-   * XPath expression of constraint
-   * An XPath expression of constraint that can be executed to see if this constraint is met.
-   */
-  xpath: string;
-  _xpath?: Element | undefined;
-}
-/**
- * Map element to another set of definitions
- * Identifies a concept from an external specification that roughly corresponds to this element.
- */
-export interface ElementDefinitionMapping extends Element {
-  /**
-   * Reference to mapping declaration
-   * An internal reference to the definition of a mapping.
-   */
-  identity: string;
-  _identity?: Element | undefined;
-  /**
-   * Computable language of mapping
-   * Identifies the computable language in which mapping.map is expressed.
-   */
-  language?: string | undefined;
-  _language?: Element | undefined;
-  /**
-   * Details of the mapping
-   * Expresses what part of the target specification corresponds to this element.
-   */
-  map: string;
-  _map?: Element | undefined;
-}
-/**
- * This element is sliced - slices follow
- * Indicates that the element is sliced into a set of alternative definitions (i.e. in a structure definition, there are multiple different constraints on a single element in the base resource). Slicing can be used in any resource that has cardinality ..* on the base resource, or any resource with a choice of types. The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set).
- */
-export interface ElementDefinitionSlicing extends Element {
-  /**
-   * Text description of how slicing works (or not)
-   * A human-readable text description of how the slicing works. If there is no discriminator, this is required to be present to provide whatever information is possible about how the slices can be differentiated.
-   */
-  description?: string | undefined;
-  _description?: Element | undefined;
-  /**
-   * Element values that used to distinguish the slices
-   * Designates which child elements are used to discriminate between the slices when processing an instance. If one or more discriminators are provided, the value of the child elements in the instance data SHALL completely distinguish which slice the element in the resource matches based on the allowed values for those elements in each of the slices.
-   */
-  discriminator?: string[] | undefined;
-  _discriminator?: Element[] | undefined;
-  /**
-   * If elements must be in same order as slices
-   * If the matching elements have to occur in the same order as defined in the profile.
-   */
-  ordered?: boolean | undefined;
-  _ordered?: Element | undefined;
-  /**
-   * Whether additional slices are allowed or not. When the slices are ordered, profile authors can also say that additional slices are only allowed at the end.
-   */
-  rules: ('closed'|'open'|'openAtEnd');
-  _rules?: Element | undefined;
-}
-/**
- * Data type and Profile for this element
- * The data type or resource that the value of this element is permitted to be.
- */
-export interface ElementDefinitionType extends Element {
-  /**
-   * If the type is a reference to another resource, how the resource is or can be aggregated - is it a contained resource, or a reference, and if the context is a bundle, is it included in the bundle.
-   */
-  aggregation?: ('contained'|'referenced'|'bundled')[] | undefined;
-  _aggregation?: Element[] | undefined;
-  /**
-   * Name of Data type or Resource that is a(or the) type used for this element.
-   */
-  code: ('Address'|'Age'|'Annotation'|'Attachment'|'BackboneElement'|'CodeableConcept'|'Coding'|'ContactPoint'|'Count'|'Distance'|'Duration'|'Element'|'ElementDefinition'|'Extension'|'HumanName'|'Identifier'|'Meta'|'Money'|'Narrative'|'Period'|'Quantity'|'Range'|'Ratio'|'Reference'|'SampledData'|'Signature'|'SimpleQuantity'|'Timing'|'base64Binary'|'boolean'|'code'|'date'|'dateTime'|'decimal'|'id'|'instant'|'integer'|'markdown'|'oid'|'positiveInt'|'string'|'time'|'unsignedInt'|'uri'|'uuid'|'xhtml'|'Account'|'AllergyIntolerance'|'Appointment'|'AppointmentResponse'|'AuditEvent'|'Basic'|'Binary'|'BodySite'|'Bundle'|'CarePlan'|'Claim'|'ClaimResponse'|'ClinicalImpression'|'Communication'|'CommunicationRequest'|'Composition'|'ConceptMap'|'Condition'|'Conformance'|'Contract'|'Coverage'|'DataElement'|'DetectedIssue'|'Device'|'DeviceComponent'|'DeviceMetric'|'DeviceUseRequest'|'DeviceUseStatement'|'DiagnosticOrder'|'DiagnosticReport'|'DocumentManifest'|'DocumentReference'|'DomainResource'|'EligibilityRequest'|'EligibilityResponse'|'Encounter'|'EnrollmentRequest'|'EnrollmentResponse'|'EpisodeOfCare'|'ExplanationOfBenefit'|'FamilyMemberHistory'|'Flag'|'Goal'|'Group'|'HealthcareService'|'ImagingObjectSelection'|'ImagingStudy'|'Immunization'|'ImmunizationRecommendation'|'ImplementationGuide'|'List'|'Location'|'Media'|'Medication'|'MedicationAdministration'|'MedicationDispense'|'MedicationOrder'|'MedicationStatement'|'MessageHeader'|'NamingSystem'|'NutritionOrder'|'Observation'|'OperationDefinition'|'OperationOutcome'|'Order'|'OrderResponse'|'Organization'|'Parameters'|'Patient'|'PaymentNotice'|'PaymentReconciliation'|'Person'|'Practitioner'|'Procedure'|'ProcedureRequest'|'ProcessRequest'|'ProcessResponse'|'Provenance'|'Questionnaire'|'QuestionnaireResponse'|'ReferralRequest'|'RelatedPerson'|'Resource'|'RiskAssessment'|'Schedule'|'SearchParameter'|'Slot'|'Specimen'|'StructureDefinition'|'Subscription'|'Substance'|'SupplyDelivery'|'SupplyRequest'|'TestScript'|'ValueSet'|'VisionPrescription');
-  _code?: Element | undefined;
-  /**
-   * Profile (StructureDefinition) to apply (or IG)
-   * Identifies a profile structure or implementation Guide that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When more than one profile is specified, the content must conform to all of them. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.
-   */
-  profile?: string[] | undefined;
-  _profile?: Element[] | undefined;
-}
-/**
  * Base StructureDefinition for ElementDefinition Type
  */
 export interface ElementDefinition extends Element {
@@ -1215,6 +1053,168 @@ export interface ElementDefinition extends Element {
   type?: ElementDefinitionType[] | undefined;
 }
 /**
+ * Base definition information for tools
+ * Information about the base definition of the element, provided to make it unncessary for tools to trace the deviation of the element through the derived and related profiles. This information is only provided where the element definition represents a constraint on another element definition, and must be present if there is a base element definition.
+ */
+export interface ElementDefinitionBase extends Element {
+  /**
+   * Max cardinality of the base element
+   * Maximum cardinality of the base element identified by the path.
+   */
+  max: string;
+  _max?: Element | undefined;
+  /**
+   * Min cardinality of the base element
+   * Minimum cardinality of the base element identified by the path.
+   */
+  min: number;
+  /**
+   * Path that identifies the base element
+   * The Path that identifies the base element - this matches the ElementDefinition.path for that element. Across FHIR, there is only one base definition of any element - that is, an element definition on a [[[StructureDefinition]]] without a StructureDefinition.base.
+   */
+  path: string;
+  _path?: Element | undefined;
+}
+/**
+ * ValueSet details if this is coded
+ * Binds to a value set if this element is coded (code, Coding, CodeableConcept).
+ */
+export interface ElementDefinitionBinding extends Element {
+  /**
+   * Human explanation of the value set
+   * Describes the intended use of this particular set of codes.
+   */
+  description?: string | undefined;
+  _description?: Element | undefined;
+  /**
+   * Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the provided value set must be adhered to in the instances.
+   */
+  strength: ('required'|'extensible'|'preferred'|'example');
+  _strength?: Element | undefined;
+  /**
+   * Source of value set
+   * Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.
+   */
+  valueSetReference?: Reference | undefined;
+  /**
+   * Source of value set
+   * Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.
+   */
+  valueSetString?: string | undefined;
+  _valueSetString?: Element | undefined;
+}
+/**
+ * Condition that must evaluate to true
+ * Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the context of the instance.
+ */
+export interface ElementDefinitionConstraint extends Element {
+  /**
+   * Human description of constraint
+   * Text that can be used to describe the constraint in messages identifying that the constraint has been violated.
+   */
+  human: string;
+  _human?: Element | undefined;
+  /**
+   * Target of 'condition' reference above
+   * Allows identification of which elements have their cardinalities impacted by the constraint.  Will not be referenced for constraints that do not affect cardinality.
+   */
+  key: string;
+  _key?: Element | undefined;
+  /**
+   * Why this constraint necessary or appropriate
+   * Description of why this constraint is necessary or appropriate.
+   */
+  requirements?: string | undefined;
+  _requirements?: Element | undefined;
+  /**
+   * error | warning
+   * Identifies the impact constraint violation has on the conformance of the instance.
+   */
+  severity: ('error'|'warning');
+  _severity?: Element | undefined;
+  /**
+   * XPath expression of constraint
+   * An XPath expression of constraint that can be executed to see if this constraint is met.
+   */
+  xpath: string;
+  _xpath?: Element | undefined;
+}
+/**
+ * Map element to another set of definitions
+ * Identifies a concept from an external specification that roughly corresponds to this element.
+ */
+export interface ElementDefinitionMapping extends Element {
+  /**
+   * Reference to mapping declaration
+   * An internal reference to the definition of a mapping.
+   */
+  identity: string;
+  _identity?: Element | undefined;
+  /**
+   * Computable language of mapping
+   * Identifies the computable language in which mapping.map is expressed.
+   */
+  language?: string | undefined;
+  _language?: Element | undefined;
+  /**
+   * Details of the mapping
+   * Expresses what part of the target specification corresponds to this element.
+   */
+  map: string;
+  _map?: Element | undefined;
+}
+/**
+ * This element is sliced - slices follow
+ * Indicates that the element is sliced into a set of alternative definitions (i.e. in a structure definition, there are multiple different constraints on a single element in the base resource). Slicing can be used in any resource that has cardinality ..* on the base resource, or any resource with a choice of types. The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set).
+ */
+export interface ElementDefinitionSlicing extends Element {
+  /**
+   * Text description of how slicing works (or not)
+   * A human-readable text description of how the slicing works. If there is no discriminator, this is required to be present to provide whatever information is possible about how the slices can be differentiated.
+   */
+  description?: string | undefined;
+  _description?: Element | undefined;
+  /**
+   * Element values that used to distinguish the slices
+   * Designates which child elements are used to discriminate between the slices when processing an instance. If one or more discriminators are provided, the value of the child elements in the instance data SHALL completely distinguish which slice the element in the resource matches based on the allowed values for those elements in each of the slices.
+   */
+  discriminator?: string[] | undefined;
+  _discriminator?: Element[] | undefined;
+  /**
+   * If elements must be in same order as slices
+   * If the matching elements have to occur in the same order as defined in the profile.
+   */
+  ordered?: boolean | undefined;
+  _ordered?: Element | undefined;
+  /**
+   * Whether additional slices are allowed or not. When the slices are ordered, profile authors can also say that additional slices are only allowed at the end.
+   */
+  rules: ('closed'|'open'|'openAtEnd');
+  _rules?: Element | undefined;
+}
+/**
+ * Data type and Profile for this element
+ * The data type or resource that the value of this element is permitted to be.
+ */
+export interface ElementDefinitionType extends Element {
+  /**
+   * If the type is a reference to another resource, how the resource is or can be aggregated - is it a contained resource, or a reference, and if the context is a bundle, is it included in the bundle.
+   */
+  aggregation?: ('contained'|'referenced'|'bundled')[] | undefined;
+  _aggregation?: Element[] | undefined;
+  /**
+   * Name of Data type or Resource that is a(or the) type used for this element.
+   */
+  code: ('Address'|'Age'|'Annotation'|'Attachment'|'BackboneElement'|'CodeableConcept'|'Coding'|'ContactPoint'|'Count'|'Distance'|'Duration'|'Element'|'ElementDefinition'|'Extension'|'HumanName'|'Identifier'|'Meta'|'Money'|'Narrative'|'Period'|'Quantity'|'Range'|'Ratio'|'Reference'|'SampledData'|'Signature'|'SimpleQuantity'|'Timing'|'base64Binary'|'boolean'|'code'|'date'|'dateTime'|'decimal'|'id'|'instant'|'integer'|'markdown'|'oid'|'positiveInt'|'string'|'time'|'unsignedInt'|'uri'|'uuid'|'xhtml'|'Account'|'AllergyIntolerance'|'Appointment'|'AppointmentResponse'|'AuditEvent'|'Basic'|'Binary'|'BodySite'|'Bundle'|'CarePlan'|'Claim'|'ClaimResponse'|'ClinicalImpression'|'Communication'|'CommunicationRequest'|'Composition'|'ConceptMap'|'Condition'|'Conformance'|'Contract'|'Coverage'|'DataElement'|'DetectedIssue'|'Device'|'DeviceComponent'|'DeviceMetric'|'DeviceUseRequest'|'DeviceUseStatement'|'DiagnosticOrder'|'DiagnosticReport'|'DocumentManifest'|'DocumentReference'|'DomainResource'|'EligibilityRequest'|'EligibilityResponse'|'Encounter'|'EnrollmentRequest'|'EnrollmentResponse'|'EpisodeOfCare'|'ExplanationOfBenefit'|'FamilyMemberHistory'|'Flag'|'Goal'|'Group'|'HealthcareService'|'ImagingObjectSelection'|'ImagingStudy'|'Immunization'|'ImmunizationRecommendation'|'ImplementationGuide'|'List'|'Location'|'Media'|'Medication'|'MedicationAdministration'|'MedicationDispense'|'MedicationOrder'|'MedicationStatement'|'MessageHeader'|'NamingSystem'|'NutritionOrder'|'Observation'|'OperationDefinition'|'OperationOutcome'|'Order'|'OrderResponse'|'Organization'|'Parameters'|'Patient'|'PaymentNotice'|'PaymentReconciliation'|'Person'|'Practitioner'|'Procedure'|'ProcedureRequest'|'ProcessRequest'|'ProcessResponse'|'Provenance'|'Questionnaire'|'QuestionnaireResponse'|'ReferralRequest'|'RelatedPerson'|'Resource'|'RiskAssessment'|'Schedule'|'SearchParameter'|'Slot'|'Specimen'|'StructureDefinition'|'Subscription'|'Substance'|'SupplyDelivery'|'SupplyRequest'|'TestScript'|'ValueSet'|'VisionPrescription');
+  _code?: Element | undefined;
+  /**
+   * Profile (StructureDefinition) to apply (or IG)
+   * Identifies a profile structure or implementation Guide that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When more than one profile is specified, the content must conform to all of them. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.
+   */
+  profile?: string[] | undefined;
+  _profile?: Element[] | undefined;
+}
+/**
  * Base StructureDefinition for Extension Type
  */
 export interface Extension extends Element {
@@ -1625,6 +1625,27 @@ export interface Signature extends Element {
 export interface SimpleQuantity {
 }
 /**
+ * Base StructureDefinition for Timing Type
+ */
+export interface Timing extends Element {
+  /**
+   * QD | QOD | Q4H | Q6H | BID | TID | QID | AM | PM +
+   * A code for the timing pattern. Some codes such as BID are ubiquitous, but many institutions define their own additional codes.
+   */
+  code?: CodeableConcept | undefined;
+  /**
+   * When the event occurs
+   * Identifies specific times when the event occurs.
+   */
+  event?: string[] | undefined;
+  _event?: Element[] | undefined;
+  /**
+   * When the event is to occur
+   * A set of rules that describe when the event should occur.
+   */
+  repeat?: TimingRepeat | undefined;
+}
+/**
  * When the event is to occur
  * A set of rules that describe when the event should occur.
  */
@@ -1697,27 +1718,6 @@ export interface TimingRepeat extends Element {
   _when?: Element | undefined;
 }
 /**
- * Base StructureDefinition for Timing Type
- */
-export interface Timing extends Element {
-  /**
-   * QD | QOD | Q4H | Q6H | BID | TID | QID | AM | PM +
-   * A code for the timing pattern. Some codes such as BID are ubiquitous, but many institutions define their own additional codes.
-   */
-  code?: CodeableConcept | undefined;
-  /**
-   * When the event occurs
-   * Identifies specific times when the event occurs.
-   */
-  event?: string[] | undefined;
-  _event?: Element[] | undefined;
-  /**
-   * When the event is to occur
-   * A set of rules that describe when the event should occur.
-   */
-  repeat?: TimingRepeat | undefined;
-}
-/**
  * Base StructureDefinition for Account Resource
  */
 export interface Account extends DomainResource {
@@ -1781,54 +1781,6 @@ export interface Account extends DomainResource {
    * Categorizes the account for reporting and searching purposes.
    */
   type?: CodeableConcept | undefined;
-}
-/**
- * Adverse Reaction Events linked to exposure to substance
- * Details about each adverse reaction event linked to exposure to the identified Substance.
- */
-export interface AllergyIntoleranceReaction extends BackboneElement {
-  /**
-   * Statement about the degree of clinical certainty that the specific substance was the cause of the manifestation in this reaction event.
-   */
-  certainty?: ('unlikely'|'likely'|'confirmed') | undefined;
-  _certainty?: Element | undefined;
-  /**
-   * Description of the event as a whole
-   * Text description about the reaction as a whole, including details of the manifestation if required.
-   */
-  description?: string | undefined;
-  _description?: Element | undefined;
-  /**
-   * How the subject was exposed to the substance
-   * Identification of the route by which the subject was exposed to the substance.
-   */
-  exposureRoute?: CodeableConcept | undefined;
-  /**
-   * Clinical symptoms/signs associated with the Event
-   * Clinical symptoms and/or signs that are observed or associated with the adverse reaction event.
-   */
-  manifestation: CodeableConcept[];
-  /**
-   * Text about event not captured in other fields
-   * Additional text about the adverse reaction event not captured in other fields.
-   */
-  note?: Annotation | undefined;
-  /**
-   * Date(/time) when manifestations showed
-   * Record of the date and/or time of the onset of the Reaction.
-   */
-  onset?: string | undefined;
-  _onset?: Element | undefined;
-  /**
-   * Clinical assessment of the severity of the reaction event as a whole, potentially considering multiple different manifestations.
-   */
-  severity?: ('mild'|'moderate'|'severe') | undefined;
-  _severity?: Element | undefined;
-  /**
-   * Specific substance considered to be responsible for event
-   * Identification of the specific substance considered to be responsible for the Adverse Reaction event. Note: the substance for a specific reaction may be different to the substance identified as the cause of the risk, but must be consistent with it. For instance, it may be a more specific substance (e.g. a brand medication) or a composite substance that includes the identified substance. It must be clinically safe to only process the AllergyIntolerance.substance and ignore the AllergyIntolerance.event.substance.
-   */
-  substance?: CodeableConcept | undefined;
 }
 /**
  * Base StructureDefinition for AllergyIntolerance Resource
@@ -1912,29 +1864,52 @@ export interface AllergyIntolerance extends DomainResource {
   _type?: Element | undefined;
 }
 /**
- * Participants involved in appointment
- * List of participants involved in the appointment.
+ * Adverse Reaction Events linked to exposure to substance
+ * Details about each adverse reaction event linked to exposure to the identified Substance.
  */
-export interface AppointmentParticipant extends BackboneElement {
+export interface AllergyIntoleranceReaction extends BackboneElement {
   /**
-   * Person, Location/HealthcareService or Device
-   * A Person, Location/HealthcareService or Device that is participating in the appointment.
+   * Statement about the degree of clinical certainty that the specific substance was the cause of the manifestation in this reaction event.
    */
-  actor?: Reference | undefined;
+  certainty?: ('unlikely'|'likely'|'confirmed') | undefined;
+  _certainty?: Element | undefined;
   /**
-   * Is this participant required to be present at the meeting. This covers a use-case where 2 doctors need to meet to discuss the results for a specific patient, and the patient is not required to be present.
+   * Description of the event as a whole
+   * Text description about the reaction as a whole, including details of the manifestation if required.
    */
-  required?: ('required'|'optional'|'information-only') | undefined;
-  _required?: Element | undefined;
+  description?: string | undefined;
+  _description?: Element | undefined;
   /**
-   * Participation status of the Patient.
+   * How the subject was exposed to the substance
+   * Identification of the route by which the subject was exposed to the substance.
    */
-  status: ('accepted'|'declined'|'tentative'|'needs-action');
-  _status?: Element | undefined;
+  exposureRoute?: CodeableConcept | undefined;
   /**
-   * Role of participant in the appointment.
+   * Clinical symptoms/signs associated with the Event
+   * Clinical symptoms and/or signs that are observed or associated with the adverse reaction event.
    */
-  type?: CodeableConcept[] | undefined;
+  manifestation: CodeableConcept[];
+  /**
+   * Text about event not captured in other fields
+   * Additional text about the adverse reaction event not captured in other fields.
+   */
+  note?: Annotation | undefined;
+  /**
+   * Date(/time) when manifestations showed
+   * Record of the date and/or time of the onset of the Reaction.
+   */
+  onset?: string | undefined;
+  _onset?: Element | undefined;
+  /**
+   * Clinical assessment of the severity of the reaction event as a whole, potentially considering multiple different manifestations.
+   */
+  severity?: ('mild'|'moderate'|'severe') | undefined;
+  _severity?: Element | undefined;
+  /**
+   * Specific substance considered to be responsible for event
+   * Identification of the specific substance considered to be responsible for the Adverse Reaction event. Note: the substance for a specific reaction may be different to the substance identified as the cause of the risk, but must be consistent with it. For instance, it may be a more specific substance (e.g. a brand medication) or a composite substance that includes the identified substance. It must be clinically safe to only process the AllergyIntolerance.substance and ignore the AllergyIntolerance.event.substance.
+   */
+  substance?: CodeableConcept | undefined;
 }
 /**
  * Base StructureDefinition for Appointment Resource
@@ -2006,6 +1981,31 @@ export interface Appointment extends DomainResource {
   type?: CodeableConcept | undefined;
 }
 /**
+ * Participants involved in appointment
+ * List of participants involved in the appointment.
+ */
+export interface AppointmentParticipant extends BackboneElement {
+  /**
+   * Person, Location/HealthcareService or Device
+   * A Person, Location/HealthcareService or Device that is participating in the appointment.
+   */
+  actor?: Reference | undefined;
+  /**
+   * Is this participant required to be present at the meeting. This covers a use-case where 2 doctors need to meet to discuss the results for a specific patient, and the patient is not required to be present.
+   */
+  required?: ('required'|'optional'|'information-only') | undefined;
+  _required?: Element | undefined;
+  /**
+   * Participation status of the Patient.
+   */
+  status: ('accepted'|'declined'|'tentative'|'needs-action');
+  _status?: Element | undefined;
+  /**
+   * Role of participant in the appointment.
+   */
+  type?: CodeableConcept[] | undefined;
+}
+/**
  * Base StructureDefinition for AppointmentResponse Resource
  */
 export interface AppointmentResponse extends DomainResource {
@@ -2054,6 +2054,30 @@ export interface AppointmentResponse extends DomainResource {
   _start?: Element | undefined;
 }
 /**
+ * Base StructureDefinition for AuditEvent Resource
+ */
+export interface AuditEvent extends DomainResource {
+  /** Resource Type Name (for serialization) */
+  readonly resourceType: 'AuditEvent';
+  /**
+   * What was done
+   * Identifies the name, action type, time, and disposition of the audited event.
+   */
+  event: AuditEventEvent;
+  /**
+   * Specific instances of data or objects that have been accessed.
+   */
+  object?: AuditEventObject[] | undefined;
+  /**
+   * A person, a hardware device or software process.
+   */
+  participant: AuditEventParticipant[];
+  /**
+   * Application systems and processes.
+   */
+  source: AuditEventSource;
+}
+/**
  * What was done
  * Identifies the name, action type, time, and disposition of the audited event.
  */
@@ -2097,21 +2121,6 @@ export interface AuditEventEvent extends BackboneElement {
    * Identifier for a family of the event.  For example, a menu item, program, rule, policy, function code, application name or URL. It identifies the performed function.
    */
   type: Coding;
-}
-/**
- * Additional Information about the Object.
- */
-export interface AuditEventObjectDetail extends BackboneElement {
-  /**
-   * Name of the property.
-   */
-  type: string;
-  _type?: Element | undefined;
-  /**
-   * Property value.
-   */
-  value: string;
-  _value?: Element | undefined;
 }
 /**
  * Specific instances of data or objects that have been accessed.
@@ -2171,21 +2180,19 @@ export interface AuditEventObject extends BackboneElement {
   type?: Coding | undefined;
 }
 /**
- * Logical network location for application activity, if the activity has a network location.
+ * Additional Information about the Object.
  */
-export interface AuditEventParticipantNetwork extends BackboneElement {
+export interface AuditEventObjectDetail extends BackboneElement {
   /**
-   * Identifier for the network access point of the user device
-   * An identifier for the network access point of the user device for the audit event.
+   * Name of the property.
    */
-  address?: string | undefined;
-  _address?: Element | undefined;
-  /**
-   * The type of network access point
-   * An identifier for the type of network access point that originated the audit event.
-   */
-  type?: ('1'|'2'|'3'|'4'|'5') | undefined;
+  type: string;
   _type?: Element | undefined;
+  /**
+   * Property value.
+   */
+  value: string;
+  _value?: Element | undefined;
 }
 /**
  * A person, a hardware device or software process.
@@ -2247,6 +2254,23 @@ export interface AuditEventParticipant extends BackboneElement {
   userId?: Identifier | undefined;
 }
 /**
+ * Logical network location for application activity, if the activity has a network location.
+ */
+export interface AuditEventParticipantNetwork extends BackboneElement {
+  /**
+   * Identifier for the network access point of the user device
+   * An identifier for the network access point of the user device for the audit event.
+   */
+  address?: string | undefined;
+  _address?: Element | undefined;
+  /**
+   * The type of network access point
+   * An identifier for the type of network access point that originated the audit event.
+   */
+  type?: ('1'|'2'|'3'|'4'|'5') | undefined;
+  _type?: Element | undefined;
+}
+/**
  * Application systems and processes.
  */
 export interface AuditEventSource extends BackboneElement {
@@ -2266,30 +2290,6 @@ export interface AuditEventSource extends BackboneElement {
    * Code specifying the type of source where event originated.
    */
   type?: Coding[] | undefined;
-}
-/**
- * Base StructureDefinition for AuditEvent Resource
- */
-export interface AuditEvent extends DomainResource {
-  /** Resource Type Name (for serialization) */
-  readonly resourceType: 'AuditEvent';
-  /**
-   * What was done
-   * Identifies the name, action type, time, and disposition of the audited event.
-   */
-  event: AuditEventEvent;
-  /**
-   * Specific instances of data or objects that have been accessed.
-   */
-  object?: AuditEventObject[] | undefined;
-  /**
-   * A person, a hardware device or software process.
-   */
-  participant: AuditEventParticipant[];
-  /**
-   * Application systems and processes.
-   */
-  source: AuditEventSource;
 }
 /**
  * Base StructureDefinition for Basic Resource
@@ -2379,6 +2379,74 @@ export interface BodySite extends DomainResource {
   patient: Reference;
 }
 /**
+ * Base StructureDefinition for Bundle Resource
+ */
+export interface Bundle<BundleContentType = FhirResource> extends Resource {
+  /** Resource Type Name (for serialization) */
+  readonly resourceType: 'Bundle';
+  /**
+   * Entry in the bundle - will have a resource, or information
+   * An entry in a bundle resource - will either contain a resource, or information about a resource (transactions and history only).
+   */
+  entry?: BundleEntry<BundleContentType>[] | undefined;
+  /**
+   * Links related to this Bundle
+   * A series of links that provide context to this bundle.
+   */
+  link?: BundleLink[] | undefined;
+  /**
+   * Digital Signature - base64 encoded. XML DigSIg or a JWT.
+   */
+  signature?: Signature | undefined;
+  /**
+   * If search, the total number of matches
+   * If a set of search matches, this is the total number of matches for the search (as opposed to the number of results in this bundle).
+   */
+  total?: number | undefined;
+  /**
+   * Indicates the purpose of this bundle- how it was intended to be used.
+   */
+  type: ('document'|'message'|'transaction'|'transaction-response'|'batch'|'batch-response'|'history'|'searchset'|'collection');
+  _type?: Element | undefined;
+}
+/**
+ * Entry in the bundle - will have a resource, or information
+ * An entry in a bundle resource - will either contain a resource, or information about a resource (transactions and history only).
+ */
+export interface BundleEntry<BundleContentType = FhirResource> extends BackboneElement {
+  /**
+   * Absolute URL for resource (server address, or UUID/OID)
+   * The Absolute URL for the resource. This must be provided for all resources. The fullUrl SHALL not disagree with the id in the resource. The fullUrl is a version independent reference to the resource.
+   */
+  fullUrl?: string | undefined;
+  _fullUrl?: Element | undefined;
+  /**
+   * Links related to this entry
+   * A series of links that provide context to this entry.
+   */
+  link?: BundleLink[] | undefined;
+  /**
+   * Transaction Related Information
+   * Additional information about how this entry should be processed as part of a transaction.
+   */
+  request?: BundleEntryRequest | undefined;
+  /**
+   * A resource in the bundle
+   * The Resources for the entry.
+   */
+  resource?: BundleContentType | undefined;
+  /**
+   * Transaction Related Information
+   * Additional information about how this entry should be processed as part of a transaction.
+   */
+  response?: BundleEntryResponse | undefined;
+  /**
+   * Search related information
+   * Information about the search process that lead to the creation of this entry.
+   */
+  search?: BundleEntrySearch | undefined;
+}
+/**
  * Transaction Related Information
  * Additional information about how this entry should be processed as part of a transaction.
  */
@@ -2466,43 +2534,6 @@ export interface BundleEntrySearch extends BackboneElement {
   score?: number | undefined;
 }
 /**
- * Entry in the bundle - will have a resource, or information
- * An entry in a bundle resource - will either contain a resource, or information about a resource (transactions and history only).
- */
-export interface BundleEntry<BundleContentType = FhirResource> extends BackboneElement {
-  /**
-   * Absolute URL for resource (server address, or UUID/OID)
-   * The Absolute URL for the resource. This must be provided for all resources. The fullUrl SHALL not disagree with the id in the resource. The fullUrl is a version independent reference to the resource.
-   */
-  fullUrl?: string | undefined;
-  _fullUrl?: Element | undefined;
-  /**
-   * Links related to this entry
-   * A series of links that provide context to this entry.
-   */
-  link?: BundleLink[] | undefined;
-  /**
-   * Transaction Related Information
-   * Additional information about how this entry should be processed as part of a transaction.
-   */
-  request?: BundleEntryRequest | undefined;
-  /**
-   * A resource in the bundle
-   * The Resources for the entry.
-   */
-  resource?: BundleContentType | undefined;
-  /**
-   * Transaction Related Information
-   * Additional information about how this entry should be processed as part of a transaction.
-   */
-  response?: BundleEntryResponse | undefined;
-  /**
-   * Search related information
-   * Information about the search process that lead to the creation of this entry.
-   */
-  search?: BundleEntrySearch | undefined;
-}
-/**
  * Links related to this Bundle
  * A series of links that provide context to this bundle.
  */
@@ -2521,35 +2552,119 @@ export interface BundleLink extends BackboneElement {
   _url?: Element | undefined;
 }
 /**
- * Base StructureDefinition for Bundle Resource
+ * Base StructureDefinition for CarePlan Resource
  */
-export interface Bundle<BundleContentType = FhirResource> extends Resource {
+export interface CarePlan extends DomainResource {
   /** Resource Type Name (for serialization) */
-  readonly resourceType: 'Bundle';
+  readonly resourceType: 'CarePlan';
   /**
-   * Entry in the bundle - will have a resource, or information
-   * An entry in a bundle resource - will either contain a resource, or information about a resource (transactions and history only).
+   * Action to occur as part of plan
+   * Identifies a planned action to occur as part of the plan.  For example, a medication to be used, lab tests to perform, self-monitoring, education, etc.
    */
-  entry?: BundleEntry<BundleContentType>[] | undefined;
+  activity?: CarePlanActivity[] | undefined;
   /**
-   * Links related to this Bundle
-   * A series of links that provide context to this bundle.
+   * Health issues this plan addresses
+   * Identifies the conditions/problems/concerns/diagnoses/etc. whose management and/or mitigation are handled by this plan.
    */
-  link?: BundleLink[] | undefined;
+  addresses?: Reference[] | undefined;
   /**
-   * Digital Signature - base64 encoded. XML DigSIg or a JWT.
+   * Who is responsible for contents of the plan
+   * Identifies the individual(s) or ogranization who is responsible for the content of the care plan.
    */
-  signature?: Signature | undefined;
+  author?: Reference[] | undefined;
   /**
-   * If search, the total number of matches
-   * If a set of search matches, this is the total number of matches for the search (as opposed to the number of results in this bundle).
+   * Type of plan
+   * Identifies what "kind" of plan this is to support differentiation between multiple co-existing plans; e.g. "Home health", "psychiatric", "asthma", "disease management", "wellness plan", etc.
    */
-  total?: number | undefined;
+  category?: CodeableConcept[] | undefined;
   /**
-   * Indicates the purpose of this bundle- how it was intended to be used.
+   * Created in context of
+   * Identifies the context in which this particular CarePlan is defined.
    */
-  type: ('document'|'message'|'transaction'|'transaction-response'|'batch'|'batch-response'|'history'|'searchset'|'collection');
-  _type?: Element | undefined;
+  context?: Reference | undefined;
+  /**
+   * Summary of nature of plan
+   * A description of the scope and nature of the plan.
+   */
+  description?: string | undefined;
+  _description?: Element | undefined;
+  /**
+   * Desired outcome of plan
+   * Describes the intended objective(s) of carrying out the care plan.
+   */
+  goal?: Reference[] | undefined;
+  /**
+   * External Ids for this plan
+   * This records identifiers associated with this care plan that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
+   */
+  identifier?: Identifier[] | undefined;
+  /**
+   * When last updated
+   * Identifies the most recent date on which the plan has been revised.
+   */
+  modified?: string | undefined;
+  _modified?: Element | undefined;
+  /**
+   * Comments about the plan
+   * General notes about the care plan not covered elsewhere.
+   */
+  note?: Annotation | undefined;
+  /**
+   * Who's involved in plan?
+   * Identifies all people and organizations who are expected to be involved in the care envisioned by this plan.
+   */
+  participant?: CarePlanParticipant[] | undefined;
+  /**
+   * Time period plan covers
+   * Indicates when the plan did (or is intended to) come into effect and end.
+   */
+  period?: Period | undefined;
+  /**
+   * Plans related to this one
+   * Identifies CarePlans with some sort of formal relationship to the current plan.
+   */
+  relatedPlan?: CarePlanRelatedPlan[] | undefined;
+  /**
+   * Indicates whether the plan is currently being acted upon, represents future intentions or is now a historical record.
+   */
+  status: ('proposed'|'draft'|'active'|'completed'|'cancelled');
+  _status?: Element | undefined;
+  /**
+   * Who care plan is for
+   * Identifies the patient or group whose intended care is described by the plan.
+   */
+  subject?: Reference | undefined;
+  /**
+   * Information considered as part of plan
+   * Identifies portions of the patient's record that specifically influenced the formation of the plan.  These might include co-morbidities, recent procedures, limitations, recent assessments, etc.
+   */
+  support?: Reference[] | undefined;
+}
+/**
+ * Action to occur as part of plan
+ * Identifies a planned action to occur as part of the plan.  For example, a medication to be used, lab tests to perform, self-monitoring, education, etc.
+ */
+export interface CarePlanActivity extends BackboneElement {
+  /**
+   * Appointments, orders, etc.
+   * Resources that describe follow-on actions resulting from the plan, such as drug prescriptions, encounter records, appointments, etc.
+   */
+  actionResulting?: Reference[] | undefined;
+  /**
+   * In-line definition of activity
+   * A simple summary of a planned activity suitable for a general care plan system (e.g. form driven) that doesn't know about specific resources such as procedure etc.
+   */
+  detail?: CarePlanActivityDetail | undefined;
+  /**
+   * Comments about the activity status/progress
+   * Notes about the adherence/status/progress of the activity.
+   */
+  progress?: Annotation[] | undefined;
+  /**
+   * Activity details defined in specific resource
+   * The details of the proposed activity represented in a specific resource.
+   */
+  reference?: Reference | undefined;
 }
 /**
  * In-line definition of activity
@@ -2651,32 +2766,6 @@ export interface CarePlanActivityDetail extends BackboneElement {
   statusReason?: CodeableConcept | undefined;
 }
 /**
- * Action to occur as part of plan
- * Identifies a planned action to occur as part of the plan.  For example, a medication to be used, lab tests to perform, self-monitoring, education, etc.
- */
-export interface CarePlanActivity extends BackboneElement {
-  /**
-   * Appointments, orders, etc.
-   * Resources that describe follow-on actions resulting from the plan, such as drug prescriptions, encounter records, appointments, etc.
-   */
-  actionResulting?: Reference[] | undefined;
-  /**
-   * In-line definition of activity
-   * A simple summary of a planned activity suitable for a general care plan system (e.g. form driven) that doesn't know about specific resources such as procedure etc.
-   */
-  detail?: CarePlanActivityDetail | undefined;
-  /**
-   * Comments about the activity status/progress
-   * Notes about the adherence/status/progress of the activity.
-   */
-  progress?: Annotation[] | undefined;
-  /**
-   * Activity details defined in specific resource
-   * The details of the proposed activity represented in a specific resource.
-   */
-  reference?: Reference | undefined;
-}
-/**
  * Who's involved in plan?
  * Identifies all people and organizations who are expected to be involved in the care envisioned by this plan.
  */
@@ -2707,429 +2796,6 @@ export interface CarePlanRelatedPlan extends BackboneElement {
    * A reference to the plan to which a relationship is asserted.
    */
   plan: Reference;
-}
-/**
- * Base StructureDefinition for CarePlan Resource
- */
-export interface CarePlan extends DomainResource {
-  /** Resource Type Name (for serialization) */
-  readonly resourceType: 'CarePlan';
-  /**
-   * Action to occur as part of plan
-   * Identifies a planned action to occur as part of the plan.  For example, a medication to be used, lab tests to perform, self-monitoring, education, etc.
-   */
-  activity?: CarePlanActivity[] | undefined;
-  /**
-   * Health issues this plan addresses
-   * Identifies the conditions/problems/concerns/diagnoses/etc. whose management and/or mitigation are handled by this plan.
-   */
-  addresses?: Reference[] | undefined;
-  /**
-   * Who is responsible for contents of the plan
-   * Identifies the individual(s) or ogranization who is responsible for the content of the care plan.
-   */
-  author?: Reference[] | undefined;
-  /**
-   * Type of plan
-   * Identifies what "kind" of plan this is to support differentiation between multiple co-existing plans; e.g. "Home health", "psychiatric", "asthma", "disease management", "wellness plan", etc.
-   */
-  category?: CodeableConcept[] | undefined;
-  /**
-   * Created in context of
-   * Identifies the context in which this particular CarePlan is defined.
-   */
-  context?: Reference | undefined;
-  /**
-   * Summary of nature of plan
-   * A description of the scope and nature of the plan.
-   */
-  description?: string | undefined;
-  _description?: Element | undefined;
-  /**
-   * Desired outcome of plan
-   * Describes the intended objective(s) of carrying out the care plan.
-   */
-  goal?: Reference[] | undefined;
-  /**
-   * External Ids for this plan
-   * This records identifiers associated with this care plan that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
-   */
-  identifier?: Identifier[] | undefined;
-  /**
-   * When last updated
-   * Identifies the most recent date on which the plan has been revised.
-   */
-  modified?: string | undefined;
-  _modified?: Element | undefined;
-  /**
-   * Comments about the plan
-   * General notes about the care plan not covered elsewhere.
-   */
-  note?: Annotation | undefined;
-  /**
-   * Who's involved in plan?
-   * Identifies all people and organizations who are expected to be involved in the care envisioned by this plan.
-   */
-  participant?: CarePlanParticipant[] | undefined;
-  /**
-   * Time period plan covers
-   * Indicates when the plan did (or is intended to) come into effect and end.
-   */
-  period?: Period | undefined;
-  /**
-   * Plans related to this one
-   * Identifies CarePlans with some sort of formal relationship to the current plan.
-   */
-  relatedPlan?: CarePlanRelatedPlan[] | undefined;
-  /**
-   * Indicates whether the plan is currently being acted upon, represents future intentions or is now a historical record.
-   */
-  status: ('proposed'|'draft'|'active'|'completed'|'cancelled');
-  _status?: Element | undefined;
-  /**
-   * Who care plan is for
-   * Identifies the patient or group whose intended care is described by the plan.
-   */
-  subject?: Reference | undefined;
-  /**
-   * Information considered as part of plan
-   * Identifies portions of the patient's record that specifically influenced the formation of the plan.  These might include co-morbidities, recent procedures, limitations, recent assessments, etc.
-   */
-  support?: Reference[] | undefined;
-}
-/**
- * Insurance or medical plan
- * Financial instrument by which payment information for health care.
- */
-export interface ClaimCoverage extends BackboneElement {
-  /**
-   * Business agreement
-   * The contract number of a business agreement which describes the terms and conditions.
-   */
-  businessArrangement?: string | undefined;
-  _businessArrangement?: Element | undefined;
-  /**
-   * Adjudication results
-   * The Coverages adjudication details.
-   */
-  claimResponse?: Reference | undefined;
-  /**
-   * Insurance information
-   * Reference to the program or plan identification, underwriter or payor.
-   */
-  coverage: Reference;
-  /**
-   * The focal Coverage
-   * The instance number of the Coverage which is the focus for adjudication. The Coverage against which the claim is to be adjudicated.
-   */
-  focal: boolean;
-  _focal?: Element | undefined;
-  /**
-   * Original version
-   * The style (standard) and version of the original material which was converted into this resource.
-   */
-  originalRuleset?: Coding | undefined;
-  /**
-   * Pre-Authorization/Determination Reference
-   * A list of references from the Insurer to which these services pertain.
-   */
-  preAuthRef?: string[] | undefined;
-  _preAuthRef?: Element[] | undefined;
-  /**
-   * Patient relationship to subscriber
-   * The relationship of the patient to the subscriber.
-   */
-  relationship: Coding;
-  /**
-   * Service instance identifier
-   * A service line item.
-   */
-  sequence: number;
-}
-/**
- * Diagnosis
- * Ordered list of patient diagnosis for which care is sought.
- */
-export interface ClaimDiagnosis extends BackboneElement {
-  /**
-   * Patient's list of diagnosis
-   * The diagnosis.
-   */
-  diagnosis: Coding;
-  /**
-   * Sequence of diagnosis which serves to order and provide a link.
-   */
-  sequence: number;
-}
-/**
- * Additional items
- * Third tier of goods and services.
- */
-export interface ClaimItemDetailSubDetail extends BackboneElement {
-  /**
-   * Price scaling factor
-   * A real number that represents a multiplier used in determining the overall value of services delivered and/or goods received. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount.
-   */
-  factor?: number | undefined;
-  /**
-   * Net additional item cost
-   * The quantity times the unit price for an additional  service or product or charge. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied.
-   */
-  net?: Quantity | undefined;
-  /**
-   * Difficulty scaling factor
-   * An amount that expresses the weighting (based on difficulty, cost and/or resource intensiveness) associated with the good or service delivered. The concept of Points allows for assignment of point values for services and/or goods, such that a monetary amount can be assigned to each point.
-   */
-  points?: number | undefined;
-  /**
-   * Count of Products or Services
-   * The number of repetitions of a service or product.
-   */
-  quantity?: Quantity | undefined;
-  /**
-   * Service instance
-   * A service line number.
-   */
-  sequence: number;
-  /**
-   * Additional item codes
-   * The fee for an additional  service or product or charge.
-   */
-  service: Coding;
-  /**
-   * Type of product or service
-   * The type of product or service.
-   */
-  type: Coding;
-  /**
-   * Unique Device Identifier
-   * List of Unique Device Identifiers associated with this line item.
-   */
-  udi?: Coding | undefined;
-  /**
-   * Fee, charge or cost per point
-   * The fee for an additional  service or product or charge.
-   */
-  unitPrice?: Quantity | undefined;
-}
-/**
- * Additional items
- * Second tier of goods and services.
- */
-export interface ClaimItemDetail extends BackboneElement {
-  /**
-   * Price scaling factor
-   * A real number that represents a multiplier used in determining the overall value of services delivered and/or goods received. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount.
-   */
-  factor?: number | undefined;
-  /**
-   * Total additional item cost
-   * The quantity times the unit price for an additional  service or product or charge. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied.
-   */
-  net?: Quantity | undefined;
-  /**
-   * Difficulty scaling factor
-   * An amount that expresses the weighting (based on difficulty, cost and/or resource intensiveness) associated with the good or service delivered. The concept of Points allows for assignment of point values for services and/or goods, such that a monetary amount can be assigned to each point.
-   */
-  points?: number | undefined;
-  /**
-   * Count of Products or Services
-   * The number of repetitions of a service or product.
-   */
-  quantity?: Quantity | undefined;
-  /**
-   * Service instance
-   * A service line number.
-   */
-  sequence: number;
-  /**
-   * Additional item codes
-   * If a grouping item then 'GROUP' otherwise it is a node therefore a code to indicate the Professional Service or Product supplied.
-   */
-  service: Coding;
-  /**
-   * Additional items
-   * Third tier of goods and services.
-   */
-  subDetail?: ClaimItemDetailSubDetail[] | undefined;
-  /**
-   * Group or type of product or service
-   * The type of product or service.
-   */
-  type: Coding;
-  /**
-   * Unique Device Identifier
-   * List of Unique Device Identifiers associated with this line item.
-   */
-  udi?: Coding | undefined;
-  /**
-   * Fee, charge or cost per point
-   * If the item is a node then this is the fee for the product or service, otherwise this is the total of the fees for the children of the group.
-   */
-  unitPrice?: Quantity | undefined;
-}
-/**
- * Prosthetic details
- * The materials and placement date of prior fixed prosthesis.
- */
-export interface ClaimItemProsthesis extends BackboneElement {
-  /**
-   * Is this the initial service
-   * Indicates whether this is the initial placement of a fixed prosthesis.
-   */
-  initial?: boolean | undefined;
-  _initial?: Element | undefined;
-  /**
-   * Initial service Date
-   * Date of the initial placement.
-   */
-  priorDate?: string | undefined;
-  _priorDate?: Element | undefined;
-  /**
-   * Prosthetic Material
-   * Material of the prior denture or bridge prosthesis. (Oral).
-   */
-  priorMaterial?: Coding | undefined;
-}
-/**
- * Goods and Services
- * First tier of goods and services.
- */
-export interface ClaimItem extends BackboneElement {
-  /**
-   * Service Location
-   * Physical service site on the patient (limb, tooth, etc.).
-   */
-  bodySite?: Coding | undefined;
-  /**
-   * Additional items
-   * Second tier of goods and services.
-   */
-  detail?: ClaimItemDetail[] | undefined;
-  /**
-   * Diagnosis Link
-   * Diagnosis applicable for this service or product line.
-   */
-  diagnosisLinkId?: number[] | undefined;
-  /**
-   * Price scaling factor
-   * A real number that represents a multiplier used in determining the overall value of services delivered and/or goods received. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount.
-   */
-  factor?: number | undefined;
-  /**
-   * Service/Product billing modifiers
-   * Item typification or modifiers codes, e.g. for Oral whether the treatment is cosmetic or associated with TMJ, or an appliance was lost or stolen.
-   */
-  modifier?: Coding[] | undefined;
-  /**
-   * Total item cost
-   * The quantity times the unit price for an additional  service or product or charge. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied.
-   */
-  net?: Quantity | undefined;
-  /**
-   * Difficulty scaling factor
-   * An amount that expresses the weighting (based on difficulty, cost and/or resource intensiveness) associated with the good or service delivered. The concept of Points allows for assignment of point values for services and/or goods, such that a monetary amount can be assigned to each point.
-   */
-  points?: number | undefined;
-  /**
-   * Prosthetic details
-   * The materials and placement date of prior fixed prosthesis.
-   */
-  prosthesis?: ClaimItemProsthesis | undefined;
-  /**
-   * Responsible practitioner
-   * The practitioner who is responsible for the services rendered to the patient.
-   */
-  provider?: Reference | undefined;
-  /**
-   * Count of Products or Services
-   * The number of repetitions of a service or product.
-   */
-  quantity?: Quantity | undefined;
-  /**
-   * Service instance
-   * A service line number.
-   */
-  sequence: number;
-  /**
-   * Item Code
-   * If a grouping item then 'GROUP' otherwise it is a node therefore a code to indicate the Professional Service or Product supplied.
-   */
-  service: Coding;
-  /**
-   * Date of Service
-   * The date when the enclosed suite of services were performed or completed.
-   */
-  serviceDate?: string | undefined;
-  _serviceDate?: Element | undefined;
-  /**
-   * Service Sub-location
-   * A region or surface of the site, e.g. limb region or tooth surface(s).
-   */
-  subSite?: Coding[] | undefined;
-  /**
-   * Group or type of product or service
-   * The type of product or service.
-   */
-  type: Coding;
-  /**
-   * Unique Device Identifier
-   * List of Unique Device Identifiers associated with this line item.
-   */
-  udi?: Coding | undefined;
-  /**
-   * Fee, charge or cost per point
-   * If the item is a node then this is the fee for the product or service, otherwise this is the total of the fees for the children of the group.
-   */
-  unitPrice?: Quantity | undefined;
-}
-/**
- * Only if type = oral
- * A list of teeth which would be expected but are not found due to having been previously  extracted or for other reasons.
- */
-export interface ClaimMissingTeeth extends BackboneElement {
-  /**
-   * Date of Extraction
-   * The date of the extraction either known from records or patient reported estimate.
-   */
-  extractionDate?: string | undefined;
-  _extractionDate?: Element | undefined;
-  /**
-   * Reason for missing
-   * Missing reason may be: E-extraction, O-other.
-   */
-  reason?: Coding | undefined;
-  /**
-   * Tooth Code
-   * The code identifying which tooth is missing.
-   */
-  tooth: Coding;
-}
-/**
- * Payee
- * The party to be reimbursed for the services.
- */
-export interface ClaimPayee extends BackboneElement {
-  /**
-   * Organization who is the payee
-   * The organization who is to be reimbursed for the claim (the party to whom any benefit is assigned).
-   */
-  organization?: Reference | undefined;
-  /**
-   * Other person who is the payee
-   * The person other than the subscriber who is to be reimbursed for the claim (the party to whom any benefit is assigned).
-   */
-  person?: Reference | undefined;
-  /**
-   * Provider who is the payee
-   * The provider who is to be reimbursed for the claim (the party to whom any benefit is assigned).
-   */
-  provider?: Reference | undefined;
-  /**
-   * Party to be paid any benefits payable
-   * Party to be reimbursed: Subscriber, provider, other.
-   */
-  type?: Coding | undefined;
 }
 /**
  * Base StructureDefinition for Claim Resource
@@ -3285,107 +2951,10 @@ export interface Claim extends DomainResource {
   _use?: Element | undefined;
 }
 /**
- * Added items adjudication
- * The adjudications results.
- */
-export interface ClaimResponseAddItemAdjudication extends BackboneElement {
-  /**
-   * Monetary amount associated with the code.
-   */
-  amount?: Quantity | undefined;
-  /**
-   * Adjudication category such as co-pay, eligible, benefit, etc.
-   * Code indicating: Co-Pay, deductible, eligible, benefit, tax, etc.
-   */
-  code: Coding;
-  /**
-   * Non-monetary value
-   * A non-monetary value for example a percentage. Mutually exclusive to the amount element above.
-   */
-  value?: number | undefined;
-}
-/**
- * Added items detail adjudication
- * The adjudications results.
- */
-export interface ClaimResponseAddItemDetailAdjudication extends BackboneElement {
-  /**
-   * Monetary amount associated with the code.
-   */
-  amount?: Quantity | undefined;
-  /**
-   * Adjudication category such as co-pay, eligible, benefit, etc.
-   * Code indicating: Co-Pay, deductible, eligible, benefit, tax, etc.
-   */
-  code: Coding;
-  /**
-   * Non-monetary value
-   * A non-monetary value for example a percentage. Mutually exclusive to the amount element above.
-   */
-  value?: number | undefined;
-}
-/**
- * Added items details
- * The second tier service adjudications for payor added services.
- */
-export interface ClaimResponseAddItemDetail extends BackboneElement {
-  /**
-   * Added items detail adjudication
-   * The adjudications results.
-   */
-  adjudication?: ClaimResponseAddItemDetailAdjudication[] | undefined;
-  /**
-   * Professional fee or Product charge
-   * The fee charged for the professional service or product..
-   */
-  fee?: Quantity | undefined;
-  /**
-   * Service or Product
-   * A code to indicate the Professional Service or Product supplied.
-   */
-  service: Coding;
-}
-/**
- * Insurer added line items
- * The first tier service adjudications for payor added services.
- */
-export interface ClaimResponseAddItem extends BackboneElement {
-  /**
-   * Added items adjudication
-   * The adjudications results.
-   */
-  adjudication?: ClaimResponseAddItemAdjudication[] | undefined;
-  /**
-   * Added items details
-   * The second tier service adjudications for payor added services.
-   */
-  detail?: ClaimResponseAddItemDetail[] | undefined;
-  /**
-   * Professional fee or Product charge
-   * The fee charged for the professional service or product..
-   */
-  fee?: Quantity | undefined;
-  /**
-   * List of note numbers which apply
-   * A list of note references to the notes provided below.
-   */
-  noteNumberLinkId?: number[] | undefined;
-  /**
-   * Service instances
-   * List of input service items which this service line is intended to replace.
-   */
-  sequenceLinkId?: number[] | undefined;
-  /**
-   * Group, Service or Product
-   * A code to indicate the Professional Service or Product supplied.
-   */
-  service: Coding;
-}
-/**
  * Insurance or medical plan
  * Financial instrument by which payment information for health care.
  */
-export interface ClaimResponseCoverage extends BackboneElement {
+export interface ClaimCoverage extends BackboneElement {
   /**
    * Business agreement
    * The contract number of a business agreement which describes the terms and conditions.
@@ -3403,7 +2972,7 @@ export interface ClaimResponseCoverage extends BackboneElement {
    */
   coverage: Reference;
   /**
-   * Is the focal Coverage
+   * The focal Coverage
    * The instance number of the Coverage which is the focus for adjudication. The Coverage against which the claim is to be adjudicated.
    */
   focal: boolean;
@@ -3431,173 +3000,287 @@ export interface ClaimResponseCoverage extends BackboneElement {
   sequence: number;
 }
 /**
- * Processing errors
- * Mutually exclusive with Services Provided (Item).
+ * Diagnosis
+ * Ordered list of patient diagnosis for which care is sought.
  */
-export interface ClaimResponseError extends BackboneElement {
+export interface ClaimDiagnosis extends BackboneElement {
   /**
-   * Error code detailing processing issues
-   * An error code,froma specified code system, which details why the claim could not be adjudicated.
+   * Patient's list of diagnosis
+   * The diagnosis.
    */
-  code: Coding;
+  diagnosis: Coding;
   /**
-   * Detail sequence number
-   * The sequence number of the addition within the line item submitted which contains the error. This value is omitted when the error is not related to an Addition.
+   * Sequence of diagnosis which serves to order and provide a link.
    */
-  detailSequenceLinkId?: number | undefined;
-  /**
-   * Item sequence number
-   * The sequence number of the line item submitted which contains the error. This value is omitted when the error is elsewhere.
-   */
-  sequenceLinkId?: number | undefined;
-  /**
-   * Subdetail sequence number
-   * The sequence number of the addition within the line item submitted which contains the error. This value is omitted when the error is not related to an Addition.
-   */
-  subdetailSequenceLinkId?: number | undefined;
+  sequence: number;
 }
 /**
- * Adjudication details
- * The adjudications results.
+ * Goods and Services
+ * First tier of goods and services.
  */
-export interface ClaimResponseItemAdjudication extends BackboneElement {
+export interface ClaimItem extends BackboneElement {
   /**
-   * Monetary amount associated with the code.
+   * Service Location
+   * Physical service site on the patient (limb, tooth, etc.).
    */
-  amount?: Quantity | undefined;
+  bodySite?: Coding | undefined;
   /**
-   * Adjudication category such as co-pay, eligible, benefit, etc.
-   * Code indicating: Co-Pay, deductible, eligible, benefit, tax, etc.
+   * Additional items
+   * Second tier of goods and services.
    */
-  code: Coding;
+  detail?: ClaimItemDetail[] | undefined;
   /**
-   * Non-monetary value
-   * A non-monetary value for example a percentage. Mutually exclusive to the amount element above.
+   * Diagnosis Link
+   * Diagnosis applicable for this service or product line.
    */
-  value?: number | undefined;
-}
-/**
- * Detail adjudication
- * The adjudications results.
- */
-export interface ClaimResponseItemDetailAdjudication extends BackboneElement {
+  diagnosisLinkId?: number[] | undefined;
   /**
-   * Monetary amount associated with the code.
+   * Price scaling factor
+   * A real number that represents a multiplier used in determining the overall value of services delivered and/or goods received. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount.
    */
-  amount?: Quantity | undefined;
+  factor?: number | undefined;
   /**
-   * Adjudication category such as co-pay, eligible, benefit, etc.
-   * Code indicating: Co-Pay, deductible, eligible, benefit, tax, etc.
+   * Service/Product billing modifiers
+   * Item typification or modifiers codes, e.g. for Oral whether the treatment is cosmetic or associated with TMJ, or an appliance was lost or stolen.
    */
-  code: Coding;
+  modifier?: Coding[] | undefined;
   /**
-   * Non-monetary value
-   * A non-monetary value for example a percentage. Mutually exclusive to the amount element above.
+   * Total item cost
+   * The quantity times the unit price for an additional  service or product or charge. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied.
    */
-  value?: number | undefined;
-}
-/**
- * Subdetail adjudication
- * The adjudications results.
- */
-export interface ClaimResponseItemDetailSubDetailAdjudication extends BackboneElement {
+  net?: Quantity | undefined;
   /**
-   * Monetary amount associated with the code.
+   * Difficulty scaling factor
+   * An amount that expresses the weighting (based on difficulty, cost and/or resource intensiveness) associated with the good or service delivered. The concept of Points allows for assignment of point values for services and/or goods, such that a monetary amount can be assigned to each point.
    */
-  amount?: Quantity | undefined;
+  points?: number | undefined;
   /**
-   * Adjudication category such as co-pay, eligible, benefit, etc.
-   * Code indicating: Co-Pay, deductible, eligible, benefit, tax, etc.
+   * Prosthetic details
+   * The materials and placement date of prior fixed prosthesis.
    */
-  code: Coding;
+  prosthesis?: ClaimItemProsthesis | undefined;
   /**
-   * Non-monetary value
-   * A non-monetary value for example a percentage. Mutually exclusive to the amount element above.
+   * Responsible practitioner
+   * The practitioner who is responsible for the services rendered to the patient.
    */
-  value?: number | undefined;
-}
-/**
- * Subdetail line items
- * The third tier service adjudications for submitted services.
- */
-export interface ClaimResponseItemDetailSubDetail extends BackboneElement {
+  provider?: Reference | undefined;
   /**
-   * Subdetail adjudication
-   * The adjudications results.
+   * Count of Products or Services
+   * The number of repetitions of a service or product.
    */
-  adjudication?: ClaimResponseItemDetailSubDetailAdjudication[] | undefined;
+  quantity?: Quantity | undefined;
   /**
    * Service instance
    * A service line number.
    */
-  sequenceLinkId: number;
+  sequence: number;
+  /**
+   * Item Code
+   * If a grouping item then 'GROUP' otherwise it is a node therefore a code to indicate the Professional Service or Product supplied.
+   */
+  service: Coding;
+  /**
+   * Date of Service
+   * The date when the enclosed suite of services were performed or completed.
+   */
+  serviceDate?: string | undefined;
+  _serviceDate?: Element | undefined;
+  /**
+   * Service Sub-location
+   * A region or surface of the site, e.g. limb region or tooth surface(s).
+   */
+  subSite?: Coding[] | undefined;
+  /**
+   * Group or type of product or service
+   * The type of product or service.
+   */
+  type: Coding;
+  /**
+   * Unique Device Identifier
+   * List of Unique Device Identifiers associated with this line item.
+   */
+  udi?: Coding | undefined;
+  /**
+   * Fee, charge or cost per point
+   * If the item is a node then this is the fee for the product or service, otherwise this is the total of the fees for the children of the group.
+   */
+  unitPrice?: Quantity | undefined;
 }
 /**
- * Detail line items
- * The second tier service adjudications for submitted services.
+ * Additional items
+ * Second tier of goods and services.
  */
-export interface ClaimResponseItemDetail extends BackboneElement {
+export interface ClaimItemDetail extends BackboneElement {
   /**
-   * Detail adjudication
-   * The adjudications results.
+   * Price scaling factor
+   * A real number that represents a multiplier used in determining the overall value of services delivered and/or goods received. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount.
    */
-  adjudication?: ClaimResponseItemDetailAdjudication[] | undefined;
+  factor?: number | undefined;
+  /**
+   * Total additional item cost
+   * The quantity times the unit price for an additional  service or product or charge. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied.
+   */
+  net?: Quantity | undefined;
+  /**
+   * Difficulty scaling factor
+   * An amount that expresses the weighting (based on difficulty, cost and/or resource intensiveness) associated with the good or service delivered. The concept of Points allows for assignment of point values for services and/or goods, such that a monetary amount can be assigned to each point.
+   */
+  points?: number | undefined;
+  /**
+   * Count of Products or Services
+   * The number of repetitions of a service or product.
+   */
+  quantity?: Quantity | undefined;
   /**
    * Service instance
    * A service line number.
    */
-  sequenceLinkId: number;
+  sequence: number;
   /**
-   * Subdetail line items
-   * The third tier service adjudications for submitted services.
+   * Additional item codes
+   * If a grouping item then 'GROUP' otherwise it is a node therefore a code to indicate the Professional Service or Product supplied.
    */
-  subDetail?: ClaimResponseItemDetailSubDetail[] | undefined;
+  service: Coding;
+  /**
+   * Additional items
+   * Third tier of goods and services.
+   */
+  subDetail?: ClaimItemDetailSubDetail[] | undefined;
+  /**
+   * Group or type of product or service
+   * The type of product or service.
+   */
+  type: Coding;
+  /**
+   * Unique Device Identifier
+   * List of Unique Device Identifiers associated with this line item.
+   */
+  udi?: Coding | undefined;
+  /**
+   * Fee, charge or cost per point
+   * If the item is a node then this is the fee for the product or service, otherwise this is the total of the fees for the children of the group.
+   */
+  unitPrice?: Quantity | undefined;
 }
 /**
- * Line items
- * The first tier service adjudications for submitted services.
+ * Additional items
+ * Third tier of goods and services.
  */
-export interface ClaimResponseItem extends BackboneElement {
+export interface ClaimItemDetailSubDetail extends BackboneElement {
   /**
-   * Adjudication details
-   * The adjudications results.
+   * Price scaling factor
+   * A real number that represents a multiplier used in determining the overall value of services delivered and/or goods received. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount.
    */
-  adjudication?: ClaimResponseItemAdjudication[] | undefined;
+  factor?: number | undefined;
   /**
-   * Detail line items
-   * The second tier service adjudications for submitted services.
+   * Net additional item cost
+   * The quantity times the unit price for an additional  service or product or charge. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied.
    */
-  detail?: ClaimResponseItemDetail[] | undefined;
+  net?: Quantity | undefined;
   /**
-   * List of note numbers which apply
-   * A list of note references to the notes provided below.
+   * Difficulty scaling factor
+   * An amount that expresses the weighting (based on difficulty, cost and/or resource intensiveness) associated with the good or service delivered. The concept of Points allows for assignment of point values for services and/or goods, such that a monetary amount can be assigned to each point.
    */
-  noteNumber?: number[] | undefined;
+  points?: number | undefined;
+  /**
+   * Count of Products or Services
+   * The number of repetitions of a service or product.
+   */
+  quantity?: Quantity | undefined;
   /**
    * Service instance
    * A service line number.
    */
-  sequenceLinkId: number;
+  sequence: number;
+  /**
+   * Additional item codes
+   * The fee for an additional  service or product or charge.
+   */
+  service: Coding;
+  /**
+   * Type of product or service
+   * The type of product or service.
+   */
+  type: Coding;
+  /**
+   * Unique Device Identifier
+   * List of Unique Device Identifiers associated with this line item.
+   */
+  udi?: Coding | undefined;
+  /**
+   * Fee, charge or cost per point
+   * The fee for an additional  service or product or charge.
+   */
+  unitPrice?: Quantity | undefined;
 }
 /**
- * Processing notes
- * Note text.
+ * Prosthetic details
+ * The materials and placement date of prior fixed prosthesis.
  */
-export interface ClaimResponseNote extends BackboneElement {
+export interface ClaimItemProsthesis extends BackboneElement {
   /**
-   * Note Number for this note
-   * An integer associated with each note which may be referred to from each service line item.
+   * Is this the initial service
+   * Indicates whether this is the initial placement of a fixed prosthesis.
    */
-  number?: number | undefined;
+  initial?: boolean | undefined;
+  _initial?: Element | undefined;
   /**
-   * Note explanatory text
-   * The note text.
+   * Initial service Date
+   * Date of the initial placement.
    */
-  text?: string | undefined;
-  _text?: Element | undefined;
+  priorDate?: string | undefined;
+  _priorDate?: Element | undefined;
   /**
-   * display | print | printoper
-   * The note purpose: Print/Display.
+   * Prosthetic Material
+   * Material of the prior denture or bridge prosthesis. (Oral).
+   */
+  priorMaterial?: Coding | undefined;
+}
+/**
+ * Only if type = oral
+ * A list of teeth which would be expected but are not found due to having been previously  extracted or for other reasons.
+ */
+export interface ClaimMissingTeeth extends BackboneElement {
+  /**
+   * Date of Extraction
+   * The date of the extraction either known from records or patient reported estimate.
+   */
+  extractionDate?: string | undefined;
+  _extractionDate?: Element | undefined;
+  /**
+   * Reason for missing
+   * Missing reason may be: E-extraction, O-other.
+   */
+  reason?: Coding | undefined;
+  /**
+   * Tooth Code
+   * The code identifying which tooth is missing.
+   */
+  tooth: Coding;
+}
+/**
+ * Payee
+ * The party to be reimbursed for the services.
+ */
+export interface ClaimPayee extends BackboneElement {
+  /**
+   * Organization who is the payee
+   * The organization who is to be reimbursed for the claim (the party to whom any benefit is assigned).
+   */
+  organization?: Reference | undefined;
+  /**
+   * Other person who is the payee
+   * The person other than the subscriber who is to be reimbursed for the claim (the party to whom any benefit is assigned).
+   */
+  person?: Reference | undefined;
+  /**
+   * Provider who is the payee
+   * The provider who is to be reimbursed for the claim (the party to whom any benefit is assigned).
+   */
+  provider?: Reference | undefined;
+  /**
+   * Party to be paid any benefits payable
+   * Party to be reimbursed: Subscriber, provider, other.
    */
   type?: Coding | undefined;
 }
@@ -3742,49 +3425,321 @@ export interface ClaimResponse extends DomainResource {
   unallocDeductable?: Quantity | undefined;
 }
 /**
- * Possible or likely findings and diagnoses
- * Specific findings or diagnoses that was considered likely or relevant to ongoing treatment.
+ * Insurer added line items
+ * The first tier service adjudications for payor added services.
  */
-export interface ClinicalImpressionFinding extends BackboneElement {
+export interface ClaimResponseAddItem extends BackboneElement {
   /**
-   * Which investigations support finding or diagnosis.
+   * Added items adjudication
+   * The adjudications results.
    */
-  cause?: string | undefined;
-  _cause?: Element | undefined;
+  adjudication?: ClaimResponseAddItemAdjudication[] | undefined;
   /**
-   * Specific text or code for finding
-   * Specific text of code for finding or diagnosis.
+   * Added items details
+   * The second tier service adjudications for payor added services.
    */
-  item: CodeableConcept;
+  detail?: ClaimResponseAddItemDetail[] | undefined;
+  /**
+   * Professional fee or Product charge
+   * The fee charged for the professional service or product..
+   */
+  fee?: Quantity | undefined;
+  /**
+   * List of note numbers which apply
+   * A list of note references to the notes provided below.
+   */
+  noteNumberLinkId?: number[] | undefined;
+  /**
+   * Service instances
+   * List of input service items which this service line is intended to replace.
+   */
+  sequenceLinkId?: number[] | undefined;
+  /**
+   * Group, Service or Product
+   * A code to indicate the Professional Service or Product supplied.
+   */
+  service: Coding;
 }
 /**
- * One or more sets of investigations (signs, symptions, etc.). The actual grouping of investigations vary greatly depending on the type and context of the assessment. These investigations may include data generated during the assessment process, or data previously generated and recorded that is pertinent to the outcomes.
+ * Added items adjudication
+ * The adjudications results.
  */
-export interface ClinicalImpressionInvestigations extends BackboneElement {
+export interface ClaimResponseAddItemAdjudication extends BackboneElement {
   /**
-   * A name/code for the set
-   * A name/code for the group ("set") of investigations. Typically, this will be something like "signs", "symptoms", "clinical", "diagnostic", but the list is not constrained, and others such groups such as (exposure|family|travel|nutitirional) history may be used.
+   * Monetary amount associated with the code.
    */
-  code: CodeableConcept;
+  amount?: Quantity | undefined;
   /**
-   * Record of a specific investigation
-   * A record of a specific investigation that was undertaken.
+   * Adjudication category such as co-pay, eligible, benefit, etc.
+   * Code indicating: Co-Pay, deductible, eligible, benefit, tax, etc.
    */
-  item?: Reference[] | undefined;
+  code: Coding;
+  /**
+   * Non-monetary value
+   * A non-monetary value for example a percentage. Mutually exclusive to the amount element above.
+   */
+  value?: number | undefined;
 }
 /**
- * Diagnosis considered not possible.
+ * Added items details
+ * The second tier service adjudications for payor added services.
  */
-export interface ClinicalImpressionRuledOut extends BackboneElement {
+export interface ClaimResponseAddItemDetail extends BackboneElement {
   /**
-   * Specific text of code for diagnosis.
+   * Added items detail adjudication
+   * The adjudications results.
    */
-  item: CodeableConcept;
+  adjudication?: ClaimResponseAddItemDetailAdjudication[] | undefined;
   /**
-   * Grounds for elimination.
+   * Professional fee or Product charge
+   * The fee charged for the professional service or product..
    */
-  reason?: string | undefined;
-  _reason?: Element | undefined;
+  fee?: Quantity | undefined;
+  /**
+   * Service or Product
+   * A code to indicate the Professional Service or Product supplied.
+   */
+  service: Coding;
+}
+/**
+ * Added items detail adjudication
+ * The adjudications results.
+ */
+export interface ClaimResponseAddItemDetailAdjudication extends BackboneElement {
+  /**
+   * Monetary amount associated with the code.
+   */
+  amount?: Quantity | undefined;
+  /**
+   * Adjudication category such as co-pay, eligible, benefit, etc.
+   * Code indicating: Co-Pay, deductible, eligible, benefit, tax, etc.
+   */
+  code: Coding;
+  /**
+   * Non-monetary value
+   * A non-monetary value for example a percentage. Mutually exclusive to the amount element above.
+   */
+  value?: number | undefined;
+}
+/**
+ * Insurance or medical plan
+ * Financial instrument by which payment information for health care.
+ */
+export interface ClaimResponseCoverage extends BackboneElement {
+  /**
+   * Business agreement
+   * The contract number of a business agreement which describes the terms and conditions.
+   */
+  businessArrangement?: string | undefined;
+  _businessArrangement?: Element | undefined;
+  /**
+   * Adjudication results
+   * The Coverages adjudication details.
+   */
+  claimResponse?: Reference | undefined;
+  /**
+   * Insurance information
+   * Reference to the program or plan identification, underwriter or payor.
+   */
+  coverage: Reference;
+  /**
+   * Is the focal Coverage
+   * The instance number of the Coverage which is the focus for adjudication. The Coverage against which the claim is to be adjudicated.
+   */
+  focal: boolean;
+  _focal?: Element | undefined;
+  /**
+   * Original version
+   * The style (standard) and version of the original material which was converted into this resource.
+   */
+  originalRuleset?: Coding | undefined;
+  /**
+   * Pre-Authorization/Determination Reference
+   * A list of references from the Insurer to which these services pertain.
+   */
+  preAuthRef?: string[] | undefined;
+  _preAuthRef?: Element[] | undefined;
+  /**
+   * Patient relationship to subscriber
+   * The relationship of the patient to the subscriber.
+   */
+  relationship: Coding;
+  /**
+   * Service instance identifier
+   * A service line item.
+   */
+  sequence: number;
+}
+/**
+ * Processing errors
+ * Mutually exclusive with Services Provided (Item).
+ */
+export interface ClaimResponseError extends BackboneElement {
+  /**
+   * Error code detailing processing issues
+   * An error code,froma specified code system, which details why the claim could not be adjudicated.
+   */
+  code: Coding;
+  /**
+   * Detail sequence number
+   * The sequence number of the addition within the line item submitted which contains the error. This value is omitted when the error is not related to an Addition.
+   */
+  detailSequenceLinkId?: number | undefined;
+  /**
+   * Item sequence number
+   * The sequence number of the line item submitted which contains the error. This value is omitted when the error is elsewhere.
+   */
+  sequenceLinkId?: number | undefined;
+  /**
+   * Subdetail sequence number
+   * The sequence number of the addition within the line item submitted which contains the error. This value is omitted when the error is not related to an Addition.
+   */
+  subdetailSequenceLinkId?: number | undefined;
+}
+/**
+ * Line items
+ * The first tier service adjudications for submitted services.
+ */
+export interface ClaimResponseItem extends BackboneElement {
+  /**
+   * Adjudication details
+   * The adjudications results.
+   */
+  adjudication?: ClaimResponseItemAdjudication[] | undefined;
+  /**
+   * Detail line items
+   * The second tier service adjudications for submitted services.
+   */
+  detail?: ClaimResponseItemDetail[] | undefined;
+  /**
+   * List of note numbers which apply
+   * A list of note references to the notes provided below.
+   */
+  noteNumber?: number[] | undefined;
+  /**
+   * Service instance
+   * A service line number.
+   */
+  sequenceLinkId: number;
+}
+/**
+ * Adjudication details
+ * The adjudications results.
+ */
+export interface ClaimResponseItemAdjudication extends BackboneElement {
+  /**
+   * Monetary amount associated with the code.
+   */
+  amount?: Quantity | undefined;
+  /**
+   * Adjudication category such as co-pay, eligible, benefit, etc.
+   * Code indicating: Co-Pay, deductible, eligible, benefit, tax, etc.
+   */
+  code: Coding;
+  /**
+   * Non-monetary value
+   * A non-monetary value for example a percentage. Mutually exclusive to the amount element above.
+   */
+  value?: number | undefined;
+}
+/**
+ * Detail line items
+ * The second tier service adjudications for submitted services.
+ */
+export interface ClaimResponseItemDetail extends BackboneElement {
+  /**
+   * Detail adjudication
+   * The adjudications results.
+   */
+  adjudication?: ClaimResponseItemDetailAdjudication[] | undefined;
+  /**
+   * Service instance
+   * A service line number.
+   */
+  sequenceLinkId: number;
+  /**
+   * Subdetail line items
+   * The third tier service adjudications for submitted services.
+   */
+  subDetail?: ClaimResponseItemDetailSubDetail[] | undefined;
+}
+/**
+ * Detail adjudication
+ * The adjudications results.
+ */
+export interface ClaimResponseItemDetailAdjudication extends BackboneElement {
+  /**
+   * Monetary amount associated with the code.
+   */
+  amount?: Quantity | undefined;
+  /**
+   * Adjudication category such as co-pay, eligible, benefit, etc.
+   * Code indicating: Co-Pay, deductible, eligible, benefit, tax, etc.
+   */
+  code: Coding;
+  /**
+   * Non-monetary value
+   * A non-monetary value for example a percentage. Mutually exclusive to the amount element above.
+   */
+  value?: number | undefined;
+}
+/**
+ * Subdetail line items
+ * The third tier service adjudications for submitted services.
+ */
+export interface ClaimResponseItemDetailSubDetail extends BackboneElement {
+  /**
+   * Subdetail adjudication
+   * The adjudications results.
+   */
+  adjudication?: ClaimResponseItemDetailSubDetailAdjudication[] | undefined;
+  /**
+   * Service instance
+   * A service line number.
+   */
+  sequenceLinkId: number;
+}
+/**
+ * Subdetail adjudication
+ * The adjudications results.
+ */
+export interface ClaimResponseItemDetailSubDetailAdjudication extends BackboneElement {
+  /**
+   * Monetary amount associated with the code.
+   */
+  amount?: Quantity | undefined;
+  /**
+   * Adjudication category such as co-pay, eligible, benefit, etc.
+   * Code indicating: Co-Pay, deductible, eligible, benefit, tax, etc.
+   */
+  code: Coding;
+  /**
+   * Non-monetary value
+   * A non-monetary value for example a percentage. Mutually exclusive to the amount element above.
+   */
+  value?: number | undefined;
+}
+/**
+ * Processing notes
+ * Note text.
+ */
+export interface ClaimResponseNote extends BackboneElement {
+  /**
+   * Note Number for this note
+   * An integer associated with each note which may be referred to from each service line item.
+   */
+  number?: number | undefined;
+  /**
+   * Note explanatory text
+   * The note text.
+   */
+  text?: string | undefined;
+  _text?: Element | undefined;
+  /**
+   * display | print | printoper
+   * The note purpose: Print/Display.
+   */
+  type?: Coding | undefined;
 }
 /**
  * Base StructureDefinition for ClinicalImpression Resource
@@ -3882,26 +3837,49 @@ export interface ClinicalImpression extends DomainResource {
   triggerReference?: Reference | undefined;
 }
 /**
- * Message payload
- * Text, attachment(s), or resource(s) that was communicated to the recipient.
+ * Possible or likely findings and diagnoses
+ * Specific findings or diagnoses that was considered likely or relevant to ongoing treatment.
  */
-export interface CommunicationPayload extends BackboneElement {
+export interface ClinicalImpressionFinding extends BackboneElement {
   /**
-   * Message part content
-   * A communicated content (or for multi-part communications, one portion of the communication).
+   * Which investigations support finding or diagnosis.
    */
-  contentAttachment?: Attachment | undefined;
+  cause?: string | undefined;
+  _cause?: Element | undefined;
   /**
-   * Message part content
-   * A communicated content (or for multi-part communications, one portion of the communication).
+   * Specific text or code for finding
+   * Specific text of code for finding or diagnosis.
    */
-  contentReference?: Reference | undefined;
+  item: CodeableConcept;
+}
+/**
+ * One or more sets of investigations (signs, symptions, etc.). The actual grouping of investigations vary greatly depending on the type and context of the assessment. These investigations may include data generated during the assessment process, or data previously generated and recorded that is pertinent to the outcomes.
+ */
+export interface ClinicalImpressionInvestigations extends BackboneElement {
   /**
-   * Message part content
-   * A communicated content (or for multi-part communications, one portion of the communication).
+   * A name/code for the set
+   * A name/code for the group ("set") of investigations. Typically, this will be something like "signs", "symptoms", "clinical", "diagnostic", but the list is not constrained, and others such groups such as (exposure|family|travel|nutitirional) history may be used.
    */
-  contentString?: string | undefined;
-  _contentString?: Element | undefined;
+  code: CodeableConcept;
+  /**
+   * Record of a specific investigation
+   * A record of a specific investigation that was undertaken.
+   */
+  item?: Reference[] | undefined;
+}
+/**
+ * Diagnosis considered not possible.
+ */
+export interface ClinicalImpressionRuledOut extends BackboneElement {
+  /**
+   * Specific text of code for diagnosis.
+   */
+  item: CodeableConcept;
+  /**
+   * Grounds for elimination.
+   */
+  reason?: string | undefined;
+  _reason?: Element | undefined;
 }
 /**
  * Base StructureDefinition for Communication Resource
@@ -3979,22 +3957,22 @@ export interface Communication extends DomainResource {
 }
 /**
  * Message payload
- * Text, attachment(s), or resource(s) to be communicated to the recipient.
+ * Text, attachment(s), or resource(s) that was communicated to the recipient.
  */
-export interface CommunicationRequestPayload extends BackboneElement {
+export interface CommunicationPayload extends BackboneElement {
   /**
    * Message part content
-   * The communicated content (or for multi-part communications, one portion of the communication).
+   * A communicated content (or for multi-part communications, one portion of the communication).
    */
   contentAttachment?: Attachment | undefined;
   /**
    * Message part content
-   * The communicated content (or for multi-part communications, one portion of the communication).
+   * A communicated content (or for multi-part communications, one portion of the communication).
    */
   contentReference?: Reference | undefined;
   /**
    * Message part content
-   * The communicated content (or for multi-part communications, one portion of the communication).
+   * A communicated content (or for multi-part communications, one portion of the communication).
    */
   contentString?: string | undefined;
   _contentString?: Element | undefined;
@@ -4084,6 +4062,108 @@ export interface CommunicationRequest extends DomainResource {
   subject?: Reference | undefined;
 }
 /**
+ * Message payload
+ * Text, attachment(s), or resource(s) to be communicated to the recipient.
+ */
+export interface CommunicationRequestPayload extends BackboneElement {
+  /**
+   * Message part content
+   * The communicated content (or for multi-part communications, one portion of the communication).
+   */
+  contentAttachment?: Attachment | undefined;
+  /**
+   * Message part content
+   * The communicated content (or for multi-part communications, one portion of the communication).
+   */
+  contentReference?: Reference | undefined;
+  /**
+   * Message part content
+   * The communicated content (or for multi-part communications, one portion of the communication).
+   */
+  contentString?: string | undefined;
+  _contentString?: Element | undefined;
+}
+/**
+ * Base StructureDefinition for Composition Resource
+ */
+export interface Composition extends DomainResource {
+  /** Resource Type Name (for serialization) */
+  readonly resourceType: 'Composition';
+  /**
+   * Attests to accuracy of composition
+   * A participant who has attested to the accuracy of the composition/document.
+   */
+  attester?: CompositionAttester[] | undefined;
+  /**
+   * Who and/or what authored the composition
+   * Identifies who is responsible for the information in the composition, not necessarily who typed it in.
+   */
+  author: Reference[];
+  /**
+   * Categorization of Composition
+   * A categorization for the type of the composition - helps for indexing and searching. This may be implied by or derived from the code specified in the Composition Type.
+   */
+  class?: CodeableConcept | undefined;
+  /**
+   * As defined by affinity domain
+   * The code specifying the level of confidentiality of the Composition.
+   */
+  confidentiality?: ('_Confidentiality'|'L'|'M'|'N'|'R'|'U'|'V') | undefined;
+  _confidentiality?: Element | undefined;
+  /**
+   * Organization which maintains the composition
+   * Identifies the organization or group who is responsible for ongoing maintenance of and access to the composition/document information.
+   */
+  custodian?: Reference | undefined;
+  /**
+   * Composition editing time
+   * The composition editing time, when the composition was last logically changed by the author.
+   */
+  date: string;
+  _date?: Element | undefined;
+  /**
+   * Context of the Composition
+   * Describes the clinical encounter or type of care this documentation is associated with.
+   */
+  encounter?: Reference | undefined;
+  /**
+   * The clinical service(s) being documented
+   * The clinical service, such as a colonoscopy or an appendectomy, being documented.
+   */
+  event?: CompositionEvent[] | undefined;
+  /**
+   * Logical identifier of composition (version-independent)
+   * Logical identifier for the composition, assigned when created. This identifier stays constant as the composition is changed over time.
+   */
+  identifier?: Identifier | undefined;
+  /**
+   * Composition is broken into sections
+   * The root of the sections that make up the composition.
+   */
+  section?: CompositionSection[] | undefined;
+  /**
+   * The workflow/clinical status of this composition. The status is a marker for the clinical standing of the document.
+   */
+  status: ('preliminary'|'final'|'amended'|'entered-in-error');
+  _status?: Element | undefined;
+  /**
+   * Who and/or what the composition is about
+   * Who or what the composition is about. The composition can be about a person, (patient or healthcare practitioner), a device (e.g. a machine) or even a group of subjects (such as a document about a herd of livestock, or a set of patients that share a common exposure).
+   */
+  subject: Reference;
+  /**
+   * Human Readable name/title
+   * Official human-readable label for the composition.
+   */
+  title: string;
+  _title?: Element | undefined;
+  /**
+   * Kind of composition (LOINC if possible)
+   * Specifies the particular kind of composition (e.g. History and Physical, Discharge Summary, Progress Note). This usually equates to the purpose of making the composition.
+   */
+  type: CodeableConcept;
+}
+/**
  * Attests to accuracy of composition
  * A participant who has attested to the accuracy of the composition/document.
  */
@@ -4171,189 +4251,6 @@ export interface CompositionSection extends BackboneElement {
    */
   title?: string | undefined;
   _title?: Element | undefined;
-}
-/**
- * Base StructureDefinition for Composition Resource
- */
-export interface Composition extends DomainResource {
-  /** Resource Type Name (for serialization) */
-  readonly resourceType: 'Composition';
-  /**
-   * Attests to accuracy of composition
-   * A participant who has attested to the accuracy of the composition/document.
-   */
-  attester?: CompositionAttester[] | undefined;
-  /**
-   * Who and/or what authored the composition
-   * Identifies who is responsible for the information in the composition, not necessarily who typed it in.
-   */
-  author: Reference[];
-  /**
-   * Categorization of Composition
-   * A categorization for the type of the composition - helps for indexing and searching. This may be implied by or derived from the code specified in the Composition Type.
-   */
-  class?: CodeableConcept | undefined;
-  /**
-   * As defined by affinity domain
-   * The code specifying the level of confidentiality of the Composition.
-   */
-  confidentiality?: ('_Confidentiality'|'L'|'M'|'N'|'R'|'U'|'V') | undefined;
-  _confidentiality?: Element | undefined;
-  /**
-   * Organization which maintains the composition
-   * Identifies the organization or group who is responsible for ongoing maintenance of and access to the composition/document information.
-   */
-  custodian?: Reference | undefined;
-  /**
-   * Composition editing time
-   * The composition editing time, when the composition was last logically changed by the author.
-   */
-  date: string;
-  _date?: Element | undefined;
-  /**
-   * Context of the Composition
-   * Describes the clinical encounter or type of care this documentation is associated with.
-   */
-  encounter?: Reference | undefined;
-  /**
-   * The clinical service(s) being documented
-   * The clinical service, such as a colonoscopy or an appendectomy, being documented.
-   */
-  event?: CompositionEvent[] | undefined;
-  /**
-   * Logical identifier of composition (version-independent)
-   * Logical identifier for the composition, assigned when created. This identifier stays constant as the composition is changed over time.
-   */
-  identifier?: Identifier | undefined;
-  /**
-   * Composition is broken into sections
-   * The root of the sections that make up the composition.
-   */
-  section?: CompositionSection[] | undefined;
-  /**
-   * The workflow/clinical status of this composition. The status is a marker for the clinical standing of the document.
-   */
-  status: ('preliminary'|'final'|'amended'|'entered-in-error');
-  _status?: Element | undefined;
-  /**
-   * Who and/or what the composition is about
-   * Who or what the composition is about. The composition can be about a person, (patient or healthcare practitioner), a device (e.g. a machine) or even a group of subjects (such as a document about a herd of livestock, or a set of patients that share a common exposure).
-   */
-  subject: Reference;
-  /**
-   * Human Readable name/title
-   * Official human-readable label for the composition.
-   */
-  title: string;
-  _title?: Element | undefined;
-  /**
-   * Kind of composition (LOINC if possible)
-   * Specifies the particular kind of composition (e.g. History and Physical, Discharge Summary, Progress Note). This usually equates to the purpose of making the composition.
-   */
-  type: CodeableConcept;
-}
-/**
- * Contact details of the publisher
- * Contacts to assist a user in finding and communicating with the publisher.
- */
-export interface ConceptMapContact extends BackboneElement {
-  /**
-   * Name of a individual to contact
-   * The name of an individual to contact regarding the concept map.
-   */
-  name?: string | undefined;
-  _name?: Element | undefined;
-  /**
-   * Contact details for individual or publisher
-   * Contact details for individual (if a name was provided) or the publisher.
-   */
-  telecom?: ContactPoint[] | undefined;
-}
-/**
- * Other elements required for this mapping (from context)
- * A set of additional dependencies for this mapping to hold. This mapping is only applicable if the specified element can be resolved, and it has the specified value.
- */
-export interface ConceptMapElementTargetDependsOn extends BackboneElement {
-  /**
-   * Value of the referenced element
-   * Identity (code or path) or the element/item/ValueSet that the map depends on / refers to.
-   */
-  code: string;
-  _code?: Element | undefined;
-  /**
-   * Code System (if necessary)
-   * An absolute URI that identifies the code system of the dependency code (if the source/dependency is a value set that crosses code systems).
-   */
-  codeSystem: string;
-  _codeSystem?: Element | undefined;
-  /**
-   * Reference to element/field/ValueSet mapping depends on
-   * A reference to a specific concept that holds a coded value. This can be an element in a FHIR resource, or a specific reference to a data element in a different specification (e.g. HL7 v2) or a general reference to a kind of data field, or a reference to a value set with an appropriately narrow definition.
-   */
-  element: string;
-  _element?: Element | undefined;
-}
-/**
- * Concept in target system for element
- * A concept from the target value set that this concept maps to.
- */
-export interface ConceptMapElementTarget extends BackboneElement {
-  /**
-   * Code that identifies the target element
-   * Identity (code or path) or the element/item that the map refers to.
-   */
-  code?: string | undefined;
-  _code?: Element | undefined;
-  /**
-   * System of the target (if necessary)
-   * An absolute URI that identifies the code system of the target code (if the target is a value set that cross code systems).
-   */
-  codeSystem?: string | undefined;
-  _codeSystem?: Element | undefined;
-  /**
-   * Description of status/issues in mapping
-   * A description of status/issues in mapping that conveys additional information not represented in  the structured data.
-   */
-  comments?: string | undefined;
-  _comments?: Element | undefined;
-  /**
-   * Other elements required for this mapping (from context)
-   * A set of additional dependencies for this mapping to hold. This mapping is only applicable if the specified element can be resolved, and it has the specified value.
-   */
-  dependsOn?: ConceptMapElementTargetDependsOn[] | undefined;
-  /**
-   * The equivalence between the source and target concepts (counting for the dependencies and products). The equivalence is read from target to source (e.g. the target is 'wider' than the source).
-   */
-  equivalence: ('equivalent'|'equal'|'wider'|'subsumes'|'narrower'|'specializes'|'inexact'|'unmatched'|'disjoint');
-  _equivalence?: Element | undefined;
-  /**
-   * Other concepts that this mapping also produces
-   * A set of additional outcomes from this mapping to other elements. To properly execute this mapping, the specified element must be mapped to some data element or source that is in context. The mapping may still be useful without a place for the additional data elements, but the equivalence cannot be relied on.
-   */
-  product?: ConceptMapElementTargetDependsOn[] | undefined;
-}
-/**
- * Mappings for a concept from the source set
- * Mappings for an individual concept in the source to one or more concepts in the target.
- */
-export interface ConceptMapElement extends BackboneElement {
-  /**
-   * Identifies element being mapped
-   * Identity (code or path) or the element/item being mapped.
-   */
-  code?: string | undefined;
-  _code?: Element | undefined;
-  /**
-   * Code System (if value set crosses code systems)
-   * An absolute URI that identifies the Code System (if the source is a value set that crosses more than one code system).
-   */
-  codeSystem?: string | undefined;
-  _codeSystem?: Element | undefined;
-  /**
-   * Concept in target system for element
-   * A concept from the target value set that this concept maps to.
-   */
-  target?: ConceptMapElementTarget[] | undefined;
 }
 /**
  * Base StructureDefinition for ConceptMap Resource
@@ -4464,36 +4361,107 @@ export interface ConceptMap extends DomainResource {
   _version?: Element | undefined;
 }
 /**
- * Supporting evidence
- * Supporting Evidence / manifestations that are the basis on which this condition is suspected or confirmed.
+ * Contact details of the publisher
+ * Contacts to assist a user in finding and communicating with the publisher.
  */
-export interface ConditionEvidence extends BackboneElement {
+export interface ConceptMapContact extends BackboneElement {
   /**
-   * Manifestation/symptom
-   * A manifestation or symptom that led to the recording of this condition.
+   * Name of a individual to contact
+   * The name of an individual to contact regarding the concept map.
    */
-  code?: CodeableConcept | undefined;
+  name?: string | undefined;
+  _name?: Element | undefined;
   /**
-   * Supporting information found elsewhere
-   * Links to other relevant information, including pathology reports.
+   * Contact details for individual or publisher
+   * Contact details for individual (if a name was provided) or the publisher.
    */
-  detail?: Reference[] | undefined;
+  telecom?: ContactPoint[] | undefined;
 }
 /**
- * Stage/grade, usually assessed formally
- * Clinical stage or grade of a condition. May include formal severity assessments.
+ * Mappings for a concept from the source set
+ * Mappings for an individual concept in the source to one or more concepts in the target.
  */
-export interface ConditionStage extends BackboneElement {
+export interface ConceptMapElement extends BackboneElement {
   /**
-   * Formal record of assessment
-   * Reference to a formal record of the evidence on which the staging assessment is based.
+   * Identifies element being mapped
+   * Identity (code or path) or the element/item being mapped.
    */
-  assessment?: Reference[] | undefined;
+  code?: string | undefined;
+  _code?: Element | undefined;
   /**
-   * Simple summary (disease specific)
-   * A simple summary of the stage such as "Stage 3". The determination of the stage is disease-specific.
+   * Code System (if value set crosses code systems)
+   * An absolute URI that identifies the Code System (if the source is a value set that crosses more than one code system).
    */
-  summary?: CodeableConcept | undefined;
+  codeSystem?: string | undefined;
+  _codeSystem?: Element | undefined;
+  /**
+   * Concept in target system for element
+   * A concept from the target value set that this concept maps to.
+   */
+  target?: ConceptMapElementTarget[] | undefined;
+}
+/**
+ * Concept in target system for element
+ * A concept from the target value set that this concept maps to.
+ */
+export interface ConceptMapElementTarget extends BackboneElement {
+  /**
+   * Code that identifies the target element
+   * Identity (code or path) or the element/item that the map refers to.
+   */
+  code?: string | undefined;
+  _code?: Element | undefined;
+  /**
+   * System of the target (if necessary)
+   * An absolute URI that identifies the code system of the target code (if the target is a value set that cross code systems).
+   */
+  codeSystem?: string | undefined;
+  _codeSystem?: Element | undefined;
+  /**
+   * Description of status/issues in mapping
+   * A description of status/issues in mapping that conveys additional information not represented in  the structured data.
+   */
+  comments?: string | undefined;
+  _comments?: Element | undefined;
+  /**
+   * Other elements required for this mapping (from context)
+   * A set of additional dependencies for this mapping to hold. This mapping is only applicable if the specified element can be resolved, and it has the specified value.
+   */
+  dependsOn?: ConceptMapElementTargetDependsOn[] | undefined;
+  /**
+   * The equivalence between the source and target concepts (counting for the dependencies and products). The equivalence is read from target to source (e.g. the target is 'wider' than the source).
+   */
+  equivalence: ('equivalent'|'equal'|'wider'|'subsumes'|'narrower'|'specializes'|'inexact'|'unmatched'|'disjoint');
+  _equivalence?: Element | undefined;
+  /**
+   * Other concepts that this mapping also produces
+   * A set of additional outcomes from this mapping to other elements. To properly execute this mapping, the specified element must be mapped to some data element or source that is in context. The mapping may still be useful without a place for the additional data elements, but the equivalence cannot be relied on.
+   */
+  product?: ConceptMapElementTargetDependsOn[] | undefined;
+}
+/**
+ * Other elements required for this mapping (from context)
+ * A set of additional dependencies for this mapping to hold. This mapping is only applicable if the specified element can be resolved, and it has the specified value.
+ */
+export interface ConceptMapElementTargetDependsOn extends BackboneElement {
+  /**
+   * Value of the referenced element
+   * Identity (code or path) or the element/item/ValueSet that the map depends on / refers to.
+   */
+  code: string;
+  _code?: Element | undefined;
+  /**
+   * Code System (if necessary)
+   * An absolute URI that identifies the code system of the dependency code (if the source/dependency is a value set that crosses code systems).
+   */
+  codeSystem: string;
+  _codeSystem?: Element | undefined;
+  /**
+   * Reference to element/field/ValueSet mapping depends on
+   * A reference to a specific concept that holds a coded value. This can be an element in a FHIR resource, or a specific reference to a data element in a different specification (e.g. HL7 v2) or a general reference to a kind of data field, or a reference to a value set with an appropriately narrow definition.
+   */
+  element: string;
+  _element?: Element | undefined;
 }
 /**
  * Base StructureDefinition for Condition Resource
@@ -4622,438 +4590,36 @@ export interface Condition extends DomainResource {
   _verificationStatus?: Element | undefined;
 }
 /**
- * Contact details of the publisher
- * Contacts to assist a user in finding and communicating with the publisher.
+ * Supporting evidence
+ * Supporting Evidence / manifestations that are the basis on which this condition is suspected or confirmed.
  */
-export interface ConformanceContact extends BackboneElement {
+export interface ConditionEvidence extends BackboneElement {
   /**
-   * Name of a individual to contact
-   * The name of an individual to contact regarding the conformance.
+   * Manifestation/symptom
+   * A manifestation or symptom that led to the recording of this condition.
    */
-  name?: string | undefined;
-  _name?: Element | undefined;
+  code?: CodeableConcept | undefined;
   /**
-   * Contact details for individual or publisher
-   * Contact details for individual (if a name was provided) or the publisher.
+   * Supporting information found elsewhere
+   * Links to other relevant information, including pathology reports.
    */
-  telecom?: ContactPoint[] | undefined;
+  detail?: Reference[] | undefined;
 }
 /**
- * Document definition
- * A document definition.
+ * Stage/grade, usually assessed formally
+ * Clinical stage or grade of a condition. May include formal severity assessments.
  */
-export interface ConformanceDocument extends BackboneElement {
+export interface ConditionStage extends BackboneElement {
   /**
-   * Description of document support
-   * A description of how the application supports or uses the specified document profile.  For example, when are documents created, what action is taken with consumed documents, etc.
+   * Formal record of assessment
+   * Reference to a formal record of the evidence on which the staging assessment is based.
    */
-  documentation?: string | undefined;
-  _documentation?: Element | undefined;
+  assessment?: Reference[] | undefined;
   /**
-   * producer | consumer
-   * Mode of this document declaration - whether application is producer or consumer.
+   * Simple summary (disease specific)
+   * A simple summary of the stage such as "Stage 3". The determination of the stage is disease-specific.
    */
-  mode: ('producer'|'consumer');
-  _mode?: Element | undefined;
-  /**
-   * Constraint on a resource used in the document
-   * A constraint on a resource used in the document.
-   */
-  profile: Reference;
-}
-/**
- * If this describes a specific instance
- * Identifies a specific implementation instance that is described by the conformance statement - i.e. a particular installation, rather than the capabilities of a software program.
- */
-export interface ConformanceImplementation extends BackboneElement {
-  /**
-   * Describes this specific instance
-   * Information about the specific installation that this conformance statement relates to.
-   */
-  description: string;
-  _description?: Element | undefined;
-  /**
-   * Base URL for the installation
-   * An absolute base URL for the implementation.  This forms the base for REST interfaces as well as the mailbox and document interfaces.
-   */
-  url?: string | undefined;
-  _url?: Element | undefined;
-}
-/**
- * A messaging service end-point
- * An endpoint (network accessible address) to which messages and/or replies are to be sent.
- */
-export interface ConformanceMessagingEndpoint extends BackboneElement {
-  /**
-   * Address of end-point
-   * The network address of the end-point. For solutions that do not use network addresses for routing, it can be just an identifier.
-   */
-  address: string;
-  _address?: Element | undefined;
-  /**
-   * http | ftp | mllp +
-   * A list of the messaging transport protocol(s) identifiers, supported by this endpoint.
-   */
-  protocol: Coding;
-}
-/**
- * Declare support for this event
- * A description of the solution's support for an event at this end-point.
- */
-export interface ConformanceMessagingEvent extends BackboneElement {
-  /**
-   * The impact of the content of the message.
-   */
-  category?: ('Consequence'|'Currency'|'Notification') | undefined;
-  _category?: Element | undefined;
-  /**
-   * Event type
-   * A coded identifier of a supported messaging event.
-   */
-  code: Coding;
-  /**
-   * Endpoint-specific event documentation
-   * Guidance on how this event is handled, such as internal system trigger points, business rules, etc.
-   */
-  documentation?: string | undefined;
-  _documentation?: Element | undefined;
-  /**
-   * Resource that's focus of message
-   * A resource associated with the event.  This is the resource that defines the event.
-   */
-  focus: ('Account'|'AllergyIntolerance'|'Appointment'|'AppointmentResponse'|'AuditEvent'|'Basic'|'Binary'|'BodySite'|'Bundle'|'CarePlan'|'Claim'|'ClaimResponse'|'ClinicalImpression'|'Communication'|'CommunicationRequest'|'Composition'|'ConceptMap'|'Condition'|'Conformance'|'Contract'|'Coverage'|'DataElement'|'DetectedIssue'|'Device'|'DeviceComponent'|'DeviceMetric'|'DeviceUseRequest'|'DeviceUseStatement'|'DiagnosticOrder'|'DiagnosticReport'|'DocumentManifest'|'DocumentReference'|'DomainResource'|'EligibilityRequest'|'EligibilityResponse'|'Encounter'|'EnrollmentRequest'|'EnrollmentResponse'|'EpisodeOfCare'|'ExplanationOfBenefit'|'FamilyMemberHistory'|'Flag'|'Goal'|'Group'|'HealthcareService'|'ImagingObjectSelection'|'ImagingStudy'|'Immunization'|'ImmunizationRecommendation'|'ImplementationGuide'|'List'|'Location'|'Media'|'Medication'|'MedicationAdministration'|'MedicationDispense'|'MedicationOrder'|'MedicationStatement'|'MessageHeader'|'NamingSystem'|'NutritionOrder'|'Observation'|'OperationDefinition'|'OperationOutcome'|'Order'|'OrderResponse'|'Organization'|'Parameters'|'Patient'|'PaymentNotice'|'PaymentReconciliation'|'Person'|'Practitioner'|'Procedure'|'ProcedureRequest'|'ProcessRequest'|'ProcessResponse'|'Provenance'|'Questionnaire'|'QuestionnaireResponse'|'ReferralRequest'|'RelatedPerson'|'Resource'|'RiskAssessment'|'Schedule'|'SearchParameter'|'Slot'|'Specimen'|'StructureDefinition'|'Subscription'|'Substance'|'SupplyDelivery'|'SupplyRequest'|'TestScript'|'ValueSet'|'VisionPrescription');
-  _focus?: Element | undefined;
-  /**
-   * sender | receiver
-   * The mode of this event declaration - whether application is sender or receiver.
-   */
-  mode: ('sender'|'receiver');
-  _mode?: Element | undefined;
-  /**
-   * Profile that describes the request
-   * Information about the request for this event.
-   */
-  request: Reference;
-  /**
-   * Profile that describes the response
-   * Information about the response for this event.
-   */
-  response: Reference;
-}
-/**
- * If messaging is supported
- * A description of the messaging capabilities of the solution.
- */
-export interface ConformanceMessaging extends BackboneElement {
-  /**
-   * Messaging interface behavior details
-   * Documentation about the system's messaging capabilities for this endpoint not otherwise documented by the conformance statement.  For example, process for becoming an authorized messaging exchange partner.
-   */
-  documentation?: string | undefined;
-  _documentation?: Element | undefined;
-  /**
-   * A messaging service end-point
-   * An endpoint (network accessible address) to which messages and/or replies are to be sent.
-   */
-  endpoint?: ConformanceMessagingEndpoint[] | undefined;
-  /**
-   * Declare support for this event
-   * A description of the solution's support for an event at this end-point.
-   */
-  event: ConformanceMessagingEvent[];
-  /**
-   * Reliable Message Cache Length (min)
-   * Length if the receiver's reliable messaging cache in minutes (if a receiver) or how long the cache length on the receiver should be (if a sender).
-   */
-  reliableCache?: number | undefined;
-}
-/**
- * What operations are supported?
- * A specification of restful operations supported by the system.
- */
-export interface ConformanceRestInteraction extends BackboneElement {
-  /**
-   * A coded identifier of the operation, supported by the system.
-   */
-  code: ('transaction'|'search-system'|'history-system');
-  _code?: Element | undefined;
-  /**
-   * Anything special about operation behavior
-   * Guidance specific to the implementation of this operation, such as limitations on the kind of transactions allowed, or information about system wide search is implemented.
-   */
-  documentation?: string | undefined;
-  _documentation?: Element | undefined;
-}
-/**
- * Definition of an operation or a custom query
- * Definition of an operation or a named query and with its parameters and their meaning and type.
- */
-export interface ConformanceRestOperation extends BackboneElement {
-  /**
-   * The defined operation/query
-   * Where the formal definition can be found.
-   */
-  definition: Reference;
-  /**
-   * Name by which the operation/query is invoked
-   * The name of a query, which is used in the _query parameter when the query is called.
-   */
-  name: string;
-  _name?: Element | undefined;
-}
-/**
- * What operations are supported?
- * Identifies a restful operation supported by the solution.
- */
-export interface ConformanceRestResourceInteraction extends BackboneElement {
-  /**
-   * Coded identifier of the operation, supported by the system resource.
-   */
-  code: ('read'|'vread'|'update'|'delete'|'history-instance'|'validate'|'history-type'|'create'|'search-type');
-  _code?: Element | undefined;
-  /**
-   * Anything special about operation behavior
-   * Guidance specific to the implementation of this operation, such as 'delete is a logical delete' or 'updates are only allowed with version id' or 'creates permitted from pre-authorized certificates only'.
-   */
-  documentation?: string | undefined;
-  _documentation?: Element | undefined;
-}
-/**
- * Search params supported by implementation
- * Search parameters for implementations to support and/or make use of - either references to ones defined in the specification, or additional ones defined for/by the implementation.
- */
-export interface ConformanceRestResourceSearchParam extends BackboneElement {
-  /**
-   * Chained names supported
-   * Contains the names of any search parameters which may be chained to the containing search parameter. Chained parameters may be added to search parameters of type reference, and specify that resources will only be returned if they contain a reference to a resource which matches the chained parameter value. Values for this field should be drawn from Conformance.rest.resource.searchParam.name on the target resource type.
-   */
-  chain?: string[] | undefined;
-  _chain?: Element[] | undefined;
-  /**
-   * Source of definition for parameter
-   * An absolute URI that is a formal reference to where this parameter was first defined, so that a client can be confident of the meaning of the search parameter (a reference to [[[SearchParameter.url]]]).
-   */
-  definition?: string | undefined;
-  _definition?: Element | undefined;
-  /**
-   * Server-specific usage
-   * This allows documentation of any distinct behaviors about how the search parameter is used.  For example, text matching algorithms.
-   */
-  documentation?: string | undefined;
-  _documentation?: Element | undefined;
-  /**
-   * A modifier supported for the search parameter.
-   */
-  modifier?: ('missing'|'exact'|'contains'|'not'|'text'|'in'|'not-in'|'below'|'above'|'type')[] | undefined;
-  _modifier?: Element[] | undefined;
-  /**
-   * Name of search parameter
-   * The name of the search parameter used in the interface.
-   */
-  name: string;
-  _name?: Element | undefined;
-  /**
-   * Types of resource (if a resource reference)
-   * Types of resource (if a resource is referenced).
-   */
-  target?: ('Account'|'AllergyIntolerance'|'Appointment'|'AppointmentResponse'|'AuditEvent'|'Basic'|'Binary'|'BodySite'|'Bundle'|'CarePlan'|'Claim'|'ClaimResponse'|'ClinicalImpression'|'Communication'|'CommunicationRequest'|'Composition'|'ConceptMap'|'Condition'|'Conformance'|'Contract'|'Coverage'|'DataElement'|'DetectedIssue'|'Device'|'DeviceComponent'|'DeviceMetric'|'DeviceUseRequest'|'DeviceUseStatement'|'DiagnosticOrder'|'DiagnosticReport'|'DocumentManifest'|'DocumentReference'|'DomainResource'|'EligibilityRequest'|'EligibilityResponse'|'Encounter'|'EnrollmentRequest'|'EnrollmentResponse'|'EpisodeOfCare'|'ExplanationOfBenefit'|'FamilyMemberHistory'|'Flag'|'Goal'|'Group'|'HealthcareService'|'ImagingObjectSelection'|'ImagingStudy'|'Immunization'|'ImmunizationRecommendation'|'ImplementationGuide'|'List'|'Location'|'Media'|'Medication'|'MedicationAdministration'|'MedicationDispense'|'MedicationOrder'|'MedicationStatement'|'MessageHeader'|'NamingSystem'|'NutritionOrder'|'Observation'|'OperationDefinition'|'OperationOutcome'|'Order'|'OrderResponse'|'Organization'|'Parameters'|'Patient'|'PaymentNotice'|'PaymentReconciliation'|'Person'|'Practitioner'|'Procedure'|'ProcedureRequest'|'ProcessRequest'|'ProcessResponse'|'Provenance'|'Questionnaire'|'QuestionnaireResponse'|'ReferralRequest'|'RelatedPerson'|'Resource'|'RiskAssessment'|'Schedule'|'SearchParameter'|'Slot'|'Specimen'|'StructureDefinition'|'Subscription'|'Substance'|'SupplyDelivery'|'SupplyRequest'|'TestScript'|'ValueSet'|'VisionPrescription')[] | undefined;
-  _target?: Element[] | undefined;
-  /**
-   * The type of value a search parameter refers to, and how the content is interpreted.
-   */
-  type: ('number'|'date'|'string'|'token'|'reference'|'composite'|'quantity'|'uri');
-  _type?: Element | undefined;
-}
-/**
- * Resource served on the REST interface
- * A specification of the restful capabilities of the solution for a specific resource type.
- */
-export interface ConformanceRestResource extends BackboneElement {
-  /**
-   * If allows/uses conditional create
-   * A flag that indicates that the server supports conditional create.
-   */
-  conditionalCreate?: boolean | undefined;
-  _conditionalCreate?: Element | undefined;
-  /**
-   * A code that indicates how the server supports conditional delete.
-   */
-  conditionalDelete?: ('not-supported'|'single'|'multiple') | undefined;
-  _conditionalDelete?: Element | undefined;
-  /**
-   * If allows/uses conditional update
-   * A flag that indicates that the server supports conditional update.
-   */
-  conditionalUpdate?: boolean | undefined;
-  _conditionalUpdate?: Element | undefined;
-  /**
-   * What operations are supported?
-   * Identifies a restful operation supported by the solution.
-   */
-  interaction: ConformanceRestResourceInteraction[];
-  /**
-   * Base System profile for all uses of resource
-   * A specification of the profile that describes the solution's overall support for the resource, including any constraints on cardinality, bindings, lengths or other limitations. See further discussion in [Using Profiles]{profiling.html#profile-uses}.
-   */
-  profile?: Reference | undefined;
-  /**
-   * Whether vRead can return past versions
-   * A flag for whether the server is able to return past versions as part of the vRead operation.
-   */
-  readHistory?: boolean | undefined;
-  _readHistory?: Element | undefined;
-  /**
-   * _include values supported by the server
-   * A list of _include values supported by the server.
-   */
-  searchInclude?: string[] | undefined;
-  _searchInclude?: Element[] | undefined;
-  /**
-   * Search params supported by implementation
-   * Search parameters for implementations to support and/or make use of - either references to ones defined in the specification, or additional ones defined for/by the implementation.
-   */
-  searchParam?: ConformanceRestResourceSearchParam[] | undefined;
-  /**
-   * _revinclude values supported by the server
-   * A list of _revinclude (reverse include) values supported by the server.
-   */
-  searchRevInclude?: string[] | undefined;
-  _searchRevInclude?: Element[] | undefined;
-  /**
-   * A resource type that is supported
-   * A type of resource exposed via the restful interface.
-   */
-  type: ('Account'|'AllergyIntolerance'|'Appointment'|'AppointmentResponse'|'AuditEvent'|'Basic'|'Binary'|'BodySite'|'Bundle'|'CarePlan'|'Claim'|'ClaimResponse'|'ClinicalImpression'|'Communication'|'CommunicationRequest'|'Composition'|'ConceptMap'|'Condition'|'Conformance'|'Contract'|'Coverage'|'DataElement'|'DetectedIssue'|'Device'|'DeviceComponent'|'DeviceMetric'|'DeviceUseRequest'|'DeviceUseStatement'|'DiagnosticOrder'|'DiagnosticReport'|'DocumentManifest'|'DocumentReference'|'DomainResource'|'EligibilityRequest'|'EligibilityResponse'|'Encounter'|'EnrollmentRequest'|'EnrollmentResponse'|'EpisodeOfCare'|'ExplanationOfBenefit'|'FamilyMemberHistory'|'Flag'|'Goal'|'Group'|'HealthcareService'|'ImagingObjectSelection'|'ImagingStudy'|'Immunization'|'ImmunizationRecommendation'|'ImplementationGuide'|'List'|'Location'|'Media'|'Medication'|'MedicationAdministration'|'MedicationDispense'|'MedicationOrder'|'MedicationStatement'|'MessageHeader'|'NamingSystem'|'NutritionOrder'|'Observation'|'OperationDefinition'|'OperationOutcome'|'Order'|'OrderResponse'|'Organization'|'Parameters'|'Patient'|'PaymentNotice'|'PaymentReconciliation'|'Person'|'Practitioner'|'Procedure'|'ProcedureRequest'|'ProcessRequest'|'ProcessResponse'|'Provenance'|'Questionnaire'|'QuestionnaireResponse'|'ReferralRequest'|'RelatedPerson'|'Resource'|'RiskAssessment'|'Schedule'|'SearchParameter'|'Slot'|'Specimen'|'StructureDefinition'|'Subscription'|'Substance'|'SupplyDelivery'|'SupplyRequest'|'TestScript'|'ValueSet'|'VisionPrescription');
-  _type?: Element | undefined;
-  /**
-   * If update can commit to a new identity
-   * A flag to indicate that the server allows or needs to allow the client to create new identities on the server (e.g. that is, the client PUTs to a location where there is no existing resource). Allowing this operation means that the server allows the client to create new identities on the server.
-   */
-  updateCreate?: boolean | undefined;
-  _updateCreate?: Element | undefined;
-  /**
-   * This field is set to no-version to specify that the system does not support (server) or use (client) versioning for this resource type. If this has some other value, the server must at least correctly track and populate the versionId meta-property on resources. If the value is 'versioned-update', then the server supports all the versioning features, including using e-tags for version integrity in the API.
-   */
-  versioning?: ('no-version'|'versioned'|'versioned-update') | undefined;
-  _versioning?: Element | undefined;
-}
-/**
- * Certificates associated with security profiles.
- */
-export interface ConformanceRestSecurityCertificate extends BackboneElement {
-  /**
-   * Actual certificate.
-   */
-  blob?: string | undefined;
-  _blob?: Element | undefined;
-  /**
-   * Mime type for certificate.
-   */
-  type?: string | undefined;
-  _type?: Element | undefined;
-}
-/**
- * Information about security of implementation
- * Information about security implementation from an interface perspective - what a client needs to know.
- */
-export interface ConformanceRestSecurity extends BackboneElement {
-  /**
-   * Certificates associated with security profiles.
-   */
-  certificate?: ConformanceRestSecurityCertificate[] | undefined;
-  /**
-   * Adds CORS Headers (http://enable-cors.org/)
-   * Server adds CORS headers when responding to requests - this enables javascript applications to use the server.
-   */
-  cors?: boolean | undefined;
-  _cors?: Element | undefined;
-  /**
-   * General description of how security works.
-   */
-  description?: string | undefined;
-  _description?: Element | undefined;
-  /**
-   * OAuth | SMART-on-FHIR | NTLM | Basic | Kerberos | Certificates
-   * Types of security services are supported/required by the system.
-   */
-  service?: CodeableConcept[] | undefined;
-}
-/**
- * If the endpoint is a RESTful one
- * A definition of the restful capabilities of the solution, if any.
- */
-export interface ConformanceRest extends BackboneElement {
-  /**
-   * Compartments served/used by system
-   * An absolute URI which is a reference to the definition of a compartment hosted by the system.
-   */
-  compartment?: string[] | undefined;
-  _compartment?: Element[] | undefined;
-  /**
-   * General description of implementation
-   * Information about the system's restful capabilities that apply across all applications, such as security.
-   */
-  documentation?: string | undefined;
-  _documentation?: Element | undefined;
-  /**
-   * What operations are supported?
-   * A specification of restful operations supported by the system.
-   */
-  interaction?: ConformanceRestInteraction[] | undefined;
-  /**
-   * client | server
-   * Identifies whether this portion of the statement is describing ability to initiate or receive restful operations.
-   */
-  mode: ('client'|'server');
-  _mode?: Element | undefined;
-  /**
-   * Definition of an operation or a custom query
-   * Definition of an operation or a named query and with its parameters and their meaning and type.
-   */
-  operation?: ConformanceRestOperation[] | undefined;
-  /**
-   * Resource served on the REST interface
-   * A specification of the restful capabilities of the solution for a specific resource type.
-   */
-  resource: ConformanceRestResource[];
-  /**
-   * Search params for searching all resources
-   * Search parameters that are supported for searching all resources for implementations to support and/or make use of - either references to ones defined in the specification, or additional ones defined for/by the implementation.
-   */
-  searchParam?: ConformanceRestResourceSearchParam[] | undefined;
-  /**
-   * Information about security of implementation
-   * Information about security implementation from an interface perspective - what a client needs to know.
-   */
-  security?: ConformanceRestSecurity | undefined;
-  /**
-   * A code that indicates how transactions are supported.
-   */
-  transactionMode?: ('not-supported'|'batch'|'transaction'|'both') | undefined;
-  _transactionMode?: Element | undefined;
-}
-/**
- * Software that is covered by this conformance statement.  It is used when the conformance statement describes the capabilities of a particular software version, independent of an installation.
- */
-export interface ConformanceSoftware extends BackboneElement {
-  /**
-   * A name the software is known by
-   * Name software is known by.
-   */
-  name: string;
-  _name?: Element | undefined;
-  /**
-   * Date this version released
-   * Date this version of the software released.
-   */
-  releaseDate?: string | undefined;
-  _releaseDate?: Element | undefined;
-  /**
-   * Version covered by this statement
-   * The version identifier for the software covered by this statement.
-   */
-  version?: string | undefined;
-  _version?: Element | undefined;
+  summary?: CodeableConcept | undefined;
 }
 /**
  * Base StructureDefinition for Conformance Resource
@@ -5177,277 +4743,438 @@ export interface Conformance extends DomainResource {
   _version?: Element | undefined;
 }
 /**
- * Contract Actor
- * List of Contract actors.
+ * Contact details of the publisher
+ * Contacts to assist a user in finding and communicating with the publisher.
  */
-export interface ContractActor extends BackboneElement {
+export interface ConformanceContact extends BackboneElement {
   /**
-   * Contract Actor Type
-   * Who or what actors are assigned roles in this Contract.
+   * Name of a individual to contact
+   * The name of an individual to contact regarding the conformance.
    */
-  entity: Reference;
+  name?: string | undefined;
+  _name?: Element | undefined;
   /**
-   * Contract  Actor Role
-   * Role type of actors assigned roles in this Contract.
+   * Contact details for individual or publisher
+   * Contact details for individual (if a name was provided) or the publisher.
    */
-  role?: CodeableConcept[] | undefined;
+  telecom?: ContactPoint[] | undefined;
 }
 /**
- * Contract Friendly Language
- * The "patient friendly language" versionof the Contract in whole or in parts. "Patient friendly language" means the representation of the Contract and Contract Provisions in a manner that is readily accessible and understandable by a layperson in accordance with best practices for communication styles that ensure that those agreeing to or signing the Contract understand the roles, actions, obligations, responsibilities, and implication of the agreement.
+ * Document definition
+ * A document definition.
  */
-export interface ContractFriendly extends BackboneElement {
+export interface ConformanceDocument extends BackboneElement {
   /**
-   * Easily comprehended representation of this Contract
-   * Human readable rendering of this Contract in a format and representation intended to enhance comprehension and ensure understandability.
+   * Description of document support
+   * A description of how the application supports or uses the specified document profile.  For example, when are documents created, what action is taken with consumed documents, etc.
    */
-  contentAttachment?: Attachment | undefined;
+  documentation?: string | undefined;
+  _documentation?: Element | undefined;
   /**
-   * Easily comprehended representation of this Contract
-   * Human readable rendering of this Contract in a format and representation intended to enhance comprehension and ensure understandability.
+   * producer | consumer
+   * Mode of this document declaration - whether application is producer or consumer.
    */
-  contentReference?: Reference | undefined;
+  mode: ('producer'|'consumer');
+  _mode?: Element | undefined;
+  /**
+   * Constraint on a resource used in the document
+   * A constraint on a resource used in the document.
+   */
+  profile: Reference;
 }
 /**
- * Contract Legal Language
- * List of Legal expressions or representations of this Contract.
+ * If this describes a specific instance
+ * Identifies a specific implementation instance that is described by the conformance statement - i.e. a particular installation, rather than the capabilities of a software program.
  */
-export interface ContractLegal extends BackboneElement {
+export interface ConformanceImplementation extends BackboneElement {
   /**
-   * Contract Legal Text
-   * Contract legal text in human renderable form.
+   * Describes this specific instance
+   * Information about the specific installation that this conformance statement relates to.
    */
-  contentAttachment?: Attachment | undefined;
+  description: string;
+  _description?: Element | undefined;
   /**
-   * Contract Legal Text
-   * Contract legal text in human renderable form.
+   * Base URL for the installation
+   * An absolute base URL for the implementation.  This forms the base for REST interfaces as well as the mailbox and document interfaces.
    */
-  contentReference?: Reference | undefined;
+  url?: string | undefined;
+  _url?: Element | undefined;
 }
 /**
- * Computable Contract Language
- * List of Computable Policy Rule Language Representations of this Contract.
+ * If messaging is supported
+ * A description of the messaging capabilities of the solution.
  */
-export interface ContractRule extends BackboneElement {
+export interface ConformanceMessaging extends BackboneElement {
   /**
-   * Computable Contract Rules
-   * Computable Contract conveyed using a policy rule language (e.g. XACML, DKAL, SecPal).
+   * Messaging interface behavior details
+   * Documentation about the system's messaging capabilities for this endpoint not otherwise documented by the conformance statement.  For example, process for becoming an authorized messaging exchange partner.
    */
-  contentAttachment?: Attachment | undefined;
+  documentation?: string | undefined;
+  _documentation?: Element | undefined;
   /**
-   * Computable Contract Rules
-   * Computable Contract conveyed using a policy rule language (e.g. XACML, DKAL, SecPal).
+   * A messaging service end-point
+   * An endpoint (network accessible address) to which messages and/or replies are to be sent.
    */
-  contentReference?: Reference | undefined;
+  endpoint?: ConformanceMessagingEndpoint[] | undefined;
+  /**
+   * Declare support for this event
+   * A description of the solution's support for an event at this end-point.
+   */
+  event: ConformanceMessagingEvent[];
+  /**
+   * Reliable Message Cache Length (min)
+   * Length if the receiver's reliable messaging cache in minutes (if a receiver) or how long the cache length on the receiver should be (if a sender).
+   */
+  reliableCache?: number | undefined;
 }
 /**
- * Contract Signer
- * Party signing this Contract.
+ * A messaging service end-point
+ * An endpoint (network accessible address) to which messages and/or replies are to be sent.
  */
-export interface ContractSigner extends BackboneElement {
+export interface ConformanceMessagingEndpoint extends BackboneElement {
   /**
-   * Contract Signatory Party
-   * Party which is a signator to this Contract.
+   * Address of end-point
+   * The network address of the end-point. For solutions that do not use network addresses for routing, it can be just an identifier.
    */
-  party: Reference;
+  address: string;
+  _address?: Element | undefined;
   /**
-   * Contract Documentation Signature
-   * Legally binding Contract DSIG signature contents in Base64.
+   * http | ftp | mllp +
+   * A list of the messaging transport protocol(s) identifiers, supported by this endpoint.
    */
-  signature: string;
-  _signature?: Element | undefined;
-  /**
-   * Contract Signer Type
-   * Role of this Contract signer, e.g. notary, grantee.
-   */
-  type: Coding;
+  protocol: Coding;
 }
 /**
- * Contract Term Actor List
- * List of actors participating in this Contract Provision.
+ * Declare support for this event
+ * A description of the solution's support for an event at this end-point.
  */
-export interface ContractTermActor extends BackboneElement {
+export interface ConformanceMessagingEvent extends BackboneElement {
   /**
-   * Contract Term Actor
-   * The actor assigned a role in this Contract Provision.
+   * The impact of the content of the message.
    */
-  entity: Reference;
+  category?: ('Consequence'|'Currency'|'Notification') | undefined;
+  _category?: Element | undefined;
   /**
-   * Contract Term Actor Role
-   * Role played by the actor assigned this role in this Contract Provision.
+   * Event type
+   * A coded identifier of a supported messaging event.
    */
-  role?: CodeableConcept[] | undefined;
+  code: Coding;
+  /**
+   * Endpoint-specific event documentation
+   * Guidance on how this event is handled, such as internal system trigger points, business rules, etc.
+   */
+  documentation?: string | undefined;
+  _documentation?: Element | undefined;
+  /**
+   * Resource that's focus of message
+   * A resource associated with the event.  This is the resource that defines the event.
+   */
+  focus: ('Account'|'AllergyIntolerance'|'Appointment'|'AppointmentResponse'|'AuditEvent'|'Basic'|'Binary'|'BodySite'|'Bundle'|'CarePlan'|'Claim'|'ClaimResponse'|'ClinicalImpression'|'Communication'|'CommunicationRequest'|'Composition'|'ConceptMap'|'Condition'|'Conformance'|'Contract'|'Coverage'|'DataElement'|'DetectedIssue'|'Device'|'DeviceComponent'|'DeviceMetric'|'DeviceUseRequest'|'DeviceUseStatement'|'DiagnosticOrder'|'DiagnosticReport'|'DocumentManifest'|'DocumentReference'|'DomainResource'|'EligibilityRequest'|'EligibilityResponse'|'Encounter'|'EnrollmentRequest'|'EnrollmentResponse'|'EpisodeOfCare'|'ExplanationOfBenefit'|'FamilyMemberHistory'|'Flag'|'Goal'|'Group'|'HealthcareService'|'ImagingObjectSelection'|'ImagingStudy'|'Immunization'|'ImmunizationRecommendation'|'ImplementationGuide'|'List'|'Location'|'Media'|'Medication'|'MedicationAdministration'|'MedicationDispense'|'MedicationOrder'|'MedicationStatement'|'MessageHeader'|'NamingSystem'|'NutritionOrder'|'Observation'|'OperationDefinition'|'OperationOutcome'|'Order'|'OrderResponse'|'Organization'|'Parameters'|'Patient'|'PaymentNotice'|'PaymentReconciliation'|'Person'|'Practitioner'|'Procedure'|'ProcedureRequest'|'ProcessRequest'|'ProcessResponse'|'Provenance'|'Questionnaire'|'QuestionnaireResponse'|'ReferralRequest'|'RelatedPerson'|'Resource'|'RiskAssessment'|'Schedule'|'SearchParameter'|'Slot'|'Specimen'|'StructureDefinition'|'Subscription'|'Substance'|'SupplyDelivery'|'SupplyRequest'|'TestScript'|'ValueSet'|'VisionPrescription');
+  _focus?: Element | undefined;
+  /**
+   * sender | receiver
+   * The mode of this event declaration - whether application is sender or receiver.
+   */
+  mode: ('sender'|'receiver');
+  _mode?: Element | undefined;
+  /**
+   * Profile that describes the request
+   * Information about the request for this event.
+   */
+  request: Reference;
+  /**
+   * Profile that describes the response
+   * Information about the response for this event.
+   */
+  response: Reference;
 }
 /**
- * Contract Term Valued Item
- * Contract Provision Valued Item List.
+ * If the endpoint is a RESTful one
+ * A definition of the restful capabilities of the solution, if any.
  */
-export interface ContractTermValuedItem extends BackboneElement {
+export interface ConformanceRest extends BackboneElement {
   /**
-   * Contract Term Valued Item Effective Tiem
-   * Indicates the time during which this Contract Term ValuedItem information is effective.
+   * Compartments served/used by system
+   * An absolute URI which is a reference to the definition of a compartment hosted by the system.
    */
-  effectiveTime?: string | undefined;
-  _effectiveTime?: Element | undefined;
+  compartment?: string[] | undefined;
+  _compartment?: Element[] | undefined;
   /**
-   * Contract Term Valued Item Type
-   * Specific type of Contract Provision Valued Item that may be priced.
+   * General description of implementation
+   * Information about the system's restful capabilities that apply across all applications, such as security.
    */
-  entityCodeableConcept?: CodeableConcept | undefined;
+  documentation?: string | undefined;
+  _documentation?: Element | undefined;
   /**
-   * Contract Term Valued Item Type
-   * Specific type of Contract Provision Valued Item that may be priced.
+   * What operations are supported?
+   * A specification of restful operations supported by the system.
    */
-  entityReference?: Reference | undefined;
+  interaction?: ConformanceRestInteraction[] | undefined;
   /**
-   * Contract Term Valued Item Price Scaling Factor
-   * A real number that represents a multiplier used in determining the overall value of the Contract Provision Valued Item delivered. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount.
+   * client | server
+   * Identifies whether this portion of the statement is describing ability to initiate or receive restful operations.
    */
-  factor?: number | undefined;
+  mode: ('client'|'server');
+  _mode?: Element | undefined;
   /**
-   * Contract Term Valued Item Identifier
-   * Identifies a Contract Provision Valued Item instance.
+   * Definition of an operation or a custom query
+   * Definition of an operation or a named query and with its parameters and their meaning and type.
    */
-  identifier?: Identifier | undefined;
+  operation?: ConformanceRestOperation[] | undefined;
   /**
-   * Total Contract Term Valued Item Value
-   * Expresses the product of the Contract Provision Valued Item unitQuantity and the unitPriceAmt. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied.
+   * Resource served on the REST interface
+   * A specification of the restful capabilities of the solution for a specific resource type.
    */
-  net?: Quantity | undefined;
+  resource: ConformanceRestResource[];
   /**
-   * Contract Term Valued Item Difficulty Scaling Factor
-   * An amount that expresses the weighting (based on difficulty, cost and/or resource intensiveness) associated with the Contract Provision Valued Item delivered. The concept of Points allows for assignment of point values for a Contract ProvisionValued Item, such that a monetary amount can be assigned to each point.
+   * Search params for searching all resources
+   * Search parameters that are supported for searching all resources for implementations to support and/or make use of - either references to ones defined in the specification, or additional ones defined for/by the implementation.
    */
-  points?: number | undefined;
+  searchParam?: ConformanceRestResourceSearchParam[] | undefined;
   /**
-   * Contract Term Valued Item Count
-   * Specifies the units by which the Contract Provision Valued Item is measured or counted, and quantifies the countable or measurable Contract Term Valued Item instances.
+   * Information about security of implementation
+   * Information about security implementation from an interface perspective - what a client needs to know.
    */
-  quantity?: Quantity | undefined;
+  security?: ConformanceRestSecurity | undefined;
   /**
-   * Contract Term Valued Item fee, charge, or cost
-   * A Contract Provision Valued Item unit valuation measure.
+   * A code that indicates how transactions are supported.
    */
-  unitPrice?: Quantity | undefined;
+  transactionMode?: ('not-supported'|'batch'|'transaction'|'both') | undefined;
+  _transactionMode?: Element | undefined;
 }
 /**
- * Contract Term List
- * One or more Contract Provisions, which may be related and conveyed as a group, and may contain nested groups.
+ * What operations are supported?
+ * A specification of restful operations supported by the system.
  */
-export interface ContractTerm extends BackboneElement {
+export interface ConformanceRestInteraction extends BackboneElement {
   /**
-   * Contract Term Action
-   * Action stipulated by this Contract Provision.
+   * A coded identifier of the operation, supported by the system.
    */
-  action?: CodeableConcept[] | undefined;
+  code: ('transaction'|'search-system'|'history-system');
+  _code?: Element | undefined;
   /**
-   * Contract Term Action Reason
-   * Reason or purpose for the action stipulated by this Contract Provision.
+   * Anything special about operation behavior
+   * Guidance specific to the implementation of this operation, such as limitations on the kind of transactions allowed, or information about system wide search is implemented.
    */
-  actionReason?: CodeableConcept[] | undefined;
-  /**
-   * Contract Term Actor List
-   * List of actors participating in this Contract Provision.
-   */
-  actor?: ContractTermActor[] | undefined;
-  /**
-   * Contract Term Effective Time
-   * Relevant time or time-period when this Contract Provision is applicable.
-   */
-  applies?: Period | undefined;
-  /**
-   * Nested Contract Term Group
-   * Nested group of Contract Provisions.
-   */
-  group?: ContractTerm[] | undefined;
-  /**
-   * Contract Term identifier
-   * Unique identifier for this particular Contract Provision.
-   */
-  identifier?: Identifier | undefined;
-  /**
-   * Contract Term Issue Date Time
-   * When this Contract Provision was issued.
-   */
-  issued?: string | undefined;
-  _issued?: Element | undefined;
-  /**
-   * Subject of this Contract Term
-   * Who or what this Contract Provision is about.
-   */
-  subject?: Reference | undefined;
-  /**
-   * Contract Term Subtype
-   * Subtype of this Contract Provision, e.g. life time maximum payment for a contract term for specific valued item, e.g. disability payment.
-   */
-  subType?: CodeableConcept | undefined;
-  /**
-   * Human readable Contract term text
-   * Human readable form of this Contract Provision.
-   */
-  text?: string | undefined;
-  _text?: Element | undefined;
-  /**
-   * Contract Term Type
-   * Type of Contract Provision such as specific requirements, purposes for actions, obligations, prohibitions, e.g. life time maximum benefit.
-   */
-  type?: CodeableConcept | undefined;
-  /**
-   * Contract Term Valued Item
-   * Contract Provision Valued Item List.
-   */
-  valuedItem?: ContractTermValuedItem[] | undefined;
+  documentation?: string | undefined;
+  _documentation?: Element | undefined;
 }
 /**
- * Contract Valued Item List.
+ * Definition of an operation or a custom query
+ * Definition of an operation or a named query and with its parameters and their meaning and type.
  */
-export interface ContractValuedItem extends BackboneElement {
+export interface ConformanceRestOperation extends BackboneElement {
   /**
-   * Contract Valued Item Effective Tiem
-   * Indicates the time during which this Contract ValuedItem information is effective.
+   * The defined operation/query
+   * Where the formal definition can be found.
    */
-  effectiveTime?: string | undefined;
-  _effectiveTime?: Element | undefined;
+  definition: Reference;
   /**
-   * Contract Valued Item Type
-   * Specific type of Contract Valued Item that may be priced.
+   * Name by which the operation/query is invoked
+   * The name of a query, which is used in the _query parameter when the query is called.
    */
-  entityCodeableConcept?: CodeableConcept | undefined;
+  name: string;
+  _name?: Element | undefined;
+}
+/**
+ * Resource served on the REST interface
+ * A specification of the restful capabilities of the solution for a specific resource type.
+ */
+export interface ConformanceRestResource extends BackboneElement {
   /**
-   * Contract Valued Item Type
-   * Specific type of Contract Valued Item that may be priced.
+   * If allows/uses conditional create
+   * A flag that indicates that the server supports conditional create.
    */
-  entityReference?: Reference | undefined;
+  conditionalCreate?: boolean | undefined;
+  _conditionalCreate?: Element | undefined;
   /**
-   * Contract Valued Item Price Scaling Factor
-   * A real number that represents a multiplier used in determining the overall value of the Contract Valued Item delivered. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount.
+   * A code that indicates how the server supports conditional delete.
    */
-  factor?: number | undefined;
+  conditionalDelete?: ('not-supported'|'single'|'multiple') | undefined;
+  _conditionalDelete?: Element | undefined;
   /**
-   * Contract Valued Item Identifier
-   * Identifies a Contract Valued Item instance.
+   * If allows/uses conditional update
+   * A flag that indicates that the server supports conditional update.
    */
-  identifier?: Identifier | undefined;
+  conditionalUpdate?: boolean | undefined;
+  _conditionalUpdate?: Element | undefined;
   /**
-   * Total Contract Valued Item Value
-   * Expresses the product of the Contract Valued Item unitQuantity and the unitPriceAmt. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied.
+   * What operations are supported?
+   * Identifies a restful operation supported by the solution.
    */
-  net?: Quantity | undefined;
+  interaction: ConformanceRestResourceInteraction[];
   /**
-   * Contract Valued Item Difficulty Scaling Factor
-   * An amount that expresses the weighting (based on difficulty, cost and/or resource intensiveness) associated with the Contract Valued Item delivered. The concept of Points allows for assignment of point values for a Contract Valued Item, such that a monetary amount can be assigned to each point.
+   * Base System profile for all uses of resource
+   * A specification of the profile that describes the solution's overall support for the resource, including any constraints on cardinality, bindings, lengths or other limitations. See further discussion in [Using Profiles]{profiling.html#profile-uses}.
    */
-  points?: number | undefined;
+  profile?: Reference | undefined;
   /**
-   * Count of Contract Valued Items
-   * Specifies the units by which the Contract Valued Item is measured or counted, and quantifies the countable or measurable Contract Valued Item instances.
+   * Whether vRead can return past versions
+   * A flag for whether the server is able to return past versions as part of the vRead operation.
    */
-  quantity?: Quantity | undefined;
+  readHistory?: boolean | undefined;
+  _readHistory?: Element | undefined;
   /**
-   * Contract Valued Item fee, charge, or cost
-   * A Contract Valued Item unit valuation measure.
+   * _include values supported by the server
+   * A list of _include values supported by the server.
    */
-  unitPrice?: Quantity | undefined;
+  searchInclude?: string[] | undefined;
+  _searchInclude?: Element[] | undefined;
+  /**
+   * Search params supported by implementation
+   * Search parameters for implementations to support and/or make use of - either references to ones defined in the specification, or additional ones defined for/by the implementation.
+   */
+  searchParam?: ConformanceRestResourceSearchParam[] | undefined;
+  /**
+   * _revinclude values supported by the server
+   * A list of _revinclude (reverse include) values supported by the server.
+   */
+  searchRevInclude?: string[] | undefined;
+  _searchRevInclude?: Element[] | undefined;
+  /**
+   * A resource type that is supported
+   * A type of resource exposed via the restful interface.
+   */
+  type: ('Account'|'AllergyIntolerance'|'Appointment'|'AppointmentResponse'|'AuditEvent'|'Basic'|'Binary'|'BodySite'|'Bundle'|'CarePlan'|'Claim'|'ClaimResponse'|'ClinicalImpression'|'Communication'|'CommunicationRequest'|'Composition'|'ConceptMap'|'Condition'|'Conformance'|'Contract'|'Coverage'|'DataElement'|'DetectedIssue'|'Device'|'DeviceComponent'|'DeviceMetric'|'DeviceUseRequest'|'DeviceUseStatement'|'DiagnosticOrder'|'DiagnosticReport'|'DocumentManifest'|'DocumentReference'|'DomainResource'|'EligibilityRequest'|'EligibilityResponse'|'Encounter'|'EnrollmentRequest'|'EnrollmentResponse'|'EpisodeOfCare'|'ExplanationOfBenefit'|'FamilyMemberHistory'|'Flag'|'Goal'|'Group'|'HealthcareService'|'ImagingObjectSelection'|'ImagingStudy'|'Immunization'|'ImmunizationRecommendation'|'ImplementationGuide'|'List'|'Location'|'Media'|'Medication'|'MedicationAdministration'|'MedicationDispense'|'MedicationOrder'|'MedicationStatement'|'MessageHeader'|'NamingSystem'|'NutritionOrder'|'Observation'|'OperationDefinition'|'OperationOutcome'|'Order'|'OrderResponse'|'Organization'|'Parameters'|'Patient'|'PaymentNotice'|'PaymentReconciliation'|'Person'|'Practitioner'|'Procedure'|'ProcedureRequest'|'ProcessRequest'|'ProcessResponse'|'Provenance'|'Questionnaire'|'QuestionnaireResponse'|'ReferralRequest'|'RelatedPerson'|'Resource'|'RiskAssessment'|'Schedule'|'SearchParameter'|'Slot'|'Specimen'|'StructureDefinition'|'Subscription'|'Substance'|'SupplyDelivery'|'SupplyRequest'|'TestScript'|'ValueSet'|'VisionPrescription');
+  _type?: Element | undefined;
+  /**
+   * If update can commit to a new identity
+   * A flag to indicate that the server allows or needs to allow the client to create new identities on the server (e.g. that is, the client PUTs to a location where there is no existing resource). Allowing this operation means that the server allows the client to create new identities on the server.
+   */
+  updateCreate?: boolean | undefined;
+  _updateCreate?: Element | undefined;
+  /**
+   * This field is set to no-version to specify that the system does not support (server) or use (client) versioning for this resource type. If this has some other value, the server must at least correctly track and populate the versionId meta-property on resources. If the value is 'versioned-update', then the server supports all the versioning features, including using e-tags for version integrity in the API.
+   */
+  versioning?: ('no-version'|'versioned'|'versioned-update') | undefined;
+  _versioning?: Element | undefined;
+}
+/**
+ * What operations are supported?
+ * Identifies a restful operation supported by the solution.
+ */
+export interface ConformanceRestResourceInteraction extends BackboneElement {
+  /**
+   * Coded identifier of the operation, supported by the system resource.
+   */
+  code: ('read'|'vread'|'update'|'delete'|'history-instance'|'validate'|'history-type'|'create'|'search-type');
+  _code?: Element | undefined;
+  /**
+   * Anything special about operation behavior
+   * Guidance specific to the implementation of this operation, such as 'delete is a logical delete' or 'updates are only allowed with version id' or 'creates permitted from pre-authorized certificates only'.
+   */
+  documentation?: string | undefined;
+  _documentation?: Element | undefined;
+}
+/**
+ * Search params supported by implementation
+ * Search parameters for implementations to support and/or make use of - either references to ones defined in the specification, or additional ones defined for/by the implementation.
+ */
+export interface ConformanceRestResourceSearchParam extends BackboneElement {
+  /**
+   * Chained names supported
+   * Contains the names of any search parameters which may be chained to the containing search parameter. Chained parameters may be added to search parameters of type reference, and specify that resources will only be returned if they contain a reference to a resource which matches the chained parameter value. Values for this field should be drawn from Conformance.rest.resource.searchParam.name on the target resource type.
+   */
+  chain?: string[] | undefined;
+  _chain?: Element[] | undefined;
+  /**
+   * Source of definition for parameter
+   * An absolute URI that is a formal reference to where this parameter was first defined, so that a client can be confident of the meaning of the search parameter (a reference to [[[SearchParameter.url]]]).
+   */
+  definition?: string | undefined;
+  _definition?: Element | undefined;
+  /**
+   * Server-specific usage
+   * This allows documentation of any distinct behaviors about how the search parameter is used.  For example, text matching algorithms.
+   */
+  documentation?: string | undefined;
+  _documentation?: Element | undefined;
+  /**
+   * A modifier supported for the search parameter.
+   */
+  modifier?: ('missing'|'exact'|'contains'|'not'|'text'|'in'|'not-in'|'below'|'above'|'type')[] | undefined;
+  _modifier?: Element[] | undefined;
+  /**
+   * Name of search parameter
+   * The name of the search parameter used in the interface.
+   */
+  name: string;
+  _name?: Element | undefined;
+  /**
+   * Types of resource (if a resource reference)
+   * Types of resource (if a resource is referenced).
+   */
+  target?: ('Account'|'AllergyIntolerance'|'Appointment'|'AppointmentResponse'|'AuditEvent'|'Basic'|'Binary'|'BodySite'|'Bundle'|'CarePlan'|'Claim'|'ClaimResponse'|'ClinicalImpression'|'Communication'|'CommunicationRequest'|'Composition'|'ConceptMap'|'Condition'|'Conformance'|'Contract'|'Coverage'|'DataElement'|'DetectedIssue'|'Device'|'DeviceComponent'|'DeviceMetric'|'DeviceUseRequest'|'DeviceUseStatement'|'DiagnosticOrder'|'DiagnosticReport'|'DocumentManifest'|'DocumentReference'|'DomainResource'|'EligibilityRequest'|'EligibilityResponse'|'Encounter'|'EnrollmentRequest'|'EnrollmentResponse'|'EpisodeOfCare'|'ExplanationOfBenefit'|'FamilyMemberHistory'|'Flag'|'Goal'|'Group'|'HealthcareService'|'ImagingObjectSelection'|'ImagingStudy'|'Immunization'|'ImmunizationRecommendation'|'ImplementationGuide'|'List'|'Location'|'Media'|'Medication'|'MedicationAdministration'|'MedicationDispense'|'MedicationOrder'|'MedicationStatement'|'MessageHeader'|'NamingSystem'|'NutritionOrder'|'Observation'|'OperationDefinition'|'OperationOutcome'|'Order'|'OrderResponse'|'Organization'|'Parameters'|'Patient'|'PaymentNotice'|'PaymentReconciliation'|'Person'|'Practitioner'|'Procedure'|'ProcedureRequest'|'ProcessRequest'|'ProcessResponse'|'Provenance'|'Questionnaire'|'QuestionnaireResponse'|'ReferralRequest'|'RelatedPerson'|'Resource'|'RiskAssessment'|'Schedule'|'SearchParameter'|'Slot'|'Specimen'|'StructureDefinition'|'Subscription'|'Substance'|'SupplyDelivery'|'SupplyRequest'|'TestScript'|'ValueSet'|'VisionPrescription')[] | undefined;
+  _target?: Element[] | undefined;
+  /**
+   * The type of value a search parameter refers to, and how the content is interpreted.
+   */
+  type: ('number'|'date'|'string'|'token'|'reference'|'composite'|'quantity'|'uri');
+  _type?: Element | undefined;
+}
+/**
+ * Information about security of implementation
+ * Information about security implementation from an interface perspective - what a client needs to know.
+ */
+export interface ConformanceRestSecurity extends BackboneElement {
+  /**
+   * Certificates associated with security profiles.
+   */
+  certificate?: ConformanceRestSecurityCertificate[] | undefined;
+  /**
+   * Adds CORS Headers (http://enable-cors.org/)
+   * Server adds CORS headers when responding to requests - this enables javascript applications to use the server.
+   */
+  cors?: boolean | undefined;
+  _cors?: Element | undefined;
+  /**
+   * General description of how security works.
+   */
+  description?: string | undefined;
+  _description?: Element | undefined;
+  /**
+   * OAuth | SMART-on-FHIR | NTLM | Basic | Kerberos | Certificates
+   * Types of security services are supported/required by the system.
+   */
+  service?: CodeableConcept[] | undefined;
+}
+/**
+ * Certificates associated with security profiles.
+ */
+export interface ConformanceRestSecurityCertificate extends BackboneElement {
+  /**
+   * Actual certificate.
+   */
+  blob?: string | undefined;
+  _blob?: Element | undefined;
+  /**
+   * Mime type for certificate.
+   */
+  type?: string | undefined;
+  _type?: Element | undefined;
+}
+/**
+ * Software that is covered by this conformance statement.  It is used when the conformance statement describes the capabilities of a particular software version, independent of an installation.
+ */
+export interface ConformanceSoftware extends BackboneElement {
+  /**
+   * A name the software is known by
+   * Name software is known by.
+   */
+  name: string;
+  _name?: Element | undefined;
+  /**
+   * Date this version released
+   * Date this version of the software released.
+   */
+  releaseDate?: string | undefined;
+  _releaseDate?: Element | undefined;
+  /**
+   * Version covered by this statement
+   * The version identifier for the software covered by this statement.
+   */
+  version?: string | undefined;
+  _version?: Element | undefined;
 }
 /**
  * Base StructureDefinition for Contract Resource
@@ -5552,6 +5279,279 @@ export interface Contract extends DomainResource {
   valuedItem?: ContractValuedItem[] | undefined;
 }
 /**
+ * Contract Actor
+ * List of Contract actors.
+ */
+export interface ContractActor extends BackboneElement {
+  /**
+   * Contract Actor Type
+   * Who or what actors are assigned roles in this Contract.
+   */
+  entity: Reference;
+  /**
+   * Contract  Actor Role
+   * Role type of actors assigned roles in this Contract.
+   */
+  role?: CodeableConcept[] | undefined;
+}
+/**
+ * Contract Friendly Language
+ * The "patient friendly language" versionof the Contract in whole or in parts. "Patient friendly language" means the representation of the Contract and Contract Provisions in a manner that is readily accessible and understandable by a layperson in accordance with best practices for communication styles that ensure that those agreeing to or signing the Contract understand the roles, actions, obligations, responsibilities, and implication of the agreement.
+ */
+export interface ContractFriendly extends BackboneElement {
+  /**
+   * Easily comprehended representation of this Contract
+   * Human readable rendering of this Contract in a format and representation intended to enhance comprehension and ensure understandability.
+   */
+  contentAttachment?: Attachment | undefined;
+  /**
+   * Easily comprehended representation of this Contract
+   * Human readable rendering of this Contract in a format and representation intended to enhance comprehension and ensure understandability.
+   */
+  contentReference?: Reference | undefined;
+}
+/**
+ * Contract Legal Language
+ * List of Legal expressions or representations of this Contract.
+ */
+export interface ContractLegal extends BackboneElement {
+  /**
+   * Contract Legal Text
+   * Contract legal text in human renderable form.
+   */
+  contentAttachment?: Attachment | undefined;
+  /**
+   * Contract Legal Text
+   * Contract legal text in human renderable form.
+   */
+  contentReference?: Reference | undefined;
+}
+/**
+ * Computable Contract Language
+ * List of Computable Policy Rule Language Representations of this Contract.
+ */
+export interface ContractRule extends BackboneElement {
+  /**
+   * Computable Contract Rules
+   * Computable Contract conveyed using a policy rule language (e.g. XACML, DKAL, SecPal).
+   */
+  contentAttachment?: Attachment | undefined;
+  /**
+   * Computable Contract Rules
+   * Computable Contract conveyed using a policy rule language (e.g. XACML, DKAL, SecPal).
+   */
+  contentReference?: Reference | undefined;
+}
+/**
+ * Contract Signer
+ * Party signing this Contract.
+ */
+export interface ContractSigner extends BackboneElement {
+  /**
+   * Contract Signatory Party
+   * Party which is a signator to this Contract.
+   */
+  party: Reference;
+  /**
+   * Contract Documentation Signature
+   * Legally binding Contract DSIG signature contents in Base64.
+   */
+  signature: string;
+  _signature?: Element | undefined;
+  /**
+   * Contract Signer Type
+   * Role of this Contract signer, e.g. notary, grantee.
+   */
+  type: Coding;
+}
+/**
+ * Contract Term List
+ * One or more Contract Provisions, which may be related and conveyed as a group, and may contain nested groups.
+ */
+export interface ContractTerm extends BackboneElement {
+  /**
+   * Contract Term Action
+   * Action stipulated by this Contract Provision.
+   */
+  action?: CodeableConcept[] | undefined;
+  /**
+   * Contract Term Action Reason
+   * Reason or purpose for the action stipulated by this Contract Provision.
+   */
+  actionReason?: CodeableConcept[] | undefined;
+  /**
+   * Contract Term Actor List
+   * List of actors participating in this Contract Provision.
+   */
+  actor?: ContractTermActor[] | undefined;
+  /**
+   * Contract Term Effective Time
+   * Relevant time or time-period when this Contract Provision is applicable.
+   */
+  applies?: Period | undefined;
+  /**
+   * Nested Contract Term Group
+   * Nested group of Contract Provisions.
+   */
+  group?: ContractTerm[] | undefined;
+  /**
+   * Contract Term identifier
+   * Unique identifier for this particular Contract Provision.
+   */
+  identifier?: Identifier | undefined;
+  /**
+   * Contract Term Issue Date Time
+   * When this Contract Provision was issued.
+   */
+  issued?: string | undefined;
+  _issued?: Element | undefined;
+  /**
+   * Subject of this Contract Term
+   * Who or what this Contract Provision is about.
+   */
+  subject?: Reference | undefined;
+  /**
+   * Contract Term Subtype
+   * Subtype of this Contract Provision, e.g. life time maximum payment for a contract term for specific valued item, e.g. disability payment.
+   */
+  subType?: CodeableConcept | undefined;
+  /**
+   * Human readable Contract term text
+   * Human readable form of this Contract Provision.
+   */
+  text?: string | undefined;
+  _text?: Element | undefined;
+  /**
+   * Contract Term Type
+   * Type of Contract Provision such as specific requirements, purposes for actions, obligations, prohibitions, e.g. life time maximum benefit.
+   */
+  type?: CodeableConcept | undefined;
+  /**
+   * Contract Term Valued Item
+   * Contract Provision Valued Item List.
+   */
+  valuedItem?: ContractTermValuedItem[] | undefined;
+}
+/**
+ * Contract Term Actor List
+ * List of actors participating in this Contract Provision.
+ */
+export interface ContractTermActor extends BackboneElement {
+  /**
+   * Contract Term Actor
+   * The actor assigned a role in this Contract Provision.
+   */
+  entity: Reference;
+  /**
+   * Contract Term Actor Role
+   * Role played by the actor assigned this role in this Contract Provision.
+   */
+  role?: CodeableConcept[] | undefined;
+}
+/**
+ * Contract Term Valued Item
+ * Contract Provision Valued Item List.
+ */
+export interface ContractTermValuedItem extends BackboneElement {
+  /**
+   * Contract Term Valued Item Effective Tiem
+   * Indicates the time during which this Contract Term ValuedItem information is effective.
+   */
+  effectiveTime?: string | undefined;
+  _effectiveTime?: Element | undefined;
+  /**
+   * Contract Term Valued Item Type
+   * Specific type of Contract Provision Valued Item that may be priced.
+   */
+  entityCodeableConcept?: CodeableConcept | undefined;
+  /**
+   * Contract Term Valued Item Type
+   * Specific type of Contract Provision Valued Item that may be priced.
+   */
+  entityReference?: Reference | undefined;
+  /**
+   * Contract Term Valued Item Price Scaling Factor
+   * A real number that represents a multiplier used in determining the overall value of the Contract Provision Valued Item delivered. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount.
+   */
+  factor?: number | undefined;
+  /**
+   * Contract Term Valued Item Identifier
+   * Identifies a Contract Provision Valued Item instance.
+   */
+  identifier?: Identifier | undefined;
+  /**
+   * Total Contract Term Valued Item Value
+   * Expresses the product of the Contract Provision Valued Item unitQuantity and the unitPriceAmt. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied.
+   */
+  net?: Quantity | undefined;
+  /**
+   * Contract Term Valued Item Difficulty Scaling Factor
+   * An amount that expresses the weighting (based on difficulty, cost and/or resource intensiveness) associated with the Contract Provision Valued Item delivered. The concept of Points allows for assignment of point values for a Contract ProvisionValued Item, such that a monetary amount can be assigned to each point.
+   */
+  points?: number | undefined;
+  /**
+   * Contract Term Valued Item Count
+   * Specifies the units by which the Contract Provision Valued Item is measured or counted, and quantifies the countable or measurable Contract Term Valued Item instances.
+   */
+  quantity?: Quantity | undefined;
+  /**
+   * Contract Term Valued Item fee, charge, or cost
+   * A Contract Provision Valued Item unit valuation measure.
+   */
+  unitPrice?: Quantity | undefined;
+}
+/**
+ * Contract Valued Item List.
+ */
+export interface ContractValuedItem extends BackboneElement {
+  /**
+   * Contract Valued Item Effective Tiem
+   * Indicates the time during which this Contract ValuedItem information is effective.
+   */
+  effectiveTime?: string | undefined;
+  _effectiveTime?: Element | undefined;
+  /**
+   * Contract Valued Item Type
+   * Specific type of Contract Valued Item that may be priced.
+   */
+  entityCodeableConcept?: CodeableConcept | undefined;
+  /**
+   * Contract Valued Item Type
+   * Specific type of Contract Valued Item that may be priced.
+   */
+  entityReference?: Reference | undefined;
+  /**
+   * Contract Valued Item Price Scaling Factor
+   * A real number that represents a multiplier used in determining the overall value of the Contract Valued Item delivered. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount.
+   */
+  factor?: number | undefined;
+  /**
+   * Contract Valued Item Identifier
+   * Identifies a Contract Valued Item instance.
+   */
+  identifier?: Identifier | undefined;
+  /**
+   * Total Contract Valued Item Value
+   * Expresses the product of the Contract Valued Item unitQuantity and the unitPriceAmt. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied.
+   */
+  net?: Quantity | undefined;
+  /**
+   * Contract Valued Item Difficulty Scaling Factor
+   * An amount that expresses the weighting (based on difficulty, cost and/or resource intensiveness) associated with the Contract Valued Item delivered. The concept of Points allows for assignment of point values for a Contract Valued Item, such that a monetary amount can be assigned to each point.
+   */
+  points?: number | undefined;
+  /**
+   * Count of Contract Valued Items
+   * Specifies the units by which the Contract Valued Item is measured or counted, and quantifies the countable or measurable Contract Valued Item instances.
+   */
+  quantity?: Quantity | undefined;
+  /**
+   * Contract Valued Item fee, charge, or cost
+   * A Contract Valued Item unit valuation measure.
+   */
+  unitPrice?: Quantity | undefined;
+}
+/**
  * Base StructureDefinition for Coverage Resource
  */
 export interface Coverage extends DomainResource {
@@ -5630,53 +5630,6 @@ export interface Coverage extends DomainResource {
    * The type of coverage: social program, medical plan, accident coverage (workers compensation, auto), group health.
    */
   type?: Coding | undefined;
-}
-/**
- * Contact details of the publisher
- * Contacts to assist a user in finding and communicating with the publisher.
- */
-export interface DataElementContact extends BackboneElement {
-  /**
-   * Name of a individual to contact
-   * The name of an individual to contact regarding the data element.
-   */
-  name?: string | undefined;
-  _name?: Element | undefined;
-  /**
-   * Contact details for individual or publisher
-   * Contact details for individual (if a name was provided) or the publisher.
-   */
-  telecom?: ContactPoint[] | undefined;
-}
-/**
- * External specification mapped to
- * Identifies a specification (other than a terminology) that the elements which make up the DataElement have some correspondence with.
- */
-export interface DataElementMapping extends BackboneElement {
-  /**
-   * Versions, Issues, Scope limitations etc.
-   * Comments about this mapping, including version notes, issues, scope limitations, and other important notes for usage.
-   */
-  comments?: string | undefined;
-  _comments?: Element | undefined;
-  /**
-   * Internal id when this mapping is used
-   * An internal id that is used to identify this mapping set when specific mappings are made on a per-element basis.
-   */
-  identity: string;
-  _identity?: Element | undefined;
-  /**
-   * Names what this mapping refers to
-   * A name for the specification that is being mapped to.
-   */
-  name?: string | undefined;
-  _name?: Element | undefined;
-  /**
-   * Identifies what this mapping refers to
-   * An absolute URI that identifies the specification that this mapping is expressed to.
-   */
-  uri?: string | undefined;
-  _uri?: Element | undefined;
 }
 /**
  * Base StructureDefinition for DataElement Resource
@@ -5763,26 +5716,51 @@ export interface DataElement extends DomainResource {
   _version?: Element | undefined;
 }
 /**
- * Step taken to address
- * Indicates an action that has been taken or is committed to to reduce or eliminate the likelihood of the risk identified by the detected issue from manifesting.  Can also reflect an observation of known mitigating factors that may reduce/eliminate the need for any action.
+ * Contact details of the publisher
+ * Contacts to assist a user in finding and communicating with the publisher.
  */
-export interface DetectedIssueMitigation extends BackboneElement {
+export interface DataElementContact extends BackboneElement {
   /**
-   * What mitigation?
-   * Describes the action that was taken or the observation that was made that reduces/eliminates the risk associated with the identified issue.
+   * Name of a individual to contact
+   * The name of an individual to contact regarding the data element.
    */
-  action: CodeableConcept;
+  name?: string | undefined;
+  _name?: Element | undefined;
   /**
-   * Who is committing?
-   * Identifies the practitioner who determined the mitigation and takes responsibility for the mitigation step occurring.
+   * Contact details for individual or publisher
+   * Contact details for individual (if a name was provided) or the publisher.
    */
-  author?: Reference | undefined;
+  telecom?: ContactPoint[] | undefined;
+}
+/**
+ * External specification mapped to
+ * Identifies a specification (other than a terminology) that the elements which make up the DataElement have some correspondence with.
+ */
+export interface DataElementMapping extends BackboneElement {
   /**
-   * Date committed
-   * Indicates when the mitigating action was documented.
+   * Versions, Issues, Scope limitations etc.
+   * Comments about this mapping, including version notes, issues, scope limitations, and other important notes for usage.
    */
-  date?: string | undefined;
-  _date?: Element | undefined;
+  comments?: string | undefined;
+  _comments?: Element | undefined;
+  /**
+   * Internal id when this mapping is used
+   * An internal id that is used to identify this mapping set when specific mappings are made on a per-element basis.
+   */
+  identity: string;
+  _identity?: Element | undefined;
+  /**
+   * Names what this mapping refers to
+   * A name for the specification that is being mapped to.
+   */
+  name?: string | undefined;
+  _name?: Element | undefined;
+  /**
+   * Identifies what this mapping refers to
+   * An absolute URI that identifies the specification that this mapping is expressed to.
+   */
+  uri?: string | undefined;
+  _uri?: Element | undefined;
 }
 /**
  * Base StructureDefinition for DetectedIssue Resource
@@ -5843,6 +5821,28 @@ export interface DetectedIssue extends DomainResource {
    */
   severity?: ('high'|'moderate'|'low') | undefined;
   _severity?: Element | undefined;
+}
+/**
+ * Step taken to address
+ * Indicates an action that has been taken or is committed to to reduce or eliminate the likelihood of the risk identified by the detected issue from manifesting.  Can also reflect an observation of known mitigating factors that may reduce/eliminate the need for any action.
+ */
+export interface DetectedIssueMitigation extends BackboneElement {
+  /**
+   * What mitigation?
+   * Describes the action that was taken or the observation that was made that reduces/eliminates the risk associated with the identified issue.
+   */
+  action: CodeableConcept;
+  /**
+   * Who is committing?
+   * Identifies the practitioner who determined the mitigation and takes responsibility for the mitigation step occurring.
+   */
+  author?: Reference | undefined;
+  /**
+   * Date committed
+   * Indicates when the mitigating action was documented.
+   */
+  date?: string | undefined;
+  _date?: Element | undefined;
 }
 /**
  * Base StructureDefinition for Device Resource
@@ -5940,28 +5940,6 @@ export interface Device extends DomainResource {
   _version?: Element | undefined;
 }
 /**
- * Production specification of the component
- * Describes the production specification such as component revision, serial number, etc.
- */
-export interface DeviceComponentProductionSpecification extends BackboneElement {
-  /**
-   * Internal component unique identification
-   * Describes the internal component unique identification. This is a provision for manufacture specific standard components using a private OID. 11073-10101 has a partition for private OID semantic that the manufacture can make use of.
-   */
-  componentId?: Identifier | undefined;
-  /**
-   * A printable string defining the component
-   * Describes the printable string defining the component.
-   */
-  productionSpec?: string | undefined;
-  _productionSpec?: Element | undefined;
-  /**
-   * Specification type
-   * Describes the specification type, such as, serial number, part number, hardware revision, software revision, etc.
-   */
-  specType?: CodeableConcept | undefined;
-}
-/**
  * Base StructureDefinition for DeviceComponent Resource
  */
 export interface DeviceComponent extends DomainResource {
@@ -6020,24 +5998,26 @@ export interface DeviceComponent extends DomainResource {
   type: CodeableConcept;
 }
 /**
- * Describes the calibrations that have been performed or that are required to be performed.
+ * Production specification of the component
+ * Describes the production specification such as component revision, serial number, etc.
  */
-export interface DeviceMetricCalibration extends BackboneElement {
+export interface DeviceComponentProductionSpecification extends BackboneElement {
   /**
-   * Describes the state of the calibration.
+   * Internal component unique identification
+   * Describes the internal component unique identification. This is a provision for manufacture specific standard components using a private OID. 11073-10101 has a partition for private OID semantic that the manufacture can make use of.
    */
-  state?: ('not-calibrated'|'calibration-required'|'calibrated'|'unspecified') | undefined;
-  _state?: Element | undefined;
+  componentId?: Identifier | undefined;
   /**
-   * Describes the time last calibration has been performed.
+   * A printable string defining the component
+   * Describes the printable string defining the component.
    */
-  time?: string | undefined;
-  _time?: Element | undefined;
+  productionSpec?: string | undefined;
+  _productionSpec?: Element | undefined;
   /**
-   * Describes the type of the calibration method.
+   * Specification type
+   * Describes the specification type, such as, serial number, part number, hardware revision, software revision, etc.
    */
-  type?: ('unspecified'|'offset'|'gain'|'two-point') | undefined;
-  _type?: Element | undefined;
+  specType?: CodeableConcept | undefined;
 }
 /**
  * Base StructureDefinition for DeviceMetric Resource
@@ -6093,6 +6073,26 @@ export interface DeviceMetric extends DomainResource {
    * Describes the unit that an observed value determined for this metric will have. For example: Percent, Seconds, etc.
    */
   unit?: CodeableConcept | undefined;
+}
+/**
+ * Describes the calibrations that have been performed or that are required to be performed.
+ */
+export interface DeviceMetricCalibration extends BackboneElement {
+  /**
+   * Describes the state of the calibration.
+   */
+  state?: ('not-calibrated'|'calibration-required'|'calibrated'|'unspecified') | undefined;
+  _state?: Element | undefined;
+  /**
+   * Describes the time last calibration has been performed.
+   */
+  time?: string | undefined;
+  _time?: Element | undefined;
+  /**
+   * Describes the type of the calibration method.
+   */
+  type?: ('unspecified'|'offset'|'gain'|'two-point') | undefined;
+  _type?: Element | undefined;
 }
 /**
  * Base StructureDefinition for DeviceUseRequest Resource
@@ -6246,64 +6246,6 @@ export interface DeviceUseStatement extends DomainResource {
   whenUsed?: Period | undefined;
 }
 /**
- * A list of events of interest in the lifecycle
- * A summary of the events of interest that have occurred as the request is processed; e.g. when the order was made, various processing steps (specimens received), when it was completed.
- */
-export interface DiagnosticOrderEvent extends BackboneElement {
-  /**
-   * Who recorded or did this
-   * The person responsible for performing or recording the action.
-   */
-  actor?: Reference | undefined;
-  /**
-   * The date at which the event happened
-   * The date/time at which the event occurred.
-   */
-  dateTime: string;
-  _dateTime?: Element | undefined;
-  /**
-   * More information about the event and its context
-   * Additional information about the event that occurred - e.g. if the status remained unchanged.
-   */
-  description?: CodeableConcept | undefined;
-  /**
-   * The status for the event.
-   */
-  status: ('proposed'|'draft'|'planned'|'requested'|'received'|'accepted'|'in-progress'|'review'|'completed'|'cancelled'|'suspended'|'rejected'|'failed');
-  _status?: Element | undefined;
-}
-/**
- * The items the orderer requested
- * The specific diagnostic investigations that are requested as part of this request. Sometimes, there can only be one item per request, but in most contexts, more than one investigation can be requested.
- */
-export interface DiagnosticOrderItem extends BackboneElement {
-  /**
-   * Location of requested test (if applicable)
-   * Anatomical location where the request test should be performed.  This is the target site.
-   */
-  bodySite?: CodeableConcept | undefined;
-  /**
-   * Code to indicate the item (test or panel) being ordered
-   * A code that identifies a particular diagnostic investigation, or panel of investigations, that have been requested.
-   */
-  code: CodeableConcept;
-  /**
-   * Events specific to this item
-   * A summary of the events of interest that have occurred as this item of the request is processed.
-   */
-  event?: DiagnosticOrderEvent[] | undefined;
-  /**
-   * If this item relates to specific specimens
-   * If the item is related to a specific specimen.
-   */
-  specimen?: Reference[] | undefined;
-  /**
-   * The status of this individual item within the order.
-   */
-  status?: ('proposed'|'draft'|'planned'|'requested'|'received'|'accepted'|'in-progress'|'review'|'completed'|'cancelled'|'suspended'|'rejected'|'failed') | undefined;
-  _status?: Element | undefined;
-}
-/**
  * Base StructureDefinition for DiagnosticOrder Resource
  */
 export interface DiagnosticOrder extends DomainResource {
@@ -6369,20 +6311,62 @@ export interface DiagnosticOrder extends DomainResource {
   supportingInformation?: Reference[] | undefined;
 }
 /**
- * Key images associated with this report
- * A list of key images associated with this report. The images are generally created during the diagnostic process, and may be directly of the patient, or of treated specimens (i.e. slides of interest).
+ * A list of events of interest in the lifecycle
+ * A summary of the events of interest that have occurred as the request is processed; e.g. when the order was made, various processing steps (specimens received), when it was completed.
  */
-export interface DiagnosticReportImage extends BackboneElement {
+export interface DiagnosticOrderEvent extends BackboneElement {
   /**
-   * Comment about the image (e.g. explanation)
-   * A comment about the image. Typically, this is used to provide an explanation for why the image is included, or to draw the viewer's attention to important features.
+   * Who recorded or did this
+   * The person responsible for performing or recording the action.
    */
-  comment?: string | undefined;
-  _comment?: Element | undefined;
+  actor?: Reference | undefined;
   /**
-   * Reference to the image source.
+   * The date at which the event happened
+   * The date/time at which the event occurred.
    */
-  link: Reference;
+  dateTime: string;
+  _dateTime?: Element | undefined;
+  /**
+   * More information about the event and its context
+   * Additional information about the event that occurred - e.g. if the status remained unchanged.
+   */
+  description?: CodeableConcept | undefined;
+  /**
+   * The status for the event.
+   */
+  status: ('proposed'|'draft'|'planned'|'requested'|'received'|'accepted'|'in-progress'|'review'|'completed'|'cancelled'|'suspended'|'rejected'|'failed');
+  _status?: Element | undefined;
+}
+/**
+ * The items the orderer requested
+ * The specific diagnostic investigations that are requested as part of this request. Sometimes, there can only be one item per request, but in most contexts, more than one investigation can be requested.
+ */
+export interface DiagnosticOrderItem extends BackboneElement {
+  /**
+   * Location of requested test (if applicable)
+   * Anatomical location where the request test should be performed.  This is the target site.
+   */
+  bodySite?: CodeableConcept | undefined;
+  /**
+   * Code to indicate the item (test or panel) being ordered
+   * A code that identifies a particular diagnostic investigation, or panel of investigations, that have been requested.
+   */
+  code: CodeableConcept;
+  /**
+   * Events specific to this item
+   * A summary of the events of interest that have occurred as this item of the request is processed.
+   */
+  event?: DiagnosticOrderEvent[] | undefined;
+  /**
+   * If this item relates to specific specimens
+   * If the item is related to a specific specimen.
+   */
+  specimen?: Reference[] | undefined;
+  /**
+   * The status of this individual item within the order.
+   */
+  status?: ('proposed'|'draft'|'planned'|'requested'|'received'|'accepted'|'in-progress'|'review'|'completed'|'cancelled'|'suspended'|'rejected'|'failed') | undefined;
+  _status?: Element | undefined;
 }
 /**
  * Base StructureDefinition for DiagnosticReport Resource
@@ -6484,35 +6468,20 @@ export interface DiagnosticReport extends DomainResource {
   subject: Reference;
 }
 /**
- * The items included
- * The list of Documents included in the manifest.
+ * Key images associated with this report
+ * A list of key images associated with this report. The images are generally created during the diagnostic process, and may be directly of the patient, or of treated specimens (i.e. slides of interest).
  */
-export interface DocumentManifestContent extends BackboneElement {
+export interface DiagnosticReportImage extends BackboneElement {
   /**
-   * Contents of this set of documents
-   * The list of references to document content, or Attachment that consist of the parts of this document manifest. Usually, these would be document references, but direct references to Media or Attachments are also allowed.
+   * Comment about the image (e.g. explanation)
+   * A comment about the image. Typically, this is used to provide an explanation for why the image is included, or to draw the viewer's attention to important features.
    */
-  pAttachment?: Attachment | undefined;
+  comment?: string | undefined;
+  _comment?: Element | undefined;
   /**
-   * Contents of this set of documents
-   * The list of references to document content, or Attachment that consist of the parts of this document manifest. Usually, these would be document references, but direct references to Media or Attachments are also allowed.
+   * Reference to the image source.
    */
-  pReference?: Reference | undefined;
-}
-/**
- * Related things
- * Related identifiers or resources associated with the DocumentManifest.
- */
-export interface DocumentManifestRelated extends BackboneElement {
-  /**
-   * Identifiers of things that are related
-   * Related identifier to this DocumentManifest.  For example, Order numbers, accession numbers, XDW workflow numbers.
-   */
-  identifier?: Identifier | undefined;
-  /**
-   * Related Resource to this DocumentManifest. For example, Order, DiagnosticOrder,  Procedure, EligibilityRequest, etc.
-   */
-  ref?: Reference | undefined;
+  link: Reference;
 }
 /**
  * Base StructureDefinition for DocumentManifest Resource
@@ -6585,90 +6554,35 @@ export interface DocumentManifest extends DomainResource {
   type?: CodeableConcept | undefined;
 }
 /**
- * Document referenced
- * The document and format referenced. There may be multiple content element repetitions, each with a different format.
+ * The items included
+ * The list of Documents included in the manifest.
  */
-export interface DocumentReferenceContent extends BackboneElement {
+export interface DocumentManifestContent extends BackboneElement {
   /**
-   * Where to access the document
-   * The document or url of the document along with critical metadata to prove content has integrity.
+   * Contents of this set of documents
+   * The list of references to document content, or Attachment that consist of the parts of this document manifest. Usually, these would be document references, but direct references to Media or Attachments are also allowed.
    */
-  attachment: Attachment;
+  pAttachment?: Attachment | undefined;
   /**
-   * Format/content rules for the document
-   * An identifier of the document encoding, structure, and template that the document conforms to beyond the base format indicated in the mimeType.
+   * Contents of this set of documents
+   * The list of references to document content, or Attachment that consist of the parts of this document manifest. Usually, these would be document references, but direct references to Media or Attachments are also allowed.
    */
-  format?: Coding[] | undefined;
+  pReference?: Reference | undefined;
 }
 /**
- * Related identifiers or resources associated with the DocumentReference.
+ * Related things
+ * Related identifiers or resources associated with the DocumentManifest.
  */
-export interface DocumentReferenceContextRelated extends BackboneElement {
+export interface DocumentManifestRelated extends BackboneElement {
   /**
-   * Identifier of related objects or events
-   * Related identifier to this DocumentReference. If both id and ref are present they shall refer to the same thing.
+   * Identifiers of things that are related
+   * Related identifier to this DocumentManifest.  For example, Order numbers, accession numbers, XDW workflow numbers.
    */
   identifier?: Identifier | undefined;
   /**
-   * Related Resource to this DocumentReference. If both id and ref are present they shall refer to the same thing.
+   * Related Resource to this DocumentManifest. For example, Order, DiagnosticOrder,  Procedure, EligibilityRequest, etc.
    */
   ref?: Reference | undefined;
-}
-/**
- * Clinical context of document
- * The clinical context in which the document was prepared.
- */
-export interface DocumentReferenceContext extends BackboneElement {
-  /**
-   * Context of the document  content
-   * Describes the clinical encounter or type of care that the document content is associated with.
-   */
-  encounter?: Reference | undefined;
-  /**
-   * Main Clinical Acts Documented
-   * This list of codes represents the main clinical acts, such as a colonoscopy or an appendectomy, being documented. In some cases, the event is inherent in the typeCode, such as a "History and Physical Report" in which the procedure being documented is necessarily a "History and Physical" act.
-   */
-  event?: CodeableConcept[] | undefined;
-  /**
-   * Kind of facility where patient was seen
-   * The kind of facility where the patient was seen.
-   */
-  facilityType?: CodeableConcept | undefined;
-  /**
-   * Time of service that is being documented
-   * The time period over which the service that is described by the document was provided.
-   */
-  period?: Period | undefined;
-  /**
-   * Additional details about where the content was created (e.g. clinical specialty)
-   * This property may convey specifics about the practice setting where the content was created, often reflecting the clinical specialty.
-   */
-  practiceSetting?: CodeableConcept | undefined;
-  /**
-   * Related identifiers or resources associated with the DocumentReference.
-   */
-  related?: DocumentReferenceContextRelated[] | undefined;
-  /**
-   * Patient demographics from source
-   * The Patient Information as known when the document was published. May be a reference to a version specific, or contained.
-   */
-  sourcePatientInfo?: Reference | undefined;
-}
-/**
- * Relationships to other documents
- * Relationships that this document has with other document references that already exist.
- */
-export interface DocumentReferenceRelatesTo extends BackboneElement {
-  /**
-   * The type of relationship that this document has with anther document.
-   */
-  code: ('replaces'|'transforms'|'signs'|'appends');
-  _code?: Element | undefined;
-  /**
-   * Target of the relationship
-   * The target document of this relationship.
-   */
-  target: Reference;
 }
 /**
  * Base StructureDefinition for DocumentReference Resource
@@ -6764,6 +6678,92 @@ export interface DocumentReference extends DomainResource {
    * Specifies the particular kind of document referenced  (e.g. History and Physical, Discharge Summary, Progress Note). This usually equates to the purpose of making the document referenced.
    */
   type: CodeableConcept;
+}
+/**
+ * Document referenced
+ * The document and format referenced. There may be multiple content element repetitions, each with a different format.
+ */
+export interface DocumentReferenceContent extends BackboneElement {
+  /**
+   * Where to access the document
+   * The document or url of the document along with critical metadata to prove content has integrity.
+   */
+  attachment: Attachment;
+  /**
+   * Format/content rules for the document
+   * An identifier of the document encoding, structure, and template that the document conforms to beyond the base format indicated in the mimeType.
+   */
+  format?: Coding[] | undefined;
+}
+/**
+ * Clinical context of document
+ * The clinical context in which the document was prepared.
+ */
+export interface DocumentReferenceContext extends BackboneElement {
+  /**
+   * Context of the document  content
+   * Describes the clinical encounter or type of care that the document content is associated with.
+   */
+  encounter?: Reference | undefined;
+  /**
+   * Main Clinical Acts Documented
+   * This list of codes represents the main clinical acts, such as a colonoscopy or an appendectomy, being documented. In some cases, the event is inherent in the typeCode, such as a "History and Physical Report" in which the procedure being documented is necessarily a "History and Physical" act.
+   */
+  event?: CodeableConcept[] | undefined;
+  /**
+   * Kind of facility where patient was seen
+   * The kind of facility where the patient was seen.
+   */
+  facilityType?: CodeableConcept | undefined;
+  /**
+   * Time of service that is being documented
+   * The time period over which the service that is described by the document was provided.
+   */
+  period?: Period | undefined;
+  /**
+   * Additional details about where the content was created (e.g. clinical specialty)
+   * This property may convey specifics about the practice setting where the content was created, often reflecting the clinical specialty.
+   */
+  practiceSetting?: CodeableConcept | undefined;
+  /**
+   * Related identifiers or resources associated with the DocumentReference.
+   */
+  related?: DocumentReferenceContextRelated[] | undefined;
+  /**
+   * Patient demographics from source
+   * The Patient Information as known when the document was published. May be a reference to a version specific, or contained.
+   */
+  sourcePatientInfo?: Reference | undefined;
+}
+/**
+ * Related identifiers or resources associated with the DocumentReference.
+ */
+export interface DocumentReferenceContextRelated extends BackboneElement {
+  /**
+   * Identifier of related objects or events
+   * Related identifier to this DocumentReference. If both id and ref are present they shall refer to the same thing.
+   */
+  identifier?: Identifier | undefined;
+  /**
+   * Related Resource to this DocumentReference. If both id and ref are present they shall refer to the same thing.
+   */
+  ref?: Reference | undefined;
+}
+/**
+ * Relationships to other documents
+ * Relationships that this document has with other document references that already exist.
+ */
+export interface DocumentReferenceRelatesTo extends BackboneElement {
+  /**
+   * The type of relationship that this document has with anther document.
+   */
+  code: ('replaces'|'transforms'|'signs'|'appends');
+  _code?: Element | undefined;
+  /**
+   * Target of the relationship
+   * The target document of this relationship.
+   */
+  target: Reference;
 }
 /**
  * Base StructureDefinition for DomainResource Resource
@@ -6896,6 +6896,101 @@ export interface EligibilityResponse extends DomainResource {
   ruleset?: Coding | undefined;
 }
 /**
+ * Base StructureDefinition for Encounter Resource
+ */
+export interface Encounter extends DomainResource {
+  /** Resource Type Name (for serialization) */
+  readonly resourceType: 'Encounter';
+  /**
+   * The appointment that scheduled this encounter.
+   */
+  appointment?: Reference | undefined;
+  /**
+   * inpatient | outpatient | ambulatory | emergency +.
+   */
+  class?: ('inpatient'|'outpatient'|'ambulatory'|'emergency'|'home'|'field'|'daytime'|'virtual'|'other') | undefined;
+  _class?: Element | undefined;
+  /**
+   * Episode(s) of care that this encounter should be recorded against
+   * Where a specific encounter should be classified as a part of a specific episode(s) of care this field should be used. This association can facilitate grouping of related encounters together for a specific purpose, such as government reporting, issue tracking, association via a common problem.  The association is recorded on the encounter as these are typically created after the episode of care, and grouped on entry rather than editing the episode of care to append another encounter to it (the episode of care could span years).
+   */
+  episodeOfCare?: Reference[] | undefined;
+  /**
+   * Details about the admission to a healthcare service.
+   */
+  hospitalization?: EncounterHospitalization | undefined;
+  /**
+   * Identifier(s) by which this encounter is known.
+   */
+  identifier?: Identifier[] | undefined;
+  /**
+   * The ReferralRequest that initiated this encounter
+   * The referral request this encounter satisfies (incoming referral).
+   */
+  incomingReferral?: Reference[] | undefined;
+  /**
+   * Reason the encounter takes place (resource)
+   * Reason the encounter takes place, as specified using information from another resource. For admissions, this is the admission diagnosis. The indication will typically be a Condition (with other resources referenced in the evidence.detail), or a Procedure.
+   */
+  indication?: Reference[] | undefined;
+  /**
+   * Quantity of time the encounter lasted (less time absent)
+   * Quantity of time the encounter lasted. This excludes the time during leaves of absence.
+   */
+  length?: Quantity | undefined;
+  /**
+   * List of locations where the patient has been
+   * List of locations where  the patient has been during this encounter.
+   */
+  location?: EncounterLocation[] | undefined;
+  /**
+   * List of participants involved in the encounter
+   * The list of people responsible for providing the service.
+   */
+  participant?: EncounterParticipant[] | undefined;
+  /**
+   * Another Encounter this encounter is part of
+   * Another Encounter of which this encounter is a part of (administratively or in time).
+   */
+  partOf?: Reference | undefined;
+  /**
+   * The patient present at the encounter.
+   */
+  patient?: Reference | undefined;
+  /**
+   * The start and end time of the encounter.
+   */
+  period?: Period | undefined;
+  /**
+   * Indicates the urgency of the encounter.
+   */
+  priority?: CodeableConcept | undefined;
+  /**
+   * Reason the encounter takes place (code)
+   * Reason the encounter takes place, expressed as a code. For admissions, this can be used for a coded admission diagnosis.
+   */
+  reason?: CodeableConcept[] | undefined;
+  /**
+   * The custodian organization of this Encounter record
+   * An organization that is in charge of maintaining the information of this Encounter (e.g. who maintains the report or the master service catalog item, etc.). This MAY be the same as the organization on the Patient record, however it could be different. This MAY not be not the Service Delivery Location's Organization.
+   */
+  serviceProvider?: Reference | undefined;
+  /**
+   * planned | arrived | in-progress | onleave | finished | cancelled.
+   */
+  status: ('planned'|'arrived'|'in-progress'|'onleave'|'finished'|'cancelled');
+  _status?: Element | undefined;
+  /**
+   * List of past encounter statuses
+   * The status history permits the encounter resource to contain the status history without needing to read through the historical versions of the resource, or even have the server store them.
+   */
+  statusHistory?: EncounterStatusHistory[] | undefined;
+  /**
+   * Specific type of encounter (e.g. e-mail consultation, surgical day-care, skilled nursing, rehabilitation).
+   */
+  type?: CodeableConcept[] | undefined;
+}
+/**
  * Details about the admission to a healthcare service.
  */
 export interface EncounterHospitalization extends BackboneElement {
@@ -6999,101 +7094,6 @@ export interface EncounterStatusHistory extends BackboneElement {
    */
   status: ('planned'|'arrived'|'in-progress'|'onleave'|'finished'|'cancelled');
   _status?: Element | undefined;
-}
-/**
- * Base StructureDefinition for Encounter Resource
- */
-export interface Encounter extends DomainResource {
-  /** Resource Type Name (for serialization) */
-  readonly resourceType: 'Encounter';
-  /**
-   * The appointment that scheduled this encounter.
-   */
-  appointment?: Reference | undefined;
-  /**
-   * inpatient | outpatient | ambulatory | emergency +.
-   */
-  class?: ('inpatient'|'outpatient'|'ambulatory'|'emergency'|'home'|'field'|'daytime'|'virtual'|'other') | undefined;
-  _class?: Element | undefined;
-  /**
-   * Episode(s) of care that this encounter should be recorded against
-   * Where a specific encounter should be classified as a part of a specific episode(s) of care this field should be used. This association can facilitate grouping of related encounters together for a specific purpose, such as government reporting, issue tracking, association via a common problem.  The association is recorded on the encounter as these are typically created after the episode of care, and grouped on entry rather than editing the episode of care to append another encounter to it (the episode of care could span years).
-   */
-  episodeOfCare?: Reference[] | undefined;
-  /**
-   * Details about the admission to a healthcare service.
-   */
-  hospitalization?: EncounterHospitalization | undefined;
-  /**
-   * Identifier(s) by which this encounter is known.
-   */
-  identifier?: Identifier[] | undefined;
-  /**
-   * The ReferralRequest that initiated this encounter
-   * The referral request this encounter satisfies (incoming referral).
-   */
-  incomingReferral?: Reference[] | undefined;
-  /**
-   * Reason the encounter takes place (resource)
-   * Reason the encounter takes place, as specified using information from another resource. For admissions, this is the admission diagnosis. The indication will typically be a Condition (with other resources referenced in the evidence.detail), or a Procedure.
-   */
-  indication?: Reference[] | undefined;
-  /**
-   * Quantity of time the encounter lasted (less time absent)
-   * Quantity of time the encounter lasted. This excludes the time during leaves of absence.
-   */
-  length?: Quantity | undefined;
-  /**
-   * List of locations where the patient has been
-   * List of locations where  the patient has been during this encounter.
-   */
-  location?: EncounterLocation[] | undefined;
-  /**
-   * List of participants involved in the encounter
-   * The list of people responsible for providing the service.
-   */
-  participant?: EncounterParticipant[] | undefined;
-  /**
-   * Another Encounter this encounter is part of
-   * Another Encounter of which this encounter is a part of (administratively or in time).
-   */
-  partOf?: Reference | undefined;
-  /**
-   * The patient present at the encounter.
-   */
-  patient?: Reference | undefined;
-  /**
-   * The start and end time of the encounter.
-   */
-  period?: Period | undefined;
-  /**
-   * Indicates the urgency of the encounter.
-   */
-  priority?: CodeableConcept | undefined;
-  /**
-   * Reason the encounter takes place (code)
-   * Reason the encounter takes place, expressed as a code. For admissions, this can be used for a coded admission diagnosis.
-   */
-  reason?: CodeableConcept[] | undefined;
-  /**
-   * The custodian organization of this Encounter record
-   * An organization that is in charge of maintaining the information of this Encounter (e.g. who maintains the report or the master service catalog item, etc.). This MAY be the same as the organization on the Patient record, however it could be different. This MAY not be not the Service Delivery Location's Organization.
-   */
-  serviceProvider?: Reference | undefined;
-  /**
-   * planned | arrived | in-progress | onleave | finished | cancelled.
-   */
-  status: ('planned'|'arrived'|'in-progress'|'onleave'|'finished'|'cancelled');
-  _status?: Element | undefined;
-  /**
-   * List of past encounter statuses
-   * The status history permits the encounter resource to contain the status history without needing to read through the historical versions of the resource, or even have the server store them.
-   */
-  statusHistory?: EncounterStatusHistory[] | undefined;
-  /**
-   * Specific type of encounter (e.g. e-mail consultation, surgical day-care, skilled nursing, rehabilitation).
-   */
-  type?: CodeableConcept[] | undefined;
 }
 /**
  * Base StructureDefinition for EnrollmentRequest Resource
@@ -7214,42 +7214,6 @@ export interface EnrollmentResponse extends DomainResource {
   ruleset?: Coding | undefined;
 }
 /**
- * Other practitioners facilitating this episode of care
- * The list of practitioners that may be facilitating this episode of care for specific purposes.
- */
-export interface EpisodeOfCareCareTeam extends BackboneElement {
-  /**
-   * The practitioner (or Organization) within the team.
-   */
-  member?: Reference | undefined;
-  /**
-   * Period of time for this role
-   * The period of time this practitioner is performing some role within the episode of care.
-   */
-  period?: Period | undefined;
-  /**
-   * Role taken by this team member
-   * The role this team member is taking within this episode of care.
-   */
-  role?: CodeableConcept[] | undefined;
-}
-/**
- * Past list of status codes
- * The history of statuses that the EpisodeOfCare has been through (without requiring processing the history of the resource).
- */
-export interface EpisodeOfCareStatusHistory extends BackboneElement {
-  /**
-   * Period for the status
-   * The period during this EpisodeOfCare that the specific status applied.
-   */
-  period: Period;
-  /**
-   * planned | waitlist | active | onhold | finished | cancelled.
-   */
-  status: ('planned'|'waitlist'|'active'|'onhold'|'finished'|'cancelled');
-  _status?: Element | undefined;
-}
-/**
  * Base StructureDefinition for EpisodeOfCare Resource
  */
 export interface EpisodeOfCare extends DomainResource {
@@ -7312,6 +7276,42 @@ export interface EpisodeOfCare extends DomainResource {
   type?: CodeableConcept[] | undefined;
 }
 /**
+ * Other practitioners facilitating this episode of care
+ * The list of practitioners that may be facilitating this episode of care for specific purposes.
+ */
+export interface EpisodeOfCareCareTeam extends BackboneElement {
+  /**
+   * The practitioner (or Organization) within the team.
+   */
+  member?: Reference | undefined;
+  /**
+   * Period of time for this role
+   * The period of time this practitioner is performing some role within the episode of care.
+   */
+  period?: Period | undefined;
+  /**
+   * Role taken by this team member
+   * The role this team member is taking within this episode of care.
+   */
+  role?: CodeableConcept[] | undefined;
+}
+/**
+ * Past list of status codes
+ * The history of statuses that the EpisodeOfCare has been through (without requiring processing the history of the resource).
+ */
+export interface EpisodeOfCareStatusHistory extends BackboneElement {
+  /**
+   * Period for the status
+   * The period during this EpisodeOfCare that the specific status applied.
+   */
+  period: Period;
+  /**
+   * planned | waitlist | active | onhold | finished | cancelled.
+   */
+  status: ('planned'|'waitlist'|'active'|'onhold'|'finished'|'cancelled');
+  _status?: Element | undefined;
+}
+/**
  * Base StructureDefinition for ExplanationOfBenefit Resource
  */
 export interface ExplanationOfBenefit extends DomainResource {
@@ -7370,48 +7370,6 @@ export interface ExplanationOfBenefit extends DomainResource {
    * The version of the style of resource contents. This should be mapped to the allowable profiles for this and supporting resources.
    */
   ruleset?: Coding | undefined;
-}
-/**
- * Condition that the related person had
- * The significant Conditions (or condition) that the family member had. This is a repeating section to allow a system to represent more than one condition per resource, though there is nothing stopping multiple resources - one per condition.
- */
-export interface FamilyMemberHistoryCondition extends BackboneElement {
-  /**
-   * Condition suffered by relation
-   * The actual condition specified. Could be a coded condition (like MI or Diabetes) or a less specific string like 'cancer' depending on how much is known about the condition and the capabilities of the creating system.
-   */
-  code: CodeableConcept;
-  /**
-   * Extra information about condition
-   * An area where general notes can be placed about this specific condition.
-   */
-  note?: Annotation | undefined;
-  /**
-   * When condition first manifested
-   * Either the age of onset, range of approximate age or descriptive string can be recorded.  For conditions with multiple occurrences, this describes the first known occurrence.
-   */
-  onsetPeriod?: Period | undefined;
-  /**
-   * When condition first manifested
-   * Either the age of onset, range of approximate age or descriptive string can be recorded.  For conditions with multiple occurrences, this describes the first known occurrence.
-   */
-  onsetQuantity?: Quantity | undefined;
-  /**
-   * When condition first manifested
-   * Either the age of onset, range of approximate age or descriptive string can be recorded.  For conditions with multiple occurrences, this describes the first known occurrence.
-   */
-  onsetRange?: Range | undefined;
-  /**
-   * When condition first manifested
-   * Either the age of onset, range of approximate age or descriptive string can be recorded.  For conditions with multiple occurrences, this describes the first known occurrence.
-   */
-  onsetString?: string | undefined;
-  _onsetString?: Element | undefined;
-  /**
-   * deceased | permanent disability | etc.
-   * Indicates what happened as a result of this condition.  If the condition resulted in death, deceased date is captured on the relation.
-   */
-  outcome?: CodeableConcept | undefined;
 }
 /**
  * Base StructureDefinition for FamilyMemberHistory Resource
@@ -7517,6 +7475,48 @@ export interface FamilyMemberHistory extends DomainResource {
   _status?: Element | undefined;
 }
 /**
+ * Condition that the related person had
+ * The significant Conditions (or condition) that the family member had. This is a repeating section to allow a system to represent more than one condition per resource, though there is nothing stopping multiple resources - one per condition.
+ */
+export interface FamilyMemberHistoryCondition extends BackboneElement {
+  /**
+   * Condition suffered by relation
+   * The actual condition specified. Could be a coded condition (like MI or Diabetes) or a less specific string like 'cancer' depending on how much is known about the condition and the capabilities of the creating system.
+   */
+  code: CodeableConcept;
+  /**
+   * Extra information about condition
+   * An area where general notes can be placed about this specific condition.
+   */
+  note?: Annotation | undefined;
+  /**
+   * When condition first manifested
+   * Either the age of onset, range of approximate age or descriptive string can be recorded.  For conditions with multiple occurrences, this describes the first known occurrence.
+   */
+  onsetPeriod?: Period | undefined;
+  /**
+   * When condition first manifested
+   * Either the age of onset, range of approximate age or descriptive string can be recorded.  For conditions with multiple occurrences, this describes the first known occurrence.
+   */
+  onsetQuantity?: Quantity | undefined;
+  /**
+   * When condition first manifested
+   * Either the age of onset, range of approximate age or descriptive string can be recorded.  For conditions with multiple occurrences, this describes the first known occurrence.
+   */
+  onsetRange?: Range | undefined;
+  /**
+   * When condition first manifested
+   * Either the age of onset, range of approximate age or descriptive string can be recorded.  For conditions with multiple occurrences, this describes the first known occurrence.
+   */
+  onsetString?: string | undefined;
+  _onsetString?: Element | undefined;
+  /**
+   * deceased | permanent disability | etc.
+   * Indicates what happened as a result of this condition.  If the condition resulted in death, deceased date is captured on the relation.
+   */
+  outcome?: CodeableConcept | undefined;
+}
+/**
  * Base StructureDefinition for Flag Resource
  */
 export interface Flag extends DomainResource {
@@ -7562,22 +7562,6 @@ export interface Flag extends DomainResource {
    * The patient, location, group , organization , or practitioner this is about record this flag is associated with.
    */
   subject: Reference;
-}
-/**
- * What was end result of goal?
- * Identifies the change (or lack of change) at the point where the goal was deepmed to be cancelled or achieved.
- */
-export interface GoalOutcome extends BackboneElement {
-  /**
-   * Code or observation that resulted from goal
-   * Details of what's changed (or not changed).
-   */
-  resultCodeableConcept?: CodeableConcept | undefined;
-  /**
-   * Code or observation that resulted from goal
-   * Details of what's changed (or not changed).
-   */
-  resultReference?: Reference | undefined;
 }
 /**
  * Base StructureDefinition for Goal Resource
@@ -7671,6 +7655,71 @@ export interface Goal extends DomainResource {
   targetQuantity?: Quantity | undefined;
 }
 /**
+ * What was end result of goal?
+ * Identifies the change (or lack of change) at the point where the goal was deepmed to be cancelled or achieved.
+ */
+export interface GoalOutcome extends BackboneElement {
+  /**
+   * Code or observation that resulted from goal
+   * Details of what's changed (or not changed).
+   */
+  resultCodeableConcept?: CodeableConcept | undefined;
+  /**
+   * Code or observation that resulted from goal
+   * Details of what's changed (or not changed).
+   */
+  resultReference?: Reference | undefined;
+}
+/**
+ * Base StructureDefinition for Group Resource
+ */
+export interface Group extends DomainResource {
+  /** Resource Type Name (for serialization) */
+  readonly resourceType: 'Group';
+  /**
+   * Descriptive or actual
+   * If true, indicates that the resource refers to a specific group of real individuals.  If false, the group defines a set of intended individuals.
+   */
+  actual: boolean;
+  _actual?: Element | undefined;
+  /**
+   * Trait of group members
+   * Identifies the traits shared by members of the group.
+   */
+  characteristic?: GroupCharacteristic[] | undefined;
+  /**
+   * Kind of Group members
+   * Provides a specific type of resource the group includes; e.g. "cow", "syringe", etc.
+   */
+  code?: CodeableConcept | undefined;
+  /**
+   * Unique id
+   * A unique business identifier for this group.
+   */
+  identifier?: Identifier[] | undefined;
+  /**
+   * Who or what is in group
+   * Identifies the resource instances that are members of the group.
+   */
+  member?: GroupMember[] | undefined;
+  /**
+   * Label for Group
+   * A label assigned to the group for human identification and communication.
+   */
+  name?: string | undefined;
+  _name?: Element | undefined;
+  /**
+   * Number of members
+   * A count of the number of resource instances that are part of the group.
+   */
+  quantity?: number | undefined;
+  /**
+   * Identifies the broad classification of the kind of resources the group includes.
+   */
+  type: ('person'|'animal'|'practitioner'|'device'|'medication'|'substance');
+  _type?: Element | undefined;
+}
+/**
  * Trait of group members
  * Identifies the traits shared by members of the group.
  */
@@ -7734,117 +7783,6 @@ export interface GroupMember extends BackboneElement {
    * The period that the member was in the group, if known.
    */
   period?: Period | undefined;
-}
-/**
- * Base StructureDefinition for Group Resource
- */
-export interface Group extends DomainResource {
-  /** Resource Type Name (for serialization) */
-  readonly resourceType: 'Group';
-  /**
-   * Descriptive or actual
-   * If true, indicates that the resource refers to a specific group of real individuals.  If false, the group defines a set of intended individuals.
-   */
-  actual: boolean;
-  _actual?: Element | undefined;
-  /**
-   * Trait of group members
-   * Identifies the traits shared by members of the group.
-   */
-  characteristic?: GroupCharacteristic[] | undefined;
-  /**
-   * Kind of Group members
-   * Provides a specific type of resource the group includes; e.g. "cow", "syringe", etc.
-   */
-  code?: CodeableConcept | undefined;
-  /**
-   * Unique id
-   * A unique business identifier for this group.
-   */
-  identifier?: Identifier[] | undefined;
-  /**
-   * Who or what is in group
-   * Identifies the resource instances that are members of the group.
-   */
-  member?: GroupMember[] | undefined;
-  /**
-   * Label for Group
-   * A label assigned to the group for human identification and communication.
-   */
-  name?: string | undefined;
-  _name?: Element | undefined;
-  /**
-   * Number of members
-   * A count of the number of resource instances that are part of the group.
-   */
-  quantity?: number | undefined;
-  /**
-   * Identifies the broad classification of the kind of resources the group includes.
-   */
-  type: ('person'|'animal'|'practitioner'|'device'|'medication'|'substance');
-  _type?: Element | undefined;
-}
-/**
- * Times the Service Site is available
- * A collection of times that the Service Site is available.
- */
-export interface HealthcareServiceAvailableTime extends BackboneElement {
-  /**
-   * Always available? e.g. 24 hour service
-   * Is this always available? (hence times are irrelevant) e.g. 24 hour service.
-   */
-  allDay?: boolean | undefined;
-  _allDay?: Element | undefined;
-  /**
-   * Closing time of day (ignored if allDay = true)
-   * The closing time of day. Note: If the AllDay flag is set, then this time is ignored.
-   */
-  availableEndTime?: string | undefined;
-  _availableEndTime?: Element | undefined;
-  /**
-   * Opening time of day (ignored if allDay = true)
-   * The opening time of day. Note: If the AllDay flag is set, then this time is ignored.
-   */
-  availableStartTime?: string | undefined;
-  _availableStartTime?: Element | undefined;
-  /**
-   * Indicates which days of the week are available between the start and end Times.
-   */
-  daysOfWeek?: ('mon'|'tue'|'wed'|'thu'|'fri'|'sat'|'sun')[] | undefined;
-  _daysOfWeek?: Element[] | undefined;
-}
-/**
- * Not available during this time due to provided reason
- * The HealthcareService is not available during this period of time due to the provided reason.
- */
-export interface HealthcareServiceNotAvailable extends BackboneElement {
-  /**
-   * Reason presented to the user explaining why time not available
-   * The reason that can be presented to the user as to why this time is not available.
-   */
-  description: string;
-  _description?: Element | undefined;
-  /**
-   * Service not availablefrom this date
-   * Service is not available (seasonally or for a public holiday) from this date.
-   */
-  during?: Period | undefined;
-}
-/**
- * Specific service delivered or performed
- * A specific type of service that may be delivered or performed.
- */
-export interface HealthcareServiceServiceType extends BackboneElement {
-  /**
-   * Specialties handled by the Service Site
-   * Collection of specialties handled by the service site. This is more of a medical term.
-   */
-  specialty?: CodeableConcept[] | undefined;
-  /**
-   * Type of service delivered or performed
-   * The specific type of service being delivered or performed.
-   */
-  type: CodeableConcept;
 }
 /**
  * Base StructureDefinition for HealthcareService Resource
@@ -7967,99 +7905,66 @@ export interface HealthcareService extends DomainResource {
   telecom?: ContactPoint[] | undefined;
 }
 /**
- * The frame set
- * Identity and location information of the frames in the selected instance.
+ * Times the Service Site is available
+ * A collection of times that the Service Site is available.
  */
-export interface ImagingObjectSelectionStudySeriesInstanceFrames extends BackboneElement {
+export interface HealthcareServiceAvailableTime extends BackboneElement {
   /**
-   * Frame numbers
-   * The frame numbers in the frame set.
+   * Always available? e.g. 24 hour service
+   * Is this always available? (hence times are irrelevant) e.g. 24 hour service.
    */
-  frameNumbers: number[];
+  allDay?: boolean | undefined;
+  _allDay?: Element | undefined;
   /**
-   * Retrieve frame URL
-   * WADO-RS URL to retrieve the DICOM frames.
+   * Closing time of day (ignored if allDay = true)
+   * The closing time of day. Note: If the AllDay flag is set, then this time is ignored.
    */
-  url: string;
-  _url?: Element | undefined;
+  availableEndTime?: string | undefined;
+  _availableEndTime?: Element | undefined;
+  /**
+   * Opening time of day (ignored if allDay = true)
+   * The opening time of day. Note: If the AllDay flag is set, then this time is ignored.
+   */
+  availableStartTime?: string | undefined;
+  _availableStartTime?: Element | undefined;
+  /**
+   * Indicates which days of the week are available between the start and end Times.
+   */
+  daysOfWeek?: ('mon'|'tue'|'wed'|'thu'|'fri'|'sat'|'sun')[] | undefined;
+  _daysOfWeek?: Element[] | undefined;
 }
 /**
- * The selected instance
- * Identity and locating information of the selected DICOM SOP instances.
+ * Not available during this time due to provided reason
+ * The HealthcareService is not available during this period of time due to the provided reason.
  */
-export interface ImagingObjectSelectionStudySeriesInstance extends BackboneElement {
+export interface HealthcareServiceNotAvailable extends BackboneElement {
   /**
-   * The frame set
-   * Identity and location information of the frames in the selected instance.
+   * Reason presented to the user explaining why time not available
+   * The reason that can be presented to the user as to why this time is not available.
    */
-  frames?: ImagingObjectSelectionStudySeriesInstanceFrames[] | undefined;
+  description: string;
+  _description?: Element | undefined;
   /**
-   * SOP class UID of instance
-   * SOP class UID of the selected instance.
+   * Service not availablefrom this date
+   * Service is not available (seasonally or for a public holiday) from this date.
    */
-  sopClass: string;
-  _sopClass?: Element | undefined;
-  /**
-   * Selected instance UID
-   * SOP Instance UID of the selected instance.
-   */
-  uid: string;
-  _uid?: Element | undefined;
-  /**
-   * Retrieve instance URL
-   * WADO-RS URL to retrieve the DICOM SOP Instance.
-   */
-  url: string;
-  _url?: Element | undefined;
+  during?: Period | undefined;
 }
 /**
- * Series identity of the selected instances
- * Series identity and locating information of the DICOM SOP instances in the selection.
+ * Specific service delivered or performed
+ * A specific type of service that may be delivered or performed.
  */
-export interface ImagingObjectSelectionStudySeries extends BackboneElement {
+export interface HealthcareServiceServiceType extends BackboneElement {
   /**
-   * The selected instance
-   * Identity and locating information of the selected DICOM SOP instances.
+   * Specialties handled by the Service Site
+   * Collection of specialties handled by the service site. This is more of a medical term.
    */
-  instance: ImagingObjectSelectionStudySeriesInstance[];
+  specialty?: CodeableConcept[] | undefined;
   /**
-   * Series instance UID of the SOP instances in the selection.
+   * Type of service delivered or performed
+   * The specific type of service being delivered or performed.
    */
-  uid?: string | undefined;
-  _uid?: Element | undefined;
-  /**
-   * Retrieve series URL
-   * WADO-RS URL to retrieve the series. Note that this URL retrieves all SOP instances of the series not only those in the selection.
-   */
-  url?: string | undefined;
-  _url?: Element | undefined;
-}
-/**
- * Study identity of the selected instances
- * Study identity and locating information of the DICOM SOP instances in the selection.
- */
-export interface ImagingObjectSelectionStudy extends BackboneElement {
-  /**
-   * Reference to ImagingStudy
-   * Reference to the Imaging Study in FHIR form.
-   */
-  imagingStudy?: Reference | undefined;
-  /**
-   * Series identity of the selected instances
-   * Series identity and locating information of the DICOM SOP instances in the selection.
-   */
-  series: ImagingObjectSelectionStudySeries[];
-  /**
-   * Study instance UID of the SOP instances in the selection.
-   */
-  uid: string;
-  _uid?: Element | undefined;
-  /**
-   * Retrieve study URL
-   * WADO-RS URL to retrieve the study. Note that this URL retrieves all SOP instances of the study, not only those in the selection.
-   */
-  url?: string | undefined;
-  _url?: Element | undefined;
+  type: CodeableConcept;
 }
 /**
  * Base StructureDefinition for ImagingObjectSelection Resource
@@ -8106,104 +8011,98 @@ export interface ImagingObjectSelection extends DomainResource {
   _uid?: Element | undefined;
 }
 /**
- * A single SOP instance from the series
- * A single SOP Instance within the series, e.g. an image, or presentation state.
+ * Study identity of the selected instances
+ * Study identity and locating information of the DICOM SOP instances in the selection.
  */
-export interface ImagingStudySeriesInstance extends BackboneElement {
+export interface ImagingObjectSelectionStudy extends BackboneElement {
   /**
-   * Content of the instance or a rendering thereof (e.g. a JPEG of an image, or an XML of a structured report). May be represented for example by inline encoding; by a URL reference to a WADO-RS service that makes the instance available; or to a FHIR Resource (e.g. Media, Document, etc.). Multiple content attachments may be used for alternate representations of the instance.
+   * Reference to ImagingStudy
+   * Reference to the Imaging Study in FHIR form.
    */
-  content?: Attachment[] | undefined;
+  imagingStudy?: Reference | undefined;
   /**
-   * The number of this instance in the series
-   * The number of instance in the series.
+   * Series identity of the selected instances
+   * Series identity and locating information of the DICOM SOP instances in the selection.
    */
-  number?: number | undefined;
+  series: ImagingObjectSelectionStudySeries[];
   /**
-   * DICOM class type
-   * DICOM instance  type.
+   * Study instance UID of the SOP instances in the selection.
+   */
+  uid: string;
+  _uid?: Element | undefined;
+  /**
+   * Retrieve study URL
+   * WADO-RS URL to retrieve the study. Note that this URL retrieves all SOP instances of the study, not only those in the selection.
+   */
+  url?: string | undefined;
+  _url?: Element | undefined;
+}
+/**
+ * Series identity of the selected instances
+ * Series identity and locating information of the DICOM SOP instances in the selection.
+ */
+export interface ImagingObjectSelectionStudySeries extends BackboneElement {
+  /**
+   * The selected instance
+   * Identity and locating information of the selected DICOM SOP instances.
+   */
+  instance: ImagingObjectSelectionStudySeriesInstance[];
+  /**
+   * Series instance UID of the SOP instances in the selection.
+   */
+  uid?: string | undefined;
+  _uid?: Element | undefined;
+  /**
+   * Retrieve series URL
+   * WADO-RS URL to retrieve the series. Note that this URL retrieves all SOP instances of the series not only those in the selection.
+   */
+  url?: string | undefined;
+  _url?: Element | undefined;
+}
+/**
+ * The selected instance
+ * Identity and locating information of the selected DICOM SOP instances.
+ */
+export interface ImagingObjectSelectionStudySeriesInstance extends BackboneElement {
+  /**
+   * The frame set
+   * Identity and location information of the frames in the selected instance.
+   */
+  frames?: ImagingObjectSelectionStudySeriesInstanceFrames[] | undefined;
+  /**
+   * SOP class UID of instance
+   * SOP class UID of the selected instance.
    */
   sopClass: string;
   _sopClass?: Element | undefined;
   /**
-   * Description of instance
-   * The description of the instance.
-   */
-  title?: string | undefined;
-  _title?: Element | undefined;
-  /**
-   * Type of instance (image etc.)
-   * A human-friendly SOP Class name.
-   */
-  type?: string | undefined;
-  _type?: Element | undefined;
-  /**
-   * Formal identifier for this instance
-   * Formal identifier for this image or other content.
+   * Selected instance UID
+   * SOP Instance UID of the selected instance.
    */
   uid: string;
   _uid?: Element | undefined;
+  /**
+   * Retrieve instance URL
+   * WADO-RS URL to retrieve the DICOM SOP Instance.
+   */
+  url: string;
+  _url?: Element | undefined;
 }
 /**
- * Each study has one or more series of instances
- * Each study has one or more series of images or other content.
+ * The frame set
+ * Identity and location information of the frames in the selected instance.
  */
-export interface ImagingStudySeries extends BackboneElement {
+export interface ImagingObjectSelectionStudySeriesInstanceFrames extends BackboneElement {
   /**
-   * Availability of series (online, offline or nearline).
+   * Frame numbers
+   * The frame numbers in the frame set.
    */
-  availability?: ('ONLINE'|'OFFLINE'|'NEARLINE'|'UNAVAILABLE') | undefined;
-  _availability?: Element | undefined;
+  frameNumbers: number[];
   /**
-   * Body part examined. See  DICOM Part 16 Annex L for the mapping from DICOM to Snomed CT.
+   * Retrieve frame URL
+   * WADO-RS URL to retrieve the DICOM frames.
    */
-  bodySite?: Coding | undefined;
-  /**
-   * A description of the series.
-   */
-  description?: string | undefined;
-  _description?: Element | undefined;
-  /**
-   * A single SOP instance from the series
-   * A single SOP Instance within the series, e.g. an image, or presentation state.
-   */
-  instance?: ImagingStudySeriesInstance[] | undefined;
-  /**
-   * Body part laterality
-   * Laterality if body site is paired anatomic structure and laterality is not pre-coordinated in body site code.
-   */
-  laterality?: Coding | undefined;
-  /**
-   * The modality of the instances in the series
-   * The modality of this series sequence.
-   */
-  modality: Coding;
-  /**
-   * Numeric identifier of this series
-   * The Numeric identifier of this series in the study.
-   */
-  number?: number | undefined;
-  /**
-   * Number of Series Related Instances
-   * Number of SOP Instances in Series.
-   */
-  numberOfInstances: number;
-  /**
-   * When the series started
-   * The date and time the series was started.
-   */
-  started?: string | undefined;
-  _started?: Element | undefined;
-  /**
-   * Formal identifier for this series.
-   */
-  uid: string;
-  _uid?: Element | undefined;
-  /**
-   * Location of the referenced instance(s)
-   * URI/URL specifying the location of the referenced series using WADO-RS.
-   */
-  url?: string | undefined;
+  url: string;
   _url?: Element | undefined;
 }
 /**
@@ -8294,91 +8193,105 @@ export interface ImagingStudy extends DomainResource {
   _url?: Element | undefined;
 }
 /**
- * Administration/non-administration reasons
- * Reasons why a vaccine was or was not administered.
+ * Each study has one or more series of instances
+ * Each study has one or more series of images or other content.
  */
-export interface ImmunizationExplanation extends BackboneElement {
+export interface ImagingStudySeries extends BackboneElement {
   /**
-   * Why immunization occurred
-   * Reasons why a vaccine was administered.
+   * Availability of series (online, offline or nearline).
    */
-  reason?: CodeableConcept[] | undefined;
+  availability?: ('ONLINE'|'OFFLINE'|'NEARLINE'|'UNAVAILABLE') | undefined;
+  _availability?: Element | undefined;
   /**
-   * Why immunization did not occur
-   * Reason why a vaccine was not administered.
+   * Body part examined. See  DICOM Part 16 Annex L for the mapping from DICOM to Snomed CT.
    */
-  reasonNotGiven?: CodeableConcept[] | undefined;
-}
-/**
- * Details of a reaction that follows immunization
- * Categorical data indicating that an adverse event is associated in time to an immunization.
- */
-export interface ImmunizationReaction extends BackboneElement {
+  bodySite?: Coding | undefined;
   /**
-   * When reaction started
-   * Date of reaction to the immunization.
-   */
-  date?: string | undefined;
-  _date?: Element | undefined;
-  /**
-   * Additional information on reaction
-   * Details of the reaction.
-   */
-  detail?: Reference | undefined;
-  /**
-   * Indicates self-reported reaction
-   * Self-reported indicator.
-   */
-  reported?: boolean | undefined;
-  _reported?: Element | undefined;
-}
-/**
- * What protocol was followed
- * Contains information about the protocol(s) under which the vaccine was administered.
- */
-export interface ImmunizationVaccinationProtocol extends BackboneElement {
-  /**
-   * Who is responsible for protocol
-   * Indicates the authority who published the protocol.  E.g. ACIP.
-   */
-  authority?: Reference | undefined;
-  /**
-   * Details of vaccine protocol
-   * Contains the description about the protocol under which the vaccine was administered.
+   * A description of the series.
    */
   description?: string | undefined;
   _description?: Element | undefined;
   /**
-   * Dose number within series
-   * Nominal position in a series.
+   * A single SOP instance from the series
+   * A single SOP Instance within the series, e.g. an image, or presentation state.
    */
-  doseSequence: number;
+  instance?: ImagingStudySeriesInstance[] | undefined;
   /**
-   * Indicates if dose counts towards immunity
-   * Indicates if the immunization event should "count" against  the protocol.
+   * Body part laterality
+   * Laterality if body site is paired anatomic structure and laterality is not pre-coordinated in body site code.
    */
-  doseStatus: CodeableConcept;
+  laterality?: Coding | undefined;
   /**
-   * Why dose does (not) count
-   * Provides an explanation as to why an immunization event should or should not count against the protocol.
+   * The modality of the instances in the series
+   * The modality of this series sequence.
    */
-  doseStatusReason?: CodeableConcept | undefined;
+  modality: Coding;
   /**
-   * Name of vaccine series
-   * One possible path to achieve presumed immunity against a disease - within the context of an authority.
+   * Numeric identifier of this series
+   * The Numeric identifier of this series in the study.
    */
-  series?: string | undefined;
-  _series?: Element | undefined;
+  number?: number | undefined;
   /**
-   * Recommended number of doses for immunity
-   * The recommended number of doses to achieve immunity.
+   * Number of Series Related Instances
+   * Number of SOP Instances in Series.
    */
-  seriesDoses?: number | undefined;
+  numberOfInstances: number;
   /**
-   * Disease immunized against
-   * The targeted disease.
+   * When the series started
+   * The date and time the series was started.
    */
-  targetDisease: CodeableConcept[];
+  started?: string | undefined;
+  _started?: Element | undefined;
+  /**
+   * Formal identifier for this series.
+   */
+  uid: string;
+  _uid?: Element | undefined;
+  /**
+   * Location of the referenced instance(s)
+   * URI/URL specifying the location of the referenced series using WADO-RS.
+   */
+  url?: string | undefined;
+  _url?: Element | undefined;
+}
+/**
+ * A single SOP instance from the series
+ * A single SOP Instance within the series, e.g. an image, or presentation state.
+ */
+export interface ImagingStudySeriesInstance extends BackboneElement {
+  /**
+   * Content of the instance or a rendering thereof (e.g. a JPEG of an image, or an XML of a structured report). May be represented for example by inline encoding; by a URL reference to a WADO-RS service that makes the instance available; or to a FHIR Resource (e.g. Media, Document, etc.). Multiple content attachments may be used for alternate representations of the instance.
+   */
+  content?: Attachment[] | undefined;
+  /**
+   * The number of this instance in the series
+   * The number of instance in the series.
+   */
+  number?: number | undefined;
+  /**
+   * DICOM class type
+   * DICOM instance  type.
+   */
+  sopClass: string;
+  _sopClass?: Element | undefined;
+  /**
+   * Description of instance
+   * The description of the instance.
+   */
+  title?: string | undefined;
+  _title?: Element | undefined;
+  /**
+   * Type of instance (image etc.)
+   * A human-friendly SOP Class name.
+   */
+  type?: string | undefined;
+  _type?: Element | undefined;
+  /**
+   * Formal identifier for this instance
+   * Formal identifier for this image or other content.
+   */
+  uid: string;
+  _uid?: Element | undefined;
 }
 /**
  * Base StructureDefinition for Immunization Resource
@@ -8498,49 +8411,112 @@ export interface Immunization extends DomainResource {
   _wasNotGiven?: Element | undefined;
 }
 /**
- * Dates governing proposed immunization
- * Vaccine date recommendations.  For example, earliest date to administer, latest date to administer, etc.
+ * Administration/non-administration reasons
+ * Reasons why a vaccine was or was not administered.
  */
-export interface ImmunizationRecommendationRecommendationDateCriterion extends BackboneElement {
+export interface ImmunizationExplanation extends BackboneElement {
   /**
-   * Type of date
-   * Date classification of recommendation.  For example, earliest date to give, latest date to give, etc.
+   * Why immunization occurred
+   * Reasons why a vaccine was administered.
    */
-  code: CodeableConcept;
+  reason?: CodeableConcept[] | undefined;
   /**
-   * Recommended date
-   * The date whose meaning is specified by dateCriterion.code.
+   * Why immunization did not occur
+   * Reason why a vaccine was not administered.
    */
-  value: string;
-  _value?: Element | undefined;
+  reasonNotGiven?: CodeableConcept[] | undefined;
 }
 /**
- * Protocol used by recommendation
- * Contains information about the protocol under which the vaccine was administered.
+ * Details of a reaction that follows immunization
+ * Categorical data indicating that an adverse event is associated in time to an immunization.
  */
-export interface ImmunizationRecommendationRecommendationProtocol extends BackboneElement {
+export interface ImmunizationReaction extends BackboneElement {
+  /**
+   * When reaction started
+   * Date of reaction to the immunization.
+   */
+  date?: string | undefined;
+  _date?: Element | undefined;
+  /**
+   * Additional information on reaction
+   * Details of the reaction.
+   */
+  detail?: Reference | undefined;
+  /**
+   * Indicates self-reported reaction
+   * Self-reported indicator.
+   */
+  reported?: boolean | undefined;
+  _reported?: Element | undefined;
+}
+/**
+ * What protocol was followed
+ * Contains information about the protocol(s) under which the vaccine was administered.
+ */
+export interface ImmunizationVaccinationProtocol extends BackboneElement {
   /**
    * Who is responsible for protocol
-   * Indicates the authority who published the protocol.  For example, ACIP.
+   * Indicates the authority who published the protocol.  E.g. ACIP.
    */
   authority?: Reference | undefined;
   /**
-   * Protocol details
+   * Details of vaccine protocol
    * Contains the description about the protocol under which the vaccine was administered.
    */
   description?: string | undefined;
   _description?: Element | undefined;
   /**
-   * Dose number within sequence
-   * Indicates the nominal position in a series of the next dose.  This is the recommended dose number as per a specified protocol.
+   * Dose number within series
+   * Nominal position in a series.
    */
-  doseSequence?: number | undefined;
+  doseSequence: number;
   /**
-   * Name of vaccination series
+   * Indicates if dose counts towards immunity
+   * Indicates if the immunization event should "count" against  the protocol.
+   */
+  doseStatus: CodeableConcept;
+  /**
+   * Why dose does (not) count
+   * Provides an explanation as to why an immunization event should or should not count against the protocol.
+   */
+  doseStatusReason?: CodeableConcept | undefined;
+  /**
+   * Name of vaccine series
    * One possible path to achieve presumed immunity against a disease - within the context of an authority.
    */
   series?: string | undefined;
   _series?: Element | undefined;
+  /**
+   * Recommended number of doses for immunity
+   * The recommended number of doses to achieve immunity.
+   */
+  seriesDoses?: number | undefined;
+  /**
+   * Disease immunized against
+   * The targeted disease.
+   */
+  targetDisease: CodeableConcept[];
+}
+/**
+ * Base StructureDefinition for ImmunizationRecommendation Resource
+ */
+export interface ImmunizationRecommendation extends DomainResource {
+  /** Resource Type Name (for serialization) */
+  readonly resourceType: 'ImmunizationRecommendation';
+  /**
+   * Business identifier
+   * A unique identifier assigned to this particular recommendation record.
+   */
+  identifier?: Identifier[] | undefined;
+  /**
+   * Who this profile is for
+   * The patient for whom the recommendations are for.
+   */
+  patient: Reference;
+  /**
+   * Vaccine administration recommendations.
+   */
+  recommendation: ImmunizationRecommendationRecommendation[];
 }
 /**
  * Vaccine administration recommendations.
@@ -8588,190 +8564,49 @@ export interface ImmunizationRecommendationRecommendation extends BackboneElemen
   vaccineCode: CodeableConcept;
 }
 /**
- * Base StructureDefinition for ImmunizationRecommendation Resource
+ * Dates governing proposed immunization
+ * Vaccine date recommendations.  For example, earliest date to administer, latest date to administer, etc.
  */
-export interface ImmunizationRecommendation extends DomainResource {
-  /** Resource Type Name (for serialization) */
-  readonly resourceType: 'ImmunizationRecommendation';
+export interface ImmunizationRecommendationRecommendationDateCriterion extends BackboneElement {
   /**
-   * Business identifier
-   * A unique identifier assigned to this particular recommendation record.
+   * Type of date
+   * Date classification of recommendation.  For example, earliest date to give, latest date to give, etc.
    */
-  identifier?: Identifier[] | undefined;
+  code: CodeableConcept;
   /**
-   * Who this profile is for
-   * The patient for whom the recommendations are for.
+   * Recommended date
+   * The date whose meaning is specified by dateCriterion.code.
    */
-  patient: Reference;
-  /**
-   * Vaccine administration recommendations.
-   */
-  recommendation: ImmunizationRecommendationRecommendation[];
+  value: string;
+  _value?: Element | undefined;
 }
 /**
- * Contact details of the publisher
- * Contacts to assist a user in finding and communicating with the publisher.
+ * Protocol used by recommendation
+ * Contains information about the protocol under which the vaccine was administered.
  */
-export interface ImplementationGuideContact extends BackboneElement {
+export interface ImmunizationRecommendationRecommendationProtocol extends BackboneElement {
   /**
-   * Name of a individual to contact
-   * The name of an individual to contact regarding the implementation guide.
+   * Who is responsible for protocol
+   * Indicates the authority who published the protocol.  For example, ACIP.
    */
-  name?: string | undefined;
-  _name?: Element | undefined;
+  authority?: Reference | undefined;
   /**
-   * Contact details for individual or publisher
-   * Contact details for individual (if a name was provided) or the publisher.
-   */
-  telecom?: ContactPoint[] | undefined;
-}
-/**
- * Another Implementation guide this depends on
- * Another implementation guide that this implementation depends on. Typically, an implementation guide uses value sets, profiles etc.defined in other implementation guides.
- */
-export interface ImplementationGuideDependency extends BackboneElement {
-  /**
-   * reference | inclusion
-   * How the dependency is represented when the guide is published.
-   */
-  type: ('reference'|'inclusion');
-  _type?: Element | undefined;
-  /**
-   * Where to find dependency
-   * Where the dependency is located.
-   */
-  uri: string;
-  _uri?: Element | undefined;
-}
-/**
- * Profiles that apply globally
- * A set of profiles that all resources covered by this implementation guide must conform to.
- */
-export interface ImplementationGuideGlobal extends BackboneElement {
-  /**
-   * Profile that all resources must conform to
-   * A reference to the profile that all instances must conform to.
-   */
-  profile: Reference;
-  /**
-   * Type this profiles applies to
-   * The type of resource that all instances must conform to.
-   */
-  type: ('Account'|'AllergyIntolerance'|'Appointment'|'AppointmentResponse'|'AuditEvent'|'Basic'|'Binary'|'BodySite'|'Bundle'|'CarePlan'|'Claim'|'ClaimResponse'|'ClinicalImpression'|'Communication'|'CommunicationRequest'|'Composition'|'ConceptMap'|'Condition'|'Conformance'|'Contract'|'Coverage'|'DataElement'|'DetectedIssue'|'Device'|'DeviceComponent'|'DeviceMetric'|'DeviceUseRequest'|'DeviceUseStatement'|'DiagnosticOrder'|'DiagnosticReport'|'DocumentManifest'|'DocumentReference'|'DomainResource'|'EligibilityRequest'|'EligibilityResponse'|'Encounter'|'EnrollmentRequest'|'EnrollmentResponse'|'EpisodeOfCare'|'ExplanationOfBenefit'|'FamilyMemberHistory'|'Flag'|'Goal'|'Group'|'HealthcareService'|'ImagingObjectSelection'|'ImagingStudy'|'Immunization'|'ImmunizationRecommendation'|'ImplementationGuide'|'List'|'Location'|'Media'|'Medication'|'MedicationAdministration'|'MedicationDispense'|'MedicationOrder'|'MedicationStatement'|'MessageHeader'|'NamingSystem'|'NutritionOrder'|'Observation'|'OperationDefinition'|'OperationOutcome'|'Order'|'OrderResponse'|'Organization'|'Parameters'|'Patient'|'PaymentNotice'|'PaymentReconciliation'|'Person'|'Practitioner'|'Procedure'|'ProcedureRequest'|'ProcessRequest'|'ProcessResponse'|'Provenance'|'Questionnaire'|'QuestionnaireResponse'|'ReferralRequest'|'RelatedPerson'|'Resource'|'RiskAssessment'|'Schedule'|'SearchParameter'|'Slot'|'Specimen'|'StructureDefinition'|'Subscription'|'Substance'|'SupplyDelivery'|'SupplyRequest'|'TestScript'|'ValueSet'|'VisionPrescription');
-  _type?: Element | undefined;
-}
-/**
- * Resource in the implementation guide
- * A resource that is part of the implementation guide. Conformance resources (value set, structure definition, conformance statements etc.) are obvious candidates for inclusion, but any kind of resource can be included as an example resource.
- */
-export interface ImplementationGuidePackageResource extends BackboneElement {
-  /**
-   * Short code to identify the resource
-   * A short code that may be used to identify the resource throughout the implementation guide.
-   */
-  acronym?: string | undefined;
-  _acronym?: Element | undefined;
-  /**
-   * Reason why included in guide
-   * A description of the reason that a resource has been included in the implementation guide.
+   * Protocol details
+   * Contains the description about the protocol under which the vaccine was administered.
    */
   description?: string | undefined;
   _description?: Element | undefined;
   /**
-   * Resource this is an example of (if applicable)
-   * Another resource that this resource is an example for. This is mostly used for resources that are included as examples of StructureDefinitions.
+   * Dose number within sequence
+   * Indicates the nominal position in a series of the next dose.  This is the recommended dose number as per a specified protocol.
    */
-  exampleFor?: Reference | undefined;
+  doseSequence?: number | undefined;
   /**
-   * Human Name for the resource
-   * A human assigned name for the resource. All resources SHOULD have a name, but the name may be extracted from the resource (e.g. ValueSet.name).
+   * Name of vaccination series
+   * One possible path to achieve presumed immunity against a disease - within the context of an authority.
    */
-  name?: string | undefined;
-  _name?: Element | undefined;
-  /**
-   * Why the resource is included in the guide.
-   */
-  purpose: ('example'|'terminology'|'profile'|'extension'|'dictionary'|'logical');
-  _purpose?: Element | undefined;
-  /**
-   * Location of the resource
-   * Where this resource is found.
-   */
-  sourceReference?: Reference | undefined;
-  /**
-   * Location of the resource
-   * Where this resource is found.
-   */
-  sourceString?: string | undefined;
-  _sourceString?: Element | undefined;
-}
-/**
- * Group of resources as used in .page.package
- * A logical group of resources. Logical groups can be used when building pages.
- */
-export interface ImplementationGuidePackage extends BackboneElement {
-  /**
-   * Human readable text describing the package.
-   */
-  description?: string | undefined;
-  _description?: Element | undefined;
-  /**
-   * Name used .page.package
-   * The name for the group, as used in page.package.
-   */
-  name: string;
-  _name?: Element | undefined;
-  /**
-   * Resource in the implementation guide
-   * A resource that is part of the implementation guide. Conformance resources (value set, structure definition, conformance statements etc.) are obvious candidates for inclusion, but any kind of resource can be included as an example resource.
-   */
-  resource: ImplementationGuidePackageResource[];
-}
-/**
- * Page/Section in the Guide
- * A page / section in the implementation guide. The root page is the implementation guide home page.
- */
-export interface ImplementationGuidePage extends BackboneElement {
-  /**
-   * Format of the page (e.g. html, markdown, etc.)
-   * The format of the page.
-   */
-  format?: string | undefined;
-  _format?: Element | undefined;
-  /**
-   * The kind of page that this is. Some pages are autogenerated (list, example), and other kinds are of interest so that tools can navigate the user to the page of interest.
-   */
-  kind: ('page'|'example'|'list'|'include'|'directory'|'dictionary'|'toc'|'resource');
-  _kind?: Element | undefined;
-  /**
-   * Short name shown for navigational assistance
-   * A short name used to represent this page in navigational structures such as table of contents, bread crumbs, etc.
-   */
-  name: string;
-  _name?: Element | undefined;
-  /**
-   * Name of package to include
-   * For constructed pages, a list of packages to include in the page (or else empty for everything).
-   */
-  package?: string[] | undefined;
-  _package?: Element[] | undefined;
-  /**
-   * Nested Pages / Sections
-   * Nested Pages/Sections under this page.
-   */
-  page?: ImplementationGuidePage[] | undefined;
-  /**
-   * Where to find that page
-   * The source address for the page.
-   */
-  source: string;
-  _source?: Element | undefined;
-  /**
-   * Kind of resource to include in the list
-   * For constructed pages, what kind of resources to include in the list.
-   */
-  type?: ('Account'|'AllergyIntolerance'|'Appointment'|'AppointmentResponse'|'AuditEvent'|'Basic'|'Binary'|'BodySite'|'Bundle'|'CarePlan'|'Claim'|'ClaimResponse'|'ClinicalImpression'|'Communication'|'CommunicationRequest'|'Composition'|'ConceptMap'|'Condition'|'Conformance'|'Contract'|'Coverage'|'DataElement'|'DetectedIssue'|'Device'|'DeviceComponent'|'DeviceMetric'|'DeviceUseRequest'|'DeviceUseStatement'|'DiagnosticOrder'|'DiagnosticReport'|'DocumentManifest'|'DocumentReference'|'DomainResource'|'EligibilityRequest'|'EligibilityResponse'|'Encounter'|'EnrollmentRequest'|'EnrollmentResponse'|'EpisodeOfCare'|'ExplanationOfBenefit'|'FamilyMemberHistory'|'Flag'|'Goal'|'Group'|'HealthcareService'|'ImagingObjectSelection'|'ImagingStudy'|'Immunization'|'ImmunizationRecommendation'|'ImplementationGuide'|'List'|'Location'|'Media'|'Medication'|'MedicationAdministration'|'MedicationDispense'|'MedicationOrder'|'MedicationStatement'|'MessageHeader'|'NamingSystem'|'NutritionOrder'|'Observation'|'OperationDefinition'|'OperationOutcome'|'Order'|'OrderResponse'|'Organization'|'Parameters'|'Patient'|'PaymentNotice'|'PaymentReconciliation'|'Person'|'Practitioner'|'Procedure'|'ProcedureRequest'|'ProcessRequest'|'ProcessResponse'|'Provenance'|'Questionnaire'|'QuestionnaireResponse'|'ReferralRequest'|'RelatedPerson'|'Resource'|'RiskAssessment'|'Schedule'|'SearchParameter'|'Slot'|'Specimen'|'StructureDefinition'|'Subscription'|'Substance'|'SupplyDelivery'|'SupplyRequest'|'TestScript'|'ValueSet'|'VisionPrescription')[] | undefined;
-  _type?: Element[] | undefined;
+  series?: string | undefined;
+  _series?: Element | undefined;
 }
 /**
  * Base StructureDefinition for ImplementationGuide Resource
@@ -8876,32 +8711,169 @@ export interface ImplementationGuide extends DomainResource {
   _version?: Element | undefined;
 }
 /**
- * Entries in the list
- * Entries in this list.
+ * Contact details of the publisher
+ * Contacts to assist a user in finding and communicating with the publisher.
  */
-export interface ListEntry extends BackboneElement {
+export interface ImplementationGuideContact extends BackboneElement {
   /**
-   * When item added to list
-   * When this item was added to the list.
+   * Name of a individual to contact
+   * The name of an individual to contact regarding the implementation guide.
    */
-  date?: string | undefined;
-  _date?: Element | undefined;
+  name?: string | undefined;
+  _name?: Element | undefined;
   /**
-   * If this item is actually marked as deleted
-   * True if this item is marked as deleted in the list.
+   * Contact details for individual or publisher
+   * Contact details for individual (if a name was provided) or the publisher.
    */
-  deleted?: boolean | undefined;
-  _deleted?: Element | undefined;
+  telecom?: ContactPoint[] | undefined;
+}
+/**
+ * Another Implementation guide this depends on
+ * Another implementation guide that this implementation depends on. Typically, an implementation guide uses value sets, profiles etc.defined in other implementation guides.
+ */
+export interface ImplementationGuideDependency extends BackboneElement {
   /**
-   * Status/Workflow information about this item
-   * The flag allows the system constructing the list to indicate the role and significance of the item in the list.
+   * reference | inclusion
+   * How the dependency is represented when the guide is published.
    */
-  flag?: CodeableConcept | undefined;
+  type: ('reference'|'inclusion');
+  _type?: Element | undefined;
   /**
-   * Actual entry
-   * A reference to the actual resource from which data was derived.
+   * Where to find dependency
+   * Where the dependency is located.
    */
-  item: Reference;
+  uri: string;
+  _uri?: Element | undefined;
+}
+/**
+ * Profiles that apply globally
+ * A set of profiles that all resources covered by this implementation guide must conform to.
+ */
+export interface ImplementationGuideGlobal extends BackboneElement {
+  /**
+   * Profile that all resources must conform to
+   * A reference to the profile that all instances must conform to.
+   */
+  profile: Reference;
+  /**
+   * Type this profiles applies to
+   * The type of resource that all instances must conform to.
+   */
+  type: ('Account'|'AllergyIntolerance'|'Appointment'|'AppointmentResponse'|'AuditEvent'|'Basic'|'Binary'|'BodySite'|'Bundle'|'CarePlan'|'Claim'|'ClaimResponse'|'ClinicalImpression'|'Communication'|'CommunicationRequest'|'Composition'|'ConceptMap'|'Condition'|'Conformance'|'Contract'|'Coverage'|'DataElement'|'DetectedIssue'|'Device'|'DeviceComponent'|'DeviceMetric'|'DeviceUseRequest'|'DeviceUseStatement'|'DiagnosticOrder'|'DiagnosticReport'|'DocumentManifest'|'DocumentReference'|'DomainResource'|'EligibilityRequest'|'EligibilityResponse'|'Encounter'|'EnrollmentRequest'|'EnrollmentResponse'|'EpisodeOfCare'|'ExplanationOfBenefit'|'FamilyMemberHistory'|'Flag'|'Goal'|'Group'|'HealthcareService'|'ImagingObjectSelection'|'ImagingStudy'|'Immunization'|'ImmunizationRecommendation'|'ImplementationGuide'|'List'|'Location'|'Media'|'Medication'|'MedicationAdministration'|'MedicationDispense'|'MedicationOrder'|'MedicationStatement'|'MessageHeader'|'NamingSystem'|'NutritionOrder'|'Observation'|'OperationDefinition'|'OperationOutcome'|'Order'|'OrderResponse'|'Organization'|'Parameters'|'Patient'|'PaymentNotice'|'PaymentReconciliation'|'Person'|'Practitioner'|'Procedure'|'ProcedureRequest'|'ProcessRequest'|'ProcessResponse'|'Provenance'|'Questionnaire'|'QuestionnaireResponse'|'ReferralRequest'|'RelatedPerson'|'Resource'|'RiskAssessment'|'Schedule'|'SearchParameter'|'Slot'|'Specimen'|'StructureDefinition'|'Subscription'|'Substance'|'SupplyDelivery'|'SupplyRequest'|'TestScript'|'ValueSet'|'VisionPrescription');
+  _type?: Element | undefined;
+}
+/**
+ * Group of resources as used in .page.package
+ * A logical group of resources. Logical groups can be used when building pages.
+ */
+export interface ImplementationGuidePackage extends BackboneElement {
+  /**
+   * Human readable text describing the package.
+   */
+  description?: string | undefined;
+  _description?: Element | undefined;
+  /**
+   * Name used .page.package
+   * The name for the group, as used in page.package.
+   */
+  name: string;
+  _name?: Element | undefined;
+  /**
+   * Resource in the implementation guide
+   * A resource that is part of the implementation guide. Conformance resources (value set, structure definition, conformance statements etc.) are obvious candidates for inclusion, but any kind of resource can be included as an example resource.
+   */
+  resource: ImplementationGuidePackageResource[];
+}
+/**
+ * Resource in the implementation guide
+ * A resource that is part of the implementation guide. Conformance resources (value set, structure definition, conformance statements etc.) are obvious candidates for inclusion, but any kind of resource can be included as an example resource.
+ */
+export interface ImplementationGuidePackageResource extends BackboneElement {
+  /**
+   * Short code to identify the resource
+   * A short code that may be used to identify the resource throughout the implementation guide.
+   */
+  acronym?: string | undefined;
+  _acronym?: Element | undefined;
+  /**
+   * Reason why included in guide
+   * A description of the reason that a resource has been included in the implementation guide.
+   */
+  description?: string | undefined;
+  _description?: Element | undefined;
+  /**
+   * Resource this is an example of (if applicable)
+   * Another resource that this resource is an example for. This is mostly used for resources that are included as examples of StructureDefinitions.
+   */
+  exampleFor?: Reference | undefined;
+  /**
+   * Human Name for the resource
+   * A human assigned name for the resource. All resources SHOULD have a name, but the name may be extracted from the resource (e.g. ValueSet.name).
+   */
+  name?: string | undefined;
+  _name?: Element | undefined;
+  /**
+   * Why the resource is included in the guide.
+   */
+  purpose: ('example'|'terminology'|'profile'|'extension'|'dictionary'|'logical');
+  _purpose?: Element | undefined;
+  /**
+   * Location of the resource
+   * Where this resource is found.
+   */
+  sourceReference?: Reference | undefined;
+  /**
+   * Location of the resource
+   * Where this resource is found.
+   */
+  sourceString?: string | undefined;
+  _sourceString?: Element | undefined;
+}
+/**
+ * Page/Section in the Guide
+ * A page / section in the implementation guide. The root page is the implementation guide home page.
+ */
+export interface ImplementationGuidePage extends BackboneElement {
+  /**
+   * Format of the page (e.g. html, markdown, etc.)
+   * The format of the page.
+   */
+  format?: string | undefined;
+  _format?: Element | undefined;
+  /**
+   * The kind of page that this is. Some pages are autogenerated (list, example), and other kinds are of interest so that tools can navigate the user to the page of interest.
+   */
+  kind: ('page'|'example'|'list'|'include'|'directory'|'dictionary'|'toc'|'resource');
+  _kind?: Element | undefined;
+  /**
+   * Short name shown for navigational assistance
+   * A short name used to represent this page in navigational structures such as table of contents, bread crumbs, etc.
+   */
+  name: string;
+  _name?: Element | undefined;
+  /**
+   * Name of package to include
+   * For constructed pages, a list of packages to include in the page (or else empty for everything).
+   */
+  package?: string[] | undefined;
+  _package?: Element[] | undefined;
+  /**
+   * Nested Pages / Sections
+   * Nested Pages/Sections under this page.
+   */
+  page?: ImplementationGuidePage[] | undefined;
+  /**
+   * Where to find that page
+   * The source address for the page.
+   */
+  source: string;
+  _source?: Element | undefined;
+  /**
+   * Kind of resource to include in the list
+   * For constructed pages, what kind of resources to include in the list.
+   */
+  type?: ('Account'|'AllergyIntolerance'|'Appointment'|'AppointmentResponse'|'AuditEvent'|'Basic'|'Binary'|'BodySite'|'Bundle'|'CarePlan'|'Claim'|'ClaimResponse'|'ClinicalImpression'|'Communication'|'CommunicationRequest'|'Composition'|'ConceptMap'|'Condition'|'Conformance'|'Contract'|'Coverage'|'DataElement'|'DetectedIssue'|'Device'|'DeviceComponent'|'DeviceMetric'|'DeviceUseRequest'|'DeviceUseStatement'|'DiagnosticOrder'|'DiagnosticReport'|'DocumentManifest'|'DocumentReference'|'DomainResource'|'EligibilityRequest'|'EligibilityResponse'|'Encounter'|'EnrollmentRequest'|'EnrollmentResponse'|'EpisodeOfCare'|'ExplanationOfBenefit'|'FamilyMemberHistory'|'Flag'|'Goal'|'Group'|'HealthcareService'|'ImagingObjectSelection'|'ImagingStudy'|'Immunization'|'ImmunizationRecommendation'|'ImplementationGuide'|'List'|'Location'|'Media'|'Medication'|'MedicationAdministration'|'MedicationDispense'|'MedicationOrder'|'MedicationStatement'|'MessageHeader'|'NamingSystem'|'NutritionOrder'|'Observation'|'OperationDefinition'|'OperationOutcome'|'Order'|'OrderResponse'|'Organization'|'Parameters'|'Patient'|'PaymentNotice'|'PaymentReconciliation'|'Person'|'Practitioner'|'Procedure'|'ProcedureRequest'|'ProcessRequest'|'ProcessResponse'|'Provenance'|'Questionnaire'|'QuestionnaireResponse'|'ReferralRequest'|'RelatedPerson'|'Resource'|'RiskAssessment'|'Schedule'|'SearchParameter'|'Slot'|'Specimen'|'StructureDefinition'|'Subscription'|'Substance'|'SupplyDelivery'|'SupplyRequest'|'TestScript'|'ValueSet'|'VisionPrescription')[] | undefined;
+  _type?: Element[] | undefined;
 }
 /**
  * Base StructureDefinition for List Resource
@@ -8979,24 +8951,32 @@ export interface List extends DomainResource {
   _title?: Element | undefined;
 }
 /**
- * The absolute geographic location of the Location, expressed using the WGS84 datum (This is the same co-ordinate system used in KML).
+ * Entries in the list
+ * Entries in this list.
  */
-export interface LocationPosition extends BackboneElement {
+export interface ListEntry extends BackboneElement {
   /**
-   * Altitude with WGS84 datum
-   * Altitude. The value domain and the interpretation are the same as for the text of the altitude element in KML (see notes below).
+   * When item added to list
+   * When this item was added to the list.
    */
-  altitude?: number | undefined;
+  date?: string | undefined;
+  _date?: Element | undefined;
   /**
-   * Latitude with WGS84 datum
-   * Latitude. The value domain and the interpretation are the same as for the text of the latitude element in KML (see notes below).
+   * If this item is actually marked as deleted
+   * True if this item is marked as deleted in the list.
    */
-  latitude: number;
+  deleted?: boolean | undefined;
+  _deleted?: Element | undefined;
   /**
-   * Longitude with WGS84 datum
-   * Longitude. The value domain and the interpretation are the same as for the text of the longitude element in KML (see notes below).
+   * Status/Workflow information about this item
+   * The flag allows the system constructing the list to indicate the role and significance of the item in the list.
    */
-  longitude: number;
+  flag?: CodeableConcept | undefined;
+  /**
+   * Actual entry
+   * A reference to the actual resource from which data was derived.
+   */
+  item: Reference;
 }
 /**
  * Base StructureDefinition for Location Resource
@@ -9064,6 +9044,26 @@ export interface Location extends DomainResource {
   type?: CodeableConcept | undefined;
 }
 /**
+ * The absolute geographic location of the Location, expressed using the WGS84 datum (This is the same co-ordinate system used in KML).
+ */
+export interface LocationPosition extends BackboneElement {
+  /**
+   * Altitude with WGS84 datum
+   * Altitude. The value domain and the interpretation are the same as for the text of the altitude element in KML (see notes below).
+   */
+  altitude?: number | undefined;
+  /**
+   * Latitude with WGS84 datum
+   * Latitude. The value domain and the interpretation are the same as for the text of the latitude element in KML (see notes below).
+   */
+  latitude: number;
+  /**
+   * Longitude with WGS84 datum
+   * Longitude. The value domain and the interpretation are the same as for the text of the longitude element in KML (see notes below).
+   */
+  longitude: number;
+}
+/**
  * Base StructureDefinition for Media Resource
  */
 export interface Media extends DomainResource {
@@ -9129,89 +9129,6 @@ export interface Media extends DomainResource {
   width?: number | undefined;
 }
 /**
- * What is  in the package
- * A set of components that go to make up the described item.
- */
-export interface MedicationPackageContent extends BackboneElement {
-  /**
-   * Quantity present in the package
-   * The amount of the product that is in the package.
-   */
-  amount?: Quantity | undefined;
-  /**
-   * A product in the package
-   * Identifies one of the items in the package.
-   */
-  item: Reference;
-}
-/**
- * Details about packaged medications
- * Information that only applies to packages (not products).
- */
-export interface MedicationPackage extends BackboneElement {
-  /**
-   * E.g. box, vial, blister-pack
-   * The kind of container that this package comes as.
-   */
-  container?: CodeableConcept | undefined;
-  /**
-   * What is  in the package
-   * A set of components that go to make up the described item.
-   */
-  content?: MedicationPackageContent[] | undefined;
-}
-/**
- * Information about a group of medication produced or packaged from one production run.
- */
-export interface MedicationProductBatch extends BackboneElement {
-  /**
-   * When this specific batch of product will expire.
-   */
-  expirationDate?: string | undefined;
-  _expirationDate?: Element | undefined;
-  /**
-   * The assigned lot number of a batch of the specified product.
-   */
-  lotNumber?: string | undefined;
-  _lotNumber?: Element | undefined;
-}
-/**
- * Active or inactive ingredient
- * Identifies a particular constituent of interest in the product.
- */
-export interface MedicationProductIngredient extends BackboneElement {
-  /**
-   * Quantity of ingredient present
-   * Specifies how many (or how much) of the items there are in this Medication.  For example, 250 mg per tablet.
-   */
-  amount?: Ratio | undefined;
-  /**
-   * The product contained
-   * The actual ingredient - either a substance (simple ingredient) or another medication.
-   */
-  item: Reference;
-}
-/**
- * Administrable medication details
- * Information that only applies to products (not packages).
- */
-export interface MedicationProduct extends BackboneElement {
-  /**
-   * Information about a group of medication produced or packaged from one production run.
-   */
-  batch?: MedicationProductBatch[] | undefined;
-  /**
-   * powder | tablets | carton +
-   * Describes the form of the item.  Powder; tablets; carton.
-   */
-  form?: CodeableConcept | undefined;
-  /**
-   * Active or inactive ingredient
-   * Identifies a particular constituent of interest in the product.
-   */
-  ingredient?: MedicationProductIngredient[] | undefined;
-}
-/**
  * Base StructureDefinition for Medication Resource
  */
 export interface Medication extends DomainResource {
@@ -9245,51 +9162,87 @@ export interface Medication extends DomainResource {
   product?: MedicationProduct | undefined;
 }
 /**
- * Details of how medication was taken
- * Describes the medication dosage information details e.g. dose, rate, site, route, etc.
+ * Details about packaged medications
+ * Information that only applies to packages (not products).
  */
-export interface MedicationAdministrationDosage extends BackboneElement {
+export interface MedicationPackage extends BackboneElement {
   /**
-   * How drug was administered
-   * A coded value indicating the method by which the medication is intended to be or was introduced into or on the body.  This attribute will most often NOT be populated.  It is most commonly used for injections.  For example, Slow Push, Deep IV.
+   * E.g. box, vial, blister-pack
+   * The kind of container that this package comes as.
    */
-  method?: CodeableConcept | undefined;
+  container?: CodeableConcept | undefined;
   /**
-   * Amount administered in one dose
-   * The amount of the medication given at one administration event.   Use this value when the administration is essentially an instantaneous event such as a swallowing a tablet or giving an injection.
+   * What is  in the package
+   * A set of components that go to make up the described item.
    */
-  quantity?: Quantity | undefined;
+  content?: MedicationPackageContent[] | undefined;
+}
+/**
+ * What is  in the package
+ * A set of components that go to make up the described item.
+ */
+export interface MedicationPackageContent extends BackboneElement {
   /**
-   * Dose quantity per unit of time
-   * Identifies the speed with which the medication was or will be introduced into the patient.  Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.  Currently we do not specify a default of '1' in the denominator, but this is being discussed.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.
+   * Quantity present in the package
+   * The amount of the product that is in the package.
    */
-  rateRange?: Range | undefined;
+  amount?: Quantity | undefined;
   /**
-   * Dose quantity per unit of time
-   * Identifies the speed with which the medication was or will be introduced into the patient.  Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.  Currently we do not specify a default of '1' in the denominator, but this is being discussed.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.
+   * A product in the package
+   * Identifies one of the items in the package.
    */
-  rateRatio?: Ratio | undefined;
+  item: Reference;
+}
+/**
+ * Administrable medication details
+ * Information that only applies to products (not packages).
+ */
+export interface MedicationProduct extends BackboneElement {
   /**
-   * Path of substance into body
-   * A code specifying the route or physiological path of administration of a therapeutic agent into or onto the patient.  For example, topical, intravenous, etc.
+   * Information about a group of medication produced or packaged from one production run.
    */
-  route?: CodeableConcept | undefined;
+  batch?: MedicationProductBatch[] | undefined;
   /**
-   * Body site administered to
-   * A coded specification of the anatomic site where the medication first entered the body.  For example, "left arm".
+   * powder | tablets | carton +
+   * Describes the form of the item.  Powder; tablets; carton.
    */
-  siteCodeableConcept?: CodeableConcept | undefined;
+  form?: CodeableConcept | undefined;
   /**
-   * Body site administered to
-   * A coded specification of the anatomic site where the medication first entered the body.  For example, "left arm".
+   * Active or inactive ingredient
+   * Identifies a particular constituent of interest in the product.
    */
-  siteReference?: Reference | undefined;
+  ingredient?: MedicationProductIngredient[] | undefined;
+}
+/**
+ * Information about a group of medication produced or packaged from one production run.
+ */
+export interface MedicationProductBatch extends BackboneElement {
   /**
-   * Dosage Instructions
-   * Free text dosage instructions can be used for cases where the instructions are too complex to code. When coded instructions are present, the free text instructions may still be present for display to humans taking or administering the medication.
+   * When this specific batch of product will expire.
    */
-  text?: string | undefined;
-  _text?: Element | undefined;
+  expirationDate?: string | undefined;
+  _expirationDate?: Element | undefined;
+  /**
+   * The assigned lot number of a batch of the specified product.
+   */
+  lotNumber?: string | undefined;
+  _lotNumber?: Element | undefined;
+}
+/**
+ * Active or inactive ingredient
+ * Identifies a particular constituent of interest in the product.
+ */
+export interface MedicationProductIngredient extends BackboneElement {
+  /**
+   * Quantity of ingredient present
+   * Specifies how many (or how much) of the items there are in this Medication.  For example, 250 mg per tablet.
+   */
+  amount?: Ratio | undefined;
+  /**
+   * The product contained
+   * The actual ingredient - either a substance (simple ingredient) or another medication.
+   */
+  item: Reference;
 }
 /**
  * Base StructureDefinition for MedicationAdministration Resource
@@ -9379,6 +9332,148 @@ export interface MedicationAdministration extends DomainResource {
    */
   wasNotGiven?: boolean | undefined;
   _wasNotGiven?: Element | undefined;
+}
+/**
+ * Details of how medication was taken
+ * Describes the medication dosage information details e.g. dose, rate, site, route, etc.
+ */
+export interface MedicationAdministrationDosage extends BackboneElement {
+  /**
+   * How drug was administered
+   * A coded value indicating the method by which the medication is intended to be or was introduced into or on the body.  This attribute will most often NOT be populated.  It is most commonly used for injections.  For example, Slow Push, Deep IV.
+   */
+  method?: CodeableConcept | undefined;
+  /**
+   * Amount administered in one dose
+   * The amount of the medication given at one administration event.   Use this value when the administration is essentially an instantaneous event such as a swallowing a tablet or giving an injection.
+   */
+  quantity?: Quantity | undefined;
+  /**
+   * Dose quantity per unit of time
+   * Identifies the speed with which the medication was or will be introduced into the patient.  Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.  Currently we do not specify a default of '1' in the denominator, but this is being discussed.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.
+   */
+  rateRange?: Range | undefined;
+  /**
+   * Dose quantity per unit of time
+   * Identifies the speed with which the medication was or will be introduced into the patient.  Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.  Currently we do not specify a default of '1' in the denominator, but this is being discussed.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.
+   */
+  rateRatio?: Ratio | undefined;
+  /**
+   * Path of substance into body
+   * A code specifying the route or physiological path of administration of a therapeutic agent into or onto the patient.  For example, topical, intravenous, etc.
+   */
+  route?: CodeableConcept | undefined;
+  /**
+   * Body site administered to
+   * A coded specification of the anatomic site where the medication first entered the body.  For example, "left arm".
+   */
+  siteCodeableConcept?: CodeableConcept | undefined;
+  /**
+   * Body site administered to
+   * A coded specification of the anatomic site where the medication first entered the body.  For example, "left arm".
+   */
+  siteReference?: Reference | undefined;
+  /**
+   * Dosage Instructions
+   * Free text dosage instructions can be used for cases where the instructions are too complex to code. When coded instructions are present, the free text instructions may still be present for display to humans taking or administering the medication.
+   */
+  text?: string | undefined;
+  _text?: Element | undefined;
+}
+/**
+ * Base StructureDefinition for MedicationDispense Resource
+ */
+export interface MedicationDispense extends DomainResource {
+  /** Resource Type Name (for serialization) */
+  readonly resourceType: 'MedicationDispense';
+  /**
+   * Medication order that authorizes the dispense
+   * Indicates the medication order that is being dispensed against.
+   */
+  authorizingPrescription?: Reference[] | undefined;
+  /**
+   * Days Supply
+   * The amount of medication expressed as a timing amount.
+   */
+  daysSupply?: Quantity | undefined;
+  /**
+   * Where the medication was sent
+   * Identification of the facility/location where the medication was shipped to, as part of the dispense event.
+   */
+  destination?: Reference | undefined;
+  /**
+   * Practitioner responsible for dispensing medication
+   * The individual responsible for dispensing the medication.
+   */
+  dispenser?: Reference | undefined;
+  /**
+   * Medicine administration instructions to the patient/caregiver
+   * Indicates how the medication is to be used by the patient.
+   */
+  dosageInstruction?: MedicationDispenseDosageInstruction[] | undefined;
+  /**
+   * External identifier
+   * Identifier assigned by the dispensing facility - this is an identifier assigned outside FHIR.
+   */
+  identifier?: Identifier | undefined;
+  /**
+   * What medication was supplied
+   * Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.
+   */
+  medicationCodeableConcept?: CodeableConcept | undefined;
+  /**
+   * What medication was supplied
+   * Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.
+   */
+  medicationReference?: Reference | undefined;
+  /**
+   * Information about the dispense
+   * Extra information about the dispense that could not be conveyed in the other attributes.
+   */
+  note?: string | undefined;
+  _note?: Element | undefined;
+  /**
+   * Who the dispense is for
+   * A link to a resource representing the person to whom the medication will be given.
+   */
+  patient?: Reference | undefined;
+  /**
+   * Amount dispensed
+   * The amount of medication that has been dispensed. Includes unit of measure.
+   */
+  quantity?: Quantity | undefined;
+  /**
+   * Who collected the medication
+   * Identifies the person who picked up the medication.  This will usually be a patient or their caregiver, but some cases exist where it can be a healthcare professional.
+   */
+  receiver?: Reference[] | undefined;
+  /**
+   * A code specifying the state of the set of dispense events.
+   */
+  status?: ('in-progress'|'on-hold'|'completed'|'entered-in-error'|'stopped') | undefined;
+  _status?: Element | undefined;
+  /**
+   * Deals with substitution of one medicine for another
+   * Indicates whether or not substitution was made as part of the dispense.  In some cases substitution will be expected but does not happen, in other cases substitution is not expected but does happen.  This block explains what substitution did or did not happen and why.
+   */
+  substitution?: MedicationDispenseSubstitution | undefined;
+  /**
+   * Trial fill, partial fill, emergency fill, etc.
+   * Indicates the type of dispensing event that is performed. For example, Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc.
+   */
+  type?: CodeableConcept | undefined;
+  /**
+   * When product was given out
+   * The time the dispensed product was provided to the patient or their representative.
+   */
+  whenHandedOver?: string | undefined;
+  _whenHandedOver?: Element | undefined;
+  /**
+   * Dispense processing time
+   * The time when the dispensed product was packaged and reviewed.
+   */
+  whenPrepared?: string | undefined;
+  _whenPrepared?: Element | undefined;
 }
 /**
  * Medicine administration instructions to the patient/caregiver
@@ -9480,99 +9575,98 @@ export interface MedicationDispenseSubstitution extends BackboneElement {
   type: CodeableConcept;
 }
 /**
- * Base StructureDefinition for MedicationDispense Resource
+ * Base StructureDefinition for MedicationOrder Resource
  */
-export interface MedicationDispense extends DomainResource {
+export interface MedicationOrder extends DomainResource {
   /** Resource Type Name (for serialization) */
-  readonly resourceType: 'MedicationDispense';
+  readonly resourceType: 'MedicationOrder';
   /**
-   * Medication order that authorizes the dispense
-   * Indicates the medication order that is being dispensed against.
+   * When prescription was stopped
+   * The date (and perhaps time) when the prescription was stopped.
    */
-  authorizingPrescription?: Reference[] | undefined;
+  dateEnded?: string | undefined;
+  _dateEnded?: Element | undefined;
   /**
-   * Days Supply
-   * The amount of medication expressed as a timing amount.
+   * When prescription was authorized
+   * The date (and perhaps time) when the prescription was written.
    */
-  daysSupply?: Quantity | undefined;
+  dateWritten?: string | undefined;
+  _dateWritten?: Element | undefined;
   /**
-   * Where the medication was sent
-   * Identification of the facility/location where the medication was shipped to, as part of the dispense event.
+   * Medication supply authorization
+   * Indicates the specific details for the dispense or medication supply part of a medication order (also known as a Medication Prescription).  Note that this information is NOT always sent with the order.  There may be in some settings (e.g. hospitals) institutional or system support for completing the dispense details in the pharmacy department.
    */
-  destination?: Reference | undefined;
+  dispenseRequest?: MedicationOrderDispenseRequest | undefined;
   /**
-   * Practitioner responsible for dispensing medication
-   * The individual responsible for dispensing the medication.
-   */
-  dispenser?: Reference | undefined;
-  /**
-   * Medicine administration instructions to the patient/caregiver
+   * How medication should be taken
    * Indicates how the medication is to be used by the patient.
    */
-  dosageInstruction?: MedicationDispenseDosageInstruction[] | undefined;
+  dosageInstruction?: MedicationOrderDosageInstruction[] | undefined;
   /**
-   * External identifier
-   * Identifier assigned by the dispensing facility - this is an identifier assigned outside FHIR.
+   * Created during encounter/admission/stay
+   * A link to a resource that identifies the particular occurrence of contact between patient and health care provider.
    */
-  identifier?: Identifier | undefined;
+  encounter?: Reference | undefined;
   /**
-   * What medication was supplied
-   * Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.
+   * External identifier - one that would be used by another non-FHIR system - for example a re-imbursement system might issue its own id for each prescription that is created.  This is particularly important where FHIR only provides part of an entire workflow process where records have to be tracked through an entire system.
+   */
+  identifier?: Identifier[] | undefined;
+  /**
+   * Medication to be taken
+   * Identifies the medication being administered. This is a link to a resource that represents the medication which may be the details of the medication or simply an attribute carrying a code that identifies the medication from a known list of medications.
    */
   medicationCodeableConcept?: CodeableConcept | undefined;
   /**
-   * What medication was supplied
-   * Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.
+   * Medication to be taken
+   * Identifies the medication being administered. This is a link to a resource that represents the medication which may be the details of the medication or simply an attribute carrying a code that identifies the medication from a known list of medications.
    */
   medicationReference?: Reference | undefined;
   /**
-   * Information about the dispense
-   * Extra information about the dispense that could not be conveyed in the other attributes.
+   * Information about the prescription
+   * Extra information about the prescription that could not be conveyed by the other attributes.
    */
   note?: string | undefined;
   _note?: Element | undefined;
   /**
-   * Who the dispense is for
+   * Who prescription is for
    * A link to a resource representing the person to whom the medication will be given.
    */
   patient?: Reference | undefined;
   /**
-   * Amount dispensed
-   * The amount of medication that has been dispensed. Includes unit of measure.
+   * Who ordered the medication(s)
+   * The healthcare professional responsible for authorizing the prescription.
    */
-  quantity?: Quantity | undefined;
+  prescriber?: Reference | undefined;
   /**
-   * Who collected the medication
-   * Identifies the person who picked up the medication.  This will usually be a patient or their caregiver, but some cases exist where it can be a healthcare professional.
+   * An order/prescription that this supersedes
+   * A link to a resource representing an earlier order or prescription that this order supersedes.
    */
-  receiver?: Reference[] | undefined;
+  priorPrescription?: Reference | undefined;
   /**
-   * A code specifying the state of the set of dispense events.
+   * Reason or indication for writing the prescription
+   * Can be the reason or the indication for writing the prescription.
    */
-  status?: ('in-progress'|'on-hold'|'completed'|'entered-in-error'|'stopped') | undefined;
+  reasonCodeableConcept?: CodeableConcept | undefined;
+  /**
+   * Reason or indication for writing the prescription
+   * Can be the reason or the indication for writing the prescription.
+   */
+  reasonReference?: Reference | undefined;
+  /**
+   * Why prescription was stopped
+   * The reason why the prescription was stopped, if it was.
+   */
+  reasonEnded?: CodeableConcept | undefined;
+  /**
+   * A code specifying the state of the order.  Generally this will be active or completed state.
+   */
+  status?: ('active'|'on-hold'|'completed'|'entered-in-error'|'stopped'|'draft') | undefined;
   _status?: Element | undefined;
   /**
-   * Deals with substitution of one medicine for another
-   * Indicates whether or not substitution was made as part of the dispense.  In some cases substitution will be expected but does not happen, in other cases substitution is not expected but does happen.  This block explains what substitution did or did not happen and why.
+   * Any restrictions on medication substitution
+   * Indicates whether or not substitution can or should be part of the dispense. In some cases substitution must happen, in other cases substitution must not happen, and in others it does not matter. This block explains the prescriber's intent. If nothing is specified substitution may be done.
    */
-  substitution?: MedicationDispenseSubstitution | undefined;
-  /**
-   * Trial fill, partial fill, emergency fill, etc.
-   * Indicates the type of dispensing event that is performed. For example, Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc.
-   */
-  type?: CodeableConcept | undefined;
-  /**
-   * When product was given out
-   * The time the dispensed product was provided to the patient or their representative.
-   */
-  whenHandedOver?: string | undefined;
-  _whenHandedOver?: Element | undefined;
-  /**
-   * Dispense processing time
-   * The time when the dispensed product was packaged and reviewed.
-   */
-  whenPrepared?: string | undefined;
-  _whenPrepared?: Element | undefined;
+  substitution?: MedicationOrderSubstitution | undefined;
 }
 /**
  * Medication supply authorization
@@ -9705,173 +9799,6 @@ export interface MedicationOrderSubstitution extends BackboneElement {
   type: CodeableConcept;
 }
 /**
- * Base StructureDefinition for MedicationOrder Resource
- */
-export interface MedicationOrder extends DomainResource {
-  /** Resource Type Name (for serialization) */
-  readonly resourceType: 'MedicationOrder';
-  /**
-   * When prescription was stopped
-   * The date (and perhaps time) when the prescription was stopped.
-   */
-  dateEnded?: string | undefined;
-  _dateEnded?: Element | undefined;
-  /**
-   * When prescription was authorized
-   * The date (and perhaps time) when the prescription was written.
-   */
-  dateWritten?: string | undefined;
-  _dateWritten?: Element | undefined;
-  /**
-   * Medication supply authorization
-   * Indicates the specific details for the dispense or medication supply part of a medication order (also known as a Medication Prescription).  Note that this information is NOT always sent with the order.  There may be in some settings (e.g. hospitals) institutional or system support for completing the dispense details in the pharmacy department.
-   */
-  dispenseRequest?: MedicationOrderDispenseRequest | undefined;
-  /**
-   * How medication should be taken
-   * Indicates how the medication is to be used by the patient.
-   */
-  dosageInstruction?: MedicationOrderDosageInstruction[] | undefined;
-  /**
-   * Created during encounter/admission/stay
-   * A link to a resource that identifies the particular occurrence of contact between patient and health care provider.
-   */
-  encounter?: Reference | undefined;
-  /**
-   * External identifier - one that would be used by another non-FHIR system - for example a re-imbursement system might issue its own id for each prescription that is created.  This is particularly important where FHIR only provides part of an entire workflow process where records have to be tracked through an entire system.
-   */
-  identifier?: Identifier[] | undefined;
-  /**
-   * Medication to be taken
-   * Identifies the medication being administered. This is a link to a resource that represents the medication which may be the details of the medication or simply an attribute carrying a code that identifies the medication from a known list of medications.
-   */
-  medicationCodeableConcept?: CodeableConcept | undefined;
-  /**
-   * Medication to be taken
-   * Identifies the medication being administered. This is a link to a resource that represents the medication which may be the details of the medication or simply an attribute carrying a code that identifies the medication from a known list of medications.
-   */
-  medicationReference?: Reference | undefined;
-  /**
-   * Information about the prescription
-   * Extra information about the prescription that could not be conveyed by the other attributes.
-   */
-  note?: string | undefined;
-  _note?: Element | undefined;
-  /**
-   * Who prescription is for
-   * A link to a resource representing the person to whom the medication will be given.
-   */
-  patient?: Reference | undefined;
-  /**
-   * Who ordered the medication(s)
-   * The healthcare professional responsible for authorizing the prescription.
-   */
-  prescriber?: Reference | undefined;
-  /**
-   * An order/prescription that this supersedes
-   * A link to a resource representing an earlier order or prescription that this order supersedes.
-   */
-  priorPrescription?: Reference | undefined;
-  /**
-   * Reason or indication for writing the prescription
-   * Can be the reason or the indication for writing the prescription.
-   */
-  reasonCodeableConcept?: CodeableConcept | undefined;
-  /**
-   * Reason or indication for writing the prescription
-   * Can be the reason or the indication for writing the prescription.
-   */
-  reasonReference?: Reference | undefined;
-  /**
-   * Why prescription was stopped
-   * The reason why the prescription was stopped, if it was.
-   */
-  reasonEnded?: CodeableConcept | undefined;
-  /**
-   * A code specifying the state of the order.  Generally this will be active or completed state.
-   */
-  status?: ('active'|'on-hold'|'completed'|'entered-in-error'|'stopped'|'draft') | undefined;
-  _status?: Element | undefined;
-  /**
-   * Any restrictions on medication substitution
-   * Indicates whether or not substitution can or should be part of the dispense. In some cases substitution must happen, in other cases substitution must not happen, and in others it does not matter. This block explains the prescriber's intent. If nothing is specified substitution may be done.
-   */
-  substitution?: MedicationOrderSubstitution | undefined;
-}
-/**
- * Details of how medication was taken
- * Indicates how the medication is/was used by the patient.
- */
-export interface MedicationStatementDosage extends BackboneElement {
-  /**
-   * Take "as needed" (for x)
-   * Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).    Specifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule.
-   */
-  asNeededBoolean?: boolean | undefined;
-  _asNeededBoolean?: Element | undefined;
-  /**
-   * Take "as needed" (for x)
-   * Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).    Specifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule.
-   */
-  asNeededCodeableConcept?: CodeableConcept | undefined;
-  /**
-   * Maximum dose that was consumed per unit of time
-   * The maximum total quantity of a therapeutic substance that may be administered to a subject over the period of time.  For example, 1000mg in 24 hours.
-   */
-  maxDosePerPeriod?: Ratio | undefined;
-  /**
-   * Technique used to administer medication
-   * A coded value indicating the method by which the medication is intended to be or was introduced into or on the body.  This attribute will most often NOT be populated.  It is most commonly used for injections.  For example, Slow Push, Deep IV.
-   */
-  method?: CodeableConcept | undefined;
-  /**
-   * Amount administered in one dose
-   * The amount of therapeutic or other substance given at one administration event.
-   */
-  quantityQuantity?: Quantity | undefined;
-  /**
-   * Amount administered in one dose
-   * The amount of therapeutic or other substance given at one administration event.
-   */
-  quantityRange?: Range | undefined;
-  /**
-   * Dose quantity per unit of time
-   * Identifies the speed with which the medication was or will be introduced into the patient. Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.   Currently we do not specify a default of '1' in the denominator, but this is being discussed. Other examples: 200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.
-   */
-  rateRange?: Range | undefined;
-  /**
-   * Dose quantity per unit of time
-   * Identifies the speed with which the medication was or will be introduced into the patient. Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.   Currently we do not specify a default of '1' in the denominator, but this is being discussed. Other examples: 200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.
-   */
-  rateRatio?: Ratio | undefined;
-  /**
-   * How the medication entered the body
-   * A code specifying the route or physiological path of administration of a therapeutic agent into or onto a subject.
-   */
-  route?: CodeableConcept | undefined;
-  /**
-   * Where (on body) medication is/was administered
-   * A coded specification of or a reference to the anatomic site where the medication first enters the body.
-   */
-  siteCodeableConcept?: CodeableConcept | undefined;
-  /**
-   * Where (on body) medication is/was administered
-   * A coded specification of or a reference to the anatomic site where the medication first enters the body.
-   */
-  siteReference?: Reference | undefined;
-  /**
-   * Reported dosage information
-   * Free text dosage information as reported about a patient's medication use. When coded dosage information is present, the free text may still be present for display to humans.
-   */
-  text?: string | undefined;
-  _text?: Element | undefined;
-  /**
-   * When/how often was medication taken
-   * The timing schedule for giving the medication to the patient.  The Schedule data type allows many different expressions, for example.  "Every  8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:";  "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".
-   */
-  timing?: Timing | undefined;
-}
-/**
  * Base StructureDefinition for MedicationStatement Resource
  */
 export interface MedicationStatement extends DomainResource {
@@ -9959,6 +9886,142 @@ export interface MedicationStatement extends DomainResource {
   _wasNotTaken?: Element | undefined;
 }
 /**
+ * Details of how medication was taken
+ * Indicates how the medication is/was used by the patient.
+ */
+export interface MedicationStatementDosage extends BackboneElement {
+  /**
+   * Take "as needed" (for x)
+   * Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).    Specifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule.
+   */
+  asNeededBoolean?: boolean | undefined;
+  _asNeededBoolean?: Element | undefined;
+  /**
+   * Take "as needed" (for x)
+   * Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).    Specifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule.
+   */
+  asNeededCodeableConcept?: CodeableConcept | undefined;
+  /**
+   * Maximum dose that was consumed per unit of time
+   * The maximum total quantity of a therapeutic substance that may be administered to a subject over the period of time.  For example, 1000mg in 24 hours.
+   */
+  maxDosePerPeriod?: Ratio | undefined;
+  /**
+   * Technique used to administer medication
+   * A coded value indicating the method by which the medication is intended to be or was introduced into or on the body.  This attribute will most often NOT be populated.  It is most commonly used for injections.  For example, Slow Push, Deep IV.
+   */
+  method?: CodeableConcept | undefined;
+  /**
+   * Amount administered in one dose
+   * The amount of therapeutic or other substance given at one administration event.
+   */
+  quantityQuantity?: Quantity | undefined;
+  /**
+   * Amount administered in one dose
+   * The amount of therapeutic or other substance given at one administration event.
+   */
+  quantityRange?: Range | undefined;
+  /**
+   * Dose quantity per unit of time
+   * Identifies the speed with which the medication was or will be introduced into the patient. Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.   Currently we do not specify a default of '1' in the denominator, but this is being discussed. Other examples: 200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.
+   */
+  rateRange?: Range | undefined;
+  /**
+   * Dose quantity per unit of time
+   * Identifies the speed with which the medication was or will be introduced into the patient. Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.   Currently we do not specify a default of '1' in the denominator, but this is being discussed. Other examples: 200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.
+   */
+  rateRatio?: Ratio | undefined;
+  /**
+   * How the medication entered the body
+   * A code specifying the route or physiological path of administration of a therapeutic agent into or onto a subject.
+   */
+  route?: CodeableConcept | undefined;
+  /**
+   * Where (on body) medication is/was administered
+   * A coded specification of or a reference to the anatomic site where the medication first enters the body.
+   */
+  siteCodeableConcept?: CodeableConcept | undefined;
+  /**
+   * Where (on body) medication is/was administered
+   * A coded specification of or a reference to the anatomic site where the medication first enters the body.
+   */
+  siteReference?: Reference | undefined;
+  /**
+   * Reported dosage information
+   * Free text dosage information as reported about a patient's medication use. When coded dosage information is present, the free text may still be present for display to humans.
+   */
+  text?: string | undefined;
+  _text?: Element | undefined;
+  /**
+   * When/how often was medication taken
+   * The timing schedule for giving the medication to the patient.  The Schedule data type allows many different expressions, for example.  "Every  8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:";  "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".
+   */
+  timing?: Timing | undefined;
+}
+/**
+ * Base StructureDefinition for MessageHeader Resource
+ */
+export interface MessageHeader extends DomainResource {
+  /** Resource Type Name (for serialization) */
+  readonly resourceType: 'MessageHeader';
+  /**
+   * The source of the decision
+   * The logical author of the message - the person or device that decided the described event should happen. Where there is more than one candidate, pick the most proximal to the MessageHeader. Can provide other authors in extensions.
+   */
+  author?: Reference | undefined;
+  /**
+   * The actual content of the message
+   * The actual data of the message - a reference to the root/focus class of the event.
+   */
+  data?: Reference[] | undefined;
+  /**
+   * Message Destination Application(s)
+   * The destination application which the message is intended for.
+   */
+  destination?: MessageHeaderDestination[] | undefined;
+  /**
+   * The source of the data entry
+   * The person or device that performed the data entry leading to this message. Where there is more than one candidate, pick the most proximal to the message. Can provide other enterers in extensions.
+   */
+  enterer?: Reference | undefined;
+  /**
+   * Code for the event this message represents
+   * Code that identifies the event this message represents and connects it with its definition. Events defined as part of the FHIR specification have the system value "http://hl7.org/fhir/message-events".
+   */
+  event: Coding;
+  /**
+   * Cause of event
+   * Coded indication of the cause for the event - indicates  a reason for the occurrence of the event that is a focus of this message.
+   */
+  reason?: CodeableConcept | undefined;
+  /**
+   * Intended "real-world" recipient for the data
+   * Allows data conveyed by a message to be addressed to a particular person or department when routing to a specific application isn't sufficient.
+   */
+  receiver?: Reference | undefined;
+  /**
+   * If this is a reply to prior message
+   * Information about the message that this message is a response to.  Only present if this message is a response.
+   */
+  response?: MessageHeaderResponse | undefined;
+  /**
+   * Final responsibility for event
+   * The person or organization that accepts overall responsibility for the contents of the message. The implication is that the message event happened under the policies of the responsible party.
+   */
+  responsible?: Reference | undefined;
+  /**
+   * Message Source Application
+   * The source application from which this message originated.
+   */
+  source: MessageHeaderSource;
+  /**
+   * Time that the message was sent
+   * The time that the message was sent.
+   */
+  timestamp: string;
+  _timestamp?: Element | undefined;
+}
+/**
  * Message Destination Application(s)
  * The destination application which the message is intended for.
  */
@@ -10039,114 +10102,6 @@ export interface MessageHeaderSource extends BackboneElement {
   _version?: Element | undefined;
 }
 /**
- * Base StructureDefinition for MessageHeader Resource
- */
-export interface MessageHeader extends DomainResource {
-  /** Resource Type Name (for serialization) */
-  readonly resourceType: 'MessageHeader';
-  /**
-   * The source of the decision
-   * The logical author of the message - the person or device that decided the described event should happen. Where there is more than one candidate, pick the most proximal to the MessageHeader. Can provide other authors in extensions.
-   */
-  author?: Reference | undefined;
-  /**
-   * The actual content of the message
-   * The actual data of the message - a reference to the root/focus class of the event.
-   */
-  data?: Reference[] | undefined;
-  /**
-   * Message Destination Application(s)
-   * The destination application which the message is intended for.
-   */
-  destination?: MessageHeaderDestination[] | undefined;
-  /**
-   * The source of the data entry
-   * The person or device that performed the data entry leading to this message. Where there is more than one candidate, pick the most proximal to the message. Can provide other enterers in extensions.
-   */
-  enterer?: Reference | undefined;
-  /**
-   * Code for the event this message represents
-   * Code that identifies the event this message represents and connects it with its definition. Events defined as part of the FHIR specification have the system value "http://hl7.org/fhir/message-events".
-   */
-  event: Coding;
-  /**
-   * Cause of event
-   * Coded indication of the cause for the event - indicates  a reason for the occurrence of the event that is a focus of this message.
-   */
-  reason?: CodeableConcept | undefined;
-  /**
-   * Intended "real-world" recipient for the data
-   * Allows data conveyed by a message to be addressed to a particular person or department when routing to a specific application isn't sufficient.
-   */
-  receiver?: Reference | undefined;
-  /**
-   * If this is a reply to prior message
-   * Information about the message that this message is a response to.  Only present if this message is a response.
-   */
-  response?: MessageHeaderResponse | undefined;
-  /**
-   * Final responsibility for event
-   * The person or organization that accepts overall responsibility for the contents of the message. The implication is that the message event happened under the policies of the responsible party.
-   */
-  responsible?: Reference | undefined;
-  /**
-   * Message Source Application
-   * The source application from which this message originated.
-   */
-  source: MessageHeaderSource;
-  /**
-   * Time that the message was sent
-   * The time that the message was sent.
-   */
-  timestamp: string;
-  _timestamp?: Element | undefined;
-}
-/**
- * Contact details of the publisher
- * Contacts to assist a user in finding and communicating with the publisher.
- */
-export interface NamingSystemContact extends BackboneElement {
-  /**
-   * Name of a individual to contact
-   * The name of an individual to contact regarding the naming system.
-   */
-  name?: string | undefined;
-  _name?: Element | undefined;
-  /**
-   * Contact details for individual or publisher
-   * Contact details for individual (if a name was provided) or the publisher.
-   */
-  telecom?: ContactPoint[] | undefined;
-}
-/**
- * Unique identifiers used for system
- * Indicates how the system may be identified when referenced in electronic exchange.
- */
-export interface NamingSystemUniqueId extends BackboneElement {
-  /**
-   * When is identifier valid?
-   * Identifies the period of time over which this identifier is considered appropriate to refer to the naming system.  Outside of this window, the identifier might be non-deterministic.
-   */
-  period?: Period | undefined;
-  /**
-   * Is this the id that should be used for this type
-   * Indicates whether this identifier is the "preferred" identifier of this type.
-   */
-  preferred?: boolean | undefined;
-  _preferred?: Element | undefined;
-  /**
-   * Identifies the unique identifier scheme used for this particular identifier.
-   */
-  type: ('oid'|'uuid'|'uri'|'other');
-  _type?: Element | undefined;
-  /**
-   * The unique identifier
-   * The string that should be sent over the wire to identify the code system or identifier system.
-   */
-  value: string;
-  _value?: Element | undefined;
-}
-/**
  * Base StructureDefinition for NamingSystem Resource
  */
 export interface NamingSystem extends DomainResource {
@@ -10225,185 +10180,49 @@ export interface NamingSystem extends DomainResource {
   useContext?: CodeableConcept[] | undefined;
 }
 /**
- * Formula feeding instruction as structured data
- * Formula administration instructions as structured data.  This repeating structure allows for changing the administration rate or volume over time for both bolus and continuous feeding.  An example of this would be an instruction to increase the rate of continuous feeding every 2 hours.
+ * Contact details of the publisher
+ * Contacts to assist a user in finding and communicating with the publisher.
  */
-export interface NutritionOrderEnteralFormulaAdministration extends BackboneElement {
+export interface NamingSystemContact extends BackboneElement {
   /**
-   * The volume of formula to provide to the patient per the specified administration schedule.
+   * Name of a individual to contact
+   * The name of an individual to contact regarding the naming system.
    */
-  quantity?: Quantity | undefined;
+  name?: string | undefined;
+  _name?: Element | undefined;
   /**
-   * Speed with which the formula is provided per period of time
-   * The rate of administration of formula via a feeding pump, e.g. 60 mL per hour, according to the specified schedule.
+   * Contact details for individual or publisher
+   * Contact details for individual (if a name was provided) or the publisher.
    */
-  rateQuantity?: Quantity | undefined;
-  /**
-   * Speed with which the formula is provided per period of time
-   * The rate of administration of formula via a feeding pump, e.g. 60 mL per hour, according to the specified schedule.
-   */
-  rateRatio?: Ratio | undefined;
-  /**
-   * Scheduled frequency of enteral feeding
-   * The time period and frequency at which the enteral formula should be delivered to the patient.
-   */
-  schedule?: Timing | undefined;
+  telecom?: ContactPoint[] | undefined;
 }
 /**
- * Enteral formula components
- * Feeding provided through the gastrointestinal tract via a tube, catheter, or stoma that delivers nutrition distal to the oral cavity.
+ * Unique identifiers used for system
+ * Indicates how the system may be identified when referenced in electronic exchange.
  */
-export interface NutritionOrderEnteralFormula extends BackboneElement {
+export interface NamingSystemUniqueId extends BackboneElement {
   /**
-   * Product or brand name of the modular additive
-   * The product or brand name of the type of modular component to be added to the formula.
+   * When is identifier valid?
+   * Identifies the period of time over which this identifier is considered appropriate to refer to the naming system.  Outside of this window, the identifier might be non-deterministic.
    */
-  additiveProductName?: string | undefined;
-  _additiveProductName?: Element | undefined;
+  period?: Period | undefined;
   /**
-   * Type of modular component to add to the feeding
-   * Indicates the type of modular component such as protein, carbohydrate, fat or fiber to be provided in addition to or mixed with the base formula.
+   * Is this the id that should be used for this type
+   * Indicates whether this identifier is the "preferred" identifier of this type.
    */
-  additiveType?: CodeableConcept | undefined;
+  preferred?: boolean | undefined;
+  _preferred?: Element | undefined;
   /**
-   * Formula feeding instruction as structured data
-   * Formula administration instructions as structured data.  This repeating structure allows for changing the administration rate or volume over time for both bolus and continuous feeding.  An example of this would be an instruction to increase the rate of continuous feeding every 2 hours.
+   * Identifies the unique identifier scheme used for this particular identifier.
    */
-  administration?: NutritionOrderEnteralFormulaAdministration[] | undefined;
+  type: ('oid'|'uuid'|'uri'|'other');
+  _type?: Element | undefined;
   /**
-   * Formula feeding instructions expressed as text
-   * Free text formula administration, feeding instructions or additional instructions or information.
+   * The unique identifier
+   * The string that should be sent over the wire to identify the code system or identifier system.
    */
-  administrationInstruction?: string | undefined;
-  _administrationInstruction?: Element | undefined;
-  /**
-   * Product or brand name of the enteral or infant formula
-   * The product or brand name of the enteral or infant formula product such as "ACME Adult Standard Formula".
-   */
-  baseFormulaProductName?: string | undefined;
-  _baseFormulaProductName?: Element | undefined;
-  /**
-   * Type of enteral or infant formula
-   * The type of enteral or infant formula such as an adult standard formula with fiber or a soy-based infant formula.
-   */
-  baseFormulaType?: CodeableConcept | undefined;
-  /**
-   * Amount of energy per specified volume that is required
-   * The amount of energy (Calories) that the formula should provide per specified volume, typically per mL or fluid oz.  For example, an infant may require a formula that provides 24 Calories per fluid ounce or an adult may require an enteral formula that provides 1.5 Calorie/mL.
-   */
-  caloricDensity?: Quantity | undefined;
-  /**
-   * Upper limit on formula volume per unit of time
-   * The maximum total quantity of formula that may be administered to a subject over the period of time, e.g. 1440 mL over 24 hours.
-   */
-  maxVolumeToDeliver?: Quantity | undefined;
-  /**
-   * How the formula should enter the patient's gastrointestinal tract
-   * The route or physiological path of administration into the patient's gastrointestinal  tract for purposes of providing the formula feeding, e.g. nasogastric tube.
-   */
-  routeofAdministration?: CodeableConcept | undefined;
-}
-/**
- * Required  nutrient modifications
- * Class that defines the quantity and type of nutrient modifications required for the oral diet.
- */
-export interface NutritionOrderOralDietNutrient extends BackboneElement {
-  /**
-   * Quantity of the specified nutrient
-   * The quantity of the specified nutrient to include in diet.
-   */
-  amount?: Quantity | undefined;
-  /**
-   * Type of nutrient that is being modified
-   * The nutrient that is being modified such as carbohydrate or sodium.
-   */
-  modifier?: CodeableConcept | undefined;
-}
-/**
- * Required  texture modifications
- * Class that describes any texture modifications required for the patient to safely consume various types of solid foods.
- */
-export interface NutritionOrderOralDietTexture extends BackboneElement {
-  /**
-   * Concepts that are used to identify an entity that is ingested for nutritional purposes
-   * The food type(s) (e.g. meats, all foods)  that the texture modification applies to.  This could be all foods types.
-   */
-  foodType?: CodeableConcept | undefined;
-  /**
-   * Code to indicate how to alter the texture of the foods, e.g. pureed
-   * Any texture modifications (for solid foods) that should be made, e.g. easy to chew, chopped, ground, and pureed.
-   */
-  modifier?: CodeableConcept | undefined;
-}
-/**
- * Oral diet components
- * Diet given orally in contrast to enteral (tube) feeding.
- */
-export interface NutritionOrderOralDiet extends BackboneElement {
-  /**
-   * The required consistency of fluids and liquids provided to the patient
-   * The required consistency (e.g. honey-thick, nectar-thick, thin, thickened.) of liquids or fluids served to the patient.
-   */
-  fluidConsistencyType?: CodeableConcept[] | undefined;
-  /**
-   * Instructions or additional information about the oral diet
-   * Free text or additional instructions or information pertaining to the oral diet.
-   */
-  instruction?: string | undefined;
-  _instruction?: Element | undefined;
-  /**
-   * Required  nutrient modifications
-   * Class that defines the quantity and type of nutrient modifications required for the oral diet.
-   */
-  nutrient?: NutritionOrderOralDietNutrient[] | undefined;
-  /**
-   * Scheduled frequency of diet
-   * The time period and frequency at which the diet should be given.
-   */
-  schedule?: Timing[] | undefined;
-  /**
-   * Required  texture modifications
-   * Class that describes any texture modifications required for the patient to safely consume various types of solid foods.
-   */
-  texture?: NutritionOrderOralDietTexture[] | undefined;
-  /**
-   * Type of oral diet or diet restrictions that describe what can be consumed orally
-   * The kind of diet or dietary restriction such as fiber restricted diet or diabetic diet.
-   */
-  type?: CodeableConcept[] | undefined;
-}
-/**
- * Supplement components
- * Oral nutritional products given in order to add further nutritional value to the patient's diet.
- */
-export interface NutritionOrderSupplement extends BackboneElement {
-  /**
-   * Instructions or additional information about the oral supplement
-   * Free text or additional instructions or information pertaining to the oral supplement.
-   */
-  instruction?: string | undefined;
-  _instruction?: Element | undefined;
-  /**
-   * Product or brand name of the nutritional supplement
-   * The product or brand name of the nutritional supplement such as "Acme Protein Shake".
-   */
-  productName?: string | undefined;
-  _productName?: Element | undefined;
-  /**
-   * Amount of the nutritional supplement
-   * The amount of the nutritional supplement to be given.
-   */
-  quantity?: Quantity | undefined;
-  /**
-   * Scheduled frequency of supplement
-   * The time period and frequency at which the supplement(s) should be given.
-   */
-  schedule?: Timing[] | undefined;
-  /**
-   * Type of supplement product requested
-   * The kind of nutritional supplement product required such as a high protein or pediatric clear liquid supplement.
-   */
-  type?: CodeableConcept | undefined;
+  value: string;
+  _value?: Element | undefined;
 }
 /**
  * Base StructureDefinition for NutritionOrder Resource
@@ -10473,113 +10292,185 @@ export interface NutritionOrder extends DomainResource {
   supplement?: NutritionOrderSupplement[] | undefined;
 }
 /**
- * Component results
- * Some observations have multiple component observations.  These component observations are expressed as separate code value pairs that share the same attributes.  Examples include systolic and diastolic component observations for blood pressure measurement and multiple component observations for genetics observations.
+ * Enteral formula components
+ * Feeding provided through the gastrointestinal tract via a tube, catheter, or stoma that delivers nutrition distal to the oral cavity.
  */
-export interface ObservationComponent extends BackboneElement {
+export interface NutritionOrderEnteralFormula extends BackboneElement {
   /**
-   * Type of component observation (code / type)
-   * Describes what was observed. Sometimes this is called the observation "code".
+   * Product or brand name of the modular additive
+   * The product or brand name of the type of modular component to be added to the formula.
    */
-  code: CodeableConcept;
+  additiveProductName?: string | undefined;
+  _additiveProductName?: Element | undefined;
   /**
-   * Why the component result is missing
-   * Provides a reason why the expected value in the element Observation.value[x] is missing.
+   * Type of modular component to add to the feeding
+   * Indicates the type of modular component such as protein, carbohydrate, fat or fiber to be provided in addition to or mixed with the base formula.
    */
-  dataAbsentReason?: CodeableConcept | undefined;
+  additiveType?: CodeableConcept | undefined;
   /**
-   * Provides guide for interpretation of component result
-   * Guidance on how to interpret the value by comparison to a normal or recommended range.
+   * Formula feeding instruction as structured data
+   * Formula administration instructions as structured data.  This repeating structure allows for changing the administration rate or volume over time for both bolus and continuous feeding.  An example of this would be an instruction to increase the rate of continuous feeding every 2 hours.
    */
-  referenceRange?: ObservationReferenceRange[] | undefined;
+  administration?: NutritionOrderEnteralFormulaAdministration[] | undefined;
   /**
-   * Actual component result
-   * The information determined as a result of making the observation, if the information has a simple value.
+   * Formula feeding instructions expressed as text
+   * Free text formula administration, feeding instructions or additional instructions or information.
    */
-  valueAttachment?: Attachment | undefined;
+  administrationInstruction?: string | undefined;
+  _administrationInstruction?: Element | undefined;
   /**
-   * Actual component result
-   * The information determined as a result of making the observation, if the information has a simple value.
+   * Product or brand name of the enteral or infant formula
+   * The product or brand name of the enteral or infant formula product such as "ACME Adult Standard Formula".
    */
-  valueCodeableConcept?: CodeableConcept | undefined;
+  baseFormulaProductName?: string | undefined;
+  _baseFormulaProductName?: Element | undefined;
   /**
-   * Actual component result
-   * The information determined as a result of making the observation, if the information has a simple value.
+   * Type of enteral or infant formula
+   * The type of enteral or infant formula such as an adult standard formula with fiber or a soy-based infant formula.
    */
-  valueString?: string | undefined;
-  _valueString?: Element | undefined;
+  baseFormulaType?: CodeableConcept | undefined;
   /**
-   * Actual component result
-   * The information determined as a result of making the observation, if the information has a simple value.
+   * Amount of energy per specified volume that is required
+   * The amount of energy (Calories) that the formula should provide per specified volume, typically per mL or fluid oz.  For example, an infant may require a formula that provides 24 Calories per fluid ounce or an adult may require an enteral formula that provides 1.5 Calorie/mL.
    */
-  valuePeriod?: Period | undefined;
+  caloricDensity?: Quantity | undefined;
   /**
-   * Actual component result
-   * The information determined as a result of making the observation, if the information has a simple value.
+   * Upper limit on formula volume per unit of time
+   * The maximum total quantity of formula that may be administered to a subject over the period of time, e.g. 1440 mL over 24 hours.
    */
-  valueQuantity?: Quantity | undefined;
+  maxVolumeToDeliver?: Quantity | undefined;
   /**
-   * Actual component result
-   * The information determined as a result of making the observation, if the information has a simple value.
+   * How the formula should enter the patient's gastrointestinal tract
+   * The route or physiological path of administration into the patient's gastrointestinal  tract for purposes of providing the formula feeding, e.g. nasogastric tube.
    */
-  valueRange?: Range | undefined;
-  /**
-   * Actual component result
-   * The information determined as a result of making the observation, if the information has a simple value.
-   */
-  valueRatio?: Ratio | undefined;
-  /**
-   * Actual component result
-   * The information determined as a result of making the observation, if the information has a simple value.
-   */
-  valueSampledData?: SampledData | undefined;
+  routeofAdministration?: CodeableConcept | undefined;
 }
 /**
- * Provides guide for interpretation
- * Guidance on how to interpret the value by comparison to a normal or recommended range.
+ * Formula feeding instruction as structured data
+ * Formula administration instructions as structured data.  This repeating structure allows for changing the administration rate or volume over time for both bolus and continuous feeding.  An example of this would be an instruction to increase the rate of continuous feeding every 2 hours.
  */
-export interface ObservationReferenceRange extends BackboneElement {
+export interface NutritionOrderEnteralFormulaAdministration extends BackboneElement {
   /**
-   * Applicable age range, if relevant
-   * The age at which this reference range is applicable. This is a neonatal age (e.g. number of weeks at term) if the meaning says so.
+   * The volume of formula to provide to the patient per the specified administration schedule.
    */
-  age?: Range | undefined;
+  quantity?: Quantity | undefined;
   /**
-   * High Range, if relevant
-   * The value of the high bound of the reference range.  The high bound of the reference range endpoint is inclusive of the value (e.g.  reference range is >=5 - <=9).   If the high bound is omitted,  it is assumed to be meaningless (e.g. reference range is >= 2.3).
+   * Speed with which the formula is provided per period of time
+   * The rate of administration of formula via a feeding pump, e.g. 60 mL per hour, according to the specified schedule.
    */
-  high?: Quantity | undefined;
+  rateQuantity?: Quantity | undefined;
   /**
-   * Low Range, if relevant
-   * The value of the low bound of the reference range.  The low bound of the reference range endpoint is inclusive of the value (e.g.  reference range is >=5 - <=9).   If the low bound is omitted,  it is assumed to be meaningless (e.g. reference range is <=2.3).
+   * Speed with which the formula is provided per period of time
+   * The rate of administration of formula via a feeding pump, e.g. 60 mL per hour, according to the specified schedule.
    */
-  low?: Quantity | undefined;
+  rateRatio?: Ratio | undefined;
   /**
-   * Indicates the meaning/use of this range of this range
-   * Code for the meaning of the reference range.
+   * Scheduled frequency of enteral feeding
+   * The time period and frequency at which the enteral formula should be delivered to the patient.
    */
-  meaning?: CodeableConcept | undefined;
-  /**
-   * Text based reference range in an observation which may be used when a quantitative range is not appropriate for an observation.  An example would be a reference value of "Negative" or a list or table of 'normals'.
-   */
-  text?: string | undefined;
-  _text?: Element | undefined;
+  schedule?: Timing | undefined;
 }
 /**
- * Resource related to this observation
- * A  reference to another resource (usually another Observation but could  also be a QuestionnaireAnswer) whose relationship is defined by the relationship type code.
+ * Oral diet components
+ * Diet given orally in contrast to enteral (tube) feeding.
  */
-export interface ObservationRelated extends BackboneElement {
+export interface NutritionOrderOralDiet extends BackboneElement {
   /**
-   * Resource that is related to this one
-   * A reference to the observation or [[[QuestionnaireResponse]]] resource that is related to this observation.
+   * The required consistency of fluids and liquids provided to the patient
+   * The required consistency (e.g. honey-thick, nectar-thick, thin, thickened.) of liquids or fluids served to the patient.
    */
-  target: Reference;
+  fluidConsistencyType?: CodeableConcept[] | undefined;
   /**
-   * A code specifying the kind of relationship that exists with the target resource.
+   * Instructions or additional information about the oral diet
+   * Free text or additional instructions or information pertaining to the oral diet.
    */
-  type?: ('has-member'|'derived-from'|'sequel-to'|'replaces'|'qualified-by'|'interfered-by') | undefined;
-  _type?: Element | undefined;
+  instruction?: string | undefined;
+  _instruction?: Element | undefined;
+  /**
+   * Required  nutrient modifications
+   * Class that defines the quantity and type of nutrient modifications required for the oral diet.
+   */
+  nutrient?: NutritionOrderOralDietNutrient[] | undefined;
+  /**
+   * Scheduled frequency of diet
+   * The time period and frequency at which the diet should be given.
+   */
+  schedule?: Timing[] | undefined;
+  /**
+   * Required  texture modifications
+   * Class that describes any texture modifications required for the patient to safely consume various types of solid foods.
+   */
+  texture?: NutritionOrderOralDietTexture[] | undefined;
+  /**
+   * Type of oral diet or diet restrictions that describe what can be consumed orally
+   * The kind of diet or dietary restriction such as fiber restricted diet or diabetic diet.
+   */
+  type?: CodeableConcept[] | undefined;
+}
+/**
+ * Required  nutrient modifications
+ * Class that defines the quantity and type of nutrient modifications required for the oral diet.
+ */
+export interface NutritionOrderOralDietNutrient extends BackboneElement {
+  /**
+   * Quantity of the specified nutrient
+   * The quantity of the specified nutrient to include in diet.
+   */
+  amount?: Quantity | undefined;
+  /**
+   * Type of nutrient that is being modified
+   * The nutrient that is being modified such as carbohydrate or sodium.
+   */
+  modifier?: CodeableConcept | undefined;
+}
+/**
+ * Required  texture modifications
+ * Class that describes any texture modifications required for the patient to safely consume various types of solid foods.
+ */
+export interface NutritionOrderOralDietTexture extends BackboneElement {
+  /**
+   * Concepts that are used to identify an entity that is ingested for nutritional purposes
+   * The food type(s) (e.g. meats, all foods)  that the texture modification applies to.  This could be all foods types.
+   */
+  foodType?: CodeableConcept | undefined;
+  /**
+   * Code to indicate how to alter the texture of the foods, e.g. pureed
+   * Any texture modifications (for solid foods) that should be made, e.g. easy to chew, chopped, ground, and pureed.
+   */
+  modifier?: CodeableConcept | undefined;
+}
+/**
+ * Supplement components
+ * Oral nutritional products given in order to add further nutritional value to the patient's diet.
+ */
+export interface NutritionOrderSupplement extends BackboneElement {
+  /**
+   * Instructions or additional information about the oral supplement
+   * Free text or additional instructions or information pertaining to the oral supplement.
+   */
+  instruction?: string | undefined;
+  _instruction?: Element | undefined;
+  /**
+   * Product or brand name of the nutritional supplement
+   * The product or brand name of the nutritional supplement such as "Acme Protein Shake".
+   */
+  productName?: string | undefined;
+  _productName?: Element | undefined;
+  /**
+   * Amount of the nutritional supplement
+   * The amount of the nutritional supplement to be given.
+   */
+  quantity?: Quantity | undefined;
+  /**
+   * Scheduled frequency of supplement
+   * The time period and frequency at which the supplement(s) should be given.
+   */
+  schedule?: Timing[] | undefined;
+  /**
+   * Type of supplement product requested
+   * The kind of nutritional supplement product required such as a high protein or pediatric clear liquid supplement.
+   */
+  type?: CodeableConcept | undefined;
 }
 /**
  * Base StructureDefinition for Observation Resource
@@ -10733,99 +10624,113 @@ export interface Observation extends DomainResource {
   valueSampledData?: SampledData | undefined;
 }
 /**
- * Contact details of the publisher
- * Contacts to assist a user in finding and communicating with the publisher.
+ * Component results
+ * Some observations have multiple component observations.  These component observations are expressed as separate code value pairs that share the same attributes.  Examples include systolic and diastolic component observations for blood pressure measurement and multiple component observations for genetics observations.
  */
-export interface OperationDefinitionContact extends BackboneElement {
+export interface ObservationComponent extends BackboneElement {
   /**
-   * Name of a individual to contact
-   * The name of an individual to contact regarding the operation definition.
+   * Type of component observation (code / type)
+   * Describes what was observed. Sometimes this is called the observation "code".
    */
-  name?: string | undefined;
-  _name?: Element | undefined;
+  code: CodeableConcept;
   /**
-   * Contact details for individual or publisher
-   * Contact details for individual (if a name was provided) or the publisher.
+   * Why the component result is missing
+   * Provides a reason why the expected value in the element Observation.value[x] is missing.
    */
-  telecom?: ContactPoint[] | undefined;
+  dataAbsentReason?: CodeableConcept | undefined;
+  /**
+   * Provides guide for interpretation of component result
+   * Guidance on how to interpret the value by comparison to a normal or recommended range.
+   */
+  referenceRange?: ObservationReferenceRange[] | undefined;
+  /**
+   * Actual component result
+   * The information determined as a result of making the observation, if the information has a simple value.
+   */
+  valueAttachment?: Attachment | undefined;
+  /**
+   * Actual component result
+   * The information determined as a result of making the observation, if the information has a simple value.
+   */
+  valueCodeableConcept?: CodeableConcept | undefined;
+  /**
+   * Actual component result
+   * The information determined as a result of making the observation, if the information has a simple value.
+   */
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
+  /**
+   * Actual component result
+   * The information determined as a result of making the observation, if the information has a simple value.
+   */
+  valuePeriod?: Period | undefined;
+  /**
+   * Actual component result
+   * The information determined as a result of making the observation, if the information has a simple value.
+   */
+  valueQuantity?: Quantity | undefined;
+  /**
+   * Actual component result
+   * The information determined as a result of making the observation, if the information has a simple value.
+   */
+  valueRange?: Range | undefined;
+  /**
+   * Actual component result
+   * The information determined as a result of making the observation, if the information has a simple value.
+   */
+  valueRatio?: Ratio | undefined;
+  /**
+   * Actual component result
+   * The information determined as a result of making the observation, if the information has a simple value.
+   */
+  valueSampledData?: SampledData | undefined;
 }
 /**
- * ValueSet details if this is coded
- * Binds to a value set if this parameter is coded (code, Coding, CodeableConcept).
+ * Provides guide for interpretation
+ * Guidance on how to interpret the value by comparison to a normal or recommended range.
  */
-export interface OperationDefinitionParameterBinding extends BackboneElement {
+export interface ObservationReferenceRange extends BackboneElement {
   /**
-   * Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the provided value set must be adhered to in the instances.
+   * Applicable age range, if relevant
+   * The age at which this reference range is applicable. This is a neonatal age (e.g. number of weeks at term) if the meaning says so.
    */
-  strength: ('required'|'extensible'|'preferred'|'example');
-  _strength?: Element | undefined;
+  age?: Range | undefined;
   /**
-   * Source of value set
-   * Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.
+   * High Range, if relevant
+   * The value of the high bound of the reference range.  The high bound of the reference range endpoint is inclusive of the value (e.g.  reference range is >=5 - <=9).   If the high bound is omitted,  it is assumed to be meaningless (e.g. reference range is >= 2.3).
    */
-  valueSetReference?: Reference | undefined;
+  high?: Quantity | undefined;
   /**
-   * Source of value set
-   * Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.
+   * Low Range, if relevant
+   * The value of the low bound of the reference range.  The low bound of the reference range endpoint is inclusive of the value (e.g.  reference range is >=5 - <=9).   If the low bound is omitted,  it is assumed to be meaningless (e.g. reference range is <=2.3).
    */
-  valueSetString?: string | undefined;
-  _valueSetString?: Element | undefined;
+  low?: Quantity | undefined;
+  /**
+   * Indicates the meaning/use of this range of this range
+   * Code for the meaning of the reference range.
+   */
+  meaning?: CodeableConcept | undefined;
+  /**
+   * Text based reference range in an observation which may be used when a quantitative range is not appropriate for an observation.  An example would be a reference value of "Negative" or a list or table of 'normals'.
+   */
+  text?: string | undefined;
+  _text?: Element | undefined;
 }
 /**
- * Parameters for the operation/query
- * The parameters for the operation/query.
+ * Resource related to this observation
+ * A  reference to another resource (usually another Observation but could  also be a QuestionnaireAnswer) whose relationship is defined by the relationship type code.
  */
-export interface OperationDefinitionParameter extends BackboneElement {
+export interface ObservationRelated extends BackboneElement {
   /**
-   * ValueSet details if this is coded
-   * Binds to a value set if this parameter is coded (code, Coding, CodeableConcept).
+   * Resource that is related to this one
+   * A reference to the observation or [[[QuestionnaireResponse]]] resource that is related to this observation.
    */
-  binding?: OperationDefinitionParameterBinding | undefined;
+  target: Reference;
   /**
-   * Description of meaning/use
-   * Describes the meaning or use of this parameter.
+   * A code specifying the kind of relationship that exists with the target resource.
    */
-  documentation?: string | undefined;
-  _documentation?: Element | undefined;
-  /**
-   * Maximum Cardinality (a number or *)
-   * The maximum number of times this element is permitted to appear in the request or response.
-   */
-  max: string;
-  _max?: Element | undefined;
-  /**
-   * Minimum Cardinality
-   * The minimum number of times this parameter SHALL appear in the request or response.
-   */
-  min: number;
-  /**
-   * Name in Parameters.parameter.name or in URL
-   * The name of used to identify the parameter.
-   */
-  name: string;
-  _name?: Element | undefined;
-  /**
-   * Parts of a Tuple Parameter
-   * The parts of a Tuple Parameter.
-   */
-  part?: OperationDefinitionParameter[] | undefined;
-  /**
-   * Profile on the type
-   * A profile the specifies the rules that this parameter must conform to.
-   */
-  profile?: Reference | undefined;
-  /**
-   * What type this parameter has
-   * The type for this parameter.
-   */
-  type?: ('number'|'date'|'string'|'token'|'reference'|'composite'|'quantity'|'uri'|'Address'|'Age'|'Annotation'|'Attachment'|'BackboneElement'|'CodeableConcept'|'Coding'|'ContactPoint'|'Count'|'Distance'|'Duration'|'Element'|'ElementDefinition'|'Extension'|'HumanName'|'Identifier'|'Meta'|'Money'|'Narrative'|'Period'|'Quantity'|'Range'|'Ratio'|'Reference'|'SampledData'|'Signature'|'SimpleQuantity'|'Timing'|'base64Binary'|'boolean'|'code'|'date'|'dateTime'|'decimal'|'id'|'instant'|'integer'|'markdown'|'oid'|'positiveInt'|'string'|'time'|'unsignedInt'|'uri'|'uuid'|'xhtml'|'Account'|'AllergyIntolerance'|'Appointment'|'AppointmentResponse'|'AuditEvent'|'Basic'|'Binary'|'BodySite'|'Bundle'|'CarePlan'|'Claim'|'ClaimResponse'|'ClinicalImpression'|'Communication'|'CommunicationRequest'|'Composition'|'ConceptMap'|'Condition'|'Conformance'|'Contract'|'Coverage'|'DataElement'|'DetectedIssue'|'Device'|'DeviceComponent'|'DeviceMetric'|'DeviceUseRequest'|'DeviceUseStatement'|'DiagnosticOrder'|'DiagnosticReport'|'DocumentManifest'|'DocumentReference'|'DomainResource'|'EligibilityRequest'|'EligibilityResponse'|'Encounter'|'EnrollmentRequest'|'EnrollmentResponse'|'EpisodeOfCare'|'ExplanationOfBenefit'|'FamilyMemberHistory'|'Flag'|'Goal'|'Group'|'HealthcareService'|'ImagingObjectSelection'|'ImagingStudy'|'Immunization'|'ImmunizationRecommendation'|'ImplementationGuide'|'List'|'Location'|'Media'|'Medication'|'MedicationAdministration'|'MedicationDispense'|'MedicationOrder'|'MedicationStatement'|'MessageHeader'|'NamingSystem'|'NutritionOrder'|'Observation'|'OperationDefinition'|'OperationOutcome'|'Order'|'OrderResponse'|'Organization'|'Parameters'|'Patient'|'PaymentNotice'|'PaymentReconciliation'|'Person'|'Practitioner'|'Procedure'|'ProcedureRequest'|'ProcessRequest'|'ProcessResponse'|'Provenance'|'Questionnaire'|'QuestionnaireResponse'|'ReferralRequest'|'RelatedPerson'|'Resource'|'RiskAssessment'|'Schedule'|'SearchParameter'|'Slot'|'Specimen'|'StructureDefinition'|'Subscription'|'Substance'|'SupplyDelivery'|'SupplyRequest'|'TestScript'|'ValueSet'|'VisionPrescription') | undefined;
+  type?: ('has-member'|'derived-from'|'sequel-to'|'replaces'|'qualified-by'|'interfered-by') | undefined;
   _type?: Element | undefined;
-  /**
-   * in | out
-   * Whether this is an input or an output parameter.
-   */
-  use: ('in'|'out');
-  _use?: Element | undefined;
 }
 /**
  * Base StructureDefinition for OperationDefinition Resource
@@ -10945,6 +10850,113 @@ export interface OperationDefinition extends DomainResource {
   _version?: Element | undefined;
 }
 /**
+ * Contact details of the publisher
+ * Contacts to assist a user in finding and communicating with the publisher.
+ */
+export interface OperationDefinitionContact extends BackboneElement {
+  /**
+   * Name of a individual to contact
+   * The name of an individual to contact regarding the operation definition.
+   */
+  name?: string | undefined;
+  _name?: Element | undefined;
+  /**
+   * Contact details for individual or publisher
+   * Contact details for individual (if a name was provided) or the publisher.
+   */
+  telecom?: ContactPoint[] | undefined;
+}
+/**
+ * Parameters for the operation/query
+ * The parameters for the operation/query.
+ */
+export interface OperationDefinitionParameter extends BackboneElement {
+  /**
+   * ValueSet details if this is coded
+   * Binds to a value set if this parameter is coded (code, Coding, CodeableConcept).
+   */
+  binding?: OperationDefinitionParameterBinding | undefined;
+  /**
+   * Description of meaning/use
+   * Describes the meaning or use of this parameter.
+   */
+  documentation?: string | undefined;
+  _documentation?: Element | undefined;
+  /**
+   * Maximum Cardinality (a number or *)
+   * The maximum number of times this element is permitted to appear in the request or response.
+   */
+  max: string;
+  _max?: Element | undefined;
+  /**
+   * Minimum Cardinality
+   * The minimum number of times this parameter SHALL appear in the request or response.
+   */
+  min: number;
+  /**
+   * Name in Parameters.parameter.name or in URL
+   * The name of used to identify the parameter.
+   */
+  name: string;
+  _name?: Element | undefined;
+  /**
+   * Parts of a Tuple Parameter
+   * The parts of a Tuple Parameter.
+   */
+  part?: OperationDefinitionParameter[] | undefined;
+  /**
+   * Profile on the type
+   * A profile the specifies the rules that this parameter must conform to.
+   */
+  profile?: Reference | undefined;
+  /**
+   * What type this parameter has
+   * The type for this parameter.
+   */
+  type?: ('number'|'date'|'string'|'token'|'reference'|'composite'|'quantity'|'uri'|'Address'|'Age'|'Annotation'|'Attachment'|'BackboneElement'|'CodeableConcept'|'Coding'|'ContactPoint'|'Count'|'Distance'|'Duration'|'Element'|'ElementDefinition'|'Extension'|'HumanName'|'Identifier'|'Meta'|'Money'|'Narrative'|'Period'|'Quantity'|'Range'|'Ratio'|'Reference'|'SampledData'|'Signature'|'SimpleQuantity'|'Timing'|'base64Binary'|'boolean'|'code'|'date'|'dateTime'|'decimal'|'id'|'instant'|'integer'|'markdown'|'oid'|'positiveInt'|'string'|'time'|'unsignedInt'|'uri'|'uuid'|'xhtml'|'Account'|'AllergyIntolerance'|'Appointment'|'AppointmentResponse'|'AuditEvent'|'Basic'|'Binary'|'BodySite'|'Bundle'|'CarePlan'|'Claim'|'ClaimResponse'|'ClinicalImpression'|'Communication'|'CommunicationRequest'|'Composition'|'ConceptMap'|'Condition'|'Conformance'|'Contract'|'Coverage'|'DataElement'|'DetectedIssue'|'Device'|'DeviceComponent'|'DeviceMetric'|'DeviceUseRequest'|'DeviceUseStatement'|'DiagnosticOrder'|'DiagnosticReport'|'DocumentManifest'|'DocumentReference'|'DomainResource'|'EligibilityRequest'|'EligibilityResponse'|'Encounter'|'EnrollmentRequest'|'EnrollmentResponse'|'EpisodeOfCare'|'ExplanationOfBenefit'|'FamilyMemberHistory'|'Flag'|'Goal'|'Group'|'HealthcareService'|'ImagingObjectSelection'|'ImagingStudy'|'Immunization'|'ImmunizationRecommendation'|'ImplementationGuide'|'List'|'Location'|'Media'|'Medication'|'MedicationAdministration'|'MedicationDispense'|'MedicationOrder'|'MedicationStatement'|'MessageHeader'|'NamingSystem'|'NutritionOrder'|'Observation'|'OperationDefinition'|'OperationOutcome'|'Order'|'OrderResponse'|'Organization'|'Parameters'|'Patient'|'PaymentNotice'|'PaymentReconciliation'|'Person'|'Practitioner'|'Procedure'|'ProcedureRequest'|'ProcessRequest'|'ProcessResponse'|'Provenance'|'Questionnaire'|'QuestionnaireResponse'|'ReferralRequest'|'RelatedPerson'|'Resource'|'RiskAssessment'|'Schedule'|'SearchParameter'|'Slot'|'Specimen'|'StructureDefinition'|'Subscription'|'Substance'|'SupplyDelivery'|'SupplyRequest'|'TestScript'|'ValueSet'|'VisionPrescription') | undefined;
+  _type?: Element | undefined;
+  /**
+   * in | out
+   * Whether this is an input or an output parameter.
+   */
+  use: ('in'|'out');
+  _use?: Element | undefined;
+}
+/**
+ * ValueSet details if this is coded
+ * Binds to a value set if this parameter is coded (code, Coding, CodeableConcept).
+ */
+export interface OperationDefinitionParameterBinding extends BackboneElement {
+  /**
+   * Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the provided value set must be adhered to in the instances.
+   */
+  strength: ('required'|'extensible'|'preferred'|'example');
+  _strength?: Element | undefined;
+  /**
+   * Source of value set
+   * Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.
+   */
+  valueSetReference?: Reference | undefined;
+  /**
+   * Source of value set
+   * Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.
+   */
+  valueSetString?: string | undefined;
+  _valueSetString?: Element | undefined;
+}
+/**
+ * Base StructureDefinition for OperationOutcome Resource
+ */
+export interface OperationOutcome extends DomainResource {
+  /** Resource Type Name (for serialization) */
+  readonly resourceType: 'OperationOutcome';
+  /**
+   * A single issue associated with the action
+   * An error, warning or information message that results from a system action.
+   */
+  issue: OperationOutcomeIssue[];
+}
+/**
  * A single issue associated with the action
  * An error, warning or information message that results from a system action.
  */
@@ -10975,31 +10987,6 @@ export interface OperationOutcomeIssue extends BackboneElement {
    */
   severity: ('fatal'|'error'|'warning'|'information');
   _severity?: Element | undefined;
-}
-/**
- * Base StructureDefinition for OperationOutcome Resource
- */
-export interface OperationOutcome extends DomainResource {
-  /** Resource Type Name (for serialization) */
-  readonly resourceType: 'OperationOutcome';
-  /**
-   * A single issue associated with the action
-   * An error, warning or information message that results from a system action.
-   */
-  issue: OperationOutcomeIssue[];
-}
-/**
- * When order should be fulfilled.
- */
-export interface OrderWhen extends BackboneElement {
-  /**
-   * Code specifies when request should be done. The code may simply be a priority code.
-   */
-  code?: CodeableConcept | undefined;
-  /**
-   * A formal schedule.
-   */
-  schedule?: Timing | undefined;
 }
 /**
  * Base StructureDefinition for Order Resource
@@ -11046,6 +11033,19 @@ export interface Order extends DomainResource {
   when?: OrderWhen | undefined;
 }
 /**
+ * When order should be fulfilled.
+ */
+export interface OrderWhen extends BackboneElement {
+  /**
+   * Code specifies when request should be done. The code may simply be a priority code.
+   */
+  code?: CodeableConcept | undefined;
+  /**
+   * A formal schedule.
+   */
+  schedule?: Timing | undefined;
+}
+/**
  * Base StructureDefinition for OrderResponse Resource
  */
 export interface OrderResponse extends DomainResource {
@@ -11090,29 +11090,6 @@ export interface OrderResponse extends DomainResource {
   who?: Reference | undefined;
 }
 /**
- * Contact for the organization for a certain purpose.
- */
-export interface OrganizationContact extends BackboneElement {
-  /**
-   * Visiting or postal addresses for the contact.
-   */
-  address?: Address | undefined;
-  /**
-   * A name associated with the contact.
-   */
-  name?: HumanName | undefined;
-  /**
-   * The type of contact
-   * Indicates a purpose for which the contact can be reached.
-   */
-  purpose?: CodeableConcept | undefined;
-  /**
-   * Contact details (telephone, email, etc.)  for a contact
-   * A contact detail (e.g. a telephone number or an email address) by which the party may be contacted.
-   */
-  telecom?: ContactPoint[] | undefined;
-}
-/**
  * Base StructureDefinition for Organization Resource
  */
 export interface Organization extends DomainResource {
@@ -11155,6 +11132,41 @@ export interface Organization extends DomainResource {
    * The kind of organization that this is.
    */
   type?: CodeableConcept | undefined;
+}
+/**
+ * Contact for the organization for a certain purpose.
+ */
+export interface OrganizationContact extends BackboneElement {
+  /**
+   * Visiting or postal addresses for the contact.
+   */
+  address?: Address | undefined;
+  /**
+   * A name associated with the contact.
+   */
+  name?: HumanName | undefined;
+  /**
+   * The type of contact
+   * Indicates a purpose for which the contact can be reached.
+   */
+  purpose?: CodeableConcept | undefined;
+  /**
+   * Contact details (telephone, email, etc.)  for a contact
+   * A contact detail (e.g. a telephone number or an email address) by which the party may be contacted.
+   */
+  telecom?: ContactPoint[] | undefined;
+}
+/**
+ * Base StructureDefinition for Parameters Resource
+ */
+export interface Parameters extends Resource {
+  /** Resource Type Name (for serialization) */
+  readonly resourceType: 'Parameters';
+  /**
+   * Operation Parameter
+   * A parameter passed to or received from the operation.
+   */
+  parameter?: ParametersParameter[] | undefined;
 }
 /**
  * Operation Parameter
@@ -11281,107 +11293,6 @@ export interface ParametersParameter extends BackboneElement {
   valueTiming?: Timing | undefined;
 }
 /**
- * Base StructureDefinition for Parameters Resource
- */
-export interface Parameters extends Resource {
-  /** Resource Type Name (for serialization) */
-  readonly resourceType: 'Parameters';
-  /**
-   * Operation Parameter
-   * A parameter passed to or received from the operation.
-   */
-  parameter?: ParametersParameter[] | undefined;
-}
-/**
- * This patient is known to be an animal (non-human)
- * This patient is known to be an animal.
- */
-export interface PatientAnimal extends BackboneElement {
-  /**
-   * E.g. Poodle, Angus
-   * Identifies the detailed categorization of the kind of animal.
-   */
-  breed?: CodeableConcept | undefined;
-  /**
-   * E.g. Neutered, Intact
-   * Indicates the current state of the animal's reproductive organs.
-   */
-  genderStatus?: CodeableConcept | undefined;
-  /**
-   * E.g. Dog, Cow
-   * Identifies the high level taxonomic categorization of the kind of animal.
-   */
-  species: CodeableConcept;
-}
-/**
- * A list of Languages which may be used to communicate with the patient about his or her health
- * Languages which may be used to communicate with the patient about his or her health.
- */
-export interface PatientCommunication extends BackboneElement {
-  /**
-   * The language which can be used to communicate with the patient about his or her health
-   * The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g. "en" for English, or "en-US" for American English versus "en-EN" for England English.
-   */
-  language: CodeableConcept;
-  /**
-   * Language preference indicator
-   * Indicates whether or not the patient prefers this language (over other languages he masters up a certain level).
-   */
-  preferred?: boolean | undefined;
-  _preferred?: Element | undefined;
-}
-/**
- * A contact party (e.g. guardian, partner, friend) for the patient.
- */
-export interface PatientContact extends BackboneElement {
-  /**
-   * Address for the contact person.
-   */
-  address?: Address | undefined;
-  /**
-   * Administrative Gender - the gender that the contact person is considered to have for administration and record keeping purposes.
-   */
-  gender?: ('male'|'female'|'other'|'unknown') | undefined;
-  _gender?: Element | undefined;
-  /**
-   * A name associated with the contact person.
-   */
-  name?: HumanName | undefined;
-  /**
-   * Organization that is associated with the contact
-   * Organization on behalf of which the contact is acting or for which the contact is working.
-   */
-  organization?: Reference | undefined;
-  /**
-   * The period during which this contact person or organization is valid to be contacted relating to this patient.
-   */
-  period?: Period | undefined;
-  /**
-   * The kind of relationship
-   * The nature of the relationship between the patient and the contact person.
-   */
-  relationship?: CodeableConcept[] | undefined;
-  /**
-   * A contact detail for the person, e.g. a telephone number or an email address.
-   */
-  telecom?: ContactPoint[] | undefined;
-}
-/**
- * Link to another patient resource that concerns the same actual person
- * Link to another patient resource that concerns the same actual patient.
- */
-export interface PatientLink extends BackboneElement {
-  /**
-   * The other patient resource that the link refers to.
-   */
-  other: Reference;
-  /**
-   * The type of link between this patient resource and another patient resource.
-   */
-  type: ('replace'|'refer'|'seealso');
-  _type?: Element | undefined;
-}
-/**
  * Base StructureDefinition for Patient Resource
  */
 export interface Patient extends DomainResource {
@@ -11481,6 +11392,95 @@ export interface Patient extends DomainResource {
   telecom?: ContactPoint[] | undefined;
 }
 /**
+ * This patient is known to be an animal (non-human)
+ * This patient is known to be an animal.
+ */
+export interface PatientAnimal extends BackboneElement {
+  /**
+   * E.g. Poodle, Angus
+   * Identifies the detailed categorization of the kind of animal.
+   */
+  breed?: CodeableConcept | undefined;
+  /**
+   * E.g. Neutered, Intact
+   * Indicates the current state of the animal's reproductive organs.
+   */
+  genderStatus?: CodeableConcept | undefined;
+  /**
+   * E.g. Dog, Cow
+   * Identifies the high level taxonomic categorization of the kind of animal.
+   */
+  species: CodeableConcept;
+}
+/**
+ * A list of Languages which may be used to communicate with the patient about his or her health
+ * Languages which may be used to communicate with the patient about his or her health.
+ */
+export interface PatientCommunication extends BackboneElement {
+  /**
+   * The language which can be used to communicate with the patient about his or her health
+   * The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g. "en" for English, or "en-US" for American English versus "en-EN" for England English.
+   */
+  language: CodeableConcept;
+  /**
+   * Language preference indicator
+   * Indicates whether or not the patient prefers this language (over other languages he masters up a certain level).
+   */
+  preferred?: boolean | undefined;
+  _preferred?: Element | undefined;
+}
+/**
+ * A contact party (e.g. guardian, partner, friend) for the patient.
+ */
+export interface PatientContact extends BackboneElement {
+  /**
+   * Address for the contact person.
+   */
+  address?: Address | undefined;
+  /**
+   * Administrative Gender - the gender that the contact person is considered to have for administration and record keeping purposes.
+   */
+  gender?: ('male'|'female'|'other'|'unknown') | undefined;
+  _gender?: Element | undefined;
+  /**
+   * A name associated with the contact person.
+   */
+  name?: HumanName | undefined;
+  /**
+   * Organization that is associated with the contact
+   * Organization on behalf of which the contact is acting or for which the contact is working.
+   */
+  organization?: Reference | undefined;
+  /**
+   * The period during which this contact person or organization is valid to be contacted relating to this patient.
+   */
+  period?: Period | undefined;
+  /**
+   * The kind of relationship
+   * The nature of the relationship between the patient and the contact person.
+   */
+  relationship?: CodeableConcept[] | undefined;
+  /**
+   * A contact detail for the person, e.g. a telephone number or an email address.
+   */
+  telecom?: ContactPoint[] | undefined;
+}
+/**
+ * Link to another patient resource that concerns the same actual person
+ * Link to another patient resource that concerns the same actual patient.
+ */
+export interface PatientLink extends BackboneElement {
+  /**
+   * The other patient resource that the link refers to.
+   */
+  other: Reference;
+  /**
+   * The type of link between this patient resource and another patient resource.
+   */
+  type: ('replace'|'refer'|'seealso');
+  _type?: Element | undefined;
+}
+/**
  * Base StructureDefinition for PaymentNotice Resource
  */
 export interface PaymentNotice extends DomainResource {
@@ -11537,65 +11537,6 @@ export interface PaymentNotice extends DomainResource {
    * The Insurer who is target  of the request.
    */
   target?: Reference | undefined;
-}
-/**
- * Details
- * List of individual settlement amounts and the corresponding transaction.
- */
-export interface PaymentReconciliationDetail extends BackboneElement {
-  /**
-   * Detail amount
-   * Amount paid for this detail.
-   */
-  amount?: Quantity | undefined;
-  /**
-   * Invoice date
-   * The date of the invoice or financial resource.
-   */
-  date?: string | undefined;
-  _date?: Element | undefined;
-  /**
-   * Payee
-   * The organization which is receiving the payment.
-   */
-  payee?: Reference | undefined;
-  /**
-   * Claim
-   * The claim or financial resource.
-   */
-  request?: Reference | undefined;
-  /**
-   * Claim Response
-   * The claim response resource.
-   */
-  responce?: Reference | undefined;
-  /**
-   * Submitter
-   * The Organization which submitted the invoice or financial transaction.
-   */
-  submitter?: Reference | undefined;
-  /**
-   * Type code
-   * Code to indicate the nature of the payment, adjustment, funds advance, etc.
-   */
-  type: Coding;
-}
-/**
- * Note text
- * Suite of notes.
- */
-export interface PaymentReconciliationNote extends BackboneElement {
-  /**
-   * Notes text
-   * The note text.
-   */
-  text?: string | undefined;
-  _text?: Element | undefined;
-  /**
-   * display | print | printoper
-   * The note purpose: Print/Display.
-   */
-  type?: Coding | undefined;
 }
 /**
  * Base StructureDefinition for PaymentReconciliation Resource
@@ -11683,18 +11624,63 @@ export interface PaymentReconciliation extends DomainResource {
   total: Quantity;
 }
 /**
- * Link to a resource that concerns the same actual person.
+ * Details
+ * List of individual settlement amounts and the corresponding transaction.
  */
-export interface PersonLink extends BackboneElement {
+export interface PaymentReconciliationDetail extends BackboneElement {
   /**
-   * Level of assurance that this link is actually associated with the target resource.
+   * Detail amount
+   * Amount paid for this detail.
    */
-  assurance?: ('level1'|'level2'|'level3'|'level4') | undefined;
-  _assurance?: Element | undefined;
+  amount?: Quantity | undefined;
   /**
-   * The resource to which this actual person is associated.
+   * Invoice date
+   * The date of the invoice or financial resource.
    */
-  target: Reference;
+  date?: string | undefined;
+  _date?: Element | undefined;
+  /**
+   * Payee
+   * The organization which is receiving the payment.
+   */
+  payee?: Reference | undefined;
+  /**
+   * Claim
+   * The claim or financial resource.
+   */
+  request?: Reference | undefined;
+  /**
+   * Claim Response
+   * The claim response resource.
+   */
+  responce?: Reference | undefined;
+  /**
+   * Submitter
+   * The Organization which submitted the invoice or financial transaction.
+   */
+  submitter?: Reference | undefined;
+  /**
+   * Type code
+   * Code to indicate the nature of the payment, adjustment, funds advance, etc.
+   */
+  type: Coding;
+}
+/**
+ * Note text
+ * Suite of notes.
+ */
+export interface PaymentReconciliationNote extends BackboneElement {
+  /**
+   * Notes text
+   * The note text.
+   */
+  text?: string | undefined;
+  _text?: Element | undefined;
+  /**
+   * display | print | printoper
+   * The note purpose: Print/Display.
+   */
+  type?: Coding | undefined;
 }
 /**
  * Base StructureDefinition for Person Resource
@@ -11751,59 +11737,18 @@ export interface Person extends DomainResource {
   telecom?: ContactPoint[] | undefined;
 }
 /**
- * Roles/organizations the practitioner is associated with
- * The list of roles/organizations that the practitioner is associated with.
+ * Link to a resource that concerns the same actual person.
  */
-export interface PractitionerPractitionerRole extends BackboneElement {
+export interface PersonLink extends BackboneElement {
   /**
-   * The list of healthcare services that this worker provides for this role's Organization/Location(s).
+   * Level of assurance that this link is actually associated with the target resource.
    */
-  healthcareService?: Reference[] | undefined;
+  assurance?: ('level1'|'level2'|'level3'|'level4') | undefined;
+  _assurance?: Element | undefined;
   /**
-   * The location(s) at which this practitioner provides care.
+   * The resource to which this actual person is associated.
    */
-  location?: Reference[] | undefined;
-  /**
-   * Organization where the roles are performed
-   * The organization where the Practitioner performs the roles associated.
-   */
-  managingOrganization?: Reference | undefined;
-  /**
-   * The period during which the practitioner is authorized to perform in these role(s)
-   * The period during which the person is authorized to act as a practitioner in these role(s) for the organization.
-   */
-  period?: Period | undefined;
-  /**
-   * Roles which this practitioner may perform
-   * Roles which this practitioner is authorized to perform for the organization.
-   */
-  role?: CodeableConcept | undefined;
-  /**
-   * Specific specialty of the practitioner.
-   */
-  specialty?: CodeableConcept[] | undefined;
-}
-/**
- * Qualifications obtained by training and certification.
- */
-export interface PractitionerQualification extends BackboneElement {
-  /**
-   * Coded representation of the qualification.
-   */
-  code: CodeableConcept;
-  /**
-   * An identifier for this qualification for the practitioner
-   * An identifier that applies to this person's qualification in this role.
-   */
-  identifier?: Identifier[] | undefined;
-  /**
-   * Organization that regulates and issues the qualification.
-   */
-  issuer?: Reference | undefined;
-  /**
-   * Period during which the qualification is valid.
-   */
-  period?: Period | undefined;
+  target: Reference;
 }
 /**
  * Base StructureDefinition for Practitioner Resource
@@ -11864,36 +11809,59 @@ export interface Practitioner extends DomainResource {
   telecom?: ContactPoint[] | undefined;
 }
 /**
- * Device changed in procedure
- * A device that is implanted, removed or otherwise manipulated (calibration, battery replacement, fitting a prosthesis, attaching a wound-vac, etc.) as a focal portion of the Procedure.
+ * Roles/organizations the practitioner is associated with
+ * The list of roles/organizations that the practitioner is associated with.
  */
-export interface ProcedureFocalDevice extends BackboneElement {
+export interface PractitionerPractitionerRole extends BackboneElement {
   /**
-   * Kind of change to device
-   * The kind of change that happened to the device during the procedure.
+   * The list of healthcare services that this worker provides for this role's Organization/Location(s).
    */
-  action?: CodeableConcept | undefined;
+  healthcareService?: Reference[] | undefined;
   /**
-   * Device that was changed
-   * The device that was manipulated (changed) during the procedure.
+   * The location(s) at which this practitioner provides care.
    */
-  manipulated: Reference;
-}
-/**
- * The people who performed the procedure
- * Limited to 'real' people rather than equipment.
- */
-export interface ProcedurePerformer extends BackboneElement {
+  location?: Reference[] | undefined;
   /**
-   * The reference to the practitioner
-   * The practitioner who was involved in the procedure.
+   * Organization where the roles are performed
+   * The organization where the Practitioner performs the roles associated.
    */
-  actor?: Reference | undefined;
+  managingOrganization?: Reference | undefined;
   /**
-   * The role the actor was in
-   * For example: surgeon, anaethetist, endoscopist.
+   * The period during which the practitioner is authorized to perform in these role(s)
+   * The period during which the person is authorized to act as a practitioner in these role(s) for the organization.
+   */
+  period?: Period | undefined;
+  /**
+   * Roles which this practitioner may perform
+   * Roles which this practitioner is authorized to perform for the organization.
    */
   role?: CodeableConcept | undefined;
+  /**
+   * Specific specialty of the practitioner.
+   */
+  specialty?: CodeableConcept[] | undefined;
+}
+/**
+ * Qualifications obtained by training and certification.
+ */
+export interface PractitionerQualification extends BackboneElement {
+  /**
+   * Coded representation of the qualification.
+   */
+  code: CodeableConcept;
+  /**
+   * An identifier for this qualification for the practitioner
+   * An identifier that applies to this person's qualification in this role.
+   */
+  identifier?: Identifier[] | undefined;
+  /**
+   * Organization that regulates and issues the qualification.
+   */
+  issuer?: Reference | undefined;
+  /**
+   * Period during which the qualification is valid.
+   */
+  period?: Period | undefined;
 }
 /**
  * Base StructureDefinition for Procedure Resource
@@ -12020,6 +11988,38 @@ export interface Procedure extends DomainResource {
   used?: Reference[] | undefined;
 }
 /**
+ * Device changed in procedure
+ * A device that is implanted, removed or otherwise manipulated (calibration, battery replacement, fitting a prosthesis, attaching a wound-vac, etc.) as a focal portion of the Procedure.
+ */
+export interface ProcedureFocalDevice extends BackboneElement {
+  /**
+   * Kind of change to device
+   * The kind of change that happened to the device during the procedure.
+   */
+  action?: CodeableConcept | undefined;
+  /**
+   * Device that was changed
+   * The device that was manipulated (changed) during the procedure.
+   */
+  manipulated: Reference;
+}
+/**
+ * The people who performed the procedure
+ * Limited to 'real' people rather than equipment.
+ */
+export interface ProcedurePerformer extends BackboneElement {
+  /**
+   * The reference to the practitioner
+   * The practitioner who was involved in the procedure.
+   */
+  actor?: Reference | undefined;
+  /**
+   * The role the actor was in
+   * For example: surgeon, anaethetist, endoscopist.
+   */
+  role?: CodeableConcept | undefined;
+}
+/**
  * Base StructureDefinition for ProcedureRequest Resource
  */
 export interface ProcedureRequest extends DomainResource {
@@ -12120,17 +12120,6 @@ export interface ProcedureRequest extends DomainResource {
   subject: Reference;
 }
 /**
- * Items to re-adjudicate
- * List of top level items to be re-adjudicated, if none specified then the entire submission is re-adjudicated.
- */
-export interface ProcessRequestItem extends BackboneElement {
-  /**
-   * Service instance
-   * A service line number.
-   */
-  sequenceLinkId: number;
-}
-/**
  * Base StructureDefinition for ProcessRequest Resource
  */
 export interface ProcessRequest extends DomainResource {
@@ -12223,21 +12212,15 @@ export interface ProcessRequest extends DomainResource {
   target?: Reference | undefined;
 }
 /**
- * Notes
- * Suite of processing note or additional requirements is the processing has been held.
+ * Items to re-adjudicate
+ * List of top level items to be re-adjudicated, if none specified then the entire submission is re-adjudicated.
  */
-export interface ProcessResponseNotes extends BackboneElement {
+export interface ProcessRequestItem extends BackboneElement {
   /**
-   * Notes text
-   * The note text.
+   * Service instance
+   * A service line number.
    */
-  text?: string | undefined;
-  _text?: Element | undefined;
-  /**
-   * display | print | printoper
-   * The note purpose: Print/Display.
-   */
-  type?: Coding | undefined;
+  sequenceLinkId: number;
 }
 /**
  * Base StructureDefinition for ProcessResponse Resource
@@ -12314,79 +12297,21 @@ export interface ProcessResponse extends DomainResource {
   ruleset?: Coding | undefined;
 }
 /**
- * Track delegation between agents
- * A relationship between two the agents referenced in this resource. This is defined to allow for explicit description of the delegation between agents.  For example, this human author used this device, or one person acted on another's behest.
+ * Notes
+ * Suite of processing note or additional requirements is the processing has been held.
  */
-export interface ProvenanceAgentRelatedAgent extends BackboneElement {
+export interface ProcessResponseNotes extends BackboneElement {
   /**
-   * Reference to other agent in this resource by identifier
-   * An internal reference to another agent listed in this provenance by its identifier.
+   * Notes text
+   * The note text.
    */
-  target: string;
-  _target?: Element | undefined;
+  text?: string | undefined;
+  _text?: Element | undefined;
   /**
-   * Type of relationship between agents
-   * The type of relationship between agents.
+   * display | print | printoper
+   * The note purpose: Print/Display.
    */
-  type: CodeableConcept;
-}
-/**
- * Agents involved in creating resource
- * An agent takes a role in an activity such that the agent can be assigned some degree of responsibility for the activity taking place. An agent can be a person, an organization, software, or other entities that may be ascribed responsibility.
- */
-export interface ProvenanceAgent extends BackboneElement {
-  /**
-   * Individual, device or organization playing role
-   * The individual, device or organization that participated in the event.
-   */
-  actor?: Reference | undefined;
-  /**
-   * Track delegation between agents
-   * A relationship between two the agents referenced in this resource. This is defined to allow for explicit description of the delegation between agents.  For example, this human author used this device, or one person acted on another's behest.
-   */
-  relatedAgent?: ProvenanceAgentRelatedAgent[] | undefined;
-  /**
-   * What the agents involvement was
-   * The function of the agent with respect to the activity.
-   */
-  role: Coding;
-  /**
-   * Authorization-system identifier for the agent
-   * The identity of the agent as known by the authorization system.
-   */
-  userId?: Identifier | undefined;
-}
-/**
- * An entity used in this activity.
- */
-export interface ProvenanceEntity extends BackboneElement {
-  /**
-   * Entity is attributed to this agent
-   * The entity is attributed to an agent to express the agent's responsibility for that entity, possibly along with other agents. This description can be understood as shorthand for saying that the agent was responsible for the activity which generated the entity.
-   */
-  agent?: ProvenanceAgent | undefined;
-  /**
-   * Human description of entity
-   * Human-readable description of the entity.
-   */
-  display?: string | undefined;
-  _display?: Element | undefined;
-  /**
-   * Identity of entity
-   * Identity of the  Entity used. May be a logical or physical uri and maybe absolute or relative.
-   */
-  reference: string;
-  _reference?: Element | undefined;
-  /**
-   * How the entity was used during the activity.
-   */
-  role: ('derivation'|'revision'|'quotation'|'source');
-  _role?: Element | undefined;
-  /**
-   * The type of resource in this entity
-   * The type of the entity. If the entity is a resource, then this is a resource type.
-   */
-  type: Coding;
+  type?: Coding | undefined;
 }
 /**
  * Base StructureDefinition for Provenance Resource
@@ -12445,6 +12370,182 @@ export interface Provenance extends DomainResource {
   target: Reference[];
 }
 /**
+ * Agents involved in creating resource
+ * An agent takes a role in an activity such that the agent can be assigned some degree of responsibility for the activity taking place. An agent can be a person, an organization, software, or other entities that may be ascribed responsibility.
+ */
+export interface ProvenanceAgent extends BackboneElement {
+  /**
+   * Individual, device or organization playing role
+   * The individual, device or organization that participated in the event.
+   */
+  actor?: Reference | undefined;
+  /**
+   * Track delegation between agents
+   * A relationship between two the agents referenced in this resource. This is defined to allow for explicit description of the delegation between agents.  For example, this human author used this device, or one person acted on another's behest.
+   */
+  relatedAgent?: ProvenanceAgentRelatedAgent[] | undefined;
+  /**
+   * What the agents involvement was
+   * The function of the agent with respect to the activity.
+   */
+  role: Coding;
+  /**
+   * Authorization-system identifier for the agent
+   * The identity of the agent as known by the authorization system.
+   */
+  userId?: Identifier | undefined;
+}
+/**
+ * Track delegation between agents
+ * A relationship between two the agents referenced in this resource. This is defined to allow for explicit description of the delegation between agents.  For example, this human author used this device, or one person acted on another's behest.
+ */
+export interface ProvenanceAgentRelatedAgent extends BackboneElement {
+  /**
+   * Reference to other agent in this resource by identifier
+   * An internal reference to another agent listed in this provenance by its identifier.
+   */
+  target: string;
+  _target?: Element | undefined;
+  /**
+   * Type of relationship between agents
+   * The type of relationship between agents.
+   */
+  type: CodeableConcept;
+}
+/**
+ * An entity used in this activity.
+ */
+export interface ProvenanceEntity extends BackboneElement {
+  /**
+   * Entity is attributed to this agent
+   * The entity is attributed to an agent to express the agent's responsibility for that entity, possibly along with other agents. This description can be understood as shorthand for saying that the agent was responsible for the activity which generated the entity.
+   */
+  agent?: ProvenanceAgent | undefined;
+  /**
+   * Human description of entity
+   * Human-readable description of the entity.
+   */
+  display?: string | undefined;
+  _display?: Element | undefined;
+  /**
+   * Identity of entity
+   * Identity of the  Entity used. May be a logical or physical uri and maybe absolute or relative.
+   */
+  reference: string;
+  _reference?: Element | undefined;
+  /**
+   * How the entity was used during the activity.
+   */
+  role: ('derivation'|'revision'|'quotation'|'source');
+  _role?: Element | undefined;
+  /**
+   * The type of resource in this entity
+   * The type of the entity. If the entity is a resource, then this is a resource type.
+   */
+  type: Coding;
+}
+/**
+ * Base StructureDefinition for Questionnaire Resource
+ */
+export interface Questionnaire extends DomainResource {
+  /** Resource Type Name (for serialization) */
+  readonly resourceType: 'Questionnaire';
+  /**
+   * Date this version was authored
+   * The date that this questionnaire was last changed.
+   */
+  date?: string | undefined;
+  _date?: Element | undefined;
+  /**
+   * Grouped questions
+   * A collection of related questions (or further groupings of questions).
+   */
+  group: QuestionnaireGroup;
+  /**
+   * External identifiers for this questionnaire
+   * This records identifiers associated with this question set that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
+   */
+  identifier?: Identifier[] | undefined;
+  /**
+   * Organization/individual who designed the questionnaire
+   * Organization or person responsible for developing and maintaining the questionnaire.
+   */
+  publisher?: string | undefined;
+  _publisher?: Element | undefined;
+  /**
+   * The lifecycle status of the questionnaire as a whole.
+   */
+  status: ('draft'|'published'|'retired');
+  _status?: Element | undefined;
+  /**
+   * Resource that can be subject of QuestionnaireResponse
+   * Identifies the types of subjects that can be the subject of the questionnaire.
+   */
+  subjectType?: ('Account'|'AllergyIntolerance'|'Appointment'|'AppointmentResponse'|'AuditEvent'|'Basic'|'Binary'|'BodySite'|'Bundle'|'CarePlan'|'Claim'|'ClaimResponse'|'ClinicalImpression'|'Communication'|'CommunicationRequest'|'Composition'|'ConceptMap'|'Condition'|'Conformance'|'Contract'|'Coverage'|'DataElement'|'DetectedIssue'|'Device'|'DeviceComponent'|'DeviceMetric'|'DeviceUseRequest'|'DeviceUseStatement'|'DiagnosticOrder'|'DiagnosticReport'|'DocumentManifest'|'DocumentReference'|'DomainResource'|'EligibilityRequest'|'EligibilityResponse'|'Encounter'|'EnrollmentRequest'|'EnrollmentResponse'|'EpisodeOfCare'|'ExplanationOfBenefit'|'FamilyMemberHistory'|'Flag'|'Goal'|'Group'|'HealthcareService'|'ImagingObjectSelection'|'ImagingStudy'|'Immunization'|'ImmunizationRecommendation'|'ImplementationGuide'|'List'|'Location'|'Media'|'Medication'|'MedicationAdministration'|'MedicationDispense'|'MedicationOrder'|'MedicationStatement'|'MessageHeader'|'NamingSystem'|'NutritionOrder'|'Observation'|'OperationDefinition'|'OperationOutcome'|'Order'|'OrderResponse'|'Organization'|'Parameters'|'Patient'|'PaymentNotice'|'PaymentReconciliation'|'Person'|'Practitioner'|'Procedure'|'ProcedureRequest'|'ProcessRequest'|'ProcessResponse'|'Provenance'|'Questionnaire'|'QuestionnaireResponse'|'ReferralRequest'|'RelatedPerson'|'Resource'|'RiskAssessment'|'Schedule'|'SearchParameter'|'Slot'|'Specimen'|'StructureDefinition'|'Subscription'|'Substance'|'SupplyDelivery'|'SupplyRequest'|'TestScript'|'ValueSet'|'VisionPrescription')[] | undefined;
+  _subjectType?: Element[] | undefined;
+  /**
+   * Contact information of the publisher
+   * Contact details to assist a user in finding and communicating with the publisher.
+   */
+  telecom?: ContactPoint[] | undefined;
+  /**
+   * Logical identifier for this version of Questionnaire
+   * The version number assigned by the publisher for business reasons.  It may remain the same when the resource is updated.
+   */
+  version?: string | undefined;
+  _version?: Element | undefined;
+}
+/**
+ * Grouped questions
+ * A collection of related questions (or further groupings of questions).
+ */
+export interface QuestionnaireGroup extends BackboneElement {
+  /**
+   * Concept that represents this section in a questionnaire
+   * Identifies a how this group of questions is known in a particular terminology such as LOINC.
+   */
+  concept?: Coding[] | undefined;
+  /**
+   * Nested questionnaire group
+   * A sub-group within a group. The ordering of groups within this group is relevant.
+   */
+  group?: QuestionnaireGroup[] | undefined;
+  /**
+   * To link questionnaire with questionnaire response
+   * An identifier that is unique within the Questionnaire allowing linkage to the equivalent group in a QuestionnaireResponse resource.
+   */
+  linkId?: string | undefined;
+  _linkId?: Element | undefined;
+  /**
+   * Questions in this group
+   * Set of questions within this group. The order of questions within the group is relevant.
+   */
+  question?: QuestionnaireGroupQuestion[] | undefined;
+  /**
+   * Whether the group may repeat
+   * Whether the group may occur multiple times in the instance, containing multiple sets of answers.
+   */
+  repeats?: boolean | undefined;
+  _repeats?: Element | undefined;
+  /**
+   * Whether the group must be included in data results
+   * If true, indicates that the group must be present and have required questions within it answered.  If false, the group may be skipped when answering the questionnaire.
+   */
+  required?: boolean | undefined;
+  _required?: Element | undefined;
+  /**
+   * Additional text for the group, used for display purposes.
+   */
+  text?: string | undefined;
+  _text?: Element | undefined;
+  /**
+   * Name to be displayed for group
+   * The human-readable name for this section of the questionnaire.
+   */
+  title?: string | undefined;
+  _title?: Element | undefined;
+}
+/**
  * Questions in this group
  * Set of questions within this group. The order of questions within the group is relevant.
  */
@@ -12500,216 +12601,6 @@ export interface QuestionnaireGroupQuestion extends BackboneElement {
   _type?: Element | undefined;
 }
 /**
- * Grouped questions
- * A collection of related questions (or further groupings of questions).
- */
-export interface QuestionnaireGroup extends BackboneElement {
-  /**
-   * Concept that represents this section in a questionnaire
-   * Identifies a how this group of questions is known in a particular terminology such as LOINC.
-   */
-  concept?: Coding[] | undefined;
-  /**
-   * Nested questionnaire group
-   * A sub-group within a group. The ordering of groups within this group is relevant.
-   */
-  group?: QuestionnaireGroup[] | undefined;
-  /**
-   * To link questionnaire with questionnaire response
-   * An identifier that is unique within the Questionnaire allowing linkage to the equivalent group in a QuestionnaireResponse resource.
-   */
-  linkId?: string | undefined;
-  _linkId?: Element | undefined;
-  /**
-   * Questions in this group
-   * Set of questions within this group. The order of questions within the group is relevant.
-   */
-  question?: QuestionnaireGroupQuestion[] | undefined;
-  /**
-   * Whether the group may repeat
-   * Whether the group may occur multiple times in the instance, containing multiple sets of answers.
-   */
-  repeats?: boolean | undefined;
-  _repeats?: Element | undefined;
-  /**
-   * Whether the group must be included in data results
-   * If true, indicates that the group must be present and have required questions within it answered.  If false, the group may be skipped when answering the questionnaire.
-   */
-  required?: boolean | undefined;
-  _required?: Element | undefined;
-  /**
-   * Additional text for the group, used for display purposes.
-   */
-  text?: string | undefined;
-  _text?: Element | undefined;
-  /**
-   * Name to be displayed for group
-   * The human-readable name for this section of the questionnaire.
-   */
-  title?: string | undefined;
-  _title?: Element | undefined;
-}
-/**
- * Base StructureDefinition for Questionnaire Resource
- */
-export interface Questionnaire extends DomainResource {
-  /** Resource Type Name (for serialization) */
-  readonly resourceType: 'Questionnaire';
-  /**
-   * Date this version was authored
-   * The date that this questionnaire was last changed.
-   */
-  date?: string | undefined;
-  _date?: Element | undefined;
-  /**
-   * Grouped questions
-   * A collection of related questions (or further groupings of questions).
-   */
-  group: QuestionnaireGroup;
-  /**
-   * External identifiers for this questionnaire
-   * This records identifiers associated with this question set that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
-   */
-  identifier?: Identifier[] | undefined;
-  /**
-   * Organization/individual who designed the questionnaire
-   * Organization or person responsible for developing and maintaining the questionnaire.
-   */
-  publisher?: string | undefined;
-  _publisher?: Element | undefined;
-  /**
-   * The lifecycle status of the questionnaire as a whole.
-   */
-  status: ('draft'|'published'|'retired');
-  _status?: Element | undefined;
-  /**
-   * Resource that can be subject of QuestionnaireResponse
-   * Identifies the types of subjects that can be the subject of the questionnaire.
-   */
-  subjectType?: ('Account'|'AllergyIntolerance'|'Appointment'|'AppointmentResponse'|'AuditEvent'|'Basic'|'Binary'|'BodySite'|'Bundle'|'CarePlan'|'Claim'|'ClaimResponse'|'ClinicalImpression'|'Communication'|'CommunicationRequest'|'Composition'|'ConceptMap'|'Condition'|'Conformance'|'Contract'|'Coverage'|'DataElement'|'DetectedIssue'|'Device'|'DeviceComponent'|'DeviceMetric'|'DeviceUseRequest'|'DeviceUseStatement'|'DiagnosticOrder'|'DiagnosticReport'|'DocumentManifest'|'DocumentReference'|'DomainResource'|'EligibilityRequest'|'EligibilityResponse'|'Encounter'|'EnrollmentRequest'|'EnrollmentResponse'|'EpisodeOfCare'|'ExplanationOfBenefit'|'FamilyMemberHistory'|'Flag'|'Goal'|'Group'|'HealthcareService'|'ImagingObjectSelection'|'ImagingStudy'|'Immunization'|'ImmunizationRecommendation'|'ImplementationGuide'|'List'|'Location'|'Media'|'Medication'|'MedicationAdministration'|'MedicationDispense'|'MedicationOrder'|'MedicationStatement'|'MessageHeader'|'NamingSystem'|'NutritionOrder'|'Observation'|'OperationDefinition'|'OperationOutcome'|'Order'|'OrderResponse'|'Organization'|'Parameters'|'Patient'|'PaymentNotice'|'PaymentReconciliation'|'Person'|'Practitioner'|'Procedure'|'ProcedureRequest'|'ProcessRequest'|'ProcessResponse'|'Provenance'|'Questionnaire'|'QuestionnaireResponse'|'ReferralRequest'|'RelatedPerson'|'Resource'|'RiskAssessment'|'Schedule'|'SearchParameter'|'Slot'|'Specimen'|'StructureDefinition'|'Subscription'|'Substance'|'SupplyDelivery'|'SupplyRequest'|'TestScript'|'ValueSet'|'VisionPrescription')[] | undefined;
-  _subjectType?: Element[] | undefined;
-  /**
-   * Contact information of the publisher
-   * Contact details to assist a user in finding and communicating with the publisher.
-   */
-  telecom?: ContactPoint[] | undefined;
-  /**
-   * Logical identifier for this version of Questionnaire
-   * The version number assigned by the publisher for business reasons.  It may remain the same when the resource is updated.
-   */
-  version?: string | undefined;
-  _version?: Element | undefined;
-}
-/**
- * The response(s) to the question
- * The respondent's answer(s) to the question.
- */
-export interface QuestionnaireResponseGroupQuestionAnswer extends BackboneElement {
-  /**
-   * Nested questionnaire group
-   * Nested group, containing nested question for this question. The order of groups within the question is relevant.
-   */
-  group?: QuestionnaireResponseGroup[] | undefined;
-  /**
-   * Single-valued answer to the question
-   * The answer (or one of the answers) provided by the respondent to the question.
-   */
-  valueAttachment?: Attachment | undefined;
-  /**
-   * Single-valued answer to the question
-   * The answer (or one of the answers) provided by the respondent to the question.
-   */
-  valueBoolean?: boolean | undefined;
-  _valueBoolean?: Element | undefined;
-  /**
-   * Single-valued answer to the question
-   * The answer (or one of the answers) provided by the respondent to the question.
-   */
-  valueCoding?: Coding | undefined;
-  /**
-   * Single-valued answer to the question
-   * The answer (or one of the answers) provided by the respondent to the question.
-   */
-  valueString?: string | undefined;
-  _valueString?: Element | undefined;
-  /**
-   * Single-valued answer to the question
-   * The answer (or one of the answers) provided by the respondent to the question.
-   */
-  valueNumber?: number | undefined;
-  /**
-   * Single-valued answer to the question
-   * The answer (or one of the answers) provided by the respondent to the question.
-   */
-  valueQuantity?: Quantity | undefined;
-  /**
-   * Single-valued answer to the question
-   * The answer (or one of the answers) provided by the respondent to the question.
-   */
-  valueReference?: Reference | undefined;
-}
-/**
- * Questions in this group
- * Set of questions within this group. The order of questions within the group is relevant.
- */
-export interface QuestionnaireResponseGroupQuestion extends BackboneElement {
-  /**
-   * The response(s) to the question
-   * The respondent's answer(s) to the question.
-   */
-  answer?: QuestionnaireResponseGroupQuestionAnswer[] | undefined;
-  /**
-   * Corresponding question within Questionnaire
-   * Identifies the question from the Questionnaire that corresponds to this question in the QuestionnaireResponse resource.
-   */
-  linkId?: string | undefined;
-  _linkId?: Element | undefined;
-  /**
-   * Text of the question as it is shown to the user
-   * The actual question as shown to the user to prompt them for an answer.
-   */
-  text?: string | undefined;
-  _text?: Element | undefined;
-}
-/**
- * Grouped questions
- * A group of questions to a possibly similarly grouped set of questions in the questionnaire response.
- */
-export interface QuestionnaireResponseGroup extends BackboneElement {
-  /**
-   * Nested questionnaire response group
-   * A sub-group within a group. The ordering of groups within this group is relevant.
-   */
-  group?: QuestionnaireResponseGroup[] | undefined;
-  /**
-   * Corresponding group within Questionnaire
-   * Identifies the group from the Questionnaire that corresponds to this group in the QuestionnaireResponse resource.
-   */
-  linkId?: string | undefined;
-  _linkId?: Element | undefined;
-  /**
-   * Questions in this group
-   * Set of questions within this group. The order of questions within the group is relevant.
-   */
-  question?: QuestionnaireResponseGroupQuestion[] | undefined;
-  /**
-   * The subject this group's answers are about
-   * More specific subject this section's answers are about, details the subject given in QuestionnaireResponse.
-   */
-  subject?: Reference | undefined;
-  /**
-   * Additional text for the group, used for display purposes.
-   */
-  text?: string | undefined;
-  _text?: Element | undefined;
-  /**
-   * Name for this group
-   * Text that is displayed above the contents of the group.
-   */
-  title?: string | undefined;
-  _title?: Element | undefined;
-}
-/**
  * Base StructureDefinition for QuestionnaireResponse Resource
  */
 export interface QuestionnaireResponse extends DomainResource {
@@ -12760,6 +12651,115 @@ export interface QuestionnaireResponse extends DomainResource {
    * The subject of the questionnaire response.  This could be a patient, organization, practitioner, device, etc.  This is who/what the answers apply to, but is not necessarily the source of information.
    */
   subject?: Reference | undefined;
+}
+/**
+ * Grouped questions
+ * A group of questions to a possibly similarly grouped set of questions in the questionnaire response.
+ */
+export interface QuestionnaireResponseGroup extends BackboneElement {
+  /**
+   * Nested questionnaire response group
+   * A sub-group within a group. The ordering of groups within this group is relevant.
+   */
+  group?: QuestionnaireResponseGroup[] | undefined;
+  /**
+   * Corresponding group within Questionnaire
+   * Identifies the group from the Questionnaire that corresponds to this group in the QuestionnaireResponse resource.
+   */
+  linkId?: string | undefined;
+  _linkId?: Element | undefined;
+  /**
+   * Questions in this group
+   * Set of questions within this group. The order of questions within the group is relevant.
+   */
+  question?: QuestionnaireResponseGroupQuestion[] | undefined;
+  /**
+   * The subject this group's answers are about
+   * More specific subject this section's answers are about, details the subject given in QuestionnaireResponse.
+   */
+  subject?: Reference | undefined;
+  /**
+   * Additional text for the group, used for display purposes.
+   */
+  text?: string | undefined;
+  _text?: Element | undefined;
+  /**
+   * Name for this group
+   * Text that is displayed above the contents of the group.
+   */
+  title?: string | undefined;
+  _title?: Element | undefined;
+}
+/**
+ * Questions in this group
+ * Set of questions within this group. The order of questions within the group is relevant.
+ */
+export interface QuestionnaireResponseGroupQuestion extends BackboneElement {
+  /**
+   * The response(s) to the question
+   * The respondent's answer(s) to the question.
+   */
+  answer?: QuestionnaireResponseGroupQuestionAnswer[] | undefined;
+  /**
+   * Corresponding question within Questionnaire
+   * Identifies the question from the Questionnaire that corresponds to this question in the QuestionnaireResponse resource.
+   */
+  linkId?: string | undefined;
+  _linkId?: Element | undefined;
+  /**
+   * Text of the question as it is shown to the user
+   * The actual question as shown to the user to prompt them for an answer.
+   */
+  text?: string | undefined;
+  _text?: Element | undefined;
+}
+/**
+ * The response(s) to the question
+ * The respondent's answer(s) to the question.
+ */
+export interface QuestionnaireResponseGroupQuestionAnswer extends BackboneElement {
+  /**
+   * Nested questionnaire group
+   * Nested group, containing nested question for this question. The order of groups within the question is relevant.
+   */
+  group?: QuestionnaireResponseGroup[] | undefined;
+  /**
+   * Single-valued answer to the question
+   * The answer (or one of the answers) provided by the respondent to the question.
+   */
+  valueAttachment?: Attachment | undefined;
+  /**
+   * Single-valued answer to the question
+   * The answer (or one of the answers) provided by the respondent to the question.
+   */
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
+  /**
+   * Single-valued answer to the question
+   * The answer (or one of the answers) provided by the respondent to the question.
+   */
+  valueCoding?: Coding | undefined;
+  /**
+   * Single-valued answer to the question
+   * The answer (or one of the answers) provided by the respondent to the question.
+   */
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
+  /**
+   * Single-valued answer to the question
+   * The answer (or one of the answers) provided by the respondent to the question.
+   */
+  valueNumber?: number | undefined;
+  /**
+   * Single-valued answer to the question
+   * The answer (or one of the answers) provided by the respondent to the question.
+   */
+  valueQuantity?: Quantity | undefined;
+  /**
+   * Single-valued answer to the question
+   * The answer (or one of the answers) provided by the respondent to the question.
+   */
+  valueReference?: Reference | undefined;
 }
 /**
  * Base StructureDefinition for ReferralRequest Resource
@@ -12932,53 +12932,6 @@ export interface Resource {
   meta?: Meta | undefined;
 }
 /**
- * Outcome predicted
- * Describes the expected outcome for the subject.
- */
-export interface RiskAssessmentPrediction extends BackboneElement {
-  /**
-   * Possible outcome for the subject
-   * One of the potential outcomes for the patient (e.g. remission, death,  a particular condition).
-   */
-  outcome: CodeableConcept;
-  /**
-   * Likelihood of specified outcome
-   * How likely is the outcome (in the specified timeframe).
-   */
-  probabilityCodeableConcept?: CodeableConcept | undefined;
-  /**
-   * Likelihood of specified outcome
-   * How likely is the outcome (in the specified timeframe).
-   */
-  probabilityNumber?: number | undefined;
-  /**
-   * Likelihood of specified outcome
-   * How likely is the outcome (in the specified timeframe).
-   */
-  probabilityRange?: Range | undefined;
-  /**
-   * Explanation of prediction
-   * Additional information explaining the basis for the prediction.
-   */
-  rationale?: string | undefined;
-  _rationale?: Element | undefined;
-  /**
-   * Relative likelihood
-   * Indicates the risk for this particular subject (with their specific characteristics) divided by the risk of the population in general.  (Numbers greater than 1 = higher risk than the population, numbers less than 1 = lower risk.).
-   */
-  relativeRisk?: number | undefined;
-  /**
-   * Timeframe or age range
-   * Indicates the period of time or age range of the subject to which the specified probability applies.
-   */
-  whenPeriod?: Period | undefined;
-  /**
-   * Timeframe or age range
-   * Indicates the period of time or age range of the subject to which the specified probability applies.
-   */
-  whenRange?: Range | undefined;
-}
-/**
  * Base StructureDefinition for RiskAssessment Resource
  */
 export interface RiskAssessment extends DomainResource {
@@ -13038,6 +12991,53 @@ export interface RiskAssessment extends DomainResource {
   subject?: Reference | undefined;
 }
 /**
+ * Outcome predicted
+ * Describes the expected outcome for the subject.
+ */
+export interface RiskAssessmentPrediction extends BackboneElement {
+  /**
+   * Possible outcome for the subject
+   * One of the potential outcomes for the patient (e.g. remission, death,  a particular condition).
+   */
+  outcome: CodeableConcept;
+  /**
+   * Likelihood of specified outcome
+   * How likely is the outcome (in the specified timeframe).
+   */
+  probabilityCodeableConcept?: CodeableConcept | undefined;
+  /**
+   * Likelihood of specified outcome
+   * How likely is the outcome (in the specified timeframe).
+   */
+  probabilityNumber?: number | undefined;
+  /**
+   * Likelihood of specified outcome
+   * How likely is the outcome (in the specified timeframe).
+   */
+  probabilityRange?: Range | undefined;
+  /**
+   * Explanation of prediction
+   * Additional information explaining the basis for the prediction.
+   */
+  rationale?: string | undefined;
+  _rationale?: Element | undefined;
+  /**
+   * Relative likelihood
+   * Indicates the risk for this particular subject (with their specific characteristics) divided by the risk of the population in general.  (Numbers greater than 1 = higher risk than the population, numbers less than 1 = lower risk.).
+   */
+  relativeRisk?: number | undefined;
+  /**
+   * Timeframe or age range
+   * Indicates the period of time or age range of the subject to which the specified probability applies.
+   */
+  whenPeriod?: Period | undefined;
+  /**
+   * Timeframe or age range
+   * Indicates the period of time or age range of the subject to which the specified probability applies.
+   */
+  whenRange?: Range | undefined;
+}
+/**
  * Base StructureDefinition for Schedule Resource
  */
 export interface Schedule extends DomainResource {
@@ -13064,23 +13064,6 @@ export interface Schedule extends DomainResource {
    * The schedule type can be used for the categorization of healthcare services or other appointment types.
    */
   type?: CodeableConcept[] | undefined;
-}
-/**
- * Contact details of the publisher
- * Contacts to assist a user in finding and communicating with the publisher.
- */
-export interface SearchParameterContact extends BackboneElement {
-  /**
-   * Name of a individual to contact
-   * The name of an individual to contact regarding the search parameter.
-   */
-  name?: string | undefined;
-  _name?: Element | undefined;
-  /**
-   * Contact details for individual or publisher
-   * Contact details for individual (if a name was provided) or the publisher.
-   */
-  telecom?: ContactPoint[] | undefined;
 }
 /**
  * Base StructureDefinition for SearchParameter Resource
@@ -13176,6 +13159,23 @@ export interface SearchParameter extends DomainResource {
   _xpathUsage?: Element | undefined;
 }
 /**
+ * Contact details of the publisher
+ * Contacts to assist a user in finding and communicating with the publisher.
+ */
+export interface SearchParameterContact extends BackboneElement {
+  /**
+   * Name of a individual to contact
+   * The name of an individual to contact regarding the search parameter.
+   */
+  name?: string | undefined;
+  _name?: Element | undefined;
+  /**
+   * Contact details for individual or publisher
+   * Contact details for individual (if a name was provided) or the publisher.
+   */
+  telecom?: ContactPoint[] | undefined;
+}
+/**
  * Base StructureDefinition for Slot Resource
  */
 export interface Slot extends DomainResource {
@@ -13216,6 +13216,63 @@ export interface Slot extends DomainResource {
   _start?: Element | undefined;
   /**
    * The type of appointments that can be booked into this slot (ideally this would be an identifiable service - which is at a location, rather than the location itself). If provided then this overrides the value provided on the availability resource.
+   */
+  type?: CodeableConcept | undefined;
+}
+/**
+ * Base StructureDefinition for Specimen Resource
+ */
+export interface Specimen extends DomainResource {
+  /** Resource Type Name (for serialization) */
+  readonly resourceType: 'Specimen';
+  /**
+   * Identifier assigned by the lab
+   * The identifier assigned by the lab when accessioning specimen(s). This is not necessarily the same as the specimen identifier, depending on local lab procedures.
+   */
+  accessionIdentifier?: Identifier | undefined;
+  /**
+   * Collection details
+   * Details concerning the specimen collection.
+   */
+  collection?: SpecimenCollection | undefined;
+  /**
+   * Direct container of specimen (tube/slide, etc.)
+   * The container holding the specimen.  The recursive nature of containers; i.e. blood in tube in tray in rack is not addressed here.
+   */
+  container?: SpecimenContainer[] | undefined;
+  /**
+   * External Identifier
+   * Id for specimen.
+   */
+  identifier?: Identifier[] | undefined;
+  /**
+   * Specimen from which this specimen originated
+   * Reference to the parent (source) specimen which is used when the specimen was either derived from or a component of another specimen.
+   */
+  parent?: Reference[] | undefined;
+  /**
+   * The time when specimen was received for processing
+   * Time when specimen was received for processing or testing.
+   */
+  receivedTime?: string | undefined;
+  _receivedTime?: Element | undefined;
+  /**
+   * The availability of the specimen.
+   */
+  status?: ('available'|'unavailable'|'unsatisfactory'|'entered-in-error') | undefined;
+  _status?: Element | undefined;
+  /**
+   * Where the specimen came from. This may be from the patient(s) or from the environment or a device.
+   */
+  subject: Reference;
+  /**
+   * Treatment and processing step details
+   * Details concerning treatment and processing steps for the specimen.
+   */
+  treatment?: SpecimenTreatment[] | undefined;
+  /**
+   * Kind of material that forms the specimen
+   * The kind of material that forms the specimen.
    */
   type?: CodeableConcept | undefined;
 }
@@ -13321,132 +13378,6 @@ export interface SpecimenTreatment extends BackboneElement {
    * A coded value specifying the procedure used to process the specimen.
    */
   procedure?: CodeableConcept | undefined;
-}
-/**
- * Base StructureDefinition for Specimen Resource
- */
-export interface Specimen extends DomainResource {
-  /** Resource Type Name (for serialization) */
-  readonly resourceType: 'Specimen';
-  /**
-   * Identifier assigned by the lab
-   * The identifier assigned by the lab when accessioning specimen(s). This is not necessarily the same as the specimen identifier, depending on local lab procedures.
-   */
-  accessionIdentifier?: Identifier | undefined;
-  /**
-   * Collection details
-   * Details concerning the specimen collection.
-   */
-  collection?: SpecimenCollection | undefined;
-  /**
-   * Direct container of specimen (tube/slide, etc.)
-   * The container holding the specimen.  The recursive nature of containers; i.e. blood in tube in tray in rack is not addressed here.
-   */
-  container?: SpecimenContainer[] | undefined;
-  /**
-   * External Identifier
-   * Id for specimen.
-   */
-  identifier?: Identifier[] | undefined;
-  /**
-   * Specimen from which this specimen originated
-   * Reference to the parent (source) specimen which is used when the specimen was either derived from or a component of another specimen.
-   */
-  parent?: Reference[] | undefined;
-  /**
-   * The time when specimen was received for processing
-   * Time when specimen was received for processing or testing.
-   */
-  receivedTime?: string | undefined;
-  _receivedTime?: Element | undefined;
-  /**
-   * The availability of the specimen.
-   */
-  status?: ('available'|'unavailable'|'unsatisfactory'|'entered-in-error') | undefined;
-  _status?: Element | undefined;
-  /**
-   * Where the specimen came from. This may be from the patient(s) or from the environment or a device.
-   */
-  subject: Reference;
-  /**
-   * Treatment and processing step details
-   * Details concerning treatment and processing steps for the specimen.
-   */
-  treatment?: SpecimenTreatment[] | undefined;
-  /**
-   * Kind of material that forms the specimen
-   * The kind of material that forms the specimen.
-   */
-  type?: CodeableConcept | undefined;
-}
-/**
- * Contact details of the publisher
- * Contacts to assist a user in finding and communicating with the publisher.
- */
-export interface StructureDefinitionContact extends BackboneElement {
-  /**
-   * Name of a individual to contact
-   * The name of an individual to contact regarding the structure definition.
-   */
-  name?: string | undefined;
-  _name?: Element | undefined;
-  /**
-   * Contact details for individual or publisher
-   * Contact details for individual (if a name was provided) or the publisher.
-   */
-  telecom?: ContactPoint[] | undefined;
-}
-/**
- * Differential view of the structure
- * A differential view is expressed relative to the base StructureDefinition - a statement of differences that it applies.
- */
-export interface StructureDefinitionDifferential extends BackboneElement {
-  /**
-   * Definition of elements in the resource (if no StructureDefinition)
-   * Captures constraints on each element within the resource.
-   */
-  element: ElementDefinition[];
-}
-/**
- * External specification that the content is mapped to
- * An external specification that the content is mapped to.
- */
-export interface StructureDefinitionMapping extends BackboneElement {
-  /**
-   * Versions, Issues, Scope limitations etc.
-   * Comments about this mapping, including version notes, issues, scope limitations, and other important notes for usage.
-   */
-  comments?: string | undefined;
-  _comments?: Element | undefined;
-  /**
-   * Internal id when this mapping is used
-   * An Internal id that is used to identify this mapping set when specific mappings are made.
-   */
-  identity: string;
-  _identity?: Element | undefined;
-  /**
-   * Names what this mapping refers to
-   * A name for the specification that is being mapped to.
-   */
-  name?: string | undefined;
-  _name?: Element | undefined;
-  /**
-   * Identifies what this mapping refers to
-   * An absolute URI that identifies the specification that this mapping is expressed to.
-   */
-  uri?: string | undefined;
-  _uri?: Element | undefined;
-}
-/**
- * Snapshot view of the structure
- * A snapshot view is expressed in a stand alone form that can be used and interpreted without considering the base StructureDefinition.
- */
-export interface StructureDefinitionSnapshot extends BackboneElement {
-  /**
-   * Definition of elements in the resource (if no StructureDefinition)
-   * Captures constraints on each element within the resource.
-   */
-  element: ElementDefinition[];
 }
 /**
  * Base StructureDefinition for StructureDefinition Resource
@@ -13596,33 +13527,73 @@ export interface StructureDefinition extends DomainResource {
   _version?: Element | undefined;
 }
 /**
- * The channel on which to report matches to the criteria
- * Details where to send notifications when resources are received that meet the criteria.
+ * Contact details of the publisher
+ * Contacts to assist a user in finding and communicating with the publisher.
  */
-export interface SubscriptionChannel extends BackboneElement {
+export interface StructureDefinitionContact extends BackboneElement {
   /**
-   * Where the channel points to
-   * The uri that describes the actual end-point to send messages to.
+   * Name of a individual to contact
+   * The name of an individual to contact regarding the structure definition.
    */
-  endpoint?: string | undefined;
-  _endpoint?: Element | undefined;
+  name?: string | undefined;
+  _name?: Element | undefined;
   /**
-   * Usage depends on the channel type
-   * Additional headers / information to send as part of the notification.
+   * Contact details for individual or publisher
+   * Contact details for individual (if a name was provided) or the publisher.
    */
-  header?: string | undefined;
-  _header?: Element | undefined;
+  telecom?: ContactPoint[] | undefined;
+}
+/**
+ * Differential view of the structure
+ * A differential view is expressed relative to the base StructureDefinition - a statement of differences that it applies.
+ */
+export interface StructureDefinitionDifferential extends BackboneElement {
   /**
-   * Mimetype to send, or blank for no payload
-   * The mime type to send the payload in - either application/xml+fhir, or application/json+fhir. If the mime type is blank, then there is no payload in the notification, just a notification.
+   * Definition of elements in the resource (if no StructureDefinition)
+   * Captures constraints on each element within the resource.
    */
-  payload: string;
-  _payload?: Element | undefined;
+  element: ElementDefinition[];
+}
+/**
+ * External specification that the content is mapped to
+ * An external specification that the content is mapped to.
+ */
+export interface StructureDefinitionMapping extends BackboneElement {
   /**
-   * The type of channel to send notifications on.
+   * Versions, Issues, Scope limitations etc.
+   * Comments about this mapping, including version notes, issues, scope limitations, and other important notes for usage.
    */
-  type: ('rest-hook'|'websocket'|'email'|'sms'|'message');
-  _type?: Element | undefined;
+  comments?: string | undefined;
+  _comments?: Element | undefined;
+  /**
+   * Internal id when this mapping is used
+   * An Internal id that is used to identify this mapping set when specific mappings are made.
+   */
+  identity: string;
+  _identity?: Element | undefined;
+  /**
+   * Names what this mapping refers to
+   * A name for the specification that is being mapped to.
+   */
+  name?: string | undefined;
+  _name?: Element | undefined;
+  /**
+   * Identifies what this mapping refers to
+   * An absolute URI that identifies the specification that this mapping is expressed to.
+   */
+  uri?: string | undefined;
+  _uri?: Element | undefined;
+}
+/**
+ * Snapshot view of the structure
+ * A snapshot view is expressed in a stand alone form that can be used and interpreted without considering the base StructureDefinition.
+ */
+export interface StructureDefinitionSnapshot extends BackboneElement {
+  /**
+   * Definition of elements in the resource (if no StructureDefinition)
+   * Captures constraints on each element within the resource.
+   */
+  element: ElementDefinition[];
 }
 /**
  * Base StructureDefinition for Subscription Resource
@@ -13676,42 +13647,33 @@ export interface Subscription extends DomainResource {
   tag?: Coding[] | undefined;
 }
 /**
- * Composition information about the substance
- * A substance can be composed of other substances.
+ * The channel on which to report matches to the criteria
+ * Details where to send notifications when resources are received that meet the criteria.
  */
-export interface SubstanceIngredient extends BackboneElement {
+export interface SubscriptionChannel extends BackboneElement {
   /**
-   * Optional amount (concentration)
-   * The amount of the ingredient in the substance - a concentration ratio.
+   * Where the channel points to
+   * The uri that describes the actual end-point to send messages to.
    */
-  quantity?: Ratio | undefined;
+  endpoint?: string | undefined;
+  _endpoint?: Element | undefined;
   /**
-   * A component of the substance
-   * Another substance that is a component of this substance.
+   * Usage depends on the channel type
+   * Additional headers / information to send as part of the notification.
    */
-  substance: Reference;
-}
-/**
- * If this describes a specific package/container of the substance
- * Substance may be used to describe a kind of substance, or a specific package/container of the substance: an instance.
- */
-export interface SubstanceInstance extends BackboneElement {
+  header?: string | undefined;
+  _header?: Element | undefined;
   /**
-   * When no longer valid to use
-   * When the substance is no longer valid to use. For some substances, a single arbitrary date is used for expiry.
+   * Mimetype to send, or blank for no payload
+   * The mime type to send the payload in - either application/xml+fhir, or application/json+fhir. If the mime type is blank, then there is no payload in the notification, just a notification.
    */
-  expiry?: string | undefined;
-  _expiry?: Element | undefined;
+  payload: string;
+  _payload?: Element | undefined;
   /**
-   * Identifier of the package/container
-   * Identifier associated with the package/container (usually a label affixed directly).
+   * The type of channel to send notifications on.
    */
-  identifier?: Identifier | undefined;
-  /**
-   * Amount of substance in the package
-   * The amount of the substance.
-   */
-  quantity?: Quantity | undefined;
+  type: ('rest-hook'|'websocket'|'email'|'sms'|'message');
+  _type?: Element | undefined;
 }
 /**
  * Base StructureDefinition for Substance Resource
@@ -13749,6 +13711,44 @@ export interface Substance extends DomainResource {
    * Substance may be used to describe a kind of substance, or a specific package/container of the substance: an instance.
    */
   instance?: SubstanceInstance[] | undefined;
+}
+/**
+ * Composition information about the substance
+ * A substance can be composed of other substances.
+ */
+export interface SubstanceIngredient extends BackboneElement {
+  /**
+   * Optional amount (concentration)
+   * The amount of the ingredient in the substance - a concentration ratio.
+   */
+  quantity?: Ratio | undefined;
+  /**
+   * A component of the substance
+   * Another substance that is a component of this substance.
+   */
+  substance: Reference;
+}
+/**
+ * If this describes a specific package/container of the substance
+ * Substance may be used to describe a kind of substance, or a specific package/container of the substance: an instance.
+ */
+export interface SubstanceInstance extends BackboneElement {
+  /**
+   * When no longer valid to use
+   * When the substance is no longer valid to use. For some substances, a single arbitrary date is used for expiry.
+   */
+  expiry?: string | undefined;
+  _expiry?: Element | undefined;
+  /**
+   * Identifier of the package/container
+   * Identifier associated with the package/container (usually a label affixed directly).
+   */
+  identifier?: Identifier | undefined;
+  /**
+   * Amount of substance in the package
+   * The amount of the substance.
+   */
+  quantity?: Quantity | undefined;
 }
 /**
  * Base StructureDefinition for SupplyDelivery Resource
@@ -13814,20 +13814,6 @@ export interface SupplyDelivery extends DomainResource {
   whenPrepared?: Period | undefined;
 }
 /**
- * When the request should be fulfilled.
- */
-export interface SupplyRequestWhen extends BackboneElement {
-  /**
-   * Fulfilment code
-   * Code indicating when the request should be fulfilled.
-   */
-  code?: CodeableConcept | undefined;
-  /**
-   * Formal fulfillment schedule.
-   */
-  schedule?: Timing | undefined;
-}
-/**
  * Base StructureDefinition for SupplyRequest Resource
  */
 export interface SupplyRequest extends DomainResource {
@@ -13885,448 +13871,18 @@ export interface SupplyRequest extends DomainResource {
   when?: SupplyRequestWhen | undefined;
 }
 /**
- * Contact details of the publisher
- * Contacts to assist a user in finding and communicating with the publisher.
+ * When the request should be fulfilled.
  */
-export interface TestScriptContact extends BackboneElement {
+export interface SupplyRequestWhen extends BackboneElement {
   /**
-   * Name of a individual to contact
-   * The name of an individual to contact regarding the Test Script.
+   * Fulfilment code
+   * Code indicating when the request should be fulfilled.
    */
-  name?: string | undefined;
-  _name?: Element | undefined;
+  code?: CodeableConcept | undefined;
   /**
-   * Contact details for individual or publisher
-   * Contact details for individual (if a name was provided) or the publisher.
+   * Formal fulfillment schedule.
    */
-  telecom?: ContactPoint[] | undefined;
-}
-/**
- * Fixture in the test script - by reference (uri). All fixtures are required for the test script to execute.
- */
-export interface TestScriptFixture extends BackboneElement {
-  /**
-   * Whether or not to implicitly create the fixture during setup. If true, the fixture is automatically created on each server being tested during setup, therefore no create operation is required for this fixture in the TestScript.setup section.
-   */
-  autocreate?: boolean | undefined;
-  _autocreate?: Element | undefined;
-  /**
-   * Whether or not to implicitly delete the fixture during teardown If true, the fixture is automatically deleted on each server being tested during teardown, therefore no delete operation is required for this fixture in the TestScript.teardown section.
-   */
-  autodelete?: boolean | undefined;
-  _autodelete?: Element | undefined;
-  /**
-   * Reference of the resource
-   * Reference to the resource (containing the contents of the resource needed for operations).
-   */
-  resource?: Reference | undefined;
-}
-/**
- * Capabilities  that are assumed to function correctly on the FHIR server being tested
- * Capabilities that must exist and are assumed to function correctly on the FHIR server being tested.
- */
-export interface TestScriptMetadataCapability extends BackboneElement {
-  /**
-   * Required Conformance
-   * Minimum conformance required of server for test script to execute successfully.   If server does not meet at a minimum the reference conformance definition, then all tests in this script are skipped.
-   */
-  conformance: Reference;
-  /**
-   * The expected capabilities of the server
-   * Description of the capabilities that this test script is requiring the server to support.
-   */
-  description?: string | undefined;
-  _description?: Element | undefined;
-  /**
-   * Which server these requirements apply to.
-   */
-  destination?: number | undefined;
-  /**
-   * Links to the FHIR specification that describes this interaction and the resources involved in more detail.
-   */
-  link?: string[] | undefined;
-  _link?: Element[] | undefined;
-  /**
-   * Are the capabilities required?
-   * Whether or not the test execution will require the given capabilities of the server in order for this test script to execute.
-   */
-  required?: boolean | undefined;
-  _required?: Element | undefined;
-  /**
-   * Are the capabilities validated?
-   * Whether or not the test execution will validate the given capabilities of the server in order for this test script to execute.
-   */
-  validated?: boolean | undefined;
-  _validated?: Element | undefined;
-}
-/**
- * Links to the FHIR specification
- * A link to the FHIR specification that this test is covering.
- */
-export interface TestScriptMetadataLink extends BackboneElement {
-  /**
-   * Short description of the link.
-   */
-  description?: string | undefined;
-  _description?: Element | undefined;
-  /**
-   * URL to the specification
-   * URL to a particular requirement or feature within the FHIR specification.
-   */
-  url: string;
-  _url?: Element | undefined;
-}
-/**
- * Required capability that is assumed to function correctly on the FHIR server being tested
- * The required capability must exist and are assumed to function correctly on the FHIR server being tested.
- */
-export interface TestScriptMetadata extends BackboneElement {
-  /**
-   * Capabilities  that are assumed to function correctly on the FHIR server being tested
-   * Capabilities that must exist and are assumed to function correctly on the FHIR server being tested.
-   */
-  capability: TestScriptMetadataCapability[];
-  /**
-   * Links to the FHIR specification
-   * A link to the FHIR specification that this test is covering.
-   */
-  link?: TestScriptMetadataLink[] | undefined;
-}
-/**
- * The assertion to perform
- * Evaluates the results of previous operations to determine if the server under test behaves appropriately.
- */
-export interface TestScriptSetupActionAssert extends BackboneElement {
-  /**
-   * Id of fixture used to compare the "sourceId/path" evaluations to.
-   */
-  compareToSourceId?: string | undefined;
-  _compareToSourceId?: Element | undefined;
-  /**
-   * XPath or JSONPath expression against fixture used to compare the "sourceId/path" evaluations to.
-   */
-  compareToSourcePath?: string | undefined;
-  _compareToSourcePath?: Element | undefined;
-  /**
-   * xml | json
-   * The content-type or mime-type to use for RESTful operation in the 'Content-Type' header.
-   */
-  contentType?: ('xml'|'json') | undefined;
-  _contentType?: Element | undefined;
-  /**
-   * Tracking/reporting assertion description
-   * The description would be used by test engines for tracking and reporting purposes.
-   */
-  description?: string | undefined;
-  _description?: Element | undefined;
-  /**
-   * response | request
-   * The direction to use for the assertion.
-   */
-  direction?: ('response'|'request') | undefined;
-  _direction?: Element | undefined;
-  /**
-   * HTTP header field name
-   * The HTTP header field name e.g. 'Location'.
-   */
-  headerField?: string | undefined;
-  _headerField?: Element | undefined;
-  /**
-   * Tracking/logging assertion label
-   * The label would be used for tracking/logging purposes by test engines.
-   */
-  label?: string | undefined;
-  _label?: Element | undefined;
-  /**
-   * Fixture Id of minimum content resource
-   * The ID of a fixture.  Asserts that the response contains at a minimumId the fixture specified by minimumId.
-   */
-  minimumId?: string | undefined;
-  _minimumId?: Element | undefined;
-  /**
-   * Perform validation on navigation links?
-   * Whether or not the test execution performs validation on the bundle navigation links.
-   */
-  navigationLinks?: boolean | undefined;
-  _navigationLinks?: Element | undefined;
-  /**
-   * The operator type.
-   */
-  operator?: ('equals'|'notEquals'|'in'|'notIn'|'greaterThan'|'lessThan'|'empty'|'notEmpty'|'contains'|'notContains') | undefined;
-  _operator?: Element | undefined;
-  /**
-   * XPath or JSONPath expression
-   * The XPath or JSONPath expression to be evaluated against the fixture representing the response received from server.
-   */
-  path?: string | undefined;
-  _path?: Element | undefined;
-  /**
-   * Resource type
-   * The type of the resource.  See http://hl7-fhir.github.io/resourcelist.html.
-   */
-  resource?: ('Address'|'Age'|'Annotation'|'Attachment'|'BackboneElement'|'CodeableConcept'|'Coding'|'ContactPoint'|'Count'|'Distance'|'Duration'|'Element'|'ElementDefinition'|'Extension'|'HumanName'|'Identifier'|'Meta'|'Money'|'Narrative'|'Period'|'Quantity'|'Range'|'Ratio'|'Reference'|'SampledData'|'Signature'|'SimpleQuantity'|'Timing'|'base64Binary'|'boolean'|'code'|'date'|'dateTime'|'decimal'|'id'|'instant'|'integer'|'markdown'|'oid'|'positiveInt'|'string'|'time'|'unsignedInt'|'uri'|'uuid'|'xhtml'|'Account'|'AllergyIntolerance'|'Appointment'|'AppointmentResponse'|'AuditEvent'|'Basic'|'Binary'|'BodySite'|'Bundle'|'CarePlan'|'Claim'|'ClaimResponse'|'ClinicalImpression'|'Communication'|'CommunicationRequest'|'Composition'|'ConceptMap'|'Condition'|'Conformance'|'Contract'|'Coverage'|'DataElement'|'DetectedIssue'|'Device'|'DeviceComponent'|'DeviceMetric'|'DeviceUseRequest'|'DeviceUseStatement'|'DiagnosticOrder'|'DiagnosticReport'|'DocumentManifest'|'DocumentReference'|'DomainResource'|'EligibilityRequest'|'EligibilityResponse'|'Encounter'|'EnrollmentRequest'|'EnrollmentResponse'|'EpisodeOfCare'|'ExplanationOfBenefit'|'FamilyMemberHistory'|'Flag'|'Goal'|'Group'|'HealthcareService'|'ImagingObjectSelection'|'ImagingStudy'|'Immunization'|'ImmunizationRecommendation'|'ImplementationGuide'|'List'|'Location'|'Media'|'Medication'|'MedicationAdministration'|'MedicationDispense'|'MedicationOrder'|'MedicationStatement'|'MessageHeader'|'NamingSystem'|'NutritionOrder'|'Observation'|'OperationDefinition'|'OperationOutcome'|'Order'|'OrderResponse'|'Organization'|'Parameters'|'Patient'|'PaymentNotice'|'PaymentReconciliation'|'Person'|'Practitioner'|'Procedure'|'ProcedureRequest'|'ProcessRequest'|'ProcessResponse'|'Provenance'|'Questionnaire'|'QuestionnaireResponse'|'ReferralRequest'|'RelatedPerson'|'Resource'|'RiskAssessment'|'Schedule'|'SearchParameter'|'Slot'|'Specimen'|'StructureDefinition'|'Subscription'|'Substance'|'SupplyDelivery'|'SupplyRequest'|'TestScript'|'ValueSet'|'VisionPrescription') | undefined;
-  _resource?: Element | undefined;
-  /**
-   * okay | created | noContent | notModified | bad | forbidden | notFound | methodNotAllowed | conflict | gone | preconditionFailed | unprocessable.
-   */
-  response?: ('okay'|'created'|'noContent'|'notModified'|'bad'|'forbidden'|'notFound'|'methodNotAllowed'|'conflict'|'gone'|'preconditionFailed'|'unprocessable') | undefined;
-  _response?: Element | undefined;
-  /**
-   * HTTP response code to test
-   * The value of the HTTP response code to be tested.
-   */
-  responseCode?: string | undefined;
-  _responseCode?: Element | undefined;
-  /**
-   * Fixture Id of source expression or headerField
-   * Fixture to evaluate the XPath/JSONPath expression or the headerField  against.
-   */
-  sourceId?: string | undefined;
-  _sourceId?: Element | undefined;
-  /**
-   * Profile Id of validation profile reference
-   * The ID of the Profile to validate against.
-   */
-  validateProfileId?: string | undefined;
-  _validateProfileId?: Element | undefined;
-  /**
-   * The value to compare to.
-   */
-  value?: string | undefined;
-  _value?: Element | undefined;
-  /**
-   * Will this assert produce a warning only on error?
-   * Whether or not the test execution will produce a warning only on error for this assert.
-   */
-  warningOnly?: boolean | undefined;
-  _warningOnly?: Element | undefined;
-}
-/**
- * Each operation can have one ore more header elements
- * Header elements would be used to set HTTP headers.
- */
-export interface TestScriptSetupActionOperationRequestHeader extends BackboneElement {
-  /**
-   * HTTP header field name
-   * The HTTP header field e.g. "Accept".
-   */
-  field: string;
-  _field?: Element | undefined;
-  /**
-   * HTTP headerfield value
-   * The value of the header e.g. "application/xml".
-   */
-  value: string;
-  _value?: Element | undefined;
-}
-/**
- * The setup operation to perform
- * The operation to perform.
- */
-export interface TestScriptSetupActionOperation extends BackboneElement {
-  /**
-   * xml | json
-   * The content-type or mime-type to use for RESTful operation in the 'Accept' header.
-   */
-  accept?: ('xml'|'json') | undefined;
-  _accept?: Element | undefined;
-  /**
-   * xml | json
-   * The content-type or mime-type to use for RESTful operation in the 'Content-Type' header.
-   */
-  contentType?: ('xml'|'json') | undefined;
-  _contentType?: Element | undefined;
-  /**
-   * Tracking/reporting operation description
-   * The description would be used by test engines for tracking and reporting purposes.
-   */
-  description?: string | undefined;
-  _description?: Element | undefined;
-  /**
-   * Which server to perform the operation on.
-   */
-  destination?: number | undefined;
-  /**
-   * Whether or not to send the request url in encoded format
-   * Whether or not to implicitly send the request url in encoded format. The default is true to match the standard RESTful client behavior. Set to false when communicating with a server that does not support encoded url paths.
-   */
-  encodeRequestUrl?: boolean | undefined;
-  _encodeRequestUrl?: Element | undefined;
-  /**
-   * Tracking/logging operation label
-   * The label would be used for tracking/logging purposes by test engines.
-   */
-  label?: string | undefined;
-  _label?: Element | undefined;
-  /**
-   * Explicitly defined path parameters
-   * Path plus parameters after [type].  Used to set parts of the request URL explicitly.
-   */
-  params?: string | undefined;
-  _params?: Element | undefined;
-  /**
-   * Each operation can have one ore more header elements
-   * Header elements would be used to set HTTP headers.
-   */
-  requestHeader?: TestScriptSetupActionOperationRequestHeader[] | undefined;
-  /**
-   * Resource type
-   * The type of the resource.  See http://hl7-fhir.github.io/resourcelist.html.
-   */
-  resource?: ('Address'|'Age'|'Annotation'|'Attachment'|'BackboneElement'|'CodeableConcept'|'Coding'|'ContactPoint'|'Count'|'Distance'|'Duration'|'Element'|'ElementDefinition'|'Extension'|'HumanName'|'Identifier'|'Meta'|'Money'|'Narrative'|'Period'|'Quantity'|'Range'|'Ratio'|'Reference'|'SampledData'|'Signature'|'SimpleQuantity'|'Timing'|'base64Binary'|'boolean'|'code'|'date'|'dateTime'|'decimal'|'id'|'instant'|'integer'|'markdown'|'oid'|'positiveInt'|'string'|'time'|'unsignedInt'|'uri'|'uuid'|'xhtml'|'Account'|'AllergyIntolerance'|'Appointment'|'AppointmentResponse'|'AuditEvent'|'Basic'|'Binary'|'BodySite'|'Bundle'|'CarePlan'|'Claim'|'ClaimResponse'|'ClinicalImpression'|'Communication'|'CommunicationRequest'|'Composition'|'ConceptMap'|'Condition'|'Conformance'|'Contract'|'Coverage'|'DataElement'|'DetectedIssue'|'Device'|'DeviceComponent'|'DeviceMetric'|'DeviceUseRequest'|'DeviceUseStatement'|'DiagnosticOrder'|'DiagnosticReport'|'DocumentManifest'|'DocumentReference'|'DomainResource'|'EligibilityRequest'|'EligibilityResponse'|'Encounter'|'EnrollmentRequest'|'EnrollmentResponse'|'EpisodeOfCare'|'ExplanationOfBenefit'|'FamilyMemberHistory'|'Flag'|'Goal'|'Group'|'HealthcareService'|'ImagingObjectSelection'|'ImagingStudy'|'Immunization'|'ImmunizationRecommendation'|'ImplementationGuide'|'List'|'Location'|'Media'|'Medication'|'MedicationAdministration'|'MedicationDispense'|'MedicationOrder'|'MedicationStatement'|'MessageHeader'|'NamingSystem'|'NutritionOrder'|'Observation'|'OperationDefinition'|'OperationOutcome'|'Order'|'OrderResponse'|'Organization'|'Parameters'|'Patient'|'PaymentNotice'|'PaymentReconciliation'|'Person'|'Practitioner'|'Procedure'|'ProcedureRequest'|'ProcessRequest'|'ProcessResponse'|'Provenance'|'Questionnaire'|'QuestionnaireResponse'|'ReferralRequest'|'RelatedPerson'|'Resource'|'RiskAssessment'|'Schedule'|'SearchParameter'|'Slot'|'Specimen'|'StructureDefinition'|'Subscription'|'Substance'|'SupplyDelivery'|'SupplyRequest'|'TestScript'|'ValueSet'|'VisionPrescription') | undefined;
-  _resource?: Element | undefined;
-  /**
-   * Fixture Id of mapped response
-   * The fixture id (maybe new) to map to the response.
-   */
-  responseId?: string | undefined;
-  _responseId?: Element | undefined;
-  /**
-   * Fixture Id of body for PUT and POST requests
-   * The id of the fixture used as the body of a PUT or POST request.
-   */
-  sourceId?: string | undefined;
-  _sourceId?: Element | undefined;
-  /**
-   * Id of fixture used for extracting the [id],  [type], and [vid] for GET requests.
-   */
-  targetId?: string | undefined;
-  _targetId?: Element | undefined;
-  /**
-   * The setup operation type that will be executed
-   * Server interaction or operation type.
-   */
-  type?: Coding | undefined;
-  /**
-   * Request URL
-   * Complete request URL.
-   */
-  url?: string | undefined;
-  _url?: Element | undefined;
-}
-/**
- * A setup operation or assert to perform
- * Action would contain either an operation or an assertion.
- */
-export interface TestScriptSetupAction extends BackboneElement {
-  /**
-   * The assertion to perform
-   * Evaluates the results of previous operations to determine if the server under test behaves appropriately.
-   */
-  assert?: TestScriptSetupActionAssert | undefined;
-  /**
-   * The setup operation to perform
-   * The operation to perform.
-   */
-  operation?: TestScriptSetupActionOperation | undefined;
-}
-/**
- * A series of required setup operations before tests are executed.
- */
-export interface TestScriptSetup extends BackboneElement {
-  /**
-   * A setup operation or assert to perform
-   * Action would contain either an operation or an assertion.
-   */
-  action: TestScriptSetupAction[];
-  /**
-   * Capabilities  that are assumed to function correctly on the FHIR server being tested
-   * Capabilities that must exist and are assumed to function correctly on the FHIR server being tested.
-   */
-  metadata?: TestScriptMetadata | undefined;
-}
-/**
- * One or more teardown operations to perform
- * The teardown action will only contain an operation.
- */
-export interface TestScriptTeardownAction extends BackboneElement {
-  /**
-   * The teardown operation to perform
-   * An operation would involve a REST request to a server.
-   */
-  operation?: TestScriptSetupActionOperation | undefined;
-}
-/**
- * A series of required clean up steps
- * A series of operations required to clean up after the all the tests are executed (successfully or otherwise).
- */
-export interface TestScriptTeardown extends BackboneElement {
-  /**
-   * One or more teardown operations to perform
-   * The teardown action will only contain an operation.
-   */
-  action: TestScriptTeardownAction[];
-}
-/**
- * A test operation or assert to perform
- * Action would contain either an operation or an assertion.
- */
-export interface TestScriptTestAction extends BackboneElement {
-  /**
-   * The setup assertion to perform
-   * Evaluates the results of previous operations to determine if the server under test behaves appropriately.
-   */
-  assert?: TestScriptSetupActionAssert | undefined;
-  /**
-   * The setup operation to perform
-   * An operation would involve a REST request to a server.
-   */
-  operation?: TestScriptSetupActionOperation | undefined;
-}
-/**
- * A test in this script.
- */
-export interface TestScriptTest extends BackboneElement {
-  /**
-   * A test operation or assert to perform
-   * Action would contain either an operation or an assertion.
-   */
-  action: TestScriptTestAction[];
-  /**
-   * Tracking/reporting short description of the test
-   * A short description of the test used by test engines for tracking and reporting purposes.
-   */
-  description?: string | undefined;
-  _description?: Element | undefined;
-  /**
-   * Capabilities  that are expected to function correctly on the FHIR server being tested
-   * Capabilities that must exist and are assumed to function correctly on the FHIR server being tested.
-   */
-  metadata?: TestScriptMetadata | undefined;
-  /**
-   * Tracking/logging name of this test
-   * The name of this test used for tracking/logging purposes by test engines.
-   */
-  name?: string | undefined;
-  _name?: Element | undefined;
-}
-/**
- * Placeholder for evaluated elements
- * Variable is set based either on element value in response body or on header field value in the response headers.
- */
-export interface TestScriptVariable extends BackboneElement {
-  /**
-   * HTTP header field name for source
-   * Will be used to grab the HTTP header field value from the headers that sourceId is pointing to.
-   */
-  headerField?: string | undefined;
-  _headerField?: Element | undefined;
-  /**
-   * Descriptive name for this variable.
-   */
-  name: string;
-  _name?: Element | undefined;
-  /**
-   * XPath or JSONPath against the fixture body.  When variables are defined, either headerField must be specified or path, but not both.
-   */
-  path?: string | undefined;
-  _path?: Element | undefined;
-  /**
-   * Fixture Id of source expression or headerField within this variable
-   * Fixture to evaluate the XPath/JSONPath expression or the headerField  against within this variable.
-   */
-  sourceId?: string | undefined;
-  _sourceId?: Element | undefined;
+  schedule?: Timing | undefined;
 }
 /**
  * Base StructureDefinition for TestScript Resource
@@ -14448,194 +14004,13 @@ export interface TestScript extends DomainResource {
   _version?: Element | undefined;
 }
 /**
- * Additional representations for the concept - other languages, aliases, specialized purposes, used for particular purposes, etc.
- */
-export interface ValueSetCodeSystemConceptDesignation extends BackboneElement {
-  /**
-   * Human language of the designation
-   * The language this designation is defined for.
-   */
-  language?: string | undefined;
-  _language?: Element | undefined;
-  /**
-   * Details how this designation would be used
-   * A code that details how this designation would be used.
-   */
-  use?: Coding | undefined;
-  /**
-   * The text value for this designation.
-   */
-  value: string;
-  _value?: Element | undefined;
-}
-/**
- * Concepts in the code system
- * Concepts that are in the code system. The concept definitions are inherently hierarchical, but the definitions must be consulted to determine what the meaning of the hierarchical relationships are.
- */
-export interface ValueSetCodeSystemConcept extends BackboneElement {
-  /**
-   * If this code is not for use as a real concept.
-   */
-  abstract?: boolean | undefined;
-  _abstract?: Element | undefined;
-  /**
-   * Code that identifies concept
-   * A code - a text symbol - that uniquely identifies the concept within the code system.
-   */
-  code: string;
-  _code?: Element | undefined;
-  /**
-   * Child Concepts (is-a/contains/categorizes)
-   * Defines children of a concept to produce a hierarchy of concepts. The nature of the relationships is variable (is-a/contains/categorizes) and can only be determined by examining the definitions of the concepts.
-   */
-  concept?: ValueSetCodeSystemConcept[] | undefined;
-  /**
-   * Formal definition
-   * The formal definition of the concept. The value set resource does not make formal definitions required, because of the prevalence of legacy systems. However, they are highly recommended, as without them there is no formal meaning associated with the concept.
-   */
-  definition?: string | undefined;
-  _definition?: Element | undefined;
-  /**
-   * Additional representations for the concept - other languages, aliases, specialized purposes, used for particular purposes, etc.
-   */
-  designation?: ValueSetCodeSystemConceptDesignation[] | undefined;
-  /**
-   * Text to display to the user
-   * A human readable string that is the recommended default way to present this concept to a user.
-   */
-  display?: string | undefined;
-  _display?: Element | undefined;
-}
-/**
- * An inline code system, which is part of this value set
- * A definition of a code system, inlined into the value set (as a packaging convenience). Note that the inline code system may be used from other value sets by referring to its (codeSystem.system) directly.
- */
-export interface ValueSetCodeSystem extends BackboneElement {
-  /**
-   * If code comparison is case sensitive when codes within this system are compared to each other.
-   */
-  caseSensitive?: boolean | undefined;
-  _caseSensitive?: Element | undefined;
-  /**
-   * Concepts in the code system
-   * Concepts that are in the code system. The concept definitions are inherently hierarchical, but the definitions must be consulted to determine what the meaning of the hierarchical relationships are.
-   */
-  concept: ValueSetCodeSystemConcept[];
-  /**
-   * URI to identify the code system (e.g. in Coding.system)
-   * An absolute URI that is used to reference this code system, including in [Coding]{datatypes.html#Coding}.system.
-   */
-  system: string;
-  _system?: Element | undefined;
-  /**
-   * Version (for use in Coding.version)
-   * The version of this code system that defines the codes. Note that the version is optional because a well maintained code system does not suffer from versioning, and therefore the version does not need to be maintained. However many code systems are not well maintained, and the version needs to be defined and tracked.
-   */
-  version?: string | undefined;
-  _version?: Element | undefined;
-}
-/**
- * A concept defined in the system
- * Specifies a concept to be included or excluded.
- */
-export interface ValueSetComposeIncludeConcept extends BackboneElement {
-  /**
-   * Code or expression from system
-   * Specifies a code for the concept to be included or excluded.
-   */
-  code: string;
-  _code?: Element | undefined;
-  /**
-   * Additional representations for this valueset
-   * Additional representations for this concept when used in this value set - other languages, aliases, specialized purposes, used for particular purposes, etc.
-   */
-  designation?: ValueSetCodeSystemConceptDesignation[] | undefined;
-  /**
-   * Test to display for this code for this value set
-   * The text to display to the user for this concept in the context of this valueset. If no display is provided, then applications using the value set use the display specified for the code by the system.
-   */
-  display?: string | undefined;
-  _display?: Element | undefined;
-}
-/**
- * Select codes/concepts by their properties (including relationships)
- * Select concepts by specify a matching criteria based on the properties (including relationships) defined by the system. If multiple filters are specified, they SHALL all be true.
- */
-export interface ValueSetComposeIncludeFilter extends BackboneElement {
-  /**
-   * The kind of operation to perform as a part of the filter criteria.
-   */
-  op: ('='|'is-a'|'is-not-a'|'regex'|'in'|'not-in');
-  _op?: Element | undefined;
-  /**
-   * A property defined by the code system
-   * A code that identifies a property defined in the code system.
-   */
-  property: string;
-  _property?: Element | undefined;
-  /**
-   * Code from the system, or regex criteria
-   * The match value may be either a code defined by the system, or a string value, which is a regex match on the literal string of the property value.
-   */
-  value: string;
-  _value?: Element | undefined;
-}
-/**
- * Include one or more codes from a code system.
- */
-export interface ValueSetComposeInclude extends BackboneElement {
-  /**
-   * A concept defined in the system
-   * Specifies a concept to be included or excluded.
-   */
-  concept?: ValueSetComposeIncludeConcept[] | undefined;
-  /**
-   * Select codes/concepts by their properties (including relationships)
-   * Select concepts by specify a matching criteria based on the properties (including relationships) defined by the system. If multiple filters are specified, they SHALL all be true.
-   */
-  filter?: ValueSetComposeIncludeFilter[] | undefined;
-  /**
-   * The system the codes come from
-   * An absolute URI which is the code system from which the selected codes come from.
-   */
-  system: string;
-  _system?: Element | undefined;
-  /**
-   * Specific version of the code system referred to
-   * The version of the code system that the codes are selected from.
-   */
-  version?: string | undefined;
-  _version?: Element | undefined;
-}
-/**
- * When value set includes codes from elsewhere
- * A set of criteria that provide the content logical definition of the value set by including or excluding codes from outside this value set.
- */
-export interface ValueSetCompose extends BackboneElement {
-  /**
-   * Explicitly exclude codes
-   * Exclude one or more codes from the value set.
-   */
-  exclude?: ValueSetComposeInclude[] | undefined;
-  /**
-   * Import the contents of another value set
-   * Includes the contents of the referenced value set as a part of the contents of this value set. This is an absolute URI that is a reference to ValueSet.uri.
-   */
-  import?: string[] | undefined;
-  _import?: Element[] | undefined;
-  /**
-   * Include one or more codes from a code system.
-   */
-  include?: ValueSetComposeInclude[] | undefined;
-}
-/**
  * Contact details of the publisher
  * Contacts to assist a user in finding and communicating with the publisher.
  */
-export interface ValueSetContact extends BackboneElement {
+export interface TestScriptContact extends BackboneElement {
   /**
-   * Name of an individual to contact
-   * The name of an individual to contact regarding the value set.
+   * Name of a individual to contact
+   * The name of an individual to contact regarding the Test Script.
    */
   name?: string | undefined;
   _name?: Element | undefined;
@@ -14646,112 +14021,431 @@ export interface ValueSetContact extends BackboneElement {
   telecom?: ContactPoint[] | undefined;
 }
 /**
- * Codes in the value set
- * The codes that are contained in the value set expansion.
+ * Fixture in the test script - by reference (uri). All fixtures are required for the test script to execute.
  */
-export interface ValueSetExpansionContains extends BackboneElement {
+export interface TestScriptFixture extends BackboneElement {
   /**
-   * If user cannot select this entry
-   * If true, this entry is included in the expansion for navigational purposes, and the user cannot select the code directly as a proper value.
+   * Whether or not to implicitly create the fixture during setup. If true, the fixture is automatically created on each server being tested during setup, therefore no create operation is required for this fixture in the TestScript.setup section.
    */
-  abstract?: boolean | undefined;
-  _abstract?: Element | undefined;
+  autocreate?: boolean | undefined;
+  _autocreate?: Element | undefined;
   /**
-   * Code - if blank, this is not a selectable code
-   * The code for this item in the expansion hierarchy. If this code is missing the entry in the hierarchy is a place holder (abstract) and does not represent a valid code in the value set.
+   * Whether or not to implicitly delete the fixture during teardown If true, the fixture is automatically deleted on each server being tested during teardown, therefore no delete operation is required for this fixture in the TestScript.teardown section.
    */
-  code?: string | undefined;
-  _code?: Element | undefined;
+  autodelete?: boolean | undefined;
+  _autodelete?: Element | undefined;
   /**
-   * Codes contained under this entry
-   * Other codes and entries contained under this entry in the hierarchy.
+   * Reference of the resource
+   * Reference to the resource (containing the contents of the resource needed for operations).
    */
-  contains?: ValueSetExpansionContains[] | undefined;
-  /**
-   * User display for the concept
-   * The recommended display for this item in the expansion.
-   */
-  display?: string | undefined;
-  _display?: Element | undefined;
-  /**
-   * System value for the code
-   * An absolute URI which is the code system in which the code for this item in the expansion is defined.
-   */
-  system?: string | undefined;
-  _system?: Element | undefined;
-  /**
-   * Version in which this code/display is defined
-   * The version of this code system that defined this code and/or display. This should only be used with code systems that do not enforce concept permanence.
-   */
-  version?: string | undefined;
-  _version?: Element | undefined;
+  resource?: Reference | undefined;
 }
 /**
- * Parameter that controlled the expansion process
- * A parameter that controlled the expansion process. These parameters may be used by users of expanded value sets to check whether the expansion is suitable for a particular purpose, or to pick the correct expansion.
+ * Required capability that is assumed to function correctly on the FHIR server being tested
+ * The required capability must exist and are assumed to function correctly on the FHIR server being tested.
  */
-export interface ValueSetExpansionParameter extends BackboneElement {
+export interface TestScriptMetadata extends BackboneElement {
   /**
-   * Name as assigned by the server
-   * The name of the parameter.
+   * Capabilities  that are assumed to function correctly on the FHIR server being tested
+   * Capabilities that must exist and are assumed to function correctly on the FHIR server being tested.
+   */
+  capability: TestScriptMetadataCapability[];
+  /**
+   * Links to the FHIR specification
+   * A link to the FHIR specification that this test is covering.
+   */
+  link?: TestScriptMetadataLink[] | undefined;
+}
+/**
+ * Capabilities  that are assumed to function correctly on the FHIR server being tested
+ * Capabilities that must exist and are assumed to function correctly on the FHIR server being tested.
+ */
+export interface TestScriptMetadataCapability extends BackboneElement {
+  /**
+   * Required Conformance
+   * Minimum conformance required of server for test script to execute successfully.   If server does not meet at a minimum the reference conformance definition, then all tests in this script are skipped.
+   */
+  conformance: Reference;
+  /**
+   * The expected capabilities of the server
+   * Description of the capabilities that this test script is requiring the server to support.
+   */
+  description?: string | undefined;
+  _description?: Element | undefined;
+  /**
+   * Which server these requirements apply to.
+   */
+  destination?: number | undefined;
+  /**
+   * Links to the FHIR specification that describes this interaction and the resources involved in more detail.
+   */
+  link?: string[] | undefined;
+  _link?: Element[] | undefined;
+  /**
+   * Are the capabilities required?
+   * Whether or not the test execution will require the given capabilities of the server in order for this test script to execute.
+   */
+  required?: boolean | undefined;
+  _required?: Element | undefined;
+  /**
+   * Are the capabilities validated?
+   * Whether or not the test execution will validate the given capabilities of the server in order for this test script to execute.
+   */
+  validated?: boolean | undefined;
+  _validated?: Element | undefined;
+}
+/**
+ * Links to the FHIR specification
+ * A link to the FHIR specification that this test is covering.
+ */
+export interface TestScriptMetadataLink extends BackboneElement {
+  /**
+   * Short description of the link.
+   */
+  description?: string | undefined;
+  _description?: Element | undefined;
+  /**
+   * URL to the specification
+   * URL to a particular requirement or feature within the FHIR specification.
+   */
+  url: string;
+  _url?: Element | undefined;
+}
+/**
+ * A series of required setup operations before tests are executed.
+ */
+export interface TestScriptSetup extends BackboneElement {
+  /**
+   * A setup operation or assert to perform
+   * Action would contain either an operation or an assertion.
+   */
+  action: TestScriptSetupAction[];
+  /**
+   * Capabilities  that are assumed to function correctly on the FHIR server being tested
+   * Capabilities that must exist and are assumed to function correctly on the FHIR server being tested.
+   */
+  metadata?: TestScriptMetadata | undefined;
+}
+/**
+ * A setup operation or assert to perform
+ * Action would contain either an operation or an assertion.
+ */
+export interface TestScriptSetupAction extends BackboneElement {
+  /**
+   * The assertion to perform
+   * Evaluates the results of previous operations to determine if the server under test behaves appropriately.
+   */
+  assert?: TestScriptSetupActionAssert | undefined;
+  /**
+   * The setup operation to perform
+   * The operation to perform.
+   */
+  operation?: TestScriptSetupActionOperation | undefined;
+}
+/**
+ * The assertion to perform
+ * Evaluates the results of previous operations to determine if the server under test behaves appropriately.
+ */
+export interface TestScriptSetupActionAssert extends BackboneElement {
+  /**
+   * Id of fixture used to compare the "sourceId/path" evaluations to.
+   */
+  compareToSourceId?: string | undefined;
+  _compareToSourceId?: Element | undefined;
+  /**
+   * XPath or JSONPath expression against fixture used to compare the "sourceId/path" evaluations to.
+   */
+  compareToSourcePath?: string | undefined;
+  _compareToSourcePath?: Element | undefined;
+  /**
+   * xml | json
+   * The content-type or mime-type to use for RESTful operation in the 'Content-Type' header.
+   */
+  contentType?: ('xml'|'json') | undefined;
+  _contentType?: Element | undefined;
+  /**
+   * Tracking/reporting assertion description
+   * The description would be used by test engines for tracking and reporting purposes.
+   */
+  description?: string | undefined;
+  _description?: Element | undefined;
+  /**
+   * response | request
+   * The direction to use for the assertion.
+   */
+  direction?: ('response'|'request') | undefined;
+  _direction?: Element | undefined;
+  /**
+   * HTTP header field name
+   * The HTTP header field name e.g. 'Location'.
+   */
+  headerField?: string | undefined;
+  _headerField?: Element | undefined;
+  /**
+   * Tracking/logging assertion label
+   * The label would be used for tracking/logging purposes by test engines.
+   */
+  label?: string | undefined;
+  _label?: Element | undefined;
+  /**
+   * Fixture Id of minimum content resource
+   * The ID of a fixture.  Asserts that the response contains at a minimumId the fixture specified by minimumId.
+   */
+  minimumId?: string | undefined;
+  _minimumId?: Element | undefined;
+  /**
+   * Perform validation on navigation links?
+   * Whether or not the test execution performs validation on the bundle navigation links.
+   */
+  navigationLinks?: boolean | undefined;
+  _navigationLinks?: Element | undefined;
+  /**
+   * The operator type.
+   */
+  operator?: ('equals'|'notEquals'|'in'|'notIn'|'greaterThan'|'lessThan'|'empty'|'notEmpty'|'contains'|'notContains') | undefined;
+  _operator?: Element | undefined;
+  /**
+   * XPath or JSONPath expression
+   * The XPath or JSONPath expression to be evaluated against the fixture representing the response received from server.
+   */
+  path?: string | undefined;
+  _path?: Element | undefined;
+  /**
+   * Resource type
+   * The type of the resource.  See http://hl7-fhir.github.io/resourcelist.html.
+   */
+  resource?: ('Address'|'Age'|'Annotation'|'Attachment'|'BackboneElement'|'CodeableConcept'|'Coding'|'ContactPoint'|'Count'|'Distance'|'Duration'|'Element'|'ElementDefinition'|'Extension'|'HumanName'|'Identifier'|'Meta'|'Money'|'Narrative'|'Period'|'Quantity'|'Range'|'Ratio'|'Reference'|'SampledData'|'Signature'|'SimpleQuantity'|'Timing'|'base64Binary'|'boolean'|'code'|'date'|'dateTime'|'decimal'|'id'|'instant'|'integer'|'markdown'|'oid'|'positiveInt'|'string'|'time'|'unsignedInt'|'uri'|'uuid'|'xhtml'|'Account'|'AllergyIntolerance'|'Appointment'|'AppointmentResponse'|'AuditEvent'|'Basic'|'Binary'|'BodySite'|'Bundle'|'CarePlan'|'Claim'|'ClaimResponse'|'ClinicalImpression'|'Communication'|'CommunicationRequest'|'Composition'|'ConceptMap'|'Condition'|'Conformance'|'Contract'|'Coverage'|'DataElement'|'DetectedIssue'|'Device'|'DeviceComponent'|'DeviceMetric'|'DeviceUseRequest'|'DeviceUseStatement'|'DiagnosticOrder'|'DiagnosticReport'|'DocumentManifest'|'DocumentReference'|'DomainResource'|'EligibilityRequest'|'EligibilityResponse'|'Encounter'|'EnrollmentRequest'|'EnrollmentResponse'|'EpisodeOfCare'|'ExplanationOfBenefit'|'FamilyMemberHistory'|'Flag'|'Goal'|'Group'|'HealthcareService'|'ImagingObjectSelection'|'ImagingStudy'|'Immunization'|'ImmunizationRecommendation'|'ImplementationGuide'|'List'|'Location'|'Media'|'Medication'|'MedicationAdministration'|'MedicationDispense'|'MedicationOrder'|'MedicationStatement'|'MessageHeader'|'NamingSystem'|'NutritionOrder'|'Observation'|'OperationDefinition'|'OperationOutcome'|'Order'|'OrderResponse'|'Organization'|'Parameters'|'Patient'|'PaymentNotice'|'PaymentReconciliation'|'Person'|'Practitioner'|'Procedure'|'ProcedureRequest'|'ProcessRequest'|'ProcessResponse'|'Provenance'|'Questionnaire'|'QuestionnaireResponse'|'ReferralRequest'|'RelatedPerson'|'Resource'|'RiskAssessment'|'Schedule'|'SearchParameter'|'Slot'|'Specimen'|'StructureDefinition'|'Subscription'|'Substance'|'SupplyDelivery'|'SupplyRequest'|'TestScript'|'ValueSet'|'VisionPrescription') | undefined;
+  _resource?: Element | undefined;
+  /**
+   * okay | created | noContent | notModified | bad | forbidden | notFound | methodNotAllowed | conflict | gone | preconditionFailed | unprocessable.
+   */
+  response?: ('okay'|'created'|'noContent'|'notModified'|'bad'|'forbidden'|'notFound'|'methodNotAllowed'|'conflict'|'gone'|'preconditionFailed'|'unprocessable') | undefined;
+  _response?: Element | undefined;
+  /**
+   * HTTP response code to test
+   * The value of the HTTP response code to be tested.
+   */
+  responseCode?: string | undefined;
+  _responseCode?: Element | undefined;
+  /**
+   * Fixture Id of source expression or headerField
+   * Fixture to evaluate the XPath/JSONPath expression or the headerField  against.
+   */
+  sourceId?: string | undefined;
+  _sourceId?: Element | undefined;
+  /**
+   * Profile Id of validation profile reference
+   * The ID of the Profile to validate against.
+   */
+  validateProfileId?: string | undefined;
+  _validateProfileId?: Element | undefined;
+  /**
+   * The value to compare to.
+   */
+  value?: string | undefined;
+  _value?: Element | undefined;
+  /**
+   * Will this assert produce a warning only on error?
+   * Whether or not the test execution will produce a warning only on error for this assert.
+   */
+  warningOnly?: boolean | undefined;
+  _warningOnly?: Element | undefined;
+}
+/**
+ * The setup operation to perform
+ * The operation to perform.
+ */
+export interface TestScriptSetupActionOperation extends BackboneElement {
+  /**
+   * xml | json
+   * The content-type or mime-type to use for RESTful operation in the 'Accept' header.
+   */
+  accept?: ('xml'|'json') | undefined;
+  _accept?: Element | undefined;
+  /**
+   * xml | json
+   * The content-type or mime-type to use for RESTful operation in the 'Content-Type' header.
+   */
+  contentType?: ('xml'|'json') | undefined;
+  _contentType?: Element | undefined;
+  /**
+   * Tracking/reporting operation description
+   * The description would be used by test engines for tracking and reporting purposes.
+   */
+  description?: string | undefined;
+  _description?: Element | undefined;
+  /**
+   * Which server to perform the operation on.
+   */
+  destination?: number | undefined;
+  /**
+   * Whether or not to send the request url in encoded format
+   * Whether or not to implicitly send the request url in encoded format. The default is true to match the standard RESTful client behavior. Set to false when communicating with a server that does not support encoded url paths.
+   */
+  encodeRequestUrl?: boolean | undefined;
+  _encodeRequestUrl?: Element | undefined;
+  /**
+   * Tracking/logging operation label
+   * The label would be used for tracking/logging purposes by test engines.
+   */
+  label?: string | undefined;
+  _label?: Element | undefined;
+  /**
+   * Explicitly defined path parameters
+   * Path plus parameters after [type].  Used to set parts of the request URL explicitly.
+   */
+  params?: string | undefined;
+  _params?: Element | undefined;
+  /**
+   * Each operation can have one ore more header elements
+   * Header elements would be used to set HTTP headers.
+   */
+  requestHeader?: TestScriptSetupActionOperationRequestHeader[] | undefined;
+  /**
+   * Resource type
+   * The type of the resource.  See http://hl7-fhir.github.io/resourcelist.html.
+   */
+  resource?: ('Address'|'Age'|'Annotation'|'Attachment'|'BackboneElement'|'CodeableConcept'|'Coding'|'ContactPoint'|'Count'|'Distance'|'Duration'|'Element'|'ElementDefinition'|'Extension'|'HumanName'|'Identifier'|'Meta'|'Money'|'Narrative'|'Period'|'Quantity'|'Range'|'Ratio'|'Reference'|'SampledData'|'Signature'|'SimpleQuantity'|'Timing'|'base64Binary'|'boolean'|'code'|'date'|'dateTime'|'decimal'|'id'|'instant'|'integer'|'markdown'|'oid'|'positiveInt'|'string'|'time'|'unsignedInt'|'uri'|'uuid'|'xhtml'|'Account'|'AllergyIntolerance'|'Appointment'|'AppointmentResponse'|'AuditEvent'|'Basic'|'Binary'|'BodySite'|'Bundle'|'CarePlan'|'Claim'|'ClaimResponse'|'ClinicalImpression'|'Communication'|'CommunicationRequest'|'Composition'|'ConceptMap'|'Condition'|'Conformance'|'Contract'|'Coverage'|'DataElement'|'DetectedIssue'|'Device'|'DeviceComponent'|'DeviceMetric'|'DeviceUseRequest'|'DeviceUseStatement'|'DiagnosticOrder'|'DiagnosticReport'|'DocumentManifest'|'DocumentReference'|'DomainResource'|'EligibilityRequest'|'EligibilityResponse'|'Encounter'|'EnrollmentRequest'|'EnrollmentResponse'|'EpisodeOfCare'|'ExplanationOfBenefit'|'FamilyMemberHistory'|'Flag'|'Goal'|'Group'|'HealthcareService'|'ImagingObjectSelection'|'ImagingStudy'|'Immunization'|'ImmunizationRecommendation'|'ImplementationGuide'|'List'|'Location'|'Media'|'Medication'|'MedicationAdministration'|'MedicationDispense'|'MedicationOrder'|'MedicationStatement'|'MessageHeader'|'NamingSystem'|'NutritionOrder'|'Observation'|'OperationDefinition'|'OperationOutcome'|'Order'|'OrderResponse'|'Organization'|'Parameters'|'Patient'|'PaymentNotice'|'PaymentReconciliation'|'Person'|'Practitioner'|'Procedure'|'ProcedureRequest'|'ProcessRequest'|'ProcessResponse'|'Provenance'|'Questionnaire'|'QuestionnaireResponse'|'ReferralRequest'|'RelatedPerson'|'Resource'|'RiskAssessment'|'Schedule'|'SearchParameter'|'Slot'|'Specimen'|'StructureDefinition'|'Subscription'|'Substance'|'SupplyDelivery'|'SupplyRequest'|'TestScript'|'ValueSet'|'VisionPrescription') | undefined;
+  _resource?: Element | undefined;
+  /**
+   * Fixture Id of mapped response
+   * The fixture id (maybe new) to map to the response.
+   */
+  responseId?: string | undefined;
+  _responseId?: Element | undefined;
+  /**
+   * Fixture Id of body for PUT and POST requests
+   * The id of the fixture used as the body of a PUT or POST request.
+   */
+  sourceId?: string | undefined;
+  _sourceId?: Element | undefined;
+  /**
+   * Id of fixture used for extracting the [id],  [type], and [vid] for GET requests.
+   */
+  targetId?: string | undefined;
+  _targetId?: Element | undefined;
+  /**
+   * The setup operation type that will be executed
+   * Server interaction or operation type.
+   */
+  type?: Coding | undefined;
+  /**
+   * Request URL
+   * Complete request URL.
+   */
+  url?: string | undefined;
+  _url?: Element | undefined;
+}
+/**
+ * Each operation can have one ore more header elements
+ * Header elements would be used to set HTTP headers.
+ */
+export interface TestScriptSetupActionOperationRequestHeader extends BackboneElement {
+  /**
+   * HTTP header field name
+   * The HTTP header field e.g. "Accept".
+   */
+  field: string;
+  _field?: Element | undefined;
+  /**
+   * HTTP headerfield value
+   * The value of the header e.g. "application/xml".
+   */
+  value: string;
+  _value?: Element | undefined;
+}
+/**
+ * A series of required clean up steps
+ * A series of operations required to clean up after the all the tests are executed (successfully or otherwise).
+ */
+export interface TestScriptTeardown extends BackboneElement {
+  /**
+   * One or more teardown operations to perform
+   * The teardown action will only contain an operation.
+   */
+  action: TestScriptTeardownAction[];
+}
+/**
+ * One or more teardown operations to perform
+ * The teardown action will only contain an operation.
+ */
+export interface TestScriptTeardownAction extends BackboneElement {
+  /**
+   * The teardown operation to perform
+   * An operation would involve a REST request to a server.
+   */
+  operation?: TestScriptSetupActionOperation | undefined;
+}
+/**
+ * A test in this script.
+ */
+export interface TestScriptTest extends BackboneElement {
+  /**
+   * A test operation or assert to perform
+   * Action would contain either an operation or an assertion.
+   */
+  action: TestScriptTestAction[];
+  /**
+   * Tracking/reporting short description of the test
+   * A short description of the test used by test engines for tracking and reporting purposes.
+   */
+  description?: string | undefined;
+  _description?: Element | undefined;
+  /**
+   * Capabilities  that are expected to function correctly on the FHIR server being tested
+   * Capabilities that must exist and are assumed to function correctly on the FHIR server being tested.
+   */
+  metadata?: TestScriptMetadata | undefined;
+  /**
+   * Tracking/logging name of this test
+   * The name of this test used for tracking/logging purposes by test engines.
+   */
+  name?: string | undefined;
+  _name?: Element | undefined;
+}
+/**
+ * A test operation or assert to perform
+ * Action would contain either an operation or an assertion.
+ */
+export interface TestScriptTestAction extends BackboneElement {
+  /**
+   * The setup assertion to perform
+   * Evaluates the results of previous operations to determine if the server under test behaves appropriately.
+   */
+  assert?: TestScriptSetupActionAssert | undefined;
+  /**
+   * The setup operation to perform
+   * An operation would involve a REST request to a server.
+   */
+  operation?: TestScriptSetupActionOperation | undefined;
+}
+/**
+ * Placeholder for evaluated elements
+ * Variable is set based either on element value in response body or on header field value in the response headers.
+ */
+export interface TestScriptVariable extends BackboneElement {
+  /**
+   * HTTP header field name for source
+   * Will be used to grab the HTTP header field value from the headers that sourceId is pointing to.
+   */
+  headerField?: string | undefined;
+  _headerField?: Element | undefined;
+  /**
+   * Descriptive name for this variable.
    */
   name: string;
   _name?: Element | undefined;
   /**
-   * Value of the named parameter
-   * The value of the parameter.
+   * XPath or JSONPath against the fixture body.  When variables are defined, either headerField must be specified or path, but not both.
    */
-  valueBoolean?: boolean | undefined;
-  _valueBoolean?: Element | undefined;
+  path?: string | undefined;
+  _path?: Element | undefined;
   /**
-   * Value of the named parameter
-   * The value of the parameter.
+   * Fixture Id of source expression or headerField within this variable
+   * Fixture to evaluate the XPath/JSONPath expression or the headerField  against within this variable.
    */
-  valueString?: string | undefined;
-  _valueString?: Element | undefined;
-  /**
-   * Value of the named parameter
-   * The value of the parameter.
-   */
-  valueNumber?: number | undefined;
-}
-/**
- * Used when the value set is "expanded"
- * A value set can also be "expanded", where the value set is turned into a simple collection of enumerated codes. This element holds the expansion, if it has been performed.
- */
-export interface ValueSetExpansion extends BackboneElement {
-  /**
-   * Codes in the value set
-   * The codes that are contained in the value set expansion.
-   */
-  contains?: ValueSetExpansionContains[] | undefined;
-  /**
-   * Uniquely identifies this expansion
-   * An identifier that uniquely identifies this expansion of the valueset. Systems may re-use the same identifier as long as the expansion and the definition remain the same, but are not required to do so.
-   */
-  identifier: string;
-  _identifier?: Element | undefined;
-  /**
-   * Offset at which this resource starts
-   * If paging is being used, the offset at which this resource starts.  I.e. this resource is a partial view into the expansion. If paging is not being used, this element SHALL not be present.
-   */
-  offset?: number | undefined;
-  /**
-   * Parameter that controlled the expansion process
-   * A parameter that controlled the expansion process. These parameters may be used by users of expanded value sets to check whether the expansion is suitable for a particular purpose, or to pick the correct expansion.
-   */
-  parameter?: ValueSetExpansionParameter[] | undefined;
-  /**
-   * Time ValueSet expansion happened
-   * The time at which the expansion was produced by the expanding system.
-   */
-  timestamp: string;
-  _timestamp?: Element | undefined;
-  /**
-   * Total number of codes in the expansion
-   * The total number of concepts in the expansion. If the number of concept nodes in this resource is less than the stated number, then the server can return more using the offset parameter.
-   */
-  total?: number | undefined;
+  sourceId?: string | undefined;
+  _sourceId?: Element | undefined;
 }
 /**
  * Base StructureDefinition for ValueSet Resource
@@ -14867,6 +14561,359 @@ export interface ValueSet extends DomainResource {
   _version?: Element | undefined;
 }
 /**
+ * An inline code system, which is part of this value set
+ * A definition of a code system, inlined into the value set (as a packaging convenience). Note that the inline code system may be used from other value sets by referring to its (codeSystem.system) directly.
+ */
+export interface ValueSetCodeSystem extends BackboneElement {
+  /**
+   * If code comparison is case sensitive when codes within this system are compared to each other.
+   */
+  caseSensitive?: boolean | undefined;
+  _caseSensitive?: Element | undefined;
+  /**
+   * Concepts in the code system
+   * Concepts that are in the code system. The concept definitions are inherently hierarchical, but the definitions must be consulted to determine what the meaning of the hierarchical relationships are.
+   */
+  concept: ValueSetCodeSystemConcept[];
+  /**
+   * URI to identify the code system (e.g. in Coding.system)
+   * An absolute URI that is used to reference this code system, including in [Coding]{datatypes.html#Coding}.system.
+   */
+  system: string;
+  _system?: Element | undefined;
+  /**
+   * Version (for use in Coding.version)
+   * The version of this code system that defines the codes. Note that the version is optional because a well maintained code system does not suffer from versioning, and therefore the version does not need to be maintained. However many code systems are not well maintained, and the version needs to be defined and tracked.
+   */
+  version?: string | undefined;
+  _version?: Element | undefined;
+}
+/**
+ * Concepts in the code system
+ * Concepts that are in the code system. The concept definitions are inherently hierarchical, but the definitions must be consulted to determine what the meaning of the hierarchical relationships are.
+ */
+export interface ValueSetCodeSystemConcept extends BackboneElement {
+  /**
+   * If this code is not for use as a real concept.
+   */
+  abstract?: boolean | undefined;
+  _abstract?: Element | undefined;
+  /**
+   * Code that identifies concept
+   * A code - a text symbol - that uniquely identifies the concept within the code system.
+   */
+  code: string;
+  _code?: Element | undefined;
+  /**
+   * Child Concepts (is-a/contains/categorizes)
+   * Defines children of a concept to produce a hierarchy of concepts. The nature of the relationships is variable (is-a/contains/categorizes) and can only be determined by examining the definitions of the concepts.
+   */
+  concept?: ValueSetCodeSystemConcept[] | undefined;
+  /**
+   * Formal definition
+   * The formal definition of the concept. The value set resource does not make formal definitions required, because of the prevalence of legacy systems. However, they are highly recommended, as without them there is no formal meaning associated with the concept.
+   */
+  definition?: string | undefined;
+  _definition?: Element | undefined;
+  /**
+   * Additional representations for the concept - other languages, aliases, specialized purposes, used for particular purposes, etc.
+   */
+  designation?: ValueSetCodeSystemConceptDesignation[] | undefined;
+  /**
+   * Text to display to the user
+   * A human readable string that is the recommended default way to present this concept to a user.
+   */
+  display?: string | undefined;
+  _display?: Element | undefined;
+}
+/**
+ * Additional representations for the concept - other languages, aliases, specialized purposes, used for particular purposes, etc.
+ */
+export interface ValueSetCodeSystemConceptDesignation extends BackboneElement {
+  /**
+   * Human language of the designation
+   * The language this designation is defined for.
+   */
+  language?: string | undefined;
+  _language?: Element | undefined;
+  /**
+   * Details how this designation would be used
+   * A code that details how this designation would be used.
+   */
+  use?: Coding | undefined;
+  /**
+   * The text value for this designation.
+   */
+  value: string;
+  _value?: Element | undefined;
+}
+/**
+ * When value set includes codes from elsewhere
+ * A set of criteria that provide the content logical definition of the value set by including or excluding codes from outside this value set.
+ */
+export interface ValueSetCompose extends BackboneElement {
+  /**
+   * Explicitly exclude codes
+   * Exclude one or more codes from the value set.
+   */
+  exclude?: ValueSetComposeInclude[] | undefined;
+  /**
+   * Import the contents of another value set
+   * Includes the contents of the referenced value set as a part of the contents of this value set. This is an absolute URI that is a reference to ValueSet.uri.
+   */
+  import?: string[] | undefined;
+  _import?: Element[] | undefined;
+  /**
+   * Include one or more codes from a code system.
+   */
+  include?: ValueSetComposeInclude[] | undefined;
+}
+/**
+ * Include one or more codes from a code system.
+ */
+export interface ValueSetComposeInclude extends BackboneElement {
+  /**
+   * A concept defined in the system
+   * Specifies a concept to be included or excluded.
+   */
+  concept?: ValueSetComposeIncludeConcept[] | undefined;
+  /**
+   * Select codes/concepts by their properties (including relationships)
+   * Select concepts by specify a matching criteria based on the properties (including relationships) defined by the system. If multiple filters are specified, they SHALL all be true.
+   */
+  filter?: ValueSetComposeIncludeFilter[] | undefined;
+  /**
+   * The system the codes come from
+   * An absolute URI which is the code system from which the selected codes come from.
+   */
+  system: string;
+  _system?: Element | undefined;
+  /**
+   * Specific version of the code system referred to
+   * The version of the code system that the codes are selected from.
+   */
+  version?: string | undefined;
+  _version?: Element | undefined;
+}
+/**
+ * A concept defined in the system
+ * Specifies a concept to be included or excluded.
+ */
+export interface ValueSetComposeIncludeConcept extends BackboneElement {
+  /**
+   * Code or expression from system
+   * Specifies a code for the concept to be included or excluded.
+   */
+  code: string;
+  _code?: Element | undefined;
+  /**
+   * Additional representations for this valueset
+   * Additional representations for this concept when used in this value set - other languages, aliases, specialized purposes, used for particular purposes, etc.
+   */
+  designation?: ValueSetCodeSystemConceptDesignation[] | undefined;
+  /**
+   * Test to display for this code for this value set
+   * The text to display to the user for this concept in the context of this valueset. If no display is provided, then applications using the value set use the display specified for the code by the system.
+   */
+  display?: string | undefined;
+  _display?: Element | undefined;
+}
+/**
+ * Select codes/concepts by their properties (including relationships)
+ * Select concepts by specify a matching criteria based on the properties (including relationships) defined by the system. If multiple filters are specified, they SHALL all be true.
+ */
+export interface ValueSetComposeIncludeFilter extends BackboneElement {
+  /**
+   * The kind of operation to perform as a part of the filter criteria.
+   */
+  op: ('='|'is-a'|'is-not-a'|'regex'|'in'|'not-in');
+  _op?: Element | undefined;
+  /**
+   * A property defined by the code system
+   * A code that identifies a property defined in the code system.
+   */
+  property: string;
+  _property?: Element | undefined;
+  /**
+   * Code from the system, or regex criteria
+   * The match value may be either a code defined by the system, or a string value, which is a regex match on the literal string of the property value.
+   */
+  value: string;
+  _value?: Element | undefined;
+}
+/**
+ * Contact details of the publisher
+ * Contacts to assist a user in finding and communicating with the publisher.
+ */
+export interface ValueSetContact extends BackboneElement {
+  /**
+   * Name of an individual to contact
+   * The name of an individual to contact regarding the value set.
+   */
+  name?: string | undefined;
+  _name?: Element | undefined;
+  /**
+   * Contact details for individual or publisher
+   * Contact details for individual (if a name was provided) or the publisher.
+   */
+  telecom?: ContactPoint[] | undefined;
+}
+/**
+ * Used when the value set is "expanded"
+ * A value set can also be "expanded", where the value set is turned into a simple collection of enumerated codes. This element holds the expansion, if it has been performed.
+ */
+export interface ValueSetExpansion extends BackboneElement {
+  /**
+   * Codes in the value set
+   * The codes that are contained in the value set expansion.
+   */
+  contains?: ValueSetExpansionContains[] | undefined;
+  /**
+   * Uniquely identifies this expansion
+   * An identifier that uniquely identifies this expansion of the valueset. Systems may re-use the same identifier as long as the expansion and the definition remain the same, but are not required to do so.
+   */
+  identifier: string;
+  _identifier?: Element | undefined;
+  /**
+   * Offset at which this resource starts
+   * If paging is being used, the offset at which this resource starts.  I.e. this resource is a partial view into the expansion. If paging is not being used, this element SHALL not be present.
+   */
+  offset?: number | undefined;
+  /**
+   * Parameter that controlled the expansion process
+   * A parameter that controlled the expansion process. These parameters may be used by users of expanded value sets to check whether the expansion is suitable for a particular purpose, or to pick the correct expansion.
+   */
+  parameter?: ValueSetExpansionParameter[] | undefined;
+  /**
+   * Time ValueSet expansion happened
+   * The time at which the expansion was produced by the expanding system.
+   */
+  timestamp: string;
+  _timestamp?: Element | undefined;
+  /**
+   * Total number of codes in the expansion
+   * The total number of concepts in the expansion. If the number of concept nodes in this resource is less than the stated number, then the server can return more using the offset parameter.
+   */
+  total?: number | undefined;
+}
+/**
+ * Codes in the value set
+ * The codes that are contained in the value set expansion.
+ */
+export interface ValueSetExpansionContains extends BackboneElement {
+  /**
+   * If user cannot select this entry
+   * If true, this entry is included in the expansion for navigational purposes, and the user cannot select the code directly as a proper value.
+   */
+  abstract?: boolean | undefined;
+  _abstract?: Element | undefined;
+  /**
+   * Code - if blank, this is not a selectable code
+   * The code for this item in the expansion hierarchy. If this code is missing the entry in the hierarchy is a place holder (abstract) and does not represent a valid code in the value set.
+   */
+  code?: string | undefined;
+  _code?: Element | undefined;
+  /**
+   * Codes contained under this entry
+   * Other codes and entries contained under this entry in the hierarchy.
+   */
+  contains?: ValueSetExpansionContains[] | undefined;
+  /**
+   * User display for the concept
+   * The recommended display for this item in the expansion.
+   */
+  display?: string | undefined;
+  _display?: Element | undefined;
+  /**
+   * System value for the code
+   * An absolute URI which is the code system in which the code for this item in the expansion is defined.
+   */
+  system?: string | undefined;
+  _system?: Element | undefined;
+  /**
+   * Version in which this code/display is defined
+   * The version of this code system that defined this code and/or display. This should only be used with code systems that do not enforce concept permanence.
+   */
+  version?: string | undefined;
+  _version?: Element | undefined;
+}
+/**
+ * Parameter that controlled the expansion process
+ * A parameter that controlled the expansion process. These parameters may be used by users of expanded value sets to check whether the expansion is suitable for a particular purpose, or to pick the correct expansion.
+ */
+export interface ValueSetExpansionParameter extends BackboneElement {
+  /**
+   * Name as assigned by the server
+   * The name of the parameter.
+   */
+  name: string;
+  _name?: Element | undefined;
+  /**
+   * Value of the named parameter
+   * The value of the parameter.
+   */
+  valueBoolean?: boolean | undefined;
+  _valueBoolean?: Element | undefined;
+  /**
+   * Value of the named parameter
+   * The value of the parameter.
+   */
+  valueString?: string | undefined;
+  _valueString?: Element | undefined;
+  /**
+   * Value of the named parameter
+   * The value of the parameter.
+   */
+  valueNumber?: number | undefined;
+}
+/**
+ * Base StructureDefinition for VisionPrescription Resource
+ */
+export interface VisionPrescription extends DomainResource {
+  /** Resource Type Name (for serialization) */
+  readonly resourceType: 'VisionPrescription';
+  /**
+   * When prescription was authorized
+   * The date (and perhaps time) when the prescription was written.
+   */
+  dateWritten?: string | undefined;
+  _dateWritten?: Element | undefined;
+  /**
+   * Vision supply authorization
+   * Deals with details of the dispense part of the supply specification.
+   */
+  dispense?: VisionPrescriptionDispense[] | undefined;
+  /**
+   * Created during encounter / admission / stay
+   * A link to a resource that identifies the particular occurrence of contact between patient and health care provider.
+   */
+  encounter?: Reference | undefined;
+  /**
+   * Business identifier which may be used by other parties to reference or identify the prescription.
+   */
+  identifier?: Identifier[] | undefined;
+  /**
+   * Who prescription is for
+   * A link to a resource representing the person to whom the vision products will be supplied.
+   */
+  patient?: Reference | undefined;
+  /**
+   * Who authorizes the vision product
+   * The healthcare professional responsible for authorizing the prescription.
+   */
+  prescriber?: Reference | undefined;
+  /**
+   * Reason or indication for writing the prescription
+   * Can be the reason or the indication for writing the prescription.
+   */
+  reasonCodeableConcept?: CodeableConcept | undefined;
+  /**
+   * Reason or indication for writing the prescription
+   * Can be the reason or the indication for writing the prescription.
+   */
+  reasonReference?: Reference | undefined;
+}
+/**
  * Vision supply authorization
  * Deals with details of the dispense part of the supply specification.
  */
@@ -14948,53 +14995,6 @@ export interface VisionPrescriptionDispense extends BackboneElement {
    * Lens power measured in diopters (0.25 units).
    */
   sphere?: number | undefined;
-}
-/**
- * Base StructureDefinition for VisionPrescription Resource
- */
-export interface VisionPrescription extends DomainResource {
-  /** Resource Type Name (for serialization) */
-  readonly resourceType: 'VisionPrescription';
-  /**
-   * When prescription was authorized
-   * The date (and perhaps time) when the prescription was written.
-   */
-  dateWritten?: string | undefined;
-  _dateWritten?: Element | undefined;
-  /**
-   * Vision supply authorization
-   * Deals with details of the dispense part of the supply specification.
-   */
-  dispense?: VisionPrescriptionDispense[] | undefined;
-  /**
-   * Created during encounter / admission / stay
-   * A link to a resource that identifies the particular occurrence of contact between patient and health care provider.
-   */
-  encounter?: Reference | undefined;
-  /**
-   * Business identifier which may be used by other parties to reference or identify the prescription.
-   */
-  identifier?: Identifier[] | undefined;
-  /**
-   * Who prescription is for
-   * A link to a resource representing the person to whom the vision products will be supplied.
-   */
-  patient?: Reference | undefined;
-  /**
-   * Who authorizes the vision product
-   * The healthcare professional responsible for authorizing the prescription.
-   */
-  prescriber?: Reference | undefined;
-  /**
-   * Reason or indication for writing the prescription
-   * Can be the reason or the indication for writing the prescription.
-   */
-  reasonCodeableConcept?: CodeableConcept | undefined;
-  /**
-   * Reason or indication for writing the prescription
-   * Can be the reason or the indication for writing the prescription.
-   */
-  reasonReference?: Reference | undefined;
 }
 /**
  * Resource binding for generic use.

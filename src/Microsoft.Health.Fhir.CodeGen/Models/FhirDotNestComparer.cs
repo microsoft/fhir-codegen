@@ -56,9 +56,9 @@ public class FhirDotNestComparer : IComparer<string>
 
                 if (!(hasX || hasY)) return 0;
 
-                // we want longer paths before shorter ones for nesting
-                if (!hasX) return 1;
-                if (!hasY) return -1;
+                // we want shorter paths before shorter ones for nesting
+                if (!hasX) return -1;
+                if (!hasY) return 1;
 
                 int itemResult = string.Compare(xE.Current, yE.Current);
                 if (itemResult != 0) return itemResult;

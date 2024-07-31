@@ -751,7 +751,7 @@ public partial class DefinitionCollection
         }
 
         // strip the pipe and version
-        return vsUrl.Substring(0, lastPipe - 1);
+        return vsUrl.Substring(0, lastPipe);
     }
 
     /// <summary>Check element bindings.</summary>

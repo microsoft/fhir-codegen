@@ -3,6 +3,45 @@ using System.Collections.Generic;
 using System.Text;
 using Antlr4.Runtime.Atn;
 
+#if NETSTANDARD2_0
+// some functionality must be specified in CompilerServices to Polyfill without errors
+namespace System.Runtime.CompilerServices
+{
+    internal static class RuntimeHelpers
+    {
+        // For a value of type System.Range to be used in an array element access expression, the following member must be present:
+        public static T[] GetSubArray<T>(T[] array, System.Range range)
+        {
+            if (array == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            (int offset, int length) = range.GetOffsetAndLength(array.Length);
+
+            if (default(T)! != null || typeof(T[]) == array.GetType()) // TODO-NULLABLE: default(T) == null warning (https://github.com/dotnet/roslyn/issues/34757)
+            {
+                if (length == 0)
+                {
+                    return Array.Empty<T>();
+                }
+
+                var dest = new T[length];
+                Array.Copy(array, offset, dest, 0, length);
+                return dest;
+            }
+            else
+            {
+                // The array is actually a U[] where U:T.
+                T[] dest = (T[])Array.CreateInstance(array.GetType().GetElementType()!, length);
+                Array.Copy(array, offset, dest, 0, length);
+                return dest;
+            }
+        }
+    }
+}
+#endif
+
 namespace Microsoft.Health.Fhir.CodeGen.Polyfill
 {
     internal static class LiftedExtensions
@@ -21,6 +60,16 @@ namespace Microsoft.Health.Fhir.CodeGen.Polyfill
     }
 
 #if NETSTANDARD2_0
+
+    //internal static class ArrayExtensions
+    //{
+    //    public static T[] GetSubArray<T>(this T[] array, Range range)
+    //    {
+    //        (int offset, int length) = range.GetOffsetAndLength(array.Length);
+            
+    //    }
+    //}
+
     internal static class KeyValuePairExtensions
     {
         public static void Deconstruct<TKey, TValue>(this KeyValuePair<TKey, TValue> kvp, out TKey key, out TValue value)
