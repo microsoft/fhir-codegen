@@ -546,7 +546,7 @@ public class PackageComparer
                     File.WriteAllText(path, ext.ToJson(jsonSettings));
                 }
 
-                // for data types, we NEVER want to nest into the type if it is new (resources can)
+                // for data types, we do not want to nest into the type if it is new
                 if (sdComparison.Relationship == null)
                 {
                     if (ext != null)
@@ -656,6 +656,13 @@ public class PackageComparer
 
                     File.WriteAllText(path, ext.ToJson(jsonSettings));
                 }
+
+                // for resources, we do not want to nest into the resource if it is new - only available as a single extension on basic
+                if (sdComparison.Relationship == null)
+                {
+                    // done processing this structure
+                    break;
+                }
             }
         }
 
@@ -689,6 +696,7 @@ public class PackageComparer
             return null;
         }
 
+        // TODO(ginoc): SubscriptionTopic is not making a complex extension!!!
         string extensionIdPath = edComparison.Source.Path.Replace("[", "%5B").Replace("]", "%5D");
 
         // determine the context based on the closest path that has a target
@@ -850,9 +858,56 @@ public class PackageComparer
         });
 
         // check for children
-        ElementDefinition[] children = sourceSd.cgElements(sourceEd.Path, false, false, true).ToArray();
+        ElementDefinition[] children = sourceSd.cgElements(
+            sourceEd.Path,
+            topLevelOnly: true,
+            includeRoot: false,
+            skipSlices: true).ToArray();
 
-        if (children.Length == 0)
+        if (children.Length != 0)
+        {
+            // recurse into each child element
+            foreach (ElementDefinition child in children)
+            {
+                if (basicSd != null)
+                {
+                    // TODO(ginoc): Should this filter based on Basic or DomainResource?
+                    string basicPath = child.Path.Replace(sdComparison.Source.Id, "Basic");
+                    if (basicSd.cgTryGetElementByPath(basicPath, out _))
+                    {
+                        continue;
+                    }
+                }
+
+                // skip Element.id and Extension definitions
+                if ((!string.IsNullOrEmpty(child.Base?.Path)) &&
+                     _exclusionBaseTypes.Contains(child.Base!.Path))
+                {
+                    continue;
+                }
+
+                AddElementToExtension(
+                    ext,
+                    elementPath + ".extension:" + child.cgName(),
+                    sdComparison,
+                    sourceSd,
+                    child,
+                    allowedExtensionTypes,
+                    nonExtensionTypesAndContexts,
+                    vsDifferentialLookup,
+                    basicSd: basicSd,
+                    complexTypeExtensionMap: complexTypeExtensionMap);
+            }
+
+            // if we have child extensions, we cannot have a value
+            ext.Differential.Element.Add(new()
+            {
+                Path = elementPath + ".value[x]",
+                Max = "0",
+            });
+
+        }
+        else
         {
             Dictionary<string, string> sliceUrisByType = [];
             List<ElementDefinition.TypeRefComponent> valueTypes = [];
@@ -978,39 +1033,6 @@ public class PackageComparer
                         Type = new() { new() { Code = "Extension", Profile = [ sliceUri ] } },
                     });
                 }
-            }
-        }
-        else
-        {
-            foreach (ElementDefinition child in children)
-            {
-                if  (basicSd != null)
-                {
-                    string basicPath = sourceEd.Path.Replace(sdComparison.Source.Id, "Basic");
-                    if (basicSd.cgTryGetElementByPath(basicPath, out _))
-                    {
-                        continue;
-                    }
-                }
-
-                // skip Element.id and Extension definitions
-                if ((!string.IsNullOrEmpty(child.Base?.Path)) &&
-                     _exclusionBaseTypes.Contains(child.Base!.Path))
-                {
-                    continue;
-                }
-
-                AddElementToExtension(
-                    ext,
-                    elementPath + ".extension:" + child.cgName(),
-                    sdComparison,
-                    sourceSd,
-                    child,
-                    allowedExtensionTypes,
-                    nonExtensionTypesAndContexts,
-                    vsDifferentialLookup,
-                    basicSd: basicSd,
-                    complexTypeExtensionMap: complexTypeExtensionMap);
             }
         }
 
@@ -2868,7 +2890,7 @@ public class PackageComparer
         // check for source allowing fewer than destination requires
         if (sourceInfo.MinCardinality < targetInfo.MinCardinality)
         {
-            relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+            relationship = ApplyRelationship(relationship, CMR.SourceIsBroaderThanTarget);
             messages.Add($"{targetInfo.Name} increased the minimum cardinality from {sourceInfo.MinCardinality} to {targetInfo.MinCardinality}");
         }
 
@@ -2882,14 +2904,14 @@ public class PackageComparer
         // check for changing from scalar to array
         if ((sourceInfo.MaxCardinality == 1) && (targetInfo.MaxCardinality != 1))
         {
-            relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+            relationship = ApplyRelationship(relationship, CMR.SourceIsNarrowerThanTarget);
             messages.Add($"{targetInfo.Name} changed from scalar to array (max cardinality from {sourceInfo.MaxCardinalityString} to {targetInfo.MaxCardinalityString})");
         }
 
         // check for changing from array to scalar
         if ((sourceInfo.MaxCardinality != 1) && (targetInfo.MaxCardinality == 1))
         {
-            relationship = ApplyRelationship(relationship, CMR.RelatedTo);
+            relationship = ApplyRelationship(relationship, CMR.SourceIsBroaderThanTarget);
             messages.Add($"{targetInfo.Name} changed from array to scalar (max cardinality from {sourceInfo.MaxCardinalityString} to {targetInfo.MaxCardinalityString})");
         }
 
