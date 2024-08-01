@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -54,5 +55,28 @@ public abstract class FileSystemUtils
         }
 
         return Path.GetFullPath(testDir);
+    }
+
+    public static string GenerateSha256(Stream stream)
+    {
+        if (stream.Position != 0)
+        {
+            stream.Seek(0, SeekOrigin.Begin);
+        }
+
+        // Compute the SHA256 hash
+        using (System.Security.Cryptography.SHA256 sha256 = System.Security.Cryptography.SHA256.Create())
+        {
+            byte[] hash = sha256.ComputeHash(stream);
+
+            // Convert the hash to a hexadecimal string
+            StringBuilder hashString = new StringBuilder();
+            foreach (byte b in hash)
+            {
+                hashString.Append(b.ToString("x2"));
+            }
+
+            return hashString.ToString();
+        }
     }
 }

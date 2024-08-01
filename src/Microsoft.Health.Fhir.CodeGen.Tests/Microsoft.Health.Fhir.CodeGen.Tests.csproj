@@ -75,12 +75,34 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="TestData\Hashes\CSharpFirely2-R3-Satellite.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\Hashes\CSharpFirely2-R4-Satellite.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\Hashes\CSharpFirely2-R4B-Satellite.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\Hashes\CSharpFirely2-R5-Base.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\Hashes\CSharpFirely2-R5-Conformance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\Hashes\CSharpFirely2-R5-Satellite.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="TestData\Packages\packages-01-empty.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="TestData\R5\expansions\ValueSet-units-of-time.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="TestData\Hashes\" />
   </ItemGroup>
 
 </Project>

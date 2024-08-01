@@ -5,9 +5,11 @@
 
 
 using System.IO;
+using System.Text.Json;
 using FluentAssertions;
 using Hl7.Fhir.Model;
 using Microsoft.Health.Fhir.CodeGen.Language;
+using Microsoft.Health.Fhir.CodeGen.Language.Firely;
 using Microsoft.Health.Fhir.CodeGen.Language.Info;
 using Microsoft.Health.Fhir.CodeGen.Language.OpenApi;
 using Microsoft.Health.Fhir.CodeGen.Loader;
@@ -110,6 +112,41 @@ public class GenerationTestFixture
             currentLine.Should().Be(previousLine, $"Line {i} found:\n\t{currentLine}\nexpected:\n\t{previousLine}");
         }
     }
+
+    internal static void CompareGenerationHashes(string existingPath, Dictionary<string, string> current)
+    {
+        if (WriteGeneratedFiles)
+        {
+            File.WriteAllText(existingPath, JsonSerializer.Serialize(current));
+            Assert.Fail("Hash file updated, please re-run the test");
+
+            return;
+        }
+
+        if (!File.Exists(existingPath))
+        {
+            throw new ArgumentException($"Could not find file at path: {existingPath}");
+        }
+
+        string json = File.ReadAllText(existingPath);
+
+        Dictionary<string, string>? previous = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
+
+        previous.Should().NotBeNull();
+        if (previous == null)
+        {
+            return;
+        }
+
+        previous.Count.Should().Be(current.Count);
+
+        foreach ((string path, string hash) in current)
+        {
+            _ = previous.TryGetValue(path, out string? previousHash);
+
+            hash.Should().BeEquivalentTo(previousHash, $"Hashes do not match for {path}!");
+        }
+    }
 }
 
 public class GenerationTestsR5 : IClassFixture<GenerationTestFixture>
@@ -185,6 +222,35 @@ public class GenerationTestsR5 : IClassFixture<GenerationTestFixture>
 
             GenerationTestFixture.CompareGeneration(path, ms);
         }
+    }
+
+    [Theory]
+    [InlineData(CSharpFirelyCommon.GenSubset.Base, "TestData/Hashes/CSharpFirely2-R5-Base.json")]
+    [InlineData(CSharpFirelyCommon.GenSubset.Conformance, "TestData/Hashes/CSharpFirely2-R5-Conformance.json")]
+    [InlineData(CSharpFirelyCommon.GenSubset.Satellite, "TestData/Hashes/CSharpFirely2-R5-Satellite.json")]
+    [Trait("Category", "Generation")]
+    [Trait("Comparison", "Hash")]
+    [Trait("FhirVersion", "R5")]
+    internal void TestFirelyHashesR5(CSharpFirelyCommon.GenSubset subset, string comparisonFilePath)
+    {
+        // Get the absolute path to the file
+        string path = Path.IsPathRooted(comparisonFilePath)
+            ? comparisonFilePath
+            : Path.GetRelativePath(Directory.GetCurrentDirectory(), comparisonFilePath);
+
+        FirelyGenOptions options = new()
+        {
+            Subset = subset,
+        };
+        CSharpFirely2 exportLang = new();
+
+        IFileHashTestable langHashTestable = exportLang;
+
+        langHashTestable.GenerateHashesInsteadOfOutput = true;
+
+        exportLang.Export(options, _loaded);
+
+        GenerationTestFixture.CompareGenerationHashes(path, langHashTestable.FileHashes);
     }
 }
 
@@ -266,6 +332,33 @@ public class GenerationTestsR4B : IClassFixture<GenerationTestFixture>
 
             GenerationTestFixture.CompareGeneration(path, ms);
         }
+    }
+
+    [Theory]
+    [InlineData(CSharpFirelyCommon.GenSubset.Satellite, "TestData/Hashes/CSharpFirely2-R4B-Satellite.json")]
+    [Trait("Category", "Generation")]
+    [Trait("Comparison", "Hash")]
+    [Trait("FhirVersion", "R4B")]
+    internal void TestFirelyHashesR4B(CSharpFirelyCommon.GenSubset subset, string comparisonFilePath)
+    {
+        // Get the absolute path to the file
+        string path = Path.IsPathRooted(comparisonFilePath)
+            ? comparisonFilePath
+            : Path.GetRelativePath(Directory.GetCurrentDirectory(), comparisonFilePath);
+
+        FirelyGenOptions options = new()
+        {
+            Subset = subset,
+        };
+        CSharpFirely2 exportLang = new();
+
+        IFileHashTestable langHashTestable = exportLang;
+
+        langHashTestable.GenerateHashesInsteadOfOutput = true;
+
+        exportLang.Export(options, _loaded);
+
+        GenerationTestFixture.CompareGenerationHashes(path, langHashTestable.FileHashes);
     }
 }
 
@@ -502,6 +595,33 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
             GenerationTestFixture.CompareGeneration(path, ms);
         }
     }
+
+    [Theory]
+    [InlineData(CSharpFirelyCommon.GenSubset.Satellite, "TestData/Hashes/CSharpFirely2-R4-Satellite.json")]
+    [Trait("Category", "Generation")]
+    [Trait("Comparison", "Hash")]
+    [Trait("FhirVersion", "R4")]
+    internal void TestFirelyHashesR4(CSharpFirelyCommon.GenSubset subset, string comparisonFilePath)
+    {
+        // Get the absolute path to the file
+        string path = Path.IsPathRooted(comparisonFilePath)
+            ? comparisonFilePath
+            : Path.GetRelativePath(Directory.GetCurrentDirectory(), comparisonFilePath);
+
+        FirelyGenOptions options = new()
+        {
+            Subset = subset,
+        };
+        CSharpFirely2 exportLang = new();
+
+        IFileHashTestable langHashTestable = exportLang;
+
+        langHashTestable.GenerateHashesInsteadOfOutput = true;
+
+        exportLang.Export(options, _loaded);
+
+        GenerationTestFixture.CompareGenerationHashes(path, langHashTestable.FileHashes);
+    }
 }
 
 public class GenerationTestsR3 : IClassFixture<GenerationTestFixture>
@@ -577,6 +697,33 @@ public class GenerationTestsR3 : IClassFixture<GenerationTestFixture>
 
             GenerationTestFixture.CompareGeneration(path, ms);
         }
+    }
+
+    [Theory]
+    [InlineData(CSharpFirelyCommon.GenSubset.Satellite, "TestData/Hashes/CSharpFirely2-R3-Satellite.json")]
+    [Trait("Category", "Generation")]
+    [Trait("Comparison", "Hash")]
+    [Trait("FhirVersion", "R3")]
+    internal void TestFirelyHashesR3(CSharpFirelyCommon.GenSubset subset, string comparisonFilePath)
+    {
+        // Get the absolute path to the file
+        string path = Path.IsPathRooted(comparisonFilePath)
+            ? comparisonFilePath
+            : Path.GetRelativePath(Directory.GetCurrentDirectory(), comparisonFilePath);
+
+        FirelyGenOptions options = new()
+        {
+            Subset = subset,
+        };
+        CSharpFirely2 exportLang = new();
+
+        IFileHashTestable langHashTestable = exportLang;
+
+        langHashTestable.GenerateHashesInsteadOfOutput = true;
+
+        exportLang.Export(options, _loaded);
+
+        GenerationTestFixture.CompareGenerationHashes(path, langHashTestable.FileHashes);
     }
 }
 
