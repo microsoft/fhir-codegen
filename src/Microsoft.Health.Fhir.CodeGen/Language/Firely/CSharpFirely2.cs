@@ -476,6 +476,11 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
             : new FileStream(infoFilename, FileMode.Create);
         using ExportStreamWriter infoWriter = new(infoStream);
 
+        if (_generateHashesInsteadOfOutput)
+        {
+            infoWriter.NewLine = "\r\n";
+        }
+
         _modelWriter = infoWriter;
 
         WriteGenerationComment(infoWriter);
@@ -834,6 +839,11 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
             : new FileStream(filename, FileMode.Create);
         using ExportStreamWriter writer = new(stream);
 
+        if (_generateHashesInsteadOfOutput)
+        {
+            writer.NewLine = "\r\n";
+        }
+
         _writer = writer;
 
         WriteGenerationComment();
@@ -1119,6 +1129,11 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
             : new FileStream(filename, FileMode.Create);
         using ExportStreamWriter writer = new(stream);
 
+        if (_generateHashesInsteadOfOutput)
+        {
+            writer.NewLine = "\r\n";
+        }
+
         _writer = writer;
 
         WriteHeaderBasic();
@@ -1272,6 +1287,11 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
             : new FileStream(filename, FileMode.Create);
         using ExportStreamWriter writer = new(stream);
 
+        if (_generateHashesInsteadOfOutput)
+        {
+            writer.NewLine = "\r\n";
+        }
+
         _writer = writer;
 
         WriteHeaderComplexDataType();
@@ -1355,6 +1375,11 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
             ? new MemoryStream()
             : new FileStream(filename, FileMode.Create);
         using ExportStreamWriter writer = new(stream);
+
+        if (_generateHashesInsteadOfOutput)
+        {
+            writer.NewLine = "\r\n";
+        }
 
         _writer = writer;
 
@@ -1443,6 +1468,11 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
             ? new MemoryStream()
             : new FileStream(filename, FileMode.Create);
         using ExportStreamWriter writer = new(stream);
+
+        if (_generateHashesInsteadOfOutput)
+        {
+            writer.NewLine = "\r\n";
+        }
 
         _writer = writer;
 
@@ -3663,6 +3693,11 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
             ? new MemoryStream()
             : new FileStream(filename, FileMode.Create);
         using ExportStreamWriter writer = new(stream);
+
+        if (_generateHashesInsteadOfOutput)
+        {
+            writer.NewLine = "\r\n";
+        }
 
         _writer = writer;
 
