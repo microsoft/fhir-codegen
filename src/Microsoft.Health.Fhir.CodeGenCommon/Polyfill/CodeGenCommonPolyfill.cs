@@ -1,7 +1,17 @@
-﻿using System;
+﻿// <copyright file="CodeGenCommonPolyfill.cs" company="Microsoft Corporation">
+//     Copyright (c) Microsoft Corporation. All rights reserved.
+//     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
+// </copyright>
+
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
-using Antlr4.Runtime.Atn;
+
+/* 
+ * NOTE: This file uses `internal` access modifiers to avoid exporting the polyfill types to the assembly consumers.
+ * Each project internally that wants to use this should add the file as a link to ensure consistency.
+ */
 
 #if NETSTANDARD2_0
 // some functionality must be specified in CompilerServices to Polyfill without errors
@@ -42,7 +52,7 @@ namespace System.Runtime.CompilerServices
 }
 #endif
 
-namespace Microsoft.Health.Fhir.CodeGen.Polyfill
+namespace Microsoft.Health.Fhir.CodeGenCommon.Polyfill
 {
     internal static class LiftedExtensions
     {
@@ -60,15 +70,6 @@ namespace Microsoft.Health.Fhir.CodeGen.Polyfill
     }
 
 #if NETSTANDARD2_0
-
-    //internal static class ArrayExtensions
-    //{
-    //    public static T[] GetSubArray<T>(this T[] array, Range range)
-    //    {
-    //        (int offset, int length) = range.GetOffsetAndLength(array.Length);
-            
-    //    }
-    //}
 
     internal static class KeyValuePairExtensions
     {
@@ -95,6 +96,18 @@ namespace Microsoft.Health.Fhir.CodeGen.Polyfill
         {
             return val.OrderByDescending(v => v);
         }
+    }
+
+    internal class FrozenDictionary<TKey, TValue> : Dictionary<TKey, TValue>
+        where TKey : notnull
+    {
+        public FrozenDictionary(IEqualityComparer<TKey>? comparer = null) : base(comparer) { }
+    }
+
+    internal static class FrozenDictionaryExtensions
+    {
+        public static FrozenDictionary<TKey, TValue> ToFrozenDictionary<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, IEqualityComparer<TKey>? comparer = null)
+            where TKey : notnull => new FrozenDictionary<TKey, TValue>(comparer);
     }
 
     internal static class StringExtensions
@@ -124,6 +137,14 @@ namespace Microsoft.Health.Fhir.CodeGen.Polyfill
         }
 
         public static string AsSpan(this string value, int start) => value.Substring(start);
+    }
+
+    internal static class StringArrayExtensions
+    {
+        public static string[] Split(this string str, char sep1, char sep2, StringSplitOptions options)
+        {
+            return str.Split(new[] { sep1, sep2 }, options);
+        }
     }
 
     internal static class CollectionExtensions

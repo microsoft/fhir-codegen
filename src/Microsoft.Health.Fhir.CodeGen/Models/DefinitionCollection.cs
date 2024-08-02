@@ -18,7 +18,7 @@ using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 
-using Microsoft.Health.Fhir.CodeGen.Polyfill;
+using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
 
 namespace Microsoft.Health.Fhir.CodeGen.Models;
 
@@ -436,12 +436,6 @@ public partial class DefinitionCollection
             // check for a value set binding
             CheckElementBindings(artifactClass, sd, ed);
 
-            // DSTU2 and STU3 need type consolidation
-            if ((fhirVersion == FhirReleases.FhirSequenceCodes.DSTU2) || (fhirVersion == FhirReleases.FhirSequenceCodes.STU3))
-            {
-                ConsolidateTypes(sd, ed);
-            }
-
             // check for a single type and add to the path types dictionary
             if (ed.Type.Count == 1)
             {
@@ -529,12 +523,6 @@ public partial class DefinitionCollection
                 // check for a value set binding
                 CheckElementBindings(artifactClass, sd, ed);
 
-                // DSTU2 and STU3 need type consolidation
-                if ((fhirVersion == FhirReleases.FhirSequenceCodes.DSTU2) || (fhirVersion == FhirReleases.FhirSequenceCodes.STU3))
-                {
-                    ConsolidateTypes(sd, ed);
-                }
-
                 // check for a single type and add to the path types dictionary
                 if (ed.Type.Count == 1)
                 {
@@ -575,6 +563,8 @@ public partial class DefinitionCollection
     /// <param name="idByDepth">The list of IDs by depth.</param>
     private void AddMissingElementId(ElementDefinition ed, List<string> idByDepth)
     {
+        // TODO(ginoc): This is handled by the cross-version loading now, so this function should be able to be removed
+
         string[] components = ed.Path.Split('.');
         int depth = components.Length;
 
@@ -620,44 +610,6 @@ public partial class DefinitionCollection
         idByDepth.AddRange(components.Skip(idByDepth.Count));
 
         ed.ElementId = string.Join(".", idByDepth);
-    }
-
-    /// <summary>Consolidate types.</summary>
-    /// <param name="sd">The structure definition.</param>
-    /// <param name="ed">The ed.</param>
-    private void ConsolidateTypes(StructureDefinition sd, ElementDefinition ed)
-    {
-        // only need to consolidate if there are 2 or more
-        if (ed.Type.Count < 2)
-        {
-            return;
-        }
-
-        // consolidate types
-        Dictionary<string, ElementDefinition.TypeRefComponent> consolidatedTypes = [];
-
-        foreach (ElementDefinition.TypeRefComponent tr in ed.Type)
-        {
-            if (!consolidatedTypes.TryGetValue(tr.Code, out ElementDefinition.TypeRefComponent? existing))
-            {
-                consolidatedTypes[tr.Code] = tr;
-                continue;
-            }
-
-            // add any missing profile references
-            if (tr.ProfileElement.Count != 0)
-            {
-                existing.ProfileElement.AddRange(tr.ProfileElement);
-            }
-
-            if (tr.TargetProfileElement.Count != 0)
-            {
-                existing.TargetProfileElement.AddRange(tr.TargetProfileElement);
-            }
-        }
-
-        // update our types
-        ed.Type = [.. consolidatedTypes.Values];
     }
 
     /// <summary>

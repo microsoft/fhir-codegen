@@ -13,7 +13,7 @@ using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 
 #if NETSTANDARD2_0
-using Microsoft.Health.Fhir.CodeGen.Polyfill;
+using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
 #endif
 
 namespace Microsoft.Health.Fhir.CodeGen.FhirExtensions;

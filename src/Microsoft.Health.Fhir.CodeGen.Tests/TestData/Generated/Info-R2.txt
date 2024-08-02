@@ -68,6 +68,7 @@ Complex Types: 28
   - period[0..1]: Period
 - Age: Quantity (draft) (abstract: False)
   ^quantity[0..*]: Quantity::Age constraints: age-1, qty-3
+  @Slices present with no defined slicing
   !age-1: local error: 
   !qty-3: local error: 
   - id[0..1]: id
@@ -139,6 +140,7 @@ Complex Types: 28
   - period[0..1]: Period
 - Count: Quantity (draft) (abstract: False)
   ^quantity[0..*]: Quantity::Count constraints: cnt-1, qty-3
+  @Slices present with no defined slicing
   !cnt-1: local error: 
   !qty-3: local error: 
   - id[0..1]: id
@@ -158,6 +160,7 @@ Complex Types: 28
     - valueCode[1..1]: code
 - Distance: Quantity (draft) (abstract: False)
   ^quantity[0..*]: Quantity::Distance constraints: dis-1, qty-3
+  @Slices present with no defined slicing
   !dis-1: local error: 
   !qty-3: local error: 
   - id[0..1]: id
@@ -177,6 +180,7 @@ Complex Types: 28
     - valueCode[1..1]: code
 - Duration: Quantity (draft) (abstract: False)
   ^quantity[0..*]: Quantity::Duration constraints: drt-1, qty-3
+  @Slices present with no defined slicing
   !drt-1: local error: 
   !qty-3: local error: 
   - id[0..1]: id
@@ -375,6 +379,7 @@ Complex Types: 28
   - tag[0..*]: Coding
 - Money: Quantity (draft) (abstract: False)
   ^quantity[0..*]: Quantity::Money constraints: mny-1, qty-3
+  @Slices present with no defined slicing
   !mny-1: local error: 
   !qty-3: local error: 
   - id[0..1]: id
@@ -464,6 +469,7 @@ Complex Types: 28
   - blob[1..1]: base64Binary
 - SimpleQuantity: Quantity (draft) (abstract: False)
   ^quantity[0..*]: Quantity::SimpleQuantity constraints: qty-3, sqty-1
+  @Slices present with no defined slicing
   !qty-3: local error: 
   !sqty-1: local error: 
   - id[0..1]: id
@@ -1971,10 +1977,10 @@ Resources: 96
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
-    - type[0..1]: CodeableConcept
     - identifier[0..1]: Identifier
     - issued[0..1]: dateTime
     - applies[0..1]: Period
+    - type[0..1]: CodeableConcept
     - subType[0..1]: CodeableConcept
     - subject[0..1]: Reference(Resource)
     - action[0..*]: CodeableConcept
@@ -6061,24 +6067,24 @@ Resources: 96
         - modifierExtension[0..*]: Extension
         - label[0..1]: string
         - description[0..1]: string
-        - contentType[0..1]: code
-          {xml|json}
-        - resource[0..1]: code
-          {Address|Age|Annotation|Attachment|BackboneElement|CodeableConcept|Coding|ContactPoint|Count|Distance|Duration|Element|ElementDefinition|Extension|HumanName|Identifier|Meta|Money|Narrative|Period|Quantity|Range|Ratio|Reference|SampledData|Signature|SimpleQuantity|Timing|base64Binary|boolean|code|date|dateTime|decimal|id|instant|integer|markdown|oid|positiveInt|string|time|unsignedInt|uri|uuid|xhtml|Account|AllergyIntolerance|Appointment|AppointmentResponse|AuditEvent|Basic|Binary|BodySite|Bundle|CarePlan|Claim|ClaimResponse|ClinicalImpression|Communication|CommunicationRequest|Composition|ConceptMap|Condition|Conformance|Contract|Coverage|DataElement|DetectedIssue|Device|DeviceComponent|DeviceMetric|DeviceUseRequest|DeviceUseStatement|DiagnosticOrder|DiagnosticReport|DocumentManifest|DocumentReference|DomainResource|EligibilityRequest|EligibilityResponse|Encounter|EnrollmentRequest|EnrollmentResponse|EpisodeOfCare|ExplanationOfBenefit|FamilyMemberHistory|Flag|Goal|Group|HealthcareService|ImagingObjectSelection|ImagingStudy|Immunization|ImmunizationRecommendation|ImplementationGuide|List|Location|Media|Medication|MedicationAdministration|MedicationDispense|MedicationOrder|MedicationStatement|MessageHeader|NamingSystem|NutritionOrder|Observation|OperationDefinition|OperationOutcome|Order|OrderResponse|Organization|Parameters|Patient|PaymentNotice|PaymentReconciliation|Person|Practitioner|Procedure|ProcedureRequest|ProcessRequest|ProcessResponse|Provenance|Questionnaire|QuestionnaireResponse|ReferralRequest|RelatedPerson|Resource|RiskAssessment|Schedule|SearchParameter|Slot|Specimen|StructureDefinition|Subscription|Substance|SupplyDelivery|SupplyRequest|TestScript|ValueSet|VisionPrescription}
-        - sourceId[0..1]: id
         - direction[0..1]: code
           {response|request}
         - compareToSourceId[0..1]: string
         - compareToSourcePath[0..1]: string
+        - contentType[0..1]: code
+          {xml|json}
         - headerField[0..1]: string
         - minimumId[0..1]: string
         - navigationLinks[0..1]: boolean
         - operator[0..1]: code
           {equals|notEquals|in|notIn|greaterThan|lessThan|empty|notEmpty|contains|notContains}
         - path[0..1]: string
+        - resource[0..1]: code
+          {Address|Age|Annotation|Attachment|BackboneElement|CodeableConcept|Coding|ContactPoint|Count|Distance|Duration|Element|ElementDefinition|Extension|HumanName|Identifier|Meta|Money|Narrative|Period|Quantity|Range|Ratio|Reference|SampledData|Signature|SimpleQuantity|Timing|base64Binary|boolean|code|date|dateTime|decimal|id|instant|integer|markdown|oid|positiveInt|string|time|unsignedInt|uri|uuid|xhtml|Account|AllergyIntolerance|Appointment|AppointmentResponse|AuditEvent|Basic|Binary|BodySite|Bundle|CarePlan|Claim|ClaimResponse|ClinicalImpression|Communication|CommunicationRequest|Composition|ConceptMap|Condition|Conformance|Contract|Coverage|DataElement|DetectedIssue|Device|DeviceComponent|DeviceMetric|DeviceUseRequest|DeviceUseStatement|DiagnosticOrder|DiagnosticReport|DocumentManifest|DocumentReference|DomainResource|EligibilityRequest|EligibilityResponse|Encounter|EnrollmentRequest|EnrollmentResponse|EpisodeOfCare|ExplanationOfBenefit|FamilyMemberHistory|Flag|Goal|Group|HealthcareService|ImagingObjectSelection|ImagingStudy|Immunization|ImmunizationRecommendation|ImplementationGuide|List|Location|Media|Medication|MedicationAdministration|MedicationDispense|MedicationOrder|MedicationStatement|MessageHeader|NamingSystem|NutritionOrder|Observation|OperationDefinition|OperationOutcome|Order|OrderResponse|Organization|Parameters|Patient|PaymentNotice|PaymentReconciliation|Person|Practitioner|Procedure|ProcedureRequest|ProcessRequest|ProcessResponse|Provenance|Questionnaire|QuestionnaireResponse|ReferralRequest|RelatedPerson|Resource|RiskAssessment|Schedule|SearchParameter|Slot|Specimen|StructureDefinition|Subscription|Substance|SupplyDelivery|SupplyRequest|TestScript|ValueSet|VisionPrescription}
         - response[0..1]: code
           {okay|created|noContent|notModified|bad|forbidden|notFound|methodNotAllowed|conflict|gone|preconditionFailed|unprocessable}
         - responseCode[0..1]: string
+        - sourceId[0..1]: id
         - validateProfileId[0..1]: id
         - value[0..1]: string
         - warningOnly[0..1]: boolean
@@ -6464,6 +6470,7 @@ Interfaces: 0
 Profiles: 107
 - ArgonautProfileForCarePlan: (argonaut-careplan) CarePlan
   ^carePlan[0..*]: CarePlan::ArgonautProfileForCarePlan (W5: clinical.careprovision)
+  @Slices present with no defined slicing
   !cpl-3: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -6549,6 +6556,7 @@ Profiles: 107
     -argonaut-careplan: http://hl7.org/fhir/StructureDefinition/argonaut-careplan (ArgonautProfileForCarePlan)
 - ExampleLipidProfile: (cholesterol) Observation
   ^observation[1..1]: Observation::ExampleLipidProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  @Slices present with no defined slicing
   !obs-3: local error: 
   !obs-6: local error: 
   !obs-7: local error: 
@@ -6765,6 +6773,7 @@ Profiles: 107
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - ClinicalDocumentProfileForComposition: (clinicaldocument) Composition
   ^composition[0..*]: Composition::ClinicalDocumentProfileForComposition (W5: infrastructure.documents)
+  @Slices present with no defined slicing
   !cmp-1: local error: 
   !cmp-2: local error: 
   - id[0..1]: id
@@ -6847,6 +6856,7 @@ Profiles: 107
     -measurereport: http://hl7.org/fhir/StructureDefinition/measurereport (ProfileForMeasureReports)
 - ConsentDirective: (consentdirective) Contract
   ^contract[0..*]: Contract::ConsentDirective (W5: financial.other)
+  @Slices present with no defined slicing
   !mny-1: local error: 
   !qty-3: local error: 
   !sqty-1: local error: 
@@ -6950,6 +6960,7 @@ Profiles: 107
     -consentdirective: http://hl7.org/fhir/StructureDefinition/consentdirective (ConsentDirective)
 - U.S.DataAccessFramework(DAF)AllergyIntoleranceProfile: (daf-allergyintolerance) AllergyIntolerance
   ^allergyIntolerance[0..*]: AllergyIntolerance::U.S.DataAccessFramework(DAF)AllergyIntoleranceProfile (W5: clinical.general)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7044,6 +7055,7 @@ Profiles: 107
     -qicore-allergyintolerance: http://hl7.org/fhir/StructureDefinition/qicore-allergyintolerance (QICore-AllergyIntolerance)
 - U.S.DataAccessFramework(DAF)ListProfile: (daf-allergylist) List
   ^list[0..*]: List::U.S.DataAccessFramework(DAF)ListProfile constraints: lst-1, lst-2 (W5: infrastructure.documents)
+  @Slices present with no defined slicing
   !lst-1: local error: 
   !lst-2: local error: 
   - id[0..1]: id
@@ -7103,6 +7115,7 @@ Profiles: 107
     -daf-resultlist: http://hl7.org/fhir/StructureDefinition/daf-resultlist (U.S.DataAccessFramework(DAF)ListProfile)
 - U.S.DataAccessFramework(DAF)Condition(a.k.aProblem)Profile: (daf-condition) Condition
   ^condition[0..*]: Condition::U.S.DataAccessFramework(DAF)Condition(a.k.aProblem)Profile (W5: clinical.general)
+  @Slices present with no defined slicing
   !age-1: local error: 
   !con-1: local error: 
   !con-2: local error: 
@@ -7127,9 +7140,18 @@ Profiles: 107
     {provisional|differential|confirmed|refuted|entered-in-error|unknown}
   - severity[0..1]: CodeableConcept (W5: grade)
   - onset[x][0..1]: dateTime|Period|Quantity(Age)|Range|string (W5: when.init)
-    @Slicing: open: :
-  - onset[x][0..1]: dateTime|Period|Quantity(Age)|Range|string (W5: when.init)
-    @Slices present with no defined slicing
+    @Slicing: open: type:$this
+      :onsetroot
+        - type @ Condition.onset[x] only dateTime
+        - type @ Condition.onset[x] only Quantity
+        - type @ Condition.onset[x] only Period
+        - type @ Condition.onset[x] only Range
+        - type @ Condition.onset[x] only string
+        - type @ Condition.onset[x] only dateTime
+        - type @ Condition.onset[x] only Quantity
+        - type @ Condition.onset[x] only Period
+        - type @ Condition.onset[x] only Range
+        - type @ Condition.onset[x] only string
   - onsetQuantity[0..1]: Quantity(Age) constraints: age-1, qty-3
   - onsetDateTime[0..1]: dateTime (W5: when.init)
   - abatementBoolean[0..1]: boolean (W5: when.done)
@@ -7184,6 +7206,7 @@ Profiles: 107
     -uslab-reasonforstudy: http://hl7.org/fhir/StructureDefinition/uslab-reasonforstudy (USLaboratoryConditionProfile)
 - U.S.DataAccessFramework(DAF)DiagnosticOrderProfile: (daf-diagnosticorder) DiagnosticOrder
   ^diagnosticOrder[0..*]: DiagnosticOrder::U.S.DataAccessFramework(DAF)DiagnosticOrderProfile (W5: clinical.diagnostics)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7208,9 +7231,10 @@ Profiles: 107
   - encounter[0..1]: Reference(daf-encounter) (W5: context)
   - reason[0..*]: CodeableConcept
   - supportingInformation[0..*]: Reference(Observation|Condition|DocumentReference)
-    @Slicing: open: :, :
-  - supportingInformation[0..*]: Reference(daf-resultobs|daf-condition)
-    @Slices present with no defined slicing
+    @Slicing: open: value:@Profile, type:$this
+      :DAFSupportingInformation
+        - type @ DiagnosticOrder.supportingInformation only Reference
+        - type @ DiagnosticOrder.supportingInformation only Reference
   - specimen[0..*]: Reference(Specimen)
   - status[1..1]: code (W5: status)
     {proposed|draft|planned|requested|received|accepted|in-progress|review|completed|cancelled|suspended|rejected|failed}
@@ -7295,6 +7319,7 @@ Profiles: 107
     -uslab-do: http://hl7.org/fhir/StructureDefinition/uslab-do (USLaboratoryDiagnosticOrderProfile)
 - U.S.DataAccessFramework(DAF)DiagnosticReportProfile: (daf-diagnosticreport) DiagnosticReport
   ^diagnosticReport[0..*]: DiagnosticReport::U.S.DataAccessFramework(DAF)DiagnosticReportProfile (W5: clinical.diagnostics)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7373,6 +7398,7 @@ Profiles: 107
     -uslab-dr: http://hl7.org/fhir/StructureDefinition/uslab-dr (USLaboratoryDiagnosticReportProfile)
 - U.S.DataAccessFramework(DAF)EncounterProfile: (daf-encounter) Encounter
   ^encounter[0..*]: Encounter::U.S.DataAccessFramework(DAF)EncounterProfile (W5: workflow.encounter)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7477,6 +7503,7 @@ Profiles: 107
     -qicore-encounter: http://hl7.org/fhir/StructureDefinition/qicore-encounter (QICore-Encounter)
 - U.S.DataAccessFramework(DAF)ListProfile: (daf-encounterlist) List
   ^list[0..*]: List::U.S.DataAccessFramework(DAF)ListProfile constraints: lst-1, lst-2 (W5: infrastructure.documents)
+  @Slices present with no defined slicing
   !lst-1: local error: 
   !lst-2: local error: 
   - id[0..1]: id
@@ -7536,6 +7563,7 @@ Profiles: 107
     -daf-resultlist: http://hl7.org/fhir/StructureDefinition/daf-resultlist (U.S.DataAccessFramework(DAF)ListProfile)
 - U.S.DataAccessFramework(DAF)FamilyMemberHistoryProfile: (daf-familymemberhistory) FamilyMemberHistory
   ^familyMemberHistory[0..*]: FamilyMemberHistory::U.S.DataAccessFramework(DAF)FamilyMemberHistoryProfile constraints: fhs-1 (W5: clinical.general)
+  @Slices present with no defined slicing
   !fhs-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -7595,6 +7623,7 @@ Profiles: 107
     -qicore-familymemberhistory: http://hl7.org/fhir/StructureDefinition/qicore-familymemberhistory (QICore-FamilyMemberHistory)
 - U.S.DataAccessFramework(DAF)ImmunizationProfile: (daf-immunization) Immunization
   ^immunization[0..*]: Immunization::U.S.DataAccessFramework(DAF)ImmunizationProfile constraints: imm-1, imm-2 (W5: clinical.medication)
+  @Slices present with no defined slicing
   !imm-1: local error: 
   !imm-2: local error: 
   !qty-3: local error: 
@@ -7672,6 +7701,7 @@ Profiles: 107
     -qicore-immunization: http://hl7.org/fhir/StructureDefinition/qicore-immunization (QICore-Immunization)
 - U.S.DataAccessFramework(DAF)ListProfile: (daf-immunizationlist) List
   ^list[0..*]: List::U.S.DataAccessFramework(DAF)ListProfile constraints: lst-1, lst-2 (W5: infrastructure.documents)
+  @Slices present with no defined slicing
   !lst-1: local error: 
   !lst-2: local error: 
   - id[0..1]: id
@@ -7731,6 +7761,7 @@ Profiles: 107
     -daf-resultlist: http://hl7.org/fhir/StructureDefinition/daf-resultlist (U.S.DataAccessFramework(DAF)ListProfile)
 - U.S.DataAccessFramework(DAF)LocationProfile: (daf-location) Location
   ^location[0..*]: Location::U.S.DataAccessFramework(DAF)LocationProfile (W5: administrative.entity)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7797,6 +7828,7 @@ Profiles: 107
     -qicore-location: http://hl7.org/fhir/StructureDefinition/qicore-location (QICore-Location)
 - U.S.DataAccessFramework(DAF)MedicationProfile: (daf-medication) Medication
   ^medication[0..*]: Medication::U.S.DataAccessFramework(DAF)MedicationProfile (W5: clinical.medication)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -7855,6 +7887,7 @@ Profiles: 107
     -qicore-medication: http://hl7.org/fhir/StructureDefinition/qicore-medication (QICore-Medication)
 - U.S.DataAccessFramework(DAF)MedicationAdministrationProfile: (daf-medicationadministration) MedicationAdministration
   ^medicationAdministration[0..*]: MedicationAdministration::U.S.DataAccessFramework(DAF)MedicationAdministrationProfile constraints: mad-2, mad-3 (W5: clinical.medication)
+  @Slices present with no defined slicing
   !mad-1: local error: 
   !mad-2: local error: 
   !mad-3: local error: 
@@ -7878,9 +7911,12 @@ Profiles: 107
   - reasonGiven[0..*]: CodeableConcept conditions: mad-3
   - effectiveTime[x][1..1]: dateTime|Period (W5: when.done)
   - medication[x][1..1]: CodeableConcept|Reference(Medication)
-    @Slicing: open: :
-  - medication[x][1..1]: CodeableConcept|Reference(Medication)
-    @Slices present with no defined slicing
+    @Slicing: open: type:$this
+      :medicationroot
+        - type @ MedicationAdministration.medication[x] only CodeableConcept
+        - type @ MedicationAdministration.medication[x] only Reference
+        - type @ MedicationAdministration.medication[x] only CodeableConcept
+        - type @ MedicationAdministration.medication[x] only Reference
   - medicationCodeableConcept[1..1]: CodeableConcept
   - medicationReference[1..1]: Reference(daf-medication)
   - device[0..*]: Reference(Device)
@@ -7911,6 +7947,7 @@ Profiles: 107
     -qicore-medicationadministration: http://hl7.org/fhir/StructureDefinition/qicore-medicationadministration (QICore-MedicationAdministration)
 - U.S.DataAccessFramework(DAF)MedicationDispenseProfile: (daf-medicationdispense) MedicationDispense
   ^medicationDispense[0..*]: MedicationDispense::U.S.DataAccessFramework(DAF)MedicationDispenseProfile constraints: mdd-1 (W5: clinical.medication)
+  @Slices present with no defined slicing
   !mdd-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -7930,9 +7967,12 @@ Profiles: 107
   - quantity[0..1]: Quantity(SimpleQuantity)
   - daysSupply[0..1]: Quantity(SimpleQuantity)
   - medication[x][1..1]: CodeableConcept|Reference(Medication)
-    @Slicing: open: :
-  - medication[x][1..1]: CodeableConcept|Reference(Medication)
-    @Slices present with no defined slicing
+    @Slicing: open: type:$this
+      :medicationroot
+        - type @ MedicationDispense.medication[x] only CodeableConcept
+        - type @ MedicationDispense.medication[x] only Reference
+        - type @ MedicationDispense.medication[x] only CodeableConcept
+        - type @ MedicationDispense.medication[x] only Reference
   - medicationCodeableConcept[1..1]: CodeableConcept
   - medicationReference[1..1]: Reference(daf-medication)
   - whenPrepared[0..1]: dateTime
@@ -8011,6 +8051,7 @@ Profiles: 107
     -qicore-medicationdispense: http://hl7.org/fhir/StructureDefinition/qicore-medicationdispense (QICore-MedicationDispense)
 - U.S.DataAccessFramework(DAF)ListProfile: (daf-medicationlist) List
   ^list[0..*]: List::U.S.DataAccessFramework(DAF)ListProfile constraints: lst-1, lst-2 (W5: infrastructure.documents)
+  @Slices present with no defined slicing
   !lst-1: local error: 
   !lst-2: local error: 
   - id[0..1]: id
@@ -8069,6 +8110,7 @@ Profiles: 107
     -daf-resultlist: http://hl7.org/fhir/StructureDefinition/daf-resultlist (U.S.DataAccessFramework(DAF)ListProfile)
 - U.S.DataAccessFramework(DAF)MedicationOrderProfile: (daf-medicationorder) MedicationOrder
   ^medicationOrder[0..*]: MedicationOrder::U.S.DataAccessFramework(DAF)MedicationOrderProfile (W5: clinical.medication)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8089,9 +8131,12 @@ Profiles: 107
   - reason[x][0..1]: CodeableConcept|Reference(Condition) (W5: why)
   - note[0..1]: string
   - medication[x][1..1]: CodeableConcept|Reference(Medication) (W5: what)
-    @Slicing: open: :
-  - medication[x][1..1]: CodeableConcept|Reference(Medication) (W5: what)
-    @Slices present with no defined slicing
+    @Slicing: open: type:$this
+      :medicationroot
+        - type @ MedicationOrder.medication[x] only CodeableConcept
+        - type @ MedicationOrder.medication[x] only Reference
+        - type @ MedicationOrder.medication[x] only CodeableConcept
+        - type @ MedicationOrder.medication[x] only Reference
   - medicationCodeableConcept[1..1]: CodeableConcept (W5: what)
   - medicationReference[1..1]: Reference(daf-medication) (W5: what)
   - dosageInstruction[0..*]: BackboneElement
@@ -8166,6 +8211,7 @@ Profiles: 107
     -qicore-medicationorder: http://hl7.org/fhir/StructureDefinition/qicore-medicationorder (QICore-MedicationOrder)
 - U.S.DataAccessFramework(DAF)MedicationStatementProfile: (daf-medicationstatement) MedicationStatement
   ^medicationStatement[0..*]: MedicationStatement::U.S.DataAccessFramework(DAF)MedicationStatementProfile constraints: mst-1, mst-2 (W5: clinical.medication)
+  @Slices present with no defined slicing
   !mst-1: local error: 
   !mst-2: local error: 
   - id[0..1]: id
@@ -8214,6 +8260,7 @@ Profiles: 107
     -qicore-medicationstatement: http://hl7.org/fhir/StructureDefinition/qicore-medicationstatement (QICore-MedicationStatement)
 - U.S.DAFOrganizationProfile: (daf-organization) Organization
   ^organization[0..*]: Organization::U.S.DAFOrganizationProfile constraints: org-1 (W5: administrative.group)
+  @Slices present with no defined slicing
   !org-1: local error: 
   !org-2: local error: 
   !org-3: local error: 
@@ -8287,6 +8334,7 @@ Profiles: 107
     -uslab-performinglab: http://hl7.org/fhir/StructureDefinition/uslab-performinglab (USLaboratoryOrganizationProfile)
 - U.S.DataAccessFramework(DAF)PatientProfile: (daf-patient) Patient
   ^patient[0..*]: Patient::U.S.DataAccessFramework(DAF)PatientProfile (W5: administrative.individual)
+  @Slices present with no defined slicing
   !inv-1: local error: 
   !inv-2: local error: 
   !pat-1: local error: 
@@ -8297,7 +8345,17 @@ Profiles: 107
   - text[0..1]: Narrative conditions: dom-1
   - contained[0..*]: Resource
   - extension[0..*]: Extension
-    @Slicing: open: :
+    @Slicing: open: value:url
+      :race
+        - value @ Patient.extension.url = http://hl7.org/fhir/StructureDefinition/us-core-race
+      :ethnicity
+        - value @ Patient.extension.url = http://hl7.org/fhir/StructureDefinition/us-core-ethnicity
+      :religion
+        - value @ Patient.extension.url = http://hl7.org/fhir/StructureDefinition/us-core-religion
+      :mothersMaidenName
+        - value @ Patient.extension.url = http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName
+      :birthPlace
+        - value @ Patient.extension.url = http://hl7.org/fhir/StructureDefinition/birthPlace
   - modifierExtension[0..*]: Extension
   - identifier[1..*]: Identifier (W5: id)
     - id[0..1]: id
@@ -8491,6 +8549,7 @@ Profiles: 107
     -uslab-phpatient: http://hl7.org/fhir/StructureDefinition/uslab-phpatient (USLaboratoryPatientProfile)
 - U.S.DataAccessFramework(DAF)PractitionerProfile: (daf-pract) Practitioner
   ^practitioner[0..*]: Practitioner::U.S.DataAccessFramework(DAF)PractitionerProfile constraints: inv-1 (W5: administrative.individual)
+  @Slices present with no defined slicing
   !inv-1: local error: 
   !txt-1: local error: 
   !txt-2: local error: 
@@ -8535,7 +8594,9 @@ Profiles: 107
   - telecom[0..*]: ContactPoint
     - id[0..1]: id
     - extension[0..*]: Extension
-      @Slicing: open: :
+      @Slicing: open: value:url
+        :directAddressInd
+          - value @ Practitioner.telecom.extension.url = http://hl7.org/fhir/StructureDefinition/us-core-direct
     - system[1..1]: code conditions: cpt-2
       {phone|fax|email|pager|other}
     - value[1..1]: string
@@ -8605,6 +8666,7 @@ Profiles: 107
     -uslab-pract: http://hl7.org/fhir/StructureDefinition/uslab-pract (USLaboratoryPractitionerProfile)
 - U.S.DataAccessFramework(DAF)ListProfile: (daf-problemlist) List
   ^list[0..*]: List::U.S.DataAccessFramework(DAF)ListProfile constraints: lst-1, lst-2 (W5: infrastructure.documents)
+  @Slices present with no defined slicing
   !lst-1: local error: 
   !lst-2: local error: 
   - id[0..1]: id
@@ -8664,6 +8726,7 @@ Profiles: 107
     -daf-resultlist: http://hl7.org/fhir/StructureDefinition/daf-resultlist (U.S.DataAccessFramework(DAF)ListProfile)
 - U.S.DataAccessFramework(DAF)ProcedureProfile: (daf-procedure) Procedure
   ^procedure[0..*]: Procedure::U.S.DataAccessFramework(DAF)ProcedureProfile constraints: pro-1 (W5: clinical.general)
+  @Slices present with no defined slicing
   !pro-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -8738,6 +8801,7 @@ Profiles: 107
     -qicore-procedure: http://hl7.org/fhir/StructureDefinition/qicore-procedure (QICore-Procedure)
 - U.S.DataAccessFramework(DAF)ListProfile: (daf-procedurelist) List
   ^list[0..*]: List::U.S.DataAccessFramework(DAF)ListProfile constraints: lst-1, lst-2 (W5: infrastructure.documents)
+  @Slices present with no defined slicing
   !lst-1: local error: 
   !lst-2: local error: 
   - id[0..1]: id
@@ -8797,6 +8861,7 @@ Profiles: 107
     -daf-resultlist: http://hl7.org/fhir/StructureDefinition/daf-resultlist (U.S.DataAccessFramework(DAF)ListProfile)
 - U.S.DAFRelatedPersonProfile: (daf-relatedperson) RelatedPerson
   ^relatedPerson[0..*]: RelatedPerson::U.S.DAFRelatedPersonProfile (W5: administrative.individual)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -8840,6 +8905,7 @@ Profiles: 107
     -qicore-relatedperson: http://hl7.org/fhir/StructureDefinition/qicore-relatedperson (QICore-RelatedPerson)
 - U.S.DataAccessFramework(DAF)ListProfile: (daf-resultlist) List
   ^list[0..*]: List::U.S.DataAccessFramework(DAF)ListProfile constraints: lst-1, lst-2 (W5: infrastructure.documents)
+  @Slices present with no defined slicing
   !lst-1: local error: 
   !lst-2: local error: 
   - id[0..1]: id
@@ -8899,6 +8965,7 @@ Profiles: 107
     -daf-resultlist: http://hl7.org/fhir/StructureDefinition/daf-resultlist (U.S.DataAccessFramework(DAF)ListProfile)
 - U.S.DataAccessFramework(DAF)ResultsProfile: (daf-resultobs) Observation
   ^observation[0..*]: Observation::U.S.DataAccessFramework(DAF)ResultsProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  @Slices present with no defined slicing
   !inv-1: local error: 
   !obs-3: local error: 
   !obs-6: local error: 
@@ -9144,6 +9211,7 @@ Profiles: 107
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - U.S.DataAccessFramework(DAF)SmokingStatusProfile: (daf-smokingstatus) Observation
   ^observation[0..*]: Observation::U.S.DataAccessFramework(DAF)SmokingStatusProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  @Slices present with no defined slicing
   !obs-3: local error: 
   !obs-6: local error: 
   !obs-7: local error: 
@@ -9347,6 +9415,7 @@ Profiles: 107
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - U.S.DataAccessFramework(DAF)DAFSpecimenProfile: (daf-spec) Specimen
   ^specimen[0..*]: Specimen::U.S.DataAccessFramework(DAF)DAFSpecimenProfile (W5: clinical.diagnostics)
+  @Slices present with no defined slicing
   !inv-2: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -9469,6 +9538,7 @@ Profiles: 107
     -uslab-spec: http://hl7.org/fhir/StructureDefinition/uslab-spec (USLaboratorySpecimenProfile)
 - DAFSubstanceProfile: (daf-substance) Substance
   ^substance[0..*]: Substance::DAFSubstanceProfile (W5: administrative.entity)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -9506,6 +9576,7 @@ Profiles: 107
     -qicore-substance: http://hl7.org/fhir/StructureDefinition/qicore-substance (QICore-Substance)
 - U.S.DataAccessFramework(DAF)VitalSignsProfile: (daf-vitalsigns) Observation
   ^observation[0..*]: Observation::U.S.DataAccessFramework(DAF)VitalSignsProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  @Slices present with no defined slicing
   !obs-3: local error: 
   !obs-6: local error: 
   !obs-7: local error: 
@@ -9737,6 +9808,7 @@ Profiles: 107
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - DeviceMetricObservation: (devicemetricobservation) Observation
   ^observation[0..*]: Observation::DeviceMetricObservation constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  @Slices present with no defined slicing
   !obs-3: local error: 
   !obs-6: local error: 
   !obs-7: local error: 
@@ -9938,6 +10010,7 @@ Profiles: 107
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - EHRSFMRecordLifecycleEvent-AuditEvent: (ehrsrle-auditevent) AuditEvent
   ^auditEvent[0..*]: AuditEvent::EHRSFMRecordLifecycleEvent-AuditEvent (W5: infrastructure.information)
+  @Slices present with no defined slicing
   !sev-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -10028,6 +10101,7 @@ Profiles: 107
     -ehrsrle-auditevent: http://hl7.org/fhir/StructureDefinition/ehrsrle-auditevent (EHRSFMRecordLifecycleEvent-AuditEvent)
 - EHRSFMRecordLifecycleEvent-Provenance: (ehrsrle-provenance) Provenance
   ^provenance[0..*]: Provenance::EHRSFMRecordLifecycleEvent-Provenance (W5: infrastructure.information)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -10081,6 +10155,7 @@ Profiles: 107
     -ehrsrle-provenance: http://hl7.org/fhir/StructureDefinition/ehrsrle-provenance (EHRSFMRecordLifecycleEvent-Provenance)
 - DataElementConstraintOnElementDefinitionDataType: (elementdefinition-de) ElementDefinition
   ^elementDefinition[0..*]: ElementDefinition::DataElementConstraintOnElementDefinitionDataType constraints: eld-2, eld-5, eld-6, eld-7, eld-8, eld-11, eld-13, eld-14, eld-15
+  @Slices present with no defined slicing
   !eld-1: local error: 
   !eld-2: local error: 
   !eld-3: local error: 
@@ -10097,7 +10172,11 @@ Profiles: 107
   !eld-15: local error: 
   - id[0..1]: id
   - extension[0..*]: Extension
-    @Slicing: open: :
+    @Slicing: open: value:url
+      :Question
+        - value @ ElementDefinition.extension.url = http://hl7.org/fhir/StructureDefinition/elementdefinition-question
+      :AllowedUnits
+        - value @ ElementDefinition.extension.url = http://hl7.org/fhir/StructureDefinition/elementdefinition-allowedUnits
   - path[1..1]: string
   - representation[0..0]: code
     {xmlAttr}
@@ -10238,6 +10317,7 @@ Profiles: 107
     -elementdefinition-de: http://hl7.org/fhir/StructureDefinition/elementdefinition-de (DataElementConstraintOnElementDefinitionDataType)
 - ExampleLipidProfile: (example) DiagnosticReport (experimental)
   ^diagnosticReport[1..1]: Resource::ExampleLipidProfile
+  @Slices present with no defined slicing
   - extension[0..*]: Extension
   - text[0..1]: Narrative
   - contained[0..*]: Resource
@@ -10251,10 +10331,7 @@ Profiles: 107
   - category[0..1]: CodeableConcept
   - effectiveDateTime[1..1]: dateTime
   - result[4..4]: Reference(Observation)
-  - result[1..1]: Reference(cholesterol)
-  - result[1..1]: Reference(triglyceride)
-  - result[1..1]: Reference(hdlcholesterol)
-  - result[0..1]: Reference(ldlcholesterol)
+    @Slicing: open: value:reference.code
   - conclusion[0..1]: string
   - representation[0..*]: Attachment
   Extensions: 1
@@ -10284,6 +10361,7 @@ Profiles: 107
     -uslab-dr: http://hl7.org/fhir/StructureDefinition/uslab-dr (USLaboratoryDiagnosticReportProfile)
 - FamilyMemberHistoryForGeneticsAnalysis: (familymemberhistory-genetic) FamilyMemberHistory
   ^familyMemberHistory[0..*]: FamilyMemberHistory::FamilyMemberHistoryForGeneticsAnalysis constraints: fhs-1 (W5: clinical.general)
+  @Slices present with no defined slicing
   !fhs-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -10292,7 +10370,11 @@ Profiles: 107
   - text[0..1]: Narrative conditions: dom-1
   - contained[0..*]: Resource
   - extension[0..*]: Extension
-    @Slicing: open: :
+    @Slicing: open: value:url
+      :Parent
+        - value @ FamilyMemberHistory.extension.url = http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent
+      :Observation
+        - value @ FamilyMemberHistory.extension.url = http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-observation
   - modifierExtension[0..*]: Extension
   - identifier[0..*]: Identifier (W5: id)
   - patient[1..1]: Reference(Patient) (W5: who.focus)
@@ -10344,6 +10426,7 @@ Profiles: 107
     -qicore-familymemberhistory: http://hl7.org/fhir/StructureDefinition/qicore-familymemberhistory (QICore-FamilyMemberHistory)
 - StandardProfileForGenetics: (genetics) Observation
   ^observation[0..*]: Observation::StandardProfileForGenetics constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  @Slices present with no defined slicing
   !obs-3: local error: 
   !obs-6: local error: 
   !obs-7: local error: 
@@ -10354,7 +10437,57 @@ Profiles: 107
   - text[0..1]: Narrative conditions: dom-1
   - contained[0..*]: Resource
   - extension[0..*]: Extension
-    @Slicing: open: :
+    @Slicing: open: value:url
+      :GenomeBuild
+        - value @ Observation.extension.url = http://hl7.org/fhir/StructureDefinition/geneticsGenomeBuild
+      :Chromosome
+        - value @ Observation.extension.url = http://hl7.org/fhir/StructureDefinition/geneticsChromosome
+      :GenomicStart
+        - value @ Observation.extension.url = http://hl7.org/fhir/StructureDefinition/geneticsGenomicStart
+      :GenomicStop
+        - value @ Observation.extension.url = http://hl7.org/fhir/StructureDefinition/geneticsGenomicStop
+      :ReferenceAllele
+        - value @ Observation.extension.url = http://hl7.org/fhir/StructureDefinition/geneticsReferenceAllele
+      :ObservedAllele
+        - value @ Observation.extension.url = http://hl7.org/fhir/StructureDefinition/geneticsObservedAllele
+      :TranscriptReferenceSequenceId
+        - value @ Observation.extension.url = http://hl7.org/fhir/StructureDefinition/geneticsTranscriptReferenceSequenceId
+      :ProteinReferenceSequenceId
+        - value @ Observation.extension.url = http://hl7.org/fhir/StructureDefinition/geneticsProteinReferenceSequenceId
+      :CIGAR
+        - value @ Observation.extension.url = http://hl7.org/fhir/StructureDefinition/geneticsCIGAR
+      :DNASequenceVariation
+        - value @ Observation.extension.url = http://hl7.org/fhir/StructureDefinition/geneticsDNASequenceVariation
+      :VariationId
+        - value @ Observation.extension.url = http://hl7.org/fhir/StructureDefinition/geneticsVariationId
+      :DNASequenceVariationType
+        - value @ Observation.extension.url = http://hl7.org/fhir/StructureDefinition/geneticsDNASequenceVariationType
+      :AminoAcidChange
+        - value @ Observation.extension.url = http://hl7.org/fhir/StructureDefinition/geneticsAminoAcidChange
+      :AminoAcidChangeType
+        - value @ Observation.extension.url = http://hl7.org/fhir/StructureDefinition/geneticsAminoAcidChangeType
+      :Gene
+        - value @ Observation.extension.url = http://hl7.org/fhir/StructureDefinition/geneticsGene
+      :DNARegionName
+        - value @ Observation.extension.url = http://hl7.org/fhir/StructureDefinition/geneticsDNARegionName
+      :AlleleName
+        - value @ Observation.extension.url = http://hl7.org/fhir/StructureDefinition/geneticsAlleleName
+      :GenomicSourceClass
+        - value @ Observation.extension.url = http://hl7.org/fhir/StructureDefinition/geneticsGenomicSourceClass
+      :Species
+        - value @ Observation.extension.url = http://hl7.org/fhir/StructureDefinition/geneticsSpecies
+      :Result
+        - value @ Observation.extension.url = http://hl7.org/fhir/StructureDefinition/geneticsResult
+      :AssessedCondition
+        - value @ Observation.extension.url = http://hl7.org/fhir/StructureDefinition/geneticsAssessedCondition
+      :AllelicState
+        - value @ Observation.extension.url = http://hl7.org/fhir/StructureDefinition/geneticsAllelicState
+      :AllelicFrequency
+        - value @ Observation.extension.url = http://hl7.org/fhir/StructureDefinition/geneticsAllelicFrequency
+      :CopyNumberEvent
+        - value @ Observation.extension.url = http://hl7.org/fhir/StructureDefinition/geneticsCopyNumberEvent
+      :ReadCoverage
+        - value @ Observation.extension.url = http://hl7.org/fhir/StructureDefinition/geneticsReadCoverage
   - modifierExtension[0..*]: Extension
   - identifier[0..*]: Identifier (W5: id)
   - status[1..1]: code (W5: status)
@@ -10546,6 +10679,7 @@ Profiles: 107
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - ExampleLipidProfile: (hdlcholesterol) Observation
   ^observation[1..1]: Observation::ExampleLipidProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  @Slices present with no defined slicing
   !obs-3: local error: 
   !obs-6: local error: 
   !obs-7: local error: 
@@ -10751,6 +10885,7 @@ Profiles: 107
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - ExampleLipidProfile: (ldlcholesterol) Observation
   ^observation[1..1]: Observation::ExampleLipidProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  @Slices present with no defined slicing
   !obs-3: local error: 
   !obs-6: local error: 
   !obs-7: local error: 
@@ -10763,7 +10898,9 @@ Profiles: 107
   - text[0..1]: Narrative conditions: dom-1
   - contained[0..*]: Resource
   - extension[0..*]: Extension
-    @Slicing: open: :
+    @Slicing: open: value:url
+      :LDLCalculated
+        - value @ Observation.extension.url = http://hl7.org/fhir/StructureDefinition/lipid-report-ldl-chol-calculated
   - modifierExtension[0..*]: Extension
   - identifier[0..*]: Identifier (W5: id)
   - status[1..1]: code (W5: status)
@@ -10978,15 +11115,6 @@ Profiles: 107
   - request[0..*]: Reference(DiagnosticOrder|ProcedureRequest|ReferralRequest)
   - specimen[0..*]: Reference(Specimen)
   - result[0..*]: Reference(Observation)
-    @Slicing: closed: :
-  - result[1..1]: Reference(cholesterol)
-    @Slices present with no defined slicing
-  - result[1..1]: Reference(triglyceride)
-    @Slices present with no defined slicing
-  - result[1..1]: Reference(hdlcholesterol)
-    @Slices present with no defined slicing
-  - result[0..1]: Reference(ldlcholesterol)
-    @Slices present with no defined slicing
   - imagingStudy[0..*]: Reference(ImagingStudy|ImagingObjectSelection)
   - image[0..*]: BackboneElement
     - id[0..1]: id
@@ -11024,6 +11152,7 @@ Profiles: 107
     -uslab-dr: http://hl7.org/fhir/StructureDefinition/uslab-dr (USLaboratoryDiagnosticReportProfile)
 - ProfileForMeasureReports: (measurereport) Composition
   ^composition[0..*]: Composition::ProfileForMeasureReports (W5: infrastructure.documents)
+  @Slices present with no defined slicing
   !cmp-1: local error: 
   !cmp-2: local error: 
   - id[0..1]: id
@@ -11106,6 +11235,7 @@ Profiles: 107
     -measurereport: http://hl7.org/fhir/StructureDefinition/measurereport (ProfileForMeasureReports)
 - QICore-AdverseEvent: (qicore-adverseevent) Basic
   ^basic[0..*]: Basic::QICore-AdverseEvent (W5: infrastructure.structure)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11113,11 +11243,29 @@ Profiles: 107
   - text[0..1]: Narrative conditions: dom-1
   - contained[0..*]: Resource
   - extension[0..*]: Extension
-    @Slicing: open: :
+    @Slicing: open: value:url
+      :type
+        - value @ Basic.extension.url = http://hl7.org/fhir/StructureDefinition/qicore-adverseevent-type
+      :discoveryDateTime
+        - value @ Basic.extension.url = http://hl7.org/fhir/StructureDefinition/qicore-adverseevent-discoveryDateTime
+      :location
+        - value @ Basic.extension.url = http://hl7.org/fhir/StructureDefinition/qicore-adverseevent-location
+      :category
+        - value @ Basic.extension.url = http://hl7.org/fhir/StructureDefinition/qicore-adverseevent-category
+      :cause
+        - value @ Basic.extension.url = http://hl7.org/fhir/StructureDefinition/qicore-adverseevent-cause
+      :reaction
+        - value @ Basic.extension.url = http://hl7.org/fhir/StructureDefinition/qicore-adverseevent-reaction
+      :period
+        - value @ Basic.extension.url = http://hl7.org/fhir/StructureDefinition/qicore-adverseevent-period
+      :clinicalStudy
+        - value @ Basic.extension.url = http://hl7.org/fhir/StructureDefinition/qicore-adverseevent-clinicalStudy
+      :severity
+        - value @ Basic.extension.url = http://hl7.org/fhir/StructureDefinition/qicore-adverseevent-severity
   - modifierExtension[0..*]: Extension
-    @Slicing: open: :
-  - modifierExtension[1..1]: Extension(qicore-adverseevent-didNotOccur)
-    @Slices present with no defined slicing
+    @Slicing: open: value:url
+      :didNotOccur
+        - value @ Basic.modifierExtension.url = http://hl7.org/fhir/StructureDefinition/qicore-adverseevent-didNotOccur
   - identifier[0..*]: Identifier (W5: id)
   - code[1..1]: CodeableConcept (W5: what)
   .fixedCodeableConcept = Hl7.Fhir.Model.CodeableConcept
@@ -11163,6 +11311,7 @@ Profiles: 107
     -qicore-adverseevent: http://hl7.org/fhir/StructureDefinition/qicore-adverseevent (QICore-AdverseEvent)
 - QICore-AllergyIntolerance: (qicore-allergyintolerance) AllergyIntolerance
   ^allergyIntolerance[0..*]: AllergyIntolerance::QICore-AllergyIntolerance constraints: inv-1 (W5: clinical.general)
+  @Slices present with no defined slicing
   !inv-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -11171,7 +11320,7 @@ Profiles: 107
   - text[0..1]: Narrative conditions: dom-1
   - contained[0..*]: Resource
   - extension[0..*]: Extension
-    @Slicing: open: :
+    @Slicing: open: value:url
   - modifierExtension[0..*]: Extension
   - identifier[0..*]: Identifier (W5: id)
   - onset[0..1]: dateTime
@@ -11218,7 +11367,7 @@ Profiles: 107
       - valueString[1..1]: string
     - id[0..1]: id
     - extension[0..*]: Extension
-      @Slicing: open: :
+      @Slicing: open: value:url
     - modifierExtension[0..*]: Extension
     - substance[0..1]: CodeableConcept
     - certainty[0..1]: code
@@ -11260,6 +11409,7 @@ Profiles: 107
     -qicore-allergyintolerance: http://hl7.org/fhir/StructureDefinition/qicore-allergyintolerance (QICore-AllergyIntolerance)
 - QICore-BodySite: (qicore-bodysite) BodySite
   ^bodySite[0..*]: BodySite::QICore-BodySite (W5: clinical.diagnostics)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11281,6 +11431,7 @@ Profiles: 107
     -qicore-bodysite: http://hl7.org/fhir/StructureDefinition/qicore-bodysite (QICore-BodySite)
 - QICore-Communication: (qicore-communication) Communication
   ^communication[0..*]: Communication::QICore-Communication (W5: workflow.encounter)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11288,7 +11439,7 @@ Profiles: 107
   - text[0..1]: Narrative conditions: dom-1
   - contained[0..*]: Resource
   - extension[0..*]: Extension
-    @Slicing: open: :
+    @Slicing: open: value:url
   - modifierExtension[0..*]: Extension
   - identifier[0..*]: Identifier (W5: id)
   - category[0..1]: CodeableConcept (W5: class)
@@ -11331,6 +11482,7 @@ Profiles: 107
     -qicore-communication: http://hl7.org/fhir/StructureDefinition/qicore-communication (QICore-Communication)
 - QICore-CommunicationRequest: (qicore-communicationrequest) CommunicationRequest
   ^communicationRequest[0..*]: CommunicationRequest::QICore-CommunicationRequest (W5: workflow.order)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11338,7 +11490,7 @@ Profiles: 107
   - text[0..1]: Narrative conditions: dom-1
   - contained[0..*]: Resource
   - extension[0..*]: Extension
-    @Slicing: open: :
+    @Slicing: open: value:url
   - modifierExtension[0..*]: Extension
   - identifier[0..*]: Identifier (W5: id)
   - category[0..1]: CodeableConcept (W5: class)
@@ -11383,6 +11535,7 @@ Profiles: 107
     -qicore-communicationrequest: http://hl7.org/fhir/StructureDefinition/qicore-communicationrequest (QICore-CommunicationRequest)
 - QICore-Condition: (qicore-condition) Condition
   ^condition[0..*]: Condition::QICore-Condition (W5: clinical.general)
+  @Slices present with no defined slicing
   !con-1: local error: 
   !con-2: local error: 
   - id[0..1]: id
@@ -11392,7 +11545,9 @@ Profiles: 107
   - text[0..1]: Narrative conditions: dom-1
   - contained[0..*]: Resource
   - extension[0..*]: Extension
-    @Slicing: open: :
+    @Slicing: open: value:url
+      :criticality
+        - value @ Condition.extension.url = http://hl7.org/fhir/StructureDefinition/condition-criticality
   - modifierExtension[0..*]: Extension
   - identifier[0..*]: Identifier (W5: id)
   - patient[1..1]: Reference(qicore-patient) (W5: who.focus)
@@ -11458,6 +11613,7 @@ Profiles: 107
     -uslab-reasonforstudy: http://hl7.org/fhir/StructureDefinition/uslab-reasonforstudy (USLaboratoryConditionProfile)
 - QICore-Device: (qicore-device) Device
   ^device[0..*]: Device::QICore-Device (W5: administrative.device)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11496,6 +11652,7 @@ Profiles: 107
     -qicore-device: http://hl7.org/fhir/StructureDefinition/qicore-device (QICore-Device)
 - QICore-DeviceUseRequest: (qicore-deviceuserequest) DeviceUseRequest
   ^deviceUseRequest[0..*]: DeviceUseRequest::QICore-DeviceUseRequest (W5: workflow.order)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11503,7 +11660,7 @@ Profiles: 107
   - text[0..1]: Narrative conditions: dom-1
   - contained[0..*]: Resource
   - extension[0..*]: Extension
-    @Slicing: open: :
+    @Slicing: open: value:url
   - modifierExtension[0..*]: Extension
   - bodySite[x][0..1]: CodeableConcept|Reference(qicore-bodysite)
   - status[0..1]: code (W5: status)
@@ -11531,6 +11688,7 @@ Profiles: 107
     -qicore-deviceuserequest: http://hl7.org/fhir/StructureDefinition/qicore-deviceuserequest (QICore-DeviceUseRequest)
 - QICore-DeviceUseStatement: (qicore-deviceusestatement) DeviceUseStatement
   ^deviceUseStatement[0..*]: DeviceUseStatement::QICore-DeviceUseStatement (W5: workflow.order)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11555,6 +11713,7 @@ Profiles: 107
     -qicore-deviceusestatement: http://hl7.org/fhir/StructureDefinition/qicore-deviceusestatement (QICore-DeviceUseStatement)
 - QICore-DiagnosticOrder: (qicore-diagnosticorder) DiagnosticOrder
   ^diagnosticOrder[0..*]: DiagnosticOrder::QICore-DiagnosticOrder (W5: clinical.diagnostics)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11562,7 +11721,7 @@ Profiles: 107
   - text[0..1]: Narrative conditions: dom-1
   - contained[0..*]: Resource
   - extension[0..*]: Extension
-    @Slicing: open: :
+    @Slicing: open: value:url
   - modifierExtension[0..*]: Extension
   - subject[1..1]: Reference(qicore-patient|Group|qicore-location|qicore-device) (W5: who.focus)
   - orderer[0..1]: Reference(qicore-practitioner) (W5: who.actor)
@@ -11591,7 +11750,7 @@ Profiles: 107
       - valueCodeableConcept[1..1]: CodeableConcept
     - id[0..1]: id
     - extension[0..*]: Extension
-      @Slicing: open: :
+      @Slicing: open: value:url
     - modifierExtension[0..*]: Extension
     - code[1..1]: CodeableConcept
     - specimen[0..*]: Reference(qicore-specimen)
@@ -11633,6 +11792,7 @@ Profiles: 107
     -uslab-do: http://hl7.org/fhir/StructureDefinition/uslab-do (USLaboratoryDiagnosticOrderProfile)
 - QICore-DiagnosticReport: (qicore-diagnosticreport) DiagnosticReport
   ^diagnosticReport[0..*]: DiagnosticReport::QICore-DiagnosticReport (W5: clinical.diagnostics)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11640,8 +11800,7 @@ Profiles: 107
   - text[0..1]: Narrative conditions: dom-1
   - contained[0..*]: Resource
   - extension[0..*]: Extension
-    @Slicing: open: :
-    - valueReference[1..1]: Reference(qicore-location)
+    @Slicing: open: value:url
   - modifierExtension[0..*]: Extension
   - identifier[0..*]: Identifier (W5: id)
   - status[1..1]: code (W5: status)
@@ -11693,6 +11852,7 @@ Profiles: 107
     -uslab-dr: http://hl7.org/fhir/StructureDefinition/uslab-dr (USLaboratoryDiagnosticReportProfile)
 - QICore-Encounter: (qicore-encounter) Encounter
   ^encounter[0..*]: Encounter::QICore-Encounter (W5: workflow.encounter)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11700,7 +11860,7 @@ Profiles: 107
   - text[0..1]: Narrative conditions: dom-1
   - contained[0..*]: Resource
   - extension[0..*]: Extension
-    @Slicing: open: :
+    @Slicing: open: value:url
   - modifierExtension[0..*]: Extension
   - identifier[0..*]: Identifier (W5: id)
   - status[1..1]: code (W5: status)
@@ -11798,6 +11958,7 @@ Profiles: 107
     -qicore-encounter: http://hl7.org/fhir/StructureDefinition/qicore-encounter (QICore-Encounter)
 - QICore-FamilyMemberHistory: (qicore-familymemberhistory) FamilyMemberHistory
   ^familyMemberHistory[0..*]: FamilyMemberHistory::QICore-FamilyMemberHistory constraints: fhs-1 (W5: clinical.general)
+  @Slices present with no defined slicing
   !fhs-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -11830,7 +11991,7 @@ Profiles: 107
       - valueCodeableConcept[1..1]: CodeableConcept
     - id[0..1]: id
     - extension[0..*]: Extension
-      @Slicing: open: :
+      @Slicing: open: value:url
     - modifierExtension[0..*]: Extension
     - code[1..1]: CodeableConcept
     - outcome[0..1]: CodeableConcept
@@ -11858,6 +12019,7 @@ Profiles: 107
     -qicore-familymemberhistory: http://hl7.org/fhir/StructureDefinition/qicore-familymemberhistory (QICore-FamilyMemberHistory)
 - QICore-Flag: (qicore-flag) Flag
   ^flag[0..*]: Flag::QICore-Flag (W5: workflow.encounter)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11891,6 +12053,7 @@ Profiles: 107
     -qicore-flag: http://hl7.org/fhir/StructureDefinition/qicore-flag (QICore-Flag)
 - QICore-Goal: (qicore-goal) Goal
   ^goal[0..*]: Goal::QICore-Goal (W5: clinical.careprovision)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11898,7 +12061,7 @@ Profiles: 107
   - text[0..1]: Narrative conditions: dom-1
   - contained[0..*]: Resource
   - extension[0..*]: Extension
-    @Slicing: open: :
+    @Slicing: open: value:url
   - modifierExtension[0..*]: Extension
   - identifier[0..*]: Identifier (W5: id)
   - subject[0..1]: Reference(qicore-patient|Group|qicore-organization) (W5: who.focus)
@@ -11936,6 +12099,7 @@ Profiles: 107
     -qicore-goal: http://hl7.org/fhir/StructureDefinition/qicore-goal (QICore-Goal)
 - QICore-ImagingStudy: (qicore-imagingstudy) ImagingStudy
   ^imagingStudy[0..*]: ImagingStudy::QICore-ImagingStudy (W5: clinical.diagnostics)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -11943,7 +12107,7 @@ Profiles: 107
   - text[0..1]: Narrative conditions: dom-1
   - contained[0..*]: Resource
   - extension[0..*]: Extension
-    @Slicing: open: :
+    @Slicing: open: value:url
   - modifierExtension[0..*]: Extension
   - started[0..1]: dateTime (W5: when.init)
   - patient[1..1]: Reference(qicore-patient) (W5: who.focus)
@@ -12007,6 +12171,7 @@ Profiles: 107
     -qicore-imagingstudy: http://hl7.org/fhir/StructureDefinition/qicore-imagingstudy (QICore-ImagingStudy)
 - QICore-Immunization: (qicore-immunization) Immunization
   ^immunization[0..*]: Immunization::QICore-Immunization constraints: imm-1, imm-2 (W5: clinical.medication)
+  @Slices present with no defined slicing
   !imm-1: local error: 
   !imm-2: local error: 
   - id[0..1]: id
@@ -12082,6 +12247,7 @@ Profiles: 107
     -qicore-immunization: http://hl7.org/fhir/StructureDefinition/qicore-immunization (QICore-Immunization)
 - QICore-ImmunizationRecommendation: (qicore-immunizationrec) ImmunizationRecommendation
   ^immunizationRecommendation[0..*]: ImmunizationRecommendation::QICore-ImmunizationRecommendation (W5: clinical.medication)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -12129,6 +12295,7 @@ Profiles: 107
     -qicore-immunizationrec: http://hl7.org/fhir/StructureDefinition/qicore-immunizationrec (QICore-ImmunizationRecommendation)
 - QICore-Location: (qicore-location) Location
   ^location[0..*]: Location::QICore-Location (W5: administrative.entity)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -12194,6 +12361,7 @@ Profiles: 107
     -qicore-location: http://hl7.org/fhir/StructureDefinition/qicore-location (QICore-Location)
 - QICore-Medication: (qicore-medication) Medication
   ^medication[0..*]: Medication::QICore-Medication (W5: clinical.medication)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -12221,7 +12389,7 @@ Profiles: 107
         - valueBoolean[1..1]: boolean
       - id[0..1]: id
       - extension[0..*]: Extension
-        @Slicing: open: :
+        @Slicing: open: value:url
       - modifierExtension[0..*]: Extension
       - item[1..1]: Reference(qicore-substance|qicore-medication)
       - amount[0..1]: Ratio
@@ -12253,6 +12421,7 @@ Profiles: 107
     -qicore-medication: http://hl7.org/fhir/StructureDefinition/qicore-medication (QICore-Medication)
 - QICore-MedicationAdministration: (qicore-medicationadministration) MedicationAdministration
   ^medicationAdministration[0..*]: MedicationAdministration::QICore-MedicationAdministration constraints: mad-2, mad-3 (W5: clinical.medication)
+  @Slices present with no defined slicing
   !mad-1: local error: 
   !mad-2: local error: 
   !mad-3: local error: 
@@ -12304,6 +12473,7 @@ Profiles: 107
     -qicore-medicationadministration: http://hl7.org/fhir/StructureDefinition/qicore-medicationadministration (QICore-MedicationAdministration)
 - QICore-MedicationDispense: (qicore-medicationdispense) MedicationDispense
   ^medicationDispense[0..*]: MedicationDispense::QICore-MedicationDispense constraints: mdd-1 (W5: clinical.medication)
+  @Slices present with no defined slicing
   !mdd-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -12312,7 +12482,7 @@ Profiles: 107
   - text[0..1]: Narrative conditions: dom-1
   - contained[0..*]: Resource
   - extension[0..*]: Extension
-    @Slicing: open: :
+    @Slicing: open: value:url
   - modifierExtension[0..*]: Extension
   - identifier[0..1]: Identifier (W5: id)
   - status[0..1]: code (W5: status)
@@ -12357,7 +12527,7 @@ Profiles: 107
       - valueQuantity[1..1]: Quantity(Duration)
     - id[0..1]: id
     - extension[0..*]: Extension
-      @Slicing: open: :
+      @Slicing: open: value:url
     - modifierExtension[0..*]: Extension
     - text[0..1]: string
     - additionalInstructions[0..1]: CodeableConcept
@@ -12401,6 +12571,7 @@ Profiles: 107
     -qicore-medicationdispense: http://hl7.org/fhir/StructureDefinition/qicore-medicationdispense (QICore-MedicationDispense)
 - QICore-MedicationOrder: (qicore-medicationorder) MedicationOrder
   ^medicationOrder[0..*]: MedicationOrder::QICore-MedicationOrder (W5: clinical.medication)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -12449,7 +12620,7 @@ Profiles: 107
       - valueQuantity[1..1]: Quantity(Duration)
     - id[0..1]: id
     - extension[0..*]: Extension
-      @Slicing: open: :
+      @Slicing: open: value:url
     - modifierExtension[0..*]: Extension
     - text[0..1]: string
     - additionalInstructions[0..1]: CodeableConcept
@@ -12494,6 +12665,7 @@ Profiles: 107
     -qicore-medicationorder: http://hl7.org/fhir/StructureDefinition/qicore-medicationorder (QICore-MedicationOrder)
 - QICore-MedicationStatement: (qicore-medicationstatement) MedicationStatement
   ^medicationStatement[0..*]: MedicationStatement::QICore-MedicationStatement constraints: mst-1, mst-2 (W5: clinical.medication)
+  @Slices present with no defined slicing
   !mst-1: local error: 
   !mst-2: local error: 
   - id[0..1]: id
@@ -12542,6 +12714,7 @@ Profiles: 107
     -qicore-medicationstatement: http://hl7.org/fhir/StructureDefinition/qicore-medicationstatement (QICore-MedicationStatement)
 - QICore-Observation: (qicore-observation) Observation
   ^observation[0..*]: Observation::QICore-Observation constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  @Slices present with no defined slicing
   !obs-3: local error: 
   !obs-6: local error: 
   !obs-7: local error: 
@@ -12552,7 +12725,9 @@ Profiles: 107
   - text[0..1]: Narrative conditions: dom-1
   - contained[0..*]: Resource
   - extension[0..*]: Extension
-    @Slicing: open: :
+    @Slicing: open: value:url
+      :bodyPosition
+        - value @ Observation.extension.url = http://hl7.org/fhir/StructureDefinition/observation-bodyPosition
   - modifierExtension[0..*]: Extension
   - identifier[0..*]: Identifier (W5: id)
   - status[1..1]: code (W5: status)
@@ -12744,6 +12919,7 @@ Profiles: 107
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - QICore-Organization: (qicore-organization) Organization
   ^organization[0..*]: Organization::QICore-Organization constraints: org-1 (W5: administrative.group)
+  @Slices present with no defined slicing
   !org-1: local error: 
   !org-2: local error: 
   !org-3: local error: 
@@ -12816,6 +12992,7 @@ Profiles: 107
     -uslab-performinglab: http://hl7.org/fhir/StructureDefinition/uslab-performinglab (USLaboratoryOrganizationProfile)
 - QICore-Patient: (qicore-patient) Patient
   ^patient[0..*]: Patient::QICore-Patient (W5: administrative.individual)
+  @Slices present with no defined slicing
   !pat-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -12824,7 +13001,19 @@ Profiles: 107
   - text[0..1]: Narrative conditions: dom-1
   - contained[0..*]: Resource
   - extension[0..*]: Extension
-    @Slicing: open: :
+    @Slicing: open: value:url
+      :disability
+        - value @ Patient.extension.url = http://hl7.org/fhir/StructureDefinition/patient-disability
+      :nationality
+        - value @ Patient.extension.url = http://hl7.org/fhir/StructureDefinition/patient-nationality
+      :cadavericDonor
+        - value @ Patient.extension.url = http://hl7.org/fhir/StructureDefinition/patient-cadavericDonor
+      :militaryService
+        - value @ Patient.extension.url = http://hl7.org/fhir/StructureDefinition/qicore-patient-militaryService
+      :clinicalTrial
+        - value @ Patient.extension.url = http://hl7.org/fhir/StructureDefinition/patient-clinicalTrial
+      :birthTime
+        - value @ Patient.extension.url = http://hl7.org/fhir/StructureDefinition/patient-birthTime
   - modifierExtension[0..*]: Extension
   - identifier[0..*]: Identifier (W5: id)
   - active[0..1]: boolean (W5: status)
@@ -12833,7 +13022,7 @@ Profiles: 107
   - telecom[0..*]: ContactPoint
     - id[0..1]: id
     - extension[0..*]: Extension
-      @Slicing: open: :
+      @Slicing: open: value:url
     - system[0..1]: code conditions: cpt-2
       {phone|fax|email|pager|other}
     - value[0..1]: string
@@ -12852,7 +13041,7 @@ Profiles: 107
   - address[0..*]: Address
     - id[0..1]: id
     - extension[0..*]: Extension
-      @Slicing: open: :
+      @Slicing: open: value:url
     - use[0..1]: code
       {home|work|temp|old}
     - type[0..1]: code
@@ -13009,6 +13198,7 @@ Profiles: 107
     -uslab-phpatient: http://hl7.org/fhir/StructureDefinition/uslab-phpatient (USLaboratoryPatientProfile)
 - QICore-Practitioner: (qicore-practitioner) Practitioner
   ^practitioner[0..*]: Practitioner::QICore-Practitioner (W5: administrative.individual)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -13016,7 +13206,7 @@ Profiles: 107
   - text[0..1]: Narrative conditions: dom-1
   - contained[0..*]: Resource
   - extension[0..*]: Extension
-    @Slicing: open: :
+    @Slicing: open: value:url
   - modifierExtension[0..*]: Extension
   - identifier[0..*]: Identifier (W5: id)
   - active[0..1]: boolean (W5: status)
@@ -13041,7 +13231,7 @@ Profiles: 107
         - valueBoolean[1..1]: boolean
       - id[0..1]: id
       - extension[0..*]: Extension
-        @Slicing: open: :
+        @Slicing: open: value:url
       - coding[0..*]: Coding
       - text[0..1]: string
     - period[0..1]: Period (W5: when.done)
@@ -13090,6 +13280,7 @@ Profiles: 107
     -uslab-pract: http://hl7.org/fhir/StructureDefinition/uslab-pract (USLaboratoryPractitionerProfile)
 - QICore-Procedure: (qicore-procedure) Procedure
   ^procedure[0..*]: Procedure::QICore-Procedure constraints: pro-1 (W5: clinical.general)
+  @Slices present with no defined slicing
   !pro-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -13098,7 +13289,7 @@ Profiles: 107
   - text[0..1]: Narrative conditions: dom-1
   - contained[0..*]: Resource
   - extension[0..*]: Extension
-    @Slicing: open: :
+    @Slicing: open: value:url
   - modifierExtension[0..*]: Extension
   - identifier[0..*]: Identifier (W5: id)
   - subject[1..1]: Reference(qicore-patient|Group) (W5: who.focus)
@@ -13165,6 +13356,7 @@ Profiles: 107
     -qicore-procedure: http://hl7.org/fhir/StructureDefinition/qicore-procedure (QICore-Procedure)
 - QICore-ProcedureRequest: (qicore-procedurerequest) ProcedureRequest
   ^procedureRequest[0..*]: ProcedureRequest::QICore-ProcedureRequest (W5: clinical.general)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -13172,7 +13364,7 @@ Profiles: 107
   - text[0..1]: Narrative conditions: dom-1
   - contained[0..*]: Resource
   - extension[0..*]: Extension
-    @Slicing: open: :
+    @Slicing: open: value:url
   - modifierExtension[0..*]: Extension
   - identifier[0..*]: Identifier (W5: id)
   - subject[1..1]: Reference(qicore-patient|Group) (W5: who.focus)
@@ -13216,6 +13408,7 @@ Profiles: 107
     -qicore-procedurerequest: http://hl7.org/fhir/StructureDefinition/qicore-procedurerequest (QICore-ProcedureRequest)
 - QICore-ReferralRequest: (qicore-referralrequest) ReferralRequest
   ^referralRequest[0..*]: ReferralRequest::QICore-ReferralRequest (W5: clinical.careprovision)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -13223,7 +13416,7 @@ Profiles: 107
   - text[0..1]: Narrative conditions: dom-1
   - contained[0..*]: Resource
   - extension[0..*]: Extension
-    @Slicing: open: :
+    @Slicing: open: value:url
   - modifierExtension[0..*]: Extension
   - status[1..1]: code (W5: status)
     {draft|requested|active|cancelled|accepted|rejected|completed}
@@ -13258,6 +13451,7 @@ Profiles: 107
     -qicore-referralrequest: http://hl7.org/fhir/StructureDefinition/qicore-referralrequest (QICore-ReferralRequest)
 - QICore-RelatedPerson: (qicore-relatedperson) RelatedPerson
   ^relatedPerson[0..*]: RelatedPerson::QICore-RelatedPerson (W5: administrative.individual)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -13301,6 +13495,7 @@ Profiles: 107
     -qicore-relatedperson: http://hl7.org/fhir/StructureDefinition/qicore-relatedperson (QICore-RelatedPerson)
 - QICore-Specimen: (qicore-specimen) Specimen
   ^specimen[0..*]: Specimen::QICore-Specimen (W5: clinical.diagnostics)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -13356,7 +13551,7 @@ Profiles: 107
       - valueInteger[1..1]: integer
     - id[0..1]: id
     - extension[0..*]: Extension
-      @Slicing: open: :
+      @Slicing: open: value:url
     - modifierExtension[0..*]: Extension
     - identifier[0..*]: Identifier
     - description[0..1]: string
@@ -13381,6 +13576,7 @@ Profiles: 107
     -uslab-spec: http://hl7.org/fhir/StructureDefinition/uslab-spec (USLaboratorySpecimenProfile)
 - QICore-Substance: (qicore-substance) Substance
   ^substance[0..*]: Substance::QICore-Substance (W5: administrative.entity)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -13418,6 +13614,7 @@ Profiles: 107
     -qicore-substance: http://hl7.org/fhir/StructureDefinition/qicore-substance (QICore-Substance)
 - StructuredDataCaptureDataElement: (sdc-element) DataElement
   ^dataElement[0..*]: DataElement::StructuredDataCaptureDataElement (W5: conformance.content)
+  @Slices present with no defined slicing
   !dae-1: local error: 
   !dae-2: local error: 
   !eld-1: local error: 
@@ -13475,7 +13672,19 @@ Profiles: 107
   - element[1..*]: ElementDefinition constraints: dae-1, dae-2
     - id[0..1]: id
     - extension[0..*]: Extension
-      @Slicing: open: :
+      @Slicing: open: value:url
+        :question
+          - value @ DataElement.element.extension.url = http://hl7.org/fhir/StructureDefinition/elementdefinition-question
+        :allowedUnits
+          - value @ DataElement.element.extension.url = http://hl7.org/fhir/StructureDefinition/elementdefinition-allowedUnits
+        :minLength
+          - value @ DataElement.element.extension.url = http://hl7.org/fhir/StructureDefinition/minLength
+        :regex
+          - value @ DataElement.element.extension.url = http://hl7.org/fhir/StructureDefinition/regex
+        :entryFormat
+          - value @ DataElement.element.extension.url = http://hl7.org/fhir/StructureDefinition/entryFormat
+        :maxDecimalPlaces
+          - value @ DataElement.element.extension.url = http://hl7.org/fhir/StructureDefinition/maxDecimalPlaces
     - path[1..1]: string
     - representation[0..*]: code
       {xmlAttr}
@@ -13558,7 +13767,9 @@ Profiles: 107
     - mapping[0..*]: Element
       - id[0..1]: id
       - extension[0..*]: Extension
-        @Slicing: open: :
+        @Slicing: open: value:url
+          :MappingEquivalence
+            - value @ DataElement.element.mapping.extension.url = http://hl7.org/fhir/StructureDefinition/elementdefinition-equivalence
       - identity[1..1]: id
       - language[0..1]: code
       - map[1..1]: string
@@ -13599,6 +13810,7 @@ Profiles: 107
     -sdcde-dataelement: http://hl7.org/fhir/StructureDefinition/sdcde-dataelement (StructuredDataCaptureDataElementExchange)
 - StructuredDataCaptureQuestionnaireDesign: (sdc-questionnaire) Questionnaire
   ^questionnaire[0..*]: Questionnaire::StructuredDataCaptureQuestionnaireDesign constraints: que-2, que-3 (W5: infrastructure.information)
+  @Slices present with no defined slicing
   !inv-1: local error: 
   !inv-2: local error: 
   !que-1: local error: 
@@ -13612,7 +13824,15 @@ Profiles: 107
   - text[0..1]: Narrative conditions: dom-1
   - contained[0..*]: Resource
   - extension[0..*]: Extension
-    @Slicing: open: :
+    @Slicing: open: value:url
+      :submissionEndpoint
+        - value @ Questionnaire.extension.url = http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-endpoint
+      :provenanceSignatureRequired
+        - value @ Questionnaire.extension.url = http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-provenanceSignatureRequred
+      :styleSensitive
+        - value @ Questionnaire.extension.url = http://hl7.org/fhir/StructureDefinition/styleSensitive
+      :category
+        - value @ Questionnaire.extension.url = http://hl7.org/fhir/StructureDefinition/questionnaire-category
   - modifierExtension[0..*]: Extension
   - identifier[0..*]: Identifier (W5: id)
   - version[0..1]: string (W5: id.version)
@@ -13640,19 +13860,41 @@ Profiles: 107
       - valueInteger[1..1]: integer
     - id[0..1]: id
     - extension[0..*]: Extension
-      @Slicing: open: :
+      @Slicing: open: value:url
+        :groupLabel
+          - value @ Questionnaire.group.extension.url = http://hl7.org/fhir/StructureDefinition/questionnaire-label
+        :groupInstruction
+          - value @ Questionnaire.group.extension.url = http://hl7.org/fhir/StructureDefinition/questionnaire-instruction
+        :groupSecurity
+          - value @ Questionnaire.group.extension.url = http://hl7.org/fhir/StructureDefinition/questionnaire-security
+        :groupHelp
+          - value @ Questionnaire.group.extension.url = http://hl7.org/fhir/StructureDefinition/questionnaire-help
+        :groupTooltip
+          - value @ Questionnaire.group.extension.url = http://hl7.org/fhir/StructureDefinition/questionnaire-tooltip
+        :groupTrailing
+          - value @ Questionnaire.group.extension.url = http://hl7.org/fhir/StructureDefinition/questionnaire-trailing
+        :groupOptionalDisplay
+          - value @ Questionnaire.group.extension.url = http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-optionalDisplay
+        :hidden
+          - value @ Questionnaire.group.extension.url = http://hl7.org/fhir/StructureDefinition/questionnaire-hidden
+        :groupMinOccurs
+          - value @ Questionnaire.group.extension.url = http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs
+        :groupMaxOccurs
+          - value @ Questionnaire.group.extension.url = http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs
+        :specialGroup
+          - value @ Questionnaire.group.extension.url = http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-specialGroup
     - modifierExtension[0..*]: Extension
     - linkId[1..1]: string
     - title[0..1]: string
       - id[0..1]: id
       - extension[0..*]: Extension
-        @Slicing: open: :
+        @Slicing: open: value:url
       - value[0..1]: Element
     - concept[0..1]: Coding
     - text[0..1]: string
       - id[0..1]: id
       - extension[0..*]: Extension
-        @Slicing: open: :
+        @Slicing: open: value:url
       - value[0..1]: Element
     - required[1..1]: boolean
     .defaultValueboolean = false
@@ -13735,14 +13977,62 @@ Profiles: 107
         - valueString[1..1]: string
       - id[0..1]: id
       - extension[0..*]: Extension
-        @Slicing: open: :
+        @Slicing: open: value:url
+          :questionMinOccurs
+            - value @ Questionnaire.group.question.extension.url = http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs
+          :questionMaxOccurs
+            - value @ Questionnaire.group.question.extension.url = http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs
+          :questionLabel
+            - value @ Questionnaire.group.question.extension.url = http://hl7.org/fhir/StructureDefinition/questionnaire-label
+          :questionInstruction
+            - value @ Questionnaire.group.question.extension.url = http://hl7.org/fhir/StructureDefinition/questionnaire-instruction
+          :questionSecurity
+            - value @ Questionnaire.group.question.extension.url = http://hl7.org/fhir/StructureDefinition/questionnaire-security
+          :questionHelp
+            - value @ Questionnaire.group.question.extension.url = http://hl7.org/fhir/StructureDefinition/questionnaire-help
+          :questionTooltip
+            - value @ Questionnaire.group.question.extension.url = http://hl7.org/fhir/StructureDefinition/questionnaire-tooltip
+          :questionTrailing
+            - value @ Questionnaire.group.question.extension.url = http://hl7.org/fhir/StructureDefinition/questionnaire-trailing
+          :questionUnits
+            - value @ Questionnaire.group.question.extension.url = http://hl7.org/fhir/StructureDefinition/questionnaire-units
+          :questionEnableWhen
+            - value @ Questionnaire.group.question.extension.url = http://hl7.org/fhir/StructureDefinition/questionnaire-enableWhen
+          :questionOptionalDisplay
+            - value @ Questionnaire.group.question.extension.url = http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-optionalDisplay
+          :hidden
+            - value @ Questionnaire.group.question.extension.url = http://hl7.org/fhir/StructureDefinition/questionnaire-hidden
+          :questionControl
+            - value @ Questionnaire.group.question.extension.url = http://hl7.org/fhir/StructureDefinition/questionnaire-questionControl
+          :choiceOrientation
+            - value @ Questionnaire.group.question.extension.url = http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation
+          :defaultValue
+            - value @ Questionnaire.group.question.extension.url = http://hl7.org/fhir/StructureDefinition/questionnaire-defaultValue
+          :readOnly
+            - value @ Questionnaire.group.question.extension.url = http://hl7.org/fhir/StructureDefinition/questionnaire-readOnly
+          :minLength
+            - value @ Questionnaire.group.question.extension.url = http://hl7.org/fhir/StructureDefinition/minLength
+          :maxLength
+            - value @ Questionnaire.group.question.extension.url = http://hl7.org/fhir/StructureDefinition/questionnaire-maxLength
+          :regex
+            - value @ Questionnaire.group.question.extension.url = http://hl7.org/fhir/StructureDefinition/regex
+          :entryFormat
+            - value @ Questionnaire.group.question.extension.url = http://hl7.org/fhir/StructureDefinition/entryFormat
+          :minValue
+            - value @ Questionnaire.group.question.extension.url = http://hl7.org/fhir/StructureDefinition/minValue
+          :maxValue
+            - value @ Questionnaire.group.question.extension.url = http://hl7.org/fhir/StructureDefinition/maxValue
+          :maxDecimalPlaces
+            - value @ Questionnaire.group.question.extension.url = http://hl7.org/fhir/StructureDefinition/maxDecimalPlaces
+          :deReference
+            - value @ Questionnaire.group.question.extension.url = http://hl7.org/fhir/StructureDefinition/questionnaire-deReference
       - modifierExtension[0..*]: Extension
       - linkId[1..1]: string
       - concept[0..*]: Coding
       - text[1..1]: string
         - id[0..1]: id
         - extension[0..*]: Extension
-          @Slicing: open: :
+          @Slicing: open: value:url
         - value[0..1]: Element
       - type[1..1]: code
         {boolean|decimal|integer|date|dateTime|instant|time|string|text|url|choice|open-choice|attachment|reference|quantity}
@@ -13803,6 +14093,7 @@ Profiles: 107
     -sdc-questionnaire: http://hl7.org/fhir/StructureDefinition/sdc-questionnaire (StructuredDataCaptureQuestionnaireDesign)
 - StructuredDataCaptureDataCapture: (sdc-response) QuestionnaireResponse
   ^questionnaireResponse[0..*]: QuestionnaireResponse::StructuredDataCaptureDataCapture (W5: infrastructure.information)
+  @Slices present with no defined slicing
   !qrs-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -13870,6 +14161,7 @@ Profiles: 107
     -sdc-response: http://hl7.org/fhir/StructureDefinition/sdc-response (StructuredDataCaptureDataCapture)
 - StructuredDataCaptureValueSet: (sdc-valueset) ValueSet
   ^valueSet[0..*]: ValueSet::StructuredDataCaptureValueSet constraints: vsd-2, vsd-5, vsd-7 (W5: conformance.terminology)
+  @Slices present with no defined slicing
   !vsd-1: local error: 
   !vsd-2: local error: 
   !vsd-3: local error: 
@@ -13887,7 +14179,9 @@ Profiles: 107
   - text[0..1]: Narrative conditions: dom-1
   - contained[0..*]: Resource
   - extension[0..*]: Extension
-    @Slicing: open: :
+    @Slicing: open: value:url
+      :styleSensitive
+        - value @ ValueSet.extension.url = http://hl7.org/fhir/StructureDefinition/styleSensitive
   - modifierExtension[0..*]: Extension
   - url[0..1]: uri (W5: id)
   - identifier[0..1]: Identifier (W5: id)
@@ -13947,7 +14241,11 @@ Profiles: 107
         - valueCode[1..1]: code
       - id[0..1]: id
       - extension[0..*]: Extension
-        @Slicing: open: :
+        @Slicing: open: value:url
+          :conceptLabel
+            - value @ ValueSet.codeSystem.concept.extension.url = http://hl7.org/fhir/StructureDefinition/valueset-label
+          :conceptConceptOrder
+            - value @ ValueSet.codeSystem.concept.extension.url = http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder
       - modifierExtension[0..*]: Extension
       - code[1..1]: code
       - abstract[0..1]: boolean
@@ -13955,7 +14253,7 @@ Profiles: 107
       - display[0..1]: string
         - id[0..1]: id
         - extension[0..*]: Extension
-          @Slicing: open: :
+          @Slicing: open: value:url
         - value[0..1]: Element
       - definition[0..1]: string
       - designation[0..*]: BackboneElement
@@ -14007,13 +14305,17 @@ Profiles: 107
           - valueDecimal[1..1]: decimal
         - id[0..1]: id
         - extension[0..*]: Extension
-          @Slicing: open: :
+          @Slicing: open: value:url
+            :conceptLabel
+              - value @ ValueSet.compose.include.concept.extension.url = http://hl7.org/fhir/StructureDefinition/valueset-label
+            :conceptConceptOrder
+              - value @ ValueSet.compose.include.concept.extension.url = http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder
         - modifierExtension[0..*]: Extension
         - code[1..1]: code
         - display[0..1]: string
           - id[0..1]: id
           - extension[0..*]: Extension
-            @Slicing: open: :
+            @Slicing: open: value:url
           - value[0..1]: Element
         - designation[0..*]: ValueSet.codeSystem.concept.designation
       - filter[0..*]: BackboneElement conditions: vsd-11
@@ -14065,7 +14367,11 @@ Profiles: 107
         - valueDecimal[1..1]: decimal
       - id[0..1]: id
       - extension[0..*]: Extension
-        @Slicing: open: :
+        @Slicing: open: value:url
+          :expansionLabel
+            - value @ ValueSet.expansion.contains.extension.url = http://hl7.org/fhir/StructureDefinition/valueset-label
+          :conceptConceptOrder
+            - value @ ValueSet.expansion.contains.extension.url = http://hl7.org/fhir/StructureDefinition/valueset-conceptOrder
       - modifierExtension[0..*]: Extension
       - system[0..1]: uri
       - abstract[0..1]: boolean
@@ -14074,7 +14380,7 @@ Profiles: 107
       - display[0..1]: string conditions: vsd-6
         - id[0..1]: id
         - extension[0..*]: Extension
-          @Slicing: open: :
+          @Slicing: open: value:url
         - value[0..1]: Element
       - contains[0..*]: ValueSet.expansion.contains
   Extensions: 14
@@ -14192,6 +14498,7 @@ Profiles: 107
     -shareablevalueset: http://hl7.org/fhir/StructureDefinition/shareablevalueset (ShareableValueSet)
 - StructuredDataCaptureDataElementExchange: (sdcde-dataelement) DataElement
   ^dataElement[0..*]: DataElement::StructuredDataCaptureDataElementExchange constraints: inv-2 (W5: conformance.content)
+  @Slices present with no defined slicing
   !dae-1: local error: 
   !dae-2: local error: 
   !eld-1: local error: 
@@ -14209,7 +14516,19 @@ Profiles: 107
   - text[0..1]: Narrative conditions: dom-1
   - contained[0..*]: Resource
   - extension[0..*]: Extension
-    @Slicing: open: :
+    @Slicing: open: value:url
+      :effectivePeriod
+        - value @ DataElement.extension.url = http://hl7.org/fhir/StructureDefinition/11179-de-effective-period
+      :documentReference
+        - value @ DataElement.extension.url = http://hl7.org/fhir/StructureDefinition/11179-de-document-reference
+      :administrativeStatus
+        - value @ DataElement.extension.url = http://hl7.org/fhir/StructureDefinition/11179-de-administrative-status
+      :changeDescription
+        - value @ DataElement.extension.url = http://hl7.org/fhir/StructureDefinition/11179-de-change-description
+      :submitterOrganization
+        - value @ DataElement.extension.url = http://hl7.org/fhir/StructureDefinition/11179-de-submitter-org
+      :registryOrganization
+        - value @ DataElement.extension.url = http://hl7.org/fhir/StructureDefinition/11179-de-registry-org
   - modifierExtension[0..*]: Extension
   - url[1..1]: uri (W5: id)
   - identifier[1..1]: Identifier (W5: id)
@@ -14226,7 +14545,9 @@ Profiles: 107
       - valueAddress[1..1]: Address
     - id[0..1]: id
     - extension[0..*]: Extension
-      @Slicing: open: :
+      @Slicing: open: value:url
+        :contactAddress
+          - value @ DataElement.contact.extension.url = http://hl7.org/fhir/StructureDefinition/11179-de-contact-address
     - modifierExtension[0..*]: Extension
     - name[1..1]: string
     - telecom[1..1]: ContactPoint
@@ -14238,7 +14559,9 @@ Profiles: 107
       - valueCode[1..1]: code
     - id[0..1]: id
     - extension[0..*]: Extension
-      @Slicing: open: :
+      @Slicing: open: value:url
+        :classificationOrContext
+          - value @ DataElement.useContext.extension.url = http://hl7.org/fhir/StructureDefinition/11179-de-classification-or-context
     - coding[0..*]: Coding
     - text[0..1]: string
   - copyright[0..1]: string
@@ -14246,71 +14569,13 @@ Profiles: 107
   .fixedcode = comparable
     {comparable|fully-specified|equivalent|convertable|scaleable|flexible}
   - mapping[0..*]: BackboneElement
-    @Slicing: open: :
+    @Slicing: open: value:uri
+      :ObjectClassPropertyMapping
+        - value @ DataElement.mapping.uri = http://healthit.gov/sdc/objectclassproperty
     Extensions: 1
     +http://hl7.org/fhir/StructureDefinition/mapSourcePublisher [0..1]
       - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/mapSourcePublisher
       - valueString[1..1]: string
-    - id[0..1]: id
-    - extension[0..*]: Extension
-    - modifierExtension[0..*]: Extension
-    - identity[1..1]: id
-    - uri[0..1]: uri
-    - name[0..1]: string
-    - comments[0..1]: string
-    - id[0..1]: id
-    - extension[0..*]: Extension
-    - modifierExtension[0..*]: Extension
-    - identity[1..1]: id
-    .fixeduri = objclass-prop
-    - uri[1..1]: uri
-    .fixeduri = http://healthit.gov/sdc/objectclassproperty
-    - name[0..1]: string
-    - comments[0..1]: string
-  - mapping[1..1]: BackboneElement
-    @Slices present with no defined slicing
-    Extensions: 1
-    +http://hl7.org/fhir/StructureDefinition/mapSourcePublisher [0..1]
-      - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/mapSourcePublisher
-      - valueString[1..1]: string
-    - id[0..1]: id
-    - extension[0..*]: Extension
-    - modifierExtension[0..*]: Extension
-    - identity[1..1]: id
-    - uri[0..1]: uri
-    - name[0..1]: string
-    - comments[0..1]: string
-    - id[0..1]: id
-    - extension[0..*]: Extension
-    - modifierExtension[0..*]: Extension
-    - identity[1..1]: id
-    .fixeduri = objclass-prop
-    - uri[1..1]: uri
-    .fixeduri = http://healthit.gov/sdc/objectclassproperty
-    - name[0..1]: string
-    - comments[0..1]: string
-  - mapping[0..*]: BackboneElement constraints: inv-1
-    @Slices present with no defined slicing
-    Extensions: 1
-    +http://hl7.org/fhir/StructureDefinition/mapSourcePublisher [0..1]
-      - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/mapSourcePublisher
-      - valueString[1..1]: string
-    - id[0..1]: id
-    - extension[0..*]: Extension
-    - modifierExtension[0..*]: Extension
-    - identity[1..1]: id
-    - uri[0..1]: uri
-    - name[0..1]: string
-    - comments[0..1]: string
-    - id[0..1]: id
-    - extension[0..*]: Extension
-    - modifierExtension[0..*]: Extension
-    - identity[1..1]: id
-    .fixeduri = objclass-prop
-    - uri[1..1]: uri
-    .fixeduri = http://healthit.gov/sdc/objectclassproperty
-    - name[0..1]: string
-    - comments[0..1]: string
   - element[1..*]: ElementDefinition constraints: dae-1, dae-2
     - id[0..1]: id
     - extension[0..*]: Extension
@@ -14326,7 +14591,9 @@ Profiles: 107
         - valueBoolean[1..1]: boolean
       - id[0..1]: id
       - extension[0..*]: Extension
-        @Slicing: open: :
+        @Slicing: open: value:url
+          :isDataElementConcept
+            - value @ DataElement.element.code.extension.url = http://hl7.org/fhir/StructureDefinition/11179-de-is-data-element-concept
       - system[0..1]: uri
       - version[0..1]: string
       - code[0..1]: code
@@ -14403,48 +14670,17 @@ Profiles: 107
           - valueReference[1..1]: Reference(ValueSet)
         - id[0..1]: id
         - extension[0..*]: Extension
-          @Slicing: open: :
+          @Slicing: open: value:url
+            :permittedValueValueset
+              - value @ DataElement.element.binding.valueSetReference.extension.url = http://hl7.org/fhir/StructureDefinition/11179-permitted-value-valueset
+            :permittedValueConcepmap
+              - value @ DataElement.element.binding.valueSetReference.extension.url = http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap
         - reference[0..1]: string conditions: ref-1
         - display[0..1]: string
     - mapping[0..*]: Element
-      @Slicing: open: :
-      - id[0..1]: id
-      - identity[1..1]: id
-      - language[0..1]: code
-      - map[1..1]: string
-      - id[0..1]: id
-      - extension[0..*]: Extension
-        @Slicing: open: :
-      - identity[1..1]: id
-      .fixeduri = objclass-prop
-      - language[0..1]: code
-      - map[1..1]: string
-    - mapping[0..1]: Element
-      @Slices present with no defined slicing
-      - id[0..1]: id
-      - identity[1..1]: id
-      - language[0..1]: code
-      - map[1..1]: string
-      - id[0..1]: id
-      - extension[0..*]: Extension
-        @Slicing: open: :
-      - identity[1..1]: id
-      .fixeduri = objclass-prop
-      - language[0..1]: code
-      - map[1..1]: string
-    - mapping[0..*]: Element
-      @Slices present with no defined slicing
-      - id[0..1]: id
-      - identity[1..1]: id
-      - language[0..1]: code
-      - map[1..1]: string
-      - id[0..1]: id
-      - extension[0..*]: Extension
-        @Slicing: open: :
-      - identity[1..1]: id
-      .fixeduri = objclass-prop
-      - language[0..1]: code
-      - map[1..1]: string
+      @Slicing: open: value:identity
+        :ClassPropertyMapping
+          - value @ DataElement.element.mapping.identity = objclass-prop
   Extensions: 6
   +http://hl7.org/fhir/StructureDefinition/11179-de-administrative-status [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/11179-de-administrative-status
@@ -14482,6 +14718,7 @@ Profiles: 107
     -sdcde-dataelement: http://hl7.org/fhir/StructureDefinition/sdcde-dataelement (StructuredDataCaptureDataElementExchange)
 - StructuredDataCaptureDataElementExchangeValueSet: (sdcde-valueset) ValueSet
   ^valueSet[0..*]: ValueSet::StructuredDataCaptureDataElementExchangeValueSet constraints: vsd-2, vsd-5, vsd-7 (W5: conformance.terminology)
+  @Slices present with no defined slicing
   !vsd-1: local error: 
   !vsd-2: local error: 
   !vsd-3: local error: 
@@ -14499,7 +14736,13 @@ Profiles: 107
   - text[0..1]: Narrative conditions: dom-1
   - contained[0..*]: Resource
   - extension[0..*]: Extension
-    @Slicing: open: :
+    @Slicing: open: value:url
+      :trustedExpansion
+        - value @ ValueSet.extension.url = http://hl7.org/fhir/StructureDefinition/valueset-trusted-expansion
+      :effectiveDate
+        - value @ ValueSet.extension.url = http://hl7.org/fhir/StructureDefinition/valueset-effectiveDate
+      :expirationDate
+        - value @ ValueSet.extension.url = http://hl7.org/fhir/StructureDefinition/valueset-expirationDate
   - modifierExtension[0..*]: Extension
   - url[0..1]: uri (W5: id)
   - identifier[1..1]: Identifier (W5: id)
@@ -14667,7 +14910,11 @@ Profiles: 107
         - valueDecimal[1..1]: decimal
       - id[0..1]: id
       - extension[0..*]: Extension
-        @Slicing: open: :
+        @Slicing: open: value:url
+          :definition
+            - value @ ValueSet.expansion.contains.extension.url = http://hl7.org/fhir/StructureDefinition/valueset-definition
+          :systemName
+            - value @ ValueSet.expansion.contains.extension.url = http://hl7.org/fhir/StructureDefinition/valueset-systemName
       - modifierExtension[0..*]: Extension
       - system[0..1]: uri
       - abstract[0..1]: boolean
@@ -14790,6 +15037,7 @@ Profiles: 107
     -shareablevalueset: http://hl7.org/fhir/StructureDefinition/shareablevalueset (ShareableValueSet)
 - ShareableValueSet: (shareablevalueset) ValueSet
   ^valueSet[1..1]: ValueSet::ShareableValueSet constraints: vsd-2, vsd-5, vsd-7 (W5: conformance.terminology)
+  @Slices present with no defined slicing
   !vsd-1: local error: 
   !vsd-2: local error: 
   !vsd-3: local error: 
@@ -15096,6 +15344,7 @@ Profiles: 107
     -shareablevalueset: http://hl7.org/fhir/StructureDefinition/shareablevalueset (ShareableValueSet)
 - ExampleLipidProfile: (triglyceride) Observation
   ^observation[1..1]: Observation::ExampleLipidProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  @Slices present with no defined slicing
   !obs-3: local error: 
   !obs-6: local error: 
   !obs-7: local error: 
@@ -15298,6 +15547,7 @@ Profiles: 107
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - USLaboratoryOrganizationProfile: (uslab-cctarget) Organization
   ^organization[0..*]: Organization::USLaboratoryOrganizationProfile constraints: inv-1, org-1 (W5: administrative.group)
+  @Slices present with no defined slicing
   !inv-1: local error: 
   !inv-2: local error: 
   !org-1: local error: 
@@ -15312,29 +15562,9 @@ Profiles: 107
   - extension[0..*]: Extension
   - modifierExtension[0..*]: Extension
   - identifier[0..*]: Identifier conditions: org-1 (W5: id)
-    @Slicing: open: :
-    - id[0..1]: id
-    - extension[0..*]: Extension
-    - use[1..1]: code
-      {usual|official|temp|secondary}
-    - type[0..1]: CodeableConcept
-    - system[1..1]: uri
-    .fixeduri = http://hl7.org/fhir/sid/us-npi
-    - value[1..1]: string
-    - period[0..1]: Period
-    - assigner[0..1]: Reference(Organization)
-  - identifier[0..*]: Identifier conditions: org-1 (W5: id)
-    @Slices present with no defined slicing
-    - id[0..1]: id
-    - extension[0..*]: Extension
-    - use[1..1]: code
-      {usual|official|temp|secondary}
-    - type[0..1]: CodeableConcept
-    - system[1..1]: uri
-    .fixeduri = http://hl7.org/fhir/sid/us-npi
-    - value[1..1]: string
-    - period[0..1]: Period
-    - assigner[0..1]: Reference(Organization)
+    @Slicing: open: value:system
+      :USlabCCFacilityNPI
+        - value @ Organization.identifier.system = http://hl7.org/fhir/sid/us-npi
   - active[0..1]: boolean (W5: status)
   .defaultValueboolean = true
   - type[0..1]: CodeableConcept (W5: class)
@@ -15415,6 +15645,7 @@ Profiles: 107
     -uslab-performinglab: http://hl7.org/fhir/StructureDefinition/uslab-performinglab (USLaboratoryOrganizationProfile)
 - USLaboratoryConditionProfile: (uslab-cond) Condition
   ^condition[0..*]: Condition::USLaboratoryConditionProfile (W5: clinical.general)
+  @Slices present with no defined slicing
   !con-1: local error: 
   !con-2: local error: 
   - id[0..1]: id
@@ -15511,6 +15742,7 @@ Profiles: 107
     -uslab-reasonforstudy: http://hl7.org/fhir/StructureDefinition/uslab-reasonforstudy (USLaboratoryConditionProfile)
 - USLaboratoryDiagnosticOrderProfile: (uslab-do) DiagnosticOrder
   ^diagnosticOrder[0..*]: DiagnosticOrder::USLaboratoryDiagnosticOrderProfile (W5: clinical.diagnostics)
+  @Slices present with no defined slicing
   !inv-2: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -15519,7 +15751,9 @@ Profiles: 107
   - text[0..1]: Narrative conditions: dom-1
   - contained[0..*]: Resource
   - extension[0..*]: Extension
-    @Slicing: open: :
+    @Slicing: open: value:url
+      :USLabCC
+        - value @ DiagnosticOrder.extension.url = http://hl7.org/fhir/StructureDefinition/uslab-cc-practitioner
   - modifierExtension[0..*]: Extension
   - subject[1..1]: Reference(uslab-patient|uslab-phpatient) (W5: who.focus)
   - orderer[1..1]: Reference(uslab-phpract|uslab-pract) (W5: who.actor)
@@ -15537,9 +15771,10 @@ Profiles: 107
   - encounter[0..1]: Reference(Encounter) (W5: context)
   - reason[0..*]: CodeableConcept
   - supportingInformation[0..*]: Reference(Observation|Condition|DocumentReference)
-    @Slicing: open: :, :
-  - supportingInformation[0..*]: Reference(uslab-obscode|uslab-obsquantity|uslab-obsother|uslab-obsratio|uslab-obspanel|uslab-cond|DocumentReference)
-    @Slices present with no defined slicing
+    @Slicing: open: value:@Profile, type:$this
+      :USLabSupportingInformation
+        - type @ DiagnosticOrder.supportingInformation only Reference
+        - type @ DiagnosticOrder.supportingInformation only Reference
   - specimen[0..*]: Reference(uslab-spec)
   - status[1..1]: code (W5: status)
     {proposed|draft|planned|requested|received|accepted|in-progress|review|completed|cancelled|suspended|rejected|failed}
@@ -15624,6 +15859,7 @@ Profiles: 107
     -uslab-do: http://hl7.org/fhir/StructureDefinition/uslab-do (USLaboratoryDiagnosticOrderProfile)
 - USLaboratoryDiagnosticReportProfile: (uslab-dr) DiagnosticReport
   ^diagnosticReport[0..*]: DiagnosticReport::USLaboratoryDiagnosticReportProfile (W5: clinical.diagnostics)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -15702,6 +15938,7 @@ Profiles: 107
     -uslab-dr: http://hl7.org/fhir/StructureDefinition/uslab-dr (USLaboratoryDiagnosticReportProfile)
 - USLaboratoryObservationProfile: (uslab-obscode) Observation
   ^observation[0..*]: Observation::USLaboratoryObservationProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  @Slices present with no defined slicing
   !inv-1: local error: 
   !inv-4: local error: 
   !obs-3: local error: 
@@ -15714,7 +15951,11 @@ Profiles: 107
   - text[0..1]: Narrative conditions: dom-1
   - contained[0..*]: Resource
   - extension[0..*]: Extension
-    @Slicing: open: :
+    @Slicing: open: value:url
+      :uslab-specimenrejectreason
+        - value @ Observation.extension.url = http://hl7.org/fhir/StructureDefinition/uslab-specimenrejectreason
+      :uslab-observationkind
+        - value @ Observation.extension.url = http://hl7.org/fhir/StructureDefinition/uslab-observationkind
   - modifierExtension[0..*]: Extension
   - identifier[1..*]: Identifier (W5: id)
     - id[0..1]: id
@@ -15746,9 +15987,7 @@ Profiles: 107
   - effective[x][0..1]: dateTime|Period constraints: inv-1 (W5: when.done)
   - issued[0..1]: instant constraints: inv-4 (W5: when.recorded)
   - performer[0..*]: Reference(Practitioner|Organization|Patient|RelatedPerson) (W5: who.actor)
-    @Slicing: openAtEnd: :
-  - performer[1..1]: Reference(uslab-performinglab) (W5: who.actor)
-    @Slices present with no defined slicing
+    @Slicing: openAtEnd: profile:typ
   - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6
   - interpretation[0..1]: CodeableConcept
@@ -15940,6 +16179,7 @@ Profiles: 107
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - USLaboratoryObservationProfile: (uslab-obsother) Observation
   ^observation[0..*]: Observation::USLaboratoryObservationProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  @Slices present with no defined slicing
   !inv-1: local error: 
   !inv-3: local error: 
   !obs-3: local error: 
@@ -15983,7 +16223,6 @@ Profiles: 107
   - effective[x][0..1]: dateTime|Period constraints: inv-1 (W5: when.done)
   - issued[0..1]: instant constraints: inv-3 (W5: when.recorded)
   - performer[0..*]: Reference(Practitioner|Organization|Patient|RelatedPerson) (W5: who.actor)
-  - performer[1..1]: Reference(uslab-performinglab) (W5: who.actor)
   - value[x][0..1]: Attachment|dateTime|Period|SampledData|string|time
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6
   - interpretation[0..1]: CodeableConcept
@@ -16175,6 +16414,7 @@ Profiles: 107
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - USLaboratoryObservationProfile: (uslab-obspanel) Observation
   ^observation[0..*]: Observation::USLaboratoryObservationProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  @Slices present with no defined slicing
   !inv-1: local error: 
   !inv-3: local error: 
   !obs-3: local error: 
@@ -16218,7 +16458,6 @@ Profiles: 107
   - effective[x][0..1]: dateTime|Period constraints: inv-1 (W5: when.done)
   - issued[0..1]: instant constraints: inv-3 (W5: when.recorded)
   - performer[0..*]: Reference(Practitioner|Organization|Patient|RelatedPerson) (W5: who.actor)
-  - performer[1..1]: Reference(uslab-performinglab) (W5: who.actor)
   - value[x][0..0]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6
   - interpretation[0..0]: CodeableConcept
@@ -16400,6 +16639,7 @@ Profiles: 107
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - USLaboratoryObservationProfile: (uslab-obsquantity) Observation
   ^observation[0..*]: Observation::USLaboratoryObservationProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  @Slices present with no defined slicing
   !inv-1: local error: 
   !inv-3: local error: 
   !obs-3: local error: 
@@ -16443,7 +16683,6 @@ Profiles: 107
   - effective[x][0..1]: dateTime|Period constraints: inv-1 (W5: when.done)
   - issued[0..1]: instant constraints: inv-3 (W5: when.recorded)
   - performer[0..*]: Reference(Practitioner|Organization|Patient|RelatedPerson) (W5: who.actor)
-  - performer[1..1]: Reference(uslab-performinglab) (W5: who.actor)
   - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6
   - interpretation[0..1]: CodeableConcept
@@ -16677,6 +16916,7 @@ Profiles: 107
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - USLaboratoryObservationProfile: (uslab-obsrange) Observation
   ^observation[0..*]: Observation::USLaboratoryObservationProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  @Slices present with no defined slicing
   !inv-1: local error: 
   !inv-3: local error: 
   !obs-3: local error: 
@@ -16720,7 +16960,6 @@ Profiles: 107
   - effective[x][0..1]: dateTime|Period constraints: inv-1 (W5: when.done)
   - issued[0..1]: instant constraints: inv-3 (W5: when.recorded)
   - performer[0..*]: Reference(Practitioner|Organization|Patient|RelatedPerson) (W5: who.actor)
-  - performer[1..1]: Reference(uslab-performinglab) (W5: who.actor)
   - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6
   - interpretation[0..1]: CodeableConcept
@@ -16954,6 +17193,7 @@ Profiles: 107
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - USLaboratoryObservationProfile: (uslab-obsratio) Observation
   ^observation[0..*]: Observation::USLaboratoryObservationProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
+  @Slices present with no defined slicing
   !inv-1: local error: 
   !inv-3: local error: 
   !obs-3: local error: 
@@ -16997,7 +17237,6 @@ Profiles: 107
   - effective[x][0..1]: dateTime|Period constraints: inv-1 (W5: when.done)
   - issued[0..1]: instant constraints: inv-3 (W5: when.recorded)
   - performer[0..*]: Reference(Practitioner|Organization|Patient|RelatedPerson) (W5: who.actor)
-  - performer[1..1]: Reference(uslab-performinglab) (W5: who.actor)
   - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6
   - interpretation[0..1]: CodeableConcept
@@ -17189,6 +17428,7 @@ Profiles: 107
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
 - USLaboratoryOrganizationProfile: (uslab-orderfacility) Organization
   ^organization[0..*]: Organization::USLaboratoryOrganizationProfile constraints: inv-1, org-1 (W5: administrative.group)
+  @Slices present with no defined slicing
   !inv-1: local error: 
   !inv-2: local error: 
   !org-1: local error: 
@@ -17203,29 +17443,9 @@ Profiles: 107
   - extension[0..*]: Extension
   - modifierExtension[0..*]: Extension
   - identifier[0..*]: Identifier conditions: org-1 (W5: id)
-    @Slicing: open: :
-    - id[0..1]: id
-    - extension[0..*]: Extension
-    - use[1..1]: code
-      {usual|official|temp|secondary}
-    - type[0..1]: CodeableConcept
-    - system[1..1]: uri
-    .fixeduri = http://hl7.org/fhir/sid/us-npi
-    - value[1..1]: string
-    - period[0..1]: Period
-    - assigner[0..1]: Reference(Organization)
-  - identifier[0..*]: Identifier conditions: org-1 (W5: id)
-    @Slices present with no defined slicing
-    - id[0..1]: id
-    - extension[0..*]: Extension
-    - use[1..1]: code
-      {usual|official|temp|secondary}
-    - type[0..1]: CodeableConcept
-    - system[1..1]: uri
-    .fixeduri = http://hl7.org/fhir/sid/us-npi
-    - value[1..1]: string
-    - period[0..1]: Period
-    - assigner[0..1]: Reference(Organization)
+    @Slicing: open: value:system
+      :USlabOrderFacilityNPI
+        - value @ Organization.identifier.system = http://hl7.org/fhir/sid/us-npi
   - active[0..1]: boolean (W5: status)
   .defaultValueboolean = true
   - type[0..1]: CodeableConcept (W5: class)
@@ -17243,7 +17463,9 @@ Profiles: 107
   - address[1..*]: Address constraints: org-2 conditions: org-2
     - id[0..1]: id
     - extension[0..*]: Extension
-      @Slicing: open: :
+      @Slicing: open: value:url
+        :USLabCountycodes
+          - value @ Organization.address.extension.url = http://hl7.org/fhir/StructureDefinition/us-core-county
     - use[0..1]: code
       {home|work|temp|old}
     - type[0..1]: code
@@ -17297,6 +17519,7 @@ Profiles: 107
     -uslab-performinglab: http://hl7.org/fhir/StructureDefinition/uslab-performinglab (USLaboratoryOrganizationProfile)
 - USLaboratoryPatientProfile: (uslab-patient) Patient
   ^patient[0..*]: Patient::USLaboratoryPatientProfile (W5: administrative.individual)
+  @Slices present with no defined slicing
   !inv-1: local error: 
   !pat-1: local error: 
   - id[0..1]: id
@@ -17485,6 +17708,7 @@ Profiles: 107
     -uslab-phpatient: http://hl7.org/fhir/StructureDefinition/uslab-phpatient (USLaboratoryPatientProfile)
 - USLaboratoryOrganizationProfile: (uslab-performinglab) Organization
   ^organization[0..*]: Organization::USLaboratoryOrganizationProfile constraints: inv-1, org-1 (W5: administrative.group)
+  @Slices present with no defined slicing
   !inv-1: local error: 
   !inv-2: local error: 
   !org-1: local error: 
@@ -17499,29 +17723,9 @@ Profiles: 107
   - extension[0..*]: Extension
   - modifierExtension[0..*]: Extension
   - identifier[0..*]: Identifier conditions: org-1 (W5: id)
-    @Slicing: open: :
-    - id[0..1]: id
-    - extension[0..*]: Extension
-    - use[1..1]: code
-      {usual|official|temp|secondary}
-    - type[0..1]: CodeableConcept
-    - system[1..1]: uri
-    .fixeduri = urn:oid:2.16.840.1.113883.4.7
-    - value[1..1]: string
-    - period[0..1]: Period
-    - assigner[0..1]: Reference(Organization)
-  - identifier[0..*]: Identifier conditions: org-1 (W5: id)
-    @Slices present with no defined slicing
-    - id[0..1]: id
-    - extension[0..*]: Extension
-    - use[1..1]: code
-      {usual|official|temp|secondary}
-    - type[0..1]: CodeableConcept
-    - system[1..1]: uri
-    .fixeduri = urn:oid:2.16.840.1.113883.4.7
-    - value[1..1]: string
-    - period[0..1]: Period
-    - assigner[0..1]: Reference(Organization)
+    @Slicing: open: value:system
+      :USLabPerformingLabCLIA
+        - value @ Organization.identifier.system = urn:oid:2.16.840.1.113883.4.7
   - active[0..1]: boolean (W5: status)
   .defaultValueboolean = true
   - type[0..1]: CodeableConcept (W5: class)
@@ -17593,6 +17797,7 @@ Profiles: 107
     -uslab-performinglab: http://hl7.org/fhir/StructureDefinition/uslab-performinglab (USLaboratoryOrganizationProfile)
 - USLaboratoryPatientProfile: (uslab-phpatient) Patient
   ^patient[0..*]: Patient::USLaboratoryPatientProfile (W5: administrative.individual)
+  @Slices present with no defined slicing
   !inv-1: local error: 
   !inv-2: local error: 
   !pat-1: local error: 
@@ -17603,7 +17808,11 @@ Profiles: 107
   - text[0..1]: Narrative conditions: dom-1
   - contained[0..*]: Resource
   - extension[0..*]: Extension
-    @Slicing: open: :
+    @Slicing: open: value:url
+      :DAFRace
+        - value @ Patient.extension.url = http://hl7.org/fhir/StructureDefinition/us-core-race
+      :DAFethnicity
+        - value @ Patient.extension.url = http://hl7.org/fhir/StructureDefinition/us-core-ethnicity
   - modifierExtension[0..*]: Extension
   - identifier[1..*]: Identifier (W5: id)
     - id[0..1]: id
@@ -17629,71 +17838,11 @@ Profiles: 107
     - suffix[0..1]: string
     - period[0..1]: Period
   - telecom[0..*]: ContactPoint
-    @Slicing: open: :
-    - id[0..1]: id
-    - extension[0..*]: Extension
-    - system[1..1]: code conditions: cpt-2
-      {phone|fax|email|pager|other}
-    - value[1..1]: string
-    - use[1..1]: code
-    .fixedcode = work
-      {home|work|temp|old|mobile}
-    - rank[0..1]: positiveInt
-    - period[0..1]: Period
-    - id[0..1]: id
-    - extension[0..*]: Extension
-    - system[1..1]: code conditions: cpt-2
-      {phone|fax|email|pager|other}
-    - value[1..1]: string
-    - use[1..1]: code
-    .fixedcode = home
-      {home|work|temp|old|mobile}
-    - rank[0..1]: positiveInt
-    - period[0..1]: Period
-  - telecom[0..*]: ContactPoint
-    @Slices present with no defined slicing
-    - id[0..1]: id
-    - extension[0..*]: Extension
-    - system[1..1]: code conditions: cpt-2
-      {phone|fax|email|pager|other}
-    - value[1..1]: string
-    - use[1..1]: code
-    .fixedcode = work
-      {home|work|temp|old|mobile}
-    - rank[0..1]: positiveInt
-    - period[0..1]: Period
-    - id[0..1]: id
-    - extension[0..*]: Extension
-    - system[1..1]: code conditions: cpt-2
-      {phone|fax|email|pager|other}
-    - value[1..1]: string
-    - use[1..1]: code
-    .fixedcode = home
-      {home|work|temp|old|mobile}
-    - rank[0..1]: positiveInt
-    - period[0..1]: Period
-  - telecom[0..*]: ContactPoint
-    @Slices present with no defined slicing
-    - id[0..1]: id
-    - extension[0..*]: Extension
-    - system[1..1]: code conditions: cpt-2
-      {phone|fax|email|pager|other}
-    - value[1..1]: string
-    - use[1..1]: code
-    .fixedcode = work
-      {home|work|temp|old|mobile}
-    - rank[0..1]: positiveInt
-    - period[0..1]: Period
-    - id[0..1]: id
-    - extension[0..*]: Extension
-    - system[1..1]: code conditions: cpt-2
-      {phone|fax|email|pager|other}
-    - value[1..1]: string
-    - use[1..1]: code
-    .fixedcode = home
-      {home|work|temp|old|mobile}
-    - rank[0..1]: positiveInt
-    - period[0..1]: Period
+    @Slicing: open: value:use
+      :USLabHomePhone
+        - value @ Patient.telecom.use = home
+      :USLabWorkPhone
+        - value @ Patient.telecom.use = work
   - gender[1..1]: code
     {male|female|other|unknown}
   - birthDate[0..1]: date
@@ -17705,7 +17854,9 @@ Profiles: 107
   - address[0..*]: Address
     - id[0..1]: id
     - extension[0..*]: Extension
-      @Slicing: open: :
+      @Slicing: open: value:url
+        :USLabPHCountry
+          - value @ Patient.address.extension.url = http://hl7.org/fhir/StructureDefinition/us-core-county
     - use[0..1]: code
       {home|work|temp|old}
     - type[0..1]: code
@@ -17762,7 +17913,9 @@ Profiles: 107
     - address[0..1]: Address
       - id[0..1]: id
       - extension[0..*]: Extension
-        @Slicing: open: :
+        @Slicing: open: value:url
+          :CountyCountact
+            - value @ Patient.contact.address.extension.url = http://hl7.org/fhir/StructureDefinition/us-core-county
       - use[1..1]: code
         {home|work|temp|old}
       - type[0..1]: code
@@ -17895,6 +18048,7 @@ Profiles: 107
     -uslab-phpatient: http://hl7.org/fhir/StructureDefinition/uslab-phpatient (USLaboratoryPatientProfile)
 - USLaboratoryPractitionerProfile: (uslab-phpract) Practitioner
   ^practitioner[0..*]: Practitioner::USLaboratoryPractitionerProfile constraints: inv-1 (W5: administrative.individual)
+  @Slices present with no defined slicing
   !inv-1: local error: 
   !inv-2: local error: 
   - id[0..1]: id
@@ -17942,7 +18096,9 @@ Profiles: 107
   - address[0..1]: Address
     - id[0..1]: id
     - extension[0..*]: Extension
-      @Slicing: open: :
+      @Slicing: open: value:url
+        :USLabCounty
+          - value @ Practitioner.address.extension.url = http://hl7.org/fhir/StructureDefinition/us-core-county
     - use[0..1]: code
       {home|work|temp|old}
     - type[0..1]: code
@@ -18017,6 +18173,7 @@ Profiles: 107
     -uslab-pract: http://hl7.org/fhir/StructureDefinition/uslab-pract (USLaboratoryPractitionerProfile)
 - USLaboratoryPractitionerProfile: (uslab-pract) Practitioner
   ^practitioner[0..*]: Practitioner::USLaboratoryPractitionerProfile constraints: inv-1 (W5: administrative.individual)
+  @Slices present with no defined slicing
   !inv-1: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -18122,6 +18279,7 @@ Profiles: 107
     -uslab-pract: http://hl7.org/fhir/StructureDefinition/uslab-pract (USLaboratoryPractitionerProfile)
 - USLaboratoryConditionProfile: (uslab-reasonforstudy) Condition
   ^condition[0..*]: Condition::USLaboratoryConditionProfile (W5: clinical.general)
+  @Slices present with no defined slicing
   !con-1: local error: 
   !con-2: local error: 
   - id[0..1]: id
@@ -18218,6 +18376,7 @@ Profiles: 107
     -uslab-reasonforstudy: http://hl7.org/fhir/StructureDefinition/uslab-reasonforstudy (USLaboratoryConditionProfile)
 - USLaboratorySpecimenProfile: (uslab-spec) Specimen
   ^specimen[0..*]: Specimen::USLaboratorySpecimenProfile (W5: clinical.diagnostics)
+  @Slices present with no defined slicing
   !inv-2: local error: 
   - id[0..1]: id
   - meta[0..1]: Meta
@@ -18340,6 +18499,7 @@ Profiles: 107
     -uslab-spec: http://hl7.org/fhir/StructureDefinition/uslab-spec (USLaboratorySpecimenProfile)
 - XDSProfileForDocumentReference: (xdsdocumentmanifest) DocumentManifest
   ^documentManifest[0..*]: DocumentManifest::XDSProfileForDocumentReference (W5: infrastructure.documents)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -18387,6 +18547,7 @@ Profiles: 107
     -xdsdocumentmanifest: http://hl7.org/fhir/StructureDefinition/xdsdocumentmanifest (XDSProfileForDocumentReference)
 - XDSProfileForDocumentReference: (xdsdocumentreference) DocumentReference
   ^documentReference[0..*]: DocumentReference::XDSProfileForDocumentReference (W5: infrastructure.documents)
+  @Slices present with no defined slicing
   - id[0..1]: id
   - meta[0..1]: Meta
   - implicitRules[0..1]: uri
@@ -18670,11 +18831,11 @@ Value Sets: 1016
   extensions/profiles (1 structures, 1 elements): strongest binding: example, refs: qicore-medicationadministration(Profile) [MedicationAdministration.dosage.site[x]]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/assert-direction-codes|1.0.2 (AssertionDirectionType)
-  references (1 structures, 2 elements): TestScript.setup.action.assert.direction, strongest binding: required, by type: code:Required
+  references (1 structures, 1 elements): TestScript.setup.action.assert.direction, strongest binding: required, by type: code:Required
   - #request: request
   - #response: response
 - ValueSet: http://hl7.org/fhir/ValueSet/assert-operator-codes|1.0.2 (AssertionOperatorType)
-  references (1 structures, 2 elements): TestScript.setup.action.assert.operator, strongest binding: required, by type: code:Required
+  references (1 structures, 1 elements): TestScript.setup.action.assert.operator, strongest binding: required, by type: code:Required
   - #contains: contains
   - #empty: empty
   - #equals: equals
@@ -18686,7 +18847,7 @@ Value Sets: 1016
   - #notEquals: notEquals
   - #notIn: notIn
 - ValueSet: http://hl7.org/fhir/ValueSet/assert-response-code-types|1.0.2 (AssertionResponseTypes)
-  references (1 structures, 2 elements): TestScript.setup.action.assert.response, strongest binding: required, by type: code:Required
+  references (1 structures, 1 elements): TestScript.setup.action.assert.response, strongest binding: required, by type: code:Required
   - #bad: bad
   - #conflict: conflict
   - #created: created
@@ -19319,7 +19480,7 @@ Value Sets: 1016
   - #warning: Warning
 - ValueSet: http://hl7.org/fhir/ValueSet/contact-point-system|1.0.2 (ContactPointSystem)
   references (1 structures, 1 elements): ContactPoint.system, strongest binding: required, by type: code:Required
-  extensions/profiles (8 structures, 9 elements): strongest binding: required, refs: daf-patient(Profile) [Patient.telecom.system], daf-pract(Profile) [Practitioner.telecom.system], qicore-patient(Profile) [Patient.telecom.system], uslab-cctarget(Profile) [Organization.telecom.system], uslab-orderfacility(Profile) [Organization.telecom.system], uslab-phpatient(Profile) [Patient.telecom.system,Patient.contact.telecom.system], uslab-phpract(Profile) [Practitioner.telecom.system], uslab-pract(Profile) [Practitioner.telecom.system]
+  extensions/profiles (8 structures, 10 elements): strongest binding: required, refs: daf-patient(Profile) [Patient.telecom.system], daf-pract(Profile) [Practitioner.telecom.system], qicore-patient(Profile) [Patient.telecom.system], uslab-cctarget(Profile) [Organization.telecom.system], uslab-orderfacility(Profile) [Organization.telecom.system], uslab-phpatient(Profile) [Patient.telecom.system,Patient.contact.telecom.system], uslab-phpract(Profile) [Practitioner.telecom.system], uslab-pract(Profile) [Practitioner.telecom.system]
   - #email: Email
   - #fax: Fax
   - #other: URL
@@ -19327,7 +19488,7 @@ Value Sets: 1016
   - #phone: Phone
 - ValueSet: http://hl7.org/fhir/ValueSet/contact-point-use|1.0.2 (ContactPointUse)
   references (1 structures, 1 elements): ContactPoint.use, strongest binding: required, by type: code:Required
-  extensions/profiles (8 structures, 9 elements): strongest binding: required, refs: daf-patient(Profile) [Patient.telecom.use], daf-pract(Profile) [Practitioner.telecom.use], qicore-patient(Profile) [Patient.telecom.use], uslab-cctarget(Profile) [Organization.telecom.use], uslab-orderfacility(Profile) [Organization.telecom.use], uslab-phpatient(Profile) [Patient.telecom.use,Patient.contact.telecom.use], uslab-phpract(Profile) [Practitioner.telecom.use], uslab-pract(Profile) [Practitioner.telecom.use]
+  extensions/profiles (8 structures, 10 elements): strongest binding: required, refs: daf-patient(Profile) [Patient.telecom.use], daf-pract(Profile) [Practitioner.telecom.use], qicore-patient(Profile) [Patient.telecom.use], uslab-cctarget(Profile) [Organization.telecom.use], uslab-orderfacility(Profile) [Organization.telecom.use], uslab-phpatient(Profile) [Patient.telecom.use,Patient.contact.telecom.use], uslab-phpract(Profile) [Practitioner.telecom.use], uslab-pract(Profile) [Practitioner.telecom.use]
   - #home: Home
   - #mobile: Mobile
   - #old: Old
@@ -19343,7 +19504,7 @@ Value Sets: 1016
   - #PAYOR: Payor
   - #PRESS: Press
 - ValueSet: http://hl7.org/fhir/ValueSet/content-type|1.0.2 (ContentType)
-  references (1 structures, 4 elements): TestScript.setup.action.operation.accept, TestScript.setup.action.operation.contentType, strongest binding: required, by type: code:Required
+  references (1 structures, 3 elements): TestScript.setup.action.operation.accept, TestScript.setup.action.operation.contentType, TestScript.setup.action.assert.contentType, strongest binding: required, by type: code:Required
   - #json: json
   - #xml: xml
 - ValueSet: http://hl7.org/fhir/ValueSet/contract-action|1.0.2 (Contract Action Codes)
@@ -19388,6 +19549,7 @@ Value Sets: 1016
   - #OralHealth-Major: 
   - #OralHealth-Orthodontic: 
 - ValueSet: http://hl7.org/fhir/ValueSet/contract-term-type|1.0.2 (Contract Term Type Codes)
+  references (1 structures, 1 elements): Contract.term.type, strongest binding: example, by type: CodeableConcept:Example
   extensions/profiles (1 structures, 1 elements): strongest binding: example, refs: consentdirective(Profile) [Contract.term.type]
   - #OralHealth: 
   - #Vision: 
@@ -19869,7 +20031,7 @@ Value Sets: 1016
   - #tue: Tuesday
   - #wed: Wednesday
 - ValueSet: http://hl7.org/fhir/ValueSet/defined-types|1.0.2 (FHIRDefinedType)
-  references (3 structures, 4 elements): ElementDefinition.type.code, StructureDefinition.constrainedType, TestScript.setup.action.operation.resource, strongest binding: required, by type: code:Required
+  references (3 structures, 4 elements): ElementDefinition.type.code, StructureDefinition.constrainedType, TestScript.setup.action.operation.resource, TestScript.setup.action.assert.resource, strongest binding: required, by type: code:Required
   extensions/profiles (3 structures, 3 elements): strongest binding: required, refs: elementdefinition-de(Profile) [ElementDefinition.type.code], sdc-element(Profile) [DataElement.element.type.code], sdcde-dataelement(Profile) [DataElement.element.type.code]
   - #Address: Address
   - #Age: Age
@@ -21964,6 +22126,7 @@ Value Sets: 1016
   extensions/profiles (1 structures, 1 elements): strongest binding: example, refs: qicore-encounter(Profile) [Encounter.extension]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/qicore-encounter-condition-role|1.0.2 (SNOMED CT Qualifier For Type of Diagnosis Codes)
+  extensions/profiles (1 structures, 1 elements): strongest binding: preferred, refs: qicore-encounter(Profile) [Encounter.extension.extension]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/qicore-flag-category|1.0.2 (Flag Category Codes)
   extensions/profiles (1 structures, 1 elements): strongest binding: example, refs: qicore-flag(Profile) [Flag.category]
@@ -22683,7 +22846,7 @@ Value Sets: 1016
   - #review: In Review
   - #terminated: Terminated
 - ValueSet: http://hl7.org/fhir/ValueSet/testscript-operation-codes|1.0.2 (TestScriptOperationCodes)
-  references (1 structures, 2 elements): TestScript.setup.action.operation.type, strongest binding: extensible, by type: Coding:Extensible
+  references (1 structures, 1 elements): TestScript.setup.action.operation.type, strongest binding: extensible, by type: Coding:Extensible
   - #closure: $closure
   - #conformance: Conformance
   - #create: Create
@@ -22832,10 +22995,10 @@ Value Sets: 1016
   - #new-request: new request
   - #orderer-cancel: orderer cancel
 - ValueSet: http://hl7.org/fhir/ValueSet/uslab-obs-codedresults|1.0.2 (SNOMED CT Codes)
-  extensions/profiles (2 structures, 3 elements): strongest binding: extensible, refs: qicore-observation(Profile) [Observation.value[x]], uslab-obscode(Profile) [Observation.value[x],Observation.valueCodeableConcept]
+  extensions/profiles (3 structures, 4 elements): strongest binding: extensible, refs: qicore-goal(Profile) [Goal.extension.extension], qicore-observation(Profile) [Observation.value[x]], uslab-obscode(Profile) [Observation.value[x],Observation.valueCodeableConcept]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/uslab-obs-codes|1.0.2 (US Laboratory Observation Profile Observation Name Codes)
-  extensions/profiles (14 structures, 15 elements): strongest binding: required, refs: daf-diagnosticorder(Profile) [DiagnosticOrder.item.code], daf-diagnosticreport(Profile) [DiagnosticReport.code], daf-resultobs(Profile) [Observation.code,Observation.component.code], qicore-diagnosticorder(Profile) [DiagnosticOrder.item.code], qicore-diagnosticreport(Profile) [DiagnosticReport.code], qicore-observation(Profile) [Observation.code], uslab-do(Profile) [DiagnosticOrder.item.code], uslab-dr(Profile) [DiagnosticReport.code.coding], uslab-obscode(Profile) [Observation.code], uslab-obsother(Profile) [Observation.code], uslab-obspanel(Profile) [Observation.code], uslab-obsquantity(Profile) [Observation.code], uslab-obsrange(Profile) [Observation.code], uslab-obsratio(Profile) [Observation.code]
+  extensions/profiles (15 structures, 16 elements): strongest binding: required, refs: daf-diagnosticorder(Profile) [DiagnosticOrder.item.code], daf-diagnosticreport(Profile) [DiagnosticReport.code], daf-resultobs(Profile) [Observation.code,Observation.component.code], qicore-diagnosticorder(Profile) [DiagnosticOrder.item.code], qicore-diagnosticreport(Profile) [DiagnosticReport.code], qicore-goal(Profile) [Goal.extension.extension], qicore-observation(Profile) [Observation.code], uslab-do(Profile) [DiagnosticOrder.item.code], uslab-dr(Profile) [DiagnosticReport.code.coding], uslab-obscode(Profile) [Observation.code], uslab-obsother(Profile) [Observation.code], uslab-obspanel(Profile) [Observation.code], uslab-obsquantity(Profile) [Observation.code], uslab-obsrange(Profile) [Observation.code], uslab-obsratio(Profile) [Observation.code]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/uslab-obs-interpretation|1.0.2 (US Laboratory Observation Profile Interpretation Codes)
   extensions/profiles (7 structures, 7 elements): strongest binding: required, refs: daf-resultobs(Profile) [Observation.interpretation], uslab-obscode(Profile) [Observation.interpretation], uslab-obsother(Profile) [Observation.interpretation], uslab-obspanel(Profile) [Observation.interpretation], uslab-obsquantity(Profile) [Observation.interpretation], uslab-obsrange(Profile) [Observation.interpretation], uslab-obsratio(Profile) [Observation.interpretation]
@@ -36451,12 +36614,12 @@ External Value Set Binding References: 7
   references (97 structures, 101 elements): Account.language, AllergyIntolerance.language, Appointment.language, AppointmentResponse.language, Attachment.language, AuditEvent.language, Basic.language, Binary.language, BodySite.language, Bundle.language, CarePlan.language, Claim.language, ClaimResponse.language, ClinicalImpression.language, Communication.language, CommunicationRequest.language, Composition.language, ConceptMap.language, Condition.language, Conformance.language, Contract.language, Coverage.language, DataElement.language, DetectedIssue.language, Device.language, DeviceComponent.language, DeviceComponent.languageCode, DeviceMetric.language, DeviceUseRequest.language, DeviceUseStatement.language, DiagnosticOrder.language, DiagnosticReport.language, DocumentManifest.language, DocumentReference.language, DomainResource.language, EligibilityRequest.language, EligibilityResponse.language, Encounter.language, EnrollmentRequest.language, EnrollmentResponse.language, EpisodeOfCare.language, ExplanationOfBenefit.language, FamilyMemberHistory.language, Flag.language, Goal.language, Group.language, HealthcareService.language, ImagingObjectSelection.language, ImagingStudy.language, Immunization.language, ImmunizationRecommendation.language, ImplementationGuide.language, List.language, Location.language, Media.language, Medication.language, MedicationAdministration.language, MedicationDispense.language, MedicationOrder.language, MedicationStatement.language, MessageHeader.language, NamingSystem.language, NutritionOrder.language, Observation.language, OperationDefinition.language, OperationOutcome.language, Order.language, OrderResponse.language, Organization.language, Parameters.language, Patient.language, Patient.communication.language, PaymentNotice.language, PaymentReconciliation.language, Person.language, Practitioner.language, Practitioner.communication, Procedure.language, ProcedureRequest.language, ProcessRequest.language, ProcessResponse.language, Provenance.language, Questionnaire.language, QuestionnaireResponse.language, ReferralRequest.language, RelatedPerson.language, Resource.language, RiskAssessment.language, Schedule.language, SearchParameter.language, Slot.language, Specimen.language, StructureDefinition.language, Subscription.language, Substance.language, SupplyDelivery.language, SupplyRequest.language, TestScript.language, ValueSet.language, ValueSet.codeSystem.concept.designation.language, VisionPrescription.language, strongest binding: required, by type: code:Required, CodeableConcept:Required
   extensions/profiles (106 structures, 119 elements): strongest binding: required, refs: argonaut-careplan(Profile) [CarePlan.language], cholesterol(Profile) [Observation.language], clinicaldocument(Profile) [Composition.language], consentdirective(Profile) [Contract.language], daf-allergyintolerance(Profile) [AllergyIntolerance.language], daf-allergylist(Profile) [List.language], daf-condition(Profile) [Condition.language], daf-diagnosticorder(Profile) [DiagnosticOrder.language], daf-diagnosticreport(Profile) [DiagnosticReport.language], daf-encounter(Profile) [Encounter.language], daf-encounterlist(Profile) [List.language], daf-familymemberhistory(Profile) [FamilyMemberHistory.language], daf-immunization(Profile) [Immunization.language], daf-immunizationlist(Profile) [List.language], daf-location(Profile) [Location.language], daf-medication(Profile) [Medication.language], daf-medicationadministration(Profile) [MedicationAdministration.language], daf-medicationdispense(Profile) [MedicationDispense.language], daf-medicationlist(Profile) [List.language], daf-medicationorder(Profile) [MedicationOrder.language], daf-medicationstatement(Profile) [MedicationStatement.language], daf-organization(Profile) [Organization.language], daf-patient(Profile) [Patient.language,Patient.communication.language], daf-pract(Profile) [Practitioner.language,Practitioner.communication], daf-problemlist(Profile) [List.language], daf-procedure(Profile) [Procedure.language], daf-procedurelist(Profile) [List.language], daf-relatedperson(Profile) [RelatedPerson.language], daf-resultlist(Profile) [List.language], daf-resultobs(Profile) [Observation.language], daf-smokingstatus(Profile) [Observation.language], daf-spec(Profile) [Specimen.language], daf-substance(Profile) [Substance.language], daf-vitalsigns(Profile) [Observation.language], devicemetricobservation(Profile) [Observation.language], ehrsrle-auditevent(Profile) [AuditEvent.language], ehrsrle-provenance(Profile) [Provenance.language], familymemberhistory-genetic(Profile) [FamilyMemberHistory.language], genetics(Profile) [Observation.language], hdlcholesterol(Profile) [Observation.language], iso21090-ST-language(Extension) [Extension.valueCode,Extension.value[x]], ldlcholesterol(Profile) [Observation.language], lipidprofile(Profile) [DiagnosticReport.language], measurereport(Profile) [Composition.language], qicore-adverseevent(Profile) [Basic.language], qicore-allergyintolerance(Profile) [AllergyIntolerance.language], qicore-bodysite(Profile) [BodySite.language], qicore-communication(Profile) [Communication.language], qicore-communicationrequest(Profile) [CommunicationRequest.language], qicore-condition(Profile) [Condition.language], qicore-device(Profile) [Device.language], qicore-deviceuserequest(Profile) [DeviceUseRequest.language], qicore-deviceusestatement(Profile) [DeviceUseStatement.language], qicore-diagnosticorder(Profile) [DiagnosticOrder.language], qicore-diagnosticreport(Profile) [DiagnosticReport.language], qicore-encounter(Profile) [Encounter.language], qicore-familymemberhistory(Profile) [FamilyMemberHistory.language], qicore-flag(Profile) [Flag.language], qicore-goal(Profile) [Goal.language], qicore-imagingstudy(Profile) [ImagingStudy.language], qicore-immunization(Profile) [Immunization.language], qicore-immunizationrec(Profile) [ImmunizationRecommendation.language], qicore-location(Profile) [Location.language], qicore-medication(Profile) [Medication.language], qicore-medicationadministration(Profile) [MedicationAdministration.language], qicore-medicationdispense(Profile) [MedicationDispense.language], qicore-medicationorder(Profile) [MedicationOrder.language], qicore-medicationstatement(Profile) [MedicationStatement.language], qicore-observation(Profile) [Observation.language], qicore-organization(Profile) [Organization.language], qicore-patient(Profile) [Patient.language,Patient.communication.language], qicore-practitioner(Profile) [Practitioner.language,Practitioner.communication], qicore-procedure(Profile) [Procedure.language], qicore-procedurerequest(Profile) [ProcedureRequest.language], qicore-referralrequest(Profile) [ReferralRequest.language], qicore-relatedperson(Profile) [RelatedPerson.language], qicore-specimen(Profile) [Specimen.language], qicore-substance(Profile) [Substance.language], sdc-element(Profile) [DataElement.language], sdc-questionnaire(Profile) [Questionnaire.language], sdc-response(Profile) [QuestionnaireResponse.language], sdc-valueset(Profile) [ValueSet.language,ValueSet.codeSystem.concept.designation.language], sdcde-dataelement(Profile) [DataElement.language], sdcde-valueset(Profile) [ValueSet.language,ValueSet.codeSystem.concept.designation.language], shareablevalueset(Profile) [ValueSet.language,ValueSet.codeSystem.concept.designation.language], triglyceride(Profile) [Observation.language], uslab-cctarget(Profile) [Organization.language], uslab-cond(Profile) [Condition.language], uslab-do(Profile) [DiagnosticOrder.language], uslab-dr(Profile) [DiagnosticReport.language], uslab-obscode(Profile) [Observation.language], uslab-obsother(Profile) [Observation.language], uslab-obspanel(Profile) [Observation.language], uslab-obsquantity(Profile) [Observation.language], uslab-obsrange(Profile) [Observation.language], uslab-obsratio(Profile) [Observation.language], uslab-orderfacility(Profile) [Organization.language], uslab-patient(Profile) [Patient.language,Patient.communication.language], uslab-performinglab(Profile) [Organization.language], uslab-phpatient(Profile) [Patient.language,Patient.communication.language], uslab-phpract(Profile) [Practitioner.language,Practitioner.communication], uslab-pract(Profile) [Practitioner.language,Practitioner.communication], uslab-reasonforstudy(Profile) [Condition.language], uslab-spec(Profile) [Specimen.language], xdsdocumentmanifest(Profile) [DocumentManifest.language], xdsdocumentreference(Profile) [DocumentReference.language,DocumentReference.content.attachment.language]
 - ValueSet: http://www.iso.org/iso/country_codes.htm
-  extensions/profiles (9 structures, 12 elements): strongest binding: required, refs: daf-patient(Profile) [Patient.contact.address.country], qicore-location(Profile) [Location.address.country], qicore-patient(Profile) [Patient.address.country,Patient.contact.address.country,Patient.extension.extension], uslab-cctarget(Profile) [Organization.address.country], uslab-orderfacility(Profile) [Organization.address.country], uslab-patient(Profile) [Patient.address.country], uslab-performinglab(Profile) [Organization.address.country], uslab-phpatient(Profile) [Patient.address.country,Patient.contact.address.country], uslab-phpract(Profile) [Practitioner.address.country]
+  extensions/profiles (9 structures, 11 elements): strongest binding: required, refs: daf-patient(Profile) [Patient.contact.address.country], qicore-location(Profile) [Location.address.country], qicore-patient(Profile) [Patient.address.country,Patient.contact.address.country], uslab-cctarget(Profile) [Organization.address.country], uslab-orderfacility(Profile) [Organization.address.country], uslab-patient(Profile) [Patient.address.country], uslab-performinglab(Profile) [Organization.address.country], uslab-phpatient(Profile) [Patient.address.country,Patient.contact.address.country], uslab-phpract(Profile) [Practitioner.address.country]
 - ValueSet: http://www.iso.org/iso/home/standards/currency_codes
   references (1 structures, 1 elements): Account.currency, strongest binding: example, by type: Coding:Example
 - ValueSet: http://www.rfc-editor.org/bcp/bcp13.txt
   references (6 structures, 7 elements): Attachment.contentType, Binary.contentType, Conformance.format, Conformance.rest.security.certificate.type, ElementDefinition.mapping.language, ImplementationGuide.page.format, Signature.contentType, strongest binding: required, by type: code:Required
-  extensions/profiles (5 structures, 8 elements): strongest binding: required, refs: elementdefinition-de(Profile) [ElementDefinition.mapping.language], mimeType(Extension) [Extension.valueCode,Extension.value[x]], sdc-element(Profile) [DataElement.element.mapping.language], sdcde-dataelement(Profile) [DataElement.element.mapping.language], xdsdocumentreference(Profile) [DocumentReference.content.attachment.contentType]
+  extensions/profiles (5 structures, 9 elements): strongest binding: required, refs: elementdefinition-de(Profile) [ElementDefinition.mapping.language], mimeType(Extension) [Extension.valueCode,Extension.value[x]], sdc-element(Profile) [DataElement.element.mapping.language], sdcde-dataelement(Profile) [DataElement.element.mapping.language], xdsdocumentreference(Profile) [DocumentReference.content.attachment.contentType]
 - ValueSet: https://rtmms.nist.gov/rtmms/index.htm#!hrosetta
   references (2 structures, 2 elements): DeviceComponent.type, DeviceMetric.type, strongest binding: preferred, by type: CodeableConcept:Preferred
 - ValueSet: https://rtmms.nist.gov/rtmms/index.htm#!units

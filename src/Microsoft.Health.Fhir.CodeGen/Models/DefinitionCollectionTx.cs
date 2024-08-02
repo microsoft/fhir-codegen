@@ -12,7 +12,7 @@ using Hl7.Fhir.Specification.Terminology;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 
 #if NETSTANDARD2_0
-using Microsoft.Health.Fhir.CodeGen.Polyfill;
+using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
 #endif
 
 namespace Microsoft.Health.Fhir.CodeGen.Models;

@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="..\Microsoft.Health.Fhir.CodeGenCommon\Polyfill\CodeGenCommonPolyfill.cs" Link="Polyfill\CodeGenCommonPolyfill.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Hl7.Fhir.R5" Version="5.9.0" />
     <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
   </ItemGroup>
@@ -23,6 +27,7 @@
   <ItemGroup>
     <Folder Include="Convert_43_50\" />
     <Folder Include="Convert_30_50\" />
+    <Folder Include="Polyfill\" />
   </ItemGroup>
 
   <ItemGroup>

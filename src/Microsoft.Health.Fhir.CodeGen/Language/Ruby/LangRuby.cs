@@ -18,7 +18,7 @@ using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionEx
 using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.LinqExtensions;
 
 #if NETSTANDARD2_0
-using Microsoft.Health.Fhir.CodeGen.Polyfill;
+using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
 #endif
 
 namespace Microsoft.Health.Fhir.CodeGen.Language.Ruby;

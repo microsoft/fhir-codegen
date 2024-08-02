@@ -5,6 +5,7 @@
 
 using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Model;
+using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 
 namespace Microsoft.Health.Fhir.CrossVersion.Convert_43_50;
 
@@ -24,7 +25,12 @@ public class StructureDefinition_43_50 : ICrossVersionProcessor<StructureDefinit
 			Process(child, v);
 		}
 
-		return v;
+        if (FhirTypeUtils.TryGetPrimitiveInfo(v.Id, out FhirTypeUtils.FhirPrimitiveInfoRec primitiveInfo))
+        {
+            Normalization.ReconcilePrimitiveType(v, primitiveInfo);
+        }
+
+        return v;
 	}
 
 	public void Process(ISourceNode node, StructureDefinition current)

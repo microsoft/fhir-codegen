@@ -5,6 +5,12 @@
 
 using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Model;
+using Hl7.Fhir.Specification.Snapshot;
+using Microsoft.Health.Fhir.CodeGenCommon.Utils;
+
+#if NETSTANDARD2_0
+using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
+#endif
 
 namespace Microsoft.Health.Fhir.CrossVersion.Convert_20_50;
 
@@ -16,7 +22,7 @@ public class StructureDefinition_20_50 : ICrossVersionProcessor<StructureDefinit
         _converter = converter;
     }
 
-    string _lastKindLiteral = string.Empty;
+    private string _lastKindLiteral = string.Empty;
     //string _lastConstrainedType = string.Empty;
 
     public StructureDefinition Extract(ISourceNode node)
@@ -44,16 +50,15 @@ public class StructureDefinition_20_50 : ICrossVersionProcessor<StructureDefinit
         {
             case "datatype":
                 {
-                    if (v.Type?.Equals("Extension", StringComparison.Ordinal) ?? false)
+                    // check for primitive types (known list)
+                    if (FhirTypeUtils.TryGetPrimitiveInfo(v.Id, out FhirTypeUtils.FhirPrimitiveInfoRec primitiveInfo))
+                    {
+                        Normalization.ReconcilePrimitiveType(v, primitiveInfo);
+                    }
+                    // extension is really a resource, not a type
+                    else if (v.Type?.Equals("Extension", StringComparison.Ordinal) ?? false)
                     {
                         v.Kind = StructureDefinition.StructureDefinitionKind.Resource;
-                    }
-                    // leading lower case is primitive
-                    else if (char.IsLower(v.Name[0]))
-                    {
-                        v.Kind = StructureDefinition.StructureDefinitionKind.PrimitiveType;
-
-                        v.Type ??= v.Id;
                     }
                     else
                     {
@@ -77,7 +82,6 @@ public class StructureDefinition_20_50 : ICrossVersionProcessor<StructureDefinit
             case "resource":
                 {
                     v.Kind = StructureDefinition.StructureDefinitionKind.Resource;
-
                     v.Type ??= v.Id;
                 }
                 break;
@@ -91,13 +95,25 @@ public class StructureDefinition_20_50 : ICrossVersionProcessor<StructureDefinit
         if (v.Name.Contains(' '))
         {
             v.Title = v.Name;
-#if NET8_0_OR_GREATER
             v.Name = string.Join(string.Empty, v.Name.Split(' ', '-', StringSplitOptions.RemoveEmptyEntries).Select(n => n = char.ToUpperInvariant(n[0]) + n.Substring(1)));
-#else
-            string[] nameComps = v.Name.Split(' ', '-');
-            v.Name = string.Join(string.Empty, nameComps.Where(c => !string.IsNullOrEmpty(c)).Select(n => n = char.ToUpperInvariant(n[0]) + n.Substring(1)));
-#endif
         }
+
+        // the element id generator works for datatypes and resources, not not structures with slicing
+        //if (string.IsNullOrEmpty(v.Type) || v.Type.Contains(v.Id))
+        //{
+        //    ElementIdGenerator.Update(v, true);
+        //}
+        //else
+        //{
+            // reconcile the slice names for this structure manually
+            Normalization.FixElementStructureR2(v);
+        //}
+
+        // build ids for each ElementDefinition (use snapshot generator)
+        //ElementIdGenerator.Update(v, true);
+
+        // normalize element repetitions (slicing was separate)
+        Normalization.ReconcileElementRepetitionsR2(v);
 
         //// if they are not the same, the name is actually the title
         //if (!v.Name?.Equals(v.Id, StringComparison.Ordinal) ?? false)
@@ -108,6 +124,7 @@ public class StructureDefinition_20_50 : ICrossVersionProcessor<StructureDefinit
 
         return v;
     }
+
 
     public void Process(ISourceNode node, StructureDefinition current)
     {

@@ -7,6 +7,8 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 #if NET8_0_OR_GREATER
 using System.Collections.Frozen;
+#elif NETSTANDARD2_0
+using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
 #endif
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Packaging;
@@ -52,11 +54,7 @@ public static class FhirReleases
     };
 
     /// <summary>The FHIR releases.</summary>
-#if NET8_0_OR_GREATER
-    public static readonly FrozenDictionary<string, PublishedReleaseInformation> FhirPublishedVersions = new Dictionary<string, PublishedReleaseInformation>()
-#else
-    public static readonly Dictionary<string, PublishedReleaseInformation> FhirPublishedVersions = new Dictionary<string, PublishedReleaseInformation>()
-#endif
+    internal static readonly FrozenDictionary<string, PublishedReleaseInformation> FhirPublishedVersions = new Dictionary<string, PublishedReleaseInformation>()
     {
         { "1.0.2",             new (FhirSequenceCodes.DSTU2, new DateTime(2015, 10, 24), true, "1.0.2",             "DSTU2 Release with 1 technical errata") },
         { "3.0.2",             new (FhirSequenceCodes.STU3,  new DateTime(2019, 10, 24), true, "3.0.2",             "STU3 Release with 2 technical errata") },
@@ -77,18 +75,10 @@ public static class FhirReleases
         { "5.0.0-snapshot3",   new (FhirSequenceCodes.R5,    new DateTime(2022, 12, 14), false, "5.0.0-snapshot3",   "R5 Connectathon 32 Base") },
         { "5.0.0-draft-final", new (FhirSequenceCodes.R5,    new DateTime(2023, 03, 01), false, "5.0.0-draft-final", "R5 Final QA") },
         { "5.0.0",             new (FhirSequenceCodes.R5,    new DateTime(2023, 03, 26), true, "5.0.0",             "R5 Release")  },
-#if NET8_0_OR_GREATER
     }.ToFrozenDictionary();
-#else
-    };
-#endif
 
     /// <summary>(Immutable) The FHIR sequence map.</summary>
-#if NET8_0_OR_GREATER
     private static readonly FrozenDictionary<string, FhirSequenceCodes> _fhirSequenceMap = new Dictionary<string, FhirSequenceCodes>()
-#else
-    private static readonly Dictionary<string, FhirSequenceCodes> _fhirSequenceMap = new Dictionary<string, FhirSequenceCodes>(StringComparer.OrdinalIgnoreCase)
-#endif
     {
         // unknown mapping (for performance)
         { "", FhirSequenceCodes.Unknown },
@@ -187,11 +177,7 @@ public static class FhirReleases
         { "6.0.0-cibuild", FhirSequenceCodes.R6 },
         { "hl7.fhir.r6", FhirSequenceCodes.R6 },
         { "hl7.fhir.r6.core", FhirSequenceCodes.R6 },
-#if NET8_0_OR_GREATER
     }.ToFrozenDictionary(StringComparer.OrdinalIgnoreCase);
-#else
-    };
-#endif
 
 
     /// <summary>Attempts to get sequence the FhirSequenceCodes from the given string.</summary>

@@ -20,6 +20,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="..\Microsoft.Health.Fhir.CodeGenCommon\Polyfill\CodeGenCommonPolyfill.cs" Link="Polyfill\CodeGenCommonPolyfill.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="brianpos.Fhir.Base.FhirPath.Validator" Version="5.9.0-rc1" />
     <PackageReference Include="Firely.Fhir.Packages" Version="4.7.0" />
     <PackageReference Include="Hl7.Fhir.R5" Version="5.9.0" />
@@ -45,6 +49,10 @@
     <EmbeddedResource Include="Language\Firely\Cql\Models\fhir-modelinfo-4.0.1.xml">
       <LogicalName>Fhir401</LogicalName>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Polyfill\" />
   </ItemGroup>
   
 </Project>

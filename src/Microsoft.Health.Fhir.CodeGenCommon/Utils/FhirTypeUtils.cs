@@ -3,11 +3,63 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-namespace Microsoft.Health.Fhir.CodeGen.Utils;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Diagnostics.CodeAnalysis;
 
-/// <summary>A FHIR type utilities.</summary>
+
+#if NET8_0_OR_GREATER
+using System.Collections.Frozen;
+#elif NETSTANDARD2_0
+using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
+#endif
+
+namespace Microsoft.Health.Fhir.CodeGenCommon.Utils;
+
 public static class FhirTypeUtils
 {
+    public readonly record struct FhirPrimitiveInfoRec(
+        string FhirType,
+        string FhirPathType,
+        string JsonType,
+        string XmlType,
+        string? Regex);
+
+    /// <summary>(Immutable) The FHIR sequence map.</summary>
+    private static readonly FrozenDictionary<string, FhirPrimitiveInfoRec> _fhirPrimitiveInfo = new Dictionary<string, FhirPrimitiveInfoRec>()
+    {
+        { "base64Binary", new("base64Binary", "http://hl7.org/fhirpath/System.String", "string", "xs:base64Binary", "(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?") },
+        { "boolean", new("boolean", "http://hl7.org/fhirpath/System.Boolean", "boolean", "xs:boolean", "true|false") },
+        { "canonical", new("canonical", "http://hl7.org/fhirpath/System.String", "string", "xs:anyURI", "\\S*") },
+        { "code", new("code", "http://hl7.org/fhirpath/System.String", "string", "xs:token", "[^\\s]+( [^\\s]+)*") },
+        { "date", new("date", "http://hl7.org/fhirpath/System.Date", "string", "xs:date, xs:gYearMonth, xs:gYear", "([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?") },
+        { "dateTime", new("dateTime", "http://hl7.org/fhirpath/System.DateTime", "string", "xs:dateTime, xs:date, xs:gYearMonth, xs:gYear", "([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]{1,9})?)?)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)?)?)?") },
+        { "decimal", new("decimal", "http://hl7.org/fhirpath/System.Decimal", "number", "xs:decimal, xs:double", "-?(0|[1-9][0-9]{0,17})(\\.[0-9]{1,17})?([eE][+-]?[0-9]{1,9}})?") },
+        { "id", new("id", "http://hl7.org/fhirpath/System.String", "string", "xs:string", "[A-Za-z0-9\\-\\.]{1,64}") },
+        { "instant", new("instant", "http://hl7.org/fhirpath/System.DateTime", "string", "xs:dateTime", "([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]{1,9})?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))") },
+        { "integer", new("integer", "http://hl7.org/fhirpath/System.Integer", "number", "xs:int", "[0]|[-+]?[1-9][0-9]*") },
+        { "integer64", new("integer64", "http://hl7.org/fhirpath/System.Integer", "string", "xs:long", "[0]|[-+]?[1-9][0-9]*") },
+        { "markdown", new("markdown", "http://hl7.org/fhirpath/System.String", "string", "xs:string", "^[\\s\\S]+$") },
+        { "oid", new("oid", "http://hl7.org/fhirpath/System.String", "string", "xs:anyURI", "urn:oid:[0-2](\\.(0|[1-9][0-9]*))+") },
+        { "positiveInt", new("positiveInt", "http://hl7.org/fhirpath/System.Integer", "number", "xs:positiveInteger", "[1-9][0-9]*") },
+        { "string", new("string", "http://hl7.org/fhirpath/System.String", "string", "xs:string", "^[\\s\\S]+$") },
+        { "time", new("time", "http://hl7.org/fhirpath/System.Time", "string", "xs:time", "([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]{1,9})?") },
+        { "unsignedInt", new("unsignedInt", "http://hl7.org/fhirpath/System.Integer", "number", "xs:nonNegativeInteger", "[0]|([1-9][0-9]*)") },
+        { "uri", new("uri", "http://hl7.org/fhirpath/System.String", "string", "xs:anyURI", "\\S*") },
+        { "url", new("url", "http://hl7.org/fhirpath/System.String", "string", "xs:anyURI", "\\S*") },
+        { "uuid", new("uuid", "http://hl7.org/fhirpath/System.String", "string", "xs:anyURI", "urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}") },
+        { "xhtml", new("xhtml", "http://hl7.org/fhirpath/System.String", "string", "xs:string, xhtml:div", null) },
+    }.ToFrozenDictionary();
+
+    /// <summary>
+    /// Attempts to get primitive information a FhirPrimitiveInfoRec from the given string.
+    /// </summary>
+    /// <param name="fhirType">Type in FHIR.</param>
+    /// <param name="rec">     [out] The record.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public static bool TryGetPrimitiveInfo(string fhirType, [NotNullWhen(true)] out FhirPrimitiveInfoRec rec) => _fhirPrimitiveInfo.TryGetValue(fhirType, out rec);
+
     /// <summary>Type from XML type.</summary>
     /// <param name="xmlType"> Type of the XML.</param>
     /// <param name="fhirType">[out] Type in FHIR.</param>
