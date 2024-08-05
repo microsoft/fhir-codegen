@@ -111,25 +111,6 @@ public class ElementDefinition_20_50 : ICrossVersionProcessor<ElementDefinition>
 			Process(child, v);
 		}
 
-        //// loading puts every 'name' into 'sliceName', check to see if it should stay or be removed
-        //if ((!string.IsNullOrEmpty(v.SliceName)) &&
-        //    (v.Slicing == null) &&
-        //    (!v.Path.EndsWith(".extension", StringComparison.Ordinal)))
-        //{
-        //    v.SliceName = null;
-        //}
-
-        //// check to see if the name should actually be applied as a slice name
-        //if (!string.IsNullOrEmpty(v.SliceName))
-        //{
-        //    if ((v.Slicing == null) &&
-        //        !v.Path.EndsWith(".extension", StringComparison.Ordinal))
-        //    {
-        //        v.ElementId = v.SliceName;
-        //        v.SliceName = null;
-        //    }
-        //}
-
         // correct content references
         if (!string.IsNullOrEmpty(v.ContentReference))
         {
@@ -150,7 +131,8 @@ public class ElementDefinition_20_50 : ICrossVersionProcessor<ElementDefinition>
                 throw new InvalidDataException($"Could not resolve NameReference {v.ContentReference} field {v.Path}");
             }
 
-            v.ContentReference = updated;
+            // reference links in R5 style include a preceding '#' literal to indicate a fragment
+            v.ContentReference = "#" + updated;
         }
 
         // normalize type repetitions

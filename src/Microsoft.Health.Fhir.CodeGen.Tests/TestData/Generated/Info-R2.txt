@@ -911,7 +911,7 @@ Resources: 96
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
-    - link[0..*]: Bundle.link
+    - link[0..*]: #Bundle.link
     - fullUrl[0..1]: uri
     - resource[0..1]: Resource
     - search[0..1]: BackboneElement conditions: bdl-2
@@ -1500,7 +1500,7 @@ Resources: 96
     - orderedBy[0..1]: CodeableConcept
     - entry[0..*]: Reference(Resource) conditions: cmp-2
     - emptyReason[0..1]: CodeableConcept conditions: cmp-2
-    - section[0..*]: Composition.section conditions: cmp-1
+    - section[0..*]: #Composition.section conditions: cmp-1
   Extensions: 1
   +http://hl7.org/fhir/StructureDefinition/composition-clindoc-otherConfidentiality [0..*]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/composition-clindoc-otherConfidentiality
@@ -1580,7 +1580,7 @@ Resources: 96
         - element[1..1]: uri
         - codeSystem[1..1]: uri
         - code[1..1]: string
-      - product[0..*]: ConceptMap.element.target.dependsOn
+      - product[0..*]: #ConceptMap.element.target.dependsOn
   ?context: context=token
   ?date: date=date
   ?dependson: dependson=uri
@@ -1845,7 +1845,7 @@ Resources: 96
     - transactionMode[0..1]: code
     .defaultValuecode = not-supported
       {not-supported|batch|transaction|both}
-    - searchParam[0..*]: Conformance.rest.resource.searchParam
+    - searchParam[0..*]: #Conformance.rest.resource.searchParam
     - operation[0..*]: BackboneElement
       Extensions: 2
       +http://hl7.org/fhir/StructureDefinition/conformance-expectation [1..1]
@@ -2004,7 +2004,7 @@ Resources: 96
       - factor[0..1]: decimal
       - points[0..1]: decimal
       - net[0..1]: Quantity(Money)
-    - group[0..*]: Contract.term
+    - group[0..*]: #Contract.term
   - binding[x][0..1]: Attachment|Reference(Composition|DocumentReference|QuestionnaireResponse)
   - friendly[0..*]: BackboneElement
     - id[0..1]: id
@@ -2385,7 +2385,7 @@ Resources: 96
     - bodySite[0..1]: CodeableConcept
     - status[0..1]: code
       {proposed|draft|planned|requested|received|accepted|in-progress|review|completed|cancelled|suspended|rejected|failed}
-    - event[0..*]: DiagnosticOrder.event
+    - event[0..*]: #DiagnosticOrder.event
   - note[0..*]: Annotation
   Extensions: 3
   +http://hl7.org/fhir/StructureDefinition/diagnosticorder-reason [0..*]
@@ -3423,7 +3423,7 @@ Resources: 96
       {Account|AllergyIntolerance|Appointment|AppointmentResponse|AuditEvent|Basic|Binary|BodySite|Bundle|CarePlan|Claim|ClaimResponse|ClinicalImpression|Communication|CommunicationRequest|Composition|ConceptMap|Condition|Conformance|Contract|Coverage|DataElement|DetectedIssue|Device|DeviceComponent|DeviceMetric|DeviceUseRequest|DeviceUseStatement|DiagnosticOrder|DiagnosticReport|DocumentManifest|DocumentReference|DomainResource|EligibilityRequest|EligibilityResponse|Encounter|EnrollmentRequest|EnrollmentResponse|EpisodeOfCare|ExplanationOfBenefit|FamilyMemberHistory|Flag|Goal|Group|HealthcareService|ImagingObjectSelection|ImagingStudy|Immunization|ImmunizationRecommendation|ImplementationGuide|List|Location|Media|Medication|MedicationAdministration|MedicationDispense|MedicationOrder|MedicationStatement|MessageHeader|NamingSystem|NutritionOrder|Observation|OperationDefinition|OperationOutcome|Order|OrderResponse|Organization|Parameters|Patient|PaymentNotice|PaymentReconciliation|Person|Practitioner|Procedure|ProcedureRequest|ProcessRequest|ProcessResponse|Provenance|Questionnaire|QuestionnaireResponse|ReferralRequest|RelatedPerson|Resource|RiskAssessment|Schedule|SearchParameter|Slot|Specimen|StructureDefinition|Subscription|Substance|SupplyDelivery|SupplyRequest|TestScript|ValueSet|VisionPrescription}
     - package[0..*]: string
     - format[0..1]: code
-    - page[0..*]: ImplementationGuide.page
+    - page[0..*]: #ImplementationGuide.page
   ?context: context=token
   ?date: date=date
   ?dependency: dependency=uri
@@ -4166,7 +4166,7 @@ Resources: 96
     - code[1..1]: CodeableConcept conditions: obs-7 (W5: what)
     - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6
-    - referenceRange[0..*]: Observation.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   Extensions: 31
   +http://hl7.org/fhir/StructureDefinition/geneticsAlleleName [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/geneticsAlleleName
@@ -4370,7 +4370,7 @@ Resources: 96
       - strength[1..1]: code
         {required|extensible|preferred|example}
       - valueSet[x][1..1]: Reference(ValueSet)|uri
-    - part[0..*]: OperationDefinition.parameter conditions: opd-1
+    - part[0..*]: #OperationDefinition.parameter conditions: opd-1
   ?base: base=reference
   ?code: code=token
   ?date: date=date
@@ -4545,7 +4545,7 @@ Resources: 96
     - name[1..1]: string
     - value[x][0..1]: Address|Annotation|Attachment|base64Binary|boolean|code|CodeableConcept|Coding|ContactPoint|date|dateTime|decimal|HumanName|id|Identifier|instant|integer|markdown|Meta|oid|Period|positiveInt|Quantity|Range|Ratio|Reference|SampledData|Signature|string|time|Timing|unsignedInt|uri conditions: inv-1
     - resource[0..1]: Resource conditions: inv-1
-    - part[0..*]: Parameters.parameter constraints: inv-2
+    - part[0..*]: #Parameters.parameter constraints: inv-2
 - Patient: DomainResource (draft FMM: 3) (abstract: False)
   ^patient[0..*]: DomainResource::Patient (W5: administrative.individual)
   !pat-1: local error: 
@@ -5114,7 +5114,7 @@ Resources: 96
     - type[1..1]: Coding
     - reference[1..1]: uri
     - display[0..1]: string
-    - agent[0..1]: Provenance.agent
+    - agent[0..1]: #Provenance.agent
   - signature[0..*]: Signature
   ?agent: agent=reference
   ?end: end=date
@@ -5177,7 +5177,7 @@ Resources: 96
     .defaultValueboolean = false
     - repeats[0..1]: boolean
     .defaultValueboolean = false
-    - group[0..*]: Questionnaire.group conditions: que-1
+    - group[0..*]: #Questionnaire.group conditions: que-1
       Extensions: 5
       +http://hl7.org/fhir/StructureDefinition/questionnaire-enableWhen [0..*]
       +http://hl7.org/fhir/StructureDefinition/questionnaire-hidden [0..1]
@@ -5273,7 +5273,7 @@ Resources: 96
           - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/11179-permitted-value-valueset
           - valueReference[1..1]: Reference(ValueSet)
       - option[0..*]: Coding conditions: que-4
-      - group[0..*]: Questionnaire.group
+      - group[0..*]: #Questionnaire.group
   Extensions: 3
   +http://hl7.org/fhir/StructureDefinition/questionnaire-category [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/questionnaire-category
@@ -5347,7 +5347,7 @@ Resources: 96
     - title[0..1]: string
     - text[0..1]: string
     - subject[0..1]: Reference(Resource)
-    - group[0..*]: QuestionnaireResponse.group conditions: qrs-1
+    - group[0..*]: #QuestionnaireResponse.group conditions: qrs-1
     - question[0..*]: BackboneElement conditions: qrs-1
       Extensions: 1
       +http://hl7.org/fhir/StructureDefinition/questionnaireresponse-author [0..1]
@@ -5367,7 +5367,7 @@ Resources: 96
         - extension[0..*]: Extension
         - modifierExtension[0..*]: Extension
         - value[x][0..1]: Attachment|boolean|Coding|date|dateTime|decimal|instant|integer|Quantity|Reference(Resource)|string|time|uri
-        - group[0..*]: QuestionnaireResponse.group
+        - group[0..*]: #QuestionnaireResponse.group
   Extensions: 1
   +http://hl7.org/fhir/StructureDefinition/questionnaireresponse-reviewer [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/questionnaireresponse-reviewer
@@ -6028,7 +6028,7 @@ Resources: 96
     - id[0..1]: id
     - extension[0..*]: Extension
     - modifierExtension[0..*]: Extension
-    - metadata[0..1]: TestScript.metadata constraints: inv-6
+    - metadata[0..1]: #TestScript.metadata constraints: inv-6
     - action[1..*]: BackboneElement constraints: inv-1
       - id[0..1]: id
       - extension[0..*]: Extension
@@ -6095,13 +6095,13 @@ Resources: 96
     - modifierExtension[0..*]: Extension
     - name[0..1]: string
     - description[0..1]: string
-    - metadata[0..1]: TestScript.metadata constraints: inv-7
+    - metadata[0..1]: #TestScript.metadata constraints: inv-7
     - action[1..*]: BackboneElement constraints: inv-2
       - id[0..1]: id
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
-      - operation[0..1]: TestScript.setup.action.operation constraints: inv-11
-      - assert[0..1]: TestScript.setup.action.assert constraints: inv-9, inv-14
+      - operation[0..1]: #TestScript.setup.action.operation constraints: inv-11
+      - assert[0..1]: #TestScript.setup.action.assert constraints: inv-9, inv-14
   - teardown[0..1]: BackboneElement
     - id[0..1]: id
     - extension[0..*]: Extension
@@ -6110,7 +6110,7 @@ Resources: 96
       - id[0..1]: id
       - extension[0..*]: Extension
       - modifierExtension[0..*]: Extension
-      - operation[0..1]: TestScript.setup.action.operation constraints: inv-12
+      - operation[0..1]: #TestScript.setup.action.operation constraints: inv-12
   ?description: description=string
   ?identifier: identifier=token
   ?name: name=string
@@ -6209,7 +6209,7 @@ Resources: 96
         - language[0..1]: code
         - use[0..1]: Coding
         - value[1..1]: string
-      - concept[0..*]: ValueSet.codeSystem.concept
+      - concept[0..*]: #ValueSet.codeSystem.concept
         Extensions: 1
         +http://hl7.org/fhir/StructureDefinition/valueset-deprecated [0..1]
           - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/valueset-deprecated
@@ -6254,7 +6254,7 @@ Resources: 96
         - modifierExtension[0..*]: Extension
         - code[1..1]: code
         - display[0..1]: string
-        - designation[0..*]: ValueSet.codeSystem.concept.designation
+        - designation[0..*]: #ValueSet.codeSystem.concept.designation
       - filter[0..*]: BackboneElement conditions: vsd-11
         - id[0..1]: id
         - extension[0..*]: Extension
@@ -6263,7 +6263,7 @@ Resources: 96
         - op[1..1]: code
           {=|is-a|is-not-a|regex|in|not-in}
         - value[1..1]: code
-    - exclude[0..*]: ValueSet.compose.include conditions: vsd-2
+    - exclude[0..*]: #ValueSet.compose.include conditions: vsd-2
   - expansion[0..1]: BackboneElement conditions: vsd-5
     Extensions: 2
     +http://hl7.org/fhir/StructureDefinition/valueset-expansionSource [0..1]
@@ -6310,7 +6310,7 @@ Resources: 96
       - version[0..1]: string
       - code[0..1]: code conditions: vsd-6
       - display[0..1]: string conditions: vsd-6
-      - contains[0..*]: ValueSet.expansion.contains
+      - contains[0..*]: #ValueSet.expansion.contains
   Extensions: 14
   +http://hl7.org/fhir/StructureDefinition/valueset-author [0..*]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/valueset-author
@@ -6624,7 +6624,7 @@ Profiles: 107
     - code[1..1]: CodeableConcept conditions: obs-7 (W5: what)
     - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6
-    - referenceRange[0..*]: Observation.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   Extensions: 31
   +http://hl7.org/fhir/StructureDefinition/geneticsAlleleName [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/geneticsAlleleName
@@ -6828,7 +6828,7 @@ Profiles: 107
     - orderedBy[0..1]: CodeableConcept
     - entry[0..*]: Reference(Resource) conditions: cmp-2
     - emptyReason[0..1]: CodeableConcept conditions: cmp-2
-    - section[0..*]: Composition.section conditions: cmp-1
+    - section[0..*]: #Composition.section conditions: cmp-1
   Extensions: 1
   +http://hl7.org/fhir/StructureDefinition/composition-clindoc-otherConfidentiality [0..*]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/composition-clindoc-otherConfidentiality
@@ -6934,7 +6934,7 @@ Profiles: 107
       - factor[0..1]: decimal
       - points[0..1]: decimal
       - net[0..1]: Quantity(Money) constraints: mny-1, qty-3
-    - group[0..*]: Contract.term
+    - group[0..*]: #Contract.term
   - binding[x][1..1]: Attachment|Reference(Composition|DocumentReference|QuestionnaireResponse)
   - friendly[0..*]: BackboneElement
     - id[0..1]: id
@@ -7284,7 +7284,7 @@ Profiles: 107
     - bodySite[0..1]: CodeableConcept
     - status[1..1]: code
       {proposed|draft|planned|requested|received|accepted|in-progress|review|completed|cancelled|suspended|rejected|failed}
-    - event[0..*]: DiagnosticOrder.event
+    - event[0..*]: #DiagnosticOrder.event
   - note[0..*]: Annotation
   Extensions: 3
   +http://hl7.org/fhir/StructureDefinition/diagnosticorder-reason [0..*]
@@ -9062,7 +9062,7 @@ Profiles: 107
       - text[0..1]: string
     - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6
-    - referenceRange[0..1]: Observation.referenceRange
+    - referenceRange[0..1]: #Observation.referenceRange
   Extensions: 31
   +http://hl7.org/fhir/StructureDefinition/geneticsAlleleName [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/geneticsAlleleName
@@ -9266,7 +9266,7 @@ Profiles: 107
     - code[1..1]: CodeableConcept conditions: obs-7 (W5: what)
     - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6
-    - referenceRange[0..*]: Observation.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   Extensions: 31
   +http://hl7.org/fhir/StructureDefinition/geneticsAlleleName [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/geneticsAlleleName
@@ -9659,7 +9659,7 @@ Profiles: 107
     - code[1..1]: CodeableConcept conditions: obs-7 (W5: what)
     - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6
-    - referenceRange[0..*]: Observation.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   Extensions: 31
   +http://hl7.org/fhir/StructureDefinition/geneticsAlleleName [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/geneticsAlleleName
@@ -9861,7 +9861,7 @@ Profiles: 107
     - code[1..1]: CodeableConcept conditions: obs-7 (W5: what)
     - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6
-    - referenceRange[0..*]: Observation.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   Extensions: 31
   +http://hl7.org/fhir/StructureDefinition/geneticsAlleleName [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/geneticsAlleleName
@@ -10139,7 +10139,7 @@ Profiles: 107
     - type[1..1]: Coding
     - reference[1..1]: uri
     - display[0..1]: string
-    - agent[0..1]: Provenance.agent
+    - agent[0..1]: #Provenance.agent
   - signature[0..*]: Signature
   ?agent: agent=reference
   ?end: end=date
@@ -10530,7 +10530,7 @@ Profiles: 107
     - code[1..1]: CodeableConcept conditions: obs-7 (W5: what)
     - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6
-    - referenceRange[0..*]: Observation.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   Extensions: 31
   +http://hl7.org/fhir/StructureDefinition/geneticsAlleleName [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/geneticsAlleleName
@@ -10736,7 +10736,7 @@ Profiles: 107
     - code[1..1]: CodeableConcept conditions: obs-7 (W5: what)
     - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6
-    - referenceRange[0..*]: Observation.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   Extensions: 31
   +http://hl7.org/fhir/StructureDefinition/geneticsAlleleName [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/geneticsAlleleName
@@ -10944,7 +10944,7 @@ Profiles: 107
     - code[1..1]: CodeableConcept conditions: obs-7 (W5: what)
     - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6
-    - referenceRange[0..*]: Observation.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   Extensions: 31
   +http://hl7.org/fhir/StructureDefinition/geneticsAlleleName [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/geneticsAlleleName
@@ -11207,7 +11207,7 @@ Profiles: 107
     - orderedBy[0..1]: CodeableConcept
     - entry[1..1]: Reference(Observation) conditions: cmp-2
     - emptyReason[0..1]: CodeableConcept conditions: cmp-2
-    - section[0..*]: Composition.section conditions: cmp-1
+    - section[0..*]: #Composition.section conditions: cmp-1
   Extensions: 1
   +http://hl7.org/fhir/StructureDefinition/composition-clindoc-otherConfidentiality [0..*]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/composition-clindoc-otherConfidentiality
@@ -11757,7 +11757,7 @@ Profiles: 107
     - bodySite[0..1]: CodeableConcept
     - status[0..1]: code
       {proposed|draft|planned|requested|received|accepted|in-progress|review|completed|cancelled|suspended|rejected|failed}
-    - event[0..*]: DiagnosticOrder.event
+    - event[0..*]: #DiagnosticOrder.event
   - note[0..*]: Annotation
   Extensions: 3
   +http://hl7.org/fhir/StructureDefinition/diagnosticorder-reason [0..*]
@@ -12770,7 +12770,7 @@ Profiles: 107
     - code[1..1]: CodeableConcept conditions: obs-7 (W5: what)
     - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6
-    - referenceRange[0..*]: Observation.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   Extensions: 31
   +http://hl7.org/fhir/StructureDefinition/geneticsAlleleName [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/geneticsAlleleName
@@ -13900,7 +13900,7 @@ Profiles: 107
     .defaultValueboolean = false
     - repeats[1..1]: boolean
     .defaultValueboolean = false
-    - group[0..*]: Questionnaire.group conditions: que-1
+    - group[0..*]: #Questionnaire.group conditions: que-1
       Extensions: 5
       +http://hl7.org/fhir/StructureDefinition/questionnaire-enableWhen [0..*]
       +http://hl7.org/fhir/StructureDefinition/questionnaire-hidden [0..1]
@@ -14049,7 +14049,7 @@ Profiles: 107
           - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/11179-permitted-value-valueset
           - valueReference[1..1]: Reference(ValueSet)
       - option[0..*]: Coding conditions: que-4
-      - group[0..*]: Questionnaire.group
+      - group[0..*]: #Questionnaire.group
   Extensions: 3
   +http://hl7.org/fhir/StructureDefinition/questionnaire-category [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/questionnaire-category
@@ -14124,7 +14124,7 @@ Profiles: 107
     - title[0..1]: string
     - text[0..1]: string
     - subject[0..1]: Reference(Resource)
-    - group[0..*]: QuestionnaireResponse.group conditions: qrs-1
+    - group[0..*]: #QuestionnaireResponse.group conditions: qrs-1
     - question[0..*]: BackboneElement conditions: qrs-1
       Extensions: 1
       +http://hl7.org/fhir/StructureDefinition/questionnaireresponse-author [0..1]
@@ -14144,7 +14144,7 @@ Profiles: 107
         - extension[0..*]: Extension
         - modifierExtension[0..*]: Extension
         - value[x][0..1]: Attachment|boolean|Coding|date|dateTime|decimal|instant|integer|Quantity|Reference(Resource)|string|time|uri
-        - group[0..*]: QuestionnaireResponse.group
+        - group[0..*]: #QuestionnaireResponse.group
   Extensions: 1
   +http://hl7.org/fhir/StructureDefinition/questionnaireresponse-reviewer [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/questionnaireresponse-reviewer
@@ -14263,7 +14263,7 @@ Profiles: 107
         - language[0..1]: code
         - use[0..1]: Coding
         - value[1..1]: string
-      - concept[0..*]: ValueSet.codeSystem.concept
+      - concept[0..*]: #ValueSet.codeSystem.concept
         Extensions: 1
         +http://hl7.org/fhir/StructureDefinition/valueset-deprecated [0..1]
           - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/valueset-deprecated
@@ -14317,7 +14317,7 @@ Profiles: 107
           - extension[0..*]: Extension
             @Slicing: open: value:url
           - value[0..1]: Element
-        - designation[0..*]: ValueSet.codeSystem.concept.designation
+        - designation[0..*]: #ValueSet.codeSystem.concept.designation
       - filter[0..*]: BackboneElement conditions: vsd-11
         - id[0..1]: id
         - extension[0..*]: Extension
@@ -14326,7 +14326,7 @@ Profiles: 107
         - op[1..1]: code
           {=|is-a|is-not-a|regex|in|not-in}
         - value[1..1]: code
-    - exclude[0..*]: ValueSet.compose.include conditions: vsd-2
+    - exclude[0..*]: #ValueSet.compose.include conditions: vsd-2
   - expansion[0..1]: BackboneElement conditions: vsd-5
     Extensions: 2
     +http://hl7.org/fhir/StructureDefinition/valueset-expansionSource [0..1]
@@ -14382,7 +14382,7 @@ Profiles: 107
         - extension[0..*]: Extension
           @Slicing: open: value:url
         - value[0..1]: Element
-      - contains[0..*]: ValueSet.expansion.contains
+      - contains[0..*]: #ValueSet.expansion.contains
   Extensions: 14
   +http://hl7.org/fhir/StructureDefinition/valueset-author [0..*]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/valueset-author
@@ -14815,7 +14815,7 @@ Profiles: 107
         - language[0..1]: code
         - use[0..1]: Coding
         - value[1..1]: string
-      - concept[0..*]: ValueSet.codeSystem.concept
+      - concept[0..*]: #ValueSet.codeSystem.concept
         Extensions: 1
         +http://hl7.org/fhir/StructureDefinition/valueset-deprecated [0..1]
           - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/valueset-deprecated
@@ -14860,7 +14860,7 @@ Profiles: 107
         - modifierExtension[0..*]: Extension
         - code[1..1]: code
         - display[0..1]: string
-        - designation[0..*]: ValueSet.codeSystem.concept.designation
+        - designation[0..*]: #ValueSet.codeSystem.concept.designation
       - filter[0..*]: BackboneElement conditions: vsd-11
         - id[0..1]: id
         - extension[0..*]: Extension
@@ -14869,7 +14869,7 @@ Profiles: 107
         - op[1..1]: code
           {=|is-a|is-not-a|regex|in|not-in}
         - value[1..1]: code
-    - exclude[0..*]: ValueSet.compose.include conditions: vsd-2
+    - exclude[0..*]: #ValueSet.compose.include conditions: vsd-2
   - expansion[0..1]: BackboneElement conditions: vsd-5
     Extensions: 2
     +http://hl7.org/fhir/StructureDefinition/valueset-expansionSource [0..1]
@@ -14921,7 +14921,7 @@ Profiles: 107
       - version[0..1]: string
       - code[0..1]: code conditions: vsd-6
       - display[0..1]: string conditions: vsd-6
-      - contains[0..*]: ValueSet.expansion.contains
+      - contains[0..*]: #ValueSet.expansion.contains
   Extensions: 14
   +http://hl7.org/fhir/StructureDefinition/valueset-author [0..*]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/valueset-author
@@ -15127,7 +15127,7 @@ Profiles: 107
         - language[0..1]: code
         - use[0..1]: Coding
         - value[1..1]: string
-      - concept[0..*]: ValueSet.codeSystem.concept
+      - concept[0..*]: #ValueSet.codeSystem.concept
         Extensions: 1
         +http://hl7.org/fhir/StructureDefinition/valueset-deprecated [0..1]
           - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/valueset-deprecated
@@ -15172,7 +15172,7 @@ Profiles: 107
         - modifierExtension[0..*]: Extension
         - code[1..1]: code
         - display[0..1]: string
-        - designation[0..*]: ValueSet.codeSystem.concept.designation
+        - designation[0..*]: #ValueSet.codeSystem.concept.designation
       - filter[0..*]: BackboneElement conditions: vsd-11
         - id[0..1]: id
         - extension[0..*]: Extension
@@ -15181,7 +15181,7 @@ Profiles: 107
         - op[1..1]: code
           {=|is-a|is-not-a|regex|in|not-in}
         - value[1..1]: code
-    - exclude[0..*]: ValueSet.compose.include conditions: vsd-2
+    - exclude[0..*]: #ValueSet.compose.include conditions: vsd-2
   - expansion[0..1]: BackboneElement conditions: vsd-5
     Extensions: 2
     +http://hl7.org/fhir/StructureDefinition/valueset-expansionSource [0..1]
@@ -15228,7 +15228,7 @@ Profiles: 107
       - version[0..1]: string
       - code[0..1]: code conditions: vsd-6
       - display[0..1]: string conditions: vsd-6
-      - contains[0..*]: ValueSet.expansion.contains
+      - contains[0..*]: #ValueSet.expansion.contains
   Extensions: 14
   +http://hl7.org/fhir/StructureDefinition/valueset-author [0..*]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/valueset-author
@@ -15398,7 +15398,7 @@ Profiles: 107
     - code[1..1]: CodeableConcept conditions: obs-7 (W5: what)
     - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6
-    - referenceRange[0..*]: Observation.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   Extensions: 31
   +http://hl7.org/fhir/StructureDefinition/geneticsAlleleName [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/geneticsAlleleName
@@ -15824,7 +15824,7 @@ Profiles: 107
     - bodySite[0..0]: CodeableConcept
     - status[1..1]: code
       {proposed|draft|planned|requested|received|accepted|in-progress|review|completed|cancelled|suspended|rejected|failed}
-    - event[0..*]: DiagnosticOrder.event
+    - event[0..*]: #DiagnosticOrder.event
   - note[0..*]: Annotation
   Extensions: 3
   +http://hl7.org/fhir/StructureDefinition/diagnosticorder-reason [0..*]
@@ -16030,7 +16030,7 @@ Profiles: 107
     - code[1..1]: CodeableConcept conditions: obs-7 (W5: what)
     - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6
-    - referenceRange[0..*]: Observation.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   Extensions: 31
   +http://hl7.org/fhir/StructureDefinition/geneticsAlleleName [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/geneticsAlleleName
@@ -16265,7 +16265,7 @@ Profiles: 107
     - code[1..1]: CodeableConcept conditions: obs-7 (W5: what)
     - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6
-    - referenceRange[0..*]: Observation.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   Extensions: 31
   +http://hl7.org/fhir/StructureDefinition/geneticsAlleleName [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/geneticsAlleleName
@@ -16490,7 +16490,7 @@ Profiles: 107
     - code[1..1]: CodeableConcept conditions: obs-7 (W5: what)
     - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6
-    - referenceRange[0..*]: Observation.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   Extensions: 31
   +http://hl7.org/fhir/StructureDefinition/geneticsAlleleName [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/geneticsAlleleName
@@ -16767,7 +16767,7 @@ Profiles: 107
     - code[1..1]: CodeableConcept conditions: obs-7 (W5: what)
     - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6
-    - referenceRange[0..*]: Observation.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   Extensions: 31
   +http://hl7.org/fhir/StructureDefinition/geneticsAlleleName [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/geneticsAlleleName
@@ -17044,7 +17044,7 @@ Profiles: 107
     - code[1..1]: CodeableConcept conditions: obs-7 (W5: what)
     - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6
-    - referenceRange[0..*]: Observation.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   Extensions: 31
   +http://hl7.org/fhir/StructureDefinition/geneticsAlleleName [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/geneticsAlleleName
@@ -17279,7 +17279,7 @@ Profiles: 107
     - code[1..1]: CodeableConcept conditions: obs-7 (W5: what)
     - value[x][0..1]: Attachment|CodeableConcept|dateTime|Period|Quantity|Range|Ratio|SampledData|string|time
     - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6
-    - referenceRange[0..*]: Observation.referenceRange
+    - referenceRange[0..*]: #Observation.referenceRange
   Extensions: 31
   +http://hl7.org/fhir/StructureDefinition/geneticsAlleleName [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/geneticsAlleleName
