@@ -108,301 +108,50 @@ internal static class Normalization
         ed.Type = consolidatedTypes.Values.ToList();
     }
 
-    internal static void FixElementStructureR2(StructureDefinition sd)
+    internal static void VerifyRootElementType(StructureDefinition sd)
     {
-        List<string> pathComponents = [];
-        List<string?> sliceNameAtLoc = [];
-
-        // process the snapshot if we have one
-        if (sd.Snapshot?.Element.Any() ?? false)
+        ElementDefinition? rootElement = sd.Snapshot?.Element.FirstOrDefault();
+        if (rootElement != null)
         {
-            processElements(sd.Snapshot.Element);
+            checkElement(rootElement);
         }
 
-        pathComponents.Clear();
-        sliceNameAtLoc.Clear();
-
-        // process the differential if we have one
-        if (sd.Differential?.Element.Any() ?? false)
+        rootElement = sd.Differential?.Element.FirstOrDefault();
+        if (rootElement != null)
         {
-            processElements(sd.Differential.Element);
+            checkElement(rootElement);
         }
 
         return;
 
-        void processElements(IEnumerable<ElementDefinition> source)
+        void checkElement(ElementDefinition ed)
         {
-            HashSet<string> allPaths = [];
+            ed.Base ??= new ElementDefinition.BaseComponent();
 
-            // iterate over the the elements in the snapshot
-            foreach (ElementDefinition ed in source)
+            if (string.IsNullOrEmpty(ed.Base.Path))
             {
-                // ignore the root element so we don't pollute our slice names
-                if (!ed.Path.Contains('.'))
+                // if this is a structure defining a new 'something', that is the correct base
+                if (ed.Path == sd.Id)
                 {
-                    ed.ElementId = ed.Path;
-                    pathComponents = [ed.Path];
-                    sliceNameAtLoc = [null];
-                    continue;
+                    ed.Base.Path = ed.Path;
                 }
-
-                // split the path into components
-                string[] edPathComponents = ed.Path.Split('.');
-
-                // determine if this is a new slice
-                bool edIsNewSlice = !string.IsNullOrEmpty(ed.SliceName);
-
-                // the slice name could be an alias, determine by seeing if we have seen this path before
-                if (edIsNewSlice)
+                // if not and this has a base type, assume the root is that type (e.g., Extension)
+                else if (!string.IsNullOrEmpty(sd.Type))
                 {
-                    // if we have not seen this element before, it is an alias
-                    if (!allPaths.Contains(ed.Path))
-                    {
-                        allPaths.Add(ed.Path);
-                        ed.SliceName = null;
-                        edIsNewSlice = false;
-                        ed.AliasElement.Add(new FhirString(ed.SliceName));
-                    }
+                    ed.Base.Path = sd.Type;
                 }
-                else if (!allPaths.Contains(ed.Path))
+                // should never get here, but fall-back to using the path
+                else
                 {
-                    allPaths.Add(ed.Path);
-                }
-
-                // determine if this is a child element
-                if (edPathComponents.Length > pathComponents.Count)
-                {
-                    // add our path and slice info
-                    for (int i = pathComponents.Count; i < edPathComponents.Length; i++)
-                    {
-                        pathComponents.Add(edPathComponents[i]);
-                        sliceNameAtLoc.Add(null);
-                    }
-                    sliceNameAtLoc[^1] = edIsNewSlice ? getFilteredSliceName(ed.SliceName!, edPathComponents) : null;
-
-                    // build our id
-                    ed.ElementId = getId();
-
-                    // no need to process further
-                    continue;
-                }
-
-                // determine if this is a sibling element
-                if (edPathComponents.Length == pathComponents.Count)
-                {
-                    // update our path and slice info
-                    pathComponents[^1] = edPathComponents[^1];
-                    sliceNameAtLoc[^1] = edIsNewSlice ? getFilteredSliceName(ed.SliceName!, edPathComponents) : null;
-
-                    // build our id
-                    ed.ElementId = getId();
-
-                    // no need to process further
-                    continue;
-                }
-
-                // determine if we are moving up the tree
-                if (edPathComponents.Length < pathComponents.Count)
-                {
-                    // remove the extra elements from our path and slice info
-                    while (edPathComponents.Length < pathComponents.Count)
-                    {
-                        pathComponents.RemoveAt(pathComponents.Count - 1);
-                        sliceNameAtLoc.RemoveAt(sliceNameAtLoc.Count - 1);
-                    }
-
-                    // update our path and slice info
-                    pathComponents[^1] = edPathComponents[^1];
-                    sliceNameAtLoc[^1] = edIsNewSlice ? getFilteredSliceName(ed.SliceName!, edPathComponents) : null;
-
-                    // build our id
-                    ed.ElementId = getId();
-
-                    // no need to process further
-                    continue;
-                }
-            }
-        }
-
-        string? getFilteredSliceName(string sliceName, string[] slicePathComponents)
-        {
-            if (string.IsNullOrEmpty(sliceName))
-            {
-                return null;
-            }
-
-            if (!sliceName.Contains('.'))
-            {
-                return sliceName;
-            }
-
-            string[] sliceComponents = sliceName.Split('.').Where(sc => !slicePathComponents.Any(pc => pc == sc)).ToArray();
-
-            return sliceComponents.ToCamelCaseWord();
-        }
-
-        string getId()
-        {
-            StringBuilder sb = new();
-
-            for (int i = 0; i < pathComponents.Count; i++)
-            {
-                sb.Append(pathComponents[i]);
-
-                if (!string.IsNullOrEmpty(sliceNameAtLoc[i]))
-                {
-                    sb.Append(":");
-                    sb.Append(sliceNameAtLoc[i]);
-                }
-
-                if (i < pathComponents.Count - 1)
-                {
-                    sb.Append(".");
+                    ed.Base.Path = ed.Path;
                 }
             }
 
-            return sb.ToString();
-        }
-    }
+            ed.Min ??= 0;
 
-    internal static void ReconcileElementRepetitionsR2(StructureDefinition sd)
-    {
-        bool hasSnapshot = sd.Snapshot?.Element.Any() ?? false;
-        bool hasDifferential = sd.Differential?.Element.Any() ?? false;
-
-        if ((!hasSnapshot) && (!hasDifferential))
-        {
-            return;
-        }
-
-        Dictionary<string, ElementDefinition> elementsById = [];
-        List<ElementDefinition> elementsToRemove = [];
-
-        if (hasSnapshot)
-        {
-            discoverDuplicates(sd.Snapshot!.Element);
-
-            if (elementsToRemove.Count == 0)
+            if (string.IsNullOrEmpty(ed.Max))
             {
-                return;
-            }
-
-            // remove these elements from the snapshot
-            elementsToRemove.ForEach(ed => sd.Snapshot.Element.Remove(ed));
-
-            // remove matching elements from the differential
-            if (hasDifferential)
-            {
-                elementsToRemove.ForEach(ed => sd.Differential!.Element.RemoveAll(d => d.ElementId == ed.ElementId));
-            }
-
-            return;
-        }
-
-        discoverDuplicates(sd.Differential!.Element);
-
-        if (elementsToRemove.Count == 0)
-        {
-            return;
-        }
-
-        // remove these elements from the snapshot
-        elementsToRemove.ForEach(ed => sd.Differential.Element.Remove(ed));
-
-        return;
-
-        void discoverDuplicates(List<ElementDefinition> source)
-        {
-            Dictionary<string, ElementDefinition> edById = [];
-
-            for (int i = 0; i < source.Count; i++)
-            {
-                ElementDefinition ed = source[i];
-
-                // if this id is not present, add it and continue
-                if (!edById.TryGetValue(ed.ElementId, out ElementDefinition? existing))
-                {
-                    edById.Add(ed.ElementId, ed);
-                    continue;
-                }
-
-                // reconcile slicing to the first element we ran into
-                if ((existing.Slicing == null) && (ed.Slicing != null))
-                {
-                    existing.Slicing = (ElementDefinition.SlicingComponent)ed.Slicing.DeepCopy();
-
-                    // remove this element and move  our index back
-                    source.RemoveAt(i);
-                    i--;
-                    continue;
-                }
-
-                if ((existing.Slicing != null) && (ed.Slicing == null))
-                {
-                    // remove this element and move  our index back
-                    source.RemoveAt(i);
-                    i--;
-                    continue;
-                }
-
-                // iterate over our new element discriminators
-                foreach (ElementDefinition.DiscriminatorComponent edD in ed.Slicing?.Discriminator ?? Enumerable.Empty<ElementDefinition.DiscriminatorComponent>())
-                {
-                    // if this discriminator is not already present, add it
-                    if (!existing.Slicing!.Discriminator.Any(d => d.Type == edD.Type && d.Path == edD.Path))
-                    {
-                        existing.Slicing!.Discriminator.Add((ElementDefinition.DiscriminatorComponent)edD.DeepCopy());
-                    }
-                }
-
-                // remove this element and move  our index back
-                source.RemoveAt(i);
-                i--;
-                continue;
-            }
-        }
-
-        void discoverDuplicatesOld(List<ElementDefinition> source)
-        {
-            foreach (ElementDefinition ed in source)
-            {
-                // if this is not already present, add it
-                if (!elementsById.TryGetValue(ed.ElementId, out ElementDefinition? existing))
-                {
-                    elementsById[ed.ElementId] = ed;
-                    continue;
-                }
-
-                // drop the element without slicing
-                if (existing.Slicing == null)
-                {
-                    elementsToRemove.Add(ed);
-                    continue;
-                }
-
-                if (ed.Slicing == null)
-                {
-                    elementsToRemove.Add(existing);
-                    elementsById[ed.ElementId] = ed;
-                    continue;
-                }
-
-                // if one has a slice name, remove that one
-                if (!string.IsNullOrEmpty(ed.SliceName))
-                {
-                    elementsToRemove.Add(ed);
-                    continue;
-                }
-
-                if (!string.IsNullOrEmpty(existing.SliceName))
-                {
-                    elementsToRemove.Add(existing);
-                    elementsById[ed.ElementId] = ed;
-                    continue;
-                }
-
-                // should never get here
-                throw new Exception($"Need to figure out how {ed.ElementId} is different!");
+                ed.Max = "*";
             }
         }
     }

@@ -30,6 +30,9 @@ public class StructureDefinition_30_50 : ICrossVersionProcessor<StructureDefinit
             Normalization.ReconcilePrimitiveType(v, primitiveInfo);
         }
 
+        // ensure the root element has a base type and valid min/max values
+        Normalization.VerifyRootElementType(v);
+
         return v;
 	}
 

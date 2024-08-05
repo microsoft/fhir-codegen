@@ -361,18 +361,6 @@ public partial class DefinitionCollection
         // process each element in the snapshot
         foreach (ElementDefinition ed in sd.Snapshot?.Element ?? Enumerable.Empty<ElementDefinition>())
         {
-            // DSTU2 did not include element id's on ElementDefinitions, so we need to construct them
-            if (string.IsNullOrEmpty(ed.ElementId))
-            {
-                AddMissingElementId(ed, idByDepth);
-
-                // DSTU2 allowed repetitions of elements that we want to ignore (slicing definition before every slice)
-                if (allFieldOrders.ContainsKey(ed.ElementId))
-                {
-                    continue;
-                }
-            }
-
             int lastDot = ed.Path.LastIndexOf('.');
             string parentPath = lastDot == -1 ? ed.Path : ed.Path.Substring(0, lastDot);
             int componentFieldOrder = 0;
@@ -396,9 +384,6 @@ public partial class DefinitionCollection
             allFieldOrders.Add(ed.ElementId, fo);
 
             ed.cgSetFieldOrder(fo, componentFieldOrder);
-
-            //// add to lookup dict
-            //_elementSdLookup.Add($"{ed.Path}|{ed.ElementId}", sd);
 
             if (lastDot != -1)
             {
@@ -446,18 +431,6 @@ public partial class DefinitionCollection
         // process each element in the differential
         foreach (ElementDefinition ed in sd.Differential?.Element ?? Enumerable.Empty<ElementDefinition>())
         {
-            // DSTU2 did not include element id's on ElementDefinitions, so we need to construct them
-            if (string.IsNullOrEmpty(ed.ElementId))
-            {
-                AddMissingElementId(ed, idByDepth);
-
-                // DSTU2 allowed repetitions of elements that we want to ignore (slicing definition before every slice)
-                if (allFieldOrders.ContainsKey(ed.ElementId))
-                {
-                    continue;
-                }
-            }
-
             int lastDot = ed.Path.LastIndexOf('.');
             string parentPath = lastDot == -1 ? ed.Path : ed.Path.Substring(0, lastDot);
             int componentFieldOrder = 0;
@@ -482,9 +455,6 @@ public partial class DefinitionCollection
             {
                 fo = allFieldOrders.Count;
                 allFieldOrders.Add(ed.ElementId, fo);
-
-                //// add to lookup dict
-                //_elementSdLookup.Add($"{ed.Path}|{ed.ElementId}", sd);
 
                 // check for being a child element to promote a parent to backbone
                 if (lastDot != -1)
@@ -532,84 +502,6 @@ public partial class DefinitionCollection
 
             ed.cgSetFieldOrder(fo, componentFieldOrder);
         }
-
-        // DSTU2 and STU3 do not always declare types on root elements
-        if ((fhirVersion == FhirReleases.FhirSequenceCodes.DSTU2) || (fhirVersion == FhirReleases.FhirSequenceCodes.STU3))
-        {
-            ElementDefinition? re = sd.cgRootElement();
-            if (re != null)
-            {
-                re.Base ??= new ElementDefinition.BaseComponent();
-
-                if (string.IsNullOrEmpty(re.Base.Path))
-                {
-                    re.Base.Path = re.Path;
-                }
-
-                re.Min ??= 0;
-
-                if (string.IsNullOrEmpty(re.Max))
-                {
-                    re.Max = "*";
-                }
-            }
-        }
-    }
-
-    /// <summary>
-    /// Adds the missing element ID to the given <see cref="ElementDefinition"/>.
-    /// </summary>
-    /// <param name="ed">The <see cref="ElementDefinition"/> to add the missing ID to.</param>
-    /// <param name="idByDepth">The list of IDs by depth.</param>
-    private void AddMissingElementId(ElementDefinition ed, List<string> idByDepth)
-    {
-        // TODO(ginoc): This is handled by the cross-version loading now, so this function should be able to be removed
-
-        string[] components = ed.Path.Split('.');
-        int depth = components.Length;
-
-        if (depth == 1)
-        {
-            ed.ElementId = ed.Path;
-            idByDepth.Clear();
-            idByDepth.Add(ed.Path);
-            return;
-        }
-
-        // remove keys with the same length or deeper
-        if (idByDepth.Count >= depth)
-        {
-            idByDepth.RemoveRange(depth - 1, (idByDepth.Count - depth) + 1);
-        }
-
-        // append the slice name if present
-        if (!string.IsNullOrEmpty(ed.SliceName))
-        {
-            // check for a dot-notation name
-            if (ed.SliceName.Contains('.'))
-            {
-                // check for resource name prefix
-                if (ed.SliceName.StartsWith(idByDepth[0]))
-                {
-                    // append just the last dot component as a slice name
-                    components[depth - 1] += string.Concat(":", ed.SliceName.Substring(ed.SliceName.LastIndexOf('.') + 1));
-                }
-                else
-                {
-                    // convert to pascal case
-                    components[depth - 1] += ":" + ed.SliceName.ToPascalCase();
-                }
-            }
-            else
-            {
-                components[depth - 1] += ":" + ed.SliceName;
-            }
-        }
-
-        // add our path components
-        idByDepth.AddRange(components.Skip(idByDepth.Count));
-
-        ed.ElementId = string.Join(".", idByDepth);
     }
 
     /// <summary>
