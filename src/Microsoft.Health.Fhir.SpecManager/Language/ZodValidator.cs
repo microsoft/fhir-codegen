@@ -130,6 +130,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             "enum",
             "export",
             "interface",
+            "z",
         };
 
         /// <summary>The generics and type hints.</summary>
@@ -241,226 +242,11 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
 
                 WriteHeader();
 
-                WriteComplexesDeclarations(_info.ComplexTypes.Values, false);
-                WriteComplexesDeclarations(_info.Resources.Values, true);
                 WriteComplexes(_info.ComplexTypes.Values, false);
                 WriteComplexes(_info.Resources.Values, true);
                 WriteFHIRResourceSchema();
                 WriteExports();
                 WriteFooter();
-            }
-        }
-
-        /// <summary>Writes a value sets.</summary>
-        /// <param name="valueSets">List of valueSetCollections.</param>
-        private void WriteValueSets(
-            IEnumerable<FhirValueSetCollection> valueSets)
-        {
-            Dictionary<string, WrittenCodeInfo> writtenCodesAndNames = new Dictionary<string, WrittenCodeInfo>();
-            HashSet<string> writtenNames = new HashSet<string>();
-
-            foreach (FhirValueSetCollection collection in valueSets.OrderBy(c => c.URL))
-            {
-                foreach (FhirValueSet vs in collection.ValueSetsByVersion.Values.OrderBy(v => v.Version))
-                {
-                    WriteValueSet(
-                        vs,
-                        ref writtenCodesAndNames,
-                        ref writtenNames);
-                }
-            }
-        }
-
-        /// <summary>Writes a value set.</summary>
-        /// <param name="vs">                  The value set.</param>
-        /// <param name="writtenCodesAndNames">[in,out] The written codes, to prevent duplication
-        ///  without writing all code systems.</param>
-        /// <param name="writtenNames">        [in,out] List of names of the writtens.</param>
-        private void WriteValueSet(
-            FhirValueSet vs,
-            ref Dictionary<string, WrittenCodeInfo> writtenCodesAndNames,
-            ref HashSet<string> writtenNames)
-        {
-            string vsName = FhirUtils.SanitizeForProperty(vs.Id ?? vs.Name, _reservedWords).ToPascalCase();
-
-            foreach (FhirConcept concept in vs.Concepts.OrderBy(c => c.Code))
-            {
-                if (writtenCodesAndNames.ContainsKey(concept.Key()))
-                {
-                    continue;
-                }
-
-                string input = concept.Display;
-                if (_systemsNamedByDisplay.Contains(concept.System))
-                {
-                    input = concept.Display;
-                }
-                else if (_systemsNamedByCode.Contains(concept.System))
-                {
-                    input = concept.Code;
-                }
-                else if (string.IsNullOrEmpty(input))
-                {
-                    input = concept.Code;
-                }
-
-                string codeName = FhirUtils.SanitizeForProperty(input, _reservedWords).ToPascalCase(true);
-                string codeValue = FhirUtils.SanitizeForValue(concept.Code);
-
-                string constName;
-                if (!string.IsNullOrEmpty(concept.SystemLocalName))
-                {
-                    constName = $"{concept.SystemLocalName}_{codeName}";
-                }
-                else
-                {
-                    constName = $"{vsName}_{codeName}";
-                }
-
-                if (writtenNames.Contains(constName))
-                {
-                    // start at 2 so that the unadorned version makes sense as v1
-                    for (int i = 2; i < 1000; i++)
-                    {
-                        if (writtenNames.Contains($"{constName}_{i}"))
-                        {
-                            continue;
-                        }
-
-                        constName = $"{constName}_{i}";
-                        break;
-                    }
-                }
-
-                writtenCodesAndNames.Add(
-                    concept.Key(),
-                    new WrittenCodeInfo() { Name = codeName, ConstName = constName });
-                writtenNames.Add(constName);
-
-                _writer.WriteLineIndented($"const {constName}: Coding = {{");
-                _writer.IncreaseIndent();
-
-                _writer.WriteLineIndented($"code: \"{codeValue}\",");
-
-                if (!string.IsNullOrEmpty(concept.Display))
-                {
-                    _writer.WriteLineIndented($"display: \"{FhirUtils.SanitizeForQuoted(concept.Display)}\",");
-                }
-
-                _writer.WriteLineIndented($"system: \"{concept.System}\"");
-
-                _writer.DecreaseIndent();
-
-                _writer.WriteLineIndented("};");
-            }
-
-            if (!string.IsNullOrEmpty(vs.Description))
-            {
-                WriteIndentedComment(vs.Description);
-            }
-            else
-            {
-                WriteIndentedComment($"Value Set: {vs.URL}|{vs.Version}");
-            }
-
-            _writer.WriteLineIndented($"export const {vsName} = {{");
-            _writer.IncreaseIndent();
-
-            bool prefixWithSystem = vs.ReferencedCodeSystems.Count > 1;
-            HashSet<string> usedValues = new HashSet<string>();
-
-            // TODO: shouldn't loop over this twice, but writer functions don't allow writing in two places at once yet
-            foreach (FhirConcept concept in vs.Concepts.OrderBy(c => c.Code))
-            {
-                string codeKey = concept.Key();
-
-                if (!string.IsNullOrEmpty(concept.Definition))
-                {
-                    WriteIndentedComment(concept.Definition);
-                }
-
-                string name;
-
-                if (prefixWithSystem)
-                {
-                    name = $"{writtenCodesAndNames[codeKey].Name}_{concept.SystemLocalName}";
-                }
-                else
-                {
-                    name = writtenCodesAndNames[codeKey].Name;
-                }
-
-                if (usedValues.Contains(name))
-                {
-                    // start at 2 so that the unadorned version makes sense as v1
-                    for (int i = 2; i < 1000; i++)
-                    {
-                        if (usedValues.Contains($"{name}_{i}"))
-                        {
-                            continue;
-                        }
-
-                        name = $"{name}_{i}";
-                        break;
-                    }
-                }
-
-                usedValues.Add(name);
-
-                _writer.WriteLineIndented($"{name}: {writtenCodesAndNames[codeKey].ConstName},");
-            }
-
-            _writer.DecreaseIndent();
-
-            _writer.WriteLineIndented("};");
-        }
-
-        private void WriteComplexesDeclarations(
-            IEnumerable<FhirComplex> complexes,
-            bool isResource = false)
-        {
-            foreach (FhirComplex complex in complexes.OrderBy(c => c.Name))
-            {
-                WriteComplexDeclaration(complex, isResource);
-            }
-        }
-
-        private void WriteComplexDeclaration(
-            FhirComplex complex,
-            bool isResource)
-        {
-            // check for nested components
-            if (complex.Components != null)
-            {
-                foreach (FhirComplex component in complex.Components.Values)
-                {
-                    WriteComplexDeclaration(component, false);
-                }
-            }
-
-            if (!string.IsNullOrEmpty(complex.Comment))
-            {
-                WriteIndentedComment(complex.Comment);
-            }
-
-            // zod schema name
-            string schemaName;
-            if (string.IsNullOrEmpty(complex.BaseTypeName) ||
-                complex.Name.Equals("Element", StringComparison.Ordinal))
-            {
-                schemaName = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase);
-                _writer.WriteLineIndented($"let {schemaName}Schema: z.ZodObject;");
-            }
-            else if (complex.Name.Equals(complex.BaseTypeName, StringComparison.Ordinal))
-            {
-                schemaName = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true);
-                _writer.WriteLineIndented($"let {schemaName}Schema: z.ZodObject;");
-            }
-            else
-            {
-                schemaName = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true);
-                string typeName = complex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap, false);
-                _writer.WriteLineIndented($"let {schemaName}Schema: z.ZodObject;");
             }
         }
 
@@ -499,18 +285,24 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 complex.Name.Equals("Element", StringComparison.Ordinal))
             {
                 schemaName = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase);
-                _writer.WriteLineIndented($"{schemaName}Schema = z.object({{");
+                _writer.WriteLineIndented($"const {schemaName}Schema = z.lazy<z.ZodObject<Record<string, any>>>((): z.ZodObject<Record<string, any>> => {{");
+                _writer.IncreaseIndent();
+                _writer.WriteLineIndented($"return z.object({{");
             }
             else if (complex.Name.Equals(complex.BaseTypeName, StringComparison.Ordinal))
             {
                 schemaName = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true);
-                _writer.WriteLineIndented($"{schemaName}Schema = z.object({{");
+                _writer.WriteLineIndented($"const {schemaName}Schema = z.lazy<z.ZodObject<Record<string, any>>>((): z.ZodObject<Record<string, any>> => {{");
+                _writer.IncreaseIndent();
+                _writer.WriteLineIndented($"return z.object({{");
             }
             else
             {
                 schemaName = complex.NameForExport(FhirTypeBase.NamingConvention.PascalCase, true);
                 string typeName = complex.TypeForExport(FhirTypeBase.NamingConvention.PascalCase, _primitiveTypeMap, false);
-                _writer.WriteLineIndented($"{schemaName}Schema = {typeName}Schema.extend({{");
+                _writer.WriteLineIndented($"const {schemaName}Schema = z.lazy<z.ZodObject<Record<string, any>>>((): z.ZodObject<Record<string, any>> => {{");
+                _writer.IncreaseIndent();
+                _writer.WriteLineIndented($"return {typeName}Schema.schema.extend({{");
             }
 
             _writer.IncreaseIndent();
@@ -536,60 +328,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             // close interface (type)
             _writer.WriteLineIndented("});");
 
-        }
-
-        /// <summary>Writes a code.</summary>
-        /// <param name="element">The element.</param>
-        private void WriteCode(
-            FhirElement element)
-        {
-            string codeName = FhirUtils.ToConvention(
-                $"{element.Path}.Codes",
-                string.Empty,
-                FhirTypeBase.NamingConvention.PascalCase);
-
-            if (codeName.Contains("[x]"))
-            {
-                codeName = codeName.Replace("[x]", string.Empty);
-            }
-
-            if (_exportedCodes.Contains(codeName))
-            {
-                return;
-            }
-
-            _exportedCodes.Add(codeName);
-
-            _writer.WriteLineIndented($"/**");
-            _writer.WriteLineIndented($" * Code Values for the {element.Path} field");
-            _writer.WriteLineIndented($" */");
-
-            _writer.WriteLineIndented($"export enum {codeName} {{");
-
-            _writer.IncreaseIndent();
-
-            if (_info.TryGetValueSet(element.ValueSet, out FhirValueSet vs))
-            {
-                foreach (FhirConcept concept in vs.Concepts)
-                {
-                    FhirUtils.SanitizeForCode(concept.Code, _reservedWords, out string name, out string value);
-
-                    _writer.WriteLineIndented($"{name.ToUpperInvariant()} = \"{value}\",");
-                }
-            }
-            else
-            {
-                foreach (string code in element.Codes)
-                {
-                    FhirUtils.SanitizeForCode(code, _reservedWords, out string name, out string value);
-
-                    _writer.WriteLineIndented($"{name.ToUpperInvariant()} = \"{value}\",");
-                }
-            }
 
             _writer.DecreaseIndent();
-
-            _writer.WriteLineIndented("}");
+            _writer.WriteLine("});");
         }
 
         /// <summary>Writes the expanded resource interface binding.</summary>
@@ -642,22 +383,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             return true;
-        }
-
-        /// <summary>Determine if the export should support generics</summary>
-        /// <param name="name">The name.</param>
-        /// <returns>True if it succeeds, false if it fails.</returns>
-        private static bool ShouldSupportGenerics(string name)
-        {
-            switch (name)
-            {
-                case "Bundle":
-                case "Bundle.entry":
-                case "Bundle.entry.resource":
-                    return true;
-            }
-
-            return false;
         }
 
         /// <summary>Writes the elements.</summary>
@@ -722,22 +447,22 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     {
                         if (element.IsArray)
                         {
-                            result += $"z.array(z.enum({string.Join(",", vs.Concepts.Select(c => $"'{c.Code}'"))}))";
+                            result += $"z.array(z.enum([{string.Join(",", vs.Concepts.Select(c => $"'{c.Code}'"))}]))";
                         }
                         else
                         {
-                            result += $"z.enum({string.Join(",", vs.Concepts.Select(c => $"'{c.Code}'"))})";
+                            result += $"z.enum([{string.Join(",", vs.Concepts.Select(c => $"'{c.Code}'"))}])";
                         }
                     }
                     else
                     {
                         if (element.IsArray)
                         {
-                            result += $"z.array(z.enum({string.Join(",", element.Codes.Select(c => $"'{c}'"))}))";
+                            result += $"z.array(z.enum([{string.Join(",", element.Codes.Select(c => $"'{c}'"))}]))";
                         }
                         else
                         {
-                            result += $"z.enum({string.Join(",", element.Codes.Select(c => $"'{c}'"))})";
+                            result += $"z.enum([{string.Join(",", element.Codes.Select(c => $"'{c}'"))}])";
                         }
                     }
                 }
@@ -764,6 +489,10 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                     }
                 }
 
+                // TODO various fields in the fhir spec are mutually exclusive ors (xors)
+                // but zod does not have an out of the box xor method, so using nullish
+                result+= ".nullish()";
+
                 if (element.IsOptional)
                 {
                     result += ".optional()";
@@ -779,24 +508,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
                 result += ",";
                 _writer.WriteLineIndented(result);
             }
-        }
-
-        /// <summary>Requires extension.</summary>
-        /// <param name="typeName">Name of the type.</param>
-        /// <returns>True if it succeeds, false if it fails.</returns>
-        private static bool RequiresExtension(string typeName)
-        {
-            if (string.IsNullOrEmpty(typeName))
-            {
-                return false;
-            }
-
-            if (_primitiveTypeMap.ContainsKey(typeName))
-            {
-                return true;
-            }
-
-            return false;
         }
 
         /// <summary>Writes a header.</summary>
@@ -833,7 +544,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             _writer.WriteLine();
             // zod does not support inheritance so we need to use composition via union
             // we also have a hoisting problem 
-            _writer.WriteLine("let FhirResourceSchema: z.ZodArray;");
+            _writer.WriteLine("let FhirResourceSchema: z.ZodTypeAny;");
 
             if (_includeNamespace)
             {
@@ -863,13 +574,6 @@ namespace Microsoft.Health.Fhir.SpecManager.Language
             }
 
             _writer.WriteLineIndented($" */");
-        }
-
-        /// <summary>Information about written codes.</summary>
-        private struct WrittenCodeInfo
-        {
-            internal string Name;
-            internal string ConstName;
         }
 
         /// <summary>Information about the generic type hint.</summary>
