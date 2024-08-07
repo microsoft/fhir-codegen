@@ -101,7 +101,7 @@ public class StructureDefinition_20_50 : ICrossVersionProcessor<StructureDefinit
         }
 
         // reconcile the slice names for this structure manually
-        FixElementStructure(v);
+        BuildElementIds(v);
 
         // normalize element repetitions (slicing was separate)
         ReconcileElementRepetitions(v);
@@ -113,7 +113,7 @@ public class StructureDefinition_20_50 : ICrossVersionProcessor<StructureDefinit
     }
 
 
-    private void FixElementStructure(StructureDefinition sd)
+    private void BuildElementIds(StructureDefinition sd)
     {
         List<string> pathComponents = [];
         List<string?> sliceNameAtLoc = [];

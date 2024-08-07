@@ -97,7 +97,6 @@ public class ElementDefinition_20_50 : ICrossVersionProcessor<ElementDefinition>
         { "DiagnosticOrder.USLabDOPlacerID", "DiagnosticOrder.identifier" },
     };
 
-
     internal ElementDefinition_20_50(Converter_20_50 converter)
 	{
 		_converter = converter;

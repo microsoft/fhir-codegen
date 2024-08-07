@@ -21,7 +21,6 @@ namespace Microsoft.Health.Fhir.CrossVersion;
 
 internal static class Normalization
 {
-
     /// <summary>
     /// Reconcile the StructureDefinition of a primitive type to be consistent.
     /// </summary>

@@ -2046,7 +2046,7 @@ public class PackageComparer
                 comparisons.Add(new()
                 {
                     Relationship = null,
-                    Message = $"{sourceVs.Url} does not exist in target and has no mapping",
+                    Message = $"{sourceVs.Url} does not exist in {_targetRLiteral} and has no mapping",
                     Source = new()
                     {
                         Url = sourceVs.Url,
@@ -2063,7 +2063,7 @@ public class PackageComparer
                         Source = GetInfo(c),
                         TargetMappings = [],
                         Relationship = null,
-                        Message = $"{c.Key} does not exist in target and has no mapping",
+                        Message = $"{c.Key} does not exist in {_targetRLiteral} and has no mapping",
                     }).ToDictionary(c => c.Source.Code),
                 });
             }
@@ -2561,7 +2561,7 @@ public class PackageComparer
                 comparisons.Add(new()
                 {
                     Relationship = null,
-                    Message = $"{sourceSdName} does not exist in target and has no mapping",
+                    Message = $"{sourceSdName} does not exist in {_targetRLiteral} and has no mapping",
                     Source = new()
                     {
                         Id = sourceSd.Id,
@@ -2580,7 +2580,7 @@ public class PackageComparer
                         Source = GetInfo(e),
                         TargetMappings = [],
                         Relationship = null,
-                        Message = $"{e.Path} does not exist in target and has no mapping",
+                        Message = $"{e.Path} does not exist in {_targetRLiteral} and has no mapping",
                     }).ToDictionary(e => e.Source.Path),
                 });
             }
