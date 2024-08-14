@@ -108,7 +108,7 @@ public partial class FirelyNetIG : ILanguage
     private Dictionary<string, HashSet<string>> _extensionNamesByPackageDirective = [];
 
     private Dictionary<string, CanonicalInfo> _canonicalsByUrl = [];
-    private Dictionary<string, string> _firelyToFhirTypes = [];
+    private Dictionary<string, string> _firelyToFhirPaths = [];
 
     private Dictionary<string, StructureDefinitionWalker> _walkers = [];
 
@@ -324,7 +324,7 @@ public partial class FirelyNetIG : ILanguage
         _info = info;
         _options = options;
 
-        _firelyToFhirTypes.Clear();
+        _firelyToFhirPaths.Clear();
         _canonicalsByUrl.Clear();
 
         if (!Directory.Exists(options.OutputDirectory))
@@ -498,7 +498,7 @@ public partial class FirelyNetIG : ILanguage
         }
 
         // manually add datatype
-        _firelyToFhirTypes[$"{_firelyNamespace}.DataType"] = "DataType";
+        _firelyToFhirPaths[$"{_firelyNamespace}.DataType"] = "DataType";
     }
 
     private void AddComponentToMap(
@@ -519,7 +519,7 @@ public partial class FirelyNetIG : ILanguage
             exportName = structureName + "." + exportName;
         }
 
-        _firelyToFhirTypes[$"{_firelyNamespace}.{exportName}"] = exportName;
+        _firelyToFhirPaths[$"{_firelyNamespace}.{exportName}"] = cd.Element.Path;
 
         // check for nested components
         foreach (ComponentDefinition component in cd.cgChildComponents(_info))
@@ -950,7 +950,7 @@ public partial class FirelyNetIG : ILanguage
 
             if (!resolved &&
                 contextType.StartsWith("Hl7.Fhir.Model.", StringComparison.Ordinal) &&
-                !_firelyToFhirTypes.ContainsKey(contextType))
+                !_firelyToFhirPaths.ContainsKey(contextType))
             {
                 // this is likely a type that does not exist, just output some comments
                 writer.WriteLine();
@@ -987,7 +987,7 @@ public partial class FirelyNetIG : ILanguage
                 : extData.ValueTypeName;
 
             if (elementType.StartsWith("Hl7.Fhir.Model.", StringComparison.Ordinal) &&
-                !_firelyToFhirTypes.ContainsKey(elementType))
+                !_firelyToFhirPaths.ContainsKey(elementType))
             {
                 // this is likely a type that does not exist, just output some comments
                 writer.WriteLine();

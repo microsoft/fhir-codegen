@@ -566,6 +566,33 @@ public static class ElementDefinitionExtensions
                 }
 
             case NamingConvention.None:
+                {
+                    string value;
+
+                    if (concatenatePath)
+                    {
+                        value = skipStructureNameInConcatenation
+                            ? ed.Path[startIndex..]
+                            : ed.Path;
+
+                        if ((reservedWords != null) &&
+                            reservedWords.Contains(value))
+                        {
+                            return "fhir_" + value;
+                        }
+                    }
+
+                    value = name;
+
+                    if ((reservedWords != null) &&
+                        reservedWords.Contains(value))
+                    {
+                        return "fhir" + value;
+                    }
+
+                    return value;
+                }
+
             default:
                 throw new ArgumentException($"Invalid Naming Convention: {convention}");
         }
