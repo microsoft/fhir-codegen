@@ -955,8 +955,7 @@ public partial class FirelyNetIG : ILanguage
                 // this is likely a type that does not exist, just output some comments
                 writer.WriteLine();
                 writer.WriteLineIndented($"/*");
-                writer.WriteLineIndented($" * Generation Issue!");
-                writer.WriteLineIndented($" * Cannot resolve context {contextType} for extension {extData.Name} ({extData.Url}).");
+                writer.WriteLineIndented($" * Generation Issue! Cannot resolve context {contextType} for extension {extData.Name} ({extData.Url}).");
                 writer.WriteLineIndented($" * It it from a different version of FHIR?");
                 writer.WriteLineIndented($" */");
                 writer.WriteLine();
@@ -993,8 +992,7 @@ public partial class FirelyNetIG : ILanguage
                 // this is likely a type that does not exist, just output some comments
                 writer.WriteLine();
                 writer.WriteLineIndented($"/*");
-                writer.WriteLineIndented($" * Generation Issue!");
-                writer.WriteLineIndented($" * Cannot resolve datatype {elementType} for extension {extData.Name} ({extData.Url}).");
+                writer.WriteLineIndented($" * Generation Issue! Cannot resolve datatype {elementType} for extension {extData.Name} ({extData.Url}).");
                 writer.WriteLineIndented($" * Is it from a different version of FHIR?");
                 writer.WriteLineIndented($" */");
                 writer.WriteLine();
