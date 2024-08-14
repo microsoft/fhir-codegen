@@ -515,7 +515,7 @@ public class Program
                 JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
             });
 
-            DefinitionCollection? loaded = await loader.LoadPackages(rootConfig.Packages)
+            DefinitionCollection? loaded = await loader.LoadPackages(rootConfig.Packages, null, rootConfig.FhirVersion)
                 ?? throw new Exception($"Could not load packages: {string.Join(',', rootConfig.Packages)}");
 
             // check for a FHIR server URL

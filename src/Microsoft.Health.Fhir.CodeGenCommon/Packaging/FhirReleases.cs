@@ -133,6 +133,7 @@ public static class FhirReleases
         { "3.5a", FhirSequenceCodes.R4 },
         { "3.5a.0", FhirSequenceCodes.R4 },
         { "4.0", FhirSequenceCodes.R4 },
+        { "4.0.0", FhirSequenceCodes.R4 },
         { "4.0.1", FhirSequenceCodes.R4 },
         { "hl7.fhir.r4", FhirSequenceCodes.R4 },
         { "hl7.fhir.r4.core", FhirSequenceCodes.R4 },
@@ -179,6 +180,18 @@ public static class FhirReleases
         { "hl7.fhir.r6.core", FhirSequenceCodes.R6 },
     }.ToFrozenDictionary(StringComparer.OrdinalIgnoreCase);
 
+    /// <summary>Check if a FHIR release version is unavailable (e.g., a superseded patch).</summary>
+    /// <param name="version">The version string.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public static bool VersionIsUnavailable(string version) => version switch
+    {
+        "3.0.0" => true,
+        "3.0.1" => true,
+        "4.0.0" => true,
+        _ => false,
+    };
+
+    public static string GetCurrentPatch(string version) => FhirVersionToSequence(version).ToLongVersion();
 
     /// <summary>Attempts to get sequence the FhirSequenceCodes from the given string.</summary>
     /// <param name="literal">     The literal.</param>

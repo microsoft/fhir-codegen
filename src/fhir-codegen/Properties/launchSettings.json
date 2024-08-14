@@ -37,27 +37,27 @@
         },
         "Firely IG Backport": {
             "commandName": "Project",
-            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.uv.subscriptions-backport#1.1.0 --auto-load-expansions --resolve-dependencies true --extension-accessors ValueRecordAccessors --include-experimental",
+            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.uv.subscriptions-backport#1.1.0 --fhir-version 4.0.1 --auto-load-expansions --resolve-dependencies true --include-experimental",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely IG US Core": {
             "commandName": "Project",
-            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.us.core#6.1.0 --auto-load-expansions --resolve-dependencies true --extension-accessors ValueRecordAccessors --include-experimental",
+            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.us.core#6.1.0 --auto-load-expansions --resolve-dependencies true --include-experimental",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely IG Extensions Pack": {
             "commandName": "Project",
-            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.uv.extensions#current --auto-load-expansions --resolve-dependencies true --extension-accessors ValueRecordAccessors --include-experimental",
+            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.uv.extensions.r4#latest --auto-load-expansions --resolve-dependencies true --include-experimental",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely IG NDH": {
             "commandName": "Project",
-            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.us.ndh#1.0.0-ballot --auto-load-expansions --resolve-dependencies true --extension-accessors ValueRecordAccessors --include-experimental",
+            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.us.ndh#1.0.0-ballot --auto-load-expansions --resolve-dependencies true --include-experimental",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely IG SDC": {
             "commandName": "Project",
-            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.uv.sdc#3.0.0 --auto-load-expansions --resolve-dependencies true --extension-accessors ValueRecordAccessors --include-experimental",
+            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.uv.sdc#3.0.0 --auto-load-expansions --resolve-dependencies true --include-experimental",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely OpenApi": {

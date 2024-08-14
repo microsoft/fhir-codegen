@@ -562,6 +562,8 @@ public class PackageLoader : IDisposable
         DefinitionCollection? definitions = null,
         string? fhirVersion = null)
     {
+        string? requestedFhirVersion = fhirVersion;
+
         if (!packages.Any())
         {
             return null;
@@ -610,10 +612,32 @@ public class PackageLoader : IDisposable
                 throw new Exception($"Failed to parse package reference: {directive}");
             }
 
-            definitions ??= new()
+            // check to see if this is a FHIR release that is no longer available
+            if (FhirPackageUtils.PackageIsFhirRelease(packageReference.Name) &&
+                FhirReleases.VersionIsUnavailable(packageReference.Version ?? string.Empty))
             {
-                Name = packageReference.Name,
-            };
+                packageReference.Version = FhirReleases.GetCurrentPatch(packageReference.Version ?? string.Empty);
+
+                if (definitions?.Manifests.ContainsKey(packageReference.Moniker) == true)
+                {
+                    // we have already loaded this package, just continue
+                    continue;
+                }
+            }
+
+            // create our definition collection shell if we do not have one
+            if (definitions == null)
+            {
+                definitions = new()
+                {
+                    Name = packageReference.Name,
+                };
+
+                if (!string.IsNullOrEmpty(fhirVersion))
+                {
+                    definitions.FhirSequence = FhirReleases.FhirVersionToSequence(fhirVersion!);
+                }
+            }
 
             VersionHandlingTypes vht = GetVersionHandlingType(packageReference.Version);
 
@@ -652,7 +676,7 @@ public class PackageLoader : IDisposable
 
                 Console.WriteLine($"Auto-loading core expansions: {expansionDirective}...");
 
-                await LoadPackages([expansionDirective], definitions);
+                await LoadPackages([expansionDirective], definitions, requestedFhirVersion);
             }
 
             // skip if we have already loaded this package
@@ -672,8 +696,68 @@ public class PackageLoader : IDisposable
                 throw new Exception($"Failed to install package {packageReference.Moniker} as requested by {inputDirective}");
             }
 
-            PackageManifest? manifest = await _cache.ReadManifest(packageReference) ?? throw new Exception("Failed to load package manifest");
+            PackageManifest manifest = await _cache.ReadManifest(packageReference) ?? throw new Exception("Failed to load package manifest");
 
+            // check to see if we have a restricted FHIR version and need to filter
+            if ((!string.IsNullOrEmpty(requestedFhirVersion)) &&
+                (definitions.FhirSequence != FhirReleases.FhirSequenceCodes.Unknown) &&
+                (manifest.GetFhirVersion() is string manifestFhirVersion) &&
+                !string.IsNullOrEmpty(manifestFhirVersion) &&
+                (definitions.FhirSequence != FhirReleases.FhirVersionToSequence(manifestFhirVersion)))
+            {
+                Console.WriteLine($"Package {packageReference.Moniker} ({manifestFhirVersion}) does not match requested FHIR version {fhirVersion}!");
+
+                string packageIdSuffix = packageReference.Name.Split('.')[^1];
+                FhirReleases.FhirSequenceCodes packageIdSuffixCode = FhirReleases.FhirVersionToSequence(packageIdSuffix);
+
+                // check for NOT having a version already specified
+                if (packageIdSuffixCode == FhirReleases.FhirSequenceCodes.Unknown)
+                {
+                    string requiredRLiteral = definitions.FhirSequence.ToRLiteral().ToLowerInvariant();
+
+                    string desiredMoniker = $"{packageReference.Name}.{requiredRLiteral}@{packageReference.Version}";
+
+                    await LoadPackages([desiredMoniker], definitions, requestedFhirVersion);
+
+                    if (definitions.Manifests.ContainsKey(desiredMoniker))
+                    {
+                        Console.WriteLine($"Package {desiredMoniker} loaded in place of {packageReference.Moniker}!");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Could not find substitute for {packageReference.Moniker} - please specify manually if this is required!");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"Package {packageReference.Moniker} specifies an incorrect FHIR version - please correct!");
+                }
+
+                // whether it loaded or not, we cannot do more this pass
+                continue;
+            }
+
+            //// check to see if this is a different FHIR version from what we expect
+            //if ((definitions.FhirSequence != FhirReleases.FhirSequenceCodes.Unknown) &&
+            //    (manifest.GetFhirVersion() is string manifestFhirVersion) &&
+            //    !string.IsNullOrEmpty(manifestFhirVersion) &&
+            //    (definitions.FhirSequence != FhirReleases.FhirVersionToSequence(manifestFhirVersion)))
+            //{
+            //    Console.WriteLine($"Package {packageReference.Moniker} FHIR version mismatch: {manifest?.GetFhirVersion()} != {fhirVersion}, attempting to resolve...");
+
+            //    string requiredRLiteral = definitions.FhirSequence.ToRLiteral().ToLowerInvariant();
+
+            //    string desiredMoniker = $"{packageReference.Name}.{requiredRLiteral}@{packageReference.Version}";
+
+            //    await LoadPackages([desiredMoniker], definitions);
+
+            //    if (!definitions.Manifests.ContainsKey(desiredMoniker))
+            //    {
+            //        throw new Exception($"Package {packageReference.Moniker} FHIR version mismatch: {manifest?.GetFhirVersion()} != {fhirVersion} and could not be resolved!");
+            //    }
+            //}
+
+            // flag we are tracking this package
             definitions.Manifests.Add(packageReference.Moniker, manifest);
 
             if (string.IsNullOrEmpty(definitions.MainPackageId) || (definitions.Name == manifest.Name))
@@ -713,7 +797,7 @@ public class PackageLoader : IDisposable
             // if we are resolving dependencies, check them now
             if (_rootConfiguration.ResolvePackageDependencies && (manifest.Dependencies?.Any() ?? false))
             {
-                await LoadPackages(manifest.Dependencies.Select(kvp => $"{kvp.Key}@{kvp.Value}"), definitions);
+                await LoadPackages(manifest.Dependencies.Select(kvp => $"{kvp.Key}@{kvp.Value}"), definitions, requestedFhirVersion);
 
                 Console.WriteLine($"Dependencies resolved - loading package {packageReference.Moniker}...");
             }

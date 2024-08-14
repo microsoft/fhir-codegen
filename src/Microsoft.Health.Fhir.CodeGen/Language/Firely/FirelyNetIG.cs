@@ -33,6 +33,13 @@ using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 using static Microsoft.Health.Fhir.CodeGen.Language.Firely.CSharpFirelyCommon;
 using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 using static Hl7.Fhir.Model.CodeSystem;
+using Hl7.Fhir.Specification;
+using Hl7.Fhir.Specification.Navigation;
+using Hl7.FhirPath;
+using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
+using Fhir.Metrics;
+using static Microsoft.Health.Fhir.CodeGen.Language.Firely.CSharpFirely2;
+using Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 #if NETSTANDARD2_0
 using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
@@ -62,6 +69,9 @@ public partial class FirelyNetIG : ILanguage
 
     /// <summary>The value set writers.</summary>
     private Dictionary<string, ExportStreamWriter> _valueSetWriters = [];
+
+    /// <summary>The namespace to use during export.</summary>
+    private const string _firelyNamespace = "Hl7.Fhir.Model";
 
     private const string _classNameDefinitions = "CanonicalUrls";
     private const string _classNameExtensions = "ExtensionAccessors";
@@ -97,6 +107,13 @@ public partial class FirelyNetIG : ILanguage
     private Dictionary<string, PackageData> _packageDataByDirective = [];
     private Dictionary<string, HashSet<string>> _extensionNamesByPackageDirective = [];
 
+    private Dictionary<string, CanonicalInfo> _canonicalsByUrl = [];
+    private Dictionary<string, string> _firelyToFhirTypes = [];
+
+    private Dictionary<string, StructureDefinitionWalker> _walkers = [];
+
+    private FhirPathCompiler _fpCompiler = new(new Hl7.FhirPath.Expressions.SymbolTable());
+
 #if NET8_0_OR_GREATER
     [GeneratedRegex(".+(\\.extension(\\:[^.]+)?(\\.url)?)")]
     private static partial Regex FindExtensionPathRegex();
@@ -105,6 +122,31 @@ public partial class FirelyNetIG : ILanguage
     private static readonly Regex _findExtensionPathRegex = new Regex(".+(\\.extension(\\:[^.]+)?(\\.url)?)", RegexOptions.Compiled);
 #endif
 
+    private static readonly HashSet<string> _nameComponentsToRemove = new(StringComparer.OrdinalIgnoreCase)
+    {
+        "extensions",
+        "www",
+        "org",
+        "com",
+    };
+
+    private static readonly HashSet<string> _exclusionSet = new()
+    {
+        /*
+         * Extension definition is incorrect and not worth working around.
+         * See https://jira.hl7.org/browse/FHIR-46629
+         * TODO: remove from exclusion set when corrected.
+         */
+        "http://hl7.org/fhir/StructureDefinition/implementationguide-sourceFile",
+    };
+
+    private record class CanonicalInfo
+    {
+        public required string Url { get; init; }
+        public required string Name { get; init; }
+        public required IConformanceResource Conformance { get; init; }
+        public required PackageData Package { get; init; }
+    }
 
     private record struct PackageData
     {
@@ -135,6 +177,19 @@ public partial class FirelyNetIG : ILanguage
         public required ElementDefinition? ValueElement { get; init; }
         public required CSharpFirely2.WrittenElementInfo? ElementInfo { get; init; }
         public required ExtensionData[] Children { get; init; }
+        public required ExternalExtensionReferenceData[] ExternalChildren { get; init; }
+        public required string ValueTypeName { get; init; }
+    }
+
+    private record class ExternalExtensionReferenceData
+    {
+        public required string Name { get; init; }
+        public required string Url { get; init; }
+        public required string Summary { get; init; }
+        public required string Remarks { get; init; }
+        public required bool IsRequired { get; init; }
+        public required bool IsList { get; init; }
+        public required string ParentName { get; init; }
         public required string ValueTypeName { get; init; }
     }
 
@@ -160,11 +215,11 @@ public partial class FirelyNetIG : ILanguage
         [Description("Do not export export extension accessor functions.")]
         None,
 
-        [Description("Export extension accessor functions based on Extension objects.")]
-        ExtensionAccessors,
+        //[Description("Export extension accessor functions based on Extension objects.")]
+        //ExtensionAccessors,
 
         [Description("Export extension accessor functions that use record classes for values.")]
-        ValueRecordAccessors,
+        RecordAccessors,
     }
 
     public Type ConfigType => typeof(FirelyNetIGOptions);
@@ -173,12 +228,12 @@ public partial class FirelyNetIG : ILanguage
         [ConfigOption(
             ArgName = "--extension-accessors",
             Description = "Style to export extension accessors with.")]
-        public ExtensionAccessorExportCodes ExtensionAccessorExport { get; set; } = ExtensionAccessorExportCodes.ExtensionAccessors;
+        public ExtensionAccessorExportCodes ExtensionAccessorExport { get; set; } = ExtensionAccessorExportCodes.RecordAccessors;
 
         private static ConfigurationOption ExtensionAccessorExportParameter { get; } = new()
         {
             Name = "ExtensionAccessorExport",
-            DefaultValue = ExtensionAccessorExportCodes.ExtensionAccessors,
+            DefaultValue = ExtensionAccessorExportCodes.RecordAccessors,
             CliOption = new System.CommandLine.Option<ExtensionAccessorExportCodes>("--extension-accessors", "Style to export extension accessors with.")
             {
                 Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
@@ -256,29 +311,144 @@ public partial class FirelyNetIG : ILanguage
             throw new ArgumentException("Options must be of type FirelyNetIGOptions");
         }
 
+        // check to see if there are multiple versions of FHIR loaded - IG generation can only work with a single one
+        string[] fhirCoreDirectives = info.Manifests.Keys.Where(FhirPackageUtils.PackageIsFhirRelease).ToArray();
+        int fhirCoreVersionCount = fhirCoreDirectives.Select(d => info.Manifests[d].Version).Distinct().Count();
+
+        if (fhirCoreVersionCount > 1)
+        {
+            throw new Exception("Multiple versions of FHIR are loaded, IG generation can only work with a single version. Either specify a package with a single version or use the --fhir-version parameter to filter.");
+        }
+
         // set internal vars so we don't pass them to every function
         _info = info;
         _options = options;
+
+        _firelyToFhirTypes.Clear();
+        _canonicalsByUrl.Clear();
 
         if (!Directory.Exists(options.OutputDirectory))
         {
             Directory.CreateDirectory(options.OutputDirectory);
         }
 
+        // need to process structures so that we have a type index of valid types
+        BuildCoreTypeMap();
+
         // need to process ValueSets so that we know which ones have enums
         ProcessAndWriteValueSets();
 
-        HashSet<string> writtenCanonicals = new();
+        IEnumerator<IConformanceResource> conformanceEnumerator = _info.CanonicalEnumerator;
 
-        Dictionary<string, HashSet<string>> writtenExtensionDefinitions = new();
+        Dictionary<string, CanonicalInfo> canonicalsByName = [];
 
-        // TODO: iterate over all canonicals so we can add their URLs...
+        // traverse canonicals building names for them
+        while (conformanceEnumerator.MoveNext())
+        {
+            IConformanceResource cr = conformanceEnumerator.Current;
 
-        // write extension contents
+            // skip anything that is not a domain resource - should never happen
+            if (cr is not DomainResource r)
+            {
+                continue;
+            }
+
+            if (!_info.TryGetPackageSource(r, out string packageId, out string packageVersion))
+            {
+                packageId = _info.MainPackageId;
+                packageVersion = _info.MainPackageVersion;
+            }
+
+            PackageData packageData = GetPackageData(packageId, packageVersion);
+
+            string name = GetCanonicalNameLiteral(cr);
+
+            // check for name collisions - typically from FHIR + THO URLs defining the same artifact
+            if (canonicalsByName.TryGetValue(packageData.Key + name, out CanonicalInfo? existing))
+            {
+                if (existing.Url == cr.Url)
+                {
+                    // ignore duplicates
+                    continue;
+                }
+
+                // check to see if existing is THO and current is FHIR
+                if (existing.Url.StartsWith(CommonDefinitions.THOUrlPrefix) &&
+                    cr.Url.StartsWith(CommonDefinitions.FhirUrlPrefix))
+                {
+                    canonicalsByName.Remove(packageData.Key + existing.Name);
+                    existing = existing with { Name = existing.Name + "THO" };
+                    canonicalsByName.Add(packageData.Key + existing.Name, existing);
+                    _canonicalsByUrl[existing.Url] = existing;
+
+                    name = name + "FHIR";
+                }
+                // check to see if existing is FHIR and current is THO
+                else if (existing.Url.StartsWith(CommonDefinitions.FhirUrlPrefix) &&
+                         cr.Url.StartsWith(CommonDefinitions.THOUrlPrefix))
+                {
+                    canonicalsByName.Remove(packageData.Key + existing.Name);
+                    existing = existing with { Name = existing.Name + "FHIR" };
+                    canonicalsByName.Add(packageData.Key + existing.Name, existing);
+                    _canonicalsByUrl[existing.Url] = existing;
+
+                    name = name + "THO";
+                }
+                else
+                {
+                    string existingName2 = GetCanonicalNameLiteral(existing.Conformance, true);
+                    string currentName2 = GetCanonicalNameLiteral(cr, true);
+
+                    if (existingName2 == currentName2)
+                    {
+                        throw new Exception($"Name collision for '{name}'");
+                    }
+
+                    canonicalsByName.Remove(existing.Package.Key + existing.Name);
+                    existing = existing with { Name = existingName2 };
+                    canonicalsByName.Add(existing.Package.Key + existing.Name, existing);
+                    _canonicalsByUrl[existing.Url] = existing;
+
+                    name = currentName2;
+                }
+            }
+
+            canonicalsByName.Add(packageData.Key + name, new()
+            {
+                Url = cr.Url,
+                Name = name,
+                Conformance = cr,
+                Package = packageData,
+            });
+
+            _canonicalsByUrl.Add(cr.Url, new()
+            {
+                Url = cr.Url,
+                Name = name,
+                Conformance = cr,
+                Package = packageData,
+            });
+        }
+
+        HashSet<string> writtenCanonicalUrls = [];
+        Dictionary<string, HashSet<string>> writtenExtensionDefinitions = [];
+
+        // write extensions and relevant canonical URLs
         foreach (StructureDefinition sd in _info.ExtensionsByUrl.Values)
         {
-            WriteExtension(sd, writtenExtensionDefinitions);
-            writtenCanonicals.Add(sd.Url);
+            // get canonical info for this extension
+            if (!_canonicalsByUrl.TryGetValue(sd.Url, out CanonicalInfo? ci))
+            {
+                throw new Exception($"Could not find canonical info for extension '{sd.Url}'");
+            }
+
+            if (_exclusionSet.Contains(sd.Url))
+            {
+                continue;
+            }
+
+            WriteExtension(sd, ci, writtenExtensionDefinitions);
+            writtenCanonicalUrls.Add(ci.Url);
         }
 
         // TODO(ginoc): finish profile export
@@ -289,40 +459,192 @@ public partial class FirelyNetIG : ILanguage
         //    writtenCanonicals.Add(sd.Url);
         //}
 
-        IEnumerator<IConformanceResource> conformanceEnumerator = _info.CanonicalEnumerator;
-        while (conformanceEnumerator.MoveNext())
+        // traverse our canonicals, sorted by name - note we need to do this last because other definitions write their own (extensions need to recurse, etc.).
+        foreach (CanonicalInfo ci in canonicalsByName.Values.OrderBy(ci => ci.Name))
         {
-            IConformanceResource cr = conformanceEnumerator.Current;
-            if (writtenCanonicals.Contains(cr.Url))
+            if (writtenCanonicalUrls.Contains(ci.Url))
             {
                 continue;
             }
 
-            WriteCanonicalUrl(cr);
-
-            writtenCanonicals.Add(cr.Url);
+            // write the canonical URL
+            WriteCanonicalUrl(ci.Conformance, ci.Package, ci.Name);
+            writtenCanonicalUrls.Add(ci.Url);
         }
 
         CloseWriters();
     }
 
+    private void BuildCoreTypeMap()
+    {
+        foreach (StructureDefinition primitive in _info.PrimitiveTypesByName.Values)
+        {
+            AddComponentToMap(primitive.cgComponent());
+        }
+
+        foreach (StructureDefinition complexType in _info.ComplexTypesByName.Values)
+        {
+            AddComponentToMap(complexType.cgComponent());
+        }
+
+        foreach (StructureDefinition resource in _info.ResourcesByName.Values)
+        {
+            AddComponentToMap(resource.cgComponent());
+        }
+
+        foreach (StructureDefinition fhirInterface in _info.InterfacesByName.Values)
+        {
+            AddComponentToMap(fhirInterface.cgComponent());
+        }
+
+        // manually add datatype
+        _firelyToFhirTypes[$"{_firelyNamespace}.DataType"] = "DataType";
+    }
+
+    private void AddComponentToMap(
+        ComponentDefinition cd,
+        string? exportName = null)
+    {
+        if (!TypeNameMappings.TryGetValue(cd.Structure.Name, out string? structureName))
+        {
+            structureName = cd.Structure.Name.ToPascalCase();
+        }
+
+        if (exportName == null)
+        {
+            exportName = structureName;
+        }
+        else
+        {
+            exportName = structureName + "." + exportName;
+        }
+
+        _firelyToFhirTypes[$"{_firelyNamespace}.{exportName}"] = exportName;
+
+        // check for nested components
+        foreach (ComponentDefinition component in cd.cgChildComponents(_info))
+        {
+            string componentExportName;
+
+            if (string.IsNullOrEmpty(component.cgExplicitName()))
+            {
+                componentExportName =
+                    $"{component.cgName(NamingConvention.PascalCase)}Component";
+            }
+            else
+            {
+                componentExportName =
+                    $"{component.cgExplicitName()}" +
+                    $"Component";
+            }
+
+            AddComponentToMap(
+                component,
+                componentExportName);
+        }
+    }
+
+    private string GetCanonicalNameLiteral(IConformanceResource cr, bool hasCollision = false)
+    {
+        Resource r = (Resource)cr;
+
+        FhirArtifactClassEnum fhirArtifactClass;
+
+        if (r is StructureDefinition sd)
+        {
+            fhirArtifactClass = sd.cgArtifactClass();
+        }
+        else
+        {
+            fhirArtifactClass = FhirArtifactClassEnum.Unknown;
+        }
+
+        return GetCanonicalNameLiteral(r.Id, cr.Name, cr.Url, r.TypeName, fhirArtifactClass, hasCollision);
+    }
+
+    private string GetCanonicalNameLiteral(
+        string id,
+        string name,
+        string url,
+        string typeName,
+        FhirArtifactClassEnum fhirArtifactClass,
+        bool hasCollision = false)
+    {
+
+        // grab the components of the last part of the URL
+        string[] components = url.EndsWith('/')
+            ? url.Split('/')[^2].Split('-', '_', '.')
+            : url.Split('/')[^1].Split('-', '_', '.');
+
+        if (hasCollision)
+        {
+            string[] additionalComponents = string.IsNullOrEmpty(name) ? id.Split('-', '_', '.') : name.Split('-', '_', '.');
+            components = components.Concat(additionalComponents).ToArray();
+        }
+        // check for no alphabetical characters in the URL segment to switch to name
+        else if (!components.Any(c => c.Any(char.IsLetter)))
+        {
+            // remove any numbers from the last component
+            components = string.IsNullOrEmpty(name) ? id.Split('-', '_', '.') : name.Split('-', '_', '.');
+        }
+
+        string prefix;
+
+        // insert the resource type
+        if (fhirArtifactClass != FhirArtifactClassEnum.Unknown)
+        {
+            // use the cg type instead so we get better names
+            prefix = fhirArtifactClass.ToString();
+        }
+        else if (typeName.EndsWith("Definition", StringComparison.Ordinal))
+        {
+            prefix = typeName[..^10];
+        }
+        else
+        {
+            prefix = typeName;
+        }
+
+        components = components.Prepend(prefix).ToArray();
+
+        // remove component parts we want to drop
+        components = components.Where(c => !_nameComponentsToRemove.Contains(c)).ToArray();
+
+        // remove repetitions of words, but maintain any numbers
+        HashSet<string> used = [];
+        List<string> valid = [];
+        foreach (string current in components)
+        {
+            // skip numbers and leave in their existing order
+            if (!current.Any(char.IsLetter))
+            {
+                valid.Add(current);
+                continue;
+            }
+
+            // check to see if this word already exists
+            if (used.Contains(current))
+            {
+                // skip
+                continue;
+            }
+
+            valid.Add(current);
+            used.Add(current);
+        }
+
+        // join everything into a PascalCase string
+        return CleanName(components.ToPascalCaseWord());
+    }
 
     /// <summary>Writes an extension.</summary>
     /// <param name="sd">The SD.</param>
-    private void WriteCanonicalUrl(IConformanceResource cr)
+    private void WriteCanonicalUrl(IConformanceResource cr, PackageData packageData, string name)
     {
         if (cr is not DomainResource r)
         {
             return;
         }
-
-        if (!_info.TryGetPackageSource(r, out string packageId, out string packageVersion))
-        {
-            packageId = _info.MainPackageId;
-            packageVersion = _info.MainPackageVersion;
-        }
-
-        PackageData packageData = GetPackageData(packageId, packageVersion);
 
         // get a definition writer
         ExportStreamWriter writer = GetCanonicalUrlWriter(packageData);
@@ -330,19 +652,7 @@ public partial class FirelyNetIG : ILanguage
         writer.WriteIndentedComment(cr.Description, isSummary: true);
         writer.WriteIndentedComment(cr.Purpose, isSummary: false, isRemarks: true);
 
-        string name;
-
-        if (string.IsNullOrEmpty(cr.Name) ||
-            ((r.TypeName == "ValueSet") && FhirPackageUtils.PackageIsFhirRelease(packageId)))
-        {
-            name = CleanName(r.Id);
-        }
-        else
-        {
-            name = CleanName(cr.Name);
-        }
-
-        writer.WriteLineIndented($"public const string {r.TypeName}{name} = \"{cr.Url}\";");
+        writer.WriteLineIndented($"public const string {name} = \"{cr.Url}\";");
 
         writer.WriteLine();
     }
@@ -421,10 +731,10 @@ public partial class FirelyNetIG : ILanguage
                     packageVersion = _info.MainPackageVersion;
                 }
 
-                if (!usedEnumsByPackage.TryGetValue($"{packageId}#{packageVersion}", out HashSet<string>? usedEnumNames))
+                if (!usedEnumsByPackage.TryGetValue($"{packageId}@{packageVersion}", out HashSet<string>? usedEnumNames))
                 {
                     usedEnumNames = [];
-                    usedEnumsByPackage.Add($"{packageId}#{packageVersion}", usedEnumNames);
+                    usedEnumsByPackage.Add($"{packageId}@{packageVersion}", usedEnumNames);
                 }
 
                 ProcessAndWriteValueSet(vs, usedEnumNames, packageId, packageVersion);
@@ -604,27 +914,9 @@ public partial class FirelyNetIG : ILanguage
         writer.Dispose();
     }
 
-    private void WriteExtensionAccessors(
-        ExtensionData extData,
-        ExportStreamWriter writer)
-    {
-        switch (_options.ExtensionAccessorExport)
-        {
-            case ExtensionAccessorExportCodes.ExtensionAccessors:
-                WriteExtensionAccessorsExt(extData, writer);
-                break;
-
-            case ExtensionAccessorExportCodes.ValueRecordAccessors:
-                WriteExtensionAccessorsRecords(extData, writer);
-                break;
-
-            default:
-                break;
-        }
-    }
-
     private void WriteExtensionAccessorsRecords(ExtensionData extData, ExportStreamWriter writer)
     {
+        HashSet<string> appliedContextTypes = [];
         HashSet<string> usedRecordTypes = [];
 
         foreach (ExtensionContextRec ctx in extData.Contexts)
@@ -636,6 +928,48 @@ public partial class FirelyNetIG : ILanguage
                         ? ctLtr.Element.PropertyTypeString
                         : ctx.ContextElementInfo.PropertyType.PropertyTypeString
                     : ctx.ContextTypeName;
+
+            bool resolved = false;
+
+            if (TypeNameMappings.TryGetValue(contextType, out string? mappedType))
+            {
+                contextType = mappedType;
+                resolved = true;
+            }
+
+            if (ContextTypeMappings.TryGetValue(contextType, out mappedType))
+            {
+                contextType = mappedType;
+                resolved = true;
+            }
+
+            if (!contextType.Contains('.'))
+            {
+                contextType = "Hl7.Fhir.Model." + contextType;
+            }
+
+            if (!resolved &&
+                contextType.StartsWith("Hl7.Fhir.Model.", StringComparison.Ordinal) &&
+                !_firelyToFhirTypes.ContainsKey(contextType))
+            {
+                // this is likely a type that does not exist, just output some comments
+                writer.WriteLine();
+                writer.WriteLineIndented($"/*");
+                writer.WriteLineIndented($" * Generation Issue!");
+                writer.WriteLineIndented($" * Cannot resolve context {contextType} for extension {extData.Name} ({extData.Url}).");
+                writer.WriteLineIndented($" * It it from a different version of FHIR?");
+                writer.WriteLineIndented($" */");
+                writer.WriteLine();
+
+                // skip this context
+                continue;
+            }
+
+            if (appliedContextTypes.Contains(contextType))
+            {
+                continue;
+            }
+            appliedContextTypes.Add(contextType);
 
             //writer.WriteLineIndented($"// Exported for {ctx.AllowedContext.Type}:{ctx.AllowedContext.Expression}.");
 
@@ -652,6 +986,39 @@ public partial class FirelyNetIG : ILanguage
             string elementType = extData.ValueTypeName.EndsWith('?')
                 ? extData.ValueTypeName[0..^1]
                 : extData.ValueTypeName;
+
+            if (elementType.StartsWith("Hl7.Fhir.Model.", StringComparison.Ordinal) &&
+                !_firelyToFhirTypes.ContainsKey(elementType))
+            {
+                // this is likely a type that does not exist, just output some comments
+                writer.WriteLine();
+                writer.WriteLineIndented($"/*");
+                writer.WriteLineIndented($" * Generation Issue!");
+                writer.WriteLineIndented($" * Cannot resolve datatype {elementType} for extension {extData.Name} ({extData.Url}).");
+                writer.WriteLineIndented($" * Is it from a different version of FHIR?");
+                writer.WriteLineIndented($" */");
+                writer.WriteLine();
+
+                // datatype means we can't do anything with this extension
+                break;
+            }
+
+            //string etShort = elementType.StartsWith("Hl7.Fhir.Model.", StringComparison.Ordinal)
+            //    ? elementType = elementType[15..]
+            //    : elementType;
+
+            //if (!etShort.Contains('.'))
+            //{
+            //    if (!TypeNameMappings.ContainsKey(etShort) &&
+            //        !TypeNameMappings.ContainsValue(etShort) &&
+            //        !ContextTypeMappings.ContainsKey(etShort) &&
+            //        !ContextTypeMappings.ContainsValue(etShort) &&
+            //        (etShort != "DataType") &&
+            //        !_info.TryResolveElementTree(etShort, out StructureDefinition? _, out ElementDefinition[] _))
+            //    {
+            //    }
+            //}
+
 
             // check for simple extensions
             if (extData.ElementInfo != null)
@@ -674,7 +1041,7 @@ public partial class FirelyNetIG : ILanguage
                 if (extLTR != null)
                 {
                     writer.WriteLineIndented($"public static IEnumerable<{extLTR.Element.PropertyTypeString}> {extData.Name}Get(this {contextType} o) =>");
-                    writer.WriteLineIndented($"  o.GetExtensions({extData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
+                    writer.WriteLineIndented($"  o.GetExtensions({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name});");
                 }
                 else
                 {
@@ -684,21 +1051,21 @@ public partial class FirelyNetIG : ILanguage
                     {
                         case "bool":
                         case "bool?":
-                            writer.WriteLineIndented($"  o.GetBoolExtension({extData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
+                            writer.WriteLineIndented($"  o.GetBoolExtension({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name});");
                             break;
 
                         case "int":
                         case "int?":
-                            writer.WriteLineIndented($"  o.GetIntegerExtension({extData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
+                            writer.WriteLineIndented($"  o.GetIntegerExtension({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name});");
                             break;
 
                         case "string":
                         case "string?":
-                            writer.WriteLineIndented($"  o.GetStringExtension({extData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
+                            writer.WriteLineIndented($"  o.GetStringExtension({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name});");
                             break;
 
                         default:
-                            writer.WriteLineIndented($"  o.GetExtensionValue<{elementType}>({extData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
+                            writer.WriteLineIndented($"  o.GetExtensionValue<{elementType}>({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name});");
                             break;
                     }
                 }
@@ -722,21 +1089,21 @@ public partial class FirelyNetIG : ILanguage
                 {
                     writer.WriteLineIndented($"public static void {extData.Name}Set(this {contextType} o, IEnumerable<{elementType}>? val)");
                     OpenScope(writer);      // setter function open
-                    writer.WriteLineIndented($"o.RemoveExtension({extData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
+                    writer.WriteLineIndented($"o.RemoveExtension({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name});");
                     writer.WriteLineIndented("if (val == null) return;");
                     writer.WriteLineIndented("if (!val.Any()) return;");
                     writer.WriteLineIndented($"foreach ({elementType} v in val)");
                     OpenScope(writer);      // foreach open
 
                     // need to pull the original type so we can create the correct datatype
-                    if (extPTR != null)
-                    {
-                        writer.WriteLineIndented($"o.AddExtension({extData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{extData.Name}, new {extPTR.PropertyTypeString}(v));");
-                    }
-                    else
-                    {
-                        writer.WriteLineIndented($"o.AddExtension({extData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{extData.Name}, v);");
-                    }
+                    //if (extPTR != null)
+                    //{
+                    //    writer.WriteLineIndented($"o.AddExtension({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name}, new {extPTR.PropertyTypeString}(v));");
+                    //}
+                    //else
+                    //{
+                        writer.WriteLineIndented($"o.AddExtension({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name}, v);");
+                    //}
 
                     CloseScope(writer, suppressNewline: true);     // foreach close
                     CloseScope(writer);      // setter function close
@@ -745,18 +1112,18 @@ public partial class FirelyNetIG : ILanguage
                 {
                     writer.WriteLineIndented($"public static void {extData.Name}Set(this {contextType} o, {elementType}? val)");
                     OpenScope(writer);      // setter function open
-                    writer.WriteLineIndented($"o.RemoveExtension({extData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
+                    writer.WriteLineIndented($"o.RemoveExtension({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name});");
                     writer.WriteLineIndented("if (val == null) return;");
 
                     // need to pull the original type so we can create the correct datatype
-                    if (extPTR != null)
-                    {
-                        writer.WriteLineIndented($"o.AddExtension({extData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{extData.Name}, new {extPTR.PropertyTypeString}(val));");
-                    }
-                    else
-                    {
-                        writer.WriteLineIndented($"o.AddExtension({extData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{extData.Name}, val);");
-                    }
+                    //if (extPTR != null)
+                    //{
+                    //    writer.WriteLineIndented($"o.AddExtension({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name}, new {extPTR.PropertyTypeString}(val));");
+                    //}
+                    //else
+                    //{
+                        writer.WriteLineIndented($"o.AddExtension({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name}, val);");
+                    //}
 
                     CloseScope(writer);      // setter function close
                 }
@@ -785,7 +1152,7 @@ public partial class FirelyNetIG : ILanguage
                 {
                     writer.WriteLineIndented($"public static IEnumerable<{elementType}> {extData.Name}Get(this {contextType} o)");
                     OpenScope(writer);      // function open
-                    writer.WriteLineIndented($"IEnumerable<Extension> roots = o.GetExtensions({extData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
+                    writer.WriteLineIndented($"IEnumerable<Extension> roots = o.GetExtensions({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name});");
                     writer.WriteLineIndented("if (!roots.Any()) yield break;");
                     writer.WriteLineIndented($"foreach (Extension root in roots)");
                     OpenScope(writer);      // foreach open
@@ -804,7 +1171,7 @@ public partial class FirelyNetIG : ILanguage
                 {
                     writer.WriteLineIndented($"public static {elementType}? {extData.Name}Get(this {contextType} o)");
                     OpenScope(writer);      // function open
-                    writer.WriteLineIndented($"Extension? root = o.GetExtension({extData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
+                    writer.WriteLineIndented($"Extension? root = o.GetExtension({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name});");
                     writer.WriteLineIndented("if (root == null) return null;");
 
                     // pull values from the extension tree
@@ -833,7 +1200,7 @@ public partial class FirelyNetIG : ILanguage
                 {
                     writer.WriteLineIndented($"public static void {extData.Name}Set(this {contextType} o, IEnumerable<{elementType}> values)");
                     OpenScope(writer);      // setter function open
-                    writer.WriteLineIndented($"o.RemoveExtension({extData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
+                    writer.WriteLineIndented($"o.RemoveExtension({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name});");
                     WriteExtensionRecordPropertyWrites(writer, extData, "o", "values");
                     CloseScope(writer);     // setter function close
                 }
@@ -841,7 +1208,7 @@ public partial class FirelyNetIG : ILanguage
                 {
                     writer.WriteLineIndented($"public static void {extData.Name}Set(this {contextType} o, {elementType}? value)");
                     OpenScope(writer);      // setter function open
-                    writer.WriteLineIndented($"o.RemoveExtension({extData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
+                    writer.WriteLineIndented($"o.RemoveExtension({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name});");
                     WriteExtensionRecordPropertyWrites(writer, extData, "o", "value");
                     CloseScope(writer);     // setter function close
                 }
@@ -849,77 +1216,6 @@ public partial class FirelyNetIG : ILanguage
         }
     }
 
-
-    private void WriteExtensionAccessorsExt(ExtensionData extData, ExportStreamWriter writer)
-    {
-        string returnType = extData.IsList ? "IEnumerable<Extension>" : "Extension?";
-        string getAlias = extData.IsList ? "GetExtensions" : "GetExtension";
-
-        foreach (ExtensionContextRec ctx in extData.Contexts)
-        {
-            string contextType = ctx.ContextElementInfo != null
-                ? ctx.ContextElementInfo.PropertyType is ListTypeReference ltr
-                    ? ltr.Element.PropertyTypeString
-                    : ctx.ContextElementInfo.PropertyType.PropertyTypeString
-                : ctx.ContextTypeName;
-
-            // write a comment for the getter
-            if (extData.IsList)
-            {
-                writer.WriteIndentedComment(_extGetterPrefixArray + extData.Summary, isSummary: true);
-                writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
-            }
-            else
-            {
-                writer.WriteIndentedComment(_extGetterPrefixScalar + extData.Summary, isSummary: true);
-                writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
-            }
-
-            // write a getter, which returns either a single extension or an enumerable of extensions
-            writer.WriteLineIndented($"public static {returnType} {extData.Name}Get(this {contextType} o) =>");
-            writer.WriteLineIndented($"  o.{getAlias}({extData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
-            writer.WriteLine();
-
-            // write a comment for the setter
-            if (extData.IsList)
-            {
-                writer.WriteIndentedComment(_extSetterPrefixArray + extData.Summary, isSummary: true);
-                writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
-            }
-            else
-            {
-                writer.WriteIndentedComment(_extSetterPrefixScalar + extData.Summary, isSummary: true);
-                writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
-            }
-
-            // write the appropriate setter (single or array)
-            if (extData.IsList)
-            {
-                writer.WriteLineIndented($"public static void {extData.Name}Set(this {contextType} o, {returnType}? val)");
-                OpenScope(writer);      // setter function open
-                writer.WriteLineIndented($"o.RemoveExtension({extData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
-                writer.WriteLineIndented("if (val == null) return;");
-                writer.WriteLineIndented("if (!val.Any()) return;");
-                writer.WriteLineIndented("foreach (Extension e in val)");
-                OpenScope(writer);      // foreach open
-                writer.WriteLineIndented($"if (e.Url != {extData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{extData.Name}) e.Url = {extData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{extData.Name};");
-                writer.WriteLineIndented("o.Extension.Add(e);");
-                CloseScope(writer, suppressNewline: true);     // foreach close
-                CloseScope(writer);      // setter function close
-            }
-            else
-            {
-                writer.WriteLineIndented($"public static void {extData.Name}Set(this {contextType} o, {returnType} val)");
-                OpenScope(writer);      // setter function open
-                writer.WriteLineIndented($"o.RemoveExtension({extData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{extData.Name});");
-                writer.WriteLineIndented("if (val == null) return;");
-                writer.WriteLineIndented($"if (val.Url != {extData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{extData.Name}) val.Url = {extData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{extData.Name};");
-                writer.WriteLineIndented("o.Extension.Add(val);");
-                CloseScope(writer);      // setter function close
-            }
-        }
-
-    }
 
     private void WriteExtensionRecordPropertyReads(ExportStreamWriter writer, ExtensionData extData, string parentVarName)
     {
@@ -938,29 +1234,29 @@ public partial class FirelyNetIG : ILanguage
 
             if (extData.IsList)
             {
-                writer.WriteLineIndented($"IEnumerable<{elementType}>? {valName} = {parentVarName}" +
-                    $".GetExtensions({extData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{extName})" +
+                writer.WriteLineIndented($"IEnumerable<{elementType}>? {valName} = (IEnumerable<{elementType}>){parentVarName}" +
+                    $".GetExtensions({extData.PackageNamespace}.{_classNameDefinitions}.{extName})" +
                     $".Where(e => e.Value != null && e.Value is {elementType})" +
-                    $".Select(e => ({elementType})e);");
+                    $".Select(e => ({elementType})e.Value);");
             }
             else
             {
                 switch (elementType)
                 {
                     case "bool":
-                        writer.WriteLineIndented($"{elementType}? {valName} = {parentVarName}.GetBoolExtension({extData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{extName});");
+                        writer.WriteLineIndented($"{elementType}? {valName} = {parentVarName}.GetBoolExtension({extData.PackageNamespace}.{_classNameDefinitions}.{extName});");
                         break;
 
                     case "int":
-                        writer.WriteLineIndented($"{elementType}? {valName} = {parentVarName}.GetIntegerExtension({extData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{extName});");
+                        writer.WriteLineIndented($"{elementType}? {valName} = {parentVarName}.GetIntegerExtension({extData.PackageNamespace}.{_classNameDefinitions}.{extName});");
                         break;
 
                     case "string":
-                        writer.WriteLineIndented($"{elementType}? {valName} = {parentVarName}.GetStringExtension({extData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{extName});");
+                        writer.WriteLineIndented($"{elementType}? {valName} = {parentVarName}.GetStringExtension({extData.PackageNamespace}.{_classNameDefinitions}.{extName});");
                         break;
 
                     default:
-                        writer.WriteLineIndented($"{elementType}? {valName} = {parentVarName}.GetExtensionValue<{elementType}>({extData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{extName});");
+                        writer.WriteLineIndented($"{elementType}? {valName} = {parentVarName}.GetExtensionValue<{elementType}>({extData.PackageNamespace}.{_classNameDefinitions}.{extName});");
                         break;
                 }
             }
@@ -972,7 +1268,7 @@ public partial class FirelyNetIG : ILanguage
         {
             if (extensionData.Children.Length != 0)
             {
-                writer.WriteLineIndented($"Extension? ext{extensionData.Name} = {parentVarName}.GetExtension({extData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{extensionData.Name});");
+                writer.WriteLineIndented($"Extension? ext{extensionData.Name} = {parentVarName}.GetExtension({extData.PackageNamespace}.{_classNameDefinitions}.{extensionData.Name});");
                 writer.WriteLineIndented($"if (ext{extensionData.Name} != null)");
                 OpenScope(writer);
 
@@ -987,6 +1283,22 @@ public partial class FirelyNetIG : ILanguage
             }
 
             WriteExtensionRecordPropertyReads(writer, extensionData, parentVarName);
+        }
+
+        foreach (ExternalExtensionReferenceData externalExt in extData.ExternalChildren)
+        {
+            string valName = _processingValuePrefix + externalExt.Name;
+
+            if (externalExt.IsList)
+            {
+                // use the URL since we do not know if we have access to the literal
+                writer.WriteLineIndented($"IEnumerable<Extension> {valName} = {parentVarName}.GetExtensions(\"{externalExt.Url}\");");
+            }
+            else
+            {
+                // use the URL since we do not know if we have access to the literal
+                writer.WriteLineIndented($"Extension? {valName} = {parentVarName}.GetExtension(\"{externalExt.Url}\");");
+            }
         }
     }
 
@@ -1003,13 +1315,28 @@ public partial class FirelyNetIG : ILanguage
             {
                 writer.WriteLineIndented($"{subExtData.Name}{_recordValueSuffix} = {valName}?.ToList(),");
             }
-            else if (subExtData.ElementInfo?.PropertyType is PrimitiveTypeReference)
-            {
-                writer.WriteLineIndented($"{subExtData.Name}{_recordValueSuffix} = {valName}.Value,");
-            }
+            //else if ((subExtData.ElementInfo?.PropertyType is PrimitiveTypeReference ptr) && (ptr.Name == ptr.ConveniencePropertyTypeString))
+            //{
+            //    writer.WriteLineIndented($"{subExtData.Name}{_recordValueSuffix} = {valName}.Value,");
+            //}
             else
             {
                 writer.WriteLineIndented($"{subExtData.Name}{_recordValueSuffix} = {valName},");
+            }
+        }
+
+        // traverse external extensions for properties
+        foreach (ExternalExtensionReferenceData externalExt in extData.ExternalChildren)
+        {
+            string valName = _processingValuePrefix + externalExt.Name;
+
+            if (externalExt.IsList)
+            {
+                writer.WriteLineIndented($"{externalExt.Name}{_recordValueSuffix} = {valName}.Any() ? {valName}.ToList() : null,");
+            }
+            else
+            {
+                writer.WriteLineIndented($"{externalExt.Name}{_recordValueSuffix} = {valName},");
             }
         }
 
@@ -1037,10 +1364,10 @@ public partial class FirelyNetIG : ILanguage
 
             if (isList)
             {
-                writer.WriteLineIndented($"IEnumerable<{elementType}>? {valName} = {parentVarName}" +
-                    $".GetExtensions({psi.ValueExtData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{extName})" +
+                writer.WriteLineIndented($"IEnumerable<{elementType}>? {valName} = (IEnumerable<{elementType}>){parentVarName}" +
+                    $".GetExtensions({psi.ValueExtData.PackageNamespace}.{_classNameDefinitions}.{extName})" +
                     $".Where(e => e.Value != null && e.Value is {elementType})" +
-                    $".Select(e => ({elementType})e);");
+                    $".Select(e => ({elementType})e.Value);");
             }
             else
             {
@@ -1078,7 +1405,7 @@ public partial class FirelyNetIG : ILanguage
 
             //if (childPsi.ChildSlicesBySliceId.Count != 0)
             //{
-            //    writer.WriteLineIndented($"Extension? ext{childPsi.ValueExtData.Name} = {parentVarName}.GetExtension({_classNameDefinitions}.{_extUrlPrefix}{childPsi.ValueExtData.Name});");
+            //    writer.WriteLineIndented($"Extension? ext{childPsi.ValueExtData.Name} = {parentVarName}.GetExtension({_classNameDefinitions}.{childPsi.ValueExtData.Name});");
             //    writer.WriteLineIndented($"if (ext{childPsi.ValueExtData.Name} != null)");
             //    OpenScope(writer);
 
@@ -1094,7 +1421,7 @@ public partial class FirelyNetIG : ILanguage
 
             string childVarName = _processingExtPrefix + childPsi.ValueExtData.Name;
 
-            writer.WriteLineIndented($"Extension? {childVarName} = {parentVarName}?.Value?.GetExtension({psi.ValueExtData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{childPsi.ValueExtData.Name});");
+            writer.WriteLineIndented($"Extension? {childVarName} = {parentVarName}?.Value?.GetExtension({psi.ValueExtData.PackageNamespace}.{_classNameDefinitions}.{childPsi.ValueExtData.Name});");
             WriteProfileExtRecordPropertyReads(writer, childPsi, childVarName);
         }
     }
@@ -1129,7 +1456,6 @@ public partial class FirelyNetIG : ILanguage
         }
     }
 
-
     private void WriteExtensionRecordPropertyWrites(
         ExportStreamWriter writer,
         ExtensionData extData,
@@ -1137,7 +1463,7 @@ public partial class FirelyNetIG : ILanguage
         string parentValueName,
         string parentBoolName = "")
     {
-        string extensionLiteral = $"{extData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{extData.ParentName}{extData.Name}";
+        string extensionLiteral = $"{extData.PackageNamespace}.{_classNameDefinitions}.{extData.ParentName}{extData.Name}";
         string extProcessingName = _processingExtPrefix + extData.Name;
         string valName = string.IsNullOrEmpty(extData.ParentName)
             ? parentValueName
@@ -1153,7 +1479,8 @@ public partial class FirelyNetIG : ILanguage
             _ = CSharpFirely2.TryGetPrimitiveType(extData.ElementInfo.PropertyType, out PrimitiveTypeReference? extPTR);
 
             //string elementType = extData.ElementInfo.IsPrimitive ? extData.ElementInfo.PrimitiveHelperType! : extData.ElementInfo.ElementType!;
-            string elementType = extPTR?.ConveniencePropertyTypeString ?? extData.ElementInfo.PropertyType.PropertyTypeString;
+            //string elementType = (extPTR?.Name == extPTR?.ConveniencePropertyTypeString ? extPTR?.Name : null) ?? extData.ElementInfo.PropertyType.PropertyTypeString;
+            string elementType = extLTR?.Element.PropertyTypeString ?? extData.ElementInfo.PropertyType.PropertyTypeString;
 
             if (extData.IsList)
             {
@@ -1173,14 +1500,14 @@ public partial class FirelyNetIG : ILanguage
 
                 writer.WriteLineIndented($"if ({_processingValuePrefix}{extData.Name}{_processingArraySuffix} == null) continue;");
 
-                if (extPTR != null)
-                {
-                    writer.WriteLineIndented($"{parentObjectName}.AddExtension({extensionLiteral}, new {extPTR.PropertyTypeString}({iteratorValName}));");
-                }
-                else
-                {
+                //if ((extPTR != null) && (extPTR.PropertyTypeString != elementType))
+                //{
+                //    writer.WriteLineIndented($"{parentObjectName}.AddExtension({extensionLiteral}, new {extPTR.PropertyTypeString}({iteratorValName}));");
+                //}
+                //else
+                //{
                     writer.WriteLineIndented($"{parentObjectName}.AddExtension({extensionLiteral}, {iteratorValName});");
-                }
+                //}
 
                 if (!string.IsNullOrEmpty(parentBoolName))
                 {
@@ -1196,14 +1523,14 @@ public partial class FirelyNetIG : ILanguage
 
                 CloseScope(writer);         // if close
             }
-            else if (extPTR != null)
-            {
-                writer.WriteLineIndented($"{parentObjectName}.AddExtension({extensionLiteral}, new {extPTR.PropertyTypeString}({valName}));");
-                if (!string.IsNullOrEmpty(parentBoolName))
-                {
-                    writer.WriteLineIndented($"{parentBoolName} = true;");
-                }
-            }
+            //else if ((extPTR != null) && (extPTR.PropertyTypeString != elementType))
+            //{
+            //    writer.WriteLineIndented($"{parentObjectName}.AddExtension({extensionLiteral}, new {extPTR.PropertyTypeString}({valName}));");
+            //    if (!string.IsNullOrEmpty(parentBoolName))
+            //    {
+            //        writer.WriteLineIndented($"{parentBoolName} = true;");
+            //    }
+            //}
             else
             {
                 writer.WriteLineIndented($"{parentObjectName}.AddExtension({extensionLiteral}, {valName});");
@@ -1240,6 +1567,26 @@ public partial class FirelyNetIG : ILanguage
                 WriteExtensionRecordPropertyWrites(writer, subExt, extProcessingName, extIteratorValName, boolName);
             }
 
+            foreach (ExternalExtensionReferenceData externalExt in extData.ExternalChildren)
+            {
+                if (externalExt.IsList)
+                {
+                    writer.WriteLineIndented($"if (({extIteratorValName}.{externalExt.Name}{_recordValueSuffix} != null) && ({extIteratorValName}.{externalExt.Name}{_recordValueSuffix}.Count > 0))");
+                    OpenScope(writer);
+                    writer.WriteLineIndented($"{extProcessingName}.Extension.AddRange({extIteratorValName}.{externalExt.Name}{_recordValueSuffix});");
+                    writer.WriteLineIndented($"{boolName} = true;");
+                    CloseScope(writer);
+                }
+                else
+                {
+                    writer.WriteLineIndented($"if ({extIteratorValName}.{externalExt.Name}{_recordValueSuffix} != null)");
+                    OpenScope(writer);
+                    writer.WriteLineIndented($"{extProcessingName}.Extension.Add({extIteratorValName}.{externalExt.Name}{_recordValueSuffix});");
+                    writer.WriteLineIndented($"{boolName} = true;");
+                    CloseScope(writer);
+                }
+            }
+
             writer.WriteLineIndented($"if ({boolName}) {parentObjectName}.Extension.Add({extProcessingName});");
 
             CloseScope(writer, suppressNewline: true);      // foreach close
@@ -1252,6 +1599,26 @@ public partial class FirelyNetIG : ILanguage
             foreach (ExtensionData subExt in extData.Children)
             {
                 WriteExtensionRecordPropertyWrites(writer, subExt, extProcessingName, extParentValueName, boolName);
+            }
+
+            foreach (ExternalExtensionReferenceData externalExt in extData.ExternalChildren)
+            {
+                if (externalExt.IsList)
+                {
+                    writer.WriteLineIndented($"if (({valName}.{externalExt.Name}{_recordValueSuffix} != null) && ({valName}.{externalExt.Name}{_recordValueSuffix}.Count > 0))");
+                    OpenScope(writer);
+                    writer.WriteLineIndented($"{extProcessingName}.Extension.AddRange({valName}.{externalExt.Name}{_recordValueSuffix});");
+                    writer.WriteLineIndented($"{boolName} = true;");
+                    CloseScope(writer);
+                }
+                else
+                {
+                    writer.WriteLineIndented($"if ({valName}.{externalExt.Name}{_recordValueSuffix} != null)");
+                    OpenScope(writer);
+                    writer.WriteLineIndented($"{extProcessingName}.Extension.Add({valName}.{externalExt.Name}{_recordValueSuffix});");
+                    writer.WriteLineIndented($"{boolName} = true;");
+                    CloseScope(writer);
+                }
             }
 
             writer.WriteLineIndented($"if ({boolName}) {parentObjectName}.Extension.Add({extProcessingName});");
@@ -1295,7 +1662,9 @@ public partial class FirelyNetIG : ILanguage
                 ListTypeReference? subExtLTR = subExtData.ElementInfo.PropertyType is ListTypeReference ltr ? ltr : null;
                 _ = CSharpFirely2.TryGetPrimitiveType(subExtData.ElementInfo.PropertyType, out PrimitiveTypeReference? subExtPTR);
 
-                et = subExtPTR?.ConveniencePropertyTypeString ?? subExtData.ElementInfo.PropertyType.PropertyTypeString;
+                //et = (subExtPTR?.Name == subExtPTR?.ConveniencePropertyTypeString ? subExtPTR?.ConveniencePropertyTypeString : null)
+                //    ?? subExtData.ElementInfo.PropertyType.PropertyTypeString;
+                et = subExtLTR?.Element.PropertyTypeString ?? subExtData.ElementInfo.PropertyType.PropertyTypeString;
                 //et = subExtData.ElementInfo.IsPrimitive ? subExtData.ElementInfo.PrimitiveHelperType! : subExtData.ElementInfo.ElementType!;
 
                 // get optional flags
@@ -1307,15 +1676,32 @@ public partial class FirelyNetIG : ILanguage
                     out string allowedTypes,
                     out string resourceReferences);
 
+                string types;
+                if (string.IsNullOrEmpty(allowedTypes))
+                {
+                    types = string.Empty;
+                }
+                else
+                {
+                    types = string.IsNullOrEmpty(choice) ? "\n.Net Types:" : "\n.Net Choice Types: " +
+                        allowedTypes[14..^3]
+                        .Replace("typeof(Hl7.Fhir.Model.", "")
+                        .Replace("),", ",")
+                        .Replace(",", ", ");
+                }
+
                 // write our comments
                 WriteIndentedComment(
                     writer,
-                    subExtData.Summary +
-                    (string.IsNullOrEmpty(choice) ? string.Empty : "\nChoice type: " + choice[9..]) +
-                    (string.IsNullOrEmpty(allowedTypes) ? string.Empty : "\nAllowed Types: " + allowedTypes[14..^2]) +
-                    (string.IsNullOrEmpty(resourceReferences) ? string.Empty : "\nReferences: " + resourceReferences[12..^2]),
+                    subExtData.Summary,
                     isSummary: true);
-                WriteIndentedComment(writer, subExtData.Remarks, isSummary: false, isRemarks: true);
+                WriteIndentedComment(
+                    writer,
+                    subExtData.Remarks +
+                    (string.IsNullOrEmpty(resourceReferences) ? string.Empty : "\nReferences: " + resourceReferences[12..^2]) +
+                    (string.IsNullOrEmpty(types) ? string.Empty : types),
+                    isSummary: false,
+                    isRemarks: true);
             }
             else
             {
@@ -1326,8 +1712,13 @@ public partial class FirelyNetIG : ILanguage
                 WriteIndentedComment(writer, subExtData.Remarks, isSummary: false, isRemarks: true);
             }
 
+            if (TypeNameMappings.TryGetValue(et, out string? mappedType))
+            {
+                et = mappedType;
+            }
+
             // write this property
-            if (subExtData.IsList)
+            if (subExtData.IsList && (!et.StartsWith("List<", StringComparison.Ordinal)))
             {
                 writer.WriteLineIndented($"public List<{et}>? {subExtData.Name}{_recordValueSuffix} {{ get; init; }}");
             }
@@ -1338,6 +1729,35 @@ public partial class FirelyNetIG : ILanguage
             else
             {
                 writer.WriteLineIndented($"public {et}? {subExtData.Name}{_recordValueSuffix} {{ get; init; }}");
+            }
+        }
+
+        // traverse our external sub-extensions to use as Extension properties
+        foreach (ExternalExtensionReferenceData externalChild in extData.ExternalChildren)
+        {
+            string et = externalChild.ValueTypeName;
+
+            // write our comments
+            WriteIndentedComment(writer, externalChild.Summary, isSummary: true);
+            WriteIndentedComment(writer, externalChild.Remarks, isSummary: false, isRemarks: true);
+
+            if (TypeNameMappings.TryGetValue(et, out string? mappedType))
+            {
+                et = mappedType;
+            }
+
+            // write this property
+            if (externalChild.IsList && (!et.StartsWith("List<", StringComparison.Ordinal)))
+            {
+                writer.WriteLineIndented($"public List<{et}>? {externalChild.Name}{_recordValueSuffix} {{ get; init; }}");
+            }
+            else if (et.EndsWith('?'))
+            {
+                writer.WriteLineIndented($"public {et} {externalChild.Name}{_recordValueSuffix} {{ get; init; }}");
+            }
+            else
+            {
+                writer.WriteLineIndented($"public {et}? {externalChild.Name}{_recordValueSuffix} {{ get; init; }}");
             }
         }
 
@@ -2141,7 +2561,7 @@ public partial class FirelyNetIG : ILanguage
             writer.WriteLineIndented($"public static {extValueType}? {fnBase}Get(this {contextType} o)");
 
             OpenScope(writer);      // function open
-            writer.WriteLineIndented($"Extension? root = o.GetExtension({psi.ValueExtData.PackageNamespace}.{_classNameDefinitions}.{_extUrlPrefix}{psi.ValueExtData.Name});");
+            writer.WriteLineIndented($"Extension? root = o.GetExtension({psi.ValueExtData.PackageNamespace}.{_classNameDefinitions}.{psi.ValueExtData.Name});");
 
             // pull values from the extension tree
             WriteProfileExtRecordPropertyReads(writer, psi, "root");
@@ -2300,7 +2720,7 @@ public partial class FirelyNetIG : ILanguage
     /// <returns>True if it succeeds, false if it fails.</returns>
     private bool TryGetPackageData(string directive, out PackageData packageData)
     {
-        string[] components = directive.Split('#');
+        string[] components = directive.StartsWith('@') ? directive[1..].Split('@') : directive.Split('@', '#');
         if (components.Length != 2)
         {
             // invalid directive
@@ -2326,7 +2746,7 @@ public partial class FirelyNetIG : ILanguage
         string packageId,
         string packageVersion)
     {
-        string directive = $"{packageId}#{packageVersion}";
+        string directive = $"{packageId}@{packageVersion}";
 
         if (_packageDataByDirective.TryGetValue(directive, out PackageData pd))
         {
@@ -2354,7 +2774,7 @@ public partial class FirelyNetIG : ILanguage
 
             pd = new()
             {
-                Key = packageId + "#" + packageVersion,
+                Key = packageId + "@" + packageVersion,
                 PackageId = packageId,
                 PackageVersion = packageVersion,
                 Namespace = $"Hl7.Fhir.Packages.{realm}.{name}_{versionSanitized}",
@@ -2370,7 +2790,7 @@ public partial class FirelyNetIG : ILanguage
 
         pd = new()
         {
-            Key = packageId + "#" + packageVersion,
+            Key = packageId + "@" + packageVersion,
             PackageId = packageId,
             PackageVersion = packageVersion,
             Namespace = $"Hl7.Fhir.Packages.{packageId.ToPascalCase()}_{versionSanitized}",
@@ -2382,6 +2802,21 @@ public partial class FirelyNetIG : ILanguage
         _packageDataByDirective.Add(directive, pd);
 
         return pd;
+    }
+
+    private StructureDefinitionWalker GetWalker(StructureDefinition sd)
+    {
+        string key = string.IsNullOrEmpty(sd.Url) ? sd.Id : sd.Url;
+
+        if (_walkers.TryGetValue(key, out StructureDefinitionWalker? walker))
+        {
+            return walker;
+        }
+
+        walker = new(sd, _info);
+        _walkers.Add(key, walker);
+
+        return walker;
     }
 
     private ExportStreamWriter GetCanonicalUrlWriter(PackageData packageData)
@@ -2492,41 +2927,40 @@ public partial class FirelyNetIG : ILanguage
 
     /// <summary>Writes an extension.</summary>
     /// <param name="sd">The SD.</param>
-    private void WriteExtension(StructureDefinition sd, Dictionary<string, HashSet<string>> writtenExtensionDefinitions)
+    private void WriteExtension(
+        StructureDefinition sd,
+        CanonicalInfo ci,
+        Dictionary<string, HashSet<string>> writtenExtensionDefinitions)
     {
-        if (!_info.TryGetPackageSource(sd, out string packageId, out string packageVersion))
-        {
-            packageId = _info.MainPackageId;
-            packageVersion = _info.MainPackageVersion;
-        }
-
-        PackageData packageData = GetPackageData(packageId, packageVersion);
-
         // get a definition writer
-        ExportStreamWriter canonicalUrlWriter = GetCanonicalUrlWriter(packageData);
+        ExportStreamWriter canonicalUrlWriter = GetCanonicalUrlWriter(ci.Package);
 
         // build a component for our extension
         ComponentDefinition cd = new(sd);
 
         // get our extension data
-        ExtensionData extData = GetExtensionData(cd);
+        ExtensionData extData = GetExtensionData(cd, ci);
 
         // recursively write our extension urls into definitions
-        WriteCanonicalUrl(extData, canonicalUrlWriter, writtenExtensionDefinitions);
+        WriteCanonicalUrl(extData, canonicalUrlWriter, writtenExtensionDefinitions, ci.Name);
 
         // get an extension writer
-        ExportStreamWriter extensionWriter = GetExtensionWriter(packageData);
+        ExportStreamWriter extensionWriter = GetExtensionWriter(ci.Package);
 
-        WriteExtensionAccessors(extData, extensionWriter);
+        WriteExtensionAccessorsRecords(extData, extensionWriter);
     }
 
     /// <summary>Recursively writes extension urls.</summary>
     /// <param name="extData">                    Information describing the extension.</param>
     /// <param name="writer">                     The currently in-use text writer.</param>
     /// <param name="writtenExtensionDefinitions">The written extension definitions for tracking.</param>
-    private void WriteCanonicalUrl(ExtensionData extData, ExportStreamWriter writer, Dictionary<string, HashSet<string>> writtenExtensionDefinitions)
+    private void WriteCanonicalUrl(
+        ExtensionData extData,
+        ExportStreamWriter writer,
+        Dictionary<string, HashSet<string>> writtenExtensionDefinitions,
+        string rootExtensionName)
     {
-        string name = string.IsNullOrEmpty(extData.ParentName) ? extData.Name : extData.ParentName + extData.Name;
+        string name = string.IsNullOrEmpty(extData.ParentName) ? rootExtensionName : rootExtensionName + extData.Name;
 
         if (writtenExtensionDefinitions.TryGetValue(name, out HashSet<string>? writtenContexts) &&
             writtenContexts.Contains(_classNameDefinitions))
@@ -2547,14 +2981,14 @@ public partial class FirelyNetIG : ILanguage
         writer.WriteIndentedComment(extData.Summary, isSummary: true);
         writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
 
-        writer.WriteLineIndented($"public const string {_extUrlPrefix}{name} = \"{extData.Url}\";");
+        writer.WriteLineIndented($"public const string {name} = \"{extData.Url}\";");
 
         writer.WriteLine();
 
         // write any sub-extensions
         foreach (ExtensionData childData in extData.Children)
         {
-            WriteCanonicalUrl(childData, writer, writtenExtensionDefinitions);
+            WriteCanonicalUrl(childData, writer, writtenExtensionDefinitions, rootExtensionName);
         }
     }
 
@@ -2562,13 +2996,14 @@ public partial class FirelyNetIG : ILanguage
     {
         // try to resolve this extension
         if (_info.TryResolveByCanonicalUri(url, out Resource? extR) &&
+            _canonicalsByUrl.TryGetValue(url, out CanonicalInfo? ci) &&
             (extR is StructureDefinition extSd))
         {
             // build a component definition for this extension
             ComponentDefinition extCd = new(extSd);
 
             // get extension data for this extension
-            extensionData = GetExtensionData(extCd);
+            extensionData = GetExtensionData(extCd, ci);
 
             return true;
         }
@@ -2585,40 +3020,9 @@ public partial class FirelyNetIG : ILanguage
         return CSharpFirely2.BuildElementInfo(_info, exportedComplexName, element, _valueSetInfoByUrl);
         //CSharpFirely2.WrittenElementInfo ei = CSharpFirely2.BuildElementInfo(_info, exportedComplexName, element, _valueSetInfoByUrl);
 
-        //// for our use, we are going to make every type optional, so strip all of them here for sanity
-        //if ((ei.PropertyType is PrimitiveTypeReference eiPTR) && eiPTR.ConveniencePropertyType.IsValueType)
-        ////if (ei.ElementType?.EndsWith('?') ?? false)
+        //if (ei.PropertyType.PropertyTypeString.EndsWith("Reference"))
         //{
-        //    ei.ElementType = ei.ElementType[..^1];
-        //}
-
-        //if (ei.PrimitiveHelperName?.EndsWith('?') ?? false)
-        //{
-        //    ei.PrimitiveHelperName = ei.PrimitiveHelperName[..^1];
-        //}
-
-        //if (ei.PrimitiveHelperType?.EndsWith('?') ?? false)
-        //{
-        //    ei.PrimitiveHelperType = ei.PrimitiveHelperType[..^1];
-        //}
-
-        //if (ei.PropertyType?.EndsWith('?') ?? false)
-        //{
-        //    ei.PropertyType = ei.PropertyType[..^1];
-        //}
-
-        //// the Firely builder assumes all ValueSets are in the HL7.Fhir.Model namespace, so we need to fix any that are not
-        //if (ei.ElementType?.StartsWith("Code<", StringComparison.Ordinal) ?? false)
-        //{
-        //    string srcType = ei.PrimitiveHelperType ?? string.Empty;
-
-        //    if (_valueSetNameMaps.TryGetValue(srcType, out string? fixedType))
-        //    {
-        //        ei.ElementType = ei.ElementType?.Replace(srcType, fixedType, StringComparison.Ordinal);
-        //        ei.PrimitiveHelperName = ei.PrimitiveHelperName?.Replace(srcType, fixedType, StringComparison.Ordinal);
-        //        ei.PrimitiveHelperType = ei.PrimitiveHelperType?.Replace(srcType, fixedType, StringComparison.Ordinal);
-        //        ei.PropertyType = ei.PropertyType?.Replace(srcType, fixedType, StringComparison.Ordinal);
-        //    }
+        //    Console.Write("");
         //}
 
         //return ei;
@@ -2643,6 +3047,51 @@ public partial class FirelyNetIG : ILanguage
             out resourceReferences);
     }
 
+    /// <summary>
+    /// Builds the component comment based on the provided ComponentDefinition.
+    /// </summary>
+    /// <param name="cd">The ComponentDefinition to build the comment for.</param>
+    /// <returns>A tuple containing the summary and remarks of the component comment.</returns>
+    private static (string summary, string? remarks) BuildComponentComment(ComponentDefinition cd)
+    {
+        List<string> strings = [];
+
+        if (!string.IsNullOrEmpty(cd.Element.Short))
+        {
+            strings.Add(cd.Element.Short);
+        }
+
+        if (!string.IsNullOrEmpty(cd.Element.Definition) &&
+            !cd.Element.Definition.Equals(cd.Element.Short, StringComparison.Ordinal) &&
+            !cd.Element.Definition.Equals(cd.Element.Short + ".", StringComparison.Ordinal) &&
+            (cd.Element.Definition.Count(c => c == '|') < 2))
+        {
+            strings.Add(cd.Element.Definition);
+        }
+
+        if (!string.IsNullOrEmpty(cd.Element.Comment) &&
+            !cd.Element.Comment.Equals(cd.Element.Short, StringComparison.Ordinal) &&
+            !cd.Element.Comment.Equals(cd.Element.Definition, StringComparison.Ordinal))
+        {
+            strings.Add(cd.Element.Comment);
+        }
+
+        switch (strings.Count)
+        {
+            case 0:
+                return ("MISSING DESCRIPTION", null);
+
+            case 1:
+                return (strings[0], null);
+
+            case 2:
+                return (strings[0], strings[1]);
+
+            default:
+                return (strings[0], string.Join("\n", strings.Skip(1)));
+        }
+    }
+
     /// <summary>Gets extension data based on a component definition.</summary>
     /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>
     /// <param name="cd">          The component definition for a root extension or slice (sub-extension).</param>
@@ -2650,28 +3099,21 @@ public partial class FirelyNetIG : ILanguage
     /// <returns>The extension data.</returns>
     private ExtensionData GetExtensionData(
         ComponentDefinition cd,
+        CanonicalInfo rootCanonicalInfo,
         string? parentExtUrl = null,
         ComponentDefinition? parentCd = null)
     {
-        string summary = cd.IsRootOfStructure ? cd.Structure.Description : cd.cgShort();
-
-        // check for empty summaries or summaries that are codes (note we cannot use code check because the codes are on a sub-element)
-        if (string.IsNullOrEmpty(summary) || summary.Contains('|'))
-        {
-            summary = cd.cgDefinition();
-        }
-
-        string remarks;
+        (string summary, string? remarks) = BuildComponentComment(cd);
         string url;
         ElementDefinition? valueElement = null;
         List<ExtensionData> childExtensions = [];
+        List<ExternalExtensionReferenceData> externalChildren = [];
 
         string contextString = cd.IsRootOfStructure
             ? "Allowed Contexts: " + string.Join(", ", cd.Structure.Context.Select(GetContextString))
             : "Allowed Contexts: " + (parentExtUrl ?? "Parent extension");
 
         ElementDefinition[] children = cd.cgGetChildren(includeDescendants: false, skipSlices: false).ToArray();
-
         ElementDefinition[] extSlices = children.Where(ced => ced.ElementId.StartsWith(cd.Element.Path + ".extension:", StringComparison.Ordinal)).ToArray();
 
         if (cd.IsRootOfStructure)
@@ -2704,54 +3146,117 @@ public partial class FirelyNetIG : ILanguage
             // get the value element
             valueElement = children.Where(ed => ed.Path.EndsWith("value[x]", StringComparison.Ordinal)).FirstOrDefault();
 
+            // check for no value element
             if (valueElement == null)
             {
-                throw new Exception($"Simple extension does not have a value element: {cd.Structure.Url}:{cd.Element.ElementId}");
-            }
+                // determine if this is a shorthand slice into another extension
+                if ((cd.Element.Type.Count == 1) &&
+                    (cd.Element.Type.First().Code == "Extension"))
+                {
+                    string externalRemarks = (remarks == null ? string.Empty : remarks + "\n") +
+                        $"{contextString}\nExternal sub-extensions:\n - {string.Join("\n - ", cd.Element.Type.First().Profile)}";
 
-            // grab our types
-            ElementDefinition.TypeRefComponent[] valueTypes = valueElement.cgTypes().Values.ToArray();
+                    // add a cardinality into remarks
+                    externalRemarks = (externalRemarks == null ? string.Empty : externalRemarks + "\n") +
+                        $"Cardinality: {cd.Element.cgCardinality()}";
 
-            string types;
+                    // add our profiles
+                    foreach (string profileUrl in cd.Element.Type.First().Profile)
+                    {
+                        string externalChildName = CleanName(cd.Element.SliceName);
 
-            if (valueTypes.Length == 1)
-            {
-                types = "Allowed Type: " + valueTypes[0].cgName();
+                        if (string.IsNullOrEmpty(externalChildName))
+                        {
+                            externalChildName = GetCanonicalNameLiteral(
+                                cd.Element.ElementId,
+                                cd.Element.SliceName,
+                                profileUrl,
+                                "Extension",
+                                FhirArtifactClassEnum.Extension,
+                                false);
+                        }
+
+                        externalChildren.Add(new()
+                        {
+                            Name = externalChildName,
+                            Url = profileUrl,
+                            Summary = summary,
+                            Remarks = externalRemarks,
+                            IsRequired = !cd.Element.cgIsOptional(),
+                            IsList = cd.Element.cgIsArray(),
+                            ParentName = rootCanonicalInfo.Name,
+                            ValueTypeName = _firelyNamespace + ".Extension",
+                        });
+                    }
+                }
+                else
+                {
+                    throw new Exception($"Simple extension does not have a value element: {cd.Structure.Url}:{cd.Element.ElementId}");
+                }
             }
             else
             {
-                types = "Allowed Types: " + string.Join(", ", valueTypes.Select(t => t.cgName()).Distinct());
-            }
+                // grab our types
+                ElementDefinition.TypeRefComponent[] valueTypes = valueElement.cgTypes().Values.ToArray();
 
-            remarks = $"{contextString}\n{types}";
+                string types;
+
+                if (valueTypes.Length == 1)
+                {
+                    types = "Allowed Type: " + valueTypes[0].cgName();
+                }
+                else
+                {
+                    types = "Allowed Types: " + string.Join(", ", valueTypes.Select(t => t.cgName()).Distinct());
+                }
+
+                remarks = (remarks == null ? string.Empty : remarks + "\n") +
+                    $"{contextString}\n{types}";
+            }
         }
         else
         {
             // traverse our child elements and look for extension slices
             foreach (ElementDefinition child in extSlices)
             {
-                childExtensions.Add(GetExtensionData(
+                ExtensionData childExtData = GetExtensionData(
                     new ComponentDefinition()
                     {
                         Structure = cd.Structure,
                         Element = child,
                         IsRootOfStructure = false,
                     },
+                    rootCanonicalInfo,
                     parentExtUrl: cd.Structure.Url,
-                    parentCd: cd));
+                    parentCd: cd);
+
+                // check to see if this was an external reference
+                if (childExtData.ExternalChildren.Length > 0)
+                {
+                    externalChildren.AddRange(childExtData.ExternalChildren);
+                }
+                else
+                {
+                    childExtensions.Add(childExtData);
+                }
             }
 
-            remarks = $"{contextString}\nSub-extensions:\n - {string.Join("\n - ", childExtensions.Select(child => child.Url))}";
+            remarks = (remarks == null ? string.Empty : remarks + "\n") +
+                $"{contextString}\nSub-extensions:\n - {string.Join("\n - ", childExtensions.Select(child => child.Url))}";
         }
+
+        // add a cardinality into remarks
+        remarks = (remarks == null ? string.Empty : remarks + "\n") +
+            $"Cardinality: {cd.Element.cgCardinality()}";
 
         string directive;
         if (_info.TryGetPackageSource(cd.Structure, out string packageId, out string packageVersion))
         {
-            directive = $"{packageId}#{packageVersion}";
+            directive = $"{packageId}@{packageVersion}";
         }
         else
         {
-            directive = $"{_info.MainPackageId}#{_info.MainPackageVersion}";
+            directive = $"{_info.MainPackageId}@{_info.MainPackageVersion}";
         }
 
         _ = TryGetPackageData(directive, out PackageData packageData);
@@ -2762,7 +3267,7 @@ public partial class FirelyNetIG : ILanguage
         // check for root-level extension name conflicts
         if (cd.IsRootOfStructure)
         {
-            name = cd.Structure.cgName().ToPascalCase(removeDelimiters: true);
+            name = rootCanonicalInfo.Name;  // cd.Structure.cgName().ToPascalCase(removeDelimiters: true);
             parentName = string.Empty;
 
             if (!_extensionNamesByPackageDirective.TryGetValue(directive, out HashSet<string>? usedNames))
@@ -2796,7 +3301,7 @@ public partial class FirelyNetIG : ILanguage
                 name = name[..^3];
             }
 
-            parentName = cd.Structure.cgName().ToPascalCase(removeDelimiters: true);
+            parentName = rootCanonicalInfo.Name;  // cd.Structure.cgName().ToPascalCase(removeDelimiters: true);
         }
 
         List<ExtensionContextRec> extensionContexts = [];
@@ -2832,6 +3337,20 @@ public partial class FirelyNetIG : ILanguage
                         {
                             // TODO(ginoc): need to figure out if this is worth supporting in more detail
                             Console.WriteLine($"Using Element for FHIRPath context: {cd.Structure.Name} ({cd.Structure.Url}): \"{ctx.Expression}\"");
+
+                            //{
+                            //    // get a StructureDefinition walker so we can follow the context
+                            //    StructureDefinitionWalker walker = GetWalker(cd.Structure);
+                            //    StructureDefinitionWalker? walkedContext = walker.Walk(ctx.Expression).FirstOrDefault();
+
+                            //    ElementDefinition? contextEd = walkedContext?.Current.Current;
+
+                            //    if (contextEd == null)
+                            //    {
+                            //        Console.WriteLine($"Could not resolve context for {cd.Structure.Url} context {ctx.Type}:{ctx.Expression}");
+                            //        continue;
+                            //    }
+                            //}
 
                             ComponentDefinition? targetCd = null;
 
@@ -2904,7 +3423,7 @@ public partial class FirelyNetIG : ILanguage
                     {
                         Structure = baseSd,
                         Element = contextElement,
-                        IsRootOfStructure = elements.Length == 1,
+                        IsRootOfStructure = !contextElement.Path.Contains('.') , // elements.Length == 1,
                     };
 
                     CSharpFirely2.WrittenElementInfo? ei = BuildElementInfo(contextCd.Structure.cgName(), contextCd.Element);
@@ -3038,7 +3557,8 @@ public partial class FirelyNetIG : ILanguage
             _ = CSharpFirely2.TryGetPrimitiveType(valueElementInfo.PropertyType, out PrimitiveTypeReference? extPTR);
 
             //valueTypeName = valueElementInfo.IsPrimitive ? valueElementInfo.PrimitiveHelperType! : valueElementInfo.ElementType!;
-            valueTypeName = extPTR?.ConveniencePropertyTypeString ?? valueElementInfo.PropertyType.PropertyTypeString;
+            //valueTypeName = extPTR?.ConveniencePropertyTypeString ?? valueElementInfo.PropertyType.PropertyTypeString;
+            valueTypeName = extLTR?.Element.PropertyTypeString ?? valueElementInfo.PropertyType.PropertyTypeString;
         }
         else
         {
@@ -3063,6 +3583,7 @@ public partial class FirelyNetIG : ILanguage
             ValueElement = valueElement,
             ElementInfo = valueElementInfo,
             Children = childExtensions.ToArray(),
+            ExternalChildren = externalChildren.ToArray(),
             ValueTypeName = valueTypeName,
         };
 
