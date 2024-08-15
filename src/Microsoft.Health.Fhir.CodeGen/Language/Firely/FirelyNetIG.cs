@@ -125,6 +125,7 @@ public partial class FirelyNetIG : ILanguage
     private static readonly HashSet<string> _nameComponentsToRemove = new(StringComparer.OrdinalIgnoreCase)
     {
         "extensions",
+        "ext",
         "www",
         "org",
         "com",
@@ -544,6 +545,12 @@ public partial class FirelyNetIG : ILanguage
         }
     }
 
+    /// <summary>
+    /// Gets a name literal representation for a canonical resource.
+    /// </summary>
+    /// <param name="cr">The conformance resource.</param>
+    /// <param name="hasCollision">Indicates if there is a collision in the name.</param>
+    /// <returns>The name literal representation of the canonical.</returns>
     private string GetCanonicalNameLiteral(IConformanceResource cr, bool hasCollision = false)
     {
         Resource r = (Resource)cr;
@@ -562,6 +569,16 @@ public partial class FirelyNetIG : ILanguage
         return GetCanonicalNameLiteral(r.Id, cr.Name, cr.Url, r.TypeName, fhirArtifactClass, hasCollision);
     }
 
+    /// <summary>
+    /// Gets a name literal representation for a canonical resource.
+    /// </summary>
+    /// <param name="id">               The identifier.</param>
+    /// <param name="name">             The language name.</param>
+    /// <param name="url">              URL of the resource.</param>
+    /// <param name="typeName">         Name of the type.</param>
+    /// <param name="fhirArtifactClass">The FHIR artifact class.</param>
+    /// <param name="hasCollision">     (Optional) Indicates if there is a collision in the name.</param>
+    /// <returns>The name literal representation of the canonical.</returns>
     private string GetCanonicalNameLiteral(
         string id,
         string name,
@@ -570,22 +587,36 @@ public partial class FirelyNetIG : ILanguage
         FhirArtifactClassEnum fhirArtifactClass,
         bool hasCollision = false)
     {
+        string postfix = string.Empty;
 
-        // grab the components of the last part of the URL
-        string[] components = url.EndsWith('/')
-            ? url.Split('/')[^2].Split('-', '_', '.')
-            : url.Split('/')[^1].Split('-', '_', '.');
+        // default to using the name or ID
+        List<string> components = string.IsNullOrEmpty(name) ? id.Split('-', '_', '.').ToList() : name.Split('-', '_', '.').ToList();
 
         if (hasCollision)
         {
-            string[] additionalComponents = string.IsNullOrEmpty(name) ? id.Split('-', '_', '.') : name.Split('-', '_', '.');
-            components = components.Concat(additionalComponents).ToArray();
+            // grab the components of the last part of the URL
+            string[] urlComponents = url.EndsWith('/')
+                ? url.Split('/')[^2].Split('-', '_', '.')
+                : url.Split('/')[^1].Split('-', '_', '.');
+
+            // check for the URL only containing numbers
+            if (!urlComponents.Any(c => c.Any(char.IsLetter)))
+            {
+                // manually append the numbers to the end of the name
+                postfix = "_" + string.Join("_", urlComponents);
+            }
+            else
+            {
+                // use the URL as the name
+                components = urlComponents.ToList();
+            }
         }
-        // check for no alphabetical characters in the URL segment to switch to name
+        // check for no alphabetical characters in the current components, rejoin as a single component
         else if (!components.Any(c => c.Any(char.IsLetter)))
         {
-            // remove any numbers from the last component
-            components = string.IsNullOrEmpty(name) ? id.Split('-', '_', '.') : name.Split('-', '_', '.');
+            // just append the number after the rest is cleaned up
+            postfix = "_" + string.Join("_", components);
+            components.Clear();
         }
 
         string prefix;
@@ -605,10 +636,10 @@ public partial class FirelyNetIG : ILanguage
             prefix = typeName;
         }
 
-        components = components.Prepend(prefix).ToArray();
+        components.Insert(0, prefix);
 
         // remove component parts we want to drop
-        components = components.Where(c => !_nameComponentsToRemove.Contains(c)).ToArray();
+        components = components.Where(c => !_nameComponentsToRemove.Contains(c)).ToList();
 
         // remove repetitions of words, but maintain any numbers
         HashSet<string> used = [];
@@ -634,24 +665,39 @@ public partial class FirelyNetIG : ILanguage
         }
 
         // join everything into a PascalCase string
-        return CleanName(components.ToPascalCaseWord());
+        return CleanName(components.ToPascalCaseWord()) + postfix;
     }
 
     /// <summary>Writes an extension.</summary>
     /// <param name="sd">The SD.</param>
-    private void WriteCanonicalUrl(IConformanceResource cr, PackageData packageData, string name)
+    private void WriteCanonicalUrl(IConformanceResource cr, PackageData packageData, string name, ExportStreamWriter? writer = null)
     {
-        if (cr is not DomainResource r)
+        // get a definition writer
+        writer ??= GetCanonicalUrlWriter(packageData);
+
+        string summary = string.IsNullOrEmpty(cr.Description)
+            ? "Name: " + cr.Name
+            : cr.Description + "\nName:" + cr.Name;
+
+        string remarks = cr.Purpose;
+
+        if (cr is ValueSet vs)
         {
-            return;
+            string[] referencedCodeSystems = vs.cgReferencedCodeSystems().ToArray();
+            if (referencedCodeSystems.Length == 1)
+            {
+                remarks = (string.IsNullOrEmpty(remarks) ? string.Empty : remarks + "\n") +
+                    "System: " + referencedCodeSystems.First();
+            }
+            else
+            {
+                remarks += (string.IsNullOrEmpty(remarks) ? string.Empty : remarks + "\n") +
+                    "Systems: " + referencedCodeSystems.Length + "\n -" + string.Join("\n -", referencedCodeSystems);
+            }
         }
 
-        // get a definition writer
-        ExportStreamWriter writer = GetCanonicalUrlWriter(packageData);
-
-        writer.WriteIndentedComment(cr.Description, isSummary: true);
-        writer.WriteIndentedComment(cr.Purpose, isSummary: false, isRemarks: true);
-
+        writer.WriteIndentedComment(summary, isSummary: true);
+        writer.WriteIndentedComment(remarks, isSummary: false, isRemarks: true);
         writer.WriteLineIndented($"public const string {name} = \"{cr.Url}\";");
 
         writer.WriteLine();
@@ -1021,11 +1067,8 @@ public partial class FirelyNetIG : ILanguage
             // check for simple extensions
             if (extData.ElementInfo != null)
             {
-                ListTypeReference? extLTR = extData.ElementInfo.PropertyType is ListTypeReference ltr ? ltr : null;
-                _ = CSharpFirely2.TryGetPrimitiveType(extData.ElementInfo.PropertyType, out PrimitiveTypeReference? extPTR);
-
                 // write a getter comment
-                if (extLTR != null)
+                if (extData.IsList)
                 {
                     writer.WriteIndentedComment(_extValueGetterPrefixArray + extData.Summary, isSummary: true);
                     writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
@@ -1036,10 +1079,38 @@ public partial class FirelyNetIG : ILanguage
                     writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
                 }
 
-                if (extLTR != null)
+                if (extData.IsList)
                 {
-                    writer.WriteLineIndented($"public static IEnumerable<{extLTR.Element.PropertyTypeString}> {extData.Name}Get(this {contextType} o) =>");
-                    writer.WriteLineIndented($"  o.GetExtensions({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name});");
+                    switch (elementType)
+                    {
+                        case "Hl7.Fhir.Model.Extension":
+                            writer.WriteLineIndented($"public static IEnumerable<{_firelyNamespace}.Extension> {extData.Name}Get(this {contextType} o) =>");
+                            writer.WriteLineIndented($"  o.GetExtensions({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name});");
+                            break;
+
+                        case "List<Hl7.Fhir.Model.Extension>":
+                            writer.WriteLineIndented($"public static IEnumerable<{_firelyNamespace}.Extension> {extData.Name}Get(this {contextType} o) =>");
+                            writer.WriteLineIndented($"  o.GetExtensions({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name});");
+                            break;
+
+                        case string lt when lt.StartsWith("List<", StringComparison.Ordinal):
+                            writer.WriteLineIndented($"public static IEnumerable{elementType[4..]} {extData.Name}Get(this {contextType} o) =>");
+                            writer.WriteLineIndented(
+                                $"  o" +
+                                $".GetExtensions({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name})" +
+                                $".Where(e => e.Value != null && e.Value is {elementType[5..^1]})" +
+                                $".Select(e => ({elementType[5..^1]})e.Value!);");
+                            break;
+
+                        default:
+                            writer.WriteLineIndented($"public static IEnumerable<{extData.ValueTypeName}> {extData.Name}Get(this {contextType} o) =>");
+                            writer.WriteLineIndented(
+                                $"  o" +
+                                $".GetExtensions({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name})" +
+                                $".Where(e => e.Value != null && e.Value is {extData.ValueTypeName})" +
+                                $".Select(e => ({extData.ValueTypeName})e.Value!);");
+                            break;
+                    }
                 }
                 else
                 {
@@ -1071,7 +1142,7 @@ public partial class FirelyNetIG : ILanguage
                 writer.WriteLine();
 
                 // write a setter comment
-                if (extLTR != null)
+                if (extData.IsList)
                 {
                     writer.WriteIndentedComment(_extValueSetterPrefixArray + extData.Summary, isSummary: true);
                     writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
@@ -1082,48 +1153,83 @@ public partial class FirelyNetIG : ILanguage
                     writer.WriteIndentedComment(extData.Remarks, isSummary: false, isRemarks: true);
                 }
 
-                // build the setter for either a single value or an array
-                if (extLTR != null)
+                if (extData.IsList)
                 {
-                    writer.WriteLineIndented($"public static void {extData.Name}Set(this {contextType} o, IEnumerable<{elementType}>? val)");
-                    OpenScope(writer);      // setter function open
-                    writer.WriteLineIndented($"o.RemoveExtension({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name});");
-                    writer.WriteLineIndented("if (val == null) return;");
-                    writer.WriteLineIndented("if (!val.Any()) return;");
-                    writer.WriteLineIndented($"foreach ({elementType} v in val)");
-                    OpenScope(writer);      // foreach open
+                    switch (elementType)
+                    {
+                        case "Hl7.Fhir.Model.Extension":
+                            writer.WriteLineIndented($"public static void {extData.Name}Set(this {contextType} o, IEnumerable<{elementType}>? val)");
+                            OpenScope(writer);      // setter function open
+                            writer.WriteLineIndented($"o.RemoveExtension({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name});");
+                            writer.WriteLineIndented("if (val == null) return;");
+                            writer.WriteLineIndented("if (!val.Any()) return;");
+                            writer.WriteLineIndented($"o.Extension.AddRange(val);");
+                            CloseScope(writer);      // setter function close
+                            break;
 
-                    // need to pull the original type so we can create the correct datatype
-                    //if (extPTR != null)
-                    //{
-                    //    writer.WriteLineIndented($"o.AddExtension({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name}, new {extPTR.PropertyTypeString}(v));");
-                    //}
-                    //else
-                    //{
-                        writer.WriteLineIndented($"o.AddExtension({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name}, v);");
-                    //}
+                        case "List<Hl7.Fhir.Model.Extension>":
+                            writer.WriteLineIndented($"public static void {extData.Name}Set(this {contextType} o, IEnumerable<{_firelyNamespace}.Extension>? val)");
+                            OpenScope(writer);      // setter function open
+                            writer.WriteLineIndented($"o.RemoveExtension({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name});");
+                            writer.WriteLineIndented("if (val == null) return;");
+                            writer.WriteLineIndented("if (!val.Any()) return;");
+                            writer.WriteLineIndented($"o.Extension.AddRange(val);");
+                            CloseScope(writer);      // setter function close
+                            break;
 
-                    CloseScope(writer, suppressNewline: true);     // foreach close
-                    CloseScope(writer);      // setter function close
+                        case string lt when lt.StartsWith("List<", StringComparison.Ordinal):
+                            writer.WriteLineIndented($"public static void {extData.Name}Set(this {contextType} o, IEnumerable{elementType[4..]}? val)");
+                            OpenScope(writer);      // setter function open
+                            writer.WriteLineIndented($"o.RemoveExtension({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name});");
+                            writer.WriteLineIndented("if (val == null) return;");
+                            writer.WriteLineIndented("if (!val.Any()) return;");
+                            writer.WriteLineIndented($"foreach ({elementType[5..^1]} v in val)");
+                            OpenScope(writer);      // foreach open
+                            writer.WriteLineIndented($"o.AddExtension({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name}, v);");
+                            CloseScope(writer, suppressNewline: true);     // foreach close
+                            CloseScope(writer);      // setter function close
+                            break;
+
+                        default:
+                            writer.WriteLineIndented($"public static void {extData.Name}Set(this {contextType} o, IEnumerable<{elementType}>? val)");
+                            OpenScope(writer);      // setter function open
+                            writer.WriteLineIndented($"o.RemoveExtension({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name});");
+                            writer.WriteLineIndented("if (val == null) return;");
+                            writer.WriteLineIndented("if (!val.Any()) return;");
+                            writer.WriteLineIndented($"foreach ({elementType} v in val)");
+                            OpenScope(writer);      // foreach open
+                            writer.WriteLineIndented($"o.AddExtension({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name}, v);");
+                            CloseScope(writer, suppressNewline: true);     // foreach close
+                            CloseScope(writer);      // setter function close
+                            break;
+                    }
                 }
                 else
                 {
-                    writer.WriteLineIndented($"public static void {extData.Name}Set(this {contextType} o, {elementType}? val)");
-                    OpenScope(writer);      // setter function open
-                    writer.WriteLineIndented($"o.RemoveExtension({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name});");
-                    writer.WriteLineIndented("if (val == null) return;");
+                    switch (elementType)
+                    {
+                        case "Hl7.Fhir.Model.Extension":
+                            writer.WriteLineIndented($"public static void {extData.Name}Set(this {contextType} o, {elementType}? val)");
+                            OpenScope(writer);      // setter function open
+                            writer.WriteLineIndented($"o.RemoveExtension({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name});");
+                            writer.WriteLineIndented("if (val == null) return;");
+                            writer.WriteLineIndented($"o.Extension.Add(val);");
+                            CloseScope(writer);      // setter function close
+                            break;
 
-                    // need to pull the original type so we can create the correct datatype
-                    //if (extPTR != null)
-                    //{
-                    //    writer.WriteLineIndented($"o.AddExtension({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name}, new {extPTR.PropertyTypeString}(val));");
-                    //}
-                    //else
-                    //{
-                        writer.WriteLineIndented($"o.AddExtension({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name}, val);");
-                    //}
+                        case "List<Hl7.Fhir.Model.Extension>":
+                        case string lt when lt.StartsWith("List<", StringComparison.Ordinal):
+                            throw new Exception($"List elementType found on scalar extension!");
 
-                    CloseScope(writer);      // setter function close
+                        default:
+                            writer.WriteLineIndented($"public static void {extData.Name}Set(this {contextType} o, {elementType}? val)");
+                            OpenScope(writer);      // setter function open
+                            writer.WriteLineIndented($"o.RemoveExtension({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name});");
+                            writer.WriteLineIndented("if (val == null) return;");
+                            writer.WriteLineIndented($"o.AddExtension({extData.PackageNamespace}.{_classNameDefinitions}.{extData.Name}, val);");
+                            CloseScope(writer);      // setter function close
+                            break;
+                    }
                 }
             }
             else
@@ -1235,7 +1341,7 @@ public partial class FirelyNetIG : ILanguage
                 writer.WriteLineIndented($"IEnumerable<{elementType}>? {valName} = (IEnumerable<{elementType}>){parentVarName}" +
                     $".GetExtensions({extData.PackageNamespace}.{_classNameDefinitions}.{extName})" +
                     $".Where(e => e.Value != null && e.Value is {elementType})" +
-                    $".Select(e => ({elementType})e.Value);");
+                    $".Select(e => ({elementType})e.Value!);");
             }
             else
             {
@@ -1365,7 +1471,7 @@ public partial class FirelyNetIG : ILanguage
                 writer.WriteLineIndented($"IEnumerable<{elementType}>? {valName} = (IEnumerable<{elementType}>){parentVarName}" +
                     $".GetExtensions({psi.ValueExtData.PackageNamespace}.{_classNameDefinitions}.{extName})" +
                     $".Where(e => e.Value != null && e.Value is {elementType})" +
-                    $".Select(e => ({elementType})e.Value);");
+                    $".Select(e => ({elementType})e.Value!);");
             }
             else
             {
@@ -2958,22 +3064,24 @@ public partial class FirelyNetIG : ILanguage
         Dictionary<string, HashSet<string>> writtenExtensionDefinitions,
         string rootExtensionName)
     {
+        string indexKey = extData.PackageNamespace + "." + _classNameDefinitions;
+
         string name = string.IsNullOrEmpty(extData.ParentName) ? rootExtensionName : rootExtensionName + extData.Name;
 
         if (writtenExtensionDefinitions.TryGetValue(name, out HashSet<string>? writtenContexts) &&
-            writtenContexts.Contains(_classNameDefinitions))
+            writtenContexts.Contains(indexKey))
         {
             return;
         }
 
         if (writtenContexts == null)
         {
-            writtenContexts = new() { _classNameDefinitions };
+            writtenContexts = new() { indexKey };
             writtenExtensionDefinitions.Add(name, writtenContexts);
         }
         else
         {
-            writtenContexts.Add(_classNameDefinitions);
+            writtenContexts.Add(indexKey);
         }
 
         writer.WriteIndentedComment(extData.Summary, isSummary: true);
@@ -3247,6 +3355,13 @@ public partial class FirelyNetIG : ILanguage
         remarks = (remarks == null ? string.Empty : remarks + "\n") +
             $"Cardinality: {cd.Element.cgCardinality()}";
 
+        // add the name into remarks, if this is the root of a structure
+        if (cd.IsRootOfStructure)
+        {
+            remarks = (remarks == null ? string.Empty : remarks + "\n") +
+                $"Structure Definition Name: {cd.Structure.Name}";
+        }
+  
         string directive;
         if (_info.TryGetPackageSource(cd.Structure, out string packageId, out string packageVersion))
         {
