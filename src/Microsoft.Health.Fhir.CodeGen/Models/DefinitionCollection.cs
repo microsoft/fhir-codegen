@@ -49,7 +49,7 @@ public partial class DefinitionCollection
     public string MainPackageVersion { get; set; } = string.Empty;
 
     /// <summary>Gets or sets the manifest.</summary>
-    public Dictionary<string, PackageManifest> Manifests { get; set; } = [];
+    public Dictionary<string, _ForPackages.PackageManifest> Manifests { get; set; } = [];
 
     /// <summary>Gets or sets the contents.</summary>
     public Dictionary<string, CanonicalIndex> ContentListings { get; set; } = [];

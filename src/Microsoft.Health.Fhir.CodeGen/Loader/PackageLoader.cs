@@ -19,6 +19,8 @@ using System.Text.RegularExpressions;
 using System.Collections.Concurrent;
 using System.Xml.Linq;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
+using System.Linq;
+using Microsoft.Health.Fhir.CodeGen._ForPackages;
 
 namespace Microsoft.Health.Fhir.CodeGen.Loader;
 
@@ -41,10 +43,10 @@ public class PackageLoader : IDisposable
     }
 
     /// <summary>(Immutable) The cache.</summary>
-    private readonly DiskPackageCache _cache;
+    private readonly _ForPackages.DiskPackageCache _cache;
 
     /// <summary>(Immutable) The package clients.</summary>
-    private readonly List<PackageClient> _packageClients = [];
+    private readonly List<IPackageServer> _packageClients = [];
 
     private bool _disposedValue = false;
 
@@ -95,13 +97,14 @@ public class PackageLoader : IDisposable
 
         _rootConfiguration = config ?? new();
 
-        _cache = new DiskPackageCache(_rootConfiguration.FhirCacheDirectory);
+        _cache = new(_rootConfiguration.FhirCacheDirectory);
 
         // check if we are using the official registries
         if (_rootConfiguration.UseOfficialRegistries == true)
         {
             _packageClients.Add(PackageClient.Create("https://packages.fhir.org"));
             _packageClients.Add(PackageClient.Create("https://packages2.fhir.org"));
+            _packageClients.Add(new _ForPackages.FhirCiClient(-1));
         }
 
         if (_rootConfiguration.AdditionalFhirRegistryUrls.Any())
@@ -366,43 +369,49 @@ public class PackageLoader : IDisposable
         return VersionHandlingTypes.Passthrough;
     }
 
-    private string? ResolveLatest(string name)
+    private async ValueTask<(PackageReference, IPackageServer?)> ResolveLatest(string name)
     {
-        ConcurrentBag<Versions> versions = [];
+        ConcurrentBag<(PackageReference pr, IPackageServer server)> latestRecs = new();
 
-        //foreach (PackageClient pc in _packageClients)
-        //{
-        //    Versions? v = pc.GetVersions(name).Result;
-        //    if (v != null)
-        //    {
-        //        versions.Add(v);
-        //    }
-        //}
-
-        //get the versions known in each package server
-        Parallel.ForEach(_packageClients, pc =>
+        IEnumerable<System.Threading.Tasks.Task> tasks = _packageClients.Select(async server =>
         {
-            Versions? v = pc.GetVersions(name).Result;
-            if (v != null)
+            PackageReference pr = await server.GetLatest(name);
+            if (pr == PackageReference.None)
             {
-                versions.Add(v);
+                return;
             }
+
+            latestRecs.Append((pr, server));
         });
 
-        // create a single list the highest versions
-        List<string?> highestVersions = versions.Select(v => v.Latest()?.ToString()).Where(v => !string.IsNullOrEmpty(v)).ToList();
+        await System.Threading.Tasks.Task.WhenAll(tasks);
 
-        highestVersions.Sort();
+        if (latestRecs.Count == 0)
+        {
+            return (PackageReference.None, null);
+        }
 
-        return highestVersions.LastOrDefault();
+        return latestRecs.OrderByDescending(v => v.pr.Version).First();
     }
 
     private async Task<bool> InstallPackage(PackageReference packageReference)
     {
-        foreach (PackageClient pc in _packageClients)
+        foreach (IPackageServer pc in _packageClients)
         {
             try
             {
+                if (packageReference.Scope == FhirCiClient.FhirCiScope)
+                {
+                    if (pc is not FhirCiClient ciClient)
+                    {
+                        // cannot install CI packages from non-CI clients
+                        continue;
+                    }
+
+                    await ciClient.InstallOrUpdate(packageReference, _cache);
+                    return true;
+                }
+
                 // try to download this package
                 byte[] data = await pc.GetPackage(packageReference);
 
@@ -639,14 +648,26 @@ public class PackageLoader : IDisposable
                 }
             }
 
+            bool needsInstall = true;
+
             VersionHandlingTypes vht = GetVersionHandlingType(packageReference.Version);
 
             // do special handling for versions if necessary
             switch (vht)
             {
                 case VersionHandlingTypes.Latest:
-                    // resolve the version via Firely Packages so that we have access to the actual version number
-                    packageReference.Version = ResolveLatest(packageReference.Name) ?? "latest";
+                    {
+                        // resolve the version via Firely Packages so that we have access to the actual version number
+                        (PackageReference pr, IPackageServer? _) = await ResolveLatest(packageReference.Name);
+
+                        if ((pr == PackageReference.None) || (pr.Name == null))
+                        {
+                            throw new Exception($"Failed to resolve latest version of {packageReference.Name} ({directive})");
+                        }
+
+                        packageReference = pr;
+                        needsInstall = !(await _cache.IsInstalled(packageReference));
+                    }
                     break;
 
                 case VersionHandlingTypes.Local:
@@ -660,12 +681,13 @@ public class PackageLoader : IDisposable
                     break;
 
                 case VersionHandlingTypes.ContinuousIntegration:
-                    // determine if we need to download or update a CI build (NPM versioning does not work)
-                    {
-                        // TODO(ginoc): Implement CI builds
-                        throw new Exception($"Continuous Integration builds are not supported yet ({directive})");
-                    }
-                    //break;
+                    // always trigger install/update for CI builds
+                    needsInstall = true;
+                    break;
+
+                default:
+                    needsInstall = !(await _cache.IsInstalled(packageReference));
+                    break;
             }
 
             // check if we are flagged to load expansions and this is a core package
@@ -689,19 +711,19 @@ public class PackageLoader : IDisposable
             Console.WriteLine($"Processing {packageReference.Moniker}...");
 
             // check to see if this package needs to be installed
-            if ((!_cache.IsInstalled(packageReference).Result) &&
+            if (needsInstall &&
                 (await InstallPackage(packageReference) == false))
             {
                 // failed to install
                 throw new Exception($"Failed to install package {packageReference.Moniker} as requested by {inputDirective}");
             }
 
-            PackageManifest manifest = await _cache.ReadManifest(packageReference) ?? throw new Exception("Failed to load package manifest");
+            _ForPackages.PackageManifest manifest = await _cache.ReadManifestEx(packageReference) ?? throw new Exception("Failed to load package manifest");
 
             // check to see if we have a restricted FHIR version and need to filter
             if ((!string.IsNullOrEmpty(requestedFhirVersion)) &&
                 (definitions.FhirSequence != FhirReleases.FhirSequenceCodes.Unknown) &&
-                (manifest.GetFhirVersion() is string manifestFhirVersion) &&
+                (manifest.AnyFhirVersions?.FirstOrDefault() is string manifestFhirVersion) &&
                 !string.IsNullOrEmpty(manifestFhirVersion) &&
                 (definitions.FhirSequence != FhirReleases.FhirVersionToSequence(manifestFhirVersion)))
             {
@@ -767,7 +789,7 @@ public class PackageLoader : IDisposable
                 definitions.MainPackageCanonical = manifest.Canonical ?? throw new Exception($"Main package {packageReference.Moniker} manifest does not contain a canonical URL");
             }
 
-            string? packageFhirVersionLiteral = manifest.GetFhirVersion();
+            string? packageFhirVersionLiteral = manifest.AnyFhirVersions?.FirstOrDefault();
 
             // update the collection FHIR version based on the first package we come across with one
             if (string.IsNullOrEmpty(definitions.FhirVersionLiteral) && (!string.IsNullOrEmpty(packageFhirVersionLiteral)))

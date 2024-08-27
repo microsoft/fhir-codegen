@@ -21,6 +21,7 @@ public class FMLTests
     }
 
     [Fact]
+    [Trait("Category", "FML")]
     internal void TestBuildingLiteralEnums()
     {
         // Output what should be in the enum to the console (test output)
@@ -58,6 +59,7 @@ public class FMLTests
     }
 
     [Fact]
+    [Trait("Category", "FML")]
     internal void FmlParseTest01()
     {
         string content = """"
@@ -172,6 +174,7 @@ group EncounterDiagnosis(source src, target tgt) extends BackboneElement {
     }
 
     [Fact]
+    [Trait("Category", "FML")]
     internal void FmlCommentParseTest()
     {
         string content = """"
@@ -382,6 +385,7 @@ group Encounter(source src : EncounterR4, target tgt : EncounterR5) extends Doma
     //}
 
     [Fact]
+    [Trait("Category", "FML")]
     internal void FmlParseDefaultValue()
     {
         string content = """"

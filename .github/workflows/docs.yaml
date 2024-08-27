@@ -9,16 +9,18 @@ on:
     - docfx/**
     - .github/workflows/docs.yml
 
+env:
+  DOTNET_VERSION: '8'           # The .NET SDK version to use
+
 jobs:
   generate-docs:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v2
-
-    - name: Setup .NET 6.0
-      uses: actions/setup-dotnet@v1
+    - uses: actions/checkout@v3
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: ${{ env.DOTNET_VERSION }}
 
     - name: Setup DocFX
       uses: crazy-max/ghaction-chocolatey@v1

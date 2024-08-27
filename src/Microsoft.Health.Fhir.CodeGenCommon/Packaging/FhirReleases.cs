@@ -75,6 +75,9 @@ public static class FhirReleases
         { "5.0.0-snapshot3",   new (FhirSequenceCodes.R5,    new DateTime(2022, 12, 14), false, "5.0.0-snapshot3",   "R5 Connectathon 32 Base") },
         { "5.0.0-draft-final", new (FhirSequenceCodes.R5,    new DateTime(2023, 03, 01), false, "5.0.0-draft-final", "R5 Final QA") },
         { "5.0.0",             new (FhirSequenceCodes.R5,    new DateTime(2023, 03, 26), true, "5.0.0",             "R5 Release")  },
+        { "6.0.0-ballot1",     new (FhirSequenceCodes.R6,    new DateTime(2023, 12, 19), false, "6.0.0-ballot1",      "R6 Ballot 1st Draft") },
+        { "6.0.0-ballot2",     new (FhirSequenceCodes.R6,    new DateTime(2024, 08, 13), false, "6.0.0-ballot2",      "R6 Ballot 2nd Draft") },
+
     }.ToFrozenDictionary();
 
     /// <summary>(Immutable) The FHIR sequence map.</summary>
@@ -175,6 +178,8 @@ public static class FhirReleases
         { "6", FhirSequenceCodes.R6 },
         { "6.0", FhirSequenceCodes.R6 },
         { "6.0.0", FhirSequenceCodes.R6 },
+        { "6.0.0-ballot1", FhirSequenceCodes.R6 },
+        { "6.0.0-ballot2", FhirSequenceCodes.R6 },
         { "6.0.0-cibuild", FhirSequenceCodes.R6 },
         { "hl7.fhir.r6", FhirSequenceCodes.R6 },
         { "hl7.fhir.r6.core", FhirSequenceCodes.R6 },
@@ -185,6 +190,8 @@ public static class FhirReleases
     /// <returns>True if it succeeds, false if it fails.</returns>
     public static bool VersionIsUnavailable(string version) => version switch
     {
+        "1.0.0" => true,
+        "1.0.1" => true,
         "3.0.0" => true,
         "3.0.1" => true,
         "4.0.0" => true,

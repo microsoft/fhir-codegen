@@ -33,7 +33,7 @@ public partial class WelcomePageViewModel : ViewModelBase, INavigableViewModel
         public required string Name { get; init; }
         public required string Version { get; init; }
         public required string ManifestVersion { get; init; }
-        public required string PackageDate { get; init; }
+        public required DateTimeOffset? PackageDate { get; init; }
         public required string FhirVersion { get; init; }
         public required string Description { get; init; }
 
@@ -114,7 +114,7 @@ public partial class WelcomePageViewModel : ViewModelBase, INavigableViewModel
         // iterate over the internal references and convert them to the public references
         foreach (Firely.Fhir.Packages.PackageReference pr in internalReferences)
         {
-            PackageManifest? manifest = cache.ReadManifestEx(pr).Result;
+            Microsoft.Health.Fhir.CodeGen._ForPackages.PackageManifest? manifest = cache.ReadManifestEx(pr).Result;
 
             installedPackages.Add(new()
             {
@@ -124,8 +124,8 @@ public partial class WelcomePageViewModel : ViewModelBase, INavigableViewModel
                 Name = pr.Name ?? string.Empty,
                 Version = pr.Version ?? string.Empty,
                 ManifestVersion = manifest?.Version ?? string.Empty,
-                PackageDate = manifest?.Date ?? string.Empty,
-                FhirVersion = string.Join(", ", manifest?.AllFhirVersions ?? Enumerable.Empty<string>()),
+                PackageDate = manifest?.Date,
+                FhirVersion = string.Join(", ", manifest?.AnyFhirVersions ?? Enumerable.Empty<string>()),
                 Description = manifest?.Description ?? string.Empty
             });
         }

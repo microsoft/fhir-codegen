@@ -36,6 +36,9 @@ public class CrossVersionTests
     }
 
     [Theory(DisplayName = "TestLoadingFml")]
+    [Trait("Category", "FML")]
+    [Trait("RequiresExternalRepo", "true")]
+    [Trait("ExternalRepo", "HL7/fhir-cross-version")]
     [InlineData("fhir-cross-version/input/R2toR3", "2to3")]
     [InlineData("fhir-cross-version/input/R3toR2", "3to2")]
     [InlineData("fhir-cross-version/input/R3toR4", "3to4")]
@@ -124,6 +127,9 @@ public class CrossVersionTests
     }
 
     [Theory(DisplayName = "ValidateCrossVersionMaps")]
+    [Trait("Category", "FML")]
+    [Trait("RequiresExternalRepo", "true")]
+    [Trait("ExternalRepo", "HL7/fhir-cross-version")]
     // [InlineData("fhir-cross-version/input/R2toR3", "2to3")]
     // [InlineData("fhir-cross-version/input/R3toR2", "3to2")]
     [InlineData("fhir-cross-version/input/R3toR4", "3to4")]
@@ -344,6 +350,9 @@ public class CrossVersionTests
     }
 
     [Theory(DisplayName = "CheckFmlMissingProps")]
+    [Trait("Category", "FML")]
+    [Trait("RequiresExternalRepo", "true")]
+    [Trait("ExternalRepo", "HL7/fhir-cross-version")]
     // [InlineData("fhir-cross-version/input/R2toR3", "2to3")]
     // [InlineData("fhir-cross-version/input/R3toR2", "3to2")]
     [InlineData("fhir-cross-version/input/R3toR4", "3to4")]
