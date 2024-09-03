@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Net.Http.Headers;
 using System.Text;
 using Firely.Fhir.Packages;
+using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
 using Newtonsoft.Json;
 
 #nullable enable
@@ -408,7 +409,7 @@ namespace Microsoft.Health.Fhir.CodeGen._ForPackages
             // if we do not have a date, mangle the branch info
             if (buildMeta == null)
             {
-                (string? branchName, bool isDefaultBranch) = getBranchFromRepo(qa.RepositoryUrl);
+                (string? branchName, bool isDefaultBranch) = GetBranchNameRepoLiteral(qa.RepositoryUrl);
 
                 versionPrerelease = isDefaultBranch || string.IsNullOrEmpty(branchName)
                     ? versionPrerelease
@@ -482,7 +483,7 @@ namespace Microsoft.Health.Fhir.CodeGen._ForPackages
 
                 foreach (FhirCiQaRecord qa in qaRecs.OrderBy(qa => qa.BuildDateIso ?? qa.BuildDate))
                 {
-                    (string? branchName, bool isDefaultBranch) = getBranchFromRepo(qa.RepositoryUrl);
+                    (string? branchName, bool isDefaultBranch) = GetBranchNameRepoLiteral(qa.RepositoryUrl);
 
                     string tag = branchName == null
                         ? "current"
@@ -535,7 +536,7 @@ namespace Microsoft.Health.Fhir.CodeGen._ForPackages
         /// </summary>
         /// <param name="partialRepoLiteral">The partial repository URL.</param>
         /// <returns>The branch name extracted from the repository URL, or null if the branch name cannot be determined.</returns>
-        private static (string? branchName, bool isDefaultBranch) getBranchFromRepo(string? partialRepoLiteral)
+        public static (string? branchName, bool isDefaultBranch) GetBranchNameRepoLiteral(string? partialRepoLiteral)
         {
             if ((partialRepoLiteral == null) ||
                 string.IsNullOrEmpty(partialRepoLiteral))
@@ -815,18 +816,27 @@ namespace Microsoft.Health.Fhir.CodeGen._ForPackages
             }
 
             // extract the branch name
-            (string? branchName, bool _) = getBranchFromRepo(qa.RepositoryUrl);
+            (string? branchName, bool _) = GetBranchNameRepoLiteral(qa.RepositoryUrl);
 
             // build the URL
-            int igUrlIndex = qa.Url?.IndexOf("/ImplementationGuide/", StringComparison.Ordinal) ?? -1;
-            string url = igUrlIndex == -1 ? qa.Url! : qa.Url!.Substring(0, igUrlIndex);
+            int igUrlIndex = qa.RepositoryUrl?.IndexOf("/qa.json", StringComparison.Ordinal) ?? -1;
+            string url = igUrlIndex == -1 ? qa.RepositoryUrl! : qa.RepositoryUrl!.Substring(0, igUrlIndex);
 
-            // if we have a branch name, insert it into the URL
-            url += branchName switch
+            url += url.EndsWith('/')
+                ? "package.tgz"
+                : "/package.tgz";
+
+            if (!url.StartsWith("http"))
             {
-                null => "/package.tgz",
-                _ => "/branches/" + branchName + "/package.tgz",
-            };
+                if (url.StartsWith("HL7/fhir/", StringComparison.OrdinalIgnoreCase))
+                {
+                    url = "https://build.fhir.org/" + url;
+                }
+                else
+                {
+                    url = "https://build.fhir.org/ig/" + url;
+                }
+            }
 
             // download data
             return await _httpClient.GetByteArrayAsync(url).ConfigureAwait(false);
@@ -849,7 +859,7 @@ namespace Microsoft.Health.Fhir.CodeGen._ForPackages
                 return PackageReference.None;
             }
 
-            (string? branchName, bool isDefaultBranch) = getBranchFromRepo(qa.RepositoryUrl);
+            (string? branchName, bool isDefaultBranch) = GetBranchNameRepoLiteral(qa.RepositoryUrl);
 
             string tag;
             if ((branchName == null) ||
@@ -993,7 +1003,7 @@ namespace Microsoft.Health.Fhir.CodeGen._ForPackages
         /// </summary>
         /// <param name="reference">The package reference to install or update.</param>
         /// <param name="cache">The package cache.</param>
-        public async Task InstallOrUpdate(PackageReference reference, IPackageCache cache)
+        public async Task InstallOrUpdate(PackageReference reference, _ForPackages.DiskPackageCache cache)
         {
             if (cache is not DiskPackageCache diskCache)
             {
@@ -1031,6 +1041,12 @@ namespace Microsoft.Health.Fhir.CodeGen._ForPackages
             if (!shouldDownload)
             {
                 return;
+            }
+
+            if (isInstalled)
+            {
+                // need to delete the existing content
+                await cache.Delete(taggedReference);
             }
 
             // download happens via the resolved version
