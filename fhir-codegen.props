@@ -1,0 +1,30 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+    <!-- Solution-wide properties for NuGet packaging -->
+    <PropertyGroup>
+        <LangVersion>12.0</LangVersion>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<VersionPrefix>$([System.DateTime]::Now.ToString("'3.'yyyy.MMdd"))</VersionPrefix>
+		<Version>$(VersionPrefix)</Version>
+		<AssemblyName>$(AssemblyName.Replace(' ', '_'))</AssemblyName>
+		<AssemblyVersion>$([System.DateTime]::Now.ToString("'3.'yyyy.MMdd.HHmm"))</AssemblyVersion>
+		<FileVersion>$([System.DateTime]::Now.ToString("'3.'yyyy.MMdd.HHmm"))</FileVersion>
+		<Authors>GinoCanessa</Authors>
+		<Company>Microsoft Corporation</Company>
+        <Copyright>Copyright 2019-2024</Copyright>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/Microsoft/fhir-codegen</RepositoryUrl>
+		<NeutralLanguage>en</NeutralLanguage>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\..\LICENSE" Pack="true" PackagePath="\">
+			<Link>LICENSE</Link>
+		</None>
+		<None Include="..\..\README.md" Pack="true" PackagePath="\">
+			<Link>README.md</Link>
+		</None>
+	</ItemGroup>
+
+</Project>

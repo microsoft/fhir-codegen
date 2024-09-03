@@ -1,11 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\fhir-codegen.props" />
 
   <PropertyGroup>
-    <LangVersion>12.0</LangVersion>
     <TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
-    <Version>2.0.0-beta1</Version>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
