@@ -1539,15 +1539,15 @@ Resources: 143
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/workflow-shallComplyWith
     - value[x][1..1]: canonical(ActivityDefinition|Measure|OperationDefinition|PlanDefinition|Questionnaire)|Reference(ActivityDefinition|Measure|OperationDefinition|PlanDefinition|Questionnaire)|uri
   ?composed-of: composed-of=reference (trial-use)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/ActivityDefinition-context-type):token
     $(http://hl7.org/fhir/SearchParameter/ActivityDefinition-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/ActivityDefinition-context-type):token
     $(http://hl7.org/fhir/SearchParameter/ActivityDefinition-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (normative)
   ?depends-on: depends-on=reference (trial-use)
   ?derived-from: derived-from=reference (trial-use)
@@ -2058,15 +2058,15 @@ Resources: 143
       - value[x][1..1]: base64Binary|string (W5: FiveWs.context)
   ?action: action=token (trial-use)
   ?address: address=string (trial-use)
-  ?agent: agent=reference (trial-use)
   ?agent-name: agent-name=string (trial-use)
   ?agent-role: agent-role=token (trial-use)
+  ?agent: agent=reference (trial-use)
   ?altid: altid=token (trial-use)
   ?date: date=date (trial-use)
-  ?entity: entity=reference (trial-use)
   ?entity-name: entity-name=string (trial-use)
   ?entity-role: entity-role=token (trial-use)
   ?entity-type: entity-type=token (trial-use)
+  ?entity: entity=reference (trial-use)
   ?outcome: outcome=token (trial-use)
   ?patient: patient=reference (trial-use)
   ?policy: policy=uri (trial-use)
@@ -2576,15 +2576,15 @@ Resources: 143
   +http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate
     - value[x][1..1]: date
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (trial-use)
   ?description: description=string (trial-use)
   ?fhirversion: fhirversion=token (trial-use)
@@ -2594,8 +2594,8 @@ Resources: 143
   ?mode: mode=token (trial-use)
   ?name: name=string (trial-use)
   ?publisher: publisher=string (trial-use)
-  ?resource: resource=token (trial-use)
   ?resource-profile: resource-profile=reference (trial-use)
+  ?resource: resource=token (trial-use)
   ?security-service: security-service=token (trial-use)
   ?software: software=string (trial-use)
   ?status: status=token (trial-use)
@@ -2981,15 +2981,15 @@ Resources: 143
   +http://hl7.org/fhir/StructureDefinition/replaces [0..*]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/replaces
     - value[x][1..1]: canonical(Resource)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/ChargeItemDefinition-context-type):token
     $(http://hl7.org/fhir/SearchParameter/ChargeItemDefinition-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/ChargeItemDefinition-context-type):token
     $(http://hl7.org/fhir/SearchParameter/ChargeItemDefinition-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (trial-use)
   ?description: description=string (trial-use)
   ?effective: effective=date (trial-use)
@@ -3229,15 +3229,15 @@ Resources: 143
   +http://hl7.org/fhir/StructureDefinition/replaces [0..*]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/replaces
     - value[x][1..1]: canonical(Resource)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Citation-context-type):token
     $(http://hl7.org/fhir/SearchParameter/Citation-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Citation-context-type):token
     $(http://hl7.org/fhir/SearchParameter/Citation-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (normative)
   ?description: description=string (normative)
   ?effective: effective=date (trial-use)
@@ -3592,8 +3592,8 @@ Resources: 143
   ?outcome: outcome=token (trial-use)
   ?patient: patient=reference (trial-use)
   ?payment-date: payment-date=date (trial-use)
-  ?request: request=reference (trial-use)
   ?requestor: requestor=reference (trial-use)
+  ?request: request=reference (trial-use)
   ?status: status=token (trial-use)
   ?use: use=token (trial-use)
 - ClinicalImpression: DomainResource (trial-use FMM: 0) (abstract: False)
@@ -3743,13 +3743,13 @@ Resources: 143
     - modifierExtension[0..*]: Extension
     - description[0..1]: markdown
     - code[0..1]: CodeableConcept binding name: WarningType
-  ?contraindication: contraindication=token (trial-use)
   ?contraindication-reference: contraindication-reference=reference (trial-use)
-  ?effect: effect=token (trial-use)
+  ?contraindication: contraindication=token (trial-use)
   ?effect-reference: effect-reference=reference (trial-use)
+  ?effect: effect=token (trial-use)
   ?identifier: identifier=token (trial-use)
-  ?indication: indication=token (trial-use)
   ?indication-reference: indication-reference=reference (trial-use)
+  ?indication: indication=token (trial-use)
   ?interaction: interaction=token (trial-use)
   ?product: product=reference (trial-use)
   ?subject: subject=reference (trial-use)
@@ -3915,15 +3915,15 @@ Resources: 143
     - value[x][1..1]: string
   ?code: code=token (trial-use)
   ?content-mode: content-mode=token (trial-use)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (trial-use)
   ?description: description=string (trial-use)
   ?identifier: identifier=token (trial-use)
@@ -4250,15 +4250,15 @@ Resources: 143
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate
     - value[x][1..1]: date
   ?code: code=token (trial-use)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (trial-use)
   ?description: description=string (trial-use)
   ?name: name=string (trial-use)
@@ -4485,15 +4485,15 @@ Resources: 143
   +http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate
     - value[x][1..1]: date
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (trial-use)
   ?dependson: dependson=uri (trial-use)
   ?description: description=string (trial-use)
@@ -4503,15 +4503,15 @@ Resources: 143
   ?other: other=reference (trial-use)
   ?product: product=uri (trial-use)
   ?publisher: publisher=string (trial-use)
-  ?source: source=reference (trial-use)
   ?source-code: source-code=token (trial-use)
   ?source-system: source-system=uri (trial-use)
   ?source-uri: source-uri=reference (trial-use)
+  ?source: source=reference (trial-use)
   ?status: status=token (trial-use)
-  ?target: target=reference (trial-use)
   ?target-code: target-code=token (trial-use)
   ?target-system: target-system=uri (trial-use)
   ?target-uri: target-uri=reference (trial-use)
+  ?target: target=reference (trial-use)
   ?title: title=string (trial-use)
   ?url: url=uri (trial-use)
   ?version: version=token (trial-use)
@@ -4658,8 +4658,8 @@ Resources: 143
   ?clinical-status: clinical-status=token (trial-use)
   ?code: code=token (trial-use)
   ?encounter: encounter=reference (trial-use)
-  ?evidence: evidence=token (trial-use)
   ?evidence-detail: evidence-detail=reference (trial-use)
+  ?evidence: evidence=token (trial-use)
   ?identifier: identifier=token (trial-use)
   ?onset-age: onset-age=quantity (trial-use)
   ?onset-date: onset-date=date (trial-use)
@@ -4668,8 +4668,8 @@ Resources: 143
   ?recorded-date: recorded-date=date (trial-use)
   ?severity: severity=token (trial-use)
   ?stage: stage=token (trial-use)
-  ?subject: subject=reference (trial-use)
   ?Example Search Parameter: subject=reference (experimental)
+  ?subject: subject=reference (trial-use)
   ?verification-status: verification-status=token (trial-use)
 - Consent: DomainResource (trial-use FMM: 2) (abstract: False)
   ^consent[0..*]: Element::Consent constraints: ppc-1, ppc-2, ppc-3, ppc-4, ppc-5 (W5: infrastructure.information)
@@ -5203,8 +5203,8 @@ Resources: 143
   ?insurer: insurer=reference (trial-use)
   ?outcome: outcome=token (trial-use)
   ?patient: patient=reference (trial-use)
-  ?request: request=reference (trial-use)
   ?requestor: requestor=reference (trial-use)
+  ?request: request=reference (trial-use)
   ?status: status=token (trial-use)
 - DetectedIssue: DomainResource (trial-use FMM: 1) (abstract: False)
   ^detectedIssue[0..*]: Element::DetectedIssue (W5: clinical.general)
@@ -6080,11 +6080,11 @@ Resources: 143
   ?episode-of-care: episode-of-care=reference (trial-use)
   ?identifier: identifier=token (trial-use)
   ?length: length=quantity (trial-use)
-  ?location: location=reference (trial-use)
   ?location-period: location-period=date (trial-use)
+  ?location: location=reference (trial-use)
   ?part-of: part-of=reference (trial-use)
-  ?participant: participant=reference (trial-use)
   ?participant-type: participant-type=token (trial-use)
+  ?participant: participant=reference (trial-use)
   ?patient: patient=reference (trial-use)
   ?practitioner: practitioner=reference (trial-use)
   ?reason-code: reason-code=token (trial-use)
@@ -6310,15 +6310,15 @@ Resources: 143
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/replaces
     - value[x][1..1]: canonical(Resource)
   ?composed-of: composed-of=reference (trial-use)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/EventDefinition-context-type):token
     $(http://hl7.org/fhir/SearchParameter/EventDefinition-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/EventDefinition-context-type):token
     $(http://hl7.org/fhir/SearchParameter/EventDefinition-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (trial-use)
   ?depends-on: depends-on=reference (trial-use)
   ?derived-from: derived-from=reference (trial-use)
@@ -6449,15 +6449,15 @@ Resources: 143
   +http://hl7.org/fhir/StructureDefinition/replaces [0..*]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/replaces
     - value[x][1..1]: canonical(Resource)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Evidence-context-type):token
     $(http://hl7.org/fhir/SearchParameter/Evidence-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Evidence-context-type):token
     $(http://hl7.org/fhir/SearchParameter/Evidence-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (normative)
   ?description: description=string (normative)
   ?identifier: identifier=token (trial-use)
@@ -6542,15 +6542,15 @@ Resources: 143
   +http://hl7.org/fhir/StructureDefinition/replaces [0..*]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/replaces
     - value[x][1..1]: canonical(Resource)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/EvidenceReport-context-type):token
     $(http://hl7.org/fhir/SearchParameter/EvidenceReport-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/EvidenceReport-context-type):token
     $(http://hl7.org/fhir/SearchParameter/EvidenceReport-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?identifier: identifier=token (trial-use)
   ?publisher: publisher=string (normative)
   ?status: status=token (normative)
@@ -6628,15 +6628,15 @@ Resources: 143
   +http://hl7.org/fhir/StructureDefinition/replaces [0..*]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/replaces
     - value[x][1..1]: canonical(Resource)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/EvidenceVariable-context-type):token
     $(http://hl7.org/fhir/SearchParameter/EvidenceVariable-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/EvidenceVariable-context-type):token
     $(http://hl7.org/fhir/SearchParameter/EvidenceVariable-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (normative)
   ?description: description=string (normative)
   ?identifier: identifier=token (trial-use)
@@ -6749,15 +6749,15 @@ Resources: 143
   +http://hl7.org/fhir/StructureDefinition/replaces [0..*]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/replaces
     - value[x][1..1]: canonical(Resource)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/ExampleScenario-context-type):token
     $(http://hl7.org/fhir/SearchParameter/ExampleScenario-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/ExampleScenario-context-type):token
     $(http://hl7.org/fhir/SearchParameter/ExampleScenario-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (trial-use)
   ?identifier: identifier=token (trial-use)
   ?jurisdiction: jurisdiction=token (trial-use)
@@ -7317,15 +7317,15 @@ Resources: 143
   +http://hl7.org/fhir/StructureDefinition/replaces [0..*]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/replaces
     - value[x][1..1]: canonical(Resource)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (trial-use)
   ?description: description=string (trial-use)
   ?jurisdiction: jurisdiction=token (trial-use)
@@ -7383,10 +7383,10 @@ Resources: 143
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/characteristicExpression
     - value[x][1..1]: Expression
   ?actual: actual=token (trial-use)
-  ?characteristic: characteristic=token (trial-use)
   ?characteristic-value: characteristic-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Group-characteristic):token
     $(http://hl7.org/fhir/SearchParameter/Group-value):token
+  ?characteristic: characteristic=token (trial-use)
   ?code: code=token (trial-use)
   ?exclude: exclude=token (trial-use)
   ?identifier: identifier=token (trial-use)
@@ -7693,14 +7693,14 @@ Resources: 143
   ?manufacturer: manufacturer=reference (trial-use)
   ?patient: patient=reference (trial-use)
   ?performer: performer=reference (trial-use)
-  ?reaction: reaction=reference (trial-use)
   ?reaction-date: reaction-date=date (trial-use)
+  ?reaction: reaction=reference (trial-use)
   ?reason-code: reason-code=token (trial-use)
   ?reason-reference: reason-reference=reference (trial-use)
   ?ResearchStudySearchParameter: researchStudy=reference (draft experimental)
   ?series: series=string (trial-use)
-  ?status: status=token (trial-use)
   ?status-reason: status-reason=token (trial-use)
+  ?status: status=token (trial-use)
   ?target-disease: target-disease=token (trial-use)
   ?vaccine-code: vaccine-code=token (trial-use)
 - ImmunizationEvaluation: DomainResource (trial-use FMM: 0) (abstract: False)
@@ -7945,15 +7945,15 @@ Resources: 143
   +http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate
     - value[x][1..1]: date
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (trial-use)
   ?depends-on: depends-on=reference (trial-use)
   ?description: description=string (trial-use)
@@ -8028,9 +8028,9 @@ Resources: 143
   ?identifier: identifier=token (trial-use)
   ?manufacturer: manufacturer=reference (trial-use)
   ?role: role=token (trial-use)
-  ?substance: substance=reference (draft)
   ?substance-code: substance-code=token (draft)
   ?substance-definition: substance-definition=reference (draft)
+  ?substance: substance=reference (draft)
 - InsurancePlan: DomainResource (trial-use FMM: 0) (abstract: False)
   ^insurancePlan[0..*]: Element::InsurancePlan constraints: ipn-1 (W5: administrative.entity)
   !dom-2: inherited error: contained.contained.empty()
@@ -8122,12 +8122,12 @@ Resources: 143
           - applicability[0..1]: CodeableConcept binding name: BenefitCostApplicability
           - qualifiers[0..*]: CodeableConcept
           - value[0..1]: Quantity
-  ?address: address=string (trial-use)
   ?address-city: address-city=string (trial-use)
   ?address-country: address-country=string (trial-use)
   ?address-postalcode: address-postalcode=string (trial-use)
   ?address-state: address-state=string (trial-use)
   ?address-use: address-use=token (trial-use)
+  ?address: address=string (trial-use)
   ?administered-by: administered-by=reference (trial-use)
   ?endpoint: endpoint=reference (trial-use)
   ?identifier: identifier=token (trial-use)
@@ -8194,8 +8194,8 @@ Resources: 143
   ?date: date=date (trial-use)
   ?identifier: identifier=token (trial-use)
   ?issuer: issuer=reference (trial-use)
-  ?participant: participant=reference (trial-use)
   ?participant-role: participant-role=token (trial-use)
+  ?participant: participant=reference (trial-use)
   ?patient: patient=reference (trial-use)
   ?recipient: recipient=reference (trial-use)
   ?status: status=token (trial-use)
@@ -8263,15 +8263,15 @@ Resources: 143
     - value[x][1..1]: canonical(Resource)
   ?composed-of: composed-of=reference (trial-use)
   ?content-type: content-type=token (normative)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Library-context-type):token
     $(http://hl7.org/fhir/SearchParameter/Library-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Library-context-type):token
     $(http://hl7.org/fhir/SearchParameter/Library-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (normative)
   ?depends-on: depends-on=reference (trial-use)
   ?derived-from: derived-from=reference (trial-use)
@@ -8452,12 +8452,12 @@ Resources: 143
   +http://hl7.org/fhir/StructureDefinition/location-communication [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/location-communication
     - value[x][1..1]: CodeableConcept
-  ?address: address=string (trial-use)
   ?address-city: address-city=string (trial-use)
   ?address-country: address-country=string (trial-use)
   ?address-postalcode: address-postalcode=string (trial-use)
   ?address-state: address-state=string (trial-use)
   ?address-use: address-use=token (trial-use)
+  ?address: address=string (trial-use)
   ?endpoint: endpoint=reference (trial-use)
   ?identifier: identifier=token (trial-use)
   ?name: name=string (trial-use)
@@ -8604,15 +8604,15 @@ Resources: 143
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/workflow-shallComplyWith
     - value[x][1..1]: canonical(ActivityDefinition|Measure|OperationDefinition|PlanDefinition|Questionnaire)|Reference(ActivityDefinition|Measure|OperationDefinition|PlanDefinition|Questionnaire)|uri
   ?composed-of: composed-of=reference (trial-use)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Measure-context-type):token
     $(http://hl7.org/fhir/SearchParameter/Measure-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Measure-context-type):token
     $(http://hl7.org/fhir/SearchParameter/Measure-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (normative)
   ?depends-on: depends-on=reference (trial-use)
   ?derived-from: derived-from=reference (trial-use)
@@ -8888,8 +8888,8 @@ Resources: 143
   ?expiration-date: expiration-date=date (trial-use)
   ?form: form=token (trial-use)
   ?identifier: identifier=token (trial-use)
-  ?ingredient: ingredient=reference (trial-use)
   ?ingredient-code: ingredient-code=token (trial-use)
+  ?ingredient: ingredient=reference (trial-use)
   ?lot-number: lot-number=token (trial-use)
   ?manufacturer: manufacturer=reference (trial-use)
   ?status: status=token (trial-use)
@@ -9178,17 +9178,17 @@ Resources: 143
     - areaUnderCurve[0..*]: Quantity(SimpleQuantity)
     - lethalDose50[0..*]: Quantity(SimpleQuantity)
     - halfLifePeriod[0..1]: Duration
-  ?classification: classification=token (trial-use)
   ?classification-type: classification-type=token (trial-use)
+  ?classification: classification=token (trial-use)
   ?code: code=token (trial-use)
   ?doseform: doseform=token (trial-use)
-  ?ingredient: ingredient=reference (trial-use)
   ?ingredient-code: ingredient-code=token (trial-use)
+  ?ingredient: ingredient=reference (trial-use)
   ?manufacturer: manufacturer=reference (trial-use)
   ?monitoring-program-name: monitoring-program-name=token (trial-use)
   ?monitoring-program-type: monitoring-program-type=token (trial-use)
-  ?monograph: monograph=reference (trial-use)
   ?monograph-type: monograph-type=token (trial-use)
+  ?monograph: monograph=reference (trial-use)
   ?source-cost: source-cost=token (trial-use)
   ?status: status=token (trial-use)
 - MedicationRequest: DomainResource (trial-use FMM: 3) (abstract: False)
@@ -9422,15 +9422,15 @@ Resources: 143
     - modifierExtension[0..*]: Extension
     - type[1..1]: CodeableConcept binding name: ProductCharacteristic
     - value[x][0..1]: Attachment|boolean|CodeableConcept|date|Quantity
-  ?characteristic: characteristic=token (trial-use)
   ?characteristic-type: characteristic-type=token (trial-use)
+  ?characteristic: characteristic=token (trial-use)
   ?contact: contact=reference (trial-use)
   ?domain: domain=token (trial-use)
   ?identifier: identifier=token (trial-use)
   ?ingredient: ingredient=token (draft)
   ?master-file: master-file=reference (trial-use)
-  ?name: name=string (normative)
   ?name-language: name-language=token (trial-use)
+  ?name: name=string (normative)
   ?product-classification: product-classification=token (trial-use)
   ?status: status=token (trial-use)
   ?type: type=token (trial-use)
@@ -9507,15 +9507,15 @@ Resources: 143
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/replaces
     - value[x][1..1]: canonical(Resource)
   ?category: category=token (trial-use)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (trial-use)
   ?description: description=string (trial-use)
   ?event: event=token (trial-use)
@@ -9586,8 +9586,8 @@ Resources: 143
     - value[x][1..1]: code
   ?author: author=reference (trial-use)
   ?code: code=token (trial-use)
-  ?destination: destination=string (trial-use)
   ?destination-uri: destination-uri=uri (trial-use)
+  ?destination: destination=string (trial-use)
   ?enterer: enterer=reference (trial-use)
   ?event: event=token (trial-use)
   ?focus: focus=reference (trial-use)
@@ -9595,8 +9595,8 @@ Resources: 143
   ?response-id: response-id=token (trial-use)
   ?responsible: responsible=reference (trial-use)
   ?sender: sender=reference (trial-use)
-  ?source: source=string (trial-use)
   ?source-uri: source-uri=uri (trial-use)
+  ?source: source=string (trial-use)
   ?target: target=reference (trial-use)
 - MolecularSequence: DomainResource (trial-use FMM: 1) (abstract: False)
   ^molecularSequence[0..*]: Element::MolecularSequence constraints: msq-3 (W5: clinical.diagnostics)
@@ -9716,7 +9716,6 @@ Resources: 143
       - modifierExtension[0..*]: Extension
       - start[0..1]: integer
       - end[0..1]: integer
-  ?chromosome: chromosome=token (trial-use)
   ?chromosome-variant-coordinate: chromosome-variant-coordinate is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/MolecularSequence-chromosome):token
     $(http://hl7.org/fhir/SearchParameter/MolecularSequence-variant-start):number
@@ -9725,9 +9724,9 @@ Resources: 143
     $(http://hl7.org/fhir/SearchParameter/MolecularSequence-chromosome):token
     $(http://hl7.org/fhir/SearchParameter/MolecularSequence-window-start):number
     $(http://hl7.org/fhir/SearchParameter/MolecularSequence-window-end):number
+  ?chromosome: chromosome=token (trial-use)
   ?identifier: identifier=token (trial-use)
   ?patient: patient=reference (trial-use)
-  ?referenceseqid: referenceseqid=token (trial-use)
   ?referenceseqid-variant-coordinate: referenceseqid-variant-coordinate is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/MolecularSequence-referenceseqid):token
     $(http://hl7.org/fhir/SearchParameter/MolecularSequence-variant-start):number
@@ -9736,6 +9735,7 @@ Resources: 143
     $(http://hl7.org/fhir/SearchParameter/MolecularSequence-referenceseqid):token
     $(http://hl7.org/fhir/SearchParameter/MolecularSequence-window-start):number
     $(http://hl7.org/fhir/SearchParameter/MolecularSequence-window-end):number
+  ?referenceseqid: referenceseqid=token (trial-use)
   ?type: type=token (trial-use)
   ?variant-end: variant-end=number (trial-use)
   ?variant-start: variant-start=number (trial-use)
@@ -9803,15 +9803,15 @@ Resources: 143
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate
     - value[x][1..1]: date
   ?contact: contact=string (trial-use)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (trial-use)
   ?description: description=string (trial-use)
   ?id-type: id-type=token (trial-use)
@@ -10198,7 +10198,6 @@ Resources: 143
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference (trial-use)
   ?category: category=token (trial-use)
-  ?code: code=token (trial-use)
   ?code-value-concept: code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-concept):token
@@ -10211,23 +10210,24 @@ Resources: 143
   ?code-value-string: code-value-string is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-string):string
-  ?combo-code: combo-code=token (trial-use)
+  ?code: code=token (trial-use)
   ?combo-code-value-concept: combo-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-concept):token
   ?combo-code-value-quantity: combo-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-quantity):quantity
+  ?combo-code: combo-code=token (trial-use)
   ?combo-data-absent-reason: combo-data-absent-reason=token (trial-use)
   ?combo-value-concept: combo-value-concept=token (trial-use)
   ?combo-value-quantity: combo-value-quantity=quantity (trial-use)
-  ?component-code: component-code=token (trial-use)
   ?component-code-value-concept: component-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-concept):token
   ?component-code-value-quantity: component-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-quantity):quantity
+  ?component-code: component-code=token (trial-use)
   ?component-data-absent-reason: component-data-absent-reason=token (trial-use)
   ?component-value-concept: component-value-concept=token (trial-use)
   ?component-value-quantity: component-value-quantity=quantity (trial-use)
@@ -10449,15 +10449,15 @@ Resources: 143
     - value[x][1..1]: canonical(ActivityDefinition|Measure|OperationDefinition|PlanDefinition|Questionnaire)|Reference(ActivityDefinition|Measure|OperationDefinition|PlanDefinition|Questionnaire)|uri
   ?base: base=reference (trial-use)
   ?code: code=token (trial-use)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (trial-use)
   ?description: description=string (trial-use)
   ?input-profile: input-profile=reference (trial-use)
@@ -10572,12 +10572,12 @@ Resources: 143
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/organization-period
     - value[x][1..1]: Period
   ?active: active=token (trial-use)
-  ?address: address=string (trial-use)
   ?address-city: address-city=string (trial-use)
   ?address-country: address-country=string (trial-use)
   ?address-postalcode: address-postalcode=string (trial-use)
   ?address-state: address-state=string (trial-use)
   ?address-use: address-use=token (trial-use)
+  ?address: address=string (trial-use)
   ?endpoint: endpoint=reference (trial-use)
   ?identifier: identifier=token (trial-use)
   ?name: name=string (trial-use)
@@ -10706,8 +10706,8 @@ Resources: 143
   ?medication: medication=reference (draft)
   ?name: name=token (normative)
   ?nutrition: nutrition=reference (draft)
-  ?package: package=reference (draft)
   ?package-for: package-for=reference (trial-use)
+  ?package: package=reference (draft)
   ?status: status=token (trial-use)
 - Parameters: Resource (normative FMM: 5) (abstract: False)
   ^parameters[0..*]: Element::Parameters (W5: infrastructure.exchange)
@@ -10850,12 +10850,12 @@ Resources: 143
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/patient-religion
     - value[x][1..1]: CodeableConcept
   ?active: active=token (trial-use)
-  ?address: address=string (trial-use)
   ?address-city: address-city=string (trial-use)
   ?address-country: address-country=string (trial-use)
   ?address-postalcode: address-postalcode=string (trial-use)
   ?address-state: address-state=string (trial-use)
   ?address-use: address-use=token (trial-use)
+  ?address: address=string (trial-use)
   ?age: age=number (experimental)
   ?birthdate: birthdate=date (trial-use)
   ?birthOrderBoolean: birthOrderBoolean=token (experimental)
@@ -10992,8 +10992,8 @@ Resources: 143
   ?identifier: identifier=token (trial-use)
   ?outcome: outcome=token (trial-use)
   ?payment-issuer: payment-issuer=reference (trial-use)
-  ?request: request=reference (trial-use)
   ?requestor: requestor=reference (trial-use)
+  ?request: request=reference (trial-use)
   ?status: status=token (trial-use)
 - Person: DomainResource (trial-use FMM: 2) (abstract: False)
   ^person[0..*]: Element::Person (W5: administrative.entity)
@@ -11034,12 +11034,12 @@ Resources: 143
   +http://hl7.org/fhir/StructureDefinition/individual-genderIdentity [0..*]
   +http://hl7.org/fhir/StructureDefinition/individual-pronouns [0..*]
   +http://hl7.org/fhir/StructureDefinition/individual-recordedSexOrGender [0..*]
-  ?address: address=string (trial-use)
   ?address-city: address-city=string (trial-use)
   ?address-country: address-country=string (trial-use)
   ?address-postalcode: address-postalcode=string (trial-use)
   ?address-state: address-state=string (trial-use)
   ?address-use: address-use=token (trial-use)
+  ?address: address=string (trial-use)
   ?birthdate: birthdate=date (trial-use)
   ?email: email=token (trial-use)
   ?gender: gender=token (trial-use)
@@ -11193,15 +11193,15 @@ Resources: 143
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/workflow-shallComplyWith
     - value[x][1..1]: canonical(ActivityDefinition|Measure|OperationDefinition|PlanDefinition|Questionnaire)|Reference(ActivityDefinition|Measure|OperationDefinition|PlanDefinition|Questionnaire)|uri
   ?composed-of: composed-of=reference (trial-use)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/PlanDefinition-context-type):token
     $(http://hl7.org/fhir/SearchParameter/PlanDefinition-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/PlanDefinition-context-type):token
     $(http://hl7.org/fhir/SearchParameter/PlanDefinition-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (normative)
   ?definition: definition=reference (trial-use)
   ?depends-on: depends-on=reference (trial-use)
@@ -11296,12 +11296,12 @@ Resources: 143
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/practitioner-job-title
     - value[x][1..1]: CodeableConcept
   ?active: active=token (trial-use)
-  ?address: address=string (trial-use)
   ?address-city: address-city=string (trial-use)
   ?address-country: address-country=string (trial-use)
   ?address-postalcode: address-postalcode=string (trial-use)
   ?address-state: address-state=string (trial-use)
   ?address-use: address-use=token (trial-use)
+  ?address: address=string (trial-use)
   ?communication: communication=token (trial-use)
   ?email: email=token (trial-use)
   ?family: family=string (trial-use)
@@ -11533,9 +11533,9 @@ Resources: 143
     - what[1..1]: Reference(Resource)
     - agent[0..*]: #Provenance.agent
   - signature[0..*]: Signature
-  ?agent: agent=reference (trial-use)
   ?agent-role: agent-role=token (trial-use)
   ?agent-type: agent-type=token (trial-use)
+  ?agent: agent=reference (trial-use)
   ?entity: entity=reference (trial-use)
   ?location: location=reference (trial-use)
   ?patient: patient=reference (trial-use)
@@ -11833,15 +11833,15 @@ Resources: 143
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/variable
     - value[x][1..1]: Expression
   ?code: code=token (trial-use)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Questionnaire-context-type):token
     $(http://hl7.org/fhir/SearchParameter/Questionnaire-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Questionnaire-context-type):token
     $(http://hl7.org/fhir/SearchParameter/Questionnaire-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (trial-use)
   ?definition: definition=uri (trial-use)
   ?description: description=string (trial-use)
@@ -11998,8 +11998,8 @@ Resources: 143
     - status[0..1]: CodeableConcept binding name: PublicationStatus
     - date[x][0..1]: dateTime|Period
     - application[0..*]: #RegulatedAuthorization.case
-  ?case: case=token (trial-use)
   ?case-type: case-type=token (trial-use)
+  ?case: case=token (trial-use)
   ?holder: holder=reference (trial-use)
   ?identifier: identifier=token (trial-use)
   ?region: region=token (trial-use)
@@ -12049,12 +12049,12 @@ Resources: 143
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/practitioner-animalSpecies
     - value[x][1..1]: CodeableConcept
   ?active: active=token (trial-use)
-  ?address: address=string (trial-use)
   ?address-city: address-city=string (trial-use)
   ?address-country: address-country=string (trial-use)
   ?address-postalcode: address-postalcode=string (trial-use)
   ?address-state: address-state=string (trial-use)
   ?address-use: address-use=token (trial-use)
+  ?address: address=string (trial-use)
   ?birthdate: birthdate=date (trial-use)
   ?email: email=token (trial-use)
   ?gender: gender=token (trial-use)
@@ -12223,15 +12223,15 @@ Resources: 143
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/replaces
     - value[x][1..1]: canonical(Resource)
   ?composed-of: composed-of=reference (trial-use)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/ResearchDefinition-context-type):token
     $(http://hl7.org/fhir/SearchParameter/ResearchDefinition-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/ResearchDefinition-context-type):token
     $(http://hl7.org/fhir/SearchParameter/ResearchDefinition-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (trial-use)
   ?depends-on: depends-on=reference (trial-use)
   ?derived-from: derived-from=reference (trial-use)
@@ -12325,15 +12325,15 @@ Resources: 143
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/replaces
     - value[x][1..1]: canonical(Resource)
   ?composed-of: composed-of=reference (trial-use)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/ResearchElementDefinition-context-type):token
     $(http://hl7.org/fhir/SearchParameter/ResearchElementDefinition-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/ResearchElementDefinition-context-type):token
     $(http://hl7.org/fhir/SearchParameter/ResearchElementDefinition-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (trial-use)
   ?depends-on: depends-on=reference (trial-use)
   ?derived-from: derived-from=reference (trial-use)
@@ -12669,15 +12669,15 @@ Resources: 143
   ?base: base=token (trial-use)
   ?code: code=token (trial-use)
   ?component: component=reference (trial-use)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (trial-use)
   ?derived-from: derived-from=reference (trial-use)
   ?description: description=string (trial-use)
@@ -12797,8 +12797,8 @@ Resources: 143
   ?intent: intent=token (trial-use)
   ?occurrence: occurrence=date (trial-use)
   ?patient: patient=reference (trial-use)
-  ?performer: performer=reference (trial-use)
   ?performer-type: performer-type=token (trial-use)
+  ?performer: performer=reference (trial-use)
   ?priority: priority=token (trial-use)
   ?replaces: replaces=reference (trial-use)
   ?requester: requester=reference (trial-use)
@@ -12938,8 +12938,8 @@ Resources: 143
   ?bodysite: bodysite=token (trial-use)
   ?collected: collected=date (trial-use)
   ?collector: collector=reference (trial-use)
-  ?container: container=token (trial-use)
   ?container-id: container-id=token (trial-use)
+  ?container: container=token (trial-use)
   ?identifier: identifier=token (trial-use)
   ?parent: parent=reference (trial-use)
   ?patient: patient=reference (trial-use)
@@ -13173,17 +13173,17 @@ Resources: 143
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-no-order
     - value[x][1..1]: boolean
   ?abstract: abstract=token (trial-use)
-  ?base: base=reference (trial-use)
   ?base-path: base-path=token (trial-use)
-  ?context: context=token (trial-use)
+  ?base: base=reference (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (trial-use)
   ?derivation: derivation=token (trial-use)
   ?description: description=string (trial-use)
@@ -13348,15 +13348,15 @@ Resources: 143
   +http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate
     - value[x][1..1]: date
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (trial-use)
   ?description: description=string (trial-use)
   ?identifier: identifier=token (trial-use)
@@ -14091,15 +14091,15 @@ Resources: 143
   +http://hl7.org/fhir/StructureDefinition/replaces [0..*]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/replaces
     - value[x][1..1]: canonical(Resource)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (trial-use)
   ?description: description=string (trial-use)
   ?jurisdiction: jurisdiction=token (trial-use)
@@ -14391,15 +14391,15 @@ Resources: 143
   +http://hl7.org/fhir/StructureDefinition/replaces [0..*]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/replaces
     - value[x][1..1]: canonical(Resource)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/TestScript-context-type):token
     $(http://hl7.org/fhir/SearchParameter/TestScript-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/TestScript-context-type):token
     $(http://hl7.org/fhir/SearchParameter/TestScript-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (trial-use)
   ?description: description=string (trial-use)
   ?identifier: identifier=token (trial-use)
@@ -14662,15 +14662,15 @@ Resources: 143
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/valueset-workflowStatusDescription
     - value[x][1..1]: string
   ?code: code=token (trial-use)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (trial-use)
   ?description: description=string (trial-use)
   ?expansion: expansion=uri (trial-use)
@@ -14934,10 +14934,10 @@ Profiles: 43
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/characteristicExpression
     - value[x][1..1]: Expression
   ?actual: actual=token (trial-use)
-  ?characteristic: characteristic=token (trial-use)
   ?characteristic-value: characteristic-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Group-characteristic):token
     $(http://hl7.org/fhir/SearchParameter/Group-value):token
+  ?characteristic: characteristic=token (trial-use)
   ?code: code=token (trial-use)
   ?exclude: exclude=token (trial-use)
   ?identifier: identifier=token (trial-use)
@@ -15150,7 +15150,6 @@ Profiles: 43
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference (trial-use)
   ?category: category=token (trial-use)
-  ?code: code=token (trial-use)
   ?code-value-concept: code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-concept):token
@@ -15163,23 +15162,24 @@ Profiles: 43
   ?code-value-string: code-value-string is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-string):string
-  ?combo-code: combo-code=token (trial-use)
+  ?code: code=token (trial-use)
   ?combo-code-value-concept: combo-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-concept):token
   ?combo-code-value-quantity: combo-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-quantity):quantity
+  ?combo-code: combo-code=token (trial-use)
   ?combo-data-absent-reason: combo-data-absent-reason=token (trial-use)
   ?combo-value-concept: combo-value-concept=token (trial-use)
   ?combo-value-quantity: combo-value-quantity=quantity (trial-use)
-  ?component-code: component-code=token (trial-use)
   ?component-code-value-concept: component-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-concept):token
   ?component-code-value-quantity: component-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-quantity):quantity
+  ?component-code: component-code=token (trial-use)
   ?component-data-absent-reason: component-data-absent-reason=token (trial-use)
   ?component-value-concept: component-value-concept=token (trial-use)
   ?component-value-quantity: component-value-quantity=quantity (trial-use)
@@ -15427,7 +15427,6 @@ Profiles: 43
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference (trial-use)
   ?category: category=token (trial-use)
-  ?code: code=token (trial-use)
   ?code-value-concept: code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-concept):token
@@ -15440,23 +15439,24 @@ Profiles: 43
   ?code-value-string: code-value-string is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-string):string
-  ?combo-code: combo-code=token (trial-use)
+  ?code: code=token (trial-use)
   ?combo-code-value-concept: combo-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-concept):token
   ?combo-code-value-quantity: combo-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-quantity):quantity
+  ?combo-code: combo-code=token (trial-use)
   ?combo-data-absent-reason: combo-data-absent-reason=token (trial-use)
   ?combo-value-concept: combo-value-concept=token (trial-use)
   ?combo-value-quantity: combo-value-quantity=quantity (trial-use)
-  ?component-code: component-code=token (trial-use)
   ?component-code-value-concept: component-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-concept):token
   ?component-code-value-quantity: component-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-quantity):quantity
+  ?component-code: component-code=token (trial-use)
   ?component-data-absent-reason: component-data-absent-reason=token (trial-use)
   ?component-value-concept: component-value-concept=token (trial-use)
   ?component-value-quantity: component-value-quantity=quantity (trial-use)
@@ -15704,7 +15704,6 @@ Profiles: 43
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference (trial-use)
   ?category: category=token (trial-use)
-  ?code: code=token (trial-use)
   ?code-value-concept: code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-concept):token
@@ -15717,23 +15716,24 @@ Profiles: 43
   ?code-value-string: code-value-string is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-string):string
-  ?combo-code: combo-code=token (trial-use)
+  ?code: code=token (trial-use)
   ?combo-code-value-concept: combo-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-concept):token
   ?combo-code-value-quantity: combo-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-quantity):quantity
+  ?combo-code: combo-code=token (trial-use)
   ?combo-data-absent-reason: combo-data-absent-reason=token (trial-use)
   ?combo-value-concept: combo-value-concept=token (trial-use)
   ?combo-value-quantity: combo-value-quantity=quantity (trial-use)
-  ?component-code: component-code=token (trial-use)
   ?component-code-value-concept: component-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-concept):token
   ?component-code-value-quantity: component-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-quantity):quantity
+  ?component-code: component-code=token (trial-use)
   ?component-data-absent-reason: component-data-absent-reason=token (trial-use)
   ?component-value-concept: component-value-concept=token (trial-use)
   ?component-value-quantity: component-value-quantity=quantity (trial-use)
@@ -15981,7 +15981,6 @@ Profiles: 43
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference (trial-use)
   ?category: category=token (trial-use)
-  ?code: code=token (trial-use)
   ?code-value-concept: code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-concept):token
@@ -15994,23 +15993,24 @@ Profiles: 43
   ?code-value-string: code-value-string is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-string):string
-  ?combo-code: combo-code=token (trial-use)
+  ?code: code=token (trial-use)
   ?combo-code-value-concept: combo-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-concept):token
   ?combo-code-value-quantity: combo-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-quantity):quantity
+  ?combo-code: combo-code=token (trial-use)
   ?combo-data-absent-reason: combo-data-absent-reason=token (trial-use)
   ?combo-value-concept: combo-value-concept=token (trial-use)
   ?combo-value-quantity: combo-value-quantity=quantity (trial-use)
-  ?component-code: component-code=token (trial-use)
   ?component-code-value-concept: component-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-concept):token
   ?component-code-value-quantity: component-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-quantity):quantity
+  ?component-code: component-code=token (trial-use)
   ?component-data-absent-reason: component-data-absent-reason=token (trial-use)
   ?component-value-concept: component-value-concept=token (trial-use)
   ?component-value-quantity: component-value-quantity=quantity (trial-use)
@@ -16259,7 +16259,6 @@ Profiles: 43
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference (trial-use)
   ?category: category=token (trial-use)
-  ?code: code=token (trial-use)
   ?code-value-concept: code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-concept):token
@@ -16272,23 +16271,24 @@ Profiles: 43
   ?code-value-string: code-value-string is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-string):string
-  ?combo-code: combo-code=token (trial-use)
+  ?code: code=token (trial-use)
   ?combo-code-value-concept: combo-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-concept):token
   ?combo-code-value-quantity: combo-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-quantity):quantity
+  ?combo-code: combo-code=token (trial-use)
   ?combo-data-absent-reason: combo-data-absent-reason=token (trial-use)
   ?combo-value-concept: combo-value-concept=token (trial-use)
   ?combo-value-quantity: combo-value-quantity=quantity (trial-use)
-  ?component-code: component-code=token (trial-use)
   ?component-code-value-concept: component-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-concept):token
   ?component-code-value-quantity: component-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-quantity):quantity
+  ?component-code: component-code=token (trial-use)
   ?component-data-absent-reason: component-data-absent-reason=token (trial-use)
   ?component-value-concept: component-value-concept=token (trial-use)
   ?component-value-quantity: component-value-quantity=quantity (trial-use)
@@ -16760,15 +16760,15 @@ Profiles: 43
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/workflow-shallComplyWith
     - value[x][1..1]: canonical(ActivityDefinition|Measure|OperationDefinition|PlanDefinition|Questionnaire)|Reference(ActivityDefinition|Measure|OperationDefinition|PlanDefinition|Questionnaire)|uri
   ?composed-of: composed-of=reference (trial-use)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/PlanDefinition-context-type):token
     $(http://hl7.org/fhir/SearchParameter/PlanDefinition-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/PlanDefinition-context-type):token
     $(http://hl7.org/fhir/SearchParameter/PlanDefinition-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (normative)
   ?definition: definition=reference (trial-use)
   ?depends-on: depends-on=reference (trial-use)
@@ -16996,7 +16996,6 @@ Profiles: 43
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference (trial-use)
   ?category: category=token (trial-use)
-  ?code: code=token (trial-use)
   ?code-value-concept: code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-concept):token
@@ -17009,23 +17008,24 @@ Profiles: 43
   ?code-value-string: code-value-string is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-string):string
-  ?combo-code: combo-code=token (trial-use)
+  ?code: code=token (trial-use)
   ?combo-code-value-concept: combo-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-concept):token
   ?combo-code-value-quantity: combo-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-quantity):quantity
+  ?combo-code: combo-code=token (trial-use)
   ?combo-data-absent-reason: combo-data-absent-reason=token (trial-use)
   ?combo-value-concept: combo-value-concept=token (trial-use)
   ?combo-value-quantity: combo-value-quantity=quantity (trial-use)
-  ?component-code: component-code=token (trial-use)
   ?component-code-value-concept: component-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-concept):token
   ?component-code-value-quantity: component-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-quantity):quantity
+  ?component-code: component-code=token (trial-use)
   ?component-data-absent-reason: component-data-absent-reason=token (trial-use)
   ?component-value-concept: component-value-concept=token (trial-use)
   ?component-value-quantity: component-value-quantity=quantity (trial-use)
@@ -17348,15 +17348,15 @@ Profiles: 43
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/workflow-shallComplyWith
     - value[x][1..1]: canonical(ActivityDefinition|Measure|OperationDefinition|PlanDefinition|Questionnaire)|Reference(ActivityDefinition|Measure|OperationDefinition|PlanDefinition|Questionnaire)|uri
   ?composed-of: composed-of=reference (trial-use)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/PlanDefinition-context-type):token
     $(http://hl7.org/fhir/SearchParameter/PlanDefinition-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/PlanDefinition-context-type):token
     $(http://hl7.org/fhir/SearchParameter/PlanDefinition-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (normative)
   ?definition: definition=reference (trial-use)
   ?depends-on: depends-on=reference (trial-use)
@@ -17695,15 +17695,15 @@ Profiles: 43
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/variable
     - value[x][1..1]: Expression
   ?code: code=token (trial-use)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Questionnaire-context-type):token
     $(http://hl7.org/fhir/SearchParameter/Questionnaire-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Questionnaire-context-type):token
     $(http://hl7.org/fhir/SearchParameter/Questionnaire-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (trial-use)
   ?definition: definition=uri (trial-use)
   ?description: description=string (trial-use)
@@ -17784,15 +17784,15 @@ Profiles: 43
     - value[x][1..1]: canonical(Resource)
   ?composed-of: composed-of=reference (trial-use)
   ?content-type: content-type=token (normative)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Library-context-type):token
     $(http://hl7.org/fhir/SearchParameter/Library-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Library-context-type):token
     $(http://hl7.org/fhir/SearchParameter/Library-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (normative)
   ?depends-on: depends-on=reference (trial-use)
   ?derived-from: derived-from=reference (trial-use)
@@ -17996,7 +17996,6 @@ Profiles: 43
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference (trial-use)
   ?category: category=token (trial-use)
-  ?code: code=token (trial-use)
   ?code-value-concept: code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-concept):token
@@ -18009,23 +18008,24 @@ Profiles: 43
   ?code-value-string: code-value-string is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-string):string
-  ?combo-code: combo-code=token (trial-use)
+  ?code: code=token (trial-use)
   ?combo-code-value-concept: combo-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-concept):token
   ?combo-code-value-quantity: combo-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-quantity):quantity
+  ?combo-code: combo-code=token (trial-use)
   ?combo-data-absent-reason: combo-data-absent-reason=token (trial-use)
   ?combo-value-concept: combo-value-concept=token (trial-use)
   ?combo-value-quantity: combo-value-quantity=quantity (trial-use)
-  ?component-code: component-code=token (trial-use)
   ?component-code-value-concept: component-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-concept):token
   ?component-code-value-quantity: component-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-quantity):quantity
+  ?component-code: component-code=token (trial-use)
   ?component-data-absent-reason: component-data-absent-reason=token (trial-use)
   ?component-value-concept: component-value-concept=token (trial-use)
   ?component-value-quantity: component-value-quantity=quantity (trial-use)
@@ -18874,10 +18874,10 @@ Profiles: 43
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/characteristicExpression
     - value[x][1..1]: Expression
   ?actual: actual=token (trial-use)
-  ?characteristic: characteristic=token (trial-use)
   ?characteristic-value: characteristic-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Group-characteristic):token
     $(http://hl7.org/fhir/SearchParameter/Group-value):token
+  ?characteristic: characteristic=token (trial-use)
   ?code: code=token (trial-use)
   ?exclude: exclude=token (trial-use)
   ?identifier: identifier=token (trial-use)
@@ -19075,7 +19075,6 @@ Profiles: 43
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference (trial-use)
   ?category: category=token (trial-use)
-  ?code: code=token (trial-use)
   ?code-value-concept: code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-concept):token
@@ -19088,23 +19087,24 @@ Profiles: 43
   ?code-value-string: code-value-string is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-string):string
-  ?combo-code: combo-code=token (trial-use)
+  ?code: code=token (trial-use)
   ?combo-code-value-concept: combo-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-concept):token
   ?combo-code-value-quantity: combo-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-quantity):quantity
+  ?combo-code: combo-code=token (trial-use)
   ?combo-data-absent-reason: combo-data-absent-reason=token (trial-use)
   ?combo-value-concept: combo-value-concept=token (trial-use)
   ?combo-value-quantity: combo-value-quantity=quantity (trial-use)
-  ?component-code: component-code=token (trial-use)
   ?component-code-value-concept: component-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-concept):token
   ?component-code-value-quantity: component-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-quantity):quantity
+  ?component-code: component-code=token (trial-use)
   ?component-data-absent-reason: component-data-absent-reason=token (trial-use)
   ?component-value-concept: component-value-concept=token (trial-use)
   ?component-value-quantity: component-value-quantity=quantity (trial-use)
@@ -19352,7 +19352,6 @@ Profiles: 43
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference (trial-use)
   ?category: category=token (trial-use)
-  ?code: code=token (trial-use)
   ?code-value-concept: code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-concept):token
@@ -19365,23 +19364,24 @@ Profiles: 43
   ?code-value-string: code-value-string is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-string):string
-  ?combo-code: combo-code=token (trial-use)
+  ?code: code=token (trial-use)
   ?combo-code-value-concept: combo-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-concept):token
   ?combo-code-value-quantity: combo-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-quantity):quantity
+  ?combo-code: combo-code=token (trial-use)
   ?combo-data-absent-reason: combo-data-absent-reason=token (trial-use)
   ?combo-value-concept: combo-value-concept=token (trial-use)
   ?combo-value-quantity: combo-value-quantity=quantity (trial-use)
-  ?component-code: component-code=token (trial-use)
   ?component-code-value-concept: component-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-concept):token
   ?component-code-value-quantity: component-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-quantity):quantity
+  ?component-code: component-code=token (trial-use)
   ?component-data-absent-reason: component-data-absent-reason=token (trial-use)
   ?component-value-concept: component-value-concept=token (trial-use)
   ?component-value-quantity: component-value-quantity=quantity (trial-use)
@@ -19629,7 +19629,6 @@ Profiles: 43
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference (trial-use)
   ?category: category=token (trial-use)
-  ?code: code=token (trial-use)
   ?code-value-concept: code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-concept):token
@@ -19642,23 +19641,24 @@ Profiles: 43
   ?code-value-string: code-value-string is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-string):string
-  ?combo-code: combo-code=token (trial-use)
+  ?code: code=token (trial-use)
   ?combo-code-value-concept: combo-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-concept):token
   ?combo-code-value-quantity: combo-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-quantity):quantity
+  ?combo-code: combo-code=token (trial-use)
   ?combo-data-absent-reason: combo-data-absent-reason=token (trial-use)
   ?combo-value-concept: combo-value-concept=token (trial-use)
   ?combo-value-quantity: combo-value-quantity=quantity (trial-use)
-  ?component-code: component-code=token (trial-use)
   ?component-code-value-concept: component-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-concept):token
   ?component-code-value-quantity: component-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-quantity):quantity
+  ?component-code: component-code=token (trial-use)
   ?component-data-absent-reason: component-data-absent-reason=token (trial-use)
   ?component-value-concept: component-value-concept=token (trial-use)
   ?component-value-quantity: component-value-quantity=quantity (trial-use)
@@ -20063,7 +20063,6 @@ Profiles: 43
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference (trial-use)
   ?category: category=token (trial-use)
-  ?code: code=token (trial-use)
   ?code-value-concept: code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-concept):token
@@ -20076,23 +20075,24 @@ Profiles: 43
   ?code-value-string: code-value-string is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-string):string
-  ?combo-code: combo-code=token (trial-use)
+  ?code: code=token (trial-use)
   ?combo-code-value-concept: combo-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-concept):token
   ?combo-code-value-quantity: combo-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-quantity):quantity
+  ?combo-code: combo-code=token (trial-use)
   ?combo-data-absent-reason: combo-data-absent-reason=token (trial-use)
   ?combo-value-concept: combo-value-concept=token (trial-use)
   ?combo-value-quantity: combo-value-quantity=quantity (trial-use)
-  ?component-code: component-code=token (trial-use)
   ?component-code-value-concept: component-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-concept):token
   ?component-code-value-quantity: component-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-quantity):quantity
+  ?component-code: component-code=token (trial-use)
   ?component-data-absent-reason: component-data-absent-reason=token (trial-use)
   ?component-value-concept: component-value-concept=token (trial-use)
   ?component-value-quantity: component-value-quantity=quantity (trial-use)
@@ -20548,7 +20548,6 @@ Profiles: 43
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference (trial-use)
   ?category: category=token (trial-use)
-  ?code: code=token (trial-use)
   ?code-value-concept: code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-concept):token
@@ -20561,23 +20560,24 @@ Profiles: 43
   ?code-value-string: code-value-string is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-string):string
-  ?combo-code: combo-code=token (trial-use)
+  ?code: code=token (trial-use)
   ?combo-code-value-concept: combo-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-concept):token
   ?combo-code-value-quantity: combo-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-quantity):quantity
+  ?combo-code: combo-code=token (trial-use)
   ?combo-data-absent-reason: combo-data-absent-reason=token (trial-use)
   ?combo-value-concept: combo-value-concept=token (trial-use)
   ?combo-value-quantity: combo-value-quantity=quantity (trial-use)
-  ?component-code: component-code=token (trial-use)
   ?component-code-value-concept: component-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-concept):token
   ?component-code-value-quantity: component-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-quantity):quantity
+  ?component-code: component-code=token (trial-use)
   ?component-data-absent-reason: component-data-absent-reason=token (trial-use)
   ?component-value-concept: component-value-concept=token (trial-use)
   ?component-value-quantity: component-value-quantity=quantity (trial-use)
@@ -20825,7 +20825,6 @@ Profiles: 43
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference (trial-use)
   ?category: category=token (trial-use)
-  ?code: code=token (trial-use)
   ?code-value-concept: code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-concept):token
@@ -20838,23 +20837,24 @@ Profiles: 43
   ?code-value-string: code-value-string is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-string):string
-  ?combo-code: combo-code=token (trial-use)
+  ?code: code=token (trial-use)
   ?combo-code-value-concept: combo-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-concept):token
   ?combo-code-value-quantity: combo-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-quantity):quantity
+  ?combo-code: combo-code=token (trial-use)
   ?combo-data-absent-reason: combo-data-absent-reason=token (trial-use)
   ?combo-value-concept: combo-value-concept=token (trial-use)
   ?combo-value-quantity: combo-value-quantity=quantity (trial-use)
-  ?component-code: component-code=token (trial-use)
   ?component-code-value-concept: component-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-concept):token
   ?component-code-value-quantity: component-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-quantity):quantity
+  ?component-code: component-code=token (trial-use)
   ?component-data-absent-reason: component-data-absent-reason=token (trial-use)
   ?component-value-concept: component-value-concept=token (trial-use)
   ?component-value-quantity: component-value-quantity=quantity (trial-use)
@@ -20960,9 +20960,9 @@ Profiles: 43
     - what[1..1]: Reference(Resource)
     - agent[0..*]: http://hl7.org/fhir/StructureDefinition/Provenance#Provenance.agent
   - signature[0..*]: Signature
-  ?agent: agent=reference (trial-use)
   ?agent-role: agent-role=token (trial-use)
   ?agent-type: agent-type=token (trial-use)
+  ?agent: agent=reference (trial-use)
   ?entity: entity=reference (trial-use)
   ?location: location=reference (trial-use)
   ?patient: patient=reference (trial-use)
@@ -21159,7 +21159,6 @@ Profiles: 43
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference (trial-use)
   ?category: category=token (trial-use)
-  ?code: code=token (trial-use)
   ?code-value-concept: code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-concept):token
@@ -21172,23 +21171,24 @@ Profiles: 43
   ?code-value-string: code-value-string is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-string):string
-  ?combo-code: combo-code=token (trial-use)
+  ?code: code=token (trial-use)
   ?combo-code-value-concept: combo-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-concept):token
   ?combo-code-value-quantity: combo-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-quantity):quantity
+  ?combo-code: combo-code=token (trial-use)
   ?combo-data-absent-reason: combo-data-absent-reason=token (trial-use)
   ?combo-value-concept: combo-value-concept=token (trial-use)
   ?combo-value-quantity: combo-value-quantity=quantity (trial-use)
-  ?component-code: component-code=token (trial-use)
   ?component-code-value-concept: component-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-concept):token
   ?component-code-value-quantity: component-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-quantity):quantity
+  ?component-code: component-code=token (trial-use)
   ?component-data-absent-reason: component-data-absent-reason=token (trial-use)
   ?component-value-concept: component-value-concept=token (trial-use)
   ?component-value-quantity: component-value-quantity=quantity (trial-use)
@@ -21360,8 +21360,8 @@ Profiles: 43
   ?intent: intent=token (trial-use)
   ?occurrence: occurrence=date (trial-use)
   ?patient: patient=reference (trial-use)
-  ?performer: performer=reference (trial-use)
   ?performer-type: performer-type=token (trial-use)
+  ?performer: performer=reference (trial-use)
   ?priority: priority=token (trial-use)
   ?replaces: replaces=reference (trial-use)
   ?requester: requester=reference (trial-use)
@@ -21460,15 +21460,15 @@ Profiles: 43
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/workflow-shallComplyWith
     - value[x][1..1]: canonical(ActivityDefinition|Measure|OperationDefinition|PlanDefinition|Questionnaire)|Reference(ActivityDefinition|Measure|OperationDefinition|PlanDefinition|Questionnaire)|uri
   ?composed-of: composed-of=reference (trial-use)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/ActivityDefinition-context-type):token
     $(http://hl7.org/fhir/SearchParameter/ActivityDefinition-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/ActivityDefinition-context-type):token
     $(http://hl7.org/fhir/SearchParameter/ActivityDefinition-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (normative)
   ?depends-on: depends-on=reference (trial-use)
   ?derived-from: derived-from=reference (trial-use)
@@ -21674,15 +21674,15 @@ Profiles: 43
     - value[x][1..1]: string
   ?code: code=token (trial-use)
   ?content-mode: content-mode=token (trial-use)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (trial-use)
   ?description: description=string (trial-use)
   ?identifier: identifier=token (trial-use)
@@ -21829,15 +21829,15 @@ Profiles: 43
     - value[x][1..1]: canonical(Resource)
   ?composed-of: composed-of=reference (trial-use)
   ?content-type: content-type=token (normative)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Library-context-type):token
     $(http://hl7.org/fhir/SearchParameter/Library-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Library-context-type):token
     $(http://hl7.org/fhir/SearchParameter/Library-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (normative)
   ?depends-on: depends-on=reference (trial-use)
   ?derived-from: derived-from=reference (trial-use)
@@ -21964,15 +21964,15 @@ Profiles: 43
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/workflow-shallComplyWith
     - value[x][1..1]: canonical(ActivityDefinition|Measure|OperationDefinition|PlanDefinition|Questionnaire)|Reference(ActivityDefinition|Measure|OperationDefinition|PlanDefinition|Questionnaire)|uri
   ?composed-of: composed-of=reference (trial-use)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Measure-context-type):token
     $(http://hl7.org/fhir/SearchParameter/Measure-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Measure-context-type):token
     $(http://hl7.org/fhir/SearchParameter/Measure-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (normative)
   ?depends-on: depends-on=reference (trial-use)
   ?derived-from: derived-from=reference (trial-use)
@@ -22294,15 +22294,15 @@ Profiles: 43
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/valueset-workflowStatusDescription
     - value[x][1..1]: string
   ?code: code=token (trial-use)
-  ?context: context=token (trial-use)
   ?context-quantity: context-quantity=quantity (trial-use)
-  ?context-type: context-type=token (trial-use)
   ?context-type-quantity: context-type-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context-quantity):quantity
   ?context-type-value: context-type-value is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/conformance-context-type):token
     $(http://hl7.org/fhir/SearchParameter/conformance-context):token
+  ?context-type: context-type=token (trial-use)
+  ?context: context=token (trial-use)
   ?date: date=date (trial-use)
   ?description: description=string (trial-use)
   ?expansion: expansion=uri (trial-use)
@@ -22604,7 +22604,6 @@ Profiles: 43
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference (trial-use)
   ?category: category=token (trial-use)
-  ?code: code=token (trial-use)
   ?code-value-concept: code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-concept):token
@@ -22617,23 +22616,24 @@ Profiles: 43
   ?code-value-string: code-value-string is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-string):string
-  ?combo-code: combo-code=token (trial-use)
+  ?code: code=token (trial-use)
   ?combo-code-value-concept: combo-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-concept):token
   ?combo-code-value-quantity: combo-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-quantity):quantity
+  ?combo-code: combo-code=token (trial-use)
   ?combo-data-absent-reason: combo-data-absent-reason=token (trial-use)
   ?combo-value-concept: combo-value-concept=token (trial-use)
   ?combo-value-quantity: combo-value-quantity=quantity (trial-use)
-  ?component-code: component-code=token (trial-use)
   ?component-code-value-concept: component-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-concept):token
   ?component-code-value-quantity: component-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-quantity):quantity
+  ?component-code: component-code=token (trial-use)
   ?component-data-absent-reason: component-data-absent-reason=token (trial-use)
   ?component-value-concept: component-value-concept=token (trial-use)
   ?component-value-quantity: component-value-quantity=quantity (trial-use)
@@ -22873,7 +22873,6 @@ Profiles: 43
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference (trial-use)
   ?category: category=token (trial-use)
-  ?code: code=token (trial-use)
   ?code-value-concept: code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-concept):token
@@ -22886,23 +22885,24 @@ Profiles: 43
   ?code-value-string: code-value-string is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-string):string
-  ?combo-code: combo-code=token (trial-use)
+  ?code: code=token (trial-use)
   ?combo-code-value-concept: combo-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-concept):token
   ?combo-code-value-quantity: combo-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-quantity):quantity
+  ?combo-code: combo-code=token (trial-use)
   ?combo-data-absent-reason: combo-data-absent-reason=token (trial-use)
   ?combo-value-concept: combo-value-concept=token (trial-use)
   ?combo-value-quantity: combo-value-quantity=quantity (trial-use)
-  ?component-code: component-code=token (trial-use)
   ?component-code-value-concept: component-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-concept):token
   ?component-code-value-quantity: component-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-quantity):quantity
+  ?component-code: component-code=token (trial-use)
   ?component-data-absent-reason: component-data-absent-reason=token (trial-use)
   ?component-value-concept: component-value-concept=token (trial-use)
   ?component-value-quantity: component-value-quantity=quantity (trial-use)
@@ -23150,7 +23150,6 @@ Profiles: 43
   ?amino-acid-change: amino-acid-change=string (experimental)
   ?based-on: based-on=reference (trial-use)
   ?category: category=token (trial-use)
-  ?code: code=token (trial-use)
   ?code-value-concept: code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-concept):token
@@ -23163,23 +23162,24 @@ Profiles: 43
   ?code-value-string: code-value-string is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/clinical-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-value-string):string
-  ?combo-code: combo-code=token (trial-use)
+  ?code: code=token (trial-use)
   ?combo-code-value-concept: combo-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-concept):token
   ?combo-code-value-quantity: combo-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-combo-value-quantity):quantity
+  ?combo-code: combo-code=token (trial-use)
   ?combo-data-absent-reason: combo-data-absent-reason=token (trial-use)
   ?combo-value-concept: combo-value-concept=token (trial-use)
   ?combo-value-quantity: combo-value-quantity=quantity (trial-use)
-  ?component-code: component-code=token (trial-use)
   ?component-code-value-concept: component-code-value-concept is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-concept):token
   ?component-code-value-quantity: component-code-value-quantity is composite (resolves: True)
     $(http://hl7.org/fhir/SearchParameter/Observation-component-code):token
     $(http://hl7.org/fhir/SearchParameter/Observation-component-value-quantity):quantity
+  ?component-code: component-code=token (trial-use)
   ?component-data-absent-reason: component-data-absent-reason=token (trial-use)
   ?component-value-concept: component-value-concept=token (trial-use)
   ?component-value-quantity: component-value-quantity=quantity (trial-use)
@@ -23270,8 +23270,8 @@ All Resource Parameters: 15
   ?_filter: _filter=token (trial-use)
   ?FilterSearchParameter: _filter=special
   ?_has: _has=string (trial-use)
-  ?ID-SEARCH-PARAMETER: _id=token (experimental)
   ?_id: _id=token (trial-use)
+  ?ID-SEARCH-PARAMETER: _id=token (experimental)
   ?_lastUpdated: _lastUpdated=date (trial-use)
   ?_list: _list=string (trial-use)
   ?_profile: _profile=uri (trial-use)
@@ -23641,7 +23641,7 @@ Value Sets: 805
   references (2 structures, 2 elements): Dosage.method, MedicationAdministration.dosage.method, strongest binding: example, by type: CodeableConcept:Example
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/administrative-gender|4.3.0 (normative FMM: 5) (AdministrativeGender)
-  references (6 structures, 7 elements): FamilyMemberHistory.sex, ObservationDefinition.qualifiedInterval.gender, Patient.gender, Patient.contact.gender, Person.gender, Practitioner.gender, RelatedPerson.gender, strongest binding: required, by type: CodeableConcept:Extensible, code:Required
+  references (6 structures, 7 elements): FamilyMemberHistory.sex, ObservationDefinition.qualifiedInterval.gender, Patient.contact.gender, Patient.gender, Person.gender, Practitioner.gender, RelatedPerson.gender, strongest binding: required, by type: CodeableConcept:Extensible, code:Required
   extensions/profiles (2 structures, 5 elements): strongest binding: extensible, refs: familymemberhistory-genetic(Profile) [FamilyMemberHistory.sex], individual-recordedSexOrGender(Extension) [Extension.extension.value[x]]
   - #female: Female
   - #male: Male
@@ -24294,7 +24294,7 @@ Value Sets: 805
   - #writing-original-draft: Writing - original draft
   - #writing-review-editing: Writing - review & editing
 - ValueSet: http://hl7.org/fhir/ValueSet/artifact-relationship-type|4.3.0 (trial-use FMM: 0) (ArtifactRelationshipType)
-  references (1 structures, 2 elements): Citation.relatesTo.relationshipType, Citation.citedArtifact.relatesTo.relationshipType, strongest binding: extensible, by type: CodeableConcept:Extensible
+  references (1 structures, 2 elements): Citation.citedArtifact.relatesTo.relationshipType, Citation.relatesTo.relationshipType, strongest binding: extensible, by type: CodeableConcept:Extensible
   - #amended-with: Amended with
   - #amends: Amends
   - #appended-with: Appended with
@@ -24786,7 +24786,7 @@ Value Sets: 805
   - #X: chromosome X
   - #Y: chromosome Y
 - ValueSet: http://hl7.org/fhir/ValueSet/citation-artifact-classifier|4.3.0 (trial-use FMM: 1) (CitationArtifactClassifier)
-  references (1 structures, 4 elements): Citation.classification.classifier, Citation.relatesTo.targetClassifier, Citation.citedArtifact.relatesTo.targetClassifier, Citation.citedArtifact.classification.classifier, strongest binding: example, by type: CodeableConcept:Example
+  references (1 structures, 4 elements): Citation.citedArtifact.classification.classifier, Citation.citedArtifact.relatesTo.targetClassifier, Citation.classification.classifier, Citation.relatesTo.targetClassifier, strongest binding: example, by type: CodeableConcept:Example
   - #68059040: Video-Audio Media
   - #audio: Audio file
   - #common-share: Common Share
@@ -24950,7 +24950,7 @@ Value Sets: 805
   - #prosthesis: Prosthesis
   - #related: Related Services
 - ValueSet: http://hl7.org/fhir/ValueSet/claim-modifiers|4.3.0 (draft FMM: 1) (ModifierTypeCodes)
-  references (5 structures, 14 elements): Claim.item.modifier, Claim.item.detail.modifier, Claim.item.detail.subDetail.modifier, ClaimResponse.addItem.modifier, ClaimResponse.addItem.detail.modifier, ClaimResponse.addItem.detail.subDetail.modifier, CoverageEligibilityRequest.item.modifier, CoverageEligibilityResponse.insurance.item.modifier, ExplanationOfBenefit.item.modifier, ExplanationOfBenefit.item.detail.modifier, ExplanationOfBenefit.item.detail.subDetail.modifier, ExplanationOfBenefit.addItem.modifier, ExplanationOfBenefit.addItem.detail.modifier, ExplanationOfBenefit.addItem.detail.subDetail.modifier, strongest binding: example, by type: CodeableConcept:Example
+  references (5 structures, 14 elements): Claim.item.detail.modifier, Claim.item.detail.subDetail.modifier, Claim.item.modifier, ClaimResponse.addItem.detail.modifier, ClaimResponse.addItem.detail.subDetail.modifier, ClaimResponse.addItem.modifier, CoverageEligibilityRequest.item.modifier, CoverageEligibilityResponse.insurance.item.modifier, ExplanationOfBenefit.addItem.detail.modifier, ExplanationOfBenefit.addItem.detail.subDetail.modifier, ExplanationOfBenefit.addItem.modifier, ExplanationOfBenefit.item.detail.modifier, ExplanationOfBenefit.item.detail.subDetail.modifier, ExplanationOfBenefit.item.modifier, strongest binding: example, by type: CodeableConcept:Example
   - #a: Repair of prior service or installation
   - #b: Temporary service or installation
   - #c: TMJ treatment
@@ -25222,9 +25222,9 @@ Value Sets: 805
   - #encounter-diagnosis: Encounter Diagnosis
   - #problem-list-item: Problem List Item
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-cause|4.3.0 (ConditionCauseCodes)
-  extensions/profiles (3 structures, 9 elements): strongest binding: example, refs: condition-dueTo(Extension) [Extension.value[x]], workflow-reasonCode(Extension) [Extension.value[x]], workflow-reason(Extension) [Extension.value[x]]
+  extensions/profiles (3 structures, 9 elements): strongest binding: example, refs: condition-dueTo(Extension) [Extension.value[x]], workflow-reason(Extension) [Extension.value[x]], workflow-reasonCode(Extension) [Extension.value[x]]
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-cause|1.0.0 (trial-use FMM: 3) (ConditionCauseCodes)
-  extensions/profiles (3 structures, 9 elements): strongest binding: example, refs: condition-dueTo(Extension) [Extension.value[x]], workflow-reasonCode(Extension) [Extension.value[x]], workflow-reason(Extension) [Extension.value[x]]
+  extensions/profiles (3 structures, 9 elements): strongest binding: example, refs: condition-dueTo(Extension) [Extension.value[x]], workflow-reason(Extension) [Extension.value[x]], workflow-reasonCode(Extension) [Extension.value[x]]
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-clinical|4.3.0 (trial-use FMM: 3) (ConditionClinicalStatusCodes)
   references (1 structures, 1 elements): Condition.clinicalStatus, strongest binding: required, by type: CodeableConcept:Required
   - #active: Active
@@ -25350,7 +25350,7 @@ Value Sets: 805
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/constraint-severity|4.3.0 (normative FMM: 5) (ConstraintSeverity)
   references (1 structures, 1 elements): ElementDefinition.constraint.severity, strongest binding: required, by type: code:Required
-  extensions/profiles (3 structures, 5 elements): strongest binding: required, refs: elementdefinition-de(Profile) [ElementDefinition.constraint.severity], questionnaire-constraint(Extension) [Extension.extension.value[x]], cqf-targetInvariant(Extension) [Extension.extension.value[x]]
+  extensions/profiles (3 structures, 5 elements): strongest binding: required, refs: cqf-targetInvariant(Extension) [Extension.extension.value[x]], elementdefinition-de(Profile) [ElementDefinition.constraint.severity], questionnaire-constraint(Extension) [Extension.extension.value[x]]
   - #error: Error
   - #warning: Warning
 - ValueSet: http://hl7.org/fhir/ValueSet/contact-point-system|4.3.0 (normative FMM: 5) (ContactPointSystem)
@@ -25561,7 +25561,7 @@ Value Sets: 805
   - #innominate: Innominate
   - #warranty: Warranty
 - ValueSet: http://hl7.org/fhir/ValueSet/contract-term-type|4.3.0 (draft FMM: 1) (ContractTermTypeCodes)
-  references (1 structures, 2 elements): Contract.term.type, Contract.term.offer.type, strongest binding: example, by type: CodeableConcept:Example
+  references (1 structures, 2 elements): Contract.term.offer.type, Contract.term.type, strongest binding: example, by type: CodeableConcept:Example
   - #statutory: Statutory
   - #subject-to: Subject To
 - ValueSet: http://hl7.org/fhir/ValueSet/contract-type|4.3.0 (draft FMM: 1) (ContractTypeCodes)
@@ -25908,8 +25908,8 @@ Value Sets: 805
   - #ZMW: Zambian kwacha
   - #ZWL: Zimbabwean dollar A/10
 - ValueSet: http://hl7.org/fhir/ValueSet/data-absent-reason|4.3.0 (normative FMM: 5) (DataAbsentReason)
-  references (1 structures, 2 elements): Observation.dataAbsentReason, Observation.component.dataAbsentReason, strongest binding: extensible, by type: CodeableConcept:Extensible
-  extensions/profiles (18 structures, 37 elements): strongest binding: required, refs: bmi(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason], bodyheight(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason], bodytemp(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason], bodyweight(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason], bp(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason], cholesterol(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason], data-absent-reason(Extension) [Extension.value[x]], devicemetricobservation(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason], hdlcholesterol(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason], headcircum(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason], heartrate(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason], ldlcholesterol(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason], observation-genetics(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason], oxygensat(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason], resprate(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason], triglyceride(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason], vitalsigns(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason], vitalspanel(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason]
+  references (1 structures, 2 elements): Observation.component.dataAbsentReason, Observation.dataAbsentReason, strongest binding: extensible, by type: CodeableConcept:Extensible
+  extensions/profiles (18 structures, 37 elements): strongest binding: required, refs: bmi(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason], bodyheight(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason], bodytemp(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason], bodyweight(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason], bp(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason], cholesterol(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason], data-absent-reason(Extension) [Extension.value[x]], devicemetricobservation(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason], hdlcholesterol(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason], headcircum(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason], heartrate(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason], ldlcholesterol(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason], observation-genetics(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason], oxygensat(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason], resprate(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason], triglyceride(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason], vitalsigns(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason], vitalspanel(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason]
   - #as-text: As Text
   - #asked-declined: Asked But Declined
   - #asked-unknown: Asked But Unknown
@@ -26013,7 +26013,7 @@ Value Sets: 805
   - #tue: Tuesday
   - #wed: Wednesday
 - ValueSet: http://hl7.org/fhir/ValueSet/defined-types|4.3.0 (normative FMM: 5) (FHIRDefinedType)
-  references (3 structures, 7 elements): StructureDefinition.type, SubscriptionTopic.resourceTrigger.resource, SubscriptionTopic.eventTrigger.resource, SubscriptionTopic.canFilterBy.resource, SubscriptionTopic.notificationShape.resource, TestScript.setup.action.operation.resource, TestScript.setup.action.assert.resource, strongest binding: required, by type: uri:Extensible, code:Required
+  references (3 structures, 7 elements): StructureDefinition.type, SubscriptionTopic.canFilterBy.resource, SubscriptionTopic.eventTrigger.resource, SubscriptionTopic.notificationShape.resource, SubscriptionTopic.resourceTrigger.resource, TestScript.setup.action.assert.resource, TestScript.setup.action.operation.resource, strongest binding: required, by type: uri:Extensible, code:Required
   - #Address: Address
   - #Age: Age
   - #Annotation: Annotation
@@ -26235,7 +26235,7 @@ Value Sets: 805
   - #withdrawn: Withdrawn
 - ValueSet: http://hl7.org/fhir/ValueSet/definition-topic|4.3.0 (draft FMM: 1) (DefinitionTopic)
   references (7 structures, 7 elements): ActivityDefinition.topic, EventDefinition.topic, Library.topic, Measure.topic, PlanDefinition.topic, ResearchDefinition.topic, ResearchElementDefinition.topic, strongest binding: example, by type: CodeableConcept:Example
-  extensions/profiles (7 structures, 7 elements): strongest binding: example, refs: cdshooksserviceplandefinition(Profile) [PlanDefinition.topic], computableplandefinition(Profile) [PlanDefinition.topic], cqllibrary(Profile) [Library.topic], shareableactivitydefinition(Profile) [ActivityDefinition.topic], shareablelibrary(Profile) [Library.topic], shareablemeasure(Profile) [Measure.topic], artifact-topic(Extension) [Extension.value[x]]
+  extensions/profiles (7 structures, 7 elements): strongest binding: example, refs: artifact-topic(Extension) [Extension.value[x]], cdshooksserviceplandefinition(Profile) [PlanDefinition.topic], computableplandefinition(Profile) [PlanDefinition.topic], cqllibrary(Profile) [Library.topic], shareableactivitydefinition(Profile) [ActivityDefinition.topic], shareablelibrary(Profile) [Library.topic], shareablemeasure(Profile) [Measure.topic]
   - #assessment: Assessment
   - #education: Education
   - #treatment: Treatment
@@ -26513,7 +26513,7 @@ Value Sets: 805
   references (1 structures, 2 elements): ClinicalUseDefinition.contraindication.diseaseStatus, ClinicalUseDefinition.indication.diseaseStatus, strongest binding: example, by type: CodeableReference:Example
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/disease-symptom-procedure|4.3.0 (trial-use FMM: 1) (DiseaseSymptomProcedure)
-  references (1 structures, 4 elements): ClinicalUseDefinition.contraindication.diseaseSymptomProcedure, ClinicalUseDefinition.contraindication.comorbidity, ClinicalUseDefinition.indication.diseaseSymptomProcedure, ClinicalUseDefinition.indication.comorbidity, strongest binding: example, by type: CodeableReference:Example
+  references (1 structures, 4 elements): ClinicalUseDefinition.contraindication.comorbidity, ClinicalUseDefinition.contraindication.diseaseSymptomProcedure, ClinicalUseDefinition.indication.comorbidity, ClinicalUseDefinition.indication.diseaseSymptomProcedure, strongest binding: example, by type: CodeableReference:Example
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/distance-units|4.3.0 (trial-use FMM: 5) (CommonUCUMCodesForDistance)
   references (1 structures, 1 elements): Distance, strongest binding: extensible, by type: 
@@ -26994,7 +26994,7 @@ Value Sets: 805
   - #search-results: Search Results
   - #text-structured: Structured Text
 - ValueSet: http://hl7.org/fhir/ValueSet/ex-benefitcategory|4.3.0 (draft FMM: 1) (BenefitCategoryCodes)
-  references (4 structures, 9 elements): Claim.item.category, Claim.item.detail.category, Claim.item.detail.subDetail.category, CoverageEligibilityRequest.item.category, CoverageEligibilityResponse.insurance.item.category, ExplanationOfBenefit.item.category, ExplanationOfBenefit.item.detail.category, ExplanationOfBenefit.item.detail.subDetail.category, ExplanationOfBenefit.benefitBalance.category, strongest binding: example, by type: CodeableConcept:Example
+  references (4 structures, 9 elements): Claim.item.category, Claim.item.detail.category, Claim.item.detail.subDetail.category, CoverageEligibilityRequest.item.category, CoverageEligibilityResponse.insurance.item.category, ExplanationOfBenefit.benefitBalance.category, ExplanationOfBenefit.item.category, ExplanationOfBenefit.item.detail.category, ExplanationOfBenefit.item.detail.subDetail.category, strongest binding: example, by type: CodeableConcept:Example
   - #1: Medical Care
   - #14: Renal Supplies
   - #2: Surgical
@@ -27058,13 +27058,13 @@ Value Sets: 805
   - #primary: Primary procedure
   - #secondary: Secondary procedure
 - ValueSet: http://hl7.org/fhir/ValueSet/ex-program-code|4.3.0 (draft FMM: 1) (ExampleProgramReasonCodes)
-  references (3 structures, 8 elements): Claim.item.programCode, Claim.item.detail.programCode, Claim.item.detail.subDetail.programCode, ClaimResponse.addItem.programCode, ExplanationOfBenefit.item.programCode, ExplanationOfBenefit.item.detail.programCode, ExplanationOfBenefit.item.detail.subDetail.programCode, ExplanationOfBenefit.addItem.programCode, strongest binding: example, by type: CodeableConcept:Example
+  references (3 structures, 8 elements): Claim.item.detail.programCode, Claim.item.detail.subDetail.programCode, Claim.item.programCode, ClaimResponse.addItem.programCode, ExplanationOfBenefit.addItem.programCode, ExplanationOfBenefit.item.detail.programCode, ExplanationOfBenefit.item.detail.subDetail.programCode, ExplanationOfBenefit.item.programCode, strongest binding: example, by type: CodeableConcept:Example
   - #as: Child Asthma
   - #auscr: Autism Screening
   - #hd: Hemodialysis
   - #none: None
 - ValueSet: http://hl7.org/fhir/ValueSet/ex-revenue-center|4.3.0 (draft FMM: 1) (ExampleRevenueCenterCodes)
-  references (2 structures, 6 elements): Claim.item.revenue, Claim.item.detail.revenue, Claim.item.detail.subDetail.revenue, ExplanationOfBenefit.item.revenue, ExplanationOfBenefit.item.detail.revenue, ExplanationOfBenefit.item.detail.subDetail.revenue, strongest binding: example, by type: CodeableConcept:Example
+  references (2 structures, 6 elements): Claim.item.detail.revenue, Claim.item.detail.subDetail.revenue, Claim.item.revenue, ExplanationOfBenefit.item.detail.revenue, ExplanationOfBenefit.item.detail.subDetail.revenue, ExplanationOfBenefit.item.revenue, strongest binding: example, by type: CodeableConcept:Example
   - #0010: Vision Clinic
   - #0370: Anaesthesia
   - #0420: Physical Therapy
@@ -27359,7 +27359,7 @@ Value Sets: 805
   - #VerificationResult: VerificationResult
   - #VisionPrescription: VisionPrescription
 - ValueSet: http://hl7.org/fhir/ValueSet/FHIR-version|4.3.0 (normative FMM: 5) (FHIRVersion)
-  references (3 structures, 4 elements): CapabilityStatement.fhirVersion, ImplementationGuide.fhirVersion, ImplementationGuide.definition.resource.fhirVersion, StructureDefinition.fhirVersion, strongest binding: required, by type: code:Required
+  references (3 structures, 4 elements): CapabilityStatement.fhirVersion, ImplementationGuide.definition.resource.fhirVersion, ImplementationGuide.fhirVersion, StructureDefinition.fhirVersion, strongest binding: required, by type: code:Required
   extensions/profiles (2 structures, 2 elements): strongest binding: required, refs: structuredefinition-applicable-version(Extension) [Extension.value[x]], structuredefinition-normative-version(Extension) [Extension.value[x]]
   - #0.0.80: 0.0.80
   - #0.0.81: 0.0.81
@@ -27550,7 +27550,7 @@ Value Sets: 805
   - #1: Form #1
   - #2: Form #1
 - ValueSet: http://hl7.org/fhir/ValueSet/fundsreserve|4.3.0 (draft FMM: 1) (Funds Reservation Codes)
-  references (3 structures, 4 elements): Claim.fundsReserve, ClaimResponse.fundsReserve, ExplanationOfBenefit.fundsReserveRequested, ExplanationOfBenefit.fundsReserve, strongest binding: example, by type: CodeableConcept:Example
+  references (3 structures, 4 elements): Claim.fundsReserve, ClaimResponse.fundsReserve, ExplanationOfBenefit.fundsReserve, ExplanationOfBenefit.fundsReserveRequested, strongest binding: example, by type: CodeableConcept:Example
   - #none: None
   - #patient: Patient
   - #provider: Provider
@@ -27627,7 +27627,7 @@ Value Sets: 805
   - #condition: Condition
   - #requirement: Requirement
 - ValueSet: http://hl7.org/fhir/ValueSet/group-measure|4.3.0 (trial-use FMM: 1) (GroupMeasure)
-  references (2 structures, 3 elements): EvidenceVariable.characteristic.groupMeasure, ResearchElementDefinition.characteristic.studyEffectiveGroupMeasure, ResearchElementDefinition.characteristic.participantEffectiveGroupMeasure, strongest binding: required, by type: code:Required
+  references (2 structures, 3 elements): EvidenceVariable.characteristic.groupMeasure, ResearchElementDefinition.characteristic.participantEffectiveGroupMeasure, ResearchElementDefinition.characteristic.studyEffectiveGroupMeasure, strongest binding: required, by type: code:Required
   - #mean: Mean
   - #mean-of-mean: Mean of Study Means
   - #mean-of-median: Mean of Study Medins
@@ -27715,7 +27715,7 @@ Value Sets: 805
   - #us: US Realm Taskforce
   - #vocab: Vocabulary
 - ValueSet: http://hl7.org/fhir/ValueSet/http-operations|4.3.0 (trial-use FMM: 2) (TestScriptRequestMethodCode)
-  references (1 structures, 2 elements): TestScript.setup.action.operation.method, TestScript.setup.action.assert.requestMethod, strongest binding: required, by type: code:Required
+  references (1 structures, 2 elements): TestScript.setup.action.assert.requestMethod, TestScript.setup.action.operation.method, strongest binding: required, by type: code:Required
   - #delete: DELETE
   - #get: GET
   - #head: HEAD
@@ -28275,7 +28275,7 @@ Value Sets: 805
   - #url: Url
 - ValueSet: http://hl7.org/fhir/ValueSet/jurisdiction|4.3.0 (normative FMM: 5) (Jurisdiction ValueSet)
   references (31 structures, 31 elements): ActivityDefinition.jurisdiction, CapabilityStatement.jurisdiction, ChargeItemDefinition.jurisdiction, Citation.jurisdiction, CodeSystem.jurisdiction, ConceptMap.jurisdiction, EventDefinition.jurisdiction, ExampleScenario.jurisdiction, GraphDefinition.jurisdiction, ImplementationGuide.jurisdiction, Library.jurisdiction, Measure.jurisdiction, MedicinalProductDefinition.name.countryLanguage.jurisdiction, MessageDefinition.jurisdiction, NamingSystem.jurisdiction, OperationDefinition.jurisdiction, PackagedProductDefinition.legalStatusOfSupply.jurisdiction, PlanDefinition.jurisdiction, Questionnaire.jurisdiction, RegulatedAuthorization.region, ResearchDefinition.jurisdiction, ResearchElementDefinition.jurisdiction, ResearchStudy.location, SearchParameter.jurisdiction, StructureDefinition.jurisdiction, StructureMap.jurisdiction, SubscriptionTopic.jurisdiction, SubstanceDefinition.name.jurisdiction, TerminologyCapabilities.jurisdiction, TestScript.jurisdiction, ValueSet.jurisdiction, strongest binding: extensible, by type: CodeableConcept:Example
-  extensions/profiles (12 structures, 15 elements): strongest binding: extensible, refs: cdshooksserviceplandefinition(Profile) [PlanDefinition.jurisdiction], computableplandefinition(Profile) [PlanDefinition.jurisdiction], cqf-questionnaire(Profile) [Questionnaire.jurisdiction], cqllibrary(Profile) [Library.jurisdiction], Definition(LogicalModel) [Definition.jurisdiction], shareableactivitydefinition(Profile) [ActivityDefinition.jurisdiction], shareablecodesystem(Profile) [CodeSystem.jurisdiction], shareablelibrary(Profile) [Library.jurisdiction], shareablemeasure(Profile) [Measure.jurisdiction], shareablevalueset(Profile) [ValueSet.jurisdiction], artifact-jurisdiction(Extension) [Extension.value[x]], individual-recordedSexOrGender(Extension) [Extension.extension.value[x]]
+  extensions/profiles (12 structures, 15 elements): strongest binding: extensible, refs: artifact-jurisdiction(Extension) [Extension.value[x]], cdshooksserviceplandefinition(Profile) [PlanDefinition.jurisdiction], computableplandefinition(Profile) [PlanDefinition.jurisdiction], cqf-questionnaire(Profile) [Questionnaire.jurisdiction], cqllibrary(Profile) [Library.jurisdiction], Definition(LogicalModel) [Definition.jurisdiction], individual-recordedSexOrGender(Extension) [Extension.extension.value[x]], shareableactivitydefinition(Profile) [ActivityDefinition.jurisdiction], shareablecodesystem(Profile) [CodeSystem.jurisdiction], shareablelibrary(Profile) [Library.jurisdiction], shareablemeasure(Profile) [Measure.jurisdiction], shareablevalueset(Profile) [ValueSet.jurisdiction]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/knowledge-capability|1.0.0 (trial-use FMM: 2) (KnowledgeCapability)
   extensions/profiles (2 structures, 2 elements): strongest binding: required, refs: artifact-knowledgeCapability(Extension) [Extension.value[x]], cqf-knowledgeCapability(Extension) [Extension.value[x]]
@@ -28302,8 +28302,8 @@ Value Sets: 805
   - #verbal: verbal
   - #written: written
 - ValueSet: http://hl7.org/fhir/ValueSet/languages|4.3.0 (trial-use FMM: 3) (CommonLanguages)
-  references (144 structures, 157 elements): Account.language, ActivityDefinition.language, AdministrableProductDefinition.language, AdverseEvent.language, AllergyIntolerance.language, Appointment.language, AppointmentResponse.language, Attachment.language, AuditEvent.language, Basic.language, Binary.language, BiologicallyDerivedProduct.language, BodyStructure.language, Bundle.language, CapabilityStatement.language, CarePlan.language, CareTeam.language, CatalogEntry.language, ChargeItem.language, ChargeItemDefinition.language, Citation.language, Citation.citedArtifact.title.language, Citation.citedArtifact.abstract.language, Citation.citedArtifact.publicationForm.language, Claim.language, ClaimResponse.language, ClaimResponse.processNote.language, ClinicalImpression.language, ClinicalUseDefinition.language, CodeSystem.language, CodeSystem.concept.designation.language, Communication.language, CommunicationRequest.language, CompartmentDefinition.language, Composition.language, ConceptMap.language, Condition.language, Consent.language, Contract.language, Coverage.language, CoverageEligibilityRequest.language, CoverageEligibilityResponse.language, DetectedIssue.language, Device.language, DeviceDefinition.language, DeviceMetric.language, DeviceRequest.language, DeviceUseStatement.language, DiagnosticReport.language, DocumentManifest.language, DocumentReference.language, DomainResource.language, Encounter.language, Endpoint.language, EnrollmentRequest.language, EnrollmentResponse.language, EpisodeOfCare.language, EventDefinition.language, Evidence.language, EvidenceReport.language, EvidenceVariable.language, ExampleScenario.language, ExplanationOfBenefit.language, ExplanationOfBenefit.processNote.language, FamilyMemberHistory.language, Flag.language, Goal.language, GraphDefinition.language, Group.language, GuidanceResponse.language, HealthcareService.language, HealthcareService.communication, ImagingStudy.language, Immunization.language, ImmunizationEvaluation.language, ImmunizationRecommendation.language, ImplementationGuide.language, Ingredient.language, InsurancePlan.language, Invoice.language, Library.language, Linkage.language, List.language, Location.language, ManufacturedItemDefinition.language, Measure.language, MeasureReport.language, Media.language, Medication.language, MedicationAdministration.language, MedicationDispense.language, MedicationKnowledge.language, MedicationRequest.language, MedicationStatement.language, MedicinalProductDefinition.language, MedicinalProductDefinition.name.countryLanguage.language, MessageDefinition.language, MessageHeader.language, MolecularSequence.language, NamingSystem.language, NutritionOrder.language, NutritionProduct.language, Observation.language, ObservationDefinition.language, OperationDefinition.language, OperationOutcome.language, Organization.language, OrganizationAffiliation.language, PackagedProductDefinition.language, Parameters.language, Patient.language, Patient.communication.language, PaymentNotice.language, PaymentReconciliation.language, Person.language, PlanDefinition.language, Practitioner.language, Practitioner.communication, PractitionerRole.language, Procedure.language, Provenance.language, Questionnaire.language, QuestionnaireResponse.language, RegulatedAuthorization.language, RelatedPerson.language, RelatedPerson.communication.language, RequestGroup.language, ResearchDefinition.language, ResearchElementDefinition.language, ResearchStudy.language, ResearchSubject.language, Resource.language, RiskAssessment.language, Schedule.language, SearchParameter.language, ServiceRequest.language, Slot.language, Specimen.language, SpecimenDefinition.language, StructureDefinition.language, StructureMap.language, Subscription.language, SubscriptionStatus.language, SubscriptionTopic.language, Substance.language, SubstanceDefinition.language, SubstanceDefinition.name.language, SupplyDelivery.language, SupplyRequest.language, Task.language, TerminologyCapabilities.language, TestReport.language, TestScript.language, ValueSet.language, ValueSet.compose.include.concept.designation.language, VerificationResult.language, VisionPrescription.language, strongest binding: preferred, by type: code:Preferred, CodeableConcept:Preferred
-  extensions/profiles (44 structures, 50 elements): strongest binding: preferred, refs: actualgroup(Profile) [Group.language], bmi(Profile) [Observation.language], bodyheight(Profile) [Observation.language], bodytemp(Profile) [Observation.language], bodyweight(Profile) [Observation.language], bp(Profile) [Observation.language], catalog(Profile) [Composition.language], cdshooksguidanceresponse(Profile) [GuidanceResponse.language], cdshooksrequestgroup(Profile) [RequestGroup.language], cdshooksserviceplandefinition(Profile) [PlanDefinition.language], cholesterol(Profile) [Observation.language], clinicaldocument(Profile) [Composition.language], computableplandefinition(Profile) [PlanDefinition.language], cqf-questionnaire(Profile) [Questionnaire.language], cqf-recipientLanguage(Extension) [Extension.value[x]], cqf-systemUserLanguage(Extension) [Extension.value[x]], cqllibrary(Profile) [Library.language], devicemetricobservation(Profile) [Observation.language], devicerequest-patientInstruction(Extension) [Extension.extension.value[x]], diagnosticreport-genetics(Profile) [DiagnosticReport.language], familymemberhistory-genetic(Profile) [FamilyMemberHistory.language], groupdefinition(Profile) [Group.language], hdlcholesterol(Profile) [Observation.language], headcircum(Profile) [Observation.language], heartrate(Profile) [Observation.language], hlaresult(Profile) [DiagnosticReport.language], language(Extension) [Extension.value[x]], ldlcholesterol(Profile) [Observation.language], lipidprofile(Profile) [DiagnosticReport.language], observation-genetics(Profile) [Observation.language], oxygensat(Profile) [Observation.language], provenance-relevant-history(Profile) [Provenance.language], resprate(Profile) [Observation.language], servicerequest-genetics(Profile) [ServiceRequest.language], shareableactivitydefinition(Profile) [ActivityDefinition.language], shareablecodesystem(Profile) [CodeSystem.language,CodeSystem.concept.designation.language], shareablelibrary(Profile) [Library.language], shareablemeasure(Profile) [Measure.language], shareablevalueset(Profile) [ValueSet.language,ValueSet.compose.include.concept.designation.language], translation(Extension) [Extension.extension.value[x]], triglyceride(Profile) [Observation.language], vitalsigns(Profile) [Observation.language], vitalspanel(Profile) [Observation.language], location-communication(Extension) [Extension.value[x]]
+  references (144 structures, 157 elements): Account.language, ActivityDefinition.language, AdministrableProductDefinition.language, AdverseEvent.language, AllergyIntolerance.language, Appointment.language, AppointmentResponse.language, Attachment.language, AuditEvent.language, Basic.language, Binary.language, BiologicallyDerivedProduct.language, BodyStructure.language, Bundle.language, CapabilityStatement.language, CarePlan.language, CareTeam.language, CatalogEntry.language, ChargeItem.language, ChargeItemDefinition.language, Citation.citedArtifact.abstract.language, Citation.citedArtifact.publicationForm.language, Citation.citedArtifact.title.language, Citation.language, Claim.language, ClaimResponse.language, ClaimResponse.processNote.language, ClinicalImpression.language, ClinicalUseDefinition.language, CodeSystem.concept.designation.language, CodeSystem.language, Communication.language, CommunicationRequest.language, CompartmentDefinition.language, Composition.language, ConceptMap.language, Condition.language, Consent.language, Contract.language, Coverage.language, CoverageEligibilityRequest.language, CoverageEligibilityResponse.language, DetectedIssue.language, Device.language, DeviceDefinition.language, DeviceMetric.language, DeviceRequest.language, DeviceUseStatement.language, DiagnosticReport.language, DocumentManifest.language, DocumentReference.language, DomainResource.language, Encounter.language, Endpoint.language, EnrollmentRequest.language, EnrollmentResponse.language, EpisodeOfCare.language, EventDefinition.language, Evidence.language, EvidenceReport.language, EvidenceVariable.language, ExampleScenario.language, ExplanationOfBenefit.language, ExplanationOfBenefit.processNote.language, FamilyMemberHistory.language, Flag.language, Goal.language, GraphDefinition.language, Group.language, GuidanceResponse.language, HealthcareService.communication, HealthcareService.language, ImagingStudy.language, Immunization.language, ImmunizationEvaluation.language, ImmunizationRecommendation.language, ImplementationGuide.language, Ingredient.language, InsurancePlan.language, Invoice.language, Library.language, Linkage.language, List.language, Location.language, ManufacturedItemDefinition.language, Measure.language, MeasureReport.language, Media.language, Medication.language, MedicationAdministration.language, MedicationDispense.language, MedicationKnowledge.language, MedicationRequest.language, MedicationStatement.language, MedicinalProductDefinition.language, MedicinalProductDefinition.name.countryLanguage.language, MessageDefinition.language, MessageHeader.language, MolecularSequence.language, NamingSystem.language, NutritionOrder.language, NutritionProduct.language, Observation.language, ObservationDefinition.language, OperationDefinition.language, OperationOutcome.language, Organization.language, OrganizationAffiliation.language, PackagedProductDefinition.language, Parameters.language, Patient.communication.language, Patient.language, PaymentNotice.language, PaymentReconciliation.language, Person.language, PlanDefinition.language, Practitioner.communication, Practitioner.language, PractitionerRole.language, Procedure.language, Provenance.language, Questionnaire.language, QuestionnaireResponse.language, RegulatedAuthorization.language, RelatedPerson.communication.language, RelatedPerson.language, RequestGroup.language, ResearchDefinition.language, ResearchElementDefinition.language, ResearchStudy.language, ResearchSubject.language, Resource.language, RiskAssessment.language, Schedule.language, SearchParameter.language, ServiceRequest.language, Slot.language, Specimen.language, SpecimenDefinition.language, StructureDefinition.language, StructureMap.language, Subscription.language, SubscriptionStatus.language, SubscriptionTopic.language, Substance.language, SubstanceDefinition.language, SubstanceDefinition.name.language, SupplyDelivery.language, SupplyRequest.language, Task.language, TerminologyCapabilities.language, TestReport.language, TestScript.language, ValueSet.compose.include.concept.designation.language, ValueSet.language, VerificationResult.language, VisionPrescription.language, strongest binding: preferred, by type: code:Preferred, CodeableConcept:Preferred
+  extensions/profiles (44 structures, 50 elements): strongest binding: preferred, refs: actualgroup(Profile) [Group.language], bmi(Profile) [Observation.language], bodyheight(Profile) [Observation.language], bodytemp(Profile) [Observation.language], bodyweight(Profile) [Observation.language], bp(Profile) [Observation.language], catalog(Profile) [Composition.language], cdshooksguidanceresponse(Profile) [GuidanceResponse.language], cdshooksrequestgroup(Profile) [RequestGroup.language], cdshooksserviceplandefinition(Profile) [PlanDefinition.language], cholesterol(Profile) [Observation.language], clinicaldocument(Profile) [Composition.language], computableplandefinition(Profile) [PlanDefinition.language], cqf-questionnaire(Profile) [Questionnaire.language], cqf-recipientLanguage(Extension) [Extension.value[x]], cqf-systemUserLanguage(Extension) [Extension.value[x]], cqllibrary(Profile) [Library.language], devicemetricobservation(Profile) [Observation.language], devicerequest-patientInstruction(Extension) [Extension.extension.value[x]], diagnosticreport-genetics(Profile) [DiagnosticReport.language], familymemberhistory-genetic(Profile) [FamilyMemberHistory.language], groupdefinition(Profile) [Group.language], hdlcholesterol(Profile) [Observation.language], headcircum(Profile) [Observation.language], heartrate(Profile) [Observation.language], hlaresult(Profile) [DiagnosticReport.language], language(Extension) [Extension.value[x]], ldlcholesterol(Profile) [Observation.language], lipidprofile(Profile) [DiagnosticReport.language], location-communication(Extension) [Extension.value[x]], observation-genetics(Profile) [Observation.language], oxygensat(Profile) [Observation.language], provenance-relevant-history(Profile) [Provenance.language], resprate(Profile) [Observation.language], servicerequest-genetics(Profile) [ServiceRequest.language], shareableactivitydefinition(Profile) [ActivityDefinition.language], shareablecodesystem(Profile) [CodeSystem.concept.designation.language,CodeSystem.language], shareablelibrary(Profile) [Library.language], shareablemeasure(Profile) [Measure.language], shareablevalueset(Profile) [ValueSet.compose.include.concept.designation.language,ValueSet.language], translation(Extension) [Extension.extension.value[x]], triglyceride(Profile) [Observation.language], vitalsigns(Profile) [Observation.language], vitalspanel(Profile) [Observation.language]
   - #ar: Arabisk
   - #bn: Bengali
   - #cs: Czech
@@ -28610,7 +28610,7 @@ Value Sets: 805
   references (1 structures, 1 elements): NutritionProduct.productCharacteristic.type, strongest binding: example, by type: CodeableConcept:Example
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/measurereport-stratifier-value-example|4.3.0 (draft FMM: 1) (MeasureReportStratifierValueExample)
-  references (1 structures, 2 elements): MeasureReport.group.stratifier.stratum.value, MeasureReport.group.stratifier.stratum.component.value, strongest binding: example, by type: CodeableConcept:Example
+  references (1 structures, 2 elements): MeasureReport.group.stratifier.stratum.component.value, MeasureReport.group.stratifier.stratum.value, strongest binding: example, by type: CodeableConcept:Example
   - #northeast: Northeast
   - #northwest: Northwest
   - #southeast: Southeast
@@ -28958,7 +28958,7 @@ Value Sets: 805
   - #on: On
   - #standby: Standby
 - ValueSet: http://hl7.org/fhir/ValueSet/mimetypes|4.3.0 (normative FMM: 5) (Mime Types)
-  references (8 structures, 12 elements): Attachment.contentType, Binary.contentType, CapabilityStatement.format, CapabilityStatement.patchFormat, ElementDefinition.mapping.language, Endpoint.payloadMimeType, Signature.targetFormat, Signature.sigFormat, Subscription.channel.payload, TestScript.setup.action.operation.accept, TestScript.setup.action.operation.contentType, TestScript.setup.action.assert.contentType, strongest binding: required, by type: code:Required
+  references (8 structures, 12 elements): Attachment.contentType, Binary.contentType, CapabilityStatement.format, CapabilityStatement.patchFormat, ElementDefinition.mapping.language, Endpoint.payloadMimeType, Signature.sigFormat, Signature.targetFormat, Subscription.channel.payload, TestScript.setup.action.assert.contentType, TestScript.setup.action.operation.accept, TestScript.setup.action.operation.contentType, strongest binding: required, by type: code:Required
   extensions/profiles (2 structures, 3 elements): strongest binding: required, refs: elementdefinition-de(Profile) [ElementDefinition.mapping.language], mimeType(Extension) [Extension.value[x]]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/missing-tooth-reason|4.3.0 (draft FMM: 1) (MissingToothReasonCodes)
@@ -29273,8 +29273,8 @@ Value Sets: 805
   extensions/profiles (9 structures, 14 elements): strongest binding: example, refs: cdshooksserviceplandefinition(Profile) [PlanDefinition.goal.target.measure], cholesterol(Profile) [Observation.code,Observation.component.code], computableplandefinition(Profile) [PlanDefinition.goal.target.measure], devicemetricobservation(Profile) [Observation.code,Observation.component.code], elementdefinition-de(Profile) [ElementDefinition.code], hdlcholesterol(Profile) [Observation.code,Observation.component.code], ldlcholesterol(Profile) [Observation.component.code], observation-genetics(Profile) [Observation.code,Observation.component.code], triglyceride(Profile) [Observation.code,Observation.component.code]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/observation-interpretation|4.3.0 (normative FMM: 5) (ObservationInterpretationCodes)
-  references (1 structures, 2 elements): Observation.interpretation, Observation.component.interpretation, strongest binding: extensible, by type: CodeableConcept:Extensible
-  extensions/profiles (17 structures, 36 elements): strongest binding: extensible, refs: bmi(Profile) [Observation.interpretation,Observation.component.interpretation], bodyheight(Profile) [Observation.interpretation,Observation.component.interpretation], bodytemp(Profile) [Observation.interpretation,Observation.component.interpretation], bodyweight(Profile) [Observation.interpretation,Observation.component.interpretation], bp(Profile) [Observation.interpretation,Observation.component.interpretation], cholesterol(Profile) [Observation.interpretation,Observation.component.interpretation], devicemetricobservation(Profile) [Observation.interpretation,Observation.component.interpretation], hdlcholesterol(Profile) [Observation.interpretation,Observation.component.interpretation], headcircum(Profile) [Observation.interpretation,Observation.component.interpretation], heartrate(Profile) [Observation.interpretation,Observation.component.interpretation], ldlcholesterol(Profile) [Observation.interpretation,Observation.component.interpretation], observation-genetics(Profile) [Observation.interpretation,Observation.component.interpretation], oxygensat(Profile) [Observation.interpretation,Observation.component.interpretation], resprate(Profile) [Observation.interpretation,Observation.component.interpretation], triglyceride(Profile) [Observation.interpretation,Observation.component.interpretation], vitalsigns(Profile) [Observation.interpretation,Observation.component.interpretation], vitalspanel(Profile) [Observation.interpretation,Observation.component.interpretation]
+  references (1 structures, 2 elements): Observation.component.interpretation, Observation.interpretation, strongest binding: extensible, by type: CodeableConcept:Extensible
+  extensions/profiles (17 structures, 36 elements): strongest binding: extensible, refs: bmi(Profile) [Observation.component.interpretation,Observation.interpretation], bodyheight(Profile) [Observation.component.interpretation,Observation.interpretation], bodytemp(Profile) [Observation.component.interpretation,Observation.interpretation], bodyweight(Profile) [Observation.component.interpretation,Observation.interpretation], bp(Profile) [Observation.component.interpretation,Observation.interpretation], cholesterol(Profile) [Observation.component.interpretation,Observation.interpretation], devicemetricobservation(Profile) [Observation.component.interpretation,Observation.interpretation], hdlcholesterol(Profile) [Observation.component.interpretation,Observation.interpretation], headcircum(Profile) [Observation.component.interpretation,Observation.interpretation], heartrate(Profile) [Observation.component.interpretation,Observation.interpretation], ldlcholesterol(Profile) [Observation.component.interpretation,Observation.interpretation], observation-genetics(Profile) [Observation.component.interpretation,Observation.interpretation], oxygensat(Profile) [Observation.component.interpretation,Observation.interpretation], resprate(Profile) [Observation.component.interpretation,Observation.interpretation], triglyceride(Profile) [Observation.component.interpretation,Observation.interpretation], vitalsigns(Profile) [Observation.component.interpretation,Observation.interpretation], vitalspanel(Profile) [Observation.component.interpretation,Observation.interpretation]
   - #_GeneticObservationInterpretation: GeneticObservationInterpretation
   - #_ObservationInterpretationChange: ObservationInterpretationChange
   - #_ObservationInterpretationExceptions: ObservationInterpretationExceptions
@@ -29421,7 +29421,7 @@ Value Sets: 805
   - #HospitalPack: Hospital pack
   - #NursePrescribable: Nurse prescribable
 - ValueSet: http://hl7.org/fhir/ValueSet/package-material|4.3.0 (trial-use FMM: 1) (PackageMaterial)
-  references (1 structures, 2 elements): PackagedProductDefinition.package.material, PackagedProductDefinition.package.alternateMaterial, strongest binding: example, by type: CodeableConcept:Example
+  references (1 structures, 2 elements): PackagedProductDefinition.package.alternateMaterial, PackagedProductDefinition.package.material, strongest binding: example, by type: CodeableConcept:Example
   - #200000003200: Aluminium
   - #200000003201: Cyclic Olefin Copolymer
   - #200000003202: Epoxyphenol
@@ -29725,7 +29725,7 @@ Value Sets: 805
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/procedure-code|4.3.0 (draft FMM: 1) (ProcedureCodes(SNOMEDCT))
   references (5 structures, 5 elements): ActivityDefinition.code, BiologicallyDerivedProduct.processing.procedure, CarePlan.activity.detail.code, Procedure.code, ServiceRequest.code, strongest binding: example, by type: CodeableConcept:Example
-  extensions/profiles (4 structures, 4 elements): strongest binding: example, refs: servicerequest-genetics(Profile) [ServiceRequest.code], shareableactivitydefinition(Profile) [ActivityDefinition.code], biologicallyderivedproduct-manipulation(Extension) [Extension.extension.value[x]], biologicallyderivedproduct-processing(Extension) [Extension.extension.value[x]]
+  extensions/profiles (4 structures, 4 elements): strongest binding: example, refs: biologicallyderivedproduct-manipulation(Extension) [Extension.extension.value[x]], biologicallyderivedproduct-processing(Extension) [Extension.extension.value[x]], servicerequest-genetics(Profile) [ServiceRequest.code], shareableactivitydefinition(Profile) [ActivityDefinition.code]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/procedure-followup|4.3.0 (draft FMM: 1) (ProcedureFollowUpCodes(SNOMEDCT))
   references (1 structures, 1 elements): Procedure.followUp, strongest binding: example, by type: CodeableConcept:Example
@@ -29997,8 +29997,8 @@ Value Sets: 805
 - ValueSet: http://hl7.org/fhir/ValueSet/provider-taxonomy|4.3.0 (Provider Taxonomy Codes)
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/publication-status|4.3.0 (normative FMM: 5) (PublicationStatus)
-  references (40 structures, 45 elements): ActivityDefinition.status, AdministrableProductDefinition.status, AdministrableProductDefinition.property.status, CapabilityStatement.status, CatalogEntry.status, ChargeItemDefinition.status, Citation.status, ClinicalUseDefinition.status, CodeSystem.status, CompartmentDefinition.status, ConceptMap.status, EventDefinition.status, Evidence.status, EvidenceReport.status, EvidenceVariable.status, ExampleScenario.status, GraphDefinition.status, ImplementationGuide.status, Ingredient.status, InsurancePlan.status, Library.status, ManufacturedItemDefinition.status, Measure.status, MedicinalProductDefinition.status, MessageDefinition.status, NamingSystem.status, OperationDefinition.status, PackagedProductDefinition.status, PlanDefinition.status, Questionnaire.status, RegulatedAuthorization.status, RegulatedAuthorization.case.status, ResearchDefinition.status, ResearchElementDefinition.status, SearchParameter.status, StructureDefinition.status, StructureMap.status, SubscriptionTopic.status, SubstanceDefinition.status, SubstanceDefinition.code.status, SubstanceDefinition.name.status, SubstanceDefinition.name.official.status, TerminologyCapabilities.status, TestScript.status, ValueSet.status, strongest binding: required, by type: code:Required, CodeableConcept:Preferred
-  extensions/profiles (11 structures, 11 elements): strongest binding: required, refs: cdshooksserviceplandefinition(Profile) [PlanDefinition.status], computableplandefinition(Profile) [PlanDefinition.status], cqf-questionnaire(Profile) [Questionnaire.status], cqllibrary(Profile) [Library.status], Definition(LogicalModel) [Definition.status], shareableactivitydefinition(Profile) [ActivityDefinition.status], shareablecodesystem(Profile) [CodeSystem.status], shareablelibrary(Profile) [Library.status], shareablemeasure(Profile) [Measure.status], shareablevalueset(Profile) [ValueSet.status], artifact-status(Extension) [Extension.value[x]]
+  references (40 structures, 45 elements): ActivityDefinition.status, AdministrableProductDefinition.property.status, AdministrableProductDefinition.status, CapabilityStatement.status, CatalogEntry.status, ChargeItemDefinition.status, Citation.status, ClinicalUseDefinition.status, CodeSystem.status, CompartmentDefinition.status, ConceptMap.status, EventDefinition.status, Evidence.status, EvidenceReport.status, EvidenceVariable.status, ExampleScenario.status, GraphDefinition.status, ImplementationGuide.status, Ingredient.status, InsurancePlan.status, Library.status, ManufacturedItemDefinition.status, Measure.status, MedicinalProductDefinition.status, MessageDefinition.status, NamingSystem.status, OperationDefinition.status, PackagedProductDefinition.status, PlanDefinition.status, Questionnaire.status, RegulatedAuthorization.case.status, RegulatedAuthorization.status, ResearchDefinition.status, ResearchElementDefinition.status, SearchParameter.status, StructureDefinition.status, StructureMap.status, SubscriptionTopic.status, SubstanceDefinition.code.status, SubstanceDefinition.name.official.status, SubstanceDefinition.name.status, SubstanceDefinition.status, TerminologyCapabilities.status, TestScript.status, ValueSet.status, strongest binding: required, by type: code:Required, CodeableConcept:Preferred
+  extensions/profiles (11 structures, 11 elements): strongest binding: required, refs: artifact-status(Extension) [Extension.value[x]], cdshooksserviceplandefinition(Profile) [PlanDefinition.status], computableplandefinition(Profile) [PlanDefinition.status], cqf-questionnaire(Profile) [Questionnaire.status], cqllibrary(Profile) [Library.status], Definition(LogicalModel) [Definition.status], shareableactivitydefinition(Profile) [ActivityDefinition.status], shareablecodesystem(Profile) [CodeSystem.status], shareablelibrary(Profile) [Library.status], shareablemeasure(Profile) [Measure.status], shareablevalueset(Profile) [ValueSet.status]
   - #active: Active
   - #draft: Draft
   - #retired: Retired
@@ -30022,8 +30022,8 @@ Value Sets: 805
   - #>: Greater than
   - #>=: Greater or Equal to
 - ValueSet: http://hl7.org/fhir/ValueSet/questionnaire-answers|4.3.0 (draft FMM: 1) (QuestionnaireAnswerCodes)
-  references (2 structures, 4 elements): Questionnaire.item.enableWhen.answer[x], Questionnaire.item.answerOption.value[x], Questionnaire.item.initial.value[x], QuestionnaireResponse.item.answer.value[x], strongest binding: example, by type: boolean:Example, decimal:Example, integer:Example, date:Example, dateTime:Example, time:Example, string:Example, Coding:Example, Quantity:Example, Reference:Example, uri:Example, Attachment:Example
-  extensions/profiles (1 structures, 3 elements): strongest binding: example, refs: cqf-questionnaire(Profile) [Questionnaire.item.enableWhen.answer[x],Questionnaire.item.answerOption.value[x],Questionnaire.item.initial.value[x]]
+  references (2 structures, 4 elements): Questionnaire.item.answerOption.value[x], Questionnaire.item.enableWhen.answer[x], Questionnaire.item.initial.value[x], QuestionnaireResponse.item.answer.value[x], strongest binding: example, by type: boolean:Example, decimal:Example, integer:Example, date:Example, dateTime:Example, time:Example, string:Example, Coding:Example, Quantity:Example, Reference:Example, uri:Example, Attachment:Example
+  extensions/profiles (1 structures, 3 elements): strongest binding: example, refs: cqf-questionnaire(Profile) [Questionnaire.item.answerOption.value[x],Questionnaire.item.enableWhen.answer[x],Questionnaire.item.initial.value[x]]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/questionnaire-answers-status|4.3.0 (trial-use FMM: 3) (QuestionnaireResponseStatus)
   references (1 structures, 1 elements): QuestionnaireResponse.status, strongest binding: required, by type: code:Required
@@ -30406,7 +30406,7 @@ Value Sets: 805
   - #partial: Partial
   - #queued: Queued
 - ValueSet: http://hl7.org/fhir/ValueSet/report-action-result-codes|4.3.0 (trial-use FMM: 0) (TestReportActionResult)
-  references (1 structures, 2 elements): TestReport.setup.action.operation.result, TestReport.setup.action.assert.result, strongest binding: required, by type: code:Required
+  references (1 structures, 2 elements): TestReport.setup.action.assert.result, TestReport.setup.action.operation.result, strongest binding: required, by type: code:Required
   - #error: Error
   - #fail: Fail
   - #pass: Pass
@@ -30463,8 +30463,8 @@ Value Sets: 805
   - #proposal: Proposal
   - #reflex-order: Reflex Order
 - ValueSet: http://hl7.org/fhir/ValueSet/request-priority|4.3.0 (trial-use FMM: 3) (RequestPriority)
-  references (10 structures, 11 elements): ActivityDefinition.priority, Communication.priority, CommunicationRequest.priority, DeviceRequest.priority, MedicationRequest.priority, PlanDefinition.action.priority, RequestGroup.priority, RequestGroup.action.priority, ServiceRequest.priority, SupplyRequest.priority, Task.priority, strongest binding: required, by type: code:Required
-  extensions/profiles (6 structures, 7 elements): strongest binding: required, refs: cdshooksrequestgroup(Profile) [RequestGroup.priority,RequestGroup.action.priority], cdshooksserviceplandefinition(Profile) [PlanDefinition.action.priority], computableplandefinition(Profile) [PlanDefinition.action.priority], Request(LogicalModel) [Request.priority], servicerequest-genetics(Profile) [ServiceRequest.priority], shareableactivitydefinition(Profile) [ActivityDefinition.priority]
+  references (10 structures, 11 elements): ActivityDefinition.priority, Communication.priority, CommunicationRequest.priority, DeviceRequest.priority, MedicationRequest.priority, PlanDefinition.action.priority, RequestGroup.action.priority, RequestGroup.priority, ServiceRequest.priority, SupplyRequest.priority, Task.priority, strongest binding: required, by type: code:Required
+  extensions/profiles (6 structures, 7 elements): strongest binding: required, refs: cdshooksrequestgroup(Profile) [RequestGroup.action.priority,RequestGroup.priority], cdshooksserviceplandefinition(Profile) [PlanDefinition.action.priority], computableplandefinition(Profile) [PlanDefinition.action.priority], Request(LogicalModel) [Request.priority], servicerequest-genetics(Profile) [ServiceRequest.priority], shareableactivitydefinition(Profile) [ActivityDefinition.priority]
   - #asap: ASAP
   - #routine: Routine
   - #stat: STAT
@@ -30636,7 +30636,7 @@ Value Sets: 805
   - #unconfirmed: unconfirmed
   - #unknown: unknown
 - ValueSet: http://hl7.org/fhir/ValueSet/resource-types|4.3.0 (normative FMM: 5) (ResourceType)
-  references (10 structures, 12 elements): CapabilityStatement.rest.resource.type, CompartmentDefinition.resource.code, ExampleScenario.instance.resourceType, GraphDefinition.start, GraphDefinition.link.target.type, ImplementationGuide.global.type, MessageDefinition.focus.code, OperationDefinition.resource, Questionnaire.subjectType, Reference.type, SearchParameter.base, SearchParameter.target, strongest binding: required, by type: code:Required, uri:Extensible
+  references (10 structures, 12 elements): CapabilityStatement.rest.resource.type, CompartmentDefinition.resource.code, ExampleScenario.instance.resourceType, GraphDefinition.link.target.type, GraphDefinition.start, ImplementationGuide.global.type, MessageDefinition.focus.code, OperationDefinition.resource, Questionnaire.subjectType, Reference.type, SearchParameter.base, SearchParameter.target, strongest binding: required, by type: code:Required, uri:Extensible
   extensions/profiles (2 structures, 3 elements): strongest binding: required, refs: cqf-questionnaire(Profile) [Questionnaire.subjectType], questionnaire-referenceResource(Extension) [Extension.value[x]]
   - #Account: Account
   - #ActivityDefinition: ActivityDefinition
@@ -30938,7 +30938,7 @@ Value Sets: 805
   - #8: Counselling
   - #9: Death Services
 - ValueSet: http://hl7.org/fhir/ValueSet/service-place|4.3.0 (draft FMM: 1) (ExampleServicePlaceCodes)
-  references (3 structures, 4 elements): Claim.item.location[x], ClaimResponse.addItem.location[x], ExplanationOfBenefit.item.location[x], ExplanationOfBenefit.addItem.location[x], strongest binding: example, by type: CodeableConcept:Example, Address:Example, Reference:Example
+  references (3 structures, 4 elements): Claim.item.location[x], ClaimResponse.addItem.location[x], ExplanationOfBenefit.addItem.location[x], ExplanationOfBenefit.item.location[x], strongest binding: example, by type: CodeableConcept:Example, Address:Example, Reference:Example
   - #01: Pharmacy
   - #03: School
   - #04: Homeless Shelter
@@ -30972,7 +30972,7 @@ Value Sets: 805
   references (5 structures, 5 elements): Appointment.serviceType, Encounter.serviceType, HealthcareService.type, Schedule.serviceType, Slot.serviceType, strongest binding: example, by type: CodeableConcept:Example
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/service-uscls|4.3.0 (draft FMM: 1) (USCLSCodes)
-  references (5 structures, 14 elements): Claim.item.productOrService, Claim.item.detail.productOrService, Claim.item.detail.subDetail.productOrService, ClaimResponse.addItem.productOrService, ClaimResponse.addItem.detail.productOrService, ClaimResponse.addItem.detail.subDetail.productOrService, CoverageEligibilityRequest.item.productOrService, CoverageEligibilityResponse.insurance.item.productOrService, ExplanationOfBenefit.item.productOrService, ExplanationOfBenefit.item.detail.productOrService, ExplanationOfBenefit.item.detail.subDetail.productOrService, ExplanationOfBenefit.addItem.productOrService, ExplanationOfBenefit.addItem.detail.productOrService, ExplanationOfBenefit.addItem.detail.subDetail.productOrService, strongest binding: example, by type: CodeableConcept:Example
+  references (5 structures, 14 elements): Claim.item.detail.productOrService, Claim.item.detail.subDetail.productOrService, Claim.item.productOrService, ClaimResponse.addItem.detail.productOrService, ClaimResponse.addItem.detail.subDetail.productOrService, ClaimResponse.addItem.productOrService, CoverageEligibilityRequest.item.productOrService, CoverageEligibilityResponse.insurance.item.productOrService, ExplanationOfBenefit.addItem.detail.productOrService, ExplanationOfBenefit.addItem.detail.subDetail.productOrService, ExplanationOfBenefit.addItem.productOrService, ExplanationOfBenefit.item.detail.productOrService, ExplanationOfBenefit.item.detail.subDetail.productOrService, ExplanationOfBenefit.item.productOrService, strongest binding: example, by type: CodeableConcept:Example
   - #1101: Exam, comp, primary
   - #1102: Exam, comp, mixed
   - #1103: Exam, comp, permanent
@@ -31595,8 +31595,8 @@ Value Sets: 805
   - #RCT: randomized trial
   - #series: uncontrolled cohort or case series
 - ValueSet: http://hl7.org/fhir/ValueSet/subject-type|4.3.0 (trial-use FMM: 5) (SubjectType)
-  references (8 structures, 9 elements): ActivityDefinition.subject[x], DataRequirement.subject[x], EventDefinition.subject[x], Library.subject[x], Measure.subject[x], PlanDefinition.subject[x], PlanDefinition.action.subject[x], ResearchDefinition.subject[x], ResearchElementDefinition.subject[x], strongest binding: extensible, by type: CodeableConcept:Extensible, Reference:Extensible, canonical:Extensible
-  extensions/profiles (6 structures, 8 elements): strongest binding: extensible, refs: cdshooksserviceplandefinition(Profile) [PlanDefinition.subject[x],PlanDefinition.action.subject[x]], computableplandefinition(Profile) [PlanDefinition.subject[x],PlanDefinition.action.subject[x]], cqllibrary(Profile) [Library.subject[x]], shareableactivitydefinition(Profile) [ActivityDefinition.subject[x]], shareablelibrary(Profile) [Library.subject[x]], shareablemeasure(Profile) [Measure.subject[x]]
+  references (8 structures, 9 elements): ActivityDefinition.subject[x], DataRequirement.subject[x], EventDefinition.subject[x], Library.subject[x], Measure.subject[x], PlanDefinition.action.subject[x], PlanDefinition.subject[x], ResearchDefinition.subject[x], ResearchElementDefinition.subject[x], strongest binding: extensible, by type: CodeableConcept:Extensible, Reference:Extensible, canonical:Extensible
+  extensions/profiles (6 structures, 8 elements): strongest binding: extensible, refs: cdshooksserviceplandefinition(Profile) [PlanDefinition.action.subject[x],PlanDefinition.subject[x]], computableplandefinition(Profile) [PlanDefinition.action.subject[x],PlanDefinition.subject[x]], cqllibrary(Profile) [Library.subject[x]], shareableactivitydefinition(Profile) [ActivityDefinition.subject[x]], shareablelibrary(Profile) [Library.subject[x]], shareablemeasure(Profile) [Measure.subject[x]]
   - #Device: Device
   - #Location: Location
   - #Organization: Organization
@@ -31819,7 +31819,7 @@ Value Sets: 805
   - #suspended: Suspended
   - #unknown: Unknown
 - ValueSet: http://hl7.org/fhir/ValueSet/surface|4.3.0 (draft FMM: 1) (SurfaceCodes)
-  references (3 structures, 4 elements): Claim.item.subSite, ClaimResponse.addItem.subSite, ExplanationOfBenefit.item.subSite, ExplanationOfBenefit.addItem.subSite, strongest binding: example, by type: CodeableConcept:Example
+  references (3 structures, 4 elements): Claim.item.subSite, ClaimResponse.addItem.subSite, ExplanationOfBenefit.addItem.subSite, ExplanationOfBenefit.item.subSite, strongest binding: example, by type: CodeableConcept:Example
   - #B: Buccal
   - #D: Distal
   - #DI: Distoincisal
@@ -32177,7 +32177,7 @@ Value Sets: 805
   - #replace-other-therapy-not-effective: Indicated to replace the other therapy not effective on patient
   - #replace-other-therapy-not-tolerated: Indicated to replace the other therapy not well tolerated by patient
 - ValueSet: http://hl7.org/fhir/ValueSet/timezones|4.3.0 (IANATimezones)
-  extensions/profiles (2 structures, 8 elements): strongest binding: required, refs: tz-code(Extension) [Extension.value[x]], timezone(Extension) [Extension.value[x]]
+  extensions/profiles (2 structures, 8 elements): strongest binding: required, refs: timezone(Extension) [Extension.value[x]], tz-code(Extension) [Extension.value[x]]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/timing-abbreviation|4.3.0 (TimingAbbreviation)
   references (1 structures, 1 elements): Timing.code, strongest binding: preferred, by type: CodeableConcept:Preferred
@@ -32213,7 +32213,7 @@ Value Sets: 805
   - #short-title: Short title
   - #subtitle: Subtitle
 - ValueSet: http://hl7.org/fhir/ValueSet/tooth|4.3.0 (draft FMM: 1) (OralSiteCodes)
-  references (3 structures, 4 elements): Claim.item.bodySite, ClaimResponse.addItem.bodySite, ExplanationOfBenefit.item.bodySite, ExplanationOfBenefit.addItem.bodySite, strongest binding: example, by type: CodeableConcept:Example
+  references (3 structures, 4 elements): Claim.item.bodySite, ClaimResponse.addItem.bodySite, ExplanationOfBenefit.addItem.bodySite, ExplanationOfBenefit.item.bodySite, strongest binding: example, by type: CodeableConcept:Example
   - #0: Oral cavity
   - #1: 1
   - #11: 11
@@ -32310,7 +32310,7 @@ Value Sets: 805
   extensions/profiles (1 structures, 1 elements): strongest binding: required, refs: elementdefinition-allowedUnits(Extension) [Extension.value[x]]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/ucum-vitals-common|4.3.0 (VitalSignsUnits)
-  extensions/profiles (11 structures, 33 elements): strongest binding: extensible, refs: bmi(Profile) [Observation.value[x],Observation.component.value[x]], bodyheight(Profile) [Observation.value[x],Observation.component.value[x]], bodytemp(Profile) [Observation.value[x],Observation.component.value[x]], bodyweight(Profile) [Observation.value[x],Observation.component.value[x]], bp(Profile) [Observation.value[x],Observation.component.value[x]], headcircum(Profile) [Observation.value[x],Observation.component.value[x]], heartrate(Profile) [Observation.value[x],Observation.component.value[x]], oxygensat(Profile) [Observation.value[x],Observation.component.value[x]], resprate(Profile) [Observation.value[x],Observation.component.value[x]], vitalsigns(Profile) [Observation.value[x],Observation.component.value[x]], vitalspanel(Profile) [Observation.value[x],Observation.component.value[x]]
+  extensions/profiles (11 structures, 33 elements): strongest binding: extensible, refs: bmi(Profile) [Observation.component.value[x],Observation.value[x]], bodyheight(Profile) [Observation.component.value[x],Observation.value[x]], bodytemp(Profile) [Observation.component.value[x],Observation.value[x]], bodyweight(Profile) [Observation.component.value[x],Observation.value[x]], bp(Profile) [Observation.component.value[x],Observation.value[x]], headcircum(Profile) [Observation.component.value[x],Observation.value[x]], heartrate(Profile) [Observation.component.value[x],Observation.value[x]], oxygensat(Profile) [Observation.component.value[x],Observation.value[x]], resprate(Profile) [Observation.component.value[x],Observation.value[x]], vitalsigns(Profile) [Observation.component.value[x],Observation.value[x]], vitalspanel(Profile) [Observation.component.value[x],Observation.value[x]]
   - #[degF]: degree Fahrenheit
   - #[in_i]: inch (international)
   - #[lb_av]: pound (US and British)
@@ -32425,7 +32425,7 @@ Value Sets: 805
   extensions/profiles (1 structures, 1 elements): strongest binding: extensible, refs: elementdefinition-bestpractice(Extension) [Extension.value[x]]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/vaccine-code|4.3.0 (draft FMM: 1) (VaccineAdministeredValueSet)
-  references (2 structures, 3 elements): Immunization.vaccineCode, ImmunizationRecommendation.recommendation.vaccineCode, ImmunizationRecommendation.recommendation.contraindicatedVaccineCode, strongest binding: example, by type: CodeableConcept:Example
+  references (2 structures, 3 elements): Immunization.vaccineCode, ImmunizationRecommendation.recommendation.contraindicatedVaccineCode, ImmunizationRecommendation.recommendation.vaccineCode, strongest binding: example, by type: CodeableConcept:Example
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/variable-handling|4.3.0 (trial-use FMM: 5) (EvidenceVariableHandling)
   references (2 structures, 2 elements): Evidence.statistic.modelCharacteristic.variable.handling, EvidenceVariable.handling, strongest binding: required, by type: code:Required
@@ -32452,7 +32452,7 @@ Value Sets: 805
   - #undetermined: Undetermined
   - #yes: Yes
 - ValueSet: http://hl7.org/fhir/ValueSet/verificationresult-communication-method|4.3.0 (draft FMM: 1) (verificationresult-communication-method)
-  references (1 structures, 2 elements): VerificationResult.primarySource.communicationMethod, VerificationResult.attestation.communicationMethod, strongest binding: example, by type: CodeableConcept:Example
+  references (1 structures, 2 elements): VerificationResult.attestation.communicationMethod, VerificationResult.primarySource.communicationMethod, strongest binding: example, by type: CodeableConcept:Example
   - #manual: Manual
   - #portal: Portal
   - #pull: Pull
@@ -35232,7 +35232,7 @@ Value Sets: 805
   - #VIDEOCONF: videoconferencing
   - #WRITTEN: written
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-PurposeOfUse|2.0.0 (PurposeOfUse)
-  references (4 structures, 6 elements): AuditEvent.purposeOfEvent, AuditEvent.agent.purposeOfUse, Consent.provision.purpose, Contract.term.action.intent, Contract.term.action.reasonCode, Provenance.reason, strongest binding: extensible, by type: CodeableConcept:Example, Coding:Extensible
+  references (4 structures, 6 elements): AuditEvent.agent.purposeOfUse, AuditEvent.purposeOfEvent, Consent.provision.purpose, Contract.term.action.intent, Contract.term.action.reasonCode, Provenance.reason, strongest binding: extensible, by type: CodeableConcept:Example, Coding:Extensible
   extensions/profiles (1 structures, 1 elements): strongest binding: extensible, refs: provenance-relevant-history(Profile) [Provenance.reason]
   - #BIORCH: biomedical research
   - #BTG: break the glass
@@ -35453,7 +35453,7 @@ External Value Set Binding References: 33
 - ValueSet: http://hl7.org/fhir/ValueSet/product-classification-codes
   references (1 structures, 1 elements): MedicinalProductDefinition.classification, strongest binding: example, by type: CodeableConcept:Example
 - ValueSet: http://hl7.org/fhir/ValueSet/substance-codes
-  references (4 structures, 6 elements): AdministrableProductDefinition.ingredient, Ingredient.substance.code, Ingredient.substance.strength.referenceStrength.substance, ManufacturedItemDefinition.ingredient, MedicinalProductDefinition.ingredient, MedicinalProductDefinition.impurity, strongest binding: example, by type: CodeableConcept:Example, CodeableReference:Example
+  references (4 structures, 6 elements): AdministrableProductDefinition.ingredient, Ingredient.substance.code, Ingredient.substance.strength.referenceStrength.substance, ManufacturedItemDefinition.ingredient, MedicinalProductDefinition.impurity, MedicinalProductDefinition.ingredient, strongest binding: example, by type: CodeableConcept:Example, CodeableReference:Example
 - ValueSet: http://loinc.org/vs/LL379-9|4.3.0
   references (1 structures, 1 elements): MolecularSequence.structureVariant.variantType, strongest binding: required, by type: CodeableConcept:Required
 - ValueSet: http://terminology.hl7.org/CodeSystem/questionnaire-usage-mode

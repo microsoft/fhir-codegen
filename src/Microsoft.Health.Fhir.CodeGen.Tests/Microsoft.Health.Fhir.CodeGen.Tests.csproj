@@ -8,18 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="TestData\Generated\*.*">
+    <Content Include="TestData\**\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="TestData\R4\*.*">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="TestData\R4B\*.*">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="TestData\R5\*.*">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -60,47 +51,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.Health.Fhir.CodeGenCommon\Microsoft.Health.Fhir.CodeGenCommon.csproj" />
     <ProjectReference Include="..\Microsoft.Health.Fhir.CodeGen\Microsoft.Health.Fhir.CodeGen.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="TestData\Generated\Info-R5.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Include="TestData\R4\CapabilityStatement-candle-local.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="TestData\Hashes\CSharpFirely2-R3-Satellite.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="TestData\Hashes\CSharpFirely2-R4-Satellite.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="TestData\Hashes\CSharpFirely2-R4B-Satellite.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="TestData\Hashes\CSharpFirely2-R5-Base.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="TestData\Hashes\CSharpFirely2-R5-Conformance.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="TestData\Hashes\CSharpFirely2-R5-Satellite.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="TestData\Packages\packages-01-empty.ini">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="TestData\R5\expansions\ValueSet-units-of-time.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="TestData\Hashes\" />
   </ItemGroup>
 
 </Project>

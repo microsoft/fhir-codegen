@@ -96,6 +96,12 @@ public class GenerationTestFixture
             return;
         }
 
+        if (!Path.IsPathRooted(existingPath))
+        {
+            existingPath = Path.Combine(Directory.GetCurrentDirectory(), existingPath);
+            existingPath = Path.GetFullPath(existingPath);
+        }
+
         if (!File.Exists(existingPath))
         {
             throw new ArgumentException($"Could not find file at path: {existingPath}");
@@ -115,8 +121,30 @@ public class GenerationTestFixture
         using StreamReader currentReader = new(currentMS);
 
         int i = 0;
-        while (existingReader.ReadLine() is string previousLine && currentReader.ReadLine() is string currentLine)
+        bool done = false;
+        while (!done)
         {
+            string? previousLine = existingReader.ReadLine();
+            string? currentLine = currentReader.ReadLine();
+
+            if ((previousLine == null) && (currentLine == null))
+            {
+                done = true;
+                break;
+            }
+
+            if (previousLine == null)
+            {
+                Assert.Fail($"Failed to read line {i} in exisiting file!");
+                return;
+            }
+
+            if (currentLine == null)
+            {
+                Assert.Fail($"Failed to read line {i} in current file!");
+                return;
+            }
+
             i++;
             if (currentLine.Contains(version))
             {
@@ -155,8 +183,12 @@ public class GenerationTestFixture
 
         previous.Count.Should().Be(current.Count);
 
-        foreach ((string path, string hash) in current)
+        foreach ((string currentPath, string hash) in current)
         {
+            string path = currentPath.Contains('/')
+                ? currentPath.Replace('/', '\\')
+                : currentPath;
+
             _ = previous.TryGetValue(path, out string? previousHash);
 
             hash.Should().BeEquivalentTo(previousHash, $"Hashes do not match for {path}!");

@@ -1030,9 +1030,9 @@ Resources: 96
   ?participant: participant=reference
   ?patient: patient=reference
   ?performer: performer=reference
-  ?related: related=composite
   ?relatedcode: relatedcode=token
   ?relatedplan: relatedplan=reference
+  ?related: related=composite
   ?subject: subject=reference
   Profiles[CarePlan]: 1
     -argonaut-careplan: http://hl7.org/fhir/StructureDefinition/argonaut-careplan (ArgonautProfileForCarePlan)
@@ -1342,8 +1342,8 @@ Resources: 96
   ?resolved: resolved=token
   ?ruledout: ruledout=token
   ?status: status=token
-  ?trigger: trigger=reference
   ?trigger-code: trigger-code=token
+  ?trigger: trigger=reference
 - Communication: DomainResource (draft FMM: 1) (abstract: False)
   ^communication[0..*]: DomainResource::Communication (W5: workflow.encounter)
   - id[0..1]: id
@@ -1589,14 +1589,14 @@ Resources: 96
   ?name: name=string
   ?product: product=uri
   ?publisher: publisher=string
-  ?source: source=reference
   ?sourcecode: sourcecode=token
+  ?source: source=reference
   ?sourcesystem: sourcesystem=uri
   ?sourceuri: sourceuri=reference
   ?status: status=token
-  ?target: target=reference
   ?targetcode: targetcode=token
   ?targetsystem: targetsystem=uri
+  ?target: target=reference
   ?url: url=uri
   ?version: version=token
   ConceptMap/$translate (FMM: 0)
@@ -1687,8 +1687,8 @@ Resources: 96
   ?encounter: encounter=reference
   ?evidence: evidence=token
   ?identifier: identifier=token
-  ?onset: onset=date
   ?onset-info: onset-info=string
+  ?onset: onset=date
   ?patient: patient=reference
   ?severity: severity=token
   ?stage: stage=token
@@ -2402,13 +2402,13 @@ Resources: 96
   ?code: code=token
   ?encounter: encounter=reference
   ?event-date: event-date=date
-  ?event-status: event-status=token
   ?event-status-date: event-status-date=composite
+  ?event-status: event-status=token
   ?identifier: identifier=token
   ?item-date: item-date=date
   ?item-past-status: item-past-status=token
-  ?item-status: item-status=token
   ?item-status-date: item-status-date=composite
+  ?item-status: item-status=token
   ?orderer: orderer=reference
   ?patient: patient=reference
   ?specimen: specimen=reference
@@ -2748,11 +2748,11 @@ Resources: 96
   ?incomingreferral: incomingreferral=reference
   ?indication: indication=reference
   ?length: length=number
-  ?location: location=reference
   ?location-period: location-period=date
+  ?location: location=reference
   ?part-of: part-of=reference
-  ?participant: participant=reference
   ?participant-type: participant-type=token
+  ?participant: participant=reference
   ?patient: patient=reference
   ?practitioner: practitioner=reference
   ?procedure: procedure=reference
@@ -3045,8 +3045,8 @@ Resources: 96
     - inactive[0..1]: boolean
     .defaultValueboolean = false
   ?actual: actual=token
-  ?characteristic: characteristic=token
   ?characteristic-value: characteristic-value=composite
+  ?characteristic: characteristic=token
   ?code: code=token
   ?exclude: exclude=token
   ?identifier: identifier=token
@@ -3294,10 +3294,10 @@ Resources: 96
   ?notgiven: notgiven=token
   ?patient: patient=reference
   ?performer: performer=reference
-  ?reaction: reaction=reference
   ?reaction-date: reaction-date=date
-  ?reason: reason=token
+  ?reaction: reaction=reference
   ?reason-not-given: reason-not-given=token
+  ?reason: reason=token
   ?requester: requester=reference
   ?status: status=token
   ?vaccine-code: vaccine-code=token
@@ -3525,16 +3525,16 @@ Resources: 96
   +http://hl7.org/fhir/StructureDefinition/location-alias [0..*]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/location-alias
     - valueString[1..1]: string
-  ?address: address=string
   ?address-city: address-city=string
   ?address-country: address-country=string
   ?address-postalcode: address-postalcode=string
   ?address-state: address-state=string
   ?address-use: address-use=token
+  ?address: address=string
   ?identifier: identifier=token
   ?name: name=string
-  ?near: near=token
   ?near-distance: near-distance=token
+  ?near: near=token
   ?organization: organization=reference
   ?partof: partof=reference
   ?status: status=token
@@ -3967,15 +3967,15 @@ Resources: 96
   ?author: author=reference
   ?code: code=token
   ?data: data=reference
-  ?destination: destination=string
   ?destination-uri: destination-uri=uri
+  ?destination: destination=string
   ?enterer: enterer=reference
   ?event: event=token
   ?receiver: receiver=reference
   ?response-id: response-id=token
   ?responsible: responsible=reference
-  ?source: source=string
   ?source-uri: source-uri=uri
+  ?source: source=string
   ?target: target=reference
   ?timestamp: timestamp=date
 - NamingSystem: DomainResource (draft FMM: 1) (abstract: False)
@@ -4265,16 +4265,16 @@ Resources: 96
   ?assessed-condition: assessed-condition=reference
   ?category: category=token
   ?chromosome-genomicstart: chromosome-genomicstart=string
-  ?code: code=token
   ?code-value-[x]: code-value-[x]=composite
-  ?component-code: component-code=token
+  ?code: code=token
   ?component-code-value-[x]: component-code-value-[x]=composite
+  ?component-code: component-code=token
   ?component-data-absent-reason: component-data-absent-reason=token
   ?component-value-concept: component-value-concept=token
   ?component-value-quantity: component-value-quantity=quantity
   ?component-value-string: component-value-string=string
-  ?condition-gene: condition-gene=string
   ?condition-gene-dnavariant: condition-gene-dnavariant=string
+  ?condition-gene: condition-gene=string
   ?data-absent-reason: data-absent-reason=token
   ?date: date=date
   ?device: device=reference
@@ -4286,9 +4286,9 @@ Resources: 96
   ?identifier: identifier=token
   ?patient: patient=reference
   ?performer: performer=reference
-  ?related: related=composite
   ?related-target: related-target=reference
   ?related-type: related-type=token
+  ?related: related=composite
   ?specimen: specimen=reference
   ?status: status=token
   ?subject: subject=reference
@@ -4446,8 +4446,8 @@ Resources: 96
   ?source: source=reference
   ?subject: subject=reference
   ?target: target=reference
-  ?when: when=date
   ?when_code: when_code=token
+  ?when: when=date
 - OrderResponse: DomainResource (draft FMM: 0) (abstract: False)
   ^orderResponse[0..*]: DomainResource::OrderResponse (W5: workflow.order)
   - id[0..1]: id
@@ -4513,12 +4513,12 @@ Resources: 96
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/organization-period
     - valuePeriod[1..1]: Period
   ?active: active=token
-  ?address: address=string
   ?address-city: address-city=string
   ?address-country: address-country=string
   ?address-postalcode: address-postalcode=string
   ?address-state: address-state=string
   ?address-use: address-use=token
+  ?address: address=string
   ?identifier: identifier=token
   ?name: name=string
   ?partof: partof=reference
@@ -4649,12 +4649,12 @@ Resources: 96
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/us-core-religion
     - valueCodeableConcept[1..1]: CodeableConcept
   ?active: active=token
-  ?address: address=string
   ?address-city: address-city=string
   ?address-country: address-country=string
   ?address-postalcode: address-postalcode=string
   ?address-state: address-state=string
   ?address-use: address-use=token
+  ?address: address=string
   ?age: age=number
   ?animal-breed: animal-breed=token
   ?animal-species: animal-species=token
@@ -4789,12 +4789,12 @@ Resources: 96
     - target[1..1]: Reference(Patient|Practitioner|RelatedPerson|Person)
     - assurance[0..1]: code
       {level1|level2|level3|level4}
-  ?address: address=string
   ?address-city: address-city=string
   ?address-country: address-country=string
   ?address-postalcode: address-postalcode=string
   ?address-state: address-state=string
   ?address-use: address-use=token
+  ?address: address=string
   ?birthdate: birthdate=date
   ?email: email=token
   ?gender: gender=token
@@ -4858,12 +4858,12 @@ Resources: 96
   +http://hl7.org/fhir/StructureDefinition/practitioner-classification [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/practitioner-classification
     - valueCodeableConcept[1..1]: CodeableConcept
-  ?address: address=string
   ?address-city: address-city=string
   ?address-country: address-country=string
   ?address-postalcode: address-postalcode=string
   ?address-state: address-state=string
   ?address-use: address-use=token
+  ?address: address=string
   ?communication: communication=token
   ?email: email=token
   ?family: family=string
@@ -5072,9 +5072,9 @@ Resources: 96
   - error[0..*]: Coding
   ?identifier: identifier=token
   ?organization: organization=reference
-  ?request: request=reference
   ?requestorganization: requestorganization=reference
   ?requestprovider: requestprovider=reference
+  ?request: request=reference
 - Provenance: DomainResource (draft FMM: 1) (abstract: False)
   ^provenance[0..*]: DomainResource::Provenance (W5: infrastructure.information)
   - id[0..1]: id
@@ -5448,12 +5448,12 @@ Resources: 96
   +http://hl7.org/fhir/StructureDefinition/practitioner-animalSpecies [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/practitioner-animalSpecies
     - valueCodeableConcept[1..1]: CodeableConcept
-  ?address: address=string
   ?address-city: address-city=string
   ?address-country: address-country=string
   ?address-postalcode: address-postalcode=string
   ?address-state: address-state=string
   ?address-use: address-use=token
+  ?address: address=string
   ?birthdate: birthdate=date
   ?email: email=token
   ?gender: gender=token
@@ -5682,8 +5682,8 @@ Resources: 96
   ?bodysite: bodysite=token
   ?collected: collected=date
   ?collector: collector=reference
-  ?container: container=token
   ?container-id: container-id=token
+  ?container: container=token
   ?identifier: identifier=token
   ?parent: parent=reference
   ?patient: patient=reference
@@ -5779,11 +5779,11 @@ Resources: 96
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/structuredefinition-template-status
     - valueCode[1..1]: code
   ?abstract: abstract=token
-  ?base: base=uri
   ?base-path: base-path=token
+  ?base: base=uri
   ?code: code=token
-  ?context: context=token
   ?context-type: context-type=token
+  ?context: context=token
   ?date: date=date
   ?description: description=string
   ?display: display=string
@@ -6548,9 +6548,9 @@ Profiles: 107
   ?participant: participant=reference
   ?patient: patient=reference
   ?performer: performer=reference
-  ?related: related=composite
   ?relatedcode: relatedcode=token
   ?relatedplan: relatedplan=reference
+  ?related: related=composite
   ?subject: subject=reference
   Profiles[CarePlan]: 1
     -argonaut-careplan: http://hl7.org/fhir/StructureDefinition/argonaut-careplan (ArgonautProfileForCarePlan)
@@ -6723,16 +6723,16 @@ Profiles: 107
   ?assessed-condition: assessed-condition=reference
   ?category: category=token
   ?chromosome-genomicstart: chromosome-genomicstart=string
-  ?code: code=token
   ?code-value-[x]: code-value-[x]=composite
-  ?component-code: component-code=token
+  ?code: code=token
   ?component-code-value-[x]: component-code-value-[x]=composite
+  ?component-code: component-code=token
   ?component-data-absent-reason: component-data-absent-reason=token
   ?component-value-concept: component-value-concept=token
   ?component-value-quantity: component-value-quantity=quantity
   ?component-value-string: component-value-string=string
-  ?condition-gene: condition-gene=string
   ?condition-gene-dnavariant: condition-gene-dnavariant=string
+  ?condition-gene: condition-gene=string
   ?data-absent-reason: data-absent-reason=token
   ?date: date=date
   ?device: device=reference
@@ -6744,9 +6744,9 @@ Profiles: 107
   ?identifier: identifier=token
   ?patient: patient=reference
   ?performer: performer=reference
-  ?related: related=composite
   ?related-target: related-target=reference
   ?related-type: related-type=token
+  ?related: related=composite
   ?specimen: specimen=reference
   ?status: status=token
   ?subject: subject=reference
@@ -7194,8 +7194,8 @@ Profiles: 107
   ?encounter: encounter=reference
   ?evidence: evidence=token
   ?identifier: identifier=token
-  ?onset: onset=date
   ?onset-info: onset-info=string
+  ?onset: onset=date
   ?patient: patient=reference
   ?severity: severity=token
   ?stage: stage=token
@@ -7301,13 +7301,13 @@ Profiles: 107
   ?code: code=token
   ?encounter: encounter=reference
   ?event-date: event-date=date
-  ?event-status: event-status=token
   ?event-status-date: event-status-date=composite
+  ?event-status: event-status=token
   ?identifier: identifier=token
   ?item-date: item-date=date
   ?item-past-status: item-past-status=token
-  ?item-status: item-status=token
   ?item-status-date: item-status-date=composite
+  ?item-status: item-status=token
   ?orderer: orderer=reference
   ?patient: patient=reference
   ?specimen: specimen=reference
@@ -7486,11 +7486,11 @@ Profiles: 107
   ?incomingreferral: incomingreferral=reference
   ?indication: indication=reference
   ?length: length=number
-  ?location: location=reference
   ?location-period: location-period=date
+  ?location: location=reference
   ?part-of: part-of=reference
-  ?participant: participant=reference
   ?participant-type: participant-type=token
+  ?participant: participant=reference
   ?patient: patient=reference
   ?practitioner: practitioner=reference
   ?procedure: procedure=reference
@@ -7689,10 +7689,10 @@ Profiles: 107
   ?notgiven: notgiven=token
   ?patient: patient=reference
   ?performer: performer=reference
-  ?reaction: reaction=reference
   ?reaction-date: reaction-date=date
-  ?reason: reason=token
+  ?reaction: reaction=reference
   ?reason-not-given: reason-not-given=token
+  ?reason: reason=token
   ?requester: requester=reference
   ?status: status=token
   ?vaccine-code: vaccine-code=token
@@ -7809,16 +7809,16 @@ Profiles: 107
   +http://hl7.org/fhir/StructureDefinition/location-alias [0..*]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/location-alias
     - valueString[1..1]: string
-  ?address: address=string
   ?address-city: address-city=string
   ?address-country: address-country=string
   ?address-postalcode: address-postalcode=string
   ?address-state: address-state=string
   ?address-use: address-use=token
+  ?address: address=string
   ?identifier: identifier=token
   ?name: name=string
-  ?near: near=token
   ?near-distance: near-distance=token
+  ?near: near=token
   ?organization: organization=reference
   ?partof: partof=reference
   ?status: status=token
@@ -8315,12 +8315,12 @@ Profiles: 107
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/organization-period
     - valuePeriod[1..1]: Period
   ?active: active=token
-  ?address: address=string
   ?address-city: address-city=string
   ?address-country: address-country=string
   ?address-postalcode: address-postalcode=string
   ?address-state: address-state=string
   ?address-use: address-use=token
+  ?address: address=string
   ?identifier: identifier=token
   ?name: name=string
   ?partof: partof=reference
@@ -8497,12 +8497,12 @@ Profiles: 107
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/us-core-religion
     - valueCodeableConcept[1..1]: CodeableConcept
   ?active: active=token
-  ?address: address=string
   ?address-city: address-city=string
   ?address-country: address-country=string
   ?address-postalcode: address-postalcode=string
   ?address-state: address-state=string
   ?address-use: address-use=token
+  ?address: address=string
   ?age: age=number
   ?animal-breed: animal-breed=token
   ?animal-species: animal-species=token
@@ -8639,12 +8639,12 @@ Profiles: 107
   +http://hl7.org/fhir/StructureDefinition/practitioner-classification [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/practitioner-classification
     - valueCodeableConcept[1..1]: CodeableConcept
-  ?address: address=string
   ?address-city: address-city=string
   ?address-country: address-country=string
   ?address-postalcode: address-postalcode=string
   ?address-state: address-state=string
   ?address-use: address-use=token
+  ?address: address=string
   ?communication: communication=token
   ?email: email=token
   ?family: family=string
@@ -8885,12 +8885,12 @@ Profiles: 107
   +http://hl7.org/fhir/StructureDefinition/practitioner-animalSpecies [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/practitioner-animalSpecies
     - valueCodeableConcept[1..1]: CodeableConcept
-  ?address: address=string
   ?address-city: address-city=string
   ?address-country: address-country=string
   ?address-postalcode: address-postalcode=string
   ?address-state: address-state=string
   ?address-use: address-use=token
+  ?address: address=string
   ?birthdate: birthdate=date
   ?email: email=token
   ?gender: gender=token
@@ -9161,16 +9161,16 @@ Profiles: 107
   ?assessed-condition: assessed-condition=reference
   ?category: category=token
   ?chromosome-genomicstart: chromosome-genomicstart=string
-  ?code: code=token
   ?code-value-[x]: code-value-[x]=composite
-  ?component-code: component-code=token
+  ?code: code=token
   ?component-code-value-[x]: component-code-value-[x]=composite
+  ?component-code: component-code=token
   ?component-data-absent-reason: component-data-absent-reason=token
   ?component-value-concept: component-value-concept=token
   ?component-value-quantity: component-value-quantity=quantity
   ?component-value-string: component-value-string=string
-  ?condition-gene: condition-gene=string
   ?condition-gene-dnavariant: condition-gene-dnavariant=string
+  ?condition-gene: condition-gene=string
   ?data-absent-reason: data-absent-reason=token
   ?date: date=date
   ?device: device=reference
@@ -9182,9 +9182,9 @@ Profiles: 107
   ?identifier: identifier=token
   ?patient: patient=reference
   ?performer: performer=reference
-  ?related: related=composite
   ?related-target: related-target=reference
   ?related-type: related-type=token
+  ?related: related=composite
   ?specimen: specimen=reference
   ?status: status=token
   ?subject: subject=reference
@@ -9365,16 +9365,16 @@ Profiles: 107
   ?assessed-condition: assessed-condition=reference
   ?category: category=token
   ?chromosome-genomicstart: chromosome-genomicstart=string
-  ?code: code=token
   ?code-value-[x]: code-value-[x]=composite
-  ?component-code: component-code=token
+  ?code: code=token
   ?component-code-value-[x]: component-code-value-[x]=composite
+  ?component-code: component-code=token
   ?component-data-absent-reason: component-data-absent-reason=token
   ?component-value-concept: component-value-concept=token
   ?component-value-quantity: component-value-quantity=quantity
   ?component-value-string: component-value-string=string
-  ?condition-gene: condition-gene=string
   ?condition-gene-dnavariant: condition-gene-dnavariant=string
+  ?condition-gene: condition-gene=string
   ?data-absent-reason: data-absent-reason=token
   ?date: date=date
   ?device: device=reference
@@ -9386,9 +9386,9 @@ Profiles: 107
   ?identifier: identifier=token
   ?patient: patient=reference
   ?performer: performer=reference
-  ?related: related=composite
   ?related-target: related-target=reference
   ?related-type: related-type=token
+  ?related: related=composite
   ?specimen: specimen=reference
   ?status: status=token
   ?subject: subject=reference
@@ -9525,8 +9525,8 @@ Profiles: 107
   ?bodysite: bodysite=token
   ?collected: collected=date
   ?collector: collector=reference
-  ?container: container=token
   ?container-id: container-id=token
+  ?container: container=token
   ?identifier: identifier=token
   ?parent: parent=reference
   ?patient: patient=reference
@@ -9758,16 +9758,16 @@ Profiles: 107
   ?assessed-condition: assessed-condition=reference
   ?category: category=token
   ?chromosome-genomicstart: chromosome-genomicstart=string
-  ?code: code=token
   ?code-value-[x]: code-value-[x]=composite
-  ?component-code: component-code=token
+  ?code: code=token
   ?component-code-value-[x]: component-code-value-[x]=composite
+  ?component-code: component-code=token
   ?component-data-absent-reason: component-data-absent-reason=token
   ?component-value-concept: component-value-concept=token
   ?component-value-quantity: component-value-quantity=quantity
   ?component-value-string: component-value-string=string
-  ?condition-gene: condition-gene=string
   ?condition-gene-dnavariant: condition-gene-dnavariant=string
+  ?condition-gene: condition-gene=string
   ?data-absent-reason: data-absent-reason=token
   ?date: date=date
   ?device: device=reference
@@ -9779,9 +9779,9 @@ Profiles: 107
   ?identifier: identifier=token
   ?patient: patient=reference
   ?performer: performer=reference
-  ?related: related=composite
   ?related-target: related-target=reference
   ?related-type: related-type=token
+  ?related: related=composite
   ?specimen: specimen=reference
   ?status: status=token
   ?subject: subject=reference
@@ -9960,16 +9960,16 @@ Profiles: 107
   ?assessed-condition: assessed-condition=reference
   ?category: category=token
   ?chromosome-genomicstart: chromosome-genomicstart=string
-  ?code: code=token
   ?code-value-[x]: code-value-[x]=composite
-  ?component-code: component-code=token
+  ?code: code=token
   ?component-code-value-[x]: component-code-value-[x]=composite
+  ?component-code: component-code=token
   ?component-data-absent-reason: component-data-absent-reason=token
   ?component-value-concept: component-value-concept=token
   ?component-value-quantity: component-value-quantity=quantity
   ?component-value-string: component-value-string=string
-  ?condition-gene: condition-gene=string
   ?condition-gene-dnavariant: condition-gene-dnavariant=string
+  ?condition-gene: condition-gene=string
   ?data-absent-reason: data-absent-reason=token
   ?date: date=date
   ?device: device=reference
@@ -9981,9 +9981,9 @@ Profiles: 107
   ?identifier: identifier=token
   ?patient: patient=reference
   ?performer: performer=reference
-  ?related: related=composite
   ?related-target: related-target=reference
   ?related-type: related-type=token
+  ?related: related=composite
   ?specimen: specimen=reference
   ?status: status=token
   ?subject: subject=reference
@@ -10629,16 +10629,16 @@ Profiles: 107
   ?assessed-condition: assessed-condition=reference
   ?category: category=token
   ?chromosome-genomicstart: chromosome-genomicstart=string
-  ?code: code=token
   ?code-value-[x]: code-value-[x]=composite
-  ?component-code: component-code=token
+  ?code: code=token
   ?component-code-value-[x]: component-code-value-[x]=composite
+  ?component-code: component-code=token
   ?component-data-absent-reason: component-data-absent-reason=token
   ?component-value-concept: component-value-concept=token
   ?component-value-quantity: component-value-quantity=quantity
   ?component-value-string: component-value-string=string
-  ?condition-gene: condition-gene=string
   ?condition-gene-dnavariant: condition-gene-dnavariant=string
+  ?condition-gene: condition-gene=string
   ?data-absent-reason: data-absent-reason=token
   ?date: date=date
   ?device: device=reference
@@ -10650,9 +10650,9 @@ Profiles: 107
   ?identifier: identifier=token
   ?patient: patient=reference
   ?performer: performer=reference
-  ?related: related=composite
   ?related-target: related-target=reference
   ?related-type: related-type=token
+  ?related: related=composite
   ?specimen: specimen=reference
   ?status: status=token
   ?subject: subject=reference
@@ -10835,16 +10835,16 @@ Profiles: 107
   ?assessed-condition: assessed-condition=reference
   ?category: category=token
   ?chromosome-genomicstart: chromosome-genomicstart=string
-  ?code: code=token
   ?code-value-[x]: code-value-[x]=composite
-  ?component-code: component-code=token
+  ?code: code=token
   ?component-code-value-[x]: component-code-value-[x]=composite
+  ?component-code: component-code=token
   ?component-data-absent-reason: component-data-absent-reason=token
   ?component-value-concept: component-value-concept=token
   ?component-value-quantity: component-value-quantity=quantity
   ?component-value-string: component-value-string=string
-  ?condition-gene: condition-gene=string
   ?condition-gene-dnavariant: condition-gene-dnavariant=string
+  ?condition-gene: condition-gene=string
   ?data-absent-reason: data-absent-reason=token
   ?date: date=date
   ?device: device=reference
@@ -10856,9 +10856,9 @@ Profiles: 107
   ?identifier: identifier=token
   ?patient: patient=reference
   ?performer: performer=reference
-  ?related: related=composite
   ?related-target: related-target=reference
   ?related-type: related-type=token
+  ?related: related=composite
   ?specimen: specimen=reference
   ?status: status=token
   ?subject: subject=reference
@@ -11043,16 +11043,16 @@ Profiles: 107
   ?assessed-condition: assessed-condition=reference
   ?category: category=token
   ?chromosome-genomicstart: chromosome-genomicstart=string
-  ?code: code=token
   ?code-value-[x]: code-value-[x]=composite
-  ?component-code: component-code=token
+  ?code: code=token
   ?component-code-value-[x]: component-code-value-[x]=composite
+  ?component-code: component-code=token
   ?component-data-absent-reason: component-data-absent-reason=token
   ?component-value-concept: component-value-concept=token
   ?component-value-quantity: component-value-quantity=quantity
   ?component-value-string: component-value-string=string
-  ?condition-gene: condition-gene=string
   ?condition-gene-dnavariant: condition-gene-dnavariant=string
+  ?condition-gene: condition-gene=string
   ?data-absent-reason: data-absent-reason=token
   ?date: date=date
   ?device: device=reference
@@ -11064,9 +11064,9 @@ Profiles: 107
   ?identifier: identifier=token
   ?patient: patient=reference
   ?performer: performer=reference
-  ?related: related=composite
   ?related-target: related-target=reference
   ?related-type: related-type=token
+  ?related: related=composite
   ?specimen: specimen=reference
   ?status: status=token
   ?subject: subject=reference
@@ -11601,8 +11601,8 @@ Profiles: 107
   ?encounter: encounter=reference
   ?evidence: evidence=token
   ?identifier: identifier=token
-  ?onset: onset=date
   ?onset-info: onset-info=string
+  ?onset: onset=date
   ?patient: patient=reference
   ?severity: severity=token
   ?stage: stage=token
@@ -11774,13 +11774,13 @@ Profiles: 107
   ?code: code=token
   ?encounter: encounter=reference
   ?event-date: event-date=date
-  ?event-status: event-status=token
   ?event-status-date: event-status-date=composite
+  ?event-status: event-status=token
   ?identifier: identifier=token
   ?item-date: item-date=date
   ?item-past-status: item-past-status=token
-  ?item-status: item-status=token
   ?item-status-date: item-status-date=composite
+  ?item-status: item-status=token
   ?orderer: orderer=reference
   ?patient: patient=reference
   ?specimen: specimen=reference
@@ -11941,11 +11941,11 @@ Profiles: 107
   ?incomingreferral: incomingreferral=reference
   ?indication: indication=reference
   ?length: length=number
-  ?location: location=reference
   ?location-period: location-period=date
+  ?location: location=reference
   ?part-of: part-of=reference
-  ?participant: participant=reference
   ?participant-type: participant-type=token
+  ?participant: participant=reference
   ?patient: patient=reference
   ?practitioner: practitioner=reference
   ?procedure: procedure=reference
@@ -12235,10 +12235,10 @@ Profiles: 107
   ?notgiven: notgiven=token
   ?patient: patient=reference
   ?performer: performer=reference
-  ?reaction: reaction=reference
   ?reaction-date: reaction-date=date
-  ?reason: reason=token
+  ?reaction: reaction=reference
   ?reason-not-given: reason-not-given=token
+  ?reason: reason=token
   ?requester: requester=reference
   ?status: status=token
   ?vaccine-code: vaccine-code=token
@@ -12342,16 +12342,16 @@ Profiles: 107
   +http://hl7.org/fhir/StructureDefinition/location-alias [0..*]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/location-alias
     - valueString[1..1]: string
-  ?address: address=string
   ?address-city: address-city=string
   ?address-country: address-country=string
   ?address-postalcode: address-postalcode=string
   ?address-state: address-state=string
   ?address-use: address-use=token
+  ?address: address=string
   ?identifier: identifier=token
   ?name: name=string
-  ?near: near=token
   ?near-distance: near-distance=token
+  ?near: near=token
   ?organization: organization=reference
   ?partof: partof=reference
   ?status: status=token
@@ -12869,16 +12869,16 @@ Profiles: 107
   ?assessed-condition: assessed-condition=reference
   ?category: category=token
   ?chromosome-genomicstart: chromosome-genomicstart=string
-  ?code: code=token
   ?code-value-[x]: code-value-[x]=composite
-  ?component-code: component-code=token
+  ?code: code=token
   ?component-code-value-[x]: component-code-value-[x]=composite
+  ?component-code: component-code=token
   ?component-data-absent-reason: component-data-absent-reason=token
   ?component-value-concept: component-value-concept=token
   ?component-value-quantity: component-value-quantity=quantity
   ?component-value-string: component-value-string=string
-  ?condition-gene: condition-gene=string
   ?condition-gene-dnavariant: condition-gene-dnavariant=string
+  ?condition-gene: condition-gene=string
   ?data-absent-reason: data-absent-reason=token
   ?date: date=date
   ?device: device=reference
@@ -12890,9 +12890,9 @@ Profiles: 107
   ?identifier: identifier=token
   ?patient: patient=reference
   ?performer: performer=reference
-  ?related: related=composite
   ?related-target: related-target=reference
   ?related-type: related-type=token
+  ?related: related=composite
   ?specimen: specimen=reference
   ?status: status=token
   ?subject: subject=reference
@@ -12973,12 +12973,12 @@ Profiles: 107
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/organization-period
     - valuePeriod[1..1]: Period
   ?active: active=token
-  ?address: address=string
   ?address-city: address-city=string
   ?address-country: address-country=string
   ?address-postalcode: address-postalcode=string
   ?address-state: address-state=string
   ?address-use: address-use=token
+  ?address: address=string
   ?identifier: identifier=token
   ?name: name=string
   ?partof: partof=reference
@@ -13146,12 +13146,12 @@ Profiles: 107
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/us-core-religion
     - valueCodeableConcept[1..1]: CodeableConcept
   ?active: active=token
-  ?address: address=string
   ?address-city: address-city=string
   ?address-country: address-country=string
   ?address-postalcode: address-postalcode=string
   ?address-state: address-state=string
   ?address-use: address-use=token
+  ?address: address=string
   ?age: age=number
   ?animal-breed: animal-breed=token
   ?animal-species: animal-species=token
@@ -13253,12 +13253,12 @@ Profiles: 107
   +http://hl7.org/fhir/StructureDefinition/practitioner-classification [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/practitioner-classification
     - valueCodeableConcept[1..1]: CodeableConcept
-  ?address: address=string
   ?address-city: address-city=string
   ?address-country: address-country=string
   ?address-postalcode: address-postalcode=string
   ?address-state: address-state=string
   ?address-use: address-use=token
+  ?address: address=string
   ?communication: communication=token
   ?email: email=token
   ?family: family=string
@@ -13475,12 +13475,12 @@ Profiles: 107
   +http://hl7.org/fhir/StructureDefinition/practitioner-animalSpecies [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/practitioner-animalSpecies
     - valueCodeableConcept[1..1]: CodeableConcept
-  ?address: address=string
   ?address-city: address-city=string
   ?address-country: address-country=string
   ?address-postalcode: address-postalcode=string
   ?address-state: address-state=string
   ?address-use: address-use=token
+  ?address: address=string
   ?birthdate: birthdate=date
   ?email: email=token
   ?gender: gender=token
@@ -13563,8 +13563,8 @@ Profiles: 107
   ?bodysite: bodysite=token
   ?collected: collected=date
   ?collector: collector=reference
-  ?container: container=token
   ?container-id: container-id=token
+  ?container: container=token
   ?identifier: identifier=token
   ?parent: parent=reference
   ?patient: patient=reference
@@ -15497,16 +15497,16 @@ Profiles: 107
   ?assessed-condition: assessed-condition=reference
   ?category: category=token
   ?chromosome-genomicstart: chromosome-genomicstart=string
-  ?code: code=token
   ?code-value-[x]: code-value-[x]=composite
-  ?component-code: component-code=token
+  ?code: code=token
   ?component-code-value-[x]: component-code-value-[x]=composite
+  ?component-code: component-code=token
   ?component-data-absent-reason: component-data-absent-reason=token
   ?component-value-concept: component-value-concept=token
   ?component-value-quantity: component-value-quantity=quantity
   ?component-value-string: component-value-string=string
-  ?condition-gene: condition-gene=string
   ?condition-gene-dnavariant: condition-gene-dnavariant=string
+  ?condition-gene: condition-gene=string
   ?data-absent-reason: data-absent-reason=token
   ?date: date=date
   ?device: device=reference
@@ -15518,9 +15518,9 @@ Profiles: 107
   ?identifier: identifier=token
   ?patient: patient=reference
   ?performer: performer=reference
-  ?related: related=composite
   ?related-target: related-target=reference
   ?related-type: related-type=token
+  ?related: related=composite
   ?specimen: specimen=reference
   ?status: status=token
   ?subject: subject=reference
@@ -15626,12 +15626,12 @@ Profiles: 107
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/organization-period
     - valuePeriod[1..1]: Period
   ?active: active=token
-  ?address: address=string
   ?address-city: address-city=string
   ?address-country: address-country=string
   ?address-postalcode: address-postalcode=string
   ?address-state: address-state=string
   ?address-use: address-use=token
+  ?address: address=string
   ?identifier: identifier=token
   ?name: name=string
   ?partof: partof=reference
@@ -15730,8 +15730,8 @@ Profiles: 107
   ?encounter: encounter=reference
   ?evidence: evidence=token
   ?identifier: identifier=token
-  ?onset: onset=date
   ?onset-info: onset-info=string
+  ?onset: onset=date
   ?patient: patient=reference
   ?severity: severity=token
   ?stage: stage=token
@@ -15841,13 +15841,13 @@ Profiles: 107
   ?code: code=token
   ?encounter: encounter=reference
   ?event-date: event-date=date
-  ?event-status: event-status=token
   ?event-status-date: event-status-date=composite
+  ?event-status: event-status=token
   ?identifier: identifier=token
   ?item-date: item-date=date
   ?item-past-status: item-past-status=token
-  ?item-status: item-status=token
   ?item-status-date: item-status-date=composite
+  ?item-status: item-status=token
   ?orderer: orderer=reference
   ?patient: patient=reference
   ?specimen: specimen=reference
@@ -16129,16 +16129,16 @@ Profiles: 107
   ?assessed-condition: assessed-condition=reference
   ?category: category=token
   ?chromosome-genomicstart: chromosome-genomicstart=string
-  ?code: code=token
   ?code-value-[x]: code-value-[x]=composite
-  ?component-code: component-code=token
+  ?code: code=token
   ?component-code-value-[x]: component-code-value-[x]=composite
+  ?component-code: component-code=token
   ?component-data-absent-reason: component-data-absent-reason=token
   ?component-value-concept: component-value-concept=token
   ?component-value-quantity: component-value-quantity=quantity
   ?component-value-string: component-value-string=string
-  ?condition-gene: condition-gene=string
   ?condition-gene-dnavariant: condition-gene-dnavariant=string
+  ?condition-gene: condition-gene=string
   ?data-absent-reason: data-absent-reason=token
   ?date: date=date
   ?device: device=reference
@@ -16150,9 +16150,9 @@ Profiles: 107
   ?identifier: identifier=token
   ?patient: patient=reference
   ?performer: performer=reference
-  ?related: related=composite
   ?related-target: related-target=reference
   ?related-type: related-type=token
+  ?related: related=composite
   ?specimen: specimen=reference
   ?status: status=token
   ?subject: subject=reference
@@ -16364,16 +16364,16 @@ Profiles: 107
   ?assessed-condition: assessed-condition=reference
   ?category: category=token
   ?chromosome-genomicstart: chromosome-genomicstart=string
-  ?code: code=token
   ?code-value-[x]: code-value-[x]=composite
-  ?component-code: component-code=token
+  ?code: code=token
   ?component-code-value-[x]: component-code-value-[x]=composite
+  ?component-code: component-code=token
   ?component-data-absent-reason: component-data-absent-reason=token
   ?component-value-concept: component-value-concept=token
   ?component-value-quantity: component-value-quantity=quantity
   ?component-value-string: component-value-string=string
-  ?condition-gene: condition-gene=string
   ?condition-gene-dnavariant: condition-gene-dnavariant=string
+  ?condition-gene: condition-gene=string
   ?data-absent-reason: data-absent-reason=token
   ?date: date=date
   ?device: device=reference
@@ -16385,9 +16385,9 @@ Profiles: 107
   ?identifier: identifier=token
   ?patient: patient=reference
   ?performer: performer=reference
-  ?related: related=composite
   ?related-target: related-target=reference
   ?related-type: related-type=token
+  ?related: related=composite
   ?specimen: specimen=reference
   ?status: status=token
   ?subject: subject=reference
@@ -16589,16 +16589,16 @@ Profiles: 107
   ?assessed-condition: assessed-condition=reference
   ?category: category=token
   ?chromosome-genomicstart: chromosome-genomicstart=string
-  ?code: code=token
   ?code-value-[x]: code-value-[x]=composite
-  ?component-code: component-code=token
+  ?code: code=token
   ?component-code-value-[x]: component-code-value-[x]=composite
+  ?component-code: component-code=token
   ?component-data-absent-reason: component-data-absent-reason=token
   ?component-value-concept: component-value-concept=token
   ?component-value-quantity: component-value-quantity=quantity
   ?component-value-string: component-value-string=string
-  ?condition-gene: condition-gene=string
   ?condition-gene-dnavariant: condition-gene-dnavariant=string
+  ?condition-gene: condition-gene=string
   ?data-absent-reason: data-absent-reason=token
   ?date: date=date
   ?device: device=reference
@@ -16610,9 +16610,9 @@ Profiles: 107
   ?identifier: identifier=token
   ?patient: patient=reference
   ?performer: performer=reference
-  ?related: related=composite
   ?related-target: related-target=reference
   ?related-type: related-type=token
+  ?related: related=composite
   ?specimen: specimen=reference
   ?status: status=token
   ?subject: subject=reference
@@ -16866,16 +16866,16 @@ Profiles: 107
   ?assessed-condition: assessed-condition=reference
   ?category: category=token
   ?chromosome-genomicstart: chromosome-genomicstart=string
-  ?code: code=token
   ?code-value-[x]: code-value-[x]=composite
-  ?component-code: component-code=token
+  ?code: code=token
   ?component-code-value-[x]: component-code-value-[x]=composite
+  ?component-code: component-code=token
   ?component-data-absent-reason: component-data-absent-reason=token
   ?component-value-concept: component-value-concept=token
   ?component-value-quantity: component-value-quantity=quantity
   ?component-value-string: component-value-string=string
-  ?condition-gene: condition-gene=string
   ?condition-gene-dnavariant: condition-gene-dnavariant=string
+  ?condition-gene: condition-gene=string
   ?data-absent-reason: data-absent-reason=token
   ?date: date=date
   ?device: device=reference
@@ -16887,9 +16887,9 @@ Profiles: 107
   ?identifier: identifier=token
   ?patient: patient=reference
   ?performer: performer=reference
-  ?related: related=composite
   ?related-target: related-target=reference
   ?related-type: related-type=token
+  ?related: related=composite
   ?specimen: specimen=reference
   ?status: status=token
   ?subject: subject=reference
@@ -17143,16 +17143,16 @@ Profiles: 107
   ?assessed-condition: assessed-condition=reference
   ?category: category=token
   ?chromosome-genomicstart: chromosome-genomicstart=string
-  ?code: code=token
   ?code-value-[x]: code-value-[x]=composite
-  ?component-code: component-code=token
+  ?code: code=token
   ?component-code-value-[x]: component-code-value-[x]=composite
+  ?component-code: component-code=token
   ?component-data-absent-reason: component-data-absent-reason=token
   ?component-value-concept: component-value-concept=token
   ?component-value-quantity: component-value-quantity=quantity
   ?component-value-string: component-value-string=string
-  ?condition-gene: condition-gene=string
   ?condition-gene-dnavariant: condition-gene-dnavariant=string
+  ?condition-gene: condition-gene=string
   ?data-absent-reason: data-absent-reason=token
   ?date: date=date
   ?device: device=reference
@@ -17164,9 +17164,9 @@ Profiles: 107
   ?identifier: identifier=token
   ?patient: patient=reference
   ?performer: performer=reference
-  ?related: related=composite
   ?related-target: related-target=reference
   ?related-type: related-type=token
+  ?related: related=composite
   ?specimen: specimen=reference
   ?status: status=token
   ?subject: subject=reference
@@ -17378,16 +17378,16 @@ Profiles: 107
   ?assessed-condition: assessed-condition=reference
   ?category: category=token
   ?chromosome-genomicstart: chromosome-genomicstart=string
-  ?code: code=token
   ?code-value-[x]: code-value-[x]=composite
-  ?component-code: component-code=token
+  ?code: code=token
   ?component-code-value-[x]: component-code-value-[x]=composite
+  ?component-code: component-code=token
   ?component-data-absent-reason: component-data-absent-reason=token
   ?component-value-concept: component-value-concept=token
   ?component-value-quantity: component-value-quantity=quantity
   ?component-value-string: component-value-string=string
-  ?condition-gene: condition-gene=string
   ?condition-gene-dnavariant: condition-gene-dnavariant=string
+  ?condition-gene: condition-gene=string
   ?data-absent-reason: data-absent-reason=token
   ?date: date=date
   ?device: device=reference
@@ -17399,9 +17399,9 @@ Profiles: 107
   ?identifier: identifier=token
   ?patient: patient=reference
   ?performer: performer=reference
-  ?related: related=composite
   ?related-target: related-target=reference
   ?related-type: related-type=token
+  ?related: related=composite
   ?specimen: specimen=reference
   ?status: status=token
   ?subject: subject=reference
@@ -17500,12 +17500,12 @@ Profiles: 107
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/organization-period
     - valuePeriod[1..1]: Period
   ?active: active=token
-  ?address: address=string
   ?address-city: address-city=string
   ?address-country: address-country=string
   ?address-postalcode: address-postalcode=string
   ?address-state: address-state=string
   ?address-use: address-use=token
+  ?address: address=string
   ?identifier: identifier=token
   ?name: name=string
   ?partof: partof=reference
@@ -17656,12 +17656,12 @@ Profiles: 107
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/us-core-religion
     - valueCodeableConcept[1..1]: CodeableConcept
   ?active: active=token
-  ?address: address=string
   ?address-city: address-city=string
   ?address-country: address-country=string
   ?address-postalcode: address-postalcode=string
   ?address-state: address-state=string
   ?address-use: address-use=token
+  ?address: address=string
   ?age: age=number
   ?animal-breed: animal-breed=token
   ?animal-species: animal-species=token
@@ -17778,12 +17778,12 @@ Profiles: 107
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/organization-period
     - valuePeriod[1..1]: Period
   ?active: active=token
-  ?address: address=string
   ?address-city: address-city=string
   ?address-country: address-country=string
   ?address-postalcode: address-postalcode=string
   ?address-state: address-state=string
   ?address-use: address-use=token
+  ?address: address=string
   ?identifier: identifier=token
   ?name: name=string
   ?partof: partof=reference
@@ -17996,12 +17996,12 @@ Profiles: 107
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/us-core-religion
     - valueCodeableConcept[1..1]: CodeableConcept
   ?active: active=token
-  ?address: address=string
   ?address-city: address-city=string
   ?address-country: address-country=string
   ?address-postalcode: address-postalcode=string
   ?address-state: address-state=string
   ?address-use: address-use=token
+  ?address: address=string
   ?age: age=number
   ?animal-breed: animal-breed=token
   ?animal-species: animal-species=token
@@ -18146,12 +18146,12 @@ Profiles: 107
   +http://hl7.org/fhir/StructureDefinition/practitioner-classification [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/practitioner-classification
     - valueCodeableConcept[1..1]: CodeableConcept
-  ?address: address=string
   ?address-city: address-city=string
   ?address-country: address-country=string
   ?address-postalcode: address-postalcode=string
   ?address-state: address-state=string
   ?address-use: address-use=token
+  ?address: address=string
   ?communication: communication=token
   ?email: email=token
   ?family: family=string
@@ -18252,12 +18252,12 @@ Profiles: 107
   +http://hl7.org/fhir/StructureDefinition/practitioner-classification [0..1]
     - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/practitioner-classification
     - valueCodeableConcept[1..1]: CodeableConcept
-  ?address: address=string
   ?address-city: address-city=string
   ?address-country: address-country=string
   ?address-postalcode: address-postalcode=string
   ?address-state: address-state=string
   ?address-use: address-use=token
+  ?address: address=string
   ?communication: communication=token
   ?email: email=token
   ?family: family=string
@@ -18364,8 +18364,8 @@ Profiles: 107
   ?encounter: encounter=reference
   ?evidence: evidence=token
   ?identifier: identifier=token
-  ?onset: onset=date
   ?onset-info: onset-info=string
+  ?onset: onset=date
   ?patient: patient=reference
   ?severity: severity=token
   ?stage: stage=token
@@ -18486,8 +18486,8 @@ Profiles: 107
   ?bodysite: bodysite=token
   ?collected: collected=date
   ?collector: collector=reference
-  ?container: container=token
   ?container-id: container-id=token
+  ?container: container=token
   ?identifier: identifier=token
   ?parent: parent=reference
   ?patient: patient=reference
@@ -18654,8 +18654,8 @@ System Operations: 3
 All Resource Parameters: 11
   ?_content: _content=string
   ?_filter: _filter=special
-  ?Example Search Parameter: _id=token
   ?_id: _id=token
+  ?Example Search Parameter: _id=token
   ?_lastUpdated: _lastUpdated=date
   ?_list: _list=reference
   ?_profile: _profile=uri
@@ -18711,7 +18711,7 @@ Value Sets: 1016
   - #temp: Temporary
   - #work: Work
 - ValueSet: http://hl7.org/fhir/ValueSet/adjudication|1.0.2 (Adjudication Codes)
-  references (1 structures, 5 elements): ClaimResponse.item.adjudication.code, ClaimResponse.item.detail.adjudication.code, ClaimResponse.item.detail.subDetail.adjudication.code, ClaimResponse.addItem.adjudication.code, ClaimResponse.addItem.detail.adjudication.code, strongest binding: extensible, by type: Coding:Extensible
+  references (1 structures, 5 elements): ClaimResponse.addItem.adjudication.code, ClaimResponse.addItem.detail.adjudication.code, ClaimResponse.item.adjudication.code, ClaimResponse.item.detail.adjudication.code, ClaimResponse.item.detail.subDetail.adjudication.code, strongest binding: extensible, by type: Coding:Extensible
   - #benefit: 
   - #copay: 
   - #deductible: 
@@ -18728,14 +18728,14 @@ Value Sets: 1016
   - #A001: 
   - #A002: 
 - ValueSet: http://hl7.org/fhir/ValueSet/administrative-gender|1.0.2 (AdministrativeGender)
-  references (5 structures, 6 elements): FamilyMemberHistory.gender, Patient.gender, Patient.contact.gender, Person.gender, Practitioner.gender, RelatedPerson.gender, strongest binding: required, by type: code:Required
-  extensions/profiles (13 structures, 17 elements): strongest binding: required, refs: daf-familymemberhistory(Profile) [FamilyMemberHistory.gender], daf-patient(Profile) [Patient.gender,Patient.contact.gender], daf-pract(Profile) [Practitioner.gender], daf-relatedperson(Profile) [RelatedPerson.gender], familymemberhistory-genetic(Profile) [FamilyMemberHistory.gender], qicore-familymemberhistory(Profile) [FamilyMemberHistory.gender], qicore-patient(Profile) [Patient.gender,Patient.contact.gender], qicore-practitioner(Profile) [Practitioner.gender], qicore-relatedperson(Profile) [RelatedPerson.gender], uslab-patient(Profile) [Patient.gender,Patient.contact.gender], uslab-phpatient(Profile) [Patient.gender,Patient.contact.gender], uslab-phpract(Profile) [Practitioner.gender], uslab-pract(Profile) [Practitioner.gender]
+  references (5 structures, 6 elements): FamilyMemberHistory.gender, Patient.contact.gender, Patient.gender, Person.gender, Practitioner.gender, RelatedPerson.gender, strongest binding: required, by type: code:Required
+  extensions/profiles (13 structures, 17 elements): strongest binding: required, refs: daf-familymemberhistory(Profile) [FamilyMemberHistory.gender], daf-patient(Profile) [Patient.contact.gender,Patient.gender], daf-pract(Profile) [Practitioner.gender], daf-relatedperson(Profile) [RelatedPerson.gender], familymemberhistory-genetic(Profile) [FamilyMemberHistory.gender], qicore-familymemberhistory(Profile) [FamilyMemberHistory.gender], qicore-patient(Profile) [Patient.contact.gender,Patient.gender], qicore-practitioner(Profile) [Practitioner.gender], qicore-relatedperson(Profile) [RelatedPerson.gender], uslab-patient(Profile) [Patient.contact.gender,Patient.gender], uslab-phpatient(Profile) [Patient.contact.gender,Patient.gender], uslab-phpract(Profile) [Practitioner.gender], uslab-pract(Profile) [Practitioner.gender]
   - #female: Female
   - #male: Male
   - #other: Other
   - #unknown: Unknown
 - ValueSet: http://hl7.org/fhir/ValueSet/age-units|1.0.2 (AgeUnits)
-  extensions/profiles (2 structures, 4 elements): strongest binding: required, refs: uslab-obsquantity(Profile) [Observation.referenceRange.age.low.code,Observation.referenceRange.age.high.code], uslab-obsrange(Profile) [Observation.referenceRange.age.low.code,Observation.referenceRange.age.high.code]
+  extensions/profiles (2 structures, 4 elements): strongest binding: required, refs: uslab-obsquantity(Profile) [Observation.referenceRange.age.high.code,Observation.referenceRange.age.low.code], uslab-obsrange(Profile) [Observation.referenceRange.age.high.code,Observation.referenceRange.age.low.code]
   - #a: Year
   - #d: Day
   - #h: Hour
@@ -18791,7 +18791,7 @@ Value Sets: 1016
   - #unknown: Unknown
 - ValueSet: http://hl7.org/fhir/ValueSet/animal-species|1.0.2 (AnimalSpecies)
   references (1 structures, 1 elements): Patient.animal.species, strongest binding: example, by type: CodeableConcept:Example
-  extensions/profiles (5 structures, 8 elements): strongest binding: example, refs: daf-patient(Profile) [Patient.animal.species], practitioner-animalSpecies(Extension) [Extension.valueCodeableConcept,Extension.value[x]], qicore-patient(Profile) [Patient.animal.species], uslab-patient(Profile) [Patient.animal.species], uslab-phpatient(Profile) [Patient.animal.species]
+  extensions/profiles (5 structures, 8 elements): strongest binding: example, refs: daf-patient(Profile) [Patient.animal.species], practitioner-animalSpecies(Extension) [Extension.value[x],Extension.valueCodeableConcept], qicore-patient(Profile) [Patient.animal.species], uslab-patient(Profile) [Patient.animal.species], uslab-phpatient(Profile) [Patient.animal.species]
   - #canislf: Dog
   - #ovisa: Sheep
   - #serinuscd: Domestic Canary
@@ -18976,7 +18976,7 @@ Value Sets: 1016
   - #required: Required
 - ValueSet: http://hl7.org/fhir/ValueSet/body-site|1.0.2 (SNOMED CT Body Structures)
   references (8 structures, 8 elements): BodySite.code, Condition.bodySite, DiagnosticOrder.item.bodySite, ImagingStudy.series.bodySite, Observation.bodySite, Procedure.bodySite, ProcedureRequest.bodySite, Specimen.collection.bodySite, strongest binding: example, by type: CodeableConcept:Example, Coding:Example
-  extensions/profiles (32 structures, 33 elements): strongest binding: extensible, refs: cholesterol(Profile) [Observation.bodySite], daf-condition(Profile) [Condition.bodySite], daf-diagnosticorder(Profile) [DiagnosticOrder.item.bodySite], daf-procedure(Profile) [Procedure.bodySite], daf-resultobs(Profile) [Observation.bodySite], daf-smokingstatus(Profile) [Observation.bodySite], daf-vitalsigns(Profile) [Observation.bodySite], devicemetricobservation(Profile) [Observation.bodySite], genetics(Profile) [Observation.bodySite], hdlcholesterol(Profile) [Observation.bodySite], ldlcholesterol(Profile) [Observation.bodySite], openEHR-location(Extension) [Extension.valueCodeableConcept,Extension.value[x]], qicore-bodysite(Profile) [BodySite.code], qicore-condition(Profile) [Condition.bodySite], qicore-deviceuserequest(Profile) [DeviceUseRequest.bodySite[x]], qicore-deviceusestatement(Profile) [DeviceUseStatement.bodySite[x]], qicore-diagnosticorder(Profile) [DiagnosticOrder.item.bodySite], qicore-imagingstudy(Profile) [ImagingStudy.series.bodySite], qicore-observation(Profile) [Observation.bodySite], qicore-procedure(Profile) [Procedure.bodySite], qicore-procedurerequest(Profile) [ProcedureRequest.bodySite], qicore-specimen(Profile) [Specimen.collection.bodySite], triglyceride(Profile) [Observation.bodySite], uslab-cond(Profile) [Condition.bodySite], uslab-do(Profile) [DiagnosticOrder.item.bodySite], uslab-obscode(Profile) [Observation.bodySite], uslab-obsother(Profile) [Observation.bodySite], uslab-obspanel(Profile) [Observation.bodySite], uslab-obsquantity(Profile) [Observation.bodySite], uslab-obsrange(Profile) [Observation.bodySite], uslab-obsratio(Profile) [Observation.bodySite], uslab-reasonforstudy(Profile) [Condition.bodySite]
+  extensions/profiles (32 structures, 33 elements): strongest binding: extensible, refs: cholesterol(Profile) [Observation.bodySite], daf-condition(Profile) [Condition.bodySite], daf-diagnosticorder(Profile) [DiagnosticOrder.item.bodySite], daf-procedure(Profile) [Procedure.bodySite], daf-resultobs(Profile) [Observation.bodySite], daf-smokingstatus(Profile) [Observation.bodySite], daf-vitalsigns(Profile) [Observation.bodySite], devicemetricobservation(Profile) [Observation.bodySite], genetics(Profile) [Observation.bodySite], hdlcholesterol(Profile) [Observation.bodySite], ldlcholesterol(Profile) [Observation.bodySite], openEHR-location(Extension) [Extension.value[x],Extension.valueCodeableConcept], qicore-bodysite(Profile) [BodySite.code], qicore-condition(Profile) [Condition.bodySite], qicore-deviceuserequest(Profile) [DeviceUseRequest.bodySite[x]], qicore-deviceusestatement(Profile) [DeviceUseStatement.bodySite[x]], qicore-diagnosticorder(Profile) [DiagnosticOrder.item.bodySite], qicore-imagingstudy(Profile) [ImagingStudy.series.bodySite], qicore-observation(Profile) [Observation.bodySite], qicore-procedure(Profile) [Procedure.bodySite], qicore-procedurerequest(Profile) [ProcedureRequest.bodySite], qicore-specimen(Profile) [Specimen.collection.bodySite], triglyceride(Profile) [Observation.bodySite], uslab-cond(Profile) [Condition.bodySite], uslab-do(Profile) [DiagnosticOrder.item.bodySite], uslab-obscode(Profile) [Observation.bodySite], uslab-obsother(Profile) [Observation.bodySite], uslab-obspanel(Profile) [Observation.bodySite], uslab-obsquantity(Profile) [Observation.bodySite], uslab-obsrange(Profile) [Observation.bodySite], uslab-obsratio(Profile) [Observation.bodySite], uslab-reasonforstudy(Profile) [Condition.bodySite]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/bodysite-laterality|1.0.2 (Laterality)
   references (1 structures, 1 elements): ImagingStudy.series.laterality, strongest binding: example, by type: Coding:Example
@@ -19306,7 +19306,7 @@ Value Sets: 1016
   - #draft: Pending
   - #proposed: Proposed
 - ValueSet: http://hl7.org/fhir/ValueSet/choice-list-orientation|1.0.2 (ChoiceListOrientation)
-  extensions/profiles (1 structures, 2 elements): strongest binding: required, refs: questionnaire-choiceOrientation(Extension) [Extension.valueCode,Extension.value[x]]
+  extensions/profiles (1 structures, 2 elements): strongest binding: required, refs: questionnaire-choiceOrientation(Extension) [Extension.value[x],Extension.valueCode]
   - #horizontal: Horizontal
   - #vertical: Vertical
 - ValueSet: http://hl7.org/fhir/ValueSet/claim-exception|1.0.2 (Exception Codes)
@@ -19334,7 +19334,7 @@ Value Sets: 1016
   - #other: Other
   - #proposed: Proposed
 - ValueSet: http://hl7.org/fhir/ValueSet/classification-or-context|1.0.2 (ClassificationOrContext)
-  extensions/profiles (1 structures, 2 elements): strongest binding: required, refs: 11179-de-classification-or-context(Extension) [Extension.valueCode,Extension.value[x]]
+  extensions/profiles (1 structures, 2 elements): strongest binding: required, refs: 11179-de-classification-or-context(Extension) [Extension.value[x],Extension.valueCode]
   - #classification: Classification
   - #context: Context
 - ValueSet: http://hl7.org/fhir/ValueSet/clinical-findings|1.0.2 (SNOMED CT Clinical Findings)
@@ -19383,7 +19383,7 @@ Value Sets: 1016
   - #preliminary: Preliminary
 - ValueSet: http://hl7.org/fhir/ValueSet/concept-map-equivalence|1.0.2 (ConceptMapEquivalence)
   references (1 structures, 1 elements): ConceptMap.element.target.equivalence, strongest binding: required, by type: code:Required
-  extensions/profiles (2 structures, 3 elements): strongest binding: required, refs: elementdefinition-equivalence(Extension) [Extension.valueCode,Extension.value[x]], sdc-element(Profile) [DataElement.element.mapping.extension.valueCode]
+  extensions/profiles (2 structures, 3 elements): strongest binding: required, refs: elementdefinition-equivalence(Extension) [Extension.value[x],Extension.valueCode], sdc-element(Profile) [DataElement.element.mapping.extension.valueCode]
   - #disjoint: Disjoint
   - #equal: Equal
   - #equivalent: Equivalent
@@ -19401,7 +19401,7 @@ Value Sets: 1016
   - #finding: Finding
   - #symptom: Symptom
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-cause|1.0.2 (Condition Cause Codes)
-  extensions/profiles (1 structures, 2 elements): strongest binding: example, refs: condition-dueTo(Extension) [Extension.extension.valueCodeableConcept,Extension.extension.value[x]]
+  extensions/profiles (1 structures, 2 elements): strongest binding: example, refs: condition-dueTo(Extension) [Extension.extension.value[x],Extension.extension.valueCodeableConcept]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-clinical|1.0.2 (Condition Clinical Status Codes)
   references (1 structures, 1 elements): Condition.clinicalStatus, strongest binding: preferred, by type: code:Preferred
@@ -19416,14 +19416,14 @@ Value Sets: 1016
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-outcome|1.0.2 (Condition Outcome Codes)
   references (1 structures, 1 elements): FamilyMemberHistory.condition.outcome, strongest binding: example, by type: CodeableConcept:Example
-  extensions/profiles (4 structures, 5 elements): strongest binding: example, refs: condition-outcome(Extension) [Extension.valueCodeableConcept,Extension.value[x]], daf-familymemberhistory(Profile) [FamilyMemberHistory.condition.outcome], familymemberhistory-genetic(Profile) [FamilyMemberHistory.condition.outcome], qicore-familymemberhistory(Profile) [FamilyMemberHistory.condition.outcome]
+  extensions/profiles (4 structures, 5 elements): strongest binding: example, refs: condition-outcome(Extension) [Extension.value[x],Extension.valueCodeableConcept], daf-familymemberhistory(Profile) [FamilyMemberHistory.condition.outcome], familymemberhistory-genetic(Profile) [FamilyMemberHistory.condition.outcome], qicore-familymemberhistory(Profile) [FamilyMemberHistory.condition.outcome]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-predecessor|1.0.2 (Condition Predecessor Codes)
-  extensions/profiles (1 structures, 2 elements): strongest binding: example, refs: condition-occurredFollowing(Extension) [Extension.extension.valueCodeableConcept,Extension.extension.value[x]]
+  extensions/profiles (1 structures, 2 elements): strongest binding: example, refs: condition-occurredFollowing(Extension) [Extension.extension.value[x],Extension.extension.valueCodeableConcept]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-severity|1.0.2 (Condition/Diagnosis Severity)
   references (1 structures, 1 elements): Condition.severity, strongest binding: preferred, by type: CodeableConcept:Preferred
-  extensions/profiles (7 structures, 8 elements): strongest binding: extensible, refs: daf-condition(Profile) [Condition.severity], familymemberhistory-severity(Extension) [Extension.valueCodeableConcept,Extension.value[x]], qicore-adverseevent(Profile) [Basic.extension], qicore-condition(Profile) [Condition.severity], qicore-familymemberhistory(Profile) [FamilyMemberHistory.condition.extension], uslab-cond(Profile) [Condition.severity], uslab-reasonforstudy(Profile) [Condition.severity]
+  extensions/profiles (7 structures, 8 elements): strongest binding: extensible, refs: daf-condition(Profile) [Condition.severity], familymemberhistory-severity(Extension) [Extension.value[x],Extension.valueCodeableConcept], qicore-adverseevent(Profile) [Basic.extension], qicore-condition(Profile) [Condition.severity], qicore-familymemberhistory(Profile) [FamilyMemberHistory.condition.extension], uslab-cond(Profile) [Condition.severity], uslab-reasonforstudy(Profile) [Condition.severity]
   - #24484000: 
   - #255604002: 
   - #399166001: 
@@ -19451,7 +19451,7 @@ Value Sets: 1016
   - #not-supported: Not Supported
   - #single: Single Deletes Supported
 - ValueSet: http://hl7.org/fhir/ValueSet/conformance-expectation|1.0.2 (ConformanceExpectation)
-  extensions/profiles (1 structures, 12 elements): strongest binding: required, refs: conformance-expectation(Extension) [Extension.valueCode,Extension.value[x]]
+  extensions/profiles (1 structures, 12 elements): strongest binding: required, refs: conformance-expectation(Extension) [Extension.value[x],Extension.valueCode]
   - #MAY: MAY
   - #SHALL: SHALL
   - #SHOULD: SHOULD
@@ -19480,7 +19480,7 @@ Value Sets: 1016
   - #warning: Warning
 - ValueSet: http://hl7.org/fhir/ValueSet/contact-point-system|1.0.2 (ContactPointSystem)
   references (1 structures, 1 elements): ContactPoint.system, strongest binding: required, by type: code:Required
-  extensions/profiles (8 structures, 10 elements): strongest binding: required, refs: daf-patient(Profile) [Patient.telecom.system], daf-pract(Profile) [Practitioner.telecom.system], qicore-patient(Profile) [Patient.telecom.system], uslab-cctarget(Profile) [Organization.telecom.system], uslab-orderfacility(Profile) [Organization.telecom.system], uslab-phpatient(Profile) [Patient.telecom.system,Patient.contact.telecom.system], uslab-phpract(Profile) [Practitioner.telecom.system], uslab-pract(Profile) [Practitioner.telecom.system]
+  extensions/profiles (8 structures, 10 elements): strongest binding: required, refs: daf-patient(Profile) [Patient.telecom.system], daf-pract(Profile) [Practitioner.telecom.system], qicore-patient(Profile) [Patient.telecom.system], uslab-cctarget(Profile) [Organization.telecom.system], uslab-orderfacility(Profile) [Organization.telecom.system], uslab-phpatient(Profile) [Patient.contact.telecom.system,Patient.telecom.system], uslab-phpract(Profile) [Practitioner.telecom.system], uslab-pract(Profile) [Practitioner.telecom.system]
   - #email: Email
   - #fax: Fax
   - #other: URL
@@ -19488,7 +19488,7 @@ Value Sets: 1016
   - #phone: Phone
 - ValueSet: http://hl7.org/fhir/ValueSet/contact-point-use|1.0.2 (ContactPointUse)
   references (1 structures, 1 elements): ContactPoint.use, strongest binding: required, by type: code:Required
-  extensions/profiles (8 structures, 10 elements): strongest binding: required, refs: daf-patient(Profile) [Patient.telecom.use], daf-pract(Profile) [Practitioner.telecom.use], qicore-patient(Profile) [Patient.telecom.use], uslab-cctarget(Profile) [Organization.telecom.use], uslab-orderfacility(Profile) [Organization.telecom.use], uslab-phpatient(Profile) [Patient.telecom.use,Patient.contact.telecom.use], uslab-phpract(Profile) [Practitioner.telecom.use], uslab-pract(Profile) [Practitioner.telecom.use]
+  extensions/profiles (8 structures, 10 elements): strongest binding: required, refs: daf-patient(Profile) [Patient.telecom.use], daf-pract(Profile) [Practitioner.telecom.use], qicore-patient(Profile) [Patient.telecom.use], uslab-cctarget(Profile) [Organization.telecom.use], uslab-orderfacility(Profile) [Organization.telecom.use], uslab-phpatient(Profile) [Patient.contact.telecom.use,Patient.telecom.use], uslab-phpract(Profile) [Practitioner.telecom.use], uslab-pract(Profile) [Practitioner.telecom.use]
   - #home: Home
   - #mobile: Mobile
   - #old: Old
@@ -19504,7 +19504,7 @@ Value Sets: 1016
   - #PAYOR: Payor
   - #PRESS: Press
 - ValueSet: http://hl7.org/fhir/ValueSet/content-type|1.0.2 (ContentType)
-  references (1 structures, 3 elements): TestScript.setup.action.operation.accept, TestScript.setup.action.operation.contentType, TestScript.setup.action.assert.contentType, strongest binding: required, by type: code:Required
+  references (1 structures, 3 elements): TestScript.setup.action.assert.contentType, TestScript.setup.action.operation.accept, TestScript.setup.action.operation.contentType, strongest binding: required, by type: code:Required
   - #json: json
   - #xml: xml
 - ValueSet: http://hl7.org/fhir/ValueSet/contract-action|1.0.2 (Contract Action Codes)
@@ -19931,13 +19931,13 @@ Value Sets: 1016
   - #2076-8: Native Hawaiian or Other Pacific Islander
   - #2106-3: White
 - ValueSet: http://hl7.org/fhir/ValueSet/daf-substance|1.0.2 (DAF Substance-Reactant for Intolerance and Negation Codes)
-  extensions/profiles (2 structures, 3 elements): strongest binding: preferred, refs: daf-allergyintolerance(Profile) [AllergyIntolerance.substance,AllergyIntolerance.reaction.substance], qicore-allergyintolerance(Profile) [AllergyIntolerance.substance]
+  extensions/profiles (2 structures, 3 elements): strongest binding: preferred, refs: daf-allergyintolerance(Profile) [AllergyIntolerance.reaction.substance,AllergyIntolerance.substance], qicore-allergyintolerance(Profile) [AllergyIntolerance.substance]
   - #160244002: No Known Allergies
   - #409137002: No Known Drug Allergies
   - #428607008: No Known Environmental Allergy
   - #429625007: No Known Food Allergies
 - ValueSet: http://hl7.org/fhir/ValueSet/daf-ucum-vitals-common|1.0.2 (Common UCUM units)
-  extensions/profiles (1 structures, 3 elements): strongest binding: required, refs: daf-vitalsigns(Profile) [Observation.valueQuantity,Observation.referenceRange.low,Observation.referenceRange.high]
+  extensions/profiles (1 structures, 3 elements): strongest binding: required, refs: daf-vitalsigns(Profile) [Observation.referenceRange.high,Observation.referenceRange.low,Observation.valueQuantity]
   - #/min: per minute
   - #%: percent
   - #Cel: degree Celsius
@@ -19947,7 +19947,7 @@ Value Sets: 1016
   - #m2: square meter
   - #mm[Hg]: millimeter of mercury
 - ValueSet: http://hl7.org/fhir/ValueSet/data-absent-reason|1.0.2 (DataAbsentReason)
-  extensions/profiles (1 structures, 2 elements): strongest binding: required, refs: data-absent-reason(Extension) [Extension.valueCode,Extension.value[x]]
+  extensions/profiles (1 structures, 2 elements): strongest binding: required, refs: data-absent-reason(Extension) [Extension.value[x],Extension.valueCode]
   - #asked: Asked
   - #astext: As Text
   - #error: Error
@@ -20007,10 +20007,10 @@ Value Sets: 1016
 - ValueSet: http://hl7.org/fhir/ValueSet/dataelement-sdccode|1.0.2 (DataElement SDC Concept)
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/dataelement-sdcobjectclass|1.0.2 (DataElement SDC Object Class)
-  extensions/profiles (1 structures, 2 elements): strongest binding: example, refs: 11179-objectClass(Extension) [Extension.valueCoding,Extension.value[x]]
+  extensions/profiles (1 structures, 2 elements): strongest binding: example, refs: 11179-objectClass(Extension) [Extension.value[x],Extension.valueCoding]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/dataelement-sdcobjectclassproperty|1.0.2 (DataElement SDC Object Class)
-  extensions/profiles (1 structures, 2 elements): strongest binding: example, refs: 11179-objectClassProperty(Extension) [Extension.valueCoding,Extension.value[x]]
+  extensions/profiles (1 structures, 2 elements): strongest binding: example, refs: 11179-objectClassProperty(Extension) [Extension.value[x],Extension.valueCoding]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/dataelement-stringency|1.0.2 (DataElementStringency)
   references (1 structures, 1 elements): DataElement.stringency, strongest binding: required, by type: code:Required
@@ -20031,7 +20031,7 @@ Value Sets: 1016
   - #tue: Tuesday
   - #wed: Wednesday
 - ValueSet: http://hl7.org/fhir/ValueSet/defined-types|1.0.2 (FHIRDefinedType)
-  references (3 structures, 4 elements): ElementDefinition.type.code, StructureDefinition.constrainedType, TestScript.setup.action.operation.resource, TestScript.setup.action.assert.resource, strongest binding: required, by type: code:Required
+  references (3 structures, 4 elements): ElementDefinition.type.code, StructureDefinition.constrainedType, TestScript.setup.action.assert.resource, TestScript.setup.action.operation.resource, strongest binding: required, by type: code:Required
   extensions/profiles (3 structures, 3 elements): strongest binding: required, refs: elementdefinition-de(Profile) [ElementDefinition.type.code], sdc-element(Profile) [DataElement.element.type.code], sdcde-dataelement(Profile) [DataElement.element.type.code]
   - #Address: Address
   - #Age: Age
@@ -20236,8 +20236,8 @@ Value Sets: 1016
   - #stat: Stat
   - #urgent: Urgent
 - ValueSet: http://hl7.org/fhir/ValueSet/diagnostic-order-status|1.0.2 (DiagnosticOrderStatus)
-  references (1 structures, 3 elements): DiagnosticOrder.status, DiagnosticOrder.event.status, DiagnosticOrder.item.status, strongest binding: required, by type: code:Required
-  extensions/profiles (3 structures, 9 elements): strongest binding: required, refs: daf-diagnosticorder(Profile) [DiagnosticOrder.status,DiagnosticOrder.event.status,DiagnosticOrder.item.status], qicore-diagnosticorder(Profile) [DiagnosticOrder.status,DiagnosticOrder.event.status,DiagnosticOrder.item.status], uslab-do(Profile) [DiagnosticOrder.status,DiagnosticOrder.event.status,DiagnosticOrder.item.status]
+  references (1 structures, 3 elements): DiagnosticOrder.event.status, DiagnosticOrder.item.status, DiagnosticOrder.status, strongest binding: required, by type: code:Required
+  extensions/profiles (3 structures, 9 elements): strongest binding: required, refs: daf-diagnosticorder(Profile) [DiagnosticOrder.event.status,DiagnosticOrder.item.status,DiagnosticOrder.status], qicore-diagnosticorder(Profile) [DiagnosticOrder.event.status,DiagnosticOrder.item.status,DiagnosticOrder.status], uslab-do(Profile) [DiagnosticOrder.event.status,DiagnosticOrder.item.status,DiagnosticOrder.status]
   - #accepted: Accepted
   - #cancelled: Cancelled
   - #completed: Completed
@@ -20735,7 +20735,7 @@ Value Sets: 1016
   extensions/profiles (1 structures, 1 elements): strongest binding: example, refs: qicore-flag(Profile) [Flag.code]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/flag-priority|1.0.2 (Flag Priority Codes)
-  extensions/profiles (1 structures, 2 elements): strongest binding: example, refs: flag-priority(Extension) [Extension.valueCodeableConcept,Extension.value[x]]
+  extensions/profiles (1 structures, 2 elements): strongest binding: example, refs: flag-priority(Extension) [Extension.value[x],Extension.valueCodeableConcept]
   - #PH: High priority
   - #PL: Low priority
   - #PM: Medium priority
@@ -20750,7 +20750,7 @@ Value Sets: 1016
   references (1 structures, 1 elements): Claim.condition, strongest binding: example, by type: Coding:Example
   - #123987: Headache
 - ValueSet: http://hl7.org/fhir/ValueSet/focal-subject|1.0.2 (Focal Subject Codes)
-  extensions/profiles (1 structures, 2 elements): strongest binding: example, refs: observation-focal-subject(Extension) [Extension.valueCodeableConcept,Extension.value[x]]
+  extensions/profiles (1 structures, 2 elements): strongest binding: example, refs: observation-focal-subject(Extension) [Extension.value[x],Extension.valueCodeableConcept]
   - #DON: donor
   - #SPS: spouse
   - #83418008: Fetus
@@ -20842,7 +20842,7 @@ Value Sets: 1016
   - #patient: 
   - #provider: 
 - ValueSet: http://hl7.org/fhir/ValueSet/goal-acceptance-status|1.0.2 (GoalAcceptanceStatus)
-  extensions/profiles (1 structures, 2 elements): strongest binding: required, refs: goal-acceptance(Extension) [Extension.extension.valueCode,Extension.extension.value[x]]
+  extensions/profiles (1 structures, 2 elements): strongest binding: required, refs: goal-acceptance(Extension) [Extension.extension.value[x],Extension.extension.valueCode]
   - #agree: Agree
   - #disagree: Disagree
   - #pending: Pending
@@ -20856,12 +20856,12 @@ Value Sets: 1016
   - #safety: safety
 - ValueSet: http://hl7.org/fhir/ValueSet/goal-priority|1.0.2 (GoalPriority)
   references (1 structures, 1 elements): Goal.priority, strongest binding: preferred, by type: CodeableConcept:Preferred
-  extensions/profiles (2 structures, 3 elements): strongest binding: preferred, refs: goal-acceptance(Extension) [Extension.extension.valueCodeableConcept,Extension.extension.value[x]], qicore-goal(Profile) [Goal.priority]
+  extensions/profiles (2 structures, 3 elements): strongest binding: preferred, refs: goal-acceptance(Extension) [Extension.extension.value[x],Extension.extension.valueCodeableConcept], qicore-goal(Profile) [Goal.priority]
   - #high: high
   - #low: low
   - #medium: medium
 - ValueSet: http://hl7.org/fhir/ValueSet/goal-relationship-type|1.0.2 (GoalRelationshipType)
-  extensions/profiles (1 structures, 2 elements): strongest binding: required, refs: goal-relationship(Extension) [Extension.extension.valueCodeableConcept,Extension.extension.value[x]]
+  extensions/profiles (1 structures, 2 elements): strongest binding: required, refs: goal-relationship(Extension) [Extension.extension.value[x],Extension.extension.valueCodeableConcept]
   - #component: Component
   - #other: Other
   - #predecessor: Predecessor
@@ -20947,7 +20947,7 @@ Value Sets: 1016
   - #997755: DIAG-5
 - ValueSet: http://hl7.org/fhir/ValueSet/identifier-type|1.0.2 (Identifier Type Codes)
   references (2 structures, 2 elements): Identifier.type, NamingSystem.type, strongest binding: extensible, by type: CodeableConcept:Extensible
-  extensions/profiles (22 structures, 24 elements): strongest binding: extensible, refs: daf-diagnosticorder(Profile) [DiagnosticOrder.identifier.type], daf-diagnosticreport(Profile) [DiagnosticReport.identifier.type], daf-patient(Profile) [Patient.identifier.type], daf-pract(Profile) [Practitioner.identifier.type], daf-resultobs(Profile) [Observation.identifier.type], daf-spec(Profile) [Specimen.identifier.type,Specimen.accessionIdentifier.type], uslab-cctarget(Profile) [Organization.identifier.type], uslab-do(Profile) [DiagnosticOrder.identifier.type], uslab-dr(Profile) [DiagnosticReport.identifier.type], uslab-obscode(Profile) [Observation.identifier.type], uslab-obsother(Profile) [Observation.identifier.type], uslab-obspanel(Profile) [Observation.identifier.type], uslab-obsquantity(Profile) [Observation.identifier.type], uslab-obsrange(Profile) [Observation.identifier.type], uslab-obsratio(Profile) [Observation.identifier.type], uslab-orderfacility(Profile) [Organization.identifier.type], uslab-patient(Profile) [Patient.identifier.type], uslab-performinglab(Profile) [Organization.identifier.type], uslab-phpatient(Profile) [Patient.identifier.type], uslab-phpract(Profile) [Practitioner.identifier.type], uslab-pract(Profile) [Practitioner.identifier.type], uslab-spec(Profile) [Specimen.identifier.type,Specimen.accessionIdentifier.type]
+  extensions/profiles (22 structures, 24 elements): strongest binding: extensible, refs: daf-diagnosticorder(Profile) [DiagnosticOrder.identifier.type], daf-diagnosticreport(Profile) [DiagnosticReport.identifier.type], daf-patient(Profile) [Patient.identifier.type], daf-pract(Profile) [Practitioner.identifier.type], daf-resultobs(Profile) [Observation.identifier.type], daf-spec(Profile) [Specimen.accessionIdentifier.type,Specimen.identifier.type], uslab-cctarget(Profile) [Organization.identifier.type], uslab-do(Profile) [DiagnosticOrder.identifier.type], uslab-dr(Profile) [DiagnosticReport.identifier.type], uslab-obscode(Profile) [Observation.identifier.type], uslab-obsother(Profile) [Observation.identifier.type], uslab-obspanel(Profile) [Observation.identifier.type], uslab-obsquantity(Profile) [Observation.identifier.type], uslab-obsrange(Profile) [Observation.identifier.type], uslab-obsratio(Profile) [Observation.identifier.type], uslab-orderfacility(Profile) [Organization.identifier.type], uslab-patient(Profile) [Patient.identifier.type], uslab-performinglab(Profile) [Organization.identifier.type], uslab-phpatient(Profile) [Patient.identifier.type], uslab-phpract(Profile) [Practitioner.identifier.type], uslab-pract(Profile) [Practitioner.identifier.type], uslab-spec(Profile) [Specimen.accessionIdentifier.type,Specimen.identifier.type]
   - #FILL: Filler Identifier
   - #PLAC: Placer Identifier
   - #SB: Social Beneficiary Identifier
@@ -20966,7 +20966,7 @@ Value Sets: 1016
   - #TAX: 
 - ValueSet: http://hl7.org/fhir/ValueSet/identifier-use|1.0.2 (IdentifierUse)
   references (1 structures, 1 elements): Identifier.use, strongest binding: required, by type: code:Required
-  extensions/profiles (22 structures, 24 elements): strongest binding: required, refs: daf-diagnosticorder(Profile) [DiagnosticOrder.identifier.use], daf-diagnosticreport(Profile) [DiagnosticReport.identifier.use], daf-patient(Profile) [Patient.identifier.use], daf-pract(Profile) [Practitioner.identifier.use], daf-resultobs(Profile) [Observation.identifier.use], daf-spec(Profile) [Specimen.identifier.use,Specimen.accessionIdentifier.use], uslab-cctarget(Profile) [Organization.identifier.use], uslab-do(Profile) [DiagnosticOrder.identifier.use], uslab-dr(Profile) [DiagnosticReport.identifier.use], uslab-obscode(Profile) [Observation.identifier.use], uslab-obsother(Profile) [Observation.identifier.use], uslab-obspanel(Profile) [Observation.identifier.use], uslab-obsquantity(Profile) [Observation.identifier.use], uslab-obsrange(Profile) [Observation.identifier.use], uslab-obsratio(Profile) [Observation.identifier.use], uslab-orderfacility(Profile) [Organization.identifier.use], uslab-patient(Profile) [Patient.identifier.use], uslab-performinglab(Profile) [Organization.identifier.use], uslab-phpatient(Profile) [Patient.identifier.use], uslab-phpract(Profile) [Practitioner.identifier.use], uslab-pract(Profile) [Practitioner.identifier.use], uslab-spec(Profile) [Specimen.identifier.use,Specimen.accessionIdentifier.use]
+  extensions/profiles (22 structures, 24 elements): strongest binding: required, refs: daf-diagnosticorder(Profile) [DiagnosticOrder.identifier.use], daf-diagnosticreport(Profile) [DiagnosticReport.identifier.use], daf-patient(Profile) [Patient.identifier.use], daf-pract(Profile) [Practitioner.identifier.use], daf-resultobs(Profile) [Observation.identifier.use], daf-spec(Profile) [Specimen.accessionIdentifier.use,Specimen.identifier.use], uslab-cctarget(Profile) [Organization.identifier.use], uslab-do(Profile) [DiagnosticOrder.identifier.use], uslab-dr(Profile) [DiagnosticReport.identifier.use], uslab-obscode(Profile) [Observation.identifier.use], uslab-obsother(Profile) [Observation.identifier.use], uslab-obspanel(Profile) [Observation.identifier.use], uslab-obsquantity(Profile) [Observation.identifier.use], uslab-obsrange(Profile) [Observation.identifier.use], uslab-obsratio(Profile) [Observation.identifier.use], uslab-orderfacility(Profile) [Organization.identifier.use], uslab-patient(Profile) [Patient.identifier.use], uslab-performinglab(Profile) [Organization.identifier.use], uslab-phpatient(Profile) [Patient.identifier.use], uslab-phpract(Profile) [Practitioner.identifier.use], uslab-pract(Profile) [Practitioner.identifier.use], uslab-spec(Profile) [Specimen.accessionIdentifier.use,Specimen.identifier.use]
   - #official: Official
   - #secondary: Secondary
   - #temp: Temp
@@ -21344,7 +21344,7 @@ Value Sets: 1016
   - #72511004: Fruit
   - #74242007: Food Starch
 - ValueSet: http://hl7.org/fhir/ValueSet/name-part-qualifier|1.0.2 (EntityNamePartQualifier)
-  extensions/profiles (1 structures, 8 elements): strongest binding: required, refs: iso21090-EN-qualifier(Extension) [Extension.valueCode,Extension.value[x]]
+  extensions/profiles (1 structures, 8 elements): strongest binding: required, refs: iso21090-EN-qualifier(Extension) [Extension.value[x],Extension.valueCode]
   - #AC: Academic
   - #AD: Acquired
   - #BR: Birth
@@ -21575,8 +21575,8 @@ Value Sets: 1016
   - #registered: Registered
   - #unknown: Unknown Status
 - ValueSet: http://hl7.org/fhir/ValueSet/observation-valueabsentreason|1.0.2 (Observation Value Absent Reason)
-  references (1 structures, 2 elements): Observation.dataAbsentReason, Observation.component.dataAbsentReason, strongest binding: extensible, by type: CodeableConcept:Extensible
-  extensions/profiles (16 structures, 32 elements): strongest binding: extensible, refs: cholesterol(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason], daf-resultobs(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason], daf-smokingstatus(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason], daf-vitalsigns(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason], devicemetricobservation(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason], genetics(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason], hdlcholesterol(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason], ldlcholesterol(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason], qicore-observation(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason], triglyceride(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason], uslab-obscode(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason], uslab-obsother(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason], uslab-obspanel(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason], uslab-obsquantity(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason], uslab-obsrange(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason], uslab-obsratio(Profile) [Observation.dataAbsentReason,Observation.component.dataAbsentReason]
+  references (1 structures, 2 elements): Observation.component.dataAbsentReason, Observation.dataAbsentReason, strongest binding: extensible, by type: CodeableConcept:Extensible
+  extensions/profiles (16 structures, 32 elements): strongest binding: extensible, refs: cholesterol(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason], daf-resultobs(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason], daf-smokingstatus(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason], daf-vitalsigns(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason], devicemetricobservation(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason], genetics(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason], hdlcholesterol(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason], ldlcholesterol(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason], qicore-observation(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason], triglyceride(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason], uslab-obscode(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason], uslab-obsother(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason], uslab-obspanel(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason], uslab-obsquantity(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason], uslab-obsrange(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason], uslab-obsratio(Profile) [Observation.component.dataAbsentReason,Observation.dataAbsentReason]
   - #asked: Asked
   - #astext: As Text
   - #error: Error
@@ -21829,7 +21829,7 @@ Value Sets: 1016
   - #reli: Religious Institution
   - #team: Organizational team
 - ValueSet: http://hl7.org/fhir/ValueSet/parent-relationship-codes|1.0.2 (Parent Relationship Codes)
-  extensions/profiles (1 structures, 2 elements): strongest binding: required, refs: family-member-history-genetics-parent(Extension) [Extension.extension.valueCodeableConcept,Extension.extension.value[x]]
+  extensions/profiles (1 structures, 2 elements): strongest binding: required, refs: family-member-history-genetics-parent(Extension) [Extension.extension.value[x],Extension.extension.valueCodeableConcept]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/participant-role|1.0.2 (Participant Roles)
   references (2 structures, 2 elements): CarePlan.participant.role, EpisodeOfCare.careTeam.role, strongest binding: example, by type: CodeableConcept:Example
@@ -21869,7 +21869,7 @@ Value Sets: 1016
   - #partner: Partner
   - #work: Work
 - ValueSet: http://hl7.org/fhir/ValueSet/patient-mpi-match|1.0.2 (MPIMatch)
-  extensions/profiles (1 structures, 2 elements): strongest binding: required, refs: patient-mpi-match(Extension) [Extension.valueCode,Extension.value[x]]
+  extensions/profiles (1 structures, 2 elements): strongest binding: required, refs: patient-mpi-match(Extension) [Extension.value[x],Extension.valueCode]
   - #certain: Certain Match
   - #certainly-not: Certainly Not a Match
   - #possible: Possible Match
@@ -21893,7 +21893,7 @@ Value Sets: 1016
   extensions/profiles (2 structures, 2 elements): strongest binding: example, refs: daf-procedure(Profile) [Procedure.performer.role], qicore-procedure(Profile) [Procedure.performer.role]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/postal-address-use|1.0.2 (PostalAddressUse)
-  extensions/profiles (1 structures, 2 elements): strongest binding: required, refs: iso21090-AD-use(Extension) [Extension.valueCode,Extension.value[x]]
+  extensions/profiles (1 structures, 2 elements): strongest binding: required, refs: iso21090-AD-use(Extension) [Extension.value[x],Extension.valueCode]
   - #BAD: bad address
   - #CONF: confidential address
   - #DIR: direct
@@ -21920,7 +21920,7 @@ Value Sets: 1016
   - #midw: Midwife
   - #sysarch: Systems architect
 - ValueSet: http://hl7.org/fhir/ValueSet/probability-distribution-type|1.0.2 (ProbabilityDistributionType)
-  extensions/profiles (1 structures, 2 elements): strongest binding: required, refs: iso21090-uncertaintyType(Extension) [Extension.valueCode,Extension.value[x]]
+  extensions/profiles (1 structures, 2 elements): strongest binding: required, refs: iso21090-uncertaintyType(Extension) [Extension.value[x],Extension.valueCode]
   - #B: beta
   - #E: exponential
   - #F: F
@@ -21966,7 +21966,7 @@ Value Sets: 1016
   - #385670004: 
   - #385671000: 
 - ValueSet: http://hl7.org/fhir/ValueSet/procedure-progress-status-codes|1.0.2 (Procedure Progress Status Codes)
-  extensions/profiles (1 structures, 2 elements): strongest binding: example, refs: procedure-progressStatus(Extension) [Extension.valueCodeableConcept,Extension.value[x]]
+  extensions/profiles (1 structures, 2 elements): strongest binding: example, refs: procedure-progressStatus(Extension) [Extension.value[x],Extension.valueCodeableConcept]
   - #a: In Operating Room
   - #b: Prepared
   - #c: Anesthesia induced
@@ -22073,7 +22073,7 @@ Value Sets: 1016
   extensions/profiles (1 structures, 1 elements): strongest binding: example, refs: qicore-allergyintolerance(Profile) [AllergyIntolerance.extension]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/qicore-appropriateness-score|1.0.2 (QICoreAppropriatenessScore)
-  extensions/profiles (2 structures, 2 elements): strongest binding: required, refs: qicore-procedurerequest-appropriatenessScore(Extension) [Extension.value[x]], qicore-procedurerequest(Profile) [ProcedureRequest.extension]
+  extensions/profiles (2 structures, 2 elements): strongest binding: required, refs: qicore-procedurerequest(Profile) [ProcedureRequest.extension], qicore-procedurerequest-appropriatenessScore(Extension) [Extension.value[x]]
   - #appropriate: Appropriate
   - #extremely-appropriate: Extremely Appropriate
   - #extremely-inappropriate: Extremely Inappropriate
@@ -22158,7 +22158,7 @@ Value Sets: 1016
   extensions/profiles (1 structures, 1 elements): strongest binding: preferred, refs: qicore-patient(Profile) [Patient.extension]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/qicore-patient-military-service|1.0.2 (Military Service Codes)
-  extensions/profiles (2 structures, 3 elements): strongest binding: example, refs: qicore-patient-militaryService(Extension) [Extension.valueCodeableConcept,Extension.value[x]], qicore-patient(Profile) [Patient.extension]
+  extensions/profiles (2 structures, 3 elements): strongest binding: example, refs: qicore-patient(Profile) [Patient.extension], qicore-patient-militaryService(Extension) [Extension.value[x],Extension.valueCodeableConcept]
   - #active-duty: Active Duty
   - #active-reserve: Active Reserve
   - #inactive-reserve: Inactive Reserve
@@ -22173,7 +22173,7 @@ Value Sets: 1016
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/quantity-comparator|1.0.2 (QuantityComparator)
   references (7 structures, 7 elements): Quantity.comparator, strongest binding: required, by type: code:Required
-  extensions/profiles (4 structures, 12 elements): strongest binding: required, refs: cholesterol(Profile) [Observation.valueQuantity.comparator], daf-vitalsigns(Profile) [Observation.valueQuantity.comparator,Observation.referenceRange.low.comparator,Observation.referenceRange.high.comparator], uslab-obsquantity(Profile) [Observation.referenceRange.low.comparator,Observation.referenceRange.high.comparator,Observation.referenceRange.age.low.comparator,Observation.referenceRange.age.high.comparator], uslab-obsrange(Profile) [Observation.referenceRange.low.comparator,Observation.referenceRange.high.comparator,Observation.referenceRange.age.low.comparator,Observation.referenceRange.age.high.comparator]
+  extensions/profiles (4 structures, 12 elements): strongest binding: required, refs: cholesterol(Profile) [Observation.valueQuantity.comparator], daf-vitalsigns(Profile) [Observation.referenceRange.high.comparator,Observation.referenceRange.low.comparator,Observation.valueQuantity.comparator], uslab-obsquantity(Profile) [Observation.referenceRange.age.high.comparator,Observation.referenceRange.age.low.comparator,Observation.referenceRange.high.comparator,Observation.referenceRange.low.comparator], uslab-obsrange(Profile) [Observation.referenceRange.age.high.comparator,Observation.referenceRange.age.low.comparator,Observation.referenceRange.high.comparator,Observation.referenceRange.low.comparator]
   - #<: Less than
   - #<=: Less or Equal to
   - #>: Greater than
@@ -22191,14 +22191,14 @@ Value Sets: 1016
   - #completed: Completed
   - #in-progress: In Progress
 - ValueSet: http://hl7.org/fhir/ValueSet/questionnaire-category|1.0.2 (Questionnaire Category Codes)
-  extensions/profiles (1 structures, 2 elements): strongest binding: example, refs: questionnaire-category(Extension) [Extension.valueCodeableConcept,Extension.value[x]]
+  extensions/profiles (1 structures, 2 elements): strongest binding: example, refs: questionnaire-category(Extension) [Extension.value[x],Extension.valueCodeableConcept]
   - #273384008: Consumer satisfaction questionnaire
   - #273479001: General health questionnaire
   - #273601006: Mental status questionnaire
   - #273820006: Social support questionnaire
   - #304794009: Administrative form
 - ValueSet: http://hl7.org/fhir/ValueSet/questionnaire-question-control|1.0.2 (Questionnaire Question UI Control Codes)
-  extensions/profiles (1 structures, 2 elements): strongest binding: extensible, refs: questionnaire-questionControl(Extension) [Extension.valueCodeableConcept,Extension.value[x]]
+  extensions/profiles (1 structures, 2 elements): strongest binding: extensible, refs: questionnaire-questionControl(Extension) [Extension.value[x],Extension.valueCodeableConcept]
   - #autocomplete: Auto-complete
   - #check-box: Check-box
   - #drop-down: Drop down
@@ -22303,8 +22303,8 @@ Value Sets: 1016
   - #open: Open
   - #openAtEnd: Open at End
 - ValueSet: http://hl7.org/fhir/ValueSet/resource-types|1.0.2 (ResourceType)
-  references (6 structures, 10 elements): Conformance.rest.resource.type, Conformance.rest.resource.searchParam.target, Conformance.messaging.event.focus, ImplementationGuide.global.type, ImplementationGuide.page.type, OperationDefinition.type, Provenance.entity.type, Questionnaire.subjectType, SearchParameter.base, SearchParameter.target, strongest binding: required, by type: code:Required, Coding:Extensible
-  extensions/profiles (3 structures, 4 elements): strongest binding: required, refs: ehrsrle-provenance(Profile) [Provenance.entity.type], questionnaire-allowedResource(Extension) [Extension.valueCode,Extension.value[x]], sdc-questionnaire(Profile) [Questionnaire.subjectType]
+  references (6 structures, 10 elements): Conformance.messaging.event.focus, Conformance.rest.resource.searchParam.target, Conformance.rest.resource.type, ImplementationGuide.global.type, ImplementationGuide.page.type, OperationDefinition.type, Provenance.entity.type, Questionnaire.subjectType, SearchParameter.base, SearchParameter.target, strongest binding: required, by type: code:Required, Coding:Extensible
+  extensions/profiles (3 structures, 4 elements): strongest binding: required, refs: ehrsrle-provenance(Profile) [Provenance.entity.type], questionnaire-allowedResource(Extension) [Extension.value[x],Extension.valueCode], sdc-questionnaire(Profile) [Questionnaire.subjectType]
   - #Account: Account
   - #AllergyIntolerance: AllergyIntolerance
   - #Appointment: Appointment
@@ -22451,7 +22451,7 @@ Value Sets: 1016
   extensions/profiles (5 structures, 5 elements): strongest binding: example, refs: daf-allergyintolerance(Profile) [AllergyIntolerance.reaction.exposureRoute], qicore-allergyintolerance(Profile) [AllergyIntolerance.reaction.exposureRoute], qicore-medicationadministration(Profile) [MedicationAdministration.dosage.route], qicore-medicationdispense(Profile) [MedicationDispense.dosageInstruction.route], qicore-medicationorder(Profile) [MedicationOrder.dosageInstruction.route]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/ruleset|1.0.2 (Ruleset Codes)
-  references (11 structures, 24 elements): Claim.ruleset, Claim.originalRuleset, Claim.coverage.originalRuleset, ClaimResponse.ruleset, ClaimResponse.originalRuleset, ClaimResponse.coverage.originalRuleset, EligibilityRequest.ruleset, EligibilityRequest.originalRuleset, EligibilityResponse.ruleset, EligibilityResponse.originalRuleset, EnrollmentRequest.ruleset, EnrollmentRequest.originalRuleset, EnrollmentResponse.ruleset, EnrollmentResponse.originalRuleset, ExplanationOfBenefit.ruleset, ExplanationOfBenefit.originalRuleset, PaymentNotice.ruleset, PaymentNotice.originalRuleset, PaymentReconciliation.ruleset, PaymentReconciliation.originalRuleset, ProcessRequest.ruleset, ProcessRequest.originalRuleset, ProcessResponse.ruleset, ProcessResponse.originalRuleset, strongest binding: example, by type: Coding:Example
+  references (11 structures, 24 elements): Claim.coverage.originalRuleset, Claim.originalRuleset, Claim.ruleset, ClaimResponse.coverage.originalRuleset, ClaimResponse.originalRuleset, ClaimResponse.ruleset, EligibilityRequest.originalRuleset, EligibilityRequest.ruleset, EligibilityResponse.originalRuleset, EligibilityResponse.ruleset, EnrollmentRequest.originalRuleset, EnrollmentRequest.ruleset, EnrollmentResponse.originalRuleset, EnrollmentResponse.ruleset, ExplanationOfBenefit.originalRuleset, ExplanationOfBenefit.ruleset, PaymentNotice.originalRuleset, PaymentNotice.ruleset, PaymentReconciliation.originalRuleset, PaymentReconciliation.ruleset, ProcessRequest.originalRuleset, ProcessRequest.ruleset, ProcessResponse.originalRuleset, ProcessResponse.ruleset, strongest binding: example, by type: Coding:Example
   - #cdanet-v2: 
   - #cdanet-v4: 
   - #cpha-3: 
@@ -22463,7 +22463,7 @@ Value Sets: 1016
   - #application/sql: SQL
   - #application/xquery: X-Query
 - ValueSet: http://hl7.org/fhir/ValueSet/sdc-group-special-type|1.0.2 (QuestionnaireGroupSpecialType)
-  extensions/profiles (1 structures, 2 elements): strongest binding: required, refs: sdc-questionnaire-specialGroup(Extension) [Extension.valueCode,Extension.value[x]]
+  extensions/profiles (1 structures, 2 elements): strongest binding: required, refs: sdc-questionnaire-specialGroup(Extension) [Extension.value[x],Extension.valueCode]
   - #footer: Footer
   - #header: Header
 - ValueSet: http://hl7.org/fhir/ValueSet/sdcde-dataelement-sdccode|1.0.2 (DataElement SDC Concept)
@@ -22525,7 +22525,7 @@ Value Sets: 1016
   - #phone: Phone
   - #semail: Secure Email
 - ValueSet: http://hl7.org/fhir/ValueSet/service-uscls|1.0.2 (USCLS Codes)
-  references (2 structures, 5 elements): Claim.item.service, Claim.item.detail.service, Claim.item.detail.subDetail.service, ClaimResponse.addItem.service, ClaimResponse.addItem.detail.service, strongest binding: example, by type: Coding:Example
+  references (2 structures, 5 elements): Claim.item.detail.service, Claim.item.detail.subDetail.service, Claim.item.service, ClaimResponse.addItem.detail.service, ClaimResponse.addItem.service, strongest binding: example, by type: Coding:Example
   - #1101: Exam, comp, primary
   - #1102: Exam, comp, mixed
   - #1103: Exam, comp, permanent
@@ -22636,7 +22636,7 @@ Value Sets: 1016
   - #67889009: Irrigation
   - #7800008: Punctate
 - ValueSet: http://hl7.org/fhir/ValueSet/specimen-collection-priority|1.0.2 (SpecimenCollectionPriority)
-  extensions/profiles (1 structures, 2 elements): strongest binding: example, refs: specimen-collectionPriority(Extension) [Extension.valueCodeableConcept,Extension.value[x]]
+  extensions/profiles (1 structures, 2 elements): strongest binding: example, refs: specimen-collectionPriority(Extension) [Extension.value[x],Extension.valueCodeableConcept]
   - #1: STAT
   - #2: ASAP
   - #3: ASAP-ED
@@ -22836,7 +22836,7 @@ Value Sets: 1016
   - #47: 47
   - #48: 48
 - ValueSet: http://hl7.org/fhir/ValueSet/template-status-code|1.0.2 (TemplateStatusCode)
-  extensions/profiles (1 structures, 2 elements): strongest binding: required, refs: structuredefinition-template-status(Extension) [Extension.valueCode,Extension.value[x]]
+  extensions/profiles (1 structures, 2 elements): strongest binding: required, refs: structuredefinition-template-status(Extension) [Extension.value[x],Extension.valueCode]
   - #active: Active
   - #cancelled: Cancelled
   - #draft: Draft
@@ -22961,7 +22961,7 @@ Value Sets: 1016
 - ValueSet: http://hl7.org/fhir/ValueSet/ucum-common|1.0.2 (Common UCUM units)
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/udi|1.0.2 (UDI Codes)
-  references (1 structures, 3 elements): Claim.item.udi, Claim.item.detail.udi, Claim.item.detail.subDetail.udi, strongest binding: example, by type: Coding:Example
+  references (1 structures, 3 elements): Claim.item.detail.subDetail.udi, Claim.item.detail.udi, Claim.item.udi, strongest binding: example, by type: Coding:Example
   - #{01}123456789: {01}123456789
 - ValueSet: http://hl7.org/fhir/ValueSet/units-of-time|1.0.2 (UnitsOfTime)
   references (1 structures, 2 elements): Timing.repeat.durationUnits, Timing.repeat.periodUnits, strongest binding: required, by type: code:Required
@@ -23042,12 +23042,12 @@ Value Sets: 1016
   - #W: Worse
   - #WR: Weakly reactive
 - ValueSet: http://hl7.org/fhir/ValueSet/uslab-obs-kind|1.0.2 (uslab-observationkind)
-  extensions/profiles (1 structures, 2 elements): strongest binding: extensible, refs: uslab-observationkind(Extension) [Extension.valueCode,Extension.value[x]]
+  extensions/profiles (1 structures, 2 elements): strongest binding: extensible, refs: uslab-observationkind(Extension) [Extension.value[x],Extension.valueCode]
   - #information: information
   - #response: response
   - #result: result
 - ValueSet: http://hl7.org/fhir/ValueSet/uslab-obs-spec-reject|1.0.2 (US Laboratory Observation Specimen Rejection Codes)
-  extensions/profiles (7 structures, 8 elements): strongest binding: extensible, refs: uslab-obscode(Profile) [Observation.extension.valueCodeableConcept], uslab-obsother(Profile) [Observation.extension.valueCodeableConcept], uslab-obspanel(Profile) [Observation.extension.valueCodeableConcept], uslab-obsquantity(Profile) [Observation.extension.valueCodeableConcept], uslab-obsrange(Profile) [Observation.extension.valueCodeableConcept], uslab-obsratio(Profile) [Observation.extension.valueCodeableConcept], uslab-specimenrejectreason(Extension) [Extension.valueCodeableConcept,Extension.value[x]]
+  extensions/profiles (7 structures, 8 elements): strongest binding: extensible, refs: uslab-obscode(Profile) [Observation.extension.valueCodeableConcept], uslab-obsother(Profile) [Observation.extension.valueCodeableConcept], uslab-obspanel(Profile) [Observation.extension.valueCodeableConcept], uslab-obsquantity(Profile) [Observation.extension.valueCodeableConcept], uslab-obsrange(Profile) [Observation.extension.valueCodeableConcept], uslab-obsratio(Profile) [Observation.extension.valueCodeableConcept], uslab-specimenrejectreason(Extension) [Extension.value[x],Extension.valueCodeableConcept]
   - #EX: Expired
   - #QS: Quantity not sufficient
   - #RA: Missing patient ID number
@@ -23078,7 +23078,7 @@ Value Sets: 1016
   extensions/profiles (2 structures, 2 elements): strongest binding: extensible, refs: daf-spec(Profile) [Specimen.type], uslab-spec(Profile) [Specimen.type]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/uslab-units|1.0.2 (UCUM Codes)
-  extensions/profiles (3 structures, 8 elements): strongest binding: required, refs: elementdefinition-allowedUnits(Extension) [Extension.value[x]], uslab-obsquantity(Profile) [Observation.referenceRange.low.code,Observation.referenceRange.high.code,Observation.valueQuantity.code], uslab-obsrange(Profile) [Observation.referenceRange.low.code,Observation.referenceRange.high.code,Observation.valueRange.low.code,Observation.valueRange.high.code]
+  extensions/profiles (3 structures, 8 elements): strongest binding: required, refs: elementdefinition-allowedUnits(Extension) [Extension.value[x]], uslab-obsquantity(Profile) [Observation.referenceRange.high.code,Observation.referenceRange.low.code,Observation.valueQuantity.code], uslab-obsrange(Profile) [Observation.referenceRange.high.code,Observation.referenceRange.low.code,Observation.valueRange.high.code,Observation.valueRange.low.code]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/usps-state|1.0.2 (USPS Two Letter Alphabetic Codes)
   extensions/profiles (12 structures, 15 elements): strongest binding: required, refs: daf-location(Profile) [Location.address.state], daf-organization(Profile) [Organization.address.state], daf-patient(Profile) [Patient.address.state,Patient.contact.address.state], qicore-location(Profile) [Location.address.state], qicore-organization(Profile) [Organization.address.state], qicore-patient(Profile) [Patient.address.state,Patient.contact.address.state], uslab-cctarget(Profile) [Organization.address.state], uslab-orderfacility(Profile) [Organization.address.state], uslab-patient(Profile) [Patient.address.state], uslab-performinglab(Profile) [Organization.address.state], uslab-phpatient(Profile) [Patient.address.state,Patient.contact.address.state], uslab-phpract(Profile) [Practitioner.address.state]
@@ -31123,7 +31123,7 @@ Value Sets: 1016
   - #LINV: Last Invoice
   - #PAPER: Paper Documentation To Follow
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActInvoiceGroupCode|2014-03-26 (ActInvoiceGroupCode)
-  references (1 structures, 3 elements): Claim.item.type, Claim.item.detail.type, Claim.item.detail.subDetail.type, strongest binding: required, by type: Coding:Required
+  references (1 structures, 3 elements): Claim.item.detail.subDetail.type, Claim.item.detail.type, Claim.item.type, strongest binding: required, by type: Coding:Required
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActMood|2015-07-31 (v3 Code System ActMood)
   - #_ActMoodActRequest: act request
@@ -32478,7 +32478,7 @@ Value Sets: 1016
   - #S: Serious
   - #W: Warning
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-Ethnicity|2015-07-31 (v3 Code System Ethnicity)
-  extensions/profiles (3 structures, 4 elements): strongest binding: required, refs: us-core-ethnicity(Extension) [Extension.valueCodeableConcept,Extension.value[x]], uslab-patient(Profile) [Patient.extension.valueCodeableConcept], uslab-phpatient(Profile) [Patient.extension.valueCodeableConcept]
+  extensions/profiles (3 structures, 4 elements): strongest binding: required, refs: us-core-ethnicity(Extension) [Extension.value[x],Extension.valueCodeableConcept], uslab-patient(Profile) [Patient.extension.valueCodeableConcept], uslab-phpatient(Profile) [Patient.extension.valueCodeableConcept]
   - #2135-2: Hispanic or Latino
   - #2137-8: Spaniard
   - #2138-6: Andalusian
@@ -32742,7 +32742,7 @@ Value Sets: 1016
   - #M: Modified subscription
   - #N: New subscription
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-NullFlavor|2015-07-31 (v3 Code System NullFlavor)
-  extensions/profiles (1 structures, 2 elements): strongest binding: required, refs: iso21090-nullFlavor(Extension) [Extension.valueCode,Extension.value[x]]
+  extensions/profiles (1 structures, 2 elements): strongest binding: required, refs: iso21090-nullFlavor(Extension) [Extension.value[x],Extension.valueCode]
   - #ASKU: asked but unknown
   - #DER: derived
   - #INV: invalid
@@ -33746,7 +33746,7 @@ Value Sets: 1016
   - #new: new
   - #waitContinuedQueryResponse: waitContinuedQueryResponse
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-Race|2015-07-31 (v3 Code System Race)
-  extensions/profiles (3 structures, 4 elements): strongest binding: required, refs: us-core-race(Extension) [Extension.valueCodeableConcept,Extension.value[x]], uslab-patient(Profile) [Patient.extension.valueCodeableConcept], uslab-phpatient(Profile) [Patient.extension.valueCodeableConcept]
+  extensions/profiles (3 structures, 4 elements): strongest binding: required, refs: us-core-race(Extension) [Extension.value[x],Extension.valueCodeableConcept], uslab-patient(Profile) [Patient.extension.valueCodeableConcept], uslab-phpatient(Profile) [Patient.extension.valueCodeableConcept]
   - #1002-5: American Indian or Alaska Native
   - #1004-1: American Indian
   - #1006-6: Abenaki
@@ -34684,7 +34684,7 @@ Value Sets: 1016
   - #OR: or
   - #XOR: exclusive or
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ReligiousAffiliation|2015-07-31 (v3 Code System ReligiousAffiliation)
-  extensions/profiles (3 structures, 4 elements): strongest binding: required, refs: daf-patient(Profile) [Patient.extension], qicore-patient(Profile) [Patient.extension], us-core-religion(Extension) [Extension.valueCodeableConcept,Extension.value[x]]
+  extensions/profiles (3 structures, 4 elements): strongest binding: required, refs: daf-patient(Profile) [Patient.extension], qicore-patient(Profile) [Patient.extension], us-core-religion(Extension) [Extension.value[x],Extension.valueCodeableConcept]
   - #1001: Adventist
   - #1002: African Religions
   - #1003: Afro-Caribbean Religions
@@ -36611,15 +36611,15 @@ Value Sets: 1016
   - #Y: Yes
 External Value Set Binding References: 7
 - ValueSet: http://tools.ietf.org/html/bcp47
-  references (97 structures, 101 elements): Account.language, AllergyIntolerance.language, Appointment.language, AppointmentResponse.language, Attachment.language, AuditEvent.language, Basic.language, Binary.language, BodySite.language, Bundle.language, CarePlan.language, Claim.language, ClaimResponse.language, ClinicalImpression.language, Communication.language, CommunicationRequest.language, Composition.language, ConceptMap.language, Condition.language, Conformance.language, Contract.language, Coverage.language, DataElement.language, DetectedIssue.language, Device.language, DeviceComponent.language, DeviceComponent.languageCode, DeviceMetric.language, DeviceUseRequest.language, DeviceUseStatement.language, DiagnosticOrder.language, DiagnosticReport.language, DocumentManifest.language, DocumentReference.language, DomainResource.language, EligibilityRequest.language, EligibilityResponse.language, Encounter.language, EnrollmentRequest.language, EnrollmentResponse.language, EpisodeOfCare.language, ExplanationOfBenefit.language, FamilyMemberHistory.language, Flag.language, Goal.language, Group.language, HealthcareService.language, ImagingObjectSelection.language, ImagingStudy.language, Immunization.language, ImmunizationRecommendation.language, ImplementationGuide.language, List.language, Location.language, Media.language, Medication.language, MedicationAdministration.language, MedicationDispense.language, MedicationOrder.language, MedicationStatement.language, MessageHeader.language, NamingSystem.language, NutritionOrder.language, Observation.language, OperationDefinition.language, OperationOutcome.language, Order.language, OrderResponse.language, Organization.language, Parameters.language, Patient.language, Patient.communication.language, PaymentNotice.language, PaymentReconciliation.language, Person.language, Practitioner.language, Practitioner.communication, Procedure.language, ProcedureRequest.language, ProcessRequest.language, ProcessResponse.language, Provenance.language, Questionnaire.language, QuestionnaireResponse.language, ReferralRequest.language, RelatedPerson.language, Resource.language, RiskAssessment.language, Schedule.language, SearchParameter.language, Slot.language, Specimen.language, StructureDefinition.language, Subscription.language, Substance.language, SupplyDelivery.language, SupplyRequest.language, TestScript.language, ValueSet.language, ValueSet.codeSystem.concept.designation.language, VisionPrescription.language, strongest binding: required, by type: code:Required, CodeableConcept:Required
-  extensions/profiles (106 structures, 119 elements): strongest binding: required, refs: argonaut-careplan(Profile) [CarePlan.language], cholesterol(Profile) [Observation.language], clinicaldocument(Profile) [Composition.language], consentdirective(Profile) [Contract.language], daf-allergyintolerance(Profile) [AllergyIntolerance.language], daf-allergylist(Profile) [List.language], daf-condition(Profile) [Condition.language], daf-diagnosticorder(Profile) [DiagnosticOrder.language], daf-diagnosticreport(Profile) [DiagnosticReport.language], daf-encounter(Profile) [Encounter.language], daf-encounterlist(Profile) [List.language], daf-familymemberhistory(Profile) [FamilyMemberHistory.language], daf-immunization(Profile) [Immunization.language], daf-immunizationlist(Profile) [List.language], daf-location(Profile) [Location.language], daf-medication(Profile) [Medication.language], daf-medicationadministration(Profile) [MedicationAdministration.language], daf-medicationdispense(Profile) [MedicationDispense.language], daf-medicationlist(Profile) [List.language], daf-medicationorder(Profile) [MedicationOrder.language], daf-medicationstatement(Profile) [MedicationStatement.language], daf-organization(Profile) [Organization.language], daf-patient(Profile) [Patient.language,Patient.communication.language], daf-pract(Profile) [Practitioner.language,Practitioner.communication], daf-problemlist(Profile) [List.language], daf-procedure(Profile) [Procedure.language], daf-procedurelist(Profile) [List.language], daf-relatedperson(Profile) [RelatedPerson.language], daf-resultlist(Profile) [List.language], daf-resultobs(Profile) [Observation.language], daf-smokingstatus(Profile) [Observation.language], daf-spec(Profile) [Specimen.language], daf-substance(Profile) [Substance.language], daf-vitalsigns(Profile) [Observation.language], devicemetricobservation(Profile) [Observation.language], ehrsrle-auditevent(Profile) [AuditEvent.language], ehrsrle-provenance(Profile) [Provenance.language], familymemberhistory-genetic(Profile) [FamilyMemberHistory.language], genetics(Profile) [Observation.language], hdlcholesterol(Profile) [Observation.language], iso21090-ST-language(Extension) [Extension.valueCode,Extension.value[x]], ldlcholesterol(Profile) [Observation.language], lipidprofile(Profile) [DiagnosticReport.language], measurereport(Profile) [Composition.language], qicore-adverseevent(Profile) [Basic.language], qicore-allergyintolerance(Profile) [AllergyIntolerance.language], qicore-bodysite(Profile) [BodySite.language], qicore-communication(Profile) [Communication.language], qicore-communicationrequest(Profile) [CommunicationRequest.language], qicore-condition(Profile) [Condition.language], qicore-device(Profile) [Device.language], qicore-deviceuserequest(Profile) [DeviceUseRequest.language], qicore-deviceusestatement(Profile) [DeviceUseStatement.language], qicore-diagnosticorder(Profile) [DiagnosticOrder.language], qicore-diagnosticreport(Profile) [DiagnosticReport.language], qicore-encounter(Profile) [Encounter.language], qicore-familymemberhistory(Profile) [FamilyMemberHistory.language], qicore-flag(Profile) [Flag.language], qicore-goal(Profile) [Goal.language], qicore-imagingstudy(Profile) [ImagingStudy.language], qicore-immunization(Profile) [Immunization.language], qicore-immunizationrec(Profile) [ImmunizationRecommendation.language], qicore-location(Profile) [Location.language], qicore-medication(Profile) [Medication.language], qicore-medicationadministration(Profile) [MedicationAdministration.language], qicore-medicationdispense(Profile) [MedicationDispense.language], qicore-medicationorder(Profile) [MedicationOrder.language], qicore-medicationstatement(Profile) [MedicationStatement.language], qicore-observation(Profile) [Observation.language], qicore-organization(Profile) [Organization.language], qicore-patient(Profile) [Patient.language,Patient.communication.language], qicore-practitioner(Profile) [Practitioner.language,Practitioner.communication], qicore-procedure(Profile) [Procedure.language], qicore-procedurerequest(Profile) [ProcedureRequest.language], qicore-referralrequest(Profile) [ReferralRequest.language], qicore-relatedperson(Profile) [RelatedPerson.language], qicore-specimen(Profile) [Specimen.language], qicore-substance(Profile) [Substance.language], sdc-element(Profile) [DataElement.language], sdc-questionnaire(Profile) [Questionnaire.language], sdc-response(Profile) [QuestionnaireResponse.language], sdc-valueset(Profile) [ValueSet.language,ValueSet.codeSystem.concept.designation.language], sdcde-dataelement(Profile) [DataElement.language], sdcde-valueset(Profile) [ValueSet.language,ValueSet.codeSystem.concept.designation.language], shareablevalueset(Profile) [ValueSet.language,ValueSet.codeSystem.concept.designation.language], triglyceride(Profile) [Observation.language], uslab-cctarget(Profile) [Organization.language], uslab-cond(Profile) [Condition.language], uslab-do(Profile) [DiagnosticOrder.language], uslab-dr(Profile) [DiagnosticReport.language], uslab-obscode(Profile) [Observation.language], uslab-obsother(Profile) [Observation.language], uslab-obspanel(Profile) [Observation.language], uslab-obsquantity(Profile) [Observation.language], uslab-obsrange(Profile) [Observation.language], uslab-obsratio(Profile) [Observation.language], uslab-orderfacility(Profile) [Organization.language], uslab-patient(Profile) [Patient.language,Patient.communication.language], uslab-performinglab(Profile) [Organization.language], uslab-phpatient(Profile) [Patient.language,Patient.communication.language], uslab-phpract(Profile) [Practitioner.language,Practitioner.communication], uslab-pract(Profile) [Practitioner.language,Practitioner.communication], uslab-reasonforstudy(Profile) [Condition.language], uslab-spec(Profile) [Specimen.language], xdsdocumentmanifest(Profile) [DocumentManifest.language], xdsdocumentreference(Profile) [DocumentReference.language,DocumentReference.content.attachment.language]
+  references (97 structures, 101 elements): Account.language, AllergyIntolerance.language, Appointment.language, AppointmentResponse.language, Attachment.language, AuditEvent.language, Basic.language, Binary.language, BodySite.language, Bundle.language, CarePlan.language, Claim.language, ClaimResponse.language, ClinicalImpression.language, Communication.language, CommunicationRequest.language, Composition.language, ConceptMap.language, Condition.language, Conformance.language, Contract.language, Coverage.language, DataElement.language, DetectedIssue.language, Device.language, DeviceComponent.language, DeviceComponent.languageCode, DeviceMetric.language, DeviceUseRequest.language, DeviceUseStatement.language, DiagnosticOrder.language, DiagnosticReport.language, DocumentManifest.language, DocumentReference.language, DomainResource.language, EligibilityRequest.language, EligibilityResponse.language, Encounter.language, EnrollmentRequest.language, EnrollmentResponse.language, EpisodeOfCare.language, ExplanationOfBenefit.language, FamilyMemberHistory.language, Flag.language, Goal.language, Group.language, HealthcareService.language, ImagingObjectSelection.language, ImagingStudy.language, Immunization.language, ImmunizationRecommendation.language, ImplementationGuide.language, List.language, Location.language, Media.language, Medication.language, MedicationAdministration.language, MedicationDispense.language, MedicationOrder.language, MedicationStatement.language, MessageHeader.language, NamingSystem.language, NutritionOrder.language, Observation.language, OperationDefinition.language, OperationOutcome.language, Order.language, OrderResponse.language, Organization.language, Parameters.language, Patient.communication.language, Patient.language, PaymentNotice.language, PaymentReconciliation.language, Person.language, Practitioner.communication, Practitioner.language, Procedure.language, ProcedureRequest.language, ProcessRequest.language, ProcessResponse.language, Provenance.language, Questionnaire.language, QuestionnaireResponse.language, ReferralRequest.language, RelatedPerson.language, Resource.language, RiskAssessment.language, Schedule.language, SearchParameter.language, Slot.language, Specimen.language, StructureDefinition.language, Subscription.language, Substance.language, SupplyDelivery.language, SupplyRequest.language, TestScript.language, ValueSet.codeSystem.concept.designation.language, ValueSet.language, VisionPrescription.language, strongest binding: required, by type: code:Required, CodeableConcept:Required
+  extensions/profiles (106 structures, 119 elements): strongest binding: required, refs: argonaut-careplan(Profile) [CarePlan.language], cholesterol(Profile) [Observation.language], clinicaldocument(Profile) [Composition.language], consentdirective(Profile) [Contract.language], daf-allergyintolerance(Profile) [AllergyIntolerance.language], daf-allergylist(Profile) [List.language], daf-condition(Profile) [Condition.language], daf-diagnosticorder(Profile) [DiagnosticOrder.language], daf-diagnosticreport(Profile) [DiagnosticReport.language], daf-encounter(Profile) [Encounter.language], daf-encounterlist(Profile) [List.language], daf-familymemberhistory(Profile) [FamilyMemberHistory.language], daf-immunization(Profile) [Immunization.language], daf-immunizationlist(Profile) [List.language], daf-location(Profile) [Location.language], daf-medication(Profile) [Medication.language], daf-medicationadministration(Profile) [MedicationAdministration.language], daf-medicationdispense(Profile) [MedicationDispense.language], daf-medicationlist(Profile) [List.language], daf-medicationorder(Profile) [MedicationOrder.language], daf-medicationstatement(Profile) [MedicationStatement.language], daf-organization(Profile) [Organization.language], daf-patient(Profile) [Patient.communication.language,Patient.language], daf-pract(Profile) [Practitioner.communication,Practitioner.language], daf-problemlist(Profile) [List.language], daf-procedure(Profile) [Procedure.language], daf-procedurelist(Profile) [List.language], daf-relatedperson(Profile) [RelatedPerson.language], daf-resultlist(Profile) [List.language], daf-resultobs(Profile) [Observation.language], daf-smokingstatus(Profile) [Observation.language], daf-spec(Profile) [Specimen.language], daf-substance(Profile) [Substance.language], daf-vitalsigns(Profile) [Observation.language], devicemetricobservation(Profile) [Observation.language], ehrsrle-auditevent(Profile) [AuditEvent.language], ehrsrle-provenance(Profile) [Provenance.language], familymemberhistory-genetic(Profile) [FamilyMemberHistory.language], genetics(Profile) [Observation.language], hdlcholesterol(Profile) [Observation.language], iso21090-ST-language(Extension) [Extension.value[x],Extension.valueCode], ldlcholesterol(Profile) [Observation.language], lipidprofile(Profile) [DiagnosticReport.language], measurereport(Profile) [Composition.language], qicore-adverseevent(Profile) [Basic.language], qicore-allergyintolerance(Profile) [AllergyIntolerance.language], qicore-bodysite(Profile) [BodySite.language], qicore-communication(Profile) [Communication.language], qicore-communicationrequest(Profile) [CommunicationRequest.language], qicore-condition(Profile) [Condition.language], qicore-device(Profile) [Device.language], qicore-deviceuserequest(Profile) [DeviceUseRequest.language], qicore-deviceusestatement(Profile) [DeviceUseStatement.language], qicore-diagnosticorder(Profile) [DiagnosticOrder.language], qicore-diagnosticreport(Profile) [DiagnosticReport.language], qicore-encounter(Profile) [Encounter.language], qicore-familymemberhistory(Profile) [FamilyMemberHistory.language], qicore-flag(Profile) [Flag.language], qicore-goal(Profile) [Goal.language], qicore-imagingstudy(Profile) [ImagingStudy.language], qicore-immunization(Profile) [Immunization.language], qicore-immunizationrec(Profile) [ImmunizationRecommendation.language], qicore-location(Profile) [Location.language], qicore-medication(Profile) [Medication.language], qicore-medicationadministration(Profile) [MedicationAdministration.language], qicore-medicationdispense(Profile) [MedicationDispense.language], qicore-medicationorder(Profile) [MedicationOrder.language], qicore-medicationstatement(Profile) [MedicationStatement.language], qicore-observation(Profile) [Observation.language], qicore-organization(Profile) [Organization.language], qicore-patient(Profile) [Patient.communication.language,Patient.language], qicore-practitioner(Profile) [Practitioner.communication,Practitioner.language], qicore-procedure(Profile) [Procedure.language], qicore-procedurerequest(Profile) [ProcedureRequest.language], qicore-referralrequest(Profile) [ReferralRequest.language], qicore-relatedperson(Profile) [RelatedPerson.language], qicore-specimen(Profile) [Specimen.language], qicore-substance(Profile) [Substance.language], sdc-element(Profile) [DataElement.language], sdc-questionnaire(Profile) [Questionnaire.language], sdc-response(Profile) [QuestionnaireResponse.language], sdc-valueset(Profile) [ValueSet.codeSystem.concept.designation.language,ValueSet.language], sdcde-dataelement(Profile) [DataElement.language], sdcde-valueset(Profile) [ValueSet.codeSystem.concept.designation.language,ValueSet.language], shareablevalueset(Profile) [ValueSet.codeSystem.concept.designation.language,ValueSet.language], triglyceride(Profile) [Observation.language], uslab-cctarget(Profile) [Organization.language], uslab-cond(Profile) [Condition.language], uslab-do(Profile) [DiagnosticOrder.language], uslab-dr(Profile) [DiagnosticReport.language], uslab-obscode(Profile) [Observation.language], uslab-obsother(Profile) [Observation.language], uslab-obspanel(Profile) [Observation.language], uslab-obsquantity(Profile) [Observation.language], uslab-obsrange(Profile) [Observation.language], uslab-obsratio(Profile) [Observation.language], uslab-orderfacility(Profile) [Organization.language], uslab-patient(Profile) [Patient.communication.language,Patient.language], uslab-performinglab(Profile) [Organization.language], uslab-phpatient(Profile) [Patient.communication.language,Patient.language], uslab-phpract(Profile) [Practitioner.communication,Practitioner.language], uslab-pract(Profile) [Practitioner.communication,Practitioner.language], uslab-reasonforstudy(Profile) [Condition.language], uslab-spec(Profile) [Specimen.language], xdsdocumentmanifest(Profile) [DocumentManifest.language], xdsdocumentreference(Profile) [DocumentReference.content.attachment.language,DocumentReference.language]
 - ValueSet: http://www.iso.org/iso/country_codes.htm
   extensions/profiles (9 structures, 11 elements): strongest binding: required, refs: daf-patient(Profile) [Patient.contact.address.country], qicore-location(Profile) [Location.address.country], qicore-patient(Profile) [Patient.address.country,Patient.contact.address.country], uslab-cctarget(Profile) [Organization.address.country], uslab-orderfacility(Profile) [Organization.address.country], uslab-patient(Profile) [Patient.address.country], uslab-performinglab(Profile) [Organization.address.country], uslab-phpatient(Profile) [Patient.address.country,Patient.contact.address.country], uslab-phpract(Profile) [Practitioner.address.country]
 - ValueSet: http://www.iso.org/iso/home/standards/currency_codes
   references (1 structures, 1 elements): Account.currency, strongest binding: example, by type: Coding:Example
 - ValueSet: http://www.rfc-editor.org/bcp/bcp13.txt
   references (6 structures, 7 elements): Attachment.contentType, Binary.contentType, Conformance.format, Conformance.rest.security.certificate.type, ElementDefinition.mapping.language, ImplementationGuide.page.format, Signature.contentType, strongest binding: required, by type: code:Required
-  extensions/profiles (5 structures, 9 elements): strongest binding: required, refs: elementdefinition-de(Profile) [ElementDefinition.mapping.language], mimeType(Extension) [Extension.valueCode,Extension.value[x]], sdc-element(Profile) [DataElement.element.mapping.language], sdcde-dataelement(Profile) [DataElement.element.mapping.language], xdsdocumentreference(Profile) [DocumentReference.content.attachment.contentType]
+  extensions/profiles (5 structures, 9 elements): strongest binding: required, refs: elementdefinition-de(Profile) [ElementDefinition.mapping.language], mimeType(Extension) [Extension.value[x],Extension.valueCode], sdc-element(Profile) [DataElement.element.mapping.language], sdcde-dataelement(Profile) [DataElement.element.mapping.language], xdsdocumentreference(Profile) [DocumentReference.content.attachment.contentType]
 - ValueSet: https://rtmms.nist.gov/rtmms/index.htm#!hrosetta
   references (2 structures, 2 elements): DeviceComponent.type, DeviceMetric.type, strongest binding: preferred, by type: CodeableConcept:Preferred
 - ValueSet: https://rtmms.nist.gov/rtmms/index.htm#!units

@@ -14,6 +14,8 @@ using Microsoft.Health.Fhir.CodeGen.Utils;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using static Microsoft.Health.Fhir.CodeGen.Language.Info.LangInfo;
 using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
+using System.Collections.Generic;
+
 
 #if NETSTANDARD2_0
 using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
@@ -229,7 +231,8 @@ public class LangInfo : ILanguage
     /// <returns>A string.</returns>
     private string ReferenceLiteral(IEnumerable<StructureElementCollection> ecs)
     {
-        return string.Join(", ", ecs.SelectMany(ec => ec.Elements.Select(ed => ed.Path)).Distinct());
+        IEnumerable<StructureElementCollection> sorted = ecs.OrderBy(s => s.Structure.Id);
+        return string.Join(", ", sorted.SelectMany(ec => ec.Elements.Select(ed => ed.Path)).Distinct().Order());
     }
 
     /// <summary>Build a string for the external structure collections that reference a value set.</summary>
@@ -237,7 +240,8 @@ public class LangInfo : ILanguage
     /// <returns>A string.</returns>
     private string ExternalRefLiteral(IEnumerable<StructureElementCollection> ecs)
     {
-        return string.Join(", ", ecs.Select(ec => $"{ec.Structure.Id}({ec.Structure.cgArtifactClass()}) [{string.Join(",", ec.Elements.Select(ed => ed.Path).Distinct())}]"));
+        IEnumerable<StructureElementCollection> sorted = ecs.OrderBy(s => s.Structure.Id);
+        return string.Join(", ", sorted.Select(ec => $"{ec.Structure.Id}({ec.Structure.cgArtifactClass()}) [{string.Join(",", ec.Elements.Select(ed => ed.Path).Distinct().Order())}]"));
     }
 
     /// <summary>Writes an unresolved value sets.</summary>
@@ -497,7 +501,7 @@ public class LangInfo : ILanguage
         // check for search parameters on this object
         if (_definitions.SearchParametersForBase(sd.Type).Any())
         {
-            WriteSearchParameters(_definitions.SearchParametersForBase(sd.Type).Values.OrderBy(sp => sp.Code));
+            WriteSearchParameters(_definitions.SearchParametersForBase(sd.Type).Values);
         }
 
         // check for type operations
@@ -653,7 +657,7 @@ public class LangInfo : ILanguage
             indented = true;
         }
 
-        foreach (SearchParameter searchParam in searchParameters.OrderBy(s => s.Code))
+        foreach (SearchParameter searchParam in searchParameters.OrderBy(s => s.Code + s.Name))
         {
             if (searchParam.Component.Count != 0)
             {
