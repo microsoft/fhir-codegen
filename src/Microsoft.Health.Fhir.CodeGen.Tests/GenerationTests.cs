@@ -4,7 +4,9 @@
 // </copyright>
 
 
+using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using System.Text.Json;
 using FluentAssertions;
 using Hl7.Fhir.Model;
@@ -99,6 +101,13 @@ public class GenerationTestFixture
             throw new ArgumentException($"Could not find file at path: {existingPath}");
         }
 
+        string version = FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(DefinitionCollection))!.Location).ProductVersion?.ToString() ?? string.Empty;
+
+        if (version.Contains('+'))
+        {
+            version = version.Substring(0, version.IndexOf('+'));
+        }
+
         using FileStream existingFS = new(existingPath, FileMode.Open, FileAccess.Read);
 
         // compare files line by line
@@ -109,6 +118,12 @@ public class GenerationTestFixture
         while (existingReader.ReadLine() is string previousLine && currentReader.ReadLine() is string currentLine)
         {
             i++;
+            if (currentLine.Contains(version))
+            {
+                // skip any lines with a version in them
+                continue;
+            }
+
             currentLine.Should().Be(previousLine, $"Line {i} found:\n\t{currentLine}\nexpected:\n\t{previousLine}");
         }
     }

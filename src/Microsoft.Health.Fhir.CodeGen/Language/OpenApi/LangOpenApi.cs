@@ -91,7 +91,7 @@ public class LangOpenApi : ILanguage
         Dictionary<string, OpenApiDocument> docsByPrefix = new();
 
         // traverse the paths to discover our root keys (mostly just resources)
-        foreach ((string apiPath, OpenApiPathItem pathItem) in completeDoc.Paths)
+        foreach ((string apiPath, OpenApiPathItem pathItem) in completeDoc.Paths.OrderBy(p => p.Key))
         {
             string pathKey;
             string titleSuffix;
@@ -138,7 +138,7 @@ public class LangOpenApi : ILanguage
         Dictionary<string, OpenApiTag> sourceTags = completeDoc.Tags.ToDictionary(t => t.Name);
 
         // traverse each partial document, resolve missing references and write
-        foreach ((string pathKey, OpenApiDocument doc) in docsByPrefix)
+        foreach ((string pathKey, OpenApiDocument doc) in docsByPrefix.OrderBy(d => d.Key))
         {
             ResolveContainedRefs(completeDoc, doc, sourceTags);
 
@@ -179,9 +179,9 @@ public class LangOpenApi : ILanguage
         {
             MaybeAddParameters(targetPath.Parameters, source, target);
 
-            foreach ((OperationType targetOpKey, OpenApiOperation targetOp) in targetPath.Operations)
+            foreach ((OperationType targetOpKey, OpenApiOperation targetOp) in targetPath.Operations.OrderBy(o => o.Key))
             {
-                foreach (OpenApiTag targetTag in targetOp.Tags)
+                foreach (OpenApiTag targetTag in targetOp.Tags.OrderBy(t => t.Name))
                 {
                     // only need to resolve references, actual tags were copied
                     if (string.IsNullOrEmpty(targetTag.Reference?.Id ?? null) ||
@@ -204,7 +204,7 @@ public class LangOpenApi : ILanguage
 
                 MaybeAddParameters(targetOp.Parameters, source, target);
 
-                foreach (OpenApiMediaType targetMedia in targetOp.RequestBody?.Content?.Values ?? Array.Empty<OpenApiMediaType>())
+                foreach (OpenApiMediaType targetMedia in targetOp.RequestBody?.Content?.Values.OrderBy(c => c.Schema?.Reference?.Id ?? string.Empty) ?? Enumerable.Empty<OpenApiMediaType>())
                 {
                     // only process references, the rest were copied
                     if (string.IsNullOrEmpty(targetMedia.Schema?.Reference?.Id ?? null) ||
@@ -216,9 +216,9 @@ public class LangOpenApi : ILanguage
                     CopySchemaRecursive(source, target, targetMedia.Schema.Reference.Id);
                 }
 
-                foreach (OpenApiResponse targetResponse in targetOp.Responses.Values)
+                foreach (OpenApiResponse targetResponse in targetOp.Responses.Values.OrderBy(r => r.Description))
                 {
-                    foreach (OpenApiMediaType targetMedia in targetResponse.Content.Values)
+                    foreach (OpenApiMediaType targetMedia in targetResponse.Content.Values.OrderBy(c => c.Schema?.Reference?.Id ?? string.Empty))
                     {
                         // only process references, the rest were copied
                         if (string.IsNullOrEmpty(targetMedia.Schema?.Reference?.Id ?? null) ||
@@ -264,7 +264,7 @@ public class LangOpenApi : ILanguage
         }
 
         // check properties
-        foreach (OpenApiSchema s in target.Components.Schemas[key].Properties?.Values ?? Array.Empty<OpenApiSchema>())
+        foreach (OpenApiSchema s in target.Components.Schemas[key].Properties?.Values.OrderBy(s => s.Title) ?? Enumerable.Empty<OpenApiSchema>())
         {
             if (string.IsNullOrEmpty(s.Reference?.Id ?? null) ||
                 target.Components.Schemas.ContainsKey(s.Reference!.Id))
