@@ -648,74 +648,88 @@ public class PackageLoader : IDisposable
                 }
             }
 
-            bool needsInstall = true;
-
-            VersionHandlingTypes vht = GetVersionHandlingType(packageReference.Version);
-
-            // do special handling for versions if necessary
-            switch (vht)
+            // put package installation in a named mutex so that multiple spawns do not hammer the package server
+            using (Mutex resolutionMutex = new(initiallyOwned: false, name: "fcg2-" + packageReference.Moniker))
             {
-                case VersionHandlingTypes.Latest:
+                try
+                {
+                    // try to get the resolution mutex for this package - if we do not get it within 30 seconds, something is likely wrong, so try to resolve anyway
+                    _ = resolutionMutex.WaitOne(30 * 1000);
+
+                    bool needsInstall = true;
+
+                    VersionHandlingTypes vht = GetVersionHandlingType(packageReference.Version);
+
+                    // do special handling for versions if necessary
+                    switch (vht)
                     {
-                        // resolve the version via Firely Packages so that we have access to the actual version number
-                        (PackageReference pr, IPackageServer? _) = await ResolveLatest(packageReference.Name);
+                        case VersionHandlingTypes.Latest:
+                            {
+                                // resolve the version via Firely Packages so that we have access to the actual version number
+                                (PackageReference pr, IPackageServer? _) = await ResolveLatest(packageReference.Name);
 
-                        if ((pr == PackageReference.None) || (pr.Name == null))
-                        {
-                            throw new Exception($"Failed to resolve latest version of {packageReference.Name} ({directive})");
-                        }
+                                if ((pr == PackageReference.None) || (pr.Name == null))
+                                {
+                                    throw new Exception($"Failed to resolve latest version of {packageReference.Name} ({directive})");
+                                }
 
-                        packageReference = pr;
-                        needsInstall = !(await _cache.IsInstalled(packageReference));
+                                packageReference = pr;
+                                needsInstall = !(await _cache.IsInstalled(packageReference));
+                            }
+                            break;
+
+                        case VersionHandlingTypes.Local:
+                            // ensure there is a local build, there is no other source
+                            {
+                                if (!_cache.IsInstalled(packageReference).Result)
+                                {
+                                    throw new Exception($"Local build of {packageReference.Name} is not installed ({directive})");
+                                }
+                            }
+                            break;
+
+                        case VersionHandlingTypes.ContinuousIntegration:
+                            // always trigger install/update for CI builds
+                            needsInstall = true;
+                            break;
+
+                        default:
+                            needsInstall = !(await _cache.IsInstalled(packageReference));
+                            break;
                     }
-                    break;
 
-                case VersionHandlingTypes.Local:
-                    // ensure there is a local build, there is no other source
+                    // check if we are flagged to load expansions and this is a core package
+                    if (_rootConfiguration.AutoLoadExpansions && FhirPackageUtils.PackageIsFhirCore(packageReference.Name))
                     {
-                        if (!_cache.IsInstalled(packageReference).Result)
-                        {
-                            throw new Exception($"Local build of {packageReference.Name} is not installed ({directive})");
-                        }
+                        string expansionPackageName = packageReference.Name.Replace(".core", ".expansions");
+                        string expansionDirective = expansionPackageName + "@" + packageReference.Version;
+
+                        Console.WriteLine($"Auto-loading core expansions: {expansionDirective}...");
+
+                        await LoadPackages([expansionDirective], definitions, requestedFhirVersion);
                     }
-                    break;
 
-                case VersionHandlingTypes.ContinuousIntegration:
-                    // always trigger install/update for CI builds
-                    needsInstall = true;
-                    break;
+                    // skip if we have already loaded this package
+                    if (definitions.Manifests.ContainsKey(packageReference.Moniker))
+                    {
+                        Console.WriteLine($"Skipping already loaded dependency: {packageReference.Moniker}");
+                        continue;
+                    }
 
-                default:
-                    needsInstall = !(await _cache.IsInstalled(packageReference));
-                    break;
-            }
+                    Console.WriteLine($"Processing {packageReference.Moniker}...");
 
-            // check if we are flagged to load expansions and this is a core package
-            if (_rootConfiguration.AutoLoadExpansions && FhirPackageUtils.PackageIsFhirCore(packageReference.Name))
-            {
-                string expansionPackageName = packageReference.Name.Replace(".core", ".expansions");
-                string expansionDirective = expansionPackageName + "@" + packageReference.Version;
-
-                Console.WriteLine($"Auto-loading core expansions: {expansionDirective}...");
-
-                await LoadPackages([expansionDirective], definitions, requestedFhirVersion);
-            }
-
-            // skip if we have already loaded this package
-            if (definitions.Manifests.ContainsKey(packageReference.Moniker))
-            {
-                Console.WriteLine($"Skipping already loaded dependency: {packageReference.Moniker}");
-                continue;
-            }
-
-            Console.WriteLine($"Processing {packageReference.Moniker}...");
-
-            // check to see if this package needs to be installed
-            if (needsInstall &&
-                (await InstallPackage(packageReference) == false))
-            {
-                // failed to install
-                throw new Exception($"Failed to install package {packageReference.Moniker} as requested by {inputDirective}");
+                    // check to see if this package needs to be installed
+                    if (needsInstall &&
+                        (await InstallPackage(packageReference) == false))
+                    {
+                        // failed to install
+                        throw new Exception($"Failed to install package {packageReference.Moniker} as requested by {inputDirective}");
+                    }
+                }
+                finally
+                {
+                    resolutionMutex.ReleaseMutex();
+                }
             }
 
             _ForPackages.PackageManifest manifest = await _cache.ReadManifestEx(packageReference) ?? throw new Exception("Failed to load package manifest");
