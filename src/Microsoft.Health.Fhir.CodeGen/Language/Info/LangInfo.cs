@@ -184,7 +184,7 @@ public class LangInfo : ILanguage
                 _writer.WriteLineIndented(
                     $"references ({coreBindings.Count()} structures, {coreBindings.Select(ec => ec.Elements.Count).Sum()} elements): " + ReferenceLiteral(coreBindings) +
                     ", strongest binding: " + strongestBinding!.GetLiteral() +
-                    ", by type: " + string.Join(", ", bindingStrengthByType.Select(bs => $"{bs.Key}:{bs.Value}")));
+                    ", by type: " + string.Join(", ", bindingStrengthByType.Select(bs => $"{bs.Key}:{bs.Value}").Order()));
             }
 
             IEnumerable<StructureElementCollection> extendedBindings = _definitions.ExtendedBindingsForVs(vs.Url);
@@ -231,8 +231,7 @@ public class LangInfo : ILanguage
     /// <returns>A string.</returns>
     private string ReferenceLiteral(IEnumerable<StructureElementCollection> ecs)
     {
-        IEnumerable<StructureElementCollection> sorted = ecs.OrderBy(s => s.Structure.Id);
-        return string.Join(", ", sorted.SelectMany(ec => ec.Elements.Select(ed => ed.Path)).Distinct().Order());
+        return string.Join(", ", ecs.SelectMany(ec => ec.Elements.Select(ed => ed.Path)).Distinct().Order());
     }
 
     /// <summary>Build a string for the external structure collections that reference a value set.</summary>
@@ -240,8 +239,7 @@ public class LangInfo : ILanguage
     /// <returns>A string.</returns>
     private string ExternalRefLiteral(IEnumerable<StructureElementCollection> ecs)
     {
-        IEnumerable<StructureElementCollection> sorted = ecs.OrderBy(s => s.Structure.Id);
-        return string.Join(", ", sorted.Select(ec => $"{ec.Structure.Id}({ec.Structure.cgArtifactClass()}) [{string.Join(",", ec.Elements.Select(ed => ed.Path).Distinct().Order())}]"));
+        return string.Join(", ", ecs.Select(ec => $"{ec.Structure.Id}({ec.Structure.cgArtifactClass()}) [{string.Join(",", ec.Elements.Select(ed => ed.Path).Distinct().Order())}]").Order());
     }
 
     /// <summary>Writes an unresolved value sets.</summary>
@@ -270,7 +268,7 @@ public class LangInfo : ILanguage
                 _writer.WriteLineIndented(
                     $"references ({coreBindings.Count()} structures, {coreBindings.Select(ec => ec.Elements.Count).Sum()} elements): " + ReferenceLiteral(coreBindings) +
                     ", strongest binding: " + strongestBinding!.GetLiteral() +
-                    ", by type: " + string.Join(", ", bindingStrengthByType.Select(bs => $"{bs.Key}:{bs.Value}")));
+                    ", by type: " + string.Join(", ", bindingStrengthByType.Select(bs => $"{bs.Key}:{bs.Value}").Order()));
             }
 
             IEnumerable<StructureElementCollection> extendedBindings = _definitions.ExtendedBindingsForVs(url);
@@ -400,13 +398,13 @@ public class LangInfo : ILanguage
                     string profiles = string.Empty;
                     if (et.Profile.Any())
                     {
-                        profiles = "(" + string.Join("|", et.cgTypeProfiles().Keys) + ")";
+                        profiles = "(" + string.Join("|", et.cgTypeProfiles().Keys.Order()) + ")";
                     }
 
                     string targets = string.Empty;
                     if (et.TargetProfile.Any())
                     {
-                        targets = "(" + string.Join("|", et.cgTargetProfiles().Keys) + ")";
+                        targets = "(" + string.Join("|", et.cgTargetProfiles().Keys.Order()) + ")";
                     }
                     propertyType = $"{propertyType}{joiner}{name}{profiles}{targets}";
                 }
@@ -749,13 +747,13 @@ public class LangInfo : ILanguage
                 string profiles = string.Empty;
                 if (et.Profile.Any())
                 {
-                    profiles = "(" + string.Join("|", et.cgTypeProfiles().Keys) + ")";
+                    profiles = "(" + string.Join("|", et.cgTypeProfiles().Keys.Order()) + ")";
                 }
 
                 string targets = string.Empty;
                 if (et.TargetProfile.Any())
                 {
-                    targets = "(" + string.Join("|", et.cgTargetProfiles().Keys) + ")";
+                    targets = "(" + string.Join("|", et.cgTargetProfiles().Keys.Order()) + ")";
                 }
 
                 propertyType = $"{propertyType}{joiner}{et.cgName()}{profiles}{targets}";
@@ -858,13 +856,8 @@ public class LangInfo : ILanguage
         if (codes.Any())
         {
             _writer.IncreaseIndent();
-            _writer.WriteLineIndented($"{{{string.Join("|", codes)}}}");
+            _writer.WriteLineIndented($"{{{string.Join("|", codes.Order())}}}");
             _writer.DecreaseIndent();
-        }
-
-        if (ed.Path == "Observation.category")
-        {
-            System.Console.Write("");
         }
 
         // check for slicing information defined by the current sd
@@ -908,7 +901,7 @@ public class LangInfo : ILanguage
         }
         else
         {
-            _writer.WriteLineIndented($"@Slicing: {ed.Slicing.Rules.GetLiteral()}: {string.Join(", ", ed.Slicing.Discriminator.Select(d => $"{d.Type.GetLiteral()}:{d.Path}"))}");
+            _writer.WriteLineIndented($"@Slicing: {ed.Slicing.Rules.GetLiteral()}: {string.Join(", ", ed.Slicing.Discriminator.Select(d => $"{d.Type.GetLiteral()}:{d.Path}").Order())}");
         }
 
         _writer.IncreaseIndent();
@@ -970,7 +963,7 @@ public class LangInfo : ILanguage
                     switch (discriminator.Value)
                     {
                         case CodeableConcept fcc:
-                            _writer.WriteLineIndented($"- {discriminator.Type} @ {path} = {string.Join(", ", fcc.Coding.Select(c => $"{c.System}|{c.Code}: {c.Display}"))}");
+                            _writer.WriteLineIndented($"- {discriminator.Type} @ {path} = {string.Join(", ", fcc.Coding.Select(c => $"{c.System}|{c.Code}: {c.Display}").Order())}");
                             break;
                         case Coding fcd:
                             _writer.WriteLineIndented($"- {discriminator.Type} @ {path} = {fcd.System}|{fcd.Code}: {fcd.Display}");
@@ -1046,7 +1039,7 @@ public class LangInfo : ILanguage
         InfoOptions config,
         DefinitionCollection definitions)
     {
-        _writer.WriteLine($"Contents of: {string.Join(", ", definitions.Manifests.Select(kvp => kvp.Key))}");
+        _writer.WriteLine($"Contents of: {string.Join(", ", definitions.Manifests.Select(kvp => kvp.Key).Order())}");
         _writer.WriteLine($"  Primitive Naming Style: {NamingConvention.CamelCase}");
         _writer.WriteLine($"  Element Naming Style: {NamingConvention.CamelCase}");
         _writer.WriteLine($"  Complex Type / Resource Naming Style: {NamingConvention.PascalCase}");
@@ -1056,19 +1049,19 @@ public class LangInfo : ILanguage
 
         if (config.LoadStructures.Length != 0)
         {
-            string restrictions = string.Join("|", config.LoadStructures);
+            string restrictions = string.Join("|", config.LoadStructures.Order());
             _writer.WriteLine($"  Load structures: {restrictions}");
         }
 
         if (config.ExportStructures.Length != 0)
         {
-            string restrictions = string.Join("|", config.ExportStructures);
+            string restrictions = string.Join("|", config.ExportStructures.Order());
             _writer.WriteLine($"  Export structures: {restrictions}");
         }
 
         if (config.ExportKeys.Count != 0)
         {
-            string restrictions = string.Join("|", config.ExportKeys);
+            string restrictions = string.Join("|", config.ExportKeys.Order());
             _writer.WriteLine($"  Export keys: {restrictions}");
         }
 

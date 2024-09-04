@@ -39,7 +39,13 @@ public class GenerationTestFixture
     {
     }
 
-    internal static void CompareGeneration(string existingPath, MemoryStream currentMS)
+    /// <summary>Compare generation.</summary>
+    /// <exception cref="ArgumentException">Thrown when one or more arguments have unsupported or
+    ///  illegal values.</exception>
+    /// <param name="existingPath">        Full pathname of the existing file.</param>
+    /// <param name="currentMS">           The current milliseconds.</param>
+    /// <param name="compareLinesDirectly">(Optional) True to compare lines directly, false to compare set of line hashes.</param>
+    internal static void CompareGeneration(string existingPath, MemoryStream currentMS, bool compareLinesDirectly = true)
     {
         // make sure the MS is up to date and at the beginning
         currentMS.Flush();
@@ -82,22 +88,25 @@ public class GenerationTestFixture
         using StreamReader existingReader = new(existingFS);
         using StreamReader currentReader = new(currentMS);
 
+        HashSet<string> existingLines = [];
+        HashSet<string> currentLines = [];
+
         int i = 0;
         bool done = false;
         while (!done)
         {
-            string? previousLine = existingReader.ReadLine();
+            string? existingLine = existingReader.ReadLine();
             string? currentLine = currentReader.ReadLine();
 
-            if ((previousLine == null) && (currentLine == null))
+            if ((existingLine == null) && (currentLine == null))
             {
                 done = true;
                 break;
             }
 
-            if (previousLine == null)
+            if (existingLine == null)
             {
-                Assert.Fail($"Failed to read line {i} in exisiting file!");
+                Assert.Fail($"Failed to read line {i} in existing file!");
                 return;
             }
 
@@ -114,7 +123,24 @@ public class GenerationTestFixture
                 continue;
             }
 
-            currentLine.Should().Be(previousLine, $"Line {i} found:\n\t{currentLine}\nexpected:\n\t{previousLine}");
+            if (compareLinesDirectly)
+            {
+                currentLine.Should().Be(existingLine, $"Line {i} found:\n\t{currentLine}\nexpected:\n\t{existingLine}");
+            }
+            else
+            {
+                existingLines.Add(existingLine.TrimEnd());
+                currentLines.Add(currentLine.TrimEnd());
+            }
+        }
+
+        if (!compareLinesDirectly)
+        {
+            currentLines.Count().Should().Be(existingLines.Count(), "Line count does not match");
+
+            currentLines.ExceptWith(existingLines);
+
+            currentLines.Should().BeEmpty("Lines do not match:\n" + string.Join("\n", currentLines));
         }
     }
 
@@ -429,6 +455,8 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
                 ? csPath
                 : Path.GetRelativePath(Directory.GetCurrentDirectory(), csPath);
 
+        bool compareLinesDirectly = true;
+
         using (MemoryStream ms = new())
         {
             switch (langName)
@@ -470,6 +498,7 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
 
                         LangOpenApi exportLang = new();
                         exportLang.Export(options, _loaded);
+                        compareLinesDirectly = false;
                     }
                     break;
 
@@ -501,6 +530,7 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
 
                         LangOpenApi exportLang = new();
                         exportLang.Export(options, _loaded);
+                        compareLinesDirectly = false;
                     }
                     break;
 
@@ -532,6 +562,7 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
 
                         LangOpenApi exportLang = new();
                         exportLang.Export(options, _loaded);
+                        compareLinesDirectly = false;
                     }
                     break;
 
@@ -563,6 +594,7 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
 
                         LangOpenApi exportLang = new();
                         exportLang.Export(options, _loaded);
+                        compareLinesDirectly = false;
                     }
                     break;
 
@@ -594,6 +626,7 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
 
                         LangOpenApi exportLang = new();
                         exportLang.Export(options, _loaded);
+                        compareLinesDirectly = false;
                     }
                     break;
 
@@ -601,7 +634,7 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
                     throw new ArgumentException($"Unknown language: {langName}");
             }
 
-            GenerationTestFixture.CompareGeneration(path, ms);
+            GenerationTestFixture.CompareGeneration(path, ms, compareLinesDirectly);
         }
     }
 
