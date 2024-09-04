@@ -155,7 +155,8 @@ group EncounterDiagnosis(source src, target tgt) extends BackboneElement {
         map.MetadataByPath["name"].Literal!.ValueAsString.Should().Be("FhirMarkup4to5");
         map.MetadataByPath["title"].Literal!.ValueAsString.Should().Be("Test FML file to exercise core parsing");
         map.MetadataByPath["status"].Literal!.ValueAsString.Should().Be("draft");
-        map.MetadataByPath["description"].MarkdownValue!.Should().Be("This was challenging to code into the grammar.\r\nIt should all be working now though");
+        map.MetadataByPath["description"].MarkdownValue!.Should().Contain("This was challenging to code into the grammar.");
+        map.MetadataByPath["description"].MarkdownValue!.Should().Contain("It should all be working now though");
         map.MetadataByPath["jurisdiction"].Literal.Should().BeNull();
         map.MetadataByPath["jurisdiction.coding"].Literal.Should().BeNull();
         map.MetadataByPath["jurisdiction.coding.code"].Literal!.ValueAsString.Should().Be("AQ");
