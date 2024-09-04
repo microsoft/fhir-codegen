@@ -666,9 +666,6 @@ public class PackageLoader : IDisposable
 
             Guid? syncHandle = null;
 
-            // put package installation in a named sync object so that multiple spawns do not hammer the package server
-            // note that we cannot use a mutex because C# async (await) does not maintain the original thread identity
-            // note that we cannot use a semaphore because .Net does not support named semaphores on all platforms
             try
             {
                 string sName = "fcg-" + packageReference.Moniker;

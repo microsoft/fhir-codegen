@@ -18,6 +18,7 @@ using Microsoft.Health.Fhir.CodeGen.Loader;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGen.Tests.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
+using Newtonsoft.Json.Linq;
 using Xunit.Abstractions;
 
 namespace Microsoft.Health.Fhir.CodeGen.Tests;
@@ -45,7 +46,10 @@ public class GenerationTestFixture
     /// <param name="existingPath">        Full pathname of the existing file.</param>
     /// <param name="currentMS">           The current milliseconds.</param>
     /// <param name="compareLinesDirectly">(Optional) True to compare lines directly, false to compare set of line hashes.</param>
-    internal static void CompareGeneration(string existingPath, MemoryStream currentMS, bool compareLinesDirectly = true)
+    internal static void CompareGeneration(
+        string existingPath,
+        MemoryStream currentMS,
+        bool compareLinesDirectly = true)
     {
         // make sure the MS is up to date and at the beginning
         currentMS.Flush();
@@ -80,6 +84,20 @@ public class GenerationTestFixture
         if (version.Contains('+'))
         {
             version = version.Substring(0, version.IndexOf('+'));
+        }
+
+        if (existingPath.EndsWith(".json", StringComparison.OrdinalIgnoreCase))
+        {
+            JToken expected = JToken.Parse(File.ReadAllText(existingPath));
+
+            byte[] msBytes = new byte[currentMS.Length];
+            currentMS.Read(msBytes).Should().NotBe(0);
+
+            JToken actual = JToken.Parse(System.Text.Encoding.UTF8.GetString(msBytes));
+
+            actual.Should().BeEquivalentTo(expected);
+
+            return;
         }
 
         using FileStream existingFS = new(existingPath, FileMode.Open, FileAccess.Read);
@@ -437,7 +455,7 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
     [InlineData("OpenApi-Yaml-Inline-Detailed-Candle-Filtered", "TestData/Generated/OpenApi-R4-Inline-Detailed-Candle-Filtered.yaml", "TestData/R4/CapabilityStatement-candle-local.json")]
     [Trait("Category", "Generation")]
     [Trait("FhirVersion", "R4")]
-    internal void TestLangR4(string langName, string filePath, string csPath)
+    internal void TestLangR4(string langName, string filePath, string capabilityJsonPath)
     {
         // Get the absolute path to the file
         string path = Path.IsPathRooted(filePath)
@@ -449,11 +467,11 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
             throw new ArgumentException($"Could not find file at path: {path}");
         }
 
-        csPath = string.IsNullOrEmpty(csPath)
+        capabilityJsonPath = string.IsNullOrEmpty(capabilityJsonPath)
             ? string.Empty
-            : Path.IsPathRooted(csPath)
-                ? csPath
-                : Path.GetRelativePath(Directory.GetCurrentDirectory(), csPath);
+            : Path.IsPathRooted(capabilityJsonPath)
+                ? capabilityJsonPath
+                : Path.GetRelativePath(Directory.GetCurrentDirectory(), capabilityJsonPath);
 
         bool compareLinesDirectly = true;
 
@@ -498,18 +516,17 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
 
                         LangOpenApi exportLang = new();
                         exportLang.Export(options, _loaded);
-                        compareLinesDirectly = false;
                     }
                     break;
 
                 case "OpenApi-Json-Inline-None-Candle-Filtered":
                     {
-                        if (string.IsNullOrEmpty(csPath))
+                        if (string.IsNullOrEmpty(capabilityJsonPath))
                         {
                             throw new ArgumentException($"Missing csPath for {langName}");
                         }
 
-                        object? csObj = _fixture.Loader?.ParseContents43("application/fhir+json", csPath);
+                        object? csObj = _fixture.Loader?.ParseContents43("application/fhir+json", capabilityJsonPath);
 
                         CapabilityStatement? cs = csObj is CapabilityStatement c
                             ? c
@@ -530,18 +547,17 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
 
                         LangOpenApi exportLang = new();
                         exportLang.Export(options, _loaded);
-                        compareLinesDirectly = false;
                     }
                     break;
 
                 case "OpenApi-Yaml-Inline-None-Candle-Filtered":
                     {
-                        if (string.IsNullOrEmpty(csPath))
+                        if (string.IsNullOrEmpty(capabilityJsonPath))
                         {
                             throw new ArgumentException($"Missing csPath for {langName}");
                         }
 
-                        object? csObj = _fixture.Loader?.ParseContents43("application/fhir+json", csPath);
+                        object? csObj = _fixture.Loader?.ParseContents43("application/fhir+json", capabilityJsonPath);
 
                         CapabilityStatement? cs = csObj is CapabilityStatement c
                             ? c
@@ -568,12 +584,12 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
 
                 case "OpenApi-Yaml-Inline-Names-Candle-Filtered":
                     {
-                        if (string.IsNullOrEmpty(csPath))
+                        if (string.IsNullOrEmpty(capabilityJsonPath))
                         {
                             throw new ArgumentException($"Missing csPath for {langName}");
                         }
 
-                        object? csObj = _fixture.Loader?.ParseContents43("application/fhir+json", csPath);
+                        object? csObj = _fixture.Loader?.ParseContents43("application/fhir+json", capabilityJsonPath);
 
                         CapabilityStatement? cs = csObj is CapabilityStatement c
                             ? c
@@ -600,12 +616,12 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
 
                 case "OpenApi-Yaml-Inline-Detailed-Candle-Filtered":
                     {
-                        if (string.IsNullOrEmpty(csPath))
+                        if (string.IsNullOrEmpty(capabilityJsonPath))
                         {
                             throw new ArgumentException($"Missing csPath for {langName}");
                         }
 
-                        object? csObj = _fixture.Loader?.ParseContents43("application/fhir+json", csPath);
+                        object? csObj = _fixture.Loader?.ParseContents43("application/fhir+json", capabilityJsonPath);
 
                         CapabilityStatement? cs = csObj is CapabilityStatement c
                             ? c

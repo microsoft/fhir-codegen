@@ -117,7 +117,7 @@ public class InterProcessSync : IDisposable
 
         long maxTicks = DateTime.Now.Ticks + delay;
 
-        while (DateTime.Now.Ticks < delay)
+        while (DateTime.Now.Ticks < maxTicks)
         {
             await Task.Delay(100);
 
@@ -165,7 +165,7 @@ public class InterProcessSync : IDisposable
 
         long maxTicks = DateTime.Now.Ticks + delay;
 
-        while (DateTime.Now.Ticks < delay)
+        while (DateTime.Now.Ticks < maxTicks)
         {
             if (_mutexRequests[handle].State == InterProcessSyncStates.Owned)
             {
@@ -216,11 +216,11 @@ public class InterProcessSync : IDisposable
     /// <summary>
     /// Represents the method that will be executed in the mutex management thread.
     /// </summary>
-    private async void MutexManagementThreadFunc()
+    private void MutexManagementThreadFunc()
     {
         while (!_disposing)
         {
-            await Task.Delay(100);
+            System.Threading.Thread.Sleep(100);
 
             foreach (Guid key in _mutexRequests.Keys)
             {
