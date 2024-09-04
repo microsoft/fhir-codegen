@@ -651,10 +651,12 @@ public class PackageLoader : IDisposable
             // put package installation in a named mutex so that multiple spawns do not hammer the package server
             using (Mutex resolutionMutex = new(initiallyOwned: false, name: "fcg2-" + packageReference.Moniker))
             {
+                bool shouldRelease = false;
+
                 try
                 {
-                    // try to get the resolution mutex for this package - if we do not get it within 30 seconds, something is likely wrong, so try to resolve anyway
-                    _ = resolutionMutex.WaitOne(30 * 1000);
+                    // try to get the resolution mutex for this package - if we do not get it, we can try to resolve anyway - this is just a 'nice' thing to do
+                    shouldRelease = resolutionMutex.WaitOne(60 * 1000);
 
                     bool needsInstall = true;
 
@@ -728,7 +730,10 @@ public class PackageLoader : IDisposable
                 }
                 finally
                 {
-                    resolutionMutex.ReleaseMutex();
+                    if (shouldRelease)
+                    {
+                        resolutionMutex.ReleaseMutex();
+                    }
                 }
             }
 
