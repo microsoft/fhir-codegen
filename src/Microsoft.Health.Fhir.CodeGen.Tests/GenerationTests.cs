@@ -32,44 +32,6 @@ public class GenerationTestFixture
 
     public readonly string? CachePath = null;
 
-    /// <summary>The FHIR R5 package entries.</summary>
-    public readonly string[] EntriesR5 =
-    [
-        "hl7.fhir.r5.core#5.0.0",
-        "hl7.fhir.r5.expansions#5.0.0",
-        "hl7.fhir.uv.extensions#1.0.0",
-    ];
-
-    /// <summary>The FHIR R4B package entries.</summary>
-    public readonly string[] EntriesR4B =
-    [
-        "hl7.fhir.r4b.core#4.3.0",
-        "hl7.fhir.r4b.expansions#4.3.0",
-        "hl7.fhir.uv.extensions#1.0.0",
-    ];
-
-    /// <summary>The FHIR R4 package entries.</summary>
-    public readonly string[] EntriesR4 =
-    [
-        "hl7.fhir.r4.core#4.0.1",
-        "hl7.fhir.r4.expansions#4.0.1",
-        "hl7.fhir.uv.extensions#1.0.0",
-    ];
-
-    /// <summary>The FHIR STU3 package entries.</summary>
-    public readonly string[] EntriesR3 =
-    [
-        "hl7.fhir.r3.core#3.0.2",
-        "hl7.fhir.r3.expansions#3.0.2",
-    ];
-
-    /// <summary>The FHIR DSTU2 package entries.</summary>
-    public readonly string[] EntriesR2 =
-    [
-        "hl7.fhir.r2.core#1.0.2",
-        "hl7.fhir.r2.expansions#1.0.2",
-    ];
-
     /// <summary>
     /// Initializes a new instance of the <see cref="GenerationTestFixture"/> class.
     /// </summary>
@@ -214,7 +176,7 @@ public class GenerationTestsR5 : IClassFixture<GenerationTestFixture>
 
         _fixture.Loader = new(new() { FhirCacheDirectory = _fixture.CachePath });
 
-        DefinitionCollection? loaded = _fixture.Loader.LoadPackages(_fixture.EntriesR5).Result;
+        DefinitionCollection? loaded = _fixture.Loader.LoadPackages(TestCommon.EntriesR5).Result;
 
         loaded.Should().NotBeNull();
 
@@ -319,7 +281,7 @@ public class GenerationTestsR4B : IClassFixture<GenerationTestFixture>
 
         _fixture.Loader = new(new() { FhirCacheDirectory = _fixture.CachePath });
 
-        DefinitionCollection? loaded = _fixture.Loader.LoadPackages(_fixture.EntriesR4B).Result;
+        DefinitionCollection? loaded = _fixture.Loader.LoadPackages(TestCommon.EntriesR4B).Result;
 
         loaded.Should().NotBeNull();
 
@@ -427,7 +389,7 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
 
         _fixture.Loader = new(new() { FhirCacheDirectory = _fixture.CachePath });
 
-        DefinitionCollection? loaded = _fixture.Loader.LoadPackages(_fixture.EntriesR4).Result;
+        DefinitionCollection? loaded = _fixture.Loader.LoadPackages(TestCommon.EntriesR4).Result;
 
         loaded.Should().NotBeNull();
 
@@ -689,7 +651,7 @@ public class GenerationTestsR3 : IClassFixture<GenerationTestFixture>
 
         _fixture.Loader = new(new() { FhirCacheDirectory = _fixture.CachePath });
 
-        DefinitionCollection? loaded = _fixture.Loader.LoadPackages(_fixture.EntriesR3).Result;
+        DefinitionCollection? loaded = _fixture.Loader.LoadPackages(TestCommon.EntriesR3).Result;
 
         loaded.Should().NotBeNull();
 
@@ -792,7 +754,7 @@ public class GenerationTestsR2 : IClassFixture<GenerationTestFixture>
 
         _fixture.Loader = new(new() { FhirCacheDirectory = _fixture.CachePath });
 
-        DefinitionCollection? loaded = _fixture.Loader.LoadPackages(_fixture.EntriesR2).Result;
+        DefinitionCollection? loaded = _fixture.Loader.LoadPackages(TestCommon.EntriesR2).Result;
 
         loaded.Should().NotBeNull();
 

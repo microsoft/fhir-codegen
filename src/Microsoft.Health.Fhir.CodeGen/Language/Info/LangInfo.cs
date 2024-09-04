@@ -862,6 +862,11 @@ public class LangInfo : ILanguage
             _writer.DecreaseIndent();
         }
 
+        if (ed.Path == "Observation.category")
+        {
+            System.Console.Write("");
+        }
+
         // check for slicing information defined by the current sd
         if (_definitions.TryGetSliceNames(ed.Path, out string[]? sliceNames, sd) &&
             (sliceNames != null) &&

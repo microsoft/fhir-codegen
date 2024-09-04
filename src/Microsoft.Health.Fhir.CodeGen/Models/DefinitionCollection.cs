@@ -411,10 +411,10 @@ public partial class DefinitionCollection
                 }
                 else
                 {
-                    if (!slices.Any(sliceDef => sliceDef.Key == ed.SliceName))
-                    {
+                    //if (!slices.Any(sliceDef => sliceDef.Key == ed.SliceName))
+                    //{
                         _pathsWithSlices[ed.Path] = [.. slices, new(ed.SliceName, sd)];
-                    }
+                    //}
                 }
             }
 

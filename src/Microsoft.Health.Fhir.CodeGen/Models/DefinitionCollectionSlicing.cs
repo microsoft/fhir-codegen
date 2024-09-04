@@ -29,31 +29,31 @@ public partial class DefinitionCollection
     public bool TryGetSliceNames(string path, [NotNullWhen(true)] out string[]? slices, StructureDefinition? definedBy = null)
     {
         bool success;
-        KeyValuePair<string, StructureDefinition>[]? sliceDefs;
+        KeyValuePair<string, StructureDefinition>[]? sliceDefinitions;
 
         if (definedBy == null)
         {
-            success = _pathsWithSlices.TryGetValue(path, out sliceDefs);
+            success = _pathsWithSlices.TryGetValue(path, out sliceDefinitions);
 
-            if ((!success) || (sliceDefs == null))
+            if ((!success) || (sliceDefinitions == null))
             {
                 slices = null;
                 return false;
             }
 
-            slices = sliceDefs.Select(kvp => kvp.Key).ToArray();
+            slices = sliceDefinitions.Select(kvp => kvp.Key).ToArray();
             return true;
         }
 
-        success = _pathsWithSlices.TryGetValue(path, out sliceDefs);
+        success = _pathsWithSlices.TryGetValue(path, out sliceDefinitions);
 
-        if ((!success) || (sliceDefs == null))
+        if ((!success) || (sliceDefinitions == null))
         {
             slices = null;
             return false;
         }
 
-        slices = sliceDefs.Where(kvp => kvp.Value.Id == definedBy.Id).Select(kvp => kvp.Key).ToArray();
+        slices = sliceDefinitions.Where(kvp => kvp.Value.Id == definedBy.Id).Select(kvp => kvp.Key).ToArray();
         return true;
     }
 
