@@ -21,6 +21,7 @@ using System.Xml.Linq;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
 using System.Linq;
 using Microsoft.Health.Fhir.CodeGen._ForPackages;
+using Microsoft.Health.Fhir.CodeGen.Utils;
 
 namespace Microsoft.Health.Fhir.CodeGen.Loader;
 
@@ -394,37 +395,50 @@ public class PackageLoader : IDisposable
         return latestRecs.OrderByDescending(v => v.pr.Version).First();
     }
 
-    private async Task<bool> InstallPackage(PackageReference packageReference)
+    /// <summary>
+    /// Installs a package with the specified package reference.
+    /// </summary>
+    /// <param name="packageReference">The package reference.</param>
+    /// <param name="retries">The number of retries.</param>
+    /// <returns><c>true</c> if the package is installed successfully; otherwise, <c>false</c>.</returns>
+    private async Task<bool> InstallPackage(PackageReference packageReference, int retries = 5)
     {
-        foreach (IPackageServer pc in _packageClients)
+        Random r = new();
+
+        for (int i = 0; i < retries; i++)
         {
-            try
+            foreach (IPackageServer pc in _packageClients)
             {
-                if (packageReference.Scope == FhirCiClient.FhirCiScope)
+                try
                 {
-                    if (pc is not FhirCiClient ciClient)
+                    if (packageReference.Scope == FhirCiClient.FhirCiScope)
                     {
-                        // cannot install CI packages from non-CI clients
-                        continue;
+                        if (pc is not FhirCiClient ciClient)
+                        {
+                            // cannot install CI packages from non-CI clients
+                            continue;
+                        }
+
+                        await ciClient.InstallOrUpdate(packageReference, _cache);
+                        return true;
                     }
 
-                    await ciClient.InstallOrUpdate(packageReference, _cache);
+                    // try to download this package
+                    byte[] data = await pc.GetPackage(packageReference);
+
+                    // try to install this package
+                    await _cache.Install(packageReference, data);
+
+                    // only need to install from first hit
                     return true;
                 }
-
-                // try to download this package
-                byte[] data = await pc.GetPackage(packageReference);
-
-                // try to install this package
-                await _cache.Install(packageReference, data);
-
-                // only need to install from first hit
-                return true;
+                catch (Exception)
+                {
+                    // ignore
+                }
             }
-            catch (Exception)
-            {
-                // ignore
-            }
+
+            await System.Threading.Tasks.Task.Delay(500 + (int)(r.NextDouble() * 1000));
         }
 
         return false;
@@ -578,6 +592,8 @@ public class PackageLoader : IDisposable
             return null;
         }
 
+        using InterProcessSync synchronizationObject = new();
+
         // we need to filter structures post parsing if we are not loading all known types
         bool filterStructureDefinitions = !_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.PrimitiveType) ||
                                           !_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.ComplexType) ||
@@ -648,92 +664,92 @@ public class PackageLoader : IDisposable
                 }
             }
 
-            // put package installation in a named mutex so that multiple spawns do not hammer the package server
-            using (Mutex resolutionMutex = new(initiallyOwned: false, name: "fcg2-" + packageReference.Moniker))
+            Guid? syncHandle = null;
+
+            // put package installation in a named sync object so that multiple spawns do not hammer the package server
+            // note that we cannot use a mutex because C# async (await) does not maintain the original thread identity
+            // note that we cannot use a semaphore because .Net does not support named semaphores on all platforms
+            try
             {
-                bool shouldRelease = false;
+                string sName = "fcg-" + packageReference.Moniker;
 
-                try
+                (syncHandle, bool _) = await synchronizationObject.TryGetLock(sName);
+
+                bool needsInstall = true;
+
+                VersionHandlingTypes vht = GetVersionHandlingType(packageReference.Version);
+
+                // do special handling for versions if necessary
+                switch (vht)
                 {
-                    // try to get the resolution mutex for this package - if we do not get it, we can try to resolve anyway - this is just a 'nice' thing to do
-                    shouldRelease = resolutionMutex.WaitOne(60 * 1000);
+                    case VersionHandlingTypes.Latest:
+                        {
+                            // resolve the version via Firely Packages so that we have access to the actual version number
+                            (PackageReference pr, IPackageServer? _) = await ResolveLatest(packageReference.Name);
 
-                    bool needsInstall = true;
-
-                    VersionHandlingTypes vht = GetVersionHandlingType(packageReference.Version);
-
-                    // do special handling for versions if necessary
-                    switch (vht)
-                    {
-                        case VersionHandlingTypes.Latest:
+                            if ((pr == PackageReference.None) || (pr.Name == null))
                             {
-                                // resolve the version via Firely Packages so that we have access to the actual version number
-                                (PackageReference pr, IPackageServer? _) = await ResolveLatest(packageReference.Name);
-
-                                if ((pr == PackageReference.None) || (pr.Name == null))
-                                {
-                                    throw new Exception($"Failed to resolve latest version of {packageReference.Name} ({directive})");
-                                }
-
-                                packageReference = pr;
-                                needsInstall = !(await _cache.IsInstalled(packageReference));
+                                throw new Exception($"Failed to resolve latest version of {packageReference.Name} ({directive})");
                             }
-                            break;
 
-                        case VersionHandlingTypes.Local:
-                            // ensure there is a local build, there is no other source
-                            {
-                                if (!_cache.IsInstalled(packageReference).Result)
-                                {
-                                    throw new Exception($"Local build of {packageReference.Name} is not installed ({directive})");
-                                }
-                            }
-                            break;
-
-                        case VersionHandlingTypes.ContinuousIntegration:
-                            // always trigger install/update for CI builds
-                            needsInstall = true;
-                            break;
-
-                        default:
+                            packageReference = pr;
                             needsInstall = !(await _cache.IsInstalled(packageReference));
-                            break;
-                    }
+                        }
+                        break;
 
-                    // check if we are flagged to load expansions and this is a core package
-                    if (_rootConfiguration.AutoLoadExpansions && FhirPackageUtils.PackageIsFhirCore(packageReference.Name))
-                    {
-                        string expansionPackageName = packageReference.Name.Replace(".core", ".expansions");
-                        string expansionDirective = expansionPackageName + "@" + packageReference.Version;
+                    case VersionHandlingTypes.Local:
+                        // ensure there is a local build, there is no other source
+                        {
+                            if (!_cache.IsInstalled(packageReference).Result)
+                            {
+                                throw new Exception($"Local build of {packageReference.Name} is not installed ({directive})");
+                            }
+                        }
+                        break;
 
-                        Console.WriteLine($"Auto-loading core expansions: {expansionDirective}...");
+                    case VersionHandlingTypes.ContinuousIntegration:
+                        // always trigger install/update for CI builds
+                        needsInstall = true;
+                        break;
 
-                        await LoadPackages([expansionDirective], definitions, requestedFhirVersion);
-                    }
-
-                    // skip if we have already loaded this package
-                    if (definitions.Manifests.ContainsKey(packageReference.Moniker))
-                    {
-                        Console.WriteLine($"Skipping already loaded dependency: {packageReference.Moniker}");
-                        continue;
-                    }
-
-                    Console.WriteLine($"Processing {packageReference.Moniker}...");
-
-                    // check to see if this package needs to be installed
-                    if (needsInstall &&
-                        (await InstallPackage(packageReference) == false))
-                    {
-                        // failed to install
-                        throw new Exception($"Failed to install package {packageReference.Moniker} as requested by {inputDirective}");
-                    }
+                    default:
+                        needsInstall = !(await _cache.IsInstalled(packageReference));
+                        break;
                 }
-                finally
+
+                // check if we are flagged to load expansions and this is a core package
+                if (_rootConfiguration.AutoLoadExpansions && FhirPackageUtils.PackageIsFhirCore(packageReference.Name))
                 {
-                    if (shouldRelease)
-                    {
-                        resolutionMutex.ReleaseMutex();
-                    }
+                    string expansionPackageName = packageReference.Name.Replace(".core", ".expansions");
+                    string expansionDirective = expansionPackageName + "@" + packageReference.Version;
+
+                    Console.WriteLine($"Auto-loading core expansions: {expansionDirective}...");
+
+                    await LoadPackages([expansionDirective], definitions, requestedFhirVersion);
+                }
+
+                // skip if we have already loaded this package
+                if (definitions.Manifests.ContainsKey(packageReference.Moniker))
+                {
+                    Console.WriteLine($"Skipping already loaded dependency: {packageReference.Moniker}");
+                    continue;
+                }
+
+                Console.WriteLine($"Processing {packageReference.Moniker}...");
+
+                // check to see if this package needs to be installed
+                if (needsInstall &&
+                    (await InstallPackage(packageReference) == false))
+                {
+                    // failed to install
+                    throw new Exception($"Failed to install package {packageReference.Moniker} as requested by {inputDirective}");
+                }
+            }
+            finally
+            {
+                if (syncHandle != null)
+                {
+                    synchronizationObject.ReleaseLock(syncHandle.Value);
                 }
             }
 
