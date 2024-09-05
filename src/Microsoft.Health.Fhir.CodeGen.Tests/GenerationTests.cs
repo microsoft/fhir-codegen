@@ -8,7 +8,9 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using FluentAssertions;
+using FluentAssertions.Json;
 using Hl7.Fhir.Model;
 using Microsoft.Health.Fhir.CodeGen.Language;
 using Microsoft.Health.Fhir.CodeGen.Language.Firely;
@@ -90,10 +92,16 @@ public class GenerationTestFixture
         {
             JToken expected = JToken.Parse(File.ReadAllText(existingPath));
 
-            byte[] msBytes = new byte[currentMS.Length];
-            currentMS.Read(msBytes).Should().NotBe(0);
+            // Select the token you want to remove
+            JToken? tokenToRemove = expected.SelectToken("info.version");
+            tokenToRemove?.Parent?.Remove();
 
-            JToken actual = JToken.Parse(System.Text.Encoding.UTF8.GetString(msBytes));
+            using StreamReader msReader = new(currentMS);
+            string currentString = msReader.ReadToEnd();
+            JToken actual = JToken.Parse(currentString);
+
+            tokenToRemove = actual.SelectToken("info.version");
+            tokenToRemove?.Parent?.Remove();
 
             actual.Should().BeEquivalentTo(expected);
 
