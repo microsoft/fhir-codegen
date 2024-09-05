@@ -1527,10 +1527,10 @@ public class PackageComparer
 
                         // Filter out any backbone element props
                         var backboneElementProps = new[] { "id", "extension", "modifierExtension" };
-                        if (elementComparison.Source.Types.Any(t => t.Value.Name == "BackboneElement") && backboneElementProps.Contains(elementComparisonInner.Source.Name))
+                        if (elementComparison.Source.Name != "Element" && elementComparison.Source.Name != "BackboneElement" && elementComparison.Source.Types.Any(t => t.Value.Name == "BackboneElement") && backboneElementProps.Contains(elementComparisonInner.Source.Name))
                             continue;
                         var resourceElementProps = new[] { "id", "extension", "modifierExtension", "meta", "contained", "implicitRules", "language", "text" };
-                        if (!elementComparison.Source.Types.Any() && resourceElementProps.Contains(elementComparisonInner.Source.Name))
+                        if (elementComparison.Source.Name != "DomainResource" && elementComparison.Source.Name != "Resource" && !elementComparison.Source.Types.Any() && resourceElementProps.Contains(elementComparisonInner.Source.Name))
                             continue;
 
 
