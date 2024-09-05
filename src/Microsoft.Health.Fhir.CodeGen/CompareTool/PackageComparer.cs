@@ -1843,7 +1843,7 @@ public class PackageComparer
 
         foreach (ValueSetComparison c in values.Values.SelectMany(vc => vc).OrderBy(c => c.CompositeName))
         {
-            writer.WriteLine($"| {c.CompositeName} | {c.Source.Url} | {c.Target?.Url} | {c.GetStatusString()} | {c.Message} |");
+            writer.WriteLine($"| {c.CompositeName} | {c.Source.Url} | {c.Target?.Url} | {c.GetStatusString()} | {c.Message.ForMdTable()} |");
         }
 
         writer.WriteLine();
@@ -1871,7 +1871,7 @@ public class PackageComparer
 
         foreach (StructureComparison c in values.Values.SelectMany(vc => vc).OrderBy(c => c.CompositeName))
         {
-            writer.WriteLine($"| {c.CompositeName} | {c.Source.Url} | {c.Target?.Url} | {c.GetStatusString()} | {c.Message} |");
+            writer.WriteLine($"| {c.CompositeName} | {c.Source.Url} | {c.Target?.Url} | {c.GetStatusString()} | {c.Message.ForMdTable()} |");
         }
 
         writer.WriteLine();
@@ -1900,7 +1900,7 @@ public class PackageComparer
 
         foreach (PrimitiveTypeComparison c in values.Values.SelectMany(vc => vc).OrderBy(c => c.CompositeName))
         {
-            writer.WriteLine($"| {c.CompositeName} | {c.Source.Name} | {c.Target?.Name ?? "-"} | {c.GetStatusString()} | {c.Message} |");
+            writer.WriteLine($"| {c.CompositeName} | {c.Source.Name} | {c.Target?.Name ?? "-"} | {c.GetStatusString()} | {c.Message.ForMdTable()} |");
         }
 
         writer.WriteLine();
@@ -2036,13 +2036,13 @@ public class PackageComparer
         {
             if (cc.TargetMappings.Count == 0)
             {
-                writer.WriteLine($"| {cc.Source.Code} | - | {cc.GetStatusString()} | {cc.Message} |");
+                writer.WriteLine($"| {cc.Source.Code} | - | {cc.GetStatusString()} | {cc.Message.ForMdTable()} |");
                 continue;
             }
 
             foreach (ConceptComparisonDetails cd in cc.TargetMappings)
             {
-                writer.WriteLine($"| {cc.Source.Code} | {cd.Target?.Code ?? "-"} | {cd.GetStatusString()} | {cd.Message} |");
+                writer.WriteLine($"| {cc.Source.Code} | {cd.Target?.Code ?? "-"} | {cd.GetStatusString()} | {cd.Message.ForMdTable()} |");
             }
         }
 
@@ -2072,13 +2072,13 @@ public class PackageComparer
         {
             if (ec.TargetMappings.Count == 0)
             {
-                writer.WriteLine($"| {ec.Source.Path} | - | {ec.GetStatusString()} | {ec.Message} |");
+                writer.WriteLine($"| {ec.Source.Path} | - | {ec.GetStatusString()} | {ec.Message.ForMdTable()} |");
                 continue;
             }
 
             foreach (ElementComparisonDetails cd in ec.TargetMappings)
             {
-                writer.WriteLine($"| {ec.Source.Path} | {cd.Target?.Path ?? "-"} | {cd.GetStatusString()} | {cd.Message} |");
+                writer.WriteLine($"| {ec.Source.Path} | {cd.Target?.Path ?? "-"} | {cd.GetStatusString()} | {cd.Message.ForMdTable()} |");
             }
         }
 
