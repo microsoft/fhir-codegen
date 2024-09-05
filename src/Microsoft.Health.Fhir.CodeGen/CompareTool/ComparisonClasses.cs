@@ -101,6 +101,7 @@ public record class PrimitiveTypeComparison : ComparisonTopLevelBase<StructureIn
 public record class StructureComparison : ComparisonTopLevelBase<StructureInfoRec>
 {
     public required Dictionary<string, ElementComparison> ElementComparisons { get; init; }
+    public required IEnumerable<KeyValuePair<string, ElementDefinition>> UnmappedProperties { get; init; }
 
     public override string GetStatusString()
     {
