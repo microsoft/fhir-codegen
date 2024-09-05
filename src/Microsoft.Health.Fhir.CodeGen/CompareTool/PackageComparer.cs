@@ -1497,6 +1497,8 @@ public class PackageComparer
                         group.Input[0].Type = srcResourceType + srcVersion.ToRLiteral();
                         group.Input[1].Type = tgtResourceType + tgtVersion.ToRLiteral();
                         group.Extends = "Resource";
+                        if (_source.TryResolveByCanonicalUri(c.Source.Url, out Resource? sd))
+                            group.Extends = (sd as StructureDefinition)?.cgBaseTypeName();
                     }
                     if (elementComparison.Source.Types.Any(t => t.Value.Name == "BackboneElement"))
                     {
