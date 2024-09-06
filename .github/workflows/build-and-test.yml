@@ -34,4 +34,4 @@ jobs:
       run: dotnet build --configuration Release --no-restore --framework net8.0
     
     - name: Test
-      run: dotnet test --no-restore --framework net8.0 --verbosity normal --filter "RequiresExternalRepo!=true" 
+      run: dotnet test --configuration Release --no-restore --framework net8.0 --verbosity normal --filter "RequiresExternalRepo!=true" 
