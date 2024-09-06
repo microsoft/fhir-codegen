@@ -464,6 +464,17 @@ public class PackageComparer
 
             WriteStructureBasedConceptMaps(mapSubDir, packageComparison.Extensions.Values.SelectMany(l => l.Select(s => s)));
         }
+
+        string fmlSubDir = Path.Combine(outputDir, "fml");
+        if (!Directory.Exists(fmlSubDir))
+        {
+            Directory.CreateDirectory(fmlSubDir);
+    }
+
+        // WriteStructureMaps(fmlSubDir, packageComparison.PrimitiveTypes.Values.SelectMany(l => l.Select(s => s)));
+        WriteStructureMaps(fmlSubDir, packageComparison.ComplexTypes.Values.SelectMany(l => l.Select(s => s)));
+        WriteStructureMaps(fmlSubDir, packageComparison.Resources.Values.SelectMany(l => l.Select(s => s)));
+        // WriteStructureMaps(fmlSubDir, packageComparison.Extensions.Values.SelectMany(l => l.Select(s => s)));
     }
 
     public void WriteCrossVersionExtensionArtifacts(PackageComparison packageComparison, string? outputDir = null)
@@ -1402,6 +1413,246 @@ public class PackageComparer
         }
     }
 
+    private void WriteStructureMaps(string outputDir, IEnumerable<StructureComparison> values)
+    {
+        if (_crossVersion == null)
+        {
+            return;
+        }
+
+        foreach (StructureComparison c in values)
+        {
+            ConceptMap? cm = _crossVersion.TryGetSourceStructureElementConceptMap(c);
+            if (cm == null)
+            {
+                continue;
+            }
+
+
+            // only handling maps between canonicals (which should be all of them)
+            if (!(cm.SourceScope is Canonical) || !(cm.TargetScope is Canonical))
+                continue;
+
+            Canonical srcScope = (Canonical)cm.SourceScope;
+            Canonical tgtScope = (Canonical)cm.TargetScope;
+
+            var srcVersion = FhirReleases.FhirVersionToSequence(srcScope.Version ?? "");
+            var tgtVersion = FhirReleases.FhirVersionToSequence(tgtScope.Version ?? "");
+            string? srcResourceType = srcScope.Uri?.Substring(srcScope.Uri.LastIndexOf('/') + 1);
+            string? tgtResourceType = tgtScope.Uri?.Substring(tgtScope.Uri.LastIndexOf('/') + 1);
+            string filename = Path.Combine(outputDir, $"StructureMap-{cm.Id}.json");
+            {
+                if (srcScope.Uri == tgtScope.Uri)
+                    filename = Path.Combine(outputDir, $"{srcResourceType}{srcVersion.ToRLiteral().TrimStart('R')}to{tgtVersion.ToRLiteral().TrimStart('R')}.json");
+            }
+
+            // Create the StructureMap!
+            var sm = new StructureMap();
+            sm.Id = $"{srcResourceType}{srcVersion.ToRLiteral().TrimStart('R')}to{tgtVersion.ToRLiteral().TrimStart('R')}";
+            sm.Status = PublicationStatus.Draft;
+            sm.Name = sm.Id;
+            sm.Url = $"http://hl7.org/fhir/uv/xver/StructureMap/{sm.Id}";
+            sm.Title = $"{c.Source.Name} Transforms: {srcVersion.ToRLiteral()} to {tgtVersion.ToRLiteral()}";
+            sm.Description = c.Message;
+
+            sm.Import = [$"http://hl7.org/fhir/uv/xver/StructureMap/*{srcVersion.ToRLiteral().TrimStart('R')}to{tgtVersion.ToRLiteral().TrimStart('R')}"];
+
+            // Create the uses structures
+            sm.Structure.Add(new StructureMap.StructureComponent()
+            {
+                Mode = StructureMap.StructureMapModelMode.Source,
+                Alias = srcResourceType + srcVersion.ToRLiteral(),
+                Url = srcScope.Uri?.Replace("http://hl7.org/fhir/StructureDefinition/", $"http://hl7.org/fhir/{srcVersion.ToShortVersion()}/StructureDefinition/"),
+            });
+            sm.Structure.Add(new StructureMap.StructureComponent()
+            {
+                Mode = StructureMap.StructureMapModelMode.Target,
+                Alias = tgtResourceType + tgtVersion.ToRLiteral(),
+                Url = tgtScope.Uri?.Replace("http://hl7.org/fhir/StructureDefinition/", $"http://hl7.org/fhir/{tgtVersion.ToShortVersion()}/StructureDefinition/"),
+            });
+
+            // Create the groups
+            var propComparisons = c.ElementComparisons.ToList();
+            // var propComparisons = c.ElementComparisons.OrderBy(kvp => kvp.Key).ToList();
+            foreach ((string path, ElementComparison elementComparison) in propComparisons)
+            {
+                if (elementComparison.Source.Types.Any(t => t.Value.Name == "BackboneElement") || !elementComparison.Source.Path.Contains("."))
+                {
+                    var group = new StructureMap.GroupComponent();
+                    group.Name = String.Join("", elementComparison.Source.Path.Split('.').Select(p => p.Substring(0, 1).ToUpper() + p.Substring(1))); // need to convert the path into a better name than this so you get AccountGuarantor
+                    group.Input.Add(new StructureMap.InputComponent()
+                    {
+                        Mode = StructureMap.StructureMapInputMode.Source,
+                        Name = "src",
+                        // Type = elementComparison.Source.Types
+                    });
+                    group.Input.Add(new StructureMap.InputComponent()
+                    {
+                        Mode = StructureMap.StructureMapInputMode.Target,
+                        Name = "tgt",
+                        // Type = elementComparison.Source.Types
+                    });
+                    if (!elementComparison.Source.Path.Contains("."))
+                    {
+                        group.Input[0].Type = srcResourceType + srcVersion.ToRLiteral();
+                        group.Input[1].Type = tgtResourceType + tgtVersion.ToRLiteral();
+                        group.Extends = "Resource";
+                        if (_source.TryResolveByCanonicalUri(c.Source.Url, out Resource? sd))
+                            group.Extends = (sd as StructureDefinition)?.cgBaseTypeName();
+                    }
+                    if (elementComparison.Source.Types.Any(t => t.Value.Name == "BackboneElement"))
+                    {
+                        group.Extends = "BackboneElement";
+                    }
+                    if (!elementComparison.Source.Types.Any() && !elementComparison.Source.Path.Contains("."))
+                    {
+                        // This is the root type mapping, so can be the default
+                        group.TypeMode = StructureMap.StructureMapGroupTypeMode.TypeAndTypes;
+                    }
+                    sm.Group.Add(group);
+
+                    // Now scan for the properties at this level in the resource
+                    foreach ((string pathInner, ElementComparison elementComparisonInner) in propComparisons)
+                    {
+                        if (!elementComparisonInner.Source.Path.Contains("."))
+                            continue;
+                        if (elementComparisonInner.Source.Types.Any(t => t.Value.Name == "BackboneElement"))
+                        {
+                            // This is the calling of the backbone element copying part
+                            // continue;
+                        }
+
+                        if (!elementComparisonInner.Source.Path.StartsWith($"{path}.") || elementComparisonInner.Source.Path.LastIndexOf(".") > elementComparison.Source.Path.Length)
+                            continue;
+
+                        // Filter out any backbone element props
+                        var backboneElementProps = new[] { "id", "extension", "modifierExtension" };
+                        if (elementComparison.Source.Name != "Element" && elementComparison.Source.Name != "BackboneElement" && elementComparison.Source.Types.Any(t => t.Value.Name == "BackboneElement") && backboneElementProps.Contains(elementComparisonInner.Source.Name))
+                            continue;
+                        var resourceElementProps = new[] { "id", "extension", "modifierExtension", "meta", "contained", "implicitRules", "language", "text" };
+                        if (elementComparison.Source.Name != "DomainResource" && elementComparison.Source.Name != "Resource" && !elementComparison.Source.Types.Any() && resourceElementProps.Contains(elementComparisonInner.Source.Name))
+                            continue;
+
+
+                        if (!elementComparisonInner.TargetMappings.Any())
+                        {
+                            // Add in the rule (for the no map scenario)
+                            var rule = new StructureMap.RuleComponent()
+                            {
+                                Name = elementComparisonInner.Source.Name + "_not_mapped",
+                                Documentation = $"No matching target property detected for {elementComparisonInner.Source.Path}"
+                            };
+                            group.Rule.Add(rule);
+                            // Source
+                            var ruleSource = new StructureMap.SourceComponent()
+                            {
+                                Context = "src",
+                                Element = elementComparisonInner.Source.Name
+                            };
+                            rule.Source.Add(ruleSource);
+                            continue;
+                        }
+
+                        foreach (var targetMapping in elementComparisonInner.TargetMappings)
+                        {
+                            foreach (var sourceType in elementComparisonInner.Source.Types)
+                            {
+                                // Add in the rule
+                                var rule = new StructureMap.RuleComponent()
+                                {
+                                    Name = elementComparisonInner.Source.Name,
+                                };
+                                group.Rule.Add(rule);
+                                // Source
+                                var ruleSource = new StructureMap.SourceComponent()
+                                {
+                                    Context = "src",
+                                    Element = elementComparisonInner.Source.Name
+                                };
+                                rule.Source.Add(ruleSource);
+
+                                var ruleTarget = new StructureMap.TargetComponent()
+                                {
+                                    Context = "tgt",
+                                    Element = targetMapping.Target?.Name
+                                };
+                                rule.Target.Add(ruleTarget);
+
+                                // Check if there are multiple types encountered
+                                if (elementComparisonInner.Source.Types.Count > 1)
+                                {
+                                    ruleSource.Element = ruleSource.Element.Replace("[x]", "");
+                                    ruleSource.Type = sourceType.Key;
+                                    ruleTarget.Element = ruleTarget.Element?.Replace("[x]", "");
+                                    rule.Name = rule.Name.Replace("[x]", sourceType.Key.Substring(0,1).ToUpper() + sourceType.Key.Substring(1));
+
+                                    // Also check that this type is in the target property
+                                    if (!targetMapping.TypeComparisons.ContainsKey(sourceType.Key) || targetMapping.TypeComparisons[sourceType.Key]?.Relationship != CMR.Equivalent)
+                                        rule.Documentation = $"Type mapping issue found for {sourceType.Key} - {targetMapping.TypeComparisons[sourceType.Key]?.Relationship}\n{elementComparisonInner.Message}";
+                                }
+
+                                if (elementComparisonInner.Source.Types.Any(t => t.Value.Name == "BackboneElement"))
+                                {
+                                    // This is the calling of the backbone element copying part
+                                    ruleSource.Variable = "s";
+                                    ruleTarget.Variable = "t";
+                                    rule.Dependent.Add(new StructureMap.DependentComponent()
+                                    {
+                                        Name = String.Join("", elementComparisonInner.Source.Path.Split('.').Select(p => p.Substring(0, 1).ToUpper() + p.Substring(1))),
+                                    });
+                                    rule.Dependent[0].Parameter.Add(new StructureMap.ParameterComponent() { Value = new FhirString("s") });
+                                    rule.Dependent[0].Parameter.Add(new StructureMap.ParameterComponent() { Value = new FhirString("t") });
+                                }
+                                if (targetMapping.Relationship != CMR.Equivalent)
+                                {
+                                    if (!string.IsNullOrEmpty(rule.Documentation))
+                                        rule.Documentation += "\n";
+                                    rule.Documentation += elementComparisonInner.Message;
+                                }
+                            }
+                        }
+                    }
+
+                    // Report a list of properties that are NOT mapped from the target
+                    foreach (var prop in c.UnmappedProperties.Where(ump => ump.Value.Path.StartsWith(elementComparison.Source.Path)))
+                    {
+                        if (!prop.Value.Path.StartsWith($"{path}.") || prop.Value.Path.LastIndexOf(".") > elementComparison.Source.Path.Length)
+                            continue;
+
+                        // Add in the rule (for the no map scenario)
+                        var rule = new StructureMap.RuleComponent()
+                        {
+                            Name = "tgt_" + prop.Value.Path.Replace(elementComparison.Source.Path+".", "") + "_no_source",
+                            Documentation = $"No matching source property detected for {prop.Value.Path}"
+                        };
+                        group.Rule.Add(rule);
+                        // Source
+                        var ruleSource = new StructureMap.SourceComponent()
+                        {
+                            Context = "src"
+                        };
+                        rule.Source.Add(ruleSource);
+                    }
+                }
+            }
+
+            try
+            {
+                var fmlText = Hl7.Fhir.MappingLanguage.StructureMapUtilitiesParse.render(sm);
+                System.IO.File.WriteAllText(filename.Replace(".json", ".fml"), fmlText);
+                //using FileStream fs = new(filename, FileMode.Create, FileAccess.Write);
+                //using Utf8JsonWriter writer = new(fs, new JsonWriterOptions() { Indented = true, });
+                //{
+                //    JsonSerializer.Serialize(writer, sm, _firelySerializerOptions);
+                //}
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error writing {filename}: {ex.Message} {ex.InnerException?.Message}");
+            }
+        }
+    }
+
     private void WriteStructureBasedConceptMaps(string outputDir, IEnumerable<StructureComparison> values)
     {
         if (_crossVersion == null)
@@ -1594,7 +1845,7 @@ public class PackageComparer
 
         foreach (ValueSetComparison c in values.Values.SelectMany(vc => vc).OrderBy(c => c.CompositeName))
         {
-            writer.WriteLine($"| {c.CompositeName} | {c.Source.Url} | {c.Target?.Url} | {c.GetStatusString()} | {c.Message} |");
+            writer.WriteLine($"| {c.CompositeName} | {c.Source.Url} | {c.Target?.Url} | {c.GetStatusString()} | {c.Message.ForMdTable()} |");
         }
 
         writer.WriteLine();
@@ -1622,7 +1873,7 @@ public class PackageComparer
 
         foreach (StructureComparison c in values.Values.SelectMany(vc => vc).OrderBy(c => c.CompositeName))
         {
-            writer.WriteLine($"| {c.CompositeName} | {c.Source.Url} | {c.Target?.Url} | {c.GetStatusString()} | {c.Message} |");
+            writer.WriteLine($"| {c.CompositeName} | {c.Source.Url} | {c.Target?.Url} | {c.GetStatusString()} | {c.Message.ForMdTable()} |");
         }
 
         writer.WriteLine();
@@ -1651,7 +1902,7 @@ public class PackageComparer
 
         foreach (PrimitiveTypeComparison c in values.Values.SelectMany(vc => vc).OrderBy(c => c.CompositeName))
         {
-            writer.WriteLine($"| {c.CompositeName} | {c.Source.Name} | {c.Target?.Name ?? "-"} | {c.GetStatusString()} | {c.Message} |");
+            writer.WriteLine($"| {c.CompositeName} | {c.Source.Name} | {c.Target?.Name ?? "-"} | {c.GetStatusString()} | {c.Message.ForMdTable()} |");
         }
 
         writer.WriteLine();
@@ -1787,13 +2038,13 @@ public class PackageComparer
         {
             if (cc.TargetMappings.Count == 0)
             {
-                writer.WriteLine($"| {cc.Source.Code} | - | {cc.GetStatusString()} | {cc.Message} |");
+                writer.WriteLine($"| {cc.Source.Code} | - | {cc.GetStatusString()} | {cc.Message.ForMdTable()} |");
                 continue;
             }
 
             foreach (ConceptComparisonDetails cd in cc.TargetMappings)
             {
-                writer.WriteLine($"| {cc.Source.Code} | {cd.Target?.Code ?? "-"} | {cd.GetStatusString()} | {cd.Message} |");
+                writer.WriteLine($"| {cc.Source.Code} | {cd.Target?.Code ?? "-"} | {cd.GetStatusString()} | {cd.Message.ForMdTable()} |");
             }
         }
 
@@ -1823,13 +2074,13 @@ public class PackageComparer
         {
             if (ec.TargetMappings.Count == 0)
             {
-                writer.WriteLine($"| {ec.Source.Path} | - | {ec.GetStatusString()} | {ec.Message} |");
+                writer.WriteLine($"| {ec.Source.Path} | - | {ec.GetStatusString()} | {ec.Message.ForMdTable()} |");
                 continue;
             }
 
             foreach (ElementComparisonDetails cd in ec.TargetMappings)
             {
-                writer.WriteLine($"| {ec.Source.Path} | {cd.Target?.Path ?? "-"} | {cd.GetStatusString()} | {cd.Message} |");
+                writer.WriteLine($"| {ec.Source.Path} | {cd.Target?.Path ?? "-"} | {cd.GetStatusString()} | {cd.Message.ForMdTable()} |");
             }
         }
 
@@ -2582,6 +2833,7 @@ public class PackageComparer
                         Relationship = null,
                         Message = $"{e.Path} does not exist in {_targetRLiteral} and has no mapping",
                     }).ToDictionary(e => e.Source.Path),
+                    UnmappedProperties = [],
                 });
             }
         }
@@ -2785,6 +3037,9 @@ public class PackageComparer
 
         CMR? sdRelationship = RelationshipForComparisons(elementComparisons);
 
+        // see what was left over "untouched" in the target
+        IEnumerable<KeyValuePair<string, ElementDefinition>> unmappedTargetProperties = targetElements.Where(te => !targetsMappedToSources.ContainsKey(te.Key));
+
         comparison = new()
         {
             Source = GetInfo(sourceSd),
@@ -2793,7 +3048,14 @@ public class PackageComparer
             ElementComparisons = elementComparisons,
             Relationship = sdRelationship,
             Message = MessageForComparisonRelationship(sdRelationship, sourceSd, targetSd),
+            UnmappedProperties = unmappedTargetProperties
         };
+
+        if (unmappedTargetProperties.Any())
+        {
+            comparison = comparison with { Message = comparison.Message + " - unmapped " + String.Join(", ", unmappedTargetProperties.Select(utp => utp.Key)) };
+        }
+
         return true;
 
 
