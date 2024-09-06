@@ -8,6 +8,7 @@ using System.Data.SqlTypes;
 using System.Diagnostics.CodeAnalysis;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Specification.Navigation;
+using Hl7.Fhir.Utility;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
@@ -17,6 +18,59 @@ namespace Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 
 public static class StructureDefinitionExtensions
 {
+    /// <summary>
+    /// Represents the processing information for a StructureDefinition.
+    /// </summary>
+    public record class StructureProcessingInfo
+    {
+        /// <summary>
+        /// Gets or sets the artifact class.
+        /// </summary>
+        public required FhirArtifactClassEnum ArtifactClass { get; init; }
+
+        /// <summary>
+        /// Gets or sets a flag indicating if the snapshot has been processed.
+        /// </summary>
+        public required bool HasProcessedSnapshot { get; init; }
+
+        /// <summary>
+        /// Gets or sets a flag indicating if the differential has been processed.
+        /// </summary>
+        public required bool HasProcessedDifferential { get; init; }
+    }
+
+    /// <summary>
+    /// Sets the processing information for the specified StructureDefinition.
+    /// </summary>
+    /// <param name="sd">The StructureDefinition.</param>
+    /// <param name="spi">The StructureProcessingInfo.</param>
+    public static void cgSetProcessingInfo(
+        this StructureDefinition sd,
+        StructureProcessingInfo spi)
+    {
+        if (sd.HasAnnotation<StructureProcessingInfo>())
+        {
+            sd.RemoveAnnotations<StructureProcessingInfo>();
+        }
+
+        sd.AddAnnotation(spi);
+    }
+
+    /// <summary>
+    /// Gets the processing information for the specified StructureDefinition.
+    /// </summary>
+    /// <param name="sd">The StructureDefinition.</param>
+    /// <returns>The StructureProcessingInfo if available, otherwise null.</returns>
+    public static StructureProcessingInfo? cgGetProcessingInfo(this StructureDefinition sd)
+    {
+        if (sd.TryGetAnnotation(out StructureProcessingInfo? spi))
+        {
+            return spi;
+        }
+
+        return null;
+    }
+
     /// <summary>A StructureDefinition extension method that cg artifact class.</summary>
     /// <param name="sd">The SD to act on.</param>
     /// <returns>A FhirArtifactClassEnum.</returns>

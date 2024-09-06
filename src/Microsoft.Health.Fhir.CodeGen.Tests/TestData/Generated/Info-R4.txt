@@ -17606,6 +17606,13 @@ Profiles: 48
     - period[0..1]: Period
     - detail[0..*]: Reference(Resource)
   - section[0..*]: BackboneElement constraints: cmp-1, cmp-2
+    @Slicing: closed: pattern:code
+      :procedure
+        - pattern @ Composition.section.code = http://loinc.org|29554-3: Procedure Narrative
+      :medications
+        - pattern @ Composition.section.code = http://loinc.org|29549-3: Medication administered Narrative
+      :plan
+        - pattern @ Composition.section.code = http://loinc.org|18776-5: Plan of treatment (narrative)
     Extensions: 1
     +http://hl7.org/fhir/StructureDefinition/composition-section-subject [0..1]
       - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/composition-section-subject
@@ -23569,14 +23576,14 @@ Value Sets: 1317
   - #expression: Expression
 - ValueSet: http://hl7.org/fhir/ValueSet/composition-attestation-mode|4.0.1 (trial-use FMM: 2) (CompositionAttestationMode)
   references (1 structures, 1 elements): Composition.attester.mode, strongest binding: required, by type: code:Required
-  extensions/profiles (2 structures, 2 elements): strongest binding: required, refs: catalog(Profile) [Composition.attester.mode], clinicaldocument(Profile) [Composition.attester.mode]
+  extensions/profiles (4 structures, 4 elements): strongest binding: required, refs: catalog(Profile) [Composition.attester.mode], clinicaldocument(Profile) [Composition.attester.mode], example-composition(Profile) [Composition.attester.mode], example-section-library(Profile) [Composition.attester.mode]
   - #legal: Legal
   - #official: Official
   - #personal: Personal
   - #professional: Professional
 - ValueSet: http://hl7.org/fhir/ValueSet/composition-status|4.0.1 (trial-use FMM: 3) (CompositionStatus)
   references (2 structures, 2 elements): Composition.status, DocumentReference.docStatus, strongest binding: required, by type: code:Required
-  extensions/profiles (2 structures, 2 elements): strongest binding: required, refs: catalog(Profile) [Composition.status], clinicaldocument(Profile) [Composition.status]
+  extensions/profiles (4 structures, 4 elements): strongest binding: required, refs: catalog(Profile) [Composition.status], clinicaldocument(Profile) [Composition.status], example-composition(Profile) [Composition.status], example-section-library(Profile) [Composition.status]
   - #amended: Amended
   - #entered-in-error: Entered in Error
   - #final: Final
@@ -24850,15 +24857,15 @@ Value Sets: 1317
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/doc-section-codes|4.0.1 (draft FMM: 1) (DocumentSectionCodes)
   references (1 structures, 1 elements): Composition.section.code, strongest binding: example, by type: CodeableConcept:Example
-  extensions/profiles (2 structures, 2 elements): strongest binding: example, refs: catalog(Profile) [Composition.section.code], clinicaldocument(Profile) [Composition.section.code]
+  extensions/profiles (4 structures, 10 elements): strongest binding: example, refs: catalog(Profile) [Composition.section.code], clinicaldocument(Profile) [Composition.section.code], example-composition(Profile) [Composition.section.code], example-section-library(Profile) [Composition.section.code]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/doc-typecodes|4.0.1 (FHIRDocumentTypeCodes)
   references (1 structures, 1 elements): Composition.type, strongest binding: preferred, by type: CodeableConcept:Preferred
-  extensions/profiles (2 structures, 2 elements): strongest binding: preferred, refs: catalog(Profile) [Composition.type], clinicaldocument(Profile) [Composition.type]
+  extensions/profiles (4 structures, 4 elements): strongest binding: preferred, refs: catalog(Profile) [Composition.type], clinicaldocument(Profile) [Composition.type], example-composition(Profile) [Composition.type], example-section-library(Profile) [Composition.type]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/document-classcodes|4.0.1 (draft FMM: 1) (DocumentClassValueSet)
   references (2 structures, 2 elements): Composition.category, DocumentReference.category, strongest binding: example, by type: CodeableConcept:Example
-  extensions/profiles (1 structures, 1 elements): strongest binding: example, refs: clinicaldocument(Profile) [Composition.category]
+  extensions/profiles (3 structures, 3 elements): strongest binding: example, refs: clinicaldocument(Profile) [Composition.category], example-composition(Profile) [Composition.category], example-section-library(Profile) [Composition.category]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/document-mode|4.0.1 (normative FMM: 5) (DocumentMode)
   references (1 structures, 1 elements): CapabilityStatement.document.mode, strongest binding: required, by type: code:Required
@@ -24871,7 +24878,7 @@ Value Sets: 1317
   - #superseded: Superseded
 - ValueSet: http://hl7.org/fhir/ValueSet/document-relationship-type|4.0.1 (trial-use FMM: 3) (DocumentRelationshipType)
   references (2 structures, 2 elements): Composition.relatesTo.code, DocumentReference.relatesTo.code, strongest binding: required, by type: code:Required
-  extensions/profiles (2 structures, 2 elements): strongest binding: required, refs: catalog(Profile) [Composition.relatesTo.code], clinicaldocument(Profile) [Composition.relatesTo.code]
+  extensions/profiles (4 structures, 4 elements): strongest binding: required, refs: catalog(Profile) [Composition.relatesTo.code], clinicaldocument(Profile) [Composition.relatesTo.code], example-composition(Profile) [Composition.relatesTo.code], example-section-library(Profile) [Composition.relatesTo.code]
   - #appends: Appends
   - #replaces: Replaces
   - #signs: Signs
@@ -26358,7 +26365,7 @@ Value Sets: 1317
   - #written: written
 - ValueSet: http://hl7.org/fhir/ValueSet/languages|4.0.1 (trial-use FMM: 3) (CommonLanguages)
   references (149 structures, 157 elements): Account.language, ActivityDefinition.language, AdverseEvent.language, AllergyIntolerance.language, Appointment.language, AppointmentResponse.language, Attachment.language, AuditEvent.language, Basic.language, Binary.language, BiologicallyDerivedProduct.language, BodyStructure.language, Bundle.language, CapabilityStatement.language, CarePlan.language, CareTeam.language, CatalogEntry.language, ChargeItem.language, ChargeItemDefinition.language, Claim.language, ClaimResponse.language, ClaimResponse.processNote.language, ClinicalImpression.language, CodeSystem.concept.designation.language, CodeSystem.language, Communication.language, CommunicationRequest.language, CompartmentDefinition.language, Composition.language, ConceptMap.language, Condition.language, Consent.language, Contract.language, Coverage.language, CoverageEligibilityRequest.language, CoverageEligibilityResponse.language, DetectedIssue.language, Device.language, DeviceDefinition.language, DeviceMetric.language, DeviceRequest.language, DeviceUseStatement.language, DiagnosticReport.language, DocumentManifest.language, DocumentReference.language, DomainResource.language, EffectEvidenceSynthesis.language, Encounter.language, Endpoint.language, EnrollmentRequest.language, EnrollmentResponse.language, EpisodeOfCare.language, EventDefinition.language, Evidence.language, EvidenceVariable.language, ExampleScenario.language, ExplanationOfBenefit.language, ExplanationOfBenefit.processNote.language, FamilyMemberHistory.language, Flag.language, Goal.language, GraphDefinition.language, Group.language, GuidanceResponse.language, HealthcareService.communication, HealthcareService.language, ImagingStudy.language, Immunization.language, ImmunizationEvaluation.language, ImmunizationRecommendation.language, ImplementationGuide.language, InsurancePlan.language, Invoice.language, Library.language, Linkage.language, List.language, Location.language, Measure.language, MeasureReport.language, Media.language, Medication.language, MedicationAdministration.language, MedicationDispense.language, MedicationKnowledge.language, MedicationRequest.language, MedicationStatement.language, MedicinalProduct.language, MedicinalProductAuthorization.language, MedicinalProductContraindication.language, MedicinalProductIndication.language, MedicinalProductIngredient.language, MedicinalProductInteraction.language, MedicinalProductManufactured.language, MedicinalProductPackaged.language, MedicinalProductPharmaceutical.language, MedicinalProductUndesirableEffect.language, MessageDefinition.language, MessageHeader.language, MolecularSequence.language, NamingSystem.language, NutritionOrder.language, Observation.language, ObservationDefinition.language, OperationDefinition.language, OperationOutcome.language, Organization.language, OrganizationAffiliation.language, Parameters.language, Patient.communication.language, Patient.language, PaymentNotice.language, PaymentReconciliation.language, Person.language, PlanDefinition.language, Practitioner.communication, Practitioner.language, PractitionerRole.language, Procedure.language, Provenance.language, Questionnaire.language, QuestionnaireResponse.language, RelatedPerson.communication.language, RelatedPerson.language, RequestGroup.language, ResearchDefinition.language, ResearchElementDefinition.language, ResearchStudy.language, ResearchSubject.language, Resource.language, RiskAssessment.language, RiskEvidenceSynthesis.language, Schedule.language, SearchParameter.language, ServiceRequest.language, Slot.language, Specimen.language, SpecimenDefinition.language, StructureDefinition.language, StructureMap.language, Subscription.language, Substance.language, SubstanceNucleicAcid.language, SubstancePolymer.language, SubstanceProtein.language, SubstanceReferenceInformation.language, SubstanceSourceMaterial.language, SubstanceSpecification.language, SupplyDelivery.language, SupplyRequest.language, Task.language, TerminologyCapabilities.language, TestReport.language, TestScript.language, ValueSet.compose.include.concept.designation.language, ValueSet.language, VerificationResult.language, VisionPrescription.language, strongest binding: preferred, by type: code:Preferred, CodeableConcept:Preferred
-  extensions/profiles (49 structures, 55 elements): strongest binding: preferred, refs: actualgroup(Profile) [Group.language], bmi(Profile) [Observation.language], bodyheight(Profile) [Observation.language], bodytemp(Profile) [Observation.language], bodyweight(Profile) [Observation.language], bp(Profile) [Observation.language], catalog(Profile) [Composition.language], cdshooksguidanceresponse(Profile) [GuidanceResponse.language], cdshooksrequestgroup(Profile) [RequestGroup.language], cdshooksserviceplandefinition(Profile) [PlanDefinition.language], cholesterol(Profile) [Observation.language], clinicaldocument(Profile) [Composition.language], computableplandefinition(Profile) [PlanDefinition.language], cqf-questionnaire(Profile) [Questionnaire.language], cqf-recipientLanguage(Extension) [Extension.value[x]], cqf-systemUserLanguage(Extension) [Extension.value[x]], cqllibrary(Profile) [Library.language], devicemetricobservation(Profile) [Observation.language], devicerequest-patientInstruction(Extension) [Extension.extension.value[x]], diagnosticreport-genetics(Profile) [DiagnosticReport.language], ehrsrle-auditevent(Profile) [AuditEvent.language], ehrsrle-provenance(Profile) [Provenance.language], familymemberhistory-genetic(Profile) [FamilyMemberHistory.language], groupdefinition(Profile) [Group.language], hdlcholesterol(Profile) [Observation.language], headcircum(Profile) [Observation.language], heartrate(Profile) [Observation.language], hlaresult(Profile) [DiagnosticReport.language], language(Extension) [Extension.value[x]], ldlcholesterol(Profile) [Observation.language], lipidprofile(Profile) [DiagnosticReport.language], MetadataResource(LogicalModel) [MetadataResource.language], observation-genetics(Profile) [Observation.language], oxygensat(Profile) [Observation.language], picoelement(Profile) [EvidenceVariable.language], provenance-relevant-history(Profile) [Provenance.language], resprate(Profile) [Observation.language], servicerequest-genetics(Profile) [ServiceRequest.language], shareableactivitydefinition(Profile) [ActivityDefinition.language], shareablecodesystem(Profile) [CodeSystem.concept.designation.language,CodeSystem.language], shareablelibrary(Profile) [Library.language], shareablemeasure(Profile) [Measure.language], shareableplandefinition(Profile) [PlanDefinition.language], shareablevalueset(Profile) [ValueSet.compose.include.concept.designation.language,ValueSet.language], synthesis(Profile) [Evidence.language], translation(Extension) [Extension.extension.value[x]], triglyceride(Profile) [Observation.language], vitalsigns(Profile) [Observation.language], vitalspanel(Profile) [Observation.language]
+  extensions/profiles (51 structures, 57 elements): strongest binding: preferred, refs: actualgroup(Profile) [Group.language], bmi(Profile) [Observation.language], bodyheight(Profile) [Observation.language], bodytemp(Profile) [Observation.language], bodyweight(Profile) [Observation.language], bp(Profile) [Observation.language], catalog(Profile) [Composition.language], cdshooksguidanceresponse(Profile) [GuidanceResponse.language], cdshooksrequestgroup(Profile) [RequestGroup.language], cdshooksserviceplandefinition(Profile) [PlanDefinition.language], cholesterol(Profile) [Observation.language], clinicaldocument(Profile) [Composition.language], computableplandefinition(Profile) [PlanDefinition.language], cqf-questionnaire(Profile) [Questionnaire.language], cqf-recipientLanguage(Extension) [Extension.value[x]], cqf-systemUserLanguage(Extension) [Extension.value[x]], cqllibrary(Profile) [Library.language], devicemetricobservation(Profile) [Observation.language], devicerequest-patientInstruction(Extension) [Extension.extension.value[x]], diagnosticreport-genetics(Profile) [DiagnosticReport.language], ehrsrle-auditevent(Profile) [AuditEvent.language], ehrsrle-provenance(Profile) [Provenance.language], example-composition(Profile) [Composition.language], example-section-library(Profile) [Composition.language], familymemberhistory-genetic(Profile) [FamilyMemberHistory.language], groupdefinition(Profile) [Group.language], hdlcholesterol(Profile) [Observation.language], headcircum(Profile) [Observation.language], heartrate(Profile) [Observation.language], hlaresult(Profile) [DiagnosticReport.language], language(Extension) [Extension.value[x]], ldlcholesterol(Profile) [Observation.language], lipidprofile(Profile) [DiagnosticReport.language], MetadataResource(LogicalModel) [MetadataResource.language], observation-genetics(Profile) [Observation.language], oxygensat(Profile) [Observation.language], picoelement(Profile) [EvidenceVariable.language], provenance-relevant-history(Profile) [Provenance.language], resprate(Profile) [Observation.language], servicerequest-genetics(Profile) [ServiceRequest.language], shareableactivitydefinition(Profile) [ActivityDefinition.language], shareablecodesystem(Profile) [CodeSystem.concept.designation.language,CodeSystem.language], shareablelibrary(Profile) [Library.language], shareablemeasure(Profile) [Measure.language], shareableplandefinition(Profile) [PlanDefinition.language], shareablevalueset(Profile) [ValueSet.compose.include.concept.designation.language,ValueSet.language], synthesis(Profile) [Evidence.language], translation(Extension) [Extension.extension.value[x]], triglyceride(Profile) [Observation.language], vitalsigns(Profile) [Observation.language], vitalspanel(Profile) [Observation.language]
   - #ar: Arabisch
   - #bn: Bengalsk
   - #cs: Tjekkisk
@@ -26439,7 +26446,7 @@ Value Sets: 1317
   - #source: Source of Truth
 - ValueSet: http://hl7.org/fhir/ValueSet/list-empty-reason|4.0.1 (ListEmptyReasons)
   references (2 structures, 2 elements): Composition.section.emptyReason, List.emptyReason, strongest binding: preferred, by type: CodeableConcept:Preferred
-  extensions/profiles (2 structures, 2 elements): strongest binding: preferred, refs: catalog(Profile) [Composition.section.emptyReason], clinicaldocument(Profile) [Composition.section.emptyReason]
+  extensions/profiles (4 structures, 10 elements): strongest binding: preferred, refs: catalog(Profile) [Composition.section.emptyReason], clinicaldocument(Profile) [Composition.section.emptyReason], example-composition(Profile) [Composition.section.emptyReason], example-section-library(Profile) [Composition.section.emptyReason]
   - #closed: Closed
   - #nilknown: Nil Known
   - #notasked: Not Asked
@@ -26467,13 +26474,13 @@ Value Sets: 1317
   - #06: Suspended
 - ValueSet: http://hl7.org/fhir/ValueSet/list-mode|4.0.1 (trial-use FMM: 2) (ListMode)
   references (2 structures, 2 elements): Composition.section.mode, List.mode, strongest binding: required, by type: code:Required
-  extensions/profiles (2 structures, 2 elements): strongest binding: required, refs: catalog(Profile) [Composition.section.mode], clinicaldocument(Profile) [Composition.section.mode]
+  extensions/profiles (4 structures, 10 elements): strongest binding: required, refs: catalog(Profile) [Composition.section.mode], clinicaldocument(Profile) [Composition.section.mode], example-composition(Profile) [Composition.section.mode], example-section-library(Profile) [Composition.section.mode]
   - #changes: Change List
   - #snapshot: Snapshot List
   - #working: Working List
 - ValueSet: http://hl7.org/fhir/ValueSet/list-order|4.0.1 (ListOrderCodes)
   references (2 structures, 2 elements): Composition.section.orderedBy, List.orderedBy, strongest binding: preferred, by type: CodeableConcept:Preferred
-  extensions/profiles (2 structures, 2 elements): strongest binding: preferred, refs: catalog(Profile) [Composition.section.orderedBy], clinicaldocument(Profile) [Composition.section.orderedBy]
+  extensions/profiles (4 structures, 10 elements): strongest binding: preferred, refs: catalog(Profile) [Composition.section.orderedBy], clinicaldocument(Profile) [Composition.section.orderedBy], example-composition(Profile) [Composition.section.orderedBy], example-section-library(Profile) [Composition.section.orderedBy]
   - #alphabetic: Sorted Alphabetically
   - #category: Sorted by Category
   - #entry-date: Sorted by Item Date
@@ -36992,7 +36999,7 @@ Used when there is a need to limit the number of components to the first, the la
   - #SPLY: supply
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-ActCode|2018-08-12 (draft FMM: 1) (v3.ActCode)
   references (3 structures, 3 elements): Composition.event.code, DocumentManifest.type, DocumentReference.context.event, strongest binding: example, by type: CodeableConcept:Example
-  extensions/profiles (2 structures, 2 elements): strongest binding: example, refs: catalog(Profile) [Composition.event.code], clinicaldocument(Profile) [Composition.event.code]
+  extensions/profiles (4 structures, 4 elements): strongest binding: example, refs: catalog(Profile) [Composition.event.code], clinicaldocument(Profile) [Composition.event.code], example-composition(Profile) [Composition.event.code], example-section-library(Profile) [Composition.event.code]
   - #_ActPatientAnnotationType: ActPatientAnnotationType
   - #_ActUSPrivacyLaw: _ActUSPrivacyLaw
   - #_ImmunizationObservationType: ImmunizationObservationType
@@ -39191,7 +39198,7 @@ Used when there is a need to limit the number of components to the first, the la
   - #V: very restricted
 - ValueSet: http://terminology.hl7.org/ValueSet/v3-ConfidentialityClassification|2014-03-26 (trial-use FMM: 2) (v3.ConfidentialityClassification)
   references (1 structures, 1 elements): Composition.confidentiality, strongest binding: required, by type: code:Required
-  extensions/profiles (2 structures, 2 elements): strongest binding: required, refs: catalog(Profile) [Composition.confidentiality], clinicaldocument(Profile) [Composition.confidentiality]
+  extensions/profiles (4 structures, 4 elements): strongest binding: required, refs: catalog(Profile) [Composition.confidentiality], clinicaldocument(Profile) [Composition.confidentiality], example-composition(Profile) [Composition.confidentiality], example-section-library(Profile) [Composition.confidentiality]
   - #L: low
   - #M: moderate
   - #N: normal

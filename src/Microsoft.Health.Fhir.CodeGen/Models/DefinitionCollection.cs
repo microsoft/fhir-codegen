@@ -19,6 +19,7 @@ using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 
 using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
+using static Microsoft.Health.Fhir.CodeGen.FhirExtensions.StructureDefinitionExtensions;
 
 namespace Microsoft.Health.Fhir.CodeGen.Models;
 
@@ -145,15 +146,17 @@ public partial class DefinitionCollection
         bool success = true;
         Hl7.Fhir.Specification.Snapshot.SnapshotGenerator snapshotGenerator = new(this);
 
-        await CreateSnapshots(_complexTypesByName.Values);
-        await CreateSnapshots(_resourcesByName.Values);
-        await CreateSnapshots(_interfacesByName.Values);
-        await CreateSnapshots(_extensionsByUrl.Values);
-        await CreateSnapshots(_profilesByUrl.Values);
+        await CreateSnapshots(FhirArtifactClassEnum.ComplexType, _complexTypesByName.Values);
+        await CreateSnapshots(FhirArtifactClassEnum.Resource, _resourcesByName.Values);
+        await CreateSnapshots(FhirArtifactClassEnum.Interface, _interfacesByName.Values);
+        await CreateSnapshots(FhirArtifactClassEnum.Extension, _extensionsByUrl.Values);
+        await CreateSnapshots(FhirArtifactClassEnum.Profile, _profilesByUrl.Values);
 
         return success;
 
-        async System.Threading.Tasks.Task CreateSnapshots(IEnumerable<StructureDefinition> sds)
+        async System.Threading.Tasks.Task CreateSnapshots(
+            FhirArtifactClassEnum artifactClass,
+            IEnumerable<StructureDefinition> sds)
         {
             foreach (StructureDefinition sd in sds)
             {
@@ -175,7 +178,11 @@ public partial class DefinitionCollection
                 {
                     success = false;
                     Console.WriteLine($"Failed to generate snapshot for {sd.Url} ({sd.Name})");
+                    continue;
                 }
+
+                // reprocess the elements for this structure so that we have the snapshot
+                ProcessElements(artifactClass, sd, FhirSequence);
             }
         }
     }
@@ -356,10 +363,22 @@ public partial class DefinitionCollection
 
         List<string> idByDepth = [];
 
-        Dictionary<string, string> pathTypes = [];
+        HashSet<string> multiTypePaths = [];
+        Dictionary<string, string> singleTypePaths = [];
+
+        StructureProcessingInfo processingInfo = sd.cgGetProcessingInfo() ?? new()
+        {
+            ArtifactClass = artifactClass,
+            HasProcessedSnapshot = false,
+            HasProcessedDifferential = false,
+        };
+
+        IEnumerable<ElementDefinition> elements = processingInfo.HasProcessedSnapshot
+            ? []
+            : sd.Snapshot?.Element ?? [];
 
         // process each element in the snapshot
-        foreach (ElementDefinition ed in sd.Snapshot?.Element ?? Enumerable.Empty<ElementDefinition>())
+        foreach (ElementDefinition ed in elements)
         {
             int lastDot = ed.Path.LastIndexOf('.');
             string parentPath = lastDot == -1 ? ed.Path : ed.Path.Substring(0, lastDot);
@@ -390,7 +409,7 @@ public partial class DefinitionCollection
                 if (parentPath.Contains('.') &&
                     !_parentElementsAndType.ContainsKey(parentPath))
                 {
-                    if (pathTypes.TryGetValue(parentPath, out string? parentType))
+                    if (singleTypePaths.TryGetValue(parentPath, out string? parentType))
                     {
                         _parentElementsAndType.Add(parentPath, parentType);
                     }
@@ -411,10 +430,10 @@ public partial class DefinitionCollection
                 }
                 else
                 {
-                    //if (!slices.Any(sliceDef => sliceDef.Key == ed.SliceName))
-                    //{
+                    if (!slices.Any(sliceDef => (sliceDef.Key == ed.SliceName) && (sliceDef.Value.Id == sd.Id)))
+                    {
                         _pathsWithSlices[ed.Path] = [.. slices, new(ed.SliceName, sd)];
-                    //}
+                    }
                 }
             }
 
@@ -424,12 +443,53 @@ public partial class DefinitionCollection
             // check for a single type and add to the path types dictionary
             if (ed.Type.Count == 1)
             {
-                pathTypes[ed.Path] = ed.Type.First().Code;
+                // check for existing multi-type path
+                if (multiTypePaths.Contains(ed.Path))
+                {
+                    // do nothing
+                }
+                // check to see if there is an existing type for this path
+                else if (singleTypePaths.TryGetValue(ed.Path, out string? existingType))
+                {
+                    // if the existing type is not the same as the current type, it is a polymorphic type
+                    if (existingType != ed.Type.First().Code)
+                    {
+                        // remove from the set
+                        singleTypePaths.Remove(ed.Path);
+                        multiTypePaths.Add(ed.Path);
+                    }
+                }
+                else
+                {
+                    // add this type
+                    singleTypePaths[ed.Path] = ed.Type.First().Code;
+                }
+            }
+            else
+            {
+                // this is a multi-type path
+                _ = multiTypePaths.Add(ed.Path);
             }
         }
 
+        // check to see if we processed a snapshot
+        if (allFieldOrders.Count != 0)
+        {
+            processingInfo = processingInfo with { HasProcessedSnapshot = true };
+
+            // if we just processed the snapshot, process the differential even if it has been processed before
+            elements = sd.Differential?.Element ?? Enumerable.Empty<ElementDefinition>();
+        }
+        else
+        {
+            // only process the differential if we have one that has not been processed
+            elements = processingInfo.HasProcessedDifferential
+                ? []
+                : sd.Differential?.Element ?? [];
+        }
+
         // process each element in the differential
-        foreach (ElementDefinition ed in sd.Differential?.Element ?? Enumerable.Empty<ElementDefinition>())
+        foreach (ElementDefinition ed in elements)
         {
             int lastDot = ed.Path.LastIndexOf('.');
             string parentPath = lastDot == -1 ? ed.Path : ed.Path.Substring(0, lastDot);
@@ -450,7 +510,7 @@ public partial class DefinitionCollection
                 }
             }
 
-            // check if this element has already been processed
+            // check if this element NOT has already been processed in the snapshot
             if (!allFieldOrders.TryGetValue(ed.ElementId, out int fo))
             {
                 fo = allFieldOrders.Count;
@@ -462,7 +522,7 @@ public partial class DefinitionCollection
                     if (parentPath.Contains('.') &&
                         !_parentElementsAndType.ContainsKey(parentPath))
                     {
-                        if (pathTypes.TryGetValue(parentPath, out string? parentType))
+                        if (singleTypePaths.TryGetValue(parentPath, out string? parentType))
                         {
                             _parentElementsAndType.Add(parentPath, parentType);
                         }
@@ -483,7 +543,7 @@ public partial class DefinitionCollection
                     }
                     else
                     {
-                        if (!slices.Any(sliceDef => sliceDef.Key == ed.SliceName))
+                        if (!slices.Any(sliceDef => (sliceDef.Key == ed.SliceName) && (sliceDef.Value.Id == sd.Id)))
                         {
                             _pathsWithSlices[ed.Path] = [.. slices, new(ed.SliceName, sd)];
                         }
@@ -496,12 +556,46 @@ public partial class DefinitionCollection
                 // check for a single type and add to the path types dictionary
                 if (ed.Type.Count == 1)
                 {
-                    pathTypes[ed.Path] = ed.Type.First().Code;
+                    // check for existing multi-type path
+                    if (multiTypePaths.Contains(ed.Path))
+                    {
+                        // do nothing
+                    }
+                    // check to see if there is an existing type for this path
+                    else if (singleTypePaths.TryGetValue(ed.Path, out string? existingType))
+                    {
+                        // if the existing type is not the same as the current type, it is a polymorphic type
+                        if (existingType != ed.Type.First().Code)
+                        {
+                            // remove from the set
+                            singleTypePaths.Remove(ed.Path);
+                            multiTypePaths.Add(ed.Path);
+                        }
+                    }
+                    else
+                    {
+                        // add this type
+                        singleTypePaths[ed.Path] = ed.Type.First().Code;
+                    }
+                }
+                else
+                {
+                    // this is a multi-type path
+                    _ = multiTypePaths.Add(ed.Path);
                 }
             }
 
             ed.cgSetFieldOrder(fo, componentFieldOrder);
         }
+
+        // check to see if we processed a differential
+        if (sd.Differential?.Element.Count > 0)
+        {
+            processingInfo = processingInfo with { HasProcessedDifferential = true };
+        }
+
+        // update our processing info
+        sd.cgSetProcessingInfo(processingInfo);
     }
 
     /// <summary>
