@@ -166,22 +166,20 @@ public partial class DefinitionCollection
                     sd.Snapshot = new StructureDefinition.SnapshotComponent();
                 }
 
-                if (sd.Snapshot.Element.Count != 0)
-                {
-                    // already has elements
-                    continue;
-                }
-
-                sd.Snapshot.Element = await snapshotGenerator.GenerateAsync(sd);
-
+                // a valid snapshot will always have at least the root element
                 if (sd.Snapshot.Element.Count == 0)
                 {
-                    success = false;
-                    Console.WriteLine($"Failed to generate snapshot for {sd.Url} ({sd.Name})");
-                    continue;
+                    sd.Snapshot.Element = await snapshotGenerator.GenerateAsync(sd);
+
+                    if (sd.Snapshot.Element.Count == 0)
+                    {
+                        success = false;
+                        Console.WriteLine($"Failed to generate snapshot for {sd.Url} ({sd.Name})");
+                        continue;
+                    }
                 }
 
-                // reprocess the elements for this structure so that we have the snapshot
+                // reprocess the elements for this structure so that we include the snapshot
                 ProcessElements(artifactClass, sd, FhirSequence);
             }
         }
@@ -376,6 +374,11 @@ public partial class DefinitionCollection
         IEnumerable<ElementDefinition> elements = processingInfo.HasProcessedSnapshot
             ? []
             : sd.Snapshot?.Element ?? [];
+
+        if (sd.Id == "example-section-library")
+        {
+            Console.Write("");
+        }
 
         // process each element in the snapshot
         foreach (ElementDefinition ed in elements)
@@ -726,8 +729,6 @@ public partial class DefinitionCollection
                         }
 
                         matchingElementCollection.Elements.Add(ed);
-
-                        //pathElementCollections = pathElementCollections.Append(matchingElementCollection).ToArray();
                     }
                     break;
 
