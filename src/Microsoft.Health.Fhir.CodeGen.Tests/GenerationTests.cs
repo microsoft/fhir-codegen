@@ -463,7 +463,7 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
     [InlineData("OpenApi-Yaml-Inline-Detailed-Candle-Filtered", "TestData/Generated/OpenApi-R4-Inline-Detailed-Candle-Filtered.yaml", "TestData/R4/CapabilityStatement-candle-local.json")]
     [Trait("Category", "Generation")]
     [Trait("FhirVersion", "R4")]
-    internal void TestLangR4(string langName, string filePath, string capabilityJsonPath)
+    internal void TestLangR4(string langName, string filePath, string? capabilityJsonPath)
     {
         // Get the absolute path to the file
         string path = Path.IsPathRooted(filePath)
