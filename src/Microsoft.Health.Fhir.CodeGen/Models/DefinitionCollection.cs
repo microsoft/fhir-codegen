@@ -375,11 +375,6 @@ public partial class DefinitionCollection
             ? []
             : sd.Snapshot?.Element ?? [];
 
-        if (sd.Id == "example-section-library")
-        {
-            Console.Write("");
-        }
-
         // process each element in the snapshot
         foreach (ElementDefinition ed in elements)
         {
