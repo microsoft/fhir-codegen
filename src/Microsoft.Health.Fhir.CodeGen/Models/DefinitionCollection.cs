@@ -2503,12 +2503,35 @@ public partial class DefinitionCollection
     /// <returns>True if it succeeds, false if it fails.</returns>
     public bool TryGetStructure(string key, [NotNullWhen(true)] out StructureDefinition? sd)
     {
-        return
-            _resourcesByName.TryGetValue(key, out sd) ||
+        if (_resourcesByName.TryGetValue(key, out sd) ||
             _complexTypesByName.TryGetValue(key, out sd) ||
             _primitiveTypesByName.TryGetValue(key, out sd) ||
             _profilesByUrl.TryGetValue(key, out sd) ||
-            _logicalModelsByUrl.TryGetValue(key, out sd);
+            _logicalModelsByUrl.TryGetValue(key, out sd))
+        {
+            return true;
+        }
+
+        string key2;
+        if (key.Contains('/'))
+        {
+            key2 = key.Substring(key.LastIndexOf('/') + 1);
+        }
+        else
+        {
+            key2 = "http://hl7.org/fhir/StructureDefinition/" + key;
+        }
+
+        if (_resourcesByName.TryGetValue(key2, out sd) ||
+            _complexTypesByName.TryGetValue(key2, out sd) ||
+            _primitiveTypesByName.TryGetValue(key2, out sd) ||
+            _profilesByUrl.TryGetValue(key2, out sd) ||
+            _logicalModelsByUrl.TryGetValue(key2, out sd))
+        {
+            return true;
+        }
+
+        return false;
     }
 
     /// <summary>
