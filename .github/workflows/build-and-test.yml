@@ -59,8 +59,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
-        # os: [ubuntu-latest, windows-latest, macOS-latest]
+        # os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest, windows-latest, macOS-latest]
 
     steps:
     - uses: actions/checkout@v4
@@ -75,10 +75,10 @@ jobs:
         enableCrossOsArchive: true
         
     - name: Install dependencies
-      run: dotnet restore
+      run: dotnet restore -a ${{runner.arch}}
       
     - name: Build
-      run: dotnet build --configuration Release --no-restore --framework net8.0
+      run: dotnet build --configuration Release --no-restore --framework net8.0 -a ${{runner.arch}}
     
     - name: Test
-      run: dotnet test --configuration Release --no-restore --framework net8.0 --verbosity normal --filter "RequiresExternalRepo!=true"
+      run: dotnet test --configuration Release --no-restore --framework net8.0 --verbosity normal --filter "RequiresExternalRepo!=true" -a ${{runner.arch}}
