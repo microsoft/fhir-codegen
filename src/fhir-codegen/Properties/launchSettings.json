@@ -90,6 +90,26 @@
             "commandLineArgs": "generate Info --output-path ..\\..\\generated --output-filename Info_R5.txt -p hl7.fhir.r5.core@5.0.0 -p hl7.fhir.r5.expansions#5.0.0",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
+        "Shorthand IG US Core": {
+            "commandName": "Project",
+            "commandLineArgs": "generate ShorthandIg --output-path ..\\..\\temp\\fsh-ig -p hl7.fhir.us.core#6.1.0 --auto-load-expansions --resolve-dependencies true --include-experimental",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "Shorthand IG Extensions Pack": {
+            "commandName": "Project",
+            "commandLineArgs": "generate ShorthandIg --output-path ..\\..\\temp\\fsh-ig -p hl7.fhir.uv.extensions.r4#latest --auto-load-expansions --resolve-dependencies true --include-experimental",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "Shorthand IG NDH": {
+            "commandName": "Project",
+            "commandLineArgs": "generate ShorthandIg --output-path ..\\..\\temp\\fsh-ig -p hl7.fhir.us.ndh#1.0.0-ballot --auto-load-expansions --resolve-dependencies true --include-experimental",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "Shorthand IG SDC": {
+            "commandName": "Project",
+            "commandLineArgs": "generate ShorthandIg --output-path ..\\..\\temp\\fsh-ig -p hl7.fhir.uv.sdc#3.0.0 --auto-load-expansions --resolve-dependencies true --include-experimental",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
         "TypeScript R2": {
             "commandName": "Project",
             "commandLineArgs": "generate TypeScript --output-path ..\\..\\generated --output-filename TypeScript_R2.ts -p hl7.fhir.r2.core#1.0.2 -p hl7.fhir.r2.expansions#1.0.2",

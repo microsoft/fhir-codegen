@@ -668,7 +668,7 @@ public partial class FirelyNetIG : ILanguage
         return CleanName(components.ToPascalCaseWord()) + postfix;
     }
 
-    /// <summary>Writes an extension.</summary>
+    /// <summary>Writes the canonical URL of a conformance resource.</summary>
     /// <param name="sd">The SD.</param>
     private void WriteCanonicalUrl(IConformanceResource cr, PackageData packageData, string name, ExportStreamWriter? writer = null)
     {
