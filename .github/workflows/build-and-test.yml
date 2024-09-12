@@ -75,19 +75,19 @@ jobs:
         enableCrossOsArchive: true
 
     - name: Translate runner.arch to dotnet arch x86
-      if: $runner.arch == 'X86'
+      if: runner.arch == 'X86'
       run: echo "export DOTNET_ARCH=x86" >> $GITHUB_ENV
 
     - name: Translate runner.arch to dotnet arch x64
-      if: $runner.arch == 'X64'
+      if: runner.arch == 'X64'
       run: echo "export DOTNET_ARCH=x64" >> $GITHUB_ENV
 
     - name: Translate runner.arch to dotnet arch ARM
-      if: $runner.arch == 'ARM'
+      if: runner.arch == 'ARM'
       run: echo "export DOTNET_ARCH=arm" >> $GITHUB_ENV
 
     - name: Translate runner.arch to dotnet arch ARM64
-      if: $runner.arch == 'ARM64'
+      if: runner.arch == 'ARM64'
       run: echo "export DOTNET_ARCH=arm64" >> $GITHUB_ENV
 
     - name: Install dependencies, use the dotnet arch
