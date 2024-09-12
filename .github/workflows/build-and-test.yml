@@ -1,7 +1,7 @@
 name: Tests
 # Basics from https://learn.microsoft.com/en-us/dotnet/devops/dotnet-test-github-action
 on:
-  push:
+  # push:
   pull_request:
     branches: [ main-disabled ]
     paths:
