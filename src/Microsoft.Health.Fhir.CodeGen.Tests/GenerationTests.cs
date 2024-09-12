@@ -11,7 +11,6 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using FluentAssertions;
 using FluentAssertions.Json;
-using Hl7.Fhir.Model;
 using Microsoft.Health.Fhir.CodeGen.Language;
 using Microsoft.Health.Fhir.CodeGen.Language.Firely;
 using Microsoft.Health.Fhir.CodeGen.Language.Info;
@@ -25,21 +24,42 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Health.Fhir.CodeGen.Tests;
 
-public class GenerationTestFixture
+public class GenerationTestBase : IDisposable
 {
     /// <summary>True to write generated files.</summary>
-    public static bool WriteGeneratedFiles = false;
+    internal static bool WriteGeneratedFiles = false;
 
-    /// <summary>The package loader.</summary>
-    public PackageLoader? Loader = null;
+    internal const string? CachePath = null;
 
-    public readonly string? CachePath = null;
+    private bool _disposedValue = false;
+
+    public GenerationTestBase()
+    {
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!_disposedValue)
+        {
+            if (disposing)
+            {
+            }
+
+            // TODO: free unmanaged resources (unmanaged objects) and override finalizer
+            // TODO: set large fields to null
+            _disposedValue = true;
+        }
+    }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="GenerationTestFixture"/> class.
+    /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged
+    /// resources.
     /// </summary>
-    public GenerationTestFixture()
+    void IDisposable.Dispose()
     {
+        // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+        Dispose(disposing: true);
+        GC.SuppressFinalize(this);
     }
 
     /// <summary>Compare generation.</summary>
@@ -210,43 +230,22 @@ public class GenerationTestFixture
     }
 }
 
-public class GenerationTestsR5 : IClassFixture<GenerationTestFixture>
+public class GenerationTestsR5 : GenerationTestBase
 {
-    /// <summary>(Immutable) The test output helper.</summary>
-    private readonly ITestOutputHelper _testOutputHelper;
-
-    /// <summary>(Immutable) The fixture.</summary>
-    private readonly GenerationTestFixture _fixture;
-
-    /// <summary>The loaded.</summary>
-    private DefinitionCollection _loaded = null!;
-
-    public GenerationTestsR5(GenerationTestFixture fixture, ITestOutputHelper testOutputHelper)
-    {
-        _testOutputHelper = testOutputHelper;
-        _fixture = fixture;
-
-        _fixture.Loader = new(new() { FhirCacheDirectory = _fixture.CachePath });
-
-        DefinitionCollection? loaded = _fixture.Loader.LoadPackages(TestCommon.EntriesR5).Result;
-
-        loaded.Should().NotBeNull();
-
-        if (loaded == null)
-        {
-            throw new Exception("Failed to load R5");
-        }
-
-        _loaded = loaded;
-    }
-
     [Theory]
     [InlineData("Info", "TestData/Generated/Info-R5.txt")]
     [InlineData("TypeScript", "TestData/Generated/TypeScript-R5.ts")]
     [Trait("Category", "Generation")]
     [Trait("FhirVersion", "R5")]
-    internal void TestLangR5(string langName, string filePath)
+    internal async Task TestLangR5(string langName, string filePath)
     {
+        PackageLoader loader = new(new() { FhirCacheDirectory = CachePath });
+        DefinitionCollection? dc = await loader.LoadPackages(TestCommon.EntriesR5);
+        if (dc == null)
+        {
+            throw new Exception("Failed to load FHIR R5");
+        }
+
         // Get the absolute path to the file
         string path = Path.IsPathRooted(filePath)
             ? filePath
@@ -263,7 +262,7 @@ public class GenerationTestsR5 : IClassFixture<GenerationTestFixture>
                         {
                             WriteStream = ms
                         };
-                        exportLang.Export(options, _loaded);
+                        exportLang.Export(options, dc);
                     }
                     break;
 
@@ -274,14 +273,14 @@ public class GenerationTestsR5 : IClassFixture<GenerationTestFixture>
                         {
                             WriteStream = ms,
                         };
-                        exportLang.Export(options, _loaded);
+                        exportLang.Export(options, dc);
                     }
                     break;
                 default:
                     throw new ArgumentException($"Unknown language: {langName}");
             }
 
-            GenerationTestFixture.CompareGeneration(path, ms);
+            CompareGeneration(path, ms);
         }
     }
 
@@ -292,8 +291,15 @@ public class GenerationTestsR5 : IClassFixture<GenerationTestFixture>
     [Trait("Category", "Generation")]
     [Trait("Comparison", "Hash")]
     [Trait("FhirVersion", "R5")]
-    internal void TestFirelyHashesR5(CSharpFirelyCommon.GenSubset subset, string comparisonFilePath)
+    internal async Task TestFirelyHashesR5(CSharpFirelyCommon.GenSubset subset, string comparisonFilePath)
     {
+        PackageLoader loader = new(new() { FhirCacheDirectory = CachePath });
+        DefinitionCollection? dc = await loader.LoadPackages(TestCommon.EntriesR5);
+        if (dc == null)
+        {
+            throw new Exception("Failed to load FHIR R5");
+        }
+
         // Get the absolute path to the file
         string path = Path.IsPathRooted(comparisonFilePath)
             ? comparisonFilePath
@@ -309,49 +315,28 @@ public class GenerationTestsR5 : IClassFixture<GenerationTestFixture>
 
         langHashTestable.GenerateHashesInsteadOfOutput = true;
 
-        exportLang.Export(options, _loaded);
+        exportLang.Export(options, dc);
 
-        GenerationTestFixture.CompareGenerationHashes(path, langHashTestable.FileHashes);
+        CompareGenerationHashes(path, langHashTestable.FileHashes);
     }
 }
 
-public class GenerationTestsR4B : IClassFixture<GenerationTestFixture>
+public class GenerationTestsR4B : GenerationTestBase
 {
-    /// <summary>(Immutable) The test output helper.</summary>
-    private readonly ITestOutputHelper _testOutputHelper;
-
-    /// <summary>(Immutable) The fixture.</summary>
-    private readonly GenerationTestFixture _fixture;
-
-    /// <summary>The loaded.</summary>
-    private DefinitionCollection _loaded = null!;
-
-    public GenerationTestsR4B(GenerationTestFixture fixture, ITestOutputHelper testOutputHelper)
-    {
-        _testOutputHelper = testOutputHelper;
-        _fixture = fixture;
-
-        _fixture.Loader = new(new() { FhirCacheDirectory = _fixture.CachePath });
-
-        DefinitionCollection? loaded = _fixture.Loader.LoadPackages(TestCommon.EntriesR4B).Result;
-
-        loaded.Should().NotBeNull();
-
-        if (loaded == null)
-        {
-            throw new Exception("Failed to load R4B");
-        }
-
-        _loaded = loaded;
-    }
-
     [Theory]
     [InlineData("Info", "TestData/Generated/Info-R4B.txt")]
     [InlineData("TypeScript", "TestData/Generated/TypeScript-R4B.ts")]
     [Trait("Category", "Generation")]
     [Trait("FhirVersion", "R4B")]
-    internal void TestLangR4B(string langName, string filePath)
+    internal async Task TestLangR4B(string langName, string filePath)
     {
+        PackageLoader loader = new(new() { FhirCacheDirectory = CachePath });
+        DefinitionCollection? dc = await loader.LoadPackages(TestCommon.EntriesR4B);
+        if (dc == null)
+        {
+            throw new Exception("Failed to load FHIR R4B");
+        }
+
         // Get the absolute path to the file
         string path = Path.IsPathRooted(filePath)
             ? filePath
@@ -373,7 +358,7 @@ public class GenerationTestsR4B : IClassFixture<GenerationTestFixture>
                         {
                             WriteStream = ms
                         };
-                        exportLang.Export(options, _loaded);
+                        exportLang.Export(options, dc);
                     }
                     break;
 
@@ -384,14 +369,14 @@ public class GenerationTestsR4B : IClassFixture<GenerationTestFixture>
                         {
                             WriteStream = ms
                         };
-                        exportLang.Export(options, _loaded);
+                        exportLang.Export(options, dc);
                     }
                     break;
                 default:
                     throw new ArgumentException($"Unknown language: {langName}");
             }
 
-            GenerationTestFixture.CompareGeneration(path, ms);
+            CompareGeneration(path, ms);
         }
     }
 
@@ -400,8 +385,15 @@ public class GenerationTestsR4B : IClassFixture<GenerationTestFixture>
     [Trait("Category", "Generation")]
     [Trait("Comparison", "Hash")]
     [Trait("FhirVersion", "R4B")]
-    internal void TestFirelyHashesR4B(CSharpFirelyCommon.GenSubset subset, string comparisonFilePath)
+    internal async Task TestFirelyHashesR4B(CSharpFirelyCommon.GenSubset subset, string comparisonFilePath)
     {
+        PackageLoader loader = new(new() { FhirCacheDirectory = CachePath });
+        DefinitionCollection? dc = await loader.LoadPackages(TestCommon.EntriesR4B);
+        if (dc == null)
+        {
+            throw new Exception("Failed to load FHIR R4B");
+        }
+
         // Get the absolute path to the file
         string path = Path.IsPathRooted(comparisonFilePath)
             ? comparisonFilePath
@@ -417,42 +409,14 @@ public class GenerationTestsR4B : IClassFixture<GenerationTestFixture>
 
         langHashTestable.GenerateHashesInsteadOfOutput = true;
 
-        exportLang.Export(options, _loaded);
+        exportLang.Export(options, dc);
 
-        GenerationTestFixture.CompareGenerationHashes(path, langHashTestable.FileHashes);
+        CompareGenerationHashes(path, langHashTestable.FileHashes);
     }
 }
 
-public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
+public class GenerationTestsR4 : GenerationTestBase
 {
-    /// <summary>(Immutable) The test output helper.</summary>
-    private readonly ITestOutputHelper _testOutputHelper;
-
-    /// <summary>(Immutable) The fixture.</summary>
-    private readonly GenerationTestFixture _fixture;
-
-    /// <summary>The loaded.</summary>
-    private DefinitionCollection _loaded = null!;
-
-    public GenerationTestsR4(GenerationTestFixture fixture, ITestOutputHelper testOutputHelper)
-    {
-        _testOutputHelper = testOutputHelper;
-        _fixture = fixture;
-
-        _fixture.Loader = new(new() { FhirCacheDirectory = _fixture.CachePath });
-
-        DefinitionCollection? loaded = _fixture.Loader.LoadPackages(TestCommon.EntriesR4).Result;
-
-        loaded.Should().NotBeNull();
-
-        if (loaded == null)
-        {
-            throw new Exception("Failed to load R4");
-        }
-
-        _loaded = loaded;
-    }
-
     [Theory]
     [InlineData("Info", "TestData/Generated/Info-R4.txt", "")]
     [InlineData("TypeScript", "TestData/Generated/TypeScript-R4.ts", "")]
@@ -463,8 +427,15 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
     [InlineData("OpenApi-Yaml-Inline-Detailed-Candle-Filtered", "TestData/Generated/OpenApi-R4-Inline-Detailed-Candle-Filtered.yaml", "TestData/R4/CapabilityStatement-candle-local.json")]
     [Trait("Category", "Generation")]
     [Trait("FhirVersion", "R4")]
-    internal void TestLangR4(string langName, string filePath, string? capabilityJsonPath)
+    internal async Task TestLangR4(string langName, string filePath, string? capabilityJsonPath)
     {
+        PackageLoader loader = new(new() { FhirCacheDirectory = CachePath });
+        DefinitionCollection? dc = await loader.LoadPackages(TestCommon.EntriesR4);
+        if (dc == null)
+        {
+            throw new Exception("Failed to load FHIR R4");
+        }
+
         // Get the absolute path to the file
         string path = Path.IsPathRooted(filePath)
             ? filePath
@@ -494,7 +465,7 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
                         {
                             WriteStream = ms
                         };
-                        exportLang.Export(options, _loaded);
+                        exportLang.Export(options, dc);
                     }
                     break;
 
@@ -505,7 +476,7 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
                         {
                             WriteStream = ms
                         };
-                        exportLang.Export(options, _loaded);
+                        exportLang.Export(options, dc);
                     }
                     break;
 
@@ -523,7 +494,7 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
                         };
 
                         LangOpenApi exportLang = new();
-                        exportLang.Export(options, _loaded);
+                        exportLang.Export(options, dc);
                     }
                     break;
 
@@ -534,9 +505,9 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
                             throw new ArgumentException($"Missing csPath for {langName}");
                         }
 
-                        object? csObj = _fixture.Loader?.ParseContents43("application/fhir+json", capabilityJsonPath);
+                        object? csObj = loader.ParseContents43("application/fhir+json", capabilityJsonPath);
 
-                        CapabilityStatement? cs = csObj is CapabilityStatement c
+                        Hl7.Fhir.Model.CapabilityStatement? cs = csObj is Hl7.Fhir.Model.CapabilityStatement c
                             ? c
                             : throw new ArgumentException("Failed to parse CapabilityStatement");
 
@@ -554,7 +525,7 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
                         };
 
                         LangOpenApi exportLang = new();
-                        exportLang.Export(options, _loaded);
+                        exportLang.Export(options, dc);
                     }
                     break;
 
@@ -565,9 +536,9 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
                             throw new ArgumentException($"Missing csPath for {langName}");
                         }
 
-                        object? csObj = _fixture.Loader?.ParseContents43("application/fhir+json", capabilityJsonPath);
+                        object? csObj = loader.ParseContents43("application/fhir+json", capabilityJsonPath);
 
-                        CapabilityStatement? cs = csObj is CapabilityStatement c
+                        Hl7.Fhir.Model.CapabilityStatement? cs = csObj is Hl7.Fhir.Model.CapabilityStatement c
                             ? c
                             : throw new ArgumentException("Failed to parse CapabilityStatement");
 
@@ -585,7 +556,7 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
                         };
 
                         LangOpenApi exportLang = new();
-                        exportLang.Export(options, _loaded);
+                        exportLang.Export(options, dc);
                         compareLinesDirectly = false;
                     }
                     break;
@@ -597,9 +568,9 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
                             throw new ArgumentException($"Missing csPath for {langName}");
                         }
 
-                        object? csObj = _fixture.Loader?.ParseContents43("application/fhir+json", capabilityJsonPath);
+                        object? csObj = loader.ParseContents43("application/fhir+json", capabilityJsonPath);
 
-                        CapabilityStatement? cs = csObj is CapabilityStatement c
+                        Hl7.Fhir.Model.CapabilityStatement? cs = csObj is Hl7.Fhir.Model.CapabilityStatement c
                             ? c
                             : throw new ArgumentException("Failed to parse CapabilityStatement");
 
@@ -617,7 +588,7 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
                         };
 
                         LangOpenApi exportLang = new();
-                        exportLang.Export(options, _loaded);
+                        exportLang.Export(options, dc);
                         compareLinesDirectly = false;
                     }
                     break;
@@ -629,9 +600,9 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
                             throw new ArgumentException($"Missing csPath for {langName}");
                         }
 
-                        object? csObj = _fixture.Loader?.ParseContents43("application/fhir+json", capabilityJsonPath);
+                        object? csObj = loader.ParseContents43("application/fhir+json", capabilityJsonPath);
 
-                        CapabilityStatement? cs = csObj is CapabilityStatement c
+                        Hl7.Fhir.Model.CapabilityStatement? cs = csObj is Hl7.Fhir.Model.CapabilityStatement c
                             ? c
                             : throw new ArgumentException("Failed to parse CapabilityStatement");
 
@@ -649,7 +620,7 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
                         };
 
                         LangOpenApi exportLang = new();
-                        exportLang.Export(options, _loaded);
+                        exportLang.Export(options, dc);
                         compareLinesDirectly = false;
                     }
                     break;
@@ -658,7 +629,7 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
                     throw new ArgumentException($"Unknown language: {langName}");
             }
 
-            GenerationTestFixture.CompareGeneration(path, ms, compareLinesDirectly);
+            CompareGeneration(path, ms, compareLinesDirectly);
         }
     }
 
@@ -667,8 +638,15 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
     [Trait("Category", "Generation")]
     [Trait("Comparison", "Hash")]
     [Trait("FhirVersion", "R4")]
-    internal void TestFirelyHashesR4(CSharpFirelyCommon.GenSubset subset, string comparisonFilePath)
+    internal async Task TestFirelyHashesR4(CSharpFirelyCommon.GenSubset subset, string comparisonFilePath)
     {
+        PackageLoader loader = new(new() { FhirCacheDirectory = CachePath });
+        DefinitionCollection? dc = await loader.LoadPackages(TestCommon.EntriesR4);
+        if (dc == null)
+        {
+            throw new Exception("Failed to load FHIR R4");
+        }
+
         // Get the absolute path to the file
         string path = Path.IsPathRooted(comparisonFilePath)
             ? comparisonFilePath
@@ -684,49 +662,28 @@ public class GenerationTestsR4 : IClassFixture<GenerationTestFixture>
 
         langHashTestable.GenerateHashesInsteadOfOutput = true;
 
-        exportLang.Export(options, _loaded);
+        exportLang.Export(options, dc);
 
-        GenerationTestFixture.CompareGenerationHashes(path, langHashTestable.FileHashes);
+        CompareGenerationHashes(path, langHashTestable.FileHashes);
     }
 }
 
-public class GenerationTestsR3 : IClassFixture<GenerationTestFixture>
+public class GenerationTestsR3 : GenerationTestBase
 {
-    /// <summary>(Immutable) The test output helper.</summary>
-    private readonly ITestOutputHelper _testOutputHelper;
-
-    /// <summary>(Immutable) The fixture.</summary>
-    private readonly GenerationTestFixture _fixture;
-
-    /// <summary>The loaded.</summary>
-    private DefinitionCollection _loaded = null!;
-
-    public GenerationTestsR3(GenerationTestFixture fixture, ITestOutputHelper testOutputHelper)
-    {
-        _testOutputHelper = testOutputHelper;
-        _fixture = fixture;
-
-        _fixture.Loader = new(new() { FhirCacheDirectory = _fixture.CachePath });
-
-        DefinitionCollection? loaded = _fixture.Loader.LoadPackages(TestCommon.EntriesR3).Result;
-
-        loaded.Should().NotBeNull();
-
-        if (loaded == null)
-        {
-            throw new Exception("Failed to load STU3");
-        }
-
-        _loaded = loaded;
-    }
-
     [Theory]
     [InlineData("Info", "TestData/Generated/Info-R3.txt")]
     [InlineData("TypeScript", "TestData/Generated/TypeScript-R3.ts")]
     [Trait("Category", "Generation")]
     [Trait("FhirVersion", "R3")]
-    internal void TestLangR3(string langName, string filePath)
+    internal async Task TestLangR3(string langName, string filePath)
     {
+        PackageLoader loader = new(new() { FhirCacheDirectory = CachePath });
+        DefinitionCollection? dc = await loader.LoadPackages(TestCommon.EntriesR3);
+        if (dc == null)
+        {
+            throw new Exception("Failed to load FHIR R3");
+        }
+
         // Get the absolute path to the file
         string path = Path.IsPathRooted(filePath)
             ? filePath
@@ -743,7 +700,7 @@ public class GenerationTestsR3 : IClassFixture<GenerationTestFixture>
                         {
                             WriteStream = ms
                         };
-                        exportLang.Export(options, _loaded);
+                        exportLang.Export(options, dc);
                     }
                     break;
 
@@ -754,14 +711,14 @@ public class GenerationTestsR3 : IClassFixture<GenerationTestFixture>
                         {
                             WriteStream = ms
                         };
-                        exportLang.Export(options, _loaded);
+                        exportLang.Export(options, dc);
                     }
                     break;
                 default:
                     throw new ArgumentException($"Unknown language: {langName}");
             }
 
-            GenerationTestFixture.CompareGeneration(path, ms);
+            CompareGeneration(path, ms);
         }
     }
 
@@ -770,8 +727,15 @@ public class GenerationTestsR3 : IClassFixture<GenerationTestFixture>
     [Trait("Category", "Generation")]
     [Trait("Comparison", "Hash")]
     [Trait("FhirVersion", "R3")]
-    internal void TestFirelyHashesR3(CSharpFirelyCommon.GenSubset subset, string comparisonFilePath)
+    internal async Task TestFirelyHashesR3(CSharpFirelyCommon.GenSubset subset, string comparisonFilePath)
     {
+        PackageLoader loader = new(new() { FhirCacheDirectory = CachePath });
+        DefinitionCollection? dc = await loader.LoadPackages(TestCommon.EntriesR3);
+        if (dc == null)
+        {
+            throw new Exception("Failed to load FHIR R3");
+        }
+
         // Get the absolute path to the file
         string path = Path.IsPathRooted(comparisonFilePath)
             ? comparisonFilePath
@@ -787,49 +751,28 @@ public class GenerationTestsR3 : IClassFixture<GenerationTestFixture>
 
         langHashTestable.GenerateHashesInsteadOfOutput = true;
 
-        exportLang.Export(options, _loaded);
+        exportLang.Export(options, dc);
 
-        GenerationTestFixture.CompareGenerationHashes(path, langHashTestable.FileHashes);
+        CompareGenerationHashes(path, langHashTestable.FileHashes);
     }
 }
 
-public class GenerationTestsR2 : IClassFixture<GenerationTestFixture>
+public class GenerationTestsR2 : GenerationTestBase
 {
-    /// <summary>(Immutable) The test output helper.</summary>
-    private readonly ITestOutputHelper _testOutputHelper;
-
-    /// <summary>(Immutable) The fixture.</summary>
-    private readonly GenerationTestFixture _fixture;
-
-    /// <summary>The loaded.</summary>
-    private DefinitionCollection _loaded = null!;
-
-    public GenerationTestsR2(GenerationTestFixture fixture, ITestOutputHelper testOutputHelper)
-    {
-        _testOutputHelper = testOutputHelper;
-        _fixture = fixture;
-
-        _fixture.Loader = new(new() { FhirCacheDirectory = _fixture.CachePath });
-
-        DefinitionCollection? loaded = _fixture.Loader.LoadPackages(TestCommon.EntriesR2).Result;
-
-        loaded.Should().NotBeNull();
-
-        if (loaded == null)
-        {
-            throw new Exception("Failed to load DSTU2");
-        }
-
-        _loaded = loaded;
-    }
-
     [Theory]
     [InlineData("Info", "TestData/Generated/Info-R2.txt")]
     [InlineData("TypeScript", "TestData/Generated/TypeScript-R2.ts")]
     [Trait("Category", "Generation")]
     [Trait("FhirVersion", "R2")]
-    internal void TestLangR2(string langName, string filePath)
+    internal async Task TestLangR2(string langName, string filePath)
     {
+        PackageLoader loader = new(new() { FhirCacheDirectory = CachePath });
+        DefinitionCollection? dc = await loader.LoadPackages(TestCommon.EntriesR2);
+        if (dc == null)
+        {
+            throw new Exception("Failed to load FHIR R2");
+        }
+
         // Get the absolute path to the file
         string path = Path.IsPathRooted(filePath)
             ? filePath
@@ -848,7 +791,7 @@ public class GenerationTestsR2 : IClassFixture<GenerationTestFixture>
                         {
                             WriteStream = ms
                         };
-                        exportLang.Export(options, _loaded);
+                        exportLang.Export(options, dc);
                     }
                     break;
 
@@ -859,14 +802,14 @@ public class GenerationTestsR2 : IClassFixture<GenerationTestFixture>
                         {
                             WriteStream = ms
                         };
-                        exportLang.Export(options, _loaded);
+                        exportLang.Export(options, dc);
                     }
                     break;
                 default:
                     throw new ArgumentException($"Unknown language: {langName}");
             }
 
-            GenerationTestFixture.CompareGeneration(path, ms);
+            CompareGeneration(path, ms);
         }
     }
 }

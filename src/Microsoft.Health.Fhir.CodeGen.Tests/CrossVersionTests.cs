@@ -35,7 +35,7 @@ public class CrossVersionTests
         return DirectoryContentsAttribute.FindRelativeDir(string.Empty, path, true);
     }
 
-    [Theory(DisplayName = "TestLoadingFml")]
+    [Theory(DisplayName = "TestLoadingFml", Skip = "Tests require external repo - run manually if desired")]
     [Trait("Category", "FML")]
     [Trait("RequiresExternalRepo", "true")]
     [Trait("ExternalRepo", "HL7/fhir-cross-version")]
@@ -126,7 +126,7 @@ public class CrossVersionTests
         return null!;
     }
 
-    [Theory(DisplayName = "ValidateCrossVersionMaps")]
+    [Theory(DisplayName = "ValidateCrossVersionMaps", Skip = "Tests are used to test FML, not this project - run manually if desired")]
     [Trait("Category", "FML")]
     [Trait("RequiresExternalRepo", "true")]
     [Trait("ExternalRepo", "HL7/fhir-cross-version")]
@@ -349,7 +349,7 @@ public class CrossVersionTests
         Assert.True(errorCount == 0 && warningCount == 0, $"FML Errors: {errorCount}, Warnings: {warningCount}");
     }
 
-    [Theory(DisplayName = "CheckFmlMissingProps")]
+    [Theory(DisplayName = "CheckFmlMissingProps", Skip = "Tests are used to test FML, not this project - run manually if desired")]
     [Trait("Category", "FML")]
     [Trait("RequiresExternalRepo", "true")]
     [Trait("ExternalRepo", "HL7/fhir-cross-version")]

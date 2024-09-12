@@ -14,22 +14,50 @@ using Xunit.Sdk;
 namespace Microsoft.Health.Fhir.CodeGen.Tests;
 
 /// <summary>A FHIR package test fixture.</summary>
-public class FhirPackageTestFixture
+public class FhirPackageTestBase : IDisposable
 {
-    public readonly string? CachePath = null;
+    public const string? CachePath = null;
+
+    private bool _disposedValue = false;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="FhirPackageTestFixture"/> class.
+    /// Initializes a new instance of the <see cref="FhirPackageTestBase"/> class.
     /// </summary>
-    public FhirPackageTestFixture()
+    public FhirPackageTestBase()
     {
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!_disposedValue)
+        {
+            if (disposing)
+            {
+                // TODO: dispose managed state (managed objects)
+            }
+
+            // TODO: free unmanaged resources (unmanaged objects) and override finalizer
+            // TODO: set large fields to null
+            _disposedValue = true;
+        }
+    }
+
+    /// <summary>
+    /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged
+    /// resources.
+    /// </summary>
+    void IDisposable.Dispose()
+    {
+        // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+        Dispose(disposing: true);
+        GC.SuppressFinalize(this);
     }
 }
 
 /// <summary>
 /// Represents a test fixture for FHIR package tests.
 /// </summary>
-public class FhirPackageTestsR5 : IClassFixture<FhirPackageTestFixture>
+public class FhirPackageTestsR5 : FhirPackageTestBase
 {
     private int _countCodeSystemsByUrl = TestCommon.EntriesR4.Length == 1 ? 448 : 485;              // 448 in core, 485 in +extensions
     private int _countValueSetsByUrl = TestCommon.EntriesR4.Length == 1 ? 827 : 887;
@@ -45,22 +73,9 @@ public class FhirPackageTestsR5 : IClassFixture<FhirPackageTestFixture>
     private int _countImplementationGuidesByUrl = TestCommon.EntriesR4.Length == 1 ? 2 : 3;         // 2 in core, 3 in +extensions
     private int _countCompartmentsByUrl = 6;
 
-    /// <summary>
-    /// The test output helper.
-    /// </summary>
-    private readonly ITestOutputHelper _testOutputHelper;
-
-    private readonly FhirPackageTestFixture _fixture;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="FhirPackageTestsR5"/> class.
-    /// </summary>
-    /// <param name="fixture">The fixture.</param>
-    /// <param name="testOutputHelper">The test output helper.</param>
-    public FhirPackageTestsR5(FhirPackageTestFixture fixture, ITestOutputHelper testOutputHelper)
+    /// <summary>Initializes a new instance of the <see cref="FhirPackageTestsR5"/> class.</summary>
+    public FhirPackageTestsR5() : base()
     {
-        _testOutputHelper = testOutputHelper;
-        _fixture = fixture;
     }
 
     /// <summary>
@@ -76,8 +91,7 @@ public class FhirPackageTestsR5 : IClassFixture<FhirPackageTestFixture>
     [Trait("DefaultCache", "true")]
     internal async Task ParseCorePackage(LoaderOptions.JsonDeserializationModel jsonModel)
     {
-        PackageLoader loader = new(new() { FhirCacheDirectory = _fixture.CachePath }, new() { JsonModel = jsonModel });
-
+        PackageLoader loader = new(new() { FhirCacheDirectory = CachePath }, new() { JsonModel = jsonModel });
         DefinitionCollection? loaded = await loader.LoadPackages(TestCommon.EntriesR5);
 
         loaded.Should().NotBeNull();
@@ -103,7 +117,7 @@ public class FhirPackageTestsR5 : IClassFixture<FhirPackageTestFixture>
     }
 }
 
-public class FhirPackageTestsR4B : IClassFixture<FhirPackageTestFixture>
+public class FhirPackageTestsR4B : FhirPackageTestBase
 {
     private int _countCodeSystemsByUrl = TestCommon.EntriesR4.Length == 1 ? 540 : 565;
     private int _countValueSetsByUrl = TestCommon.EntriesR4.Length == 1 ? 745 : 805;
@@ -119,22 +133,9 @@ public class FhirPackageTestsR4B : IClassFixture<FhirPackageTestFixture>
     private int _countImplementationGuidesByUrl = TestCommon.EntriesR4.Length == 1 ? 1 : 2;
     private int _countCompartmentsByUrl = 6;
 
-    /// <summary>
-    /// The test output helper.
-    /// </summary>
-    private readonly ITestOutputHelper _testOutputHelper;
-
-    private readonly FhirPackageTestFixture _fixture;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="FhirPackageTestsR5"/> class.
-    /// </summary>
-    /// <param name="fixture">The fixture.</param>
-    /// <param name="testOutputHelper">The test output helper.</param>
-    public FhirPackageTestsR4B(FhirPackageTestFixture fixture, ITestOutputHelper testOutputHelper)
+    /// <summary>Initializes a new instance of the <see cref="FhirPackageTestsR4B"/> class.</summary>
+    public FhirPackageTestsR4B() : base()
     {
-        _testOutputHelper = testOutputHelper;
-        _fixture = fixture;
     }
 
     /// <summary>
@@ -148,8 +149,7 @@ public class FhirPackageTestsR4B : IClassFixture<FhirPackageTestFixture>
     [Trait("DefaultCache", "true")]
     internal async Task ParseCorePackage()
     {
-        PackageLoader loader = new(new() { FhirCacheDirectory = _fixture.CachePath }, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
-
+        PackageLoader loader = new(new() { FhirCacheDirectory = CachePath }, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
         DefinitionCollection? loaded = await loader.LoadPackages(TestCommon.EntriesR4B);
 
         loaded.Should().NotBeNull();
@@ -175,7 +175,7 @@ public class FhirPackageTestsR4B : IClassFixture<FhirPackageTestFixture>
     }
 }
 
-public class FhirPackageTestsR4 : IClassFixture<FhirPackageTestFixture>
+public class FhirPackageTestsR4 : FhirPackageTestBase
 {
     private int _countCodeSystemsByUrl = TestCommon.EntriesR4.Length == 1 ? 1062 : 1090;
     private int _countValueSetsByUrl = TestCommon.EntriesR4.Length == 1 ? 1317 : 1377;
@@ -191,22 +191,9 @@ public class FhirPackageTestsR4 : IClassFixture<FhirPackageTestFixture>
     private int _countImplementationGuidesByUrl = TestCommon.EntriesR4.Length == 1 ? 0 : 1;
     private int _countCompartmentsByUrl = 6;
 
-    /// <summary>
-    /// The test output helper.
-    /// </summary>
-    private readonly ITestOutputHelper _testOutputHelper;
-
-    private readonly FhirPackageTestFixture _fixture;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="FhirPackageTestsR4"/> class.
-    /// </summary>
-    /// <param name="fixture">The fixture.</param>
-    /// <param name="testOutputHelper">The test output helper.</param>
-    public FhirPackageTestsR4(FhirPackageTestFixture fixture, ITestOutputHelper testOutputHelper)
+    /// <summary>Initializes a new instance of the <see cref="FhirPackageTestsR4"/> class.</summary>
+    public FhirPackageTestsR4() : base()
     {
-        _testOutputHelper = testOutputHelper;
-        _fixture = fixture;
     }
 
     /// <summary>
@@ -220,8 +207,7 @@ public class FhirPackageTestsR4 : IClassFixture<FhirPackageTestFixture>
     [Trait("DefaultCache", "true")]
     internal async Task ParseCorePackage()
     {
-        PackageLoader loader = new(new() { FhirCacheDirectory = _fixture.CachePath }, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
-
+        PackageLoader loader = new(new() { FhirCacheDirectory = CachePath }, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
         DefinitionCollection? loaded = await loader.LoadPackages(TestCommon.EntriesR4);
 
         loaded.Should().NotBeNull();
@@ -247,7 +233,7 @@ public class FhirPackageTestsR4 : IClassFixture<FhirPackageTestFixture>
     }
 }
 
-public class FhirPackageTestsR3 : IClassFixture<FhirPackageTestFixture>
+public class FhirPackageTestsR3 : FhirPackageTestBase
 {
     private const int _countCodeSystemsByUrl = 941;
     private const int _countValueSetsByUrl = 1154;
@@ -263,22 +249,9 @@ public class FhirPackageTestsR3 : IClassFixture<FhirPackageTestFixture>
     private const int _countImplementationGuidesByUrl = 2;
     private const int _countCompartmentsByUrl = 6;
 
-    /// <summary>
-    /// The test output helper.
-    /// </summary>
-    private readonly ITestOutputHelper _testOutputHelper;
-
-    private readonly FhirPackageTestFixture _fixture;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="FhirPackageTestsR3"/> class.
-    /// </summary>
-    /// <param name="fixture">The fixture.</param>
-    /// <param name="testOutputHelper">The test output helper.</param>
-    public FhirPackageTestsR3(FhirPackageTestFixture fixture, ITestOutputHelper testOutputHelper)
+    /// <summary>Initializes a new instance of the <see cref="FhirPackageTestsR3"/> class.</summary>
+    public FhirPackageTestsR3() : base()
     {
-        _testOutputHelper = testOutputHelper;
-        _fixture = fixture;
     }
 
     /// <summary>
@@ -292,8 +265,7 @@ public class FhirPackageTestsR3 : IClassFixture<FhirPackageTestFixture>
     [Trait("DefaultCache", "true")]
     internal async Task ParseCorePackage()
     {
-        PackageLoader loader = new(new() { FhirCacheDirectory = _fixture.CachePath }, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
-
+        PackageLoader loader = new(new() { FhirCacheDirectory = CachePath }, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
         DefinitionCollection? loaded = await loader.LoadPackages(TestCommon.EntriesR3);
 
         loaded.Should().NotBeNull();
@@ -319,7 +291,7 @@ public class FhirPackageTestsR3 : IClassFixture<FhirPackageTestFixture>
     }
 }
 
-public class FhirPackageTestsR2 : IClassFixture<FhirPackageTestFixture>
+public class FhirPackageTestsR2 : FhirPackageTestBase
 {
     private const int _countCodeSystemsByUrl = 822;     // note - there are zero in the definitions, the 822 are contained in VS resources
     private const int _countValueSetsByUrl = 1016;
@@ -335,22 +307,9 @@ public class FhirPackageTestsR2 : IClassFixture<FhirPackageTestFixture>
     private const int _countImplementationGuidesByUrl = 0;
     private const int _countCompartmentsByUrl = 0;
 
-    /// <summary>
-    /// The test output helper.
-    /// </summary>
-    private readonly ITestOutputHelper _testOutputHelper;
-
-    private readonly FhirPackageTestFixture _fixture;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="FhirPackageTestsR2"/> class.
-    /// </summary>
-    /// <param name="fixture">The fixture.</param>
-    /// <param name="testOutputHelper">The test output helper.</param>
-    public FhirPackageTestsR2(FhirPackageTestFixture fixture, ITestOutputHelper testOutputHelper)
+    /// <summary>Initializes a new instance of the <see cref="FhirPackageTestsR2"/> class.</summary>
+    public FhirPackageTestsR2() : base()
     {
-        _testOutputHelper = testOutputHelper;
-        _fixture = fixture;
     }
 
     /// <summary>
@@ -364,7 +323,7 @@ public class FhirPackageTestsR2 : IClassFixture<FhirPackageTestFixture>
     [Trait("DefaultCache", "true")]
     internal async Task ParseCorePackage()
     {
-        PackageLoader loader = new(new() { FhirCacheDirectory = _fixture.CachePath }, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
+        PackageLoader loader = new(new() { FhirCacheDirectory = CachePath }, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
 
         DefinitionCollection? loaded = await loader.LoadPackages(TestCommon.EntriesR2);
 
