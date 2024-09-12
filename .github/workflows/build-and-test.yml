@@ -74,27 +74,30 @@ jobs:
         key: cache-unit-test-fhir-packages-20240909
         enableCrossOsArchive: true
 
-    - name: Translate runner.arch to dotnet arch x86
+    - name: Restore, build, and test x86
       if: runner.arch == 'X86'
-      run: echo "export DOTNET_ARCH=x86" >> $GITHUB_ENV
+      run: |
+        dotnet restore -a x86
+        dotnet build --configuration Release --no-restore --framework net8.0 -a x86
+        dotnet test --configuration Release --no-restore --framework net8.0 --verbosity normal --filter "RequiresExternalRepo!=true" -a x86
 
-    - name: Translate runner.arch to dotnet arch x64
+    - name: Restore, build, and test x64
       if: runner.arch == 'X64'
-      run: echo "export DOTNET_ARCH=x64" >> $GITHUB_ENV
+      run: |
+        dotnet restore -a x64
+        dotnet build --configuration Release --no-restore --framework net8.0 -a x64
+        dotnet test --configuration Release --no-restore --framework net8.0 --verbosity normal --filter "RequiresExternalRepo!=true" -a x64
 
-    - name: Translate runner.arch to dotnet arch ARM
+    - name: Restore, build, and test ARM
       if: runner.arch == 'ARM'
-      run: echo "export DOTNET_ARCH=arm" >> $GITHUB_ENV
+      run: |
+        dotnet restore -a arm
+        dotnet build --configuration Release --no-restore --framework net8.0 -a arm
+        dotnet test --configuration Release --no-restore --framework net8.0 --verbosity normal --filter "RequiresExternalRepo!=true" -a arm
 
-    - name: Translate runner.arch to dotnet arch ARM64
+    - name: Restore, build, and test ARM64
       if: runner.arch == 'ARM64'
-      run: echo "export DOTNET_ARCH=arm64" >> $GITHUB_ENV
-
-    - name: Install dependencies, use the dotnet arch
-      run: dotnet restore -a ${{env.DOTNET_ARCH}}
-      
-    - name: Build
-      run: dotnet build --configuration Release --no-restore --framework net8.0 -a ${{env.DOTNET_ARCH}}
-    
-    - name: Test
-      run: dotnet test --configuration Release --no-restore --framework net8.0 --verbosity normal --filter "RequiresExternalRepo!=true" -a ${{env.DOTNET_ARCH}}
+      run: |
+        dotnet restore -a arm64
+        dotnet build --configuration Release --no-restore --framework net8.0 -a arm64
+        dotnet test --configuration Release --no-restore --framework net8.0 --verbosity normal --filter "RequiresExternalRepo!=true" -a arm64
