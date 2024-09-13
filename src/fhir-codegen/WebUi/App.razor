@@ -1,0 +1,123 @@
+﻿@inject IHostEnvironment Env
+
+@namespace fhir_codegen.WebUi
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="media/candle-logo.svg">
+    <base href="/" />
+
+    <!-- Load app-specific styles (imports reboot) -->
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="fhir-codegen.styles.css" />
+
+    @*<link href="css/site.css" rel="stylesheet" />*@
+    @*<link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />*@
+
+    <!-- Load MudBlazor styles -->
+    @* <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" /> *@
+    @* <link href="_content/MudBlazor/MudBlazor.min.css?v=6.8.0" rel="stylesheet" /> *@
+
+    <!-- Load FluentUI styles -->
+    @* <link href="_content/Microsoft.FluentUI.AspNetCore.Components/css/reboot.css" rel="stylesheet" /> *@
+
+    <!-- Load Blazor Monaco editor contents -->
+    <link href="css/monaco.css" rel="stylesheet" />
+
+    <!-- Load highlight.js styles -->
+    @* <link rel="stylesheet" href="highlight/styles/atom-one-dark.min.css" /> *@
+    @* <link rel="alternate stylesheet" href="highlight/styles/atom-one-light.min.css" disabled="disabled" /> *@
+ 
+    <HeadOutlet @rendermode="InteractiveServer" />
+
+</head>
+<body>
+
+    <!-- Load FluentUI Web Components script -->
+    @* <script src="_content/Microsoft.FluentUI.AspNetCore.Components/Microsoft.FluentUI.AspNetCore.Components.lib.module.js" type="module" async></script> *@
+
+    <!-- Set the default theme -->
+    <script src="_content/Microsoft.FluentUI.AspNetCore.Components/js/loading-theme.js" type="text/javascript"></script>
+    <loading-theme storage-name="theme"></loading-theme>
+
+    <!-- Copy content helper -->
+    <script type="text/javascript">
+        window.processCopyable = function() {
+            const links = document.querySelectorAll('.copy-click');
+            const cls = {
+              copied: 'is-copied',
+              hover: 'is-hovered' };
+
+            const copyToClipboard = str => {
+                const el = document.createElement('input');
+                el.value = str.innerText;
+                el.setAttribute('readonly', '');
+                el.style.position = 'absolute';
+                el.style.opacity = 0;
+                document.body.appendChild(el);
+                el.select();
+                el.setSelectionRange(0, 99999);     // for mobile devices
+                navigator.clipboard.writeText(el.value);
+                document.body.removeChild(el);
+            };
+            const clickInteraction = e => {
+              e.preventDefault();
+              copyToClipboard(e.target);
+              e.target.classList.add(cls.copied);
+              setTimeout(() => e.target.classList.remove(cls.copied), 1000);
+              setTimeout(() => e.target.classList.remove(cls.hover), 700);
+            };
+            Array.from(links).forEach(link => {
+              link.addEventListener('click', e => clickInteraction(e));
+              link.addEventListener('keypress', e => {
+                if (e.keyCode === 13) clickInteraction(e);
+              });
+              link.addEventListener('mouseover', e => e.target.classList.add(cls.hover));
+              link.addEventListener('mouseleave', e => {
+                if (!e.target.classList.contains(cls.copied)) {
+                  e.target.classList.remove(cls.hover);
+                }
+              });
+            });
+        }
+    </script>
+
+    <!-- Load Blazor Monaco editor contents -->
+    <script src="_content/BlazorMonaco/jsInterop.js"></script>
+    <script src="_content/BlazorMonaco/lib/monaco-editor/min/vs/loader.js"></script>
+    <script src="_content/BlazorMonaco/lib/monaco-editor/min/vs/editor/editor.main.js"></script>
+    <script type="text/javascript">
+        function setMonacoEditorResize(id) {
+            window.onresize = () => { blazorMonaco.editor.layout(id, 0); }
+        }
+        function scrollElementIntoView(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+ 
+    <!-- Load Highlight.js contents -->
+@*     <script src="highlight/highlight.min.js"></script>
+    <script src="highlight/languages/json.min.js"></script>
+    <script src="highlight/languages/http.min.js"></script>
+    <script src="highlight/languages/shell.min.js"></script>
+    <script src="highlight/languages/xml.min.js"></script>
+    <script>
+        window.highlightSnippet = function () {
+            document.querySelectorAll('pre code').forEach((el) => {
+                hljs.highlightBlock(el);
+            });
+        }
+    </script>
+ *@
+    <Routes @rendermode="InteractiveServer" />
+
+    <script src="_framework/blazor.web.js"></script>
+
+    <!-- Load MudBlazor contents -->
+    @* <script src="_content/MudBlazor/MudBlazor.min.js?v=6.8.0"></script> *@
+</body>
+</html>

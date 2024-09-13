@@ -99,9 +99,10 @@ public class Program
             "generate" => await DoGenerate(pr),
             "compare" => await DoCompare(pr),
             //"cross-version" => await CrossVersionInteractive.DoCrossVersionReview(pr),
-            "gui" => Gui.RunGui(pr),
+            //"gui" => Gui.RunGui(pr),
             //case "interactive":
             //    return await DoInteractive(pr);
+            "web" => await WebUi.FluentUi.RunServer(pr),
             //case "web":
             //    return await DoWeb(pr);
             _ => await parser.InvokeAsync(args),

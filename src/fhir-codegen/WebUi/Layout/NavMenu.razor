@@ -1,0 +1,35 @@
+﻿
+@namespace fhir_codegen.WebUi.Layout
+
+@implements IDialogContentComponent<string>
+
+@* @inject IFhirStoreManager StoreManager
+@inject ISmartAuthManager AuthManager
+ *@
+<FluentDialogBody>
+    <FluentNavMenu Id="main-menu" Width="250" Collapsible="false" Title="FHIR Candle">
+        <FluentNavLink Icon="@(new Icons.Regular.Size24.Home())" Href="/" Tooltip="Home">Home</FluentNavLink>
+@* 
+        @if (AuthManager.IsEnabled)
+        {
+            <FluentNavLink Icon="@(new Icons.Regular.Size24.DesktopSignal())" Href="/smart/clients">SMART Clients</FluentNavLink>
+        }
+
+        @foreach (string key in StoreManager.Keys.OrderBy(s => s))
+        {
+            <FluentNavGroup Title="@(key)" Tooltip="@(key)" Icon="@(new Icons.Regular.Size24.CubeMultiple())" Expanded="true">
+                <FluentNavLink Icon="@(new Icons.Regular.Size24.Fire())" Href="@($"/store?store={key}")" Tooltip="FHIR Contents">FHIR Contents</FluentNavLink>
+                <FluentNavLink Icon="@(new Icons.Regular.Size20.ArrowExport())" Href="@($"/subscriptions/local?store={key}")" Tooltip="Local Subscriptions">Local Subscriptions</FluentNavLink>
+                <FluentNavLink Icon="@(new Icons.Regular.Size20.CloudArrowDown())" Href="@($"/subscriptions/notifications-received?store={key}")" Tooltip="Received Notifications">Received Notifications</FluentNavLink>
+            </FluentNavGroup>
+        } *@
+    </FluentNavMenu>
+</FluentDialogBody>
+<FluentDialogFooter>
+    <FluentLabel>@GetType().Assembly.GetName().Version?.ToString()</FluentLabel>
+</FluentDialogFooter>
+
+@code {
+    [Parameter]
+    public string Content { get; set; } = default!;
+}

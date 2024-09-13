@@ -157,8 +157,13 @@
         },
         "Gui": {
             "commandName": "Project",
-            "commandLineArgs": "gui",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
+            "commandLineArgs": "web --listen-port 5074 --open-browser false",
+            "workingDirectory": "$(MSBuildProjectDirectory)",
+            "launchBrowser": true,
+            "applicationUrl": "http://localhost:5074",
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
         },
         "Cross Version Review": {
             "commandName": "Project",

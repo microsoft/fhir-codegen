@@ -1,0 +1,73 @@
+﻿@page "/"
+
+@inject NavigationManager NavigationManager
+@* @inject IFhirStoreManager StoreManager *@
+@inject ConfigFluentUi ServerConfig
+@inject IJSRuntime JS
+
+@implements IDisposable
+
+
+<FluentStack Orientation="Orientation.Vertical" VerticalGap="8">
+
+    <FluentDataGrid GenerateHeader="GenerateHeaderOption.None" TGridItem="string" role="grid">
+        <FluentDataGridRow RowType="DataGridRowType.Header">
+            <FluentDataGridCell GridColumn=1 CellType="DataGridCellType.ColumnHeader">Description</FluentDataGridCell>
+            <FluentDataGridCell GridColumn=2 CellType="DataGridCellType.ColumnHeader">Link</FluentDataGridCell>
+        </FluentDataGridRow>
+
+        <FluentDataGridRow>
+            <FluentDataGridCell GridColumn=1>GitHub Repository for this software</FluentDataGridCell>
+            <FluentDataGridCell GridColumn=2>
+                <FluentAnchor Appearance="Appearance.Hypertext" Href="https://github.com/Microsoft/fhir-codegen" Target="_blank">github.com</FluentAnchor>
+            </FluentDataGridCell>
+        </FluentDataGridRow>
+
+        <FluentDataGridRow>
+            <FluentDataGridCell GridColumn=1>FHIR R5 Subscriptions Framework</FluentDataGridCell>
+            <FluentDataGridCell GridColumn=2>
+                <FluentAnchor Appearance="Appearance.Hypertext" Href="https://hl7.org/fhir/R5/subscriptions.html" Target="_blank">hl7.org</FluentAnchor>
+            </FluentDataGridCell>
+        </FluentDataGridRow>
+
+        <FluentDataGridRow>
+            <FluentDataGridCell GridColumn=1>FHIR R4 Specification</FluentDataGridCell>
+            <FluentDataGridCell GridColumn=2>
+                <FluentAnchor Appearance="Appearance.Hypertext" Href="https://www.hl7.org/fhir/R4/" Target="_blank">hl7.org</FluentAnchor>
+            </FluentDataGridCell>
+        </FluentDataGridRow>
+
+        <FluentDataGridRow>
+            <FluentDataGridCell GridColumn=1>FHIR R4B Specification</FluentDataGridCell>
+            <FluentDataGridCell GridColumn=2>
+                <FluentAnchor Appearance="Appearance.Hypertext" Href="https://www.hl7.org/fhir/R4B/" Target="_blank">hl7.org</FluentAnchor>
+            </FluentDataGridCell>
+        </FluentDataGridRow>
+
+    </FluentDataGrid>
+
+</FluentStack>
+
+@code {
+    /// <summary>Gets or sets the navigation tracker.</summary>
+    [CascadingParameter]
+    public INavTracker? NavTracker { get; set; } = null;
+
+    /// <summary>Executes the initialized asynchronous action.</summary>
+    /// <returns>An asynchronous result.</returns>
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        NavTracker?.NotifyNav([]);
+    }
+
+    /// <summary>
+    /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged
+    /// resources.
+    /// </summary>
+    public void Dispose()
+    {
+    }
+
+}

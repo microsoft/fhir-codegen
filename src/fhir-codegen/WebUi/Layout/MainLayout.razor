@@ -1,0 +1,196 @@
+﻿@using Microsoft.Health.Fhir.CodeGen.Configuration
+
+@using Microsoft.FluentUI.AspNetCore.Components
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
+
+@namespace fhir_codegen.WebUi.Layout
+
+
+@inherits LayoutComponentBase
+
+@inject ProtectedLocalStorage BrowserStore
+@inject ConfigFluentUi ServerConfig
+@inject IJSRuntime JS
+@inject IDialogService DialogService
+
+@implements INavTracker
+
+@* Note this is just the OfficeColor.Teams color, but getting the binding correct with external loading is touchy right now *@
+<FluentDesignTheme @bind-Mode="@Mode" CustomColor="#6264a7" StorageName="theme" />
+@* <FluentDesignTheme @bind-Mode="@Mode" @bind-OfficeColor="@OfficeColor" StorageName="theme" /> *@
+
+<FluentToastProvider />
+<FluentDialogProvider />
+<FluentTooltipProvider />
+<FluentMessageBarProvider />
+
+@* Testing colors: 3299ff, 287acc, 028aff, 5e90e2, 095dac *@
+
+<FluentLayout>
+    <FluentHeader Style="background-color: var(--accent-base-color)">
+        @if (IsDarkMode)
+        {
+            <FluentButton Title="Navigation" IconEnd="@(new Icons.Regular.Size24.Navigation())" OnClick="@OpenNavPanel" BackgroundColor="var(--accent-base-color)" />
+            <FluentSpacer Width="8" />
+            <FluentBreadcrumb>
+                <FluentBreadcrumbItem Appearance="Appearance.Accent" Href="/">@homeTitle</FluentBreadcrumbItem>
+
+                @foreach (NavPageInfoRec item in _crumbs)
+                {
+                    <FluentBreadcrumbItem Appearance="Appearance.Accent" Href="@item.Link">@item.Display</FluentBreadcrumbItem>
+                }
+            </FluentBreadcrumb>
+            <FluentSpacer />
+            <FluentAnchor Href="https://github.com/Microsoft/fhir-codegen" Target="_blank" Appearance="Appearance.Filled">
+                <img src="media/github-mark-white.svg" height="20" width="20" style="background-color: var(--accent-base-color); position:absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" />
+            </FluentAnchor>
+            <FluentSpacer Width="8" />
+            <FluentButton Title="Light/Dark Mode"
+                          BackgroundColor="var(--accent-base-color)"
+                          IconEnd="@(new Icons.Regular.Size20.DarkTheme())"
+                          OnClick="@ToggleMode" />
+        }
+        else
+        {
+            <FluentButton Title="Navigation" IconEnd="@(new Icons.Regular.Size24.Navigation())" OnClick="@OpenNavPanel" Appearance="Appearance.Accent" />
+            <FluentSpacer Width="8" />
+            <FluentBreadcrumb>
+                <FluentBreadcrumbItem Appearance="Appearance.Accent" Href="/">@homeTitle</FluentBreadcrumbItem>
+
+                @foreach (NavPageInfoRec item in _crumbs)
+                {
+                    <FluentBreadcrumbItem Appearance="Appearance.Accent" Href="@item.Link">@item.Display</FluentBreadcrumbItem>
+                }
+            </FluentBreadcrumb>
+            <FluentSpacer />
+            <FluentAnchor Href="https://github.com/Microsoft/fhir-codegen" Target="_blank" Appearance="Appearance.Filled">
+                <img src="media/github-mark-white.svg" height="20" width="20" style="background-color: var(--accent-base-color); position:absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" />
+            </FluentAnchor>
+            <FluentSpacer Width="8" />
+            <FluentButton Title="Light/Dark Mode"
+                          Appearance="Appearance.Accent"
+                          IconEnd="@(new Icons.Regular.Size20.DarkTheme())"
+                          OnClick="@ToggleMode" />
+        }
+    </FluentHeader>
+
+    <FluentStack Class="main" Orientation="Orientation.Horizontal" Width="100%">
+        <FluentBodyContent Class="content" Style="width:100%;">
+            <CascadingValue Value="@this">
+                @Body
+            </CascadingValue>
+        </FluentBodyContent>
+    </FluentStack>
+</FluentLayout>
+
+
+<div id="blazor-error-ui">
+    An unhandled error has occurred.
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+</div>
+
+@code {
+    /// <summary>The home title.</summary>
+    private string homeTitle = "FHIR Code Generator";
+
+    /// <summary>Occurs when On Theme Changed.</summary>
+    public event EventHandler<EventArgs>? OnThemeChanged;
+
+    /// <summary>Gets or sets the mode.</summary>
+    public DesignThemeModes Mode { get; set; }
+
+    /// <summary>Gets the is dark mode.</summary>
+    public bool IsDarkMode => (Mode == DesignThemeModes.Dark);
+
+    /// <summary>The navigation dialog.</summary>
+    private IDialogReference? _navDialog;
+
+    /// <summary>The crumbs.</summary>
+    private NavPageInfoRec[] _crumbs = [];
+
+    /// <summary>
+    /// Asynchronously opens the navigation panel.
+    /// </summary>
+    /// <remarks>
+    /// This method creates a dialog using the DialogService and shows it.
+    /// The dialog displays the navigation menu of the application.
+    /// The dialog is configured to not have primary and secondary actions, and the dismiss button is hidden.
+    /// The result of the dialog is not used in this method.
+    /// </remarks>
+    /// <returns>A Task representing the asynchronous operation.</returns>
+    private async Task OpenNavPanel()
+    {
+        // create the dialog
+        _navDialog = await DialogService.ShowPanelAsync<NavMenu>(string.Empty, new DialogParameters<string>()
+        {
+            Title = "FHIR Code Generator",
+            Content = string.Empty,
+            Alignment = HorizontalAlignment.Left,
+            PrimaryActionEnabled = false,
+            SecondaryActionEnabled = false,
+            ShowDismiss = false,
+        });
+
+        // show the dialog, but we do not care about the result
+        _ = await _navDialog.Result;
+    }
+
+    /// <summary>Logs an asynchronous.</summary>
+    /// <param name="message">The message.</param>
+    /// <returns>An asynchronous result.</returns>
+    public async Task JsLogAsync(string message)
+    {
+        // note this has to be awaited or the call never happens
+        await JS.InvokeVoidAsync("console.log", message);
+    }
+
+    /// <summary>Js clipboard copy.</summary>
+    /// <param name="content">The content.</param>
+    /// <returns>An asynchronous result.</returns>
+    public async Task JsClipboardCopy(string content)
+    {
+        await JS.InvokeVoidAsync("navigator.clipboard.writeText", content);
+    }
+
+    /// <summary>Toggle mode.</summary>
+    private void ToggleMode()
+    {
+        if (Mode == DesignThemeModes.Dark)
+        {
+            Mode = DesignThemeModes.Light;
+            RegisterThemeChange();
+        }
+        else
+        {
+            Mode = DesignThemeModes.Dark;
+            RegisterThemeChange();
+        }
+    }
+
+    private void RegisterThemeChange()
+    {
+        OnThemeChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    /// <summary>Executes the after render action.</summary>
+    /// <param name="firstRender">True to first render.</param>
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // first render of layout should log the version
+            _ = JsLogAsync($"fhir-codegen: {GetType()?.Assembly?.GetName()?.Version?.ToString()}");
+        }
+
+        _ = JS.InvokeVoidAsync("processCopyable");
+    }
+
+    /// <summary>Notifies the navigation manager about the current location.</summary>
+    /// <param name="navTree"></param>
+    public void NotifyNav(NavPageInfoRec[] navTree)
+    {
+        _crumbs = navTree;
+        StateHasChanged();
+    }
+}

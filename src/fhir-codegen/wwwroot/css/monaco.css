@@ -1,0 +1,5 @@
+﻿.monaco-editor-container {
+    height: calc(98vh);
+    width: calc(100vw - 2em);
+    margin-left: -16px; /* Remove indentation, but do not want full absolute positioning */
+}
