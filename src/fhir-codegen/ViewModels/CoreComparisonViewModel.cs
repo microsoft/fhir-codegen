@@ -38,17 +38,17 @@ public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewMode
     private string _header = "Compare FHIR Core Releases";
 
     [ObservableProperty]
-    private string? _errorMessage = null;
+    private string? _message = null;
 
     [ObservableProperty]
     private bool _processing = false;
 
     [ObservableProperty]
-    private bool _onlyReleaseVersions = true;
+    private bool _onlyListFhirCore = true;
 
-    partial void OnOnlyReleaseVersionsChanged(bool value)
+    partial void OnOnlyListFhirCoreChanged(bool value)
     {
-        CorePackages = value ? _releasedCorePackages : _allCorePackages;
+        Packages = value ? _corePackages : _installedPackages;
     }
 
     [ObservableProperty]
@@ -61,13 +61,13 @@ public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewMode
     private int _targetReleaseIndex = 0;
 
     [ObservableProperty]
-    private string _sourceDirectory = "C:\\git\\version-modeling\\20191231\\hl7.fhir.r5.core#4.2.0"; // string.Empty;
+    private string _sourceDirectory = string.Empty;     // "C:\\git\\version-modeling\\20191231\\hl7.fhir.r5.core#4.2.0";
 
     [ObservableProperty]
     private int _sourceDirectoryFhirVersionIndex = 2;
 
     [ObservableProperty]
-    private string _targetDirectory = "C:\\git\\version-modeling\\20181227\\hl7.fhir.r4.core#4.0.1";    // string.Empty;
+    private string _targetDirectory = string.Empty;     // "C:\\git\\version-modeling\\20181227\\hl7.fhir.r4.core#4.0.1";
 
     [ObservableProperty]
     private int _targetDirectoryFhirVersionIndex = 2;
@@ -76,7 +76,7 @@ public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewMode
     private string[] _fhirVersions = [ "DSTU2", "STU3", "R4", "R4B", "R5", "R6" ];
 
     [ObservableProperty]
-    private string _saveDirectory = "C:\\git\\version-modeling\\20191231\\_prev_02_down";
+    private string _saveDirectory = string.Empty;       // "C:\\git\\version-modeling\\20191231\\_prev_02_down";
 
     [ObservableProperty]
     private List<ValueSetComparison> _valueSetComparisons = [];
@@ -94,10 +94,10 @@ public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewMode
     private List<StructureComparison> _extensionComparisons = [];
 
     [ObservableProperty]
-    private List<string> _corePackages = [];
+    private List<string> _packages = [];
 
-    private List<string> _releasedCorePackages = [];
-    private List<string> _allCorePackages = [];
+    private List<string> _corePackages = [];
+    private List<string> _installedPackages = [];
 
     private static readonly Regex _corePackageRegex = new Regex("^hl7\\.fhir\\.r\\d+[A-Za-z]?\\.(core)$", RegexOptions.Compiled);
     private static readonly HashSet<string> _releaseVersions = [ "1.0.2", "3.0.2", "4.0.1", "4.3.0", "5.0.0", ];
@@ -126,68 +126,75 @@ public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewMode
                 continue;
             }
 
-            if (!_corePackageRegex.IsMatch(pr.Name))
+            if (_corePackageRegex.IsMatch(pr.Name))
             {
-                continue;
+                _corePackages.Add(pr.Moniker);
             }
 
-            if (_releaseVersions.Contains(pr.Version))
-            {
-                _releasedCorePackages.Add(pr.Moniker);
-            }
-
-            _allCorePackages.Add(pr.Moniker);
+            _installedPackages.Add(pr.Moniker);
         }
 
-        CorePackages = _onlyReleaseVersions ? _releasedCorePackages : _allCorePackages;
+        Packages = _onlyListFhirCore ? _corePackages : _installedPackages;
     }
 
     [RelayCommand]
-    private void RunReleaseComparison()
+    private void RunPackageComparison()
     {
         if (Processing == true)
         {
             return;
         }
 
+        Processing = true;
+        Message = null;
 
-        Task.Run(DoReleaseComparison);
+        Task.Run(DoPackageComparison);
     }
 
-    private async void DoReleaseComparison()
+    private async void DoPackageComparison()
     {
         Processing = true;
-        ErrorMessage = null;
+        Message = null;
 
         if (SourceReleaseIndex == TargetReleaseIndex)
         {
-            ErrorMessage = "Source and target cannot be the same";
+            Message = "Source and target cannot be the same";
             Processing = false;
             return;
         }
 
-        if (SourceReleaseIndex < 0 || SourceReleaseIndex >= CorePackages.Count || TargetReleaseIndex < 0 || TargetReleaseIndex >= CorePackages.Count)
+        if ((SourceReleaseIndex < 0) || (SourceReleaseIndex >= Packages.Count))
         {
-            ErrorMessage = "Invalid source or target release index";
+            Message = "Invalid source selection!";
             Processing = false;
             return;
         }
+
+        if ((TargetReleaseIndex < 0) || (TargetReleaseIndex >= Packages.Count))
+        {
+            Message = "Invalid target selection!";
+            Processing = false;
+            return;
+        }
+
+        string sourceMoniker = Packages[SourceReleaseIndex];
+        string targetMoniker = Packages[TargetReleaseIndex];
 
         PackageLoader loader = new(new(), new());
-        DefinitionCollection? source = await loader.LoadPackages([CorePackages[SourceReleaseIndex]]);
+        DefinitionCollection? source = await loader.LoadPackages([sourceMoniker]);
 
         if (source == null)
         {
-            ErrorMessage = "Failed to load source definitions";
+            Message = "Failed to load source definitions";
             Processing = false;
             return;
         }
 
-        DefinitionCollection? target = await loader.LoadPackages([CorePackages[TargetReleaseIndex]], fhirVersion: FhirVersions[TargetDirectoryFhirVersionIndex]);
+        DefinitionCollection? target = await loader.LoadPackages([targetMoniker]);
 
         if (target == null)
         {
-            ErrorMessage = "Failed to load target definitions";
+            Message = "Failed to load target definitions";
             Processing = false;
             return;
         }
@@ -208,7 +215,7 @@ public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewMode
         ExtensionComparisons = results.Extensions.Values.SelectMany(l => l.Select(v => v)).ToList();
 
         Processing = false;
-        ErrorMessage = null;
+        Message = $"Comparison of {sourceMoniker} and {targetMoniker} is complete! See Results tab.";
     }
 
     [RelayCommand]
@@ -224,7 +231,7 @@ public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewMode
     private async void DoDirectoryComparison()
     {
         Processing = true;
-        ErrorMessage = null;
+        Message = null;
         ValueSetComparisons = [];
         PrimitiveComparisons = [];
         ComplexTypeComparisons = [];
@@ -233,7 +240,7 @@ public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewMode
 
         if (string.IsNullOrEmpty(SourceDirectory) || string.IsNullOrEmpty(TargetDirectory) || (SourceDirectory == TargetDirectory))
         {
-            ErrorMessage = "Source and target are required and cannot be the same";
+            Message = "Source and target are required and cannot be the same";
             Processing = false;
             return;
         }
@@ -243,7 +250,7 @@ public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewMode
 
         if (source == null)
         {
-            ErrorMessage = "Failed to load source definitions";
+            Message = "Failed to load source definitions";
             Processing = false;
             return;
         }
@@ -252,7 +259,7 @@ public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewMode
 
         if (target == null)
         {
-            ErrorMessage = "Failed to load target definitions";
+            Message = "Failed to load target definitions";
             Processing = false;
             return;
         }
@@ -288,6 +295,6 @@ public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewMode
         ExtensionComparisons = results.Extensions.Values.SelectMany(l => l.Select(v => v)).ToList();
 
         Processing = false;
-        ErrorMessage = null;
+        Message = null;
     }
 }

@@ -2,6 +2,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Controls.Templates;
+using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
 using fhir_codegen.ViewModels;
 using fhir_codegen.Views;
@@ -18,6 +19,9 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
+        // Since we use CommunityToolkit, the line below is needed to remove Avalonia data validation - otherwise we get duplicate validation errors
+        BindingPlugins.DataValidators.RemoveAt(0);
+
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             desktop.MainWindow = new MainWindow()

@@ -3,6 +3,7 @@
              xmlns:vm="using:fhir_codegen.ViewModels"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:material="clr-namespace:Material.Avalonia;assembly=Material.Avalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="fhir_codegen.Views.CoreComparisonView"
              x:DataType="vm:CoreComparisonViewModel">
@@ -43,24 +44,24 @@
                         <RowDefinition Height="64" />       <!-- SourceReleaseIndex -->
                         <RowDefinition Height="64" />       <!-- TargetReleaseIndex -->
                         <RowDefinition Height="64" />       <!-- RowRunComparison -->
-                        <RowDefinition Height="64" />       <!-- RowErrorMessage -->
+                        <RowDefinition Height="64" />       <!-- RowMessage -->
                         <RowDefinition Height="64" />       <!-- RowSourceMaps -->
                     </Grid.RowDefinitions>
 
-                    <CheckBox Grid.Row="0" Grid.Column="1" IsChecked="{Binding OnlyReleaseVersions}">Only Show Official Releases</CheckBox>
+                    <CheckBox Grid.Row="0" Grid.Column="1" IsChecked="{Binding OnlyListFhirCore}">Only FHIR Core</CheckBox>
                     
                     <Label Grid.Row="1" Grid.Column="0" Content="Source (left) Package:" HorizontalAlignment="Right"/>
-                    <ComboBox Grid.Row="1" Grid.Column="1" SelectedIndex="{Binding SourceReleaseIndex}" ItemsSource="{Binding CorePackages}" HorizontalAlignment="Left"/>
+                    <ComboBox Grid.Row="1" Grid.Column="1" SelectedIndex="{Binding SourceReleaseIndex}" ItemsSource="{Binding Packages}" HorizontalAlignment="Left"/>
 
                     <Label Grid.Row="2" Grid.Column="0" Content="Target (right) Package:" HorizontalAlignment="Right"/>
-                    <ComboBox Grid.Row="2" Grid.Column="1" SelectedIndex="{Binding TargetReleaseIndex}" ItemsSource="{Binding CorePackages}" HorizontalAlignment="Left"/>
+                    <ComboBox Grid.Row="2" Grid.Column="1" SelectedIndex="{Binding TargetReleaseIndex}" ItemsSource="{Binding Packages}" HorizontalAlignment="Left"/>
 
                     <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
-                        <Button Content="Run Comparison" Command="{Binding RunReleaseComparisonCommand}" />
-                        <ProgressBar Classes="Circle" IsVisible="{Binding Processing}"/>
+                        <Button Content="Run Comparison" IsEnabled="{Binding !Processing}" Command="{Binding RunPackageComparisonCommand}" />
+                        <ProgressBar Classes="circular" IsVisible="{Binding Processing}" IsIndeterminate="True" Foreground="{DynamicResource PrimaryDarkBrush}"/>
                     </StackPanel>
 
-                    <Label Grid.Row="4" Grid.Column="1" Content="{Binding ErrorMessage}" Foreground="Red" HorizontalAlignment="Left"/>
+                    <Label Grid.Row="4" Grid.Column="1" Content="{Binding Message}" HorizontalAlignment="Left"/>
 
                     <Label Grid.Row="5" Grid.Column="0" Content="Map source path" HorizontalAlignment="Right"/>
                     <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding CrossVersionDirectory}" HorizontalAlignment="Left"/>
@@ -80,7 +81,7 @@
                         <RowDefinition Height="64" />       <!-- 3 TargetDirectoryFhirVersion -->
                         <RowDefinition Height="64" />       <!-- 4 SaveDirectory -->
                         <RowDefinition Height="64" />       <!-- 5 RowRunComparison -->
-                        <RowDefinition Height="64" />       <!-- 6 RowErrorMessage -->
+                        <RowDefinition Height="64" />       <!-- 6 RowMessage -->
                     </Grid.RowDefinitions>
                     
                     <Label Grid.Row="0" Grid.Column="0" Content="Source (left) Package:" HorizontalAlignment="Right"/>
@@ -99,11 +100,11 @@
                     <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding SaveDirectory}" HorizontalAlignment="Left"/>
 
                     <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
-                        <Button Content="Run Comparison" Command="{Binding RunDirectoryComparisonCommand}" />
-                        <ProgressBar Classes="Circle" IsVisible="{Binding Processing}"/>
+                        <Button Content="Run Comparison" IsEnabled="{Binding !Processing}" Command="{Binding RunDirectoryComparisonCommand}" />
+                        <ProgressBar Classes="circular" IsVisible="{Binding Processing}" IsIndeterminate="True" Foreground="{DynamicResource PrimaryDarkBrush}"/>
                     </StackPanel>
 
-                    <Label Grid.Row="5" Grid.Column="1" Content="{Binding ErrorMessage}" Foreground="Red" HorizontalAlignment="Left"/>
+                    <Label Grid.Row="5" Grid.Column="1" Content="{Binding Message}" HorizontalAlignment="Left"/>
 
                 </Grid>
             </TabItem>
