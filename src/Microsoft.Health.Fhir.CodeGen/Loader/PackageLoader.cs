@@ -104,7 +104,7 @@ public class PackageLoader : IDisposable
         if (_rootConfiguration.UseOfficialRegistries == true)
         {
             _packageClients.Add(PackageClient.Create("https://packages.fhir.org"));
-            _packageClients.Add(PackageClient.Create("https://packages2.fhir.org"));
+            _packageClients.Add(PackageClient.Create("https://packages2.fhir.org/packages"));
             _packageClients.Add(new _ForPackages.FhirCiClient(-1));
         }
 
@@ -372,20 +372,17 @@ public class PackageLoader : IDisposable
 
     private async ValueTask<(PackageReference, IPackageServer?)> ResolveLatest(string name)
     {
-        ConcurrentBag<(PackageReference pr, IPackageServer server)> latestRecs = new();
+        List<(PackageReference pr, IPackageServer server)> latestRecs = new();
 
-        IEnumerable<System.Threading.Tasks.Task> tasks = _packageClients.Select(async server =>
+        foreach (IPackageServer server in _packageClients)
         {
             PackageReference pr = await server.GetLatest(name);
             if (pr == PackageReference.None)
             {
-                return;
+                continue;
             }
-
-            latestRecs.Append((pr, server));
-        });
-
-        await System.Threading.Tasks.Task.WhenAll(tasks);
+            latestRecs.Add((pr, server));
+        }
 
         if (latestRecs.Count == 0)
         {
