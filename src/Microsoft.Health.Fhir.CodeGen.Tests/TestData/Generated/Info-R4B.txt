@@ -23994,6 +23994,7 @@ Value Sets: 745
   - #problem-list-item: Problem List Item
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-cause|4.3.0 (ConditionCauseCodes)
   extensions/profiles (2 structures, 5 elements): strongest binding: example, refs: condition-dueTo(Extension) [Extension.value[x]], workflow-reasonCode(Extension) [Extension.value[x]]
+  ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-clinical|4.3.0 (trial-use FMM: 3) (ConditionClinicalStatusCodes)
   references (1 structures, 1 elements): Condition.clinicalStatus, strongest binding: required, by type: CodeableConcept:Required
   - #active: Active
@@ -24012,6 +24013,7 @@ Value Sets: 745
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-predecessor|4.3.0 (ConditionPredecessorCodes)
   extensions/profiles (1 structures, 1 elements): strongest binding: example, refs: condition-occurredFollowing(Extension) [Extension.value[x]]
+  ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-severity|4.3.0 (Condition/DiagnosisSeverity)
   references (1 structures, 1 elements): Condition.severity, strongest binding: preferred, by type: CodeableConcept:Preferred
   extensions/profiles (1 structures, 1 elements): strongest binding: example, refs: familymemberhistory-severity(Extension) [Extension.value[x]]

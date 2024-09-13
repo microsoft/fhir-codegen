@@ -27,13 +27,13 @@ public class ShorthandOptions : ConfigGenerate
         // parse base properties
         base.Parse(parseResult);
 
-        // iterate over options for ones we are interested in
-        foreach (ConfigurationOption opt in _options)
-        {
-            switch (opt.Name)
-            {
-            }
-        }
+        //// iterate over options for ones we are interested in
+        //foreach (ConfigurationOption opt in _options)
+        //{
+        //    switch (opt.Name)
+        //    {
+        //    }
+        //}
     }
 
 }

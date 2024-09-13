@@ -14349,6 +14349,7 @@ Value Sets: 1154
   - #encounter-diagnosis: Encounter Diagnosis
   - #problem-list-item: Problem List Item
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-cause|3.0.2 (FMM: 0) (Condition Cause Codes)
+  ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-clinical|3.0.2 (FMM: 3) (Condition Clinical Status Codes)
   references (1 structures, 1 elements): Condition.clinicalStatus, strongest binding: required, by type: code:Required
   - #active: Active
@@ -14365,6 +14366,7 @@ Value Sets: 1154
   extensions/profiles (1 structures, 1 elements): strongest binding: example, refs: familymemberhistory-genetic(Profile) [FamilyMemberHistory.condition.outcome]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-predecessor|3.0.2 (FMM: 0) (Condition Predecessor Codes)
+  ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-severity|3.0.2 (FMM: 3) (Condition/Diagnosis Severity)
   references (1 structures, 1 elements): Condition.severity, strongest binding: preferred, by type: CodeableConcept:Preferred
   ! No expansion available
@@ -18156,6 +18158,7 @@ Value Sets: 1154
   references (1 structures, 1 elements): Sequence.referenceSeq.referenceSeqId, strongest binding: example, by type: CodeableConcept:Example
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/sequence-species|3.0.2 (FMM: 0) (SNOMED CT Codes for species)
+  ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/sequence-type|3.0.2 (FMM: 1) (sequenceType)
   references (1 structures, 1 elements): Sequence.type, strongest binding: example, by type: code:Example
   - #aa: AA Sequence

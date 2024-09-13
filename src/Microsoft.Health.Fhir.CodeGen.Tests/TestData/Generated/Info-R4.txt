@@ -23627,6 +23627,7 @@ Value Sets: 1317
   - #problem-list-item: Problem List Item
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-cause|4.0.1 (ConditionCauseCodes)
   extensions/profiles (2 structures, 5 elements): strongest binding: example, refs: condition-dueTo(Extension) [Extension.value[x]], workflow-reasonCode(Extension) [Extension.value[x]]
+  ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-clinical|4.0.1 (trial-use FMM: 3) (ConditionClinicalStatusCodes)
   references (1 structures, 1 elements): Condition.clinicalStatus, strongest binding: required, by type: CodeableConcept:Required
   - #active: Active
@@ -23645,6 +23646,7 @@ Value Sets: 1317
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-predecessor|4.0.1 (ConditionPredecessorCodes)
   extensions/profiles (1 structures, 1 elements): strongest binding: example, refs: condition-occurredFollowing(Extension) [Extension.value[x]]
+  ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/condition-severity|4.0.1 (Condition/DiagnosisSeverity)
   references (1 structures, 1 elements): Condition.severity, strongest binding: preferred, by type: CodeableConcept:Preferred
   extensions/profiles (1 structures, 1 elements): strongest binding: example, refs: familymemberhistory-severity(Extension) [Extension.value[x]]
@@ -28767,6 +28769,7 @@ Value Sets: 1317
   references (1 structures, 1 elements): MolecularSequence.referenceSeq.referenceSeqId, strongest binding: example, by type: CodeableConcept:Example
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/sequence-species|4.0.1 (SNOMEDCTCodesForSpecies)
+  ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/sequence-type|4.0.1 (trial-use FMM: 1) (sequenceType)
   references (1 structures, 1 elements): MolecularSequence.type, strongest binding: required, by type: code:Required
   - #aa: AA Sequence

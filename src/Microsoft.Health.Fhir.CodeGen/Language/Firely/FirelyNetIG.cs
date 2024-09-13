@@ -2788,25 +2788,25 @@ public partial class FirelyNetIG : ILanguage
     {
         foreach (ExportStreamWriter writer in _definitionWriters.Values)
         {
-            CloseAndDispose(writer);
+            closeAndDispose(writer);
         }
         _definitionWriters.Clear();
 
         foreach (ExportStreamWriter writer in _extensionWriters.Values)
         {
-            CloseAndDispose(writer);
+            closeAndDispose(writer);
         }
         _extensionWriters.Clear();
 
         foreach (ExportStreamWriter writer in _valueSetWriters.Values)
         {
-            CloseAndDispose(writer);
+            closeAndDispose(writer);
         }
         _valueSetWriters.Clear();
 
         return;
 
-        void CloseAndDispose(ExportStreamWriter writer)
+        void closeAndDispose(ExportStreamWriter writer)
         {
             writer.CloseScope();        // class
 
