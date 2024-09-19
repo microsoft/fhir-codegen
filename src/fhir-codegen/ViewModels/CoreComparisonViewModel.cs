@@ -14,7 +14,9 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Input;
+using fhir_codegen.Models;
 using Hl7.Fhir.Utility;
 using Material.Icons;
 using Microsoft.Health.Fhir.CodeGen._ForPackages;
@@ -30,9 +32,7 @@ public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewMode
 {
     public static string Label => "Compare FHIR Definitions";
     public static MaterialIconKind IconKind => MaterialIconKind.Compare;
-    //public static StreamGeometry? IconGeometry => (Application.Current?.TryGetResource("book_question_mark_regular", out object? icon) ?? false) && icon is StreamGeometry sg
-    //    ? sg
-    //    : null;
+    public static bool Indented => false;
 
     [ObservableProperty]
     private string _header = "Compare FHIR Core Releases";
@@ -106,7 +106,9 @@ public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewMode
         : base()
     {
         // get the current configuration
-        ConfigGui? config = Gui.RunningConfiguration;
+        ConfigGui? config = (args is ConfigGui c)
+            ? c
+            : Ioc.Default.GetService<ConfigGui>();
 
         if (config == null)
         {
@@ -208,11 +210,18 @@ public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewMode
         PackageComparer comparer = new(compareOptions, source, target);
 
         PackageComparison results = comparer.Compare();
-        ValueSetComparisons = results.ValueSets.Values.SelectMany(l => l.Select(v => v)).ToList();
-        PrimitiveComparisons = results.PrimitiveTypes.Values.SelectMany(l => l.Select(v => v)).ToList();
-        ComplexTypeComparisons = results.ComplexTypes.Values.SelectMany(l => l.Select(v => v)).ToList();
-        ResourceComparisons = results.Resources.Values.SelectMany(l => l.Select(v => v)).ToList();
-        ExtensionComparisons = results.Extensions.Values.SelectMany(l => l.Select(v => v)).ToList();
+
+        ComparisonUiModel comparisonInfo = Ioc.Default.GetService<ComparisonUiModel>() ?? throw new Exception("Could not get required service ComparisonUiModel!");
+
+        comparisonInfo.Source = source;
+        comparisonInfo.Target = target;
+        comparisonInfo.Results = results;
+
+        //ValueSetComparisons = results.ValueSets.Values.SelectMany(l => l.Select(v => v)).ToList();
+        //PrimitiveComparisons = results.PrimitiveTypes.Values.SelectMany(l => l.Select(v => v)).ToList();
+        //ComplexTypeComparisons = results.ComplexTypes.Values.SelectMany(l => l.Select(v => v)).ToList();
+        //ResourceComparisons = results.Resources.Values.SelectMany(l => l.Select(v => v)).ToList();
+        //ExtensionComparisons = results.Extensions.Values.SelectMany(l => l.Select(v => v)).ToList();
 
         Processing = false;
         Message = $"Comparison of {sourceMoniker} and {targetMoniker} is complete! See Results tab.";

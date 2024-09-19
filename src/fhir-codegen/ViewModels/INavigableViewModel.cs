@@ -3,21 +3,27 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Avalonia.Controls;
-using Avalonia.Media;
 using Material.Icons;
-using Material.Icons.Avalonia;
 
 namespace fhir_codegen.ViewModels;
 
+// <summary>
+// Represents a view model that can be navigated to.
+// </summary>
 internal interface INavigableViewModel
 {
+    /// <summary>
+    /// Gets the label for the navigable view model.
+    /// </summary>
     public static string Label { get; } = " - ";
 
+    /// <summary>
+    /// Gets if this model is indented in layout (only single level for now).
+    /// </summary>
+    public static bool Indented { get; } = false;
+
+    /// <summary>
+    /// Gets the icon kind for the navigable view model.
+    /// </summary>
     public static MaterialIconKind IconKind { get; }
 }

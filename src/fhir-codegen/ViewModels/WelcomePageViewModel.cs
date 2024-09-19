@@ -14,6 +14,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.DependencyInjection;
 using Material.Icons;
 using Microsoft.Health.Fhir.CodeGen._ForPackages;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
@@ -23,12 +24,14 @@ namespace fhir_codegen.ViewModels;
 
 public partial class WelcomePageViewModel : ViewModelBase, INavigableViewModel
 {
+    public static string Label => "Home";
+    public static MaterialIconKind IconKind => MaterialIconKind.Home;
+    public static bool Indented => false;
+
     public record class InstalledPackageInfoRecord
     {
         public required Firely.Fhir.Packages.PackageReference PackageRef { get; init; }
         public required PackageManifest? Manifest { get; init; }
-
-
         public required string Moniker { get; init; }
         public required string Name { get; init; }
         public required string Version { get; init; }
@@ -38,12 +41,6 @@ public partial class WelcomePageViewModel : ViewModelBase, INavigableViewModel
         public required string Description { get; init; }
 
     }
-
-    public static string Label => "Home";
-    public static MaterialIconKind IconKind => MaterialIconKind.Home;
-    //public static StreamGeometry? IconGeometry => (Application.Current?.TryGetResource("home_regular", out object? icon) ?? false) && icon is StreamGeometry sg
-    //    ? sg
-    //    : null;
 
     [ObservableProperty]
     private string _header = "FHIR Codegen - FHIR Cache Contents";
@@ -97,7 +94,9 @@ public partial class WelcomePageViewModel : ViewModelBase, INavigableViewModel
         :base()
     {
         // get the current configuration
-        ConfigGui? config = Gui.RunningConfiguration;
+        ConfigGui? config = (args is ConfigGui c)
+            ? c
+            : Ioc.Default.GetService<ConfigGui>();
 
         if (config == null)
         {

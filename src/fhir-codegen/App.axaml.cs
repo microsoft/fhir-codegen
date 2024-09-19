@@ -4,6 +4,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Controls.Templates;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
+using CommunityToolkit.Mvvm.DependencyInjection;
 using fhir_codegen.ViewModels;
 using fhir_codegen.Views;
 using Splat;
@@ -26,7 +27,7 @@ public partial class App : Application
         {
             desktop.MainWindow = new MainWindow()
             {
-                DataContext = new MainWindowViewModel(),
+                DataContext = Ioc.Default.GetService<MainWindowViewModel>() ?? new MainWindowViewModel(),
             };
         }
 

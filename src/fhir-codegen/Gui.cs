@@ -9,15 +9,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.ReactiveUI;
+using CommunityToolkit.Mvvm.DependencyInjection;
+using fhir_codegen.Models;
+using fhir_codegen.ViewModels;
+using fhir_codegen.Views;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
 
 namespace fhir_codegen;
 
 internal class Gui
 {
-    public static ConfigGui? RunningConfiguration { get; private set; } = null;
-
     [STAThread]
     public static int RunGui(System.CommandLine.Parsing.ParseResult pr)
     {
@@ -26,7 +31,18 @@ internal class Gui
 
         try
         {
-            RunningConfiguration = config;
+            ServiceCollection services = new();
+            ServiceProvider provider = services
+                .AddSingleton<ConfigGui>(config)
+                .AddSingleton<ComparisonUiModel>()
+                //.AddTransient<HomePageViewModel>()
+                //.AddTransient<HomePageView>()
+                //.AddTransient<TextPageViewModel>()
+                //.AddTransient<ChatPageViewModel>()
+                //.AddTransient<ChatPageView>()
+                .BuildServiceProvider();
+            Ioc.Default.ConfigureServices(provider);
+
             BuildAvaloniaApp().StartWithClassicDesktopLifetime([], Avalonia.Controls.ShutdownMode.OnMainWindowClose);
         }
         catch (System.Collections.Generic.KeyNotFoundException)
@@ -45,10 +61,9 @@ internal class Gui
 
     // Avalonia configuration, don't remove; also used by visual designer.
     public static AppBuilder BuildAvaloniaApp()
-        => AppBuilder.Configure<App>()
-            .UsePlatformDetect()
-            .WithInterFont()
-            .LogToTrace()
-            .UseReactiveUI();
-
+            => AppBuilder.Configure<App>()
+                .UsePlatformDetect()
+                .WithInterFont()
+                .LogToTrace()
+                .UseReactiveUI();
 }

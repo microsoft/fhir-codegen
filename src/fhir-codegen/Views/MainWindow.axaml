@@ -17,11 +17,11 @@
     </Design.DataContext>
 
     <SplitView IsPaneOpen="{Binding IsPaneOpen}"
-               DisplayMode="CompactInline"
-               CompactPaneLength="44"
-               OpenPaneLength="300"
-               Background="#1e1e1e"
-               PaneBackground="#1e1e1e">
+                DisplayMode="CompactInline"
+                CompactPaneLength="52"
+                OpenPaneLength="300"
+                Background="#1e1e1e"
+                PaneBackground="#1e1e1e">
         <SplitView.Pane>
             <StackPanel Orientation="Vertical"
                         Spacing="5"
@@ -34,15 +34,17 @@
                 </Button>
 
                 <ListBox ItemsSource="{Binding NavigationItems}"
-                         SelectedItem="{Binding SelectedNavigationItem}"
-                         Margin="0">
+                            SelectedItem="{Binding SelectedNavigationItem}"
+                            Margin="0">
                     <ListBox.ItemTemplate>
                         <DataTemplate DataType="{x:Type vm:NavigationItemTemplate}">
-                            <StackPanel Spacing="12" Margin="0" Orientation="Horizontal">
+                            <StackPanel Spacing="8" Margin="0" Orientation="Horizontal" IsVisible="{Binding Visible}">
+                                <Border Width="0" Margin="0" Padding="0" IsVisible="{Binding Indented}"></Border>
                                 <Border Classes="cgIconBorder32">
                                     <materialIcons:MaterialIcon Kind="{Binding IconKind}" Classes="cgIcon24"/>
                                 </Border>
-                                <TextBlock Text="{Binding Label}" VerticalAlignment="Center" />
+                                <Border Width="0" Margin="0" Padding="0"></Border>
+                                <TextBlock Text="{Binding Label}" VerticalAlignment="Center"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
