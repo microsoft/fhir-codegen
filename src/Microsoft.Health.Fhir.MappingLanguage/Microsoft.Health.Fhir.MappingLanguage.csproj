@@ -8,7 +8,7 @@
   <ItemGroup>
     <PackageReference Include="Antlr4.Runtime.Standard" Version="4.13.1" />
     <PackageReference Include="Hl7.Fhir.R5" Version="5.10.2" />
-    <PackageReference Include="brianpos.Fhir.Base.FhirPath.Validator" Version="5.10.0-rc1" />
+    <PackageReference Include="brianpos.Fhir.Base.FhirPath.Validator" Version="5.10.2-rc1" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">

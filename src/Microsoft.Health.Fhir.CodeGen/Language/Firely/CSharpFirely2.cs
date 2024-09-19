@@ -821,6 +821,29 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
                 edDiv.IsSummary = true;
             }
         }
+
+        // correct issues in FHIR 6.0.0-ballot2
+        if ((_info.MainPackageId == "hl7.fhir.r6.core") && (_info.MainPackageVersion == "6.0.0-ballot2"))
+        {
+            if (_info.ResourcesByName.TryGetValue("TestScript", out StructureDefinition? sdTestScript))
+            {
+                if (sdTestScript.cgTryGetElementById("TestScript.setup.action.common.parameter", out ElementDefinition? edSetupCommonParameter))
+                {
+                    // Set the class name to use for this new backbone element
+                    edSetupCommonParameter.AddExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name", new FhirString("SetupActionCommonParameter"));
+                }
+                if (sdTestScript.cgTryGetElementById("TestScript.common.parameter", out ElementDefinition? edCommonParameter))
+                {
+                    // Set the class name to use for this new backbone element
+                    edCommonParameter.AddExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name", new FhirString("CommonParameter"));
+                }
+                if (sdTestScript.cgTryGetElementById("TestScript.setup.action.common", out ElementDefinition? edSetupActionCommon))
+                {
+                    // Set the class name to use for this new backbone element
+                    edSetupActionCommon.AddExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name", new FhirString("SetupActionCommon"));
+                }
+            }
+        }
     }
 
     /// <summary>Writes a model information.</summary>
@@ -1192,7 +1215,12 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
                     || subset.HasFlag(GenSubset.Conformance) && _conformanceSubsetValueSets.Contains(vs.Url)
                     || subset.HasFlag(GenSubset.Base) && _baseSubsetValueSets.Contains(vs.Url);
 
-                WriteEnum(vs, string.Empty, usedEnumNames, silent: !writeValueSet);
+                if (!WriteEnum(vs, string.Empty, usedEnumNames, silent: !writeValueSet))
+                {
+                    // value set could not be written (e.g., could not be expanded)
+                    Console.WriteLine($"Wanted to write an enum for ValueSet {vs.Url}, but could not.");
+                    continue;
+                }
 
                 if (writeValueSet)
                 {
@@ -2722,7 +2750,7 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
     /// <param name="className">Name of the class this enum is being written in.</param>
     /// <param name="usedEnumNames"></param>
     /// <param name="silent">Do not actually write parameter to file, just add it in memory.</param>
-    private void WriteEnum(
+    private bool WriteEnum(
         ValueSet vs,
         string className,
         HashSet<string> usedEnumNames,
@@ -2739,24 +2767,28 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
             }
             else if (behaviors.AllowInClasses == false)
             {
-                return;
+                return false;
             }
         }
 
         if (passes || _writtenValueSets.ContainsKey(vs.Url))
         {
-            return;
+            return true;
         }
 
         if (passes || _exclusionSet.Contains(vs.Url))
         {
-            return;
+            return false;
         }
 
-        //if (vs.IsLimitedExpansion())
-        //{
-        //    return;
-        //}
+        FhirConcept[] concepts = vs.cgGetFlatConcepts(_info).ToArray();
+
+        if (concepts.Length == 0)
+        {
+            // TODO(ginoc): 2024.09.19 - do we want to start using a Terminology server to expand these?
+            // value set that cannot be expanded and does not have an expansion provided
+            return false;
+        }
 
         string name = (vs.Name ?? vs.Id)
             .Replace(" ", string.Empty, StringComparison.Ordinal)
@@ -2773,7 +2805,7 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
 
         if (usedEnumNames.Contains(nameSanitized))
         {
-            return;
+            return true;
         }
 
         usedEnumNames.Add(nameSanitized);
@@ -2788,7 +2820,7 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
                     ValueSetName = nameSanitized,
                 });
 
-            return;
+            return true;
         }
 
         IEnumerable<string> referencedCodeSystems = vs.cgReferencedCodeSystems();
@@ -2857,8 +2889,6 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
                 break;
         }
 
-        IEnumerable<FhirConcept> concepts = vs.cgGetFlatConcepts(_info);
-
         var defaultSystem = GetDefaultCodeSystem(concepts);
 
         _writer.WriteLineIndented($"[FhirEnumeration(\"{name}\", \"{vs.Url}\", \"{defaultSystem}\")]");
@@ -2924,6 +2954,8 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
                 ClassName = className,
                 ValueSetName = nameSanitized,
             });
+
+        return true;
     }
 
     private static string GetDefaultCodeSystem(IEnumerable<FhirConcept> concepts)

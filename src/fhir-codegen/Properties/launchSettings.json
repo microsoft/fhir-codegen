@@ -35,6 +35,11 @@
             "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.R5\\Model -p hl7.fhir.r5.core#5.0.0 -p hl7.fhir.r5.expansions#5.0.0 --subset satellite",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
+        "Firely 5.x R6": {
+            "commandName": "Project",
+            "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.R6\\Model -p hl7.fhir.r6.core#6.0.0-ballot2 -p hl7.fhir.r6.expansions#6.0.0-ballot2 --subset satellite",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
         "Firely IG Backport": {
             "commandName": "Project",
             "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.uv.subscriptions-backport#1.1.0 --fhir-version 4.0.1 --auto-load-expansions --resolve-dependencies true --include-experimental",
