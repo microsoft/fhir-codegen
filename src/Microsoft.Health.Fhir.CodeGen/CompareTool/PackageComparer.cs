@@ -2052,7 +2052,7 @@ public class PackageComparer
                         TargetMappings = [],
                         Relationship = null,
                         Message = $"{c.Key} does not exist in {_targetRLiteral} and has no mapping",
-                    }).ToDictionary(c => c.Source.Code),
+                    }).ToDictionary(c => c.Source.System + "#" + c.Source.Code),
                 });
             }
         }
@@ -2197,7 +2197,7 @@ public class PackageComparer
                 Message = MessageForDetails(conceptComparisonDetails, sourceConcept, targetVs),
             };
 
-            conceptComparisons.Add(sourceConcept.Code, cc);
+            conceptComparisons.Add(sourceConcept.System + "#" + sourceConcept.Code, cc);
         }
 
         // check our target -> sources to see if we need to mark items as narrower
@@ -2240,7 +2240,7 @@ public class PackageComparer
                             .ToList(),
                     };
 
-                    conceptComparisons[sourceConcept] = updated;
+                    conceptComparisons[sourceKey] = updated;
                 }
             }
         }
@@ -3335,7 +3335,7 @@ public class PackageComparer
             MaxCardinalityString = ed.Max,
             ValueSetBindingStrength = ed.Binding?.Strength,
             BindingValueSet = ed.Binding?.ValueSet ?? string.Empty,
-            Types = ed.Type.Select(tr => GetInfo(tr.cgAsR5())).ToDictionary(i => string.IsNullOrEmpty(i.Name) ? ed.Path : i.Name),
+            Types = ed.Type.Select(tr => GetInfo(tr.cgAsR5(ed.Path))).ToDictionary(i => string.IsNullOrEmpty(i.Name) ? ed.Path : i.Name),
         };
     }
 

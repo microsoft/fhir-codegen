@@ -441,6 +441,25 @@ public partial class DefinitionCollection
             // check for a single type and add to the path types dictionary
             if (ed.Type.Count == 1)
             {
+                ElementDefinition.TypeRefComponent tr = ed.Type.First();
+                string? elementType = tr.Code;
+                if (elementType == null)
+                {
+                    string elementShortName = ed.Path.Split('.').Last();
+                    switch (elementShortName)
+                    {
+                        case "id":
+                            tr.Code = "http://hl7.org/fhirpath/System.String";
+                            tr.SetExtension(CommonDefinitions.ExtUrlFhirType, new FhirUrl("id"));
+                            break;
+
+                        case "url":
+                            tr.Code = "http://hl7.org/fhirpath/System.String";
+                            tr.SetExtension(CommonDefinitions.ExtUrlFhirType, new FhirUrl("uri"));
+                            break;
+                    }
+                }
+
                 // check for existing multi-type path
                 if (multiTypePaths.Contains(ed.Path))
                 {

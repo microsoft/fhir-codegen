@@ -48,10 +48,10 @@ public static class ElementDefTypeExtensions
         }
     }
 
-    public static ElementDefinition.TypeRefComponent cgAsR5(this ElementDefinition.TypeRefComponent tr)
+    public static ElementDefinition.TypeRefComponent cgAsR5(this ElementDefinition.TypeRefComponent tr, string? elementPath = null)
     {
         // check for already having a primitive type
-        if (!tr.Code.Contains('.'))
+        if (!tr.Code?.Contains('.') ?? false)
         {
             return tr;
         }
@@ -60,7 +60,12 @@ public static class ElementDefTypeExtensions
             ?? tr.GetExtensionValue<FhirString>(CommonDefinitions.ExtUrlFhirType)?.ToString()
             ?? string.Empty;
 
-        string typeKey = tr.Code + "#" + typeExt;
+        string typeKey = (tr.Code ?? string.Empty) + "#" + typeExt;
+
+        if ((typeKey == "#") && (elementPath != null))
+        {
+            typeKey += elementPath.Split('.').Last();
+        }
 
         switch (typeKey)
         {
@@ -68,16 +73,19 @@ public static class ElementDefTypeExtensions
             // R4 Resource.id
             // R5 Element.id
             case "http://hl7.org/fhirpath/System.String#string":
+            case "#string":
             // R4B Element.id
             // R4B Resource.id
             // R5 Resource.id
             case "http://hl7.org/fhirpath/System.String#id":
+            case "#id":
                 return BuildType("id");
 
             // R4 Extension.url
             // R4B Extension.url
             // R5 Extension.url
             case "http://hl7.org/fhirpath/System.String#uri":
+            case "#uri":
                 return BuildType("uri");
         }
 
