@@ -31,6 +31,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Health.Fhir.CodeGen.Net;
 using Microsoft.Health.Fhir.CodeGenCommon.Smart;
 using Microsoft.Health.Fhir.CodeGen.CompareTool;
+using Microsoft.Health.Fhir.CodeGen.XVer;
 
 namespace fhir_codegen;
 
@@ -98,6 +99,7 @@ public class Program
         {
             "generate" => await DoGenerate(pr),
             "compare" => await DoCompare(pr),
+            "xver" => await DoXVer(pr),
             //"cross-version" => await CrossVersionInteractive.DoCrossVersionReview(pr),
             "gui" => Gui.RunGui(pr),
             //case "interactive":
@@ -246,6 +248,19 @@ public class Program
 
         // TODO(ginoc): Set the command handler
         rootCommand.AddCommand(compareCommand);
+
+        // create our XVer command
+        SCL.Command xverCommand = new("xver", "Perform FHIR Core Cross-Version processing.");
+        foreach (SCL.Option option in BuildCliOptions(typeof(ConfigXVer), typeof(ConfigRoot), envConfig))
+        {
+            // note that 'global' here is just recursive DOWNWARD
+            xverCommand.AddGlobalOption(option);
+            TrackIfEnum(option);
+        }
+
+        // TODO(ginoc): Set the command handler
+        rootCommand.AddCommand(xverCommand);
+
 
         //// create our cross-version interactive command
         //SCL.Command cviCommand = new("cross-version", "Interactively review cross-version definitions.");
@@ -615,6 +630,55 @@ public class Program
                     comparer.WriteMapFiles(pc);
                 }
             }
+        }
+        catch (Exception ex)
+        {
+            if (ex.InnerException != null)
+            {
+                Console.WriteLine($"DoCompare <<< caught: {ex.Message}::{ex.InnerException.Message}");
+            }
+            else
+            {
+                Console.WriteLine($"DoCompare <<< caught: {ex.Message}");
+            }
+        }
+
+        return 0;
+    }
+
+    public static async Task<int> DoXVer(SCL.Parsing.ParseResult pr)
+    {
+        try
+        {
+            // create our configuration object
+            ConfigXVer config = new();
+
+            // parse the arguments into the configuration object
+            config.Parse(pr);
+
+            Dictionary<string, DefinitionCollection> corePackages = [];
+
+            foreach (string directive in config.ComparePackages)
+            {
+                if (FhirPackageUtils.PackageIsFhirCore(directive))
+                {
+                    throw new Exception($"Package {directive} is not a FHIR Core package!");
+                }
+
+                // create a loader because these are all different FHIR core versions
+                PackageLoader loader = new(config, new()
+                {
+                    JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
+                });
+
+                DefinitionCollection loaded = await loader.LoadPackages([directive])
+                    ?? throw new Exception($"Could not load package: {directive}");
+
+                corePackages.Add(directive, loaded);
+            }
+
+            XVerProcessor xVerProcessor = new(config, corePackages);
+
         }
         catch (Exception ex)
         {

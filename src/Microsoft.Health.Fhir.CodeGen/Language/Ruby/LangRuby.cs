@@ -102,7 +102,7 @@ public class LangRuby : ILanguage
         return writer;
     }
 
-    void CloseAndDispose(ExportStreamWriter writer)
+    private void CloseAndDispose(ExportStreamWriter writer)
     {
         writer.DecreaseIndent();
         writer.WriteLine("end");    // module
