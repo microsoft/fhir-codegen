@@ -11,7 +11,6 @@ using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
-using static Microsoft.Health.Fhir.CodeGen.Language.Firely.CSharpFirely2;
 
 #if NETSTANDARD2_0
 using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
@@ -57,7 +56,7 @@ public class LangCql : ILanguage
         { "id", "ToString" },
         { "instant", "ToDateTime" },
         { "integer", "ToInteger" },
-        { "integer64", "ToString" },       // TODO(ginoc): Is there a version we can start using a non-string type?
+        { "integer64", "ToString" },       // TODO(ginoc): Should I just use ToLong?  Something by version?
         { "markdown", "ToString" },
         { "oid", "ToString" },
         { "positiveInt", "ToInteger" },
@@ -527,10 +526,10 @@ public class LangCql : ILanguage
                 }
 
                 IEnumerable<StructureElementCollection> coreBindings = _dc.CoreBindingsForVs(vs.Url);
-                IReadOnlyDictionary<string, BindingStrength> bindingDict = _dc.BindingStrengthByType(coreBindings);
+                IReadOnlyDictionary<string, Hl7.Fhir.Model.BindingStrength> bindingDict = _dc.BindingStrengthByType(coreBindings);
 
                 // we only care about required bindings
-                if (!bindingDict.TryGetValue("code", out BindingStrength strongest) ||
+                if (!bindingDict.TryGetValue("code", out Hl7.Fhir.Model.BindingStrength strongest) ||
                     (strongest != Hl7.Fhir.Model.BindingStrength.Required))
                 {
                     continue;
