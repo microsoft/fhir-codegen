@@ -56,7 +56,7 @@ public class LangCql : ILanguage
         { "id", "ToString" },
         { "instant", "ToDateTime" },
         { "integer", "ToInteger" },
-        { "integer64", "ToString" },       // TODO(ginoc): Should I just use ToLong?  Something by version?
+        { "integer64", "ToLong" },          // all CQL tooling expects 1.5 or higher, so we can use Long
         { "markdown", "ToString" },
         { "oid", "ToString" },
         { "positiveInt", "ToInteger" },
@@ -103,11 +103,20 @@ public class LangCql : ILanguage
         _config = config;
         _dc = definitions;
 
-        // if the primary package directive is a core package, we need to write helpers
+        // if the primary package directive is a core package, we need to write a helper file
         if (FhirPackageUtils.PackageIsFhirCore(definitions.MainPackageId))
         {
             WriteFhirHelperFile();
         }
+
+
+    }
+
+    private void BuildModelInfo()
+    {
+        ModelInfo cqlModel = new();
+
+
     }
 
     private void WriteFhirHelperFile()

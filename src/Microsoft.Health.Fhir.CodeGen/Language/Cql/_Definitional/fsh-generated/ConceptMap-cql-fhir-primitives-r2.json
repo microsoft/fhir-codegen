@@ -1,0 +1,177 @@
+{
+    "resourceType": "ConceptMap",
+    "id": "cql-fhir-primitives-r2",
+    "url": "http://ginoc.io/cql/cql-fhir-primitives-r2",
+    "status": "active",
+    "jurisdiction": [
+        {
+            "coding": [
+                {
+                    "code": "001",
+                    "system": "http://unstats.un.org/unsd/methods/m49/m49.htm"
+                }
+            ]
+        }
+    ],
+    "group": [
+        {
+            "source": "http://hl7.org/fhir/2.0/data-types",
+            "target": "http://hl7.org/fhirpath",
+            "element": [
+                {
+                    "code": "base64Binary",
+                    "target": [
+                        {
+                            "code": "System.String",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "boolean",
+                    "target": [
+                        {
+                            "code": "System.Boolean",
+                            "relationship": "equivalent"
+                        }
+                    ]
+                },
+                {
+                    "code": "code",
+                    "target": [
+                        {
+                            "code": "System.String",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "date",
+                    "target": [
+                        {
+                            "code": "System.Date",
+                            "relationship": "equivalent"
+                        }
+                    ]
+                },
+                {
+                    "code": "dateTime",
+                    "target": [
+                        {
+                            "code": "System.DateTime",
+                            "relationship": "equivalent"
+                        }
+                    ]
+                },
+                {
+                    "code": "decimal",
+                    "target": [
+                        {
+                            "code": "System.Decimal",
+                            "relationship": "equivalent"
+                        }
+                    ]
+                },
+                {
+                    "code": "id",
+                    "target": [
+                        {
+                            "code": "System.String",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "instant",
+                    "target": [
+                        {
+                            "code": "System.DateTime",
+                            "relationship": "equivalent"
+                        }
+                    ]
+                },
+                {
+                    "code": "integer",
+                    "target": [
+                        {
+                            "code": "System.Integer",
+                            "relationship": "equivalent"
+                        }
+                    ]
+                },
+                {
+                    "code": "markdown",
+                    "target": [
+                        {
+                            "code": "System.String",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "oid",
+                    "target": [
+                        {
+                            "code": "System.String",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "positiveInt",
+                    "target": [
+                        {
+                            "code": "System.Integer",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "string",
+                    "target": [
+                        {
+                            "code": "System.String",
+                            "relationship": "equivalent"
+                        }
+                    ]
+                },
+                {
+                    "code": "time",
+                    "target": [
+                        {
+                            "code": "System.Time",
+                            "relationship": "equivalent"
+                        }
+                    ]
+                },
+                {
+                    "code": "unsignedInt",
+                    "target": [
+                        {
+                            "code": "System.Integer",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "uri",
+                    "target": [
+                        {
+                            "code": "System.String",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "xhtml",
+                    "target": [
+                        {
+                            "code": "System.String",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

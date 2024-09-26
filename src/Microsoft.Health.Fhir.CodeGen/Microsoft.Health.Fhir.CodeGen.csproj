@@ -18,7 +18,37 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Language\Cql\_Definitional\CqlFhirPrimitiveMaps.fsh" />
+    <None Remove="Language\Cql\_Definitional\fsh-generated\ConceptMap-cql-fhir-primitives-r2.json" />
+    <None Remove="Language\Cql\_Definitional\fsh-generated\ConceptMap-cql-fhir-primitives-r3.json" />
+    <None Remove="Language\Cql\_Definitional\fsh-generated\ConceptMap-cql-fhir-primitives-r4.json" />
+    <None Remove="Language\Cql\_Definitional\fsh-generated\ConceptMap-cql-fhir-primitives-r5.json" />
+    <None Remove="Language\Cql\_Definitional\fsh-generated\ConceptMap-cql-fhir-primitives-r6.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Include="..\Microsoft.Health.Fhir.CodeGenCommon\Polyfill\CodeGenCommonPolyfill.cs" Link="Polyfill\CodeGenCommonPolyfill.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Language\Cql\_Definitional\CqlFhirPrimitiveMaps.fsh">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Language\Cql\_Definitional\fsh-generated\ConceptMap-cql-fhir-primitives-r2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Language\Cql\_Definitional\fsh-generated\ConceptMap-cql-fhir-primitives-r3.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Language\Cql\_Definitional\fsh-generated\ConceptMap-cql-fhir-primitives-r4.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Language\Cql\_Definitional\fsh-generated\ConceptMap-cql-fhir-primitives-r5.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Language\Cql\_Definitional\fsh-generated\ConceptMap-cql-fhir-primitives-r6.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
