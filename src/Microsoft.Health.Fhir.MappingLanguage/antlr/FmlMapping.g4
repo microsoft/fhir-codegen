@@ -1,7 +1,10 @@
 /**
  * Define a grammar called FhirMapper
  */
- grammar FmlMapping;
+grammar FmlMapping;
+@header {// Disable the warning for CLSCompliant
+#pragma warning disable 3021
+}
 
 // starting point for parsing a mapping file
 // in case we need nested ConceptMaps, we need to have this rule:
@@ -97,8 +100,7 @@ typeIdentifier
   ;
 
 expression
- 	: qualifiedIdentifier '->' qualifiedIdentifier ';'  #mapSimpleCopy
-//  	| fpExpression ';'                                  #mapFhirPath               
+  : qualifiedIdentifier '->' qualifiedIdentifier mapExpressionName? ';'  #mapSimpleCopy
   | mapExpression ';'                                 #mapFhirMarkup
  	;
 
@@ -136,13 +138,14 @@ upperBound
   ;
 
 qualifiedIdentifier
-  : (ID | IDENTIFIER | 'imports' | 'source' | 'target' | 'group' | 'prefix' | 'map' | 'uses' | 'let' | 'types' | 'extends' | 'where' | 'check' | 'alias' | 'div' | 'contains' | 'as' | 'is') 
-    ('.' (ID | IDENTIFIER | 'imports' | 'source' | 'target' | 'group' | 'prefix' | 'map' | 'uses' | 'let' | 'types' | 'extends' | 'where' | 'check' | 'alias' | 'div' | 'contains' | 'as' | 'is'))*
+  : (ID | IDENTIFIER | 'imports' | 'source' | 'target' | 'group' | 'prefix' | 'map' | 'uses' | 'let' | 'types' | 'extends' | 'where' | 'check' | 'alias' | 'div' | 'contains' | 'as' | 'is' | 'first' | 'last' ) 
+    ('.' (ID | IDENTIFIER | 'imports' | 'source' | 'target' | 'group' | 'prefix' | 'map' | 'uses' | 'let' | 'types' | 'extends' | 'where' | 'check' | 'alias' | 'div' | 'contains' | 'as' | 'is' | 'first' | 'last'))*
   // : identifier ('.' identifier '[x]'?)*
   ;
 
 sourceDefault
   : 'default' '(' fpExpression ')'
+  | 'default' DOUBLE_QUOTED_STRING      // very old format from original version
   ;
 
 alias
@@ -150,8 +153,7 @@ alias
   ;
 
 whereClause
-  : 'where'  fpExpression
-  // | 'where' '(' fpExpression ')'                                                    #correctWhere
+  : 'where' '(' fpExpression ')'
   ;
 
 checkClause
@@ -262,7 +264,6 @@ literal
   | TIME                                                  #timeLiteral
   | SINGLE_QUOTED_STRING                                  #stringLiteral
   | DOUBLE_QUOTED_STRING                                  #quotedStringLiteral
-  | ID                                                    #idLiteral
   ;
 
   // : BOOL

@@ -1,10 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\fhir-codegen.props" />
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <Version>2.0.0-beta1</Version>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
   </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="PolySharp" Version="1.14.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="System.Text.Json" Version="8.0.4" />
+  </ItemGroup>
 
 </Project>

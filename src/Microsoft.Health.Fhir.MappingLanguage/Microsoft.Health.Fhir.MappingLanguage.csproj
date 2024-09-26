@@ -1,14 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\fhir-codegen.props" />
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Antlr4.Runtime.Standard" Version="4.13.1" />
-    <PackageReference Include="Hl7.Fhir.R5" Version="5.8.1" />
+    <PackageReference Include="Hl7.Fhir.R5" Version="5.10.2" />
+    <PackageReference Include="brianpos.Fhir.Base.FhirPath.Validator" Version="5.10.2-rc1" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="PolySharp" Version="1.14.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="System.Text.Json" Version="8.0.4" />
   </ItemGroup>
 
   <ItemGroup>

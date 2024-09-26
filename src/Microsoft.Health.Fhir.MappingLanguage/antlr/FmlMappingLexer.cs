@@ -19,6 +19,9 @@
 // Ambiguous reference in cref attribute
 #pragma warning disable 419
 
+// Disable the warning for CLSCompliant
+#pragma warning disable 3021
+
 using System;
 using System.IO;
 using System.Text;
@@ -28,7 +31,7 @@ using Antlr4.Runtime.Misc;
 using DFA = Antlr4.Runtime.Dfa.DFA;
 
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.13.1")]
-//[System.CLSCompliant(false)]
+[System.CLSCompliant(false)]
 public partial class FmlMappingLexer : Lexer {
 	protected static DFA[] decisionToDFA;
 	protected static PredictionContextCache sharedContextCache = new PredictionContextCache();

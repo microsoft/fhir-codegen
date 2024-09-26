@@ -13,6 +13,10 @@ using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 
+#if NETSTANDARD2_0
+using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
+#endif
+
 namespace Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 
 /// <summary>An element definition extensions.</summary>
@@ -133,7 +137,12 @@ public static class ElementDefinitionExtensions
     }
 
     /// <summary>Gets the types.</summary>
-    public static IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> cgTypes(this ElementDefinition ed) => ed.Type.ToDictionary(t => t.cgName(), t => t);
+    public static IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> cgTypes(this ElementDefinition ed, bool coerceToR5 = false) =>
+        coerceToR5
+        ? ed.Type.Select(tr => tr.cgAsR5()).ToDictionary(t => t.cgName(), t => t)
+        : ed.Type.ToDictionary(t => t.cgName(), t => t);
+
+    public static List<ElementDefinition.TypeRefComponent> cgTypesForExt(this ElementDefinition ed) => ed.Type.Select(tr => tr.cgExtCompatible()).ToList();
 
     /// <summary>An ElementDefinition extension method that cg cardinality.</summary>
     /// <param name="ed">The ed to act on.</param>
@@ -254,7 +263,7 @@ public static class ElementDefinitionExtensions
 
             if (ed.ContentReference.StartsWith('#'))
             {
-                value = ed.ContentReference.Substring(1);
+                value = ed.ContentReference[1..];
                 return (typeMap?.TryGetValue(value, out mapped) ?? false)
                     ? mapped : value;
             }
@@ -557,6 +566,33 @@ public static class ElementDefinitionExtensions
                 }
 
             case NamingConvention.None:
+                {
+                    string value;
+
+                    if (concatenatePath)
+                    {
+                        value = skipStructureNameInConcatenation
+                            ? ed.Path[startIndex..]
+                            : ed.Path;
+
+                        if ((reservedWords != null) &&
+                            reservedWords.Contains(value))
+                        {
+                            return "fhir_" + value;
+                        }
+                    }
+
+                    value = name;
+
+                    if ((reservedWords != null) &&
+                        reservedWords.Contains(value))
+                    {
+                        return "fhir" + value;
+                    }
+
+                    return value;
+                }
+
             default:
                 throw new ArgumentException($"Invalid Naming Convention: {convention}");
         }

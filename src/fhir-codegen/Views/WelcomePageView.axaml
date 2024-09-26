@@ -4,6 +4,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             Name="Home"
              x:Class="fhir_codegen.Views.WelcomePageView"
              x:DataType="vm:WelcomePageViewModel">
 
@@ -13,8 +14,45 @@
         <vm:WelcomePageViewModel/>
     </Design.DataContext>
 
-    <StackPanel Orientation="Vertical">
-        <Label Content="{Binding Header}"/>
-    </StackPanel>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
+        <StackPanel Orientation="Vertical" Grid.Row="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Content="{Binding Header}" VerticalAlignment="Center"/>
+                <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label Content="Moniker Filter:" VerticalAlignment="Center"/>
+                    <TextBox Text="{Binding TableFilter, Mode=TwoWay}" VerticalAlignment="Center" Width="200" />
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+        <DataGrid
+            Grid.Row="1"
+            ItemsSource="{Binding FilteredInstalledPackages}"
+            IsReadOnly="True"
+            CanUserSortColumns="True"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Moniker" Binding="{Binding Moniker}" Width="2*"/>
+                <DataGridTextColumn Header="Manifest Version" Binding="{Binding Path=ManifestVersion}" Width="*"/>
+                <DataGridTextColumn Header="Date" Binding="{Binding Path=PackageDate}" Width="*"/>
+                <DataGridTextColumn Header="FHIR Version" Binding="{Binding Path=FhirVersion}" Width="*"/>
+                <DataGridTextColumn Header="Description" Binding="{Binding Path=Description}" Width="6*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+
+    
 </UserControl>

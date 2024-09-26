@@ -3,134 +3,79 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System.Text.Json.Nodes;
 using FluentAssertions;
 using Microsoft.Health.Fhir.CodeGen.Loader;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
-using Microsoft.Health.Fhir.PackageManager;
-using Microsoft.Health.Fhir.PackageManager.Models;
 using Xunit.Abstractions;
 using Xunit.Sdk;
 
 namespace Microsoft.Health.Fhir.CodeGen.Tests;
 
 /// <summary>A FHIR package test fixture.</summary>
-public class FhirPackageTestFixture
+public class FhirPackageTestBase : IDisposable
 {
-    /// <summary>The cache.</summary>
-    public IFhirPackageClient Cache;
+    public const string? CachePath = null;
 
-    /// <summary>The FHIR R5 package entries.</summary>
-    public IEnumerable<PackageCacheEntry> EntriesR5;
-
-    /// <summary>The FHIR R4B package entries.</summary>
-    public IEnumerable<PackageCacheEntry> EntriesR4B;
-
-    /// <summary>The FHIR R4 package entries.</summary>
-    public IEnumerable<PackageCacheEntry> EntriesR4;
-
-    /// <summary>The FHIR STU3 package entries.</summary>
-    public IEnumerable<PackageCacheEntry> EntriesR3;
-
-    /// <summary>The FHIR DSTU2 package entries.</summary>
-    public IEnumerable<PackageCacheEntry> EntriesR2;
+    private bool _disposedValue = false;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="FhirPackageTestFixture"/> class.
+    /// Initializes a new instance of the <see cref="FhirPackageTestBase"/> class.
     /// </summary>
-    public FhirPackageTestFixture()
+    public FhirPackageTestBase()
     {
-        Cache = FhirCache.Create(new FhirPackageClientSettings()
-        {
-            CachePath = "~/.fhir",
-        });
-
-        EntriesR5 =
-        [
-            Load("hl7.fhir.r5.core#5.0.0"),
-            Load("hl7.fhir.r5.expansions#5.0.0"),
-            Load("hl7.fhir.uv.extensions#1.0.0"),
-        ];
-
-        EntriesR4B =
-        [
-            Load("hl7.fhir.r4b.core#4.3.0"),
-            Load("hl7.fhir.r4b.expansions#4.3.0"),
-            Load("hl7.fhir.uv.extensions#1.0.0"),
-        ];
-
-        EntriesR4 =
-        [
-            Load("hl7.fhir.r4.core#4.0.1"),
-            Load("hl7.fhir.r4.expansions#4.0.1"),
-            Load("hl7.fhir.uv.extensions#1.0.0"),
-        ];
-
-        EntriesR3 =
-        [
-            Load("hl7.fhir.r3.core#3.0.2"),
-            Load("hl7.fhir.r3.expansions#3.0.2"),
-        ];
-
-        EntriesR2 =
-        [
-            Load("hl7.fhir.r2.core#1.0.2"),
-            Load("hl7.fhir.r2.expansions#1.0.2"),
-        ];
     }
 
-    /// <summary>Loads.</summary>
-    /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>
-    /// <param name="directive">The directive to load.</param>
-    /// <returns>A PackageCacheEntry.</returns>
-    private PackageCacheEntry Load(string directive)
+    protected virtual void Dispose(bool disposing)
     {
-        PackageCacheEntry? p = Cache.FindOrDownloadPackageByDirective(directive, false).Result;
-
-        if (p == null)
+        if (!_disposedValue)
         {
-            throw new Exception($"Failed to load {directive}");
-        }
+            if (disposing)
+            {
+                // TODO: dispose managed state (managed objects)
+            }
 
-        return (PackageCacheEntry)p;
+            // TODO: free unmanaged resources (unmanaged objects) and override finalizer
+            // TODO: set large fields to null
+            _disposedValue = true;
+        }
+    }
+
+    /// <summary>
+    /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged
+    /// resources.
+    /// </summary>
+    void IDisposable.Dispose()
+    {
+        // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+        Dispose(disposing: true);
+        GC.SuppressFinalize(this);
     }
 }
 
 /// <summary>
 /// Represents a test fixture for FHIR package tests.
 /// </summary>
-public class FhirPackageTestsR5 : IClassFixture<FhirPackageTestFixture>
+public class FhirPackageTestsR5 : FhirPackageTestBase
 {
-    private const int _countCodeSystemsByUrl = 485;             // 448 in core, 485 in +extensions
-    private const int _countValueSetsByUrl = 887;               // 788 in core, 848 in +extensions, 887 in +expansions
-    private const int _countPrimitiveTypesByName = 21;
-    private const int _countComplexTypesByName = 48;
-    private const int _countResourcesByName = 160;              // 157 concrete resources, 3 abstract
-    private const int _countLogicalModelsByName = 10;
-    private const int _countExtensionsByUrl = 512;              // 0 in core, 512 in +extensions
-    private const int _countProfilesByUrl = 66;
-    private const int _countSearchParametersByUrl = 1263;       // 1244 in core, 1263 in +extensions
-    private const int _countOperationsByUrl = 61;
-    private const int _countCapabilityStatementsByUrl = 6;
-    private const int _countImplementationGuidesByUrl = 3;      // 2 in core, 3 in +extensions
-    private const int _countCompartmentsByUrl = 6;
+    private int _countCodeSystemsByUrl = TestCommon.EntriesR4.Length == 1 ? 448 : 485;              // 448 in core, 485 in +extensions
+    private int _countValueSetsByUrl = TestCommon.EntriesR4.Length == 1 ? 827 : 887;
+    private int _countPrimitiveTypesByName = 21;
+    private int _countComplexTypesByName = 48;
+    private int _countResourcesByName = 160;                                                        // 157 concrete resources, 3 abstract
+    private int _countLogicalModelsByName = 10;
+    private int _countExtensionsByUrl = TestCommon.EntriesR4.Length == 1 ? 0 : 512;                 // 0 in core, 512 in +extensions
+    private int _countProfilesByUrl = 66;
+    private int _countSearchParametersByUrl = TestCommon.EntriesR4.Length == 1 ? 1244 : 1263;       // 1244 in core, 1263 in +extensions
+    private int _countOperationsByUrl = 61;
+    private int _countCapabilityStatementsByUrl = 6;
+    private int _countImplementationGuidesByUrl = TestCommon.EntriesR4.Length == 1 ? 2 : 3;         // 2 in core, 3 in +extensions
+    private int _countCompartmentsByUrl = 6;
 
-    /// <summary>
-    /// The test output helper.
-    /// </summary>
-    private readonly ITestOutputHelper _testOutputHelper;
-
-    private readonly FhirPackageTestFixture _fixture;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="FhirPackageTestsR5"/> class.
-    /// </summary>
-    /// <param name="fixture">The fixture.</param>
-    /// <param name="testOutputHelper">The test output helper.</param>
-    public FhirPackageTestsR5(FhirPackageTestFixture fixture, ITestOutputHelper testOutputHelper)
+    /// <summary>Initializes a new instance of the <see cref="FhirPackageTestsR5"/> class.</summary>
+    public FhirPackageTestsR5() : base()
     {
-        _testOutputHelper = testOutputHelper;
-        _fixture = fixture;
     }
 
     /// <summary>
@@ -143,11 +88,11 @@ public class FhirPackageTestsR5 : IClassFixture<FhirPackageTestFixture>
     [Trait("Category", "Parse")]
     [Trait("Format", "Json")]
     [Trait("FhirVersion", "R5")]
+    [Trait("DefaultCache", "true")]
     internal async Task ParseCorePackage(LoaderOptions.JsonDeserializationModel jsonModel)
     {
-        PackageLoader loader = new(_fixture.Cache, new() { JsonModel = jsonModel });
-
-        DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR5.First().Name, _fixture.EntriesR5);
+        PackageLoader loader = new(new() { FhirCacheDirectory = CachePath }, new() { JsonModel = jsonModel });
+        DefinitionCollection? loaded = await loader.LoadPackages(TestCommon.EntriesR5);
 
         loaded.Should().NotBeNull();
 
@@ -156,54 +101,41 @@ public class FhirPackageTestsR5 : IClassFixture<FhirPackageTestFixture>
             return;
         }
 
-        loaded.CodeSystemsByUrl.Should().HaveCount(_countCodeSystemsByUrl, string.Join("\n", loaded.CodeSystemsByUrl.Keys.OrderBy(v => v)));
-        loaded.ValueSetsByVersionedUrl.Should().HaveCount(_countValueSetsByUrl, string.Join("\n", loaded.ValueSetsByVersionedUrl.Keys.OrderBy(v => v)));
-        loaded.PrimitiveTypesByName.Should().HaveCount(_countPrimitiveTypesByName, string.Join("\n", loaded.PrimitiveTypesByName.Keys.OrderBy(v => v)));
-        loaded.ComplexTypesByName.Should().HaveCount(_countComplexTypesByName, string.Join("\n", loaded.ComplexTypesByName.Keys.OrderBy(v => v)));
-        loaded.ResourcesByName.Should().HaveCount(_countResourcesByName, string.Join("\n", loaded.ResourcesByName.Keys.OrderBy(v => v)));
-        loaded.LogicalModelsByUrl.Should().HaveCount(_countLogicalModelsByName, string.Join("\n", loaded.LogicalModelsByUrl.Keys.OrderBy(v => v)));
-        loaded.ExtensionsByUrl.Should().HaveCount(_countExtensionsByUrl, string.Join("\n", loaded.ExtensionsByUrl.Keys.OrderBy(v => v)));
-        loaded.ProfilesByUrl.Should().HaveCount(_countProfilesByUrl, string.Join("\n", loaded.ProfilesByUrl.Keys.OrderBy(v => v)));
+        loaded.CodeSystemsByUrl.Should().HaveCount(_countCodeSystemsByUrl);
+        loaded.ValueSetsByVersionedUrl.Should().HaveCount(_countValueSetsByUrl);
+        loaded.PrimitiveTypesByName.Should().HaveCount(_countPrimitiveTypesByName);
+        loaded.ComplexTypesByName.Should().HaveCount(_countComplexTypesByName);
+        loaded.ResourcesByName.Should().HaveCount(_countResourcesByName);
+        loaded.LogicalModelsByUrl.Should().HaveCount(_countLogicalModelsByName);
+        loaded.ExtensionsByUrl.Should().HaveCount(_countExtensionsByUrl);
+        loaded.ProfilesByUrl.Should().HaveCount(_countProfilesByUrl);
         loaded.SearchParametersByUrl.Should().HaveCount(_countSearchParametersByUrl);
-        loaded.OperationsByUrl.Should().HaveCount(_countOperationsByUrl, string.Join("\n", loaded.OperationsByUrl.Keys.OrderBy(v => v)));
-        loaded.CapabilityStatementsByUrl.Should().HaveCount(_countCapabilityStatementsByUrl, string.Join("\n", loaded.CapabilityStatementsByUrl.Keys.OrderBy(v => v)));
-        loaded.ImplementationGuidesByUrl.Should().HaveCount(_countImplementationGuidesByUrl, string.Join("\n", loaded.ImplementationGuidesByUrl.Keys.OrderBy(v => v)));
-        loaded.CompartmentsByUrl.Should().HaveCount(_countCompartmentsByUrl, string.Join("\n", loaded.CompartmentsByUrl.Keys.OrderBy(v => v)));
+        loaded.OperationsByUrl.Should().HaveCount(_countOperationsByUrl);
+        loaded.CapabilityStatementsByUrl.Should().HaveCount(_countCapabilityStatementsByUrl);
+        loaded.ImplementationGuidesByUrl.Should().HaveCount(_countImplementationGuidesByUrl);
+        loaded.CompartmentsByUrl.Should().HaveCount(_countCompartmentsByUrl);
     }
 }
 
-public class FhirPackageTestsR4B : IClassFixture<FhirPackageTestFixture>
+public class FhirPackageTestsR4B : FhirPackageTestBase
 {
-    private const int _countCodeSystemsByUrl = 565;
-    private const int _countValueSetsByUrl = 805;
-    private const int _countPrimitiveTypesByName = 20;
-    private const int _countComplexTypesByName = 43;
-    private const int _countResourcesByName = 143;
-    private const int _countLogicalModelsByName = 4;
-    private const int _countExtensionsByUrl = 559;
-    private const int _countProfilesByUrl = 43;
-    private const int _countSearchParametersByUrl = 1444;
-    private const int _countOperationsByUrl = 47;
-    private const int _countCapabilityStatementsByUrl = 6;
-    private const int _countImplementationGuidesByUrl = 2;
-    private const int _countCompartmentsByUrl = 6;
+    private int _countCodeSystemsByUrl = TestCommon.EntriesR4.Length == 1 ? 540 : 565;
+    private int _countValueSetsByUrl = TestCommon.EntriesR4.Length == 1 ? 745 : 805;
+    private int _countPrimitiveTypesByName = 20;
+    private int _countComplexTypesByName = 43;
+    private int _countResourcesByName = 143;
+    private int _countLogicalModelsByName = 4;
+    private int _countExtensionsByUrl = TestCommon.EntriesR4.Length == 1 ? 398 : 559;
+    private int _countProfilesByUrl = 43;
+    private int _countSearchParametersByUrl = TestCommon.EntriesR4.Length == 1 ? 1439 : 1444;
+    private int _countOperationsByUrl = 47;
+    private int _countCapabilityStatementsByUrl = 6;
+    private int _countImplementationGuidesByUrl = TestCommon.EntriesR4.Length == 1 ? 1 : 2;
+    private int _countCompartmentsByUrl = 6;
 
-    /// <summary>
-    /// The test output helper.
-    /// </summary>
-    private readonly ITestOutputHelper _testOutputHelper;
-
-    private readonly FhirPackageTestFixture _fixture;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="FhirPackageTestsR5"/> class.
-    /// </summary>
-    /// <param name="fixture">The fixture.</param>
-    /// <param name="testOutputHelper">The test output helper.</param>
-    public FhirPackageTestsR4B(FhirPackageTestFixture fixture, ITestOutputHelper testOutputHelper)
+    /// <summary>Initializes a new instance of the <see cref="FhirPackageTestsR4B"/> class.</summary>
+    public FhirPackageTestsR4B() : base()
     {
-        _testOutputHelper = testOutputHelper;
-        _fixture = fixture;
     }
 
     /// <summary>
@@ -214,11 +146,11 @@ public class FhirPackageTestsR4B : IClassFixture<FhirPackageTestFixture>
     [Trait("Category", "Parse")]
     [Trait("Format", "Json")]
     [Trait("FhirVersion", "R4B")]
+    [Trait("DefaultCache", "true")]
     internal async Task ParseCorePackage()
     {
-        PackageLoader loader = new(_fixture.Cache, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
-
-        DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR4B.First().Name, _fixture.EntriesR4B);
+        PackageLoader loader = new(new() { FhirCacheDirectory = CachePath }, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
+        DefinitionCollection? loaded = await loader.LoadPackages(TestCommon.EntriesR4B);
 
         loaded.Should().NotBeNull();
 
@@ -227,54 +159,41 @@ public class FhirPackageTestsR4B : IClassFixture<FhirPackageTestFixture>
             return;
         }
 
-        loaded.CodeSystemsByUrl.Should().HaveCount(_countCodeSystemsByUrl, string.Join("\n", loaded.CodeSystemsByUrl.Keys.OrderBy(v => v)));
-        loaded.ValueSetsByVersionedUrl.Should().HaveCount(_countValueSetsByUrl, string.Join("\n", loaded.ValueSetsByVersionedUrl.Keys.OrderBy(v => v)));
-        loaded.PrimitiveTypesByName.Should().HaveCount(_countPrimitiveTypesByName, string.Join("\n", loaded.PrimitiveTypesByName.Keys.OrderBy(v => v)));
-        loaded.ComplexTypesByName.Should().HaveCount(_countComplexTypesByName, string.Join("\n", loaded.ComplexTypesByName.Keys.OrderBy(v => v)));
-        loaded.ResourcesByName.Should().HaveCount(_countResourcesByName, string.Join("\n", loaded.ResourcesByName.Keys.OrderBy(v => v)));
-        loaded.LogicalModelsByUrl.Should().HaveCount(_countLogicalModelsByName, string.Join("\n", loaded.LogicalModelsByUrl.Keys.OrderBy(v => v)));
-        loaded.ExtensionsByUrl.Should().HaveCount(_countExtensionsByUrl, string.Join("\n", loaded.ExtensionsByUrl.Keys.OrderBy(v => v)));
-        loaded.ProfilesByUrl.Should().HaveCount(_countProfilesByUrl, string.Join("\n", loaded.ProfilesByUrl.Keys.OrderBy(v => v)));
+        loaded.CodeSystemsByUrl.Should().HaveCount(_countCodeSystemsByUrl);
+        loaded.ValueSetsByVersionedUrl.Should().HaveCount(_countValueSetsByUrl);
+        loaded.PrimitiveTypesByName.Should().HaveCount(_countPrimitiveTypesByName);
+        loaded.ComplexTypesByName.Should().HaveCount(_countComplexTypesByName);
+        loaded.ResourcesByName.Should().HaveCount(_countResourcesByName);
+        loaded.LogicalModelsByUrl.Should().HaveCount(_countLogicalModelsByName);
+        loaded.ExtensionsByUrl.Should().HaveCount(_countExtensionsByUrl);
+        loaded.ProfilesByUrl.Should().HaveCount(_countProfilesByUrl);
         loaded.SearchParametersByUrl.Should().HaveCount(_countSearchParametersByUrl);
-        loaded.OperationsByUrl.Should().HaveCount(_countOperationsByUrl, string.Join("\n", loaded.OperationsByUrl.Keys.OrderBy(v => v)));
-        loaded.CapabilityStatementsByUrl.Should().HaveCount(_countCapabilityStatementsByUrl, string.Join("\n", loaded.CapabilityStatementsByUrl.Keys.OrderBy(v => v)));
-        loaded.ImplementationGuidesByUrl.Should().HaveCount(_countImplementationGuidesByUrl, string.Join("\n", loaded.ImplementationGuidesByUrl.Keys.OrderBy(v => v)));
-        loaded.CompartmentsByUrl.Should().HaveCount(_countCompartmentsByUrl, string.Join("\n", loaded.CompartmentsByUrl.Keys.OrderBy(v => v)));
+        loaded.OperationsByUrl.Should().HaveCount(_countOperationsByUrl);
+        loaded.CapabilityStatementsByUrl.Should().HaveCount(_countCapabilityStatementsByUrl);
+        loaded.ImplementationGuidesByUrl.Should().HaveCount(_countImplementationGuidesByUrl);
+        loaded.CompartmentsByUrl.Should().HaveCount(_countCompartmentsByUrl);
     }
 }
 
-public class FhirPackageTestsR4 : IClassFixture<FhirPackageTestFixture>
+public class FhirPackageTestsR4 : FhirPackageTestBase
 {
-    private const int _countCodeSystemsByUrl = 1090;
-    private const int _countValueSetsByUrl = 1377;
-    private const int _countPrimitiveTypesByName = 20;
-    private const int _countComplexTypesByName = 41;
-    private const int _countResourcesByName = 148;
-    private const int _countLogicalModelsByName = 5;
-    private const int _countExtensionsByUrl = 561;
-    private const int _countProfilesByUrl = 48;
-    private const int _countSearchParametersByUrl = 1410;
-    private const int _countOperationsByUrl = 47;
-    private const int _countCapabilityStatementsByUrl = 8;
-    private const int _countImplementationGuidesByUrl = 1;
-    private const int _countCompartmentsByUrl = 6;
+    private int _countCodeSystemsByUrl = TestCommon.EntriesR4.Length == 1 ? 1062 : 1090;
+    private int _countValueSetsByUrl = TestCommon.EntriesR4.Length == 1 ? 1317 : 1377;
+    private int _countPrimitiveTypesByName = 20;
+    private int _countComplexTypesByName = 41;
+    private int _countResourcesByName = 148;
+    private int _countLogicalModelsByName = 5;
+    private int _countExtensionsByUrl = TestCommon.EntriesR4.Length == 1 ? 396 : 561;
+    private int _countProfilesByUrl = 48;
+    private int _countSearchParametersByUrl = TestCommon.EntriesR4.Length == 1 ? 1405 : 1410;
+    private int _countOperationsByUrl = 47;
+    private int _countCapabilityStatementsByUrl = 8;
+    private int _countImplementationGuidesByUrl = TestCommon.EntriesR4.Length == 1 ? 0 : 1;
+    private int _countCompartmentsByUrl = 6;
 
-    /// <summary>
-    /// The test output helper.
-    /// </summary>
-    private readonly ITestOutputHelper _testOutputHelper;
-
-    private readonly FhirPackageTestFixture _fixture;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="FhirPackageTestsR4"/> class.
-    /// </summary>
-    /// <param name="fixture">The fixture.</param>
-    /// <param name="testOutputHelper">The test output helper.</param>
-    public FhirPackageTestsR4(FhirPackageTestFixture fixture, ITestOutputHelper testOutputHelper)
+    /// <summary>Initializes a new instance of the <see cref="FhirPackageTestsR4"/> class.</summary>
+    public FhirPackageTestsR4() : base()
     {
-        _testOutputHelper = testOutputHelper;
-        _fixture = fixture;
     }
 
     /// <summary>
@@ -285,11 +204,11 @@ public class FhirPackageTestsR4 : IClassFixture<FhirPackageTestFixture>
     [Trait("Category", "Parse")]
     [Trait("Format", "Json")]
     [Trait("FhirVersion", "R4")]
+    [Trait("DefaultCache", "true")]
     internal async Task ParseCorePackage()
     {
-        PackageLoader loader = new(_fixture.Cache, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
-
-        DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR4.First().Name, _fixture.EntriesR4);
+        PackageLoader loader = new(new() { FhirCacheDirectory = CachePath }, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
+        DefinitionCollection? loaded = await loader.LoadPackages(TestCommon.EntriesR4);
 
         loaded.Should().NotBeNull();
 
@@ -298,23 +217,23 @@ public class FhirPackageTestsR4 : IClassFixture<FhirPackageTestFixture>
             return;
         }
 
-        loaded.CodeSystemsByUrl.Should().HaveCount(_countCodeSystemsByUrl, string.Join("\n", loaded.CodeSystemsByUrl.Keys.OrderBy(v => v)));
-        loaded.ValueSetsByVersionedUrl.Should().HaveCount(_countValueSetsByUrl, string.Join("\n", loaded.ValueSetsByVersionedUrl.Keys.OrderBy(v => v)));
-        loaded.PrimitiveTypesByName.Should().HaveCount(_countPrimitiveTypesByName, string.Join("\n", loaded.PrimitiveTypesByName.Keys.OrderBy(v => v)));
-        loaded.ComplexTypesByName.Should().HaveCount(_countComplexTypesByName, string.Join("\n", loaded.ComplexTypesByName.Keys.OrderBy(v => v)));
-        loaded.ResourcesByName.Should().HaveCount(_countResourcesByName, string.Join("\n", loaded.ResourcesByName.Keys.OrderBy(v => v)));
-        loaded.LogicalModelsByUrl.Should().HaveCount(_countLogicalModelsByName, string.Join("\n", loaded.LogicalModelsByUrl.Keys.OrderBy(v => v)));
-        loaded.ExtensionsByUrl.Should().HaveCount(_countExtensionsByUrl, string.Join("\n", loaded.ExtensionsByUrl.Keys.OrderBy(v => v)));
-        loaded.ProfilesByUrl.Should().HaveCount(_countProfilesByUrl, string.Join("\n", loaded.ProfilesByUrl.Keys.OrderBy(v => v)));
+        loaded.CodeSystemsByUrl.Should().HaveCount(_countCodeSystemsByUrl);
+        loaded.ValueSetsByVersionedUrl.Should().HaveCount(_countValueSetsByUrl);
+        loaded.PrimitiveTypesByName.Should().HaveCount(_countPrimitiveTypesByName);
+        loaded.ComplexTypesByName.Should().HaveCount(_countComplexTypesByName);
+        loaded.ResourcesByName.Should().HaveCount(_countResourcesByName);
+        loaded.LogicalModelsByUrl.Should().HaveCount(_countLogicalModelsByName);
+        loaded.ExtensionsByUrl.Should().HaveCount(_countExtensionsByUrl);
+        loaded.ProfilesByUrl.Should().HaveCount(_countProfilesByUrl);
         loaded.SearchParametersByUrl.Should().HaveCount(_countSearchParametersByUrl);
-        loaded.OperationsByUrl.Should().HaveCount(_countOperationsByUrl, string.Join("\n", loaded.OperationsByUrl.Keys.OrderBy(v => v)));
-        loaded.CapabilityStatementsByUrl.Should().HaveCount(_countCapabilityStatementsByUrl, string.Join("\n", loaded.CapabilityStatementsByUrl.Keys.OrderBy(v => v)));
-        loaded.ImplementationGuidesByUrl.Should().HaveCount(_countImplementationGuidesByUrl, string.Join("\n", loaded.ImplementationGuidesByUrl.Keys.OrderBy(v => v)));
-        loaded.CompartmentsByUrl.Should().HaveCount(_countCompartmentsByUrl, string.Join("\n", loaded.CompartmentsByUrl.Keys.OrderBy(v => v)));
+        loaded.OperationsByUrl.Should().HaveCount(_countOperationsByUrl);
+        loaded.CapabilityStatementsByUrl.Should().HaveCount(_countCapabilityStatementsByUrl);
+        loaded.ImplementationGuidesByUrl.Should().HaveCount(_countImplementationGuidesByUrl);
+        loaded.CompartmentsByUrl.Should().HaveCount(_countCompartmentsByUrl);
     }
 }
 
-public class FhirPackageTestsR3 : IClassFixture<FhirPackageTestFixture>
+public class FhirPackageTestsR3 : FhirPackageTestBase
 {
     private const int _countCodeSystemsByUrl = 941;
     private const int _countValueSetsByUrl = 1154;
@@ -330,22 +249,9 @@ public class FhirPackageTestsR3 : IClassFixture<FhirPackageTestFixture>
     private const int _countImplementationGuidesByUrl = 2;
     private const int _countCompartmentsByUrl = 6;
 
-    /// <summary>
-    /// The test output helper.
-    /// </summary>
-    private readonly ITestOutputHelper _testOutputHelper;
-
-    private readonly FhirPackageTestFixture _fixture;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="FhirPackageTestsR3"/> class.
-    /// </summary>
-    /// <param name="fixture">The fixture.</param>
-    /// <param name="testOutputHelper">The test output helper.</param>
-    public FhirPackageTestsR3(FhirPackageTestFixture fixture, ITestOutputHelper testOutputHelper)
+    /// <summary>Initializes a new instance of the <see cref="FhirPackageTestsR3"/> class.</summary>
+    public FhirPackageTestsR3() : base()
     {
-        _testOutputHelper = testOutputHelper;
-        _fixture = fixture;
     }
 
     /// <summary>
@@ -356,11 +262,11 @@ public class FhirPackageTestsR3 : IClassFixture<FhirPackageTestFixture>
     [Trait("Category", "Parse")]
     [Trait("Format", "Json")]
     [Trait("FhirVersion", "R3")]
+    [Trait("DefaultCache", "true")]
     internal async Task ParseCorePackage()
     {
-        PackageLoader loader = new(_fixture.Cache, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
-
-        DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR3.First().Name, _fixture.EntriesR3);
+        PackageLoader loader = new(new() { FhirCacheDirectory = CachePath }, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
+        DefinitionCollection? loaded = await loader.LoadPackages(TestCommon.EntriesR3);
 
         loaded.Should().NotBeNull();
 
@@ -369,23 +275,23 @@ public class FhirPackageTestsR3 : IClassFixture<FhirPackageTestFixture>
             return;
         }
 
-        loaded.CodeSystemsByUrl.Should().HaveCount(_countCodeSystemsByUrl, string.Join("\n", loaded.CodeSystemsByUrl.Keys.OrderBy(v => v)));
-        loaded.ValueSetsByVersionedUrl.Should().HaveCount(_countValueSetsByUrl, string.Join("\n", loaded.ValueSetsByVersionedUrl.Keys.OrderBy(v => v)));
-        loaded.PrimitiveTypesByName.Should().HaveCount(_countPrimitiveTypesByName, string.Join("\n", loaded.PrimitiveTypesByName.Keys.OrderBy(v => v)));
-        loaded.ComplexTypesByName.Should().HaveCount(_countComplexTypesByName, string.Join("\n", loaded.ComplexTypesByName.Keys.OrderBy(v => v)));
-        loaded.ResourcesByName.Should().HaveCount(_countResourcesByName, string.Join("\n", loaded.ResourcesByName.Keys.OrderBy(v => v)));
-        loaded.LogicalModelsByUrl.Should().HaveCount(_countLogicalModelsByName, string.Join("\n", loaded.LogicalModelsByUrl.Keys.OrderBy(v => v)));
-        loaded.ExtensionsByUrl.Should().HaveCount(_countExtensionsByUrl, string.Join("\n", loaded.ExtensionsByUrl.Keys.OrderBy(v => v)));
-        loaded.ProfilesByUrl.Should().HaveCount(_countProfilesByUrl, string.Join("\n", loaded.ProfilesByUrl.Keys.OrderBy(v => v)));
+        loaded.CodeSystemsByUrl.Should().HaveCount(_countCodeSystemsByUrl);
+        loaded.ValueSetsByVersionedUrl.Should().HaveCount(_countValueSetsByUrl);
+        loaded.PrimitiveTypesByName.Should().HaveCount(_countPrimitiveTypesByName);
+        loaded.ComplexTypesByName.Should().HaveCount(_countComplexTypesByName);
+        loaded.ResourcesByName.Should().HaveCount(_countResourcesByName);
+        loaded.LogicalModelsByUrl.Should().HaveCount(_countLogicalModelsByName);
+        loaded.ExtensionsByUrl.Should().HaveCount(_countExtensionsByUrl);
+        loaded.ProfilesByUrl.Should().HaveCount(_countProfilesByUrl);
         loaded.SearchParametersByUrl.Should().HaveCount(_countSearchParametersByUrl);
-        loaded.OperationsByUrl.Should().HaveCount(_countOperationsByUrl, string.Join("\n", loaded.OperationsByUrl.Keys.OrderBy(v => v)));
-        loaded.CapabilityStatementsByUrl.Should().HaveCount(_countCapabilityStatementsByUrl, string.Join("\n", loaded.CapabilityStatementsByUrl.Keys.OrderBy(v => v)));
-        loaded.ImplementationGuidesByUrl.Should().HaveCount(_countImplementationGuidesByUrl, string.Join("\n", loaded.ImplementationGuidesByUrl.Keys.OrderBy(v => v)));
-        loaded.CompartmentsByUrl.Should().HaveCount(_countCompartmentsByUrl, string.Join("\n", loaded.CompartmentsByUrl.Keys.OrderBy(v => v)));
+        loaded.OperationsByUrl.Should().HaveCount(_countOperationsByUrl);
+        loaded.CapabilityStatementsByUrl.Should().HaveCount(_countCapabilityStatementsByUrl);
+        loaded.ImplementationGuidesByUrl.Should().HaveCount(_countImplementationGuidesByUrl);
+        loaded.CompartmentsByUrl.Should().HaveCount(_countCompartmentsByUrl);
     }
 }
 
-public class FhirPackageTestsR2 : IClassFixture<FhirPackageTestFixture>
+public class FhirPackageTestsR2 : FhirPackageTestBase
 {
     private const int _countCodeSystemsByUrl = 822;     // note - there are zero in the definitions, the 822 are contained in VS resources
     private const int _countValueSetsByUrl = 1016;
@@ -401,22 +307,9 @@ public class FhirPackageTestsR2 : IClassFixture<FhirPackageTestFixture>
     private const int _countImplementationGuidesByUrl = 0;
     private const int _countCompartmentsByUrl = 0;
 
-    /// <summary>
-    /// The test output helper.
-    /// </summary>
-    private readonly ITestOutputHelper _testOutputHelper;
-
-    private readonly FhirPackageTestFixture _fixture;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="FhirPackageTestsR2"/> class.
-    /// </summary>
-    /// <param name="fixture">The fixture.</param>
-    /// <param name="testOutputHelper">The test output helper.</param>
-    public FhirPackageTestsR2(FhirPackageTestFixture fixture, ITestOutputHelper testOutputHelper)
+    /// <summary>Initializes a new instance of the <see cref="FhirPackageTestsR2"/> class.</summary>
+    public FhirPackageTestsR2() : base()
     {
-        _testOutputHelper = testOutputHelper;
-        _fixture = fixture;
     }
 
     /// <summary>
@@ -427,11 +320,12 @@ public class FhirPackageTestsR2 : IClassFixture<FhirPackageTestFixture>
     [Trait("Category", "Parse")]
     [Trait("Format", "Json")]
     [Trait("FhirVersion", "R2")]
+    [Trait("DefaultCache", "true")]
     internal async Task ParseCorePackage()
     {
-        PackageLoader loader = new(_fixture.Cache, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
+        PackageLoader loader = new(new() { FhirCacheDirectory = CachePath }, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
 
-        DefinitionCollection? loaded = await loader.LoadPackages(_fixture.EntriesR2.First().Name, _fixture.EntriesR2);
+        DefinitionCollection? loaded = await loader.LoadPackages(TestCommon.EntriesR2);
 
         loaded.Should().NotBeNull();
 
@@ -440,18 +334,18 @@ public class FhirPackageTestsR2 : IClassFixture<FhirPackageTestFixture>
             return;
         }
 
-        loaded.CodeSystemsByUrl.Should().HaveCount(_countCodeSystemsByUrl, string.Join("\n", loaded.CodeSystemsByUrl.Keys.OrderBy(v => v)));
-        loaded.ValueSetsByVersionedUrl.Should().HaveCount(_countValueSetsByUrl, string.Join("\n", loaded.ValueSetsByVersionedUrl.Keys.OrderBy(v => v)));
-        loaded.PrimitiveTypesByName.Should().HaveCount(_countPrimitiveTypesByName, string.Join("\n", loaded.PrimitiveTypesByName.Keys.OrderBy(v => v)));
-        loaded.ComplexTypesByName.Should().HaveCount(_countComplexTypesByName, string.Join("\n", loaded.ComplexTypesByName.Keys.OrderBy(v => v)));
-        loaded.ResourcesByName.Should().HaveCount(_countResourcesByName, string.Join("\n", loaded.ResourcesByName.Keys.OrderBy(v => v)));
-        loaded.LogicalModelsByUrl.Should().HaveCount(_countLogicalModelsByName, string.Join("\n", loaded.LogicalModelsByUrl.Keys.OrderBy(v => v)));
-        loaded.ExtensionsByUrl.Should().HaveCount(_countExtensionsByUrl, string.Join("\n", loaded.ExtensionsByUrl.Keys.OrderBy(v => v)));
-        loaded.ProfilesByUrl.Should().HaveCount(_countProfilesByUrl, string.Join("\n", loaded.ProfilesByUrl.Keys.OrderBy(v => v)));
+        loaded.CodeSystemsByUrl.Should().HaveCount(_countCodeSystemsByUrl);
+        loaded.ValueSetsByVersionedUrl.Should().HaveCount(_countValueSetsByUrl);
+        loaded.PrimitiveTypesByName.Should().HaveCount(_countPrimitiveTypesByName);
+        loaded.ComplexTypesByName.Should().HaveCount(_countComplexTypesByName);
+        loaded.ResourcesByName.Should().HaveCount(_countResourcesByName);
+        loaded.LogicalModelsByUrl.Should().HaveCount(_countLogicalModelsByName);
+        loaded.ExtensionsByUrl.Should().HaveCount(_countExtensionsByUrl);
+        loaded.ProfilesByUrl.Should().HaveCount(_countProfilesByUrl);
         loaded.SearchParametersByUrl.Should().HaveCount(_countSearchParametersByUrl);
-        loaded.OperationsByUrl.Should().HaveCount(_countOperationsByUrl, string.Join("\n", loaded.OperationsByUrl.Keys.OrderBy(v => v)));
-        loaded.CapabilityStatementsByUrl.Should().HaveCount(_countCapabilityStatementsByUrl, string.Join("\n", loaded.CapabilityStatementsByUrl.Keys.OrderBy(v => v)));
-        loaded.ImplementationGuidesByUrl.Should().HaveCount(_countImplementationGuidesByUrl, string.Join("\n", loaded.ImplementationGuidesByUrl.Keys.OrderBy(v => v)));
-        loaded.CompartmentsByUrl.Should().HaveCount(_countCompartmentsByUrl, string.Join("\n", loaded.CompartmentsByUrl.Keys.OrderBy(v => v)));
+        loaded.OperationsByUrl.Should().HaveCount(_countOperationsByUrl);
+        loaded.CapabilityStatementsByUrl.Should().HaveCount(_countCapabilityStatementsByUrl);
+        loaded.ImplementationGuidesByUrl.Should().HaveCount(_countImplementationGuidesByUrl);
+        loaded.CompartmentsByUrl.Should().HaveCount(_countCompartmentsByUrl);
     }
 }

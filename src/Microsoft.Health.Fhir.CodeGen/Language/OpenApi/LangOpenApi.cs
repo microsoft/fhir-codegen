@@ -11,6 +11,10 @@ using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Writers;
 using static Microsoft.Health.Fhir.CodeGen.Language.OpenApi.OpenApiCommon;
 
+#if NETSTANDARD2_0
+using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
+#endif
+
 namespace Microsoft.Health.Fhir.CodeGen.Language.OpenApi;
 
 /// <summary>Class used to export OpenAPI definitions.</summary>
@@ -57,7 +61,7 @@ public class LangOpenApi : ILanguage
         }
         else
         {
-            foreach (var cs in definitions.CapabilityStatementsByUrl.Values)
+            foreach (Hl7.Fhir.Model.CapabilityStatement cs in definitions.CapabilityStatementsByUrl.Values)
             {
                 string fileId = cs.Id;
 
@@ -87,7 +91,7 @@ public class LangOpenApi : ILanguage
         Dictionary<string, OpenApiDocument> docsByPrefix = new();
 
         // traverse the paths to discover our root keys (mostly just resources)
-        foreach ((string apiPath, OpenApiPathItem pathItem) in completeDoc.Paths)
+        foreach ((string apiPath, OpenApiPathItem pathItem) in completeDoc.Paths.OrderBy(p => p.Key))
         {
             string pathKey;
             string titleSuffix;
@@ -134,7 +138,7 @@ public class LangOpenApi : ILanguage
         Dictionary<string, OpenApiTag> sourceTags = completeDoc.Tags.ToDictionary(t => t.Name);
 
         // traverse each partial document, resolve missing references and write
-        foreach ((string pathKey, OpenApiDocument doc) in docsByPrefix)
+        foreach ((string pathKey, OpenApiDocument doc) in docsByPrefix.OrderBy(d => d.Key))
         {
             ResolveContainedRefs(completeDoc, doc, sourceTags);
 
@@ -175,9 +179,9 @@ public class LangOpenApi : ILanguage
         {
             MaybeAddParameters(targetPath.Parameters, source, target);
 
-            foreach ((OperationType targetOpKey, OpenApiOperation targetOp) in targetPath.Operations)
+            foreach ((OperationType targetOpKey, OpenApiOperation targetOp) in targetPath.Operations.OrderBy(o => o.Key))
             {
-                foreach (OpenApiTag targetTag in targetOp.Tags)
+                foreach (OpenApiTag targetTag in targetOp.Tags.OrderBy(t => t.Name))
                 {
                     // only need to resolve references, actual tags were copied
                     if (string.IsNullOrEmpty(targetTag.Reference?.Id ?? null) ||
@@ -200,7 +204,7 @@ public class LangOpenApi : ILanguage
 
                 MaybeAddParameters(targetOp.Parameters, source, target);
 
-                foreach (OpenApiMediaType targetMedia in targetOp.RequestBody?.Content?.Values ?? Array.Empty<OpenApiMediaType>())
+                foreach (OpenApiMediaType targetMedia in targetOp.RequestBody?.Content?.Values.OrderBy(c => c.Schema?.Reference?.Id ?? string.Empty) ?? Enumerable.Empty<OpenApiMediaType>())
                 {
                     // only process references, the rest were copied
                     if (string.IsNullOrEmpty(targetMedia.Schema?.Reference?.Id ?? null) ||
@@ -212,9 +216,9 @@ public class LangOpenApi : ILanguage
                     CopySchemaRecursive(source, target, targetMedia.Schema.Reference.Id);
                 }
 
-                foreach (OpenApiResponse targetResponse in targetOp.Responses.Values)
+                foreach (OpenApiResponse targetResponse in targetOp.Responses.Values.OrderBy(r => r.Description))
                 {
-                    foreach (OpenApiMediaType targetMedia in targetResponse.Content.Values)
+                    foreach (OpenApiMediaType targetMedia in targetResponse.Content.Values.OrderBy(c => c.Schema?.Reference?.Id ?? string.Empty))
                     {
                         // only process references, the rest were copied
                         if (string.IsNullOrEmpty(targetMedia.Schema?.Reference?.Id ?? null) ||
@@ -260,7 +264,7 @@ public class LangOpenApi : ILanguage
         }
 
         // check properties
-        foreach (OpenApiSchema s in target.Components.Schemas[key].Properties?.Values ?? Array.Empty<OpenApiSchema>())
+        foreach (OpenApiSchema s in target.Components.Schemas[key].Properties?.Values.OrderBy(s => s.Title) ?? Enumerable.Empty<OpenApiSchema>())
         {
             if (string.IsNullOrEmpty(s.Reference?.Id ?? null) ||
                 target.Components.Schemas.ContainsKey(s.Reference!.Id))
@@ -283,10 +287,9 @@ public class LangOpenApi : ILanguage
     {
         string filename = Path.Combine(config.OutputDirectory, $"{_languageName}_{fileId}.{config.FileFormat.ToString().ToLowerInvariant()}");
 
-        //using Stream stream = config.WriteStream ?? new FileStream(filename, FileMode.Create);
         using StreamWriter sw = config.WriteStream == null
-            ? new StreamWriter(new FileStream(filename, FileMode.Create), leaveOpen: false)
-            : new StreamWriter(config.WriteStream, leaveOpen: config.WriteStream != null);
+            ? new StreamWriter(new FileStream(filename, FileMode.Create))
+            : new StreamWriter(config.WriteStream, System.Text.Encoding.UTF8, 512 * 1024, true);
 
         IOpenApiWriter writer = config.FileFormat switch
         {
@@ -299,5 +302,12 @@ public class LangOpenApi : ILanguage
             config.OpenApiVersion == OaVersion.v2
                 ? Microsoft.OpenApi.OpenApiSpecVersion.OpenApi2_0
                 : Microsoft.OpenApi.OpenApiSpecVersion.OpenApi3_0);
+
+        sw.Flush();
+
+        if (config.WriteStream == null)
+        {
+            sw.Close();
+        }
     }
 }

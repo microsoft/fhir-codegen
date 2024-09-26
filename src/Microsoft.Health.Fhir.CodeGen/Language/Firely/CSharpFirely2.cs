@@ -4,21 +4,37 @@
 // </copyright>
 
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Text;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Utility;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGen.Models;
+using Microsoft.Health.Fhir.CodeGen.Utils;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 using static Microsoft.Health.Fhir.CodeGen.Language.Firely.CSharpFirelyCommon;
 using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 
+#if NETSTANDARD2_0
+using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
+#endif
+
 namespace Microsoft.Health.Fhir.CodeGen.Language.Firely;
 
-public sealed class CSharpFirely2 : ILanguage
+public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
 {
+    private bool _generateHashesInsteadOfOutput = false;
+    bool IFileHashTestable.GenerateHashesInsteadOfOutput
+    {
+        get => _generateHashesInsteadOfOutput;
+        set => _generateHashesInsteadOfOutput = value;
+    }
+
+    private Dictionary<string, string> _fileHashes = [];
+    Dictionary<string, string> IFileHashTestable.FileHashes => _fileHashes;
+
     /// <summary>(Immutable) Name of the language.</summary>
     private const string LanguageName = "CSharpFirely2";
 
@@ -455,51 +471,73 @@ public sealed class CSharpFirely2 : ILanguage
         // update the models for consistency across different versions of FHIR
         ModifyDefinitionsForConsistency();
 
-        using (var infoStream = new FileStream(infoFilename, FileMode.Create))
-        using (var infoWriter = new ExportStreamWriter(infoStream))
+        using Stream infoStream = _generateHashesInsteadOfOutput
+            ? new MemoryStream()
+            : new FileStream(infoFilename, FileMode.Create);
+        using ExportStreamWriter infoWriter = new(infoStream);
+
+        if (_generateHashesInsteadOfOutput)
         {
-            _modelWriter = infoWriter;
+            infoWriter.NewLine = "\r\n";
+        }
 
-            WriteGenerationComment(infoWriter);
+        _modelWriter = infoWriter;
 
-            if (options.ExportStructures.Contains(CodeGenCommon.Models.FhirArtifactClassEnum.ValueSet))
-            {
-                WriteSharedValueSets(subset);
-            }
+        WriteGenerationComment(infoWriter);
 
-            _modelWriter.WriteLineIndented("// Generated items");
+        if (options.ExportStructures.Contains(CodeGenCommon.Models.FhirArtifactClassEnum.ValueSet))
+        {
+            WriteSharedValueSets(subset);
+        }
 
-            if (options.ExportStructures.Contains(CodeGenCommon.Models.FhirArtifactClassEnum.PrimitiveType))
-            {
-                WritePrimitiveTypes(_info.PrimitiveTypesByName.Values, ref dummy, subset);
-            }
+        _modelWriter.WriteLineIndented("// Generated items");
 
-            AddModels(allPrimitives, _info.PrimitiveTypesByName.Values);
+        if (options.ExportStructures.Contains(CodeGenCommon.Models.FhirArtifactClassEnum.PrimitiveType))
+        {
+            WritePrimitiveTypes(_info.PrimitiveTypesByName.Values, ref dummy, subset);
+        }
 
-            if (options.ExportStructures.Contains(CodeGenCommon.Models.FhirArtifactClassEnum.ComplexType))
-            {
-                WriteComplexDataTypes(_info.ComplexTypesByName.Values, ref dummy, subset);
-            }
+        AddModels(allPrimitives, _info.PrimitiveTypesByName.Values);
 
-            AddModels(allComplexTypes, _info.ComplexTypesByName.Values);
-            AddModels(allComplexTypes, _sharedR5DataTypes);
+        if (options.ExportStructures.Contains(CodeGenCommon.Models.FhirArtifactClassEnum.ComplexType))
+        {
+            WriteComplexDataTypes(_info.ComplexTypesByName.Values, ref dummy, subset);
+        }
 
-            if (options.ExportStructures.Contains(CodeGenCommon.Models.FhirArtifactClassEnum.Resource))
-            {
-                WriteResources(_info.ResourcesByName.Values, ref dummy, subset);
-            }
+        AddModels(allComplexTypes, _info.ComplexTypesByName.Values);
+        AddModels(allComplexTypes, _sharedR5DataTypes);
 
-            AddModels(allResources, _info.ResourcesByName.Values);
+        if (options.ExportStructures.Contains(CodeGenCommon.Models.FhirArtifactClassEnum.Resource))
+        {
+            WriteResources(_info.ResourcesByName.Values, ref dummy, subset);
+        }
 
-            if (options.ExportStructures.Contains(CodeGenCommon.Models.FhirArtifactClassEnum.Interface))
-            {
-                WriteInterfaces(_info.InterfacesByName.Values, ref dummy, subset);
-            }
+        AddModels(allResources, _info.ResourcesByName.Values);
 
-            if (subset.HasFlag(GenSubset.Satellite))
-            {
-                WriteModelInfo(allPrimitives, allComplexTypes, allResources);
-            }
+        if (options.ExportStructures.Contains(CodeGenCommon.Models.FhirArtifactClassEnum.Interface))
+        {
+            WriteInterfaces(_info.InterfacesByName.Values, ref dummy, subset);
+        }
+
+        if (subset.HasFlag(GenSubset.Satellite))
+        {
+            WriteModelInfo(allPrimitives, allComplexTypes, allResources);
+        }
+
+        if (_generateHashesInsteadOfOutput)
+        {
+            infoWriter.Flush();
+
+            // generate the hash
+            string hash = FileSystemUtils.GenerateSha256(infoStream);
+            _fileHashes.Add(infoFilename[_exportDirectory.Length..], hash);
+
+            infoWriter.Close();
+        }
+        else
+        {
+            infoWriter.Flush();
+            infoWriter.Close();
         }
     }
 
@@ -781,6 +819,29 @@ public sealed class CSharpFirely2 : ILanguage
                 edDiv.IsSummary = true;
             }
         }
+
+        // correct issues in FHIR 6.0.0-ballot2
+        if ((_info.MainPackageId == "hl7.fhir.r6.core") && (_info.MainPackageVersion == "6.0.0-ballot2"))
+        {
+            if (_info.ResourcesByName.TryGetValue("TestScript", out StructureDefinition? sdTestScript))
+            {
+                if (sdTestScript.cgTryGetElementById("TestScript.setup.action.common.parameter", out ElementDefinition? edSetupCommonParameter))
+                {
+                    // Set the class name to use for this new backbone element
+                    edSetupCommonParameter.AddExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name", new FhirString("SetupActionCommonParameter"));
+                }
+                if (sdTestScript.cgTryGetElementById("TestScript.common.parameter", out ElementDefinition? edCommonParameter))
+                {
+                    // Set the class name to use for this new backbone element
+                    edCommonParameter.AddExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name", new FhirString("CommonParameter"));
+                }
+                if (sdTestScript.cgTryGetElementById("TestScript.setup.action.common", out ElementDefinition? edSetupActionCommon))
+                {
+                    // Set the class name to use for this new backbone element
+                    edSetupActionCommon.AddExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name", new FhirString("SetupActionCommon"));
+                }
+            }
+        }
     }
 
     /// <summary>Writes a model information.</summary>
@@ -794,47 +855,69 @@ public sealed class CSharpFirely2 : ILanguage
     {
         string filename = Path.Combine(_exportDirectory, "Generated", "Template-ModelInfo.cs");
 
-        using (FileStream stream = new(filename, FileMode.Create))
-        using (ExportStreamWriter writer = new(stream))
+        using Stream stream = _generateHashesInsteadOfOutput
+            ? new MemoryStream()
+            : new FileStream(filename, FileMode.Create);
+        using ExportStreamWriter writer = new(stream);
+
+        if (_generateHashesInsteadOfOutput)
         {
-            _writer = writer;
+            writer.NewLine = "\r\n";
+        }
 
-            WriteGenerationComment();
+        _writer = writer;
 
-            _writer.WriteLineIndented("using System;");
-            _writer.WriteLineIndented("using System.Collections.Generic;");
-            _writer.WriteLineIndented("using Hl7.Fhir.Introspection;");
-            _writer.WriteLineIndented("using Hl7.Fhir.Validation;");
-            _writer.WriteLineIndented("using System.Linq;");
-            _writer.WriteLineIndented("using System.Runtime.Serialization;");
-            _writer.WriteLine(string.Empty);
+        WriteGenerationComment();
 
-            WriteCopyright();
+        _writer.WriteLineIndented("using System;");
+        _writer.WriteLineIndented("using System.Collections.Generic;");
+        _writer.WriteLineIndented("using Hl7.Fhir.Introspection;");
+        _writer.WriteLineIndented("using Hl7.Fhir.Validation;");
+        _writer.WriteLineIndented("using System.Linq;");
+        _writer.WriteLineIndented("using System.Runtime.Serialization;");
+        _writer.WriteLine(string.Empty);
 
-            WriteNamespaceOpen();
+        WriteCopyright();
 
-            WriteIndentedComment(
-                "A class with methods to retrieve information about the\n" +
-                "FHIR definitions based on which this assembly was generated.");
+        WriteNamespaceOpen();
 
-            _writer.WriteLineIndented("public partial class ModelInfo");
+        WriteIndentedComment(
+            "A class with methods to retrieve information about the\n" +
+            "FHIR definitions based on which this assembly was generated.");
 
-            // open class
-            OpenScope();
+        _writer.WriteLineIndented("public partial class ModelInfo");
 
-            WriteSupportedResources(writtenResources.Values.Where(SupportedResourcesFilter));
+        // open class
+        OpenScope();
 
-            WriteFhirVersion();
+        WriteSupportedResources(writtenResources.Values.Where(SupportedResourcesFilter));
 
-            WriteFhirToCs(writtenPrimitives.Values.Where(FhirToCsFilter), writtenComplexTypes.Values.Where(FhirToCsFilter), writtenResources.Values.Where(FhirToCsFilter));
-            WriteCsToString(writtenPrimitives.Values.Where(CsToStringFilter), writtenComplexTypes.Values.Where(CsToStringFilter), writtenResources.Values.Where(CsToStringFilter));
+        WriteFhirVersion();
 
-            WriteSearchParameters();
+        WriteFhirToCs(writtenPrimitives.Values.Where(FhirToCsFilter), writtenComplexTypes.Values.Where(FhirToCsFilter), writtenResources.Values.Where(FhirToCsFilter));
+        WriteCsToString(writtenPrimitives.Values.Where(CsToStringFilter), writtenComplexTypes.Values.Where(CsToStringFilter), writtenResources.Values.Where(CsToStringFilter));
 
-            // close class
-            CloseScope();
+        WriteSearchParameters();
 
-            WriteNamespaceClose();
+        // close class
+        CloseScope();
+
+        WriteNamespaceClose();
+
+        if (_generateHashesInsteadOfOutput)
+        {
+            writer.Flush();
+
+            // generate the hash
+            string hash = FileSystemUtils.GenerateSha256(stream);
+            _fileHashes.Add(filename[_exportDirectory.Length..], hash);
+
+            writer.Close();
+        }
+        else
+        {
+            writer.Flush();
+            writer.Close();
         }
     }
 
@@ -940,7 +1023,7 @@ public sealed class CSharpFirely2 : ILanguage
                 string urlComponent = $", Url = \"{sp.Url}\"";
 
                 string[] components = sp.Component?.Select(c => $"""new SearchParamComponent("{c.Definition}", "{c.Expression}")""").ToArray() ?? [];
-                string strComponents = (components.Length > 0) ? $", Component = new SearchParamComponent[] {{ {string.Join(',', components)} }}" : string.Empty;
+                string strComponents = (components.Length > 0) ? $", Component = new SearchParamComponent[] {{ {string.Join(",", components)} }}" : string.Empty;
 
                 _writer.WriteLineIndented(
                     $"new SearchParamDefinition() " +
@@ -1062,99 +1145,126 @@ public sealed class CSharpFirely2 : ILanguage
 
         string filename = Path.Combine(_exportDirectory, "Generated", "Template-Bindings.cs");
 
-        using (FileStream stream = new(filename, FileMode.Create))
-        using (ExportStreamWriter writer = new(stream))
+        using Stream stream = _generateHashesInsteadOfOutput
+            ? new MemoryStream()
+            : new FileStream(filename, FileMode.Create);
+        using ExportStreamWriter writer = new(stream);
+
+        if (_generateHashesInsteadOfOutput)
         {
-            _writer = writer;
+            writer.NewLine = "\r\n";
+        }
 
-            WriteHeaderBasic();
-            WriteNamespaceOpen();
+        _writer = writer;
 
-            // traverse all versions of all value sets
-            foreach ((string unversionedUrl, string[] versions) in _info.ValueSetVersions.OrderBy(kvp => kvp.Key))
+        WriteHeaderBasic();
+        WriteNamespaceOpen();
+
+        // traverse all versions of all value sets
+        foreach ((string unversionedUrl, string[] versions) in _info.ValueSetVersions.OrderBy(kvp => kvp.Key))
+        {
+            if (_exclusionSet.Contains(unversionedUrl) ||
+                (_valueSetBehaviorOverrides.TryGetValue(unversionedUrl, out ValueSetBehaviorOverrides? oddInfo) && (oddInfo.AllowShared == false)))
             {
-                if (_exclusionSet.Contains(unversionedUrl) ||
-                    (_valueSetBehaviorOverrides.TryGetValue(unversionedUrl, out ValueSetBehaviorOverrides? oddInfo) && (oddInfo.AllowShared == false)))
+                continue;
+            }
+
+            // traverse value sets starting with highest version
+            foreach (string vsVersion in versions.OrderDescending())
+            {
+                if (!_info.TryGetValueSet(unversionedUrl, vsVersion, out ValueSet? vs))
                 {
                     continue;
                 }
 
-                // traverse value sets starting with highest version
-                foreach (string vsVersion in versions.OrderDescending())
+                // we never want to write limited expansions
+                //if (vs.IsLimitedExpansion())
+                //{
+                //    continue;
+                //}
+
+                IEnumerable<StructureElementCollection> coreBindings = _info.CoreBindingsForVs(vs.Url);
+                Hl7.Fhir.Model.BindingStrength? strongestBinding = _info.StrongestBinding(coreBindings);
+
+                if (strongestBinding != Hl7.Fhir.Model.BindingStrength.Required)
                 {
-                    if (!_info.TryGetValueSet(unversionedUrl, vsVersion, out ValueSet? vs))
-                    {
-                        continue;
-                    }
-
-                    // we never want to write limited expansions
-                    //if (vs.IsLimitedExpansion())
-                    //{
-                    //    continue;
-                    //}
-
-                    IEnumerable<StructureElementCollection> coreBindings = _info.CoreBindingsForVs(vs.Url);
-                    Hl7.Fhir.Model.BindingStrength? strongestBinding = _info.StrongestBinding(coreBindings);
-
-                    if (strongestBinding != Hl7.Fhir.Model.BindingStrength.Required)
-                    {
-                        /* Since required bindings cannot be extended, those are the only bindings that
-                           can be represented using enums in the POCO classes (using <c>Code&lt;T&gt;</c>). All other coded members
-                           use <c>Code</c>, <c>Coding</c> or <c>CodeableConcept</c>.
-                           Consequently, we only need to generate enums for valuesets that are used as
-                           required bindings anywhere in the data model. */
-                        continue;
-                    }
-
-                    IEnumerable<string> referencedBy = coreBindings.cgExtractBaseTypes(_info);
-
-                    if ((referencedBy.Count() < 2) && !_explicitSharedValueSets.Contains((_info.FhirSequence.ToString(), vs.Url)))
-                    {
-                        /* ValueSets that are used in a single POCO are generated as a nested enum inside that
-                         * POCO, not here in the shared valuesets */
-
-                        continue;
-                    }
-
-                    // If this is a shared valueset that will be generated in the base or conformance subset,
-                    // don't also generate it here.
-                    bool writeValueSet =
-                        (subset.HasFlag(GenSubset.Satellite) && !(_baseSubsetValueSets.Contains(vs.Url) || _conformanceSubsetValueSets.Contains(vs.Url)))
-                        || subset.HasFlag(GenSubset.Conformance) && _conformanceSubsetValueSets.Contains(vs.Url)
-                        || subset.HasFlag(GenSubset.Base) && _baseSubsetValueSets.Contains(vs.Url);
-
-                    WriteEnum(vs, string.Empty, usedEnumNames, silent: !writeValueSet);
-
-                    if (writeValueSet)
-                    {
-                        _modelWriter.WriteLineIndented($"// Generated Shared Enumeration: {_writtenValueSets[vs.Url].ValueSetName} ({vs.Url})");
-                    }
-                    else
-                    {
-                        _modelWriter.WriteLineIndented($"// Deferred generation of Shared Enumeration (will be generated in another subset): {_writtenValueSets[vs.Url].ValueSetName} ({vs.Url})");
-                    }
-
-                    _modelWriter.IncreaseIndent();
-
-                    foreach (string path in coreBindings.SelectMany(ec => ec.Elements.Select(e => e)).Order(ElementDefinitionComparer.Instance).Select(e => e.Path))
-                    {
-                        string name = path.Split('.')[0];
-
-                        if (_info.ComplexTypesByName.ContainsKey(name))
-                        {
-                            _modelWriter.WriteLineIndented($"// Used in model class (type): {path}");
-                            continue;
-                        }
-
-                        _modelWriter.WriteLineIndented($"// Used in model class (resource): {path}");
-                    }
-
-                    _modelWriter.DecreaseIndent();
-                    _modelWriter.WriteLine(string.Empty);
+                    /* Since required bindings cannot be extended, those are the only bindings that
+                        can be represented using enums in the POCO classes (using <c>Code&lt;T&gt;</c>). All other coded members
+                        use <c>Code</c>, <c>Coding</c> or <c>CodeableConcept</c>.
+                        Consequently, we only need to generate enums for valuesets that are used as
+                        required bindings anywhere in the data model. */
+                    continue;
                 }
-            }
 
-            WriteNamespaceClose();
+                IEnumerable<string> referencedBy = coreBindings.cgExtractBaseTypes(_info);
+
+                if ((referencedBy.Count() < 2) && !_explicitSharedValueSets.Contains((_info.FhirSequence.ToString(), vs.Url)))
+                {
+                    /* ValueSets that are used in a single POCO are generated as a nested enum inside that
+                        * POCO, not here in the shared valuesets */
+
+                    continue;
+                }
+
+                // If this is a shared valueset that will be generated in the base or conformance subset,
+                // don't also generate it here.
+                bool writeValueSet =
+                    (subset.HasFlag(GenSubset.Satellite) && !(_baseSubsetValueSets.Contains(vs.Url) || _conformanceSubsetValueSets.Contains(vs.Url)))
+                    || subset.HasFlag(GenSubset.Conformance) && _conformanceSubsetValueSets.Contains(vs.Url)
+                    || subset.HasFlag(GenSubset.Base) && _baseSubsetValueSets.Contains(vs.Url);
+
+                if (!WriteEnum(vs, string.Empty, usedEnumNames, silent: !writeValueSet))
+                {
+                    // value set could not be written (e.g., could not be expanded)
+                    Console.WriteLine($"Wanted to write an enum for ValueSet {vs.Url}, but could not.");
+                    continue;
+                }
+
+                if (writeValueSet)
+                {
+                    _modelWriter.WriteLineIndented($"// Generated Shared Enumeration: {_writtenValueSets[vs.Url].ValueSetName} ({vs.Url})");
+                }
+                else
+                {
+                    _modelWriter.WriteLineIndented($"// Deferred generation of Shared Enumeration (will be generated in another subset): {_writtenValueSets[vs.Url].ValueSetName} ({vs.Url})");
+                }
+
+                _modelWriter.IncreaseIndent();
+
+                foreach (string path in coreBindings.SelectMany(ec => ec.Elements.Select(e => e)).Order(ElementDefinitionComparer.Instance).Select(e => e.Path))
+                {
+                    string name = path.Split('.')[0];
+
+                    if (_info.ComplexTypesByName.ContainsKey(name))
+                    {
+                        _modelWriter.WriteLineIndented($"// Used in model class (type): {path}");
+                        continue;
+                    }
+
+                    _modelWriter.WriteLineIndented($"// Used in model class (resource): {path}");
+                }
+
+                _modelWriter.DecreaseIndent();
+                _modelWriter.WriteLine(string.Empty);
+            }
+        }
+
+        WriteNamespaceClose();
+
+        if (_generateHashesInsteadOfOutput)
+        {
+            writer.Flush();
+
+            // generate the hash
+            string hash = FileSystemUtils.GenerateSha256(stream);
+            _fileHashes.Add(filename[_exportDirectory.Length..], hash);
+
+            writer.Close();
+        }
+        else
+        {
+            writer.Flush();
+            writer.Close();
         }
     }
 
@@ -1198,20 +1308,42 @@ public sealed class CSharpFirely2 : ILanguage
 
         _modelWriter.WriteLineIndented($"// {exportName}.cs");
 
-        using (FileStream stream = new(filename, FileMode.Create))
-        using (ExportStreamWriter writer = new(stream))
+        using Stream stream = _generateHashesInsteadOfOutput
+            ? new MemoryStream()
+            : new FileStream(filename, FileMode.Create);
+        using ExportStreamWriter writer = new(stream);
+
+        if (_generateHashesInsteadOfOutput)
         {
-            _writer = writer;
+            writer.NewLine = "\r\n";
+        }
 
-            WriteHeaderComplexDataType();
+        _writer = writer;
 
-            WriteNamespaceOpen();
+        WriteHeaderComplexDataType();
 
-            WriteInterfaceComponent(complex.cgComponent(), exportName, subset, ref writtenModels);
+        WriteNamespaceOpen();
 
-            WriteNamespaceClose();
+        WriteInterfaceComponent(complex.cgComponent(), exportName, subset, ref writtenModels);
 
-            WriteFooter();
+        WriteNamespaceClose();
+
+        WriteFooter();
+
+        if (_generateHashesInsteadOfOutput)
+        {
+            writer.Flush();
+
+            // generate the hash
+            string hash = FileSystemUtils.GenerateSha256(stream);
+            _fileHashes.Add(filename[_exportDirectory.Length..], hash);
+
+            writer.Close();
+        }
+        else
+        {
+            writer.Flush();
+            writer.Close();
         }
     }
 
@@ -1265,20 +1397,42 @@ public sealed class CSharpFirely2 : ILanguage
 
         _modelWriter.WriteLineIndented($"// {exportName}.cs");
 
-        using (FileStream stream = new(filename, FileMode.Create))
-        using (ExportStreamWriter writer = new(stream))
+        using Stream stream = _generateHashesInsteadOfOutput
+            ? new MemoryStream()
+            : new FileStream(filename, FileMode.Create);
+        using ExportStreamWriter writer = new(stream);
+
+        if (_generateHashesInsteadOfOutput)
         {
-            _writer = writer;
+            writer.NewLine = "\r\n";
+        }
 
-            WriteHeaderComplexDataType();
+        _writer = writer;
 
-            WriteNamespaceOpen();
+        WriteHeaderComplexDataType();
 
-            WriteComponent(complex.cgComponent(), exportName, true, subset);
+        WriteNamespaceOpen();
 
-            WriteNamespaceClose();
+        WriteComponent(complex.cgComponent(), exportName, true, subset);
 
-            WriteFooter();
+        WriteNamespaceClose();
+
+        WriteFooter();
+
+        if (_generateHashesInsteadOfOutput)
+        {
+            writer.Flush();
+
+            // generate the hash
+            string hash = FileSystemUtils.GenerateSha256(stream);
+            _fileHashes.Add(filename[_exportDirectory.Length..], hash);
+
+            writer.Close();
+        }
+        else
+        {
+            writer.Flush();
+            writer.Close();
         }
     }
 
@@ -1336,8 +1490,15 @@ public sealed class CSharpFirely2 : ILanguage
 
         _modelWriter.WriteLineIndented($"// {exportName}.cs");
 
-        using FileStream stream = new FileStream(filename, FileMode.Create);
-        using ExportStreamWriter writer = new ExportStreamWriter(stream);
+        using Stream stream = _generateHashesInsteadOfOutput
+            ? new MemoryStream()
+            : new FileStream(filename, FileMode.Create);
+        using ExportStreamWriter writer = new(stream);
+
+        if (_generateHashesInsteadOfOutput)
+        {
+            writer.NewLine = "\r\n";
+        }
 
         _writer = writer;
 
@@ -1350,6 +1511,22 @@ public sealed class CSharpFirely2 : ILanguage
         WriteNamespaceClose();
 
         WriteFooter();
+
+        if (_generateHashesInsteadOfOutput)
+        {
+            writer.Flush();
+
+            // generate the hash
+            string hash = FileSystemUtils.GenerateSha256(stream);
+            _fileHashes.Add(filename[_exportDirectory.Length..], hash);
+
+            writer.Close();
+        }
+        else
+        {
+            writer.Flush();
+            writer.Close();
+        }
     }
 
     private void WriteInterfaceComponent(
@@ -1675,7 +1852,7 @@ public sealed class CSharpFirely2 : ILanguage
 
             case 3:
                 WriteIndentedComment(strings[0]);
-                WriteIndentedComment(string.Join("\n", strings[1..]), isSummary: false, isRemarks: true);
+                WriteIndentedComment(string.Join("\n", strings.Skip(1)), isSummary: false, isRemarks: true);
                 return;
         }
     }
@@ -2540,7 +2717,7 @@ public sealed class CSharpFirely2 : ILanguage
             foreach (ElementDefinition element in childElements)
             {
                 if ((!string.IsNullOrEmpty(element.Binding?.ValueSet)) &&
-                    (element.Binding.Strength == Hl7.Fhir.Model.BindingStrength.Required) &&
+                    (element.Binding!.Strength == Hl7.Fhir.Model.BindingStrength.Required) &&
                     _info.TryExpandVs(element.Binding.ValueSet, out ValueSet? vs))
                 {
                     WriteEnum(vs, className, usedEnumNames);
@@ -2571,7 +2748,7 @@ public sealed class CSharpFirely2 : ILanguage
     /// <param name="className">Name of the class this enum is being written in.</param>
     /// <param name="usedEnumNames"></param>
     /// <param name="silent">Do not actually write parameter to file, just add it in memory.</param>
-    private void WriteEnum(
+    private bool WriteEnum(
         ValueSet vs,
         string className,
         HashSet<string> usedEnumNames,
@@ -2588,24 +2765,28 @@ public sealed class CSharpFirely2 : ILanguage
             }
             else if (behaviors.AllowInClasses == false)
             {
-                return;
+                return false;
             }
         }
 
         if (passes || _writtenValueSets.ContainsKey(vs.Url))
         {
-            return;
+            return true;
         }
 
         if (passes || _exclusionSet.Contains(vs.Url))
         {
-            return;
+            return false;
         }
 
-        //if (vs.IsLimitedExpansion())
-        //{
-        //    return;
-        //}
+        FhirConcept[] concepts = vs.cgGetFlatConcepts(_info).ToArray();
+
+        if (concepts.Length == 0)
+        {
+            // TODO(ginoc): 2024.09.19 - do we want to start using a Terminology server to expand these?
+            // value set that cannot be expanded and does not have an expansion provided
+            return false;
+        }
 
         string name = (vs.Name ?? vs.Id)
             .Replace(" ", string.Empty, StringComparison.Ordinal)
@@ -2622,7 +2803,7 @@ public sealed class CSharpFirely2 : ILanguage
 
         if (usedEnumNames.Contains(nameSanitized))
         {
-            return;
+            return true;
         }
 
         usedEnumNames.Add(nameSanitized);
@@ -2637,7 +2818,7 @@ public sealed class CSharpFirely2 : ILanguage
                     ValueSetName = nameSanitized,
                 });
 
-            return;
+            return true;
         }
 
         IEnumerable<string> referencedCodeSystems = vs.cgReferencedCodeSystems();
@@ -2706,8 +2887,6 @@ public sealed class CSharpFirely2 : ILanguage
                 break;
         }
 
-        IEnumerable<FhirConcept> concepts = vs.cgGetFlatConcepts(_info);
-
         var defaultSystem = GetDefaultCodeSystem(concepts);
 
         _writer.WriteLineIndented($"[FhirEnumeration(\"{name}\", \"{vs.Url}\", \"{defaultSystem}\")]");
@@ -2773,6 +2952,8 @@ public sealed class CSharpFirely2 : ILanguage
                 ClassName = className,
                 ValueSetName = nameSanitized,
             });
+
+        return true;
     }
 
     private static string GetDefaultCodeSystem(IEnumerable<FhirConcept> concepts)
@@ -3330,12 +3511,12 @@ public sealed class CSharpFirely2 : ILanguage
         // citation needs special handling
         if ((components.Length > 2) && ed.Path.StartsWith("Citation.", StringComparison.Ordinal))
         {
-            return string.Join('.', components[0], string.Join(string.Empty, components[1..].ToPascalCase())) + "Component";
+            return string.Join(".", components[0], string.Join(string.Empty, components.Skip(1).ToPascalCase())) + "Component";
         }
 
         if (components.Length > 1)
         {
-            return string.Join('.', components[0], components[^1].ToPascalCase()) + "Component";
+            return string.Join(".", components[0], components[^1].ToPascalCase()) + "Component";
         }
 
         return type;
@@ -3456,7 +3637,7 @@ public sealed class CSharpFirely2 : ILanguage
             foreach ((string etName, ElementDefinition.TypeRefComponent elementType) in elementTypes.Where(kvp => (kvp.Key == "Reference") && kvp.Value.TargetProfile.Any()))
             {
                 resourceReferences = "[References(" +
-                    string.Join(',', elementType.cgTargetProfiles().Keys.Select(name => "\"" + name + "\"")) +
+                    string.Join(",", elementType.cgTargetProfiles().Keys.Select(name => "\"" + name + "\"")) +
                     ")]";
                 break;
             }
@@ -3538,87 +3719,109 @@ public sealed class CSharpFirely2 : ILanguage
 
         _modelWriter.WriteLineIndented($"// {exportName}.cs");
 
-        using (FileStream stream = new(filename, FileMode.Create))
-        using (ExportStreamWriter writer = new(stream))
+        using Stream stream = _generateHashesInsteadOfOutput
+            ? new MemoryStream()
+            : new FileStream(filename, FileMode.Create);
+        using ExportStreamWriter writer = new(stream);
+
+        if (_generateHashesInsteadOfOutput)
         {
-            _writer = writer;
+            writer.NewLine = "\r\n";
+        }
 
-            WriteHeaderPrimitive();
+        _writer = writer;
 
-            WriteNamespaceOpen();
+        WriteHeaderPrimitive();
 
-            if (!string.IsNullOrEmpty(primitive.cgpDefinition()))
-            {
-                WriteIndentedComment($"Primitive Type {primitive.Name}\n{primitive.cgpDefinition()}");
-            }
-            else
-            {
-                WriteIndentedComment($"Primitive Type {primitive.Name}");
-            }
+        WriteNamespaceOpen();
 
-            if (!string.IsNullOrEmpty(primitive.cgpComment()))
-            {
-                WriteIndentedComment(primitive.cgpComment(), isSummary: false, isRemarks: true);
-            }
+        if (!string.IsNullOrEmpty(primitive.cgpDefinition()))
+        {
+            WriteIndentedComment($"Primitive Type {primitive.Name}\n{primitive.cgpDefinition()}");
+        }
+        else
+        {
+            WriteIndentedComment($"Primitive Type {primitive.Name}");
+        }
 
-            _writer.WriteLineIndented("[System.Diagnostics.DebuggerDisplay(@\"\\{Value={Value}}\")]");
-            WriteSerializable();
+        if (!string.IsNullOrEmpty(primitive.cgpComment()))
+        {
+            WriteIndentedComment(primitive.cgpComment(), isSummary: false, isRemarks: true);
+        }
 
-            string fhirTypeConstructor = $"\"{primitive.Name}\",\"{primitive.Url}\"";
-            _writer.WriteLineIndented($"[FhirType({fhirTypeConstructor})]");
+        _writer.WriteLineIndented("[System.Diagnostics.DebuggerDisplay(@\"\\{Value={Value}}\")]");
+        WriteSerializable();
 
-            _writer.WriteLineIndented(
-                $"public partial class" +
-                    $" {exportName}" +
-                    $" : PrimitiveType, " +
-                    PrimitiveValueInterface(typeName));
+        string fhirTypeConstructor = $"\"{primitive.Name}\",\"{primitive.Url}\"";
+        _writer.WriteLineIndented($"[FhirType({fhirTypeConstructor})]");
 
-            // open class
-            OpenScope();
+        _writer.WriteLineIndented(
+            $"public partial class" +
+                $" {exportName}" +
+                $" : PrimitiveType, " +
+                PrimitiveValueInterface(typeName));
 
-            WritePropertyTypeName(primitive.Name);
+        // open class
+        OpenScope();
 
-            if (!string.IsNullOrEmpty(primitive.cgpValidationRegEx()))
-            {
-                WriteIndentedComment(
-                    $"Must conform to the pattern \"{primitive.cgpValidationRegEx()}\"",
-                    false);
+        WritePropertyTypeName(primitive.Name);
 
-                _writer.WriteLineIndented($"public const string PATTERN = @\"{primitive.cgpValidationRegEx()}\";");
-                _writer.WriteLine(string.Empty);
-            }
+        if (!string.IsNullOrEmpty(primitive.cgpValidationRegEx()))
+        {
+            WriteIndentedComment(
+                $"Must conform to the pattern \"{primitive.cgpValidationRegEx()}\"",
+                false);
 
-            _writer.WriteLineIndented($"public {exportName}({typeName} value)");
-            OpenScope();
-            _writer.WriteLineIndented("Value = value;");
-            CloseScope();
-
-            _writer.WriteLineIndented($"public {exportName}(): this(({typeName})null) {{}}");
+            _writer.WriteLineIndented($"public const string PATTERN = @\"{primitive.cgpValidationRegEx()}\";");
             _writer.WriteLine(string.Empty);
+        }
 
-            WriteIndentedComment("Primitive value of the element");
+        _writer.WriteLineIndented($"public {exportName}({typeName} value)");
+        OpenScope();
+        _writer.WriteLineIndented("Value = value;");
+        CloseScope();
 
-            _writer.WriteLineIndented("[FhirElement(\"value\", IsPrimitiveValue=true, XmlSerialization=XmlRepresentation.XmlAttr, InSummary=true, Order=30)]");
-            _writer.WriteLineIndented($"[DeclaredType(Type = typeof({getSystemTypeForFhirType(primitive.Name)}))]");
+        _writer.WriteLineIndented($"public {exportName}(): this(({typeName})null) {{}}");
+        _writer.WriteLine(string.Empty);
 
-            if (PrimitiveValidationPatterns.TryGetValue(primitive.Name, out string? primitivePattern))
-            {
-                _writer.WriteLineIndented($"[{primitivePattern}]");
-            }
+        WriteIndentedComment("Primitive value of the element");
 
-            _writer.WriteLineIndented("[DataMember]");
-            _writer.WriteLineIndented($"public {typeName} Value");
-            OpenScope();
-            _writer.WriteLineIndented($"get {{ return ({typeName})ObjectValue; }}");
-            _writer.WriteLineIndented("set { ObjectValue = value; OnPropertyChanged(\"Value\"); }");
-            CloseScope();
+        _writer.WriteLineIndented("[FhirElement(\"value\", IsPrimitiveValue=true, XmlSerialization=XmlRepresentation.XmlAttr, InSummary=true, Order=30)]");
+        _writer.WriteLineIndented($"[DeclaredType(Type = typeof({getSystemTypeForFhirType(primitive.Name)}))]");
 
-            // close class
-            CloseScope();
+        if (PrimitiveValidationPatterns.TryGetValue(primitive.Name, out string? primitivePattern))
+        {
+            _writer.WriteLineIndented($"[{primitivePattern}]");
+        }
 
-            WriteNamespaceClose();
+        _writer.WriteLineIndented("[DataMember]");
+        _writer.WriteLineIndented($"public {typeName} Value");
+        OpenScope();
+        _writer.WriteLineIndented($"get {{ return ({typeName})ObjectValue; }}");
+        _writer.WriteLineIndented("set { ObjectValue = value; OnPropertyChanged(\"Value\"); }");
+        CloseScope();
 
-            WriteFooter();
+        // close class
+        CloseScope();
+
+        WriteNamespaceClose();
+
+        WriteFooter();
+
+        if (_generateHashesInsteadOfOutput)
+        {
+            writer.Flush();
+
+            // generate the hash
+            string hash = FileSystemUtils.GenerateSha256(stream);
+            _fileHashes.Add(filename[_exportDirectory.Length..], hash);
+
+            writer.Close();
+        }
+        else
+        {
+            writer.Flush();
+            writer.Close();
         }
     }
 

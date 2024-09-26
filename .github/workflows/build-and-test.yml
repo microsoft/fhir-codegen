@@ -1,0 +1,99 @@
+name: Tests
+# Basics from https://learn.microsoft.com/en-us/dotnet/devops/dotnet-test-github-action
+on:
+  # push:
+  pull_request:
+    branches: [ main-disabled ]
+    paths:
+    - '**.cs'
+    - '**.csproj'
+
+env:
+  DOTNET_VERSION: '8'           # The .NET SDK version to use
+
+jobs:
+  cache-fhir-packages:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Try to use a cached set of packages for Unit Testing
+    - name: Check for a FHIR package cache
+      id: cache-fhir-packages-test
+      uses: actions/cache@v4
+      with:
+        path: ~/.fhir
+        key: cache-unit-test-fhir-packages-20240909
+        enableCrossOsArchive: true
+        lookup-only: true
+
+    # If there is no cache, pre-download the packages we need
+    - name: Install FHIR packages
+      if: ${{ steps.cache-fhir-packages-test.outputs.cache-hit != 'true' }}
+      continue-on-error: true
+      run: |
+        dotnet tool install -g firely.terminal
+        fhir install hl7.fhir.r2.core 1.0.2
+        fhir install hl7.fhir.r2.expansions 1.0.2
+        fhir install hl7.fhir.r3.core 3.0.2
+        fhir install hl7.fhir.r3.expansions 3.0.2
+        fhir install hl7.fhir.r4.core 4.0.1
+        fhir install hl7.fhir.r4.expansions 4.0.1
+        fhir install hl7.fhir.r4b.core 4.3.0
+        fhir install hl7.fhir.r4b.expansions 4.3.0
+        fhir install hl7.fhir.r5.core 5.0.0
+        fhir install hl7.fhir.r5.expansions 5.0.0
+
+    # If there is no cache, save the downloaded packages
+    - name: Cache FHIR packages
+      uses: actions/cache/save@v4
+      if: ${{ steps.cache-fhir-packages-test.outputs.cache-hit != 'true' }}
+      continue-on-error: true
+      with:
+        path: ~/.fhir
+        key: cache-unit-test-fhir-packages-20240909
+        enableCrossOsArchive: true
+
+  build-and-test:
+
+    name: build-and-test-${{matrix.os}}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        # os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    # Try to use a cached set of packages for Unit Testing
+    - name: Restore FHIR package cache
+      id: cache-fhir-packages
+      uses: actions/cache@v4
+      with:
+        path: ~/.fhir
+        key: cache-unit-test-fhir-packages-20240909
+        enableCrossOsArchive: true
+
+    - name: Restore, build, and test x86
+      if: runner.arch == 'X86'
+      run: |
+        dotnet restore -a x86
+        dotnet test --configuration Release --no-restore --framework net8.0 --verbosity detailed --filter "RequiresExternalRepo!=true" -a x86
+
+    - name: Restore, build, and test x64
+      if: runner.arch == 'X64'
+      run: |
+        dotnet restore -a x64
+        dotnet test --configuration Release --no-restore --framework net8.0 --verbosity detailed --filter "RequiresExternalRepo!=true" -a x64
+
+    - name: Restore, build, and test ARM
+      if: runner.arch == 'ARM'
+      run: |
+        dotnet restore -a arm
+        dotnet test --configuration Release --no-restore --framework net8.0 --verbosity detailed --filter "RequiresExternalRepo!=true" -a arm
+
+    - name: Restore, build, and test ARM64
+      if: runner.arch == 'ARM64'
+      run: |
+        dotnet restore -a arm64
+        dotnet test --configuration Release --no-restore --framework net8.0 --verbosity detailed --filter "RequiresExternalRepo!=true" -a arm64

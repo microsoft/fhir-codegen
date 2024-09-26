@@ -17,6 +17,10 @@ using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.LinqExtensions;
 
+#if NETSTANDARD2_0
+using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
+#endif
+
 namespace Microsoft.Health.Fhir.CodeGen.Language.Ruby;
 
 public class LangRuby : ILanguage
@@ -122,7 +126,7 @@ public class LangRuby : ILanguage
             ? new[] { sd.Description, sd.Purpose }
             : new[] { sd.Title, sd.Description, sd.Purpose };
 
-        return string.Join('\n', values.Where(s => !string.IsNullOrEmpty(s)).Distinct()).Trim();
+        return string.Join("\n", values.Where(s => !string.IsNullOrEmpty(s)).Distinct()).Trim();
     }
 
     private static string BuildCommentString(ElementDefinition ed)
@@ -130,7 +134,7 @@ public class LangRuby : ILanguage
         string[] values = (!string.IsNullOrEmpty(ed.Definition) && !string.IsNullOrEmpty(ed.Short) && ed.Definition.StartsWith(ed.Short))
             ? new[] { ed.Definition, ed.Comment }
             : new[] { ed.Short, ed.Definition, ed.Comment };
-        return string.Join('\n', values.Where(s => !string.IsNullOrEmpty(s)).Distinct()).Trim();
+        return string.Join("\n", values.Where(s => !string.IsNullOrEmpty(s)).Distinct()).Trim();
     }
 
     private void WriteTypes(IReadOnlyDictionary<string, StructureDefinition> complexTypes)
@@ -189,7 +193,7 @@ public class LangRuby : ILanguage
         string baseName = ed.cgName();
         bool isChoice = false;
 
-        IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> elementTypes = ed.cgTypes();
+        IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> elementTypes = ed.cgTypes(coerceToR5: true);
 
         if (elementTypes.Count == 0)
         {
@@ -272,7 +276,7 @@ public class LangRuby : ILanguage
         bool isLast,
         int depth)
     {
-        string rubyTypedPath = depth == 0 ? ed.Path : string.Join('.', ed.Path.Split('.')[depth..]);
+        string rubyTypedPath = depth == 0 ? ed.Path : string.Join(".", ed.Path.Split('.').Skip(depth));
         if (char.IsLower(rubyTypedPath[0]))
         {
             rubyTypedPath = char.ToUpper(rubyTypedPath[0]) + rubyTypedPath[1..];
@@ -296,7 +300,7 @@ public class LangRuby : ILanguage
 
             // list codes for any type of binding
             if ((!string.IsNullOrEmpty(ed.Binding?.ValueSet)) &&
-                (!_unexportableSystems.Contains(_dc.UnversionedUrlForVs(ed.Binding.ValueSet))) &&
+                (!_unexportableSystems.Contains(_dc.UnversionedUrlForVs(ed.Binding!.ValueSet))) &&
                 _dc.TryExpandVs(ed.Binding.ValueSet, out ValueSet? boundVs))
             {
                 // write the full expansion
@@ -480,7 +484,7 @@ public class LangRuby : ILanguage
             {
                 ElementDefinition ed = choiceElements[i];
                 writer.WriteLineIndented(
-                    $"'{ed.cgName()}' => [{string.Join(", ", ed.cgTypes().Keys.Order().Select(v => "'" + v + "'"))}]" +
+                    $"'{ed.cgName()}' => [{string.Join(", ", ed.cgTypes(coerceToR5: true).Keys.Order().Select(v => "'" + v + "'"))}]" +
                     (i < choiceElements.Length - 1 ? "," : string.Empty));
             }
 

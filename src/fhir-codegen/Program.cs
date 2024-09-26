@@ -23,7 +23,6 @@ using System.CommandLine.Help;
 using System.CommandLine.Invocation;
 using System.Collections;
 using Hl7.Fhir.Utility;
-using Microsoft.Health.Fhir.PackageManager;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using Microsoft.Health.Fhir.CodeGen.Loader;
 using Microsoft.Health.Fhir.CodeGen.Models;
@@ -511,44 +510,12 @@ public class Program
                 throw new Exception($"Language type must implement ILanguage, {languageName} ({langType.Name})");
             }
 
-            // create our cache object to load packages with
-            IFhirPackageClient cache = FhirCache.Create(new FhirPackageClientSettings()
-            {
-                CachePath = rootConfig.FhirCacheDirectory,
-            });
-
-            List<PackageCacheEntry> packages = [];
-
-            // load packages
-            foreach (string package in rootConfig.Packages)
-            {
-                PackageCacheEntry? entry;
-
-                if (package.StartsWith("http", StringComparison.OrdinalIgnoreCase))
-                {
-                    entry = await cache.FindOrDownloadPackageByUrl(package, rootConfig.ResolvePackageDependencies);
-                }
-                else
-                {
-                    entry = await cache.FindOrDownloadPackageByDirective(package, rootConfig.ResolvePackageDependencies);
-                }
-
-                if (entry == null)
-                {
-                    throw new Exception($"Could not find or download package {package}");
-                }
-
-                packages.Add((PackageCacheEntry)entry);
-            }
-
-            PackageLoader loader = new(cache, new()
+            PackageLoader loader = new(config is ConfigRoot cr ? cr : null, new()
             {
                 JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
-                AutoLoadExpansions = rootConfig.AutoLoadExpansions,
-                ResolvePackageDependencies = rootConfig.ResolvePackageDependencies,
             });
 
-            DefinitionCollection? loaded = loader.LoadPackages(packages.First().Name, packages).Result
+            DefinitionCollection? loaded = await loader.LoadPackages(rootConfig.Packages, null, rootConfig.FhirVersion)
                 ?? throw new Exception($"Could not load packages: {string.Join(',', rootConfig.Packages)}");
 
             // check for a FHIR server URL
@@ -611,83 +578,43 @@ public class Program
             // parse the arguments into the configuration object
             config.Parse(pr);
 
-            // create our cache object to load packages with
-            IFhirPackageClient cache = FhirCache.Create(new FhirPackageClientSettings()
-            {
-                CachePath = config.FhirCacheDirectory,
-            });
-
-            List<PackageCacheEntry> packagesLeft = [];
-
-            // load packages
-            foreach (string package in config.Packages)
-            {
-                PackageCacheEntry? entry;
-
-                if (package.StartsWith("http", StringComparison.OrdinalIgnoreCase))
-                {
-                    entry = await cache.FindOrDownloadPackageByUrl(package, config.ResolvePackageDependencies);
-                }
-                else
-                {
-                    entry = await cache.FindOrDownloadPackageByDirective(package, config.ResolvePackageDependencies);
-                }
-
-                if (entry == null)
-                {
-                    throw new Exception($"Could not find or download package {package}");
-                }
-
-                packagesLeft.Add((PackageCacheEntry)entry);
-            }
-
-            PackageLoader loaderLeft = new(cache, new()
+            PackageLoader loaderLeft = new(config, new()
             {
                 JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
-                AutoLoadExpansions = config.AutoLoadExpansions,
-                ResolvePackageDependencies = config.ResolvePackageDependencies,
             });
 
-            DefinitionCollection? loadedLeft = loaderLeft.LoadPackages(packagesLeft.First().Name, packagesLeft).Result
+
+            DefinitionCollection? loadedLeft = await loaderLeft.LoadPackages(config.Packages)
                 ?? throw new Exception($"Could not load left-hand-side packages: {string.Join(',', config.Packages)}");
 
-            List<PackageCacheEntry> packagesRight = [];
-
-            // load packages
-            foreach (string package in config.ComparePackages)
-            {
-                PackageCacheEntry? entry;
-
-                if (package.StartsWith("http", StringComparison.OrdinalIgnoreCase))
-                {
-                    entry = await cache.FindOrDownloadPackageByUrl(package, config.ResolvePackageDependencies);
-                }
-                else
-                {
-                    entry = await cache.FindOrDownloadPackageByDirective(package, config.ResolvePackageDependencies);
-                }
-
-                if (entry == null)
-                {
-                    throw new Exception($"Could not find or download package {package}");
-                }
-
-                packagesRight.Add((PackageCacheEntry)entry);
-            }
-
-            PackageLoader loaderRight = new(cache, new()
+            PackageLoader loaderRight = new(config, new()
             {
                 JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
-                AutoLoadExpansions = config.AutoLoadExpansions,
-                ResolvePackageDependencies = config.ResolvePackageDependencies,
             });
 
-            DefinitionCollection? loadedRight = loaderLeft.LoadPackages(packagesRight.First().Name, packagesRight).Result
+            DefinitionCollection? loadedRight = await loaderLeft.LoadPackages(config.ComparePackages)
                 ?? throw new Exception($"Could not load right-hand-side packages: {string.Join(',', config.Packages)}");
 
-            PackageComparer comparer = new(config, cache, loadedLeft, loadedRight);
+            PackageComparer comparer = new(config, loadedLeft, loadedRight);
 
-            _ = comparer.Compare();
+            if (comparer.Compare() is PackageComparison pc)
+            {
+                if (config.SaveComparisonResult)
+                {
+                    comparer.WriteComparisonResultJson(pc);
+                }
+
+                if (config.NoOutput != true)
+                {
+                    comparer.WriteMarkdownFiles(pc);
+                    comparer.WriteCrossVersionExtensionArtifacts(pc);
+                }
+
+                if (config.MapSaveStyle != ConfigCompare.ComparisonMapSaveStyle.None)
+                {
+                    comparer.WriteMapFiles(pc);
+                }
+            }
         }
         catch (Exception ex)
         {
@@ -723,8 +650,8 @@ public class Program
                 continue;
             }
 
-            string key = header.Substring(0, separatorLocation).Trim();
-            string value = header.Substring(separatorLocation + 1).Trim();
+            string key = header[..separatorLocation].Trim();
+            string value = header[(separatorLocation + 1)..].Trim();
 
             if (headers.TryGetValue(key, out List<string>? parsedValues))
             {
@@ -984,37 +911,37 @@ public class Program
     }
 
 
-    /// <summary>Searches for the FHIR specification directory.</summary>
-    /// <exception cref="DirectoryNotFoundException">Thrown when the requested directory is not
-    ///  present.</exception>
-    /// <param name="dirName">       The name of the directory we are searching for.</param>
-    /// <param name="throwIfNotFound">(Optional) True to throw if not found.</param>
-    /// <returns>The found FHIR directory.</returns>
-    public static string FindRelativeDir(
-        string startDir,
-        string dirName,
-        bool throwIfNotFound = true)
-    {
-        string currentDir = string.IsNullOrEmpty(startDir) ? Path.GetDirectoryName(AppContext.BaseDirectory) ?? string.Empty : startDir;
-        string testDir = Path.Combine(currentDir, dirName);
+    ///// <summary>Searches for the FHIR specification directory.</summary>
+    ///// <exception cref="DirectoryNotFoundException">Thrown when the requested directory is not
+    /////  present.</exception>
+    ///// <param name="dirName">       The name of the directory we are searching for.</param>
+    ///// <param name="throwIfNotFound">(Optional) True to throw if not found.</param>
+    ///// <returns>The found FHIR directory.</returns>
+    //public static string FindRelativeDir(
+    //    string startDir,
+    //    string dirName,
+    //    bool throwIfNotFound = true)
+    //{
+    //    string currentDir = string.IsNullOrEmpty(startDir) ? Path.GetDirectoryName(AppContext.BaseDirectory) ?? string.Empty : startDir;
+    //    string testDir = Path.Combine(currentDir, dirName);
 
-        while (!Directory.Exists(testDir))
-        {
-            currentDir = Path.GetFullPath(Path.Combine(currentDir, ".."));
+    //    while (!Directory.Exists(testDir))
+    //    {
+    //        currentDir = Path.GetFullPath(Path.Combine(currentDir, ".."));
 
-            if (currentDir == Path.GetPathRoot(currentDir))
-            {
-                if (throwIfNotFound)
-                {
-                    throw new DirectoryNotFoundException($"Could not find directory {dirName}!");
-                }
+    //        if (currentDir == Path.GetPathRoot(currentDir))
+    //        {
+    //            if (throwIfNotFound)
+    //            {
+    //                throw new DirectoryNotFoundException($"Could not find directory {dirName}!");
+    //            }
 
-                return string.Empty;
-            }
+    //            return string.Empty;
+    //        }
 
-            testDir = Path.Combine(currentDir, dirName);
-        }
+    //        testDir = Path.Combine(currentDir, dirName);
+    //    }
 
-        return testDir;
-    }
+    //    return testDir;
+    //}
 }

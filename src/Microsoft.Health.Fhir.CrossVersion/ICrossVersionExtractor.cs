@@ -11,10 +11,12 @@ namespace Microsoft.Health.Fhir.CrossVersion;
 
 public interface ICrossVersionExtractor<T> where T : Hl7.Fhir.Model.Base, new()
 {
+#if NET8_0_OR_GREATER
     /// <summary>Gets the instance.</summary>
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     static ICrossVersionExtractor<T> Instance { get; }
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#endif
 
     /// <summary>Extracts the given source node into a resource.</summary>
     /// <param name="node">Source content.</param>

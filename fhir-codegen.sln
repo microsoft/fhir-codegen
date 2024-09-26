@@ -9,19 +9,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 		CODE_OF_CONDUCT.md = CODE_OF_CONDUCT.md
 		.github\workflows\docs.yaml = .github\workflows\docs.yaml
+		fhir-codegen.props = fhir-codegen.props
 		GeoPol.xml = GeoPol.xml
 		LICENSE = LICENSE
 		README.md = README.md
-		.github\workflows\ReleasePublish.yaml = .github\workflows\ReleasePublish.yaml
 		SECURITY.md = SECURITY.md
+		testenvironments.json = testenvironments.json
 		THIRDPARTYNOTICES.md = THIRDPARTYNOTICES.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Health.Fhir.CodeGenCommon", "src\Microsoft.Health.Fhir.CodeGenCommon\Microsoft.Health.Fhir.CodeGenCommon.csproj", "{45D0F776-8D6E-4C1A-BB14-DDFAA3301EC7}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Health.Fhir.PackageManager", "src\Microsoft.Health.Fhir.PackageManager\Microsoft.Health.Fhir.PackageManager.csproj", "{A758C220-2332-498A-B245-C6BE3203A87E}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Health.Fhir.PackageManager.Tests", "src\Microsoft.Health.Fhir.PackageManager.Tests\Microsoft.Health.Fhir.PackageManager.Tests.csproj", "{A7D8CDFB-7B86-48B3-9500-67CEB2820B56}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fhir-codegen", "src\fhir-codegen\fhir-codegen.csproj", "{CC4D5356-BD06-48A8-B329-7C372201549A}"
 EndProject
@@ -37,6 +34,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Health.Fhir.Mappi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Health.Fhir.CrossVersion", "src\Microsoft.Health.Fhir.CrossVersion\Microsoft.Health.Fhir.CrossVersion.csproj", "{8327D398-57D6-4C42-978B-E1C416AC6601}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{2D24D8E9-FC38-4956-8052-70C76500938F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{AE7FEF4B-C8D8-4EC1-9297-D5E43D2BC131}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build-and-test.yml = .github\workflows\build-and-test.yml
+		.github\workflows\docs.yaml = .github\workflows\docs.yaml
+		.github\workflows\ReleasePublish.yaml = .github\workflows\ReleasePublish.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,14 +53,6 @@ Global
 		{45D0F776-8D6E-4C1A-BB14-DDFAA3301EC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45D0F776-8D6E-4C1A-BB14-DDFAA3301EC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45D0F776-8D6E-4C1A-BB14-DDFAA3301EC7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A758C220-2332-498A-B245-C6BE3203A87E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A758C220-2332-498A-B245-C6BE3203A87E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A758C220-2332-498A-B245-C6BE3203A87E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A758C220-2332-498A-B245-C6BE3203A87E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A7D8CDFB-7B86-48B3-9500-67CEB2820B56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A7D8CDFB-7B86-48B3-9500-67CEB2820B56}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A7D8CDFB-7B86-48B3-9500-67CEB2820B56}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A7D8CDFB-7B86-48B3-9500-67CEB2820B56}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CC4D5356-BD06-48A8-B329-7C372201549A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CC4D5356-BD06-48A8-B329-7C372201549A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC4D5356-BD06-48A8-B329-7C372201549A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -86,6 +84,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2D24D8E9-FC38-4956-8052-70C76500938F} = {DEDEA68B-9432-40E9-BB9E-84013AD677E0}
+		{AE7FEF4B-C8D8-4EC1-9297-D5E43D2BC131} = {2D24D8E9-FC38-4956-8052-70C76500938F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {17802D6E-34A0-472E-9041-76E54F463711}

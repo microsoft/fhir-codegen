@@ -24,7 +24,10 @@ public class ElementDefinition_30_50 : ICrossVersionProcessor<ElementDefinition>
 			Process(child, v);
 		}
 
-		return v;
+        // normalize type repetitions
+        Normalization.ReconcileElementTypeRepetitions(v);
+
+        return v;
 	}
 
 	public void Process(ISourceNode node, ElementDefinition current)

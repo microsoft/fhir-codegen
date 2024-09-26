@@ -17,36 +17,40 @@ namespace Microsoft.Health.Fhir.CodeGen.Tests.FromFailures;
 /// <summary>A structure parse tests.</summary>
 public class ParseTests
 {
-    [Theory]
-    //[FileData("TestData/R5/ValueSet-units-of-time.json")]
-    [FileData("TestData/R5/expansions/ValueSet-units-of-time.json")]
-    [Trait("Category", "Issues")]
-    [Trait("FhirVersion", "R5")]
-    public void TestParseR5ValueSetUnitsOfTime(string json)
-    {
-        FhirJsonPocoDeserializer parser = new(new FhirJsonPocoDeserializerSettings()
-        {
-            DisableBase64Decoding = false,
-            Validator = null,
-        });
+    ///// <summary>
+    ///// Note that the Expansion is WRONG in several publications
+    ///// TODO(ginoc): Remove this test when current build is verified correct.
+    ///// </summary>
+    ///// <param name="json">The JSON.</param>
+    //[Theory]
+    //[FileData("TestData/R5/expansions/ValueSet-units-of-time.json")]
+    //[Trait("Category", "Issues")]
+    //[Trait("FhirVersion", "R5")]
+    //public void TestParseR5ValueSetUnitsOfTime(string json)
+    //{
+    //    FhirJsonPocoDeserializer parser = new(new FhirJsonPocoDeserializerSettings()
+    //    {
+    //        DisableBase64Decoding = false,
+    //        Validator = null,
+    //    });
 
-        // always use lenient parsing
-        Resource parsed = parser.DeserializeResource(json);
+    //    // always use lenient parsing
+    //    Resource parsed = parser.DeserializeResource(json);
 
-        parsed.Should().NotBeNull();
-        parsed.Should().BeOfType<ValueSet>();
+    //    parsed.Should().NotBeNull();
+    //    parsed.Should().BeOfType<ValueSet>();
 
-        ValueSet vs = (ValueSet)parsed;
+    //    ValueSet vs = (ValueSet)parsed;
 
-        vs.Expansion.Should().NotBeNull();
-        vs.Expansion.Contains.Should().NotBeEmpty();
-        vs.Expansion.Contains.Count.Should().Be(7);
+    //    vs.Expansion.Should().NotBeNull();
+    //    vs.Expansion.Contains.Should().NotBeEmpty();
+    //    vs.Expansion.Contains.Count.Should().Be(7);
 
-        foreach (ValueSet.ContainsComponent cc in vs.Expansion.Contains)
-        {
-            cc.Display.Should().StartWith(cc.Code);
-        }
-    }
+    //    foreach (ValueSet.ContainsComponent cc in vs.Expansion.Contains)
+    //    {
+    //        cc.Display.Should().StartWith(cc.Code);
+    //    }
+    //}
 
     [Theory]
     [FileData("TestData/R4B/ValueSet-nhin-purposeofuse.json")]

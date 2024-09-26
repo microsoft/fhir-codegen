@@ -1,9 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\fhir-codegen.props" />
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -15,22 +14,42 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Hl7.Fhir.R5" Version="5.8.1" />
-    <PackageReference Include="Microsoft.OpenApi" Version="1.6.15" />
+    <Compile Remove="_ForPackages\IniData.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Microsoft.Health.Fhir.CodeGenCommon\Polyfill\CodeGenCommonPolyfill.cs" Link="Polyfill\CodeGenCommonPolyfill.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Firely.Fhir.Packages" Version="4.7.0" />
+    <PackageReference Include="Hl7.Fhir.R5" Version="5.10.2" />
+    <PackageReference Include="Microsoft.OpenApi" Version="1.6.21" />
     <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="PolySharp" Version="1.14.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="System.Text.Json" Version="8.0.4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.Health.Fhir.CodeGenCommon\Microsoft.Health.Fhir.CodeGenCommon.csproj" />
     <ProjectReference Include="..\Microsoft.Health.Fhir.CrossVersion\Microsoft.Health.Fhir.CrossVersion.csproj" />
     <ProjectReference Include="..\Microsoft.Health.Fhir.MappingLanguage\Microsoft.Health.Fhir.MappingLanguage.csproj" />
-    <ProjectReference Include="..\Microsoft.Health.Fhir.PackageManager\Microsoft.Health.Fhir.PackageManager.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Language\Firely\Cql\Models\fhir-modelinfo-4.0.1.xml">
       <LogicalName>Fhir401</LogicalName>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Polyfill\" />
   </ItemGroup>
   
 </Project>

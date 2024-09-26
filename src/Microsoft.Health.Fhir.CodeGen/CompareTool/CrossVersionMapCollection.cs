@@ -3,26 +3,29 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Model;
+using Hl7.Fhir.Rest;
+using Hl7.Fhir.Specification.Navigation;
+using Hl7.Fhir.Specification.Source;
 using Hl7.Fhir.Utility;
-using Microsoft.Extensions.Logging;
 using Microsoft.Health.Fhir.CodeGen.Loader;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using Microsoft.Health.Fhir.MappingLanguage;
-using Microsoft.Health.Fhir.PackageManager;
-using Microsoft.OpenApi.Any;
-using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
+using Hl7.Fhir.FhirPath.Validator;
+using Hl7.Fhir.Introspection;
+using Hl7.FhirPath;
+using System.Text;
+using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
+using Hl7.Fhir.Language.Debugging;
+using Firely.Fhir.Packages;
+
+#if NETSTANDARD2_0
+using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
+#endif
 
 namespace Microsoft.Health.Fhir.CodeGen.CompareTool;
 
@@ -44,8 +47,6 @@ public class CrossVersionMapCollection
 
     private PackageLoader _loader = null!;
 
-    private IFhirPackageClient _cache = null!;
-
     private DefinitionCollection _source;
     private DefinitionCollection _target;
     private DefinitionCollection _dc = null!;
@@ -55,12 +56,14 @@ public class CrossVersionMapCollection
     private FhirReleases.FhirSequenceCodes _sourceFhirSequence;
     private string _sourcePackageCanonical;
     private string _sourceRLiteral;
+    private string _sourceShortVersion;
     private string _sourceShortVersionUrlSegment;
     private string _sourcePackageVersion;
 
     private FhirReleases.FhirSequenceCodes _targetFhirSequence;
     private string _targetPackageCanonical;
     private string _targetRLiteral;
+    private string _targetShortVersion;
     private string _targetShortVersionUrlSegment;
     private string _targetPackageVersion;
 
@@ -81,16 +84,16 @@ public class CrossVersionMapCollection
     private Dictionary<string, FhirStructureMap> _fmlByCompositeName = [];
 
     public CrossVersionMapCollection(
-        IFhirPackageClient cache,
         DefinitionCollection source,
         DefinitionCollection target)
     {
-        _cache = cache;
-        _loader = new(_cache, new()
+        _loader = new(new()
         {
-            JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
             AutoLoadExpansions = false,
             ResolvePackageDependencies = false,
+        }, new()
+        {
+            JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
         });
 
         _source = source;
@@ -98,7 +101,8 @@ public class CrossVersionMapCollection
         _sourcePackageCanonical = source.MainPackageCanonical;
         _sourceFhirSequence = source.FhirSequence;
         _sourceRLiteral = source.FhirSequence.ToRLiteral();
-        _sourceShortVersionUrlSegment = "/" + source.FhirSequence.ToShortVersion() + "/";
+        _sourceShortVersion = source.FhirSequence.ToShortVersion();
+        _sourceShortVersionUrlSegment = "/" + _sourceShortVersion + "/";
         _sourcePackageVersion = source.FhirVersionLiteral;
 
         _target = target;
@@ -106,7 +110,8 @@ public class CrossVersionMapCollection
         _targetPackageCanonical = target.MainPackageCanonical;
         _targetFhirSequence = target.FhirSequence;
         _targetRLiteral = target.FhirSequence.ToRLiteral();
-        _targetShortVersionUrlSegment = "/" + target.FhirSequence.ToShortVersion() + "/";
+        _targetShortVersion = target.FhirSequence.ToShortVersion();
+        _targetShortVersionUrlSegment = "/" + _targetShortVersion + "/";
         _targetPackageVersion = target.FhirVersionLiteral;
 
         _sourceToTargetWithR = $"{_sourceRLiteral}to{_targetRLiteral}";
@@ -186,7 +191,13 @@ public class CrossVersionMapCollection
 
         if (isOfficial)
         {
-            return TryLoadOfficialConceptMaps(path) && TryLoadOfficialStructureMaps(path);
+            if (TryLoadOfficialConceptMaps(path) && TryLoadOfficialStructureMaps(path))
+            {
+                ReconcileElementMapWithFML();
+                return true;
+            }
+
+            return false;
         }
 
         if (isSource)
@@ -263,7 +274,9 @@ public class CrossVersionMapCollection
         string path = Path.Combine(fhirCrossRepoPath, "input", _sourceToTargetWithR);
         if (!Directory.Exists(path))
         {
-            throw new DirectoryNotFoundException($"Could not find fhir-cross-version/input/{_sourceToTargetWithR} directory: {path}");
+            Console.WriteLine($"Could not find fhir-cross-version/input/{_sourceToTargetWithR} directory: {path}");
+            return false;
+            //throw new DirectoryNotFoundException($"Could not find fhir-cross-version/input/{_sourceToTargetWithR} directory: {path}");
         }
 
         // files have different styles in each directory, but we want all FML files anyway
@@ -317,6 +330,238 @@ public class CrossVersionMapCollection
         return true;
     }
 
+    /// <summary>Reconcile element map with information from Structure Maps.</summary>
+    internal void ReconcileElementMapWithFML()
+    {
+        // if we do not have any structure maps, nothing to do
+        if (_fmlByCompositeName.Count == 0)
+        {
+            return;
+        }
+
+        //StringBuilder addedMaps = new();
+
+        Dictionary<string, Dictionary<string, FmlTargetInfo>> fmlPathLookup = [];
+
+        // iterate over the FML files to see what element maps we can find
+        foreach ((string name, FhirStructureMap fml) in _fmlByCompositeName)
+        {
+            fmlPathLookup.Clear();
+
+            // process each of the groups in the FML to extract path maps
+            foreach ((string groupName, GroupDeclaration group) in fml.GroupsByName)
+            {
+                // process root groups (recurses into dependent groups)
+                if (name.Contains(groupName))
+                {
+                    ProcessCrossVersionGroup(fml, groupName, groupName, group, fmlPathLookup);
+                }
+            }
+
+            ReconcileElementMapFmlPaths(name, fmlPathLookup);
+        }
+    }
+
+    private void ReconcileElementMapFmlPaths(
+        string fmlName,
+        Dictionary<string, Dictionary<string, FmlTargetInfo>> fmlPathLookup)
+    {
+        StringBuilder addedMaps = new();
+
+        // look for elements that target other elements
+        foreach ((string sourcePath, Dictionary<string, FmlTargetInfo> targets) in fmlPathLookup)
+        {
+            // skip items with no targets
+            if (targets.Count == 0)
+            {
+                continue;
+            }
+
+            // set the default relationship based on the number of targets
+            ConceptMap.ConceptMapRelationship initialRelationship = targets.Count == 1
+                ? ConceptMap.ConceptMapRelationship.Equivalent
+                : ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget;
+
+            foreach ((string targetPath, FmlTargetInfo targetInfo) in targets)
+            {
+                // check for source and target paths being the same
+                if (sourcePath == targetPath)
+                {
+                    continue;
+                }
+
+                // grab the source and target type info to check for mappings
+                string sourceTypeName = sourcePath.Split('.')[0];
+                string targetTypeName = targetPath.Split('.')[0];
+
+                // make sure we have a source structure
+                if (!_source.TryGetStructure(sourceTypeName, out StructureDefinition? sourceSd))
+                {
+                    Console.WriteLine($"Could not resolve source type {sourceTypeName} for {sourcePath}");
+                    continue;
+                }
+
+                // make sure the source element exists
+                if (!sourceSd.cgTryGetElementByPath(sourcePath, out ElementDefinition? sourceEd))
+                {
+                    Console.WriteLine($"Could not resolve source path {sourcePath} for {sourceTypeName}");
+                    continue;
+                }
+
+                // skip elements that have child elements - will either be picked up by dependent groups or are not relevant
+                if (_source.HasChildElements(sourceEd.Path))
+                {
+                    continue;
+                }
+
+                // make sure we have a target structure
+                if (!_target.TryGetStructure(sourceTypeName, out StructureDefinition? targetSd))
+                {
+                    Console.WriteLine($"Could not resolve source type {targetTypeName} for {targetPath}");
+                    continue;
+                }
+
+                // make sure the target element exists
+                if (!targetSd.cgTryGetElementByPath(targetPath, out ElementDefinition? targetEd))
+                {
+                    Console.WriteLine($"Could not resolve target path {targetPath} for {targetTypeName}");
+                    continue;
+                }
+
+                // skip elements that have child elements - will either be picked up by dependent groups or are not relevant
+                if (_target.HasChildElements(targetEd.Path))
+                {
+                    continue;
+                }
+
+                //// check for a type map we need to apply
+                //if ((_dataTypeMap?.Group.FirstOrDefault()?.Element is List<ConceptMap.SourceElementComponent> values) &&
+                //    (values.FirstOrDefault(v => v.Code == sourceType) is ConceptMap.SourceElementComponent sourceEC) &&
+                //    sourceEC.Target.Any(t => t.Code != sourceEC.Code))
+                //{
+
+                //}
+
+                // we want to do a mapping between these elements, check to see if there are any for the correct target
+                List<ConceptMap> maps = _dc.ConceptMapsForSource(sourceSd.Url)
+                    .Where(cm => ((cm.TargetScope is Canonical tsc) && (tsc.Uri == targetSd.Url)) || ((cm.TargetScope is FhirUri tsu) && (tsu.Value == targetSd.Url)))
+                    .ToList();
+
+                ConceptMap elementMap;
+
+                // check if we need to create a map
+                if (maps.Count == 0)
+                {
+                    elementMap = BuildNewElementMap(sourceTypeName, targetTypeName, null);
+                    _dc.AddConceptMap(elementMap, _dc.MainPackageId, _dc.MainPackageVersion);
+                }
+                else
+                {
+                    elementMap = maps[0];
+                }
+
+                ConceptMap.GroupComponent? group = null;
+
+                // traverse groups looking for a matching definition
+                foreach (ConceptMap.GroupComponent cmg in elementMap.Group)
+                {
+                    // check the source and target
+                    if ((cmg.Source != sourceSd.Url) ||
+                        (cmg.Target != targetSd.Url))
+                    {
+                        continue;
+                    }
+
+                    group = cmg;
+                    break;
+                }
+
+                if (group == null)
+                {
+                    group = new()
+                    {
+                        SourceElement = new Canonical(sourceSd.Url, sourceSd.Version, null),
+                        TargetElement = new Canonical(targetSd.Url, targetSd.Version, null),
+                    };
+
+                    elementMap.Group.Add(group);
+                }
+
+                ConceptMap.SourceElementComponent? groupElement = null;
+
+                // check to see if this path exists within the group
+                foreach (ConceptMap.SourceElementComponent existingGroupElement in group.Element)
+                {
+                    // check the path
+                    if (existingGroupElement.Code != sourceEd.Path)
+                    {
+                        continue;
+                    }
+
+                    groupElement = existingGroupElement;
+                    break;
+                }
+
+                if (groupElement == null)
+                {
+                    groupElement = new()
+                    {
+                        Code = sourceEd.Path,
+                        Target = [],
+                    };
+                    group.Element.Add(groupElement);
+                }
+
+                ConceptMap.TargetElementComponent? targetElement = null;
+
+                // check if this target exists
+                foreach (ConceptMap.TargetElementComponent te in groupElement.Target)
+                {
+                    // check the path
+                    if (te.Code != targetEd.Path)
+                    {
+                        continue;
+                    }
+
+                    targetElement = te;
+                    break;
+                }
+
+                if (targetElement == null)
+                {
+                    // default everything to equivalent in this step - will restrict based on types later
+                    targetElement = new()
+                    {
+                        Code = targetEd.Path,
+                        Relationship = ConceptMap.ConceptMapRelationship.Equivalent,    // RelationshipForFmlTarget(targetInfo),
+                        Comment = $"Discovered map via FML {fmlName}: {targetInfo.FhirMappingExpression.RawText}",
+                    };
+
+                    addedMaps.AppendLine($"FML map: {sourceEd.Path}:{targetEd.Path} - {targetInfo.FhirMappingExpression.RawText}");
+
+                    // ensure the concept map has everything
+                    groupElement.Target.Add(targetElement);
+                }
+            }
+        }
+
+        if (addedMaps.Length > 0)
+        {
+            Console.WriteLine($"Element maps added from FML for {fmlName}:");
+            Console.WriteLine(addedMaps.ToString());
+        }
+    }
+
+    private ConceptMap.ConceptMapRelationship? RelationshipForFmlTarget(FmlTargetInfo ti)
+    {
+        if (ti.IsSimpleCopy)
+        {
+            return ConceptMap.ConceptMapRelationship.Equivalent;
+        }
+
+        return ConceptMap.ConceptMapRelationship.RelatedTo;
+    }
+
     public record class FmlTargetInfo
     {
         public required GroupExpression FhirMappingExpression { get; init; }
@@ -335,12 +580,26 @@ public class CrossVersionMapCollection
             throw new Exception($"Cannot process FML for {name} - no groups found!");
         }
 
-        if (!fml.GroupsByName.TryGetValue(name, out GroupDeclaration? group))
+        if (!fml.GroupsByName.TryGetValue(name, out GroupDeclaration? group) && !name.Equals("primitives", StringComparison.OrdinalIgnoreCase))
         {
             throw new Exception($"Cannot process FML for {name} - group {name} is not found");
         }
 
-        ProcessCrossVersionGroup(fml, name, name, group, fmlPathLookup);
+        if (group != null)
+        {
+            ProcessCrossVersionGroup(fml, name, name, group, fmlPathLookup);
+        }
+    }
+
+    private static void ReportIssue(List<OperationOutcome.IssueComponent> issues, string message, OperationOutcome.IssueType code, OperationOutcome.IssueSeverity severity = OperationOutcome.IssueSeverity.Error)
+    {
+        issues.Add(new OperationOutcome.IssueComponent()
+        {
+            Code = code,
+            Severity = severity,
+            Details = new CodeableConcept() { Text = message }
+        });
+        Console.WriteLine($"\n{severity.GetDocumentation()}: {message}");
     }
 
     private static void ProcessCrossVersionGroup(
@@ -348,24 +607,14 @@ public class CrossVersionMapCollection
         string sourcePrefix,
         string targetPrefix,
         GroupDeclaration group,
-        Dictionary<string, Dictionary<string, FmlTargetInfo>> fmlPathLookup)
+        Dictionary<string, Dictionary<string, FmlTargetInfo>> fmlPathLookup, IEnumerable<string>? dependentGroupCallStack = null)
     {
         string groupSourceVar = string.Empty;
         string groupTargetVar = string.Empty;
 
-        // TODO: we should be better about detecting this. Either track the call tree during a recursive descent or
-        // determine the behavior based off of element definition named references.
-
-        // Skip (re-)processing some known recursive points
-        if (sourcePrefix == "QuestionnaireResponse.item.item" || targetPrefix == "QuestionnaireResponse.item.item"
-            || sourcePrefix == "Questionnaire.item.item" || targetPrefix == "Questionnaire.item.item"
-            || sourcePrefix == "QuestionnaireResponse.item.answer.item.answer" || targetPrefix == "QuestionnaireResponse.item.answer.item.answer"
-            || sourcePrefix == "GraphDefinition.link.target.link"
-            )
-            return;
-
         if (sourcePrefix.Length > 2048 || targetPrefix.Length > 2048)
         {
+            // A safety check on missing recursive definitions...
             System.Diagnostics.Trace.WriteLine($"{fml.MapDirective?.Url ?? fml.MetadataByPath["url"]?.Literal?.Value} {group.Name} Path likely in a recursive loop {sourcePrefix} -> {targetPrefix}");
             throw new ApplicationException($"Path likely in a recursive loop {sourcePrefix} -> {targetPrefix}");
         }
@@ -398,13 +647,46 @@ public class CrossVersionMapCollection
         {
             if (exp.SimpleCopyExpression != null)
             {
-                string sourceName = exp.SimpleCopyExpression.Source.StartsWith(groupSourceVar, StringComparison.Ordinal)
-                    ? exp.SimpleCopyExpression.Source[(groupSourceVarLen + 1)..]
-                    : exp.SimpleCopyExpression.Source;
+                string sourceName;
 
-                string targetName = exp.SimpleCopyExpression.Target.StartsWith(groupTargetVar, StringComparison.Ordinal)
-                    ? exp.SimpleCopyExpression.Target[(groupTargetVarLen + 1)..]
-                    : exp.SimpleCopyExpression.Target;
+                if (exp.SimpleCopyExpression.Source.StartsWith(groupSourceVar, StringComparison.Ordinal))
+                {
+                    if (exp.SimpleCopyExpression.Source.Length == groupSourceVarLen)
+                    {
+                        sourceName = string.Empty;
+                    }
+                    else
+                    {
+                        // add our current name prefix
+                        sourceName = exp.SimpleCopyExpression.Source[(groupSourceVarLen + 1)..];
+                    }
+                }
+                else
+                {
+                    sourceName = exp.SimpleCopyExpression.Source;
+                }
+
+                string targetName;
+
+                if (exp.SimpleCopyExpression.Target == null)
+                {
+                    targetName = string.Empty;
+                }
+                else if (exp.SimpleCopyExpression.Target.StartsWith(groupTargetVar, StringComparison.Ordinal))
+                {
+                    if (exp.SimpleCopyExpression.Target.Length == groupTargetVarLen)
+                    {
+                        targetName = string.Empty;
+                    }
+                    else
+                    {
+                        targetName = exp.SimpleCopyExpression.Target[(groupTargetVarLen + 1)..];
+                    }
+                }
+                else
+                {
+                    targetName = exp.SimpleCopyExpression.Target;
+                }
 
                 // add our current name prefix
                 sourceName = $"{sourcePrefix}.{sourceName}";
@@ -429,9 +711,32 @@ public class CrossVersionMapCollection
             {
                 foreach (FmlExpressionSource source in exp.MappingExpression.Sources)
                 {
-                    string sourceName = source.Identifier.StartsWith(groupSourceVar, StringComparison.Ordinal) && source.Identifier.Length > groupSourceVarLen
-                        ? source.Identifier[(groupSourceVarLen + 1)..]
-                        : source.Identifier;
+                    string ruleSourcePrefix = source.Identifier.Split('.')[0];
+
+                    if (ruleSourcePrefix != groupSourceVar)
+                    {
+                        // skip elements that do not start with our matching variable
+                        continue;
+                    }
+
+                    string sourceName;
+
+                    if (source.Identifier.StartsWith(groupSourceVar, StringComparison.Ordinal))
+                    {
+                        if (source.Identifier.Length == groupSourceVarLen)
+                        {
+                            sourceName = string.Empty;
+                        }
+                        else
+                        {
+                            // add our current name prefix
+                            sourceName = source.Identifier[(groupSourceVarLen + 1)..];
+                        }
+                    }
+                    else
+                    {
+                        sourceName = source.Identifier;
+                    }
 
                     // add our current name prefix
                     sourceName = $"{sourcePrefix}.{sourceName}";
@@ -444,9 +749,27 @@ public class CrossVersionMapCollection
 
                     foreach (FmlExpressionTarget target in exp.MappingExpression.Targets)
                     {
-                        string targetName = target.Identifier?.StartsWith(groupTargetVar, StringComparison.Ordinal) == true && target.Identifier.Length > groupTargetVarLen
-                            ? target.Identifier[(groupTargetVarLen + 1)..]
-                            : target.Identifier ?? string.Empty;
+                        string targetName;
+
+                        if (target.Identifier == null)
+                        {
+                            targetName = string.Empty;
+                        }
+                        else if (target.Identifier.StartsWith(groupTargetVar, StringComparison.Ordinal))
+                        {
+                            if (target.Identifier.Length == groupTargetVarLen)
+                            {
+                                targetName = string.Empty;
+                            }
+                            else
+                            {
+                                targetName = target.Identifier[(groupTargetVarLen + 1)..];
+                            }
+                        }
+                        else
+                        {
+                            targetName = target.Identifier;
+                        }
 
                         // add our current name prefix
                         targetName = string.IsNullOrEmpty(targetName) ? targetPrefix : $"{targetPrefix}.{targetName}";
@@ -493,7 +816,11 @@ public class CrossVersionMapCollection
                                 string fnName = dependentInvocation.Identifier;
                                 if (fnName != group.Name && fml.GroupsByName.TryGetValue(fnName, out GroupDeclaration? dependentGroup))
                                 {
-                                    ProcessCrossVersionGroup(fml, sourceName, targetName, dependentGroup, fmlPathLookup);
+                                    if (dependentGroupCallStack == null || !dependentGroupCallStack.Contains(fnName))
+                                    {
+                                        var newStack = dependentGroupCallStack?.Append(fnName).ToArray() ?? [fnName];
+                                        ProcessCrossVersionGroup(fml, sourceName, targetName, dependentGroup, fmlPathLookup, newStack);
+                                    }
                                 }
                             }
                         }
@@ -508,7 +835,6 @@ public class CrossVersionMapCollection
 
         }
     }
-
 
     private bool TryLoadOfficialConceptMaps(string fhirCrossRepoPath, string key)
     {
@@ -751,29 +1077,27 @@ public class CrossVersionMapCollection
                                     continue;
                                 }
 
-                                string elementMapId = $"{_sourceRLiteral}-{typeName}-{_targetRLiteral}-{typeName}";
-                                string elementMapUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: elementMapId, resourceType: "ConceptMap");
-
-                                string elementSourceUrl = BuildUrl("{0}/{1}/{2}", _sourcePackageCanonical, "StructureDefinition", typeName);
-                                string elementTargetUrl = elements[0].Target.Count != 0
-                                    ? BuildUrl("{0}/{1}/{2}", _targetPackageCanonical, "StructureDefinition", elements[0].Target[0].Code.Split('.')[0])
-                                    : BuildUrl("{0}/{1}/{2}", _targetPackageCanonical, "StructureDefinition", typeName);
-
-                                ConceptMap elementMap = new()
+                                // official sources are sometimes incorrect, listing the same code multiple times instead of multiple targets
+                                Dictionary<string, ConceptMap.SourceElementComponent> elementDict = [];
+                                foreach (ConceptMap.SourceElementComponent element in elements)
                                 {
-                                    Id = elementMapId,
-                                    Url = elementMapUrl,
-                                    Name = elementMapId,
-                                    Title = GetConceptMapTitle(typeName),
-                                    SourceScope = new Canonical($"{elementSourceUrl}|{_sourcePackageVersion}"),
-                                    TargetScope = new Canonical($"{elementTargetUrl}|{_targetPackageVersion}"),
-                                    Group = [new ConceptMap.GroupComponent
+                                    if (elementDict.TryGetValue(element.Code, out ConceptMap.SourceElementComponent? reconciled))
                                     {
-                                        Source = elementSourceUrl,
-                                        Target = elementTargetUrl,
-                                        Element = elements,
-                                    }],
-                                };
+                                        // add our targets to this element
+                                        reconciled.Target ??= [];
+                                        reconciled.Target.AddRange(reconciled.Target);
+                                    }
+                                    else
+                                    {
+                                        // add our element to the dictionary
+                                        elementDict.Add(element.Code, element);
+                                    }
+                                }
+
+                                ConceptMap elementMap = BuildNewElementMap(
+                                    typeName,
+                                    elements[0].Target.Count == 0 ? typeName : elements[0].Target[0].Code.Split('.')[0],
+                                    elementDict.Values.OrderBy(se => se.Code).ToList());
 
                                 //_elementConceptMaps.Add(typeName, elementMap);
                                 _dc.AddConceptMap(elementMap, _dc.MainPackageId, _dc.MainPackageVersion);
@@ -792,6 +1116,31 @@ public class CrossVersionMapCollection
         }
 
         return true;
+    }
+
+    private ConceptMap BuildNewElementMap(string sourceTypeName, string targetTypeName, List<ConceptMap.SourceElementComponent>? elements)
+    {
+        string elementMapId = $"{_sourceRLiteral}-{sourceTypeName}-{_targetRLiteral}-{targetTypeName}";
+        string elementMapUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: elementMapId, resourceType: "ConceptMap");
+
+        string elementSourceUrl = BuildUrl("{0}/{1}/{2}", _sourcePackageCanonical, "StructureDefinition", sourceTypeName);
+        string elementTargetUrl = BuildUrl("{0}/{1}/{2}", _targetPackageCanonical, "StructureDefinition", targetTypeName);
+
+        return new()
+        {
+            Id = elementMapId,
+            Url = elementMapUrl,
+            Name = elementMapId,
+            Title = GetConceptMapTitle(sourceTypeName),
+            SourceScope = new Canonical($"{elementSourceUrl}|{_sourcePackageVersion}"),
+            TargetScope = new Canonical($"{elementTargetUrl}|{_targetPackageVersion}"),
+            Group = [new ConceptMap.GroupComponent
+            {
+                Source = elementSourceUrl,
+                Target = elementTargetUrl,
+                Element = elements,
+            }],
+        };
     }
 
     private string FilenameForMap(CrossVersionMapTypeCodes mapType, string name = "", string targetName = "") => mapType switch
@@ -951,7 +1300,7 @@ public class CrossVersionMapCollection
             throw new Exception("Cannot process a comparison with no mappings!");
         }
 
-        string localConceptMapId = $"{_sourceRLiteral}-{vsc.Source.NamePascal}-{_targetRLiteral}-{vsc.Target.NamePascal}";
+        string localConceptMapId = $"{_sourceRLiteral}-{vsc.Source.NamePascal}-{_targetRLiteral}-{vsc.Target!.NamePascal}";
         string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
 
         string sourceUrl = vsc.Source.Url;
@@ -1040,12 +1389,17 @@ public class CrossVersionMapCollection
             {
                 if (!groups.TryGetValue(key, out ConceptMap.GroupComponent? group))
                 {
-                    string[] components = key.Split("||");
+                    int loc = key.IndexOf("||");
+
+                    if (loc == -1)
+                    {
+                        throw new Exception($"Invalid key: {key}");
+                    }
 
                     group = new()
                     {
-                        Source = components[0],
-                        Target = components[1],
+                        Source = key[..loc],
+                        Target = key[(loc + 2)..],
                     };
 
                     groups.Add(key, group);
@@ -1140,7 +1494,7 @@ public class CrossVersionMapCollection
             {
                 if (c.Target == null)
                 {
-                    Console.WriteLine($"Not adding {c.SourceTypeLiteral} - no target exists");
+                    //Console.WriteLine($"Not adding {c.SourceTypeLiteral} - no target exists");
                     continue;
                 }
 
@@ -1194,7 +1548,7 @@ public class CrossVersionMapCollection
             {
                 if (c.Target == null)
                 {
-                    Console.WriteLine($"Not adding {c.Source.Name} - no target exists");
+                    //Console.WriteLine($"Not adding {c.Source.Name} - no target exists");
                     continue;
                 }
 
@@ -1331,7 +1685,7 @@ public class CrossVersionMapCollection
     {
         if (cRec.Target == null)
         {
-            Console.WriteLine($"Not writing {cRec.Source.Name} - no target exists");
+            //Console.WriteLine($"Not writing {cRec.Source.Name} - no target exists");
             return null;
         }
 
@@ -1341,70 +1695,112 @@ public class CrossVersionMapCollection
         string localConceptMapId = cRec.CompositeName;          // $"{_sourceRLiteral}-{sourceName}-{_targetRLiteral}";
         string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
 
-        string sourceUrl = cRec.Source.Url;
-        string targetUrl = cRec.Target.Url;
-
-        string sourceCanonical = $"{sourceUrl}|{_sourcePackageVersion}";
-        string targetCanonical = $"{targetUrl}|{_targetPackageVersion}";
-
         // check to see if we need to create a new concept map
         if (!_dc.ConceptMapsByUrl.TryGetValue(localUrl, out ConceptMap? cm))
         {
-            cm = new();
-
-            // update our info
-            cm.Id = localConceptMapId;
-            cm.Url = localUrl;
-            cm.Name = localConceptMapId;
-            cm.Title = GetConceptMapTitle(sourceName);
-
-            cm.SourceScope = new Canonical(sourceCanonical);
-            cm.TargetScope = new Canonical(targetCanonical);
+            cm = BuildNewElementMap(sourceName, targetName, null);
         }
 
-        ConceptMap.GroupComponent group = new();
+        ConceptMap.GroupComponent? group = null;
 
-        group.Source = cRec.Source.Url;
-        group.Target = cRec.Target.Url;
+        // traverse groups looking for a matching definition
+        foreach (ConceptMap.GroupComponent cmg in cm.Group)
+        {
+            // check the source and target
+            if ((cmg.Source != cRec.Source.Url) ||
+                (cmg.Target != cRec.Target.Url))
+            {
+                continue;
+            }
+
+            group = cmg;
+            break;
+        }
+
+        if (group == null)
+        {
+            group = new()
+            {
+                SourceElement = new Canonical(cRec.Source.Url, _sourcePackageVersion, null),
+                TargetElement = new Canonical(cRec.Target.Url, _targetPackageVersion, null),
+            };
+
+            cm.Group.Add(group);
+        }
+
+        // build a dictionary of the existing paths
+        Dictionary<string, ConceptMap.SourceElementComponent> groupElements = group.Element.ToDictionary(e => e.Code);
 
         // traverse elements that exist in our source
         foreach ((string path, ElementComparison elementComparison) in cRec.ElementComparisons.OrderBy(kvp => kvp.Key))
         {
-            // put an entry with no map if there is no target
-            if (elementComparison.TargetMappings.Count == 0)
+            // get or create the source element mapping
+            if (!groupElements.TryGetValue(path, out ConceptMap.SourceElementComponent? groupElement))
             {
-                group.Element.Add(new()
+                groupElement = new()
                 {
                     Code = path,
-                    NoMap = true,
                     Display = elementComparison.Source.Short,
-                });
+                };
 
+                groupElements.Add(path, groupElement);
+            }
+
+            // set no-map if there is no target
+            if (elementComparison.TargetMappings.Count == 0)
+            {
+                groupElement.NoMap = true;
                 continue;
             }
 
-            group.Element.Add(new()
+            // get or create a target
+            groupElement.Target ??= [];
+
+            // just traverse the list since there are typically N<2 elements
+            foreach (ElementComparisonDetails tm in elementComparison.TargetMappings)
             {
-                Code = path,
-                Display = elementComparison.Source.Short,
-                Target = elementComparison.TargetMappings.Select(tm => new ConceptMap.TargetElementComponent()
+                string targetPath = tm.Target?.Path ?? path;
+                ConceptMap.TargetElementComponent? targetElement = null;
+
+                // check if this target exists
+                foreach (ConceptMap.TargetElementComponent te in groupElement.Target)
                 {
-                    Code = tm.Target?.Path ?? path,
-                    Display = tm.Target?.Short ?? string.Empty,
-                    Relationship = elementComparison.Relationship,
-                    Comment = elementComparison.Message,
-                }).ToList(),
-            });
+                    // check the path
+                    if (te.Code != targetPath)
+                    {
+                        continue;
+                    }
+
+                    targetElement = te;
+                    break;
+                }
+
+                if (targetElement == null)
+                {
+                    targetElement = new()
+                    {
+                        Code = targetPath,
+                    };
+
+                    groupElement.Target.Add(targetElement);
+                }
+
+                // ensure the target element has all the properties we want
+                targetElement.Display = tm.Target?.Short ?? string.Empty;
+                targetElement.Relationship = tm.Relationship;
+                targetElement.Comment = tm.Message;
+            }
         }
+
+        // reset the group to have the elements we computed
+        group.Element = groupElements.Values.OrderBy(se => se.Code).ToList();
 
         // check for a value set that could not map anything
         if (group.Element.Count == 0)
         {
-            Console.WriteLine($"Not writing ConceptMap for {cRec.CompositeName} - no concepts are mapped to target!");
+            //Console.WriteLine($"Not writing ConceptMap for {cRec.CompositeName} - no concepts are mapped to target!");
             return null;
         }
-
-        cm.Group.Add(group);
 
         return cm;
     }
@@ -1419,10 +1815,10 @@ public class CrossVersionMapCollection
     /// <param name="name">        The name.</param>
     /// <returns>A string.</returns>
     /// <remarks>
-    /// 0 = canonical, 1 = resourceType, 2 = name, 3 = leftRLiteral, 4 = reserved, 5 = rightRLiteral, 6 = reserved
+    /// 0 = canonical, 1 = resourceType, 2 = name, 3 = leftRLiteral, 4 = leftShortVersion, 5 = rightRLiteral, 6 = rightShortVersion
     /// </remarks>
     private string BuildUrl(string formatString, string canonical, string resourceType = "", string name = "") =>
-        string.Format(formatString, canonical, resourceType, name, _sourceRLiteral, "", _targetRLiteral, "");
+        string.Format(formatString, canonical, resourceType, name, _sourceRLiteral, _sourceShortVersion, _targetRLiteral, _targetShortVersion);
 
     private string RemoveLeftToRight(string value)
     {
@@ -1781,5 +2177,530 @@ public class CrossVersionMapCollection
                 Target = targets,
             });
         }
+    }
+
+    public static async Task<OperationOutcome> CheckFmlForMissingProperties(FhirStructureMap fml, CrossVersionCheckOptions options)
+    {
+        Console.WriteLine($"Checking map {fml.MapDirective?.Url ?? fml.MetadataByPath["url"]?.Literal?.ValueAsString} for missing properties");
+
+        // scan the uses types
+        Dictionary<string, StructureDefinition?> _aliasedTypes = new();
+        foreach (var use in fml.StructuresByUrl)
+        {
+            // Console.WriteLine($"Use {use.Key} as {use.Value?.Alias}");
+            var sd = await options.resolveMapUseCrossVersionType(use.Key.Trim('\"'), use.Value?.Alias);
+            if (use.Value?.Alias != null)
+                _aliasedTypes.Add(use.Value.Alias, sd);
+            else if (sd != null && sd.Name != null)
+                _aliasedTypes.Add(use.Value?.Alias ?? sd.Name, sd);
+        }
+
+        // scan all the groups
+        OperationOutcome outcome = new OperationOutcome();
+        foreach (var group in fml.GroupsByName.Values)
+        {
+            var results = CheckFmlForMissingPropertiesInGroup(fml, group, _aliasedTypes, options);
+            outcome.Issue.AddRange(results);
+        }
+        Console.WriteLine();
+        return outcome;
+    }
+
+    private static List<OperationOutcome.IssueComponent> CheckFmlForMissingPropertiesInGroup(
+            FhirStructureMap fml,
+            GroupDeclaration group,
+            Dictionary<string, StructureDefinition?> _aliasedTypes, CrossVersionCheckOptions options
+            )
+    {
+        List<OperationOutcome.IssueComponent> issues = new List<OperationOutcome.IssueComponent>();
+        Console.Write($"  {group.Name}(");
+
+        // Check the types in the group parameters
+        Dictionary<string, PropertyOrTypeDetails?> parameterTypesByName = new();
+        foreach (var gp in group.Parameters)
+        {
+            if (gp != group.Parameters.First())
+                Console.Write(", ");
+            PropertyOrTypeDetails? tp = null;
+            string? type = gp.TypeIdentifier;
+            // lookup the type in the aliases
+            var resolver = gp.InputMode == StructureMap.StructureMapInputMode.Source ? options.source.Resolver : options.target.Resolver;
+            if (type != null)
+            {
+                if (!type.Contains('/') && _aliasedTypes.ContainsKey(type))
+                {
+                    var sd = _aliasedTypes[type];
+                    if (sd != null)
+                    {
+                        var sw = new FmlStructureDefinitionWalker(sd, resolver);
+                        tp = new PropertyOrTypeDetails(sw.Current.Path, sw.Current, resolver);
+                        type = $"{sd.Url}|{sd.Version}";
+                        gp.ParameterElementDefinition = sw.Current;
+                    }
+                    else
+                    {
+                        string msg = $"Group {group.Name} parameter {gp.Identifier} type `{gp.TypeIdentifier}` is not imported in a use at @{gp.Line}:{gp.Column}";
+                        ReportIssue(issues, msg, OperationOutcome.IssueType.NotFound);
+                    }
+                }
+                else
+                {
+                    tp = FmlValidator.ResolveDataTypeFromName(group, resolver, issues, gp, type);
+                    if (tp != null)
+                    {
+                        gp.ParameterElementDefinition = tp.Element;
+                    }
+                    else
+                    {
+                        string msg = $"Group {group.Name} parameter {gp.Identifier} has no type `{gp.TypeIdentifier}` at @{gp.Line}:{gp.Column}";
+                        ReportIssue(issues, msg, OperationOutcome.IssueType.NotFound);
+                    }
+                }
+            }
+            else if (gp.ParameterElementDefinition != null)
+            {
+                tp = new PropertyOrTypeDetails(gp.ParameterElementDefinition.Path, gp.ParameterElementDefinition, resolver);
+            }
+            parameterTypesByName.Add(gp.Identifier, tp);
+            Console.Write($" {gp.Identifier}");
+            if (gp.ParameterElementDefinition != null)
+                Console.Write($" : {gp.ParameterElementDefinition.DebugString()}");
+            else
+                Console.Write($" : {type ?? "?"}");
+        }
+        Console.Write(" )\n  {\n");
+
+        // Call this routine to compare the 2 structures and get some results to check if the map has all this inside!
+        var sourceSD = group.Parameters.FirstOrDefault(gp => gp.InputMode == StructureMap.StructureMapInputMode.Source)?.ParameterElementDefinition;
+        var targetSD = group.Parameters.FirstOrDefault(gp => gp.InputMode == StructureMap.StructureMapInputMode.Target)?.ParameterElementDefinition;
+        StructureComparison? comparison = null;
+        if (group.Parameters.Count == 2 && sourceSD?.StructureDefinition != null && targetSD?.StructureDefinition != null)
+        {
+            var config = new Configuration.ConfigCompare()
+            {
+
+            };
+            PackageComparer pc = new PackageComparer(config, options.SourcePackage, options.TargetPackage);
+            if (pc.TryCompareStructureElements(sourceSD.StructureDefinition, targetSD.StructureDefinition, null, out StructureComparison? directComparison))
+            {
+                // review the direct comparison
+                // Console.WriteLine($"{directComparison.CompositeName}");
+                comparison = directComparison;
+
+                // Trim down the element comparisons to only the same level in the type
+                if (sourceSD != null && !string.IsNullOrEmpty(sourceSD.Path))
+                {
+                    var excludeKeys = comparison.ElementComparisons.Keys.Where(k => !k.StartsWith($"{sourceSD.Path}.") || k.Substring(sourceSD.Path.Length + 1).Contains('.') || k.EndsWith(".id") || k.EndsWith(".extension") || k.EndsWith(".modifierExtension")).ToArray();
+                    foreach (var key in excludeKeys) // comparison.ElementComparisons.ContainsKey(sourceSD?.Path))
+                    {
+                        // remove this element
+                        comparison.ElementComparisons.Remove(key);
+                    }
+                    if (!sourceSD.Path.Contains('.'))
+                    {
+                        // also remove any DomainResource/Resource base level properties
+                        string[] excludeProperties = Array.Empty<string>();
+                        if (group.ExtendsIdentifier == "Resource" || group.ExtendsIdentifier == "DomainResource")
+                        {
+                            excludeProperties = new[]
+                            {
+                                $"{sourceSD.Path}.meta",
+                                $"{sourceSD.Path}.implicitRules",
+                                $"{sourceSD.Path}.language",
+                                $"{sourceSD.Path}.text",
+                                $"{sourceSD.Path}.contained"
+                            };
+                        }
+
+                        if (group.ExtendsIdentifier == "Quantity")
+                        {
+                            excludeProperties = new[]
+                            {
+                                $"{sourceSD.Path}.value",
+                                $"{sourceSD.Path}.comparator",
+                                $"{sourceSD.Path}.unit",
+                                $"{sourceSD.Path}.system",
+                                $"{sourceSD.Path}.code"
+                            };
+                        }
+
+                        excludeKeys = comparison.ElementComparisons.Keys.Where(k => excludeProperties.Contains(k)).ToArray();
+                        foreach (var key in excludeKeys) // comparison.ElementComparisons.ContainsKey(sourceSD?.Path))
+                        {
+                            // remove this element
+                            comparison.ElementComparisons.Remove(key);
+                        }
+                    }
+                    // Remove any properties in the comparisons that indicate there is no target for the property
+                    excludeKeys = comparison.ElementComparisons.Where(ec => !ec.Value.TargetMappings.Any()).Select(kvp => kvp.Key).ToArray();
+                    foreach (var key in excludeKeys) // comparison.ElementComparisons.ContainsKey(sourceSD?.Path))
+                    {
+                        // remove this element
+                        comparison.ElementComparisons.Remove(key);
+                    }
+                }
+            }
+        }
+
+
+        // Check if the group extends any other groups
+        if (!string.IsNullOrEmpty(group.ExtendsIdentifier))
+        {
+            // Check that the named group exists
+            if (!options.namedGroups.ContainsKey(group.ExtendsIdentifier!))
+            {
+                string msg = $"Unable to extends group `{group.ExtendsIdentifier}` in {group.Name} at @{group.Line}:{group.Column}";
+                ReportIssue(issues, msg, OperationOutcome.IssueType.Duplicate);
+            }
+
+            // Check that the parameter values are compatible...
+
+        }
+
+        // Now scan for dependencies in rules
+        foreach (var rule in group.Expressions)
+        {
+            CheckFmlForMissingPropertiesGroupRule("     ", fml, group, _aliasedTypes, options, issues, parameterTypesByName, rule, comparison);
+        }
+
+        // now check if there are any properties left over...
+        if (comparison != null)
+        {
+            if (comparison.ElementComparisons.Any())
+            {
+                Console.Write("Warning: Elements were not mapped for this type\n");
+                foreach (var comparisonElement in comparison.ElementComparisons)
+                {
+                    // Console.Write($"    {comparisonElement.Key} -> {String.Join(", ", comparisonElement.Value.TargetMappings.Select(tm => tm.Target?.Path))} // {comparisonElement.Value.Message}\n");
+                    ReportIssue(issues, $"{comparisonElement.Key} -> {String.Join(", ", comparisonElement.Value.TargetMappings.Select(tm => tm.Target?.Path))} // {comparisonElement.Value.Message}", OperationOutcome.IssueType.Incomplete, OperationOutcome.IssueSeverity.Warning);
+                    GenerateMapRule(issues, comparisonElement, parameterTypesByName, group);
+                }
+            }
+        }
+        Console.WriteLine("  }");
+
+        return issues;
+    }
+
+    private static void GenerateMapRule(List<OperationOutcome.IssueComponent> issues, KeyValuePair<string, ElementComparison> comparisonElement, Dictionary<string, PropertyOrTypeDetails?> parameterTypesByName, GroupDeclaration group)
+    {
+        foreach (var tm in comparisonElement.Value.TargetMappings)
+        {
+            var sourceProp = $"{parameterTypesByName.FirstOrDefault().Key}.{comparisonElement.Value.Source.Name}";
+            var targetProp = $"{parameterTypesByName.Skip(1).FirstOrDefault().Key}.{tm.Target?.Name}";
+            try
+            {
+                var sp = FmlValidator.ResolveIdentifierType(sourceProp, parameterTypesByName, group, issues);
+                var tp = FmlValidator.ResolveIdentifierType(targetProp, parameterTypesByName, group, issues);
+                if (tm.Relationship == ConceptMap.ConceptMapRelationship.Equivalent && sp != null && tp != null)
+                {
+                    Console.Write($"{sourceProp} -> {targetProp}; // {sp.Element.DebugString()} -> {tp.Element.DebugString()}\n");
+                }
+                else
+                {
+                    Console.Write($"// {sourceProp} -> {targetProp}; // {tm.Relationship}\n");
+                }
+            }
+            catch (Exception)
+            {
+                Console.Write($"// {sourceProp} -> {targetProp}; // {tm.Relationship} -- Property doesn't resolve\n");
+            }
+        }
+    }
+
+    private static void CheckFmlForMissingPropertiesGroupRule(string prefix, FhirStructureMap fml, GroupDeclaration group, Dictionary<string, StructureDefinition?> _aliasedTypes, CrossVersionCheckOptions options, List<OperationOutcome.IssueComponent> issues, Dictionary<string, PropertyOrTypeDetails?> parameterTypesByName, GroupExpression rule, StructureComparison? comparison)
+    {
+        Console.Write(prefix);
+
+        // deduce the datatypes for the variables
+        Dictionary<string, PropertyOrTypeDetails?> parameterTypesByNameForRule = parameterTypesByName.ShallowCopy();
+        PropertyOrTypeDetails? singleSourceVariable = null;
+        if (rule.MappingExpression != null)
+        {
+            foreach (var source in rule.MappingExpression.Sources)
+            {
+                if (source != rule.MappingExpression.Sources.First())
+                    Console.Write(", ");
+
+                Console.Write($"{source.Identifier}");
+                PropertyOrTypeDetails? tpV = null;
+                try
+                {
+                    tpV = FmlValidator.ResolveIdentifierType(source.Identifier, parameterTypesByNameForRule, source, issues);
+                }
+                catch (ApplicationException e)
+                {
+                    string msg = $"Can't resolve type of source identifier `{source.Identifier}`: {e.Message}";
+                    ReportIssue(issues, msg, OperationOutcome.IssueType.Exception);
+                }
+
+                // Check that the comparison includes this rule.
+                if (comparison != null && tpV?.Element?.Path != null)
+                {
+                    if (comparison.ElementComparisons.ContainsKey(tpV.PropertyPath))
+                    {
+                        // remove this element (but probably want to check that it is used correctly too)
+                        comparison.ElementComparisons.Remove(tpV.PropertyPath);
+                    }
+
+                    if (comparison.ElementComparisons.ContainsKey(tpV.Element.Path))
+                    {
+                        // remove this element (but probably want to check that it is used correctly too)
+                        comparison.ElementComparisons.Remove(tpV.Element.Path);
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(source.TypeIdentifier))
+                {
+                    // Cast down to this type
+                    Console.Write($".ofType({source.TypeIdentifier})");
+                    string typeName = source.TypeIdentifier!;
+                    if (!typeName.Contains(':')) // assume this is a FHIR type
+                        typeName = "http://hl7.org/fhir/StructureDefinition/" + typeName;
+                    var sdCastType = options.source.Resolver.FindStructureDefinitionAsync(typeName).WaitResult();
+                    if (sdCastType == null)
+                    {
+                        string msg = $"Unable to resolve type cast `{typeName}` in {group.Name} at @{source.Line}:{source.Column}";
+                        ReportIssue(issues, msg, OperationOutcome.IssueType.Duplicate);
+                    }
+                    else
+                    {
+                        var sw = new FmlStructureDefinitionWalker(sdCastType, options.source.Resolver);
+
+                        // Check that the type being attempted is among the types in the actual property
+                        if (!tpV?.Element?.Current?.Type.Any(t => t.Code == source.TypeIdentifier) == true)
+                        {
+                            string msg = $"Type `{typeName}` is not a valid cast for `{source.Identifier}` in {group.Name} at @{source.Line}:{source.Column}";
+                            ReportIssue(issues, msg, OperationOutcome.IssueType.Duplicate);
+                        }
+
+                        // TODO: @brianpos - not sure if we want to pass through empty here, skip the call, or throw an exception if tpV is null here
+                        tpV = new PropertyOrTypeDetails(tpV?.PropertyPath ?? string.Empty, sw.Current, options.source.Resolver);
+                    }
+                }
+
+                Console.Write($" : {tpV?.Element?.DebugString() ?? "?"}");
+                if (source.Alias != null)
+                {
+                    Console.Write($" as {source.Alias}");
+                    if (parameterTypesByNameForRule.ContainsKey(source.Alias))
+                    {
+                        string msg = $"Duplicate source parameter name `{source.Alias}` in {group.Name} at @{source.Line}:{source.Column}";
+                        ReportIssue(issues, msg, OperationOutcome.IssueType.Duplicate);
+                    }
+                    else
+                    {
+                        parameterTypesByNameForRule.Add(source.Alias, tpV);
+                    }
+                }
+
+                if (source == rule.MappingExpression.Sources.First())
+                {
+                    singleSourceVariable = tpV;
+                }
+            }
+
+            Console.Write($"  -->  ");
+
+            foreach (var target in rule.MappingExpression.Targets)
+            {
+                if (target != rule.MappingExpression.Targets.First())
+                    Console.Write(", ");
+
+                PropertyOrTypeDetails? tpV = null;
+                if (!string.IsNullOrEmpty(target.Identifier))
+                {
+                    Console.Write($"{target.Identifier}");
+                    try
+                    {
+                        tpV = FmlValidator.ResolveIdentifierType(target.Identifier, parameterTypesByNameForRule, target, issues);
+                    }
+                    catch (ApplicationException e)
+                    {
+                        string msg = $"Can't resolve type of target identifier `{target.Identifier}`: {e.Message}";
+                        ReportIssue(issues, msg, OperationOutcome.IssueType.Exception);
+                    }
+                    Console.Write($" : {tpV?.Element?.DebugString() ?? "?"}");
+                }
+                if (target.Invocation != null)
+                {
+                    tpV = FmlValidator.VerifyInvocation(group, issues, parameterTypesByNameForRule, target.Invocation, options.target.Resolver);
+                }
+
+                if (target.Alias != null)
+                {
+                    Console.Write($" as {target.Alias}");
+                    if (parameterTypesByNameForRule.ContainsKey(target.Alias))
+                    {
+                        string msg = $"Duplicate target parameter name `{target.Alias}` in {group.Name} at @{target.Line}:{target.Column}";
+                        ReportIssue(issues, msg, OperationOutcome.IssueType.Duplicate);
+                    }
+                    else
+                    {
+                        parameterTypesByNameForRule.Add(target.Alias, tpV);
+                    }
+                }
+            }
+        }
+
+        if (rule.SimpleCopyExpression != null)
+        {
+            PropertyOrTypeDetails? sourceV = null;
+            try
+            {
+                sourceV = FmlValidator.ResolveIdentifierType(rule.SimpleCopyExpression.Source, parameterTypesByNameForRule, rule.SimpleCopyExpression, issues);
+                Console.Write($"{rule.SimpleCopyExpression.Source} : {sourceV?.Element?.DebugString() ?? "?"}");
+            }
+            catch (ApplicationException ex)
+            {
+                string msg = $"Can't resolve simple source `{rule.SimpleCopyExpression.Source}`: {ex.Message}";
+                ReportIssue(issues, msg, OperationOutcome.IssueType.Exception);
+            }
+
+            Console.Write($"  -->  ");
+
+            PropertyOrTypeDetails? targetV = null;
+            try
+            {
+                targetV = FmlValidator.ResolveIdentifierType(rule.SimpleCopyExpression.Target, parameterTypesByNameForRule, rule.SimpleCopyExpression, issues);
+                Console.Write($"{rule.SimpleCopyExpression.Target} : {targetV?.Element?.DebugString() ?? "?"}");
+            }
+            catch (ApplicationException ex)
+            {
+                string msg = $"Can't resolve simple target `{rule.SimpleCopyExpression.Target}`: {ex.Message}";
+                ReportIssue(issues, msg, OperationOutcome.IssueType.Exception);
+            }
+
+            // Check that the comparison includes this rule.
+            if (comparison != null && sourceV != null)
+            {
+                // var ec = comparison.ElementComparisons.Values.Where(ec => ec.Source.Path == sourceV.Element?.Path);
+                if (comparison.ElementComparisons.ContainsKey(sourceV.PropertyPath))
+                {
+                    // remove this element (but probably want to check that it is used correctly too)
+                    comparison.ElementComparisons.Remove(sourceV.PropertyPath);
+                }
+
+                if (comparison.ElementComparisons.ContainsKey(sourceV.Element.Path))
+                {
+                    // remove this element
+                    comparison.ElementComparisons.Remove(sourceV.Element.Path);
+                }
+            }
+        }
+
+        // Scan any dependent group calls
+        var de = rule.MappingExpression?.DependentExpression;
+        if (de != null)
+        {
+            foreach (var i in de.Invocations)
+            {
+                Console.Write("\n        " + prefix);
+                Console.Write($" then {i.Identifier}( ");
+                if (!fml.GroupsByName.ContainsKey(i.Identifier) && !options.namedGroups.ContainsKey(i.Identifier))
+                {
+                    Console.WriteLine($"... )");
+                    string msg = $"Calling non existent dependent group {i.Identifier} at @{i.Line}:{i.Column}";
+                    ReportIssue(issues, msg, OperationOutcome.IssueType.NotFound);
+                }
+                else
+                {
+                    var dg = fml.GroupsByName.ContainsKey(i.Identifier) ? fml.GroupsByName[i.Identifier] : options.namedGroups[i.Identifier];
+                    // walk the parameters
+                    for (int nParam = 0; nParam < dg.Parameters.Count; nParam++)
+                    {
+                        if (nParam > 0)
+                            Console.Write(", ");
+                        var gp = dg.Parameters[nParam];
+                        string? type = gp.TypeIdentifier;
+                        // lookup the type in the aliases
+                        if (type != null && !type.Contains('/') && _aliasedTypes.ContainsKey(type))
+                        {
+                            var sd = _aliasedTypes[type];
+                            if (sd != null)
+                                type = $"{sd.Url}|{sd.Version}";
+                        }
+
+                        // which value should we use
+                        if (nParam < i.Parameters.Count)
+                        {
+                            var cp = i.Parameters[nParam];
+                            Console.Write($"{cp.Identifier ?? cp.Literal?.ValueAsString}");
+                            // Check in the rule source/target aliases
+                            if (rule.MappingExpression != null)
+                            {
+                                string? variableName = cp.Identifier ?? cp.Literal?.ValueAsString;
+                                if (variableName == null)
+                                {
+                                    string msg = $"No Variable name provided for parameter {i} calling dependent group {i.Identifier} at @{cp.Line}:{cp.Column}";
+                                    ReportIssue(issues, msg, OperationOutcome.IssueType.NotFound);
+                                }
+                                else
+                                {
+                                    if (!parameterTypesByNameForRule.ContainsKey(variableName))
+                                    {
+                                        string msg = $"Variable not found `{variableName}` calling dependent group {i.Identifier} at @{cp.Literal?.Line}:{cp.Literal?.Column}";
+                                        ReportIssue(issues, msg, OperationOutcome.IssueType.NotFound);
+                                    }
+                                    else
+                                    {
+                                        var gpv = parameterTypesByNameForRule[variableName];
+                                        type = gpv?.ToString() ?? "??";
+                                        // Console.Write($"({type})");
+                                        if (gpv != null)
+                                        {
+                                            if (gp.ParameterElementDefinition == null)
+                                            {
+                                                gp.ParameterElementDefinition = gpv.Element;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        Console.Write($" {gp.Identifier} : {type ?? gp.ParameterElementDefinition?.Path ?? "?"}");
+                    }
+                    Console.WriteLine(" )");
+                }
+            }
+
+            if (de.Expressions.Any())
+            {
+                Console.Write('\n');
+                // process any expressions as a result of any
+                foreach (var childRule in de.Expressions)
+                {
+                    CheckFmlForMissingPropertiesGroupRule(prefix + "     ", fml, group, _aliasedTypes, options, issues, parameterTypesByNameForRule, childRule, comparison);
+                }
+            }
+        }
+        else
+        {
+            Console.WriteLine();
+        }
+    }
+}
+
+public record CrossVersionCheckOptions : ValidateMapOptions
+{
+    public required DefinitionCollection SourcePackage { get; init; }
+    public required DefinitionCollection TargetPackage { get; init; }
+}
+
+internal static class ElementDefinitionNavigatorExtensions
+{
+    public static string DebugString(this ElementDefinitionNavigator Element, bool includeTypes = true)
+    {
+        // return $"{Definition.Url}|{Definition.Version} # {Element.Path} ({String.Join(",", Element.Current.Type.Select(t => t.Code))})";
+        if (includeTypes)
+            return $"{Element.Path}|{Element.StructureDefinition.Version} ({String.Join(",", Element.Current.Type.Select(t =>
+            {
+                if (string.IsNullOrWhiteSpace(t.Code))
+                {
+                    System.Diagnostics.Trace.WriteLine($"Element {Element.Path}|{Element.StructureDefinition.Version ?? Element.StructureDefinition.FhirVersion.GetLiteral()} has no type data");
+                }
+                return t.Code;
+            }))})";
+        return $"{Element.Path}|{Element.StructureDefinition.Version ?? Element.StructureDefinition.FhirVersion.GetLiteral()}";
     }
 }

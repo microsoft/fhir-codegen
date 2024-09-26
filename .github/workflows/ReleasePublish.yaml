@@ -3,32 +3,23 @@ on:
   release:
     types: [published]
 
+env:
+  DOTNET_VERSION: '8'           # The .NET SDK version to use
+
 jobs:
   release:
-    name: Release
+    name: Release-${{matrix.os}}
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        kind: ['linux', 'windows', 'macOS']
-        include:
-          - kind: linux
-            os: ubuntu-latest
-            target: linux-x64
-          - kind: windows
-            os: windows-latest
-            target: win-x64
-          - kind: macOS
-            os: macos-latest
-            target: osx-x64
-    runs-on: ${{ matrix.os }}
+        os: [ubuntu-latest, windows-latest, macOS-latest]
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 3.1.407
+      - uses: actions/checkout@v4
+      # - name: Setup .NET
+      #   uses: actions/setup-dotnet@v3
+      #   with:
+      #     dotnet-version: ${{ env.DOTNET_VERSION }}
 
       - name: Build
         shell: bash

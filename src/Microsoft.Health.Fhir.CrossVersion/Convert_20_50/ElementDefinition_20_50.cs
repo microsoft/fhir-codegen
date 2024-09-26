@@ -97,7 +97,6 @@ public class ElementDefinition_20_50 : ICrossVersionProcessor<ElementDefinition>
         { "DiagnosticOrder.USLabDOPlacerID", "DiagnosticOrder.identifier" },
     };
 
-
     internal ElementDefinition_20_50(Converter_20_50 converter)
 	{
 		_converter = converter;
@@ -111,23 +110,12 @@ public class ElementDefinition_20_50 : ICrossVersionProcessor<ElementDefinition>
 			Process(child, v);
 		}
 
-        // check to see if the name should actually be applied as a slice name
-        if (!string.IsNullOrEmpty(v.SliceName))
-        {
-            if ((v.Slicing == null) &&
-                !v.Path.EndsWith(".extension", StringComparison.Ordinal))
-            {
-                v.ElementId = v.SliceName;
-                v.SliceName = null;
-            }
-        }
-
         // correct content references
         if (!string.IsNullOrEmpty(v.ContentReference))
         {
             string lookupName;
 
-            if (v.ContentReference.Contains('.', StringComparison.Ordinal))
+            if (v.ContentReference.Contains('.'))
             {
                 lookupName = v.ContentReference;
             }
@@ -142,8 +130,15 @@ public class ElementDefinition_20_50 : ICrossVersionProcessor<ElementDefinition>
                 throw new InvalidDataException($"Could not resolve NameReference {v.ContentReference} field {v.Path}");
             }
 
-            v.ContentReference = updated;
+            // reference links in R5 style include a preceding '#' literal to indicate a fragment
+            v.ContentReference = "#" + updated;
         }
+
+        // normalize type repetitions
+        Normalization.ReconcileElementTypeRepetitions(v);
+
+        // note: we do not have IDs yet, but they will be generated at the StructureDefinition level
+
         return v;
 	}
 
@@ -1167,33 +1162,40 @@ public class ElementDefinition_20_50 : ICrossVersionProcessor<ElementDefinition>
 	{
 		ElementDefinition.DiscriminatorComponent current = new();
 
-		foreach (ISourceNode node in parent.Children())
-		{
-			switch (node.Name)
-			{
-				case "type":
-					current.Type = Hl7.Fhir.Utility.EnumUtility.ParseLiteral<ElementDefinition.DiscriminatorType>(node.Text);
-					break;
+        string r2Discriminator = parent.Text;
+        string discriminatorHint = r2Discriminator.Split('@')[^1];
 
-				case "_type":
-					_converter._element.Process(node, current.TypeElement);
-					break;
+        switch (discriminatorHint)
+        {
+            case "pattern":
+                // remove /@pattern from the end of the discriminator
+                current.Path = r2Discriminator.Length <= 9
+                    ? "$this"
+                    : r2Discriminator[0..^9];
+                current.Type = ElementDefinition.DiscriminatorType.Pattern;
+                break;
 
-				case "path":
-					current.PathElement = new FhirString(node.Text);
-					break;
+            case "profile":
+                // remove /@profile from the end of the discriminator
+                current.Path = r2Discriminator.Length <= 9
+                    ? "$this"
+                    : r2Discriminator[0..^9];
+                current.Type = ElementDefinition.DiscriminatorType.Profile;
+                break;
 
-				case "_path":
-					_converter._element.Process(node, current.PathElement);
-					break;
+            case "type":
+                // remove /@type from the end of the discriminator
+                current.Path = r2Discriminator.Length <= 6
+                    ? "$this"
+                    : r2Discriminator[0..^6];
+                current.Type = ElementDefinition.DiscriminatorType.Type;
+                break;
 
-				// process inherited elements
-				default:
-					_converter._element.Process(node, current);
-					break;
-
-			}
-		}
+            default:
+                current.Path = r2Discriminator;
+                current.Type = ElementDefinition.DiscriminatorType.Value;
+                break;
+        }
 
 		return current;
 	}

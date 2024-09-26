@@ -9,6 +9,7 @@ using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Xml.Linq;
+using Firely.Fhir.Packages;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Specification.Terminology;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
@@ -16,6 +17,9 @@ using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
+
+using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
+using static Microsoft.Health.Fhir.CodeGen.FhirExtensions.StructureDefinitionExtensions;
 
 namespace Microsoft.Health.Fhir.CodeGen.Models;
 
@@ -46,10 +50,10 @@ public partial class DefinitionCollection
     public string MainPackageVersion { get; set; } = string.Empty;
 
     /// <summary>Gets or sets the manifest.</summary>
-    public Dictionary<string, CachePackageManifest> Manifests { get; set; } = [];
+    public Dictionary<string, _ForPackages.PackageManifest> Manifests { get; set; } = [];
 
     /// <summary>Gets or sets the contents.</summary>
-    public Dictionary<string, PackageContents> ContentListings { get; set; } = [];
+    public Dictionary<string, CanonicalIndex> ContentListings { get; set; } = [];
 
     //private readonly Dictionary<ElementDefinition, StructureDefinition> _elementSdLookup = new();
 
@@ -142,15 +146,17 @@ public partial class DefinitionCollection
         bool success = true;
         Hl7.Fhir.Specification.Snapshot.SnapshotGenerator snapshotGenerator = new(this);
 
-        await CreateSnapshots(_complexTypesByName.Values);
-        await CreateSnapshots(_resourcesByName.Values);
-        await CreateSnapshots(_interfacesByName.Values);
-        await CreateSnapshots(_extensionsByUrl.Values);
-        await CreateSnapshots(_profilesByUrl.Values);
+        await CreateSnapshots(FhirArtifactClassEnum.ComplexType, _complexTypesByName.Values);
+        await CreateSnapshots(FhirArtifactClassEnum.Resource, _resourcesByName.Values);
+        await CreateSnapshots(FhirArtifactClassEnum.Interface, _interfacesByName.Values);
+        await CreateSnapshots(FhirArtifactClassEnum.Extension, _extensionsByUrl.Values);
+        await CreateSnapshots(FhirArtifactClassEnum.Profile, _profilesByUrl.Values);
 
         return success;
 
-        async System.Threading.Tasks.Task CreateSnapshots(IEnumerable<StructureDefinition> sds)
+        async System.Threading.Tasks.Task CreateSnapshots(
+            FhirArtifactClassEnum artifactClass,
+            IEnumerable<StructureDefinition> sds)
         {
             foreach (StructureDefinition sd in sds)
             {
@@ -160,19 +166,21 @@ public partial class DefinitionCollection
                     sd.Snapshot = new StructureDefinition.SnapshotComponent();
                 }
 
-                if (sd.Snapshot.Element.Count != 0)
-                {
-                    // already has elements
-                    continue;
-                }
-
-                sd.Snapshot.Element = await snapshotGenerator.GenerateAsync(sd);
-
+                // a valid snapshot will always have at least the root element
                 if (sd.Snapshot.Element.Count == 0)
                 {
-                    success = false;
-                    Console.WriteLine($"Failed to generate snapshot for {sd.Url} ({sd.Name})");
+                    sd.Snapshot.Element = await snapshotGenerator.GenerateAsync(sd);
+
+                    if (sd.Snapshot.Element.Count == 0)
+                    {
+                        success = false;
+                        Console.WriteLine($"Failed to generate snapshot for {sd.Url} ({sd.Name})");
+                        continue;
+                    }
                 }
+
+                // reprocess the elements for this structure so that we include the snapshot
+                ProcessElements(artifactClass, sd, FhirSequence);
             }
         }
     }
@@ -353,23 +361,23 @@ public partial class DefinitionCollection
 
         List<string> idByDepth = [];
 
-        Dictionary<string, string> pathTypes = [];
+        HashSet<string> multiTypePaths = [];
+        Dictionary<string, string> singleTypePaths = [];
+
+        StructureProcessingInfo processingInfo = sd.cgGetProcessingInfo() ?? new()
+        {
+            ArtifactClass = artifactClass,
+            HasProcessedSnapshot = false,
+            HasProcessedDifferential = false,
+        };
+
+        IEnumerable<ElementDefinition> elements = processingInfo.HasProcessedSnapshot
+            ? []
+            : sd.Snapshot?.Element ?? [];
 
         // process each element in the snapshot
-        foreach (ElementDefinition ed in sd.Snapshot?.Element ?? Enumerable.Empty<ElementDefinition>())
+        foreach (ElementDefinition ed in elements)
         {
-            // DSTU2 did not include element id's on ElementDefinitions, so we need to construct them
-            if (string.IsNullOrEmpty(ed.ElementId))
-            {
-                AddMissingElementId(ed, idByDepth);
-
-                // DSTU2 allowed repetitions of elements that we want to ignore (slicing definition before every slice)
-                if (allFieldOrders.ContainsKey(ed.ElementId))
-                {
-                    continue;
-                }
-            }
-
             int lastDot = ed.Path.LastIndexOf('.');
             string parentPath = lastDot == -1 ? ed.Path : ed.Path.Substring(0, lastDot);
             int componentFieldOrder = 0;
@@ -394,15 +402,12 @@ public partial class DefinitionCollection
 
             ed.cgSetFieldOrder(fo, componentFieldOrder);
 
-            //// add to lookup dict
-            //_elementSdLookup.Add($"{ed.Path}|{ed.ElementId}", sd);
-
             if (lastDot != -1)
             {
                 if (parentPath.Contains('.') &&
                     !_parentElementsAndType.ContainsKey(parentPath))
                 {
-                    if (pathTypes.TryGetValue(parentPath, out string? parentType))
+                    if (singleTypePaths.TryGetValue(parentPath, out string? parentType))
                     {
                         _parentElementsAndType.Add(parentPath, parentType);
                     }
@@ -423,7 +428,7 @@ public partial class DefinitionCollection
                 }
                 else
                 {
-                    if (!slices.Any(sliceDef => sliceDef.Key == ed.SliceName))
+                    if (!slices.Any(sliceDef => (sliceDef.Key == ed.SliceName) && (sliceDef.Value.Id == sd.Id)))
                     {
                         _pathsWithSlices[ed.Path] = [.. slices, new(ed.SliceName, sd)];
                     }
@@ -433,34 +438,57 @@ public partial class DefinitionCollection
             // check for a value set binding
             CheckElementBindings(artifactClass, sd, ed);
 
-            // DSTU2 and STU3 need type consolidation
-            if ((fhirVersion == FhirReleases.FhirSequenceCodes.DSTU2) || (fhirVersion == FhirReleases.FhirSequenceCodes.STU3))
-            {
-                ConsolidateTypes(sd, ed);
-            }
-
             // check for a single type and add to the path types dictionary
             if (ed.Type.Count == 1)
             {
-                pathTypes[ed.Path] = ed.Type.First().Code;
+                // check for existing multi-type path
+                if (multiTypePaths.Contains(ed.Path))
+                {
+                    // do nothing
+                }
+                // check to see if there is an existing type for this path
+                else if (singleTypePaths.TryGetValue(ed.Path, out string? existingType))
+                {
+                    // if the existing type is not the same as the current type, it is a polymorphic type
+                    if (existingType != ed.Type.First().Code)
+                    {
+                        // remove from the set
+                        singleTypePaths.Remove(ed.Path);
+                        multiTypePaths.Add(ed.Path);
+                    }
+                }
+                else
+                {
+                    // add this type
+                    singleTypePaths[ed.Path] = ed.Type.First().Code;
+                }
+            }
+            else
+            {
+                // this is a multi-type path
+                _ = multiTypePaths.Add(ed.Path);
             }
         }
 
-        // process each element in the differential
-        foreach (ElementDefinition ed in sd.Differential?.Element ?? Enumerable.Empty<ElementDefinition>())
+        // check to see if we processed a snapshot
+        if (allFieldOrders.Count != 0)
         {
-            // DSTU2 did not include element id's on ElementDefinitions, so we need to construct them
-            if (string.IsNullOrEmpty(ed.ElementId))
-            {
-                AddMissingElementId(ed, idByDepth);
+            processingInfo = processingInfo with { HasProcessedSnapshot = true };
 
-                // DSTU2 allowed repetitions of elements that we want to ignore (slicing definition before every slice)
-                if (allFieldOrders.ContainsKey(ed.ElementId))
-                {
-                    continue;
-                }
-            }
+            // if we just processed the snapshot, process the differential even if it has been processed before
+            elements = sd.Differential?.Element ?? Enumerable.Empty<ElementDefinition>();
+        }
+        else
+        {
+            // only process the differential if we have one that has not been processed
+            elements = processingInfo.HasProcessedDifferential
+                ? []
+                : sd.Differential?.Element ?? [];
+        }
 
+        // process each element in the differential
+        foreach (ElementDefinition ed in elements)
+        {
             int lastDot = ed.Path.LastIndexOf('.');
             string parentPath = lastDot == -1 ? ed.Path : ed.Path.Substring(0, lastDot);
             int componentFieldOrder = 0;
@@ -480,14 +508,11 @@ public partial class DefinitionCollection
                 }
             }
 
-            // check if this element has already been processed
+            // check if this element NOT has already been processed in the snapshot
             if (!allFieldOrders.TryGetValue(ed.ElementId, out int fo))
             {
                 fo = allFieldOrders.Count;
                 allFieldOrders.Add(ed.ElementId, fo);
-
-                //// add to lookup dict
-                //_elementSdLookup.Add($"{ed.Path}|{ed.ElementId}", sd);
 
                 // check for being a child element to promote a parent to backbone
                 if (lastDot != -1)
@@ -495,7 +520,7 @@ public partial class DefinitionCollection
                     if (parentPath.Contains('.') &&
                         !_parentElementsAndType.ContainsKey(parentPath))
                     {
-                        if (pathTypes.TryGetValue(parentPath, out string? parentType))
+                        if (singleTypePaths.TryGetValue(parentPath, out string? parentType))
                         {
                             _parentElementsAndType.Add(parentPath, parentType);
                         }
@@ -516,7 +541,7 @@ public partial class DefinitionCollection
                     }
                     else
                     {
-                        if (!slices.Any(sliceDef => sliceDef.Key == ed.SliceName))
+                        if (!slices.Any(sliceDef => (sliceDef.Key == ed.SliceName) && (sliceDef.Value.Id == sd.Id)))
                         {
                             _pathsWithSlices[ed.Path] = [.. slices, new(ed.SliceName, sd)];
                         }
@@ -526,135 +551,49 @@ public partial class DefinitionCollection
                 // check for a value set binding
                 CheckElementBindings(artifactClass, sd, ed);
 
-                // DSTU2 and STU3 need type consolidation
-                if ((fhirVersion == FhirReleases.FhirSequenceCodes.DSTU2) || (fhirVersion == FhirReleases.FhirSequenceCodes.STU3))
-                {
-                    ConsolidateTypes(sd, ed);
-                }
-
                 // check for a single type and add to the path types dictionary
                 if (ed.Type.Count == 1)
                 {
-                    pathTypes[ed.Path] = ed.Type.First().Code;
+                    // check for existing multi-type path
+                    if (multiTypePaths.Contains(ed.Path))
+                    {
+                        // do nothing
+                    }
+                    // check to see if there is an existing type for this path
+                    else if (singleTypePaths.TryGetValue(ed.Path, out string? existingType))
+                    {
+                        // if the existing type is not the same as the current type, it is a polymorphic type
+                        if (existingType != ed.Type.First().Code)
+                        {
+                            // remove from the set
+                            singleTypePaths.Remove(ed.Path);
+                            multiTypePaths.Add(ed.Path);
+                        }
+                    }
+                    else
+                    {
+                        // add this type
+                        singleTypePaths[ed.Path] = ed.Type.First().Code;
+                    }
+                }
+                else
+                {
+                    // this is a multi-type path
+                    _ = multiTypePaths.Add(ed.Path);
                 }
             }
 
             ed.cgSetFieldOrder(fo, componentFieldOrder);
         }
 
-        // DSTU2 and STU3 do not always declare types on root elements
-        if ((fhirVersion == FhirReleases.FhirSequenceCodes.DSTU2) || (fhirVersion == FhirReleases.FhirSequenceCodes.STU3))
+        // check to see if we processed a differential
+        if (sd.Differential?.Element.Count > 0)
         {
-            ElementDefinition? re = sd.cgRootElement();
-            if (re != null)
-            {
-                re.Base ??= new ElementDefinition.BaseComponent();
-
-                if (string.IsNullOrEmpty(re.Base.Path))
-                {
-                    re.Base.Path = re.Path;
-                }
-
-                re.Min ??= 0;
-
-                if (string.IsNullOrEmpty(re.Max))
-                {
-                    re.Max = "*";
-                }
-            }
-        }
-    }
-
-    /// <summary>
-    /// Adds the missing element ID to the given <see cref="ElementDefinition"/>.
-    /// </summary>
-    /// <param name="ed">The <see cref="ElementDefinition"/> to add the missing ID to.</param>
-    /// <param name="idByDepth">The list of IDs by depth.</param>
-    private void AddMissingElementId(ElementDefinition ed, List<string> idByDepth)
-    {
-        string[] components = ed.Path.Split('.');
-        int depth = components.Length;
-
-        if (depth == 1)
-        {
-            ed.ElementId = ed.Path;
-            idByDepth.Clear();
-            idByDepth.Add(ed.Path);
-            return;
+            processingInfo = processingInfo with { HasProcessedDifferential = true };
         }
 
-        // remove keys with the same length or deeper
-        if (idByDepth.Count >= depth)
-        {
-            idByDepth.RemoveRange(depth - 1, (idByDepth.Count - depth) + 1);
-        }
-
-        // append the slice name if present
-        if (!string.IsNullOrEmpty(ed.SliceName))
-        {
-            // check for a dot-notation name
-            if (ed.SliceName.Contains('.'))
-            {
-                // check for resource name prefix
-                if (ed.SliceName.StartsWith(idByDepth[0]))
-                {
-                    // append just the last dot component as a slice name
-                    components[depth - 1] += string.Concat(":", ed.SliceName.AsSpan(ed.SliceName.LastIndexOf('.') + 1));
-                }
-                else
-                {
-                    // convert to pascal case
-                    components[depth - 1] += ":" + ed.SliceName.ToPascalCase();
-                }
-            }
-            else
-            {
-                components[depth - 1] += ":" + ed.SliceName;
-            }
-        }
-
-        // add our path components
-        idByDepth.AddRange(components.Skip(idByDepth.Count));
-
-        ed.ElementId = string.Join('.', idByDepth);
-    }
-
-    /// <summary>Consolidate types.</summary>
-    /// <param name="sd">The structure definition.</param>
-    /// <param name="ed">The ed.</param>
-    private void ConsolidateTypes(StructureDefinition sd, ElementDefinition ed)
-    {
-        // only need to consolidate if there are 2 or more
-        if (ed.Type.Count < 2)
-        {
-            return;
-        }
-
-        // consolidate types
-        Dictionary<string, ElementDefinition.TypeRefComponent> consolidatedTypes = [];
-
-        foreach (ElementDefinition.TypeRefComponent tr in ed.Type)
-        {
-            if (!consolidatedTypes.TryGetValue(tr.Code, out ElementDefinition.TypeRefComponent? existing))
-            {
-                consolidatedTypes[tr.Code] = tr;
-                continue;
-            }
-
-            // add any missing profile references
-            if (tr.ProfileElement.Count != 0)
-            {
-                existing.ProfileElement.AddRange(tr.ProfileElement);
-            }
-
-            if (tr.TargetProfileElement.Count != 0)
-            {
-                existing.TargetProfileElement.AddRange(tr.TargetProfileElement);
-            }
-        }
-
-        // update our types
-        ed.Type = [.. consolidatedTypes.Values];
+        // update our processing info
+        sd.cgSetProcessingInfo(processingInfo);
     }
 
     /// <summary>
@@ -748,7 +687,7 @@ public partial class DefinitionCollection
         }
 
         // strip the pipe and version
-        return vsUrl.Substring(0, lastPipe - 1);
+        return vsUrl.Substring(0, lastPipe);
     }
 
     /// <summary>Check element bindings.</summary>
@@ -785,8 +724,6 @@ public partial class DefinitionCollection
                         }
 
                         matchingElementCollection.Elements.Add(ed);
-
-                        //pathElementCollections = pathElementCollections.Append(matchingElementCollection).ToArray();
                     }
                     break;
 
@@ -1032,13 +969,13 @@ public partial class DefinitionCollection
 
         if ((cm.SourceScope is Canonical sourceCanonical) && (!string.IsNullOrEmpty(sourceCanonical.Uri)))
         {
-            if (_conceptMapsBySourceUrl.TryGetValue(sourceCanonical.Uri, out List<ConceptMap>? maps))
+            if (_conceptMapsBySourceUrl.TryGetValue(sourceCanonical.Uri!, out List<ConceptMap>? maps))
             {
                 maps.Add(cm);
             }
             else
             {
-                _conceptMapsBySourceUrl.Add(sourceCanonical.Uri, [cm]);
+                _conceptMapsBySourceUrl.Add(sourceCanonical.Uri!, [cm]);
             }
         }
         else if ((cm.SourceScope is FhirUri sourceUri) && (!string.IsNullOrEmpty(sourceUri.Value)))
@@ -1513,11 +1450,11 @@ public partial class DefinitionCollection
          */
         if ((unversioned == "http://hl7.org/fhir/ValueSet/units-of-time") &&
             (valueSet.Expansion?.Contains.Any() ?? false) &&
-            !char.IsAsciiLetter(valueSet.Expansion.Contains.First().Display[0]))
+            !valueSet.Expansion.Contains.First().Display[0].IsAsciiLetter())
         {
             foreach (ValueSet.ContainsComponent cc in valueSet.Expansion.Contains)
             {
-                if (!char.IsAsciiLetter(cc.Display[0]))
+                if (!cc.Display[0].IsAsciiLetter())
                 {
                     switch (cc.Code)
                     {
@@ -1836,6 +1773,11 @@ public partial class DefinitionCollection
         };
 
         r.Extension.Add(ext);
+
+        if ((r is IVersionableConformanceResource vcr) && string.IsNullOrEmpty(vcr.Version))
+        {
+            vcr.Version = version;
+        }
     }
 
     public bool TryGetPackageSource(DomainResource r, out string packageId, out string packageVersion)
@@ -1856,8 +1798,8 @@ public partial class DefinitionCollection
 
     public class VersionedResourceEnumerator<T> : IEnumerator<T>
     {
-        IDictionary<string, Dictionary<string, T>> _source;
-        IEnumerator<KeyValuePair<string, Dictionary<string, T>>> _sourceEnumerator;
+        private IDictionary<string, Dictionary<string, T>> _source;
+        private IEnumerator<KeyValuePair<string, Dictionary<string, T>>> _sourceEnumerator;
 
         public VersionedResourceEnumerator(IDictionary<string, Dictionary<string, T>> source)
         {
@@ -2194,7 +2136,7 @@ public partial class DefinitionCollection
         if (string.IsNullOrEmpty(sp.Url))
         {
             // best guess at a canonical URL for this
-            sp.Url = string.Join('/', MainPackageCanonical, "SearchParameter", sp.Id).Replace("//", "/");
+            sp.Url = string.Join("/", MainPackageCanonical, "SearchParameter", sp.Id).Replace("//", "/");
         }
 
         // check to see if this resource already exists
@@ -2501,7 +2443,7 @@ public partial class DefinitionCollection
             // iterate over the path components
             for (int i = 0; i < parts.Length; i++)
             {
-                string currentPath = string.Join('.', parts.Take(i + 1));
+                string currentPath = string.Join(".", parts.Take(i + 1));
 
                 if (sd.cgTryGetElementByPath(currentPath, out ElementDefinition? currentEd))
                 {
@@ -2535,7 +2477,7 @@ public partial class DefinitionCollection
             // iterate over the path components
             for (int i = 1; i < parts.Length; i++)
             {
-                string currentPath = string.Join('.', parts.Take(i + 1));
+                string currentPath = string.Join(".", parts.Take(i + 1));
 
                 if (sd.cgTryGetElementById(currentPath, out ElementDefinition? currentEd))
                 {
@@ -2552,6 +2494,43 @@ public partial class DefinitionCollection
         }
 
         elementSequence = [];
+        return false;
+    }
+
+    /// <summary>Attempts to get structure a StructureDefinition based on the given key.</summary>
+    /// <param name="key">The key (name or url, depending on type) of the structure.</param>
+    /// <param name="sd">     [out] The found structure definition.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool TryGetStructure(string key, [NotNullWhen(true)] out StructureDefinition? sd)
+    {
+        if (_resourcesByName.TryGetValue(key, out sd) ||
+            _complexTypesByName.TryGetValue(key, out sd) ||
+            _primitiveTypesByName.TryGetValue(key, out sd) ||
+            _profilesByUrl.TryGetValue(key, out sd) ||
+            _logicalModelsByUrl.TryGetValue(key, out sd))
+        {
+            return true;
+        }
+
+        string key2;
+        if (key.Contains('/'))
+        {
+            key2 = key.Substring(key.LastIndexOf('/') + 1);
+        }
+        else
+        {
+            key2 = "http://hl7.org/fhir/StructureDefinition/" + key;
+        }
+
+        if (_resourcesByName.TryGetValue(key2, out sd) ||
+            _complexTypesByName.TryGetValue(key2, out sd) ||
+            _primitiveTypesByName.TryGetValue(key2, out sd) ||
+            _profilesByUrl.TryGetValue(key2, out sd) ||
+            _logicalModelsByUrl.TryGetValue(key2, out sd))
+        {
+            return true;
+        }
+
         return false;
     }
 

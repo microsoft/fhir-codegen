@@ -1000,8 +1000,8 @@ public class OpenApiOptions : ConfigGenerate
         },
     };
 
-    private string _httpCommonParams = string.Join(',', OpenApiCommon._httpCommonParameters.Keys);
-    private HashSet<string> _httpCommonHash = OpenApiCommon._httpCommonParameters.Keys.ToHashSet();
+    private string _httpCommonParams = string.Join(",", OpenApiCommon._httpCommonParameters.Keys);
+    private HashSet<string> _httpCommonHash = new(OpenApiCommon._httpCommonParameters.Keys);
     public HashSet<string> HttpCommonParamsHash => _httpCommonHash;
 
     /// <summary>Gets or sets options for controlling the HTTP common.</summary>
@@ -1020,7 +1020,7 @@ public class OpenApiOptions : ConfigGenerate
     private static ConfigurationOption HttpCommonParamsParameter { get; } = new()
     {
         Name = "HttpCommonParams",
-        DefaultValue = string.Join(',', OpenApiCommon._httpCommonParameters.Keys),
+        DefaultValue = string.Join(",", OpenApiCommon._httpCommonParameters.Keys),
         CliOption = new System.CommandLine.Option<string>("--http-common-params", "Comma-separated list of common parameters to include in HTTP requests.")
         {
             Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
@@ -1029,8 +1029,8 @@ public class OpenApiOptions : ConfigGenerate
     };
 
 
-    private string _httpReadParams = string.Join(',', OpenApiCommon._httpReadParameters.Keys);
-    private HashSet<string> _httpReadHash = OpenApiCommon._httpReadParameters.Keys.ToHashSet();
+    private string _httpReadParams = string.Join(",", OpenApiCommon._httpReadParameters.Keys);
+    private HashSet<string> _httpReadHash = new(OpenApiCommon._httpReadParameters.Keys);
     public HashSet<string> HttpReadHash => _httpReadHash;
 
     /// <summary>Gets or sets options for controlling the HTTP read.</summary>
@@ -1050,7 +1050,7 @@ public class OpenApiOptions : ConfigGenerate
     private static ConfigurationOption HttpReadParamsParameter { get; } = new()
     {
         Name = "HttpReadParams",
-        DefaultValue = string.Join(',', OpenApiCommon._httpReadParameters.Keys),
+        DefaultValue = string.Join(",", OpenApiCommon._httpReadParameters.Keys),
         CliOption = new System.CommandLine.Option<string>("--http-read-params", "Comma-separated list of common parameters to include in HTTP read requests.")
         {
             Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
@@ -1058,8 +1058,8 @@ public class OpenApiOptions : ConfigGenerate
         },
     };
 
-    private string _searchResultParams = string.Join(',', OpenApiCommon._searchResultParameters.Keys);
-    private HashSet<string> _searchResultHash = OpenApiCommon._searchResultParameters.Keys.ToHashSet();
+    private string _searchResultParams = string.Join(",", OpenApiCommon._searchResultParameters.Keys);
+    private HashSet<string> _searchResultHash = new(OpenApiCommon._searchResultParameters.Keys);
     public HashSet<string> SearchResultHash => _searchResultHash;
     /// <summary>Gets or sets options for controlling the search result.</summary>
     [ConfigOption(
@@ -1077,7 +1077,7 @@ public class OpenApiOptions : ConfigGenerate
     private static ConfigurationOption SearchResultParamsParameter { get; } = new()
     {
         Name = "SearchResultParams",
-        DefaultValue = string.Join(',', OpenApiCommon._searchResultParameters.Keys),
+        DefaultValue = string.Join(",", OpenApiCommon._searchResultParameters.Keys),
         CliOption = new System.CommandLine.Option<string>("--search-result-params", "Comma-separated list of common parameters to include in search results.")
         {
             Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
@@ -1085,8 +1085,8 @@ public class OpenApiOptions : ConfigGenerate
         },
     };
 
-    private string _searchCommonParams = string.Join(',', _searchCommonParameters.Keys);
-    private HashSet<string> _searchCommonHash = OpenApiCommon._searchCommonParameters.Keys.ToHashSet();
+    private string _searchCommonParams = string.Join(",", _searchCommonParameters.Keys);
+    private HashSet<string> _searchCommonHash = new(OpenApiCommon._searchCommonParameters.Keys);
     public HashSet<string> SearchCommonHash => _searchCommonHash;
     /// <summary>Gets or sets options for controlling the search common.</summary>
     [ConfigOption(
@@ -1104,7 +1104,7 @@ public class OpenApiOptions : ConfigGenerate
     private static ConfigurationOption SearchCommonParamsParameter { get; } = new()
     {
         Name = "SearchCommonParams",
-        DefaultValue = string.Join(',', _searchCommonParameters.Keys),
+        DefaultValue = string.Join(",", _searchCommonParameters.Keys),
         CliOption = new System.CommandLine.Option<string>("--search-common-params", "Comma-separated list of common parameters to include in search.")
         {
             Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
@@ -1112,8 +1112,8 @@ public class OpenApiOptions : ConfigGenerate
         },
     };
 
-    private string _historyParams = string.Join(',', OpenApiCommon._historyParameters.Keys);
-    private HashSet<string> _historyHash = OpenApiCommon._historyParameters.Keys.ToHashSet();
+    private string _historyParams = string.Join(",", OpenApiCommon._historyParameters.Keys);
+    private HashSet<string> _historyHash = new(OpenApiCommon._historyParameters.Keys);
     public HashSet<string> HistoryHash => _historyHash;
     /// <summary>Gets or sets options for controlling the history.</summary>
     [ConfigOption(
@@ -1131,7 +1131,7 @@ public class OpenApiOptions : ConfigGenerate
     private static ConfigurationOption HistoryParamsParameter { get; } = new()
     {
         Name = "HistoryParams",
-        DefaultValue = string.Join(',', OpenApiCommon._historyParameters.Keys),
+        DefaultValue = string.Join(",", OpenApiCommon._historyParameters.Keys),
         CliOption = new System.CommandLine.Option<string>("--history-params", "Comma-separated list of common parameters to include in history.")
         {
             Arity = System.CommandLine.ArgumentArity.ZeroOrOne,

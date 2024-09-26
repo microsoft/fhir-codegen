@@ -4,8 +4,12 @@
 // </copyright>
 
 using System;
-using System.Collections.Frozen;
 using System.Diagnostics.CodeAnalysis;
+#if NET8_0_OR_GREATER
+using System.Collections.Frozen;
+#elif NETSTANDARD2_0
+using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
+#endif
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 
@@ -40,7 +44,7 @@ public static class FhirReleases
     /// <summary>Information about the published release.</summary>
     public readonly record struct PublishedReleaseInformation(
         FhirSequenceCodes Sequence,
-        DateOnly PublicationDate,
+        DateTime PublicationDate,
         bool IsSequenceOfficial,
         string Version,
         string Description,
@@ -50,27 +54,29 @@ public static class FhirReleases
     };
 
     /// <summary>The FHIR releases.</summary>
-    public static readonly FrozenDictionary<string, PublishedReleaseInformation> FhirPublishedVersions = new Dictionary<string, PublishedReleaseInformation>()
+    internal static readonly FrozenDictionary<string, PublishedReleaseInformation> FhirPublishedVersions = new Dictionary<string, PublishedReleaseInformation>()
     {
-        { "1.0.2",             new (FhirSequenceCodes.DSTU2, new DateOnly(2015, 10, 24), true, "1.0.2",             "DSTU2 Release with 1 technical errata") },
-        { "3.0.2",             new (FhirSequenceCodes.STU3,  new DateOnly(2019, 10, 24), true, "3.0.2",             "STU3 Release with 2 technical errata") },
-        { "3.2.0",             new (FhirSequenceCodes.R4,    new DateOnly(2018, 04, 02), false, "3.2.0",             "R4 Draft for comment / First Candidate Normative Content", "2018Jan") },
-        { "3.3.0",             new (FhirSequenceCodes.R4,    new DateOnly(2018, 05, 02), false, "3.3.0",             "R4 Ballot #1 : Mixed Normative/Trial use (First Normative ballot)", "2018May") },
-        { "3.5.0",             new (FhirSequenceCodes.R4,    new DateOnly(2018, 08, 21), false, "3.5.0",             "R4 Ballot #2 : Mixed Normative/Trial use (Second Normative ballot + Baltimore Connectathon)", "2018Sep") },
-        { "3.5a.0",            new (FhirSequenceCodes.R4,    new DateOnly(2018, 11, 09), false, "3.5a.0",            "Special R4 Ballot #3 : Normative Packages for Terminology / Conformance + Observation", "2018Dec") },
-        { "4.0.1",             new (FhirSequenceCodes.R4,    new DateOnly(2019, 10, 30), true, "4.0.1",             "R4 Release with 1 technical errata") },
-        { "4.1.0",             new (FhirSequenceCodes.R4B,   new DateOnly(2021, 03, 11), false, "4.1.0",             "R4B Ballot #1", "2021Mar") },
-        { "4.3.0-snapshot1",   new (FhirSequenceCodes.R4B,   new DateOnly(2021, 12, 20), false, "4.3.0-snapshot1",   "R4B January 2022 Connectathon") },
-        { "4.3.0",             new (FhirSequenceCodes.R4B,   new DateOnly(2022, 05, 28), true, "4.3.0",             "R4B Release") },
-        { "4.2.0",             new (FhirSequenceCodes.R5,    new DateOnly(2019, 12, 31), false, "4.2.0",             "R5 Preview #1", "2020Feb") },
-        { "4.4.0",             new (FhirSequenceCodes.R5,    new DateOnly(2020, 05, 04), false, "4.4.0",             "R5 Preview #2", "2020May") },
-        { "4.5.0",             new (FhirSequenceCodes.R5,    new DateOnly(2020, 08, 20), false, "4.5.0",             "R5 Preview #3", "2020Sep") },
-        { "4.6.0",             new (FhirSequenceCodes.R5,    new DateOnly(2021, 04, 15), false, "4.6.0",             "R5 Draft Ballot", "2021May") },
-        { "5.0.0-snapshot1",   new (FhirSequenceCodes.R5,    new DateOnly(2021, 12, 19), false, "5.0.0-snapshot1",   "R5 January 2022 Connectathon") },
-        { "5.0.0-ballot",      new (FhirSequenceCodes.R5,    new DateOnly(2022, 09, 10), false, "5.0.0-ballot",      "R5 Ballot #1") },
-        { "5.0.0-snapshot3",   new (FhirSequenceCodes.R5,    new DateOnly(2022, 12, 14), false, "5.0.0-snapshot3",   "R5 Connectathon 32 Base") },
-        { "5.0.0-draft-final", new (FhirSequenceCodes.R5,    new DateOnly(2023, 03, 01), false, "5.0.0-draft-final", "R5 Final QA") },
-        { "5.0.0",             new (FhirSequenceCodes.R5,    new DateOnly(2023, 03, 26), true, "5.0.0",             "R5 Release")  },
+        { "1.0.2",             new (FhirSequenceCodes.DSTU2, new DateTime(2015, 10, 24), true,  "1.0.2",             "DSTU2 Release with 1 technical errata") },
+        { "3.0.2",             new (FhirSequenceCodes.STU3,  new DateTime(2019, 10, 24), true,  "3.0.2",             "STU3 Release with 2 technical errata") },
+        { "3.2.0",             new (FhirSequenceCodes.R4,    new DateTime(2018, 04, 02), false, "3.2.0",             "R4 Draft for comment / First Candidate Normative Content", "2018Jan") },
+        { "3.3.0",             new (FhirSequenceCodes.R4,    new DateTime(2018, 05, 02), false, "3.3.0",             "R4 Ballot #1 : Mixed Normative/Trial use (First Normative ballot)", "2018May") },
+        { "3.5.0",             new (FhirSequenceCodes.R4,    new DateTime(2018, 08, 21), false, "3.5.0",             "R4 Ballot #2 : Mixed Normative/Trial use (Second Normative ballot + Baltimore Connectathon)", "2018Sep") },
+        { "3.5a.0",            new (FhirSequenceCodes.R4,    new DateTime(2018, 11, 09), false, "3.5a.0",            "Special R4 Ballot #3 : Normative Packages for Terminology / Conformance + Observation", "2018Dec") },
+        { "4.0.1",             new (FhirSequenceCodes.R4,    new DateTime(2019, 10, 30), true,  "4.0.1",             "R4 Release with 1 technical errata") },
+        { "4.1.0",             new (FhirSequenceCodes.R4B,   new DateTime(2021, 03, 11), false, "4.1.0",             "R4B Ballot #1", "2021Mar") },
+        { "4.3.0-snapshot1",   new (FhirSequenceCodes.R4B,   new DateTime(2021, 12, 20), false, "4.3.0-snapshot1",   "R4B January 2022 Connectathon") },
+        { "4.3.0",             new (FhirSequenceCodes.R4B,   new DateTime(2022, 05, 28), true,  "4.3.0",             "R4B Release") },
+        { "4.2.0",             new (FhirSequenceCodes.R5,    new DateTime(2019, 12, 31), false, "4.2.0",             "R5 Preview #1", "2020Feb") },
+        { "4.4.0",             new (FhirSequenceCodes.R5,    new DateTime(2020, 05, 04), false, "4.4.0",             "R5 Preview #2", "2020May") },
+        { "4.5.0",             new (FhirSequenceCodes.R5,    new DateTime(2020, 08, 20), false, "4.5.0",             "R5 Preview #3", "2020Sep") },
+        { "4.6.0",             new (FhirSequenceCodes.R5,    new DateTime(2021, 04, 15), false, "4.6.0",             "R5 Draft Ballot", "2021May") },
+        { "5.0.0-snapshot1",   new (FhirSequenceCodes.R5,    new DateTime(2021, 12, 19), false, "5.0.0-snapshot1",   "R5 January 2022 Connectathon") },
+        { "5.0.0-ballot",      new (FhirSequenceCodes.R5,    new DateTime(2022, 09, 10), false, "5.0.0-ballot",      "R5 Ballot #1") },
+        { "5.0.0-snapshot3",   new (FhirSequenceCodes.R5,    new DateTime(2022, 12, 14), false, "5.0.0-snapshot3",   "R5 Connectathon 32 Base") },
+        { "5.0.0-draft-final", new (FhirSequenceCodes.R5,    new DateTime(2023, 03, 01), false, "5.0.0-draft-final", "R5 Final QA") },
+        { "5.0.0",             new (FhirSequenceCodes.R5,    new DateTime(2023, 03, 26), true,  "5.0.0",             "R5 Release")  },
+        { "6.0.0-ballot1",     new (FhirSequenceCodes.R6,    new DateTime(2023, 12, 19), false, "6.0.0-ballot1",     "R6 Ballot 1st Draft") },
+        { "6.0.0-ballot2",     new (FhirSequenceCodes.R6,    new DateTime(2024, 08, 13), false, "6.0.0-ballot2",     "R6 Ballot 2nd Draft") },
     }.ToFrozenDictionary();
 
     /// <summary>(Immutable) The FHIR sequence map.</summary>
@@ -92,6 +98,7 @@ public static class FhirReleases
         { "1.0.0", FhirSequenceCodes.DSTU2 },
         { "1.0.1", FhirSequenceCodes.DSTU2 },
         { "1.0.2", FhirSequenceCodes.DSTU2 },
+        { "2.0", FhirSequenceCodes.DSTU2 },
         { "hl7.fhir.r2", FhirSequenceCodes.DSTU2 },
         { "hl7.fhir.r2.core", FhirSequenceCodes.DSTU2 },
 
@@ -128,6 +135,7 @@ public static class FhirReleases
         { "3.5a", FhirSequenceCodes.R4 },
         { "3.5a.0", FhirSequenceCodes.R4 },
         { "4.0", FhirSequenceCodes.R4 },
+        { "4.0.0", FhirSequenceCodes.R4 },
         { "4.0.1", FhirSequenceCodes.R4 },
         { "hl7.fhir.r4", FhirSequenceCodes.R4 },
         { "hl7.fhir.r4.core", FhirSequenceCodes.R4 },
@@ -169,11 +177,27 @@ public static class FhirReleases
         { "6", FhirSequenceCodes.R6 },
         { "6.0", FhirSequenceCodes.R6 },
         { "6.0.0", FhirSequenceCodes.R6 },
+        { "6.0.0-ballot1", FhirSequenceCodes.R6 },
+        { "6.0.0-ballot2", FhirSequenceCodes.R6 },
         { "6.0.0-cibuild", FhirSequenceCodes.R6 },
         { "hl7.fhir.r6", FhirSequenceCodes.R6 },
         { "hl7.fhir.r6.core", FhirSequenceCodes.R6 },
-
     }.ToFrozenDictionary(StringComparer.OrdinalIgnoreCase);
+
+    /// <summary>Check if a FHIR release version is unavailable (e.g., a superseded patch).</summary>
+    /// <param name="version">The version string.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public static bool VersionIsUnavailable(string version) => version switch
+    {
+        "1.0.0" => true,
+        "1.0.1" => true,
+        "3.0.0" => true,
+        "3.0.1" => true,
+        "4.0.0" => true,
+        _ => false,
+    };
+
+    public static string GetCurrentPatch(string version) => FhirVersionToSequence(version).ToLongVersion();
 
     /// <summary>Attempts to get sequence the FhirSequenceCodes from the given string.</summary>
     /// <param name="literal">     The literal.</param>
@@ -357,6 +381,23 @@ public static class FhirReleases
         _ => "Unknown"
     };
 
+    /// <summary>
+    /// The FhirSequenceCodes extension method that converts a sequence to a core package
+    /// directive.
+    /// </summary>
+    /// <param name="sequence">The sequence.</param>
+    /// <returns>Sequence as a string.</returns>
+    public static string ToCorePackageDirective(this FhirSequenceCodes sequence) => sequence switch
+    {
+        FhirSequenceCodes.DSTU2 => "hl7.fhir.r2.core@" + sequence.ToLongVersion(),
+        FhirSequenceCodes.STU3 => "hl7.fhir.r3.core@" + sequence.ToLongVersion(),
+        FhirSequenceCodes.R4 => "hl7.fhir.r4.core@" + sequence.ToLongVersion(),
+        FhirSequenceCodes.R4B => "hl7.fhir.r4b.core@" + sequence.ToLongVersion(),
+        FhirSequenceCodes.R5 => "hl7.fhir.r5.core@" + sequence.ToLongVersion(),
+        FhirSequenceCodes.R6 => "hl7.fhir.r6.core@" + sequence.ToLongVersion(),
+        _ => "Unknown"
+    };
+
     /// <summary>FHIR version to long version.</summary>
     /// <param name="version">[out] The version literal (e.g., DSTU2).</param>
     /// <returns>A string.</returns>
@@ -383,5 +424,4 @@ public static class FhirReleases
 
         return string.Empty;
     }
-
 }

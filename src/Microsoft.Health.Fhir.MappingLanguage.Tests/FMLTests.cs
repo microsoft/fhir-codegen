@@ -3,6 +3,7 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System.ComponentModel;
 using System.IO;
 using System.Text;
 using FluentAssertions;
@@ -20,6 +21,7 @@ public class FMLTests
     }
 
     [Fact]
+    [Trait("Category", "FML")]
     internal void TestBuildingLiteralEnums()
     {
         // Output what should be in the enum to the console (test output)
@@ -57,6 +59,7 @@ public class FMLTests
     }
 
     [Fact]
+    [Trait("Category", "FML")]
     internal void FmlParseTest01()
     {
         string content = """"
@@ -152,7 +155,8 @@ group EncounterDiagnosis(source src, target tgt) extends BackboneElement {
         map.MetadataByPath["name"].Literal!.ValueAsString.Should().Be("FhirMarkup4to5");
         map.MetadataByPath["title"].Literal!.ValueAsString.Should().Be("Test FML file to exercise core parsing");
         map.MetadataByPath["status"].Literal!.ValueAsString.Should().Be("draft");
-        map.MetadataByPath["description"].MarkdownValue!.Should().Be("This was challenging to code into the grammar.\r\nIt should all be working now though");
+        map.MetadataByPath["description"].MarkdownValue!.Should().Contain("This was challenging to code into the grammar.");
+        map.MetadataByPath["description"].MarkdownValue!.Should().Contain("It should all be working now though");
         map.MetadataByPath["jurisdiction"].Literal.Should().BeNull();
         map.MetadataByPath["jurisdiction.coding"].Literal.Should().BeNull();
         map.MetadataByPath["jurisdiction.coding.code"].Literal!.ValueAsString.Should().Be("AQ");
@@ -171,6 +175,7 @@ group EncounterDiagnosis(source src, target tgt) extends BackboneElement {
     }
 
     [Fact]
+    [Trait("Category", "FML")]
     internal void FmlCommentParseTest()
     {
         string content = """"
@@ -379,6 +384,41 @@ group Encounter(source src : EncounterR4, target tgt : EncounterR5) extends Doma
     //    group.TypeMode.Should().BeNull();
 
     //}
+
+    [Fact]
+    [Trait("Category", "FML")]
+    internal void FmlParseDefaultValue()
+    {
+        string content = """"
+/// url = "http://example.org/fhir/StructureDefinition/test"
+/// id = "Fml4to5"
+group Encounter(source src, target tgt) {
+    src.source default (24) -> tgt.source;
+    src.source default "24" -> tgt.source;
+}
+"""";
+        FhirMappingLanguage fml = new();
+
+        bool success = fml.TryParse(content, out FhirStructureMap? map);
+
+        success.Should().BeTrue();
+        if (!success)
+        {
+            return;
+        }
+
+        map.Should().NotBeNull();
+        if (map == null)
+        {
+            return;
+        }
+
+        map.GroupsByName.Count.Should().Be(1);
+        List<GroupExpression> rules = map.GroupsByName.Values.First().Expressions;
+        rules.Count.Should().Be(2);
+        rules[0].MappingExpression!.Sources.First().DefaultExpression!.RawText.Should().Be("24");
+        rules[1].MappingExpression!.Sources.First().DefaultValue.Should().Be("24");
+    }
 }
 public class TestWriter : TextWriter
 {
@@ -390,7 +430,7 @@ public class TestWriter : TextWriter
     {
         OutputWriter = outputWriter;
     }
-    StringBuilder cache = new();
+    private StringBuilder cache = new();
     public override void Write(char value)
     {
         if (value == '\n')

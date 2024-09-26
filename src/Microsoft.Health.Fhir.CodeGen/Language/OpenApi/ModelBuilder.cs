@@ -24,6 +24,10 @@ using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 using static Microsoft.Health.Fhir.CodeGen.Language.OpenApi.OpenApiCommon;
 using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
 
+#if NETSTANDARD2_0
+using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
+#endif
+
 namespace Microsoft.Health.Fhir.CodeGen.Language.OpenApi;
 
 public partial class ModelBuilder
@@ -72,9 +76,14 @@ public partial class ModelBuilder
     private long _totalQueryParameters = 0;
     private long _totalParamInstances = 0;
 
+#if NET8_0_OR_GREATER
     // Match Markdown links [xxxxx](yyyy.html), where xxxx is a capitalized string
     [GeneratedRegex("(\\[[A-Z].*\\])\\((.*.html)\\)")]
     private static partial Regex MarkdownLinkRegex();
+    private static readonly Regex _markdownLinkRegex = MarkdownLinkRegex();
+#else
+    private static readonly Regex _markdownLinkRegex = new Regex("(\\[[A-Z].*\\])\\((.*.html)\\)", RegexOptions.Compiled);
+#endif
 
     /// <summary>Initializes a new instance of the <see cref="ModelBuilder"/> class.</summary>
     /// <param name="info">   The information.</param>
@@ -90,7 +99,7 @@ public partial class ModelBuilder
         if ((options.ExportKeys != null) && (options.ExportKeys.Count != 0))
         {
             _useExportKeyFilter = true;
-            foreach (string key in options.ExportKeys)
+            foreach (string key in options.ExportKeys.Order())
             {
                 if (!_exportFilterKeys.Contains(key))
                 {
@@ -105,7 +114,7 @@ public partial class ModelBuilder
 
         if (_caps?.Rest.Count != 0)
         {
-            foreach (CapabilityStatement.ResourceComponent rc in _caps?.Rest.SelectMany(rest => rest.Resource) ?? [])
+            foreach (CapabilityStatement.ResourceComponent rc in _caps?.Rest.SelectMany(rest => rest.Resource).OrderBy(rc => rc.Type) ?? Enumerable.Empty<CapabilityStatement.ResourceComponent>())
             {
                 _capResources.Add(rc.Type, rc);
             }
@@ -350,7 +359,7 @@ public partial class ModelBuilder
             {
                 Dictionary<string, OpenApiParameter> consolidated = ConsolidateResourceParameters();
 
-                foreach ((string key, OpenApiParameter oasParam) in consolidated)
+                foreach ((string key, OpenApiParameter oasParam) in consolidated.OrderBy(kvp => kvp.Key))
                 {
                     if (doc.Components.Parameters.ContainsKey(key))
                     {
@@ -451,11 +460,11 @@ public partial class ModelBuilder
 
         IEnumerable<StructureDefinition> resources = GetFilteredResources();
 
-        foreach (StructureDefinition resource in resources)
+        foreach (StructureDefinition resource in resources.OrderBy(sd => sd.Id))
         {
             IEnumerable<SearchParameter> fhirSps = GetResourceSearchParameters(resource.Name);
 
-            foreach (SearchParameter fhirSp in fhirSps)
+            foreach (SearchParameter fhirSp in fhirSps.OrderBy(sp => sp.Id))
             {
                 if (parameters.ContainsKey(fhirSp.Code))
                 {
@@ -482,7 +491,7 @@ public partial class ModelBuilder
     {
         Dictionary<string, OpenApiParameter> p = new();
 
-        foreach (string code in _options.HttpCommonParamsHash)
+        foreach (string code in _options.HttpCommonParamsHash.Order())
         {
             if (_httpCommonParameters.ContainsKey(code))
             {
@@ -493,7 +502,7 @@ public partial class ModelBuilder
             _ = p.TryAdd(code, BuildStringParameter(code, string.Empty));
         }
 
-        foreach (string code in _options.HttpReadHash)
+        foreach (string code in _options.HttpReadHash.Order())
         {
             if (_httpReadParameters.ContainsKey(code))
             {
@@ -506,7 +515,7 @@ public partial class ModelBuilder
 
         if (_options.ExportSearchParams)
         {
-            foreach (string code in _options.SearchCommonHash)
+            foreach (string code in _options.SearchCommonHash.Order())
             {
                 if (_searchCommonParameters.ContainsKey(code))
                 {
@@ -517,7 +526,7 @@ public partial class ModelBuilder
                 _ = p.TryAdd(code, BuildStringParameter(code, string.Empty));
             }
 
-            foreach (string code in _options.SearchResultHash)
+            foreach (string code in _options.SearchResultHash.Order())
             {
                 if (_searchResultParameters.ContainsKey(code))
                 {
@@ -529,7 +538,7 @@ public partial class ModelBuilder
             }
         }
 
-        foreach ((string code, OpenApiParameter parameter) in _pathParameters)
+        foreach ((string code, OpenApiParameter parameter) in _pathParameters.OrderBy(kvp => kvp.Key))
         {
             _ = p.TryAdd(code, parameter);
         }
@@ -537,7 +546,7 @@ public partial class ModelBuilder
         if ((_options.InteractionHistoryType == OaCapabilityBoolean.True) ||
             (_options.InteractionHistoryInstance == OaCapabilityBoolean.True))
         {
-            foreach ((string code, OpenApiParameter parameter) in _historyParameters)
+            foreach ((string code, OpenApiParameter parameter) in _historyParameters.OrderBy(kvp => kvp.Key))
             {
                 _ = p.TryAdd(code, parameter);
             }
@@ -545,7 +554,7 @@ public partial class ModelBuilder
         else if ((_options.InteractionHistoryType == OaCapabilityBoolean.Capabilities) &&
                 (_caps?.Rest.Any(rest => rest.Resource.Any(resource => resource.Interaction.Any(i => i.Code == CapabilityStatement.TypeRestfulInteraction.HistoryType))) == true))
         {
-            foreach ((string code, OpenApiParameter parameter) in _historyParameters)
+            foreach ((string code, OpenApiParameter parameter) in _historyParameters.OrderBy(kvp => kvp.Key))
             {
                 _ = p.TryAdd(code, parameter);
             }
@@ -553,7 +562,7 @@ public partial class ModelBuilder
         else if ((_options.InteractionHistoryInstance == OaCapabilityBoolean.Capabilities) &&
                 (_caps?.Rest.Any(rest => rest.Resource.Any(resource => resource.Interaction.Any(i => i.Code == CapabilityStatement.TypeRestfulInteraction.HistoryInstance))) == true))
         {
-            foreach ((string code, OpenApiParameter parameter) in _historyParameters)
+            foreach ((string code, OpenApiParameter parameter) in _historyParameters.OrderBy(kvp => kvp.Key))
             {
                 _ = p.TryAdd(code, parameter);
             }
@@ -561,7 +570,7 @@ public partial class ModelBuilder
 
         if (_options.IncludeHttpHeaders)
         {
-            foreach ((string code, OpenApiParameter parameter) in _httpRequestHeaders)
+            foreach ((string code, OpenApiParameter parameter) in _httpRequestHeaders.OrderBy(kvp => kvp.Key))
             {
                 _ = p.TryAdd(code, parameter);
             }
@@ -807,7 +816,7 @@ public partial class ModelBuilder
         }
 
         // handle resource-specific things first (alphabetical)
-        foreach (StructureDefinition resource in GetFilteredResources(true))
+        foreach (StructureDefinition resource in GetFilteredResources(true).OrderBy(sd => sd.Id))
         {
             // abstract resources do not get endpoints
             if (resource.Abstract == true)
@@ -839,7 +848,7 @@ public partial class ModelBuilder
             }
 
             // handle basic interactions
-            foreach (OaExpandedInteractionCodes fhirInteraction in GetInteractions(resource.Name))
+            foreach (OaExpandedInteractionCodes fhirInteraction in GetInteractions(resource.Name).Order())
             {
                 string opPath;
 
@@ -1020,7 +1029,7 @@ public partial class ModelBuilder
             }       // close: foreach resource
 
             // traverse the operations for this resource
-            foreach (OperationDefinition fhirOp in GetResourceFhirOperations(resource.Name))
+            foreach (OperationDefinition fhirOp in GetResourceFhirOperations(resource.Name).OrderBy(op => op.Id))
             {
                 BuildResourceOperationOasPaths(paths, resource, schemas, fhirOp);
             }
@@ -1089,7 +1098,7 @@ public partial class ModelBuilder
 
 
         // handle system-level operations
-        foreach (OperationDefinition fhirOp in GetSystemFhirOperations(OperationDefinition.OperationKind.Operation))
+        foreach (OperationDefinition fhirOp in GetSystemFhirOperations(OperationDefinition.OperationKind.Operation).OrderBy(op => op.Id))
         {
             BuildSystemOperationOasPaths(paths, schemas, fhirOp);
         }
@@ -1119,15 +1128,15 @@ public partial class ModelBuilder
         if (((fhirOp.Instance == true) || (fhirOp.Type == true)) &&
             (fhirOp.Resource?.Any() ?? false))
         {
-            foreach (string? resourceName in fhirOp.Resource.Select(r => r.GetLiteral()))
+            foreach (string? resourceName in fhirOp.Resource.Select(r => r.GetLiteral()).Order())
             {
                 if (string.IsNullOrEmpty(resourceName) ||
-                    !resources.ContainsKey(resourceName))
+                    !resources.ContainsKey(resourceName!))
                 {
                     continue;
                 }
 
-                StructureDefinition resource = resources[resourceName];
+                StructureDefinition resource = resources[resourceName!];
 
                 BuildResourceOperationOasPaths(
                     paths,
@@ -1377,7 +1386,7 @@ public partial class ModelBuilder
 
         HashSet<string> inResourceParamNames = [];
 
-        foreach (OperationDefinition.ParameterComponent p in fhirOp.Parameter)
+        foreach (OperationDefinition.ParameterComponent p in fhirOp.Parameter.OrderBy(pc => pc.Name))
         {
             switch (p.Use)
             {
@@ -1401,7 +1410,7 @@ public partial class ModelBuilder
         bool canSkipInputResource = (opLevel == OaOpLevelCodes.Instance) && (inResourceParamNames.Count() == 1);
 
         // search for input parameters
-        foreach (OperationDefinition.ParameterComponent fhirParam in inParams)
+        foreach (OperationDefinition.ParameterComponent fhirParam in inParams.OrderBy(pc => pc.Name))
         {
             _totalParamInstances++;
 
@@ -1560,7 +1569,7 @@ public partial class ModelBuilder
 
         int complexInParamCount = 0;
 
-        foreach (OperationDefinition.ParameterComponent p in fhirOp.Parameter)
+        foreach (OperationDefinition.ParameterComponent p in fhirOp.Parameter.OrderBy(pc => pc.Name))
         {
             switch (p.Use)
             {
@@ -1608,7 +1617,7 @@ public partial class ModelBuilder
                     : null,
             };
 
-            foreach (OperationDefinition.ParameterComponent fhirParam in simpleInParams)
+            foreach (OperationDefinition.ParameterComponent fhirParam in simpleInParams.OrderBy(pc => pc.Name))
             {
                 // skip duplicates
                 if (usedParams.Contains(fhirParam.Name))
@@ -1657,7 +1666,7 @@ public partial class ModelBuilder
     /// <param name="pathItem">The path item.</param>
     private void AddCommonHttpParameters(OpenApiPathItem pathItem)
     {
-        foreach (string code in _options.HttpCommonParamsHash)
+        foreach (string code in _options.HttpCommonParamsHash.Order())
         {
             pathItem.Parameters.Add(BuildReferencedParameter(code));
             _totalParamInstances++;
@@ -1712,7 +1721,7 @@ public partial class ModelBuilder
 
         HashSet<string> usedParams = new();
 
-        foreach (string code in _options.HttpReadHash)
+        foreach (string code in _options.HttpReadHash.Order())
         {
             if (usedParams.Contains(code))
             {
@@ -1731,7 +1740,7 @@ public partial class ModelBuilder
 
         if (_options.ExportSearchParams)
         {
-            foreach (string code in _options.SearchCommonHash)
+            foreach (string code in _options.SearchCommonHash.Order())
             {
                 if (usedParams.Contains(code))
                 {
@@ -1748,7 +1757,7 @@ public partial class ModelBuilder
                 usedParams.Add(code);
             }
 
-            foreach (string code in _options.SearchResultHash)
+            foreach (string code in _options.SearchResultHash.Order())
             {
                 if (usedParams.Contains(code))
                 {
@@ -1767,7 +1776,7 @@ public partial class ModelBuilder
 
             if (_caps?.Rest.Any(rest => rest.SearchParam.Count != 0) ?? false)
             {
-                foreach (CapabilityStatement.SearchParamComponent capParam in _caps.Rest.SelectMany(rest => rest.SearchParam))
+                foreach (CapabilityStatement.SearchParamComponent capParam in _caps.Rest.SelectMany(rest => rest.SearchParam).OrderBy(spc => spc.Name))
                 {
                     if (usedParams.Contains(capParam.Name))
                     {
@@ -1881,7 +1890,7 @@ public partial class ModelBuilder
 
         HashSet<string> usedParams = new();
 
-        foreach (string code in _options.HttpReadHash)
+        foreach (string code in _options.HttpReadHash.Order())
         {
             if (usedParams.Contains(code))
             {
@@ -1900,7 +1909,7 @@ public partial class ModelBuilder
 
         if (_options.ExportSearchParams)
         {
-            foreach (string code in _options.SearchCommonHash)
+            foreach (string code in _options.SearchCommonHash.Order())
             {
                 if (usedParams.Contains(code))
                 {
@@ -1917,7 +1926,7 @@ public partial class ModelBuilder
                 usedParams.Add(code);
             }
 
-            foreach (string code in _options.SearchResultHash)
+            foreach (string code in _options.SearchResultHash.Order())
             {
                 if (usedParams.Contains(code))
                 {
@@ -1934,7 +1943,7 @@ public partial class ModelBuilder
                 usedParams.Add(code);
             }
 
-            foreach (SearchParameter fhirSp in GetResourceSearchParameters(resource.Name))
+            foreach (SearchParameter fhirSp in GetResourceSearchParameters(resource.Name).OrderBy(sp => sp.Code + sp.Name))
             {
                 if (usedParams.Contains(fhirSp.Code))
                 {
@@ -1985,7 +1994,7 @@ public partial class ModelBuilder
 
         HashSet<string> usedParams = new();
 
-        foreach (string code in _options.HttpReadHash)
+        foreach (string code in _options.HttpReadHash.Order())
         {
             _totalParamInstances++;
 
@@ -2001,7 +2010,7 @@ public partial class ModelBuilder
 
         if (_options.ExportSearchParams)
         {
-            foreach (string code in _options.SearchCommonHash)
+            foreach (string code in _options.SearchCommonHash.Order())
             {
                 _totalParamInstances++;
 
@@ -2015,7 +2024,7 @@ public partial class ModelBuilder
                 _totalQueryParameters++;
             }
 
-            foreach (string code in _options.SearchResultHash)
+            foreach (string code in _options.SearchResultHash.Order())
             {
                 _totalParamInstances++;
 
@@ -2031,7 +2040,7 @@ public partial class ModelBuilder
 
             if (_caps?.Rest.Any(rest => rest.SearchParam.Count != 0) ?? false)
             {
-                foreach (CapabilityStatement.SearchParamComponent capParam in _caps.Rest.SelectMany(rest => rest.SearchParam))
+                foreach (CapabilityStatement.SearchParamComponent capParam in _caps.Rest.SelectMany(rest => rest.SearchParam).OrderBy(spc => spc.Name))
                 {
                     _totalParamInstances++;
 
@@ -2082,7 +2091,7 @@ public partial class ModelBuilder
 
         HashSet<string> usedParams = new();
 
-        foreach (string code in _options.HttpReadHash)
+        foreach (string code in _options.HttpReadHash.Order())
         {
             _totalParamInstances++;
 
@@ -2098,7 +2107,7 @@ public partial class ModelBuilder
 
         if (_options.ExportSearchParams)
         {
-            foreach (string code in _options.SearchCommonHash)
+            foreach (string code in _options.SearchCommonHash.Order())
             {
                 _totalParamInstances++;
 
@@ -2112,7 +2121,7 @@ public partial class ModelBuilder
                 _totalQueryParameters++;
             }
 
-            foreach (string code in _options.SearchResultHash)
+            foreach (string code in _options.SearchResultHash.Order())
             {
                 _totalParamInstances++;
 
@@ -2126,7 +2135,7 @@ public partial class ModelBuilder
                 _totalQueryParameters++;
             }
 
-            foreach (SearchParameter fhirSp in GetResourceSearchParameters(resource.Name))
+            foreach (SearchParameter fhirSp in GetResourceSearchParameters(resource.Name).OrderBy(sp => sp.Code + sp.Name))
             {
                 _totalParamInstances++;
 
@@ -2273,13 +2282,13 @@ public partial class ModelBuilder
             }
         }
 
-        foreach (string code in _options.HttpReadHash)
+        foreach (string code in _options.HttpReadHash.Order())
         {
             oasOp.Parameters.Add(BuildReferencedParameter(code));
             _totalParamInstances++;
         }
 
-        foreach (string code in _options.HistoryHash)
+        foreach (string code in _options.HistoryHash.Order())
         {
             oasOp.Parameters.Add(BuildReferencedParameter(code));
             _totalParamInstances++;
@@ -2340,13 +2349,13 @@ public partial class ModelBuilder
             }
         }
 
-        foreach (string code in _options.HttpReadHash)
+        foreach (string code in _options.HttpReadHash.Order())
         {
             oasOp.Parameters.Add(BuildReferencedParameter(code));
             _totalParamInstances++;
         }
 
-        foreach (string code in _options.HistoryHash)
+        foreach (string code in _options.HistoryHash.Order())
         {
             oasOp.Parameters.Add(BuildReferencedParameter(code));
             _totalParamInstances++;
@@ -2401,7 +2410,7 @@ public partial class ModelBuilder
         {
             HashSet<string> usedParams = new();
 
-            foreach (string code in _options.SearchCommonHash)
+            foreach (string code in _options.SearchCommonHash.Order())
             {
                 _totalParamInstances++;
 
@@ -2415,7 +2424,7 @@ public partial class ModelBuilder
                 _totalQueryParameters++;
             }
 
-            foreach (SearchParameter fhirSp in GetResourceSearchParameters(resource.Name))
+            foreach (SearchParameter fhirSp in GetResourceSearchParameters(resource.Name).OrderBy(sp => sp.Code + sp.Name))
             {
                 if (usedParams.Contains(fhirSp.Code))
                 {
@@ -2571,7 +2580,7 @@ public partial class ModelBuilder
             {
                 HashSet<string> usedParams = new();
 
-                foreach (string code in _options.SearchCommonHash)
+                foreach (string code in _options.SearchCommonHash.Order())
                 {
                     _totalParamInstances++;
 
@@ -2585,7 +2594,7 @@ public partial class ModelBuilder
                     _totalQueryParameters++;
                 }
 
-                foreach (SearchParameter fhirSp in GetResourceSearchParameters(resource.Name))
+                foreach (SearchParameter fhirSp in GetResourceSearchParameters(resource.Name).OrderBy(sp => sp.Code + sp.Name))
                 {
                     _totalParamInstances++;
 
@@ -2653,7 +2662,7 @@ public partial class ModelBuilder
         // vread includes PathComponentVersionId segment
         oasOp.Parameters.Add(BuildReferencedParameter(PathComponentVersionId));
 
-        foreach (string code in _options.HttpReadHash)
+        foreach (string code in _options.HttpReadHash.Order())
         {
             oasOp.Parameters.Add(BuildReferencedParameter(code));
         }
@@ -2713,7 +2722,7 @@ public partial class ModelBuilder
         // read includes PathComponentLogicalId segment
         oasOp.Parameters.Add(BuildReferencedParameter(PathComponentLogicalId));
 
-        foreach (string code in _options.HttpReadHash)
+        foreach (string code in _options.HttpReadHash.Order())
         {
             oasOp.Parameters.Add(BuildReferencedParameter(code));
         }
@@ -2766,7 +2775,7 @@ public partial class ModelBuilder
 
         void emitResponse(IEnumerable<int> responseCodes, string resourceName, Dictionary<string, OpenApiSchema> schemas, OpenApiResponses r)
         {
-            foreach (int code in responseCodes)
+            foreach (int code in responseCodes.Order())
             {
                 bool isErrorResponse = code >= 400;
 
@@ -2806,7 +2815,7 @@ public partial class ModelBuilder
     {
         List<OaExpandedInteractionCodes> interactions = [];
 
-        foreach (CapabilityStatement.TypeRestfulInteraction? ri in rComp.Interaction.Select(i => i.Code))
+        foreach (CapabilityStatement.TypeRestfulInteraction? ri in rComp.Interaction.Select(i => i.Code).Order())
         {
             if (ri == null)
             {
@@ -2911,7 +2920,7 @@ public partial class ModelBuilder
 
         if (_capResources.TryGetValue(resourceName, out CapabilityStatement.ResourceComponent? rComp))
         {
-            capabilityInteractions = InteractionsFor(rComp).ToHashSet();
+            capabilityInteractions = new(InteractionsFor(rComp));
         }
         else
         {
@@ -2950,7 +2959,7 @@ public partial class ModelBuilder
         }
 
         // we need to get parent resources to find operations that are defined on (e.g.) Resource
-        HashSet<string> resourceAndParents = _dc.GetResourceParents(resourceName).ToHashSet();
+        HashSet<string> resourceAndParents = new(_dc.GetResourceParents(resourceName));
 
         if (!resourceAndParents.Any())
         {
@@ -2969,7 +2978,7 @@ public partial class ModelBuilder
             }
 
             // iterate over the operations listed in this resource
-            foreach (CapabilityStatement.OperationComponent capOp in rComp.Operation)
+            foreach (CapabilityStatement.OperationComponent capOp in rComp.Operation.OrderBy(op => op.Name))
             {
                 // we cannot do anything with an operation that does not have a definition
                 if (string.IsNullOrEmpty(capOp.Definition))
@@ -3007,7 +3016,7 @@ public partial class ModelBuilder
             }
 
             // some servers just shove all operations into system-level reporting
-            foreach (CapabilityStatement.OperationComponent capOp in _caps.Rest.SelectMany(rest => rest.Operation))
+            foreach (CapabilityStatement.OperationComponent capOp in _caps.Rest.SelectMany(rest => rest.Operation).OrderBy(op => op.Name))
             {
                 // we cannot do anything with an operation that does not have a definition
                 if (string.IsNullOrEmpty(capOp.Definition))
@@ -3054,7 +3063,7 @@ public partial class ModelBuilder
         }
 
         // if there is no capability statement, just check everything in the package
-        foreach (OperationDefinition fhirOp in _dc.OperationsByUrl.Values)
+        foreach (OperationDefinition fhirOp in _dc.OperationsByUrl.Values.OrderBy(op => op.Id))
         {
             if (used.Contains(fhirOp.Name))
             {
@@ -3122,7 +3131,7 @@ public partial class ModelBuilder
                 ? new Uri("http://fhir-codegen-local/SearchParameter")
                 : new Uri(_caps.Url);
 
-            foreach (CapabilityStatement.SearchParamComponent capSp in capResource.SearchParam)
+            foreach (CapabilityStatement.SearchParamComponent capSp in capResource.SearchParam.OrderBy(spc => spc.Name))
             {
                 if (used.Contains(capSp.Name))
                 {
@@ -3145,7 +3154,7 @@ public partial class ModelBuilder
                 //string fixedDoc = string.IsNullOrEmpty(doc) ? string.Empty : Regex.Replace(doc, pattern, "$1(http://hl7.org/fhir/$2)");    // prefix those links with HL7 FHIR spec base
                 string fixedDoc = string.IsNullOrEmpty(capSp.Documentation)
                     ? string.Empty :
-                    MarkdownLinkRegex().Replace(capSp.Documentation, "$1(http://hl7.org/fhir/$2)");    // prefix those links with HL7 FHIR spec base
+                    _markdownLinkRegex.Replace(capSp.Documentation, "$1(http://hl7.org/fhir/$2)");    // prefix those links with HL7 FHIR spec base
 
                 // create a 'local' canonical for referencing
                 searchParameters.Add(new SearchParameter()
@@ -3165,7 +3174,7 @@ public partial class ModelBuilder
             }
 
             // check for 'query' operations
-            foreach (CapabilityStatement.OperationComponent capOp in capResource.Operation)
+            foreach (CapabilityStatement.OperationComponent capOp in capResource.Operation.OrderBy(opc => opc.Name))
             {
                 // we cannot do anything with an operation that does not have a definition
                 if (string.IsNullOrEmpty(capOp.Definition))
@@ -3211,7 +3220,7 @@ public partial class ModelBuilder
         searchParameters.AddRange(_dc.SearchParametersForBase(resourceName).Values);
 
         // traverse type operations for this resource type
-        foreach (OperationDefinition fhirOp in _dc.TypeOperationsForResource(resourceName).Values)
+        foreach (OperationDefinition fhirOp in _dc.TypeOperationsForResource(resourceName).Values.OrderBy(op => op.Id))
         {
             // we only care about query operations
             if (fhirOp.Kind != OperationDefinition.OperationKind.Query)
@@ -3221,7 +3230,7 @@ public partial class ModelBuilder
 
             Uri uriBase = string.IsNullOrEmpty(_caps?.Url)
                 ? new Uri("http://fhir-codegen-local/SearchParameter")
-                : new Uri(_caps.Url);
+                : new Uri(_caps!.Url);
 
             // if we have any query operations, make sure _query is added to this resource
             if (!used.Contains("_query"))
@@ -3239,7 +3248,7 @@ public partial class ModelBuilder
         }
 
         // traverse instance operations for this resource type
-        foreach (OperationDefinition fhirOp in _dc.TypeOperationsForResource(resourceName).Values)
+        foreach (OperationDefinition fhirOp in _dc.TypeOperationsForResource(resourceName).Values.OrderBy(op => op.Id))
         {
             // we only care about query operations
             if (fhirOp.Kind != OperationDefinition.OperationKind.Query)
@@ -3249,7 +3258,7 @@ public partial class ModelBuilder
 
             Uri uriBase = string.IsNullOrEmpty(_caps?.Url)
                 ? new Uri("http://fhir-codegen-local/SearchParameter")
-                : new Uri(_caps.Url);
+                : new Uri(_caps!.Url);
 
             // if we have any query operations, make sure _query is added to this resource
             if (!used.Contains("_query"))
@@ -3282,7 +3291,7 @@ public partial class ModelBuilder
         Uri fhirOpUri = string.IsNullOrEmpty(fhirOp.Url) ? new Uri(uriBase, fhirOp.Name) : new Uri(fhirOp.Url);
 
         // traverse the operation parameters to add as search parameters
-        foreach (OperationDefinition.ParameterComponent opParam in fhirOp.Parameter)
+        foreach (OperationDefinition.ParameterComponent opParam in fhirOp.Parameter.OrderBy(opc => opc.Name))
         {
             // we only care about input parameters
             if (opParam.Use != OperationParameterUse.In)
@@ -3332,7 +3341,7 @@ public partial class ModelBuilder
 
         if (_caps != null)
         {
-            foreach (CapabilityStatement.OperationComponent capOp in _caps.Rest.SelectMany(rest => rest.Operation))
+            foreach (CapabilityStatement.OperationComponent capOp in _caps.Rest.SelectMany(rest => rest.Operation).OrderBy(opc => opc.Name))
             {
                 if (!_dc.TryResolveByCanonicalUri(capOp.Definition, out Resource? resolvedResource) ||
                     (resolvedResource is not OperationDefinition fhirOp))
@@ -3358,7 +3367,7 @@ public partial class ModelBuilder
         }
 
         // if there are no capabilities, just check everything in the package
-        foreach (OperationDefinition fhirOp in _dc.OperationsByUrl.Values)
+        foreach (OperationDefinition fhirOp in _dc.OperationsByUrl.Values.OrderBy(op => op.Id))
         {
             if (fhirOp.System != true)
             {
@@ -3582,11 +3591,11 @@ public partial class ModelBuilder
 
         if (!string.IsNullOrEmpty(_caps.Implementation?.Description))
         {
-            description = SanitizeDescription(_caps.Implementation.Description);
+            description = SanitizeDescription(_caps.Implementation!.Description);
         }
         else if (!string.IsNullOrEmpty(_caps.Software?.Name))
         {
-            description = SanitizeDescription(_caps.Software.Name);
+            description = SanitizeDescription(_caps.Software!.Name);
         }
         else
         {
@@ -3616,11 +3625,11 @@ public partial class ModelBuilder
         }
         else if (!string.IsNullOrEmpty(_caps?.Title))
         {
-            title = _caps.Title;
+            title = _caps!.Title;
         }
         else if (!string.IsNullOrEmpty(_caps?.Software.Name))
         {
-            title = _caps.Software.Name;
+            title = _caps!.Software.Name;
         }
         else
         {
@@ -3635,7 +3644,7 @@ public partial class ModelBuilder
         }
         else if (!string.IsNullOrEmpty(_caps?.Software.Version))
         {
-            version = _caps.Software.Version;
+            version = _caps!.Software.Version;
         }
         else if (_caps?.FhirVersion != null)
         {
@@ -3679,7 +3688,7 @@ public partial class ModelBuilder
 
             case OaSchemaLevelCodes.Names:
                 {
-                    foreach (StructureDefinition sd in GetFilteredResources(true))
+                    foreach (StructureDefinition sd in GetFilteredResources(true).OrderBy(sd => sd.Id))
                     {
                         string name = BuildTypeName(sd.Name);
 
@@ -3749,7 +3758,7 @@ public partial class ModelBuilder
 
             case OaSchemaStyleCodes.Inline:
                 {
-                    foreach (StructureDefinition sd in GetFilteredResources(true))
+                    foreach (StructureDefinition sd in GetFilteredResources(true).OrderBy(sd => sd.Id))
                     {
                         string name = BuildTypeName(sd.Name);
 
@@ -3951,7 +3960,7 @@ public partial class ModelBuilder
             }
             else
             {
-                foreach (ElementDefinition.TypeRefComponent et in ets.Values)
+                foreach (ElementDefinition.TypeRefComponent et in ets.Values.OrderBy(trc => trc.TypeName))
                 {
                     OpenApiSchema subSchema = new OpenApiSchema()
                     {
@@ -4281,7 +4290,7 @@ public partial class ModelBuilder
             return _options.PerformDescriptionValidation ? "N/A." : string.Empty;
         }
 
-        value = MarkdownLinkRegex().Replace(value, "$1(http://hl7.org/fhir/$2)");    // prefix those links with HL7 FHIR spec base
+        value = _markdownLinkRegex.Replace(value, "$1(http://hl7.org/fhir/$2)");    // prefix those links with HL7 FHIR spec base
 
         if (!_options.PerformDescriptionValidation)
         {

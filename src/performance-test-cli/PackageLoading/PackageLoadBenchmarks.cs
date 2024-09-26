@@ -4,12 +4,12 @@
 // </copyright>
 
 
+using System.Text.Json.Nodes;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Configs;
 using Microsoft.Health.Fhir.CodeGen.Loader;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
-using Microsoft.Health.Fhir.PackageManager;
 
 namespace performance_test_cli.PackageLoading;
 
@@ -21,7 +21,8 @@ namespace performance_test_cli.PackageLoading;
 [MemoryDiagnoser]
 public class PackageLoadBenchmarks
 {
-    private IFhirPackageClient _cache;
+    public readonly string? CachePath = null;
+
     private PackageLoader _loader = null!;
 
     /// <summary>
@@ -29,30 +30,21 @@ public class PackageLoadBenchmarks
     /// </summary>
     public PackageLoadBenchmarks()
     {
-        _cache = FhirCache.Create(new FhirPackageClientSettings()
-        {
-            CachePath = "~/.fhir",
-        });
     }
 
     /// <summary>
     /// Gets all test directives.
     /// </summary>
     public static IEnumerable<IEnumerable<string>> AllTestDirectives => new List<string[]>()
-        {
-            new string[] { "hl7.fhir.r5.core#5.0.0", "hl7.fhir.r5.expansions#5.0.0", "hl7.fhir.uv.extensions#1.0.0" },
-        };
+    {
+        new string[] { "hl7.fhir.r5.core#5.0.0", "hl7.fhir.r5.expansions#5.0.0", "hl7.fhir.uv.extensions#1.0.0" },
+    };
 
     /// <summary>
     /// Gets or sets the test directives.
     /// </summary>
     [ParamsSource(nameof(AllTestDirectives))]
-    public IEnumerable<string> TestDirectives { get; set; } = [];
-
-    /// <summary>
-    /// Gets or sets the test entries.
-    /// </summary>
-    public PackageCacheEntry[] TestEntries { get; set; } = [];
+    public string[] TestDirectives { get; set; } = [];
 
     /// <summary>
     /// Loads the packages with POCO deserialization model.
@@ -67,12 +59,12 @@ public class PackageLoadBenchmarks
             throw new Exception("Loader not initialized");
         }
 
-        if (TestEntries.Length == 0)
+        if (TestDirectives.Length == 0)
         {
             throw new Exception("No test entries");
         }
 
-        DefinitionCollection? loaded = _loader.LoadPackages(TestEntries[0].Name, TestEntries).Result;
+        DefinitionCollection? loaded = _loader.LoadPackages(TestDirectives).Result;
 
         return loaded;
     }
@@ -90,12 +82,12 @@ public class PackageLoadBenchmarks
             throw new Exception("Loader not initialized");
         }
 
-        if (TestEntries.Length == 0)
+        if (TestDirectives.Length == 0)
         {
             throw new Exception("No test entries");
         }
 
-        DefinitionCollection? loaded = _loader.LoadPackages(TestEntries[0].Name, TestEntries).Result;
+        DefinitionCollection? loaded = _loader.LoadPackages(TestDirectives).Result;
 
         return loaded;
     }
@@ -106,18 +98,18 @@ public class PackageLoadBenchmarks
     /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>
     public void CommonSetup()
     {
-        // traverse the directives for this run and ensure the packages are downloaded and available
-        foreach (string directive in TestDirectives)
-        {
-            PackageCacheEntry? p = _cache.FindOrDownloadPackageByDirective(directive, false).Result;
+        //// traverse the directives for this run and ensure the packages are downloaded and available
+        //foreach (string directive in TestDirectives)
+        //{
+        //    PackageCacheEntry? p = _cache.FindOrDownloadPackageByDirective(directive, false).Result;
 
-            if (p == null)
-            {
-                throw new Exception($"Failed to load {directive}");
-            }
+        //    if (p == null)
+        //    {
+        //        throw new Exception($"Failed to load {directive}");
+        //    }
 
-            TestEntries = [.. TestEntries, (PackageCacheEntry)p];
-        }
+        //    TestEntries = [.. TestEntries, (PackageCacheEntry)p];
+        //}
     }
 
     /// <summary>
@@ -128,10 +120,7 @@ public class PackageLoadBenchmarks
     {
         CommonSetup();
 
-        _loader = new(_cache, new()
-        {
-            JsonModel = LoaderOptions.JsonDeserializationModel.Poco,
-        });
+        _loader = new(new() { FhirCacheDirectory = CachePath }, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Poco });
     }
 
     /// <summary>
@@ -142,10 +131,7 @@ public class PackageLoadBenchmarks
     {
         CommonSetup();
 
-        _loader = new(_cache, new()
-        {
-            JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
-        });
+        _loader = new(new() { FhirCacheDirectory = CachePath }, new() { JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson });
     }
 
     /// <summary>

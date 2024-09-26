@@ -5,7 +5,7 @@
 
 
 using Hl7.Fhir.Model;
-using Microsoft.Health.Fhir.CodeGen.Utils;
+using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 
 namespace Microsoft.Health.Fhir.CodeGen.FhirExtensions;
@@ -44,8 +44,95 @@ public static class ElementDefTypeExtensions
         }
         else
         {
-            return tr.Code.Substring(lastSlash + 1);
+            return tr.Code[(lastSlash + 1)..];
         }
+    }
+
+    public static ElementDefinition.TypeRefComponent cgAsR5(this ElementDefinition.TypeRefComponent tr)
+    {
+        // check for already having a primitive type
+        if (!tr.Code.Contains('.'))
+        {
+            return tr;
+        }
+
+        string typeExt = tr.GetExtensionValue<FhirUrl>(CommonDefinitions.ExtUrlFhirType)?.ToString()
+            ?? tr.GetExtensionValue<FhirString>(CommonDefinitions.ExtUrlFhirType)?.ToString()
+            ?? string.Empty;
+
+        string typeKey = tr.Code + "#" + typeExt;
+
+        switch (typeKey)
+        {
+            // R4 Element.id
+            // R4 Resource.id
+            // R5 Element.id
+            case "http://hl7.org/fhirpath/System.String#string":
+            // R4B Element.id
+            // R4B Resource.id
+            // R5 Resource.id
+            case "http://hl7.org/fhirpath/System.String#id":
+                return BuildType("id");
+
+            // R4 Extension.url
+            // R4B Extension.url
+            // R5 Extension.url
+            case "http://hl7.org/fhirpath/System.String#uri":
+                return BuildType("uri");
+        }
+
+        return tr;
+
+        ElementDefinition.TypeRefComponent BuildType(string fhirType) => new ElementDefinition.TypeRefComponent()
+        {
+            Code = "http://hl7.org/fhirpath/System.String",
+            Extension = [new Extension
+                {
+                    Url = CommonDefinitions.ExtUrlFhirType,
+                    Value = new FhirUrl(fhirType),
+                }],
+        };
+    }
+
+    public static ElementDefinition.TypeRefComponent cgExtCompatible(this ElementDefinition.TypeRefComponent tr)
+    {
+        // check for already having a primitive type
+        if (!tr.Code.Contains('.'))
+        {
+            return tr;
+        }
+
+        string typeExt = tr.GetExtensionValue<FhirUrl>(CommonDefinitions.ExtUrlFhirType)?.ToString()
+            ?? tr.GetExtensionValue<FhirString>(CommonDefinitions.ExtUrlFhirType)?.ToString()
+            ?? string.Empty;
+
+        string typeKey = tr.Code + "#" + typeExt;
+
+        switch (typeKey)
+        {
+            // R4 Element.id
+            // R4 Resource.id
+            // R5 Element.id
+            case "http://hl7.org/fhirpath/System.String#string":
+            // R4B Element.id
+            // R4B Resource.id
+            // R5 Resource.id
+            case "http://hl7.org/fhirpath/System.String#id":
+                return BuildType("id");
+
+            // R4 Extension.url
+            // R4B Extension.url
+            // R5 Extension.url
+            case "http://hl7.org/fhirpath/System.String#uri":
+                return BuildType("uri");
+        }
+
+        return tr;
+
+        ElementDefinition.TypeRefComponent BuildType(string fhirType) => new ElementDefinition.TypeRefComponent()
+        {
+            Code = fhirType,
+        };
     }
 
     /// <summary>Gets the validation regex specific to this type.</summary>
@@ -113,13 +200,17 @@ public static class ElementDefTypeExtensions
         }
 
         // need to change "FiveWs.subject[x]" to "FiveWs.subject", but beware of duplicates
+#if NET8_0_OR_GREATER
         HashSet<string> hash = [.. source.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)];
+#else
+        HashSet<string> hash = [.. source.Split(',').Where(v => !string.IsNullOrEmpty(v)).Select(v => v.Trim())];
+#endif
         if (hash.Contains("FiveWs.subject[x]"))
         {
             hash.Remove("FiveWs.subject[x]");
             hash.Add("FiveWs.subject");
         }
 
-        return string.Join(',', hash);
+        return string.Join(",", hash);
     }
 }

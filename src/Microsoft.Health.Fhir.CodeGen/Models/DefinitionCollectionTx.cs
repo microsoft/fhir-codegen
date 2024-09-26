@@ -11,6 +11,10 @@ using Hl7.Fhir.Specification.Source;
 using Hl7.Fhir.Specification.Terminology;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 
+#if NETSTANDARD2_0
+using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
+#endif
+
 namespace Microsoft.Health.Fhir.CodeGen.Models;
 
 public partial class DefinitionCollection : IAsyncResourceResolver
@@ -120,6 +124,33 @@ public partial class DefinitionCollection : IAsyncResourceResolver
 
         canonical = null;
         return false;
+    }
+
+    public string? GetCanonicalVersion(string uri)
+    {
+        if (uri.Contains('|'))
+        {
+            return uri.Substring(uri.LastIndexOf('|') + 1);
+        }
+
+        string key;
+
+        key = uri;
+
+        if (_canonicalResources.TryGetValue(key, out Dictionary<string, IConformanceResource>? versions) &&
+            (versions != null) &&
+            versions.Count != 0)
+        {
+            return versions.Keys.OrderDescending().First();
+        }
+
+        if ((_allResources.TryGetValue(uri, out Resource? r) || _allResources.TryGetValue(key, out r)) &&
+            (r is IVersionableConformanceResource vcr))
+        {
+            return vcr.Version;
+        }
+
+        return null;
     }
 
     /// <summary>Determine if we can resolve canonical URI.</summary>

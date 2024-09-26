@@ -55,6 +55,7 @@ public class FhirMappingLanguage
 
     public bool TryParse(string fml, [NotNullWhen(true)] out FhirStructureMap? map)
     {
+        List<FmlParseIssue> issues = new ();
         try
         {
             AntlrInputStream inputStream = new AntlrInputStream(fml);
@@ -161,14 +162,16 @@ public class FhirMappingLanguage
             CommonTokenStream commonTokenStream = new(fmlLexer, 0);
 
             FmlMappingParser fmlParser = new FmlMappingParser(commonTokenStream);
-
+            var errorReporter = new FmlParserErrorListener(issues);
+            fmlParser.AddErrorListener(errorReporter);
             FmlMappingParser.StructureMapContext structureMapContext = fmlParser.structureMap();
 
             FmlParseVisitor visitor = new(comments);
             visitor.Visit(structureMapContext);
 
             map = visitor.GetCurrentMap();
-
+            if (map != null && issues.Any())
+                return false;
             return map != null;
         }
         catch (Exception ex)
@@ -178,5 +181,35 @@ public class FhirMappingLanguage
 
         map = null;
         return false;
+    }
+}
+
+public record FmlParseIssue
+{
+    public required int Line { get; init; }
+    public required int CharPositionInLine { get; init; }
+    public required string Message {  get; init; }
+    public IToken? offendingSymbol { get; init; }
+}
+
+public class FmlParserErrorListener : IAntlrErrorListener<IToken>
+{
+    public FmlParserErrorListener(List<FmlParseIssue> issues)
+    {
+        _issues = issues;
+    }
+
+    private readonly List<FmlParseIssue> _issues;
+
+    public void SyntaxError(TextWriter output, IRecognizer recognizer, IToken offendingSymbol, int line, int charPositionInLine, string msg, RecognitionException e)
+    {
+        _issues.Add(new FmlParseIssue()
+        {
+            Line = line,
+            CharPositionInLine = charPositionInLine,
+            Message = msg,
+        });
+        Console.WriteLine($"Error: {msg} @{line}:{charPositionInLine}");
+        System.Diagnostics.Trace.WriteLine($"Error: {msg} @{line}:{charPositionInLine}");
     }
 }

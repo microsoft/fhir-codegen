@@ -374,12 +374,16 @@ public record class GroupParameter : FmlNode
     public required Hl7.Fhir.Model.StructureMap.StructureMapInputMode? InputMode { get; init; }
     public required string Identifier { get; init; }
     public required string? TypeIdentifier { get; init; }
+
+    // reference to the ElementDefinition (set once StructureDefinitions are resolved)
+    public Hl7.Fhir.Specification.Navigation.ElementDefinitionNavigator? ParameterElementDefinition { get; set; }
 }
 
 public record class MapSimpleCopyExpression : FmlNode
 {
     public required string Source { get; init; }
     public required string Target { get; init; }
+    public required string? Name { get; init; }
 }
 
 public record class FmlExpressionSource : FmlNode
@@ -391,6 +395,7 @@ public record class FmlExpressionSource : FmlNode
     //public required int? CardinalityMaxInt { get; init; }
     //public required string? CardinalityMax { get; init; }
     public required FpExpression? DefaultExpression { get; init; }
+    public required string? DefaultValue { get; init; }
     public required string? ListModeLiteral { get; init; }
     public required Hl7.Fhir.Model.StructureMap.StructureMapSourceListMode? ListMode { get; init; }
     public required string? Alias { get; init; }
@@ -403,6 +408,9 @@ public record class FmlInvocationParam : FmlNode
 {
     public required LiteralValue? Literal { get; init; }
     public required string? Identifier { get; init; }
+
+    // reference to the ElementDefinition (set once StructureDefinitions are resolved)
+    public Hl7.Fhir.Specification.Navigation.ElementDefinitionNavigator? ParameterElementDefinition { get; set; }
 }
 
 public record class FmlInvocation : FmlNode

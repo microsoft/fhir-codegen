@@ -1,19 +1,31 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\fhir-codegen.props" />
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Hl7.Fhir.R5" Version="5.8.1" />
+    <Compile Include="..\Microsoft.Health.Fhir.CodeGenCommon\Polyfill\CodeGenCommonPolyfill.cs" Link="Polyfill\CodeGenCommonPolyfill.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Hl7.Fhir.R5" Version="5.10.2" />
     <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="PolySharp" Version="1.14.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="System.Text.Json" Version="8.0.4" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Convert_43_50\" />
     <Folder Include="Convert_30_50\" />
+    <Folder Include="Polyfill\" />
   </ItemGroup>
 
   <ItemGroup>

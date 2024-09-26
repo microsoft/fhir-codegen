@@ -120,7 +120,7 @@ public static class ValueSetExtensions
             yield break;
         }
 
-        foreach (FhirConcept fc in RecurseContains(vs.Expansion.Contains))
+        foreach (FhirConcept fc in RecurseContains(dc, vs, vs.Expansion.Contains))
         {
             yield return fc;
         }
@@ -132,15 +132,18 @@ public static class ValueSetExtensions
         /// </summary>
         /// <param name="cc">The ContainsComponent to act on.</param>
         /// <returns>An enumerable of FhirConcept representing the concepts.</returns>
-        IEnumerable<FhirConcept> RecurseContains(IEnumerable<ValueSet.ContainsComponent> cc)
+        IEnumerable<FhirConcept> RecurseContains(DefinitionCollection dc, ValueSet vs, IEnumerable<ValueSet.ContainsComponent> cc)
         {
             foreach (ValueSet.ContainsComponent c in cc)
             {
                 if (!string.IsNullOrEmpty(c.Code))
                 {
+                    // TODO(ginoc): pulling the version from the VS is not correct, but it works in the cases we are concerned about right now
+
                     yield return new FhirConcept
                     {
                         System = c.System,
+                        Version = c.Version ?? dc.GetCanonicalVersion(c.System) ?? vs.Version,
                         Code = c.Code,
                         Display = c.Display,
                         Definition = dc.ConceptDefinition(c.System, c.Code, c.Display),
@@ -152,7 +155,7 @@ public static class ValueSetExtensions
 
                 if (c.Contains.Count != 0)
                 {
-                    foreach (FhirConcept fc in RecurseContains(c.Contains))
+                    foreach (FhirConcept fc in RecurseContains(dc, vs, c.Contains))
                     {
                         yield return fc;
                     }

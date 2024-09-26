@@ -14,7 +14,11 @@ public static class FhirNameConventionExtensions
     private static readonly char[] _wordDelimiters = [' ', '.', '_', '-'];
 
     /// <summary>(Immutable) Options for controlling the word split.</summary>
+#if NETSTANDARD2_0
+    private static readonly StringSplitOptions _wordSplitOptions = StringSplitOptions.RemoveEmptyEntries;
+#else
     private static readonly StringSplitOptions _wordSplitOptions = StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries;
+#endif
 
     /// <summary>Values that represent naming conventions for item types.</summary>
     public enum NamingConvention
@@ -70,7 +74,11 @@ public static class FhirNameConventionExtensions
     /// <param name="removeDelimiters">(Optional) True to remove delimiters.</param>
     /// <param name="joinDelimiter">   (Optional) The word delimiter to use when joining.</param>
     /// <returns>Word as a string.</returns>
-    public static string ToPascalCase(this string word, bool removeDelimiters = true, string joinDelimiter = "")
+    public static string ToPascalCase(
+        this string word,
+        bool removeDelimiters = true,
+        string joinDelimiter = "",
+        char[]? delimitersToRemove = null)
     {
         if (string.IsNullOrEmpty(word))
         {
@@ -79,7 +87,12 @@ public static class FhirNameConventionExtensions
 
         if (removeDelimiters)
         {
-            return string.Join(joinDelimiter, word.Split(_wordDelimiters, _wordSplitOptions).Select(w => w.ToPascalCase(false)));
+            if (delimitersToRemove == null)
+            {
+                return string.Join(joinDelimiter, word.Split(_wordDelimiters, _wordSplitOptions).Select(w => w.ToPascalCase(false)));
+            }
+
+            return string.Join(joinDelimiter, word.Split(delimitersToRemove, _wordSplitOptions).Select(w => w.ToPascalCase(false)));
         }
 
         return string.Concat(word.Substring(0, 1).ToUpperInvariant(), word.Substring(1));
@@ -90,46 +103,56 @@ public static class FhirNameConventionExtensions
     /// <param name="removeDelimiters">(Optional) True to remove delimiters.</param>
     /// <param name="joinDelimiter">   (Optional) The word delimiter to use when joining.</param>
     /// <returns>Word as a string.</returns>
-    public static string[] ToPascalCase(this string[] words, bool removeDelimiters = true, string joinDelimiter = "")
+    public static string[] ToPascalCase(this IEnumerable<string> words, bool removeDelimiters = true, string joinDelimiter = "")
     {
-        if (words.Length == 0)
+        if (!words.Any())
         {
             return [];
         }
 
-        string[] output = new string[words.Length];
+        List<string> output = [];
 
-        for (int i = 0; i < words.Length; i++)
+        foreach (string word in words)
         {
-            output[i] = ToPascalCase(words[i], removeDelimiters, joinDelimiter);
+            output.Add(ToPascalCase(word, removeDelimiters, joinDelimiter));
         }
 
-        return output;
+        return output.ToArray();
     }
 
     /// <summary>
     /// An IEnumerable&lt;string&gt; extension method that converts the words to a PascalWord.
     /// </summary>
-    /// <param name="words">           The words.</param>
-    /// <param name="removeDelimiters">(Optional) True to remove delimiters.</param>
-    /// <param name="joinDelimiter">   (Optional) The word delimiter to use when joining.</param>
+    /// <param name="words">             The words.</param>
+    /// <param name="removeDelimiters">  (Optional) True to remove delimiters.</param>
+    /// <param name="joinDelimiter">     (Optional) The word delimiter to use when joining.</param>
+    /// <param name="delimitersToRemove">(Optional) The delimiters to remove.</param>
     /// <returns>Words as a string.</returns>
-    public static string ToPascalCaseWord(this IEnumerable<string> words, bool removeDelimiters = true, string joinDelimiter = "")
+    public static string ToPascalCaseWord(
+        this IEnumerable<string> words,
+        bool removeDelimiters = true,
+        string joinDelimiter = "",
+        char[]? delimitersToRemove = null)
     {
         if (!words.Any())
         {
             return string.Empty;
         }
 
-        return string.Join(joinDelimiter, words.Select(w => w.ToPascalCase(removeDelimiters, joinDelimiter)));
+        return string.Join(joinDelimiter, words.Select(w => w.ToPascalCase(removeDelimiters, joinDelimiter, delimitersToRemove)));
     }
 
     /// <summary>A string extension method that converts a word to a camelCase.</summary>
-    /// <param name="word">            The word to act on.</param>
-    /// <param name="removeDelimiters">(Optional) True to remove delimiters.</param>
-    /// <param name="joinDelimiter">   (Optional) The word delimiter to use when joining.</param>
+    /// <param name="word">              The word to act on.</param>
+    /// <param name="removeDelimiters">  (Optional) True to remove delimiters.</param>
+    /// <param name="joinDelimiter">     (Optional) The word delimiter to use when joining.</param>
+    /// <param name="delimitersToRemove">(Optional) The delimiters to remove.</param>
     /// <returns>Word as a string.</returns>
-    public static string ToCamelCase(this string word, bool removeDelimiters = true, string joinDelimiter = "")
+    public static string ToCamelCase(
+        this string word,
+        bool removeDelimiters = true,
+        string joinDelimiter = "",
+        char[]? delimitersToRemove = null)
     {
         if (string.IsNullOrEmpty(word))
         {
@@ -139,7 +162,7 @@ public static class FhirNameConventionExtensions
         if (removeDelimiters)
         {
             // converting to pascal and changing the initial letter is faster than accumulating here
-            string pc = word.ToPascalCase(removeDelimiters, joinDelimiter);
+            string pc = word.ToPascalCase(removeDelimiters, joinDelimiter, delimitersToRemove);
             return string.Concat(pc.Substring(0, 1).ToLowerInvariant(), pc.Substring(1));
         }
 
@@ -151,7 +174,11 @@ public static class FhirNameConventionExtensions
     /// <param name="removeDelimiters">(Optional) True to remove delimiters.</param>
     /// <param name="joinDelimiter">   (Optional) The word delimiter to use when joining.</param>
     /// <returns>Word as a string.</returns>
-    public static string[] ToCamelCase(this string[] words, bool removeDelimiters = true, string joinDelimiter = "")
+    public static string[] ToCamelCase(
+        this string[] words,
+        bool removeDelimiters = true,
+        string joinDelimiter = "",
+        char[]? delimitersToRemove = null)
     {
         if (words.Length == 0)
         {
@@ -162,7 +189,7 @@ public static class FhirNameConventionExtensions
 
         if (words.ForEach((word, index) =>
             {
-                output[index] = word.ToCamelCase(removeDelimiters, joinDelimiter);
+                output[index] = word.ToCamelCase(removeDelimiters, joinDelimiter, delimitersToRemove);
                 return true;
             }))
         {
@@ -175,11 +202,16 @@ public static class FhirNameConventionExtensions
     /// <summary>
     /// An IEnumerable&lt;string&gt; extension method that converts the words to a camelWord.
     /// </summary>
-    /// <param name="words">           The words.</param>
-    /// <param name="removeDelimiters">(Optional) True to remove delimiters.</param>
-    /// <param name="joinDelimiter">   (Optional) The word delimiter to use when joining.</param>
+    /// <param name="words">             The words.</param>
+    /// <param name="removeDelimiters">  (Optional) True to remove delimiters.</param>
+    /// <param name="joinDelimiter">     (Optional) The word delimiter to use when joining.</param>
+    /// <param name="delimitersToRemove">(Optional) The delimiters to remove.</param>
     /// <returns>Words as a string.</returns>
-    public static string ToCamelCaseWord(this IEnumerable<string> words, bool removeDelimiters = true, string joinDelimiter = "")
+    public static string ToCamelCaseWord(
+        this IEnumerable<string> words,
+        bool removeDelimiters = true,
+        string joinDelimiter = "",
+        char[]? delimitersToRemove = null)
     {
         if (!(words?.Any() ?? false))
         {
@@ -192,12 +224,12 @@ public static class FhirNameConventionExtensions
             {
                 if (i == 0)
                 {
-                    sb.Append(word.ToCamelCase(removeDelimiters));
+                    sb.Append(word.ToCamelCase(removeDelimiters, delimitersToRemove: delimitersToRemove));
                 }
                 else
                 {
                     sb.Append(joinDelimiter);
-                    sb.Append(word.ToPascalCase(removeDelimiters));
+                    sb.Append(word.ToPascalCase(removeDelimiters, delimitersToRemove: delimitersToRemove));
                 }
 
                 return true;
@@ -216,7 +248,11 @@ public static class FhirNameConventionExtensions
     /// <param name="removeDelimiters">(Optional) True to remove delimiters.</param>
     /// <param name="joinDelimiter">   (Optional) The word delimiter to use when joining.</param>
     /// <returns>Words as a string[].</returns>
-    public static string ToUpperCase(this string word, bool removeDelimiters = true, string joinDelimiter = "_")
+    public static string ToUpperCase(
+        this string word,
+        bool removeDelimiters = true,
+        string joinDelimiter = "_",
+        char[]? delimitersToRemove = null)
     {
         if (string.IsNullOrEmpty(word))
         {
@@ -225,7 +261,12 @@ public static class FhirNameConventionExtensions
 
         if (removeDelimiters)
         {
-            return string.Join(joinDelimiter, word.Split(_wordDelimiters, _wordSplitOptions).Select(w => w.ToUpperInvariant()));
+            if (delimitersToRemove == null)
+            {
+                return string.Join(joinDelimiter, word.Split(_wordDelimiters, _wordSplitOptions).Select(w => w.ToUpperInvariant()));
+            }
+
+            return string.Join(joinDelimiter, word.Split(delimitersToRemove, _wordSplitOptions).Select(w => w.ToUpperInvariant()));
         }
 
         return word.ToUpperInvariant();
@@ -234,11 +275,16 @@ public static class FhirNameConventionExtensions
     /// <summary>
     /// An extension method that converts an array of words each to UPPER INVARIANT.
     /// </summary>
-    /// <param name="words">           The words.</param>
-    /// <param name="removeDelimiters">(Optional) True to remove delimiters.</param>
-    /// <param name="joinDelimiter">   (Optional) The word delimiter to use when joining.</param>
+    /// <param name="words">             The words.</param>
+    /// <param name="removeDelimiters">  (Optional) True to remove delimiters.</param>
+    /// <param name="joinDelimiter">     (Optional) The word delimiter to use when joining.</param>
+    /// <param name="delimitersToRemove">(Optional) The delimiters to remove.</param>
     /// <returns>Words as a string[].</returns>
-    public static string[] ToUpperCase(this string[] words, bool removeDelimiters = true, string joinDelimiter = "_")
+    public static string[] ToUpperCase(
+        this string[] words,
+        bool removeDelimiters = true,
+        string joinDelimiter = "_",
+        char[]? delimitersToRemove = null)
     {
         if (words.Length == 0)
         {
@@ -251,7 +297,7 @@ public static class FhirNameConventionExtensions
         {
             if (words.ForEach((word, index) =>
             {
-                output[index] = word.ToUpperCase(removeDelimiters, joinDelimiter);
+                output[index] = word.ToUpperCase(removeDelimiters, joinDelimiter, delimitersToRemove);
                 return true;
             }))
             {
@@ -277,26 +323,36 @@ public static class FhirNameConventionExtensions
     /// An IEnumerable&lt;string&gt; extension method that converts words a single UPPER_INVARIANT
     /// word.
     /// </summary>
-    /// <param name="words">           The words.</param>
-    /// <param name="removeDelimiters">(Optional) True to remove delimiters.</param>
-    /// <param name="joinDelimiter">   (Optional) The word delimiter to use when joining.</param>
+    /// <param name="words">             The words.</param>
+    /// <param name="removeDelimiters">  (Optional) True to remove delimiters.</param>
+    /// <param name="joinDelimiter">     (Optional) The word delimiter to use when joining.</param>
+    /// <param name="delimitersToRemove">(Optional) The delimiters to remove.</param>
     /// <returns>The given data converted to a string.</returns>
-    public static string ToUpperCaseWord(this IEnumerable<string> words, bool removeDelimiters = true, string joinDelimiter = "")
+    public static string ToUpperCaseWord(
+        this IEnumerable<string> words,
+        bool removeDelimiters = true,
+        string joinDelimiter = "",
+        char[]? delimitersToRemove = null)
     {
         if (!(words?.Any() ?? false))
         {
             return string.Empty;
         }
 
-        return string.Join(joinDelimiter, words.Select(w => w.ToUpperCase(removeDelimiters, joinDelimiter)));
+        return string.Join(joinDelimiter, words.Select(w => w.ToUpperCase(removeDelimiters, joinDelimiter, delimitersToRemove)));
     }
 
     /// <summary>A string extension method that converts this object to a lower case.</summary>
-    /// <param name="word">            The word to act on.</param>
-    /// <param name="removeDelimiters">(Optional) True to remove delimiters.</param>
-    /// <param name="joinDelimiter">   (Optional) The word delimiter to use when joining.</param>
+    /// <param name="word">              The word to act on.</param>
+    /// <param name="removeDelimiters">  (Optional) True to remove delimiters.</param>
+    /// <param name="joinDelimiter">     (Optional) The word delimiter to use when joining.</param>
+    /// <param name="delimitersToRemove">(Optional) The delimiters to remove.</param>
     /// <returns>The given data converted to a string.</returns>
-    public static string ToLowerCase(this string word, bool removeDelimiters = true, string joinDelimiter = "_")
+    public static string ToLowerCase(
+        this string word,
+        bool removeDelimiters = true,
+        string joinDelimiter = "_",
+        char[]? delimitersToRemove = null)
     {
         if (string.IsNullOrEmpty(word))
         {
@@ -305,7 +361,12 @@ public static class FhirNameConventionExtensions
 
         if (removeDelimiters)
         {
-            return string.Join(joinDelimiter, word.Split(_wordDelimiters, _wordSplitOptions).Select(w => w.ToLowerInvariant()));
+            if (delimitersToRemove == null)
+            {
+                return string.Join(joinDelimiter, word.Split(_wordDelimiters, _wordSplitOptions).Select(w => w.ToLowerInvariant()));
+            }
+
+            return string.Join(joinDelimiter, word.Split(delimitersToRemove, _wordSplitOptions).Select(w => w.ToLowerInvariant()));
         }
 
         return word.ToLowerInvariant();
@@ -314,11 +375,16 @@ public static class FhirNameConventionExtensions
     /// <summary>
     /// An extension method that converts an array of words each to lower_invariant.
     /// </summary>
-    /// <param name="words">           The words.</param>
-    /// <param name="removeDelimiters">(Optional) True to remove delimiters.</param>
-    /// <param name="joinDelimiter">   (Optional) The word delimiter to use when joining.</param>
+    /// <param name="words">             The words.</param>
+    /// <param name="removeDelimiters">  (Optional) True to remove delimiters.</param>
+    /// <param name="joinDelimiter">     (Optional) The word delimiter to use when joining.</param>
+    /// <param name="delimitersToRemove">(Optional) The delimiters to remove.</param>
     /// <returns>Words as a string[].</returns>
-    public static string[] ToLowerCase(this string[] words, bool removeDelimiters = true, string joinDelimiter = "_")
+    public static string[] ToLowerCase(
+        this string[] words,
+        bool removeDelimiters = true,
+        string joinDelimiter = "_",
+        char[]? delimitersToRemove = null)
     {
         if (words.Length == 0)
         {
@@ -331,7 +397,7 @@ public static class FhirNameConventionExtensions
         {
             if (words.ForEach((word, index) =>
             {
-                output[index] = word.ToLowerCase(removeDelimiters, joinDelimiter);
+                output[index] = word.ToLowerCase(removeDelimiters, joinDelimiter, delimitersToRemove);
                 return true;
             }))
             {
@@ -357,18 +423,23 @@ public static class FhirNameConventionExtensions
     /// An IEnumerable&lt;string&gt; extension method that converts words a single lower_invariant
     /// word.
     /// </summary>
-    /// <param name="words">           The words.</param>
-    /// <param name="removeDelimiters">(Optional) True to remove delimiters.</param>
-    /// <param name="joinDelimiter">   (Optional) The word delimiter to use when joining.</param>
+    /// <param name="words">             The words.</param>
+    /// <param name="removeDelimiters">  (Optional) True to remove delimiters.</param>
+    /// <param name="joinDelimiter">     (Optional) The word delimiter to use when joining.</param>
+    /// <param name="delimitersToRemove">(Optional) The delimiters to remove.</param>
     /// <returns>The given data converted to a string.</returns>
-    public static string ToLowerCaseWord(this IEnumerable<string> words, bool removeDelimiters = true, string joinDelimiter = "")
+    public static string ToLowerCaseWord(
+        this IEnumerable<string> words,
+        bool removeDelimiters = true,
+        string joinDelimiter = "",
+        char[]? delimitersToRemove = null)
     {
         if (!(words?.Any() ?? false))
         {
             return string.Empty;
         }
 
-        return string.Join(joinDelimiter, words.Select(w => w.ToLowerCase(removeDelimiters, joinDelimiter)));
+        return string.Join(joinDelimiter, words.Select(w => w.ToLowerCase(removeDelimiters, joinDelimiter, delimitersToRemove)));
     }
 
     /// <summary>
@@ -435,7 +506,7 @@ public static class FhirNameConventionExtensions
             return string.Empty;
         }
 
-        return string.Join('.', word.Split(_wordDelimiters, _wordSplitOptions).Select(w => w.ToPascalCase(false)));
+        return string.Join(".", word.Split(_wordDelimiters, _wordSplitOptions).Select(w => w.ToPascalCase(false)));
     }
 
     /// <summary>A string extension method that converts this object to a pascal dot case.</summary>
@@ -471,7 +542,7 @@ public static class FhirNameConventionExtensions
             return string.Empty;
         }
 
-        return string.Join('.', words.Select(w => w.ToPascalDotCase()));
+        return string.Join(".", words.Select(w => w.ToPascalDotCase()));
     }
 
     /// <summary>
@@ -539,7 +610,7 @@ public static class FhirNameConventionExtensions
 
         string[] words = word.Split(_wordDelimiters, _wordSplitOptions);
 
-        return string.Join('.', words.Take(1).Select(w => w.ToPascalCase(false)), words.Skip(1).Select(w => w.ToCamelCase()));
+        return string.Join(".", words.Take(1).Select(w => w.ToPascalCase(false)), words.Skip(1).Select(w => w.ToCamelCase()));
     }
 
     /// <summary>A string extension method that converts this array of strings to an array of FHIR dot-case strings.</summary>
@@ -575,6 +646,6 @@ public static class FhirNameConventionExtensions
             return string.Empty;
         }
 
-        return string.Join('.', words.Take(1).Select(w => w.ToPascalCase(false)), words.Skip(1).Select(w => w.ToCamelCase()));
+        return string.Join(".", words.Take(1).Select(w => w.ToPascalCase(false)), words.Skip(1).Select(w => w.ToCamelCase()));
     }
 }

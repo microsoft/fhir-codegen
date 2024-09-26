@@ -1,36 +1,40 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\fhir-codegen.props" />
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="TestData\Generated\*.*">
+    <Content Include="TestData\**\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="TestData\R4\*.*">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="TestData\R4B\*.*">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="TestData\R5\*.*">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentAssertions" Version="6.12.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
+    <None Remove="xunit.runner.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="xunit.runner.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="6.12.1" />
+    <PackageReference Include="FluentAssertions.Json" Version="6.1.0" />
+    <PackageReference Include="Hl7.Fhir.Specification.Data.R5" Version="5.10.2" />
+    <PackageReference Include="Hl7.Fhir.STU3" Version="5.10.2" />
+    <PackageReference Include="Hl7.Fhir.R4" Version="5.10.2" />
+    <PackageReference Include="Hl7.Fhir.R4B" Version="5.10.2" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
     <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
-    <PackageReference Include="xunit" Version="2.8.1" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.1">
+    <PackageReference Include="xunit" Version="2.9.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
@@ -40,26 +44,24 @@
     </PackageReference>
   </ItemGroup>
 
+  <Target Name="AddPackageAliases" BeforeTargets="ResolveReferences" Outputs="%(PackageReference.Identity)">
+    <ItemGroup>
+      <ReferencePath Condition="'%(FileName)'=='Hl7.Fhir.STU3'">
+        <Aliases>stu3</Aliases>
+      </ReferencePath>
+      <ReferencePath Condition="'%(FileName)'=='Hl7.Fhir.R4'">
+        <Aliases>r4</Aliases>
+      </ReferencePath>
+      <ReferencePath Condition="'%(FileName)'=='Hl7.Fhir.R4B'">
+        <Aliases>r4b</Aliases>
+      </ReferencePath>
+    </ItemGroup>
+  </Target>
+
+
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.Health.Fhir.CodeGenCommon\Microsoft.Health.Fhir.CodeGenCommon.csproj" />
     <ProjectReference Include="..\Microsoft.Health.Fhir.CodeGen\Microsoft.Health.Fhir.CodeGen.csproj" />
-    <ProjectReference Include="..\Microsoft.Health.Fhir.PackageManager\Microsoft.Health.Fhir.PackageManager.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="TestData\Generated\Info-R5.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Include="TestData\R4\CapabilityStatement-candle-local.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="TestData\R5\expansions\ValueSet-units-of-time.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>

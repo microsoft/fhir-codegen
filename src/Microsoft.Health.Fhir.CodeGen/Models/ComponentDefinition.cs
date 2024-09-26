@@ -80,23 +80,23 @@ public record class ComponentDefinition
     /// <summary>Get a short description for a component.</summary>
     /// <returns>A string.</returns>
     public string cgShort() =>
-        (!string.IsNullOrEmpty(Element?.Short) && !Element.cgHasCodes()) ? Element.Short
-        : !string.IsNullOrEmpty(Element?.Definition) ? Element.Definition
-        : !string.IsNullOrEmpty(Structure?.Description) ? Structure.Description
-        : !string.IsNullOrEmpty(Structure?.Purpose) ? Structure.Purpose
+        (!string.IsNullOrEmpty(Element?.Short) && !Element!.cgHasCodes()) ? Element!.Short
+        : !string.IsNullOrEmpty(Element?.Definition) ? Element!.Definition
+        : !string.IsNullOrEmpty(Structure?.Description) ? Structure!.Description
+        : !string.IsNullOrEmpty(Structure?.Purpose) ? Structure!.Purpose
         : string.Empty;
 
     /// <summary>Get a description for a component</summary>
     /// <returns>A string.</returns>
     public string cgDefinition() =>
-        !string.IsNullOrEmpty(Element?.Definition) ? Element.Definition
-        : !string.IsNullOrEmpty(Structure?.Description) ? Structure.Description
-        : !string.IsNullOrEmpty(Structure?.Purpose) ? Structure.Purpose
+        !string.IsNullOrEmpty(Element?.Definition) ? Element!.Definition
+        : !string.IsNullOrEmpty(Structure?.Description) ? Structure!.Description
+        : !string.IsNullOrEmpty(Structure?.Purpose) ? Structure!.Purpose
         : string.Empty;
 
     public string cgComment() =>
-        !string.IsNullOrEmpty(Element?.Comment) ? Element.Comment
-        : !string.IsNullOrEmpty(Structure?.Purpose) ? Structure.Purpose
+        !string.IsNullOrEmpty(Element?.Comment) ? Element!.Comment
+        : !string.IsNullOrEmpty(Structure?.Purpose) ? Structure!.Purpose
         : string.Empty;
 
     /// <summary>Cg name rooted.</summary>
@@ -130,7 +130,7 @@ public record class ComponentDefinition
     /// <returns>An ElementDefinition representing the child element.</returns>
     public ElementDefinition? cgGetChild(string name)
     {
-        string path = Element.Path + (name.StartsWith('.') ? name : "." + name);
+        string path = Element.Path + (name.StartsWith(".") ? name : "." + name);
 
         if ((Structure.Snapshot != null) && (Structure.Snapshot.Element.Count != 0))
         {
