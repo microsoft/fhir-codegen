@@ -560,8 +560,6 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
                 edContent.ElementId = "Binary.content";
                 edContent.Path = "Binary.content";
                 edContent.Base = new() { Path = "Binary.content", Min = 0, Max = "1" };
-                edContent.Min = 1;
-                edContent.Max = "1";
 
                 edContent.cgSetFieldOrder(edData.cgFieldOrder(), edData.cgComponentFieldOrder());
 
