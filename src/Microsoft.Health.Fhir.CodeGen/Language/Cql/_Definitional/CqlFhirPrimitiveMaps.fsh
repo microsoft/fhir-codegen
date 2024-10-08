@@ -8,6 +8,7 @@ Instance:     CqlFhirPrimitiveMapR6
 InstanceOf:   ConceptMap
 Title:        "Primitive Type Mappings for CQL and FHIR R6"
 Description:  "Map describing how to map between FHIR types and CQL types for FHIR R6."
+Usage:        #definition
 * id                = "cql-fhir-primitives-r6"
 * url               = "http://ginoc.io/cql/cql-fhir-primitives-r6"
 * status            = #active
@@ -43,6 +44,7 @@ Instance:     CqlFhirPrimitiveMapR5
 InstanceOf:   ConceptMap
 Title:        "Primitive Type Mappings for CQL and FHIR R5"
 Description:  "Map describing how to map between FHIR types and CQL types for FHIR R5."
+Usage:        #definition
 * id                = "cql-fhir-primitives-r5"
 * url               = "http://ginoc.io/cql/cql-fhir-primitives-r5"
 * status            = #active
@@ -78,6 +80,7 @@ Instance:     CqlFhirPrimitiveMapR4
 InstanceOf:   ConceptMap
 Title:        "Primitive Type Mappings for CQL and FHIR R4"
 Description:  "Map describing how to map between FHIR types and CQL types for FHIR R4."
+Usage:        #definition
 * id                = "cql-fhir-primitives-r4"
 * url               = "http://ginoc.io/cql/cql-fhir-primitives-r4"
 * status            = #active
@@ -112,6 +115,7 @@ Instance:     CqlFhirPrimitiveMapR3
 InstanceOf:   ConceptMap
 Title:        "Primitive Type Mappings for CQL and FHIR STU3"
 Description:  "Map describing how to map between FHIR types and CQL types for FHIR STU3."
+Usage:        #definition
 * id                = "cql-fhir-primitives-r3"
 * url               = "http://ginoc.io/cql/cql-fhir-primitives-r3"
 * status            = #active
@@ -143,6 +147,7 @@ Instance:     CqlFhirPrimitiveMapR2
 InstanceOf:   ConceptMap
 Title:        "Primitive Type Mappings for CQL and FHIR DSTU2"
 Description:  "Map describing how to map between FHIR types and CQL types for FHIR DSTU2."
+Usage:        #definition
 * id                = "cql-fhir-primitives-r2"
 * url               = "http://ginoc.io/cql/cql-fhir-primitives-r2"
 * status            = #active

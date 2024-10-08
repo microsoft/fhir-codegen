@@ -1,0 +1,706 @@
+{
+    "resourceType": "CodeSystem",
+    "id": "cql-fhir-primary-code-paths-r4",
+    "url": "http://ginoc.io/cql/cql-fhir-primary-code-paths-r4",
+    "title": "CQL Primary Code Paths for FHIR R4 Resources",
+    "description": "Supplement to R4 FHIR-Types for CQL primary code path properties.",
+    "status": "active",
+    "content": "supplement",
+    "supplements": "http://hl7.org/fhir/fhir-types|4.0.1",
+    "useContext": [
+        {
+            "code": {
+                "system": "http://ginoc.io/cql/UsageContext",
+                "code": "fhirPackageDirective"
+            },
+            "valueCodeableConcept": {
+                "coding": [
+                    {
+                        "code": "hl7.fhir.r4.core@4.0.1"
+                    }
+                ]
+            }
+        }
+    ],
+    "property": [
+        {
+            "code": "cql-primary-code-path",
+            "type": "Coding",
+            "description": "The primary code path for the CQL representation of this FHIR type."
+        }
+    ],
+    "concept": [
+        {
+            "code": "Account",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/Account",
+                        "code": "type"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "ActivityDefinition",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/ActivityDefinition",
+                        "code": "topic"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "AdverseEvent",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/AdverseEvent",
+                        "code": "event"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "AllergyIntolerance",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/AllergyIntolerance",
+                        "code": "code"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "Appointment",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/Appointment",
+                        "code": "serviceType"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "Basic",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/Basic",
+                        "code": "code"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "BodyStructure",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/BodyStructure",
+                        "code": "location"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "CarePlan",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/CarePlan",
+                        "code": "category"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "CareTeam",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/CareTeam",
+                        "code": "category"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "ChargeItemDefinition",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/ChargeItemDefinition",
+                        "code": "code"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "Claim",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/Claim",
+                        "code": "type"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "ClinicalImpression",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/ClinicalImpression",
+                        "code": "code"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "Communication",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/Communication",
+                        "code": "reasonCode"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "CommunicationRequest",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/CommunicationRequest",
+                        "code": "reasonCode"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "Composition",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/Composition",
+                        "code": "type"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "Condition",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/Condition",
+                        "code": "code"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "Consent",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/Consent",
+                        "code": "category"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "Coverage",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/Coverage",
+                        "code": "type"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "DetectedIssue",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/DetectedIssue",
+                        "code": "code"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "Device",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/Device",
+                        "code": "type"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "DeviceMetric",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/DeviceMetric",
+                        "code": "type"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "DeviceRequest",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/DeviceRequest",
+                        "code": "code"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "DeviceUseStatement",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/DeviceUseStatement",
+                        "code": "device.code"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "DiagnosticReport",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/DiagnosticReport",
+                        "code": "code"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "Encounter",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/Encounter",
+                        "code": "type"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "EpisodeOfCare",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/EpisodeOfCare",
+                        "code": "type"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "ExplanationOfBenefit",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/ExplanationOfBenefit",
+                        "code": "type"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "Flag",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/Flag",
+                        "code": "code"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "Goal",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/Goal",
+                        "code": "category"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "GuidanceResponse",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/GuidanceResponse",
+                        "code": "module"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "HealthcareService",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/HealthcareService",
+                        "code": "type"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "Immunization",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/Immunization",
+                        "code": "vaccineCode"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "Library",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/Library",
+                        "code": "topic"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "Location",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/Location",
+                        "code": "type"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "Measure",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/Measure",
+                        "code": "topic"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "MeasureReport",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/MeasureReport",
+                        "code": "type"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "Medication",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/Medication",
+                        "code": "code"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "MedicationAdministration",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/MedicationAdministration",
+                        "code": "medication"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "MedicationDispense",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/MedicationDispense",
+                        "code": "medication"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "MedicationRequest",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/MedicationRequest",
+                        "code": "medication"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "MedicationStatement",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/MedicationStatement",
+                        "code": "medication"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "MessageDefinition",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/MessageDefinition",
+                        "code": "event"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "Observation",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/Observation",
+                        "code": "code"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "OperationOutcome",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/OperationOutcome",
+                        "code": "issue.code"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "PractitionerRole",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/PractitionerRole",
+                        "code": "code"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "Procedure",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/Procedure",
+                        "code": "code"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "Questionnaire",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/Questionnaire",
+                        "code": "name"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "RelatedPerson",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/RelatedPerson",
+                        "code": "relationship"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "RiskAssessment",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/RiskAssessment",
+                        "code": "code"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "SearchParameter",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/SearchParameter",
+                        "code": "target"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "ServiceRequest",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/ServiceRequest",
+                        "code": "code"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "Specimen",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/Specimen",
+                        "code": "type"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "Substance",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/Substance",
+                        "code": "code"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "SupplyDelivery",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/SupplyDelivery",
+                        "code": "type"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "SupplyRequest",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/SupplyRequest",
+                        "code": "category"
+                    }
+                }
+            ]
+        },
+        {
+            "code": "Task",
+            "property": [
+                {
+                    "code": "cql-primary-code-path",
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/StructureDefinition/Task",
+                        "code": "code"
+                    }
+                }
+            ]
+        }
+    ]
+}
