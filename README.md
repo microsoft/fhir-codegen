@@ -129,6 +129,21 @@ More information about this project can be found in the [Command Line Documentat
 * Download and parse FHIR R4 (latest published version) into the user FHIR cache, reach out the Firely Test Server, and build a set of OpenAPI definitions
   * `generate OpenApi --fhir-server-url http://server.fire.ly/r4 -p hl7.fhir.r4.core#4.0.1 --output-path ./FS-OpenApi-R4 --include-experimental --schema-level names --metadata true --multi-file true --single-responses false --resolve-server-canonicals false --resolve-external-canonicals false --basic-scopes-only true`
 
+# Build and Running From OCI (i.e. Docker) Images
+
+If you do not have .NET installed and wish to use the command-line utilities, you may instead build an OCI container to run it for you. The included [Dockerfile](./Dockerfile) has been tested with Docker Desktop but should work also with `buildah` and container runtimes such as `podman` and `cri-o`. To build your own image for your native CPU architecture:
+
+  `docker build -t <whatever>/fhir-codegen:latest .`
+
+Alternatively, to build and push for multiple CPU architectures,
+
+  `docker buildx build --platform linux/arm64,linux/amd64 --push -t <whatever>/fhir-codegen:latest .`
+
+The image is configured to run the CLI as its default entry point. To generate FHIR 4.0.1 TypeScript interfaces to a file on your _host_ computer's ./out directory, for example, simply pass the arguments as input to the container runtime, like so:
+
+  ``docker run -it --rm -v `pwd`/out:/out <whatever>/fhir-codegen:latest --load-r4 4.0.1 --language TypeScript --output-path /out``
+
+The above command binds an ./out directory (within your current working directory) to the output directory of fhir-codegen-cli running within the container, so you output will persist after the container exits and is removed. 
 
 # Contributing
 
