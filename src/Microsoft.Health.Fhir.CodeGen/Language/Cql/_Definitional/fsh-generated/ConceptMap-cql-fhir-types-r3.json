@@ -1,7 +1,9 @@
 {
     "resourceType": "ConceptMap",
-    "id": "cql-fhir-primitives-r3",
-    "url": "http://ginoc.io/cql/cql-fhir-primitives-r3",
+    "id": "cql-fhir-types-r3",
+    "url": "http://ginoc.io/cql/cql-fhir-types-r3",
+    "title": "Type Mappings for CQL and FHIR STU3",
+    "description": "Map describing how to map between FHIR types and CQL types for FHIR STU3.",
     "status": "active",
     "jurisdiction": [
         {
@@ -13,9 +15,11 @@
             ]
         }
     ],
+    "sourceScopeCanonical": "http://hl7.org/fhir/ValueSet/data-types|3.0",
+    "targetScopeCanonical": "http://cql.hl7.org/data-types",
     "group": [
         {
-            "source": "http://hl7.org/fhir/3.0/data-types",
+            "source": "http://hl7.org/fhir/data-types|3.0",
             "target": "http://hl7.org/fhirpath",
             "element": [
                 {

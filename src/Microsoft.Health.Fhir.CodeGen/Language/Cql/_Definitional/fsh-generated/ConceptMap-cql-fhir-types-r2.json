@@ -1,7 +1,9 @@
 {
     "resourceType": "ConceptMap",
-    "id": "cql-fhir-primitives-r5",
-    "url": "http://ginoc.io/cql/cql-fhir-primitives-r5",
+    "id": "cql-fhir-types-r2",
+    "url": "http://ginoc.io/cql/cql-fhir-types-r2",
+    "title": "Type Mappings for CQL and FHIR DSTU2",
+    "description": "Map describing how to map between FHIR types and CQL types for FHIR DSTU2.",
     "status": "active",
     "jurisdiction": [
         {
@@ -13,9 +15,11 @@
             ]
         }
     ],
+    "sourceScopeCanonical": "http://hl7.org/fhir/ValueSet/data-types|2.0",
+    "targetScopeCanonical": "http://cql.hl7.org/data-types",
     "group": [
         {
-            "source": "http://hl7.org/fhir/5.0/data-types",
+            "source": "http://hl7.org/fhir/data-types|2.0",
             "target": "http://hl7.org/fhirpath",
             "element": [
                 {
@@ -33,15 +37,6 @@
                         {
                             "code": "System.Boolean",
                             "relationship": "equivalent"
-                        }
-                    ]
-                },
-                {
-                    "code": "canonical",
-                    "target": [
-                        {
-                            "code": "System.String",
-                            "relationship": "source-is-narrower-than-target"
                         }
                     ]
                 },
@@ -109,15 +104,6 @@
                     ]
                 },
                 {
-                    "code": "integer64",
-                    "target": [
-                        {
-                            "code": "System.Long",
-                            "relationship": "equivalent"
-                        }
-                    ]
-                },
-                {
                     "code": "markdown",
                     "target": [
                         {
@@ -173,24 +159,6 @@
                 },
                 {
                     "code": "uri",
-                    "target": [
-                        {
-                            "code": "System.String",
-                            "relationship": "source-is-narrower-than-target"
-                        }
-                    ]
-                },
-                {
-                    "code": "url",
-                    "target": [
-                        {
-                            "code": "System.String",
-                            "relationship": "source-is-narrower-than-target"
-                        }
-                    ]
-                },
-                {
-                    "code": "uuid",
                     "target": [
                         {
                             "code": "System.String",

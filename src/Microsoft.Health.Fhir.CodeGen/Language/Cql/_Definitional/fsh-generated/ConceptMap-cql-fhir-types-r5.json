@@ -1,7 +1,9 @@
 {
     "resourceType": "ConceptMap",
-    "id": "cql-fhir-primitives-r4",
-    "url": "http://ginoc.io/cql/cql-fhir-primitives-r4",
+    "id": "cql-fhir-types-r5",
+    "url": "http://ginoc.io/cql/cql-fhir-types-r5",
+    "title": "Type Mappings for CQL and FHIR R5",
+    "description": "Map describing how to map between FHIR types and CQL types for FHIR R5.",
     "status": "active",
     "jurisdiction": [
         {
@@ -13,9 +15,11 @@
             ]
         }
     ],
+    "sourceScopeCanonical": "http://hl7.org/fhir/ValueSet/data-types|5.0",
+    "targetScopeCanonical": "http://cql.hl7.org/data-types",
     "group": [
         {
-            "source": "http://hl7.org/fhir/4.0/data-types",
+            "source": "http://hl7.org/fhir/fhir-types|5.0",
             "target": "http://hl7.org/fhirpath",
             "element": [
                 {
@@ -109,6 +113,15 @@
                     ]
                 },
                 {
+                    "code": "integer64",
+                    "target": [
+                        {
+                            "code": "System.Long",
+                            "relationship": "equivalent"
+                        }
+                    ]
+                },
+                {
                     "code": "markdown",
                     "target": [
                         {
@@ -194,6 +207,123 @@
                     "target": [
                         {
                             "code": "System.String",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "Coding",
+                    "target": [
+                        {
+                            "code": "System.Code",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "CodeableConcept",
+                    "target": [
+                        {
+                            "code": "System.Concept",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "Period",
+                    "target": [
+                        {
+                            "code": "Interval<System.DateTime>",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "Range",
+                    "target": [
+                        {
+                            "code": "Interval<System.Quantity>",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "Ratio",
+                    "target": [
+                        {
+                            "code": "System.Ratio",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "Quantity",
+                    "target": [
+                        {
+                            "code": "System.Quantity",
+                            "relationship": "equivalent"
+                        }
+                    ]
+                },
+                {
+                    "code": "Age",
+                    "target": [
+                        {
+                            "code": "System.Quantity",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "Distance",
+                    "target": [
+                        {
+                            "code": "System.Quantity",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "SimpleQuantity",
+                    "target": [
+                        {
+                            "code": "System.Quantity",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "Duration",
+                    "target": [
+                        {
+                            "code": "System.Quantity",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "Count",
+                    "target": [
+                        {
+                            "code": "System.Quantity",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "MoneyQuantity",
+                    "target": [
+                        {
+                            "code": "System.Quantity",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "Money",
+                    "target": [
+                        {
+                            "code": "System.Decimal",
                             "relationship": "source-is-narrower-than-target"
                         }
                     ]

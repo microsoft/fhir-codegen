@@ -1,0 +1,505 @@
+{
+    "resourceType": "Parameters",
+    "id": "cql-fhir-properties-us-core",
+    "parameter": [
+        {
+            "name": "context",
+            "part": [
+                {
+                    "name": "packageId",
+                    "valueString": "hl7.fhir.us.core"
+                }
+            ]
+        },
+        {
+            "name": "supersedes",
+            "part": [
+                {
+                    "name": "packageId",
+                    "valueString": "hl7.fhir.r4.core"
+                },
+                {
+                    "name": "packageVersion",
+                    "valueString": "4.0.1"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/ActivityDefinition",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "topic"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/AdverseEvent",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/AllergyIntolerance",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/Appointment",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "serviceType"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/Basic",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/CarePlan",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "category"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/CareTeam",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "category"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/ChargeItemDefinition",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/Claim",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/ClinicalImpression",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/Communication",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "category"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/CommunicationRequest",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "category"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/Composition",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/Condition",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/Consent",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "category"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/Coverage",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/DetectedIssue",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "category"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/Device",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/DeviceMetric",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/DeviceRequest",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "codeCodeableConcept"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/DeviceUseStatement",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "device.code"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/DiagnosticReport",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/Encounter",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/EpisodeOfCare",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/ExplanationOfBenefit",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/Flag",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/Goal",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "category"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/GuidanceResponse",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "module"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/HealthcareService",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/Immunization",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "vaccineCode"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/Library",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "topic"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/Measure",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "topic"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/MeasureReport",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "measure.topic"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/Medication",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/MedicationAdministration",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "medication"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/MedicationDispense",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "medication"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/MedicationRequest",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "medication"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/MedicationStatement",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "medication"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/MessageDefinition",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "event"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/Observation",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/OperationOutcome",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "issue.code"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/Procedure",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/ProcedureRequest",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/Questionnaire",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "name"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/ReferralRequest",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/RiskAssessment",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/SearchParameter",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "target"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/Sequence",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/Specimen",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/Substance",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/SupplyDelivery",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/SupplyRequest",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "category"
+                }
+            ]
+        },
+        {
+            "name": "http://hl7.org/fhir/StructureDefinition/Task",
+            "part": [
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        }
+    ]
+}

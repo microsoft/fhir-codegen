@@ -1,0 +1,334 @@
+{
+    "resourceType": "ConceptMap",
+    "id": "cql-fhir-types-r6",
+    "url": "http://ginoc.io/cql/cql-fhir-types-r6",
+    "title": "Type Mappings for CQL and FHIR R6",
+    "description": "Map describing how to map between FHIR types and CQL types for FHIR R6.",
+    "status": "active",
+    "jurisdiction": [
+        {
+            "coding": [
+                {
+                    "code": "001",
+                    "system": "http://unstats.un.org/unsd/methods/m49/m49.htm"
+                }
+            ]
+        }
+    ],
+    "sourceScopeCanonical": "http://hl7.org/fhir/ValueSet/data-types|6.0",
+    "targetScopeCanonical": "http://cql.hl7.org/data-types",
+    "group": [
+        {
+            "source": "http://hl7.org/fhir/fhir-types|6.0",
+            "target": "http://hl7.org/fhirpath",
+            "element": [
+                {
+                    "code": "base64Binary",
+                    "target": [
+                        {
+                            "code": "System.String",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "boolean",
+                    "target": [
+                        {
+                            "code": "System.Boolean",
+                            "relationship": "equivalent"
+                        }
+                    ]
+                },
+                {
+                    "code": "canonical",
+                    "target": [
+                        {
+                            "code": "System.String",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "code",
+                    "target": [
+                        {
+                            "code": "System.String",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "date",
+                    "target": [
+                        {
+                            "code": "System.Date",
+                            "relationship": "equivalent"
+                        }
+                    ]
+                },
+                {
+                    "code": "dateTime",
+                    "target": [
+                        {
+                            "code": "System.DateTime",
+                            "relationship": "equivalent"
+                        }
+                    ]
+                },
+                {
+                    "code": "decimal",
+                    "target": [
+                        {
+                            "code": "System.Decimal",
+                            "relationship": "equivalent"
+                        }
+                    ]
+                },
+                {
+                    "code": "id",
+                    "target": [
+                        {
+                            "code": "System.String",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "instant",
+                    "target": [
+                        {
+                            "code": "System.DateTime",
+                            "relationship": "equivalent"
+                        }
+                    ]
+                },
+                {
+                    "code": "integer",
+                    "target": [
+                        {
+                            "code": "System.Integer",
+                            "relationship": "equivalent"
+                        }
+                    ]
+                },
+                {
+                    "code": "integer64",
+                    "target": [
+                        {
+                            "code": "System.Long",
+                            "relationship": "equivalent"
+                        }
+                    ]
+                },
+                {
+                    "code": "markdown",
+                    "target": [
+                        {
+                            "code": "System.String",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "oid",
+                    "target": [
+                        {
+                            "code": "System.String",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "positiveInt",
+                    "target": [
+                        {
+                            "code": "System.Integer",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "string",
+                    "target": [
+                        {
+                            "code": "System.String",
+                            "relationship": "equivalent"
+                        }
+                    ]
+                },
+                {
+                    "code": "time",
+                    "target": [
+                        {
+                            "code": "System.Time",
+                            "relationship": "equivalent"
+                        }
+                    ]
+                },
+                {
+                    "code": "unsignedInt",
+                    "target": [
+                        {
+                            "code": "System.Integer",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "uri",
+                    "target": [
+                        {
+                            "code": "System.String",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "url",
+                    "target": [
+                        {
+                            "code": "System.String",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "uuid",
+                    "target": [
+                        {
+                            "code": "System.String",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "xhtml",
+                    "target": [
+                        {
+                            "code": "System.String",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "Coding",
+                    "target": [
+                        {
+                            "code": "System.Code",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "CodeableConcept",
+                    "target": [
+                        {
+                            "code": "System.Concept",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "Period",
+                    "target": [
+                        {
+                            "code": "Interval<System.DateTime>",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "Range",
+                    "target": [
+                        {
+                            "code": "Interval<System.Quantity>",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "Ratio",
+                    "target": [
+                        {
+                            "code": "System.Ratio",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "Quantity",
+                    "target": [
+                        {
+                            "code": "System.Quantity",
+                            "relationship": "equivalent"
+                        }
+                    ]
+                },
+                {
+                    "code": "Age",
+                    "target": [
+                        {
+                            "code": "System.Quantity",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "Distance",
+                    "target": [
+                        {
+                            "code": "System.Quantity",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "SimpleQuantity",
+                    "target": [
+                        {
+                            "code": "System.Quantity",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "Duration",
+                    "target": [
+                        {
+                            "code": "System.Quantity",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "Count",
+                    "target": [
+                        {
+                            "code": "System.Quantity",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "MoneyQuantity",
+                    "target": [
+                        {
+                            "code": "System.Quantity",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                },
+                {
+                    "code": "Money",
+                    "target": [
+                        {
+                            "code": "System.Decimal",
+                            "relationship": "source-is-narrower-than-target"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
