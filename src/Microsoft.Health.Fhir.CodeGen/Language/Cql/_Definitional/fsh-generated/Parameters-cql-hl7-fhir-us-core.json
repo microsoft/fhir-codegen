@@ -25,6 +25,19 @@
             ]
         },
         {
+            "name": "modelProperties",
+            "part": [
+                {
+                    "name": "patientClassName",
+                    "valueString": "PatientProfile"
+                },
+                {
+                    "name": "patientBirthDatePropertyName",
+                    "valueString": "birthDate"
+                }
+            ]
+        },
+        {
             "name": "http://hl7.org/fhir/StructureDefinition/ActivityDefinition",
             "part": [
                 {

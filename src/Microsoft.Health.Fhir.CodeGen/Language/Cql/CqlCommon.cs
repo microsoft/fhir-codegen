@@ -9,72 +9,37 @@ using System.Text;
 
 namespace Microsoft.Health.Fhir.CodeGen.Language.Cql;
 
+/// <summary>
+/// Represents the parameters for CQL FHIR code generation.
+/// </summary>
+public class CqlFhirParameters
+{
+    /// <summary>
+    /// Gets or sets the package ID.
+    /// </summary>
+    public string PackageId { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Gets or sets the package version.
+    /// </summary>
+    public string? PackageVersion { get; set; } = null;
+
+    /// <summary>
+    /// Gets the set of supersedes.
+    /// </summary>
+    public HashSet<string> Supersedes { get; } = new();
+
+    /// <summary>
+    /// Gets the model properties specified in the parameters.
+    /// </summary>
+    public Dictionary<string, string> ModelProperties { get; } = new();
+
+    /// <summary>
+    /// Gets the structure properties, per structure, as specified in the parameters.
+    /// </summary>
+    public Dictionary<string, Dictionary<string, string>> StructureProperties { get; } = new();
+}
+
 public static class CqlCommon
 {
-    /// <summary>  
-    /// A set of primary code paths used in the CQL (Clinical Quality Language) context.  
-    /// </summary>
-    /// <remarks>
-    /// TODO: I am uncomfortable with this being here. These should be in a ConceptMap, ValueSet, or something else
-    /// and loaded at runtime. Check with Bryn what can be done.
-    /// </remarks>
-    public static readonly Dictionary<string, string> PrimaryCodePaths = new()
-    {
-        { "Account", "type" },
-        { "ActivityDefinition", "topic" },
-        { "AdverseEvent", "event" },
-        { "AllergyIntolerance", "code" },
-        { "Appointment", "serviceType" },
-        { "Basic", "code" },
-        { "BodyStructure", "location" },
-        { "CarePlan", "category" },
-        { "CareTeam", "category" },
-        { "ChargeItemDefinition", "code" },
-        { "Claim", "type" },
-        { "ClinicalImpression", "code" },
-        { "Communication", "reasonCode" },
-        { "CommunicationRequest", "reasonCode" },
-        { "Composition", "type" },
-        { "Condition", "code" },
-        { "Consent", "category" },
-        { "Coverage", "type" },
-        { "DetectedIssue", "code" },
-        { "Device", "type" },
-        { "DeviceMetric", "type" },
-        { "DeviceRequest", "code" },
-        { "DeviceUseStatement", "device.code" },
-        { "DiagnosticReport", "code" },
-        { "Encounter", "type" },
-        { "EpisodeOfCare", "type" },
-        { "ExplanationOfBenefit", "type" },
-        { "Flag", "code" },
-        { "Goal", "category" },
-        { "GuidanceResponse", "module" },
-        { "HealthcareService", "type" },
-        { "Immunization", "vaccineCode" },
-        { "Library", "topic" },
-        { "Location", "type" },
-        { "Measure", "topic" },
-        { "MeasureReport", "type" },
-        { "Medication", "code" },
-        { "MedicationAdministration", "medication" },
-        { "MedicationDispense", "medication" },
-        { "MedicationRequest", "medication" },
-        { "MedicationStatement", "medication" },
-        { "MessageDefinition", "event" },
-        { "Observation", "code" },
-        { "OperationOutcome", "issue.code" },
-        { "PractitionerRole", "code" },
-        { "Procedure", "code" },
-        { "Questionnaire", "name" },
-        { "RelatedPerson", "relationship" },
-        { "RiskAssessment", "code" },
-        { "SearchParameter", "target" },
-        { "ServiceRequest", "code" },
-        { "Specimen", "type" },
-        { "Substance", "code" },
-        { "SupplyDelivery", "type" },
-        { "SupplyRequest", "category" },
-        {  "Task", "code" },
-    };
 }

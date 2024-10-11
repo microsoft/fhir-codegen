@@ -18,43 +18,25 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Language\Cql\_Definitional\CqlFhirTypeMaps.fsh" />
-    <None Remove="Language\Cql\_Definitional\fsh-generated\ConceptMap-cql-fhir-types-r2.json" />
-    <None Remove="Language\Cql\_Definitional\fsh-generated\ConceptMap-cql-fhir-types-r3.json" />
-    <None Remove="Language\Cql\_Definitional\fsh-generated\ConceptMap-cql-fhir-types-r4.json" />
-    <None Remove="Language\Cql\_Definitional\fsh-generated\ConceptMap-cql-fhir-types-r5.json" />
-    <None Remove="Language\Cql\_Definitional\fsh-generated\ConceptMap-cql-fhir-types-r6.json" />
+    <Content Include="Language\Cql\_Definitional\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
     <Compile Include="..\Microsoft.Health.Fhir.CodeGenCommon\Polyfill\CodeGenCommonPolyfill.cs" Link="Polyfill\CodeGenCommonPolyfill.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Language\Cql\_Definitional\CqlFhirTypeMaps.fsh">
+    <Content Include="Language\Cql\_Definitional\CqlFhirCodePaths-CS.fsh">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Language\Cql\_Definitional\fsh-generated\ConceptMap-cql-fhir-types-r2.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Language\Cql\_Definitional\fsh-generated\ConceptMap-cql-fhir-types-r3.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Language\Cql\_Definitional\fsh-generated\ConceptMap-cql-fhir-types-r4.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Language\Cql\_Definitional\fsh-generated\ConceptMap-cql-fhir-types-r5.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Language\Cql\_Definitional\fsh-generated\ConceptMap-cql-fhir-types-r6.json">
+    <Content Include="Language\Cql\_Definitional\CqlFhirProperties.fsh">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Firely.Fhir.Packages" Version="4.7.0" />
-    <PackageReference Include="Hl7.Fhir.R5" Version="5.10.2" />
-    <PackageReference Include="Microsoft.OpenApi" Version="1.6.21" />
+    <PackageReference Include="Firely.Fhir.Packages" Version="4.8.0" />
+    <PackageReference Include="Hl7.Fhir.R5" Version="5.10.3" />
+    <PackageReference Include="Microsoft.OpenApi" Version="1.6.22" />
     <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
   </ItemGroup>
 
@@ -63,7 +45,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="System.Text.Json" Version="8.0.4" />
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
   </ItemGroup>
 
   <ItemGroup>

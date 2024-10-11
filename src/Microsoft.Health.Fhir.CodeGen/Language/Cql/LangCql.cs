@@ -8,9 +8,15 @@ using System.Collections.Generic;
 using System.Text;
 using Hl7.Fhir.Model;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
+using Microsoft.Health.Fhir.CodeGen.Loader;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
+using Microsoft.Health.Fhir.CodeGenCommon.Utils;
+using System.Reflection;
+using Firely.Fhir.Packages;
+
+
 
 #if NETSTANDARD2_0
 using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
@@ -33,6 +39,7 @@ public class LangCql : ILanguage
 
     private CqlOptions _config = null!;
     private DefinitionCollection _dc = null!;
+    private readonly Dictionary<string, string> _exportedValueSets = [];
 
     private readonly Dictionary<string, string> _valueTypeConverters = new()
     {
@@ -43,6 +50,10 @@ public class LangCql : ILanguage
         { "Range", "ToInterval" },
         { "Ratio", "ToRatio" },
     };
+
+    private string _name = string.Empty;
+    private readonly Dictionary<string, string> _fhirCqlTypeMap = [];
+    private CqlFhirParameters? _cqlFhirParameters = null;
 
     private readonly Dictionary<string, string> _primitiveConverters = new()
     {
@@ -103,32 +114,403 @@ public class LangCql : ILanguage
         _config = config;
         _dc = definitions;
 
-        // if the primary package directive is a core package, we need to write a helper file
         if (FhirPackageUtils.PackageIsFhirCore(definitions.MainPackageId))
         {
-            WriteFhirHelperFile();
+            _name = "FHIR";
+        }
+        else
+        {
+            _name = FhirSanitizationUtils.SanitizeForProperty(definitions.Name);
         }
 
+        // load the necessary CQL support files
+        LoadCqlSupport();
+
+        // write the relevant helper file
+        WriteHelperFile();
+
+        // build our CQL Model Info
+        ModelInfo cqlModelInfo = BuildModelInfo();
+
+        System.Xml.Serialization.XmlSerializer serializer = new(typeof(ModelInfo));
+        string modelInfoFilename = Path.Combine(_config.OutputDirectory, $"{_name}-modelinfo-{_dc.MainPackageVersion}.xml");
+        using (StreamWriter writer = new(modelInfoFilename))
+        {
+            serializer.Serialize(writer, cqlModelInfo);
+            writer.Flush();
+            writer.Close();
+        }
+    }
+
+    private ModelInfo BuildModelInfo()
+    {
+        ModelInfo model = new()
+        {
+            name = _name,
+            version = _dc.MainPackageVersion,
+            url = _dc.MainPackageCanonical,
+            targetQualifier = _name.ToLowerInvariant(),
+        };
+
+        if (_cqlFhirParameters?.ModelProperties.Any() ?? false)
+        {
+            // Reflect ModelInfo to get the list of properties it has
+            PropertyInfo[] properties = typeof(ModelInfo).GetProperties();
+
+            foreach (PropertyInfo property in properties)
+            {
+                // check to see if we have a value for this property
+                if (_cqlFhirParameters.ModelProperties.TryGetValue(property.Name, out string? value))
+                {
+                    property.SetValue(model, value);
+                }
+            }
+        }
+
+        // always require system
+        model.requiredModelInfo = [ new() { name = "System", version = "1.0.0" } ];
+
+        List<Cql.TypeInfo> modelTypes = [];
+
+        // iterate over primitive types only if we are in a FHIR namespace
+        if (_name == "FHIR")
+        {
+            modelTypes.AddRange(ModelTypesForPrimitives(_dc.PrimitiveTypesByName.Values));
+        }
+
+        // add the complex types
+        modelTypes.AddRange(ModelTypesForStructures(_dc.ComplexTypesByName.Values.Select(sd => new ComponentDefinition(sd)), false));
+
+        // add all our computed types
+        model.typeInfo = modelTypes.ToArray();
+
+        // TODO(ginoc): add conversion functions: model.conversionInfo
+
+
+        // return our model
+        return model;
+    }
+
+    private List<Cql.ClassInfo> ModelTypesForPrimitives(IEnumerable<StructureDefinition> primitives)
+    {
+        List<Cql.ClassInfo> modelTypes = [];
+
+        foreach (StructureDefinition sd in primitives)
+        {
+            // grab the base for this primitive
+            string bt = sd.BaseDefinition.Split('/')[^1];
+
+            // create our type info
+            Cql.ClassInfo ti = new Cql.ClassInfo()
+            {
+                baseType = $"{_name}.{bt}",
+                @namespace = _name,
+                name = sd.Name,
+                identifier = sd.Url,
+                label = sd.Name,
+                retrievable = false,
+            };
+
+            // if this is a 'base' primitive, we need to specify the value element
+            if (bt == "Element")
+            {
+                // add the value element
+                if (_fhirCqlTypeMap.TryGetValue(sd.Name, out string? cqlType))
+                {
+                    ti.element = [ new()
+                    {
+                        name = "value",
+                        elementType = cqlType,
+                    }];
+                }
+                else
+                {
+                    ti.element = [ new()
+                    {
+                        name = "value",
+                        elementType = sd.Name,
+                    }];
+                }
+            }
+
+            // add the type info to our list
+            modelTypes.Add(ti);
+        }
+
+        return modelTypes;
+    }
+
+    private List<Cql.ClassInfo> ModelTypesForStructures(IEnumerable<ComponentDefinition> components, bool isRetrievable = false)
+    {
+        List<Cql.ClassInfo> modelTypes = [];
+
+        foreach (ComponentDefinition cd in components)
+        {
+            // grab the base for this primitive
+            string bt = cd.IsRootOfStructure
+                ? cd.Structure.cgBaseTypeName()
+                : cd.Element.cgBaseTypeName(_dc, false);
+
+            // create our type info
+            Cql.ClassInfo ti = cd.IsRootOfStructure
+                ? new Cql.ClassInfo()
+                {
+                    baseType = $"{_name}.{bt}",
+                    @namespace = _name,
+                    name = cd.Structure.Name,
+                    identifier = cd.Structure.Url,
+                    label = cd.Structure.Name,
+                    retrievable = isRetrievable,
+                }
+                : new Cql.ClassInfo()
+                {
+                    baseType = $"{_name}.{bt}",
+                    @namespace = _name,
+                    name = cd.Element.Path,
+                    retrievable = isRetrievable,
+                };
+
+            List<Cql.ClassInfoElement> cqlElements = [];
+
+            // get the elements for this level of this component
+            foreach (ElementDefinition element in cd.cgGetChildren(false, true))
+            {
+                if (element.cgIsInherited(cd.Structure))
+                {
+                    continue;
+                }
+
+                ComponentDefinition[] subComponents = cd.Structure.cgComponents(_dc, element, false, true).ToArray();
+
+                Cql.ClassInfoElement cqlElement = new()
+                {
+                    name = element.cgName(),
+                };
+
+                IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> ets = element.cgTypes();
+
+                // check if this is a choice type
+                if (ets.Count > 1)
+                {
+                    List<Cql.NamedTypeSpecifier> choices = [];
+                    foreach (ElementDefinition.TypeRefComponent et in ets.Values)
+                    {
+                        choices.Add(new Cql.NamedTypeSpecifier()
+                        {
+                            @namespace = _name,
+                            name = et.cgName(),
+                        });
+                    }
+
+                    cqlElement.elementTypeSpecifier = new Cql.ChoiceTypeSpecifier()
+                    {
+                        choice = choices.ToArray(),
+                    };
+                }
+                // check for simple element
+                else if (ets.Count == 1)
+                {
+                    ElementDefinition.TypeRefComponent et = ets.First().Value;
+
+                    string typeName = et.cgName();
+
+                    // check for bound elements that need to use an exported code type
+                    if ((element.Binding?.Strength == Hl7.Fhir.Model.BindingStrength.Required) &&
+                        ((typeName == "code") || (typeName == "coding")) &&
+                        _exportedValueSets.TryGetValue(element.Binding.ValueSet, out string? exportedName))
+                    {
+                        typeName = exportedName;
+                    }
+
+                    // check cardinality
+                    if (element.cgIsArray())
+                    {
+                        cqlElement.elementTypeSpecifier = new Cql.ListTypeSpecifier()
+                        {
+                            elementType = $"{_name}.{typeName}",
+                        };
+                    }
+                    else
+                    {
+                        cqlElement.elementType = $"{_name}.{typeName}";
+                    }
+                }
+
+                cqlElements.Add(cqlElement);
+
+                // nest through sub-components
+                modelTypes.AddRange(ModelTypesForStructures(subComponents, false));
+            }
+
+            // add our elements
+            if (cqlElements.Count > 0)
+            {
+                ti.element = cqlElements.ToArray();
+            }
+
+            // add the type info to our list
+            modelTypes.Add(ti);
+        }
+
+        return modelTypes;
+    }
+
+    private void LoadCqlSupport()
+    {
+        if (string.IsNullOrEmpty(_config.CqlSupportDir))
+        {
+            return;
+        }
+
+        PackageLoader loader = new();
+
+        // first, we want to load the type map
+        string filename = Path.Combine(_config.CqlSupportDir, $"ConceptMap-cql-fhir-types-{_dc.FhirSequence.ToRLiteral()}.json");
+
+        if (File.Exists(filename))
+        {
+            object? parsed = loader.ParseContentsPoco("application/fhir+json", filename);
+            if (parsed is ConceptMap typeMap)
+            {
+                _fhirCqlTypeMap.Clear();
+
+                foreach (ConceptMap.GroupComponent group in typeMap.Group)
+                {
+                    foreach (ConceptMap.SourceElementComponent element in group.Element)
+                    {
+                        if (element.Target.Count != 1)
+                        {
+                            continue;
+                        }
+
+                        _fhirCqlTypeMap[element.Code] = element.Target[0].Code;
+                    }
+                }
+            }
+        }
+
+        // next, look for a properties file (versioned, then unversioned)
+        filename = Path.Combine(_config.CqlSupportDir, $"Parameters-cql-{_dc.MainPackageId.Replace('.', '-')}-{_dc.MainPackageVersion.Replace('.', '-')}.json");
+        if (!File.Exists(filename))
+        {
+            filename = Path.Combine(_config.CqlSupportDir, $"Parameters-cql-{_dc.MainPackageId.Replace('.', '-')}.json");
+        }
+        if (File.Exists(filename))
+        {
+            object? parsed = loader.ParseContentsPoco("application/fhir+json", filename);
+            if (parsed is Parameters cqlFhirParams)
+            {
+                _cqlFhirParameters = new();
+                foreach (Parameters.ParameterComponent param in cqlFhirParams.Parameter)
+                {
+                    switch (param.Name)
+                    {
+                        case "context":
+                            {
+                                foreach (Parameters.ParameterComponent inner in param.Part)
+                                {
+                                    switch (inner.Name)
+                                    {
+                                        case "packageId":
+                                            {
+                                                _cqlFhirParameters.PackageId = (inner.Value is FhirString fs) ? fs.Value : string.Empty;
+                                            }
+                                            break;
+
+                                        case "packageVersion":
+                                            {
+                                                _cqlFhirParameters.PackageVersion = (inner.Value is FhirString fs) ? fs.Value : string.Empty;
+                                            }
+                                            break;
+                                    }
+                                }
+                            }
+                            break;
+
+                        case "supersedes":
+                            {
+                                string supersedesPackage = string.Empty;
+                                string supersedesVersion = string.Empty;
+
+                                foreach (Parameters.ParameterComponent inner in param.Part)
+                                {
+                                    switch (inner.Name)
+                                    {
+                                        case "packageId":
+                                            {
+                                                supersedesPackage = (inner.Value is FhirString fs) ? fs.Value : string.Empty;
+                                            }
+                                            break;
+
+                                        case "packageVersion":
+                                            {
+                                                supersedesVersion = (inner.Value is FhirString fs) ? "@" + fs.Value : string.Empty;
+                                            }
+                                            break;
+                                    }
+                                }
+
+                                if (!string.IsNullOrEmpty(supersedesPackage))
+                                {
+                                    _cqlFhirParameters.Supersedes.Add(supersedesPackage + supersedesPackage);
+                                }
+                            }
+                            break;
+
+                        case "modelProperties":
+                            {
+                                foreach (Parameters.ParameterComponent inner in param.Part)
+                                {
+                                    string key = inner.Name;
+                                    string value = (inner.Value is FhirString fs) ? fs.Value : string.Empty;
+
+                                    if (!string.IsNullOrEmpty(value))
+                                    {
+                                        _cqlFhirParameters.ModelProperties.Add(key, value);
+                                    }
+                                }
+                            }
+                            break;
+
+                        // everything else is should be a structure canonical
+                        default:
+                            {
+                                string canonical = param.Name;
+                                Dictionary<string, string> sProps = [];
+
+                                foreach (Parameters.ParameterComponent inner in param.Part)
+                                {
+                                    string key = inner.Name;
+                                    string value = (inner.Value is FhirString fs) ? fs.Value : string.Empty;
+
+                                    if (!string.IsNullOrEmpty(value))
+                                    {
+                                        sProps.Add(key, value);
+                                    }
+                                }
+
+                                _cqlFhirParameters.StructureProperties.Add(canonical, sProps);
+                            }
+                            break;
+                    }
+                }
+
+            }
+        }
 
     }
 
-    private void BuildModelInfo()
+    private void WriteHelperFile()
     {
-        ModelInfo cqlModel = new();
+        string packageVersion = _dc.MainPackageVersion.Split('-')[0];
+        string fhirVersion = _dc.FhirVersionLiteral;
 
-
-    }
-
-    private void WriteFhirHelperFile()
-    {
-        string version = _dc.MainPackageVersion.Split('-')[0];
-
-        ExportStreamWriter writer = OpenWriter($"FHIRHelpers-{version}.cql");
+        ExportStreamWriter writer = OpenWriter($"{_name}Helpers-{packageVersion}.cql");
         WriteHelperHeader(writer);
 
-        writer.WriteLineIndented($"library FHIRHelpers version '{version}'");
+        writer.WriteLineIndented($"library {_name}Helpers version '{packageVersion}'");
         writer.WriteLine();
-        writer.WriteLineIndented($"using FHIR version '{version}'");
+        writer.WriteLineIndented($"using FHIR version '{fhirVersion}'");
         writer.WriteLine();
 
         WriteHelperToInterval(writer);
@@ -550,6 +932,10 @@ public class LangCql : ILanguage
 
                 // write our conversion function
                 writer.WriteLineIndented($"{value,-90}\t// {vs.Url} - {vs.Description}");
+
+                // add to tracking
+                _exportedValueSets[vs.Url] = name;
+                _exportedValueSets[vs.Url + "|" + vsVersion] = name;
             }
         }
     }

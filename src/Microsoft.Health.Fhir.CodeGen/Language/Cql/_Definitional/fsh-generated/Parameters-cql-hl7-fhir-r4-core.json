@@ -16,6 +16,19 @@
             ]
         },
         {
+            "name": "modelProperties",
+            "part": [
+                {
+                    "name": "patientClassName",
+                    "valueString": "FHIR.Patient"
+                },
+                {
+                    "name": "patientBirthDatePropertyName",
+                    "valueString": "birthDate.value"
+                }
+            ]
+        },
+        {
             "name": "http://hl7.org/fhir/StructureDefinition/Account",
             "part": [
                 {

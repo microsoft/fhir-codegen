@@ -575,6 +575,75 @@ public class ConfigRoot : ICodeGenConfig
     }
 
 
+    internal string FindRelativeFile(
+        string startDir,
+        string filename,
+        bool throwIfNotFound = true)
+    {
+        string currentFilename;
+
+        if (string.IsNullOrEmpty(startDir))
+        {
+            if (filename.StartsWith('~'))
+            {
+                currentFilename = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile));
+
+                if (filename.Length > 1)
+                {
+                    filename = filename[2..];
+                }
+                else
+                {
+                    filename = string.Empty;
+                }
+            }
+            else
+            {
+                currentFilename = Path.GetDirectoryName(AppContext.BaseDirectory) ?? string.Empty;
+            }
+        }
+        else if (startDir.StartsWith('~'))
+        {
+            // check if the path was only the user dir or the user dir plus a separator
+            if ((startDir.Length == 1) || (startDir.Length == 2))
+            {
+                currentFilename = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile));
+            }
+            else
+            {
+                // skip the separator
+                currentFilename = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), startDir[2..]);
+            }
+        }
+        else
+        {
+            currentFilename = startDir;
+        }
+
+        string testFilename = Path.Combine(currentFilename, filename);
+
+        while (!File.Exists(testFilename))
+        {
+            currentFilename = Path.GetFullPath(Path.Combine(currentFilename, ".."));
+
+            if (currentFilename == Path.GetPathRoot(currentFilename))
+            {
+                if (throwIfNotFound)
+                {
+                    throw new DirectoryNotFoundException($"Could not find file {filename}!");
+                }
+
+                return string.Empty;
+            }
+
+            testFilename = Path.Combine(currentFilename, filename);
+        }
+
+        return Path.GetFullPath(testFilename);
+    }
+
+
+
     /// <summary>Parses the given parse result.</summary>
     /// <param name="parseResult">The parse result.</param>
     public virtual void Parse(System.CommandLine.Parsing.ParseResult parseResult)

@@ -1961,7 +1961,7 @@ public partial class ClassInfo : TypeInfo {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    [System.ComponentModel.DefaultValueAttribute(false)]
+    //[System.ComponentModel.DefaultValueAttribute(false)]
     public bool retrievable {
         get {
             return this.retrievableField;
