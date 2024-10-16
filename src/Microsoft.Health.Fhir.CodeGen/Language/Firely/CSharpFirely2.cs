@@ -1294,16 +1294,6 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
         GenSubset subset)
     {
         string exportName = "I" + complex.Name.ToPascalCase();
-
-        //writtenModels.Add(
-        //    complex.Name,
-        //    new WrittenModelInfo()
-        //    {
-        //        FhirName = complex.Name,
-        //        CsName = $"{Namespace}.{exportName}",
-        //        IsAbstract = complex.Abstract == true,
-        //    });
-
         string filename = Path.Combine(_exportDirectory, "Generated", $"{exportName}.cs");
 
         _modelWriter.WriteLineIndented($"// {exportName}.cs");
@@ -1954,7 +1944,8 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
         // open class
         OpenScope();
 
-        WritePropertyTypeName(complex.cgName());
+        if(complex.Structure.Abstract != true)
+            WritePropertyTypeName(complex.cgName());
 
         string validationRegEx = complex.cgValidationRegEx();
         if (!string.IsNullOrEmpty(validationRegEx))
@@ -2093,23 +2084,21 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
         return baseTypeName;
     }
 
-    private void WriteIDictionarySupport(string exportName, IEnumerable<WrittenElementInfo> exportedElements)
+    private void WriteIDictionarySupport(string exportName, List<WrittenElementInfo> exportedElements)
     {
         WriteDictionaryTryGetValue(exportName, exportedElements);
+        WriteDictionaryTrySetValue(exportName, exportedElements);
         WriteDictionaryPairs(exportName, exportedElements);
     }
-
 
     private string NullCheck(string propertyName, bool isList) =>
         propertyName + (isList ? "?.Any() == true" : " is not null");
 
-    private void WriteDictionaryPairs(string exportName, IEnumerable<WrittenElementInfo> exportedElements)
+    private void WriteDictionaryPairs(string exportName, List<WrittenElementInfo> exportedElements)
     {
-        // Base implementation differs from subclasses.
+        // Base implementation differs from subclasses and is hand-written code in a separate partical class
         if (exportName == "Base")
         {
-            _writer.WriteLineIndented("protected virtual IEnumerable<KeyValuePair<string, object>> GetElementPairs() => Enumerable.Empty<KeyValuePair<string, object>>();");
-            _writer.WriteLine(string.Empty);
             return;
         }
 
@@ -2132,18 +2121,13 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
         CloseScope();
     }
 
-    private void WriteDictionaryTryGetValue(string exportName, IEnumerable<WrittenElementInfo> exportedElements)
+    private void WriteDictionaryTryGetValue(string exportName, List<WrittenElementInfo> exportedElements)
     {
-        // Base implementation differs from subclasses.
-        if (exportName == "Base")
-        {
-            _writer.WriteLineIndented("protected virtual bool TryGetValue(string key, out object value)");
-            OpenScope();
-            _writer.WriteLineIndented("value = default;");
-            _writer.WriteLineIndented("return false;");
-            CloseScope();
-            return;
-        }
+       // Base implementation differs from subclasses and is hand-written code in a separate partical class
+       if (exportName == "Base")
+       {
+           return;
+       }
 
         // Don't override anything if there are no additional elements.
         if (!exportedElements.Any())
@@ -2186,6 +2170,74 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
         CloseScope();
 
         void writeBaseTryGetValue() => _writer.WriteLineIndented("return base.TryGetValue(key, out value);");
+    }
+
+
+    private void WriteDictionaryTrySetValue(string exportName, List<WrittenElementInfo> exportedElements)
+    {
+        // Base implementation differs from subclasses and is hand-written code in a separate partical class
+        if (exportName == "Base")
+        {
+            return;
+        }
+
+        // Don't override anything if there are no additional elements.
+        if (!exportedElements.Any())
+        {
+            return;
+        }
+
+        _writer.WriteLineIndented("protected override Base SetValue(string key, object value)");
+        OpenScope();
+
+        // switch
+        _writer.WriteLineIndented("switch (key)");
+        OpenScope();
+
+        foreach (WrittenElementInfo info in exportedElements)
+        {
+            writeSetValueCase(info.FhirElementName, null,
+                  $"{info.PropertyName} = ({info.PropertyType.PropertyTypeString})value;");
+
+            // if (info.PropertyType is ListTypeReference ltr)
+            // {
+            //     writeSetValueCase(info.FhirElementName, $"value is IEnumerable<{ltr.Element.PropertyTypeString}> v",
+            //         $"{info.PropertyName} = new {info.PropertyType.PropertyTypeString}(v);");
+            // }
+            // else
+            // {
+            //     writeSetValueCase(info.FhirElementName, $"value is {info.PropertyType.PropertyTypeString} v",
+            //         $"{info.PropertyName} = v;");
+            // }
+            //
+            // writeSetValueCase(info.FhirElementName, "value is null",
+            //     $"{info.PropertyName} = null;");
+        }
+
+        void writeSetValueCase(string name, string? when, string statement)
+        {
+            _writer.WriteLineIndented(when is not null ? $"case \"{name}\" when {when}:" : $"case \"{name}\":");
+
+            _writer.IncreaseIndent();
+
+            _writer.WriteLineIndented(statement);
+            //_writer.WriteLineIndented($"return true;");
+            _writer.WriteLineIndented($"return this;");
+            _writer.DecreaseIndent();
+        }
+
+        _writer.WriteLineIndented("default:");
+        _writer.IncreaseIndent();
+        writeBaseTrySetValue();
+
+        _writer.DecreaseIndent();
+
+        // end switch
+        CloseScope(includeSemicolon: false);
+
+        CloseScope();
+
+        void writeBaseTrySetValue() => _writer.WriteLineIndented("return base.SetValue(key, value);");
     }
 
     /// <summary>Writes the children of this item.</summary>
@@ -2523,7 +2575,8 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
         // open class
         OpenScope();
 
-        WritePropertyTypeName(complex.Structure.Name);
+        if(complex.Structure.Abstract != true)
+            WritePropertyTypeName(complex.Structure.Name);
 
         _writer.WriteLineIndented("public override IDeepCopyable DeepCopy()");
         OpenScope();
@@ -2612,7 +2665,8 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
         // open class
         OpenScope();
 
-        WritePropertyTypeName(componentName);
+        if(complex.Structure.Abstract != true)
+            WritePropertyTypeName(componentName);
 
         WriteElements(complex, exportName, ref exportedElements, subset);
 
@@ -3649,8 +3703,8 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
     private void WritePropertyTypeName(string name)
     {
         WriteIndentedComment("FHIR Type Name");
-        var specifier = name == "Base" ? "virtual" : "override";
-        _writer.WriteLineIndented($"public {specifier} string TypeName {{ get {{ return \"{name}\"; }} }}");
+
+        _writer.WriteLineIndented($"public override string TypeName {{ get {{ return \"{name}\"; }} }}");
 
         _writer.WriteLine(string.Empty);
     }
@@ -3764,7 +3818,8 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
         // open class
         OpenScope();
 
-        WritePropertyTypeName(primitive.Name);
+        if(primitive.Abstract != true)
+            WritePropertyTypeName(primitive.Name);
 
         if (!string.IsNullOrEmpty(primitive.cgpValidationRegEx()))
         {
