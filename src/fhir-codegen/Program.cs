@@ -656,7 +656,7 @@ public class Program
             // parse the arguments into the configuration object
             config.Parse(pr);
 
-            Dictionary<string, DefinitionCollection> corePackages = [];
+            List<DefinitionCollection> packages = [];
 
             foreach (string directive in config.ComparePackages)
             {
@@ -674,11 +674,11 @@ public class Program
                 DefinitionCollection loaded = await loader.LoadPackages([directive])
                     ?? throw new Exception($"Could not load package: {directive}");
 
-                corePackages.Add(directive, loaded);
+                packages.Add(loaded);
             }
 
-            XVerProcessor xVerProcessor = new(config, corePackages);
-
+            XVerProcessor xVerProcessor = new(config, packages);
+            xVerProcessor.Compare();
         }
         catch (Exception ex)
         {

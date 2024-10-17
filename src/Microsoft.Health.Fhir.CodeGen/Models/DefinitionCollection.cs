@@ -1010,10 +1010,40 @@ public partial class DefinitionCollection
         }
     }
 
-    public List<ConceptMap> ConceptMapsForSource(string src) =>
-        _conceptMapsBySourceUrl.TryGetValue(src, out List<ConceptMap>? maps)
-        ? maps
-        : (src.Contains('|') ? (_conceptMapsBySourceUrl.TryGetValue(src.Split('|')[0], out maps) ? maps : []) : []);
+    /// <summary>
+    /// Retrieves a list of ConceptMaps for a given source URL.
+    /// </summary>
+    /// <param name="src">The source URL.</param>
+    /// <returns>A list of ConceptMaps.</returns>
+    public List<ConceptMap> ConceptMapsForSource(string src)
+    {
+        if (!src.Contains('|'))
+        {
+            return _conceptMapsBySourceUrl.TryGetValue(src, out List<ConceptMap>? srcMaps) ? srcMaps : [];
+        }
+
+        string uvUrl = src.Split('|')[0];
+
+        bool hasUvMaps = _conceptMapsBySourceUrl.TryGetValue(uvUrl, out List<ConceptMap>? uvMaps);
+        bool hasVMaps = _conceptMapsBySourceUrl.TryGetValue(src, out List<ConceptMap>? vMaps);
+
+        if (hasUvMaps && hasVMaps)
+        {
+            return uvMaps!.Union(vMaps!).ToList();
+        }
+
+        if (hasVMaps)
+        {
+            return vMaps!;
+        }
+
+        if (hasUvMaps)
+        {
+            return uvMaps!;
+        }
+
+        return [];
+    }
 
     public IReadOnlyDictionary<string, StructureMap> StructureMapsByUrl => _structureMapsByUrl;
     public void AddStructureMap(StructureMap sm, string packageId, string packageVersion)
