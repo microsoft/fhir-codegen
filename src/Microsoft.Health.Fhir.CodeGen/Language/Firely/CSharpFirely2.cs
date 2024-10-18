@@ -1535,8 +1535,6 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
 
         string fhirTypeConstructor = $"\"{complexName}\",\"{complex.cgUrl()}\"";
 
-        //_writer.WriteLineIndented($"[FhirType({fhirTypeConstructor}, IsResource=true)]");
-
         StructureDefinition? parentInterface = _info.GetParentInterface(complex.Structure);
 
         if (parentInterface == null)
@@ -1868,15 +1866,7 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
         WriteSerializable();
 
         string fhirTypeConstructor = $"\"{complexName}\",\"{complex.cgUrl()}\"";
-
-        if (isResource)
-        {
-            _writer.WriteLineIndented($"[FhirType({fhirTypeConstructor}, IsResource=true)]");
-        }
-        else
-        {
-            _writer.WriteLineIndented($"[FhirType({fhirTypeConstructor})]");
-        }
+        _writer.WriteLineIndented($"[FhirType({fhirTypeConstructor})]");
 
         var isPatientClass = false;
 
@@ -2653,7 +2643,7 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
         string componentName = parentExportName + "#" + explicitNamePart;
 
         WriteSerializable();
-        _writer.WriteLineIndented($"[FhirType(\"{componentName}\", IsNestedType=true)]");
+        _writer.WriteLineIndented($"[FhirType(\"{componentName}\")]");
 
         _writer.WriteLineIndented($"[BackboneType(\"{complex.Element.Path}\")]");
 
