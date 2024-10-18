@@ -5,6 +5,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Utility;
@@ -102,8 +104,6 @@ public class XVerProcessor
                 continue;
             }
 
-            // TODO(ginoc): need to use annotations on the base VS, not the expansion!!!
-
             // get or create the comparison annotation for this VS
             if ((!vs.TryGetAnnotation(out ValueSetComparisonAnnotation? comparisonAnnotation)) ||
                 (comparisonAnnotation == null))
@@ -169,6 +169,47 @@ public class XVerProcessor
         }
     }
 
+    private ConceptDomainRelationshipCodes ApplyRelationship(ConceptDomainRelationshipCodes? existing, ConceptDomainRelationshipCodes? change) => existing switch
+    {
+        ConceptDomainRelationshipCodes.Unknown => change ?? ConceptDomainRelationshipCodes.Unknown,
+        ConceptDomainRelationshipCodes.Equivalent => CDRCodeIsBroader(change)
+            ? ConceptDomainRelationshipCodes.SourceIsBroaderThanTarget
+            : CDRCodeIsNarrower(change)
+            ? ConceptDomainRelationshipCodes.SourceIsNarrowerThanTarget
+            : change ?? ConceptDomainRelationshipCodes.Equivalent,
+        ConceptDomainRelationshipCodes.SourceIsNew => CDRCodeIsBroader(change)
+            ? ConceptDomainRelationshipCodes.SourceIsBroaderThanTarget
+            : ConceptDomainRelationshipCodes.Related,
+        ConceptDomainRelationshipCodes.SourceIsDeprecated => CDRCodeIsNarrower(change)
+            ? ConceptDomainRelationshipCodes.SourceIsNarrowerThanTarget
+            : ConceptDomainRelationshipCodes.Related,
+        ConceptDomainRelationshipCodes.NotMapped => CDRCodeIsBroader(change)
+            ? ConceptDomainRelationshipCodes.SourceIsBroaderThanTarget
+            : ConceptDomainRelationshipCodes.Related,
+        ConceptDomainRelationshipCodes.SourceIsNarrowerThanTarget => CDRCodeIsNarrower(change)
+            ? ConceptDomainRelationshipCodes.SourceIsNarrowerThanTarget
+            : ConceptDomainRelationshipCodes.Related,
+        ConceptDomainRelationshipCodes.SourceIsBroaderThanTarget => CDRCodeIsBroader(change)
+? ConceptDomainRelationshipCodes.SourceIsBroaderThanTarget
+            : ConceptDomainRelationshipCodes.Related,
+        ConceptDomainRelationshipCodes.Related => (change == ConceptDomainRelationshipCodes.NotRelated)
+            ? ConceptDomainRelationshipCodes.NotRelated
+            : ConceptDomainRelationshipCodes.Related,
+        ConceptDomainRelationshipCodes.NotRelated => change ?? ConceptDomainRelationshipCodes.NotRelated,
+        _ => change ?? existing ?? ConceptDomainRelationshipCodes.Unknown,
+    };
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    private bool CDRCodeIsNarrower(ConceptDomainRelationshipCodes? cdr) =>
+        cdr == ConceptDomainRelationshipCodes.SourceIsNarrowerThanTarget ||
+        cdr == ConceptDomainRelationshipCodes.SourceIsDeprecated;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    private bool CDRCodeIsBroader(ConceptDomainRelationshipCodes? cdr) =>
+        cdr == ConceptDomainRelationshipCodes.SourceIsBroaderThanTarget ||
+        cdr == ConceptDomainRelationshipCodes.SourceIsNew ||
+        cdr == ConceptDomainRelationshipCodes.NotMapped;
+
     private ValueSetComparisonDetails compareValueSet(
         ValueSet sourceVs,
         ValueSet targetVs,
@@ -177,13 +218,22 @@ public class XVerProcessor
         // build our concept comparison dictionary
         Dictionary<string, ValueSetConceptComparisonDetails[]>? vsConceptComparisons = compareValueSetConcepts(sourceVs, targetVs, cm);
 
+        // start optimistically
+        ConceptDomainRelationshipCodes vsRelationship = ConceptDomainRelationshipCodes.Equivalent;
+
+        // iterate over our concept comparisons to determine the overall relationship
+        foreach (ValueSetConceptComparisonDetails vscDetails in vsConceptComparisons?.Values.SelectMany(v => v) ?? [])
+        {
+            vsRelationship = ApplyRelationship(vsRelationship, vscDetails.ConceptDomain?.Relationship);
+        }
+
         return new()
         {
             Target = targetVs,
             ExplicitMappingSource = cm?.Url,
             ConceptDomain = new()
             {
-                Relationship = ConceptDomainRelationshipCodes.Related,
+                Relationship = vsRelationship,
             },
             ValueSetConcepts = vsConceptComparisons,
         };

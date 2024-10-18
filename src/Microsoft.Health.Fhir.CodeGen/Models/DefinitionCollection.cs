@@ -1556,8 +1556,8 @@ public partial class DefinitionCollection
                 // copy the existing expansion into the new record
                 existing.Expansion.CopyTo(valueSet.Expansion);
 
-                // update to the more complete definition + the expansion
-                _valueSetsByVersionedUrl[vsUrl] = valueSet;
+                // copy the new record into the existing to keep the most recent in all dictionaries
+                valueSet.CopyTo(existing);
             }
             else if ((valueSet.Expansion != null) && (existing.Expansion != null))
             {
@@ -1578,8 +1578,8 @@ public partial class DefinitionCollection
 
                 if (existingUpdated < incomingUpdated)
                 {
-                    // keep the incoming
-                    _valueSetsByVersionedUrl[vsUrl] = valueSet;
+                    // copy the new record into the existing to keep the most recent in all dictionaries
+                    valueSet.CopyTo(existing);
                 }
             }
 

@@ -66,6 +66,7 @@ public enum ConceptDomainRelationshipCodes
     SourceIsNarrowerThanTarget,
     SourceIsBroaderThanTarget,
     Related,
+    NotRelated,
 }
 
 /// <summary>
