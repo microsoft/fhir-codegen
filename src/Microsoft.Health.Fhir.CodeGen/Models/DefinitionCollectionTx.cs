@@ -51,6 +51,35 @@ public partial class DefinitionCollection : IAsyncResourceResolver
         }
     }
 
+    /// <summary>Expand vs.</summary>
+    /// <param name="uri">The canonical url of a (conformance) resource.</param>
+    /// <returns>An asynchronous result that yields a ValueSet?</returns>
+    public async Task<(ValueSet?, string?)> ExpandVsEx(string uri)
+    {
+        Parameters p = [];
+        p.Parameter.Add(new() { Name = "url", Value = new FhirUri(uri) });
+        p.Parameter.Add(new() { Name = "includeDesignations", Value = new FhirBoolean(false) });
+        //p.Parameter.Add(new() { Name = "displayLanguage", Value = new Code("en") });
+
+        try
+        {
+            Resource r = await _localTx.Expand(p);
+
+            if ((r is ValueSet vs) &&
+                (!vs.IsLimitedExpansion()))
+            {
+                return (vs, null);
+            }
+
+            return (null, $"Expansion is limited");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error expanding {uri}: {ex.Message}");
+            return (null, $"Error expanding {uri}: {ex.Message}");
+        }
+    }
+
     /// <summary>Attempts to expand vs a ValueSet from the given string.</summary>
     /// <param name="uri">The canonical url of a (conformance) resource.</param>
     /// <param name="vs"> [out] The vs.</param>
@@ -58,6 +87,17 @@ public partial class DefinitionCollection : IAsyncResourceResolver
     public bool TryExpandVs(string uri, [NotNullWhen(true)] out ValueSet? vs)
     {
         vs = ExpandVs(uri).Result;
+        return vs != null;
+    }
+
+    /// <summary>Attempts to expand vs a ValueSet from the given string.</summary>
+    /// <param name="uri">    The canonical url of a (conformance) resource.</param>
+    /// <param name="vs">     [out] The vs.</param>
+    /// <param name="message">[out] The message.</param>
+    /// <returns>True if it succeeds, false if it fails.</returns>
+    public bool TryExpandVs(string uri, [NotNullWhen(true)] out ValueSet? vs, out string? message)
+    {
+        (vs, message) = ExpandVsEx(uri).Result;
         return vs != null;
     }
 

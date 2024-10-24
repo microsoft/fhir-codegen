@@ -17,6 +17,7 @@ namespace Microsoft.Health.Fhir.CodeGen.XVer;
 public enum ComparisonFailureCodes
 {
     UnresolvedTarget,
+    CannotExpand,
 }
 
 /// <summary>
@@ -168,9 +169,25 @@ public class ValueSetComparisonAnnotation
     /// Gets or sets the array of comparison details to the next version.
     /// </summary>
     public List<ValueSetComparisonDetails> ToNext { get; init; } = [];
+
+    /// <summary>
+    /// Gets or sets the failure code for the comparison.
+    /// </summary>
+    /// <value>The failure code for the comparison.</value>
+    public ComparisonFailureCodes? FailureCode { get; set; } = null;
+
+    /// <summary>
+    /// Gets or sets the failure message for the comparison.
+    /// </summary>
+    /// <value>The failure message for the comparison.</value>
+    public string? FailureMessage { get; set; } = null;
+
+    /// <summary>
+    /// Gets or sets the escape valve codes.
+    /// </summary>
+    /// <value>The escape valve codes.</value>
+    public List<string>? EscapeValveCodes { get; init; } = null;
 }
-
-
 
 
 /// <summary>

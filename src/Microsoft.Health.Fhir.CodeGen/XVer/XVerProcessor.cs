@@ -12,6 +12,7 @@ using Hl7.Fhir.Model;
 using Hl7.Fhir.Utility;
 using Microsoft.Health.Fhir.CodeGen.CompareTool;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
+using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 
@@ -37,6 +38,18 @@ public class XVerProcessor
         "http://hl7.org/fhir/ValueSet/mimetypes",
     ];
 
+    internal static readonly HashSet<string> _escapeValveCodes = [
+        "OTHER",
+        "Other",
+        "other",
+        "OTH",      // v3 Null Flavor of other
+        "UNKNOWN",
+        "Unknown",
+        "unknown",
+        "UNK",      // v3 Null Flavor of Unknown
+        //"NI",       // v3 Null Flavor of No Information
+        ];
+
     private ConfigXVer _config;
     private DefinitionCollection[] _definitions;
     private Dictionary<string, CrossVersionMapCollection> _crossVersionMaps = [];
@@ -54,6 +67,35 @@ public class XVerProcessor
             throw new InvalidOperationException("At least two definitions are required to compare.");
         }
 
+        HashSet<string> vsUrlsToInclude = [];
+
+        // we need to discover which value sets have a required binding in any set of definitions
+        foreach (DefinitionCollection dc in _definitions)
+        {
+            // iterate over the value sets in the first definition collection
+            foreach ((string unversionedUrl, string[] versions) in dc.ValueSetVersions.OrderBy(kvp => kvp.Key))
+            {
+                // skip value sets we know we will not process
+                if (_exclusionSet.Contains(unversionedUrl))
+                {
+                    continue;
+                }
+
+                // only compare on the highest version in this package
+
+                string vsVersion = versions.OrderDescending().First();
+                string versionedUrl = unversionedUrl + "|" + vsVersion;
+
+                // TODO(ginoc): We should add a flag to process all expandable value sets for use in mapping, but do not need right now
+
+                // we only need to process value sets that have a required binding
+                if (hasRequiredBinding(dc, versionedUrl, unversionedUrl))
+                {
+                    vsUrlsToInclude.Add(unversionedUrl);
+                }
+            }
+        }
+
         // walk the definitions to compare versions next to each other
         for (int definitionIndex = 1; definitionIndex < _definitions.Length; definitionIndex++)
         {
@@ -66,24 +108,33 @@ public class XVerProcessor
             CrossVersionMapCollection cvMapDown = getMapCollection(dc2, dc1);
 
             // compare value sets in each direction
-            compareValueSets(dc1, dc2, cvMapUp, ComparisonDirection.Up);
-            compareValueSets(dc2, dc1, cvMapDown, ComparisonDirection.Down);
+            compareValueSets(dc1, dc2, vsUrlsToInclude, cvMapUp, ComparisonDirection.Up);
+            compareValueSets(dc2, dc1, vsUrlsToInclude, cvMapDown, ComparisonDirection.Down);
         }
 
         Console.WriteLine("done!");
     }
 
+    /// <summary>
+    /// Compares the value sets between the source and target definition collections.
+    /// </summary>
+    /// <param name="dcSource">The source definition collection.</param>
+    /// <param name="dcTarget">The target definition collection.</param>
+    /// <param name="vsUrlsToInclude">The set of value set URLs to include in the comparison.</param>
+    /// <param name="cvMap">The cross-version map collection.</param>
+    /// <param name="direction">The direction of the comparison.</param>
     private void compareValueSets(
-        DefinitionCollection dcSource,
-        DefinitionCollection dcTarget,
-        CrossVersionMapCollection cvMap,
-        ComparisonDirection direction)
+            DefinitionCollection dcSource,
+            DefinitionCollection dcTarget,
+            HashSet<string> vsUrlsToInclude,
+            CrossVersionMapCollection cvMap,
+            ComparisonDirection direction)
     {
         // iterate over the value sets in the first definition collection
         foreach ((string unversionedUrl, string[] versions) in dcSource.ValueSetVersions.OrderBy(kvp => kvp.Key))
         {
-            // skip value sets we know we do not care about
-            if (_exclusionSet.Contains(unversionedUrl))
+            // only process value sets we have already determined should be compared
+            if (!vsUrlsToInclude.Contains(unversionedUrl))
             {
                 continue;
             }
@@ -92,15 +143,24 @@ public class XVerProcessor
             string vsVersion = versions.OrderDescending().First();
             string versionedUrl = unversionedUrl + "|" + vsVersion;
 
-            // we only need to process value sets that have a required binding
-            if (!hasRequiredBinding(dcSource, versionedUrl, unversionedUrl))
+            // we can only process value sets we can expand
+            if (!dcSource.TryExpandVs(versionedUrl, out ValueSet? vs, out string? expandMessage))
             {
-                continue;
-            }
+                // get the unexpanded value set object
+                if (dcSource.ValueSetsByVersionedUrl.TryGetValue(versionedUrl, out vs))
+                {
+                    if ((!vs.TryGetAnnotation(out ValueSetComparisonAnnotation? ca)) ||
+                        (ca == null))
+                    {
+                        ca = new();
+                        vs.AddAnnotation(ca);
+                    }
 
-            // only process value sets we can expand
-            if (!dcSource.TryExpandVs(versionedUrl, out ValueSet? vs))
-            {
+                    ca.FailureCode = ComparisonFailureCodes.CannotExpand;
+                    ca.FailureMessage = $"Failed to expand value set {versionedUrl} for comparison: {expandMessage}.";
+                }
+
+                Console.WriteLine($"Error: compareValueSets cannot process {versionedUrl} since it cannot be expanded: {expandMessage}");
                 continue;
             }
 
@@ -108,7 +168,10 @@ public class XVerProcessor
             if ((!vs.TryGetAnnotation(out ValueSetComparisonAnnotation? comparisonAnnotation)) ||
                 (comparisonAnnotation == null))
             {
-                comparisonAnnotation = new();
+                comparisonAnnotation = new()
+                {
+                    EscapeValveCodes = getEscapeValveCodes(vs),
+                };
                 vs.AddAnnotation(comparisonAnnotation);
             }
 
@@ -169,28 +232,34 @@ public class XVerProcessor
         }
     }
 
-    private ConceptDomainRelationshipCodes ApplyRelationship(ConceptDomainRelationshipCodes? existing, ConceptDomainRelationshipCodes? change) => existing switch
+    /// <summary>
+    /// Applies the relationship between existing and change concept domain relationship codes.
+    /// </summary>
+    /// <param name="existing">The existing concept domain relationship code.</param>
+    /// <param name="change">The change concept domain relationship code.</param>
+    /// <returns>The resulting concept domain relationship code.</returns>
+    private ConceptDomainRelationshipCodes applyRelationship(ConceptDomainRelationshipCodes? existing, ConceptDomainRelationshipCodes? change) => existing switch
     {
         ConceptDomainRelationshipCodes.Unknown => change ?? ConceptDomainRelationshipCodes.Unknown,
-        ConceptDomainRelationshipCodes.Equivalent => CDRCodeIsBroader(change)
+        ConceptDomainRelationshipCodes.Equivalent => cdrCodeIsBroader(change)
             ? ConceptDomainRelationshipCodes.SourceIsBroaderThanTarget
-            : CDRCodeIsNarrower(change)
+            : cdrCodeIsNarrower(change)
             ? ConceptDomainRelationshipCodes.SourceIsNarrowerThanTarget
             : change ?? ConceptDomainRelationshipCodes.Equivalent,
-        ConceptDomainRelationshipCodes.SourceIsNew => CDRCodeIsBroader(change)
+        ConceptDomainRelationshipCodes.SourceIsNew => cdrCodeIsBroader(change)
             ? ConceptDomainRelationshipCodes.SourceIsBroaderThanTarget
             : ConceptDomainRelationshipCodes.Related,
-        ConceptDomainRelationshipCodes.SourceIsDeprecated => CDRCodeIsNarrower(change)
+        ConceptDomainRelationshipCodes.SourceIsDeprecated => cdrCodeIsNarrower(change)
             ? ConceptDomainRelationshipCodes.SourceIsNarrowerThanTarget
             : ConceptDomainRelationshipCodes.Related,
-        ConceptDomainRelationshipCodes.NotMapped => CDRCodeIsBroader(change)
+        ConceptDomainRelationshipCodes.NotMapped => cdrCodeIsBroader(change)
             ? ConceptDomainRelationshipCodes.SourceIsBroaderThanTarget
             : ConceptDomainRelationshipCodes.Related,
-        ConceptDomainRelationshipCodes.SourceIsNarrowerThanTarget => CDRCodeIsNarrower(change)
+        ConceptDomainRelationshipCodes.SourceIsNarrowerThanTarget => cdrCodeIsNarrower(change)
             ? ConceptDomainRelationshipCodes.SourceIsNarrowerThanTarget
             : ConceptDomainRelationshipCodes.Related,
-        ConceptDomainRelationshipCodes.SourceIsBroaderThanTarget => CDRCodeIsBroader(change)
-? ConceptDomainRelationshipCodes.SourceIsBroaderThanTarget
+        ConceptDomainRelationshipCodes.SourceIsBroaderThanTarget => cdrCodeIsBroader(change)
+            ? ConceptDomainRelationshipCodes.SourceIsBroaderThanTarget
             : ConceptDomainRelationshipCodes.Related,
         ConceptDomainRelationshipCodes.Related => (change == ConceptDomainRelationshipCodes.NotRelated)
             ? ConceptDomainRelationshipCodes.NotRelated
@@ -199,17 +268,34 @@ public class XVerProcessor
         _ => change ?? existing ?? ConceptDomainRelationshipCodes.Unknown,
     };
 
+    /// <summary>
+    /// Determines if the given ConceptDomainRelationshipCodes is narrower.
+    /// </summary>
+    /// <param name="cdr">The ConceptDomainRelationshipCodes to check.</param>
+    /// <returns>True if the ConceptDomainRelationshipCodes is narrower; otherwise, false.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private bool CDRCodeIsNarrower(ConceptDomainRelationshipCodes? cdr) =>
+    private bool cdrCodeIsNarrower(ConceptDomainRelationshipCodes? cdr) =>
         cdr == ConceptDomainRelationshipCodes.SourceIsNarrowerThanTarget ||
         cdr == ConceptDomainRelationshipCodes.SourceIsDeprecated;
 
+    /// <summary>
+    /// Determines if the given ConceptDomainRelationshipCodes is broader.
+    /// </summary>
+    /// <param name="cdr">The ConceptDomainRelationshipCodes to check.</param>
+    /// <returns>True if the ConceptDomainRelationshipCodes is broader; otherwise, false.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private bool CDRCodeIsBroader(ConceptDomainRelationshipCodes? cdr) =>
+    private bool cdrCodeIsBroader(ConceptDomainRelationshipCodes? cdr) =>
         cdr == ConceptDomainRelationshipCodes.SourceIsBroaderThanTarget ||
         cdr == ConceptDomainRelationshipCodes.SourceIsNew ||
         cdr == ConceptDomainRelationshipCodes.NotMapped;
 
+    /// <summary>
+    /// Compares two ValueSets and returns the comparison details.
+    /// </summary>
+    /// <param name="sourceVs">The source ValueSet.</param>
+    /// <param name="targetVs">The target ValueSet.</param>
+    /// <param name="cm">The ConceptMap for mapping concepts between the ValueSets.</param>
+    /// <returns>The comparison details of the ValueSets.</returns>
     private ValueSetComparisonDetails compareValueSet(
         ValueSet sourceVs,
         ValueSet targetVs,
@@ -224,7 +310,7 @@ public class XVerProcessor
         // iterate over our concept comparisons to determine the overall relationship
         foreach (ValueSetConceptComparisonDetails vscDetails in vsConceptComparisons?.Values.SelectMany(v => v) ?? [])
         {
-            vsRelationship = ApplyRelationship(vsRelationship, vscDetails.ConceptDomain?.Relationship);
+            vsRelationship = applyRelationship(vsRelationship, vscDetails.ConceptDomain?.Relationship);
         }
 
         return new()
@@ -239,31 +325,63 @@ public class XVerProcessor
         };
     }
 
+    /// <summary>
+    /// Retrieves the escape valve codes from the specified ValueSet.
+    /// </summary>
+    /// <param name="vs">The ValueSet to retrieve the escape valve codes from.</param>
+    /// <returns>An array of escape valve codes.</returns>
+    private List<string> getEscapeValveCodes(
+        ValueSet vs)
+    {
+        List<string> assumedEscapeValveCodes = [];
+
+        // check all our codes to see if there is an 'escape valve' code
+        foreach (ValueSet.ContainsComponent source in vs.cgGetFlatContains())
+        {
+            if (!_escapeValveCodes.Contains(source.Code))
+            {
+                continue;
+            }
+
+            // add this code to our assumed set
+            assumedEscapeValveCodes.Add(source.cgKey());
+        }
+
+        return assumedEscapeValveCodes;
+    }
+
+    /// <summary>
+    /// Compares the concepts of two value sets and generates a dictionary of comparison details.
+    /// </summary>
+    /// <param name="sourceVs">The source value set.</param>
+    /// <param name="targetVs">The target value set.</param>
+    /// <param name="cm">The concept map.</param>
+    /// <returns>A dictionary containing the comparison details for each concept in the source value set.</returns>
     private Dictionary<string, ValueSetConceptComparisonDetails[]>? compareValueSetConcepts(
         ValueSet sourceVs,
         ValueSet targetVs,
         ConceptMap? cm)
     {
+        HashSet<string> escapeValveKeys = sourceVs.TryGetAnnotation(typeof(ValueSetComparisonAnnotation), out object? annotation)
+            ? new HashSet<string>(((ValueSetComparisonAnnotation)annotation).EscapeValveCodes ?? [])
+            : [];
+
         Dictionary<string, ValueSetConceptComparisonDetails[]> retVal = [];
 
         // build a dictionary of target keys so that we can determine if something exists
-        Dictionary<string, ValueSet.ContainsComponent> targetContainsDict = targetVs.Expansion.Contains.ToDictionary(c => c.System + "#" + c.Code);
+        Dictionary<string, ValueSet.ContainsComponent> targetContainsDict = targetVs.cgGetFlatContains().ToDictionary(c => c.System + "#" + c.Code);
 
         HashSet<string> noMaps;
         Dictionary<string, Dictionary<string, ConceptMap.TargetElementComponent>> mapTargetsByKeyBySourceKey;
 
         (noMaps, mapTargetsByKeyBySourceKey) = processValueSetConceptMap(sourceVs.Url, targetVs.Url, cm);
 
-        // iterate over the source expansion and build our comparisons
-        foreach (ValueSet.ContainsComponent source in sourceVs.Expansion.Contains)
-        {
-            // skip non-selectable entries in value sets
-            if (string.IsNullOrEmpty(source.Code))
-            {
-                continue;
-            }
+        ValueSet.ContainsComponent[] sourceFlat = sourceVs.cgGetFlatContains().ToArray();
 
-            string sourceKey = source.System + "#" + source.Code;
+        // iterate over the source expansion and build our comparisons
+        foreach (ValueSet.ContainsComponent source in sourceFlat)
+        {
+            string sourceKey = source.cgKey();
             List<ValueSetConceptComparisonDetails> vscDetails = [];
 
             // if we have a no-map, use that first
@@ -375,12 +493,66 @@ public class XVerProcessor
                 });
             }
 
+            // if this is an escape-valve code, we want to check equivalency
+            if (escapeValveKeys.Contains(sourceKey))
+            {
+                List<KeyValuePair<ValueSetConceptComparisonDetails, ValueSetConceptComparisonDetails>> toReplace = [];
+
+                // loop over the existing details and check the relationships
+                foreach (ValueSetConceptComparisonDetails vscDetail in vscDetails)
+                {
+                    if (vscDetail.ConceptDomain?.Relationship != ConceptDomainRelationshipCodes.Equivalent)
+                    {
+                        continue;
+                    }
+
+                    // check the number of codes in the source and target value sets
+                    if (sourceFlat.Length != targetContainsDict.Count)
+                    {
+                        // this should not be equivalent
+                        ConceptDomainRelationshipCodes r = sourceFlat.Length > targetContainsDict.Count
+                            ? ConceptDomainRelationshipCodes.SourceIsNarrowerThanTarget     // more source codes means that other is a narrower concept
+                            : ConceptDomainRelationshipCodes.SourceIsBroaderThanTarget;     // more target codes means that other is a broader concept
+
+                        List<string> messages = vscDetail.ConceptDomain.Messages;
+                        messages.Add(
+                            $"Modified escape-type relationship based on concept domains covered:" +
+                            $" source ({sourceKey}) has {sourceFlat.Length} concepts and" +
+                            $" target ({targetVs.Url}|{targetVs.Version}) has {targetContainsDict.Count}. ");
+
+                        toReplace.Add(new(
+                            vscDetail,
+                            vscDetail with
+                            {
+                                ConceptDomain = vscDetail.ConceptDomain with
+                                {
+                                    Relationship = r,
+                                    Messages = messages,
+                                },
+                            }));
+                    }
+                }
+
+                foreach ((ValueSetConceptComparisonDetails original, ValueSetConceptComparisonDetails updated) in toReplace)
+                {
+                    vscDetails.Remove(original);
+                    vscDetails.Add(updated);
+                }
+            }
+
             retVal.Add(sourceKey, vscDetails.ToArray());
         }
 
         return retVal;
     }
 
+    /// <summary>
+    /// Determines the relationship between a source value set concept and a target value set concept.
+    /// </summary>
+    /// <param name="sourceSystem">The system of the source value set concept.</param>
+    /// <param name="sourceCode">The code of the source value set concept.</param>
+    /// <param name="targetKey">The key of the target value set concept.</param>
+    /// <returns>The relationship between the source and target value set concepts.</returns>
     private ValueSetConceptRelationshipFlags valueDomainForVsConcept(
         string sourceSystem,
         string sourceCode,
@@ -480,6 +652,13 @@ public class XVerProcessor
         return (noMaps, mapTargetsByKeyBySourceKey);
     }
 
+    /// <summary>
+    /// Checks if the specified value set has a required binding in the given definition collection.
+    /// </summary>
+    /// <param name="dc">The definition collection.</param>
+    /// <param name="versionedUrl">The versioned URL of the value set.</param>
+    /// <param name="unversionedUrl">The unversioned URL of the value set.</param>
+    /// <returns>True if the value set has a required binding, false otherwise.</returns>
     private bool hasRequiredBinding(
         DefinitionCollection dc,
         string versionedUrl,
@@ -500,6 +679,12 @@ public class XVerProcessor
         return false;
     }
 
+    /// <summary>
+    /// Retrieves the cross-version map collection for the given definition collections.
+    /// </summary>
+    /// <param name="dc1">The first definition collection.</param>
+    /// <param name="dc2">The second definition collection.</param>
+    /// <returns>The cross-version map collection.</returns>
     private CrossVersionMapCollection getMapCollection(DefinitionCollection dc1, DefinitionCollection dc2)
     {
         string cvMapKey = $"{dc1.MainPackageId}@{dc1.MainPackageVersion}-{dc2.MainPackageId}@{dc2.MainPackageVersion}";
@@ -510,6 +695,12 @@ public class XVerProcessor
         }
 
         cvMap = new(dc1, dc2);
+
+        if (!cvMap.TryLoadCrossVersionMaps(_config.CrossVersionMapSourcePath))
+        {
+            Console.WriteLine($"Failed to load requested cross-version maps for {cvMapKey}! Processing will be only algorithmic!");
+        }
+
         _crossVersionMaps.Add(cvMapKey, cvMap);
 
         return cvMap;

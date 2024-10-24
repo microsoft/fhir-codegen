@@ -107,7 +107,7 @@ public class ConfigRoot : ICodeGenConfig
         ArgAliases = ["--output-path", "--output-directory", "--output-dir"],
         EnvName = "Output_Path",
         Description = "File or directory to write output.")]
-    public string OutputDirectory { get; set; } = "./generated";
+    public string OutputDirectory { get; set; } = ".";
 
     /// <summary>
     /// Gets or sets the configuration option for the output directory.
@@ -116,7 +116,7 @@ public class ConfigRoot : ICodeGenConfig
     {
         Name = "OutputPath",
         EnvVarName = "Output_Path",
-        DefaultValue = "./generated",
+        DefaultValue = ".",
         CliOption = new System.CommandLine.Option<string>(["--output-path", "--output-directory", "--output-dir"], "File or directory to write output.")
         {
             Arity = System.CommandLine.ArgumentArity.ZeroOrOne,

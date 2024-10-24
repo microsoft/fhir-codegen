@@ -165,6 +165,11 @@
             "commandLineArgs": "xver -c hl7.fhir.r2.core@1.0.2 -c hl7.fhir.r3.core@3.0.2 -c hl7.fhir.r4.core@4.0.1 -c hl7.fhir.r4b.core#4.3.0 -c hl7.fhir.r5.core@5.0.0 --auto-load-expansions --resolve-dependencies true --map-source-path ..\\..\\..\\fhir-cross-version  --map-destination-path ..\\..\\..\\fhir-cross-version-source",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
+        "XVer 20-30": {
+            "commandName": "Project",
+            "commandLineArgs": "xver -c hl7.fhir.r2.core@1.0.2 -c hl7.fhir.r3.core@3.0.2 --auto-load-expansions --resolve-dependencies true --map-source-path ..\\..\\..\\fhir-cross-version  --output-path ..\\..\\temp\\cross-version",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
         "XVer 30-40": {
             "commandName": "Project",
             "commandLineArgs": "xver -c hl7.fhir.r3.core@3.0.2 -c hl7.fhir.r4.core@4.0.1 --auto-load-expansions --resolve-dependencies true --map-source-path ..\\..\\..\\fhir-cross-version  --output-path ..\\..\\temp\\cross-version",

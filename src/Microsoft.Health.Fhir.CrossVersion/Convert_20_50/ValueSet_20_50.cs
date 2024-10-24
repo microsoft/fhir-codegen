@@ -34,6 +34,7 @@ public class ValueSet_20_50 : ICrossVersionProcessor<ValueSet>, ICrossVersionExt
             case "codeSystem":
                 {
                     CodeSystem cs = _converter._codeSystem.Extract(node);
+                    cs.Content ??= CodeSystemContentMode.Complete;
                     current.Contained.Add(cs);
                 }
                 break;

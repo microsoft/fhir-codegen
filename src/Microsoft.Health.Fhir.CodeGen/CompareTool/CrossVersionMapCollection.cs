@@ -865,7 +865,10 @@ public class CrossVersionMapCollection
                         {
                             if (cm.Group.Count == 0)
                             {
-                                throw new Exception($"Invalid concept map {filename}: expected 1 group, found {cm.Group.Count}");
+                                // skip any empty maps
+                                Console.WriteLine($"Invalid concept map {filename}: expected 1 group, found {cm.Group.Count}");
+                                continue;
+                                //throw new Exception($"Invalid concept map {filename}: expected 1 group, found {cm.Group.Count}");
                             }
 
                             string sourceScopeUrl = string.Empty;

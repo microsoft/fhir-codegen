@@ -3,6 +3,7 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System.Runtime.CompilerServices;
 using Hl7.Fhir.Model;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGen.Utils;
@@ -74,6 +75,7 @@ public static class ValueSetExtensions
     /// </summary>
     /// <param name="c">The ContainsComponent to act on.</param>
     /// <returns>A string representing the key.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static string cgKey(this ValueSet.ContainsComponent c) => c.System + "#" + c.Code;
 
     /// <summary>
@@ -156,6 +158,52 @@ public static class ValueSetExtensions
                 if (c.Contains.Count != 0)
                 {
                     foreach (FhirConcept fc in RecurseContains(dc, vs, c.Contains))
+                    {
+                        yield return fc;
+                    }
+                }
+            }
+        }
+    }
+
+    /// <summary>Gets the flat list of Contains Components from the ValueSet Expansion.</summary>
+    /// <param name="vs">          The ValueSet to act on.</param>
+    /// <param name="dc">          The device-context.</param>
+    /// <param name="includeEmpty">(Optional) True to include, false to exclude the empty.</param>
+    /// <returns>An enumerable of FhirConcept representing the flat list of concepts.</returns>
+    public static IEnumerable<ValueSet.ContainsComponent> cgGetFlatContains(
+        this ValueSet vs,
+        bool includeEmpty = false)
+    {
+        if ((vs.Expansion == null) || (vs.Expansion.Contains.Count == 0))
+        {
+            yield break;
+        }
+
+        foreach (ValueSet.ContainsComponent fc in RecurseContains(vs, vs.Expansion.Contains))
+        {
+            yield return fc;
+        }
+
+        yield break;
+
+        /// <summary>
+        /// Recursively gets the FhirConcepts from the ContainsComponent.
+        /// </summary>
+        /// <param name="cc">The ContainsComponent to act on.</param>
+        /// <returns>An enumerable of FhirConcept representing the concepts.</returns>
+        IEnumerable<ValueSet.ContainsComponent> RecurseContains(ValueSet vs, IEnumerable<ValueSet.ContainsComponent> cc)
+        {
+            foreach (ValueSet.ContainsComponent c in cc)
+            {
+                if (includeEmpty || !string.IsNullOrEmpty(c.Code))
+                {
+                    yield return c;
+                }
+
+                if (c.Contains.Count != 0)
+                {
+                    foreach (ValueSet.ContainsComponent fc in RecurseContains(vs, c.Contains))
                     {
                         yield return fc;
                     }
