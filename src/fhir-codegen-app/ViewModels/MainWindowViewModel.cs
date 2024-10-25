@@ -3,69 +3,65 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Avalonia.Controls;
-using Avalonia.Interactivity;
-using Avalonia.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Input;
-using fhir_codegen.Models;
-using fhir_codegen.Views;
+using fhir_codegen_app.Logging;
+using fhir_codegen_app.Views;
 using Material.Icons;
-using Material.Styles.Themes;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
 
-namespace fhir_codegen.ViewModels;
+namespace fhir_codegen_app.ViewModels;
 
-/// <summary>
-/// ViewModel for the main window, handling navigation and pane toggling.
-/// </summary>
 public partial class MainWindowViewModel : ViewModelBase, IDisposable
 {
-    /// <summary>
-    /// Gets or sets a value indicating whether the pane is open.
-    /// </summary>
+    private bool _disposedValue;
+
+    public ICGLogDataStore DataStore { get; set; } = new CGLogDataStore();
+
+    [ObservableProperty]
+    private bool _isLogOpen = false;
+
     [ObservableProperty]
     private bool _isPaneOpen;
 
-    /// <summary>
-    /// Gets or sets the current page being displayed.
-    /// </summary>
     [ObservableProperty]
     private ViewModelBase _currentPage = new WelcomePageViewModel();
 
-    /// <summary>
-    /// Gets or sets the selected navigation item.
-    /// </summary>
     [ObservableProperty]
     private NavigationItemTemplate? _selectedNavigationItem;
 
-    /// <summary>
-    /// Gets the configuration for the GUI.
-    /// </summary>
-    public ConfigGui? Config { get; private set; } = null;
+    public ICodeGenConfig? Config { get; private set; } = null;
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="MainWindowViewModel"/> class.
-    /// </summary>
-    /// <param name="args">Optional arguments for initialization.</param>
-    public MainWindowViewModel(object? args = null)
+    public MainWindowViewModel() : this(null) { }
+
+    public MainWindowViewModel(object? args)
         : base()
     {
-        Config = (args is ConfigGui c)
+        Config = (args is ICodeGenConfig c)
             ? c
-            : Ioc.Default.GetService<ConfigGui>();
+            : Ioc.Default.GetService<ICodeGenConfig>();
+
+        switch (Config?.LaunchCommand)
+        {
+            case "generate":
+                break;
+
+            case "compare":
+                break;
+
+            case "xver":
+                NavigateTo(typeof(XVerHomeViewModel));
+                break;
+
+            default:
+                break;
+        }
+
+        LogWindow lw = new();
+        lw.Show();
     }
 
-    /// <summary>
-    /// Handles changes to the selected navigation item.
-    /// </summary>
-    /// <param name="value">The new selected navigation item.</param>
     partial void OnSelectedNavigationItemChanged(NavigationItemTemplate? value)
     {
         if (value == null)
@@ -73,25 +69,20 @@ public partial class MainWindowViewModel : ViewModelBase, IDisposable
             return;
         }
 
-        if (value.RequiresComparison)
-        {
-            ComparisonUiModel? comparisonUiModel = Ioc.Default.GetService<ComparisonUiModel>();
-            if (comparisonUiModel?.Results != null)
-            {
-                NavigateTo(value.Target);
-            }
+        //if (value.RequiresComparison)
+        //{
+        //    ComparisonUiModel? comparisonUiModel = Ioc.Default.GetService<ComparisonUiModel>();
+        //    if (comparisonUiModel?.Results != null)
+        //    {
+        //        NavigateTo(value.Target);
+        //    }
 
-            return;
-        }
+        //    return;
+        //}
 
         NavigateTo(value.Target);
     }
 
-    /// <summary>
-    /// Navigates to the specified target ViewModel.
-    /// </summary>
-    /// <param name="targetViewModel">The target ViewModel type.</param>
-    /// <param name="args">Optional arguments for the target ViewModel.</param>
     public void NavigateTo(Type targetViewModel, object? args = null)
     {
         ViewModelBase? target = (ViewModelBase?)Activator.CreateInstance(targetViewModel, args);
@@ -103,25 +94,14 @@ public partial class MainWindowViewModel : ViewModelBase, IDisposable
         CurrentPage = target;
     }
 
-    /// <summary>
-    /// Gets or sets the list of navigation items.
-    /// </summary>
     [ObservableProperty]
     private List<NavigationItemTemplate> _navigationItems = new List<NavigationItemTemplate>
-       {
-           templateForViewModel<WelcomePageViewModel>(),
-           templateForViewModel<CoreComparisonViewModel>(),
-           templateForViewModel<CompareDetailsValueSetsViewModel>(requiresComparison: true),
-       };
-    private bool _disposedValue;
+    {
+        templateForViewModel<WelcomePageViewModel>(),
+        //templateForViewModel<CoreComparisonViewModel>(),
+        //templateForViewModel<CompareDetailsValueSetsViewModel>(requiresComparison: true),
+    };
 
-    /// <summary>
-    /// Creates a navigation item template for the specified ViewModel type.
-    /// </summary>
-    /// <typeparam name="T">The ViewModel type.</typeparam>
-    /// <param name="visible">Indicates whether the item is visible.</param>
-    /// <param name="requiresComparison">Indicates whether the item requires comparison.</param>
-    /// <returns>A new instance of <see cref="NavigationItemTemplate"/>.</returns>
     private static NavigationItemTemplate templateForViewModel<T>(bool visible = true, bool requiresComparison = false)
        where T : INavigableViewModel
     {
@@ -136,19 +116,12 @@ public partial class MainWindowViewModel : ViewModelBase, IDisposable
         };
     }
 
-    /// <summary>
-    /// Toggles the pane open or closed.
-    /// </summary>
     [RelayCommand]
     private void TriggerPane()
     {
         IsPaneOpen = !IsPaneOpen;
     }
 
-    /// <summary>
-    /// Disposes the resources used by the ViewModel.
-    /// </summary>
-    /// <param name="disposing">Indicates whether the method is called from Dispose.</param>
     protected virtual void Dispose(bool disposing)
     {
         if (!_disposedValue)
@@ -164,9 +137,6 @@ public partial class MainWindowViewModel : ViewModelBase, IDisposable
         }
     }
 
-    /// <summary>
-    /// Disposes the ViewModel.
-    /// </summary>
     void IDisposable.Dispose()
     {
         // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method

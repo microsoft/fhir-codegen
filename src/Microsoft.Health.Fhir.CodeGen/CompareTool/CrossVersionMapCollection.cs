@@ -132,6 +132,7 @@ public class CrossVersionMapCollection
             MainPackageId = $"hl7.fhir.uv.xver.{_sourceRLiteral.ToLowerInvariant()}-{_targetRLiteral.ToLowerInvariant()}",
             MainPackageVersion = "0.0.1",
             MainPackageCanonical = _mapCanonical,
+            Logger = source.Logger,
         };
     }
 

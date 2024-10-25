@@ -1,4 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\fhir-codegen-shared\fhir-codegen-shared.projitems" Label="Shared" />
   <Import Project="..\..\fhir-codegen.props" />
 
   <PropertyGroup>
@@ -35,6 +36,9 @@
 	<PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0" />
 	<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.1" />
 	<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.1" />
     <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
     <PackageReference Include="System.CommandLine.NamingConventionBinder" Version="2.0.0-beta4.22272.1" />
     <PackageReference Include="System.Text.Json" Version="8.0.5" />

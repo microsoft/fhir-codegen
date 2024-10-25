@@ -6,6 +6,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.CommandLine.Parsing;
+using Microsoft.Extensions.Logging;
 using Microsoft.Health.Fhir.CodeGen.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 
@@ -20,6 +21,13 @@ namespace Microsoft.Health.Fhir.CodeGen.Configuration;
 /// </summary>
 public class ConfigRoot : ICodeGenConfig
 {
+    /// <summary>Gets or sets the initial command passed at launch.</summary>
+    public string? LaunchCommand { get; set; } = null;
+
+    /// <summary>Gets the logger factory instance.</summary>
+    /// <value>The logger factory instance used for logging.</value>
+    public ILoggerFactory LogFactory { get; set; } = LoggerFactory.Create(builder => builder.AddConsole());
+
     /// <summary>
     /// Gets or sets the pathname of the FHIR cache directory.
     /// </summary>

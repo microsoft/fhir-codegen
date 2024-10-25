@@ -7,8 +7,10 @@ using System.Text;
 
 namespace Microsoft.Health.Fhir.CodeGen.Language;
 
-public class ExportStreamWriter : StreamWriter
+public class ExportStreamWriter : StreamWriter, IDisposable
 {
+    private bool _disposedValue;
+
     /// <summary>The current level of indentation.</summary>
     private int _indentation = 0;
 
@@ -251,5 +253,20 @@ public class ExportStreamWriter : StreamWriter
         }
 
         Write(new string(_indentChar, count));
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        if (!_disposedValue)
+        {
+            if (disposing)
+            {
+                this.Flush();
+            }
+
+            _disposedValue = true;
+        }
+
+        base.Dispose(disposing);
     }
 }

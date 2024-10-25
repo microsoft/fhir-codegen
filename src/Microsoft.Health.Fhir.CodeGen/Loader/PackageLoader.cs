@@ -22,11 +22,46 @@ using Microsoft.Health.Fhir.CodeGen.Configuration;
 using System.Linq;
 using Microsoft.Health.Fhir.CodeGen._ForPackages;
 using Microsoft.Health.Fhir.CodeGen.Utils;
+using Microsoft.Extensions.Logging;
 
 namespace Microsoft.Health.Fhir.CodeGen.Loader;
 
+internal static partial class PackageLoaderLogMessages
+{
+    [LoggerMessage(Level = LogLevel.Information, Message = "Processing {processingKey}")]
+    internal static partial void LogProcessingStartMessage(this ILogger logger, string processingKey);
+
+    [LoggerMessage(Level = LogLevel.Information, Message = "Loading package {moniker} (will not check dependencies)")]
+    internal static partial void LogPackageLoading(this ILogger logger, string moniker);
+
+    [LoggerMessage(Level = LogLevel.Warning, Message = "Package {moniker} ({packageFhirVersion}) does not match requested FHIR version {expectedFhirVersion}")]
+    internal static partial void LogPackageFhirMismatch(this ILogger logger, string moniker, string packageFhirVersion, string? expectedFhirVersion);
+
+    [LoggerMessage(Level = LogLevel.Information, Message = "Skipping already loaded dependency: {moniker}")]
+    internal static partial void LogSkipMessage(this ILogger logger, string moniker);
+
+    [LoggerMessage(Level = LogLevel.Information, Message = "Auto-loading core expansion: {moniker}")]
+    internal static partial void LogAutoExpansionMessage(this ILogger logger, string moniker);
+
+    [LoggerMessage(Level = LogLevel.Error, Message = "Error parsing {style} {mime}: {exMessage}: {innerMessage}")]
+    internal static partial void LogParseError(this ILogger logger, string style, string mime, string exMessage, string? innerMessage = null);
+
+    [LoggerMessage(Level = LogLevel.Error, Message = "Unsupported parse format {mime} for {style}")]
+    internal static partial void LogInvalidFormat(this ILogger logger, string style, string mime);
+
+    [LoggerMessage(Level = LogLevel.Warning, Message = "Package {actual} loaded in place of {requested}")]
+    internal static partial void LogPackageSubstitutionSuccess(this ILogger logger, string requested, string actual);
+
+    [LoggerMessage(Level = LogLevel.Warning, Message = "Could not find a package for {requested} with the correct FHIR version - please specify manually if required")]
+    internal static partial void LogPackageSubstitutionFailure(this ILogger logger, string requested);
+
+    [LoggerMessage(Level = LogLevel.Information, Message = "Dependencies resolved for {moniker}, loading package contents")]
+    internal static partial void LogPackageDependenciesResolved(this ILogger logger, string moniker);
+}
+
+
 /// <summary>A package loader.</summary>
-public class PackageLoader : IDisposable
+public partial class PackageLoader : IDisposable
 {
     internal enum VersionHandlingTypes
     {
@@ -78,6 +113,9 @@ public class PackageLoader : IDisposable
     /// <summary>The lenient JSON parser.</summary>
     private FhirJsonPocoDeserializer _jsonParser;
 
+    /// <summary>The logger.</summary>
+    private ILogger _logger;
+
 #if !DISABLE_XML
     /// <summary>The lenient XML parser.</summary>
     private FhirXmlPocoDeserializer _xmlParser;
@@ -90,9 +128,12 @@ public class PackageLoader : IDisposable
     private object _convertLockObject = new();
 
     /// <summary>Initializes a new instance of the <see cref="PackageLoader"/> class.</summary>
-    /// <param name="opts">    (Optional) Options for controlling the operation.</param>
+    /// <param name="config">(Optional) The configuration.</param>
+    /// <param name="opts">  (Optional) Options for controlling the operation.</param>
     public PackageLoader(ConfigRoot? config = null, LoaderOptions? opts = null)
     {
+        _logger = (config?.LogFactory ?? LoggerFactory.Create(builder => builder.AddConsole())).CreateLogger<PackageLoader>();
+
         // use defaults if nothing was specified
         opts ??= new();
 
@@ -108,7 +149,7 @@ public class PackageLoader : IDisposable
             _packageClients.Add(new _ForPackages.FhirCiClient(-1));
         }
 
-        if (_rootConfiguration.AdditionalFhirRegistryUrls.Any())
+        if (_rootConfiguration.AdditionalFhirRegistryUrls.Length != 0)
         {
             foreach (string url in _rootConfiguration.AdditionalFhirRegistryUrls)
             {
@@ -116,7 +157,7 @@ public class PackageLoader : IDisposable
             }
         }
 
-        if (_rootConfiguration.AdditionalNpmRegistryUrls.Any())
+        if (_rootConfiguration.AdditionalNpmRegistryUrls.Length != 0)
         {
             foreach (string url in _rootConfiguration.AdditionalNpmRegistryUrls)
             {
@@ -521,6 +562,7 @@ public class PackageLoader : IDisposable
             MainPackageId = name,
             MainPackageVersion = "dev",
             MainPackageCanonical = canonical,
+            Logger = _rootConfiguration.LogFactory.CreateLogger<DefinitionCollection>(),
         };
 
         // get files in the directory
@@ -611,7 +653,7 @@ public class PackageLoader : IDisposable
             if ((inputDirective.IndexOfAny(Path.GetInvalidPathChars()) == -1) &&
                 Directory.Exists(inputDirective))
             {
-                Console.WriteLine($"Processing directory {inputDirective}...");
+                _logger.LogProcessingStartMessage(inputDirective);
 
                 if (!LoadFromDirectory(ref definitions, inputDirective, fhirVersion))
                 {
@@ -653,6 +695,7 @@ public class PackageLoader : IDisposable
                 definitions = new()
                 {
                     Name = packageReference.Name,
+                    Logger = _rootConfiguration.LogFactory.CreateLogger<DefinitionCollection>(),
                 };
 
                 if (!string.IsNullOrEmpty(fhirVersion))
@@ -717,7 +760,7 @@ public class PackageLoader : IDisposable
                     string expansionPackageName = packageReference.Name.Replace(".core", ".expansions");
                     string expansionDirective = expansionPackageName + "@" + packageReference.Version;
 
-                    Console.WriteLine($"Auto-loading core expansions: {expansionDirective}...");
+                    _logger.LogAutoExpansionMessage($"Auto-loading core expansions: {expansionDirective}...");
 
                     await LoadPackages([expansionDirective], definitions, requestedFhirVersion);
                 }
@@ -725,11 +768,11 @@ public class PackageLoader : IDisposable
                 // skip if we have already loaded this package
                 if (definitions.Manifests.ContainsKey(packageReference.Moniker))
                 {
-                    Console.WriteLine($"Skipping already loaded dependency: {packageReference.Moniker}");
+                    _logger.LogSkipMessage($"Skipping already loaded dependency: {packageReference.Moniker}");
                     continue;
                 }
 
-                Console.WriteLine($"Processing {packageReference.Moniker}...");
+                _logger.LogProcessingStartMessage(packageReference.Moniker);
 
                 // check to see if this package needs to be installed
                 if (needsInstall &&
@@ -756,7 +799,7 @@ public class PackageLoader : IDisposable
                 !string.IsNullOrEmpty(manifestFhirVersion) &&
                 (definitions.FhirSequence != FhirReleases.FhirVersionToSequence(manifestFhirVersion)))
             {
-                Console.WriteLine($"Package {packageReference.Moniker} ({manifestFhirVersion}) does not match requested FHIR version {fhirVersion}!");
+                _logger.LogPackageFhirMismatch(packageReference.Moniker, manifestFhirVersion, fhirVersion);
 
                 string packageIdSuffix = packageReference.Name.Split('.')[^1];
                 FhirReleases.FhirSequenceCodes packageIdSuffixCode = FhirReleases.FhirVersionToSequence(packageIdSuffix);
@@ -772,17 +815,17 @@ public class PackageLoader : IDisposable
 
                     if (definitions.Manifests.ContainsKey(desiredMoniker))
                     {
-                        Console.WriteLine($"Package {desiredMoniker} loaded in place of {packageReference.Moniker}!");
+                        _logger.LogPackageSubstitutionSuccess(desiredMoniker, packageReference.Moniker);
                     }
                     else
                     {
-                        Console.WriteLine($"Could not find substitute for {packageReference.Moniker} - please specify manually if this is required!");
+                        _logger.LogPackageSubstitutionFailure(packageReference.Moniker);
                     }
                 }
-                else
-                {
-                    Console.WriteLine($"Package {packageReference.Moniker} specifies an incorrect FHIR version - please correct!");
-                }
+                //else
+                //{
+                //    Console.WriteLine($"Package {packageReference.Moniker} specifies an incorrect FHIR version - please correct!");
+                //}
 
                 // whether it loaded or not, we cannot do more this pass
                 continue;
@@ -849,12 +892,11 @@ public class PackageLoader : IDisposable
             if (_rootConfiguration.ResolvePackageDependencies && (manifest.Dependencies?.Any() ?? false))
             {
                 await LoadPackages(manifest.Dependencies.Select(kvp => $"{kvp.Key}@{kvp.Value}"), definitions, requestedFhirVersion);
-
-                Console.WriteLine($"Dependencies resolved - loading package {packageReference.Moniker}...");
+                _logger.LogPackageDependenciesResolved(packageReference.Moniker);
             }
             else
             {
-                Console.WriteLine($"Loading {packageReference.Moniker}...");
+                _logger.LogPackageLoading(packageReference.Moniker);
             }
 
             // grab the contents of our package
@@ -1174,14 +1216,7 @@ public class PackageLoader : IDisposable
                 }
                 catch (Exception ex)
                 {
-                    if (ex.InnerException == null)
-                    {
-                        Console.WriteLine($"Error parsing JSON: {ex.Message}");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Error parsing JSON: {ex.Message} ({ex.InnerException.Message})");
-                    }
+                    _logger.LogParseError("POCO", "JSON", ex.Message, ex.InnerException?.Message);
                     return null;
                 }
 
@@ -1206,20 +1241,13 @@ public class PackageLoader : IDisposable
                 }
                 catch (Exception ex)
                 {
-                    if (ex.InnerException == null)
-                    {
-                        Console.WriteLine($"Error parsing XML: {ex.Message}");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Error parsing XML: {ex.Message} ({ex.InnerException.Message})");
-                    }
+                    _logger.LogParseError("POCO", "XML", ex.Message, ex.InnerException?.Message);
                     return null;
                 }
 #endif
             default:
                 {
-                    Console.WriteLine($"Unsupported parse format: {format}");
+                    _logger.LogInvalidFormat("POCO", format);
                     return null;
                 }
         }
@@ -1251,14 +1279,7 @@ public class PackageLoader : IDisposable
                 }
                 catch (Exception ex)
                 {
-                    if (ex.InnerException == null)
-                    {
-                        Console.WriteLine($"Error parsing R4B JSON: {ex.Message}");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Error parsing R4B JSON: {ex.Message} ({ex.InnerException.Message})");
-                    }
+                    _logger.LogParseError("R4B", "JSON", ex.Message, ex.InnerException?.Message);
                     return null;
                 }
 
@@ -1279,20 +1300,13 @@ public class PackageLoader : IDisposable
                 }
                 catch (Exception ex)
                 {
-                    if (ex.InnerException == null)
-                    {
-                        Console.WriteLine($"Error parsing R4B XML: {ex.Message}");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Error parsing R4B XML: {ex.Message} ({ex.InnerException.Message})");
-                    }
+                    _logger.LogParseError("R4B", "XML", ex.Message, ex.InnerException?.Message);
                     return null;
                 }
 
             default:
                 {
-                    Console.WriteLine($"Unsupported parse format: {format}");
+                    _logger.LogInvalidFormat("R4B", format);
                     return null;
                 }
         }
@@ -1319,14 +1333,7 @@ public class PackageLoader : IDisposable
                 }
                 catch (Exception ex)
                 {
-                    if (ex.InnerException == null)
-                    {
-                        Console.WriteLine($"Error parsing STU3 JSON: {ex.Message}");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Error parsing STU3 JSON: {ex.Message} ({ex.InnerException.Message})");
-                    }
+                    _logger.LogParseError("STU3", "JSON", ex.Message, ex.InnerException?.Message);
                     return null;
                 }
 
@@ -1351,20 +1358,13 @@ public class PackageLoader : IDisposable
                 }
                 catch (Exception ex)
                 {
-                    if (ex.InnerException == null)
-                    {
-                        Console.WriteLine($"Error parsing STU3 XML: {ex.Message}");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Error parsing STU3 XML: {ex.Message} ({ex.InnerException.Message})");
-                    }
+                    _logger.LogParseError("STU3", "XML", ex.Message, ex.InnerException?.Message);
                     return null;
                 }
 
             default:
                 {
-                    Console.WriteLine($"Unsupported parse format: {format}");
+                    _logger.LogInvalidFormat("STU3", format);
                     return null;
                 }
         }
@@ -1395,14 +1395,7 @@ public class PackageLoader : IDisposable
                 }
                 catch (Exception ex)
                 {
-                    if (ex.InnerException == null)
-                    {
-                        Console.WriteLine($"Error parsing DSTU2 JSON: {ex.Message}");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Error parsing DSTU2 JSON: {ex.Message} ({ex.InnerException.Message})");
-                    }
+                    _logger.LogParseError("DSTU2", "JSON", ex.Message, ex.InnerException?.Message);
                     return null;
                 }
 
@@ -1427,20 +1420,13 @@ public class PackageLoader : IDisposable
                 }
                 catch (Exception ex)
                 {
-                    if (ex.InnerException == null)
-                    {
-                        Console.WriteLine($"Error parsing DSTU2 XML: {ex.Message}");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Error parsing DSTU2 XML: {ex.Message} ({ex.InnerException.Message})");
-                    }
+                    _logger.LogParseError("DSTU2", "XML", ex.Message, ex.InnerException?.Message);
                     return null;
                 }
 
             default:
                 {
-                    Console.WriteLine($"Unsupported parse format: {format}");
+                    _logger.LogInvalidFormat("DSTU2", format);
                     return null;
                 }
         }
@@ -1478,14 +1464,7 @@ public class PackageLoader : IDisposable
                 }
                 catch (Exception ex)
                 {
-                    if (ex.InnerException == null)
-                    {
-                        Console.WriteLine($"Error parsing JSON: {ex.Message}");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Error parsing JSON: {ex.Message} ({ex.InnerException.Message})");
-                    }
+                    _logger.LogParseError("Stream", "JSON", ex.Message, ex.InnerException?.Message);
                     return null;
                 }
 
@@ -1510,20 +1489,13 @@ public class PackageLoader : IDisposable
                 }
                 catch (Exception ex)
                 {
-                    if (ex.InnerException == null)
-                    {
-                        Console.WriteLine($"Error parsing XML: {ex.Message}");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Error parsing XML: {ex.Message} ({ex.InnerException.Message})");
-                    }
+                    _logger.LogParseError("Stream", "XML", ex.Message, ex.InnerException?.Message);
                     return null;
                 }
 #endif
             default:
                 {
-                    Console.WriteLine($"Unsupported parse format: {format}");
+                    _logger.LogInvalidFormat("Stream", format);
                     return null;
                 }
         }

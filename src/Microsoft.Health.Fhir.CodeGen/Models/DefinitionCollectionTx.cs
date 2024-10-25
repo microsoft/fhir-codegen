@@ -46,7 +46,7 @@ public partial class DefinitionCollection : IAsyncResourceResolver
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error expanding {uri}: {ex.Message}");
+            Logger.LogExpandError(uri, ex.Message, ex.InnerException?.Message);
             return null;
         }
     }
@@ -75,7 +75,7 @@ public partial class DefinitionCollection : IAsyncResourceResolver
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error expanding {uri}: {ex.Message}");
+            Logger.LogExpandError(uri, ex.Message, ex.InnerException?.Message);
             return (null, $"Error expanding {uri}: {ex.Message}");
         }
     }

@@ -12,6 +12,7 @@ using System.Xml.Linq;
 using Firely.Fhir.Packages;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Specification.Terminology;
+using Microsoft.Extensions.Logging;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
@@ -23,9 +24,25 @@ using static Microsoft.Health.Fhir.CodeGen.FhirExtensions.StructureDefinitionExt
 
 namespace Microsoft.Health.Fhir.CodeGen.Models;
 
+internal static partial class DefinitionCollectionLogMessages
+{
+    [LoggerMessage(Level = LogLevel.Error, Message = "Failed to generate snapshot for {url} ({name})")]
+    internal static partial void LogSnapshotFailed(this ILogger logger, string url, string name);
+
+    [LoggerMessage(Level = LogLevel.Error, Message = "Failed to resolve bindings in {sdId} for extension {url}, definition: {bindingType}:{expression}")]
+    internal static partial void LogElementBindingExtUnhandledType(this ILogger logger, string sdId, string url, string? bindingType, string expression);
+
+    [LoggerMessage(Level = LogLevel.Error, Message = "Error expanding {url}: {exMessage}: {innerMessage}")]
+    internal static partial void LogExpandError(this ILogger logger, string url, string exMessage, string? innerMessage = null);
+
+}
+
 /// <summary>A FHIR package and its contents.</summary>
 public partial class DefinitionCollection
 {
+    /// <summary>Gets or initializes the logger.</summary>
+    public required ILogger Logger { get; init; }
+
     /// <summary>Gets or sets the name.</summary>
     public required string Name { get; set; }
 
@@ -174,7 +191,7 @@ public partial class DefinitionCollection
                     if (sd.Snapshot.Element.Count == 0)
                     {
                         success = false;
-                        Console.WriteLine($"Failed to generate snapshot for {sd.Url} ({sd.Name})");
+                        Logger.LogSnapshotFailed(sd.Url, sd.Name);
                         continue;
                     }
                 }
@@ -847,7 +864,7 @@ public partial class DefinitionCollection
                     case StructureDefinition.ExtensionContextType.Fhirpath:
                     default:
                         {
-                            Console.WriteLine($"CheckElementBindings.NestIntoExtension <<< {currentSd.Id}: resolving bindings in extension for {url} encountered an unhandled definition: {cc.Type}:{cc.Expression}");
+                            Logger.LogElementBindingExtUnhandledType(currentSd.Id, url, cc.Type?.ToLiteral(), cc.Expression);
                         }
                         continue;
                 }

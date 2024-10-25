@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
+using Microsoft.Health.Fhir.CodeGen.Models;
 
 namespace Microsoft.Health.Fhir.CodeGen.XVer;
 
@@ -148,6 +149,8 @@ public record class ValueSetConceptComparisonDetails : ComparisonDetails<Hl7.Fhi
 /// <typeparam name="T">The type of the target.</typeparam>
 public record class ValueSetComparisonDetails : ComparisonDetails<Hl7.Fhir.Model.ValueSet>
 {
+    public required DefinitionCollection TargetDefinition { get; init; }
+
     /// <summary>
     /// Gets or sets the dictionary of concept details for the value set.
     /// </summary>

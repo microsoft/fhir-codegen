@@ -7,14 +7,20 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Runtime.ConstrainedExecution;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
+using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Utility;
+using Microsoft.Extensions.Logging;
 using Microsoft.Health.Fhir.CodeGen.CompareTool;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
+using Microsoft.Health.Fhir.CodeGen.Language;
 using Microsoft.Health.Fhir.CodeGen.Models;
+using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
+using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 
 #if NETSTANDARD2_0
 using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
@@ -22,6 +28,21 @@ using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
 
 
 namespace Microsoft.Health.Fhir.CodeGen.XVer;
+
+internal static partial class XVerProcessorLogMessages
+{
+    [LoggerMessage(Level = LogLevel.Warning, Message = "Failed to load requested cross-version maps for {cvMapKey}! Processing will be only algorithmic!")]
+    internal static partial void LogMapsNotFound(this ILogger logger, string cvMapKey);
+
+    [LoggerMessage(Level = LogLevel.Warning, Message = "Failed to expand ValueSet {url} for comparison: {details}")]
+    internal static partial void LogValueSetNotExpanded(this ILogger logger, string url, string? details);
+}
+
+internal static class XVerExtensions
+{
+    internal static string ForMdTable(this string value) => string.IsNullOrEmpty(value) ? string.Empty : value.Replace("|", "\\|").Replace("\n", "<br/>").Replace("\r", "<br/>");
+}
+
 
 public class XVerProcessor
 {
@@ -51,12 +72,14 @@ public class XVerProcessor
         ];
 
     private ConfigXVer _config;
+    private ILogger _logger;
     private DefinitionCollection[] _definitions;
     private Dictionary<string, CrossVersionMapCollection> _crossVersionMaps = [];
 
     public XVerProcessor(ConfigXVer config, IEnumerable<DefinitionCollection> definitions)
     {
         _config = config;
+        _logger = config.LogFactory.CreateLogger<XVerProcessor>();
         _definitions = [.. definitions];
     }
 
@@ -111,9 +134,324 @@ public class XVerProcessor
             compareValueSets(dc1, dc2, vsUrlsToInclude, cvMapUp, ComparisonDirection.Up);
             compareValueSets(dc2, dc1, vsUrlsToInclude, cvMapDown, ComparisonDirection.Down);
         }
-
-        Console.WriteLine("done!");
     }
+
+    public void WriteComparisonResults()
+    {
+        // check for no output location
+        if (string.IsNullOrEmpty(_config.OutputDirectory))
+        {
+            return;
+        }
+
+        // walk the definitions to write comparisons
+        foreach (DefinitionCollection dc in _definitions)
+        {
+            string versionDir = Path.Combine(_config.OutputDirectory, dc.FhirSequence.ToRLiteral());
+
+            // check for the directory already existing
+            if (Directory.Exists(versionDir))
+            {
+                // remove the directory and contents (start clean)
+                Directory.Delete(versionDir, true);
+            }
+
+            Directory.CreateDirectory(versionDir);
+
+            // write the contents of our value sets
+            writeMarkdownValueSets(versionDir, dc);
+        }
+    }
+
+    private void writeMarkdownValueSets(string dir, DefinitionCollection dc)
+    {
+        string vsDir = Path.Combine(dir, "ValueSets");
+        if (!Directory.Exists(vsDir))
+        {
+            Directory.CreateDirectory(vsDir);
+        }
+
+        string overviewFilename = Path.Combine(dir, "_valuesets.md");
+
+        using ExportStreamWriter overviewWriter = createMarkdownWriter(overviewFilename, true, true);
+
+        writeMdOverviewIntroValueSets(overviewWriter, dc);
+
+        // iterate over our value sets
+        foreach (ValueSet vs in dc.ValueSetsByVersionedUrl.Values.OrderBy(vs => vs.Name))
+        {
+            // skip value sets without a comparison annotation
+            if ((!vs.TryGetAnnotation(out ValueSetComparisonAnnotation? ca)) ||
+                (ca == null))
+            {
+                continue;
+            }
+
+            // add our overview entry
+            writeMdOverviewEntry(overviewWriter, vs, ca);
+
+            string filename = Path.Combine(vsDir, getVsFilename(vs.Name.ToPascalCase(), includeRelativeDir: false));
+            using (ExportStreamWriter vsWriter = createMarkdownWriter(filename, true, true))
+            {
+                writeMdDetailedIntro(vsWriter, dc, vs, ca);
+
+                // check for failures - write a stub file with information about the value set
+                if (ca.FailureCode != null)
+                {
+                    writeMdComparisonFailed(vsWriter, vs);
+                    continue;
+                }
+            }
+        }
+    }
+
+    private void writeMdOverviewIntroValueSets(ExportStreamWriter writer, DefinitionCollection dc)
+    {
+        writer.Write($"""
+            Keyed off: {dc.MainPackageId}@{dc.MainPackageVersion}
+            Canonical: {dc.MainPackageCanonical}
+            
+            ## Value Set Overview
+
+            | Name | Canonical | Description | Mappings | Errors |
+            | ---- | --------- | ----------- | -------- | ------ |
+
+            """);
+    }
+
+    private void writeMdOverviewEntry(ExportStreamWriter writer, ValueSet vs, ValueSetComparisonAnnotation? ca)
+    {
+        string vsName = vs.Name.ToPascalCase();
+
+        bool hasMappings = ca?.ToPrev?.Count > 0 || ca?.ToNext?.Count > 0;
+
+        writer.WriteLine(
+            $"| [{vs.Name.ForMdTable()}]({getVsFilename(vsName)})" +
+            $"| {vs.Url.ForMdTable()}" +
+            $"| {vs.Description.ForMdTable()}" +
+            $"| {hasMappings}" +
+            $"| {ca?.FailureCode} {ca?.FailureMessage?.ForMdTable()}");
+
+        return;
+    }
+
+    private void writeMdDetailedIntro(ExportStreamWriter writer, DefinitionCollection keyDc, ValueSet vs, ValueSetComparisonAnnotation? ca)
+    {
+        writer.WriteLine($"""
+            ### {vs.Name}
+
+            |      |     |
+            | ---: | --- |
+            | Package | {keyDc.MainPackageId}@{keyDc.MainPackageVersion} |
+            | Name | {vs.Name.ForMdTable()} |
+            | URL | {vs.Url.ForMdTable()} |
+            | Version | {vs.Version.ForMdTable()} |
+            | Description | {vs.Description.ForMdTable()} |
+            """);
+
+        if (ca?.FailureCode != null)
+        {
+            writer.WriteLine($"""
+                | Failure | {ca.FailureCode} {ca.FailureMessage?.ForMdTable()} |
+                """);
+            return;
+        }
+
+        // generate mermaid flow chart showing the mappings between FHIR versions
+
+        string vsName = vs.Name.ToPascalCase();
+
+        Dictionary<string, List<ValueSetComparisonDetails>> mappings = [];
+
+        foreach (DefinitionCollection dc in _definitions)
+        {
+            mappings.Add(dc.MainPackageVersion, []);
+        }
+
+        // process linked maps, recursively
+        addVersionDetails(ca?.ToNext, ComparisonDirection.Up);
+        addVersionDetails(ca?.ToPrev, ComparisonDirection.Down);
+
+        writer.WriteLine("```mermaid");
+        writer.WriteLine("flowchart LR");
+        writer.IncreaseIndent();
+
+        foreach ((string version, List<ValueSetComparisonDetails> details) in mappings)
+        {
+            string cv = FhirSanitizationUtils.SanitizeForProperty(version);
+            writer.WriteLineIndented($"subgraph {cv}[\"{version}\"]");
+            writer.IncreaseIndent();
+
+            if (version == keyDc.MainPackageVersion)
+            {
+                writer.WriteLineIndented($"{cv}{vs.Name.ToPascalCase()}[\"{vs.Name}\"]");
+            }
+
+            foreach (ValueSetComparisonDetails detail in details)
+            {
+                if (detail.Target == null)
+                {
+                    continue;
+                }
+
+                writer.WriteLineIndented($"{cv}{detail.Target.Name.ToPascalCase()}[\"{detail.Target.Name}\"]");
+            }
+
+            writer.DecreaseIndent();
+            writer.WriteLineIndented("end");
+        }
+
+        writer.WriteLine("```");
+        writer.DecreaseIndent();   
+
+
+
+        //writer.WriteLine(string.Join(" | ", _definitions.Select(dc => dc.MainPackageVersion)));
+
+        //// | Name | Canonical | Failures | ...
+        //writer.Write(
+        //    $"| [{vs.Name.ForMdTable()}]({getVsFilename(vsName)}) " +
+        //    $"| {vs.Url.ForMdTable()} " +
+        //    $"| {vs.Description.ForMdTable()} ");
+
+        //if (ca?.FailureCode != null)
+        //{
+        //    writer.Write($"| {ca?.FailureCode} {ca?.FailureMessage?.ForMdTable() ?? "-"} ");
+        //    writeTableColumns(writer, string.Empty, _definitions.Length - 1);
+        //    return;
+        //}
+
+        ////$"| {getOverviewTableCell(vsName, ca?.ToPrev)} " +
+        ////    $"| {getOverviewTableCell(vsName, ca?.ToNext)} ");
+
+        return;
+
+        void addVersionDetails(List<ValueSetComparisonDetails>? details, ComparisonDirection direction)
+        {
+            foreach (ValueSetComparisonDetails detail in details ?? [])
+            {
+                if (!mappings.TryGetValue(detail.TargetDefinition.MainPackageVersion, out List<ValueSetComparisonDetails>? mapList))
+                {
+                    continue;
+                }
+
+                mapList.Add(detail);
+
+                if (detail.Target == null)
+                {
+                    continue;
+                }
+
+                if ((!detail.Target.TryGetAnnotation(out ValueSetComparisonAnnotation? detailCA)) ||
+                    (detailCA == null))
+                {
+                    continue;
+                }
+
+                if (direction == ComparisonDirection.Up)
+                {
+                    addVersionDetails(detailCA.ToNext, ComparisonDirection.Up);
+                }
+
+                if (direction == ComparisonDirection.Down)
+                {
+                    addVersionDetails(detailCA.ToPrev, ComparisonDirection.Down);
+                }
+            }
+
+        }
+    }
+
+    private void writeTableColumns(ExportStreamWriter writer, string value, int count, bool appendNewline = true)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            if (appendNewline && (i == count - 1))
+            {
+                writer.WriteLine(" | " + value);
+            }
+            else
+            {
+                writer.Write(" | " + value);
+            }
+        }
+    }
+
+    private string getOverviewTableCell(string sourceName, List<ValueSetComparisonDetails>? details)
+    {
+        if ((details == null) ||
+            (details.Count == 0))
+        {
+            return " - ";
+        }
+
+        return string.Join("<br/>", details.Select(cd => cd.Target == null ? withoutTarget(cd) : withTarget(cd)));
+
+        string withoutTarget(ValueSetComparisonDetails cd)
+        {
+            return $"{cd.TargetDefinition.FhirSequence.ToRLiteral()} - Not Mapped";
+        }
+
+        string withTarget(ValueSetComparisonDetails cd)
+        {
+            return $"[" +
+            $"{cd.TargetDefinition.FhirSequence.ToRLiteral()} " +
+            $"{cd.Target?.Name.ForMdTable()} " +
+            $" - {cd.ConceptDomain?.Relationship}" +
+            $"]({getVsFilename(sourceName, cd)})";
+        }
+    }
+
+    private string getVsFilename(string sourceVsName, ValueSetComparisonDetails? cd = null, bool includeRelativeDir = true)
+    {
+        if (cd?.Target == null)
+        {
+            return includeRelativeDir
+                ? $"ValueSets/{sourceVsName}.md"
+                : sourceVsName + ".md";
+        }
+
+        return includeRelativeDir
+            ? $"ValueSets/{sourceVsName}_{cd.TargetDefinition.FhirSequence.ToRLiteral()}_{cd.Target?.Name.ToPascalCase()}"
+            : $"{sourceVsName}_{cd.TargetDefinition.FhirSequence.ToRLiteral()}_{cd.Target?.Name.ToPascalCase()}";
+    }
+
+    private void writeMdComparisonFailed(ExportStreamWriter writer, ValueSet vs)
+    {
+        // build a filename for this vs only
+        //string filename = Path.Combine(dir, getVsFilename(vs.Name.ToPascalCase(), includeRelativeDir: false));
+
+        // write a stub file with info
+        //using ExportStreamWriter writer = createMarkdownWriter(filename, true, true);
+
+
+    }
+
+    private void writeMdObjectInfo(ExportStreamWriter writer, ValueSet vs)
+    {
+
+    }
+
+
+    private ExportStreamWriter createMarkdownWriter(string filename, bool writeGenerationHeader = true, bool includeGenerationTime = false)
+    {
+        ExportStreamWriter writer = new(filename);
+
+        if (writeGenerationHeader)
+        {
+            writer.WriteLine($"Comparison of {string.Join(", ", _definitions.Select(dc => dc.MainPackageId + "@" + dc.MainPackageVersion))}");
+
+            if (includeGenerationTime)
+            {
+                writer.WriteLine($"Generated at {DateTime.Now.ToString("F")}");
+            }
+
+            writer.WriteLine();
+        }
+
+        return writer;
+    }
+
 
     /// <summary>
     /// Compares the value sets between the source and target definition collections.
@@ -160,7 +498,7 @@ public class XVerProcessor
                     ca.FailureMessage = $"Failed to expand value set {versionedUrl} for comparison: {expandMessage}.";
                 }
 
-                Console.WriteLine($"Error: compareValueSets cannot process {versionedUrl} since it cannot be expanded: {expandMessage}");
+                _logger.LogValueSetNotExpanded(versionedUrl, expandMessage);
                 continue;
             }
 
@@ -179,8 +517,6 @@ public class XVerProcessor
                 ? comparisonAnnotation.ToNext
                 : comparisonAnnotation.ToPrev;
 
-            HashSet<string> processedTargets = [];
-
             // get any mappings for this value set (use the versioned URL to get the versioned and unversioned maps)
             List<ConceptMap> vsConceptMaps = cvMap.GetMapsForSource(versionedUrl);
             foreach (ConceptMap cm in vsConceptMaps)
@@ -197,7 +533,7 @@ public class XVerProcessor
                 }
 
                 // check for already being processed
-                if (processedTargets.Contains(cmTarget))
+                if (detailsList.Any(cd => cd.Target?.Url == cmTarget))
                 {
                     continue;
                 }
@@ -207,6 +543,7 @@ public class XVerProcessor
                 {
                     detailsList.Add(new()
                     {
+                        TargetDefinition = dcTarget,
                         Target = null,
                         FailureCode = ComparisonFailureCodes.UnresolvedTarget,
                         FailureMessage = $"Failed to resolve target scope for value set {versionedUrl} from {cm.Url}.",
@@ -219,15 +556,15 @@ public class XVerProcessor
                 }
 
                 // run this comparison and add our results
-                detailsList.Add(compareValueSet(vs, mappedTargetVs, cm));
+                detailsList.Add(compareValueSet(vs, mappedTargetVs, dcTarget, cm));
             }
 
             // check for this valueset exactly in the target collection
-            if (!processedTargets.Contains(unversionedUrl) &&
+            if (!detailsList.Any(cd => cd.Target?.Url == unversionedUrl) &&
+                !detailsList.Any(cd => cd.Target?.Url == versionedUrl) &&
                 dcTarget.TryExpandVs(unversionedUrl, out ValueSet? unversionedVs))
             {
-                processedTargets.Add(unversionedUrl);
-                detailsList.Add(compareValueSet(vs, unversionedVs, null));
+                detailsList.Add(compareValueSet(vs, unversionedVs, dcTarget, null));
             }
         }
     }
@@ -289,16 +626,16 @@ public class XVerProcessor
         cdr == ConceptDomainRelationshipCodes.SourceIsNew ||
         cdr == ConceptDomainRelationshipCodes.NotMapped;
 
-    /// <summary>
-    /// Compares two ValueSets and returns the comparison details.
-    /// </summary>
+    /// <summary>Compares two ValueSets and returns the comparison details.</summary>
     /// <param name="sourceVs">The source ValueSet.</param>
     /// <param name="targetVs">The target ValueSet.</param>
-    /// <param name="cm">The ConceptMap for mapping concepts between the ValueSets.</param>
+    /// <param name="dcTarget">The target definition collection.</param>
+    /// <param name="cm">      The ConceptMap for mapping concepts between the ValueSets.</param>
     /// <returns>The comparison details of the ValueSets.</returns>
     private ValueSetComparisonDetails compareValueSet(
         ValueSet sourceVs,
         ValueSet targetVs,
+        DefinitionCollection dcTarget,
         ConceptMap? cm)
     {
         // build our concept comparison dictionary
@@ -315,6 +652,7 @@ public class XVerProcessor
 
         return new()
         {
+            TargetDefinition = dcTarget,
             Target = targetVs,
             ExplicitMappingSource = cm?.Url,
             ConceptDomain = new()
@@ -698,7 +1036,7 @@ public class XVerProcessor
 
         if (!cvMap.TryLoadCrossVersionMaps(_config.CrossVersionMapSourcePath))
         {
-            Console.WriteLine($"Failed to load requested cross-version maps for {cvMapKey}! Processing will be only algorithmic!");
+            _logger.LogMapsNotFound(cvMapKey);
         }
 
         _crossVersionMaps.Add(cvMapKey, cvMap);

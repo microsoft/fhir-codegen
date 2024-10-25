@@ -1,0 +1,572 @@
+// <copyright file="LaunchUtils.cs" company="Microsoft Corporation">
+//     Copyright (c) Microsoft Corporation. All rights reserved.
+//     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
+// </copyright>
+
+using System.CommandLine;
+using System.CommandLine.Builder;
+using System.CommandLine.Help;
+using System.CommandLine.Invocation;
+using System.CommandLine.Parsing;
+using System.Reflection;
+using System.Text;
+using Microsoft.Health.Fhir.CodeGen.Configuration;
+using Microsoft.Health.Fhir.CodeGen.Language;
+using Microsoft.Health.Fhir.CodeGenCommon.Models;
+using Microsoft.Health.Fhir.CodeGen.Extensions;
+using Microsoft.Extensions.Primitives;
+using System.Collections;
+using Hl7.Fhir.Utility;
+using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
+using Microsoft.Health.Fhir.CodeGen.Loader;
+using Microsoft.Health.Fhir.CodeGen.Models;
+using Microsoft.Extensions.Configuration;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Console;
+
+
+namespace fhir_codegen_shared;
+
+internal static class LaunchUtils
+{
+    internal static Dictionary<string, LanguageOptionInfo> _configMapsByLang = [];
+
+    private static List<Option> _optsWithEnums = [];
+
+    internal record class LanguageOptionInfo
+    {
+        public required string Name { get; set; }
+
+        public required Type ConfigType { get; set; }
+
+        public List<PropertyOptionTuple> Properties { get; set; } = [];
+    }
+
+    internal record class PropertyOptionTuple
+    {
+        public required PropertyInfo ConfigProp { get; set; }
+
+        public required Option CommandOpt { get; set; }
+    }
+
+    /// <summary>Parses the configuration based on the provided command and parse result.</summary>
+    /// <exception cref="Exception">Thrown when the language type cannot be found, the configuration
+    ///  object cannot be created, or the configuration type does not implement <see cref="ICodeGenConfig"/>
+    ///  or inherit from <see cref="ConfigRoot"/>.</exception>
+    /// <param name="pr">           The parse result containing the command line arguments.</param>
+    /// <param name="command">      The command to determine the type of configuration to create.</param>
+    /// <param name="loggerFactory">The logger factory.</param>
+    /// <returns>
+    /// An instance of <see cref="ICodeGenConfig"/> representing the parsed configuration.
+    /// </returns>
+    internal static ICodeGenConfig ParseConfig(
+        ParseResult pr,
+        string command,
+        ILoggerFactory loggerFactory)
+    {
+        ICodeGenConfig config;
+
+        switch (command)
+        {
+            case "generate":
+                {
+                    string languageName = pr.CommandResult.Command.Name;
+
+                    if (!LanguageManager.TryGetLanguage(languageName, out ILanguage? language))
+                    {
+                        throw new Exception($"Could not find language type for {languageName}");
+                    }
+
+                    // get our language type
+                    Type langType = LanguageManager.TypeForLanguage(languageName);
+
+                    // get our language configuration type
+                    Type configType = LanguageManager.ConfigTypeForLanguage(language.Name);
+
+                    // create our configuration object
+                    object? configGeneric = Activator.CreateInstance(configType)
+                        ?? throw new Exception($"Could not create configuration object for {languageName} ({configType.Name})");
+
+                    if (configGeneric is not ICodeGenConfig tc)
+                    {
+                        throw new Exception($"Config type must implement ICodeGenConfig, {languageName} ({configType.Name})");
+                    }
+
+                    if (tc is not ConfigRoot rootConfig)
+                    {
+                        throw new Exception("Config type must inherit from ConfigRoot");
+                    }
+
+                    rootConfig.LaunchCommand = command;
+                    if (loggerFactory != null)
+                    {
+                        rootConfig.LogFactory = loggerFactory;
+                    }
+                    config = tc;
+                }
+                break;
+
+            case "compare":
+                config = new ConfigCompare()
+                {
+                    LaunchCommand = command,
+                    LogFactory = loggerFactory ?? LoggerFactory.Create(builder => builder.AddConsole()),
+                };
+                break;
+
+            case "xver":
+                config = new ConfigXVer()
+                {
+                    LaunchCommand = command,
+                    LogFactory = loggerFactory ?? LoggerFactory.Create(builder => builder.AddConsole()),
+                };
+                break;
+
+            case "gui":
+                config = new ConfigGui()
+                {
+                    LaunchCommand = command,
+                    LogFactory = loggerFactory ?? LoggerFactory.Create(builder => builder.AddConsole()),
+                };
+                break;
+
+            case "help":
+            default:
+                config = new ConfigRoot()
+                {
+                    LaunchCommand = command,
+                    LogFactory = loggerFactory ?? LoggerFactory.Create(builder => builder.AddConsole()),
+                };
+                break;
+        }
+
+        // parse the arguments into the configuration object
+        config.Parse(pr);
+
+        // return our configuration object
+        return config;
+    }
+
+    internal static Parser BuildParser(IConfiguration envConfig)
+    {
+        RootCommand command = BuildCommand(envConfig);
+
+        Parser parser = new CommandLineBuilder(command)
+            .UseExceptionHandler((ex, ctx) =>
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                ctx.ExitCode = 1;
+            })
+            .UseDefaults()
+            .UseHelp(ctx =>
+            {
+                foreach (Option option in _optsWithEnums)
+                {
+                    StringBuilder sb = new();
+                    if (option.Aliases.Count != 0)
+                    {
+                        sb.AppendLine(string.Join(", ", option.Aliases));
+                    }
+                    else
+                    {
+                        sb.AppendLine(option.Name);
+                    }
+
+                    Type et = option.ValueType;
+
+                    if (option.ValueType.IsGenericType)
+                    {
+                        et = option.ValueType.GenericTypeArguments.First();
+                    }
+
+                    if (option.ValueType.IsArray)
+                    {
+                        et = option.ValueType.GetElementType()!;
+                    }
+
+                    foreach (MemberInfo mem in et.GetMembers(BindingFlags.Public | BindingFlags.Static).Where(m => m.DeclaringType == et).OrderBy(m => m.Name))
+                    {
+                        IEnumerable<DescriptionAttribute> attributes = mem.GetCustomAttributes<DescriptionAttribute>(false);
+
+                        sb.AppendLine($"  opt: {mem.Name}");
+                        if (attributes.Any())
+                        {
+                            sb.AppendLine($"       {attributes.First().Description}");
+                        }
+                    }
+
+                    ctx.HelpBuilder.CustomizeSymbol(
+                        option,
+                        firstColumnText: (ctx) => sb.ToString());
+                    //secondColumnText: (ctx) => option.Description);
+                }
+            })
+            .Build();
+
+        return parser;
+    }
+
+
+    /// <summary>Builds command parser.</summary>
+    /// <param name="envConfig">  The environment configuration.</param>
+    /// <param name="addHandlers">True to add handlers.</param>
+    /// <returns>A Parser.</returns>
+    internal static RootCommand BuildCommand(IConfiguration envConfig)
+    {
+        // create our root command
+        RootCommand rootCommand = new("A utility for processing FHIR packages into other formats/languages.");
+        foreach (Option option in BuildCliOptions(typeof(ConfigRoot), envConfig: envConfig))
+        {
+            // note that 'global' here is just recursive DOWNWARD
+            rootCommand.AddGlobalOption(option);
+            TrackIfEnum(option);
+        }
+
+        // create our generate command
+        Command generateCommand = new("generate", "Generate output from a FHIR package and exit.");
+        foreach (Option option in BuildCliOptions(typeof(ConfigGenerate), typeof(ConfigRoot), envConfig))
+        {
+            // note that 'global' here is just recursive DOWNWARD
+            generateCommand.AddGlobalOption(option);
+            TrackIfEnum(option);
+        }
+
+        // iterate through languages and add them as subcommands
+        foreach (ILanguage language in LanguageManager.GetLanguages())
+        {
+            Command languageCommand = new(language.Name, $"Generate {language.Name}");
+            if (language.Name.Any(char.IsUpper))
+            {
+                languageCommand.AddAlias(language.Name.ToLowerInvariant());
+            }
+
+            foreach (Option option in BuildCliOptions(LanguageManager.ConfigTypeForLanguage(language.Name), envConfig: envConfig))
+            {
+                languageCommand.AddOption(option);
+                TrackIfEnum(option);
+            }
+
+            generateCommand.AddCommand(languageCommand);
+        }
+
+        rootCommand.AddCommand(generateCommand);
+
+        // create our interactive command
+        Command interactiveCommand = new("interactive", "Launch into an interactive console.");
+        foreach (Option option in BuildCliOptions(typeof(ConfigInteractive), typeof(ConfigRoot), envConfig))
+        {
+            // note that 'global' here is just recursive DOWNWARD
+            interactiveCommand.AddGlobalOption(option);
+            TrackIfEnum(option);
+        }
+
+        // TODO(ginoc): Set the command handler
+        rootCommand.AddCommand(interactiveCommand);
+
+        // create our webserver command
+        Command webCommand = new("web", "Launch into a locally-hosted web UI.");
+        foreach (Option option in BuildCliOptions(typeof(ConfigFluentUi), typeof(ConfigRoot), envConfig))
+        {
+            // note that 'global' here is just recursive DOWNWARD
+            webCommand.AddGlobalOption(option);
+            TrackIfEnum(option);
+        }
+
+        // TODO(ginoc): Set the command handler
+        rootCommand.AddCommand(webCommand);
+
+        // create our compare command
+        Command compareCommand = new("compare", "Compare two sets of packages.");
+        foreach (Option option in BuildCliOptions(typeof(ConfigCompare), typeof(ConfigRoot), envConfig))
+        {
+            // note that 'global' here is just recursive DOWNWARD
+            compareCommand.AddGlobalOption(option);
+            TrackIfEnum(option);
+        }
+
+        // TODO(ginoc): Set the command handler
+        rootCommand.AddCommand(compareCommand);
+
+        // create our XVer command
+        Command xverCommand = new("xver", "Perform FHIR Core Cross-Version processing.");
+        foreach (Option option in BuildCliOptions(typeof(ConfigXVer), typeof(ConfigRoot), envConfig))
+        {
+            // note that 'global' here is just recursive DOWNWARD
+            xverCommand.AddGlobalOption(option);
+            TrackIfEnum(option);
+        }
+
+        // TODO(ginoc): Set the command handler
+        rootCommand.AddCommand(xverCommand);
+
+
+        //// create our cross-version interactive command
+        //Command cviCommand = new("cross-version", "Interactively review cross-version definitions.");
+        //foreach (Option option in BuildCliOptions(typeof(ConfigCrossVersionInteractive), typeof(ConfigRoot), envConfig))
+        //{
+        //    // note that 'global' here is just recursive DOWNWARD
+        //    cviCommand.AddGlobalOption(option);
+        //    TrackIfEnum(option);
+        //}
+
+        //// TODO(ginoc): Set the command handler
+        //rootCommand.AddCommand(cviCommand);
+
+        // create our UI command
+        Command guiCommand = new("gui", "Launch the GUI.");
+        foreach (Option option in BuildCliOptions(typeof(ConfigGui), typeof(ConfigRoot), envConfig))
+        {
+            // note that 'global' here is just recursive DOWNWARD
+            guiCommand.AddGlobalOption(option);
+            TrackIfEnum(option);
+        }
+
+        // TODO(ginoc): Set the command handler
+        rootCommand.AddCommand(guiCommand);
+
+
+        return rootCommand;
+
+        void TrackIfEnum(Option option)
+        {
+            if (option.ValueType.IsEnum)
+            {
+                _optsWithEnums.Add(option);
+                return;
+            }
+
+            if (option.ValueType.IsGenericType)
+            {
+                if (option.ValueType.GenericTypeArguments.First().IsEnum)
+                {
+                    _optsWithEnums.Add(option);
+                }
+
+                return;
+            }
+
+            if (option.ValueType.IsArray)
+            {
+                if (option.ValueType.GetElementType()!.IsEnum)
+                {
+                    _optsWithEnums.Add(option);
+                }
+
+                return;
+            }
+        }
+    }
+
+
+    internal static IEnumerable<Option> BuildCliOptions(
+        Type forType,
+        Type? excludeFromType = null,
+        IConfiguration? envConfig = null)
+    {
+        HashSet<string> inheritedPropNames = [];
+
+        if (excludeFromType != null)
+        {
+            PropertyInfo[] exProps = excludeFromType.GetProperties();
+            foreach (PropertyInfo exProp in exProps)
+            {
+                inheritedPropNames.Add(exProp.Name);
+            }
+        }
+
+        object? configDefault = null;
+        if (forType.IsAbstract)
+        {
+            throw new Exception($"Config type cannot be abstract! {forType.Name}");
+        }
+
+        configDefault = Activator.CreateInstance(forType);
+
+        if (configDefault is not ICodeGenConfig config)
+        {
+            throw new Exception("Config type must implement ICodeGenConfig");
+        }
+
+        foreach (ConfigurationOption opt in config.GetOptions())
+        {
+            // need to configure default values
+            if ((envConfig != null) &&
+                (!string.IsNullOrEmpty(opt.EnvVarName)))
+            {
+                opt.CliOption.SetDefaultValueFactory(() => envConfig.GetSection(opt.EnvVarName).GetChildren().Select(c => c.Value));
+            }
+            else
+            {
+                opt.CliOption.SetDefaultValue(opt.DefaultValue);
+            }
+
+            yield return opt.CliOption;
+        }
+    }
+
+
+    /// <summary>Executes the browser operation.</summary>
+    /// <param name="url">URL of the resource.</param>
+    internal static void LaunchBrowser(string url)
+    {
+        ProcessStartInfo psi = new();
+
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+        {
+            psi.FileName = "open";
+            psi.ArgumentList.Add(url);
+        }
+        else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+        {
+            psi.FileName = "xdg-open";
+            psi.ArgumentList.Add(url);
+        }
+        else
+        {
+            psi.FileName = "cmd";
+            psi.ArgumentList.Add("/C");
+            psi.ArgumentList.Add("start");
+            psi.ArgumentList.Add(url);
+        }
+
+        Process.Start(psi);
+    }
+
+
+    internal static Dictionary<string, List<string>> ParseHttpHeaderArgs(List<string> argValues)
+    {
+        if (argValues.Count == 0)
+        {
+            return [];
+        }
+
+        Dictionary<string, List<string>> headers = [];
+
+        foreach (string header in argValues)
+        {
+            int separatorLocation = header.IndexOf('=');
+
+            if (separatorLocation == -1)
+            {
+                // ignore
+                continue;
+            }
+
+            string key = header[..separatorLocation].Trim();
+            string value = header[(separatorLocation + 1)..].Trim();
+
+            if (headers.TryGetValue(key, out List<string>? parsedValues))
+            {
+                parsedValues.Append(value);
+            }
+            else
+            {
+                headers.Add(key, [value]);
+            }
+        }
+
+        return headers;
+    }
+
+    //internal static RootCommand BuildCommand(IConfiguration envConfig)
+    //{
+    //    // create our root command
+    //    RootCommand rootCommand = new("A utility for processing FHIR packages into other formats/languages.");
+    //    //foreach (Option option in BuildCliOptions(typeof(ConfigRoot), envConfig: envConfig))
+    //    //{
+    //    //    rootCommand.AddOption(option);
+    //    //    TrackIfEnum(option);
+    //    //}
+
+    //    // create our generate command
+    //    Command generateCommand = new("generate", "Generate output from a FHIR package and exit.");
+    //    //foreach (Option option in BuildCliOptions(typeof(ConfigGenerate), envConfig: envConfig))
+    //    //{
+    //    //    generateCommand.AddOption(option);
+    //    //    TrackIfEnum(option);
+    //    //}
+
+    //    // iterate through languages and add them as subcommands
+    //    foreach (ILanguage language in LanguageManager.GetLanguages())
+    //    {
+    //        Command languageCommand = new(language.Name, $"Generate {language.Name}");
+    //        if (language.Name.Any(char.IsUpper))
+    //        {
+    //            languageCommand.AddAlias(language.Name.ToLowerInvariant());
+    //        }
+
+    //        foreach (Option option in BuildCliOptions(LanguageManager.ConfigTypeForLanguage(language.Name), envConfig: envConfig))
+    //        {
+    //            languageCommand.AddOption(option);
+    //            TrackIfEnum(option);
+    //        }
+
+    //        foreach (Option option in BuildCliOptions(typeof(ConfigGenerate), envConfig: envConfig))
+    //        {
+    //            languageCommand.AddOption(option);
+    //            TrackIfEnum(option);
+    //        }
+
+    //        generateCommand.AddCommand(languageCommand);
+    //    }
+
+    //    rootCommand.AddCommand(generateCommand);
+
+    //    // create our interactive command
+    //    Command interactiveCommand = new("interactive", "Launch into an interactive console.");
+    //    foreach (Option option in BuildCliOptions(typeof(ConfigInteractive), envConfig: envConfig))
+    //    {
+    //        // note that 'global' here is just recursive DOWNWARD
+    //        interactiveCommand.AddOption(option);
+    //        TrackIfEnum(option);
+    //    }
+
+    //    // TODO(ginoc): Set the command handler
+    //    rootCommand.AddCommand(interactiveCommand);
+
+    //    // create our generate command
+    //    Command webCommand = new("web", "Launch into a locally-hosted web UI.");
+    //    foreach (Option option in BuildCliOptions(typeof(ConfigFluentUi), envConfig: envConfig))
+    //    {
+    //        // note that 'global' here is just recursive DOWNWARD
+    //        webCommand.AddOption(option);
+    //        TrackIfEnum(option);
+    //    }
+
+    //    // TODO(ginoc): Set the command handler
+    //    rootCommand.AddCommand(webCommand);
+
+    //    return rootCommand;
+
+    //    void TrackIfEnum(Option option)
+    //    {
+    //        if (option.ValueType.IsEnum)
+    //        {
+    //            _optsWithEnums.Add(option);
+    //            return;
+    //        }
+
+    //        if (option.ValueType.IsGenericType)
+    //        {
+    //            if (option.ValueType.GenericTypeArguments.First().IsEnum)
+    //            {
+    //                _optsWithEnums.Add(option);
+    //            }
+
+    //            return;
+    //        }
+
+    //        if (option.ValueType.IsArray)
+    //        {
+    //            if (option.ValueType.GetElementType()!.IsEnum)
+    //            {
+    //                _optsWithEnums.Add(option);
+    //            }
+
+    //            return;
+    //        }
+    //    }
+    //}
+}
