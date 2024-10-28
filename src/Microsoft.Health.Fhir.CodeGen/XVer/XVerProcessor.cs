@@ -21,6 +21,10 @@ using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using Microsoft.Health.Fhir.CodeGenCommon.Utils;
+using SemanticVersioning;
+using System.Xml.Linq;
+
+
 
 #if NETSTANDARD2_0
 using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
@@ -41,6 +45,8 @@ internal static partial class XVerProcessorLogMessages
 internal static class XVerExtensions
 {
     internal static string ForMdTable(this string value) => string.IsNullOrEmpty(value) ? string.Empty : value.Replace("|", "\\|").Replace("\n", "<br/>").Replace("\r", "<br/>");
+
+    internal static string ComparisonKey(this ValueSet vs, string graphId) => graphId + "_" + vs.Name.ToPascalCase();
 }
 
 
@@ -213,8 +219,8 @@ public class XVerProcessor
             
             ## Value Set Overview
 
-            | Name | Canonical | Description | Mappings | Errors |
-            | ---- | --------- | ----------- | -------- | ------ |
+            | Name | Canonical | Description | Maps to Lower | Maps to Higher | Errors |
+            | ---- | --------- | ----------- | ------------- | -------------- | ------ |
 
             """);
     }
@@ -223,13 +229,12 @@ public class XVerProcessor
     {
         string vsName = vs.Name.ToPascalCase();
 
-        bool hasMappings = ca?.ToPrev?.Count > 0 || ca?.ToNext?.Count > 0;
-
         writer.WriteLine(
             $"| [{vs.Name.ForMdTable()}]({getVsFilename(vsName)})" +
             $"| {vs.Url.ForMdTable()}" +
             $"| {vs.Description.ForMdTable()}" +
-            $"| {hasMappings}" +
+            $"| {ca?.ToPrev?.Count > 0}" +
+            $"| {ca?.ToNext?.Count > 0}" +
             $"| {ca?.FailureCode} {ca?.FailureMessage?.ForMdTable()}");
 
         return;
@@ -257,34 +262,92 @@ public class XVerProcessor
             return;
         }
 
-        // generate mermaid flow chart showing the mappings between FHIR versions
+        writer.WriteLine("### Bindings");
+        writer.WriteLine();
+        writer.WriteLine("| Source | Element | Binding | Strength |");
+        writer.WriteLine("| ------ | ------- | ------- | -------- |");
+
+        // get the elements with bindings
+        {
+            IEnumerable<StructureElementCollection> bindings = keyDc.AllBindingsForVs(vs.Url);
+            foreach (StructureElementCollection binding in bindings)
+            {
+                foreach (ElementDefinition ed in binding.Elements)
+                {
+                    writer.WriteLine($"| {binding.Structure.Url} | {ed.Path} | {ed.Binding.ValueSet} | {ed.Binding.Strength} |");
+                }
+            }
+        }
+
+        writer.WriteLine();
 
         string vsName = vs.Name.ToPascalCase();
 
-        Dictionary<string, List<ValueSetComparisonDetails>> mappings = [];
-
+        // build a dictionary that will have the mappings we care about for each version
+        Dictionary<string, List<ValueSetComparisonDetails>> comparisonsByVersion = [];
         foreach (DefinitionCollection dc in _definitions)
         {
-            mappings.Add(dc.MainPackageVersion, []);
+            comparisonsByVersion.Add(dc.MainPackageVersion, []);
         }
 
         // process linked maps, recursively
         addVersionDetails(ca?.ToNext, ComparisonDirection.Up);
         addVersionDetails(ca?.ToPrev, ComparisonDirection.Down);
 
+        // generate table showing the mappings
+
+        writer.WriteLine("### Mapping Table");
+        writer.WriteLine();
+        writer.WriteLine("| " + string.Join(" | ", comparisonsByVersion.Keys));
+        writeTableColumns(writer, "---", _definitions.Length, appendNewline: true);
+
+        foreach ((string cVersion, List<ValueSetComparisonDetails> detailList) in comparisonsByVersion)
+        {
+            if ((detailList.Count == 0) &&
+                (cVersion == keyDc.MainPackageVersion))
+            {
+                writer.Write("| " + vs.Name.ForMdTable() + " - " + vs.Url.ForMdTable());
+                continue;
+            }
+
+            writer.Write("| " + string.Join("<br/>", detailList.Select(details => details.Target?.Name.ForMdTable() + " - " + details.Target?.Url.ForMdTable())));
+        }
+
+        writer.WriteLine();
+
+        writer.WriteLine("### Mapping Chart");
+        writer.WriteLine();
+
+        // generate mermaid flow chart showing the mappings between FHIR versions
+        HashSet<string> nodeIds = [];
+
         writer.WriteLine("```mermaid");
         writer.WriteLine("flowchart LR");
         writer.IncreaseIndent();
 
-        foreach ((string version, List<ValueSetComparisonDetails> details) in mappings)
+        string previousGraphId = string.Empty;
+
+        // write the subgraph blocks
+        foreach ((string version, List<ValueSetComparisonDetails> details) in comparisonsByVersion)
         {
-            string cv = FhirSanitizationUtils.SanitizeForProperty(version);
-            writer.WriteLineIndented($"subgraph {cv}[\"{version}\"]");
+            string graphId = getChartGraphId(version);
+            writer.WriteLineIndented($"subgraph {graphId}[\"{version}\"]");
             writer.IncreaseIndent();
 
-            if (version == keyDc.MainPackageVersion)
+            string? id;
+            string? name;
+
+            // check for being the 'key' value set (details will be empty)
+            if ((details.Count == 0) &&
+                (version == keyDc.MainPackageVersion))
             {
-                writer.WriteLineIndented($"{cv}{vs.Name.ToPascalCase()}[\"{vs.Name}\"]");
+                (id, name) = getChartNodeInfo(graphId, version, vs);
+
+                if (id != null)
+                {
+                    writer.WriteLineIndented($"{id}[\"{name}\"]");
+                    nodeIds.Add(id);
+                }
             }
 
             foreach (ValueSetComparisonDetails detail in details)
@@ -294,12 +357,31 @@ public class XVerProcessor
                     continue;
                 }
 
-                writer.WriteLineIndented($"{cv}{detail.Target.Name.ToPascalCase()}[\"{detail.Target.Name}\"]");
+                (id, name) = getChartNodeInfo(graphId, version, detail.Target);
+                if (id != null)
+                {
+                    writer.WriteLineIndented($"{id}[\"{name}\"]");
+                    nodeIds.Add(id);
+                }
             }
 
             writer.DecreaseIndent();
             writer.WriteLineIndented("end");
+            writer.WriteLine();
+
+            if (!string.IsNullOrEmpty(previousGraphId))
+            {
+                // write an invisible link to force ordering
+                writer.WriteLineIndented($"{previousGraphId} ~~~ {graphId}");
+                writer.WriteLine();
+            }
+            previousGraphId = graphId;
         }
+
+
+        // write entries in both directions
+        writeChartLinkageRecursive(writer, keyDc, vs, ca, ComparisonDirection.Down);
+        writeChartLinkageRecursive(writer, keyDc, vs, ca, ComparisonDirection.Up);
 
         writer.WriteLine("```");
         writer.DecreaseIndent();   
@@ -326,11 +408,23 @@ public class XVerProcessor
 
         return;
 
+        string getChartGraphId(string version) => FhirSanitizationUtils.SanitizeForProperty("v_" + version);
+
+        (string? id, string? name) getChartNodeInfo(string graphId, string version, ValueSet? chartVs)
+        {
+            if (chartVs == null)
+            {
+                return (null, null);
+            }
+
+            return ($"{graphId}_{chartVs.Name.ToPascalCase()}", chartVs.Name);
+        }
+
         void addVersionDetails(List<ValueSetComparisonDetails>? details, ComparisonDirection direction)
         {
             foreach (ValueSetComparisonDetails detail in details ?? [])
             {
-                if (!mappings.TryGetValue(detail.TargetDefinition.MainPackageVersion, out List<ValueSetComparisonDetails>? mapList))
+                if (!comparisonsByVersion.TryGetValue(detail.TargetDefinition.MainPackageVersion, out List<ValueSetComparisonDetails>? mapList))
                 {
                     continue;
                 }
@@ -358,7 +452,86 @@ public class XVerProcessor
                     addVersionDetails(detailCA.ToPrev, ComparisonDirection.Down);
                 }
             }
+        }
 
+        void writeChartLinkageRecursive(
+            ExportStreamWriter writer,
+            DefinitionCollection currentDc,
+            ValueSet currentVs,
+            ValueSetComparisonAnnotation? ca,
+            ComparisonDirection direction)
+        {
+            if (ca == null)
+            {
+                return;
+            }
+
+            string graphId = getChartGraphId(currentDc.MainPackageVersion);
+            (string? id, _) = getChartNodeInfo(graphId, currentDc.MainPackageVersion, currentVs);
+
+            if (id == null)
+            {
+                return;
+            }
+
+            foreach (ValueSetComparisonDetails detail in (direction == ComparisonDirection.Up ? ca?.ToNext : ca?.ToPrev) ?? [])
+            {
+                if (detail.Target == null)
+                {
+                    continue;
+                }
+
+                if ((!detail.Target.TryGetAnnotation(out ValueSetComparisonAnnotation? detailCA)) ||
+                    (detailCA == null))
+                {
+                    continue;
+                }
+
+                string targetGraphId = getChartGraphId(detail.TargetDefinition.MainPackageVersion);
+                (string? targetId, _) = getChartNodeInfo(targetGraphId, detail.TargetDefinition.MainPackageVersion, detail.Target);
+
+                string link;
+
+                if (direction == ComparisonDirection.Up)
+                {
+                    // check for reverse direction
+                    if (detailCA.ToPrev.Any(prev => (prev.Target?.Url == currentVs.Url) && (prev.Target?.Version == currentVs.Version)))
+                    {
+                        link = "<-->";
+                    }
+                    else
+                    {
+                        link = "-->";
+                    }
+                }
+                else
+                {
+                    // check for reverse direction
+                    if (detailCA.ToNext.Any(next => (next.Target?.Url == currentVs.Url) && (next.Target?.Version == currentVs.Version)))
+                    {
+                        link = "<-->";
+                    }
+                    else
+                    {
+                        link = "<--";
+                    }
+                }
+
+                // write this entry
+                writer.WriteLineIndented($"{id} {link} {targetId}");
+
+                // recurse up
+                if (direction == ComparisonDirection.Up)
+                {
+                    writeChartLinkageRecursive(writer, detail.TargetDefinition, detail.Target, detailCA, ComparisonDirection.Up);
+                }
+
+                // recurse down
+                if (direction == ComparisonDirection.Down)
+                {
+                    writeChartLinkageRecursive(writer, detail.TargetDefinition, detail.Target, detailCA, ComparisonDirection.Down);
+                }
+            }
         }
     }
 
@@ -982,7 +1155,8 @@ public class XVerProcessor
                 foreach (ConceptMap.TargetElementComponent cmTarget in cmElement.Target)
                 {
                     string targetKey = $"{groupTargetSystem}#{cmTarget.Code}";
-                    mapTargets.Add(targetKey, cmTarget);
+                    //mapTargets.Add(targetKey, cmTarget);
+                    mapTargets[targetKey] = cmTarget;
                 }
             }
         }

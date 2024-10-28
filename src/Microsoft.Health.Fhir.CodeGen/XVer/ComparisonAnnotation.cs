@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
+using Hl7.Fhir.Model;
 using Microsoft.Health.Fhir.CodeGen.Models;
 
 namespace Microsoft.Health.Fhir.CodeGen.XVer;
