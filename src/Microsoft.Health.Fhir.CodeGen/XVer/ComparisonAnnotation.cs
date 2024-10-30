@@ -193,6 +193,25 @@ public class ValueSetComparisonAnnotation
     public List<string>? EscapeValveCodes { get; init; } = null;
 }
 
+public enum ComparisonDirection
+{
+    Up,
+    Down,
+}
+
+public record class ValueSetMapProjectionCell
+{
+    public required string PackageVersion { get; init; }
+    public required ValueSet VS { get; init; }
+    public required ValueSetComparisonAnnotation? ComparisonAnnotation { get; init; }
+
+    public ValueSetComparisonDetails? ToRightCell { get; set; } = null;
+    public ValueSetComparisonDetails? FromRightCell { get; set; } = null;
+
+    public ValueSetComparisonDetails? ToLeftCell { get; set; } = null;
+    public ValueSetComparisonDetails? FromLeftCell { get; set; } = null;
+}
+
 
 /// <summary>
 /// Represents the flags for structural relationships.
