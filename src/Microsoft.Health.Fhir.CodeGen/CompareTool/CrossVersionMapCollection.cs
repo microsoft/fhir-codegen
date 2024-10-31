@@ -22,6 +22,12 @@ using System.Text;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Hl7.Fhir.Language.Debugging;
 using Firely.Fhir.Packages;
+using System.Text.Json;
+using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Specification.Snapshot;
+
+
+
 
 #if NETSTANDARD2_0
 using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
@@ -71,6 +77,8 @@ public class CrossVersionMapCollection
     private int _sourceToTargetWithRLen;
     private string _sourceToTargetNoR;
     private int _sourceToTargetNoRLen;
+
+    private readonly JsonSerializerOptions _firelySerializerOptions;
 
     private Dictionary<string, string> _urlMap = [];
 
@@ -134,6 +142,52 @@ public class CrossVersionMapCollection
             MainPackageCanonical = _mapCanonical,
             Logger = source.Logger,
         };
+
+        _firelySerializerOptions = new JsonSerializerOptions().ForFhir(ModelInfo.ModelInspector).Pretty();
+    }
+
+    public void SaveValueSetConceptMaps(string path, bool includeMapSubdir = true)
+    {
+        string dir = includeMapSubdir ? Path.Combine(path, $"{_sourceRLiteral}-{_targetRLiteral}") : path;
+
+        if (!Directory.Exists(dir))
+        {
+            Directory.CreateDirectory(dir);
+        }
+
+        // iterate over the maps in the collection
+        foreach (ConceptMap cm in _dc.ConceptMapsByUrl.Values)
+        {
+            // skip ones that are not value set comparisons
+            if (!isValueSetMap(cm))
+            {
+                continue;
+            }
+
+            string filename = Path.Combine(dir, $"ConceptMap-{cm.Id}.json");
+
+            try
+            {
+                using FileStream fs = new(filename, FileMode.Create, FileAccess.Write);
+                using Utf8JsonWriter writer = new(fs, new JsonWriterOptions() { Indented = true, });
+                {
+                    JsonSerializer.Serialize(writer, cm, _firelySerializerOptions);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error writing {filename}: {ex.Message} {ex.InnerException?.Message}");
+            }
+        }
+
+        return;
+
+        bool isValueSetMap(ConceptMap cm) => cm.UseContext.Any(uc =>
+                    (uc.Code.System == CommonDefinitions.ConceptMapUsageContextSystem) &&
+                    (uc.Value is CodeableConcept cc) &&
+                    cc.Coding.Any(c => c.System == CommonDefinitions.ConceptMapUsageContextSystem && c.Code == CommonDefinitions.ConceptMapUsageContextValueSet));
+
+
     }
 
     public bool PathHasFhirCrossVersionOfficial(string path)
@@ -1289,6 +1343,44 @@ public class CrossVersionMapCollection
         return true;
     }
 
+    /// <summary>
+    /// Builds a base ConceptMap between two ValueSets.
+    /// </summary>
+    /// <param name="sourceVs">The source ValueSet.</param>
+    /// <param name="targetVs">The target ValueSet.</param>
+    /// <returns>A ConceptMap representing the mapping between the source and target ValueSets.</returns>
+    public ConceptMap BuildBaseMap(
+        ValueSet sourceVs,
+        ValueSet targetVs)
+    {
+        string localConceptMapId = $"{_sourceRLiteral}-{sourceVs.Name.ToPascalCase()}-{_targetRLiteral}-{targetVs.Name.ToPascalCase()}";
+        string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
+
+        string sourceUrl = sourceVs.Url;
+        string targetUrl = targetVs.Url;
+
+        string sourceVersion = string.IsNullOrEmpty(sourceVs.Version) ? _sourcePackageVersion : sourceVs.Version;
+        string targetVersion = string.IsNullOrEmpty(targetVs.Version) ? _targetPackageVersion : targetVs.Version;
+
+        string sourceCanonical = $"{sourceUrl}|{sourceVersion}";
+        string targetCanonical = $"{targetUrl}|{targetVersion}";
+
+        ConceptMap cm = new()
+        {
+            Id = localConceptMapId,
+            Url = localUrl,
+            Version = _dc.MainPackageVersion,
+            Name = localConceptMapId,
+            Title = GetConceptMapTitle(sourceVs.Name),
+            Status = PublicationStatus.Active,
+            Experimental = false,
+            Description = $"Mapping from {_sourceRLiteral} {sourceVs.Name} to {_targetRLiteral} {targetVs.Name}",
+            SourceScope = new Canonical(sourceCanonical),
+            TargetScope = new Canonical(targetCanonical),
+        };
+
+        return cm;
+    }
 
     public ConceptMap? GetSourceValueSetConceptMap(
         ValueSetComparison vsc)

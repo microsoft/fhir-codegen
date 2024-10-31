@@ -27,6 +27,57 @@ internal static class ComparisonUtils
     internal static string ForMdTable(this string value) => string.IsNullOrEmpty(value) ? string.Empty : value.Replace("|", "\\|").Replace("\n", "<br/>").Replace("\r", "<br/>");
 }
 
+/// <summary>
+/// Represents issue codes for comparisons.
+/// </summary>
+public enum ComparisonIssueCode
+{
+    ManuallyExcluded,
+    NoTarget,
+    CannotExpandSource,
+    CannotExpandTarget,
+    NoRequiredBindings,
+    InvalidMap,
+}
+
+
+public record class PairComparison<T>
+    where T : Hl7.Fhir.Model.Base
+{
+    public required T Source { get; init; }
+    public required T? Target { get; init; }
+
+    public required CMR? Relationship { get; init; }
+    public required ComparisonIssueCode? IssueCode { get; init; }
+    public required string Message { get; init; }
+
+    public required ConceptMap? Map { get; init; }
+}
+
+
+
+internal record class ValueSetCodeComparisonRec
+{
+    public required string SourceSystem { get; init; }
+    public required string SourceCode { get; init; }
+    public required string? SourceDisplay { get; set; }
+
+    public bool? NoMap { get; set; }
+
+    public string? TargetSystem { get; init; }
+    public string? TargetCode { get; init; }
+    public string? TargetDisplay { get; set; }
+
+    public required CMR? Relationship { get; set; }
+    public required string? Comment { get; set; }
+
+    public required bool? IsGenerated { get; set; }
+}
+
+
+
+
+
 public record class ComparisonBase
 {
     public required CMR? Relationship { get; init; }

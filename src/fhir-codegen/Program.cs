@@ -238,26 +238,29 @@ public class Program
             DefinitionCollection? loadedRight = await loaderLeft.LoadPackages(config.ComparePackages)
                 ?? throw new Exception($"Could not load right-hand-side packages: {string.Join(',', config.Packages)}");
 
-            PackageComparer comparer = new(config, loadedLeft, loadedRight);
+            FhirCoreComparer comparer = new(config, loadedLeft, loadedRight);
+            comparer.Compare();
 
-            if (comparer.Compare() is PackageComparison pc)
-            {
-                if (config.SaveComparisonResult)
-                {
-                    comparer.WriteComparisonResultJson(pc);
-                }
+            //PackageComparer comparer = new(config, loadedLeft, loadedRight);
 
-                if (config.NoOutput != true)
-                {
-                    comparer.WriteMarkdownFiles(pc);
-                    comparer.WriteCrossVersionExtensionArtifacts(pc);
-                }
+            //if (comparer.Compare() is PackageComparison pc)
+            //{
+            //    if (config.SaveComparisonResult)
+            //    {
+            //        comparer.WriteComparisonResultJson(pc);
+            //    }
 
-                if (config.MapSaveStyle != ConfigCompare.ComparisonMapSaveStyle.None)
-                {
-                    comparer.WriteMapFiles(pc);
-                }
-            }
+            //    if (config.NoOutput != true)
+            //    {
+            //        comparer.WriteMarkdownFiles(pc);
+            //        comparer.WriteCrossVersionExtensionArtifacts(pc);
+            //    }
+
+            //    if (config.MapSaveStyle != ConfigCompare.ComparisonMapSaveStyle.None)
+            //    {
+            //        comparer.WriteMapFiles(pc);
+            //    }
+            //}
         }
         catch (Exception ex)
         {

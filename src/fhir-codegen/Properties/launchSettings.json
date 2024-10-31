@@ -157,7 +157,7 @@
         },
         "Compare 43-50": {
             "commandName": "Project",
-            "commandLineArgs": "compare -p hl7.fhir.r4b.core#4.3.0 -c hl7.fhir.r5.core#5.0.0 --auto-load-expansions --resolve-dependencies true --map-source-path ..\\..\\..\\fhir-cross-version  --map-destination-path ..\\..\\..\\fhir-cross-version-source --map-save-style Source",
+            "commandLineArgs": "compare -p hl7.fhir.r4b.core#4.3.0 -c hl7.fhir.r5.core#5.0.0 --save-comparison-result true --auto-load-expansions --resolve-dependencies true --map-source-path ..\\..\\..\\fhir-cross-version  --map-destination-path ..\\..\\..\\fhir-cross-version-source --map-save-style Source",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Compare 50-43": {

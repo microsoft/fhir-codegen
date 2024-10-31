@@ -20,6 +20,7 @@ using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 
 using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
+using SemanticVersioning;
 using static Microsoft.Health.Fhir.CodeGen.FhirExtensions.StructureDefinitionExtensions;
 
 namespace Microsoft.Health.Fhir.CodeGen.Models;
@@ -690,9 +691,27 @@ public partial class DefinitionCollection
     /// <param name="version">       The version.</param>
     /// <param name="vs">            [out] The vs.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    internal bool TryGetValueSet(string unversionedUrl, string version, [NotNullWhen(true)] out ValueSet? vs)
+    public bool TryGetValueSet(string unversionedUrl, string version, [NotNullWhen(true)] out ValueSet? vs)
     {
         return _valueSetsByVersionedUrl.TryGetValue(unversionedUrl + "|" + version, out vs);
+    }
+
+    public bool TryGetValueSet(string url, [NotNullWhen(true)] out ValueSet? vs)
+    {
+        if (_valueSetsByVersionedUrl.TryGetValue(url, out vs))
+        {
+            return true;
+        }
+
+        if (_valueSetVersions.TryGetValue(url, out string[]? vsVersions) &&
+            (vsVersions != null) &&
+            (vsVersions.Length > 0))
+        {
+            return _valueSetsByVersionedUrl.TryGetValue(url + "|" + vsVersions.Max(), out vs);
+        }
+
+        vs = null;
+        return false;
     }
 
     /// <summary>
@@ -1046,20 +1065,20 @@ public partial class DefinitionCollection
 
         string uvUrl = src.Split('|')[0];
 
-        bool hasUvMaps = _conceptMapsBySourceUrl.TryGetValue(uvUrl, out List<ConceptMap>? uvMaps);
-        bool hasVMaps = _conceptMapsBySourceUrl.TryGetValue(src, out List<ConceptMap>? vMaps);
+        bool hasUnversionedMaps = _conceptMapsBySourceUrl.TryGetValue(uvUrl, out List<ConceptMap>? uvMaps);
+        bool hasVersionedMaps = _conceptMapsBySourceUrl.TryGetValue(src, out List<ConceptMap>? vMaps);
 
-        if (hasUvMaps && hasVMaps)
+        if (hasUnversionedMaps && hasVersionedMaps)
         {
             return uvMaps!.Union(vMaps!).ToList();
         }
 
-        if (hasVMaps)
+        if (hasVersionedMaps)
         {
             return vMaps!;
         }
 
-        if (hasUvMaps)
+        if (hasUnversionedMaps)
         {
             return uvMaps!;
         }

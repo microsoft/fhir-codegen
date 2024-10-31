@@ -43,6 +43,13 @@ public static class ValueSetExtensions
     public static string cgWorkGroup(this ValueSet vs) => vs.GetExtensionValue<FhirString>(CommonDefinitions.ExtUrlWorkGroup)?.Value ?? string.Empty;
 
     /// <summary>
+    /// Gets the versioned URL of the ValueSet.
+    /// </summary>
+    /// <param name="vs">The ValueSet to act on.</param>
+    /// <returns>A string representing the versioned URL.</returns>
+    public static string cgVersionedUrl(this ValueSet vs) => vs.Url + "|" + vs.Version;
+
+    /// <summary>
     /// Determines whether the ValueSet is limited expansion.
     /// </summary>
     /// <param name="vs">The ValueSet to act on.</param>
