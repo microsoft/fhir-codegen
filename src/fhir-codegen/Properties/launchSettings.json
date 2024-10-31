@@ -35,6 +35,11 @@
             "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.R5\\Model -p hl7.fhir.r5.core#5.0.0 -p hl7.fhir.r5.expansions#5.0.0 --subset satellite",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
+        "Firely 5.x R5 SoF": {
+            "commandName": "Project",
+            "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.R5\\Model -p hl7.fhir.r5.core#5.0.0 -p hl7.fhir.r5.expansions#5.0.0 -p ..\\..\\temp\\sofSource --subset satellite",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
         "Firely 5.x R6": {
             "commandName": "Project",
             "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.R6\\Model -p hl7.fhir.r6.core#6.0.0-ballot2 -p hl7.fhir.r6.expansions#6.0.0-ballot2 --subset satellite",
@@ -193,6 +198,11 @@
         "Cross Version Review": {
             "commandName": "Project",
             "commandLineArgs": "cross-version --output-path ..\\..\\temp\\cross-version",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "Sql": {
+            "commandName": "Project",
+            "commandLineArgs": "sql -p hl7.fhir.r5.core#5.0.0 --view-definition-directory ./temp/viewdefinitions --output-path ..\\..\\temp\\sof ",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "http": {

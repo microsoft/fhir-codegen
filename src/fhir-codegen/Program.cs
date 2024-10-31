@@ -32,6 +32,8 @@ using Microsoft.Health.Fhir.CodeGenCommon.Smart;
 using Microsoft.Health.Fhir.CodeGen.CompareTool;
 using Microsoft.Health.Fhir.CodeGen.XVer;
 using static fhir_codegen_shared.LaunchUtils;
+using HarfBuzzSharp;
+using Microsoft.Health.Fhir.CodeGen.SqlOnFhir;
 
 namespace fhir_codegen;
 
@@ -104,6 +106,7 @@ public class Program
             //    return await DoInteractive(pr);
             //case "web":
             //    return await DoWeb(pr);
+            "sql" => await DoSql(pr),
             _ => await parser.InvokeAsync(args),
         };
     }
@@ -321,6 +324,43 @@ public class Program
         return 0;
     }
 
+
+    public static async Task<int> DoSql(ParseResult pr)
+    {
+        try
+        {
+            // create our configuration object
+            ConfigSql config = new();
+
+            // parse the arguments into the configuration object
+            config.Parse(pr);
+
+            // create a loader because these are all different FHIR core versions
+            PackageLoader loader = new(config, new()
+            {
+                JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
+            });
+
+            DefinitionCollection dc = await loader.LoadPackages(config.Packages)
+                ?? throw new Exception($"Could not load packages: {string.Join(", ", config.Packages)}");
+
+            SqlOnFhirProcessor processor = new(config);
+            processor.Process(dc);
+        }
+        catch (Exception ex)
+        {
+            if (ex.InnerException != null)
+            {
+                Console.WriteLine($"DoCompare <<< caught: {ex.Message}::{ex.InnerException.Message}");
+            }
+            else
+            {
+                Console.WriteLine($"DoCompare <<< caught: {ex.Message}");
+            }
+        }
+
+        return 0;
+    }
 
     ///// <summary>web UI.</summary>
     ///// <param name="config">           The configuration.</param>

@@ -23,6 +23,7 @@ using System.Linq;
 using Microsoft.Health.Fhir.CodeGen._ForPackages;
 using Microsoft.Health.Fhir.CodeGen.Utils;
 using Microsoft.Extensions.Logging;
+using Hl7.Fhir.ElementModel;
 
 namespace Microsoft.Health.Fhir.CodeGen.Loader;
 
@@ -540,7 +541,13 @@ public partial class PackageLoader : IDisposable
 
         if (fhirSequence == FhirReleases.FhirSequenceCodes.Unknown)
         {
-            throw new Exception("Cannot load from a directory with an unknown FHIR version");
+            if ((definitions == null) ||
+                (definitions.FhirSequence == FhirReleases.FhirSequenceCodes.Unknown))
+            {
+                throw new Exception("Cannot load from a directory with an unknown FHIR version");
+            }
+
+            fhirSequence = definitions.FhirSequence;
         }
 
         CreateConverterIfRequired(fhirSequence);
@@ -649,19 +656,26 @@ public partial class PackageLoader : IDisposable
                 continue;
             }
 
-            // check to see if this is actually a directory
+            // check to see if we think this is a directory
             if ((inputDirective.IndexOfAny(Path.GetInvalidPathChars()) == -1) &&
-                Directory.Exists(inputDirective))
+                (inputDirective.Contains('/') || inputDirective.Contains('\\') || inputDirective.Contains('~')))
             {
-                _logger.LogProcessingStartMessage(inputDirective);
+                // check to see if we can find the directory
 
-                if (!LoadFromDirectory(ref definitions, inputDirective, fhirVersion))
+                string resolvedDir = FileSystemUtils.FindRelativeDir(".", inputDirective, false);
+
+                if (!string.IsNullOrEmpty(resolvedDir))
                 {
-                    throw new Exception($"Failed to load package from directory: {inputDirective}");
-                }
+                    _logger.LogProcessingStartMessage(inputDirective);
 
-                // if we loaded from the directory, just continue
-                continue;
+                    if (!LoadFromDirectory(ref definitions, resolvedDir, fhirVersion))
+                    {
+                        throw new Exception($"Failed to load package from directory: {inputDirective}");
+                    }
+
+                    // if we loaded from the directory, just continue
+                    continue;
+                }
             }
 
             // TODO(ginoc): PR in to Parse FHIR-style directives, remove when added.
@@ -1182,6 +1196,71 @@ public partial class PackageLoader : IDisposable
         }
 
         return definitions;
+    }
+
+    public object? ParseContents50(string format, Type? resourceType = null, string path = "", string content = "")
+    {
+        switch (format.ToLowerInvariant())
+        {
+            case ".json":
+            case "json":
+            case "fhir+json":
+            case "application/json":
+            case "application/fhir+json":
+                try
+                {
+                    if (string.IsNullOrEmpty(content))
+                    {
+                        content = File.ReadAllText(path);
+                    }
+
+                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirJsonNode.Parse(content);
+
+                    if (resourceType != null)
+                    {
+                        return sn.ToPoco(resourceType);
+                    }
+
+                    return sn.ToPoco();
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogParseError("R5", "JSON", ex.Message, ex.InnerException?.Message);
+                    return null;
+                }
+
+            case ".xml":
+            case "xml":
+            case "fhir+xml":
+            case "application/xml":
+            case "application/fhir+xml":
+                try
+                {
+                    if (string.IsNullOrEmpty(content))
+                    {
+                        content = File.ReadAllText(path);
+                    }
+
+                    Hl7.Fhir.ElementModel.ISourceNode sn = FhirXmlNode.Parse(content);
+                    if (resourceType != null)
+                    {
+                        return sn.ToPoco(resourceType);
+                    }
+
+                    return sn.ToPoco();
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogParseError("R5", "XML", ex.Message, ex.InnerException?.Message);
+                    return null;
+                }
+
+            default:
+                {
+                    _logger.LogInvalidFormat("R5", format);
+                    return null;
+                }
+        }
     }
 
     /// <summary>Parse contents.</summary>

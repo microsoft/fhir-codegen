@@ -133,6 +133,11 @@ public partial class DefinitionCollection
         "http://hl7.org/fhir/ValueSet/currencies",
     ];
 
+    static DefinitionCollection()
+    {
+        Hl7.Fhir.Model.ViewDefinition.RegisterInFhir();
+    }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="DefinitionCollection"/> class.
     /// </summary>

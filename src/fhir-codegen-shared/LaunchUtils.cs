@@ -124,6 +124,14 @@ internal static class LaunchUtils
                 };
                 break;
 
+            case "sql":
+                config = new ConfigSql()
+                {
+                    LaunchCommand = command,
+                    LogFactory = loggerFactory ?? LoggerFactory.Create(builder => builder.AddConsole()),
+                };
+                break;
+
             case "gui":
                 config = new ConfigGui()
                 {
@@ -300,6 +308,18 @@ internal static class LaunchUtils
 
         // TODO(ginoc): Set the command handler
         rootCommand.AddCommand(xverCommand);
+
+        // create our SQL command
+        Command sqlCommand = new("sql", "Perform SQL on FHIR (v2) processing.");
+        foreach (Option option in BuildCliOptions(typeof(ConfigSql), typeof(ConfigRoot), envConfig))
+        {
+            // note that 'global' here is just recursive DOWNWARD
+            sqlCommand.AddGlobalOption(option);
+            TrackIfEnum(option);
+        }
+
+        // TODO(ginoc): Set the command handler
+        rootCommand.AddCommand(sqlCommand);
 
 
         //// create our cross-version interactive command
