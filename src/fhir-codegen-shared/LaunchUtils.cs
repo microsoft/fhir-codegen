@@ -25,6 +25,8 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
+using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
+using HarfBuzzSharp;
 
 
 namespace fhir_codegen_shared;
@@ -51,12 +53,75 @@ internal static class LaunchUtils
         public required Option CommandOpt { get; set; }
     }
 
+    private record class LaunchCommandRecord
+    {
+        public required string Literal { get; init; }
+        public required string Description { get; init; }
+        public required Type ConfigurationType { get; init; }
+        public Type? ExcludedConfigurationType { get; init; } = typeof(ConfigRoot);
+        public bool IncludeLanguageSubCommands { get; init; } = false;
+        public bool Disabled { get; init; } = false;
+        public (string literal, string description)[] SubCommands { get; init; } = [];
+    }
+
+    private static readonly LaunchCommandRecord[] _commands = [
+        new()
+        {
+            Literal = "generate",
+            Description = "Generate output from a FHIR package.",
+            ConfigurationType = typeof(ConfigGenerate),
+            IncludeLanguageSubCommands = true,
+        },
+        new()
+        {
+            Literal = "interactive",
+            Description = "Launch into an interactive console.",
+            ConfigurationType = typeof(ConfigInteractive),
+            Disabled = true,
+        },
+        new()
+        {
+            Literal = "web",
+            Description = "Launch into a locally-hosted web UI",
+            ConfigurationType = typeof(ConfigFluentUi),
+            Disabled = true,
+        },
+        new()
+        {
+            Literal = "compare",
+            Description = "Compare two sets of packages",
+            ConfigurationType = typeof(ConfigCompare),
+        },
+        new()
+        {
+            Literal = "xver",
+            Description = "Perform FHIR Core Cross-Version processing",
+            ConfigurationType = typeof(ConfigXVer),
+            SubCommands = [ ("update-maps", "Update the FHIR Cross Version maps") ],
+        },
+        new()
+        {
+            Literal = "sql",
+            Description = "Perform SQL on FHIR v2 transformations",
+            ConfigurationType = typeof(ConfigSql),
+            Disabled = true,
+        },
+        new()
+        {
+            Literal = "gui",
+            Description = "Launch the default GUI",
+            ConfigurationType = typeof(ConfigGui),
+            Disabled = true,
+        },
+    ];
+
     /// <summary>Parses the configuration based on the provided command and parse result.</summary>
     /// <exception cref="Exception">Thrown when the language type cannot be found, the configuration
     ///  object cannot be created, or the configuration type does not implement <see cref="ICodeGenConfig"/>
     ///  or inherit from <see cref="ConfigRoot"/>.</exception>
     /// <param name="pr">           The parse result containing the command line arguments.</param>
     /// <param name="command">      The command to determine the type of configuration to create.</param>
+    /// <param name="subCommand">   The sub command.</param>
     /// <param name="loggerFactory">The logger factory.</param>
     /// <returns>
     /// An instance of <see cref="ICodeGenConfig"/> representing the parsed configuration.
@@ -64,7 +129,8 @@ internal static class LaunchUtils
     internal static ICodeGenConfig ParseConfig(
         ParseResult pr,
         string command,
-        ILoggerFactory loggerFactory)
+        string? subCommand,
+        ILoggerFactory? loggerFactory = null)
     {
         ICodeGenConfig config;
 
@@ -72,7 +138,7 @@ internal static class LaunchUtils
         {
             case "generate":
                 {
-                    string languageName = pr.CommandResult.Command.Name;
+                    string languageName = subCommand ?? string.Empty;
 
                     if (!LanguageManager.TryGetLanguage(languageName, out ILanguage? language))
                     {
@@ -232,119 +298,181 @@ internal static class LaunchUtils
             TrackIfEnum(option);
         }
 
-        // create our generate command
-        Command generateCommand = new("generate", "Generate output from a FHIR package and exit.");
-        foreach (Option option in BuildCliOptions(typeof(ConfigGenerate), typeof(ConfigRoot), envConfig))
+        // iterate over our configured commands
+        foreach (LaunchCommandRecord rec in _commands.OrderBy(c => c.Literal))
         {
-            // note that 'global' here is just recursive DOWNWARD
-            generateCommand.AddGlobalOption(option);
-            TrackIfEnum(option);
-        }
-
-        // iterate through languages and add them as subcommands
-        foreach (ILanguage language in LanguageManager.GetLanguages())
-        {
-            Command languageCommand = new(language.Name, $"Generate {language.Name}");
-            if (language.Name.Any(char.IsUpper))
+            if (rec.Disabled)
             {
-                languageCommand.AddAlias(language.Name.ToLowerInvariant());
+                continue;
             }
 
-            foreach (Option option in BuildCliOptions(LanguageManager.ConfigTypeForLanguage(language.Name), envConfig: envConfig))
+            // build the command
+            Command cmd = new(rec.Literal, rec.Description);
+
+            // add the options for this command
+            foreach (Option option in BuildCliOptions(rec.ConfigurationType, rec.ExcludedConfigurationType, envConfig))
             {
-                languageCommand.AddOption(option);
+                // note that 'global' here is just recursive DOWNWARD
+                cmd.AddGlobalOption(option);
                 TrackIfEnum(option);
             }
 
-            generateCommand.AddCommand(languageCommand);
+            // add language subcommands if needed
+            if (rec.IncludeLanguageSubCommands)
+            {
+                foreach (ILanguage language in LanguageManager.GetLanguages())
+                {
+                    Command languageCommand = new(language.Name, $"{rec.Literal} {language.Name}");
+                    if (language.Name.Any(char.IsUpper))
+                    {
+                        languageCommand.AddAlias(language.Name.ToLowerInvariant());
+                    }
+
+                    foreach (Option option in BuildCliOptions(LanguageManager.ConfigTypeForLanguage(language.Name), envConfig: envConfig))
+                    {
+                        languageCommand.AddOption(option);
+                        TrackIfEnum(option);
+                    }
+
+                    foreach (Option option in BuildCliOptions(rec.ConfigurationType, rec.ExcludedConfigurationType, envConfig))
+                    {
+                        languageCommand.AddOption(option);
+                        TrackIfEnum(option);
+                    }
+
+                    cmd.AddCommand(languageCommand);
+                }
+            }
+
+            // add manual subcommands if needed
+            foreach ((string literal, string description) in rec.SubCommands)
+            {
+                Command subCommand = new(literal, description);
+                if (literal.Any(char.IsUpper))
+                {
+                    subCommand.AddAlias(literal.ToLowerInvariant());
+                }
+
+                cmd.AddCommand(subCommand);
+            }
+
+            // add this command to our root command
+            rootCommand.AddCommand(cmd);
         }
 
-        rootCommand.AddCommand(generateCommand);
-
-        // create our interactive command
-        Command interactiveCommand = new("interactive", "Launch into an interactive console.");
-        foreach (Option option in BuildCliOptions(typeof(ConfigInteractive), typeof(ConfigRoot), envConfig))
-        {
-            // note that 'global' here is just recursive DOWNWARD
-            interactiveCommand.AddGlobalOption(option);
-            TrackIfEnum(option);
-        }
-
-        // TODO(ginoc): Set the command handler
-        rootCommand.AddCommand(interactiveCommand);
-
-        // create our webserver command
-        Command webCommand = new("web", "Launch into a locally-hosted web UI.");
-        foreach (Option option in BuildCliOptions(typeof(ConfigFluentUi), typeof(ConfigRoot), envConfig))
-        {
-            // note that 'global' here is just recursive DOWNWARD
-            webCommand.AddGlobalOption(option);
-            TrackIfEnum(option);
-        }
-
-        // TODO(ginoc): Set the command handler
-        rootCommand.AddCommand(webCommand);
-
-        // create our compare command
-        Command compareCommand = new("compare", "Compare two sets of packages.");
-        foreach (Option option in BuildCliOptions(typeof(ConfigCompare), typeof(ConfigRoot), envConfig))
-        {
-            // note that 'global' here is just recursive DOWNWARD
-            compareCommand.AddGlobalOption(option);
-            TrackIfEnum(option);
-        }
-
-        // TODO(ginoc): Set the command handler
-        rootCommand.AddCommand(compareCommand);
-
-        // create our XVer command
-        Command xverCommand = new("xver", "Perform FHIR Core Cross-Version processing.");
-        foreach (Option option in BuildCliOptions(typeof(ConfigXVer), typeof(ConfigRoot), envConfig))
-        {
-            // note that 'global' here is just recursive DOWNWARD
-            xverCommand.AddGlobalOption(option);
-            TrackIfEnum(option);
-        }
-
-        // TODO(ginoc): Set the command handler
-        rootCommand.AddCommand(xverCommand);
-
-        // create our SQL command
-        Command sqlCommand = new("sql", "Perform SQL on FHIR (v2) processing.");
-        foreach (Option option in BuildCliOptions(typeof(ConfigSql), typeof(ConfigRoot), envConfig))
-        {
-            // note that 'global' here is just recursive DOWNWARD
-            sqlCommand.AddGlobalOption(option);
-            TrackIfEnum(option);
-        }
-
-        // TODO(ginoc): Set the command handler
-        rootCommand.AddCommand(sqlCommand);
-
-
-        //// create our cross-version interactive command
-        //Command cviCommand = new("cross-version", "Interactively review cross-version definitions.");
-        //foreach (Option option in BuildCliOptions(typeof(ConfigCrossVersionInteractive), typeof(ConfigRoot), envConfig))
+        //// create our generate command
+        //Command generateCommand = new("generate", "Generate output from a FHIR package and exit.");
+        //foreach (Option option in BuildCliOptions(typeof(ConfigGenerate), typeof(ConfigRoot), envConfig))
         //{
         //    // note that 'global' here is just recursive DOWNWARD
-        //    cviCommand.AddGlobalOption(option);
+        //    generateCommand.AddGlobalOption(option);
+        //    TrackIfEnum(option);
+        //}
+
+        //// iterate through languages and add them as subcommands
+        //foreach (ILanguage language in LanguageManager.GetLanguages())
+        //{
+        //    Command languageCommand = new(language.Name, $"Generate {language.Name}");
+        //    if (language.Name.Any(char.IsUpper))
+        //    {
+        //        languageCommand.AddAlias(language.Name.ToLowerInvariant());
+        //    }
+
+        //    foreach (Option option in BuildCliOptions(LanguageManager.ConfigTypeForLanguage(language.Name), envConfig: envConfig))
+        //    {
+        //        languageCommand.AddOption(option);
+        //        TrackIfEnum(option);
+        //    }
+
+        //    generateCommand.AddCommand(languageCommand);
+        //}
+
+        //rootCommand.AddCommand(generateCommand);
+
+        //// create our interactive command
+        //Command interactiveCommand = new("interactive", "Launch into an interactive console.");
+        //foreach (Option option in BuildCliOptions(typeof(ConfigInteractive), typeof(ConfigRoot), envConfig))
+        //{
+        //    // note that 'global' here is just recursive DOWNWARD
+        //    interactiveCommand.AddGlobalOption(option);
         //    TrackIfEnum(option);
         //}
 
         //// TODO(ginoc): Set the command handler
-        //rootCommand.AddCommand(cviCommand);
+        //rootCommand.AddCommand(interactiveCommand);
 
-        // create our UI command
-        Command guiCommand = new("gui", "Launch the GUI.");
-        foreach (Option option in BuildCliOptions(typeof(ConfigGui), typeof(ConfigRoot), envConfig))
-        {
-            // note that 'global' here is just recursive DOWNWARD
-            guiCommand.AddGlobalOption(option);
-            TrackIfEnum(option);
-        }
+        //// create our webserver command
+        //Command webCommand = new("web", "Launch into a locally-hosted web UI.");
+        //foreach (Option option in BuildCliOptions(typeof(ConfigFluentUi), typeof(ConfigRoot), envConfig))
+        //{
+        //    // note that 'global' here is just recursive DOWNWARD
+        //    webCommand.AddGlobalOption(option);
+        //    TrackIfEnum(option);
+        //}
 
-        // TODO(ginoc): Set the command handler
-        rootCommand.AddCommand(guiCommand);
+        //// TODO(ginoc): Set the command handler
+        //rootCommand.AddCommand(webCommand);
+
+        //// create our compare command
+        //Command compareCommand = new("compare", "Compare two sets of packages.");
+        //foreach (Option option in BuildCliOptions(typeof(ConfigCompare), typeof(ConfigRoot), envConfig))
+        //{
+        //    // note that 'global' here is just recursive DOWNWARD
+        //    compareCommand.AddGlobalOption(option);
+        //    TrackIfEnum(option);
+        //}
+
+        //// TODO(ginoc): Set the command handler
+        //rootCommand.AddCommand(compareCommand);
+
+        //// create our XVer command
+        //Command xverCommand = new("xver", "Perform FHIR Core Cross-Version processing.");
+        //foreach (Option option in BuildCliOptions(typeof(ConfigXVer), typeof(ConfigRoot), envConfig))
+        //{
+        //    // note that 'global' here is just recursive DOWNWARD
+        //    xverCommand.AddGlobalOption(option);
+        //    TrackIfEnum(option);
+        //}
+
+        //// TODO(ginoc): Set the command handler
+        //rootCommand.AddCommand(xverCommand);
+
+        //// create our SQL command
+        //Command sqlCommand = new("sql", "Perform SQL on FHIR (v2) processing.");
+        //foreach (Option option in BuildCliOptions(typeof(ConfigSql), typeof(ConfigRoot), envConfig))
+        //{
+        //    // note that 'global' here is just recursive DOWNWARD
+        //    sqlCommand.AddGlobalOption(option);
+        //    TrackIfEnum(option);
+        //}
+
+        //// TODO(ginoc): Set the command handler
+        //rootCommand.AddCommand(sqlCommand);
+
+
+        ////// create our cross-version interactive command
+        ////Command cviCommand = new("cross-version", "Interactively review cross-version definitions.");
+        ////foreach (Option option in BuildCliOptions(typeof(ConfigCrossVersionInteractive), typeof(ConfigRoot), envConfig))
+        ////{
+        ////    // note that 'global' here is just recursive DOWNWARD
+        ////    cviCommand.AddGlobalOption(option);
+        ////    TrackIfEnum(option);
+        ////}
+
+        ////// TODO(ginoc): Set the command handler
+        ////rootCommand.AddCommand(cviCommand);
+
+        //// create our UI command
+        //Command guiCommand = new("gui", "Launch the GUI.");
+        //foreach (Option option in BuildCliOptions(typeof(ConfigGui), typeof(ConfigRoot), envConfig))
+        //{
+        //    // note that 'global' here is just recursive DOWNWARD
+        //    guiCommand.AddGlobalOption(option);
+        //    TrackIfEnum(option);
+        //}
+
+        //// TODO(ginoc): Set the command handler
+        //rootCommand.AddCommand(guiCommand);
 
 
         return rootCommand;
@@ -489,104 +617,4 @@ internal static class LaunchUtils
 
         return headers;
     }
-
-    //internal static RootCommand BuildCommand(IConfiguration envConfig)
-    //{
-    //    // create our root command
-    //    RootCommand rootCommand = new("A utility for processing FHIR packages into other formats/languages.");
-    //    //foreach (Option option in BuildCliOptions(typeof(ConfigRoot), envConfig: envConfig))
-    //    //{
-    //    //    rootCommand.AddOption(option);
-    //    //    TrackIfEnum(option);
-    //    //}
-
-    //    // create our generate command
-    //    Command generateCommand = new("generate", "Generate output from a FHIR package and exit.");
-    //    //foreach (Option option in BuildCliOptions(typeof(ConfigGenerate), envConfig: envConfig))
-    //    //{
-    //    //    generateCommand.AddOption(option);
-    //    //    TrackIfEnum(option);
-    //    //}
-
-    //    // iterate through languages and add them as subcommands
-    //    foreach (ILanguage language in LanguageManager.GetLanguages())
-    //    {
-    //        Command languageCommand = new(language.Name, $"Generate {language.Name}");
-    //        if (language.Name.Any(char.IsUpper))
-    //        {
-    //            languageCommand.AddAlias(language.Name.ToLowerInvariant());
-    //        }
-
-    //        foreach (Option option in BuildCliOptions(LanguageManager.ConfigTypeForLanguage(language.Name), envConfig: envConfig))
-    //        {
-    //            languageCommand.AddOption(option);
-    //            TrackIfEnum(option);
-    //        }
-
-    //        foreach (Option option in BuildCliOptions(typeof(ConfigGenerate), envConfig: envConfig))
-    //        {
-    //            languageCommand.AddOption(option);
-    //            TrackIfEnum(option);
-    //        }
-
-    //        generateCommand.AddCommand(languageCommand);
-    //    }
-
-    //    rootCommand.AddCommand(generateCommand);
-
-    //    // create our interactive command
-    //    Command interactiveCommand = new("interactive", "Launch into an interactive console.");
-    //    foreach (Option option in BuildCliOptions(typeof(ConfigInteractive), envConfig: envConfig))
-    //    {
-    //        // note that 'global' here is just recursive DOWNWARD
-    //        interactiveCommand.AddOption(option);
-    //        TrackIfEnum(option);
-    //    }
-
-    //    // TODO(ginoc): Set the command handler
-    //    rootCommand.AddCommand(interactiveCommand);
-
-    //    // create our generate command
-    //    Command webCommand = new("web", "Launch into a locally-hosted web UI.");
-    //    foreach (Option option in BuildCliOptions(typeof(ConfigFluentUi), envConfig: envConfig))
-    //    {
-    //        // note that 'global' here is just recursive DOWNWARD
-    //        webCommand.AddOption(option);
-    //        TrackIfEnum(option);
-    //    }
-
-    //    // TODO(ginoc): Set the command handler
-    //    rootCommand.AddCommand(webCommand);
-
-    //    return rootCommand;
-
-    //    void TrackIfEnum(Option option)
-    //    {
-    //        if (option.ValueType.IsEnum)
-    //        {
-    //            _optsWithEnums.Add(option);
-    //            return;
-    //        }
-
-    //        if (option.ValueType.IsGenericType)
-    //        {
-    //            if (option.ValueType.GenericTypeArguments.First().IsEnum)
-    //            {
-    //                _optsWithEnums.Add(option);
-    //            }
-
-    //            return;
-    //        }
-
-    //        if (option.ValueType.IsArray)
-    //        {
-    //            if (option.ValueType.GetElementType()!.IsEnum)
-    //            {
-    //                _optsWithEnums.Add(option);
-    //            }
-
-    //            return;
-    //        }
-    //    }
-    //}
 }

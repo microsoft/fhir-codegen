@@ -24,7 +24,7 @@ namespace fhir_codegen;
 internal class Gui
 {
     [STAThread]
-    public static int RunGui(System.CommandLine.Parsing.ParseResult pr)
+    public static int RunGui(System.CommandLine.Parsing.ParseResult pr, string command, string? subCommand)
     {
         ConfigGui config = new();
         config.Parse(pr);

@@ -65,6 +65,21 @@ public class Program
         // attempt a parse
         ParseResult pr = parser.Parse(args);
 
+        string command;
+        string? subCommand;
+
+        if ((pr.CommandResult.Parent != null) &&
+            (pr.CommandResult.Parent?.Symbol.Name != pr.RootCommandResult.Symbol.Name))
+        {
+            command = pr.CommandResult.Parent!.Symbol.Name;
+            subCommand = pr.CommandResult.Command.Name;
+        }
+        else
+        {
+            command = pr.CommandResult.Command.Name;
+            subCommand = null;
+        }
+
         // check for invalid arguments, help, a generate command with no subcommand, or a generate with no packages to trigger the nicely formatted help
         if (pr.UnmatchedTokens.Any() ||
             !pr.Tokens.Any() ||
@@ -73,14 +88,13 @@ public class Program
             pr.Tokens.Any(t => t.Value.Equals("-h", StringComparison.Ordinal)) ||
             pr.Tokens.Any(t => t.Value.Equals("--help", StringComparison.Ordinal)) ||
             pr.Tokens.Any(t => t.Value.Equals("help", StringComparison.Ordinal)) ||
-            pr.CommandResult.Command.Name.Equals("generate", StringComparison.Ordinal))
-
+            ((command == "generate") && (subCommand == null)))
         {
             return await parser.InvokeAsync(args);
         }
 
         // check for a generate command with no packages
-        if ((pr.CommandResult.Command.Parents?.FirstOrDefault()?.Name.Equals("generate", StringComparison.Ordinal) ?? false) &&
+        if ((command == "generate") &&
             (!pr.Tokens.Any(t => _packageAliases.Contains(t.Value))))
         {
             Console.WriteLine("Error: generate command requires at least one package to process.");
@@ -88,72 +102,47 @@ public class Program
             return await parser.InvokeAsync(args.Append("--help").ToArray());
         }
 
-        // any language subcommand is a generate command
-        string command = pr.CommandResult.Command.Name;
-        if (LanguageManager.HasLanguage(command))
-        {
-            command = "generate";
-        }
-
         return command switch
         {
-            "generate" => await DoGenerate(pr),
-            "compare" => await DoCompare(pr),
-            "xver" => await DoXVer(pr),
-            //"cross-version" => await CrossVersionInteractive.DoCrossVersionReview(pr),
-            "gui" => Gui.RunGui(pr),
-            //case "interactive":
-            //    return await DoInteractive(pr);
-            //case "web":
-            //    return await DoWeb(pr);
-            "sql" => await DoSql(pr),
+            "generate" => await DoGenerate(pr, command, subCommand),
+            "compare" => await DoCompare(pr, command, subCommand),
+            "xver" => await DoXVer(pr, command, subCommand),
+            //"cross-version" => await CrossVersionInteractive.DoCrossVersionReview(pr, command, subCommand),
+            "gui" => Gui.RunGui(pr, command, subCommand),
+            //"interactive" => await DoInteractive(pr, command, subCommand);
+            //"web" => await DoWeb(pr, command, subCommand);
+            "sql" => await DoSql(pr, command, subCommand),
             _ => await parser.InvokeAsync(args),
         };
     }
 
-    public static async Task<int> DoGenerate(ParseResult pr)
+    public static async Task<int> DoGenerate(ParseResult pr, string command, string? subCommand)
     {
         try
         {
-            string languageName = pr.CommandResult.Command.Name;
-
-            if (!LanguageManager.TryGetLanguage(languageName, out ILanguage? language))
+            if (subCommand == null)
             {
-                throw new Exception($"Could not find language type for {languageName}");
+                throw new Exception("Generation requires a language to be specified");
             }
 
-            // get our language type
-            Type langType = LanguageManager.TypeForLanguage(languageName);
-
-            // get our language configuration type
-            Type configType = LanguageManager.ConfigTypeForLanguage(language.Name);
-
-            // create our configuration object
-            object? configGeneric = Activator.CreateInstance(configType)
-                ?? throw new Exception($"Could not create configuration object for {languageName} ({configType.Name})");
-
-            if (configGeneric is not ICodeGenConfig config)
-            {
-                throw new Exception($"Config type must implement ICodeGenConfig, {languageName} ({configType.Name})");
-            }
+            ICodeGenConfig config = ParseConfig(pr, command, subCommand);
 
             if (config is not ConfigRoot rootConfig)
             {
                 throw new Exception("Config type must inherit from ConfigRoot");
             }
 
-            // parse the arguments into the configuration object
-            config.Parse(pr);
-
-            object? langObject = Activator.CreateInstance(langType)
-                ?? throw new Exception($"Could not create language object for {languageName} ({langType.Name})");
-
-            if (langObject is not ILanguage iLang)
+            if (config is not ConfigGenerate genConfig)
             {
-                throw new Exception($"Language type must implement ILanguage, {languageName} ({langType.Name})");
+                throw new Exception("Config type must inherit from ConfigGenerate");
             }
 
-            PackageLoader loader = new(config is ConfigRoot cr ? cr : null, new()
+            if (!LanguageManager.TryGetLanguage(subCommand, out ILanguage? iLang))
+            {
+                throw new Exception($"Language type must implement ILanguage, {subCommand}");
+            }
+
+            PackageLoader loader = new(rootConfig, new()
             {
                 JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
             });
@@ -162,8 +151,7 @@ public class Program
                 ?? throw new Exception($"Could not load packages: {string.Join(',', rootConfig.Packages)}");
 
             // check for a FHIR server URL
-            if ((rootConfig is ConfigGenerate genConfig) &&
-                !string.IsNullOrEmpty(genConfig.FhirServerUrl))
+            if (!string.IsNullOrEmpty(genConfig.FhirServerUrl))
             {
                 // parse any HTTP headers the caller has provided
                 Dictionary<string, List<string>> headers = ParseHttpHeaderArgs(genConfig.FhirServerHeaders);
@@ -211,7 +199,7 @@ public class Program
         return 0;
     }
 
-    public static async Task<int> DoCompare(ParseResult pr)
+    public static async Task<int> DoCompare(ParseResult pr, string command, string? subCommand)
     {
         try
         {
@@ -238,29 +226,26 @@ public class Program
             DefinitionCollection? loadedRight = await loaderLeft.LoadPackages(config.ComparePackages)
                 ?? throw new Exception($"Could not load right-hand-side packages: {string.Join(',', config.Packages)}");
 
-            FhirCoreComparer comparer = new(config, loadedLeft, loadedRight);
-            comparer.Compare();
+            PackageComparer comparer = new(config, loadedLeft, loadedRight);
 
-            //PackageComparer comparer = new(config, loadedLeft, loadedRight);
+            if (comparer.Compare() is PackageComparison pc)
+            {
+                if (config.SaveComparisonResult)
+                {
+                    comparer.WriteComparisonResultJson(pc);
+                }
 
-            //if (comparer.Compare() is PackageComparison pc)
-            //{
-            //    if (config.SaveComparisonResult)
-            //    {
-            //        comparer.WriteComparisonResultJson(pc);
-            //    }
+                if (config.NoOutput != true)
+                {
+                    comparer.WriteMarkdownFiles(pc);
+                    comparer.WriteCrossVersionExtensionArtifacts(pc);
+                }
 
-            //    if (config.NoOutput != true)
-            //    {
-            //        comparer.WriteMarkdownFiles(pc);
-            //        comparer.WriteCrossVersionExtensionArtifacts(pc);
-            //    }
-
-            //    if (config.MapSaveStyle != ConfigCompare.ComparisonMapSaveStyle.None)
-            //    {
-            //        comparer.WriteMapFiles(pc);
-            //    }
-            //}
+                if (config.MapSaveStyle != ConfigCompare.ComparisonMapSaveStyle.None)
+                {
+                    comparer.WriteMapFiles(pc);
+                }
+            }
         }
         catch (Exception ex)
         {
@@ -277,7 +262,7 @@ public class Program
         return 0;
     }
 
-    public static async Task<int> DoXVer(ParseResult pr)
+    public static async Task<int> DoXVer(ParseResult pr, string command, string? subCommand)
     {
         try
         {
@@ -328,7 +313,7 @@ public class Program
     }
 
 
-    public static async Task<int> DoSql(ParseResult pr)
+    public static async Task<int> DoSql(ParseResult pr, string command, string? subCommand)
     {
         try
         {

@@ -38,11 +38,19 @@ internal sealed class Program
         // attempt a parse
         ParseResult pr = parser.Parse(args);
 
-        // any language subcommand is a generate command
-        string command = pr.CommandResult.Command.Name;
-        if (LanguageManager.HasLanguage(command))
+        string command;
+        string? subCommand;
+
+        if ((pr.CommandResult.Parent == null) ||
+            (pr.CommandResult.Parent?.Symbol.Name != pr.RootCommandResult.Symbol.Name))
         {
-            command = "generate";
+            command = pr.CommandResult.Command.Name;
+            subCommand = null;
+        }
+        else
+        {
+            command = pr.CommandResult.Parent.Symbol.Name;
+            subCommand = pr.CommandResult.Command.Name;
         }
 
         // check for invalid arguments, help, a generate command with no subcommand, or a generate with no packages to trigger the nicely formatted help
@@ -53,13 +61,12 @@ internal sealed class Program
             pr.Tokens.Any(t => t.Value.Equals("-h", StringComparison.Ordinal)) ||
             pr.Tokens.Any(t => t.Value.Equals("--help", StringComparison.Ordinal)) ||
             pr.Tokens.Any(t => t.Value.Equals("help", StringComparison.Ordinal)) ||
-            pr.CommandResult.Command.Name.Equals("generate", StringComparison.Ordinal))
-
+            ((command == "generate") && (subCommand == null)))
         {
             command = "help";
         }
 
-        ICodeGenConfig config = ParseConfig(pr, command, new CGLoggerFactory());
+        ICodeGenConfig config = ParseConfig(pr, command, subCommand, new CGLoggerFactory());
 
         ServiceCollection services = new();
         ServiceProvider provider = services
