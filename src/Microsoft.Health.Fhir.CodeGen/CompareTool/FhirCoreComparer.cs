@@ -20,6 +20,8 @@ using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
+using System.Text.RegularExpressions;
+
 
 
 
@@ -381,14 +383,13 @@ public class FhirCoreComparer
         ValueSet target,
         ConceptMap cm)
     {
-        int targetConceptCount = 0;
+        Dictionary<string, Dictionary<string, ValueSet.ContainsComponent>> targetCodesDict = [];
+        Dictionary<(string system, string code), Dictionary<(string system, string? code), ValueSetCodeComparisonRec>> mapBySource = [];
+        Dictionary<(string system, string code), Dictionary<(string system, string? code), ValueSetCodeComparisonRec>> mapByTarget = [];
 
         // unroll the target system so we can lookup codes
-        Dictionary<string, Dictionary<string, ValueSet.ContainsComponent>> targetCodesDict = [];
         foreach (ValueSet.ContainsComponent tc in target.cgGetFlatContains())
         {
-            targetConceptCount++;
-
             // check for this code
             if (!targetCodesDict.TryGetValue(tc.Code, out Dictionary<string, ValueSet.ContainsComponent>? targetsBySystem))
             {
@@ -398,26 +399,27 @@ public class FhirCoreComparer
 
             // add this system
             targetsBySystem[tc.System] = tc;
+
+            // add to our target map dictionary
+            mapByTarget.Add((tc.System, tc.Code), []);
         }
 
         // unroll the existing concept map
-        Dictionary<string, Dictionary<string, ValueSetCodeComparisonRec>> map = [];
         foreach (ConceptMap.GroupComponent cmGroup in cm.Group)
         {
             foreach (ConceptMap.SourceElementComponent cmSourceElement in cmGroup.Element)
             {
-                string sKey = cmGroup.Source + "#" + cmSourceElement.Code;
-                if (!map.TryGetValue(sKey, out Dictionary<string, ValueSetCodeComparisonRec>? mapRecsByTarget))
+                if (!mapBySource.TryGetValue((cmGroup.Source, cmSourceElement.Code), out Dictionary<(string system, string? code), ValueSetCodeComparisonRec>? mapRecsByTarget))
                 {
                     mapRecsByTarget = [];
-                    map.Add(sKey, mapRecsByTarget);
+                    mapBySource.Add((cmGroup.Source, cmSourceElement.Code), mapRecsByTarget);
                 }
 
                 // check for no-map
                 if (cmSourceElement.NoMap == true)
                 {
                     // add a no-map entry
-                    mapRecsByTarget[cmGroup.Target] = new()
+                    mapRecsByTarget[(cmGroup.Target, null)] = new()
                     {
                         SourceSystem = cmGroup.Source,
                         SourceCode = cmSourceElement.Code,
@@ -432,7 +434,7 @@ public class FhirCoreComparer
                 // iterate over our concept map targets
                 foreach (ConceptMap.TargetElementComponent cmTargetElement in cmSourceElement.Target)
                 {
-                    mapRecsByTarget[cmGroup.Target] = new()
+                    ValueSetCodeComparisonRec mapRec = new()
                     {
                         SourceSystem = cmGroup.Source,
                         SourceCode = cmSourceElement.Code,
@@ -444,23 +446,30 @@ public class FhirCoreComparer
                         Comment = cmTargetElement.Comment,
                         IsGenerated = mappingIsGenerated(cmTargetElement),
                     };
+
+                    // add to the source-based map
+                    mapRecsByTarget[(cmGroup.Target, cmTargetElement.Code)] = mapRec;
+
+                    // add to the target-based map
+                    if (!mapByTarget.TryGetValue((cmGroup.Target, cmTargetElement.Code), out Dictionary<(string system, string? code), ValueSetCodeComparisonRec>? mapRecsBySource))
+                    {
+                        mapRecsBySource = [];
+                        mapByTarget.Add((cmGroup.Target, cmTargetElement.Code), mapRecsBySource);
+                    }
+
+                    mapRecsBySource[(cmGroup.Source, cmSourceElement.Code)] = mapRec;
                 }
             }
         }
 
-        // need to make the source concepts an array so we know how many there are
-        ValueSet.ContainsComponent[] sourceContains = source.cgGetFlatContains().ToArray();
-
         // iterate over the source value set to check and update the map
-        foreach (ValueSet.ContainsComponent sourceConcept in sourceContains)
+        foreach (ValueSet.ContainsComponent sourceConcept in source.cgGetFlatContains().ToArray())
         {
-            string sourceKey = sourceConcept.System + "#" + sourceConcept.Code;
-
             // get or create a map dictionary for this value set system+code
-            if (!map.TryGetValue(sourceKey, out Dictionary<string, ValueSetCodeComparisonRec>? mapRecsByTarget))
+            if (!mapBySource.TryGetValue((sourceConcept.System, sourceConcept.Code), out Dictionary<(string system, string? code), ValueSetCodeComparisonRec>? mapRecsByTarget))
             {
                 mapRecsByTarget = [];
-                map.Add(sourceKey, mapRecsByTarget);
+                mapBySource.Add((sourceConcept.System, sourceConcept.Code), mapRecsByTarget);
             }
 
             // if there are no known targets, see if we can find a match by literal
@@ -470,8 +479,7 @@ public class FhirCoreComparer
                 // check for the same system
                 if (targetsBySystem.TryGetValue(sourceConcept.System, out ValueSet.ContainsComponent? matchedContains))
                 {
-                    // add a new target map
-                    mapRecsByTarget.Add(matchedContains.System, new()
+                    ValueSetCodeComparisonRec mapRec = new()
                     {
                         SourceSystem = sourceConcept.System,
                         SourceCode = sourceConcept.Code,
@@ -480,17 +488,28 @@ public class FhirCoreComparer
                         TargetCode = matchedContains.Code,
                         TargetDisplay = matchedContains.Display,
                         Relationship = CMR.Equivalent,
-                        Comment = "No map - detected a match by code and system.",
+                        Comment = $"`{sourceConcept.Code}` does not have a map, but found a literal match of `{matchedContains.Code}` in code and system.",
                         IsGenerated = true,
-                    });
+                    };
+
+                    // add to the source-based map
+                    mapRecsByTarget.Add((matchedContains.System, matchedContains.Code), mapRec);
+
+                    // add to the target-based map
+                    if (!mapByTarget.TryGetValue((matchedContains.System, matchedContains.Code), out Dictionary<(string system, string? code), ValueSetCodeComparisonRec>? mapRecsBySource))
+                    {
+                        mapRecsBySource = [];
+                        mapByTarget.Add((matchedContains.System, matchedContains.Code), mapRecsBySource);
+                    }
+
+                    mapRecsBySource[(sourceConcept.System, sourceConcept.Code)] = mapRec;
                 }
                 else
                 {
                     // add a map for each matching target literal
                     foreach (ValueSet.ContainsComponent targetContains in targetsBySystem.Values)
                     {
-                        // add a new target map
-                        mapRecsByTarget.Add(targetContains.System, new()
+                        ValueSetCodeComparisonRec mapRec = new()
                         {
                             SourceSystem = sourceConcept.System,
                             SourceCode = sourceConcept.Code,
@@ -500,15 +519,27 @@ public class FhirCoreComparer
                             TargetDisplay = targetContains.Display,
                             Relationship = targetsBySystem.Count == 1 ? CMR.Equivalent : CMR.SourceIsBroaderThanTarget,
                             Comment = targetsBySystem.Count == 1
-                                ? $"No map - detected a code match and only a single system."
-                                : $"No map - detected a code match in multiple systems.",
+                                ? $"`{sourceConcept.Code}` does not have a map, but found a literal match of `{targetContains.Code}` with a different system."
+                                : $"`{sourceConcept.Code}` does not have a map, but found literal matches of `{targetContains.Code}` in multiple systems.",
                             IsGenerated = true,
-                        });
+                        };
+
+                        // add to the source-based map
+                        mapRecsByTarget.Add((targetContains.System, targetContains.Code), mapRec);
+
+                        // add to the target-based map
+                        if (!mapByTarget.TryGetValue((targetContains.System, targetContains.Code), out Dictionary<(string system, string? code), ValueSetCodeComparisonRec>? mapRecsBySource))
+                        {
+                            mapRecsBySource = [];
+                            mapByTarget.Add((targetContains.System, targetContains.Code), mapRecsBySource);
+                        }
+
+                        mapRecsBySource[(sourceConcept.System, sourceConcept.Code)] = mapRec;
                     }
                 }
             }       // if: no known targets
 
-            // iterate over our map targets and check contents
+            // iterate over our existing records to check content elements (e.g., display)
             foreach (ValueSetCodeComparisonRec rec in mapRecsByTarget.Values)
             {
                 // check for no source display
@@ -526,40 +557,103 @@ public class FhirCoreComparer
                 {
                     rec.TargetDisplay = matchingContains.Display;
                 }
+            }       // foreach: iterate over map targets to check contents
+        }           // foreach: iterate over source valueset
 
-                // check for an escape-valve code with a non-reviewed mapping that is labelled equivalent but have different numbers of codes
-                if ((rec.Relationship == CMR.Equivalent) &&
-                    _escapeValveCodes.Contains(rec.SourceCode) &&
-                    _escapeValveCodes.Contains(rec.TargetCode!) &&
-                    (sourceContains.Length != targetConceptCount) &&
-                    (rec.IsGenerated == null))
+        // traverse the source map to check relationships
+        foreach (((string sourceSystem, string sourceCode), Dictionary<(string system, string? code), ValueSetCodeComparisonRec> mapRecsByTarget) in mapBySource)
+        {
+            // check for the source being an escape-valve code
+            if (_escapeValveCodes.Contains(sourceCode))
+            {
+                // iterate over our map targets
+                foreach (((string targetSystem, string? targetCode), ValueSetCodeComparisonRec rec) in mapRecsByTarget)
                 {
-                    // mark as not equivalent and flag for review
-                    rec.Relationship = sourceContains.Length > targetConceptCount ? CMR.SourceIsNarrowerThanTarget : CMR.SourceIsBroaderThanTarget;
-                    rec.IsGenerated = true;
-                    rec.Comment = rec.Comment + " Escape-valve code with different number of codes.";
-                }
+                    // skip no-maps
+                    if (targetCode == null)
+                    {
+                        continue;
+                    }
 
-                // check for having false from multiple 'equivalent' mappings to a single target
+                    // skip reviewed records
+                    if (rec.IsGenerated == false)
+                    {
+                        continue;
+                    }
+
+                    // skip anything not equivalent
+                    if (rec.Relationship == CMR.Equivalent)
+                    {
+                        continue;
+                    }
+
+                    // check for mapping to another escape-valve code
+                    if (_escapeValveCodes.Contains(targetCode))
+                    {
+                        // check to see if the sides have a different number of concepts
+                        if (mapBySource.Count != mapByTarget.Count)
+                        {
+                            // this should not be equivalent and should be reviewed
+                            rec.Relationship = mapBySource.Count > mapByTarget.Count ? CMR.SourceIsNarrowerThanTarget : CMR.SourceIsBroaderThanTarget;
+                            rec.IsGenerated = true;
+                            rec.Comment = rec.Comment + $" Escape-valve code `{sourceCode}` maps to `{targetCode}`, but represent different concept domains (different number of codes).";
+                        }
+                    }
+                }
+            }
+
+            // check for a single source with multiple targets and any that map as equivalent
+            if ((mapRecsByTarget.Count > 1) &&
+                mapRecsByTarget.Any(kvp => kvp.Value.Relationship == CMR.Equivalent))
+            {
+                foreach (((string tSystem, string? tCode), ValueSetCodeComparisonRec rec) in mapRecsByTarget)
+                {
+                    // skip any that have been reviewed
+                    if (rec.IsGenerated == false)
+                    {
+                        continue;
+                    }
+
+                    // skip any that look correct
+                    if (rec.Relationship != CMR.Equivalent)
+                    {
+                        continue;
+                    }
+
+                    // mark as not equivalent and flag for review
+                    rec.Relationship = CMR.SourceIsBroaderThanTarget;
+                    rec.IsGenerated = true;
+                    rec.Comment = $" `{rec.SourceCode}` maps to multiple codes ({string.Join(", ", mapRecsByTarget.Values.Select(r => "`" + r.TargetCode + "`"))}) and cannot be equivalent.";
+                }
+            }
+        }
+
+        // traverse the target map to check relationships
+        foreach (((string targetSystem, string targetCode), Dictionary<(string system, string? code), ValueSetCodeComparisonRec> mapRecsBySource) in mapByTarget)
+        {
+            // iterate over the map recs
+            foreach (((string sourceSystem, string? sourceCode), ValueSetCodeComparisonRec rec) in mapRecsBySource)
+            {
+                // check for an unreviewed comparison that is equivalent from multiple sources
                 if ((rec.Relationship == CMR.Equivalent) &&
                     (rec.IsGenerated == null) &&
-                    (mapRecsByTarget.Count > 1))
+                    (mapRecsBySource.Count > 1))
                 {
                     // mark as not equivalent and flag for review
                     rec.Relationship = CMR.SourceIsNarrowerThanTarget;
                     rec.IsGenerated = true;
-                    rec.Comment = $" `{rec.SourceCode}` maps to multiple codes and cannot be equivalent: {string.Join(", ", mapRecsByTarget.Values.Select(r => "`" + r.TargetCode + "`"))}.";
+                    rec.Comment = $" {string.Join(", ", mapRecsBySource.Values.Select(r => "`" + r.SourceCode + "`"))} all map to `{rec.TargetCode}` and cannot be equivalent.";
                 }
-            }       // foreach: iterate over map targets to check contents
-
-        }           // foreach: iterate over source valueset
+            }
+        }
 
         // group our map by source/target system pair
         IEnumerable<IGrouping<(string, string), ValueSetCodeComparisonRec>> results =
-            from rec in map.SelectMany(kvp => kvp.Value.Values)
+            from rec in mapBySource.SelectMany(kvp => kvp.Value.Values)
             group rec by (rec.SourceSystem, rec.TargetSystem);
 
         // rebuild the ConceptMap from our grouped records
+        cm.Group.Clear();
         foreach (IGrouping<(string, string), ValueSetCodeComparisonRec> systemPairGroup in results)
         {
             (string sourceSystem, string targetSystem) = systemPairGroup.Key;
