@@ -146,6 +146,20 @@ public class CrossVersionMapCollection
         _firelySerializerOptions = new JsonSerializerOptions().ForFhir(ModelInfo.ModelInspector).Pretty();
     }
 
+    public IEnumerable<ConceptMap> GetValueSetMaps()
+    {
+        foreach (ConceptMap cm in _dc.ConceptMapsByUrl.Values)
+        {
+            // skip ones that are not value set comparisons
+            if (!isValueSetConceptMap(cm))
+            {
+                continue;
+            }
+
+            yield return cm;
+        }
+    }
+
     public void SaveValueSetConceptMaps(string path, bool includeMapSubdir = true)
     {
         string dir = includeMapSubdir ? Path.Combine(path, $"{_sourceRLiteral}-{_targetRLiteral}") : path;
@@ -159,7 +173,7 @@ public class CrossVersionMapCollection
         foreach (ConceptMap cm in _dc.ConceptMapsByUrl.Values)
         {
             // skip ones that are not value set comparisons
-            if (!isValueSetMap(cm))
+            if (!isValueSetConceptMap(cm))
             {
                 continue;
             }
@@ -179,16 +193,12 @@ public class CrossVersionMapCollection
                 Console.WriteLine($"Error writing {filename}: {ex.Message} {ex.InnerException?.Message}");
             }
         }
-
-        return;
-
-        bool isValueSetMap(ConceptMap cm) => cm.UseContext.Any(uc =>
-                    (uc.Code.System == CommonDefinitions.ConceptMapUsageContextSystem) &&
-                    (uc.Value is CodeableConcept cc) &&
-                    cc.Coding.Any(c => c.System == CommonDefinitions.ConceptMapUsageContextSystem && c.Code == CommonDefinitions.ConceptMapUsageContextValueSet));
-
-
     }
+
+    private bool isValueSetConceptMap(ConceptMap cm) => cm.UseContext.Any(uc =>
+        (uc.Code.System == CommonDefinitions.ConceptMapUsageContextSystem) &&
+        (uc.Value is CodeableConcept cc) &&
+        cc.Coding.Any(c => c.System == CommonDefinitions.ConceptMapUsageContextSystem && c.Code == CommonDefinitions.ConceptMapUsageContextValueSet));
 
     public bool PathHasFhirCrossVersionOfficial(string path)
     {
@@ -1378,6 +1388,8 @@ public class CrossVersionMapCollection
             SourceScope = new Canonical(sourceCanonical),
             TargetScope = new Canonical(targetCanonical),
         };
+
+        _dc!.AddConceptMap(cm, _dc.MainPackageId, _dc.MainPackageVersion);
 
         return cm;
     }
