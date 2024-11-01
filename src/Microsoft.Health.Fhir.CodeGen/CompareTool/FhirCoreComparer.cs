@@ -100,8 +100,10 @@ public class FhirCoreComparer
         ];
 
 
-    private ConfigCompare _config;
+    private ILoggerFactory _loggerFactory;
     private ILogger _logger;
+    private bool _saveUpdates;
+    private string _mapSourcePath;
 
     private DefinitionCollection _leftDc;
     private string _leftShortVersion;
@@ -118,10 +120,17 @@ public class FhirCoreComparer
 
     private Dictionary<string, List<PairComparison<ValueSet>>> _valueSetComparisons = [];
 
-    public FhirCoreComparer(ConfigCompare config, DefinitionCollection left, DefinitionCollection right)
+    public FhirCoreComparer(
+        DefinitionCollection left,
+        DefinitionCollection right,
+        ILoggerFactory loggerFactory,
+        bool saveUpdates,
+        string mapSourcePath)
     {
-        _config = config;
-        _logger = config.LogFactory.CreateLogger<FhirCoreComparer>();
+        _loggerFactory = loggerFactory;
+        _logger = loggerFactory.CreateLogger<FhirCoreComparer>();
+        _saveUpdates = saveUpdates;
+        _mapSourcePath = mapSourcePath;
 
         _leftDc = left;
         _leftShortVersion = left.FhirSequence.ToShortVersion();
@@ -134,6 +143,9 @@ public class FhirCoreComparer
         _rightKey = $"{_rightDc.MainPackageId}@{_rightDc.MainPackageVersion}";
     }
 
+    public CrossVersionMapCollection? LeftToRight => _cvLeftToRight;
+    public CrossVersionMapCollection? RightToLeft => _cvRightToLeft;
+
     public void Compare()
     {
         _logger.LogComparisonStart(_leftKey, _rightKey);
@@ -144,7 +156,7 @@ public class FhirCoreComparer
         // first, process value sets
         compareAllValueSets();
 
-        if (_config.SaveComparisonResult)
+        if (_saveUpdates)
         {
             saveValueSetMaps();
         }
@@ -152,9 +164,7 @@ public class FhirCoreComparer
 
     private void saveValueSetMaps()
     {
-        string dir = string.IsNullOrEmpty(_config.CrossVersionMapSourcePath)
-            ? Path.Combine(_config.OutputDirectory, "input", "codes_v2")
-            : Path.Combine(_config.CrossVersionMapSourcePath, $"codes_v2");
+        string dir = Path.Combine(_mapSourcePath, "input", "codes_v2");
 
         if (!Directory.Exists(dir))
         {
@@ -1032,21 +1042,21 @@ public class FhirCoreComparer
     /// <returns>A collection of cross-version maps.</returns>
     private (CrossVersionMapCollection lToR, CrossVersionMapCollection rToL) getInitialMaps()
     {
-        CrossVersionMapCollection lToR = new(_leftDc, _rightDc);
-        CrossVersionMapCollection rToL = new(_rightDc, _leftDc);
+        CrossVersionMapCollection lToR = new(_leftDc, _rightDc, _loggerFactory);
+        CrossVersionMapCollection rToL = new(_rightDc, _leftDc, _loggerFactory);
 
         // check for creating new maps
-        if (string.IsNullOrEmpty(_config.CrossVersionMapSourcePath))
+        if (string.IsNullOrEmpty(_mapSourcePath))
         {
             return (lToR, rToL);
         }
 
-        if (!lToR.TryLoadCrossVersionMaps(_config.CrossVersionMapSourcePath))
+        if (!lToR.TryLoadCrossVersionMaps(_mapSourcePath))
         {
             _logger.LogMapsNotLoaded(_leftKey, _rightKey);
         }
 
-        if (!rToL.TryLoadCrossVersionMaps(_config.CrossVersionMapSourcePath))
+        if (!rToL.TryLoadCrossVersionMaps(_mapSourcePath))
         {
             _logger.LogMapsNotLoaded(_rightKey, _leftKey);
         }

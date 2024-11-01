@@ -25,6 +25,8 @@ using Firely.Fhir.Packages;
 using System.Text.Json;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification.Snapshot;
+using Microsoft.Extensions.Logging;
+
 
 
 
@@ -93,7 +95,8 @@ public class CrossVersionMapCollection
 
     public CrossVersionMapCollection(
         DefinitionCollection source,
-        DefinitionCollection target)
+        DefinitionCollection target,
+        ILoggerFactory? loggerFactory = null)
     {
         _loader = new(new()
         {
@@ -140,7 +143,7 @@ public class CrossVersionMapCollection
             MainPackageId = $"hl7.fhir.uv.xver.{_sourceRLiteral.ToLowerInvariant()}-{_targetRLiteral.ToLowerInvariant()}",
             MainPackageVersion = "0.0.1",
             MainPackageCanonical = _mapCanonical,
-            Logger = source.Logger,
+            Logger = loggerFactory?.CreateLogger<CrossVersionMapCollection>() ?? source.Logger,
         };
 
         _firelySerializerOptions = new JsonSerializerOptions().ForFhir(ModelInfo.ModelInspector).Pretty();

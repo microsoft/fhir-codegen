@@ -294,8 +294,7 @@ public class Program
             }
 
             XVerProcessor xVerProcessor = new(config, packages);
-            xVerProcessor.Compare();
-            xVerProcessor.WriteComparisonResults();
+            xVerProcessor.ProcessCommand(subCommand);
         }
         catch (Exception ex)
         {

@@ -236,57 +236,106 @@ public class XVerProcessor
         _definitions = [.. definitions];
     }
 
-    public void Compare()
+    public void ProcessCommand(string? command)
+    {
+        switch (command)
+        {
+            case "update-maps":
+                Compare(true);
+                break;
+
+            default:
+                Compare();
+                break;
+        }
+    }
+
+    public void Compare(bool? saveUpdates = null)
     {
         if (_definitions.Length < 2)
         {
             throw new InvalidOperationException("At least two definitions are required to compare.");
         }
 
-        HashSet<string> vsUrlsToInclude = [];
-
-        // we need to discover which value sets have a required binding in any set of definitions
-        foreach (DefinitionCollection dc in _definitions)
-        {
-            // iterate over the value sets in the first definition collection
-            foreach ((string unversionedUrl, string[] versions) in dc.ValueSetVersions.OrderBy(kvp => kvp.Key))
-            {
-                // skip value sets we know we will not process
-                if (_exclusionSet.Contains(unversionedUrl))
-                {
-                    continue;
-                }
-
-                // only compare on the highest version in this package
-
-                string vsVersion = versions.OrderDescending().First();
-                string versionedUrl = unversionedUrl + "|" + vsVersion;
-
-                // TODO(ginoc): We should add a flag to process all expandable value sets for use in mapping, but do not need right now
-
-                // we only need to process value sets that have a required binding
-                if (hasRequiredBinding(dc, versionedUrl, unversionedUrl))
-                {
-                    vsUrlsToInclude.Add(unversionedUrl);
-                }
-            }
-        }
+        Dictionary<(string left, string right), CrossVersionMapCollection> comparisonCache = new();
 
         // walk the definitions to compare versions next to each other
         for (int definitionIndex = 1; definitionIndex < _definitions.Length; definitionIndex++)
         {
-            // grab our definition collection pair
-            DefinitionCollection dc1 = _definitions[definitionIndex - 1];
-            DefinitionCollection dc2 = _definitions[definitionIndex];
+            DefinitionCollection left = _definitions[definitionIndex - 1];
+            DefinitionCollection right = _definitions[definitionIndex];
 
-            // get cross version maps for each direction
-            CrossVersionMapCollection cvMapUp = getMapCollection(dc1, dc2);
-            CrossVersionMapCollection cvMapDown = getMapCollection(dc2, dc1);
+            FhirCoreComparer comparer = new(
+                left,
+                right,
+                _config.LogFactory,
+                saveUpdates ?? _config.SaveComparisonResult,
+                _config.CrossVersionMapSourcePath);
 
-            // compare value sets in each direction
-            compareValueSets(dc1, dc2, vsUrlsToInclude, cvMapUp, ComparisonDirection.Up);
-            compareValueSets(dc2, dc1, vsUrlsToInclude, cvMapDown, ComparisonDirection.Down);
+            comparer.Compare();
+
+            string leftKey = $"{left.MainPackageId}@{left.MainPackageVersion}";
+            string rightKey = $"{right.MainPackageId}@{right.MainPackageVersion}";
+
+            if (comparer.LeftToRight == null)
+            {
+                throw new Exception($"Comparison of {leftKey} to {rightKey} failed!");
+            }
+
+            if (comparer.RightToLeft == null)
+            {
+                throw new Exception($"Comparison of {rightKey} to {leftKey} failed!");
+            }
+
+            comparisonCache.Add((leftKey, rightKey), comparer.LeftToRight);
+            comparisonCache.Add((rightKey, leftKey), comparer.RightToLeft);
         }
+
+
+        //HashSet<string> vsUrlsToInclude = [];
+
+        //// we need to discover which value sets have a required binding in any set of definitions
+        //foreach (DefinitionCollection dc in _definitions)
+        //{
+        //    // iterate over the value sets in the first definition collection
+        //    foreach ((string unversionedUrl, string[] versions) in dc.ValueSetVersions.OrderBy(kvp => kvp.Key))
+        //    {
+        //        // skip value sets we know we will not process
+        //        if (_exclusionSet.Contains(unversionedUrl))
+        //        {
+        //            continue;
+        //        }
+
+        //        // only compare on the highest version in this package
+
+        //        string vsVersion = versions.OrderDescending().First();
+        //        string versionedUrl = unversionedUrl + "|" + vsVersion;
+
+        //        // TODO(ginoc): We should add a flag to process all expandable value sets for use in mapping, but do not need right now
+
+        //        // we only need to process value sets that have a required binding
+        //        if (hasRequiredBinding(dc, versionedUrl, unversionedUrl))
+        //        {
+        //            vsUrlsToInclude.Add(unversionedUrl);
+        //        }
+        //    }
+        //}
+
+        //// walk the definitions to compare versions next to each other
+        //for (int definitionIndex = 1; definitionIndex < _definitions.Length; definitionIndex++)
+        //{
+        //    // grab our definition collection pair
+        //    DefinitionCollection dc1 = _definitions[definitionIndex - 1];
+        //    DefinitionCollection dc2 = _definitions[definitionIndex];
+
+        //    // get cross version maps for each direction
+        //    CrossVersionMapCollection cvMapUp = getMapCollection(dc1, dc2);
+        //    CrossVersionMapCollection cvMapDown = getMapCollection(dc2, dc1);
+
+        //    // compare value sets in each direction
+        //    compareValueSets(dc1, dc2, vsUrlsToInclude, cvMapUp, ComparisonDirection.Up);
+        //    compareValueSets(dc2, dc1, vsUrlsToInclude, cvMapDown, ComparisonDirection.Down);
+        //}
     }
 
     public void WriteComparisonResults()
