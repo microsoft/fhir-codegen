@@ -118,6 +118,33 @@ public static class ValueSetExtensions
     public static IEnumerable<string> cgReferencedCodeSystems(this ValueSet vs) =>
         vs.Expansion?.Contains?.Select(c => c.System).Distinct() ?? vs.Compose?.Include?.Select(i => i.System).Distinct() ?? [];
 
+    /// <summary>
+    /// Determines whether the DefinitionCollection has a required binding for the specified ValueSet URLs.
+    /// </summary>
+    /// <param name="dc">The DefinitionCollection to act on.</param>
+    /// <param name="versionedUrl">The versioned URL of the ValueSet.</param>
+    /// <param name="unversionedUrl">The unversioned URL of the ValueSet.</param>
+    /// <returns>True if the DefinitionCollection has a required binding, false otherwise.</returns>
+    public static bool cgHasRequiredBinding(
+        this DefinitionCollection dc,
+        string versionedUrl,
+        string unversionedUrl)
+    {
+        IEnumerable<StructureElementCollection> coreBindingsUnversioned = dc.CoreBindingsForVs(unversionedUrl);
+        if (dc.StrongestBinding(coreBindingsUnversioned) == BindingStrength.Required)
+        {
+            return true;
+        }
+
+        IEnumerable<StructureElementCollection> coreBindingsVersioned = dc.CoreBindingsForVs(versionedUrl);
+        if (dc.StrongestBinding(coreBindingsVersioned) == BindingStrength.Required)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     /// <summary>Gets the flat list of FhirConcepts from the ValueSet.</summary>
     /// <param name="vs">The ValueSet to act on.</param>
     /// <param name="dc">The device-context.</param>

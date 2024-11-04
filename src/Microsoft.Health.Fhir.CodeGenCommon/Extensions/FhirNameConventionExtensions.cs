@@ -11,7 +11,7 @@ namespace Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 public static class FhirNameConventionExtensions
 {
     /// <summary>(Immutable) The word delimiters.</summary>
-    private static readonly char[] _wordDelimiters = [' ', '.', '_', '-'];
+    private static readonly char[] _wordDelimiters = [' ', '.', '_', '-', '/', '\\'];
 
     /// <summary>(Immutable) Options for controlling the word split.</summary>
 #if NETSTANDARD2_0

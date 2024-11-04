@@ -66,22 +66,22 @@ internal static class XVerExtensions
         }
     }
 
-    internal static List<Dictionary<string, ValueSetMapProjectionCell>> project(this ValueSet keyVs, ValueSetComparisonAnnotation keyAnnotation, DefinitionCollection keyDc)
+    internal static List<Dictionary<string, ValueSetMapAnnotationCell>> project(this ValueSet keyVs, ValueSetComparisonAnnotation keyAnnotation, DefinitionCollection keyDc)
     {
-        List<List<ValueSetMapProjectionCell>> up = [];
-        List<List<ValueSetMapProjectionCell>> down = [];
+        List<List<ValueSetMapAnnotationCell>> up = [];
+        List<List<ValueSetMapAnnotationCell>> down = [];
 
         // start with the main valueset and expand up and down
         expand(keyVs, keyAnnotation, keyDc, ComparisonDirection.Up, null, null, [], ref up);
 
         // iterate over the rows in the up direction and expand them downwards
-        foreach (List<ValueSetMapProjectionCell> row in up)
+        foreach (List<ValueSetMapAnnotationCell> row in up)
         {
             expand(keyVs, keyAnnotation, keyDc, ComparisonDirection.Down, null, null, row, ref down);
         }
 
         // normalize into dictionary for columnar access
-        List<Dictionary<string, ValueSetMapProjectionCell>> projection = down.Select(row => row.ToDictionary(n => n.PackageVersion)).ToList();
+        List<Dictionary<string, ValueSetMapAnnotationCell>> projection = down.Select(row => row.ToDictionary(n => n.PackageVersion)).ToList();
 
         // return our projection
         return projection;
@@ -91,13 +91,13 @@ internal static class XVerExtensions
             ValueSetComparisonAnnotation ca,
             DefinitionCollection dc,
             ComparisonDirection direction,
-            ValueSetMapProjectionCell? lastCell,
+            ValueSetMapAnnotationCell? lastCell,
             ValueSetComparisonDetails? lastComparison,
-            List<ValueSetMapProjectionCell> row,
-            ref List<List<ValueSetMapProjectionCell>> results)
+            List<ValueSetMapAnnotationCell> row,
+            ref List<List<ValueSetMapAnnotationCell>> results)
 
         {
-            ValueSetMapProjectionCell cell;
+            ValueSetMapAnnotationCell cell;
 
             List<ValueSetComparisonDetails> forward;
             List<ValueSetComparisonDetails> reverse;
@@ -227,13 +227,17 @@ public class XVerProcessor
     private ConfigXVer _config;
     private ILogger _logger;
     private DefinitionCollection[] _definitions;
-    private Dictionary<string, CrossVersionMapCollection> _crossVersionMaps = [];
+    private Dictionary<string, int> _definitionIndexes = [];
+    private Dictionary<(string left, string right), FhirCoreComparer> _comparisonCache;
+
 
     public XVerProcessor(ConfigXVer config, IEnumerable<DefinitionCollection> definitions)
     {
         _config = config;
         _logger = config.LogFactory.CreateLogger<XVerProcessor>();
         _definitions = [.. definitions];
+        _definitions.ForEach((DefinitionCollection dc, int i) => { _definitionIndexes.Add(dc.Key, i); return true; });
+        _comparisonCache = [];
     }
 
     public void ProcessCommand(string? command)
@@ -257,13 +261,16 @@ public class XVerProcessor
             throw new InvalidOperationException("At least two definitions are required to compare.");
         }
 
-        Dictionary<(string left, string right), CrossVersionMapCollection> comparisonCache = new();
-
-        // walk the definitions to compare versions next to each other
+        // create our comparison objects
         for (int definitionIndex = 1; definitionIndex < _definitions.Length; definitionIndex++)
         {
             DefinitionCollection left = _definitions[definitionIndex - 1];
             DefinitionCollection right = _definitions[definitionIndex];
+
+            if (_comparisonCache.ContainsKey((left.Key, right.Key)))
+            {
+                continue;
+            }
 
             FhirCoreComparer comparer = new(
                 left,
@@ -272,54 +279,34 @@ public class XVerProcessor
                 saveUpdates ?? _config.SaveComparisonResult,
                 _config.CrossVersionMapSourcePath);
 
-            comparer.Compare();
+            _ = comparer.BuildInitialCrossVersionMaps();
 
-            string leftKey = $"{left.MainPackageId}@{left.MainPackageVersion}";
-            string rightKey = $"{right.MainPackageId}@{right.MainPackageVersion}";
-
-            if (comparer.LeftToRight == null)
-            {
-                throw new Exception($"Comparison of {leftKey} to {rightKey} failed!");
-            }
-
-            if (comparer.RightToLeft == null)
-            {
-                throw new Exception($"Comparison of {rightKey} to {leftKey} failed!");
-            }
-
-            comparisonCache.Add((leftKey, rightKey), comparer.LeftToRight);
-            comparisonCache.Add((rightKey, leftKey), comparer.RightToLeft);
+            _comparisonCache.Add((left.Key, right.Key), comparer);
         }
 
+        // discover the set of value sets that we want to compare across all selected versions
+        Dictionary<string, HashSet<string>> vsUrlsToInclude = getValueSetsToCompare();
 
-        //HashSet<string> vsUrlsToInclude = [];
+        // walk the definitions to run the comparisons between each version pair
+        for (int definitionIndex = 1; definitionIndex < _definitions.Length; definitionIndex++)
+        {
+            DefinitionCollection left = _definitions[definitionIndex - 1];
+            DefinitionCollection right = _definitions[definitionIndex];
 
-        //// we need to discover which value sets have a required binding in any set of definitions
-        //foreach (DefinitionCollection dc in _definitions)
-        //{
-        //    // iterate over the value sets in the first definition collection
-        //    foreach ((string unversionedUrl, string[] versions) in dc.ValueSetVersions.OrderBy(kvp => kvp.Key))
-        //    {
-        //        // skip value sets we know we will not process
-        //        if (_exclusionSet.Contains(unversionedUrl))
-        //        {
-        //            continue;
-        //        }
+            // grab the comparer for this pair (the same comparer will exist for either direction of the pair)
+            if (!_comparisonCache.TryGetValue((left.Key, right.Key), out FhirCoreComparer? comparer))
+            {
+                _logger.LogMapsNotFound($"{left.Key} -> {right.Key}");
+                continue;
+            }
 
-        //        // only compare on the highest version in this package
+            // register our filtered sets of value sets
+            comparer.RegisterValueSetFilters(vsUrlsToInclude[left.Key], vsUrlsToInclude[right.Key]);
 
-        //        string vsVersion = versions.OrderDescending().First();
-        //        string versionedUrl = unversionedUrl + "|" + vsVersion;
+            // run the comparison (bi-directional)
+            comparer.Compare();
+        }
 
-        //        // TODO(ginoc): We should add a flag to process all expandable value sets for use in mapping, but do not need right now
-
-        //        // we only need to process value sets that have a required binding
-        //        if (hasRequiredBinding(dc, versionedUrl, unversionedUrl))
-        //        {
-        //            vsUrlsToInclude.Add(unversionedUrl);
-        //        }
-        //    }
-        //}
 
         //// walk the definitions to compare versions next to each other
         //for (int definitionIndex = 1; definitionIndex < _definitions.Length; definitionIndex++)
@@ -336,6 +323,98 @@ public class XVerProcessor
         //    compareValueSets(dc1, dc2, vsUrlsToInclude, cvMapUp, ComparisonDirection.Up);
         //    compareValueSets(dc2, dc1, vsUrlsToInclude, cvMapDown, ComparisonDirection.Down);
         //}
+    }
+
+    /// <summary>
+    /// Retrieves a dictionary of value sets to compare, based on required bindings and mappings between definition collections.
+    /// </summary>
+    /// <returns>A dictionary where the key is the definition collection key and the value is a set of unversioned value set URLs to include in the comparison.</returns>
+    private Dictionary<string, HashSet<string>> getValueSetsToCompare()
+    {
+        Dictionary<string, HashSet<string>> vsUrlsToInclude = [];
+
+        // first pass - find value sets that have required bindings
+        foreach (DefinitionCollection dc in _definitions)
+        {
+            // iterate over the value sets in the first definition collection
+            foreach ((string unversionedUrl, string[] versions) in dc.ValueSetVersions.OrderBy(kvp => kvp.Key))
+            {
+                // skip value sets we know we will not process
+                if (_exclusionSet.Contains(unversionedUrl))
+                {
+                    continue;
+                }
+
+                // only compare on the highest version in this package
+                string vsVersion = versions.OrderDescending().First();
+                string versionedUrl = unversionedUrl + "|" + vsVersion;
+
+                // we only need to process value sets that have a required binding
+                if (dc.cgHasRequiredBinding(versionedUrl, unversionedUrl))
+                {
+                    vsUrlsToInclude.AddToValue(dc.Key, unversionedUrl);
+                }
+            }
+        }
+
+        // second pass - find value sets that have a map from a neighbor and were not already included, iterate until we do not find anything new
+        bool addedVs = false;
+        do
+        {
+            addedVs = false;
+
+            for (int definitionIndex = 1; definitionIndex < _definitions.Length; definitionIndex++)
+            {
+                DefinitionCollection left = _definitions[definitionIndex - 1];
+                DefinitionCollection right = _definitions[definitionIndex];
+
+                // grab the comparer for this pair (always left to right)
+                if (!_comparisonCache.TryGetValue((left.Key, right.Key), out FhirCoreComparer? comparer))
+                {
+                    _logger.LogMapsNotFound($"{left.Key} -> {right.Key}");
+                    continue;
+                }
+
+                HashSet<string> leftValueSets = vsUrlsToInclude[left.Key];
+                HashSet<string> rightValueSets = vsUrlsToInclude[right.Key];
+
+                // iterate over all the currently-selected value sets in the left collection
+                foreach (string leftVsUrl in leftValueSets)
+                {
+                    // get all the map targets for this value set (left to right)
+                    List<string> targets = comparer.LeftToRight?.GetMapTargetsForVs(leftVsUrl) ?? [];
+
+                    // make sure all these targets exist in the right set
+                    foreach (string target in targets)
+                    {
+                        if (!rightValueSets.Contains(target))
+                        {
+                            rightValueSets.Add(target);
+                            addedVs = true;
+                        }
+                    }
+                }
+
+                // check value set targets from right to left
+                foreach (string rightVsUrl in rightValueSets)
+                {
+                    // get all the map targets for this value set (left to right)
+                    List<string> targets = comparer.RightToLeft?.GetMapTargetsForVs(rightVsUrl) ?? [];
+
+                    // make sure all these targets exist in the right set
+                    foreach (string target in targets)
+                    {
+                        if (!leftValueSets.Contains(target))
+                        {
+                            leftValueSets.Add(target);
+                            addedVs = true;
+                        }
+                    }
+                }
+            }
+        } while (addedVs);
+
+        return vsUrlsToInclude;
     }
 
     public void WriteComparisonResults()
@@ -406,6 +485,173 @@ public class XVerProcessor
             }
         }
     }
+
+    private  List<Dictionary<string, ValueSetMappingCell>> projectComparisons(ValueSet keyVs, DefinitionCollection keyDc)
+    {
+        List<List<ValueSetMappingCell>> up = [];
+        List<List<ValueSetMappingCell>> down = [];
+
+        // start with the main valueset and expand up and down
+        expand(keyVs, keyDc, ComparisonDirection.Up, null, null, [], ref up);
+
+        // iterate over the rows in the up direction and expand them downwards
+        foreach (List<ValueSetMappingCell> row in up)
+        {
+            expand(keyVs, keyDc, ComparisonDirection.Down, null, null, row, ref down);
+        }
+
+        // normalize into dictionary for columnar access
+        List<Dictionary<string, ValueSetMappingCell>> projection = down.Select(row => row.ToDictionary(n => n.DefinitionKey)).ToList();
+
+        // return our projection
+        return projection;
+
+        void expand(
+            ValueSet vs,
+            DefinitionCollection dc,
+            ComparisonDirection direction,
+            ValueSetMappingCell? lastCell,
+            ValueSetMappingCell? lastComparison,
+            List<ValueSetMappingCell> row,
+            ref List<List<ValueSetMappingCell>> results)
+        {
+            ValueSetMappingCell cell;
+
+            int dcIndex = _definitionIndexes[dc.Key];
+            DefinitionCollection targetDc;
+
+            // try to get the comparer for the target version
+            if (direction == ComparisonDirection.Up)
+            {
+                if (dcIndex == _definitions.Length - 1)
+                {
+                    // nothing else in this direction
+                    return;
+                }
+
+                // get the collection
+                targetDc = _definitions[dcIndex + 1];
+            }
+            else if (direction == ComparisonDirection.Down)
+            {
+                if (dcIndex == 0)
+                {
+                    // nothing else in this direction
+                    return;
+                }
+
+                // get the collection
+                targetDc = _definitions[dcIndex - 1];
+            }
+            else
+            {
+                throw new Exception($"Cannot expand direction: {direction}");
+            }
+
+            if (!_comparisonCache.TryGetValue((dc.Key, targetDc.Key), out FhirCoreComparer? comparer))
+            {
+                _logger.LogMapsNotFound($"{dc.Key} -> {targetDc.Key}");
+                return;
+            }
+
+            List<ConceptMap> forward = direction == ComparisonDirection.Up
+                ? comparer.LeftToRight?.GetMapsForSource(vs.Url) ?? []
+                : comparer.RightToLeft?.GetMapsForSource(vs.Url) ?? [];
+
+            List<ConceptMap> reverse = direction == ComparisonDirection.Up
+                ? comparer.RightToLeft?.GetMapsForSource(vs.Url) ?? []
+                : comparer.LeftToRight?.GetMapsForSource(vs.Url) ?? [];
+
+            //// check for starting a different direction in the existing row
+            //if ((lastCell == null) && (row.Count != 0))
+            //{
+            //    cell = direction == ComparisonDirection.Up ? row[^1] : row[0];
+            //}
+            //else
+            //{
+            //    // create our cell
+            //    if (direction == ComparisonDirection.Up)
+            //    {
+            //        ValueSetComparisonDetails? toLeft = reverse.FirstOrDefault(d => d.Target == lastCell?.VS);
+
+            //        cell = new()
+            //        {
+            //            PackageVersion = dc.MainPackageVersion,
+            //            VS = vs,
+            //            ComparisonAnnotation = ca,
+            //            ToLeftCell = toLeft,
+            //            FromLeftCell = lastComparison,
+            //        };
+
+            //        if (lastCell != null)
+            //        {
+            //            lastCell.FromRightCell = toLeft;
+            //        }
+
+            //        row.Add(cell);
+            //    }
+            //    else
+            //    {
+            //        ValueSetComparisonDetails? toRight = reverse.FirstOrDefault(d => d.Target == lastCell?.VS);
+
+            //        cell = new()
+            //        {
+            //            PackageVersion = dc.MainPackageVersion,
+            //            VS = vs,
+            //            ComparisonAnnotation = ca,
+            //            ToRightCell = toRight,
+            //            FromRightCell = lastComparison,
+            //        };
+
+            //        if (lastCell != null)
+            //        {
+            //            lastCell.FromLeftCell = toRight;
+            //        }
+
+            //        row.Insert(0, cell);
+            //    }
+            //}
+
+            //// check for no further links in this direction
+            //if (forward.Count == 0)
+            //{
+            //    results.Add(row);
+            //    return;
+            //}
+
+            //// iterate over our links in this direction
+            //foreach (ValueSetComparisonDetails detail in forward)
+            //{
+            //    if (detail.Target == null)
+            //    {
+            //        continue;
+            //    }
+
+            //    if ((!detail.Target.TryGetAnnotation(out ValueSetComparisonAnnotation? detailCA)) ||
+            //        (detailCA == null))
+            //    {
+            //        continue;
+            //    }
+
+            //    // set the 'to next'
+            //    if (direction == ComparisonDirection.Up)
+            //    {
+            //        cell.ToRightCell = detail;
+            //    }
+            //    else
+            //    {
+            //        cell.ToLeftCell = detail;
+            //    }
+
+            //    expand(detail.Target, detailCA, detail.TargetDefinition, direction, cell, detail, [.. row], ref results);
+            //}
+        }
+
+
+    }
+
+
+
 
     private void writeMdOverviewIntroValueSets(ExportStreamWriter writer, DefinitionCollection dc)
     {
@@ -497,7 +743,7 @@ public class XVerProcessor
         addVersionDetails(keyComparison?.ToPrev, ComparisonDirection.Down);
 
         // build a projection
-        List<Dictionary<string, ValueSetMapProjectionCell>> projection = keyComparison == null ? [] : keyVs.project(keyComparison, keyDc);
+        List<Dictionary<string, ValueSetMapAnnotationCell>> projection = keyComparison == null ? [] : keyVs.project(keyComparison, keyDc);
 
         if (projection.Count == 0)
         {
@@ -516,12 +762,12 @@ public class XVerProcessor
         writer.WriteLine("| " + string.Join(" | Mapping | ", comparisonsByVersion.Keys));
         writeTableColumns(writer, "---", (_definitions.Length * 2) - 1, appendNewline: true);
 
-        foreach (Dictionary<string, ValueSetMapProjectionCell> row in projection)
+        foreach (Dictionary<string, ValueSetMapAnnotationCell> row in projection)
         {
             // traverse columns
             foreach (string key in comparisonsByVersion.Keys)
             {
-                if (row.TryGetValue(key, out ValueSetMapProjectionCell? cell))
+                if (row.TryGetValue(key, out ValueSetMapAnnotationCell? cell))
                 {
                     writer.Write(
                         $"| [{cell.VS.Name.ForMdTable()}]({vsRootUrlsByVersion[key]}/{getVsFilename(cell.VS.Name.ToPascalCase(), includeRelativeDir: false)})" +
@@ -1551,59 +1797,5 @@ public class XVerProcessor
         }
 
         return (noMaps, mapTargetsByKeyBySourceKey);
-    }
-
-    /// <summary>
-    /// Checks if the specified value set has a required binding in the given definition collection.
-    /// </summary>
-    /// <param name="dc">The definition collection.</param>
-    /// <param name="versionedUrl">The versioned URL of the value set.</param>
-    /// <param name="unversionedUrl">The unversioned URL of the value set.</param>
-    /// <returns>True if the value set has a required binding, false otherwise.</returns>
-    private bool hasRequiredBinding(
-        DefinitionCollection dc,
-        string versionedUrl,
-        string unversionedUrl)
-    {
-        IEnumerable<StructureElementCollection> coreBindingsUnversioned = dc.CoreBindingsForVs(unversionedUrl);
-        if (dc.StrongestBinding(coreBindingsUnversioned) == BindingStrength.Required)
-        {
-            return true;
-        }
-
-        IEnumerable<StructureElementCollection> coreBindingsVersioned = dc.CoreBindingsForVs(versionedUrl);
-        if (dc.StrongestBinding(coreBindingsVersioned) == BindingStrength.Required)
-        {
-            return true;
-        }
-
-        return false;
-    }
-
-    /// <summary>
-    /// Retrieves the cross-version map collection for the given definition collections.
-    /// </summary>
-    /// <param name="dc1">The first definition collection.</param>
-    /// <param name="dc2">The second definition collection.</param>
-    /// <returns>The cross-version map collection.</returns>
-    private CrossVersionMapCollection getMapCollection(DefinitionCollection dc1, DefinitionCollection dc2)
-    {
-        string cvMapKey = $"{dc1.MainPackageId}@{dc1.MainPackageVersion}-{dc2.MainPackageId}@{dc2.MainPackageVersion}";
-
-        if (_crossVersionMaps.TryGetValue(cvMapKey, out CrossVersionMapCollection? cvMap))
-        {
-            return cvMap;
-        }
-
-        cvMap = new(dc1, dc2);
-
-        if (!cvMap.TryLoadCrossVersionMaps(_config.CrossVersionMapSourcePath))
-        {
-            _logger.LogMapsNotFound(cvMapKey);
-        }
-
-        _crossVersionMaps.Add(cvMapKey, cvMap);
-
-        return cvMap;
     }
 }

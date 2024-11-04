@@ -109,11 +109,13 @@ public class FhirCoreComparer
     private string _leftShortVersion;
     private string _leftRLiteral;
     private string _leftKey;
+    private HashSet<string>? _leftValueSetUrls = null;
 
     private DefinitionCollection _rightDc;
     private string _rightShortVersion;
     private string _rightRLiteral;
     private string _rightKey;
+    private HashSet<string>? _rightValueSetUrls = null;
 
     private CrossVersionMapCollection? _cvLeftToRight = null;
     private CrossVersionMapCollection? _cvRightToLeft = null;
@@ -150,8 +152,12 @@ public class FhirCoreComparer
     {
         _logger.LogComparisonStart(_leftKey, _rightKey);
 
-        // load cross-version maps in both directions
-        (_cvLeftToRight, _cvRightToLeft) = getInitialMaps();
+        if ((_cvLeftToRight == null) ||
+            (_cvRightToLeft == null))
+        {
+            // load cross-version maps in both directions
+            (_cvLeftToRight, _cvRightToLeft) = getInitialMaps();
+        }
 
         // first, process value sets
         compareAllValueSets();
@@ -160,6 +166,23 @@ public class FhirCoreComparer
         {
             saveValueSetMaps();
         }
+    }
+
+    public (CrossVersionMapCollection leftToRight, CrossVersionMapCollection rightToLeft) BuildInitialCrossVersionMaps()
+    {
+        if ((_cvLeftToRight == null) ||
+            (_cvRightToLeft == null))
+        {
+            // load cross-version maps in both directions
+            (_cvLeftToRight, _cvRightToLeft) = getInitialMaps();
+        }
+
+        return (_cvLeftToRight, _cvRightToLeft);
+    }
+
+    public void RegisterValueSetFilters(HashSet<string> leftValueSetUrls, HashSet<string> rightValueSetUrls)
+    {
+
     }
 
     private void saveValueSetMaps()
@@ -179,8 +202,11 @@ public class FhirCoreComparer
     {
         // iterate over the pairs in both directions
         foreach (
-            (DefinitionCollection left, DefinitionCollection right, CrossVersionMapCollection cvMap) in
-            ((DefinitionCollection, DefinitionCollection, CrossVersionMapCollection)[])[(_leftDc, _rightDc, _cvLeftToRight!), (_rightDc, _leftDc, _cvRightToLeft!)])
+            (DefinitionCollection left, DefinitionCollection right, CrossVersionMapCollection cvMap, HashSet<string>? vsFilter) in
+            ((DefinitionCollection, DefinitionCollection, CrossVersionMapCollection, HashSet<string>?)[])[
+                (_leftDc, _rightDc, _cvLeftToRight!, _leftValueSetUrls),
+                (_rightDc, _leftDc, _cvRightToLeft!, _rightValueSetUrls)
+                ])
         {
             // iterate over the value sets in the definition collection
             foreach ((string unversionedUrl, string[] versions) in left.ValueSetVersions.OrderBy(kvp => kvp.Key))
@@ -216,7 +242,7 @@ public class FhirCoreComparer
                     // get the unexpanded value set object
                     if (left.ValueSetsByVersionedUrl.TryGetValue(versionedUrl, out ValueSet? unexpandedVs))
                     {
-                        // flag that we are not comparing this because we could not expand
+                        // flag why we are not including this
                         _valueSetComparisons.AddToValue(versionedUrl, new()
                         {
                             Source = unexpandedVs,
@@ -232,12 +258,19 @@ public class FhirCoreComparer
                     continue;
                 }
 
-                // TODO(ginoc): We should add a flag to process all expandable value sets for use in mapping, but do not need right now
-
-                // we only need to process value sets that have a required binding
-                if (!hasRequiredBinding(left, versionedUrl, unversionedUrl))
+                // check for precomputed filter
+                if (vsFilter != null)
                 {
-                    // flag that we are not comparing this because we could not expand
+                    if (!vsFilter.Contains(versionedUrl) &&
+                        !vsFilter.Contains(unversionedUrl))
+                    {
+                        continue;
+                    }
+                }
+                // we only need to process value sets that have a required binding
+                else if (!left.cgHasRequiredBinding(versionedUrl, unversionedUrl))
+                {
+                    // flag why we are not including this
                     _valueSetComparisons.AddToValue(versionedUrl,  new()
                     {
                         Source = vs,
@@ -631,7 +664,10 @@ public class FhirCoreComparer
             targetsBySystem[tc.System] = tc;
 
             // add to our target map dictionary
-            mapByTarget.Add((tc.System, tc.Code), []);
+            if (!mapByTarget.ContainsKey((tc.System, tc.Code)))
+            {
+                mapByTarget.Add((tc.System, tc.Code), []);
+            }
         }
 
         // unroll the existing concept map
@@ -1005,36 +1041,6 @@ public class FhirCoreComparer
         CMR.NotRelatedTo => change ?? CMR.NotRelatedTo,
         _ => change ?? existing ?? CMR.NotRelatedTo,
     };
-
-
-
-    /// <summary>
-    /// Checks if the specified value set has a required binding in the given definition collection.
-    /// </summary>
-    /// <param name="dc">The definition collection.</param>
-    /// <param name="versionedUrl">The versioned URL of the value set.</param>
-    /// <param name="unversionedUrl">The unversioned URL of the value set.</param>
-    /// <returns>True if the value set has a required binding, false otherwise.</returns>
-    private bool hasRequiredBinding(
-        DefinitionCollection dc,
-        string versionedUrl,
-        string unversionedUrl)
-    {
-        IEnumerable<StructureElementCollection> coreBindingsUnversioned = dc.CoreBindingsForVs(unversionedUrl);
-        if (dc.StrongestBinding(coreBindingsUnversioned) == BindingStrength.Required)
-        {
-            return true;
-        }
-
-        IEnumerable<StructureElementCollection> coreBindingsVersioned = dc.CoreBindingsForVs(versionedUrl);
-        if (dc.StrongestBinding(coreBindingsVersioned) == BindingStrength.Required)
-        {
-            return true;
-        }
-
-        return false;
-    }
-
 
     /// <summary>
     /// Gets the initial cross-version maps between two definition collections.

@@ -11,11 +11,25 @@ namespace Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
 public static class DictionaryExtensions
 {
-    public static T AddToValue<T>(this Dictionary<string, List<T>> d, string key, T value)
+    public static V AddToValue<K, V>(this Dictionary<K, List<V>> d, K key, V value)
+        where K : notnull
     {
-        if (!d.TryGetValue(key, out List<T>? l))
+        if (!d.TryGetValue(key, out List<V>? l))
         {
-            l = new List<T>();
+            l = new List<V>();
+            d[key] = l;
+        }
+
+        l.Add(value);
+        return value;
+    }
+
+    public static V AddToValue<K, V>(this Dictionary<K, HashSet<V>> d, K key, V value)
+        where K : notnull
+    {
+        if (!d.TryGetValue(key, out HashSet<V>? l))
+        {
+            l = new HashSet<V>();
             d[key] = l;
         }
 

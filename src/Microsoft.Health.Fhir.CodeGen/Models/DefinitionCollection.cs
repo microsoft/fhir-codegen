@@ -152,6 +152,8 @@ public partial class DefinitionCollection
         _localTx = new LocalTerminologyService(this, valueSetExpanderSettings);
     }
 
+    public string Key => $"{MainPackageId}@{MainPackageVersion}";
+
     /// <summary>Query if 'path' has child elements.</summary>
     /// <param name="path">Dot-notation path to the element.</param>
     /// <returns>True if the path contains child elements, false if not.</returns>

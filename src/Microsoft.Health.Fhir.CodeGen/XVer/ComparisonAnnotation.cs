@@ -199,7 +199,20 @@ public enum ComparisonDirection
     Down,
 }
 
-public record class ValueSetMapProjectionCell
+public record class ValueSetMappingCell
+{
+    public required string DefinitionKey { get; init; }
+    public required ValueSet VS { get; init; }
+
+    public ValueSet? UpVS { get; set; } = null;
+    public ConceptMap? UpCM { get; set; } = null;
+
+    public ValueSet? DownVS { get; set; } = null;
+    public ConceptMap? DownCM { get; set; } = null;
+}
+
+
+public record class ValueSetMapAnnotationCell
 {
     public required string PackageVersion { get; init; }
     public required ValueSet VS { get; init; }
