@@ -97,7 +97,10 @@ internal static class LaunchUtils
             Literal = "xver",
             Description = "Perform FHIR Core Cross-Version processing",
             ConfigurationType = typeof(ConfigXVer),
-            SubCommands = [ ("update-maps", "Update the FHIR Cross Version maps") ],
+            SubCommands = [
+                ("update-maps", "Update the FHIR Cross Version maps"),
+                ("build-docs", "Build Markdown Documentation for Review")
+                ],
         },
         new()
         {

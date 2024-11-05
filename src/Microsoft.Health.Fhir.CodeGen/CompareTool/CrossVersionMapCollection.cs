@@ -165,7 +165,7 @@ public class CrossVersionMapCollection
 
     public void SaveValueSetConceptMaps(string path, bool includeMapSubdir = true)
     {
-        string dir = includeMapSubdir ? Path.Combine(path, $"{_sourceRLiteral}-{_targetRLiteral}") : path;
+        string dir = includeMapSubdir ? Path.Combine(path, $"{_sourceRLiteral}to{_targetRLiteral}") : path;
 
         if (!Directory.Exists(dir))
         {
@@ -247,7 +247,7 @@ public class CrossVersionMapCollection
         return false;
     }
 
-    public bool TryLoadCrossVersionMaps(string path)
+    public bool TryLoadCrossVersionMaps(string path, bool preferV1Maps = false)
     {
         bool isOfficial = PathHasFhirCrossVersionOfficial(path);
         bool isSource = PathHasFhirCrossVersionSource(path);
@@ -259,7 +259,7 @@ public class CrossVersionMapCollection
 
         if (isOfficial)
         {
-            if (TryLoadOfficialConceptMaps(path) && TryLoadOfficialStructureMaps(path))
+            if (TryLoadOfficialConceptMaps(path, preferV1Maps) && TryLoadOfficialStructureMaps(path))
             {
                 ReconcileElementMapWithFML();
                 return true;
@@ -308,11 +308,18 @@ public class CrossVersionMapCollection
         return true;
     }
 
-    internal bool TryLoadOfficialConceptMaps(string fhirCrossRepoPath)
+    internal bool TryLoadOfficialConceptMaps(string fhirCrossRepoPath, bool preferV1Maps = false)
     {
         Console.WriteLine($"Loading fhir-cross-version concept maps for conversion from {_sourceRLiteral} to {_targetRLiteral}...");
 
-        if (!TryLoadOfficialConceptMaps(fhirCrossRepoPath, "codes"))
+        // TODO(ginoc): once the v2 maps are merged into the main branch, all the v1 handling can be removed
+
+        // load the updated value set concept maps if we don't prefer v1
+        bool vsMapsLoaded = !preferV1Maps && TryLoadCodeConceptMapsV2(fhirCrossRepoPath);
+
+        // if we don't have v2 maps, try the v1 maps
+        if (!vsMapsLoaded &&
+            !TryLoadOfficialConceptMaps(fhirCrossRepoPath, "codes"))
         {
             throw new Exception($"Failed to load fhir-cross-version code concept maps");
         }
@@ -904,6 +911,66 @@ public class CrossVersionMapCollection
         }
     }
 
+    private bool TryLoadCodeConceptMapsV2(string fhirCrossRepoPath)
+    {
+        string path = Path.Combine(fhirCrossRepoPath, "input", "codes_v2", $"{_sourceRLiteral}to{_targetRLiteral}");
+        if (!Directory.Exists(path))
+        {
+            // does not exist
+            return false;
+        }
+
+        bool addedAny = false;
+
+        // files appear similar to ConceptMap-Ra-name-Rb-name.json, but are exclusive in their directories
+        string[] files = Directory.GetFiles(path, $"ConceptMap*.json", SearchOption.TopDirectoryOnly);
+
+        foreach (string filename in files)
+        {
+            try
+            {
+                object? loaded = _loader.ParseContentsSystemTextStream("fhir+json", typeof(ConceptMap), path: filename);
+                if (loaded is not ConceptMap cm)
+                {
+                    Console.WriteLine($"Error loading {filename}: could not parse as ConceptMap");
+                    continue;
+                }
+
+                // add this to our maps
+                _dc.AddConceptMap(cm, _dc.MainPackageId, _dc.MainPackageVersion);
+                addedAny = true;
+
+                string? sourceLocalUrl = cm.cgSourceScope();
+                string? targetLocalUrl = cm.cgTargetScope();
+
+                if ((sourceLocalUrl == null) ||
+                    (targetLocalUrl == null))
+                {
+                    continue;
+                }
+
+                // add to our listing of value set maps
+                _vsUrlsWithMaps.AddToValue(sourceLocalUrl, targetLocalUrl);
+
+                // add any known element-based name maps into our lookup table
+                foreach (Extension ext in cm.GetExtensions(CommonDefinitions.ExtUrlConceptMapAdditionalUrls))
+                {
+                    if (ext.Value is FhirUrl fhirUrl)
+                    {
+                        // use the official URL as the key
+                        _urlMap.Add(fhirUrl.Value, cm.Url);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error loading {filename}: {ex.Message}");
+            }
+        }
+
+        return addedAny;
+    }
+
     private bool TryLoadOfficialConceptMaps(string fhirCrossRepoPath, string key)
     {
         string path = Path.Combine(fhirCrossRepoPath, "input", key);
@@ -1023,15 +1090,7 @@ public class CrossVersionMapCollection
                             }
 
                             // add to our listing of value set maps
-                            if (_vsUrlsWithMaps.TryGetValue(unversionedSourceUrl, out List<string>? rightList))
-                            {
-                                rightList.Add(unversionedTargetUrl);
-                            }
-                            else
-                            {
-                                _vsUrlsWithMaps.Add(unversionedSourceUrl, [targetScopeUrl]);
-                            }
-
+                            _vsUrlsWithMaps.AddToValue(unversionedSourceUrl, targetScopeUrl);
                         }
                         break;
 
@@ -1278,14 +1337,7 @@ public class CrossVersionMapCollection
                             string targetLocalUrl = cm.Group[0].Target;
 
                             // add to our listing of value set maps
-                            if (_vsUrlsWithMaps.TryGetValue(sourceLocalUrl, out List<string>? rightList))
-                            {
-                                rightList.Add(targetLocalUrl);
-                            }
-                            else
-                            {
-                                _vsUrlsWithMaps.Add(sourceLocalUrl, [targetLocalUrl]);
-                            }
+                            _vsUrlsWithMaps.AddToValue(sourceLocalUrl, targetLocalUrl);
 
                             // add any known element-based name maps into our lookup table
                             foreach (Extension ext in cm.GetExtensions(CommonDefinitions.ExtUrlConceptMapAdditionalUrls))
@@ -1980,8 +2032,7 @@ public class CrossVersionMapCollection
         {
             return targets;
         }
-        else if (sourceUrl.Contains('|') &&
-                 _vsUrlsWithMaps.TryGetValue(sourceUrl.Split('|')[0], out targets))
+        else if (sourceUrl.Contains('|') && _vsUrlsWithMaps.TryGetValue(sourceUrl.Split('|')[0], out targets))
         {
             return targets;
         }
@@ -1996,6 +2047,32 @@ public class CrossVersionMapCollection
         maps = _dc.ConceptMapsForSource(sourceUrl);
         return maps.Count > 0;
     }
+
+    public List<ConceptMap> GetMapsForTarget(string targetUrl) => _dc.ConceptMapsForTarget(targetUrl);
+    public bool TryGetMapsForTarget(string targetUrl, [NotNullWhen(true)] out List<ConceptMap>? maps)
+    {
+        maps = _dc.ConceptMapsForTarget(targetUrl);
+        return maps.Count > 0;
+    }
+
+    public ConceptMap? GetMap(string sourceUrl, string targetUrl)
+    {
+        // get the maps for this source
+        List<ConceptMap> maps = _dc.ConceptMapsForSource(sourceUrl);
+
+        // traverse the maps looking for this target
+        foreach (ConceptMap map in maps)
+        {
+            if (map.cgTargetScope() == targetUrl)
+            {
+                return map;
+            }
+
+        }
+
+        return null;
+    }
+
 
     public ConceptMap? DataTypeMap => _dataTypeMap;
 

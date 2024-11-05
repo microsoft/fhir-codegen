@@ -201,14 +201,16 @@ public enum ComparisonDirection
 
 public record class ValueSetMappingCell
 {
-    public required string DefinitionKey { get; init; }
+    public required DefinitionCollection DC { get; init; }
     public required ValueSet VS { get; init; }
 
-    public ValueSet? UpVS { get; set; } = null;
-    public ConceptMap? UpCM { get; set; } = null;
+    public ValueSetMappingCell? LeftCell { get; set; } = null;
+    public ConceptMap? ToLeftCell { get; set; } = null;
+    public ConceptMap? FromLeftCell { get; set; } = null;
 
-    public ValueSet? DownVS { get; set; } = null;
-    public ConceptMap? DownCM { get; set; } = null;
+    public ValueSetMappingCell? RightCell { get; set; } = null;
+    public ConceptMap? ToRightCell { get; set; } = null;
+    public ConceptMap? FromRightCell { get; set; } = null;
 }
 
 

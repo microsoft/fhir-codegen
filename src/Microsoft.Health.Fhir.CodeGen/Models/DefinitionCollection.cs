@@ -103,6 +103,7 @@ public partial class DefinitionCollection
 
     private readonly Dictionary<string, ConceptMap> _conceptMapsByUrl = [];
     private readonly Dictionary<string, List<ConceptMap>> _conceptMapsBySourceUrl = [];
+    private readonly Dictionary<string, List<ConceptMap>> _conceptMapsByTargetUrl = [];
     private readonly Dictionary<string, StructureMap> _structureMapsByUrl = [];
 
     private readonly Dictionary<string, List<StructureElementCollection>> _coreBindingEdsByPathByValueSet = [];
@@ -1029,27 +1030,14 @@ public partial class DefinitionCollection
         _conceptMapsByUrl[cm.Url] = cm;
         TrackResource(cm);
 
-        if ((cm.SourceScope is Canonical sourceCanonical) && (!string.IsNullOrEmpty(sourceCanonical.Uri)))
+        if (cm.cgSourceScope() is string sourceScope)
         {
-            if (_conceptMapsBySourceUrl.TryGetValue(sourceCanonical.Uri!, out List<ConceptMap>? maps))
-            {
-                maps.Add(cm);
-            }
-            else
-            {
-                _conceptMapsBySourceUrl.Add(sourceCanonical.Uri!, [cm]);
-            }
+            _conceptMapsBySourceUrl.AddToValue(sourceScope, cm);
         }
-        else if ((cm.SourceScope is FhirUri sourceUri) && (!string.IsNullOrEmpty(sourceUri.Value)))
+
+        if (cm.cgTargetScope() is string targetScope)
         {
-            if (_conceptMapsBySourceUrl.TryGetValue(sourceUri.Value, out List<ConceptMap>? maps))
-            {
-                maps.Add(cm);
-            }
-            else
-            {
-                _conceptMapsBySourceUrl.Add(sourceUri.Value, [cm]);
-            }
+            _conceptMapsByTargetUrl.AddToValue(targetScope, cm);
         }
     }
 
@@ -1069,6 +1057,42 @@ public partial class DefinitionCollection
 
         bool hasUnversionedMaps = _conceptMapsBySourceUrl.TryGetValue(uvUrl, out List<ConceptMap>? uvMaps);
         bool hasVersionedMaps = _conceptMapsBySourceUrl.TryGetValue(src, out List<ConceptMap>? vMaps);
+
+        if (hasUnversionedMaps && hasVersionedMaps)
+        {
+            return uvMaps!.Union(vMaps!).ToList();
+        }
+
+        if (hasVersionedMaps)
+        {
+            return vMaps!;
+        }
+
+        if (hasUnversionedMaps)
+        {
+            return uvMaps!;
+        }
+
+        return [];
+    }
+
+
+    /// <summary>
+    /// Retrieves a list of ConceptMaps for a given target URL.
+    /// </summary>
+    /// <param name="target">The target URL.</param>
+    /// <returns>A list of ConceptMaps.</returns>
+    public List<ConceptMap> ConceptMapsForTarget(string target)
+    {
+        if (!target.Contains('|'))
+        {
+            return _conceptMapsByTargetUrl.TryGetValue(target, out List<ConceptMap>? tgtMaps) ? tgtMaps : [];
+        }
+
+        string uvUrl = target.Split('|')[0];
+
+        bool hasUnversionedMaps = _conceptMapsByTargetUrl.TryGetValue(uvUrl, out List<ConceptMap>? uvMaps);
+        bool hasVersionedMaps = _conceptMapsByTargetUrl.TryGetValue(target, out List<ConceptMap>? vMaps);
 
         if (hasUnversionedMaps && hasVersionedMaps)
         {

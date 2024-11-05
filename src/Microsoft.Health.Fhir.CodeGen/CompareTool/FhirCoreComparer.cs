@@ -102,7 +102,6 @@ public class FhirCoreComparer
 
     private ILoggerFactory _loggerFactory;
     private ILogger _logger;
-    private bool _saveUpdates;
     private string _mapSourcePath;
 
     private DefinitionCollection _leftDc;
@@ -126,12 +125,10 @@ public class FhirCoreComparer
         DefinitionCollection left,
         DefinitionCollection right,
         ILoggerFactory loggerFactory,
-        bool saveUpdates,
         string mapSourcePath)
     {
         _loggerFactory = loggerFactory;
         _logger = loggerFactory.CreateLogger<FhirCoreComparer>();
-        _saveUpdates = saveUpdates;
         _mapSourcePath = mapSourcePath;
 
         _leftDc = left;
@@ -161,20 +158,15 @@ public class FhirCoreComparer
 
         // first, process value sets
         compareAllValueSets();
-
-        if (_saveUpdates)
-        {
-            saveValueSetMaps();
-        }
     }
 
-    public (CrossVersionMapCollection leftToRight, CrossVersionMapCollection rightToLeft) BuildInitialCrossVersionMaps()
+    public (CrossVersionMapCollection leftToRight, CrossVersionMapCollection rightToLeft) GetInitialCrossVersionMaps(bool preferV1Maps)
     {
         if ((_cvLeftToRight == null) ||
             (_cvRightToLeft == null))
         {
             // load cross-version maps in both directions
-            (_cvLeftToRight, _cvRightToLeft) = getInitialMaps();
+            (_cvLeftToRight, _cvRightToLeft) = getInitialMaps(preferV1Maps);
         }
 
         return (_cvLeftToRight, _cvRightToLeft);
@@ -182,7 +174,13 @@ public class FhirCoreComparer
 
     public void RegisterValueSetFilters(HashSet<string> leftValueSetUrls, HashSet<string> rightValueSetUrls)
     {
+        _leftValueSetUrls = leftValueSetUrls;
+        _rightValueSetUrls = rightValueSetUrls;
+    }
 
+    public void Save()
+    {
+        saveValueSetMaps();
     }
 
     private void saveValueSetMaps()
@@ -1046,7 +1044,7 @@ public class FhirCoreComparer
     /// Gets the initial cross-version maps between two definition collections.
     /// </summary>
     /// <returns>A collection of cross-version maps.</returns>
-    private (CrossVersionMapCollection lToR, CrossVersionMapCollection rToL) getInitialMaps()
+    private (CrossVersionMapCollection lToR, CrossVersionMapCollection rToL) getInitialMaps(bool preferV1Maps = false)
     {
         CrossVersionMapCollection lToR = new(_leftDc, _rightDc, _loggerFactory);
         CrossVersionMapCollection rToL = new(_rightDc, _leftDc, _loggerFactory);
@@ -1057,12 +1055,12 @@ public class FhirCoreComparer
             return (lToR, rToL);
         }
 
-        if (!lToR.TryLoadCrossVersionMaps(_mapSourcePath))
+        if (!lToR.TryLoadCrossVersionMaps(_mapSourcePath, preferV1Maps))
         {
             _logger.LogMapsNotLoaded(_leftKey, _rightKey);
         }
 
-        if (!rToL.TryLoadCrossVersionMaps(_mapSourcePath))
+        if (!rToL.TryLoadCrossVersionMaps(_mapSourcePath, preferV1Maps))
         {
             _logger.LogMapsNotLoaded(_rightKey, _leftKey);
         }
