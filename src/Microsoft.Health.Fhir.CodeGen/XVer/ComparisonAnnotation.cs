@@ -8,9 +8,121 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using Hl7.Fhir.Model;
+using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGen.Models;
 
 namespace Microsoft.Health.Fhir.CodeGen.XVer;
+
+
+public enum ComparisonDirection
+{
+    Right,
+    Left,
+}
+
+public record class TestRec
+{
+    public required DefinitionCollection DC { get; init; }
+    public required ValueSet VS { get; init; }
+    public required ConceptMap? ToLeft { get; init; }
+    public required ConceptMap? ToRight { get; init; }
+
+}
+
+
+
+public record class ValueSetMappingCell : ICloneable
+{
+    public required DefinitionCollection DC { get; init; }
+    public required ValueSet VS { get; init; }
+
+    public ValueSetMappingCell? LeftCell { get; set; } = null;
+    public ConceptMap? ToLeftCell { get; set; } = null;
+    public ConceptMappingTable? ToLeftCellCodeMap { get; set; } = null;
+    public ConceptMap? FromLeftCell { get; set; } = null;
+    public ConceptMappingTable? FromLeftCellCodeMap { get; set; } = null;
+
+    public ValueSetMappingCell? RightCell { get; set; } = null;
+    public ConceptMap? ToRightCell { get; set; } = null;
+    public ConceptMappingTable? ToRightCellCodeMap { get; set; } = null;
+    public ConceptMap? FromRightCell { get; set; } = null;
+    public ConceptMappingTable? FromRightCellCodeMap { get; set; } = null;
+
+    object ICloneable.Clone() => this with { };
+}
+
+public class ConceptMappingTable
+    : Dictionary<
+        (string system, string code),
+        Dictionary<(string? system, string? code), ConceptMapExtensions.ConceptMapElementMapping>>
+{
+    public ConceptMappingTable(ConceptMap cm)
+    {
+        // iterate across groups
+        foreach (ConceptMap.GroupComponent group in cm.Group)
+        {
+            // grab the source and target
+            string? sourceSystem = group.Source;
+            string? targetSystem = group.Target;
+
+            // iterate across each element in the group
+            foreach (ConceptMap.SourceElementComponent sourceElement in group.Element)
+            {
+                // add if this is a no map
+                if (sourceElement.NoMap == true)
+                {
+                    if (!this.TryGetValue(
+                        (sourceSystem, sourceElement.Code),
+                        out Dictionary<(string? system, string? code), ConceptMapExtensions.ConceptMapElementMapping>? targets))
+                    {
+                        targets = [];
+                        this.Add((sourceSystem, sourceElement.Code), targets);
+                    }
+
+                    targets[(null, null)] = new()
+                    {
+                        SourceSystem = sourceSystem,
+                        TargetSystem = targetSystem,
+                        SourceElement = sourceElement,
+                        TargetElement = null,
+                    };
+
+                    continue;
+                }
+
+                // iterate across each target element
+                foreach (ConceptMap.TargetElementComponent targetElement in sourceElement.Target)
+                {
+                    if (!this.TryGetValue(
+                        (sourceSystem, sourceElement.Code),
+                        out Dictionary<(string? system, string? code), ConceptMapExtensions.ConceptMapElementMapping>? targets))
+                    {
+                        targets = [];
+                        this.Add((sourceSystem, sourceElement.Code), targets);
+                    }
+
+                    targets.Add((targetSystem, targetElement.Code), new()
+                    {
+                        SourceSystem = sourceSystem,
+                        TargetSystem = targetSystem,
+                        SourceElement = sourceElement,
+                        TargetElement = targetElement,
+                    });
+                }
+            }
+        }
+    }
+}
+
+public class ConceptGrid
+{
+
+
+    public required string[] PackageKeys { get; init; }
+
+    
+}
+
 
 
 /// <summary>
@@ -191,26 +303,6 @@ public class ValueSetComparisonAnnotation
     /// </summary>
     /// <value>The escape valve codes.</value>
     public List<string>? EscapeValveCodes { get; init; } = null;
-}
-
-public enum ComparisonDirection
-{
-    Up,
-    Down,
-}
-
-public record class ValueSetMappingCell
-{
-    public required DefinitionCollection DC { get; init; }
-    public required ValueSet VS { get; init; }
-
-    public ValueSetMappingCell? LeftCell { get; set; } = null;
-    public ConceptMap? ToLeftCell { get; set; } = null;
-    public ConceptMap? FromLeftCell { get; set; } = null;
-
-    public ValueSetMappingCell? RightCell { get; set; } = null;
-    public ConceptMap? ToRightCell { get; set; } = null;
-    public ConceptMap? FromRightCell { get; set; } = null;
 }
 
 

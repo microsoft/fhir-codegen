@@ -19,6 +19,8 @@ using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 using System.CommandLine;
+using System.Linq;
+
 
 
 
@@ -47,168 +49,11 @@ internal static class XVerExtensions
     internal static string ForMdTable(this string value) => string.IsNullOrEmpty(value) ? string.Empty : value.Replace("|", "\\|").Replace("\n", "<br/>").Replace("\r", "<br/>");
 
     internal static string ComparisonKey(this ValueSet vs, string graphId) => graphId + "_" + vs.Name.ToPascalCase();
-
-    internal static IEnumerable<(string packageVersion, ValueSetComparisonDetails? comparison, ValueSet vs)> iterate(this Dictionary<string, List<ValueSetComparisonDetails>> comparisons, string keyVersion, ValueSet keyVs)
-    {
-        foreach ((string version, List<ValueSetComparisonDetails> details) in comparisons)
-        {
-            // check for being the 'key' value set (details will be empty)
-            if ((details.Count == 0) &&
-                (version == keyVersion))
-            {
-                yield return (version, null, keyVs);
-            }
-
-            foreach (ValueSetComparisonDetails detail in details)
-            {
-                if (detail.Target == null)
-                {
-                    continue;
-                }
-
-                yield return (version, detail, detail.Target);
-            }
-        }
-    }
-
-    internal static List<Dictionary<string, ValueSetMapAnnotationCell>> project(this ValueSet keyVs, ValueSetComparisonAnnotation keyAnnotation, DefinitionCollection keyDc)
-    {
-        List<List<ValueSetMapAnnotationCell>> up = [];
-        List<List<ValueSetMapAnnotationCell>> down = [];
-
-        // start with the main valueset and expand up and down
-        expand(keyVs, keyAnnotation, keyDc, ComparisonDirection.Up, null, null, [], ref up);
-
-        // iterate over the rows in the up direction and expand them downwards
-        foreach (List<ValueSetMapAnnotationCell> row in up)
-        {
-            expand(keyVs, keyAnnotation, keyDc, ComparisonDirection.Down, null, null, row, ref down);
-        }
-
-        // normalize into dictionary for columnar access
-        List<Dictionary<string, ValueSetMapAnnotationCell>> projection = down.Select(row => row.ToDictionary(n => n.PackageVersion)).ToList();
-
-        // return our projection
-        return projection;
-
-        void expand(
-            ValueSet vs,
-            ValueSetComparisonAnnotation ca,
-            DefinitionCollection dc,
-            ComparisonDirection direction,
-            ValueSetMapAnnotationCell? lastCell,
-            ValueSetComparisonDetails? lastComparison,
-            List<ValueSetMapAnnotationCell> row,
-            ref List<List<ValueSetMapAnnotationCell>> results)
-
-        {
-            ValueSetMapAnnotationCell cell;
-
-            List<ValueSetComparisonDetails> forward;
-            List<ValueSetComparisonDetails> reverse;
-
-            // grab our chain
-            if (direction == ComparisonDirection.Up)
-            {
-                forward = ca.ToNext;
-                reverse = ca.ToPrev;
-            }
-            else
-            {
-                forward = ca.ToPrev;
-                reverse = ca.ToNext;
-            }
-
-            // check for starting a different direction in the existing row
-            if ((lastCell == null) && (row.Count != 0))
-            {
-                cell = direction == ComparisonDirection.Up ? row[^1] : row[0];
-            }
-            else
-            {
-                // create our cell
-                if (direction == ComparisonDirection.Up)
-                {
-                    ValueSetComparisonDetails? toLeft = reverse.FirstOrDefault(d => d.Target == lastCell?.VS);
-
-                    cell = new()
-                    {
-                        PackageVersion = dc.MainPackageVersion,
-                        VS = vs,
-                        ComparisonAnnotation = ca,
-                        ToLeftCell = toLeft,
-                        FromLeftCell = lastComparison,
-                    };
-
-                    if (lastCell != null)
-                    {
-                        lastCell.FromRightCell = toLeft;
-                    }
-
-                    row.Add(cell);
-                }
-                else
-                {
-                    ValueSetComparisonDetails? toRight = reverse.FirstOrDefault(d => d.Target == lastCell?.VS);
-
-                    cell = new()
-                    {
-                        PackageVersion = dc.MainPackageVersion,
-                        VS = vs,
-                        ComparisonAnnotation = ca,
-                        ToRightCell = toRight,
-                        FromRightCell = lastComparison,
-                    };
-
-                    if (lastCell != null)
-                    {
-                        lastCell.FromLeftCell = toRight;
-                    }
-
-                    row.Insert(0, cell);
-                }
-            }
-
-            // check for no further links in this direction
-            if (forward.Count == 0)
-            {
-                results.Add(row);
-                return;
-            }
-
-            // iterate over our links in this direction
-            foreach (ValueSetComparisonDetails detail in forward)
-            {
-                if (detail.Target == null)
-                {
-                    continue;
-                }
-
-                if ((!detail.Target.TryGetAnnotation(out ValueSetComparisonAnnotation? detailCA)) ||
-                    (detailCA == null))
-                {
-                    continue;
-                }
-
-                // set the 'to next'
-                if (direction == ComparisonDirection.Up)
-                {
-                    cell.ToRightCell = detail;
-                }
-                else
-                {
-                    cell.ToLeftCell = detail;
-                }
-
-                expand(detail.Target, detailCA, detail.TargetDefinition, direction, cell, detail, [..row], ref results);
-            }
-        }
-    }
 }
 
 public class XVerProcessor
 {
-    internal static readonly ComparisonDirection[] _directions = [ComparisonDirection.Up, ComparisonDirection.Down];
+    internal static readonly ComparisonDirection[] _directions = [ComparisonDirection.Right, ComparisonDirection.Left];
 
     internal static readonly HashSet<string> _exclusionSet =
     [
@@ -304,6 +149,7 @@ public class XVerProcessor
             _ = comparer.GetInitialCrossVersionMaps(preferV1Maps);
 
             _comparisonCache.Add((left.Key, right.Key), comparer);
+            //_comparisonCache.Add((right.Key, left.Key), comparer);
         }
     }
 
@@ -444,16 +290,24 @@ public class XVerProcessor
 
     public void WriteComparisonDocs()
     {
+        test();
+
         // check for no output location
-        if (string.IsNullOrEmpty(_config.OutputDirectory))
+        if (string.IsNullOrEmpty(_config.CrossVersionMapSourcePath))
         {
             return;
+        }
+
+        string docDir = Path.Combine(_config.CrossVersionMapSourcePath, "docs");
+        if (!Directory.Exists(docDir))
+        {
+            Directory.CreateDirectory(docDir);
         }
 
         // walk the definitions to write comparisons
         foreach (DefinitionCollection dc in _definitions)
         {
-            string versionDir = Path.Combine(_config.OutputDirectory, dc.FhirSequence.ToRLiteral());
+            string versionDir = Path.Combine(docDir, dc.FhirSequence.ToRLiteral());
 
             // check for the directory already existing
             if (Directory.Exists(versionDir))
@@ -467,6 +321,71 @@ public class XVerProcessor
             // write the contents of our value sets
             writeMarkdownValueSets(versionDir, dc);
         }
+    }
+
+    private void test()
+    {
+        //// build our set of value sets if necessary
+        //if (_vsUrlsToInclude.Count == 0)
+        //{
+        //    _vsUrlsToInclude = getValueSetsToCompare();
+        //}
+
+        //List<List<TestRec>> results = [];
+
+        //// walk the definitions to write comparisons
+        //for (int definitionIndex = 1; definitionIndex < _definitions.Length; definitionIndex++)
+        //{
+        //    DefinitionCollection leftDc = _definitions[definitionIndex - 1];
+        //    DefinitionCollection rightDc = _definitions[definitionIndex];
+
+        //    if (!_comparisonCache.TryGetValue((leftDc.Key, rightDc.Key), out FhirCoreComparer? comparer))
+        //    {
+        //        continue;
+        //    }
+
+        //    if (!_vsUrlsToInclude.TryGetValue(leftDc.Key, out HashSet<string>? leftVsUrls))
+        //    {
+        //        leftVsUrls = [];
+        //    }
+
+        //    // build the set of value sets that we are interested in
+        //    IEnumerable<TestRec> query = from leftVS in leftDc.ValueSetsByVersionedUrl.Values
+        //                where leftVsUrls.Contains(leftVS.Url)
+        //                join vsLtoR in comparer.LeftToRight!.GetValueSetMappedPairs() on leftVS.Url equals vsLtoR.source into ltr
+        //                from vsLtoR in ltr.DefaultIfEmpty()
+        //                join rightVS in rightDc.ValueSetsByVersionedUrl.Values on vsLtoR.target equals rightVS.Url into rvs
+        //                from rightVS in rvs.DefaultIfEmpty()
+        //                select new TestRec
+        //                {
+        //                    LeftDC = leftDc,
+        //                    LeftVS = leftVS,
+        //                    RightDC = rightDc,
+        //                    RightVS = rightVS,
+        //                    LeftToRight = vsLtoR.cm,
+        //                    RightToLeft = rightVS == null ? null : comparer.RightToLeft?.GetMap(rightVS.Url, leftVS.Url),
+        //                };
+
+        //    results.Add(query.ToList());
+        //    //foreach (TestRec v in query)
+        //    //{
+        //    //    Console.WriteLine($"{v.LeftDC.Key} to {v.RightDC.Key}: {v.LeftVS.Url} + {v.LeftToRight?.Name}: {v.RightVS?.Url}");
+        //    //}
+        //}
+
+        //var joined = results.Aggregate(
+        //    (IEnumerable<TestRec>?)null,
+        //    (current, next) =>
+        //        current == null
+        //        ? next
+        //        : current.Join(
+        //            next,
+        //            outerRec => 
+        //);
+
+
+
+        return;
     }
 
     private void writeMarkdownValueSets(string dir, DefinitionCollection dc)
@@ -573,15 +492,22 @@ public class XVerProcessor
         initialRow[keyDc.Key] = keyCell;
 
         // expand to the right first
-        List<Dictionary<string, ValueSetMappingCell>> rightProjection = project(keyCell, ComparisonDirection.Up, initialRow);
+        List<Dictionary<string, ValueSetMappingCell>> rightProjection = project(keyCell, ComparisonDirection.Right, initialRow);
 
         // iterate over the rows in the up direction and expand them downwards
         foreach (Dictionary<string, ValueSetMappingCell> row in rightProjection)
         {
-            List<Dictionary<string, ValueSetMappingCell>> downProjection = project(row[keyDc.Key], ComparisonDirection.Down, row);
-
             // add to our current set of results
-            projection.AddRange(downProjection);
+            projection.AddRange(project(row[keyDc.Key], ComparisonDirection.Left, row));
+        }
+
+        // iterate across all cells and populate the code maps (do after all linking is done)
+        foreach (Dictionary<string, ValueSetMappingCell> row in projection)
+        {
+            foreach (ValueSetMappingCell cell in row.Values)
+            {
+                populateCodeMaps(cell);
+            }
         }
 
         // return our projection
@@ -603,20 +529,9 @@ public class XVerProcessor
             foreach (ValueSetMappingCell neighbor in neighbors)
             {
                 // duplicate the existing row (if necessary)
-                Dictionary<string, ValueSetMappingCell> newRow;
-
-                if (neighbors.Count == 1)
-                {
-                    newRow = row;
-                }
-                else
-                {
-                    newRow = [];
-                    foreach ((string rowKey, ValueSetMappingCell rowCell) in row)
-                    {
-                        newRow.Add(rowKey, rowCell with { });
-                    }
-                }
+                Dictionary<string, ValueSetMappingCell> newRow = neighbors.Count == 1
+                    ? row
+                    : row.DeepCopy();
 
                 // get the key cell for this row (may be a copy)
                 ValueSetMappingCell cell = newRow[startingCell.DC.Key];
@@ -625,7 +540,7 @@ public class XVerProcessor
                 newRow[neighbor.DC.Key] = neighbor;
 
                 // set the mappings from content in the new cell
-                if (direction == ComparisonDirection.Up)
+                if (direction == ComparisonDirection.Right)
                 {
                     cell.RightCell = neighbor;
                     cell.ToRightCell = neighbor.FromLeftCell;
@@ -648,33 +563,80 @@ public class XVerProcessor
             return results;
         }
 
+        void populateCodeMaps(ValueSetMappingCell cell)
+        {
+            // check left maps if there is a left cell
+            if (cell.LeftCell != null)
+            {
+                cell.ToLeftCellCodeMap =
+                    cell.LeftCell.FromRightCellCodeMap
+                    ?? (cell.ToLeftCell == null ? null : new(cell.ToLeftCell));
+
+                cell.FromLeftCellCodeMap =
+                    cell.LeftCell.ToLeftCellCodeMap
+                    ?? (cell.FromLeftCell == null ? null : new(cell.FromLeftCell));
+            }
+
+            // check right maps if there is a right cell
+            if (cell.RightCell != null)
+            {
+                cell.ToRightCellCodeMap =
+                    cell.RightCell.FromLeftCellCodeMap
+                    ?? (cell.ToRightCell == null ? null : new(cell.ToRightCell));
+
+                cell.FromRightCellCodeMap =
+                    cell.RightCell.ToRightCellCodeMap
+                    ?? (cell.FromRightCell == null ? null : new(cell.FromRightCell));
+            }
+        }
+
         List<ValueSetMappingCell> getMappingNeighbors(ValueSetMappingCell cell, ComparisonDirection direction)
         {
-            int dcIndex = _definitionIndexes[cell.DC.Key];
+            DefinitionCollection targetDc;
+            FhirCoreComparer? comparer;
+            List<ConceptMap> forwardMaps;
+            List<ConceptMap> reverseMaps;
 
-            int targetIndex = direction == ComparisonDirection.Up
-                ? dcIndex + 1
-                : dcIndex - 1;
-
-            if ((targetIndex >= _definitions.Length) ||
-                (targetIndex < 0))
+            if (direction == ComparisonDirection.Right)
             {
-                return [];
-            }
+                int targetIndex = _definitionIndexes[cell.DC.Key] + 1;
+                if ((targetIndex >= _definitions.Length) ||
+                    (targetIndex < 0))
+                {
+                    return [];
+                }
 
-            DefinitionCollection targetDc = _definitions[targetIndex];
-            if (!_comparisonCache.TryGetValue((cell.DC.Key, targetDc.Key), out FhirCoreComparer? comparer))
+                targetDc = _definitions[targetIndex];
+
+                // get the comparer - direction is always left to right in cache
+                if (!_comparisonCache.TryGetValue((cell.DC.Key, targetDc.Key), out comparer))
+                {
+                    return [];
+                }
+
+                forwardMaps = comparer.LeftToRight?.GetMapsForSource(cell.VS.Url) ?? [];
+                reverseMaps = comparer.RightToLeft?.GetMapsForTarget(cell.VS.Url) ?? [];
+            }
+            else
             {
-                return [];
+                int targetIndex = _definitionIndexes[cell.DC.Key] - 1;
+                if ((targetIndex >= _definitions.Length) ||
+                    (targetIndex < 0))
+                {
+                    return [];
+                }
+
+                targetDc = _definitions[targetIndex];
+
+                // get the comparer - direction is always left to right in cache
+                if (!_comparisonCache.TryGetValue((targetDc.Key, cell.DC.Key), out comparer))
+                {
+                    return [];
+                }
+
+                forwardMaps = comparer.RightToLeft?.GetMapsForSource(cell.VS.Url) ?? [];
+                reverseMaps = comparer.LeftToRight?.GetMapsForTarget(cell.VS.Url) ?? [];
             }
-
-            List<ConceptMap> forwardMaps = direction == ComparisonDirection.Up
-                ? comparer.LeftToRight?.GetMapsForSource(cell.VS.Url) ?? []
-                : comparer.RightToLeft?.GetMapsForTarget(cell.VS.Url) ?? [];
-
-            List<ConceptMap> reverseMaps = direction == ComparisonDirection.Up
-                ? comparer.RightToLeft?.GetMapsForTarget(cell.VS.Url) ?? []
-                : comparer.LeftToRight?.GetMapsForSource(cell.VS.Url) ?? [];
 
             List<ValueSetMappingCell> cells = [];
 
@@ -689,7 +651,7 @@ public class XVerProcessor
 
                 // create our cell - we know the link back to the current one
 
-                if (direction == ComparisonDirection.Up)
+                if (direction == ComparisonDirection.Right)
                 {
                     cells.Add(new()
                     {
@@ -727,9 +689,6 @@ public class XVerProcessor
             ## Value Set Overview
 
             """);
-
-        // | Name | Canonical | Description | Maps to Lower | Maps to Higher | Errors |
-        // | ---- | --------- | ----------- | ------------- | -------------- | ------ |
 
         List<string> headers = [ "Canonical", "Name", "Description", "Expands" ];
         foreach (DefinitionCollection targetDc in _definitions)
@@ -850,7 +809,7 @@ public class XVerProcessor
         Dictionary<string, string> vsRootUrlsByVersion = [];
         foreach (DefinitionCollection dc in _definitions)
         {
-            vsRootUrlsByVersion.Add(dc.Key, $"/{dc.FhirSequence.ToRLiteral()}/ValueSets");
+            vsRootUrlsByVersion.Add(dc.Key, $"/docs/{dc.FhirSequence.ToRLiteral()}/ValueSets");
         }
 
         (string key, bool hasMapping)[] allKeys = _definitions.Select(dc => (dc.Key, projection.Any(r => r.ContainsKey(dc.Key)))).ToArray();
@@ -877,11 +836,13 @@ public class XVerProcessor
                     $"<br/>" +
                     $" {cell.VS.Url} ");
 
+                (string toRight, string fromRight) = getConceptMapMdLinks(cell, ComparisonDirection.Right);
+
                 // write mapping notes
                 writer.Write(
-                    $"| →→→→→→→ <br/> {cell.ToRightCell?.Name ?? "*no map*"} <br/> →→→→→→→ " +
+                    $"| →→→→→→→ <br/> {toRight} <br/> →→→→→→→ " +
                     $"<hr/>" +
-                    $"←←←←←←← <br/> {cell.FromRightCell?.Name ?? "*no map*"} <br/> ←←←←←←← ");
+                    $"←←←←←←← <br/> {fromRight} <br/> ←←←←←←← ");
             }
 
             writer.WriteLine();
@@ -889,53 +850,68 @@ public class XVerProcessor
         writer.WriteLine();
 
 
-        //writer.WriteLine("### Mapping Chart");
+
+
+        //// write a section for the code table
+        //writer.WriteLine("### Code Mappings");
         //writer.WriteLine();
 
-        //// generate mermaid flow chart showing the mappings between FHIR versions
-        //writeMdMermaidOpenFlowchart(writer);
-
-        //// write sub-graphs for each version with the relevant value sets as nodes
-        //foreach ((string version, ValueSetComparisonDetails? detail, ValueSet vs) in comparisonsByVersion.iterate(keyDc.MainPackageVersion, keyVs))
+        //foreach (Dictionary<string, ValueSetMappingCell> row in projection)
         //{
-        //    string graphId = getChartGraphId(version);
-        //    writer.WriteLineIndented($"subgraph {graphId}[\"{version}\"]");
-        //    writer.IncreaseIndent();
+        //    writer.WriteLine("#### Row");
+        //    writer.WriteLine();
 
-        //    string? id;
-        //    string? name;
+        //    writer.WriteLine("| " + string.Join(" | Details | ", row.Select(kvp => kvp.Value.DC.Key + " " + kvp.Value.VS.Name)));
+        //    writeTableColumns(writer, "---", (_definitions.Length * 2) - 1, appendNewline: true);
 
-        //    (id, name) = getChartNodeInfo(graphId, version, vs);
-        //    if (id != null)
+
+        //    // traverse the columns in the row and add to each one
+
+        //    // traverse columns in this row
+        //    foreach ((string dcKey, ValueSetMappingCell cell) in row)
         //    {
-        //        writer.WriteLineIndented($"{id}[\"{name}\"]");
+        //        if (!rowUsedCodes.TryGetValue(dcKey, out HashSet<string>? usedCodes))
+        //        {
+        //            usedCodes = [];
+        //            rowUsedCodes.Add(dcKey, usedCodes);
+        //        }
+
+        //        // check if there is anything left of this node (traversing left to right)
+        //        if (cell.ToLeftCellCodeMap == null)
+        //        {
+        //            continue;
+        //        }
+
+        //        // iterate throw the codes in this cell (if present)
+        //        foreach (((string system, string code), Dictionary<(string? system, string? code), ConceptMapExtensions.ConceptMapElementMapping> codes) in cell.ToLeftCellCodeMap)
+        //        {
+
+        //        }
+
+        //        writer.Write(
+        //            $"| ");
+
+        //        writer.Write(
+        //            $"| [{cell.VS.Name.ForMdTable()}]({vsRootUrlsByVersion[key]}/{getVsFilename(cell.VS.Name.ToPascalCase(), includeRelativeDir: false)})" +
+        //            $"<br/>" +
+        //            $" {cell.VS.Url} ");
+
+        //        (string toRight, string fromRight) = getConceptMapMdLinks(cell, ComparisonDirection.Right);
+
+        //        // write mapping notes
+        //        writer.Write(
+        //            $"| →→→→→→→ <br/> {toRight} <br/> →→→→→→→ " +
+        //            $"<hr/>" +
+        //            $"←←←←←←← <br/> {fromRight} <br/> ←←←←←←← ");
         //    }
 
-        //    writer.DecreaseIndent();
-        //    writer.WriteLineIndented("end");
         //    writer.WriteLine();
-        //}
-
-        //// write invisible links between our sub-graphs to force ordering
-        //for (int i = 1; i < comparisonsByVersion.Count; i++)
-        //{
-        //    writer.WriteLineIndented($"{getChartGraphId(_definitions[i - 1].MainPackageVersion)} ~~~ {getChartGraphId(_definitions[i].MainPackageVersion)}");
         //}
         //writer.WriteLine();
 
-        //// write entries in both directions
-        //writeChartLinkageRecursive(writer, keyDc, keyVs, keyComparison, ComparisonDirection.Down);
-        //writeChartLinkageRecursive(writer, keyDc, keyVs, keyComparison, ComparisonDirection.Up);
-
-        //writer.WriteLine("```");
-        //writer.DecreaseIndent();
 
 
 
-
-        // write a section for the code table
-        writer.WriteLine("### Code Mappings");
-        writer.WriteLine();
 
         //// iterate over our projection to write a code map for each pair
         //foreach (Dictionary<string, ValueSetMapProjectionCell> row in projection)
@@ -1118,154 +1094,11 @@ public class XVerProcessor
 
         return;
             
-        bool isRelated(ConceptDomainRelationshipCodes? relationship) =>
-            (relationship == ConceptDomainRelationshipCodes.Equivalent) ||
-            (relationship == ConceptDomainRelationshipCodes.SourceIsNarrowerThanTarget) ||
-            (relationship == ConceptDomainRelationshipCodes.SourceIsBroaderThanTarget) ||
-            (relationship == ConceptDomainRelationshipCodes.Related);
-
-        string getChartGraphId(string version) => FhirSanitizationUtils.SanitizeForProperty("v_" + version);
-
-        (string? id, string? name) getChartNodeInfo(string graphId, string version, ValueSet? chartVs)
-        {
-            if (chartVs == null)
-            {
-                return (null, null);
-            }
-
-            return ($"{graphId}_{chartVs.Name.ToPascalCase()}", chartVs.Name);
-        }
-
-        //void addVersionDetails(List<ValueSetComparisonDetails>? details, ComparisonDirection direction)
-        //{
-        //    foreach (ValueSetComparisonDetails detail in details ?? [])
-        //    {
-        //        if (!comparisonsByVersion.TryGetValue(detail.TargetDefinition.MainPackageVersion, out List<ValueSetComparisonDetails>? mapList))
-        //        {
-        //            continue;
-        //        }
-
-        //        mapList.Add(detail);
-
-        //        if (detail.Target == null)
-        //        {
-        //            continue;
-        //        }
-
-        //        if ((!detail.Target.TryGetAnnotation(out ValueSetComparisonAnnotation? detailCA)) ||
-        //            (detailCA == null))
-        //        {
-        //            continue;
-        //        }
-
-        //        if (direction == ComparisonDirection.Up)
-        //        {
-        //            addVersionDetails(detailCA.ToNext, ComparisonDirection.Up);
-        //        }
-
-        //        if (direction == ComparisonDirection.Down)
-        //        {
-        //            addVersionDetails(detailCA.ToPrev, ComparisonDirection.Down);
-        //        }
-        //    }
-        //}
-
-        void writeChartLinkageRecursive(
-            ExportStreamWriter writer,
-            DefinitionCollection currentDc,
-            ValueSet currentVs,
-            ValueSetComparisonAnnotation? ca,
-            ComparisonDirection direction)
-        {
-            if (ca == null)
-            {
-                return;
-            }
-
-            string graphId = getChartGraphId(currentDc.MainPackageVersion);
-            (string? id, _) = getChartNodeInfo(graphId, currentDc.MainPackageVersion, currentVs);
-
-            if (id == null)
-            {
-                return;
-            }
-
-            foreach (ValueSetComparisonDetails detail in (direction == ComparisonDirection.Up ? ca?.ToNext : ca?.ToPrev) ?? [])
-            {
-                if (detail.Target == null)
-                {
-                    continue;
-                }
-
-                if ((!detail.Target.TryGetAnnotation(out ValueSetComparisonAnnotation? detailCA)) ||
-                    (detailCA == null))
-                {
-                    continue;
-                }
-
-                string targetGraphId = getChartGraphId(detail.TargetDefinition.MainPackageVersion);
-                (string? targetId, _) = getChartNodeInfo(targetGraphId, detail.TargetDefinition.MainPackageVersion, detail.Target);
-
-                string link;
-
-                if (direction == ComparisonDirection.Up)
-                {
-                    // check for reverse direction
-                    if (detailCA.ToPrev.Any(prev => (prev.Target?.Url == currentVs.Url) && (prev.Target?.Version == currentVs.Version)))
-                    {
-                        link = "<-->";
-                    }
-                    else
-                    {
-                        link = "-->";
-                    }
-                }
-                else
-                {
-                    // check for reverse direction
-                    if (detailCA.ToNext.Any(next => (next.Target?.Url == currentVs.Url) && (next.Target?.Version == currentVs.Version)))
-                    {
-                        link = "<-->";
-                    }
-                    else
-                    {
-                        link = "<--";
-                    }
-                }
-
-                // write this entry
-                writer.WriteLineIndented($"{id} {link} {targetId}");
-
-                // recurse up
-                if (direction == ComparisonDirection.Up)
-                {
-                    writeChartLinkageRecursive(writer, detail.TargetDefinition, detail.Target, detailCA, ComparisonDirection.Up);
-                }
-
-                // recurse down
-                if (direction == ComparisonDirection.Down)
-                {
-                    writeChartLinkageRecursive(writer, detail.TargetDefinition, detail.Target, detailCA, ComparisonDirection.Down);
-                }
-            }
-        }
-    }
-
-    private void writeMdMermaidOpenFlowchart(ExportStreamWriter writer)
-    {
-        writer.WriteLine("""
-            ```mermaid
-            flowchart LR
-
-            """);
-
-        //writer.WriteLine("""
-        //    ```mermaid
-        //    %%{init: {"flowchart": {"defaultRenderer": "elk", "width": "100%"}} }%%
-        //    flowchart LR
-
-        //    """);
-        writer.IncreaseIndent();
+        //bool isRelated(ConceptDomainRelationshipCodes? relationship) =>
+        //    (relationship == ConceptDomainRelationshipCodes.Equivalent) ||
+        //    (relationship == ConceptDomainRelationshipCodes.SourceIsNarrowerThanTarget) ||
+        //    (relationship == ConceptDomainRelationshipCodes.SourceIsBroaderThanTarget) ||
+        //    (relationship == ConceptDomainRelationshipCodes.Related);
     }
 
     private void writeTableColumns(ExportStreamWriter writer, string value, int count, bool appendNewline = true)
@@ -1320,6 +1153,38 @@ public class XVerProcessor
         return includeRelativeDir
             ? $"ValueSets/{sourceVsName}_{cd.TargetDefinition.FhirSequence.ToRLiteral()}_{cd.Target?.Name.ToPascalCase()}"
             : $"{sourceVsName}_{cd.TargetDefinition.FhirSequence.ToRLiteral()}_{cd.Target?.Name.ToPascalCase()}";
+    }
+
+    private (string to, string from) getConceptMapMdLinks(ValueSetMappingCell cell, ComparisonDirection direction)
+    {
+        if (direction == ComparisonDirection.Right)
+        {
+            if ((cell.RightCell == null) ||
+                (cell.ToRightCell == null) ||
+                (cell.FromRightCell == null))
+            {
+                return ("*no map*", "*no map*");
+            }
+
+            return (
+                $"[{cell.ToRightCell.Name.ForMdTable()}]" +
+                $"(/input/codes_v2/{cell.DC.FhirSequence.ToRLiteral()}to{cell.RightCell.DC.FhirSequence.ToRLiteral()}/ConceptMap-{cell.ToRightCell.Name}.json)",
+                $"[{cell.FromRightCell.Name.ForMdTable()}]" +
+                $"(/input/codes_v2/{cell.RightCell.DC.FhirSequence.ToRLiteral()}to{cell.DC.FhirSequence.ToRLiteral()}/ConceptMap-{cell.FromRightCell.Name}.json)");
+        }
+
+        if ((cell.LeftCell == null) ||
+            (cell.ToLeftCell == null) ||
+            (cell.FromLeftCell == null))
+        {
+            return ("*no map*", "*no map*");
+        }
+
+        return (
+            $"[{cell.ToLeftCell.Name.ForMdTable()}]" +
+            $"(/input/codes_v2/{cell.DC.FhirSequence.ToRLiteral()}to{cell.LeftCell.DC.FhirSequence.ToRLiteral()}/ConceptMap-{cell.ToLeftCell.Name}.json)",
+            $"[{cell.FromLeftCell.Name.ForMdTable()}]" +
+            $"(/input/codes_v2/{cell.LeftCell.DC.FhirSequence.ToRLiteral()}to{cell.DC.FhirSequence.ToRLiteral()}/ConceptMap-{cell.FromLeftCell.Name}.json)");
     }
 
     private void writeMdComparisonFailed(ExportStreamWriter writer, ValueSet vs)
@@ -1419,7 +1284,7 @@ public class XVerProcessor
                 vs.AddAnnotation(comparisonAnnotation);
             }
 
-            List<ValueSetComparisonDetails> detailsList = direction == ComparisonDirection.Up
+            List<ValueSetComparisonDetails> detailsList = direction == ComparisonDirection.Right
                 ? comparisonAnnotation.ToNext
                 : comparisonAnnotation.ToPrev;
 

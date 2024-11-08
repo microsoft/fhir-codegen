@@ -163,6 +163,20 @@ public class CrossVersionMapCollection
         }
     }
 
+    public IEnumerable<(string? source, string? target, ConceptMap cm)> GetValueSetMappedPairs()
+    {
+        foreach (ConceptMap cm in _dc.ConceptMapsByUrl.Values)
+        {
+            // skip ones that are not value set comparisons
+            if (!isValueSetConceptMap(cm))
+            {
+                continue;
+            }
+
+            yield return (cm.cgSourceScope(), cm.cgTargetScope(), cm);
+        }
+    }
+
     public void SaveValueSetConceptMaps(string path, bool includeMapSubdir = true)
     {
         string dir = includeMapSubdir ? Path.Combine(path, $"{_sourceRLiteral}to{_targetRLiteral}") : path;

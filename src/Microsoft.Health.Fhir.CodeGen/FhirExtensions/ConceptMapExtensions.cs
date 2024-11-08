@@ -41,4 +41,78 @@ public static class ConceptMapExtensions
 
         return null;
     }
+
+    /// <summary>
+    /// Represents a mapping between source and target elements in a ConceptMap.
+    /// </summary>
+    public record class ConceptMapElementMapping
+    {
+        /// <summary>
+        /// Gets or sets the source system URI.
+        /// </summary>
+        public required string? SourceSystem { get; init; }
+
+        /// <summary>
+        /// Gets or sets the target system URI.
+        /// </summary>
+        public required string? TargetSystem { get; init; }
+
+        /// <summary>
+        /// Gets or sets the source element component.
+        /// </summary>
+        public required ConceptMap.SourceElementComponent SourceElement { get; init; }
+
+        /// <summary>
+        /// Gets or sets the target element component.
+        /// </summary>
+        public required ConceptMap.TargetElementComponent? TargetElement { get; init; }
+    }
+
+    public static IEnumerable<ConceptMapElementMapping> cgGetMappings(this ConceptMap cm)
+    {
+        if ((cm.Group == null) || (cm.Group.Count == 0))
+        {
+            yield break;
+        }
+
+        // iterate across groups
+        foreach (ConceptMap.GroupComponent group in cm.Group)
+        {
+            // grab the source and target
+            string? sourceSystem = group.Source;
+            string? targetSystem = group.Target;
+
+            // iterate across each element in the group
+            foreach (ConceptMap.SourceElementComponent sourceElement in group.Element)
+            {
+                // add if this is a no map
+                if (sourceElement.NoMap == true)
+                {
+                    yield return new()
+                    {
+                        SourceSystem = sourceSystem,
+                        TargetSystem = targetSystem,
+                        SourceElement = sourceElement,
+                        TargetElement = null,
+                    };
+
+                    continue;
+                }
+
+                // iterate across each target element
+                foreach (ConceptMap.TargetElementComponent targetElement in sourceElement.Target)
+                {
+                    yield return new()
+                    {
+                        SourceSystem = sourceSystem,
+                        TargetSystem = targetSystem,
+                        SourceElement = sourceElement,
+                        TargetElement = targetElement,
+                    };
+                }
+            }
+        }
+
+        yield break;
+    }
 }
