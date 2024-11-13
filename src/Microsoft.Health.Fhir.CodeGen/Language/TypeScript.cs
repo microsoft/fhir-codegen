@@ -109,13 +109,13 @@ public class TypeScript : ILanguage
                 switch (opt.Name)
                 {
                     case "Namespace":
-                        Namespace = GetOpt(parseResult, opt.CliOption, Namespace);
+                        Namespace = GetOpt(parseResult, opt, Namespace);
                         break;
                     case "MinTypeScriptVersion":
-                        MinTsVersion = GetOpt(parseResult, opt.CliOption, MinTsVersion);
+                        MinTsVersion = GetOpt(parseResult, opt, MinTsVersion);
                         break;
                     case "InlineEnums":
-                        InlineEnums = GetOpt(parseResult, opt.CliOption, InlineEnums);
+                        InlineEnums = GetOpt(parseResult, opt, InlineEnums);
                         break;
                 }
             }

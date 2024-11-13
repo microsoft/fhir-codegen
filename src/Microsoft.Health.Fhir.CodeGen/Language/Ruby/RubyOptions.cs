@@ -61,7 +61,7 @@ public class RubyOptions : ConfigGenerate
             switch (opt.Name)
             {
                 case "Module":
-                    Module = GetOpt(parseResult, opt.CliOption, Module);
+                    Module = GetOpt(parseResult, opt, Module);
                     break;
             }
         }

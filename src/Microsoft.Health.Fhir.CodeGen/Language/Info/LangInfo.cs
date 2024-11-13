@@ -81,7 +81,7 @@ public class LangInfo : ILanguage
                 switch (opt.Name)
                 {
                     case "FileFormat":
-                        FileFormat = GetOpt(parseResult, opt.CliOption, FileFormat);
+                        FileFormat = GetOpt(parseResult, opt, FileFormat);
                         break;
                 }
             }

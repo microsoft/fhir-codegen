@@ -75,7 +75,7 @@ public class ConfigSql : ConfigRoot
             {
                 case "View_Definition_Directory":
                     {
-                        string dir = GetOpt(parseResult, opt.CliOption, ViewDefinitionDirectory);
+                        string dir = GetOpt(parseResult, opt, ViewDefinitionDirectory);
 
                         if (string.IsNullOrEmpty(dir))
                         {
@@ -91,7 +91,7 @@ public class ConfigSql : ConfigRoot
                     }
                     break;
                 case "Export_Database_Name":
-                    ExportDatabaseName = GetOpt(parseResult, opt.CliOption, ExportDatabaseName);
+                    ExportDatabaseName = GetOpt(parseResult, opt, ExportDatabaseName);
                     break;
             }
         }

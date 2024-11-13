@@ -263,7 +263,7 @@ public partial class FirelyNetIG : ILanguage
                 switch (opt.Name)
                 {
                     case "ExtensionAccessorExport":
-                        ExtensionAccessorExport = GetOpt(parseResult, opt.CliOption, ExtensionAccessorExport);
+                        ExtensionAccessorExport = GetOpt(parseResult, opt, ExtensionAccessorExport);
                         break;
                 }
             }

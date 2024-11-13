@@ -78,10 +78,10 @@ public class ConfigFluentUi : ConfigRoot
             switch (opt.Name)
             {
                 case "ListenPort":
-                    UiListenPort = GetOpt(parseResult, opt.CliOption, UiListenPort);
+                    UiListenPort = GetOpt(parseResult, opt, UiListenPort);
                     break;
                 case "OpenBrowser":
-                    OpenBrowser = GetOpt(parseResult, opt.CliOption, OpenBrowser);
+                    OpenBrowser = GetOpt(parseResult, opt, OpenBrowser);
                     break;
             }
         }

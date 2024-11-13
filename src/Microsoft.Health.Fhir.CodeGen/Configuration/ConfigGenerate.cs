@@ -164,22 +164,22 @@ public class ConfigGenerate : ConfigRoot
             switch (opt.Name)
             {
                 case "IncludeExperimental":
-                    IncludeExperimental = GetOpt(parseResult, opt.CliOption, IncludeExperimental);
+                    IncludeExperimental = GetOpt(parseResult, opt, IncludeExperimental);
                     break;
                 case "FhirServerUrl":
-                    FhirServerUrl = GetOpt(parseResult, opt.CliOption, FhirServerUrl);
+                    FhirServerUrl = GetOpt(parseResult, opt, FhirServerUrl);
                     break;
                 case "SmartConfigUrl":
-                    SmartConfigUrl = GetOpt(parseResult, opt.CliOption, SmartConfigUrl);
+                    SmartConfigUrl = GetOpt(parseResult, opt, SmartConfigUrl);
                     break;
                 case "FhirServerHeaders":
-                    FhirServerHeaders = GetOpt(parseResult, opt.CliOption, FhirServerHeaders);
+                    FhirServerHeaders = GetOpt(parseResult, opt, FhirServerHeaders);
                     break;
                 case "ResolveServerCanonicals":
-                    ResolveServerCanonicals = GetOpt(parseResult, opt.CliOption, ResolveServerCanonicals);
+                    ResolveServerCanonicals = GetOpt(parseResult, opt, ResolveServerCanonicals);
                     break;
                 case "ResolveExternalCanonicals":
-                    ResolveExternalCanonicals = GetOpt(parseResult, opt.CliOption, ResolveExternalCanonicals);
+                    ResolveExternalCanonicals = GetOpt(parseResult, opt, ResolveExternalCanonicals);
                     break;
             }
         }

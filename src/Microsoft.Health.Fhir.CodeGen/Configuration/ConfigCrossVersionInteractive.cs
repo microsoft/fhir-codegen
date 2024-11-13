@@ -113,16 +113,16 @@ public class ConfigCrossVersionInteractive : ConfigRoot
             switch (opt.Name)
             {
                 case "Cross_Version_Directory":
-                    CrossVersionRepoDirectory = GetOpt(parseResult, opt.CliOption, CrossVersionRepoDirectory);
+                    CrossVersionRepoDirectory = GetOpt(parseResult, opt, CrossVersionRepoDirectory);
                     break;
                 case "Left_Package_Directive":
-                    LeftPackageDirective = GetOpt(parseResult, opt.CliOption, LeftPackageDirective);
+                    LeftPackageDirective = GetOpt(parseResult, opt, LeftPackageDirective);
                     break;
                 case "Right_Package_Directive":
-                    RightPackageDirective = GetOpt(parseResult, opt.CliOption, RightPackageDirective);
+                    RightPackageDirective = GetOpt(parseResult, opt, RightPackageDirective);
                     break;
                 case "Existing_Comparison_Path":
-                    ExistingComparisonPath = GetOpt(parseResult, opt.CliOption, ExistingComparisonPath);
+                    ExistingComparisonPath = GetOpt(parseResult, opt, ExistingComparisonPath);
                     break;
             }
         }

@@ -218,31 +218,31 @@ public class ConfigCompare : ConfigRoot
             switch (opt.Name)
             {
                 case "Compare_Package":
-                    ComparePackages = GetOptArray(parseResult, opt.CliOption, ComparePackages);
+                    ComparePackages = GetOptArray(parseResult, opt, ComparePackages);
                     break;
                 case "No_Output":
-                    NoOutput = GetOpt(parseResult, opt.CliOption, NoOutput);
+                    NoOutput = GetOpt(parseResult, opt, NoOutput);
                     break;
                 case "Save_Comparison_Result":
-                    SaveComparisonResult = GetOpt(parseResult, opt.CliOption, SaveComparisonResult);
+                    SaveComparisonResult = GetOpt(parseResult, opt, SaveComparisonResult);
                     break;
                 case "Map_Source_Path":
-                    CrossVersionMapSourcePath = GetOpt(parseResult, opt.CliOption, CrossVersionMapSourcePath);
+                    CrossVersionMapSourcePath = GetOpt(parseResult, opt, CrossVersionMapSourcePath);
                     break;
                 case "Map_Destination_Path":
-                    CrossVersionMapDestinationPath = GetOpt(parseResult, opt.CliOption, CrossVersionMapDestinationPath);
+                    CrossVersionMapDestinationPath = GetOpt(parseResult, opt, CrossVersionMapDestinationPath);
                     break;
                 case "Map_Save_Style":
-                    MapSaveStyle = GetOpt(parseResult, opt.CliOption, MapSaveStyle);
+                    MapSaveStyle = GetOpt(parseResult, opt, MapSaveStyle);
                     break;
                 //case "Known_Change_Path":
-                //    KnownChangePath = GetOpt(parseResult, opt.CliOption, KnownChangePath);
+                //    KnownChangePath = GetOpt(parseResult, opt, KnownChangePath);
                 //    break;
                 //case "Ollama_Url":
-                //    OllamaUrl = GetOpt(parseResult, opt.CliOption, OllamaUrl);
+                //    OllamaUrl = GetOpt(parseResult, opt, OllamaUrl);
                 //    break;
                 //case "Ollama_Model":
-                //    OllamaModel = GetOpt(parseResult, opt.CliOption, OllamaModel);
+                //    OllamaModel = GetOpt(parseResult, opt, OllamaModel);
                 //    break;
             }
         }

@@ -95,13 +95,13 @@ public class FirelyGenOptions : ConfigGenerate
             switch (opt.Name)
             {
                 case "Subset":
-                    Subset = GetOpt(parseResult, opt.CliOption, Subset);
+                    Subset = GetOpt(parseResult, opt, Subset);
                     break;
                 case "ExportFiveWs":
-                    ExportFiveWs = GetOpt(parseResult, opt.CliOption, ExportFiveWs);
+                    ExportFiveWs = GetOpt(parseResult, opt, ExportFiveWs);
                     break;
                 case "CqlModel":
-                    CqlModel = GetOpt(parseResult, opt.CliOption, CqlModel);
+                    CqlModel = GetOpt(parseResult, opt, CqlModel);
                     break;
             }
         }

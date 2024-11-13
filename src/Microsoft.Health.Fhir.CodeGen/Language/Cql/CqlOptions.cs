@@ -56,7 +56,7 @@ public class CqlOptions : ConfigGenerate
             {
                 case "CqlSupportDir":
                     {
-                        string? dir = GetOpt(parseResult, opt.CliOption, CqlSupportDir);
+                        string? dir = GetOpt(parseResult, opt, CqlSupportDir);
                         if (string.IsNullOrEmpty(dir))
                         {
                             dir = FindRelativeDir(string.Empty, "Language/Cql/_Definitional/fsh-generated");

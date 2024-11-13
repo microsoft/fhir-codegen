@@ -395,15 +395,15 @@ public class ConfigRoot : ICodeGenConfig
 
     internal T GetOpt<T>(
         System.CommandLine.Parsing.ParseResult parseResult,
-        System.CommandLine.Option opt,
+        ConfigurationOption opt,
         T defaultValue)
     {
-        if (!parseResult.HasOption(opt))
+        if (!parseResult.HasOption(opt.CliOption))
         {
             return defaultValue;
         }
 
-        object? parsed = parseResult.GetValueForOption(opt);
+        object? parsed = parseResult.GetValueForOption(opt.CliOption);
 
         if ((parsed != null) &&
             (parsed is T typed))
@@ -411,67 +411,84 @@ public class ConfigRoot : ICodeGenConfig
             return typed;
         }
 
+        string? envValue = Environment.GetEnvironmentVariable(opt.EnvVarName);
+        if (envValue != null)
+        {
+            return (T)Convert.ChangeType(envValue, typeof(T));
+        }
+
         return defaultValue;
     }
 
     internal T[] GetOptArray<T>(
         System.CommandLine.Parsing.ParseResult parseResult,
-        System.CommandLine.Option opt,
+        ConfigurationOption opt,
         T[] defaultValue)
     {
-        if (!parseResult.HasOption(opt))
+        if (!parseResult.HasOption(opt.CliOption))
         {
             return defaultValue;
         }
 
-        object? parsed = parseResult.GetValueForOption(opt);
+        object? parsed = parseResult.GetValueForOption(opt.CliOption);
 
-        if (parsed == null)
+        if (parsed != null)
         {
-            return defaultValue;
-        }
+            List<T> values = [];
 
-        List<T> values = [];
-
-        if (parsed is T[] array)
-        {
-            return array;
-        }
-        else if (parsed is IEnumerator genericEnumerator) 
-        {
-            // use the enumerator to add values to the array
-            while (genericEnumerator.MoveNext())
+            if (parsed is T[] array)
             {
-                if (genericEnumerator.Current is T tValue)
+                return array;
+            }
+            else if (parsed is IEnumerator genericEnumerator)
+            {
+                // use the enumerator to add values to the array
+                while (genericEnumerator.MoveNext())
                 {
-                    values.Add(tValue);
-                }
-                else
-                {
-                    throw new Exception("Should not be here!");
+                    if (genericEnumerator.Current is T tValue)
+                    {
+                        values.Add(tValue);
+                    }
+                    else
+                    {
+                        throw new Exception("Should not be here!");
+                    }
                 }
             }
-        }
-        else if (parsed is IEnumerator<T> enumerator)
-        {
-            // use the enumerator to add values to the array
-            while (enumerator.MoveNext())
+            else if (parsed is IEnumerator<T> enumerator)
             {
-                values.Add(enumerator.Current);
+                // use the enumerator to add values to the array
+                while (enumerator.MoveNext())
+                {
+                    values.Add(enumerator.Current);
+                }
+            }
+            else
+            {
+                throw new Exception("Should not be here!");
+            }
+
+            if (values.Count != 0)
+            {
+                return [.. values];
             }
         }
-        else
+
+        string? envValue = Environment.GetEnvironmentVariable(opt.EnvVarName);
+        if (envValue != null)
         {
-            throw new Exception("Should not be here!");
+            List<T> values = [];
+
+            string[] envValues = envValue.Split(',');
+            foreach (string ev in envValues)
+            {
+                values.Add((T)Convert.ChangeType(envValue, typeof(T)));
+            }
+
+            return [.. values];
         }
 
-        // if no values were added, return the default - parser cannot tell the difference between no values and default values
-        if (values.Count == 0)
-        {
-            return defaultValue;
-        }
-
-        return [.. values];
+        return defaultValue;
     }
 
     internal HashSet<T> GetOptHash<T>(
@@ -651,7 +668,6 @@ public class ConfigRoot : ICodeGenConfig
     }
 
 
-
     /// <summary>Parses the given parse result.</summary>
     /// <param name="parseResult">The parse result.</param>
     public virtual void Parse(System.CommandLine.Parsing.ParseResult parseResult)
@@ -662,7 +678,12 @@ public class ConfigRoot : ICodeGenConfig
             {
                 case "FhirCache":
                     {
-                        string? dir = GetOpt(parseResult, opt.CliOption, FhirCacheDirectory);
+                        string? dir = GetOpt(parseResult, opt, FhirCacheDirectory);
+
+                        if ((dir != null) && dir.EndsWith(".fhir"))
+                        {
+                            dir = Path.Combine(dir, "packages");
+                        }
 
                         //if (string.IsNullOrEmpty(dir))
                         //{
@@ -677,17 +698,17 @@ public class ConfigRoot : ICodeGenConfig
                     }
                     break;
                 case "UseOfficialRegistries":
-                    UseOfficialRegistries = GetOpt(parseResult, opt.CliOption, UseOfficialRegistries);
+                    UseOfficialRegistries = GetOpt(parseResult, opt, UseOfficialRegistries);
                     break;
                 case "AdditionalFhirRegistryUrls":
-                    AdditionalFhirRegistryUrls = GetOptArray(parseResult, opt.CliOption, AdditionalFhirRegistryUrls);
+                    AdditionalFhirRegistryUrls = GetOptArray(parseResult, opt, AdditionalFhirRegistryUrls);
                     break;
                 case "AdditionalNpmRegistryUrls":
-                    AdditionalNpmRegistryUrls = GetOptArray(parseResult, opt.CliOption, AdditionalNpmRegistryUrls);
+                    AdditionalNpmRegistryUrls = GetOptArray(parseResult, opt, AdditionalNpmRegistryUrls);
                     break;
                 case "OutputPath":
                     {
-                        string dir = GetOpt(parseResult, opt.CliOption, OutputDirectory);
+                        string dir = GetOpt(parseResult, opt, OutputDirectory);
 
                         if (string.IsNullOrEmpty(dir))
                         {
@@ -702,34 +723,34 @@ public class ConfigRoot : ICodeGenConfig
                     }
                     break;
                 case "OutputFilename":
-                    OutputFilename = GetOpt(parseResult, opt.CliOption, OutputFilename);
+                    OutputFilename = GetOpt(parseResult, opt, OutputFilename);
                     break;
                 case "Packages":
-                    Packages = GetOptArray(parseResult, opt.CliOption, Packages);
+                    Packages = GetOptArray(parseResult, opt, Packages);
                     break;
                 case "AutoLoadExpansions":
-                    AutoLoadExpansions = GetOpt(parseResult, opt.CliOption, AutoLoadExpansions);
+                    AutoLoadExpansions = GetOpt(parseResult, opt, AutoLoadExpansions);
                     break;
                 case "LoadStructures":
-                    LoadStructures = GetOptArray(parseResult, opt.CliOption, LoadStructures);
+                    LoadStructures = GetOptArray(parseResult, opt, LoadStructures);
                     break;
                 case "ExportStructures":
-                    ExportStructures = GetOptArray(parseResult, opt.CliOption, ExportStructures);
+                    ExportStructures = GetOptArray(parseResult, opt, ExportStructures);
                     break;
                 case "ExportKeys":
                     ExportKeys = GetOptHash(parseResult, opt.CliOption, ExportKeys);
                     break;
                 case "LoadCanonicalExamples":
-                    LoadCanonicalExamples = GetOpt(parseResult, opt.CliOption, LoadCanonicalExamples);
+                    LoadCanonicalExamples = GetOpt(parseResult, opt, LoadCanonicalExamples);
                     break;
                 case "OfflineMode":
-                    OfflineMode = GetOpt(parseResult, opt.CliOption, OfflineMode);
+                    OfflineMode = GetOpt(parseResult, opt, OfflineMode);
                     break;
                 case "ResolvePackageDependencies":
-                    ResolvePackageDependencies = GetOpt(parseResult, opt.CliOption, ResolvePackageDependencies);
+                    ResolvePackageDependencies = GetOpt(parseResult, opt, ResolvePackageDependencies);
                     break;
                 case "FhirVersion":
-                    FhirVersion = GetOpt(parseResult, opt.CliOption, FhirVersion);
+                    FhirVersion = GetOpt(parseResult, opt, FhirVersion);
                     break;
             }
         }

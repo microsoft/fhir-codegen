@@ -132,19 +132,19 @@ public class ConfigXVer : ConfigRoot
             switch (opt.Name)
             {
                 case "Compare_Package":
-                    ComparePackages = GetOptArray(parseResult, opt.CliOption, ComparePackages);
+                    ComparePackages = GetOptArray(parseResult, opt, ComparePackages);
                     break;
                 case "No_Output":
-                    NoOutput = GetOpt(parseResult, opt.CliOption, NoOutput);
+                    NoOutput = GetOpt(parseResult, opt, NoOutput);
                     break;
                 case "Save_Comparison_Result":
-                    SaveComparisonResult = GetOpt(parseResult, opt.CliOption, SaveComparisonResult);
+                    SaveComparisonResult = GetOpt(parseResult, opt, SaveComparisonResult);
                     break;
                 case "Map_Source_Path":
-                    CrossVersionMapSourcePath = GetOpt(parseResult, opt.CliOption, CrossVersionMapSourcePath);
+                    CrossVersionMapSourcePath = GetOpt(parseResult, opt, CrossVersionMapSourcePath);
                     break;
                 case "Map_Destination_Path":
-                    CrossVersionMapDestinationPath = GetOpt(parseResult, opt.CliOption, CrossVersionMapDestinationPath);
+                    CrossVersionMapDestinationPath = GetOpt(parseResult, opt, CrossVersionMapDestinationPath);
                     break;
             }
         }

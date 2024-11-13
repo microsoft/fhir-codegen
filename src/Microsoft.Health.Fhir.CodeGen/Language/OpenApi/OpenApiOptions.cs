@@ -1227,187 +1227,187 @@ public class OpenApiOptions : ConfigGenerate
             switch (opt.Name)
             {
                 case "OasVersion":
-                    OpenApiVersion = GetOpt(parseResult, opt.CliOption, OpenApiVersion);
+                    OpenApiVersion = GetOpt(parseResult, opt, OpenApiVersion);
                     break;
                 case "FileFormat":
-                    FileFormat = GetOpt(parseResult, opt.CliOption, FileFormat);
+                    FileFormat = GetOpt(parseResult, opt, FileFormat);
                     break;
                 case "Title":
-                    Title = GetOpt(parseResult, opt.CliOption, Title);
+                    Title = GetOpt(parseResult, opt, Title);
                     break;
                 case "BasicScopesOnly":
-                    BasicScopesOnly = GetOpt(parseResult, opt.CliOption, BasicScopesOnly);
+                    BasicScopesOnly = GetOpt(parseResult, opt, BasicScopesOnly);
                     break;
                 case "DefinitionVersion":
-                    DefinitionVersion = GetOpt(parseResult, opt.CliOption, DefinitionVersion);
+                    DefinitionVersion = GetOpt(parseResult, opt, DefinitionVersion);
                     break;
                 case "ExtensionSupport":
-                    ExtensionSupport = GetOpt(parseResult, opt.CliOption, ExtensionSupport);
+                    ExtensionSupport = GetOpt(parseResult, opt, ExtensionSupport);
                     break;
                 case "SchemaLevel":
-                    SchemaLevel = GetOpt(parseResult, opt.CliOption, SchemaLevel);
+                    SchemaLevel = GetOpt(parseResult, opt, SchemaLevel);
                     break;
                 case "SchemaStyle":
-                    SchemaStyle = GetOpt(parseResult, opt.CliOption, SchemaStyle);
+                    SchemaStyle = GetOpt(parseResult, opt, SchemaStyle);
                     break;
                 case "MaxRecursions":
-                    MaxRecursions = GetOpt(parseResult, opt.CliOption, MaxRecursions);
+                    MaxRecursions = GetOpt(parseResult, opt, MaxRecursions);
                     break;
                 case "FhirMimeTypes":
-                    FhirMimeTypes = GetOpt(parseResult, opt.CliOption, FhirMimeTypes);
+                    FhirMimeTypes = GetOpt(parseResult, opt, FhirMimeTypes);
                     break;
                 case "PatchMimeTypes":
-                    PatchMimeTypes = GetOpt(parseResult, opt.CliOption, PatchMimeTypes);
+                    PatchMimeTypes = GetOpt(parseResult, opt, PatchMimeTypes);
                     break;
                 case "SearchSupport":
-                    SearchSupport = GetOpt(parseResult, opt.CliOption, SearchSupport);
+                    SearchSupport = GetOpt(parseResult, opt, SearchSupport);
                     break;
                 case "ExportSearchParams":
-                    ExportSearchParams = GetOpt(parseResult, opt.CliOption, ExportSearchParams);
+                    ExportSearchParams = GetOpt(parseResult, opt, ExportSearchParams);
                     break;
                 case "PostSearchParamLocation":
-                    PostSearchParamLocation = GetOpt(parseResult, opt.CliOption, PostSearchParamLocation);
+                    PostSearchParamLocation = GetOpt(parseResult, opt, PostSearchParamLocation);
                     break;
                 case "ConsolidateSearchParameters":
-                    ConsolidateSearchParameters = GetOpt(parseResult, opt.CliOption, ConsolidateSearchParameters);
+                    ConsolidateSearchParameters = GetOpt(parseResult, opt, ConsolidateSearchParameters);
                     break;
                 case "OperationSupport":
-                    OperationSupport = GetOpt(parseResult, opt.CliOption, OperationSupport);
+                    OperationSupport = GetOpt(parseResult, opt, OperationSupport);
                     break;
                 case "UpdateCreate":
-                    UpdateCreate = GetOpt(parseResult, opt.CliOption, UpdateCreate);
+                    UpdateCreate = GetOpt(parseResult, opt, UpdateCreate);
                     break;
                 case "ConditionalRead":
-                    ConditionalRead = GetOpt(parseResult, opt.CliOption, ConditionalRead);
+                    ConditionalRead = GetOpt(parseResult, opt, ConditionalRead);
                     break;
                 case "InteractionRead":
-                    InteractionRead = GetOpt(parseResult, opt.CliOption, InteractionRead);
+                    InteractionRead = GetOpt(parseResult, opt, InteractionRead);
                     break;
                 case "InteractionVRead":
-                    InteractionVRead = GetOpt(parseResult, opt.CliOption, InteractionVRead);
+                    InteractionVRead = GetOpt(parseResult, opt, InteractionVRead);
                     break;
                 case "InteractionUpdate":
-                    InteractionUpdate = GetOpt(parseResult, opt.CliOption, InteractionUpdate);
+                    InteractionUpdate = GetOpt(parseResult, opt, InteractionUpdate);
                     break;
                 case "InteractionUpdateConditional":
-                    InteractionUpdateConditional = GetOpt(parseResult, opt.CliOption, InteractionUpdateConditional);
+                    InteractionUpdateConditional = GetOpt(parseResult, opt, InteractionUpdateConditional);
                     break;
                 case "InteractionPatch":
-                    InteractionPatch = GetOpt(parseResult, opt.CliOption, InteractionPatch);
+                    InteractionPatch = GetOpt(parseResult, opt, InteractionPatch);
                     break;
                 case "InteractionPatchConditional":
-                    InteractionPatchConditional = GetOpt(parseResult, opt.CliOption, InteractionPatchConditional);
+                    InteractionPatchConditional = GetOpt(parseResult, opt, InteractionPatchConditional);
                     break;
                 case "InteractionDelete":
-                    InteractionDelete = GetOpt(parseResult, opt.CliOption, InteractionDelete);
+                    InteractionDelete = GetOpt(parseResult, opt, InteractionDelete);
                     break;
                 case "InteractionDeleteConditionalSingle":
-                    InteractionDeleteConditionalSingle = GetOpt(parseResult, opt.CliOption, InteractionDeleteConditionalSingle);
+                    InteractionDeleteConditionalSingle = GetOpt(parseResult, opt, InteractionDeleteConditionalSingle);
                     break;
                 case "InteractionDeleteConditionalMultiple":
-                    InteractionDeleteConditionalMultiple = GetOpt(parseResult, opt.CliOption, InteractionDeleteConditionalMultiple);
+                    InteractionDeleteConditionalMultiple = GetOpt(parseResult, opt, InteractionDeleteConditionalMultiple);
                     break;
                 case "InteractionDeleteHistory":
-                    InteractionDeleteHistory = GetOpt(parseResult, opt.CliOption, InteractionDeleteHistory);
+                    InteractionDeleteHistory = GetOpt(parseResult, opt, InteractionDeleteHistory);
                     break;
                 case "InteractionDeleteHistoryVersion":
-                    InteractionDeleteHistoryVersion = GetOpt(parseResult, opt.CliOption, InteractionDeleteHistoryVersion);
+                    InteractionDeleteHistoryVersion = GetOpt(parseResult, opt, InteractionDeleteHistoryVersion);
                     break;
                 case "InteractionHistoryInstance":
-                    InteractionHistoryInstance = GetOpt(parseResult, opt.CliOption, InteractionHistoryInstance);
+                    InteractionHistoryInstance = GetOpt(parseResult, opt, InteractionHistoryInstance);
                     break;
                 case "InteractionHistoryType":
-                    InteractionHistoryType = GetOpt(parseResult, opt.CliOption, InteractionHistoryType);
+                    InteractionHistoryType = GetOpt(parseResult, opt, InteractionHistoryType);
                     break;
                 case "InteractionHistorySystem":
-                    InteractionHistorySystem = GetOpt(parseResult, opt.CliOption, InteractionHistorySystem);
+                    InteractionHistorySystem = GetOpt(parseResult, opt, InteractionHistorySystem);
                     break;
                 case "InteractionCreate":
-                    InteractionCreate = GetOpt(parseResult, opt.CliOption, InteractionCreate);
+                    InteractionCreate = GetOpt(parseResult, opt, InteractionCreate);
                     break;
                 case "InteractionCreateConditional":
-                    InteractionCreateConditional = GetOpt(parseResult, opt.CliOption, InteractionCreateConditional);
+                    InteractionCreateConditional = GetOpt(parseResult, opt, InteractionCreateConditional);
                     break;
                 case "InteractionSearchType":
-                    InteractionSearchType = GetOpt(parseResult, opt.CliOption, InteractionSearchType);
+                    InteractionSearchType = GetOpt(parseResult, opt, InteractionSearchType);
                     break;
                 case "InteractionSearchSystem":
-                    InteractionSearchSystem = GetOpt(parseResult, opt.CliOption, InteractionSearchSystem);
+                    InteractionSearchSystem = GetOpt(parseResult, opt, InteractionSearchSystem);
                     break;
                 case "InteractionSearchCompartment":
-                    InteractionSearchCompartment = GetOpt(parseResult, opt.CliOption, InteractionSearchCompartment);
+                    InteractionSearchCompartment = GetOpt(parseResult, opt, InteractionSearchCompartment);
                     break;
                 case "InteractionOperationSystem":
-                    InteractionOperationSystem = GetOpt(parseResult, opt.CliOption, InteractionOperationSystem);
+                    InteractionOperationSystem = GetOpt(parseResult, opt, InteractionOperationSystem);
                     break;
                 case "InteractionOperationType":
-                    InteractionOperationType = GetOpt(parseResult, opt.CliOption, InteractionOperationType);
+                    InteractionOperationType = GetOpt(parseResult, opt, InteractionOperationType);
                     break;
                 case "InteractionOperationInstance":
-                    InteractionOperationInstance = GetOpt(parseResult, opt.CliOption, InteractionOperationInstance);
+                    InteractionOperationInstance = GetOpt(parseResult, opt, InteractionOperationInstance);
                     break;
                 case "SupportMetadata":
-                    InteractionCapabilities = GetOpt(parseResult, opt.CliOption, InteractionCapabilities);
+                    InteractionCapabilities = GetOpt(parseResult, opt, InteractionCapabilities);
                     break;
                 case "SupportBundle":
-                    SupportBundle = GetOpt(parseResult, opt.CliOption, SupportBundle);
+                    SupportBundle = GetOpt(parseResult, opt, SupportBundle);
                     break;
                 case "ExportReadOnly":
-                    ExportReadOnly = GetOpt(parseResult, opt.CliOption, ExportReadOnly);
+                    ExportReadOnly = GetOpt(parseResult, opt, ExportReadOnly);
                     break;
                 case "ExportWriteOnly":
-                    ExportWriteOnly = GetOpt(parseResult, opt.CliOption, ExportWriteOnly);
+                    ExportWriteOnly = GetOpt(parseResult, opt, ExportWriteOnly);
                     break;
                 case "PropertyDescriptions":
-                    IncludeDescriptions = GetOpt(parseResult, opt.CliOption, IncludeDescriptions);
+                    IncludeDescriptions = GetOpt(parseResult, opt, IncludeDescriptions);
                     break;
                 case "DescriptionMaxLength":
-                    DescriptionMaxLength = GetOpt(parseResult, opt.CliOption, DescriptionMaxLength);
+                    DescriptionMaxLength = GetOpt(parseResult, opt, DescriptionMaxLength);
                     break;
                 case "PerformDescriptionValidation":
-                    PerformDescriptionValidation = GetOpt(parseResult, opt.CliOption, PerformDescriptionValidation);
+                    PerformDescriptionValidation = GetOpt(parseResult, opt, PerformDescriptionValidation);
                     break;
                 case "ExpandProfiles":
-                    ExpandProfiles = GetOpt(parseResult, opt.CliOption, ExpandProfiles);
+                    ExpandProfiles = GetOpt(parseResult, opt, ExpandProfiles);
                     break;
                 case "ExpandReferences":
-                    ExpandReferences = GetOpt(parseResult, opt.CliOption, ExpandReferences);
+                    ExpandReferences = GetOpt(parseResult, opt, ExpandReferences);
                     break;
                 case "Minify":
-                    Minify = GetOpt(parseResult, opt.CliOption, Minify);
+                    Minify = GetOpt(parseResult, opt, Minify);
                     break;
                 case "IdNamingConvention":
-                    IdNamingConvention = GetOpt(parseResult, opt.CliOption, IdNamingConvention);
+                    IdNamingConvention = GetOpt(parseResult, opt, IdNamingConvention);
                     break;
                 case "RemoveUncommonFields":
-                    RemoveUncommonFields = GetOpt(parseResult, opt.CliOption, RemoveUncommonFields);
+                    RemoveUncommonFields = GetOpt(parseResult, opt, RemoveUncommonFields);
                     break;
                 case "SingleResponses":
-                    SingleResponses = GetOpt(parseResult, opt.CliOption, SingleResponses);
+                    SingleResponses = GetOpt(parseResult, opt, SingleResponses);
                     break;
                 case "IncludeSummaries":
-                    IncludeSummaries = GetOpt(parseResult, opt.CliOption, IncludeSummaries);
+                    IncludeSummaries = GetOpt(parseResult, opt, IncludeSummaries);
                     break;
                 case "IncludeHttpHeaders":
-                    IncludeHttpHeaders = GetOpt(parseResult, opt.CliOption, IncludeHttpHeaders);
+                    IncludeHttpHeaders = GetOpt(parseResult, opt, IncludeHttpHeaders);
                     break;
                 case "MultiFile":
-                    MultiFile = GetOpt(parseResult, opt.CliOption, MultiFile);
+                    MultiFile = GetOpt(parseResult, opt, MultiFile);
                     break;
                 case "HttpCommonParams":
-                    HttpCommonParams = GetOpt(parseResult, opt.CliOption, HttpCommonParams);
+                    HttpCommonParams = GetOpt(parseResult, opt, HttpCommonParams);
                     break;
                 case "HttpReadParams":
-                    HttpReadParams = GetOpt(parseResult, opt.CliOption, HttpReadParams);
+                    HttpReadParams = GetOpt(parseResult, opt, HttpReadParams);
                     break;
                 case "SearchResultParams":
-                    SearchResultParams = GetOpt(parseResult, opt.CliOption, SearchResultParams);
+                    SearchResultParams = GetOpt(parseResult, opt, SearchResultParams);
                     break;
                 case "SearchCommonParams":
-                    SearchCommonParams = GetOpt(parseResult, opt.CliOption, SearchCommonParams);
+                    SearchCommonParams = GetOpt(parseResult, opt, SearchCommonParams);
                     break;
                 case "HistoryParams":
-                    HistoryParams = GetOpt(parseResult, opt.CliOption, HistoryParams);
+                    HistoryParams = GetOpt(parseResult, opt, HistoryParams);
                     break;
             }
         }
