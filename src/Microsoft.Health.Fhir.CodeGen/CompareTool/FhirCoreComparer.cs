@@ -21,6 +21,7 @@ using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using System.Text.RegularExpressions;
+using System.Collections;
 
 
 
@@ -142,6 +143,9 @@ public class FhirCoreComparer
         _rightKey = $"{_rightDc.MainPackageId}@{_rightDc.MainPackageVersion}";
     }
 
+    public DefinitionCollection LeftDC => _leftDc;
+    public DefinitionCollection RightDC => _rightDc;
+
     public CrossVersionMapCollection? LeftToRight => _cvLeftToRight;
     public CrossVersionMapCollection? RightToLeft => _cvRightToLeft;
 
@@ -158,6 +162,109 @@ public class FhirCoreComparer
 
         // first, process value sets
         compareAllValueSets();
+    }
+
+    public IEnumerable<(ValueSet left, ValueSet right, ConceptMap? up, ConceptMap? down)> GetPariedValueSetMaps()
+    {
+        Dictionary<(string? source, string? target), ConceptMap> mapsUp =
+            (_cvLeftToRight?.GetValueSetMaps() ?? []).ToDictionary(cm => (cm.cgSourceScope(), cm.cgTargetScope()));
+        Dictionary<(string? source, string? target), ConceptMap> mapsDown =
+            (_cvRightToLeft?.GetValueSetMaps() ?? []).ToDictionary(cm => (cm.cgSourceScope(), cm.cgTargetScope()));
+
+        // iterate over the forward maps (up)
+        foreach (((string? source, string? target), ConceptMap cmUp) in mapsUp)
+        {
+            mapsDown.TryGetValue((target, source), out ConceptMap? cmDown);
+
+            ValueSet? leftVs = null;
+            ValueSet? rightVs = null;
+
+            if ((source == null) ||
+                !_leftDc.TryExpandVs(source, out leftVs) ||
+                !_leftDc.TryGetValueSet(source, out leftVs))
+            {
+                continue;
+            }
+
+            if ((target == null) ||
+                !_rightDc.TryExpandVs(target, out rightVs) ||
+                !_rightDc.TryGetValueSet(target, out rightVs))
+            {
+                continue;
+            }
+
+            yield return (leftVs, rightVs, cmUp, cmDown);
+        }
+
+        // iterate over the reverse maps looking for orphans
+        foreach (((string? source, string? target), ConceptMap cmDown) in mapsDown)
+        {
+            if (mapsUp.ContainsKey((target, source)))
+            {
+                continue;
+            }
+
+            ValueSet? leftVs = null;
+            ValueSet? rightVs = null;
+
+            if ((source == null) ||
+                _rightDc.TryExpandVs(source, out rightVs) ||
+                _rightDc.TryGetValueSet(source, out rightVs))
+            {
+            }
+
+            if ((target == null) ||
+                _leftDc.TryExpandVs(target, out leftVs) ||
+                _leftDc.TryGetValueSet(target, out leftVs))
+            {
+            }
+
+            yield return (leftVs, rightVs, null, cmDown);
+        }
+    }
+
+    public IEnumerable<(ConceptMap? up, ConceptMap? down)> GetMapsForSource(string sourceUrl)
+    {
+        Dictionary<(string? source, string? target), ConceptMap> mapsUp =
+            (_cvLeftToRight?.GetMapsForSource(sourceUrl) ?? []).ToDictionary(cm => (cm.cgSourceScope(), cm.cgTargetScope()));
+        Dictionary<(string? source, string? target), ConceptMap> mapsDown =
+            (_cvRightToLeft?.GetMapsForTarget(sourceUrl) ?? []).ToDictionary(cm => (cm.cgSourceScope(), cm.cgTargetScope()));
+
+        // iterate over the forward maps (up)
+        foreach (((string? source, string? target), ConceptMap cmUp) in mapsUp)
+        {
+            if ((target == null) ||
+                (!_rightDc.TryExpandVs(target, out ValueSet? targetVs)))
+            {
+                continue;
+            }
+
+            mapsDown.TryGetValue((target, source), out ConceptMap? cmDown);
+
+            yield return (cmUp, cmDown);
+        }
+    }
+
+    public IEnumerable<(ConceptMap? up, ConceptMap? down)> GetMapsForTarget(string targetUrl)
+    {
+        Dictionary<(string? source, string? target), ConceptMap> mapsUp =
+            (_cvLeftToRight?.GetMapsForTarget(targetUrl) ?? []).ToDictionary(cm => (cm.cgSourceScope(), cm.cgTargetScope()));
+        Dictionary<(string? source, string? target), ConceptMap> mapsDown =
+            (_cvRightToLeft?.GetMapsForSource(targetUrl) ?? []).ToDictionary(cm => (cm.cgSourceScope(), cm.cgTargetScope()));
+
+        // iterate over the forward maps (down)
+        foreach (((string? source, string? target), ConceptMap cmDown) in mapsDown)
+        {
+            if ((target == null) ||
+                (!_leftDc.TryExpandVs(target, out ValueSet? targetVs)))
+            {
+                continue;
+            }
+
+            mapsUp.TryGetValue((target, source), out ConceptMap? cmUp);
+
+            yield return (cmUp, cmDown);
+        }
     }
 
     public (CrossVersionMapCollection leftToRight, CrossVersionMapCollection rightToLeft) GetInitialCrossVersionMaps(bool preferV1Maps)

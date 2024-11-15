@@ -74,6 +74,23 @@ public static class LinqExtensions
         }
     }
 
+    public static IEnumerable<T?> DeepClone<T>(this IEnumerable<T?> source)
+        where T : ICloneable
+    {
+        foreach (T? item in source)
+        {
+            if (item == null)
+            {
+                yield return default;
+            }
+            else
+            {
+                yield return (T)item.Clone();
+            }
+        }
+    }
+
+
     /// <summary>
     /// A Dictionary&lt;KT,VT&gt; extension method that deep copies the dictionary.
     /// </summary>

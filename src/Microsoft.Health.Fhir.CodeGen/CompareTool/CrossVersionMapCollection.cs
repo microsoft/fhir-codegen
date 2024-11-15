@@ -29,8 +29,6 @@ using Microsoft.Extensions.Logging;
 
 
 
-
-
 #if NETSTANDARD2_0
 using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
 #endif
@@ -160,20 +158,6 @@ public class CrossVersionMapCollection
             }
 
             yield return cm;
-        }
-    }
-
-    public IEnumerable<(string? source, string? target, ConceptMap cm)> GetValueSetMappedPairs()
-    {
-        foreach (ConceptMap cm in _dc.ConceptMapsByUrl.Values)
-        {
-            // skip ones that are not value set comparisons
-            if (!isValueSetConceptMap(cm))
-            {
-                continue;
-            }
-
-            yield return (cm.cgSourceScope(), cm.cgTargetScope(), cm);
         }
     }
 

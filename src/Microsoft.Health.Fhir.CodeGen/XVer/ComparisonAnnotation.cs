@@ -10,25 +10,162 @@ using System.Text;
 using Hl7.Fhir.Model;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGen.Models;
+using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
 namespace Microsoft.Health.Fhir.CodeGen.XVer;
 
 
 public enum ComparisonDirection
 {
-    Right,
-    Left,
+    Up,
+    Down,
 }
 
-public record class TestRec
+
+
+public record class ResourceGraphCell<T> : ICloneable
+    where T : Hl7.Fhir.Model.DomainResource, IConformanceResource
 {
     public required DefinitionCollection DC { get; init; }
-    public required ValueSet VS { get; init; }
-    public required ConceptMap? ToLeft { get; init; }
-    public required ConceptMap? ToRight { get; init; }
+    public required T Resource { get; init; }
 
+    public ResourceGraphCell<T>? LeftCell { get; set; } = null;
+    public ResourceGraphEdge<T>? LeftEdge { get; set; } = null;
+
+    public ResourceGraphCell<T>? RightCell { get; set; } = null;
+    public ResourceGraphEdge<T>? RightEdge { get; set; } = null;
+
+    object ICloneable.Clone() => this with { };
 }
 
+public record class ResourceGraphEdge<T>
+    where T : Hl7.Fhir.Model.DomainResource, IConformanceResource
+{
+    public required T Source { get; init; }
+    public required T Target { get; init; }
+
+    public required ComparisonDirection Direction { get; init; }
+
+    public required ConceptMap? Up { get; init; }
+    public required ConceptMap? Down { get; init; }
+}
+
+public record class ResourceComparisonProjection<T>
+    where T : Hl7.Fhir.Model.DomainResource, IConformanceResource
+{
+    public required DefinitionCollection[] Definitions { get; init; }
+    public required HashSet<T> Nodes { get; init; }
+    public required Dictionary<T, List<ResourceGraphEdge<T>>> Edges { get; init; }
+
+    private IEnumerable<(T target, ResourceGraphEdge<T> via)> getNeighbors(T source, ComparisonDirection direction) =>
+        from edge in Edges.TryGetValue(source, out List<ResourceGraphEdge<T>>? edges) ? edges : []
+        where edge.Direction == direction
+        select (edge.Target, edge);
+
+    public List<ResourceGraphCell<T>?[]> Project(DefinitionCollection keyDc, T keyResource)
+    {
+        ResourceGraphCell<T>?[] row = new ResourceGraphCell<T>?[Definitions.Length];
+        int startCol = Array.IndexOf(Definitions, keyDc);
+        row[startCol] = new()
+        {
+            DC = keyDc,
+            Resource = keyResource,
+        };
+
+        List<ResourceGraphCell<T>?[]> upwards = [];
+
+        // project up
+        if (startCol < Definitions.Length - 1)
+        {
+            upwards = project(row, startCol, ComparisonDirection.Up);
+        }
+
+        // if we started at the first definition, we are done
+        if (startCol == 0)
+        {
+            return upwards;
+        }
+
+        List<ResourceGraphCell<T>?[]> results = [];
+
+        // project down
+        if (startCol > 0)
+        {
+            foreach (ResourceGraphCell<T>?[] partial in upwards)
+            {
+                results.AddRange(project(partial, startCol, ComparisonDirection.Down));
+            }
+        }
+
+        return results;
+    }
+
+    private List<ResourceGraphCell<T>?[]> project(
+        ResourceGraphCell<T>?[] incomingRow,
+        int column,
+        ComparisonDirection direction)
+    {
+        if (incomingRow[column] == null)
+        {
+            return [incomingRow];
+        }
+
+        int nextCol = direction == ComparisonDirection.Up ? column + 1 : column - 1;
+        if (nextCol < 0 || nextCol >= Definitions.Length)
+        {
+            return [incomingRow];
+        }
+
+        IReadOnlyList<(T target, ResourceGraphEdge<T> via)> neighbors = getNeighbors(incomingRow[column]!.Resource, direction).ToList();
+
+        if (neighbors.Count == 0)
+        {
+            return [incomingRow];
+        }
+
+        List<ResourceGraphCell<T>?[]> results = [];
+
+        // iterate over neighbors in this direction
+        foreach ((T target, ResourceGraphEdge<T> via) in neighbors)
+        {
+            ResourceGraphCell<T>?[] row = neighbors.Count == 1 ? incomingRow : incomingRow.DeepClone().ToArray();
+
+            if (direction == ComparisonDirection.Up)
+            {
+                row[nextCol] = new()
+                {
+                    DC = Definitions[nextCol],
+                    Resource = target,
+                    LeftCell = row[column],
+                    LeftEdge = via,
+                };
+
+                row[column]!.RightCell = row[nextCol];
+                row[column]!.RightEdge = via;
+            }
+            else
+            {
+                row[nextCol] = new()
+                {
+                    DC = Definitions[nextCol],
+                    Resource = target,
+                    RightCell = row[column],
+                    RightEdge = via,
+                };
+                row[column]!.LeftCell = row[nextCol];
+                row[column]!.LeftEdge = via;
+            }
+
+            // recurse
+            List<ResourceGraphCell<T>?[]> completedRows = completedRows = project(row, nextCol, direction);
+
+            // add to our current set of results
+            results.AddRange(completedRows);
+        }
+
+        return results;
+    }
+}
 
 
 public record class ValueSetMappingCell : ICloneable
@@ -114,14 +251,6 @@ public class ConceptMappingTable
     }
 }
 
-public class ConceptGrid
-{
-
-
-    public required string[] PackageKeys { get; init; }
-
-    
-}
 
 
 
