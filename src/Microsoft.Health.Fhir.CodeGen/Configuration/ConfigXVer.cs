@@ -25,6 +25,7 @@ public class ConfigXVer : ConfigRoot
     private static ConfigurationOption ComparePackagesParameter => new()
     {
         Name = "Compare_Package",
+        EnvVarName = "Compare_Package",
         DefaultValue = Array.Empty<string>(),
         CliOption = new System.CommandLine.Option<string[]>(["--compare", "--compare-package", "-c"], "Comparison packages to load, as directives ([name][#|@][version/literal])")
         {
@@ -43,6 +44,7 @@ public class ConfigXVer : ConfigRoot
     private static ConfigurationOption NoOutputParameter => new()
     {
         Name = "No_Output",
+        EnvVarName = "No_Output",
         DefaultValue = false,
         CliOption = new System.CommandLine.Option<bool>("--no-output", "Do not output the comparison result.")
         {
@@ -78,8 +80,9 @@ public class ConfigXVer : ConfigRoot
     private static ConfigurationOption CrossVersionMapSourcePathParameter => new()
     {
         Name = "Map_Source_Path",
+        EnvVarName = "Map_Source_Path",
         DefaultValue = string.Empty,
-        CliOption = new System.CommandLine.Option<string>("--map-source-path", "Path to FHIR maps to load (e.g., clone of HL7/fhir-cross-version).")
+        CliOption = new System.CommandLine.Option<string?>("--map-source-path", "Path to FHIR maps to load (e.g., clone of HL7/fhir-cross-version).")
         {
             Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
             IsRequired = false,
@@ -96,8 +99,9 @@ public class ConfigXVer : ConfigRoot
     private static ConfigurationOption CrossVersionMapDestinationPathParameter => new()
     {
         Name = "Map_Destination_Path",
+        EnvVarName = "Map_Destination_Path",
         DefaultValue = string.Empty,
-        CliOption = new System.CommandLine.Option<string>("--map-destination-path", "Path to directory to save FHIR maps to (e.g., clone of HL7/fhir-cross-version).")
+        CliOption = new System.CommandLine.Option<string?>("--map-destination-path", "Path to directory to save FHIR maps to (e.g., clone of HL7/fhir-cross-version).")
         {
             Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
             IsRequired = false,

@@ -408,7 +408,10 @@ public class ConfigRoot : ICodeGenConfig
         if ((parsed != null) &&
             (parsed is T typed))
         {
-            return typed;
+            if (!typed.Equals(defaultValue))
+            {
+                return typed;
+            }
         }
 
         string? envValue = Environment.GetEnvironmentVariable(opt.EnvVarName);

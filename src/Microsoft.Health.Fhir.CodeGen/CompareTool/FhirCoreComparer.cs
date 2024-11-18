@@ -164,7 +164,7 @@ public class FhirCoreComparer
         compareAllValueSets();
     }
 
-    public IEnumerable<(ValueSet left, ValueSet right, ConceptMap? up, ConceptMap? down)> GetPariedValueSetMaps()
+    public IEnumerable<(ValueSet left, ValueSet right, ConceptMap? up, ConceptMap? down)> GetPairedValueSetMaps()
     {
         Dictionary<(string? source, string? target), ConceptMap> mapsUp =
             (_cvLeftToRight?.GetValueSetMaps() ?? []).ToDictionary(cm => (cm.cgSourceScope(), cm.cgTargetScope()));
@@ -180,15 +180,13 @@ public class FhirCoreComparer
             ValueSet? rightVs = null;
 
             if ((source == null) ||
-                !_leftDc.TryExpandVs(source, out leftVs) ||
-                !_leftDc.TryGetValueSet(source, out leftVs))
+                (!_leftDc.TryExpandVs(source, out leftVs) && !_leftDc.TryGetValueSet(source, out leftVs)))
             {
                 continue;
             }
 
             if ((target == null) ||
-                !_rightDc.TryExpandVs(target, out rightVs) ||
-                !_rightDc.TryGetValueSet(target, out rightVs))
+                (!_rightDc.TryExpandVs(target, out rightVs) && !_rightDc.TryGetValueSet(target, out rightVs)))
             {
                 continue;
             }
@@ -208,15 +206,15 @@ public class FhirCoreComparer
             ValueSet? rightVs = null;
 
             if ((source == null) ||
-                _rightDc.TryExpandVs(source, out rightVs) ||
-                _rightDc.TryGetValueSet(source, out rightVs))
+                (!_rightDc.TryExpandVs(source, out rightVs) && !_rightDc.TryGetValueSet(source, out rightVs)))
             {
+                continue;
             }
 
             if ((target == null) ||
-                _leftDc.TryExpandVs(target, out leftVs) ||
-                _leftDc.TryGetValueSet(target, out leftVs))
+                (!_leftDc.TryExpandVs(target, out leftVs) && !_leftDc.TryGetValueSet(target, out leftVs)))
             {
+                continue;
             }
 
             yield return (leftVs, rightVs, null, cmDown);

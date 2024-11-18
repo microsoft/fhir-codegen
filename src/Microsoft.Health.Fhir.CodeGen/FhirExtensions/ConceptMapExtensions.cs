@@ -66,6 +66,11 @@ public static class ConceptMapExtensions
         /// Gets or sets the target element component.
         /// </summary>
         public required ConceptMap.TargetElementComponent? TargetElement { get; init; }
+
+        public string SourceKey => (SourceSystem ?? string.Empty) + "#" + SourceElement.Code;
+        public string? TargetKey => (TargetSystem == null) && (TargetElement == null)
+            ? null
+            : (TargetSystem ?? string.Empty) + "#" + (TargetElement?.Code ?? string.Empty);
     }
 
     public static IEnumerable<ConceptMapElementMapping> cgGetMappings(this ConceptMap cm)

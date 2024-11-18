@@ -23,8 +23,6 @@ using System.Linq;
 
 
 
-
-
 #if NETSTANDARD2_0
 using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
 #endif
@@ -303,7 +301,7 @@ public class XVerProcessor
             Directory.CreateDirectory(docDir);
         }
 
-        ResourceComparisonProjection<ValueSet> vsGraph = buildGraph();
+        ValueSetGraph vsGraph = buildGraph();
 
         // walk the definitions to write comparisons
         foreach (DefinitionCollection dc in _definitions)
@@ -324,14 +322,14 @@ public class XVerProcessor
         }
     }
 
-    private ResourceComparisonProjection<ValueSet> buildGraph()
+    private ValueSetGraph buildGraph()
     {
         HashSet<ValueSet> vsNodes = buildValueSetNodes();
 
         return new()
         {
             Definitions = _definitions,
-            Nodes = vsNodes,
+            Resources = vsNodes,
             Edges = buildValueSetEdges(vsNodes),
         };
     }
@@ -371,7 +369,7 @@ public class XVerProcessor
         foreach (FhirCoreComparer coreComparer in _comparisonCache.Values)
         {
             // iterate over the paired maps in this comparison
-            foreach ((ValueSet leftVs, ValueSet rightVs, ConceptMap? up, ConceptMap? down) in coreComparer.GetPariedValueSetMaps())
+            foreach ((ValueSet leftVs, ValueSet rightVs, ConceptMap? up, ConceptMap? down) in coreComparer.GetPairedValueSetMaps())
             {
                 if (up != null)
                 {
@@ -402,72 +400,7 @@ public class XVerProcessor
         return vsEdges;
     }
 
-    private void test()
-    {
-        //// build our set of value sets if necessary
-        //if (_vsUrlsToInclude.Count == 0)
-        //{
-        //    _vsUrlsToInclude = getValueSetsToCompare();
-        //}
-
-        //List<List<TestRec>> results = [];
-
-        //// walk the definitions to write comparisons
-        //for (int definitionIndex = 1; definitionIndex < _definitions.Length; definitionIndex++)
-        //{
-        //    DefinitionCollection leftDc = _definitions[definitionIndex - 1];
-        //    DefinitionCollection rightDc = _definitions[definitionIndex];
-
-        //    if (!_comparisonCache.TryGetValue((leftDc.Key, rightDc.Key), out FhirCoreComparer? comparer))
-        //    {
-        //        continue;
-        //    }
-
-        //    if (!_vsUrlsToInclude.TryGetValue(leftDc.Key, out HashSet<string>? leftVsUrls))
-        //    {
-        //        leftVsUrls = [];
-        //    }
-
-        //    // build the set of value sets that we are interested in
-        //    IEnumerable<TestRec> query = from leftVS in leftDc.ValueSetsByVersionedUrl.Values
-        //                                 where leftVsUrls.Contains(leftVS.Url)
-        //                                 join vsLtoR in comparer.LeftToRight!.GetValueSetMappedPairs() on leftVS.Url equals vsLtoR.source into ltr
-        //                                 from vsLtoR in ltr.DefaultIfEmpty()
-        //                                 join rightVS in rightDc.ValueSetsByVersionedUrl.Values on vsLtoR.target equals rightVS.Url into rvs
-        //                                 from rightVS in rvs.DefaultIfEmpty()
-        //                                 select new TestRec
-        //                                 {
-        //                                     LeftDC = leftDc,
-        //                                     LeftVS = leftVS,
-        //                                     RightDC = rightDc,
-        //                                     RightVS = rightVS,
-        //                                     LeftToRight = vsLtoR.cm,
-        //                                     RightToLeft = rightVS == null ? null : comparer.RightToLeft?.GetMap(rightVS.Url, leftVS.Url),
-        //                                 };
-
-        //    results.Add(query.ToList());
-        //    //foreach (TestRec v in query)
-        //    //{
-        //    //    Console.WriteLine($"{v.LeftDC.Key} to {v.RightDC.Key}: {v.LeftVS.Url} + {v.LeftToRight?.Name}: {v.RightVS?.Url}");
-        //    //}
-        //}
-
-        //var joined = results.Aggregate(
-        //    (IEnumerable<TestRec>?)null,
-        //    (current, next) =>
-        //        current == null
-        //        ? next
-        //        : current.Join(
-        //            next,
-        //            outerRec =>
-        //);
-
-
-
-        return;
-    }
-
-    private void writeMarkdownValueSets(string dir, DefinitionCollection dc, ResourceComparisonProjection<ValueSet> vsGraph)
+    private void writeMarkdownValueSets(string dir, DefinitionCollection dc, ValueSetGraph vsGraph)
     {
         string vsDir = Path.Combine(dir, "ValueSets");
         if (!Directory.Exists(vsDir))
@@ -507,7 +440,7 @@ public class XVerProcessor
             }
 
             // build the projection for this value set
-            List<ResourceGraphCell<ValueSet>?[]> projection = vsGraph.Project(dc, vs);
+            List<ValueSetGraphCell?[]> projection = vsGraph.Project(dc, vs);
 
             // add our overview entry
             writeMdOverviewEntry(overviewWriter, vs, dc, projection, expanded, expandMessage);
@@ -556,211 +489,6 @@ public class XVerProcessor
     }
 
 
-
-    private List<Dictionary<string, ValueSetMappingCell>> projectComparisons(ValueSet keyVs, DefinitionCollection keyDc)
-    {
-        List<Dictionary<string, ValueSetMappingCell>> projection = [];
-
-        // build our initial cell
-        ValueSetMappingCell keyCell = new()
-        {
-            DC = keyDc,
-            VS = keyVs,
-        };
-
-        // start a row
-        Dictionary<string, ValueSetMappingCell> initialRow = [];
-        initialRow[keyDc.Key] = keyCell;
-
-        // expand to the right first
-        List<Dictionary<string, ValueSetMappingCell>> rightProjection = project(keyCell, ComparisonDirection.Up, initialRow);
-
-        // iterate over the rows in the up direction and expand them downwards
-        foreach (Dictionary<string, ValueSetMappingCell> row in rightProjection)
-        {
-            // add to our current set of results
-            projection.AddRange(project(row[keyDc.Key], ComparisonDirection.Down, row));
-        }
-
-        // iterate across all cells and populate the code maps (do after all linking is done)
-        foreach (Dictionary<string, ValueSetMappingCell> row in projection)
-        {
-            foreach (ValueSetMappingCell cell in row.Values)
-            {
-                populateCodeMaps(cell);
-            }
-        }
-
-        // return our projection
-        return projection;
-
-        List<Dictionary<string, ValueSetMappingCell>> project(ValueSetMappingCell startingCell, ComparisonDirection direction, Dictionary<string, ValueSetMappingCell> row)
-        {
-            List<Dictionary<string, ValueSetMappingCell>> results = [];
-
-            // get the neighbors to the right
-            List<ValueSetMappingCell> neighbors = getMappingNeighbors(startingCell, direction);
-
-            if (neighbors.Count == 0)
-            {
-                return [row];
-            }
-
-            // iterate over all the neighbors, create necessary cells, and recurse
-            foreach (ValueSetMappingCell neighbor in neighbors)
-            {
-                // duplicate the existing row (if necessary)
-                Dictionary<string, ValueSetMappingCell> newRow = neighbors.Count == 1
-                    ? row
-                    : row.DeepCopy();
-
-                // get the key cell for this row (may be a copy)
-                ValueSetMappingCell cell = newRow[startingCell.DC.Key];
-
-                // add our neighbor cell
-                newRow[neighbor.DC.Key] = neighbor;
-
-                // set the mappings from content in the new cell
-                if (direction == ComparisonDirection.Up)
-                {
-                    cell.RightCell = neighbor;
-                    cell.ToRightCell = neighbor.FromLeftCell;
-                    cell.FromRightCell = neighbor.ToLeftCell;
-                }
-                else
-                {
-                    cell.LeftCell = neighbor;
-                    cell.ToLeftCell = neighbor.FromRightCell;
-                    cell.FromLeftCell = neighbor.ToRightCell;
-                }
-
-                // recurse
-                List<Dictionary<string, ValueSetMappingCell>> completedRows = completedRows = project(neighbor, direction, newRow);
-
-                // add to our current set of results
-                results.AddRange(completedRows);
-            }
-
-            return results;
-        }
-
-        void populateCodeMaps(ValueSetMappingCell cell)
-        {
-            // check left maps if there is a left cell
-            if (cell.LeftCell != null)
-            {
-                cell.ToLeftCellCodeMap =
-                    cell.LeftCell.FromRightCellCodeMap
-                    ?? (cell.ToLeftCell == null ? null : new(cell.ToLeftCell));
-
-                cell.FromLeftCellCodeMap =
-                    cell.LeftCell.ToLeftCellCodeMap
-                    ?? (cell.FromLeftCell == null ? null : new(cell.FromLeftCell));
-            }
-
-            // check right maps if there is a right cell
-            if (cell.RightCell != null)
-            {
-                cell.ToRightCellCodeMap =
-                    cell.RightCell.FromLeftCellCodeMap
-                    ?? (cell.ToRightCell == null ? null : new(cell.ToRightCell));
-
-                cell.FromRightCellCodeMap =
-                    cell.RightCell.ToRightCellCodeMap
-                    ?? (cell.FromRightCell == null ? null : new(cell.FromRightCell));
-            }
-        }
-
-        List<ValueSetMappingCell> getMappingNeighbors(ValueSetMappingCell cell, ComparisonDirection direction)
-        {
-            DefinitionCollection targetDc;
-            FhirCoreComparer? comparer;
-            List<ConceptMap> forwardMaps;
-            List<ConceptMap> reverseMaps;
-
-            if (direction == ComparisonDirection.Up)
-            {
-                int targetIndex = _definitionIndexes[cell.DC.Key] + 1;
-                if ((targetIndex >= _definitions.Length) ||
-                    (targetIndex < 0))
-                {
-                    return [];
-                }
-
-                targetDc = _definitions[targetIndex];
-
-                // get the comparer - direction is always left to right in cache
-                if (!_comparisonCache.TryGetValue((cell.DC.Key, targetDc.Key), out comparer))
-                {
-                    return [];
-                }
-
-                forwardMaps = comparer.LeftToRight?.GetMapsForSource(cell.VS.Url) ?? [];
-                reverseMaps = comparer.RightToLeft?.GetMapsForTarget(cell.VS.Url) ?? [];
-            }
-            else
-            {
-                int targetIndex = _definitionIndexes[cell.DC.Key] - 1;
-                if ((targetIndex >= _definitions.Length) ||
-                    (targetIndex < 0))
-                {
-                    return [];
-                }
-
-                targetDc = _definitions[targetIndex];
-
-                // get the comparer - direction is always left to right in cache
-                if (!_comparisonCache.TryGetValue((targetDc.Key, cell.DC.Key), out comparer))
-                {
-                    return [];
-                }
-
-                forwardMaps = comparer.RightToLeft?.GetMapsForSource(cell.VS.Url) ?? [];
-                reverseMaps = comparer.LeftToRight?.GetMapsForTarget(cell.VS.Url) ?? [];
-            }
-
-            List<ValueSetMappingCell> cells = [];
-
-            // iterate over the forward direction
-            foreach (ConceptMap cm in forwardMaps)
-            {
-                // get the target Value Set
-                if (!targetDc.TryGetValueSet(cm.cgTargetScope() ?? string.Empty, out ValueSet? targetVs))
-                {
-                    continue;
-                }
-
-                // create our cell - we know the link back to the current one
-
-                if (direction == ComparisonDirection.Up)
-                {
-                    cells.Add(new()
-                    {
-                        DC = targetDc,
-                        VS = targetVs,
-                        LeftCell = cell,
-                        FromLeftCell = cm,
-                        ToLeftCell = reverseMaps.FirstOrDefault(r => r.cgSourceScope() == targetVs.Url),
-                    });
-                }
-                else
-                {
-                    cells.Add(new()
-                    {
-                        DC = targetDc,
-                        VS = targetVs,
-                        RightCell = cell,
-                        FromRightCell = cm,
-                        ToRightCell = reverseMaps.FirstOrDefault(r => r.cgSourceScope() == targetVs.Url),
-                    });
-                }
-            }
-
-            return cells;
-        }
-    }
-
-    
     private void writeMdOverviewIntroValueSets(ExportStreamWriter writer, DefinitionCollection dc)
     {
         writer.Write($"""
@@ -790,7 +518,7 @@ public class XVerProcessor
         ExportStreamWriter writer,
         ValueSet vs,
         DefinitionCollection dc,
-        List<ResourceGraphCell<ValueSet>?[]> projection,
+        List<ValueSetGraphCell?[]> projection,
         bool expanded,
         string? expandFailureMessage)
     {
@@ -835,10 +563,12 @@ public class XVerProcessor
         ExportStreamWriter writer,
         ValueSet keyVs,
         DefinitionCollection keyDc,
-        List<ResourceGraphCell<ValueSet>?[]> projection,
+        List<ValueSetGraphCell?[]> projection,
         bool expanded,
         string? expandMessage)
     {
+        int keyColumn = Array.IndexOf(_definitions, keyDc);
+
         writer.WriteLine($"""
             ### {keyVs.Name}
 
@@ -896,11 +626,11 @@ public class XVerProcessor
         writer.WriteLine("| " + string.Join(" | Details | ", allKeys.Select(v => v.key)));
         writeTableColumns(writer, "---", (_definitions.Length * 2) - 1, appendNewline: true);
 
-        foreach (ResourceGraphCell<ValueSet>?[] row in projection)
+        foreach (ValueSetGraphCell?[] row in projection)
         {
             int column = -1;
             // traverse columns
-            foreach (ResourceGraphCell<ValueSet>? cell in row)
+            foreach (ValueSetGraphCell? cell in row)
             {
                 column++;
 
@@ -915,6 +645,12 @@ public class XVerProcessor
                     $"<br/>" +
                     $" {cell.Resource.Url} ");
 
+                if (column == (row.Length - 1))
+                {
+                    writer.WriteLine();
+                    continue;
+                }
+
                 (string toRight, string fromRight) = getConceptMapMdLinks(cell, ComparisonDirection.Up);
 
                 // write mapping notes
@@ -923,253 +659,121 @@ public class XVerProcessor
                     $"<hr/>" +
                     $"←←←←←←← <br/> {fromRight} <br/> ←←←←←←← ");
             }
-
-            writer.WriteLine();
         }
         writer.WriteLine();
 
 
 
 
-        //// write a section for the code table
-        //writer.WriteLine("### Code Mappings");
-        //writer.WriteLine();
+        // write a section for the code table
+        writer.WriteLine("### Code Mappings");
+        writer.WriteLine();
 
-        //foreach (Dictionary<string, ValueSetMappingCell> row in projection)
-        //{
-        //    writer.WriteLine("#### Row");
-        //    writer.WriteLine();
+        int mapGroupIndex = 0;
 
-        //    writer.WriteLine("| " + string.Join(" | Details | ", row.Select(kvp => kvp.Value.DC.Key + " " + kvp.Value.VS.Name)));
-        //    writeTableColumns(writer, "---", (_definitions.Length * 2) - 1, appendNewline: true);
+        foreach (ValueSetGraphCell?[] valueSetRow in projection)
+        {
+            if (valueSetRow[keyColumn] == null)
+            {
+                continue;
+            }
 
+            writer.WriteLine();
+            writer.WriteLine("#### Map Group " + mapGroupIndex++);
+            writer.WriteLine();
+            writer.WriteLine("| " + string.Join(" | Details | ", valueSetRow.Select(c => c?.Resource == null ? "n/a" : c.DC.Key + " " + c.Resource.Name.ForMdTable())));
+            writeTableColumns(writer, "---", (_definitions.Length * 2) - 1, appendNewline: true);
 
-        //    // traverse the columns in the row and add to each one
+            // build a code map graph
+            ValueSetComponentGraph codeMapGraph = new()
+            {
+                ValueSetRow = valueSetRow,
+            };
 
-        //    // traverse columns in this row
-        //    foreach ((string dcKey, ValueSetMappingCell cell) in row)
-        //    {
-        //        if (!rowUsedCodes.TryGetValue(dcKey, out HashSet<string>? usedCodes))
-        //        {
-        //            usedCodes = [];
-        //            rowUsedCodes.Add(dcKey, usedCodes);
-        //        }
+            // iterate over the components in the key value set
+            foreach (ValueSet.ContainsComponent component in valueSetRow[keyColumn]!.Resource.cgGetFlatContains())
+            {
+                bool hasMap = false;
 
-        //        // check if there is anything left of this node (traversing left to right)
-        //        if (cell.ToLeftCellCodeMap == null)
-        //        {
-        //            continue;
-        //        }
+                // project this component
+                foreach (ValueSetComponentGraphCell?[] componentRow in codeMapGraph.Project(valueSetRow[keyColumn]!, component))
+                {
+                    hasMap = true;
+                    int column = -1;
 
-        //        // iterate throw the codes in this cell (if present)
-        //        foreach (((string system, string code), Dictionary<(string? system, string? code), ConceptMapExtensions.ConceptMapElementMapping> codes) in cell.ToLeftCellCodeMap)
-        //        {
+                    // traverse columns
+                    foreach (ValueSetComponentGraphCell? cell in componentRow)
+                    {
+                        column++;
 
-        //        }
+                        if (cell == null)
+                        {
+                            writer.Write("| | ");
+                            continue;
+                        }
 
-        //        writer.Write(
-        //            $"| ");
+                        writer.Write($"| {cell.Component.Code.ForMdTable()}");
 
-        //        writer.Write(
-        //            $"| [{cell.VS.Name.ForMdTable()}]({vsRootUrlsByVersion[key]}/{getVsFilename(cell.VS.Name.ToPascalCase(), includeRelativeDir: false)})" +
-        //            $"<br/>" +
-        //            $" {cell.VS.Url} ");
+                        if (column == (componentRow.Length - 1))
+                        {
+                            continue;
+                        }
 
-        //        (string toRight, string fromRight) = getConceptMapMdLinks(cell, ComparisonDirection.Right);
+                        if (cell.RightEdge == null)
+                        {
+                            writer.Write("| ");
+                        }
+                        else
+                        {
+                            if ((cell.RightEdge?.UpTarget?.Relationship == ConceptMap.ConceptMapRelationship.Equivalent) &&
+                                (cell.RightEdge?.DownTarget?.Relationship == ConceptMap.ConceptMapRelationship.Equivalent))
+                            {
+                                writer.Write("| == ");
+                            }
+                            else if ((cell.RightEdge?.UpTarget?.Relationship == ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget) &&
+                                     (cell.RightEdge?.DownTarget?.Relationship == ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget))
+                            {
+                                writer.Write("| > ");
+                            }
+                            else if ((cell.RightEdge?.UpTarget?.Relationship == ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget) &&
+                                     (cell.RightEdge?.DownTarget?.Relationship == ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget))
+                            {
+                                writer.Write("| < ");
+                            }
+                            else
+                            {
+                                // write mapping notes
+                                writer.Write(
+                                    $"| →→→→→→→ <br/> {cell.RightEdge?.UpTarget?.Relationship} <br/> →→→→→→→ " +
+                                    $"<hr/>" +
+                                    $"←←←←←←← <br/> {cell.RightEdge?.DownTarget?.Relationship} <br/> ←←←←←←← ");
+                            }
+                        }
+                    }
 
-        //        // write mapping notes
-        //        writer.Write(
-        //            $"| →→→→→→→ <br/> {toRight} <br/> →→→→→→→ " +
-        //            $"<hr/>" +
-        //            $"←←←←←←← <br/> {fromRight} <br/> ←←←←←←← ");
-        //    }
+                    writer.WriteLine();
+                }
 
-        //    writer.WriteLine();
-        //}
-        //writer.WriteLine();
+                // check for unmapped concepts
+                if (!hasMap)
+                {
+                    for (int i = 0; i < valueSetRow.Length; i++)
+                    {
+                        if (i == keyColumn)
+                        {
+                            writer.Write("| " + component.Code.ForMdTable());
+                        }
+                        else
+                        {
+                            writer.Write("| ");
+                        }
+                    }
+                    writer.WriteLine();
+                }
+            }
 
-
-
-
-
-        //// iterate over our projection to write a code map for each pair
-        //foreach (Dictionary<string, ValueSetMapProjectionCell> row in projection)
-        //{
-        //    // write a summary table for this combined set
-        //    writer.WriteLine("#### Code Mappings - Set Summary");
-        //    writer.WriteLine();
-        //    writer.WriteLine("| " + string.Join(" | Mapping | ", row.Select(kvp => kvp.Key + ": " + kvp.Value.VS.Name)));
-        //    writeTableColumns(writer, "---", (row.Count * 2) - 1, appendNewline: true);
-
-        //    List<List<string>> codeTable = [];
-
-
-        //    // iterate across columns to write pairwise tables
-
-        //    writer.WriteLine("##### Pair: ");
-
-        //    writer.WriteLine();
-        //    writer.WriteLine("| " + string.Join(" | Mapping | ", comparisonsByVersion.Keys));
-        //    writeTableColumns(writer, "---", (_definitions.Length * 2) - 1, appendNewline: true);
-
-        //    // traverse columns
-        //    foreach (string key in comparisonsByVersion.Keys)
-        //    {
-        //        if (row.TryGetValue(key, out ValueSetMapProjectionCell? cell))
-        //        {
-        //            writer.Write(
-        //                $"| [{cell.VS.Name.ForMdTable()}]({vsRootUrlsByVersion[key]}/{getVsFilename(cell.VS.Name.ToPascalCase(), includeRelativeDir: false)})" +
-        //                $"<br/>" +
-        //                $" - {cell.VS.Url} ");
-
-        //            // write mapping notes
-        //            writer.Write(
-        //                $"| → {cell.ToRightCell?.ExplicitMappingSource?.Split('/')[^1] ?? "*no map*"} → " +
-        //                $"<br/>" +
-        //                $"← {cell.FromRightCell?.ExplicitMappingSource?.Split('/')[^1] ?? "*no map*"} ← ");
-        //        }
-        //        else
-        //        {
-        //            writer.Write("| | ");
-        //        }
-        //    }
-
-        //    writer.WriteLine();
-        //}
-
-        //// write pairwise code mapping tables
-        //{
-        //    List<string> subgraphs = [];
-
-        //    // iterate over our projection - need one chart for each
-        //    foreach (Dictionary<string, ValueSetMapProjectionCell> row in projection)
-        //    {
-        //        string[] cols = _definitions.Where(dc => row.Keys.Contains(dc.MainPackageVersion)).Select(dc => dc.MainPackageVersion).ToArray();
-
-        //        writeMdMermaidOpenFlowchart(writer);
-
-        //        // iterate over our row
-        //        foreach ((string version, ValueSetMapProjectionCell node) in row)
-        //        {
-        //            // use the version for the subgraph to avoid name collisions
-        //            string graphId = getChartGraphId(version);
-        //            subgraphs.Add(graphId);
-
-        //            writer.WriteLineIndented($"subgraph {graphId}[\"{node.VS.Name} ({version})\"]");
-        //            writer.IncreaseIndent();
-
-        //            // iterate over the codes in this set
-        //            node.VS.cgGetFlatContains().ForEach(fc =>
-        //            {
-        //                writer.WriteLineIndented($"{graphId}_{FhirSanitizationUtils.SanitizeForProperty(fc.Code)}[\"{fc.Code}\"]");
-        //            });
-
-        //            writer.DecreaseIndent();
-        //            writer.WriteLineIndented("end");
-        //        }
-
-        //        // add invisible links between subgraphs to force ordering
-        //        for (int i = 1; i < subgraphs.Count; i++)
-        //        {
-        //            writer.WriteLineIndented(subgraphs[i - 1] + " ~~~ " + subgraphs[i]);
-        //        }
-        //        writer.WriteLine();
-
-        //        // write the links between the codes
-        //        for (int i = 1; i < row.Count; i++)
-        //        {
-        //            ValueSetMapProjectionCell leftCell = row[cols[i-1]];
-        //            ValueSetMapProjectionCell rightCell = row[cols[i]];
-
-        //            if ((leftCell.ComparisonAnnotation == null) ||
-        //                (rightCell.ComparisonAnnotation == null))
-        //            {
-        //                continue;
-        //            }
-
-        //            ValueSetComparisonAnnotation leftCA = leftCell.ComparisonAnnotation;
-        //            ValueSetComparisonAnnotation rightCA = rightCell.ComparisonAnnotation;
-
-        //            ValueSetComparisonDetails? leftToRight = leftCA.ToNext.FirstOrDefault(cd => cd.Target == rightCell.VS);
-        //            ValueSetComparisonDetails? rightToLeft = rightCA.ToPrev.FirstOrDefault(cd => cd.Target == leftCell.VS);
-
-        //            string leftGraphId = getChartGraphId(leftCell.PackageVersion);
-        //            string rightGraphId = getChartGraphId(rightCell.PackageVersion);
-
-        //            // check left to right
-        //            if (leftToRight != null)
-        //            {
-        //                foreach (ValueSetConceptComparisonDetails codeComparison in leftToRight.ValueSetConcepts?.SelectMany(kvp => kvp.Value) ?? [])
-        //                {
-        //                    if (codeComparison.Target == null)
-        //                    {
-        //                        continue;
-        //                    }
-
-        //                    string leftCode = FhirSanitizationUtils.SanitizeForProperty(codeComparison.Source.Code);
-        //                    string rightCode = FhirSanitizationUtils.SanitizeForProperty(codeComparison.Target.Code);
-
-
-        //                    switch (codeComparison.ConceptDomain?.Relationship)
-        //                    {
-        //                        case ConceptDomainRelationshipCodes.Equivalent:
-        //                        case ConceptDomainRelationshipCodes.SourceIsNarrowerThanTarget:
-        //                        case ConceptDomainRelationshipCodes.SourceIsBroaderThanTarget:
-        //                        case ConceptDomainRelationshipCodes.Related:
-        //                            writer.WriteLineIndented($"{leftGraphId}_{leftCode} --> {rightGraphId}_{rightCode}");
-        //                            break;
-
-        //                        case ConceptDomainRelationshipCodes.SourceIsNew:
-        //                        case ConceptDomainRelationshipCodes.SourceIsDeprecated:
-        //                        case ConceptDomainRelationshipCodes.NotMapped:
-        //                        case ConceptDomainRelationshipCodes.NotRelated:
-        //                            break;
-        //                        default:
-        //                            break;
-        //                    }
-        //                }
-        //            }
-
-        //            // check right to left
-        //            if (rightToLeft != null)
-        //            {
-        //                foreach (ValueSetConceptComparisonDetails codeComparison in rightToLeft.ValueSetConcepts?.SelectMany(kvp => kvp.Value) ?? [])
-        //                {
-        //                    if (codeComparison.Target == null)
-        //                    {
-        //                        continue;
-        //                    }
-
-        //                    string rightCode = FhirSanitizationUtils.SanitizeForProperty(codeComparison.Source.Code);
-        //                    string leftCode = FhirSanitizationUtils.SanitizeForProperty(codeComparison.Target.Code);
-
-        //                    switch (codeComparison.ConceptDomain?.Relationship)
-        //                    {
-        //                        case ConceptDomainRelationshipCodes.Equivalent:
-        //                        case ConceptDomainRelationshipCodes.SourceIsNarrowerThanTarget:
-        //                        case ConceptDomainRelationshipCodes.SourceIsBroaderThanTarget:
-        //                        case ConceptDomainRelationshipCodes.Related:
-        //                            writer.WriteLineIndented($"{rightGraphId}_{rightCode} --> {leftGraphId}_{leftCode}");
-        //                            break;
-
-        //                        case ConceptDomainRelationshipCodes.SourceIsNew:
-        //                        case ConceptDomainRelationshipCodes.SourceIsDeprecated:
-        //                        case ConceptDomainRelationshipCodes.NotMapped:
-        //                        case ConceptDomainRelationshipCodes.NotRelated:
-        //                            break;
-        //                        default:
-        //                            break;
-        //                    }
-        //                }
-        //            }
-        //        }
-
-
-        //        writer.DecreaseIndent();
-        //        writer.WriteLine("```");
-        //    }
-        //}
-
+            writer.WriteLine();
+        }
 
         return;
             
@@ -1187,6 +791,10 @@ public class XVerProcessor
             if (appendNewline && (i == count - 1))
             {
                 writer.WriteLine(" | " + value);
+            }
+            else if (i == 0)
+            {
+                writer.Write("| " + value);
             }
             else
             {
@@ -1234,7 +842,7 @@ public class XVerProcessor
             : $"{sourceVsName}_{cd.TargetDefinition.FhirSequence.ToRLiteral()}_{cd.Target?.Name.ToPascalCase()}";
     }
 
-    private (string to, string from) getConceptMapMdLinks(ResourceGraphCell<ValueSet> cell, ComparisonDirection direction)
+    private (string to, string from) getConceptMapMdLinks(ValueSetGraphCell cell, ComparisonDirection direction)
     {
         if (direction == ComparisonDirection.Up)
         {
