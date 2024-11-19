@@ -1452,6 +1452,47 @@ public class CrossVersionMapCollection
         return cm;
     }
 
+    /// <summary>
+    /// Builds a base ConceptMap between two StructureDefinitions.
+    /// </summary>
+    /// <param name="sourceSd">The source StructureDefinition.</param>
+    /// <param name="targetSd">The target StructureDefinition.</param>
+    /// <returns>A ConceptMap representing the mapping between the source and target StructureDefinition.</returns>
+    public ConceptMap BuildBaseMap(
+        StructureDefinition sourceSd,
+        StructureDefinition targetSd)
+    {
+        string localConceptMapId = $"{_sourceRLiteral}-{sourceSd.Name.ToPascalCase()}-{_targetRLiteral}-{targetSd.Name.ToPascalCase()}";
+        string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
+
+        string sourceUrl = sourceSd.Url;
+        string targetUrl = targetSd.Url;
+
+        string sourceVersion = string.IsNullOrEmpty(sourceSd.Version) ? _sourcePackageVersion : sourceSd.Version;
+        string targetVersion = string.IsNullOrEmpty(targetSd.Version) ? _targetPackageVersion : targetSd.Version;
+
+        string sourceCanonical = $"{sourceUrl}|{sourceVersion}";
+        string targetCanonical = $"{targetUrl}|{targetVersion}";
+
+        ConceptMap cm = new()
+        {
+            Id = localConceptMapId,
+            Url = localUrl,
+            Version = _dc.MainPackageVersion,
+            Name = localConceptMapId,
+            Title = GetConceptMapTitle(sourceSd.Name),
+            Status = PublicationStatus.Active,
+            Experimental = false,
+            Description = $"Mapping from {_sourceRLiteral} {sourceSd.Name} to {_targetRLiteral} {targetSd.Name}",
+            SourceScope = new Canonical(sourceCanonical),
+            TargetScope = new Canonical(targetCanonical),
+        };
+
+        _dc!.AddConceptMap(cm, _dc.MainPackageId, _dc.MainPackageVersion);
+
+        return cm;
+    }
+
     public ConceptMap? GetSourceValueSetConceptMap(
         ValueSetComparison vsc)
     {

@@ -21,6 +21,8 @@ using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 using System.CommandLine;
 using System.Linq;
 using System.Data.Common;
+using System.Collections.Concurrent;
+
 
 
 
@@ -413,8 +415,10 @@ public class XVerProcessor
             _vsUrlsToInclude = getValueSetsToCompare();
         }
 
+        ConcurrentBag<string> overviewEntries = [];
+
         // iterate over our value sets from this version
-        foreach (string vsUrl in _vsUrlsToInclude[dc.Key].Order())
+        Parallel.ForEach(_vsUrlsToInclude[dc.Key], (vsUrl, cancellationToken) =>
         {
             bool expanded = true;
 
@@ -428,15 +432,15 @@ public class XVerProcessor
                 if (!dc.TryGetValueSet(vsUrl, out vs))
                 {
                     _logger.LogValueSetNotFound(vsUrl, dc.Key);
-                    continue;
+                    return;
                 }
             }
 
             // build the projection for this value set
-            List<ValueSetGraphCell?[]> projection = expanded ? [] : vsGraph.Project(dc, vs);
+            List<ValueSetGraphCell?[]> projection = expanded ? vsGraph.Project(dc, vs) : [];
 
             // add our overview entry
-            writeMdOverviewEntry(overviewWriter, vs, dc, projection, expanded, expandMessage);
+            overviewEntries.Add(getMdOverviewEntry(vs, dc, projection, expanded, expandMessage));
 
             string filename = Path.Combine(vsDir, getVsFilename(vs.Name.ToPascalCase(), includeRelativeDir: false));
             using (ExportStreamWriter vsWriter = createMarkdownWriter(filename, true, true))
@@ -450,7 +454,12 @@ public class XVerProcessor
                 //    continue;
                 //}
             }
+        });
 
+        // write our overview file
+        foreach (string line in overviewEntries.Order())
+        {
+            overviewWriter.WriteLineIndented(line);
         }
     }
 
@@ -458,7 +467,7 @@ public class XVerProcessor
     private void writeMdOverviewIntroValueSets(ExportStreamWriter writer, DefinitionCollection dc)
     {
         writer.Write($"""
-            Keyed off: {dc.MainPackageId}@{dc.MainPackageVersion}
+            Keyed off: {dc.Key}
             Canonical: {dc.MainPackageCanonical}
             
             ## Value Set Overview
@@ -480,8 +489,7 @@ public class XVerProcessor
         writer.WriteLineIndented($"| {string.Join(" | ", Enumerable.Repeat("---", headers.Count))} |");
     }
 
-    private void writeMdOverviewEntry(
-        ExportStreamWriter writer,
+    private string getMdOverviewEntry(
         ValueSet vs,
         DefinitionCollection dc,
         List<ValueSetGraphCell?[]> projection,
@@ -502,14 +510,12 @@ public class XVerProcessor
 
         string expandCell = expanded ? "✔" : $"✘ {expandFailureMessage}";
 
-        writer.WriteLine(
-            $"| {vs.Url.ForMdTable()}" +
-            $" | [{vs.Name.ForMdTable()}]({getVsFilename(vsName)})" +
+        return
+            $"| [{vs.Name.ForMdTable()}]({getVsFilename(vsName)})" +
+            $" | `{vs.Url.ForMdTable()}`" +
             $" | {vs.Description.ForMdTable()}" +
             $" | {expandCell}" +
-            $" | {string.Join(" | ", mapsTo)} |");
-
-        return;
+            $" | {string.Join(" | ", mapsTo)} |";
     }
 
     /// <summary>
@@ -540,9 +546,9 @@ public class XVerProcessor
 
             |      |     |
             | ---: | --- |
-            | Package | {keyDc.MainPackageId}@{keyDc.MainPackageVersion} |
+            | Package | {keyDc.Key} |
             | Name | {keyVs.Name.ForMdTable()} |
-            | URL | {keyVs.Url.ForMdTable()} |
+            | URL | `{keyVs.Url.ForMdTable()}` |
             | Version | {keyVs.Version.ForMdTable()} |
             | Description | {keyVs.Description.ForMdTable()} |
             """);
@@ -559,7 +565,7 @@ public class XVerProcessor
             {
                 foreach (ElementDefinition ed in binding.Elements)
                 {
-                    writer.WriteLine($"| {binding.Structure.Url} | {ed.Path} | {ed.Binding.ValueSet} | {ed.Binding.Strength} |");
+                    writer.WriteLine($"| `{binding.Structure.Url}` | {ed.Path} | `{ed.Binding.ValueSet}` | {ed.Binding.Strength} |");
                 }
             }
         }
@@ -616,7 +622,7 @@ public class XVerProcessor
                 writer.Write(
                     $"| [{cell.Resource.Name.ForMdTable()}]({vsRootUrlsByVersion[column]}/{getVsFilename(cell.Resource.Name.ToPascalCase(), includeRelativeDir: false)})" +
                     $"<br/>" +
-                    $" {cell.Resource.Url} ");
+                    $" `{cell.Resource.Url}` ");
 
                 if (column == (row.Length - 1))
                 {
@@ -884,7 +890,7 @@ public class XVerProcessor
 
         if (writeGenerationHeader)
         {
-            writer.WriteLine($"Comparison of {string.Join(", ", _definitions.Select(dc => dc.MainPackageId + "@" + dc.MainPackageVersion))}");
+            writer.WriteLine($"Comparison of {string.Join(", ", _definitions.Select(dc => dc.Key))}");
 
             if (includeGenerationTime)
             {

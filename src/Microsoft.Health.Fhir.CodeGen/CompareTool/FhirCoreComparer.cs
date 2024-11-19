@@ -59,6 +59,10 @@ internal static partial class FhirCoreComparerLogMessages
 
     [LoggerMessage(Level = LogLevel.Warning, Message = "Failed to expand ValueSet {url} for comparison: {details}")]
     internal static partial void LogValueSetNotExpanded(this ILogger logger, string url, string? details);
+
+    [LoggerMessage(Level = LogLevel.Warning, Message = "StructureDefinition {url} not compared because it has no maps and does not exist in the target.")]
+    internal static partial void LogStructureNoTarget(this ILogger logger, string url);
+
 }
 
 public class FhirCoreComparer
@@ -122,6 +126,8 @@ public class FhirCoreComparer
 
     private Dictionary<string, List<PairComparison<ValueSet>>> _valueSetComparisons = [];
 
+    private Dictionary<string, List<PairComparison<StructureDefinition>>> _primitiveComparisons = [];
+
     public FhirCoreComparer(
         DefinitionCollection left,
         DefinitionCollection right,
@@ -135,12 +141,12 @@ public class FhirCoreComparer
         _leftDc = left;
         _leftShortVersion = left.FhirSequence.ToShortVersion();
         _leftRLiteral = left.FhirSequence.ToRLiteral();
-        _leftKey = $"{_leftDc.MainPackageId}@{_leftDc.MainPackageVersion}";
+        _leftKey = left.Key;
 
         _rightDc = right;
         _rightShortVersion = right.FhirSequence.ToShortVersion();
         _rightRLiteral = right.FhirSequence.ToRLiteral();
-        _rightKey = $"{_rightDc.MainPackageId}@{_rightDc.MainPackageVersion}";
+        _rightKey = right.Key;
     }
 
     public DefinitionCollection LeftDC => _leftDc;
@@ -300,6 +306,120 @@ public class FhirCoreComparer
         _cvLeftToRight?.SaveValueSetConceptMaps(dir);
         _cvRightToLeft?.SaveValueSetConceptMaps(dir);
     }
+
+    private void compareAllPrimitiveTypes()
+    {
+        // iterate over the pairs in both directions
+        foreach (
+            (DefinitionCollection left, DefinitionCollection right, CrossVersionMapCollection cvMap) in
+            ((DefinitionCollection, DefinitionCollection, CrossVersionMapCollection)[])[
+                (_leftDc, _rightDc, _cvLeftToRight!),
+                (_rightDc, _leftDc, _cvRightToLeft!)
+                ])
+        {
+            // iterate over the primitive types in the definition collection
+            foreach ((string structureName, StructureDefinition sd) in left.PrimitiveTypesByName.OrderBy(kvp => kvp.Key))
+            {
+                comparePrimitiveType(left, sd, right, cvMap);
+            }
+        }
+
+        // check maps against their inverses (do after all maps are processed in each collection)
+        buildMissingInverseMaps(_cvLeftToRight!, _cvRightToLeft!);
+    }
+
+    private void comparePrimitiveType(
+        DefinitionCollection dc,
+        StructureDefinition sd,
+        DefinitionCollection targetDc,
+        CrossVersionMapCollection cv)
+    {
+        // get all the maps for this source (versioned URL will get versioned and unversioned)
+        List<ConceptMap> maps = cv.GetMapsForSource(sd.Url);
+
+        // check for no maps
+        if (maps.Count == 0)
+        {
+            // if we cannot find a matching type in the target, we are done
+            if (!targetDc.TryGetStructure(sd.Url, out StructureDefinition? tSd))
+            {
+                // flag that we are not comparing this because we could not expand
+                _primitiveComparisons.AddToValue(sd.Url, new()
+                {
+                    Source = sd,
+                    Target = null,
+                    Relationship = null,
+                    IssueCode = ComparisonIssueCode.NoTarget,
+                    Message = "Not compared because this Primitive Type has no maps and does not exist in the target.",
+                    Map = null,
+                });
+
+                _logger.LogStructureNoTarget(sd.Url);
+                return;
+            }
+
+            // add a shell map for this target
+            maps.Add(cv.BuildBaseMap(sd, tSd));
+        }
+
+        //// iterate over our maps
+        //foreach (ConceptMap cm in maps)
+        //{
+        //    // check for invalid target in the map
+        //    if ((cm.TargetScope == null) ||
+        //        (cm.TargetScope is not Canonical targetCanonical))
+        //    {
+        //        // flag that we are not comparing this because we could not expand
+        //        _valueSetComparisons.AddToValue(versionedUrl, new()
+        //        {
+        //            Source = vs,
+        //            Target = null,
+        //            Relationship = null,
+        //            IssueCode = ComparisonIssueCode.InvalidMap,
+        //            Message = $"Not compared because map {cm.Id} ({cm.Url}) does not have a valid target.",
+        //            Map = cm,
+        //        });
+
+        //        _logger.LogValueSetInvalidTarget(versionedUrl, cm.Url);
+        //        continue;
+        //    }
+
+        //    string targetVersioned = targetCanonical.Value;
+        //    string targetUnversioned = targetVersioned.Split('|')[0];
+
+        //    // we can only process value sets we can expand
+        //    if (!targetDc.TryExpandVs(targetVersioned, out ValueSet? targetVs, out string? expandMessage))
+        //    {
+        //        // get the unexpanded value set object
+        //        if (targetDc.ValueSetsByVersionedUrl.TryGetValue(targetVersioned, out ValueSet? unexpandedVs))
+        //        {
+        //            // flag that we are not comparing this because we could not expand
+        //            _valueSetComparisons.AddToValue(versionedUrl, new()
+        //            {
+        //                Source = vs,
+        //                Target = unexpandedVs,
+        //                Relationship = null,
+        //                IssueCode = ComparisonIssueCode.CannotExpandTarget,
+        //                Message = $"Not compared because the target ValueSet failed to expand: {expandMessage}.",
+        //                Map = cm,
+        //            });
+        //        }
+
+        //        _logger.LogValueSetNotExpanded(versionedUrl, expandMessage);
+        //        continue;
+        //    }
+
+        //    // ensure this map has our usage context
+        //    setUseContextValueSetComparison(cm);
+
+        //    // ensure this map has our properties
+        //    addConceptMapPropertyDefinitions(cm);
+
+        //    // actually compare the two value sets, using the map
+        //    compareValueSet(vs, targetVs, cm);
+        //}
+    }
+
 
     private void compareAllValueSets()
     {
@@ -598,7 +718,7 @@ public class FhirCoreComparer
         aggregateValueSetRelationships(cm);
 
         // ensure this map has our usage context
-        setValueSetComparisonUseContext(cm);
+        setUseContextValueSetComparison(cm);
 
         // ensure this map has our properties
         addConceptMapPropertyDefinitions(cm);
@@ -725,7 +845,7 @@ public class FhirCoreComparer
             }
 
             // ensure this map has our usage context
-            setValueSetComparisonUseContext(cm);
+            setUseContextValueSetComparison(cm);
 
             // ensure this map has our properties
             addConceptMapPropertyDefinitions(cm);
@@ -735,7 +855,7 @@ public class FhirCoreComparer
         }
     }
 
-    private void setValueSetComparisonUseContext(ConceptMap cm)
+    private void setUseContextValueSetComparison(ConceptMap cm)
     {
         if (cm.UseContext.Any(uc => uc.Code.System == CommonDefinitions.ConceptMapUsageContextSystem))
         {
