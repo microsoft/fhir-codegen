@@ -30,6 +30,8 @@ public record class ValueSetGraphCell : ICloneable
     public required DefinitionCollection DC { get; init; }
     public required ValueSet Resource { get; init; }
 
+    public int UniqueCodeCount { get; set; } = 0;
+
     public ValueSetGraphCell? LeftCell { get; set; } = null;
     public ResourceGraphEdge<ValueSet>? LeftEdge { get; set; } = null;
 
@@ -223,14 +225,28 @@ public class ValueSetComponentGraph
         // build the contains dictionaries for every cell
         Dictionary<string, ValueSet.ContainsComponent>[] cellContains = _valueSetRow.Select(cell => (cell?.Resource.cgGetFlatContains() ?? []).ToDictionary(c => c.cgKey())).ToArray();
 
+        // update code counts for each value set
+        for (int column = 0; column < cellContains.Length; column++)
+        {
+            if (_valueSetRow[column]?.UniqueCodeCount == 0)
+            {
+                _valueSetRow[column]!.UniqueCodeCount = cellContains[column].Count;
+            }
+        }
+
         // iterate over the cells upwards
         for (int column = 0; column < (_valueSetRow.Length - 1); column++)
         {
             ValueSetGraphCell? currentCell = _valueSetRow[column];
+
+            if (currentCell == null)
+            {
+                continue;
+            }
+
             ValueSetGraphCell? nextCell = _valueSetRow[column + 1];
 
-            if ((currentCell == null) ||
-                (nextCell == null) ||
+            if ((nextCell == null) ||
                 (currentCell.RightEdge == null))
             {
                 continue;

@@ -20,6 +20,7 @@ using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 using System.CommandLine;
 using System.Linq;
+using System.Data.Common;
 
 
 
@@ -681,7 +682,41 @@ public class XVerProcessor
             writer.WriteLine();
             writer.WriteLine("#### Map Group " + mapGroupIndex++);
             writer.WriteLine();
-            writer.WriteLine("| " + string.Join(" | Details | ", valueSetRow.Select(c => c?.Resource == null ? "n/a" : c.DC.Key + " " + c.Resource.Name.ForMdTable())));
+            writer.WriteLine($"This group is centered on the Value Set {valueSetRow[keyColumn]!.Resource.Name} from {valueSetRow[keyColumn]!.DC.Key} (column {keyColumn}).");
+            writer.WriteLine("All codes from this value set are listed while other value sets only show contents that have relationships with those codes.");
+            writer.WriteLine();
+
+            // write the table header
+            for (int col = 0; col < _definitions.Length; col++)
+            {
+                if (col > 0)
+                {
+                    writer.Write("| Relationship ");
+                }
+
+                ValueSetGraphCell? cell = valueSetRow[col];
+
+                if (cell == null)
+                {
+                    writer.Write("| *No Map* ");
+                    continue;
+                }
+
+                if (col == keyColumn)
+                {
+                    writer.Write($"| {cell.DC.Key} {cell.Resource.Name.ForMdTable()}");
+                }
+                else
+                {
+                    writer.Write($"| [{cell.DC.Key} {cell.Resource.Name.ForMdTable()}]({vsRootUrlsByVersion[col]}/{getVsFilename(cell.Resource.Name.ToPascalCase(), includeRelativeDir: false)})");
+                }
+            }
+            writer.WriteLine();
+            //writer.WriteLine(
+            //    "| " +
+            //    string.Join(
+            //" | Details | ",
+            //        valueSetRow.Select(c => c?.Resource == null ? "n/a" : $"[{c.DC.Key} {c.Resource.Name.ForMdTable()}]({vsRootUrlsByVersion[column]}/{getVsFilename(cell.Resource.Name.ToPascalCase(), includeRelativeDir: false)})")));
             writeTableColumns(writer, "---", (_definitions.Length * 2) - 1, appendNewline: true);
 
             // build a code map graph
@@ -689,6 +724,8 @@ public class XVerProcessor
             {
                 ValueSetRow = valueSetRow,
             };
+
+            HashSet<string>[] codesPerVs = _definitions.Select(_ => new HashSet<string>()).ToArray();
 
             // iterate over the components in the key value set
             foreach (ValueSet.ContainsComponent component in valueSetRow[keyColumn]!.Resource.cgGetFlatContains())
@@ -712,7 +749,16 @@ public class XVerProcessor
                             continue;
                         }
 
-                        writer.Write($"| {cell.Component.Code.ForMdTable()}");
+                        codesPerVs[column].Add(cell.Component.cgKey());
+
+                        if (column == keyColumn)
+                        {
+                            writer.Write($"| **`{cell.Component.Code.ForMdTable()}`**");
+                        }
+                        else
+                        {
+                            writer.Write($"| `{cell.Component.Code.ForMdTable()}`");
+                        }
 
                         if (column == (componentRow.Length - 1))
                         {
@@ -761,7 +807,7 @@ public class XVerProcessor
                     {
                         if (i == keyColumn)
                         {
-                            writer.Write("| " + component.Code.ForMdTable());
+                            writer.Write($"| **`{component.Code.ForMdTable()}`**");
                         }
                         else
                         {
@@ -771,6 +817,25 @@ public class XVerProcessor
                     writer.WriteLine();
                 }
             }
+
+            // check for unused codes in value sets
+            for (int i = 0; i < valueSetRow.Length; i++)
+            {
+                if (i != 0)
+                {
+                    writer.Write("| ");
+                }
+
+                if (valueSetRow[i] == null)
+                {
+                    writer.Write("| ");
+                }
+                else
+                {
+                    writer.Write($"| *{codesPerVs[i].Count} of {valueSetRow[i]!.UniqueCodeCount} codes used* ");
+                }
+            }
+            writer.WriteLine();
 
             writer.WriteLine();
         }
