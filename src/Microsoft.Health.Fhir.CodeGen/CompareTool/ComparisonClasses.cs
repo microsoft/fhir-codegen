@@ -41,38 +41,108 @@ public enum ComparisonIssueCode
 }
 
 
+/// <summary>
+/// Represents a comparison between a source and target FHIR model element.
+/// </summary>
+/// <typeparam name="T">The type of the FHIR model element being compared.</typeparam>
+/// <remarks>Used by FhirCoreComparer</remarks>
 public record class PairComparison<T>
     where T : Hl7.Fhir.Model.Base
 {
+    /// <summary>
+    /// Gets or initializes the source element.
+    /// </summary>
     public required T Source { get; init; }
+
+    /// <summary>
+    /// Gets or initializes the target element.
+    /// </summary>
     public required T? Target { get; init; }
 
+    /// <summary>
+    /// Gets or initializes the relationship between the source and target elements.
+    /// </summary>
     public required CMR? Relationship { get; init; }
+
+    /// <summary>
+    /// Gets or initializes the issue code for the comparison.
+    /// </summary>
     public required ComparisonIssueCode? IssueCode { get; init; }
+
+    /// <summary>
+    /// Gets or initializes the message describing the comparison.
+    /// </summary>
     public required string Message { get; init; }
 
+    /// <summary>
+    /// Gets or initializes the concept map associated with the comparison.
+    /// </summary>
     public required ConceptMap? Map { get; init; }
 }
 
-
-
+/// <summary>
+/// Represents a comparison record for a value set code.
+/// </summary>
+/// <remarks>Used by FhirCoreComparer</remarks>
 internal record class ValueSetCodeComparisonRec
 {
+    /// <summary>
+    /// Gets or initializes the source system.
+    /// </summary>
     public required string SourceSystem { get; init; }
+
+    /// <summary>
+    /// Gets or initializes the source code.
+    /// </summary>
     public required string SourceCode { get; init; }
+
+    /// <summary>
+    /// Gets or sets the source display.
+    /// </summary>
     public required string? SourceDisplay { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether there is no map.
+    /// </summary>
     public bool? NoMap { get; set; }
 
+    /// <summary>
+    /// Gets or initializes the target system.
+    /// </summary>
     public string? TargetSystem { get; init; }
+
+    /// <summary>
+    /// Gets or initializes the target code.
+    /// </summary>
     public string? TargetCode { get; init; }
+
+    /// <summary>
+    /// Gets or sets the target display.
+    /// </summary>
     public string? TargetDisplay { get; set; }
 
+    /// <summary>
+    /// Gets or sets the relationship.
+    /// </summary>
     public required CMR? Relationship { get; set; }
+
+    /// <summary>
+    /// Gets or sets the comment.
+    /// </summary>
     public required string? Comment { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether the record is generated.
+    /// </summary>
     public required bool? IsGenerated { get; set; }
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the record needs review.
+    /// </summary>
+    public required bool? NeedsReview { get; set; }
 }
+
+
 
 
 

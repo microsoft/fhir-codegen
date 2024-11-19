@@ -433,7 +433,7 @@ public class XVerProcessor
             }
 
             // build the projection for this value set
-            List<ValueSetGraphCell?[]> projection = vsGraph.Project(dc, vs);
+            List<ValueSetGraphCell?[]> projection = expanded ? [] : vsGraph.Project(dc, vs);
 
             // add our overview entry
             writeMdOverviewEntry(overviewWriter, vs, dc, projection, expanded, expandMessage);
@@ -547,14 +547,6 @@ public class XVerProcessor
             | Description | {keyVs.Description.ForMdTable()} |
             """);
 
-        //if (keyComparison?.FailureCode != null)
-        //{
-        //    writer.WriteLine($"""
-        //        | Failure | {keyComparison.FailureCode} {keyComparison.FailureMessage?.ForMdTable()} |
-        //        """);
-        //    return;
-        //}
-
         writer.WriteLine("### Bindings");
         writer.WriteLine();
         writer.WriteLine("| Source | Element | Binding | Strength |");
@@ -574,9 +566,24 @@ public class XVerProcessor
 
         writer.WriteLine();
 
+        if (!expanded)
+        {
+            writer.WriteLine($"""
+                ### Expansion Failure
+
+                Failed to expand this value set: {expandMessage}
+                """);
+            return;
+        }
+
         // if there are no mappings, we are done writing this file
         if (projection.Count == 0)
         {
+            writer.WriteLine($"""
+                ### Empty Projection
+
+                This Value Set resulted in no projection.
+                """);
             return;
         }
 
@@ -627,8 +634,6 @@ public class XVerProcessor
             }
         }
         writer.WriteLine();
-
-
 
 
         // write a section for the code table

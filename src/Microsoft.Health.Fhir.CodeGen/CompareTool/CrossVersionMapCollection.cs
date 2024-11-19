@@ -179,8 +179,13 @@ public class CrossVersionMapCollection
                 continue;
             }
 
+            // update the last edit date
+            cm.DateElement = new FhirDateTime(DateTimeOffset.Now);
+
+            // filename is the FHIR-core style ResourceName-Id.json
             string filename = Path.Combine(dir, $"ConceptMap-{cm.Id}.json");
 
+            // write the file
             try
             {
                 using FileStream fs = new(filename, FileMode.Create, FileAccess.Write);

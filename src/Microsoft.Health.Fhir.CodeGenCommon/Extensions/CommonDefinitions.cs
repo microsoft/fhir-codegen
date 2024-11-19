@@ -60,8 +60,9 @@ public static class CommonDefinitions
     public const string ExtUrlConceptMapAdditionalUrls = "http://ginoc.io/fhir/StructureDefinition/conceptmap-additional-urls";
     public const string ExtUrlConceptMapAggregateRelationship = "http://ginoc.io/fhir/StructureDefinition/conceptmap-aggregate-relationship";
 
-    public const string ConceptMapPropertyGeneratedUri = "http://ginoc.io/fhir/CodeSystem/conceptmap-property-generated";
-    public const string ConceptMapPropertyGeneratedCode = "cg-generated";
+    public const string ConceptMapPropertiesSystem = "http://ginoc.io/fhir/CodeSystem/conceptmap-properties";
+    public const string ConceptMapPropertyGenerated = "cg-generated";
+    public const string ConceptMapPropertyNeedsReview = "needs-review";
 
     public const string ConceptMapUsageContextSystem = "http://ginoc.io/fhir/CodeSystem/conceptmap-usage-context";
     public const string ConceptMapUsageContextTarget = "Target";
