@@ -302,7 +302,12 @@ public class XVerProcessor
             Directory.CreateDirectory(docDir);
         }
 
-        ValueSetGraph vsGraph = buildGraph();
+        ValueSetGraph vsGraph = new()
+        {
+            Definitions = _definitions,
+            Resources = buildValueSetNodes(),
+            Edges = buildValueSetEdges(),
+        };
 
         // walk the definitions to write comparisons
         foreach (DefinitionCollection dc in _definitions)
@@ -321,18 +326,6 @@ public class XVerProcessor
             // write the contents of our value sets
             writeMarkdownValueSets(versionDir, dc, vsGraph);
         }
-    }
-
-    private ValueSetGraph buildGraph()
-    {
-        HashSet<ValueSet> vsNodes = buildValueSetNodes();
-
-        return new()
-        {
-            Definitions = _definitions,
-            Resources = vsNodes,
-            Edges = buildValueSetEdges(vsNodes),
-        };
     }
 
     private HashSet<ValueSet> buildValueSetNodes()
@@ -362,8 +355,7 @@ public class XVerProcessor
         return vsNodes;
     }
 
-    private Dictionary<ValueSet, List<ResourceGraphEdge<ValueSet>>> buildValueSetEdges(
-        HashSet<ValueSet> vsNodes)
+    private Dictionary<ValueSet, List<ResourceGraphEdge<ValueSet>>> buildValueSetEdges()
     {
         Dictionary<ValueSet, List<ResourceGraphEdge<ValueSet>>> vsEdges = [];
 
@@ -460,33 +452,6 @@ public class XVerProcessor
             }
 
         }
-
-
-        //foreach (ValueSet vs in dc.ValueSetsByVersionedUrl.Values.OrderBy(vs => vs.Name))
-        //{
-        //    // skip value sets without a comparison annotation
-        //    if ((!vs.TryGetAnnotation(out ValueSetComparisonAnnotation? ca)) ||
-        //        (ca == null))
-        //    {
-        //        continue;
-        //    }
-
-        //    // add our overview entry
-        //    writeMdOverviewEntry(overviewWriter, vs, ca);
-
-        //    string filename = Path.Combine(vsDir, getVsFilename(vs.Name.ToPascalCase(), includeRelativeDir: false));
-        //    using (ExportStreamWriter vsWriter = createMarkdownWriter(filename, true, true))
-        //    {
-        //        writeMdDetailed(vsWriter, dc, vs, ca);
-
-        //        // check for failures - write a stub file with information about the value set
-        //        if (ca.FailureCode != null)
-        //        {
-        //            writeMdComparisonFailed(vsWriter, vs);
-        //            continue;
-        //        }
-        //    }
-        //}
     }
 
 
@@ -624,7 +589,7 @@ public class XVerProcessor
         // generate table showing the mappings
         writer.WriteLine("### Mapping Table");
         writer.WriteLine();
-        writer.WriteLine("| " + string.Join(" | Details | ", allKeys.Select(v => v.key)));
+        writer.WriteLine("| " + string.Join(" | Maps | ", allKeys.Select(v => v.key)));
         writeTableColumns(writer, "---", (_definitions.Length * 2) - 1, appendNewline: true);
 
         foreach (ValueSetGraphCell?[] row in projection)
@@ -712,11 +677,6 @@ public class XVerProcessor
                 }
             }
             writer.WriteLine();
-            //writer.WriteLine(
-            //    "| " +
-            //    string.Join(
-            //" | Details | ",
-            //        valueSetRow.Select(c => c?.Resource == null ? "n/a" : $"[{c.DC.Key} {c.Resource.Name.ForMdTable()}]({vsRootUrlsByVersion[column]}/{getVsFilename(cell.Resource.Name.ToPascalCase(), includeRelativeDir: false)})")));
             writeTableColumns(writer, "---", (_definitions.Length * 2) - 1, appendNewline: true);
 
             // build a code map graph
@@ -790,9 +750,9 @@ public class XVerProcessor
                             {
                                 // write mapping notes
                                 writer.Write(
-                                    $"| →→→→→→→ <br/> {cell.RightEdge?.UpTarget?.Relationship} <br/> →→→→→→→ " +
+                                    $"| → {cell.RightEdge?.UpTarget?.Relationship} → " +
                                     $"<hr/>" +
-                                    $"←←←←←←← <br/> {cell.RightEdge?.DownTarget?.Relationship} <br/> ←←←←←←← ");
+                                    $"← {cell.RightEdge?.DownTarget?.Relationship} ← ");
                             }
                         }
                     }
@@ -868,43 +828,16 @@ public class XVerProcessor
         }
     }
 
-    private string getOverviewTableCell(string sourceName, List<ValueSetComparisonDetails>? details)
+
+    private string getVsFilename(string sourceVsName, bool includeRelativeDir = true)
     {
-        if ((details == null) ||
-            (details.Count == 0))
-        {
-            return " - ";
-        }
-
-        return string.Join("<br/>", details.Select(cd => cd.Target == null ? withoutTarget(cd) : withTarget(cd)));
-
-        string withoutTarget(ValueSetComparisonDetails cd)
-        {
-            return $"{cd.TargetDefinition.FhirSequence.ToRLiteral()} - Not Mapped";
-        }
-
-        string withTarget(ValueSetComparisonDetails cd)
-        {
-            return $"[" +
-            $"{cd.TargetDefinition.FhirSequence.ToRLiteral()} " +
-            $"{cd.Target?.Name.ForMdTable()} " +
-            $" - {cd.ConceptDomain?.Relationship}" +
-            $"]({getVsFilename(sourceName, cd)})";
-        }
-    }
-
-    private string getVsFilename(string sourceVsName, ValueSetComparisonDetails? cd = null, bool includeRelativeDir = true)
-    {
-        if (cd?.Target == null)
-        {
-            return includeRelativeDir
-                ? $"ValueSets/{sourceVsName}.md"
-                : sourceVsName + ".md";
-        }
-
         return includeRelativeDir
-            ? $"ValueSets/{sourceVsName}_{cd.TargetDefinition.FhirSequence.ToRLiteral()}_{cd.Target?.Name.ToPascalCase()}"
-            : $"{sourceVsName}_{cd.TargetDefinition.FhirSequence.ToRLiteral()}_{cd.Target?.Name.ToPascalCase()}";
+            ? $"ValueSets/{sourceVsName}.md"
+            : sourceVsName + ".md";
+
+        //return includeRelativeDir
+        //    ? $"ValueSets/{sourceVsName}_{cd.TargetDefinition.FhirSequence.ToRLiteral()}_{cd.Target?.Name.ToPascalCase()}"
+        //    : $"{sourceVsName}_{cd.TargetDefinition.FhirSequence.ToRLiteral()}_{cd.Target?.Name.ToPascalCase()}";
     }
 
     private (string to, string from) getConceptMapMdLinks(ValueSetGraphCell cell, ComparisonDirection direction)
@@ -939,22 +872,6 @@ public class XVerProcessor
             $"(/input/codes_v2/{cell.LeftCell.DC.FhirSequence.ToRLiteral()}to{cell.DC.FhirSequence.ToRLiteral()}/ConceptMap-{cell.LeftEdge.Up.Name}.json)");
     }
 
-    private void writeMdComparisonFailed(ExportStreamWriter writer, ValueSet vs)
-    {
-        // build a filename for this vs only
-        //string filename = Path.Combine(dir, getVsFilename(vs.Name.ToPascalCase(), includeRelativeDir: false));
-
-        // write a stub file with info
-        //using ExportStreamWriter writer = createMarkdownWriter(filename, true, true);
-
-
-    }
-
-    private void writeMdObjectInfo(ExportStreamWriter writer, ValueSet vs)
-    {
-
-    }
-
 
     private ExportStreamWriter createMarkdownWriter(string filename, bool writeGenerationHeader = true, bool includeGenerationTime = false)
     {
@@ -975,122 +892,6 @@ public class XVerProcessor
         return writer;
     }
 
-
-    /// <summary>
-    /// Compares the value sets between the source and target definition collections.
-    /// </summary>
-    /// <param name="dcSource">The source definition collection.</param>
-    /// <param name="dcTarget">The target definition collection.</param>
-    /// <param name="vsUrlsToInclude">The set of value set URLs to include in the comparison.</param>
-    /// <param name="cvMap">The cross-version map collection.</param>
-    /// <param name="direction">The direction of the comparison.</param>
-    private void compareValueSets(
-            DefinitionCollection dcSource,
-            DefinitionCollection dcTarget,
-            HashSet<string> vsUrlsToInclude,
-            CrossVersionMapCollection cvMap,
-            ComparisonDirection direction)
-    {
-        // iterate over the value sets in the first definition collection
-        foreach ((string unversionedUrl, string[] versions) in dcSource.ValueSetVersions.OrderBy(kvp => kvp.Key))
-        {
-            // only process value sets we have already determined should be compared
-            if (!vsUrlsToInclude.Contains(unversionedUrl))
-            {
-                continue;
-            }
-
-            // only compare on the highest version in this package
-            string vsVersion = versions.OrderDescending().First();
-            string versionedUrl = unversionedUrl + "|" + vsVersion;
-
-            // we can only process value sets we can expand
-            if (!dcSource.TryExpandVs(versionedUrl, out ValueSet? vs, out string? expandMessage))
-            {
-                // get the unexpanded value set object
-                if (dcSource.ValueSetsByVersionedUrl.TryGetValue(versionedUrl, out vs))
-                {
-                    if ((!vs.TryGetAnnotation(out ValueSetComparisonAnnotation? ca)) ||
-                        (ca == null))
-                    {
-                        ca = new();
-                        vs.AddAnnotation(ca);
-                    }
-
-                    ca.FailureCode = ComparisonFailureCodes.CannotExpand;
-                    ca.FailureMessage = $"Failed to expand value set {versionedUrl} for comparison: {expandMessage}.";
-                }
-
-                _logger.LogValueSetNotExpanded(versionedUrl, expandMessage);
-                continue;
-            }
-
-            // get or create the comparison annotation for this VS
-            if ((!vs.TryGetAnnotation(out ValueSetComparisonAnnotation? comparisonAnnotation)) ||
-                (comparisonAnnotation == null))
-            {
-                comparisonAnnotation = new()
-                {
-                    EscapeValveCodes = getEscapeValveCodes(vs),
-                };
-                vs.AddAnnotation(comparisonAnnotation);
-            }
-
-            List<ValueSetComparisonDetails> detailsList = direction == ComparisonDirection.Up
-                ? comparisonAnnotation.ToNext
-                : comparisonAnnotation.ToPrev;
-
-            // get any mappings for this value set (use the versioned URL to get the versioned and unversioned maps)
-            List<ConceptMap> vsConceptMaps = cvMap.GetMapsForSource(versionedUrl);
-            foreach (ConceptMap cm in vsConceptMaps)
-            {
-                string cmTarget = cm.TargetScope is Canonical targetCanonical
-                    ? targetCanonical.Value ?? targetCanonical.Uri ?? string.Empty
-                    : cm.TargetScope is FhirUri targetUri
-                    ? targetUri.Value ?? string.Empty
-                    : string.Empty;
-
-                if (string.IsNullOrEmpty(cmTarget))
-                {
-                    continue;
-                }
-
-                // check for already being processed
-                if (detailsList.Any(cd => cd.Target?.Url == cmTarget))
-                {
-                    continue;
-                }
-
-                // check to see if we have an expandable target value set
-                if (!dcTarget.TryExpandVs(cmTarget, out ValueSet? mappedTargetVs))
-                {
-                    detailsList.Add(new()
-                    {
-                        TargetDefinition = dcTarget,
-                        Target = null,
-                        FailureCode = ComparisonFailureCodes.UnresolvedTarget,
-                        FailureMessage = $"Failed to resolve target scope for value set {versionedUrl} from {cm.Url}.",
-                        ExplicitMappingSource = cm.Url,
-                        ConceptDomain = null,
-                        ValueSetConcepts = null,
-                    });
-
-                    continue;
-                }
-
-                // run this comparison and add our results
-                detailsList.Add(compareValueSet(vs, mappedTargetVs, dcTarget, cm));
-            }
-
-            // check for this valueset exactly in the target collection
-            if (!detailsList.Any(cd => cd.Target?.Url == unversionedUrl) &&
-                !detailsList.Any(cd => cd.Target?.Url == versionedUrl) &&
-                dcTarget.TryExpandVs(unversionedUrl, out ValueSet? unversionedVs))
-            {
-                detailsList.Add(compareValueSet(vs, unversionedVs, dcTarget, null));
-            }
-        }
-    }
 
     /// <summary>
     /// Applies the relationship between existing and change concept domain relationship codes.
@@ -1149,368 +950,4 @@ public class XVerProcessor
         cdr == ConceptDomainRelationshipCodes.SourceIsNew ||
         cdr == ConceptDomainRelationshipCodes.NotMapped;
 
-    /// <summary>Compares two ValueSets and returns the comparison details.</summary>
-    /// <param name="sourceVs">The source ValueSet.</param>
-    /// <param name="targetVs">The target ValueSet.</param>
-    /// <param name="dcTarget">The target definition collection.</param>
-    /// <param name="cm">      The ConceptMap for mapping concepts between the ValueSets.</param>
-    /// <returns>The comparison details of the ValueSets.</returns>
-    private ValueSetComparisonDetails compareValueSet(
-        ValueSet sourceVs,
-        ValueSet targetVs,
-        DefinitionCollection dcTarget,
-        ConceptMap? cm)
-    {
-        // build our concept comparison dictionary
-        Dictionary<string, ValueSetConceptComparisonDetails[]>? vsConceptComparisons = compareValueSetConcepts(sourceVs, targetVs, cm);
-
-        // start optimistically
-        ConceptDomainRelationshipCodes vsRelationship = ConceptDomainRelationshipCodes.Equivalent;
-
-        // iterate over our concept comparisons to determine the overall relationship
-        foreach (ValueSetConceptComparisonDetails vscDetails in vsConceptComparisons?.Values.SelectMany(v => v) ?? [])
-        {
-            vsRelationship = applyRelationship(vsRelationship, vscDetails.ConceptDomain?.Relationship);
-        }
-
-        return new()
-        {
-            TargetDefinition = dcTarget,
-            Target = targetVs,
-            ExplicitMappingSource = cm?.Url,
-            ConceptDomain = new()
-            {
-                Relationship = vsRelationship,
-            },
-            ValueSetConcepts = vsConceptComparisons,
-        };
-    }
-
-    /// <summary>
-    /// Retrieves the escape valve codes from the specified ValueSet.
-    /// </summary>
-    /// <param name="vs">The ValueSet to retrieve the escape valve codes from.</param>
-    /// <returns>An array of escape valve codes.</returns>
-    private List<string> getEscapeValveCodes(
-        ValueSet vs)
-    {
-        List<string> assumedEscapeValveCodes = [];
-
-        // check all our codes to see if there is an 'escape valve' code
-        foreach (ValueSet.ContainsComponent source in vs.cgGetFlatContains())
-        {
-            if (!_escapeValveCodes.Contains(source.Code))
-            {
-                continue;
-            }
-
-            // add this code to our assumed set
-            assumedEscapeValveCodes.Add(source.cgKey());
-        }
-
-        return assumedEscapeValveCodes;
-    }
-
-    /// <summary>
-    /// Compares the concepts of two value sets and generates a dictionary of comparison details.
-    /// </summary>
-    /// <param name="sourceVs">The source value set.</param>
-    /// <param name="targetVs">The target value set.</param>
-    /// <param name="cm">The concept map.</param>
-    /// <returns>A dictionary containing the comparison details for each concept in the source value set.</returns>
-    private Dictionary<string, ValueSetConceptComparisonDetails[]>? compareValueSetConcepts(
-        ValueSet sourceVs,
-        ValueSet targetVs,
-        ConceptMap? cm)
-    {
-        HashSet<string> escapeValveKeys = sourceVs.TryGetAnnotation(typeof(ValueSetComparisonAnnotation), out object? annotation)
-            ? new HashSet<string>(((ValueSetComparisonAnnotation)annotation).EscapeValveCodes ?? [])
-            : [];
-
-        Dictionary<string, ValueSetConceptComparisonDetails[]> retVal = [];
-
-        // build a dictionary of target keys so that we can determine if something exists
-        Dictionary<string, ValueSet.ContainsComponent> targetContainsDict = targetVs.cgGetFlatContains().ToDictionary(c => c.System + "#" + c.Code);
-
-        HashSet<string> noMaps;
-        Dictionary<string, Dictionary<string, ConceptMap.TargetElementComponent>> mapTargetsByKeyBySourceKey;
-
-        (noMaps, mapTargetsByKeyBySourceKey) = processValueSetConceptMap(sourceVs.Url, targetVs.Url, cm);
-
-        ValueSet.ContainsComponent[] sourceFlat = sourceVs.cgGetFlatContains().ToArray();
-
-        // iterate over the source expansion and build our comparisons
-        foreach (ValueSet.ContainsComponent source in sourceFlat)
-        {
-            string sourceKey = source.cgKey();
-            List<ValueSetConceptComparisonDetails> vscDetails = [];
-
-            // if we have a no-map, use that first
-            if (noMaps.Contains(sourceKey))
-            {
-                vscDetails.Add(new()
-                {
-                    Source = source,
-                    Target = null,
-                    ExplicitMappingSource = cm?.Url,
-                    ConceptDomain = new()
-                    {
-                        Relationship = ConceptDomainRelationshipCodes.NotMapped,
-                    },
-                    ValueDomain = new()
-                    {
-                        ConceptRelationship = ValueSetConceptRelationshipFlags.Removed,
-                        Messages = [$"{sourceKey} explicitly not mapped in {cm?.Url}"],
-                    },
-                });
-            }
-
-            // if we have mappings, use those
-            if (mapTargetsByKeyBySourceKey.TryGetValue(sourceKey, out Dictionary<string, ConceptMap.TargetElementComponent>? mapTargetsByKey))
-            {
-                // iterate over the targets for this source
-                foreach ((string targetKey, ConceptMap.TargetElementComponent cmTarget) in mapTargetsByKey)
-                {
-                    // check for the target in the target value set
-                    if (!targetContainsDict.TryGetValue(targetKey, out ValueSet.ContainsComponent? mappedTarget))
-                    {
-                        vscDetails.Add(new()
-                        {
-                            Source = source,
-                            Target = null,
-                            FailureCode = ComparisonFailureCodes.UnresolvedTarget,
-                            FailureMessage = $"Failed to resolve target scope for value set { sourceVs.Url} from { cm!.Url} - expected relationship of {cmTarget.Relationship}.",
-                            ExplicitMappingSource = cm?.Url,
-                            ConceptDomain = null,
-                            ValueDomain = null,
-                        });
-
-                        continue;
-                    }
-
-                    // start with whatever was mapped
-                    ConceptDomainRelationshipCodes conceptDomain = cmTarget.Relationship.ToDomainRelationship();
-
-                    vscDetails.Add(new()
-                    {
-                        Source = source,
-                        Target = mappedTarget,
-                        ExplicitMappingSource = cm?.Url,
-                        ConceptDomain = new()
-                        {
-                            Relationship = conceptDomain,
-                        },
-                        ValueDomain = new()
-                        {
-                            ConceptRelationship = valueDomainForVsConcept(source.System, source.Code, targetKey),
-                            Messages = [
-                                $"{sourceKey} mapped with relationship {cmTarget.Relationship} to {targetKey} via {cm?.Url}"
-                                ],
-                        },
-                    });
-                }
-            }
-
-            // if we have nothing by this point, try to compare literals
-            if ((vscDetails.Count == 0) &&
-                targetContainsDict.TryGetValue(sourceKey, out ValueSet.ContainsComponent? matchedTarget))
-            {
-                vscDetails.Add(new()
-                {
-                    Source = source,
-                    Target = matchedTarget,
-                    ExplicitMappingSource = cm?.Url,
-                    ConceptDomain = new()
-                    {
-                        Relationship = ConceptDomainRelationshipCodes.Equivalent,
-                    },
-                    ValueDomain = new()
-                    {
-                        ConceptRelationship = ValueSetConceptRelationshipFlags.Equivalent,
-                        Messages = [
-                            $"{sourceKey} found exact match to literal with no map - assumed equivalent in {targetVs.Url}"
-                            ],
-                    },
-                });
-            }
-
-            // finally, if we have not found anything, it is an implicit no map
-            if (vscDetails.Count == 0)
-            {
-                vscDetails.Add(new()
-                {
-                    Source = source,
-                    Target = null,
-                    ExplicitMappingSource = cm?.Url,
-                    ConceptDomain = new()
-                    {
-                        Relationship = ConceptDomainRelationshipCodes.NotMapped,
-                    },
-                    ValueDomain = new()
-                    {
-                        ConceptRelationship = ValueSetConceptRelationshipFlags.Removed,
-                        Messages = [$"{sourceKey} not mapped - no mapping found and a matching literal was not found in {targetVs.Url}"],
-                    },
-                });
-            }
-
-            // if this is an escape-valve code, we want to check equivalency
-            if (escapeValveKeys.Contains(sourceKey))
-            {
-                List<KeyValuePair<ValueSetConceptComparisonDetails, ValueSetConceptComparisonDetails>> toReplace = [];
-
-                // loop over the existing details and check the relationships
-                foreach (ValueSetConceptComparisonDetails vscDetail in vscDetails)
-                {
-                    if (vscDetail.ConceptDomain?.Relationship != ConceptDomainRelationshipCodes.Equivalent)
-                    {
-                        continue;
-                    }
-
-                    // check the number of codes in the source and target value sets
-                    if (sourceFlat.Length != targetContainsDict.Count)
-                    {
-                        // this should not be equivalent
-                        ConceptDomainRelationshipCodes r = sourceFlat.Length > targetContainsDict.Count
-                            ? ConceptDomainRelationshipCodes.SourceIsNarrowerThanTarget     // more source codes means that other is a narrower concept
-                            : ConceptDomainRelationshipCodes.SourceIsBroaderThanTarget;     // more target codes means that other is a broader concept
-
-                        List<string> messages = vscDetail.ConceptDomain.Messages;
-                        messages.Add(
-                            $"Modified escape-type relationship based on concept domains covered:" +
-                            $" source ({sourceKey}) has {sourceFlat.Length} concepts and" +
-                            $" target ({targetVs.Url}|{targetVs.Version}) has {targetContainsDict.Count}. ");
-
-                        toReplace.Add(new(
-                            vscDetail,
-                            vscDetail with
-                            {
-                                ConceptDomain = vscDetail.ConceptDomain with
-                                {
-                                    Relationship = r,
-                                    Messages = messages,
-                                },
-                            }));
-                    }
-                }
-
-                foreach ((ValueSetConceptComparisonDetails original, ValueSetConceptComparisonDetails updated) in toReplace)
-                {
-                    vscDetails.Remove(original);
-                    vscDetails.Add(updated);
-                }
-            }
-
-            retVal.Add(sourceKey, vscDetails.ToArray());
-        }
-
-        return retVal;
-    }
-
-    /// <summary>
-    /// Determines the relationship between a source value set concept and a target value set concept.
-    /// </summary>
-    /// <param name="sourceSystem">The system of the source value set concept.</param>
-    /// <param name="sourceCode">The code of the source value set concept.</param>
-    /// <param name="targetKey">The key of the target value set concept.</param>
-    /// <returns>The relationship between the source and target value set concepts.</returns>
-    private ValueSetConceptRelationshipFlags valueDomainForVsConcept(
-        string sourceSystem,
-        string sourceCode,
-        string? targetKey)
-    {
-        if (string.IsNullOrEmpty(targetKey) || (targetKey == "#"))
-        {
-            return ValueSetConceptRelationshipFlags.Removed;
-        }
-
-        ValueSetConceptRelationshipFlags retVal = ValueSetConceptRelationshipFlags.None;
-
-        string[] targetComponents = targetKey!.Split('#');
-        string targetSystem = targetComponents[0];
-        string targetCode = targetComponents.Length > 1 ? targetComponents[1] : string.Empty;
-
-        if (sourceSystem != targetSystem)
-        {
-            retVal |= ValueSetConceptRelationshipFlags.SystemChanged;
-        }
-
-        if (sourceCode != targetCode)
-        {
-            retVal |= ValueSetConceptRelationshipFlags.Renamed;
-        }
-
-        return retVal;
-    }
-
-    /// <summary>
-    /// Extracts the unversioned URL from the given URL.
-    /// </summary>
-    /// <param name="url">The URL.</param>
-    /// <returns>The unversioned URL.</returns>
-    private string getUnversionedUrl(string url) => url.Contains('|') ? url.Split('|')[0] : url;
-
-    /// <summary>
-    /// Processes the concept map for the value set.
-    /// </summary>
-    /// <param name="sourceVsUrl">The URL of the source value set.</param>
-    /// <param name="targetVsUrl">The URL of the target value set.</param>
-    /// <param name="cm">The concept map.</param>
-    /// <returns>A tuple containing the mappings between source and target value set concepts.</returns>
-    private (HashSet<string> noMaps, Dictionary<string, Dictionary<string, ConceptMap.TargetElementComponent>> mapTargetsByKeyBySourceKey) processValueSetConceptMap(
-        string sourceVsUrl,
-        string targetVsUrl,
-        ConceptMap? cm)
-    {
-        if (cm == null)
-        {
-            return ([], []);
-        }
-
-        HashSet<string> noMaps = [];
-
-        // build a map of our concept map to simplify lookups
-        Dictionary<string, Dictionary<string, ConceptMap.TargetElementComponent>> mapTargetsByKeyBySourceKey = [];
-
-        // traverse the groups in our map - each group represents a system
-        foreach (ConceptMap.GroupComponent cmGroup in cm.Group)
-        {
-            string groupSourceSystem = cmGroup.Source ?? getUnversionedUrl(sourceVsUrl);
-            string groupTargetSystem = cmGroup.Target ?? getUnversionedUrl(targetVsUrl);
-
-            // add all the elements from this group to our lookup
-            foreach (ConceptMap.SourceElementComponent cmElement in cmGroup.Element)
-            {
-                string sourceKey = $"{groupSourceSystem}#{cmElement.Code}";
-
-                // check for sources without targets
-                if ((cmElement.NoMap == true) || (cmElement.Target.Count == 0))
-                {
-                    if (!noMaps.Contains(sourceKey))
-                    {
-                        noMaps.Add(sourceKey);
-                    }
-
-                    continue;
-                }
-
-                // grab the targets for this source
-                if (!mapTargetsByKeyBySourceKey.TryGetValue(sourceKey, out Dictionary<string, ConceptMap.TargetElementComponent>? mapTargets))
-                {
-                    mapTargets = [];
-                    mapTargetsByKeyBySourceKey.Add(sourceKey, mapTargets);
-                }
-
-                // add our targets
-                foreach (ConceptMap.TargetElementComponent cmTarget in cmElement.Target)
-                {
-                    string targetKey = $"{groupTargetSystem}#{cmTarget.Code}";
-                    //mapTargets.Add(targetKey, cmTarget);
-                    mapTargets[targetKey] = cmTarget;
-                }
-            }
-        }
-
-        return (noMaps, mapTargetsByKeyBySourceKey);
-    }
 }
