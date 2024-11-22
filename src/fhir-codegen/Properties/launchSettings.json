@@ -70,6 +70,11 @@
             "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.uv.sdc#3.0.0 --auto-load-expansions --resolve-dependencies true --include-experimental",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
+        "Firely IG DK-EHealth": {
+            "commandName": "Project",
+            "commandLineArgs": "generate FirelyNetIg --fhir-cache ~/.fhir  --output-path ..\\..\\temp\\firely-ig -p dk.ehealth.sundhed.fhir.ig.core#3.3.0 --auto-load-expansions --resolve-dependencies true --include-experimental",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
         "Firely OpenApi": {
             "commandName": "Project",
             "commandLineArgs": "generate OpenApi --fhir-server-url https://secure.server.fire.ly/ -p hl7.fhir.r4.core#4.0.1 --output-path ..\\..\\generated\\FS-OpenApi-R4 --include-experimental --schema-level names --metadata true --multi-file true --single-responses false --resolve-server-canonicals false --resolve-external-canonicals false --basic-scopes-only true",
@@ -170,24 +175,14 @@
             "commandLineArgs": "xver -c hl7.fhir.r2.core@1.0.2 -c hl7.fhir.r3.core@3.0.2 -c hl7.fhir.r4.core@4.0.1 -c hl7.fhir.r4b.core#4.3.0 -c hl7.fhir.r5.core@5.0.0 --auto-load-expansions --resolve-dependencies true --map-source-path ..\\..\\..\\fhir-cross-version  --map-destination-path ..\\..\\..\\fhir-cross-version-source",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
-        "XVer 20-30": {
-            "commandName": "Project",
-            "commandLineArgs": "xver update-maps -c hl7.fhir.r2.core@1.0.2 -c hl7.fhir.r3.core@3.0.2 --auto-load-expansions --resolve-dependencies true",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
         "XVer 20-30-40 update": {
             "commandName": "Project",
-            "commandLineArgs": "xver update-maps -c hl7.fhir.r2.core@1.0.2 -c hl7.fhir.r3.core@3.0.2 -c hl7.fhir.r4.core@4.0.1 --auto-load-expansions --resolve-dependencies true",
+            "commandLineArgs": "xver update-type-maps -c hl7.fhir.r2.core@1.0.2 -c hl7.fhir.r3.core@3.0.2 -c hl7.fhir.r4.core@4.0.1 --auto-load-expansions --resolve-dependencies true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "XVer 20-30-40 docs": {
             "commandName": "Project",
             "commandLineArgs": "xver build-docs -c hl7.fhir.r2.core@1.0.2 -c hl7.fhir.r3.core@3.0.2 -c hl7.fhir.r4.core@4.0.1 --auto-load-expansions --resolve-dependencies true",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "XVer 30-40": {
-            "commandName": "Project",
-            "commandLineArgs": "xver update-maps -c hl7.fhir.r3.core@3.0.2 -c hl7.fhir.r4.core@4.0.1 --auto-load-expansions --resolve-dependencies true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "CQL R4": {

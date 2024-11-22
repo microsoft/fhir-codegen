@@ -402,6 +402,7 @@ public partial class FirelyNetIG : ILanguage
 
                     if (existingName2 == currentName2)
                     {
+                        //name = packageData.ClassPrefix + currentName2;
                         throw new Exception($"Name collision for '{name}'");
                     }
 

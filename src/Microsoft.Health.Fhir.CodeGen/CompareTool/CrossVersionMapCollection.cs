@@ -26,6 +26,7 @@ using System.Text.Json;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification.Snapshot;
 using Microsoft.Extensions.Logging;
+using Hl7.Fhir.Model.CdsHooks;
 
 
 
@@ -147,6 +148,12 @@ public class CrossVersionMapCollection
         _firelySerializerOptions = new JsonSerializerOptions().ForFhir(ModelInfo.ModelInspector).Pretty();
     }
 
+    public ConceptMap? DataTypeMap => _dataTypeMap;
+
+    public ConceptMap? ResourceTypeMap => _resourceTypeMap;
+
+
+
     public IEnumerable<ConceptMap> GetValueSetMaps()
     {
         foreach (ConceptMap cm in _dc.ConceptMapsByUrl.Values)
@@ -205,6 +212,74 @@ public class CrossVersionMapCollection
         (uc.Code.System == CommonDefinitions.ConceptMapUsageContextSystem) &&
         (uc.Value is CodeableConcept cc) &&
         cc.Coding.Any(c => c.System == CommonDefinitions.ConceptMapUsageContextSystem && c.Code == CommonDefinitions.ConceptMapUsageContextValueSet));
+
+    public IEnumerable<ConceptMap> GetDataTypeMaps()
+    {
+        foreach (ConceptMap cm in _dc.ConceptMapsByUrl.Values)
+        {
+            // skip ones that are not primitive type comparisons
+            if (!isTypeOverviewConceptMap(cm))
+            {
+                continue;
+            }
+
+            yield return cm;
+        }
+    }
+
+    public void SaveDataTypeConceptMaps(string path, bool includeMapSubdir = true)
+    {
+        string dir = includeMapSubdir ? Path.Combine(path, $"{_sourceRLiteral}to{_targetRLiteral}") : path;
+
+        if (!Directory.Exists(dir))
+        {
+            Directory.CreateDirectory(dir);
+        }
+
+        // iterate over the maps in the collection
+        foreach (ConceptMap cm in _dc.ConceptMapsByUrl.Values)
+        {
+            bool isOverview = isTypeOverviewConceptMap(cm);
+            bool isTypeMap = isDataTypeConceptMap(cm);
+
+            if (!isOverview && !isTypeMap)
+            {
+                continue;
+            }
+
+            // update the last edit date
+            cm.DateElement = new FhirDateTime(DateTimeOffset.Now);
+
+            // filename is the FHIR-core style ResourceName-Id.json
+            string filename = isOverview
+                ? Path.Combine(path, $"ConceptMap-{cm.Id}.json")
+                : Path.Combine(dir, $"ConceptMap-{cm.Id}.json");
+
+            // write the file
+            try
+            {
+                using FileStream fs = new(filename, FileMode.Create, FileAccess.Write);
+                using Utf8JsonWriter writer = new(fs, new JsonWriterOptions() { Indented = true, });
+                {
+                    JsonSerializer.Serialize(writer, cm, _firelySerializerOptions);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error writing {filename}: {ex.Message} {ex.InnerException?.Message}");
+            }
+        }
+    }
+
+    private bool isTypeOverviewConceptMap(ConceptMap cm) => cm.UseContext.Any(uc =>
+        (uc.Code.System == CommonDefinitions.ConceptMapUsageContextSystem) &&
+        (uc.Value is CodeableConcept cc) &&
+        cc.Coding.Any(c => c.System == CommonDefinitions.ConceptMapUsageContextSystem && c.Code == CommonDefinitions.ConceptMapUsageContextTypeOverview));
+
+    private bool isDataTypeConceptMap(ConceptMap cm) => cm.UseContext.Any(uc =>
+        (uc.Code.System == CommonDefinitions.ConceptMapUsageContextSystem) &&
+        (uc.Value is CodeableConcept cc) &&
+        cc.Coding.Any(c => c.System == CommonDefinitions.ConceptMapUsageContextSystem && c.Code == CommonDefinitions.ConceptMapUsageContextDataType));
 
     public bool PathHasFhirCrossVersionOfficial(string path)
     {
@@ -1121,10 +1196,12 @@ public class CrossVersionMapCollection
                             cm.SourceScope = new Canonical($"{sourceLocalUrl}|{_sourcePackageVersion}");
                             cm.TargetScope = new Canonical($"{targetLocalUrl}|{_targetPackageVersion}");
 
-                            cm.Group[0].Source = sourceLocalUrl;
-                            cm.Group[0].Target = targetLocalUrl;
+                            cm.Group[0].Source = sourceLocalUrl.Replace("/ValueSet/", "/");
+                            cm.Group[0].Target = targetLocalUrl.Replace("/ValueSet/", "/");
 
                             _dataTypeMap = cm;
+
+                            _dc!.AddConceptMap(cm, _dc.MainPackageId, _dc.MainPackageVersion);
                         }
                         break;
 
@@ -1156,6 +1233,8 @@ public class CrossVersionMapCollection
                             cm.Group[0].Target = targetLocalUrl;
 
                             _resourceTypeMap = cm;
+
+                            _dc!.AddConceptMap(cm, _dc.MainPackageId, _dc.MainPackageVersion);
                         }
                         break;
 
@@ -1411,6 +1490,71 @@ public class CrossVersionMapCollection
         return true;
     }
 
+    public ConceptMap BuildBaseResourceMap()
+    {
+        string localConceptMapId = $"{_sourceRLiteral}-resources-{_targetRLiteral}";
+        string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
+
+        string sourceLocalUrl = BuildUrl("{0}/{1}/{2}", _sourcePackageCanonical, "ValueSet", "data-types");
+        string targetLocalUrl = BuildUrl("{0}/{1}/{2}", _targetPackageCanonical, "ValueSet", "data-types");
+
+        ConceptMap cm = new()
+        {
+            Id = localConceptMapId,
+            Url = localUrl,
+            Version = _dc.MainPackageVersion,
+            Name = localConceptMapId,
+            Title = GetConceptMapTitle("resource"),
+            Status = PublicationStatus.Active,
+            Experimental = false,
+            Description = $"Type Map from {_sourceRLiteral} to {_targetRLiteral}",
+            SourceScope = new Canonical($"{sourceLocalUrl}|{_sourcePackageVersion}"),
+            TargetScope = new Canonical($"{targetLocalUrl}|{_targetPackageVersion}"),
+        };
+
+        cm.Group[0].Source = sourceLocalUrl.Replace("/ValueSet/", "/");
+        cm.Group[0].Target = targetLocalUrl.Replace("/ValueSet/", "/");
+
+        _dataTypeMap = cm;
+
+        _dc!.AddConceptMap(cm, _dc.MainPackageId, _dc.MainPackageVersion);
+
+        return cm;
+    }
+
+
+    public ConceptMap BuildBaseTypeMap()
+    {
+        string localConceptMapId = $"{_sourceRLiteral}-types-{_targetRLiteral}";
+        string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
+
+        string sourceLocalUrl = BuildUrl("{0}/{1}/{2}", _sourcePackageCanonical, "ValueSet", "data-types");
+        string targetLocalUrl = BuildUrl("{0}/{1}/{2}", _targetPackageCanonical, "ValueSet", "data-types");
+
+        ConceptMap cm = new()
+        {
+            Id = localConceptMapId,
+            Url = localUrl,
+            Version = _dc.MainPackageVersion,
+            Name = localConceptMapId,
+            Title = GetConceptMapTitle("data type"),
+            Status = PublicationStatus.Active,
+            Experimental = false,
+            Description = $"Type Map from {_sourceRLiteral} to {_targetRLiteral}",
+            SourceScope = new Canonical($"{sourceLocalUrl}|{_sourcePackageVersion}"),
+            TargetScope = new Canonical($"{targetLocalUrl}|{_targetPackageVersion}"),
+        };
+
+        cm.Group[0].Source = sourceLocalUrl.Replace("/ValueSet/", "/");
+        cm.Group[0].Target = targetLocalUrl.Replace("/ValueSet/", "/");
+
+        _dataTypeMap = cm;
+
+        _dc!.AddConceptMap(cm, _dc.MainPackageId, _dc.MainPackageVersion);
+
+        return cm;
+    }
+
     /// <summary>
     /// Builds a base ConceptMap between two ValueSets.
     /// </summary>
@@ -1492,6 +1636,125 @@ public class CrossVersionMapCollection
 
         return cm;
     }
+
+    //private CMR ApplyRelationship(CMR existing, CMR? change) => existing switch
+    //{
+    //    CMR.Equivalent => change ?? CMR.Equivalent,
+    //    CMR.RelatedTo => (change == CMR.NotRelatedTo) ? CMR.NotRelatedTo : existing,
+    //    CMR.SourceIsNarrowerThanTarget => (change == CMR.SourceIsNarrowerThanTarget || change == CMR.Equivalent)
+    //        ? CMR.SourceIsNarrowerThanTarget : CMR.RelatedTo,
+    //    CMR.SourceIsBroaderThanTarget => (change == CMR.SourceIsBroaderThanTarget || change == CMR.Equivalent)
+    //        ? CMR.SourceIsBroaderThanTarget : CMR.RelatedTo,
+    //    CMR.NotRelatedTo => change ?? existing,
+    //    _ => change ?? existing,
+    //};
+
+    private string GetConceptMapTitle(string name) => $"Concept map to convert a FHIR {_sourceRLiteral} {name} into FHIR {_targetRLiteral}";
+
+    private string GetConceptMapTitle(string leftName, string rightName) => $"Concept map to convert a FHIR {_sourceRLiteral} {leftName} into a FHIR {_targetRLiteral} {rightName}";
+
+    /// <summary>Applies the canonical format.</summary>
+    /// <param name="formatString">The format string.</param>
+    /// <param name="canonical">   The canonical.</param>
+    /// <param name="name">        The name.</param>
+    /// <returns>A string.</returns>
+    /// <remarks>
+    /// 0 = canonical, 1 = resourceType, 2 = name, 3 = leftRLiteral, 4 = leftShortVersion, 5 = rightRLiteral, 6 = rightShortVersion
+    /// </remarks>
+    private string BuildUrl(string formatString, string canonical, string resourceType = "", string name = "") =>
+        string.Format(formatString, canonical, resourceType, name, _sourceRLiteral, _sourceShortVersion, _targetRLiteral, _targetShortVersion);
+
+    private string RemoveLeftToRight(string value)
+    {
+        if (value.EndsWith(_sourceToTargetNoR, StringComparison.Ordinal))
+        {
+            if (value[^(_sourceToTargetNoRLen + 1)] == '-')
+            {
+                return value[..^(_sourceToTargetNoRLen + 1)];
+            }
+
+            return value[..^_sourceToTargetNoR.Length];
+        }
+
+        if (value.EndsWith(_sourceToTargetWithR, StringComparison.OrdinalIgnoreCase))
+        {
+            if (value[^(_sourceToTargetWithRLen + 1)] == '-')
+            {
+                return value[..^(_sourceToTargetWithRLen + 1)];
+            }
+
+            return value[..^_sourceToTargetWithR.Length];
+        }
+
+        return value;
+    }
+
+    public string NameFromUrl(string url) => RemoveLeftToRight(url.Split('/', '#')[^1].Split('|')[0]).ToPascalCase();
+
+    public HashSet<string> GetAllReferencedValueSetUrls()
+    {
+        HashSet<string> set = [];
+
+        foreach ((string left, List<string> rights) in _vsUrlsWithMaps)
+        {
+            set.Add(left);
+            foreach (string right in rights)
+            {
+                set.Add(right);
+            }
+        }
+
+        return set;
+    }
+
+    public List<string> GetMapTargetsForVs(string sourceUrl)
+    {
+        if (_vsUrlsWithMaps.TryGetValue(sourceUrl, out List<string>? targets))
+        {
+            return targets;
+        }
+        else if (sourceUrl.Contains('|') && _vsUrlsWithMaps.TryGetValue(sourceUrl.Split('|')[0], out targets))
+        {
+            return targets;
+        }
+
+        return [];
+    }
+
+    public List<ConceptMap> GetMapsForSource(string sourceUrl) => _dc.ConceptMapsForSource(sourceUrl);
+
+    public bool TryGetMapsForSource(string sourceUrl, [NotNullWhen(true)] out List<ConceptMap>? maps)
+    {
+        maps = _dc.ConceptMapsForSource(sourceUrl);
+        return maps.Count > 0;
+    }
+
+    public List<ConceptMap> GetMapsForTarget(string targetUrl) => _dc.ConceptMapsForTarget(targetUrl);
+    public bool TryGetMapsForTarget(string targetUrl, [NotNullWhen(true)] out List<ConceptMap>? maps)
+    {
+        maps = _dc.ConceptMapsForTarget(targetUrl);
+        return maps.Count > 0;
+    }
+
+    public ConceptMap? GetMap(string sourceUrl, string targetUrl)
+    {
+        // get the maps for this source
+        List<ConceptMap> maps = _dc.ConceptMapsForSource(sourceUrl);
+
+        // traverse the maps looking for this target
+        foreach (ConceptMap map in maps)
+        {
+            if (map.cgTargetScope() == targetUrl)
+            {
+                return map;
+            }
+
+        }
+
+        return null;
+    }
+
+
 
     public ConceptMap? GetSourceValueSetConceptMap(
         ValueSetComparison vsc)
@@ -1633,18 +1896,6 @@ public class CrossVersionMapCollection
 
         return cm;
     }
-
-    //private CMR ApplyRelationship(CMR existing, CMR? change) => existing switch
-    //{
-    //    CMR.Equivalent => change ?? CMR.Equivalent,
-    //    CMR.RelatedTo => (change == CMR.NotRelatedTo) ? CMR.NotRelatedTo : existing,
-    //    CMR.SourceIsNarrowerThanTarget => (change == CMR.SourceIsNarrowerThanTarget || change == CMR.Equivalent)
-    //        ? CMR.SourceIsNarrowerThanTarget : CMR.RelatedTo,
-    //    CMR.SourceIsBroaderThanTarget => (change == CMR.SourceIsBroaderThanTarget || change == CMR.Equivalent)
-    //        ? CMR.SourceIsBroaderThanTarget : CMR.RelatedTo,
-    //    CMR.NotRelatedTo => change ?? existing,
-    //    _ => change ?? existing,
-    //};
 
 
     public ConceptMap? GetSourceDataTypesConceptMap(
@@ -1795,6 +2046,12 @@ public class CrossVersionMapCollection
     }
 
 
+    /// <summary>
+    /// Generates a ConceptMap for the source resource types based on the provided resource comparisons.
+    /// </summary>
+    /// <param name="resources">A dictionary containing the resource comparisons, keyed by resource type.</param>
+    /// <returns>A ConceptMap representing the mapping between the source and target resource types, or null if no mappings are found.</returns>
+    /// <remarks>Note that this function is specific to PackageComparer and should be refactored there.</remarks>
     public ConceptMap? GetSourceResourceTypeConceptMap(
         Dictionary<string, List<StructureComparison>> resources)
     {
@@ -2012,116 +2269,14 @@ public class CrossVersionMapCollection
         return cm;
     }
 
-    private string GetConceptMapTitle(string name) => $"Concept map to convert a FHIR {_sourceRLiteral} {name} into FHIR {_targetRLiteral}";
-
-    private string GetConceptMapTitle(string leftName, string rightName) => $"Concept map to convert a FHIR {_sourceRLiteral} {leftName} into a FHIR {_targetRLiteral} {rightName}";
-
-    /// <summary>Applies the canonical format.</summary>
-    /// <param name="formatString">The format string.</param>
-    /// <param name="canonical">   The canonical.</param>
-    /// <param name="name">        The name.</param>
-    /// <returns>A string.</returns>
-    /// <remarks>
-    /// 0 = canonical, 1 = resourceType, 2 = name, 3 = leftRLiteral, 4 = leftShortVersion, 5 = rightRLiteral, 6 = rightShortVersion
-    /// </remarks>
-    private string BuildUrl(string formatString, string canonical, string resourceType = "", string name = "") =>
-        string.Format(formatString, canonical, resourceType, name, _sourceRLiteral, _sourceShortVersion, _targetRLiteral, _targetShortVersion);
-
-    private string RemoveLeftToRight(string value)
-    {
-        if (value.EndsWith(_sourceToTargetNoR, StringComparison.Ordinal))
-        {
-            if (value[^(_sourceToTargetNoRLen + 1)] == '-')
-            {
-                return value[..^(_sourceToTargetNoRLen + 1)];
-            }
-
-            return value[..^_sourceToTargetNoR.Length];
-        }
-
-        if (value.EndsWith(_sourceToTargetWithR, StringComparison.OrdinalIgnoreCase))
-        {
-            if (value[^(_sourceToTargetWithRLen + 1)] == '-')
-            {
-                return value[..^(_sourceToTargetWithRLen + 1)];
-            }
-
-            return value[..^_sourceToTargetWithR.Length];
-        }
-
-        return value;
-    }
-
-    public string NameFromUrl(string url) => RemoveLeftToRight(url.Split('/', '#')[^1].Split('|')[0]).ToPascalCase();
-
-    public HashSet<string> GetAllReferencedValueSetUrls()
-    {
-        HashSet<string> set = [];
-
-        foreach ((string left, List<string> rights) in _vsUrlsWithMaps)
-        {
-            set.Add(left);
-            foreach (string right in rights)
-            {
-                set.Add(right);
-            }
-        }
-
-        return set;
-    }
-
-    public List<string> GetMapTargetsForVs(string sourceUrl)
-    {
-        if (_vsUrlsWithMaps.TryGetValue(sourceUrl, out List<string>? targets))
-        {
-            return targets;
-        }
-        else if (sourceUrl.Contains('|') && _vsUrlsWithMaps.TryGetValue(sourceUrl.Split('|')[0], out targets))
-        {
-            return targets;
-        }
-
-        return [];
-    }
-
-    public List<ConceptMap> GetMapsForSource(string sourceUrl) => _dc.ConceptMapsForSource(sourceUrl);
-
-    public bool TryGetMapsForSource(string sourceUrl, [NotNullWhen(true)] out List<ConceptMap>? maps)
-    {
-        maps = _dc.ConceptMapsForSource(sourceUrl);
-        return maps.Count > 0;
-    }
-
-    public List<ConceptMap> GetMapsForTarget(string targetUrl) => _dc.ConceptMapsForTarget(targetUrl);
-    public bool TryGetMapsForTarget(string targetUrl, [NotNullWhen(true)] out List<ConceptMap>? maps)
-    {
-        maps = _dc.ConceptMapsForTarget(targetUrl);
-        return maps.Count > 0;
-    }
-
-    public ConceptMap? GetMap(string sourceUrl, string targetUrl)
-    {
-        // get the maps for this source
-        List<ConceptMap> maps = _dc.ConceptMapsForSource(sourceUrl);
-
-        // traverse the maps looking for this target
-        foreach (ConceptMap map in maps)
-        {
-            if (map.cgTargetScope() == targetUrl)
-            {
-                return map;
-            }
-
-        }
-
-        return null;
-    }
 
 
-    public ConceptMap? DataTypeMap => _dataTypeMap;
 
-    public ConceptMap? ResourceTypeMap => _resourceTypeMap;
-
+    /// <summary>
+    /// Updates the data type map with the provided primitive types.
+    /// </summary>
+    /// <param name="primitiveTypes">A dictionary containing the primitive types to be updated.</param>
+    /// <remarks>Note that this function is specific to PackageComparer and should be refactored there.</remarks>
     public void UpdateDataTypeMap(Dictionary<string, List<PrimitiveTypeComparison>> primitiveTypes)
     {
         string localConceptMapId = $"{_sourceRLiteral}-types-{_targetRLiteral}";
@@ -2267,6 +2422,11 @@ public class CrossVersionMapCollection
     }
 
 
+    /// <summary>
+    /// Updates the data type map with the provided complex types.
+    /// </summary>
+    /// <param name="complexTypes">A dictionary containing the complex types to be updated.</param>
+    /// <remarks>Note that this function is specific to PackageComparer and should be refactored there.</remarks>
     public void UpdateDataTypeMap(Dictionary<string, List<StructureComparison>> complexTypes)
     {
         string localConceptMapId = $"{_sourceRLiteral}-types-{_targetRLiteral}";
@@ -2306,7 +2466,7 @@ public class CrossVersionMapCollection
 
         HashSet<string> updatedTypes = [];
 
-        // traverse our group and update any primitive we find
+        // traverse our group and update any complex type we find
         foreach (ConceptMap.SourceElementComponent se in group.Element)
         {
             if (complexTypes.TryGetValue(se.Code, out List<StructureComparison>? comparisons))
@@ -2364,7 +2524,7 @@ public class CrossVersionMapCollection
                 group.Element.Add(new()
                 {
                     Code = key,
-                    Display = $"Primitive type {_sourceRLiteral} `{key}` does not exist in {_targetRLiteral} and has no mappings.",
+                    Display = $"Complex type {_sourceRLiteral} `{key}` does not exist in {_targetRLiteral} and has no mappings.",
                     NoMap = true,
                 });
 
@@ -2410,6 +2570,8 @@ public class CrossVersionMapCollection
             });
         }
     }
+
+
 
     public static async Task<OperationOutcome> CheckFmlForMissingProperties(FhirStructureMap fml, CrossVersionCheckOptions options)
     {

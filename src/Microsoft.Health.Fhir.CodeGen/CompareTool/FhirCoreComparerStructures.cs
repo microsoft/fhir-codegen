@@ -1,0 +1,772 @@
+﻿// <copyright file="FhirCoreComparerStructures.cs" company="Microsoft Corporation">
+//     Copyright (c) Microsoft Corporation. All rights reserved.
+//     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
+// </copyright>
+
+using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Text;
+using Hl7.Fhir.Model;
+using Hl7.Fhir.Utility;
+using Microsoft.Extensions.Logging;
+using Microsoft.Health.Fhir.CodeGen.CompareTool;
+using Microsoft.Health.Fhir.CodeGen.Configuration;
+using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
+using Microsoft.Health.Fhir.CodeGen.Language;
+using Microsoft.Health.Fhir.CodeGen.Models;
+using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
+using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
+using Microsoft.Health.Fhir.CodeGenCommon.Utils;
+using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
+using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
+using System.Text.RegularExpressions;
+using System.Collections;
+using static Microsoft.Health.Fhir.CodeGen.CompareTool.FhirCoreComparerLogMessages;
+using Microsoft.Health.Fhir.CodeGenCommon.Models;
+using Newtonsoft.Json.Linq;
+
+
+#if NETSTANDARD2_0
+using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
+#endif
+
+
+namespace Microsoft.Health.Fhir.CodeGen.CompareTool;
+
+public partial class FhirCoreComparer
+{
+    ///// <summary>
+    ///// Retrieves the paired data type maps from the cross-version map collections.
+    ///// Note that there will always be at most one (and should always be one), but this method
+    ///// returns an enumerable for consistency with other map retrieval methods.
+    ///// </summary>
+    ///// <returns>
+    ///// An enumerable of tuples containing the ConceptMap for the upward and downward directions.
+    ///// Each tuple contains:
+    ///// <list type="bullet">
+    ///// <item>
+    ///// <description>The ConceptMap for the upward direction, or null if not available.</description>
+    ///// </item>
+    ///// <item>
+    ///// <description>The ConceptMap for the downward direction, or null if not available.</description>
+    ///// </item>
+    ///// </list>
+    ///// </returns>
+    //public IEnumerable<(ConceptMap? up, ConceptMap? down)> GetPairedDataTypeMaps()
+    //{
+    //    // there is always at most a single data type map in each direction
+    //    yield return (_cvLeftToRight?.DataTypeMap, _cvRightToLeft?.DataTypeMap);
+    //}
+
+
+    private void checkOverviewMaps(FhirArtifactClassEnum artifactType)
+    {
+        if ((_cvLeftToRight == null) || (_cvRightToLeft == null))
+        {
+            // nothing to check if we do not have maps
+            return;
+        }
+
+        // make any maps that are missing
+        ConceptMap up;
+        ConceptMap down;
+
+        switch (artifactType)
+        {
+            case FhirArtifactClassEnum.PrimitiveType:
+            case FhirArtifactClassEnum.ComplexType:
+                up = _cvLeftToRight.DataTypeMap ?? _cvLeftToRight.BuildBaseTypeMap();
+                down = _cvRightToLeft.DataTypeMap ?? _cvRightToLeft.BuildBaseTypeMap();
+
+                // ensure this map has our usage context
+                setUseContext(up, CommonDefinitions.ConceptMapUsageContextTypeOverview);
+                setUseContext(down, CommonDefinitions.ConceptMapUsageContextTypeOverview);
+                break;
+
+            case FhirArtifactClassEnum.Resource:
+                up = _cvLeftToRight.ResourceTypeMap ?? _cvLeftToRight.BuildBaseResourceMap();
+                down = _cvRightToLeft.ResourceTypeMap ?? _cvRightToLeft.BuildBaseResourceMap();
+
+                // ensure this map has our usage context
+                setUseContext(up, CommonDefinitions.ConceptMapUsageContextResourceOverview);
+                setUseContext(down, CommonDefinitions.ConceptMapUsageContextResourceOverview);
+                break;
+
+            default:
+                return;
+        }
+
+        // ensure these maps have our properties
+        addConceptMapPropertyDefinitions(up);
+        addConceptMapPropertyDefinitions(down);
+
+        //// create lookups - need the targets of each map as keys for searching, but the matching source elements for making connections
+        //ILookup<string, ConceptMap.SourceElementComponent> upSourcesByTarget = up.Group[0].Element
+        //    .SelectMany(se => se.Target.Select(te => (te.Code, se)))
+        //    .ToLookup(kvp => kvp.Code, kvp => kvp.se);
+
+        //ILookup<string, ConceptMap.SourceElementComponent> downSourcesByTarget = down.Group[0].Element
+        //    .SelectMany(se => se.Target.Select(te => (te.Code, se)))
+        //    .ToLookup(kvp => kvp.Code, kvp => kvp.se);
+
+        // check for the overview links in the correct sources
+        foreach ((ConceptMap map, IEnumerable<StructureDefinition> types) in getMapAndTypesArray())
+        {
+            // create a source lookup
+            ILookup<string, ConceptMap.SourceElementComponent> sources = map.Group[0].Element.ToLookup(e => e.Code);
+
+            // check to see if all the types exist in the map
+            foreach (StructureDefinition sd in types)
+            {
+                if (!sources.Contains(sd.Name))
+                {
+                    // add a no-map entry
+                    ConceptMap.SourceElementComponent sourceElement = new()
+                    {
+                        Code = sd.Name,
+                        NoMap = true,
+                    };
+                    map.Group[0].Element.Add(sourceElement);
+                }
+            }
+        }
+
+        // traverse the maps looking for reversible inversions that don't exist
+        foreach ((ConceptMap map, ConceptMap inverseMap) in ((ConceptMap, ConceptMap)[])[(up, down), (down, up)])
+        {
+            ILookup<string, (ConceptMap.SourceElementComponent, ConceptMap.TargetElementComponent)> inverseTargets = inverseMap.Group[0].Element
+                .SelectMany(se => se.Target.Select(te => (te.Code, (se, te))))
+                .ToLookup(kvp => kvp.Code, kvp => kvp.Item2);
+
+            // iterate over the souces in the forward map to check the source type
+            foreach (ConceptMap.SourceElementComponent forwardSource in map.Group[0].Element)
+            {
+                // iterate over the inverse targets that match this type
+                foreach ((ConceptMap.SourceElementComponent inverseSource, ConceptMap.TargetElementComponent inverseTarget) in inverseTargets[forwardSource.Code])
+                {
+                    // check to see if the forward map has the inverse source
+                    if (forwardSource.Target.Any(sourceTarget => sourceTarget.Code == inverseSource.Code))
+                    {
+                        // we have a match
+                        continue;
+                    }
+
+                    // add the inverse source to the forward map
+                    forwardSource.Target.Add(new()
+                    {
+                        Code = inverseSource.Code,
+                        Display = inverseSource.Display,
+                        Relationship = invert(inverseTarget.Relationship),
+                        Comment = "Generated by inverting an opposite map",
+                        Property = getInvertedProperties(),
+                    });
+
+                    if (forwardSource.NoMap == true)
+                    {
+                        forwardSource.NoMap = false;
+                    }
+                }
+            }
+        }
+
+        return;
+
+        (ConceptMap, IEnumerable<StructureDefinition>)[] getMapAndTypesArray() => artifactType switch
+        {
+            FhirArtifactClassEnum.PrimitiveType => [(up, _leftDc.PrimitiveTypesByName.Values), (down, _rightDc.PrimitiveTypesByName.Values)],
+            FhirArtifactClassEnum.ComplexType => [(up, _leftDc.ComplexTypesByName.Values), (down, _rightDc.ComplexTypesByName.Values)],
+            FhirArtifactClassEnum.Resource => [(up, _leftDc.ResourcesByName.Values), (down, _rightDc.ResourcesByName.Values)],
+            _ => [],
+        };
+    }
+
+
+    private ConceptMap buildInverseMap(
+        ConceptMap existing,
+        StructureDefinition existingSourceSd,
+        StructureDefinition existingTargetSd,
+        CrossVersionMapCollection targetCv)
+    {
+        // alias our value sets for sanity (invert from existing)
+        StructureDefinition sourceSd = existingTargetSd;
+        StructureDefinition targetSd = existingSourceSd;
+
+        // build our initial concept map
+        ConceptMap cm = targetCv.BuildBaseMap(sourceSd, targetSd);
+
+        Dictionary<(string system, string code), Dictionary<(string system, string? code), ValueSetCodeComparisonRec>> exMapByTarget = [];
+
+        // unroll the existing concept map
+        foreach (ConceptMap.GroupComponent exGroup in existing.Group)
+        {
+            foreach (ConceptMap.SourceElementComponent exSourceElement in exGroup.Element)
+            {
+                // check for no-map
+                if (exSourceElement.NoMap == true)
+                {
+                    // skip
+                    continue;
+                }
+
+                // iterate over our concept map targets
+                foreach (ConceptMap.TargetElementComponent exTargetElement in exSourceElement.Target)
+                {
+                    ValueSetCodeComparisonRec mapRec = new()
+                    {
+                        SourceSystem = exGroup.Source,
+                        SourceCode = exSourceElement.Code,
+                        SourceDisplay = exSourceElement.Display,
+                        TargetSystem = exGroup.Target,
+                        TargetCode = exTargetElement.Code,
+                        TargetDisplay = exTargetElement.Display,
+                        Relationship = exTargetElement.Relationship,
+                        Comment = exTargetElement.Comment,
+                        IsGenerated = exTargetElement.cgIsGenerated(),
+                        NeedsReview = exTargetElement.cgNeedsReview(),
+                    };
+
+                    // add to the target-based map
+                    if (!exMapByTarget.TryGetValue((exGroup.Target, exTargetElement.Code), out Dictionary<(string system, string? code), ValueSetCodeComparisonRec>? mapRecsBySource))
+                    {
+                        mapRecsBySource = [];
+                        exMapByTarget.Add((exGroup.Target, exTargetElement.Code), mapRecsBySource);
+                    }
+
+                    mapRecsBySource[(exGroup.Source, exSourceElement.Code)] = mapRec;
+                }
+            }
+        }
+
+        Dictionary<(string system, string code), Dictionary<(string system, string? code), ValueSetCodeComparisonRec>> mapBySource = [];
+
+        // invert the existing records
+        foreach (((string exTargetSystem, string exTargetCode), Dictionary<(string system, string? code), ValueSetCodeComparisonRec> exMapRecsBySource) in exMapByTarget)
+        {
+            if (!mapBySource.TryGetValue((exTargetSystem, exTargetCode), out Dictionary<(string system, string? code), ValueSetCodeComparisonRec>? mapRecsByTarget))
+            {
+                mapRecsByTarget = [];
+                mapBySource.Add((exTargetSystem, exTargetCode), mapRecsByTarget);
+            }
+
+            // iterate over our records and invert them
+            foreach (((string exSourceSystem, string? exSourceCode), ValueSetCodeComparisonRec exMapRec) in exMapRecsBySource)
+            {
+                ValueSetCodeComparisonRec mapRec = new()
+                {
+                    SourceSystem = exMapRec.TargetSystem!,
+                    SourceCode = exMapRec.TargetCode!,
+                    SourceDisplay = exMapRec.TargetDisplay,
+                    TargetSystem = exMapRec.SourceSystem,
+                    TargetCode = exMapRec.SourceCode,
+                    TargetDisplay = exMapRec.SourceDisplay,
+                    Relationship = invert(exMapRec.Relationship),
+                    Comment = "Generated by inverting an opposite map",
+                    IsGenerated = true,
+                    NeedsReview = true,
+                };
+
+                mapRecsByTarget[(exMapRec.SourceSystem, exMapRec.SourceCode)] = mapRec;
+            }
+        }
+
+        // group our map by source/target system pair
+        IEnumerable<IGrouping<(string, string), ValueSetCodeComparisonRec>> results =
+            from rec in mapBySource.SelectMany(kvp => kvp.Value.Values)
+            group rec by (rec.SourceSystem, rec.TargetSystem);
+
+        // rebuild the ConceptMap from our grouped records
+        cm.Group.Clear();
+        foreach (IGrouping<(string, string), ValueSetCodeComparisonRec> systemPairGroup in results)
+        {
+            (string sourceSystem, string targetSystem) = systemPairGroup.Key;
+            string groupKey = sourceSystem + "-" + targetSystem;
+
+            ConceptMap.GroupComponent cmGroup = new()
+            {
+                Source = sourceSystem,
+                Target = targetSystem,
+                Element = [],
+            };
+
+            IEnumerable<IGrouping<string, ValueSetCodeComparisonRec>> sourceCodeGroups = systemPairGroup.GroupBy(rec => rec.SourceCode);
+
+            foreach (IGrouping<string, ValueSetCodeComparisonRec> sourceCodeGroup in sourceCodeGroups)
+            {
+                string sourceCode = sourceCodeGroup.Key;
+
+                ValueSetCodeComparisonRec firstRec = sourceCodeGroup.First();
+
+                ConceptMap.SourceElementComponent element = new()
+                {
+                    Code = firstRec.SourceCode,
+                    Display = firstRec.SourceDisplay,
+                };
+
+                foreach (ValueSetCodeComparisonRec rec in sourceCodeGroup)
+                {
+                    // check for no map
+                    if (rec.NoMap == true)
+                    {
+                        element.NoMap = rec.NoMap;
+                        continue;
+                    }
+
+                    element.Target.Add(new()
+                    {
+                        Code = rec.TargetCode,
+                        Display = rec.TargetDisplay,
+                        Relationship = rec.Relationship,
+                        Comment = rec.Comment,
+                        Property = getMappingProperties(rec),
+                    });
+                }
+
+                cmGroup.Element.Add(element);
+            }
+
+            cm.Group.Add(cmGroup);
+        }
+
+        // update our concept map aggregate relationships
+        aggregateValueSetRelationships(cm);
+
+        // ensure this map has our usage context
+        setUseContext(cm, CommonDefinitions.ConceptMapUsageContextTypeOverview);
+
+        // ensure this map has our properties
+        addConceptMapPropertyDefinitions(cm);
+
+        return cm;
+    }
+
+
+    private void comparePrimitiveType(
+        DefinitionCollection dc,
+        StructureDefinition sd,
+        DefinitionCollection targetDc,
+        CrossVersionMapCollection cv)
+    {
+        // get all the maps for this source (versioned URL will get versioned and unversioned)
+        List<ConceptMap> maps = cv.GetMapsForSource(sd.Url);
+
+        // check for no maps
+        if (maps.Count == 0)
+        {
+            // if we cannot find a matching type in the target, we are done
+            if (!targetDc.TryGetStructure(sd.Url, out StructureDefinition? tSd))
+            {
+                // flag that we are not comparing this because we could not expand
+                _primitiveComparisons.AddToValue(sd.Url, new()
+                {
+                    Source = sd,
+                    Target = null,
+                    Relationship = null,
+                    IssueCode = ComparisonIssueCode.NoTarget,
+                    Message = "Not compared because this Primitive Type has no maps and does not exist in the target.",
+                    Map = null,
+                });
+
+                _logger.LogNoTarget(sd.Url);
+                return;
+            }
+
+            // add a shell map for this target
+            maps.Add(cv.BuildBaseMap(sd, tSd));
+        }
+
+        // iterate over our maps
+        foreach (ConceptMap cm in maps)
+        {
+            // check for invalid target in the map
+            if ((cm.TargetScope == null) ||
+                (cm.TargetScope is not Canonical targetCanonical))
+            {
+                // flag that we are not comparing this because we could not expand
+                _primitiveComparisons.AddToValue(sd.Url, new()
+                {
+                    Source = sd,
+                    Target = null,
+                    Relationship = null,
+                    IssueCode = ComparisonIssueCode.InvalidMap,
+                    Message = $"Not compared because map {cm.Id} ({cm.Url}) does not have a valid target.",
+                    Map = cm,
+                });
+
+                _logger.LogInvalidMapTarget(sd.Url, cm.Url);
+                continue;
+            }
+
+            string targetVersioned = targetCanonical.Value;
+            string targetUnversioned = targetVersioned.Split('|')[0];
+
+            // if we cannot find the requested target, we cannot perform the comparison
+            if (!targetDc.TryGetStructure(targetVersioned, out StructureDefinition? targetSd))
+            {
+                // flag that we are not comparing this because we could not expand
+                _primitiveComparisons.AddToValue(sd.Url, new()
+                {
+                    Source = sd,
+                    Target = null,
+                    Relationship = null,
+                    IssueCode = ComparisonIssueCode.CannotExpandTarget,
+                    Message = $"Not compared because {targetVersioned} did not resolve (requested by {cm.Url}).",
+                    Map = cm,
+                });
+                _logger.LogMapTargetNotFound(targetVersioned, cm.Url);
+                continue;
+            }
+
+            // ensure this map has our usage context
+            setUseContext(cm, CommonDefinitions.ConceptMapUsageContextTypeOverview);
+
+            // ensure this map has our properties
+            addConceptMapPropertyDefinitions(cm);
+
+            // actually compare the two primitive types, using the map
+            comparePrimitiveType(sd, targetSd, cm);
+        }
+    }
+
+
+    private void comparePrimitiveType(
+        StructureDefinition source,
+        StructureDefinition target,
+        ConceptMap cm)
+    {
+        //Dictionary<string, Dictionary<string, ValueSet.ContainsComponent>> targetCodesDict = [];
+        //Dictionary<(string system, string code), Dictionary<(string system, string? code), ValueSetCodeComparisonRec>> mapBySource = [];
+        //Dictionary<(string system, string code), Dictionary<(string system, string? code), ValueSetCodeComparisonRec>> mapByTarget = [];
+
+        //// unroll the target system so we can lookup codes
+        //foreach (ValueSet.ContainsComponent tc in target.cgGetFlatContains())
+        //{
+        //    // check for this code
+        //    if (!targetCodesDict.TryGetValue(tc.Code, out Dictionary<string, ValueSet.ContainsComponent>? targetsBySystem))
+        //    {
+        //        targetsBySystem = [];
+        //        targetCodesDict[tc.Code] = targetsBySystem;
+        //    }
+
+        //    // add this system
+        //    targetsBySystem[tc.System] = tc;
+
+        //    // add to our target map dictionary
+        //    if (!mapByTarget.ContainsKey((tc.System, tc.Code)))
+        //    {
+        //        mapByTarget.Add((tc.System, tc.Code), []);
+        //    }
+        //}
+
+        //// unroll the existing concept map
+        //foreach (ConceptMap.GroupComponent cmGroup in cm.Group)
+        //{
+        //    foreach (ConceptMap.SourceElementComponent cmSourceElement in cmGroup.Element)
+        //    {
+        //        if (!mapBySource.TryGetValue((cmGroup.Source, cmSourceElement.Code), out Dictionary<(string system, string? code), ValueSetCodeComparisonRec>? mapRecsByTarget))
+        //        {
+        //            mapRecsByTarget = [];
+        //            mapBySource.Add((cmGroup.Source, cmSourceElement.Code), mapRecsByTarget);
+        //        }
+
+        //        // check for no-map
+        //        if (cmSourceElement.NoMap == true)
+        //        {
+        //            // add a no-map entry
+        //            mapRecsByTarget[(cmGroup.Target, null)] = new()
+        //            {
+        //                SourceSystem = cmGroup.Source,
+        //                SourceCode = cmSourceElement.Code,
+        //                SourceDisplay = cmSourceElement.Display,
+        //                NoMap = cmSourceElement.NoMap,
+        //                Relationship = null,
+        //                Comment = $"Concept is listed in {cm.Url} as not mapped.",
+        //                IsGenerated = false,
+        //                NeedsReview = false,
+        //            };
+        //        }
+
+        //        // iterate over our concept map targets
+        //        foreach (ConceptMap.TargetElementComponent cmTargetElement in cmSourceElement.Target)
+        //        {
+        //            ValueSetCodeComparisonRec mapRec = new()
+        //            {
+        //                SourceSystem = cmGroup.Source,
+        //                SourceCode = cmSourceElement.Code,
+        //                SourceDisplay = cmSourceElement.Display,
+        //                TargetSystem = cmGroup.Target,
+        //                TargetCode = cmTargetElement.Code,
+        //                TargetDisplay = cmTargetElement.Display,
+        //                Relationship = cmTargetElement.Relationship,
+        //                Comment = cmTargetElement.Comment,
+        //                IsGenerated = cmTargetElement.cgIsGenerated(),
+        //                NeedsReview = cmTargetElement.cgNeedsReview(),
+        //            };
+
+        //            // add to the source-based map
+        //            mapRecsByTarget[(cmGroup.Target, cmTargetElement.Code)] = mapRec;
+
+        //            // add to the target-based map
+        //            if (!mapByTarget.TryGetValue((cmGroup.Target, cmTargetElement.Code), out Dictionary<(string system, string? code), ValueSetCodeComparisonRec>? mapRecsBySource))
+        //            {
+        //                mapRecsBySource = [];
+        //                mapByTarget.Add((cmGroup.Target, cmTargetElement.Code), mapRecsBySource);
+        //            }
+
+        //            mapRecsBySource[(cmGroup.Source, cmSourceElement.Code)] = mapRec;
+        //        }
+        //    }
+        //}
+
+        //// iterate over the source value set to check and update the map
+        //foreach (ValueSet.ContainsComponent sourceConcept in source.cgGetFlatContains().ToArray())
+        //{
+        //    // get or create a map dictionary for this value set system+code
+        //    if (!mapBySource.TryGetValue((sourceConcept.System, sourceConcept.Code), out Dictionary<(string system, string? code), ValueSetCodeComparisonRec>? mapRecsByTarget))
+        //    {
+        //        mapRecsByTarget = [];
+        //        mapBySource.Add((sourceConcept.System, sourceConcept.Code), mapRecsByTarget);
+        //    }
+
+        //    // if there are no known targets, see if we can find a match by literal
+        //    if ((mapRecsByTarget.Count == 0) &&
+        //        targetCodesDict.TryGetValue(sourceConcept.Code, out Dictionary<string, ValueSet.ContainsComponent>? targetsBySystem))
+        //    {
+        //        // check for the same system
+        //        if (targetsBySystem.TryGetValue(sourceConcept.System, out ValueSet.ContainsComponent? matchedContains))
+        //        {
+        //            ValueSetCodeComparisonRec mapRec = new()
+        //            {
+        //                SourceSystem = sourceConcept.System,
+        //                SourceCode = sourceConcept.Code,
+        //                SourceDisplay = sourceConcept.Display,
+        //                TargetSystem = matchedContains.System,
+        //                TargetCode = matchedContains.Code,
+        //                TargetDisplay = matchedContains.Display,
+        //                Relationship = CMR.Equivalent,
+        //                Comment = $"`{sourceConcept.Code}` does not have a map, but found a literal match of `{matchedContains.Code}` in code and system.",
+        //                IsGenerated = true,
+        //                NeedsReview = true,
+        //            };
+
+        //            // add to the source-based map
+        //            mapRecsByTarget.Add((matchedContains.System, matchedContains.Code), mapRec);
+
+        //            // add to the target-based map
+        //            if (!mapByTarget.TryGetValue((matchedContains.System, matchedContains.Code), out Dictionary<(string system, string? code), ValueSetCodeComparisonRec>? mapRecsBySource))
+        //            {
+        //                mapRecsBySource = [];
+        //                mapByTarget.Add((matchedContains.System, matchedContains.Code), mapRecsBySource);
+        //            }
+
+        //            mapRecsBySource[(sourceConcept.System, sourceConcept.Code)] = mapRec;
+        //        }
+        //        else
+        //        {
+        //            // add a map for each matching target literal
+        //            foreach (ValueSet.ContainsComponent targetContains in targetsBySystem.Values)
+        //            {
+        //                ValueSetCodeComparisonRec mapRec = new()
+        //                {
+        //                    SourceSystem = sourceConcept.System,
+        //                    SourceCode = sourceConcept.Code,
+        //                    SourceDisplay = sourceConcept.Display,
+        //                    TargetSystem = targetContains.System,
+        //                    TargetCode = targetContains.Code,
+        //                    TargetDisplay = targetContains.Display,
+        //                    Relationship = targetsBySystem.Count == 1 ? CMR.Equivalent : CMR.SourceIsBroaderThanTarget,
+        //                    Comment = targetsBySystem.Count == 1
+        //                        ? $"`{sourceConcept.Code}` does not have a map, but found a literal match of `{targetContains.Code}` with a different system."
+        //                        : $"`{sourceConcept.Code}` does not have a map, but found literal matches of `{targetContains.Code}` in multiple systems.",
+        //                    IsGenerated = true,
+        //                    NeedsReview = true,
+        //                };
+
+        //                // add to the source-based map
+        //                mapRecsByTarget.Add((targetContains.System, targetContains.Code), mapRec);
+
+        //                // add to the target-based map
+        //                if (!mapByTarget.TryGetValue((targetContains.System, targetContains.Code), out Dictionary<(string system, string? code), ValueSetCodeComparisonRec>? mapRecsBySource))
+        //                {
+        //                    mapRecsBySource = [];
+        //                    mapByTarget.Add((targetContains.System, targetContains.Code), mapRecsBySource);
+        //                }
+
+        //                mapRecsBySource[(sourceConcept.System, sourceConcept.Code)] = mapRec;
+        //            }
+        //        }
+        //    }       // if: no known targets
+
+        //    // iterate over our existing records to check content elements (e.g., display)
+        //    foreach (ValueSetCodeComparisonRec rec in mapRecsByTarget.Values)
+        //    {
+        //        // check for no source display
+        //        if (string.IsNullOrEmpty(rec.SourceDisplay))
+        //        {
+        //            rec.SourceDisplay = sourceConcept.Display;
+        //        }
+
+        //        // check for having a target and not having a display
+        //        if (string.IsNullOrEmpty(rec.TargetDisplay) &&
+        //            (rec.TargetCode != null) &&
+        //            (rec.TargetSystem != null) &&
+        //            targetCodesDict.TryGetValue(rec.TargetCode, out Dictionary<string, ValueSet.ContainsComponent>? matchingTargets) &&
+        //            matchingTargets.TryGetValue(rec.TargetSystem, out ValueSet.ContainsComponent? matchingContains))
+        //        {
+        //            rec.TargetDisplay = matchingContains.Display;
+        //        }
+        //    }       // foreach: iterate over map targets to check contents
+        //}           // foreach: iterate over source valueset
+
+        //// traverse the source map to check relationships
+        //foreach (((string sourceSystem, string sourceCode), Dictionary<(string system, string? code), ValueSetCodeComparisonRec> mapRecsByTarget) in mapBySource)
+        //{
+        //    // check for the source being an escape-valve code
+        //    if (_escapeValveCodes.Contains(sourceCode))
+        //    {
+        //        // iterate over our map targets
+        //        foreach (((string targetSystem, string? targetCode), ValueSetCodeComparisonRec rec) in mapRecsByTarget)
+        //        {
+        //            // skip no-maps
+        //            if (targetCode == null)
+        //            {
+        //                continue;
+        //            }
+
+        //            // skip reviewed records
+        //            if (rec.IsGenerated == false)
+        //            {
+        //                continue;
+        //            }
+
+        //            // skip anything not equivalent
+        //            if (rec.Relationship == CMR.Equivalent)
+        //            {
+        //                continue;
+        //            }
+
+        //            // check for mapping to another escape-valve code
+        //            if (_escapeValveCodes.Contains(targetCode))
+        //            {
+        //                // check to see if the sides have a different number of concepts
+        //                if (mapBySource.Count != mapByTarget.Count)
+        //                {
+        //                    // this should not be equivalent and should be reviewed
+        //                    rec.Relationship = mapBySource.Count > mapByTarget.Count ? CMR.SourceIsNarrowerThanTarget : CMR.SourceIsBroaderThanTarget;
+        //                    rec.IsGenerated = true;
+        //                    rec.Comment = rec.Comment + $" Escape-valve code `{sourceCode}` maps to `{targetCode}`, but represent different concept domains (different number of codes).";
+        //                }
+        //            }
+        //        }
+        //    }
+
+        //    // check for a single source with multiple targets and any that map as equivalent
+        //    if ((mapRecsByTarget.Count > 1) &&
+        //        mapRecsByTarget.Any(kvp => kvp.Value.Relationship == CMR.Equivalent))
+        //    {
+        //        foreach (((string tSystem, string? tCode), ValueSetCodeComparisonRec rec) in mapRecsByTarget)
+        //        {
+        //            // skip any that have been reviewed
+        //            if (rec.IsGenerated == false)
+        //            {
+        //                continue;
+        //            }
+
+        //            // skip any that look correct
+        //            if (rec.Relationship != CMR.Equivalent)
+        //            {
+        //                continue;
+        //            }
+
+        //            // mark as not equivalent and flag for review
+        //            rec.Relationship = CMR.SourceIsBroaderThanTarget;
+        //            rec.IsGenerated = true;
+        //            rec.Comment = $" `{rec.SourceCode}` maps to multiple codes ({string.Join(", ", mapRecsByTarget.Values.Select(r => "`" + r.TargetCode + "`"))}) and cannot be equivalent.";
+        //        }
+        //    }
+        //}
+
+        //// traverse the target map to check relationships
+        //foreach (((string targetSystem, string targetCode), Dictionary<(string system, string? code), ValueSetCodeComparisonRec> mapRecsBySource) in mapByTarget)
+        //{
+        //    // iterate over the map recs
+        //    foreach (((string sourceSystem, string? sourceCode), ValueSetCodeComparisonRec rec) in mapRecsBySource)
+        //    {
+        //        // check for an unreviewed comparison that is equivalent from multiple sources
+        //        if ((rec.Relationship == CMR.Equivalent) &&
+        //            (rec.IsGenerated == null) &&
+        //            (mapRecsBySource.Count > 1))
+        //        {
+        //            // mark as not equivalent and flag for review
+        //            rec.Relationship = CMR.SourceIsNarrowerThanTarget;
+        //            rec.IsGenerated = true;
+        //            rec.Comment = $" {string.Join(", ", mapRecsBySource.Values.Select(r => "`" + r.SourceCode + "`"))} all map to `{rec.TargetCode}` and cannot be equivalent.";
+        //        }
+        //    }
+        //}
+
+        //// group our map by source/target system pair
+        //IEnumerable<IGrouping<(string, string), ValueSetCodeComparisonRec>> results =
+        //    from rec in mapBySource.SelectMany(kvp => kvp.Value.Values)
+        //    group rec by (rec.SourceSystem, rec.TargetSystem);
+
+        //// rebuild the ConceptMap from our grouped records
+        //cm.Group.Clear();
+        //foreach (IGrouping<(string, string), ValueSetCodeComparisonRec> systemPairGroup in results)
+        //{
+        //    (string sourceSystem, string targetSystem) = systemPairGroup.Key;
+        //    string groupKey = sourceSystem + "-" + targetSystem;
+
+        //    ConceptMap.GroupComponent cmGroup = new()
+        //    {
+        //        Source = sourceSystem,
+        //        Target = targetSystem,
+        //        Element = [],
+        //    };
+
+        //    IEnumerable<IGrouping<string, ValueSetCodeComparisonRec>> sourceCodeGroups = systemPairGroup.GroupBy(rec => rec.SourceCode);
+
+        //    foreach (IGrouping<string, ValueSetCodeComparisonRec> sourceCodeGroup in sourceCodeGroups)
+        //    {
+        //        string sourceCode = sourceCodeGroup.Key;
+
+        //        ValueSetCodeComparisonRec firstRec = sourceCodeGroup.First();
+
+        //        ConceptMap.SourceElementComponent element = new()
+        //        {
+        //            Code = firstRec.SourceCode,
+        //            Display = firstRec.SourceDisplay,
+        //        };
+
+        //        foreach (ValueSetCodeComparisonRec rec in sourceCodeGroup)
+        //        {
+        //            // check for no map
+        //            if (rec.NoMap == true)
+        //            {
+        //                element.NoMap = rec.NoMap;
+        //                continue;
+        //            }
+
+        //            element.Target.Add(new()
+        //            {
+        //                Code = rec.TargetCode,
+        //                Display = rec.TargetDisplay,
+        //                Relationship = rec.Relationship,
+        //                Comment = rec.Comment,
+        //                Property = rec.IsGenerated == null
+        //                    ? []
+        //                    : [new() { Code = CommonDefinitions.ConceptMapPropertyGenerated, Value = new FhirBoolean(rec.IsGenerated) }],
+        //            });
+        //        }
+
+        //        cmGroup.Element.Add(element);
+        //    }
+
+        //    cm.Group.Add(cmGroup);
+        //}
+
+        //// update our concept map aggregate relationships
+        //aggregateValueSetRelationships(cm);
+    }
+
+}

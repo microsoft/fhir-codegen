@@ -58,12 +58,18 @@ internal static partial class PackageLoaderLogMessages
 
     [LoggerMessage(Level = LogLevel.Information, Message = "Dependencies resolved for {moniker}, loading package contents")]
     internal static partial void LogPackageDependenciesResolved(this ILogger logger, string moniker);
+
+    [LoggerMessage(Level = LogLevel.Error, Message = "Failed to access the syncrhonization object for {moniker}!")]
+    internal static partial void LogSynchronizationFailed(this ILogger logger, string moniker);
+
 }
 
 
 /// <summary>A package loader.</summary>
 public partial class PackageLoader : IDisposable
 {
+    private const int _packageAccessTimeout = 5 * 60 * 1000;
+
     internal enum VersionHandlingTypes
     {
         /// <summary>Unprocessed / unknown / SemVer / ranges / etc (pass through).</summary>
@@ -638,8 +644,6 @@ public partial class PackageLoader : IDisposable
             return null;
         }
 
-        using InterProcessSync synchronizationObject = new();
-
         // we need to filter structures post parsing if we are not loading all known types
         bool filterStructureDefinitions = !_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.PrimitiveType) ||
                                           !_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.ComplexType) ||
@@ -718,13 +722,15 @@ public partial class PackageLoader : IDisposable
                 }
             }
 
-            Guid? syncHandle = null;
-
-            try
+            using Mutex packageAccessMutex = new Mutex(true, "fcg-" + packageReference.Moniker, out bool mutexCreated);
             {
-                string sName = "fcg-" + packageReference.Moniker;
-
-                (syncHandle, bool _) = await synchronizationObject.TryGetLock(sName);
+                // if we did not create the mutex, we need to wait for it
+                if (!mutexCreated &&
+                    !packageAccessMutex.WaitOne(_packageAccessTimeout))
+                {
+                    _logger.LogSynchronizationFailed(packageReference.Moniker);
+                    throw new Exception($"Failed to access the synchronization object for {packageReference.Moniker}");
+                }
 
                 bool needsInstall = true;
 
@@ -795,13 +801,9 @@ public partial class PackageLoader : IDisposable
                     // failed to install
                     throw new Exception($"Failed to install package {packageReference.Moniker} as requested by {inputDirective}");
                 }
-            }
-            finally
-            {
-                if (syncHandle != null)
-                {
-                    synchronizationObject.ReleaseLock(syncHandle.Value);
-                }
+
+                // release our mutex
+                packageAccessMutex.ReleaseMutex();
             }
 
             _ForPackages.PackageManifest manifest = await _cache.ReadManifestEx(packageReference) ?? throw new Exception("Failed to load package manifest");

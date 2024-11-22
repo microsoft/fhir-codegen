@@ -63,10 +63,15 @@ public static class CommonDefinitions
     public const string ConceptMapPropertiesSystem = "http://ginoc.io/fhir/CodeSystem/conceptmap-properties";
     public const string ConceptMapPropertyGenerated = "cg-generated";
     public const string ConceptMapPropertyNeedsReview = "needs-review";
+    public const string ConceptMapPropertyValueDomainRelationship = "value-domain-relationship";
 
     public const string ConceptMapUsageContextSystem = "http://ginoc.io/fhir/CodeSystem/conceptmap-usage-context";
     public const string ConceptMapUsageContextTarget = "Target";
     public const string ConceptMapUsageContextValueSet = "ValueSet";
+    public const string ConceptMapUsageContextTypeOverview = "Types";
+    public const string ConceptMapUsageContextDataType = "DataType";
+    public const string ConceptMapUsageContextResourceOverview = "Resources";
+    public const string ConceptMapUsageContextResource = "Resource";
 
 
     public const string ExtUrlComment = "http://ginoc.io/fhir/StructureDefinition/comment";

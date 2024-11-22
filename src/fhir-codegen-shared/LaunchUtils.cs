@@ -99,7 +99,13 @@ internal static class LaunchUtils
             ConfigurationType = typeof(ConfigXVer),
             SubCommands = [
                 ("update-maps", "Update the FHIR Cross Version maps"),
-                ("build-docs", "Build Markdown Documentation for Review")
+                ("update-vs-maps", "Update the FHIR Cross Version maps for value sets"),
+                ("update-type-maps", "Update the FHIR Cross Version maps for data types"),
+                ("update-resource-maps", "Update the FHIR Cross Version maps for resources"),
+                ("build-docs", "Build Markdown Documentation for Review"),
+                ("build-vs-docs", "Build Markdown Documentation for value sets for Review"),
+                ("build-type-docs", "Build Markdown Documentation for data types for Review"),
+                ("build-resource-docs", "Build Markdown Documentation for resources for Review"),
                 ],
         },
         new()

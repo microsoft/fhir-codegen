@@ -22,6 +22,7 @@ using System.CommandLine;
 using System.Linq;
 using System.Data.Common;
 using System.Collections.Concurrent;
+using Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 
 
@@ -100,9 +101,39 @@ public class XVerProcessor
                 Compare(saveUpdates: true);
                 break;
 
+            case "update-vs-maps":
+                Load(preferV1Maps: true);
+                Compare(saveUpdates: true, artifactFilter: FhirArtifactClassEnum.ValueSet);
+                break;
+
+            case "update-type-maps":
+                Load(preferV1Maps: true);
+                Compare(saveUpdates: true, artifactFilter: FhirArtifactClassEnum.PrimitiveType);
+                break;
+
+            case "update-resource-maps":
+                Load(preferV1Maps: true);
+                Compare(saveUpdates: true, artifactFilter: FhirArtifactClassEnum.Resource);
+                break;
+
             case "build-docs":
                 Load(preferV1Maps: false);
                 WriteComparisonDocs();
+                break;
+
+            case "build-vs-docs":
+                Load(preferV1Maps: false);
+                WriteComparisonDocs(artifactFilter: FhirArtifactClassEnum.ValueSet);
+                break;
+
+            case "build-type-docs":
+                Load(preferV1Maps: false);
+                WriteComparisonDocs(artifactFilter: FhirArtifactClassEnum.PrimitiveType);
+                break;
+
+            case "build-resource-docs":
+                Load(preferV1Maps: false);
+                WriteComparisonDocs(artifactFilter: FhirArtifactClassEnum.Resource);
                 break;
 
             default:
@@ -155,7 +186,7 @@ public class XVerProcessor
         }
     }
 
-    public void Compare(bool? saveUpdates = null)
+    public void Compare(bool? saveUpdates = null, FhirArtifactClassEnum? artifactFilter = null)
     {
         if (_definitions.Length < 2)
         {
@@ -168,8 +199,13 @@ public class XVerProcessor
             Load(preferV1Maps: false);
         }
 
-        // discover the set of value sets that we want to compare across all selected versions
-        _vsUrlsToInclude = getValueSetsToCompare();
+        if ((artifactFilter == null) ||
+            (artifactFilter == FhirArtifactClassEnum.ValueSet) ||
+            (artifactFilter == FhirArtifactClassEnum.Resource))
+        {
+            // discover the set of value sets that we want to compare across all selected versions
+            _vsUrlsToInclude = getValueSetsToCompare();
+        }
 
         // walk the definitions to run the comparisons between each version pair
         for (int definitionIndex = 1; definitionIndex < _definitions.Length; definitionIndex++)
@@ -184,16 +220,21 @@ public class XVerProcessor
                 continue;
             }
 
-            // register our filtered sets of value sets
-            comparer.RegisterValueSetFilters(_vsUrlsToInclude[left.Key], _vsUrlsToInclude[right.Key]);
+            if ((artifactFilter == null) ||
+                (artifactFilter == FhirArtifactClassEnum.ValueSet) ||
+                (artifactFilter == FhirArtifactClassEnum.Resource))
+            {
+                // register our filtered sets of value sets
+                comparer.RegisterValueSetFilters(_vsUrlsToInclude[left.Key], _vsUrlsToInclude[right.Key]);
+            }
 
             // run the comparison (bi-directional)
-            comparer.Compare();
+            comparer.Compare(artifactFilter);
 
             // save our results if necessary
             if (saveUpdates ?? _config.SaveComparisonResult)
             {
-                comparer.Save();
+                comparer.Save(artifactFilter);
             }
         }
     }
@@ -290,7 +331,7 @@ public class XVerProcessor
         return vsUrlsToInclude;
     }
 
-    public void WriteComparisonDocs()
+    public void WriteComparisonDocs(FhirArtifactClassEnum? artifactFilter = null)
     {
         // check for no output location
         if (string.IsNullOrEmpty(_config.CrossVersionMapSourcePath))
@@ -304,12 +345,19 @@ public class XVerProcessor
             Directory.CreateDirectory(docDir);
         }
 
-        ValueSetGraph vsGraph = new()
+        ValueSetGraph? vsGraph = null;
+
+        if ((artifactFilter == null) ||
+            (artifactFilter == CodeGenCommon.Models.FhirArtifactClassEnum.ValueSet) ||
+            (artifactFilter == CodeGenCommon.Models.FhirArtifactClassEnum.Resource))
         {
-            Definitions = _definitions,
-            Resources = buildValueSetNodes(),
-            Edges = buildValueSetEdges(),
-        };
+            vsGraph = new()
+            {
+                Definitions = _definitions,
+                Resources = buildValueSetNodes(),
+                Edges = buildValueSetEdges(),
+            };
+        }
 
         // walk the definitions to write comparisons
         foreach (DefinitionCollection dc in _definitions)
@@ -326,7 +374,11 @@ public class XVerProcessor
             Directory.CreateDirectory(versionDir);
 
             // write the contents of our value sets
-            writeMarkdownValueSets(versionDir, dc, vsGraph);
+            if ((artifactFilter == null) ||
+                (artifactFilter == CodeGenCommon.Models.FhirArtifactClassEnum.ValueSet))
+            {
+                writeMarkdownValueSets(versionDir, dc, vsGraph!);
+            }
         }
     }
 

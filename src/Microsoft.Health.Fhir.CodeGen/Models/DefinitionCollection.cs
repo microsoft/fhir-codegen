@@ -404,6 +404,12 @@ public partial class DefinitionCollection
         // process each element in the snapshot
         foreach (ElementDefinition ed in elements)
         {
+            if (allFieldOrders.ContainsKey(ed.ElementId))
+            {
+                // this is an unprocessable error in the definition, skip this element
+                continue;
+            }
+
             int lastDot = ed.Path.LastIndexOf('.');
             string parentPath = lastDot == -1 ? ed.Path : ed.Path.Substring(0, lastDot);
             int componentFieldOrder = 0;
@@ -1814,7 +1820,11 @@ public partial class DefinitionCollection
 
     /// <summary>Adds a complex type.</summary>
     /// <param name="sd">The structure definition.</param>
-    public void AddComplexType(StructureDefinition sd, FhirReleases.FhirSequenceCodes fhirVersion, string packageId, string packageVersion)
+    public void AddComplexType(
+        StructureDefinition sd,
+        FhirReleases.FhirSequenceCodes fhirVersion,
+        string packageId,
+        string packageVersion)
     {
         // check to see if this resource already exists
         if (_complexTypesByName.TryGetValue(sd.Name, out StructureDefinition? prev) &&
@@ -1831,6 +1841,14 @@ public partial class DefinitionCollection
         {
             // DSTU2 did not include the publication status extension, add it here for consistency
             sd.AddExtension(CommonDefinitions.ExtUrlStandardStatus, new Code("draft"));
+
+            // DSTU2 derivations of Quantity are actually profiles, even though they are defined as types
+            if ((sd.Type == "Quantity") &&
+                (sd.Name != "Quantity"))
+            {
+                AddProfile(sd, fhirVersion, packageId, packageVersion);
+                return;
+            }
         }
 
         // add the package source

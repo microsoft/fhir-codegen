@@ -688,14 +688,14 @@ public class ConfigRoot : ICodeGenConfig
                             dir = Path.Combine(dir, "packages");
                         }
 
-                        //if (string.IsNullOrEmpty(dir))
-                        //{
-                        //    dir = FindRelativeDir(string.Empty, ".fhir");
-                        //}
-                        //else if (!Path.IsPathRooted(dir))
-                        //{
-                        //    dir = FindRelativeDir(string.Empty, dir);
-                        //}
+                        if (string.IsNullOrEmpty(dir))
+                        {
+                            dir = FindRelativeDir(string.Empty, "~/.fhir/packages");
+                        }
+                        else if (!Path.IsPathRooted(dir))
+                        {
+                            dir = FindRelativeDir(string.Empty, dir!);
+                        }
 
                         FhirCacheDirectory = string.IsNullOrEmpty(dir) ? null : dir;
                     }
