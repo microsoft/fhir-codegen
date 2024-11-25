@@ -354,8 +354,7 @@ public class XVerProcessor
             vsGraph = new()
             {
                 Definitions = _definitions,
-                Resources = buildValueSetNodes(),
-                Edges = buildValueSetEdges(),
+                Comparisons = _comparisonCache.Values,
             };
         }
 
@@ -380,71 +379,6 @@ public class XVerProcessor
                 writeMarkdownValueSets(versionDir, dc, vsGraph!);
             }
         }
-    }
-
-    private HashSet<ValueSet> buildValueSetNodes()
-    {
-        // build our set of value sets if necessary
-        if (_vsUrlsToInclude.Count == 0)
-        {
-            _vsUrlsToInclude = getValueSetsToCompare();
-        }
-
-        HashSet<ValueSet> vsNodes = [];
-
-        foreach (DefinitionCollection dc in _definitions)
-        {
-            foreach (string vsUrl in _vsUrlsToInclude[dc.Key])
-            {
-                if (!dc.TryExpandVs(vsUrl, out ValueSet? vs) &&
-                    !dc.TryGetValueSet(vsUrl, out vs))
-                {
-                    continue;
-                }
-
-                vsNodes.Add(vs);
-            }
-        }
-
-        return vsNodes;
-    }
-
-    private Dictionary<ValueSet, List<ResourceGraphEdge<ValueSet>>> buildValueSetEdges()
-    {
-        Dictionary<ValueSet, List<ResourceGraphEdge<ValueSet>>> vsEdges = [];
-
-        foreach (FhirCoreComparer coreComparer in _comparisonCache.Values)
-        {
-            // iterate over the paired maps in this comparison
-            foreach ((ValueSet leftVs, ValueSet rightVs, ConceptMap? up, ConceptMap? down) in coreComparer.GetPairedValueSetMaps())
-            {
-                if (up != null)
-                {
-                    vsEdges.AddToValue(leftVs, new()
-                    {
-                        Direction = ComparisonDirection.Up,
-                        Source = leftVs,
-                        Target = rightVs,
-                        Up = up,
-                        Down = down,
-                    });
-                }
-
-                if (down != null)
-                {
-                    vsEdges.AddToValue(rightVs, new()
-                    {
-                        Direction = ComparisonDirection.Down,
-                        Source = rightVs,
-                        Target = leftVs,
-                        Up = up,
-                        Down = down,
-                    });
-                }
-            }
-        }
-
-        return vsEdges;
     }
 
     private void writeMarkdownValueSets(string dir, DefinitionCollection dc, ValueSetGraph vsGraph)
@@ -745,7 +679,7 @@ public class XVerProcessor
             // build a code map graph
             ValueSetComponentGraph codeMapGraph = new()
             {
-                ValueSetRow = valueSetRow,
+                SourceRow = valueSetRow,
             };
 
             HashSet<string>[] codesPerVs = _definitions.Select(_ => new HashSet<string>()).ToArray();

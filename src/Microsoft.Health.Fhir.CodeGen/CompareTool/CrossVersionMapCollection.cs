@@ -88,6 +88,10 @@ public class CrossVersionMapCollection
 
     private ConceptMap? _dataTypeMap = null;
     private ConceptMap? _resourceTypeMap = null;
+
+    private ConceptMap? _inverseDataTypeMap = null;
+    private ConceptMap? _inverseResourceTypeMap = null;
+
     //private Dictionary<string, ConceptMap> _elementConceptMaps = [];
 
     private Dictionary<string, FhirStructureMap> _fmlByCompositeName = [];
@@ -149,8 +153,10 @@ public class CrossVersionMapCollection
     }
 
     public ConceptMap? DataTypeMap => _dataTypeMap;
+    public ConceptMap? InverseDataTypeMap => _inverseDataTypeMap;
 
     public ConceptMap? ResourceTypeMap => _resourceTypeMap;
+    public ConceptMap? InverseResourceTypeMap => _inverseResourceTypeMap;
 
 
 
@@ -1075,246 +1081,19 @@ public class CrossVersionMapCollection
                 switch (key)
                 {
                     case "codes":
-                        {
-                            if (cm.Group.Count == 0)
-                            {
-                                // skip any empty maps
-                                Console.WriteLine($"Invalid concept map {filename}: expected 1 group, found {cm.Group.Count}");
-                                continue;
-                                //throw new Exception($"Invalid concept map {filename}: expected 1 group, found {cm.Group.Count}");
-                            }
-
-                            string sourceScopeUrl = string.Empty;
-                            string targetScopeUrl = string.Empty;
-
-                            // try to look up the actual value set URLs based on the elements
-                            if (cm.SourceScope is FhirUri originalSourceUri)
-                            {
-                                string elementPath = originalSourceUri.Value.Split('#')[^1];
-                                if (_source.TryFindElementByPath(elementPath, out StructureDefinition? sd, out ElementDefinition? ed))
-                                {
-                                    sourceScopeUrl = ed.Binding?.ValueSet ?? string.Empty;
-                                }
-                            }
-
-                            if (cm.TargetScope is FhirUri originalTargetUri)
-                            {
-                                string elementPath = originalTargetUri.Value.Split('#')[^1];
-                                if (_target.TryFindElementByPath(elementPath, out StructureDefinition? sd, out ElementDefinition? ed))
-                                {
-                                    targetScopeUrl = ed.Binding?.ValueSet ?? string.Empty;
-                                }
-                            }
-
-                            string unversionedSourceUrl = sourceScopeUrl.Contains('|') ? sourceScopeUrl.Split('|')[0] : sourceScopeUrl;
-                            string unversionedTargetUrl = targetScopeUrl.Contains('|') ? targetScopeUrl.Split('|')[0] : targetScopeUrl;
-
-                            if (string.IsNullOrEmpty(sourceScopeUrl) || string.IsNullOrEmpty(targetScopeUrl))
-                            {
-                                throw new Exception($"Cannot resolve scope references in {filename}");
-                            }
-
-                            // check for exclusions
-                            if (PackageComparer._exclusionSet.Contains(sourceScopeUrl))
-                            {
-                                continue;
-                            }
-
-                            string leftName = NameFromUrl(sourceScopeUrl);
-                            string rightName = NameFromUrl(targetScopeUrl);
-
-                            string originalMapUrl = cm.Url;
-
-                            string localConceptMapId = $"{_sourceRLiteral}-{leftName}-{_targetRLiteral}-{rightName}";
-                            string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
-
-                            // if we have a mapping for this value set pair already, just track the source name
-                            if (_dc.ConceptMapsByUrl.TryGetValue(localUrl, out ConceptMap? existing))
-                            {
-                                // add this local URL to our index
-                                _urlMap.Add(originalMapUrl, localUrl);
-
-                                // keep track of the original URL we can round-trip back
-                                existing.AddExtension(CommonDefinitions.ExtUrlConceptMapAdditionalUrls, new FhirUrl(originalMapUrl));
-
-                                // nothing else to do with this map
-                                continue;
-                            }
-
-                            // update our info
-                            cm.Id = localConceptMapId;
-                            cm.Url = localUrl;
-                            cm.Name = localConceptMapId;
-                            cm.Title = GetConceptMapTitle(leftName, rightName);
-                            cm.AddExtension(CommonDefinitions.ExtUrlConceptMapAdditionalUrls, new FhirUrl(originalMapUrl));
-
-                            // try to manufacture correct value set URLs based on what we have
-                            cm.SourceScope = new Canonical(unversionedSourceUrl + "|" + _sourcePackageVersion);
-                            cm.TargetScope = new Canonical(unversionedTargetUrl + "|" + _targetPackageVersion);
-
-                            foreach (ConceptMap.GroupComponent group in cm.Group)
-                            {
-                                // fix the source and target value set URLs if they have had versions inserted
-
-                                if (group.Source.Contains(_sourceShortVersionUrlSegment, StringComparison.Ordinal))
-                                {
-                                    group.Source = group.Source.Replace(_sourceShortVersionUrlSegment, "/");
-                                }
-
-                                if (group.Target.Contains(_targetShortVersionUrlSegment, StringComparison.Ordinal))
-                                {
-                                    group.Target = group.Target.Replace(_targetShortVersionUrlSegment, "/");
-                                }
-                            }
-
-                            // add to our listing of value set maps
-                            _vsUrlsWithMaps.AddToValue(unversionedSourceUrl, targetScopeUrl);
-                        }
+                        processCrossVersionCodesMap(filename, cm);
                         break;
 
                     case "types":
-                        {
-                            if (cm.Group.Count != 1)
-                            {
-                                throw new Exception($"Invalid concept map {filename}: expected 1 group, found {cm.Group.Count}");
-                            }
-
-                            string officialUrl = cm.Url;
-
-                            string localConceptMapId = $"{_sourceRLiteral}-types-{_targetRLiteral}";
-                            string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
-
-                            // update our info
-                            cm.Id = localConceptMapId;
-                            cm.Url = localUrl;
-                            cm.Name = localConceptMapId;
-                            cm.Title = GetConceptMapTitle("data type");
-
-                            string sourceLocalUrl = BuildUrl("{0}/{1}/{2}", _sourcePackageCanonical, "ValueSet", "data-types");
-                            string targetLocalUrl = BuildUrl("{0}/{1}/{2}", _targetPackageCanonical, "ValueSet", "data-types");
-
-                            cm.SourceScope = new Canonical($"{sourceLocalUrl}|{_sourcePackageVersion}");
-                            cm.TargetScope = new Canonical($"{targetLocalUrl}|{_targetPackageVersion}");
-
-                            cm.Group[0].Source = sourceLocalUrl.Replace("/ValueSet/", "/");
-                            cm.Group[0].Target = targetLocalUrl.Replace("/ValueSet/", "/");
-
-                            _dataTypeMap = cm;
-
-                            _dc!.AddConceptMap(cm, _dc.MainPackageId, _dc.MainPackageVersion);
-                        }
+                        processCrossVersionTypesMap(filename, cm);
                         break;
 
                     case "resources":
-                        {
-                            if (cm.Group.Count != 1)
-                            {
-                                throw new Exception($"Invalid concept map {filename}: expected 1 group, found {cm.Group.Count}");
-                            }
-
-                            string officialUrl = cm.Url;
-
-                            string localConceptMapId = $"{_sourceRLiteral}-resources-{_targetRLiteral}";
-                            string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
-
-                            // update our info
-                            cm.Id = localConceptMapId;
-                            cm.Url = localUrl;
-                            cm.Name = localConceptMapId;
-                            cm.Title = GetConceptMapTitle("resource type");
-
-                            string sourceLocalUrl = BuildUrl("{0}/{1}/{2}", _sourcePackageCanonical, "ValueSet", "resources");
-                            string targetLocalUrl = BuildUrl("{0}/{1}/{2}", _targetPackageCanonical, "ValueSet", "resources");
-
-                            cm.SourceScope = new Canonical($"{sourceLocalUrl}|{_sourcePackageVersion}");
-                            cm.TargetScope = new Canonical($"{targetLocalUrl}|{_targetPackageVersion}");
-
-                            cm.Group[0].Source = sourceLocalUrl;
-                            cm.Group[0].Target = targetLocalUrl;
-
-                            _resourceTypeMap = cm;
-
-                            _dc!.AddConceptMap(cm, _dc.MainPackageId, _dc.MainPackageVersion);
-                        }
+                        processCrossVersionResourcesMap(filename, cm);
                         break;
 
                     case "elements":
-                        {
-                            if (cm.Group.Count != 1)
-                            {
-                                throw new Exception($"Invalid concept map {filename}: expected 1 group, found {cm.Group.Count}");
-                            }
-
-                            string officialUrl = cm.Url;
-
-                            string localConceptMapId = $"{_sourceRLiteral}-elements-{_targetRLiteral}";
-                            string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
-
-                            // update our info
-                            cm.Id = localConceptMapId;
-                            cm.Url = localUrl;
-                            cm.Name = localConceptMapId;
-                            cm.Title = GetConceptMapTitle("element");
-
-                            string sourceLocalUrl = BuildUrl("{0}/{1}/{2}", _sourcePackageCanonical, "ValueSet", "elements");
-                            string targetLocalUrl = BuildUrl("{0}/{1}/{2}", _targetPackageCanonical, "ValueSet", "elements");
-
-                            cm.SourceScope = new Canonical($"{sourceLocalUrl}|{_sourcePackageVersion}");
-                            cm.TargetScope = new Canonical($"{targetLocalUrl}|{_targetPackageVersion}");
-
-                            cm.Group[0].Source = sourceLocalUrl;
-                            cm.Group[0].Target = targetLocalUrl;
-
-                            // traverse this element map for all elements and build individual maps
-                            Dictionary<string, List<ConceptMap.SourceElementComponent>> typeElements = [];
-                            foreach (ConceptMap.SourceElementComponent sec in cm.Group[0].Element)
-                            {
-                                string typeName = sec.Code.Split('.')[0];
-
-                                if (typeElements.TryGetValue(typeName, out List<ConceptMap.SourceElementComponent>? elements))
-                                {
-                                    elements.Add(sec);
-                                }
-                                else
-                                {
-                                    typeElements.Add(typeName, [sec]);
-                                }
-                            }
-
-                            // traverse our extracted elements and build new concept maps
-                            foreach ((string typeName, List<ConceptMap.SourceElementComponent> elements) in typeElements)
-                            {
-                                if (elements.Count == 0)
-                                {
-                                    continue;
-                                }
-
-                                // official sources are sometimes incorrect, listing the same code multiple times instead of multiple targets
-                                Dictionary<string, ConceptMap.SourceElementComponent> elementDict = [];
-                                foreach (ConceptMap.SourceElementComponent element in elements)
-                                {
-                                    if (elementDict.TryGetValue(element.Code, out ConceptMap.SourceElementComponent? reconciled))
-                                    {
-                                        // add our targets to this element
-                                        reconciled.Target ??= [];
-                                        reconciled.Target.AddRange(reconciled.Target);
-                                    }
-                                    else
-                                    {
-                                        // add our element to the dictionary
-                                        elementDict.Add(element.Code, element);
-                                    }
-                                }
-
-                                ConceptMap elementMap = BuildNewElementMap(
-                                    typeName,
-                                    elements[0].Target.Count == 0 ? typeName : elements[0].Target[0].Code.Split('.')[0],
-                                    elementDict.Values.OrderBy(se => se.Code).ToList());
-
-                                //_elementConceptMaps.Add(typeName, elementMap);
-                                _dc.AddConceptMap(elementMap, _dc.MainPackageId, _dc.MainPackageVersion);
-                            }
-                        }
+                        processCrossVersionElementsMap(filename, cm);
                         break;
                 }
 
@@ -1328,6 +1107,241 @@ public class CrossVersionMapCollection
         }
 
         return true;
+    }
+
+    private void processCrossVersionElementsMap(string filename, ConceptMap cm)
+    {
+        if (cm.Group.Count != 1)
+        {
+            throw new Exception($"Invalid concept map {filename}: expected 1 group, found {cm.Group.Count}");
+        }
+
+        string officialUrl = cm.Url;
+
+        string localConceptMapId = $"{_sourceRLiteral}-elements-{_targetRLiteral}";
+        string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
+
+        // update our info
+        cm.Id = localConceptMapId;
+        cm.Url = localUrl;
+        cm.Name = localConceptMapId;
+        cm.Title = GetConceptMapTitle("element");
+
+        string sourceLocalUrl = BuildUrl("{0}/{1}/{2}", _sourcePackageCanonical, "ValueSet", "elements");
+        string targetLocalUrl = BuildUrl("{0}/{1}/{2}", _targetPackageCanonical, "ValueSet", "elements");
+
+        cm.SourceScope = new Canonical($"{sourceLocalUrl}|{_sourcePackageVersion}");
+        cm.TargetScope = new Canonical($"{targetLocalUrl}|{_targetPackageVersion}");
+
+        cm.Group[0].Source = sourceLocalUrl;
+        cm.Group[0].Target = targetLocalUrl;
+
+        // traverse this element map for all elements and build individual maps
+        Dictionary<string, List<ConceptMap.SourceElementComponent>> typeElements = [];
+        foreach (ConceptMap.SourceElementComponent sec in cm.Group[0].Element)
+        {
+            string typeName = sec.Code.Split('.')[0];
+
+            if (typeElements.TryGetValue(typeName, out List<ConceptMap.SourceElementComponent>? elements))
+            {
+                elements.Add(sec);
+            }
+            else
+            {
+                typeElements.Add(typeName, [sec]);
+            }
+        }
+
+        // traverse our extracted elements and build new concept maps
+        foreach ((string typeName, List<ConceptMap.SourceElementComponent> elements) in typeElements)
+        {
+            if (elements.Count == 0)
+            {
+                continue;
+            }
+
+            // official sources are sometimes incorrect, listing the same code multiple times instead of multiple targets
+            Dictionary<string, ConceptMap.SourceElementComponent> elementDict = [];
+            foreach (ConceptMap.SourceElementComponent element in elements)
+            {
+                if (elementDict.TryGetValue(element.Code, out ConceptMap.SourceElementComponent? reconciled))
+                {
+                    // add our targets to this element
+                    reconciled.Target ??= [];
+                    reconciled.Target.AddRange(reconciled.Target);
+                }
+                else
+                {
+                    // add our element to the dictionary
+                    elementDict.Add(element.Code, element);
+                }
+            }
+
+            ConceptMap elementMap = BuildNewElementMap(
+                typeName,
+                elements[0].Target.Count == 0 ? typeName : elements[0].Target[0].Code.Split('.')[0],
+                elementDict.Values.OrderBy(se => se.Code).ToList());
+
+            //_elementConceptMaps.Add(typeName, elementMap);
+            _dc.AddConceptMap(elementMap, _dc.MainPackageId, _dc.MainPackageVersion);
+        }
+    }
+
+    private void processCrossVersionResourcesMap(string filename, ConceptMap cm)
+    {
+        if (cm.Group.Count != 1)
+        {
+            throw new Exception($"Invalid concept map {filename}: expected 1 group, found {cm.Group.Count}");
+        }
+
+        string officialUrl = cm.Url;
+
+        string localConceptMapId = $"{_sourceRLiteral}-resources-{_targetRLiteral}";
+        string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
+
+        // update our info
+        cm.Id = localConceptMapId;
+        cm.Url = localUrl;
+        cm.Name = localConceptMapId;
+        cm.Title = GetConceptMapTitle("resource type");
+
+        string sourceLocalUrl = BuildUrl("{0}/{1}/{2}", _sourcePackageCanonical, "ValueSet", "resources");
+        string targetLocalUrl = BuildUrl("{0}/{1}/{2}", _targetPackageCanonical, "ValueSet", "resources");
+
+        cm.SourceScope = new Canonical($"{sourceLocalUrl}|{_sourcePackageVersion}");
+        cm.TargetScope = new Canonical($"{targetLocalUrl}|{_targetPackageVersion}");
+
+        cm.Group[0].Source = sourceLocalUrl;
+        cm.Group[0].Target = targetLocalUrl;
+
+        _resourceTypeMap = cm;
+    }
+
+    private void processCrossVersionTypesMap(string filename, ConceptMap cm)
+    {
+        if (cm.Group.Count != 1)
+        {
+            throw new Exception($"Invalid concept map {filename}: expected 1 group, found {cm.Group.Count}");
+        }
+
+        string officialUrl = cm.Url;
+
+        string localConceptMapId = $"{_sourceRLiteral}-types-{_targetRLiteral}";
+        string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
+
+        // update our info
+        cm.Id = localConceptMapId;
+        cm.Url = localUrl;
+        cm.Name = localConceptMapId;
+        cm.Title = GetConceptMapTitle("data type");
+
+        string sourceLocalUrl = BuildUrl("{0}/{1}/{2}", _sourcePackageCanonical, "ValueSet", "data-types");
+        string targetLocalUrl = BuildUrl("{0}/{1}/{2}", _targetPackageCanonical, "ValueSet", "data-types");
+
+        cm.SourceScope = new Canonical($"{sourceLocalUrl}|{_sourcePackageVersion}");
+        cm.TargetScope = new Canonical($"{targetLocalUrl}|{_targetPackageVersion}");
+
+        cm.Group[0].Source = sourceLocalUrl.Replace("/ValueSet/", "/");
+        cm.Group[0].Target = targetLocalUrl.Replace("/ValueSet/", "/");
+
+        _dataTypeMap = cm;
+    }
+
+    private void processCrossVersionCodesMap(string filename, ConceptMap cm)
+    {
+        if (cm.Group.Count == 0)
+        {
+            // skip any empty maps
+            Console.WriteLine($"Invalid concept map {filename}: expected 1 group, found {cm.Group.Count}");
+            return;
+            //throw new Exception($"Invalid concept map {filename}: expected 1 group, found {cm.Group.Count}");
+        }
+
+        string sourceScopeUrl = string.Empty;
+        string targetScopeUrl = string.Empty;
+
+        // try to look up the actual value set URLs based on the elements
+        if (cm.SourceScope is FhirUri originalSourceUri)
+        {
+            string elementPath = originalSourceUri.Value.Split('#')[^1];
+            if (_source.TryFindElementByPath(elementPath, out StructureDefinition? sd, out ElementDefinition? ed))
+            {
+                sourceScopeUrl = ed.Binding?.ValueSet ?? string.Empty;
+            }
+        }
+
+        if (cm.TargetScope is FhirUri originalTargetUri)
+        {
+            string elementPath = originalTargetUri.Value.Split('#')[^1];
+            if (_target.TryFindElementByPath(elementPath, out StructureDefinition? sd, out ElementDefinition? ed))
+            {
+                targetScopeUrl = ed.Binding?.ValueSet ?? string.Empty;
+            }
+        }
+
+        string unversionedSourceUrl = sourceScopeUrl.Contains('|') ? sourceScopeUrl.Split('|')[0] : sourceScopeUrl;
+        string unversionedTargetUrl = targetScopeUrl.Contains('|') ? targetScopeUrl.Split('|')[0] : targetScopeUrl;
+
+        if (string.IsNullOrEmpty(sourceScopeUrl) || string.IsNullOrEmpty(targetScopeUrl))
+        {
+            throw new Exception($"Cannot resolve scope references in {filename}");
+        }
+
+        // check for exclusions
+        if (PackageComparer._exclusionSet.Contains(sourceScopeUrl))
+        {
+            return;
+        }
+
+        string leftName = NameFromUrl(sourceScopeUrl);
+        string rightName = NameFromUrl(targetScopeUrl);
+
+        string originalMapUrl = cm.Url;
+
+        string localConceptMapId = $"{_sourceRLiteral}-{leftName}-{_targetRLiteral}-{rightName}";
+        string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
+
+        // if we have a mapping for this value set pair already, just track the source name
+        if (_dc.ConceptMapsByUrl.TryGetValue(localUrl, out ConceptMap? existing))
+        {
+            // add this local URL to our index
+            _urlMap.Add(originalMapUrl, localUrl);
+
+            // keep track of the original URL we can round-trip back
+            existing.AddExtension(CommonDefinitions.ExtUrlConceptMapAdditionalUrls, new FhirUrl(originalMapUrl));
+
+            // nothing else to do with this map
+            return;
+        }
+
+        // update our info
+        cm.Id = localConceptMapId;
+        cm.Url = localUrl;
+        cm.Name = localConceptMapId;
+        cm.Title = GetConceptMapTitle(leftName, rightName);
+        cm.AddExtension(CommonDefinitions.ExtUrlConceptMapAdditionalUrls, new FhirUrl(originalMapUrl));
+
+        // try to manufacture correct value set URLs based on what we have
+        cm.SourceScope = new Canonical(unversionedSourceUrl + "|" + _sourcePackageVersion);
+        cm.TargetScope = new Canonical(unversionedTargetUrl + "|" + _targetPackageVersion);
+
+        foreach (ConceptMap.GroupComponent group in cm.Group)
+        {
+            // fix the source and target value set URLs if they have had versions inserted
+
+            if (group.Source.Contains(_sourceShortVersionUrlSegment, StringComparison.Ordinal))
+            {
+                group.Source = group.Source.Replace(_sourceShortVersionUrlSegment, "/");
+            }
+
+            if (group.Target.Contains(_targetShortVersionUrlSegment, StringComparison.Ordinal))
+            {
+                group.Target = group.Target.Replace(_targetShortVersionUrlSegment, "/");
+            }
+        }
+
+        // add to our listing of value set maps
+        _vsUrlsWithMaps.AddToValue(unversionedSourceUrl, targetScopeUrl);
     }
 
     private ConceptMap BuildNewElementMap(string sourceTypeName, string targetTypeName, List<ConceptMap.SourceElementComponent>? elements)
