@@ -219,12 +219,14 @@ public class CrossVersionMapCollection
         (uc.Value is CodeableConcept cc) &&
         cc.Coding.Any(c => c.System == CommonDefinitions.ConceptMapUsageContextSystem && c.Code == CommonDefinitions.ConceptMapUsageContextValueSet));
 
-    public IEnumerable<ConceptMap> GetDataTypeMaps()
+    public IEnumerable<ConceptMap> GetDataTypeMaps(bool includeOverviews = false)
     {
         foreach (ConceptMap cm in _dc.ConceptMapsByUrl.Values)
         {
-            // skip ones that are not primitive type comparisons
-            if (!isTypeOverviewConceptMap(cm))
+            bool isOverview = isTypeOverviewConceptMap(cm);
+            bool isTypeMap = isDataTypeConceptMap(cm);
+
+            if (!isTypeMap && (!isTypeMap || !includeOverviews))
             {
                 continue;
             }

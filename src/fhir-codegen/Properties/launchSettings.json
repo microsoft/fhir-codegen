@@ -177,7 +177,7 @@
         },
         "XVer 20-30-40 update": {
             "commandName": "Project",
-            "commandLineArgs": "xver update-type-maps -c hl7.fhir.r2.core@1.0.2 -c hl7.fhir.r3.core@3.0.2 -c hl7.fhir.r4.core@4.0.1 --auto-load-expansions --resolve-dependencies true",
+            "commandLineArgs": "xver update-maps -c hl7.fhir.r2.core@1.0.2 -c hl7.fhir.r3.core@3.0.2 -c hl7.fhir.r4.core@4.0.1 --auto-load-expansions --resolve-dependencies true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "XVer 20-30-40 docs": {

@@ -111,64 +111,6 @@ public partial class FhirCoreComparer
         }
     }
 
-
-    public IEnumerable<(StructureDefinition left, StructureDefinition right, ConceptMap? up, ConceptMap? down)> GetPairedComplexTypeMaps()
-    {
-        Dictionary<(string? source, string? target), ConceptMap> mapsUp =
-            (_cvLeftToRight?.GetValueSetMaps() ?? []).ToDictionary(cm => (cm.cgSourceScope(), cm.cgTargetScope()));
-        Dictionary<(string? source, string? target), ConceptMap> mapsDown =
-            (_cvRightToLeft?.GetValueSetMaps() ?? []).ToDictionary(cm => (cm.cgSourceScope(), cm.cgTargetScope()));
-
-        // iterate over the forward maps (up)
-        foreach (((string? source, string? target), ConceptMap cmUp) in mapsUp)
-        {
-            mapsDown.TryGetValue((target, source), out ConceptMap? cmDown);
-
-            StructureDefinition? leftVs = null;
-            ValueSet? rightVs = null;
-
-            if ((source == null) ||
-                (!_leftDc.TryExpandVs(source, out leftVs) && !_leftDc.TryGetValueSet(source, out leftVs)))
-            {
-                continue;
-            }
-
-            if ((target == null) ||
-                (!_rightDc.TryExpandVs(target, out rightVs) && !_rightDc.TryGetValueSet(target, out rightVs)))
-            {
-                continue;
-            }
-
-            yield return (leftVs, rightVs, cmUp, cmDown);
-        }
-
-        // iterate over the reverse maps looking for orphans
-        foreach (((string? source, string? target), ConceptMap cmDown) in mapsDown)
-        {
-            if (mapsUp.ContainsKey((target, source)))
-            {
-                continue;
-            }
-
-            ValueSet? leftVs = null;
-            ValueSet? rightVs = null;
-
-            if ((source == null) ||
-                (!_rightDc.TryExpandVs(source, out rightVs) && !_rightDc.TryGetValueSet(source, out rightVs)))
-            {
-                continue;
-            }
-
-            if ((target == null) ||
-                (!_leftDc.TryExpandVs(target, out leftVs) && !_leftDc.TryGetValueSet(target, out leftVs)))
-            {
-                continue;
-            }
-
-            yield return (leftVs, rightVs, null, cmDown);
-        }
-    }
-
     private void compareAllValueSets()
     {
         // iterate over the pairs in both directions

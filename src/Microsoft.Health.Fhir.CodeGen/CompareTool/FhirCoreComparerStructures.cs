@@ -36,28 +36,79 @@ namespace Microsoft.Health.Fhir.CodeGen.CompareTool;
 
 public partial class FhirCoreComparer
 {
-    ///// <summary>
-    ///// Retrieves the paired data type maps from the cross-version map collections.
-    ///// Note that there will always be at most one (and should always be one), but this method
-    ///// returns an enumerable for consistency with other map retrieval methods.
-    ///// </summary>
-    ///// <returns>
-    ///// An enumerable of tuples containing the ConceptMap for the upward and downward directions.
-    ///// Each tuple contains:
-    ///// <list type="bullet">
-    ///// <item>
-    ///// <description>The ConceptMap for the upward direction, or null if not available.</description>
-    ///// </item>
-    ///// <item>
-    ///// <description>The ConceptMap for the downward direction, or null if not available.</description>
-    ///// </item>
-    ///// </list>
-    ///// </returns>
-    //public IEnumerable<(ConceptMap? up, ConceptMap? down)> GetPairedDataTypeMaps()
-    //{
-    //    // there is always at most a single data type map in each direction
-    //    yield return (_cvLeftToRight?.DataTypeMap, _cvRightToLeft?.DataTypeMap);
-    //}
+    /// <summary>
+    /// Retrieves the paired data type maps from the cross-version map collections.
+    /// Note that there will always be at most one (and should always be one), but this method
+    /// returns an enumerable for consistency with other map retrieval methods.
+    /// </summary>
+    /// <returns>
+    /// An enumerable of tuples containing the ConceptMap for the upward and downward directions.
+    /// Each tuple contains:
+    /// <list type="bullet">
+    /// <item>
+    /// <description>The ConceptMap for the upward direction, or null if not available.</description>
+    /// </item>
+    /// <item>
+    /// <description>The ConceptMap for the downward direction, or null if not available.</description>
+    /// </item>
+    /// </list>
+    /// </returns>
+    public IEnumerable<(StructureDefinition left, StructureDefinition right, ConceptMap? up, ConceptMap? down)> GetPairedStructureConceptMaps()
+    {
+        Dictionary<(string? source, string? target), ConceptMap> mapsUp =
+            (_cvLeftToRight?.GetDataTypeMaps() ?? []).ToDictionary(cm => (cm.cgSourceScope(), cm.cgTargetScope()));
+        Dictionary<(string? source, string? target), ConceptMap> mapsDown =
+            (_cvRightToLeft?.GetDataTypeMaps() ?? []).ToDictionary(cm => (cm.cgSourceScope(), cm.cgTargetScope()));
+
+        // iterate over the forward maps (up)
+        foreach (((string? source, string? target), ConceptMap cmUp) in mapsUp)
+        {
+            mapsDown.TryGetValue((target, source), out ConceptMap? cmDown);
+
+            StructureDefinition? leftSd = null;
+            StructureDefinition? rightSd = null;
+
+            if ((source == null) ||
+                !_leftDc.TryGetStructure(source, out leftSd))
+            {
+                continue;
+            }
+
+            if ((target == null) ||
+                !_rightDc.TryGetStructure(target, out rightSd))
+            {
+                continue;
+            }
+
+            yield return (leftSd, rightSd, cmUp, cmDown);
+        }
+
+        // iterate over the reverse maps looking for orphans
+        foreach (((string? source, string? target), ConceptMap cmDown) in mapsDown)
+        {
+            if (mapsUp.ContainsKey((target, source)))
+            {
+                continue;
+            }
+
+            StructureDefinition? leftSd = null;
+            StructureDefinition? rightSd = null;
+
+            if ((source == null) ||
+                !_rightDc.TryGetStructure(source, out rightSd))
+            {
+                continue;
+            }
+
+            if ((target == null) ||
+                !_leftDc.TryGetStructure(target, out leftSd))
+            {
+                continue;
+            }
+
+            yield return (leftSd, rightSd, null, cmDown);
+        }
+    }
 
 
     private void checkOverviewMaps(FhirArtifactClassEnum artifactType)
