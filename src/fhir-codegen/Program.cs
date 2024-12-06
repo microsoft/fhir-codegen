@@ -300,11 +300,11 @@ public class Program
         {
             if (ex.InnerException != null)
             {
-                Console.WriteLine($"DoCompare <<< caught: {ex.Message}::{ex.InnerException.Message}");
+                Console.WriteLine($"DoXVer <<< caught: {ex.Message}::{ex.InnerException.Message}");
             }
             else
             {
-                Console.WriteLine($"DoCompare <<< caught: {ex.Message}");
+                Console.WriteLine($"DoXVer <<< caught: {ex.Message}");
             }
         }
 

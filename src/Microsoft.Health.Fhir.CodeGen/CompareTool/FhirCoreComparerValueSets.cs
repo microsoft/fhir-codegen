@@ -457,6 +457,12 @@ public partial class FhirCoreComparer
         // iterate over our maps
         foreach (ConceptMap cm in maps)
         {
+            // ensure this map has our usage context
+            setUseContext(cm, CommonDefinitions.ConceptMapUsageContextValueSet);
+
+            // ensure this map has our properties
+            addConceptMapPropertyDefinitions(cm);
+
             // check for invalid target in the map
             if ((cm.TargetScope == null) ||
                 (cm.TargetScope is not Canonical targetCanonical))
@@ -500,12 +506,6 @@ public partial class FhirCoreComparer
                 _logger.LogValueSetNotExpanded(versionedUrl, expandMessage);
                 continue;
             }
-
-            // ensure this map has our usage context
-            setUseContext(cm, CommonDefinitions.ConceptMapUsageContextTypeOverview);
-
-            // ensure this map has our properties
-            addConceptMapPropertyDefinitions(cm);
 
             // actually compare the two value sets, using the map
             compareValueSet(vs, targetVs, cm);

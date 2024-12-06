@@ -1526,10 +1526,12 @@ public class CrossVersionMapCollection
             Description = $"Type Map from {_sourceRLiteral} to {_targetRLiteral}",
             SourceScope = new Canonical($"{sourceLocalUrl}|{_sourcePackageVersion}"),
             TargetScope = new Canonical($"{targetLocalUrl}|{_targetPackageVersion}"),
+            Group = [ new()
+            {
+                Source = sourceLocalUrl.Replace("/ValueSet/", "/"),
+                Target = targetLocalUrl.Replace("/ValueSet/", "/"),
+            }],
         };
-
-        cm.Group[0].Source = sourceLocalUrl.Replace("/ValueSet/", "/");
-        cm.Group[0].Target = targetLocalUrl.Replace("/ValueSet/", "/");
 
         _dataTypeMap = cm;
 
@@ -1559,10 +1561,12 @@ public class CrossVersionMapCollection
             Description = $"Type Map from {_sourceRLiteral} to {_targetRLiteral}",
             SourceScope = new Canonical($"{sourceLocalUrl}|{_sourcePackageVersion}"),
             TargetScope = new Canonical($"{targetLocalUrl}|{_targetPackageVersion}"),
+            Group = [ new()
+            {
+                Source = sourceLocalUrl.Replace("/ValueSet/", "/"),
+                Target = targetLocalUrl.Replace("/ValueSet/", "/"),
+            }],
         };
-
-        cm.Group[0].Source = sourceLocalUrl.Replace("/ValueSet/", "/");
-        cm.Group[0].Target = targetLocalUrl.Replace("/ValueSet/", "/");
 
         _dataTypeMap = cm;
 

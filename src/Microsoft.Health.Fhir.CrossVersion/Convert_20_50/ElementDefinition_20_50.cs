@@ -1162,6 +1162,31 @@ public class ElementDefinition_20_50 : ICrossVersionProcessor<ElementDefinition>
 	{
 		ElementDefinition.DiscriminatorComponent current = new();
 
+        // TODO: this is a temporary fix to handle Firely improperly inflating DSTU2 content - it modifies it into a later-version structure
+        if (parent.Text == null)
+        {
+            foreach (ISourceNode node in parent.Children())
+            {
+                switch (node.Name)
+                {
+                    case "path":
+                        current.Path = node.Text;
+                        break;
+
+                    case "type":
+                        current.Type = Hl7.Fhir.Utility.EnumUtility.ParseLiteral<ElementDefinition.DiscriminatorType>(node.Text);
+                        break;
+
+                    // process inherited elements
+                    default:
+                        _converter._element.Process(node, current);
+                        break;
+                }
+            }
+
+            return current;
+        }
+
         string r2Discriminator = parent.Text;
         string discriminatorHint = r2Discriminator.Split('@')[^1];
 
