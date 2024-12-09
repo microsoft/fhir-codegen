@@ -12,6 +12,8 @@ using Microsoft.Health.Fhir.CodeGen.CompareTool;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
+using Microsoft.Health.Fhir.CodeGenCommon.Models;
+
 
 #if NETSTANDARD2_0
 using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
@@ -70,55 +72,75 @@ public class StructureDefinitionGraph
     public required DefinitionCollection[] Definitions { get; init; }
 
     /// <summary>
-    /// The comparison results used to build the graph.
+    /// The type of artifact represented by the graph.
     /// </summary>
-    public required IEnumerable<FhirCoreComparer> Comparisons
+    public required FhirArtifactClassEnum ArtifactType { get; init; }
+
+    /// <summary>
+    /// Builds the graph based on the provided comparisons.
+    /// </summary>
+    /// <param name="comparisons"></param>
+    public void BuildTypeEdges(IEnumerable<FhirCoreComparer> comparisons)
     {
-        init
-        {
-            buildEdges(value);
-        }
+        buildTypeEdges(comparisons);
+    }
+
+    /// <summary>
+    /// Builds the graph based on the provided comparisons.
+    /// </summary>
+    /// <param name="comparisons"></param>
+    public void BuildResourceEdges(IEnumerable<FhirCoreComparer> comparisons)
+    {
+        buildResourceEdges(comparisons);
     }
 
     /// <summary>
     /// Builds the edges of the graph based on the provided comparisons.
     /// <param name="comparisons">The enumerable of FhirCoreComparers used to build the edges of the graph.</param>
     /// </summary>
-    private void buildEdges(IEnumerable<FhirCoreComparer> comparisons)
+    private void buildTypeEdges(IEnumerable<FhirCoreComparer> comparisons)
     {
-        //foreach (FhirCoreComparer coreComparer in comparisons)
-        //{
+        // iterate across the comparisons
+        foreach (FhirCoreComparer coreComparer in comparisons)
+        {
+            // grab the type comparison overview maps
+            (ConceptMap overviewUp, ConceptMap overviewDown) = coreComparer.GetStructureOverviewMaps(ArtifactType);
 
+            //    // iterate over the paired maps in this comparison
+            //    foreach ((StructureDefinition leftVs, StructureDefinition rightVs, ConceptMap? up, ConceptMap? down) in coreComparer.GetPairedStructureDefinitionMaps())
+            //    {
+            //        if (up != null)
+            //        {
+            //            _edges.AddToValue(leftVs, new()
+            //            {
+            //                Direction = ComparisonDirection.Up,
+            //                Source = leftVs,
+            //                Target = rightVs,
+            //                Up = up,
+            //                Down = down,
+            //            });
+            //        }
 
-        //    // iterate over the paired maps in this comparison
-        //    foreach ((StructureDefinition leftVs, StructureDefinition rightVs, ConceptMap? up, ConceptMap? down) in coreComparer.GetPairedStructureDefinitionMaps())
-        //    {
-        //        if (up != null)
-        //        {
-        //            _edges.AddToValue(leftVs, new()
-        //            {
-        //                Direction = ComparisonDirection.Up,
-        //                Source = leftVs,
-        //                Target = rightVs,
-        //                Up = up,
-        //                Down = down,
-        //            });
-        //        }
-
-        //        if (down != null)
-        //        {
-        //            _edges.AddToValue(rightVs, new()
-        //            {
-        //                Direction = ComparisonDirection.Down,
-        //                Source = rightVs,
-        //                Target = leftVs,
-        //                Up = up,
-        //                Down = down,
-        //            });
-        //        }
-        //    }
-        //}
+            //        if (down != null)
+            //        {
+            //            _edges.AddToValue(rightVs, new()
+            //            {
+            //                Direction = ComparisonDirection.Down,
+            //                Source = rightVs,
+            //                Target = leftVs,
+            //                Up = up,
+            //                Down = down,
+            //            });
+            //        }
+            //    }
+        }
     }
+
+    private void buildResourceEdges(IEnumerable<FhirCoreComparer> comparisons)
+    {
+
+    }
+
 
     /// <summary>
     /// Gets the neighboring StructureDefinitions and the edges connecting them in the specified direction.

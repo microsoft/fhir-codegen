@@ -32,8 +32,16 @@ using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
 
 namespace Microsoft.Health.Fhir.CodeGen.CompareTool;
 
+/// <summary>
+/// Contains functionality for comparing FHIR ValueSets between different FHIR versions and managing their mappings.
+/// This is a partial class implementation focusing on ValueSet comparison functionality.
+/// </summary>
 public partial class FhirCoreComparer
 {
+    /// <summary>
+    /// A set of predefined codes that serve as escape valves or fallback values in FHIR value sets.
+    /// These codes typically represent generic or unknown values across different coding systems.
+    /// </summary>
     internal static readonly HashSet<string> _escapeValveCodes = [
         "OTHER",
         "Other",
@@ -45,15 +53,39 @@ public partial class FhirCoreComparer
         "UNK",      // v3 Null Flavor of Unknown
         ];
 
+    /// <summary>
+    /// Stores URLs of value sets from the left (source) FHIR version for filtering purposes.
+    /// </summary>
     private HashSet<string>? _leftValueSetUrls = null;
+
+    /// <summary>
+    /// Stores URLs of value sets from the right (target) FHIR version for filtering purposes.
+    /// </summary>
     private HashSet<string>? _rightValueSetUrls = null;
 
+    /// <summary>
+    /// Registers value set URL filters for both the left and right FHIR versions.
+    /// This allows for selective comparison of specific value sets rather than comparing all available sets.
+    /// </summary>
+    /// <param name="leftValueSetUrls">Set of URLs for value sets in the left (source) FHIR version</param>
+    /// <param name="rightValueSetUrls">Set of URLs for value sets in the right (target) FHIR version</param>
     public void RegisterValueSetFilters(HashSet<string> leftValueSetUrls, HashSet<string> rightValueSetUrls)
     {
         _leftValueSetUrls = leftValueSetUrls;
         _rightValueSetUrls = rightValueSetUrls;
     }
 
+    /// <summary>
+    /// Retrieves paired value sets and their corresponding concept maps between FHIR versions.
+    /// This method matches value sets from both versions and their bidirectional mappings.
+    /// </summary>
+    /// <returns>
+    /// An enumerable of tuples containing:
+    /// - left: The source value set
+    /// - right: The target value set
+    /// - up: The forward concept map (left to right)
+    /// - down: The reverse concept map (right to left)
+    /// </returns>
     public IEnumerable<(ValueSet left, ValueSet right, ConceptMap? up, ConceptMap? down)> GetPairedValueSetMaps()
     {
         Dictionary<(string? source, string? target), ConceptMap> mapsUp =
@@ -111,6 +143,16 @@ public partial class FhirCoreComparer
         }
     }
 
+    /// <summary>
+    /// Compares all value sets between the left and right FHIR versions.
+    /// This method performs bidirectional comparison of value sets by:
+    /// - Processing value sets in both directions
+    /// - Handling version-specific URLs
+    /// - Applying exclusion rules
+    /// - Validating expandability of value sets
+    /// - Checking for required bindings
+    /// - Logging comparison results and issues
+    /// </summary>
     private void compareAllValueSets()
     {
         // iterate over the pairs in both directions
@@ -417,7 +459,26 @@ public partial class FhirCoreComparer
         return cm;
     }
 
-
+    /// <summary>
+    /// Compares a source ValueSet against its corresponding target ValueSet using concept maps.
+    /// This method handles the comparison of a single ValueSet against its target(s) by:
+    /// - Finding and validating relevant concept maps
+    /// - Ensuring proper expansion of target ValueSets
+    /// - Managing comparison relationships and logging issues
+    /// </summary>
+    /// <param name="dc">The source DefinitionCollection containing the ValueSet to compare</param>
+    /// <param name="vs">The source ValueSet to compare</param>
+    /// <param name="versionedUrl">The versioned URL of the source ValueSet</param>
+    /// <param name="unversionedUrl">The unversioned URL of the source ValueSet</param>
+    /// <param name="targetDc">The target DefinitionCollection to compare against</param>
+    /// <param name="cv">The CrossVersionMapCollection containing concept maps between versions</param>
+    /// <remarks>
+    /// The method handles several scenarios:
+    /// - No maps found: Attempts to find matching ValueSet in target
+    /// - Invalid maps: Logs issues and skips comparison
+    /// - Un-expandable target ValueSets: Logs issues and skips comparison
+    /// - Valid scenarios: Proceeds with detailed ValueSet comparison
+    /// </remarks>
     private void compareValueSet(
         DefinitionCollection dc,
         ValueSet vs,
@@ -557,7 +618,7 @@ public partial class FhirCoreComparer
                 if (cmSourceElement.NoMap == true)
                 {
                     // add a no-map entry
-                    mapRecsByTarget[(cmGroup.Target, null)] = new()
+                    mapRecsByTarget.Add((cmGroup.Target, null), new()
                     {
                         SourceSystem = cmGroup.Source,
                         SourceCode = cmSourceElement.Code,
@@ -567,7 +628,7 @@ public partial class FhirCoreComparer
                         Comment = $"Concept is listed in {cm.Url} as not mapped.",
                         IsGenerated = false,
                         NeedsReview = false,
-                    };
+                    });
                 }
 
                 // iterate over our concept map targets

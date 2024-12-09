@@ -163,7 +163,7 @@ public partial class FhirCoreComparer
             // types are grouped together in maps, so always update both
             case CodeGenCommon.Models.FhirArtifactClassEnum.PrimitiveType:
             case CodeGenCommon.Models.FhirArtifactClassEnum.ComplexType:
-                checkOverviewMaps(CodeGenCommon.Models.FhirArtifactClassEnum.PrimitiveType);
+                compareAllPrimitiveTypes();
                 checkOverviewMaps(CodeGenCommon.Models.FhirArtifactClassEnum.ComplexType);
                 break;
 
@@ -171,14 +171,18 @@ public partial class FhirCoreComparer
             case CodeGenCommon.Models.FhirArtifactClassEnum.Resource:
             default:
                 compareAllValueSets();
-                checkOverviewMaps(CodeGenCommon.Models.FhirArtifactClassEnum.PrimitiveType);
+                compareAllPrimitiveTypes();
                 checkOverviewMaps(CodeGenCommon.Models.FhirArtifactClassEnum.ComplexType);
                 checkOverviewMaps(CodeGenCommon.Models.FhirArtifactClassEnum.Resource);
                 break;
         }
     }
 
-
+    /// <summary>
+    /// Gets the initial cross-version maps between two definition collections.
+    /// </summary>
+    /// <param name="preferV1Maps"></param>
+    /// <returns></returns>
     public (CrossVersionMapCollection leftToRight, CrossVersionMapCollection rightToLeft) GetInitialCrossVersionMaps(bool preferV1Maps)
     {
         if ((_cvLeftToRight == null) ||
@@ -299,7 +303,7 @@ public partial class FhirCoreComparer
     };
 
 
-    private void addConceptMapPropertyDefinitions(ConceptMap cm)
+    private void addConceptMapPropertyDefinitions(ConceptMap cm, bool includeDomainProps = false)
     {
         List<ConceptMap.PropertyComponent> properties =
         [
@@ -318,6 +322,26 @@ public partial class FhirCoreComparer
                 Type = ConceptMap.ConceptMapPropertyType.Boolean,
             },
         ];
+
+        if (includeDomainProps)
+        {
+            properties.Add(new()
+            {
+                Uri = CommonDefinitions.ConceptMapPropertiesSystem + "/" + CommonDefinitions.ConceptMapPropertyConceptDomainRelationship,
+                Code = CommonDefinitions.ConceptMapPropertyConceptDomainRelationship,
+                Description = "Explicit tracking of the concept domain for this mapping",
+                Type = ConceptMap.ConceptMapPropertyType.Code,
+                System = "http://hl7.org/fhir/concept-map-relationship",
+            });
+            properties.Add(new()
+            {
+                Uri = CommonDefinitions.ConceptMapPropertiesSystem + "/" + CommonDefinitions.ConceptMapPropertyValueDomainRelationship,
+                Code = CommonDefinitions.ConceptMapPropertyValueDomainRelationship,
+                Description = "Explicit tracking of the value domain for this mapping",
+                Type = ConceptMap.ConceptMapPropertyType.Code,
+                System = "http://hl7.org/fhir/concept-map-relationship",
+            });
+        }
 
         foreach (ConceptMap.PropertyComponent prop in properties)
         {

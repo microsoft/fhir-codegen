@@ -354,8 +354,9 @@ public class XVerProcessor
             vsGraph = new()
             {
                 Definitions = _definitions,
-                Comparisons = _comparisonCache.Values,
             };
+
+            vsGraph.Build(_comparisonCache.Values);
         }
 
         // walk the definitions to write comparisons

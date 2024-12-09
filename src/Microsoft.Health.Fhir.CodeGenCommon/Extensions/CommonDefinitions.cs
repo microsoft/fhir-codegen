@@ -64,6 +64,7 @@ public static class CommonDefinitions
     public const string ConceptMapPropertyGenerated = "cg-generated";
     public const string ConceptMapPropertyNeedsReview = "cg-needs-review";
     public const string ConceptMapPropertyValueDomainRelationship = "value-domain-relationship";
+    public const string ConceptMapPropertyConceptDomainRelationship = "concept-domain-relationship";
 
     public const string ConceptMapUsageContextSystem = "http://ginoc.io/fhir/CodeSystem/conceptmap-usage-context";
     public const string ConceptMapUsageContextTarget = "Target";

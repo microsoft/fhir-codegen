@@ -15,6 +15,7 @@ using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
 #if NETSTANDARD2_0
 using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
+using Newtonsoft.Json.Linq;
 #endif
 
 namespace Microsoft.Health.Fhir.CodeGen.XVer;
@@ -61,14 +62,12 @@ public class ValueSetGraph
     public required DefinitionCollection[] Definitions { get; init; }
 
     /// <summary>
-    /// The comparison results used to build the graph.
+    /// Builds the graph based on the provided comparisons.
     /// </summary>
-    public required IEnumerable<FhirCoreComparer> Comparisons
+    /// <param name="comparisons"></param>
+    public void Build(IEnumerable<FhirCoreComparer> comparisons)
     {
-        init
-        {
-            buildEdges(value);
-        }
+        buildEdges(comparisons);
     }
 
     /// <summary>

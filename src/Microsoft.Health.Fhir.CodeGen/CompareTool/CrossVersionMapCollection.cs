@@ -89,9 +89,6 @@ public class CrossVersionMapCollection
     private ConceptMap? _dataTypeMap = null;
     private ConceptMap? _resourceTypeMap = null;
 
-    private ConceptMap? _inverseDataTypeMap = null;
-    private ConceptMap? _inverseResourceTypeMap = null;
-
     //private Dictionary<string, ConceptMap> _elementConceptMaps = [];
 
     private Dictionary<string, FhirStructureMap> _fmlByCompositeName = [];
@@ -153,12 +150,8 @@ public class CrossVersionMapCollection
     }
 
     public ConceptMap? DataTypeMap => _dataTypeMap;
-    public ConceptMap? InverseDataTypeMap => _inverseDataTypeMap;
 
     public ConceptMap? ResourceTypeMap => _resourceTypeMap;
-    public ConceptMap? InverseResourceTypeMap => _inverseResourceTypeMap;
-
-
 
     public IEnumerable<ConceptMap> GetValueSetMaps()
     {
@@ -234,6 +227,7 @@ public class CrossVersionMapCollection
             yield return cm;
         }
     }
+
 
     public void SaveDataTypeConceptMaps(string path, bool includeMapSubdir = true)
     {
@@ -476,7 +470,7 @@ public class CrossVersionMapCollection
 
                 if (name.Equals("primitives", StringComparison.OrdinalIgnoreCase))
                 {
-                    // skip primitive type map - we have that information internally already
+                    // skip primitive type map - we have that information internally already, see FhirTypeMappings.cs
                     continue;
                 }
 
