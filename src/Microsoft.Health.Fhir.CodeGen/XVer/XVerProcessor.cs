@@ -348,8 +348,8 @@ public class XVerProcessor
         ValueSetGraph? vsGraph = null;
 
         if ((artifactFilter == null) ||
-            (artifactFilter == CodeGenCommon.Models.FhirArtifactClassEnum.ValueSet) ||
-            (artifactFilter == CodeGenCommon.Models.FhirArtifactClassEnum.Resource))
+            (artifactFilter == FhirArtifactClassEnum.ValueSet) ||
+            (artifactFilter == FhirArtifactClassEnum.Resource))
         {
             vsGraph = new()
             {
@@ -357,6 +357,22 @@ public class XVerProcessor
             };
 
             vsGraph.Build(_comparisonCache.Values);
+        }
+
+        StructureDefinitionGraph? primitiveGraph = null;
+
+        if ((artifactFilter == null) ||
+            (artifactFilter == FhirArtifactClassEnum.PrimitiveType) ||
+            (artifactFilter == FhirArtifactClassEnum.ComplexType) ||
+            (artifactFilter == FhirArtifactClassEnum.Resource))
+        {
+            primitiveGraph = new()
+            {
+                Definitions = _definitions,
+                ArtifactType = FhirArtifactClassEnum.PrimitiveType,
+            };
+
+            primitiveGraph.Build(_comparisonCache.Values);
         }
 
         // walk the definitions to write comparisons
@@ -375,15 +391,92 @@ public class XVerProcessor
 
             // write the contents of our value sets
             if ((artifactFilter == null) ||
-                (artifactFilter == CodeGenCommon.Models.FhirArtifactClassEnum.ValueSet))
+                (artifactFilter == FhirArtifactClassEnum.ValueSet))
             {
                 writeMarkdownValueSets(versionDir, dc, vsGraph!);
+            }
+
+            // write the contents of our primitive types
+            if ((artifactFilter == null) ||
+                (artifactFilter == FhirArtifactClassEnum.PrimitiveType) ||
+                (artifactFilter == FhirArtifactClassEnum.ComplexType) ||
+                (artifactFilter == FhirArtifactClassEnum.Resource))
+            {
+                writeMarkdownStructureDefinitions(versionDir, dc, primitiveGraph, FhirArtifactClassEnum.PrimitiveType);
             }
         }
     }
 
-    private void writeMarkdownValueSets(string dir, DefinitionCollection dc, ValueSetGraph vsGraph)
+    private void writeMarkdownStructureDefinitions(string dir, DefinitionCollection dc, StructureDefinitionGraph? graph, FhirArtifactClassEnum artifactClass)
     {
+        if (graph == null)
+        {
+            return;
+        }
+
+        string artifactPascal = artifactClass switch
+        {
+            FhirArtifactClassEnum.PrimitiveType => "PrimitiveTypes",
+            FhirArtifactClassEnum.ComplexType => "ComplexTypes",
+            FhirArtifactClassEnum.Resource => "Resources",
+            _ => throw new InvalidOperationException("Invalid artifact class."),
+        };
+
+        string artifactLower = artifactPascal.ToLowerInvariant();
+
+        string artifactDir = Path.Combine(dir, artifactPascal);
+        if (!Directory.Exists(artifactDir))
+        {
+            Directory.CreateDirectory(artifactDir);
+        }
+
+        string overviewFilename = Path.Combine(dir, $"_{artifactLower}.md");
+
+        using ExportStreamWriter overviewWriter = createMarkdownWriter(overviewFilename, true, true);
+
+        writeMdOverviewIntroStructureDefinitions(overviewWriter, dc, artifactClass);
+
+        ConcurrentBag<string> overviewEntries = [];
+
+        IReadOnlyDictionary<string, StructureDefinition> structureDict = dc.GetStructureIndexDict(artifactClass);
+
+        // iterate over our value sets from this version
+        Parallel.ForEach(structureDict, (kvp, cancellationToken) =>
+        {
+            // build the projection for this value set
+            List<StructureDefinitionGraphCell?[]> projection = graph.Project(dc, kvp.Value);
+
+            // add our overview entry
+            overviewEntries.Add(getMdOverviewEntry(kvp.Value, artifactClass, dc, projection));
+
+            string filename = Path.Combine(artifactDir, getSdFilename(kvp.Value.Name.ToPascalCase(), artifactClass, includeRelativeDir: false));
+            using (ExportStreamWriter artifactWriter = createMarkdownWriter(filename, true, true))
+            {
+                writeMdDetailed(artifactWriter, kvp.Value, artifactClass, dc, projection);
+
+                //// check for failures - write a stub file with information about the structure
+                //if (ca.FailureCode != null)
+                //{
+                //    writeMdComparisonFailed(vsWriter, vs);
+                //    continue;
+                //}
+            }
+        });
+
+        // write our overview file
+        foreach (string line in overviewEntries.Order())
+        {
+            overviewWriter.WriteLineIndented(line);
+        }
+    }
+
+    private void writeMarkdownValueSets(string dir, DefinitionCollection dc, ValueSetGraph? graph)
+    {
+        if (graph == null)
+        {
+            return;
+        }
+
         string vsDir = Path.Combine(dir, "ValueSets");
         if (!Directory.Exists(vsDir))
         {
@@ -424,7 +517,7 @@ public class XVerProcessor
             }
 
             // build the projection for this value set
-            List<ValueSetGraphCell?[]> projection = expanded ? vsGraph.Project(dc, vs) : [];
+            List<ValueSetGraphCell?[]> projection = expanded ? graph.Project(dc, vs) : [];
 
             // add our overview entry
             overviewEntries.Add(getMdOverviewEntry(vs, dc, projection, expanded, expandMessage));
@@ -450,6 +543,351 @@ public class XVerProcessor
         }
     }
 
+
+    private string getMdOverviewEntry(
+        StructureDefinition sd,
+        FhirArtifactClassEnum artifactClass,
+        DefinitionCollection dc,
+        List<StructureDefinitionGraphCell?[]> projection)
+    {
+        string name = sd.Name.ToPascalCase();
+
+        List<string> mapsTo = [];
+        for (int i = 0; i < _definitions.Length; i++)
+        {
+            if (i == _definitionIndexes[dc.Key])
+            {
+                continue;
+            }
+            mapsTo.Add(projection.Any(r => r[i] != null) ? "✔" : "");
+        }
+
+        return
+            $"| [{sd.Name.ForMdTable()}]({getSdFilename(name, artifactClass)})" +
+            $" | `{sd.Url.ForMdTable()}`" +
+            $" | {sd.Description.ForMdTable()}" +
+            $" | {string.Join(" | ", mapsTo)} |";
+    }
+
+    private void writeMdOverviewIntroStructureDefinitions(ExportStreamWriter writer, DefinitionCollection dc, FhirArtifactClassEnum artifactClass)
+    {
+        string artifactDisplay = artifactClass switch
+        {
+            FhirArtifactClassEnum.PrimitiveType => "Primitive Type",
+            FhirArtifactClassEnum.ComplexType => "Complex Type",
+            FhirArtifactClassEnum.Resource => "Resource",
+            _ => throw new InvalidOperationException("Invalid artifact class."),
+        };
+
+        writer.Write($"""
+            Keyed off: {dc.Key}
+            Canonical: {dc.MainPackageCanonical}
+            
+            ## {artifactDisplay} Overview
+
+            """);
+
+        List<string> headers = ["Canonical", "Name", "Description"];
+        foreach (DefinitionCollection targetDc in _definitions)
+        {
+            if (targetDc.Key == dc.Key)
+            {
+                continue;
+            }
+
+            headers.Add($"Path to {targetDc.Key}");
+        }
+
+        writer.WriteLineIndented($"| {string.Join(" | ", headers)} |");
+        writer.WriteLineIndented($"| {string.Join(" | ", Enumerable.Repeat("---", headers.Count))} |");
+    }
+
+    private void writeMdDetailed(
+        ExportStreamWriter writer,
+        StructureDefinition keySd,
+        FhirArtifactClassEnum artifactClass,
+        DefinitionCollection keyDc,
+        List<StructureDefinitionGraphCell?[]> projection)
+    {
+        string artifactDisplay = artifactClass switch
+        {
+            FhirArtifactClassEnum.PrimitiveType => "Primitive Type",
+            FhirArtifactClassEnum.ComplexType => "Complex Type",
+            FhirArtifactClassEnum.Resource => "Resource",
+            _ => throw new InvalidOperationException("Invalid artifact class."),
+        };
+
+        string artifactPascal = artifactClass switch
+        {
+            FhirArtifactClassEnum.PrimitiveType => "PrimitiveTypes",
+            FhirArtifactClassEnum.ComplexType => "ComplexTypes",
+            FhirArtifactClassEnum.Resource => "Resources",
+            _ => throw new InvalidOperationException("Invalid artifact class."),
+        };
+
+        int keyColumn = Array.IndexOf(_definitions, keyDc);
+
+        writer.WriteLine($"""
+            ### {keySd.Name}
+
+            |      |     |
+            | ---: | --- |
+            | Package | {keyDc.Key} |
+            | Name | {keySd.Name.ForMdTable()} |
+            | URL | `{keySd.Url.ForMdTable()}` |
+            | Version | {keySd.Version.ForMdTable()} |
+            | Description | {keySd.Description.ForMdTable()} |
+            """);
+
+        // if there are no mappings, we are done writing this file
+        if (projection.Count == 0)
+        {
+            writer.WriteLine($"""
+                ### Empty Projection
+
+                This {artifactDisplay} resulted in no projection.
+                """);
+            return;
+        }
+
+        string sdName = keySd.Name.ToPascalCase();
+
+        string[] sdRootUrlsByVersion = _definitions.Select(dc => $"/docs/{dc.FhirSequence.ToRLiteral()}/{artifactPascal}").ToArray();
+
+        (string key, bool hasMapping)[] allKeys = _definitions.Select((dc, i) => (dc.Key, projection.Any(r => r[i] != null))).ToArray();
+
+        // generate table showing the mappings
+        writer.WriteLine("### Mapping Table");
+        writer.WriteLine();
+        writer.WriteLine("| " + string.Join(" | Maps | ", allKeys.Select(v => v.key)));
+        writeTableColumns(writer, "---", (_definitions.Length * 2) - 1, appendNewline: true);
+
+        foreach (StructureDefinitionGraphCell?[] row in projection)
+        {
+            int column = -1;
+            // traverse columns
+            foreach (StructureDefinitionGraphCell? cell in row)
+            {
+                column++;
+
+                if (cell == null)
+                {
+                    writer.Write("| | ");
+                    continue;
+                }
+
+                writer.Write(
+                    $"| [{cell.Resource.Name.ForMdTable()}]({sdRootUrlsByVersion[column]}/{getSdFilename(cell.Resource.Name.ToPascalCase(), artifactClass, includeRelativeDir: false)})" +
+                    $"<br/>" +
+                    $" `{cell.Resource.Url}` ");
+
+                if (column == (row.Length - 1))
+                {
+                    writer.WriteLine();
+                    continue;
+                }
+
+                (string overviewToRight, string toRight, string overviewFromRight, string fromRight) = getConceptMapMdLinks(cell, ComparisonDirection.Up, artifactClass);
+
+                // primitives do not have artifact level maps
+                if (artifactClass == FhirArtifactClassEnum.PrimitiveType)
+                {
+                    // write mapping notes
+                    writer.Write(
+                        $"| →→→→→→→ <br/>Overview: {overviewToRight}<br/> →→→→→→→ " +
+                        $"<hr/>" +
+                        $"←←←←←←← <br/>Overview: {overviewFromRight}<br/> ←←←←←←← ");
+                }
+                else
+                {
+                    // write mapping notes
+                    writer.Write(
+                        $"| →→→→→→→ <br/>Overview: {overviewToRight}<br/>Artifact: {toRight}<br/> →→→→→→→ " +
+                        $"<hr/>" +
+                        $"←←←←←←← <br/>Overview: {overviewFromRight}<br/>Artiract: {fromRight}<br/> ←←←←←←← ");
+                }
+            }
+        }
+        writer.WriteLine();
+
+
+        //// write a section for the code table
+        //writer.WriteLine("### Code Mappings");
+        //writer.WriteLine();
+
+        //int mapGroupIndex = 0;
+
+        //foreach (ValueSetGraphCell?[] valueSetRow in projection)
+        //{
+        //    if (valueSetRow[keyColumn] == null)
+        //    {
+        //        continue;
+        //    }
+
+        //    writer.WriteLine();
+        //    writer.WriteLine("#### Map Group " + mapGroupIndex++);
+        //    writer.WriteLine();
+        //    writer.WriteLine($"This group is centered on the Value Set {valueSetRow[keyColumn]!.Resource.Name} from {valueSetRow[keyColumn]!.DC.Key} (column {keyColumn}).");
+        //    writer.WriteLine("All codes from this value set are listed while other value sets only show contents that have relationships with those codes.");
+        //    writer.WriteLine();
+
+        //    // write the table header
+        //    for (int col = 0; col < _definitions.Length; col++)
+        //    {
+        //        if (col > 0)
+        //        {
+        //            writer.Write("| Relationship ");
+        //        }
+
+        //        ValueSetGraphCell? cell = valueSetRow[col];
+
+        //        if (cell == null)
+        //        {
+        //            writer.Write("| *No Map* ");
+        //            continue;
+        //        }
+
+        //        if (col == keyColumn)
+        //        {
+        //            writer.Write($"| {cell.DC.Key} {cell.Resource.Name.ForMdTable()}");
+        //        }
+        //        else
+        //        {
+        //            writer.Write($"| [{cell.DC.Key} {cell.Resource.Name.ForMdTable()}]({sdRootUrlsByVersion[col]}/{getVsFilename(cell.Resource.Name.ToPascalCase(), includeRelativeDir: false)})");
+        //        }
+        //    }
+        //    writer.WriteLine();
+        //    writeTableColumns(writer, "---", (_definitions.Length * 2) - 1, appendNewline: true);
+
+        //    // build a code map graph
+        //    ValueSetComponentGraph codeMapGraph = new()
+        //    {
+        //        SourceRow = valueSetRow,
+        //    };
+
+        //    HashSet<string>[] codesPerVs = _definitions.Select(_ => new HashSet<string>()).ToArray();
+
+        //    // iterate over the components in the key value set
+        //    foreach (ValueSet.ContainsComponent component in valueSetRow[keyColumn]!.Resource.cgGetFlatContains())
+        //    {
+        //        bool hasMap = false;
+
+        //        // project this component
+        //        foreach (ValueSetComponentGraphCell?[] componentRow in codeMapGraph.Project(valueSetRow[keyColumn]!, component))
+        //        {
+        //            hasMap = true;
+        //            int column = -1;
+
+        //            // traverse columns
+        //            foreach (ValueSetComponentGraphCell? cell in componentRow)
+        //            {
+        //                column++;
+
+        //                if (cell == null)
+        //                {
+        //                    writer.Write("| | ");
+        //                    continue;
+        //                }
+
+        //                codesPerVs[column].Add(cell.Component.cgKey());
+
+        //                if (column == keyColumn)
+        //                {
+        //                    writer.Write($"| **`{cell.Component.Code.ForMdTable()}`**");
+        //                }
+        //                else
+        //                {
+        //                    writer.Write($"| `{cell.Component.Code.ForMdTable()}`");
+        //                }
+
+        //                if (column == (componentRow.Length - 1))
+        //                {
+        //                    continue;
+        //                }
+
+        //                if (cell.RightEdge == null)
+        //                {
+        //                    writer.Write("| ");
+        //                }
+        //                else
+        //                {
+        //                    if ((cell.RightEdge?.UpTarget?.Relationship == ConceptMap.ConceptMapRelationship.Equivalent) &&
+        //                        (cell.RightEdge?.DownTarget?.Relationship == ConceptMap.ConceptMapRelationship.Equivalent))
+        //                    {
+        //                        writer.Write("| == ");
+        //                    }
+        //                    else if ((cell.RightEdge?.UpTarget?.Relationship == ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget) &&
+        //                             (cell.RightEdge?.DownTarget?.Relationship == ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget))
+        //                    {
+        //                        writer.Write("| > ");
+        //                    }
+        //                    else if ((cell.RightEdge?.UpTarget?.Relationship == ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget) &&
+        //                             (cell.RightEdge?.DownTarget?.Relationship == ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget))
+        //                    {
+        //                        writer.Write("| < ");
+        //                    }
+        //                    else
+        //                    {
+        //                        // write mapping notes
+        //                        writer.Write(
+        //                            $"| → {cell.RightEdge?.UpTarget?.Relationship} → " +
+        //                            $"<hr/>" +
+        //                            $"← {cell.RightEdge?.DownTarget?.Relationship} ← ");
+        //                    }
+        //                }
+        //            }
+
+        //            writer.WriteLine();
+        //        }
+
+        //        // check for unmapped concepts
+        //        if (!hasMap)
+        //        {
+        //            for (int i = 0; i < valueSetRow.Length; i++)
+        //            {
+        //                if (i == keyColumn)
+        //                {
+        //                    writer.Write($"| **`{component.Code.ForMdTable()}`**");
+        //                }
+        //                else
+        //                {
+        //                    writer.Write("| ");
+        //                }
+        //            }
+        //            writer.WriteLine();
+        //        }
+        //    }
+
+        //    // check for unused codes in value sets
+        //    for (int i = 0; i < valueSetRow.Length; i++)
+        //    {
+        //        if (i != 0)
+        //        {
+        //            writer.Write("| ");
+        //        }
+
+        //        if (valueSetRow[i] == null)
+        //        {
+        //            writer.Write("| ");
+        //        }
+        //        else
+        //        {
+        //            writer.Write($"| *{codesPerVs[i].Count} of {valueSetRow[i]!.UniqueCodeCount} codes used* ");
+        //        }
+        //    }
+        //    writer.WriteLine();
+
+        //    writer.WriteLine();
+        //}
+
+        return;
+
+        //bool isRelated(ConceptDomainRelationshipCodes? relationship) =>
+        //    (relationship == ConceptDomainRelationshipCodes.Equivalent) ||
+        //    (relationship == ConceptDomainRelationshipCodes.SourceIsNarrowerThanTarget) ||
+        //    (relationship == ConceptDomainRelationshipCodes.SourceIsBroaderThanTarget) ||
+        //    (relationship == ConceptDomainRelationshipCodes.Related);
+    }
 
     private void writeMdOverviewIntroValueSets(ExportStreamWriter writer, DefinitionCollection dc)
     {
@@ -826,6 +1264,69 @@ public class XVerProcessor
         }
     }
 
+    private string getSdFilename(string sourceName, FhirArtifactClassEnum artifactClass, bool includeRelativeDir = true)
+    {
+        string artifactPascal = artifactClass switch
+        {
+            FhirArtifactClassEnum.PrimitiveType => "PrimitiveTypes",
+            FhirArtifactClassEnum.ComplexType => "ComplexTypes",
+            FhirArtifactClassEnum.Resource => "Resources",
+            _ => throw new InvalidOperationException("Invalid artifact class."),
+        };
+
+        return includeRelativeDir
+            ? $"{artifactPascal}/{sourceName}.md"
+            : sourceName + ".md";
+    }
+
+    private (string overviewTo, string artifactTo, string overviewFrom, string artifactFrom) getConceptMapMdLinks(
+        StructureDefinitionGraphCell cell,
+        ComparisonDirection direction,
+        FhirArtifactClassEnum artifactClass)
+    {
+        StructureDefinitionGraphCell? targetCell = direction == ComparisonDirection.Up ? cell.RightCell : cell.LeftCell;
+
+        if (targetCell == null)
+        {
+            return ("*no map*", "*no map*", "*no map*", "*no map*");
+        }
+
+        string overviewRoot = artifactClass == FhirArtifactClassEnum.Resource ? "resources" : "types";
+
+        StructureDefinitionGraphEdge? edge = direction == ComparisonDirection.Up ? cell.RightEdge : cell.LeftEdge;
+        ConceptMap? overviewMapTo = direction == ComparisonDirection.Up ? edge?.OverviewUp : edge?.OverviewDown;
+        ConceptMap? mapTo = direction == ComparisonDirection.Up ? edge?.Up : edge?.Down;
+        ConceptMap? overviewMapFrom = direction == ComparisonDirection.Up ? edge?.OverviewDown : edge?.OverviewUp;
+        ConceptMap? mapFrom = direction == ComparisonDirection.Up ? edge?.Down : edge?.Up;
+
+        return (
+            getOverviewLink(overviewMapTo, targetCell),
+            getArtifactLink(mapTo, targetCell),
+            getOverviewLink(overviewMapFrom, targetCell),
+            getArtifactLink(mapFrom, targetCell));
+
+        string getOverviewLink(ConceptMap? map, StructureDefinitionGraphCell? target)
+        {
+            if ((map == null) || (target == null))
+            {
+                return "*no map*";
+            }
+
+            return $"[{map.Name.ForMdTable()}]" +
+                $"(/input/{overviewRoot}_v2/ConceptMap-{map.Name}.json)";
+        }
+
+        string getArtifactLink(ConceptMap? map, StructureDefinitionGraphCell? target)
+        {
+            if ((map == null) || (target == null))
+            {
+                return "*no map*";
+            }
+
+            return $"[{map.Name.ForMdTable()}]" +
+                $"(/input/{overviewRoot}_v2/{cell.DC.FhirSequence.ToRLiteral()}to{target.DC.FhirSequence.ToRLiteral()}/ConceptMap-{map.Name}.json)";
+        }
+    }
 
     private string getVsFilename(string sourceVsName, bool includeRelativeDir = true)
     {
@@ -840,34 +1341,58 @@ public class XVerProcessor
 
     private (string to, string from) getConceptMapMdLinks(ValueSetGraphCell cell, ComparisonDirection direction)
     {
-        if (direction == ComparisonDirection.Up)
-        {
-            if ((cell.RightCell == null) ||
-                (cell.RightEdge?.Up == null) ||
-                (cell.RightEdge?.Down == null))
-            {
-                return ("*no map*", "*no map*");
-            }
+        ValueSetGraphCell? targetCell = direction == ComparisonDirection.Up ? cell.RightCell : cell.LeftCell;
 
-            return (
-                $"[{cell.RightEdge.Up.Name.ForMdTable()}]" +
-                $"(/input/codes_v2/{cell.DC.FhirSequence.ToRLiteral()}to{cell.RightCell.DC.FhirSequence.ToRLiteral()}/ConceptMap-{cell.RightEdge.Up.Name}.json)",
-                $"[{cell.RightEdge.Down.Name.ForMdTable()}]" +
-                $"(/input/codes_v2/{cell.RightCell.DC.FhirSequence.ToRLiteral()}to{cell.DC.FhirSequence.ToRLiteral()}/ConceptMap-{cell.RightEdge.Down.Name}.json)");
-        }
-
-        if ((cell.LeftCell == null) ||
-            (cell.LeftEdge?.Up == null) ||
-            (cell.LeftEdge?.Down == null))
+        if (targetCell == null)
         {
             return ("*no map*", "*no map*");
         }
 
-        return (
-            $"[{cell.LeftEdge.Down.Name.ForMdTable()}]" +
-            $"(/input/codes_v2/{cell.DC.FhirSequence.ToRLiteral()}to{cell.LeftCell.DC.FhirSequence.ToRLiteral()}/ConceptMap-{cell.LeftEdge.Down.Name}.json)",
-            $"[{cell.LeftEdge.Up.Name.ForMdTable()}]" +
-            $"(/input/codes_v2/{cell.LeftCell.DC.FhirSequence.ToRLiteral()}to{cell.DC.FhirSequence.ToRLiteral()}/ConceptMap-{cell.LeftEdge.Up.Name}.json)");
+        ValueSetGraphEdge? edge = direction == ComparisonDirection.Up ? cell.RightEdge : cell.LeftEdge;
+        ConceptMap? mapTo = direction == ComparisonDirection.Up ? edge?.Up : edge?.Down;
+        ConceptMap? mapFrom = direction == ComparisonDirection.Up ? edge?.Down : edge?.Up;
+
+        return (getLink(mapTo, targetCell), getLink(mapFrom, targetCell));
+
+        //if (direction == ComparisonDirection.Up)
+        //{
+        //    if ((cell.RightCell == null) ||
+        //        (cell.RightEdge?.Up == null) ||
+        //        (cell.RightEdge?.Down == null))
+        //    {
+        //        return ("*no map*", "*no map*");
+        //    }
+
+        //    return (
+        //        $"[{cell.RightEdge.Up.Name.ForMdTable()}]" +
+        //        $"(/input/codes_v2/{cell.DC.FhirSequence.ToRLiteral()}to{cell.RightCell.DC.FhirSequence.ToRLiteral()}/ConceptMap-{cell.RightEdge.Up.Name}.json)",
+        //        $"[{cell.RightEdge.Down.Name.ForMdTable()}]" +
+        //        $"(/input/codes_v2/{cell.RightCell.DC.FhirSequence.ToRLiteral()}to{cell.DC.FhirSequence.ToRLiteral()}/ConceptMap-{cell.RightEdge.Down.Name}.json)");
+        //}
+
+        //if ((cell.LeftCell == null) ||
+        //    (cell.LeftEdge?.Up == null) ||
+        //    (cell.LeftEdge?.Down == null))
+        //{
+        //    return ("*no map*", "*no map*");
+        //}
+
+        //return (
+        //    $"[{cell.LeftEdge.Down.Name.ForMdTable()}]" +
+        //    $"(/input/codes_v2/{cell.DC.FhirSequence.ToRLiteral()}to{cell.LeftCell.DC.FhirSequence.ToRLiteral()}/ConceptMap-{cell.LeftEdge.Down.Name}.json)",
+        //    $"[{cell.LeftEdge.Up.Name.ForMdTable()}]" +
+        //    $"(/input/codes_v2/{cell.LeftCell.DC.FhirSequence.ToRLiteral()}to{cell.DC.FhirSequence.ToRLiteral()}/ConceptMap-{cell.LeftEdge.Up.Name}.json)");
+
+        string getLink(ConceptMap? map, ValueSetGraphCell? target)
+        {
+            if ((map == null) || (target == null))
+            {
+                return "*no map*";
+            }
+
+            return $"[{map.Name.ForMdTable()}]" +
+                $"(/input/codes_v2/{cell.DC.FhirSequence.ToRLiteral()}to{target.DC.FhirSequence.ToRLiteral()}/ConceptMap-{map.Name}.json)";
+        }
     }
 
 

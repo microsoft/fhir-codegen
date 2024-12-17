@@ -395,7 +395,7 @@ public class CrossVersionMapCollection
         // TODO(ginoc): once the v2 maps are merged into the main branch, all the v1 handling can be removed
 
         // load the updated value set concept maps if we don't prefer v1
-        bool vsMapsLoaded = !preferV1Maps && TryLoadCodeConceptMapsV2(fhirCrossRepoPath);
+        bool vsMapsLoaded = !preferV1Maps && tryLoadCodeConceptMapsV2(fhirCrossRepoPath);
 
         // if we don't have v2 maps, try the v1 maps
         if (!vsMapsLoaded &&
@@ -404,7 +404,10 @@ public class CrossVersionMapCollection
             throw new Exception($"Failed to load fhir-cross-version code concept maps");
         }
 
-        if (!TryLoadOfficialConceptMaps(fhirCrossRepoPath, "types"))
+        bool typeMapsLoaded = !preferV1Maps && tryLoadTypeOverviewMapV2(fhirCrossRepoPath);
+
+        if (!typeMapsLoaded &&
+            !TryLoadOfficialConceptMaps(fhirCrossRepoPath, "types"))
         {
             throw new Exception($"Failed to load fhir-cross-version type concept maps");
         }
@@ -991,7 +994,49 @@ public class CrossVersionMapCollection
         }
     }
 
-    private bool TryLoadCodeConceptMapsV2(string fhirCrossRepoPath)
+    private bool tryLoadTypeOverviewMapV2(string fhirCrossRepoPath)
+    {
+        string path = Path.Combine(fhirCrossRepoPath, "input", "types_v2");
+        if (!Directory.Exists(path))
+        {
+            // does not exist
+            return false;
+        }
+
+        string filename = Path.Combine(path, $"ConceptMap-{_sourceRLiteral}-types-{_targetRLiteral}.json");
+
+        if (!File.Exists(filename))
+        {
+            // does not exist
+            return false;
+        }
+
+        try
+        {
+            object? loaded = _loader.ParseContentsSystemTextStream("fhir+json", typeof(ConceptMap), path: filename);
+            if (loaded is not ConceptMap cm)
+            {
+                
+                Console.WriteLine($"Error loading {filename}: could not parse as ConceptMap");
+                return false;
+            }
+
+            // add this to our maps
+            _dc.AddConceptMap(cm, _dc.MainPackageId, _dc.MainPackageVersion);
+
+            // set as our data type map
+            _dataTypeMap = cm;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading {filename}: {ex.Message}");
+            return false;
+        }
+
+        return true;
+    }
+
+    private bool tryLoadCodeConceptMapsV2(string fhirCrossRepoPath)
     {
         string path = Path.Combine(fhirCrossRepoPath, "input", "codes_v2", $"{_sourceRLiteral}to{_targetRLiteral}");
         if (!Directory.Exists(path))

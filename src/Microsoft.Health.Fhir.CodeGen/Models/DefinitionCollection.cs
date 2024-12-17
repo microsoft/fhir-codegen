@@ -1775,6 +1775,18 @@ public partial class DefinitionCollection
         }
     }
 
+    public IReadOnlyDictionary<string, StructureDefinition> GetStructureIndexDict(FhirArtifactClassEnum artifactClass) => artifactClass switch
+    {
+        FhirArtifactClassEnum.PrimitiveType => _primitiveTypesByName,
+        FhirArtifactClassEnum.LogicalModel => _logicalModelsByUrl,
+        FhirArtifactClassEnum.Extension => _extensionsByUrl,
+        FhirArtifactClassEnum.Profile => _profilesByUrl,
+        FhirArtifactClassEnum.ComplexType => _complexTypesByName,
+        FhirArtifactClassEnum.Resource => _resourcesByName,
+        FhirArtifactClassEnum.Interface => _interfacesByName,
+        _ => throw new ArgumentOutOfRangeException(nameof(artifactClass), artifactClass, null),
+    };
+
     /// <summary>Gets the name of the primitive types by.</summary>
     public IReadOnlyDictionary<string, StructureDefinition> PrimitiveTypesByName => _primitiveTypesByName;
 

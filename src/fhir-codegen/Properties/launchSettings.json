@@ -182,7 +182,7 @@
         },
         "XVer 20-30-40 docs": {
             "commandName": "Project",
-            "commandLineArgs": "xver build-docs -c hl7.fhir.r2.core@1.0.2 -c hl7.fhir.r3.core@3.0.2 -c hl7.fhir.r4.core@4.0.1 --auto-load-expansions --resolve-dependencies true",
+            "commandLineArgs": "xver build-type-docs -c hl7.fhir.r2.core@1.0.2 -c hl7.fhir.r3.core@3.0.2 -c hl7.fhir.r4.core@4.0.1 --auto-load-expansions --resolve-dependencies true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "CQL R4": {
