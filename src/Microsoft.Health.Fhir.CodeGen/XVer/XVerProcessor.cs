@@ -375,6 +375,15 @@ public class XVerProcessor
             primitiveGraph.Build(_comparisonCache.Values);
         }
 
+        // if we are writing primitives, put the overall mapping doc in the root
+        if ((artifactFilter == null) ||
+            (artifactFilter == FhirArtifactClassEnum.PrimitiveType) ||
+            (artifactFilter == FhirArtifactClassEnum.ComplexType) ||
+            (artifactFilter == FhirArtifactClassEnum.Resource))
+        {
+            writeMarkdownRootPrimitiveMaps(docDir);
+        }
+
         // walk the definitions to write comparisons
         foreach (DefinitionCollection dc in _definitions)
         {
@@ -407,6 +416,43 @@ public class XVerProcessor
         }
     }
 
+    private void writeMarkdownRootPrimitiveMaps(string dir)
+    {
+        string overviewFilename = Path.Combine(dir, "PrimitiveTypes.md");
+
+        using ExportStreamWriter writer = createMarkdownWriter(overviewFilename, true, true);
+
+        writer.Write($"""
+            ## Primitive Type Mappings
+
+            Primitive types are mapped across all versions using the following table.
+
+            Note that in this table, "concept" refers to the FHIR concept domain and "value" refers to the FHIR value domain.
+
+            The statement: "`typeA` and `typeB` are conceptually interchangeable where appropriate" means that when an *element* provides
+            the appropriate context, the concepts are not so disparate that they cannot be used.  For example, an element that
+            was defined as a `id` in one version could be defined as a `code` in another version. While the types do not
+            *inherently* have a conceptual overlap, the context of the element allows the substitution.  This is different than if
+            an element was defined as an `boolean` and changed to a `dateTime`, which do not have the ability to be conceptually mapped.
+
+            | Source Type | Target Type | Concept Relationship | Concept Comment | Value Relationship | Value Comment |
+            | --- | --- | --- | --- | --- | --- |
+
+            """);
+
+        foreach (FhirTypeMappings.CodeGenTypeMapping mapping in FhirTypeMappings.PrimitiveMappings)
+        {
+            writer.WriteLine(
+                $"| `{mapping.SourceType}` " +
+                $"| `{mapping.TargetType}` " +
+                $"| `{mapping.ConceptDomainRelationship}` " +
+                $"| {mapping.ConceptDomainComment} " +
+                $"| `{mapping.ValueDomainRelationship}` " +
+                $"| {mapping.ValueDomainComment} " +
+                $"|");
+        }
+    }
+
     private void writeMarkdownStructureDefinitions(string dir, DefinitionCollection dc, StructureDefinitionGraph? graph, FhirArtifactClassEnum artifactClass)
     {
         if (graph == null)
@@ -430,7 +476,7 @@ public class XVerProcessor
             Directory.CreateDirectory(artifactDir);
         }
 
-        string overviewFilename = Path.Combine(dir, $"_{artifactLower}.md");
+        string overviewFilename = Path.Combine(dir, $"{artifactPascal}.md");
 
         using ExportStreamWriter overviewWriter = createMarkdownWriter(overviewFilename, true, true);
 
@@ -483,7 +529,7 @@ public class XVerProcessor
             Directory.CreateDirectory(vsDir);
         }
 
-        string overviewFilename = Path.Combine(dir, "_valuesets.md");
+        string overviewFilename = Path.Combine(dir, "ValueSets.md");
 
         using ExportStreamWriter overviewWriter = createMarkdownWriter(overviewFilename, true, true);
 

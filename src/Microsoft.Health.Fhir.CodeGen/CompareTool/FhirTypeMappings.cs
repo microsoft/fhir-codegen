@@ -34,9 +34,9 @@ public class FhirTypeMappings
             CMR.Equivalent => (SourceType == TargetType)
                 ? "The type is the same"
                 : $"{SourceType} and {TargetType} are conceptually interchangeable where appropriate",
-            CMR.SourceIsNarrowerThanTarget => $"The source type {SourceType} is considered a narrower concept domain than the target type {TargetType}",
-            CMR.SourceIsBroaderThanTarget => $"The source type {SourceType} is considered a broader concept domain than the target type {TargetType}",
-            _ => $"Conceptually, {SourceType} and {TargetType} should be treated as {ConceptDomainRelationship}"
+            CMR.SourceIsNarrowerThanTarget => $"`{SourceType}` is considered a narrower concept domain than `{TargetType}`",
+            CMR.SourceIsBroaderThanTarget => $"`{SourceType}` is considered a broader concept domain than `{TargetType}`",
+            _ => $"Conceptually, `{SourceType}` and `{TargetType}` should be treated as `{ConceptDomainRelationship}`"
         };
 
         /// <summary>
@@ -46,10 +46,10 @@ public class FhirTypeMappings
         {
             CMR.Equivalent => (SourceType == TargetType)
                 ? "The type is the same"
-                : $"{SourceType} and {TargetType} cover the same value domain",
-            CMR.SourceIsNarrowerThanTarget => $"The source type {SourceType} covers a narrower concept domain than the target type {TargetType}",
-            CMR.SourceIsBroaderThanTarget => $"The source type {SourceType} covers a broader concept domain than the target type {TargetType}",
-            _ => $"In value domain, {SourceType} and {TargetType} should be treated as {ConceptDomainRelationship}"
+                : $"`{SourceType}` and `{TargetType}` cover the same value domain",
+            CMR.SourceIsNarrowerThanTarget => $"`{SourceType}` covers a smaller value domain than `{TargetType}`",
+            CMR.SourceIsBroaderThanTarget => $"`{SourceType} covers a larger value domain than `{TargetType}`",
+            _ => $"In value domain, `{SourceType}` and `{TargetType}` should be treated as `{ConceptDomainRelationship}`"
         };
 
         public string Comment => (SourceType == TargetType)
