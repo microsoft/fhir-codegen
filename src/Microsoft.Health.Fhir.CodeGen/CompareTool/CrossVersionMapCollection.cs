@@ -212,6 +212,7 @@ public class CrossVersionMapCollection
         (uc.Value is CodeableConcept cc) &&
         cc.Coding.Any(c => c.System == CommonDefinitions.ConceptMapUsageContextSystem && c.Code == CommonDefinitions.ConceptMapUsageContextValueSet));
 
+
     public IEnumerable<ConceptMap> GetDataTypeMaps(bool includeOverviews = false)
     {
         foreach (ConceptMap cm in _dc.ConceptMapsByUrl.Values)
@@ -1614,6 +1615,31 @@ public class CrossVersionMapCollection
         return cm;
     }
 
+    public ConceptMap BuildBaseElementMap(StructureDefinition sourceSd, StructureDefinition targetSd)
+    {
+        string localConceptMapId = $"{_sourceRLiteral}-{sourceSd.Name}-{_targetRLiteral}-{sourceSd.Name}";
+        string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
+
+        ConceptMap cm = new()
+        {
+            Id = localConceptMapId,
+            Url = localUrl,
+            Name = localConceptMapId,
+            Title = GetConceptMapTitle(sourceSd.Name, targetSd.Name),
+            SourceScope = new Canonical($"{sourceSd.Url}|{_sourcePackageVersion}"),
+            TargetScope = new Canonical($"{targetSd.Url}|{_targetPackageVersion}"),
+            Group = [new ConceptMap.GroupComponent
+            {
+                Source = sourceSd.Url,
+                Target = targetSd.Url,
+            }],
+        };
+
+        _dc!.AddConceptMap(cm, _dc.MainPackageId, _dc.MainPackageVersion);
+
+        return cm;
+    }
+
     /// <summary>
     /// Builds a base ConceptMap between two ValueSets.
     /// </summary>
@@ -1812,7 +1838,6 @@ public class CrossVersionMapCollection
 
         return null;
     }
-
 
 
     public ConceptMap? GetSourceValueSetConceptMap(

@@ -290,7 +290,56 @@ public partial class FhirCoreComparer
         }
 
         return properties;
+
     }
+
+    private List<ConceptMap.MappingPropertyComponent> getMappingProperties(
+        bool? generated = null,
+        bool? needsReview = null,
+        CMR? conceptRelationship = null,
+        CMR? valueRelationship = null)
+    {
+        List<ConceptMap.MappingPropertyComponent> properties = [];
+
+        if (generated != null)
+        {
+            properties.Add(new()
+            {
+                Code = CommonDefinitions.ConceptMapPropertyGenerated,
+                Value = new FhirBoolean(generated),
+            });
+        }
+
+        if (needsReview != null)
+        {
+            properties.Add(new()
+            {
+                Code = CommonDefinitions.ConceptMapPropertyNeedsReview,
+                Value = new FhirBoolean(needsReview),
+            });
+        }
+
+        if (conceptRelationship != null)
+        {
+            properties.Add(new()
+            {
+                Code = CommonDefinitions.ConceptMapPropertyConceptDomainRelationship,
+                Value = new Code<ConceptMap.ConceptMapRelationship>(conceptRelationship),
+            });
+        }
+
+        if (valueRelationship != null)
+        {
+            properties.Add(new()
+            {
+                Code = CommonDefinitions.ConceptMapPropertyValueDomainRelationship,
+                Value = new Code<ConceptMap.ConceptMapRelationship>(valueRelationship),
+            });
+        }
+
+        return properties;
+    }
+
 
     private CMR? invert(CMR? existing) => existing switch
     {

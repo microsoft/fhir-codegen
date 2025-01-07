@@ -25,6 +25,8 @@ using System.Collections;
 using static Microsoft.Health.Fhir.CodeGen.CompareTool.FhirCoreComparerLogMessages;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Newtonsoft.Json.Linq;
+using System.Diagnostics.CodeAnalysis;
+
 
 
 #if NETSTANDARD2_0
@@ -85,78 +87,53 @@ public partial class FhirCoreComparer
         return (up, down);
     }
 
-    /// <summary>
-    /// Retrieves the paired data type maps from the cross-version map collections.
-    /// Note that there will always be at most one (and should always be one), but this method
-    /// returns an enumerable for consistency with other map retrieval methods.
-    /// </summary>
-    /// <returns>
-    /// An enumerable of tuples containing the ConceptMap for the upward and downward directions.
-    /// Each tuple contains:
-    /// <list type="bullet">
-    /// <item>
-    /// <description>The ConceptMap for the upward direction, or null if not available.</description>
-    /// </item>
-    /// <item>
-    /// <description>The ConceptMap for the downward direction, or null if not available.</description>
-    /// </item>
-    /// </list>
-    /// </returns>
-    public IEnumerable<(StructureDefinition left, StructureDefinition right, ConceptMap? up, ConceptMap? down)> GetPairedStructureConceptMaps()
+
+    public ConceptMap GetOrBuildElementMap(
+        DefinitionCollection sourceDc,
+        StructureDefinition sourceSd,
+        DefinitionCollection targetDc,
+        StructureDefinition targetSd,
+        FhirArtifactClassEnum artifactClass)
     {
-        Dictionary<(string? source, string? target), ConceptMap> mapsUp =
-            (_cvLeftToRight?.GetDataTypeMaps() ?? []).ToDictionary(cm => (cm.cgSourceScope(), cm.cgTargetScope()));
-        Dictionary<(string? source, string? target), ConceptMap> mapsDown =
-            (_cvRightToLeft?.GetDataTypeMaps() ?? []).ToDictionary(cm => (cm.cgSourceScope(), cm.cgTargetScope()));
+        CrossVersionMapCollection? cv = null;
 
-        // iterate over the forward maps (up)
-        foreach (((string? source, string? target), ConceptMap cmUp) in mapsUp)
+        // check for a left-to-right mapping
+        if ((_leftDc == sourceDc) && (_rightDc == targetDc))
         {
-            mapsDown.TryGetValue((target, source), out ConceptMap? cmDown);
-
-            StructureDefinition? leftSd = null;
-            StructureDefinition? rightSd = null;
-
-            if ((source == null) ||
-                !_leftDc.TryGetStructure(source, out leftSd))
-            {
-                continue;
-            }
-
-            if ((target == null) ||
-                !_rightDc.TryGetStructure(target, out rightSd))
-            {
-                continue;
-            }
-
-            yield return (leftSd, rightSd, cmUp, cmDown);
+            cv = _cvLeftToRight;
+        }
+        //check for a right-to-left mapping
+        else if ((_rightDc == sourceDc) && (_leftDc == targetDc))
+        {
+            cv = _cvRightToLeft;
         }
 
-        // iterate over the reverse maps looking for orphans
-        foreach (((string? source, string? target), ConceptMap cmDown) in mapsDown)
+        if (cv == null)
         {
-            if (mapsUp.ContainsKey((target, source)))
-            {
-                continue;
-            }
-
-            StructureDefinition? leftSd = null;
-            StructureDefinition? rightSd = null;
-
-            if ((source == null) ||
-                !_rightDc.TryGetStructure(source, out rightSd))
-            {
-                continue;
-            }
-
-            if ((target == null) ||
-                !_leftDc.TryGetStructure(target, out leftSd))
-            {
-                continue;
-            }
-
-            yield return (leftSd, rightSd, null, cmDown);
+            // not a mapping we have
+            throw new Exception($"Invalid collections: source {sourceDc.FhirVersionLiteral} and target {targetDc.FhirVersionLiteral} are not in this comparison");
         }
+
+        // check for an existing map
+        ConceptMap? cm = cv.GetMap(sourceSd.Url, targetSd.Url);
+
+        if (cm != null)
+        {
+            return cm;
+        }
+
+        // build a new map
+        cm = cv.BuildBaseElementMap(sourceSd, targetSd);
+
+        // set the correct usage context
+        setUseContext(
+            cm,
+            artifactClass == FhirArtifactClassEnum.ComplexType
+            ? CommonDefinitions.ConceptMapUsageContextDataType
+            : CommonDefinitions.ConceptMapUsageContextResource);
+        addConceptMapPropertyDefinitions(cm, includeDomainProps: true);
+
+        return cm;
     }
 
     private void checkPrimitiveOverviewMaps()
@@ -344,7 +321,7 @@ public partial class FhirCoreComparer
         addConceptMapPropertyDefinitions(down);
 
         // check for the overview links in the correct sources
-        foreach ((ConceptMap map, IEnumerable<StructureDefinition> types) in getMapAndTypesArray())
+        foreach ((ConceptMap map, IEnumerable<StructureDefinition> types, DefinitionCollection sourceDc, DefinitionCollection targetDc) in getMapAndTypesArray())
         {
             // create a source lookup
             ILookup<string, ConceptMap.SourceElementComponent> sources = map.Group[0].Element.ToLookup(e => e.Code);
@@ -354,14 +331,130 @@ public partial class FhirCoreComparer
             {
                 if (!sources.Contains(sd.Name))
                 {
-                    // add a no-map entry
-                    ConceptMap.SourceElementComponent sourceElement = new()
+                    // check to see if the same structure name exists in the target
+                    if (targetDc.TryGetStructure(sd.Name, out _))
                     {
-                        Code = sd.Name,
-                        NoMap = true,
-                    };
-                    map.Group[0].Element.Add(sourceElement);
+                        // add a map
+                        ConceptMap.SourceElementComponent sourceElement = new()
+                        {
+                            Code = sd.Name,
+                            Target = [
+                                new()
+                                {
+                                    Code = sd.Name,
+                                    Display = sd.cgDefinition(),
+                                    Relationship = ConceptMap.ConceptMapRelationship.Equivalent,
+                                    Property = getMappingProperties(generated: true, needsReview: true),
+                                }],
+                        };
+
+                        map.Group[0].Element.Add(sourceElement);
+                    }
+                    else
+                    {
+                        // add a no-map entry
+                        ConceptMap.SourceElementComponent sourceElement = new()
+                        {
+                            Code = sd.Name,
+                            NoMap = true,
+                        };
+                        map.Group[0].Element.Add(sourceElement);
+                    }
                 }
+            }
+        }
+
+        // traverse the map to ensure all the listed sources and targets exist
+        foreach ((ConceptMap map, DefinitionCollection sourceDc, DefinitionCollection targetDc) in
+            ((ConceptMap, DefinitionCollection, DefinitionCollection)[])[(up, _leftDc, _rightDc), (down, _rightDc, _leftDc)])
+        {
+            ConceptMap.SourceElementComponent? sourceBackboneElement = null;
+            List<ConceptMap.SourceElementComponent> backboneSources = [];
+
+            // iterate over all the sources in the map
+            foreach (ConceptMap.SourceElementComponent mapSourceElement in map.Group[0].Element)
+            {
+                // grab our backbone element while iterating for later use
+                if (mapSourceElement.Code == "BackboneElement")
+                {
+                    sourceBackboneElement = mapSourceElement;
+                }
+
+                if (sourceDc.TryGetStructure(mapSourceElement.Code, out _))
+                {
+                    // structure exists, we are good
+                }
+                // check for incorrectly flagged Backbone <-> type mappings
+                else if ((sourceDc.FhirSequence == FhirReleases.FhirSequenceCodes.STU3) &&
+                    (mapSourceElement.Code == "Expression"))
+                {
+                    backboneSources.Add(mapSourceElement);
+                }
+                else
+                {
+                    // this should not be possible
+                    throw new Exception($"Cannot find target type {mapSourceElement.Code} in the source structures ({sourceDc.FhirVersionLiteral})!");
+                }
+
+                // iterate over all the targets for this source
+                foreach (ConceptMap.TargetElementComponent mapTargetElement in mapSourceElement.Target)
+                {
+                    // ensure we have a matching type
+                    if (targetDc.TryGetStructure(mapTargetElement.Code, out _))
+                    {
+                        // structure exists, we are good
+                    }
+                    // check for incorrectly flagged Backbone <-> type mappings
+                    else if ((targetDc.FhirSequence == FhirReleases.FhirSequenceCodes.STU3) &&
+                        (mapTargetElement.Code == "Expression"))
+                    {
+                        // targets can be fixed inline since duplication is not an issue
+                        mapTargetElement.Code = "BackboneElement";
+                        mapTargetElement.Comment = "In R4 the Metadata Type Expression was added - the STU3 equivalent data was represented as elements within a BackboneElement.";
+                        mapTargetElement.Relationship = CMR.RelatedTo;
+                        mapTargetElement.Property = getMappingProperties(needsReview: true, conceptRelationship: CMR.Equivalent, valueRelationship: CMR.RelatedTo);
+                    }
+                    else
+                    {
+                        // this should not be possible
+                        throw new Exception($"Cannot find target type {mapTargetElement.Code} in the target types (mapped from source type {mapSourceElement.Code})!");
+                    }
+                }
+            }
+
+            if (sourceBackboneElement == null)
+            {
+                // add a no-map entry for the BackboneElement
+                sourceBackboneElement = new()
+                {
+                    Code = "BackboneElement",
+                    NoMap = true,
+                };
+                map.Group[0].Element.Add(sourceBackboneElement);
+            }
+
+            // fix elements that should map *from* BackboneElements
+            foreach (ConceptMap.SourceElementComponent incorrectSource in backboneSources)
+            {
+                // if our backbone element was no-map, it is not any more
+                if (sourceBackboneElement.NoMap == true)
+                {
+                    sourceBackboneElement.NoMap = false;
+                    sourceBackboneElement.Target = [];
+                }
+
+                // copy the targets from our incorrect source
+                foreach (ConceptMap.TargetElementComponent incorrectTarget in incorrectSource.Target)
+                {
+                    ConceptMap.TargetElementComponent te = (ConceptMap.TargetElementComponent)incorrectTarget.DeepCopy();
+                    te.Comment = "In R4 the Metadata Type Expression was added - the STU3 equivalent data was represented as elements within a BackboneElement.";
+                    te.Relationship = CMR.RelatedTo;
+                    te.Property = getMappingProperties(needsReview: true, conceptRelationship: CMR.Equivalent, valueRelationship: CMR.RelatedTo);
+                    sourceBackboneElement.Target.Add(te);
+                }
+
+                // remove the incorrect source element
+                map.Group[0].Element.Remove(incorrectSource);
             }
         }
 
@@ -405,14 +498,86 @@ public partial class FhirCoreComparer
 
         return;
 
-        (ConceptMap, IEnumerable<StructureDefinition>)[] getMapAndTypesArray() => artifactType switch
+        (ConceptMap, IEnumerable<StructureDefinition>, DefinitionCollection, DefinitionCollection)[] getMapAndTypesArray() => artifactType switch
         {
-            FhirArtifactClassEnum.PrimitiveType => [(up, _leftDc.PrimitiveTypesByName.Values), (down, _rightDc.PrimitiveTypesByName.Values)],
-            FhirArtifactClassEnum.ComplexType => [(up, _leftDc.ComplexTypesByName.Values), (down, _rightDc.ComplexTypesByName.Values)],
-            FhirArtifactClassEnum.Resource => [(up, _leftDc.ResourcesByName.Values), (down, _rightDc.ResourcesByName.Values)],
+            FhirArtifactClassEnum.PrimitiveType => [(up, _leftDc.PrimitiveTypesByName.Values, _leftDc, _rightDc), (down, _rightDc.PrimitiveTypesByName.Values, _rightDc, _leftDc)],
+            FhirArtifactClassEnum.ComplexType => [(up, _leftDc.ComplexTypesByName.Values, _leftDc, _rightDc), (down, _rightDc.ComplexTypesByName.Values, _rightDc, _leftDc)],
+            FhirArtifactClassEnum.Resource => [(up, _leftDc.ResourcesByName.Values, _leftDc, _rightDc), (down, _rightDc.ResourcesByName.Values, _rightDc, _leftDc)],
             _ => [],
         };
     }
+
+    private void checkElementMaps(FhirArtifactClassEnum artifactType)
+    {
+        if ((_cvLeftToRight == null) || (_cvRightToLeft == null))
+        {
+            // nothing to check if we do not have maps
+            return;
+        }
+
+        if (artifactType == FhirArtifactClassEnum.PrimitiveType)
+        {
+            // primitives do not have element mappings
+            return;
+        }
+
+        // get the overview maps (already updated) as the basis for doing element comparisons
+        (ConceptMap up, ConceptMap down) = GetStructureOverviewMaps(artifactType);
+
+        // check for the overview links in the correct sources
+        foreach ((ConceptMap overviewMap, DefinitionCollection sourceDc, DefinitionCollection targetDc) in getMapAndTypesArray())
+        {
+            // iterate over the mapped types
+            foreach (ConceptMap.SourceElementComponent mapSourceElement in overviewMap.Group[0].Element)
+            {
+                // no-maps have nothing to do
+                if (mapSourceElement.NoMap == true)
+                {
+                    continue;
+                }
+
+                // ensure we have a matching type
+                if (!sourceDc.TryGetStructure(mapSourceElement.Code, out StructureDefinition? sourceSd))
+                {
+                    // this should not be possible
+                    throw new Exception($"Cannot find target type {mapSourceElement.Code} in the source structures ({sourceDc.FhirVersionLiteral})!");
+                }
+
+                // iterate over the mapped targets
+                foreach (ConceptMap.TargetElementComponent mapTargetElement in mapSourceElement.Target)
+                {
+                    // ensure we have a matching type
+                    if (!targetDc.TryGetStructure(mapTargetElement.Code, out StructureDefinition? targetSd))
+                    {
+                        // this should not be possible
+                        throw new Exception($"Cannot find target type {mapTargetElement.Code} in the target types (mapped from source type {mapSourceElement.Code})!");
+                    }
+
+                    ConceptMap elementMap = GetOrBuildElementMap(sourceDc, sourceSd, targetDc, targetSd, artifactType);
+
+                    // process all the elements for this source
+
+                }
+            }
+
+        }
+
+        return;
+
+        (ConceptMap, DefinitionCollection, DefinitionCollection)[] getMapAndTypesArray() => artifactType switch
+        {
+            FhirArtifactClassEnum.ComplexType => [
+                (up, _leftDc, _rightDc),
+                (down, _rightDc, _leftDc)
+                ],
+            FhirArtifactClassEnum.Resource => [
+                (up, _leftDc, _rightDc),
+                (down, _rightDc, _leftDc)
+                ],
+            _ => [],
+        };
+    }
+
 
     /// <summary>
     /// Perform the primitive type comparisons.
@@ -425,5 +590,6 @@ public partial class FhirCoreComparer
     private void compareAllComplexTypes()
     {
         checkOverviewMaps(FhirArtifactClassEnum.ComplexType);
+        checkElementMaps(FhirArtifactClassEnum.ComplexType);
     }
 }
