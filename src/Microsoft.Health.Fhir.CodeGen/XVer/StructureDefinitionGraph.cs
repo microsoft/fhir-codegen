@@ -207,7 +207,88 @@ public class StructureDefinitionGraph
     /// </summary>
     private void buildComplexTypeEdges(IEnumerable<FhirCoreComparer> comparisons)
     {
+        // iterate across the comparisons
+        foreach (FhirCoreComparer coreComparer in comparisons)
+        {
+            // grab the type comparison overview maps
+            (ConceptMap overviewUp, ConceptMap overviewDown) = coreComparer.GetStructureOverviewMaps(ArtifactType);
 
+            // build a dictionary of the sources and targets for each element in all groups of the up direction
+            Dictionary<(string source, string target), (ConceptMap.SourceElementComponent sourceElement, ConceptMap.TargetElementComponent targetElement)> pairsUp =
+                overviewUp.Group
+                .SelectMany(cmg => cmg.Element)
+                .Where(se => se.Code != null)
+                .SelectMany(se => se.Target.Where(te => te.Code != null), (se, te) => (se, te))
+                .ToDictionary(v => (v.se.Code, v.te.Code), v => v);
+
+            // build a dictionary of the sources and targets for each element in all groups of the down direction
+            Dictionary<(string source, string target), (ConceptMap.SourceElementComponent sourceElement, ConceptMap.TargetElementComponent targetElement)> pairsDown =
+                overviewDown.Group
+                .SelectMany(cmg => cmg.Element)
+                .Where(se => se.Code != null)
+                .SelectMany(se => se.Target.Where(te => te.Code != null), (se, te) => (se, te))
+                .ToDictionary(v => (v.se.Code, v.te.Code), v => v);
+
+            // iterate over the upward mapping pairs
+            foreach (((string source, string target), (ConceptMap.SourceElementComponent sourceElement, ConceptMap.TargetElementComponent targetElement)) in pairsUp)
+            {
+                // try to resolve the source and target stucture definitions
+                if (!coreComparer.LeftDC.TryGetStructure(source, out StructureDefinition? leftSd) ||
+                    !coreComparer.RightDC.TryGetStructure(target, out StructureDefinition? rightSd))
+                {
+                    continue;
+                }
+
+                // try to resolve the reverse mapping
+                bool hasReverse = pairsDown.TryGetValue((target, source), out var reverseMapping);
+
+                // add this edge
+                _edges.AddToValue(leftSd, new()
+                {
+                    Direction = ComparisonDirection.Up,
+                    Source = leftSd,
+                    Target = rightSd,
+                    OverviewUp = overviewUp,
+                    OverviewUpSource = sourceElement,
+                    OverviewUpTarget = targetElement,
+                    OverviewDown = overviewDown,
+                    OverviewDownSource = hasReverse ? reverseMapping.sourceElement : null,
+                    OverviewDownTarget = hasReverse ? reverseMapping.targetElement : null,
+                    Up = null,
+                    Down = null,
+                });
+            }
+
+            // iterate over the downward mapping pairs
+            foreach (((string source, string target), (ConceptMap.SourceElementComponent sourceElement, ConceptMap.TargetElementComponent targetElement)) in pairsDown)
+            {
+                // try to resolve the source and target stucture definitions
+                if (!coreComparer.RightDC.TryGetStructure(source, out StructureDefinition? rightSd) ||
+                    !coreComparer.LeftDC.TryGetStructure(target, out StructureDefinition? leftSd))
+                {
+                    continue;
+                }
+
+                // try to resolve the reverse mapping
+                bool hasReverse = pairsUp.TryGetValue((target, source), out var reverseMapping);
+
+                // add this edge
+                _edges.AddToValue(rightSd, new()
+                {
+                    Direction = ComparisonDirection.Down,
+                    Source = rightSd,
+                    Target = leftSd,
+                    OverviewUp = overviewUp,
+                    OverviewUpSource = hasReverse ? reverseMapping.sourceElement : null,
+                    OverviewUpTarget = hasReverse ? reverseMapping.targetElement : null,
+                    OverviewDown = overviewDown,
+                    OverviewDownSource = sourceElement,
+                    OverviewDownTarget = targetElement,
+                    Up = null,
+                    Down = null,
+                });
+            }
+        }
     }
 
     private void buildResourceEdges(IEnumerable<FhirCoreComparer> comparisons)

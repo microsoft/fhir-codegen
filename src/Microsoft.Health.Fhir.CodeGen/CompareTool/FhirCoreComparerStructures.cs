@@ -422,5 +422,8 @@ public partial class FhirCoreComparer
         checkPrimitiveOverviewMaps();
     }
 
-
+    private void compareAllComplexTypes()
+    {
+        checkOverviewMaps(FhirArtifactClassEnum.ComplexType);
+    }
 }

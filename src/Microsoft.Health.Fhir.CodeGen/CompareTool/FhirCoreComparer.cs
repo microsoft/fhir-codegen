@@ -164,7 +164,7 @@ public partial class FhirCoreComparer
             case CodeGenCommon.Models.FhirArtifactClassEnum.PrimitiveType:
             case CodeGenCommon.Models.FhirArtifactClassEnum.ComplexType:
                 compareAllPrimitiveTypes();
-                checkOverviewMaps(CodeGenCommon.Models.FhirArtifactClassEnum.ComplexType);
+                compareAllComplexTypes();
                 break;
 
             // resources need all 'lower' types updated
@@ -172,7 +172,7 @@ public partial class FhirCoreComparer
             default:
                 compareAllValueSets();
                 compareAllPrimitiveTypes();
-                checkOverviewMaps(CodeGenCommon.Models.FhirArtifactClassEnum.ComplexType);
+                compareAllComplexTypes();
                 checkOverviewMaps(CodeGenCommon.Models.FhirArtifactClassEnum.Resource);
                 break;
         }

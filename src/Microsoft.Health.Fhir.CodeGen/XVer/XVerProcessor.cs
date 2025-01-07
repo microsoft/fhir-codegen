@@ -360,6 +360,7 @@ public class XVerProcessor
         }
 
         StructureDefinitionGraph? primitiveGraph = null;
+        StructureDefinitionGraph? complexGraph = null;
 
         if ((artifactFilter == null) ||
             (artifactFilter == FhirArtifactClassEnum.PrimitiveType) ||
@@ -373,6 +374,14 @@ public class XVerProcessor
             };
 
             primitiveGraph.Build(_comparisonCache.Values);
+
+            complexGraph = new()
+            {
+                Definitions = _definitions,
+                ArtifactType = FhirArtifactClassEnum.ComplexType,
+            };
+
+            complexGraph.Build(_comparisonCache.Values);
         }
 
         // if we are writing primitives, put the overall mapping doc in the root
@@ -405,16 +414,18 @@ public class XVerProcessor
                 writeMarkdownValueSets(versionDir, dc, vsGraph!);
             }
 
-            // write the contents of our primitive types
+            // write the contents of our types
             if ((artifactFilter == null) ||
                 (artifactFilter == FhirArtifactClassEnum.PrimitiveType) ||
                 (artifactFilter == FhirArtifactClassEnum.ComplexType) ||
                 (artifactFilter == FhirArtifactClassEnum.Resource))
             {
                 writeMarkdownStructureDefinitions(versionDir, dc, primitiveGraph, FhirArtifactClassEnum.PrimitiveType);
+                writeMarkdownStructureDefinitions(versionDir, dc, complexGraph, FhirArtifactClassEnum.ComplexType);
             }
         }
     }
+
 
     private void writeMarkdownRootPrimitiveMaps(string dir)
     {
@@ -1444,21 +1455,34 @@ public class XVerProcessor
 
     private ExportStreamWriter createMarkdownWriter(string filename, bool writeGenerationHeader = true, bool includeGenerationTime = false)
     {
-        ExportStreamWriter writer = new(filename);
-
-        if (writeGenerationHeader)
+        for (int i = 0; i < 3; i++)
         {
-            writer.WriteLine($"Comparison of {string.Join(", ", _definitions.Select(dc => dc.Key))}");
-
-            if (includeGenerationTime)
+            try
             {
-                writer.WriteLine($"Generated at {DateTime.Now.ToString("F")}");
-            }
+                ExportStreamWriter writer = new(filename);
 
-            writer.WriteLine();
+                if (writeGenerationHeader)
+                {
+                    writer.WriteLine($"Comparison of {string.Join(", ", _definitions.Select(dc => dc.Key))}");
+
+                    if (includeGenerationTime)
+                    {
+                        writer.WriteLine($"Generated at {DateTime.Now.ToString("F")}");
+                    }
+
+                    writer.WriteLine();
+                }
+
+                return writer;
+            }
+            catch (IOException)
+            {
+                // wait a bit and try again
+                Thread.Sleep(1000);
+            }
         }
 
-        return writer;
+        throw new IOException("Failed to create file after 3 attempts.");
     }
 
 
