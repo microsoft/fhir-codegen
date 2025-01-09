@@ -761,7 +761,7 @@ public class XVerProcessor
                     writer.Write(
                         $"| →→→→→→→ <br/>Overview: {overviewToRight}<br/>Artifact: {toRight}<br/> →→→→→→→ " +
                         $"<hr/>" +
-                        $"←←←←←←← <br/>Overview: {overviewFromRight}<br/>Artiract: {fromRight}<br/> ←←←←←←← ");
+                        $"←←←←←←← <br/>Overview: {overviewFromRight}<br/>Artifact: {fromRight}<br/> ←←←←←←← ");
                 }
             }
         }

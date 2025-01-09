@@ -58,7 +58,6 @@ public static class ElementDefinitionExtensions
 
         return -1;
     }
-    //public static int cgFieldOrder(this ElementDefinition ed) => ed.GetExtensionValue<Hl7.Fhir.Model.Integer>(CommonDefinitions.ExtUrlEdFieldOrder)?.Value ?? -1;
 
     /// <summary>Gets the component field order for an element (order within its parent path).</summary>
     /// <param name="ed">The ElementDefinition to act on.</param>
@@ -72,7 +71,8 @@ public static class ElementDefinitionExtensions
 
         return -1;
     }
-    //public static int cgComponentFieldOrder(this ElementDefinition ed) => ed.GetExtensionValue<Hl7.Fhir.Model.Integer>(CommonDefinitions.ExtUrlEdComponentFieldOrder)?.Value ?? -1;
+
+    //public static string cgRelativeId(this ElementDefinition ed) => string.Join(".", ed.ElementId.Split('.')[1..]);
 
     /// <summary>Gets the full path of the base definition.</summary>
     public static string cgBasePath(this ElementDefinition ed) => ed.Base?.Path ?? string.Empty;

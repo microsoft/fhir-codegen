@@ -1178,51 +1178,56 @@ public class CrossVersionMapCollection
         cm.Group[0].Source = sourceLocalUrl;
         cm.Group[0].Target = targetLocalUrl;
 
-        // traverse this element map for all elements and build individual maps
-        Dictionary<string, List<ConceptMap.SourceElementComponent>> typeElements = [];
-        foreach (ConceptMap.SourceElementComponent sec in cm.Group[0].Element)
-        {
-            string typeName = sec.Code.Split('.')[0];
-
-            if (typeElements.TryGetValue(typeName, out List<ConceptMap.SourceElementComponent>? elements))
-            {
-                elements.Add(sec);
-            }
-            else
-            {
-                typeElements.Add(typeName, [sec]);
-            }
-        }
+        // create a lookup for the root types of our source element components
+        ILookup<string, ConceptMap.SourceElementComponent> mapSourceTypeLookup = cm.Group[0].Element.ToLookup(e => e.Code.Split('.')[0]);
 
         // traverse our extracted elements and build new concept maps
-        foreach ((string typeName, List<ConceptMap.SourceElementComponent> elements) in typeElements)
+        foreach (IGrouping<string, ConceptMap.SourceElementComponent> typeGroup in mapSourceTypeLookup)
         {
+            
+            // aggregate our set of source elements
+            List<ConceptMap.SourceElementComponent> elements = [.. typeGroup];
             if (elements.Count == 0)
             {
                 continue;
             }
 
-            // official sources are sometimes incorrect, listing the same code multiple times instead of multiple targets
-            Dictionary<string, ConceptMap.SourceElementComponent> elementDict = [];
-            foreach (ConceptMap.SourceElementComponent element in elements)
+            string? targetTypeName = null;
+
+            // create a lookup based on the full source element paths
+            ILookup<string, ConceptMap.SourceElementComponent> elementDict = elements.ToLookup(e => e.Code);
+
+            List<ConceptMap.SourceElementComponent> reconciled = [];
+
+            // iterate over the elements and build our reconciled element map
+            foreach (IGrouping<string, ConceptMap.SourceElementComponent> originalSourceElements in elementDict)
             {
-                if (elementDict.TryGetValue(element.Code, out ConceptMap.SourceElementComponent? reconciled))
+                // get the first source element
+                ConceptMap.SourceElementComponent reconciledElement = (ConceptMap.SourceElementComponent)elements.First().DeepCopy();
+
+                // official sources are sometimes incorrect, listing the same code multiple times instead of multiple targets
+                if (elements.Count > 1)
                 {
-                    // add our targets to this element
-                    reconciled.Target ??= [];
-                    reconciled.Target.AddRange(reconciled.Target);
+                    foreach (ConceptMap.SourceElementComponent element in elements.Skip(1))
+                    {
+                        reconciledElement.Target.AddRange(element.Target);
+                    }
                 }
-                else
+
+                // add this element
+                reconciled.Add(reconciledElement);
+
+                // check for a target type
+                if (reconciledElement.Target.Count > 0)
                 {
-                    // add our element to the dictionary
-                    elementDict.Add(element.Code, element);
+                    targetTypeName = reconciledElement.Target[0].Code.Split('.')[0];
                 }
             }
 
             ConceptMap elementMap = BuildNewElementMap(
-                typeName,
-                elements[0].Target.Count == 0 ? typeName : elements[0].Target[0].Code.Split('.')[0],
-                elementDict.Values.OrderBy(se => se.Code).ToList());
+                typeGroup.Key,
+                targetTypeName ?? typeGroup.Key,
+                reconciled);
 
             //_elementConceptMaps.Add(typeName, elementMap);
             _dc.AddConceptMap(elementMap, _dc.MainPackageId, _dc.MainPackageVersion);

@@ -304,7 +304,10 @@ public static class StructureDefinitionExtensions
     /// <param name="id">     The identifier.</param>
     /// <param name="element">[out] The element.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>
-    public static bool cgTryGetElementById(this StructureDefinition sd, string id, [NotNullWhen(true)] out ElementDefinition? element)
+    public static bool cgTryGetElementById(
+        this StructureDefinition sd,
+        string id,
+        [NotNullWhen(true)] out ElementDefinition? element)
     {
         if ((sd.Snapshot != null) && (sd.Snapshot.Element.Count != 0))
         {

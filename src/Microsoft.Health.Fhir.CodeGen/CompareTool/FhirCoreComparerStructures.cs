@@ -88,7 +88,7 @@ public partial class FhirCoreComparer
     }
 
 
-    public ConceptMap GetOrBuildElementMap(
+    public ConceptMap GetOrCreateElementMap(
         DefinitionCollection sourceDc,
         StructureDefinition sourceSd,
         DefinitionCollection targetDc,
@@ -525,7 +525,7 @@ public partial class FhirCoreComparer
         (ConceptMap up, ConceptMap down) = GetStructureOverviewMaps(artifactType);
 
         // check for the overview links in the correct sources
-        foreach ((ConceptMap overviewMap, DefinitionCollection sourceDc, DefinitionCollection targetDc) in getMapAndTypesArray())
+        foreach ((ConceptMap overviewMap, CrossVersionMapCollection cv, DefinitionCollection sourceDc, DefinitionCollection targetDc) in getMapAndTypesArray())
         {
             // iterate over the mapped types
             foreach (ConceptMap.SourceElementComponent mapSourceElement in overviewMap.Group[0].Element)
@@ -540,7 +540,13 @@ public partial class FhirCoreComparer
                 if (!sourceDc.TryGetStructure(mapSourceElement.Code, out StructureDefinition? sourceSd))
                 {
                     // this should not be possible
-                    throw new Exception($"Cannot find target type {mapSourceElement.Code} in the source structures ({sourceDc.FhirVersionLiteral})!");
+                    throw new Exception($"Cannot find source structure {mapSourceElement.Code} in {sourceDc.FhirVersionLiteral}!");
+                }
+
+                // skip primitive sources
+                if (sourceDc.PrimitiveTypesByName.ContainsKey(mapSourceElement.Code))
+                {
+                    continue;
                 }
 
                 // iterate over the mapped targets
@@ -550,13 +556,13 @@ public partial class FhirCoreComparer
                     if (!targetDc.TryGetStructure(mapTargetElement.Code, out StructureDefinition? targetSd))
                     {
                         // this should not be possible
-                        throw new Exception($"Cannot find target type {mapTargetElement.Code} in the target types (mapped from source type {mapSourceElement.Code})!");
+                        throw new Exception($"Cannot find target structure {mapTargetElement.Code} in {targetDc.FhirVersionLiteral} (mapped from source type {mapSourceElement.Code})!");
                     }
 
-                    ConceptMap elementMap = GetOrBuildElementMap(sourceDc, sourceSd, targetDc, targetSd, artifactType);
+                    ConceptMap elementMap = GetOrCreateElementMap(sourceDc, sourceSd, targetDc, targetSd, artifactType);
 
-                    // process all the elements for this source
-
+                    // process all the elements for this source to this target
+                    checkStructureElements(elementMap, cv, sourceDc, sourceSd, targetDc, targetSd);
                 }
             }
 
@@ -564,18 +570,200 @@ public partial class FhirCoreComparer
 
         return;
 
-        (ConceptMap, DefinitionCollection, DefinitionCollection)[] getMapAndTypesArray() => artifactType switch
+        (ConceptMap, CrossVersionMapCollection, DefinitionCollection, DefinitionCollection)[] getMapAndTypesArray() => artifactType switch
         {
             FhirArtifactClassEnum.ComplexType => [
-                (up, _leftDc, _rightDc),
-                (down, _rightDc, _leftDc)
+                (up, _cvLeftToRight, _leftDc, _rightDc),
+                (down, _cvRightToLeft, _rightDc, _leftDc)
                 ],
             FhirArtifactClassEnum.Resource => [
-                (up, _leftDc, _rightDc),
-                (down, _rightDc, _leftDc)
+                (up, _cvLeftToRight, _leftDc, _rightDc),
+                (down, _cvRightToLeft, _rightDc, _leftDc)
                 ],
             _ => [],
         };
+    }
+
+    private record class ElementMapTrackingRec
+    {
+        public required ElementDefinition SourceElement { get; set; }
+        public required ConceptMap.SourceElementComponent SourceMapElement { get; set; }
+
+        public required ElementDefinition? TargetElement { get; set; }
+        public required ConceptMap.TargetElementComponent? TargetMapElement { get; set; }
+    }
+
+    private void checkStructureElements(
+        ConceptMap cm,
+        CrossVersionMapCollection cv,
+        DefinitionCollection sourceDc,
+        StructureDefinition sourceSd,
+        DefinitionCollection targetDc,
+        StructureDefinition targetSd)
+    {
+        string? idPrefix = sourceSd.Name == targetSd.Name ? null : targetSd.Name;
+
+        // build lookups of elements based on id for the source and target structures
+        ILookup<string, ElementDefinition> sourceElements = sourceSd.cgElements(includeRoot: false).ToLookup(e => e.ElementId);
+        ILookup<string, ElementDefinition> targetElements = targetSd.cgElements(includeRoot: false).ToLookup(e => e.ElementId);
+
+        // build the dictionary to represent our mappings in a processible way
+        Dictionary<string, List<ElementMapTrackingRec>> mappings = [];
+
+        // load the current map into our mapping dictionary
+        foreach (ConceptMap.SourceElementComponent mapSource in cm.Group[0].Element)
+        {
+            ElementDefinition? sourceElement = sourceElements[mapSource.Code].FirstOrDefault();
+
+            if (sourceElement == null)
+            {
+                // this should not be possible
+                throw new Exception($"Cannot find source element {mapSource.Code} in {sourceSd.Name}!");
+            }
+
+            // no-maps have a basic element
+            if (mapSource.NoMap == true)
+            {
+                mappings.AddToValue(
+                    mapSource.Code,
+                    new()
+                    {
+                        SourceElement = sourceElement,
+                        SourceMapElement = mapSource,
+                        TargetElement = null,
+                        TargetMapElement = null,
+                    });
+
+                continue;
+            }
+
+            // iterate over the targets for this source
+            foreach (ConceptMap.TargetElementComponent mapTarget in mapSource.Target)
+            {
+                ElementDefinition? targetElement = targetElements[mapTarget.Code].FirstOrDefault();
+
+                // ensure we have a matching target element
+                if (targetElement == null)
+                {
+                    // this should not be possible
+                    throw new Exception($"Cannot find target element {mapTarget.Code} in {targetSd.Name} (mapped from source element {mapSource.Code})!");
+                }
+
+                // add the mapping to the dictionary
+                mappings.AddToValue(
+                    mapSource.Code,
+                    new()
+                    {
+                        SourceElement = sourceElement,
+                        SourceMapElement = mapSource,
+                        TargetElement = targetElement,
+                        TargetMapElement = mapTarget,
+                    });
+            }
+        }
+
+        // iterate over source elements to look for elements which have not been added
+        foreach (ElementDefinition sourceElement in sourceElements.SelectMany(g => g))
+        {
+            // skip elements that are already in the map
+            if (mappings.ContainsKey(sourceElement.ElementId))
+            {
+                continue;
+            }
+
+            bool added = false;
+
+            // grab the id components so we can see if something in the path has already been mapped
+            string[] sourceComponents = sourceElement.ElementId.Split('.');
+
+            // need to iterate over every path component to see if there was a renamed backbone somewhere in the id
+            for (int i = sourceComponents.Length; i > 0; i--)
+            {
+                // TODO: This needs to check if the element exists too!
+
+                if (!mappings.TryGetValue(string.Join(".", sourceComponents[..i]), out List<ElementMapTrackingRec>? existingMappings))
+                {
+                    continue;
+                }
+
+                // iterate over the any targets to see if we can use the mapped prefix to find an element
+                foreach (ElementMapTrackingRec existingMapping in existingMappings)
+                {
+                    // skip maps with no targets
+                    if (existingMapping.TargetElement == null)
+                    {
+                        continue;
+                    }
+
+                    string[] existingTargetComponents = existingMapping.TargetElement.ElementId.Split('.');
+
+                    // build a path that adds the current path to the existing mapped path
+                    string testPath = string.Join(".", [..existingTargetComponents, ..sourceComponents[^i]]);
+
+                    ElementDefinition? targetElement = targetElements[testPath].FirstOrDefault();
+
+                    if (targetElement == null)
+                    {
+                        continue;
+                    }
+
+                    // add a mapping for this element
+                    ConceptMap.SourceElementComponent sourceMapElement = new()
+                    {
+                        Code = sourceElement.ElementId,
+                        Target = [
+                            new()
+                            {
+                                Code = targetElement.ElementId,
+                                Display = targetElement.cgShort(),
+                                Comment = $"Generated by matching the source element path based on {existingMapping.SourceElement.ElementId}",
+                                Relationship = ConceptMap.ConceptMapRelationship.Equivalent,
+                                Property = getMappingProperties(generated: true, needsReview: true),
+                            }],
+                    };
+
+                    // add the mapping to the dictionary
+                    mappings.AddToValue(
+                        sourceElement.ElementId,
+                        new()
+                        {
+                            SourceElement = sourceElement,
+                            SourceMapElement = sourceMapElement,
+                            TargetElement = targetElement,
+                            TargetMapElement = sourceMapElement.Target[0],
+                        });
+
+                    // once we have found a mapping, stop looking
+                    added = true;
+                    break;
+                }
+            }
+
+            // check to see if we need to add a no-map entry
+            if (!added)
+            {
+                // add a no-map entry to the concept map
+                ConceptMap.SourceElementComponent noMapElement = new()
+                {
+                    Code = sourceElement.ElementId,
+                    NoMap = true,
+                };
+                cm.Group[0].Element.Add(noMapElement);
+
+                // add to our dictionary
+                mappings.AddToValue(
+                    sourceElement.ElementId,
+                    new()
+                    {
+                        SourceElement = sourceElement,
+                        SourceMapElement = noMapElement,
+                        TargetElement = null,
+                        TargetMapElement = null,
+                    });
+            }
+        }
+
+        return;
     }
 
 
