@@ -10,7 +10,7 @@ using System.Text;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Utility;
 using Microsoft.Extensions.Logging;
-using Microsoft.Health.Fhir.CodeGen.CompareTool;
+using Microsoft.Health.Fhir.Comparison.CompareTool;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGen.Language;
@@ -22,15 +22,10 @@ using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using System.Text.RegularExpressions;
 using System.Collections;
-using static Microsoft.Health.Fhir.CodeGen.CompareTool.FhirCoreComparerLogMessages;
+using static Microsoft.Health.Fhir.Comparison.CompareTool.FhirCoreComparerLogMessages;
 
 
-#if NETSTANDARD2_0
-using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
-#endif
-
-
-namespace Microsoft.Health.Fhir.CodeGen.CompareTool;
+namespace Microsoft.Health.Fhir.Comparison.CompareTool;
 
 /// <summary>
 /// Contains functionality for comparing FHIR ValueSets between different FHIR versions and managing their mappings.

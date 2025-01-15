@@ -3,38 +3,32 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System.Data;
 using System.Diagnostics.CodeAnalysis;
+using System.Text;
+using System.Text.Json;
+using Dapper;
+using fhir_codegen.SQLiteGenerator;
+using Firely.Fhir.Packages;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Rest;
+using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification.Navigation;
 using Hl7.Fhir.Specification.Source;
 using Hl7.Fhir.Utility;
+using Hl7.FhirPath;
+using Microsoft.Data.Sqlite;
+using Microsoft.Extensions.Logging;
+using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGen.Loader;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
+using Microsoft.Health.Fhir.Comparison.Models;
 using Microsoft.Health.Fhir.MappingLanguage;
-using Hl7.Fhir.FhirPath.Validator;
-using Hl7.Fhir.Introspection;
-using Hl7.FhirPath;
-using System.Text;
-using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
-using Hl7.Fhir.Language.Debugging;
-using Firely.Fhir.Packages;
-using System.Text.Json;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Specification.Snapshot;
-using Microsoft.Extensions.Logging;
-using Hl7.Fhir.Model.CdsHooks;
 
-
-
-#if NETSTANDARD2_0
-using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
-#endif
-
-namespace Microsoft.Health.Fhir.CodeGen.CompareTool;
+namespace Microsoft.Health.Fhir.Comparison.CompareTool;
 
 public class CrossVersionMapCollection
 {
@@ -93,9 +87,15 @@ public class CrossVersionMapCollection
 
     private Dictionary<string, FhirStructureMap> _fmlByCompositeName = [];
 
+    private IDbConnection? _dbConnection = null;
+    private string _dbPath;
+    private string _dbName => $"{_source.FhirSequence.ToRLiteral()}-{_target.FhirSequence.ToRLiteral()}.db";
+
+
     public CrossVersionMapCollection(
         DefinitionCollection source,
         DefinitionCollection target,
+        string dbPath,
         ILoggerFactory? loggerFactory = null)
     {
         _loader = new(new()
@@ -106,6 +106,12 @@ public class CrossVersionMapCollection
         {
             JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
         });
+
+        _dbPath = dbPath;
+        if (!Directory.Exists(_dbPath))
+        {
+            Directory.CreateDirectory(_dbPath);
+        }
 
         _source = source;
 
@@ -328,8 +334,44 @@ public class CrossVersionMapCollection
         return false;
     }
 
+    public void InitDb()
+    {
+        string connectionString = new SqliteConnectionStringBuilder()
+        {
+            DataSource = Path.Combine(_dbPath, _dbName),
+            Mode = SqliteOpenMode.ReadWriteCreate,
+        }.ToString();
+
+        _dbConnection = new SqliteConnection(connectionString);
+
+        _dbConnection.Open();
+
+        // ensure core tables exist
+        //ComparisonInfo.CreateTable(_dbConnection);
+        ComparisonDbUtils.CreateTable<ComparisonPackageInfo>(_dbConnection);
+        ComparisonDbUtils.CreateTable<ValueSetMapping>(_dbConnection);
+        ComparisonDbUtils.CreateTable<StructureMapping>(_dbConnection);
+
+        // check if package information is available
+        ComparisonPackageInfo? packageInfo = ComparisonDbUtils.SelectSingle<ComparisonPackageInfo>(_dbConnection);
+
+        if (packageInfo == null)
+        {
+            packageInfo = new()
+            {
+                Id = 1,
+                SourcePackageId = _source.MainPackageId,
+                SourcePackageVersion = _source.MainPackageVersion,
+                TargetPackageId = _target.MainPackageId,
+                TargetPackageVersion = _target.MainPackageVersion,
+            };
+        }
+    }
+
     public bool TryLoadCrossVersionMaps(string path, bool preferV1Maps = false)
     {
+        InitDb();
+
         bool isOfficial = PathHasFhirCrossVersionOfficial(path);
         bool isSource = PathHasFhirCrossVersionSource(path);
 
@@ -2759,7 +2801,7 @@ public class CrossVersionMapCollection
         StructureComparison? comparison = null;
         if (group.Parameters.Count == 2 && sourceSD?.StructureDefinition != null && targetSD?.StructureDefinition != null)
         {
-            var config = new Configuration.ConfigCompare()
+            var config = new CodeGen.Configuration.ConfigCompare()
             {
 
             };

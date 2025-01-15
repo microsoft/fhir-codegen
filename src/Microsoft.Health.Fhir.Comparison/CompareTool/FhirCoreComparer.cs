@@ -10,7 +10,7 @@ using System.Text;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Utility;
 using Microsoft.Extensions.Logging;
-using Microsoft.Health.Fhir.CodeGen.CompareTool;
+using Microsoft.Health.Fhir.Comparison.CompareTool;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGen.Language;
@@ -24,14 +24,7 @@ using System.Text.RegularExpressions;
 using System.Collections;
 
 
-
-
-#if NETSTANDARD2_0
-using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
-#endif
-
-
-namespace Microsoft.Health.Fhir.CodeGen.CompareTool;
+namespace Microsoft.Health.Fhir.Comparison.CompareTool;
 
 
 internal static partial class FhirCoreComparerLogMessages
@@ -98,6 +91,7 @@ public partial class FhirCoreComparer
     private ILoggerFactory _loggerFactory;
     private ILogger _logger;
     private string _mapSourcePath;
+    private string _dbPath;
 
     private DefinitionCollection _leftDc;
     private string _leftShortVersion;
@@ -125,6 +119,7 @@ public partial class FhirCoreComparer
         _loggerFactory = loggerFactory;
         _logger = loggerFactory.CreateLogger<FhirCoreComparer>();
         _mapSourcePath = mapSourcePath;
+        _dbPath = Path.Combine(mapSourcePath, "db");
 
         _leftDc = left;
         _leftShortVersion = left.FhirSequence.ToShortVersion();
@@ -473,8 +468,8 @@ public partial class FhirCoreComparer
     /// <returns>A collection of cross-version maps.</returns>
     private (CrossVersionMapCollection lToR, CrossVersionMapCollection rToL) getInitialMaps(bool preferV1Maps = false)
     {
-        CrossVersionMapCollection lToR = new(_leftDc, _rightDc, _loggerFactory);
-        CrossVersionMapCollection rToL = new(_rightDc, _leftDc, _loggerFactory);
+        CrossVersionMapCollection lToR = new(_leftDc, _rightDc, _dbPath, _loggerFactory);
+        CrossVersionMapCollection rToL = new(_rightDc, _leftDc, _dbPath, _loggerFactory);
 
         // check for creating new maps
         if (string.IsNullOrEmpty(_mapSourcePath))

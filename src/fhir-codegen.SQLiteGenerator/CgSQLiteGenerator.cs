@@ -1,0 +1,630 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Data;
+using System.Data.SqlTypes;
+using System.Text;
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.CodeAnalysis.Text;
+
+namespace fhir_codegen.SQLiteGenerator;
+
+[Generator]
+public sealed class CgSQLiteGenerator : IIncrementalGenerator
+{
+    //private const string _joiner_0 = ",\r\n";
+    //private const string _joiner_1 = ",\r\n    ";
+    //private const string _joiner_2 = ",\r\n        ";
+    private const string _line_3 = "\r\n            ";
+    private const string _line_4 = "\r\n                ";
+    private const string _comma_line_4 = ",\r\n                ";
+    private const string _comma_line_5 = ",\r\n                    ";
+
+    public void Initialize(IncrementalGeneratorInitializationContext context)
+    {
+#if ATTACH_DEBUGGER
+        if (!System.Diagnostics.Debugger.IsAttached)
+        {
+            System.Diagnostics.Debugger.Launch();
+        }
+#endif
+
+        // create a generated file with our attributes so the target project can use them
+        context.RegisterPostInitializationOutput(ctx => ctx.AddSource(
+            "CgSQLiteGeneratorAttributes.g.cs",
+            SourceText.From(GeneratorAttributes.CgAttributes, Encoding.UTF8)));
+
+        IncrementalValuesProvider<ClassDeclarationSyntax> enumDeclarations = context.SyntaxProvider
+            .CreateSyntaxProvider(
+                predicate: static (s, _) => IsSyntaxTargetForGeneration(s),
+                transform: static (ctx, _) => GetTargetForGeneration(ctx));
+        IncrementalValueProvider<(Compilation, ImmutableArray<ClassDeclarationSyntax>)> compilationAndEnums
+                = context.CompilationProvider.Combine(enumDeclarations.Collect());
+        context.RegisterSourceOutput(compilationAndEnums,
+            (spc, source) => Execute(source.Item1, source.Item2, spc));
+    }
+
+
+    /// <summary>
+    /// Determines if the given <see cref="SyntaxNode"/> is a target for generation.
+    /// </summary>
+    /// <param name="syntaxNode">The syntax node to evaluate.</param>
+    /// <returns><c>true</c> if the syntax node is a class declaration with specific attributes; otherwise, <c>false</c>.</returns>
+    public static bool IsSyntaxTargetForGeneration(SyntaxNode syntaxNode)
+    {
+        return (syntaxNode is ClassDeclarationSyntax classDeclarationSyntax) &&
+            (classDeclarationSyntax.AttributeLists.Count > 0) &&
+            classDeclarationSyntax.AttributeLists.Any(al => al.Attributes.Any(a => GeneratorAttributes._cgClassAttributes.Contains(a.Name.ToString())));
+    }
+
+    /// <summary>
+    /// Retrieves the target class declaration syntax for generation.
+    /// </summary>
+    /// <param name="context">The generator syntax context.</param>
+    /// <returns>The class declaration syntax node.</returns>
+    public static ClassDeclarationSyntax GetTargetForGeneration(GeneratorSyntaxContext context)
+    {
+        ClassDeclarationSyntax classDeclarationSyntax = (ClassDeclarationSyntax)context.Node;
+        return classDeclarationSyntax;
+    }
+
+    public void Execute(Compilation compilation, ImmutableArray<ClassDeclarationSyntax> classes, SourceProductionContext context)
+    {
+        foreach (ClassDeclarationSyntax classSyntax in classes)
+        {
+            // Converting the class to a semantic model to access much more meaningful data.
+            SemanticModel model = compilation.GetSemanticModel(classSyntax.SyntaxTree);
+
+            // Parse to declared symbol, so you can access each part of code separately,
+            // such as interfaces, methods, members, contructor parameters etc.
+            ISymbol? symbol = model.GetDeclaredSymbol(classSyntax);
+
+            if (symbol == null)
+            {
+                continue;
+            }
+
+            string className = symbol.Name;
+            string? classNamespace = symbol.ContainingNamespace?.ToDisplayString();
+            string? classAssembly = symbol.ContainingAssembly?.Name;
+
+            string? pkColName = null;
+            string? pkPropType = null;
+            bool pkIsIdentity = false;
+
+            List<string> createColLines = [];
+            List<string> createFKLines = [];
+            List<(string name, string readerDirective, bool isPrimaryKey, bool isIdentity)> tableColInfo = [];
+
+            foreach (MemberDeclarationSyntax member in classSyntax.Members)
+            {
+                // only process properties
+                if (member is not PropertyDeclarationSyntax pds)
+                {
+                    continue;
+                }
+
+                //SemanticModel pModel = compilation.GetSemanticModel(pds.SyntaxTree);
+                //ISymbol? pSymbol = pModel.GetDeclaredSymbol(pds);
+
+                //if (pSymbol == null)
+                //{
+                //    continue;
+                //}
+
+                // check for ignore property
+                if (pds.AttributeLists.Any(al => al.Attributes.Any(a => a.Name.ToString() == "CgSQLiteIgnore")))
+                {
+                    continue;
+                }
+
+                string propTypeName = pds.Type.ToString();
+
+                bool nullable = propTypeName.EndsWith("?");
+                if (nullable)
+                {
+                    propTypeName = propTypeName.Substring(0, propTypeName.Length - 1);
+                }
+
+                // check for primary key property
+                bool isPrimaryKey = pds.AttributeLists.Any(al => al.Attributes.Any(a => a.Name.ToString() == "CgSQLiteKey"));
+                if (isPrimaryKey)
+                {
+                    pkColName = pds.Identifier.ToString();
+                    pkPropType = propTypeName;
+                    pkIsIdentity = (propTypeName == "int" || propTypeName == "long");
+                }
+
+                // check for type nullability
+                //bool nullable = Nullable.GetUnderlyingType(member.) != null;
+                //bool nullable = new NullabilityInfoContext().Create(prop).WriteState is NullabilityState.Nullable;
+
+                // add our column line
+                createColLines.Add(
+                    $"{pds.Identifier.ToString()} {getSqlType(propTypeName)}" +
+                    $"{(isPrimaryKey ? getPkDirective(pkPropType) : string.Empty)}" +
+                    $"{(nullable ? string.Empty : " NOT NULL")}");
+
+                // check for foreign key property information
+                string? foreignTable = null;
+                string? foreignColumn = null;
+                foreach (AttributeListSyntax als in pds.AttributeLists)
+                {
+                    foreach (AttributeSyntax a in als.Attributes.Where(a => a.Name.ToString() == "CgSQLiteForeignKey"))
+                    {
+                        foreach (AttributeArgumentSyntax arg in a.ArgumentList?.Arguments ?? [])
+                        {
+                            if (arg.NameEquals?.Name.ToString() == "ReferenceTable")
+                            {
+                                foreignTable = arg.Expression.ToString();
+                            }
+                            else if (arg.NameEquals?.Name.ToString() == "ReferenceColumn")
+                            {
+                                foreignColumn = arg.Expression.ToString();
+                            }
+                        }
+                    }
+                }
+
+                if ((foreignTable != null) && (foreignColumn != null))
+                {
+                    createFKLines.Add($"FOREIGN KEY ({pds.Identifier}) REFERENCES {foreignTable}({foreignColumn})");
+                }
+
+                // create the select retrieval pair
+                if (_sqliteReadDirectives.TryGetValue(propTypeName, out string? readFormat))
+                {
+                    tableColInfo.Add((
+                        pds.Identifier.ToString(),
+                        string.Format(readFormat, pds.Identifier.ToString(), "reader", tableColInfo.Count),
+                        isPrimaryKey,
+                        isPrimaryKey && (propTypeName == "int" || propTypeName == "long")
+                        ));
+                }
+                else
+                {
+                    tableColInfo.Add((
+                        pds.Identifier.ToString(),
+                        $"// ERROR: could not determine retrieval directive for type {pds.Identifier.ToString()}:{propTypeName}",
+                        isPrimaryKey,
+                        isPrimaryKey && (propTypeName == "int" || propTypeName == "long")
+                        ));
+                }
+            }
+
+
+            context.AddSource(
+                $"{className}{"SQLite"}.g.cs",
+                SourceText.From($$$""""
+                    //------------------------------------------------------------------------------
+                    // <auto-generated>
+                    //     This code was generated by a tool.
+                    //
+                    //     Changes to this file may cause incorrect behavior and will be lost if
+                    //     the code is regenerated.
+                    // </auto-generated>
+                    //------------------------------------------------------------------------------
+
+                    #nullable enable
+
+                    using System.Collections.Generic;
+                    using System.Data;
+                    using System.Text;
+                
+                    namespace {{{classNamespace}}};
+                
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+                    [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+                    public partial class {{{className}}}
+                    {
+                        public static bool CreateTable(IDbConnection dbConnection, string? name = null)
+                        {
+                            name ??= "{{{className}}}";
+
+                            IDbCommand command = dbConnection.CreateCommand();
+                            command.CommandText = $"""
+                                CREATE TABLE IF NOT EXISTS {name} (
+                                    {{{string.Join(_comma_line_4, [.. createColLines, .. createFKLines])}}}
+                                )
+                                """
+                                ;
+
+                            command.ExecuteNonQuery();
+                    
+                            return true;
+                        }
+
+                        public static bool DropTable(IDbConnection dbConnection, string? name = null)
+                        {
+                            name ??= "{{{className}}}";
+                    
+                            IDbCommand command = dbConnection.CreateCommand();
+                            command.CommandText = $"DROP TABLE {name}";
+                    
+                            command.ExecuteNonQuery();
+                    
+                            return true;
+                        }
+                    
+                        public static {{{className}}}? SelectSingle(IDbConnection dbConnection, string? name = null, int? id = null)
+                        {
+                            name ??= "{{{className}}}";
+
+                            IDbCommand command = dbConnection.CreateCommand();
+                            command.CommandText = $"SELECT {{{string.Join(", ", tableColInfo.Select(p => p.name))}}} FROM {name}";
+
+                            if (id != null)
+                            {
+                                command.CommandText += $" WHERE Id = {id}";
+                            }
+
+                            using (IDataReader reader = command.ExecuteReader())
+                            {
+                                if (reader.Read())
+                                {
+                                    return new()
+                                    {
+                                        {{{string.Join(_comma_line_5, tableColInfo.Select(p => p.readerDirective))}}}
+                                    };
+                                }
+                            }
+                            return null;
+                        }
+
+                        public static List<{{{className}}}> SelectList(IDbConnection dbConnection, string? name = null, int? id = null)
+                        {
+                            name ??= "{{{className}}}";
+
+                            List<{{{className}}}> results = new();
+
+                            IDbCommand command = dbConnection.CreateCommand();
+                            command.CommandText = $"SELECT {{{string.Join(", ", tableColInfo.Select(p => p.name))}}} FROM {name}";
+                    
+                            if (id != null)
+                            {
+                                command.CommandText += $" WHERE Id = {id}";
+                            }
+
+                            using (IDataReader reader = command.ExecuteReader())
+                            {
+                                if (reader.Read())
+                                {
+                                    results.Add(new()
+                                    {
+                                        {{{string.Join(_comma_line_5, tableColInfo.Select(p => p.readerDirective))}}}
+                                    });
+                                }
+                            }
+                            return results;
+                        }
+
+                        public static {{{className}}} Insert(IDbConnection dbConnection, {{{className}}} value, string? name = null)
+                        {
+                            name ??= "{{{className}}}";
+                            {{{getNonIdentityPkInit(pkColName, pkPropType)}}}
+
+                            using (IDbTransaction transaction = dbConnection.BeginTransaction())
+                            {
+                                IDbCommand command = dbConnection.CreateCommand();
+                                command.CommandText = $"""
+                                    INSERT INTO {name} (
+                                        {{{string.Join(_comma_line_5, tableColInfo.Where(p => p.isIdentity == false).Select(p => p.name))}}}
+                                    ) VALUES (
+                                        {{{string.Join(_comma_line_5, tableColInfo.Where(p => p.isIdentity == false).Select(p => "$" + p.name))}}}
+                                    ) {{{(pkIsIdentity ? " RETURNING " + pkColName : string.Empty)}}};
+                                    """
+                                    ;
+
+                                {{{string.Join(_line_3, getInsertCommandParamLines(true, pkIsIdentity ? pkColName : null, pkPropType))}}}
+
+                                transaction.Commit();
+                            }
+
+                            return value;
+                        }
+
+                        public static List<{{{className}}}> Insert(IDbConnection dbConnection, IEnumerable<{{{className}}}> values, string? name = null)
+                        {
+                            name ??= "{{{className}}}";
+                            List<{{{className}}}> results = new();
+                            
+                            using (IDbTransaction transaction = dbConnection.BeginTransaction())
+                            {
+                                IDbCommand command = dbConnection.CreateCommand();
+                                command.CommandText = $"""
+                                    INSERT INTO {name} (
+                                        {{{string.Join(_comma_line_5, tableColInfo.Where(p => p.isIdentity == false).Select(p => p.name))}}}
+                                    ) VALUES (
+                                        {{{string.Join(_comma_line_5, tableColInfo.Where(p => p.isIdentity == false).Select(p => "$" + p.name))}}}
+                                    ) {{{(pkIsIdentity ? " RETURNING " + pkColName : string.Empty)}}};
+                                    """
+                                    ;
+
+                                {{{string.Join(_line_3, getInsertCommandParamLines(false, pkIsIdentity ? pkColName : null, pkPropType, createParameters: true))}}}
+
+                                foreach ({{{className}}} value in values)
+                                {
+                                    {{{getNonIdentityPkInit(pkColName, pkPropType)}}}
+                                    {{{string.Join(_line_4, getInsertCommandParamLines(false, pkIsIdentity ? pkColName : null, pkPropType, instantiateParameters: true, executeCommand: true))}}}
+                                    results.Add(value);
+                                }
+                    
+                                transaction.Commit();
+                            }
+
+                            return results;
+                        }
+
+                        public static {{{className}}} Update(IDbConnection dbConnection, {{{className}}} value, string? name = null)
+                        {
+                            name ??= "{{{className}}}";
+                    
+                            using (IDbTransaction transaction = dbConnection.BeginTransaction())
+                            {
+                                IDbCommand command = dbConnection.CreateCommand();
+                                command.CommandText = $"""
+                                    UPDATE {name} SET
+                                        {{{string.Join(_comma_line_5, tableColInfo.Where(p => p.isPrimaryKey == false).Select(p => p.name + " = $" + p.name))}}}
+                                    WHERE
+                                        {{{pkColName}}} = ${{{pkColName}}}
+                                    """
+                                    ;
+                    
+                                {{{string.Join(_line_3, getInsertCommandParamLines(true, pkIsIdentity ? pkColName : null, pkPropType))}}}
+                    
+                                transaction.Commit();
+                            }
+                    
+                            return value;
+                        }
+
+                        public static List<{{{className}}}> Update(IDbConnection dbConnection, List<{{{className}}}> values, string? name = null)
+                        {
+                            name ??= "{{{className}}}";
+                            
+                            using (IDbTransaction transaction = dbConnection.BeginTransaction())
+                            {
+                                IDbCommand command = dbConnection.CreateCommand();
+                                command.CommandText = $"""
+                                    UPDATE {name} SET
+                                        {{{string.Join(_comma_line_5, tableColInfo.Where(p => p.isPrimaryKey == false).Select(p => p.name + " = $" + p.name))}}}
+                                    WHERE
+                                        {{{pkColName}}} = ${{{pkColName}}}
+                                    """
+                                    ;
+                    
+                                {{{string.Join(
+                                    _line_3,
+                                    getInsertCommandParamLines(
+                                        false,
+                                        pkIsIdentity ? pkColName : null,
+                                        pkPropType,
+                                        createParameters: true,
+                                        includeIdentity: true))}}}
+                    
+                                foreach ({{{className}}} value in values)
+                                {
+                                    {{{string.Join(
+                                        _line_4,
+                                        getInsertCommandParamLines(
+                                            false,
+                                            pkIsIdentity ? pkColName : null,
+                                            pkPropType,
+                                            instantiateParameters: true,
+                                            executeCommand: true,
+                                            setIdentity: false,
+                                            includeIdentity: true))}}}
+                                }
+                    
+                                transaction.Commit();
+                            }
+
+                            return values;
+                        }
+
+                        public static void Delete(IDbConnection dbConnection, {{{className}}} value, string? name = null)
+                        {
+                            name ??= "{{{className}}}";
+                    
+                            using (IDbTransaction transaction = dbConnection.BeginTransaction())
+                            {
+                                IDbCommand command = dbConnection.CreateCommand();
+                                command.CommandText = $"DELETE FROM {name} WHERE {{{pkColName}}} = ${{{pkColName}}}";
+                    
+                                {{{string.Join(
+                                    _line_3,
+                                    getInsertCommandParamLines(
+                                        true,
+                                        pkIsIdentity ? pkColName : null,
+                                        pkPropType,
+                                        identityOnly: true,
+                                        setIdentity: false))}}}
+                    
+                                transaction.Commit();
+                            }
+                        }
+                    
+                        public static void Delete(IDbConnection dbConnection, List<{{{className}}}> values, string? name = null)
+                        {
+                            name ??= "{{{className}}}";
+                            
+                            using (IDbTransaction transaction = dbConnection.BeginTransaction())
+                            {
+                                IDbCommand command = dbConnection.CreateCommand();
+                                command.CommandText = $"DELETE FROM {name} WHERE {{{pkColName}}} = ${{{pkColName}}}";
+                                        
+                                {{{string.Join(
+                                    _line_3,
+                                    getInsertCommandParamLines(
+                                        false,
+                                        pkIsIdentity ? pkColName : null,
+                                        pkPropType,
+                                        createParameters: true,
+                                        includeIdentity: true,
+                                        identityOnly: true,
+                                        setIdentity: false))}}}
+                    
+                                foreach ({{{className}}} value in values)
+                                {
+                                    {{{string.Join(
+                                        _line_4,
+                                        getInsertCommandParamLines(
+                                            false,
+                                            pkIsIdentity ? pkColName : null,
+                                            pkPropType,
+                                            instantiateParameters: true,
+                                            executeCommand: true,
+                                            setIdentity: false,
+                                            includeIdentity: true,
+                                            identityOnly: true))}}}
+                                }
+                    
+                                transaction.Commit();
+                            }
+                        }
+                    }
+
+                    #nullable restore
+                    """"
+                , Encoding.UTF8)
+            );
+
+            return;
+
+            string getPkDirective(string? pkTypeName) => pkTypeName switch
+            {
+                "int" => " IDENTITY(1,1) PRIMARY KEY",
+                "long" => " IDENTITY(1,1) PRIMARY KEY",
+                _ => " PRIMARY KEY",
+            };
+
+            string getNonIdentityPkInit(string? pkColName, string? pkTypeName) => pkTypeName switch
+            {
+                "guid" => $"value.{pkColName} = Guid.NewGuid();",
+                _ => string.Empty,
+            };
+
+            IEnumerable<string> getInsertCommandParamLines(
+                bool singleValue,
+                string? identityColName,
+                string? identityColType,
+                bool? createParameters = null,
+                bool? instantiateParameters = null,
+                bool? executeCommand = null,
+                bool setIdentity = true,
+                bool includeIdentity = false,
+                bool identityOnly = false)
+            {
+                // if no specific type is specified, default to true
+                if ((createParameters == null) && (instantiateParameters == null) && (executeCommand == null))
+                {
+                    createParameters = true;
+                    instantiateParameters = true;
+                    executeCommand = true;
+                }
+
+                foreach ((string name, string _, bool isPrimaryKey, bool isIdentity) in tableColInfo)
+                {
+                    // do not insert identity key values
+                    if (isIdentity && !includeIdentity)
+                    {
+                        continue;
+                    }
+                    else if (identityOnly && !isIdentity)
+                    {
+                        continue;
+                    }
+
+                    if (createParameters == true)
+                    {
+                        yield return $"IDbDataParameter {name}Param = command.CreateParameter();";
+                        yield return $"{name}Param.ParameterName = \"${name}\";";
+                        yield return $"command.Parameters.Add({name}Param);";
+                    }
+
+                    if (instantiateParameters == true)
+                    {
+                        yield return $"{name}Param.Value = value.{name};";
+                    }
+
+                    if (createParameters == true)
+                    {
+                        // add an empty line between parameters
+                        yield return string.Empty;
+                    }
+                }
+
+                if (executeCommand == true)
+                {
+                    if ((identityColName == null) || (!setIdentity))
+                    {
+                        yield return "command.ExecuteNonQuery();";
+                    }
+                    else
+                    {
+                        yield return "object commandResult = command.ExecuteScalar();";
+                        yield return $"value.{identityColName} = ({identityColType})commandResult;";
+                    }
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Gets the SQL type for a given type.
+    /// </summary>
+    private static string getSqlType(string type) => _sqliteTypeMap.TryGetValue(type, out string? name) ? name : "TEXT";
+
+    private static Dictionary<string, string> _sqliteReadDirectives = new()
+    {
+        { "bool", "{0} = {1}.GetBoolean({2})" },
+        { "byte", "{0} = {1}.GetByte({2})" },
+        { "byte[]", "{0} = {1}.GetBytes({2})" },
+        { "char", "{0} = {1}.GetChar({2})" },
+        { "char[]", "{0} = {1}.GetChars({2})" },
+        { "DateTime", "{0} = {1}.GetDateTime({2})" },
+        { "DateTimeOffset", "{0} = {1}.GetDateTimeOffset({2})" },
+        { "Decimal", "{0} = {1}.GetDecimal({2})" },
+        { "double", "{0} = {1}.GetDouble({2})" },
+        { "float", "{0} = {1}.GetFloat({2})" },
+        { "Guid", "{0} = {1}.GetGuid({2})" },
+        { "short", "{0} = {1}.GetInt16({2})" },
+        { "int", "{0} = {1}.GetInt32({2})" },
+        { "long", "{0} = {1}.GetInt64({2})" },
+        { "sbyte", "(sbyte){0} = {1}.GetByte({2})" },
+        { "string", "{0} = {1}.GetString({2})" },
+        { "TimeSpan", "{0} = {1}.GetTimeSpan({2})" },
+        { "ushort", "(ushort){0} = {1}.GetInt16({2})" },
+        { "uint", "(uint){0} = {1}.GetInt32({2})" },
+        { "ulong", "(ulong){0} = {1}.GetInt64({2})" },
+        { "Uri", "{0} = new Uri({1}.GetString({2}))" },
+    };
+
+    // Mapping pulled from https://learn.microsoft.com/en-us/dotnet/standard/data/sqlite/types
+    private static Dictionary<string, string> _sqliteTypeMap = new()
+    {
+        { "bool", "INTEGER" },
+        { "byte", "INTEGER" },
+        { "byte[]", "BLOB" },
+        { "char", "TEXT" },
+        { "char[]", "TEXT" },
+        { "DateTime", "TEXT" },
+        { "DateTimeOffset", "TEXT" },
+        { "Decimal", "TEXT" },
+        { "double", "REAL" },
+        { "float", "REAL" },
+        { "Guid", "TEXT" },
+        { "short", "INTEGER" },
+        { "int", "INTEGER" },
+        { "long", "INTEGER" },
+        { "sbyte", "INTEGER" },
+        { "string", "TEXT" },
+        { "TimeSpan", "TEXT" },
+        { "ushort", "INTEGER" },
+        { "uint", "INTEGER" },
+        { "ulong", "INTEGER" },
+        { "Uri", "TEXT" },
+    };
+
+}

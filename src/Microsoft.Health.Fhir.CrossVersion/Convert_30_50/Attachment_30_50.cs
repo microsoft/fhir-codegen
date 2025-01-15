@@ -56,7 +56,7 @@ public class Attachment_30_50 : ICrossVersionProcessor<Attachment>, ICrossVersio
 				break;
 
 			case "url":
-				current.UrlElement = new FhirUrl(node.Text);
+				current.UrlElement = new FhirUri(node.Text);
 				break;
 
 			case "_url":

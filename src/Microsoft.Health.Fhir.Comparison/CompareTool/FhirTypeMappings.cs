@@ -9,7 +9,7 @@ using System.Text;
 using Hl7.Fhir.Model;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 
-namespace Microsoft.Health.Fhir.CodeGen.CompareTool;
+namespace Microsoft.Health.Fhir.Comparison.CompareTool;
 
 public class FhirTypeMappings
 {

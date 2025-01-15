@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
-using Microsoft.Health.Fhir.CodeGen.CompareTool;
+using Microsoft.Health.Fhir.Comparison.CompareTool;
 using Microsoft.Health.Fhir.CodeGen.Models;
 
 namespace fhir_codegen.Models;

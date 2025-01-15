@@ -12,11 +12,7 @@ using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
-#if NETSTANDARD2_0
-using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
-#endif
-
-namespace Microsoft.Health.Fhir.CodeGen.XVer;
+namespace Microsoft.Health.Fhir.Comparison.XVer;
 
 public enum ComparisonDirection
 {

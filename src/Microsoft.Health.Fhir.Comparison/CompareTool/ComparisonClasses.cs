@@ -18,7 +18,7 @@ using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 
-namespace Microsoft.Health.Fhir.CodeGen.CompareTool;
+namespace Microsoft.Health.Fhir.Comparison.CompareTool;
 
 internal static class ComparisonUtils
 {

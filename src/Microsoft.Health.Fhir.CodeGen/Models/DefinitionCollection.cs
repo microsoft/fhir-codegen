@@ -728,7 +728,7 @@ public partial class DefinitionCollection
     /// </summary>
     /// <param name="vsUrl">The URL of the value set.</param>
     /// <returns>The versioned URL of the value set.</returns>
-    internal string VersionedUrlForVs(string vsUrl)
+    public string VersionedUrlForVs(string vsUrl)
     {
         int lastPipe = vsUrl.LastIndexOf('|');
 
@@ -746,7 +746,7 @@ public partial class DefinitionCollection
     /// <summary>Unversioned URL for vs.</summary>
     /// <param name="vsUrl">The URL of the value set.</param>
     /// <returns>A string.</returns>
-    internal string UnversionedUrlForVs(string vsUrl)
+    public string UnversionedUrlForVs(string vsUrl)
     {
         int lastPipe = vsUrl.LastIndexOf('|');
 

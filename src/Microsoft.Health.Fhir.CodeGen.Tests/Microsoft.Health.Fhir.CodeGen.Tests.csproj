@@ -2,7 +2,7 @@
   <Import Project="..\..\fhir-codegen.props" />
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
   </PropertyGroup>
@@ -24,21 +24,21 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentAssertions" Version="6.12.1" />
+    <PackageReference Include="FluentAssertions" Version="7.0.0" />
     <PackageReference Include="FluentAssertions.Json" Version="6.1.0" />
-    <PackageReference Include="Hl7.Fhir.Specification.Data.R5" Version="5.10.3" />
-    <PackageReference Include="Hl7.Fhir.STU3" Version="5.10.3" />
-    <PackageReference Include="Hl7.Fhir.R4" Version="5.10.3" />
-    <PackageReference Include="Hl7.Fhir.R4B" Version="5.10.3" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="Hl7.Fhir.Specification.Data.R5" Version="5.11.1" />
+    <PackageReference Include="Hl7.Fhir.STU3" Version="5.11.1" />
+    <PackageReference Include="Hl7.Fhir.R4" Version="5.11.1" />
+    <PackageReference Include="Hl7.Fhir.R4B" Version="5.11.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
     <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
-    <PackageReference Include="xunit" Version="2.9.2" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
+    <PackageReference Include="xunit" Version="2.9.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.0.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="coverlet.collector" Version="6.0.2">
+    <PackageReference Include="coverlet.collector" Version="6.0.3">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
@@ -62,6 +62,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.Health.Fhir.CodeGenCommon\Microsoft.Health.Fhir.CodeGenCommon.csproj" />
     <ProjectReference Include="..\Microsoft.Health.Fhir.CodeGen\Microsoft.Health.Fhir.CodeGen.csproj" />
+    <ProjectReference Include="..\Microsoft.Health.Fhir.Comparison\Microsoft.Health.Fhir.Comparison.csproj" />
   </ItemGroup>
 
 </Project>

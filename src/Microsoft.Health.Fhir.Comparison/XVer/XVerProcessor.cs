@@ -10,7 +10,7 @@ using System.Text;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Utility;
 using Microsoft.Extensions.Logging;
-using Microsoft.Health.Fhir.CodeGen.CompareTool;
+using Microsoft.Health.Fhir.Comparison.CompareTool;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGen.Language;
@@ -26,13 +26,7 @@ using Microsoft.Health.Fhir.CodeGenCommon.Models;
 
 
 
-
-#if NETSTANDARD2_0
-using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
-#endif
-
-
-namespace Microsoft.Health.Fhir.CodeGen.XVer;
+namespace Microsoft.Health.Fhir.Comparison.XVer;
 
 internal static partial class XVerProcessorLogMessages
 {

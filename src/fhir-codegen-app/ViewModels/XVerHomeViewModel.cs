@@ -14,7 +14,7 @@ using Material.Icons;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
 using Microsoft.Health.Fhir.CodeGen.Loader;
 using Microsoft.Health.Fhir.CodeGen.Models;
-using Microsoft.Health.Fhir.CodeGen.XVer;
+using Microsoft.Health.Fhir.Comparison.XVer;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 
 namespace fhir_codegen_app.ViewModels;

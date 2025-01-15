@@ -27,19 +27,16 @@ using Microsoft.Health.Fhir.CodeGen.Utils;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using static Hl7.Fhir.Model.VerificationResult;
-using static Microsoft.Health.Fhir.CodeGen.CompareTool.PackageComparer;
+using static Microsoft.Health.Fhir.Comparison.CompareTool.PackageComparer;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
-using static Microsoft.Health.Fhir.CodeGen.CompareTool.ComparisonUtils;
+using static Microsoft.Health.Fhir.Comparison.CompareTool.ComparisonUtils;
 using Hl7.Fhir.Rest;
 using Hl7.Fhir.Serialization;
 using System.Resources;
 using Hl7.Fhir.Specification.Snapshot;
 
-#if NETSTANDARD2_0
-using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
-#endif
 
-namespace Microsoft.Health.Fhir.CodeGen.CompareTool;
+namespace Microsoft.Health.Fhir.Comparison.CompareTool;
 
 public class PackageComparer
 {
@@ -132,7 +129,7 @@ public class PackageComparer
         // check for loading cross-version maps
         if (!string.IsNullOrEmpty(_config.CrossVersionMapSourcePath))
         {
-            _crossVersion = new(_source, _target);
+            _crossVersion = new(_source, _target, Path.Combine(_config.CrossVersionMapSourcePath, "db"));
 
             if (!_crossVersion.TryLoadCrossVersionMaps(_config.CrossVersionMapSourcePath))
             {
@@ -146,9 +143,8 @@ public class PackageComparer
         if (_crossVersion == null)
         {
             // create our cross-version map collection
-            _crossVersion = new(_source, _target);
+            _crossVersion = new(_source, _target, _config.OutputDirectory);
         }
-
 
         // need to expand every value set for comparison
         Dictionary<string, ValueSet> vsLeft = GetValueSets(_source);

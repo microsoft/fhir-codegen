@@ -2,7 +2,7 @@
 
     <!-- Solution-wide properties for NuGet packaging -->
     <PropertyGroup>
-        <LangVersion>12.0</LangVersion>
+        <LangVersion>13.0</LangVersion>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<VersionPrefix>$([System.DateTime]::Now.ToString("'3.'yyyy.MMdd"))</VersionPrefix>

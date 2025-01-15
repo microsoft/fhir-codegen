@@ -20,7 +20,7 @@ using fhir_codegen.Models;
 using Hl7.Fhir.Utility;
 using Material.Icons;
 using Microsoft.Health.Fhir.CodeGen._ForPackages;
-using Microsoft.Health.Fhir.CodeGen.CompareTool;
+using Microsoft.Health.Fhir.Comparison.CompareTool;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
 using Microsoft.Health.Fhir.CodeGen.Loader;
 using Microsoft.Health.Fhir.CodeGen.Models;
