@@ -23,7 +23,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
 
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
-#if ATTACH_DEBUGGER
+#if DO_NOT_ATTACH_DEBUGGER
         if (!System.Diagnostics.Debugger.IsAttached)
         {
             System.Diagnostics.Debugger.Launch();
@@ -105,7 +105,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     continue;
                 }
 
-                //SemanticModel pModel = compilation.GetSemanticModel(pds.SyntaxTree);
+                SemanticModel pModel = compilation.GetSemanticModel(pds.SyntaxTree);
                 //ISymbol? pSymbol = pModel.GetDeclaredSymbol(pds);
 
                 //if (pSymbol == null)
@@ -119,6 +119,9 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     continue;
                 }
 
+                string propName = pds.Identifier.ToString();
+
+                TypeInfo propTypeInfo = pModel.GetTypeInfo(pds.Type);
                 string propTypeName = pds.Type.ToString();
 
                 bool nullable = propTypeName.EndsWith("?");
@@ -131,7 +134,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 bool isPrimaryKey = pds.AttributeLists.Any(al => al.Attributes.Any(a => a.Name.ToString() == "CgSQLiteKey"));
                 if (isPrimaryKey)
                 {
-                    pkColName = pds.Identifier.ToString();
+                    pkColName = propName;
                     pkPropType = propTypeName;
                     pkIsIdentity = (propTypeName == "int" || propTypeName == "long");
                 }
@@ -144,7 +147,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 createColLines.Add(
                     $"{pds.Identifier.ToString()} {getSqlType(propTypeName)}" +
                     $"{(isPrimaryKey ? getPkDirective(pkPropType) : string.Empty)}" +
-                    $"{(nullable ? string.Empty : " NOT NULL")}");
+                    $"{((nullable || isPrimaryKey) ? string.Empty : " NOT NULL")}");
 
                 // check for foreign key property information
                 string? foreignTable = null;
@@ -176,8 +179,52 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 if (_sqliteReadDirectives.TryGetValue(propTypeName, out string? readFormat))
                 {
                     tableColInfo.Add((
-                        pds.Identifier.ToString(),
+                        propName,
                         string.Format(readFormat, pds.Identifier.ToString(), "reader", tableColInfo.Count),
+                        isPrimaryKey,
+                        isPrimaryKey && (propTypeName == "int" || propTypeName == "long")
+                        ));
+                }
+                else if ((propTypeInfo.Type is ITypeSymbol its) &&
+                         (its is INamedTypeSymbol ints) &&
+                         ((ints.TypeKind == TypeKind.Enum) || (ints.TypeArguments.Any() && ints.TypeArguments[0].TypeKind == TypeKind.Enum)))
+                {
+                    // grab the enum type name
+                    string enumTypeName;
+
+                    if (ints.TypeKind == TypeKind.Enum)
+                    {
+                        if (ints.ContainingType == null)
+                        {
+                            enumTypeName = $"{ints.ContainingNamespace}.{ints.Name}";
+                        }
+                        else
+                        {
+                            enumTypeName = $"{ints.ContainingType.ContainingNamespace}.{ints.ContainingType.Name}.{ints.Name}";
+                        }
+                    }
+                    else if (ints.TypeArguments.Any())
+                    {
+                        if (ints.TypeArguments[0].ContainingType == null)
+                        {
+                            enumTypeName = $"{ints.TypeArguments[0].ContainingNamespace}.{ints.TypeArguments[0].Name}";
+                        }
+                        else
+                        {
+                            enumTypeName = $"{ints.TypeArguments[0].ContainingType.ContainingNamespace}.{ints.TypeArguments[0].ContainingType.Name}.{ints.TypeArguments[0].Name}";
+                        }
+                    }
+                    else
+                    {
+                        enumTypeName = ints.Name;
+                    }
+
+                    //// build the reader directive for the enum type
+                    //string ef = $"Enum.TryParse(reader.GetString({tableColInfo.Count}), out {propName});";
+
+                    tableColInfo.Add((
+                        propName,
+                        string.Format(_sqliteReadDirectives["enum"], pds.Identifier.ToString(), "reader", tableColInfo.Count, enumTypeName),
                         isPrimaryKey,
                         isPrimaryKey && (propTypeName == "int" || propTypeName == "long")
                         ));
@@ -186,7 +233,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 {
                     tableColInfo.Add((
                         pds.Identifier.ToString(),
-                        $"// ERROR: could not determine retrieval directive for type {pds.Identifier.ToString()}:{propTypeName}",
+                        $"// ERROR: could not determine retrieval directive for type {propName}:{propTypeName}",
                         isPrimaryKey,
                         isPrimaryKey && (propTypeName == "int" || propTypeName == "long")
                         ));
@@ -227,8 +274,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                                 CREATE TABLE IF NOT EXISTS {name} (
                                     {{{string.Join(_comma_line_4, [.. createColLines, .. createFKLines])}}}
                                 )
-                                """
-                                ;
+                                """;
 
                             command.ExecuteNonQuery();
                     
@@ -313,8 +359,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                                     ) VALUES (
                                         {{{string.Join(_comma_line_5, tableColInfo.Where(p => p.isIdentity == false).Select(p => "$" + p.name))}}}
                                     ) {{{(pkIsIdentity ? " RETURNING " + pkColName : string.Empty)}}};
-                                    """
-                                    ;
+                                    """;
 
                                 {{{string.Join(_line_3, getInsertCommandParamLines(true, pkIsIdentity ? pkColName : null, pkPropType))}}}
 
@@ -338,8 +383,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                                     ) VALUES (
                                         {{{string.Join(_comma_line_5, tableColInfo.Where(p => p.isIdentity == false).Select(p => "$" + p.name))}}}
                                     ) {{{(pkIsIdentity ? " RETURNING " + pkColName : string.Empty)}}};
-                                    """
-                                    ;
+                                    """;
 
                                 {{{string.Join(_line_3, getInsertCommandParamLines(false, pkIsIdentity ? pkColName : null, pkPropType, createParameters: true))}}}
 
@@ -368,8 +412,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                                         {{{string.Join(_comma_line_5, tableColInfo.Where(p => p.isPrimaryKey == false).Select(p => p.name + " = $" + p.name))}}}
                                     WHERE
                                         {{{pkColName}}} = ${{{pkColName}}}
-                                    """
-                                    ;
+                                    """;
                     
                                 {{{string.Join(_line_3, getInsertCommandParamLines(true, pkIsIdentity ? pkColName : null, pkPropType))}}}
                     
@@ -391,8 +434,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                                         {{{string.Join(_comma_line_5, tableColInfo.Where(p => p.isPrimaryKey == false).Select(p => p.name + " = $" + p.name))}}}
                                     WHERE
                                         {{{pkColName}}} = ${{{pkColName}}}
-                                    """
-                                    ;
+                                    """;
                     
                                 {{{string.Join(
                                     _line_3,
@@ -490,12 +532,13 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 , Encoding.UTF8)
             );
 
-            return;
+            continue;
 
             string getPkDirective(string? pkTypeName) => pkTypeName switch
             {
-                "int" => " IDENTITY(1,1) PRIMARY KEY",
-                "long" => " IDENTITY(1,1) PRIMARY KEY",
+                // note that in SQLite, an INTEGER PRIMARY KEY uses the internal ROWID automatically, so no IDENTITY declaration is necessary
+                "int" => " PRIMARY KEY",            // " IDENTITY(1,1) PRIMARY KEY",
+                "long" => " PRIMARY KEY",           // " IDENTITY(1,1) PRIMARY KEY",
                 _ => " PRIMARY KEY",
             };
 
@@ -563,8 +606,8 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     }
                     else
                     {
-                        yield return "object commandResult = command.ExecuteScalar();";
-                        yield return $"value.{identityColName} = ({identityColType})commandResult;";
+                        yield return "object? commandResult = command.ExecuteScalar();";
+                        yield return $"if (commandResult != null) value.{identityColName} = ({identityColType})commandResult;";
                     }
                 }
             }
@@ -584,7 +627,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
         { "char", "{0} = {1}.GetChar({2})" },
         { "char[]", "{0} = {1}.GetChars({2})" },
         { "DateTime", "{0} = {1}.GetDateTime({2})" },
-        { "DateTimeOffset", "{0} = {1}.GetDateTimeOffset({2})" },
+        { "DateTimeOffset", "{0} = new DateTimeOffset({1}.GetDateTime({2}))" },
         { "Decimal", "{0} = {1}.GetDecimal({2})" },
         { "double", "{0} = {1}.GetDouble({2})" },
         { "float", "{0} = {1}.GetFloat({2})" },
@@ -599,6 +642,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
         { "uint", "(uint){0} = {1}.GetInt32({2})" },
         { "ulong", "(ulong){0} = {1}.GetInt64({2})" },
         { "Uri", "{0} = new Uri({1}.GetString({2}))" },
+        { "enum", "{0} = Enum.Parse<{3}>({1}.GetString({2}))" },
     };
 
     // Mapping pulled from https://learn.microsoft.com/en-us/dotnet/standard/data/sqlite/types

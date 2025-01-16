@@ -17,7 +17,7 @@ public class GeneratorAttributes
         "CgSQLiteTable"
         ];
 
-    public const string CgAttributes = """
+    internal const string CgAttributes = """
         #nullable enable
         namespace fhir_codegen.SQLiteGenerator
         {

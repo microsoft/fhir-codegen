@@ -347,24 +347,24 @@ public class CrossVersionMapCollection
         _dbConnection.Open();
 
         // ensure core tables exist
-        //ComparisonInfo.CreateTable(_dbConnection);
-        ComparisonDbUtils.CreateTable<ComparisonPackageInfo>(_dbConnection);
-        ComparisonDbUtils.CreateTable<ValueSetMapping>(_dbConnection);
-        ComparisonDbUtils.CreateTable<StructureMapping>(_dbConnection);
+        ComparisonInfo.CreateTable(_dbConnection);
+        ValueSetMapping.CreateTable(_dbConnection);
+        StructureMapping.CreateTable(_dbConnection);
 
-        // check if package information is available
-        ComparisonPackageInfo? packageInfo = ComparisonDbUtils.SelectSingle<ComparisonPackageInfo>(_dbConnection);
-
-        if (packageInfo == null)
+        // get or set package information
+        ComparisonInfo? ci = ComparisonInfo.SelectSingle(_dbConnection);
+        if (ci == null)
         {
-            packageInfo = new()
+            ci = new()
             {
-                Id = 1,
+                Id = -1,
                 SourcePackageId = _source.MainPackageId,
                 SourcePackageVersion = _source.MainPackageVersion,
                 TargetPackageId = _target.MainPackageId,
                 TargetPackageVersion = _target.MainPackageVersion,
             };
+
+            ci = ComparisonInfo.Insert(_dbConnection, ci);
         }
     }
 
