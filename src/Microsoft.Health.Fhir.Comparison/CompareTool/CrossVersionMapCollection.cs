@@ -8,8 +8,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using System.Text.Json;
 using Antlr4.Runtime.Atn;
-using Dapper;
-using fhir_codegen.SQLiteGenerator;
 using Firely.Fhir.Packages;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Rest;

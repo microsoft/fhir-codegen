@@ -75,6 +75,7 @@ public class XVerProcessor
     private DefinitionCollection[] _definitions;
     private Dictionary<string, int> _definitionIndexes = [];
     private Dictionary<(string left, string right), FhirCoreComparer> _comparisonCache;
+    private DifferenceTracker? _diffTracker = null;
     private Dictionary<string, HashSet<string>> _vsUrlsToInclude = [];
 
     private string _dbPath;
@@ -162,6 +163,9 @@ public class XVerProcessor
             throw new InvalidOperationException("At least two definitions are required to compare.");
         }
 
+        _diffTracker = new(_definitions, _dbPath);
+        _diffTracker.InitDb(_exclusionSet, _escapeValveCodes);
+
         _comparisonCache.Clear();
 
         // create our comparison objects
@@ -176,6 +180,7 @@ public class XVerProcessor
             }
 
             FhirCoreComparer comparer = new(
+                _diffTracker,
                 left,
                 right,
                 _config.LogFactory,
@@ -228,6 +233,9 @@ public class XVerProcessor
             throw new InvalidOperationException("At least two definitions are required for comparison.");
         }
 
+        _diffTracker = new(_definitions, _dbPath);
+        _diffTracker.InitDb(_exclusionSet, _escapeValveCodes);
+
         _comparisonCache.Clear();
 
         // create our comparison objects
@@ -242,6 +250,7 @@ public class XVerProcessor
             }
 
             FhirCoreComparer comparer = new(
+                _diffTracker,
                 left,
                 right,
                 _config.LogFactory,

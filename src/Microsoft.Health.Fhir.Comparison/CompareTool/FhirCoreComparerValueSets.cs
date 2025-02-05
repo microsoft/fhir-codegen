@@ -170,10 +170,10 @@ public partial class FhirCoreComparer
                 {
                     if (left.ValueSetsByVersionedUrl.TryGetValue(versionedUrl, out ValueSet? unexpandedVs))
                     {
+#if false
                         // flag that we are not comparing this because of manual exclusion
                         _valueSetComparisons.AddToValue(versionedUrl, new()
                         {
-                            Id = -1,
                             Source = unexpandedVs,
                             SourceCanonical = unexpandedVs.Url + "|" + unexpandedVs.Version,
                             SourceName = unexpandedVs.Name,
@@ -191,6 +191,7 @@ public partial class FhirCoreComparer
                             LastReviewedBy = null,
                             LastReviewedOn =null,
                         });
+#endif
                     }
 
                     _logger.LogValueSetExcluded(versionedUrl);
@@ -203,6 +204,7 @@ public partial class FhirCoreComparer
                     // get the unexpanded value set object
                     if (left.ValueSetsByVersionedUrl.TryGetValue(versionedUrl, out ValueSet? unexpandedVs))
                     {
+#if false
                         // flag why we are not including this
                         _valueSetComparisons.AddToValue(versionedUrl, new()
                         {
@@ -224,6 +226,7 @@ public partial class FhirCoreComparer
                             LastReviewedBy = null,
                             LastReviewedOn = null,
                         });
+#endif
                     }
 
                     _logger.LogValueSetNotExpanded(versionedUrl, expandMessage);
@@ -242,6 +245,7 @@ public partial class FhirCoreComparer
                 // we only need to process value sets that have a required binding
                 else if (!left.cgHasRequiredBinding(versionedUrl, unversionedUrl))
                 {
+#if false
                     // flag why we are not including this
                     _valueSetComparisons.AddToValue(versionedUrl, new()
                     {
@@ -263,6 +267,7 @@ public partial class FhirCoreComparer
                         LastReviewedBy = null,
                         LastReviewedOn = null,
                     });
+#endif
 
                     _logger.LogValueSetNoRequiredBindings(versionedUrl);
                     continue;
@@ -359,6 +364,7 @@ public partial class FhirCoreComparer
                 // iterate over our concept map targets
                 foreach (ConceptMap.TargetElementComponent exTargetElement in exSourceElement.Target)
                 {
+#if false
                     ValueSetCodeComparisonRec mapRec = new()
                     {
                         Id = -1,
@@ -383,6 +389,7 @@ public partial class FhirCoreComparer
                     }
 
                     mapRecsBySource[(exGroup.Source, exSourceElement.Code)] = mapRec;
+#endif
                 }
             }
         }
@@ -401,6 +408,7 @@ public partial class FhirCoreComparer
             // iterate over our records and invert them
             foreach (((string exSourceSystem, string? exSourceCode), ValueSetCodeComparisonRec exMapRec) in exMapRecsBySource)
             {
+#if false
                 ValueSetCodeComparisonRec mapRec = new()
                 {
                     Id = -1,
@@ -418,6 +426,7 @@ public partial class FhirCoreComparer
                 };
 
                 mapRecsByTarget[(exMapRec.SourceSystem, exMapRec.SourceCode)] = mapRec;
+#endif
             }
         }
 
@@ -528,6 +537,7 @@ public partial class FhirCoreComparer
             // if we cannot find a matching VS in the target, we are done
             if (!targetDc.TryGetValueSet(unversionedUrl, out ValueSet? tVs))
             {
+#if false
                 // flag that we are not comparing this because we could not expand
                 _valueSetComparisons.AddToValue(versionedUrl, new()
                 {
@@ -549,7 +559,7 @@ public partial class FhirCoreComparer
                     LastReviewedBy = null,
                     LastReviewedOn = null,
                 });
-
+#endif
                 _logger.LogNoTarget(versionedUrl);
                 return;
             }
@@ -571,6 +581,7 @@ public partial class FhirCoreComparer
             if ((cm.TargetScope == null) ||
                 (cm.TargetScope is not Canonical targetCanonical))
             {
+#if false
                 // flag that we are not comparing this because we could not expand
                 _valueSetComparisons.AddToValue(versionedUrl, new()
                 {
@@ -592,7 +603,7 @@ public partial class FhirCoreComparer
                     LastReviewedBy = null,
                     LastReviewedOn = null,
                 });
-
+#endif
                 _logger.LogInvalidMapTarget(versionedUrl, cm.Url);
                 continue;
             }
@@ -606,6 +617,7 @@ public partial class FhirCoreComparer
                 // get the unexpanded value set object
                 if (targetDc.ValueSetsByVersionedUrl.TryGetValue(targetVersioned, out ValueSet? unexpandedVs))
                 {
+#if false
                     // flag that we are not comparing this because we could not expand
                     _valueSetComparisons.AddToValue(versionedUrl, new()
                     {
@@ -627,6 +639,7 @@ public partial class FhirCoreComparer
                         LastReviewedBy = null,
                         LastReviewedOn = null,
                     });
+#endif
                 }
 
                 _logger.LogValueSetNotExpanded(versionedUrl, expandMessage);
@@ -682,6 +695,7 @@ public partial class FhirCoreComparer
                 // check for no-map
                 if (cmSourceElement.NoMap == true)
                 {
+#if false
                     // add a no-map entry
                     mapRecsByTarget.Add((cmGroup.Target, null), new()
                     {
@@ -696,11 +710,13 @@ public partial class FhirCoreComparer
                         IsGenerated = false,
                         NeedsReview = false,
                     });
+#endif
                 }
 
                 // iterate over our concept map targets
                 foreach (ConceptMap.TargetElementComponent cmTargetElement in cmSourceElement.Target)
                 {
+#if false
                     ValueSetCodeComparisonRec mapRec = new()
                     {
                         Id = -1,
@@ -728,6 +744,7 @@ public partial class FhirCoreComparer
                     }
 
                     mapRecsBySource[(cmGroup.Source, cmSourceElement.Code)] = mapRec;
+#endif
                 }
             }
         }
@@ -749,6 +766,7 @@ public partial class FhirCoreComparer
                 // check for the same system
                 if (targetsBySystem.TryGetValue(sourceConcept.System, out ValueSet.ContainsComponent? matchedContains))
                 {
+#if false
                     ValueSetCodeComparisonRec mapRec = new()
                     {
                         Id = -1,
@@ -776,12 +794,14 @@ public partial class FhirCoreComparer
                     }
 
                     mapRecsBySource[(sourceConcept.System, sourceConcept.Code)] = mapRec;
+#endif
                 }
                 else
                 {
                     // add a map for each matching target literal
                     foreach (ValueSet.ContainsComponent targetContains in targetsBySystem.Values)
                     {
+#if false
                         ValueSetCodeComparisonRec mapRec = new()
                         {
                             Id = -1,
@@ -811,6 +831,7 @@ public partial class FhirCoreComparer
                         }
 
                         mapRecsBySource[(sourceConcept.System, sourceConcept.Code)] = mapRec;
+#endif
                     }
                 }
             }       // if: no known targets

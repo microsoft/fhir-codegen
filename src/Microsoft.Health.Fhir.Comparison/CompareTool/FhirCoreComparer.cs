@@ -103,22 +103,24 @@ public partial class FhirCoreComparer
     private string _rightRLiteral;
     private string _rightKey;
 
-    private DifferenceTracker? _diffsLeftToRight = null;
-    private DifferenceTracker? _diffsRightToLeft = null;
+    private DifferenceTracker _diffTracker;
 
     private CrossVersionMapCollection? _cvLeftToRight = null;
     private CrossVersionMapCollection? _cvRightToLeft = null;
 
     private Dictionary<string, List<ValueSetPairComparison>> _valueSetComparisons = [];
 
-    private Dictionary<string, List<PairComparison<StructureDefinition>>> _primitiveComparisons = [];
+    private Dictionary<string, List<IPairComparison<StructureDefinition>>> _primitiveComparisons = [];
 
     public FhirCoreComparer(
+        DifferenceTracker diffTracker,
         DefinitionCollection left,
         DefinitionCollection right,
         ILoggerFactory loggerFactory,
         string mapSourcePath)
     {
+        _diffTracker = diffTracker;
+
         _loggerFactory = loggerFactory;
         _logger = loggerFactory.CreateLogger<FhirCoreComparer>();
         _mapSourcePath = mapSourcePath;
@@ -178,26 +180,26 @@ public partial class FhirCoreComparer
 
     public void Init(string cvMapSourcePath)
     {
-        _diffsLeftToRight = new(_leftDc, _rightDc, _dbPath);
-        _diffsLeftToRight.InitDb(_exclusionSet, _escapeValveCodes, out bool createdLR);
+        //_diffsLeftToRight = new(_leftDc, _rightDc, _dbPath);
+        //_diffsLeftToRight.InitDb(_exclusionSet, _escapeValveCodes, out bool createdLR);
 
-        _diffsRightToLeft = new(_rightDc, _leftDc, _dbPath);
-        _diffsRightToLeft.InitDb(_exclusionSet, _escapeValveCodes, out bool createdRL);
+        //_diffsRightToLeft = new(_rightDc, _leftDc, _dbPath);
+        //_diffsRightToLeft.InitDb(_exclusionSet, _escapeValveCodes, out bool createdRL);
 
-        if (createdLR || createdRL)
-        {
-            (CrossVersionMapCollection cvLR, CrossVersionMapCollection cvRL) = getInitialMaps(true);
+        //if (createdLR || createdRL)
+        //{
+        //    (CrossVersionMapCollection cvLR, CrossVersionMapCollection cvRL) = getInitialMaps(true);
 
-            if (createdLR && !string.IsNullOrEmpty(cvMapSourcePath))
-            {
-                _diffsLeftToRight.LoadFromCrossVersionMaps(cvLR);
-            }
+        //    if (createdLR && !string.IsNullOrEmpty(cvMapSourcePath))
+        //    {
+        //        _diffsLeftToRight.LoadFromCrossVersionMaps(cvLR);
+        //    }
 
-            if (createdRL && !string.IsNullOrEmpty(cvMapSourcePath))
-            {
-                _diffsRightToLeft.LoadFromCrossVersionMaps(cvRL);
-            }
-        }
+        //    if (createdRL && !string.IsNullOrEmpty(cvMapSourcePath))
+        //    {
+        //        _diffsRightToLeft.LoadFromCrossVersionMaps(cvRL);
+        //    }
+        //}
     }
 
     /// <summary>

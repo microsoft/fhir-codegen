@@ -6,14 +6,16 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using fhir_codegen.SQLiteGenerator;
 using Hl7.Fhir.Model;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Health.Fhir.CodeGen.Utils;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Utils;
@@ -40,72 +42,260 @@ public enum ComparisonIssueCode
     InvalidMap,
 }
 
-[CgSQLiteTable]
-public partial class RelationshipLookup
+public class RelationshipLookup
 {
-    [CgSQLiteKey]
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship Relationship { get; set; }
     public required string Name { get; set; }
 }
 
-[CgSQLiteTable]
-public partial class ComparisonMetadata
+public class PackageMetadata
 {
-    [CgSQLiteKey]
-    public required long Id { get; set; }
+    [Key]
+    public int Key { get; set; }
 
-    public required string SourcePackageId { get; init; }
-    public required string SourcePackageVersion { get; init; }
+    public string Name { get; set; } = null!;
+    public string PackageId { get; set; } = null!;
+    public string PackageVersion { get; set; } = null!;
+    public string CanonicalUrl { get; set; } = null!;
 
-    public required string TargetPackageId { get; init; }
-    public required string TargetPackageVersion { get; init; }
+    //[InverseProperty("SourcePackage")]
+    public ICollection<PackageDiffPair> SourceDiffs { get; init; } = null!;
 
-    public required string Name { get; init; }
-    public required string PackageId { get; init; }
-    public required string PackageVersion { get; init; }
-    public required string CanonicalUrl { get; init; }
+    //[InverseProperty("TargetPackage")]
+    public ICollection<PackageDiffPair> TargetDiffs { get; init; } = null!;
+
+    public ICollection<ValueSetMetadata> ValueSets { get; init; } = null!;
 }
 
-[CgSQLiteTable]
-public partial class ValueSetMetadata
+public class PackageDiffPair
 {
-    [CgSQLiteKey]
-    public required long Id { get; set; }
-    public required string PackageId { get; set; }
-    public required string PackageVersion { get; set; }
+    [Key]
+    //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int Key { get; set; }
 
-    public required string CanonicalUrl { get; set; }
-    public required string Name { get; set; }
-    public required string Version { get; set; }
-    public required string TableName { get; set; }
-    public required string Description { get; set; }
-    public required bool CanExpand { get; set; }
-    public required bool? HasEscapeValveCode { get; set; }
-    public required string? Message { get; set; }
+    public int SourcePackageKey { get; set; }
+    //[ForeignKey(nameof(SourcePackageKey))]
+    public PackageMetadata SourcePackage { get; init; } = null!;
+
+    public int TargetPackageKey { get; set; }
+    //[ForeignKey(nameof(TargetPackageKey))]
+    public PackageMetadata TargetPackage { get; init; } = null!;
 }
 
-[CgSQLiteTable]
-public partial class ValueSetContent
-{
-    [CgSQLiteKey]
-    public required long Id { get; set; }
-    [CgSQLiteForeignKey("ValueSetMetadata", "Id")]
-    public required long ValueSetMetadataId { get; set; }
 
-    public required string System { get; set; }
-    public required string Code { get; set; }
-    public required string? Display { get; set; }
+//[Index(nameof(ContainingPackage))]
+//[Index(nameof(CanonicalUrl))]
+//[Index(nameof(CanonicalUrl), nameof(Version))]
+public class ValueSetMetadata
+{
+    [Key]
+    //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int Key { get; set; }
+
+    public int ContainingPackageKey { get; set; }
+    //[ForeignKey(nameof(ContainingPackageKey))]
+    public PackageMetadata ContainingPackage { get; init; } = null!;
+
+    public string CanonicalUrl { get; set; } = null!;
+    public string Name { get; set; } = null!;
+    public string Version { get; set; } = null!;
+    public string Description { get; set; } = null!;
+    public bool CanExpand { get; set; }
+    public bool? HasEscapeValveCode { get; set; } = null;
+    public string? Message { get; set; } = null;
+
+    public ICollection<ValueSetContent> ValueSetContents { get; init; } = null!;
+
+    //[InverseProperty("SourceVsMeta")]
+    public ICollection<ValueSetPairComparison> ComparisonsAsSource { get; init; } = null!;
+
+    //[InverseProperty("TargetVsMeta")]
+    public ICollection<ValueSetPairComparison> ComparisonsAsTarget { get; init; } = null!;
 }
+
+//[Table("ValueSetContents")]
+//[Index(nameof(VsMeta))]
+//[Index(nameof(System))]
+//[Index(nameof(Code))]
+//[Index(nameof(System), nameof(Code))]
+public class ValueSetContent
+{
+    [Key]
+    //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int Key { get; set; }
+
+    public int VsMetaKey { get; set; }
+    //[ForeignKey(nameof(VsMetaKey))]
+    public ValueSetMetadata VsMeta { get; init; } = null!;
+
+    public string System { get; set; } = null!;
+    public string Code { get; set; } = null!;
+    public string? Display { get; set; } = null;
+}
+
+//[Table("ValueSetComparisons")]
+//[Index(nameof(SourceVsMeta))]
+//[Index(nameof(SourceName))]
+//[Index(nameof(SourceCanonical))]
+//[Index(nameof(SourceVersion))]
+//[Index(nameof(SourceCanonical), nameof(SourceVersion))]
+//[Index(nameof(SourceName), nameof(SourceVersion))]
+//[Index(nameof(TargetVsMeta))]
+//[Index(nameof(TargetName))]
+//[Index(nameof(TargetCanonical))]
+//[Index(nameof(TargetVersion))]
+//[Index(nameof(TargetCanonical), nameof(TargetVersion))]
+//[Index(nameof(TargetName), nameof(TargetVersion))]
+public class ValueSetPairComparison : IPairComparison<ValueSet>
+{
+    [Key]
+    //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int Key { get; set; }
+
+    /// <summary>
+    /// Gets or initializes the source element.
+    /// </summary>
+    [NotMapped]
+    public ValueSet? Source { get; set; } = null;
+
+    public int SourceVsMetaKey { get; set; }
+    //[ForeignKey(nameof(SourceVsMetaKey))]
+    public ValueSetMetadata SourceVsMeta { get; init; } = null!;
+    public string SourceCanonical { get; set; } = null!;
+    public string SourceName { get; set; } = null!;
+    public string? SourceVersion { get; set; } = null;
+
+
+    /// <summary>
+    /// Gets or initializes the target element.
+    /// </summary>
+    [NotMapped]
+    public ValueSet? Target { get; set; } = null;
+
+    public int TargetVsMetaKey { get; set; }
+    //[ForeignKey(nameof(TargetVsMetaKey))]
+    public ValueSetMetadata TargetVsMeta { get; init; } = null!;
+    public string? TargetCanonical { get; set; } = null;
+    public string? TargetName { get; set; } = null;
+    public string? TargetVersion { get; set; } = null;
+
+    public string CompositeName { get; set; } = null!;
+    public string TableName { get; set; } = null!;
+
+    /// <summary>
+    /// Gets or initializes the relationship between the source and target elements.
+    /// </summary>
+    public Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; set; } = null;
+
+    /// <summary>
+    /// Gets or initializes the issue code for the comparison.
+    /// </summary>
+    public ComparisonIssueCode? IssueCode { get; set; } = null;
+
+    /// <summary>
+    /// Gets or initializes the message describing the comparison.
+    /// </summary>
+    public string Message { get; set; } = null!;
+
+    /// <summary>
+    /// Gets or initializes the concept map associated with the comparison.
+    /// </summary>
+    [NotMapped]
+    public ConceptMap? Map { get; set; } = null;
+
+    public string? LastReviewedBy { get; set; } = null;
+    public DateTime? LastReviewedOn { get; set; } = null;
+
+    public ICollection<ValueSetCodeComparisonRec> CodeComparisons { get; init; } = null!;
+}
+
+//[Table("ValueSetCodeComparisons")]
+//[Index(nameof(VsPairComparisonKey))]
+//[Index(nameof(SourceSystem))]
+//[Index(nameof(SourceCode))]
+//[Index(nameof(SourceSystem), nameof(SourceCode))]
+//[Index(nameof(TargetSystem))]
+//[Index(nameof(TargetCode))]
+//[Index(nameof(TargetSystem), nameof(TargetCode))]
+public class ValueSetCodeComparisonRec
+{
+    [Key]
+    //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int Key { get; set; }
+
+    public int VsPairComparisonKey { get; set; }
+
+    //[ForeignKey(nameof(VsPairComparisonKey))]
+    public ValueSetPairComparison VsPairComparison { get; init; } = null!;
+
+    /// <summary>
+    /// Gets or initializes the source system.
+    /// </summary>
+    public string SourceSystem { get; set; } = null!;
+
+    /// <summary>
+    /// Gets or initializes the source code.
+    /// </summary>
+    public string SourceCode { get; set; } = null!;
+
+    /// <summary>
+    /// Gets or sets the source display.
+    /// </summary>
+    public string? SourceDisplay { get; set; } = null;
+
+    /// <summary>
+    /// Gets or sets a value indicating whether there is no map.
+    /// </summary>
+    public bool? NoMap { get; set; } = null;
+
+    /// <summary>
+    /// Gets or initializes the target system.
+    /// </summary>
+    public string? TargetSystem { get; set; } = null;
+
+    /// <summary>
+    /// Gets or initializes the target code.
+    /// </summary>
+    public string? TargetCode { get; set; } = null;
+
+    /// <summary>
+    /// Gets or sets the target display.
+    /// </summary>
+    public string? TargetDisplay { get; set; } = null;
+
+    /// <summary>
+    /// Gets or sets the relationship.
+    /// </summary>
+    public Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; set; } = null;
+
+    /// <summary>
+    /// Gets or sets the comment.
+    /// </summary>
+    public string? Comment { get; set; } = null;
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the record is generated.
+    /// </summary>
+    public bool? IsGenerated { get; set; } = null;
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the record needs review.
+    /// </summary>
+    public bool? NeedsReview { get; set; } = null;
+}
+
+
+
 
 /// <summary>
 /// Represents a comparison between a source and target FHIR model element.
 /// </summary>
 /// <typeparam name="T">The type of the FHIR model element being compared.</typeparam>
 /// <remarks>Used by FhirCoreComparer</remarks>
-public interface PairComparison<T>
+public interface IPairComparison<T>
     where T : Hl7.Fhir.Model.Base
 {
-    long Id { get; set; }
+    int Key { get; set; }
 
     /// <summary>
     /// Gets or initializes the source element.
@@ -128,17 +318,17 @@ public interface PairComparison<T>
     /// <summary>
     /// Gets or initializes the relationship between the source and target elements.
     /// </summary>
-    Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; init; }
+    Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; set; }
 
     /// <summary>
     /// Gets or initializes the issue code for the comparison.
     /// </summary>
-    ComparisonIssueCode? IssueCode { get; init; }
+    ComparisonIssueCode? IssueCode { get; set; }
 
     /// <summary>
     /// Gets or initializes the message describing the comparison.
     /// </summary>
-    string Message { get; init; }
+    string Message { get; set; }
 
     /// <summary>
     /// Gets or initializes the concept map associated with the comparison.
@@ -148,131 +338,6 @@ public interface PairComparison<T>
     string? LastReviewedBy { get; set; }
     DateTime? LastReviewedOn { get; set; }
 }
-
-[CgSQLiteTable]
-public partial record class ValueSetPairComparison : PairComparison<ValueSet>
-{
-    [CgSQLiteKey]
-    public required long Id { get; set; }
-
-    /// <summary>
-    /// Gets or initializes the source element.
-    /// </summary>
-    [CgSQLiteIgnore]
-    public ValueSet? Source { get; set; } = null;
-
-    public required string SourceCanonical { get; set; }
-    public required string SourceName { get; set; }
-    public required string? SourceVersion { get; set; }
-
-
-    /// <summary>
-    /// Gets or initializes the target element.
-    /// </summary>
-    [CgSQLiteIgnore]
-    public ValueSet? Target { get; set; } = null;
-
-    public required string? TargetCanonical { get; set; }
-    public required string? TargetName { get; set; }
-    public required string? TargetVersion { get; set; }
-
-    public required string CompositeName { get; set; }
-    public required string TableName { get; set; }
-
-    /// <summary>
-    /// Gets or initializes the relationship between the source and target elements.
-    /// </summary>
-    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; init; }
-
-    /// <summary>
-    /// Gets or initializes the issue code for the comparison.
-    /// </summary>
-    public required ComparisonIssueCode? IssueCode { get; init; }
-
-    /// <summary>
-    /// Gets or initializes the message describing the comparison.
-    /// </summary>
-    public required string Message { get; init; }
-
-    /// <summary>
-    /// Gets or initializes the concept map associated with the comparison.
-    /// </summary>
-    [CgSQLiteIgnore]
-    public ConceptMap? Map { get; set; } = null;
-
-    public required string? LastReviewedBy { get; set; }
-    public required DateTime? LastReviewedOn { get; set; }
-}
-
-/// <summary>
-/// Represents a comparison record for a value set code.
-/// </summary>
-/// <remarks>Used by FhirCoreComparer</remarks>
-[CgSQLiteTable]
-public partial record class ValueSetCodeComparisonRec
-{
-    [CgSQLiteKey]
-    public required long Id { get; set; }
-
-    [CgSQLiteForeignKey("ValueSetPairComparison", "Id")]
-    public required long ValueSetPairComparisonId { get; set; }
-
-    /// <summary>
-    /// Gets or initializes the source system.
-    /// </summary>
-    public required string SourceSystem { get; init; }
-
-    /// <summary>
-    /// Gets or initializes the source code.
-    /// </summary>
-    public required string SourceCode { get; init; }
-
-    /// <summary>
-    /// Gets or sets the source display.
-    /// </summary>
-    public required string? SourceDisplay { get; set; }
-
-    /// <summary>
-    /// Gets or sets a value indicating whether there is no map.
-    /// </summary>
-    public bool? NoMap { get; set; }
-
-    /// <summary>
-    /// Gets or initializes the target system.
-    /// </summary>
-    public string? TargetSystem { get; init; }
-
-    /// <summary>
-    /// Gets or initializes the target code.
-    /// </summary>
-    public string? TargetCode { get; init; }
-
-    /// <summary>
-    /// Gets or sets the target display.
-    /// </summary>
-    public string? TargetDisplay { get; set; }
-
-    /// <summary>
-    /// Gets or sets the relationship.
-    /// </summary>
-    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; set; }
-
-    /// <summary>
-    /// Gets or sets the comment.
-    /// </summary>
-    public required string? Comment { get; set; }
-
-    /// <summary>
-    /// Gets or sets a value indicating whether the record is generated.
-    /// </summary>
-    public required bool? IsGenerated { get; set; }
-
-    /// <summary>
-    /// Gets or sets a value indicating whether the record needs review.
-    /// </summary>
-    public required bool? NeedsReview { get; set; }
-}
-
 
 
 public record class ComparisonBase
