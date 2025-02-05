@@ -145,6 +145,33 @@ public static class ValueSetExtensions
         return false;
     }
 
+    public static bool? cgHasCode(this ValueSet vs, HashSet<string> codes)
+    {
+        if ((vs.Expansion == null) || (vs.Expansion.Contains.Count == 0))
+        {
+            return null;
+        }
+
+        return containsCode(vs.Expansion.Contains);
+
+        bool containsCode(IEnumerable<ValueSet.ContainsComponent> cc)
+        {
+            foreach (ValueSet.ContainsComponent c in cc)
+            {
+                if (codes.Contains(cgKey(c)))
+                {
+                    return true;
+                }
+                if (c.Contains.Count != 0)
+                {
+                    return containsCode(c.Contains);
+                }
+            }
+
+            return false;
+        }
+    }
+
     /// <summary>Gets the flat list of FhirConcepts from the ValueSet.</summary>
     /// <param name="vs">The ValueSet to act on.</param>
     /// <param name="dc">The device-context.</param>

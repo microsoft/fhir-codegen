@@ -77,6 +77,8 @@ public class XVerProcessor
     private Dictionary<(string left, string right), FhirCoreComparer> _comparisonCache;
     private Dictionary<string, HashSet<string>> _vsUrlsToInclude = [];
 
+    private string _dbPath;
+
     public XVerProcessor(ConfigXVer config, IEnumerable<DefinitionCollection> definitions)
     {
         _config = config;
@@ -84,54 +86,61 @@ public class XVerProcessor
         _definitions = [.. definitions];
         _definitions.ForEach((DefinitionCollection dc, int i) => { _definitionIndexes.Add(dc.Key, i); return true; });
         _comparisonCache = [];
+
+        // TODO(ginoc): need to figure out how to determine in-place vs. output
+        _dbPath = Path.Combine(_config.CrossVersionMapSourcePath, "db");
     }
 
     public void ProcessCommand(string? command)
     {
         switch (command)
         {
+            case "convert-from-maps":
+                LoadDiffDatabases();
+                break;
+
             case "update-maps":
-                Load(preferV1Maps: true);
+                LoadFhirCrossVersionMaps(preferV1Maps: true);
                 Compare(saveUpdates: true);
                 break;
 
             case "update-vs-maps":
-                Load(preferV1Maps: true);
+                LoadFhirCrossVersionMaps(preferV1Maps: true);
                 Compare(saveUpdates: true, artifactFilter: FhirArtifactClassEnum.ValueSet);
                 break;
 
             case "update-type-maps":
-                Load(preferV1Maps: true);
+                LoadFhirCrossVersionMaps(preferV1Maps: true);
                 Compare(saveUpdates: true, artifactFilter: FhirArtifactClassEnum.PrimitiveType);
                 break;
 
             case "update-resource-maps":
-                Load(preferV1Maps: true);
+                LoadFhirCrossVersionMaps(preferV1Maps: true);
                 Compare(saveUpdates: true, artifactFilter: FhirArtifactClassEnum.Resource);
                 break;
 
             case "build-docs":
-                Load(preferV1Maps: false);
+                LoadFhirCrossVersionMaps(preferV1Maps: false);
                 WriteComparisonDocs();
                 break;
 
             case "build-vs-docs":
-                Load(preferV1Maps: false);
+                LoadFhirCrossVersionMaps(preferV1Maps: false);
                 WriteComparisonDocs(artifactFilter: FhirArtifactClassEnum.ValueSet);
                 break;
 
             case "build-type-docs":
-                Load(preferV1Maps: false);
+                LoadFhirCrossVersionMaps(preferV1Maps: false);
                 WriteComparisonDocs(artifactFilter: FhirArtifactClassEnum.PrimitiveType);
                 break;
 
             case "build-resource-docs":
-                Load(preferV1Maps: false);
+                LoadFhirCrossVersionMaps(preferV1Maps: false);
                 WriteComparisonDocs(artifactFilter: FhirArtifactClassEnum.Resource);
                 break;
 
             default:
-                Load(preferV1Maps: true);
+                LoadFhirCrossVersionMaps(preferV1Maps: true);
                 Compare(saveUpdates: true);
                 WriteComparisonDocs();
                 break;
@@ -142,11 +151,11 @@ public class XVerProcessor
     /// Loads the definitions and initializes the comparison cache.
     /// </summary>
     /// <remarks>
-    /// TODO(ginoc): once the v2 maps are merged into the main branch, all the v1 handling can be removed
+    /// TODO(ginoc): this is only used to convert origin maps into the database.
     /// </remarks>
     /// <param name="preferV1Maps">Indicates whether to prefer version 1 maps.</param>
     /// <exception cref="InvalidOperationException">Thrown when there are less than two definitions available for comparison.</exception>
-    public void Load(bool preferV1Maps)
+    public void LoadFhirCrossVersionMaps(bool preferV1Maps)
     {
         if (_definitions.Length < 2)
         {
@@ -180,6 +189,72 @@ public class XVerProcessor
         }
     }
 
+    //private void createDbsForCollections(
+    //    DefinitionCollection left,
+    //    DefinitionCollection right)
+    //{
+    //    FhirCoreComparer comparer = new(
+    //        left,
+    //        right,
+    //        _config.LogFactory,
+    //        _config.CrossVersionMapSourcePath);
+
+    //    _ = comparer.GetInitialCrossVersionMaps(true);
+
+    //    // create base difference trackers
+    //    DifferenceTracker diffsLeftToRight = new(left, right, _dbPath);
+    //    DifferenceTracker diffsRightToLeft = new(right, left, _dbPath);
+
+    //    diffsLeftToRight.InitDb(out bool createdNew);
+    //    if (comparer.LeftToRight != null)
+    //    {
+    //        diffsLeftToRight.LoadFromCrossVersionMaps(comparer.LeftToRight);
+    //    }
+
+    //    diffsRightToLeft.InitDb();
+    //    if (comparer.RightToLeft != null)
+    //    {
+    //        diffsRightToLeft.LoadFromCrossVersionMaps(comparer.RightToLeft);
+    //    }
+
+    //    _diffCache[(left.Key, right.Key)] = diffsLeftToRight;
+    //    _diffCache[(right.Key, left.Key)] = diffsRightToLeft;
+    //}
+
+    public void LoadDiffDatabases()
+    {
+        if (_definitions.Length < 2)
+        {
+            throw new InvalidOperationException("At least two definitions are required for comparison.");
+        }
+
+        _comparisonCache.Clear();
+
+        // create our comparison objects
+        for (int definitionIndex = 1; definitionIndex < _definitions.Length; definitionIndex++)
+        {
+            DefinitionCollection left = _definitions[definitionIndex - 1];
+            DefinitionCollection right = _definitions[definitionIndex];
+
+            if (_comparisonCache.ContainsKey((left.Key, right.Key)))
+            {
+                continue;
+            }
+
+            FhirCoreComparer comparer = new(
+                left,
+                right,
+                _config.LogFactory,
+                _config.CrossVersionMapSourcePath);
+
+            comparer.Init(_config.CrossVersionMapSourcePath);
+
+            // comparers are bidirectional so only create left-to-right key for sanity
+            _comparisonCache.Add((left.Key, right.Key), comparer);
+        }
+    }
+
+
     public void Compare(bool? saveUpdates = null, FhirArtifactClassEnum? artifactFilter = null)
     {
         if (_definitions.Length < 2)
@@ -190,7 +265,7 @@ public class XVerProcessor
         // load the current cross version maps if necessary
         if (_comparisonCache.Count == 0)
         {
-            Load(preferV1Maps: false);
+            LoadFhirCrossVersionMaps(preferV1Maps: false);
         }
 
         if ((artifactFilter == null) ||

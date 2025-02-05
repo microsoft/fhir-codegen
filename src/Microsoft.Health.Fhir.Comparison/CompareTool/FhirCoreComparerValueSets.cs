@@ -173,12 +173,23 @@ public partial class FhirCoreComparer
                         // flag that we are not comparing this because of manual exclusion
                         _valueSetComparisons.AddToValue(versionedUrl, new()
                         {
+                            Id = -1,
                             Source = unexpandedVs,
+                            SourceCanonical = unexpandedVs.Url + "|" + unexpandedVs.Version,
+                            SourceName = unexpandedVs.Name,
+                            SourceVersion = unexpandedVs.Version,
                             Target = null,
+                            TargetCanonical = null,
+                            TargetName = null,
+                            TargetVersion = null,
+                            CompositeName = _leftRLiteral + "-" + unexpandedVs.Name,
+                            TableName = FhirSanitizationUtils.SanitizeForProperty(_leftRLiteral + "-" + unexpandedVs.Name).Replace('-', '_'),
                             Relationship = null,
                             IssueCode = ComparisonIssueCode.ManuallyExcluded,
                             Message = "Not compared because this ValueSet is in the manual exclusion list.",
                             Map = null,
+                            LastReviewedBy = null,
+                            LastReviewedOn =null,
                         });
                     }
 
@@ -195,12 +206,23 @@ public partial class FhirCoreComparer
                         // flag why we are not including this
                         _valueSetComparisons.AddToValue(versionedUrl, new()
                         {
+                            Id = -1,
                             Source = unexpandedVs,
+                            SourceCanonical = unexpandedVs.Url + "|" + unexpandedVs.Version,
+                            SourceName = unexpandedVs.Name,
+                            SourceVersion = unexpandedVs.Version,
                             Target = null,
+                            TargetCanonical = null,
+                            TargetName = null,
+                            TargetVersion = null,
+                            CompositeName = _leftRLiteral + "-" + unexpandedVs.Name,
+                            TableName = FhirSanitizationUtils.SanitizeForProperty(_leftRLiteral + "-" + unexpandedVs.Name).Replace('-', '_'),
                             Relationship = null,
                             IssueCode = ComparisonIssueCode.CannotExpandSource,
                             Message = $"Not compared because this ValueSet failed to expand: {expandMessage}.",
                             Map = null,
+                            LastReviewedBy = null,
+                            LastReviewedOn = null,
                         });
                     }
 
@@ -223,12 +245,23 @@ public partial class FhirCoreComparer
                     // flag why we are not including this
                     _valueSetComparisons.AddToValue(versionedUrl, new()
                     {
+                        Id = -1,
                         Source = vs,
+                        SourceCanonical = vs.Url + "|" + vs.Version,
+                        SourceName = vs.Name,
+                        SourceVersion = vs.Version,
                         Target = null,
+                        TargetCanonical = null,
+                        TargetName = null,
+                        TargetVersion = null,
+                        CompositeName = _leftRLiteral + "-" + vs.Name,
+                        TableName = FhirSanitizationUtils.SanitizeForProperty(_leftRLiteral + "-" + vs.Name).Replace('-', '_'),
                         Relationship = null,
                         IssueCode = ComparisonIssueCode.NoRequiredBindings,
                         Message = "Not compared because this ValueSet has no discovered required bindings.",
                         Map = null,
+                        LastReviewedBy = null,
+                        LastReviewedOn = null,
                     });
 
                     _logger.LogValueSetNoRequiredBindings(versionedUrl);
@@ -328,6 +361,8 @@ public partial class FhirCoreComparer
                 {
                     ValueSetCodeComparisonRec mapRec = new()
                     {
+                        Id = -1,
+                        ValueSetPairComparisonId = -1,
                         SourceSystem = exGroup.Source,
                         SourceCode = exSourceElement.Code,
                         SourceDisplay = exSourceElement.Display,
@@ -368,6 +403,8 @@ public partial class FhirCoreComparer
             {
                 ValueSetCodeComparisonRec mapRec = new()
                 {
+                    Id = -1,
+                    ValueSetPairComparisonId = -1,
                     SourceSystem = exMapRec.TargetSystem!,
                     SourceCode = exMapRec.TargetCode!,
                     SourceDisplay = exMapRec.TargetDisplay,
@@ -494,12 +531,23 @@ public partial class FhirCoreComparer
                 // flag that we are not comparing this because we could not expand
                 _valueSetComparisons.AddToValue(versionedUrl, new()
                 {
+                    Id = -1,
                     Source = vs,
+                    SourceCanonical = vs.Url + "|" + vs.Version,
+                    SourceName = vs.Name,
+                    SourceVersion = vs.Version,
                     Target = null,
+                    TargetCanonical = null,
+                    TargetName = null,
+                    TargetVersion = null,
+                    CompositeName = dc.FhirSequence.ToRLiteral() + "-" + vs.Name,
+                    TableName = FhirSanitizationUtils.SanitizeForProperty(dc.FhirSequence.ToRLiteral() + "-" + vs.Name).Replace('-', '_'),
                     Relationship = null,
                     IssueCode = ComparisonIssueCode.NoTarget,
                     Message = "Not compared because this ValueSet has no maps and does not exist in the target.",
                     Map = null,
+                    LastReviewedBy = null,
+                    LastReviewedOn = null,
                 });
 
                 _logger.LogNoTarget(versionedUrl);
@@ -526,12 +574,23 @@ public partial class FhirCoreComparer
                 // flag that we are not comparing this because we could not expand
                 _valueSetComparisons.AddToValue(versionedUrl, new()
                 {
+                    Id = -1,
                     Source = vs,
+                    SourceCanonical = vs.Url + "|" + vs.Version,
+                    SourceName = vs.Name,
+                    SourceVersion = vs.Version,
                     Target = null,
+                    TargetCanonical = null,
+                    TargetName = null,
+                    TargetVersion = null,
+                    CompositeName = dc.FhirSequence.ToRLiteral() + "-" + vs.Name,
+                    TableName = FhirSanitizationUtils.SanitizeForProperty(dc.FhirSequence.ToRLiteral() + "-" + vs.Name).Replace('-', '_'),
                     Relationship = null,
                     IssueCode = ComparisonIssueCode.InvalidMap,
                     Message = $"Not compared because map {cm.Id} ({cm.Url}) does not have a valid target.",
                     Map = cm,
+                    LastReviewedBy = null,
+                    LastReviewedOn = null,
                 });
 
                 _logger.LogInvalidMapTarget(versionedUrl, cm.Url);
@@ -550,12 +609,23 @@ public partial class FhirCoreComparer
                     // flag that we are not comparing this because we could not expand
                     _valueSetComparisons.AddToValue(versionedUrl, new()
                     {
+                        Id = -1,
                         Source = vs,
+                        SourceCanonical = vs.Url + "|" + vs.Version,
+                        SourceName = vs.Name,
+                        SourceVersion = vs.Version,
                         Target = unexpandedVs,
+                        TargetCanonical = unexpandedVs.Url + "|" + unexpandedVs.Version,
+                        TargetName = unexpandedVs.Name,
+                        TargetVersion = unexpandedVs.Version,
+                        CompositeName = dc.FhirSequence.ToRLiteral() + "-" + vs.Name + "-" + targetDc.FhirSequence.ToRLiteral() + "-" + unexpandedVs.Name,
+                        TableName = FhirSanitizationUtils.SanitizeForProperty(dc.FhirSequence.ToRLiteral() + "-" + vs.Name + "-" + targetDc.FhirSequence.ToRLiteral() + "-" + unexpandedVs.Name).Replace('-', '_'),
                         Relationship = null,
                         IssueCode = ComparisonIssueCode.CannotExpandTarget,
                         Message = $"Not compared because the target ValueSet failed to expand: {expandMessage}.",
                         Map = cm,
+                        LastReviewedBy = null,
+                        LastReviewedOn = null,
                     });
                 }
 
@@ -615,6 +685,8 @@ public partial class FhirCoreComparer
                     // add a no-map entry
                     mapRecsByTarget.Add((cmGroup.Target, null), new()
                     {
+                        Id = -1,
+                        ValueSetPairComparisonId = -1,
                         SourceSystem = cmGroup.Source,
                         SourceCode = cmSourceElement.Code,
                         SourceDisplay = cmSourceElement.Display,
@@ -631,6 +703,8 @@ public partial class FhirCoreComparer
                 {
                     ValueSetCodeComparisonRec mapRec = new()
                     {
+                        Id = -1,
+                        ValueSetPairComparisonId = -1,
                         SourceSystem = cmGroup.Source,
                         SourceCode = cmSourceElement.Code,
                         SourceDisplay = cmSourceElement.Display,
@@ -677,6 +751,8 @@ public partial class FhirCoreComparer
                 {
                     ValueSetCodeComparisonRec mapRec = new()
                     {
+                        Id = -1,
+                        ValueSetPairComparisonId = -1,
                         SourceSystem = sourceConcept.System,
                         SourceCode = sourceConcept.Code,
                         SourceDisplay = sourceConcept.Display,
@@ -708,6 +784,8 @@ public partial class FhirCoreComparer
                     {
                         ValueSetCodeComparisonRec mapRec = new()
                         {
+                            Id = -1,
+                            ValueSetPairComparisonId = -1,
                             SourceSystem = sourceConcept.System,
                             SourceCode = sourceConcept.Code,
                             SourceDisplay = sourceConcept.Display,

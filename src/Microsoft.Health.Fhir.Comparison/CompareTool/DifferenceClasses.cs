@@ -1,4 +1,4 @@
-﻿// <copyright file="ComparisonClasses.cs" company="Microsoft Corporation">
+﻿// <copyright file="DifferenceClasses.cs" company="Microsoft Corporation">
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
@@ -12,11 +12,11 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using fhir_codegen.SQLiteGenerator;
 using Hl7.Fhir.Model;
 using Microsoft.Health.Fhir.CodeGen.Utils;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Utils;
-using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 
 namespace Microsoft.Health.Fhir.Comparison.CompareTool;
 
@@ -40,29 +40,149 @@ public enum ComparisonIssueCode
     InvalidMap,
 }
 
+[CgSQLiteTable]
+public partial class RelationshipLookup
+{
+    [CgSQLiteKey]
+    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship Relationship { get; set; }
+    public required string Name { get; set; }
+}
+
+[CgSQLiteTable]
+public partial class ComparisonMetadata
+{
+    [CgSQLiteKey]
+    public required long Id { get; set; }
+
+    public required string SourcePackageId { get; init; }
+    public required string SourcePackageVersion { get; init; }
+
+    public required string TargetPackageId { get; init; }
+    public required string TargetPackageVersion { get; init; }
+
+    public required string Name { get; init; }
+    public required string PackageId { get; init; }
+    public required string PackageVersion { get; init; }
+    public required string CanonicalUrl { get; init; }
+}
+
+[CgSQLiteTable]
+public partial class ValueSetMetadata
+{
+    [CgSQLiteKey]
+    public required long Id { get; set; }
+    public required string PackageId { get; set; }
+    public required string PackageVersion { get; set; }
+
+    public required string CanonicalUrl { get; set; }
+    public required string Name { get; set; }
+    public required string Version { get; set; }
+    public required string TableName { get; set; }
+    public required string Description { get; set; }
+    public required bool CanExpand { get; set; }
+    public required bool? HasEscapeValveCode { get; set; }
+    public required string? Message { get; set; }
+}
+
+[CgSQLiteTable]
+public partial class ValueSetContent
+{
+    [CgSQLiteKey]
+    public required long Id { get; set; }
+    [CgSQLiteForeignKey("ValueSetMetadata", "Id")]
+    public required long ValueSetMetadataId { get; set; }
+
+    public required string System { get; set; }
+    public required string Code { get; set; }
+    public required string? Display { get; set; }
+}
 
 /// <summary>
 /// Represents a comparison between a source and target FHIR model element.
 /// </summary>
 /// <typeparam name="T">The type of the FHIR model element being compared.</typeparam>
 /// <remarks>Used by FhirCoreComparer</remarks>
-public record class PairComparison<T>
+public interface PairComparison<T>
     where T : Hl7.Fhir.Model.Base
 {
+    long Id { get; set; }
+
     /// <summary>
     /// Gets or initializes the source element.
     /// </summary>
-    public required T Source { get; init; }
+    T? Source { get; set; }
+
+    string SourceCanonical { get; set; }
+    string SourceName { get; set; }
 
     /// <summary>
     /// Gets or initializes the target element.
     /// </summary>
-    public required T? Target { get; init; }
+    T? Target { get; set; }
+
+    string? TargetCanonical { get; set; }
+    string? TargetName { get; set; }
+
+    string CompositeName { get; set; }
 
     /// <summary>
     /// Gets or initializes the relationship between the source and target elements.
     /// </summary>
-    public required CMR? Relationship { get; init; }
+    Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; init; }
+
+    /// <summary>
+    /// Gets or initializes the issue code for the comparison.
+    /// </summary>
+    ComparisonIssueCode? IssueCode { get; init; }
+
+    /// <summary>
+    /// Gets or initializes the message describing the comparison.
+    /// </summary>
+    string Message { get; init; }
+
+    /// <summary>
+    /// Gets or initializes the concept map associated with the comparison.
+    /// </summary>
+    ConceptMap? Map { get; set; }
+
+    string? LastReviewedBy { get; set; }
+    DateTime? LastReviewedOn { get; set; }
+}
+
+[CgSQLiteTable]
+public partial record class ValueSetPairComparison : PairComparison<ValueSet>
+{
+    [CgSQLiteKey]
+    public required long Id { get; set; }
+
+    /// <summary>
+    /// Gets or initializes the source element.
+    /// </summary>
+    [CgSQLiteIgnore]
+    public ValueSet? Source { get; set; } = null;
+
+    public required string SourceCanonical { get; set; }
+    public required string SourceName { get; set; }
+    public required string? SourceVersion { get; set; }
+
+
+    /// <summary>
+    /// Gets or initializes the target element.
+    /// </summary>
+    [CgSQLiteIgnore]
+    public ValueSet? Target { get; set; } = null;
+
+    public required string? TargetCanonical { get; set; }
+    public required string? TargetName { get; set; }
+    public required string? TargetVersion { get; set; }
+
+    public required string CompositeName { get; set; }
+    public required string TableName { get; set; }
+
+    /// <summary>
+    /// Gets or initializes the relationship between the source and target elements.
+    /// </summary>
+    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; init; }
 
     /// <summary>
     /// Gets or initializes the issue code for the comparison.
@@ -77,15 +197,26 @@ public record class PairComparison<T>
     /// <summary>
     /// Gets or initializes the concept map associated with the comparison.
     /// </summary>
-    public required ConceptMap? Map { get; init; }
+    [CgSQLiteIgnore]
+    public ConceptMap? Map { get; set; } = null;
+
+    public required string? LastReviewedBy { get; set; }
+    public required DateTime? LastReviewedOn { get; set; }
 }
 
 /// <summary>
 /// Represents a comparison record for a value set code.
 /// </summary>
 /// <remarks>Used by FhirCoreComparer</remarks>
-internal record class ValueSetCodeComparisonRec
+[CgSQLiteTable]
+public partial record class ValueSetCodeComparisonRec
 {
+    [CgSQLiteKey]
+    public required long Id { get; set; }
+
+    [CgSQLiteForeignKey("ValueSetPairComparison", "Id")]
+    public required long ValueSetPairComparisonId { get; set; }
+
     /// <summary>
     /// Gets or initializes the source system.
     /// </summary>
@@ -124,7 +255,7 @@ internal record class ValueSetCodeComparisonRec
     /// <summary>
     /// Gets or sets the relationship.
     /// </summary>
-    public required CMR? Relationship { get; set; }
+    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; set; }
 
     /// <summary>
     /// Gets or sets the comment.
@@ -144,13 +275,9 @@ internal record class ValueSetCodeComparisonRec
 
 
 
-
-
-
-
 public record class ComparisonBase
 {
-    public required CMR? Relationship { get; init; }
+    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; init; }
     public required string Message { get; init; }
 
     public virtual string GetStatusString() => Relationship?.ToString() ?? "-";

@@ -1530,11 +1530,13 @@ public partial class DefinitionCollection
             }
         }
 
+        string vsVersion = valueSet.Version ?? packageVersion;
+
         string vsUrl = valueSet.Url;
 
         if (!vsUrl.Contains('|'))
         {
-            vsUrl = $"{vsUrl}|{valueSet.Version}";
+            vsUrl = $"{vsUrl}|{vsVersion}";
         }
 
         // check to see if this resource already exists
@@ -1554,12 +1556,12 @@ public partial class DefinitionCollection
         {
             if (!versions.Contains(valueSet.Version))
             {
-                _valueSetVersions[unversioned] = [.. versions, valueSet.Version];
+                _valueSetVersions[unversioned] = [.. versions, vsVersion];
             }
         }
         else
         {
-            _valueSetVersions[unversioned] = [valueSet.Version];
+            _valueSetVersions[unversioned] = [vsVersion];
         }
 
         if (!_valueSetUrlsById.ContainsKey(valueSet.Id))

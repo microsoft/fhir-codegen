@@ -103,10 +103,13 @@ public partial class FhirCoreComparer
     private string _rightRLiteral;
     private string _rightKey;
 
+    private DifferenceTracker? _diffsLeftToRight = null;
+    private DifferenceTracker? _diffsRightToLeft = null;
+
     private CrossVersionMapCollection? _cvLeftToRight = null;
     private CrossVersionMapCollection? _cvRightToLeft = null;
 
-    private Dictionary<string, List<PairComparison<ValueSet>>> _valueSetComparisons = [];
+    private Dictionary<string, List<ValueSetPairComparison>> _valueSetComparisons = [];
 
     private Dictionary<string, List<PairComparison<StructureDefinition>>> _primitiveComparisons = [];
 
@@ -170,6 +173,30 @@ public partial class FhirCoreComparer
                 compareAllComplexTypes();
                 checkOverviewMaps(CodeGenCommon.Models.FhirArtifactClassEnum.Resource);
                 break;
+        }
+    }
+
+    public void Init(string cvMapSourcePath)
+    {
+        _diffsLeftToRight = new(_leftDc, _rightDc, _dbPath);
+        _diffsLeftToRight.InitDb(_exclusionSet, _escapeValveCodes, out bool createdLR);
+
+        _diffsRightToLeft = new(_rightDc, _leftDc, _dbPath);
+        _diffsRightToLeft.InitDb(_exclusionSet, _escapeValveCodes, out bool createdRL);
+
+        if (createdLR || createdRL)
+        {
+            (CrossVersionMapCollection cvLR, CrossVersionMapCollection cvRL) = getInitialMaps(true);
+
+            if (createdLR && !string.IsNullOrEmpty(cvMapSourcePath))
+            {
+                _diffsLeftToRight.LoadFromCrossVersionMaps(cvLR);
+            }
+
+            if (createdRL && !string.IsNullOrEmpty(cvMapSourcePath))
+            {
+                _diffsRightToLeft.LoadFromCrossVersionMaps(cvRL);
+            }
         }
     }
 

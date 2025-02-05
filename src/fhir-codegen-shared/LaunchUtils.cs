@@ -98,6 +98,7 @@ internal static class LaunchUtils
             Description = "Perform FHIR Core Cross-Version processing",
             ConfigurationType = typeof(ConfigXVer),
             SubCommands = [
+                ("convert-from-maps", "Create XVer DB from existing maps"),
                 ("update-maps", "Update the FHIR Cross Version maps"),
                 ("update-vs-maps", "Update the FHIR Cross Version maps for value sets"),
                 ("update-type-maps", "Update the FHIR Cross Version maps for data types"),

@@ -7,6 +7,7 @@ using System.Data;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using System.Text.Json;
+using Antlr4.Runtime.Atn;
 using Dapper;
 using fhir_codegen.SQLiteGenerator;
 using Firely.Fhir.Packages;
@@ -25,7 +26,6 @@ using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
-using Microsoft.Health.Fhir.Comparison.Models;
 using Microsoft.Health.Fhir.MappingLanguage;
 
 namespace Microsoft.Health.Fhir.Comparison.CompareTool;
@@ -50,7 +50,7 @@ public class CrossVersionMapCollection
 
     private DefinitionCollection _source;
     private DefinitionCollection _target;
-    private DefinitionCollection _dc = null!;
+    internal DefinitionCollection _dc = null!;
     
     private string _mapCanonical = string.Empty;
 
@@ -87,10 +87,6 @@ public class CrossVersionMapCollection
 
     private Dictionary<string, FhirStructureMap> _fmlByCompositeName = [];
 
-    private IDbConnection? _dbConnection = null;
-    private string _dbPath;
-    private string _dbName => $"{_source.FhirSequence.ToRLiteral()}-{_target.FhirSequence.ToRLiteral()}.db";
-
 
     public CrossVersionMapCollection(
         DefinitionCollection source,
@@ -106,12 +102,6 @@ public class CrossVersionMapCollection
         {
             JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
         });
-
-        _dbPath = dbPath;
-        if (!Directory.Exists(_dbPath))
-        {
-            Directory.CreateDirectory(_dbPath);
-        }
 
         _source = source;
 
@@ -213,7 +203,7 @@ public class CrossVersionMapCollection
         }
     }
 
-    private bool isValueSetConceptMap(ConceptMap cm) => cm.UseContext.Any(uc =>
+    internal static bool isValueSetConceptMap(ConceptMap cm) => cm.UseContext.Any(uc =>
         (uc.Code.System == CommonDefinitions.ConceptMapUsageContextSystem) &&
         (uc.Value is CodeableConcept cc) &&
         cc.Coding.Any(c => c.System == CommonDefinitions.ConceptMapUsageContextSystem && c.Code == CommonDefinitions.ConceptMapUsageContextValueSet));
@@ -334,44 +324,8 @@ public class CrossVersionMapCollection
         return false;
     }
 
-    public void InitDb()
-    {
-        string connectionString = new SqliteConnectionStringBuilder()
-        {
-            DataSource = Path.Combine(_dbPath, _dbName),
-            Mode = SqliteOpenMode.ReadWriteCreate,
-        }.ToString();
-
-        _dbConnection = new SqliteConnection(connectionString);
-
-        _dbConnection.Open();
-
-        // ensure core tables exist
-        ComparisonInfo.CreateTable(_dbConnection);
-        ValueSetMapping.CreateTable(_dbConnection);
-        StructureMapping.CreateTable(_dbConnection);
-
-        // get or set package information
-        ComparisonInfo? ci = ComparisonInfo.SelectSingle(_dbConnection);
-        if (ci == null)
-        {
-            ci = new()
-            {
-                Id = -1,
-                SourcePackageId = _source.MainPackageId,
-                SourcePackageVersion = _source.MainPackageVersion,
-                TargetPackageId = _target.MainPackageId,
-                TargetPackageVersion = _target.MainPackageVersion,
-            };
-
-            ci = ComparisonInfo.Insert(_dbConnection, ci);
-        }
-    }
-
     public bool TryLoadCrossVersionMaps(string path, bool preferV1Maps = false)
     {
-        InitDb();
-
         bool isOfficial = PathHasFhirCrossVersionOfficial(path);
         bool isSource = PathHasFhirCrossVersionSource(path);
 
@@ -1303,6 +1257,12 @@ public class CrossVersionMapCollection
         cm.Group[0].Source = sourceLocalUrl;
         cm.Group[0].Target = targetLocalUrl;
 
+        cm.UseContext.Add(new()
+        {
+            Code = new(CommonDefinitions.ConceptMapUsageContextSystem, CommonDefinitions.ConceptMapUsageContextTarget),
+            Value = new CodeableConcept(CommonDefinitions.ConceptMapUsageContextSystem, CommonDefinitions.ConceptMapUsageContextResourceOverview),
+        });
+
         _resourceTypeMap = cm;
     }
 
@@ -1332,6 +1292,12 @@ public class CrossVersionMapCollection
 
         cm.Group[0].Source = sourceLocalUrl.Replace("/ValueSet/", "/");
         cm.Group[0].Target = targetLocalUrl.Replace("/ValueSet/", "/");
+
+        cm.UseContext.Add(new()
+        {
+            Code = new(CommonDefinitions.ConceptMapUsageContextSystem, CommonDefinitions.ConceptMapUsageContextTarget),
+            Value = new CodeableConcept(CommonDefinitions.ConceptMapUsageContextSystem, CommonDefinitions.ConceptMapUsageContextTypeOverview),
+        });
 
         _dataTypeMap = cm;
     }
@@ -1409,6 +1375,12 @@ public class CrossVersionMapCollection
         cm.Name = localConceptMapId;
         cm.Title = GetConceptMapTitle(leftName, rightName);
         cm.AddExtension(CommonDefinitions.ExtUrlConceptMapAdditionalUrls, new FhirUrl(originalMapUrl));
+
+        cm.UseContext.Add(new()
+        {
+            Code = new(CommonDefinitions.ConceptMapUsageContextSystem, CommonDefinitions.ConceptMapUsageContextTarget),
+            Value = new CodeableConcept(CommonDefinitions.ConceptMapUsageContextSystem, CommonDefinitions.ConceptMapUsageContextValueSet),
+        });
 
         // try to manufacture correct value set URLs based on what we have
         cm.SourceScope = new Canonical(unversionedSourceUrl + "|" + _sourcePackageVersion);

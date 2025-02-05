@@ -4,6 +4,7 @@ using System.Collections.Immutable;
 using System.Data;
 using System.Data.SqlTypes;
 using System.Text;
+using System.Xml.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
@@ -16,10 +17,18 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
     //private const string _joiner_0 = ",\r\n";
     //private const string _joiner_1 = ",\r\n    ";
     //private const string _joiner_2 = ",\r\n        ";
+    private const string _line_2 = "\r\n        ";
     private const string _line_3 = "\r\n            ";
     private const string _line_4 = "\r\n                ";
+    private const string _comma_line_2 = ",\r\n        ";
     private const string _comma_line_4 = ",\r\n                ";
     private const string _comma_line_5 = ",\r\n                    ";
+
+    private enum CgGenCategory
+    {
+        Class,
+        Record,
+    }
 
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
@@ -35,14 +44,26 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
             "CgSQLiteGeneratorAttributes.g.cs",
             SourceText.From(GeneratorAttributes.CgAttributes, Encoding.UTF8)));
 
-        IncrementalValuesProvider<ClassDeclarationSyntax> enumDeclarations = context.SyntaxProvider
+        IncrementalValuesProvider<ClassDeclarationSyntax> cDeclarations = context.SyntaxProvider
             .CreateSyntaxProvider(
-                predicate: static (s, _) => IsSyntaxTargetForGeneration(s),
-                transform: static (ctx, _) => GetTargetForGeneration(ctx));
-        IncrementalValueProvider<(Compilation, ImmutableArray<ClassDeclarationSyntax>)> compilationAndEnums
-                = context.CompilationProvider.Combine(enumDeclarations.Collect());
-        context.RegisterSourceOutput(compilationAndEnums,
-            (spc, source) => Execute(source.Item1, source.Item2, spc));
+                predicate: static (s, _) => IsSyntaxTargetClassDec(s),
+                transform: static (ctx, _) => GetClassTargetForGeneration(ctx));
+
+        IncrementalValueProvider<(Compilation, ImmutableArray<ClassDeclarationSyntax>)> ivpClasses =
+                context.CompilationProvider.Combine(cDeclarations.Collect());
+
+        context.RegisterSourceOutput(ivpClasses, (spc, source) => Execute(source.Item1, source.Item2, spc));
+
+
+        IncrementalValuesProvider<RecordDeclarationSyntax> rDeclarations = context.SyntaxProvider
+            .CreateSyntaxProvider(
+                predicate: static (s, _) => IsSyntaxTargetRecordDec(s),
+                transform: static (ctx, _) => GetRecordTargetForGeneration(ctx));
+
+        IncrementalValueProvider<(Compilation, ImmutableArray<RecordDeclarationSyntax>)> ivpRecords =
+                context.CompilationProvider.Combine(rDeclarations.Collect());
+
+        context.RegisterSourceOutput(ivpRecords, (spc, source) => Execute(source.Item1, source.Item2, spc));
     }
 
 
@@ -51,22 +72,49 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
     /// </summary>
     /// <param name="syntaxNode">The syntax node to evaluate.</param>
     /// <returns><c>true</c> if the syntax node is a class declaration with specific attributes; otherwise, <c>false</c>.</returns>
-    public static bool IsSyntaxTargetForGeneration(SyntaxNode syntaxNode)
+    public static bool IsSyntaxTargetClassDec(SyntaxNode syntaxNode)
     {
-        return (syntaxNode is ClassDeclarationSyntax classDeclarationSyntax) &&
-            (classDeclarationSyntax.AttributeLists.Count > 0) &&
-            classDeclarationSyntax.AttributeLists.Any(al => al.Attributes.Any(a => GeneratorAttributes._cgClassAttributes.Contains(a.Name.ToString())));
+        return
+            (syntaxNode is ClassDeclarationSyntax cDeclarationSyntax) &&
+            (cDeclarationSyntax.AttributeLists.Count > 0) &&
+            cDeclarationSyntax.AttributeLists.Any(al => al.Attributes.Any(a => GeneratorAttributes._cgClassAttributes.Contains(a.Name.ToString())));
     }
+
+
+    /// <summary>
+    /// Determines if the given <see cref="SyntaxNode"/> is a target for generation.
+    /// </summary>
+    /// <param name="syntaxNode">The syntax node to evaluate.</param>
+    /// <returns><c>true</c> if the syntax node is a class declaration with specific attributes; otherwise, <c>false</c>.</returns>
+    public static bool IsSyntaxTargetRecordDec(SyntaxNode syntaxNode)
+    {
+        return
+            (syntaxNode is RecordDeclarationSyntax rDeclarationSyntax) &&
+            (rDeclarationSyntax.AttributeLists.Count > 0) &&
+            rDeclarationSyntax.AttributeLists.Any(al => al.Attributes.Any(a => GeneratorAttributes._cgClassAttributes.Contains(a.Name.ToString())));
+    }
+
 
     /// <summary>
     /// Retrieves the target class declaration syntax for generation.
     /// </summary>
     /// <param name="context">The generator syntax context.</param>
     /// <returns>The class declaration syntax node.</returns>
-    public static ClassDeclarationSyntax GetTargetForGeneration(GeneratorSyntaxContext context)
+    public static ClassDeclarationSyntax GetClassTargetForGeneration(GeneratorSyntaxContext context)
     {
-        ClassDeclarationSyntax classDeclarationSyntax = (ClassDeclarationSyntax)context.Node;
-        return classDeclarationSyntax;
+        ClassDeclarationSyntax cDeclarationSyntax = (ClassDeclarationSyntax)context.Node;
+        return cDeclarationSyntax;
+    }
+
+    /// <summary>
+    /// Retrieves the target class declaration syntax for generation.
+    /// </summary>
+    /// <param name="context">The generator syntax context.</param>
+    /// <returns>The record declaration syntax node.</returns>
+    public static RecordDeclarationSyntax GetRecordTargetForGeneration(GeneratorSyntaxContext context)
+    {
+        RecordDeclarationSyntax rDeclarationSyntax = (RecordDeclarationSyntax)context.Node;
+        return rDeclarationSyntax;
     }
 
     public void Execute(Compilation compilation, ImmutableArray<ClassDeclarationSyntax> classes, SourceProductionContext context)
@@ -85,165 +133,228 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 continue;
             }
 
-            string className = symbol.Name;
-            string? classNamespace = symbol.ContainingNamespace?.ToDisplayString();
-            string? classAssembly = symbol.ContainingAssembly?.Name;
+            execute(
+                compilation,
+                model,
+                symbol,
+                classSyntax.Members,
+                context,
+                CgGenCategory.Class);
+        }
+    }
 
-            string? pkColName = null;
-            string? pkPropType = null;
-            bool pkIsIdentity = false;
+    public void Execute(Compilation compilation, ImmutableArray<RecordDeclarationSyntax> classes, SourceProductionContext context)
+    {
+        foreach (RecordDeclarationSyntax recordSyntax in classes)
+        {
+            // Converting the record to a semantic model to access much more meaningful data.
+            SemanticModel model = compilation.GetSemanticModel(recordSyntax.SyntaxTree);
 
-            List<string> createColLines = [];
-            List<string> createFKLines = [];
-            List<(string name, string readerDirective, bool isPrimaryKey, bool isIdentity)> tableColInfo = [];
+            // Parse to declared symbol, so you can access each part of code separately,
+            // such as interfaces, methods, members, contructor parameters etc.
+            ISymbol? symbol = model.GetDeclaredSymbol(recordSyntax);
 
-            foreach (MemberDeclarationSyntax member in classSyntax.Members)
+            if (symbol == null)
             {
-                // only process properties
-                if (member is not PropertyDeclarationSyntax pds)
+                continue;
+            }
+
+            execute(
+                compilation,
+                model,
+                symbol,
+                recordSyntax.Members,
+                context,
+                CgGenCategory.Record);
+        }
+    }
+
+
+    private void execute(
+        Compilation compilation,
+        SemanticModel model,
+        ISymbol symbol,
+        SyntaxList<MemberDeclarationSyntax> members,
+        SourceProductionContext context,
+        CgGenCategory genCategory)
+    {
+        string className = symbol.Name;
+        string? classNamespace = symbol.ContainingNamespace?.ToDisplayString();
+        string? classAssembly = symbol.ContainingAssembly?.Name;
+
+        string? pkColName = null;
+        string? pkPropType = null;
+        bool pkIsIdentity = false;
+
+        List<string> createColLines = [];
+        List<string> createFKLines = [];
+        List<(string name, string propType, string readerDirective, bool isPrimaryKey, bool isIdentity, bool isNullable)> tableColInfo = [];
+
+        foreach (MemberDeclarationSyntax member in members)
+        {
+            // only process properties
+            if (member is not PropertyDeclarationSyntax pds)
+            {
+                continue;
+            }
+
+            SemanticModel pModel = compilation.GetSemanticModel(pds.SyntaxTree);
+            //ISymbol? pSymbol = pModel.GetDeclaredSymbol(pds);
+
+            //if (pSymbol == null)
+            //{
+            //    continue;
+            //}
+
+            // check for ignore property
+            if (pds.AttributeLists.Any(al => al.Attributes.Any(a => a.Name.ToString() == "CgSQLiteIgnore")))
+            {
+                continue;
+            }
+
+            string propName = pds.Identifier.ToString();
+
+            TypeInfo propTypeInfo = pModel.GetTypeInfo(pds.Type);
+            string propTypeName = pds.Type.ToString();
+
+            bool nullable = propTypeName.EndsWith("?");
+            if (nullable)
+            {
+                propTypeName = propTypeName.Substring(0, propTypeName.Length - 1);
+            }
+
+            // check for primary key property
+            bool isPrimaryKey = pds.AttributeLists.Any(al => al.Attributes.Any(a => a.Name.ToString() == "CgSQLiteKey"));
+            if (isPrimaryKey)
+            {
+                pkColName = propName;
+                pkPropType = propTypeName;
+                pkIsIdentity = (propTypeName == "int" || propTypeName == "long");
+            }
+
+            // check for type nullability
+            //bool nullable = Nullable.GetUnderlyingType(member.) != null;
+            //bool nullable = new NullabilityInfoContext().Create(prop).WriteState is NullabilityState.Nullable;
+
+            // add our column line
+            createColLines.Add(
+                $"{pds.Identifier.ToString()} {getSqlType(propTypeName)}" +
+                $"{(isPrimaryKey ? getPkDirective(pkPropType) : string.Empty)}" +
+                $"{((nullable || isPrimaryKey) ? string.Empty : " NOT NULL")}");
+
+            // check for foreign key property information
+            string? foreignTable = null;
+            string? foreignColumn = null;
+            foreach (AttributeListSyntax als in pds.AttributeLists)
+            {
+                foreach (AttributeSyntax a in als.Attributes.Where(a => a.Name.ToString() == "CgSQLiteForeignKey"))
                 {
-                    continue;
-                }
-
-                SemanticModel pModel = compilation.GetSemanticModel(pds.SyntaxTree);
-                //ISymbol? pSymbol = pModel.GetDeclaredSymbol(pds);
-
-                //if (pSymbol == null)
-                //{
-                //    continue;
-                //}
-
-                // check for ignore property
-                if (pds.AttributeLists.Any(al => al.Attributes.Any(a => a.Name.ToString() == "CgSQLiteIgnore")))
-                {
-                    continue;
-                }
-
-                string propName = pds.Identifier.ToString();
-
-                TypeInfo propTypeInfo = pModel.GetTypeInfo(pds.Type);
-                string propTypeName = pds.Type.ToString();
-
-                bool nullable = propTypeName.EndsWith("?");
-                if (nullable)
-                {
-                    propTypeName = propTypeName.Substring(0, propTypeName.Length - 1);
-                }
-
-                // check for primary key property
-                bool isPrimaryKey = pds.AttributeLists.Any(al => al.Attributes.Any(a => a.Name.ToString() == "CgSQLiteKey"));
-                if (isPrimaryKey)
-                {
-                    pkColName = propName;
-                    pkPropType = propTypeName;
-                    pkIsIdentity = (propTypeName == "int" || propTypeName == "long");
-                }
-
-                // check for type nullability
-                //bool nullable = Nullable.GetUnderlyingType(member.) != null;
-                //bool nullable = new NullabilityInfoContext().Create(prop).WriteState is NullabilityState.Nullable;
-
-                // add our column line
-                createColLines.Add(
-                    $"{pds.Identifier.ToString()} {getSqlType(propTypeName)}" +
-                    $"{(isPrimaryKey ? getPkDirective(pkPropType) : string.Empty)}" +
-                    $"{((nullable || isPrimaryKey) ? string.Empty : " NOT NULL")}");
-
-                // check for foreign key property information
-                string? foreignTable = null;
-                string? foreignColumn = null;
-                foreach (AttributeListSyntax als in pds.AttributeLists)
-                {
-                    foreach (AttributeSyntax a in als.Attributes.Where(a => a.Name.ToString() == "CgSQLiteForeignKey"))
+                    foreach (AttributeArgumentSyntax arg in a.ArgumentList?.Arguments ?? [])
                     {
-                        foreach (AttributeArgumentSyntax arg in a.ArgumentList?.Arguments ?? [])
+                        if (arg.NameEquals?.Name.ToString() == "ReferenceTable")
                         {
-                            if (arg.NameEquals?.Name.ToString() == "ReferenceTable")
-                            {
-                                foreignTable = arg.Expression.ToString();
-                            }
-                            else if (arg.NameEquals?.Name.ToString() == "ReferenceColumn")
-                            {
-                                foreignColumn = arg.Expression.ToString();
-                            }
+                            foreignTable = arg.Expression.ToString();
+                        }
+                        else if (arg.NameEquals?.Name.ToString() == "ReferenceColumn")
+                        {
+                            foreignColumn = arg.Expression.ToString();
                         }
                     }
-                }
-
-                if ((foreignTable != null) && (foreignColumn != null))
-                {
-                    createFKLines.Add($"FOREIGN KEY ({pds.Identifier}) REFERENCES {foreignTable}({foreignColumn})");
-                }
-
-                // create the select retrieval pair
-                if (_sqliteReadDirectives.TryGetValue(propTypeName, out string? readFormat))
-                {
-                    tableColInfo.Add((
-                        propName,
-                        string.Format(readFormat, pds.Identifier.ToString(), "reader", tableColInfo.Count),
-                        isPrimaryKey,
-                        isPrimaryKey && (propTypeName == "int" || propTypeName == "long")
-                        ));
-                }
-                else if ((propTypeInfo.Type is ITypeSymbol its) &&
-                         (its is INamedTypeSymbol ints) &&
-                         ((ints.TypeKind == TypeKind.Enum) || (ints.TypeArguments.Any() && ints.TypeArguments[0].TypeKind == TypeKind.Enum)))
-                {
-                    // grab the enum type name
-                    string enumTypeName;
-
-                    if (ints.TypeKind == TypeKind.Enum)
-                    {
-                        if (ints.ContainingType == null)
-                        {
-                            enumTypeName = $"{ints.ContainingNamespace}.{ints.Name}";
-                        }
-                        else
-                        {
-                            enumTypeName = $"{ints.ContainingType.ContainingNamespace}.{ints.ContainingType.Name}.{ints.Name}";
-                        }
-                    }
-                    else if (ints.TypeArguments.Any())
-                    {
-                        if (ints.TypeArguments[0].ContainingType == null)
-                        {
-                            enumTypeName = $"{ints.TypeArguments[0].ContainingNamespace}.{ints.TypeArguments[0].Name}";
-                        }
-                        else
-                        {
-                            enumTypeName = $"{ints.TypeArguments[0].ContainingType.ContainingNamespace}.{ints.TypeArguments[0].ContainingType.Name}.{ints.TypeArguments[0].Name}";
-                        }
-                    }
-                    else
-                    {
-                        enumTypeName = ints.Name;
-                    }
-
-                    //// build the reader directive for the enum type
-                    //string ef = $"Enum.TryParse(reader.GetString({tableColInfo.Count}), out {propName});";
-
-                    tableColInfo.Add((
-                        propName,
-                        string.Format(_sqliteReadDirectives["enum"], pds.Identifier.ToString(), "reader", tableColInfo.Count, enumTypeName),
-                        isPrimaryKey,
-                        isPrimaryKey && (propTypeName == "int" || propTypeName == "long")
-                        ));
-                }
-                else
-                {
-                    tableColInfo.Add((
-                        pds.Identifier.ToString(),
-                        $"// ERROR: could not determine retrieval directive for type {propName}:{propTypeName}",
-                        isPrimaryKey,
-                        isPrimaryKey && (propTypeName == "int" || propTypeName == "long")
-                        ));
                 }
             }
 
+            if ((foreignTable != null) && (foreignColumn != null))
+            {
+                createFKLines.Add($"FOREIGN KEY ({pds.Identifier}) REFERENCES {foreignTable}({foreignColumn})");
+            }
 
-            context.AddSource(
-                $"{className}{"SQLite"}.g.cs",
-                SourceText.From($$$""""
+            // create the select retrieval pair
+            if (nullable && _sqliteNullableReadDirectives.TryGetValue(propTypeName, out string? readFormat))
+            {
+                tableColInfo.Add((
+                    propName,
+                    propTypeName,
+                    string.Format(readFormat, pds.Identifier.ToString(), "reader", tableColInfo.Count),
+                    isPrimaryKey,
+                    isPrimaryKey && (propTypeName == "int" || propTypeName == "long"),
+                    nullable
+                    ));
+            }
+            else if (!nullable && _sqliteReadDirectives.TryGetValue(propTypeName, out readFormat))
+            {
+                tableColInfo.Add((
+                    propName,
+                    propTypeName,
+                    string.Format(readFormat, pds.Identifier.ToString(), "reader", tableColInfo.Count),
+                    isPrimaryKey,
+                    isPrimaryKey && (propTypeName == "int" || propTypeName == "long"),
+                    nullable
+                    ));
+            }
+            else if ((propTypeInfo.Type is ITypeSymbol its) &&
+                     (its is INamedTypeSymbol ints) &&
+                     ((ints.TypeKind == TypeKind.Enum) || (ints.TypeArguments.Any() && ints.TypeArguments[0].TypeKind == TypeKind.Enum)))
+            {
+                // grab the enum type name
+                string enumTypeName;
+
+                if (ints.TypeKind == TypeKind.Enum)
+                {
+                    if (ints.ContainingType == null)
+                    {
+                        enumTypeName = $"{ints.ContainingNamespace}.{ints.Name}";
+                    }
+                    else
+                    {
+                        enumTypeName = $"{ints.ContainingType.ContainingNamespace}.{ints.ContainingType.Name}.{ints.Name}";
+                    }
+                }
+                else if (ints.TypeArguments.Any())
+                {
+                    if (ints.TypeArguments[0].ContainingType == null)
+                    {
+                        enumTypeName = $"{ints.TypeArguments[0].ContainingNamespace}.{ints.TypeArguments[0].Name}";
+                    }
+                    else
+                    {
+                        enumTypeName = $"{ints.TypeArguments[0].ContainingType.ContainingNamespace}.{ints.TypeArguments[0].ContainingType.Name}.{ints.TypeArguments[0].Name}";
+                    }
+                }
+                else
+                {
+                    enumTypeName = ints.Name;
+                }
+
+                //// build the reader directive for the enum type
+                //string ef = $"Enum.TryParse(reader.GetString({tableColInfo.Count}), out {propName});";
+
+                tableColInfo.Add((
+                    propName,
+                    propTypeName,
+                    nullable
+                        ? string.Format(_sqliteNullableReadDirectives["enum"], pds.Identifier.ToString(), "reader", tableColInfo.Count, enumTypeName)
+                        : string.Format(_sqliteReadDirectives["enum"], pds.Identifier.ToString(), "reader", tableColInfo.Count, enumTypeName),
+                    isPrimaryKey,
+                    isPrimaryKey && (propTypeName == "int" || propTypeName == "long"),
+                    nullable
+                    ));
+            }
+            else
+            {
+                tableColInfo.Add((
+                    pds.Identifier.ToString(),
+                    propTypeName,
+                    $"// ERROR: could not determine retrieval directive for type {propName}:{propTypeName}",
+                    isPrimaryKey,
+                    isPrimaryKey && (propTypeName == "int" || propTypeName == "long"),
+                    nullable
+                    ));
+            }
+        }
+
+        context.AddSource(
+            $"{className}{"SQLite"}.g.cs",
+            SourceText.From($$$""""
                     //------------------------------------------------------------------------------
                     // <auto-generated>
                     //     This code was generated by a tool.
@@ -263,15 +374,15 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 
                     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
                     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-                    public partial class {{{className}}}
+                    public partial {{{decForGenCategory(genCategory)}}} {{{className}}}
                     {
-                        public static bool CreateTable(IDbConnection dbConnection, string? name = null)
+                        public static bool CreateTable(IDbConnection dbConnection, string? dbTableName = null)
                         {
-                            name ??= "{{{className}}}";
+                            dbTableName ??= "{{{className}}}";
 
                             IDbCommand command = dbConnection.CreateCommand();
                             command.CommandText = $"""
-                                CREATE TABLE IF NOT EXISTS {name} (
+                                CREATE TABLE IF NOT EXISTS {dbTableName} (
                                     {{{string.Join(_comma_line_4, [.. createColLines, .. createFKLines])}}}
                                 )
                                 """;
@@ -281,29 +392,28 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             return true;
                         }
 
-                        public static bool DropTable(IDbConnection dbConnection, string? name = null)
+                        public static bool DropTable(IDbConnection dbConnection, string? dbTableName = null)
                         {
-                            name ??= "{{{className}}}";
+                            dbTableName ??= "{{{className}}}";
                     
                             IDbCommand command = dbConnection.CreateCommand();
-                            command.CommandText = $"DROP TABLE {name}";
+                            command.CommandText = $"DROP TABLE {dbTableName}";
                     
                             command.ExecuteNonQuery();
                     
                             return true;
                         }
                     
-                        public static {{{className}}}? SelectSingle(IDbConnection dbConnection, string? name = null, int? id = null)
+                        public static {{{className}}}? SelectSingle(IDbConnection dbConnection, string? dbTableName = null, {{{string.Join(", ", getFnFilterParams(true))}}})
                         {
-                            name ??= "{{{className}}}";
+                            dbTableName ??= "{{{className}}}";
 
                             IDbCommand command = dbConnection.CreateCommand();
-                            command.CommandText = $"SELECT {{{string.Join(", ", tableColInfo.Select(p => p.name))}}} FROM {name}";
+                            command.CommandText = $"SELECT {{{string.Join(", ", tableColInfo.Select(p => p.name))}}} FROM {dbTableName}";
 
-                            if (id != null)
-                            {
-                                command.CommandText += $" WHERE Id = {id}";
-                            }
+                            bool addedCondition = false;
+
+                            {{{string.Join(_line_2, getConditionLines(true))}}}
 
                             using (IDataReader reader = command.ExecuteReader())
                             {
@@ -318,20 +428,19 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             return null;
                         }
 
-                        public static List<{{{className}}}> SelectList(IDbConnection dbConnection, string? name = null, int? id = null)
+                        public static List<{{{className}}}> SelectList(IDbConnection dbConnection, string? dbTableName = null, {{{string.Join(", ", getFnFilterParams(true))}}})
                         {
-                            name ??= "{{{className}}}";
+                            dbTableName ??= "{{{className}}}";
 
                             List<{{{className}}}> results = new();
 
                             IDbCommand command = dbConnection.CreateCommand();
-                            command.CommandText = $"SELECT {{{string.Join(", ", tableColInfo.Select(p => p.name))}}} FROM {name}";
+                            command.CommandText = $"SELECT {{{string.Join(", ", tableColInfo.Select(p => p.name))}}} FROM {dbTableName}";
                     
-                            if (id != null)
-                            {
-                                command.CommandText += $" WHERE Id = {id}";
-                            }
-
+                            bool addedCondition = false;
+                    
+                            {{{string.Join(_line_2, getConditionLines(true))}}}
+                    
                             using (IDataReader reader = command.ExecuteReader())
                             {
                                 if (reader.Read())
@@ -345,16 +454,15 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             return results;
                         }
 
-                        public static {{{className}}} Insert(IDbConnection dbConnection, {{{className}}} value, string? name = null)
+                        public static {{{className}}} Insert(IDbConnection dbConnection, {{{className}}} value, string? dbTableName = null)
                         {
-                            name ??= "{{{className}}}";
+                            dbTableName ??= "{{{className}}}";
                             {{{getNonIdentityPkInit(pkColName, pkPropType)}}}
-
                             using (IDbTransaction transaction = dbConnection.BeginTransaction())
                             {
                                 IDbCommand command = dbConnection.CreateCommand();
                                 command.CommandText = $"""
-                                    INSERT INTO {name} (
+                                    INSERT INTO {dbTableName} (
                                         {{{string.Join(_comma_line_5, tableColInfo.Where(p => p.isIdentity == false).Select(p => p.name))}}}
                                     ) VALUES (
                                         {{{string.Join(_comma_line_5, tableColInfo.Where(p => p.isIdentity == false).Select(p => "$" + p.name))}}}
@@ -369,16 +477,16 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             return value;
                         }
 
-                        public static List<{{{className}}}> Insert(IDbConnection dbConnection, IEnumerable<{{{className}}}> values, string? name = null)
+                        public static List<{{{className}}}> Insert(IDbConnection dbConnection, IEnumerable<{{{className}}}> values, string? dbTableName = null)
                         {
-                            name ??= "{{{className}}}";
+                            dbTableName ??= "{{{className}}}";
                             List<{{{className}}}> results = new();
                             
                             using (IDbTransaction transaction = dbConnection.BeginTransaction())
                             {
                                 IDbCommand command = dbConnection.CreateCommand();
                                 command.CommandText = $"""
-                                    INSERT INTO {name} (
+                                    INSERT INTO {dbTableName} (
                                         {{{string.Join(_comma_line_5, tableColInfo.Where(p => p.isIdentity == false).Select(p => p.name))}}}
                                     ) VALUES (
                                         {{{string.Join(_comma_line_5, tableColInfo.Where(p => p.isIdentity == false).Select(p => "$" + p.name))}}}
@@ -400,15 +508,15 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             return results;
                         }
 
-                        public static {{{className}}} Update(IDbConnection dbConnection, {{{className}}} value, string? name = null)
+                        public static {{{className}}} Update(IDbConnection dbConnection, {{{className}}} value, string? dbTableName = null)
                         {
-                            name ??= "{{{className}}}";
+                            dbTableName ??= "{{{className}}}";
                     
                             using (IDbTransaction transaction = dbConnection.BeginTransaction())
                             {
                                 IDbCommand command = dbConnection.CreateCommand();
                                 command.CommandText = $"""
-                                    UPDATE {name} SET
+                                    UPDATE {dbTableName} SET
                                         {{{string.Join(_comma_line_5, tableColInfo.Where(p => p.isPrimaryKey == false).Select(p => p.name + " = $" + p.name))}}}
                                     WHERE
                                         {{{pkColName}}} = ${{{pkColName}}}
@@ -422,41 +530,41 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             return value;
                         }
 
-                        public static List<{{{className}}}> Update(IDbConnection dbConnection, List<{{{className}}}> values, string? name = null)
+                        public static List<{{{className}}}> Update(IDbConnection dbConnection, List<{{{className}}}> values, string? dbTableName = null)
                         {
-                            name ??= "{{{className}}}";
+                            dbTableName ??= "{{{className}}}";
                             
                             using (IDbTransaction transaction = dbConnection.BeginTransaction())
                             {
                                 IDbCommand command = dbConnection.CreateCommand();
                                 command.CommandText = $"""
-                                    UPDATE {name} SET
+                                    UPDATE {dbTableName} SET
                                         {{{string.Join(_comma_line_5, tableColInfo.Where(p => p.isPrimaryKey == false).Select(p => p.name + " = $" + p.name))}}}
                                     WHERE
                                         {{{pkColName}}} = ${{{pkColName}}}
                                     """;
                     
                                 {{{string.Join(
-                                    _line_3,
-                                    getInsertCommandParamLines(
-                                        false,
-                                        pkIsIdentity ? pkColName : null,
-                                        pkPropType,
-                                        createParameters: true,
-                                        includeIdentity: true))}}}
+                                _line_3,
+                                getInsertCommandParamLines(
+                                    false,
+                                    pkIsIdentity ? pkColName : null,
+                                    pkPropType,
+                                    createParameters: true,
+                                    includeIdentity: true))}}}
                     
                                 foreach ({{{className}}} value in values)
                                 {
                                     {{{string.Join(
-                                        _line_4,
-                                        getInsertCommandParamLines(
-                                            false,
-                                            pkIsIdentity ? pkColName : null,
-                                            pkPropType,
-                                            instantiateParameters: true,
-                                            executeCommand: true,
-                                            setIdentity: false,
-                                            includeIdentity: true))}}}
+                                    _line_4,
+                                    getInsertCommandParamLines(
+                                        false,
+                                        pkIsIdentity ? pkColName : null,
+                                        pkPropType,
+                                        instantiateParameters: true,
+                                        executeCommand: true,
+                                        setIdentity: false,
+                                        includeIdentity: true))}}}
                                 }
                     
                                 transaction.Commit();
@@ -465,61 +573,61 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             return values;
                         }
 
-                        public static void Delete(IDbConnection dbConnection, {{{className}}} value, string? name = null)
+                        public static void Delete(IDbConnection dbConnection, {{{className}}} value, string? dbTableName = null)
                         {
-                            name ??= "{{{className}}}";
+                            dbTableName ??= "{{{className}}}";
                     
                             using (IDbTransaction transaction = dbConnection.BeginTransaction())
                             {
                                 IDbCommand command = dbConnection.CreateCommand();
-                                command.CommandText = $"DELETE FROM {name} WHERE {{{pkColName}}} = ${{{pkColName}}}";
+                                command.CommandText = $"DELETE FROM {dbTableName} WHERE {{{pkColName}}} = ${{{pkColName}}}";
                     
                                 {{{string.Join(
-                                    _line_3,
-                                    getInsertCommandParamLines(
-                                        true,
-                                        pkIsIdentity ? pkColName : null,
-                                        pkPropType,
-                                        identityOnly: true,
-                                        setIdentity: false))}}}
+                                _line_3,
+                                getInsertCommandParamLines(
+                                    true,
+                                    pkIsIdentity ? pkColName : null,
+                                    pkPropType,
+                                    identityOnly: true,
+                                    setIdentity: false))}}}
                     
                                 transaction.Commit();
                             }
                         }
                     
-                        public static void Delete(IDbConnection dbConnection, List<{{{className}}}> values, string? name = null)
+                        public static void Delete(IDbConnection dbConnection, List<{{{className}}}> values, string? dbTableName = null)
                         {
-                            name ??= "{{{className}}}";
+                            dbTableName ??= "{{{className}}}";
                             
                             using (IDbTransaction transaction = dbConnection.BeginTransaction())
                             {
                                 IDbCommand command = dbConnection.CreateCommand();
-                                command.CommandText = $"DELETE FROM {name} WHERE {{{pkColName}}} = ${{{pkColName}}}";
+                                command.CommandText = $"DELETE FROM {dbTableName} WHERE {{{pkColName}}} = ${{{pkColName}}}";
                                         
                                 {{{string.Join(
-                                    _line_3,
-                                    getInsertCommandParamLines(
-                                        false,
-                                        pkIsIdentity ? pkColName : null,
-                                        pkPropType,
-                                        createParameters: true,
-                                        includeIdentity: true,
-                                        identityOnly: true,
-                                        setIdentity: false))}}}
+                                _line_3,
+                                getInsertCommandParamLines(
+                                    false,
+                                    pkIsIdentity ? pkColName : null,
+                                    pkPropType,
+                                    createParameters: true,
+                                    includeIdentity: true,
+                                    identityOnly: true,
+                                    setIdentity: false))}}}
                     
                                 foreach ({{{className}}} value in values)
                                 {
                                     {{{string.Join(
-                                        _line_4,
-                                        getInsertCommandParamLines(
-                                            false,
-                                            pkIsIdentity ? pkColName : null,
-                                            pkPropType,
-                                            instantiateParameters: true,
-                                            executeCommand: true,
-                                            setIdentity: false,
-                                            includeIdentity: true,
-                                            identityOnly: true))}}}
+                                    _line_4,
+                                    getInsertCommandParamLines(
+                                        false,
+                                        pkIsIdentity ? pkColName : null,
+                                        pkPropType,
+                                        instantiateParameters: true,
+                                        executeCommand: true,
+                                        setIdentity: false,
+                                        includeIdentity: true,
+                                        identityOnly: true))}}}
                                 }
                     
                                 transaction.Commit();
@@ -529,86 +637,149 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
 
                     #nullable restore
                     """"
-                , Encoding.UTF8)
-            );
+            , Encoding.UTF8)
+        );
 
-            continue;
+        return;
 
-            string getPkDirective(string? pkTypeName) => pkTypeName switch
+        string decForGenCategory(CgGenCategory genCategory) => genCategory switch
+        {
+            CgGenCategory.Class => "class",
+            CgGenCategory.Record => "record class",
+            _ => "class",
+        };
+
+        string getPkDirective(string? pkTypeName) => pkTypeName switch
+        {
+            // note that in SQLite, an INTEGER PRIMARY KEY uses the internal ROWID automatically, so no IDENTITY declaration is necessary
+            "int" => " PRIMARY KEY",            // " IDENTITY(1,1) PRIMARY KEY",
+            "long" => " PRIMARY KEY",           // " IDENTITY(1,1) PRIMARY KEY",
+            _ => " PRIMARY KEY",
+        };
+
+        string getNonIdentityPkInit(string? pkColName, string? pkTypeName) => pkTypeName switch
+        {
+            "guid" => $"value.{pkColName} = Guid.NewGuid();",
+            _ => string.Empty,
+        };
+
+        IEnumerable<string> getFnFilterParams(bool includeNullFilter)
+        {
+            foreach ((string name, string propType, string _, bool _, bool _, bool isNullable) in tableColInfo)
             {
-                // note that in SQLite, an INTEGER PRIMARY KEY uses the internal ROWID automatically, so no IDENTITY declaration is necessary
-                "int" => " PRIMARY KEY",            // " IDENTITY(1,1) PRIMARY KEY",
-                "long" => " PRIMARY KEY",           // " IDENTITY(1,1) PRIMARY KEY",
-                _ => " PRIMARY KEY",
-            };
+                yield return $"{propType}? {name} = null";
 
-            string getNonIdentityPkInit(string? pkColName, string? pkTypeName) => pkTypeName switch
-            {
-                "guid" => $"value.{pkColName} = Guid.NewGuid();",
-                _ => string.Empty,
-            };
-
-            IEnumerable<string> getInsertCommandParamLines(
-                bool singleValue,
-                string? identityColName,
-                string? identityColType,
-                bool? createParameters = null,
-                bool? instantiateParameters = null,
-                bool? executeCommand = null,
-                bool setIdentity = true,
-                bool includeIdentity = false,
-                bool identityOnly = false)
-            {
-                // if no specific type is specified, default to true
-                if ((createParameters == null) && (instantiateParameters == null) && (executeCommand == null))
+                if (isNullable)
                 {
-                    createParameters = true;
-                    instantiateParameters = true;
-                    executeCommand = true;
+                    yield return $"bool {name}IsNull = false";
+                }
+            }
+        }
+
+        IEnumerable<string> getConditionLines(bool includeNullFilter)
+        {
+            foreach ((string name, string propType, string _, bool _, bool _, bool isNullable) in tableColInfo)
+            {
+                yield return $"if ({name} != null)";
+                yield return "{";
+                yield return $"    command.CommandText += (addedCondition ? \" AND \" : \" WHERE \") + \"{name} = ${name}\";";
+                yield return "    addedCondition = true;";
+                yield return string.Empty;
+                yield return $"    IDbDataParameter {name}Param = command.CreateParameter();";
+                yield return $"    {name}Param.ParameterName = \"${name}\";";
+                yield return $"    {name}Param.Value = {name};";
+                yield return $"    command.Parameters.Add({name}Param);";
+                yield return "}";
+                yield return string.Empty;
+
+                if (includeNullFilter && isNullable)
+                {
+                    yield return $"if ({name}IsNull)";
+                    yield return "{";
+                    yield return $"    command.CommandText += (addedCondition ? \" AND \" : \" WHERE \") + \"{name} IS NULL\";";
+                    yield return "    addedCondition = true;";
+                    yield return "}";
+                    yield return string.Empty;
+                }
+            }
+        }
+
+        IEnumerable<string> getInsertCommandParamLines(
+            bool singleValue,
+            string? identityColName,
+            string? identityColType,
+            bool? createParameters = null,
+            bool? instantiateParameters = null,
+            bool? executeCommand = null,
+            bool setIdentity = true,
+            bool includeIdentity = false,
+            bool identityOnly = false)
+        {
+            // if no specific type is specified, default to true
+            if ((createParameters == null) && (instantiateParameters == null) && (executeCommand == null))
+            {
+                createParameters = true;
+                instantiateParameters = true;
+                executeCommand = true;
+            }
+
+            foreach ((string name, string _, string _, bool isPrimaryKey, bool isIdentity, bool isNullable) in tableColInfo)
+            {
+                // do not insert identity key values
+                if (isIdentity && !includeIdentity)
+                {
+                    continue;
+                }
+                else if (identityOnly && !isIdentity)
+                {
+                    continue;
                 }
 
-                foreach ((string name, string _, bool isPrimaryKey, bool isIdentity) in tableColInfo)
+                if (createParameters == true)
                 {
-                    // do not insert identity key values
-                    if (isIdentity && !includeIdentity)
-                    {
-                        continue;
-                    }
-                    else if (identityOnly && !isIdentity)
-                    {
-                        continue;
-                    }
+                    yield return $"IDbDataParameter {name}Param = command.CreateParameter();";
 
-                    if (createParameters == true)
+                    if (isNullable)
                     {
-                        yield return $"IDbDataParameter {name}Param = command.CreateParameter();";
                         yield return $"{name}Param.ParameterName = \"${name}\";";
                         yield return $"command.Parameters.Add({name}Param);";
                     }
-
-                    if (instantiateParameters == true)
+                    else
                     {
-                        yield return $"{name}Param.Value = value.{name};";
-                    }
-
-                    if (createParameters == true)
-                    {
-                        // add an empty line between parameters
-                        yield return string.Empty;
+                        yield return $"{name}Param.ParameterName = \"${name}\";";
+                        yield return $"command.Parameters.Add({name}Param);";
                     }
                 }
 
-                if (executeCommand == true)
+                if (instantiateParameters == true)
                 {
-                    if ((identityColName == null) || (!setIdentity))
+                    if (isNullable == true)
                     {
-                        yield return "command.ExecuteNonQuery();";
+                        yield return $"{name}Param.Value = (value.{name} == null) ? DBNull.Value : value.{name};";
                     }
                     else
                     {
-                        yield return "object? commandResult = command.ExecuteScalar();";
-                        yield return $"if (commandResult != null) value.{identityColName} = ({identityColType})commandResult;";
+                        yield return $"{name}Param.Value = value.{name};";
                     }
+                }
+
+                if (createParameters == true)
+                {
+                    // add an empty line between parameters
+                    yield return string.Empty;
+                }
+            }
+
+            if (executeCommand == true)
+            {
+                if ((identityColName == null) || (!setIdentity))
+                {
+                    yield return "command.ExecuteNonQuery();";
+                }
+                else
+                {
+                    yield return "object? commandResult = command.ExecuteScalar();";
+                    yield return $"if (commandResult != null) value.{identityColName} = ({identityColType})commandResult;";
                 }
             }
         }
@@ -643,6 +814,32 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
         { "ulong", "(ulong){0} = {1}.GetInt64({2})" },
         { "Uri", "{0} = new Uri({1}.GetString({2}))" },
         { "enum", "{0} = Enum.Parse<{3}>({1}.GetString({2}))" },
+    };
+
+    private static Dictionary<string, string> _sqliteNullableReadDirectives = new()
+    {
+        { "bool", "{0} = {1}.IsDBNull({2}) ? null : {1}.GetBoolean({2})" },
+        { "byte", "{0} = {1}.IsDBNull({2}) ? null : {1}.GetByte({2})" },
+        { "byte[]", "{0} = {1}.IsDBNull({2}) ? null : {1}.GetBytes({2})" },
+        { "char", "{0} = {1}.IsDBNull({2}) ? null : {1}.GetChar({2})" },
+        { "char[]", "{0} = {1}.IsDBNull({2}) ? null : {1}.GetChars({2})" },
+        { "DateTime", "{0} = {1}.IsDBNull({2}) ? null : {1}.GetDateTime({2})" },
+        { "DateTimeOffset", "{0} = {1}.IsDBNull({2}) ? null : new DateTimeOffset({1}.GetDateTime({2}))" },
+        { "Decimal", "{0} = {1}.IsDBNull({2}) ? null : {1}.GetDecimal({2})" },
+        { "double", "{0} = {1}.IsDBNull({2}) ? null : {1}.GetDouble({2})" },
+        { "float", "{0} = {1}.IsDBNull({2}) ? null : {1}.GetFloat({2})" },
+        { "Guid", "{0} = {1}.IsDBNull({2}) ? null : {1}.GetGuid({2})" },
+        { "short", "{0} = {1}.IsDBNull({2}) ? null : {1}.GetInt16({2})" },
+        { "int", "{0} = {1}.IsDBNull({2}) ? null : {1}.GetInt32({2})" },
+        { "long", "{0} = {1}.IsDBNull({2}) ? null : {1}.GetInt64({2})" },
+        { "sbyte", "(sbyte){0} = {1}.IsDBNull({2}) ? null : {1}.GetByte({2})" },
+        { "string", "{0} = {1}.IsDBNull({2}) ? null : {1}.GetString({2})" },
+        { "TimeSpan", "{0} = {1}.IsDBNull({2}) ? null : {1}.GetTimeSpan({2})" },
+        { "ushort", "(ushort){0} = {1}.IsDBNull({2}) ? null : {1}.GetInt16({2})" },
+        { "uint", "(uint){0} = {1}.IsDBNull({2}) ? null : {1}.GetInt32({2})" },
+        { "ulong", "(ulong){0} = {1}.IsDBNull({2}) ? null : {1}.GetInt64({2})" },
+        { "Uri", "{0} = {1}.IsDBNull({2}) ? null : new Uri({1}.GetString({2}))" },
+        { "enum", "{0} = {1}.IsDBNull({2}) ? null : Enum.Parse<{3}>({1}.GetString({2}))" },
     };
 
     // Mapping pulled from https://learn.microsoft.com/en-us/dotnet/standard/data/sqlite/types
