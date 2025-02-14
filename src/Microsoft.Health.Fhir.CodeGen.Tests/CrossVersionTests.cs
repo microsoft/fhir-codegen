@@ -8,7 +8,7 @@ extern alias r4b;
 
 using System.Diagnostics;
 using System.Text;
-using FluentAssertions;
+using Shouldly;
 using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Specification.Source;
@@ -73,7 +73,7 @@ public class CrossVersionTests
                 continue;
             }
 
-            fml.Should().NotBeNull();
+            fml.ShouldNotBeNull();
 
             // extract the name root
             string name;
@@ -110,7 +110,7 @@ public class CrossVersionTests
 
             //ProcessCrossVersionFml(string name, FhirStructureMap fml, Dictionary<string, List<GroupExpression>> fmlPathLookup)
         }
-        errorCount.Should().Be(0, "Should be no parsing/processing errors");
+        errorCount.ShouldBe(0, "Should be no parsing/processing errors");
     }
 
     internal IAsyncResourceResolver OnlyVersion(CrossVersionResolver resolver, string version)
@@ -191,11 +191,11 @@ public class CrossVersionTests
                 continue;
             }
 
-            fml.Should().NotBeNull();
+            fml.ShouldNotBeNull();
 
             allMaps.Add(fml);
         }
-        errorCount.Should().Be(0, "Should be no parsing/processing errors");
+        errorCount.ShouldBe(0, "Should be no parsing/processing errors");
 
         // Prepare a cache of the TYPE based map groups
         Dictionary<string, GroupDeclaration> namedGroups = new Dictionary<string, GroupDeclaration>();
@@ -415,7 +415,7 @@ public class CrossVersionTests
                 continue;
             }
 
-            fml.Should().NotBeNull();
+            fml.ShouldNotBeNull();
 
             // extract the name root
             string name;
@@ -445,7 +445,7 @@ public class CrossVersionTests
                 errorCount++;
             }
         }
-        errorCount.Should().Be(0, "Should be no parsing/processing errors");
+        errorCount.ShouldBe(0, "Should be no parsing/processing errors");
 
         // Prepare a cache of the TYPE based map groups
         Dictionary<string, GroupDeclaration> namedGroups = new Dictionary<string, GroupDeclaration>();

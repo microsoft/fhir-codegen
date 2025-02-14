@@ -27,8 +27,8 @@ namespace Microsoft.Health.Fhir.CodeGen.Models;
 
 internal static partial class DefinitionCollectionLogMessages
 {
-    [LoggerMessage(Level = LogLevel.Error, Message = "Failed to generate snapshot for {url} ({name})")]
-    internal static partial void LogSnapshotFailed(this ILogger logger, string url, string name);
+    [LoggerMessage(Level = LogLevel.Error, Message = "Failed to generate snapshot for {url} ({name}): {details}")]
+    internal static partial void LogSnapshotFailed(this ILogger logger, string url, string name, string details);
 
     [LoggerMessage(Level = LogLevel.Error, Message = "Failed to resolve bindings in {sdId} for extension {url}, definition: {bindingType}:{expression}")]
     internal static partial void LogElementBindingExtUnhandledType(this ILogger logger, string sdId, string url, string? bindingType, string expression);
@@ -186,28 +186,130 @@ public partial class DefinitionCollection
         {
             foreach (StructureDefinition sd in sds)
             {
-                if (sd.Snapshot == null)
+                try
                 {
-                    // create a new snapshot
-                    sd.Snapshot = new StructureDefinition.SnapshotComponent();
-                }
+                    if (sd.Snapshot == null)
+                    {
+                        // create a new snapshot
+                        sd.Snapshot = new StructureDefinition.SnapshotComponent();
+                    }
 
-                // a valid snapshot will always have at least the root element
-                if (sd.Snapshot.Element.Count == 0)
-                {
-                    sd.Snapshot.Element = await snapshotGenerator.GenerateAsync(sd);
-
+                    // a valid snapshot will always have at least the root element
                     if (sd.Snapshot.Element.Count == 0)
                     {
-                        success = false;
-                        Logger.LogSnapshotFailed(sd.Url, sd.Name);
-                        continue;
+                        sd.Snapshot.Element = await snapshotGenerator.GenerateAsync(sd);
+
+                        if (sd.Snapshot.Element.Count == 0)
+                        {
+                            success = false;
+                            Logger.LogSnapshotFailed(sd.Url, sd.Name, "Generation resulted in no elements.");
+                            continue;
+                        }
                     }
+
+                    // if we are in DSTU2, we need to check some of the generated snapshot properties
+                    if (FhirSequence == FhirReleases.FhirSequenceCodes.DSTU2)
+                    {
+                        // make a lookup of the differential
+                        ILookup<string, ElementDefinition> lookup = sd.Differential.Element.ToLookup(e => e.ElementId);
+
+                        foreach (ElementDefinition ed in sd.Snapshot.Element)
+                        {
+                            if (lookup.Contains(ed.ElementId))
+                            {
+                                // get the differential element
+                                ElementDefinition ded = lookup[ed.ElementId].First();
+
+                                // check for incorrect minium value
+                                if (ed.Min != ded.Min)
+                                {
+                                    ed.Min = ded.Min;
+                                }
+
+                                // check for incorrect maximum value
+                                if (ed.Max != ded.Max)
+                                {
+                                    ed.Max = ded.Max;
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    success = false;
+                    Logger.LogSnapshotFailed(sd.Url, sd.Name, ex.InnerException == null ? ex.Message : ex.Message + " - " + ex.InnerException.Message);
+                    continue;
                 }
 
                 // reprocess the elements for this structure so that we include the snapshot
                 ProcessElements(artifactClass, sd, FhirSequence);
             }
+        }
+    }
+
+    public bool TryReconcileProfileSnapshots()
+    {
+        HashSet<string> resolvedProfileUrls = [];
+
+        // iterate over the profiles
+        foreach (StructureDefinition sd in _profilesByUrl.Values)
+        {
+            if (resolvedProfileUrls.Contains(sd.Url))
+            {
+                continue;
+            }
+
+            reconcileProfile(sd);
+        }
+
+        return true;
+
+        void reconcileProfile(StructureDefinition profileSd)
+        {
+            string baseDefinition = profileSd.BaseDefinition
+                ?? profileSd.Snapshot?.Element.FirstOrDefault()?.ElementId
+                ?? profileSd.Differential?.Element.FirstOrDefault()?.ElementId
+                ?? throw new Exception($"Cannot deterime base definition for profile {profileSd.Id} ({profileSd.Url}|{profileSd.Version})");
+
+            // resolve the parent definition for this profile
+            if (!TryGetStructure(baseDefinition, out StructureDefinition? parentSd))
+            {
+                Console.WriteLine($"Failed to resolve parent ({baseDefinition}) for profile: {profileSd.Url}");
+                return;
+            }
+
+            if ((parentSd.cgArtifactClass() == FhirArtifactClassEnum.Profile) &&
+                !resolvedProfileUrls.Contains(parentSd.Url))
+            {
+                reconcileProfile(parentSd);
+            }
+
+            IEnumerable<ElementDefinition> profileElements = profileSd.cgElements();
+            ILookup<string, ElementDefinition> parentElementLookup = parentSd.cgElements().ToLookup(e => e.ElementId);
+
+            // iterate over the elements in the profile
+            foreach (ElementDefinition profileEd in profileElements)
+            {
+                // check to see if this element is in the parent
+                if (!parentElementLookup.Contains(profileEd.ElementId))
+                {
+                    continue;
+                }
+
+                // get the parent element
+                ElementDefinition parentEd = parentElementLookup[profileEd.ElementId].First();
+
+                // check for missing binding info
+                if ((profileEd.Binding != null) &&
+                    (profileEd.Binding.ValueSet == null) &&
+                    (parentEd.Binding?.ValueSet != null))
+                {
+                    profileEd.Binding.ValueSet = parentEd.Binding.ValueSet;
+                }
+            }
+
+            resolvedProfileUrls.Add(profileSd.Url);
         }
     }
 

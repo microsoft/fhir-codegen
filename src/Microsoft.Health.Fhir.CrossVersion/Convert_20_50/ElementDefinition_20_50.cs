@@ -134,6 +134,16 @@ public class ElementDefinition_20_50 : ICrossVersionProcessor<ElementDefinition>
             v.ContentReference = "#" + updated;
         }
 
+        // check for incorrect type code representations in the elements
+        if ((v.Type.Count == 1) && (v.Type[0].Code == null))
+        {
+            // check for a base type
+            if (v.Base != null && !string.IsNullOrEmpty(v.Base.Path))
+            {
+                v.Type[0].Code = v.Base.Path.Split('.')[0];
+            }
+        }
+
         // normalize type repetitions
         Normalization.ReconcileElementTypeRepetitions(v);
 

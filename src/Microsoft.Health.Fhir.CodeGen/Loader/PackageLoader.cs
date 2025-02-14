@@ -1126,7 +1126,6 @@ public partial class PackageLoader : IDisposable
             }
 
             // check for loading canonical examples
-
             if (_rootConfiguration.LoadCanonicalExamples)
             {
                 string exampleDir = Path.Combine(packageDirectory, "examples");
@@ -1195,6 +1194,12 @@ public partial class PackageLoader : IDisposable
         if (definitions != null)
         {
             _ = await definitions.TryGenerateMissingSnapshots();
+        }
+
+        // check for DSTU2 - need to reconcile profile snapshots that are missing elements
+        if (definitions?.FhirSequence == FhirReleases.FhirSequenceCodes.DSTU2)
+        {
+            _ = definitions.TryReconcileProfileSnapshots();
         }
 
         return definitions;

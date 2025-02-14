@@ -9,8 +9,7 @@ using System.IO;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using FluentAssertions;
-using FluentAssertions.Json;
+using Shouldly;
 using Microsoft.Health.Fhir.CodeGen.Language;
 using Microsoft.Health.Fhir.CodeGen.Language.Firely;
 using Microsoft.Health.Fhir.CodeGen.Language.Info;
@@ -27,7 +26,7 @@ namespace Microsoft.Health.Fhir.CodeGen.Tests;
 public class GenerationTestBase : IDisposable
 {
     /// <summary>True to write generated files.</summary>
-    internal static bool WriteGeneratedFiles = false;
+    internal static bool WriteGeneratedFiles = true;
 
     internal const string? CachePath = null;
 
@@ -123,7 +122,7 @@ public class GenerationTestBase : IDisposable
             tokenToRemove = actual.SelectToken("info.version");
             tokenToRemove?.Parent?.Remove();
 
-            actual.Should().BeEquivalentTo(expected);
+            actual.ShouldBeEquivalentTo(expected);
 
             return;
         }
@@ -171,7 +170,7 @@ public class GenerationTestBase : IDisposable
 
             if (compareLinesDirectly)
             {
-                currentLine.Should().Be(existingLine, $"Line {i} found:\n\t{currentLine}\nexpected:\n\t{existingLine}");
+                currentLine.ShouldBe(existingLine, $"Line {i} found:\n\t{currentLine}\nexpected:\n\t{existingLine}");
             }
             else
             {
@@ -182,11 +181,11 @@ public class GenerationTestBase : IDisposable
 
         if (!compareLinesDirectly)
         {
-            currentLines.Count().Should().Be(existingLines.Count(), "Line count does not match");
+            currentLines.Count().ShouldBe(existingLines.Count(), "Line count does not match");
 
             currentLines.ExceptWith(existingLines);
 
-            currentLines.Should().BeEmpty("Lines do not match:\n" + string.Join("\n", currentLines));
+            currentLines.ShouldBeEmpty("Lines do not match:\n" + string.Join("\n", currentLines));
         }
     }
 
@@ -209,13 +208,13 @@ public class GenerationTestBase : IDisposable
 
         Dictionary<string, string>? previous = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
 
-        previous.Should().NotBeNull();
+        previous.ShouldNotBeNull();
         if (previous == null)
         {
             return;
         }
 
-        previous.Count.Should().Be(current.Count);
+        previous.Count.ShouldBe(current.Count);
 
         foreach ((string currentPath, string hash) in current)
         {
@@ -225,7 +224,7 @@ public class GenerationTestBase : IDisposable
 
             _ = previous.TryGetValue(path, out string? previousHash);
 
-            hash.Should().BeEquivalentTo(previousHash, $"Hashes do not match for {path}!");
+            hash.ShouldBeEquivalentTo(previousHash, $"Hashes do not match for {path}!");
         }
     }
 }

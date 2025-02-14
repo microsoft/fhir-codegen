@@ -9,6 +9,8 @@ using Hl7.Fhir.Model;
 using Hl7.Fhir.Specification.Snapshot;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Utils;
+using static System.Net.WebRequestMethods;
+
 
 #if NETSTANDARD2_0
 using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
@@ -57,34 +59,60 @@ public class StructureDefinition_20_50 : ICrossVersionProcessor<StructureDefinit
                     {
                         Normalization.ReconcilePrimitiveType(v, primitiveInfo);
                     }
-                    // extension is really a resource, not a type
-                    else if (v.Type?.Equals("Extension", StringComparison.Ordinal) ?? false)
-                    {
-                        v.Kind = StructureDefinition.StructureDefinitionKind.Resource;
-                    }
                     else
                     {
-                        v.Kind = StructureDefinition.StructureDefinitionKind.ComplexType;
+                        resolveDataTypeKind();
 
-                        if (v.Type == null)
-                        {
-                            if (!string.IsNullOrEmpty(v.BaseDefinition))
-                            {
-                                v.Type = v.BaseDefinition.Split('/').Last();
-                            }
-                            else
-                            {
-                                v.Type = v.Id;
-                            }
-                        }
+
+                        //if (v.Type == null)
+                        //{
+                        //    if (!string.IsNullOrEmpty(v.BaseDefinition))
+                        //    {
+                        //        v.Type = v.BaseDefinition.Split('/').Last();
+                        //    }
+                        //    else if (v.Differential?.Element.FirstOrDefault()?.Path == "Extension")
+                        //    {
+                        //        v.Type = "Extension";
+                        //    }
+                        //}
+
+                        //if (v.Type?.Equals("Extension", StringComparison.Ordinal) ?? false)
+                        //{
+                        //    resolveResourceKind();
+                        //}
+                        //else
+                        //{
+                        //    resolveDataTypeKind();
+                        //}
                     }
+
+                    //// extension is really a resource, not a type
+                    //else if (v.Type?.Equals("Extension", StringComparison.Ordinal) ?? false)
+                    //{
+                    //    resolveResourceKind();
+                    //}
+                    //else
+                    //{
+                    //    resolveDataTypeKind();
+
+                    //    //if (v.Type == null)
+                    //    //{
+                    //    //    if (!string.IsNullOrEmpty(v.BaseDefinition))
+                    //    //    {
+                    //    //        v.Type = v.BaseDefinition.Split('/').Last();
+                    //    //    }
+                    //    //    else
+                    //    //    {
+                    //    //        v.Type = v.Id;
+                    //    //    }
+                    //    //}
+                    //}
                 }
                 break;
 
             case "resource":
                 {
-                    v.Kind = StructureDefinition.StructureDefinitionKind.Resource;
-                    v.Type ??= v.Id;
+                    resolveResourceKind();
                 }
                 break;
 
@@ -109,7 +137,56 @@ public class StructureDefinition_20_50 : ICrossVersionProcessor<StructureDefinit
         // ensure the root element has a base type and valid min/max values
         Normalization.VerifyRootElementType(v);
 
+        // remove snapshots - we will rebuild them from the differentials later.
+        v.Snapshot = null;
+
         return v;
+
+        void resolveDataTypeKind()
+        {
+            v.Kind = StructureDefinition.StructureDefinitionKind.ComplexType;
+
+            string? firstElementPath =
+                v.Snapshot?.Element.FirstOrDefault()?.Path
+                ?? v.Differential?.Element.FirstOrDefault()?.Path;
+
+            if ((firstElementPath == null) || (firstElementPath == v.Id))
+            {
+                // complex data types should derive from Element
+                //v.Type ??= "Element";
+                v.Type ??= v.Id;
+                //v.Derivation = StructureDefinition.TypeDerivationRule.Specialization;
+            }
+            else
+            {
+                // this is a profile
+                v.Type ??= firstElementPath;
+                v.Derivation = StructureDefinition.TypeDerivationRule.Constraint;
+                v.BaseDefinition ??= "http://hl7.org/fhir/StructureDefinition/" + firstElementPath;
+            }
+        }
+
+        void resolveResourceKind()
+        {
+            v.Kind = StructureDefinition.StructureDefinitionKind.Resource;
+
+            string? firstElementPath =
+                v.Snapshot?.Element.FirstOrDefault()?.Path
+                ?? v.Differential?.Element.FirstOrDefault()?.Path;
+
+            if ((firstElementPath == null) || (firstElementPath == v.Id))
+            {
+                v.Type ??= v.Id;
+                //v.Derivation = StructureDefinition.TypeDerivationRule.Specialization;
+            }
+            else
+            {
+                // this is a profile
+                v.Type ??= firstElementPath;
+                v.Derivation = StructureDefinition.TypeDerivationRule.Constraint;
+                v.BaseDefinition ??= "http://hl7.org/fhir/StructureDefinition/" + firstElementPath;
+            }
+        }
     }
 
 
@@ -139,6 +216,11 @@ public class StructureDefinition_20_50 : ICrossVersionProcessor<StructureDefinit
         {
             HashSet<string> allPaths = [];
 
+            bool inChoiceType = false;
+            int choiceTypeDepth = -1;
+            string choiceRoot = string.Empty;
+            ElementDefinition? choiceElement = null;
+
             // iterate over the the elements in the snapshot
             foreach (ElementDefinition ed in source)
             {
@@ -153,6 +235,44 @@ public class StructureDefinition_20_50 : ICrossVersionProcessor<StructureDefinit
 
                 // split the path into components
                 string[] edPathComponents = ed.Path.Split('.');
+
+                if (edPathComponents[^1].EndsWith("[x]", StringComparison.Ordinal))
+                {
+                    inChoiceType = true;
+                    choiceTypeDepth = edPathComponents.Length;
+                    choiceRoot = edPathComponents[^1].Substring(0, edPathComponents[^1].Length - 3);
+                    choiceElement = ed;
+                }
+                else if (inChoiceType &&
+                    edPathComponents[^1].StartsWith(choiceRoot, StringComparison.Ordinal) &&
+                    (choiceElement != null))
+                {
+                    ed.SliceName = edPathComponents[^1];
+                    ed.Path = choiceElement.Path;
+                    edPathComponents = ed.Path.Split('.');
+
+                    // check for needing to add type slicing
+                    choiceElement.Slicing ??= new();
+
+                    if (choiceElement.Slicing.Discriminator.Count == 0)
+                    {
+                        choiceElement.Slicing.Discriminator.Add(new ElementDefinition.DiscriminatorComponent()
+                        {
+                            Type = ElementDefinition.DiscriminatorType.Type,
+                            Path = "$this",
+                        });
+
+                        choiceElement.Slicing.Ordered = false;
+                        choiceElement.Slicing.Rules = ElementDefinition.SlicingRules.Open;
+                    }
+                }
+                else
+                {
+                    inChoiceType = false;
+                    choiceTypeDepth = -1;
+                    choiceRoot = string.Empty;
+                    choiceElement = null;
+                }
 
                 // determine if this is a new slice
                 bool edIsNewSlice = !string.IsNullOrEmpty(ed.SliceName);

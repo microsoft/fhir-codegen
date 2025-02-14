@@ -5,7 +5,7 @@
 
 
 using System.Text.Json;
-using FluentAssertions;
+using Shouldly;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Serialization;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
@@ -37,18 +37,18 @@ public class ParseTests
     //    // always use lenient parsing
     //    Resource parsed = parser.DeserializeResource(json);
 
-    //    parsed.Should().NotBeNull();
-    //    parsed.Should().BeOfType<ValueSet>();
+    //    parsed.ShouldNotBeNull();
+    //    parsed.ShouldBeOfType<ValueSet>();
 
     //    ValueSet vs = (ValueSet)parsed;
 
-    //    vs.Expansion.Should().NotBeNull();
-    //    vs.Expansion.Contains.Should().NotBeEmpty();
-    //    vs.Expansion.Contains.Count.Should().Be(7);
+    //    vs.Expansion.ShouldNotBeNull();
+    //    vs.Expansion.Contains.ShouldNotBeEmpty();
+    //    vs.Expansion.Contains.Count.ShouldBe(7);
 
     //    foreach (ValueSet.ContainsComponent cc in vs.Expansion.Contains)
     //    {
-    //        cc.Display.Should().StartWith(cc.Code);
+    //        cc.Display.ShouldStartWith(cc.Code);
     //    }
     //}
 
@@ -64,19 +64,19 @@ public class ParseTests
 
         Resource r = c.Convert(sn);
 
-        r.Should().NotBeNull();
-        r.Should().BeOfType<ValueSet>();
+        r.ShouldNotBeNull();
+        r.ShouldBeOfType<ValueSet>();
 
         ValueSet vs = (ValueSet)r;
 
-        vs.Id.Should().Be("nhin-purposeofuse");
-        vs.Name.Should().Be("NHIN PurposeOfUse");
-        vs.Contained.Should().NotBeEmpty();
-        vs.Contained[0].Should().BeOfType<ConceptMap>();
-        vs.Contained[0].Id.Should().Be("map");
+        vs.Id.ShouldBe("nhin-purposeofuse");
+        vs.Name.ShouldBe("NHIN PurposeOfUse");
+        vs.Contained.ShouldNotBeEmpty();
+        vs.Contained[0].ShouldBeOfType<ConceptMap>();
+        vs.Contained[0].Id.ShouldBe("map");
 
-        vs.Experimental.Should().BeFalse();
-        vs.DateElement.Should().BeEquivalentTo(new FhirDateTime(2010, 1, 29));
+        vs.Experimental.ShouldBe(false);
+        vs.DateElement.ShouldBeEquivalentTo(new FhirDateTime(2010, 1, 29));
     }
 
     [Theory]
@@ -95,12 +95,12 @@ public class ParseTests
         // always use lenient parsing
         Resource parsed = parser.DeserializeResource(json);
 
-        parsed.Should().NotBeNull();
-        parsed.Should().BeOfType<StructureDefinition>();
+        parsed.ShouldNotBeNull();
+        parsed.ShouldBeOfType<StructureDefinition>();
 
         StructureDefinition sd = (StructureDefinition)parsed;
 
-        sd.cgArtifactClass().Should().Be(FhirArtifactClassEnum.PrimitiveType);
+        sd.cgArtifactClass().ShouldBe(FhirArtifactClassEnum.PrimitiveType);
     }
 
     public (object?, FhirJsonException?) LocalPrimitiveParseHandler(

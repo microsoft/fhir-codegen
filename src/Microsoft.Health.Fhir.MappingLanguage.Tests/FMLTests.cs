@@ -6,7 +6,7 @@
 using System.ComponentModel;
 using System.IO;
 using System.Text;
-using FluentAssertions;
+using Shouldly;
 using Hl7.Fhir.Utility;
 using Microsoft.Health.Fhir.MappingLanguage.Tests.Extensions;
 using Xunit.Abstractions;
@@ -29,7 +29,7 @@ public class FMLTests
         Console.WriteLine(String.Join("\n", lines));
 
         // Now check that the actual code matches what it should be
-        lines.Should().NotBeNullOrEmpty();
+        lines.ShouldNotBeNullOrEmpty();
 
         var evs = typeof(MappingLanguage.FmlTokenTypeCodes).GetEnumValues();
         Assert.Equal(evs.Length, lines.Count);
@@ -45,7 +45,7 @@ public class FMLTests
 
         // Also test the other enum
         var rcs = typeof(MappingLanguage.FmlRuleCodes).GetEnumValues();
-        FmlMappingParser.ruleNames.Length.Should().Be(rcs.Length);
+        FmlMappingParser.ruleNames.Length.ShouldBe(rcs.Length);
         bool hasIssues = false;
         foreach (var rc in rcs)
         {
@@ -137,41 +137,41 @@ group EncounterDiagnosis(source src, target tgt) extends BackboneElement {
 
         bool success = fml.TryParse(content, out FhirStructureMap? map);
 
-        success.Should().BeTrue();
+        success.ShouldBeTrue();
         if (!success)
         {
             return;
         }
 
-        map.Should().NotBeNull();
+        map.ShouldNotBeNull();
         if (map == null)
         {
             return;
         }
 
-        map.MetadataByPath.Count.Should().Be(9);
-        map.MetadataByPath["url"].Literal!.ValueAsString.Should().Be("http://example.org/fhir/StructureDefinition/test");
-        map.MetadataByPath["id"].Literal!.ValueAsString.Should().Be("Fml4to5");
-        map.MetadataByPath["name"].Literal!.ValueAsString.Should().Be("FhirMarkup4to5");
-        map.MetadataByPath["title"].Literal!.ValueAsString.Should().Be("Test FML file to exercise core parsing");
-        map.MetadataByPath["status"].Literal!.ValueAsString.Should().Be("draft");
-        map.MetadataByPath["description"].MarkdownValue!.Should().Contain("This was challenging to code into the grammar.");
-        map.MetadataByPath["description"].MarkdownValue!.Should().Contain("It should all be working now though");
-        map.MetadataByPath["jurisdiction"].Literal.Should().BeNull();
-        map.MetadataByPath["jurisdiction.coding"].Literal.Should().BeNull();
-        map.MetadataByPath["jurisdiction.coding.code"].Literal!.ValueAsString.Should().Be("AQ");
-        //map.MetadataByPath["jurisdiction.coding.code"].InlineComment.Should().Be("set a jurisdiction code");
+        map.MetadataByPath.Count.ShouldBe(9);
+        map.MetadataByPath["url"].Literal!.ValueAsString.ShouldBe("http://example.org/fhir/StructureDefinition/test");
+        map.MetadataByPath["id"].Literal!.ValueAsString.ShouldBe("Fml4to5");
+        map.MetadataByPath["name"].Literal!.ValueAsString.ShouldBe("FhirMarkup4to5");
+        map.MetadataByPath["title"].Literal!.ValueAsString.ShouldBe("Test FML file to exercise core parsing");
+        map.MetadataByPath["status"].Literal!.ValueAsString.ShouldBe("draft");
+        map.MetadataByPath["description"].MarkdownValue!.ShouldContain("This was challenging to code into the grammar.");
+        map.MetadataByPath["description"].MarkdownValue!.ShouldContain("It should all be working now though");
+        map.MetadataByPath["jurisdiction"].Literal.ShouldBeNull();
+        map.MetadataByPath["jurisdiction.coding"].Literal.ShouldBeNull();
+        map.MetadataByPath["jurisdiction.coding.code"].Literal!.ValueAsString.ShouldBe("AQ");
+        //map.MetadataByPath["jurisdiction.coding.code"].InlineComment.ShouldBe("set a jurisdiction code");
 
 
-        //sm.Url.Should().Be("http://example.org/fhir/StructureDefinition/test");
-        //sm.Id.Should().Be("Fml4to5");
-        //sm.Name.Should().Be("FhirMarkup4to5");
-        //sm.Title.Should().Be("Test FML file to exercise core parsing");
-        //sm.Status.Should().Be(Hl7.Fhir.Model.PublicationStatus.Draft);
-        //sm.Description.Should().Be("This was challenging to code into the grammar.\nIt should all be working now though\n");
-        //sm.Jurisdiction.Count.Should().Be(1);
-        //sm.Jurisdiction[0].Coding.Count.Should().Be(1);
-        //sm.Jurisdiction[0].Coding[0].Code.Should().Be("AQ");
+        //sm.Url.ShouldBe("http://example.org/fhir/StructureDefinition/test");
+        //sm.Id.ShouldBe("Fml4to5");
+        //sm.Name.ShouldBe("FhirMarkup4to5");
+        //sm.Title.ShouldBe("Test FML file to exercise core parsing");
+        //sm.Status.ShouldBe(Hl7.Fhir.Model.PublicationStatus.Draft);
+        //sm.Description.ShouldBe("This was challenging to code into the grammar.\nIt should all be working now though\n");
+        //sm.Jurisdiction.Count.ShouldBe(1);
+        //sm.Jurisdiction[0].Coding.Count.ShouldBe(1);
+        //sm.Jurisdiction[0].Coding[0].Code.ShouldBe("AQ");
     }
 
     [Fact]
@@ -209,28 +209,28 @@ group Encounter(source src : EncounterR4, target tgt : EncounterR5) extends Doma
 
         bool success = fml.TryParse(content, out FhirStructureMap? map);
 
-        success.Should().BeTrue();
+        success.ShouldBeTrue();
         if (!success)
         {
             return;
         }
 
-        map.Should().NotBeNull();
+        map.ShouldNotBeNull();
         if (map == null)
         {
             return;
         }
 
-        map.MetadataByPath.Count.Should().Be(5);
-        //map.MetadataByPath["url"].Literal!.ValueAsString.Should().Be("http://example.org/fhir/StructureDefinition/test");
-        //map.MetadataByPath["id"].Literal!.ValueAsString.Should().Be("Fml4to5");
-        //map.MetadataByPath["name"].Literal!.ValueAsString.Should().Be("FhirMarkup4to5");
-        //map.MetadataByPath["title"].Literal!.ValueAsString.Should().Be("Test FML file to exercise core parsing");
-        //map.MetadataByPath["status"].Literal!.ValueAsString.Should().Be("draft");
-        //map.MetadataByPath["description"].MarkdownValue!.Should().Be("This was challenging to code into the grammar.\r\nIt should all be working now though");
-        //map.MetadataByPath["jurisdiction"].Literal.Should().BeNull();
-        //map.MetadataByPath["jurisdiction.coding"].Literal.Should().BeNull();
-        //map.MetadataByPath["jurisdiction.coding.code"].Literal!.ValueAsString.Should().Be("AQ");
+        map.MetadataByPath.Count.ShouldBe(5);
+        //map.MetadataByPath["url"].Literal!.ValueAsString.ShouldBe("http://example.org/fhir/StructureDefinition/test");
+        //map.MetadataByPath["id"].Literal!.ValueAsString.ShouldBe("Fml4to5");
+        //map.MetadataByPath["name"].Literal!.ValueAsString.ShouldBe("FhirMarkup4to5");
+        //map.MetadataByPath["title"].Literal!.ValueAsString.ShouldBe("Test FML file to exercise core parsing");
+        //map.MetadataByPath["status"].Literal!.ValueAsString.ShouldBe("draft");
+        //map.MetadataByPath["description"].MarkdownValue!.ShouldBe("This was challenging to code into the grammar.\r\nIt should all be working now though");
+        //map.MetadataByPath["jurisdiction"].Literal.ShouldBeNull();
+        //map.MetadataByPath["jurisdiction.coding"].Literal.ShouldBeNull();
+        //map.MetadataByPath["jurisdiction.coding.code"].Literal!.ValueAsString.ShouldBe("AQ");
     }
     //[Theory]
     //[FileData("data/Encounter4Bto5.fml")]
@@ -240,148 +240,148 @@ group Encounter(source src : EncounterR4, target tgt : EncounterR5) extends Doma
 
     //    bool success = fml.TryParse(content, out Hl7.Fhir.Model.StructureMap? sm);
 
-    //    success.Should().BeTrue();
+    //    success.ShouldBeTrue();
     //    if (!success)
     //    {
     //        return;
     //    }
 
-    //    sm.Should().NotBeNull();
+    //    sm.ShouldNotBeNull();
     //    if (sm == null)
     //    {
     //        return;
     //    }
 
-    //    sm.Url.Should().Be("http://hl7.org/fhir/uv/xver/StructureMap/Encounter4Bto5");
-    //    sm.Id.Should().Be("Encounter4Bto5");
-    //    sm.Name.Should().Be("Encounter4Bto5");
-    //    sm.Title.Should().Be("Encounter Transforms: R4B to R5");
-    //    sm.Status.Should().Be(Hl7.Fhir.Model.PublicationStatus.Active);
+    //    sm.Url.ShouldBe("http://hl7.org/fhir/uv/xver/StructureMap/Encounter4Bto5");
+    //    sm.Id.ShouldBe("Encounter4Bto5");
+    //    sm.Name.ShouldBe("Encounter4Bto5");
+    //    sm.Title.ShouldBe("Encounter Transforms: R4B to R5");
+    //    sm.Status.ShouldBe(Hl7.Fhir.Model.PublicationStatus.Active);
 
-    //    sm.Structure.Count.Should().Be(2);
-    //    sm.Structure[0].Url.Should().Be("http://hl7.org/fhir/4.3/Encounter");
-    //    sm.Structure[0].Alias.Should().Be("EncounterR4B");
-    //    sm.Structure[0].Mode.Should().Be(Hl7.Fhir.Model.StructureMap.StructureMapModelMode.Source);
-    //    sm.Structure[1].Url.Should().Be("http://hl7.org/fhir/5.0/Encounter");
-    //    sm.Structure[1].Alias.Should().Be("EncounterR5");
-    //    sm.Structure[1].Mode.Should().Be(Hl7.Fhir.Model.StructureMap.StructureMapModelMode.Target);
+    //    sm.Structure.Count.ShouldBe(2);
+    //    sm.Structure[0].Url.ShouldBe("http://hl7.org/fhir/4.3/Encounter");
+    //    sm.Structure[0].Alias.ShouldBe("EncounterR4B");
+    //    sm.Structure[0].Mode.ShouldBe(Hl7.Fhir.Model.StructureMap.StructureMapModelMode.Source);
+    //    sm.Structure[1].Url.ShouldBe("http://hl7.org/fhir/5.0/Encounter");
+    //    sm.Structure[1].Alias.ShouldBe("EncounterR5");
+    //    sm.Structure[1].Mode.ShouldBe(Hl7.Fhir.Model.StructureMap.StructureMapModelMode.Target);
 
-    //    sm.Import.Count().Should().Be(1);
-    //    sm.Import.First().Should().Be("http://hl7.org/fhir/uv/xver/StructureMap/*4Bto5");
+    //    sm.Import.Count().ShouldBe(1);
+    //    sm.Import.First().ShouldBe("http://hl7.org/fhir/uv/xver/StructureMap/*4Bto5");
 
-    //    sm.Group.Count.Should().Be(5);
+    //    sm.Group.Count.ShouldBe(5);
 
     //    Hl7.Fhir.Model.StructureMap.GroupComponent group = sm.Group[0];
-    //    group.Name.Should().Be("Encounter");
-    //    group.Input.Count.Should().Be(2);
-    //    group.Input[0].Mode.Should().Be(Hl7.Fhir.Model.StructureMap.StructureMapInputMode.Source);
-    //    group.Input[0].Name.Should().Be("src");
-    //    group.Input[0].Type.Should().Be("EncounterR4B");
-    //    group.Input[1].Mode.Should().Be(Hl7.Fhir.Model.StructureMap.StructureMapInputMode.Target);
-    //    group.Input[1].Name.Should().Be("tgt");
-    //    group.Input[1].Type.Should().Be("EncounterR5");
-    //    group.Extends.Should().Be("DomainResource");
-    //    group.TypeMode.Should().Be(Hl7.Fhir.Model.StructureMap.StructureMapGroupTypeMode.TypeAndTypes);
+    //    group.Name.ShouldBe("Encounter");
+    //    group.Input.Count.ShouldBe(2);
+    //    group.Input[0].Mode.ShouldBe(Hl7.Fhir.Model.StructureMap.StructureMapInputMode.Source);
+    //    group.Input[0].Name.ShouldBe("src");
+    //    group.Input[0].Type.ShouldBe("EncounterR4B");
+    //    group.Input[1].Mode.ShouldBe(Hl7.Fhir.Model.StructureMap.StructureMapInputMode.Target);
+    //    group.Input[1].Name.ShouldBe("tgt");
+    //    group.Input[1].Type.ShouldBe("EncounterR5");
+    //    group.Extends.ShouldBe("DomainResource");
+    //    group.TypeMode.ShouldBe(Hl7.Fhir.Model.StructureMap.StructureMapGroupTypeMode.TypeAndTypes);
 
-    //    group.Rule.Count.Should().Be(19);
+    //    group.Rule.Count.ShouldBe(19);
 
     //    Hl7.Fhir.Model.StructureMap.RuleComponent rule = group.Rule[0];
-    //    rule.Name.Should().Be("identifier");
-    //    rule.Source.Count.Should().Be(1);
-    //    rule.Source[0].Context.Should().Be("src");
-    //    rule.Source[0].Element.Should().Be("identifier");
-    //    rule.Source[0].Variable.Should().Be("vvv");
-    //    rule.Target.Count.Should().Be(1);
-    //    rule.Target[0].Context.Should().Be("tgt");
-    //    rule.Target[0].Element.Should().Be("identifier");
-    //    rule.Target[0].Variable.Should().Be("vvv");
-    //    rule.Target[0].Transform.Should().Be(Hl7.Fhir.Model.StructureMap.StructureMapTransform.Create);
+    //    rule.Name.ShouldBe("identifier");
+    //    rule.Source.Count.ShouldBe(1);
+    //    rule.Source[0].Context.ShouldBe("src");
+    //    rule.Source[0].Element.ShouldBe("identifier");
+    //    rule.Source[0].Variable.ShouldBe("vvv");
+    //    rule.Target.Count.ShouldBe(1);
+    //    rule.Target[0].Context.ShouldBe("tgt");
+    //    rule.Target[0].Element.ShouldBe("identifier");
+    //    rule.Target[0].Variable.ShouldBe("vvv");
+    //    rule.Target[0].Transform.ShouldBe(Hl7.Fhir.Model.StructureMap.StructureMapTransform.Create);
 
     //    rule = group.Rule[1];
-    //    rule.Name.Should().Be("status");
-    //    rule.Source.Count.Should().Be(1);
-    //    rule.Source[0].Context.Should().Be("src");
-    //    rule.Source[0].Element.Should().Be("status");
-    //    rule.Source[0].Variable.Should().Be("v");
-    //    rule.Target.Count.Should().Be(1);
-    //    rule.Target[0].Context.Should().Be("tgt");
-    //    rule.Target[0].Element.Should().Be("status");
-    //    rule.Target[0].Transform.Should().Be(Hl7.Fhir.Model.StructureMap.StructureMapTransform.Translate);
-    //    rule.Target[0].Parameter.Count.Should().Be(3);
-    //    rule.Target[0].Parameter[0].Value.Should().BeOfType<Hl7.Fhir.Model.Id>();
-    //    rule.Target[0].Parameter[0].Value.ToString().Should().Be("v");
-    //    rule.Target[0].Parameter[1].Value.Should().BeOfType<Hl7.Fhir.Model.FhirString>();
-    //    rule.Target[0].Parameter[1].Value.ToString().Should().Be("http://hl7.org/fhir/uv/xver/ConceptMap/enc.status-4bto5");
-    //    rule.Target[0].Parameter[2].Value.Should().BeOfType<Hl7.Fhir.Model.FhirString>();
-    //    rule.Target[0].Parameter[2].Value.ToString().Should().Be("code");
+    //    rule.Name.ShouldBe("status");
+    //    rule.Source.Count.ShouldBe(1);
+    //    rule.Source[0].Context.ShouldBe("src");
+    //    rule.Source[0].Element.ShouldBe("status");
+    //    rule.Source[0].Variable.ShouldBe("v");
+    //    rule.Target.Count.ShouldBe(1);
+    //    rule.Target[0].Context.ShouldBe("tgt");
+    //    rule.Target[0].Element.ShouldBe("status");
+    //    rule.Target[0].Transform.ShouldBe(Hl7.Fhir.Model.StructureMap.StructureMapTransform.Translate);
+    //    rule.Target[0].Parameter.Count.ShouldBe(3);
+    //    rule.Target[0].Parameter[0].Value.ShouldBeOfType<Hl7.Fhir.Model.Id>();
+    //    rule.Target[0].Parameter[0].Value.ToString().ShouldBe("v");
+    //    rule.Target[0].Parameter[1].Value.ShouldBeOfType<Hl7.Fhir.Model.FhirString>();
+    //    rule.Target[0].Parameter[1].Value.ToString().ShouldBe("http://hl7.org/fhir/uv/xver/ConceptMap/enc.status-4bto5");
+    //    rule.Target[0].Parameter[2].Value.ShouldBeOfType<Hl7.Fhir.Model.FhirString>();
+    //    rule.Target[0].Parameter[2].Value.ToString().ShouldBe("code");
 
 
     //    rule = group.Rule[2];
-    //    rule.Name.Should().Be("class");
-    //    rule.Source.Count.Should().Be(1);
-    //    rule.Source[0].Context.Should().Be("src");
-    //    rule.Source[0].Element.Should().Be("class");
-    //    rule.Source[0].Variable.Should().Be("s");
-    //    rule.Target.Count.Should().Be(2);
-    //    rule.Target[0].Context.Should().Be("tgt");
-    //    rule.Target[0].Element.Should().Be("class");
-    //    rule.Source[0].Variable.Should().Be("s");
-    //    rule.Target[0].Transform.Should().Be(Hl7.Fhir.Model.StructureMap.StructureMapTransform.Create);
-    //    rule.Target[0].Parameter.Count.Should().Be(1);
-    //    rule.Target[0].Parameter[0].Value.Should().BeOfType<Hl7.Fhir.Model.FhirString>();
-    //    rule.Target[0].Parameter[0].Value.ToString().Should().Be("CodeableConcept");
-    //    rule.Target[1].Context.Should().Be("t");
-    //    rule.Target[1].Element.Should().Be("coding");
-    //    rule.Target[1].Variable.Should().Be("tc");
+    //    rule.Name.ShouldBe("class");
+    //    rule.Source.Count.ShouldBe(1);
+    //    rule.Source[0].Context.ShouldBe("src");
+    //    rule.Source[0].Element.ShouldBe("class");
+    //    rule.Source[0].Variable.ShouldBe("s");
+    //    rule.Target.Count.ShouldBe(2);
+    //    rule.Target[0].Context.ShouldBe("tgt");
+    //    rule.Target[0].Element.ShouldBe("class");
+    //    rule.Source[0].Variable.ShouldBe("s");
+    //    rule.Target[0].Transform.ShouldBe(Hl7.Fhir.Model.StructureMap.StructureMapTransform.Create);
+    //    rule.Target[0].Parameter.Count.ShouldBe(1);
+    //    rule.Target[0].Parameter[0].Value.ShouldBeOfType<Hl7.Fhir.Model.FhirString>();
+    //    rule.Target[0].Parameter[0].Value.ToString().ShouldBe("CodeableConcept");
+    //    rule.Target[1].Context.ShouldBe("t");
+    //    rule.Target[1].Element.ShouldBe("coding");
+    //    rule.Target[1].Variable.ShouldBe("tc");
 
 
     //    group = sm.Group[1];
-    //    group.Name.Should().Be("EncounterParticipant");
-    //    group.Input.Count.Should().Be(2);
-    //    group.Input[0].Mode.Should().Be(Hl7.Fhir.Model.StructureMap.StructureMapInputMode.Source);
-    //    group.Input[0].Name.Should().Be("src");
-    //    group.Input[0].Type.Should().BeNullOrEmpty();
-    //    group.Input[1].Mode.Should().Be(Hl7.Fhir.Model.StructureMap.StructureMapInputMode.Target);
-    //    group.Input[1].Name.Should().Be("tgt");
-    //    group.Input[0].Type.Should().BeNullOrEmpty();
-    //    group.Extends.Should().Be("BackboneElement");
-    //    group.TypeMode.Should().BeNull();
+    //    group.Name.ShouldBe("EncounterParticipant");
+    //    group.Input.Count.ShouldBe(2);
+    //    group.Input[0].Mode.ShouldBe(Hl7.Fhir.Model.StructureMap.StructureMapInputMode.Source);
+    //    group.Input[0].Name.ShouldBe("src");
+    //    group.Input[0].Type.ShouldBeNullOrEmpty();
+    //    group.Input[1].Mode.ShouldBe(Hl7.Fhir.Model.StructureMap.StructureMapInputMode.Target);
+    //    group.Input[1].Name.ShouldBe("tgt");
+    //    group.Input[0].Type.ShouldBeNullOrEmpty();
+    //    group.Extends.ShouldBe("BackboneElement");
+    //    group.TypeMode.ShouldBeNull();
 
     //    group = sm.Group[2];
-    //    group.Name.Should().Be("EncounterDiagnosis");
-    //    group.Input.Count.Should().Be(2);
-    //    group.Input[0].Mode.Should().Be(Hl7.Fhir.Model.StructureMap.StructureMapInputMode.Source);
-    //    group.Input[0].Name.Should().Be("src");
-    //    group.Input[0].Type.Should().BeNullOrEmpty();
-    //    group.Input[1].Mode.Should().Be(Hl7.Fhir.Model.StructureMap.StructureMapInputMode.Target);
-    //    group.Input[1].Name.Should().Be("tgt");
-    //    group.Input[0].Type.Should().BeNullOrEmpty();
-    //    group.Extends.Should().Be("BackboneElement");
-    //    group.TypeMode.Should().BeNull();
+    //    group.Name.ShouldBe("EncounterDiagnosis");
+    //    group.Input.Count.ShouldBe(2);
+    //    group.Input[0].Mode.ShouldBe(Hl7.Fhir.Model.StructureMap.StructureMapInputMode.Source);
+    //    group.Input[0].Name.ShouldBe("src");
+    //    group.Input[0].Type.ShouldBeNullOrEmpty();
+    //    group.Input[1].Mode.ShouldBe(Hl7.Fhir.Model.StructureMap.StructureMapInputMode.Target);
+    //    group.Input[1].Name.ShouldBe("tgt");
+    //    group.Input[0].Type.ShouldBeNullOrEmpty();
+    //    group.Extends.ShouldBe("BackboneElement");
+    //    group.TypeMode.ShouldBeNull();
 
     //    group = sm.Group[3];
-    //    group.Name.Should().Be("EncounterAdmission");
-    //    group.Input.Count.Should().Be(2);
-    //    group.Input[0].Mode.Should().Be(Hl7.Fhir.Model.StructureMap.StructureMapInputMode.Source);
-    //    group.Input[0].Name.Should().Be("src");
-    //    group.Input[0].Type.Should().BeNullOrEmpty();
-    //    group.Input[1].Mode.Should().Be(Hl7.Fhir.Model.StructureMap.StructureMapInputMode.Target);
-    //    group.Input[1].Name.Should().Be("tgt");
-    //    group.Input[0].Type.Should().BeNullOrEmpty();
-    //    group.Extends.Should().Be("BackboneElement");
-    //    group.TypeMode.Should().BeNull();
+    //    group.Name.ShouldBe("EncounterAdmission");
+    //    group.Input.Count.ShouldBe(2);
+    //    group.Input[0].Mode.ShouldBe(Hl7.Fhir.Model.StructureMap.StructureMapInputMode.Source);
+    //    group.Input[0].Name.ShouldBe("src");
+    //    group.Input[0].Type.ShouldBeNullOrEmpty();
+    //    group.Input[1].Mode.ShouldBe(Hl7.Fhir.Model.StructureMap.StructureMapInputMode.Target);
+    //    group.Input[1].Name.ShouldBe("tgt");
+    //    group.Input[0].Type.ShouldBeNullOrEmpty();
+    //    group.Extends.ShouldBe("BackboneElement");
+    //    group.TypeMode.ShouldBeNull();
 
     //    group = sm.Group[4];
-    //    group.Name.Should().Be("EncounterLocation");
-    //    group.Input.Count.Should().Be(2);
-    //    group.Input[0].Mode.Should().Be(Hl7.Fhir.Model.StructureMap.StructureMapInputMode.Source);
-    //    group.Input[0].Name.Should().Be("src");
-    //    group.Input[0].Type.Should().BeNullOrEmpty();
-    //    group.Input[1].Mode.Should().Be(Hl7.Fhir.Model.StructureMap.StructureMapInputMode.Target);
-    //    group.Input[1].Name.Should().Be("tgt");
-    //    group.Input[0].Type.Should().BeNullOrEmpty();
-    //    group.Extends.Should().Be("BackboneElement");
-    //    group.TypeMode.Should().BeNull();
+    //    group.Name.ShouldBe("EncounterLocation");
+    //    group.Input.Count.ShouldBe(2);
+    //    group.Input[0].Mode.ShouldBe(Hl7.Fhir.Model.StructureMap.StructureMapInputMode.Source);
+    //    group.Input[0].Name.ShouldBe("src");
+    //    group.Input[0].Type.ShouldBeNullOrEmpty();
+    //    group.Input[1].Mode.ShouldBe(Hl7.Fhir.Model.StructureMap.StructureMapInputMode.Target);
+    //    group.Input[1].Name.ShouldBe("tgt");
+    //    group.Input[0].Type.ShouldBeNullOrEmpty();
+    //    group.Extends.ShouldBe("BackboneElement");
+    //    group.TypeMode.ShouldBeNull();
 
     //}
 
@@ -401,23 +401,23 @@ group Encounter(source src, target tgt) {
 
         bool success = fml.TryParse(content, out FhirStructureMap? map);
 
-        success.Should().BeTrue();
+        success.ShouldBeTrue();
         if (!success)
         {
             return;
         }
 
-        map.Should().NotBeNull();
+        map.ShouldNotBeNull();
         if (map == null)
         {
             return;
         }
 
-        map.GroupsByName.Count.Should().Be(1);
+        map.GroupsByName.Count.ShouldBe(1);
         List<GroupExpression> rules = map.GroupsByName.Values.First().Expressions;
-        rules.Count.Should().Be(2);
-        rules[0].MappingExpression!.Sources.First().DefaultExpression!.RawText.Should().Be("24");
-        rules[1].MappingExpression!.Sources.First().DefaultValue.Should().Be("24");
+        rules.Count.ShouldBe(2);
+        rules[0].MappingExpression!.Sources.First().DefaultExpression!.RawText.ShouldBe("24");
+        rules[1].MappingExpression!.Sources.First().DefaultValue.ShouldBe("24");
     }
 }
 public class TestWriter : TextWriter

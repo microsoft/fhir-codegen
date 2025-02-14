@@ -224,7 +224,9 @@ public static class StructureDefSlicing
         string id = $"{slicingEd.Path}:{sliceName}{relativePath}";
         string path = $"{slicingEd.Path}{relativePath}";
 
-        foreach (ElementDefinition ed in sliceElements.Where(e => e.Path == path))
+        // TODO(ginoc): tested against R2, check other versions
+        //foreach (ElementDefinition ed in sliceElements.Where(e => e.Path == path))
+        foreach (ElementDefinition ed in sliceElements.Where(e => e.ElementId == id))
         {
             foreach (ElementDefinition.TypeRefComponent et in ed.Type ?? Enumerable.Empty<ElementDefinition.TypeRefComponent>())
             {

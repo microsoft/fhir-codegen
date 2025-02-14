@@ -4,12 +4,13 @@
 // </copyright>
 
 using System.Text.Json.Nodes;
-using FluentAssertions;
+using Shouldly;
 using Microsoft.Health.Fhir.CodeGen.Loader;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using Xunit.Abstractions;
 using Xunit.Sdk;
+using Microsoft.Health.Fhir.CodeGen.Tests.Extensions;
 
 namespace Microsoft.Health.Fhir.CodeGen.Tests;
 
@@ -94,26 +95,26 @@ public class FhirPackageTestsR5 : FhirPackageTestBase
         PackageLoader loader = new(new() { FhirCacheDirectory = CachePath }, new() { JsonModel = jsonModel });
         DefinitionCollection? loaded = await loader.LoadPackages(TestCommon.EntriesR5);
 
-        loaded.Should().NotBeNull();
+        loaded.ShouldNotBeNull();
 
         if (loaded == null)
         {
             return;
         }
 
-        loaded.CodeSystemsByUrl.Should().HaveCount(_countCodeSystemsByUrl);
-        loaded.ValueSetsByVersionedUrl.Should().HaveCount(_countValueSetsByUrl);
-        loaded.PrimitiveTypesByName.Should().HaveCount(_countPrimitiveTypesByName);
-        loaded.ComplexTypesByName.Should().HaveCount(_countComplexTypesByName);
-        loaded.ResourcesByName.Should().HaveCount(_countResourcesByName);
-        loaded.LogicalModelsByUrl.Should().HaveCount(_countLogicalModelsByName);
-        loaded.ExtensionsByUrl.Should().HaveCount(_countExtensionsByUrl);
-        loaded.ProfilesByUrl.Should().HaveCount(_countProfilesByUrl);
-        loaded.SearchParametersByUrl.Should().HaveCount(_countSearchParametersByUrl);
-        loaded.OperationsByUrl.Should().HaveCount(_countOperationsByUrl);
-        loaded.CapabilityStatementsByUrl.Should().HaveCount(_countCapabilityStatementsByUrl);
-        loaded.ImplementationGuidesByUrl.Should().HaveCount(_countImplementationGuidesByUrl);
-        loaded.CompartmentsByUrl.Should().HaveCount(_countCompartmentsByUrl);
+        loaded.CodeSystemsByUrl.ShouldHaveCount(_countCodeSystemsByUrl);
+        loaded.ValueSetsByVersionedUrl.ShouldHaveCount(_countValueSetsByUrl);
+        loaded.PrimitiveTypesByName.ShouldHaveCount(_countPrimitiveTypesByName);
+        loaded.ComplexTypesByName.ShouldHaveCount(_countComplexTypesByName);
+        loaded.ResourcesByName.ShouldHaveCount(_countResourcesByName);
+        loaded.LogicalModelsByUrl.ShouldHaveCount(_countLogicalModelsByName);
+        loaded.ExtensionsByUrl.ShouldHaveCount(_countExtensionsByUrl);
+        loaded.ProfilesByUrl.ShouldHaveCount(_countProfilesByUrl);
+        loaded.SearchParametersByUrl.ShouldHaveCount(_countSearchParametersByUrl);
+        loaded.OperationsByUrl.ShouldHaveCount(_countOperationsByUrl);
+        loaded.CapabilityStatementsByUrl.ShouldHaveCount(_countCapabilityStatementsByUrl);
+        loaded.ImplementationGuidesByUrl.ShouldHaveCount(_countImplementationGuidesByUrl);
+        loaded.CompartmentsByUrl.ShouldHaveCount(_countCompartmentsByUrl);
     }
 }
 
@@ -152,26 +153,26 @@ public class FhirPackageTestsR4B : FhirPackageTestBase
         PackageLoader loader = new(new() { FhirCacheDirectory = CachePath }, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
         DefinitionCollection? loaded = await loader.LoadPackages(TestCommon.EntriesR4B);
 
-        loaded.Should().NotBeNull();
+        loaded.ShouldNotBeNull();
 
         if (loaded == null)
         {
             return;
         }
 
-        loaded.CodeSystemsByUrl.Should().HaveCount(_countCodeSystemsByUrl);
-        loaded.ValueSetsByVersionedUrl.Should().HaveCount(_countValueSetsByUrl);
-        loaded.PrimitiveTypesByName.Should().HaveCount(_countPrimitiveTypesByName);
-        loaded.ComplexTypesByName.Should().HaveCount(_countComplexTypesByName);
-        loaded.ResourcesByName.Should().HaveCount(_countResourcesByName);
-        loaded.LogicalModelsByUrl.Should().HaveCount(_countLogicalModelsByName);
-        loaded.ExtensionsByUrl.Should().HaveCount(_countExtensionsByUrl);
-        loaded.ProfilesByUrl.Should().HaveCount(_countProfilesByUrl);
-        loaded.SearchParametersByUrl.Should().HaveCount(_countSearchParametersByUrl);
-        loaded.OperationsByUrl.Should().HaveCount(_countOperationsByUrl);
-        loaded.CapabilityStatementsByUrl.Should().HaveCount(_countCapabilityStatementsByUrl);
-        loaded.ImplementationGuidesByUrl.Should().HaveCount(_countImplementationGuidesByUrl);
-        loaded.CompartmentsByUrl.Should().HaveCount(_countCompartmentsByUrl);
+        loaded.CodeSystemsByUrl.ShouldHaveCount(_countCodeSystemsByUrl);
+        loaded.ValueSetsByVersionedUrl.ShouldHaveCount(_countValueSetsByUrl);
+        loaded.PrimitiveTypesByName.ShouldHaveCount(_countPrimitiveTypesByName);
+        loaded.ComplexTypesByName.ShouldHaveCount(_countComplexTypesByName);
+        loaded.ResourcesByName.ShouldHaveCount(_countResourcesByName);
+        loaded.LogicalModelsByUrl.ShouldHaveCount(_countLogicalModelsByName);
+        loaded.ExtensionsByUrl.ShouldHaveCount(_countExtensionsByUrl);
+        loaded.ProfilesByUrl.ShouldHaveCount(_countProfilesByUrl);
+        loaded.SearchParametersByUrl.ShouldHaveCount(_countSearchParametersByUrl);
+        loaded.OperationsByUrl.ShouldHaveCount(_countOperationsByUrl);
+        loaded.CapabilityStatementsByUrl.ShouldHaveCount(_countCapabilityStatementsByUrl);
+        loaded.ImplementationGuidesByUrl.ShouldHaveCount(_countImplementationGuidesByUrl);
+        loaded.CompartmentsByUrl.ShouldHaveCount(_countCompartmentsByUrl);
     }
 }
 
@@ -210,26 +211,26 @@ public class FhirPackageTestsR4 : FhirPackageTestBase
         PackageLoader loader = new(new() { FhirCacheDirectory = CachePath }, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
         DefinitionCollection? loaded = await loader.LoadPackages(TestCommon.EntriesR4);
 
-        loaded.Should().NotBeNull();
+        loaded.ShouldNotBeNull();
 
         if (loaded == null)
         {
             return;
         }
 
-        loaded.CodeSystemsByUrl.Should().HaveCount(_countCodeSystemsByUrl);
-        loaded.ValueSetsByVersionedUrl.Should().HaveCount(_countValueSetsByUrl);
-        loaded.PrimitiveTypesByName.Should().HaveCount(_countPrimitiveTypesByName);
-        loaded.ComplexTypesByName.Should().HaveCount(_countComplexTypesByName);
-        loaded.ResourcesByName.Should().HaveCount(_countResourcesByName);
-        loaded.LogicalModelsByUrl.Should().HaveCount(_countLogicalModelsByName);
-        loaded.ExtensionsByUrl.Should().HaveCount(_countExtensionsByUrl);
-        loaded.ProfilesByUrl.Should().HaveCount(_countProfilesByUrl);
-        loaded.SearchParametersByUrl.Should().HaveCount(_countSearchParametersByUrl);
-        loaded.OperationsByUrl.Should().HaveCount(_countOperationsByUrl);
-        loaded.CapabilityStatementsByUrl.Should().HaveCount(_countCapabilityStatementsByUrl);
-        loaded.ImplementationGuidesByUrl.Should().HaveCount(_countImplementationGuidesByUrl);
-        loaded.CompartmentsByUrl.Should().HaveCount(_countCompartmentsByUrl);
+        loaded.CodeSystemsByUrl.ShouldHaveCount(_countCodeSystemsByUrl);
+        loaded.ValueSetsByVersionedUrl.ShouldHaveCount(_countValueSetsByUrl);
+        loaded.PrimitiveTypesByName.ShouldHaveCount(_countPrimitiveTypesByName);
+        loaded.ComplexTypesByName.ShouldHaveCount(_countComplexTypesByName);
+        loaded.ResourcesByName.ShouldHaveCount(_countResourcesByName);
+        loaded.LogicalModelsByUrl.ShouldHaveCount(_countLogicalModelsByName);
+        loaded.ExtensionsByUrl.ShouldHaveCount(_countExtensionsByUrl);
+        loaded.ProfilesByUrl.ShouldHaveCount(_countProfilesByUrl);
+        loaded.SearchParametersByUrl.ShouldHaveCount(_countSearchParametersByUrl);
+        loaded.OperationsByUrl.ShouldHaveCount(_countOperationsByUrl);
+        loaded.CapabilityStatementsByUrl.ShouldHaveCount(_countCapabilityStatementsByUrl);
+        loaded.ImplementationGuidesByUrl.ShouldHaveCount(_countImplementationGuidesByUrl);
+        loaded.CompartmentsByUrl.ShouldHaveCount(_countCompartmentsByUrl);
     }
 }
 
@@ -268,26 +269,26 @@ public class FhirPackageTestsR3 : FhirPackageTestBase
         PackageLoader loader = new(new() { FhirCacheDirectory = CachePath }, new() { JsonModel = LoaderOptions.JsonDeserializationModel.Default });
         DefinitionCollection? loaded = await loader.LoadPackages(TestCommon.EntriesR3);
 
-        loaded.Should().NotBeNull();
+        loaded.ShouldNotBeNull();
 
         if (loaded == null)
         {
             return;
         }
 
-        loaded.CodeSystemsByUrl.Should().HaveCount(_countCodeSystemsByUrl);
-        loaded.ValueSetsByVersionedUrl.Should().HaveCount(_countValueSetsByUrl);
-        loaded.PrimitiveTypesByName.Should().HaveCount(_countPrimitiveTypesByName);
-        loaded.ComplexTypesByName.Should().HaveCount(_countComplexTypesByName);
-        loaded.ResourcesByName.Should().HaveCount(_countResourcesByName);
-        loaded.LogicalModelsByUrl.Should().HaveCount(_countLogicalModelsByName);
-        loaded.ExtensionsByUrl.Should().HaveCount(_countExtensionsByUrl);
-        loaded.ProfilesByUrl.Should().HaveCount(_countProfilesByUrl);
-        loaded.SearchParametersByUrl.Should().HaveCount(_countSearchParametersByUrl);
-        loaded.OperationsByUrl.Should().HaveCount(_countOperationsByUrl);
-        loaded.CapabilityStatementsByUrl.Should().HaveCount(_countCapabilityStatementsByUrl);
-        loaded.ImplementationGuidesByUrl.Should().HaveCount(_countImplementationGuidesByUrl);
-        loaded.CompartmentsByUrl.Should().HaveCount(_countCompartmentsByUrl);
+        loaded.CodeSystemsByUrl.ShouldHaveCount(_countCodeSystemsByUrl);
+        loaded.ValueSetsByVersionedUrl.ShouldHaveCount(_countValueSetsByUrl);
+        loaded.PrimitiveTypesByName.ShouldHaveCount(_countPrimitiveTypesByName);
+        loaded.ComplexTypesByName.ShouldHaveCount(_countComplexTypesByName);
+        loaded.ResourcesByName.ShouldHaveCount(_countResourcesByName);
+        loaded.LogicalModelsByUrl.ShouldHaveCount(_countLogicalModelsByName);
+        loaded.ExtensionsByUrl.ShouldHaveCount(_countExtensionsByUrl);
+        loaded.ProfilesByUrl.ShouldHaveCount(_countProfilesByUrl);
+        loaded.SearchParametersByUrl.ShouldHaveCount(_countSearchParametersByUrl);
+        loaded.OperationsByUrl.ShouldHaveCount(_countOperationsByUrl);
+        loaded.CapabilityStatementsByUrl.ShouldHaveCount(_countCapabilityStatementsByUrl);
+        loaded.ImplementationGuidesByUrl.ShouldHaveCount(_countImplementationGuidesByUrl);
+        loaded.CompartmentsByUrl.ShouldHaveCount(_countCompartmentsByUrl);
     }
 }
 
@@ -327,25 +328,25 @@ public class FhirPackageTestsR2 : FhirPackageTestBase
 
         DefinitionCollection? loaded = await loader.LoadPackages(TestCommon.EntriesR2);
 
-        loaded.Should().NotBeNull();
+        loaded.ShouldNotBeNull();
 
         if (loaded == null)
         {
             return;
         }
 
-        loaded.CodeSystemsByUrl.Should().HaveCount(_countCodeSystemsByUrl);
-        loaded.ValueSetsByVersionedUrl.Should().HaveCount(_countValueSetsByUrl);
-        loaded.PrimitiveTypesByName.Should().HaveCount(_countPrimitiveTypesByName);
-        loaded.ComplexTypesByName.Should().HaveCount(_countComplexTypesByName);
-        loaded.ResourcesByName.Should().HaveCount(_countResourcesByName);
-        loaded.LogicalModelsByUrl.Should().HaveCount(_countLogicalModelsByName);
-        loaded.ExtensionsByUrl.Should().HaveCount(_countExtensionsByUrl);
-        loaded.ProfilesByUrl.Should().HaveCount(_countProfilesByUrl);
-        loaded.SearchParametersByUrl.Should().HaveCount(_countSearchParametersByUrl);
-        loaded.OperationsByUrl.Should().HaveCount(_countOperationsByUrl);
-        loaded.CapabilityStatementsByUrl.Should().HaveCount(_countCapabilityStatementsByUrl);
-        loaded.ImplementationGuidesByUrl.Should().HaveCount(_countImplementationGuidesByUrl);
-        loaded.CompartmentsByUrl.Should().HaveCount(_countCompartmentsByUrl);
+        loaded.CodeSystemsByUrl.ShouldHaveCount(_countCodeSystemsByUrl);
+        loaded.ValueSetsByVersionedUrl.ShouldHaveCount(_countValueSetsByUrl);
+        loaded.PrimitiveTypesByName.ShouldHaveCount(_countPrimitiveTypesByName);
+        loaded.ComplexTypesByName.ShouldHaveCount(_countComplexTypesByName);
+        loaded.ResourcesByName.ShouldHaveCount(_countResourcesByName);
+        loaded.LogicalModelsByUrl.ShouldHaveCount(_countLogicalModelsByName);
+        loaded.ExtensionsByUrl.ShouldHaveCount(_countExtensionsByUrl);
+        loaded.ProfilesByUrl.ShouldHaveCount(_countProfilesByUrl);
+        loaded.SearchParametersByUrl.ShouldHaveCount(_countSearchParametersByUrl);
+        loaded.OperationsByUrl.ShouldHaveCount(_countOperationsByUrl);
+        loaded.CapabilityStatementsByUrl.ShouldHaveCount(_countCapabilityStatementsByUrl);
+        loaded.ImplementationGuidesByUrl.ShouldHaveCount(_countImplementationGuidesByUrl);
+        loaded.CompartmentsByUrl.ShouldHaveCount(_countCompartmentsByUrl);
     }
 }

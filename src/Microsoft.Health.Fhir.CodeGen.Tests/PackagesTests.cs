@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FluentAssertions;
+using Shouldly;
 using Microsoft.Health.Fhir.CodeGen.Tests.Extensions;
 
 namespace Microsoft.Health.Fhir.CodeGen.Tests;
@@ -22,22 +22,22 @@ public class PackagesTests
     //{
     //    _ForPackages.IniData iniData = new(path);
 
-    //    iniData.Sections.Count.Should().Be(5);
+    //    iniData.Sections.Count.ShouldBe(5);
 
-    //    ((_ForPackages.IniData.IniSection?)iniData.Sections[0])?.Name.Should().Be("cache");
-    //    ((_ForPackages.IniData.IniSection?)iniData.Sections[1])?.Name.Should().Be("urls");
-    //    ((_ForPackages.IniData.IniSection?)iniData.Sections[2])?.Name.Should().Be("local");
-    //    ((_ForPackages.IniData.IniSection?)iniData.Sections[3])?.Name.Should().Be("packages");
-    //    ((_ForPackages.IniData.IniSection?)iniData.Sections[4])?.Name.Should().Be("package-sizes");
+    //    ((_ForPackages.IniData.IniSection?)iniData.Sections[0])?.Name.ShouldBe("cache");
+    //    ((_ForPackages.IniData.IniSection?)iniData.Sections[1])?.Name.ShouldBe("urls");
+    //    ((_ForPackages.IniData.IniSection?)iniData.Sections[2])?.Name.ShouldBe("local");
+    //    ((_ForPackages.IniData.IniSection?)iniData.Sections[3])?.Name.ShouldBe("packages");
+    //    ((_ForPackages.IniData.IniSection?)iniData.Sections[4])?.Name.ShouldBe("package-sizes");
 
-    //    iniData.Sections[0].Should().Be(iniData["cache"]);
-    //    iniData.Sections[1].Should().Be(iniData["urls"]);
-    //    iniData.Sections[2].Should().Be(iniData["local"]);
-    //    iniData.Sections[3].Should().Be(iniData["packages"]);
-    //    iniData.Sections[4].Should().Be(iniData["package-sizes"]);
+    //    iniData.Sections[0].ShouldBe(iniData["cache"]);
+    //    iniData.Sections[1].ShouldBe(iniData["urls"]);
+    //    iniData.Sections[2].ShouldBe(iniData["local"]);
+    //    iniData.Sections[3].ShouldBe(iniData["packages"]);
+    //    iniData.Sections[4].ShouldBe(iniData["package-sizes"]);
 
-    //    ((_ForPackages.IniData.IniSection?)iniData.Sections[0])?.Values.Count.Should().NotBe(0);
-    //    ((_ForPackages.IniData.IniSection?)iniData.Sections[0])?[0]!.Key.Should().Be("version");
-    //    ((_ForPackages.IniData.IniSection?)iniData.Sections[0])?[0]!.Value.Should().Be("3");
+    //    ((_ForPackages.IniData.IniSection?)iniData.Sections[0])?.Values.Count.ShouldNotBe(0);
+    //    ((_ForPackages.IniData.IniSection?)iniData.Sections[0])?[0]!.Key.ShouldBe("version");
+    //    ((_ForPackages.IniData.IniSection?)iniData.Sections[0])?[0]!.Value.ShouldBe("3");
     //}
 }
