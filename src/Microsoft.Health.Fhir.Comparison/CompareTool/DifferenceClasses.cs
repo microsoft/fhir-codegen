@@ -103,6 +103,16 @@ public class DbValueSet : DbCanonicalResource
     public required bool? HasEscapeValveCode { get; set; } = null;
     public required string? Message { get; set; } = null;
 
+    public required int BindingCountCore { get; set; } = -1;
+    public required Hl7.Fhir.Model.BindingStrength? StrongestBindingCore { get; set; } = null;
+    public required Hl7.Fhir.Model.BindingStrength? StrongestBindingCoreCode { get; set; } = null;
+    public required Hl7.Fhir.Model.BindingStrength? StrongestBindingCoreCoding { get; set; } = null;
+
+    public required int BindingCountExtended { get; set; } = -1;
+    public required Hl7.Fhir.Model.BindingStrength? StrongestBindingExtended { get; set; } = null;
+    public required Hl7.Fhir.Model.BindingStrength? StrongestBindingExtendedCode { get; set; } = null;
+    public required Hl7.Fhir.Model.BindingStrength? StrongestBindingExtendedCoding { get; set; } = null;
+
     public ICollection<DbValueSetConcept> Concepts { get; init; } = null!;
 
     public ICollection<ValueSetPairComparison> ComparisonsAsSource { get; init; } = null!;

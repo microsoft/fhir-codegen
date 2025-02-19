@@ -85,6 +85,36 @@ public class DiffDbContext : DbContext
                 v => v.HasValue ? EnumUtility.GetLiteral(v.Value) : null,
                 v => EnumUtility.ParseLiteral<Hl7.Fhir.Model.PublicationStatus>(v, true));
         modelBuilder.Entity<DbValueSet>()
+            .Property(e => e.StrongestBindingCore)
+            .HasConversion(
+                v => v.HasValue ? EnumUtility.GetLiteral(v.Value) : null,
+                v => EnumUtility.ParseLiteral<Hl7.Fhir.Model.BindingStrength>(v, true));
+        modelBuilder.Entity<DbValueSet>()
+            .Property(e => e.StrongestBindingCoreCode)
+            .HasConversion(
+                v => v.HasValue ? EnumUtility.GetLiteral(v.Value) : null,
+                v => EnumUtility.ParseLiteral<Hl7.Fhir.Model.BindingStrength>(v, true));
+        modelBuilder.Entity<DbValueSet>()
+            .Property(e => e.StrongestBindingCoreCoding)
+            .HasConversion(
+                v => v.HasValue ? EnumUtility.GetLiteral(v.Value) : null,
+                v => EnumUtility.ParseLiteral<Hl7.Fhir.Model.BindingStrength>(v, true));
+        modelBuilder.Entity<DbValueSet>()
+            .Property(e => e.StrongestBindingExtended)
+            .HasConversion(
+                v => v.HasValue ? EnumUtility.GetLiteral(v.Value) : null,
+                v => EnumUtility.ParseLiteral<Hl7.Fhir.Model.BindingStrength>(v, true));
+        modelBuilder.Entity<DbValueSet>()
+            .Property(e => e.StrongestBindingExtendedCode)
+            .HasConversion(
+                v => v.HasValue ? EnumUtility.GetLiteral(v.Value) : null,
+                v => EnumUtility.ParseLiteral<Hl7.Fhir.Model.BindingStrength>(v, true));
+        modelBuilder.Entity<DbValueSet>()
+            .Property(e => e.StrongestBindingExtendedCoding)
+            .HasConversion(
+                v => v.HasValue ? EnumUtility.GetLiteral(v.Value) : null,
+                v => EnumUtility.ParseLiteral<Hl7.Fhir.Model.BindingStrength>(v, true));
+        modelBuilder.Entity<DbValueSet>()
             .HasOne(e => e.FhirPackage);
         modelBuilder.Entity<DbValueSet>()
             .HasMany(e => e.Concepts)

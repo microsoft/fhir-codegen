@@ -222,6 +222,15 @@ public class DifferenceTracker : IDisposable
                 ? null
                 : vs?.cgHasCode(_escapeValveCodes);
 
+            IEnumerable<StructureElementCollection> coreBindings = dc.CoreBindingsForVs(versionedUrl);
+            BindingStrength? strongestBindingCore = dc.StrongestBinding(coreBindings);
+            IReadOnlyDictionary<string, BindingStrength> coreBindingStrengthByType = dc.BindingStrengthByType(coreBindings);
+
+            IEnumerable<StructureElementCollection> extendedBindings = dc.ExtendedBindingsForVs(versionedUrl);
+            BindingStrength? strongestBindingExtended = dc.StrongestBinding(extendedBindings);
+            IReadOnlyDictionary<string, BindingStrength> extendedBindingStrengthByType = dc.BindingStrengthByType(extendedBindings);
+
+
             // will not further process value sets we know we will not process
             if (_exclusionSet.Contains(unversionedUrl) ||
                 !canExpand ||
@@ -242,6 +251,14 @@ public class DifferenceTracker : IDisposable
                     CanExpand = canExpand,
                     HasEscapeValveCode = hasEscapeCode,
                     Message = expandMessage,
+                    BindingCountCore = coreBindings.Count(),
+                    StrongestBindingCore = strongestBindingCore,
+                    StrongestBindingCoreCode = coreBindingStrengthByType.TryGetValue("code", out BindingStrength ebscCode) ? ebscCode : null,
+                    StrongestBindingCoreCoding = coreBindingStrengthByType.TryGetValue("Coding", out BindingStrength ebscCoding) ? ebscCoding : null,
+                    BindingCountExtended = extendedBindings.Count(),
+                    StrongestBindingExtended = strongestBindingExtended,
+                    StrongestBindingExtendedCode = extendedBindingStrengthByType.TryGetValue("code", out BindingStrength ebseCode) ? ebseCode : null,
+                    StrongestBindingExtendedCoding = extendedBindingStrengthByType.TryGetValue("Coding", out BindingStrength ebseCoding) ? ebseCoding : null,
                 };
 
                 _db.Add(vsmExcluded);
@@ -264,6 +281,14 @@ public class DifferenceTracker : IDisposable
                 CanExpand = canExpand,
                 HasEscapeValveCode = hasEscapeCode,
                 Message = expandMessage,
+                BindingCountCore = coreBindings.Count(),
+                StrongestBindingCore = strongestBindingCore,
+                StrongestBindingCoreCode = coreBindingStrengthByType.TryGetValue("code", out BindingStrength bscCode) ? bscCode : null,
+                StrongestBindingCoreCoding = coreBindingStrengthByType.TryGetValue("Coding", out BindingStrength bscCoding) ? bscCoding : null,
+                BindingCountExtended = extendedBindings.Count(),
+                StrongestBindingExtended = strongestBindingExtended,
+                StrongestBindingExtendedCode = extendedBindingStrengthByType.TryGetValue("code", out BindingStrength bseCode) ? bseCode : null,
+                StrongestBindingExtendedCoding = extendedBindingStrengthByType.TryGetValue("Coding", out BindingStrength bseCoding) ? bseCoding : null,
             };
 
             // insert and update our local copy for the id
