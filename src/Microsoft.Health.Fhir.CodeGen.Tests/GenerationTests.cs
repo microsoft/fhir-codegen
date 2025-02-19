@@ -26,7 +26,7 @@ namespace Microsoft.Health.Fhir.CodeGen.Tests;
 public class GenerationTestBase : IDisposable
 {
     /// <summary>True to write generated files.</summary>
-    internal static bool WriteGeneratedFiles = true;
+    internal static bool WriteGeneratedFiles = false;
 
     internal const string? CachePath = null;
 

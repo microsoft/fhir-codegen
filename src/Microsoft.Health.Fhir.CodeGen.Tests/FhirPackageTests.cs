@@ -297,11 +297,11 @@ public class FhirPackageTestsR2 : FhirPackageTestBase
     private const int _countCodeSystemsByUrl = 822;     // note - there are zero in the definitions, the 822 are contained in VS resources
     private const int _countValueSetsByUrl = 1016;
     private const int _countPrimitiveTypesByName = 18;
-    private const int _countComplexTypesByName = 28;
+    private const int _countComplexTypesByName = 22;
     private const int _countResourcesByName = 96;
     private const int _countLogicalModelsByName = 0;
     private const int _countExtensionsByUrl = 285;
-    private const int _countProfilesByUrl = 107;
+    private const int _countProfilesByUrl = 113;
     private const int _countSearchParametersByUrl = 907;
     private const int _countOperationsByUrl = 18;
     private const int _countCapabilityStatementsByUrl = 5;

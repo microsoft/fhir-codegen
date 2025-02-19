@@ -22,7 +22,7 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.fhir
-        key: cache-unit-test-fhir-packages-20240909
+        key: cache-unit-test-fhir-packages-20250219
         enableCrossOsArchive: true
         lookup-only: true
 
@@ -32,6 +32,8 @@ jobs:
       continue-on-error: true
       run: |
         dotnet tool install -g firely.terminal
+        fhir config inflate off
+        fhir config regenerate off
         fhir install hl7.fhir.r2.core 1.0.2
         fhir install hl7.fhir.r2.expansions 1.0.2
         fhir install hl7.fhir.r3.core 3.0.2
@@ -50,7 +52,7 @@ jobs:
       continue-on-error: true
       with:
         path: ~/.fhir
-        key: cache-unit-test-fhir-packages-20240909
+        key: cache-unit-test-fhir-packages-20250219
         enableCrossOsArchive: true
 
   build-and-test:
@@ -71,7 +73,7 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.fhir
-        key: cache-unit-test-fhir-packages-20240909
+        key: cache-unit-test-fhir-packages-20250219
         enableCrossOsArchive: true
 
     - name: Restore, build, and test x86

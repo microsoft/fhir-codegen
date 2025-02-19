@@ -13906,7 +13906,6 @@ Profiles: 48
     @Slicing: closed: type:$this
       :valueQuantity
         - type @ Observation.value[x] only Quantity
-        - type @ Observation.value[x] only Quantity
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6, vs-2 binding name: ObservationValueAbsentReason
   - interpretation[0..*]: CodeableConcept binding name: ObservationInterpretation
   - note[0..*]: Annotation
@@ -14177,7 +14176,6 @@ Profiles: 48
   - value[x][0..1]: Quantity conditions: obs-7, vs-2
     @Slicing: closed: type:$this
       :valueQuantity
-        - type @ Observation.value[x] only Quantity
         - type @ Observation.value[x] only Quantity
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6, vs-2 binding name: ObservationValueAbsentReason
   - interpretation[0..*]: CodeableConcept binding name: ObservationInterpretation
@@ -14450,7 +14448,6 @@ Profiles: 48
     @Slicing: closed: type:$this
       :valueQuantity
         - type @ Observation.value[x] only Quantity
-        - type @ Observation.value[x] only Quantity
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6, vs-2 binding name: ObservationValueAbsentReason
   - interpretation[0..*]: CodeableConcept binding name: ObservationInterpretation
   - note[0..*]: Annotation
@@ -14722,7 +14719,6 @@ Profiles: 48
     @Slicing: closed: type:$this
       :valueQuantity
         - type @ Observation.value[x] only Quantity
-        - type @ Observation.value[x] only Quantity
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6, vs-2 binding name: ObservationValueAbsentReason
   - interpretation[0..*]: CodeableConcept binding name: ObservationInterpretation
   - note[0..*]: Annotation
@@ -14993,7 +14989,6 @@ Profiles: 48
   - value[x][0..1]: Quantity conditions: obs-7, vs-2
     @Slicing: closed: type:$this
       :valueQuantity
-        - type @ Observation.value[x] only Quantity
         - type @ Observation.value[x] only Quantity
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6, vs-2 binding name: ObservationValueAbsentReason
   - interpretation[0..*]: CodeableConcept binding name: ObservationInterpretation
@@ -15357,7 +15352,6 @@ Profiles: 48
     @Slicing: closed: type:$this
       :moduleUri
         - type @ GuidanceResponse.module[x] only uri
-        - type @ GuidanceResponse.module[x] only uri
   - status[1..1]: code binding name: GuidanceResponseStatus (W5: FiveWs.status)
     {data-requested|data-required|entered-in-error|failure|in-progress|success}
   - subject[0..1]: Reference(Group|Patient) (W5: FiveWs.subject)
@@ -15714,7 +15708,6 @@ Profiles: 48
   - value[x][0..1]: Quantity conditions: obs-7
     @Slicing: closed: type:$this
       :valueQuantity
-        - type @ Observation.value[x] only Quantity
         - type @ Observation.value[x] only Quantity
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6 binding name: ObservationValueAbsentReason
   - interpretation[0..1]: CodeableConcept binding name: ObservationInterpretation
@@ -16669,7 +16662,6 @@ Profiles: 48
   - effective[x][0..1]: dateTime (W5: FiveWs.done[x])
     @Slicing: closed: type:$this
       :effectiveDateTime
-        - type @ Observation.effective[x] only dateTime
         - type @ Observation.effective[x] only dateTime
   - issued[0..0]: instant (W5: FiveWs.recorded)
   - performer[0..*]: Reference(CareTeam|Organization|Patient|Practitioner|PractitionerRole|RelatedPerson) (W5: FiveWs.actor)
@@ -17849,7 +17841,6 @@ Profiles: 48
     @Slicing: closed: type:$this
       :valueQuantity
         - type @ Observation.value[x] only Quantity
-        - type @ Observation.value[x] only Quantity
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6 binding name: ObservationValueAbsentReason
   - interpretation[0..1]: CodeableConcept binding name: ObservationInterpretation
   - note[0..*]: Annotation
@@ -18121,7 +18112,6 @@ Profiles: 48
     @Slicing: closed: type:$this
       :valueQuantity
         - type @ Observation.value[x] only Quantity
-        - type @ Observation.value[x] only Quantity
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6, vs-2 binding name: ObservationValueAbsentReason
   - interpretation[0..*]: CodeableConcept binding name: ObservationInterpretation
   - note[0..*]: Annotation
@@ -18392,7 +18382,6 @@ Profiles: 48
   - value[x][0..1]: Quantity conditions: obs-7, vs-2
     @Slicing: closed: type:$this
       :valueQuantity
-        - type @ Observation.value[x] only Quantity
         - type @ Observation.value[x] only Quantity
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6, vs-2 binding name: ObservationValueAbsentReason
   - interpretation[0..*]: CodeableConcept binding name: ObservationInterpretation
@@ -18798,7 +18787,6 @@ Profiles: 48
   - value[x][0..1]: Quantity conditions: obs-7
     @Slicing: closed: type:$this
       :valueQuantity
-        - type @ Observation.value[x] only Quantity
         - type @ Observation.value[x] only Quantity
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6 binding name: ObservationValueAbsentReason
   - interpretation[0..1]: CodeableConcept binding name: ObservationInterpretation
@@ -19521,7 +19509,6 @@ Profiles: 48
     @Slicing: closed: type:$this
       :valueQuantity
         - type @ Observation.value[x] only Quantity
-        - type @ Observation.value[x] only Quantity
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6, vs-2 binding name: ObservationValueAbsentReason
   - interpretation[0..*]: CodeableConcept binding name: ObservationInterpretation
   - note[0..*]: Annotation
@@ -19939,7 +19926,6 @@ Profiles: 48
   - value[x][0..1]: Quantity conditions: obs-7, vs-2
     @Slicing: closed: type:$this
       :valueQuantity
-        - type @ Observation.value[x] only Quantity
         - type @ Observation.value[x] only Quantity
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6, vs-2 binding name: ObservationValueAbsentReason
   - interpretation[0..*]: CodeableConcept binding name: ObservationInterpretation
@@ -21582,7 +21568,6 @@ Profiles: 48
   - value[x][0..1]: Quantity conditions: obs-7
     @Slicing: closed: type:$this
       :valueQuantity
-        - type @ Observation.value[x] only Quantity
         - type @ Observation.value[x] only Quantity
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6 binding name: ObservationValueAbsentReason
   - interpretation[0..1]: CodeableConcept binding name: ObservationInterpretation

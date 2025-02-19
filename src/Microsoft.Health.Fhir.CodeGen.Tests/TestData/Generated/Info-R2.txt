@@ -49,7 +49,7 @@ Primitive Types: 18
 - uuid: uuid::uuid (draft)
   [urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}]
 - xhtml: xhtml::xhtml (draft)
-Complex Types: 28
+Complex Types: 22
 - Address: Element (draft) (abstract: False)
   ^address[0..*]: Element::Address
   - id[0..1]: id
@@ -66,26 +66,82 @@ Complex Types: 28
   - postalCode[0..1]: string
   - country[0..1]: string
   - period[0..1]: Period
-- Age: Quantity (draft) (abstract: False)
-  ^quantity[0..*]: Quantity::Age constraints: age-1, qty-3
-  @Slices present with no defined slicing
-  !age-1: local error: 
-  !qty-3: local error: 
-  - id[0..1]: id
-  - extension[0..*]: Extension
-  - value[0..1]: decimal
-  - comparator[0..1]: code
-    {<|<=|>|>=}
-  - unit[0..1]: string
-  - system[0..1]: uri conditions: qty-3
-  - code[0..1]: code
-  Extensions: 2
-  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty [0..1]
-    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty
-    - valueDecimal[1..1]: decimal
-  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType [0..1]
-    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType
+  Extensions: 25
+  +http://hl7.org/fhir/StructureDefinition/iso21090-AD-use [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-AD-use
     - valueCode[1..1]: code
+  +http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-additionalLocator [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-additionalLocator
+    - valueString[1..1]: string
+  +http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-buildingNumberSuffix [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-buildingNumberSuffix
+    - valueString[1..1]: string
+  +http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-careOf [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-careOf
+    - valueString[1..1]: string
+  +http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-censusTract [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-censusTract
+    - valueString[1..1]: string
+  +http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-county [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-county
+    - valueString[1..1]: string
+  +http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-delimiter [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-delimiter
+    - valueString[1..1]: string
+  +http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-deliveryAddressLine [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-deliveryAddressLine
+    - valueString[1..1]: string
+  +http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-deliveryInstallationArea [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-deliveryInstallationArea
+    - valueString[1..1]: string
+  +http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-deliveryInstallationQualifier [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-deliveryInstallationQualifier
+    - valueString[1..1]: string
+  +http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-deliveryInstallationType [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-deliveryInstallationType
+    - valueString[1..1]: string
+  +http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-deliveryMode [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-deliveryMode
+    - valueString[1..1]: string
+  +http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-deliveryModeIdentifier [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-deliveryModeIdentifier
+    - valueString[1..1]: string
+  +http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-direction [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-direction
+    - valueString[1..1]: string
+  +http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber
+    - valueString[1..1]: string
+  +http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumberNumeric [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumberNumeric
+    - valueString[1..1]: string
+  +http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-postBox [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-postBox
+    - valueString[1..1]: string
+  +http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-precinct [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-precinct
+    - valueString[1..1]: string
+  +http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetAddressLine [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetAddressLine
+    - valueString[1..1]: string
+  +http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName
+    - valueString[1..1]: string
+  +http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetNameBase [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetNameBase
+    - valueString[1..1]: string
+  +http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetNameType [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetNameType
+    - valueString[1..1]: string
+  +http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-unitID [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-unitID
+    - valueString[1..1]: string
+  +http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-unitType [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-unitType
+    - valueString[1..1]: string
+  +http://hl7.org/fhir/StructureDefinition/us-core-county [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/us-core-county
+    - valueString[1..1]: string
 - Annotation: Element (draft) (abstract: False)
   ^annotation[0..*]: Element::Annotation
   - id[0..1]: id
@@ -126,6 +182,13 @@ Complex Types: 28
   - code[0..1]: code
   - display[0..1]: string
   - userSelected[0..1]: boolean
+  Extensions: 2
+  +http://hl7.org/fhir/StructureDefinition/iso21090-CO-value [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-CO-value
+    - valueDecimal[1..1]: decimal
+  +http://hl7.org/fhir/StructureDefinition/valueset-reference [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/valueset-reference
+    - valueUri[1..1]: uri
 - ContactPoint: Element (draft) (abstract: False)
   ^contactPoint[0..*]: Element::ContactPoint constraints: cpt-2
   !cpt-2: local error: 
@@ -138,66 +201,13 @@ Complex Types: 28
     {home|mobile|old|temp|work}
   - rank[0..1]: positiveInt
   - period[0..1]: Period
-- Count: Quantity (draft) (abstract: False)
-  ^quantity[0..*]: Quantity::Count constraints: cnt-1, qty-3
-  @Slices present with no defined slicing
-  !cnt-1: local error: 
-  !qty-3: local error: 
-  - id[0..1]: id
-  - extension[0..*]: Extension
-  - value[0..1]: decimal
-  - comparator[0..1]: code
-    {<|<=|>|>=}
-  - unit[0..1]: string
-  - system[0..1]: uri conditions: qty-3
-  - code[0..1]: code
   Extensions: 2
-  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty [0..1]
-    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty
-    - valueDecimal[1..1]: decimal
-  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType [0..1]
-    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType
-    - valueCode[1..1]: code
-- Distance: Quantity (draft) (abstract: False)
-  ^quantity[0..*]: Quantity::Distance constraints: dis-1, qty-3
-  @Slices present with no defined slicing
-  !dis-1: local error: 
-  !qty-3: local error: 
-  - id[0..1]: id
-  - extension[0..*]: Extension
-  - value[0..1]: decimal
-  - comparator[0..1]: code
-    {<|<=|>|>=}
-  - unit[0..1]: string
-  - system[0..1]: uri conditions: qty-3
-  - code[0..1]: code
-  Extensions: 2
-  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty [0..1]
-    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty
-    - valueDecimal[1..1]: decimal
-  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType [0..1]
-    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType
-    - valueCode[1..1]: code
-- Duration: Quantity (draft) (abstract: False)
-  ^quantity[0..*]: Quantity::Duration constraints: drt-1, qty-3
-  @Slices present with no defined slicing
-  !drt-1: local error: 
-  !qty-3: local error: 
-  - id[0..1]: id
-  - extension[0..*]: Extension
-  - value[0..1]: decimal
-  - comparator[0..1]: code
-    {<|<=|>|>=}
-  - unit[0..1]: string
-  - system[0..1]: uri conditions: qty-3
-  - code[0..1]: code
-  Extensions: 2
-  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty [0..1]
-    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty
-    - valueDecimal[1..1]: decimal
-  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType [0..1]
-    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType
-    - valueCode[1..1]: code
+  +http://hl7.org/fhir/StructureDefinition/iso21090-TEL-address [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-TEL-address
+    - valueUri[1..1]: uri
+  +http://hl7.org/fhir/StructureDefinition/us-core-direct [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/us-core-direct
+    - valueBoolean[1..1]: boolean
 - Element: Element (draft) (abstract: True)
   ^element[0..*]: Element::Element constraints: ele-1 conditions: ele-1
   !ele-1: local error: 
@@ -323,6 +333,42 @@ Complex Types: 28
     - identity[1..1]: id
     - language[0..1]: code
     - map[1..1]: string
+  Extensions: 11
+  +http://hl7.org/fhir/StructureDefinition/elementdefinition-allowedUnits [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/elementdefinition-allowedUnits
+    - value[x][1..1]: CodeableConcept|Reference(ValueSet)
+  +http://hl7.org/fhir/StructureDefinition/elementdefinition-identifier [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/elementdefinition-identifier
+    - valueIdentifier[1..1]: Identifier
+  +http://hl7.org/fhir/StructureDefinition/elementdefinition-question [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/elementdefinition-question
+    - valueString[1..1]: string
+  +http://hl7.org/fhir/StructureDefinition/entryFormat [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/entryFormat
+    - valueString[1..1]: string
+  +http://hl7.org/fhir/StructureDefinition/maxDecimalPlaces [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/maxDecimalPlaces
+    - valueInteger[1..1]: integer
+  +http://hl7.org/fhir/StructureDefinition/maxSize [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/maxSize
+    - valueDecimal[1..1]: decimal
+  +http://hl7.org/fhir/StructureDefinition/mimeType [0..*]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/mimeType
+    - valueCode[1..1]: code
+  +http://hl7.org/fhir/StructureDefinition/minLength [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/minLength
+    - valueInteger[1..1]: integer
+  +http://hl7.org/fhir/StructureDefinition/regex [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/regex
+    - valueString[1..1]: string
+  +http://hl7.org/fhir/StructureDefinition/structuredefinition-display-hint [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/structuredefinition-display-hint
+    - valueString[1..1]: string
+  +http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name
+    - valueString[1..1]: string
+  Profiles[ElementDefinition]: 1
+    -elementdefinition-de: http://hl7.org/fhir/StructureDefinition/elementdefinition-de (DataElementConstraintOnElementDefinitionDataType)
 - Extension: Element (draft) (abstract: False)
   ^extension[0..*]: Extension::Extension
   - id[0..1]: id
@@ -377,26 +423,6 @@ Complex Types: 28
   - profile[0..*]: uri
   - security[0..*]: Coding
   - tag[0..*]: Coding
-- Money: Quantity (draft) (abstract: False)
-  ^quantity[0..*]: Quantity::Money constraints: mny-1, qty-3
-  @Slices present with no defined slicing
-  !mny-1: local error: 
-  !qty-3: local error: 
-  - id[0..1]: id
-  - extension[0..*]: Extension
-  - value[0..1]: decimal
-  - comparator[0..1]: code
-    {<|<=|>|>=}
-  - unit[0..1]: string
-  - system[0..1]: uri conditions: qty-3
-  - code[0..1]: code
-  Extensions: 2
-  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty [0..1]
-    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty
-    - valueDecimal[1..1]: decimal
-  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType [0..1]
-    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType
-    - valueCode[1..1]: code
 - Narrative: Element (draft) (abstract: False)
   ^narrative[0..*]: Element::Narrative
   !txt-1: local error: 
@@ -425,6 +451,20 @@ Complex Types: 28
   - unit[0..1]: string
   - system[0..1]: uri conditions: qty-3
   - code[0..1]: code
+  Extensions: 2
+  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty
+    - valueDecimal[1..1]: decimal
+  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType
+    - valueCode[1..1]: code
+  Profiles[Quantity]: 6
+    -Age: http://hl7.org/fhir/StructureDefinition/Age (Age)
+    -Count: http://hl7.org/fhir/StructureDefinition/Count (Count)
+    -Distance: http://hl7.org/fhir/StructureDefinition/Distance (Distance)
+    -Duration: http://hl7.org/fhir/StructureDefinition/Duration (Duration)
+    -Money: http://hl7.org/fhir/StructureDefinition/Money (Money)
+    -SimpleQuantity: http://hl7.org/fhir/StructureDefinition/SimpleQuantity (SimpleQuantity)
 - Range: Element (draft) (abstract: False)
   ^range[0..*]: Element::Range constraints: rng-2
   !rng-2: local error: 
@@ -467,26 +507,6 @@ Complex Types: 28
   - who[x][1..1]: Reference(Device|Organization|Patient|Practitioner|RelatedPerson)|uri
   - contentType[1..1]: code
   - blob[1..1]: base64Binary
-- SimpleQuantity: Quantity (draft) (abstract: False)
-  ^quantity[0..*]: Quantity::SimpleQuantity constraints: qty-3, sqty-1
-  @Slices present with no defined slicing
-  !qty-3: local error: 
-  !sqty-1: local error: 
-  - id[0..1]: id
-  - extension[0..*]: Extension
-  - value[0..1]: decimal
-  - comparator[0..0]: code
-    {<|<=|>|>=}
-  - unit[0..1]: string
-  - system[0..1]: uri conditions: qty-3
-  - code[0..1]: code
-  Extensions: 2
-  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty [0..1]
-    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty
-    - valueDecimal[1..1]: decimal
-  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType [0..1]
-    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType
-    - valueCode[1..1]: code
 - Timing: Element (draft) (abstract: False)
   ^timing[0..*]: Element::Timing
   !tim-1: local error: 
@@ -6467,7 +6487,34 @@ Resources: 96
   ?patient: patient=reference
   ?prescriber: prescriber=reference
 Interfaces: 0
-Profiles: 107
+Profiles: 113
+- Age: Quantity (abstract: False)
+  ^quantity[0..*]: Quantity::Age constraints: age-1, qty-3
+  @Slices present with no defined slicing
+  !age-1: local error: 
+  !qty-3: local error: 
+  - id[0..1]: id
+  - extension[0..*]: Extension
+  - value[0..1]: decimal
+  - comparator[0..1]: code
+    {<|<=|>|>=}
+  - unit[0..1]: string
+  - system[0..1]: uri conditions: qty-3
+  - code[0..1]: code
+  Extensions: 2
+  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty
+    - valueDecimal[1..1]: decimal
+  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType
+    - valueCode[1..1]: code
+  Profiles[Quantity]: 6
+    -Age: http://hl7.org/fhir/StructureDefinition/Age (Age)
+    -Count: http://hl7.org/fhir/StructureDefinition/Count (Count)
+    -Distance: http://hl7.org/fhir/StructureDefinition/Distance (Distance)
+    -Duration: http://hl7.org/fhir/StructureDefinition/Duration (Duration)
+    -Money: http://hl7.org/fhir/StructureDefinition/Money (Money)
+    -SimpleQuantity: http://hl7.org/fhir/StructureDefinition/SimpleQuantity (SimpleQuantity)
 - ArgonautProfileForCarePlan: (argonaut-careplan) CarePlan
   ^carePlan[0..*]: CarePlan::ArgonautProfileForCarePlan (W5: clinical.careprovision)
   @Slices present with no defined slicing
@@ -6958,6 +7005,33 @@ Profiles: 107
   ?subject: subject=reference
   Profiles[Contract]: 1
     -consentdirective: http://hl7.org/fhir/StructureDefinition/consentdirective (ConsentDirective)
+- Count: Quantity (abstract: False)
+  ^quantity[0..*]: Quantity::Count constraints: cnt-1, qty-3
+  @Slices present with no defined slicing
+  !cnt-1: local error: 
+  !qty-3: local error: 
+  - id[0..1]: id
+  - extension[0..*]: Extension
+  - value[0..1]: decimal
+  - comparator[0..1]: code
+    {<|<=|>|>=}
+  - unit[0..1]: string
+  - system[0..1]: uri conditions: qty-3
+  - code[0..1]: code
+  Extensions: 2
+  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty
+    - valueDecimal[1..1]: decimal
+  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType
+    - valueCode[1..1]: code
+  Profiles[Quantity]: 6
+    -Age: http://hl7.org/fhir/StructureDefinition/Age (Age)
+    -Count: http://hl7.org/fhir/StructureDefinition/Count (Count)
+    -Distance: http://hl7.org/fhir/StructureDefinition/Distance (Distance)
+    -Duration: http://hl7.org/fhir/StructureDefinition/Duration (Duration)
+    -Money: http://hl7.org/fhir/StructureDefinition/Money (Money)
+    -SimpleQuantity: http://hl7.org/fhir/StructureDefinition/SimpleQuantity (SimpleQuantity)
 - U.S.DataAccessFramework(DAF)AllergyIntoleranceProfile: (daf-allergyintolerance) AllergyIntolerance
   ^allergyIntolerance[0..*]: AllergyIntolerance::U.S.DataAccessFramework(DAF)AllergyIntoleranceProfile (W5: clinical.general)
   @Slices present with no defined slicing
@@ -7147,13 +7221,10 @@ Profiles: 107
         - type @ Condition.onset[x] only Period
         - type @ Condition.onset[x] only Range
         - type @ Condition.onset[x] only string
-        - type @ Condition.onset[x] only dateTime
+      :onsetQuantity
         - type @ Condition.onset[x] only Quantity
-        - type @ Condition.onset[x] only Period
-        - type @ Condition.onset[x] only Range
-        - type @ Condition.onset[x] only string
-  - onsetQuantity[0..1]: Quantity(Age) constraints: age-1, qty-3
-  - onsetDateTime[0..1]: dateTime (W5: when.init)
+      :onsetDateTime
+        - type @ Condition.onset[x] only dateTime
   - abatementBoolean[0..1]: boolean (W5: when.done)
   - stage[0..1]: BackboneElement constraints: con-1
     - id[0..1]: id
@@ -7233,7 +7304,6 @@ Profiles: 107
   - supportingInformation[0..*]: Reference(Condition|DocumentReference|Observation)
     @Slicing: open: type:$this, value:@Profile
       :DAFSupportingInformation
-        - type @ DiagnosticOrder.supportingInformation only Reference
         - type @ DiagnosticOrder.supportingInformation only Reference
   - specimen[0..*]: Reference(Specimen)
   - status[1..1]: code (W5: status)
@@ -7915,10 +7985,10 @@ Profiles: 107
       :medicationroot
         - type @ MedicationAdministration.medication[x] only CodeableConcept
         - type @ MedicationAdministration.medication[x] only Reference
+      :medicationCodeableConcept
         - type @ MedicationAdministration.medication[x] only CodeableConcept
+      :medicationReference
         - type @ MedicationAdministration.medication[x] only Reference
-  - medicationCodeableConcept[1..1]: CodeableConcept
-  - medicationReference[1..1]: Reference(daf-medication)
   - device[0..*]: Reference(Device)
   - note[0..1]: string
   - dosage[0..1]: BackboneElement constraints: mad-1
@@ -7971,10 +8041,10 @@ Profiles: 107
       :medicationroot
         - type @ MedicationDispense.medication[x] only CodeableConcept
         - type @ MedicationDispense.medication[x] only Reference
+      :medicationCodeableConcept
         - type @ MedicationDispense.medication[x] only CodeableConcept
+      :medicationReference
         - type @ MedicationDispense.medication[x] only Reference
-  - medicationCodeableConcept[1..1]: CodeableConcept
-  - medicationReference[1..1]: Reference(daf-medication)
   - whenPrepared[0..1]: dateTime
   - whenHandedOver[0..1]: dateTime
   - destination[0..1]: Reference(Location)
@@ -8135,10 +8205,10 @@ Profiles: 107
       :medicationroot
         - type @ MedicationOrder.medication[x] only CodeableConcept
         - type @ MedicationOrder.medication[x] only Reference
+      :medicationCodeableConcept
         - type @ MedicationOrder.medication[x] only CodeableConcept
+      :medicationReference
         - type @ MedicationOrder.medication[x] only Reference
-  - medicationCodeableConcept[1..1]: CodeableConcept (W5: what)
-  - medicationReference[1..1]: Reference(daf-medication) (W5: what)
   - dosageInstruction[0..*]: BackboneElement
     Extensions: 8
     +http://hl7.org/fhir/StructureDefinition/pharmacy-core-doseType [0..1]
@@ -10008,6 +10078,60 @@ Profiles: 107
     -uslab-obsquantity: http://hl7.org/fhir/StructureDefinition/uslab-obsquantity (USLaboratoryObservationProfile)
     -uslab-obsrange: http://hl7.org/fhir/StructureDefinition/uslab-obsrange (USLaboratoryObservationProfile)
     -uslab-obsratio: http://hl7.org/fhir/StructureDefinition/uslab-obsratio (USLaboratoryObservationProfile)
+- Distance: Quantity (abstract: False)
+  ^quantity[0..*]: Quantity::Distance constraints: dis-1, qty-3
+  @Slices present with no defined slicing
+  !dis-1: local error: 
+  !qty-3: local error: 
+  - id[0..1]: id
+  - extension[0..*]: Extension
+  - value[0..1]: decimal
+  - comparator[0..1]: code
+    {<|<=|>|>=}
+  - unit[0..1]: string
+  - system[0..1]: uri conditions: qty-3
+  - code[0..1]: code
+  Extensions: 2
+  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty
+    - valueDecimal[1..1]: decimal
+  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType
+    - valueCode[1..1]: code
+  Profiles[Quantity]: 6
+    -Age: http://hl7.org/fhir/StructureDefinition/Age (Age)
+    -Count: http://hl7.org/fhir/StructureDefinition/Count (Count)
+    -Distance: http://hl7.org/fhir/StructureDefinition/Distance (Distance)
+    -Duration: http://hl7.org/fhir/StructureDefinition/Duration (Duration)
+    -Money: http://hl7.org/fhir/StructureDefinition/Money (Money)
+    -SimpleQuantity: http://hl7.org/fhir/StructureDefinition/SimpleQuantity (SimpleQuantity)
+- Duration: Quantity (abstract: False)
+  ^quantity[0..*]: Quantity::Duration constraints: drt-1, qty-3
+  @Slices present with no defined slicing
+  !drt-1: local error: 
+  !qty-3: local error: 
+  - id[0..1]: id
+  - extension[0..*]: Extension
+  - value[0..1]: decimal
+  - comparator[0..1]: code
+    {<|<=|>|>=}
+  - unit[0..1]: string
+  - system[0..1]: uri conditions: qty-3
+  - code[0..1]: code
+  Extensions: 2
+  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty
+    - valueDecimal[1..1]: decimal
+  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType
+    - valueCode[1..1]: code
+  Profiles[Quantity]: 6
+    -Age: http://hl7.org/fhir/StructureDefinition/Age (Age)
+    -Count: http://hl7.org/fhir/StructureDefinition/Count (Count)
+    -Distance: http://hl7.org/fhir/StructureDefinition/Distance (Distance)
+    -Duration: http://hl7.org/fhir/StructureDefinition/Duration (Duration)
+    -Money: http://hl7.org/fhir/StructureDefinition/Money (Money)
+    -SimpleQuantity: http://hl7.org/fhir/StructureDefinition/SimpleQuantity (SimpleQuantity)
 - EHRSFMRecordLifecycleEvent-AuditEvent: (ehrsrle-auditevent) AuditEvent
   ^auditEvent[0..*]: AuditEvent::EHRSFMRecordLifecycleEvent-AuditEvent (W5: infrastructure.information)
   @Slices present with no defined slicing
@@ -11235,6 +11359,33 @@ Profiles: 107
   Profiles[Composition]: 2
     -clinicaldocument: http://hl7.org/fhir/StructureDefinition/clinicaldocument (ClinicalDocumentProfileForComposition)
     -measurereport: http://hl7.org/fhir/StructureDefinition/measurereport (ProfileForMeasureReports)
+- Money: Quantity (abstract: False)
+  ^quantity[0..*]: Quantity::Money constraints: mny-1, qty-3
+  @Slices present with no defined slicing
+  !mny-1: local error: 
+  !qty-3: local error: 
+  - id[0..1]: id
+  - extension[0..*]: Extension
+  - value[0..1]: decimal
+  - comparator[0..1]: code
+    {<|<=|>|>=}
+  - unit[0..1]: string
+  - system[0..1]: uri conditions: qty-3
+  - code[0..1]: code
+  Extensions: 2
+  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty
+    - valueDecimal[1..1]: decimal
+  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType
+    - valueCode[1..1]: code
+  Profiles[Quantity]: 6
+    -Age: http://hl7.org/fhir/StructureDefinition/Age (Age)
+    -Count: http://hl7.org/fhir/StructureDefinition/Count (Count)
+    -Distance: http://hl7.org/fhir/StructureDefinition/Distance (Distance)
+    -Duration: http://hl7.org/fhir/StructureDefinition/Duration (Duration)
+    -Money: http://hl7.org/fhir/StructureDefinition/Money (Money)
+    -SimpleQuantity: http://hl7.org/fhir/StructureDefinition/SimpleQuantity (SimpleQuantity)
 - QICore-AdverseEvent: (qicore-adverseevent) Basic
   ^basic[0..*]: Basic::QICore-AdverseEvent (W5: infrastructure.structure)
   @Slices present with no defined slicing
@@ -15375,6 +15526,33 @@ Profiles: 107
     -sdc-valueset: http://hl7.org/fhir/StructureDefinition/sdc-valueset (StructuredDataCaptureValueSet)
     -sdcde-valueset: http://hl7.org/fhir/StructureDefinition/sdcde-valueset (StructuredDataCaptureDataElementExchangeValueSet)
     -shareablevalueset: http://hl7.org/fhir/StructureDefinition/shareablevalueset (ShareableValueSet)
+- SimpleQuantity: Quantity (abstract: False)
+  ^quantity[0..*]: Quantity::SimpleQuantity constraints: qty-3, sqty-1
+  @Slices present with no defined slicing
+  !qty-3: local error: 
+  !sqty-1: local error: 
+  - id[0..1]: id
+  - extension[0..*]: Extension
+  - value[0..1]: decimal
+  - comparator[0..0]: code
+    {<|<=|>|>=}
+  - unit[0..1]: string
+  - system[0..1]: uri conditions: qty-3
+  - code[0..1]: code
+  Extensions: 2
+  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty
+    - valueDecimal[1..1]: decimal
+  +http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType [0..1]
+    - url[1..1]: fixed to http://hl7.org/fhir/StructureDefinition/iso21090-uncertaintyType
+    - valueCode[1..1]: code
+  Profiles[Quantity]: 6
+    -Age: http://hl7.org/fhir/StructureDefinition/Age (Age)
+    -Count: http://hl7.org/fhir/StructureDefinition/Count (Count)
+    -Distance: http://hl7.org/fhir/StructureDefinition/Distance (Distance)
+    -Duration: http://hl7.org/fhir/StructureDefinition/Duration (Duration)
+    -Money: http://hl7.org/fhir/StructureDefinition/Money (Money)
+    -SimpleQuantity: http://hl7.org/fhir/StructureDefinition/SimpleQuantity (SimpleQuantity)
 - ExampleLipidProfile: (triglyceride) Observation
   ^observation[1..1]: Observation::ExampleLipidProfile constraints: obs-6, obs-7 (W5: clinical.diagnostics)
   @Slices present with no defined slicing
@@ -15806,7 +15984,6 @@ Profiles: 107
   - supportingInformation[0..*]: Reference(Condition|DocumentReference|Observation)
     @Slicing: open: type:$this, value:@Profile
       :USLabSupportingInformation
-        - type @ DiagnosticOrder.supportingInformation only Reference
         - type @ DiagnosticOrder.supportingInformation only Reference
   - specimen[0..*]: Reference(uslab-spec)
   - status[1..1]: code (W5: status)
@@ -19661,7 +19838,7 @@ Value Sets: 1016
   extensions/profiles (2 structures, 2 elements): strongest binding: preferred, refs: daf-allergyintolerance(Profile) [AllergyIntolerance.reaction.manifestation], qicore-allergyintolerance(Profile) [AllergyIntolerance.reaction.manifestation]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/daf-medication-codes|1.0.2 (Medication Clinical Drug (RxNorm))
-  extensions/profiles (9 structures, 9 elements): strongest binding: extensible, refs: daf-medication(Profile) [Medication.code], daf-medicationadministration(Profile) [MedicationAdministration.medicationCodeableConcept], daf-medicationdispense(Profile) [MedicationDispense.medicationCodeableConcept], daf-medicationorder(Profile) [MedicationOrder.medicationCodeableConcept], qicore-medication(Profile) [Medication.code], qicore-medicationadministration(Profile) [MedicationAdministration.medication[x]], qicore-medicationdispense(Profile) [MedicationDispense.medication[x]], qicore-medicationorder(Profile) [MedicationOrder.medication[x]], qicore-medicationstatement(Profile) [MedicationStatement.medication[x]]
+  extensions/profiles (9 structures, 9 elements): strongest binding: extensible, refs: daf-medication(Profile) [Medication.code], daf-medicationadministration(Profile) [MedicationAdministration.medication[x]], daf-medicationdispense(Profile) [MedicationDispense.medication[x]], daf-medicationorder(Profile) [MedicationOrder.medication[x]], qicore-medication(Profile) [Medication.code], qicore-medicationadministration(Profile) [MedicationAdministration.medication[x]], qicore-medicationdispense(Profile) [MedicationDispense.medication[x]], qicore-medicationorder(Profile) [MedicationOrder.medication[x]], qicore-medicationstatement(Profile) [MedicationStatement.medication[x]]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/daf-medication-route|1.0.2 (Medication Route FDA Value Set)
   extensions/profiles (6 structures, 6 elements): strongest binding: preferred, refs: daf-immunization(Profile) [Immunization.route], daf-medicationadministration(Profile) [MedicationAdministration.dosage.route], daf-medicationdispense(Profile) [MedicationDispense.dosageInstruction.route], daf-medicationorder(Profile) [MedicationOrder.dosageInstruction.route], daf-medicationstatement(Profile) [MedicationStatement.dosage.route], qicore-medicationstatement(Profile) [MedicationStatement.dosage.route]
@@ -20252,10 +20429,64 @@ Value Sets: 1016
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/detectedissue-category|1.0.2 (Detected Issue Category)
   references (1 structures, 1 elements): DetectedIssue.category, strongest binding: preferred, by type: CodeableConcept:Preferred
-  ! No expansion available
+  - #_AdministrationDetectedIssueCode: AdministrationDetectedIssueCode
+  - #_AppropriatenessDetectedIssueCode: AppropriatenessDetectedIssueCode
+  - #_InteractionDetectedIssueCode: InteractionDetectedIssueCode
+  - #_SupplyDetectedIssueCode: SupplyDetectedIssueCode
+  - #_TimingDetectedIssueCode: TimingDetectedIssueCode
+  - #ALLDONE: already performed
+  - #ALRTENDLATE: end too late alert
+  - #ALRTSTRTLATE: start too late alert
+  - #DACT: drug action detected issue
+  - #DRG: Drug Interaction Alert
+  - #ENDLATE: End Too Late Alert
+  - #FOOD: Food Interaction Alert
+  - #FULFIL: fulfillment alert
+  - #HELD: held/suspended alert
+  - #INTERVAL: outside requested time
+  - #MINFREQ: too soon within frequency based on the usage
+  - #NHP: Natural Health Product Alert
+  - #NONRX: Non-Prescription Interaction Alert
+  - #NOTACTN: no longer actionable
+  - #NOTEQUIV: not equivalent alert
+  - #NOTEQUIVGEN: not generically equivalent alert
+  - #NOTEQUIVTHER: not therapeutically equivalent alert
+  - #PREVINEF: previously ineffective
+  - #STRTLATE: Start Too Late Alert
+  - #TIME: timing detected issue
+  - #TIMING: event timing incorrect alert
+  - #TOOLATE: Refill Too Late Alert
+  - #TOOSOON: Refill Too Soon Alert
+  - #TPROD: Therapeutic Product Alert
 - ValueSet: http://hl7.org/fhir/ValueSet/detectedissue-mitigation-action|1.0.2 (Detected Issue Mitigation Action)
   references (1 structures, 1 elements): DetectedIssue.mitigation.action, strongest binding: preferred, by type: CodeableConcept:Preferred
-  ! No expansion available
+  - #_ActAdministrativeDetectedIssueManagementCode: ActAdministrativeDetectedIssueManagementCode
+  - #_ActDetectedIssueManagementCode: ActDetectedIssueManagementCode
+  - #_AuthorizationIssueManagementCode: Authorization Issue Management Code
+  - #1: Therapy Appropriate
+  - #10: Provided Patient Education
+  - #11: Added Concurrent Therapy
+  - #12: Temporarily Suspended Concurrent Therapy
+  - #13: Stopped Concurrent Therapy
+  - #14: Supply Appropriate
+  - #15: Replacement
+  - #16: Vacation Supply
+  - #17: Weekend Supply
+  - #18: Leave of Absence
+  - #19: Consulted Supplier
+  - #2: Assessed Patient
+  - #20: additional quantity on separate dispense
+  - #21: authorization confirmed
+  - #22: appropriate indication or diagnosis
+  - #23: prior therapy documented
+  - #3: Patient Explanation
+  - #4: Consulted Other Source
+  - #5: Consulted Prescriber
+  - #6: Prescriber Declined Change
+  - #7: Interacting Therapy No Longer Active/Planned
+  - #8: Other Action Taken
+  - #9: Instituted Ongoing Monitoring Program
+  - #EMAUTH: emergency authorization override
 - ValueSet: http://hl7.org/fhir/ValueSet/detectedissue-severity|1.0.2 (DetectedIssueSeverity)
   references (1 structures, 1 elements): DetectedIssue.severity, strongest binding: required, by type: code:Required
   - #high: High
@@ -20632,7 +20863,18 @@ Value Sets: 1016
 - ValueSet: http://hl7.org/fhir/ValueSet/encounter-participant-type|1.0.2 (ParticipantType)
   references (3 structures, 3 elements): Appointment.participant.type, AppointmentResponse.participantType, Encounter.participant.type, strongest binding: required, by type: CodeableConcept:Extensible
   extensions/profiles (2 structures, 2 elements): strongest binding: extensible, refs: daf-encounter(Profile) [Encounter.participant.type], qicore-encounter(Profile) [Encounter.participant.type]
-  ! No expansion available
+  - #emergency: Emergency
+  - #translator: Translator
+  - #ADM: admitter
+  - #ATND: attender
+  - #CALLBCK: callback contact
+  - #CON: consultant
+  - #DIS: discharger
+  - #ESC: escort
+  - #PART: 
+  - #PPRF: 
+  - #REF: referrer
+  - #SPRF: 
 - ValueSet: http://hl7.org/fhir/ValueSet/encounter-priority|1.0.2 (Encounter Priority)
   references (1 structures, 1 elements): Encounter.priority, strongest binding: example, by type: CodeableConcept:Example
   extensions/profiles (1 structures, 1 elements): strongest binding: example, refs: daf-encounter(Profile) [Encounter.priority]
@@ -21901,7 +22143,27 @@ Value Sets: 1016
   - #team: Organizational team
 - ValueSet: http://hl7.org/fhir/ValueSet/parent-relationship-codes|1.0.2 (Parent Relationship Codes)
   extensions/profiles (1 structures, 2 elements): strongest binding: required, refs: family-member-history-genetics-parent(Extension) [Extension.extension.value[x],Extension.extension.valueCodeableConcept]
-  ! No expansion available
+  - #ADOPTF: adoptive father
+  - #ADOPTM: adoptive mother
+  - #ADOPTP: adoptive parent
+  - #FTH: father
+  - #FTHFOST: foster father
+  - #FTWIN: fraternal twin
+  - #GESTM: gestational mother
+  - #ITWIN: identical twin
+  - #MTH: mother
+  - #MTHFOST: foster mother
+  - #NFTH: natural father
+  - #NFTHF: natural father of fetus
+  - #NMTH: natural mother
+  - #NMTHF: natural mother of fetus
+  - #NPRN: natural parent
+  - #PRN: parent
+  - #PRNFOST: foster parent
+  - #STPFTH: stepfather
+  - #STPMTH: stepmother
+  - #STPPRN: step parent
+  - #TWIN: twin
 - ValueSet: http://hl7.org/fhir/ValueSet/participant-role|1.0.2 (Participant Roles)
   references (2 structures, 2 elements): CarePlan.participant.role, EpisodeOfCare.careTeam.role, strongest binding: example, by type: CodeableConcept:Example
   extensions/profiles (1 structures, 1 elements): strongest binding: example, refs: argonaut-careplan(Profile) [CarePlan.participant.role]
@@ -22243,8 +22505,8 @@ Value Sets: 1016
   extensions/profiles (1 structures, 1 elements): strongest binding: example, refs: qicore-referralrequest(Profile) [ReferralRequest.extension]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/quantity-comparator|1.0.2 (QuantityComparator)
-  references (7 structures, 7 elements): Quantity.comparator, strongest binding: required, by type: code:Required
-  extensions/profiles (4 structures, 12 elements): strongest binding: required, refs: cholesterol(Profile) [Observation.valueQuantity.comparator], daf-vitalsigns(Profile) [Observation.referenceRange.high.comparator,Observation.referenceRange.low.comparator,Observation.valueQuantity.comparator], uslab-obsquantity(Profile) [Observation.referenceRange.age.high.comparator,Observation.referenceRange.age.low.comparator,Observation.referenceRange.high.comparator,Observation.referenceRange.low.comparator], uslab-obsrange(Profile) [Observation.referenceRange.age.high.comparator,Observation.referenceRange.age.low.comparator,Observation.referenceRange.high.comparator,Observation.referenceRange.low.comparator]
+  references (1 structures, 1 elements): Quantity.comparator, strongest binding: required, by type: code:Required
+  extensions/profiles (10 structures, 18 elements): strongest binding: required, refs: Age(ComplexType) [Quantity.comparator], cholesterol(Profile) [Observation.valueQuantity.comparator], Count(ComplexType) [Quantity.comparator], daf-vitalsigns(Profile) [Observation.referenceRange.high.comparator,Observation.referenceRange.low.comparator,Observation.valueQuantity.comparator], Distance(ComplexType) [Quantity.comparator], Duration(ComplexType) [Quantity.comparator], Money(ComplexType) [Quantity.comparator], SimpleQuantity(ComplexType) [Quantity.comparator], uslab-obsquantity(Profile) [Observation.referenceRange.age.high.comparator,Observation.referenceRange.age.low.comparator,Observation.referenceRange.high.comparator,Observation.referenceRange.low.comparator], uslab-obsrange(Profile) [Observation.referenceRange.age.high.comparator,Observation.referenceRange.age.low.comparator,Observation.referenceRange.high.comparator,Observation.referenceRange.low.comparator]
   - #<: Less than
   - #<=: Less or Equal to
   - #>: Greater than
@@ -22345,7 +22607,116 @@ Value Sets: 1016
 - ValueSet: http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype|1.0.2 (PatientRelationshipType)
   references (1 structures, 1 elements): RelatedPerson.relationship, strongest binding: required, by type: CodeableConcept:Required
   extensions/profiles (2 structures, 2 elements): strongest binding: required, refs: daf-relatedperson(Profile) [RelatedPerson.relationship], qicore-relatedperson(Profile) [RelatedPerson.relationship]
-  ! No expansion available
+  - #_PersonalRelationshipRoleType: PersonalRelationshipRoleType
+  - #ADOPTF: adoptive father
+  - #ADOPTM: adoptive mother
+  - #ADOPTP: adoptive parent
+  - #AUNT: aunt
+  - #BRO: brother
+  - #BROINLAW: brother-in-law
+  - #CHILD: child
+  - #CHLDADOPT: adopted child
+  - #CHLDFOST: foster child
+  - #CHLDINLAW: child-in-law
+  - #COUSN: cousin
+  - #DAU: natural daughter
+  - #DAUADOPT: adopted daughter
+  - #DAUC: daughter
+  - #DAUFOST: foster daughter
+  - #DAUINLAW: daughter in-law
+  - #DOMPART: domestic partner
+  - #EXT: extended family member
+  - #FAMMEMB: family member
+  - #FMRSPS: former spouse
+  - #FRND: unrelated friend
+  - #FTH: father
+  - #FTHFOST: foster father
+  - #FTHINLAW: father-in-law
+  - #FTWIN: fraternal twin
+  - #FTWINBRO: fraternal twin brother
+  - #FTWINSIS: fraternal twin sister
+  - #GESTM: gestational mother
+  - #GGRFTH: great grandfather
+  - #GGRMTH: great grandmother
+  - #GGRPRN: great grandparent
+  - #GRFTH: grandfather
+  - #GRMTH: grandmother
+  - #GRNDCHILD: grandchild
+  - #GRNDDAU: granddaughter
+  - #GRNDSON: grandson
+  - #GRPRN: grandparent
+  - #HBRO: half-brother
+  - #HSIB: half-sibling
+  - #HSIS: half-sister
+  - #HUSB: husband
+  - #INLAW: inlaw
+  - #ITWIN: identical twin
+  - #ITWINBRO: identical twin brother
+  - #ITWINSIS: identical twin sister
+  - #MAUNT: maternal aunt
+  - #MCOUSN: maternal cousin
+  - #MGGRFTH: maternal great-grandfather
+  - #MGGRMTH: maternal great-grandmother
+  - #MGGRPRN: maternal great-grandparent
+  - #MGRFTH: maternal grandfather
+  - #MGRMTH: maternal grandmother
+  - #MGRPRN: maternal grandparent
+  - #MTH: mother
+  - #MTHFOST: foster mother
+  - #MTHINLAW: mother-in-law
+  - #MUNCLE: maternal uncle
+  - #NBOR: neighbor
+  - #NBRO: natural brother
+  - #NCHILD: natural child
+  - #NEPHEW: nephew
+  - #NFTH: natural father
+  - #NFTHF: natural father of fetus
+  - #NIECE: niece
+  - #NIENEPH: niece/nephew
+  - #NMTH: natural mother
+  - #NMTHF: natural mother of fetus
+  - #NPRN: natural parent
+  - #NSIB: natural sibling
+  - #NSIS: natural sister
+  - #ONESELF: self
+  - #PAUNT: paternal aunt
+  - #PCOUSN: paternal cousin
+  - #PGGRFTH: paternal great-grandfather
+  - #PGGRMTH: paternal great-grandmother
+  - #PGGRPRN: paternal great-grandparent
+  - #PGRFTH: paternal grandfather
+  - #PGRMTH: paternal grandmother
+  - #PGRPRN: paternal grandparent
+  - #PRN: parent
+  - #PRNFOST: foster parent
+  - #PRNINLAW: parent in-law
+  - #PUNCLE: paternal uncle
+  - #ROOM: Roommate
+  - #SIB: sibling
+  - #SIBINLAW: sibling in-law
+  - #SIGOTHR: significant other
+  - #SIS: sister
+  - #SISINLAW: sister-in-law
+  - #SON: natural son
+  - #SONADOPT: adopted son
+  - #SONC: son
+  - #SONFOST: foster son
+  - #SONINLAW: son in-law
+  - #SPS: spouse
+  - #STPBRO: stepbrother
+  - #STPCHLD: step child
+  - #STPDAU: stepdaughter
+  - #STPFTH: stepfather
+  - #STPMTH: stepmother
+  - #STPPRN: step parent
+  - #STPSIB: step sibling
+  - #STPSIS: stepsister
+  - #STPSON: stepson
+  - #TWIN: twin
+  - #TWINBRO: twin brother
+  - #TWINSIS: twin sister
+  - #UNCLE: uncle
+  - #WIFE: wife
 - ValueSet: http://hl7.org/fhir/ValueSet/relationship|1.0.2 (Surface Codes)
   references (3 structures, 3 elements): Claim.coverage.relationship, ClaimResponse.coverage.relationship, EnrollmentRequest.relationship, strongest binding: example, by type: Coding:Example
   - #1: 
@@ -22538,7 +22909,7 @@ Value Sets: 1016
   - #footer: Footer
   - #header: Header
 - ValueSet: http://hl7.org/fhir/ValueSet/sdcde-dataelement-sdccode|1.0.2 (DataElement SDC Concept)
-  extensions/profiles (1 structures, 5 elements): strongest binding: extensible, refs: sdcde-dataelement(Profile) [DataElement.element.code,DataElement.element.mapping.extension.valueCoding]
+  extensions/profiles (1 structures, 3 elements): strongest binding: extensible, refs: sdcde-dataelement(Profile) [DataElement.element.code,DataElement.element.mapping.extension.valueCoding]
   ! No expansion available
 - ValueSet: http://hl7.org/fhir/ValueSet/search-entry-mode|1.0.2 (SearchEntryMode)
   references (1 structures, 1 elements): Bundle.entry.search.mode, strongest binding: required, by type: code:Required
@@ -30100,7 +30471,7 @@ Value Sets: 1016
   - #VERIF: Verification
   - #XACT: financial transaction
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActClassInvestigation|2014-03-26 (ActClassInvestigation)
-  ! No expansion available
+  - #INVSTG: investigation
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActCode|2015-07-31 (v3 Code System ActCode)
   references (2 structures, 2 elements): Composition.event.code, DocumentReference.context.event, strongest binding: example, by type: CodeableConcept:Example
   extensions/profiles (3 structures, 3 elements): strongest binding: example, refs: clinicaldocument(Profile) [Composition.event.code], measurereport(Profile) [Composition.event.code], xdsdocumentreference(Profile) [DocumentReference.context.event]
@@ -31176,10 +31547,75 @@ Value Sets: 1016
   - #XRAY: x-ray
   - #YEAR: year
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActConsentType|2014-03-26 (ActConsentType)
-  ! No expansion available
+  - #_ActConsentType: ActConsentType
+  - #ICOL: information collection
+  - #IDSCL: information disclosure
+  - #INFA: information access
+  - #INFAO: access only
+  - #INFASO: access and save only
+  - #IRDSCL: information redisclosure
+  - #RESEARCH: research information access
+  - #RSDID: de-identified information access
+  - #RSREID: re-identifiable information access
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActCoverageTypeCode|2014-03-26 (ActCoverageTypeCode)
   references (1 structures, 1 elements): Coverage.type, strongest binding: example, by type: Coding:Example
-  ! No expansion available
+  - #_ActCoverageTypeCode: ActCoverageTypeCode
+  - #_ActHealthInsuranceTypeCode: ActHealthInsuranceTypeCode
+  - #_ActInsurancePolicyCode: ActInsurancePolicyCode
+  - #_ActInsuranceTypeCode: ActInsuranceTypeCode
+  - #_ActProgramTypeCode: ActProgramTypeCode
+  - #ANNU: annuity policy
+  - #AUTOPOL: automobile
+  - #CANPRG: women's cancer detection program
+  - #CHAR: charity program
+  - #COL: collision coverage policy
+  - #CRIME: crime victim program
+  - #DENTAL: dental care policy
+  - #DENTPRG: dental program
+  - #DIS: disability insurance policy
+  - #DISEASE: disease specific policy
+  - #DISEASEPRG: public health program
+  - #DRUGPOL: drug policy
+  - #EAP: employee assistance program
+  - #EHCPOL: extended healthcare
+  - #ENDRENAL: end renal program
+  - #EWB: employee welfare benefit plan policy
+  - #FLEXP: flexible benefit plan policy
+  - #GOVEMP: government employee health program
+  - #HIP: health insurance plan policy
+  - #HIRISK: high risk pool program
+  - #HIVAIDS: HIV-AIDS program
+  - #HMO: health maintenance organization policy
+  - #HSAPOL: health spending account
+  - #IND: indigenous peoples health program
+  - #LIFE: life insurance policy
+  - #LTC: long term care policy
+  - #MANDPOL: mandatory health program
+  - #MCPOL: managed care policy
+  - #MENTPOL: mental health policy
+  - #MENTPRG: mental health program
+  - #MILITARY: military health program
+  - #PNC: property and casualty insurance policy
+  - #POS: point of service policy
+  - #PPO: preferred provider organization policy
+  - #PUBLICPOL: public healthcare
+  - #REI: reinsurance policy
+  - #RETIRE: retiree health program
+  - #SAFNET: safety net clinic program
+  - #SOCIAL: social service program
+  - #SUBPOL: substance use policy
+  - #SUBPRG: substance use program
+  - #SUBSIDIZ: subsidized health program
+  - #SUBSIDMC: subsidized managed care program
+  - #SUBSUPP: subsidized supplemental health program
+  - #SURPL: surplus line insurance policy
+  - #TLIFE: term life insurance policy
+  - #ULIFE: universal life insurance policy
+  - #UMBRL: umbrella liability insurance policy
+  - #UNINSMOT: uninsured motorist policy
+  - #VET: veteran health program
+  - #VISPOL: vision care policy
+  - #WCBPOL: worker's compensation
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActExposureLevelCode|2015-07-31 (v3 Code System ActExposureLevelCode)
   - #_ActExposureLevelCode: ActExposureLevelCode
   - #HIGH: high
@@ -31187,7 +31623,10 @@ Value Sets: 1016
   - #MEDIUM: medium
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActIncidentCode|2014-03-26 (ActIncidentCode)
   references (1 structures, 1 elements): Claim.accidentType, strongest binding: required, by type: Coding:Required
-  ! No expansion available
+  - #MVA: Motor vehicle accident
+  - #SCHOOL: School Accident
+  - #SPT: Sporting Accident
+  - #WPA: Workplace accident
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActInvoiceElementModifier|2015-07-31 (v3 Code System ActInvoiceElementModifier)
   - #EFORM: Electronic Form To Follow
   - #FAX: Fax To Follow
@@ -31195,7 +31634,25 @@ Value Sets: 1016
   - #PAPER: Paper Documentation To Follow
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActInvoiceGroupCode|2014-03-26 (ActInvoiceGroupCode)
   references (1 structures, 3 elements): Claim.item.detail.subDetail.type, Claim.item.detail.type, Claim.item.type, strongest binding: required, by type: Coding:Required
-  ! No expansion available
+  - #_ActInvoiceInterGroupCode: ActInvoiceInterGroupCode
+  - #_ActInvoiceRootGroupCode: ActInvoiceRootGroupCode
+  - #CPINV: clinical product invoice
+  - #CPNDDRGING: compound drug invoice group
+  - #CPNDINDING: compound ingredient invoice group
+  - #CPNDSUPING: compound supply invoice group
+  - #CSINV: clinical service invoice
+  - #CSPINV: clinical service and product
+  - #DRUGING: drug invoice group
+  - #FININV: financial invoice
+  - #FRAMEING: frame invoice group
+  - #LENSING: lens invoice group
+  - #OHSINV: oral health service
+  - #PAINV: preferred accommodation invoice
+  - #PRDING: product invoice group
+  - #RXCINV: Rx compound invoice
+  - #RXDINV: Rx dispense invoice
+  - #SBFINV: sessional or block fee invoice
+  - #VRXINV: vision dispense invoice
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActMood|2015-07-31 (v3 Code System ActMood)
   - #_ActMoodActRequest: act request
   - #_ActMoodCompletionTrack: ActMoodCompletionTrack
@@ -31228,7 +31685,28 @@ Value Sets: 1016
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActPharmacySupplyType|2014-03-26 (ActPharmacySupplyType)
   references (1 structures, 1 elements): MedicationDispense.type, strongest binding: example, by type: CodeableConcept:Example
   extensions/profiles (2 structures, 2 elements): strongest binding: example, refs: daf-medicationdispense(Profile) [MedicationDispense.type], qicore-medicationdispense(Profile) [MedicationDispense.type]
-  ! No expansion available
+  - #DF: Daily Fill
+  - #EM: Emergency Supply
+  - #FF: First Fill
+  - #FFC: First Fill - Complete
+  - #FFP: First Fill - Part Fill
+  - #FFSS: first fill, partial strength
+  - #FS: Floor stock
+  - #MS: Manufacturer Sample
+  - #RF: Refill
+  - #RFC: Refill - Complete
+  - #RFCS: refill complete partial strength
+  - #RFF: Refill (First fill this facility)
+  - #RFFS: refill partial strength (first fill this facility)
+  - #RFP: Refill - Part Fill
+  - #RFPS: refill part fill partial strength
+  - #RFS: refill partial strength
+  - #SO: Script Owing
+  - #TB: Trial Balance
+  - #TBS: trial balance partial strength
+  - #TF: Trial Fill
+  - #UD: Unit Dose
+  - #UDE: unit dose equivalent
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActPriority|2015-07-31 (v3 Code System ActPriority)
   - #A: ASAP
   - #CR: callback results
@@ -31746,7 +32224,15 @@ Value Sets: 1016
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActSubstanceAdminSubstitutionCode|2014-03-26 (ActSubstanceAdminSubstitutionCode)
   references (2 structures, 2 elements): MedicationDispense.substitution.type, MedicationOrder.substitution.type, strongest binding: example, by type: CodeableConcept:Example
   extensions/profiles (4 structures, 4 elements): strongest binding: example, refs: daf-medicationdispense(Profile) [MedicationDispense.substitution.type], daf-medicationorder(Profile) [MedicationOrder.substitution.type], qicore-medicationdispense(Profile) [MedicationDispense.substitution.type], qicore-medicationorder(Profile) [MedicationOrder.substitution.type]
-  ! No expansion available
+  - #BC: brand composition
+  - #E: equivalent
+  - #EC: equivalent composition
+  - #F: formulary
+  - #G: generic composition
+  - #N: none
+  - #TB: therapeutic brand
+  - #TE: therapeutic alternative
+  - #TG: therapeutic generic
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ActUncertainty|2015-07-31 (v3 Code System ActUncertainty)
   - #N: stated with no assertion of uncertainty
   - #U: stated with uncertainty
@@ -32117,7 +32603,10 @@ Value Sets: 1016
   - #RSP: respond to
   - #SND: sender
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-Compartment|2014-03-26 (Compartment)
-  ! No expansion available
+  - #COMPT: compartment
+  - #HRCOMPT: human resource compartment
+  - #RESCOMPT: research project compartment
+  - #RMGTCOMPT: records management compartment
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-CompressionAlgorithm|2015-07-31 (v3 Code System CompressionAlgorithm)
   - #BZ: bzip
   - #DF: deflate
@@ -32602,7 +33091,111 @@ Value Sets: 1016
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-FamilyMember|2014-03-26 (FamilyMember)
   references (1 structures, 1 elements): FamilyMemberHistory.relationship, strongest binding: example, by type: CodeableConcept:Example
   extensions/profiles (3 structures, 3 elements): strongest binding: example, refs: daf-familymemberhistory(Profile) [FamilyMemberHistory.relationship], familymemberhistory-genetic(Profile) [FamilyMemberHistory.relationship], qicore-familymemberhistory(Profile) [FamilyMemberHistory.relationship]
-  ! No expansion available
+  - #ADOPTF: adoptive father
+  - #ADOPTM: adoptive mother
+  - #ADOPTP: adoptive parent
+  - #AUNT: aunt
+  - #BRO: brother
+  - #BROINLAW: brother-in-law
+  - #CHILD: child
+  - #CHLDADOPT: adopted child
+  - #CHLDFOST: foster child
+  - #CHLDINLAW: child-in-law
+  - #COUSN: cousin
+  - #DAU: natural daughter
+  - #DAUADOPT: adopted daughter
+  - #DAUC: daughter
+  - #DAUFOST: foster daughter
+  - #DAUINLAW: daughter in-law
+  - #DOMPART: domestic partner
+  - #EXT: extended family member
+  - #FAMMEMB: family member
+  - #FMRSPS: former spouse
+  - #FTH: father
+  - #FTHFOST: foster father
+  - #FTHINLAW: father-in-law
+  - #FTWIN: fraternal twin
+  - #FTWINBRO: fraternal twin brother
+  - #FTWINSIS: fraternal twin sister
+  - #GESTM: gestational mother
+  - #GGRFTH: great grandfather
+  - #GGRMTH: great grandmother
+  - #GGRPRN: great grandparent
+  - #GRFTH: grandfather
+  - #GRMTH: grandmother
+  - #GRNDCHILD: grandchild
+  - #GRNDDAU: granddaughter
+  - #GRNDSON: grandson
+  - #GRPRN: grandparent
+  - #HBRO: half-brother
+  - #HSIB: half-sibling
+  - #HSIS: half-sister
+  - #HUSB: husband
+  - #INLAW: inlaw
+  - #ITWIN: identical twin
+  - #ITWINBRO: identical twin brother
+  - #ITWINSIS: identical twin sister
+  - #MAUNT: maternal aunt
+  - #MCOUSN: maternal cousin
+  - #MGGRFTH: maternal great-grandfather
+  - #MGGRMTH: maternal great-grandmother
+  - #MGGRPRN: maternal great-grandparent
+  - #MGRFTH: maternal grandfather
+  - #MGRMTH: maternal grandmother
+  - #MGRPRN: maternal grandparent
+  - #MTH: mother
+  - #MTHFOST: foster mother
+  - #MTHINLAW: mother-in-law
+  - #MUNCLE: maternal uncle
+  - #NBRO: natural brother
+  - #NCHILD: natural child
+  - #NEPHEW: nephew
+  - #NFTH: natural father
+  - #NFTHF: natural father of fetus
+  - #NIECE: niece
+  - #NIENEPH: niece/nephew
+  - #NMTH: natural mother
+  - #NMTHF: natural mother of fetus
+  - #NPRN: natural parent
+  - #NSIB: natural sibling
+  - #NSIS: natural sister
+  - #PAUNT: paternal aunt
+  - #PCOUSN: paternal cousin
+  - #PGGRFTH: paternal great-grandfather
+  - #PGGRMTH: paternal great-grandmother
+  - #PGGRPRN: paternal great-grandparent
+  - #PGRFTH: paternal grandfather
+  - #PGRMTH: paternal grandmother
+  - #PGRPRN: paternal grandparent
+  - #PRN: parent
+  - #PRNFOST: foster parent
+  - #PRNINLAW: parent in-law
+  - #PUNCLE: paternal uncle
+  - #SIB: sibling
+  - #SIBINLAW: sibling in-law
+  - #SIGOTHR: significant other
+  - #SIS: sister
+  - #SISINLAW: sister-in-law
+  - #SON: natural son
+  - #SONADOPT: adopted son
+  - #SONC: son
+  - #SONFOST: foster son
+  - #SONINLAW: son in-law
+  - #SPS: spouse
+  - #STPBRO: stepbrother
+  - #STPCHLD: step child
+  - #STPDAU: stepdaughter
+  - #STPFTH: stepfather
+  - #STPMTH: stepmother
+  - #STPPRN: step parent
+  - #STPSIB: step sibling
+  - #STPSIS: stepsister
+  - #STPSON: stepson
+  - #TWIN: twin
+  - #TWINBRO: twin brother
+  - #TWINSIS: twin sister
+  - #UNCLE: uncle
+  - #WIFE: wife
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-GenderStatus|2015-07-31 (v3 Code System GenderStatus)
   - #I: Intact
   - #N: Neutered
@@ -32746,7 +33339,38 @@ Value Sets: 1016
   - #VER: Version Identifier
   - #VW: View Specific Identifier
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-InformationSensitivityPolicy|2014-03-26 (InformationSensitivityPolicy)
-  ! No expansion available
+  - #_ActInformationSensitivityPolicy: ActInformationSensitivityPolicy
+  - #_EntitySensitivityPolicyType: EntityInformationSensitivityPolicy
+  - #_InformationSensitivityPolicy: InformationSensitivityPolicy
+  - #_RoleInformationSensitivityPolicy: RoleInformationSensitivityPolicy
+  - #ADOL: adolescent information sensitivity
+  - #B: business information sensitivity
+  - #CEL: celebrity information sensitivity
+  - #DEMO: all demographic information sensitivity
+  - #DIA: diagnosis information sensitivity
+  - #DOB: date of birth information sensitivity
+  - #DRGIS: drug information sensitivity
+  - #EMP: employee information sensitivity
+  - #EMPL: employer information sensitivity
+  - #ETH: substance abuse information sensitivity
+  - #GDIS: genetic disease information sensitivity
+  - #GENDER: gender and sexual orientation information sensitivity
+  - #HIV: HIV/AIDS information sensitivity
+  - #LIVARG: living arrangement information sensitivity
+  - #LOCIS: location information sensitivity
+  - #MARST: marital status information sensitivity
+  - #PDS: patient default sensitivity
+  - #PRS: patient requested sensitivity
+  - #PSY: psychiatry information sensitivity
+  - #RACE: race information sensitivity
+  - #REL: religion information sensitivity
+  - #SCA: sickle cell anemia
+  - #SDV: sexual assault, abuse, or domestic violence information sensitivity
+  - #SEX: sexuality and reproductive health information sensitivity
+  - #SICKLE: sickle cell
+  - #SSP: sensitive service provider information sensitivity
+  - #STD: sexually transmitted disease information sensitivity
+  - #TBOO: taboo
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-IntegrityCheckAlgorithm|2015-07-31 (v3 Code System IntegrityCheckAlgorithm)
   - #SHA-1: secure hash algorithm - 1
   - #SHA-256: secure hash algorithm - 256
@@ -32808,7 +33432,10 @@ Value Sets: 1016
   - #L: Low
   - #M: Medium
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-MilitaryRoleType|2014-03-26 (MilitaryRoleType)
-  ! No expansion available
+  - #ACTMIL: active duty military
+  - #MIL: military
+  - #RETMIL: retired military
+  - #VET: veteran
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ModifyIndicator|2015-07-31 (v3 Code System ModifyIndicator)
   - #M: Modified subscription
   - #N: New subscription
@@ -32831,7 +33458,29 @@ Value Sets: 1016
   - #UNC: un-encoded
   - #UNK: unknown
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ObligationPolicy|2014-03-26 (ObligationPolicy)
-  ! No expansion available
+  - #ANONY: anonymize
+  - #AOD: accounting of disclosure
+  - #AUDIT: audit
+  - #AUDTR: audit trail
+  - #CPLYCC: comply with confidentiality code
+  - #CPLYCD: comply with consent directive
+  - #CPLYJPP: comply with jurisdictional privacy policy
+  - #CPLYOPP: comply with organizational privacy policy
+  - #CPLYOSP: comply with organizational security policy
+  - #CPLYPOL: comply with policy
+  - #DEID: deidentify
+  - #DELAU: delete after use
+  - #ENCRYPT: encrypt
+  - #ENCRYPTR: encrypt at rest
+  - #ENCRYPTT: encrypt in transit
+  - #ENCRYPTU: encrypt in use
+  - #HUAPRV: human approval
+  - #MASK: mask
+  - #MINEC: minimum necessary
+  - #ObligationPolicy: obligation policy
+  - #PRIVMARK: privacy mark
+  - #PSEUD: pseudonymize
+  - #REDACT: redact
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ObservationInterpretation|2015-07-31 (v3 Code System ObservationInterpretation)
   - #_GeneticObservationInterpretation: GeneticObservationInterpretation
   - #_ObservationInterpretationChange: ObservationInterpretationChange
@@ -33731,7 +34380,115 @@ Value Sets: 1016
   - #N60: Net 60 days
   - #N90: Net 90 days
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-PersonalRelationshipRoleType|2014-03-26 (PersonalRelationshipRoleType)
-  ! No expansion available
+  - #ADOPTF: adoptive father
+  - #ADOPTM: adoptive mother
+  - #ADOPTP: adoptive parent
+  - #AUNT: aunt
+  - #BRO: brother
+  - #BROINLAW: brother-in-law
+  - #CHILD: child
+  - #CHLDADOPT: adopted child
+  - #CHLDFOST: foster child
+  - #CHLDINLAW: child-in-law
+  - #COUSN: cousin
+  - #DAU: natural daughter
+  - #DAUADOPT: adopted daughter
+  - #DAUC: daughter
+  - #DAUFOST: foster daughter
+  - #DAUINLAW: daughter in-law
+  - #DOMPART: domestic partner
+  - #EXT: extended family member
+  - #FAMMEMB: family member
+  - #FMRSPS: former spouse
+  - #FRND: unrelated friend
+  - #FTH: father
+  - #FTHFOST: foster father
+  - #FTHINLAW: father-in-law
+  - #FTWIN: fraternal twin
+  - #FTWINBRO: fraternal twin brother
+  - #FTWINSIS: fraternal twin sister
+  - #GESTM: gestational mother
+  - #GGRFTH: great grandfather
+  - #GGRMTH: great grandmother
+  - #GGRPRN: great grandparent
+  - #GRFTH: grandfather
+  - #GRMTH: grandmother
+  - #GRNDCHILD: grandchild
+  - #GRNDDAU: granddaughter
+  - #GRNDSON: grandson
+  - #GRPRN: grandparent
+  - #HBRO: half-brother
+  - #HSIB: half-sibling
+  - #HSIS: half-sister
+  - #HUSB: husband
+  - #INLAW: inlaw
+  - #ITWIN: identical twin
+  - #ITWINBRO: identical twin brother
+  - #ITWINSIS: identical twin sister
+  - #MAUNT: maternal aunt
+  - #MCOUSN: maternal cousin
+  - #MGGRFTH: maternal great-grandfather
+  - #MGGRMTH: maternal great-grandmother
+  - #MGGRPRN: maternal great-grandparent
+  - #MGRFTH: maternal grandfather
+  - #MGRMTH: maternal grandmother
+  - #MGRPRN: maternal grandparent
+  - #MTH: mother
+  - #MTHFOST: foster mother
+  - #MTHINLAW: mother-in-law
+  - #MUNCLE: maternal uncle
+  - #NBOR: neighbor
+  - #NBRO: natural brother
+  - #NCHILD: natural child
+  - #NEPHEW: nephew
+  - #NFTH: natural father
+  - #NFTHF: natural father of fetus
+  - #NIECE: niece
+  - #NIENEPH: niece/nephew
+  - #NMTH: natural mother
+  - #NMTHF: natural mother of fetus
+  - #NPRN: natural parent
+  - #NSIB: natural sibling
+  - #NSIS: natural sister
+  - #ONESELF: self
+  - #PAUNT: paternal aunt
+  - #PCOUSN: paternal cousin
+  - #PGGRFTH: paternal great-grandfather
+  - #PGGRMTH: paternal great-grandmother
+  - #PGGRPRN: paternal great-grandparent
+  - #PGRFTH: paternal grandfather
+  - #PGRMTH: paternal grandmother
+  - #PGRPRN: paternal grandparent
+  - #PRN: parent
+  - #PRNFOST: foster parent
+  - #PRNINLAW: parent in-law
+  - #PUNCLE: paternal uncle
+  - #ROOM: Roommate
+  - #SIB: sibling
+  - #SIBINLAW: sibling in-law
+  - #SIGOTHR: significant other
+  - #SIS: sister
+  - #SISINLAW: sister-in-law
+  - #SON: natural son
+  - #SONADOPT: adopted son
+  - #SONC: son
+  - #SONFOST: foster son
+  - #SONINLAW: son in-law
+  - #SPS: spouse
+  - #STPBRO: stepbrother
+  - #STPCHLD: step child
+  - #STPDAU: stepdaughter
+  - #STPFTH: stepfather
+  - #STPMTH: stepmother
+  - #STPPRN: step parent
+  - #STPSIB: step sibling
+  - #STPSIS: stepsister
+  - #STPSON: stepson
+  - #TWIN: twin
+  - #TWINBRO: twin brother
+  - #TWINSIS: twin sister
+  - #UNCLE: uncle
+  - #WIFE: wife
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-PersonDisabilityType|2015-07-31 (v3 Code System PersonDisabilityType)
   - #1: Vision impaired
   - #2: Hearing impaired
@@ -33781,7 +34538,49 @@ Value Sets: 1016
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-PurposeOfUse|2014-03-26 (PurposeOfUse)
   references (3 structures, 5 elements): AuditEvent.event.purposeOfEvent, AuditEvent.participant.purposeOfUse, Contract.actionReason, Contract.term.actionReason, Provenance.reason, strongest binding: extensible, by type: CodeableConcept:Example, Coding:Extensible
   extensions/profiles (3 structures, 5 elements): strongest binding: extensible, refs: consentdirective(Profile) [Contract.actionReason,Contract.term.actionReason], ehrsrle-auditevent(Profile) [AuditEvent.event.purposeOfEvent,AuditEvent.participant.purposeOfUse], ehrsrle-provenance(Profile) [Provenance.reason]
-  ! No expansion available
+  - #CAREMGT: Care Management
+  - #CLINTRCH: clinical trial research
+  - #CLINTRL: clinical trial
+  - #CLMATTCH: claim attachment
+  - #COVAUTH: coverage authorization
+  - #COVERAGE: coverage under policy or program
+  - #DISASTER: disaster
+  - #DONAT: donation
+  - #ELIGDTRM: eligibility determination
+  - #ELIGVER: eligibility verification
+  - #ENROLLM: enrollment
+  - #ETREAT: Emergency Treatment
+  - #FAMRQT: family requested
+  - #FRAUD: fraud
+  - #GOV: government
+  - #HACCRED: health accreditation
+  - #HCOMPL: health compliance
+  - #HDECD: decedent
+  - #HDIRECT: directory
+  - #HLEGAL: legal
+  - #HMARKT: healthcare marketing
+  - #HOPERAT: healthcare operations
+  - #HOUTCOMS: health outcome measure
+  - #HPAYMT: healthcare payment
+  - #HPRGRP: health program reporting
+  - #HQUALIMP: health quality improvement
+  - #HRESCH: healthcare research
+  - #HSYSADMIN: health system administration
+  - #MEMADMIN: member administration
+  - #PATADMIN: patient administration
+  - #PATRQT: patient requested
+  - #PATSFTY: patient safety
+  - #PERFMSR: performance measure
+  - #POPHLTH: population health
+  - #PUBHLTH: public health
+  - #PurposeOfUse: purpose of use
+  - #PWATRNY: power of attorney
+  - #RECORDMGT: records management
+  - #REMITADV: remittance advice
+  - #SUPNWK: support network
+  - #THREAT: threat
+  - #TRAIN: training
+  - #TREAT: treatment
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-QueryParameterValue|2015-07-31 (v3 Code System QueryParameterValue)
   - #_DispenseQueryFilterCode: dispense query filter code
   - #_OrderFilterCode: _OrderFilterCode
@@ -34740,7 +35539,24 @@ Value Sets: 1016
   - #2131-1: Other Race
   - #2500-7: Other Pacific Islander
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-RefrainPolicy|2014-03-26 (RefrainPolicy)
-  ! No expansion available
+  - #NOAUTH: no disclosure without subject authorization
+  - #NOCOLLECT: no collection
+  - #NODSCLCD: no disclosure without consent directive
+  - #NODSCLCDS: no disclosure without information subject's consent directive
+  - #NOINTEGRATE: no integration
+  - #NOLIST: no unlisted entity disclosure
+  - #NOMOU: no disclosure without MOU
+  - #NOORGPOL: no disclosure without organizational authorization
+  - #NOPAT: no disclosure to patient, family or caregivers without attending provider's authorization
+  - #NOPERSISTP: no collection beyond purpose of use
+  - #NORDSCLCD: no redisclosure without consent directive
+  - #NORDSCLCDS: no redisclosure without information subject's consent directive
+  - #NORDSCLW: no disclosure without jurisdictional authorization
+  - #NORELINK: no relinking
+  - #NOREUSE: no reuse beyond purpose of use
+  - #NOVIP: no unauthorized VIP disclosure
+  - #ORCON: no disclosure without originator authorization
+  - #RefrainPolicy: refrain policy
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-RelationalOperator|2015-07-31 (v3 Code System RelationalOperator)
   - #CT: Contains
   - #EQ: Equal
@@ -35764,9 +36580,88 @@ Value Sets: 1016
   - #VENTMASK: Inhalation, ventimask
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-SecurityControlObservationValue|2014-03-26 (SecurityControlObservationValue)
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-SecurityIntegrityObservationValue|2014-03-26 (SecurityIntegrityObservationValue)
-  ! No expansion available
+  - #_SECALTINTOBV: alteration integrity
+  - #_SECDATINTOBV: data integrity
+  - #_SECINTCONOBV: integrity confidence
+  - #_SECINTPRVABOBV: provenance asserted by
+  - #_SECINTPRVOBV: provenance
+  - #_SECINTPRVRBOBV: provenance reported by
+  - #ABSTRED: abstracted
+  - #AGGRED: aggregated
+  - #ANONYED: anonymized
+  - #CLINAST: clinician asserted
+  - #CLINRPT: clinician reported
+  - #CRYTOHASH: cryptographic hash function
+  - #DEVAST: device asserted
+  - #DEVRPT: device reported
+  - #DIGSIG: digital signature
+  - #HCPAST: healthcare professional asserted
+  - #HCPRPT: healthcare professional reported
+  - #HRELIABLE: highly reliable
+  - #MAPPED: mapped
+  - #MASKED: masked
+  - #PACQAST: patient acquaintance asserted
+  - #PACQRPT: patient acquaintance reported
+  - #PATAST: patient asserted
+  - #PATRPT: patient reported
+  - #PAYAST: payer asserted
+  - #PAYRPT: payer reported
+  - #PROAST: professional asserted
+  - #PRORPT: professional reported
+  - #PSEUDED: pseudonymized
+  - #REDACTED: redacted
+  - #RELIABLE: reliable
+  - #SDMAST: substitute decision maker asserted
+  - #SDMRPT: substitute decision maker reported
+  - #SUBSETTED: subsetted
+  - #SYNTAC: syntactic transform
+  - #TRSLT: translated
+  - #UNCERTREL: uncertain reliability
+  - #UNRELIABLE: unreliable
+  - #VERSIONED: versioned
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-SecurityPolicy|2014-03-26 (SecurityPolicy)
-  ! No expansion available
+  - #ANONY: anonymize
+  - #AOD: accounting of disclosure
+  - #AUDIT: audit
+  - #AUDTR: audit trail
+  - #CPLYCC: comply with confidentiality code
+  - #CPLYCD: comply with consent directive
+  - #CPLYJPP: comply with jurisdictional privacy policy
+  - #CPLYOPP: comply with organizational privacy policy
+  - #CPLYOSP: comply with organizational security policy
+  - #CPLYPOL: comply with policy
+  - #DEID: deidentify
+  - #DELAU: delete after use
+  - #ENCRYPT: encrypt
+  - #ENCRYPTR: encrypt at rest
+  - #ENCRYPTT: encrypt in transit
+  - #ENCRYPTU: encrypt in use
+  - #HUAPRV: human approval
+  - #MASK: mask
+  - #MINEC: minimum necessary
+  - #NOAUTH: no disclosure without subject authorization
+  - #NOCOLLECT: no collection
+  - #NODSCLCD: no disclosure without consent directive
+  - #NODSCLCDS: no disclosure without information subject's consent directive
+  - #NOINTEGRATE: no integration
+  - #NOLIST: no unlisted entity disclosure
+  - #NOMOU: no disclosure without MOU
+  - #NOORGPOL: no disclosure without organizational authorization
+  - #NOPAT: no disclosure to patient, family or caregivers without attending provider's authorization
+  - #NOPERSISTP: no collection beyond purpose of use
+  - #NORDSCLCD: no redisclosure without consent directive
+  - #NORDSCLCDS: no redisclosure without information subject's consent directive
+  - #NORDSCLW: no disclosure without jurisdictional authorization
+  - #NORELINK: no relinking
+  - #NOREUSE: no reuse beyond purpose of use
+  - #NOVIP: no unauthorized VIP disclosure
+  - #ObligationPolicy: obligation policy
+  - #ORCON: no disclosure without originator authorization
+  - #PRIVMARK: privacy mark
+  - #PSEUD: pseudonymize
+  - #REDACT: redact
+  - #RefrainPolicy: refrain policy
+  - #SecurityPolicy: security policy
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-Sequencing|2015-07-31 (v3 Code System Sequencing)
   - #A: Ascending
   - #D: Descending
@@ -35774,7 +36669,133 @@ Value Sets: 1016
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-ServiceDeliveryLocationRoleType|2014-03-26 (ServiceDeliveryLocationRoleType)
   references (1 structures, 1 elements): Location.type, strongest binding: extensible, by type: CodeableConcept:Extensible
   extensions/profiles (2 structures, 2 elements): strongest binding: extensible, refs: daf-location(Profile) [Location.type], qicore-location(Profile) [Location.type]
-  ! No expansion available
+  - #_DedicatedClinicalLocationRoleType: DedicatedClinicalLocationRoleType
+  - #_DedicatedNonClinicalLocationRoleType: DedicatedNonClinicalLocationRoleType
+  - #_DedicatedServiceDeliveryLocationRoleType: DedicatedServiceDeliveryLocationRoleType
+  - #_IncidentalServiceDeliveryLocationRoleType: IncidentalServiceDeliveryLocationRoleType
+  - #ACC: accident site
+  - #ALL: Allergy clinic
+  - #AMB: Ambulance
+  - #AMPUT: Amputee clinic
+  - #BMTC: Bone marrow transplant clinic
+  - #BMTU: Bone marrow transplant unit
+  - #BREAST: Breast clinic
+  - #CANC: Child and adolescent neurology clinic
+  - #CAPC: Child and adolescent psychiatry clinic
+  - #CARD: Ambulatory Health Care Facilities; Clinic/Center; Rehabilitation: Cardiac Facilities
+  - #CATH: Cardiac catheterization lab
+  - #CCU: Coronary care unit
+  - #CHEST: Chest unit
+  - #CHR: Chronic Care Facility
+  - #COAG: Coagulation clinic
+  - #COMM: Community Location
+  - #CRS: Colon and rectal surgery clinic
+  - #CSC: community service center
+  - #CVDX: Cardiovascular diagnostics or therapeutics unit
+  - #DADDR: Delivery Address
+  - #DERM: Dermatology clinic
+  - #DX: Diagnostics or therapeutics unit
+  - #ECHO: Echocardiography lab
+  - #ENDO: Endocrinology clinic
+  - #ENDOS: Endoscopy lab
+  - #ENT: Otorhinolaryngology clinic
+  - #EPIL: Epilepsy unit
+  - #ER: Emergency room
+  - #ETU: Emergency trauma unit
+  - #FMC: Family medicine clinic
+  - #GACH: Hospitals; General Acute Care Hospital
+  - #GI: Gastroenterology clinic
+  - #GIDX: Gastroenterology diagnostics or therapeutics lab
+  - #GIM: General internal medicine clinic
+  - #GYN: Gynecology clinic
+  - #HAND: Hand clinic
+  - #HD: Hemodialysis unit
+  - #HEM: Hematology clinic
+  - #HLAB: hospital laboratory
+  - #HOSP: Hospital
+  - #HRAD: radiology unit
+  - #HTN: Hypertension clinic
+  - #HU: Hospital unit
+  - #HUSCS: specimen collection site
+  - #ICU: Intensive care unit
+  - #IEC: Impairment evaluation center
+  - #INFD: Infectious disease clinic
+  - #INLAB: inpatient laboratory
+  - #INPHARM: inpatient pharmacy
+  - #INV: Infertility clinic
+  - #LYMPH: Lympedema clinic
+  - #MBL: medical laboratory
+  - #MGEN: Medical genetics clinic
+  - #MHSP: Military Hospital
+  - #MOBL: Mobile Unit
+  - #NCCF: Nursing or custodial care facility
+  - #NCCS: Neurology critical care and stroke unit
+  - #NEPH: Nephrology clinic
+  - #NEUR: Neurology clinic
+  - #NS: Neurosurgery unit
+  - #OB: Obstetrics clinic
+  - #OF: Outpatient facility
+  - #OMS: Oral and maxillofacial surgery clinic
+  - #ONCL: Medical oncology clinic
+  - #OPH: Opthalmology clinic
+  - #OPTC: optometry clinic
+  - #ORTHO: Orthopedics clinic
+  - #OUTLAB: outpatient laboratory
+  - #OUTPHARM: outpatient pharmacy
+  - #PAINCL: Pain clinic
+  - #PC: Primary care clinic
+  - #PEDC: Pediatrics clinic
+  - #PEDCARD: Pediatric cardiology clinic
+  - #PEDE: Pediatric endocrinology clinic
+  - #PEDGI: Pediatric gastroenterology clinic
+  - #PEDHEM: Pediatric hematology clinic
+  - #PEDHO: Pediatric oncology clinic
+  - #PEDICU: Pediatric intensive care unit
+  - #PEDID: Pediatric infectious disease clinic
+  - #PEDNEPH: Pediatric nephrology clinic
+  - #PEDNICU: Pediatric neonatal intensive care unit
+  - #PEDRHEUM: Pediatric rheumatology clinic
+  - #PEDU: Pediatric unit
+  - #PHARM: Pharmacy
+  - #PHU: Psychiatric hospital unit
+  - #PLS: Plastic surgery clinic
+  - #POD: Podiatry clinic
+  - #PRC: Pain rehabilitation center
+  - #PREV: Preventive medicine clinic
+  - #PROCTO: Proctology clinic
+  - #PROFF: Provider's Office
+  - #PROS: Prosthodontics clinic
+  - #PSI: Psychology clinic
+  - #PSY: Psychiatry clinic
+  - #PSYCHF: Psychatric Care Facility
+  - #PTRES: Patient's Residence
+  - #RADDX: Radiology diagnostics or therapeutics unit
+  - #RADO: Radiation oncology unit
+  - #RH: Rehabilitation hospital
+  - #RHAT: addiction treatment center
+  - #RHEUM: Rheumatology clinic
+  - #RHII: intellectual impairment center
+  - #RHMAD: parents with adjustment difficulties center
+  - #RHPI: physical impairment center
+  - #RHPIH: physical impairment - hearing center
+  - #RHPIMS: physical impairment - motor skills center
+  - #RHPIVS: physical impairment - visual skills center
+  - #RHU: Rehabilitation hospital unit
+  - #RHYAD: youths with adjustment difficulties center
+  - #RNEU: Neuroradiology unit
+  - #RTF: Residential treatment facility
+  - #SCHOOL: school
+  - #SLEEP: Sleep disorders unit
+  - #SNF: Skilled nursing facility
+  - #SPMED: Sports medicine clinic
+  - #SU: Surgery clinic
+  - #SURF: Substance use rehabilitation facility
+  - #TR: Transplant clinic
+  - #TRAVEL: Travel and geographic medicine clinic
+  - #UPC: underage protection center
+  - #URO: Urology clinic
+  - #WND: Wound clinic
+  - #WORK: work site
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-SetOperator|2015-07-31 (v3 Code System SetOperator)
   - #_ValueSetOperator: ValueSetOperator
   - #A: intersect
@@ -35783,7 +36804,9 @@ Value Sets: 1016
   - #I: include
   - #P: periodic hull
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-SeverityObservation|2014-03-26 (SeverityObservation)
-  ! No expansion available
+  - #H: High
+  - #L: Low
+  - #M: Moderate
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-SpecimenType|2015-07-31 (v3 Code System SpecimenType)
   - #_SpecimenEntityType: SpecimenEntityType
   - #ABS: Abcess
@@ -35923,7 +36946,10 @@ Value Sets: 1016
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-SubstanceAdminSubstitutionReason|2014-03-26 (SubstanceAdminSubstitutionReason)
   references (2 structures, 2 elements): MedicationDispense.substitution.reason, MedicationOrder.substitution.reason, strongest binding: example, by type: CodeableConcept:Example
   extensions/profiles (4 structures, 4 elements): strongest binding: example, refs: daf-medicationdispense(Profile) [MedicationDispense.substitution.reason], daf-medicationorder(Profile) [MedicationOrder.substitution.reason], qicore-medicationdispense(Profile) [MedicationDispense.substitution.reason], qicore-medicationorder(Profile) [MedicationOrder.substitution.reason]
-  ! No expansion available
+  - #CT: continuing therapy
+  - #FP: formulary policy
+  - #OS: out of stock
+  - #RR: regulatory requirement
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-SubstitutionCondition|2015-07-31 (v3 Code System SubstitutionCondition)
   - #_Conditional: Conditional
   - #CONFIRM: Confirm first
@@ -36607,7 +37633,11 @@ Value Sets: 1016
   - #WA: Wyeth-Ayerst [Inactive - use WAL]
   - #WAL: Wyeth-Ayerst (includes Wyeth-Lederle Vaccines and Pediatrics, Wyeth Laboratories, Lederle Laboratories, and Praxis Biologics)
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-VerificationMethod|2014-03-26 (VerificationMethod)
-  ! No expansion available
+  - #_VerificationMethod: VerificationMethod
+  - #VDOC: document verification
+  - #VREG: registry verification
+  - #VTOKEN: electronic token verification
+  - #VVOICE: voice-based verification
 - ValueSet: http://hl7.org/fhir/ValueSet/v3-xBasicConfidentialityKind|2014-03-26 (x_BasicConfidentialityKind)
   - #N: 
   - #R: 
@@ -36685,7 +37715,7 @@ External Value Set Binding References: 7
   references (97 structures, 101 elements): Account.language, AllergyIntolerance.language, Appointment.language, AppointmentResponse.language, Attachment.language, AuditEvent.language, Basic.language, Binary.language, BodySite.language, Bundle.language, CarePlan.language, Claim.language, ClaimResponse.language, ClinicalImpression.language, Communication.language, CommunicationRequest.language, Composition.language, ConceptMap.language, Condition.language, Conformance.language, Contract.language, Coverage.language, DataElement.language, DetectedIssue.language, Device.language, DeviceComponent.language, DeviceComponent.languageCode, DeviceMetric.language, DeviceUseRequest.language, DeviceUseStatement.language, DiagnosticOrder.language, DiagnosticReport.language, DocumentManifest.language, DocumentReference.language, DomainResource.language, EligibilityRequest.language, EligibilityResponse.language, Encounter.language, EnrollmentRequest.language, EnrollmentResponse.language, EpisodeOfCare.language, ExplanationOfBenefit.language, FamilyMemberHistory.language, Flag.language, Goal.language, Group.language, HealthcareService.language, ImagingObjectSelection.language, ImagingStudy.language, Immunization.language, ImmunizationRecommendation.language, ImplementationGuide.language, List.language, Location.language, Media.language, Medication.language, MedicationAdministration.language, MedicationDispense.language, MedicationOrder.language, MedicationStatement.language, MessageHeader.language, NamingSystem.language, NutritionOrder.language, Observation.language, OperationDefinition.language, OperationOutcome.language, Order.language, OrderResponse.language, Organization.language, Parameters.language, Patient.communication.language, Patient.language, PaymentNotice.language, PaymentReconciliation.language, Person.language, Practitioner.communication, Practitioner.language, Procedure.language, ProcedureRequest.language, ProcessRequest.language, ProcessResponse.language, Provenance.language, Questionnaire.language, QuestionnaireResponse.language, ReferralRequest.language, RelatedPerson.language, Resource.language, RiskAssessment.language, Schedule.language, SearchParameter.language, Slot.language, Specimen.language, StructureDefinition.language, Subscription.language, Substance.language, SupplyDelivery.language, SupplyRequest.language, TestScript.language, ValueSet.codeSystem.concept.designation.language, ValueSet.language, VisionPrescription.language, strongest binding: required, by type: code:Required, CodeableConcept:Required
   extensions/profiles (106 structures, 119 elements): strongest binding: required, refs: argonaut-careplan(Profile) [CarePlan.language], cholesterol(Profile) [Observation.language], clinicaldocument(Profile) [Composition.language], consentdirective(Profile) [Contract.language], daf-allergyintolerance(Profile) [AllergyIntolerance.language], daf-allergylist(Profile) [List.language], daf-condition(Profile) [Condition.language], daf-diagnosticorder(Profile) [DiagnosticOrder.language], daf-diagnosticreport(Profile) [DiagnosticReport.language], daf-encounter(Profile) [Encounter.language], daf-encounterlist(Profile) [List.language], daf-familymemberhistory(Profile) [FamilyMemberHistory.language], daf-immunization(Profile) [Immunization.language], daf-immunizationlist(Profile) [List.language], daf-location(Profile) [Location.language], daf-medication(Profile) [Medication.language], daf-medicationadministration(Profile) [MedicationAdministration.language], daf-medicationdispense(Profile) [MedicationDispense.language], daf-medicationlist(Profile) [List.language], daf-medicationorder(Profile) [MedicationOrder.language], daf-medicationstatement(Profile) [MedicationStatement.language], daf-organization(Profile) [Organization.language], daf-patient(Profile) [Patient.communication.language,Patient.language], daf-pract(Profile) [Practitioner.communication,Practitioner.language], daf-problemlist(Profile) [List.language], daf-procedure(Profile) [Procedure.language], daf-procedurelist(Profile) [List.language], daf-relatedperson(Profile) [RelatedPerson.language], daf-resultlist(Profile) [List.language], daf-resultobs(Profile) [Observation.language], daf-smokingstatus(Profile) [Observation.language], daf-spec(Profile) [Specimen.language], daf-substance(Profile) [Substance.language], daf-vitalsigns(Profile) [Observation.language], devicemetricobservation(Profile) [Observation.language], ehrsrle-auditevent(Profile) [AuditEvent.language], ehrsrle-provenance(Profile) [Provenance.language], familymemberhistory-genetic(Profile) [FamilyMemberHistory.language], genetics(Profile) [Observation.language], hdlcholesterol(Profile) [Observation.language], iso21090-ST-language(Extension) [Extension.value[x],Extension.valueCode], ldlcholesterol(Profile) [Observation.language], lipidprofile(Profile) [DiagnosticReport.language], measurereport(Profile) [Composition.language], qicore-adverseevent(Profile) [Basic.language], qicore-allergyintolerance(Profile) [AllergyIntolerance.language], qicore-bodysite(Profile) [BodySite.language], qicore-communication(Profile) [Communication.language], qicore-communicationrequest(Profile) [CommunicationRequest.language], qicore-condition(Profile) [Condition.language], qicore-device(Profile) [Device.language], qicore-deviceuserequest(Profile) [DeviceUseRequest.language], qicore-deviceusestatement(Profile) [DeviceUseStatement.language], qicore-diagnosticorder(Profile) [DiagnosticOrder.language], qicore-diagnosticreport(Profile) [DiagnosticReport.language], qicore-encounter(Profile) [Encounter.language], qicore-familymemberhistory(Profile) [FamilyMemberHistory.language], qicore-flag(Profile) [Flag.language], qicore-goal(Profile) [Goal.language], qicore-imagingstudy(Profile) [ImagingStudy.language], qicore-immunization(Profile) [Immunization.language], qicore-immunizationrec(Profile) [ImmunizationRecommendation.language], qicore-location(Profile) [Location.language], qicore-medication(Profile) [Medication.language], qicore-medicationadministration(Profile) [MedicationAdministration.language], qicore-medicationdispense(Profile) [MedicationDispense.language], qicore-medicationorder(Profile) [MedicationOrder.language], qicore-medicationstatement(Profile) [MedicationStatement.language], qicore-observation(Profile) [Observation.language], qicore-organization(Profile) [Organization.language], qicore-patient(Profile) [Patient.communication.language,Patient.language], qicore-practitioner(Profile) [Practitioner.communication,Practitioner.language], qicore-procedure(Profile) [Procedure.language], qicore-procedurerequest(Profile) [ProcedureRequest.language], qicore-referralrequest(Profile) [ReferralRequest.language], qicore-relatedperson(Profile) [RelatedPerson.language], qicore-specimen(Profile) [Specimen.language], qicore-substance(Profile) [Substance.language], sdc-element(Profile) [DataElement.language], sdc-questionnaire(Profile) [Questionnaire.language], sdc-response(Profile) [QuestionnaireResponse.language], sdc-valueset(Profile) [ValueSet.codeSystem.concept.designation.language,ValueSet.language], sdcde-dataelement(Profile) [DataElement.language], sdcde-valueset(Profile) [ValueSet.codeSystem.concept.designation.language,ValueSet.language], shareablevalueset(Profile) [ValueSet.codeSystem.concept.designation.language,ValueSet.language], triglyceride(Profile) [Observation.language], uslab-cctarget(Profile) [Organization.language], uslab-cond(Profile) [Condition.language], uslab-do(Profile) [DiagnosticOrder.language], uslab-dr(Profile) [DiagnosticReport.language], uslab-obscode(Profile) [Observation.language], uslab-obsother(Profile) [Observation.language], uslab-obspanel(Profile) [Observation.language], uslab-obsquantity(Profile) [Observation.language], uslab-obsrange(Profile) [Observation.language], uslab-obsratio(Profile) [Observation.language], uslab-orderfacility(Profile) [Organization.language], uslab-patient(Profile) [Patient.communication.language,Patient.language], uslab-performinglab(Profile) [Organization.language], uslab-phpatient(Profile) [Patient.communication.language,Patient.language], uslab-phpract(Profile) [Practitioner.communication,Practitioner.language], uslab-pract(Profile) [Practitioner.communication,Practitioner.language], uslab-reasonforstudy(Profile) [Condition.language], uslab-spec(Profile) [Specimen.language], xdsdocumentmanifest(Profile) [DocumentManifest.language], xdsdocumentreference(Profile) [DocumentReference.content.attachment.language,DocumentReference.language]
 - ValueSet: http://www.iso.org/iso/country_codes.htm
-  extensions/profiles (9 structures, 11 elements): strongest binding: required, refs: daf-patient(Profile) [Patient.contact.address.country], qicore-location(Profile) [Location.address.country], qicore-patient(Profile) [Patient.address.country,Patient.contact.address.country], uslab-cctarget(Profile) [Organization.address.country], uslab-orderfacility(Profile) [Organization.address.country], uslab-patient(Profile) [Patient.address.country], uslab-performinglab(Profile) [Organization.address.country], uslab-phpatient(Profile) [Patient.address.country,Patient.contact.address.country], uslab-phpract(Profile) [Practitioner.address.country]
+  extensions/profiles (9 structures, 12 elements): strongest binding: required, refs: daf-patient(Profile) [Patient.contact.address.country], qicore-location(Profile) [Location.address.country], qicore-patient(Profile) [Patient.address.country,Patient.contact.address.country,Patient.extension.extension], uslab-cctarget(Profile) [Organization.address.country], uslab-orderfacility(Profile) [Organization.address.country], uslab-patient(Profile) [Patient.address.country], uslab-performinglab(Profile) [Organization.address.country], uslab-phpatient(Profile) [Patient.address.country,Patient.contact.address.country], uslab-phpract(Profile) [Practitioner.address.country]
 - ValueSet: http://www.iso.org/iso/home/standards/currency_codes
   references (1 structures, 1 elements): Account.currency, strongest binding: example, by type: Coding:Example
 - ValueSet: http://www.rfc-editor.org/bcp/bcp13.txt

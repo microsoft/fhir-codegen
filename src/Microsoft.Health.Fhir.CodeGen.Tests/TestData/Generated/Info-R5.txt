@@ -14753,7 +14753,6 @@ Profiles: 66
     @Slicing: closed: type:$this
       :valueQuantity
         - type @ Observation.value[x] only Quantity
-        - type @ Observation.value[x] only Quantity
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6, vs-2 binding name: ObservationValueAbsentReason
   - interpretation[0..*]: CodeableConcept binding name: ObservationInterpretation
   - note[0..*]: Annotation
@@ -14783,19 +14782,6 @@ Profiles: 66
     - value[x][0..1]: Attachment|boolean|CodeableConcept|dateTime|integer|Period|Quantity|Range|Ratio|Reference(MolecularSequence)|SampledData|string|time conditions: vs-3
       @Slicing: open: type:$this
         :valueQuantity
-          - type @ Observation.component.value[x] only Quantity
-          - type @ Observation.component.value[x] only CodeableConcept
-          - type @ Observation.component.value[x] only string
-          - type @ Observation.component.value[x] only boolean
-          - type @ Observation.component.value[x] only integer
-          - type @ Observation.component.value[x] only Range
-          - type @ Observation.component.value[x] only Ratio
-          - type @ Observation.component.value[x] only SampledData
-          - type @ Observation.component.value[x] only time
-          - type @ Observation.component.value[x] only dateTime
-          - type @ Observation.component.value[x] only Period
-          - type @ Observation.component.value[x] only Attachment
-          - type @ Observation.component.value[x] only Reference
           - type @ Observation.component.value[x] only Quantity
     - dataAbsentReason[0..1]: CodeableConcept conditions: vs-3 binding name: ObservationValueAbsentReason
     - interpretation[0..*]: CodeableConcept binding name: ObservationInterpretation
@@ -14953,19 +14939,6 @@ Profiles: 66
     @Slicing: open: type:$this
       :valueQuantity
         - type @ Observation.value[x] only Quantity
-        - type @ Observation.value[x] only CodeableConcept
-        - type @ Observation.value[x] only string
-        - type @ Observation.value[x] only boolean
-        - type @ Observation.value[x] only integer
-        - type @ Observation.value[x] only Range
-        - type @ Observation.value[x] only Ratio
-        - type @ Observation.value[x] only SampledData
-        - type @ Observation.value[x] only time
-        - type @ Observation.value[x] only dateTime
-        - type @ Observation.value[x] only Period
-        - type @ Observation.value[x] only Attachment
-        - type @ Observation.value[x] only Reference
-        - type @ Observation.value[x] only Quantity
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6, vs-2 binding name: ObservationValueAbsentReason
   - interpretation[0..*]: CodeableConcept binding name: ObservationInterpretation
   - note[0..*]: Annotation
@@ -14995,19 +14968,6 @@ Profiles: 66
     - value[x][0..1]: Attachment|boolean|CodeableConcept|dateTime|integer|Period|Quantity|Range|Ratio|Reference(MolecularSequence)|SampledData|string|time conditions: vs-3
       @Slicing: open: type:$this
         :valueQuantity
-          - type @ Observation.component.value[x] only Quantity
-          - type @ Observation.component.value[x] only CodeableConcept
-          - type @ Observation.component.value[x] only string
-          - type @ Observation.component.value[x] only boolean
-          - type @ Observation.component.value[x] only integer
-          - type @ Observation.component.value[x] only Range
-          - type @ Observation.component.value[x] only Ratio
-          - type @ Observation.component.value[x] only SampledData
-          - type @ Observation.component.value[x] only time
-          - type @ Observation.component.value[x] only dateTime
-          - type @ Observation.component.value[x] only Period
-          - type @ Observation.component.value[x] only Attachment
-          - type @ Observation.component.value[x] only Reference
           - type @ Observation.component.value[x] only Quantity
     - dataAbsentReason[0..1]: CodeableConcept conditions: vs-3 binding name: ObservationValueAbsentReason
     - interpretation[0..*]: CodeableConcept binding name: ObservationInterpretation
@@ -15165,19 +15125,6 @@ Profiles: 66
     @Slicing: open: type:$this
       :valueQuantity
         - type @ Observation.value[x] only Quantity
-        - type @ Observation.value[x] only CodeableConcept
-        - type @ Observation.value[x] only string
-        - type @ Observation.value[x] only boolean
-        - type @ Observation.value[x] only integer
-        - type @ Observation.value[x] only Range
-        - type @ Observation.value[x] only Ratio
-        - type @ Observation.value[x] only SampledData
-        - type @ Observation.value[x] only time
-        - type @ Observation.value[x] only dateTime
-        - type @ Observation.value[x] only Period
-        - type @ Observation.value[x] only Attachment
-        - type @ Observation.value[x] only Reference
-        - type @ Observation.value[x] only Quantity
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6, vs-2 binding name: ObservationValueAbsentReason
   - interpretation[0..*]: CodeableConcept binding name: ObservationInterpretation
   - note[0..*]: Annotation
@@ -15207,19 +15154,6 @@ Profiles: 66
     - value[x][0..1]: Attachment|boolean|CodeableConcept|dateTime|integer|Period|Quantity|Range|Ratio|Reference(MolecularSequence)|SampledData|string|time conditions: vs-3
       @Slicing: open: type:$this
         :valueQuantity
-          - type @ Observation.component.value[x] only Quantity
-          - type @ Observation.component.value[x] only CodeableConcept
-          - type @ Observation.component.value[x] only string
-          - type @ Observation.component.value[x] only boolean
-          - type @ Observation.component.value[x] only integer
-          - type @ Observation.component.value[x] only Range
-          - type @ Observation.component.value[x] only Ratio
-          - type @ Observation.component.value[x] only SampledData
-          - type @ Observation.component.value[x] only time
-          - type @ Observation.component.value[x] only dateTime
-          - type @ Observation.component.value[x] only Period
-          - type @ Observation.component.value[x] only Attachment
-          - type @ Observation.component.value[x] only Reference
           - type @ Observation.component.value[x] only Quantity
     - dataAbsentReason[0..1]: CodeableConcept conditions: vs-3 binding name: ObservationValueAbsentReason
     - interpretation[0..*]: CodeableConcept binding name: ObservationInterpretation
@@ -15377,19 +15311,6 @@ Profiles: 66
     @Slicing: open: type:$this
       :valueQuantity
         - type @ Observation.value[x] only Quantity
-        - type @ Observation.value[x] only CodeableConcept
-        - type @ Observation.value[x] only string
-        - type @ Observation.value[x] only boolean
-        - type @ Observation.value[x] only integer
-        - type @ Observation.value[x] only Range
-        - type @ Observation.value[x] only Ratio
-        - type @ Observation.value[x] only SampledData
-        - type @ Observation.value[x] only time
-        - type @ Observation.value[x] only dateTime
-        - type @ Observation.value[x] only Period
-        - type @ Observation.value[x] only Attachment
-        - type @ Observation.value[x] only Reference
-        - type @ Observation.value[x] only Quantity
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6, vs-2 binding name: ObservationValueAbsentReason
   - interpretation[0..*]: CodeableConcept binding name: ObservationInterpretation
   - note[0..*]: Annotation
@@ -15419,19 +15340,6 @@ Profiles: 66
     - value[x][0..1]: Attachment|boolean|CodeableConcept|dateTime|integer|Period|Quantity|Range|Ratio|Reference(MolecularSequence)|SampledData|string|time conditions: vs-3
       @Slicing: open: type:$this
         :valueQuantity
-          - type @ Observation.component.value[x] only Quantity
-          - type @ Observation.component.value[x] only CodeableConcept
-          - type @ Observation.component.value[x] only string
-          - type @ Observation.component.value[x] only boolean
-          - type @ Observation.component.value[x] only integer
-          - type @ Observation.component.value[x] only Range
-          - type @ Observation.component.value[x] only Ratio
-          - type @ Observation.component.value[x] only SampledData
-          - type @ Observation.component.value[x] only time
-          - type @ Observation.component.value[x] only dateTime
-          - type @ Observation.component.value[x] only Period
-          - type @ Observation.component.value[x] only Attachment
-          - type @ Observation.component.value[x] only Reference
           - type @ Observation.component.value[x] only Quantity
     - dataAbsentReason[0..1]: CodeableConcept conditions: vs-3 binding name: ObservationValueAbsentReason
     - interpretation[0..*]: CodeableConcept binding name: ObservationInterpretation
@@ -15589,19 +15497,6 @@ Profiles: 66
     @Slicing: open: type:$this
       :valueQuantity
         - type @ Observation.value[x] only Quantity
-        - type @ Observation.value[x] only CodeableConcept
-        - type @ Observation.value[x] only string
-        - type @ Observation.value[x] only boolean
-        - type @ Observation.value[x] only integer
-        - type @ Observation.value[x] only Range
-        - type @ Observation.value[x] only Ratio
-        - type @ Observation.value[x] only SampledData
-        - type @ Observation.value[x] only time
-        - type @ Observation.value[x] only dateTime
-        - type @ Observation.value[x] only Period
-        - type @ Observation.value[x] only Attachment
-        - type @ Observation.value[x] only Reference
-        - type @ Observation.value[x] only Quantity
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6, vs-2 binding name: ObservationValueAbsentReason
   - interpretation[0..*]: CodeableConcept binding name: ObservationInterpretation
   - note[0..*]: Annotation
@@ -15632,19 +15527,6 @@ Profiles: 66
     - value[x][0..1]: Attachment|boolean|CodeableConcept|dateTime|integer|Period|Quantity|Range|Ratio|Reference(MolecularSequence)|SampledData|string|time conditions: vs-3
       @Slicing: open: type:$this
         :valueQuantity
-          - type @ Observation.component.value[x] only Quantity
-          - type @ Observation.component.value[x] only CodeableConcept
-          - type @ Observation.component.value[x] only string
-          - type @ Observation.component.value[x] only boolean
-          - type @ Observation.component.value[x] only integer
-          - type @ Observation.component.value[x] only Range
-          - type @ Observation.component.value[x] only Ratio
-          - type @ Observation.component.value[x] only SampledData
-          - type @ Observation.component.value[x] only time
-          - type @ Observation.component.value[x] only dateTime
-          - type @ Observation.component.value[x] only Period
-          - type @ Observation.component.value[x] only Attachment
-          - type @ Observation.component.value[x] only Reference
           - type @ Observation.component.value[x] only Quantity
     - dataAbsentReason[0..1]: CodeableConcept conditions: vs-3 binding name: ObservationValueAbsentReason
     - interpretation[0..*]: CodeableConcept binding name: ObservationInterpretation
@@ -15861,7 +15743,6 @@ Profiles: 66
   - module[x][1..1]: uri binding name: GuidanceModuleCode
     @Slicing: closed: type:$this
       :moduleUri
-        - type @ GuidanceResponse.module[x] only uri
         - type @ GuidanceResponse.module[x] only uri
   - status[1..1]: code binding name: GuidanceResponseStatus (W5: FiveWs.status)
     {data-requested|data-required|entered-in-error|failure|in-progress|success}
@@ -16298,19 +16179,6 @@ Profiles: 66
   - value[x][0..1]: Attachment|boolean|CodeableConcept|dateTime|integer|Period|Quantity|Range|Ratio|Reference(MolecularSequence)|SampledData|string|time conditions: obs-6, obs-7
     @Slicing: open: type:$this
       :valueQuantity
-        - type @ Observation.value[x] only Quantity
-        - type @ Observation.value[x] only CodeableConcept
-        - type @ Observation.value[x] only string
-        - type @ Observation.value[x] only boolean
-        - type @ Observation.value[x] only integer
-        - type @ Observation.value[x] only Range
-        - type @ Observation.value[x] only Ratio
-        - type @ Observation.value[x] only SampledData
-        - type @ Observation.value[x] only time
-        - type @ Observation.value[x] only dateTime
-        - type @ Observation.value[x] only Period
-        - type @ Observation.value[x] only Attachment
-        - type @ Observation.value[x] only Reference
         - type @ Observation.value[x] only Quantity
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6 binding name: ObservationValueAbsentReason
   - interpretation[0..1]: CodeableConcept binding name: ObservationInterpretation
@@ -17194,7 +17062,6 @@ Profiles: 66
   - effective[x][1..1]: dateTime (W5: FiveWs.done[x])
     @Slicing: closed: type:$this
       :effectiveDateTime
-        - type @ Observation.effective[x] only dateTime
         - type @ Observation.effective[x] only dateTime
   - issued[0..0]: instant (W5: FiveWs.recorded)
   - performer[0..*]: Reference(CareTeam|Organization|Patient|Practitioner|PractitionerRole|RelatedPerson) (W5: FiveWs.actor)
@@ -18524,19 +18391,6 @@ Profiles: 66
     @Slicing: open: type:$this
       :valueQuantity
         - type @ Observation.value[x] only Quantity
-        - type @ Observation.value[x] only CodeableConcept
-        - type @ Observation.value[x] only string
-        - type @ Observation.value[x] only boolean
-        - type @ Observation.value[x] only integer
-        - type @ Observation.value[x] only Range
-        - type @ Observation.value[x] only Ratio
-        - type @ Observation.value[x] only SampledData
-        - type @ Observation.value[x] only time
-        - type @ Observation.value[x] only dateTime
-        - type @ Observation.value[x] only Period
-        - type @ Observation.value[x] only Attachment
-        - type @ Observation.value[x] only Reference
-        - type @ Observation.value[x] only Quantity
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6 binding name: ObservationValueAbsentReason
   - interpretation[0..1]: CodeableConcept binding name: ObservationInterpretation
   - note[0..*]: Annotation
@@ -18721,19 +18575,6 @@ Profiles: 66
     @Slicing: open: type:$this
       :valueQuantity
         - type @ Observation.value[x] only Quantity
-        - type @ Observation.value[x] only CodeableConcept
-        - type @ Observation.value[x] only string
-        - type @ Observation.value[x] only boolean
-        - type @ Observation.value[x] only integer
-        - type @ Observation.value[x] only Range
-        - type @ Observation.value[x] only Ratio
-        - type @ Observation.value[x] only SampledData
-        - type @ Observation.value[x] only time
-        - type @ Observation.value[x] only dateTime
-        - type @ Observation.value[x] only Period
-        - type @ Observation.value[x] only Attachment
-        - type @ Observation.value[x] only Reference
-        - type @ Observation.value[x] only Quantity
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6, vs-2 binding name: ObservationValueAbsentReason
   - interpretation[0..*]: CodeableConcept binding name: ObservationInterpretation
   - note[0..*]: Annotation
@@ -18763,19 +18604,6 @@ Profiles: 66
     - value[x][0..1]: Attachment|boolean|CodeableConcept|dateTime|integer|Period|Quantity|Range|Ratio|Reference(MolecularSequence)|SampledData|string|time conditions: vs-3
       @Slicing: open: type:$this
         :valueQuantity
-          - type @ Observation.component.value[x] only Quantity
-          - type @ Observation.component.value[x] only CodeableConcept
-          - type @ Observation.component.value[x] only string
-          - type @ Observation.component.value[x] only boolean
-          - type @ Observation.component.value[x] only integer
-          - type @ Observation.component.value[x] only Range
-          - type @ Observation.component.value[x] only Ratio
-          - type @ Observation.component.value[x] only SampledData
-          - type @ Observation.component.value[x] only time
-          - type @ Observation.component.value[x] only dateTime
-          - type @ Observation.component.value[x] only Period
-          - type @ Observation.component.value[x] only Attachment
-          - type @ Observation.component.value[x] only Reference
           - type @ Observation.component.value[x] only Quantity
     - dataAbsentReason[0..1]: CodeableConcept conditions: vs-3 binding name: ObservationValueAbsentReason
     - interpretation[0..*]: CodeableConcept binding name: ObservationInterpretation
@@ -18933,19 +18761,6 @@ Profiles: 66
     @Slicing: open: type:$this
       :valueQuantity
         - type @ Observation.value[x] only Quantity
-        - type @ Observation.value[x] only CodeableConcept
-        - type @ Observation.value[x] only string
-        - type @ Observation.value[x] only boolean
-        - type @ Observation.value[x] only integer
-        - type @ Observation.value[x] only Range
-        - type @ Observation.value[x] only Ratio
-        - type @ Observation.value[x] only SampledData
-        - type @ Observation.value[x] only time
-        - type @ Observation.value[x] only dateTime
-        - type @ Observation.value[x] only Period
-        - type @ Observation.value[x] only Attachment
-        - type @ Observation.value[x] only Reference
-        - type @ Observation.value[x] only Quantity
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6, vs-2 binding name: ObservationValueAbsentReason
   - interpretation[0..*]: CodeableConcept binding name: ObservationInterpretation
   - note[0..*]: Annotation
@@ -18975,19 +18790,6 @@ Profiles: 66
     - value[x][0..1]: Attachment|boolean|CodeableConcept|dateTime|integer|Period|Quantity|Range|Ratio|Reference(MolecularSequence)|SampledData|string|time conditions: vs-3
       @Slicing: open: type:$this
         :valueQuantity
-          - type @ Observation.component.value[x] only Quantity
-          - type @ Observation.component.value[x] only CodeableConcept
-          - type @ Observation.component.value[x] only string
-          - type @ Observation.component.value[x] only boolean
-          - type @ Observation.component.value[x] only integer
-          - type @ Observation.component.value[x] only Range
-          - type @ Observation.component.value[x] only Ratio
-          - type @ Observation.component.value[x] only SampledData
-          - type @ Observation.component.value[x] only time
-          - type @ Observation.component.value[x] only dateTime
-          - type @ Observation.component.value[x] only Period
-          - type @ Observation.component.value[x] only Attachment
-          - type @ Observation.component.value[x] only Reference
           - type @ Observation.component.value[x] only Quantity
     - dataAbsentReason[0..1]: CodeableConcept conditions: vs-3 binding name: ObservationValueAbsentReason
     - interpretation[0..*]: CodeableConcept binding name: ObservationInterpretation
@@ -19231,19 +19033,6 @@ Profiles: 66
   - value[x][0..1]: Attachment|boolean|CodeableConcept|dateTime|integer|Period|Quantity|Range|Ratio|Reference(MolecularSequence)|SampledData|string|time conditions: obs-6, obs-7
     @Slicing: open: type:$this
       :valueQuantity
-        - type @ Observation.value[x] only Quantity
-        - type @ Observation.value[x] only CodeableConcept
-        - type @ Observation.value[x] only string
-        - type @ Observation.value[x] only boolean
-        - type @ Observation.value[x] only integer
-        - type @ Observation.value[x] only Range
-        - type @ Observation.value[x] only Ratio
-        - type @ Observation.value[x] only SampledData
-        - type @ Observation.value[x] only time
-        - type @ Observation.value[x] only dateTime
-        - type @ Observation.value[x] only Period
-        - type @ Observation.value[x] only Attachment
-        - type @ Observation.value[x] only Reference
         - type @ Observation.value[x] only Quantity
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6 binding name: ObservationValueAbsentReason
   - interpretation[0..1]: CodeableConcept binding name: ObservationInterpretation
@@ -19849,19 +19638,6 @@ Profiles: 66
     @Slicing: open: type:$this
       :valueQuantity
         - type @ Observation.value[x] only Quantity
-        - type @ Observation.value[x] only CodeableConcept
-        - type @ Observation.value[x] only string
-        - type @ Observation.value[x] only boolean
-        - type @ Observation.value[x] only integer
-        - type @ Observation.value[x] only Range
-        - type @ Observation.value[x] only Ratio
-        - type @ Observation.value[x] only SampledData
-        - type @ Observation.value[x] only time
-        - type @ Observation.value[x] only dateTime
-        - type @ Observation.value[x] only Period
-        - type @ Observation.value[x] only Attachment
-        - type @ Observation.value[x] only Reference
-        - type @ Observation.value[x] only Quantity
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6, vs-2 binding name: ObservationValueAbsentReason
   - interpretation[0..*]: CodeableConcept binding name: ObservationInterpretation
   - note[0..*]: Annotation
@@ -19891,19 +19667,6 @@ Profiles: 66
     - value[x][0..1]: Attachment|boolean|CodeableConcept|dateTime|integer|Period|Quantity|Range|Ratio|Reference(MolecularSequence)|SampledData|string|time conditions: vs-3
       @Slicing: open: type:$this
         :valueQuantity
-          - type @ Observation.component.value[x] only Quantity
-          - type @ Observation.component.value[x] only CodeableConcept
-          - type @ Observation.component.value[x] only string
-          - type @ Observation.component.value[x] only boolean
-          - type @ Observation.component.value[x] only integer
-          - type @ Observation.component.value[x] only Range
-          - type @ Observation.component.value[x] only Ratio
-          - type @ Observation.component.value[x] only SampledData
-          - type @ Observation.component.value[x] only time
-          - type @ Observation.component.value[x] only dateTime
-          - type @ Observation.component.value[x] only Period
-          - type @ Observation.component.value[x] only Attachment
-          - type @ Observation.component.value[x] only Reference
           - type @ Observation.component.value[x] only Quantity
     - dataAbsentReason[0..1]: CodeableConcept conditions: vs-3 binding name: ObservationValueAbsentReason
     - interpretation[0..*]: CodeableConcept binding name: ObservationInterpretation
@@ -21703,19 +21466,6 @@ Profiles: 66
     @Slicing: open: type:$this
       :valueQuantity
         - type @ Observation.value[x] only Quantity
-        - type @ Observation.value[x] only CodeableConcept
-        - type @ Observation.value[x] only string
-        - type @ Observation.value[x] only boolean
-        - type @ Observation.value[x] only integer
-        - type @ Observation.value[x] only Range
-        - type @ Observation.value[x] only Ratio
-        - type @ Observation.value[x] only SampledData
-        - type @ Observation.value[x] only time
-        - type @ Observation.value[x] only dateTime
-        - type @ Observation.value[x] only Period
-        - type @ Observation.value[x] only Attachment
-        - type @ Observation.value[x] only Reference
-        - type @ Observation.value[x] only Quantity
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6, vs-2 binding name: ObservationValueAbsentReason
   - interpretation[0..*]: CodeableConcept binding name: ObservationInterpretation
   - note[0..*]: Annotation
@@ -21745,19 +21495,6 @@ Profiles: 66
     - value[x][0..1]: Attachment|boolean|CodeableConcept|dateTime|integer|Period|Quantity|Range|Ratio|Reference(MolecularSequence)|SampledData|string|time conditions: vs-3
       @Slicing: open: type:$this
         :valueQuantity
-          - type @ Observation.component.value[x] only Quantity
-          - type @ Observation.component.value[x] only CodeableConcept
-          - type @ Observation.component.value[x] only string
-          - type @ Observation.component.value[x] only boolean
-          - type @ Observation.component.value[x] only integer
-          - type @ Observation.component.value[x] only Range
-          - type @ Observation.component.value[x] only Ratio
-          - type @ Observation.component.value[x] only SampledData
-          - type @ Observation.component.value[x] only time
-          - type @ Observation.component.value[x] only dateTime
-          - type @ Observation.component.value[x] only Period
-          - type @ Observation.component.value[x] only Attachment
-          - type @ Observation.component.value[x] only Reference
           - type @ Observation.component.value[x] only Quantity
     - dataAbsentReason[0..1]: CodeableConcept conditions: vs-3 binding name: ObservationValueAbsentReason
     - interpretation[0..*]: CodeableConcept binding name: ObservationInterpretation
@@ -24041,19 +23778,6 @@ Profiles: 66
     @Slicing: open: type:$this
       :valueQuantity
         - type @ Observation.value[x] only Quantity
-        - type @ Observation.value[x] only CodeableConcept
-        - type @ Observation.value[x] only string
-        - type @ Observation.value[x] only boolean
-        - type @ Observation.value[x] only integer
-        - type @ Observation.value[x] only Range
-        - type @ Observation.value[x] only Ratio
-        - type @ Observation.value[x] only SampledData
-        - type @ Observation.value[x] only time
-        - type @ Observation.value[x] only dateTime
-        - type @ Observation.value[x] only Period
-        - type @ Observation.value[x] only Attachment
-        - type @ Observation.value[x] only Reference
-        - type @ Observation.value[x] only Quantity
   - dataAbsentReason[0..1]: CodeableConcept conditions: obs-6 binding name: ObservationValueAbsentReason
   - interpretation[0..1]: CodeableConcept binding name: ObservationInterpretation
   - note[0..*]: Annotation
@@ -24256,19 +23980,6 @@ Profiles: 66
       @Slicing: open: type:$this
         :valueQuantity
           - type @ Observation.component.value[x] only Quantity
-          - type @ Observation.component.value[x] only CodeableConcept
-          - type @ Observation.component.value[x] only string
-          - type @ Observation.component.value[x] only boolean
-          - type @ Observation.component.value[x] only integer
-          - type @ Observation.component.value[x] only Range
-          - type @ Observation.component.value[x] only Ratio
-          - type @ Observation.component.value[x] only SampledData
-          - type @ Observation.component.value[x] only time
-          - type @ Observation.component.value[x] only dateTime
-          - type @ Observation.component.value[x] only Period
-          - type @ Observation.component.value[x] only Attachment
-          - type @ Observation.component.value[x] only Reference
-          - type @ Observation.component.value[x] only Quantity
     - dataAbsentReason[0..1]: CodeableConcept conditions: vs-3 binding name: ObservationValueAbsentReason
     - interpretation[0..*]: CodeableConcept binding name: ObservationInterpretation
     - referenceRange[0..*]: http://hl7.org/fhir/StructureDefinition/Observation#Observation.referenceRange
@@ -24451,19 +24162,6 @@ Profiles: 66
     - value[x][0..1]: Attachment|boolean|CodeableConcept|dateTime|integer|Period|Quantity|Range|Ratio|Reference(MolecularSequence)|SampledData|string|time conditions: vs-3
       @Slicing: open: type:$this
         :valueQuantity
-          - type @ Observation.component.value[x] only Quantity
-          - type @ Observation.component.value[x] only CodeableConcept
-          - type @ Observation.component.value[x] only string
-          - type @ Observation.component.value[x] only boolean
-          - type @ Observation.component.value[x] only integer
-          - type @ Observation.component.value[x] only Range
-          - type @ Observation.component.value[x] only Ratio
-          - type @ Observation.component.value[x] only SampledData
-          - type @ Observation.component.value[x] only time
-          - type @ Observation.component.value[x] only dateTime
-          - type @ Observation.component.value[x] only Period
-          - type @ Observation.component.value[x] only Attachment
-          - type @ Observation.component.value[x] only Reference
           - type @ Observation.component.value[x] only Quantity
     - dataAbsentReason[0..1]: CodeableConcept conditions: vs-3 binding name: ObservationValueAbsentReason
     - interpretation[0..*]: CodeableConcept binding name: ObservationInterpretation

@@ -129,7 +129,7 @@ public class StructureDefinition_20_50 : ICrossVersionProcessor<StructureDefinit
         }
 
         // reconcile the slice names for this structure manually
-        BuildElementIds(v);
+        buildElementIds(v);
 
         // normalize element repetitions (slicing was separate)
         ReconcileElementRepetitions(v);
@@ -137,8 +137,8 @@ public class StructureDefinition_20_50 : ICrossVersionProcessor<StructureDefinit
         // ensure the root element has a base type and valid min/max values
         Normalization.VerifyRootElementType(v);
 
-        // remove snapshots - we will rebuild them from the differentials later.
-        v.Snapshot = null;
+        //// remove snapshots - we will rebuild them from the differentials later.
+        //v.Snapshot = null;
 
         return v;
 
@@ -190,7 +190,7 @@ public class StructureDefinition_20_50 : ICrossVersionProcessor<StructureDefinit
     }
 
 
-    private void BuildElementIds(StructureDefinition sd)
+    private void buildElementIds(StructureDefinition sd)
     {
         List<string> pathComponents = [];
         List<string?> sliceNameAtLoc = [];
@@ -281,7 +281,8 @@ public class StructureDefinition_20_50 : ICrossVersionProcessor<StructureDefinit
                 if (edIsNewSlice)
                 {
                     // if we have not seen this element before, it is an alias
-                    if (!allPaths.Contains(ed.Path))
+                    if (!allPaths.Contains(ed.Path) &&
+                        (ed.Slicing?.Discriminator == null))
                     {
                         allPaths.Add(ed.Path);
                         ed.SliceName = null;
@@ -289,7 +290,8 @@ public class StructureDefinition_20_50 : ICrossVersionProcessor<StructureDefinit
                         ed.AliasElement.Add(new FhirString(ed.SliceName));
                     }
                 }
-                else if (!allPaths.Contains(ed.Path))
+
+                if (!allPaths.Contains(ed.Path))
                 {
                     allPaths.Add(ed.Path);
                 }

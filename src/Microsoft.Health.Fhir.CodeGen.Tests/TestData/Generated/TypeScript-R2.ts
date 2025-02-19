@@ -17,7 +17,7 @@
   // Option: "UseOfficialRegistries" = "True"
   // Option: "AdditionalFhirRegistryUrls" = ""
   // Option: "AdditionalNpmRegistryUrls" = ""
-  // Option: "OutputDirectory" = "./generated"
+  // Option: "OutputDirectory" = "."
   // Option: "OutputFilename" = ""
   // Option: "Packages" = ""
   // Option: "AutoLoadExpansions" = "True"
@@ -87,11 +87,6 @@ export interface Address extends Element {
    */
   use?: ('home'|'work'|'temp'|'old') | undefined;
   _use?: Element | undefined;
-}
-/**
- * A duration (length of time) with a UCUM code
- */
-export interface Age {
 }
 /**
  * Base StructureDefinition for Annotation Type
@@ -262,21 +257,6 @@ export interface ContactPoint extends Element {
    */
   value?: string | undefined;
   _value?: Element | undefined;
-}
-/**
- * A count of a discrete element (no unit)
- */
-export interface Count {
-}
-/**
- * A measure of distance
- */
-export interface Distance {
-}
-/**
- * A length of time
- */
-export interface Duration {
 }
 /**
  * Base StructureDefinition for Element Type
@@ -1422,11 +1402,6 @@ export interface Meta extends Element {
   _versionId?: Element | undefined;
 }
 /**
- * An amount of money. With regard to precision, see [Decimal Precision](datatypes.html#precision)
- */
-export interface Money {
-}
-/**
  * Base StructureDefinition for Narrative Type
  */
 export interface Narrative extends Element {
@@ -1618,11 +1593,6 @@ export interface Signature extends Element {
    */
   whoString?: string | undefined;
   _whoString?: Element | undefined;
-}
-/**
- * A fixed quantity (no comparator)
- */
-export interface SimpleQuantity {
 }
 /**
  * Base StructureDefinition for Timing Type

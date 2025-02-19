@@ -17,7 +17,7 @@
   // Option: "UseOfficialRegistries" = "True"
   // Option: "AdditionalFhirRegistryUrls" = ""
   // Option: "AdditionalNpmRegistryUrls" = ""
-  // Option: "OutputDirectory" = "./generated"
+  // Option: "OutputDirectory" = "."
   // Option: "OutputFilename" = ""
   // Option: "Packages" = ""
   // Option: "AutoLoadExpansions" = "True"

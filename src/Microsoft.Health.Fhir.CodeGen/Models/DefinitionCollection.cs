@@ -208,26 +208,28 @@ public partial class DefinitionCollection
                     }
 
                     // if we are in DSTU2, we need to check some of the generated snapshot properties
-                    if (FhirSequence == FhirReleases.FhirSequenceCodes.DSTU2)
+                    if ((FhirSequence == FhirReleases.FhirSequenceCodes.DSTU2) &&
+                        (sd.Differential?.Element.Count > 0) &&
+                        (sd.Snapshot?.Element.Count > 0))
                     {
                         // make a lookup of the differential
-                        ILookup<string, ElementDefinition> lookup = sd.Differential.Element.ToLookup(e => e.ElementId);
+                        ILookup<string, ElementDefinition> diffElementLookup = sd.Differential.Element.ToLookup(e => e.ElementId);
 
                         foreach (ElementDefinition ed in sd.Snapshot.Element)
                         {
-                            if (lookup.Contains(ed.ElementId))
+                            if (diffElementLookup.Contains(ed.ElementId))
                             {
                                 // get the differential element
-                                ElementDefinition ded = lookup[ed.ElementId].First();
+                                ElementDefinition ded = diffElementLookup[ed.ElementId].First();
 
                                 // check for incorrect minium value
-                                if (ed.Min != ded.Min)
+                                if ((ded.Min != null) && (ed.Min != ded.Min))
                                 {
                                     ed.Min = ded.Min;
                                 }
 
                                 // check for incorrect maximum value
-                                if (ed.Max != ded.Max)
+                                if ((ded.Max != null) && (ed.Max != ded.Max))
                                 {
                                     ed.Max = ded.Max;
                                 }

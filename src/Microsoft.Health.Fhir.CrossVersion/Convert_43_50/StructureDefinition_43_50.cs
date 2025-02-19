@@ -3,8 +3,10 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
+using System.Text;
 using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Model;
+using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 
 namespace Microsoft.Health.Fhir.CrossVersion.Convert_43_50;
@@ -30,10 +32,13 @@ public class StructureDefinition_43_50 : ICrossVersionProcessor<StructureDefinit
             Normalization.ReconcilePrimitiveType(v, primitiveInfo);
         }
 
+        //// remove snapshots - we will rebuild them from the differentials later.
+        //v.Snapshot = null;
+
         return v;
 	}
 
-	public void Process(ISourceNode node, StructureDefinition current)
+    public void Process(ISourceNode node, StructureDefinition current)
 	{
 		switch (node.Name)
 		{
