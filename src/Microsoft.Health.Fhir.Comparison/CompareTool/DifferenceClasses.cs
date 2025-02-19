@@ -48,84 +48,84 @@ public class RelationshipLookup
     public required string Name { get; set; }
 }
 
-public class PackageMetadata
+public class DbFhirPackage
 {
     [Key]
     public int Key { get; set; }
 
-    public string Name { get; set; } = null!;
-    public string PackageId { get; set; } = null!;
-    public string PackageVersion { get; set; } = null!;
-    public string CanonicalUrl { get; set; } = null!;
+    public required string Name { get; set; } = null!;
+    public required string PackageId { get; set; } = null!;
+    public required string PackageVersion { get; set; } = null!;
+    public required string CanonicalUrl { get; set; } = null!;
 
-    public ICollection<PackageDiffPair> SourceDiffs { get; init; } = null!;
+    public ICollection<DbFhirPackageComparisonPair> SourceDiffs { get; init; } = null!;
 
-    public ICollection<PackageDiffPair> TargetDiffs { get; init; } = null!;
+    public ICollection<DbFhirPackageComparisonPair> TargetDiffs { get; init; } = null!;
 
-    public ICollection<ValueSetMetadata> ValueSets { get; init; } = null!;
+    public ICollection<DbValueSet> ValueSets { get; init; } = null!;
 }
 
-public class PackageDiffPair
+public class DbFhirPackageComparisonPair
 {
     [Key]
     public int Key { get; set; }
 
-    public int SourcePackageKey { get; set; }
-    public PackageMetadata SourcePackage { get; init; } = null!;
+    public int FhirPackageKey { get; set; }
+    public DbFhirPackage FhirPackage { get; init; } = null!;
 
     public int TargetPackageKey { get; set; }
     //[ForeignKey(nameof(TargetPackageKey))]
-    public PackageMetadata TargetPackage { get; init; } = null!;
+    public DbFhirPackage TargetPackage { get; init; } = null!;
 }
 
-
-public class ValueSetMetadata
+public abstract class DbCanonicalResource
 {
     [Key]
     public int Key { get; set; }
 
-    public int ContainingPackageKey { get; set; }
-    public PackageMetadata ContainingPackage { get; init; } = null!;
+    public int FhirPackageKey { get; set; }
+    public required DbFhirPackage FhirPackage { get; init; } = null!;
 
-    public string CanonicalUrl { get; set; } = null!;
-    public string Name { get; set; } = null!;
-    public string Version { get; set; } = null!;
-    public string Description { get; set; } = null!;
-    public bool CanExpand { get; set; }
-    public bool? HasEscapeValveCode { get; set; } = null;
-    public string? Message { get; set; } = null;
+    public required string Id { get; set; } = null!;
+    public required string Url { get; set; } = null!;
+    public required string Name { get; set; } = null!;
+    public required string Version { get; set; } = null!;
+    public required Hl7.Fhir.Model.PublicationStatus? Status { get; set; } = null;
+    public required string? Title { get; set; } = null;
+    public required string? Description { get; set; } = null;
+    public required string? Purpose { get; set; } = null;
+}
 
-    public ICollection<ValueSetConcept> Concepts { get; init; } = null!;
+
+public class DbValueSet : DbCanonicalResource
+{
+    public required bool CanExpand { get; set; }
+    public required bool? HasEscapeValveCode { get; set; } = null;
+    public required string? Message { get; set; } = null;
+
+    public ICollection<DbValueSetConcept> Concepts { get; init; } = null!;
 
     public ICollection<ValueSetPairComparison> ComparisonsAsSource { get; init; } = null!;
 
     public ICollection<ValueSetPairComparison> ComparisonsAsTarget { get; init; } = null!;
 }
 
-public class ValueSetConcept
+public class DbValueSetConcept
 {
     [Key]
     public int Key { get; set; }
 
-    public ICollection<ValueSetMetadata> ValueSets { get; set; } = null!;
+    public int ValueSetKey { get; set; }
+    public required DbValueSet ValueSet { get; set; } = null!;
 
-    public string System { get; set; } = null!;
-    public string Code { get; set; } = null!;
-    public string? Display { get; set; } = null;
+    public int FhirPackageKey { get; set; }
+    public required DbFhirPackage FhirPackage { get; init; } = null!;
+
+
+    public required string System { get; set; } = null!;
+    public required string Code { get; set; } = null!;
+    public required string? Display { get; set; } = null;
 }
-
-public class ValueSetConceptMapping
-{
-    [Key]
-    public int Key { get; set; }
-
-    public int VsMetaKey { get; set; }
-    public ValueSetMetadata VsMeta { get; init; } = null!;
-
-    public int VsConceptKey { get; set; }
-    public ValueSetConcept VsConcept { get; init; } = null!;
-}
-
 
 public class ValueSetPairComparison : IPairComparison<ValueSet>
 {
@@ -139,10 +139,10 @@ public class ValueSetPairComparison : IPairComparison<ValueSet>
     public ValueSet? Source { get; set; } = null;
 
     public int SourceVsMetaKey { get; set; }
-    public ValueSetMetadata SourceVsMeta { get; init; } = null!;
-    public string SourceCanonical { get; set; } = null!;
-    public string SourceName { get; set; } = null!;
-    public string? SourceVersion { get; set; } = null;
+    public required DbValueSet SourceVsMeta { get; init; } = null!;
+    public required string SourceCanonical { get; set; } = null!;
+    public required string SourceName { get; set; } = null!;
+    public required string? SourceVersion { get; set; } = null;
 
 
     /// <summary>
@@ -152,28 +152,28 @@ public class ValueSetPairComparison : IPairComparison<ValueSet>
     public ValueSet? Target { get; set; } = null;
 
     public int TargetVsMetaKey { get; set; }
-    public ValueSetMetadata TargetVsMeta { get; init; } = null!;
-    public string? TargetCanonical { get; set; } = null;
-    public string? TargetName { get; set; } = null;
-    public string? TargetVersion { get; set; } = null;
+    public required DbValueSet TargetVsMeta { get; init; } = null!;
+    public required string? TargetCanonical { get; set; } = null;
+    public required string? TargetName { get; set; } = null;
+    public required string? TargetVersion { get; set; } = null;
 
-    public string CompositeName { get; set; } = null!;
-    public string TableName { get; set; } = null!;
+    public required string CompositeName { get; set; } = null!;
+    public required string TableName { get; set; } = null!;
 
     /// <summary>
     /// Gets or initializes the relationship between the source and target elements.
     /// </summary>
-    public Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; set; } = null;
+    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; set; } = null;
 
     /// <summary>
     /// Gets or initializes the issue code for the comparison.
     /// </summary>
-    public ComparisonIssueCode? IssueCode { get; set; } = null;
+    public required ComparisonIssueCode? IssueCode { get; set; } = null;
 
     /// <summary>
     /// Gets or initializes the message describing the comparison.
     /// </summary>
-    public string Message { get; set; } = null!;
+    public required string Message { get; set; } = null!;
 
     /// <summary>
     /// Gets or initializes the concept map associated with the comparison.
@@ -181,8 +181,8 @@ public class ValueSetPairComparison : IPairComparison<ValueSet>
     [NotMapped]
     public ConceptMap? Map { get; set; } = null;
 
-    public string? LastReviewedBy { get; set; } = null;
-    public DateTime? LastReviewedOn { get; set; } = null;
+    public required string? LastReviewedBy { get; set; } = null;
+    public required DateTime? LastReviewedOn { get; set; } = null;
 
     public ICollection<ValueSetCodeComparisonRec> CodeComparisons { get; init; } = null!;
 }
@@ -194,83 +194,74 @@ public class ValueSetCodeComparisonRec
 
     public int VsPairComparisonKey { get; set; }
 
-    public ValueSetPairComparison VsPairComparison { get; init; } = null!;
+    public required ValueSetPairComparison VsPairComparison { get; init; } = null!;
 
     /// <summary>
     /// Gets or initializes the source system.
     /// </summary>
-    public string SourceSystem { get; set; } = null!;
+    public required string SourceSystem { get; set; } = null!;
 
     /// <summary>
     /// Gets or initializes the source code.
     /// </summary>
-    public string SourceCode { get; set; } = null!;
+    public required string SourceCode { get; set; } = null!;
 
     /// <summary>
     /// Gets or sets the source display.
     /// </summary>
-    public string? SourceDisplay { get; set; } = null;
+    public required string? SourceDisplay { get; set; } = null;
 
     /// <summary>
     /// Gets or sets a value indicating whether there is no map.
     /// </summary>
-    public bool? NoMap { get; set; } = null;
+    public required bool? NoMap { get; set; } = null;
 
     /// <summary>
     /// Gets or initializes the target system.
     /// </summary>
-    public string? TargetSystem { get; set; } = null;
+    public required string? TargetSystem { get; set; } = null;
 
     /// <summary>
     /// Gets or initializes the target code.
     /// </summary>
-    public string? TargetCode { get; set; } = null;
+    public required string? TargetCode { get; set; } = null;
 
     /// <summary>
     /// Gets or sets the target display.
     /// </summary>
-    public string? TargetDisplay { get; set; } = null;
+    public required string? TargetDisplay { get; set; } = null;
 
     /// <summary>
     /// Gets or sets the relationship.
     /// </summary>
-    public Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; set; } = null;
+    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; set; } = null;
 
     /// <summary>
     /// Gets or sets the comment.
     /// </summary>
-    public string? Comment { get; set; } = null;
+    public required string? Comment { get; set; } = null;
 
     /// <summary>
     /// Gets or sets a value indicating whether the record is generated.
     /// </summary>
-    public bool? IsGenerated { get; set; } = null;
+    public required bool? IsGenerated { get; set; } = null;
 
     /// <summary>
     /// Gets or sets a value indicating whether the record needs review.
     /// </summary>
-    public bool? NeedsReview { get; set; } = null;
+    public required bool? NeedsReview { get; set; } = null;
 }
 
 
 
-public class StructureDefinitionMetadata
+public class DbStructureDefinition : DbCanonicalResource
 {
-    [Key]
-    public int Key { get; set; }
+    public required string? Comment { get; set; } = null;
+    public required string? Message { get; set; } = null;
 
-    public int ContainingPackageKey { get; set; }
-    public PackageMetadata ContainingPackage { get; init; } = null!;
+    public required FhirArtifactClassEnum ArtifactClass { get; set; } = FhirArtifactClassEnum.Unknown;
 
-    public string CanonicalUrl { get; set; } = null!;
-    public string Name { get; set; } = null!;
-    public string Version { get; set; } = null!;
-    public string Description { get; set; } = null!;
-    public string? Message { get; set; } = null;
-
-    public FhirArtifactClassEnum ArtifactClass { get; set; } = FhirArtifactClassEnum.Unknown;
-
-    public ICollection<StructureElement> Elements { get; init; } = null!;
+    public ICollection<DbElementDefinition> Elements { get; init; } = null!;
 
     //public ICollection<ValueSetPairComparison> ComparisonsAsSource { get; init; } = null!;
 
@@ -278,18 +269,18 @@ public class StructureDefinitionMetadata
 }
 
 
-public class StructureElement
+public class DbElementDefinition
 {
     [Key]
     public int Key { get; set; }
 
     public int StructureKey { get; set; }
-    public StructureDefinitionMetadata Structure { get; init; } = null!;
+    public required DbStructureDefinition Structure { get; init; } = null!;
 
 
-    public int FieldOrder { get; set; } = -1;
-    public string Id { get; set; } = null!;
-    public string Path { get; set; } = null!;
+    public required int FieldOrder { get; set; } = -1;
+    public required string Id { get; set; } = null!;
+    public required string Path { get; set; } = null!;
 }
 
 

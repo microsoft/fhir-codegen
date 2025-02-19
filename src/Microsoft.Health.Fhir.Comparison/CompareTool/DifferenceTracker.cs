@@ -142,6 +142,7 @@ public class DifferenceTracker : IDisposable
         _db = new(Path.Combine(_dbPath, _dbName));
     }
 
+
     /// <summary>
     /// Initializes the database connection and sets up the necessary tables and metadata.
     /// </summary>
@@ -159,16 +160,6 @@ public class DifferenceTracker : IDisposable
 
         _db.Database.EnsureCreated();
 
-        //string connectionString = new SqliteConnectionStringBuilder()
-        //{
-        //    DataSource = Path.Combine(_dbPath, _dbName),
-        //    Mode = SqliteOpenMode.ReadWriteCreate,
-        //}.ToString();
-
-        //_dbConnection = new SqliteConnection(connectionString);
-
-        //_dbConnection.Open();
-
         // add data about our packages
         foreach ((DefinitionCollection dc, DcInfoRec info) in _definitions)
         {
@@ -177,7 +168,7 @@ public class DifferenceTracker : IDisposable
                 continue;
             }
 
-            _db.Add(new PackageMetadata()
+            _db.Add(new DbFhirPackage()
             {
                 Name = dc.Name,
                 PackageId = dc.MainPackageId,
@@ -187,41 +178,24 @@ public class DifferenceTracker : IDisposable
         }
         _db.SaveChanges();
 
-        //// make sure the relationship mapping is created
-        //RelationshipLookup.CreateTable(_dbConnection);
-
-        //// iterate over all the relationship values in the enum and add to the table if it does not exist
-        //foreach (CMR value in Enum.GetValues<CMR>())
-        //{
-        //    if (RelationshipLookup.SelectSingle(_dbConnection, Relationship: value) != null)
-        //    {
-        //        continue;
-        //    }
-
-        //    RelationshipLookup.Insert(_dbConnection, new RelationshipLookup()
-        //    {
-        //        Relationship = value,
-        //        Name = value.ToString(),
-        //    });
-        //}
-
-        // load contents
+        // load our value sets
         foreach ((DefinitionCollection dc, DcInfoRec info) in _definitions)
         {
-            loadValueSets(dc, _exclusionSet, _escapeValveCodes);
-            loadStructures(dc, _exclusionSet);
+            addValueSetsToDb(dc, _exclusionSet, _escapeValveCodes);
+            addStructuresToDb(dc, _exclusionSet);
+
         }
 
         _db.SaveChanges();
     }
 
-    private void loadValueSets(
+    private void addValueSetsToDb(
         DefinitionCollection dc,
         HashSet<string> _exclusionSet,
         HashSet<string> _escapeValveCodes)
     {
         // get the package metadata for this definition collection
-        PackageMetadata pm = _db.Packages.Single(pm => (pm.PackageId == dc.MainPackageId) && (pm.PackageVersion == dc.MainPackageVersion));
+        DbFhirPackage pm = _db.Packages.Single(pm => (pm.PackageId == dc.MainPackageId) && (pm.PackageVersion == dc.MainPackageVersion));
 
         // iterate over the value sets in the definition collection
         foreach ((string unversionedUrl, string[] versions) in dc.ValueSetVersions.OrderBy(kvp => kvp.Key))
@@ -231,7 +205,7 @@ public class DifferenceTracker : IDisposable
             string versionedUrl = unversionedUrl + "|" + vsVersion;
 
             // check to see if this value set already exists
-            if (_db.ValueSets.Any(vsm => (vsm.CanonicalUrl == unversionedUrl) && (vsm.Version == vsVersion)))
+            if (_db.ValueSets.Any(vsm => (vsm.Url == unversionedUrl) && (vsm.Version == vsVersion)))
             {
                 continue;
             }
@@ -254,13 +228,17 @@ public class DifferenceTracker : IDisposable
                 (vs == null))
             {
                 // still add a metadata record
-                ValueSetMetadata vsmExcluded = new()
+                DbValueSet vsmExcluded = new()
                 {
-                    ContainingPackage = pm,
-                    CanonicalUrl = versionedUrl,
+                    FhirPackage = pm,
+                    Id = uvs.Id,
+                    Url = versionedUrl,
                     Name = uvs.Name,
                     Version = vsVersion,
+                    Status = uvs.Status,
+                    Title = uvs.Title,
                     Description = uvs.Description,
+                    Purpose = uvs.Purpose,
                     CanExpand = canExpand,
                     HasEscapeValveCode = hasEscapeCode,
                     Message = expandMessage,
@@ -272,66 +250,56 @@ public class DifferenceTracker : IDisposable
             }
 
             // create a new metadata record
-            ValueSetMetadata vsm = new()
+            DbValueSet dbVs = new()
             {
-                ContainingPackage = pm,
-                CanonicalUrl = versionedUrl,
-                Name = uvs.Name,
+                FhirPackage = pm,
+                Id = vs.Id,
+                Url = versionedUrl,
+                Name = vs.Name,
                 Version = vsVersion,
-                Description = uvs.Description,
+                Status = vs.Status,
+                Title = vs.Title,
+                Description = vs.Description,
+                Purpose = vs.Purpose,
                 CanExpand = canExpand,
                 HasEscapeValveCode = hasEscapeCode,
                 Message = expandMessage,
             };
 
             // insert and update our local copy for the id
-            _db.Add(vsm);
+            _db.Add(dbVs);
 
             // iterate over all the contents of the value set
             foreach (FhirConcept fc in vs.cgGetFlatConcepts(dc))
             {
-                ValueSetConcept? vsc = _db.Concepts
-                    .Where(vsc => (vsc.System == fc.System) && (vsc.Code == fc.Code) && (vsc.Display == fc.Display))
-                    .FirstOrDefault();
-
-                if (vsc == null)
-                {
-                    vsc = new()
-                    {
-                        System = fc.System,
-                        Code = fc.Code,
-                        Display = fc.Display,
-                    };
-
-                    _db.Add(vsc);
-                }
-
-                // check for this concept already having a mapping
-                if (_db.ConceptMappings.Any(vscm => vscm.VsMeta == vsm && vscm.VsConcept == vsc))
+                // check for this record already existing
+                if (_db.Concepts.Any(vsc => vsc.ValueSetKey == dbVs.Key && vsc.System == fc.System && vsc.Code == fc.Code))
                 {
                     continue;
                 }
 
-                // create a new mapping record
-                ValueSetConceptMapping vscm = new()
+                // create a new content record
+                DbValueSetConcept dbConcept = new()
                 {
-                    VsMeta = vsm,
-                    VsConcept = vsc,
+                    FhirPackage = pm,
+                    ValueSet = dbVs,
+                    System = fc.System,
+                    Code = fc.Code,
+                    Display = fc.Display,
                 };
-                _db.Add(vscm);
-            }
 
-            // save changes
-            _db.SaveChanges();
+                _db.Add(dbConcept);
+            }
         }
     }
 
-    private void loadStructures(
+
+    private void addStructuresToDb(
         DefinitionCollection dc,
         HashSet<string> _exclusionSet)
     {
         // get the package metadata for this definition collection
-        PackageMetadata pm = _db.Packages.Single(pm => (pm.PackageId == dc.MainPackageId) && (pm.PackageVersion == dc.MainPackageVersion));
+        DbFhirPackage pm = _db.Packages.Single(pm => (pm.PackageId == dc.MainPackageId) && (pm.PackageVersion == dc.MainPackageVersion));
 
         // iterate over the types of structures
         foreach ((IEnumerable<StructureDefinition> structures, FhirArtifactClassEnum cgClass) in getStructures(dc))
@@ -342,13 +310,19 @@ public class DifferenceTracker : IDisposable
                 if (_exclusionSet.Contains(sd.Url))
                 {
                     // still add a metadata record
-                    StructureDefinitionMetadata sdmExcluded = new()
+                    DbStructureDefinition sdmExcluded = new()
                     {
-                        ContainingPackage = pm,
-                        CanonicalUrl = sd.Url,
+                        FhirPackage = pm,
+                        Id = sd.Id,
+                        Url = sd.Url,
                         Name = sd.Name,
                         Version = sd.Version,
-                        Description = sd.Description ?? string.Empty,
+                        Status = sd.Status,
+                        Title = sd.Title ?? sd.Snapshot?.Element.FirstOrDefault()?.Short,
+                        Description = sd.Description ?? sd.Snapshot?.Element.FirstOrDefault()?.Definition,
+                        Purpose = sd.Purpose,
+                        Comment =  sd.Snapshot?.Element.FirstOrDefault()?.Comment,
+                        ArtifactClass = cgClass,
                         Message = "Manually excluded",
                     };
 
@@ -358,31 +332,37 @@ public class DifferenceTracker : IDisposable
                 }
 
                 // create a new metadata record
-                StructureDefinitionMetadata sdm = new()
+                DbStructureDefinition dbStructure = new()
                 {
-                    ContainingPackage = pm,
-                    CanonicalUrl = sd.Url,
+                    FhirPackage = pm,
+                    Id = sd.Id,
+                    Url = sd.Url,
                     Name = sd.Name,
                     Version = sd.Version,
-                    Description = sd.Description ?? string.Empty,
+                    Status = sd.Status,
+                    Title = sd.Title ?? sd.Snapshot?.Element.FirstOrDefault()?.Short,
+                    Description = sd.Description ?? sd.Snapshot?.Element.FirstOrDefault()?.Definition,
+                    Purpose = sd.Purpose,
+                    Comment = sd.Snapshot?.Element.FirstOrDefault()?.Comment,
+                    ArtifactClass = cgClass,
                     Message = string.Empty,
                 };
 
                 // insert and update our local copy for the id
-                _db.Add(sdm);
+                _db.Add(dbStructure);
 
                 // iterate over all the elements of the structure
                 foreach (ElementDefinition ed in sd.cgElements(skipSlices: false))
                 {
-                    StructureElement se = new()
+                    DbElementDefinition dbElement = new()
                     {
-                        Structure = sdm,
+                        Structure = dbStructure,
                         FieldOrder = ed.cgFieldOrder(),
                         Id = ed.ElementId,
                         Path = ed.Path,
                     };
 
-                    _db.Add(se);
+                    _db.Add(dbElement);
 
                     // TODO: finish structure properties
                     // TODO: add types
@@ -404,6 +384,7 @@ public class DifferenceTracker : IDisposable
             (dc.LogicalModelsByUrl.Values, FhirArtifactClassEnum.LogicalModel),
             ];
     }
+
 
 
     public void LoadFromCrossVersionMaps(CrossVersionMapCollection cv)

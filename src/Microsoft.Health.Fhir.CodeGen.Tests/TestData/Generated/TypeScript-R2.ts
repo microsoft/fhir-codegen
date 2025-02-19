@@ -40,12 +40,14 @@ export interface Address extends Element {
   /**
    * Country (can be ISO 3166 3 letter code)
    * Country - a nation as commonly understood or generally accepted.
+   * ISO 3166 3 letter codes can be used in place of a full country name.
    */
   country?: string | undefined;
   _country?: Element | undefined;
   /**
    * District name (aka county)
    * The name of the administrative area (county).
+   * District is sometimes known as county, but in some regions 'county' in used in place of city (municipality), so county name should be conveyed in city instead.
    */
   district?: string | undefined;
   _district?: Element | undefined;
@@ -74,6 +76,7 @@ export interface Address extends Element {
   /**
    * Text representation of the address
    * A full text representation of the address.
+   * Can provide both a text representation and parts.
    */
   text?: string | undefined;
   _text?: Element | undefined;
@@ -84,6 +87,7 @@ export interface Address extends Element {
   _type?: Element | undefined;
   /**
    * The purpose of this address.
+   * This is labeled as "Is Modifier" because applications should not mistake a temporary or old address etc.for a current/permanent one. Applications can assume that an address is current unless it explicitly says that it is temporary or old.
    */
   use?: ('home'|'work'|'temp'|'old') | undefined;
   _use?: Element | undefined;
@@ -135,6 +139,7 @@ export interface Attachment extends Element {
   /**
    * Data inline, base64ed
    * The actual data of the attachment - a sequence of bytes. In XML, represented using base64.
+   * The base64-encoded data SHALL be expressed in the same character set as the base resource XML or JSON.
    */
   data?: string | undefined;
   _data?: Element | undefined;
@@ -153,6 +158,7 @@ export interface Attachment extends Element {
   /**
    * Number of bytes of content (if url provided)
    * The number of bytes of data that make up this attachment.
+   * The number of bytes is redundant if the data is provided as a base64binary, but is useful if the data is provided as a url reference.
    */
   size?: number | undefined;
   /**
@@ -164,6 +170,7 @@ export interface Attachment extends Element {
   /**
    * Uri where the data can be found
    * An alternative location where the data can be accessed.
+   * If both data and url are provided, the url SHALL point to the same content as the data contains. Urls may be relative references or may reference transient locations such as a wrapping envelope using cid: though this has ramifications for using signatures. Relative URLs are interpreted relative to the service url, like a resource reference, rather than relative to the resource itself. If a URL is provided, it SHALL resolve to actual data.
    */
   url?: string | undefined;
   _url?: Element | undefined;
@@ -175,6 +182,7 @@ export interface BackboneElement extends Element {
   /**
    * Extensions that cannot be ignored
    * May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+   * There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
    */
   modifierExtension?: Extension[] | undefined;
 }
@@ -185,11 +193,13 @@ export interface CodeableConcept extends Element {
   /**
    * Code defined by a terminology system
    * A reference to a code defined by a terminology system.
+   * Codes may be defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.  Ordering of codings is undefined and SHALL NOT be used to infer meaning. Generally, at most only one of the coding values will be labelled as UserSelected = true.
    */
   coding?: Coding[] | undefined;
   /**
    * Plain text representation of the concept
    * A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user.
+   * Very often the text is the same as a displayName of one of the codings.
    */
   text?: string | undefined;
   _text?: Element | undefined;
@@ -213,18 +223,21 @@ export interface Coding extends Element {
   /**
    * Identity of the terminology system
    * The identification of the code system that defines the meaning of the symbol in the code.
+   * The URI may be an OID (urn:oid:...) or a UUID (urn:uuid:...).  OIDs and UUIDs SHALL be references to the HL7 OID registry. Otherwise, the URI should come from HL7's list of FHIR defined special URIs or it should de-reference to some definition that establish the system clearly and unambiguously.
    */
   system?: string | undefined;
   _system?: Element | undefined;
   /**
    * If this coding was chosen directly by the user
    * Indicates that this coding was chosen by a user directly - i.e. off a pick list of available items (codes or displays).
+   * Amongst a set of alternatives, a directly chosen code is the most appropriate starting point for new translations. There is some ambiguity about what exactly 'directly chosen' implies, and trading partner agreement may be needed to clarify the use of this element and its consequences more completely.
    */
   userSelected?: boolean | undefined;
   _userSelected?: Element | undefined;
   /**
    * Version of the system - if relevant
    * The version of the code system which was used when choosing this code. Note that a well-maintained code system does not need the version reported, because the meaning of codes is consistent across versions. However this cannot consistently be assured. and when the meaning is not guaranteed to be consistent, the version SHOULD be exchanged.
+   * Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date.
    */
   version?: string | undefined;
   _version?: Element | undefined;
@@ -240,6 +253,7 @@ export interface ContactPoint extends Element {
   /**
    * Specify preferred order of use (1 = highest)
    * Specifies a preferred order in which to use a set of contacts. Contacts are ranked with lower values coming before higher values.
+   * Note that rank does not necessarily follow the order in which the contacts are represented in the instance.
    */
   rank?: number | undefined;
   /**
@@ -249,11 +263,13 @@ export interface ContactPoint extends Element {
   _system?: Element | undefined;
   /**
    * Identifies the purpose for the contact point.
+   * This is labeled as "Is Modifier" because applications should not mistake a temporary or old contact etc.for a current/permanent one. Applications can assume that a contact is current unless it explicitly says that it is temporary or old.
    */
   use?: ('home'|'work'|'temp'|'old'|'mobile') | undefined;
   _use?: Element | undefined;
   /**
    * The actual contact point details, in a form that is meaningful to the designated communication system (i.e. phone number or email address).
+   * Additional text data such as phone extension numbers, or notes about use of the contact are sometimes included in the value.
    */
   value?: string | undefined;
   _value?: Element | undefined;
@@ -265,6 +281,7 @@ export interface Element {
   /**
    * Additional Content defined by implementations
    * May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+   * There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
    */
   extension?: Extension[] | undefined;
   /**
@@ -287,6 +304,7 @@ export interface ElementDefinition extends Element {
   /**
    * Base definition information for tools
    * Information about the base definition of the element, provided to make it unncessary for tools to trace the deviation of the element through the derived and related profiles. This information is only provided where the element definition represents a constraint on another element definition, and must be present if there is a base element definition.
+   * The base information does not carry any information that could not be determined from the path and related profiles, but making this determination requires both that the related profiles are available, and that the algorithm to determine them be available. So they are deformalised into this location for tooling convenience, and to ensure that the base information is available without dependencies.
    */
   base?: ElementDefinitionBase | undefined;
   /**
@@ -297,11 +315,13 @@ export interface ElementDefinition extends Element {
   /**
    * Defining code
    * A code that provides the meaning for the element according to a particular terminology.
+   * The data element definition and other constraints SHALL be a proper constraint on the meaning (as defined in the code system, including relationships) of any code listed here.  Where multiple codes exist in a terminology that could correspond to the data element, the most granular code(s) should be selected, so long as they are not more restrictive than the data element itself.
    */
   code?: Coding[] | undefined;
   /**
    * Comments about the use of this element
    * Explanatory notes and implementation guidance about the data element, including notes about how to use the data properly, exceptions to proper use, etc.
+   * If it is possible to capture usage rules using constraints, that mechanism should be used in preference to this element.
    */
   comments?: string | undefined;
   _comments?: Element | undefined;
@@ -314,341 +334,407 @@ export interface ElementDefinition extends Element {
   /**
    * Condition that must evaluate to true
    * Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the context of the instance.
+   * Constraints should be declared on the "context" element - the lowest element in the hierarchy that is common to all nodes referenced by the constraint.
    */
   constraint?: ElementDefinitionConstraint[] | undefined;
   /**
    * Specified value it missing from instance
    * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+   * Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
    */
   defaultValueAddress?: Address | undefined;
   /**
    * Specified value it missing from instance
    * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+   * Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
    */
   defaultValueAnnotation?: Annotation | undefined;
   /**
    * Specified value it missing from instance
    * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+   * Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
    */
   defaultValueAttachment?: Attachment | undefined;
   /**
    * Specified value it missing from instance
    * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+   * Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
    */
   defaultValueString?: string | undefined;
   _defaultValueString?: Element | undefined;
   /**
    * Specified value it missing from instance
    * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+   * Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
    */
   defaultValueBoolean?: boolean | undefined;
   _defaultValueBoolean?: Element | undefined;
   /**
    * Specified value it missing from instance
    * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+   * Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
    */
   defaultValueCodeableConcept?: CodeableConcept | undefined;
   /**
    * Specified value it missing from instance
    * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+   * Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
    */
   defaultValueCoding?: Coding | undefined;
   /**
    * Specified value it missing from instance
    * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+   * Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
    */
   defaultValueContactPoint?: ContactPoint | undefined;
   /**
    * Specified value it missing from instance
    * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+   * Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
    */
   defaultValueNumber?: number | undefined;
   /**
    * Specified value it missing from instance
    * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+   * Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
    */
   defaultValueHumanName?: HumanName | undefined;
   /**
    * Specified value it missing from instance
    * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+   * Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
    */
   defaultValueIdentifier?: Identifier | undefined;
   /**
    * Specified value it missing from instance
    * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+   * Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
    */
   defaultValueMeta?: Meta | undefined;
   /**
    * Specified value it missing from instance
    * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+   * Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
    */
   defaultValuePeriod?: Period | undefined;
   /**
    * Specified value it missing from instance
    * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+   * Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
    */
   defaultValueQuantity?: Quantity | undefined;
   /**
    * Specified value it missing from instance
    * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+   * Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
    */
   defaultValueRange?: Range | undefined;
   /**
    * Specified value it missing from instance
    * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+   * Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
    */
   defaultValueRatio?: Ratio | undefined;
   /**
    * Specified value it missing from instance
    * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+   * Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
    */
   defaultValueReference?: Reference | undefined;
   /**
    * Specified value it missing from instance
    * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+   * Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
    */
   defaultValueSampledData?: SampledData | undefined;
   /**
    * Specified value it missing from instance
    * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+   * Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
    */
   defaultValueSignature?: Signature | undefined;
   /**
    * Specified value it missing from instance
    * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+   * Default values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed. For these reasons, default values are (and should be) used extremely sparingly.
    */
   defaultValueTiming?: Timing | undefined;
   /**
    * Full formal definition as narrative text
    * Provides a complete explanation of the meaning of the data element for human readability.  For the case of elements derived from existing elements (e.g. constraints), the definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource.
+   * It is easy for a different definition to change the meaning of an element and this can have nasty downstream consequences. Please be careful when providing definitions.
    */
   definition?: string | undefined;
   _definition?: Element | undefined;
   /**
    * Example value: [as defined for type]
    * A sample value for this element demonstrating the type of information that would typically be captured.
+   * This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
    */
   exampleAddress?: Address | undefined;
   /**
    * Example value: [as defined for type]
    * A sample value for this element demonstrating the type of information that would typically be captured.
+   * This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
    */
   exampleAnnotation?: Annotation | undefined;
   /**
    * Example value: [as defined for type]
    * A sample value for this element demonstrating the type of information that would typically be captured.
+   * This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
    */
   exampleAttachment?: Attachment | undefined;
   /**
    * Example value: [as defined for type]
    * A sample value for this element demonstrating the type of information that would typically be captured.
+   * This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
    */
   exampleString?: string | undefined;
   _exampleString?: Element | undefined;
   /**
    * Example value: [as defined for type]
    * A sample value for this element demonstrating the type of information that would typically be captured.
+   * This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
    */
   exampleBoolean?: boolean | undefined;
   _exampleBoolean?: Element | undefined;
   /**
    * Example value: [as defined for type]
    * A sample value for this element demonstrating the type of information that would typically be captured.
+   * This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
    */
   exampleCodeableConcept?: CodeableConcept | undefined;
   /**
    * Example value: [as defined for type]
    * A sample value for this element demonstrating the type of information that would typically be captured.
+   * This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
    */
   exampleCoding?: Coding | undefined;
   /**
    * Example value: [as defined for type]
    * A sample value for this element demonstrating the type of information that would typically be captured.
+   * This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
    */
   exampleContactPoint?: ContactPoint | undefined;
   /**
    * Example value: [as defined for type]
    * A sample value for this element demonstrating the type of information that would typically be captured.
+   * This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
    */
   exampleNumber?: number | undefined;
   /**
    * Example value: [as defined for type]
    * A sample value for this element demonstrating the type of information that would typically be captured.
+   * This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
    */
   exampleHumanName?: HumanName | undefined;
   /**
    * Example value: [as defined for type]
    * A sample value for this element demonstrating the type of information that would typically be captured.
+   * This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
    */
   exampleIdentifier?: Identifier | undefined;
   /**
    * Example value: [as defined for type]
    * A sample value for this element demonstrating the type of information that would typically be captured.
+   * This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
    */
   exampleMeta?: Meta | undefined;
   /**
    * Example value: [as defined for type]
    * A sample value for this element demonstrating the type of information that would typically be captured.
+   * This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
    */
   examplePeriod?: Period | undefined;
   /**
    * Example value: [as defined for type]
    * A sample value for this element demonstrating the type of information that would typically be captured.
+   * This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
    */
   exampleQuantity?: Quantity | undefined;
   /**
    * Example value: [as defined for type]
    * A sample value for this element demonstrating the type of information that would typically be captured.
+   * This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
    */
   exampleRange?: Range | undefined;
   /**
    * Example value: [as defined for type]
    * A sample value for this element demonstrating the type of information that would typically be captured.
+   * This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
    */
   exampleRatio?: Ratio | undefined;
   /**
    * Example value: [as defined for type]
    * A sample value for this element demonstrating the type of information that would typically be captured.
+   * This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
    */
   exampleReference?: Reference | undefined;
   /**
    * Example value: [as defined for type]
    * A sample value for this element demonstrating the type of information that would typically be captured.
+   * This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
    */
   exampleSampledData?: SampledData | undefined;
   /**
    * Example value: [as defined for type]
    * A sample value for this element demonstrating the type of information that would typically be captured.
+   * This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
    */
   exampleSignature?: Signature | undefined;
   /**
    * Example value: [as defined for type]
    * A sample value for this element demonstrating the type of information that would typically be captured.
+   * This will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
    */
   exampleTiming?: Timing | undefined;
   /**
    * Value must be exactly this
    * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+   * This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
    */
   fixedAddress?: Address | undefined;
   /**
    * Value must be exactly this
    * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+   * This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
    */
   fixedAnnotation?: Annotation | undefined;
   /**
    * Value must be exactly this
    * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+   * This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
    */
   fixedAttachment?: Attachment | undefined;
   /**
    * Value must be exactly this
    * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+   * This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
    */
   fixedString?: string | undefined;
   _fixedString?: Element | undefined;
   /**
    * Value must be exactly this
    * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+   * This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
    */
   fixedBoolean?: boolean | undefined;
   _fixedBoolean?: Element | undefined;
   /**
    * Value must be exactly this
    * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+   * This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
    */
   fixedCodeableConcept?: CodeableConcept | undefined;
   /**
    * Value must be exactly this
    * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+   * This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
    */
   fixedCoding?: Coding | undefined;
   /**
    * Value must be exactly this
    * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+   * This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
    */
   fixedContactPoint?: ContactPoint | undefined;
   /**
    * Value must be exactly this
    * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+   * This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
    */
   fixedNumber?: number | undefined;
   /**
    * Value must be exactly this
    * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+   * This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
    */
   fixedHumanName?: HumanName | undefined;
   /**
    * Value must be exactly this
    * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+   * This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
    */
   fixedIdentifier?: Identifier | undefined;
   /**
    * Value must be exactly this
    * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+   * This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
    */
   fixedMeta?: Meta | undefined;
   /**
    * Value must be exactly this
    * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+   * This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
    */
   fixedPeriod?: Period | undefined;
   /**
    * Value must be exactly this
    * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+   * This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
    */
   fixedQuantity?: Quantity | undefined;
   /**
    * Value must be exactly this
    * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+   * This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
    */
   fixedRange?: Range | undefined;
   /**
    * Value must be exactly this
    * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+   * This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
    */
   fixedRatio?: Ratio | undefined;
   /**
    * Value must be exactly this
    * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+   * This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
    */
   fixedReference?: Reference | undefined;
   /**
    * Value must be exactly this
    * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+   * This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
    */
   fixedSampledData?: SampledData | undefined;
   /**
    * Value must be exactly this
    * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+   * This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
    */
   fixedSignature?: Signature | undefined;
   /**
    * Value must be exactly this
    * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+   * This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
    */
   fixedTiming?: Timing | undefined;
   /**
    * If this modifies the meaning of other elements
    * If true, the value of this element affects the interpretation of the element or resource that contains it, and the value of the element cannot be ignored. Typically, this is used for status, negation and qualification codes. The effect of this is that the element cannot be ignored by systems: they SHALL either recognize the element and process it, and/or a pre-determination has been made that it is not relevant to their particular system.
+   * Only the definition of an element can set IsModifier true - either the specification itself or where an extension is originally defined. Once set, it cannot be changed in derived profiles. An element/extension that has isModifier=true SHOULD also have a minimum cardinality of 1, so that there is no lack of clarity about what to do if it is missing. If it can be missing, the definition SHALL make the meaning of a missing element clear.
    */
   isModifier?: boolean | undefined;
   _isModifier?: Element | undefined;
   /**
    * Include when _summary = true?
    * Whether the element should be included if a client requests a search with the parameter _summary=true.
+   * Some resources include a set of simple metadata, and some very large data. This element is used to reduce the quantity of data returned in searches. Note that servers may pre-cache summarized resources for optimal performance, so servers may not support per-profile use of the isSummary flag.
    */
   isSummary?: boolean | undefined;
   _isSummary?: Element | undefined;
   /**
    * Name for element to display with or prompt for element
    * The text to display beside the element indicating its meaning or to use to prompt for the element in a user display or form.
+   * Question and label serve similar purposes in they both can be used to prompt for capturing a data element.  Whether the question form or label form should be used will depend on the type of instrument being used to capture the information.
    */
   label?: string | undefined;
   _label?: Element | undefined;
   /**
    * Map element to another set of definitions
    * Identifies a concept from an external specification that roughly corresponds to this element.
+   * Mappings are not necessarily specific enough for safe translation.
    */
   mapping?: ElementDefinitionMapping[] | undefined;
   /**
@@ -660,113 +746,135 @@ export interface ElementDefinition extends Element {
   /**
    * Max length for strings
    * Indicates the maximum length in characters that is permitted to be present in conformant instances and which is expected to be supported by conformant consumers that support the element.
+   * Receivers are not required to reject instances that exceed the maximum length.  The full length could be stored.  In some cases, data might be truncated, though truncation should be undertaken with care and an understanding of the consequences of doing so. If not specified, there is no conformance expectation for length support.
    */
   maxLength?: number | undefined;
   /**
    * Maximum Allowed Value (for some types)
    * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
    */
   maxValueAddress?: Address | undefined;
   /**
    * Maximum Allowed Value (for some types)
    * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
    */
   maxValueAnnotation?: Annotation | undefined;
   /**
    * Maximum Allowed Value (for some types)
    * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
    */
   maxValueAttachment?: Attachment | undefined;
   /**
    * Maximum Allowed Value (for some types)
    * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
    */
   maxValueString?: string | undefined;
   _maxValueString?: Element | undefined;
   /**
    * Maximum Allowed Value (for some types)
    * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
    */
   maxValueBoolean?: boolean | undefined;
   _maxValueBoolean?: Element | undefined;
   /**
    * Maximum Allowed Value (for some types)
    * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
    */
   maxValueCodeableConcept?: CodeableConcept | undefined;
   /**
    * Maximum Allowed Value (for some types)
    * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
    */
   maxValueCoding?: Coding | undefined;
   /**
    * Maximum Allowed Value (for some types)
    * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
    */
   maxValueContactPoint?: ContactPoint | undefined;
   /**
    * Maximum Allowed Value (for some types)
    * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
    */
   maxValueNumber?: number | undefined;
   /**
    * Maximum Allowed Value (for some types)
    * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
    */
   maxValueHumanName?: HumanName | undefined;
   /**
    * Maximum Allowed Value (for some types)
    * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
    */
   maxValueIdentifier?: Identifier | undefined;
   /**
    * Maximum Allowed Value (for some types)
    * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
    */
   maxValueMeta?: Meta | undefined;
   /**
    * Maximum Allowed Value (for some types)
    * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
    */
   maxValuePeriod?: Period | undefined;
   /**
    * Maximum Allowed Value (for some types)
    * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
    */
   maxValueQuantity?: Quantity | undefined;
   /**
    * Maximum Allowed Value (for some types)
    * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
    */
   maxValueRange?: Range | undefined;
   /**
    * Maximum Allowed Value (for some types)
    * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
    */
   maxValueRatio?: Ratio | undefined;
   /**
    * Maximum Allowed Value (for some types)
    * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
    */
   maxValueReference?: Reference | undefined;
   /**
    * Maximum Allowed Value (for some types)
    * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
    */
   maxValueSampledData?: SampledData | undefined;
   /**
    * Maximum Allowed Value (for some types)
    * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
    */
   maxValueSignature?: Signature | undefined;
   /**
    * Maximum Allowed Value (for some types)
    * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
    */
   maxValueTiming?: Timing | undefined;
   /**
    * Implicit meaning when this element is missing
    * The Implicit meaning that is to be understood when this element is missing (e.g. 'when this element is missing, the period is ongoing'.
+   * Implicit meanings for missing values can only be specified on a resource, data type, or extension definition, and never in a profile that applies to one of these. An implicit meaning for a missing value can never be changed, and specifying one has the consequence that constraining its use in profiles eliminates use cases as possibilities, not merely moving them out of scope.
    */
   meaningWhenMissing?: string | undefined;
   _meaningWhenMissing?: Element | undefined;
@@ -778,120 +886,143 @@ export interface ElementDefinition extends Element {
   /**
    * Minimum Allowed Value (for some types)
    * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
    */
   minValueAddress?: Address | undefined;
   /**
    * Minimum Allowed Value (for some types)
    * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
    */
   minValueAnnotation?: Annotation | undefined;
   /**
    * Minimum Allowed Value (for some types)
    * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
    */
   minValueAttachment?: Attachment | undefined;
   /**
    * Minimum Allowed Value (for some types)
    * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
    */
   minValueString?: string | undefined;
   _minValueString?: Element | undefined;
   /**
    * Minimum Allowed Value (for some types)
    * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
    */
   minValueBoolean?: boolean | undefined;
   _minValueBoolean?: Element | undefined;
   /**
    * Minimum Allowed Value (for some types)
    * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
    */
   minValueCodeableConcept?: CodeableConcept | undefined;
   /**
    * Minimum Allowed Value (for some types)
    * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
    */
   minValueCoding?: Coding | undefined;
   /**
    * Minimum Allowed Value (for some types)
    * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
    */
   minValueContactPoint?: ContactPoint | undefined;
   /**
    * Minimum Allowed Value (for some types)
    * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
    */
   minValueNumber?: number | undefined;
   /**
    * Minimum Allowed Value (for some types)
    * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
    */
   minValueHumanName?: HumanName | undefined;
   /**
    * Minimum Allowed Value (for some types)
    * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
    */
   minValueIdentifier?: Identifier | undefined;
   /**
    * Minimum Allowed Value (for some types)
    * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
    */
   minValueMeta?: Meta | undefined;
   /**
    * Minimum Allowed Value (for some types)
    * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
    */
   minValuePeriod?: Period | undefined;
   /**
    * Minimum Allowed Value (for some types)
    * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
    */
   minValueQuantity?: Quantity | undefined;
   /**
    * Minimum Allowed Value (for some types)
    * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
    */
   minValueRange?: Range | undefined;
   /**
    * Minimum Allowed Value (for some types)
    * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
    */
   minValueRatio?: Ratio | undefined;
   /**
    * Minimum Allowed Value (for some types)
    * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
    */
   minValueReference?: Reference | undefined;
   /**
    * Minimum Allowed Value (for some types)
    * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
    */
   minValueSampledData?: SampledData | undefined;
   /**
    * Minimum Allowed Value (for some types)
    * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
    */
   minValueSignature?: Signature | undefined;
   /**
    * Minimum Allowed Value (for some types)
    * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+   * Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a a [Duration](datatypes.html#duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
    */
   minValueTiming?: Timing | undefined;
   /**
    * If the element must supported
    * If true, implementations that produce or consume resources SHALL provide "support" for the element in some meaningful way.  If false, the element may be ignored and not supported.
+   * "Something useful" is context dependent and impossible to describe in the base FHIR specification. For this reason, tue mustSupport flag is never set to true by the FHIR specification itself - it is only set to true in profiles.   This is done in [Resource Profiles](profiling.html#mustsupport), where the profile labels an element as mustSupport=true. When a profile does this, it SHALL also make clear exactly what kind of "support" is required, as this can mean many things.  Note that an element that has the property IsModifier is not necessarily a "key" element (e.g. one of the important elements to make use of the resource), nor is it automatically mustSupport - however both of these things are more likely to be true for IsModifier elements than for other elements.
    */
   mustSupport?: boolean | undefined;
   _mustSupport?: Element | undefined;
   /**
    * Name for this particular element definition (reference target)
    * The name of this element definition (to refer to it from other element definitions using ElementDefinition.nameReference). This is a unique name referring to a specific set of constraints applied to this element. One use of this is to provide a name to different slices of the same element.
+   * The name SHALL be unique within the structure within the context of the constrained resource element.  (Though to avoid confusion, uniqueness across all elements is recommended.).
    */
   name?: string | undefined;
   _name?: Element | undefined;
   /**
    * To another element constraint (by element.name)
    * Identifies the name of a slice defined elsewhere in the profile whose constraints should be applied to the current element.
+   * If child components of this element are defined, they act as constraints on the referenced slice.
    */
   nameReference?: string | undefined;
   _nameReference?: Element | undefined;
@@ -904,148 +1035,176 @@ export interface ElementDefinition extends Element {
   /**
    * Value must have at least these property values
    * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
+   * Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
    */
   patternAddress?: Address | undefined;
   /**
    * Value must have at least these property values
    * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
+   * Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
    */
   patternAnnotation?: Annotation | undefined;
   /**
    * Value must have at least these property values
    * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
+   * Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
    */
   patternAttachment?: Attachment | undefined;
   /**
    * Value must have at least these property values
    * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
+   * Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
    */
   patternString?: string | undefined;
   _patternString?: Element | undefined;
   /**
    * Value must have at least these property values
    * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
+   * Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
    */
   patternBoolean?: boolean | undefined;
   _patternBoolean?: Element | undefined;
   /**
    * Value must have at least these property values
    * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
+   * Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
    */
   patternCodeableConcept?: CodeableConcept | undefined;
   /**
    * Value must have at least these property values
    * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
+   * Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
    */
   patternCoding?: Coding | undefined;
   /**
    * Value must have at least these property values
    * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
+   * Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
    */
   patternContactPoint?: ContactPoint | undefined;
   /**
    * Value must have at least these property values
    * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
+   * Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
    */
   patternNumber?: number | undefined;
   /**
    * Value must have at least these property values
    * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
+   * Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
    */
   patternHumanName?: HumanName | undefined;
   /**
    * Value must have at least these property values
    * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
+   * Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
    */
   patternIdentifier?: Identifier | undefined;
   /**
    * Value must have at least these property values
    * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
+   * Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
    */
   patternMeta?: Meta | undefined;
   /**
    * Value must have at least these property values
    * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
+   * Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
    */
   patternPeriod?: Period | undefined;
   /**
    * Value must have at least these property values
    * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
+   * Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
    */
   patternQuantity?: Quantity | undefined;
   /**
    * Value must have at least these property values
    * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
+   * Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
    */
   patternRange?: Range | undefined;
   /**
    * Value must have at least these property values
    * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
+   * Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
    */
   patternRatio?: Ratio | undefined;
   /**
    * Value must have at least these property values
    * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
+   * Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
    */
   patternReference?: Reference | undefined;
   /**
    * Value must have at least these property values
    * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
+   * Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
    */
   patternSampledData?: SampledData | undefined;
   /**
    * Value must have at least these property values
    * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
+   * Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
    */
   patternSignature?: Signature | undefined;
   /**
    * Value must have at least these property values
    * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
+   * Mostly used for fixing values of CodeableConcept. At present, pattern[x] is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
    */
   patternTiming?: Timing | undefined;
   /**
    * How this element is represented in instances
    * Codes that define how this element is represented in instances, when the deviation varies from the normal case.
+   * This is rarely used except for special cases where the representation deviates from the normal, which is done only very reluctantly, and can only be done in the base standard (and profiles must reproduce what the base standard does).
    */
   representation?: ('xmlAttr')[] | undefined;
   _representation?: Element[] | undefined;
   /**
    * Why is this needed?
    * This element is for traceability of why the element was created and why the constraints exist as they do. This may be used to point to source materials or specifications that drove the structure of this element.
+   * This element does not describe the usage of the element (that's done in comments), rather it's for traceability of *why* the element is either needed or why the constraints exist as they do.  This may be used to point to source materials or specifications that drove the structure of this data element.
    */
   requirements?: string | undefined;
   _requirements?: Element | undefined;
   /**
    * Concise definition for xml presentation
    * A concise description of what this element means (e.g. for use in autogenerated summaries).
+   * May change the term to provide language more appropriate to the context of the profile or to reflect slicing.
    */
   short?: string | undefined;
   _short?: Element | undefined;
   /**
    * This element is sliced - slices follow
    * Indicates that the element is sliced into a set of alternative definitions (i.e. in a structure definition, there are multiple different constraints on a single element in the base resource). Slicing can be used in any resource that has cardinality ..* on the base resource, or any resource with a choice of types. The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set).
+   * The first element in the sequence, the one that carries the slicing, is the unconstrained element, for reference purposes . This may include the unconstrained children.
    */
   slicing?: ElementDefinitionSlicing | undefined;
   /**
    * Data type and Profile for this element
    * The data type or resource that the value of this element is permitted to be.
+   * The Type of the element can be left blank, in which case the type is inherited from the resource. The type can only be listed in this field if it is an allowed option in the base resource.
    */
   type?: ElementDefinitionType[] | undefined;
 }
 /**
  * Base definition information for tools
  * Information about the base definition of the element, provided to make it unncessary for tools to trace the deviation of the element through the derived and related profiles. This information is only provided where the element definition represents a constraint on another element definition, and must be present if there is a base element definition.
+ * The base information does not carry any information that could not be determined from the path and related profiles, but making this determination requires both that the related profiles are available, and that the algorithm to determine them be available. So they are deformalised into this location for tooling convenience, and to ensure that the base information is available without dependencies.
  */
 export interface ElementDefinitionBase extends Element {
   /**
    * Max cardinality of the base element
    * Maximum cardinality of the base element identified by the path.
+   * This is provided to code generation, since the wire representation in JSON differs depending on whether the base element has max > 1. Also, some forms of code generation may differ.
    */
   max: string;
   _max?: Element | undefined;
   /**
    * Min cardinality of the base element
    * Minimum cardinality of the base element identified by the path.
+   * This is provided for consistency with max, and may affect code generation of mandatory elements of the base resource are generated differently (some reference implementations have done this).
    */
   min: number;
   /**
@@ -1068,17 +1227,20 @@ export interface ElementDefinitionBinding extends Element {
   _description?: Element | undefined;
   /**
    * Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the provided value set must be adhered to in the instances.
+   * For further discussion, see [[[Using Terminologies]]].
    */
   strength: ('required'|'extensible'|'preferred'|'example');
   _strength?: Element | undefined;
   /**
    * Source of value set
    * Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.
+   * For value sets with a referenceResource, the display can contain the value set description.  The reference may be version-specific or not.
    */
   valueSetReference?: Reference | undefined;
   /**
    * Source of value set
    * Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.
+   * For value sets with a referenceResource, the display can contain the value set description.  The reference may be version-specific or not.
    */
   valueSetString?: string | undefined;
   _valueSetString?: Element | undefined;
@@ -1086,11 +1248,13 @@ export interface ElementDefinitionBinding extends Element {
 /**
  * Condition that must evaluate to true
  * Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the context of the instance.
+ * Constraints should be declared on the "context" element - the lowest element in the hierarchy that is common to all nodes referenced by the constraint.
  */
 export interface ElementDefinitionConstraint extends Element {
   /**
    * Human description of constraint
    * Text that can be used to describe the constraint in messages identifying that the constraint has been violated.
+   * Should be expressed in business terms as much as possible.
    */
   human: string;
   _human?: Element | undefined;
@@ -1103,18 +1267,21 @@ export interface ElementDefinitionConstraint extends Element {
   /**
    * Why this constraint necessary or appropriate
    * Description of why this constraint is necessary or appropriate.
+   * To be used if the reason for the constraint may not be intuitive to all implementers.
    */
   requirements?: string | undefined;
   _requirements?: Element | undefined;
   /**
    * error | warning
    * Identifies the impact constraint violation has on the conformance of the instance.
+   * This allows constraints to be asserted as "shall" (error) and "should" (warning).
    */
   severity: ('error'|'warning');
   _severity?: Element | undefined;
   /**
    * XPath expression of constraint
    * An XPath expression of constraint that can be executed to see if this constraint is met.
+   * Elements SHALL use "f" as the namespace prefix for the FHIR namespace, and "x" for the xhtml namespace, and SHALL NOT use any other prefixes.
    */
   xpath: string;
   _xpath?: Element | undefined;
@@ -1122,6 +1289,7 @@ export interface ElementDefinitionConstraint extends Element {
 /**
  * Map element to another set of definitions
  * Identifies a concept from an external specification that roughly corresponds to this element.
+ * Mappings are not necessarily specific enough for safe translation.
  */
 export interface ElementDefinitionMapping extends Element {
   /**
@@ -1133,12 +1301,14 @@ export interface ElementDefinitionMapping extends Element {
   /**
    * Computable language of mapping
    * Identifies the computable language in which mapping.map is expressed.
+   * If omitted, then there can be no expectation of computational interpretation of the mapping.
    */
   language?: string | undefined;
   _language?: Element | undefined;
   /**
    * Details of the mapping
    * Expresses what part of the target specification corresponds to this element.
+   * For most mappings, the syntax is undefined.  Syntax will be provided for mappings to the RIM.  Multiple mappings may be possible and may include constraints on other resource elements that identify when a particular mapping applies.
    */
   map: string;
   _map?: Element | undefined;
@@ -1146,28 +1316,33 @@ export interface ElementDefinitionMapping extends Element {
 /**
  * This element is sliced - slices follow
  * Indicates that the element is sliced into a set of alternative definitions (i.e. in a structure definition, there are multiple different constraints on a single element in the base resource). Slicing can be used in any resource that has cardinality ..* on the base resource, or any resource with a choice of types. The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set).
+ * The first element in the sequence, the one that carries the slicing, is the unconstrained element, for reference purposes . This may include the unconstrained children.
  */
 export interface ElementDefinitionSlicing extends Element {
   /**
    * Text description of how slicing works (or not)
    * A human-readable text description of how the slicing works. If there is no discriminator, this is required to be present to provide whatever information is possible about how the slices can be differentiated.
+   * If it's really not possible to differentiate them, the design should be re-evaluated to make the content usable.
    */
   description?: string | undefined;
   _description?: Element | undefined;
   /**
    * Element values that used to distinguish the slices
    * Designates which child elements are used to discriminate between the slices when processing an instance. If one or more discriminators are provided, the value of the child elements in the instance data SHALL completely distinguish which slice the element in the resource matches based on the allowed values for those elements in each of the slices.
+   * If there is no discriminator, the content is hard to process, so this should be avoided. If the base element has a cardinality of ..1, and there is a choice of types, the discriminator most be "@type".
    */
   discriminator?: string[] | undefined;
   _discriminator?: Element[] | undefined;
   /**
    * If elements must be in same order as slices
    * If the matching elements have to occur in the same order as defined in the profile.
+   * Order should only be required when it is a pressing concern for presentation. Profile authors should consider making the order a feature of the rules about the narrative, not the rules about the data - requiring ordered data makes the profile much less re-usable.
    */
   ordered?: boolean | undefined;
   _ordered?: Element | undefined;
   /**
    * Whether additional slices are allowed or not. When the slices are ordered, profile authors can also say that additional slices are only allowed at the end.
+   * Allowing additional elements makes for a much for flexible template - it's open for use in wider contexts, but also means that the content of the resource is not closed, and applications have to decide how to handle content not described by the profile.
    */
   rules: ('closed'|'open'|'openAtEnd');
   _rules?: Element | undefined;
@@ -1175,6 +1350,7 @@ export interface ElementDefinitionSlicing extends Element {
 /**
  * Data type and Profile for this element
  * The data type or resource that the value of this element is permitted to be.
+ * The Type of the element can be left blank, in which case the type is inherited from the resource. The type can only be listed in this field if it is an allowed option in the base resource.
  */
 export interface ElementDefinitionType extends Element {
   /**
@@ -1184,6 +1360,7 @@ export interface ElementDefinitionType extends Element {
   _aggregation?: Element[] | undefined;
   /**
    * Name of Data type or Resource that is a(or the) type used for this element.
+   * If the element is a reference to another resource, this element contains "Reference", and the profile element refers to the profile of the allowed target of the resource, which may be a reference to the general definition of a resource (e.g. http://hl7.org/fhir/StructureDefinition/Patient). There would be one pair of type/code for each allowed target resource type.
    */
   code: ('Address'|'Age'|'Annotation'|'Attachment'|'BackboneElement'|'CodeableConcept'|'Coding'|'ContactPoint'|'Count'|'Distance'|'Duration'|'Element'|'ElementDefinition'|'Extension'|'HumanName'|'Identifier'|'Meta'|'Money'|'Narrative'|'Period'|'Quantity'|'Range'|'Ratio'|'Reference'|'SampledData'|'Signature'|'SimpleQuantity'|'Timing'|'base64Binary'|'boolean'|'code'|'date'|'dateTime'|'decimal'|'id'|'instant'|'integer'|'markdown'|'oid'|'positiveInt'|'string'|'time'|'unsignedInt'|'uri'|'uuid'|'xhtml'|'Account'|'AllergyIntolerance'|'Appointment'|'AppointmentResponse'|'AuditEvent'|'Basic'|'Binary'|'BodySite'|'Bundle'|'CarePlan'|'Claim'|'ClaimResponse'|'ClinicalImpression'|'Communication'|'CommunicationRequest'|'Composition'|'ConceptMap'|'Condition'|'Conformance'|'Contract'|'Coverage'|'DataElement'|'DetectedIssue'|'Device'|'DeviceComponent'|'DeviceMetric'|'DeviceUseRequest'|'DeviceUseStatement'|'DiagnosticOrder'|'DiagnosticReport'|'DocumentManifest'|'DocumentReference'|'DomainResource'|'EligibilityRequest'|'EligibilityResponse'|'Encounter'|'EnrollmentRequest'|'EnrollmentResponse'|'EpisodeOfCare'|'ExplanationOfBenefit'|'FamilyMemberHistory'|'Flag'|'Goal'|'Group'|'HealthcareService'|'ImagingObjectSelection'|'ImagingStudy'|'Immunization'|'ImmunizationRecommendation'|'ImplementationGuide'|'List'|'Location'|'Media'|'Medication'|'MedicationAdministration'|'MedicationDispense'|'MedicationOrder'|'MedicationStatement'|'MessageHeader'|'NamingSystem'|'NutritionOrder'|'Observation'|'OperationDefinition'|'OperationOutcome'|'Order'|'OrderResponse'|'Organization'|'Parameters'|'Patient'|'PaymentNotice'|'PaymentReconciliation'|'Person'|'Practitioner'|'Procedure'|'ProcedureRequest'|'ProcessRequest'|'ProcessResponse'|'Provenance'|'Questionnaire'|'QuestionnaireResponse'|'ReferralRequest'|'RelatedPerson'|'Resource'|'RiskAssessment'|'Schedule'|'SearchParameter'|'Slot'|'Specimen'|'StructureDefinition'|'Subscription'|'Substance'|'SupplyDelivery'|'SupplyRequest'|'TestScript'|'ValueSet'|'VisionPrescription');
   _code?: Element | undefined;
@@ -1201,6 +1378,7 @@ export interface Extension extends Element {
   /**
    * identifies the meaning of the extension
    * Source of the definition for the extension code - a logical name or a URL.
+   * The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #.
    */
   url: string;
   _url?: Element | undefined;
@@ -1294,12 +1472,14 @@ export interface HumanName extends Element {
   /**
    * Family name (often called 'Surname')
    * The part of a name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.
+   * For family name, hyphenated names such as "Smith-Jones" are a single name, but names with spaces such as "Smith Jones" are broken into multiple parts.
    */
   family?: string[] | undefined;
   _family?: Element[] | undefined;
   /**
    * Given names (not always 'first'). Includes middle names
    * Given name.
+   * If only initials are recorded, they may be used in place of the full name.  Not called "first name" since given names do not always come first.
    */
   given?: string[] | undefined;
   _given?: Element[] | undefined;
@@ -1323,11 +1503,13 @@ export interface HumanName extends Element {
   /**
    * Text representation of the full name
    * A full text representation of the name.
+   * Can provide both a text representation and structured parts.
    */
   text?: string | undefined;
   _text?: Element | undefined;
   /**
    * Identifies the purpose for this name.
+   * This is labeled as "Is Modifier" because applications should not mistake a temporary or old name etc.for a current/permanent one. Applications can assume that a name is current unless it explicitly says that it is temporary or old.
    */
   use?: ('usual'|'official'|'temp'|'nickname'|'anonymous'|'old'|'maiden') | undefined;
   _use?: Element | undefined;
@@ -1339,6 +1521,7 @@ export interface Identifier extends Element {
   /**
    * Organization that issued id (may be just text)
    * Organization that issued/manages the identifier.
+   * The reference may be just a text description of the assigner.
    */
   assigner?: Reference | undefined;
   /**
@@ -1355,16 +1538,19 @@ export interface Identifier extends Element {
   /**
    * Description of identifier
    * A coded type for the identifier that can be used to determine which identifier to use for a specific purpose.
+   * This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage.   Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type.
    */
   type?: CodeableConcept | undefined;
   /**
    * The purpose of this identifier.
+   * This is labeled as "Is Modifier" because applications should not mistake a temporary id for a permanent one. Applications can assume that an identifier is permanent unless it explicitly says that it is temporary.
    */
   use?: ('usual'|'official'|'temp'|'secondary') | undefined;
   _use?: Element | undefined;
   /**
    * The value that is unique
    * The portion of the identifier typically displayed to the user and which is unique within the context of the system.
+   * If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986.
    */
   value?: string | undefined;
   _value?: Element | undefined;
@@ -1376,27 +1562,32 @@ export interface Meta extends Element {
   /**
    * When the resource version last changed
    * When the resource last changed - e.g. when the version changed.
+   * This value is always populated except when the resource is first being created. The server / resource manager sets this value; what a client provides is irrelevant.
    */
   lastUpdated?: string | undefined;
   _lastUpdated?: Element | undefined;
   /**
    * Profiles this resource claims to conform to
    * A list of profiles [[[StructureDefinition]]]s that this resource claims to conform to. The URL is a reference to [[[StructureDefinition.url]]].
+   * It is up to the server and/or other infrastructure of policy to determine whether/how these claims are verified and/or updated over time.  The list of profile URLs is a set.
    */
   profile?: string[] | undefined;
   _profile?: Element[] | undefined;
   /**
    * Security Labels applied to this resource
    * Security labels applied to this resource. These tags connect specific resources to the overall security policy and infrastructure.
+   * The security labels can be updated without changing the stated version of the resource  The list of security labels is a set. Uniqueness is based the system/code, and version and display are ignored.
    */
   security?: Coding[] | undefined;
   /**
    * Tags applied to this resource. Tags are intended to be used to identify and relate resources to process and workflow, and applications are not required to consider the tags when interpreting the meaning of a resource.
+   * The tags can be updated without changing the stated version of the resource.  The list of tags is a set. Uniqueness is based the system/code, and version and display are ignored.
    */
   tag?: Coding[] | undefined;
   /**
    * Version specific identifier
    * The version specific identifier, as it appears in the version portion of the URL. This values changes when the resource is created, updated, or deleted.
+   * The server assigns this value, and ignores what the client specifies, except in the case that the server is imposing version integrity on updates/deletes.
    */
   versionId?: string | undefined;
   _versionId?: Element | undefined;
@@ -1408,6 +1599,7 @@ export interface Narrative extends Element {
   /**
    * Limited xhtml content
    * The actual narrative content, a stripped down version of XHTML.
+   * The contents of the html element are an XHTML fragment containing only the basic html formatting elements described in chapters 7-11 and 15 of the HTML 4.0 standard, <a> elements (either name or href), images and internally contained stylesheets. The XHTML content may not contain a head, a body, external stylesheet references, scripts, forms, base/link/xlink, frames, iframes and objects.
    */
   div: string;
   _div?: Element | undefined;
@@ -1424,12 +1616,14 @@ export interface Period extends Element {
   /**
    * End time with inclusive boundary, if not ongoing
    * The end of the period. If the end of the period is missing, it means that the period is ongoing. The start may be in the past, and the end date in the future, which means that period is expected/planned to end at that time.
+   * The high value includes any matching date/time. i.e. 2012-02-03T10:00:00 is in a period that has a end value of 2012-02-03.
    */
   end?: string | undefined;
   _end?: Element | undefined;
   /**
    * Starting time with inclusive boundary
    * The start of the period. The boundary is inclusive.
+   * If the low element is missing, the meaning is that the low boundary is not known.
    */
   start?: string | undefined;
   _start?: Element | undefined;
@@ -1441,11 +1635,13 @@ export interface Quantity extends Element {
   /**
    * Coded form of the unit
    * A computer processable form of the unit in some unit representation system.
+   * The preferred system is UCUM, but SNOMED CT can also be used (for customary units) or ISO 4217 for currency.  The context of use may additionally require a code from a particular system.
    */
   code?: string | undefined;
   _code?: Element | undefined;
   /**
    * How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is "<" , then the real value is < stated value.
+   * This is labeled as "Is Modifier" because the comparator modifies the interpretation of the value significantly. If there is no comparator, then there is no modification of the value.
    */
   comparator?: ('<'|'<='|'>='|'>') | undefined;
   _comparator?: Element | undefined;
@@ -1464,6 +1660,7 @@ export interface Quantity extends Element {
   /**
    * Numerical value (with implicit precision)
    * The value of the measured amount. The value includes an implicit precision in the presentation of the value.
+   * The implicit precision in the value should always be honored. Monetary values have their own rules for handling precision (refer to standard accounting text books).
    */
   value?: number | undefined;
 }
@@ -1474,11 +1671,13 @@ export interface Range extends Element {
   /**
    * High limit
    * The high limit. The boundary is inclusive.
+   * If the high element is missing, the high boundary is not known.
    */
   high?: Quantity | undefined;
   /**
    * Low limit
    * The low limit. The boundary is inclusive.
+   * If the low element is missing, the low boundary is not known.
    */
   low?: Quantity | undefined;
 }
@@ -1504,12 +1703,14 @@ export interface Reference extends Element {
   /**
    * Text alternative for the resource
    * Plain text narrative that identifies the resource in addition to the resource reference.
+   * This is generally not the same as the Resource.text of the referenced resource.  The purpose is to identify what's being referenced, not to fully describe it.
    */
   display?: string | undefined;
   _display?: Element | undefined;
   /**
    * Relative, internal or absolute URL reference
    * A reference to a location at which the other resource is found. The reference may be a relative reference, in which case it is relative to the service base URL, or an absolute URL that resolves to the location where the resource is found. The reference may be version specific or not. If the reference is not to a FHIR RESTful server, then it should be assumed to be version specific. Internal fragment references (start with '#') refer to contained resources.
+   * Using absolute URLs provides a stable scalable approach suitable for a cloud/web context, while using relative/logical references provides a flexible approach suitable for use when trading across closed eco-system boundaries.   Absolute URLs do not need to point to a FHIR RESTful server, though this is the preferred approach. If the URL conforms to the structure "/[type]/[id]" then it should be assumed that the reference is to a FHIR RESTful server.
    */
   reference?: string | undefined;
   _reference?: Element | undefined;
@@ -1527,6 +1728,7 @@ export interface SampledData extends Element {
   /**
    * Number of sample points at each time point
    * The number of sample points at each time point. If this value is greater than one, then the dimensions will be interlaced - all the sample points for a point in time will be recorded at once.
+   * If there is more than one dimension, the code for the type of data will define the meaning of the dimensions (typically ECG data).
    */
   dimensions: number;
   /**
@@ -1547,6 +1749,7 @@ export interface SampledData extends Element {
   /**
    * Number of milliseconds between samples
    * The length of time between sampling times, measured in milliseconds.
+   * This is usually a whole number.
    */
   period: number;
   /**
@@ -1562,6 +1765,7 @@ export interface Signature extends Element {
   /**
    * The actual signature content (XML DigSig. JWT, picture, etc.)
    * The base64 encoding of the Signature content.
+   * Where the signature type is an XML DigSig, the signed content is a FHIR Resource(s), the signature is of the XML form of the Resource(s) using  XML-Signature (XMLDIG) "Detached Signature" form.
    */
   blob: string;
   _blob?: Element | undefined;
@@ -1574,22 +1778,26 @@ export interface Signature extends Element {
   /**
    * Indication of the reason the entity signed the object(s)
    * An indication of the reason that the entity signed this document. This may be explicitly included as part of the signature information and can be used when determining accountability for various actions concerning the document.
+   * Examples include attesting to: authorship, correct transcription, and witness of specific event. Also known as a &quot;Commitment Type Indication&quot;.
    */
   type: Coding[];
   /**
    * When the signature was created
    * When the digital signature was signed.
+   * This should agree with the information in the signature.
    */
   when: string;
   _when?: Element | undefined;
   /**
    * Who signed the signature
    * A reference to an application-usable description of the person that signed the certificate (e.g. the signature used their private key).
+   * This should agree with the information in the signature.
    */
   whoReference?: Reference | undefined;
   /**
    * Who signed the signature
    * A reference to an application-usable description of the person that signed the certificate (e.g. the signature used their private key).
+   * This should agree with the information in the signature.
    */
   whoString?: string | undefined;
   _whoString?: Element | undefined;
@@ -1601,6 +1809,7 @@ export interface Timing extends Element {
   /**
    * QD | QOD | Q4H | Q6H | BID | TID | QID | AM | PM +
    * A code for the timing pattern. Some codes such as BID are ubiquitous, but many institutions define their own additional codes.
+   * A repeat should always be defined except for the common codes BID, TID, QID, AM and PM, which all systems are required to understand.
    */
   code?: CodeableConcept | undefined;
   /**
@@ -1638,16 +1847,19 @@ export interface TimingRepeat extends Element {
   /**
    * Number of times to repeat
    * A total count of the desired number of repetitions.
+   * If you have both bounds and count, then this should be understood as within the bounds period, until count times happens.
    */
   count?: number | undefined;
   /**
    * How long when it happens
    * How long this thing happens for when it happens.
+   * For some events the duration is part of the definition of the event (e.g. IV infusions, where the duration is implicit in the specified quantity and rate). For others, it's part of the timing specification (e.g. exercise).
    */
   duration?: number | undefined;
   /**
    * How long when it happens (Max)
    * The upper limit of how long this thing happens for when it happens.
+   * For some events the duration is part of the definition of the event (e.g. IV infusions, where the duration is implicit in the specified quantity and rate). For others, it's part of the timing specification (e.g. exercise).
    */
   durationMax?: number | undefined;
   /**
@@ -1696,6 +1908,7 @@ export interface Account extends DomainResource {
   /**
    * Valid from..to
    * Indicates the period of time over which the account is allowed.
+   * Transactions cannot typically be posted to account outside of its "active" period.
    */
   activePeriod?: Period | undefined;
   /**
@@ -1706,11 +1919,13 @@ export interface Account extends DomainResource {
   /**
    * Transaction window
    * Identifies the period of time the account applies to; e.g. accounts created per fiscal year, quarter, etc.
+   * It is possible for transactions relevant to a coverage period to be posted to the account before or after the coverage period.
    */
   coveragePeriod?: Period | undefined;
   /**
    * Base currency in which balance is tracked
    * Identifies the currency to which transactions must be converted when crediting or debiting the account.
+   * Tracked separately from balance because currency might be known when balance is not.  In some cases, balance might be expressed in a currency other than the base currency for the account.
    */
   currency?: Coding | undefined;
   /**
@@ -1760,11 +1975,13 @@ export interface AllergyIntolerance extends DomainResource {
   readonly resourceType: 'AllergyIntolerance';
   /**
    * Category of the identified Substance.
+   * This data element has been included because it is currently being captured in some clinical systems. This data can be derived from the Substance where coding systems are used, and is effectively redundant in that situation.
    */
   category?: ('food'|'medication'|'environment'|'other') | undefined;
   _category?: Element | undefined;
   /**
    * Estimate of the potential clinical harm, or seriousness, of the reaction to the identified Substance.
+   * The default criticality value for any propensity to an adverse reaction should be 'Low Risk', indicating at the very least a relative contraindication to deliberate or voluntary exposure to the Substance. 'High Risk' is flagged if the clinician has identified a propensity for a more serious or potentially life-threatening reaction, such as anaphylaxis, and implies an absolute contraindication to deliberate or voluntary exposure to the substance. If this element is missing, the criticality is unknown (though it may be known elsewhere).
    */
   criticality?: ('CRITL'|'CRITH'|'CRITU') | undefined;
   _criticality?: Element | undefined;
@@ -1776,12 +1993,14 @@ export interface AllergyIntolerance extends DomainResource {
   /**
    * Date(/time) of last known occurrence of a reaction
    * Represents the date and/or time of the last known occurrence of a reaction event.
+   * This date may be replicated by one of the Onset of Reaction dates. Where a textual representation of the date of last occurrence is required e.g. 'In Childhood, '10 years ago' the Comment element should be used.
    */
   lastOccurence?: string | undefined;
   _lastOccurence?: Element | undefined;
   /**
    * Additional text not captured in other fields
    * Additional narrative about the propensity for the Adverse Reaction, not captured in other fields.
+   * For example: including reason for flagging a seriousness of 'High Risk'; and instructions related to future exposure or administration of the Substance, such as administration within an Intensive Care Unit or under corticosteroid cover. The notes should be related to an allergy or intolerance as a condition in general and not related to any particular episode of it. For episode notes and descriptions, use AllergyIntolerance.event.description and  AllergyIntolerance.event.notes.
    */
   note?: Annotation | undefined;
   /**
@@ -1814,21 +2033,25 @@ export interface AllergyIntolerance extends DomainResource {
   /**
    * Source of the information about the allergy
    * The source of the information about the allergy that is recorded.
+   * The recorder takes repsonsibility for the content, but can reference the source from where they got it.
    */
   reporter?: Reference | undefined;
   /**
    * Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified Substance.
+   * Decision support would typically raise alerts for 'Unconfirmed', 'Confirmed', and 'Resolved' and ignore a 'Refuted' reaction. In particular, 'Refuted' may be useful for reconciliation of the Adverse Reaction List. Some implementations may choose to make this field mandatory.
    */
   status?: ('active'|'unconfirmed'|'confirmed'|'inactive'|'resolved'|'refuted'|'entered-in-error') | undefined;
   _status?: Element | undefined;
   /**
    * Substance, (or class) considered to be responsible for risk
    * Identification of a substance, or a class of substances, that is considered to be responsible for the adverse reaction risk.
+   * It is strongly recommended that the substance be coded with a terminology, where possible. For example, some terminologies used include RxNorm, SNOMED CT, DM+D, NDFRT, ICD-9, IDC-10, UNI, ATC and CPT. Plain text should only be used if there is no appropriate terminology available. Additional details about a substance can be specified in the text.
    */
   substance: CodeableConcept;
   /**
    * allergy | intolerance - Underlying mechanism (if known)
    * Identification of the underlying physiological mechanism for the reaction risk.
+   * Allergic (typically immune-mediated) reactions have been traditionally regarded as an indicator for potential escalation to significant future risk. Contemporary knowledge suggests that some reactions previously thought to be immune-mediated are, in fact, non-immune, but in some cases can still pose a life threatening risk. It is acknowledged that many clinicians may not be in a position to distinguish the mechanism of a particular reaction. Often the term "allergy" is used rather generically and may overlap with the use of "intolerance" - in practice the boundaries between these two concepts may not be well-defined or understood. This data element is included nevertheless, because many legacy systems have captured this attribute. Immunologic testing may provide supporting evidence for the basis of the reaction and the causative substance, but no tests are 100% sensitive or specific for sensitivity to a particular substance. If, as is commonly the case, it is unclear whether the reaction is due to an allergy or an intolerance, then the type element should be omitted from the resource.
    */
   type?: ('allergy'|'intolerance') | undefined;
   _type?: Element | undefined;
@@ -1846,22 +2069,26 @@ export interface AllergyIntoleranceReaction extends BackboneElement {
   /**
    * Description of the event as a whole
    * Text description about the reaction as a whole, including details of the manifestation if required.
+   * Use the description to provide any details of a particular event of the occurred reaction such as circumstances, reaction specifics, what happened before/after. Information, related to the event, but not describing a particular care should be captured in the comment field. For example: at the age of four, the patient was given penicillin for strep throat and subsequently developed severe hives.
    */
   description?: string | undefined;
   _description?: Element | undefined;
   /**
    * How the subject was exposed to the substance
    * Identification of the route by which the subject was exposed to the substance.
+   * Coding of the route of exposure with a terminology should be used wherever possible.
    */
   exposureRoute?: CodeableConcept | undefined;
   /**
    * Clinical symptoms/signs associated with the Event
    * Clinical symptoms and/or signs that are observed or associated with the adverse reaction event.
+   * Manifestation can be expressed as a single word, phrase or brief description. For example: nausea, rash or no reaction. It is preferable that manifestation should be coded with a terminology, where possible. The values entered here may be used to display on an application screen as part of a list of adverse reactions, as recommended in the UK NHS CUI guidelines.  Terminologies commonly used include, but are not limited to, SNOMED CT or ICD10.
    */
   manifestation: CodeableConcept[];
   /**
    * Text about event not captured in other fields
    * Additional text about the adverse reaction event not captured in other fields.
+   * Use this field to record information indirectly related to a particular event and not captured in the description. For example: Clinical records are no longer available, recorded based on information provided to the patient by her mother and her mother is deceased.
    */
   note?: Annotation | undefined;
   /**
@@ -1872,12 +2099,14 @@ export interface AllergyIntoleranceReaction extends BackboneElement {
   _onset?: Element | undefined;
   /**
    * Clinical assessment of the severity of the reaction event as a whole, potentially considering multiple different manifestations.
+   * It is acknowledged that this assessment is very subjective. There may be some some specific practice domains where objective scales have been applied. Objective scales can be included in this model as extensions.
    */
   severity?: ('mild'|'moderate'|'severe') | undefined;
   _severity?: Element | undefined;
   /**
    * Specific substance considered to be responsible for event
    * Identification of the specific substance considered to be responsible for the Adverse Reaction event. Note: the substance for a specific reaction may be different to the substance identified as the cause of the risk, but must be consistent with it. For instance, it may be a more specific substance (e.g. a brand medication) or a composite substance that includes the identified substance. It must be clinically safe to only process the AllergyIntolerance.substance and ignore the AllergyIntolerance.event.substance.
+   * Coding of the specific substance with a terminology capable of triggering decision support should be used wherever possible.  The substance field allows for the use of a specific substance or a group or class of substances, for example "Penicillins". The specific substance field could be used for Amoxycillin. Duplication is acceptable when a specific substance has been recorded in the 'substance' field.
    */
   substance?: CodeableConcept | undefined;
 }
@@ -1889,6 +2118,7 @@ export interface Appointment extends DomainResource {
   readonly resourceType: 'Appointment';
   /**
    * Additional comments about the appointment.
+   * Additional text to aid in facilitating the appointment. For instance, a comment might be, "patient should proceed immediately to infusion room upon arrival"  Where this is a planned appointment and the start/end dates are not set then this field can be used to provide additional guidance on the details of the appointment request, including any restrictions on when to book it.
    */
   comment?: string | undefined;
   _comment?: Element | undefined;
@@ -1922,6 +2152,7 @@ export interface Appointment extends DomainResource {
   /**
    * Used to make informed decisions if needing to re-prioritize
    * The priority of the appointment. Can be used to make informed decisions if needing to re-prioritize appointments. (The iCal Standard specifies 0 as undefined, 1 as highest, 9 as lowest priority).
+   * Seeking implementer feedback on this property and how interoperable it is.  Using an extension to record a codeableconcept for named values may be tested at a future connectathon.
    */
   priority?: number | undefined;
   /**
@@ -1942,6 +2173,7 @@ export interface Appointment extends DomainResource {
   _start?: Element | undefined;
   /**
    * The overall status of the Appointment. Each of the participants has their own participation status which indicates their involvement in the process, however this status indicates the shared status.
+   * If the Appointment's status is "cancelled" then all participants are expected to have their calendars released for the appointment period, and as such any Slots that were marked as BUSY can be re-set to FREE.
    */
   status: ('proposed'|'pending'|'booked'|'arrived'|'fulfilled'|'cancelled'|'noshow');
   _status?: Element | undefined;
@@ -1972,6 +2204,7 @@ export interface AppointmentParticipant extends BackboneElement {
   _status?: Element | undefined;
   /**
    * Role of participant in the appointment.
+   * The role of the participant can be used to declare what the actor will be doing in the scope of this appointment.  If the actor is not specified, then it is expected that the actor will be filled in at a later stage of planning.  This value MUST be the same when creating an AppointmentResponse so that they can be matched, and subsequently update the Appointment.
    */
   type?: CodeableConcept[] | undefined;
 }
@@ -1993,6 +2226,7 @@ export interface AppointmentResponse extends DomainResource {
   appointment: Reference;
   /**
    * Additional comments about the appointment.
+   * This comment is particularly important when the responder is declining, tentatively accepting or requesting another time to indicate the reasons why.
    */
   comment?: string | undefined;
   _comment?: Element | undefined;
@@ -2014,11 +2248,13 @@ export interface AppointmentResponse extends DomainResource {
   _participantStatus?: Element | undefined;
   /**
    * Role of participant in the appointment.
+   * The role of the participant can be used to declare what the actor will be doing in the scope of the referenced appointment.  If the actor is not specified, then it is expected that the actor will be filled in at a later stage of planning.  This value MUST be the same as specified on the referenced Appointment so that they can be matched, and subsequently updated.
    */
   participantType?: CodeableConcept[] | undefined;
   /**
    * Time from appointment, or requested new start time
    * Date/Time that the appointment is to take place, or requested new start time.
+   * This may be either the same as the appointment request to confirm the details of the appointment, or alternately a new time to request a re-negotiation of the start time.
    */
   start?: string | undefined;
   _start?: Element | undefined;
@@ -2036,14 +2272,17 @@ export interface AuditEvent extends DomainResource {
   event: AuditEventEvent;
   /**
    * Specific instances of data or objects that have been accessed.
+   * Required unless the values for Event Identification, Active Participant Identification, and Audit Source Identification are sufficient to document the entire auditable event. Because events may have more than one participant object, this group can be a repeating set of values.
    */
   object?: AuditEventObject[] | undefined;
   /**
    * A person, a hardware device or software process.
+   * There may be more than one user per event, for example, in cases of actions initiated by one user for other users, or in events that involve more than one user, hardware device, or system process. However, only one user may be the initiator/requestor for the event.
    */
   participant: AuditEventParticipant[];
   /**
    * Application systems and processes.
+   * Since multi-tier, distributed, or composite applications make source identification ambiguous, this collection of fields may repeat for each application or process actively involved in the event. For example, multiple value-sets can identify participating web servers, application processes, and database server threads in an n-tier distributed application. Passive event participants (e.g. low-level network transports) need not be identified.
    */
   source: AuditEventSource;
 }
@@ -2061,12 +2300,14 @@ export interface AuditEventEvent extends BackboneElement {
   /**
    * Time when the event occurred on source
    * The time when the event occurred on the source.
+   * In a distributed system, some sort of common time base (e.g. an NTP [RFC1305] server) is a good implementation tactic.
    */
   dateTime: string;
   _dateTime?: Element | undefined;
   /**
    * Whether the event succeeded or failed
    * Indicates whether the event succeeded or failed.
+   * In some cases a "success" may be partial, for example, an incomplete or interrupted transfer of a radiological study. For the purpose of establishing accountability, these distinctions are not relevant.
    */
   outcome?: ('0'|'4'|'8'|'12') | undefined;
   _outcome?: Element | undefined;
@@ -2079,6 +2320,7 @@ export interface AuditEventEvent extends BackboneElement {
   /**
    * The purposeOfUse of the event
    * The purposeOfUse (reason) that was used during the event being recorded.
+   * Use participant.purposeOfUse when you know that is specific to the participant, otherwise use event.purposeOfEvent. For example, during a machine-to-machine transfer it might not be obvious to the audit system who caused the event, but it does know why.
    */
   purposeOfEvent?: Coding[] | undefined;
   /**
@@ -2094,6 +2336,7 @@ export interface AuditEventEvent extends BackboneElement {
 }
 /**
  * Specific instances of data or objects that have been accessed.
+ * Required unless the values for Event Identification, Active Participant Identification, and Audit Source Identification are sufficient to document the entire auditable event. Because events may have more than one participant object, this group can be a repeating set of values.
  */
 export interface AuditEventObject extends BackboneElement {
   /**
@@ -2109,16 +2352,19 @@ export interface AuditEventObject extends BackboneElement {
   /**
    * Specific instance of object (e.g. versioned)
    * Identifies a specific instance of the participant object. The reference should always be version specific.
+   * Identifier detail depends on object type.
    */
   identifier?: Identifier | undefined;
   /**
    * Life-cycle stage for the object
    * Identifier for the data life-cycle stage for the participant object.
+   * This can be used to provide an audit trail for data, over time, as it passes through the system.
    */
   lifecycle?: Coding | undefined;
   /**
    * Instance-specific descriptor for Object
    * An instance-specific descriptor of the Participant Object ID audited, such as a person's name.
+   * This field may be used in a query/report to identify audit events for a specific person.  For example, where multiple synonymous Participant Object IDs (patient number, medical record number, encounter number, etc.) have been used.
    */
   name?: string | undefined;
   _name?: Element | undefined;
@@ -2136,6 +2382,7 @@ export interface AuditEventObject extends BackboneElement {
   /**
    * What role the Object played
    * Code representing the functional application role of Participant Object being audited.
+   * See RFC 3881 for rules concerning matches between role and type.
    */
   role?: Coding | undefined;
   /**
@@ -2146,6 +2393,7 @@ export interface AuditEventObject extends BackboneElement {
   /**
    * Type of object involved
    * The type of the object that was involved in this audit event.
+   * This value is distinct from the user's role or any user relationship to the participant object.
    */
   type?: Coding | undefined;
 }
@@ -2166,6 +2414,7 @@ export interface AuditEventObjectDetail extends BackboneElement {
 }
 /**
  * A person, a hardware device or software process.
+ * There may be more than one user per event, for example, in cases of actions initiated by one user for other users, or in events that involve more than one user, hardware device, or system process. However, only one user may be the initiator/requestor for the event.
  */
 export interface AuditEventParticipant extends BackboneElement {
   /**
@@ -2194,12 +2443,14 @@ export interface AuditEventParticipant extends BackboneElement {
   /**
    * Policy that authorized event
    * The policy or plan that authorized the activity being recorded. Typically, a single activity may have multiple applicable policies, such as patient consent, guarantor funding, etc. The policy would also indicate the security token used.
+   * For example: Where an OAuth token authorizes, the unique identifier from the OAuth token is placed into the policy element Where a policy engine (e.g. XACML) holds policy logic, the unique policy identifier is placed into the policy element.
    */
   policy?: string[] | undefined;
   _policy?: Element[] | undefined;
   /**
    * Reason given for this user
    * The reason (purpose of use), specific to this participant, that was used during the event being recorded.
+   * Use participant.purposeOfUse when you know that is specific to the participant, otherwise use event.purposeOfEvent. For example, during a machine-to-machine transfer it might not be obvious to the audit system who caused the event, but it does know why.
    */
   purposeOfUse?: Coding[] | undefined;
   /**
@@ -2210,6 +2461,7 @@ export interface AuditEventParticipant extends BackboneElement {
   /**
    * Whether user is initiator
    * Indicator that the user is or is not the requestor, or initiator, for the event being audited.
+   * There can only be one initiator. If the initiator is not clear, then do not choose any one participant as the initiator.
    */
   requestor: boolean;
   _requestor?: Element | undefined;
@@ -2220,6 +2472,7 @@ export interface AuditEventParticipant extends BackboneElement {
   role?: CodeableConcept[] | undefined;
   /**
    * Unique identifier for the user actively participating in the event.
+   * a unique value within the Audit Source ID. For node-based authentication -- where only the system hardware or process, but not a human user, is identified -- User ID would be the node name.
    */
   userId?: Identifier | undefined;
 }
@@ -2230,6 +2483,7 @@ export interface AuditEventParticipantNetwork extends BackboneElement {
   /**
    * Identifier for the network access point of the user device
    * An identifier for the network access point of the user device for the audit event.
+   * This could be a device id, IP address or some other identifier associated with a device.
    */
   address?: string | undefined;
   _address?: Element | undefined;
@@ -2242,6 +2496,7 @@ export interface AuditEventParticipantNetwork extends BackboneElement {
 }
 /**
  * Application systems and processes.
+ * Since multi-tier, distributed, or composite applications make source identification ambiguous, this collection of fields may repeat for each application or process actively involved in the event. For example, multiple value-sets can identify participating web servers, application processes, and database server threads in an n-tier distributed application. Passive event participants (e.g. low-level network transports) need not be identified.
  */
 export interface AuditEventSource extends BackboneElement {
   /**
@@ -2275,6 +2530,7 @@ export interface Basic extends DomainResource {
   /**
    * Kind of Resource
    * Identifies the 'type' of resource - equivalent to the resource name for other resources.
+   * Because resource references will only be able to indicate 'Basic', the type of reference will need to be specified in a Profile identified as part of the resource.  Refer to the resource notes section for information on appropriate terminologies for this code.
    */
   code: CodeableConcept;
   /**
@@ -2291,6 +2547,7 @@ export interface Basic extends DomainResource {
   /**
    * Identifies the focus of this resource
    * Identifies the patient, practitioner, device or any other resource that is the "focus" of this resource.
+   * Optional as not all resources potential resources will have subjects.  Resources associated with multiple subjects can handle this via extension.
    */
   subject?: Reference | undefined;
 }
@@ -2302,6 +2559,7 @@ export interface Binary extends Resource {
   readonly resourceType: 'Binary';
   /**
    * The actual content, base64 encoded.
+   * If the content type is itself base64 encoding, then this will be base64 encoded twice - what is created by un-base64ing the content must be the specified content type.
    */
   content: string;
   _content?: Element | undefined;
@@ -2324,6 +2582,7 @@ export interface BodySite extends DomainResource {
   /**
    * The Description of anatomical location
    * Description of anatomical location.
+   * This Description  could include any visual markings used to orientate the viewer e.g. external reference points, special sutures, ink markings.
    */
   description?: string | undefined;
   _description?: Element | undefined;
@@ -2366,15 +2625,18 @@ export interface Bundle<BundleContentType = FhirResource> extends Resource {
   link?: BundleLink[] | undefined;
   /**
    * Digital Signature - base64 encoded. XML DigSIg or a JWT.
+   * The signature could be created by the "author" of the bundle or by the originating device.   Requirements around inclusion of a signature, verification of signatures and treatment of signed/non-signed bundles is implementation-environment specific.
    */
   signature?: Signature | undefined;
   /**
    * If search, the total number of matches
    * If a set of search matches, this is the total number of matches for the search (as opposed to the number of results in this bundle).
+   * Only used if the bundle is a search result set.
    */
   total?: number | undefined;
   /**
    * Indicates the purpose of this bundle- how it was intended to be used.
+   * It's possible to use a bundle for other purposes (e.g. a document can be accepted as a transaction). This is primarily defined so that there can be specific rules for some of the bundle types.
    */
   type: ('document'|'message'|'transaction'|'transaction-response'|'batch'|'batch-response'|'history'|'searchset'|'collection');
   _type?: Element | undefined;
@@ -2387,6 +2649,7 @@ export interface BundleEntry<BundleContentType = FhirResource> extends BackboneE
   /**
    * Absolute URL for resource (server address, or UUID/OID)
    * The Absolute URL for the resource. This must be provided for all resources. The fullUrl SHALL not disagree with the id in the resource. The fullUrl is a version independent reference to the resource.
+   * fullUrl may not be [unique in the context of a resource](bundle.html#bundle-unique). Note that since [FHIR resources do not need to be served through the FHIR API](references.html), the absolute URL may not end with the logical id of the resource (Resource.id), but if the fullUrl does look like a RESTful server URL (e.g. meets the [regex](references.html#regex), then it SHALL end with the Resource.id.
    */
   fullUrl?: string | undefined;
   _fullUrl?: Element | undefined;
@@ -2453,6 +2716,7 @@ export interface BundleEntryRequest extends BackboneElement {
   /**
    * URL for HTTP equivalent of this entry
    * The URL for this entry, relative to the root (the address to which the request is posted).
+   * E.g. for a Patient Create, the method would be "POST" and the URL would be "Patient". For a Patient Update, the method would be PUT, and the URL would be "Patient/[id]".
    */
   url: string;
   _url?: Element | undefined;
@@ -2465,12 +2729,14 @@ export interface BundleEntryResponse extends BackboneElement {
   /**
    * The etag for the resource (if relevant)
    * The etag for the resource, it the operation for the entry produced a versioned resource.
+   * This has to match the version id in the header if a resource is included.
    */
   etag?: string | undefined;
   _etag?: Element | undefined;
   /**
    * Server's date time modified
    * The date/time that the resource was modified on the server.
+   * This has to match the same time in the meta header if a resource is included.
    */
   lastModified?: string | undefined;
   _lastModified?: Element | undefined;
@@ -2494,12 +2760,14 @@ export interface BundleEntryResponse extends BackboneElement {
 export interface BundleEntrySearch extends BackboneElement {
   /**
    * Why this entry is in the result set - whether it's included as a match or because of an _include requirement.
+   * There is only one mode. In some corner cases, a resource may be included because it is both a match and an include. In these circumstances, 'match' takes precedence.
    */
   mode?: ('match'|'include'|'outcome') | undefined;
   _mode?: Element | undefined;
   /**
    * Search ranking (between 0 and 1)
    * When searching, the server's search ranking score for the entry.
+   * Servers are not required to return a ranking score. 1 is most relevant, and 0 is least relevant. Often, search results are sorted by score, but the client may specify a different sort order.
    */
   score?: number | undefined;
 }
@@ -2540,16 +2808,19 @@ export interface CarePlan extends DomainResource {
   /**
    * Who is responsible for contents of the plan
    * Identifies the individual(s) or ogranization who is responsible for the content of the care plan.
+   * Collaborative care plans may have multiple authors.
    */
   author?: Reference[] | undefined;
   /**
    * Type of plan
    * Identifies what "kind" of plan this is to support differentiation between multiple co-existing plans; e.g. "Home health", "psychiatric", "asthma", "disease management", "wellness plan", etc.
+   * There may be multiple axis of categorization and one plan may serve multiple purposes.  In some cases, this may be redundant with references to CarePlan.concern.
    */
   category?: CodeableConcept[] | undefined;
   /**
    * Created in context of
    * Identifies the context in which this particular CarePlan is defined.
+   * Activities conducted as a result of the care plan may well occur as part of other encounters/episodes.
    */
   context?: Reference | undefined;
   /**
@@ -2561,6 +2832,7 @@ export interface CarePlan extends DomainResource {
   /**
    * Desired outcome of plan
    * Describes the intended objective(s) of carrying out the care plan.
+   * Goal can be achieving a particular change or merely maintaining a current state or even slowing a decline.
    */
   goal?: Reference[] | undefined;
   /**
@@ -2587,11 +2859,13 @@ export interface CarePlan extends DomainResource {
   /**
    * Time period plan covers
    * Indicates when the plan did (or is intended to) come into effect and end.
+   * Any activities scheduled as part of the plan should be constrained to the specified period.
    */
   period?: Period | undefined;
   /**
    * Plans related to this one
    * Identifies CarePlans with some sort of formal relationship to the current plan.
+   * Relationships are uni-directional with the "newer" plan pointing to the older one.
    */
   relatedPlan?: CarePlanRelatedPlan[] | undefined;
   /**
@@ -2607,6 +2881,7 @@ export interface CarePlan extends DomainResource {
   /**
    * Information considered as part of plan
    * Identifies portions of the patient's record that specifically influenced the formation of the plan.  These might include co-morbidities, recent procedures, limitations, recent assessments, etc.
+   * Use "concern" to identify specific conditions addressed by the care plan.
    */
   support?: Reference[] | undefined;
 }
@@ -2628,6 +2903,7 @@ export interface CarePlanActivity extends BackboneElement {
   /**
    * Comments about the activity status/progress
    * Notes about the adherence/status/progress of the activity.
+   * This element should NOT be used to describe the activity to be performed - that occurs either within the resource pointed to by activity.detail.reference or in activity.detail.description.
    */
   progress?: Annotation[] | undefined;
   /**
@@ -2649,6 +2925,7 @@ export interface CarePlanActivityDetail extends BackboneElement {
   /**
    * Detail type of activity
    * Detailed description of the type of planned activity; e.g. What lab test, what procedure, what kind of encounter.
+   * Tends to be less relevant for activities involving particular products.  Codes should not convey negation - use "prohibited" instead.
    */
   code?: CodeableConcept | undefined;
   /**
@@ -2670,11 +2947,13 @@ export interface CarePlanActivityDetail extends BackboneElement {
   /**
    * Where it should happen
    * Identifies the facility where the activity will occur; e.g. home, hospital, specific clinic, etc.
+   * May reference a specific clinical location or may identify a type of location.
    */
   location?: Reference | undefined;
   /**
    * Who will be responsible?
    * Identifies who's expected to be involved in the activity.
+   * A performer MAY also be a participant in the care plan.
    */
   performer?: Reference[] | undefined;
   /**
@@ -2701,11 +2980,13 @@ export interface CarePlanActivityDetail extends BackboneElement {
   /**
    * Why activity should be done
    * Provides the rationale that drove the inclusion of this particular activity as part of the plan.
+   * This could be a diagnosis code.  If a full condition record exists or additional detail is needed, use reasonCondition instead.
    */
   reasonCode?: CodeableConcept[] | undefined;
   /**
    * Condition triggering need for activity
    * Provides the health condition(s) that drove the inclusion of this particular activity as part of the plan.
+   * Conditions can be identified at the activity level that are not identified as reasons for the overall plan.
    */
   reasonReference?: Reference[] | undefined;
   /**
@@ -2726,12 +3007,14 @@ export interface CarePlanActivityDetail extends BackboneElement {
   scheduledTiming?: Timing | undefined;
   /**
    * Identifies what progress is being made for the specific activity.
+   * Some aspects of status can be inferred based on the resources linked in actionTaken.  Note that "status" is only as current as the plan was most recently updated.
    */
   status?: ('not-started'|'scheduled'|'in-progress'|'on-hold'|'completed'|'cancelled') | undefined;
   _status?: Element | undefined;
   /**
    * Reason for current status
    * Provides reason why the activity isn't yet started, is on hold, was cancelled, etc.
+   * Will generally not be present if status is "complete".  Be sure to prompt to update this (or at least remove the existing value) if the status is changed.
    */
   statusReason?: CodeableConcept | undefined;
 }
@@ -2743,21 +3026,25 @@ export interface CarePlanParticipant extends BackboneElement {
   /**
    * Who is involved
    * The specific person or organization who is participating/expected to participate in the care plan.
+   * Patient only needs to be listed if they have a role other than "subject of care".  Member is optional because some participants may be known only by their role, particularly in draft plans.
    */
   member?: Reference | undefined;
   /**
    * Type of involvement
    * Indicates specific responsibility of an individual within the care plan; e.g. "Primary physician", "Team coordinator", "Caregiver", etc.
+   * Roles may sometimes be inferred by type of Practitioner.  These are relationships that hold only within the context of the care plan.  General relationships should be handled as properties of the Patient resource directly.
    */
   role?: CodeableConcept | undefined;
 }
 /**
  * Plans related to this one
  * Identifies CarePlans with some sort of formal relationship to the current plan.
+ * Relationships are uni-directional with the "newer" plan pointing to the older one.
  */
 export interface CarePlanRelatedPlan extends BackboneElement {
   /**
    * Identifies the type of relationship this plan has to the target plan.
+   * Read the relationship as "this plan" [relatedPlan.code] "relatedPlan.plan"; e.g. This plan includes Plan B.  Additional relationship types can be proposed for future releases or handled as extensions.
    */
   code?: ('includes'|'replaces'|'fulfills') | undefined;
   _code?: Element | undefined;
@@ -2911,6 +3198,7 @@ export interface Claim extends DomainResource {
   target?: Reference | undefined;
   /**
    * The category of claim this is.
+   * Affects which fields and value sets are used.
    */
   type: ('institutional'|'oral'|'pharmacy'|'professional'|'vision');
   _type?: Element | undefined;
@@ -3728,6 +4016,7 @@ export interface ClinicalImpression extends DomainResource {
   /**
    * When the assessment occurred
    * The point in time at which the assessment was concluded (not when it was recorded).
+   * This SHOULD be accurate to at least the minute, though some assessments only have a known date.
    */
   date?: string | undefined;
   _date?: Element | undefined;
@@ -3757,11 +4046,13 @@ export interface ClinicalImpression extends DomainResource {
   /**
    * Reference to last assessment
    * A reference to the last assesment that was conducted bon this patient. Assessments are often/usually ongoing in nature; a care provider (practitioner or team) will make new assessments on an ongoing basis as new data arises or the patient's conditions changes.
+   * It is always likely that multiple previous assessments exist for a patient. The point of quoting a previous assessment is that this assessment is relative to it (see resolved).
    */
   previous?: Reference | undefined;
   /**
    * General assessment of patient state
    * This a list of the general problems/conditions for a patient.
+   * e.g. The patient is a pregnant, and cardiac congestive failure, ‎Adenocarcinoma, and is allergic to penicillin.
    */
   problem?: Reference[] | undefined;
   /**
@@ -3834,6 +4125,7 @@ export interface ClinicalImpressionInvestigations extends BackboneElement {
   /**
    * Record of a specific investigation
    * A record of a specific investigation that was undertaken.
+   * Most investigations are observations of one kind of or another but some other specific types of data collection resources can also be used.
    */
   item?: Reference[] | undefined;
 }
@@ -4062,6 +4354,7 @@ export interface Composition extends DomainResource {
   /**
    * Attests to accuracy of composition
    * A participant who has attested to the accuracy of the composition/document.
+   * Only list each attester once.
    */
   attester?: CompositionAttester[] | undefined;
   /**
@@ -4072,22 +4365,26 @@ export interface Composition extends DomainResource {
   /**
    * Categorization of Composition
    * A categorization for the type of the composition - helps for indexing and searching. This may be implied by or derived from the code specified in the Composition Type.
+   * This is a metadata field from [XDS/MHD](http://wiki.ihe.net/index.php?title=Mobile_access_to_Health_Documents_(MHD)).
    */
   class?: CodeableConcept | undefined;
   /**
    * As defined by affinity domain
    * The code specifying the level of confidentiality of the Composition.
+   * The exact use of this element, and enforcement and issues related to highly sensitive documents are out of scope for the base specification, and delegated to implementation profiles (see security section).
    */
   confidentiality?: ('_Confidentiality'|'L'|'M'|'N'|'R'|'U'|'V') | undefined;
   _confidentiality?: Element | undefined;
   /**
    * Organization which maintains the composition
    * Identifies the organization or group who is responsible for ongoing maintenance of and access to the composition/document information.
+   * This is useful when documents are derived from a composition - provides guidance for how to get the latest version of the document. This is optional because this is sometimes not known by the authoring system, and can be inferred by context. However it is important that this information be known when working with a derived document, so providing a custodian is encouraged.
    */
   custodian?: Reference | undefined;
   /**
    * Composition editing time
    * The composition editing time, when the composition was last logically changed by the author.
+   * The Last Modified Date on the composition may be after the date of the document was attested without being changed.
    */
   date: string;
   _date?: Element | undefined;
@@ -4099,11 +4396,13 @@ export interface Composition extends DomainResource {
   /**
    * The clinical service(s) being documented
    * The clinical service, such as a colonoscopy or an appendectomy, being documented.
+   * The event needs to be consistent with the type element, though can provide further information if desired.
    */
   event?: CompositionEvent[] | undefined;
   /**
    * Logical identifier of composition (version-independent)
    * Logical identifier for the composition, assigned when created. This identifier stays constant as the composition is changed over time.
+   * See discussion in resource definition for how these relate.
    */
   identifier?: Identifier | undefined;
   /**
@@ -4113,33 +4412,39 @@ export interface Composition extends DomainResource {
   section?: CompositionSection[] | undefined;
   /**
    * The workflow/clinical status of this composition. The status is a marker for the clinical standing of the document.
+   * If a composition is marked as withdrawn, the compositions/documents in the series, or data from the composition or document series, should never be displayed to a user without being clearly marked as untrustworthy. The flag "withdrawn" is why this element is labeled as a modifier of other elements.   Some reporting work flows require that the original narrative of a final document never be altered; instead, only new narrative can be added. The composition resource has no explicit status for explicitly noting whether this business rule is in effect. This would be handled by an extension if required.
    */
   status: ('preliminary'|'final'|'amended'|'entered-in-error');
   _status?: Element | undefined;
   /**
    * Who and/or what the composition is about
    * Who or what the composition is about. The composition can be about a person, (patient or healthcare practitioner), a device (e.g. a machine) or even a group of subjects (such as a document about a herd of livestock, or a set of patients that share a common exposure).
+   * For clinical documents, this is usually the patient.
    */
   subject: Reference;
   /**
    * Human Readable name/title
    * Official human-readable label for the composition.
+   * For many compositions, the title is the same as the text or a display name of Composition.type (e.g. a "consultation" or "progress note"). Note that CDA does not make title mandatory, but there are no known cases where it is useful for title to be omitted, so it is mandatory here. Feedback on this requirement is welcome during the trial use period.
    */
   title: string;
   _title?: Element | undefined;
   /**
    * Kind of composition (LOINC if possible)
    * Specifies the particular kind of composition (e.g. History and Physical, Discharge Summary, Progress Note). This usually equates to the purpose of making the composition.
+   * For Composition type, LOINC is ubiquitous and strongly endorsed by HL7. Most implementation guides will require a specific LOINC code, or use LOINC as an extensible binding.
    */
   type: CodeableConcept;
 }
 /**
  * Attests to accuracy of composition
  * A participant who has attested to the accuracy of the composition/document.
+ * Only list each attester once.
  */
 export interface CompositionAttester extends BackboneElement {
   /**
    * The type of attestation the authenticator offers.
+   * Use more than one code where a single attester has more than one mode (professional and legal are often paired).
    */
   mode: ('personal'|'professional'|'legal'|'official')[];
   _mode?: Element[] | undefined;
@@ -4157,11 +4462,13 @@ export interface CompositionAttester extends BackboneElement {
 /**
  * The clinical service(s) being documented
  * The clinical service, such as a colonoscopy or an appendectomy, being documented.
+ * The event needs to be consistent with the type element, though can provide further information if desired.
  */
 export interface CompositionEvent extends BackboneElement {
   /**
    * Code(s) that apply to the event being documented
    * This list of codes represents the main clinical acts, such as a colonoscopy or an appendectomy, being documented. In some cases, the event is inherent in the typeCode, such as a "History and Physical Report" in which the procedure being documented is necessarily a "History and Physical" act.
+   * An event can further specialize the act inherent in the typeCode, such as where it is simply "Procedure Report" and the procedure was a "colonoscopy". If one or more eventCodes are included, they SHALL NOT conflict with the values inherent in the classCode, practiceSettingCode or typeCode, as such a conflict would create an ambiguous situation. This short list of codes is provided to be used as key words for certain types of queries.
    */
   code?: CodeableConcept[] | undefined;
   /**
@@ -4183,16 +4490,19 @@ export interface CompositionSection extends BackboneElement {
   /**
    * Classification of section (recommended)
    * A code identifying the kind of content contained within the section. This must be consistent with the section title.
+   * The code identifies the section for an automated processor of the document. This is particularly relevant when using profiles to control the structure of the document.   If the section has content (instead of sub-sections), the section.code does not change the meaning or interpretation of the resource that is the content of the section in the comments for the section.code.
    */
   code?: CodeableConcept | undefined;
   /**
    * Why the section is empty
    * If the section is empty, why the list is empty. An empty section typically has some text explaining the empty reason.
+   * The various reasons for an empty section make a significant interpretation to its interpretation. Note that this code is for use when the entire section content has been suppressed, and not for when individual items are omitted - implementers may consider using a text note or a flag on an entry in these cases.
    */
   emptyReason?: CodeableConcept | undefined;
   /**
    * A reference to data that supports this section
    * A reference to the actual resource from which the narrative in the section is derived.
+   * If there are no entries in the list, an emptyReason SHOULD be provided.
    */
   entry?: Reference[] | undefined;
   /**
@@ -4203,21 +4513,25 @@ export interface CompositionSection extends BackboneElement {
   /**
    * Order of section entries
    * Specifies the order applied to the items in the section entries.
+   * Applications SHOULD render ordered lists in the order provided, but MAY allow users to re-order based on their own preferences as well. If there is no order specified, the order is unknown, though there may still be some order.
    */
   orderedBy?: CodeableConcept | undefined;
   /**
    * Nested Section
    * A nested sub-section within this section.
+   * Nested sections are primarily used to help human readers navigate to particular portions of the document.
    */
   section?: CompositionSection[] | undefined;
   /**
    * Text summary of the section, for human interpretation
    * A human-readable narrative that contains the attested content of the section, used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it "clinically safe" for a human to just read the narrative.
+   * Document profiles may define what content should be represented in the narrative to ensure clinical safety.
    */
   text?: Narrative | undefined;
   /**
    * Label for section (e.g. for ToC)
    * The label for this particular section.  This will be part of the rendered content for the document, and is often used to build a table of contents.
+   * The title identifies the section for a human reader. The title must be consistent with the narrative of the resource that is the target of the section.content reference. Generally, sections SHOULD have titles, but in some documents it is unnecessary or inappropriate. Typically, this is where a section has subsections that have their own adequately distinguishing title,  or documents that only have a single section. Most Implementation Guides will make section title to be a required element.
    */
   title?: string | undefined;
   _title?: Element | undefined;
@@ -4231,84 +4545,99 @@ export interface ConceptMap extends DomainResource {
   /**
    * Contact details of the publisher
    * Contacts to assist a user in finding and communicating with the publisher.
+   * May be a web site, an email address, a telephone number, etc.
    */
   contact?: ConceptMapContact[] | undefined;
   /**
    * Use and/or publishing restrictions
    * A copyright statement relating to the concept map and/or its contents.
+   * Frequently, the copyright differs between the concept map, and codes that are included. The copyright statement should clearly differentiate between these when required.
    */
   copyright?: string | undefined;
   _copyright?: Element | undefined;
   /**
    * Date for given status
    * The date this version of the concept map was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the concept map changes.
+   * Note that this is not the same as the resource last-modified-date, since the resource may be a secondary representation of the concept map. Additional specific dates may be added as extensions.
    */
   date?: string | undefined;
   _date?: Element | undefined;
   /**
    * Human language description of the concept map
    * A free text natural language description of the use of the concept map - reason for definition, conditions of use, etc.
+   * The description is not intended to describe the semantics of the concept map. The description should capture its intended use, which is needed for ensuring integrity for its use in models across future changes.
    */
   description?: string | undefined;
   _description?: Element | undefined;
   /**
    * Mappings for a concept from the source set
    * Mappings for an individual concept in the source to one or more concepts in the target.
+   * Generally, the ideal is that there would only be one mapping for each concept in the source value set, but a given concept may be mapped multiple times with different comments or dependencies.
    */
   element?: ConceptMapElement[] | undefined;
   /**
    * If for testing purposes, not real usage
    * This ConceptMap was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+   * Allows filtering of ConceptMap resources that are appropriate for use.
    */
   experimental?: boolean | undefined;
   _experimental?: Element | undefined;
   /**
    * Additional identifier for the concept map
    * Formal identifier that is used to identify this concept map when it is represented in other formats, or referenced in a specification, model, design or an instance.
+   * Typically, this is used for values that can go in a v3 II data type.
    */
   identifier?: Identifier | undefined;
   /**
    * Informal name for this concept map
    * A free text natural language name describing the concept map.
+   * Not expected to be unique.
    */
   name?: string | undefined;
   _name?: Element | undefined;
   /**
    * Name of the publisher (organization or individual)
    * The name of the individual or organization that published the concept map.
+   * Usually an organization, but may be an individual. This item SHOULD be populated unless the information is available from context.
    */
   publisher?: string | undefined;
   _publisher?: Element | undefined;
   /**
    * Why needed
    * Explains why this concept map is needed and why it has been constrained as it has.
+   * This element does not describe the usage of the concept map (that is done in comments), rather it's for traceability of ''why'' the element is either needed or ''why'' the constraints exist as they do.  This may be used to point to source materials or specifications that drove the structure of this data element.
    */
   requirements?: string | undefined;
   _requirements?: Element | undefined;
   /**
    * Identifies the source of the concepts which are being mapped
    * The source value set that specifies the concepts that are being mapped.
+   * Should be a version specific reference. URIs SHOULD be absolute.
    */
   sourceReference?: Reference | undefined;
   /**
    * Identifies the source of the concepts which are being mapped
    * The source value set that specifies the concepts that are being mapped.
+   * Should be a version specific reference. URIs SHOULD be absolute.
    */
   sourceString?: string | undefined;
   _sourceString?: Element | undefined;
   /**
    * The status of the concept map.
+   * Allows filtering of ConceptMap resources that are appropriate for use.
    */
   status: ('draft'|'active'|'retired');
   _status?: Element | undefined;
   /**
    * Provides context to the mappings
    * The target value set provides context to the mappings. Note that the mapping is made between concepts, not between value sets, but the value set provides important context about how the concept mapping choices are made.
+   * Should be a version specific reference. URIs SHOULD be absolute.
    */
   targetReference?: Reference | undefined;
   /**
    * Provides context to the mappings
    * The target value set provides context to the mappings. Note that the mapping is made between concepts, not between value sets, but the value set provides important context about how the concept mapping choices are made.
+   * Should be a version specific reference. URIs SHOULD be absolute.
    */
   targetString?: string | undefined;
   _targetString?: Element | undefined;
@@ -4326,6 +4655,7 @@ export interface ConceptMap extends DomainResource {
   /**
    * Logical id for this version of the concept map
    * The identifier that is used to identify this version of the concept map when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.
+   * There may be multiple resource versions of the concept map that have this same identifier.
    */
   version?: string | undefined;
   _version?: Element | undefined;
@@ -4333,11 +4663,13 @@ export interface ConceptMap extends DomainResource {
 /**
  * Contact details of the publisher
  * Contacts to assist a user in finding and communicating with the publisher.
+ * May be a web site, an email address, a telephone number, etc.
  */
 export interface ConceptMapContact extends BackboneElement {
   /**
    * Name of a individual to contact
    * The name of an individual to contact regarding the concept map.
+   * If there is no named individual, the telecom is for the organization as a whole.
    */
   name?: string | undefined;
   _name?: Element | undefined;
@@ -4350,6 +4682,7 @@ export interface ConceptMapContact extends BackboneElement {
 /**
  * Mappings for a concept from the source set
  * Mappings for an individual concept in the source to one or more concepts in the target.
+ * Generally, the ideal is that there would only be one mapping for each concept in the source value set, but a given concept may be mapped multiple times with different comments or dependencies.
  */
 export interface ConceptMapElement extends BackboneElement {
   /**
@@ -4367,12 +4700,14 @@ export interface ConceptMapElement extends BackboneElement {
   /**
    * Concept in target system for element
    * A concept from the target value set that this concept maps to.
+   * Ideally there would only be one map, with equal or equivalent mapping. But multiple maps are allowed for several narrower options, or to assert that other concepts are unmatched.
    */
   target?: ConceptMapElementTarget[] | undefined;
 }
 /**
  * Concept in target system for element
  * A concept from the target value set that this concept maps to.
+ * Ideally there would only be one map, with equal or equivalent mapping. But multiple maps are allowed for several narrower options, or to assert that other concepts are unmatched.
  */
 export interface ConceptMapElementTarget extends BackboneElement {
   /**
@@ -4384,6 +4719,7 @@ export interface ConceptMapElementTarget extends BackboneElement {
   /**
    * System of the target (if necessary)
    * An absolute URI that identifies the code system of the target code (if the target is a value set that cross code systems).
+   * Should be a version specific reference.
    */
   codeSystem?: string | undefined;
   _codeSystem?: Element | undefined;
@@ -4442,28 +4778,33 @@ export interface Condition extends DomainResource {
   /**
    * If/when in resolution/remission
    * The date or estimated date that the condition resolved or went into remission. This is called "abatement" because of the many overloaded connotations associated with "remission" or "resolution" - Conditions are never really resolved, but they can abate.
+   * There is no explicit distinction between resolution and remission because in many cases the distinction is not clear. Age is generally used when the patient reports an age at which the Condition abated.  If there is no abatement element, it is unknown whether the condition has resolved or entered remission; applications and users should generally assume that the condition is still valid.
    */
   abatementBoolean?: boolean | undefined;
   _abatementBoolean?: Element | undefined;
   /**
    * If/when in resolution/remission
    * The date or estimated date that the condition resolved or went into remission. This is called "abatement" because of the many overloaded connotations associated with "remission" or "resolution" - Conditions are never really resolved, but they can abate.
+   * There is no explicit distinction between resolution and remission because in many cases the distinction is not clear. Age is generally used when the patient reports an age at which the Condition abated.  If there is no abatement element, it is unknown whether the condition has resolved or entered remission; applications and users should generally assume that the condition is still valid.
    */
   abatementString?: string | undefined;
   _abatementString?: Element | undefined;
   /**
    * If/when in resolution/remission
    * The date or estimated date that the condition resolved or went into remission. This is called "abatement" because of the many overloaded connotations associated with "remission" or "resolution" - Conditions are never really resolved, but they can abate.
+   * There is no explicit distinction between resolution and remission because in many cases the distinction is not clear. Age is generally used when the patient reports an age at which the Condition abated.  If there is no abatement element, it is unknown whether the condition has resolved or entered remission; applications and users should generally assume that the condition is still valid.
    */
   abatementPeriod?: Period | undefined;
   /**
    * If/when in resolution/remission
    * The date or estimated date that the condition resolved or went into remission. This is called "abatement" because of the many overloaded connotations associated with "remission" or "resolution" - Conditions are never really resolved, but they can abate.
+   * There is no explicit distinction between resolution and remission because in many cases the distinction is not clear. Age is generally used when the patient reports an age at which the Condition abated.  If there is no abatement element, it is unknown whether the condition has resolved or entered remission; applications and users should generally assume that the condition is still valid.
    */
   abatementQuantity?: Quantity | undefined;
   /**
    * If/when in resolution/remission
    * The date or estimated date that the condition resolved or went into remission. This is called "abatement" because of the many overloaded connotations associated with "remission" or "resolution" - Conditions are never really resolved, but they can abate.
+   * There is no explicit distinction between resolution and remission because in many cases the distinction is not clear. Age is generally used when the patient reports an age at which the Condition abated.  If there is no abatement element, it is unknown whether the condition has resolved or entered remission; applications and users should generally assume that the condition is still valid.
    */
   abatementRange?: Range | undefined;
   /**
@@ -4474,11 +4815,13 @@ export interface Condition extends DomainResource {
   /**
    * Anatomical location, if relevant
    * The anatomical location where this condition manifests itself.
+   * May be a summary code, or a reference to a very precise definition of the location, or both.
    */
   bodySite?: CodeableConcept[] | undefined;
   /**
    * complaint | symptom | finding | diagnosis
    * A category assigned to the condition.
+   * The categorization is often highly contextual and may appear poorly differentiated or not very useful in other contexts.
    */
   category?: CodeableConcept | undefined;
   /**
@@ -4494,17 +4837,20 @@ export interface Condition extends DomainResource {
   /**
    * When first entered
    * A date, when  the Condition statement was documented.
+   * The Date Recorded represents the date when this particular Condition record was created in the EHR, not the date of the most recent update in terms of when severity, abatement, etc. were specified.  The date of the last record modification can be retrieved from the resource metadata.
    */
   dateRecorded?: string | undefined;
   _dateRecorded?: Element | undefined;
   /**
    * Encounter when condition first asserted
    * Encounter during which the condition was first asserted.
+   * This record indicates the encounter this particular record is associated with.  In the case of a "new" diagnosis reflecting ongoing/revised information about the condition, this might be distinct from the first encounter in which the underlying condition was first "known".
    */
   encounter?: Reference | undefined;
   /**
    * Supporting evidence
    * Supporting Evidence / manifestations that are the basis on which this condition is suspected or confirmed.
+   * The evidence may be a simple list of coded symptoms/manifestations, or references to observations or formal assessments, or both.
    */
   evidence?: ConditionEvidence[] | undefined;
   /**
@@ -4520,22 +4866,26 @@ export interface Condition extends DomainResource {
   /**
    * Estimated or actual date,  date-time, or age
    * Estimated or actual date or date-time  the condition began, in the opinion of the clinician.
+   * Age is generally used when the patient reports an age at which the Condition began to occur.
    */
   onsetString?: string | undefined;
   _onsetString?: Element | undefined;
   /**
    * Estimated or actual date,  date-time, or age
    * Estimated or actual date or date-time  the condition began, in the opinion of the clinician.
+   * Age is generally used when the patient reports an age at which the Condition began to occur.
    */
   onsetPeriod?: Period | undefined;
   /**
    * Estimated or actual date,  date-time, or age
    * Estimated or actual date or date-time  the condition began, in the opinion of the clinician.
+   * Age is generally used when the patient reports an age at which the Condition began to occur.
    */
   onsetQuantity?: Quantity | undefined;
   /**
    * Estimated or actual date,  date-time, or age
    * Estimated or actual date or date-time  the condition began, in the opinion of the clinician.
+   * Age is generally used when the patient reports an age at which the Condition began to occur.
    */
   onsetRange?: Range | undefined;
   /**
@@ -4546,6 +4896,7 @@ export interface Condition extends DomainResource {
   /**
    * Subjective severity of condition
    * A subjective assessment of the severity of the condition as evaluated by the clinician.
+   * Coding of the severity with a terminology is preferred, where possible.
    */
   severity?: CodeableConcept | undefined;
   /**
@@ -4562,6 +4913,7 @@ export interface Condition extends DomainResource {
 /**
  * Supporting evidence
  * Supporting Evidence / manifestations that are the basis on which this condition is suspected or confirmed.
+ * The evidence may be a simple list of coded symptoms/manifestations, or references to observations or formal assessments, or both.
  */
 export interface ConditionEvidence extends BackboneElement {
   /**
@@ -4599,12 +4951,14 @@ export interface Conformance extends DomainResource {
   readonly resourceType: 'Conformance';
   /**
    * A code that indicates whether the application accepts unknown elements or extensions when reading resources.
+   * Unknown elements in a resource can only arise as later versions of the specification are published, because this is the only place where such elements can be defined. Hence accepting unknown elements is about inter-version compatibility.  Applications are recommended to accept unknown extensions and elements ('both'), but this is not always possible.
    */
   acceptUnknown: ('no'|'extensions'|'elements'|'both');
   _acceptUnknown?: Element | undefined;
   /**
    * Contact details of the publisher
    * Contacts to assist a user in finding and communicating with the publisher.
+   * May be a web site, an email address, a telephone number (tel:), etc.
    */
   contact?: ConformanceContact[] | undefined;
   /**
@@ -4616,12 +4970,14 @@ export interface Conformance extends DomainResource {
   /**
    * Publication Date(/time)
    * The date  (and optionally time) when the conformance statement was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the conformance statement changes.
+   * Additional specific dates may be added as extensions.
    */
   date: string;
   _date?: Element | undefined;
   /**
    * Human description of the conformance statement
    * A free text natural language description of the conformance statement and its use. Typically, this is used when the conformance statement describes a desired rather than an actual solution, for example as a formal expression of requirements as part of an RFP.
+   * This field may include the purpose of this conformance statement, comments about its context etc. This does not need to be populated if the description is adequately implied by the software or implementation details.
    */
   description?: string | undefined;
   _description?: Element | undefined;
@@ -4633,6 +4989,7 @@ export interface Conformance extends DomainResource {
   /**
    * If for testing purposes, not real usage
    * A flag to indicate that this conformance statement is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+   * Allows filtering of conformance statements that are appropriate for use vs. not.
    */
   experimental?: boolean | undefined;
   _experimental?: Element | undefined;
@@ -4644,6 +5001,7 @@ export interface Conformance extends DomainResource {
   _fhirVersion?: Element | undefined;
   /**
    * A list of the formats supported by this implementation using their content types.
+   * "xml" or "json" are allowed, which describe the simple encodings described in the specification (and imply appropriate bundle support). Otherwise, mime types are legal here.
    */
   format: string[];
   _format?: Element[] | undefined;
@@ -4660,34 +5018,40 @@ export interface Conformance extends DomainResource {
   /**
    * If messaging is supported
    * A description of the messaging capabilities of the solution.
+   * Multiple repetitions allow the documentation of multiple endpoints per solution.
    */
   messaging?: ConformanceMessaging[] | undefined;
   /**
    * Informal name for this conformance statement
    * A free text natural language name identifying the conformance statement.
+   * The name is not expected to be globally unique.
    */
   name?: string | undefined;
   _name?: Element | undefined;
   /**
    * Profiles for use cases supported
    * A list of profiles that represent different use cases supported by the system. For a server, "supported by the system" means the system hosts/produces a set of resources that are conformant to a particular profile, and allows clients that use its services to search using this profile and to find appropriate data. For a client, it means the system will search by this profile and process data according to the guidance implicit in the profile. See further discussion in [Using Profiles]{profiling.html#profile-uses}.
+   * Supported profiles are different to the profiles that apply to a particular resource in rest.resource.profile. The resource profile is a general statement of what features of the resource are supported overall by the system - the sum total of the facilities it supports. A supported profile is a deeper statement about the functionality of the data and services provided by the server (or used by the client). A typical case is a laboratory system that produces a set of different reports - this is the list of types of data that it publishes. A key aspect of declaring profiles here is the question of how the client converts knowledge that the server publishes this data into working with the data; the client can inspect individual resources to determine whether they conform to a particular profile, but how does it find the ones that does? It does so by searching using the _profile parameter, so any resources listed here must be valid values for the _profile resource (using the identifier in the target profile).  Typical supported profiles cross resource types to describe a network of related resources, so they are listed here rather than by resource. However, they do not need to describe more than one resource.
    */
   profile?: Reference[] | undefined;
   /**
    * Name of the publisher (Organization or individual)
    * The name of the individual or organization that published the conformance.
+   * Usually an organization, but may be an individual. This item SHOULD be populated unless the information is available from context.
    */
   publisher?: string | undefined;
   _publisher?: Element | undefined;
   /**
    * Why is this needed?
    * Explains why this conformance statement is needed and why it's been constrained as it has.
+   * This element does not describe the usage of the conformance statement (that's done in comments), rather it's for traceability of *why* the element is either needed or why the constraints exist as they do.  This may be used to point to source materials or specifications that drove the structure of this data element.
    */
   requirements?: string | undefined;
   _requirements?: Element | undefined;
   /**
    * If the endpoint is a RESTful one
    * A definition of the restful capabilities of the solution, if any.
+   * Multiple repetitions allow definition of both client and / or server behaviors or possibly behaviors under different configuration settings (for software or requirements statements).
    */
   rest?: ConformanceRest[] | undefined;
   /**
@@ -4696,6 +5060,7 @@ export interface Conformance extends DomainResource {
   software?: ConformanceSoftware | undefined;
   /**
    * The status of this conformance statement.
+   * This is not intended for use with actual conformance statements, but where conformance statements are used to describe possible or desired systems.
    */
   status?: ('draft'|'active'|'retired') | undefined;
   _status?: Element | undefined;
@@ -4708,6 +5073,7 @@ export interface Conformance extends DomainResource {
   /**
    * Logical id for this version of the statement
    * The identifier that is used to identify this version of the conformance statement when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.
+   * There may be multiple different instances of a conformance statement that have the same identifier but different versions.
    */
   version?: string | undefined;
   _version?: Element | undefined;
@@ -4715,11 +5081,13 @@ export interface Conformance extends DomainResource {
 /**
  * Contact details of the publisher
  * Contacts to assist a user in finding and communicating with the publisher.
+ * May be a web site, an email address, a telephone number (tel:), etc.
  */
 export interface ConformanceContact extends BackboneElement {
   /**
    * Name of a individual to contact
    * The name of an individual to contact regarding the conformance.
+   * If there is no named individual, the telecom is for the organization as a whole.
    */
   name?: string | undefined;
   _name?: Element | undefined;
@@ -4749,6 +5117,7 @@ export interface ConformanceDocument extends BackboneElement {
   /**
    * Constraint on a resource used in the document
    * A constraint on a resource used in the document.
+   * The first resource is the document resource.
    */
   profile: Reference;
 }
@@ -4773,6 +5142,7 @@ export interface ConformanceImplementation extends BackboneElement {
 /**
  * If messaging is supported
  * A description of the messaging capabilities of the solution.
+ * Multiple repetitions allow the documentation of multiple endpoints per solution.
  */
 export interface ConformanceMessaging extends BackboneElement {
   /**
@@ -4789,11 +5159,13 @@ export interface ConformanceMessaging extends BackboneElement {
   /**
    * Declare support for this event
    * A description of the solution's support for an event at this end-point.
+   * The same event may be listed up to two times - once as sender and once as receiver.
    */
   event: ConformanceMessagingEvent[];
   /**
    * Reliable Message Cache Length (min)
    * Length if the receiver's reliable messaging cache in minutes (if a receiver) or how long the cache length on the receiver should be (if a sender).
+   * If this value is missing then the application does not implement (receiver) or depend on (sender) reliable messaging.
    */
   reliableCache?: number | undefined;
 }
@@ -4817,6 +5189,7 @@ export interface ConformanceMessagingEndpoint extends BackboneElement {
 /**
  * Declare support for this event
  * A description of the solution's support for an event at this end-point.
+ * The same event may be listed up to two times - once as sender and once as receiver.
  */
 export interface ConformanceMessagingEvent extends BackboneElement {
   /**
@@ -4838,6 +5211,7 @@ export interface ConformanceMessagingEvent extends BackboneElement {
   /**
    * Resource that's focus of message
    * A resource associated with the event.  This is the resource that defines the event.
+   * This SHALL be provided if the event type supports multiple different resource types.
    */
   focus: ('Account'|'AllergyIntolerance'|'Appointment'|'AppointmentResponse'|'AuditEvent'|'Basic'|'Binary'|'BodySite'|'Bundle'|'CarePlan'|'Claim'|'ClaimResponse'|'ClinicalImpression'|'Communication'|'CommunicationRequest'|'Composition'|'ConceptMap'|'Condition'|'Conformance'|'Contract'|'Coverage'|'DataElement'|'DetectedIssue'|'Device'|'DeviceComponent'|'DeviceMetric'|'DeviceUseRequest'|'DeviceUseStatement'|'DiagnosticOrder'|'DiagnosticReport'|'DocumentManifest'|'DocumentReference'|'DomainResource'|'EligibilityRequest'|'EligibilityResponse'|'Encounter'|'EnrollmentRequest'|'EnrollmentResponse'|'EpisodeOfCare'|'ExplanationOfBenefit'|'FamilyMemberHistory'|'Flag'|'Goal'|'Group'|'HealthcareService'|'ImagingObjectSelection'|'ImagingStudy'|'Immunization'|'ImmunizationRecommendation'|'ImplementationGuide'|'List'|'Location'|'Media'|'Medication'|'MedicationAdministration'|'MedicationDispense'|'MedicationOrder'|'MedicationStatement'|'MessageHeader'|'NamingSystem'|'NutritionOrder'|'Observation'|'OperationDefinition'|'OperationOutcome'|'Order'|'OrderResponse'|'Organization'|'Parameters'|'Patient'|'PaymentNotice'|'PaymentReconciliation'|'Person'|'Practitioner'|'Procedure'|'ProcedureRequest'|'ProcessRequest'|'ProcessResponse'|'Provenance'|'Questionnaire'|'QuestionnaireResponse'|'ReferralRequest'|'RelatedPerson'|'Resource'|'RiskAssessment'|'Schedule'|'SearchParameter'|'Slot'|'Specimen'|'StructureDefinition'|'Subscription'|'Substance'|'SupplyDelivery'|'SupplyRequest'|'TestScript'|'ValueSet'|'VisionPrescription');
   _focus?: Element | undefined;
@@ -4861,11 +5235,13 @@ export interface ConformanceMessagingEvent extends BackboneElement {
 /**
  * If the endpoint is a RESTful one
  * A definition of the restful capabilities of the solution, if any.
+ * Multiple repetitions allow definition of both client and / or server behaviors or possibly behaviors under different configuration settings (for software or requirements statements).
  */
 export interface ConformanceRest extends BackboneElement {
   /**
    * Compartments served/used by system
    * An absolute URI which is a reference to the definition of a compartment hosted by the system.
+   * At present, the only defined compartments are at [[compartments.html]].
    */
   compartment?: string[] | undefined;
   _compartment?: Element[] | undefined;
@@ -4894,11 +5270,13 @@ export interface ConformanceRest extends BackboneElement {
   /**
    * Resource served on the REST interface
    * A specification of the restful capabilities of the solution for a specific resource type.
+   * Max of one repetition per resource type.
    */
   resource: ConformanceRestResource[];
   /**
    * Search params for searching all resources
    * Search parameters that are supported for searching all resources for implementations to support and/or make use of - either references to ones defined in the specification, or additional ones defined for/by the implementation.
+   * Typically, the only search parameters supported for all parameters are search parameters that apply to all resources - tags, profiles, text search etc.
    */
   searchParam?: ConformanceRestResourceSearchParam[] | undefined;
   /**
@@ -4937,11 +5315,13 @@ export interface ConformanceRestOperation extends BackboneElement {
   /**
    * The defined operation/query
    * Where the formal definition can be found.
+   * This can be used to build an HTML form to invoke the operation, for instance.
    */
   definition: Reference;
   /**
    * Name by which the operation/query is invoked
    * The name of a query, which is used in the _query parameter when the query is called.
+   * The name here SHOULD be the same as the name in the definition, unless there is a name clash and the name cannot be used.
    */
   name: string;
   _name?: Element | undefined;
@@ -4949,22 +5329,26 @@ export interface ConformanceRestOperation extends BackboneElement {
 /**
  * Resource served on the REST interface
  * A specification of the restful capabilities of the solution for a specific resource type.
+ * Max of one repetition per resource type.
  */
 export interface ConformanceRestResource extends BackboneElement {
   /**
    * If allows/uses conditional create
    * A flag that indicates that the server supports conditional create.
+   * Conditional Create is mainly appropriate for interface engine scripts converting from other formats, such as v2.
    */
   conditionalCreate?: boolean | undefined;
   _conditionalCreate?: Element | undefined;
   /**
    * A code that indicates how the server supports conditional delete.
+   * Conditional Delete is mainly appropriate for interface engine scripts converting from other formats, such as v2.
    */
   conditionalDelete?: ('not-supported'|'single'|'multiple') | undefined;
   _conditionalDelete?: Element | undefined;
   /**
    * If allows/uses conditional update
    * A flag that indicates that the server supports conditional update.
+   * Conditional Update is mainly appropriate for interface engine scripts converting from other formats, such as v2.
    */
   conditionalUpdate?: boolean | undefined;
   _conditionalUpdate?: Element | undefined;
@@ -4976,17 +5360,20 @@ export interface ConformanceRestResource extends BackboneElement {
   /**
    * Base System profile for all uses of resource
    * A specification of the profile that describes the solution's overall support for the resource, including any constraints on cardinality, bindings, lengths or other limitations. See further discussion in [Using Profiles]{profiling.html#profile-uses}.
+   * The profile applies to all  resources of this type - i.e. it is the superset of what is supported by the system.
    */
   profile?: Reference | undefined;
   /**
    * Whether vRead can return past versions
    * A flag for whether the server is able to return past versions as part of the vRead operation.
+   * It is useful to support the vRead operation for current operations, even if past versions aren't available.
    */
   readHistory?: boolean | undefined;
   _readHistory?: Element | undefined;
   /**
    * _include values supported by the server
    * A list of _include values supported by the server.
+   * If this list is empty, the server does not support includes.
    */
   searchInclude?: string[] | undefined;
   _searchInclude?: Element[] | undefined;
@@ -4998,6 +5385,7 @@ export interface ConformanceRestResource extends BackboneElement {
   /**
    * _revinclude values supported by the server
    * A list of _revinclude (reverse include) values supported by the server.
+   * If this list is empty, the server does not support includes.
    */
   searchRevInclude?: string[] | undefined;
   _searchRevInclude?: Element[] | undefined;
@@ -5010,11 +5398,13 @@ export interface ConformanceRestResource extends BackboneElement {
   /**
    * If update can commit to a new identity
    * A flag to indicate that the server allows or needs to allow the client to create new identities on the server (e.g. that is, the client PUTs to a location where there is no existing resource). Allowing this operation means that the server allows the client to create new identities on the server.
+   * Allowing the clients to create new identities on the server means that the system administrator needs to have confidence that the clients do not create clashing identities between them. Obviously, if there is only one client, this won't happen. While creating identities on the client means that the clients need to be managed, it's much more convenient for many scenarios if such management can be put in place.
    */
   updateCreate?: boolean | undefined;
   _updateCreate?: Element | undefined;
   /**
    * This field is set to no-version to specify that the system does not support (server) or use (client) versioning for this resource type. If this has some other value, the server must at least correctly track and populate the versionId meta-property on resources. If the value is 'versioned-update', then the server supports all the versioning features, including using e-tags for version integrity in the API.
+   * If a server supports versionIds correctly, it SHOULD support vread too, but is not required to do so.
    */
   versioning?: ('no-version'|'versioned'|'versioned-update') | undefined;
   _versioning?: Element | undefined;
@@ -5044,12 +5434,14 @@ export interface ConformanceRestResourceSearchParam extends BackboneElement {
   /**
    * Chained names supported
    * Contains the names of any search parameters which may be chained to the containing search parameter. Chained parameters may be added to search parameters of type reference, and specify that resources will only be returned if they contain a reference to a resource which matches the chained parameter value. Values for this field should be drawn from Conformance.rest.resource.searchParam.name on the target resource type.
+   * Systems are not required to list all the chain names they support, but if they don't list them, clients may not know to use them.
    */
   chain?: string[] | undefined;
   _chain?: Element[] | undefined;
   /**
    * Source of definition for parameter
    * An absolute URI that is a formal reference to where this parameter was first defined, so that a client can be confident of the meaning of the search parameter (a reference to [[[SearchParameter.url]]]).
+   * This SHOULD be present, and matches SearchParameter.url.
    */
   definition?: string | undefined;
   _definition?: Element | undefined;
@@ -5067,17 +5459,20 @@ export interface ConformanceRestResourceSearchParam extends BackboneElement {
   /**
    * Name of search parameter
    * The name of the search parameter used in the interface.
+   * Parameter names cannot overlap with standard parameter names, and standard parameters cannot be redefined.
    */
   name: string;
   _name?: Element | undefined;
   /**
    * Types of resource (if a resource reference)
    * Types of resource (if a resource is referenced).
+   * This SHALL be the same as or a proper subset of the resources listed in the search parameter definition.
    */
   target?: ('Account'|'AllergyIntolerance'|'Appointment'|'AppointmentResponse'|'AuditEvent'|'Basic'|'Binary'|'BodySite'|'Bundle'|'CarePlan'|'Claim'|'ClaimResponse'|'ClinicalImpression'|'Communication'|'CommunicationRequest'|'Composition'|'ConceptMap'|'Condition'|'Conformance'|'Contract'|'Coverage'|'DataElement'|'DetectedIssue'|'Device'|'DeviceComponent'|'DeviceMetric'|'DeviceUseRequest'|'DeviceUseStatement'|'DiagnosticOrder'|'DiagnosticReport'|'DocumentManifest'|'DocumentReference'|'DomainResource'|'EligibilityRequest'|'EligibilityResponse'|'Encounter'|'EnrollmentRequest'|'EnrollmentResponse'|'EpisodeOfCare'|'ExplanationOfBenefit'|'FamilyMemberHistory'|'Flag'|'Goal'|'Group'|'HealthcareService'|'ImagingObjectSelection'|'ImagingStudy'|'Immunization'|'ImmunizationRecommendation'|'ImplementationGuide'|'List'|'Location'|'Media'|'Medication'|'MedicationAdministration'|'MedicationDispense'|'MedicationOrder'|'MedicationStatement'|'MessageHeader'|'NamingSystem'|'NutritionOrder'|'Observation'|'OperationDefinition'|'OperationOutcome'|'Order'|'OrderResponse'|'Organization'|'Parameters'|'Patient'|'PaymentNotice'|'PaymentReconciliation'|'Person'|'Practitioner'|'Procedure'|'ProcedureRequest'|'ProcessRequest'|'ProcessResponse'|'Provenance'|'Questionnaire'|'QuestionnaireResponse'|'ReferralRequest'|'RelatedPerson'|'Resource'|'RiskAssessment'|'Schedule'|'SearchParameter'|'Slot'|'Specimen'|'StructureDefinition'|'Subscription'|'Substance'|'SupplyDelivery'|'SupplyRequest'|'TestScript'|'ValueSet'|'VisionPrescription')[] | undefined;
   _target?: Element[] | undefined;
   /**
    * The type of value a search parameter refers to, and how the content is interpreted.
+   * While this can be looked up from the definition, it is included here as a convenience for systems that autogenerate a query interface based on the server conformance statement.  It SHALL be the same as the type in the search parameter definition.
    */
   type: ('number'|'date'|'string'|'token'|'reference'|'composite'|'quantity'|'uri');
   _type?: Element | undefined;
@@ -5094,6 +5489,7 @@ export interface ConformanceRestSecurity extends BackboneElement {
   /**
    * Adds CORS Headers (http://enable-cors.org/)
    * Server adds CORS headers when responding to requests - this enables javascript applications to use the server.
+   * The easiest CORS headers to add are Access-Control-Allow-Origin: * & Access-Control-Request-Method: GET, POST, PUT, DELETE. All servers SHOULD support CORS.
    */
   cors?: boolean | undefined;
   _cors?: Element | undefined;
@@ -5142,6 +5538,7 @@ export interface ConformanceSoftware extends BackboneElement {
   /**
    * Version covered by this statement
    * The version identifier for the software covered by this statement.
+   * If possible, version should be specified, as statements are likely to be different for different versions of software.
    */
   version?: string | undefined;
   _version?: Element | undefined;
@@ -5610,34 +6007,40 @@ export interface DataElement extends DomainResource {
   /**
    * Contact details of the publisher
    * Contacts to assist a user in finding and communicating with the publisher.
+   * May be a web site, an email address, a telephone number (tel:), etc.
    */
   contact?: DataElementContact[] | undefined;
   /**
    * Use and/or publishing restrictions
    * A copyright statement relating to the definition of the data element. Copyright statements are generally legal restrictions on the use and publishing of the details of the definition of the data element.
+   * The copyright statement does not apply to values for the data element, only to its definition.
    */
   copyright?: string | undefined;
   _copyright?: Element | undefined;
   /**
    * Date for this version of the data element
    * The date this version of the data element was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the data element  changes.
+   * This refers to the "business" version, the DataElement.version which changes based on business processes.  It does not refer to the date of the RESTful version which is part of the resource metadata. Additional specific dates may be added as extensions.
    */
   date?: string | undefined;
   _date?: Element | undefined;
   /**
    * Definition of element
    * Defines the structure, type, allowed values and other constraining characteristics of the data element.
+   * For simple data types there will only be one repetition.  For complex data types, multiple repetitions will be present defining a nested structure using the "path" element.
    */
   element: ElementDefinition[];
   /**
    * If for testing purposes, not real usage
    * A flag to indicate that this search data element definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+   * Allows filtering of search data element definitions that are appropriate for use vs. not.
    */
   experimental?: boolean | undefined;
   _experimental?: Element | undefined;
   /**
    * Logical id to reference this data element
    * Formal identifier that is used to identify this data element when it is represented in other formats, or referenced in a specification, model, design or an instance.
+   * Typically, this is used for values that can go in a v3 II data type.
    */
   identifier?: Identifier[] | undefined;
   /**
@@ -5648,12 +6051,14 @@ export interface DataElement extends DomainResource {
   /**
    * Descriptive label for this element definition
    * The term used by humans to refer to the data element.  Should ideally be unique within the context in which the data element is expected to be used.
+   * This may be similar to the question used to prompt someone for a data element value, but the purpose is communicating about the data element, not asking the question.  (Refer to the 'question' element for the latter.).
    */
   name?: string | undefined;
   _name?: Element | undefined;
   /**
    * Name of the publisher (Organization or individual)
    * The name of the individual or organization that published the data element.
+   * Usually an organization, but may be an individual. This item SHOULD be populated unless the information is available from context.
    */
   publisher?: string | undefined;
   _publisher?: Element | undefined;
@@ -5681,6 +6086,7 @@ export interface DataElement extends DomainResource {
   /**
    * Logical id for this version of the data element
    * The identifier that is used to identify this version of the data element when it is referenced in a StructureDefinition, Questionnaire or instance. This is an arbitrary value managed by the definition author manually.
+   * N/A.
    */
   version?: string | undefined;
   _version?: Element | undefined;
@@ -5688,11 +6094,13 @@ export interface DataElement extends DomainResource {
 /**
  * Contact details of the publisher
  * Contacts to assist a user in finding and communicating with the publisher.
+ * May be a web site, an email address, a telephone number (tel:), etc.
  */
 export interface DataElementContact extends BackboneElement {
   /**
    * Name of a individual to contact
    * The name of an individual to contact regarding the data element.
+   * If there is no named individual, the telecom is for the organization as a whole.
    */
   name?: string | undefined;
   _name?: Element | undefined;
@@ -5716,6 +6124,7 @@ export interface DataElementMapping extends BackboneElement {
   /**
    * Internal id when this mapping is used
    * An internal id that is used to identify this mapping set when specific mappings are made on a per-element basis.
+   * The specification is described once, with general comments, and then specific mappings are made that reference this declaration.
    */
   identity: string;
   _identity?: Element | undefined;
@@ -5728,6 +6137,7 @@ export interface DataElementMapping extends BackboneElement {
   /**
    * Identifies what this mapping refers to
    * An absolute URI that identifies the specification that this mapping is expressed to.
+   * A formal identity for the specification being mapped to helps with identifying maps consistently.
    */
   uri?: string | undefined;
   _uri?: Element | undefined;
@@ -5757,6 +6167,7 @@ export interface DetectedIssue extends DomainResource {
   /**
    * Description and context
    * A textual explanation of the detected issue.
+   * Should focus on information not covered elsewhere as discrete data - no need to duplicate the narrative.
    */
   detail?: string | undefined;
   _detail?: Element | undefined;
@@ -5768,6 +6179,7 @@ export interface DetectedIssue extends DomainResource {
   /**
    * Problem resource
    * Indicates the resource representing the current activity or proposed activity that is potentially problematic.
+   * There's an implicit constraint on the number of implicated resources based on DetectedIssue.type; e.g. For drug-drug, there would be more than one.  For timing, there would typically only be one.
    */
   implicated?: Reference[] | undefined;
   /**
@@ -5800,6 +6212,7 @@ export interface DetectedIssueMitigation extends BackboneElement {
   /**
    * What mitigation?
    * Describes the action that was taken or the observation that was made that reduces/eliminates the risk associated with the identified issue.
+   * The "text" component can be used for detail or when no appropriate code exists.
    */
   action: CodeableConcept;
   /**
@@ -5810,6 +6223,7 @@ export interface DetectedIssueMitigation extends BackboneElement {
   /**
    * Date committed
    * Indicates when the mitigating action was documented.
+   * This may not be the same as when the mitigating step was actually taken.
    */
   date?: string | undefined;
   _date?: Element | undefined;
@@ -5823,6 +6237,7 @@ export interface Device extends DomainResource {
   /**
    * Details for human/organization for support
    * Contact details for an organization or a particular human that is responsible for the device.
+   * used for troubleshooting etc.
    */
   contact?: ContactPoint[] | undefined;
   /**
@@ -5834,6 +6249,7 @@ export interface Device extends DomainResource {
   /**
    * Instance id from manufacturer, owner, and others
    * Unique instance identifiers assigned to a device by organizations like manufacturers or owners. If the identifier identifies the type of device, Device.type should be used.
+   * Often fixed to the device as a barcode and may include names given to the device in local usage.  Note that some of the barcodes affixed to the device identify its type, not its instance.  For the FDA mandated Unique Device Identifier (UDI) use  the Device.udi element.
    */
   identifier?: Identifier[] | undefined;
   /**
@@ -5844,6 +6260,7 @@ export interface Device extends DomainResource {
   /**
    * Lot number of manufacture
    * Lot number assigned by the manufacturer.
+   * Alphanumeric Maximum 20.
    */
   lotNumber?: string | undefined;
   _lotNumber?: Element | undefined;
@@ -5888,17 +6305,20 @@ export interface Device extends DomainResource {
   /**
    * What kind of device this is
    * Code or identifier to identify a kind of device.
+   * For the FDA mandated Unique Device Identifier (UDI) use  the Device.udi element.
    */
   type: CodeableConcept;
   /**
    * FDA mandated Unique Device Identifier
    * United States Food and Drug Administration mandated Unique Device Identifier (UDI). Use the human readable information (the content that the user sees, which is sometimes different to the exact syntax represented in the barcode)  - see http://www.fda.gov/MedicalDevices/DeviceRegulationandGuidance/UniqueDeviceIdentification/default.htm.
+   * The unique identifier may identify an instance of a device uniquely, or it may only identify the type of the device. A portion of the UDI - the DI part - can be extracted from the UDI when required, and used to look up information about the device through the GUDID.
    */
   udi?: string | undefined;
   _udi?: Element | undefined;
   /**
    * Network address to contact device
    * A network address on which the device may be contacted directly.
+   * If the device is running a FHIR server, the network address should  be the root URL from which a conformance statement may be retrieved.
    */
   url?: string | undefined;
   _url?: Element | undefined;
@@ -5939,6 +6359,7 @@ export interface DeviceComponent extends DomainResource {
   /**
    * Component operational status
    * Indicates current operational status of the device. For example: On, Off, Standby, etc.
+   * OperationalStatus for the MDS, VMD, or Channel will be bound to a specific ValueSet that is defined in its profile.
    */
   operationalStatus?: CodeableConcept[] | undefined;
   /**
@@ -5964,6 +6385,7 @@ export interface DeviceComponent extends DomainResource {
   /**
    * What kind of component it is
    * Describes the specific component type as defined in the object-oriented or metric nomenclature partition.
+   * DeviceComponent.type can be referred to either GDMN (nomenclature system supported by FDA Global UDI Database) or preferable RTMMS coding system.
    */
   type: CodeableConcept;
 }
@@ -6036,11 +6458,13 @@ export interface DeviceMetric extends DomainResource {
   /**
    * Type of metric
    * Describes the type of the metric. For example: Heart Rate, PEEP Setting, etc.
+   * DeviceMetric.type can be referred to either GDMN (nomenclature system supported by FDA Global UDI Database) or preferable RTMMS coding system.
    */
   type: CodeableConcept;
   /**
    * Unit of metric
    * Describes the unit that an observed value determined for this metric will have. For example: Percent, Seconds, etc.
+   * DeviceMetric.unit can be referred to either UCUM or preferable RTMMS coding system.
    */
   unit?: CodeableConcept | undefined;
 }
@@ -6229,15 +6653,18 @@ export interface DiagnosticOrder extends DomainResource {
   /**
    * A list of events of interest in the lifecycle
    * A summary of the events of interest that have occurred as the request is processed; e.g. when the order was made, various processing steps (specimens received), when it was completed.
+   * This is not the same as an audit trail. It is a view of the important things that happened in the past. Typically, there would only be one entry for any given status, and systems may not record all the status events.
    */
   event?: DiagnosticOrderEvent[] | undefined;
   /**
    * Identifiers assigned to this order instance by the orderer and/or  the receiver and/or order fulfiller.
+   * The identifier.type element is used to distinguish between the identifiers assigned by the orderer (known as the 'Placer' in HL7 v2) and the producer of the observations in response to the order (known as the 'Filler' in HL7 v2). For further discussion and examples see the [notes section](diagnosticorder.html#4.22.4) below.
    */
   identifier?: Identifier[] | undefined;
   /**
    * The items the orderer requested
    * The specific diagnostic investigations that are requested as part of this request. Sometimes, there can only be one item per request, but in most contexts, more than one investigation can be requested.
+   * There would always be at least one item in normal usage, but this is optional so that a workflow can quote order details without having to list the items.
    */
   item?: DiagnosticOrderItem[] | undefined;
   /**
@@ -6252,21 +6679,25 @@ export interface DiagnosticOrder extends DomainResource {
   orderer?: Reference | undefined;
   /**
    * The clinical priority associated with this order.
+   * The Order resource also has a priority. Generally, these should be the same, but they can be different. For instance, where the clinician indicates the order is urgent, but the subsequent workflow process overrules the priority for some reason. The effective default value is "normal".
    */
   priority?: ('routine'|'urgent'|'stat'|'asap') | undefined;
   _priority?: Element | undefined;
   /**
    * Explanation/Justification for test
    * An explanation or justification for why this diagnostic investigation is being requested.   This is often for billing purposes.  May relate to the resources referred to in supportingInformation.
+   * This may be used to decide how the diagnostic investigation will be performed, or even if it will be performed at all.   Use CodeableConcept text element if the data is free (uncoded) text as shown in the [CT Scan example](diagnosticorder-example-di.html).
    */
   reason?: CodeableConcept[] | undefined;
   /**
    * If the whole order relates to specific specimens
    * One or more specimens that the diagnostic investigation is about.
+   * Many investigation requests will create a need for specimens, but the request itself is not actually about the specimens. This is provided for when the diagnostic investigation is requested on already existing specimens.
    */
   specimen?: Reference[] | undefined;
   /**
    * The status of the order.
+   * Typically the system placing the order sets the status to "requested". Thereafter, the order is maintained by the receiver that updates the status as the request is handled.
    */
   status?: ('proposed'|'draft'|'planned'|'requested'|'received'|'accepted'|'in-progress'|'review'|'completed'|'cancelled'|'suspended'|'rejected'|'failed') | undefined;
   _status?: Element | undefined;
@@ -6277,12 +6708,14 @@ export interface DiagnosticOrder extends DomainResource {
   subject: Reference;
   /**
    * Additional clinical information about the patient or specimen that may influence test interpretations.  This includes observations explicitly requested by the producer(filler) to provide context or supporting information needed to complete the order.
+   * This information includes diagnosis, clinical findings and other observations.  In laboratory ordering these are typically referred to as "ask at order entry questions (AOEs)". Examples include reporting the amount of inspired oxygen for blood gasses, the point in the menstrual cycle for cervical pap tests, and other conditions that influence test interpretations.
    */
   supportingInformation?: Reference[] | undefined;
 }
 /**
  * A list of events of interest in the lifecycle
  * A summary of the events of interest that have occurred as the request is processed; e.g. when the order was made, various processing steps (specimens received), when it was completed.
+ * This is not the same as an audit trail. It is a view of the important things that happened in the past. Typically, there would only be one entry for any given status, and systems may not record all the status events.
  */
 export interface DiagnosticOrderEvent extends BackboneElement {
   /**
@@ -6310,16 +6743,19 @@ export interface DiagnosticOrderEvent extends BackboneElement {
 /**
  * The items the orderer requested
  * The specific diagnostic investigations that are requested as part of this request. Sometimes, there can only be one item per request, but in most contexts, more than one investigation can be requested.
+ * There would always be at least one item in normal usage, but this is optional so that a workflow can quote order details without having to list the items.
  */
 export interface DiagnosticOrderItem extends BackboneElement {
   /**
    * Location of requested test (if applicable)
    * Anatomical location where the request test should be performed.  This is the target site.
+   * If the use case requires BodySite to be handled as a separate resource instead of an inline coded element (e.g. to identify and track separately)  then use the standard extension [body-site-instance](extension-body-site-instance.html).
    */
   bodySite?: CodeableConcept | undefined;
   /**
    * Code to indicate the item (test or panel) being ordered
    * A code that identifies a particular diagnostic investigation, or panel of investigations, that have been requested.
+   * Many laboratory tests and radiology tests embed the specimen/organ system in the test name, for example,  serum or serum/plasma glucose, or a chest xray. The specimen may not be recorded separately from the test code.
    */
   code: CodeableConcept;
   /**
@@ -6330,10 +6766,12 @@ export interface DiagnosticOrderItem extends BackboneElement {
   /**
    * If this item relates to specific specimens
    * If the item is related to a specific specimen.
+   * A single specimen should not appear in both DiagnosticOrder.specimen and DiagnosticOrder.item.specimen.
    */
   specimen?: Reference[] | undefined;
   /**
    * The status of this individual item within the order.
+   * If the request has multiple items that have their own life cycles, then the items will have their own status while the overall diagnostic order is (usually) "in-progress".
    */
   status?: ('proposed'|'draft'|'planned'|'requested'|'received'|'accepted'|'in-progress'|'review'|'completed'|'cancelled'|'suspended'|'rejected'|'failed') | undefined;
   _status?: Element | undefined;
@@ -6347,6 +6785,7 @@ export interface DiagnosticReport extends DomainResource {
   /**
    * Service category
    * A code that classifies the clinical discipline, department or diagnostic service that created the report (e.g. cardiology, biochemistry, hematology, MRI). This is used for searching, sorting and display purposes.
+   * The level of granularity is defined by the category concepts in the value set. More fine-grained filtering can be performed using the metadata and/or terminology hierarchy in DiagnosticReport.code.
    */
   category?: CodeableConcept | undefined;
   /**
@@ -6361,18 +6800,21 @@ export interface DiagnosticReport extends DomainResource {
   /**
    * Clinical Interpretation of test results
    * Concise and clinically contextualized narrative interpretation of the diagnostic report.
+   * Typically, a report is either [all data, no narrative (e.g. Core lab)] or [a mix of data with some concluding narrative (e.g. Structured Pathology Report, Bone Density)], or [all narrative (e.g. typical imaging report, histopathology)]. In all of these cases, the narrative goes in "text".
    */
   conclusion?: string | undefined;
   _conclusion?: Element | undefined;
   /**
    * Clinically Relevant time/time-period for report
    * The time or time-period the observed values are related to. When the subject of the report is a patient, this is usually either the time of the procedure or of specimen collection(s), but very often the source of the date/time is not known, only the date/time itself.
+   * If the diagnostic procedure was performed on the patient, this is the time it was performed. If there are specimens, the diagnostically relevant time can be derived from the specimen collection times, but the specimen information is not always available, and the exact relationship between the specimens and the diagnostically relevant time is not always automatic.
    */
   effectiveString?: string | undefined;
   _effectiveString?: Element | undefined;
   /**
    * Clinically Relevant time/time-period for report
    * The time or time-period the observed values are related to. When the subject of the report is a patient, this is usually either the time of the procedure or of specimen collection(s), but very often the source of the date/time is not known, only the date/time itself.
+   * If the diagnostic procedure was performed on the patient, this is the time it was performed. If there are specimens, the diagnostically relevant time can be derived from the specimen collection times, but the specimen information is not always available, and the exact relationship between the specimens and the diagnostically relevant time is not always automatic.
    */
   effectivePeriod?: Period | undefined;
   /**
@@ -6393,27 +6835,32 @@ export interface DiagnosticReport extends DomainResource {
   /**
    * Reference to full details of imaging associated with the diagnostic report
    * One or more links to full details of any imaging performed during the diagnostic investigation. Typically, this is imaging performed by DICOM enabled modalities, but this is not required. A fully enabled PACS viewer can use this information to provide views of the source images.
+   * ImagingStudy and ImageObjectStudy and the image element are somewhat overlapping - typically, the list of image references in the image element will also be found in one of the imaging study resources. However each caters to different types of displays for different types of purposes. Neither, either, or both may be provided.
    */
   imagingStudy?: Reference[] | undefined;
   /**
    * DateTime this version was released
    * The date and time that this version of the report was released from the source diagnostic service.
+   * May be different from the update time of the resource itself, because that is the status of the record (potentially a secondary copy), not the actual release time of the report.
    */
   issued: string;
   _issued?: Element | undefined;
   /**
    * Responsible Diagnostic Service
    * The diagnostic service that is responsible for issuing the report.
+   * This is not necessarily the source of the atomic data items. It is the entity that takes responsibility for the clinical report.
    */
   performer: Reference;
   /**
    * Entire report as issued
    * Rich text representation of the entire result as issued by the diagnostic service. Multiple formats are allowed but they SHALL be semantically equivalent.
+   * "application/pdf" is recommended as the most reliable and interoperable in this context.
    */
   presentedForm?: Attachment[] | undefined;
   /**
    * What was requested
    * Details concerning a test or procedure requested.
+   * Note: Usually there is one test request for each result, however in some circumstances multiple test requests may be represented using a single test result resource. Note that there are also cases where one request leads to multiple reports.
    */
   request?: Reference[] | undefined;
   /**
@@ -6424,10 +6871,12 @@ export interface DiagnosticReport extends DomainResource {
   /**
    * Specimens this report is based on
    * Details about the specimens on which this diagnostic report is based.
+   * If the specimen is sufficiently specified with a code in the test result name, then this additional data may be redundant. If there are multiple specimens, these may be represented per Observation or group.
    */
   specimen?: Reference[] | undefined;
   /**
    * The status of the diagnostic report as a whole.
+   * This is labeled as "Is Modifier" because applications need to take appropriate action if a report is withdrawn.
    */
   status: ('registered'|'partial'|'final'|'corrected'|'appended'|'cancelled'|'entered-in-error');
   _status?: Element | undefined;
@@ -6445,6 +6894,7 @@ export interface DiagnosticReportImage extends BackboneElement {
   /**
    * Comment about the image (e.g. explanation)
    * A comment about the image. Typically, this is used to provide an explanation for why the image is included, or to draw the viewer's attention to important features.
+   * The comment should be displayed with the image. It would be common for the report to include additional discussion of the image contents in other sections such as the conclusion.
    */
   comment?: string | undefined;
   _comment?: Element | undefined;
@@ -6462,6 +6912,7 @@ export interface DocumentManifest extends DomainResource {
   /**
    * Who and/or what authored the manifest
    * Identifies who is responsible for creating the manifest, and adding  documents to it.
+   * Not necessarily who did the actual data entry (i.e. typist) or who was the source (informant).
    */
   author?: Reference[] | undefined;
   /**
@@ -6472,12 +6923,14 @@ export interface DocumentManifest extends DomainResource {
   /**
    * When this document manifest created
    * When the document manifest was created for submission to the server (not necessarily the same thing as the actual resource last modified time, since it may be modified, replicated, etc.).
+   * Creation time is used for tracking, organizing versions and searching. This is the creation time of the document set, not the documents on which it is based.
    */
   created?: string | undefined;
   _created?: Element | undefined;
   /**
    * Human-readable description (title)
    * Human-readable description of the source document. This is sometimes known as the "title".
+   * What the document is about, rather than a terse summary of the document. It is commonly the case that records do not have a title and are collectively referred to by the display name of Record code (e.g. a "consultation" or "progress note").
    */
   description?: string | undefined;
   _description?: Element | undefined;
@@ -6494,11 +6947,13 @@ export interface DocumentManifest extends DomainResource {
   /**
    * Intended to get notified about this set of documents
    * A patient, practitioner, or organization for which this set of documents is intended.
+   * How the recipient receives the document set or is notified of it is up to the implementation. This element is just a statement of intent. If the recipient is a person, and it is not known whether the person is a patient or a practitioner, RelatedPerson would be the default choice.
    */
   recipient?: Reference[] | undefined;
   /**
    * Related things
    * Related identifiers or resources associated with the DocumentManifest.
+   * May be identifiers or resources that caused the DocumentManifest to be created.
    */
   related?: DocumentManifestRelated[] | undefined;
   /**
@@ -6531,26 +6986,31 @@ export interface DocumentManifestContent extends BackboneElement {
   /**
    * Contents of this set of documents
    * The list of references to document content, or Attachment that consist of the parts of this document manifest. Usually, these would be document references, but direct references to Media or Attachments are also allowed.
+   * The intended focus of the DocumentManifest is for the reference to target either DocumentReference or Media Resources, and most implementation guides will restrict to these resources. The reference is to "Any" to support EN 13606 usage, where an extract is DocumentManifest that references  List and Composition resources.
    */
   pAttachment?: Attachment | undefined;
   /**
    * Contents of this set of documents
    * The list of references to document content, or Attachment that consist of the parts of this document manifest. Usually, these would be document references, but direct references to Media or Attachments are also allowed.
+   * The intended focus of the DocumentManifest is for the reference to target either DocumentReference or Media Resources, and most implementation guides will restrict to these resources. The reference is to "Any" to support EN 13606 usage, where an extract is DocumentManifest that references  List and Composition resources.
    */
   pReference?: Reference | undefined;
 }
 /**
  * Related things
  * Related identifiers or resources associated with the DocumentManifest.
+ * May be identifiers or resources that caused the DocumentManifest to be created.
  */
 export interface DocumentManifestRelated extends BackboneElement {
   /**
    * Identifiers of things that are related
    * Related identifier to this DocumentManifest.  For example, Order numbers, accession numbers, XDW workflow numbers.
+   * If both identifier and ref elements are present they shall refer to the same thing.
    */
   identifier?: Identifier | undefined;
   /**
    * Related Resource to this DocumentManifest. For example, Order, DiagnosticOrder,  Procedure, EligibilityRequest, etc.
+   * If both identifier and ref elements are present they shall refer to the same thing.
    */
   ref?: Reference | undefined;
 }
@@ -6563,16 +7023,19 @@ export interface DocumentReference extends DomainResource {
   /**
    * Who/what authenticated the document
    * Which person or organization authenticates that this document is valid.
+   * Represents a participant within the author institution who has legally authenticated or attested the document. Legal authentication implies that a document has been signed manually or electronically by the legal Authenticator.
    */
   authenticator?: Reference | undefined;
   /**
    * Who and/or what authored the document
    * Identifies who is responsible for adding the information to the document.
+   * Not necessarily who did the actual data entry (i.e. typist) it in or who was the source (informant).
    */
   author?: Reference[] | undefined;
   /**
    * Categorization of document
    * A categorization for the type of document referenced - helps for indexing and searching. This may be implied by or derived from the code specified in the DocumentReference.type.
+   * This is a metadata field from [XDS/MHD](http://wiki.ihe.net/index.php?title=Mobile_access_to_Health_Documents_(MHD)).
    */
   class?: CodeableConcept | undefined;
   /**
@@ -6583,28 +7046,33 @@ export interface DocumentReference extends DomainResource {
   /**
    * Clinical context of document
    * The clinical context in which the document was prepared.
+   * These values are primarily added to help with searching for interesting/relevant documents.
    */
   context?: DocumentReferenceContext | undefined;
   /**
    * Document creation time
    * When the document was created.
+   * Creation time is used for tracking, organizing versions and searching. This is the creation time of the document, not the source material on which it is based.
    */
   created?: string | undefined;
   _created?: Element | undefined;
   /**
    * Organization which maintains the document
    * Identifies the organization or group who is responsible for ongoing maintenance of and access to the document.
+   * Identifies the logical organization to go to find the current version, where to report issues, etc. This is different from the physical location of the document, which is the technical location of the document, which host may be delegated to the management of some other organization.
    */
   custodian?: Reference | undefined;
   /**
    * Human-readable description (title)
    * Human-readable description of the source document. This is sometimes known as the "title".
+   * What the document is about, rather than a terse summary of the document. It is commonly the case that records do not have a title and are collectively referred to by the display name of Record code (e.g. a "consultation" or "progress note").
    */
   description?: string | undefined;
   _description?: Element | undefined;
   /**
    * preliminary | final | appended | amended | entered-in-error
    * The status of the underlying document.
+   * The document that is pointed to might be in various lifecycle states.
    */
   docStatus?: CodeableConcept | undefined;
   /**
@@ -6615,12 +7083,14 @@ export interface DocumentReference extends DomainResource {
   /**
    * When this document reference created
    * When the document reference was created.
+   * Referencing/indexing time is used for tracking, organizing versions and searching.
    */
   indexed: string;
   _indexed?: Element | undefined;
   /**
    * Master Version Specific Identifier
    * Document identifier as assigned by the source of the document. This identifier is specific to this version of the document. This unique identifier may be used elsewhere to identify this version of the document.
+   * CDA Document Id extension and root.
    */
   masterIdentifier?: Identifier | undefined;
   /**
@@ -6631,10 +7101,12 @@ export interface DocumentReference extends DomainResource {
   /**
    * Document security-tags
    * A set of Security-Tag codes specifying the level of privacy/security of the Document. Note that DocumentReference.meta.security contains the security labels of the "reference" to the document, while DocumentReference.securityLabel contains a snapshot of the security labels on the document the reference refers to.
+   * The confidentiality codes can carry multiple vocabulary items. HL7 has developed an understanding of security and privacy tags that might be desirable in a Document Sharing environment, called HL7 Healthcare Privacy and Security Classification System (HCS). The following specification is recommended but not mandated, as the vocabulary bindings are an administrative domain responsibility. The use of this method is up to the policy domain such as the XDS Affinity Domain or other Trust Domain where all parties including sender and recipients are trusted to appropriately tag and enforce.   In the HL7 Healthcare Privacy and Security Classification (HCS) there are code systems specific to Confidentiality, Sensitivity, Integrity, and Handling Caveats. Some values would come from a local vocabulary as they are related to workflow roles and special projects.
    */
   securityLabel?: CodeableConcept[] | undefined;
   /**
    * The status of this document reference.
+   * This is the status of the DocumentReference object, which might be independent from the docStatus element.
    */
   status: ('current'|'superseded'|'entered-in-error');
   _status?: Element | undefined;
@@ -6646,6 +7118,7 @@ export interface DocumentReference extends DomainResource {
   /**
    * Kind of document (LOINC if possible)
    * Specifies the particular kind of document referenced  (e.g. History and Physical, Discharge Summary, Progress Note). This usually equates to the purpose of making the document referenced.
+   * Key metadata element describing the document, used in searching/filtering.
    */
   type: CodeableConcept;
 }
@@ -6662,12 +7135,14 @@ export interface DocumentReferenceContent extends BackboneElement {
   /**
    * Format/content rules for the document
    * An identifier of the document encoding, structure, and template that the document conforms to beyond the base format indicated in the mimeType.
+   * Note that while IHE mostly issues URNs for format types, not all documents can be identified by a URI.
    */
   format?: Coding[] | undefined;
 }
 /**
  * Clinical context of document
  * The clinical context in which the document was prepared.
+ * These values are primarily added to help with searching for interesting/relevant documents.
  */
 export interface DocumentReferenceContext extends BackboneElement {
   /**
@@ -6678,6 +7153,7 @@ export interface DocumentReferenceContext extends BackboneElement {
   /**
    * Main Clinical Acts Documented
    * This list of codes represents the main clinical acts, such as a colonoscopy or an appendectomy, being documented. In some cases, the event is inherent in the typeCode, such as a "History and Physical Report" in which the procedure being documented is necessarily a "History and Physical" act.
+   * An event can further specialize the act inherent in the type, such as  where it is simply "Procedure Report" and the procedure was a "colonoscopy". If one or more event codes are included, they shall not conflict with the values inherent in the class or type elements as such a conflict would create an ambiguous situation.
    */
   event?: CodeableConcept[] | undefined;
   /**
@@ -6693,10 +7169,12 @@ export interface DocumentReferenceContext extends BackboneElement {
   /**
    * Additional details about where the content was created (e.g. clinical specialty)
    * This property may convey specifics about the practice setting where the content was created, often reflecting the clinical specialty.
+   * The value set for this content has an example binding because it is a value set decided by community policy. Other examples exist for consideration: * HITSP created the table HITSP/C80 Table 2-148 Clinical Specialty Value Set (a value set based upon SNOMED CT which is referenced by Direct (XDR and XDM for Direct Messaging Specification, Version 1), as well as Nationwide Health Information Network (NHIN).  Query for Documents, Web Service Interface Specification, V 3.0, 07/27/2011 * ELGA (Austria) (ELGA CDA Implementie-rungsleitfäden Registrierung von CDA Dokumenten für ELGA mit IHE Cross-Enterprise Document Sharing: XDS Metadaten (XDSDocumentEntry), [1.2.40.0.34.7.6.3] * XDS Connect-a-thon practiceSettingCode.
    */
   practiceSetting?: CodeableConcept | undefined;
   /**
    * Related identifiers or resources associated with the DocumentReference.
+   * May be identifiers or resources that caused the DocumentReference or referenced Document to be created.
    */
   related?: DocumentReferenceContextRelated[] | undefined;
   /**
@@ -6707,15 +7185,18 @@ export interface DocumentReferenceContext extends BackboneElement {
 }
 /**
  * Related identifiers or resources associated with the DocumentReference.
+ * May be identifiers or resources that caused the DocumentReference or referenced Document to be created.
  */
 export interface DocumentReferenceContextRelated extends BackboneElement {
   /**
    * Identifier of related objects or events
    * Related identifier to this DocumentReference. If both id and ref are present they shall refer to the same thing.
+   * Order numbers, accession numbers, XDW workflow numbers.
    */
   identifier?: Identifier | undefined;
   /**
    * Related Resource to this DocumentReference. If both id and ref are present they shall refer to the same thing.
+   * Order, DiagnosticOrder,  Procedure, EligibilityRequest, etc.
    */
   ref?: Reference | undefined;
 }
@@ -6726,6 +7207,7 @@ export interface DocumentReferenceContextRelated extends BackboneElement {
 export interface DocumentReferenceRelatesTo extends BackboneElement {
   /**
    * The type of relationship that this document has with anther document.
+   * If this document appends another document, then the document cannot be fully understood without also accessing the referenced document.
    */
   code: ('replaces'|'transforms'|'signs'|'appends');
   _code?: Element | undefined;
@@ -6744,21 +7226,25 @@ export interface DomainResource extends Resource {
   /**
    * Contained, inline Resources
    * These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope.
+   * This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again.
    */
   contained?: FhirResource[] | undefined;
   /**
    * Additional Content defined by implementations
    * May be used to represent additional information that is not part of the basic definition of the resource. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+   * There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
    */
   extension?: Extension[] | undefined;
   /**
    * Extensions that cannot be ignored
    * May be used to represent additional information that is not part of the basic definition of the resource, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+   * There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
    */
   modifierExtension?: Extension[] | undefined;
   /**
    * Text summary of the resource, for human interpretation
    * A human-readable narrative that contains a summary of the resource, and may be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it "clinically safe" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.
+   * Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative.
    */
   text?: Narrative | undefined;
 }
@@ -6887,6 +7373,7 @@ export interface Encounter extends DomainResource {
   episodeOfCare?: Reference[] | undefined;
   /**
    * Details about the admission to a healthcare service.
+   * An Encounter may cover more than just the inpatient stay. Contexts such as outpatients, community clinics, and aged care facilities are also included.  The duration recorded in the period of this encounter covers the entire scope of this hospitalization record.
    */
   hospitalization?: EncounterHospitalization | undefined;
   /**
@@ -6901,16 +7388,19 @@ export interface Encounter extends DomainResource {
   /**
    * Reason the encounter takes place (resource)
    * Reason the encounter takes place, as specified using information from another resource. For admissions, this is the admission diagnosis. The indication will typically be a Condition (with other resources referenced in the evidence.detail), or a Procedure.
+   * For systems that need to know which was the primary diagnosis, these will be marked with the standard extension primaryDiagnosis (which is a sequence value rather than a flag, 1 = primary diagnosis).
    */
   indication?: Reference[] | undefined;
   /**
    * Quantity of time the encounter lasted (less time absent)
    * Quantity of time the encounter lasted. This excludes the time during leaves of absence.
+   * May differ from the time the Encounter.period lasted because of leave of absence.
    */
   length?: Quantity | undefined;
   /**
    * List of locations where the patient has been
    * List of locations where  the patient has been during this encounter.
+   * Virtual encounters can be recorded in the Encounter by specifying a location reference to a location of type "kind" such as "client's home" and an encounter.class = "virtual".
    */
   location?: EncounterLocation[] | undefined;
   /**
@@ -6925,10 +7415,12 @@ export interface Encounter extends DomainResource {
   partOf?: Reference | undefined;
   /**
    * The patient present at the encounter.
+   * While the encounter is always about the patient, the patient may not actually be known in all contexts of use.
    */
   patient?: Reference | undefined;
   /**
    * The start and end time of the encounter.
+   * If not (yet) known, the end of the Period may be omitted.
    */
   period?: Period | undefined;
   /**
@@ -6938,6 +7430,7 @@ export interface Encounter extends DomainResource {
   /**
    * Reason the encounter takes place (code)
    * Reason the encounter takes place, expressed as a code. For admissions, this can be used for a coded admission diagnosis.
+   * For systems that need to know which was the primary diagnosis, these will be marked with the standard extension primaryDiagnosis (which is a sequence value rather than a flag, 1 = primary diagnosis).
    */
   reason?: CodeableConcept[] | undefined;
   /**
@@ -6953,15 +7446,18 @@ export interface Encounter extends DomainResource {
   /**
    * List of past encounter statuses
    * The status history permits the encounter resource to contain the status history without needing to read through the historical versions of the resource, or even have the server store them.
+   * The current status is always found in the current version of the resource, not the status history.
    */
   statusHistory?: EncounterStatusHistory[] | undefined;
   /**
    * Specific type of encounter (e.g. e-mail consultation, surgical day-care, skilled nursing, rehabilitation).
+   * Since there are many ways to further classify encounters, this element is 0..*.
    */
   type?: CodeableConcept[] | undefined;
 }
 /**
  * Details about the admission to a healthcare service.
+ * An Encounter may cover more than just the inpatient stay. Contexts such as outpatients, community clinics, and aged care facilities are also included.  The duration recorded in the period of this encounter covers the entire scope of this hospitalization record.
  */
 export interface EncounterHospitalization extends BackboneElement {
   /**
@@ -6979,6 +7475,7 @@ export interface EncounterHospitalization extends BackboneElement {
   destination?: Reference | undefined;
   /**
    * Diet preferences reported by the patient.
+   * For example a patient may request both a dairy-free and nut-free diet preference (not mutually exclusive).
    */
   dietPreference?: CodeableConcept[] | undefined;
   /**
@@ -7014,6 +7511,7 @@ export interface EncounterHospitalization extends BackboneElement {
 /**
  * List of locations where the patient has been
  * List of locations where  the patient has been during this encounter.
+ * Virtual encounters can be recorded in the Encounter by specifying a location reference to a location of type "kind" such as "client's home" and an encounter.class = "virtual".
  */
 export interface EncounterLocation extends BackboneElement {
   /**
@@ -7027,6 +7525,7 @@ export interface EncounterLocation extends BackboneElement {
   period?: Period | undefined;
   /**
    * The status of the participants' presence at the specified location during the period specified. If the participant is is no longer at the location, then the period will have an end date/time.
+   * When the patient is no longer active at a location, then the period end date is entered, and the status may be changed to completed.
    */
   status?: ('planned'|'active'|'reserved'|'completed') | undefined;
   _status?: Element | undefined;
@@ -7047,12 +7546,14 @@ export interface EncounterParticipant extends BackboneElement {
   period?: Period | undefined;
   /**
    * Role of participant in encounter.
+   * The participant type indicates how an individual partitipates in an encounter. It includes non-practitioner participants, and for practitioners this is to describe the action type in the context of this encounter (e.g. Admitting Dr, Attending Dr, Translator, Consulting Dr). This is different to the practitioner roles which are functional roles, derived from terms of employment, education, licensing, etc.
    */
   type?: CodeableConcept[] | undefined;
 }
 /**
  * List of past encounter statuses
  * The status history permits the encounter resource to contain the status history without needing to read through the historical versions of the resource, or even have the server store them.
+ * The current status is always found in the current version of the resource, not the status history.
  */
 export interface EncounterStatusHistory extends BackboneElement {
   /**
@@ -7242,6 +7743,7 @@ export interface EpisodeOfCare extends DomainResource {
   /**
    * Type/class  - e.g. specialist referral, disease management
    * A classification of the type of encounter; e.g. specialist referral, disease management, type of funded care.
+   * The type can be very important in processing as this could be used in determining if the EpisodeOfCare is relevant to specific government reporting, or other types of classifications.
    */
   type?: CodeableConcept[] | undefined;
 }
@@ -7252,6 +7754,7 @@ export interface EpisodeOfCare extends DomainResource {
 export interface EpisodeOfCareCareTeam extends BackboneElement {
   /**
    * The practitioner (or Organization) within the team.
+   * Where an Organization is included in the CareTeam, it is really providing some form of services to the EpisodeOfCare (e.g. Jim's Mowing Services) the details of the services would be included on a CarePlan.
    */
   member?: Reference | undefined;
   /**
@@ -7377,11 +7880,13 @@ export interface FamilyMemberHistory extends DomainResource {
   /**
    * Condition that the related person had
    * The significant Conditions (or condition) that the family member had. This is a repeating section to allow a system to represent more than one condition per resource, though there is nothing stopping multiple resources - one per condition.
+   * If none of the conditions listed have an outcome of "death" specified, that indicates that none of the specified conditions are known to have been the primary cause of death.
    */
   condition?: FamilyMemberHistoryCondition[] | undefined;
   /**
    * When history was captured/updated
    * The date (and possibly time) when the family member history was taken.
+   * This should be captured even if the same as the date on the List aggregating the full family history.
    */
   date?: string | undefined;
   _date?: Element | undefined;
@@ -7447,6 +7952,7 @@ export interface FamilyMemberHistory extends DomainResource {
 /**
  * Condition that the related person had
  * The significant Conditions (or condition) that the family member had. This is a repeating section to allow a system to represent more than one condition per resource, though there is nothing stopping multiple resources - one per condition.
+ * If none of the conditions listed have an outcome of "death" specified, that indicates that none of the specified conditions are known to have been the primary cause of death.
  */
 export interface FamilyMemberHistoryCondition extends BackboneElement {
   /**
@@ -7547,6 +8053,7 @@ export interface Goal extends DomainResource {
   /**
    * Who's responsible for creating Goal?
    * Indicates whose goal this is - patient goal, practitioner goal, etc.
+   * This is the individual reponsible for establishing the goal, not necessarily who recorded it.  (For that, use the Provenance resource.).
    */
   author?: Reference | undefined;
   /**
@@ -7568,16 +8075,19 @@ export interface Goal extends DomainResource {
   /**
    * Comments about the goal
    * Any comments related to the goal.
+   * May be used for progress notes, concerns or other related information that doesn't actually describe the goal itself.
    */
   note?: Annotation[] | undefined;
   /**
    * What was end result of goal?
    * Identifies the change (or lack of change) at the point where the goal was deepmed to be cancelled or achieved.
+   * Note that this should not duplicate the goal status.
    */
   outcome?: GoalOutcome[] | undefined;
   /**
    * high | medium |low
    * Identifies the mutually agreed level of importance associated with reaching/sustaining the goal.
+   * Extensions are available to track priorities as established by each participant (i.e. Priority from the patient's perspective, different practitioners' perspectives, family member's perspectives)  The ordinal extension on Coding can be used to convey a numerically comparable ranking to priority.  (Keep in mind that different coding systems may use a "low value=important".
    */
   priority?: CodeableConcept | undefined;
   /**
@@ -7599,12 +8109,14 @@ export interface Goal extends DomainResource {
   /**
    * When goal status took effect
    * Identifies when the current status.  I.e. When initially created, when achieved, when cancelled, etc.
+   * To see the date for past statuses, query history.
    */
   statusDate?: string | undefined;
   _statusDate?: Element | undefined;
   /**
    * Reason for current status
    * Captures the reason for the current status.
+   * This will typically be captured for statuses such as rejected, on-hold or cancelled, but could be present for others.
    */
   statusReason?: CodeableConcept | undefined;
   /**
@@ -7627,6 +8139,7 @@ export interface Goal extends DomainResource {
 /**
  * What was end result of goal?
  * Identifies the change (or lack of change) at the point where the goal was deepmed to be cancelled or achieved.
+ * Note that this should not duplicate the goal status.
  */
 export interface GoalOutcome extends BackboneElement {
   /**
@@ -7655,11 +8168,13 @@ export interface Group extends DomainResource {
   /**
    * Trait of group members
    * Identifies the traits shared by members of the group.
+   * All the identified characteristics must be true for an entity to a member of the group.
    */
   characteristic?: GroupCharacteristic[] | undefined;
   /**
    * Kind of Group members
    * Provides a specific type of resource the group includes; e.g. "cow", "syringe", etc.
+   * This would generally be omitted for Person resources.
    */
   code?: CodeableConcept | undefined;
   /**
@@ -7681,10 +8196,12 @@ export interface Group extends DomainResource {
   /**
    * Number of members
    * A count of the number of resource instances that are part of the group.
+   * Note that the quantity may be less than the number of members if some of the members are not active.
    */
   quantity?: number | undefined;
   /**
    * Identifies the broad classification of the kind of resources the group includes.
+   * Group members SHALL be of the appropriate resource type (Patient for person or animal; or Practitioner, Device, Medicaiton or Substance for the other types.).
    */
   type: ('person'|'animal'|'practitioner'|'device'|'medication'|'substance');
   _type?: Element | undefined;
@@ -7692,6 +8209,7 @@ export interface Group extends DomainResource {
 /**
  * Trait of group members
  * Identifies the traits shared by members of the group.
+ * All the identified characteristics must be true for an entity to a member of the group.
  */
 export interface GroupCharacteristic extends BackboneElement {
   /**
@@ -7702,6 +8220,7 @@ export interface GroupCharacteristic extends BackboneElement {
   /**
    * Group includes or excludes
    * If true, indicates the characteristic is one that is NOT held by members of the group.
+   * This is labeled as "Is Modifier" because applications cannot wrongly include excluded members as included or vice versa.
    */
   exclude: boolean;
   _exclude?: Element | undefined;
@@ -7713,22 +8232,26 @@ export interface GroupCharacteristic extends BackboneElement {
   /**
    * Value held by characteristic
    * The value of the trait that holds (or does not hold - see 'exclude') for members of the group.
+   * For Range, it means members of the group have a value that falls somewhere within the specified range.
    */
   valueBoolean?: boolean | undefined;
   _valueBoolean?: Element | undefined;
   /**
    * Value held by characteristic
    * The value of the trait that holds (or does not hold - see 'exclude') for members of the group.
+   * For Range, it means members of the group have a value that falls somewhere within the specified range.
    */
   valueCodeableConcept?: CodeableConcept | undefined;
   /**
    * Value held by characteristic
    * The value of the trait that holds (or does not hold - see 'exclude') for members of the group.
+   * For Range, it means members of the group have a value that falls somewhere within the specified range.
    */
   valueQuantity?: Quantity | undefined;
   /**
    * Value held by characteristic
    * The value of the trait that holds (or does not hold - see 'exclude') for members of the group.
+   * For Range, it means members of the group have a value that falls somewhere within the specified range.
    */
   valueRange?: Range | undefined;
 }
@@ -7775,21 +8298,25 @@ export interface HealthcareService extends DomainResource {
   /**
    * Times the Service Site is available
    * A collection of times that the Service Site is available.
+   * More detailed availability information may be provided in associated Schedule/Slot resources.
    */
   availableTime?: HealthcareServiceAvailableTime[] | undefined;
   /**
    * Collection of characteristics (attributes).
+   * These could be such things as is wheelchair accessible.
    */
   characteristic?: CodeableConcept[] | undefined;
   /**
    * Additional description and/or any specific issues not covered elsewhere
    * Any additional description of the service and/or any specific issues not covered by the other attributes, which can be displayed as further detail under the serviceName.
+   * Would expect that a user would not see this information on a search results, and it would only be available when viewing the complete details of the service.
    */
   comment?: string | undefined;
   _comment?: Element | undefined;
   /**
    * Location(s) service is inteded for/available to
    * The location(s) that this service is available to (not where the service is provided).
+   * The locations referenced by the coverage area can include both specific locations, including areas, and also conceptual domains too (mode = kind), such as a physical area (tri-state area) and some other attribute (covered by Example Care Organization). These types of Locations are often not managed by any specific organization. This could also include generic locations such as "in-home".
    */
   coverageArea?: Reference[] | undefined;
   /**
@@ -7799,6 +8326,7 @@ export interface HealthcareService extends DomainResource {
   eligibility?: CodeableConcept | undefined;
   /**
    * Describes the eligibility conditions for the service.
+   * The description of service eligibility should, in general, not exceed one or two paragraphs. It should be sufficient for a prospective consumer to determine if they are likely to be eligible or not. Where eligibility requirements and conditions are complex, it may simply be noted that an eligibility assessment is required. Where eligibility is determined by an outside source, such as an Act of Parliament, this should be noted, preferably with a reference to a commonly available copy of the source document such as a web page.
    */
   eligibilityNote?: string | undefined;
   _eligibilityNote?: Element | undefined;
@@ -7829,17 +8357,20 @@ export interface HealthcareService extends DomainResource {
   /**
    * Program Names that categorize the service
    * Program Names that can be used to categorize the service.
+   * Programs are often defined externally to an Organization, commonly by governments; e.g. Home and Community Care Programs, Homeless Program, ….
    */
   programName?: string[] | undefined;
   _programName?: Element[] | undefined;
   /**
    * Organization that provides this service
    * The organization that provides this healthcare service.
+   * This property is recommended to be the same as the Location's managingOrganization, and if not provided should be interpreted as such. If the Location does not have a managing Organization, then this property should be populated.
    */
   providedBy?: Reference | undefined;
   /**
    * PKI Public keys to support secure communications
    * The public part of the 'keys' allocated to an Organization by an accredited body to support secure exchange of data over the internet. To be provided by the Organization, where available.
+   * Note: This is a base64 encoded digital certificate.
    */
   publicKey?: string | undefined;
   _publicKey?: Element | undefined;
@@ -7850,6 +8381,7 @@ export interface HealthcareService extends DomainResource {
   /**
    * Broad category of service being performed or delivered
    * Identifies the broad category of service being performed or delivered.
+   * Selecting a Service Category then determines the list of relevant service types that can be selected in the primary service type.
    */
   serviceCategory?: CodeableConcept | undefined;
   /**
@@ -7861,6 +8393,7 @@ export interface HealthcareService extends DomainResource {
   /**
    * Conditions under which service is available/offered
    * The code(s) that detail the conditions under which the healthcare service is available/offered.
+   * The provision means being commissioned by, contractually obliged or financially sourced. Types of costings that may apply to this healthcare service, such if the service may be available for free, some discounts available, or fees apply.
    */
   serviceProvisionCode?: CodeableConcept[] | undefined;
   /**
@@ -7871,12 +8404,14 @@ export interface HealthcareService extends DomainResource {
   /**
    * Contacts related to the healthcare service
    * List of contacts related to this specific healthcare service.
+   * If this is empty, then refer to the location's contacts.
    */
   telecom?: ContactPoint[] | undefined;
 }
 /**
  * Times the Service Site is available
  * A collection of times that the Service Site is available.
+ * More detailed availability information may be provided in associated Schedule/Slot resources.
  */
 export interface HealthcareServiceAvailableTime extends BackboneElement {
   /**
@@ -7888,12 +8423,14 @@ export interface HealthcareServiceAvailableTime extends BackboneElement {
   /**
    * Closing time of day (ignored if allDay = true)
    * The closing time of day. Note: If the AllDay flag is set, then this time is ignored.
+   * The timezone is expected to be for where this HealthcareService is provided at.
    */
   availableEndTime?: string | undefined;
   _availableEndTime?: Element | undefined;
   /**
    * Opening time of day (ignored if allDay = true)
    * The opening time of day. Note: If the AllDay flag is set, then this time is ignored.
+   * The timezone is expected to be for where this HealthcareService is provided at.
    */
   availableStartTime?: string | undefined;
   _availableStartTime?: Element | undefined;
@@ -7933,6 +8470,7 @@ export interface HealthcareServiceServiceType extends BackboneElement {
   /**
    * Type of service delivered or performed
    * The specific type of service being delivered or performed.
+   * Change to serviceType?
    */
   type: CodeableConcept;
 }
@@ -7956,22 +8494,26 @@ export interface ImagingObjectSelection extends DomainResource {
   /**
    * Description text
    * Text description of the DICOM SOP instances selected in the ImagingObjectSelection. This should be aligned with the content of the title element, and can provide further explanation of the SOP instances in the selection.
+   * Free text narrative description of the ImagingObjectSelection.
    */
   description?: string | undefined;
   _description?: Element | undefined;
   /**
    * Patient of the selected objects
    * A patient resource reference which is the patient subject of all DICOM SOP Instances in this ImagingObjectSelection.
+   * SOP instances selected in the ImagingObjectSelection can be from different studies, but must be of the same patient.
    */
   patient: Reference;
   /**
    * Study identity of the selected instances
    * Study identity and locating information of the DICOM SOP instances in the selection.
+   * Study component represents the study level identity and locator information of the DICOM SOP instances in the selection. It is the top level identity of the hierachical identification of the instances.
    */
   study: ImagingObjectSelectionStudy[];
   /**
    * Reason for selection
    * The reason for, or significance of, the selection of objects referenced in the resource.
+   * Coded concept of kind of the ImagingObjectSelection. Value set is defined in the DICOM standard Part 16, CID-7010.
    */
   title: CodeableConcept;
   /**
@@ -7983,6 +8525,7 @@ export interface ImagingObjectSelection extends DomainResource {
 /**
  * Study identity of the selected instances
  * Study identity and locating information of the DICOM SOP instances in the selection.
+ * Study component represents the study level identity and locator information of the DICOM SOP instances in the selection. It is the top level identity of the hierachical identification of the instances.
  */
 export interface ImagingObjectSelectionStudy extends BackboneElement {
   /**
@@ -7993,6 +8536,7 @@ export interface ImagingObjectSelectionStudy extends BackboneElement {
   /**
    * Series identity of the selected instances
    * Series identity and locating information of the DICOM SOP instances in the selection.
+   * Series component represents the series level identity and locator information of the DICOM SOP instances in the selection.
    */
   series: ImagingObjectSelectionStudySeries[];
   /**
@@ -8003,6 +8547,7 @@ export interface ImagingObjectSelectionStudy extends BackboneElement {
   /**
    * Retrieve study URL
    * WADO-RS URL to retrieve the study. Note that this URL retrieves all SOP instances of the study, not only those in the selection.
+   * Study level locator information is optional. If provided, this is the URL to retrieve the entire study with WADO-RS interaction, though only a subset of these are selected in the selection.
    */
   url?: string | undefined;
   _url?: Element | undefined;
@@ -8010,11 +8555,13 @@ export interface ImagingObjectSelectionStudy extends BackboneElement {
 /**
  * Series identity of the selected instances
  * Series identity and locating information of the DICOM SOP instances in the selection.
+ * Series component represents the series level identity and locator information of the DICOM SOP instances in the selection.
  */
 export interface ImagingObjectSelectionStudySeries extends BackboneElement {
   /**
    * The selected instance
    * Identity and locating information of the selected DICOM SOP instances.
+   * SOP Instance component identify the instance selected, along with the study and series identities to form the DICOM identity hierachy.
    */
   instance: ImagingObjectSelectionStudySeriesInstance[];
   /**
@@ -8025,6 +8572,7 @@ export interface ImagingObjectSelectionStudySeries extends BackboneElement {
   /**
    * Retrieve series URL
    * WADO-RS URL to retrieve the series. Note that this URL retrieves all SOP instances of the series not only those in the selection.
+   * Series level locator information is optional. If provided, this is the URL to retrieve the entire series with WADO-RS interaction, though only a subset of these are selected in the selection.
    */
   url?: string | undefined;
   _url?: Element | undefined;
@@ -8032,28 +8580,33 @@ export interface ImagingObjectSelectionStudySeries extends BackboneElement {
 /**
  * The selected instance
  * Identity and locating information of the selected DICOM SOP instances.
+ * SOP Instance component identify the instance selected, along with the study and series identities to form the DICOM identity hierachy.
  */
 export interface ImagingObjectSelectionStudySeriesInstance extends BackboneElement {
   /**
    * The frame set
    * Identity and location information of the frames in the selected instance.
+   * This component may be used if the referenced image SOP Instance is a multi-frame image.
    */
   frames?: ImagingObjectSelectionStudySeriesInstanceFrames[] | undefined;
   /**
    * SOP class UID of instance
    * SOP class UID of the selected instance.
+   * SOP class UID identifies the type of the selected instances, e.g. CT image, Gray scale softcopy presentation state, ECG waveform, etc.
    */
   sopClass: string;
   _sopClass?: Element | undefined;
   /**
    * Selected instance UID
    * SOP Instance UID of the selected instance.
+   * SOP instance UID identifies the instance.
    */
   uid: string;
   _uid?: Element | undefined;
   /**
    * Retrieve instance URL
    * WADO-RS URL to retrieve the DICOM SOP Instance.
+   * Instance level locator information is required.
    */
   url: string;
   _url?: Element | undefined;
@@ -8061,6 +8614,7 @@ export interface ImagingObjectSelectionStudySeriesInstance extends BackboneEleme
 /**
  * The frame set
  * Identity and location information of the frames in the selected instance.
+ * This component may be used if the referenced image SOP Instance is a multi-frame image.
  */
 export interface ImagingObjectSelectionStudySeriesInstanceFrames extends BackboneElement {
   /**
@@ -8071,6 +8625,7 @@ export interface ImagingObjectSelectionStudySeriesInstanceFrames extends Backbon
   /**
    * Retrieve frame URL
    * WADO-RS URL to retrieve the DICOM frames.
+   * Frame level locator information is required.
    */
   url: string;
   _url?: Element | undefined;
@@ -8132,6 +8687,7 @@ export interface ImagingStudy extends DomainResource {
   patient: Reference;
   /**
    * Type of procedure performed.
+   * For the Procedure.code, LOINC radiology orderables would be a good value set to use.
    */
   procedure?: Reference[] | undefined;
   /**
@@ -8231,6 +8787,7 @@ export interface ImagingStudySeries extends BackboneElement {
 export interface ImagingStudySeriesInstance extends BackboneElement {
   /**
    * Content of the instance or a rendering thereof (e.g. a JPEG of an image, or an XML of a structured report). May be represented for example by inline encoding; by a URL reference to a WADO-RS service that makes the instance available; or to a FHIR Resource (e.g. Media, Document, etc.). Multiple content attachments may be used for alternate representations of the instance.
+   * Use of Attachment.data is discouraged.
    */
   content?: Attachment[] | undefined;
   /**
@@ -8247,12 +8804,14 @@ export interface ImagingStudySeriesInstance extends BackboneElement {
   /**
    * Description of instance
    * The description of the instance.
+   * Particularly for post-acquisition analytic objects, such as SR, presentation states, value mapping, etc.
    */
   title?: string | undefined;
   _title?: Element | undefined;
   /**
    * Type of instance (image etc.)
    * A human-friendly SOP Class name.
+   * E.g. 'CT image', 'MR multi-frame', 'blending presentation'.
    */
   type?: string | undefined;
   _type?: Element | undefined;
@@ -8272,6 +8831,7 @@ export interface Immunization extends DomainResource {
   /**
    * Vaccination administration date
    * Date vaccine administered or was to be administered.
+   * When immunizations are given a specific date and time should always be known.   When immunizations are patient reported, a specific date might not be known.  Although partial dates are allowed, an adult patient might not be able to recall the year a childhood immunization was given.
    */
   date?: string | undefined;
   _date?: Element | undefined;
@@ -8335,17 +8895,20 @@ export interface Immunization extends DomainResource {
   /**
    * Details of a reaction that follows immunization
    * Categorical data indicating that an adverse event is associated in time to an immunization.
+   * A reaction may be an indication of an allergy or intolerance and, if this is determined to be the case,  it should be recorded as a new [[[AllergyIntolerance]]] resource instance as most systems will not query against  past Immunization.reaction elements.
    */
   reaction?: ImmunizationReaction[] | undefined;
   /**
    * Indicates a self-reported record
    * True if this administration was reported rather than directly administered.
+   * May need source of reported info (e.g. parent), but leave out for now.
    */
   reported: boolean;
   _reported?: Element | undefined;
   /**
    * Who ordered vaccination
    * Clinician who ordered the vaccination.
+   * Other participants - delegate to Provenance resource.
    */
   requester?: Reference | undefined;
   /**
@@ -8360,6 +8923,7 @@ export interface Immunization extends DomainResource {
   site?: CodeableConcept | undefined;
   /**
    * Indicates the current status of the vaccination event.
+   * Will generally be set to show that the immunization has been completed.
    */
   status: ('in-progress'|'on-hold'|'completed'|'entered-in-error'|'stopped');
   _status?: Element | undefined;
@@ -8399,6 +8963,7 @@ export interface ImmunizationExplanation extends BackboneElement {
 /**
  * Details of a reaction that follows immunization
  * Categorical data indicating that an adverse event is associated in time to an immunization.
+ * A reaction may be an indication of an allergy or intolerance and, if this is determined to be the case,  it should be recorded as a new [[[AllergyIntolerance]]] resource instance as most systems will not query against  past Immunization.reaction elements.
  */
 export interface ImmunizationReaction extends BackboneElement {
   /**
@@ -8443,6 +9008,7 @@ export interface ImmunizationVaccinationProtocol extends BackboneElement {
   /**
    * Indicates if dose counts towards immunity
    * Indicates if the immunization event should "count" against  the protocol.
+   * May need to differentiate between status declarations by a provider vs. a CDS engine.
    */
   doseStatus: CodeableConcept;
   /**
@@ -8506,6 +9072,7 @@ export interface ImmunizationRecommendationRecommendation extends BackboneElemen
   /**
    * Recommended dose number
    * This indicates the next recommended dose number (e.g. dose 2 is the next recommended dose).
+   * May need other dose concepts such as administered vs. valid.
    */
   doseNumber?: number | undefined;
   /**
@@ -8587,12 +9154,14 @@ export interface ImplementationGuide extends DomainResource {
   /**
    * Image, css, script, etc.
    * A binary file that is included in the  implementation guide when it is published.
+   * This is principally included for the FHIR publishing tool, but may be useful when extracting and reusing content from the implementation guide.
    */
   binary?: string[] | undefined;
   _binary?: Element[] | undefined;
   /**
    * Contact details of the publisher
    * Contacts to assist a user in finding and communicating with the publisher.
+   * May be a web site, an email address, a telephone number (tel:), etc.
    */
   contact?: ImplementationGuideContact[] | undefined;
   /**
@@ -8604,6 +9173,7 @@ export interface ImplementationGuide extends DomainResource {
   /**
    * Date for this version of the Implementation Guide
    * The date this version of the implementation guide was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the implementation guide changes.
+   * Additional specific dates may be added as extensions.
    */
   date?: string | undefined;
   _date?: Element | undefined;
@@ -8615,6 +9185,7 @@ export interface ImplementationGuide extends DomainResource {
   /**
    * Natural language description of the Implementation Guide
    * A free text natural language description of the Implementation Guide and its use.
+   * This field can be used for things such as why the Implementation Guide was written, comments about misuse, instructions for clinical use and interpretation, literature references, examples from the paper world, etc.  It is *not* a rendering of the Implementation Guide as conveyed in Implementation Guide.text. This item SHOULD be populated unless the information is available from context.
    */
   description?: string | undefined;
   _description?: Element | undefined;
@@ -8627,17 +9198,20 @@ export interface ImplementationGuide extends DomainResource {
   /**
    * FHIR Version this Implementation Guide targets
    * The version of the FHIR specification on which this ImplementationGuide is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 1.0.2 for this version.
+   * An Implementation Guide should specify the target it applies to, as ImplementationGuides are rarely valid across multiple versions of FHIR.
    */
   fhirVersion?: string | undefined;
   _fhirVersion?: Element | undefined;
   /**
    * Profiles that apply globally
    * A set of profiles that all resources covered by this implementation guide must conform to.
+   * See [Default Profiles](implementationguide.html#default) for a discussion of which resources are 'covered' by an implementation guide.
    */
   global?: ImplementationGuideGlobal[] | undefined;
   /**
    * Informal name for this Implementation Guide
    * A free text natural language name identifying the Implementation Guide.
+   * Not expected to be globally unique.
    */
   name: string;
   _name?: Element | undefined;
@@ -8649,11 +9223,13 @@ export interface ImplementationGuide extends DomainResource {
   /**
    * Page/Section in the Guide
    * A page / section in the implementation guide. The root page is the implementation guide home page.
+   * Pages automatically become sections if they have sub-pages. By convention, the home page is called index.html.
    */
   page: ImplementationGuidePage;
   /**
    * Name of the publisher (Organization or individual)
    * The name of the individual or organization that published the implementation guide.
+   * Usually an organization, but may be an individual. This item SHOULD be populated unless the information is available from context.
    */
   publisher?: string | undefined;
   _publisher?: Element | undefined;
@@ -8683,11 +9259,13 @@ export interface ImplementationGuide extends DomainResource {
 /**
  * Contact details of the publisher
  * Contacts to assist a user in finding and communicating with the publisher.
+ * May be a web site, an email address, a telephone number (tel:), etc.
  */
 export interface ImplementationGuideContact extends BackboneElement {
   /**
    * Name of a individual to contact
    * The name of an individual to contact regarding the implementation guide.
+   * If there is no named individual, the telecom is for the organization as a whole.
    */
   name?: string | undefined;
   _name?: Element | undefined;
@@ -8705,12 +9283,14 @@ export interface ImplementationGuideDependency extends BackboneElement {
   /**
    * reference | inclusion
    * How the dependency is represented when the guide is published.
+   * For information about processing included guides, see [Including Guides]{implementationguide.html#include}.
    */
   type: ('reference'|'inclusion');
   _type?: Element | undefined;
   /**
    * Where to find dependency
    * Where the dependency is located.
+   * When a guide is published, and the type is 'include', this will be a relative reference within the guide.
    */
   uri: string;
   _uri?: Element | undefined;
@@ -8718,6 +9298,7 @@ export interface ImplementationGuideDependency extends BackboneElement {
 /**
  * Profiles that apply globally
  * A set of profiles that all resources covered by this implementation guide must conform to.
+ * See [Default Profiles](implementationguide.html#default) for a discussion of which resources are 'covered' by an implementation guide.
  */
 export interface ImplementationGuideGlobal extends BackboneElement {
   /**
@@ -8728,6 +9309,7 @@ export interface ImplementationGuideGlobal extends BackboneElement {
   /**
    * Type this profiles applies to
    * The type of resource that all instances must conform to.
+   * The type must match that of the profile that is referred to, but is made explicit here as a denormalization so that a system processing the implementation guide resource knows which resources the profile applies to even if the profile itself is not available.
    */
   type: ('Account'|'AllergyIntolerance'|'Appointment'|'AppointmentResponse'|'AuditEvent'|'Basic'|'Binary'|'BodySite'|'Bundle'|'CarePlan'|'Claim'|'ClaimResponse'|'ClinicalImpression'|'Communication'|'CommunicationRequest'|'Composition'|'ConceptMap'|'Condition'|'Conformance'|'Contract'|'Coverage'|'DataElement'|'DetectedIssue'|'Device'|'DeviceComponent'|'DeviceMetric'|'DeviceUseRequest'|'DeviceUseStatement'|'DiagnosticOrder'|'DiagnosticReport'|'DocumentManifest'|'DocumentReference'|'DomainResource'|'EligibilityRequest'|'EligibilityResponse'|'Encounter'|'EnrollmentRequest'|'EnrollmentResponse'|'EpisodeOfCare'|'ExplanationOfBenefit'|'FamilyMemberHistory'|'Flag'|'Goal'|'Group'|'HealthcareService'|'ImagingObjectSelection'|'ImagingStudy'|'Immunization'|'ImmunizationRecommendation'|'ImplementationGuide'|'List'|'Location'|'Media'|'Medication'|'MedicationAdministration'|'MedicationDispense'|'MedicationOrder'|'MedicationStatement'|'MessageHeader'|'NamingSystem'|'NutritionOrder'|'Observation'|'OperationDefinition'|'OperationOutcome'|'Order'|'OrderResponse'|'Organization'|'Parameters'|'Patient'|'PaymentNotice'|'PaymentReconciliation'|'Person'|'Practitioner'|'Procedure'|'ProcedureRequest'|'ProcessRequest'|'ProcessResponse'|'Provenance'|'Questionnaire'|'QuestionnaireResponse'|'ReferralRequest'|'RelatedPerson'|'Resource'|'RiskAssessment'|'Schedule'|'SearchParameter'|'Slot'|'Specimen'|'StructureDefinition'|'Subscription'|'Substance'|'SupplyDelivery'|'SupplyRequest'|'TestScript'|'ValueSet'|'VisionPrescription');
   _type?: Element | undefined;
@@ -8762,18 +9344,21 @@ export interface ImplementationGuidePackageResource extends BackboneElement {
   /**
    * Short code to identify the resource
    * A short code that may be used to identify the resource throughout the implementation guide.
+   * This is used when generating schematrons from profiles, for example, but has other uses. Publishing tooling may autogenerate this value, but a human assigned value is more useful. This value must be unique within an implementation guide (across included guides as well).
    */
   acronym?: string | undefined;
   _acronym?: Element | undefined;
   /**
    * Reason why included in guide
    * A description of the reason that a resource has been included in the implementation guide.
+   * This is mostly used with examples to explain why it is present (though they can have extensive comments in the examples).
    */
   description?: string | undefined;
   _description?: Element | undefined;
   /**
    * Resource this is an example of (if applicable)
    * Another resource that this resource is an example for. This is mostly used for resources that are included as examples of StructureDefinitions.
+   * Examples: * StructureDefinition -> Any * ValueSet -> expansion * OperationDefinition -> Parameters * Questionnaire -> QuestionnaireResponse.
    */
   exampleFor?: Reference | undefined;
   /**
@@ -8784,17 +9369,20 @@ export interface ImplementationGuidePackageResource extends BackboneElement {
   _name?: Element | undefined;
   /**
    * Why the resource is included in the guide.
+   * The purpose alters the way that a resource is handled when a guide is built. At present, only value set and concept map resources are allowed for terminology resources, and only StructureDefinition, SearchParameter, and OperationDefinition for profile. Dictionaries must be bundles of DataElement or Medication at this time.
    */
   purpose: ('example'|'terminology'|'profile'|'extension'|'dictionary'|'logical');
   _purpose?: Element | undefined;
   /**
    * Location of the resource
    * Where this resource is found.
+   * Usually this is a relative URL that locates the resource within the implementation guide. If you authoring an implementation guide, and will publish it using the FHIR publication tooling, use a URI that may point to a resource, or to one of various alternative representations (e.g. spreadsheet). The tooling will convert this when it publishes it.
    */
   sourceReference?: Reference | undefined;
   /**
    * Location of the resource
    * Where this resource is found.
+   * Usually this is a relative URL that locates the resource within the implementation guide. If you authoring an implementation guide, and will publish it using the FHIR publication tooling, use a URI that may point to a resource, or to one of various alternative representations (e.g. spreadsheet). The tooling will convert this when it publishes it.
    */
   sourceString?: string | undefined;
   _sourceString?: Element | undefined;
@@ -8802,11 +9390,13 @@ export interface ImplementationGuidePackageResource extends BackboneElement {
 /**
  * Page/Section in the Guide
  * A page / section in the implementation guide. The root page is the implementation guide home page.
+ * Pages automatically become sections if they have sub-pages. By convention, the home page is called index.html.
  */
 export interface ImplementationGuidePage extends BackboneElement {
   /**
    * Format of the page (e.g. html, markdown, etc.)
    * The format of the page.
+   * This is primarily for the publishing tool, that will convert all pages to html format. HTML pages are pre-processed, see xxxx.
    */
   format?: string | undefined;
   _format?: Element | undefined;
@@ -8830,11 +9420,13 @@ export interface ImplementationGuidePage extends BackboneElement {
   /**
    * Nested Pages / Sections
    * Nested Pages/Sections under this page.
+   * The implementation guide breadcrumbs are generated from this structure.
    */
   page?: ImplementationGuidePage[] | undefined;
   /**
    * Where to find that page
    * The source address for the page.
+   * The publishing tool will autogenerate source for list (source = n/a), and inject included implementations for include (source = uri of guide to include).
    */
   source: string;
   _source?: Element | undefined;
@@ -8854,17 +9446,20 @@ export interface List extends DomainResource {
   /**
    * What the purpose of this list is
    * This code defines the purpose of the list - why it was created.
+   * If there is no code, the purpose of the list is implied where it is used, such as in a document section using Document.section.code.
    */
   code?: CodeableConcept | undefined;
   /**
    * When the list was prepared
    * The date that the list was prepared.
+   * The actual important date is the date of currency of the resources that were summarized, but it is usually assumed that these are current when the preparation occurs.
    */
   date?: string | undefined;
   _date?: Element | undefined;
   /**
    * Why list is empty
    * If the list is empty, why the list is empty.
+   * The various reasons for an empty list make a significant interpretation to its interpretation. Note that this code is for use when the entire list has been suppressed, and not for when individual items are omitted - implementers may consider using a text note or a flag on an entry in these cases.
    */
   emptyReason?: CodeableConcept | undefined;
   /**
@@ -8875,6 +9470,7 @@ export interface List extends DomainResource {
   /**
    * Entries in the list
    * Entries in this list.
+   * If there are no entries in the list, an emptyReason SHOULD be provided.
    */
   entry?: ListEntry[] | undefined;
   /**
@@ -8896,11 +9492,13 @@ export interface List extends DomainResource {
   /**
    * What order the list has
    * What order applies to the items in the list.
+   * Applications SHOULD render ordered lists in the order provided, but MAY allow users to re-order based on their own preferences as well. If there is no order specified, the order is unknown, though there may still be some order.
    */
   orderedBy?: CodeableConcept | undefined;
   /**
    * Who and/or what defined the list contents (aka Author)
    * The entity responsible for deciding what the contents of the list were. Where the list was created by a human, this is the same as the author of the list.
+   * The primary source is the entity that made the decisions what items are in the list. This may be software or user.
    */
   source?: Reference | undefined;
   /**
@@ -8911,6 +9509,7 @@ export interface List extends DomainResource {
   /**
    * If all resources have the same subject
    * The common subject (or patient) of the resources that are in the list, if there is one.
+   * Some purely arbitrary lists do not have a common subject, so this is optional.
    */
   subject?: Reference | undefined;
   /**
@@ -8923,23 +9522,27 @@ export interface List extends DomainResource {
 /**
  * Entries in the list
  * Entries in this list.
+ * If there are no entries in the list, an emptyReason SHOULD be provided.
  */
 export interface ListEntry extends BackboneElement {
   /**
    * When item added to list
    * When this item was added to the list.
+   * This is only useful and meaningful when the mode is "working".
    */
   date?: string | undefined;
   _date?: Element | undefined;
   /**
    * If this item is actually marked as deleted
    * True if this item is marked as deleted in the list.
+   * If the flag means that the entry has actually been deleted from the list, the deleted element SHALL be true. Both flag and deleted can only be used if the List.mode is "changes". A deleted entry should be displayed in narrative as deleted.
    */
   deleted?: boolean | undefined;
   _deleted?: Element | undefined;
   /**
    * Status/Workflow information about this item
    * The flag allows the system constructing the list to indicate the role and significance of the item in the list.
+   * The flag can only be understood in the context of the List.code. If the flag means that the entry has actually been deleted from the list, the deleted element SHALL be true. Deleted can only be used if the List.mode is "changes".
    */
   flag?: CodeableConcept | undefined;
   /**
@@ -8956,6 +9559,7 @@ export interface Location extends DomainResource {
   readonly resourceType: 'Location';
   /**
    * Physical location.
+   * This was kept as 0..1 as there is no use property on the address, so wouldn't be able to identify different address types.
    */
   address?: Address | undefined;
   /**
@@ -8971,6 +9575,7 @@ export interface Location extends DomainResource {
   /**
    * Organization responsible for provisioning and upkeep
    * The organization responsible for the provisioning and upkeep of the location.
+   * This can also be used as the part of the organization hierarchy where this location provides services. These services can be defined through the HealthcareService resource.
    */
   managingOrganization?: Reference | undefined;
   /**
@@ -9042,6 +9647,7 @@ export interface Media extends DomainResource {
   /**
    * Actual Media - reference or data
    * The actual content of the media - inline or by direct reference to the media source file.
+   * Recommended content types: image/jpeg, image/png, image/tiff, video/mpeg, audio/mp4, application/dicom. Application/dicom can contain the transfer syntax as a parameter.  For an media that covers a period of time (video/sound), the content.creationTime is the end time. Creation time is used for tracking, organizing versions and searching.
    */
   content: Attachment;
   /**
@@ -9067,6 +9673,7 @@ export interface Media extends DomainResource {
   /**
    * Identifier(s) for the image
    * Identifiers associated with the image - these may include identifiers for the image itself, identifiers for the context of its collection (e.g. series ids) and context ids such as accession numbers or other workflow identifiers.
+   * The identifier label and use can be used to determine what kind of identifier it is.
    */
   identifier?: Identifier[] | undefined;
   /**
@@ -9107,6 +9714,7 @@ export interface Medication extends DomainResource {
   /**
    * Codes that identify this medication
    * A code (or set of codes) that specify this medication, or a textual description if no code is available. Usage note: This could be a standard medication code such as a code from RxNorm, SNOMED CT, IDMP etc. It could also be a national or local formulary code, optionally with translations to other code systems.
+   * Depending on the context of use, the code that was actually selected by the user (prescriber, dispenser, etc.) should be marked as "primary". Other codes can only be literal translations to alternative code systems, or codes at a lower level of granularity (e.g. a generic code for a vendor-specific primary one).
    */
   code?: CodeableConcept | undefined;
   /**
@@ -9180,6 +9788,7 @@ export interface MedicationProduct extends BackboneElement {
   /**
    * Active or inactive ingredient
    * Identifies a particular constituent of interest in the product.
+   * The ingredients need not be a complete list; usually only active ingredients are listed.
    */
   ingredient?: MedicationProductIngredient[] | undefined;
 }
@@ -9201,6 +9810,7 @@ export interface MedicationProductBatch extends BackboneElement {
 /**
  * Active or inactive ingredient
  * Identifies a particular constituent of interest in the product.
+ * The ingredients need not be a complete list; usually only active ingredients are listed.
  */
 export interface MedicationProductIngredient extends BackboneElement {
   /**
@@ -9253,11 +9863,13 @@ export interface MedicationAdministration extends DomainResource {
   /**
    * What was administered
    * Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.
+   * If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.  Note: do not use Medication.name to describe the administered medication. When the only available information is a text description of the medication, Medication.code.text should be used.
    */
   medicationCodeableConcept?: CodeableConcept | undefined;
   /**
    * What was administered
    * Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.
+   * If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.  Note: do not use Medication.name to describe the administered medication. When the only available information is a text description of the medication, Medication.code.text should be used.
    */
   medicationReference?: Reference | undefined;
   /**
@@ -9311,21 +9923,25 @@ export interface MedicationAdministrationDosage extends BackboneElement {
   /**
    * How drug was administered
    * A coded value indicating the method by which the medication is intended to be or was introduced into or on the body.  This attribute will most often NOT be populated.  It is most commonly used for injections.  For example, Slow Push, Deep IV.
+   * One of the reasons this attribute is not used often, is that the method is often pre-coordinated with the route and/or form of administration.  This means the codes used in route or form may pre-coordinate the method in the route code or the form code.  The implementation decision about what coding system to use for route or form code will determine how frequently the method code will be populated e.g. if route or form code pre-coordinate method code, then this attribute will not be populated often; if there is no pre-coordination then method code may  be used frequently.
    */
   method?: CodeableConcept | undefined;
   /**
    * Amount administered in one dose
    * The amount of the medication given at one administration event.   Use this value when the administration is essentially an instantaneous event such as a swallowing a tablet or giving an injection.
+   * If the administration is not instantaneous (rate is present or timing has a duration), this can be specified to convey the total amount administered over period of time of a single administration (as indicated by schedule).
    */
   quantity?: Quantity | undefined;
   /**
    * Dose quantity per unit of time
    * Identifies the speed with which the medication was or will be introduced into the patient.  Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.  Currently we do not specify a default of '1' in the denominator, but this is being discussed.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.
+   * If the rate changes over time, and you want to capture this in MedicationAdministration, then each change should be captured as a distinct MedicationAdministration, with a specific MedicationAdministration.dosage.rate, and the date time when the rate change occurred. Typically, the MedicationAdministration.dosage.rate element is not used to convey an average rate.
    */
   rateRange?: Range | undefined;
   /**
    * Dose quantity per unit of time
    * Identifies the speed with which the medication was or will be introduced into the patient.  Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.  Currently we do not specify a default of '1' in the denominator, but this is being discussed.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.
+   * If the rate changes over time, and you want to capture this in MedicationAdministration, then each change should be captured as a distinct MedicationAdministration, with a specific MedicationAdministration.dosage.rate, and the date time when the rate change occurred. Typically, the MedicationAdministration.dosage.rate element is not used to convey an average rate.
    */
   rateRatio?: Ratio | undefined;
   /**
@@ -9379,6 +9995,7 @@ export interface MedicationDispense extends DomainResource {
   /**
    * Medicine administration instructions to the patient/caregiver
    * Indicates how the medication is to be used by the patient.
+   * When the dose or rate is intended to change over the entire administration period (e.g. Tapering dose prescriptions), multiple instances of dosage instructions will need to be supplied to convey the different doses/rates.
    */
   dosageInstruction?: MedicationDispenseDosageInstruction[] | undefined;
   /**
@@ -9389,11 +10006,13 @@ export interface MedicationDispense extends DomainResource {
   /**
    * What medication was supplied
    * Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.
+   * If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.  Note: do not use Medication.name to describe the dispensed medication. When the only available information is a text description of the medication, Medication.code.text should be used.
    */
   medicationCodeableConcept?: CodeableConcept | undefined;
   /**
    * What medication was supplied
    * Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.
+   * If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.  Note: do not use Medication.name to describe the dispensed medication. When the only available information is a text description of the medication, Medication.code.text should be used.
    */
   medicationReference?: Reference | undefined;
   /**
@@ -9405,6 +10024,7 @@ export interface MedicationDispense extends DomainResource {
   /**
    * Who the dispense is for
    * A link to a resource representing the person to whom the medication will be given.
+   * SubstanceAdministration->subject->Patient.
    */
   patient?: Reference | undefined;
   /**
@@ -9448,6 +10068,7 @@ export interface MedicationDispense extends DomainResource {
 /**
  * Medicine administration instructions to the patient/caregiver
  * Indicates how the medication is to be used by the patient.
+ * When the dose or rate is intended to change over the entire administration period (e.g. Tapering dose prescriptions), multiple instances of dosage instructions will need to be supplied to convey the different doses/rates.
  */
 export interface MedicationDispenseDosageInstruction extends BackboneElement {
   /**
@@ -9469,11 +10090,13 @@ export interface MedicationDispenseDosageInstruction extends BackboneElement {
   /**
    * Amount of medication per dose
    * The amount of therapeutic or other substance given at one administration event.
+   * Note that this specifies the quantity of the specified medication, not the quantity of active ingredient(s).  The prescribed strength can be calculated by multiplying the doseQuantity by the strength of each active ingredient in the prescribed Medication. If the administration is not intended to be instantaneous (rate is present or timing has a duration), this can be specified to convey the total amount to be administered over the period of time as indicated by the schedule.
    */
   doseQuantity?: Quantity | undefined;
   /**
    * Amount of medication per dose
    * The amount of therapeutic or other substance given at one administration event.
+   * Note that this specifies the quantity of the specified medication, not the quantity of active ingredient(s).  The prescribed strength can be calculated by multiplying the doseQuantity by the strength of each active ingredient in the prescribed Medication. If the administration is not intended to be instantaneous (rate is present or timing has a duration), this can be specified to convey the total amount to be administered over the period of time as indicated by the schedule.
    */
   doseRange?: Range | undefined;
   /**
@@ -9484,6 +10107,7 @@ export interface MedicationDispenseDosageInstruction extends BackboneElement {
   /**
    * Technique for administering medication
    * A coded value indicating the method by which the medication is intended to be or was introduced into or on the body.
+   * This attribute will most often NOT be populated.  It is most commonly used for injections.  For example, Slow Push, Deep IV.  One of the reasons this attribute is not used often, is that the method is often pre-coordinated with the route and/or form of administration.  This means the codes used in route or form may pre-coordinate the method in the route code or the form code.  The implementation decision about what coding system to use for route or form code will determine how frequently the method code will be populated e.g. if route or form code pre-coordinate method code, then this attribute will not be populated often; if there is no pre-coordination then method code may  be used frequently.
    */
   method?: CodeableConcept | undefined;
   /**
@@ -9570,11 +10194,13 @@ export interface MedicationOrder extends DomainResource {
   /**
    * How medication should be taken
    * Indicates how the medication is to be used by the patient.
+   * When the dose or rate is intended to change over the entire administration period, e.g. Tapering dose prescriptions, multiple instances of dosage instructions will need to be supplied to convey the different doses/rates. Another common example in institutional settings is 'titration' of an IV medication dose to maintain a specific stated hemodynamic value or range e.g. drug x to be administered to maintain AM (arterial mean) greater than 65.
    */
   dosageInstruction?: MedicationOrderDosageInstruction[] | undefined;
   /**
    * Created during encounter/admission/stay
    * A link to a resource that identifies the particular occurrence of contact between patient and health care provider.
+   * SubstanceAdministration->component->EncounterEvent.
    */
   encounter?: Reference | undefined;
   /**
@@ -9584,11 +10210,13 @@ export interface MedicationOrder extends DomainResource {
   /**
    * Medication to be taken
    * Identifies the medication being administered. This is a link to a resource that represents the medication which may be the details of the medication or simply an attribute carrying a code that identifies the medication from a known list of medications.
+   * If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.  Note: do not use Medication.name to describe the prescribed medication. When the only available information is a text description of the medication, Medication.code.text should be used.
    */
   medicationCodeableConcept?: CodeableConcept | undefined;
   /**
    * Medication to be taken
    * Identifies the medication being administered. This is a link to a resource that represents the medication which may be the details of the medication or simply an attribute carrying a code that identifies the medication from a known list of medications.
+   * If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.  Note: do not use Medication.name to describe the prescribed medication. When the only available information is a text description of the medication, Medication.code.text should be used.
    */
   medicationReference?: Reference | undefined;
   /**
@@ -9600,6 +10228,7 @@ export interface MedicationOrder extends DomainResource {
   /**
    * Who prescription is for
    * A link to a resource representing the person to whom the medication will be given.
+   * SubstanceAdministration->subject->Patient.
    */
   patient?: Reference | undefined;
   /**
@@ -9646,21 +10275,25 @@ export interface MedicationOrderDispenseRequest extends BackboneElement {
   /**
    * Number of days supply per dispense
    * Identifies the period time over which the supplied product is expected to be used, or the length of time the dispense is expected to last.
+   * In some situations, this attribute may be used instead of quantity to identify the amount supplied by how long it is expected to last, rather than the physical quantity issued, e.g. 90 days supply of medication (based on an ordered dosage) When possible, it is always better to specify quantity, as this tends to be more precise. expectedSupplyDuration will always be an estimate that can be influenced by external factors.
    */
   expectedSupplyDuration?: Quantity | undefined;
   /**
    * Product to be supplied
    * Identifies the medication being administered. This is a link to a resource that represents the medication which may be the details of the medication or simply an attribute carrying a code that identifies the medication from a known list of medications.
+   * If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.
    */
   medicationCodeableConcept?: CodeableConcept | undefined;
   /**
    * Product to be supplied
    * Identifies the medication being administered. This is a link to a resource that represents the medication which may be the details of the medication or simply an attribute carrying a code that identifies the medication from a known list of medications.
+   * If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.
    */
   medicationReference?: Reference | undefined;
   /**
    * Number of refills authorized
    * An integer indicating the number of additional times (aka refills or repeats) the patient can receive the prescribed medication.   Usage Notes: This integer does NOT include the original order dispense.   This means that if an order indicates dispense 30 tablets plus  "3 repeats", then the order can be dispensed a total of 4 times and the patient can receive a total of 120 tablets.
+   * If displaying "number of authorized refills", subtract 1 from this number.
    */
   numberOfRepeatsAllowed?: number | undefined;
   /**
@@ -9671,12 +10304,14 @@ export interface MedicationOrderDispenseRequest extends BackboneElement {
   /**
    * Time period supply is authorized for
    * This indicates the validity period of a prescription (stale dating the Prescription).
+   * It reflects the prescriber perspective for the validity of the prescription. Dispenses must not be made against the prescription outside of this period. The lower-bound of the Dispensing Window signifies the earliest date that the prescription can be filled for the first time. If an upper-bound is not specified then the Prescription is open-ended or will default to a stale-date based on regulations.
    */
   validityPeriod?: Period | undefined;
 }
 /**
  * How medication should be taken
  * Indicates how the medication is to be used by the patient.
+ * When the dose or rate is intended to change over the entire administration period, e.g. Tapering dose prescriptions, multiple instances of dosage instructions will need to be supplied to convey the different doses/rates. Another common example in institutional settings is 'titration' of an IV medication dose to maintain a specific stated hemodynamic value or range e.g. drug x to be administered to maintain AM (arterial mean) greater than 65.
  */
 export interface MedicationOrderDosageInstruction extends BackboneElement {
   /**
@@ -9687,42 +10322,50 @@ export interface MedicationOrderDosageInstruction extends BackboneElement {
   /**
    * Take "as needed" (for x)
    * Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).
+   * Specifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule.
    */
   asNeededBoolean?: boolean | undefined;
   _asNeededBoolean?: Element | undefined;
   /**
    * Take "as needed" (for x)
    * Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).
+   * Specifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule.
    */
   asNeededCodeableConcept?: CodeableConcept | undefined;
   /**
    * Amount of medication per dose
    * The amount of therapeutic or other substance given at one administration event.
+   * Note that this specifies the quantity of the specified medication, not the quantity for each active ingredient(s). Each ingredient amount can be communicated in the Medication resource. For example, if one wants to communicate that a tablet was 375 mg, where the dose was one tablet, you can use the Medication resource to document that the tablet was comprised of 375 mg of drug XYZ. Alternatively if the dose was 375 mg, then you may only need to use the Medication resource to indicate this was a tablet. If the example were an IV such as dopamine and you wanted to communicate that 400mg of dopamine was mixed in 500 ml of some IV solution, then this would all be communicated in the Medication resource. If the administration is not intended to be instantaneous (rate is present or timing has a duration), this can be specified to convey the total amount to be administered over the period of time as indicated by the schedule e.g. 500 ml in dose, with timing used to convey that this should be done over 4 hours.
    */
   doseQuantity?: Quantity | undefined;
   /**
    * Amount of medication per dose
    * The amount of therapeutic or other substance given at one administration event.
+   * Note that this specifies the quantity of the specified medication, not the quantity for each active ingredient(s). Each ingredient amount can be communicated in the Medication resource. For example, if one wants to communicate that a tablet was 375 mg, where the dose was one tablet, you can use the Medication resource to document that the tablet was comprised of 375 mg of drug XYZ. Alternatively if the dose was 375 mg, then you may only need to use the Medication resource to indicate this was a tablet. If the example were an IV such as dopamine and you wanted to communicate that 400mg of dopamine was mixed in 500 ml of some IV solution, then this would all be communicated in the Medication resource. If the administration is not intended to be instantaneous (rate is present or timing has a duration), this can be specified to convey the total amount to be administered over the period of time as indicated by the schedule e.g. 500 ml in dose, with timing used to convey that this should be done over 4 hours.
    */
   doseRange?: Range | undefined;
   /**
    * Upper limit on medication per unit of time
    * The maximum total quantity of a therapeutic substance that may be administered to a subject over the period of time.  For example, 1000mg in 24 hours.
+   * This is intended for use as an adjunct to the dosage when there is an upper cap.  For example "2 tablets every 4 hours to a maximum of 8/day".
    */
   maxDosePerPeriod?: Ratio | undefined;
   /**
    * Technique for administering medication
    * A coded value indicating the method by which the medication is introduced into or onto the body. Most commonly used for injections.  For examples, Slow Push; Deep IV.
+   * Terminologies used often pre-coordinate this term with the route and or form of administration.
    */
   method?: CodeableConcept | undefined;
   /**
    * Amount of medication per unit of time
    * Identifies the speed with which the medication was or will be introduced into the patient. Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.   Currently we do not specify a default of '1' in the denominator, but this is being discussed. Other examples: 200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.
+   * It is possible to supply both a rate and a doseQuantity to provide full details about how the medication is to be administered and supplied. If the rate is intended to change over time, depending on local rules/regulations, each change should be captured as a new version of the MedicationOrder with an updated rate, or captured with a new MedicationOrder with the new rate.
    */
   rateRange?: Range | undefined;
   /**
    * Amount of medication per unit of time
    * Identifies the speed with which the medication was or will be introduced into the patient. Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.   Currently we do not specify a default of '1' in the denominator, but this is being discussed. Other examples: 200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.
+   * It is possible to supply both a rate and a doseQuantity to provide full details about how the medication is to be administered and supplied. If the rate is intended to change over time, depending on local rules/regulations, each change should be captured as a new version of the MedicationOrder with an updated rate, or captured with a new MedicationOrder with the new rate.
    */
   rateRatio?: Ratio | undefined;
   /**
@@ -9749,6 +10392,7 @@ export interface MedicationOrderDosageInstruction extends BackboneElement {
   /**
    * When medication should be administered
    * The timing schedule for giving the medication to the patient. The Schedule data type allows many different expressions. For example: "Every 8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:"; "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".
+   * This attribute may not always be populated while the DosageInstruction.text is expected to be populated.  If both are populated, then the DosageInstruction.text should reflect the content of the Dosage.timing.
    */
   timing?: Timing | undefined;
 }
@@ -9788,12 +10432,14 @@ export interface MedicationStatement extends DomainResource {
   /**
    * Over what period was medication consumed?
    * The interval of time during which it is being asserted that the patient was taking the medication (or was not taking, when the wasNotGiven element is true).
+   * If the medication is still being taken at the time the statement is recorded, the "end" date will be omitted.
    */
   effectiveString?: string | undefined;
   _effectiveString?: Element | undefined;
   /**
    * Over what period was medication consumed?
    * The interval of time during which it is being asserted that the patient was taking the medication (or was not taking, when the wasNotGiven element is true).
+   * If the medication is still being taken at the time the statement is recorded, the "end" date will be omitted.
    */
   effectivePeriod?: Period | undefined;
   /**
@@ -9807,11 +10453,13 @@ export interface MedicationStatement extends DomainResource {
   /**
    * What medication was taken
    * Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.
+   * If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.  Note: do not use Medication.name to describe the medication this statement concerns. When the only available information is a text description of the medication, Medication.code.text should be used.
    */
   medicationCodeableConcept?: CodeableConcept | undefined;
   /**
    * What medication was taken
    * Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.
+   * If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.  Note: do not use Medication.name to describe the medication this statement concerns. When the only available information is a text description of the medication, Medication.code.text should be used.
    */
   medicationReference?: Reference | undefined;
   /**
@@ -9846,6 +10494,7 @@ export interface MedicationStatement extends DomainResource {
   /**
    * Additional supporting information
    * Allows linking the MedicationStatement to the underlying MedicationOrder, or to other information that supports the MedicationStatement.
+   * Likely references would be to MedicationOrder, MedicationDispense, Claim, Observation or QuestionnaireAnswers.
    */
   supportingInformation?: Reference[] | undefined;
   /**
@@ -9879,6 +10528,7 @@ export interface MedicationStatementDosage extends BackboneElement {
   /**
    * Technique used to administer medication
    * A coded value indicating the method by which the medication is intended to be or was introduced into or on the body.  This attribute will most often NOT be populated.  It is most commonly used for injections.  For example, Slow Push, Deep IV.
+   * One of the reasons this attribute is not used often, is that the method is often pre-coordinated with the route and/or form of administration.  This means the codes used in route or form may pre-coordinate the method in the route code or the form code.  The implementation decision about what coding system to use for route or form code will determine how frequently the method code will be populated e.g. if route or form code pre-coordinate method code, then this attribute will not be populated often; if there is no pre-coordination then method code may  be used frequently.
    */
   method?: CodeableConcept | undefined;
   /**
@@ -9937,21 +10587,25 @@ export interface MessageHeader extends DomainResource {
   /**
    * The source of the decision
    * The logical author of the message - the person or device that decided the described event should happen. Where there is more than one candidate, pick the most proximal to the MessageHeader. Can provide other authors in extensions.
+   * Usually only for the request, but can be used in a response.
    */
   author?: Reference | undefined;
   /**
    * The actual content of the message
    * The actual data of the message - a reference to the root/focus class of the event.
+   * The data is defined where the transaction type is defined. The transaction data is always included in the bundle that is the full message.  Only the root resource is specified.  The resources it references should be contained in the bundle but are not also listed here.  Multiple repetitions are allowed to cater for merges and other situations with multiple focal targets.
    */
   data?: Reference[] | undefined;
   /**
    * Message Destination Application(s)
    * The destination application which the message is intended for.
+   * There SHOULD be at least one destination, but in some circumstances, the source system is unaware of any particular destination system.
    */
   destination?: MessageHeaderDestination[] | undefined;
   /**
    * The source of the data entry
    * The person or device that performed the data entry leading to this message. Where there is more than one candidate, pick the most proximal to the message. Can provide other enterers in extensions.
+   * Usually only for the request, but can be used in a response.
    */
   enterer?: Reference | undefined;
   /**
@@ -9977,6 +10631,7 @@ export interface MessageHeader extends DomainResource {
   /**
    * Final responsibility for event
    * The person or organization that accepts overall responsibility for the contents of the message. The implication is that the message event happened under the policies of the responsible party.
+   * Usually only for the request, but can be used in a response.
    */
   responsible?: Reference | undefined;
   /**
@@ -9994,11 +10649,13 @@ export interface MessageHeader extends DomainResource {
 /**
  * Message Destination Application(s)
  * The destination application which the message is intended for.
+ * There SHOULD be at least one destination, but in some circumstances, the source system is unaware of any particular destination system.
  */
 export interface MessageHeaderDestination extends BackboneElement {
   /**
    * Actual destination address or id
    * Indicates where the message should be routed to.
+   * The id may be a non-resolvable URI for systems that do not use standard network-based addresses.
    */
   endpoint: string;
   _endpoint?: Element | undefined;
@@ -10021,12 +10678,14 @@ export interface MessageHeaderDestination extends BackboneElement {
 export interface MessageHeaderResponse extends BackboneElement {
   /**
    * Code that identifies the type of response to the message - whether it was successful or not, and whether it should be resent or not.
+   * This is a generic response to the request message. Specific data for the response will be found in MessageHeader.data.
    */
   code: ('ok'|'transient-error'|'fatal-error');
   _code?: Element | undefined;
   /**
    * Specific list of hints/warnings/errors
    * Full details of any issues found in the message.
+   * This SHALL be contained in the bundle. If any of the issues are errors, the response code SHALL be an error.
    */
   details?: Reference | undefined;
   /**
@@ -10049,6 +10708,7 @@ export interface MessageHeaderSource extends BackboneElement {
   /**
    * Actual message source address or id
    * Identifies the routing target to send acknowledgements to.
+   * The id may be a non-resolvable URI for systems that do not use standard network-based addresses.
    */
   endpoint: string;
   _endpoint?: Element | undefined;
@@ -10080,11 +10740,13 @@ export interface NamingSystem extends DomainResource {
   /**
    * Contact details of the publisher
    * Contacts to assist a user in finding and communicating with the publisher.
+   * May be a web site, an email address, a telephone number (tel:), etc.
    */
   contact?: NamingSystemContact[] | undefined;
   /**
    * Publication Date(/time)
    * The date  (and optionally time) when the system was registered or published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the registration changes.
+   * Additional specific dates may be added as extensions.
    */
   date: string;
   _date?: Element | undefined;
@@ -10102,12 +10764,14 @@ export interface NamingSystem extends DomainResource {
   /**
    * Human-readable label
    * The descriptive name of this particular identifier type or code system.
+   * The"symbolic name" for an OID would be captured as an extension.
    */
   name: string;
   _name?: Element | undefined;
   /**
    * Name of the publisher (Organization or individual)
    * The name of the individual or organization that published the naming system.
+   * Usually an organization, but may be an individual. This item SHOULD be populated unless the information is available from context.
    */
   publisher?: string | undefined;
   _publisher?: Element | undefined;
@@ -10119,6 +10783,7 @@ export interface NamingSystem extends DomainResource {
   /**
    * Who maintains system namespace?
    * The name of the organization that is responsible for issuing identifiers or codes for this namespace and ensuring their non-collision.
+   * This is the primary organization.  Responsibility for some aspects of a namespace may be delegated.
    */
   responsible?: string | undefined;
   _responsible?: Element | undefined;
@@ -10130,11 +10795,13 @@ export interface NamingSystem extends DomainResource {
   /**
    * e.g. driver,  provider,  patient, bank etc.
    * Categorizes a naming system for easier search by grouping related naming systems.
+   * This will most commonly be used for identifier namespaces, but categories could potentially be useful for code systems and authorities as well.
    */
   type?: CodeableConcept | undefined;
   /**
    * Unique identifiers used for system
    * Indicates how the system may be identified when referenced in electronic exchange.
+   * Multiple identifiers may exist, either due to duplicate registration, regional rules, needs of different communication technologies, etc.
    */
   uniqueId: NamingSystemUniqueId[];
   /**
@@ -10152,11 +10819,13 @@ export interface NamingSystem extends DomainResource {
 /**
  * Contact details of the publisher
  * Contacts to assist a user in finding and communicating with the publisher.
+ * May be a web site, an email address, a telephone number (tel:), etc.
  */
 export interface NamingSystemContact extends BackboneElement {
   /**
    * Name of a individual to contact
    * The name of an individual to contact regarding the naming system.
+   * If there is no named individual, the telecom is for the organization as a whole.
    */
   name?: string | undefined;
   _name?: Element | undefined;
@@ -10169,11 +10838,13 @@ export interface NamingSystemContact extends BackboneElement {
 /**
  * Unique identifiers used for system
  * Indicates how the system may be identified when referenced in electronic exchange.
+ * Multiple identifiers may exist, either due to duplicate registration, regional rules, needs of different communication technologies, etc.
  */
 export interface NamingSystemUniqueId extends BackboneElement {
   /**
    * When is identifier valid?
    * Identifies the period of time over which this identifier is considered appropriate to refer to the naming system.  Outside of this window, the identifier might be non-deterministic.
+   * Within a registry, a given identifier should only be "active" for a single namespace at a time.  (Ideally, an identifier should only ever be associated with a single namespace across all time).
    */
   period?: Period | undefined;
   /**
@@ -10184,12 +10855,14 @@ export interface NamingSystemUniqueId extends BackboneElement {
   _preferred?: Element | undefined;
   /**
    * Identifies the unique identifier scheme used for this particular identifier.
+   * Different identifier types may be used in different types of communications (OIDs for v3, URIs for FHIR, etc.).  Other includes RUIDs from v3, standard v2 code name strings, etc.
    */
   type: ('oid'|'uuid'|'uri'|'other');
   _type?: Element | undefined;
   /**
    * The unique identifier
    * The string that should be sent over the wire to identify the code system or identifier system.
+   * If the value is a URI intended for use as FHIR system identifier, the URI should not contain "\" or "?" or "," since this makes escaping very difficult.
    */
   value: string;
   _value?: Element | undefined;
@@ -10203,6 +10876,7 @@ export interface NutritionOrder extends DomainResource {
   /**
    * List of the patient's food and nutrition-related allergies and intolerances
    * A link to a record of allergies or intolerances  which should be included in the nutrition order.
+   * Information on a patient's food allergies and intolerances, inform healthcare personnel about the type of foods that the patient should receive or consume.
    */
   allergyIntolerance?: Reference[] | undefined;
   /**
@@ -10224,11 +10898,13 @@ export interface NutritionOrder extends DomainResource {
   /**
    * Order-specific modifier about the type of food that should not be given
    * This modifier is used to convey order-specific modifiers about the type of food that should NOT be given. These can be derived from patient allergies, intolerances, or preferences such as No Red Meat, No Soy or No Wheat or  Gluten-Free.  While it should not be necessary to repeat allergy or intolerance information captured in the referenced allergyIntolerance resource in the excludeFoodModifier, this element may be used to convey additional specificity related to foods that should be eliminated from the patient’s diet for any reason.  This modifier applies to the entire nutrition order inclusive of the oral diet, nutritional supplements and enteral formula feedings.
+   * Information on a patient's food allergies and intolerances, and preferences inform healthcare personnel about the type  of foods that the patient should receive or consume.
    */
   excludeFoodModifier?: CodeableConcept[] | undefined;
   /**
    * Order-specific modifier about the type of food that should be given
    * This modifier is used to convey order-specific modifiers about the type of food that should be given. These can be derived from patient allergies, intolerances, or preferences such as Halal, Vegan or Kosher. This modifier applies to the entire nutrition order inclusive of the oral diet, nutritional supplements and enteral formula feedings.
+   * Information on a patient's food preferences that inform healthcare personnel about the food that the patient should receive or consume.
    */
   foodPreferenceModifier?: CodeableConcept[] | undefined;
   /**
@@ -10252,6 +10928,7 @@ export interface NutritionOrder extends DomainResource {
   patient: Reference;
   /**
    * The workflow status of the nutrition order/request.
+   * Typically the system placing the order sets the status to "requested". Thereafter, the order is maintained by the receiver that updates the status as the request is handled.
    */
   status?: ('proposed'|'draft'|'planned'|'requested'|'active'|'on-hold'|'completed'|'cancelled') | undefined;
   _status?: Element | undefined;
@@ -10280,11 +10957,13 @@ export interface NutritionOrderEnteralFormula extends BackboneElement {
   /**
    * Formula feeding instruction as structured data
    * Formula administration instructions as structured data.  This repeating structure allows for changing the administration rate or volume over time for both bolus and continuous feeding.  An example of this would be an instruction to increase the rate of continuous feeding every 2 hours.
+   * See implementation notes below for further discussion on how to order continuous vs bolus enteral feeding using this resource.
    */
   administration?: NutritionOrderEnteralFormulaAdministration[] | undefined;
   /**
    * Formula feeding instructions expressed as text
    * Free text formula administration, feeding instructions or additional instructions or information.
+   * Free text dosage instructions can be used for cases where the instructions are too complex to code.
    */
   administrationInstruction?: string | undefined;
   _administrationInstruction?: Element | undefined;
@@ -10318,6 +10997,7 @@ export interface NutritionOrderEnteralFormula extends BackboneElement {
 /**
  * Formula feeding instruction as structured data
  * Formula administration instructions as structured data.  This repeating structure allows for changing the administration rate or volume over time for both bolus and continuous feeding.  An example of this would be an instruction to increase the rate of continuous feeding every 2 hours.
+ * See implementation notes below for further discussion on how to order continuous vs bolus enteral feeding using this resource.
  */
 export interface NutritionOrderEnteralFormulaAdministration extends BackboneElement {
   /**
@@ -10327,11 +11007,13 @@ export interface NutritionOrderEnteralFormulaAdministration extends BackboneElem
   /**
    * Speed with which the formula is provided per period of time
    * The rate of administration of formula via a feeding pump, e.g. 60 mL per hour, according to the specified schedule.
+   * Ratio is used when the quantity value in the denominator is not "1", otherwise use Quantity. For example, the Ratio datatype is used for "200 mL/4 hrs" versus the Quantity datatype for "50 mL/hr".
    */
   rateQuantity?: Quantity | undefined;
   /**
    * Speed with which the formula is provided per period of time
    * The rate of administration of formula via a feeding pump, e.g. 60 mL per hour, according to the specified schedule.
+   * Ratio is used when the quantity value in the denominator is not "1", otherwise use Quantity. For example, the Ratio datatype is used for "200 mL/4 hrs" versus the Quantity datatype for "50 mL/hr".
    */
   rateRatio?: Ratio | undefined;
   /**
@@ -10353,6 +11035,7 @@ export interface NutritionOrderOralDiet extends BackboneElement {
   /**
    * Instructions or additional information about the oral diet
    * Free text or additional instructions or information pertaining to the oral diet.
+   * Free text dosage instructions can be used for cases where the instructions are too complex to code.
    */
   instruction?: string | undefined;
   _instruction?: Element | undefined;
@@ -10401,11 +11084,13 @@ export interface NutritionOrderOralDietTexture extends BackboneElement {
   /**
    * Concepts that are used to identify an entity that is ingested for nutritional purposes
    * The food type(s) (e.g. meats, all foods)  that the texture modification applies to.  This could be all foods types.
+   * Coupled with the textureModifier; could be (All Foods).
    */
   foodType?: CodeableConcept | undefined;
   /**
    * Code to indicate how to alter the texture of the foods, e.g. pureed
    * Any texture modifications (for solid foods) that should be made, e.g. easy to chew, chopped, ground, and pureed.
+   * Coupled with the foodType (Meat).
    */
   modifier?: CodeableConcept | undefined;
 }
@@ -10417,6 +11102,7 @@ export interface NutritionOrderSupplement extends BackboneElement {
   /**
    * Instructions or additional information about the oral supplement
    * Free text or additional instructions or information pertaining to the oral supplement.
+   * Free text dosage instructions can be used for cases where the instructions are too complex to code.
    */
   instruction?: string | undefined;
   _instruction?: Element | undefined;
@@ -10451,11 +11137,13 @@ export interface Observation extends DomainResource {
   /**
    * Observed body part
    * Indicates the site on the subject's body where the observation was made (i.e. the target site).
+   * Only used if not implicit in code found in Observation.code.  If the use case requires BodySite to be handled as a separate resource instead of an inline coded element (e.g. to identify and track separately) then use the standard extension[ body-site-instance](extension-body-site-instance.html).
    */
   bodySite?: CodeableConcept | undefined;
   /**
    * Classification of  type of observation
    * A code that classifies the general type of observation being made.  This is used  for searching, sorting and display purposes.
+   * The level of granularity is defined by the category concepts in the value set.   More fine-grained filtering can be performed using the metadata and/or terminology hierarchy in Observation.code.
    */
   category?: CodeableConcept | undefined;
   /**
@@ -10472,27 +11160,32 @@ export interface Observation extends DomainResource {
   /**
    * Component results
    * Some observations have multiple component observations.  These component observations are expressed as separate code value pairs that share the same attributes.  Examples include systolic and diastolic component observations for blood pressure measurement and multiple component observations for genetics observations.
+   * For a discussion on the ways Observations can assembled in groups together see [Notes below](observation.html#4.20.4).
    */
   component?: ObservationComponent[] | undefined;
   /**
    * Why the result is missing
    * Provides a reason why the expected value in the element Observation.value[x] is missing.
+   * Null or exceptional values can be represented two ways in FHIR Observations.  One way is to simply include them in the value set and represent the exceptions in the value.  For example, measurement values for a serology test could be  "detected", "not detected", "inconclusive", or  "specimen unsatisfactory".   The alternate way is to use the value element for actual observations and use the explicit dataAbsentReason element to record exceptional values.  For example, the dataAbsentReason code "error" could be used when the measurement was not completed.  Because of these options, use-case agreements are required to interpret general observations for exceptional values.
    */
   dataAbsentReason?: CodeableConcept | undefined;
   /**
    * (Measurement) Device
    * The device used to generate the observation data.
+   * An extension should be used if further typing of the device is needed.  Devices used to support obtaining an observation can be represented using either extension or through the Observation.related element.
    */
   device?: Reference | undefined;
   /**
    * Clinically relevant time/time-period for observation
    * The time or time-period the observed value is asserted as being true. For biological subjects - e.g. human patients - this is usually called the "physiologically relevant time". This is usually either the time of the procedure or of specimen collection, but very often the source of the date/time is not known, only the date/time itself.
+   * At least a date should be present unless this observation is a historical report.
    */
   effectiveString?: string | undefined;
   _effectiveString?: Element | undefined;
   /**
    * Clinically relevant time/time-period for observation
    * The time or time-period the observed value is asserted as being true. For biological subjects - e.g. human patients - this is usually called the "physiologically relevant time". This is usually either the time of the procedure or of specimen collection, but very often the source of the date/time is not known, only the date/time itself.
+   * At least a date should be present unless this observation is a historical report.
    */
   effectivePeriod?: Period | undefined;
   /**
@@ -10513,12 +11206,14 @@ export interface Observation extends DomainResource {
   /**
    * Date/Time this was made available
    * The date and time this observation was made available to providers, typically after the results have been reviewed and verified.
+   * Updated when the result is updated.
    */
   issued?: string | undefined;
   _issued?: Element | undefined;
   /**
    * How it was done
    * Indicates the mechanism used to perform the observation.
+   * Only used if not implicit in code for Observation.code.
    */
   method?: CodeableConcept | undefined;
   /**
@@ -10529,16 +11224,19 @@ export interface Observation extends DomainResource {
   /**
    * Provides guide for interpretation
    * Guidance on how to interpret the value by comparison to a normal or recommended range.
+   * Most observations only have one generic reference range. Systems MAY choose to restrict to only supplying the relevant reference range based on knowledge about the patient (e.g. specific to the patient's age, gender, weight and other factors), but this may not be possible or appropriate. Whenever more than one reference range is supplied, the differences between them SHOULD be provided in the reference range and/or age properties.
    */
   referenceRange?: ObservationReferenceRange[] | undefined;
   /**
    * Resource related to this observation
    * A  reference to another resource (usually another Observation but could  also be a QuestionnaireAnswer) whose relationship is defined by the relationship type code.
+   * For a discussion on the ways Observations can assembled in groups together see [Notes below](observation.html#4.20.4).
    */
   related?: ObservationRelated[] | undefined;
   /**
    * Specimen used for this observation
    * The specimen that was used when this observation was made.
+   * Observations are not made on specimens themselves; they are made on a subject, but usually by the means of a specimen. Note that although specimens are often involved, they are not always tracked and reported explicitly. Also note that observation resources may be used in contexts that track the specimen explicitly (e.g. Diagnostic Report).
    */
   specimen?: Reference | undefined;
   /**
@@ -10549,53 +11247,63 @@ export interface Observation extends DomainResource {
   /**
    * Who and/or what this is about
    * The patient, or group of patients, location, or device whose characteristics (direct or indirect) are described by the observation and into whose record the observation is placed.  Comments: Indirect characteristics may be those of a specimen, fetus, donor,  other observer (for example a relative or EMT), or any observation made about the subject.
+   * One would expect this element to be a cardinality  of 1..1.  The only circumstance in which the subject can be missing is when the observation is made by a device that does not know the patient. In this case, the observation SHALL be matched to a patient through some context/channel matching technique, and at this point, the observation should be updated.  If the target of the observation is different than the subject, the general extension [observation-focal-subject](extension-observation-focal-subject.html).  may be used.  However, the distinction between the patient's own value for an observation versus that of the fetus, or the donor or blood product unit, etc., are often specified in the observation code.
    */
   subject?: Reference | undefined;
   /**
    * Actual result
    * The information determined as a result of making the observation, if the information has a simple value.
+   * Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. This element has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueString, valueRange, valueRatio, valueSampledData, valueAttachment, valueTime, valueDateTime, or valuePeriod. (The name format is "'value' + the type name" with a capital on the first letter of the type).   If the data element is usually coded or if the type associated with the Observation.value defines a coded value, use CodeableConcept instead of string datatype even if the value is uncoded text.  A value set is bound to the ValueCodeableConcept element.  For boolean values use valueCodeableConcept and select codes from [HL7 Version 2 Table 0136](v2/0136/index.html). These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed.   For further discussion and examples see the  [notes section](observation.html#4.20.4) below.
    */
   valueAttachment?: Attachment | undefined;
   /**
    * Actual result
    * The information determined as a result of making the observation, if the information has a simple value.
+   * Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. This element has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueString, valueRange, valueRatio, valueSampledData, valueAttachment, valueTime, valueDateTime, or valuePeriod. (The name format is "'value' + the type name" with a capital on the first letter of the type).   If the data element is usually coded or if the type associated with the Observation.value defines a coded value, use CodeableConcept instead of string datatype even if the value is uncoded text.  A value set is bound to the ValueCodeableConcept element.  For boolean values use valueCodeableConcept and select codes from [HL7 Version 2 Table 0136](v2/0136/index.html). These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed.   For further discussion and examples see the  [notes section](observation.html#4.20.4) below.
    */
   valueCodeableConcept?: CodeableConcept | undefined;
   /**
    * Actual result
    * The information determined as a result of making the observation, if the information has a simple value.
+   * Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. This element has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueString, valueRange, valueRatio, valueSampledData, valueAttachment, valueTime, valueDateTime, or valuePeriod. (The name format is "'value' + the type name" with a capital on the first letter of the type).   If the data element is usually coded or if the type associated with the Observation.value defines a coded value, use CodeableConcept instead of string datatype even if the value is uncoded text.  A value set is bound to the ValueCodeableConcept element.  For boolean values use valueCodeableConcept and select codes from [HL7 Version 2 Table 0136](v2/0136/index.html). These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed.   For further discussion and examples see the  [notes section](observation.html#4.20.4) below.
    */
   valueString?: string | undefined;
   _valueString?: Element | undefined;
   /**
    * Actual result
    * The information determined as a result of making the observation, if the information has a simple value.
+   * Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. This element has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueString, valueRange, valueRatio, valueSampledData, valueAttachment, valueTime, valueDateTime, or valuePeriod. (The name format is "'value' + the type name" with a capital on the first letter of the type).   If the data element is usually coded or if the type associated with the Observation.value defines a coded value, use CodeableConcept instead of string datatype even if the value is uncoded text.  A value set is bound to the ValueCodeableConcept element.  For boolean values use valueCodeableConcept and select codes from [HL7 Version 2 Table 0136](v2/0136/index.html). These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed.   For further discussion and examples see the  [notes section](observation.html#4.20.4) below.
    */
   valuePeriod?: Period | undefined;
   /**
    * Actual result
    * The information determined as a result of making the observation, if the information has a simple value.
+   * Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. This element has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueString, valueRange, valueRatio, valueSampledData, valueAttachment, valueTime, valueDateTime, or valuePeriod. (The name format is "'value' + the type name" with a capital on the first letter of the type).   If the data element is usually coded or if the type associated with the Observation.value defines a coded value, use CodeableConcept instead of string datatype even if the value is uncoded text.  A value set is bound to the ValueCodeableConcept element.  For boolean values use valueCodeableConcept and select codes from [HL7 Version 2 Table 0136](v2/0136/index.html). These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed.   For further discussion and examples see the  [notes section](observation.html#4.20.4) below.
    */
   valueQuantity?: Quantity | undefined;
   /**
    * Actual result
    * The information determined as a result of making the observation, if the information has a simple value.
+   * Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. This element has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueString, valueRange, valueRatio, valueSampledData, valueAttachment, valueTime, valueDateTime, or valuePeriod. (The name format is "'value' + the type name" with a capital on the first letter of the type).   If the data element is usually coded or if the type associated with the Observation.value defines a coded value, use CodeableConcept instead of string datatype even if the value is uncoded text.  A value set is bound to the ValueCodeableConcept element.  For boolean values use valueCodeableConcept and select codes from [HL7 Version 2 Table 0136](v2/0136/index.html). These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed.   For further discussion and examples see the  [notes section](observation.html#4.20.4) below.
    */
   valueRange?: Range | undefined;
   /**
    * Actual result
    * The information determined as a result of making the observation, if the information has a simple value.
+   * Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. This element has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueString, valueRange, valueRatio, valueSampledData, valueAttachment, valueTime, valueDateTime, or valuePeriod. (The name format is "'value' + the type name" with a capital on the first letter of the type).   If the data element is usually coded or if the type associated with the Observation.value defines a coded value, use CodeableConcept instead of string datatype even if the value is uncoded text.  A value set is bound to the ValueCodeableConcept element.  For boolean values use valueCodeableConcept and select codes from [HL7 Version 2 Table 0136](v2/0136/index.html). These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed.   For further discussion and examples see the  [notes section](observation.html#4.20.4) below.
    */
   valueRatio?: Ratio | undefined;
   /**
    * Actual result
    * The information determined as a result of making the observation, if the information has a simple value.
+   * Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. This element has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueString, valueRange, valueRatio, valueSampledData, valueAttachment, valueTime, valueDateTime, or valuePeriod. (The name format is "'value' + the type name" with a capital on the first letter of the type).   If the data element is usually coded or if the type associated with the Observation.value defines a coded value, use CodeableConcept instead of string datatype even if the value is uncoded text.  A value set is bound to the ValueCodeableConcept element.  For boolean values use valueCodeableConcept and select codes from [HL7 Version 2 Table 0136](v2/0136/index.html). These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed.   For further discussion and examples see the  [notes section](observation.html#4.20.4) below.
    */
   valueSampledData?: SampledData | undefined;
 }
 /**
  * Component results
  * Some observations have multiple component observations.  These component observations are expressed as separate code value pairs that share the same attributes.  Examples include systolic and diastolic component observations for blood pressure measurement and multiple component observations for genetics observations.
+ * For a discussion on the ways Observations can assembled in groups together see [Notes below](observation.html#4.20.4).
  */
 export interface ObservationComponent extends BackboneElement {
   /**
@@ -10606,58 +11314,69 @@ export interface ObservationComponent extends BackboneElement {
   /**
    * Why the component result is missing
    * Provides a reason why the expected value in the element Observation.value[x] is missing.
+   * "Null" or exceptional values can be represented two ways in FHIR Observations.  One way is to simply include them in the value set and represent the exceptions in the value.  For example, measurement values for a serology test could be  "detected", "not detected", "inconclusive", or  "test not done".   The alternate way is to use the value element for actual observations and use the explicit dataAbsentReason element to record exceptional values.  For example, the dataAbsentReason code "error" could be used when the measurement was not completed.  Because of these options, use-case agreements are required to interpret general observations for exceptional values.
    */
   dataAbsentReason?: CodeableConcept | undefined;
   /**
    * Provides guide for interpretation of component result
    * Guidance on how to interpret the value by comparison to a normal or recommended range.
+   * Most observations only have one generic reference range. Systems MAY choose to restrict to only supplying the relevant reference range based on knowledge about the patient (e.g. specific to the patient's age, gender, weight and other factors), but this may not be possible or appropriate. Whenever more than one reference range is supplied, the differences between them SHOULD be provided in the reference range and/or age properties.
    */
   referenceRange?: ObservationReferenceRange[] | undefined;
   /**
    * Actual component result
    * The information determined as a result of making the observation, if the information has a simple value.
+   * Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.   For boolean values use valueCodeableConcept and select codes from <http://hl7.org/fhir/ValueSet/v2-0136> (These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed").  The element, Observation.value[x], has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueRatio, valueChoice, valuePeriod, valueSampleData, or valueString (The name format is "'value' + the type name" with a capital on the first letter of the type).
    */
   valueAttachment?: Attachment | undefined;
   /**
    * Actual component result
    * The information determined as a result of making the observation, if the information has a simple value.
+   * Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.   For boolean values use valueCodeableConcept and select codes from <http://hl7.org/fhir/ValueSet/v2-0136> (These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed").  The element, Observation.value[x], has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueRatio, valueChoice, valuePeriod, valueSampleData, or valueString (The name format is "'value' + the type name" with a capital on the first letter of the type).
    */
   valueCodeableConcept?: CodeableConcept | undefined;
   /**
    * Actual component result
    * The information determined as a result of making the observation, if the information has a simple value.
+   * Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.   For boolean values use valueCodeableConcept and select codes from <http://hl7.org/fhir/ValueSet/v2-0136> (These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed").  The element, Observation.value[x], has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueRatio, valueChoice, valuePeriod, valueSampleData, or valueString (The name format is "'value' + the type name" with a capital on the first letter of the type).
    */
   valueString?: string | undefined;
   _valueString?: Element | undefined;
   /**
    * Actual component result
    * The information determined as a result of making the observation, if the information has a simple value.
+   * Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.   For boolean values use valueCodeableConcept and select codes from <http://hl7.org/fhir/ValueSet/v2-0136> (These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed").  The element, Observation.value[x], has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueRatio, valueChoice, valuePeriod, valueSampleData, or valueString (The name format is "'value' + the type name" with a capital on the first letter of the type).
    */
   valuePeriod?: Period | undefined;
   /**
    * Actual component result
    * The information determined as a result of making the observation, if the information has a simple value.
+   * Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.   For boolean values use valueCodeableConcept and select codes from <http://hl7.org/fhir/ValueSet/v2-0136> (These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed").  The element, Observation.value[x], has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueRatio, valueChoice, valuePeriod, valueSampleData, or valueString (The name format is "'value' + the type name" with a capital on the first letter of the type).
    */
   valueQuantity?: Quantity | undefined;
   /**
    * Actual component result
    * The information determined as a result of making the observation, if the information has a simple value.
+   * Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.   For boolean values use valueCodeableConcept and select codes from <http://hl7.org/fhir/ValueSet/v2-0136> (These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed").  The element, Observation.value[x], has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueRatio, valueChoice, valuePeriod, valueSampleData, or valueString (The name format is "'value' + the type name" with a capital on the first letter of the type).
    */
   valueRange?: Range | undefined;
   /**
    * Actual component result
    * The information determined as a result of making the observation, if the information has a simple value.
+   * Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.   For boolean values use valueCodeableConcept and select codes from <http://hl7.org/fhir/ValueSet/v2-0136> (These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed").  The element, Observation.value[x], has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueRatio, valueChoice, valuePeriod, valueSampleData, or valueString (The name format is "'value' + the type name" with a capital on the first letter of the type).
    */
   valueRatio?: Ratio | undefined;
   /**
    * Actual component result
    * The information determined as a result of making the observation, if the information has a simple value.
+   * Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.   For boolean values use valueCodeableConcept and select codes from <http://hl7.org/fhir/ValueSet/v2-0136> (These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed").  The element, Observation.value[x], has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueRatio, valueChoice, valuePeriod, valueSampleData, or valueString (The name format is "'value' + the type name" with a capital on the first letter of the type).
    */
   valueSampledData?: SampledData | undefined;
 }
 /**
  * Provides guide for interpretation
  * Guidance on how to interpret the value by comparison to a normal or recommended range.
+ * Most observations only have one generic reference range. Systems MAY choose to restrict to only supplying the relevant reference range based on knowledge about the patient (e.g. specific to the patient's age, gender, weight and other factors), but this may not be possible or appropriate. Whenever more than one reference range is supplied, the differences between them SHOULD be provided in the reference range and/or age properties.
  */
 export interface ObservationReferenceRange extends BackboneElement {
   /**
@@ -10678,6 +11397,7 @@ export interface ObservationReferenceRange extends BackboneElement {
   /**
    * Indicates the meaning/use of this range of this range
    * Code for the meaning of the reference range.
+   * This SHOULD be populated if there is more than one range.
    */
   meaning?: CodeableConcept | undefined;
   /**
@@ -10689,6 +11409,7 @@ export interface ObservationReferenceRange extends BackboneElement {
 /**
  * Resource related to this observation
  * A  reference to another resource (usually another Observation but could  also be a QuestionnaireAnswer) whose relationship is defined by the relationship type code.
+ * For a discussion on the ways Observations can assembled in groups together see [Notes below](observation.html#4.20.4).
  */
 export interface ObservationRelated extends BackboneElement {
   /**
@@ -10698,6 +11419,7 @@ export interface ObservationRelated extends BackboneElement {
   target: Reference;
   /**
    * A code specifying the kind of relationship that exists with the target resource.
+   * "derived-from" is only logical choice when referencing QuestionnaireAnswer resource.
    */
   type?: ('has-member'|'derived-from'|'sequel-to'|'replaces'|'qualified-by'|'interfered-by') | undefined;
   _type?: Element | undefined;
@@ -10711,6 +11433,7 @@ export interface OperationDefinition extends DomainResource {
   /**
    * Marks this as a profile of the base
    * Indicates that this operation definition is a constraining profile on the base.
+   * A constrained profile can make optional parameters required or not used and clarify documentation.
    */
   base?: Reference | undefined;
   /**
@@ -10722,17 +11445,20 @@ export interface OperationDefinition extends DomainResource {
   /**
    * Contact details of the publisher
    * Contacts to assist a user in finding and communicating with the publisher.
+   * May be a web site, an email address, a telephone number (tel:), etc.
    */
   contact?: OperationDefinitionContact[] | undefined;
   /**
    * Date for this version of the operation definition
    * The date this version of the operation definition was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the Operation Definition changes.
+   * Additional specific dates may be added as extensions.
    */
   date?: string | undefined;
   _date?: Element | undefined;
   /**
    * Natural language description of the operation
    * A free text natural language description of the profile and its use.
+   * This field can be used for things such as why the profile was written, comments about misuse, instructions for clinical use and interpretation, literature references, examples from the paper world, etc.  It is *not* a rendering of the profile as conveyed in Profile.text. This item SHOULD be populated unless the information is available from context.
    */
   description?: string | undefined;
   _description?: Element | undefined;
@@ -10757,12 +11483,14 @@ export interface OperationDefinition extends DomainResource {
   /**
    * operation | query
    * Whether this is an operation or a named query.
+   * Named queries are invoked differently, and have different capabilities.
    */
   kind: ('operation'|'query');
   _kind?: Element | undefined;
   /**
    * Informal name for this operation
    * A free text natural language name identifying the operation.
+   * Not expected to be globally unique.
    */
   name: string;
   _name?: Element | undefined;
@@ -10775,17 +11503,20 @@ export interface OperationDefinition extends DomainResource {
   /**
    * Parameters for the operation/query
    * The parameters for the operation/query.
+   * Query Definitions only have one output parameter, named "result". This may not be described, but can be to allow a profile to be defined.
    */
   parameter?: OperationDefinitionParameter[] | undefined;
   /**
    * Name of the publisher (Organization or individual)
    * The name of the individual or organization that published the operation definition.
+   * Usually an organization, but may be an individual. This item SHOULD be populated unless the information is available from context.
    */
   publisher?: string | undefined;
   _publisher?: Element | undefined;
   /**
    * Why is this needed?
    * Explains why this operation definition is needed and why it's been constrained as it has.
+   * This element does not describe the usage of the operation definition (that's done in comments), rather it's for traceability of *why* the element is either needed or why the constraints exist as they do.  This may be used to point to source materials or specifications that drove the structure of this data element.
    */
   requirements?: string | undefined;
   _requirements?: Element | undefined;
@@ -10809,6 +11540,7 @@ export interface OperationDefinition extends DomainResource {
   /**
    * Logical URL to reference this operation definition
    * An absolute URL that is used to identify this operation definition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this operation definition is (or will be) published.
+   * Can be a urn:uuid: or a urn:oid:.
    */
   url?: string | undefined;
   _url?: Element | undefined;
@@ -10822,11 +11554,13 @@ export interface OperationDefinition extends DomainResource {
 /**
  * Contact details of the publisher
  * Contacts to assist a user in finding and communicating with the publisher.
+ * May be a web site, an email address, a telephone number (tel:), etc.
  */
 export interface OperationDefinitionContact extends BackboneElement {
   /**
    * Name of a individual to contact
    * The name of an individual to contact regarding the operation definition.
+   * If there is no named individual, the telecom is for the organization as a whole.
    */
   name?: string | undefined;
   _name?: Element | undefined;
@@ -10839,6 +11573,7 @@ export interface OperationDefinitionContact extends BackboneElement {
 /**
  * Parameters for the operation/query
  * The parameters for the operation/query.
+ * Query Definitions only have one output parameter, named "result". This may not be described, but can be to allow a profile to be defined.
  */
 export interface OperationDefinitionParameter extends BackboneElement {
   /**
@@ -10866,12 +11601,14 @@ export interface OperationDefinitionParameter extends BackboneElement {
   /**
    * Name in Parameters.parameter.name or in URL
    * The name of used to identify the parameter.
+   * This name must be a token (start with a letter in a..z, and only contain letters, numerals, and underscore.
    */
   name: string;
   _name?: Element | undefined;
   /**
    * Parts of a Tuple Parameter
    * The parts of a Tuple Parameter.
+   * Query Definitions only have one output parameter, named "result". This may not be described, but can be to allow a profile to be defined.
    */
   part?: OperationDefinitionParameter[] | undefined;
   /**
@@ -10882,12 +11619,14 @@ export interface OperationDefinitionParameter extends BackboneElement {
   /**
    * What type this parameter has
    * The type for this parameter.
+   * if there is no stated parameter, then the parameter is a "Tuple" type and must have at least one part defined.
    */
   type?: ('number'|'date'|'string'|'token'|'reference'|'composite'|'quantity'|'uri'|'Address'|'Age'|'Annotation'|'Attachment'|'BackboneElement'|'CodeableConcept'|'Coding'|'ContactPoint'|'Count'|'Distance'|'Duration'|'Element'|'ElementDefinition'|'Extension'|'HumanName'|'Identifier'|'Meta'|'Money'|'Narrative'|'Period'|'Quantity'|'Range'|'Ratio'|'Reference'|'SampledData'|'Signature'|'SimpleQuantity'|'Timing'|'base64Binary'|'boolean'|'code'|'date'|'dateTime'|'decimal'|'id'|'instant'|'integer'|'markdown'|'oid'|'positiveInt'|'string'|'time'|'unsignedInt'|'uri'|'uuid'|'xhtml'|'Account'|'AllergyIntolerance'|'Appointment'|'AppointmentResponse'|'AuditEvent'|'Basic'|'Binary'|'BodySite'|'Bundle'|'CarePlan'|'Claim'|'ClaimResponse'|'ClinicalImpression'|'Communication'|'CommunicationRequest'|'Composition'|'ConceptMap'|'Condition'|'Conformance'|'Contract'|'Coverage'|'DataElement'|'DetectedIssue'|'Device'|'DeviceComponent'|'DeviceMetric'|'DeviceUseRequest'|'DeviceUseStatement'|'DiagnosticOrder'|'DiagnosticReport'|'DocumentManifest'|'DocumentReference'|'DomainResource'|'EligibilityRequest'|'EligibilityResponse'|'Encounter'|'EnrollmentRequest'|'EnrollmentResponse'|'EpisodeOfCare'|'ExplanationOfBenefit'|'FamilyMemberHistory'|'Flag'|'Goal'|'Group'|'HealthcareService'|'ImagingObjectSelection'|'ImagingStudy'|'Immunization'|'ImmunizationRecommendation'|'ImplementationGuide'|'List'|'Location'|'Media'|'Medication'|'MedicationAdministration'|'MedicationDispense'|'MedicationOrder'|'MedicationStatement'|'MessageHeader'|'NamingSystem'|'NutritionOrder'|'Observation'|'OperationDefinition'|'OperationOutcome'|'Order'|'OrderResponse'|'Organization'|'Parameters'|'Patient'|'PaymentNotice'|'PaymentReconciliation'|'Person'|'Practitioner'|'Procedure'|'ProcedureRequest'|'ProcessRequest'|'ProcessResponse'|'Provenance'|'Questionnaire'|'QuestionnaireResponse'|'ReferralRequest'|'RelatedPerson'|'Resource'|'RiskAssessment'|'Schedule'|'SearchParameter'|'Slot'|'Specimen'|'StructureDefinition'|'Subscription'|'Substance'|'SupplyDelivery'|'SupplyRequest'|'TestScript'|'ValueSet'|'VisionPrescription') | undefined;
   _type?: Element | undefined;
   /**
    * in | out
    * Whether this is an input or an output parameter.
+   * If a parameter name is used for both an input and an output parameter, the parameter should be defined twice.
    */
   use: ('in'|'out');
   _use?: Element | undefined;
@@ -10899,17 +11638,20 @@ export interface OperationDefinitionParameter extends BackboneElement {
 export interface OperationDefinitionParameterBinding extends BackboneElement {
   /**
    * Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the provided value set must be adhered to in the instances.
+   * For further discussion, see [[[Using Terminologies]]].
    */
   strength: ('required'|'extensible'|'preferred'|'example');
   _strength?: Element | undefined;
   /**
    * Source of value set
    * Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.
+   * For value sets with a referenceResource, the display can contain the value set description.  The reference may be version-specific or not.
    */
   valueSetReference?: Reference | undefined;
   /**
    * Source of value set
    * Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.
+   * For value sets with a referenceResource, the display can contain the value set description.  The reference may be version-specific or not.
    */
   valueSetString?: string | undefined;
   _valueSetString?: Element | undefined;
@@ -10939,21 +11681,25 @@ export interface OperationOutcomeIssue extends BackboneElement {
   _code?: Element | undefined;
   /**
    * Additional details about the error. This may be a text description of the error, or a system code that identifies the error.
+   * A human readable description of the error issue SHOULD be placed in details.text.
    */
   details?: CodeableConcept | undefined;
   /**
    * Additional diagnostic information about the issue.  Typically, this may be a description of how a value is erroneous, or a stack dump to help trace the issue.
+   * Typically this field is used to provide troubleshooting information about the error.
    */
   diagnostics?: string | undefined;
   _diagnostics?: Element | undefined;
   /**
    * XPath of element(s) related to issue
    * A simple XPath limited to element names, repetition indicators and the default child access that identifies one of the elements in the resource that caused this issue to be raised.
+   * The root of the XPath is the resource or bundle that generated OperationOutcome.  Each XPath SHALL resolve to a single node.  The XPath syntax is used whether the referenced instance is expressed in XML or JSON.
    */
   location?: string[] | undefined;
   _location?: Element[] | undefined;
   /**
    * Indicates whether the issue indicates a variation from successful processing.
+   * This is labeled as "Is Modifier" because applications should not confuse hints and warnings with errors.
    */
   severity: ('fatal'|'error'|'warning'|'information');
   _severity?: Element | undefined;
@@ -10991,6 +11737,7 @@ export interface Order extends DomainResource {
   source?: Reference | undefined;
   /**
    * Patient this order is about.
+   * May be left blank if the request reference identifies the patient, or if the request is not associated with a patient.
    */
   subject?: Reference | undefined;
   /**
@@ -11008,6 +11755,7 @@ export interface Order extends DomainResource {
 export interface OrderWhen extends BackboneElement {
   /**
    * Code specifies when request should be done. The code may simply be a priority code.
+   * This is usually a local code agreed in the context of the ordering workflow.
    */
   code?: CodeableConcept | undefined;
   /**
@@ -11067,15 +11815,18 @@ export interface Organization extends DomainResource {
   readonly resourceType: 'Organization';
   /**
    * Whether the organization's record is still in active use.
+   * Default is true.
    */
   active?: boolean | undefined;
   _active?: Element | undefined;
   /**
    * An address for the organization.
+   * Organization may have multiple addresses with different uses or applicable periods. The use code home is not to be used.
    */
   address?: Address[] | undefined;
   /**
    * Contact for the organization for a certain purpose.
+   * Where multiple contacts for the same purpose are provided there is a standard extension that can be used to determine which one is the preferred contact to use.
    */
   contact?: OrganizationContact[] | undefined;
   /**
@@ -11095,16 +11846,19 @@ export interface Organization extends DomainResource {
   partOf?: Reference | undefined;
   /**
    * A contact detail for the organization.
+   * The use code home is not to be used. Note that these contacts are not the contact details of people who are employed by or represent the organization, but official contacts for the organization itself.
    */
   telecom?: ContactPoint[] | undefined;
   /**
    * Kind of organization
    * The kind of organization that this is.
+   * Organizations can be corporations, wards, sections, clinical teams, government departments, etc. Note that code is generally a classifier of the type of organization; in many applications, codes are used to identity a particular organization (say, ward) as opposed to another of the same type - these are identifiers, not codes.
    */
   type?: CodeableConcept | undefined;
 }
 /**
  * Contact for the organization for a certain purpose.
+ * Where multiple contacts for the same purpose are provided there is a standard extension that can be used to determine which one is the preferred contact to use.
  */
 export interface OrganizationContact extends BackboneElement {
   /**
@@ -11152,6 +11906,7 @@ export interface ParametersParameter extends BackboneElement {
   /**
    * Named part of a parameter (e.g. Tuple)
    * A named part of a parameter. In many implementation context, a set of named parts is known as a "Tuple".
+   * Only one level of Tuples is allowed.
    */
   part?: ParametersParameter[] | undefined;
   /**
@@ -11271,49 +12026,59 @@ export interface Patient extends DomainResource {
   /**
    * Whether this patient's record is in active use
    * Whether this patient record is in active use.
+   * Default is true. If a record is inactive, and linked to an active record, then future patient/record updates should occur on the other patient.
    */
   active?: boolean | undefined;
   _active?: Element | undefined;
   /**
    * Addresses for the individual.
+   * Patient may have multiple addresses with different uses or applicable periods.
    */
   address?: Address[] | undefined;
   /**
    * This patient is known to be an animal (non-human)
    * This patient is known to be an animal.
+   * The animal element is labeled "Is Modifier" since patients may be non-human. Systems SHALL either handle patient details appropriately (e.g. inform users patient is not human) or reject declared animal records.   The absense of the animal element does not imply that the patient is a human. If a system requires such a positive assertion that the patient is human, an extension will be required.  (Do not use a species of homo-sapiens in animal species, as this would incorrectly infer that the patient is an animal).
    */
   animal?: PatientAnimal | undefined;
   /**
    * The date of birth for the individual.
+   * At least an estimated year should be provided as a guess if the real DOB is unknown  There is a standard extension "patient-birthTime" available that should be used where Time is required (such as in maternaty/infant care systems).
    */
   birthDate?: string | undefined;
   _birthDate?: Element | undefined;
   /**
    * Patient's nominated primary care provider
    * Patient's nominated care provider.
+   * This may be the primary care provider (in a GP context), or it may be a patient nominated care manager in a community/disablity setting, or even organization that will provide people to perform the care provider roles.  This is not to be used to record Care Teams, these should be recorded on either the CarePlan or EpisodeOfCare resources.
    */
   careProvider?: Reference[] | undefined;
   /**
    * A list of Languages which may be used to communicate with the patient about his or her health
    * Languages which may be used to communicate with the patient about his or her health.
+   * If no language is specified, this *implies* that the default local language is spoken.  If you need to convey proficiency for multiple modes then you need multiple Patient.Communication associations.   For animals, language is not a relevant field, and should be absent from the instance. If the Patient does not speak the default local language, then the Interpreter Required Standard can be used to explicitly declare that an interpreter is required.
    */
   communication?: PatientCommunication[] | undefined;
   /**
    * A contact party (e.g. guardian, partner, friend) for the patient.
+   * Contact covers all kinds of contact parties: family members, business contacts, guardians, caregivers. Not applicable to register pedigree and family ties beyond use of having contact.
    */
   contact?: PatientContact[] | undefined;
   /**
    * Indicates if the individual is deceased or not.
+   * If there's no value in the instance it means there is no statement on whether or not the individual is deceased. Most systems will interpret the absence of a value as a sign of the person being alive.
    */
   deceasedBoolean?: boolean | undefined;
   _deceasedBoolean?: Element | undefined;
   /**
    * Indicates if the individual is deceased or not.
+   * If there's no value in the instance it means there is no statement on whether or not the individual is deceased. Most systems will interpret the absence of a value as a sign of the person being alive.
    */
   deceasedString?: string | undefined;
   _deceasedString?: Element | undefined;
   /**
    * Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes.
+   * The gender may not match the biological sex as determined by genetics, or the individual's preferred identification. Note that for both humans and particularly animals, there are other legitimate possibilities than M and F, though the vast majority of systems and contexts only support M and F.  Systems providing decision support or enforcing business rules should ideally do this on the basis of Observations dealing with the specific gender aspect of interest (anatomical, chromosonal, social, etc.)  However, because these observations are infrequently recorded, defaulting to the administrative gender is common practice.  Where such defaulting occurs, rule enforcement should allow for the variation between administrative and biological, chromosonal and other gender aspects.  For example, an alert about a hysterectomy on a male should be handled as a warning or overrideable error, not a "hard" error.
    */
   gender?: ('male'|'female'|'other'|'unknown') | undefined;
   _gender?: Element | undefined;
@@ -11324,10 +12089,12 @@ export interface Patient extends DomainResource {
   /**
    * Link to another patient resource that concerns the same actual person
    * Link to another patient resource that concerns the same actual patient.
+   * There is no assumption that linked patient records have mutual links.
    */
   link?: PatientLink[] | undefined;
   /**
    * Organization that is the custodian of the patient record.
+   * There is only one managing organization for a specific patient record. Other organizations will have their own Patient record, and may use the Link property to join the records together (or a Person resource which can include confidence ratings for the association).
    */
   managingOrganization?: Reference | undefined;
   /**
@@ -11349,6 +12116,7 @@ export interface Patient extends DomainResource {
   /**
    * A name associated with the patient
    * A name associated with the individual.
+   * A patient may have multiple names with different uses or applicable periods. For animals, the name is a "HumanName" in the sense that is assigned and used by humans and has the same patterns.
    */
   name?: HumanName[] | undefined;
   /**
@@ -11358,17 +12126,20 @@ export interface Patient extends DomainResource {
   /**
    * A contact detail for the individual
    * A contact detail (e.g. a telephone number or an email address) by which the individual may be contacted.
+   * A Patient may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently and also to help with identification. The address may not go directly to the individual, but may reach another party that is able to proxy for the patient (i.e. home phone, or pet owner's phone).
    */
   telecom?: ContactPoint[] | undefined;
 }
 /**
  * This patient is known to be an animal (non-human)
  * This patient is known to be an animal.
+ * The animal element is labeled "Is Modifier" since patients may be non-human. Systems SHALL either handle patient details appropriately (e.g. inform users patient is not human) or reject declared animal records.   The absense of the animal element does not imply that the patient is a human. If a system requires such a positive assertion that the patient is human, an extension will be required.  (Do not use a species of homo-sapiens in animal species, as this would incorrectly infer that the patient is an animal).
  */
 export interface PatientAnimal extends BackboneElement {
   /**
    * E.g. Poodle, Angus
    * Identifies the detailed categorization of the kind of animal.
+   * Breed MAY be used to provide further taxonomic or non-taxonomic classification.  It may involve local or proprietary designation--such as commercial strain--and/or additional information such as production type.
    */
   breed?: CodeableConcept | undefined;
   /**
@@ -11379,28 +12150,33 @@ export interface PatientAnimal extends BackboneElement {
   /**
    * E.g. Dog, Cow
    * Identifies the high level taxonomic categorization of the kind of animal.
+   * If the patient is non-human, at least a species SHALL be specified. Species SHALL be a widely recognised taxonomic classification.  It may or may not be Linnaean taxonomy and may or may not be at the level of species. If the level is finer than species--such as a breed code--the code system used SHALL allow inference of the species.  (The common example is that the word "Hereford" does not allow inference of the species Bos taurus, because there is a Hereford pig breed, but the SNOMED CT code for "Hereford Cattle Breed" does.).
    */
   species: CodeableConcept;
 }
 /**
  * A list of Languages which may be used to communicate with the patient about his or her health
  * Languages which may be used to communicate with the patient about his or her health.
+ * If no language is specified, this *implies* that the default local language is spoken.  If you need to convey proficiency for multiple modes then you need multiple Patient.Communication associations.   For animals, language is not a relevant field, and should be absent from the instance. If the Patient does not speak the default local language, then the Interpreter Required Standard can be used to explicitly declare that an interpreter is required.
  */
 export interface PatientCommunication extends BackboneElement {
   /**
    * The language which can be used to communicate with the patient about his or her health
    * The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g. "en" for English, or "en-US" for American English versus "en-EN" for England English.
+   * The structure aa-BB with this exact casing is one the most widely used notations for locale. However not all systems actually code this but instead have it as free text. Hence CodeableConcept instead of code as the data type.
    */
   language: CodeableConcept;
   /**
    * Language preference indicator
    * Indicates whether or not the patient prefers this language (over other languages he masters up a certain level).
+   * This language is specifically identified for communicating healthcare information.
    */
   preferred?: boolean | undefined;
   _preferred?: Element | undefined;
 }
 /**
  * A contact party (e.g. guardian, partner, friend) for the patient.
+ * Contact covers all kinds of contact parties: family members, business contacts, guardians, caregivers. Not applicable to register pedigree and family ties beyond use of having contact.
  */
 export interface PatientContact extends BackboneElement {
   /**
@@ -11432,12 +12208,14 @@ export interface PatientContact extends BackboneElement {
   relationship?: CodeableConcept[] | undefined;
   /**
    * A contact detail for the person, e.g. a telephone number or an email address.
+   * Contact may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently, and also to help with identification.
    */
   telecom?: ContactPoint[] | undefined;
 }
 /**
  * Link to another patient resource that concerns the same actual person
  * Link to another patient resource that concerns the same actual patient.
+ * There is no assumption that linked patient records have mutual links.
  */
 export interface PatientLink extends BackboneElement {
   /**
@@ -11666,16 +12444,19 @@ export interface Person extends DomainResource {
   _active?: Element | undefined;
   /**
    * One or more addresses for the person.
+   * Person may have multiple addresses with different uses or applicable periods.
    */
   address?: Address[] | undefined;
   /**
    * The date on which the person was born
    * The birth date for the person.
+   * At least an estimated year should be provided as a guess if the real DOB is unknown.
    */
   birthDate?: string | undefined;
   _birthDate?: Element | undefined;
   /**
    * Administrative Gender.
+   * The gender may not match the biological sex as determined by genetics, or the individual's preferred identification. Note that for both humans and particularly animals, there are other legitimate possibilities than M and F, though the vast majority of systems and contexts only support M and F.
    */
   gender?: ('male'|'female'|'other'|'unknown') | undefined;
   _gender?: Element | undefined;
@@ -11694,6 +12475,7 @@ export interface Person extends DomainResource {
   managingOrganization?: Reference | undefined;
   /**
    * A name associated with the person.
+   * Person may have multiple names with different uses or applicable periods.
    */
   name?: HumanName[] | undefined;
   /**
@@ -11703,6 +12485,7 @@ export interface Person extends DomainResource {
   photo?: Attachment | undefined;
   /**
    * A contact detail for the person, e.g. a telephone number or an email address.
+   * Person may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently, and also to help with identification.
    */
   telecom?: ContactPoint[] | undefined;
 }
@@ -11728,6 +12511,7 @@ export interface Practitioner extends DomainResource {
   readonly resourceType: 'Practitioner';
   /**
    * Whether this practitioner's record is in active use.
+   * Default is true.   If the practitioner is not in use by one organization, then it should mark the period on the PractitonerRole with an end date (even if they are active) as they may be active in another role.
    */
   active?: boolean | undefined;
   _active?: Element | undefined;
@@ -11744,6 +12528,7 @@ export interface Practitioner extends DomainResource {
   _birthDate?: Element | undefined;
   /**
    * A language the practitioner is able to use in patient communication.
+   * The structure aa-BB with this exact casing is one the most widely used notations for locale. However not all systems actually code this but instead have it as free text. Hence CodeableConcept instead of code as the data type.
    */
   communication?: CodeableConcept[] | undefined;
   /**
@@ -11775,6 +12560,7 @@ export interface Practitioner extends DomainResource {
   qualification?: PractitionerQualification[] | undefined;
   /**
    * A contact detail for the practitioner, e.g. a telephone number or an email address.
+   * Person may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently, and also to help with identification.
    */
   telecom?: ContactPoint[] | undefined;
 }
@@ -11804,6 +12590,7 @@ export interface PractitionerPractitionerRole extends BackboneElement {
   /**
    * Roles which this practitioner may perform
    * Roles which this practitioner is authorized to perform for the organization.
+   * A person may have more than one role. At least one role is required.
    */
   role?: CodeableConcept | undefined;
   /**
@@ -11857,6 +12644,7 @@ export interface Procedure extends DomainResource {
   /**
    * Complication following the procedure
    * Any complications that occurred during the procedure, or in the immediate post-performance period. These are generally tracked separately from the notes, which will typically describe the procedure itself rather than any 'post procedure' issues.
+   * If complications are only expressed by the narrative text, they can be captured using the CodeableConcept.text.
    */
   complication?: CodeableConcept[] | undefined;
   /**
@@ -11898,6 +12686,7 @@ export interface Procedure extends DomainResource {
   /**
    * The result of procedure
    * The outcome of the procedure - did it resolve reasons for the procedure being performed?
+   * If outcome contains narrative text only, it can be captured using the CodeableConcept.text.
    */
   outcome?: CodeableConcept | undefined;
   /**
@@ -11919,11 +12708,13 @@ export interface Procedure extends DomainResource {
   /**
    * Reason procedure performed
    * The reason why the procedure was performed. This may be due to a Condition, may be coded entity of some type, or may simply be present as text.
+   * e.g. endoscopy for dilatation and biopsy, combination diagnosis and therapeutic.
    */
   reasonCodeableConcept?: CodeableConcept | undefined;
   /**
    * Reason procedure performed
    * The reason why the procedure was performed. This may be due to a Condition, may be coded entity of some type, or may simply be present as text.
+   * e.g. endoscopy for dilatation and biopsy, combination diagnosis and therapeutic.
    */
   reasonReference?: Reference | undefined;
   /**
@@ -11934,6 +12725,7 @@ export interface Procedure extends DomainResource {
   /**
    * Any report resulting from the procedure
    * This could be a histology result, pathology report, surgical report, etc..
+   * There could potentially be multiple reports - e.g. if this was a procedure which took multiple biopsies resulting in a number of anatomical pathology reports.
    */
   report?: Reference[] | undefined;
   /**
@@ -11954,6 +12746,7 @@ export interface Procedure extends DomainResource {
   /**
    * Items used during procedure
    * Identifies medications, devices and any other substance used as part of the procedure.
+   * For devices actually implanted or removed, use Procedure.device.
    */
   used?: Reference[] | undefined;
 }
@@ -12009,6 +12802,7 @@ export interface ProcedureRequest extends DomainResource {
   /**
    * What part of body to perform on
    * Indicates the sites on the subject's body where the procedure should be performed (I.e. the target sites).
+   * Only used if not implicit in the code found in ProcedureRequest.type.
    */
   bodySite?: CodeableConcept[] | undefined;
   /**
@@ -12297,10 +13091,12 @@ export interface Provenance extends DomainResource {
   /**
    * Agents involved in creating resource
    * An agent takes a role in an activity such that the agent can be assigned some degree of responsibility for the activity taking place. An agent can be a person, an organization, software, or other entities that may be ascribed responsibility.
+   * Several agents may be associated (i.e. has some responsibility for an activity) with an activity and vice-versa.
    */
   agent?: ProvenanceAgent[] | undefined;
   /**
    * An entity used in this activity.
+   * Multiple userIds may be associated with the same Practitioner or other individual across various appearances, each with distinct privileges.
    */
   entity?: ProvenanceEntity[] | undefined;
   /**
@@ -12310,10 +13106,12 @@ export interface Provenance extends DomainResource {
   /**
    * When the activity occurred
    * The period during which the activity occurred.
+   * The period can be a little arbitrary; where possible, the time should correspond to human assessment of the activity time.
    */
   period?: Period | undefined;
   /**
    * Policy or plan the activity was defined by. Typically, a single activity may have multiple applicable policy documents, such as patient consent, guarantor funding, etc.
+   * For example: Where an OAuth token authorizes, the unique identifier from the OAuth token is placed into the policy element Where a policy engine (e.g. XACML) holds policy logic, the unique policy identifier is placed into the policy element.
    */
   policy?: string[] | undefined;
   _policy?: Element[] | undefined;
@@ -12325,6 +13123,7 @@ export interface Provenance extends DomainResource {
   /**
    * When the activity was recorded / updated
    * The instant of time at which the activity was recorded.
+   * This can be a little different from the time stamp on the resource if there is a delay between recording the event and updating the provenance and target resource.
    */
   recorded: string;
   _recorded?: Element | undefined;
@@ -12336,12 +13135,14 @@ export interface Provenance extends DomainResource {
   /**
    * Target Reference(s) (usually version specific)
    * The Reference(s) that were generated or updated by  the activity described in this resource. A provenance can point to more than one target if multiple resources were created/updated by the same activity.
+   * Target references are usually version specific, but may not be, if a version has not been assigned or if the provenance information is part of the set of resources being maintained (i.e. a document). When using the RESTful API, the identity of the resource may not be known (especially not the version specific one); the client may either submit the resource first, and then the provenance, or it may submit both using a single transaction. See the notes on transaction for further discussion.
    */
   target: Reference[];
 }
 /**
  * Agents involved in creating resource
  * An agent takes a role in an activity such that the agent can be assigned some degree of responsibility for the activity taking place. An agent can be a person, an organization, software, or other entities that may be ascribed responsibility.
+ * Several agents may be associated (i.e. has some responsibility for an activity) with an activity and vice-versa.
  */
 export interface ProvenanceAgent extends BackboneElement {
   /**
@@ -12357,6 +13158,7 @@ export interface ProvenanceAgent extends BackboneElement {
   /**
    * What the agents involvement was
    * The function of the agent with respect to the activity.
+   * For example, author, performer, enterer, attester, etc.
    */
   role: Coding;
   /**
@@ -12373,6 +13175,7 @@ export interface ProvenanceAgentRelatedAgent extends BackboneElement {
   /**
    * Reference to other agent in this resource by identifier
    * An internal reference to another agent listed in this provenance by its identifier.
+   * The uri has the form #[id] where [id] is on another Provenance.agent in this same resource.
    */
   target: string;
   _target?: Element | undefined;
@@ -12384,6 +13187,7 @@ export interface ProvenanceAgentRelatedAgent extends BackboneElement {
 }
 /**
  * An entity used in this activity.
+ * Multiple userIds may be associated with the same Practitioner or other individual across various appearances, each with distinct privileges.
  */
 export interface ProvenanceEntity extends BackboneElement {
   /**
@@ -12400,6 +13204,7 @@ export interface ProvenanceEntity extends BackboneElement {
   /**
    * Identity of entity
    * Identity of the  Entity used. May be a logical or physical uri and maybe absolute or relative.
+   * Identity may be a reference to a resource or to something else, depending on the type.
    */
   reference: string;
   _reference?: Element | undefined;
@@ -12429,6 +13234,7 @@ export interface Questionnaire extends DomainResource {
   /**
    * Grouped questions
    * A collection of related questions (or further groupings of questions).
+   * The Questionnaire itself has one "root" group with the actual contents of the Questionnaire.  Information on this root group applies to the questionnaire as a whole.
    */
   group: QuestionnaireGroup;
   /**
@@ -12450,6 +13256,7 @@ export interface Questionnaire extends DomainResource {
   /**
    * Resource that can be subject of QuestionnaireResponse
    * Identifies the types of subjects that can be the subject of the questionnaire.
+   * If none are specified, then the subject is unlimited.
    */
   subjectType?: ('Account'|'AllergyIntolerance'|'Appointment'|'AppointmentResponse'|'AuditEvent'|'Basic'|'Binary'|'BodySite'|'Bundle'|'CarePlan'|'Claim'|'ClaimResponse'|'ClinicalImpression'|'Communication'|'CommunicationRequest'|'Composition'|'ConceptMap'|'Condition'|'Conformance'|'Contract'|'Coverage'|'DataElement'|'DetectedIssue'|'Device'|'DeviceComponent'|'DeviceMetric'|'DeviceUseRequest'|'DeviceUseStatement'|'DiagnosticOrder'|'DiagnosticReport'|'DocumentManifest'|'DocumentReference'|'DomainResource'|'EligibilityRequest'|'EligibilityResponse'|'Encounter'|'EnrollmentRequest'|'EnrollmentResponse'|'EpisodeOfCare'|'ExplanationOfBenefit'|'FamilyMemberHistory'|'Flag'|'Goal'|'Group'|'HealthcareService'|'ImagingObjectSelection'|'ImagingStudy'|'Immunization'|'ImmunizationRecommendation'|'ImplementationGuide'|'List'|'Location'|'Media'|'Medication'|'MedicationAdministration'|'MedicationDispense'|'MedicationOrder'|'MedicationStatement'|'MessageHeader'|'NamingSystem'|'NutritionOrder'|'Observation'|'OperationDefinition'|'OperationOutcome'|'Order'|'OrderResponse'|'Organization'|'Parameters'|'Patient'|'PaymentNotice'|'PaymentReconciliation'|'Person'|'Practitioner'|'Procedure'|'ProcedureRequest'|'ProcessRequest'|'ProcessResponse'|'Provenance'|'Questionnaire'|'QuestionnaireResponse'|'ReferralRequest'|'RelatedPerson'|'Resource'|'RiskAssessment'|'Schedule'|'SearchParameter'|'Slot'|'Specimen'|'StructureDefinition'|'Subscription'|'Substance'|'SupplyDelivery'|'SupplyRequest'|'TestScript'|'ValueSet'|'VisionPrescription')[] | undefined;
   _subjectType?: Element[] | undefined;
@@ -12468,11 +13275,13 @@ export interface Questionnaire extends DomainResource {
 /**
  * Grouped questions
  * A collection of related questions (or further groupings of questions).
+ * The Questionnaire itself has one "root" group with the actual contents of the Questionnaire.  Information on this root group applies to the questionnaire as a whole.
  */
 export interface QuestionnaireGroup extends BackboneElement {
   /**
    * Concept that represents this section in a questionnaire
    * Identifies a how this group of questions is known in a particular terminology such as LOINC.
+   * The code(s) for the "root" group apply to the questionnaire as a whole.
    */
   concept?: Coding[] | undefined;
   /**
@@ -12483,6 +13292,7 @@ export interface QuestionnaireGroup extends BackboneElement {
   /**
    * To link questionnaire with questionnaire response
    * An identifier that is unique within the Questionnaire allowing linkage to the equivalent group in a QuestionnaireResponse resource.
+   * May be omitted if there is no expectation to link answers back to a questionnaire.  This ''can'' be a meaningful identifier (e.g. a LOINC code) but is not intended to have any meaning.  GUIDs or sequential numbers are appropriate here.
    */
   linkId?: string | undefined;
   _linkId?: Element | undefined;
@@ -12505,12 +13315,14 @@ export interface QuestionnaireGroup extends BackboneElement {
   _required?: Element | undefined;
   /**
    * Additional text for the group, used for display purposes.
+   * Common extensions are defined for more specialized types of display text.
    */
   text?: string | undefined;
   _text?: Element | undefined;
   /**
    * Name to be displayed for group
    * The human-readable name for this section of the questionnaire.
+   * The title of the "root" group is the title for the questionnaire.
    */
   title?: string | undefined;
   _title?: Element | undefined;
@@ -12533,6 +13345,7 @@ export interface QuestionnaireGroupQuestion extends BackboneElement {
   /**
    * To link questionnaire with questionnaire response
    * An identifier that is unique within the questionnaire allowing linkage to the equivalent group in a [[[QuestionnaireResponse]]] resource.
+   * May be omitted if there is no expectation to link answers back to a questionnaire.  This *can* be a meaningful identifier (e.g. a LOINC code) but is not intended to have any meaning.  GUIDs or sequential numbers are appropriate here.
    */
   linkId?: string | undefined;
   _linkId?: Element | undefined;
@@ -12544,11 +13357,13 @@ export interface QuestionnaireGroupQuestion extends BackboneElement {
   /**
    * Valueset containing permitted answers
    * Reference to a value set containing a list of codes representing permitted answers for the question.
+   * LOINC defines many useful value sets for questionnaire response. See [LOINC Answer Lists](loinc.html#alist).
    */
   options?: Reference | undefined;
   /**
    * Whether the question  can have multiple answers
    * If true, the question may have more than one answer.
+   * Whether the question itself will be displayed for each answer is a rendering choice typically based on whether there are nested groups.
    */
   repeats?: boolean | undefined;
   _repeats?: Element | undefined;
@@ -12561,11 +13376,13 @@ export interface QuestionnaireGroupQuestion extends BackboneElement {
   /**
    * Text of the question as it is shown to the user
    * The actual question as shown to the user to prompt them for an answer.
+   * Common extensions are defined for more specialized types of display text.
    */
   text?: string | undefined;
   _text?: Element | undefined;
   /**
    * The expected format of the answer, e.g. the type of input (string, integer) or whether a (multiple) choice is expected.
+   * Additional constraints on the type of answer can be conveyed by extensions.
    */
   type?: ('boolean'|'decimal'|'integer'|'date'|'dateTime'|'instant'|'time'|'string'|'text'|'url'|'choice'|'open-choice'|'attachment'|'reference'|'quantity') | undefined;
   _type?: Element | undefined;
@@ -12579,11 +13396,13 @@ export interface QuestionnaireResponse extends DomainResource {
   /**
    * Person who received and recorded the answers
    * Person who received the answers to the questions in the QuestionnaireResponse and recorded them in the system.
+   * Mapping a subject's answers to multiple choice options and determining what to put in the textual answer is a matter of interpretation.  Authoring by device would indicate that some portion of the questionnaire had been auto-populated.
    */
   author?: Reference | undefined;
   /**
    * Date this version was authored
    * The date and/or time that this version of the questionnaire response was authored.
+   * May be different from the update time of the resource itself, because that is the status of the collection and authoring.  This element is optional to allow for systems that may not know the value, however it SHOULD be populated if possible.
    */
   authored?: string | undefined;
   _authored?: Element | undefined;
@@ -12595,6 +13414,7 @@ export interface QuestionnaireResponse extends DomainResource {
   /**
    * Grouped questions
    * A group of questions to a possibly similarly grouped set of questions in the questionnaire response.
+   * The Questionnaire itself has one "root" group with the actual contents of the Questionnaire.
    */
   group?: QuestionnaireResponseGroup | undefined;
   /**
@@ -12609,6 +13429,7 @@ export interface QuestionnaireResponse extends DomainResource {
   questionnaire?: Reference | undefined;
   /**
    * The person who answered the questions about the subject.
+   * If not specified, no inference can be made about who provided the data.
    */
   source?: Reference | undefined;
   /**
@@ -12625,6 +13446,7 @@ export interface QuestionnaireResponse extends DomainResource {
 /**
  * Grouped questions
  * A group of questions to a possibly similarly grouped set of questions in the questionnaire response.
+ * The Questionnaire itself has one "root" group with the actual contents of the Questionnaire.
  */
 export interface QuestionnaireResponseGroup extends BackboneElement {
   /**
@@ -12656,6 +13478,7 @@ export interface QuestionnaireResponseGroup extends BackboneElement {
   /**
    * Name for this group
    * Text that is displayed above the contents of the group.
+   * On the root group, this is the title of the questionnaire.
    */
   title?: string | undefined;
   _title?: Element | undefined;
@@ -12668,6 +13491,7 @@ export interface QuestionnaireResponseGroupQuestion extends BackboneElement {
   /**
    * The response(s) to the question
    * The respondent's answer(s) to the question.
+   * The value is nested because we cannot have a repeating structure that has variable type.
    */
   answer?: QuestionnaireResponseGroupQuestionAnswer[] | undefined;
   /**
@@ -12686,6 +13510,7 @@ export interface QuestionnaireResponseGroupQuestion extends BackboneElement {
 /**
  * The response(s) to the question
  * The respondent's answer(s) to the question.
+ * The value is nested because we cannot have a repeating structure that has variable type.
  */
 export interface QuestionnaireResponseGroupQuestionAnswer extends BackboneElement {
   /**
@@ -12696,38 +13521,45 @@ export interface QuestionnaireResponseGroupQuestionAnswer extends BackboneElemen
   /**
    * Single-valued answer to the question
    * The answer (or one of the answers) provided by the respondent to the question.
+   * More complex structures (Attachment, Resource and Quantity) will typically be limited to electronic forms that can expose an appropriate user interface to capture the components and enforce the constraints of a complex data type.  Additional complex types can be introduced through extensions.
    */
   valueAttachment?: Attachment | undefined;
   /**
    * Single-valued answer to the question
    * The answer (or one of the answers) provided by the respondent to the question.
+   * More complex structures (Attachment, Resource and Quantity) will typically be limited to electronic forms that can expose an appropriate user interface to capture the components and enforce the constraints of a complex data type.  Additional complex types can be introduced through extensions.
    */
   valueBoolean?: boolean | undefined;
   _valueBoolean?: Element | undefined;
   /**
    * Single-valued answer to the question
    * The answer (or one of the answers) provided by the respondent to the question.
+   * More complex structures (Attachment, Resource and Quantity) will typically be limited to electronic forms that can expose an appropriate user interface to capture the components and enforce the constraints of a complex data type.  Additional complex types can be introduced through extensions.
    */
   valueCoding?: Coding | undefined;
   /**
    * Single-valued answer to the question
    * The answer (or one of the answers) provided by the respondent to the question.
+   * More complex structures (Attachment, Resource and Quantity) will typically be limited to electronic forms that can expose an appropriate user interface to capture the components and enforce the constraints of a complex data type.  Additional complex types can be introduced through extensions.
    */
   valueString?: string | undefined;
   _valueString?: Element | undefined;
   /**
    * Single-valued answer to the question
    * The answer (or one of the answers) provided by the respondent to the question.
+   * More complex structures (Attachment, Resource and Quantity) will typically be limited to electronic forms that can expose an appropriate user interface to capture the components and enforce the constraints of a complex data type.  Additional complex types can be introduced through extensions.
    */
   valueNumber?: number | undefined;
   /**
    * Single-valued answer to the question
    * The answer (or one of the answers) provided by the respondent to the question.
+   * More complex structures (Attachment, Resource and Quantity) will typically be limited to electronic forms that can expose an appropriate user interface to capture the components and enforce the constraints of a complex data type.  Additional complex types can be introduced through extensions.
    */
   valueQuantity?: Quantity | undefined;
   /**
    * Single-valued answer to the question
    * The answer (or one of the answers) provided by the respondent to the question.
+   * More complex structures (Attachment, Resource and Quantity) will typically be limited to electronic forms that can expose an appropriate user interface to capture the components and enforce the constraints of a complex data type.  Additional complex types can be introduced through extensions.
    */
   valueReference?: Reference | undefined;
 }
@@ -12772,6 +13604,7 @@ export interface ReferralRequest extends DomainResource {
   /**
    * Patient referred to care or transfer
    * The patient who is the subject of a referral or transfer of care request.
+   * Referral of family, group or community is to be catered for by profiles.
    */
   patient?: Reference | undefined;
   /**
@@ -12787,6 +13620,7 @@ export interface ReferralRequest extends DomainResource {
   /**
    * Receiver of referral / transfer of care request
    * The healthcare provider(s) or provider organization(s) who/which is to receive the referral/transfer of care request.
+   * There will be a primary receiver. But the request can be received by any number of "copied to" providers or organizations.
    */
   recipient?: Reference[] | undefined;
   /**
@@ -12817,6 +13651,7 @@ export interface ReferralRequest extends DomainResource {
   /**
    * Referral/Transition of care request type
    * An indication of the type of referral (or where applicable the type of transfer of care) request.
+   * Examples of referral type: - consultation;         second opinion;          third opinion - Assume management - Request for procedure(s)  HL7 v2.8 Example - Table 0336: S = second opinion p = patient preference o = provider ordered w = work load.
    */
   type?: CodeableConcept | undefined;
 }
@@ -12868,6 +13703,7 @@ export interface RelatedPerson extends DomainResource {
   relationship?: CodeableConcept | undefined;
   /**
    * A contact detail for the person, e.g. a telephone number or an email address.
+   * Person may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently, and also to help with identification.
    */
   telecom?: ContactPoint[] | undefined;
 }
@@ -12880,18 +13716,21 @@ export interface Resource {
   /**
    * Logical id of this artifact
    * The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.
+   * The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.
    */
   id?: string | undefined;
   _id?: Element | undefined;
   /**
    * A set of rules under which this content was created
    * A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content.
+   * Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible.
    */
   implicitRules?: string | undefined;
   _implicitRules?: Element | undefined;
   /**
    * Language of the resource content
    * The base language in which the resource is written.
+   * Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).
    */
   language?: string | undefined;
   _language?: Element | undefined;
@@ -12952,6 +13791,7 @@ export interface RiskAssessment extends DomainResource {
   /**
    * Outcome predicted
    * Describes the expected outcome for the subject.
+   * Multiple repetitions can be used to identify the same type of outcome in different timeframes as well as different types of outcomes.
    */
   prediction?: RiskAssessmentPrediction[] | undefined;
   /**
@@ -12963,6 +13803,7 @@ export interface RiskAssessment extends DomainResource {
 /**
  * Outcome predicted
  * Describes the expected outcome for the subject.
+ * Multiple repetitions can be used to identify the same type of outcome in different timeframes as well as different types of outcomes.
  */
 export interface RiskAssessmentPrediction extends BackboneElement {
   /**
@@ -12973,16 +13814,19 @@ export interface RiskAssessmentPrediction extends BackboneElement {
   /**
    * Likelihood of specified outcome
    * How likely is the outcome (in the specified timeframe).
+   * If range is used, it represents the lower and upper bounds of certainty; e.g. 40-60%  Decimal values are expressed as percentages as well (max = 100).
    */
   probabilityCodeableConcept?: CodeableConcept | undefined;
   /**
    * Likelihood of specified outcome
    * How likely is the outcome (in the specified timeframe).
+   * If range is used, it represents the lower and upper bounds of certainty; e.g. 40-60%  Decimal values are expressed as percentages as well (max = 100).
    */
   probabilityNumber?: number | undefined;
   /**
    * Likelihood of specified outcome
    * How likely is the outcome (in the specified timeframe).
+   * If range is used, it represents the lower and upper bounds of certainty; e.g. 40-60%  Decimal values are expressed as percentages as well (max = 100).
    */
   probabilityRange?: Range | undefined;
   /**
@@ -12999,11 +13843,13 @@ export interface RiskAssessmentPrediction extends BackboneElement {
   /**
    * Timeframe or age range
    * Indicates the period of time or age range of the subject to which the specified probability applies.
+   * If not specified, the risk applies "over the subject's lifespan".
    */
   whenPeriod?: Period | undefined;
   /**
    * Timeframe or age range
    * Indicates the period of time or age range of the subject to which the specified probability applies.
+   * If not specified, the risk applies "over the subject's lifespan".
    */
   whenRange?: Range | undefined;
 }
@@ -13050,17 +13896,20 @@ export interface SearchParameter extends DomainResource {
   /**
    * Code used in URL
    * The code used in the URL or the parameter name in a parameters resource for this search parameter.
+   * For maximum compatibility, use only lowercase ASCII characters.
    */
   code: string;
   _code?: Element | undefined;
   /**
    * Contact details of the publisher
    * Contacts to assist a user in finding and communicating with the publisher.
+   * May be a web site, an email address, a telephone number (tel:), etc.
    */
   contact?: SearchParameterContact[] | undefined;
   /**
    * Publication Date(/time)
    * The date  (and optionally time) when the search parameter definition was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the search parameter changes.
+   * Additional specific dates may be added as extensions.
    */
   date?: string | undefined;
   _date?: Element | undefined;
@@ -13073,18 +13922,21 @@ export interface SearchParameter extends DomainResource {
   /**
    * If for testing purposes, not real usage
    * A flag to indicate that this search parameter definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+   * Allows filtering of search parameter definitions that are appropriate for use vs. not.
    */
   experimental?: boolean | undefined;
   _experimental?: Element | undefined;
   /**
    * Informal name for this search parameter
    * A free text natural language name identifying the search parameter.
+   * This is often the same as the code for the parameter, but does not need to be.
    */
   name: string;
   _name?: Element | undefined;
   /**
    * Name of the publisher (Organization or individual)
    * The name of the individual or organization that published the search parameter.
+   * Usually an organization, but may be an individual. This item SHOULD be populated unless the information is available from context.
    */
   publisher?: string | undefined;
   _publisher?: Element | undefined;
@@ -13096,6 +13948,7 @@ export interface SearchParameter extends DomainResource {
   _requirements?: Element | undefined;
   /**
    * The status of this search parameter definition.
+   * This is not intended for use with actual conformance statements, but where conformance statements are used to describe possible or desired systems.
    */
   status?: ('draft'|'active'|'retired') | undefined;
   _status?: Element | undefined;
@@ -13119,6 +13972,7 @@ export interface SearchParameter extends DomainResource {
   /**
    * XPath that extracts the values
    * An XPath expression that returns a set of elements for the search parameter.
+   * Note that the elements returned by the XPath are sometimes complex elements where logic is required to determine quite how to handle them; e.g. CodeableConcepts may contain text and/or multiple codings, where the codings themselves contain a code and a system.
    */
   xpath?: string | undefined;
   _xpath?: Element | undefined;
@@ -13131,11 +13985,13 @@ export interface SearchParameter extends DomainResource {
 /**
  * Contact details of the publisher
  * Contacts to assist a user in finding and communicating with the publisher.
+ * May be a web site, an email address, a telephone number (tel:), etc.
  */
 export interface SearchParameterContact extends BackboneElement {
   /**
    * Name of a individual to contact
    * The name of an individual to contact regarding the search parameter.
+   * If there is no named individual, the telecom is for the organization as a whole.
    */
   name?: string | undefined;
   _name?: Element | undefined;
@@ -13218,6 +14074,7 @@ export interface Specimen extends DomainResource {
   /**
    * Specimen from which this specimen originated
    * Reference to the parent (source) specimen which is used when the specimen was either derived from or a component of another specimen.
+   * The parent specimen could be the source from which the current specimen is derived by some processing step (e.g. an aliquot or isolate or extracted nucleic acids from clinical samples) or one of many specimens that were combined to create a pooled sample.
    */
   parent?: Reference[] | undefined;
   /**
@@ -13243,6 +14100,7 @@ export interface Specimen extends DomainResource {
   /**
    * Kind of material that forms the specimen
    * The kind of material that forms the specimen.
+   * The type can change the way that a specimen is handled, and drives what kind of analyses can properly be performed on the specimen. It is frequently used in diagnostic work flow decision making systems.
    */
   type?: CodeableConcept | undefined;
 }
@@ -13254,6 +14112,7 @@ export interface SpecimenCollection extends BackboneElement {
   /**
    * Anatomical collection site
    * Anatomical location from which the specimen was collected (if subject is a patient). This is the target site.  This element is not used for environmental specimens.
+   * If the use case requires  BodySite to be handled as a separate resource instead of an inline coded element (e.g. to identify and track separately)  then use the standard extension [body-site-instance](extension-body-site-instance.html).
    */
   bodySite?: CodeableConcept | undefined;
   /**
@@ -13358,12 +14217,14 @@ export interface StructureDefinition extends DomainResource {
   /**
    * Whether the structure is abstract
    * Whether structure this definition describes is abstract or not  - that is, whether an actual exchanged item can ever be of this type.
+   * Abstract Resources cannot be instantiated - a concrete sub-type must be used. Abstract datatypes and extensions cannot be used in an instance. Flagging a constraint structure as abstract conveys design intent but makes no difference to how the structure definition is handled. Note that inline declared elements that are given the type "Element" in the profile, but have children described, are anonymous concrete types that specialise Element. Abstract is not relevant for logical models.
    */
   abstract: boolean;
   _abstract?: Element | undefined;
   /**
    * Structure that this set of constraints applies to
    * An absolute URI that is the base structure from which this set of constraints is derived.
+   * If differential constraints are specified in this structure, they are applied to the base in a "differential" fashion. If there is no base, then the differential constraints cannot be provided (snapshot only). Differential structures are useful for the editing perspective, and snapshot structures are suitable for operational use. The FHIR Project provides a number of tools/services to populate snapshots from differential constraints. Logical Models have a base of "Element" or another logical model.
    */
   base?: string | undefined;
   _base?: Element | undefined;
@@ -13375,17 +14236,20 @@ export interface StructureDefinition extends DomainResource {
   /**
    * Any datatype or resource, including abstract ones
    * The type of type that is being constrained - a data type, an extension, a resource, including abstract ones. If this field is present, it indicates that the structure definition is a constraint. If it is not present, then the structure definition is the definition of a base structure.
+   * if a constrained type is present, then there SHALL be a base resource as well. Note that the constrained type could be determined by chasing through the base references until the base definition is reached, or by looking at the path of the first element in the snapshot - if present - but providing the constrainedType directly makes for simpler tooling and indexing.
    */
   constrainedType?: ('Address'|'Age'|'Annotation'|'Attachment'|'BackboneElement'|'CodeableConcept'|'Coding'|'ContactPoint'|'Count'|'Distance'|'Duration'|'Element'|'ElementDefinition'|'Extension'|'HumanName'|'Identifier'|'Meta'|'Money'|'Narrative'|'Period'|'Quantity'|'Range'|'Ratio'|'Reference'|'SampledData'|'Signature'|'SimpleQuantity'|'Timing'|'base64Binary'|'boolean'|'code'|'date'|'dateTime'|'decimal'|'id'|'instant'|'integer'|'markdown'|'oid'|'positiveInt'|'string'|'time'|'unsignedInt'|'uri'|'uuid'|'xhtml'|'Account'|'AllergyIntolerance'|'Appointment'|'AppointmentResponse'|'AuditEvent'|'Basic'|'Binary'|'BodySite'|'Bundle'|'CarePlan'|'Claim'|'ClaimResponse'|'ClinicalImpression'|'Communication'|'CommunicationRequest'|'Composition'|'ConceptMap'|'Condition'|'Conformance'|'Contract'|'Coverage'|'DataElement'|'DetectedIssue'|'Device'|'DeviceComponent'|'DeviceMetric'|'DeviceUseRequest'|'DeviceUseStatement'|'DiagnosticOrder'|'DiagnosticReport'|'DocumentManifest'|'DocumentReference'|'DomainResource'|'EligibilityRequest'|'EligibilityResponse'|'Encounter'|'EnrollmentRequest'|'EnrollmentResponse'|'EpisodeOfCare'|'ExplanationOfBenefit'|'FamilyMemberHistory'|'Flag'|'Goal'|'Group'|'HealthcareService'|'ImagingObjectSelection'|'ImagingStudy'|'Immunization'|'ImmunizationRecommendation'|'ImplementationGuide'|'List'|'Location'|'Media'|'Medication'|'MedicationAdministration'|'MedicationDispense'|'MedicationOrder'|'MedicationStatement'|'MessageHeader'|'NamingSystem'|'NutritionOrder'|'Observation'|'OperationDefinition'|'OperationOutcome'|'Order'|'OrderResponse'|'Organization'|'Parameters'|'Patient'|'PaymentNotice'|'PaymentReconciliation'|'Person'|'Practitioner'|'Procedure'|'ProcedureRequest'|'ProcessRequest'|'ProcessResponse'|'Provenance'|'Questionnaire'|'QuestionnaireResponse'|'ReferralRequest'|'RelatedPerson'|'Resource'|'RiskAssessment'|'Schedule'|'SearchParameter'|'Slot'|'Specimen'|'StructureDefinition'|'Subscription'|'Substance'|'SupplyDelivery'|'SupplyRequest'|'TestScript'|'ValueSet'|'VisionPrescription') | undefined;
   _constrainedType?: Element | undefined;
   /**
    * Contact details of the publisher
    * Contacts to assist a user in finding and communicating with the publisher.
+   * May be a web site, an email address, a telephone number (tel:), etc.
    */
   contact?: StructureDefinitionContact[] | undefined;
   /**
    * Where the extension can be used in instances
    * Identifies the types of resource or data type elements to which the extension can be applied.
+   * If the context is an element that can have multiple types, then use (e.g.) value[x] if the extension works on all choice types, or otherwise an enumeration of explicitly named elements if not. Note that a context of "string" doesn't mean that the extension can be used with one of the string patterns such as "id" etc.
    */
   context?: string[] | undefined;
   _context?: Element[] | undefined;
@@ -13403,12 +14267,14 @@ export interface StructureDefinition extends DomainResource {
   /**
    * Date for this version of the StructureDefinition
    * The date this version of the structure definition was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the structure definition changes.
+   * Additional specific dates may be added as extensions.
    */
   date?: string | undefined;
   _date?: Element | undefined;
   /**
    * Natural language description of the StructureDefinition
    * A free text natural language description of the StructureDefinition and its use.
+   * This field can be used for things such as why the StructureDefinition was written, comments about misuse, instructions for clinical use and interpretation, literature references, examples from the paper world, etc.  It is *not* a rendering of the StructureDefinition as conveyed in StructureDefinition.text. This item SHOULD be populated unless the information is available from context.
    */
   description?: string | undefined;
   _description?: Element | undefined;
@@ -13420,6 +14286,7 @@ export interface StructureDefinition extends DomainResource {
   /**
    * Use this name when displaying the value
    * Defined so that applications can use this name when displaying the value of the extension to the user.
+   * Applications don't have to use this name, but can always fall back to it. In the absence of a value for this element, use the name.
    */
   display?: string | undefined;
   _display?: Element | undefined;
@@ -13432,6 +14299,7 @@ export interface StructureDefinition extends DomainResource {
   /**
    * FHIR Version this StructureDefinition targets
    * The version of the FHIR specification on which this StructureDefinition is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 1.0.2 for this version.
+   * A StructureDefinition does not need to specify the target it applies to,as StructureDefinitions will often be valid across multiple versions of FHIR. FHIR tooling can determine whether a StructureDefinition is consistent with a particular StructureDefinition if desired.
    */
   fhirVersion?: string | undefined;
   _fhirVersion?: Element | undefined;
@@ -13453,18 +14321,21 @@ export interface StructureDefinition extends DomainResource {
   /**
    * Informal name for this StructureDefinition
    * A free text natural language name identifying the StructureDefinition.
+   * Not expected to be globally unique.
    */
   name: string;
   _name?: Element | undefined;
   /**
    * Name of the publisher (Organization or individual)
    * The name of the individual or organization that published the structure definition.
+   * Usually an organization, but may be an individual. This item SHOULD be populated unless the information is available from context.
    */
   publisher?: string | undefined;
   _publisher?: Element | undefined;
   /**
    * Scope and Usage this structure definition is for
    * Explains why this structure definition is needed and why it's been constrained as it has.
+   * This element does not describe the usage of the structure definition (that's done in comments), rather it's for traceability of *why* the element is either needed or why the constraints exist as they do.  This may be used to point to source materials or specifications that drove the structure of this data element.
    */
   requirements?: string | undefined;
   _requirements?: Element | undefined;
@@ -13499,11 +14370,13 @@ export interface StructureDefinition extends DomainResource {
 /**
  * Contact details of the publisher
  * Contacts to assist a user in finding and communicating with the publisher.
+ * May be a web site, an email address, a telephone number (tel:), etc.
  */
 export interface StructureDefinitionContact extends BackboneElement {
   /**
    * Name of a individual to contact
    * The name of an individual to contact regarding the structure definition.
+   * If there is no named individual, the telecom is for the organization as a whole.
    */
   name?: string | undefined;
   _name?: Element | undefined;
@@ -13538,6 +14411,7 @@ export interface StructureDefinitionMapping extends BackboneElement {
   /**
    * Internal id when this mapping is used
    * An Internal id that is used to identify this mapping set when specific mappings are made.
+   * The specification is described once, with general comments, and then specific mappings are made that reference this declaration.
    */
   identity: string;
   _identity?: Element | undefined;
@@ -13550,6 +14424,7 @@ export interface StructureDefinitionMapping extends BackboneElement {
   /**
    * Identifies what this mapping refers to
    * An absolute URI that identifies the specification that this mapping is expressed to.
+   * A formal identity for the specification being mapped to helps with identifying maps consistently.
    */
   uri?: string | undefined;
   _uri?: Element | undefined;
@@ -13584,12 +14459,14 @@ export interface Subscription extends DomainResource {
   /**
    * Rule for server push criteria
    * The rules that the server should use to determine when to generate notifications for this subscription.
+   * The rules are a search criteria (without the [base] part). Like Bundle.entry.request.url, it has no leading "/".
    */
   criteria: string;
   _criteria?: Element | undefined;
   /**
    * When to automatically delete the subscription
    * The time for the server to turn the subscription off.
+   * The server is permitted to deviate from this time, but should observe it.
    */
   end?: string | undefined;
   _end?: Element | undefined;
@@ -13607,12 +14484,14 @@ export interface Subscription extends DomainResource {
   _reason?: Element | undefined;
   /**
    * The status of the subscription, which marks the server state for managing the subscription.
+   * A client can only submit subscription resources in the requested or off state. Only the server can  move a subscription from requested to active, and then to error. Either the server or the client can turn a subscription off.
    */
   status: ('requested'|'active'|'error'|'off');
   _status?: Element | undefined;
   /**
    * A tag to add to matching resources
    * A tag to add to any resource that matches the criteria, after the subscription is processed.
+   * So that other systems can tell which resources have been the subject of a notification.
    */
   tag?: Coding[] | undefined;
 }
@@ -13624,18 +14503,21 @@ export interface SubscriptionChannel extends BackboneElement {
   /**
    * Where the channel points to
    * The uri that describes the actual end-point to send messages to.
+   * For rest-hook, and websocket, the end-point must be an http: or https: URL; for email, a mailto: url, for sms, a tel: url, and for message the endpoint can be in any form of url the server understands (usually, http: or mllp:). The URI is allowed to be relative; in which case, it is relative to the server end-point (since their may be more than one, clients should avoid using relative URIs).
    */
   endpoint?: string | undefined;
   _endpoint?: Element | undefined;
   /**
    * Usage depends on the channel type
    * Additional headers / information to send as part of the notification.
+   * Exactly what these mean depend on the channel type. The can convey additional information to the recipient and/or meet security requirements.
    */
   header?: string | undefined;
   _header?: Element | undefined;
   /**
    * Mimetype to send, or blank for no payload
    * The mime type to send the payload in - either application/xml+fhir, or application/json+fhir. If the mime type is blank, then there is no payload in the notification, just a notification.
+   * Sending the payload has obvious security consequences. The server is responsible for ensuring that the content is appropriately secured.
    */
   payload: string;
   _payload?: Element | undefined;
@@ -13654,11 +14536,13 @@ export interface Substance extends DomainResource {
   /**
    * What class/type of substance this is
    * A code that classifies the general type of substance.  This is used  for searching, sorting and display purposes.
+   * The level of granularity is defined by the category concepts in the value set.   More fine-grained filtering can be performed using the metadata and/or terminology hierarchy in Substance.code.
    */
   category?: CodeableConcept[] | undefined;
   /**
    * What substance this is
    * A code (or set of codes) that identify this substance.
+   * This could be a reference to an externally defined code.  It could also be a locally assigned code (e.g. a formulary),  optionally with translations to the standard drug codes.
    */
   code: CodeableConcept;
   /**
@@ -13669,6 +14553,7 @@ export interface Substance extends DomainResource {
   _description?: Element | undefined;
   /**
    * Unique identifier for the substance.
+   * This identifier is associated with the kind of substance in contrast to the  Substance.instance.identifier which is associated with the package/container.
    */
   identifier?: Identifier[] | undefined;
   /**
@@ -13734,6 +14619,7 @@ export interface SupplyDelivery extends DomainResource {
   /**
    * External identifier
    * Identifier assigned by the dispensing facility when the item(s) is dispensed.
+   * This is assigned by the dispenser, and used to refer to this order in other external standards.
    */
   identifier?: Identifier | undefined;
   /**
@@ -13796,6 +14682,7 @@ export interface SupplyRequest extends DomainResource {
   _date?: Element | undefined;
   /**
    * Unique identifier for this supply request.
+   * This is assigned by the orderer, and used to refer to this order in other external standards.
    */
   identifier?: Identifier | undefined;
   /**
@@ -13806,6 +14693,7 @@ export interface SupplyRequest extends DomainResource {
   /**
    * Medication, Substance, or Device requested to be supplied
    * The item that is requested to be supplied.
+   * Note that there's a difference between a prescription - an instruction to take a medication, along with a (sometimes) implicit supply, and an explicit request to supply, with no explicit instructions.
    */
   orderedItem?: Reference | undefined;
   /**
@@ -13847,6 +14735,7 @@ export interface SupplyRequestWhen extends BackboneElement {
   /**
    * Fulfilment code
    * Code indicating when the request should be fulfilled.
+   * Code may simply be a priority code.
    */
   code?: CodeableConcept | undefined;
   /**
@@ -13863,6 +14752,7 @@ export interface TestScript extends DomainResource {
   /**
    * Contact details of the publisher
    * Contacts to assist a user in finding and communicating with the publisher.
+   * May be a web site, an email address, a telephone number (tel:), etc.
    */
   contact?: TestScriptContact[] | undefined;
   /**
@@ -13874,12 +14764,14 @@ export interface TestScript extends DomainResource {
   /**
    * Date for this version of the TestScript
    * The date this version of the test tcript was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the test cases change.
+   * Additional specific dates may be added as extensions.
    */
   date?: string | undefined;
   _date?: Element | undefined;
   /**
    * Natural language description of the TestScript
    * A free text natural language description of the TestScript and its use.
+   * This field can be used for things such as why the TestScript was written, comments about misuse, instructions for clinical use and interpretation, literature references, examples from the paper world, etc.  It is *not* a rendering of the TestScript as conveyed in TestScript.text. This item SHOULD be populated unless the information is available from context.
    */
   description?: string | undefined;
   _description?: Element | undefined;
@@ -13912,23 +14804,27 @@ export interface TestScript extends DomainResource {
   /**
    * Informal name for this TestScript
    * A free text natural language name identifying the TestScript.
+   * Not expected to be globally unique.
    */
   name: string;
   _name?: Element | undefined;
   /**
    * Reference of the validation profile
    * Reference to the profile to be used for validation.
+   * See http://hl7-fhir.github.io/resourcelist.html for complete list of resource types.
    */
   profile?: Reference[] | undefined;
   /**
    * Name of the publisher (Organization or individual)
    * The name of the individual or organization that published the Test Script.
+   * Usually an organization, but may be an individual. This item SHOULD be populated unless the information is available from context.
    */
   publisher?: string | undefined;
   _publisher?: Element | undefined;
   /**
    * Scope and Usage this Test Script is for
    * Explains why this Test Script is needed and why it's been constrained as it has.
+   * This element does not describe the usage of the Test Script (that's done in comments), rather it's for traceability of *why* the element is either needed or why the constraints exist as they do.  This may be used to point to source materials or specifications that drove the structure of this data element.
    */
   requirements?: string | undefined;
   _requirements?: Element | undefined;
@@ -13964,6 +14860,7 @@ export interface TestScript extends DomainResource {
   /**
    * Placeholder for evaluated elements
    * Variable is set based either on element value in response body or on header field value in the response headers.
+   * Variables would be set based either on XPath/JsonPath expressions against fixtures (static and response), or headerField evaluations against response headers. If variable evaluates to nodelist or anything other than a primitive value, then test engine would report error.  Variables would be used to perform clean replacements in "operation.params", "operation.requestHeader.value", and "operation.url" element values during operation calls and in "assert.value" during assertion evaluations. This limits the places that test engines would need to look for placeholders "${}".  Variables are scoped to the whole script. They are NOT evaluated at declaration. They are evaluated by test engine when used for substitutions in "operation.params", "operation.requestHeader.value", and "operation.url" element values during operation calls and in "assert.value" during assertion evaluations.  See example testscript-search.xml.
    */
   variable?: TestScriptVariable[] | undefined;
   /**
@@ -13976,11 +14873,13 @@ export interface TestScript extends DomainResource {
 /**
  * Contact details of the publisher
  * Contacts to assist a user in finding and communicating with the publisher.
+ * May be a web site, an email address, a telephone number (tel:), etc.
  */
 export interface TestScriptContact extends BackboneElement {
   /**
    * Name of a individual to contact
    * The name of an individual to contact regarding the Test Script.
+   * If there is no named individual, the telecom is for the organization as a whole.
    */
   name?: string | undefined;
   _name?: Element | undefined;
@@ -14007,6 +14906,7 @@ export interface TestScriptFixture extends BackboneElement {
   /**
    * Reference of the resource
    * Reference to the resource (containing the contents of the resource needed for operations).
+   * See http://hl7-fhir.github.io/resourcelist.html for complete list of resource types.
    */
   resource?: Reference | undefined;
 }
@@ -14018,6 +14918,7 @@ export interface TestScriptMetadata extends BackboneElement {
   /**
    * Capabilities  that are assumed to function correctly on the FHIR server being tested
    * Capabilities that must exist and are assumed to function correctly on the FHIR server being tested.
+   * When the metadata capabilities section is defined at TestScript.metadata or at TestScript.setup.metadata, and the server's conformance statement does not contain the elements defined in the minimal conformance statement, then all the tests in the TestScript are skipped.  When the metadata capabilities section is defined at TestScript.test.metadata and the server's conformance statement does not contain the elements defined in the minimal conformance statement, then only that test is skipped.  The "metadata.capabilities.required" and "metadata.capabilities.validated" elements only indicate whether the capabilities are the primary focus of the test script or not.  The do not impact the skipping logic.  Capabilities whose "metadata.capabilities.validated" flag is true are the primary focus of the test script.
    */
   capability: TestScriptMetadataCapability[];
   /**
@@ -14029,11 +14930,13 @@ export interface TestScriptMetadata extends BackboneElement {
 /**
  * Capabilities  that are assumed to function correctly on the FHIR server being tested
  * Capabilities that must exist and are assumed to function correctly on the FHIR server being tested.
+ * When the metadata capabilities section is defined at TestScript.metadata or at TestScript.setup.metadata, and the server's conformance statement does not contain the elements defined in the minimal conformance statement, then all the tests in the TestScript are skipped.  When the metadata capabilities section is defined at TestScript.test.metadata and the server's conformance statement does not contain the elements defined in the minimal conformance statement, then only that test is skipped.  The "metadata.capabilities.required" and "metadata.capabilities.validated" elements only indicate whether the capabilities are the primary focus of the test script or not.  The do not impact the skipping logic.  Capabilities whose "metadata.capabilities.validated" flag is true are the primary focus of the test script.
  */
 export interface TestScriptMetadataCapability extends BackboneElement {
   /**
    * Required Conformance
    * Minimum conformance required of server for test script to execute successfully.   If server does not meet at a minimum the reference conformance definition, then all tests in this script are skipped.
+   * The conformance statement of the server has to contain at a minimum the contents of the reference pointed to by this element.
    */
   conformance: Reference;
   /**
@@ -14088,6 +14991,7 @@ export interface TestScriptSetup extends BackboneElement {
   /**
    * A setup operation or assert to perform
    * Action would contain either an operation or an assertion.
+   * An action should contain either an operation or an assertion but not both.  It can contain any number of variables.
    */
   action: TestScriptSetupAction[];
   /**
@@ -14099,11 +15003,13 @@ export interface TestScriptSetup extends BackboneElement {
 /**
  * A setup operation or assert to perform
  * Action would contain either an operation or an assertion.
+ * An action should contain either an operation or an assertion but not both.  It can contain any number of variables.
  */
 export interface TestScriptSetupAction extends BackboneElement {
   /**
    * The assertion to perform
    * Evaluates the results of previous operations to determine if the server under test behaves appropriately.
+   * In order to evaluate an assertion, the request, response, and results of the most recently executed operation must always be maintained by the test engine.
    */
   assert?: TestScriptSetupActionAssert | undefined;
   /**
@@ -14115,27 +15021,32 @@ export interface TestScriptSetupAction extends BackboneElement {
 /**
  * The assertion to perform
  * Evaluates the results of previous operations to determine if the server under test behaves appropriately.
+ * In order to evaluate an assertion, the request, response, and results of the most recently executed operation must always be maintained by the test engine.
  */
 export interface TestScriptSetupActionAssert extends BackboneElement {
   /**
    * Id of fixture used to compare the "sourceId/path" evaluations to.
+   * The id of the fixture used to make comparisons to.
    */
   compareToSourceId?: string | undefined;
   _compareToSourceId?: Element | undefined;
   /**
    * XPath or JSONPath expression against fixture used to compare the "sourceId/path" evaluations to.
+   * The XPath or JSONPath expression to be evaluated against the expected fixture to compare to. Ignored if "assert.value" is used. The evaluation will be done before the assertion is evaluated.
    */
   compareToSourcePath?: string | undefined;
   _compareToSourcePath?: Element | undefined;
   /**
    * xml | json
    * The content-type or mime-type to use for RESTful operation in the 'Content-Type' header.
+   * If this is specified, then test engine shall confirm that the content-type of the last operation's headers is set to this value.  If "assert.sourceId" element is specified, then the evaluation will be done against the headers mapped to that sourceId (and not the last operation's headers).    If 'xml' is specified, then 'Content-Type' header of 'application/xml+fhir' will be confirmed. If 'json' is specified, then 'application/json+fhir' will be used. If you'd like to have more control over the string, then use 'assert.headerField' instead.
    */
   contentType?: ('xml'|'json') | undefined;
   _contentType?: Element | undefined;
   /**
    * Tracking/reporting assertion description
    * The description would be used by test engines for tracking and reporting purposes.
+   * This has no impact on the verification itself.
    */
   description?: string | undefined;
   _description?: Element | undefined;
@@ -14148,75 +15059,88 @@ export interface TestScriptSetupActionAssert extends BackboneElement {
   /**
    * HTTP header field name
    * The HTTP header field name e.g. 'Location'.
+   * If "headerField" is specified then "value" must be specified.  If "sourceId" is not specified, then "headerField" will be evaluated against the last operation's response headers.  Test engines are to keep track of the last operation's response body and response headers.
    */
   headerField?: string | undefined;
   _headerField?: Element | undefined;
   /**
    * Tracking/logging assertion label
    * The label would be used for tracking/logging purposes by test engines.
+   * This has no impact on the verification itself.
    */
   label?: string | undefined;
   _label?: Element | undefined;
   /**
    * Fixture Id of minimum content resource
    * The ID of a fixture.  Asserts that the response contains at a minimumId the fixture specified by minimumId.
+   * Asserts that the response contains all the element/content in another fixture pointed to by minimumId.  This can be a statically defined fixture or one that is dynamically set via responseId.
    */
   minimumId?: string | undefined;
   _minimumId?: Element | undefined;
   /**
    * Perform validation on navigation links?
    * Whether or not the test execution performs validation on the bundle navigation links.
+   * Asserts that the Bundle contains first, last, and next links.
    */
   navigationLinks?: boolean | undefined;
   _navigationLinks?: Element | undefined;
   /**
    * The operator type.
+   * Operators come handy especially for negative testing.  If operator is not specified, then the "equals" operator is assumed; e.g. <code>   <assert>  <operator value="in" />  <responseCode value="200,201,204" />    </assert>    <assert>  <operator value="notEquals" />  <response value="okay"/>   </assert>    <assert>  <operator value="greaterThan" />    <responseHeader>     <field value="Content-Length" />     <value value="0" />    <responseHeader>   </assert> </code>.
    */
   operator?: ('equals'|'notEquals'|'in'|'notIn'|'greaterThan'|'lessThan'|'empty'|'notEmpty'|'contains'|'notContains') | undefined;
   _operator?: Element | undefined;
   /**
    * XPath or JSONPath expression
    * The XPath or JSONPath expression to be evaluated against the fixture representing the response received from server.
+   * If both "path" and "fixtureId" are specified, then the path will be evaluated against the responseBody mapped to the fixtureId.  If "path" is specified and "fixtureId" is not, then the path will be evaluated against the responseBody of the last operation.  Test engines are to store the response body and headers of the last operation at all times for subsequent assertions.
    */
   path?: string | undefined;
   _path?: Element | undefined;
   /**
    * Resource type
    * The type of the resource.  See http://hl7-fhir.github.io/resourcelist.html.
+   * This will be expected resource type in response body e.g. in read, vread, search, etc.  See http://hl7-fhir.github.io/resourcelist.html for complete list of resource types; e.g. <assert > <resourceType value="Patient" </assert>.
    */
   resource?: ('Address'|'Age'|'Annotation'|'Attachment'|'BackboneElement'|'CodeableConcept'|'Coding'|'ContactPoint'|'Count'|'Distance'|'Duration'|'Element'|'ElementDefinition'|'Extension'|'HumanName'|'Identifier'|'Meta'|'Money'|'Narrative'|'Period'|'Quantity'|'Range'|'Ratio'|'Reference'|'SampledData'|'Signature'|'SimpleQuantity'|'Timing'|'base64Binary'|'boolean'|'code'|'date'|'dateTime'|'decimal'|'id'|'instant'|'integer'|'markdown'|'oid'|'positiveInt'|'string'|'time'|'unsignedInt'|'uri'|'uuid'|'xhtml'|'Account'|'AllergyIntolerance'|'Appointment'|'AppointmentResponse'|'AuditEvent'|'Basic'|'Binary'|'BodySite'|'Bundle'|'CarePlan'|'Claim'|'ClaimResponse'|'ClinicalImpression'|'Communication'|'CommunicationRequest'|'Composition'|'ConceptMap'|'Condition'|'Conformance'|'Contract'|'Coverage'|'DataElement'|'DetectedIssue'|'Device'|'DeviceComponent'|'DeviceMetric'|'DeviceUseRequest'|'DeviceUseStatement'|'DiagnosticOrder'|'DiagnosticReport'|'DocumentManifest'|'DocumentReference'|'DomainResource'|'EligibilityRequest'|'EligibilityResponse'|'Encounter'|'EnrollmentRequest'|'EnrollmentResponse'|'EpisodeOfCare'|'ExplanationOfBenefit'|'FamilyMemberHistory'|'Flag'|'Goal'|'Group'|'HealthcareService'|'ImagingObjectSelection'|'ImagingStudy'|'Immunization'|'ImmunizationRecommendation'|'ImplementationGuide'|'List'|'Location'|'Media'|'Medication'|'MedicationAdministration'|'MedicationDispense'|'MedicationOrder'|'MedicationStatement'|'MessageHeader'|'NamingSystem'|'NutritionOrder'|'Observation'|'OperationDefinition'|'OperationOutcome'|'Order'|'OrderResponse'|'Organization'|'Parameters'|'Patient'|'PaymentNotice'|'PaymentReconciliation'|'Person'|'Practitioner'|'Procedure'|'ProcedureRequest'|'ProcessRequest'|'ProcessResponse'|'Provenance'|'Questionnaire'|'QuestionnaireResponse'|'ReferralRequest'|'RelatedPerson'|'Resource'|'RiskAssessment'|'Schedule'|'SearchParameter'|'Slot'|'Specimen'|'StructureDefinition'|'Subscription'|'Substance'|'SupplyDelivery'|'SupplyRequest'|'TestScript'|'ValueSet'|'VisionPrescription') | undefined;
   _resource?: Element | undefined;
   /**
    * okay | created | noContent | notModified | bad | forbidden | notFound | methodNotAllowed | conflict | gone | preconditionFailed | unprocessable.
+   * This is a shorter way of achieving similar verifications via "assert.responseCode".  If you need more control, then use "assert.responseCode"  e.g. <assert>  <contentType value="json" />  <response value="okay"/> </assert>.
    */
   response?: ('okay'|'created'|'noContent'|'notModified'|'bad'|'forbidden'|'notFound'|'methodNotAllowed'|'conflict'|'gone'|'preconditionFailed'|'unprocessable') | undefined;
   _response?: Element | undefined;
   /**
    * HTTP response code to test
    * The value of the HTTP response code to be tested.
+   * To be used with "operator" attribute value. Asserts that the response code equals this value if "operator" is not specified.   If the operator is "in" or "notIn" then the responseCode would be a comma-separated list of values e.g. "200,201". Otherwise, it's expected to be a numeric value.   If "fixture" is not specified, then the "responseBodyId" value of the last operation is assumed.
    */
   responseCode?: string | undefined;
   _responseCode?: Element | undefined;
   /**
    * Fixture Id of source expression or headerField
    * Fixture to evaluate the XPath/JSONPath expression or the headerField  against.
+   * This can be a statically defined fixture (at the top of the testscript) or a dynamically set fixture created by responseId of the action.operation element.
    */
   sourceId?: string | undefined;
   _sourceId?: Element | undefined;
   /**
    * Profile Id of validation profile reference
    * The ID of the Profile to validate against.
+   * The ID of a Profile fixture. Asserts that the response is valid according to the Profile specified by validateProfileId.
    */
   validateProfileId?: string | undefined;
   _validateProfileId?: Element | undefined;
   /**
    * The value to compare to.
+   * The string-representation of a number, string, or boolean that is expected.  Test engines do have to look for placeholders (${}) and replace the variable placeholders with the variable values at runtime before comparing this value to the actual value.
    */
   value?: string | undefined;
   _value?: Element | undefined;
   /**
    * Will this assert produce a warning only on error?
    * Whether or not the test execution will produce a warning only on error for this assert.
+   * If this element is specified and it is true, then assertion failures can be logged by test engine but should not stop the test script execution from proceeding.  There are likely cases where the spec is not clear on what should happen. If the spec says something is optional (maybe a response header for example), but a server doesn’t do it, we could choose to issue a warning.
    */
   warningOnly?: boolean | undefined;
   _warningOnly?: Element | undefined;
@@ -14229,18 +15153,21 @@ export interface TestScriptSetupActionOperation extends BackboneElement {
   /**
    * xml | json
    * The content-type or mime-type to use for RESTful operation in the 'Accept' header.
+   * If this is specified, then test engine shall set the 'Accept' header to the corresponding value.    If 'xml' is specified, then 'Accept' header of 'application/xml+fhir' will be set.  If 'json' is specified, then 'application/json+fhir' will be used.    If you'd like to explicitly set the 'Accept' to some other value then use the 'requestHeader' element.
    */
   accept?: ('xml'|'json') | undefined;
   _accept?: Element | undefined;
   /**
    * xml | json
    * The content-type or mime-type to use for RESTful operation in the 'Content-Type' header.
+   * If this is specified, then test engine shall set the 'Content-Type' header to the corresponding value.    If 'xml' is specified, then 'Content-Type' header of 'application/xml+fhir' will be set.    If 'json' is specified, then 'application/json+fhir' will be used.    If you'd like to explicitly set the 'Content-Type' to some other value then use the 'requestHeader' element.
    */
   contentType?: ('xml'|'json') | undefined;
   _contentType?: Element | undefined;
   /**
    * Tracking/reporting operation description
    * The description would be used by test engines for tracking and reporting purposes.
+   * This has no impact on the verification itself.
    */
   description?: string | undefined;
   _description?: Element | undefined;
@@ -14257,29 +15184,34 @@ export interface TestScriptSetupActionOperation extends BackboneElement {
   /**
    * Tracking/logging operation label
    * The label would be used for tracking/logging purposes by test engines.
+   * This has no impact on the verification itself.
    */
   label?: string | undefined;
   _label?: Element | undefined;
   /**
    * Explicitly defined path parameters
    * Path plus parameters after [type].  Used to set parts of the request URL explicitly.
+   * If "url" element is specified, then "targetId", "params", and "resource" elements will be ignored as "url" element will have everything needed for constructing the request url.  If "params" element is specified, then "targetId" element is ignored.  For FHIR operations that require a resource (e.g. "read" and "vread" operations), the "resource" element must be specified when "params" element is specified.  If "url" and "params" elements are absent, then the request url will be constructed from "targetId" fixture if present.  For "read" operation, the resource and id values will be extracted from "targetId" fixture and used to construct the url.  For "vread" and "history" operations, the versionId value will also be used.   Test engines would append whatever is specified for "params" to the URL after the resource type without tampering with the string (beyond encoding the URL for HTTP).  The "params" element does not correspond exactly to "search parameters".  Nor is it the "path".  It corresponds to the part of the URL that comes after the [type] (when "resource" element is specified); e.g. It corresponds to "/[id]/_history/[vid] {?_format=[mime-type]}" in the following operation: GET [base]/[type]/[id]/_history/[vid] {?_format=[mime-type]}  Test engines do have to look for placeholders (${}) and replace the variable placeholders with the variable values at runtime before sending the request.
    */
   params?: string | undefined;
   _params?: Element | undefined;
   /**
    * Each operation can have one ore more header elements
    * Header elements would be used to set HTTP headers.
+   * This gives control to test-script writers to set headers explicitly based on test requirements.  It will allow for testing using:  - "If-Modified-Since" and "If-None-Match" headers.  See http://hl7-fhir.github.io/http.html#2.1.0.5.1 - "If-Match" header.  See http://hl7-fhir.github.io/http.html#2.1.0.11 - Conditional Create using "If-None-Exist".  See http://hl7-fhir.github.io/http.html#2.1.0.13.1 - Invalid "Content-Type" header for negative testing. - etc.
    */
   requestHeader?: TestScriptSetupActionOperationRequestHeader[] | undefined;
   /**
    * Resource type
    * The type of the resource.  See http://hl7-fhir.github.io/resourcelist.html.
+   * If "url" element is specified, then "targetId", "params", and "resource" elements will be ignored as "url" element will have everything needed for constructing the request url.  If "params" element is specified, then "targetId" element is ignored. For FHIR operations that require a resource (e.g. "read" and "vread" operations), the "resource" element must be specified when "params" element is specified.  If "url" and "params" elements are absent, then the request url will be constructed from "targetId" fixture if present. For "read" operation, the resource and id values will be extracted from "targetId" fixture and used to construct the url. For "vread" and "history" operations, the versionId value will also be used.
    */
   resource?: ('Address'|'Age'|'Annotation'|'Attachment'|'BackboneElement'|'CodeableConcept'|'Coding'|'ContactPoint'|'Count'|'Distance'|'Duration'|'Element'|'ElementDefinition'|'Extension'|'HumanName'|'Identifier'|'Meta'|'Money'|'Narrative'|'Period'|'Quantity'|'Range'|'Ratio'|'Reference'|'SampledData'|'Signature'|'SimpleQuantity'|'Timing'|'base64Binary'|'boolean'|'code'|'date'|'dateTime'|'decimal'|'id'|'instant'|'integer'|'markdown'|'oid'|'positiveInt'|'string'|'time'|'unsignedInt'|'uri'|'uuid'|'xhtml'|'Account'|'AllergyIntolerance'|'Appointment'|'AppointmentResponse'|'AuditEvent'|'Basic'|'Binary'|'BodySite'|'Bundle'|'CarePlan'|'Claim'|'ClaimResponse'|'ClinicalImpression'|'Communication'|'CommunicationRequest'|'Composition'|'ConceptMap'|'Condition'|'Conformance'|'Contract'|'Coverage'|'DataElement'|'DetectedIssue'|'Device'|'DeviceComponent'|'DeviceMetric'|'DeviceUseRequest'|'DeviceUseStatement'|'DiagnosticOrder'|'DiagnosticReport'|'DocumentManifest'|'DocumentReference'|'DomainResource'|'EligibilityRequest'|'EligibilityResponse'|'Encounter'|'EnrollmentRequest'|'EnrollmentResponse'|'EpisodeOfCare'|'ExplanationOfBenefit'|'FamilyMemberHistory'|'Flag'|'Goal'|'Group'|'HealthcareService'|'ImagingObjectSelection'|'ImagingStudy'|'Immunization'|'ImmunizationRecommendation'|'ImplementationGuide'|'List'|'Location'|'Media'|'Medication'|'MedicationAdministration'|'MedicationDispense'|'MedicationOrder'|'MedicationStatement'|'MessageHeader'|'NamingSystem'|'NutritionOrder'|'Observation'|'OperationDefinition'|'OperationOutcome'|'Order'|'OrderResponse'|'Organization'|'Parameters'|'Patient'|'PaymentNotice'|'PaymentReconciliation'|'Person'|'Practitioner'|'Procedure'|'ProcedureRequest'|'ProcessRequest'|'ProcessResponse'|'Provenance'|'Questionnaire'|'QuestionnaireResponse'|'ReferralRequest'|'RelatedPerson'|'Resource'|'RiskAssessment'|'Schedule'|'SearchParameter'|'Slot'|'Specimen'|'StructureDefinition'|'Subscription'|'Substance'|'SupplyDelivery'|'SupplyRequest'|'TestScript'|'ValueSet'|'VisionPrescription') | undefined;
   _resource?: Element | undefined;
   /**
    * Fixture Id of mapped response
    * The fixture id (maybe new) to map to the response.
+   * If a responseId is supplied, and the server responds, then the resulting response (both headers and body) is mapped to the fixture ID (which may be entirely new and previously undeclared) designated by "responseId".  If responseId is not specified, it is the Test Engine's responsibility to store the response and use it as sourceId in subsequent assertions when assertion path and/or headerField is specified and sourceId is not specified.
    */
   responseId?: string | undefined;
   _responseId?: Element | undefined;
@@ -14291,17 +15223,20 @@ export interface TestScriptSetupActionOperation extends BackboneElement {
   _sourceId?: Element | undefined;
   /**
    * Id of fixture used for extracting the [id],  [type], and [vid] for GET requests.
+   * If "url" element is specified, then "targetId", "params", and "resource" elements will be ignored as "url" element will have everything needed for constructing the request url.  If "params" element is specified, then "targetId" element is ignored.  For FHIR operations that require a resource (e.g. "read" and "vread" operations), the "resource" element must be specified when "params" element is specified.  If "url" and "params" elements are absent, then the request url will be constructed from "targetId" fixture if present.  For "read" operation, the resource and id values will be extracted from "targetId" fixture and used to construct the url.  For "vread" and "history" operations, the versionId value will also be used.
    */
   targetId?: string | undefined;
   _targetId?: Element | undefined;
   /**
    * The setup operation type that will be executed
    * Server interaction or operation type.
+   * See http://hl7-fhir.github.io/http.html for list of server interactions.
    */
   type?: Coding | undefined;
   /**
    * Request URL
    * Complete request URL.
+   * Used to set the request URL explicitly.  If "url" element is defined, then "targetId", "resource", and "params" elements will be ignored.  Test engines would use whatever is specified in "url" without tampering with the string (beyond encoding the URL for HTTP).  Test engines do have to look for placeholders (${}) and replace the variable placeholders with the variable values at runtime before sending the request.
    */
   url?: string | undefined;
   _url?: Element | undefined;
@@ -14309,17 +15244,20 @@ export interface TestScriptSetupActionOperation extends BackboneElement {
 /**
  * Each operation can have one ore more header elements
  * Header elements would be used to set HTTP headers.
+ * This gives control to test-script writers to set headers explicitly based on test requirements.  It will allow for testing using:  - "If-Modified-Since" and "If-None-Match" headers.  See http://hl7-fhir.github.io/http.html#2.1.0.5.1 - "If-Match" header.  See http://hl7-fhir.github.io/http.html#2.1.0.11 - Conditional Create using "If-None-Exist".  See http://hl7-fhir.github.io/http.html#2.1.0.13.1 - Invalid "Content-Type" header for negative testing. - etc.
  */
 export interface TestScriptSetupActionOperationRequestHeader extends BackboneElement {
   /**
    * HTTP header field name
    * The HTTP header field e.g. "Accept".
+   * If header element is specified, then field is required.
    */
   field: string;
   _field?: Element | undefined;
   /**
    * HTTP headerfield value
    * The value of the header e.g. "application/xml".
+   * If header element is specified, then value is required.  No conversions will be done by Test Engine e.g. "xml" to "application/xml+fhir".  The values will be set in HTTP headers "as-is".  Test engines do have to look for placeholders (${}) and replace the variable placeholders with the variable values at runtime before sending the request.
    */
   value: string;
   _value?: Element | undefined;
@@ -14332,12 +15270,14 @@ export interface TestScriptTeardown extends BackboneElement {
   /**
    * One or more teardown operations to perform
    * The teardown action will only contain an operation.
+   * An action should contain either an operation or an assertion but not both.  It can contain any number of variables.
    */
   action: TestScriptTeardownAction[];
 }
 /**
  * One or more teardown operations to perform
  * The teardown action will only contain an operation.
+ * An action should contain either an operation or an assertion but not both.  It can contain any number of variables.
  */
 export interface TestScriptTeardownAction extends BackboneElement {
   /**
@@ -14353,6 +15293,7 @@ export interface TestScriptTest extends BackboneElement {
   /**
    * A test operation or assert to perform
    * Action would contain either an operation or an assertion.
+   * An action should contain either an operation or an assertion but not both.  It can contain any number of variables.
    */
   action: TestScriptTestAction[];
   /**
@@ -14376,11 +15317,13 @@ export interface TestScriptTest extends BackboneElement {
 /**
  * A test operation or assert to perform
  * Action would contain either an operation or an assertion.
+ * An action should contain either an operation or an assertion but not both.  It can contain any number of variables.
  */
 export interface TestScriptTestAction extends BackboneElement {
   /**
    * The setup assertion to perform
    * Evaluates the results of previous operations to determine if the server under test behaves appropriately.
+   * In order to evaluate an assertion, the request, response, and results of the most recently executed operation must always be maintained by the test engine.
    */
   assert?: TestScriptSetupActionAssert | undefined;
   /**
@@ -14392,27 +15335,32 @@ export interface TestScriptTestAction extends BackboneElement {
 /**
  * Placeholder for evaluated elements
  * Variable is set based either on element value in response body or on header field value in the response headers.
+ * Variables would be set based either on XPath/JsonPath expressions against fixtures (static and response), or headerField evaluations against response headers. If variable evaluates to nodelist or anything other than a primitive value, then test engine would report error.  Variables would be used to perform clean replacements in "operation.params", "operation.requestHeader.value", and "operation.url" element values during operation calls and in "assert.value" during assertion evaluations. This limits the places that test engines would need to look for placeholders "${}".  Variables are scoped to the whole script. They are NOT evaluated at declaration. They are evaluated by test engine when used for substitutions in "operation.params", "operation.requestHeader.value", and "operation.url" element values during operation calls and in "assert.value" during assertion evaluations.  See example testscript-search.xml.
  */
 export interface TestScriptVariable extends BackboneElement {
   /**
    * HTTP header field name for source
    * Will be used to grab the HTTP header field value from the headers that sourceId is pointing to.
+   * If headerField is defined, then the variable will be evaluated against the headers that sourceId is pointing to.  If path is defined, then the variable will be evaluated against the fixture body that sourceId is pointing to.  It is an error to define both headerField and path.
    */
   headerField?: string | undefined;
   _headerField?: Element | undefined;
   /**
    * Descriptive name for this variable.
+   * Placeholders would contain the variable name wrapped in ${} in "operation.params", "operation.requestHeader.value", and "operation.url" elements.  These placeholders would need to be replaced by the variable value before the operation is executed.
    */
   name: string;
   _name?: Element | undefined;
   /**
    * XPath or JSONPath against the fixture body.  When variables are defined, either headerField must be specified or path, but not both.
+   * If headerField is defined, then the variable will be evaluated against the headers that sourceId is pointing to.  If path is defined, then the variable will be evaluated against the fixture body that sourceId is pointing to.  It is an error to define both headerField and path.
    */
   path?: string | undefined;
   _path?: Element | undefined;
   /**
    * Fixture Id of source expression or headerField within this variable
    * Fixture to evaluate the XPath/JSONPath expression or the headerField  against within this variable.
+   * This can be a statically defined fixture (at the top of the testscript) or a dynamically set fixture created by responseId of the action.operation element.
    */
   sourceId?: string | undefined;
   _sourceId?: Element | undefined;
@@ -14426,6 +15374,7 @@ export interface ValueSet extends DomainResource {
   /**
    * An inline code system, which is part of this value set
    * A definition of a code system, inlined into the value set (as a packaging convenience). Note that the inline code system may be used from other value sets by referring to its (codeSystem.system) directly.
+   * All code systems defined as part of a FHIR value set have an implicit valueset that includes all of the codes in the code system - the value set in which they are defined.
    */
   codeSystem?: ValueSetCodeSystem | undefined;
   /**
@@ -14436,34 +15385,40 @@ export interface ValueSet extends DomainResource {
   /**
    * Contact details of the publisher
    * Contacts to assist a user in finding and communicating with the publisher.
+   * May be a web site, an email address, a telephone number, etc.
    */
   contact?: ValueSetContact[] | undefined;
   /**
    * Use and/or publishing restrictions
    * A copyright statement relating to the value set and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the value set.
+   * Frequently, the copyright differs between the value set and the codes that are included. The copyright statement should clearly differentiate between these when required.
    */
   copyright?: string | undefined;
   _copyright?: Element | undefined;
   /**
    * Date for given status
    * The date that the value set status was last changed. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the implementation guide changes (e.g. the 'content logical definition').
+   * Note that this is not the same as the resource last-modified-date, since the resource may be a secondary representation of the value set. Additional specific dates may be added as extensions.
    */
   date?: string | undefined;
   _date?: Element | undefined;
   /**
    * Human language description of the value set
    * A free text natural language description of the use of the value set - reason for definition, "the semantic space" to be included in the value set, conditions of use, etc. The description may include a list of expected usages for the value set and can also describe the approach taken to build the value set.
+   * The description is not intended to describe the semantics of the Value Set - there are no intrinsic semantics separate from the codes contained in its expansion. The description should capture its intended use, which is needed for ensuring integrity for its use in models across future changes. A description should be provided unless the value set is a contained resource (e.g. an anonymous value set in a profile). Most registries will require a description.
    */
   description?: string | undefined;
   _description?: Element | undefined;
   /**
    * Used when the value set is "expanded"
    * A value set can also be "expanded", where the value set is turned into a simple collection of enumerated codes. This element holds the expansion, if it has been performed.
+   * Expansion is performed to produce a collection of codes that are ready to use for data entry or validation.
    */
   expansion?: ValueSetExpansion | undefined;
   /**
    * If for testing purposes, not real usage
    * This valueset was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+   * Allows filtering of value sets that are appropriate for use vs. not.
    */
   experimental?: boolean | undefined;
   _experimental?: Element | undefined;
@@ -14475,40 +15430,47 @@ export interface ValueSet extends DomainResource {
   /**
    * Additional identifier for the value set (e.g. HL7 v2 / CDA)
    * Formal identifier that is used to identify this value set when it is represented in other formats, or referenced in a specification, model, design or an instance.
+   * Typically, this is used for values that can go in an HL7 v3 II data type.
    */
   identifier?: Identifier | undefined;
   /**
    * Indicates whether or not any change to the content logical definition may occur
    * If this is set to 'true', then no new versions of the content logical definition can be created.  Note: Other metadata might still change.
+   * Normally immutability is set to 'false', which is the default assumption if it is not populated.  Note that the implication is that if this is set to 'true', there may be only one ValueSet version for this definition. Immutability tends to be set to 'true' in one of two cases: - Where the value set, by the nature of its usage, cannot change.  For example "All specializations of ACT in ActClassCode" - Where there's no safe way to express the "Purpose" such that someone else could safely make changes to the value set definition. Source workflow control must guarantee that the same URI always yields the same definition.
    */
   immutable?: boolean | undefined;
   _immutable?: Element | undefined;
   /**
    * Fixed date for all referenced code systems and value sets
    * If a locked date is defined, then the Content Logical Definition must be evaluated using the current version of all referenced code system(s) and value set instances as of the locked date.
+   * With a defined lockedDate the value set is considered "Locked". Otherwise, the value set may have different expansions as underlying code systems and/or value sets evolve.  The interpretation of lockedDate is often dependent on the context - e.g. a SNOMED CT derived value set with a lockedDate will have a different expansion in USA than in UK.  If a value set specifies a version for include and exclude statements, and also specifies a locked date, the specified versions need to be available that date, or the value set will not be usable.
    */
   lockedDate?: string | undefined;
   _lockedDate?: Element | undefined;
   /**
    * Informal name for this value set
    * A free text natural language name describing the value set.
+   * The name is not expected to be unique. A name should be provided unless the value set is a contained resource (e.g. an anonymous value set in a profile). Most registries will require a name.
    */
   name?: string | undefined;
   _name?: Element | undefined;
   /**
    * Name of the publisher (organization or individual)
    * The name of the individual or organization that published the value set.
+   * Usually an organization, but may be an individual. This item SHOULD be populated unless the information is available from context.
    */
   publisher?: string | undefined;
   _publisher?: Element | undefined;
   /**
    * Why needed
    * Explains why this value set is needed and why it has been constrained as it has.
+   * This element does not describe the usage of the value set (that is done in comments), rather it's for traceability of ''why'' the element is either needed or ''why'' the constraints exist as they do.  This may be used to point to source materials or specifications that drove the structure of this data element.
    */
   requirements?: string | undefined;
   _requirements?: Element | undefined;
   /**
    * The status of the value set.
+   * Allows filtering of value set instances that are appropriate (or not) for use.
    */
   status: ('draft'|'active'|'retired');
   _status?: Element | undefined;
@@ -14526,6 +15488,7 @@ export interface ValueSet extends DomainResource {
   /**
    * Logical identifier for this version of the value set
    * Used to identify this version of the value set when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.
+   * There may be multiple resource versions of the value set that have the same identifier.
    */
   version?: string | undefined;
   _version?: Element | undefined;
@@ -14533,10 +15496,12 @@ export interface ValueSet extends DomainResource {
 /**
  * An inline code system, which is part of this value set
  * A definition of a code system, inlined into the value set (as a packaging convenience). Note that the inline code system may be used from other value sets by referring to its (codeSystem.system) directly.
+ * All code systems defined as part of a FHIR value set have an implicit valueset that includes all of the codes in the code system - the value set in which they are defined.
  */
 export interface ValueSetCodeSystem extends BackboneElement {
   /**
    * If code comparison is case sensitive when codes within this system are compared to each other.
+   * If this value is missing, then it is not specified whether a code system is case sensitive or not. When the rule is not known, Postel's law should be followed: produce codes with the correct case, and accept codes in any case. This element is primarily provided to support validation software.
    */
   caseSensitive?: boolean | undefined;
   _caseSensitive?: Element | undefined;
@@ -14548,6 +15513,7 @@ export interface ValueSetCodeSystem extends BackboneElement {
   /**
    * URI to identify the code system (e.g. in Coding.system)
    * An absolute URI that is used to reference this code system, including in [Coding]{datatypes.html#Coding}.system.
+   * The reference is not required to point to any specific kind of definition, but the more information that can be provided, the more useful it is for implementers. Best practice is to resolve to a computable definition of the code system (either a value set, or some other format). Terminology servers MAY validate this reference (e.g. when accepting PUT/POST), and MAY make additional rules about what kind of content it refers to.
    */
   system: string;
   _system?: Element | undefined;
@@ -14603,12 +15569,14 @@ export interface ValueSetCodeSystemConceptDesignation extends BackboneElement {
   /**
    * Human language of the designation
    * The language this designation is defined for.
+   * In the absence of a language, the resource language applies.
    */
   language?: string | undefined;
   _language?: Element | undefined;
   /**
    * Details how this designation would be used
    * A code that details how this designation would be used.
+   * If no use is provided, the designation can be assumed to be suitable for general display to a human user.
    */
   use?: Coding | undefined;
   /**
@@ -14625,42 +15593,50 @@ export interface ValueSetCompose extends BackboneElement {
   /**
    * Explicitly exclude codes
    * Exclude one or more codes from the value set.
+   * Usually this is used to selectively exclude codes that were included by subsumption in the inclusions. Any display names specified for the codes are ignored.
    */
   exclude?: ValueSetComposeInclude[] | undefined;
   /**
    * Import the contents of another value set
    * Includes the contents of the referenced value set as a part of the contents of this value set. This is an absolute URI that is a reference to ValueSet.uri.
+   * The value set URI is either a logical reference to a defined value set such as a [SNOMED CT reference set]{snomedct.html#implicit}, or a direct reference to a value set definition using ValueSet.url. The reference may also not reference an actual FHIR ValueSet resource; in this case, whatever is referenced is an implicit definition of a value set that needs to be clear about how versions are resolved.
    */
   import?: string[] | undefined;
   _import?: Element[] | undefined;
   /**
    * Include one or more codes from a code system.
+   * If there are no codes or filters, the entire code system is included. Note that the set of codes that are included may contain abstract codes.
    */
   include?: ValueSetComposeInclude[] | undefined;
 }
 /**
  * Include one or more codes from a code system.
+ * If there are no codes or filters, the entire code system is included. Note that the set of codes that are included may contain abstract codes.
  */
 export interface ValueSetComposeInclude extends BackboneElement {
   /**
    * A concept defined in the system
    * Specifies a concept to be included or excluded.
+   * The list of concepts is considered ordered, though the order may not have any particular significance. Typically, the order of an expansion follows that defined in the compose element.
    */
   concept?: ValueSetComposeIncludeConcept[] | undefined;
   /**
    * Select codes/concepts by their properties (including relationships)
    * Select concepts by specify a matching criteria based on the properties (including relationships) defined by the system. If multiple filters are specified, they SHALL all be true.
+   * Selecting codes by specifying filters based on properties is only possible where the underlying code system defines appropriate properties. Note that in some cases, the underlying code system defines the logical concepts but not the literal codes for the concepts. In such cases, the literal definitions may be provided by a third party.
    */
   filter?: ValueSetComposeIncludeFilter[] | undefined;
   /**
    * The system the codes come from
    * An absolute URI which is the code system from which the selected codes come from.
+   * See ''Coding.system'' for further documentation.
    */
   system: string;
   _system?: Element | undefined;
   /**
    * Specific version of the code system referred to
    * The version of the code system that the codes are selected from.
+   * This is used when selecting the descendants of a concept - they may change between versions. If no version is specified, then the exact contents of the value set may not be known until a context of use binds it to a particular version.
    */
   version?: string | undefined;
   _version?: Element | undefined;
@@ -14668,11 +15644,13 @@ export interface ValueSetComposeInclude extends BackboneElement {
 /**
  * A concept defined in the system
  * Specifies a concept to be included or excluded.
+ * The list of concepts is considered ordered, though the order may not have any particular significance. Typically, the order of an expansion follows that defined in the compose element.
  */
 export interface ValueSetComposeIncludeConcept extends BackboneElement {
   /**
    * Code or expression from system
    * Specifies a code for the concept to be included or excluded.
+   * Expressions are allowed if defined by the underlying code system.
    */
   code: string;
   _code?: Element | undefined;
@@ -14684,6 +15662,7 @@ export interface ValueSetComposeIncludeConcept extends BackboneElement {
   /**
    * Test to display for this code for this value set
    * The text to display to the user for this concept in the context of this valueset. If no display is provided, then applications using the value set use the display specified for the code by the system.
+   * The value set resource allows for an alternative display to be specified for when this concept is used in this particular value set. See notes in the value set narrative about the correct use of this element.
    */
   display?: string | undefined;
   _display?: Element | undefined;
@@ -14691,6 +15670,7 @@ export interface ValueSetComposeIncludeConcept extends BackboneElement {
 /**
  * Select codes/concepts by their properties (including relationships)
  * Select concepts by specify a matching criteria based on the properties (including relationships) defined by the system. If multiple filters are specified, they SHALL all be true.
+ * Selecting codes by specifying filters based on properties is only possible where the underlying code system defines appropriate properties. Note that in some cases, the underlying code system defines the logical concepts but not the literal codes for the concepts. In such cases, the literal definitions may be provided by a third party.
  */
 export interface ValueSetComposeIncludeFilter extends BackboneElement {
   /**
@@ -14707,6 +15687,7 @@ export interface ValueSetComposeIncludeFilter extends BackboneElement {
   /**
    * Code from the system, or regex criteria
    * The match value may be either a code defined by the system, or a string value, which is a regex match on the literal string of the property value.
+   * Use regex matching with care - full regex matching on every SNOMED CT term is prohibitive, for example.
    */
   value: string;
   _value?: Element | undefined;
@@ -14714,11 +15695,13 @@ export interface ValueSetComposeIncludeFilter extends BackboneElement {
 /**
  * Contact details of the publisher
  * Contacts to assist a user in finding and communicating with the publisher.
+ * May be a web site, an email address, a telephone number, etc.
  */
 export interface ValueSetContact extends BackboneElement {
   /**
    * Name of an individual to contact
    * The name of an individual to contact regarding the value set.
+   * If there is no named individual, the telecom is for the organization as a whole.
    */
   name?: string | undefined;
   _name?: Element | undefined;
@@ -14731,6 +15714,7 @@ export interface ValueSetContact extends BackboneElement {
 /**
  * Used when the value set is "expanded"
  * A value set can also be "expanded", where the value set is turned into a simple collection of enumerated codes. This element holds the expansion, if it has been performed.
+ * Expansion is performed to produce a collection of codes that are ready to use for data entry or validation.
  */
 export interface ValueSetExpansion extends BackboneElement {
   /**
@@ -14741,28 +15725,33 @@ export interface ValueSetExpansion extends BackboneElement {
   /**
    * Uniquely identifies this expansion
    * An identifier that uniquely identifies this expansion of the valueset. Systems may re-use the same identifier as long as the expansion and the definition remain the same, but are not required to do so.
+   * Typically, this uri is a UUID (e.g. urn:uuid:8230ff20-c97a-4167-a59d-dc2cb9df16dd).
    */
   identifier: string;
   _identifier?: Element | undefined;
   /**
    * Offset at which this resource starts
    * If paging is being used, the offset at which this resource starts.  I.e. this resource is a partial view into the expansion. If paging is not being used, this element SHALL not be present.
+   * Paging only applies to flat expansions. If a filter is applied, the count is the number of concepts that matched the filter, not the number of concepts in an unfiltered view of the expansion.
    */
   offset?: number | undefined;
   /**
    * Parameter that controlled the expansion process
    * A parameter that controlled the expansion process. These parameters may be used by users of expanded value sets to check whether the expansion is suitable for a particular purpose, or to pick the correct expansion.
+   * The server decides which parameters to include here, but at a minimum, the list SHOULD include the date, filter, and profile parameters passed to the $expand operation (if any).
    */
   parameter?: ValueSetExpansionParameter[] | undefined;
   /**
    * Time ValueSet expansion happened
    * The time at which the expansion was produced by the expanding system.
+   * This SHOULD be a fully populated instant, but in some circumstances, value sets are expanded by hand, and the expansion is published without that precision.
    */
   timestamp: string;
   _timestamp?: Element | undefined;
   /**
    * Total number of codes in the expansion
    * The total number of concepts in the expansion. If the number of concept nodes in this resource is less than the stated number, then the server can return more using the offset parameter.
+   * Paging only applies to flat expansions.
    */
   total?: number | undefined;
 }
@@ -14774,6 +15763,7 @@ export interface ValueSetExpansionContains extends BackboneElement {
   /**
    * If user cannot select this entry
    * If true, this entry is included in the expansion for navigational purposes, and the user cannot select the code directly as a proper value.
+   * This should not be understood to exclude its use for searching (e.g. by subsumption testing). The client should know whether it is appropriate for the user to select an abstract code or not.
    */
   abstract?: boolean | undefined;
   _abstract?: Element | undefined;
@@ -14786,6 +15776,7 @@ export interface ValueSetExpansionContains extends BackboneElement {
   /**
    * Codes contained under this entry
    * Other codes and entries contained under this entry in the hierarchy.
+   * If the expansion uses this element, there is  no implication about the logical relationship between them, and the  structure cannot be used for logical inferencing. The structure  exists to provide navigational assistance for helping human users to  locate codes in the expansion.
    */
   contains?: ValueSetExpansionContains[] | undefined;
   /**
@@ -14803,6 +15794,7 @@ export interface ValueSetExpansionContains extends BackboneElement {
   /**
    * Version in which this code/display is defined
    * The version of this code system that defined this code and/or display. This should only be used with code systems that do not enforce concept permanence.
+   * The exact value of the version string is specified by the system from which the code is derived.
    */
   version?: string | undefined;
   _version?: Element | undefined;
@@ -14810,11 +15802,13 @@ export interface ValueSetExpansionContains extends BackboneElement {
 /**
  * Parameter that controlled the expansion process
  * A parameter that controlled the expansion process. These parameters may be used by users of expanded value sets to check whether the expansion is suitable for a particular purpose, or to pick the correct expansion.
+ * The server decides which parameters to include here, but at a minimum, the list SHOULD include the date, filter, and profile parameters passed to the $expand operation (if any).
  */
 export interface ValueSetExpansionParameter extends BackboneElement {
   /**
    * Name as assigned by the server
    * The name of the parameter.
+   * The names are assigned at the discretion of the server.
    */
   name: string;
   _name?: Element | undefined;

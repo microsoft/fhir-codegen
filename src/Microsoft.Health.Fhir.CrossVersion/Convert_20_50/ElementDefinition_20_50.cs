@@ -210,10 +210,12 @@ public class ElementDefinition_20_50 : ICrossVersionProcessor<ElementDefinition>
 				break;
 
 			case "comment":
+			case "comments":
 				current.CommentElement = new Markdown(node.Text);
 				break;
 
 			case "_comment":
+			case "_comments":
 				_converter._element.Process(node, current.CommentElement);
 				break;
 
