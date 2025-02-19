@@ -140,10 +140,7 @@ public class DifferenceTracker : IDisposable
         _logger = loggerFactory?.CreateLogger<DifferenceTracker>() ?? definitions.First().Logger;
 
         _db = new(Path.Combine(_dbPath, _dbName));
-        //_db.Database.EnsureDeleted();
-        _db.Database.EnsureCreated();
     }
-
 
     /// <summary>
     /// Initializes the database connection and sets up the necessary tables and metadata.
@@ -151,9 +148,17 @@ public class DifferenceTracker : IDisposable
     /// <param name="createdNew">Outputs a boolean indicating whether a new database was created.</param>
     /// <exception cref="Exception">Thrown when the package information does not match or the database connection is not initialized.</exception>
     public void InitDb(
+        bool ensureDeleted,
         HashSet<string> _exclusionSet,
         HashSet<string> _escapeValveCodes)
     {
+        if (ensureDeleted)
+        {
+            _db.Database.EnsureDeleted();
+        }
+
+        _db.Database.EnsureCreated();
+
         //string connectionString = new SqliteConnectionStringBuilder()
         //{
         //    DataSource = Path.Combine(_dbPath, _dbName),
@@ -292,23 +297,39 @@ public class DifferenceTracker : IDisposable
             // iterate over all the contents of the value set
             foreach (FhirConcept fc in vs.cgGetFlatConcepts(dc))
             {
-                // check for this system and code already existing
-                if (_db.ValueSetContents.Any(vsc => vsc.VsMeta == vsm && vsc.System == fc.System && vsc.Code == fc.Code))
+                ValueSetConcept? vsc = _db.Concepts
+                    .Where(vsc => (vsc.System == fc.System) && (vsc.Code == fc.Code) && (vsc.Display == fc.Display))
+                    .FirstOrDefault();
+
+                if (vsc == null)
+                {
+                    vsc = new()
+                    {
+                        System = fc.System,
+                        Code = fc.Code,
+                        Display = fc.Display,
+                    };
+
+                    _db.Add(vsc);
+                }
+
+                // check for this concept already having a mapping
+                if (_db.ConceptMappings.Any(vscm => vscm.VsMeta == vsm && vscm.VsConcept == vsc))
                 {
                     continue;
                 }
 
-                // create a new content record
-                ValueSetContent vsc = new()
+                // create a new mapping record
+                ValueSetConceptMapping vscm = new()
                 {
                     VsMeta = vsm,
-                    System = fc.System,
-                    Code = fc.Code,
-                    Display = fc.Display,
+                    VsConcept = vsc,
                 };
-
-                _db.Add(vsc);
+                _db.Add(vscm);
             }
+
+            // save changes
+            _db.SaveChanges();
         }
     }
 

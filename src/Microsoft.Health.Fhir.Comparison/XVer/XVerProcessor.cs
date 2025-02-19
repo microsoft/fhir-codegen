@@ -97,7 +97,8 @@ public class XVerProcessor
         switch (command)
         {
             case "convert-from-maps":
-                LoadDiffDatabases();
+                LoadFhirCrossVersionMaps(preferV1Maps: true);
+                //LoadDiffDatabases();
                 break;
 
             case "update-maps":
@@ -164,7 +165,7 @@ public class XVerProcessor
         }
 
         _diffTracker = new(_definitions, _dbPath);
-        _diffTracker.InitDb(_exclusionSet, _escapeValveCodes);
+        _diffTracker.InitDb(true, _exclusionSet, _escapeValveCodes);
 
         _comparisonCache.Clear();
 
@@ -234,7 +235,7 @@ public class XVerProcessor
         }
 
         _diffTracker = new(_definitions, _dbPath);
-        _diffTracker.InitDb(_exclusionSet, _escapeValveCodes);
+        _diffTracker.InitDb(false, _exclusionSet, _escapeValveCodes);
 
         _comparisonCache.Clear();
 

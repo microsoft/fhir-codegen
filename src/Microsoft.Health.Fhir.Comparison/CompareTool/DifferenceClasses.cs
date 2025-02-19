@@ -58,10 +58,8 @@ public class PackageMetadata
     public string PackageVersion { get; set; } = null!;
     public string CanonicalUrl { get; set; } = null!;
 
-    //[InverseProperty("SourcePackage")]
     public ICollection<PackageDiffPair> SourceDiffs { get; init; } = null!;
 
-    //[InverseProperty("TargetPackage")]
     public ICollection<PackageDiffPair> TargetDiffs { get; init; } = null!;
 
     public ICollection<ValueSetMetadata> ValueSets { get; init; } = null!;
@@ -70,11 +68,9 @@ public class PackageMetadata
 public class PackageDiffPair
 {
     [Key]
-    //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Key { get; set; }
 
     public int SourcePackageKey { get; set; }
-    //[ForeignKey(nameof(SourcePackageKey))]
     public PackageMetadata SourcePackage { get; init; } = null!;
 
     public int TargetPackageKey { get; set; }
@@ -83,17 +79,12 @@ public class PackageDiffPair
 }
 
 
-//[Index(nameof(ContainingPackage))]
-//[Index(nameof(CanonicalUrl))]
-//[Index(nameof(CanonicalUrl), nameof(Version))]
 public class ValueSetMetadata
 {
     [Key]
-    //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Key { get; set; }
 
     public int ContainingPackageKey { get; set; }
-    //[ForeignKey(nameof(ContainingPackageKey))]
     public PackageMetadata ContainingPackage { get; init; } = null!;
 
     public string CanonicalUrl { get; set; } = null!;
@@ -104,52 +95,41 @@ public class ValueSetMetadata
     public bool? HasEscapeValveCode { get; set; } = null;
     public string? Message { get; set; } = null;
 
-    public ICollection<ValueSetContent> ValueSetContents { get; init; } = null!;
+    public ICollection<ValueSetConcept> Concepts { get; init; } = null!;
 
-    //[InverseProperty("SourceVsMeta")]
     public ICollection<ValueSetPairComparison> ComparisonsAsSource { get; init; } = null!;
 
-    //[InverseProperty("TargetVsMeta")]
     public ICollection<ValueSetPairComparison> ComparisonsAsTarget { get; init; } = null!;
 }
 
-//[Table("ValueSetContents")]
-//[Index(nameof(VsMeta))]
-//[Index(nameof(System))]
-//[Index(nameof(Code))]
-//[Index(nameof(System), nameof(Code))]
-public class ValueSetContent
+public class ValueSetConcept
 {
     [Key]
-    //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Key { get; set; }
 
-    public int VsMetaKey { get; set; }
-    //[ForeignKey(nameof(VsMetaKey))]
-    public ValueSetMetadata VsMeta { get; init; } = null!;
+    public ICollection<ValueSetMetadata> ValueSets { get; set; } = null!;
 
     public string System { get; set; } = null!;
     public string Code { get; set; } = null!;
     public string? Display { get; set; } = null;
 }
 
-//[Table("ValueSetComparisons")]
-//[Index(nameof(SourceVsMeta))]
-//[Index(nameof(SourceName))]
-//[Index(nameof(SourceCanonical))]
-//[Index(nameof(SourceVersion))]
-//[Index(nameof(SourceCanonical), nameof(SourceVersion))]
-//[Index(nameof(SourceName), nameof(SourceVersion))]
-//[Index(nameof(TargetVsMeta))]
-//[Index(nameof(TargetName))]
-//[Index(nameof(TargetCanonical))]
-//[Index(nameof(TargetVersion))]
-//[Index(nameof(TargetCanonical), nameof(TargetVersion))]
-//[Index(nameof(TargetName), nameof(TargetVersion))]
+public class ValueSetConceptMapping
+{
+    [Key]
+    public int Key { get; set; }
+
+    public int VsMetaKey { get; set; }
+    public ValueSetMetadata VsMeta { get; init; } = null!;
+
+    public int VsConceptKey { get; set; }
+    public ValueSetConcept VsConcept { get; init; } = null!;
+}
+
+
 public class ValueSetPairComparison : IPairComparison<ValueSet>
 {
     [Key]
-    //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Key { get; set; }
 
     /// <summary>
@@ -159,7 +139,6 @@ public class ValueSetPairComparison : IPairComparison<ValueSet>
     public ValueSet? Source { get; set; } = null;
 
     public int SourceVsMetaKey { get; set; }
-    //[ForeignKey(nameof(SourceVsMetaKey))]
     public ValueSetMetadata SourceVsMeta { get; init; } = null!;
     public string SourceCanonical { get; set; } = null!;
     public string SourceName { get; set; } = null!;
@@ -173,7 +152,6 @@ public class ValueSetPairComparison : IPairComparison<ValueSet>
     public ValueSet? Target { get; set; } = null;
 
     public int TargetVsMetaKey { get; set; }
-    //[ForeignKey(nameof(TargetVsMetaKey))]
     public ValueSetMetadata TargetVsMeta { get; init; } = null!;
     public string? TargetCanonical { get; set; } = null;
     public string? TargetName { get; set; } = null;
@@ -209,23 +187,13 @@ public class ValueSetPairComparison : IPairComparison<ValueSet>
     public ICollection<ValueSetCodeComparisonRec> CodeComparisons { get; init; } = null!;
 }
 
-//[Table("ValueSetCodeComparisons")]
-//[Index(nameof(VsPairComparisonKey))]
-//[Index(nameof(SourceSystem))]
-//[Index(nameof(SourceCode))]
-//[Index(nameof(SourceSystem), nameof(SourceCode))]
-//[Index(nameof(TargetSystem))]
-//[Index(nameof(TargetCode))]
-//[Index(nameof(TargetSystem), nameof(TargetCode))]
 public class ValueSetCodeComparisonRec
 {
     [Key]
-    //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Key { get; set; }
 
     public int VsPairComparisonKey { get; set; }
 
-    //[ForeignKey(nameof(VsPairComparisonKey))]
     public ValueSetPairComparison VsPairComparison { get; init; } = null!;
 
     /// <summary>

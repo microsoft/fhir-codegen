@@ -33,7 +33,9 @@ public class DiffDbContext : DbContext
 
     public DbSet<ValueSetMetadata> ValueSets { get; set; }
 
-    public DbSet<ValueSetContent> ValueSetContents { get; set; }
+    public DbSet<ValueSetConcept> Concepts { get; set; }
+
+    public DbSet<ValueSetConceptMapping> ConceptMappings { get; set; }
 
     public DbSet<ValueSetPairComparison> ValueSetComparisons { get; set; }
     public DbSet<ValueSetCodeComparisonRec> ValueSetCodeComparisons { get; set; }
@@ -77,10 +79,9 @@ public class DiffDbContext : DbContext
         modelBuilder.Entity<ValueSetMetadata>()
             .HasOne(e => e.ContainingPackage);
         modelBuilder.Entity<ValueSetMetadata>()
-            .HasMany(e => e.ValueSetContents)
-            .WithOne(e => e.VsMeta)
-            .HasForeignKey(e => e.VsMetaKey)
-            .HasPrincipalKey(e => e.Key);
+            .HasMany(e => e.Concepts)
+            .WithMany(e => e.ValueSets)
+            .UsingEntity<ValueSetConceptMapping>();
         modelBuilder.Entity<ValueSetMetadata>()
             .HasMany(e => e.ComparisonsAsSource)
             .WithOne(e => e.SourceVsMeta)
@@ -101,20 +102,29 @@ public class DiffDbContext : DbContext
             .ToTable("ValueSets");
 
 
-        modelBuilder.Entity<ValueSetContent>()
-            .HasKey(nameof(ValueSetContent.Key));
-        modelBuilder.Entity<ValueSetContent>()
-            .HasOne(e => e.VsMeta);
-        modelBuilder.Entity<ValueSetContent>()
-            .HasIndex(nameof(ValueSetContent.VsMetaKey));
-        modelBuilder.Entity<ValueSetContent>()
-            .HasIndex(nameof(ValueSetContent.System));
-        modelBuilder.Entity<ValueSetContent>()
-            .HasIndex(nameof(ValueSetContent.Code));
-        modelBuilder.Entity<ValueSetContent>()
-            .HasIndex(nameof(ValueSetContent.System), nameof(ValueSetContent.Code));
-        modelBuilder.Entity<ValueSetContent>()
-            .ToTable("ValueSetContents");
+        modelBuilder.Entity<ValueSetConcept>()
+            .HasKey(nameof(ValueSetConcept.Key));
+        modelBuilder.Entity<ValueSetConcept>()
+            .HasMany(e => e.ValueSets)
+            .WithMany(e => e.Concepts)
+            .UsingEntity<ValueSetConceptMapping>();
+        modelBuilder.Entity<ValueSetConcept>()
+            .HasIndex(nameof(ValueSetConcept.System));
+        modelBuilder.Entity<ValueSetConcept>()
+            .HasIndex(nameof(ValueSetConcept.Code));
+        modelBuilder.Entity<ValueSetConcept>()
+            .HasIndex(nameof(ValueSetConcept.System), nameof(ValueSetConcept.Code));
+        modelBuilder.Entity<ValueSetConcept>()
+            .ToTable("Concepts");
+
+        modelBuilder.Entity<ValueSetConceptMapping>()
+            .HasKey(nameof(ValueSetConceptMapping.Key));
+        modelBuilder.Entity<ValueSetConceptMapping>()
+            .HasIndex(nameof(ValueSetConceptMapping.VsMetaKey));
+        modelBuilder.Entity<ValueSetConceptMapping>()
+            .HasIndex(nameof(ValueSetConceptMapping.VsConceptKey));
+        modelBuilder.Entity<ValueSetConceptMapping>()
+            .ToTable("ValueSetConceptMappings");
 
 
         modelBuilder.Entity<ValueSetPairComparison>()
