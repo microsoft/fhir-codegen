@@ -254,6 +254,48 @@ public class ValueSetCodeComparisonRec
 
 
 
+public class StructureDefinitionMetadata
+{
+    [Key]
+    public int Key { get; set; }
+
+    public int ContainingPackageKey { get; set; }
+    public PackageMetadata ContainingPackage { get; init; } = null!;
+
+    public string CanonicalUrl { get; set; } = null!;
+    public string Name { get; set; } = null!;
+    public string Version { get; set; } = null!;
+    public string Description { get; set; } = null!;
+    public string? Message { get; set; } = null;
+
+    public FhirArtifactClassEnum ArtifactClass { get; set; } = FhirArtifactClassEnum.Unknown;
+
+    public ICollection<StructureElement> Elements { get; init; } = null!;
+
+    //public ICollection<ValueSetPairComparison> ComparisonsAsSource { get; init; } = null!;
+
+    //public ICollection<ValueSetPairComparison> ComparisonsAsTarget { get; init; } = null!;
+}
+
+
+public class StructureElement
+{
+    [Key]
+    public int Key { get; set; }
+
+    public int StructureKey { get; set; }
+    public StructureDefinitionMetadata Structure { get; init; } = null!;
+
+
+    public int FieldOrder { get; set; } = -1;
+    public string Id { get; set; } = null!;
+    public string Path { get; set; } = null!;
+}
+
+
+
+
+
 
 /// <summary>
 /// Represents a comparison between a source and target FHIR model element.

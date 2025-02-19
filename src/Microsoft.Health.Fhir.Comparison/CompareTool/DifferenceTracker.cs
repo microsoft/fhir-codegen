@@ -205,10 +205,11 @@ public class DifferenceTracker : IDisposable
         //    });
         //}
 
-        // load our value sets
+        // load contents
         foreach ((DefinitionCollection dc, DcInfoRec info) in _definitions)
         {
             loadValueSets(dc, _exclusionSet, _escapeValveCodes);
+            loadStructures(dc, _exclusionSet);
         }
 
         _db.SaveChanges();
@@ -219,14 +220,6 @@ public class DifferenceTracker : IDisposable
         HashSet<string> _exclusionSet,
         HashSet<string> _escapeValveCodes)
     {
-        //if (_dbConnection == null)
-        //{
-        //    throw new Exception("Database connection not initialized.");
-        //}
-
-        //// make sure our value set metadata table exists
-        //ValueSetMetadata.CreateTable(_dbConnection);
-
         // get the package metadata for this definition collection
         PackageMetadata pm = _db.Packages.Single(pm => (pm.PackageId == dc.MainPackageId) && (pm.PackageVersion == dc.MainPackageVersion));
 
@@ -331,6 +324,85 @@ public class DifferenceTracker : IDisposable
             // save changes
             _db.SaveChanges();
         }
+    }
+
+    private void loadStructures(
+        DefinitionCollection dc,
+        HashSet<string> _exclusionSet)
+    {
+        // get the package metadata for this definition collection
+        PackageMetadata pm = _db.Packages.Single(pm => (pm.PackageId == dc.MainPackageId) && (pm.PackageVersion == dc.MainPackageVersion));
+
+        // iterate over the types of structures
+        foreach ((IEnumerable<StructureDefinition> structures, FhirArtifactClassEnum cgClass) in getStructures(dc))
+        {
+            foreach (StructureDefinition sd in structures)
+            {
+                // will not further process value sets we know we will not process
+                if (_exclusionSet.Contains(sd.Url))
+                {
+                    // still add a metadata record
+                    StructureDefinitionMetadata sdmExcluded = new()
+                    {
+                        ContainingPackage = pm,
+                        CanonicalUrl = sd.Url,
+                        Name = sd.Name,
+                        Version = sd.Version,
+                        Description = sd.Description ?? string.Empty,
+                        Message = "Manually excluded",
+                    };
+
+                    _db.Add(sdmExcluded);
+
+                    continue;
+                }
+
+                // create a new metadata record
+                StructureDefinitionMetadata sdm = new()
+                {
+                    ContainingPackage = pm,
+                    CanonicalUrl = sd.Url,
+                    Name = sd.Name,
+                    Version = sd.Version,
+                    Description = sd.Description ?? string.Empty,
+                    Message = string.Empty,
+                };
+
+                // insert and update our local copy for the id
+                _db.Add(sdm);
+
+                // iterate over all the elements of the structure
+                foreach (ElementDefinition ed in sd.cgElements(skipSlices: false))
+                {
+                    StructureElement se = new()
+                    {
+                        Structure = sdm,
+                        FieldOrder = ed.cgFieldOrder(),
+                        Id = ed.ElementId,
+                        Path = ed.Path,
+                    };
+
+                    _db.Add(se);
+
+                    // TODO: finish structure properties
+                    // TODO: add types
+                }
+            }
+        }
+
+        // save changes
+        _db.SaveChanges();
+
+        return;
+
+        (IEnumerable<StructureDefinition> structures, FhirArtifactClassEnum cgClass)[] getStructures(DefinitionCollection dc) => [
+            (dc.PrimitiveTypesByName.Values, FhirArtifactClassEnum.PrimitiveType),
+            (dc.ComplexTypesByName.Values, FhirArtifactClassEnum.ComplexType),
+            (dc.ResourcesByName.Values, FhirArtifactClassEnum.Resource),
+            (dc.ExtensionsByUrl.Values, FhirArtifactClassEnum.Extension),
+            (dc.ProfilesByUrl.Values, FhirArtifactClassEnum.Profile),
+            (dc.LogicalModelsByUrl.Values, FhirArtifactClassEnum.LogicalModel),
+            ];
     }
 
 
