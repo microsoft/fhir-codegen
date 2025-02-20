@@ -14,22 +14,16 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 
-namespace Microsoft.Health.Fhir.Comparison.CompareTool;
+namespace Microsoft.Health.Fhir.Comparison.Models;
 
-public class DiffDbContext : DbContext
+public class ComparisonDbContext : DbContext
 {
     public string DbPath { get; private set; }
 
-    public DiffDbContext(string dbPath)
+    public ComparisonDbContext(string dbPath)
     {
         DbPath = dbPath;
     }
-
-    //public DiffDbContext(string dbPath, DbContextOptions<DiffDbContext> options)
-    //    : base(options)
-    //{
-    //    DbPath = dbPath;
-    //}
 
     public DbSet<DbFhirPackage> Packages { get; set; }
     public DbSet<DbFhirPackageComparisonPair> PackageDiffPairs { get; set; }
@@ -40,8 +34,12 @@ public class DiffDbContext : DbContext
     public DbSet<ValueSetPairComparison> ValueSetComparisons { get; set; }
     public DbSet<ValueSetCodeComparisonRec> ValueSetCodeComparisons { get; set; }
 
-    public DbSet<DbStructureDefinition> StructureDefinitions { get; set; }
-    public DbSet<DbElementDefinition> ElementDefinitions { get; set; }
+
+    public DbSet<DbStructureDefinition> Structures { get; set; }
+    public DbSet<DbElementDefinition> Elements { get; set; }
+    public DbSet<DbElementType> ElementTypes { get; set; }
+
+    public DbSet<DbElementTypeMap> ElementTypeMappings { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder options) =>
         options
@@ -53,16 +51,6 @@ public class DiffDbContext : DbContext
         modelBuilder.Entity<DbFhirPackage>()
             .HasKey(nameof(DbFhirPackage.Key));
         modelBuilder.Entity<DbFhirPackage>()
-            .HasMany(e => e.SourceDiffs)
-            .WithOne(e => e.FhirPackage)
-            .HasForeignKey(e => e.FhirPackageKey)
-            .HasPrincipalKey(e => e.Key);
-        modelBuilder.Entity<DbFhirPackage>()
-            .HasMany(e => e.TargetDiffs)
-            .WithOne(e => e.TargetPackage)
-            .HasForeignKey(e => e.TargetPackageKey)
-            .HasPrincipalKey(e => e.Key);
-        modelBuilder.Entity<DbFhirPackage>()
             .HasMany(e => e.ValueSets)
             .WithOne(e => e.FhirPackage)
             .HasForeignKey(e => e.FhirPackageKey)
@@ -73,7 +61,15 @@ public class DiffDbContext : DbContext
         modelBuilder.Entity<DbFhirPackageComparisonPair>()
             .HasKey(nameof(DbFhirPackageComparisonPair.Key));
         modelBuilder.Entity<DbFhirPackageComparisonPair>()
-            .HasOne(e => e.FhirPackage);
+            .HasOne(e => e.SourcePackage)
+            .WithMany(e => e.SourceDiffs)
+            .HasForeignKey(e => e.SourcePackageKey)
+            .HasPrincipalKey(e => e.Key);
+        modelBuilder.Entity<DbFhirPackageComparisonPair>()
+            .HasOne(e => e.TargetPackage)
+            .WithMany(e => e.TargetDiffs)
+            .HasForeignKey(e => e.TargetPackageKey)
+            .HasPrincipalKey(e => e.Key);
         modelBuilder.Entity<DbFhirPackageComparisonPair>()
             .ToTable("FhirPackageComparisonPairs");
 
@@ -122,13 +118,13 @@ public class DiffDbContext : DbContext
             .HasForeignKey(e => e.ValueSetKey);
         modelBuilder.Entity<DbValueSet>()
             .HasMany(e => e.ComparisonsAsSource)
-            .WithOne(e => e.SourceVsMeta)
-            .HasForeignKey(e => e.SourceVsMetaKey)
+            .WithOne(e => e.SourceValueSet)
+            .HasForeignKey(e => e.SourceValueSetKey)
             .HasPrincipalKey(e => e.Key);
         modelBuilder.Entity<DbValueSet>()
             .HasMany(e => e.ComparisonsAsTarget)
-            .WithOne(e => e.TargetVsMeta)
-            .HasForeignKey(e => e.TargetVsMetaKey)
+            .WithOne(e => e.TargetValueSet)
+            .HasForeignKey(e => e.TargetValueSetKey)
             .HasPrincipalKey(e => e.Key);
         modelBuilder.Entity<DbValueSet>()
             .HasIndex(nameof(DbValueSet.FhirPackageKey));
@@ -146,7 +142,6 @@ public class DiffDbContext : DbContext
             .HasIndex(nameof(DbValueSet.FhirPackageKey), nameof(DbValueSet.Name));
         modelBuilder.Entity<DbValueSet>()
             .ToTable("ValueSets");
-
 
         modelBuilder.Entity<DbValueSetConcept>()
             .HasKey(nameof(DbValueSetConcept.Key));
@@ -177,16 +172,20 @@ public class DiffDbContext : DbContext
         modelBuilder.Entity<ValueSetPairComparison>()
             .HasKey(nameof(ValueSetPairComparison.Key));
         modelBuilder.Entity<ValueSetPairComparison>()
-            .HasOne(e => e.SourceVsMeta);
+            .HasOne(e => e.SourceFhirPackage);
         modelBuilder.Entity<ValueSetPairComparison>()
-            .HasOne(e => e.TargetVsMeta);
+            .HasOne(e => e.SourceValueSet);
+        modelBuilder.Entity<ValueSetPairComparison>()
+            .HasOne(e => e.TargetFhirPackage);
+        modelBuilder.Entity<ValueSetPairComparison>()
+            .HasOne(e => e.TargetValueSet);
         modelBuilder.Entity<ValueSetPairComparison>()
             .HasMany(e => e.CodeComparisons)
             .WithOne(e => e.VsPairComparison)
             .HasForeignKey(e => e.VsPairComparisonKey)
             .HasPrincipalKey(e => e.Key);
         modelBuilder.Entity<ValueSetPairComparison>()
-            .HasIndex(nameof(ValueSetPairComparison.SourceVsMetaKey));
+            .HasIndex(nameof(ValueSetPairComparison.SourceValueSetKey));
         modelBuilder.Entity<ValueSetPairComparison>()
             .HasIndex(nameof(ValueSetPairComparison.SourceName));
         modelBuilder.Entity<ValueSetPairComparison>()
@@ -198,7 +197,7 @@ public class DiffDbContext : DbContext
         modelBuilder.Entity<ValueSetPairComparison>()
             .HasIndex(nameof(ValueSetPairComparison.SourceName), nameof(ValueSetPairComparison.SourceVersion));
         modelBuilder.Entity<ValueSetPairComparison>()
-            .HasIndex(nameof(ValueSetPairComparison.TargetVsMetaKey));
+            .HasIndex(nameof(ValueSetPairComparison.TargetValueSetKey));
         modelBuilder.Entity<ValueSetPairComparison>()
             .HasIndex(nameof(ValueSetPairComparison.TargetName));
         modelBuilder.Entity<ValueSetPairComparison>()
@@ -234,11 +233,6 @@ public class DiffDbContext : DbContext
             .ToTable("ValueSetConceptComparisons");
 
 
-
-
-
-
-
         modelBuilder.Entity<DbStructureDefinition>()
             .HasKey(nameof(DbStructureDefinition.Key));
         modelBuilder.Entity<DbStructureDefinition>()
@@ -257,16 +251,6 @@ public class DiffDbContext : DbContext
             .HasMany(e => e.Elements)
             .WithOne(e => e.Structure)
             .HasForeignKey(e => e.StructureKey);
-        //modelBuilder.Entity<StructureDefinitionMetadata>()
-        //    .HasMany(e => e.ComparisonsAsSource)
-        //    .WithOne(e => e.SourceSdMeta)
-        //    .HasForeignKey(e => e.SourceSdMetaKey)
-        //    .HasPrincipalKey(e => e.Key);
-        //modelBuilder.Entity<StructureDefinitionMetadata>()
-        //    .HasMany(e => e.ComparisonsAsTarget)
-        //    .WithOne(e => e.TargetSdMeta)
-        //    .HasForeignKey(e => e.TargetSdMetaKey)
-        //    .HasPrincipalKey(e => e.Key);
         modelBuilder.Entity<DbStructureDefinition>()
             .HasIndex(nameof(DbStructureDefinition.FhirPackageKey));
         modelBuilder.Entity<DbStructureDefinition>()
@@ -284,7 +268,6 @@ public class DiffDbContext : DbContext
         modelBuilder.Entity<DbStructureDefinition>()
             .ToTable("Structures");
 
-
         modelBuilder.Entity<DbElementDefinition>()
             .HasKey(nameof(DbElementDefinition.Key));
         modelBuilder.Entity<DbElementDefinition>()
@@ -292,13 +275,67 @@ public class DiffDbContext : DbContext
             .WithMany(e => e.Elements)
             .HasForeignKey(e => e.StructureKey);
         modelBuilder.Entity<DbElementDefinition>()
+            .HasMany(e => e.ElementTypes)
+            .WithMany(e => e.Elements)
+            .UsingEntity<DbElementTypeMap>(
+                l => l.HasOne<DbElementType>().WithMany(e => e.ElementTypeMappings).HasPrincipalKey(e => e.Key).HasForeignKey(e => e.ElementKey),
+                r => r.HasOne<DbElementDefinition>().WithMany(e => e.ElementTypeMappings).HasPrincipalKey(e => e.Key).HasForeignKey(e => e.ElementTypeKey));
+        modelBuilder.Entity<DbElementDefinition>()
+            .Property(e => e.ValueSetBindingStrength)
+            .HasConversion(
+                v => v.HasValue ? EnumUtility.GetLiteral(v.Value) : null,
+                v => EnumUtility.ParseLiteral<Hl7.Fhir.Model.BindingStrength>(v, true));
+        modelBuilder.Entity<DbElementDefinition>()
             .HasIndex(nameof(DbElementDefinition.Id));
         modelBuilder.Entity<DbElementDefinition>()
             .HasIndex(nameof(DbElementDefinition.Path));
         modelBuilder.Entity<DbElementDefinition>()
-            .HasIndex(nameof(DbElementDefinition.FieldOrder));
+            .HasIndex(nameof(DbElementDefinition.ResourceFieldOrder));
         modelBuilder.Entity<DbElementDefinition>()
             .ToTable("Elements");
+
+
+        modelBuilder.Entity<DbElementType>()
+            .HasKey(nameof(DbElementType.Key));
+        modelBuilder.Entity<DbElementType>()
+            .HasMany(e => e.Elements)
+            .WithMany(e => e.ElementTypes)
+            .UsingEntity<DbElementTypeMap>(
+                l => l.HasOne<DbElementDefinition>().WithMany(e => e.ElementTypeMappings).HasPrincipalKey(e => e.Key).HasForeignKey(e => e.ElementTypeKey),
+                r => r.HasOne<DbElementType>().WithMany(e => e.ElementTypeMappings).HasPrincipalKey(e => e.Key).HasForeignKey(e => e.ElementKey));
+        modelBuilder.Entity<DbElementType>()
+            .Property(e => e.ValueSetBindingStrength)
+            .HasConversion(
+                v => v.HasValue ? EnumUtility.GetLiteral(v.Value) : null,
+                v => EnumUtility.ParseLiteral<Hl7.Fhir.Model.BindingStrength>(v, true));
+        modelBuilder.Entity<DbElementType>()
+            .HasIndex(nameof(DbElementType.Name));
+        modelBuilder.Entity<DbElementType>()
+            .HasIndex(nameof(DbElementType.Name), nameof(DbElementType.Profile), nameof(DbElementType.TargetProfile));
+        modelBuilder.Entity<DbElementType>()
+            .HasIndex(
+                nameof(DbElementType.Name),
+                nameof(DbElementType.Profile),
+                nameof(DbElementType.TargetProfile),
+                nameof(DbElementType.ValueSetBindingStrength),
+                nameof(DbElementType.BindingValueSet));
+        modelBuilder.Entity<DbElementType>()
+            .ToTable("ElementTypes");
+
+        modelBuilder.Entity<DbElementTypeMap>()
+            .HasKey(nameof(DbElementTypeMap.Key));
+        modelBuilder.Entity<DbElementTypeMap>()
+            .HasOne(e => e.Element)
+            .WithMany(e => e.ElementTypeMappings)
+            .HasForeignKey(e => e.ElementKey)
+            .HasPrincipalKey(e => e.Key);
+        modelBuilder.Entity<DbElementTypeMap>()
+            .HasOne(e => e.ElementType)
+            .WithMany(e => e.ElementTypeMappings)
+            .HasForeignKey(e => e.ElementTypeKey)
+            .HasPrincipalKey(e => e.Key);
+        modelBuilder.Entity<DbElementTypeMap>()
+            .ToTable("ElementTypeMappings");
 
 
 

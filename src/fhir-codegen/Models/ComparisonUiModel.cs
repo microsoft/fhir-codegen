@@ -9,8 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
-using Microsoft.Health.Fhir.Comparison.CompareTool;
 using Microsoft.Health.Fhir.CodeGen.Models;
+using Microsoft.Health.Fhir.Comparison.Models;
 
 namespace fhir_codegen.Models;
 

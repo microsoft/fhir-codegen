@@ -34,6 +34,7 @@ using Microsoft.Health.Fhir.Comparison.XVer;
 using static fhir_codegen_shared.LaunchUtils;
 using HarfBuzzSharp;
 using Microsoft.Health.Fhir.CodeGen.SqlOnFhir;
+using Microsoft.Health.Fhir.Comparison.Models;
 
 namespace fhir_codegen;
 
@@ -262,7 +263,7 @@ public class Program
         return 0;
     }
 
-    public static async Task<int> DoXVer(ParseResult pr, string command, string? subCommand)
+    public static Task<int> DoXVer(ParseResult pr, string command, string? subCommand)
     {
         try
         {
@@ -272,28 +273,7 @@ public class Program
             // parse the arguments into the configuration object
             config.Parse(pr);
 
-            List<DefinitionCollection> packages = [];
-
-            foreach (string directive in config.ComparePackages)
-            {
-                if (FhirPackageUtils.PackageIsFhirCore(directive))
-                {
-                    throw new Exception($"Package {directive} is not a FHIR Core package!");
-                }
-
-                // create a loader because these are all different FHIR core versions
-                PackageLoader loader = new(config, new()
-                {
-                    JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
-                });
-
-                DefinitionCollection loaded = await loader.LoadPackages([directive])
-                    ?? throw new Exception($"Could not load package: {directive}");
-
-                packages.Add(loaded);
-            }
-
-            XVerProcessor xVerProcessor = new(config, packages);
+            XVerProcessor xVerProcessor = new(config);
             xVerProcessor.ProcessCommand(subCommand);
         }
         catch (Exception ex)
@@ -308,7 +288,7 @@ public class Program
             }
         }
 
-        return 0;
+        return Task.FromResult(0);
     }
 
 

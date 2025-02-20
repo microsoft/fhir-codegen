@@ -24,6 +24,7 @@ using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
+using Microsoft.Health.Fhir.Comparison.Models;
 using Microsoft.Health.Fhir.MappingLanguage;
 
 namespace Microsoft.Health.Fhir.Comparison.CompareTool;

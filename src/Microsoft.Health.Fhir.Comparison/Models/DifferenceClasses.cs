@@ -20,7 +20,7 @@ using Microsoft.Health.Fhir.CodeGen.Utils;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 
-namespace Microsoft.Health.Fhir.Comparison.CompareTool;
+namespace Microsoft.Health.Fhir.Comparison.Models;
 
 internal static class ComparisonUtils
 {
@@ -44,97 +44,23 @@ public enum ComparisonIssueCode
 
 public class RelationshipLookup
 {
-    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship Relationship { get; set; }
+    public required ConceptMap.ConceptMapRelationship Relationship { get; set; }
     public required string Name { get; set; }
 }
 
-public class DbFhirPackage
-{
-    [Key]
-    public int Key { get; set; }
 
-    public required string Name { get; set; } = null!;
-    public required string PackageId { get; set; } = null!;
-    public required string PackageVersion { get; set; } = null!;
-    public required string CanonicalUrl { get; set; } = null!;
-
-    public ICollection<DbFhirPackageComparisonPair> SourceDiffs { get; init; } = null!;
-
-    public ICollection<DbFhirPackageComparisonPair> TargetDiffs { get; init; } = null!;
-
-    public ICollection<DbValueSet> ValueSets { get; init; } = null!;
-}
 
 public class DbFhirPackageComparisonPair
 {
     [Key]
     public int Key { get; set; }
 
-    public int FhirPackageKey { get; set; }
-    public DbFhirPackage FhirPackage { get; init; } = null!;
+    public int SourcePackageKey { get; set; }
+    public DbFhirPackage SourcePackage { get; init; } = null!;
 
     public int TargetPackageKey { get; set; }
     //[ForeignKey(nameof(TargetPackageKey))]
     public DbFhirPackage TargetPackage { get; init; } = null!;
-}
-
-public abstract class DbCanonicalResource
-{
-    [Key]
-    public int Key { get; set; }
-
-    public int FhirPackageKey { get; set; }
-    public required DbFhirPackage FhirPackage { get; init; } = null!;
-
-    public required string Id { get; set; } = null!;
-    public required string Url { get; set; } = null!;
-    public required string Name { get; set; } = null!;
-    public required string Version { get; set; } = null!;
-    public required Hl7.Fhir.Model.PublicationStatus? Status { get; set; } = null;
-    public required string? Title { get; set; } = null;
-    public required string? Description { get; set; } = null;
-    public required string? Purpose { get; set; } = null;
-}
-
-
-public class DbValueSet : DbCanonicalResource
-{
-    public required bool CanExpand { get; set; }
-    public required bool? HasEscapeValveCode { get; set; } = null;
-    public required string? Message { get; set; } = null;
-
-    public required int BindingCountCore { get; set; } = -1;
-    public required Hl7.Fhir.Model.BindingStrength? StrongestBindingCore { get; set; } = null;
-    public required Hl7.Fhir.Model.BindingStrength? StrongestBindingCoreCode { get; set; } = null;
-    public required Hl7.Fhir.Model.BindingStrength? StrongestBindingCoreCoding { get; set; } = null;
-
-    public required int BindingCountExtended { get; set; } = -1;
-    public required Hl7.Fhir.Model.BindingStrength? StrongestBindingExtended { get; set; } = null;
-    public required Hl7.Fhir.Model.BindingStrength? StrongestBindingExtendedCode { get; set; } = null;
-    public required Hl7.Fhir.Model.BindingStrength? StrongestBindingExtendedCoding { get; set; } = null;
-
-    public ICollection<DbValueSetConcept> Concepts { get; init; } = null!;
-
-    public ICollection<ValueSetPairComparison> ComparisonsAsSource { get; init; } = null!;
-
-    public ICollection<ValueSetPairComparison> ComparisonsAsTarget { get; init; } = null!;
-}
-
-public class DbValueSetConcept
-{
-    [Key]
-    public int Key { get; set; }
-
-    public int ValueSetKey { get; set; }
-    public required DbValueSet ValueSet { get; set; } = null!;
-
-    public int FhirPackageKey { get; set; }
-    public required DbFhirPackage FhirPackage { get; init; } = null!;
-
-
-    public required string System { get; set; } = null!;
-    public required string Code { get; set; } = null!;
-    public required string? Display { get; set; } = null;
 }
 
 public class ValueSetPairComparison : IPairComparison<ValueSet>
@@ -148,8 +74,11 @@ public class ValueSetPairComparison : IPairComparison<ValueSet>
     [NotMapped]
     public ValueSet? Source { get; set; } = null;
 
-    public int SourceVsMetaKey { get; set; }
-    public required DbValueSet SourceVsMeta { get; init; } = null!;
+    public int SourceFhirPackageKey { get; set; }
+    public DbFhirPackage SourceFhirPackage { get; init; } = null!;
+
+    public int SourceValueSetKey { get; set; }
+    public required DbValueSet SourceValueSet { get; init; } = null!;
     public required string SourceCanonical { get; set; } = null!;
     public required string SourceName { get; set; } = null!;
     public required string? SourceVersion { get; set; } = null;
@@ -161,8 +90,10 @@ public class ValueSetPairComparison : IPairComparison<ValueSet>
     [NotMapped]
     public ValueSet? Target { get; set; } = null;
 
-    public int TargetVsMetaKey { get; set; }
-    public required DbValueSet TargetVsMeta { get; init; } = null!;
+    public int TargetFhirPackageKey { get; set; }
+    public DbFhirPackage TargetFhirPackage { get; init; } = null!;
+    public int TargetValueSetKey { get; set; }
+    public required DbValueSet TargetValueSet { get; init; } = null!;
     public required string? TargetCanonical { get; set; } = null;
     public required string? TargetName { get; set; } = null;
     public required string? TargetVersion { get; set; } = null;
@@ -173,7 +104,7 @@ public class ValueSetPairComparison : IPairComparison<ValueSet>
     /// <summary>
     /// Gets or initializes the relationship between the source and target elements.
     /// </summary>
-    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; set; } = null;
+    public required ConceptMap.ConceptMapRelationship? Relationship { get; set; } = null;
 
     /// <summary>
     /// Gets or initializes the issue code for the comparison.
@@ -244,7 +175,7 @@ public class ValueSetCodeComparisonRec
     /// <summary>
     /// Gets or sets the relationship.
     /// </summary>
-    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; set; } = null;
+    public required ConceptMap.ConceptMapRelationship? Relationship { get; set; } = null;
 
     /// <summary>
     /// Gets or sets the comment.
@@ -264,34 +195,6 @@ public class ValueSetCodeComparisonRec
 
 
 
-public class DbStructureDefinition : DbCanonicalResource
-{
-    public required string? Comment { get; set; } = null;
-    public required string? Message { get; set; } = null;
-
-    public required FhirArtifactClassEnum ArtifactClass { get; set; } = FhirArtifactClassEnum.Unknown;
-
-    public ICollection<DbElementDefinition> Elements { get; init; } = null!;
-
-    //public ICollection<ValueSetPairComparison> ComparisonsAsSource { get; init; } = null!;
-
-    //public ICollection<ValueSetPairComparison> ComparisonsAsTarget { get; init; } = null!;
-}
-
-
-public class DbElementDefinition
-{
-    [Key]
-    public int Key { get; set; }
-
-    public int StructureKey { get; set; }
-    public required DbStructureDefinition Structure { get; init; } = null!;
-
-
-    public required int FieldOrder { get; set; } = -1;
-    public required string Id { get; set; } = null!;
-    public required string Path { get; set; } = null!;
-}
 
 
 
@@ -304,7 +207,7 @@ public class DbElementDefinition
 /// <typeparam name="T">The type of the FHIR model element being compared.</typeparam>
 /// <remarks>Used by FhirCoreComparer</remarks>
 public interface IPairComparison<T>
-    where T : Hl7.Fhir.Model.Base
+    where T : Base
 {
     int Key { get; set; }
 
@@ -329,7 +232,7 @@ public interface IPairComparison<T>
     /// <summary>
     /// Gets or initializes the relationship between the source and target elements.
     /// </summary>
-    Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; set; }
+    ConceptMap.ConceptMapRelationship? Relationship { get; set; }
 
     /// <summary>
     /// Gets or initializes the issue code for the comparison.
@@ -353,7 +256,7 @@ public interface IPairComparison<T>
 
 public record class ComparisonBase
 {
-    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; init; }
+    public required ConceptMap.ConceptMapRelationship? Relationship { get; init; }
     public required string Message { get; init; }
 
     public virtual string GetStatusString() => Relationship?.ToString() ?? "-";
@@ -396,7 +299,7 @@ public record class ValueSetComparison : ComparisonTopLevelBase<ValueSetInfoRec>
 
     public override string GetStatusString()
     {
-        if ((Target == null) || (ConceptComparisons.Count == 0))
+        if (Target == null || ConceptComparisons.Count == 0)
         {
             return "DoesNotExistInTarget";
         }
@@ -428,7 +331,7 @@ public record class StructureComparison : ComparisonTopLevelBase<StructureInfoRe
 
     public override string GetStatusString()
     {
-        if ((Target == null) || (ElementComparisons.Count == 0))
+        if (Target == null || ElementComparisons.Count == 0)
         {
             return "DoesNotExistInTarget";
         }
@@ -504,7 +407,7 @@ public record class ElementInfoRec
     public required int MinCardinality { get; init; }
     public required int MaxCardinality { get; init; }
     public required string MaxCardinalityString { get; init; }
-    public required Hl7.Fhir.Model.BindingStrength? ValueSetBindingStrength { get; init; }
+    public required BindingStrength? ValueSetBindingStrength { get; init; }
     public required string BindingValueSet { get; init; }
     public required Dictionary<string, ElementTypeInfoRec> Types { get; init; }
 }

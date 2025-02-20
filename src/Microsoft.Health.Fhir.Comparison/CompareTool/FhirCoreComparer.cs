@@ -10,7 +10,6 @@ using System.Text;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Utility;
 using Microsoft.Extensions.Logging;
-using Microsoft.Health.Fhir.Comparison.CompareTool;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGen.Language;
@@ -22,6 +21,7 @@ using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using System.Text.RegularExpressions;
 using System.Collections;
+using Microsoft.Health.Fhir.Comparison.Models;
 
 
 namespace Microsoft.Health.Fhir.Comparison.CompareTool;

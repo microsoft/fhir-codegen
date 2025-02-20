@@ -23,6 +23,7 @@ using System.Linq;
 using System.Data.Common;
 using System.Collections.Concurrent;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
+using Microsoft.Health.Fhir.Comparison.Models;
 
 
 
@@ -72,7 +73,7 @@ public class XVerProcessor
 
     private ConfigXVer _config;
     private ILogger _logger;
-    private DefinitionCollection[] _definitions;
+    private DefinitionCollection[] _definitions = [];
     private Dictionary<string, int> _definitionIndexes = [];
     private Dictionary<(string left, string right), FhirCoreComparer> _comparisonCache;
     private DifferenceTracker? _diffTracker = null;
@@ -80,22 +81,56 @@ public class XVerProcessor
 
     private string _dbPath;
 
-    public XVerProcessor(ConfigXVer config, IEnumerable<DefinitionCollection> definitions)
+    public XVerProcessor(ConfigXVer config)
     {
         _config = config;
         _logger = config.LogFactory.CreateLogger<XVerProcessor>();
-        _definitions = [.. definitions];
-        _definitions.ForEach((DefinitionCollection dc, int i) => { _definitionIndexes.Add(dc.Key, i); return true; });
-        _comparisonCache = [];
 
         // TODO(ginoc): need to figure out how to determine in-place vs. output
         _dbPath = Path.Combine(_config.CrossVersionMapSourcePath, "db");
+
+        _comparisonCache = [];
+    }
+
+    private void loadDefinitionCollections()
+    {
+        List<DefinitionCollection> definitions = [];
+
+        foreach (string directive in _config.ComparePackages)
+        {
+            if (FhirPackageUtils.PackageIsFhirCore(directive))
+            {
+                throw new Exception($"Package {directive} is not a FHIR Core package!");
+            }
+
+            // create a loader because these are all different FHIR core versions
+            using CodeGen.Loader.PackageLoader loader = new(_config, new()
+            {
+                JsonModel = CodeGen.Loader.LoaderOptions.JsonDeserializationModel.SystemTextJson,
+            });
+
+            DefinitionCollection loaded = loader.LoadPackages([directive]).Result
+                ?? throw new Exception($"Could not load package: {directive}");
+
+            definitions.Add(loaded);
+        }
+
+        _definitions = definitions.ToArray();
+        _definitions.ForEach((DefinitionCollection dc, int i) => { _definitionIndexes.Add(dc.Key, i); return true; });
     }
 
     public void ProcessCommand(string? command)
     {
+        // for now, load package contents for all commands
+        loadDefinitionCollections();
+
         switch (command)
         {
+            case "create-content-db":
+                CreateContentDatabase();
+                //LoadDiffDatabases();
+                break;
+
             case "convert-from-maps":
                 LoadFhirCrossVersionMaps(preferV1Maps: true);
                 //LoadDiffDatabases();
@@ -147,6 +182,12 @@ public class XVerProcessor
                 WriteComparisonDocs();
                 break;
         }
+    }
+
+    public void CreateContentDatabase()
+    {
+        ComparisonDatabase contentDatabase = new(_definitions, _dbPath);
+        contentDatabase.ExportCollectionContents(_exclusionSet, _escapeValveCodes);
     }
 
     /// <summary>

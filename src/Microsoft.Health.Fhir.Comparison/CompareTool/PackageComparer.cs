@@ -29,11 +29,12 @@ using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using static Hl7.Fhir.Model.VerificationResult;
 using static Microsoft.Health.Fhir.Comparison.CompareTool.PackageComparer;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
-using static Microsoft.Health.Fhir.Comparison.CompareTool.ComparisonUtils;
+using static Microsoft.Health.Fhir.Comparison.Models.ComparisonUtils;
 using Hl7.Fhir.Rest;
 using Hl7.Fhir.Serialization;
 using System.Resources;
 using Hl7.Fhir.Specification.Snapshot;
+using Microsoft.Health.Fhir.Comparison.Models;
 
 
 namespace Microsoft.Health.Fhir.Comparison.CompareTool;

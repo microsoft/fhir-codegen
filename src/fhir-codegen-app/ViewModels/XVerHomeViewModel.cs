@@ -55,7 +55,7 @@ public partial class XVerHomeViewModel : ViewModelBase, INavigableViewModel
         }
     }
 
-    private async void doCrossVersionComparison(ConfigXVer xvc)
+    private void doCrossVersionComparison(ConfigXVer xvc)
     {
         Busy = true;
         Message = "Starting cross version comparison...";
@@ -64,28 +64,7 @@ public partial class XVerHomeViewModel : ViewModelBase, INavigableViewModel
         
         try
         {
-            List<DefinitionCollection> packages = [];
-
-            foreach (string directive in xvc.ComparePackages)
-            {
-                if (FhirPackageUtils.PackageIsFhirCore(directive))
-                {
-                    throw new Exception($"Package {directive} is not a FHIR Core package!");
-                }
-
-                // create a loader because these are all different FHIR core versions
-                PackageLoader loader = new(xvc, new()
-                {
-                    JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
-                });
-
-                DefinitionCollection loaded = await loader.LoadPackages([directive])
-                    ?? throw new Exception($"Could not load package: {directive}");
-
-                packages.Add(loaded);
-            }
-
-            XVerProcessor xVerProcessor = new(xvc, packages);
+            XVerProcessor xVerProcessor = new(xvc);
             xVerProcessor.Compare();
 
             complete = true;

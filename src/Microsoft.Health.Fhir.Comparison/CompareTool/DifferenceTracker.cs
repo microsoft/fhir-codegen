@@ -28,6 +28,7 @@ using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using Microsoft.Health.Fhir.CodeGenCommon.Utils;
+using Microsoft.Health.Fhir.Comparison.Models;
 using Newtonsoft.Json.Linq;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 
@@ -38,8 +39,6 @@ internal static partial class DifferenceTrackerLogMessages
 {
     [LoggerMessage(Level = LogLevel.Warning, Message = "Failed to resolve ValueSet {vsUrl} in {sourcePackage}:{sourceVersion}.")]
     internal static partial void LogFailedToResolveVs(this ILogger logger, string vsUrl, string sourcePackage, string sourceVersion);
-
-
 }
 
 /// <summary>
@@ -90,7 +89,7 @@ public class DifferenceTracker : IDisposable
     private string _dbPath;
     private string _dbName;
 
-    private DiffDbContext _db;
+    private ComparisonDbContext _db;
 
     public DifferenceTracker(
         DefinitionCollection[] definitions,
@@ -178,236 +177,6 @@ public class DifferenceTracker : IDisposable
         }
         _db.SaveChanges();
 
-        // load our value sets
-        foreach ((DefinitionCollection dc, DcInfoRec info) in _definitions)
-        {
-            addValueSetsToDb(dc, _exclusionSet, _escapeValveCodes);
-            addStructuresToDb(dc, _exclusionSet);
-
-        }
-
-        _db.SaveChanges();
-    }
-
-    private void addValueSetsToDb(
-        DefinitionCollection dc,
-        HashSet<string> _exclusionSet,
-        HashSet<string> _escapeValveCodes)
-    {
-        // get the package metadata for this definition collection
-        DbFhirPackage pm = _db.Packages.Single(pm => (pm.PackageId == dc.MainPackageId) && (pm.PackageVersion == dc.MainPackageVersion));
-
-        // iterate over the value sets in the definition collection
-        foreach ((string unversionedUrl, string[] versions) in dc.ValueSetVersions.OrderBy(kvp => kvp.Key))
-        {
-            // only use the highest version in the package
-            string vsVersion = versions.OrderDescending().First();
-            string versionedUrl = unversionedUrl + "|" + vsVersion;
-
-            // check to see if this value set already exists
-            if (_db.ValueSets.Any(vsm => (vsm.Url == unversionedUrl) && (vsm.Version == vsVersion)))
-            {
-                continue;
-            }
-
-            // try to expand this value set
-            if (!dc.ValueSetsByVersionedUrl.TryGetValue(versionedUrl, out ValueSet? uvs))
-            {
-                throw new Exception($"Failed to resolve ValueSet {versionedUrl} in {dc.MainPackageId}:{dc.MainPackageVersion}.");
-            }
-
-            bool canExpand = dc.TryExpandVs(versionedUrl, out ValueSet? vs, out string? expandMessage);
-
-            bool? hasEscapeCode = !canExpand
-                ? null
-                : vs?.cgHasCode(_escapeValveCodes);
-
-            IEnumerable<StructureElementCollection> coreBindings = dc.CoreBindingsForVs(versionedUrl);
-            BindingStrength? strongestBindingCore = dc.StrongestBinding(coreBindings);
-            IReadOnlyDictionary<string, BindingStrength> coreBindingStrengthByType = dc.BindingStrengthByType(coreBindings);
-
-            IEnumerable<StructureElementCollection> extendedBindings = dc.ExtendedBindingsForVs(versionedUrl);
-            BindingStrength? strongestBindingExtended = dc.StrongestBinding(extendedBindings);
-            IReadOnlyDictionary<string, BindingStrength> extendedBindingStrengthByType = dc.BindingStrengthByType(extendedBindings);
-
-
-            // will not further process value sets we know we will not process
-            if (_exclusionSet.Contains(unversionedUrl) ||
-                !canExpand ||
-                (vs == null))
-            {
-                // still add a metadata record
-                DbValueSet vsmExcluded = new()
-                {
-                    FhirPackage = pm,
-                    Id = uvs.Id,
-                    Url = versionedUrl,
-                    Name = uvs.Name,
-                    Version = vsVersion,
-                    Status = uvs.Status,
-                    Title = uvs.Title,
-                    Description = uvs.Description,
-                    Purpose = uvs.Purpose,
-                    CanExpand = canExpand,
-                    HasEscapeValveCode = hasEscapeCode,
-                    Message = expandMessage,
-                    BindingCountCore = coreBindings.Count(),
-                    StrongestBindingCore = strongestBindingCore,
-                    StrongestBindingCoreCode = coreBindingStrengthByType.TryGetValue("code", out BindingStrength ebscCode) ? ebscCode : null,
-                    StrongestBindingCoreCoding = coreBindingStrengthByType.TryGetValue("Coding", out BindingStrength ebscCoding) ? ebscCoding : null,
-                    BindingCountExtended = extendedBindings.Count(),
-                    StrongestBindingExtended = strongestBindingExtended,
-                    StrongestBindingExtendedCode = extendedBindingStrengthByType.TryGetValue("code", out BindingStrength ebseCode) ? ebseCode : null,
-                    StrongestBindingExtendedCoding = extendedBindingStrengthByType.TryGetValue("Coding", out BindingStrength ebseCoding) ? ebseCoding : null,
-                };
-
-                _db.Add(vsmExcluded);
-
-                continue;
-            }
-
-            // create a new metadata record
-            DbValueSet dbVs = new()
-            {
-                FhirPackage = pm,
-                Id = vs.Id,
-                Url = versionedUrl,
-                Name = vs.Name,
-                Version = vsVersion,
-                Status = vs.Status,
-                Title = vs.Title,
-                Description = vs.Description,
-                Purpose = vs.Purpose,
-                CanExpand = canExpand,
-                HasEscapeValveCode = hasEscapeCode,
-                Message = expandMessage,
-                BindingCountCore = coreBindings.Count(),
-                StrongestBindingCore = strongestBindingCore,
-                StrongestBindingCoreCode = coreBindingStrengthByType.TryGetValue("code", out BindingStrength bscCode) ? bscCode : null,
-                StrongestBindingCoreCoding = coreBindingStrengthByType.TryGetValue("Coding", out BindingStrength bscCoding) ? bscCoding : null,
-                BindingCountExtended = extendedBindings.Count(),
-                StrongestBindingExtended = strongestBindingExtended,
-                StrongestBindingExtendedCode = extendedBindingStrengthByType.TryGetValue("code", out BindingStrength bseCode) ? bseCode : null,
-                StrongestBindingExtendedCoding = extendedBindingStrengthByType.TryGetValue("Coding", out BindingStrength bseCoding) ? bseCoding : null,
-            };
-
-            // insert and update our local copy for the id
-            _db.Add(dbVs);
-
-            // iterate over all the contents of the value set
-            foreach (FhirConcept fc in vs.cgGetFlatConcepts(dc))
-            {
-                // check for this record already existing
-                if (_db.Concepts.Any(vsc => vsc.ValueSetKey == dbVs.Key && vsc.System == fc.System && vsc.Code == fc.Code))
-                {
-                    continue;
-                }
-
-                // create a new content record
-                DbValueSetConcept dbConcept = new()
-                {
-                    FhirPackage = pm,
-                    ValueSet = dbVs,
-                    System = fc.System,
-                    Code = fc.Code,
-                    Display = fc.Display,
-                };
-
-                _db.Add(dbConcept);
-            }
-        }
-    }
-
-
-    private void addStructuresToDb(
-        DefinitionCollection dc,
-        HashSet<string> _exclusionSet)
-    {
-        // get the package metadata for this definition collection
-        DbFhirPackage pm = _db.Packages.Single(pm => (pm.PackageId == dc.MainPackageId) && (pm.PackageVersion == dc.MainPackageVersion));
-
-        // iterate over the types of structures
-        foreach ((IEnumerable<StructureDefinition> structures, FhirArtifactClassEnum cgClass) in getStructures(dc))
-        {
-            foreach (StructureDefinition sd in structures)
-            {
-                // will not further process value sets we know we will not process
-                if (_exclusionSet.Contains(sd.Url))
-                {
-                    // still add a metadata record
-                    DbStructureDefinition sdmExcluded = new()
-                    {
-                        FhirPackage = pm,
-                        Id = sd.Id,
-                        Url = sd.Url,
-                        Name = sd.Name,
-                        Version = sd.Version,
-                        Status = sd.Status,
-                        Title = sd.Title ?? sd.Snapshot?.Element.FirstOrDefault()?.Short,
-                        Description = sd.Description ?? sd.Snapshot?.Element.FirstOrDefault()?.Definition,
-                        Purpose = sd.Purpose,
-                        Comment =  sd.Snapshot?.Element.FirstOrDefault()?.Comment,
-                        ArtifactClass = cgClass,
-                        Message = "Manually excluded",
-                    };
-
-                    _db.Add(sdmExcluded);
-
-                    continue;
-                }
-
-                // create a new metadata record
-                DbStructureDefinition dbStructure = new()
-                {
-                    FhirPackage = pm,
-                    Id = sd.Id,
-                    Url = sd.Url,
-                    Name = sd.Name,
-                    Version = sd.Version,
-                    Status = sd.Status,
-                    Title = sd.Title ?? sd.Snapshot?.Element.FirstOrDefault()?.Short,
-                    Description = sd.Description ?? sd.Snapshot?.Element.FirstOrDefault()?.Definition,
-                    Purpose = sd.Purpose,
-                    Comment = sd.Snapshot?.Element.FirstOrDefault()?.Comment,
-                    ArtifactClass = cgClass,
-                    Message = string.Empty,
-                };
-
-                // insert and update our local copy for the id
-                _db.Add(dbStructure);
-
-                // iterate over all the elements of the structure
-                foreach (ElementDefinition ed in sd.cgElements(skipSlices: false))
-                {
-                    DbElementDefinition dbElement = new()
-                    {
-                        Structure = dbStructure,
-                        FieldOrder = ed.cgFieldOrder(),
-                        Id = ed.ElementId,
-                        Path = ed.Path,
-                    };
-
-                    _db.Add(dbElement);
-
-                    // TODO: finish structure properties
-                    // TODO: add types
-                }
-            }
-        }
-
-        // save changes
-        _db.SaveChanges();
-
-        return;
-
-        (IEnumerable<StructureDefinition> structures, FhirArtifactClassEnum cgClass)[] getStructures(DefinitionCollection dc) => [
-            (dc.PrimitiveTypesByName.Values, FhirArtifactClassEnum.PrimitiveType),
-            (dc.ComplexTypesByName.Values, FhirArtifactClassEnum.ComplexType),
-            (dc.ResourcesByName.Values, FhirArtifactClassEnum.Resource),
-            (dc.ExtensionsByUrl.Values, FhirArtifactClassEnum.Extension),
-            (dc.ProfilesByUrl.Values, FhirArtifactClassEnum.Profile),
-            (dc.LogicalModelsByUrl.Values, FhirArtifactClassEnum.LogicalModel),
-            ];
     }
 
 
