@@ -155,15 +155,34 @@ public class SqlOnFhirProcessor
 
     private void createTable(SqliteConnection db, ViewDefinition vd)
     {
+        List<ViewDefinition.ColumnComponent> columns = [];
+
+        vd.Select.ForEach(addColumnsForSelect);
+
         SqliteCommand command = db.CreateCommand();
         command.CommandText = $"""
-            CREATE TABLE {vd.Name} (
+            CREATE TABLE IF NOT EXISTS {vd.Name} (
             RowKey integer NOT NULL,
-            {string.Join(", ", vd.Select.SelectMany(s => s.Column).Select(c => $"{c.Name} {_primitiveTypeMap[c.Type]}"))},
+            {string.Join(", ", columns.Select(c => $"{c.Name} {_primitiveTypeMap[c.Type]}"))},
             PRIMARY KEY (RowKey))
             """;
 
         command.ExecuteNonQuery();
+
+        return;
+
+        void addColumnsForSelect(ViewDefinition.SelectComponent select)
+        {
+            foreach (ViewDefinition.ColumnComponent col in select.Column)
+            {
+                columns.Add(col);
+            }
+
+            if (select.Select != null)
+            {
+                select.Select.ForEach(addColumnsForSelect);
+            }
+        }
     }
 
     public void LoadViewDefinitions(string viewDefinitionDirectory)
