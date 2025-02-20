@@ -268,8 +268,10 @@ public class ComparisonDatabase : IDisposable
                     Description = uvs.Description,
                     Purpose = uvs.Purpose,
                     CanExpand = canExpand,
+                    ConceptCount = 0,
                     HasEscapeValveCode = hasEscapeCode,
                     Message = expandMessage,
+                    ReferencedSystems = string.Join(", ", uvs.cgReferencedCodeSystems()),
                     BindingCountCore = coreBindings.Count(),
                     StrongestBindingCore = strongestBindingCore,
                     StrongestBindingCoreCode = coreBindingStrengthByType.TryGetValue("code", out BindingStrength ebscCode) ? ebscCode : null,
@@ -298,8 +300,10 @@ public class ComparisonDatabase : IDisposable
                 Description = vs.Description,
                 Purpose = vs.Purpose,
                 CanExpand = canExpand,
+                ConceptCount = 0,
                 HasEscapeValveCode = hasEscapeCode,
                 Message = expandMessage,
+                ReferencedSystems = string.Join(", ", vs.cgReferencedCodeSystems()),
                 BindingCountCore = coreBindings.Count(),
                 StrongestBindingCore = strongestBindingCore,
                 StrongestBindingCoreCode = coreBindingStrengthByType.TryGetValue("code", out BindingStrength bscCode) ? bscCode : null,
@@ -313,9 +317,13 @@ public class ComparisonDatabase : IDisposable
             // insert and update our local copy for the id
             _db.ValueSets.Add(dbVs);
 
+            int conceptCount = 0;
+
             // iterate over all the contents of the value set
             foreach (FhirConcept fc in vs.cgGetFlatConcepts(dc))
             {
+                conceptCount++;
+
                 // check for this record already existing
                 if (_db.Concepts.Any(vsc => vsc.ValueSetKey == dbVs.Key && vsc.System == fc.System && vsc.Code == fc.Code))
                 {
@@ -334,6 +342,8 @@ public class ComparisonDatabase : IDisposable
 
                 _db.Concepts.Add(dbConcept);
             }
+
+            dbVs.ConceptCount = conceptCount;
         }
 
         return;

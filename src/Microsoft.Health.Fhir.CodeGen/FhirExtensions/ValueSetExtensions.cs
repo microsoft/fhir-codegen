@@ -116,7 +116,10 @@ public static class ValueSetExtensions
     /// <param name="vs">The ValueSet to act on.</param>
     /// <returns>An enumerable of string representing the referenced code systems.</returns>
     public static IEnumerable<string> cgReferencedCodeSystems(this ValueSet vs) =>
-        vs.Expansion?.Contains?.Select(c => c.System).Distinct() ?? vs.Compose?.Include?.Select(i => i.System).Distinct() ?? [];
+        vs.Expansion?.Contains.Count > 0
+        ? vs.Expansion.Contains.Select(c => c.System).Distinct()
+        : vs.Compose?.Include?.Select(i => i.System).Distinct()
+        ?? [];
 
     /// <summary>
     /// Determines whether the DefinitionCollection has a required binding for the specified ValueSet URLs.

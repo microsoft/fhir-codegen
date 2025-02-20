@@ -35,6 +35,9 @@ public class DbValueSet : DbCanonicalResource
     public required bool? HasEscapeValveCode { get; set; } = null;
     public required string? Message { get; set; } = null;
 
+    public required int ConceptCount { get; set; } = -1;
+    public required string? ReferencedSystems { get; set; } = null;
+
     public required int BindingCountCore { get; set; } = -1;
     public required BindingStrength? StrongestBindingCore { get; set; } = null;
     public required BindingStrength? StrongestBindingCoreCode { get; set; } = null;
