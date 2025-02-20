@@ -418,7 +418,7 @@ public class ComparisonDatabase : IDisposable
             (dc.LogicalModelsByUrl.Values, FhirArtifactClassEnum.LogicalModel),
             ];
 
-        DbElementDefinition addElement(DbStructureDefinition dbStructure, StructureDefinition sd, ElementDefinition ed)
+        void addElement(DbStructureDefinition dbStructure, StructureDefinition sd, ElementDefinition ed)
         {
             // check for children
             int childCount = sd.cgElements(
@@ -427,44 +427,15 @@ public class ComparisonDatabase : IDisposable
                 includeRoot: false,
                 skipSlices: true).Count();
 
-            DbElementDefinition dbElement = new()
-            {
-                Structure = dbStructure,
-                ResourceFieldOrder = ed.cgFieldOrder(),
-                ComponentFieldOrder = ed.cgComponentFieldOrder(),
-                Id = ed.ElementId,
-                Path = ed.Path,
-                ChildElementCount = childCount,
-                Name = ed.cgName(),
-                Short = ed.Short,
-                Definition = ed.Definition,
-                MinCardinality = ed.cgCardinalityMin(),
-                MaxCardinality = ed.cgCardinalityMax(),
-                MaxCardinalityString = ed.Max ?? "*",
-                SliceName = ed.SliceName,
-                ValueSetBindingStrength = ed.Binding?.Strength,
-                BindingValueSet = ed.Binding?.ValueSet,
-                ElementTypes = [],
-                ElementTypeMappings = [],
-            };
+            List<(string typeName, string? typeProfile, string? profile)> elementTypes = [];
 
-            _db.Elements.Add(dbElement);
-
-            addElementTypes(dbElement, ed);
-
-            return dbElement;
-        }
-
-        void addElementTypes(DbElementDefinition dbElement, ElementDefinition ed)
-        {
-            IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> edTypes = ed.cgTypes(coerceToR5: true);
-
-            foreach ((string typeName, ElementDefinition.TypeRefComponent tr) in edTypes)
+            IEnumerable<ElementDefinition.TypeRefComponent> definedTypes = ed.Type.Select(tr => tr.cgAsR5());
+            foreach (ElementDefinition.TypeRefComponent tr in definedTypes)
             {
                 if ((tr.ProfileElement.Count == 0) &&
                     (tr.TargetProfileElement.Count == 0))
                 {
-                    dbElement.ElementTypes.Add(getOrAddType(tr.cgName(), null, null, ed.Binding?.Strength, ed.Binding?.ValueSet));
+                    elementTypes.Add((tr.cgName(), null, null));
                     continue;
                 }
 
@@ -472,7 +443,7 @@ public class ComparisonDatabase : IDisposable
                 {
                     foreach (Canonical tp in tr.TargetProfile)
                     {
-                        dbElement.ElementTypes.Add(getOrAddType(tr.cgName(), null, tp.Value, ed.Binding?.Strength, ed.Binding?.ValueSet));
+                        elementTypes.Add((tr.cgName(), null, tp.Value));
                     }
 
                     continue;
@@ -482,7 +453,7 @@ public class ComparisonDatabase : IDisposable
                 {
                     foreach (Canonical p in tr.Profile)
                     {
-                        dbElement.ElementTypes.Add(getOrAddType(tr.cgName(), p.Value, null, ed.Binding?.Strength, ed.Binding?.ValueSet));
+                        elementTypes.Add((tr.cgName(), p.Value, null));
                     }
 
                     continue;
@@ -492,42 +463,151 @@ public class ComparisonDatabase : IDisposable
                 {
                     foreach (Canonical tp in tr.TargetProfile)
                     {
-                        dbElement.ElementTypes.Add(getOrAddType(tr.cgName(), p.Value, tp.Value, ed.Binding?.Strength, ed.Binding?.ValueSet));
+                        elementTypes.Add((tr.cgName(), p.Value, tp.Value));
                     }
                 }
             }
-        }
 
-        DbElementType getOrAddType(string typeName, string? profile, string? targetProfile, BindingStrength? bS, string? bVs)
-        {
-            DbElementType? et = _db.ElementTypes
-                .FirstOrDefault(et =>
-                    (et.Name == typeName) &&
-                    (et.Profile == profile) &&
-                    (et.TargetProfile == targetProfile) &&
-                    (et.ValueSetBindingStrength == bS) &&
-                    (et.BindingValueSet == bVs));
-            if (et != null)
+            foreach ((string typeName, string? typeProfile, string? targetProfile) in elementTypes)
             {
-                return et;
+                DbElement dbElement = new()
+                {
+                    FhirPackage = pm,
+                    Structure = dbStructure,
+                    ResourceFieldOrder = ed.cgFieldOrder(),
+                    ComponentFieldOrder = ed.cgComponentFieldOrder(),
+                    Id = ed.ElementId,
+                    Path = ed.Path,
+                    ChildElementCount = childCount,
+                    Name = ed.cgName(),
+                    Short = ed.Short,
+                    Definition = ed.Definition,
+                    MinCardinality = ed.cgCardinalityMin(),
+                    MaxCardinality = ed.cgCardinalityMax(),
+                    MaxCardinalityString = ed.Max ?? "*",
+                    SliceName = ed.SliceName,
+                    ValueSetBindingStrength = ed.Binding?.Strength,
+                    BindingValueSet = ed.Binding?.ValueSet,
+                    TypeName = typeName,
+                    TypeProfile = typeProfile,
+                    TargetProfile = typeProfile,
+                };
+
+                _db.Elements.Add(dbElement);
             }
-
-            et = new()
-            {
-                Name = typeName,
-                Profile = profile,
-                TargetProfile = targetProfile,
-                ValueSetBindingStrength = bS,
-                BindingValueSet = bVs,
-                Elements = [],
-                ElementTypeMappings = [],
-            };
-
-            _db.ElementTypes.Add(et);
-            _db.SaveChanges();
-
-            return et;
         }
+
+
+        //DbElementDefinition addElement(DbStructureDefinition dbStructure, StructureDefinition sd, ElementDefinition ed)
+        //{
+        //    // check for children
+        //    int childCount = sd.cgElements(
+        //        ed.Path,
+        //        topLevelOnly: true,
+        //        includeRoot: false,
+        //        skipSlices: true).Count();
+
+        //    DbElementDefinition dbElement = new()
+        //    {
+        //        Structure = dbStructure,
+        //        ResourceFieldOrder = ed.cgFieldOrder(),
+        //        ComponentFieldOrder = ed.cgComponentFieldOrder(),
+        //        Id = ed.ElementId,
+        //        Path = ed.Path,
+        //        ChildElementCount = childCount,
+        //        Name = ed.cgName(),
+        //        Short = ed.Short,
+        //        Definition = ed.Definition,
+        //        MinCardinality = ed.cgCardinalityMin(),
+        //        MaxCardinality = ed.cgCardinalityMax(),
+        //        MaxCardinalityString = ed.Max ?? "*",
+        //        SliceName = ed.SliceName,
+        //        ValueSetBindingStrength = ed.Binding?.Strength,
+        //        BindingValueSet = ed.Binding?.ValueSet,
+        //        ElementTypes = [],
+        //        ElementTypeMappings = [],
+        //    };
+
+        //    _db.Elements.Add(dbElement);
+
+        //    addElementTypes(dbElement, ed);
+
+        //    return dbElement;
+        //}
+
+        //void addElementTypes(DbElementDefinition dbElement, ElementDefinition ed)
+        //{
+        //    IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> edTypes = ed.cgTypes(coerceToR5: true);
+
+        //    foreach ((string typeName, ElementDefinition.TypeRefComponent tr) in edTypes)
+        //    {
+        //        if ((tr.ProfileElement.Count == 0) &&
+        //            (tr.TargetProfileElement.Count == 0))
+        //        {
+        //            dbElement.ElementTypes.Add(getOrAddType(tr.cgName(), null, null, ed.Binding?.Strength, ed.Binding?.ValueSet));
+        //            continue;
+        //        }
+
+        //        if (tr.ProfileElement.Count == 0)
+        //        {
+        //            foreach (Canonical tp in tr.TargetProfile)
+        //            {
+        //                dbElement.ElementTypes.Add(getOrAddType(tr.cgName(), null, tp.Value, ed.Binding?.Strength, ed.Binding?.ValueSet));
+        //            }
+
+        //            continue;
+        //        }
+
+        //        if (tr.TargetProfileElement.Count == 0)
+        //        {
+        //            foreach (Canonical p in tr.Profile)
+        //            {
+        //                dbElement.ElementTypes.Add(getOrAddType(tr.cgName(), p.Value, null, ed.Binding?.Strength, ed.Binding?.ValueSet));
+        //            }
+
+        //            continue;
+        //        }
+
+        //        foreach (Canonical p in tr.Profile)
+        //        {
+        //            foreach (Canonical tp in tr.TargetProfile)
+        //            {
+        //                dbElement.ElementTypes.Add(getOrAddType(tr.cgName(), p.Value, tp.Value, ed.Binding?.Strength, ed.Binding?.ValueSet));
+        //            }
+        //        }
+        //    }
+        //}
+
+        //DbElementType getOrAddType(string typeName, string? profile, string? targetProfile, BindingStrength? bS, string? bVs)
+        //{
+        //    DbElementType? et = _db.ElementTypes
+        //        .FirstOrDefault(et =>
+        //            (et.Name == typeName) &&
+        //            (et.Profile == profile) &&
+        //            (et.TargetProfile == targetProfile) &&
+        //            (et.ValueSetBindingStrength == bS) &&
+        //            (et.BindingValueSet == bVs));
+        //    if (et != null)
+        //    {
+        //        return et;
+        //    }
+
+        //    et = new()
+        //    {
+        //        Name = typeName,
+        //        Profile = profile,
+        //        TargetProfile = targetProfile,
+        //        ValueSetBindingStrength = bS,
+        //        BindingValueSet = bVs,
+        //        Elements = [],
+        //        ElementTypeMappings = [],
+        //    };
+
+        //    _db.ElementTypes.Add(et);
+        //    _db.SaveChanges();
+
+        //    return et;
+        //}
     }
 
     protected virtual void Dispose(bool disposing)

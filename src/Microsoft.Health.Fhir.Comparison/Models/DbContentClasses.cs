@@ -78,7 +78,7 @@ public class DbStructureDefinition : DbCanonicalResource
 
     public required FhirArtifactClassEnum ArtifactClass { get; set; } = FhirArtifactClassEnum.Unknown;
 
-    public ICollection<DbElementDefinition> Elements { get; init; } = null!;
+    public ICollection<DbElement> Elements { get; init; } = null!;
 
     //public ICollection<ValueSetPairComparison> ComparisonsAsSource { get; init; } = null!;
 
@@ -86,13 +86,16 @@ public class DbStructureDefinition : DbCanonicalResource
 }
 
 
-public class DbElementDefinition
+public class DbElement
 {
     [Key]
     public int Key { get; set; }
 
     public int StructureKey { get; set; }
     public required DbStructureDefinition Structure { get; init; } = null!;
+
+    public int FhirPackageKey { get; set; }
+    public required DbFhirPackage FhirPackage { get; init; } = null!;
 
 
     public required int ResourceFieldOrder { get; set; } = -1;
@@ -109,38 +112,43 @@ public class DbElementDefinition
 
     public required string? SliceName { get; set; } = null;
 
-    public required BindingStrength? ValueSetBindingStrength { get; init; } = null;
-    public required string? BindingValueSet { get; set; } = null;
-
-    public ICollection<DbElementType> ElementTypes { get; set; } = null!;
-    public ICollection<DbElementTypeMap> ElementTypeMappings { get; set; } = null!;
-}
-
-public class DbElementType
-{
-    [Key]
-    public int Key { get; set; }
-
-    public ICollection<DbElementDefinition> Elements { get; set; } = null!;
-    public ICollection<DbElementTypeMap> ElementTypeMappings { get; set; } = null!;
-
-    public required string Name { get; set; } = null!;
-    public required string? Profile { get; set; } = null;
+    public required string TypeName { get; set; } = null!;
+    public required string? TypeProfile { get; set; } = null;
     public required string? TargetProfile { get; set; } = null;
 
     public required BindingStrength? ValueSetBindingStrength { get; init; } = null;
     public required string? BindingValueSet { get; set; } = null;
+
+
+    //public ICollection<DbElementType> ElementTypes { get; set; } = null!;
+    //public ICollection<DbElementTypeMap> ElementTypeMappings { get; set; } = null!;
 }
 
-public class DbElementTypeMap
-{
-    [Key]
-    public int Key { get; set; }
+//public class DbElementType
+//{
+//    [Key]
+//    public int Key { get; set; }
 
-    public required int ElementKey { get; set; } = -1;
-    public DbElementDefinition Element { get; set; } = null!;
+//    public ICollection<DbElementDefinition> Elements { get; set; } = null!;
+//    public ICollection<DbElementTypeMap> ElementTypeMappings { get; set; } = null!;
 
-    public required int ElementTypeKey { get; set; } = -1;
-    public DbElementType ElementType { get; set; } = null!;
+//    public required string Name { get; set; } = null!;
+//    public required string? Profile { get; set; } = null;
+//    public required string? TargetProfile { get; set; } = null;
 
-}
+//    public required BindingStrength? ValueSetBindingStrength { get; init; } = null;
+//    public required string? BindingValueSet { get; set; } = null;
+//}
+
+//public class DbElementTypeMap
+//{
+//    [Key]
+//    public int Key { get; set; }
+
+//    public required int ElementKey { get; set; } = -1;
+//    public DbElementDefinition Element { get; set; } = null!;
+
+//    public required int ElementTypeKey { get; set; } = -1;
+//    public DbElementType ElementType { get; set; } = null!;
+
+//}

@@ -36,10 +36,10 @@ public class ComparisonDbContext : DbContext
 
 
     public DbSet<DbStructureDefinition> Structures { get; set; }
-    public DbSet<DbElementDefinition> Elements { get; set; }
-    public DbSet<DbElementType> ElementTypes { get; set; }
+    public DbSet<DbElement> Elements { get; set; }
+    //public DbSet<DbElementType> ElementTypes { get; set; }
 
-    public DbSet<DbElementTypeMap> ElementTypeMappings { get; set; }
+    //public DbSet<DbElementTypeMap> ElementTypeMappings { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder options) =>
         options
@@ -268,74 +268,76 @@ public class ComparisonDbContext : DbContext
         modelBuilder.Entity<DbStructureDefinition>()
             .ToTable("Structures");
 
-        modelBuilder.Entity<DbElementDefinition>()
-            .HasKey(nameof(DbElementDefinition.Key));
-        modelBuilder.Entity<DbElementDefinition>()
+        modelBuilder.Entity<DbElement>()
+            .HasKey(nameof(DbElement.Key));
+        modelBuilder.Entity<DbElement>()
             .HasOne(e => e.Structure)
             .WithMany(e => e.Elements)
             .HasForeignKey(e => e.StructureKey);
-        modelBuilder.Entity<DbElementDefinition>()
-            .HasMany(e => e.ElementTypes)
-            .WithMany(e => e.Elements)
-            .UsingEntity<DbElementTypeMap>(
-                l => l.HasOne<DbElementType>().WithMany(e => e.ElementTypeMappings).HasPrincipalKey(e => e.Key).HasForeignKey(e => e.ElementKey),
-                r => r.HasOne<DbElementDefinition>().WithMany(e => e.ElementTypeMappings).HasPrincipalKey(e => e.Key).HasForeignKey(e => e.ElementTypeKey));
-        modelBuilder.Entity<DbElementDefinition>()
+        modelBuilder.Entity<DbElement>()
+            .HasOne(e => e.FhirPackage);
+        //modelBuilder.Entity<DbElementDefinition>()
+        //    .HasMany(e => e.ElementTypes)
+        //    .WithMany(e => e.Elements)
+        //    .UsingEntity<DbElementTypeMap>(
+        //        l => l.HasOne<DbElementType>().WithMany(e => e.ElementTypeMappings).HasPrincipalKey(e => e.Key).HasForeignKey(e => e.ElementKey),
+        //        r => r.HasOne<DbElementDefinition>().WithMany(e => e.ElementTypeMappings).HasPrincipalKey(e => e.Key).HasForeignKey(e => e.ElementTypeKey));
+        modelBuilder.Entity<DbElement>()
             .Property(e => e.ValueSetBindingStrength)
             .HasConversion(
                 v => v.HasValue ? EnumUtility.GetLiteral(v.Value) : null,
                 v => EnumUtility.ParseLiteral<Hl7.Fhir.Model.BindingStrength>(v, true));
-        modelBuilder.Entity<DbElementDefinition>()
-            .HasIndex(nameof(DbElementDefinition.Id));
-        modelBuilder.Entity<DbElementDefinition>()
-            .HasIndex(nameof(DbElementDefinition.Path));
-        modelBuilder.Entity<DbElementDefinition>()
-            .HasIndex(nameof(DbElementDefinition.ResourceFieldOrder));
-        modelBuilder.Entity<DbElementDefinition>()
+        modelBuilder.Entity<DbElement>()
+            .HasIndex(nameof(DbElement.Id));
+        modelBuilder.Entity<DbElement>()
+            .HasIndex(nameof(DbElement.Path));
+        modelBuilder.Entity<DbElement>()
+            .HasIndex(nameof(DbElement.ResourceFieldOrder));
+        modelBuilder.Entity<DbElement>()
             .ToTable("Elements");
 
 
-        modelBuilder.Entity<DbElementType>()
-            .HasKey(nameof(DbElementType.Key));
-        modelBuilder.Entity<DbElementType>()
-            .HasMany(e => e.Elements)
-            .WithMany(e => e.ElementTypes)
-            .UsingEntity<DbElementTypeMap>(
-                l => l.HasOne<DbElementDefinition>().WithMany(e => e.ElementTypeMappings).HasPrincipalKey(e => e.Key).HasForeignKey(e => e.ElementTypeKey),
-                r => r.HasOne<DbElementType>().WithMany(e => e.ElementTypeMappings).HasPrincipalKey(e => e.Key).HasForeignKey(e => e.ElementKey));
-        modelBuilder.Entity<DbElementType>()
-            .Property(e => e.ValueSetBindingStrength)
-            .HasConversion(
-                v => v.HasValue ? EnumUtility.GetLiteral(v.Value) : null,
-                v => EnumUtility.ParseLiteral<Hl7.Fhir.Model.BindingStrength>(v, true));
-        modelBuilder.Entity<DbElementType>()
-            .HasIndex(nameof(DbElementType.Name));
-        modelBuilder.Entity<DbElementType>()
-            .HasIndex(nameof(DbElementType.Name), nameof(DbElementType.Profile), nameof(DbElementType.TargetProfile));
-        modelBuilder.Entity<DbElementType>()
-            .HasIndex(
-                nameof(DbElementType.Name),
-                nameof(DbElementType.Profile),
-                nameof(DbElementType.TargetProfile),
-                nameof(DbElementType.ValueSetBindingStrength),
-                nameof(DbElementType.BindingValueSet));
-        modelBuilder.Entity<DbElementType>()
-            .ToTable("ElementTypes");
+        //modelBuilder.Entity<DbElementType>()
+        //    .HasKey(nameof(DbElementType.Key));
+        ////modelBuilder.Entity<DbElementType>()
+        ////    .HasMany(e => e.Elements)
+        ////    .WithMany(e => e.ElementTypes)
+        ////    .UsingEntity<DbElementTypeMap>(
+        ////        l => l.HasOne<DbElementDefinition>().WithMany(e => e.ElementTypeMappings).HasPrincipalKey(e => e.Key).HasForeignKey(e => e.ElementTypeKey),
+        ////        r => r.HasOne<DbElementType>().WithMany(e => e.ElementTypeMappings).HasPrincipalKey(e => e.Key).HasForeignKey(e => e.ElementKey));
+        //modelBuilder.Entity<DbElementType>()
+        //    .Property(e => e.ValueSetBindingStrength)
+        //    .HasConversion(
+        //        v => v.HasValue ? EnumUtility.GetLiteral(v.Value) : null,
+        //        v => EnumUtility.ParseLiteral<Hl7.Fhir.Model.BindingStrength>(v, true));
+        //modelBuilder.Entity<DbElementType>()
+        //    .HasIndex(nameof(DbElementType.Name));
+        //modelBuilder.Entity<DbElementType>()
+        //    .HasIndex(nameof(DbElementType.Name), nameof(DbElementType.Profile), nameof(DbElementType.TargetProfile));
+        //modelBuilder.Entity<DbElementType>()
+        //    .HasIndex(
+        //        nameof(DbElementType.Name),
+        //        nameof(DbElementType.Profile),
+        //        nameof(DbElementType.TargetProfile),
+        //        nameof(DbElementType.ValueSetBindingStrength),
+        //        nameof(DbElementType.BindingValueSet));
+        //modelBuilder.Entity<DbElementType>()
+        //    .ToTable("ElementTypes");
 
-        modelBuilder.Entity<DbElementTypeMap>()
-            .HasKey(nameof(DbElementTypeMap.Key));
-        modelBuilder.Entity<DbElementTypeMap>()
-            .HasOne(e => e.Element)
-            .WithMany(e => e.ElementTypeMappings)
-            .HasForeignKey(e => e.ElementKey)
-            .HasPrincipalKey(e => e.Key);
-        modelBuilder.Entity<DbElementTypeMap>()
-            .HasOne(e => e.ElementType)
-            .WithMany(e => e.ElementTypeMappings)
-            .HasForeignKey(e => e.ElementTypeKey)
-            .HasPrincipalKey(e => e.Key);
-        modelBuilder.Entity<DbElementTypeMap>()
-            .ToTable("ElementTypeMappings");
+        ////modelBuilder.Entity<DbElementTypeMap>()
+        ////    .HasKey(nameof(DbElementTypeMap.Key));
+        ////modelBuilder.Entity<DbElementTypeMap>()
+        ////    .HasOne(e => e.Element)
+        ////    .WithMany(e => e.ElementTypeMappings)
+        ////    .HasForeignKey(e => e.ElementKey)
+        ////    .HasPrincipalKey(e => e.Key);
+        ////modelBuilder.Entity<DbElementTypeMap>()
+        ////    .HasOne(e => e.ElementType)
+        ////    .WithMany(e => e.ElementTypeMappings)
+        ////    .HasForeignKey(e => e.ElementTypeKey)
+        ////    .HasPrincipalKey(e => e.Key);
+        ////modelBuilder.Entity<DbElementTypeMap>()
+        ////    .ToTable("ElementTypeMappings");
 
 
 
