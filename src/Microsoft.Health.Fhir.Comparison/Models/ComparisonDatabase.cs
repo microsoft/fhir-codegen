@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.Common;
 using System.Linq;
 using System.Runtime.ConstrainedExecution;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -24,6 +25,7 @@ using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 using Microsoft.Health.Fhir.Comparison.CompareTool;
+using Microsoft.Health.Fhir.Comparison.Extensions;
 using Microsoft.Health.Fhir.Comparison.Models;
 using Newtonsoft.Json.Linq;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
@@ -77,7 +79,7 @@ public class ComparisonDatabase : IDisposable
         }
 
         _loggerFactory = loggerFactory;
-        _logger = loggerFactory?.CreateLogger<DifferenceTracker>() ?? definitions[0].Logger;
+        _logger = loggerFactory?.CreateLogger<ComparisonDatabase>() ?? definitions[0].Logger;
         _definitions = definitions.Select(dc => (dc, new DcInfoRec()
         {
             FhirSequence = dc.FhirSequence,
@@ -134,7 +136,7 @@ public class ComparisonDatabase : IDisposable
         ILoggerFactory? loggerFactory = null)
     {
         _loggerFactory = loggerFactory;
-        _logger = loggerFactory?.CreateLogger<DifferenceTracker>() ?? NullLoggerFactory.Instance.CreateLogger(nameof(ComparisonDatabase));
+        _logger = loggerFactory?.CreateLogger<ComparisonDatabase>() ?? NullLoggerFactory.Instance.CreateLogger(nameof(ComparisonDatabase));
 
         _dbPath = dbPath;
         if (!Directory.Exists(_dbPath))
@@ -148,6 +150,8 @@ public class ComparisonDatabase : IDisposable
         _db.Database.EnsureCreated();
     }
 
+    public bool IsCoreComparison => _isCoreComparison;
+    public bool IsVersionComparison => _isVersionComparison;
 
     /// <summary>
     /// Initializes the database connection and sets up the necessary tables and metadata.
@@ -159,7 +163,7 @@ public class ComparisonDatabase : IDisposable
     {
         if (_definitions == null)
         {
-            throw new Exception($"Cannot initialize clean database without packages!");
+            throw new Exception("Cannot initialize clean database without packages!");
         }
 
         if (ensureDeleted)
@@ -171,12 +175,27 @@ public class ComparisonDatabase : IDisposable
 
         foreach ((DefinitionCollection dc, DcInfoRec _) in _definitions)
         {
-            // add data about our packages
-            if (!_db.Packages.Any(pm => (pm.PackageId == dc.MainPackageId) && (pm.PackageVersion == dc.MainPackageVersion)))
+            string shortName;
+            if (_isCoreComparison)
             {
-                _db.Add(new DbFhirPackage()
+                shortName = dc.FhirSequence.ToRLiteral();
+            }
+            else if (_isVersionComparison)
+            {
+                shortName = $"V{dc.MainPackageVersion.Replace('.', '_')}";
+            }
+            else
+            {
+                shortName = $"{dc.MainPackageId.ToPascalCase()}-V{dc.MainPackageVersion.Replace('.', '_')}";
+            }
+
+            // add data about our packages
+            if (!_db.Packages.Local.Any(pm => (pm.PackageId == dc.MainPackageId) && (pm.PackageVersion == dc.MainPackageVersion)))
+            {
+                _db.Packages.Add(new DbFhirPackage()
                 {
                     Name = dc.Name,
+                    ShortName = shortName,
                     PackageId = dc.MainPackageId,
                     PackageVersion = dc.MainPackageVersion,
                     CanonicalUrl = dc.MainPackageCanonical,
@@ -184,16 +203,466 @@ public class ComparisonDatabase : IDisposable
             }
         }
 
+        // look for cross-version collections
+        for (int definitionIndex = 1; definitionIndex < _definitions.Length; definitionIndex++)
+        {
+            DefinitionCollection left = _definitions[definitionIndex - 1].dc;
+            DefinitionCollection right = _definitions[definitionIndex].dc;
+
+            // get the db package definitions
+            DbFhirPackage leftDbPackage = _db.Packages.Local.First(p => (p.PackageId == left.MainPackageId) && (p.PackageVersion == left.MainPackageVersion));
+            DbFhirPackage rightDbPackage = _db.Packages.Local.First(p => (p.PackageId == right.MainPackageId) && (p.PackageVersion == right.MainPackageVersion));
+
+            // check for a package pair for left-to-right comparison
+            DbFhirPackageComparisonPair? dbPairLtoR = _db.PackagePairs.FirstOrDefault(pair =>
+                pair.SourcePackage == leftDbPackage && pair.TargetPackage == rightDbPackage);
+            if (dbPairLtoR == null)
+            {
+                dbPairLtoR = new()
+                {
+                    SourcePackage = leftDbPackage,
+                    TargetPackage = rightDbPackage,
+                    ProccessedAt = DateTime.UtcNow,
+                };
+
+                _db.PackagePairs.Add(dbPairLtoR);
+            }
+
+            // check for a package pair for right-to-left comparison
+            DbFhirPackageComparisonPair? dbPairRtoL = _db.PackagePairs.FirstOrDefault(pair =>
+                pair.SourcePackage == rightDbPackage && pair.TargetPackage == leftDbPackage);
+            if (dbPairRtoL == null)
+            {
+                dbPairRtoL = new()
+                {
+                    SourcePackage = rightDbPackage,
+                    TargetPackage = leftDbPackage,
+                    ProccessedAt = DateTime.UtcNow,
+                };
+
+                _db.PackagePairs.Add(dbPairRtoL);
+            }
+        }
+
         _db.SaveChanges();
     }
 
-    public void ExportCollectionContents(
+    public bool TryLoadFhirCrossVersionMaps(string crossVersionMapSourcePath)
+    {
+        if ((_definitions == null) || (_definitions.Length == 0))
+        {
+            _logger.LogError("Cannot initialize clean database without packages!");
+            return false;
+        }
+
+        if (_definitions.Length < 2)
+        {
+            _logger.LogError($"Cannot perform comparisons in a single package: {string.Join(", ", _definitions.Select(d => d.dc.Key))}");
+            return false;
+        }
+
+        if (!_isCoreComparison)
+        {
+            _logger.LogError($"Cannot load FHIR Cross Version maps for non-core comparison: {string.Join(", ", _definitions.Select(d => d.dc.Key))}");
+            return false;
+        }
+
+        if (string.IsNullOrEmpty(crossVersionMapSourcePath) ||
+            (!Directory.Exists(crossVersionMapSourcePath)))
+        {
+            _logger.LogError($"Invalid map source path: {crossVersionMapSourcePath}");
+            return false;
+        }
+
+        // look for cross-version collections
+        for (int definitionIndex = 1; definitionIndex < _definitions.Length; definitionIndex++)
+        {
+            DefinitionCollection left = _definitions[definitionIndex - 1].dc;
+            DefinitionCollection right = _definitions[definitionIndex].dc;
+
+            DbFhirPackage leftDbPackage = _db.Packages.Local.First(pm => (pm.PackageId == left.MainPackageId) && (pm.PackageVersion == left.MainPackageVersion));
+            DbFhirPackage rightDbPackage = _db.Packages.Local.First(pm => (pm.PackageId == right.MainPackageId) && (pm.PackageVersion == right.MainPackageVersion));
+
+            DbFhirPackageComparisonPair dbPairLtoR = _db.PackagePairs.Local.First(p => p.SourcePackage == leftDbPackage && p.TargetPackage == rightDbPackage);
+            DbFhirPackageComparisonPair dbPairRtoL = _db.PackagePairs.Local.First(p => p.SourcePackage == rightDbPackage && p.TargetPackage == leftDbPackage);
+
+            CrossVersionMapCollection cvLtoR = new(left, right, _dbPath, _loggerFactory);
+            CrossVersionMapCollection cvRtoL = new(right, left, _dbPath, _loggerFactory);
+
+            if (cvLtoR.TryLoadCrossVersionMaps(crossVersionMapSourcePath, true))
+            {
+                processCrossVersionMaps(
+                    left,
+                    leftDbPackage,
+                    right,
+                    rightDbPackage,
+                    cvLtoR,
+                    dbPairLtoR);
+            }
+            else
+            {
+                _logger.LogMapsNotLoaded(left.Key, right.Key);
+            }
+
+            if (cvRtoL.TryLoadCrossVersionMaps(crossVersionMapSourcePath, true))
+            {
+                processCrossVersionMaps(
+                    right,
+                    rightDbPackage,
+                    left,
+                    leftDbPackage,
+                    cvRtoL,
+                    dbPairRtoL);
+            }
+            else
+            {
+                _logger.LogMapsNotLoaded(right.Key, left.Key);
+            }
+        }
+
+        _db.SaveChanges();
+
+        return true;
+
+        void processCrossVersionMaps(
+            DefinitionCollection source,
+            DbFhirPackage sourceDbPackage,
+            DefinitionCollection target,
+            DbFhirPackage targetDbPackage,
+            CrossVersionMapCollection cv,
+            DbFhirPackageComparisonPair dbPackagePair)
+        {
+            // iterate over the concept maps in the cross version map collection
+            foreach (ConceptMap cm in cv.CrossVersionConceptMaps)
+            {
+                // only process maps we have categorized
+
+                UsageContext? cmContext = cm.UseContext.FirstOrDefault(uc => uc.Code.System == CommonDefinitions.ConceptMapUsageContextSystem);
+                if ((cmContext == null) ||
+                    (cmContext.Value is not CodeableConcept uc))
+                {
+                    continue;
+                }
+
+                string? cmCategory = uc.Coding.FirstOrDefault(c => c.System == CommonDefinitions.ConceptMapUsageContextSystem)?.Code;
+                switch (cmCategory)
+                {
+                    case CommonDefinitions.ConceptMapUsageContextValueSet:
+                        processValueSetMap(dbPackagePair, cm);
+                        break;
+
+                    case CommonDefinitions.ConceptMapUsageContextTypeOverview:
+                        break;
+
+                    case CommonDefinitions.ConceptMapUsageContextDataType:
+                        break;
+
+                    case CommonDefinitions.ConceptMapUsageContextResourceOverview:
+                        break;
+
+                    case CommonDefinitions.ConceptMapUsageContextResource:
+                        break;
+
+                    default:
+                        continue;
+                }
+            }
+        }
+
+        void processValueSetMap(DbFhirPackageComparisonPair dbPackagePair, ConceptMap cm)
+        {
+            if (cm.SourceScope is not Canonical sourceScopeCanonical)
+            {
+                throw new Exception($"Cannot process existing Cross-Version ValueSet Map: {cm.Id} - invalid source scope: {cm.SourceScope}");
+            }
+
+            if (cm.TargetScope is not Canonical targetScopeCanonical)
+            {
+                throw new Exception($"Cannot process existing Cross-Version ValueSet Map: {cm.Id} - invalid target scope: {cm.TargetScope}");
+            }
+
+            // lookup our source and target value sets - note that we are in the context of a package already, so we do not need to check versions
+            DbValueSet sourceDbVs = dbPackagePair.SourcePackage.ValueSets.First(v => v.UnversionedUrl == sourceScopeCanonical.Uri);
+            DbValueSet targetDbVs = dbPackagePair.TargetPackage.ValueSets.First(v => v.UnversionedUrl == targetScopeCanonical.Uri);
+
+            List<string> additionalUrls = [];
+            foreach (Extension ext in cm.GetExtensions(CommonDefinitions.ExtUrlConceptMapAdditionalUrls))
+            {
+                if (ext.Value is FhirUrl fhirUrl)
+                {
+                    // use the official URL as the key
+                    additionalUrls.Add(fhirUrl.Value);
+                }
+            }
+
+            // create our canonical comparison record
+            DbValueSetComparison dbVsComparison = new()
+            {
+                PackageComparison = dbPackagePair,
+                SourceFhirPackage = dbPackagePair.SourcePackage,
+                TargetFhirPackage = dbPackagePair.TargetPackage,
+                Source = sourceDbVs,
+                SourceCanonicalVersioned = sourceDbVs.VersionedUrl,
+                SourceCanonicalUnversioned = sourceDbVs.UnversionedUrl,
+                SourceVersion = sourceDbVs.Version,
+                SourceName = sourceDbVs.Name,
+                Target = targetDbVs,
+                TargetCanonicalVersioned = targetDbVs.VersionedUrl,
+                TargetCanonicalUnversioned = targetDbVs.UnversionedUrl,
+                TargetVersion = targetDbVs.Version,
+                TargetName = targetDbVs.Name,
+                CompositeName = dbPackagePair.GetCompositeName(sourceDbVs, targetDbVs),
+                SourceConceptMapUrl = cm.Url,
+                SourceConceptMapAdditionalUrls = additionalUrls.Count == 0 ? null : string.Join(", ", additionalUrls),
+                Relationship = null,
+                IsGenerated = false,
+                LastReviewedBy = null,
+                LastReviewedOn = null,
+                Message = $"Imported from existing ConceptMap {cm.Id} ({cm.Url}).",
+            };
+
+            _db.ValueSetComparisons.Add(dbVsComparison);
+            dbPackagePair.ValueSetComparisons.Add(dbVsComparison);
+            sourceDbVs.ComparisonsAsSource.Add(dbVsComparison);
+            targetDbVs.ComparisonsAsTarget.Add(dbVsComparison);
+
+            // check for manual exclusion
+            if (sourceDbVs.IsExcluded || targetDbVs.IsExcluded)
+            {
+                dbVsComparison.Message += $" Skipping due to manual exclusion of content.";
+                return;
+            }
+
+            // check for failure to expand
+            if (sourceDbVs.CanExpand == false)
+            {
+                dbVsComparison.Message += $" Skipping because the source value set {sourceDbVs.Id} ({sourceDbVs.VersionedUrl}) cannot be expanded.";
+                return;
+            }
+
+            if (targetDbVs.CanExpand == false)
+            {
+                dbVsComparison.Message += $" Skipping because the target value set {targetDbVs.Id} ({targetDbVs.VersionedUrl}) cannot be expanded.";
+                return;
+            }
+
+            // process each group
+            foreach (ConceptMap.GroupComponent cmGroup in cm.Group)
+            {
+                string sourceSystem = cmGroup.Source;
+                string targetSystem = cmGroup.Target;
+
+                // iterate over the elements in the group
+                foreach (ConceptMap.SourceElementComponent sourceElement in cmGroup.Element)
+                {
+                    // get the concept matching this source element
+                    DbValueSetConcept? sourceDbConcept = sourceDbVs.Concepts.FirstOrDefault(c => (c.System == sourceSystem) && (c.Code == sourceElement.Code));
+
+                    // handle non-mapping codes
+                    if (sourceElement.NoMap == true)
+                    {
+                        addComparison(
+                            dbPackagePair,
+                            sourceDbVs,
+                            targetDbVs,
+                            dbVsComparison,
+                            cm,
+                            sourceDbConcept,
+                            sourceSystem,
+                            sourceElement.Code,
+                            sourceElement.Display,
+                            noMap: true,
+                            relationship: null);
+
+                        continue;
+                    }
+
+                    // iterate across the targets
+                    foreach (ConceptMap.TargetElementComponent targetElement in sourceElement.Target)
+                    {
+                        // get the concept matching this target element
+                        DbValueSetConcept? targetDbConcept = targetDbVs.Concepts.FirstOrDefault(c => (c.System == targetSystem) && (c.Code == targetElement.Code));
+
+                        addComparison(
+                            dbPackagePair,
+                            sourceDbVs,
+                            targetDbVs,
+                            dbVsComparison,
+                            cm,
+                            sourceDbConcept,
+                            sourceSystem,
+                            sourceElement.Code,
+                            sourceElement.Display,
+                            noMap: false,
+                            relationship: targetElement.Relationship,
+                            targetDbConcept,
+                            targetSystem,
+                            targetElement.Code,
+                            targetElement.Display);
+
+                        continue;
+                    }
+                }
+            }
+        }
+
+        void addComparison(
+            DbFhirPackageComparisonPair dbPackagePair,
+            DbValueSet sourceDbVs,
+            DbValueSet targetDbVs,
+            DbValueSetComparison dbVsComparison,
+            ConceptMap cm,
+            DbValueSetConcept? sourceDbConcept,
+            string sourceSystem,
+            string sourceCode,
+            string? sourceDisplay,
+            bool? noMap,
+            CMR? relationship,
+            DbValueSetConcept? targetDbConcept = null,
+            string? targetSystem = null,
+            string? targetCode = null,
+            string? targetDisplay = null)
+        {
+            if (noMap == true)
+            {
+                if (sourceDbConcept == null)
+                {
+                    //DbInvalidConceptComparison invalidComparison = new()
+                    //{
+                    //    PackageComparison = dbPackagePair,
+                    //    SourceFhirPackage = dbPackagePair.SourcePackage,
+                    //    SourceCanonical = sourceDbVs,
+                    //    TargetFhirPackage = dbPackagePair.TargetPackage,
+                    //    TargetCanonical = targetDbVs,
+                    //    CanonicalComparison = dbVsComparison,
+                    //    ConceptMapId = cm.Id,
+                    //    ConceptMapUrl = cm.Url,
+                    //    Relationship = null,
+                    //    NoMap = true,
+                    //    Message = $"Code flagged as noMap in {cm.Id} ({cm.Url}), but does not exist in {sourceDbVs.VersionedUrl}",
+                    //    SourceExists = false,
+                    //    SourceSystem = sourceSystem,
+                    //    SourceCode = sourceCode,
+                    //    SourceDisplay = sourceDisplay,
+                    //    TargetExists = null,
+                    //    TargetSystem = null,
+                    //    TargetCode = null,
+                    //    TargetDisplay = null,
+                    //    IsGenerated = false,
+                    //    LastReviewedBy = null,
+                    //    LastReviewedOn = null,
+                    //};
+
+                    ////dbPackagePair.InvalidImportedConceptComparisons.Add(invalidComparison);
+                    //dbVsComparison.InvalidImportedComparisons.Add(invalidComparison);
+
+                    return;
+                }
+
+                DbValueSetConceptComparison nonMappedComparison = new()
+                {
+                    PackageComparison = dbPackagePair,
+                    SourceFhirPackage = dbPackagePair.SourcePackage,
+                    SourceCanonical = sourceDbVs,
+                    TargetFhirPackage = dbPackagePair.TargetPackage,
+                    TargetCanonical = targetDbVs,
+                    CanonicalComparison = dbVsComparison,
+                    Source = sourceDbConcept,
+                    Target = null,
+                    Relationship = null,
+                    NoMap = true,
+                    Message = $"Code flagged as noMap in {cm.Id} ({cm.Url})",
+                    IsGenerated = false,
+                    LastReviewedBy = null,
+                    LastReviewedOn = null,
+                };
+
+                //dbPackagePair.ValueSetConceptComparisons.Add(nonMappedComparison);
+                dbVsComparison.ComponentComparisons.Add(nonMappedComparison);
+
+                return;
+            }
+
+            bool sourceExists = sourceDbConcept == null;
+            bool targetExists = targetDbConcept == null;
+
+            string message = $"Mapping exists in {cm.Id} ({cm.Url}), but:";
+
+            if (!sourceExists)
+            {
+                message += $" {sourceSystem}|{sourceCode} does not exist in {sourceDbVs.VersionedUrl}";
+            }
+
+            if (!targetExists)
+            {
+                message += $" {targetSystem}|{targetCode} does not exist in {targetDbVs.VersionedUrl}";
+            }
+
+            if ((sourceDbConcept == null) || (targetDbConcept == null))
+            {
+                //DbInvalidConceptComparison invalidComparison = new()
+                //{
+                //    PackageComparison = dbPackagePair,
+                //    SourceFhirPackage = dbPackagePair.SourcePackage,
+                //    SourceCanonical = sourceDbVs,
+                //    TargetFhirPackage = dbPackagePair.TargetPackage,
+                //    TargetCanonical = targetDbVs,
+                //    CanonicalComparison = dbVsComparison,
+                //    ConceptMapId = cm.Id,
+                //    ConceptMapUrl = cm.Url,
+                //    Relationship = null,
+                //    NoMap = false,
+                //    Message = message,
+                //    SourceExists = sourceExists,
+                //    SourceSystem = sourceSystem,
+                //    SourceCode = sourceCode,
+                //    SourceDisplay = sourceDisplay,
+                //    TargetExists = targetExists,
+                //    TargetSystem = targetSystem,
+                //    TargetCode = targetCode,
+                //    TargetDisplay = targetDisplay,
+                //    IsGenerated = false,
+                //    LastReviewedBy = null,
+                //    LastReviewedOn = null,
+                //};
+
+                ////dbPackagePair.InvalidImportedConceptComparisons.Add(invalidComparison);
+                //dbVsComparison.InvalidImportedComparisons.Add(invalidComparison);
+
+                return;
+            }
+
+            DbValueSetConceptComparison mappedComparison = new()
+            {
+                PackageComparison = dbPackagePair,
+                SourceFhirPackage = dbPackagePair.SourcePackage,
+                SourceCanonical = sourceDbVs,
+                TargetFhirPackage = dbPackagePair.TargetPackage,
+                TargetCanonical = targetDbVs,
+                CanonicalComparison = dbVsComparison,
+                Source = sourceDbConcept,
+                Target = targetDbConcept,
+                Relationship = relationship,
+                NoMap = false,
+                Message = message,
+                IsGenerated = false,
+                LastReviewedBy = null,
+                LastReviewedOn = null,
+            };
+
+            //dbPackagePair.ValueSetConceptComparisons.Add(mappedComparison);
+            dbVsComparison.ComponentComparisons.Add(mappedComparison);
+        }
+    }
+
+    public bool TryLoadFromDefinitionCollections(
         HashSet<string> _exclusionSet,
         HashSet<string> _escapeValveCodes)
     {
         if (_definitions == null)
         {
-            throw new Exception("Cannot export contents without a DefinitionCollection!");
+            _logger.LogError("Cannot export contents without a DefinitionCollection!");
+            return false;
         }
 
         foreach ((DefinitionCollection dc, DcInfoRec _) in _definitions)
@@ -207,6 +676,8 @@ public class ComparisonDatabase : IDisposable
             // ensure all contents are written
             _db.SaveChanges();
         }
+
+        return true;
     }
 
     private void addValueSetsToDb(
@@ -225,7 +696,7 @@ public class ComparisonDatabase : IDisposable
             string versionedUrl = unversionedUrl + "|" + vsVersion;
 
             // check to see if this value set already exists
-            if (_db.ValueSets.Any(vsm => (vsm.Url == unversionedUrl) && (vsm.Version == vsVersion)))
+            if (pm.ValueSets.Any(vsm => (vsm.UnversionedUrl == unversionedUrl) && (vsm.Version == vsVersion)))
             {
                 continue;
             }
@@ -250,8 +721,10 @@ public class ComparisonDatabase : IDisposable
             BindingStrength? strongestBindingExtended = dc.StrongestBinding(extendedBindings);
             IReadOnlyDictionary<string, BindingStrength> extendedBindingStrengthByType = dc.BindingStrengthByType(extendedBindings);
 
+            bool isExcluded = _exclusionSet.Contains(unversionedUrl);
+            
             // will not further process value sets we know we will not process
-            if (_exclusionSet.Contains(unversionedUrl) ||
+            if (isExcluded ||
                 !canExpand ||
                 (vs == null))
             {
@@ -260,13 +733,15 @@ public class ComparisonDatabase : IDisposable
                 {
                     FhirPackage = pm,
                     Id = uvs.Id,
-                    Url = versionedUrl,
+                    VersionedUrl = versionedUrl,
+                    UnversionedUrl = unversionedUrl,
                     Name = uvs.Name,
                     Version = vsVersion,
                     Status = uvs.Status,
                     Title = uvs.Title,
                     Description = uvs.Description,
                     Purpose = uvs.Purpose,
+                    IsExcluded = isExcluded,
                     CanExpand = canExpand,
                     ConceptCount = 0,
                     HasEscapeValveCode = hasEscapeCode,
@@ -280,9 +755,11 @@ public class ComparisonDatabase : IDisposable
                     StrongestBindingExtended = strongestBindingExtended,
                     StrongestBindingExtendedCode = extendedBindingStrengthByType.TryGetValue("code", out BindingStrength ebseCode) ? ebseCode : null,
                     StrongestBindingExtendedCoding = extendedBindingStrengthByType.TryGetValue("Coding", out BindingStrength ebseCoding) ? ebseCoding : null,
+                    Concepts = [],
                 };
 
-                _db.ValueSets.Add(vsmExcluded);
+                pm.ValueSets.Add(vsmExcluded);
+                //_db.ValueSets.Add(vsmExcluded);
 
                 continue;
             }
@@ -292,13 +769,15 @@ public class ComparisonDatabase : IDisposable
             {
                 FhirPackage = pm,
                 Id = vs.Id,
-                Url = versionedUrl,
+                VersionedUrl = versionedUrl,
+                UnversionedUrl = unversionedUrl,
                 Name = vs.Name,
                 Version = vsVersion,
                 Status = vs.Status,
                 Title = vs.Title,
                 Description = vs.Description,
                 Purpose = vs.Purpose,
+                IsExcluded = isExcluded,
                 CanExpand = canExpand,
                 ConceptCount = 0,
                 HasEscapeValveCode = hasEscapeCode,
@@ -312,10 +791,12 @@ public class ComparisonDatabase : IDisposable
                 StrongestBindingExtended = strongestBindingExtended,
                 StrongestBindingExtendedCode = extendedBindingStrengthByType.TryGetValue("code", out BindingStrength bseCode) ? bseCode : null,
                 StrongestBindingExtendedCoding = extendedBindingStrengthByType.TryGetValue("Coding", out BindingStrength bseCoding) ? bseCoding : null,
+                Concepts = [],
             };
 
             // insert and update our local copy for the id
-            _db.ValueSets.Add(dbVs);
+            pm.ValueSets.Add(dbVs);
+            //_db.ValueSets.Add(dbVs);
 
             int conceptCount = 0;
 
@@ -325,7 +806,7 @@ public class ComparisonDatabase : IDisposable
                 conceptCount++;
 
                 // check for this record already existing
-                if (_db.Concepts.Any(vsc => vsc.ValueSetKey == dbVs.Key && vsc.System == fc.System && vsc.Code == fc.Code))
+                if (_db.ValueSetConcepts.Any(vsc => vsc.ValueSetKey == dbVs.Key && vsc.System == fc.System && vsc.Code == fc.Code))
                 {
                     continue;
                 }
@@ -340,7 +821,8 @@ public class ComparisonDatabase : IDisposable
                     Display = fc.Display,
                 };
 
-                _db.Concepts.Add(dbConcept);
+                //_db.Concepts.Add(dbConcept);
+                dbVs.Concepts.Add(dbConcept);
             }
 
             dbVs.ConceptCount = conceptCount;
@@ -369,7 +851,8 @@ public class ComparisonDatabase : IDisposable
                     {
                         FhirPackage = pm,
                         Id = sd.Id,
-                        Url = sd.Url,
+                        VersionedUrl = sd.Url + "|" + sd.Version,
+                        UnversionedUrl = sd.Url,
                         Name = sd.Name,
                         Version = sd.Version,
                         Status = sd.Status,
@@ -379,6 +862,7 @@ public class ComparisonDatabase : IDisposable
                         Comment = sd.Snapshot?.Element.FirstOrDefault()?.Comment,
                         ArtifactClass = cgClass,
                         Message = "Manually excluded",
+                        Elements = [],
                     };
 
                     _db.Structures.Add(sdmExcluded);
@@ -391,7 +875,8 @@ public class ComparisonDatabase : IDisposable
                 {
                     FhirPackage = pm,
                     Id = sd.Id,
-                    Url = sd.Url,
+                    VersionedUrl = sd.Url + "|" + sd.Version,
+                    UnversionedUrl = sd.Url,
                     Name = sd.Name,
                     Version = sd.Version,
                     Status = sd.Status,
@@ -401,6 +886,7 @@ public class ComparisonDatabase : IDisposable
                     Comment = sd.Snapshot?.Element.FirstOrDefault()?.Comment,
                     ArtifactClass = cgClass,
                     Message = string.Empty,
+                    Elements = [],
                 };
 
                 // insert and update our local copy for the id
@@ -503,7 +989,8 @@ public class ComparisonDatabase : IDisposable
                     TargetProfile = typeProfile,
                 };
 
-                _db.Elements.Add(dbElement);
+                //_db.Elements.Add(dbElement);
+                dbStructure.Elements.Add(dbElement);
             }
         }
 

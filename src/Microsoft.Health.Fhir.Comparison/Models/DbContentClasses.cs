@@ -10,16 +10,20 @@ using Microsoft.Health.Fhir.CodeGenCommon.Models;
 namespace Microsoft.Health.Fhir.Comparison.Models;
 
 
-public abstract class DbCanonicalResource
+public abstract class DbPackageContent
 {
     [Key]
     public int Key { get; set; }
 
     public int FhirPackageKey { get; set; }
     public required DbFhirPackage FhirPackage { get; init; } = null!;
+}
 
+public abstract class DbCanonicalResource : DbPackageContent
+{
     public required string Id { get; set; } = null!;
-    public required string Url { get; set; } = null!;
+    public required string VersionedUrl { get; set; } = null!;
+    public required string UnversionedUrl { get; set; } = null!;
     public required string Name { get; set; } = null!;
     public required string Version { get; set; } = null!;
     public required PublicationStatus? Status { get; set; } = null;
@@ -34,6 +38,7 @@ public class DbValueSet : DbCanonicalResource
     public required bool CanExpand { get; set; }
     public required bool? HasEscapeValveCode { get; set; } = null;
     public required string? Message { get; set; } = null;
+    public required bool IsExcluded { get; set; } = false;
 
     public required int ConceptCount { get; set; } = -1;
     public required string? ReferencedSystems { get; set; } = null;
@@ -48,24 +53,17 @@ public class DbValueSet : DbCanonicalResource
     public required BindingStrength? StrongestBindingExtendedCode { get; set; } = null;
     public required BindingStrength? StrongestBindingExtendedCoding { get; set; } = null;
 
-    public ICollection<DbValueSetConcept> Concepts { get; init; } = null!;
+    public ICollection<DbValueSetConcept> Concepts { get; init; } = [];
 
-    public ICollection<ValueSetPairComparison> ComparisonsAsSource { get; init; } = null!;
+    public ICollection<DbValueSetComparison> ComparisonsAsSource { get; init; } = [];
 
-    public ICollection<ValueSetPairComparison> ComparisonsAsTarget { get; init; } = null!;
+    public ICollection<DbValueSetComparison> ComparisonsAsTarget { get; init; } = [];
 }
 
-public class DbValueSetConcept
+public class DbValueSetConcept : DbPackageContent
 {
-    [Key]
-    public int Key { get; set; }
-
     public int ValueSetKey { get; set; }
     public required DbValueSet ValueSet { get; set; } = null!;
-
-    public int FhirPackageKey { get; set; }
-    public required DbFhirPackage FhirPackage { get; init; } = null!;
-
 
     public required string System { get; set; } = null!;
     public required string Code { get; set; } = null!;
@@ -81,7 +79,7 @@ public class DbStructureDefinition : DbCanonicalResource
 
     public required FhirArtifactClassEnum ArtifactClass { get; set; } = FhirArtifactClassEnum.Unknown;
 
-    public ICollection<DbElement> Elements { get; init; } = null!;
+    public ICollection<DbElement> Elements { get; init; } = [];
 
     //public ICollection<ValueSetPairComparison> ComparisonsAsSource { get; init; } = null!;
 
@@ -89,17 +87,10 @@ public class DbStructureDefinition : DbCanonicalResource
 }
 
 
-public class DbElement
+public class DbElement : DbPackageContent
 {
-    [Key]
-    public int Key { get; set; }
-
     public int StructureKey { get; set; }
     public required DbStructureDefinition Structure { get; init; } = null!;
-
-    public int FhirPackageKey { get; set; }
-    public required DbFhirPackage FhirPackage { get; init; } = null!;
-
 
     public required int ResourceFieldOrder { get; set; } = -1;
     public required int ComponentFieldOrder { get; set; } = -1;

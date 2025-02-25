@@ -49,85 +49,6 @@ public class RelationshipLookup
 }
 
 
-
-public class DbFhirPackageComparisonPair
-{
-    [Key]
-    public int Key { get; set; }
-
-    public int SourcePackageKey { get; set; }
-    public DbFhirPackage SourcePackage { get; init; } = null!;
-
-    public int TargetPackageKey { get; set; }
-    //[ForeignKey(nameof(TargetPackageKey))]
-    public DbFhirPackage TargetPackage { get; init; } = null!;
-}
-
-public class ValueSetPairComparison : IPairComparison<ValueSet>
-{
-    [Key]
-    public int Key { get; set; }
-
-    /// <summary>
-    /// Gets or initializes the source element.
-    /// </summary>
-    [NotMapped]
-    public ValueSet? Source { get; set; } = null;
-
-    public int SourceFhirPackageKey { get; set; }
-    public DbFhirPackage SourceFhirPackage { get; init; } = null!;
-
-    public int SourceValueSetKey { get; set; }
-    public required DbValueSet SourceValueSet { get; init; } = null!;
-    public required string SourceCanonical { get; set; } = null!;
-    public required string SourceName { get; set; } = null!;
-    public required string? SourceVersion { get; set; } = null;
-
-
-    /// <summary>
-    /// Gets or initializes the target element.
-    /// </summary>
-    [NotMapped]
-    public ValueSet? Target { get; set; } = null;
-
-    public int TargetFhirPackageKey { get; set; }
-    public DbFhirPackage TargetFhirPackage { get; init; } = null!;
-    public int TargetValueSetKey { get; set; }
-    public required DbValueSet TargetValueSet { get; init; } = null!;
-    public required string? TargetCanonical { get; set; } = null;
-    public required string? TargetName { get; set; } = null;
-    public required string? TargetVersion { get; set; } = null;
-
-    public required string CompositeName { get; set; } = null!;
-    public required string TableName { get; set; } = null!;
-
-    /// <summary>
-    /// Gets or initializes the relationship between the source and target elements.
-    /// </summary>
-    public required ConceptMap.ConceptMapRelationship? Relationship { get; set; } = null;
-
-    /// <summary>
-    /// Gets or initializes the issue code for the comparison.
-    /// </summary>
-    public required ComparisonIssueCode? IssueCode { get; set; } = null;
-
-    /// <summary>
-    /// Gets or initializes the message describing the comparison.
-    /// </summary>
-    public required string Message { get; set; } = null!;
-
-    /// <summary>
-    /// Gets or initializes the concept map associated with the comparison.
-    /// </summary>
-    [NotMapped]
-    public ConceptMap? Map { get; set; } = null;
-
-    public required string? LastReviewedBy { get; set; } = null;
-    public required DateTime? LastReviewedOn { get; set; } = null;
-
-    public ICollection<ValueSetCodeComparisonRec> CodeComparisons { get; init; } = null!;
-}
-
 public class ValueSetCodeComparisonRec
 {
     [Key]
@@ -135,7 +56,7 @@ public class ValueSetCodeComparisonRec
 
     public int VsPairComparisonKey { get; set; }
 
-    public required ValueSetPairComparison VsPairComparison { get; init; } = null!;
+    public required DbValueSetComparison VsPairComparison { get; init; } = null!;
 
     /// <summary>
     /// Gets or initializes the source system.
@@ -199,59 +120,6 @@ public class ValueSetCodeComparisonRec
 
 
 
-
-
-/// <summary>
-/// Represents a comparison between a source and target FHIR model element.
-/// </summary>
-/// <typeparam name="T">The type of the FHIR model element being compared.</typeparam>
-/// <remarks>Used by FhirCoreComparer</remarks>
-public interface IPairComparison<T>
-    where T : Base
-{
-    int Key { get; set; }
-
-    /// <summary>
-    /// Gets or initializes the source element.
-    /// </summary>
-    T? Source { get; set; }
-
-    string SourceCanonical { get; set; }
-    string SourceName { get; set; }
-
-    /// <summary>
-    /// Gets or initializes the target element.
-    /// </summary>
-    T? Target { get; set; }
-
-    string? TargetCanonical { get; set; }
-    string? TargetName { get; set; }
-
-    string CompositeName { get; set; }
-
-    /// <summary>
-    /// Gets or initializes the relationship between the source and target elements.
-    /// </summary>
-    ConceptMap.ConceptMapRelationship? Relationship { get; set; }
-
-    /// <summary>
-    /// Gets or initializes the issue code for the comparison.
-    /// </summary>
-    ComparisonIssueCode? IssueCode { get; set; }
-
-    /// <summary>
-    /// Gets or initializes the message describing the comparison.
-    /// </summary>
-    string Message { get; set; }
-
-    /// <summary>
-    /// Gets or initializes the concept map associated with the comparison.
-    /// </summary>
-    ConceptMap? Map { get; set; }
-
-    string? LastReviewedBy { get; set; }
-    DateTime? LastReviewedOn { get; set; }
-}
 
 
 public record class ComparisonBase

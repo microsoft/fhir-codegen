@@ -567,7 +567,7 @@ public partial class PackageLoader : IDisposable
 
         string canonical = $"file://{sourcePath}";
 
-        definitions ??= new()
+        definitions ??= new(_rootConfiguration)
         {
             Name = name,
             FhirSequence = fhirSequence,
@@ -710,7 +710,7 @@ public partial class PackageLoader : IDisposable
             // create our definition collection shell if we do not have one
             if (definitions == null)
             {
-                definitions = new()
+                definitions = new(_rootConfiguration)
                 {
                     Name = packageReference.Name,
                     Logger = _rootConfiguration.LogFactory.CreateLogger<DefinitionCollection>(),
@@ -775,7 +775,9 @@ public partial class PackageLoader : IDisposable
                 }
 
                 // check if we are flagged to load expansions and this is a core package
-                if (_rootConfiguration.AutoLoadExpansions && FhirPackageUtils.PackageIsFhirCore(packageReference.Name))
+                if (_rootConfiguration.AutoLoadExpansions &&
+                    FhirPackageUtils.PackageIsFhirCore(packageReference.Name) &&
+                    (packageReference.Name != "hl7.fhir.r2.core"))
                 {
                     string expansionPackageName = packageReference.Name.Replace(".core", ".expansions");
                     string expansionDirective = expansionPackageName + "@" + packageReference.Version;

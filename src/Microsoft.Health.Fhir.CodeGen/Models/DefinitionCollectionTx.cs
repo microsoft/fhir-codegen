@@ -57,8 +57,21 @@ public partial class DefinitionCollection : IAsyncResourceResolver
     public async Task<(ValueSet?, string?)> ExpandVsEx(string uri)
     {
         Parameters p = [];
-        p.Parameter.Add(new() { Name = "url", Value = new FhirUri(uri) });
+
+        string[] components = uri.Split('|');
+
+        if (components.Length == 2)
+        {
+            p.Parameter.Add(new() { Name = "url", Value = new FhirUri(components[0]) });
+            p.Parameter.Add(new() { Name = "valueSetVersion", Value = new FhirString(components[1]) });
+        }
+        else
+        {
+            p.Parameter.Add(new() { Name = "url", Value = new FhirUri(uri) });
+        }
+
         p.Parameter.Add(new() { Name = "includeDesignations", Value = new FhirBoolean(false) });
+        //p.Parameter.Add(new() { Name = "activeOnly", Value = new FhirBoolean(false) });
         //p.Parameter.Add(new() { Name = "displayLanguage", Value = new Code("en") });
 
         try

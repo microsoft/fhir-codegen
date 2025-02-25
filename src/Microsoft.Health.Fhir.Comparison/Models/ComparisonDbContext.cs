@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,14 +27,15 @@ public class ComparisonDbContext : DbContext
     }
 
     public DbSet<DbFhirPackage> Packages { get; set; }
-    public DbSet<DbFhirPackageComparisonPair> PackageDiffPairs { get; set; }
+    public DbSet<DbFhirPackageComparisonPair> PackagePairs { get; set; }
 
     public DbSet<DbValueSet> ValueSets { get; set; }
-    public DbSet<DbValueSetConcept> Concepts { get; set; }
+    public DbSet<DbValueSetConcept> ValueSetConcepts { get; set; }
 
-    public DbSet<ValueSetPairComparison> ValueSetComparisons { get; set; }
-    public DbSet<ValueSetCodeComparisonRec> ValueSetCodeComparisons { get; set; }
+    public DbSet<DbValueSetComparison> ValueSetComparisons { get; set; }
+    public DbSet<DbValueSetConceptComparison> ValueSetConceptComparisons { get; set; }
 
+    public DbSet<DbInvalidConceptComparison> InvalidImportedConceptComparisons { get; set; }
 
     public DbSet<DbStructureDefinition> Structures { get; set; }
     public DbSet<DbElement> Elements { get; set; }
@@ -41,10 +43,13 @@ public class ComparisonDbContext : DbContext
 
     //public DbSet<DbElementTypeMap> ElementTypeMappings { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder options) =>
-        options
-            //.UseLazyLoadingProxies()
-            .UseSqlite($"Data Source={DbPath}");
+    protected override void OnConfiguring(DbContextOptionsBuilder options) => options
+        //.UseLazyLoadingProxies()
+        //.LogTo(message => Debug.WriteLine(message))
+        //.LogTo(Console.WriteLine)
+        .EnableSensitiveDataLogging()
+        .EnableDetailedErrors()
+        .UseSqlite($"Data Source={DbPath}");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -56,22 +61,53 @@ public class ComparisonDbContext : DbContext
             .HasForeignKey(e => e.FhirPackageKey)
             .HasPrincipalKey(e => e.Key);
         modelBuilder.Entity<DbFhirPackage>()
+            .HasMany(e => e.ValueSetConcepts)
+            .WithOne(e => e.FhirPackage)
+            .HasForeignKey(e => e.FhirPackageKey)
+            .HasPrincipalKey(e => e.Key);
+        modelBuilder.Entity<DbFhirPackage>()
+            .HasMany(e => e.Structures)
+            .WithOne(e => e.FhirPackage)
+            .HasForeignKey(e => e.FhirPackageKey)
+            .HasPrincipalKey(e => e.Key);
+        modelBuilder.Entity<DbFhirPackage>()
+            .HasMany(e => e.Elements)
+            .WithOne(e => e.FhirPackage)
+            .HasForeignKey(e => e.FhirPackageKey)
+            .HasPrincipalKey(e => e.Key);
+
+        modelBuilder.Entity<DbFhirPackage>()
             .ToTable("FhirPackages");
 
         modelBuilder.Entity<DbFhirPackageComparisonPair>()
             .HasKey(nameof(DbFhirPackageComparisonPair.Key));
         modelBuilder.Entity<DbFhirPackageComparisonPair>()
             .HasOne(e => e.SourcePackage)
-            .WithMany(e => e.SourceDiffs)
+            .WithMany(e => e.ComparisonsAsSource)
             .HasForeignKey(e => e.SourcePackageKey)
             .HasPrincipalKey(e => e.Key);
         modelBuilder.Entity<DbFhirPackageComparisonPair>()
             .HasOne(e => e.TargetPackage)
-            .WithMany(e => e.TargetDiffs)
+            .WithMany(e => e.ComparisonsAsTarget)
             .HasForeignKey(e => e.TargetPackageKey)
             .HasPrincipalKey(e => e.Key);
         modelBuilder.Entity<DbFhirPackageComparisonPair>()
-            .ToTable("FhirPackageComparisonPairs");
+            .HasMany(e => e.ValueSetComparisons)
+            .WithOne(e => e.PackageComparison)
+            .HasForeignKey(e => e.PackageComparisonKey)
+            .HasPrincipalKey(e => e.Key);
+        modelBuilder.Entity<DbFhirPackageComparisonPair>()
+            .HasMany(e => e.ValueSetConceptComparisons)
+            .WithOne(e => e.PackageComparison)
+            .HasForeignKey(e => e.PackageComparisonKey)
+            .HasPrincipalKey(e => e.Key);
+        modelBuilder.Entity<DbFhirPackageComparisonPair>()
+            .HasMany(e => e.InvalidImportedConceptComparisons)
+            .WithOne(e => e.PackageComparison)
+            .HasForeignKey(e => e.PackageComparisonKey)
+            .HasPrincipalKey(e => e.Key);
+        modelBuilder.Entity<DbFhirPackageComparisonPair>()
+            .ToTable("FhirPackagePairs");
 
         modelBuilder.Entity<DbValueSet>()
             .HasKey(nameof(DbValueSet.Key));
@@ -115,29 +151,30 @@ public class ComparisonDbContext : DbContext
         modelBuilder.Entity<DbValueSet>()
             .HasMany(e => e.Concepts)
             .WithOne(e => e.ValueSet)
-            .HasForeignKey(e => e.ValueSetKey);
+            .HasForeignKey(e => e.ValueSetKey)
+            .HasPrincipalKey(e => e.Key);
         modelBuilder.Entity<DbValueSet>()
             .HasMany(e => e.ComparisonsAsSource)
-            .WithOne(e => e.SourceValueSet)
-            .HasForeignKey(e => e.SourceValueSetKey)
+            .WithOne(e => e.Source)
+            .HasForeignKey(e => e.SourceKey)
             .HasPrincipalKey(e => e.Key);
         modelBuilder.Entity<DbValueSet>()
             .HasMany(e => e.ComparisonsAsTarget)
-            .WithOne(e => e.TargetValueSet)
-            .HasForeignKey(e => e.TargetValueSetKey)
+            .WithOne(e => e.Target)
+            .HasForeignKey(e => e.TargetKey)
             .HasPrincipalKey(e => e.Key);
         modelBuilder.Entity<DbValueSet>()
             .HasIndex(nameof(DbValueSet.FhirPackageKey));
         modelBuilder.Entity<DbValueSet>()
-            .HasIndex(nameof(DbValueSet.Url));
+            .HasIndex(nameof(DbValueSet.VersionedUrl));
         modelBuilder.Entity<DbValueSet>()
-            .HasIndex(nameof(DbValueSet.Url), nameof(DbValueSet.Version));
+            .HasIndex(nameof(DbValueSet.VersionedUrl), nameof(DbValueSet.Version));
         modelBuilder.Entity<DbValueSet>()
             .HasIndex(nameof(DbValueSet.Name));
         modelBuilder.Entity<DbValueSet>()
             .HasIndex(nameof(DbValueSet.Name), nameof(DbValueSet.Version));
         modelBuilder.Entity<DbValueSet>()
-            .HasIndex(nameof(DbValueSet.FhirPackageKey), nameof(DbValueSet.Url));
+            .HasIndex(nameof(DbValueSet.FhirPackageKey), nameof(DbValueSet.VersionedUrl));
         modelBuilder.Entity<DbValueSet>()
             .HasIndex(nameof(DbValueSet.FhirPackageKey), nameof(DbValueSet.Name));
         modelBuilder.Entity<DbValueSet>()
@@ -146,9 +183,15 @@ public class ComparisonDbContext : DbContext
         modelBuilder.Entity<DbValueSetConcept>()
             .HasKey(nameof(DbValueSetConcept.Key));
         modelBuilder.Entity<DbValueSetConcept>()
-            .HasOne(e => e.ValueSet);
+            .HasOne(e => e.ValueSet)
+            .WithMany(e => e.Concepts)
+            .HasForeignKey(e => e.ValueSetKey)
+            .HasPrincipalKey(e => e.Key);
         modelBuilder.Entity<DbValueSetConcept>()
-            .HasOne(e => e.FhirPackage);
+            .HasOne(e => e.FhirPackage)
+            .WithMany(e => e.ValueSetConcepts)
+            .HasForeignKey(e => e.FhirPackageKey)
+            .HasPrincipalKey(e => e.Key);
         modelBuilder.Entity<DbValueSetConcept>()
             .HasIndex(nameof(DbValueSetConcept.FhirPackageKey));
         modelBuilder.Entity<DbValueSetConcept>()
@@ -169,68 +212,124 @@ public class ComparisonDbContext : DbContext
             .ToTable("ValueSetConcepts");
 
 
-        modelBuilder.Entity<ValueSetPairComparison>()
-            .HasKey(nameof(ValueSetPairComparison.Key));
-        modelBuilder.Entity<ValueSetPairComparison>()
+        modelBuilder.Entity<DbValueSetComparison>()
+            .HasKey(nameof(DbValueSetComparison.Key));
+        modelBuilder.Entity<DbValueSetComparison>()
             .HasOne(e => e.SourceFhirPackage);
-        modelBuilder.Entity<ValueSetPairComparison>()
-            .HasOne(e => e.SourceValueSet);
-        modelBuilder.Entity<ValueSetPairComparison>()
+        modelBuilder.Entity<DbValueSetComparison>()
+            .HasOne(e => e.Source)
+            .WithMany(e => e.ComparisonsAsSource);
+        modelBuilder.Entity<DbValueSetComparison>()
             .HasOne(e => e.TargetFhirPackage);
-        modelBuilder.Entity<ValueSetPairComparison>()
-            .HasOne(e => e.TargetValueSet);
-        modelBuilder.Entity<ValueSetPairComparison>()
-            .HasMany(e => e.CodeComparisons)
-            .WithOne(e => e.VsPairComparison)
-            .HasForeignKey(e => e.VsPairComparisonKey)
+        modelBuilder.Entity<DbValueSetComparison>()
+            .HasOne(e => e.Target)
+            .WithMany(e => e.ComparisonsAsTarget);
+        modelBuilder.Entity<DbValueSetComparison>()
+            .HasOne(e => e.PackageComparison)
+            .WithMany(e => e.ValueSetComparisons)
+            .HasForeignKey(e => e.PackageComparisonKey);
+        modelBuilder.Entity<DbValueSetComparison>()
+            .HasMany(e => e.ComponentComparisons)
+            .WithOne(e => e.CanonicalComparison)
+            .HasForeignKey(e => e.CanonicalComparisonKey)
             .HasPrincipalKey(e => e.Key);
-        modelBuilder.Entity<ValueSetPairComparison>()
-            .HasIndex(nameof(ValueSetPairComparison.SourceValueSetKey));
-        modelBuilder.Entity<ValueSetPairComparison>()
-            .HasIndex(nameof(ValueSetPairComparison.SourceName));
-        modelBuilder.Entity<ValueSetPairComparison>()
-            .HasIndex(nameof(ValueSetPairComparison.SourceCanonical));
-        modelBuilder.Entity<ValueSetPairComparison>()
-            .HasIndex(nameof(ValueSetPairComparison.SourceVersion));
-        modelBuilder.Entity<ValueSetPairComparison>()
-            .HasIndex(nameof(ValueSetPairComparison.SourceCanonical), nameof(ValueSetPairComparison.SourceVersion));
-        modelBuilder.Entity<ValueSetPairComparison>()
-            .HasIndex(nameof(ValueSetPairComparison.SourceName), nameof(ValueSetPairComparison.SourceVersion));
-        modelBuilder.Entity<ValueSetPairComparison>()
-            .HasIndex(nameof(ValueSetPairComparison.TargetValueSetKey));
-        modelBuilder.Entity<ValueSetPairComparison>()
-            .HasIndex(nameof(ValueSetPairComparison.TargetName));
-        modelBuilder.Entity<ValueSetPairComparison>()
-            .HasIndex(nameof(ValueSetPairComparison.TargetCanonical));
-        modelBuilder.Entity<ValueSetPairComparison>()
-            .HasIndex(nameof(ValueSetPairComparison.TargetVersion));
-        modelBuilder.Entity<ValueSetPairComparison>()
-            .HasIndex(nameof(ValueSetPairComparison.TargetCanonical), nameof(ValueSetPairComparison.TargetVersion));
-        modelBuilder.Entity<ValueSetPairComparison>()
-            .HasIndex(nameof(ValueSetPairComparison.TargetName), nameof(ValueSetPairComparison.TargetVersion));
-        modelBuilder.Entity<ValueSetPairComparison>()
+        modelBuilder.Entity<DbValueSetComparison>()
+            .HasMany(e => e.InvalidImportedComparisons)
+            .WithOne(e => e.CanonicalComparison)
+            .HasForeignKey(e => e.CanonicalComparisonKey)
+            .HasPrincipalKey(e => e.Key);
+        modelBuilder.Entity<DbValueSetComparison>()
+            .Property(e => e.Relationship)
+            .HasConversion(
+                v => v.HasValue ? EnumUtility.GetLiteral(v.Value) : null,
+                v => EnumUtility.ParseLiteral<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship>(v, true));
+        modelBuilder.Entity<DbValueSetComparison>()
+            .HasIndex(nameof(DbValueSetComparison.SourceKey));
+        modelBuilder.Entity<DbValueSetComparison>()
+            .HasIndex(nameof(DbValueSetComparison.SourceName));
+        modelBuilder.Entity<DbValueSetComparison>()
+            .HasIndex(nameof(DbValueSetComparison.SourceCanonicalVersioned));
+        modelBuilder.Entity<DbValueSetComparison>()
+            .HasIndex(nameof(DbValueSetComparison.SourceVersion));
+        modelBuilder.Entity<DbValueSetComparison>()
+            .HasIndex(nameof(DbValueSetComparison.SourceCanonicalVersioned), nameof(DbValueSetComparison.SourceVersion));
+        modelBuilder.Entity<DbValueSetComparison>()
+            .HasIndex(nameof(DbValueSetComparison.SourceName), nameof(DbValueSetComparison.SourceVersion));
+        modelBuilder.Entity<DbValueSetComparison>()
+            .HasIndex(nameof(DbValueSetComparison.TargetKey));
+        modelBuilder.Entity<DbValueSetComparison>()
+            .HasIndex(nameof(DbValueSetComparison.TargetName));
+        modelBuilder.Entity<DbValueSetComparison>()
+            .HasIndex(nameof(DbValueSetComparison.TargetCanonicalVersioned));
+        modelBuilder.Entity<DbValueSetComparison>()
+            .HasIndex(nameof(DbValueSetComparison.TargetVersion));
+        modelBuilder.Entity<DbValueSetComparison>()
+            .HasIndex(nameof(DbValueSetComparison.TargetCanonicalVersioned), nameof(DbValueSetComparison.TargetVersion));
+        modelBuilder.Entity<DbValueSetComparison>()
+            .HasIndex(nameof(DbValueSetComparison.TargetName), nameof(DbValueSetComparison.TargetVersion));
+        modelBuilder.Entity<DbValueSetComparison>()
             .ToTable("ValueSetComparisons");
 
-        modelBuilder.Entity<ValueSetCodeComparisonRec>()
-            .HasKey(nameof(ValueSetCodeComparisonRec.Key));
-        modelBuilder.Entity<ValueSetCodeComparisonRec>()
-            .HasOne(e => e.VsPairComparison);
-        modelBuilder.Entity<ValueSetCodeComparisonRec>()
-            .HasIndex(nameof(ValueSetCodeComparisonRec.VsPairComparisonKey));
-        modelBuilder.Entity<ValueSetCodeComparisonRec>()
-            .HasIndex(nameof(ValueSetCodeComparisonRec.SourceSystem));
-        modelBuilder.Entity<ValueSetCodeComparisonRec>()
-            .HasIndex(nameof(ValueSetCodeComparisonRec.SourceCode));
-        modelBuilder.Entity<ValueSetCodeComparisonRec>()
-            .HasIndex(nameof(ValueSetCodeComparisonRec.SourceSystem), nameof(ValueSetCodeComparisonRec.SourceCode));
-        modelBuilder.Entity<ValueSetCodeComparisonRec>()
-            .HasIndex(nameof(ValueSetCodeComparisonRec.TargetSystem));
-        modelBuilder.Entity<ValueSetCodeComparisonRec>()
-            .HasIndex(nameof(ValueSetCodeComparisonRec.TargetCode));
-        modelBuilder.Entity<ValueSetCodeComparisonRec>()
-            .HasIndex(nameof(ValueSetCodeComparisonRec.TargetSystem), nameof(ValueSetCodeComparisonRec.TargetCode));
-        modelBuilder.Entity<ValueSetCodeComparisonRec>()
+        modelBuilder.Entity<DbValueSetConceptComparison>()
+            .HasKey(nameof(DbValueSetConceptComparison.Key));
+        modelBuilder.Entity<DbValueSetConceptComparison>()
+            .HasOne(e => e.SourceFhirPackage);
+        modelBuilder.Entity<DbValueSetConceptComparison>()
+            .HasOne(e => e.TargetFhirPackage);
+        modelBuilder.Entity<DbValueSetConceptComparison>()
+            .HasOne(e => e.PackageComparison)
+            .WithMany(e => e.ValueSetConceptComparisons)
+            .HasForeignKey(e => e.PackageComparisonKey)
+            .HasPrincipalKey(e => e.Key);
+        modelBuilder.Entity<DbValueSetConceptComparison>()
+            .HasOne(e => e.CanonicalComparison);
+        modelBuilder.Entity<DbValueSetConceptComparison>()
+            .HasOne(e => e.SourceCanonical);
+        modelBuilder.Entity<DbValueSetConceptComparison>()
+            .HasOne(e => e.TargetCanonical);
+        modelBuilder.Entity<DbValueSetConceptComparison>()
+            .HasOne(e => e.Source);
+        modelBuilder.Entity<DbValueSetConceptComparison>()
+            .HasOne(e => e.Target);
+        modelBuilder.Entity<DbValueSetConceptComparison>()
+            .Property(e => e.Relationship)
+            .HasConversion(
+                v => v.HasValue ? EnumUtility.GetLiteral(v.Value) : null,
+                v => EnumUtility.ParseLiteral<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship>(v, true));
+        modelBuilder.Entity<DbValueSetConceptComparison>()
+            .HasIndex(nameof(DbValueSetConceptComparison.CanonicalComparisonKey));
+        modelBuilder.Entity<DbValueSetConceptComparison>()
+            .HasIndex(nameof(DbValueSetConceptComparison.SourceCanonicalKey));
+        modelBuilder.Entity<DbValueSetConceptComparison>()
+            .HasIndex(nameof(DbValueSetConceptComparison.SourceKey));
+        modelBuilder.Entity<DbValueSetConceptComparison>()
             .ToTable("ValueSetConceptComparisons");
+
+
+        modelBuilder.Entity<DbInvalidConceptComparison>()
+            .HasKey(nameof(DbInvalidConceptComparison.Key));
+        modelBuilder.Entity<DbInvalidConceptComparison>()
+            .HasOne(e => e.SourceFhirPackage);
+        modelBuilder.Entity<DbInvalidConceptComparison>()
+            .HasOne(e => e.TargetFhirPackage);
+        modelBuilder.Entity<DbInvalidConceptComparison>()
+            .HasOne(e => e.PackageComparison)
+            .WithMany(e => e.InvalidImportedConceptComparisons)
+            .HasForeignKey(e => e.PackageComparisonKey)
+            .HasPrincipalKey(e => e.Key);
+        modelBuilder.Entity<DbInvalidConceptComparison>()
+            .HasOne(e => e.CanonicalComparison);
+        modelBuilder.Entity<DbInvalidConceptComparison>()
+            .HasOne(e => e.SourceCanonical);
+        modelBuilder.Entity<DbInvalidConceptComparison>()
+            .HasOne(e => e.TargetCanonical);
+        modelBuilder.Entity<DbInvalidConceptComparison>()
+            .Property(e => e.Relationship)
+            .HasConversion(
+                v => v.HasValue ? EnumUtility.GetLiteral(v.Value) : null,
+                v => EnumUtility.ParseLiteral<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship>(v, true));
+        modelBuilder.Entity<DbInvalidConceptComparison>()
+            .ToTable("InvalidImportedConceptComparisons");
 
 
         modelBuilder.Entity<DbStructureDefinition>()
@@ -254,15 +353,15 @@ public class ComparisonDbContext : DbContext
         modelBuilder.Entity<DbStructureDefinition>()
             .HasIndex(nameof(DbStructureDefinition.FhirPackageKey));
         modelBuilder.Entity<DbStructureDefinition>()
-            .HasIndex(nameof(DbStructureDefinition.Url));
+            .HasIndex(nameof(DbStructureDefinition.VersionedUrl));
         modelBuilder.Entity<DbStructureDefinition>()
-            .HasIndex(nameof(DbStructureDefinition.Url), nameof(DbStructureDefinition.Version));
+            .HasIndex(nameof(DbStructureDefinition.VersionedUrl), nameof(DbStructureDefinition.Version));
         modelBuilder.Entity<DbStructureDefinition>()
             .HasIndex(nameof(DbStructureDefinition.Name));
         modelBuilder.Entity<DbStructureDefinition>()
             .HasIndex(nameof(DbStructureDefinition.Name), nameof(DbStructureDefinition.Version));
         modelBuilder.Entity<DbStructureDefinition>()
-            .HasIndex(nameof(DbStructureDefinition.FhirPackageKey), nameof(DbStructureDefinition.Url));
+            .HasIndex(nameof(DbStructureDefinition.FhirPackageKey), nameof(DbStructureDefinition.VersionedUrl));
         modelBuilder.Entity<DbStructureDefinition>()
             .HasIndex(nameof(DbStructureDefinition.FhirPackageKey), nameof(DbStructureDefinition.Name));
         modelBuilder.Entity<DbStructureDefinition>()

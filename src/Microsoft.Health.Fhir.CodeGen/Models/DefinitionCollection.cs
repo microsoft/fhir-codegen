@@ -13,7 +13,9 @@ using Firely.Fhir.Packages;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Specification.Terminology;
 using Microsoft.Extensions.Logging;
+using Microsoft.Health.Fhir.CodeGen.Configuration;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
+using Microsoft.Health.Fhir.CodeGen.TerminologyService;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
@@ -124,7 +126,7 @@ public partial class DefinitionCollection
     private readonly Dictionary<string, Dictionary<string, IConformanceResource>> _canonicalResources = [];
 
     /// <summary>(Immutable) The local transmit.</summary>
-    private readonly LocalTerminologyService _localTx;
+    private readonly CodeGenTerminologyService _localTx;
 
     private readonly static HashSet<string> _notActuallyLimitedExpansions = [
         "http://hl7.org/fhir/ValueSet/age-units",
@@ -135,6 +137,10 @@ public partial class DefinitionCollection
         "http://hl7.org/fhir/ValueSet/currencies",
     ];
 
+    private static readonly HashSet<string> _valueSetsWithIncorrectExpansions = [
+        "http://hl7.org/fhir/ValueSet/security-labels|4.0.1"
+    ];
+
     static DefinitionCollection()
     {
         Hl7.Fhir.Model.ViewDefinition.RegisterInFhir();
@@ -143,14 +149,19 @@ public partial class DefinitionCollection
     /// <summary>
     /// Initializes a new instance of the <see cref="DefinitionCollection"/> class.
     /// </summary>
-    public DefinitionCollection()
+    public DefinitionCollection(
+        ConfigRoot? rootConfig = null)
     {
-        ValueSetExpanderSettings valueSetExpanderSettings = new()
+        CodeGenValueSetExpanderSettings valueSetExpanderSettings = new()
         {
+            Definitions = this,
             IncludeDesignations = false,
+            //IncludeNotSelectable = rootConfig?.ExpandIncludeNotSelectable,
+            MaxExpansionSize = rootConfig?.MaxExpansionSize ?? ConfigRoot.DefaultMaxExpansionSize,
+            //ActiveOnly = rootConfig?.ExpandActiveOnly,
         };
 
-        _localTx = new LocalTerminologyService(this, valueSetExpanderSettings);
+        _localTx = new CodeGenTerminologyService(valueSetExpanderSettings);
     }
 
     public string Key => $"{MainPackageId}@{MainPackageVersion}";
@@ -1611,25 +1622,31 @@ public partial class DefinitionCollection
                     if (valueSet.Compose.Include == null)
                     {
                         valueSet.Compose.Include = [];
+
                     }
 
-                    valueSet.Compose.Include.Add(new ValueSet.ConceptSetComponent
+                    // add everything from this CodeSystem if it is not referenced at all in the ValueSet
+                    if ((valueSet.Compose.Include.Count == 0) ||
+                        !valueSet.Compose.Include.Any(ci => ci.System == cs.Url))
                     {
-                        SystemElement = new FhirUri($"{cs.Url}"),
-                    });
-                }
-            }
-        }
+                        valueSet.Compose.Include.Add(new ValueSet.ConceptSetComponent
+                        {
+                            SystemElement = new FhirUri(cs.Url),
+                        });
+                    }
 
-        // check for value sets that are incorrectly flagged as limited expansions
-        if (_notActuallyLimitedExpansions.Contains(valueSet.Url))
-        {
-            for (int i = 0; i < (valueSet.Expansion?.Parameter?.Count ?? 0); i++)
-            {
-                if (valueSet.Expansion!.Parameter[i].Name == "limitedExpansion")
-                {
-                    valueSet.Expansion.Parameter[i].Value = new FhirBoolean(false);
-                    break;
+                    //if (cs.Concept.Count != 0)
+                    //{
+                    //    // recursively add concepts
+                    //    addCsConceptsToVs(valueSet, new FhirUri(cs.Url), cs.Concept);
+                    //}
+                    //else
+                    //{
+                    //    valueSet.Compose.Include.Add(new ValueSet.ConceptSetComponent
+                    //    {
+                    //        SystemElement = new FhirUri(cs.Url),
+                    //    });
+                    //}
                 }
             }
         }
@@ -1655,6 +1672,27 @@ public partial class DefinitionCollection
         }
 
         string unversioned = UnversionedUrlForVs(valueSet.Url);
+
+        // check for value sets that are incorrectly flagged as limited expansions
+        if (_notActuallyLimitedExpansions.Contains(vsUrl) ||
+            _notActuallyLimitedExpansions.Contains(unversioned))
+        {
+            for (int i = 0; i < (valueSet.Expansion?.Parameter?.Count ?? 0); i++)
+            {
+                if (valueSet.Expansion!.Parameter[i].Name == "limitedExpansion")
+                {
+                    valueSet.Expansion.Parameter[i].Value = new FhirBoolean(false);
+                    break;
+                }
+            }
+        }
+
+        // check for value sets that we know have incorrect expansions
+        if (_valueSetsWithIncorrectExpansions.Contains(vsUrl) ||
+            _valueSetsWithIncorrectExpansions.Contains(unversioned))
+        {
+            valueSet.Expansion = null;
+        }
 
         if (_valueSetVersions.TryGetValue(unversioned, out string[]? versions))
         {
@@ -1771,6 +1809,35 @@ public partial class DefinitionCollection
 
         _valueSetsByVersionedUrl[vsUrl] = valueSet;
         TrackResource(valueSet);
+
+        return;
+
+        void addCsConceptsToVs(ValueSet vs, FhirUri system, List<CodeSystem.ConceptDefinitionComponent> concepts)
+        {
+            if (concepts.Count == 0)
+            {
+                return;
+            }
+
+            vs.Compose.Include.Add(new ValueSet.ConceptSetComponent
+            {
+                SystemElement = system,
+                Concept = concepts
+                .Select(csc => new ValueSet.ConceptReferenceComponent()
+                {
+                    Code = csc.Code,
+                    Display = csc.Display,
+                }).ToList()
+            });
+
+            foreach (CodeSystem.ConceptDefinitionComponent concept in concepts)
+            {
+                if (concept.Concept.Count != 0)
+                {
+                    addCsConceptsToVs(vs, system, concept.Concept);
+                }
+            }
+        }
     }
 
     ///// <summary>Interface to check if a resource has a 'URL' element.</summary>

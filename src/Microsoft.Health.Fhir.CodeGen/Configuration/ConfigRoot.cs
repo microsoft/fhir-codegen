@@ -21,6 +21,8 @@ namespace Microsoft.Health.Fhir.CodeGen.Configuration;
 /// </summary>
 public class ConfigRoot : ICodeGenConfig
 {
+    public const int DefaultMaxExpansionSize = 1000;
+
     /// <summary>Gets or sets the initial command passed at launch.</summary>
     public string? LaunchCommand { get; set; } = null;
 
@@ -207,6 +209,23 @@ public class ConfigRoot : ICodeGenConfig
         },
     };
 
+    [ConfigOption(
+        ArgName = "--max-expansion-size",
+        EnvName = "Max_Expansion_Size",
+        Description = "Maximum number of concepts to include in a value set expansion before limiting.")]
+    public int MaxExpansionSize { get; set; } = DefaultMaxExpansionSize;
+    public static ConfigurationOption MaxExpansionSizeParameter { get; } = new()
+    {
+        Name = "MaxExpansionSize",
+        EnvVarName = "Max_Expansion_Size",
+        DefaultValue = DefaultMaxExpansionSize,
+        CliOption = new System.CommandLine.Option<int>("--max-expansion-size", "Maximum number of concepts to include in a value set expansion before limiting.")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
+
     private static readonly FhirArtifactClassEnum[] _defaultLoadStructures =
     [
         FhirArtifactClassEnum.PrimitiveType,
@@ -380,6 +399,7 @@ public class ConfigRoot : ICodeGenConfig
         OutputFilenameParameter,
         PackagesParameter,
         AutoLoadExpansionsParameter,
+        MaxExpansionSizeParameter,
         ResolvePackageDependenciesParameter,
         LoadStructuresParameter,
         ExportKeysParameter,
@@ -733,6 +753,9 @@ public class ConfigRoot : ICodeGenConfig
                     break;
                 case "AutoLoadExpansions":
                     AutoLoadExpansions = GetOpt(parseResult, opt, AutoLoadExpansions);
+                    break;
+                case "MaxExpansionSize":
+                    MaxExpansionSize = GetOpt(parseResult, opt, MaxExpansionSize);
                     break;
                 case "LoadStructures":
                     LoadStructures = GetOptArray(parseResult, opt, LoadStructures);

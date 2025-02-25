@@ -57,6 +57,8 @@ public class XVerProcessor
         "http://hl7.org/fhir/ValueSet/ucum-units",
         "http://hl7.org/fhir/ValueSet/all-languages",
         "http://hl7.org/fhir/ValueSet/mimetypes",
+        //"http://hl7.org/fhir/ValueSet/use-context",
+        //"http://hl7.org/fhir/ValueSet/jurisdiction",
     ];
 
     internal static readonly HashSet<string> _escapeValveCodes = [
@@ -76,7 +78,7 @@ public class XVerProcessor
     private DefinitionCollection[] _definitions = [];
     private Dictionary<string, int> _definitionIndexes = [];
     private Dictionary<(string left, string right), FhirCoreComparer> _comparisonCache;
-    private DifferenceTracker? _diffTracker = null;
+    private ComparisonDatabase? _db = null;
     private Dictionary<string, HashSet<string>> _vsUrlsToInclude = [];
 
     private string _dbPath;
@@ -127,7 +129,7 @@ public class XVerProcessor
         switch (command)
         {
             case "create-content-db":
-                CreateContentDatabase();
+                CreateComparisonDatabase();
                 //LoadDiffDatabases();
                 break;
 
@@ -184,10 +186,31 @@ public class XVerProcessor
         }
     }
 
-    public void CreateContentDatabase()
+    public void CreateComparisonDatabase()
     {
-        ComparisonDatabase contentDatabase = new(_definitions, _dbPath);
-        contentDatabase.ExportCollectionContents(_exclusionSet, _escapeValveCodes);
+        // load definitions if we have not done so
+        if (_definitions.Length == 0)
+        {
+            loadDefinitionCollections();
+        }
+
+        // creating the database with defintions loads all the content
+        _db = new(_definitions, _dbPath);
+
+        // save the definition content in the database
+        if (!_db.TryLoadFromDefinitionCollections(_exclusionSet, _escapeValveCodes))
+        {
+            throw new Exception($"Failed to load FHIR-based definitions into the database: {string.Join(", ", _definitions.Select(d => d.Key))}");
+        }
+
+        // if this is a core comparison and we have a location, try to load existing cross-version maps
+        if (_db.IsCoreComparison &&
+            !string.IsNullOrEmpty(_config.CrossVersionMapSourcePath))
+        {
+            _ = _db.TryLoadFhirCrossVersionMaps(_config.CrossVersionMapSourcePath);
+        }
+
+        return;
     }
 
     /// <summary>
@@ -205,9 +228,6 @@ public class XVerProcessor
             throw new InvalidOperationException("At least two definitions are required to compare.");
         }
 
-        _diffTracker = new(_definitions, _dbPath);
-        _diffTracker.InitDb(true, _exclusionSet, _escapeValveCodes);
-
         _comparisonCache.Clear();
 
         // create our comparison objects
@@ -222,7 +242,6 @@ public class XVerProcessor
             }
 
             FhirCoreComparer comparer = new(
-                _diffTracker,
                 left,
                 right,
                 _config.LogFactory,
@@ -275,9 +294,6 @@ public class XVerProcessor
             throw new InvalidOperationException("At least two definitions are required for comparison.");
         }
 
-        _diffTracker = new(_definitions, _dbPath);
-        _diffTracker.InitDb(false, _exclusionSet, _escapeValveCodes);
-
         _comparisonCache.Clear();
 
         // create our comparison objects
@@ -292,7 +308,6 @@ public class XVerProcessor
             }
 
             FhirCoreComparer comparer = new(
-                _diffTracker,
                 left,
                 right,
                 _config.LogFactory,

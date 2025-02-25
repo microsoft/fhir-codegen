@@ -9,6 +9,7 @@ using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGen.Utils;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Utils;
+using CSDC = Hl7.Fhir.Model.CodeSystem.ConceptDefinitionComponent;
 
 namespace Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 
@@ -186,9 +187,14 @@ public static class ValueSetExtensions
             yield break;
         }
 
-        foreach (FhirConcept fc in RecurseContains(dc, vs, vs.Expansion.Contains))
+        List<FhirConcept> results = [];
+
+        foreach (ValueSet.ContainsComponent c in recurseContains(dc, vs, vs.Expansion.Contains))
         {
-            yield return fc;
+            if (!string.IsNullOrEmpty(c.Code))
+            {
+                yield return conceptForContainsComponent(c, vs);
+            }
         }
 
         yield break;
@@ -198,36 +204,87 @@ public static class ValueSetExtensions
         /// </summary>
         /// <param name="cc">The ContainsComponent to act on.</param>
         /// <returns>An enumerable of FhirConcept representing the concepts.</returns>
-        IEnumerable<FhirConcept> RecurseContains(DefinitionCollection dc, ValueSet vs, IEnumerable<ValueSet.ContainsComponent> cc)
+        IEnumerable<ValueSet.ContainsComponent> recurseContains(
+            DefinitionCollection dc,
+            ValueSet vs,
+            IEnumerable<ValueSet.ContainsComponent> components,
+            int depth = 0)
         {
-            foreach (ValueSet.ContainsComponent c in cc)
+            foreach (ValueSet.ContainsComponent c in components)
             {
-                if (!string.IsNullOrEmpty(c.Code))
-                {
-                    // TODO(ginoc): pulling the version from the VS is not correct, but it works in the cases we are concerned about right now
-
-                    yield return new FhirConcept
-                    {
-                        System = c.System,
-                        Version = c.Version ?? dc.GetCanonicalVersion(c.System) ?? vs.Version,
-                        Code = c.Code,
-                        Display = c.Display,
-                        Definition = dc.ConceptDefinition(c.System, c.Code, c.Display),
-                        IsAbstract = c.Abstract,
-                        IsInactive = c.Inactive,
-                        Properties = c.Property.Select(p => new FhirConcept.ConceptProperty { Code = p.Code, Value = p.Value.ToString() ?? string.Empty }).ToArray(),
-                    };
-                }
-
                 if (c.Contains.Count != 0)
                 {
-                    foreach (FhirConcept fc in RecurseContains(dc, vs, c.Contains))
+                    foreach (ValueSet.ContainsComponent nested in recurseContains(dc, vs, c.Contains, depth + 1))
                     {
-                        yield return fc;
+                        yield return nested;
                     }
                 }
+
+                yield return c;
             }
         }
+
+        FhirConcept conceptForContainsComponent(ValueSet.ContainsComponent c, ValueSet vs)
+        {
+            // TODO(ginoc): pulling the version from the VS is not correct, but it works in the cases we are concerned about right now
+            return new FhirConcept
+            {
+                System = c.System,
+                Version = c.Version ?? dc.GetCanonicalVersion(c.System) ?? vs.Version,
+                Code = c.Code,
+                Display = c.Display,
+                Definition = dc.ConceptDefinition(c.System, c.Code, c.Display),
+                IsAbstract = c.Abstract,
+                IsInactive = c.Inactive,
+                Properties = c.Property.Select(p => new FhirConcept.ConceptProperty { Code = p.Code, Value = p.Value.ToString() ?? string.Empty }).ToArray(),
+            };
+        }
+    }
+
+
+    internal static CSDC? FindCode(this IEnumerable<CSDC> concepts, string code)
+    {
+        return concepts.findCodeByPredicate(c => c.Code == code);
+    }
+
+    private static CSDC? findCodeByPredicate(this IEnumerable<CSDC> concepts, Predicate<CSDC> predicate)
+    {
+        foreach (var concept in concepts)
+        {
+            var result = concept.findCodeByPredicate(predicate);
+            if (result != null) return result;
+        }
+        return null;
+    }
+
+    private static CSDC? findCodeByPredicate(this CSDC concept, Predicate<CSDC> predicate)
+    {
+        // Direct hit
+        if (predicate(concept))
+            return concept;
+
+        // Not in this node, but this node may have child nodes to check
+        if (concept.Concept?.Any() == true)
+            return concept.Concept.findCodeByPredicate(predicate);
+        else
+            return null;
+    }
+
+    internal static List<CSDC> RemoveCode(this ICollection<CSDC> concepts, string code)
+    {
+        return concepts.getNonMatchingCodes(c => c.Code == code);
+    }
+
+    private static List<CSDC> getNonMatchingCodes(this ICollection<CSDC> concepts, Predicate<CSDC> predicate)
+    {
+        List<CSDC> filtered = concepts.Where(c => !predicate(c)).ToList();
+
+        foreach (CSDC? concept in filtered.Where(concept => concept.Concept?.Count is > 0))
+        {
+            concept.Concept = concept.Concept.getNonMatchingCodes(predicate).ToList();
+        }
+
+        return filtered;
     }
 
     /// <summary>Gets the flat list of Contains Components from the ValueSet Expansion.</summary>

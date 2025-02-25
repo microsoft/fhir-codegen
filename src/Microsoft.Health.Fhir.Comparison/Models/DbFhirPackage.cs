@@ -16,12 +16,16 @@ public class DbFhirPackage
     public required string PackageId { get; set; } = null!;
     public required string PackageVersion { get; set; } = null!;
     public required string CanonicalUrl { get; set; } = null!;
+    public required string ShortName { get; set; } = null!;
 
-    public ICollection<DbValueSet> ValueSets { get; init; } = null!;
-    public ICollection<DbStructureDefinition> Structures { get; init; } = null!;
+    public ICollection<DbValueSet> ValueSets { get; set; } = [];
+    public ICollection<DbValueSetConcept> ValueSetConcepts { get; set; } = [];
 
-    public ICollection<DbFhirPackageComparisonPair> SourceDiffs { get; init; } = null!;
+    public ICollection<DbStructureDefinition> Structures { get; set; } = [];
+    public ICollection<DbElement> Elements { get; set; } = [];
 
-    public ICollection<DbFhirPackageComparisonPair> TargetDiffs { get; init; } = null!;
+    public ICollection<DbFhirPackageComparisonPair> ComparisonsAsSource { get; set; } = [];
+
+    public ICollection<DbFhirPackageComparisonPair> ComparisonsAsTarget { get; set; } = [];
 }
 

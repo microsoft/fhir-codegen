@@ -148,6 +148,8 @@ public class CrossVersionMapCollection
 
     public ConceptMap? ResourceTypeMap => _resourceTypeMap;
 
+    public IEnumerable<ConceptMap> CrossVersionConceptMaps => _dc.ConceptMapsByUrl.Values;
+
     public IEnumerable<ConceptMap> GetValueSetMaps()
     {
         foreach (ConceptMap cm in _dc.ConceptMapsByUrl.Values)

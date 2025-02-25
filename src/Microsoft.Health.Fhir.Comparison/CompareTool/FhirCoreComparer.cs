@@ -103,24 +103,19 @@ public partial class FhirCoreComparer
     private string _rightRLiteral;
     private string _rightKey;
 
-    private DifferenceTracker _diffTracker;
-
     private CrossVersionMapCollection? _cvLeftToRight = null;
     private CrossVersionMapCollection? _cvRightToLeft = null;
 
-    private Dictionary<string, List<ValueSetPairComparison>> _valueSetComparisons = [];
+    private Dictionary<string, List<DbValueSetComparison>> _valueSetComparisons = [];
 
-    private Dictionary<string, List<IPairComparison<StructureDefinition>>> _primitiveComparisons = [];
+    //private Dictionary<string, List<DbCanonicalComparison<StructureDefinition>>> _primitiveComparisons = [];
 
     public FhirCoreComparer(
-        DifferenceTracker diffTracker,
         DefinitionCollection left,
         DefinitionCollection right,
         ILoggerFactory loggerFactory,
         string mapSourcePath)
     {
-        _diffTracker = diffTracker;
-
         _loggerFactory = loggerFactory;
         _logger = loggerFactory.CreateLogger<FhirCoreComparer>();
         _mapSourcePath = mapSourcePath;

@@ -195,6 +195,10 @@ public class ValueSet_20_50 : ICrossVersionProcessor<ValueSet>, ICrossVersionExt
 					_converter._element.Process(node, current.InactiveElement);
 					break;
 
+                case "import":
+                    current.Include.Add(new() { ValueSet = [ node.Text ], });
+                    break;
+
 				case "include":
 					current.Include.Add(Extract20ValueSetConceptSetComponent(node));
 					break;
