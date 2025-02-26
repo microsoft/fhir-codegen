@@ -233,14 +233,24 @@ public class CodeGenValueSetExpander
         if (conceptSet.Filter.Count != 0)
         {
             IEnumerable<ValueSet.ContainsComponent> filteredConcepts = CodeGenCodeSystemFilterProcessor.FilterConceptsFromCodeSystem(conceptSet.System, conceptSet.Filter, Settings);
-            addCapped(result, filteredConcepts, $"Adding the filtered concepts to the expansion would result in a valueset larger than the maximum expansion size.");
+            addCapped(
+                result,
+                filteredConcepts,
+                $"Adding the filtered concepts to the expansion would result in a valueset larger than the maximum expansion size.");
         }
         else if (conceptSet.Concept.Count != 0)
         {
-            IEnumerable<ValueSet.ContainsComponent> convertedConcepts = conceptSet.Concept.Select(c =>
-                ContainsSetExtensions.BuildContainsComponent(conceptSet.System, conceptSet.Version, c.Code, c.Display, _settings.IncludeDesignations == true ? c.Designation : null));
-
-            addCapped(result, convertedConcepts, $"Adding the enumerated concepts to the expansion would result in a valueset larger than the maximum expansion size.");
+            IEnumerable<ValueSet.ContainsComponent> convertedConcepts = conceptSet.Concept
+                .Select(c => ContainsSetExtensions.BuildContainsComponent(
+                        conceptSet.System,
+                        conceptSet.Version,
+                        c.Code,
+                        c.Display,
+                        _settings.IncludeDesignations == true ? c.Designation : null));
+            addCapped(
+                result,
+                convertedConcepts,
+                $"Adding the enumerated concepts to the expansion would result in a valueset larger than the maximum expansion size.");
         }
         else if (conceptSet.ValueSetElement.Count == 0)
         {
@@ -250,7 +260,10 @@ public class CodeGenValueSetExpander
             // on the given system instead (see next if). This is not the same if there are codes in the valueset that
             // use a system, but are not actually defined within that codesystem, but that sounds illegal to me anyway.
             IEnumerable<ValueSet.ContainsComponent> importedConcepts = getAllConceptsFromCodeSystem(conceptSet.System);
-            addCapped(result, importedConcepts, $"Import of full codesystem '{conceptSet.System}' would result in an expansion larger than the maximum expansion size.");
+            addCapped(
+                result,
+                importedConcepts,
+                $"Import of full codesystem '{conceptSet.System}' would result in an expansion larger than the maximum expansion size.");
         }
 
         return result;
@@ -271,7 +284,10 @@ public class CodeGenValueSetExpander
 
     private async Tasks.Task handleInclude(ValueSet source, Stack<string> inclusionChain)
     {
-        if (!source.Compose.Include.Any()) return;
+        if (source.Compose.Include.Count == 0)
+        {
+            return;
+        }
 
         int csIndex = 0;
         foreach (ValueSet.ConceptSetComponent? include in source.Compose.Include)
@@ -279,8 +295,12 @@ public class CodeGenValueSetExpander
             List<ValueSet.ContainsComponent> includedConcepts = await processConceptSet(include, inclusionChain).ConfigureAwait(false);
 
             // Yes, exclusion could make this smaller again, but alas, before we have processed those we might have run out of memory
-            addCapped(source.Expansion.Contains, includedConcepts, $"Inclusion of {includedConcepts.Count} concepts from conceptset #{csIndex}' to  " +
-                    $"valueset '{source.Url}' ({source.Expansion.Total} concepts) would be larger than the set maximum size ({Settings.MaxExpansionSize})");
+            addCapped(
+                source.Expansion.Contains,
+                includedConcepts,
+                $"Inclusion of {includedConcepts.Count} concepts from conceptset #{csIndex}' to" +
+                    $" valueset '{source.Url}' ({source.Expansion.Total} concepts) would be larger than" +
+                    $" the set maximum size ({Settings.MaxExpansionSize})");
 
             int original = source.Expansion.Total ?? 0;
             source.Expansion.Total = original + includedConcepts.CountConcepts();
@@ -290,13 +310,16 @@ public class CodeGenValueSetExpander
 
     private async Tasks.Task handleExclude(ValueSet source, Stack<string> inclusionChain)
     {
-        if (!source.Compose.Exclude.Any()) return;
+        if (source.Compose.Exclude.Count == 0)
+        {
+            return;
+        }
 
         foreach (ValueSet.ConceptSetComponent? exclude in source.Compose.Exclude)
         {
             List<ValueSet.ContainsComponent> excludedConcepts = await processConceptSet(exclude, inclusionChain).ConfigureAwait(false);
 
-            source.Expansion.Contains.Remove(excludedConcepts);
+            source.Expansion.Contains.RemoveRecursive(excludedConcepts);
 
             int original = source.Expansion.Total ?? 0;
             source.Expansion.Total = original - excludedConcepts.CountConcepts();
@@ -363,19 +386,21 @@ public class CodeGenValueSetExpander
 
 public static class ContainsSetExtensions
 {
-    internal static ValueSet.ContainsComponent BuildContainsComponent(string system, string version, string code, string display, List<ValueSet.DesignationComponent>? designations = null, IEnumerable<ValueSet.ContainsComponent>? children = null)
-    {
-        return new ValueSet.ContainsComponent
+    internal static ValueSet.ContainsComponent BuildContainsComponent(
+        string system,
+        string version,
+        string code,
+        string display,
+        List<ValueSet.DesignationComponent>? designations = null,
+        IEnumerable<ValueSet.ContainsComponent>? children = null) => new ValueSet.ContainsComponent
         {
             System = system,
             Code = code,
             Display = display,
             Version = version,
             Designation = designations,
-            Contains = children?.ToList()
+            Contains = children?.ToList() ?? [],
         };
-
-    }
 
     public static ValueSet.ContainsComponent Add(this List<ValueSet.ContainsComponent> dest, string system, string version, string code, string display, List<ValueSet.DesignationComponent>? designations = null, IEnumerable<ValueSet.ContainsComponent>? children = null)
     {
@@ -385,7 +410,7 @@ public static class ContainsSetExtensions
         return newContains;
     }
 
-    public static void Remove(this List<ValueSet.ContainsComponent> dest, string system, string code)
+    public static void RemoveRecursive(this List<ValueSet.ContainsComponent> dest, string system, string code)
     {
         List<ValueSet.ContainsComponent> children = dest.Where(c => c.System == system && c.Code == code).SelectMany(c => c.Contains).ToList();
         dest.RemoveAll(c => c.System == system && c.Code == code);
@@ -396,22 +421,25 @@ public static class ContainsSetExtensions
         // Look for this code in children too
         foreach (ValueSet.ContainsComponent component in dest)
         {
-            if (component.Contains.Any())
-                component.Contains.Remove(system, code);
+            if (component.Contains.Count != 0)
+            {
+                component.Contains.RemoveRecursive(system, code);
+            }
         }
     }
 
-    public static void Remove(this List<ValueSet.ContainsComponent> dest, List<ValueSet.ContainsComponent> source)
+    public static void RemoveRecursive(this List<ValueSet.ContainsComponent> dest, List<ValueSet.ContainsComponent> source)
     {
         foreach (ValueSet.ContainsComponent sourceConcept in source)
         {
-            dest.Remove(sourceConcept.System, sourceConcept.Code);
+            dest.RemoveRecursive(sourceConcept.System, sourceConcept.Code);
 
             //check if there are children that need to be removed too.
-            if (sourceConcept.Contains.Any())
-                dest.Remove(sourceConcept.Contains);
+            if (sourceConcept.Contains.Count != 0)
+            {
+                dest.RemoveRecursive(sourceConcept.Contains);
+            }
         }
-
     }
 
     internal static ValueSet.ContainsComponent ToContainsComponent(
@@ -452,19 +480,12 @@ public static class ContainsSetExtensions
 
     private static List<ValueSet.DesignationComponent> toValueSetDesignations(this List<CodeSystem.DesignationComponent> csDesignations)
     {
-        List<ValueSet.DesignationComponent> vsDesignations = new List<ValueSet.DesignationComponent>();
-        csDesignations.ForEach(d => vsDesignations.Add(d.toValueSetDesignation()));
-        return vsDesignations;
-    }
-
-    private static ValueSet.DesignationComponent toValueSetDesignation(this CodeSystem.DesignationComponent csDesignation)
-    {
-        return new ValueSet.DesignationComponent
+        return csDesignations.Select(d => new ValueSet.DesignationComponent
         {
-            Language = csDesignation.Language,
-            Use = csDesignation.Use,
-            Value = csDesignation.Value
-        };
+            Language = d.Language,
+            Use = d.Use,
+            Value = d.Value
+        }).ToList();
     }
 }
 

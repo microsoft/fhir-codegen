@@ -165,7 +165,7 @@ public class CodeGenCodeSystemFilterProcessor
 
     private static List<CSDC> applySubsumedBy(ILookup<string, CSDC> lookup, ValueSet.FilterComponent filter)
     {
-        List<CSDC> result = new List<CSDC>();
+        List<CSDC> result = [];
         string root = filter.Value;
         if (root != null)
         {
@@ -182,8 +182,7 @@ public class CodeGenCodeSystemFilterProcessor
             foreach (CSDC child in children)
             {
                 result.Add(child);
-                parent = child.Code;
-                addDescendants(lookup, parent, result);
+                addDescendants(lookup, child.Code, result);
             }
         }
     }

@@ -223,6 +223,13 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
         string? classNamespace = symbol.ContainingNamespace?.ToDisplayString();
         string? classAssembly = symbol.ContainingAssembly?.Name;
 
+        string tableName = symbol
+            .GetAttributes()
+            .Where(a => a.AttributeClass?.Name == "CgSQLiteTable").FirstOrDefault()?
+            .ConstructorArguments.FirstOrDefault()
+            .Value?.ToString()
+            ?? className;
+
         string? pkColName = null;
         string? pkPropType = null;
         bool pkIsIdentity = false;
@@ -419,7 +426,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     {
                         public static bool CreateTable(IDbConnection dbConnection, string? dbTableName = null)
                         {
-                            dbTableName ??= "{{{className}}}";
+                            dbTableName ??= "{{{tableName}}}";
 
                             IDbCommand command = dbConnection.CreateCommand();
                             command.CommandText = $"""
@@ -435,7 +442,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
 
                         public static bool DropTable(IDbConnection dbConnection, string? dbTableName = null)
                         {
-                            dbTableName ??= "{{{className}}}";
+                            dbTableName ??= "{{{tableName}}}";
                     
                             IDbCommand command = dbConnection.CreateCommand();
                             command.CommandText = $"DROP TABLE IF EXISTS {dbTableName}";
@@ -447,7 +454,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     
                         public static {{{className}}}? SelectSingle(IDbConnection dbConnection, string? dbTableName = null, {{{string.Join(", ", getFnFilterParams(true))}}})
                         {
-                            dbTableName ??= "{{{className}}}";
+                            dbTableName ??= "{{{tableName}}}";
 
                             IDbCommand command = dbConnection.CreateCommand();
                             command.CommandText = $"SELECT {{{string.Join(", ", tableColInfo.Select(p => p.name))}}} FROM {dbTableName}";
@@ -471,7 +478,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
 
                         public static List<{{{className}}}> SelectList(IDbConnection dbConnection, string? dbTableName = null, {{{string.Join(", ", getFnFilterParams(true))}}})
                         {
-                            dbTableName ??= "{{{className}}}";
+                            dbTableName ??= "{{{tableName}}}";
 
                             List<{{{className}}}> results = new();
 
@@ -497,7 +504,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
 
                         public static {{{className}}} Insert(IDbConnection dbConnection, {{{className}}} value, string? dbTableName = null)
                         {
-                            dbTableName ??= "{{{className}}}";
+                            dbTableName ??= "{{{tableName}}}";
                             {{{getNonIdentityPkInit(pkColName, pkPropType)}}}
                             using (IDbTransaction transaction = dbConnection.BeginTransaction())
                             {
@@ -520,7 +527,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
 
                         public static List<{{{className}}}> Insert(IDbConnection dbConnection, IEnumerable<{{{className}}}> values, string? dbTableName = null)
                         {
-                            dbTableName ??= "{{{className}}}";
+                            dbTableName ??= "{{{tableName}}}";
                             List<{{{className}}}> results = new();
                             
                             using (IDbTransaction transaction = dbConnection.BeginTransaction())
@@ -535,6 +542,8 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                                     """;
 
                                 {{{string.Join(_line_3, getInsertCommandParamLines(false, pkIsIdentity ? pkColName : null, pkPropType, createParameters: true))}}}
+
+                                command.Prepare();
 
                                 foreach ({{{className}}} value in values)
                                 {
@@ -551,7 +560,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
 
                         public static {{{className}}} Update(IDbConnection dbConnection, {{{className}}} value, string? dbTableName = null)
                         {
-                            dbTableName ??= "{{{className}}}";
+                            dbTableName ??= "{{{tableName}}}";
                     
                             using (IDbTransaction transaction = dbConnection.BeginTransaction())
                             {
@@ -573,7 +582,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
 
                         public static List<{{{className}}}> Update(IDbConnection dbConnection, List<{{{className}}}> values, string? dbTableName = null)
                         {
-                            dbTableName ??= "{{{className}}}";
+                            dbTableName ??= "{{{tableName}}}";
                             
                             using (IDbTransaction transaction = dbConnection.BeginTransaction())
                             {
@@ -616,7 +625,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
 
                         public static void Delete(IDbConnection dbConnection, {{{className}}} value, string? dbTableName = null)
                         {
-                            dbTableName ??= "{{{className}}}";
+                            dbTableName ??= "{{{tableName}}}";
                     
                             using (IDbTransaction transaction = dbConnection.BeginTransaction())
                             {
@@ -638,7 +647,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     
                         public static void Delete(IDbConnection dbConnection, List<{{{className}}}> values, string? dbTableName = null)
                         {
-                            dbTableName ??= "{{{className}}}";
+                            dbTableName ??= "{{{tableName}}}";
                             
                             using (IDbTransaction transaction = dbConnection.BeginTransaction())
                             {

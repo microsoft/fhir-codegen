@@ -13,7 +13,6 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
 using Microsoft.Data.Sqlite;
-using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
@@ -886,6 +885,7 @@ public class ComparisonDatabase : IDisposable
 
             dbVs = DbValueSet.Insert(_dbConnection, dbVs);
 
+            List<DbValueSetConcept> dbConcepts = [];
             int conceptCount = 0;
 
             // iterate over all the contents of the value set
@@ -909,8 +909,11 @@ public class ComparisonDatabase : IDisposable
                     Display = fc.Display,
                 };
 
-                DbValueSetConcept.Insert(_dbConnection, dbConcept);
+                dbConcepts.Add(dbConcept);
+                //DbValueSetConcept.Insert(_dbConnection, dbConcept);
             }
+
+            DbValueSetConcept.Insert(_dbConnection, dbConcepts);
 
             dbVs.ConceptCount = conceptCount;
         }

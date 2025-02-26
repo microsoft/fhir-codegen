@@ -249,9 +249,9 @@ public static class ValueSetExtensions
 
     private static CSDC? findCodeByPredicate(this IEnumerable<CSDC> concepts, Predicate<CSDC> predicate)
     {
-        foreach (var concept in concepts)
+        foreach (CSDC concept in concepts)
         {
-            var result = concept.findCodeByPredicate(predicate);
+            CSDC? result = concept.findCodeByPredicate(predicate);
             if (result != null) return result;
         }
         return null;
@@ -261,25 +261,29 @@ public static class ValueSetExtensions
     {
         // Direct hit
         if (predicate(concept))
+        {
             return concept;
+        }
 
         // Not in this node, but this node may have child nodes to check
-        if (concept.Concept?.Any() == true)
+        if (concept.Concept.Count != 0)
+        {
             return concept.Concept.findCodeByPredicate(predicate);
-        else
-            return null;
+        }
+
+        return null;
     }
 
-    internal static List<CSDC> RemoveCode(this ICollection<CSDC> concepts, string code)
+    internal static List<CSDC> RemoveCode(this IEnumerable<CSDC> concepts, string code)
     {
         return concepts.getNonMatchingCodes(c => c.Code == code);
     }
 
-    private static List<CSDC> getNonMatchingCodes(this ICollection<CSDC> concepts, Predicate<CSDC> predicate)
+    private static List<CSDC> getNonMatchingCodes(this IEnumerable<CSDC> concepts, Predicate<CSDC> predicate)
     {
         List<CSDC> filtered = concepts.Where(c => !predicate(c)).ToList();
 
-        foreach (CSDC? concept in filtered.Where(concept => concept.Concept?.Count is > 0))
+        foreach (CSDC? concept in filtered.Where(concept => concept.Concept.Count > 0))
         {
             concept.Concept = concept.Concept.getNonMatchingCodes(predicate).ToList();
         }
