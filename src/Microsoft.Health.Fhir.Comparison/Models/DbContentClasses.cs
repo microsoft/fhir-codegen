@@ -4,145 +4,103 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Hl7.Fhir.Model;
-using Microsoft.Health.Fhir.CodeGenCommon.Models;
+using fhir_codegen.SQLiteGenerator;
+
 
 namespace Microsoft.Health.Fhir.Comparison.Models;
 
-
+[CgSQLiteBaseClass]
 public abstract class DbPackageContent
 {
-    [Key]
-    public int Key { get; set; }
+    [CgSQLiteKey]
+    public int Key { get; set; } = -1;
 
-    public int FhirPackageKey { get; set; }
-    public required DbFhirPackage FhirPackage { get; init; } = null!;
+    [CgSQLiteForeignKey(referenceTable: "FhirPackages", referenceColumn: nameof(DbFhirPackage.Key))]
+    public required int FhirPackageKey { get; set; }
 }
 
+[CgSQLiteBaseClass]
 public abstract class DbCanonicalResource : DbPackageContent
 {
-    public required string Id { get; set; } = null!;
-    public required string VersionedUrl { get; set; } = null!;
-    public required string UnversionedUrl { get; set; } = null!;
-    public required string Name { get; set; } = null!;
-    public required string Version { get; set; } = null!;
-    public required PublicationStatus? Status { get; set; } = null;
-    public required string? Title { get; set; } = null;
-    public required string? Description { get; set; } = null;
-    public required string? Purpose { get; set; } = null;
+    public required string Id { get; set; }
+    public required string VersionedUrl { get; set; }
+    public required string UnversionedUrl { get; set; }
+    public required string Name { get; set; }
+    public required string Version { get; set; }
+    public required Hl7.Fhir.Model.PublicationStatus? Status { get; set; }
+    public required string? Title { get; set; }
+    public required string? Description { get; set; }
+    public required string? Purpose { get; set; }
 }
 
 
-public class DbValueSet : DbCanonicalResource
+[CgSQLiteTable(tableName: "ValueSets")]
+public partial class DbValueSet : DbCanonicalResource
 {
     public required bool CanExpand { get; set; }
-    public required bool? HasEscapeValveCode { get; set; } = null;
-    public required string? Message { get; set; } = null;
+    public required bool? HasEscapeValveCode { get; set; }
+    public required string? Message { get; set; }
     public required bool IsExcluded { get; set; } = false;
 
-    public required int ConceptCount { get; set; } = -1;
-    public required string? ReferencedSystems { get; set; } = null;
+    public required int ConceptCount { get; set; }
+    public required string? ReferencedSystems { get; set; }
 
-    public required int BindingCountCore { get; set; } = -1;
-    public required BindingStrength? StrongestBindingCore { get; set; } = null;
-    public required BindingStrength? StrongestBindingCoreCode { get; set; } = null;
-    public required BindingStrength? StrongestBindingCoreCoding { get; set; } = null;
+    public required int BindingCountCore { get; set; }
+    public required Hl7.Fhir.Model.BindingStrength? StrongestBindingCore { get; set; }
+    public required Hl7.Fhir.Model.BindingStrength? StrongestBindingCoreCode { get; set; }
+    public required Hl7.Fhir.Model.BindingStrength? StrongestBindingCoreCoding { get; set; }
 
-    public required int BindingCountExtended { get; set; } = -1;
-    public required BindingStrength? StrongestBindingExtended { get; set; } = null;
-    public required BindingStrength? StrongestBindingExtendedCode { get; set; } = null;
-    public required BindingStrength? StrongestBindingExtendedCoding { get; set; } = null;
-
-    public ICollection<DbValueSetConcept> Concepts { get; init; } = [];
-
-    public ICollection<DbValueSetComparison> ComparisonsAsSource { get; init; } = [];
-
-    public ICollection<DbValueSetComparison> ComparisonsAsTarget { get; init; } = [];
+    public required int BindingCountExtended { get; set; }
+    public required Hl7.Fhir.Model.BindingStrength? StrongestBindingExtended { get; set; }
+    public required Hl7.Fhir.Model.BindingStrength? StrongestBindingExtendedCode { get; set; }
+    public required Hl7.Fhir.Model.BindingStrength? StrongestBindingExtendedCoding { get; set; }
 }
 
-public class DbValueSetConcept : DbPackageContent
+[CgSQLiteTable(tableName: "Concepts")]
+public partial class DbValueSetConcept : DbPackageContent
 {
-    public int ValueSetKey { get; set; }
-    public required DbValueSet ValueSet { get; set; } = null!;
+    [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
+    public required int ValueSetKey { get; set; }
 
-    public required string System { get; set; } = null!;
-    public required string Code { get; set; } = null!;
-    public required string? Display { get; set; } = null;
+    public required string System { get; set; }
+    public required string Code { get; set; }
+    public required string? Display { get; set; }
 }
 
-
-
-public class DbStructureDefinition : DbCanonicalResource
+[CgSQLiteTable(tableName: "Structures")]
+public partial class DbStructureDefinition : DbCanonicalResource
 {
-    public required string? Comment { get; set; } = null;
-    public required string? Message { get; set; } = null;
+    public required string? Comment { get; set; }
+    public required string? Message { get; set; }
 
-    public required FhirArtifactClassEnum ArtifactClass { get; set; } = FhirArtifactClassEnum.Unknown;
-
-    public ICollection<DbElement> Elements { get; init; } = [];
-
-    //public ICollection<ValueSetPairComparison> ComparisonsAsSource { get; init; } = null!;
-
-    //public ICollection<ValueSetPairComparison> ComparisonsAsTarget { get; init; } = null!;
+    public required Microsoft.Health.Fhir.CodeGenCommon.Models.FhirArtifactClassEnum ArtifactClass { get; set; } = Microsoft.Health.Fhir.CodeGenCommon.Models.FhirArtifactClassEnum.Unknown;
 }
 
 
-public class DbElement : DbPackageContent
+[CgSQLiteTable(tableName: "Elements")]
+public partial class DbElement : DbPackageContent
 {
+    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
     public int StructureKey { get; set; }
-    public required DbStructureDefinition Structure { get; init; } = null!;
 
-    public required int ResourceFieldOrder { get; set; } = -1;
-    public required int ComponentFieldOrder { get; set; } = -1;
-    public required string Id { get; set; } = null!;
-    public required string Path { get; set; } = null!;
-    public required int ChildElementCount { get; set; } = -1;
-    public required string Name { get; set; } = null!;
-    public required string? Short { get; set; } = null;
-    public required string? Definition { get; set; } = null;
-    public required int MinCardinality { get; set; } = -1;
-    public required int MaxCardinality { get; set; } = -1;
-    public required string MaxCardinalityString { get; set; } = null!;
+    public required int ResourceFieldOrder { get; set; }
+    public required int ComponentFieldOrder { get; set; }
+    public required string Id { get; set; }
+    public required string Path { get; set; }
+    public required int ChildElementCount { get; set; }
+    public required string Name { get; set; }
+    public required string? Short { get; set; }
+    public required string? Definition { get; set; }
+    public required int MinCardinality { get; set; }
+    public required int MaxCardinality { get; set; }
+    public required string MaxCardinalityString { get; set; }
 
-    public required string? SliceName { get; set; } = null;
+    public required string? SliceName { get; set; }
 
-    public required string TypeName { get; set; } = null!;
-    public required string? TypeProfile { get; set; } = null;
-    public required string? TargetProfile { get; set; } = null;
+    public required string TypeName { get; set; }
+    public required string? TypeProfile { get; set; }
+    public required string? TargetProfile { get; set; }
 
-    public required BindingStrength? ValueSetBindingStrength { get; init; } = null;
-    public required string? BindingValueSet { get; set; } = null;
-
-
-    //public ICollection<DbElementType> ElementTypes { get; set; } = null!;
-    //public ICollection<DbElementTypeMap> ElementTypeMappings { get; set; } = null!;
+    public required Hl7.Fhir.Model.BindingStrength? ValueSetBindingStrength { get; init; }
+    public required string? BindingValueSet { get; set; }
 }
-
-//public class DbElementType
-//{
-//    [Key]
-//    public int Key { get; set; }
-
-//    public ICollection<DbElementDefinition> Elements { get; set; } = null!;
-//    public ICollection<DbElementTypeMap> ElementTypeMappings { get; set; } = null!;
-
-//    public required string Name { get; set; } = null!;
-//    public required string? Profile { get; set; } = null;
-//    public required string? TargetProfile { get; set; } = null;
-
-//    public required BindingStrength? ValueSetBindingStrength { get; init; } = null;
-//    public required string? BindingValueSet { get; set; } = null;
-//}
-
-//public class DbElementTypeMap
-//{
-//    [Key]
-//    public int Key { get; set; }
-
-//    public required int ElementKey { get; set; } = -1;
-//    public DbElementDefinition Element { get; set; } = null!;
-
-//    public required int ElementTypeKey { get; set; } = -1;
-//    public DbElementType ElementType { get; set; } = null!;
-
-//}

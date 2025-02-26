@@ -9,124 +9,127 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using Hl7.Fhir.Model;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Health.Fhir.CodeGen.Utils;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Utils;
+using fhir_codegen.SQLiteGenerator;
 
 
 namespace Microsoft.Health.Fhir.Comparison.Models;
 
 
-public class DbFhirPackageComparisonPair
+[CgSQLiteTable(tableName: "PackageComparisonPairs")]
+public partial class DbFhirPackageComparisonPair
 {
-    [Key]
-    public int Key { get; set; }
+    [CgSQLiteKey]
+    public int Key { get; set; } = -1;
 
-    public int SourcePackageKey { get; set; }
-    public required DbFhirPackage SourcePackage { get; set; } = null!;
+    [CgSQLiteForeignKey(referenceTable: "FhirPackages", referenceColumn: nameof(DbFhirPackage.Key))]
+    public required int SourcePackageKey { get; set; }
 
-    public int TargetPackageKey { get; set; }
-    public required DbFhirPackage TargetPackage { get; set; } = null!;
+    [CgSQLiteForeignKey(referenceTable: "FhirPackages", referenceColumn: nameof(DbFhirPackage.Key))]
+    public required int TargetPackageKey { get; set; }
 
     public DateTime ProccessedAt { get; set; } = DateTime.UtcNow;
-
-    public ICollection<DbValueSetComparison> ValueSetComparisons { get; set; } = [];
-    public ICollection<DbValueSetConceptComparison> ValueSetConceptComparisons { get; set; } = [];
-    public ICollection<DbInvalidConceptComparison> InvalidImportedConceptComparisons { get; set; } = [];
 }
 
+[CgSQLiteBaseClass]
 public abstract class DbPackageComparisonContent
 {
-    [Key]
-    public int Key { get; set; }
+    [CgSQLiteKey]
+    public int Key { get; set; } = -1;
 
-    public int PackageComparisonKey { get; set; } = -1;
-    public required DbFhirPackageComparisonPair PackageComparison { get; set; } = null!;
+    [CgSQLiteForeignKey(referenceTable: "PackageComparisonPairs", referenceColumn: nameof(DbFhirPackageComparisonPair.Key))]
+    public required int PackageComparisonKey { get; set; }
 
-    public int SourceFhirPackageKey { get; set; }
-    public required DbFhirPackage SourceFhirPackage { get; init; } = null!;
-    public int TargetFhirPackageKey { get; set; }
-    public required DbFhirPackage TargetFhirPackage { get; init; } = null!;
+    [CgSQLiteForeignKey(referenceTable: "FhirPackages", referenceColumn: nameof(DbFhirPackage.Key))]
+    public required int SourceFhirPackageKey { get; set; }
 
-    public required ConceptMap.ConceptMapRelationship? Relationship { get; set; } = null;
-    public required string? Message { get; set; } = null;
-    public required bool? IsGenerated { get; set; } = null;
-    public required string? LastReviewedBy { get; set; } = null;
-    public required DateTime? LastReviewedOn { get; set; } = null;
+    [CgSQLiteForeignKey(referenceTable: "FhirPackages", referenceColumn: nameof(DbFhirPackage.Key))]
+    public required int TargetFhirPackageKey { get; set; }
+
+    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; set; }
+    public required string? Message { get; set; }
+    public required bool? IsGenerated { get; set; }
+    public required string? LastReviewedBy { get; set; }
+    public required DateTime? LastReviewedOn { get; set; }
 }
 
 
-
-public class DbValueSetComparison : DbPackageComparisonContent
+[CgSQLiteTable(tableName: "ValueSetComparisons")]
+public partial class DbValueSetComparison : DbPackageComparisonContent
 {
-    public int SourceKey { get; set; } = -1;
-    public required DbValueSet? Source { get; set; } = null;
-    public required string SourceCanonicalVersioned { get; set; } = null!;
-    public required string SourceCanonicalUnversioned { get; set; } = null!;
-    public required string SourceName { get; set; } = null!;
-    public required string SourceVersion { get; set; } = null!;
+    [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
+    public required int SourceKey { get; set; }
 
-    public int? TargetKey { get; set; } = null;
-    public required DbValueSet? Target { get; set; } = null;
-    public required string? TargetCanonicalVersioned { get; set; } = null;
-    public required string? TargetCanonicalUnversioned { get; set; } = null;
-    public required string? TargetName { get; set; } = null;
-    public required string? TargetVersion { get; set; } = null;
+    public required string SourceCanonicalVersioned { get; set; }
+    public required string SourceCanonicalUnversioned { get; set; }
+    public required string SourceName { get; set; }
+    public required string SourceVersion { get; set; }
 
-    public required string CompositeName { get; set; } = null!;
-    public required string? SourceConceptMapUrl { get; set; } = null;
-    public required string? SourceConceptMapAdditionalUrls { get; set; } = null;
+    [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
+    public required int? TargetKey { get; set; }
+    public required string? TargetCanonicalVersioned { get; set; }
+    public required string? TargetCanonicalUnversioned { get; set; }
+    public required string? TargetName { get; set; }
+    public required string? TargetVersion { get; set; }
 
-    public ICollection<DbValueSetConceptComparison> ComponentComparisons { get; set; } = [];
-    public ICollection<DbInvalidConceptComparison> InvalidImportedComparisons { get; set; } = [];
+    public required string CompositeName { get; set; }
+    public required string? SourceConceptMapUrl { get; set; }
+    public required string? SourceConceptMapAdditionalUrls { get; set; }
 }
 
-public class DbValueSetConceptComparison : DbPackageComparisonContent
+[CgSQLiteTable(tableName: "ConceptComparisons")]
+public partial class DbValueSetConceptComparison : DbPackageComparisonContent
 {
-    public int CanonicalComparisonKey { get; set; } = -1;
-    public required DbValueSetComparison CanonicalComparison { get; set; } = null!;
+    [CgSQLiteForeignKey(referenceTable: "ValueSetComparisons", referenceColumn: nameof(DbValueSetComparison.Key))]
+    public required int CanonicalComparisonKey { get; set; }
 
-    public int SourceCanonicalKey { get; set; } = -1;
-    public required DbValueSet SourceCanonical { get; set; } = null!;
+    [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
+    public required int SourceCanonicalKey { get; set; }
 
-    public int? TargetCanonicalKey { get; set; } = null;
-    public required DbValueSet? TargetCanonical { get; set; } = null;
+    [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
+    public required int? TargetCanonicalKey { get; set; }
 
-    public int SourceKey { get; set; } = -1;
-    public required DbValueSetConcept Source { get; set; } = null!;
+    [CgSQLiteForeignKey(referenceTable: "Concepts", referenceColumn: nameof(DbValueSetConcept.Key))]
+    public required int SourceKey { get; set; }
 
-    public int TargetKey { get; set; } = -1;
-    public required DbValueSetConcept? Target { get; set; } = null;
+    [CgSQLiteForeignKey(referenceTable: "Concepts", referenceColumn: nameof(DbValueSetConcept.Key))]
+    public required int? TargetKey { get; set; }
 
-    public required bool? NoMap { get; set; } = null;
+    public required bool? NoMap { get; set; }
 }
 
-public class DbInvalidConceptComparison : DbPackageComparisonContent
+[CgSQLiteTable(tableName: "UnresolvedConceptComparisons")]
+public partial class DbUnresolvedConceptComparisons : DbPackageComparisonContent
 {
-    public int CanonicalComparisonKey { get; set; } = -1;
-    public required DbValueSetComparison CanonicalComparison { get; set; } = null!;
+    [CgSQLiteForeignKey(referenceTable: "ValueSetComparisons", referenceColumn: nameof(DbValueSetComparison.Key))]
+    public int CanonicalComparisonKey { get; set; }
 
-    public int SourceCanonicalKey { get; set; } = -1;
-    public required DbValueSet? SourceCanonical { get; set; } = null;
+    [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
+    public required int SourceCanonicalKey { get; set; }
 
-    public int? TargetCanonicalKey { get; set; } = null;
-    public required DbValueSet? TargetCanonical { get; set; } = null;
-
-    public required string ConceptMapId { get; set; } = null!;
-    public required string ConceptMapUrl { get; set; } = null!;
+    [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
+    public required int? TargetCanonicalKey { get; set; }
 
 
-    public required bool SourceExists { get; set; } = false;
-    public required string SourceSystem { get; set; } = null!;
-    public required string SourceCode { get; set; } = null!;
-    public required string? SourceDisplay { get; set; } = null;
+    public required string ConceptMapId { get; set; }
+    public required string ConceptMapUrl { get; set; }
 
-    public required bool? TargetExists { get; set; } = null;
-    public required string? TargetSystem { get; set; } = null;
-    public required string? TargetCode { get; set; } = null;
-    public required string? TargetDisplay { get; set; } = null;
 
-    public required bool? NoMap { get; set; } = null;
+    [CgSQLiteForeignKey(referenceTable: "Concepts", referenceColumn: nameof(DbValueSetConcept.Key))]
+    public required int? SourceConceptKey { get; set; }
+    public required bool SourceConceptExists { get; set; } = false;
+    public required string SourceSystem { get; set; }
+    public required string SourceCode { get; set; }
+    public required string? SourceDisplay { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "Concepts", referenceColumn: nameof(DbValueSetConcept.Key))]
+    public required int? TargetConceptKey { get; set; }
+    public required bool? TargetConceptExists { get; set; }
+    public required string? TargetSystem { get; set; }
+    public required string? TargetCode { get; set; }
+    public required string? TargetDisplay { get; set; }
+
+    public required bool? NoMap { get; set; }
 }

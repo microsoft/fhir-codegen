@@ -29,20 +29,20 @@ public static class DbComparisonExtensions
     //        $"{FhirSanitizationUtils.SanitizeForProperty(comparison.Target.Name).ToPascalCase()}";
     //}
 
-    public static string GetCompositeName(this DbFhirPackageComparisonPair packagePair, DbCanonicalResource source, DbCanonicalResource? target)
-    {
-        if (target == null)
-        {
-            return
-                $"{packagePair.SourcePackage.ShortName}-" +
-                $"{FhirSanitizationUtils.SanitizeForProperty(source.Name).ToPascalCase()}-" +
-                $"{packagePair.TargetPackage.ShortName}";
-        }
+    //public static string GetCompositeName(this DbFhirPackageComparisonPair packagePair, DbCanonicalResource source, DbCanonicalResource? target)
+    //{
+    //    if (target == null)
+    //    {
+    //        return
+    //            $"{packagePair.SourcePackage.ShortName}-" +
+    //            $"{FhirSanitizationUtils.SanitizeForProperty(source.Name).ToPascalCase()}-" +
+    //            $"{packagePair.TargetPackage.ShortName}";
+    //    }
 
-        return
-            $"{packagePair.SourcePackage.ShortName}-" +
-            $"{FhirSanitizationUtils.SanitizeForProperty(source.Name).ToPascalCase()}-" +
-            $"{packagePair.TargetPackage.ShortName}-" +
-            $"{FhirSanitizationUtils.SanitizeForProperty(target.Name).ToPascalCase()}";
-    }
+    //    return
+    //        $"{packagePair.SourcePackage.ShortName}-" +
+    //        $"{FhirSanitizationUtils.SanitizeForProperty(source.Name).ToPascalCase()}-" +
+    //        $"{packagePair.TargetPackage.ShortName}-" +
+    //        $"{FhirSanitizationUtils.SanitizeForProperty(target.Name).ToPascalCase()}";
+    //}
 }

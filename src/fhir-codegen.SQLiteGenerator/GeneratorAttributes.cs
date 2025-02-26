@@ -14,13 +14,23 @@ public class GeneratorAttributes
         ];
 
     internal static HashSet<string> _cgClassAttributes = [
+        "CgSQLiteBaseClass",
         "CgSQLiteTable"
         ];
+
 
     internal const string CgAttributes = """
         #nullable enable
         namespace fhir_codegen.SQLiteGenerator
         {
+            [System.AttributeUsage(System.AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
+            public class CgSQLiteBaseClass : System.Attribute
+            {
+                public CgSQLiteBaseClass()
+                {
+                }
+            }
+
             [System.AttributeUsage(System.AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
             public class CgSQLiteTable : System.Attribute
             {

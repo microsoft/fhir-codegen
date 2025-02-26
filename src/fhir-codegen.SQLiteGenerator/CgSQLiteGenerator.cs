@@ -119,7 +119,9 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
 
     public void Execute(Compilation compilation, ImmutableArray<ClassDeclarationSyntax> classes, SourceProductionContext context)
     {
-        foreach (ClassDeclarationSyntax classSyntax in classes)
+        ILookup<string, ClassDeclarationSyntax> classLookup = classes.ToLookup(c => c.Identifier.Text);
+
+        foreach (ClassDeclarationSyntax classSyntax in classes.Where(c => c.AttributeLists.Any(al => al.Attributes.Any(a => a.Name.ToString() == "CgSQLiteTable"))))
         {
             // Converting the class to a semantic model to access much more meaningful data.
             SemanticModel model = compilation.GetSemanticModel(classSyntax.SyntaxTree);
@@ -133,19 +135,42 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 continue;
             }
 
+            List<MemberDeclarationSyntax> members = [];
+
+            string? btn = ((INamedTypeSymbol)symbol).BaseType?.Name;
+            while (btn != null)
+            {
+                ClassDeclarationSyntax? btcs = classLookup[btn].FirstOrDefault();
+                if (btcs == null)
+                {
+                    break;
+                }
+
+                members.AddRange(btcs.Members);
+                btn = compilation.GetSemanticModel(btcs.SyntaxTree).GetDeclaredSymbol(btcs) is INamedTypeSymbol ints
+                    ? ints.BaseType?.Name
+                    : null;
+            }
+
+            members.AddRange(classSyntax.Members);
+
             execute(
                 compilation,
-                model,
                 symbol,
-                classSyntax.Members,
+                members,
                 context,
                 CgGenCategory.Class);
         }
     }
 
-    public void Execute(Compilation compilation, ImmutableArray<RecordDeclarationSyntax> classes, SourceProductionContext context)
+    public void Execute(
+        Compilation compilation,
+        ImmutableArray<RecordDeclarationSyntax> records,
+        SourceProductionContext context)
     {
-        foreach (RecordDeclarationSyntax recordSyntax in classes)
+        ILookup<string, RecordDeclarationSyntax> recordLookup = records.ToLookup(c => c.Identifier.Text);
+
+        foreach (RecordDeclarationSyntax recordSyntax in records.Where(c => c.AttributeLists.Any(al => al.Attributes.Any(a => a.Name.ToString() == "CgSQLiteTable"))))
         {
             // Converting the record to a semantic model to access much more meaningful data.
             SemanticModel model = compilation.GetSemanticModel(recordSyntax.SyntaxTree);
@@ -159,11 +184,28 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 continue;
             }
 
+            List<MemberDeclarationSyntax> members = [];
+            string? btn = ((INamedTypeSymbol)symbol).BaseType?.Name;
+            while (btn != null)
+            {
+                RecordDeclarationSyntax? btcs = recordLookup[btn].FirstOrDefault();
+                if (btcs == null)
+                {
+                    break;
+                }
+
+                members.AddRange(btcs.Members);
+                btn = compilation.GetSemanticModel(btcs.SyntaxTree).GetDeclaredSymbol(btcs) is INamedTypeSymbol ints
+                    ? ints.BaseType?.Name
+                    : null;
+            }
+
+            members.AddRange(recordSyntax.Members);
+
             execute(
                 compilation,
-                model,
                 symbol,
-                recordSyntax.Members,
+                members,
                 context,
                 CgGenCategory.Record);
         }
@@ -172,9 +214,8 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
 
     private void execute(
         Compilation compilation,
-        SemanticModel model,
         ISymbol symbol,
-        SyntaxList<MemberDeclarationSyntax> members,
+        List<MemberDeclarationSyntax> members,
         SourceProductionContext context,
         CgGenCategory genCategory)
     {
@@ -397,7 +438,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             dbTableName ??= "{{{className}}}";
                     
                             IDbCommand command = dbConnection.CreateCommand();
-                            command.CommandText = $"DROP TABLE {dbTableName}";
+                            command.CommandText = $"DROP TABLE IF EXISTS {dbTableName}";
                     
                             command.ExecuteNonQuery();
                     
@@ -779,7 +820,18 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 else
                 {
                     yield return "object? commandResult = command.ExecuteScalar();";
-                    yield return $"if (commandResult != null) value.{identityColName} = ({identityColType})commandResult;";
+                    switch (identityColType)
+                    {
+                        case "int":
+                            yield return $"if (commandResult != null) value.{identityColName} = Convert.ToInt32(commandResult);";
+                            break;
+                        case "long":
+                            yield return $"if (commandResult != null) value.{identityColName} = Convert.ToInt64(commandResult);";
+                            break;
+                        default:
+                            yield return $"if (commandResult != null) value.{identityColName} = ({identityColType})commandResult;";
+                            break;
+                    }
                 }
             }
         }
