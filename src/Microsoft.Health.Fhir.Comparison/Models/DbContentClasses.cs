@@ -97,7 +97,7 @@ public partial class DbElement : DbPackageContent
 
     public required string? SliceName { get; set; }
 
-    public required string TypeName { get; set; }
+    public required string? TypeName { get; set; }
     public required string? TypeProfile { get; set; }
     public required string? TargetProfile { get; set; }
 

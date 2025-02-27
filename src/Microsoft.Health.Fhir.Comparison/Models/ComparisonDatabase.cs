@@ -67,6 +67,14 @@ public class ComparisonDatabase : IDisposable
 
     private IDbConnection _dbConnection;
 
+    private int _dbValueSetIndex = 0;
+    private int _dbConceptIndex = 0;
+    private int _dbStructureIndex = 0;
+    private int _dbElementIndex = 0;
+    private int _dbValueSetComparisonIndex = 0;
+    private int _dbConceptComparisonIndex = 0;
+    private int _dbUnresolvedConceptComparisonIndex = 0;
+
     public ComparisonDatabase(
         DefinitionCollection[] definitions,
         string dbPath,
@@ -314,6 +322,10 @@ public class ComparisonDatabase : IDisposable
             return false;
         }
 
+        List<DbValueSetComparison> dbValueSetComparisons = [];
+        List<DbValueSetConceptComparison> dbValueSetConceptComparions = [];
+        List<DbUnresolvedConceptComparisons> dbUnresolvedConceptComparisons = [];
+
         // look for cross-version collections
         for (int definitionIndex = 1; definitionIndex < _definitions.Length; definitionIndex++)
         {
@@ -370,6 +382,10 @@ public class ComparisonDatabase : IDisposable
                 _logger.LogMapsNotLoaded(right.Key, left.Key);
             }
         }
+
+        DbValueSetComparison.Insert(_dbConnection, dbValueSetComparisons);
+        DbValueSetConceptComparison.Insert(_dbConnection, dbValueSetConceptComparions);
+        DbUnresolvedConceptComparisons.Insert(_dbConnection, dbUnresolvedConceptComparisons);
 
         return true;
 
@@ -434,8 +450,6 @@ public class ComparisonDatabase : IDisposable
                 throw new Exception($"Cannot process existing Cross-Version ValueSet Map: {cm.Id} - invalid target scope: {cm.TargetScope}");
             }
 
-            // lookup our source and target value sets - note that we are in the context of a package already, so we do not need to check versions
-            //DbValueSet sourceDbVs = DbValueSet.SelectSingle(_dbConnection, ;
             DbValueSet sourceDbVs = DbValueSet.SelectSingle(
                 _dbConnection,
                 FhirPackageKey: sourceDbPackage.Key,
@@ -461,6 +475,7 @@ public class ComparisonDatabase : IDisposable
             // create our canonical comparison record
             DbValueSetComparison dbVsComparison = new()
             {
+                Key = Interlocked.Increment(ref _dbValueSetComparisonIndex),
                 PackageComparisonKey = dbPackagePair.Key,
                 SourceFhirPackageKey = sourceDbPackage.Key,
                 TargetFhirPackageKey = targetDbPackage.Key,
@@ -484,26 +499,37 @@ public class ComparisonDatabase : IDisposable
                 Message = $"Imported from existing ConceptMap {cm.Id} ({cm.Url}).",
             };
 
-            dbVsComparison = DbValueSetComparison.Insert(_dbConnection, dbVsComparison);
+            dbValueSetComparisons.Add(dbVsComparison);
+            //dbVsComparison = DbValueSetComparison.Insert(_dbConnection, dbVsComparison);
 
             // check for manual exclusion
-            if (sourceDbVs.IsExcluded || targetDbVs.IsExcluded)
+            if (sourceDbVs.IsExcluded)
             {
-                dbVsComparison.Message += $" Skipping due to manual exclusion of content.";
-                return;
+                dbVsComparison.Message += $" Note: comparison source: {sourceDbVs.Id} ({sourceDbVs.VersionedUrl}) has been manually excluded.";
+                //dbVsComparison.Message += $" Skipping due to manual exclusion of source content.";
+                //return;
+            }
+
+            if (targetDbVs.IsExcluded)
+            {
+                dbVsComparison.Message += $" Note: comparison target: {targetDbVs.Id} ({targetDbVs.VersionedUrl}) has been manually excluded.";
+                //dbVsComparison.Message += $" Skipping due to manual exclusion of target content.";
+                //return;
             }
 
             // check for failure to expand
             if (sourceDbVs.CanExpand == false)
             {
-                dbVsComparison.Message += $" Skipping because the source value set {sourceDbVs.Id} ({sourceDbVs.VersionedUrl}) cannot be expanded.";
-                return;
+                dbVsComparison.Message += $" Note: source value set {sourceDbVs.Id} ({sourceDbVs.VersionedUrl}) cannot be expanded.";
+                //dbVsComparison.Message += $" Skipping because the source value set {sourceDbVs.Id} ({sourceDbVs.VersionedUrl}) cannot be expanded.";
+                //return;
             }
 
             if (targetDbVs.CanExpand == false)
             {
-                dbVsComparison.Message += $" Skipping because the target value set {targetDbVs.Id} ({targetDbVs.VersionedUrl}) cannot be expanded.";
-                return;
+                dbVsComparison.Message += $" Note: target value set {targetDbVs.Id} ({targetDbVs.VersionedUrl}) cannot be expanded.";
+                //dbVsComparison.Message += $" Skipping because the target value set {targetDbVs.Id} ({targetDbVs.VersionedUrl}) cannot be expanded.";
+                //return;
             }
 
             // process each group
@@ -595,31 +621,36 @@ public class ComparisonDatabase : IDisposable
             {
                 if (sourceDbConcept == null)
                 {
-                    //DbInvalidConceptComparison invalidComparison = new()
-                    //{
-                    //    PackageComparison = dbPackagePair,
-                    //    SourceFhirPackage = dbPackagePair.SourcePackage,
-                    //    SourceCanonical = sourceDbVs,
-                    //    TargetFhirPackage = dbPackagePair.TargetPackage,
-                    //    TargetCanonical = targetDbVs,
-                    //    CanonicalComparison = dbVsComparison,
-                    //    ConceptMapId = cm.Id,
-                    //    ConceptMapUrl = cm.Url,
-                    //    Relationship = null,
-                    //    NoMap = true,
-                    //    Message = $"Code flagged as noMap in {cm.Id} ({cm.Url}), but does not exist in {sourceDbVs.VersionedUrl}",
-                    //    SourceExists = false,
-                    //    SourceSystem = sourceSystem,
-                    //    SourceCode = sourceCode,
-                    //    SourceDisplay = sourceDisplay,
-                    //    TargetExists = null,
-                    //    TargetSystem = null,
-                    //    TargetCode = null,
-                    //    TargetDisplay = null,
-                    //    IsGenerated = false,
-                    //    LastReviewedBy = null,
-                    //    LastReviewedOn = null,
-                    //};
+                    DbUnresolvedConceptComparisons unresolvedNoMap = new()
+                    {
+                        Key = Interlocked.Increment(ref _dbUnresolvedConceptComparisonIndex),
+                        PackageComparisonKey = dbPackagePair.Key,
+                        SourceFhirPackageKey = dbPackagePair.SourcePackageKey,
+                        SourceCanonicalKey = sourceDbVs.Key,
+                        TargetFhirPackageKey = dbPackagePair.TargetPackageKey,
+                        TargetCanonicalKey = targetDbVs.Key,
+                        CanonicalComparisonKey = dbVsComparison.Key,
+                        ConceptMapId = cm.Id,
+                        ConceptMapUrl = cm.Url,
+                        Relationship = null,
+                        NoMap = true,
+                        Message = $"Code flagged as noMap in {cm.Id} ({cm.Url}), but does not exist in source {sourceDbVs.Id} ({sourceDbVs.VersionedUrl}).",
+                        SourceConceptExists = false,
+                        SourceConceptKey = null,
+                        SourceSystem = sourceSystem,
+                        SourceCode = sourceCode,
+                        SourceDisplay = sourceDisplay,
+                        TargetConceptExists = null,
+                        TargetConceptKey = null,
+                        TargetSystem = null,
+                        TargetCode = null,
+                        TargetDisplay = null,
+                        IsGenerated = false,
+                        LastReviewedBy = null,
+                        LastReviewedOn = null,
+                    };
+
+                    dbUnresolvedConceptComparisons.Add(unresolvedNoMap);
 
                     ////dbPackagePair.InvalidImportedConceptComparisons.Add(invalidComparison);
                     //dbVsComparison.InvalidImportedComparisons.Add(invalidComparison);
@@ -645,7 +676,8 @@ public class ComparisonDatabase : IDisposable
                     LastReviewedOn = null,
                 };
 
-                DbValueSetConceptComparison.Insert(_dbConnection, nonMappedComparison);
+                dbValueSetConceptComparions.Add(nonMappedComparison);
+                //DbValueSetConceptComparison.Insert(_dbConnection, nonMappedComparison);
 
                 return;
             }
@@ -657,41 +689,46 @@ public class ComparisonDatabase : IDisposable
 
             if (!sourceExists)
             {
-                message += $" {sourceSystem}|{sourceCode} does not exist in {sourceDbVs.VersionedUrl}";
+                message += $" {sourceSystem}|{sourceCode} does not exist in source {sourceDbVs.Id} ({sourceDbVs.VersionedUrl}).";
             }
 
             if (!targetExists)
             {
-                message += $" {targetSystem}|{targetCode} does not exist in {targetDbVs.VersionedUrl}";
+                message += $" {targetSystem}|{targetCode} does not exist in target {targetDbVs.Id} ({targetDbVs.VersionedUrl}).";
             }
 
             if ((sourceDbConcept == null) || (targetDbConcept == null))
             {
-                //DbInvalidConceptComparison invalidComparison = new()
-                //{
-                //    PackageComparison = dbPackagePair,
-                //    SourceFhirPackage = dbPackagePair.SourcePackage,
-                //    SourceCanonical = sourceDbVs,
-                //    TargetFhirPackage = dbPackagePair.TargetPackage,
-                //    TargetCanonical = targetDbVs,
-                //    CanonicalComparison = dbVsComparison,
-                //    ConceptMapId = cm.Id,
-                //    ConceptMapUrl = cm.Url,
-                //    Relationship = null,
-                //    NoMap = false,
-                //    Message = message,
-                //    SourceExists = sourceExists,
-                //    SourceSystem = sourceSystem,
-                //    SourceCode = sourceCode,
-                //    SourceDisplay = sourceDisplay,
-                //    TargetExists = targetExists,
-                //    TargetSystem = targetSystem,
-                //    TargetCode = targetCode,
-                //    TargetDisplay = targetDisplay,
-                //    IsGenerated = false,
-                //    LastReviewedBy = null,
-                //    LastReviewedOn = null,
-                //};
+                DbUnresolvedConceptComparisons unresolvedComparison = new()
+                {
+                    Key = Interlocked.Increment(ref _dbUnresolvedConceptComparisonIndex),
+                    PackageComparisonKey = dbPackagePair.Key,
+                    SourceFhirPackageKey = dbPackagePair.SourcePackageKey,
+                    SourceCanonicalKey = sourceDbVs.Key,
+                    TargetFhirPackageKey = dbPackagePair.TargetPackageKey,
+                    TargetCanonicalKey = targetDbVs.Key,
+                    CanonicalComparisonKey = dbVsComparison.Key,
+                    ConceptMapId = cm.Id,
+                    ConceptMapUrl = cm.Url,
+                    Relationship = null,
+                    NoMap = true,
+                    Message = message,
+                    SourceConceptExists = sourceExists,
+                    SourceConceptKey = sourceDbConcept?.Key,
+                    SourceSystem = sourceSystem,
+                    SourceCode = sourceCode,
+                    SourceDisplay = sourceDisplay,
+                    TargetConceptExists = targetExists,
+                    TargetConceptKey = targetDbConcept?.Key,
+                    TargetSystem = targetSystem,
+                    TargetCode = targetCode,
+                    TargetDisplay = targetDisplay,
+                    IsGenerated = false,
+                    LastReviewedBy = null,
+                    LastReviewedOn = null,
+                };
+
+                dbUnresolvedConceptComparisons.Add(unresolvedComparison);
 
                 ////dbPackagePair.InvalidImportedConceptComparisons.Add(invalidComparison);
                 //dbVsComparison.InvalidImportedComparisons.Add(invalidComparison);
@@ -717,7 +754,8 @@ public class ComparisonDatabase : IDisposable
                 LastReviewedOn = null,
             };
 
-            DbValueSetConceptComparison.Insert(_dbConnection, mappedComparison);
+            dbValueSetConceptComparions.Add(mappedComparison);
+            //DbValueSetConceptComparison.Insert(_dbConnection, mappedComparison);
         }
     }
 
@@ -755,24 +793,28 @@ public class ComparisonDatabase : IDisposable
 
         foreach ((DefinitionCollection dc, DcInfoRec _) in _definitions)
         {
+            // get the package metadata for this definition collection
+            DbFhirPackage pm = DbFhirPackage.SelectSingle(_dbConnection, PackageId: dc.MainPackageId, PackageVersion: dc.MainPackageVersion)
+                    ?? throw new Exception($"Package {dc.MainPackageId}@{dc.MainPackageVersion} was not found in the database!");
+
             // load our value sets
-            addValueSetsToDb(dc, _exclusionSet, _escapeValveCodes);
+            addValueSetsToDb(pm, dc, _exclusionSet, _escapeValveCodes);
 
             // load our structures
-            addStructuresToDb(dc, _exclusionSet);
+            addStructuresToDb(pm, dc, _exclusionSet);
         }
 
         return true;
     }
 
     private void addValueSetsToDb(
+        DbFhirPackage pm,
         DefinitionCollection dc,
         HashSet<string> _exclusionSet,
         HashSet<string> _escapeValveCodes)
     {
-        // get the package metadata for this definition collection
-        DbFhirPackage pm = DbFhirPackage.SelectSingle(_dbConnection, PackageId: dc.MainPackageId, PackageVersion: dc.MainPackageVersion)
-                ?? throw new Exception($"Package {dc.MainPackageId}@{dc.MainPackageVersion} was not found in the database!");
+        List<DbValueSet> dbValueSets = [];
+        List<DbValueSetConcept> allDbConcepts = [];
 
         // iterate over the value sets in the definition collection
         foreach ((string unversionedUrl, string[] versions) in dc.ValueSetVersions.OrderBy(kvp => kvp.Key))
@@ -823,6 +865,7 @@ public class ComparisonDatabase : IDisposable
                 // still add a metadata record
                 DbValueSet vsmExcluded = new()
                 {
+                    Key = Interlocked.Increment(ref _dbValueSetIndex),
                     FhirPackageKey = pm.Key,
                     Id = uvs.Id,
                     VersionedUrl = versionedUrl,
@@ -849,7 +892,8 @@ public class ComparisonDatabase : IDisposable
                     StrongestBindingExtendedCoding = extendedBindingStrengthByType.TryGetValue("Coding", out BindingStrength ebseCoding) ? ebseCoding : null,
                 };
 
-                DbValueSet.Insert(_dbConnection, vsmExcluded);
+                dbValueSets.Add(vsmExcluded);
+                //DbValueSet.Insert(_dbConnection, vsmExcluded);
 
                 continue;
             }
@@ -857,6 +901,7 @@ public class ComparisonDatabase : IDisposable
             // create a new metadata record
             DbValueSet dbVs = new()
             {
+                Key = Interlocked.Increment(ref _dbValueSetIndex),
                 FhirPackageKey = pm.Key,
                 Id = vs.Id,
                 VersionedUrl = versionedUrl,
@@ -883,7 +928,8 @@ public class ComparisonDatabase : IDisposable
                 StrongestBindingExtendedCoding = extendedBindingStrengthByType.TryGetValue("Coding", out BindingStrength bseCoding) ? bseCoding : null,
             };
 
-            dbVs = DbValueSet.Insert(_dbConnection, dbVs);
+            dbValueSets.Add(dbVs);
+            //dbVs = DbValueSet.Insert(_dbConnection, dbVs);
 
             List<DbValueSetConcept> dbConcepts = [];
             int conceptCount = 0;
@@ -902,6 +948,7 @@ public class ComparisonDatabase : IDisposable
                 // create a new content record
                 DbValueSetConcept dbConcept = new()
                 {
+                    Key = Interlocked.Increment(ref _dbConceptIndex),
                     FhirPackageKey = pm.Key,
                     ValueSetKey = dbVs.Key,
                     System = fc.System,
@@ -913,289 +960,188 @@ public class ComparisonDatabase : IDisposable
                 //DbValueSetConcept.Insert(_dbConnection, dbConcept);
             }
 
-            DbValueSetConcept.Insert(_dbConnection, dbConcepts);
-
             dbVs.ConceptCount = conceptCount;
+
+            allDbConcepts.AddRange(dbConcepts);
+            //DbValueSetConcept.Insert(_dbConnection, dbConcepts);
         }
+
+        DbValueSet.Insert(_dbConnection, dbValueSets);
+        DbValueSetConcept.Insert(_dbConnection, allDbConcepts);
 
         return;
     }
 
     private void addStructuresToDb(
+        DbFhirPackage pm,
         DefinitionCollection dc,
         HashSet<string> _exclusionSet)
     {
+        List<DbStructureDefinition> dbStructures = [];
+        List<DbElement> dbElements = [];
+
+        // iterate over the types of structures
+        foreach ((IEnumerable<StructureDefinition> structures, FhirArtifactClassEnum cgClass) in getStructures(dc))
+        {
+            foreach (StructureDefinition sd in structures)
+            {
+                // will not further process value sets we know we will not process
+                if (_exclusionSet.Contains(sd.Url))
+                {
+                    // still add a metadata record
+                    DbStructureDefinition sdmExcluded = new()
+                    {
+                        Key = Interlocked.Increment(ref _dbStructureIndex),
+                        FhirPackageKey = pm.Key,
+                        Id = sd.Id,
+                        VersionedUrl = sd.Url + "|" + sd.Version,
+                        UnversionedUrl = sd.Url,
+                        Name = sd.Name,
+                        Version = sd.Version,
+                        Status = sd.Status,
+                        Title = sd.Title ?? sd.Snapshot?.Element.FirstOrDefault()?.Short,
+                        Description = sd.Description ?? sd.Snapshot?.Element.FirstOrDefault()?.Definition,
+                        Purpose = sd.Purpose,
+                        Comment = sd.Snapshot?.Element.FirstOrDefault()?.Comment,
+                        ArtifactClass = cgClass,
+                        Message = "Manually excluded",
+                    };
+
+                    dbStructures.Add(sdmExcluded);
+                    //DbStructureDefinition.Insert(_dbConnection, sdmExcluded);
+
+                    continue;
+                }
+
+                // create a new metadata record
+                DbStructureDefinition dbStructure = new()
+                {
+                    Key = Interlocked.Increment(ref _dbStructureIndex),
+                    FhirPackageKey = pm.Key,
+                    Id = sd.Id,
+                    VersionedUrl = sd.Url + "|" + sd.Version,
+                    UnversionedUrl = sd.Url,
+                    Name = sd.Name,
+                    Version = sd.Version,
+                    Status = sd.Status,
+                    Title = sd.Title ?? sd.Snapshot?.Element.FirstOrDefault()?.Short,
+                    Description = sd.Description ?? sd.Snapshot?.Element.FirstOrDefault()?.Definition,
+                    Purpose = sd.Purpose,
+                    Comment = sd.Snapshot?.Element.FirstOrDefault()?.Comment,
+                    ArtifactClass = cgClass,
+                    Message = string.Empty,
+                };
+
+                dbStructures.Add(dbStructure);
+                //DbStructureDefinition.Insert(_dbConnection, dbStructure);
+
+                // iterate over all the elements of the structure
+                foreach (ElementDefinition ed in sd.cgElements(skipSlices: false))
+                {
+                    addElement(dbStructure, sd, ed);
+                }
+            }
+        }
+
+        // save changes
+        DbStructureDefinition.Insert(_dbConnection, dbStructures);
+        DbElement.Insert(_dbConnection, dbElements);
+
         return;
-        //// get the package metadata for this definition collection
-        //DbFhirPackage pm = _dbConnection.Packages.Single(pm => (pm.PackageId == dc.MainPackageId) && (pm.PackageVersion == dc.MainPackageVersion));
 
-        //// iterate over the types of structures
-        //foreach ((IEnumerable<StructureDefinition> structures, FhirArtifactClassEnum cgClass) in getStructures(dc))
-        //{
-        //    foreach (StructureDefinition sd in structures)
-        //    {
-        //        // will not further process value sets we know we will not process
-        //        if (_exclusionSet.Contains(sd.Url))
-        //        {
-        //            // still add a metadata record
-        //            DbStructureDefinition sdmExcluded = new()
-        //            {
-        //                FhirPackage = pm,
-        //                Id = sd.Id,
-        //                VersionedUrl = sd.Url + "|" + sd.Version,
-        //                UnversionedUrl = sd.Url,
-        //                Name = sd.Name,
-        //                Version = sd.Version,
-        //                Status = sd.Status,
-        //                Title = sd.Title ?? sd.Snapshot?.Element.FirstOrDefault()?.Short,
-        //                Description = sd.Description ?? sd.Snapshot?.Element.FirstOrDefault()?.Definition,
-        //                Purpose = sd.Purpose,
-        //                Comment = sd.Snapshot?.Element.FirstOrDefault()?.Comment,
-        //                ArtifactClass = cgClass,
-        //                Message = "Manually excluded",
-        //                Elements = [],
-        //            };
+        (IEnumerable<StructureDefinition> structures, FhirArtifactClassEnum cgClass)[] getStructures(DefinitionCollection dc) => [
+            (dc.PrimitiveTypesByName.Values, FhirArtifactClassEnum.PrimitiveType),
+            (dc.ComplexTypesByName.Values, FhirArtifactClassEnum.ComplexType),
+            (dc.ResourcesByName.Values, FhirArtifactClassEnum.Resource),
+            (dc.ExtensionsByUrl.Values, FhirArtifactClassEnum.Extension),
+            (dc.ProfilesByUrl.Values, FhirArtifactClassEnum.Profile),
+            (dc.LogicalModelsByUrl.Values, FhirArtifactClassEnum.LogicalModel),
+            ];
 
-        //            _dbConnection.Structures.Add(sdmExcluded);
+        void addElement(DbStructureDefinition dbStructure, StructureDefinition sd, ElementDefinition ed)
+        {
+            // check for children
+            int childCount = sd.cgElements(
+                ed.Path,
+                topLevelOnly: true,
+                includeRoot: false,
+                skipSlices: true).Count();
 
-        //            continue;
-        //        }
+            List<(string? typeName, string? typeProfile, string? profile)> elementTypes = [];
 
-        //        // create a new metadata record
-        //        DbStructureDefinition dbStructure = new()
-        //        {
-        //            FhirPackage = pm,
-        //            Id = sd.Id,
-        //            VersionedUrl = sd.Url + "|" + sd.Version,
-        //            UnversionedUrl = sd.Url,
-        //            Name = sd.Name,
-        //            Version = sd.Version,
-        //            Status = sd.Status,
-        //            Title = sd.Title ?? sd.Snapshot?.Element.FirstOrDefault()?.Short,
-        //            Description = sd.Description ?? sd.Snapshot?.Element.FirstOrDefault()?.Definition,
-        //            Purpose = sd.Purpose,
-        //            Comment = sd.Snapshot?.Element.FirstOrDefault()?.Comment,
-        //            ArtifactClass = cgClass,
-        //            Message = string.Empty,
-        //            Elements = [],
-        //        };
+            IEnumerable<ElementDefinition.TypeRefComponent> definedTypes = ed.Type.Select(tr => tr.cgAsR5());
+            foreach (ElementDefinition.TypeRefComponent tr in definedTypes)
+            {
+                if ((tr.ProfileElement.Count == 0) &&
+                    (tr.TargetProfileElement.Count == 0))
+                {
+                    elementTypes.Add((tr.cgName(), null, null));
+                    continue;
+                }
 
-        //        // insert and update our local copy for the id
-        //        _dbConnection.Structures.Add(dbStructure);
+                if (tr.ProfileElement.Count == 0)
+                {
+                    foreach (Canonical tp in tr.TargetProfile)
+                    {
+                        elementTypes.Add((tr.cgName(), null, tp.Value));
+                    }
 
-        //        // iterate over all the elements of the structure
-        //        foreach (ElementDefinition ed in sd.cgElements(skipSlices: false))
-        //        {
-        //            addElement(dbStructure, sd, ed);
-        //        }
-        //    }
-        //}
+                    continue;
+                }
 
-        //// save changes
-        //_dbConnection.SaveChanges();
+                if (tr.TargetProfileElement.Count == 0)
+                {
+                    foreach (Canonical p in tr.Profile)
+                    {
+                        elementTypes.Add((tr.cgName(), p.Value, null));
+                    }
 
-        //return;
+                    continue;
+                }
 
-        //(IEnumerable<StructureDefinition> structures, FhirArtifactClassEnum cgClass)[] getStructures(DefinitionCollection dc) => [
-        //    (dc.PrimitiveTypesByName.Values, FhirArtifactClassEnum.PrimitiveType),
-        //    (dc.ComplexTypesByName.Values, FhirArtifactClassEnum.ComplexType),
-        //    (dc.ResourcesByName.Values, FhirArtifactClassEnum.Resource),
-        //    (dc.ExtensionsByUrl.Values, FhirArtifactClassEnum.Extension),
-        //    (dc.ProfilesByUrl.Values, FhirArtifactClassEnum.Profile),
-        //    (dc.LogicalModelsByUrl.Values, FhirArtifactClassEnum.LogicalModel),
-        //    ];
+                foreach (Canonical p in tr.Profile)
+                {
+                    foreach (Canonical tp in tr.TargetProfile)
+                    {
+                        elementTypes.Add((tr.cgName(), p.Value, tp.Value));
+                    }
+                }
+            }
 
-        //void addElement(DbStructureDefinition dbStructure, StructureDefinition sd, ElementDefinition ed)
-        //{
-        //    // check for children
-        //    int childCount = sd.cgElements(
-        //        ed.Path,
-        //        topLevelOnly: true,
-        //        includeRoot: false,
-        //        skipSlices: true).Count();
+            if (elementTypes.Count == 0)
+            {
+                elementTypes.Add((null, null, null));
+            }
 
-        //    List<(string typeName, string? typeProfile, string? profile)> elementTypes = [];
+            foreach ((string? typeName, string? typeProfile, string? targetProfile) in elementTypes)
+            {
+                DbElement dbElement = new()
+                {
+                    Key = Interlocked.Increment(ref _dbElementIndex),
+                    FhirPackageKey = pm.Key,
+                    StructureKey = dbStructure.Key,
+                    ResourceFieldOrder = ed.cgFieldOrder(),
+                    ComponentFieldOrder = ed.cgComponentFieldOrder(),
+                    Id = ed.ElementId,
+                    Path = ed.Path,
+                    ChildElementCount = childCount,
+                    Name = ed.cgName(),
+                    Short = ed.Short,
+                    Definition = ed.Definition,
+                    MinCardinality = ed.cgCardinalityMin(),
+                    MaxCardinality = ed.cgCardinalityMax(),
+                    MaxCardinalityString = ed.Max ?? "*",
+                    SliceName = ed.SliceName,
+                    ValueSetBindingStrength = ed.Binding?.Strength,
+                    BindingValueSet = ed.Binding?.ValueSet,
+                    TypeName = typeName,
+                    TypeProfile = typeProfile,
+                    TargetProfile = typeProfile,
+                };
 
-        //    IEnumerable<ElementDefinition.TypeRefComponent> definedTypes = ed.Type.Select(tr => tr.cgAsR5());
-        //    foreach (ElementDefinition.TypeRefComponent tr in definedTypes)
-        //    {
-        //        if ((tr.ProfileElement.Count == 0) &&
-        //            (tr.TargetProfileElement.Count == 0))
-        //        {
-        //            elementTypes.Add((tr.cgName(), null, null));
-        //            continue;
-        //        }
-
-        //        if (tr.ProfileElement.Count == 0)
-        //        {
-        //            foreach (Canonical tp in tr.TargetProfile)
-        //            {
-        //                elementTypes.Add((tr.cgName(), null, tp.Value));
-        //            }
-
-        //            continue;
-        //        }
-
-        //        if (tr.TargetProfileElement.Count == 0)
-        //        {
-        //            foreach (Canonical p in tr.Profile)
-        //            {
-        //                elementTypes.Add((tr.cgName(), p.Value, null));
-        //            }
-
-        //            continue;
-        //        }
-
-        //        foreach (Canonical p in tr.Profile)
-        //        {
-        //            foreach (Canonical tp in tr.TargetProfile)
-        //            {
-        //                elementTypes.Add((tr.cgName(), p.Value, tp.Value));
-        //            }
-        //        }
-        //    }
-
-        //    foreach ((string typeName, string? typeProfile, string? targetProfile) in elementTypes)
-        //    {
-        //        DbElement dbElement = new()
-        //        {
-        //            FhirPackage = pm,
-        //            Structure = dbStructure,
-        //            ResourceFieldOrder = ed.cgFieldOrder(),
-        //            ComponentFieldOrder = ed.cgComponentFieldOrder(),
-        //            Id = ed.ElementId,
-        //            Path = ed.Path,
-        //            ChildElementCount = childCount,
-        //            Name = ed.cgName(),
-        //            Short = ed.Short,
-        //            Definition = ed.Definition,
-        //            MinCardinality = ed.cgCardinalityMin(),
-        //            MaxCardinality = ed.cgCardinalityMax(),
-        //            MaxCardinalityString = ed.Max ?? "*",
-        //            SliceName = ed.SliceName,
-        //            ValueSetBindingStrength = ed.Binding?.Strength,
-        //            BindingValueSet = ed.Binding?.ValueSet,
-        //            TypeName = typeName,
-        //            TypeProfile = typeProfile,
-        //            TargetProfile = typeProfile,
-        //        };
-
-        //        //_db.Elements.Add(dbElement);
-        //        dbStructure.Elements.Add(dbElement);
-        //    }
-        //}
-
-
-        ////DbElementDefinition addElement(DbStructureDefinition dbStructure, StructureDefinition sd, ElementDefinition ed)
-        ////{
-        ////    // check for children
-        ////    int childCount = sd.cgElements(
-        ////        ed.Path,
-        ////        topLevelOnly: true,
-        ////        includeRoot: false,
-        ////        skipSlices: true).Count();
-
-        ////    DbElementDefinition dbElement = new()
-        ////    {
-        ////        Structure = dbStructure,
-        ////        ResourceFieldOrder = ed.cgFieldOrder(),
-        ////        ComponentFieldOrder = ed.cgComponentFieldOrder(),
-        ////        Id = ed.ElementId,
-        ////        Path = ed.Path,
-        ////        ChildElementCount = childCount,
-        ////        Name = ed.cgName(),
-        ////        Short = ed.Short,
-        ////        Definition = ed.Definition,
-        ////        MinCardinality = ed.cgCardinalityMin(),
-        ////        MaxCardinality = ed.cgCardinalityMax(),
-        ////        MaxCardinalityString = ed.Max ?? "*",
-        ////        SliceName = ed.SliceName,
-        ////        ValueSetBindingStrength = ed.Binding?.Strength,
-        ////        BindingValueSet = ed.Binding?.ValueSet,
-        ////        ElementTypes = [],
-        ////        ElementTypeMappings = [],
-        ////    };
-
-        ////    _db.Elements.Add(dbElement);
-
-        ////    addElementTypes(dbElement, ed);
-
-        ////    return dbElement;
-        ////}
-
-        ////void addElementTypes(DbElementDefinition dbElement, ElementDefinition ed)
-        ////{
-        ////    IReadOnlyDictionary<string, ElementDefinition.TypeRefComponent> edTypes = ed.cgTypes(coerceToR5: true);
-
-        ////    foreach ((string typeName, ElementDefinition.TypeRefComponent tr) in edTypes)
-        ////    {
-        ////        if ((tr.ProfileElement.Count == 0) &&
-        ////            (tr.TargetProfileElement.Count == 0))
-        ////        {
-        ////            dbElement.ElementTypes.Add(getOrAddType(tr.cgName(), null, null, ed.Binding?.Strength, ed.Binding?.ValueSet));
-        ////            continue;
-        ////        }
-
-        ////        if (tr.ProfileElement.Count == 0)
-        ////        {
-        ////            foreach (Canonical tp in tr.TargetProfile)
-        ////            {
-        ////                dbElement.ElementTypes.Add(getOrAddType(tr.cgName(), null, tp.Value, ed.Binding?.Strength, ed.Binding?.ValueSet));
-        ////            }
-
-        ////            continue;
-        ////        }
-
-        ////        if (tr.TargetProfileElement.Count == 0)
-        ////        {
-        ////            foreach (Canonical p in tr.Profile)
-        ////            {
-        ////                dbElement.ElementTypes.Add(getOrAddType(tr.cgName(), p.Value, null, ed.Binding?.Strength, ed.Binding?.ValueSet));
-        ////            }
-
-        ////            continue;
-        ////        }
-
-        ////        foreach (Canonical p in tr.Profile)
-        ////        {
-        ////            foreach (Canonical tp in tr.TargetProfile)
-        ////            {
-        ////                dbElement.ElementTypes.Add(getOrAddType(tr.cgName(), p.Value, tp.Value, ed.Binding?.Strength, ed.Binding?.ValueSet));
-        ////            }
-        ////        }
-        ////    }
-        ////}
-
-        ////DbElementType getOrAddType(string typeName, string? profile, string? targetProfile, BindingStrength? bS, string? bVs)
-        ////{
-        ////    DbElementType? et = _db.ElementTypes
-        ////        .FirstOrDefault(et =>
-        ////            (et.Name == typeName) &&
-        ////            (et.Profile == profile) &&
-        ////            (et.TargetProfile == targetProfile) &&
-        ////            (et.ValueSetBindingStrength == bS) &&
-        ////            (et.BindingValueSet == bVs));
-        ////    if (et != null)
-        ////    {
-        ////        return et;
-        ////    }
-
-        ////    et = new()
-        ////    {
-        ////        Name = typeName,
-        ////        Profile = profile,
-        ////        TargetProfile = targetProfile,
-        ////        ValueSetBindingStrength = bS,
-        ////        BindingValueSet = bVs,
-        ////        Elements = [],
-        ////        ElementTypeMappings = [],
-        ////    };
-
-        ////    _db.ElementTypes.Add(et);
-        ////    _db.SaveChanges();
-
-        ////    return et;
-        ////}
+                dbElements.Add(dbElement);
+            }
+        }
     }
 
     protected virtual void Dispose(bool disposing)

@@ -236,7 +236,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
 
         List<string> createColLines = [];
         List<string> createFKLines = [];
-        List<(string name, string propType, string readerDirective, bool isPrimaryKey, bool isIdentity, bool isNullable)> tableColInfo = [];
+        List<(string name, string propType, string readerDirective, bool isPrimaryKey, bool isIdentity, bool isNullable, bool isEnum)> tableColInfo = [];
 
         foreach (MemberDeclarationSyntax member in members)
         {
@@ -284,9 +284,51 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
             //bool nullable = Nullable.GetUnderlyingType(member.) != null;
             //bool nullable = new NullabilityInfoContext().Create(prop).WriteState is NullabilityState.Nullable;
 
+            string? enumTypeName = null;
+            bool memberIsEnum = false;
+
+            if ((propTypeInfo.Type is INamedTypeSymbol ints) &&
+                (
+                (ints.TypeKind == TypeKind.Enum) ||
+                ((ints.TypeArguments.Length != 0) && (ints.TypeArguments[0].TypeKind == TypeKind.Enum)) ||
+                (ints.TypeKind == TypeKind.Struct) && (ints.TypeArguments.Length != 0) && ints.TypeArguments[0].ContainingNamespace.Name.StartsWith("HL7")
+                ))
+            {
+                memberIsEnum = true;
+
+                // grab the enum type name
+
+                if (ints.TypeKind == TypeKind.Enum)
+                {
+                    if (ints.ContainingType == null)
+                    {
+                        enumTypeName = $"{ints.ContainingNamespace}.{ints.Name}";
+                    }
+                    else
+                    {
+                        enumTypeName = $"{ints.ContainingType.ContainingNamespace}.{ints.ContainingType.Name}.{ints.Name}";
+                    }
+                }
+                else if (ints.TypeArguments.Length != 0)
+                {
+                    if (ints.TypeArguments[0].ContainingType == null)
+                    {
+                        enumTypeName = $"{ints.TypeArguments[0].ContainingNamespace}.{ints.TypeArguments[0].Name}";
+                    }
+                    else
+                    {
+                        enumTypeName = $"{ints.TypeArguments[0].ContainingType.ContainingNamespace}.{ints.TypeArguments[0].ContainingType.Name}.{ints.TypeArguments[0].Name}";
+                    }
+                }
+                else
+                {
+                    enumTypeName = ints.Name;
+                }
+            }
+
             // add our column line
             createColLines.Add(
-                $"{pds.Identifier.ToString()} {getSqlType(propTypeName)}" +
+                $"{pds.Identifier.ToString()} {getSqlType(propTypeName, memberIsEnum)}" +
                 $"{(isPrimaryKey ? getPkDirective(pkPropType) : string.Empty)}" +
                 $"{((nullable || isPrimaryKey) ? string.Empty : " NOT NULL")}");
 
@@ -325,7 +367,8 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     string.Format(readFormat, pds.Identifier.ToString(), "reader", tableColInfo.Count),
                     isPrimaryKey,
                     isPrimaryKey && (propTypeName == "int" || propTypeName == "long"),
-                    nullable
+                    nullable,
+                    memberIsEnum
                     ));
             }
             else if (!nullable && _sqliteReadDirectives.TryGetValue(propTypeName, out readFormat))
@@ -336,43 +379,12 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     string.Format(readFormat, pds.Identifier.ToString(), "reader", tableColInfo.Count),
                     isPrimaryKey,
                     isPrimaryKey && (propTypeName == "int" || propTypeName == "long"),
-                    nullable
+                    nullable,
+                    memberIsEnum
                     ));
             }
-            else if ((propTypeInfo.Type is ITypeSymbol its) &&
-                     (its is INamedTypeSymbol ints) &&
-                     ((ints.TypeKind == TypeKind.Enum) || (ints.TypeArguments.Any() && ints.TypeArguments[0].TypeKind == TypeKind.Enum)))
+            else if (memberIsEnum)
             {
-                // grab the enum type name
-                string enumTypeName;
-
-                if (ints.TypeKind == TypeKind.Enum)
-                {
-                    if (ints.ContainingType == null)
-                    {
-                        enumTypeName = $"{ints.ContainingNamespace}.{ints.Name}";
-                    }
-                    else
-                    {
-                        enumTypeName = $"{ints.ContainingType.ContainingNamespace}.{ints.ContainingType.Name}.{ints.Name}";
-                    }
-                }
-                else if (ints.TypeArguments.Any())
-                {
-                    if (ints.TypeArguments[0].ContainingType == null)
-                    {
-                        enumTypeName = $"{ints.TypeArguments[0].ContainingNamespace}.{ints.TypeArguments[0].Name}";
-                    }
-                    else
-                    {
-                        enumTypeName = $"{ints.TypeArguments[0].ContainingType.ContainingNamespace}.{ints.TypeArguments[0].ContainingType.Name}.{ints.TypeArguments[0].Name}";
-                    }
-                }
-                else
-                {
-                    enumTypeName = ints.Name;
-                }
-
                 //// build the reader directive for the enum type
                 //string ef = $"Enum.TryParse(reader.GetString({tableColInfo.Count}), out {propName});";
 
@@ -384,7 +396,8 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                         : string.Format(_sqliteReadDirectives["enum"], pds.Identifier.ToString(), "reader", tableColInfo.Count, enumTypeName),
                     isPrimaryKey,
                     isPrimaryKey && (propTypeName == "int" || propTypeName == "long"),
-                    nullable
+                    nullable,
+                    memberIsEnum
                     ));
             }
             else
@@ -395,7 +408,8 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     $"// ERROR: could not determine retrieval directive for type {propName}:{propTypeName}",
                     isPrimaryKey,
                     isPrimaryKey && (propTypeName == "int" || propTypeName == "long"),
-                    nullable
+                    nullable,
+                    memberIsEnum
                     ));
             }
         }
@@ -715,7 +729,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
 
         IEnumerable<string> getFnFilterParams(bool includeNullFilter)
         {
-            foreach ((string name, string propType, string _, bool _, bool _, bool isNullable) in tableColInfo)
+            foreach ((string name, string propType, string _, bool _, bool _, bool isNullable, bool isEnum) in tableColInfo)
             {
                 yield return $"{propType}? {name} = null";
 
@@ -728,7 +742,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
 
         IEnumerable<string> getConditionLines(bool includeNullFilter)
         {
-            foreach ((string name, string propType, string _, bool _, bool _, bool isNullable) in tableColInfo)
+            foreach ((string name, string propType, string _, bool _, bool _, bool isNullable, bool isEnum) in tableColInfo)
             {
                 yield return $"if ({name} != null)";
                 yield return "{";
@@ -737,7 +751,16 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 yield return string.Empty;
                 yield return $"    IDbDataParameter {name}Param = command.CreateParameter();";
                 yield return $"    {name}Param.ParameterName = \"${name}\";";
-                yield return $"    {name}Param.Value = {name};";
+
+                if (isEnum)
+                {
+                    yield return $"    {name}Param.Value = {name}.ToString();";
+                }
+                else
+                {
+                    yield return $"    {name}Param.Value = {name};";
+                }
+
                 yield return $"    command.Parameters.Add({name}Param);";
                 yield return "}";
                 yield return string.Empty;
@@ -773,7 +796,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 executeCommand = true;
             }
 
-            foreach ((string name, string _, string _, bool isPrimaryKey, bool isIdentity, bool isNullable) in tableColInfo)
+            foreach ((string name, string _, string _, bool isPrimaryKey, bool isIdentity, bool isNullable, bool isEnum) in tableColInfo)
             {
                 // do not insert identity key values
                 if (isIdentity && !includeIdentity)
@@ -789,27 +812,33 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 {
                     yield return $"IDbDataParameter {name}Param = command.CreateParameter();";
 
-                    if (isNullable)
-                    {
-                        yield return $"{name}Param.ParameterName = \"${name}\";";
-                        yield return $"command.Parameters.Add({name}Param);";
-                    }
-                    else
-                    {
-                        yield return $"{name}Param.ParameterName = \"${name}\";";
-                        yield return $"command.Parameters.Add({name}Param);";
-                    }
+                    yield return $"{name}Param.ParameterName = \"${name}\";";
+                    yield return $"command.Parameters.Add({name}Param);";
                 }
 
                 if (instantiateParameters == true)
                 {
                     if (isNullable == true)
                     {
-                        yield return $"{name}Param.Value = (value.{name} == null) ? DBNull.Value : value.{name};";
+                        if (isEnum)
+                        {
+                            yield return $"{name}Param.Value = (value.{name} == null) ? DBNull.Value : value.{name}.ToString();";
+                        }
+                        else
+                        {
+                            yield return $"{name}Param.Value = (value.{name} == null) ? DBNull.Value : value.{name};";
+                        }
                     }
                     else
                     {
-                        yield return $"{name}Param.Value = value.{name};";
+                        if (isEnum)
+                        {
+                            yield return $"{name}Param.Value = value.{name}.ToString();";
+                        }
+                        else
+                        {
+                            yield return $"{name}Param.Value = value.{name};";
+                        }
                     }
                 }
 
@@ -849,7 +878,9 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
     /// <summary>
     /// Gets the SQL type for a given type.
     /// </summary>
-    private static string getSqlType(string type) => _sqliteTypeMap.TryGetValue(type, out string? name) ? name : "TEXT";
+    private static string getSqlType(string type, bool isEnum = false) => isEnum
+        ? _sqliteTypeMap["enum"]
+        : _sqliteTypeMap.TryGetValue(type, out string? name) ? name : "TEXT";
 
     private static Dictionary<string, string> _sqliteReadDirectives = new()
     {
@@ -862,6 +893,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
         { "DateTimeOffset", "{0} = new DateTimeOffset({1}.GetDateTime({2}))" },
         { "Decimal", "{0} = {1}.GetDecimal({2})" },
         { "double", "{0} = {1}.GetDouble({2})" },
+        { "enum", "{0} = Enum.Parse<{3}>({1}.GetString({2}))" },
         { "float", "{0} = {1}.GetFloat({2})" },
         { "Guid", "{0} = {1}.GetGuid({2})" },
         { "short", "{0} = {1}.GetInt16({2})" },
@@ -874,7 +906,6 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
         { "uint", "(uint){0} = {1}.GetInt32({2})" },
         { "ulong", "(ulong){0} = {1}.GetInt64({2})" },
         { "Uri", "{0} = new Uri({1}.GetString({2}))" },
-        { "enum", "{0} = Enum.Parse<{3}>({1}.GetString({2}))" },
     };
 
     private static Dictionary<string, string> _sqliteNullableReadDirectives = new()
@@ -888,6 +919,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
         { "DateTimeOffset", "{0} = {1}.IsDBNull({2}) ? null : new DateTimeOffset({1}.GetDateTime({2}))" },
         { "Decimal", "{0} = {1}.IsDBNull({2}) ? null : {1}.GetDecimal({2})" },
         { "double", "{0} = {1}.IsDBNull({2}) ? null : {1}.GetDouble({2})" },
+        { "enum", "{0} = {1}.IsDBNull({2}) ? null : Enum.Parse<{3}>({1}.GetString({2}))" },
         { "float", "{0} = {1}.IsDBNull({2}) ? null : {1}.GetFloat({2})" },
         { "Guid", "{0} = {1}.IsDBNull({2}) ? null : {1}.GetGuid({2})" },
         { "short", "{0} = {1}.IsDBNull({2}) ? null : {1}.GetInt16({2})" },
@@ -900,7 +932,6 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
         { "uint", "(uint){0} = {1}.IsDBNull({2}) ? null : {1}.GetInt32({2})" },
         { "ulong", "(ulong){0} = {1}.IsDBNull({2}) ? null : {1}.GetInt64({2})" },
         { "Uri", "{0} = {1}.IsDBNull({2}) ? null : new Uri({1}.GetString({2}))" },
-        { "enum", "{0} = {1}.IsDBNull({2}) ? null : Enum.Parse<{3}>({1}.GetString({2}))" },
     };
 
     // Mapping pulled from https://learn.microsoft.com/en-us/dotnet/standard/data/sqlite/types
@@ -915,6 +946,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
         { "DateTimeOffset", "TEXT" },
         { "Decimal", "TEXT" },
         { "double", "REAL" },
+        { "enum", "TEXT" },
         { "float", "REAL" },
         { "Guid", "TEXT" },
         { "short", "INTEGER" },
