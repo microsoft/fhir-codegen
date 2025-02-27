@@ -74,6 +74,10 @@ public class ComparisonDatabase : IDisposable
     private int _dbValueSetComparisonIndex = 0;
     private int _dbConceptComparisonIndex = 0;
     private int _dbUnresolvedConceptComparisonIndex = 0;
+    private int _dbStructureComparisonIndex = 0;
+    private int _dbUnresolvedStructureComparisonIndex = 0;
+    private int _dbElementComparisonIndex = 0;
+    private int _dbUnresolvedElementComparisonIndex = 0;
 
     public ComparisonDatabase(
         DefinitionCollection[] definitions,
@@ -195,9 +199,15 @@ public class ComparisonDatabase : IDisposable
             DbElement.DropTable(_dbConnection);
 
             DbFhirPackageComparisonPair.DropTable(_dbConnection);
+
             DbValueSetComparison.DropTable(_dbConnection);
             DbValueSetConceptComparison.DropTable(_dbConnection);
-            DbUnresolvedConceptComparisons.DropTable(_dbConnection);
+            DbUnresolvedConceptComparison.DropTable(_dbConnection);
+
+            DbStructureComparison.DropTable(_dbConnection);
+            DbUnresolvedStructureComparison.DropTable(_dbConnection);
+            DbElementComparison.DropTable(_dbConnection);
+            DbUnresolvedElementComparison.DropTable(_dbConnection);
         }
 
         // create all our tables
@@ -209,9 +219,15 @@ public class ComparisonDatabase : IDisposable
         DbElement.CreateTable(_dbConnection);
 
         DbFhirPackageComparisonPair.CreateTable(_dbConnection);
+
         DbValueSetComparison.CreateTable(_dbConnection);
         DbValueSetConceptComparison.CreateTable(_dbConnection);
-        DbUnresolvedConceptComparisons.CreateTable(_dbConnection);
+        DbUnresolvedConceptComparison.CreateTable(_dbConnection);
+
+        DbStructureComparison.CreateTable(_dbConnection);
+        DbUnresolvedStructureComparison.CreateTable(_dbConnection);
+        DbElementComparison.CreateTable(_dbConnection);
+        DbUnresolvedElementComparison.CreateTable(_dbConnection);
 
         foreach ((DefinitionCollection dc, DcInfoRec _) in _definitions)
         {
@@ -241,7 +257,7 @@ public class ComparisonDatabase : IDisposable
                     CanonicalUrl = dc.MainPackageCanonical,
                 };
 
-                pm = DbFhirPackage.Insert(_dbConnection, pm);
+                _dbConnection.Insert(pm);
             }
         }
 
@@ -272,7 +288,7 @@ public class ComparisonDatabase : IDisposable
                     ProccessedAt = DateTime.UtcNow,
                 };
 
-                dbPairLtoR = DbFhirPackageComparisonPair.Insert(_dbConnection, dbPairLtoR);
+                _dbConnection.Insert(dbPairLtoR);
             }
 
             // check for a package pair for right-to-left comparison
@@ -290,7 +306,7 @@ public class ComparisonDatabase : IDisposable
                     ProccessedAt = DateTime.UtcNow,
                 };
 
-                dbPairRtoL = DbFhirPackageComparisonPair.Insert(_dbConnection, dbPairRtoL);
+                _dbConnection.Insert(dbPairRtoL);
             }
         }
     }
@@ -324,7 +340,11 @@ public class ComparisonDatabase : IDisposable
 
         List<DbValueSetComparison> dbValueSetComparisons = [];
         List<DbValueSetConceptComparison> dbValueSetConceptComparions = [];
-        List<DbUnresolvedConceptComparisons> dbUnresolvedConceptComparisons = [];
+        List<DbUnresolvedConceptComparison> dbUnresolvedConceptComparisons = [];
+        List<DbStructureComparison> dbStructureComparisons = [];
+        List<DbUnresolvedStructureComparison> dbUnresolvedStructureComparisons = [];
+        List<DbElementComparison> dbElementComparisons = [];
+        List<DbUnresolvedElementComparison> dbUnresolvedElementComparisons = [];
 
         // look for cross-version collections
         for (int definitionIndex = 1; definitionIndex < _definitions.Length; definitionIndex++)
@@ -383,9 +403,28 @@ public class ComparisonDatabase : IDisposable
             }
         }
 
-        DbValueSetComparison.Insert(_dbConnection, dbValueSetComparisons);
-        DbValueSetConceptComparison.Insert(_dbConnection, dbValueSetConceptComparions);
-        DbUnresolvedConceptComparisons.Insert(_dbConnection, dbUnresolvedConceptComparisons);
+        _logger.LogInformation("Inserting existing cross version maps into the database...");
+
+        _dbConnection.Insert(dbValueSetComparisons);
+        _logger.LogInformation($" <<< added {dbValueSetComparisons.Count} ValueSet Comparisons");
+
+        _dbConnection.Insert(dbValueSetConceptComparions);
+        _logger.LogInformation($" <<< added {dbValueSetConceptComparions.Count} ValueSet Concept Comparisons");
+
+        _dbConnection.Insert(dbUnresolvedConceptComparisons);
+        _logger.LogInformation($" <<< added {dbUnresolvedConceptComparisons.Count} Unresolved ValueSet Concept Comparisons");
+
+        _dbConnection.Insert(dbStructureComparisons);
+        _logger.LogInformation($" <<< added {dbStructureComparisons.Count} Structure Comparisons");
+
+        _dbConnection.Insert(dbUnresolvedStructureComparisons);
+        _logger.LogInformation($" <<< added {dbUnresolvedStructureComparisons.Count} Unresolved Structure Comparisons");
+
+        _dbConnection.Insert(dbElementComparisons);
+        _logger.LogInformation($" <<< added {dbElementComparisons.Count} Element Comparisons");
+
+        _dbConnection.Insert(dbUnresolvedElementComparisons);
+        _logger.LogInformation($" <<< added {dbUnresolvedElementComparisons.Count} Unresolved Element Comparisons");
 
         return true;
 
@@ -397,11 +436,12 @@ public class ComparisonDatabase : IDisposable
             CrossVersionMapCollection cv,
             DbFhirPackageComparisonPair dbPackagePair)
         {
+            HashSet<string> processedOverviewMaps = [];
+
             // iterate over the concept maps in the cross version map collection
             foreach (ConceptMap cm in cv.CrossVersionConceptMaps)
             {
                 // only process maps we have categorized
-
                 UsageContext? cmContext = cm.UseContext.FirstOrDefault(uc => uc.Code.System == CommonDefinitions.ConceptMapUsageContextSystem);
                 if ((cmContext == null) ||
                     (cmContext.Value is not CodeableConcept uc))
@@ -417,12 +457,19 @@ public class ComparisonDatabase : IDisposable
                         break;
 
                     case CommonDefinitions.ConceptMapUsageContextTypeOverview:
+                    case CommonDefinitions.ConceptMapUsageContextResourceOverview:
+                        {
+                            if (processedOverviewMaps.Contains(cm.Url))
+                            {
+                                continue;
+                            }
+
+                            processOverviewMap(dbPackagePair, sourceDbPackage, targetDbPackage, cm);
+                            processedOverviewMaps.Add(cm.Url);
+                        }
                         break;
 
                     case CommonDefinitions.ConceptMapUsageContextDataType:
-                        break;
-
-                    case CommonDefinitions.ConceptMapUsageContextResourceOverview:
                         break;
 
                     case CommonDefinitions.ConceptMapUsageContextResource:
@@ -430,6 +477,114 @@ public class ComparisonDatabase : IDisposable
 
                     default:
                         continue;
+                }
+            }
+        }
+
+        void processOverviewMap(
+            DbFhirPackageComparisonPair dbPackagePair,
+            DbFhirPackage sourceDbPackage,
+            DbFhirPackage targetDbPackage,
+            ConceptMap cm)
+        {
+            // process each group
+            foreach (ConceptMap.GroupComponent cmGroup in cm.Group)
+            {
+                foreach (ConceptMap.SourceElementComponent groupSource in cmGroup.Element)
+                {
+                    DbStructureDefinition? sourceDbSd = DbStructureDefinition.SelectSingle(
+                        _dbConnection,
+                        FhirPackageKey: sourceDbPackage.Key,
+                        Id: groupSource.Code);
+
+                    // iterate over the target types
+                    foreach (ConceptMap.TargetElementComponent groupTarget in groupSource.Target)
+                    {
+                        DbStructureDefinition? targetDbSd = DbStructureDefinition.SelectSingle(
+                            _dbConnection,
+                            FhirPackageKey: targetDbPackage.Key,
+                            Id: groupTarget.Code);
+
+                        if ((sourceDbSd == null) || (targetDbSd == null))
+                        {
+                            string message = $"Mapping from {groupSource.Code} to {groupTarget.Code} exists in {cm.Id} ({cm.Url}) but";
+                            
+                            if (sourceDbSd == null)
+                            {
+                                message += $" {groupSource.Code} does not exist in source package {sourceDbPackage.PackageId}@{sourceDbPackage.PackageVersion}";
+                            }
+
+                            if (targetDbSd == null)
+                            {
+                                message += $" {groupTarget.Code} does not exist in target package {targetDbPackage.PackageId}@{targetDbPackage.PackageVersion}";
+                            }
+
+                            DbUnresolvedStructureComparison dbUnresolvedSdComparison = new()
+                            {
+                                Key = Interlocked.Increment(ref _dbUnresolvedStructureComparisonIndex),
+                                PackageComparisonKey = dbPackagePair.Key,
+                                SourceFhirPackageKey = sourceDbPackage.Key,
+                                TargetFhirPackageKey = targetDbPackage.Key,
+                                SourceStructureKey = sourceDbSd?.Key,
+                                SourceCanonicalVersioned = sourceDbSd?.VersionedUrl,
+                                SourceCanonicalUnversioned = sourceDbSd?.UnversionedUrl,
+                                SourceVersion = sourceDbSd?.Version,
+                                SourceName = sourceDbSd?.Name,
+                                TargetStructureKey = targetDbSd?.Key,
+                                TargetCanonicalVersioned = targetDbSd?.VersionedUrl,
+                                TargetCanonicalUnversioned = targetDbSd?.UnversionedUrl,
+                                TargetVersion = targetDbSd?.Version,
+                                TargetName = targetDbSd?.Name,
+                                ConceptMapId = cm.Id,
+                                ConceptMapUrl = cm.Url,
+                                Relationship = groupTarget.Relationship,
+                                IsGenerated = false,
+                                LastReviewedBy = null,
+                                LastReviewedOn = null,
+                                Message = message,
+                            };
+
+                            dbUnresolvedStructureComparisons.Add(dbUnresolvedSdComparison);
+
+                            continue;
+                        }
+
+                        // skip if they are both primitives - that mapping is handled by FhirTypeMappings.CodeGenTypeMapping for consistency
+                        if ((sourceDbSd.ArtifactClass == FhirArtifactClassEnum.PrimitiveType) &&
+                            (targetDbSd.ArtifactClass == FhirArtifactClassEnum.PrimitiveType))
+                        {
+                            continue;
+                        }
+
+                        // create our record
+                        DbStructureComparison dbSdComparison = new()
+                        {
+                            Key = Interlocked.Increment(ref _dbStructureComparisonIndex),
+                            PackageComparisonKey = dbPackagePair.Key,
+                            SourceFhirPackageKey = sourceDbPackage.Key,
+                            TargetFhirPackageKey = targetDbPackage.Key,
+                            SourceStructureKey = sourceDbSd.Key,
+                            SourceCanonicalVersioned = sourceDbSd.VersionedUrl,
+                            SourceCanonicalUnversioned = sourceDbSd.UnversionedUrl,
+                            SourceVersion = sourceDbSd.Version,
+                            SourceName = sourceDbSd.Name,
+                            TargetStructureKey = targetDbSd.Key,
+                            TargetCanonicalVersioned = targetDbSd.VersionedUrl,
+                            TargetCanonicalUnversioned = targetDbSd.UnversionedUrl,
+                            TargetVersion = targetDbSd.Version,
+                            TargetName = targetDbSd.Name,
+                            CompositeName = getCompositeName(sourceDbPackage, targetDbSd, targetDbPackage, targetDbSd),
+                            SourceOverviewConceptMapUrl = cm.Url,
+                            SourceStructureFmlUrl = null,
+                            Relationship = groupTarget.Relationship,
+                            IsGenerated = false,
+                            LastReviewedBy = null,
+                            LastReviewedOn = null,
+                            Message = $"Imported from existing ConceptMap {cm.Id} ({cm.Url}).",
+                        };
+
+                        dbStructureComparisons.Add(dbSdComparison);
+                    }
                 }
             }
         }
@@ -479,12 +634,12 @@ public class ComparisonDatabase : IDisposable
                 PackageComparisonKey = dbPackagePair.Key,
                 SourceFhirPackageKey = sourceDbPackage.Key,
                 TargetFhirPackageKey = targetDbPackage.Key,
-                SourceKey = sourceDbVs.Key,
+                SourceValueSetKey = sourceDbVs.Key,
                 SourceCanonicalVersioned = sourceDbVs.VersionedUrl,
                 SourceCanonicalUnversioned = sourceDbVs.UnversionedUrl,
                 SourceVersion = sourceDbVs.Version,
                 SourceName = sourceDbVs.Name,
-                TargetKey = targetDbVs.Key,
+                TargetValueSetKey = targetDbVs.Key,
                 TargetCanonicalVersioned = targetDbVs.VersionedUrl,
                 TargetCanonicalUnversioned = targetDbVs.UnversionedUrl,
                 TargetVersion = targetDbVs.Version,
@@ -500,7 +655,6 @@ public class ComparisonDatabase : IDisposable
             };
 
             dbValueSetComparisons.Add(dbVsComparison);
-            //dbVsComparison = DbValueSetComparison.Insert(_dbConnection, dbVsComparison);
 
             // check for manual exclusion
             if (sourceDbVs.IsExcluded)
@@ -621,15 +775,15 @@ public class ComparisonDatabase : IDisposable
             {
                 if (sourceDbConcept == null)
                 {
-                    DbUnresolvedConceptComparisons unresolvedNoMap = new()
+                    DbUnresolvedConceptComparison unresolvedNoMap = new()
                     {
                         Key = Interlocked.Increment(ref _dbUnresolvedConceptComparisonIndex),
                         PackageComparisonKey = dbPackagePair.Key,
                         SourceFhirPackageKey = dbPackagePair.SourcePackageKey,
-                        SourceCanonicalKey = sourceDbVs.Key,
+                        SourceValueSetKey = sourceDbVs.Key,
                         TargetFhirPackageKey = dbPackagePair.TargetPackageKey,
-                        TargetCanonicalKey = targetDbVs.Key,
-                        CanonicalComparisonKey = dbVsComparison.Key,
+                        TargetValueSetKey = targetDbVs.Key,
+                        ValueSetComparisonKey = dbVsComparison.Key,
                         ConceptMapId = cm.Id,
                         ConceptMapUrl = cm.Url,
                         Relationship = null,
@@ -660,14 +814,15 @@ public class ComparisonDatabase : IDisposable
 
                 DbValueSetConceptComparison nonMappedComparison = new()
                 {
+                    Key = Interlocked.Increment(ref _dbConceptComparisonIndex),
                     PackageComparisonKey = dbPackagePair.Key,
                     SourceFhirPackageKey = dbPackagePair.SourcePackageKey,
-                    SourceCanonicalKey = sourceDbVs.Key,
+                    SourceValueSetKey = sourceDbVs.Key,
                     TargetFhirPackageKey = dbPackagePair.TargetPackageKey,
-                    TargetCanonicalKey = targetDbVs.Key,
-                    CanonicalComparisonKey = dbVsComparison.Key,
-                    SourceKey = sourceDbConcept.Key,
-                    TargetKey = null,
+                    TargetValueSetKey = targetDbVs.Key,
+                    ValueSetComparisonKey = dbVsComparison.Key,
+                    SourceConceptKey = sourceDbConcept.Key,
+                    TargetConceptKey = null,
                     Relationship = null,
                     NoMap = true,
                     Message = $"Code flagged as noMap in {cm.Id} ({cm.Url})",
@@ -677,7 +832,6 @@ public class ComparisonDatabase : IDisposable
                 };
 
                 dbValueSetConceptComparions.Add(nonMappedComparison);
-                //DbValueSetConceptComparison.Insert(_dbConnection, nonMappedComparison);
 
                 return;
             }
@@ -699,15 +853,15 @@ public class ComparisonDatabase : IDisposable
 
             if ((sourceDbConcept == null) || (targetDbConcept == null))
             {
-                DbUnresolvedConceptComparisons unresolvedComparison = new()
+                DbUnresolvedConceptComparison unresolvedComparison = new()
                 {
                     Key = Interlocked.Increment(ref _dbUnresolvedConceptComparisonIndex),
                     PackageComparisonKey = dbPackagePair.Key,
                     SourceFhirPackageKey = dbPackagePair.SourcePackageKey,
-                    SourceCanonicalKey = sourceDbVs.Key,
+                    SourceValueSetKey = sourceDbVs.Key,
                     TargetFhirPackageKey = dbPackagePair.TargetPackageKey,
-                    TargetCanonicalKey = targetDbVs.Key,
-                    CanonicalComparisonKey = dbVsComparison.Key,
+                    TargetValueSetKey = targetDbVs.Key,
+                    ValueSetComparisonKey = dbVsComparison.Key,
                     ConceptMapId = cm.Id,
                     ConceptMapUrl = cm.Url,
                     Relationship = null,
@@ -738,14 +892,15 @@ public class ComparisonDatabase : IDisposable
 
             DbValueSetConceptComparison mappedComparison = new()
             {
+                Key = Interlocked.Increment(ref _dbConceptComparisonIndex),
                 PackageComparisonKey = dbPackagePair.Key,
                 SourceFhirPackageKey = dbPackagePair.SourcePackageKey,
-                SourceCanonicalKey = sourceDbVs.Key,
+                SourceValueSetKey = sourceDbVs.Key,
                 TargetFhirPackageKey = dbPackagePair.TargetPackageKey,
-                TargetCanonicalKey = targetDbVs.Key,
-                CanonicalComparisonKey = dbVsComparison.Key,
-                SourceKey = sourceDbConcept.Key,
-                TargetKey = targetDbConcept.Key,
+                TargetValueSetKey = targetDbVs.Key,
+                ValueSetComparisonKey = dbVsComparison.Key,
+                SourceConceptKey = sourceDbConcept.Key,
+                TargetConceptKey = targetDbConcept.Key,
                 Relationship = relationship,
                 NoMap = false,
                 Message = message,
@@ -755,7 +910,6 @@ public class ComparisonDatabase : IDisposable
             };
 
             dbValueSetConceptComparions.Add(mappedComparison);
-            //DbValueSetConceptComparison.Insert(_dbConnection, mappedComparison);
         }
     }
 
@@ -893,7 +1047,6 @@ public class ComparisonDatabase : IDisposable
                 };
 
                 dbValueSets.Add(vsmExcluded);
-                //DbValueSet.Insert(_dbConnection, vsmExcluded);
 
                 continue;
             }
@@ -929,7 +1082,6 @@ public class ComparisonDatabase : IDisposable
             };
 
             dbValueSets.Add(dbVs);
-            //dbVs = DbValueSet.Insert(_dbConnection, dbVs);
 
             List<DbValueSetConcept> dbConcepts = [];
             int conceptCount = 0;
@@ -957,17 +1109,20 @@ public class ComparisonDatabase : IDisposable
                 };
 
                 dbConcepts.Add(dbConcept);
-                //DbValueSetConcept.Insert(_dbConnection, dbConcept);
             }
 
             dbVs.ConceptCount = conceptCount;
 
             allDbConcepts.AddRange(dbConcepts);
-            //DbValueSetConcept.Insert(_dbConnection, dbConcepts);
         }
 
-        DbValueSet.Insert(_dbConnection, dbValueSets);
-        DbValueSetConcept.Insert(_dbConnection, allDbConcepts);
+        _logger.LogInformation($"Inserting ValueSets for {pm.PackageId}@{pm.PackageVersion} into database...");
+
+        _dbConnection.Insert(dbValueSets);
+        _logger.LogInformation($" <<< added {dbValueSets.Count} ValueSets");
+
+        _dbConnection.Insert(allDbConcepts);
+        _logger.LogInformation($" <<< added {allDbConcepts.Count} ValueSet Concepts");
 
         return;
     }
@@ -1005,10 +1160,11 @@ public class ComparisonDatabase : IDisposable
                         Comment = sd.Snapshot?.Element.FirstOrDefault()?.Comment,
                         ArtifactClass = cgClass,
                         Message = "Manually excluded",
+                        SnapshotCount = sd.Snapshot?.Element.Count ?? 0,
+                        DifferentialCount = sd.Differential?.Element.Count ?? 0,
                     };
 
                     dbStructures.Add(sdmExcluded);
-                    //DbStructureDefinition.Insert(_dbConnection, sdmExcluded);
 
                     continue;
                 }
@@ -1030,10 +1186,11 @@ public class ComparisonDatabase : IDisposable
                     Comment = sd.Snapshot?.Element.FirstOrDefault()?.Comment,
                     ArtifactClass = cgClass,
                     Message = string.Empty,
+                    SnapshotCount = sd.Snapshot?.Element.Count ?? 0,
+                    DifferentialCount = sd.Differential?.Element.Count ?? 0,
                 };
 
                 dbStructures.Add(dbStructure);
-                //DbStructureDefinition.Insert(_dbConnection, dbStructure);
 
                 // iterate over all the elements of the structure
                 foreach (ElementDefinition ed in sd.cgElements(skipSlices: false))
@@ -1044,8 +1201,14 @@ public class ComparisonDatabase : IDisposable
         }
 
         // save changes
-        DbStructureDefinition.Insert(_dbConnection, dbStructures);
-        DbElement.Insert(_dbConnection, dbElements);
+
+        _logger.LogInformation($"Inserting Structures for {pm.PackageId}@{pm.PackageVersion} into database...");
+
+        _dbConnection.Insert(dbStructures);
+        _logger.LogInformation($" <<< added {dbStructures.Count} Structures");
+
+        _dbConnection.Insert(dbElements);
+        _logger.LogInformation($" <<< added {dbElements.Count} Elements");
 
         return;
 
@@ -1110,7 +1273,14 @@ public class ComparisonDatabase : IDisposable
 
             if (elementTypes.Count == 0)
             {
-                elementTypes.Add((null, null, null));
+                if (ed.ElementId == sd.Id)
+                {
+                    elementTypes.Add((sd.Id, null, null));
+                }
+                else
+                {
+                    elementTypes.Add((null, null, null));
+                }
             }
 
             foreach ((string? typeName, string? typeProfile, string? targetProfile) in elementTypes)

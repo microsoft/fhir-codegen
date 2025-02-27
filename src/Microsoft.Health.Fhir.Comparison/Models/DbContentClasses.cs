@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using fhir_codegen.SQLiteGenerator;
+using Microsoft.Data.Sqlite;
 
 
 namespace Microsoft.Health.Fhir.Comparison.Models;
@@ -74,6 +76,9 @@ public partial class DbStructureDefinition : DbCanonicalResource
     public required string? Message { get; set; }
 
     public required Microsoft.Health.Fhir.CodeGenCommon.Models.FhirArtifactClassEnum ArtifactClass { get; set; } = Microsoft.Health.Fhir.CodeGenCommon.Models.FhirArtifactClassEnum.Unknown;
+
+    public required int SnapshotCount { get; set; }
+    public required int DifferentialCount { get; set; }
 }
 
 

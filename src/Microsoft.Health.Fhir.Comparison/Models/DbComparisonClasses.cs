@@ -60,7 +60,7 @@ public abstract class DbPackageComparisonContent
 public partial class DbValueSetComparison : DbPackageComparisonContent
 {
     [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
-    public required int SourceKey { get; set; }
+    public required int SourceValueSetKey { get; set; }
 
     public required string SourceCanonicalVersioned { get; set; }
     public required string SourceCanonicalUnversioned { get; set; }
@@ -68,7 +68,7 @@ public partial class DbValueSetComparison : DbPackageComparisonContent
     public required string SourceVersion { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
-    public required int? TargetKey { get; set; }
+    public required int? TargetValueSetKey { get; set; }
     public required string? TargetCanonicalVersioned { get; set; }
     public required string? TargetCanonicalUnversioned { get; set; }
     public required string? TargetName { get; set; }
@@ -83,34 +83,34 @@ public partial class DbValueSetComparison : DbPackageComparisonContent
 public partial class DbValueSetConceptComparison : DbPackageComparisonContent
 {
     [CgSQLiteForeignKey(referenceTable: "ValueSetComparisons", referenceColumn: nameof(DbValueSetComparison.Key))]
-    public required int CanonicalComparisonKey { get; set; }
+    public required int ValueSetComparisonKey { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
-    public required int SourceCanonicalKey { get; set; }
+    public required int SourceValueSetKey { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
-    public required int? TargetCanonicalKey { get; set; }
+    public required int? TargetValueSetKey { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "Concepts", referenceColumn: nameof(DbValueSetConcept.Key))]
-    public required int SourceKey { get; set; }
+    public required int SourceConceptKey { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "Concepts", referenceColumn: nameof(DbValueSetConcept.Key))]
-    public required int? TargetKey { get; set; }
+    public required int? TargetConceptKey { get; set; }
 
     public required bool? NoMap { get; set; }
 }
 
 [CgSQLiteTable(tableName: "UnresolvedConceptComparisons")]
-public partial class DbUnresolvedConceptComparisons : DbPackageComparisonContent
+public partial class DbUnresolvedConceptComparison : DbPackageComparisonContent
 {
     [CgSQLiteForeignKey(referenceTable: "ValueSetComparisons", referenceColumn: nameof(DbValueSetComparison.Key))]
-    public int CanonicalComparisonKey { get; set; }
+    public int ValueSetComparisonKey { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
-    public required int SourceCanonicalKey { get; set; }
+    public required int SourceValueSetKey { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
-    public required int? TargetCanonicalKey { get; set; }
+    public required int? TargetValueSetKey { get; set; }
 
 
     public required string ConceptMapId { get; set; }
@@ -132,4 +132,92 @@ public partial class DbUnresolvedConceptComparisons : DbPackageComparisonContent
     public required string? TargetDisplay { get; set; }
 
     public required bool? NoMap { get; set; }
+}
+
+[CgSQLiteTable(tableName: "StructureComparisons")]
+public partial class DbStructureComparison : DbPackageComparisonContent
+{
+    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
+    public required int SourceStructureKey { get; set; }
+
+    public required string SourceCanonicalVersioned { get; set; }
+    public required string SourceCanonicalUnversioned { get; set; }
+    public required string SourceName { get; set; }
+    public required string SourceVersion { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
+    public required int? TargetStructureKey { get; set; }
+    public required string? TargetCanonicalVersioned { get; set; }
+    public required string? TargetCanonicalUnversioned { get; set; }
+    public required string? TargetName { get; set; }
+    public required string? TargetVersion { get; set; }
+
+    public required string CompositeName { get; set; }
+    public required string? SourceOverviewConceptMapUrl { get; set; }
+    public required string? SourceStructureFmlUrl { get; set; }
+}
+
+
+[CgSQLiteTable(tableName: "UnresolvedStructureComparisons")]
+public partial class DbUnresolvedStructureComparison : DbPackageComparisonContent
+{
+    public required string ConceptMapId { get; set; }
+    public required string ConceptMapUrl { get; set; }
+
+
+    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
+    public required int? SourceStructureKey { get; set; }
+
+    public required string? SourceCanonicalVersioned { get; set; }
+    public required string? SourceCanonicalUnversioned { get; set; }
+    public required string? SourceName { get; set; }
+    public required string? SourceVersion { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
+    public required int? TargetStructureKey { get; set; }
+    public required string? TargetCanonicalVersioned { get; set; }
+    public required string? TargetCanonicalUnversioned { get; set; }
+    public required string? TargetName { get; set; }
+    public required string? TargetVersion { get; set; }
+}
+
+
+[CgSQLiteTable(tableName: "ElementComparisons")]
+public partial class DbElementComparison : DbPackageComparisonContent
+{
+    [CgSQLiteForeignKey(referenceTable: "StructureComparisons", referenceColumn: nameof(DbStructureComparison.Key))]
+    public required int StructureComparisonKey { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
+    public required int SourceStructureKey { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
+    public required int? TargetStructureKey { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
+    public required int SourceElementKey { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
+    public required int? TargetElementKey { get; set; }
+}
+
+
+[CgSQLiteTable(tableName: "UnresolvedElementComparisons")]
+public partial class DbUnresolvedElementComparison : DbPackageComparisonContent
+{
+    [CgSQLiteForeignKey(referenceTable: "StructureComparisons", referenceColumn: nameof(DbStructureComparison.Key))]
+    public required int? StructureComparisonKey { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "UnresolvedStructureComparisons", referenceColumn: nameof(DbUnresolvedStructureComparison.Key))]
+    public required int? UnresolvedStructureComparisonKey { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
+    public required int? SourceStructureKey { get; set; }
+
+    public required string SourceElementToken { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
+    public required int? TargetStructureKey { get; set; }
+
+    public required string TargetElementToken { get; set; }
 }

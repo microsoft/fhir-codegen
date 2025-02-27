@@ -516,7 +516,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             return results;
                         }
 
-                        public static {{{className}}} Insert(IDbConnection dbConnection, {{{className}}} value, string? dbTableName = null)
+                        public static {{{(pkColName == null ? "void" : pkPropType)}}} Insert(IDbConnection dbConnection, {{{className}}} value, string? dbTableName = null)
                         {
                             dbTableName ??= "{{{tableName}}}";
                             {{{getNonIdentityPkInit(pkColName, pkPropType)}}}
@@ -536,13 +536,12 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                                 transaction.Commit();
                             }
 
-                            return value;
+                            {{{(pkColName == null ? "return" : $"return value.{pkColName}")}}};
                         }
 
-                        public static List<{{{className}}}> Insert(IDbConnection dbConnection, IEnumerable<{{{className}}}> values, string? dbTableName = null)
+                        public static void Insert(IDbConnection dbConnection, List<{{{className}}}> values, string? dbTableName = null)
                         {
                             dbTableName ??= "{{{tableName}}}";
-                            List<{{{className}}}> results = new();
                             
                             using (IDbTransaction transaction = dbConnection.BeginTransaction())
                             {
@@ -563,13 +562,10 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                                 {
                                     {{{getNonIdentityPkInit(pkColName, pkPropType)}}}
                                     {{{string.Join(_line_4, getInsertCommandParamLines(false, pkIsIdentity ? pkColName : null, pkPropType, instantiateParameters: true, executeCommand: true))}}}
-                                    results.Add(value);
                                 }
                     
                                 transaction.Commit();
                             }
-
-                            return results;
                         }
 
                         public static {{{className}}} Update(IDbConnection dbConnection, {{{className}}} value, string? dbTableName = null)
@@ -594,7 +590,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             return value;
                         }
 
-                        public static List<{{{className}}}> Update(IDbConnection dbConnection, List<{{{className}}}> values, string? dbTableName = null)
+                        public static void Update(IDbConnection dbConnection, List<{{{className}}}> values, string? dbTableName = null)
                         {
                             dbTableName ??= "{{{tableName}}}";
                             
@@ -633,8 +629,6 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     
                                 transaction.Commit();
                             }
-
-                            return values;
                         }
 
                         public static void Delete(IDbConnection dbConnection, {{{className}}} value, string? dbTableName = null)
@@ -699,6 +693,64 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                         }
                     }
 
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+                    [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+                    public static class {{{className}}}Extensions
+                    {
+                        public static {{{className}}}? SelectSingle<T>(this IDbConnection dbCon, string? dbTableName = null, {{{string.Join(", ", getFnFilterParams(true))}}})
+                            where T : {{{className}}}
+                        {
+                            return {{{className}}}.SelectSingle(dbCon, dbTableName, {{{string.Join(", ", getFnFilterArgs(true))}}});
+                        }
+
+                        public static List<{{{className}}}> SelectList<T>(this IDbConnection dbCon, string? dbTableName = null, {{{string.Join(", ", getFnFilterParams(true))}}})
+                            where T : {{{className}}}
+                        {
+                            return {{{className}}}.SelectList(dbCon, dbTableName, {{{string.Join(", ", getFnFilterArgs(true))}}});
+                        }
+                                        
+                        public static void Insert(this IDbConnection dbCon, {{{className}}} value, string? dbTableName = null)
+                        {
+                            {{{className}}}.Insert(dbCon, value, dbTableName);
+                        }
+
+                        public static void Insert(this IDbConnection dbCon, List<{{{className}}}> values, string? dbTableName = null)
+                        {
+                            {{{className}}}.Insert(dbCon, values, dbTableName);
+                        }
+
+                        public static void Delete(this IDbConnection dbCon, {{{className}}} value, string? dbTableName = null)
+                        {
+                            {{{className}}}.Delete(dbCon, value, dbTableName);
+                        }
+                    
+                        public static void Delete(this IDbConnection dbCon, List<{{{className}}}> values, string? dbTableName = null)
+                        {
+                            {{{className}}}.Delete(dbCon, values, dbTableName);
+                        }
+                    
+
+                        public static void Insert(this {{{className}}} value, IDbConnection dbCon, string? dbTableName = null)
+                        {
+                            {{{className}}}.Insert(dbCon, value, dbTableName);
+                        }
+                    
+                        public static void Insert(this List<{{{className}}}> values, IDbConnection dbCon, string? dbTableName = null)
+                        {
+                            {{{className}}}.Insert(dbCon, values, dbTableName);
+                        }
+
+                        public static void Delete(this {{{className}}} value, IDbConnection dbCon, string? dbTableName = null)
+                        {
+                            {{{className}}}.Delete(dbCon, value, dbTableName);
+                        }
+                    
+                        public static void Delete(this List<{{{className}}}> values, IDbConnection dbCon, string? dbTableName = null)
+                        {
+                            {{{className}}}.Delete(dbCon, values, dbTableName);
+                        }
+                    }
+
                     #nullable restore
                     """"
             , Encoding.UTF8)
@@ -736,6 +788,19 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 if (isNullable)
                 {
                     yield return $"bool {name}IsNull = false";
+                }
+            }
+        }
+
+        IEnumerable<string> getFnFilterArgs(bool includeNullFilter)
+        {
+            foreach ((string name, string propType, string _, bool _, bool _, bool isNullable, bool isEnum) in tableColInfo)
+            {
+                yield return name;
+
+                if (isNullable)
+                {
+                    yield return $"{name}IsNull";
                 }
             }
         }
@@ -853,21 +918,24 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
             {
                 if ((identityColName == null) || (!setIdentity))
                 {
-                    yield return "command.ExecuteNonQuery();";
+                    yield return "int rowsAffected = command.ExecuteNonQuery();";
+                    yield return "if (rowsAffected == 0) throw new Exception(\"Insert failed!\");";
                 }
                 else
                 {
                     yield return "object? commandResult = command.ExecuteScalar();";
+                    yield return "if (commandResult == null) throw new Exception(\"Insert failed!\");";
+
                     switch (identityColType)
                     {
                         case "int":
-                            yield return $"if (commandResult != null) value.{identityColName} = Convert.ToInt32(commandResult);";
+                            yield return $"value.{identityColName} = Convert.ToInt32(commandResult);";
                             break;
                         case "long":
-                            yield return $"if (commandResult != null) value.{identityColName} = Convert.ToInt64(commandResult);";
+                            yield return $"value.{identityColName} = Convert.ToInt64(commandResult);";
                             break;
                         default:
-                            yield return $"if (commandResult != null) value.{identityColName} = ({identityColType})commandResult;";
+                            yield return $"value.{identityColName} = ({identityColType})commandResult;";
                             break;
                     }
                 }
