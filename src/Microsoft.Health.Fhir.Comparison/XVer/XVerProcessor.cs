@@ -82,14 +82,27 @@ public class XVerProcessor
     private Dictionary<string, HashSet<string>> _vsUrlsToInclude = [];
 
     private string _dbPath;
+    private string? _dbName;
 
     public XVerProcessor(ConfigXVer config)
     {
         _config = config;
         _logger = config.LogFactory.CreateLogger<XVerProcessor>();
 
-        // TODO(ginoc): need to figure out how to determine in-place vs. output
-        _dbPath = Path.Combine(_config.CrossVersionMapSourcePath, "db");
+        string path = string.IsNullOrEmpty(_config.CrossVersionDbPath)
+            ? Path.Combine(_config.CrossVersionMapSourcePath, "db")
+            : _config.CrossVersionDbPath;
+
+        if (path.EndsWith(".db"))
+        {
+            _dbPath = Path.GetDirectoryName(path) ?? path;
+            _dbName = Path.GetFileName(path) ?? path;
+        }
+        else
+        {
+            _dbPath = path;
+            _dbName = null;
+        }
 
         _comparisonCache = [];
     }
@@ -128,14 +141,17 @@ public class XVerProcessor
 
         switch (command)
         {
-            case "create-content-db":
-                CreateComparisonDatabase();
-                //LoadDiffDatabases();
+            case "create-db":
+                LoadDatabase(true);
+                LoadFhirCrossVersionMaps(preferV1Maps: true);
+                break;
+
+            case "compare":
+                LoadDatabase(_config.ReloadDatabase);
                 break;
 
             case "convert-from-maps":
                 LoadFhirCrossVersionMaps(preferV1Maps: true);
-                //LoadDiffDatabases();
                 break;
 
             case "update-maps":
@@ -186,8 +202,28 @@ public class XVerProcessor
         }
     }
 
-    public void CreateComparisonDatabase()
+    public void LoadDatabase(bool forceCreate)
     {
+        // check if we have a database filename
+        if (!forceCreate &&
+            !string.IsNullOrEmpty(_dbName))
+        {
+            // try loading the database
+            _db = new(_dbPath, _dbName);
+            if (_db != null)
+            {
+                // check for copying from source
+                if (string.IsNullOrEmpty(_config.CrossVersionSourceDb))
+                {
+                    return;
+                }
+
+                _db.LoadFromSourceDb(_config.CrossVersionSourceDb);
+
+                return;
+            }
+        }
+
         // load definitions if we have not done so
         if (_definitions.Length == 0)
         {
@@ -195,19 +231,13 @@ public class XVerProcessor
         }
 
         // creating the database with defintions loads all the content
-        _db = new(_definitions, _dbPath);
+        _db = new(_definitions, _dbPath, _dbName);
+        _dbName = _db.DbFileName;
 
         // save the definition content in the database
         if (!_db.TryLoadFromDefinitionCollections(_exclusionSet, _escapeValveCodes))
         {
             throw new Exception($"Failed to load FHIR-based definitions into the database: {string.Join(", ", _definitions.Select(d => d.Key))}");
-        }
-
-        // if this is a core comparison and we have a location, try to load existing cross-version maps
-        if (_db.IsCoreComparison &&
-            !string.IsNullOrEmpty(_config.CrossVersionMapSourcePath))
-        {
-            _ = _db.TryLoadFhirCrossVersionMaps(_config.CrossVersionMapSourcePath);
         }
 
         return;
@@ -223,101 +253,58 @@ public class XVerProcessor
     /// <exception cref="InvalidOperationException">Thrown when there are less than two definitions available for comparison.</exception>
     public void LoadFhirCrossVersionMaps(bool preferV1Maps)
     {
+        // need definitions loaded in order for existing cross-version maps to be usable
+        if (_definitions.Length == 0)
+        {
+            loadDefinitionCollections();
+        }
+
         if (_definitions.Length < 2)
         {
             throw new InvalidOperationException("At least two definitions are required to compare.");
         }
 
-        _comparisonCache.Clear();
-
-        // create our comparison objects
-        for (int definitionIndex = 1; definitionIndex < _definitions.Length; definitionIndex++)
+        if (_db == null)
         {
-            DefinitionCollection left = _definitions[definitionIndex - 1];
-            DefinitionCollection right = _definitions[definitionIndex];
-
-            if (_comparisonCache.ContainsKey((left.Key, right.Key)))
+            LoadDatabase(_config.ReloadDatabase);
+            if (_db == null)
             {
-                continue;
+                throw new Exception($"Failed to create or load a comparison database!");
             }
-
-            FhirCoreComparer comparer = new(
-                left,
-                right,
-                _config.LogFactory,
-                _config.CrossVersionMapSourcePath);
-
-            _ = comparer.GetInitialCrossVersionMaps(preferV1Maps);
-
-            // comparers are bidirectional
-            _comparisonCache.Add((left.Key, right.Key), comparer);
-            //_comparisonCache.Add((right.Key, left.Key), comparer);
         }
-    }
 
-    //private void createDbsForCollections(
-    //    DefinitionCollection left,
-    //    DefinitionCollection right)
-    //{
-    //    FhirCoreComparer comparer = new(
-    //        left,
-    //        right,
-    //        _config.LogFactory,
-    //        _config.CrossVersionMapSourcePath);
-
-    //    _ = comparer.GetInitialCrossVersionMaps(true);
-
-    //    // create base difference trackers
-    //    DifferenceTracker diffsLeftToRight = new(left, right, _dbPath);
-    //    DifferenceTracker diffsRightToLeft = new(right, left, _dbPath);
-
-    //    diffsLeftToRight.InitDb(out bool createdNew);
-    //    if (comparer.LeftToRight != null)
-    //    {
-    //        diffsLeftToRight.LoadFromCrossVersionMaps(comparer.LeftToRight);
-    //    }
-
-    //    diffsRightToLeft.InitDb();
-    //    if (comparer.RightToLeft != null)
-    //    {
-    //        diffsRightToLeft.LoadFromCrossVersionMaps(comparer.RightToLeft);
-    //    }
-
-    //    _diffCache[(left.Key, right.Key)] = diffsLeftToRight;
-    //    _diffCache[(right.Key, left.Key)] = diffsRightToLeft;
-    //}
-
-    public void LoadDiffDatabases()
-    {
-        if (_definitions.Length < 2)
+        // if this is a core comparison and we have a location, try to load existing cross-version maps
+        if (_db.IsCoreComparison &&
+            !string.IsNullOrEmpty(_config.CrossVersionMapSourcePath))
         {
-            throw new InvalidOperationException("At least two definitions are required for comparison.");
+            _ = _db.TryLoadFhirCrossVersionMaps(_config.CrossVersionMapSourcePath);
         }
 
-        _comparisonCache.Clear();
+        //_comparisonCache.Clear();
 
-        // create our comparison objects
-        for (int definitionIndex = 1; definitionIndex < _definitions.Length; definitionIndex++)
-        {
-            DefinitionCollection left = _definitions[definitionIndex - 1];
-            DefinitionCollection right = _definitions[definitionIndex];
+        //// create our comparison objects
+        //for (int definitionIndex = 1; definitionIndex < _definitions.Length; definitionIndex++)
+        //{
+        //    DefinitionCollection left = _definitions[definitionIndex - 1];
+        //    DefinitionCollection right = _definitions[definitionIndex];
 
-            if (_comparisonCache.ContainsKey((left.Key, right.Key)))
-            {
-                continue;
-            }
+        //    if (_comparisonCache.ContainsKey((left.Key, right.Key)))
+        //    {
+        //        continue;
+        //    }
 
-            FhirCoreComparer comparer = new(
-                left,
-                right,
-                _config.LogFactory,
-                _config.CrossVersionMapSourcePath);
+        //    FhirCoreComparer comparer = new(
+        //        left,
+        //        right,
+        //        _config.LogFactory,
+        //        _config.CrossVersionMapSourcePath);
 
-            comparer.Init(_config.CrossVersionMapSourcePath);
+        //    _ = comparer.GetInitialCrossVersionMaps(preferV1Maps);
 
-            // comparers are bidirectional so only create left-to-right key for sanity
-            _comparisonCache.Add((left.Key, right.Key), comparer);
-        }
+        //    // comparers are bidirectional
+        //    _comparisonCache.Add((left.Key, right.Key), comparer);
+        //    //_comparisonCache.Add((right.Key, left.Key), comparer);
+        //}
     }
 
 

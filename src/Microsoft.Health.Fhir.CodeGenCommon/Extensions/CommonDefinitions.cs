@@ -73,6 +73,7 @@ public static class CommonDefinitions
     public const string ConceptMapUsageContextDataType = "DataType";
     public const string ConceptMapUsageContextResourceOverview = "Resources";
     public const string ConceptMapUsageContextResource = "Resource";
+    public const string ConceptMapUsageContextElements = "Elements";
 
 
     public const string ExtUrlComment = "http://ginoc.io/fhir/StructureDefinition/comment";

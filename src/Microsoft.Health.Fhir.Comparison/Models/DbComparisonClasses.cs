@@ -196,9 +196,18 @@ public partial class DbElementComparison : DbPackageComparisonContent
 
     [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
     public required int SourceElementKey { get; set; }
+    public required string SourceStructureUrl { get; set; }
+    public required string SourceElementToken { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
     public required int? TargetElementKey { get; set; }
+    public required string? TargetStructureUrl { get; set; }
+    public required string? TargetElementToken { get; set; }
+
+    public required bool? NoMap { get; set; }
+    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
+    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
+
 }
 
 
@@ -214,10 +223,33 @@ public partial class DbUnresolvedElementComparison : DbPackageComparisonContent
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
     public required int? SourceStructureKey { get; set; }
 
+    public required string SourceStructureUrl { get; set; }
     public required string SourceElementToken { get; set; }
+    public required bool SourceElementExists { get; set; } = false;
 
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
     public required int? TargetStructureKey { get; set; }
 
-    public required string TargetElementToken { get; set; }
+    public required string? TargetStructureUrl { get; set; }
+    public required string? TargetElementToken { get; set; }
+    public required bool TargetElementExists { get; set; } = false;
+
+    public required bool? NoMap { get; set; }
 }
+
+
+//public partial class DbXverSourceFml : DbPackageComparisonContent
+//{
+//    [CgSQLiteForeignKey(referenceTable: "StructureComparisons", referenceColumn: nameof(DbStructureComparison.Key))]
+//    public required int? StructureComparisonKey { get; set; }
+
+//    [CgSQLiteForeignKey(referenceTable: "UnresolvedStructureComparisons", referenceColumn: nameof(DbUnresolvedStructureComparison.Key))]
+//    public required int? UnresolvedStructureComparisonKey { get; set; }
+
+//    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
+//    public required int? SourceStructureKey { get; set; }
+
+//    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
+//    public required int? TargetStructureKey { get; set; }
+
+//}

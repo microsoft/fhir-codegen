@@ -505,7 +505,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     
                             using (IDataReader reader = command.ExecuteReader())
                             {
-                                if (reader.Read())
+                                while (reader.Read())
                                 {
                                     results.Add(new()
                                     {

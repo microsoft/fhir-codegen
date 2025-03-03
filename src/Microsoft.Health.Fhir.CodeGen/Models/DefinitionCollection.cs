@@ -512,6 +512,16 @@ public partial class DefinitionCollection
             HasProcessedDifferential = false,
         };
 
+        // check for a binding on the root element of the differential that does not appear on the snapshot
+        if ((sd.Snapshot?.Element.Count > 0) &&
+            (sd.Differential?.Element.Count > 0) &&
+            (sd.Snapshot.Element[0].Path == sd.Differential.Element[0].Path) &&
+            (sd.Snapshot.Element[0].Binding == null) &&
+            (sd.Differential.Element[0].Binding != null))
+        {
+            sd.Snapshot.Element[0].Binding = (ElementDefinition.ElementDefinitionBindingComponent)sd.Differential.Element[0].Binding.DeepCopy();
+        }
+
         IEnumerable<ElementDefinition> elements = processingInfo.HasProcessedSnapshot
             ? []
             : sd.Snapshot?.Element ?? [];

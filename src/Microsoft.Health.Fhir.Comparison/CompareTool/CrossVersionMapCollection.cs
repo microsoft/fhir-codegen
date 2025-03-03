@@ -609,6 +609,13 @@ public class CrossVersionMapCollection
                 if (maps.Count == 0)
                 {
                     elementMap = BuildNewElementMap(sourceTypeName, targetTypeName, null);
+
+                    addUseContextTarget(
+                        elementMap,
+                        sourceSd.cgArtifactClass() == CodeGenCommon.Models.FhirArtifactClassEnum.ComplexType
+                            ? CommonDefinitions.ConceptMapUsageContextDataType
+                            : CommonDefinitions.ConceptMapUsageContextResource);
+
                     _dc.AddConceptMap(elementMap, _dc.MainPackageId, _dc.MainPackageVersion);
                 }
                 else
@@ -1019,6 +1026,8 @@ public class CrossVersionMapCollection
                 return false;
             }
 
+            addUseContextTarget(cm, CommonDefinitions.ConceptMapUsageContextTypeOverview);
+
             // add this to our maps
             _dc.AddConceptMap(cm, _dc.MainPackageId, _dc.MainPackageVersion);
 
@@ -1032,6 +1041,28 @@ public class CrossVersionMapCollection
         }
 
         return true;
+    }
+
+    private void addUseContextTarget(ConceptMap cm, string ctxType)
+    {
+        bool existing = cm.UseContext.Any(uc =>
+            (uc.Code.System == CommonDefinitions.ConceptMapUsageContextSystem) &&
+            (uc.Code.Code == CommonDefinitions.ConceptMapUsageContextTarget) &&
+            (uc.Value is CodeableConcept cc) &&
+            (cc.Coding.Any(c => (c.System == CommonDefinitions.ConceptMapUsageContextSystem) && (c.Code == ctxType))));
+
+        if (existing)
+        {
+            return;
+        }
+
+        cm.UseContext.Add(new()
+        {
+            Code = new(CommonDefinitions.ConceptMapUsageContextSystem, CommonDefinitions.ConceptMapUsageContextTarget),
+            Value = new CodeableConcept(
+                CommonDefinitions.ConceptMapUsageContextSystem,
+                ctxType),
+        });
     }
 
     private bool tryLoadCodeConceptMapsV2(string fhirCrossRepoPath)
@@ -1058,6 +1089,8 @@ public class CrossVersionMapCollection
                     Console.WriteLine($"Error loading {filename}: could not parse as ConceptMap");
                     continue;
                 }
+
+                addUseContextTarget(cm, CommonDefinitions.ConceptMapUsageContextValueSet);
 
                 // add this to our maps
                 _dc.AddConceptMap(cm, _dc.MainPackageId, _dc.MainPackageVersion);
@@ -1181,7 +1214,6 @@ public class CrossVersionMapCollection
         // traverse our extracted elements and build new concept maps
         foreach (IGrouping<string, ConceptMap.SourceElementComponent> typeGroup in mapSourceTypeLookup)
         {
-            
             // aggregate our set of source elements
             List<ConceptMap.SourceElementComponent> elements = [.. typeGroup];
             if (elements.Count == 0)
@@ -1200,14 +1232,14 @@ public class CrossVersionMapCollection
             foreach (IGrouping<string, ConceptMap.SourceElementComponent> originalSourceElements in elementDict)
             {
                 // get the first source element
-                ConceptMap.SourceElementComponent reconciledElement = (ConceptMap.SourceElementComponent)elements.First().DeepCopy();
+                ConceptMap.SourceElementComponent reconciledElement = (ConceptMap.SourceElementComponent)originalSourceElements.First().DeepCopy();
 
                 // official sources are sometimes incorrect, listing the same code multiple times instead of multiple targets
-                if (elements.Count > 1)
+                if (originalSourceElements.Count() > 1)
                 {
-                    foreach (ConceptMap.SourceElementComponent element in elements.Skip(1))
+                    foreach (ConceptMap.SourceElementComponent element in originalSourceElements.Skip(1))
                     {
-                        reconciledElement.Target.AddRange(element.Target);
+                        reconciledElement.Target.AddRange(element.Target.Select(t => (ConceptMap.TargetElementComponent)t.DeepCopy()));
                     }
                 }
 
@@ -1221,13 +1253,81 @@ public class CrossVersionMapCollection
                 }
             }
 
-            ConceptMap elementMap = BuildNewElementMap(
-                typeGroup.Key,
-                targetTypeName ?? typeGroup.Key,
-                reconciled);
+            // try to resolve these structures
+            if (!_source.TryGetStructure(typeGroup.Key, out StructureDefinition? sourceSd))
+            {
+                Console.WriteLine($"processCrossVersionElementsMap <<< invalid source structure {typeGroup.Key} for {_source.MainPackageId}@{_source.MainPackageVersion} from {cm.Id} ({cm.Url})");
+                continue;
+            }
 
-            //_elementConceptMaps.Add(typeName, elementMap);
-            _dc.AddConceptMap(elementMap, _dc.MainPackageId, _dc.MainPackageVersion);
+            string? resolvedTargetName;
+
+            // try to resolve these structures
+            if (_target.TryGetStructure(targetTypeName ?? typeGroup.Key, out StructureDefinition? targetSd))
+            {
+                resolvedTargetName = targetSd.Name;
+            }
+            else
+            {
+                resolvedTargetName = null;
+            }
+
+            // check to see if we have an existing concept map to add to
+            if (tryGetElementMap(typeGroup.Key, resolvedTargetName, out ConceptMap? elementMap) &&
+                (elementMap != null))
+            {
+                string groupSourceUrl = BuildUrl("{0}/{1}/{2}", _sourcePackageCanonical, "StructureDefinition", typeGroup.Key);
+                string? groupTargetUrl = (targetSd == null)
+                    ? null
+                    : BuildUrl("{0}/{1}/{2}", _targetPackageCanonical, "StructureDefinition", targetTypeName ?? typeGroup.Key);
+
+                ConceptMap.GroupComponent? mapGroup = elementMap.Group.FirstOrDefault(g => (g.Source == groupSourceUrl) && (g.Target == groupTargetUrl));
+                if (mapGroup == null)
+                {
+                    mapGroup = new()
+                    {
+                        Source = groupSourceUrl,
+                        Target = groupTargetUrl,
+                        Element = reconciled,
+                    };
+                }
+                else
+                {
+                    ILookup<string, ConceptMap.SourceElementComponent> existingSourceLookup = mapGroup.Element.ToLookup(e => e.Code);
+
+                    foreach (ConceptMap.SourceElementComponent reconciledSource in reconciled)
+                    {
+                        ConceptMap.SourceElementComponent mappedSource = existingSourceLookup.Contains(reconciledSource.Code)
+                            ? existingSourceLookup[reconciledSource.Code].First()
+                            : reconciledSource;
+
+                        foreach (ConceptMap.TargetElementComponent reconciledTarget in reconciledSource.Target)
+                        {
+                            if (mappedSource.Target.Any(t => t.Code == reconciledTarget.Code))
+                            {
+                                continue;
+                            }
+
+                            mappedSource.Target.Add(reconciledTarget);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                elementMap = BuildNewElementMap(
+                    typeGroup.Key,
+                    resolvedTargetName,
+                    reconciled);
+
+                addUseContextTarget(
+                    elementMap,
+                    sourceSd.cgArtifactClass() == CodeGenCommon.Models.FhirArtifactClassEnum.ComplexType
+                        ? CommonDefinitions.ConceptMapUsageContextDataType
+                        : CommonDefinitions.ConceptMapUsageContextResource);
+
+                _dc.AddConceptMap(elementMap, _dc.MainPackageId, _dc.MainPackageVersion);
+            }
         }
     }
 
@@ -1258,11 +1358,7 @@ public class CrossVersionMapCollection
         cm.Group[0].Source = sourceLocalUrl;
         cm.Group[0].Target = targetLocalUrl;
 
-        cm.UseContext.Add(new()
-        {
-            Code = new(CommonDefinitions.ConceptMapUsageContextSystem, CommonDefinitions.ConceptMapUsageContextTarget),
-            Value = new CodeableConcept(CommonDefinitions.ConceptMapUsageContextSystem, CommonDefinitions.ConceptMapUsageContextResourceOverview),
-        });
+        addUseContextTarget(cm, CommonDefinitions.ConceptMapUsageContextResourceOverview);
 
         _resourceTypeMap = cm;
     }
@@ -1294,11 +1390,7 @@ public class CrossVersionMapCollection
         cm.Group[0].Source = sourceLocalUrl.Replace("/ValueSet/", "/");
         cm.Group[0].Target = targetLocalUrl.Replace("/ValueSet/", "/");
 
-        cm.UseContext.Add(new()
-        {
-            Code = new(CommonDefinitions.ConceptMapUsageContextSystem, CommonDefinitions.ConceptMapUsageContextTarget),
-            Value = new CodeableConcept(CommonDefinitions.ConceptMapUsageContextSystem, CommonDefinitions.ConceptMapUsageContextTypeOverview),
-        });
+        addUseContextTarget(cm, CommonDefinitions.ConceptMapUsageContextTypeOverview);
 
         _dataTypeMap = cm;
     }
@@ -1377,11 +1469,7 @@ public class CrossVersionMapCollection
         cm.Title = GetConceptMapTitle(leftName, rightName);
         cm.AddExtension(CommonDefinitions.ExtUrlConceptMapAdditionalUrls, new FhirUrl(originalMapUrl));
 
-        cm.UseContext.Add(new()
-        {
-            Code = new(CommonDefinitions.ConceptMapUsageContextSystem, CommonDefinitions.ConceptMapUsageContextTarget),
-            Value = new CodeableConcept(CommonDefinitions.ConceptMapUsageContextSystem, CommonDefinitions.ConceptMapUsageContextValueSet),
-        });
+        addUseContextTarget(cm, CommonDefinitions.ConceptMapUsageContextValueSet);
 
         // try to manufacture correct value set URLs based on what we have
         cm.SourceScope = new Canonical(unversionedSourceUrl + "|" + _sourcePackageVersion);
@@ -1406,13 +1494,36 @@ public class CrossVersionMapCollection
         _vsUrlsWithMaps.AddToValue(unversionedSourceUrl, targetScopeUrl);
     }
 
-    private ConceptMap BuildNewElementMap(string sourceTypeName, string targetTypeName, List<ConceptMap.SourceElementComponent>? elements)
+    private bool tryGetElementMap(string sourceTypeName, string? targetTypeName, out ConceptMap? cm)
     {
-        string elementMapId = $"{_sourceRLiteral}-{sourceTypeName}-{_targetRLiteral}-{targetTypeName}";
+        string elementMapId;
+        string elementMapUrl;
+
+        if (string.IsNullOrEmpty(targetTypeName))
+        {
+            elementMapId = $"{_sourceRLiteral}-{sourceTypeName}-{_targetRLiteral}";
+            elementMapUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: elementMapId, resourceType: "ConceptMap");
+        }
+        else
+        {
+            elementMapId = $"{_sourceRLiteral}-{sourceTypeName}-{_targetRLiteral}-{targetTypeName}";
+            elementMapUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: elementMapId, resourceType: "ConceptMap");
+        }
+
+        return _dc.ConceptMapsByUrl.TryGetValue(elementMapUrl, out cm);
+    }
+
+    private ConceptMap BuildNewElementMap(string sourceTypeName, string? targetTypeName, List<ConceptMap.SourceElementComponent>? elements)
+    {
+        string elementMapId = string.IsNullOrEmpty(targetTypeName)
+            ? $"{_sourceRLiteral}-{sourceTypeName}-{_targetRLiteral}"
+            : $"{_sourceRLiteral}-{sourceTypeName}-{_targetRLiteral}-{targetTypeName}";
         string elementMapUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: elementMapId, resourceType: "ConceptMap");
 
         string elementSourceUrl = BuildUrl("{0}/{1}/{2}", _sourcePackageCanonical, "StructureDefinition", sourceTypeName);
-        string elementTargetUrl = BuildUrl("{0}/{1}/{2}", _targetPackageCanonical, "StructureDefinition", targetTypeName);
+        string? elementTargetUrl = string.IsNullOrEmpty(targetTypeName)
+            ? null
+            : BuildUrl("{0}/{1}/{2}", _targetPackageCanonical, "StructureDefinition", targetTypeName);
 
         return new()
         {
@@ -1421,7 +1532,7 @@ public class CrossVersionMapCollection
             Name = elementMapId,
             Title = GetConceptMapTitle(sourceTypeName),
             SourceScope = new Canonical($"{elementSourceUrl}|{_sourcePackageVersion}"),
-            TargetScope = new Canonical($"{elementTargetUrl}|{_targetPackageVersion}"),
+            TargetScope = (elementTargetUrl == null) ? null : new Canonical($"{elementTargetUrl}|{_targetPackageVersion}"),
             Group = [new ConceptMap.GroupComponent
             {
                 Source = elementSourceUrl,
@@ -1571,8 +1682,8 @@ public class CrossVersionMapCollection
         string localConceptMapId = $"{_sourceRLiteral}-resources-{_targetRLiteral}";
         string localUrl = BuildUrl("{0}/{1}/{2}", _mapCanonical, name: localConceptMapId, resourceType: "ConceptMap");
 
-        string sourceLocalUrl = BuildUrl("{0}/{1}/{2}", _sourcePackageCanonical, "ValueSet", "data-types");
-        string targetLocalUrl = BuildUrl("{0}/{1}/{2}", _targetPackageCanonical, "ValueSet", "data-types");
+        string sourceLocalUrl = BuildUrl("{0}/{1}/{2}", _sourcePackageCanonical, "ValueSet", "resources");
+        string targetLocalUrl = BuildUrl("{0}/{1}/{2}", _targetPackageCanonical, "ValueSet", "resources");
 
         ConceptMap cm = new()
         {
@@ -1592,6 +1703,8 @@ public class CrossVersionMapCollection
                 Target = targetLocalUrl.Replace("/ValueSet/", "/"),
             }],
         };
+
+        addUseContextTarget(cm, CommonDefinitions.ConceptMapUsageContextResourceOverview);
 
         _dataTypeMap = cm;
 
@@ -1628,6 +1741,8 @@ public class CrossVersionMapCollection
             }],
         };
 
+        addUseContextTarget(cm, CommonDefinitions.ConceptMapUsageContextTypeOverview);
+
         _dataTypeMap = cm;
 
         _dc!.AddConceptMap(cm, _dc.MainPackageId, _dc.MainPackageVersion);
@@ -1654,6 +1769,12 @@ public class CrossVersionMapCollection
                 Target = targetSd.Url,
             }],
         };
+
+        addUseContextTarget(
+            cm,
+            sourceSd.cgArtifactClass() == CodeGenCommon.Models.FhirArtifactClassEnum.ComplexType
+                ? CommonDefinitions.ConceptMapUsageContextDataType
+                : CommonDefinitions.ConceptMapUsageContextResource);
 
         _dc!.AddConceptMap(cm, _dc.MainPackageId, _dc.MainPackageVersion);
 
@@ -1696,6 +1817,8 @@ public class CrossVersionMapCollection
             TargetScope = new Canonical(targetCanonical),
         };
 
+        addUseContextTarget(cm, CommonDefinitions.ConceptMapUsageContextValueSet);
+
         _dc!.AddConceptMap(cm, _dc.MainPackageId, _dc.MainPackageVersion);
 
         return cm;
@@ -1736,6 +1859,12 @@ public class CrossVersionMapCollection
             SourceScope = new Canonical(sourceCanonical),
             TargetScope = new Canonical(targetCanonical),
         };
+
+        addUseContextTarget(
+            cm,
+            sourceSd.cgArtifactClass() == CodeGenCommon.Models.FhirArtifactClassEnum.ComplexType
+                ? CommonDefinitions.ConceptMapUsageContextDataType
+                : CommonDefinitions.ConceptMapUsageContextResource);
 
         _dc!.AddConceptMap(cm, _dc.MainPackageId, _dc.MainPackageVersion);
 
@@ -2267,6 +2396,16 @@ public class CrossVersionMapCollection
         if (!_dc.ConceptMapsByUrl.TryGetValue(localUrl, out ConceptMap? cm))
         {
             cm = BuildNewElementMap(sourceName, targetName, null);
+
+            if (_source.TryResolveByCanonicalUri(cRec.Source.Url, out Resource? resolved) &&
+                (resolved is StructureDefinition sd))
+            {
+                addUseContextTarget(
+                    cm,
+                    sd.cgArtifactClass() == CodeGenCommon.Models.FhirArtifactClassEnum.ComplexType
+                        ? CommonDefinitions.ConceptMapUsageContextDataType
+                        : CommonDefinitions.ConceptMapUsageContextResource);
+            }
         }
 
         ConceptMap.GroupComponent? group = null;

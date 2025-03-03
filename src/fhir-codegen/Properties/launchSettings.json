@@ -175,19 +175,14 @@
             "commandLineArgs": "xver -c hl7.fhir.r2.core@1.0.2 -c hl7.fhir.r3.core@3.0.2 -c hl7.fhir.r4.core@4.0.1 -c hl7.fhir.r4b.core#4.3.0 -c hl7.fhir.r5.core@5.0.0 --auto-load-expansions --resolve-dependencies true --map-source-path ..\\..\\..\\fhir-cross-version  --map-destination-path ..\\..\\..\\fhir-cross-version-source",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
-        "XVer create-content-db": {
+        "XVer create-db": {
             "commandName": "Project",
-            "commandLineArgs": "xver create-content-db --max-expansion-size 8000 -c hl7.fhir.r2.core@1.0.2 -c hl7.fhir.r3.core@3.0.2 -c hl7.fhir.r4.core@4.0.1 --auto-load-expansions --resolve-dependencies true",
+            "commandLineArgs": "xver create-db --max-expansion-size 8000 -c hl7.fhir.r2.core@1.0.2 -c hl7.fhir.r3.core@3.0.2  -c hl7.fhir.r4.core@4.0.1 -c hl7.fhir.r4b.core@4.3.0 -c hl7.fhir.r5.core@5.0.0 --auto-load-expansions --resolve-dependencies true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
-        "XVer 20-30-40 convert": {
+        "XVer compare": {
             "commandName": "Project",
-            "commandLineArgs": "xver convert-from-maps -c hl7.fhir.r2.core@1.0.2 -c hl7.fhir.r3.core@3.0.2 -c hl7.fhir.r4.core@4.0.1 --auto-load-expansions --resolve-dependencies true",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "XVer 20-30-40 update": {
-            "commandName": "Project",
-            "commandLineArgs": "xver update-maps -c hl7.fhir.r2.core@1.0.2 -c hl7.fhir.r3.core@3.0.2 -c hl7.fhir.r4.core@4.0.1 --auto-load-expansions --resolve-dependencies true",
+            "commandLineArgs": "xver compare --auto-load-expansions --resolve-dependencies true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "XVer 20-30-40 docs": {

@@ -35,6 +35,89 @@ public class ConfigXVer : ConfigRoot
     };
 
     [ConfigOption(
+        ArgName = "--map-source-path",
+        EnvName = "Map_Source_Path",
+        ArgArity = "0..1",
+        Description = "Path to FHIR maps to load (e.g., clone of HL7/fhir-cross-version).")]
+    public string CrossVersionMapSourcePath { get; set; } = string.Empty;
+
+    private static ConfigurationOption CrossVersionMapSourcePathParameter => new()
+    {
+        Name = "Map_Source_Path",
+        EnvVarName = "Map_Source_Path",
+        DefaultValue = string.Empty,
+        CliOption = new System.CommandLine.Option<string?>("--map-source-path", "Path to FHIR maps to load (e.g., clone of HL7/fhir-cross-version).")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
+
+
+    [ConfigOption(
+        ArgName = "--db",
+        EnvName = "Comparison_Database_Path",
+        ArgArity = "0..1",
+        Description = "Path or filename for the comparison database FHIR maps to load or export.")]
+    public string CrossVersionDbPath { get; set; } = string.Empty;
+
+    private static ConfigurationOption CrossVersionDbPathParameter => new()
+    {
+        Name = "Comparison_Database_Path",
+        EnvVarName = "Comparison_Database_Path",
+        DefaultValue = string.Empty,
+        CliOption = new System.CommandLine.Option<string?>("--db", "Path or filename for the comparison database FHIR maps to load or export.")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
+
+    [ConfigOption(
+        ArgName = "--reload-db",
+        EnvName = "Reload_Comparison_Database",
+        ArgArity = "0..1",
+        Description = "Set to force reloading of the comparison database from definitions.")]
+    public bool ReloadDatabase { get; set; } = false;
+
+    private static ConfigurationOption ReloadDatabaseParameter => new()
+    {
+        Name = "Reload_Comparison_Database",
+        EnvVarName = "Reload_Comparison_Database",
+        DefaultValue = false,
+        CliOption = new System.CommandLine.Option<bool>("--reload-db", "Set to force reloading of the comparison database from definitions.")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
+
+    [ConfigOption(
+        ArgName = "--source-db",
+        EnvName = "Comparison_Source_Database",
+        ArgArity = "0..1",
+        Description = "Fully specified filename for a source database to use for comparison processing.")]
+    public string CrossVersionSourceDb { get; set; } = string.Empty;
+
+    private static ConfigurationOption CrossVersionSourceDbParameter => new()
+    {
+        Name = "Comparison_Source_Database",
+        EnvVarName = "Comparison_Source_Database",
+        DefaultValue = string.Empty,
+        CliOption = new System.CommandLine.Option<string?>("--source-db", "Fully specified filename for a source database to use for comparison processing.")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
+
+
+
+
+
+
+
+    [ConfigOption(
         ArgName = "--no-output",
         EnvName = "No_Output",
         ArgArity = "0..1",
@@ -70,24 +153,6 @@ public class ConfigXVer : ConfigRoot
         },
     };
 
-    [ConfigOption(
-        ArgName = "--map-source-path",
-        EnvName = "Map_Source_Path",
-        ArgArity = "0..1",
-        Description = "Path to FHIR maps to load (e.g., clone of HL7/fhir-cross-version).")]
-    public string CrossVersionMapSourcePath { get; set; } = string.Empty;
-
-    private static ConfigurationOption CrossVersionMapSourcePathParameter => new()
-    {
-        Name = "Map_Source_Path",
-        EnvVarName = "Map_Source_Path",
-        DefaultValue = string.Empty,
-        CliOption = new System.CommandLine.Option<string?>("--map-source-path", "Path to FHIR maps to load (e.g., clone of HL7/fhir-cross-version).")
-        {
-            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
-            IsRequired = false,
-        },
-    };
 
     [ConfigOption(
         ArgName = "--map-destination-path",
@@ -112,6 +177,9 @@ public class ConfigXVer : ConfigRoot
     private static readonly ConfigurationOption[] _options =
     [
         ComparePackagesParameter,
+        CrossVersionDbPathParameter,
+        ReloadDatabaseParameter,
+        CrossVersionSourceDbParameter,
         NoOutputParameter,
         SaveComparisonResultParameter,
         CrossVersionMapSourcePathParameter,
@@ -137,6 +205,15 @@ public class ConfigXVer : ConfigRoot
             {
                 case "Compare_Package":
                     ComparePackages = GetOptArray(parseResult, opt, ComparePackages);
+                    break;
+                case "Comparison_Database_Path":
+                    CrossVersionDbPath = GetOpt(parseResult, opt, CrossVersionDbPath);
+                    break;
+                case "Reload_Comparison_Database":
+                    ReloadDatabase = GetOpt(parseResult, opt, ReloadDatabase);
+                    break;
+                case "Comparison_Source_Database":
+                    CrossVersionSourceDb = GetOpt(parseResult, opt, CrossVersionSourceDb);
                     break;
                 case "No_Output":
                     NoOutput = GetOpt(parseResult, opt, NoOutput);
