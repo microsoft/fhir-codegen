@@ -719,6 +719,16 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             {{{className}}}.Insert(dbCon, values, dbTableName);
                         }
 
+                        public static void Update(this IDbConnection dbCon, {{{className}}} value, string? dbTableName = null)
+                        {
+                            {{{className}}}.Update(dbCon, value, dbTableName);
+                        }
+
+                        public static void Update(this IDbConnection dbCon, List<{{{className}}}> values, string? dbTableName = null)
+                        {
+                            {{{className}}}.Update(dbCon, values, dbTableName);
+                        }
+
                         public static void Delete(this IDbConnection dbCon, {{{className}}} value, string? dbTableName = null)
                         {
                             {{{className}}}.Delete(dbCon, value, dbTableName);
@@ -738,6 +748,16 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                         public static void Insert(this List<{{{className}}}> values, IDbConnection dbCon, string? dbTableName = null)
                         {
                             {{{className}}}.Insert(dbCon, values, dbTableName);
+                        }
+
+                        public static void Update(this {{{className}}} value, IDbConnection dbCon, string? dbTableName = null)
+                        {
+                            {{{className}}}.Update(dbCon, value, dbTableName);
+                        }
+                    
+                        public static void Update(this List<{{{className}}}> values, IDbConnection dbCon, string? dbTableName = null)
+                        {
+                            {{{className}}}.Update(dbCon, values, dbTableName);
                         }
 
                         public static void Delete(this {{{className}}} value, IDbConnection dbCon, string? dbTableName = null)

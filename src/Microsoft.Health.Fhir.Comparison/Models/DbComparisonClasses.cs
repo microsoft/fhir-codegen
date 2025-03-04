@@ -27,8 +27,12 @@ public partial class DbFhirPackageComparisonPair
     [CgSQLiteForeignKey(referenceTable: "FhirPackages", referenceColumn: nameof(DbFhirPackage.Key))]
     public required int SourcePackageKey { get; set; }
 
+    public required string SourcePackageShortName { get; set; }
+
     [CgSQLiteForeignKey(referenceTable: "FhirPackages", referenceColumn: nameof(DbFhirPackage.Key))]
     public required int TargetPackageKey { get; set; }
+
+    public required string TargetPackageShortName { get; set; }
 
     public DateTime ProccessedAt { get; set; } = DateTime.UtcNow;
 }

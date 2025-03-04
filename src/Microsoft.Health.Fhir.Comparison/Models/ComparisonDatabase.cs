@@ -189,6 +189,19 @@ public class ComparisonDatabase : IDisposable
 
     public IDbConnection DbConnection => _dbConnection;
 
+    public int GetValueSetKey() => Interlocked.Increment(ref _dbValueSetIndex);
+    public int GetConceptKey() => Interlocked.Increment(ref _dbConceptIndex);
+    public int GetStructureKey() => Interlocked.Increment(ref _dbStructureIndex);
+    public int GetElementKey() => Interlocked.Increment(ref _dbElementIndex);
+    public int GetValueSetComparisonKey() => Interlocked.Increment(ref _dbValueSetComparisonIndex);
+    public int GetConceptComparisonKey() => Interlocked.Increment(ref _dbConceptComparisonIndex);
+    public int GetUnresolvedConceptComparisonKey() => Interlocked.Increment(ref _dbUnresolvedConceptComparisonIndex);
+    public int GetStructureComparisonKey() => Interlocked.Increment(ref _dbStructureComparisonIndex);
+    public int GetUnresolvedStructureComparisonKey() => Interlocked.Increment(ref _dbUnresolvedStructureComparisonIndex);
+    public int GetElementComparisonKey() => Interlocked.Increment(ref _dbElementComparisonIndex);
+    public int GetUnresolvedElementComparisonKey() => Interlocked.Increment(ref _dbUnresolvedElementComparisonIndex);
+
+
     public bool LoadFromSourceDb(string sourceDbPath)
     {
         if (string.IsNullOrEmpty(sourceDbPath))
@@ -359,7 +372,9 @@ public class ComparisonDatabase : IDisposable
                 dbPairLtoR = new()
                 {
                     SourcePackageKey = leftDbPackage.Key,
+                    SourcePackageShortName = leftDbPackage.ShortName,
                     TargetPackageKey = rightDbPackage.Key,
+                    TargetPackageShortName = rightDbPackage.ShortName,
                     ProccessedAt = DateTime.UtcNow,
                 };
 
@@ -377,7 +392,9 @@ public class ComparisonDatabase : IDisposable
                 dbPairRtoL = new()
                 {
                     SourcePackageKey = rightDbPackage.Key,
+                    SourcePackageShortName = rightDbPackage.ShortName,
                     TargetPackageKey = leftDbPackage.Key,
+                    TargetPackageShortName = leftDbPackage.ShortName,
                     ProccessedAt = DateTime.UtcNow,
                 };
 
@@ -1202,23 +1219,23 @@ public class ComparisonDatabase : IDisposable
                 return;
             }
 
-            bool sourceExists = sourceDbConcept == null;
-            bool targetExists = targetDbConcept == null;
-
-            string message = $"Mapping exists in {cm.Id} ({cm.Url}), but:";
-
-            if (!sourceExists)
-            {
-                message += $" {sourceSystem}|{sourceCode} does not exist in source {sourceDbVs.Id} ({sourceDbVs.VersionedUrl}).";
-            }
-
-            if (!targetExists)
-            {
-                message += $" {targetSystem}|{targetCode} does not exist in target {targetDbVs.Id} ({targetDbVs.VersionedUrl}).";
-            }
-
             if ((sourceDbConcept == null) || (targetDbConcept == null))
             {
+                bool sourceExists = sourceDbConcept != null;
+                bool targetExists = targetDbConcept != null;
+
+                string message = $"Mapping exists in {cm.Id} ({cm.Url}), but:";
+
+                if (!sourceExists)
+                {
+                    message += $" {sourceSystem}|{sourceCode} does not exist in source {sourceDbVs.Id} ({sourceDbVs.VersionedUrl}).";
+                }
+
+                if (!targetExists)
+                {
+                    message += $" {targetSystem}|{targetCode} does not exist in target {targetDbVs.Id} ({targetDbVs.VersionedUrl}).";
+                }
+
                 DbUnresolvedConceptComparison unresolvedComparison = new()
                 {
                     Key = Interlocked.Increment(ref _dbUnresolvedConceptComparisonIndex),
@@ -1230,8 +1247,8 @@ public class ComparisonDatabase : IDisposable
                     ValueSetComparisonKey = dbVsComparison.Key,
                     ConceptMapId = cm.Id,
                     ConceptMapUrl = cm.Url,
-                    Relationship = null,
-                    NoMap = true,
+                    Relationship = relationship,
+                    NoMap = targetCode == null,
                     Message = message,
                     SourceConceptExists = sourceExists,
                     SourceConceptKey = sourceDbConcept?.Key,
@@ -1250,9 +1267,6 @@ public class ComparisonDatabase : IDisposable
 
                 dbUnresolvedConceptComparisons.Add(unresolvedComparison);
 
-                ////dbPackagePair.InvalidImportedConceptComparisons.Add(invalidComparison);
-                //dbVsComparison.InvalidImportedComparisons.Add(invalidComparison);
-
                 return;
             }
 
@@ -1269,7 +1283,7 @@ public class ComparisonDatabase : IDisposable
                 TargetConceptKey = targetDbConcept.Key,
                 Relationship = relationship,
                 NoMap = false,
-                Message = message,
+                Message = $"Loaded existing mapping of `{sourceDbVs.VersionedUrl}`#`{sourceDbConcept.Code}` to `{targetDbVs.VersionedUrl}`#`{targetDbConcept.Code}` by {cm.Id} ({cm.Url})",
                 IsGenerated = false,
                 LastReviewedBy = null,
                 LastReviewedOn = null,
@@ -1298,6 +1312,27 @@ public class ComparisonDatabase : IDisposable
             $"{FhirSanitizationUtils.SanitizeForProperty(sourceDbCanonical.Name).ToPascalCase()}-" +
             $"{targetDbPackage.ShortName}-" +
             $"{FhirSanitizationUtils.SanitizeForProperty(targetDbCanonical.Name).ToPascalCase()}";
+    }
+
+    internal static string GetCompositeName(
+        string sourcePackageShortName,
+        string sourceCanonicalName,
+        string targetPacakgeShortName,
+        string? targetCanonicalName)
+    {
+        if (targetCanonicalName == null)
+        {
+            return
+                $"{sourcePackageShortName}-" +
+                $"{FhirSanitizationUtils.SanitizeForProperty(sourceCanonicalName).ToPascalCase()}-" +
+                $"{targetPacakgeShortName}";
+        }
+
+        return
+            $"{sourcePackageShortName}-" +
+            $"{FhirSanitizationUtils.SanitizeForProperty(sourceCanonicalName).ToPascalCase()}-" +
+            $"{targetPacakgeShortName}-" +
+            $"{FhirSanitizationUtils.SanitizeForProperty(targetCanonicalName).ToPascalCase()}";
     }
 
 
@@ -1417,7 +1452,6 @@ public class ComparisonDatabase : IDisposable
                 continue;
             }
 
-            // create a new metadata record
             DbValueSet dbVs = new()
             {
                 Key = Interlocked.Increment(ref _dbValueSetIndex),

@@ -232,7 +232,7 @@ public class XVerProcessor
         }
 
         // creating the database with defintions loads all the content
-        _db = new(_definitions, _dbPath, _dbName);
+        _db = new(_definitions, _dbPath, _dbName, _config.LogFactory);
         _dbName = _db.DbFileName;
 
         // save the definition content in the database
@@ -251,7 +251,7 @@ public class XVerProcessor
             throw new Exception("Comparison cannot run without a loaded database!");
         }
 
-        FhirDbComparer dbComparer = new(_db);
+        FhirDbComparer dbComparer = new(_db, _config.LogFactory);
         dbComparer.RunAllComparisons();
     }
 
