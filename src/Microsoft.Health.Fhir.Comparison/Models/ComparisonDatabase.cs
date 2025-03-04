@@ -187,6 +187,8 @@ public class ComparisonDatabase : IDisposable
     public string DbFileName => _dbName;
     public string DbFilePath => _dbPath;
 
+    public IDbConnection DbConnection => _dbConnection;
+
     public bool LoadFromSourceDb(string sourceDbPath)
     {
         if (string.IsNullOrEmpty(sourceDbPath))
@@ -605,7 +607,7 @@ public class ComparisonDatabase : IDisposable
                     TargetCanonicalUnversioned = targetDbSd.UnversionedUrl,
                     TargetVersion = targetDbSd.Version,
                     TargetName = targetDbSd.Name,
-                    CompositeName = getCompositeName(sourceDbPackage, targetDbSd, targetDbPackage, targetDbSd),
+                    CompositeName = GetCompositeName(sourceDbPackage, targetDbSd, targetDbPackage, targetDbSd),
                     SourceOverviewConceptMapUrl = cm.Url,
                     SourceStructureFmlUrl = null,
                     Relationship = null,
@@ -937,7 +939,7 @@ public class ComparisonDatabase : IDisposable
                             TargetCanonicalUnversioned = targetDbSd.UnversionedUrl,
                             TargetVersion = targetDbSd.Version,
                             TargetName = targetDbSd.Name,
-                            CompositeName = getCompositeName(sourceDbPackage, targetDbSd, targetDbPackage, targetDbSd),
+                            CompositeName = GetCompositeName(sourceDbPackage, targetDbSd, targetDbPackage, targetDbSd),
                             SourceOverviewConceptMapUrl = cm.Url,
                             SourceStructureFmlUrl = null,
                             Relationship = groupTarget.Relationship,
@@ -1008,7 +1010,7 @@ public class ComparisonDatabase : IDisposable
                 TargetCanonicalUnversioned = targetDbVs.UnversionedUrl,
                 TargetVersion = targetDbVs.Version,
                 TargetName = targetDbVs.Name,
-                CompositeName = getCompositeName(sourceDbPackage, sourceDbVs, targetDbPackage, targetDbVs),
+                CompositeName = GetCompositeName(sourceDbPackage, sourceDbVs, targetDbPackage, targetDbVs),
                 SourceConceptMapUrl = cm.Url,
                 SourceConceptMapAdditionalUrls = additionalUrls.Count == 0 ? null : string.Join(", ", additionalUrls),
                 Relationship = null,
@@ -1277,7 +1279,7 @@ public class ComparisonDatabase : IDisposable
         }
     }
 
-    private static string getCompositeName(
+    internal static string GetCompositeName(
         DbFhirPackage sourceDbPackage,
         DbCanonicalResource sourceDbCanonical,
         DbFhirPackage targetDbPackage,

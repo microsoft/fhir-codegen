@@ -148,6 +148,7 @@ public class XVerProcessor
 
             case "compare":
                 LoadDatabase(_config.ReloadDatabase);
+                CompareInDatabase();
                 break;
 
             case "convert-from-maps":
@@ -241,6 +242,17 @@ public class XVerProcessor
         }
 
         return;
+    }
+
+    public void CompareInDatabase()
+    {
+        if (_db == null)
+        {
+            throw new Exception("Comparison cannot run without a loaded database!");
+        }
+
+        FhirDbComparer dbComparer = new(_db);
+        dbComparer.RunAllComparisons();
     }
 
     /// <summary>
