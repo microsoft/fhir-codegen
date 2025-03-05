@@ -180,6 +180,8 @@ public class ComparisonDatabase : IDisposable
 
         _dbConnection = new SqliteConnection(connectionString);
         _dbConnection.Open();
+
+        getCurrentIndexValues();
     }
 
     public bool IsCoreComparison => _isCoreComparison;
@@ -201,6 +203,30 @@ public class ComparisonDatabase : IDisposable
     public int GetElementComparisonKey() => Interlocked.Increment(ref _dbElementComparisonIndex);
     public int GetUnresolvedElementComparisonKey() => Interlocked.Increment(ref _dbUnresolvedElementComparisonIndex);
 
+    private void getCurrentIndexValues()
+    {
+        try
+        {
+            _dbValueSetIndex = DbValueSet.SelectMaxKey(_dbConnection) ?? 0;
+            _dbConceptIndex = DbValueSetConcept.SelectMaxKey(_dbConnection) ?? 0;
+            _dbStructureIndex = DbStructureDefinition.SelectMaxKey(_dbConnection) ?? 0;
+            _dbElementIndex = DbElement.SelectMaxKey(_dbConnection) ?? 0;
+
+            _dbValueSetComparisonIndex = DbValueSetComparison.SelectMaxKey(_dbConnection) ?? 0;
+            _dbConceptComparisonIndex = DbValueSetConceptComparison.SelectMaxKey(_dbConnection) ?? 0;
+            _dbUnresolvedConceptComparisonIndex = DbUnresolvedConceptComparison.SelectMaxKey(_dbConnection) ?? 0;
+
+            _dbStructureComparisonIndex = DbStructureComparison.SelectMaxKey(_dbConnection) ?? 0;
+            _dbUnresolvedStructureComparisonIndex = DbUnresolvedStructureComparison.SelectMaxKey(_dbConnection) ?? 0;
+
+            _dbElementComparisonIndex = DbElementComparison.SelectMaxKey(_dbConnection) ?? 0;
+            _dbUnresolvedElementComparisonIndex = DbUnresolvedElementComparison.SelectMaxKey(_dbConnection) ?? 0;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogWarning(ex, "Failed to get current index values from the database, assuming tables are all new.");
+        }
+    }
 
     public bool LoadFromSourceDb(string sourceDbPath)
     {
@@ -229,6 +255,9 @@ public class ComparisonDatabase : IDisposable
 
         // copy contents of each type
         copyAllContents(sourceConnection, _dbConnection);
+
+        // update our current index values
+        getCurrentIndexValues();
 
         return true;
     }

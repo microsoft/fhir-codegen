@@ -438,6 +438,8 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
                     public partial {{{decForGenCategory(genCategory)}}} {{{className}}}
                     {
+                        public static string DefaultTableName => "{{{tableName}}}";
+
                         public static bool CreateTable(IDbConnection dbConnection, string? dbTableName = null)
                         {
                             dbTableName ??= "{{{tableName}}}";
@@ -464,6 +466,27 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             command.ExecuteNonQuery();
                     
                             return true;
+                        }
+
+
+                        public static {{{(pkColName == null ? "int" : pkPropType)}}}? SelectMaxKey(IDbConnection dbConnection, string? dbTableName = null)
+                        {
+                            dbTableName ??= "{{{tableName}}}";
+                    
+                            IDbCommand command = dbConnection.CreateCommand();
+                            command.CommandText = $"SELECT MAX({{{(pkColName == null ? "ROWID" : pkColName)}}}) FROM {dbTableName}";
+
+                            object? result = command.ExecuteScalar();
+                            if (result is {{{(pkColName == null ? "int" : pkPropType)}}} value)
+                            {
+                                return value;
+                            }
+                            else if (result is long l)
+                            {
+                                return {{{((pkColName == null) || (pkPropType == "int") ? "Convert.ToInt32(l)" : "null")}}};
+                            }
+
+                            return null;
                         }
                     
                         public static {{{className}}}? SelectSingle(IDbConnection dbConnection, string? dbTableName = null, {{{string.Join(", ", getFnFilterParams(true))}}})

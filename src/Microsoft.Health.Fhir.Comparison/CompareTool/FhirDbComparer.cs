@@ -97,12 +97,13 @@ public class FhirDbComparer
         DbFhirPackageComparisonPair forwardPair,
         DbFhirPackageComparisonPair reversePair)
     {
-        List<DbValueSetComparison> comparisonsToAdd = [];
-        List<DbValueSetComparison> comparisonsToUpdate = [];
+        Dictionary<int, DbValueSetComparison> comparisonsToAdd = [];
+        Dictionary<int, DbValueSetComparison> comparisonsToUpdate = [];
 
         // check for a existing comparisons
         List<DbValueSetComparison> forwardComparisons = DbValueSetComparison.SelectList(
             _db,
+            PackageComparisonKey: forwardPair.Key,
             SourceFhirPackageKey: sourcePackage.Key,
             TargetFhirPackageKey: targetPackage.Key,
             SourceValueSetKey: sourceVs.Key);
@@ -165,7 +166,7 @@ public class FhirDbComparer
                     Message = message,
                 };
 
-                comparisonsToAdd.Add(vsc);
+                comparisonsToAdd[vsc.Key] = vsc;
                 forwardComparisons.Add(vsc);
             }
         }
@@ -189,7 +190,7 @@ public class FhirDbComparer
             if (reverseComparison == null)
             {
                 reverseComparison = invert(forwardComparison, reversePair);
-                comparisonsToAdd.Add(reverseComparison);
+                comparisonsToAdd[reverseComparison.Key] = reverseComparison;
             }
 
             // process this comparison
@@ -202,16 +203,95 @@ public class FhirDbComparer
                 reverseComparison,
                 forwardPair,
                 reversePair);
+
+            if (aggregateValueSetRelationships(forwardComparison) &&
+                !comparisonsToAdd.ContainsKey(forwardComparison.Key))
+            {
+                comparisonsToUpdate[forwardComparison.Key] = forwardComparison;
+            }
+
+            if (aggregateValueSetRelationships(reverseComparison) &&
+                !comparisonsToAdd.ContainsKey(reverseComparison.Key))
+            {
+                comparisonsToAdd[reverseComparison.Key] = reverseComparison;
+            }
         }
 
         // update the database
-        comparisonsToAdd.Insert(_db);
-        comparisonsToUpdate.Update(_db);
+        comparisonsToAdd.Values.ToList().Insert(_db);
+        comparisonsToUpdate.Values.ToList().Update(_db);
 
         return;
     }
 
-    public void doValueSetConceptComparisons(
+    /// <summary>
+    /// Aggregates the relationships of value sets within a FHIR package comparison.
+    /// </summary>
+    /// <param name="vsComparsion">The comparison object for the value set.</param>
+    /// <returns>True if the relationship was updated, otherwise false.</returns>
+    private bool aggregateValueSetRelationships(DbValueSetComparison vsComparsion)
+    {
+        List<DbValueSetConceptComparison> conceptComparisons = DbValueSetConceptComparison.SelectList(_db, ValueSetComparisonKey: vsComparsion.Key);
+        List<CMR?> relationships = conceptComparisons.Select(c => c.Relationship).Distinct().ToList();
+
+        // check for no relationships
+        if (relationships.Count == 0)
+        {
+            // don't change anything
+            return false;
+        }
+
+        // check for all the same relationship
+        if (relationships.Count == 1)
+        {
+            if (vsComparsion.Relationship == relationships[0])
+            {
+                return false;
+            }
+
+            vsComparsion.Relationship = relationships[0];
+            return true;
+        }
+
+        bool hasNoMaps = relationships.Any(r => r == null);
+
+        // use an existing relationship if we have one, otherwise assume broader if there are non-mapping relationships or equivalent if not
+        CMR? r = vsComparsion.Relationship ?? (hasNoMaps ? CMR.SourceIsBroaderThanTarget : CMR.Equivalent);
+
+        foreach (CMR? relationship in relationships)
+        {
+            // since we are aggregating a null (no-map) means the higher-level content is broader
+            if (relationship == null)
+            {
+                r = applyRelationship(r, CMR.SourceIsBroaderThanTarget);
+                continue;
+            }
+
+            r = applyRelationship(r, relationship);
+        }
+
+        if (vsComparsion.Relationship == r)
+        {
+            return false;
+        }
+
+        vsComparsion.Relationship = r;
+        return true;
+    }
+
+    private CMR applyRelationship(CMR? existing, CMR? change) => existing switch
+    {
+        CMR.Equivalent => change ?? CMR.Equivalent,
+        CMR.RelatedTo => (change == CMR.NotRelatedTo) ? CMR.NotRelatedTo : CMR.RelatedTo,
+        CMR.SourceIsNarrowerThanTarget => (change == CMR.SourceIsNarrowerThanTarget || change == CMR.Equivalent)
+            ? CMR.SourceIsNarrowerThanTarget : CMR.RelatedTo,
+        CMR.SourceIsBroaderThanTarget => (change == CMR.SourceIsBroaderThanTarget || change == CMR.Equivalent)
+            ? CMR.SourceIsBroaderThanTarget : CMR.RelatedTo,
+        CMR.NotRelatedTo => change ?? CMR.NotRelatedTo,
+        _ => change ?? existing ?? CMR.NotRelatedTo,
+    };
+
+    private void doValueSetConceptComparisons(
         DbFhirPackage sourcePackage,
         DbValueSet sourceVs,
         DbFhirPackage targetPackage,
@@ -232,6 +312,7 @@ public class FhirDbComparer
             // check for existing comparisons for this concept
             List<DbValueSetConceptComparison> comparisons = DbValueSetConceptComparison.SelectList(
                 _db,
+                ValueSetComparisonKey: forwardComparison.Key,
                 SourceValueSetKey: sourceVs.Key,
                 SourceConceptKey: sourceConcept.Key,
                 TargetFhirPackageKey: targetPackage.Key);
@@ -313,53 +394,9 @@ public class FhirDbComparer
             // iterate over the comparisons to check relationships
             foreach (DbValueSetConceptComparison conceptComparison in comparisons)
             {
-                // skip comparisons that have been reviewed
-                if (conceptComparison.LastReviewedOn != null)
-                {
-                    continue;
-                }
-
-                bool needsUpdate = false;
-
                 DbValueSetConcept? targetConcept = (conceptComparison.TargetConceptKey == null)
                     ? null
                     : DbValueSetConcept.SelectSingle(_db, Key: conceptComparison.TargetConceptKey);
-
-                // check for missing no-map value
-                if ((conceptComparison.TargetConceptKey == null) &&
-                    (conceptComparison.NoMap != true))
-                {
-                    needsUpdate = true;
-                    conceptComparison.NoMap = true;
-                }
-
-                // check for incorrectly-flagged-as-equivalent escape-value code mappings
-                if ((targetConcept != null) &&
-                    (conceptComparison.Relationship == CMR.Equivalent) &&
-                    XVerProcessor._escapeValveCodes.Contains(sourceConcept.Code) &&
-                    (sourceVs.ConceptCount != targetVs.ConceptCount))
-                {
-                    needsUpdate = true;
-                    conceptComparison.Relationship = (sourceVs.ConceptCount > targetVs.ConceptCount)
-                        ? CMR.SourceIsNarrowerThanTarget
-                        : CMR.SourceIsBroaderThanTarget;
-                    conceptComparison.IsGenerated = true;
-                    conceptComparison.Message = conceptComparison.Message +
-                        $" Escape-valve code `{sourceConcept.Code}` maps to `{targetConcept.Code}`, but represent different concept domains (different number of codes).";
-                }
-
-                // check for a single source with multiple targets and any that map as equivalent
-                if ((conceptComparison.Relationship == CMR.Equivalent) &&
-                    (comparisons.Count > 1))
-                {
-                    needsUpdate = true;
-
-                    // mark as not equivalent
-                    conceptComparison.Relationship = CMR.SourceIsBroaderThanTarget;
-                    conceptComparison.IsGenerated = true;
-                    conceptComparison.Message = conceptComparison.Message +
-                        $" `{sourceConcept.Code}` maps to multiple codes in {targetVs.VersionedUrl} and cannot be equivalent.";
-                }
 
                 DbValueSetConceptComparison? inverseComparison = (conceptComparison.TargetConceptKey == null)
                     ? null
@@ -368,6 +405,48 @@ public class FhirDbComparer
                         ValueSetComparisonKey: reverseComparison.Key,
                         SourceConceptKey: conceptComparison.TargetConceptKey,
                         TargetConceptKey: conceptComparison.SourceConceptKey);
+
+                bool needsUpdate = false;
+
+                // do basic checks if this has not been reviewed
+                if (conceptComparison.LastReviewedOn == null)
+                {
+                    // check for missing no-map value
+                    if ((conceptComparison.TargetConceptKey == null) &&
+                        (conceptComparison.NoMap != true))
+                    {
+                        needsUpdate = true;
+                        conceptComparison.NoMap = true;
+                    }
+
+                    // check for incorrectly-flagged-as-equivalent escape-value code mappings
+                    if ((targetConcept != null) &&
+                        (conceptComparison.Relationship == CMR.Equivalent) &&
+                        XVerProcessor._escapeValveCodes.Contains(sourceConcept.Code) &&
+                        (sourceVs.ConceptCount != targetVs.ConceptCount))
+                    {
+                        needsUpdate = true;
+                        conceptComparison.Relationship = (sourceVs.ConceptCount > targetVs.ConceptCount)
+                            ? CMR.SourceIsNarrowerThanTarget
+                            : CMR.SourceIsBroaderThanTarget;
+                        conceptComparison.IsGenerated = true;
+                        conceptComparison.Message = conceptComparison.Message +
+                            $" Escape-valve code `{sourceConcept.Code}` maps to `{targetConcept.Code}`, but represent different concept domains (different number of codes).";
+                    }
+
+                    // check for a single source with multiple targets and any that map as equivalent
+                    if ((conceptComparison.Relationship == CMR.Equivalent) &&
+                        (comparisons.Count > 1))
+                    {
+                        needsUpdate = true;
+
+                        // mark as not equivalent
+                        conceptComparison.Relationship = CMR.SourceIsBroaderThanTarget;
+                        conceptComparison.IsGenerated = true;
+                        conceptComparison.Message = conceptComparison.Message +
+                            $" `{sourceConcept.Code}` maps to multiple codes in {targetVs.VersionedUrl} and cannot be equivalent.";
+                    }
+                }
 
                 // if there is no inverse and there should be, create one
                 if ((inverseComparison == null) &&
