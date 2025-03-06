@@ -136,9 +136,6 @@ public class XVerProcessor
 
     public void ProcessCommand(string? command)
     {
-        // for now, load package contents for all commands
-        loadDefinitionCollections();
-
         switch (command)
         {
             case "create-db":
@@ -152,50 +149,60 @@ public class XVerProcessor
                 break;
 
             case "convert-from-maps":
+                loadDefinitionCollections();
                 LoadFhirCrossVersionMaps(preferV1Maps: true);
                 break;
 
             case "update-maps":
+                loadDefinitionCollections();
                 LoadFhirCrossVersionMaps(preferV1Maps: true);
                 Compare(saveUpdates: true);
                 break;
 
             case "update-vs-maps":
+                loadDefinitionCollections();
                 LoadFhirCrossVersionMaps(preferV1Maps: true);
                 Compare(saveUpdates: true, artifactFilter: FhirArtifactClassEnum.ValueSet);
                 break;
 
             case "update-type-maps":
+                loadDefinitionCollections();
                 LoadFhirCrossVersionMaps(preferV1Maps: true);
                 Compare(saveUpdates: true, artifactFilter: FhirArtifactClassEnum.PrimitiveType);
                 break;
 
             case "update-resource-maps":
+                loadDefinitionCollections();
                 LoadFhirCrossVersionMaps(preferV1Maps: true);
                 Compare(saveUpdates: true, artifactFilter: FhirArtifactClassEnum.Resource);
                 break;
 
             case "build-docs":
+                loadDefinitionCollections();
                 LoadFhirCrossVersionMaps(preferV1Maps: false);
                 WriteComparisonDocs();
                 break;
 
             case "build-vs-docs":
+                loadDefinitionCollections();
                 LoadFhirCrossVersionMaps(preferV1Maps: false);
                 WriteComparisonDocs(artifactFilter: FhirArtifactClassEnum.ValueSet);
                 break;
 
             case "build-type-docs":
+                loadDefinitionCollections();
                 LoadFhirCrossVersionMaps(preferV1Maps: false);
                 WriteComparisonDocs(artifactFilter: FhirArtifactClassEnum.PrimitiveType);
                 break;
 
             case "build-resource-docs":
+                loadDefinitionCollections();
                 LoadFhirCrossVersionMaps(preferV1Maps: false);
                 WriteComparisonDocs(artifactFilter: FhirArtifactClassEnum.Resource);
                 break;
 
             default:
+                loadDefinitionCollections();
                 LoadFhirCrossVersionMaps(preferV1Maps: true);
                 Compare(saveUpdates: true);
                 WriteComparisonDocs();

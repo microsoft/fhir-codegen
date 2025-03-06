@@ -204,16 +204,16 @@ public class FhirDbComparer
                 forwardPair,
                 reversePair);
 
-            if (aggregateValueSetRelationships(forwardComparison) &&
+            if (aggregateValueSetRelationships(forwardComparison, sourceVs, targetVs) &&
                 !comparisonsToAdd.ContainsKey(forwardComparison.Key))
             {
                 comparisonsToUpdate[forwardComparison.Key] = forwardComparison;
             }
 
-            if (aggregateValueSetRelationships(reverseComparison) &&
+            if (aggregateValueSetRelationships(reverseComparison, targetVs, sourceVs) &&
                 !comparisonsToAdd.ContainsKey(reverseComparison.Key))
             {
-                comparisonsToAdd[reverseComparison.Key] = reverseComparison;
+                comparisonsToUpdate[reverseComparison.Key] = reverseComparison;
             }
         }
 
@@ -227,12 +227,20 @@ public class FhirDbComparer
     /// <summary>
     /// Aggregates the relationships of value sets within a FHIR package comparison.
     /// </summary>
-    /// <param name="vsComparsion">The comparison object for the value set.</param>
+    /// <param name="vsComparison">The comparison object for the value set.</param>
     /// <returns>True if the relationship was updated, otherwise false.</returns>
-    private bool aggregateValueSetRelationships(DbValueSetComparison vsComparsion)
+    private bool aggregateValueSetRelationships(DbValueSetComparison vsComparison, DbValueSet sourceVs, DbValueSet targetVs)
     {
-        List<DbValueSetConceptComparison> conceptComparisons = DbValueSetConceptComparison.SelectList(_db, ValueSetComparisonKey: vsComparsion.Key);
+        List<DbValueSetConceptComparison> conceptComparisons = DbValueSetConceptComparison.SelectList(_db, ValueSetComparisonKey: vsComparison.Key);
         List<CMR?> relationships = conceptComparisons.Select(c => c.Relationship).Distinct().ToList();
+
+        // get an initial guess based on the number of concepts on each side
+        CMR conceptCountRelationship = sourceVs.ConceptCount.CompareTo(targetVs.ConceptCount) switch
+        {
+            < 0 => CMR.SourceIsNarrowerThanTarget,
+            > 0 => CMR.SourceIsBroaderThanTarget,
+            _ => CMR.Equivalent,
+        };
 
         // check for no relationships
         if (relationships.Count == 0)
@@ -241,22 +249,26 @@ public class FhirDbComparer
             return false;
         }
 
+        CMR? r;
+
         // check for all the same relationship
         if (relationships.Count == 1)
         {
-            if (vsComparsion.Relationship == relationships[0])
+            r = applyRelationship(relationships[0], conceptCountRelationship);
+
+            if (vsComparison.Relationship == r)
             {
                 return false;
             }
 
-            vsComparsion.Relationship = relationships[0];
+            vsComparison.Relationship = r;
             return true;
         }
 
         bool hasNoMaps = relationships.Any(r => r == null);
 
         // use an existing relationship if we have one, otherwise assume broader if there are non-mapping relationships or equivalent if not
-        CMR? r = vsComparsion.Relationship ?? (hasNoMaps ? CMR.SourceIsBroaderThanTarget : CMR.Equivalent);
+        r = vsComparison.Relationship ?? (hasNoMaps ? CMR.SourceIsBroaderThanTarget : CMR.Equivalent);
 
         foreach (CMR? relationship in relationships)
         {
@@ -270,12 +282,14 @@ public class FhirDbComparer
             r = applyRelationship(r, relationship);
         }
 
-        if (vsComparsion.Relationship == r)
+        applyRelationship(r, conceptCountRelationship);
+
+        if (vsComparison.Relationship == r)
         {
             return false;
         }
 
-        vsComparsion.Relationship = r;
+        vsComparison.Relationship = r;
         return true;
     }
 
