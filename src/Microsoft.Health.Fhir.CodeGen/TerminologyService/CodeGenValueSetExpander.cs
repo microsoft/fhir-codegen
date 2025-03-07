@@ -450,16 +450,37 @@ public static class ContainsSetExtensions
         bool? isAbstract = null;
         bool? isInactive = null;
 
-        if (source.ListConceptProperties(system, CodeSystem.CONCEPTPROPERTY_NOT_SELECTABLE).SingleOrDefault() is CodeSystem.ConceptPropertyComponent propNotSelectable &&
-            propNotSelectable?.Value is FhirBoolean fbNotSelectable)
+        ILookup<string, CodeSystem.ConceptPropertyComponent> conceptPropertiesByCode = source.Property.ToLookup(p => p.Code);
+        ILookup<string?, string> csPropertiesByUri = system.Property.ToLookup(p => string.IsNullOrEmpty(p.Uri) ? null : p.Uri, p => p.Code);
+
+        if (csPropertiesByUri.Contains(CodeSystem.CONCEPTPROPERTY_NOT_SELECTABLE))
+        {
+            string code = csPropertiesByUri[CodeSystem.CONCEPTPROPERTY_NOT_SELECTABLE].Single();
+            if (conceptPropertiesByCode.Contains(code) &&
+                conceptPropertiesByCode[code].Single().Value is FhirBoolean fb)
+            {
+                isAbstract = fb.Value;
+            }
+        }
+        else if (conceptPropertiesByCode.Contains("notSelectable") &&
+                 conceptPropertiesByCode["notSelectable"].Single().Value is FhirBoolean fbNotSelectable)
         {
             isAbstract = fbNotSelectable.Value;
         }
 
-        if (source.ListConceptProperties(system, CodeSystem.CONCEPTPROPERTY_STATUS).SingleOrDefault() is CodeSystem.ConceptPropertyComponent propInactive &&
-            propInactive?.Value is FhirBoolean fbInactive)
+        if (csPropertiesByUri.Contains(CodeSystem.CONCEPTPROPERTY_INACTIVE))
         {
-            isInactive = fbInactive.Value;
+            string code = csPropertiesByUri[CodeSystem.CONCEPTPROPERTY_INACTIVE].Single();
+            if (conceptPropertiesByCode.Contains(code) &&
+                conceptPropertiesByCode[code].Single().Value is FhirBoolean fb)
+            {
+                isInactive = fb.Value;
+            }
+        }
+        else if (conceptPropertiesByCode.Contains("inactive") &&
+                 conceptPropertiesByCode["inactive"].Single().Value is FhirBoolean fbInactive)
+        {
+            isAbstract = fbInactive.Value;
         }
 
         ValueSet.ContainsComponent newContains = new()

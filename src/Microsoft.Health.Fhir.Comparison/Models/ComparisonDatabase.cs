@@ -228,7 +228,9 @@ public class ComparisonDatabase : IDisposable
         }
     }
 
-    public bool LoadFromSourceDb(string sourceDbPath)
+    public bool LoadFromSourceDb(
+        string sourceDbPath,
+        FhirArtifactClassEnum? artifactFilter = null)
     {
         if (string.IsNullOrEmpty(sourceDbPath))
         {
@@ -250,11 +252,11 @@ public class ComparisonDatabase : IDisposable
         sourceConnection.Open();
 
         // recreate all local tables
-        dropAllTables(_dbConnection);
-        createAllTables(_dbConnection);
+        dropTables(_dbConnection, artifactFilter);
+        createTables(_dbConnection, artifactFilter);
 
         // copy contents of each type
-        copyAllContents(sourceConnection, _dbConnection);
+        copyContents(sourceConnection, _dbConnection, artifactFilter);
 
         // update our current index values
         getCurrentIndexValues();
@@ -262,67 +264,162 @@ public class ComparisonDatabase : IDisposable
         return true;
     }
 
-    private void copyAllContents(IDbConnection sourceDb, IDbConnection targetDb)
+    private void copyContents(
+        IDbConnection sourceDb,
+        IDbConnection targetDb,
+        FhirArtifactClassEnum? processFilter = null)
     {
-        DbFhirPackage.Insert(targetDb, DbFhirPackage.SelectList(sourceDb));
+        switch (processFilter)
+        {
+            case FhirArtifactClassEnum.ValueSet:
+                {
+                    DbValueSet.Insert(targetDb, DbValueSet.SelectList(sourceDb));
+                    DbValueSetConcept.Insert(targetDb, DbValueSetConcept.SelectList(sourceDb));
+                    DbValueSetComparison.Insert(targetDb, DbValueSetComparison.SelectList(sourceDb));
+                    DbValueSetConceptComparison.Insert(targetDb, DbValueSetConceptComparison.SelectList(sourceDb));
+                    DbUnresolvedConceptComparison.Insert(targetDb, DbUnresolvedConceptComparison.SelectList(sourceDb));
+                }
+                break;
 
-        DbValueSet.Insert(targetDb, DbValueSet.SelectList(sourceDb));
-        DbValueSetConcept.Insert(targetDb, DbValueSetConcept.SelectList(sourceDb));
-        DbStructureDefinition.Insert(targetDb, DbStructureDefinition.SelectList(sourceDb));
-        DbElement.Insert(targetDb, DbElement.SelectList(sourceDb));
+            case FhirArtifactClassEnum.PrimitiveType:
+            case FhirArtifactClassEnum.ComplexType:
+            case FhirArtifactClassEnum.Resource:
+            case FhirArtifactClassEnum.Profile:
+            case FhirArtifactClassEnum.LogicalModel:
+                {
+                    DbStructureDefinition.Insert(targetDb, DbStructureDefinition.SelectList(sourceDb));
+                    DbElement.Insert(targetDb, DbElement.SelectList(sourceDb));
+                    DbStructureComparison.Insert(targetDb, DbStructureComparison.SelectList(sourceDb));
+                    DbUnresolvedStructureComparison.Insert(targetDb, DbUnresolvedStructureComparison.SelectList(sourceDb));
+                    DbElementComparison.Insert(targetDb, DbElementComparison.SelectList(sourceDb));
+                    DbUnresolvedElementComparison.Insert(targetDb, DbUnresolvedElementComparison.SelectList(sourceDb));
+                }
+                break;
 
-        DbFhirPackageComparisonPair.Insert(targetDb, DbFhirPackageComparisonPair.SelectList(sourceDb));
+            default:
+                {
+                    DbFhirPackage.Insert(targetDb, DbFhirPackage.SelectList(sourceDb));
+                    DbFhirPackageComparisonPair.Insert(targetDb, DbFhirPackageComparisonPair.SelectList(sourceDb));
 
-        DbValueSetComparison.Insert(targetDb, DbValueSetComparison.SelectList(sourceDb));
-        DbValueSetConceptComparison.Insert(targetDb, DbValueSetConceptComparison.SelectList(sourceDb));
-        DbUnresolvedConceptComparison.Insert(targetDb, DbUnresolvedConceptComparison.SelectList(sourceDb));
+                    DbValueSet.Insert(targetDb, DbValueSet.SelectList(sourceDb));
+                    DbValueSetConcept.Insert(targetDb, DbValueSetConcept.SelectList(sourceDb));
+                    DbValueSetComparison.Insert(targetDb, DbValueSetComparison.SelectList(sourceDb));
+                    DbValueSetConceptComparison.Insert(targetDb, DbValueSetConceptComparison.SelectList(sourceDb));
+                    DbUnresolvedConceptComparison.Insert(targetDb, DbUnresolvedConceptComparison.SelectList(sourceDb));
 
-        DbStructureComparison.Insert(targetDb, DbStructureComparison.SelectList(sourceDb));
-        DbUnresolvedStructureComparison.Insert(targetDb, DbUnresolvedStructureComparison.SelectList(sourceDb));
-        DbElementComparison.Insert(targetDb, DbElementComparison.SelectList(sourceDb));
-        DbUnresolvedElementComparison.Insert(targetDb, DbUnresolvedElementComparison.SelectList(sourceDb));
+                    DbStructureDefinition.Insert(targetDb, DbStructureDefinition.SelectList(sourceDb));
+                    DbElement.Insert(targetDb, DbElement.SelectList(sourceDb));
+                    DbStructureComparison.Insert(targetDb, DbStructureComparison.SelectList(sourceDb));
+                    DbUnresolvedStructureComparison.Insert(targetDb, DbUnresolvedStructureComparison.SelectList(sourceDb));
+                    DbElementComparison.Insert(targetDb, DbElementComparison.SelectList(sourceDb));
+                    DbUnresolvedElementComparison.Insert(targetDb, DbUnresolvedElementComparison.SelectList(sourceDb));
+                }
+                break;
+        }
     }
 
-    private void dropAllTables(IDbConnection db)
+    private void dropTables(
+        IDbConnection db,
+        FhirArtifactClassEnum? processFilter = null)
     {
-        DbFhirPackage.DropTable(db);
+        switch (processFilter)
+        {
+            case FhirArtifactClassEnum.ValueSet:
+                {
+                    DbValueSet.DropTable(db);
+                    DbValueSetConcept.DropTable(db);
+                    DbValueSetComparison.DropTable(db);
+                    DbValueSetConceptComparison.DropTable(db);
+                }
+                break;
 
-        DbValueSet.DropTable(db);
-        DbValueSetConcept.DropTable(db);
-        DbStructureDefinition.DropTable(db);
-        DbElement.DropTable(db);
+            case FhirArtifactClassEnum.PrimitiveType:
+            case FhirArtifactClassEnum.ComplexType:
+            case FhirArtifactClassEnum.Resource:
+            case FhirArtifactClassEnum.Profile:
+            case FhirArtifactClassEnum.LogicalModel:
+                {
+                    DbStructureDefinition.DropTable(db);
+                    DbElement.DropTable(db);
+                    DbStructureComparison.DropTable(db);
+                    DbUnresolvedStructureComparison.DropTable(db);
+                    DbElementComparison.DropTable(db);
+                    DbUnresolvedElementComparison.DropTable(db);
+                }
+                break;
 
-        DbFhirPackageComparisonPair.DropTable(db);
+            default:
+                {
+                    DbFhirPackage.DropTable(db);
+                    DbFhirPackageComparisonPair.DropTable(db);
 
-        DbValueSetComparison.DropTable(db);
-        DbValueSetConceptComparison.DropTable(db);
-        DbUnresolvedConceptComparison.DropTable(db);
+                    DbValueSet.DropTable(db);
+                    DbValueSetConcept.DropTable(db);
+                    DbValueSetComparison.DropTable(db);
+                    DbValueSetConceptComparison.DropTable(db);
+                    DbUnresolvedConceptComparison.DropTable(db);
 
-        DbStructureComparison.DropTable(db);
-        DbUnresolvedStructureComparison.DropTable(db);
-        DbElementComparison.DropTable(db);
-        DbUnresolvedElementComparison.DropTable(db);
+                    DbStructureDefinition.DropTable(db);
+                    DbElement.DropTable(db);
+                    DbStructureComparison.DropTable(db);
+                    DbUnresolvedStructureComparison.DropTable(db);
+                    DbElementComparison.DropTable(db);
+                    DbUnresolvedElementComparison.DropTable(db);
+                }
+                break;
+        }
     }
 
-    private void createAllTables(IDbConnection db)
+    private void createTables(
+        IDbConnection db,
+        FhirArtifactClassEnum? processFilter = null)
     {
-        DbFhirPackage.CreateTable(db);
+        switch (processFilter)
+        {
+            case FhirArtifactClassEnum.ValueSet:
+                {
+                    DbValueSet.CreateTable(db);
+                    DbValueSetConcept.CreateTable(db);
+                    DbValueSetComparison.CreateTable(db);
+                    DbValueSetConceptComparison.CreateTable(db);
+                }
+                break;
 
-        DbValueSet.CreateTable(db);
-        DbValueSetConcept.CreateTable(db);
-        DbStructureDefinition.CreateTable(db);
-        DbElement.CreateTable(db);
+            case FhirArtifactClassEnum.PrimitiveType:
+            case FhirArtifactClassEnum.ComplexType:
+            case FhirArtifactClassEnum.Resource:
+            case FhirArtifactClassEnum.Profile:
+            case FhirArtifactClassEnum.LogicalModel:
+                {
+                    DbStructureDefinition.CreateTable(db);
+                    DbElement.CreateTable(db);
+                    DbStructureComparison.CreateTable(db);
+                    DbUnresolvedStructureComparison.CreateTable(db);
+                    DbElementComparison.CreateTable(db);
+                    DbUnresolvedElementComparison.CreateTable(db);
+                }
+                break;
 
-        DbFhirPackageComparisonPair.CreateTable(db);
+            default:
+                {
+                    DbFhirPackage.CreateTable(db);
+                    DbFhirPackageComparisonPair.CreateTable(db);
 
-        DbValueSetComparison.CreateTable(db);
-        DbValueSetConceptComparison.CreateTable(db);
-        DbUnresolvedConceptComparison.CreateTable(db);
+                    DbValueSet.CreateTable(db);
+                    DbValueSetConcept.CreateTable(db);
+                    DbValueSetComparison.CreateTable(db);
+                    DbValueSetConceptComparison.CreateTable(db);
+                    DbUnresolvedConceptComparison.CreateTable(db);
 
-        DbStructureComparison.CreateTable(db);
-        DbUnresolvedStructureComparison.CreateTable(db);
-        DbElementComparison.CreateTable(db);
-        DbUnresolvedElementComparison.CreateTable(db);
+                    DbStructureDefinition.CreateTable(db);
+                    DbElement.CreateTable(db);
+                    DbStructureComparison.CreateTable(db);
+                    DbUnresolvedStructureComparison.CreateTable(db);
+                    DbElementComparison.CreateTable(db);
+                    DbUnresolvedElementComparison.CreateTable(db);
+                }
+                break;
+        }
     }
 
     /// <summary>
@@ -340,11 +437,11 @@ public class ComparisonDatabase : IDisposable
 
         if (ensureDeleted)
         {
-            dropAllTables(_dbConnection);
+            dropTables(_dbConnection);
         }
 
         // create all our tables
-        createAllTables(_dbConnection);
+        createTables(_dbConnection);
 
         foreach ((DefinitionCollection dc, DcInfoRec _) in _definitions)
         {
@@ -657,6 +754,8 @@ public class ComparisonDatabase : IDisposable
                     SourceOverviewConceptMapUrl = cm.Url,
                     SourceStructureFmlUrl = null,
                     Relationship = null,
+                    ConceptDomainRelationship = (sourceDbSd.Name == targetDbSd.Name) ? CMR.Equivalent : null,
+                    ValueDomainRelationship = FhirDbComparer.RelationshipForCounts(sourceDbSd.SnapshotCount, targetDbSd.SnapshotCount),
                     IsGenerated = false,
                     LastReviewedBy = null,
                     LastReviewedOn = null,
@@ -989,6 +1088,8 @@ public class ComparisonDatabase : IDisposable
                             SourceOverviewConceptMapUrl = cm.Url,
                             SourceStructureFmlUrl = null,
                             Relationship = groupTarget.Relationship,
+                            ConceptDomainRelationship = (sourceDbSd.Name == targetDbSd.Name) ? CMR.Equivalent : CMR.RelatedTo,
+                            ValueDomainRelationship = FhirDbComparer.RelationshipForCounts(sourceDbSd.SnapshotCount, targetDbSd.SnapshotCount),
                             IsGenerated = false,
                             LastReviewedBy = null,
                             LastReviewedOn = null,
@@ -1463,6 +1564,7 @@ public class ComparisonDatabase : IDisposable
                     IsExcluded = isExcluded,
                     CanExpand = canExpand,
                     ConceptCount = 0,
+                    ActiveConcreteConceptCount = 0,
                     HasEscapeValveCode = hasEscapeCode,
                     Message = expandMessage,
                     ReferencedSystems = string.Join(", ", uvs.cgReferencedCodeSystems()),
@@ -1497,6 +1599,7 @@ public class ComparisonDatabase : IDisposable
                 IsExcluded = isExcluded,
                 CanExpand = canExpand,
                 ConceptCount = 0,
+                ActiveConcreteConceptCount = 0,
                 HasEscapeValveCode = hasEscapeCode,
                 Message = expandMessage,
                 ReferencedSystems = string.Join(", ", vs.cgReferencedCodeSystems()),
@@ -1514,11 +1617,19 @@ public class ComparisonDatabase : IDisposable
 
             List<DbValueSetConcept> dbConcepts = [];
             int conceptCount = 0;
+            int activeConcreteConceptCount = 0;
 
             // iterate over all the contents of the value set
             foreach (FhirConcept fc in vs.cgGetFlatConcepts(dc))
             {
                 conceptCount++;
+
+                // check for inactive or abstract
+                if ((fc.IsInactive != true) &&
+                    (fc.IsAbstract != true))
+                {
+                    activeConcreteConceptCount++;
+                }
 
                 // check for this record already existing
                 if (DbValueSetConcept.SelectSingle(_dbConnection, FhirPackageKey: pm.Key, ValueSetKey: dbVs.Key, System: fc.System, Code: fc.Code) != null)
@@ -1535,12 +1646,16 @@ public class ComparisonDatabase : IDisposable
                     System = fc.System,
                     Code = fc.Code,
                     Display = fc.Display,
+                    Inactive = (fc.IsInactive == true),
+                    Abstract = (fc.IsAbstract == true),
+                    Properties = fc.Properties.Length == 0 ? null : string.Join(", ", fc.Properties.Select(p => $"{p.Code}={p.Value}")),
                 };
 
                 dbConcepts.Add(dbConcept);
             }
 
             dbVs.ConceptCount = conceptCount;
+            dbVs.ActiveConcreteConceptCount = activeConcreteConceptCount;
 
             allDbConcepts.AddRange(dbConcepts);
         }
@@ -1641,13 +1756,14 @@ public class ComparisonDatabase : IDisposable
 
         return;
 
+        // TODO(ginoc): For now, exclude profiles and logical models - we will want them for generic packages, but do not care for core
         (IEnumerable<StructureDefinition> structures, FhirArtifactClassEnum cgClass)[] getStructures(DefinitionCollection dc) => [
             (dc.PrimitiveTypesByName.Values, FhirArtifactClassEnum.PrimitiveType),
             (dc.ComplexTypesByName.Values, FhirArtifactClassEnum.ComplexType),
             (dc.ResourcesByName.Values, FhirArtifactClassEnum.Resource),
             (dc.ExtensionsByUrl.Values, FhirArtifactClassEnum.Extension),
-            (dc.ProfilesByUrl.Values, FhirArtifactClassEnum.Profile),
-            (dc.LogicalModelsByUrl.Values, FhirArtifactClassEnum.LogicalModel),
+            //(dc.ProfilesByUrl.Values, FhirArtifactClassEnum.Profile),
+            //(dc.LogicalModelsByUrl.Values, FhirArtifactClassEnum.LogicalModel),
             ];
 
         void addElement(DbStructureDefinition dbStructure, StructureDefinition sd, ElementDefinition ed)
@@ -1660,6 +1776,11 @@ public class ComparisonDatabase : IDisposable
                 skipSlices: true).Count();
 
             List<(string? typeName, string? typeProfile, string? profile)> elementTypes = [];
+
+            int? bindingVsKey = ed.Binding?.ValueSet == null
+                ? null
+                : (DbValueSet.SelectSingle(_dbConnection, FhirPackageKey: pm.Key, UnversionedUrl: ed.Binding?.ValueSet)?.Key
+                  ?? DbValueSet.SelectSingle(_dbConnection, FhirPackageKey: pm.Key, VersionedUrl: ed.Binding?.ValueSet)?.Key);
 
             IEnumerable<ElementDefinition.TypeRefComponent> definedTypes = ed.Type.Select(tr => tr.cgAsR5());
             foreach (ElementDefinition.TypeRefComponent tr in definedTypes)
@@ -1712,8 +1833,12 @@ public class ComparisonDatabase : IDisposable
                 }
             }
 
+            bool isInherited = ed.cgIsInherited(sd);
+            string? basePath = ed.Base?.Path;
+
             foreach ((string? typeName, string? typeProfile, string? targetProfile) in elementTypes)
             {
+
                 DbElement dbElement = new()
                 {
                     Key = Interlocked.Increment(ref _dbElementIndex),
@@ -1733,9 +1858,12 @@ public class ComparisonDatabase : IDisposable
                     SliceName = ed.SliceName,
                     ValueSetBindingStrength = ed.Binding?.Strength,
                     BindingValueSet = ed.Binding?.ValueSet,
+                    BindingValueSetKey = bindingVsKey,
                     TypeName = typeName,
                     TypeProfile = typeProfile,
                     TargetProfile = typeProfile,
+                    IsInherited = isInherited,
+                    BasePath = basePath,
                 };
 
                 dbElements.Add(dbElement);

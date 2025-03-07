@@ -37,6 +37,10 @@ public abstract class DbCanonicalResource : DbPackageContent
 
 
 [CgSQLiteTable(tableName: "ValueSets")]
+[CgSQLiteIndex(nameof(FhirPackageKey), nameof(StrongestBindingCore))]
+[CgSQLiteIndex(nameof(FhirPackageKey), nameof(UnversionedUrl))]
+[CgSQLiteIndex(nameof(FhirPackageKey), nameof(Name))]
+[CgSQLiteIndex(nameof(FhirPackageKey), nameof(Id))]
 public partial class DbValueSet : DbCanonicalResource
 {
     public required bool CanExpand { get; set; }
@@ -45,6 +49,7 @@ public partial class DbValueSet : DbCanonicalResource
     public required bool IsExcluded { get; set; } = false;
 
     public required int ConceptCount { get; set; }
+    public required int ActiveConcreteConceptCount { get; set; }
     public required string? ReferencedSystems { get; set; }
 
     public required int BindingCountCore { get; set; }
@@ -59,17 +64,25 @@ public partial class DbValueSet : DbCanonicalResource
 }
 
 [CgSQLiteTable(tableName: "Concepts")]
+[CgSQLiteIndex(nameof(ValueSetKey), nameof(Inactive), nameof(Abstract))]
+[CgSQLiteIndex(nameof(ValueSetKey), nameof(Code))]
 public partial class DbValueSetConcept : DbPackageContent
 {
     [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
     public required int ValueSetKey { get; set; }
-
     public required string System { get; set; }
     public required string Code { get; set; }
     public required string? Display { get; set; }
+    public required bool Inactive { get; set; }
+    public required bool Abstract { get; set; }
+    public required string? Properties { get; set; }
 }
 
 [CgSQLiteTable(tableName: "Structures")]
+[CgSQLiteIndex(nameof(FhirPackageKey), nameof(ArtifactClass))]
+[CgSQLiteIndex(nameof(FhirPackageKey), nameof(Name))]
+[CgSQLiteIndex(nameof(FhirPackageKey), nameof(UnversionedUrl))]
+[CgSQLiteIndex(nameof(FhirPackageKey), nameof(Id))]
 public partial class DbStructureDefinition : DbCanonicalResource
 {
     public required string? Comment { get; set; }
@@ -83,6 +96,8 @@ public partial class DbStructureDefinition : DbCanonicalResource
 
 
 [CgSQLiteTable(tableName: "Elements")]
+[CgSQLiteIndex(nameof(StructureKey))]
+[CgSQLiteIndex(nameof(StructureKey), nameof(Id))]
 public partial class DbElement : DbPackageContent
 {
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
@@ -108,4 +123,8 @@ public partial class DbElement : DbPackageContent
 
     public required Hl7.Fhir.Model.BindingStrength? ValueSetBindingStrength { get; init; }
     public required string? BindingValueSet { get; set; }
+    public required int? BindingValueSetKey { get; set; }
+
+    public required bool IsInherited { get; set; }
+    public required string? BasePath { get; set; }
 }

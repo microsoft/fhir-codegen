@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlTypes;
 using System.Text;
 using System.Xml.Linq;
@@ -121,7 +122,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
     {
         ILookup<string, ClassDeclarationSyntax> classLookup = classes.ToLookup(c => c.Identifier.Text);
 
-        foreach (ClassDeclarationSyntax classSyntax in classes.Where(c => c.AttributeLists.Any(al => al.Attributes.Any(a => a.Name.ToString() == "CgSQLiteTable"))))
+        foreach (ClassDeclarationSyntax classSyntax in classes.Where(c => c.AttributeLists.Any(al => al.Attributes.Any(a => a.Name.ToString() == GeneratorAttributes._cgSQLiteTable))))
         {
             // Converting the class to a semantic model to access much more meaningful data.
             SemanticModel model = compilation.GetSemanticModel(classSyntax.SyntaxTree);
@@ -170,7 +171,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
     {
         ILookup<string, RecordDeclarationSyntax> recordLookup = records.ToLookup(c => c.Identifier.Text);
 
-        foreach (RecordDeclarationSyntax recordSyntax in records.Where(c => c.AttributeLists.Any(al => al.Attributes.Any(a => a.Name.ToString() == "CgSQLiteTable"))))
+        foreach (RecordDeclarationSyntax recordSyntax in records.Where(c => c.AttributeLists.Any(al => al.Attributes.Any(a => a.Name.ToString() == GeneratorAttributes._cgSQLiteTable))))
         {
             // Converting the record to a semantic model to access much more meaningful data.
             SemanticModel model = compilation.GetSemanticModel(recordSyntax.SyntaxTree);
@@ -223,12 +224,11 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
         string? classNamespace = symbol.ContainingNamespace?.ToDisplayString();
         string? classAssembly = symbol.ContainingAssembly?.Name;
 
-        string tableName = symbol
-            .GetAttributes()
-            .Where(a => a.AttributeClass?.Name == "CgSQLiteTable").FirstOrDefault()?
-            .ConstructorArguments.FirstOrDefault()
-            .Value?.ToString()
-            ?? className;
+        ILookup<string?, AttributeData> symbolAttributeLookup = symbol.GetAttributes().ToLookup(a => a.AttributeClass?.Name);
+
+        string tableName = symbolAttributeLookup.Contains(GeneratorAttributes._cgSQLiteTable)
+            ? symbolAttributeLookup[GeneratorAttributes._cgSQLiteTable].First().ConstructorArguments.FirstOrDefault().Value?.ToString() ?? className
+            : className;
 
         string? pkColName = null;
         string? pkPropType = null;
@@ -255,7 +255,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
             //}
 
             // check for ignore property
-            if (pds.AttributeLists.Any(al => al.Attributes.Any(a => a.Name.ToString() == "CgSQLiteIgnore")))
+            if (pds.AttributeLists.Any(al => al.Attributes.Any(a => a.Name.ToString() == GeneratorAttributes._cgSQLiteIgnore)))
             {
                 continue;
             }
@@ -272,7 +272,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
             }
 
             // check for primary key property
-            bool isPrimaryKey = pds.AttributeLists.Any(al => al.Attributes.Any(a => a.Name.ToString() == "CgSQLiteKey"));
+            bool isPrimaryKey = pds.AttributeLists.Any(al => al.Attributes.Any(a => a.Name.ToString() == GeneratorAttributes._cgSQLiteKey));
             if (isPrimaryKey)
             {
                 pkColName = propName;
@@ -337,7 +337,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
             string? foreignColumn = null;
             foreach (AttributeListSyntax als in pds.AttributeLists)
             {
-                foreach (AttributeSyntax a in als.Attributes.Where(a => a.Name.ToString() == "CgSQLiteForeignKey"))
+                foreach (AttributeSyntax a in als.Attributes.Where(a => a.Name.ToString() == GeneratorAttributes._cgSQLiteForeignKey))
                 {
                     foreach (AttributeArgumentSyntax arg in a.ArgumentList?.Arguments ?? [])
                     {
@@ -452,6 +452,8 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                                 """;
 
                             command.ExecuteNonQuery();
+
+                            {{{string.Join(_line_2, getIndexLines())}}}
                     
                             return true;
                         }
@@ -605,7 +607,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                                         {{{pkColName}}} = ${{{pkColName}}}
                                     """;
                     
-                                {{{string.Join(_line_3, getInsertCommandParamLines(true, pkIsIdentity ? pkColName : null, pkPropType))}}}
+                                {{{string.Join(_line_3, getInsertCommandParamLines(true, pkIsIdentity ? pkColName : null, pkPropType, includeIdentity: true, isInsert: false))}}}
                     
                                 transaction.Commit();
                             }
@@ -634,7 +636,8 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                                     pkIsIdentity ? pkColName : null,
                                     pkPropType,
                                     createParameters: true,
-                                    includeIdentity: true))}}}
+                                    includeIdentity: true,
+                                    isInsert: false))}}}
                     
                                 foreach ({{{className}}} value in values)
                                 {
@@ -647,7 +650,8 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                                         instantiateParameters: true,
                                         executeCommand: true,
                                         setIdentity: false,
-                                        includeIdentity: true))}}}
+                                        includeIdentity: true,
+                                        isInsert: false))}}}
                                 }
                     
                                 transaction.Commit();
@@ -822,6 +826,41 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
             _ => string.Empty,
         };
 
+        IEnumerable<string> getIndexLines()
+        {
+            if (!symbolAttributeLookup.Contains(GeneratorAttributes._cgSQLiteIndex))
+            {
+                yield break;
+            }
+
+            // generate any indexes
+            foreach (AttributeData ad in symbolAttributeLookup[GeneratorAttributes._cgSQLiteIndex])
+            {
+                string[] columns = ad.ConstructorArguments
+                    .FirstOrDefault()
+                    .Values
+                    .Select(tc => tc.Value?.ToString() ?? string.Empty)
+                    .Where(v => !string.IsNullOrEmpty(v)).
+                    ToArray();
+
+                if (columns.Length == 0)
+                {
+                    continue;
+                }
+
+                string indexName = $"IDX_{{dbTableName}}_{(string.Join("_", columns))}";
+
+                yield return "command = dbConnection.CreateCommand();";
+                yield return "command.CommandText = $\"\"\"";
+                yield return $"    CREATE INDEX IF NOT EXISTS \"{indexName}\" ON \"{{dbTableName}}\" (";
+                yield return $"        {string.Join(", ", columns.Select(v => $"\"{v}\""))}";
+                yield return "    )";
+                yield return "    \"\"\";";
+                yield return "command.ExecuteNonQuery();";
+                yield return string.Empty;
+            }
+        }
+
         IEnumerable<string> getFnFilterParams(bool includeNullFilter)
         {
             foreach ((string name, string propType, string _, bool _, bool _, bool isNullable, bool isEnum) in tableColInfo)
@@ -894,7 +933,8 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
             bool? executeCommand = null,
             bool setIdentity = true,
             bool includeIdentity = false,
-            bool identityOnly = false)
+            bool identityOnly = false,
+            bool isInsert = true)
         {
             // if no specific type is specified, default to true
             if ((createParameters == null) && (instantiateParameters == null) && (executeCommand == null))
@@ -959,15 +999,15 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
 
             if (executeCommand == true)
             {
-                if ((identityColName == null) || (!setIdentity))
+                if ((identityColName == null) || (!setIdentity) || (!isInsert))
                 {
                     yield return "int rowsAffected = command.ExecuteNonQuery();";
-                    yield return "if (rowsAffected == 0) throw new Exception(\"Insert failed!\");";
+                    yield return "if (rowsAffected == 0) throw new Exception(\"Command failed!\");";
                 }
                 else
                 {
                     yield return "object? commandResult = command.ExecuteScalar();";
-                    yield return "if (commandResult == null) throw new Exception(\"Insert failed!\");";
+                    yield return "if (commandResult == null) throw new Exception(\"Command failed!\");";
 
                     switch (identityColType)
                     {

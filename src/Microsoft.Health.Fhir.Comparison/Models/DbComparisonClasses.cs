@@ -23,6 +23,7 @@ public partial class DbFhirPackageComparisonPair
 {
     [CgSQLiteKey]
     public int Key { get; set; } = -1;
+    public int InverseComparisonKey { get; set; } = -1;
 
     [CgSQLiteForeignKey(referenceTable: "FhirPackages", referenceColumn: nameof(DbFhirPackage.Key))]
     public required int SourcePackageKey { get; set; }
@@ -43,6 +44,8 @@ public abstract class DbPackageComparisonContent
     [CgSQLiteKey]
     public int Key { get; set; } = -1;
 
+    public int? InverseComparisonKey { get; set; } = -1;
+
     [CgSQLiteForeignKey(referenceTable: "PackageComparisonPairs", referenceColumn: nameof(DbFhirPackageComparisonPair.Key))]
     public required int PackageComparisonKey { get; set; }
 
@@ -55,12 +58,14 @@ public abstract class DbPackageComparisonContent
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; set; }
     public required string? Message { get; set; }
     public required bool? IsGenerated { get; set; }
-    public required string? LastReviewedBy { get; set; }
-    public required DateTime? LastReviewedOn { get; set; }
+    public string? LastReviewedBy { get; set; } = null;
+    public DateTime? LastReviewedOn { get; set; } = null;
 }
 
 
 [CgSQLiteTable(tableName: "ValueSetComparisons")]
+[CgSQLiteIndex(nameof(PackageComparisonKey), nameof(SourceFhirPackageKey), nameof(TargetFhirPackageKey), nameof(SourceValueSetKey))]
+[CgSQLiteIndex(nameof(PackageComparisonKey), nameof(SourceFhirPackageKey), nameof(SourceValueSetKey), nameof(TargetFhirPackageKey), nameof(TargetValueSetKey))]
 public partial class DbValueSetComparison : DbPackageComparisonContent
 {
     [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
@@ -84,6 +89,9 @@ public partial class DbValueSetComparison : DbPackageComparisonContent
 }
 
 [CgSQLiteTable(tableName: "ConceptComparisons")]
+[CgSQLiteIndex(nameof(ValueSetComparisonKey))]
+[CgSQLiteIndex(nameof(ValueSetComparisonKey), nameof(SourceValueSetKey), nameof(SourceConceptKey), nameof(TargetFhirPackageKey))]
+[CgSQLiteIndex(nameof(PackageComparisonKey), nameof(SourceFhirPackageKey), nameof(SourceValueSetKey), nameof(SourceConceptKey), nameof(TargetFhirPackageKey), nameof(TargetValueSetKey), nameof(TargetConceptKey))]
 public partial class DbValueSetConceptComparison : DbPackageComparisonContent
 {
     [CgSQLiteForeignKey(referenceTable: "ValueSetComparisons", referenceColumn: nameof(DbValueSetComparison.Key))]
@@ -139,6 +147,8 @@ public partial class DbUnresolvedConceptComparison : DbPackageComparisonContent
 }
 
 [CgSQLiteTable(tableName: "StructureComparisons")]
+[CgSQLiteIndex(nameof(PackageComparisonKey), nameof(SourceFhirPackageKey), nameof(TargetFhirPackageKey), nameof(SourceStructureKey))]
+[CgSQLiteIndex(nameof(PackageComparisonKey), nameof(SourceFhirPackageKey), nameof(SourceStructureKey), nameof(TargetFhirPackageKey), nameof(TargetStructureKey))]
 public partial class DbStructureComparison : DbPackageComparisonContent
 {
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
@@ -159,6 +169,9 @@ public partial class DbStructureComparison : DbPackageComparisonContent
     public required string CompositeName { get; set; }
     public required string? SourceOverviewConceptMapUrl { get; set; }
     public required string? SourceStructureFmlUrl { get; set; }
+
+    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
+    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
 }
 
 
@@ -187,6 +200,9 @@ public partial class DbUnresolvedStructureComparison : DbPackageComparisonConten
 
 
 [CgSQLiteTable(tableName: "ElementComparisons")]
+[CgSQLiteIndex(nameof(StructureComparisonKey), nameof(SourceStructureKey), nameof(SourceElementKey), nameof(TargetFhirPackageKey))]
+[CgSQLiteIndex(nameof(StructureComparisonKey), nameof(SourceElementKey), nameof(TargetElementKey))]
+[CgSQLiteIndex(nameof(StructureComparisonKey))]
 public partial class DbElementComparison : DbPackageComparisonContent
 {
     [CgSQLiteForeignKey(referenceTable: "StructureComparisons", referenceColumn: nameof(DbStructureComparison.Key))]

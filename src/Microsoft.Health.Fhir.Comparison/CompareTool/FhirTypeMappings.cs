@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using Hl7.Fhir.Model;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
@@ -151,4 +152,21 @@ public class FhirTypeMappings
 
         new("xhtml", "xhtml", CMR.Equivalent, CMR.Equivalent),
     ];
+
+    static internal bool TryGetMapping(
+        string sourceType,
+        string targetType,
+        [NotNullWhen(true)] out CodeGenTypeMapping? mapping)
+    {
+        foreach (CodeGenTypeMapping m in PrimitiveMappings)
+        {
+            if (m.SourceType == sourceType && m.TargetType == targetType)
+            {
+                mapping = m;
+                return true;
+            }
+        }
+        mapping = default;
+        return false;
+    }
 }

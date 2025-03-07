@@ -148,6 +148,16 @@ public class XVerProcessor
                 CompareInDatabase();
                 break;
 
+            case "compare-vs":
+                LoadDatabase(_config.ReloadDatabase, FhirArtifactClassEnum.ValueSet);
+                CompareInDatabase(FhirArtifactClassEnum.ValueSet);
+                break;
+
+            case "compare-sd":
+                LoadDatabase(_config.ReloadDatabase, FhirArtifactClassEnum.Resource);
+                CompareInDatabase(FhirArtifactClassEnum.Resource);
+                break;
+
             case "convert-from-maps":
                 loadDefinitionCollections();
                 LoadFhirCrossVersionMaps(preferV1Maps: true);
@@ -210,7 +220,9 @@ public class XVerProcessor
         }
     }
 
-    public void LoadDatabase(bool forceCreate)
+    public void LoadDatabase(
+        bool forceCreate,
+        FhirArtifactClassEnum? artifactFilter = null)
     {
         // check if we have a database filename
         if (!forceCreate &&
@@ -226,7 +238,7 @@ public class XVerProcessor
                     return;
                 }
 
-                _db.LoadFromSourceDb(_config.CrossVersionSourceDb);
+                _db.LoadFromSourceDb(_config.CrossVersionSourceDb, artifactFilter);
 
                 return;
             }
@@ -251,7 +263,7 @@ public class XVerProcessor
         return;
     }
 
-    public void CompareInDatabase()
+    public void CompareInDatabase(FhirArtifactClassEnum? artifactFilter = null)
     {
         if (_db == null)
         {
@@ -259,7 +271,7 @@ public class XVerProcessor
         }
 
         FhirDbComparer dbComparer = new(_db, _config.LogFactory);
-        dbComparer.RunAllComparisons();
+        dbComparer.Compare(artifactFilter, _config.ComparisonPairFilterKeys);
     }
 
     /// <summary>

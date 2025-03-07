@@ -541,6 +541,21 @@ public class ConfigRoot : ICodeGenConfig
                 values.Add(typed.Current);
             }
         }
+        else if (parsed is IEnumerator generic)
+        {
+            // use the enumerator to add values to the array
+            while (generic.MoveNext())
+            {
+                if (generic.Current is T tValue)
+                {
+                    values.Add(tValue);
+                }
+                else
+                {
+                    throw new Exception("Should not be here!");
+                }
+            }
+        }
         else
         {
             throw new Exception("Should not be here!");

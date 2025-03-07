@@ -10,7 +10,37 @@ namespace Microsoft.Health.Fhir.CrossVersion.Convert_20_50;
 
 public class CodeSystem_20_50 : ICrossVersionProcessor<CodeSystem>, ICrossVersionExtractor<CodeSystem>
 {
-	private Converter_20_50 _converter;
+    private const string _standardConceptPropertiesUrl = "http://hl7.org/fhir/concept-properties";
+    private const string _propStatus = "status";                    // code
+    private const string _propInactive = "inactive";                // boolean
+    private const string _propEffectiveDate = "effectiveDate";      // date
+    private const string _propDeprecationDate = "deprecationDate";  // date
+    private const string _propRetirementDate = "retirementDate";    // date
+    private const string _propNotSelectable = "notSelectable";      // boolean
+    private const string _propParent = "parent";                    // code
+    private const string _propChild = "child";                      // code
+    private const string _propPartOf = "partOf";                    // code
+    private const string _propSynonym = "synonym";                  // code
+    private const string _propComment = "comment";                  // string
+    private const string _propItemWeight = "itemWeight";            // decimal
+
+    private static readonly (string, CodeSystem.PropertyType)[] _properties = [
+        (_propStatus, CodeSystem.PropertyType.Code),
+        (_propInactive, CodeSystem.PropertyType.Boolean),
+        (_propEffectiveDate, CodeSystem.PropertyType.DateTime),
+        (_propDeprecationDate, CodeSystem.PropertyType.DateTime),
+        (_propRetirementDate, CodeSystem.PropertyType.DateTime),
+        (_propNotSelectable, CodeSystem.PropertyType.Boolean),
+        (_propParent, CodeSystem.PropertyType.Code),
+        (_propChild, CodeSystem.PropertyType.Code),
+        (_propPartOf, CodeSystem.PropertyType.Code),
+        (_propSynonym, CodeSystem.PropertyType.Code),
+        (_propComment, CodeSystem.PropertyType.String),
+        (_propItemWeight, CodeSystem.PropertyType.Decimal),
+    ];
+
+
+    private Converter_20_50 _converter;
 	internal CodeSystem_20_50(Converter_20_50 converter)
 	{
 		_converter = converter;
@@ -24,10 +54,32 @@ public class CodeSystem_20_50 : ICrossVersionProcessor<CodeSystem>, ICrossVersio
 			Process(child, v);
 		}
 
-		return v;
+        addStandardConceptProperties(v);
+
+        return v;
 	}
 
-	public void Process(ISourceNode node, CodeSystem current)
+    private void addStandardConceptProperties(CodeSystem v)
+    {
+        ILookup<string, CodeSystem.PropertyComponent> csPropertiesByCode = v.Property.ToLookup(p => p.Code);
+        ILookup<string, CodeSystem.PropertyComponent> csPropertiesByUri = v.Property.ToLookup(p => p.Uri);
+
+        foreach ((string prop, CodeSystem.PropertyType type) in _properties)
+        {
+            if (!csPropertiesByCode.Contains(prop) &&
+                !csPropertiesByUri.Contains(_standardConceptPropertiesUrl + "#" + prop))
+            {
+                v.Property.Add(new CodeSystem.PropertyComponent
+                {
+                    Code = prop,
+                    Uri = _standardConceptPropertiesUrl + "#" + prop,
+                    Type = type
+                });
+            }
+        }
+    }
+
+    public void Process(ISourceNode node, CodeSystem current)
 	{
 		switch (node.Name)
 		{
@@ -314,7 +366,14 @@ public class CodeSystem_20_50 : ICrossVersionProcessor<CodeSystem>, ICrossVersio
 		{
 			switch (node.Name)
 			{
-				case "code":
+                case "abstract":
+                    current.Property.Add(new()
+                    {
+                        Code = "notSelectable",
+                        Value = new FhirBoolean(_converter._primitive.GetBoolOpt(node))
+                    });
+                    break;
+                case "code":
 					current.CodeElement = new Code(node.Text);
 					break;
 

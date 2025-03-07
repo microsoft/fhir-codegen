@@ -111,6 +111,25 @@ public class ConfigXVer : ConfigRoot
         },
     };
 
+    [ConfigOption(
+    ArgName = "--comparison-pair-filter-key",
+    EnvName = "Comparison_Pair_Filter_Key",
+    ArgArity = "0..*",
+    Description = "Set of Package Comparison Pair keys to process (used to reduce comparisons).")]
+    public HashSet<int> ComparisonPairFilterKeys { get; set; } = [];
+
+    private static ConfigurationOption ComparisonPairFilterKeysParameter => new()
+    {
+        Name = "Comparison_Pair_Filter_Key",
+        EnvVarName = "Comparison_Pair_Filter_Key",
+        DefaultValue = new HashSet<int>(),
+        CliOption = new System.CommandLine.Option<string?>("--comparison-pair-filter-key", "Set of Package Comparison Pair keys to process (used to reduce comparisons).")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrMore,
+            IsRequired = false,
+        },
+    };
+
 
 
 
@@ -180,6 +199,7 @@ public class ConfigXVer : ConfigRoot
         CrossVersionDbPathParameter,
         ReloadDatabaseParameter,
         CrossVersionSourceDbParameter,
+        ComparisonPairFilterKeysParameter,
         NoOutputParameter,
         SaveComparisonResultParameter,
         CrossVersionMapSourcePathParameter,
@@ -214,6 +234,9 @@ public class ConfigXVer : ConfigRoot
                     break;
                 case "Comparison_Source_Database":
                     CrossVersionSourceDb = GetOpt(parseResult, opt, CrossVersionSourceDb);
+                    break;
+                case "Comparison_Pair_Filter_Key":
+                    ComparisonPairFilterKeys = GetOptHash(parseResult, opt.CliOption, ComparisonPairFilterKeys);
                     break;
                 case "No_Output":
                     NoOutput = GetOpt(parseResult, opt, NoOutput);
