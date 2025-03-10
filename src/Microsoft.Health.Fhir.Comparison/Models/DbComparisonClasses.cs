@@ -227,7 +227,37 @@ public partial class DbElementComparison : DbPackageComparisonContent
     public required bool? NoMap { get; set; }
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
+}
 
+[CgSQLiteTable(tableName: "ElementTypeComparisons")]
+[CgSQLiteIndex(nameof(SourceElementTypeKey), nameof(TargetElementTypeKey))]
+public partial class DbElementTypeComparison : DbPackageComparisonContent
+{
+    [CgSQLiteForeignKey(referenceTable: "ElementTypes", referenceColumn: nameof(DbElementType.Key))]
+    public required int SourceElementTypeKey { get; set; }
+    public required string SourceElementTypeLiteral { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "ElementTypes", referenceColumn: nameof(DbElementType.Key))]
+    public required int? TargetElementTypeKey { get; set; }
+    public required int? TargetElementTypeLiteral { get; set; }
+
+    public required bool? NoMap { get; set; }
+    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
+    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
+}
+
+[CgSQLiteTable(tableName: "ElementTypeGroupComparisons")]
+public partial class DbElementTypeGroupComparison : DbPackageComparisonContent
+{
+    [CgSQLiteForeignKey(referenceTable: "ElementTypeGroups", referenceColumn: nameof(DbElementTypeGroup.Key))]
+    public required int SourceElementTypeGroupKey { get; set; }
+    public required string SourceElementTypeGroupLiteral { get; set; }
+    [CgSQLiteForeignKey(referenceTable: "ElementTypeGroups", referenceColumn: nameof(DbElementTypeGroup.Key))]
+    public required int? TargetElementTypeGroupKey { get; set; }
+    public required string? TargetElementTypeGroupLiteral { get; set; }
+    public required bool? NoMap { get; set; }
+    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
+    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
 }
 
 

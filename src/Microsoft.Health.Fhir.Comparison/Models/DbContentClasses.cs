@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using fhir_codegen.SQLiteGenerator;
@@ -117,9 +118,8 @@ public partial class DbElement : DbPackageContent
 
     public required string? SliceName { get; set; }
 
-    public required string? TypeName { get; set; }
-    public required string? TypeProfile { get; set; }
-    public required string? TargetProfile { get; set; }
+    public required int ElementTypeGroupKey { get; set; }
+    public required string TypeGroupLiteral { get; set; }
 
     public required Hl7.Fhir.Model.BindingStrength? ValueSetBindingStrength { get; init; }
     public required string? BindingValueSet { get; set; }
@@ -127,4 +127,36 @@ public partial class DbElement : DbPackageContent
 
     public required bool IsInherited { get; set; }
     public required string? BasePath { get; set; }
+}
+
+[CgSQLiteTable(tableName: "ElementTypes")]
+[CgSQLiteIndex(nameof(TypeName))]
+[CgSQLiteIndex(nameof(TypeName), nameof(TypeProfile), nameof(TargetProfile))]
+public partial class DbElementType : DbPackageContent
+{
+    public required string? TypeName { get; set; }
+    public required string? TypeProfile { get; set; }
+    public required string? TargetProfile { get; set; }
+
+    [CgSQLiteIgnore]
+    public string Literal => $"{TypeName}({TypeProfile})[{TargetProfile}]";
+}
+
+[CgSQLiteTable(tableName: "ElementTypeGroups")]
+[CgSQLiteIndex(nameof(GroupLiteral))]
+public partial class DbElementTypeGroup : DbPackageContent
+{
+    public required string GroupLiteral { get; set; }
+}
+
+[CgSQLiteTable(tableName: "ElementTypeGroupMap")]
+[CgSQLiteIndex(nameof(ElementTypeGroupKey))]
+[CgSQLiteIndex(nameof(ElementTypeGroupKey), nameof(ElementTypeKey))]
+public partial class DbElementTypeGroupMap: DbPackageContent
+{
+    [CgSQLiteForeignKey(referenceTable: "ElementTypeGroups", referenceColumn: nameof(DbElementTypeGroup.Key))]
+    public int ElementTypeGroupKey { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "ElementTypes", referenceColumn: nameof(DbElementType.Key))]
+    public int ElementTypeKey { get; set; }
 }

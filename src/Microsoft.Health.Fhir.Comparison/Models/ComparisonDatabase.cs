@@ -72,11 +72,16 @@ public class ComparisonDatabase : IDisposable
     private int _dbConceptIndex = 0;
     private int _dbStructureIndex = 0;
     private int _dbElementIndex = 0;
+    private int _dbElementTypeIndex = 0;
+    private int _dbElementTypeGroupIndex = 0;
+    private int _dbElementTypeGroupMapIndex = 0;
     private int _dbValueSetComparisonIndex = 0;
     private int _dbConceptComparisonIndex = 0;
     private int _dbUnresolvedConceptComparisonIndex = 0;
     private int _dbStructureComparisonIndex = 0;
     private int _dbUnresolvedStructureComparisonIndex = 0;
+    private int _dbElementTypeComparisonIndex = 0;
+    private int _dbElementTypeGroupComparisonIndex = 0;
     private int _dbElementComparisonIndex = 0;
     private int _dbUnresolvedElementComparisonIndex = 0;
 
@@ -195,11 +200,16 @@ public class ComparisonDatabase : IDisposable
     public int GetConceptKey() => Interlocked.Increment(ref _dbConceptIndex);
     public int GetStructureKey() => Interlocked.Increment(ref _dbStructureIndex);
     public int GetElementKey() => Interlocked.Increment(ref _dbElementIndex);
+    public int GetElementTypeKey() => Interlocked.Increment(ref _dbElementTypeIndex);
+    public int GetElementTypeGroupKey() => Interlocked.Increment(ref _dbElementTypeGroupIndex);
+    public int GetElementTypeMapKey() => Interlocked.Increment(ref _dbElementTypeGroupMapIndex);
     public int GetValueSetComparisonKey() => Interlocked.Increment(ref _dbValueSetComparisonIndex);
     public int GetConceptComparisonKey() => Interlocked.Increment(ref _dbConceptComparisonIndex);
     public int GetUnresolvedConceptComparisonKey() => Interlocked.Increment(ref _dbUnresolvedConceptComparisonIndex);
     public int GetStructureComparisonKey() => Interlocked.Increment(ref _dbStructureComparisonIndex);
     public int GetUnresolvedStructureComparisonKey() => Interlocked.Increment(ref _dbUnresolvedStructureComparisonIndex);
+    public int GetElementTypeComparisonKey() => Interlocked.Increment(ref _dbElementTypeComparisonIndex);
+    public int GetElementTypeGroupComparisonKey() => Interlocked.Increment(ref _dbElementTypeGroupComparisonIndex);
     public int GetElementComparisonKey() => Interlocked.Increment(ref _dbElementComparisonIndex);
     public int GetUnresolvedElementComparisonKey() => Interlocked.Increment(ref _dbUnresolvedElementComparisonIndex);
 
@@ -211,6 +221,9 @@ public class ComparisonDatabase : IDisposable
             _dbConceptIndex = DbValueSetConcept.SelectMaxKey(_dbConnection) ?? 0;
             _dbStructureIndex = DbStructureDefinition.SelectMaxKey(_dbConnection) ?? 0;
             _dbElementIndex = DbElement.SelectMaxKey(_dbConnection) ?? 0;
+            _dbElementTypeIndex = DbElementType.SelectMaxKey(_dbConnection) ?? 0;
+            _dbElementTypeGroupIndex = DbElementTypeGroup.SelectMaxKey(_dbConnection) ?? 0;
+            _dbElementTypeGroupMapIndex = DbElementTypeGroupMap.SelectMaxKey(_dbConnection) ?? 0;
 
             _dbValueSetComparisonIndex = DbValueSetComparison.SelectMaxKey(_dbConnection) ?? 0;
             _dbConceptComparisonIndex = DbValueSetConceptComparison.SelectMaxKey(_dbConnection) ?? 0;
@@ -219,6 +232,8 @@ public class ComparisonDatabase : IDisposable
             _dbStructureComparisonIndex = DbStructureComparison.SelectMaxKey(_dbConnection) ?? 0;
             _dbUnresolvedStructureComparisonIndex = DbUnresolvedStructureComparison.SelectMaxKey(_dbConnection) ?? 0;
 
+            _dbElementTypeComparisonIndex = DbElementTypeGroupMap.SelectMaxKey(_dbConnection) ?? 0;
+            _dbElementTypeGroupComparisonIndex = DbElementTypeGroup.SelectMaxKey(_dbConnection) ?? 0;
             _dbElementComparisonIndex = DbElementComparison.SelectMaxKey(_dbConnection) ?? 0;
             _dbUnresolvedElementComparisonIndex = DbUnresolvedElementComparison.SelectMaxKey(_dbConnection) ?? 0;
         }
@@ -289,8 +304,13 @@ public class ComparisonDatabase : IDisposable
                 {
                     DbStructureDefinition.Insert(targetDb, DbStructureDefinition.SelectList(sourceDb));
                     DbElement.Insert(targetDb, DbElement.SelectList(sourceDb));
+                    DbElementType.Insert(targetDb, DbElementType.SelectList(sourceDb));
+                    DbElementTypeGroup.Insert(targetDb, DbElementTypeGroup.SelectList(sourceDb));
+                    DbElementTypeGroupMap.Insert(targetDb, DbElementTypeGroupMap.SelectList(sourceDb));
                     DbStructureComparison.Insert(targetDb, DbStructureComparison.SelectList(sourceDb));
                     DbUnresolvedStructureComparison.Insert(targetDb, DbUnresolvedStructureComparison.SelectList(sourceDb));
+                    DbElementTypeComparison.Insert(targetDb, DbElementTypeComparison.SelectList(sourceDb));
+                    DbElementTypeGroupComparison.Insert(targetDb, DbElementTypeGroupComparison.SelectList(sourceDb));
                     DbElementComparison.Insert(targetDb, DbElementComparison.SelectList(sourceDb));
                     DbUnresolvedElementComparison.Insert(targetDb, DbUnresolvedElementComparison.SelectList(sourceDb));
                 }
@@ -309,8 +329,13 @@ public class ComparisonDatabase : IDisposable
 
                     DbStructureDefinition.Insert(targetDb, DbStructureDefinition.SelectList(sourceDb));
                     DbElement.Insert(targetDb, DbElement.SelectList(sourceDb));
+                    DbElementType.Insert(targetDb, DbElementType.SelectList(sourceDb));
+                    DbElementTypeGroup.Insert(targetDb, DbElementTypeGroup.SelectList(sourceDb));
+                    DbElementTypeGroupMap.Insert(targetDb, DbElementTypeGroupMap.SelectList(sourceDb));
                     DbStructureComparison.Insert(targetDb, DbStructureComparison.SelectList(sourceDb));
                     DbUnresolvedStructureComparison.Insert(targetDb, DbUnresolvedStructureComparison.SelectList(sourceDb));
+                    DbElementTypeComparison.Insert(targetDb, DbElementTypeComparison.SelectList(sourceDb));
+                    DbElementTypeGroupComparison.Insert(targetDb, DbElementTypeGroupComparison.SelectList(sourceDb));
                     DbElementComparison.Insert(targetDb, DbElementComparison.SelectList(sourceDb));
                     DbUnresolvedElementComparison.Insert(targetDb, DbUnresolvedElementComparison.SelectList(sourceDb));
                 }
@@ -341,8 +366,13 @@ public class ComparisonDatabase : IDisposable
                 {
                     DbStructureDefinition.DropTable(db);
                     DbElement.DropTable(db);
+                    DbElementType.DropTable(db);
+                    DbElementTypeGroup.DropTable(db);
+                    DbElementTypeGroupMap.DropTable(db);
                     DbStructureComparison.DropTable(db);
                     DbUnresolvedStructureComparison.DropTable(db);
+                    DbElementTypeComparison.DropTable(db);
+                    DbElementTypeGroupComparison.DropTable(db);
                     DbElementComparison.DropTable(db);
                     DbUnresolvedElementComparison.DropTable(db);
                 }
@@ -361,8 +391,13 @@ public class ComparisonDatabase : IDisposable
 
                     DbStructureDefinition.DropTable(db);
                     DbElement.DropTable(db);
+                    DbElementType.DropTable(db);
+                    DbElementTypeGroup.DropTable(db);
+                    DbElementTypeGroupMap.DropTable(db);
                     DbStructureComparison.DropTable(db);
                     DbUnresolvedStructureComparison.DropTable(db);
+                    DbElementTypeComparison.DropTable(db);
+                    DbElementTypeGroupComparison.DropTable(db);
                     DbElementComparison.DropTable(db);
                     DbUnresolvedElementComparison.DropTable(db);
                 }
@@ -393,8 +428,13 @@ public class ComparisonDatabase : IDisposable
                 {
                     DbStructureDefinition.CreateTable(db);
                     DbElement.CreateTable(db);
+                    DbElementType.CreateTable(db);
+                    DbElementTypeGroup.CreateTable(db);
+                    DbElementTypeGroupMap.CreateTable(db);
                     DbStructureComparison.CreateTable(db);
                     DbUnresolvedStructureComparison.CreateTable(db);
+                    DbElementTypeComparison.CreateTable(db);
+                    DbElementTypeGroupComparison.CreateTable(db);
                     DbElementComparison.CreateTable(db);
                     DbUnresolvedElementComparison.CreateTable(db);
                 }
@@ -413,8 +453,13 @@ public class ComparisonDatabase : IDisposable
 
                     DbStructureDefinition.CreateTable(db);
                     DbElement.CreateTable(db);
+                    DbElementType.CreateTable(db);
+                    DbElementTypeGroup.CreateTable(db);
+                    DbElementTypeGroupMap.CreateTable(db);
                     DbStructureComparison.CreateTable(db);
                     DbUnresolvedStructureComparison.CreateTable(db);
+                    DbElementTypeComparison.CreateTable(db);
+                    DbElementTypeGroupComparison.CreateTable(db);
                     DbElementComparison.CreateTable(db);
                     DbUnresolvedElementComparison.CreateTable(db);
                 }
@@ -1678,6 +1723,9 @@ public class ComparisonDatabase : IDisposable
     {
         List<DbStructureDefinition> dbStructures = [];
         List<DbElement> dbElements = [];
+        Dictionary<string, DbElementType> dbElementTypes = [];
+        Dictionary<string, DbElementTypeGroup> dbElementTypeGroups = [];
+        Dictionary<int, List<DbElementTypeGroupMap>> dbElementTypeGroupMaps = [];
 
         // iterate over the types of structures
         foreach ((IEnumerable<StructureDefinition> structures, FhirArtifactClassEnum cgClass) in getStructures(dc))
@@ -1739,7 +1787,13 @@ public class ComparisonDatabase : IDisposable
                 // iterate over all the elements of the structure
                 foreach (ElementDefinition ed in sd.cgElements(skipSlices: false))
                 {
-                    addElement(dbStructure, sd, ed);
+                    addElement(
+                        dbStructure,
+                        sd,
+                        ed,
+                        dbElementTypes,
+                        dbElementTypeGroups,
+                        dbElementTypeGroupMaps);
                 }
             }
         }
@@ -1754,6 +1808,15 @@ public class ComparisonDatabase : IDisposable
         _dbConnection.Insert(dbElements);
         _logger.LogInformation($" <<< added {dbElements.Count} Elements");
 
+        _dbConnection.Insert(dbElementTypes.Values);
+        _logger.LogInformation($" <<< added {dbElementTypes.Count} Element Types");
+
+        _dbConnection.Insert(dbElementTypeGroups.Values);
+        _logger.LogInformation($" <<< added {dbElementTypeGroups.Count} Element Type Groups");
+
+        _dbConnection.Insert(dbElementTypeGroupMaps.Values.SelectMany(m => m));
+        _logger.LogInformation($" <<< added {dbElementTypeGroupMaps.Values.SelectMany(m => m).Count()} Element Type Group Maps");
+
         return;
 
         // TODO(ginoc): For now, exclude profiles and logical models - we will want them for generic packages, but do not care for core
@@ -1766,8 +1829,18 @@ public class ComparisonDatabase : IDisposable
             //(dc.LogicalModelsByUrl.Values, FhirArtifactClassEnum.LogicalModel),
             ];
 
-        void addElement(DbStructureDefinition dbStructure, StructureDefinition sd, ElementDefinition ed)
+        string literalForType(string? typeName, string? typeProfile, string? targetProfile) => $"{typeName}({typeProfile})[{targetProfile}]";
+
+        void addElement(
+            DbStructureDefinition dbStructure,
+            StructureDefinition sd,
+            ElementDefinition ed,
+            Dictionary<string, DbElementType> dbElementTypes,
+            Dictionary<string, DbElementTypeGroup> dbElementTypeGroups,
+            Dictionary<int, List<DbElementTypeGroupMap>> dbElementTypeGroupMaps)
         {
+            int elementKey = Interlocked.Increment(ref _dbElementIndex);
+
             // check for children
             int childCount = sd.cgElements(
                 ed.Path,
@@ -1775,7 +1848,7 @@ public class ComparisonDatabase : IDisposable
                 includeRoot: false,
                 skipSlices: true).Count();
 
-            List<(string? typeName, string? typeProfile, string? profile)> elementTypes = [];
+            List<DbElementType> elementTypes = [];
 
             int? bindingVsKey = ed.Binding?.ValueSet == null
                 ? null
@@ -1788,7 +1861,25 @@ public class ComparisonDatabase : IDisposable
                 if ((tr.ProfileElement.Count == 0) &&
                     (tr.TargetProfileElement.Count == 0))
                 {
-                    elementTypes.Add((tr.cgName(), null, null));
+                    string tl = literalForType(tr.cgName(), null, null);
+
+                    if (dbElementTypes.TryGetValue(tl, out DbElementType? dbElementType))
+                    {
+                        elementTypes.Add(dbElementType);
+                        continue;
+                    }
+
+                    DbElementType et = new()
+                    {
+                        Key = Interlocked.Increment(ref _dbElementTypeIndex),
+                        FhirPackageKey = dbStructure.FhirPackageKey,
+                        TypeName = tr.cgName(),
+                        TypeProfile = null,
+                        TargetProfile = null,
+                    };
+                    elementTypes.Add(et);
+                    dbElementTypes.Add(et.Literal, et);
+
                     continue;
                 }
 
@@ -1796,7 +1887,23 @@ public class ComparisonDatabase : IDisposable
                 {
                     foreach (Canonical tp in tr.TargetProfile)
                     {
-                        elementTypes.Add((tr.cgName(), null, tp.Value));
+                        string tl = literalForType(tr.cgName(), null, tp.Value);
+                        if (dbElementTypes.TryGetValue(tl, out DbElementType? dbElementType))
+                        {
+                            elementTypes.Add(dbElementType);
+                            continue;
+                        }
+
+                        DbElementType et = new()
+                        {
+                            Key = Interlocked.Increment(ref _dbElementTypeIndex),
+                            FhirPackageKey = dbStructure.FhirPackageKey,
+                            TypeName = tr.cgName(),
+                            TypeProfile = null,
+                            TargetProfile = tp.Value,
+                        };
+                        elementTypes.Add(et);
+                        dbElementTypes.Add(et.Literal, et);
                     }
 
                     continue;
@@ -1806,7 +1913,23 @@ public class ComparisonDatabase : IDisposable
                 {
                     foreach (Canonical p in tr.Profile)
                     {
-                        elementTypes.Add((tr.cgName(), p.Value, null));
+                        string tl = literalForType(tr.cgName(), p.Value, null);
+                        if (dbElementTypes.TryGetValue(tl, out DbElementType? dbElementType))
+                        {
+                            elementTypes.Add(dbElementType);
+                            continue;
+                        }
+
+                        DbElementType et = new()
+                        {
+                            Key = Interlocked.Increment(ref _dbElementTypeIndex),
+                            FhirPackageKey = dbStructure.FhirPackageKey,
+                            TypeName = tr.cgName(),
+                            TypeProfile = p.Value,
+                            TargetProfile = null,
+                        };
+                        elementTypes.Add(et);
+                        dbElementTypes.Add(et.Literal, et);
                     }
 
                     continue;
@@ -1816,7 +1939,23 @@ public class ComparisonDatabase : IDisposable
                 {
                     foreach (Canonical tp in tr.TargetProfile)
                     {
-                        elementTypes.Add((tr.cgName(), p.Value, tp.Value));
+                        string tl = literalForType(tr.cgName(), p.Value, tp.Value);
+                        if (dbElementTypes.TryGetValue(tl, out DbElementType? dbElementType))
+                        {
+                            elementTypes.Add(dbElementType);
+                            continue;
+                        }
+
+                        DbElementType et = new()
+                        {
+                            Key = Interlocked.Increment(ref _dbElementTypeIndex),
+                            FhirPackageKey = dbStructure.FhirPackageKey,
+                            TypeName = tr.cgName(),
+                            TypeProfile = p.Value,
+                            TargetProfile = tp.Value,
+                        };
+                        elementTypes.Add(et);
+                        dbElementTypes.Add(et.Literal, et);
                     }
                 }
             }
@@ -1825,49 +1964,106 @@ public class ComparisonDatabase : IDisposable
             {
                 if (ed.ElementId == sd.Id)
                 {
-                    elementTypes.Add((sd.Id, null, null));
+                    string tl = literalForType(sd.Id, null, null);
+
+                    if (!dbElementTypes.TryGetValue(tl, out DbElementType? dbElementType))
+                    {
+                        dbElementType = new()
+                        {
+                            Key = Interlocked.Increment(ref _dbElementTypeIndex),
+                            FhirPackageKey = dbStructure.FhirPackageKey,
+                            TypeName = sd.Id,
+                            TypeProfile = null,
+                            TargetProfile = null,
+                        };
+                        dbElementTypes.Add(dbElementType.Literal, dbElementType);
+                    }
+
+                    elementTypes.Add(dbElementType);
                 }
                 else
                 {
-                    elementTypes.Add((null, null, null));
+                    string tl = literalForType(null, null, null);
+
+                    if (!dbElementTypes.TryGetValue(tl, out DbElementType? dbElementType))
+                    {
+                        dbElementType = new()
+                        {
+                            Key = Interlocked.Increment(ref _dbElementTypeIndex),
+                            FhirPackageKey = dbStructure.FhirPackageKey,
+                            TypeName = null,
+                            TypeProfile = null,
+                            TargetProfile = null,
+                        };
+                        dbElementTypes.Add(dbElementType.Literal, dbElementType);
+                    }
+
+                    elementTypes.Add(dbElementType);
                 }
             }
 
             bool isInherited = ed.cgIsInherited(sd);
             string? basePath = ed.Base?.Path;
 
-            foreach ((string? typeName, string? typeProfile, string? targetProfile) in elementTypes)
+            // check for a type group that has all the types we need
+            string typeGroupLiteral = string.Join(", ", elementTypes.OrderBy(et => et.Literal).Select(et => et.Literal));
+
+            if (!dbElementTypeGroups.TryGetValue(typeGroupLiteral, out DbElementTypeGroup? elementTypeGroup))
             {
-
-                DbElement dbElement = new()
+                // create our type group
+                elementTypeGroup = new()
                 {
-                    Key = Interlocked.Increment(ref _dbElementIndex),
-                    FhirPackageKey = pm.Key,
-                    StructureKey = dbStructure.Key,
-                    ResourceFieldOrder = ed.cgFieldOrder(),
-                    ComponentFieldOrder = ed.cgComponentFieldOrder(),
-                    Id = ed.ElementId,
-                    Path = ed.Path,
-                    ChildElementCount = childCount,
-                    Name = ed.cgName(),
-                    Short = ed.Short,
-                    Definition = ed.Definition,
-                    MinCardinality = ed.cgCardinalityMin(),
-                    MaxCardinality = ed.cgCardinalityMax(),
-                    MaxCardinalityString = ed.Max ?? "*",
-                    SliceName = ed.SliceName,
-                    ValueSetBindingStrength = ed.Binding?.Strength,
-                    BindingValueSet = ed.Binding?.ValueSet,
-                    BindingValueSetKey = bindingVsKey,
-                    TypeName = typeName,
-                    TypeProfile = typeProfile,
-                    TargetProfile = typeProfile,
-                    IsInherited = isInherited,
-                    BasePath = basePath,
+                    Key = Interlocked.Increment(ref _dbElementTypeGroupIndex),
+                    FhirPackageKey = dbStructure.FhirPackageKey,
+                    GroupLiteral = typeGroupLiteral,
                 };
-
-                dbElements.Add(dbElement);
+                dbElementTypeGroups.Add(typeGroupLiteral, elementTypeGroup);
             }
+
+            if (!dbElementTypeGroupMaps.TryGetValue(elementTypeGroup.Key, out List<DbElementTypeGroupMap>? elementTypeGroupMap))
+            {
+                elementTypeGroupMap = [];
+                foreach (DbElementType et in elementTypes)
+                {
+                    DbElementTypeGroupMap etgm = new()
+                    {
+                        Key = Interlocked.Increment(ref _dbElementTypeGroupMapIndex),
+                        FhirPackageKey = dbStructure.FhirPackageKey,
+                        ElementTypeKey = et.Key,
+                        ElementTypeGroupKey = elementTypeGroup.Key,
+                    };
+                    elementTypeGroupMap.Add(etgm);
+                }
+                dbElementTypeGroupMaps.Add(elementTypeGroup.Key, elementTypeGroupMap);
+            }
+
+            DbElement dbElement = new()
+            {
+                Key = elementKey,
+                FhirPackageKey = pm.Key,
+                StructureKey = dbStructure.Key,
+                ResourceFieldOrder = ed.cgFieldOrder(),
+                ComponentFieldOrder = ed.cgComponentFieldOrder(),
+                Id = ed.ElementId,
+                Path = ed.Path,
+                ChildElementCount = childCount,
+                Name = ed.cgName(),
+                Short = ed.Short,
+                Definition = ed.Definition,
+                MinCardinality = ed.cgCardinalityMin(),
+                MaxCardinality = ed.cgCardinalityMax(),
+                MaxCardinalityString = ed.Max ?? "*",
+                SliceName = ed.SliceName,
+                ValueSetBindingStrength = ed.Binding?.Strength,
+                BindingValueSet = ed.Binding?.ValueSet,
+                BindingValueSetKey = bindingVsKey,
+                ElementTypeGroupKey = elementTypeGroup.Key,
+                TypeGroupLiteral = typeGroupLiteral,
+                IsInherited = isInherited,
+                BasePath = basePath,
+            };
+
+            dbElements.Add(dbElement);
         }
     }
 

@@ -148,6 +148,10 @@ public class FhirDbComparer
                 Dictionary<int, DbElementComparison> elementComparisonsToAdd = [];
                 Dictionary<int, DbElementComparison> elementComparisonsToUpdate = [];
 
+                Dictionary<(int sourceTypeGroup, int targetTypeGroup), DbElementTypeGroupComparison> typeGroupComparisonsToAdd = [];
+                Dictionary<(int sourceTypeGroup, int targetTypeGroup), DbElementTypeGroupComparison> typeGroupComparisonsToUpdate = [];
+
+
                 // iterate over our artifact types
                 foreach (FhirArtifactClassEnum artifactClass in getArtifactClassSequence())
                 {
@@ -173,16 +177,20 @@ public class FhirDbComparer
                                 sdComparisonsToAdd,
                                 sdComparisonsToUpdate,
                                 elementComparisonsToAdd,
-                                elementComparisonsToUpdate);
+                                elementComparisonsToUpdate,
+                                typeGroupComparisonsToAdd,
+                                typeGroupComparisonsToUpdate);
                         }
                     }
                 }
 
                 // update the database
-                sdComparisonsToAdd.Values.ToList().Insert(_db);
-                sdComparisonsToUpdate.Values.ToList().Update(_db);
-                elementComparisonsToAdd.Values.ToList().Insert(_db);
-                elementComparisonsToUpdate.Values.ToList().Update(_db);
+                sdComparisonsToAdd.Values.Insert(_db);
+                sdComparisonsToUpdate.Values.Update(_db);
+                elementComparisonsToAdd.Values.Insert(_db);
+                elementComparisonsToUpdate.Values.Update(_db);
+                typeGroupComparisonsToAdd.Values.Insert(_db);
+                typeGroupComparisonsToUpdate.Values.Update(_db);
             }
         }
 
@@ -206,7 +214,9 @@ public class FhirDbComparer
         Dictionary<int, DbStructureComparison> sdComparisonsToAdd,
         Dictionary<int, DbStructureComparison> sdComparisonsToUpdate,
         Dictionary<int, DbElementComparison> elementComparisonsToAdd,
-        Dictionary<int, DbElementComparison> elementComparisonsToUpdate)
+        Dictionary<int, DbElementComparison> elementComparisonsToUpdate,
+        Dictionary<(int sourceTypeGroup, int targetTypeGroup), DbElementTypeGroupComparison> typeGroupComparisonsToAdd,
+        Dictionary<(int sourceTypeGroup, int targetTypeGroup), DbElementTypeGroupComparison> typeGroupComparisonsToUpdate)
     {
         // check for a existing comparisons
         List<DbStructureComparison> forwardComparisons = DbStructureComparison.SelectList(
@@ -445,6 +455,17 @@ public class FhirDbComparer
         return;
     }
 
+    private void doElementTypeGroupComparison(
+        DbFhirPackage sourcePackage,
+        DbElementTypeGroup sourceTypeGroup,
+        DbFhirPackage targetPackage,
+        DbElementTypeGroup targetTypeGroup,
+        Dictionary<(int sourceTypeGroup, int targetTypeGroup), DbElementTypeGroupComparison> typeGroupComparisonsToAdd,
+        Dictionary<(int sourceTypeGroup, int targetTypeGroup), DbElementTypeGroupComparison> typeGroupComparisonsToUpdate)
+    {
+
+    }
+
     private void doElementComparisons(
         DbFhirPackage sourcePackage,
         DbStructureDefinition sourceSd,
@@ -460,7 +481,7 @@ public class FhirDbComparer
         // select only active and concrete concepts
         List<DbElement> sourceElements = DbElement.SelectList(_db, StructureKey: sourceSd.Key);
 
-        // iterate over the source element
+        // iterate over the source elements - note that each type for a choice tyes gets its own record
         foreach (DbElement sourceElement in sourceElements)
         {
             // check for existing comparisons for this element
@@ -479,6 +500,8 @@ public class FhirDbComparer
                 CMR relationship = (targetElements.Count == 1)
                     ? CMR.Equivalent
                     : CMR.SourceIsBroaderThanTarget;
+
+                // TODO: check for a compatible type
 
                 // iterate over the possible targets
                 foreach (DbElement targetElement in targetElements)

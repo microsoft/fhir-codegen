@@ -593,6 +593,35 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             }
                         }
 
+                        public static void Insert(IDbConnection dbConnection, IEnumerable<{{{className}}}> values, string? dbTableName = null)
+                        {
+                            dbTableName ??= "{{{tableName}}}";
+                            
+                            using (IDbTransaction transaction = dbConnection.BeginTransaction())
+                            {
+                                IDbCommand command = dbConnection.CreateCommand();
+                                command.CommandText = $"""
+                                    INSERT INTO {dbTableName} (
+                                        {{{string.Join(_comma_line_5, tableColInfo.Where(p => p.isIdentity == false).Select(p => p.name))}}}
+                                    ) VALUES (
+                                        {{{string.Join(_comma_line_5, tableColInfo.Where(p => p.isIdentity == false).Select(p => "$" + p.name))}}}
+                                    ) {{{(pkIsIdentity ? " RETURNING " + pkColName : string.Empty)}}};
+                                    """;
+                    
+                                {{{string.Join(_line_3, getInsertCommandParamLines(false, pkIsIdentity ? pkColName : null, pkPropType, createParameters: true))}}}
+                    
+                                command.Prepare();
+                    
+                                foreach ({{{className}}} value in values)
+                                {
+                                    {{{getNonIdentityPkInit(pkColName, pkPropType)}}}
+                                    {{{string.Join(_line_4, getInsertCommandParamLines(false, pkIsIdentity ? pkColName : null, pkPropType, instantiateParameters: true, executeCommand: true, setIdentity: false))}}}
+                                }
+                    
+                                transaction.Commit();
+                            }
+                        }
+
                         public static {{{className}}} Update(IDbConnection dbConnection, {{{className}}} value, string? dbTableName = null)
                         {
                             dbTableName ??= "{{{tableName}}}";
@@ -615,7 +644,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             return value;
                         }
 
-                        public static void Update(IDbConnection dbConnection, List<{{{className}}}> values, string? dbTableName = null)
+                        public static void Update(IDbConnection dbConnection, IEnumerable<{{{className}}}> values, string? dbTableName = null)
                         {
                             dbTableName ??= "{{{tableName}}}";
                             
@@ -746,12 +775,17 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             {{{className}}}.Insert(dbCon, values, dbTableName);
                         }
 
+                        public static void Insert(this IDbConnection dbCon, IEnumerable<{{{className}}}> values, string? dbTableName = null)
+                        {
+                            {{{className}}}.Insert(dbCon, values, dbTableName);
+                        }
+
                         public static void Update(this IDbConnection dbCon, {{{className}}} value, string? dbTableName = null)
                         {
                             {{{className}}}.Update(dbCon, value, dbTableName);
                         }
 
-                        public static void Update(this IDbConnection dbCon, List<{{{className}}}> values, string? dbTableName = null)
+                        public static void Update(this IDbConnection dbCon, IEnumerable<{{{className}}}> values, string? dbTableName = null)
                         {
                             {{{className}}}.Update(dbCon, values, dbTableName);
                         }
@@ -777,12 +811,17 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             {{{className}}}.Insert(dbCon, values, dbTableName);
                         }
 
+                        public static void Insert(this IEnumerable<{{{className}}}> values, IDbConnection dbCon, string? dbTableName = null)
+                        {
+                            {{{className}}}.Insert(dbCon, values, dbTableName);
+                        }
+                    
                         public static void Update(this {{{className}}} value, IDbConnection dbCon, string? dbTableName = null)
                         {
                             {{{className}}}.Update(dbCon, value, dbTableName);
                         }
                     
-                        public static void Update(this List<{{{className}}}> values, IDbConnection dbCon, string? dbTableName = null)
+                        public static void Update(this IEnumerable<{{{className}}}> values, IDbConnection dbCon, string? dbTableName = null)
                         {
                             {{{className}}}.Update(dbCon, values, dbTableName);
                         }
