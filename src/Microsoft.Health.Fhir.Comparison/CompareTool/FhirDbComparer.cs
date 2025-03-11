@@ -15,12 +15,21 @@ namespace Microsoft.Health.Fhir.Comparison.CompareTool;
 
 public class FhirDbComparer
 {
+    
+
     private readonly ComparisonDatabase _comparisonDb;
     private readonly IDbConnection _db;
 
     private ILoggerFactory _loggerFactory;
     private ILogger _logger;
 
+    private DbComparisonCache<DbValueSetComparison> _vsComparisons = new();
+    private DbComparisonCache<DbValueSetConceptComparison> _conceptComparisons = new();
+
+    private DbComparisonCache<DbStructureComparison> _sdComparisons = new();
+    private DbComparisonCache<DbElementComparison> _elementComparisons = new();
+    private DbComparisonCache<DbElementTypeComparison> _typeComparisons = new();
+    private DbComparisonCache<DbElementTypeGroupComparison> _typeGroupComparisons = new();
 
     public FhirDbComparer(
         ComparisonDatabase db,
@@ -96,10 +105,8 @@ public class FhirDbComparer
             if ((artifactFilter == null) ||
                 (artifactFilter == FhirArtifactClassEnum.ValueSet))
             {
-                Dictionary<int, DbValueSetComparison> vsComparisonsToAdd = [];
-                Dictionary<int, DbValueSetComparison> vsComparisonsToUpdate = [];
-                Dictionary<int, DbValueSetConceptComparison> conceptComparisonsToAdd = [];
-                Dictionary<int, DbValueSetConceptComparison> conceptComparisonsToUpdate = [];
+                _vsComparisons.Clear();
+                _conceptComparisons.Clear();
 
                 List<DbValueSet> valueSets = DbValueSet.SelectList(_db, FhirPackageKey: sourcePackage.Key, StrongestBindingCore: Hl7.Fhir.Model.BindingStrength.Required);
                 _logger.LogInformation($" <<< processing ValueSets with required bindings, count: {valueSets.Count}");
@@ -120,19 +127,15 @@ public class FhirDbComparer
                             sourceVs,
                             targetPackage,
                             forward,
-                            reverse,
-                            vsComparisonsToAdd,
-                            vsComparisonsToUpdate,
-                            conceptComparisonsToAdd,
-                            conceptComparisonsToUpdate);
+                            reverse);
                     }
                 }
 
                 // update the database
-                vsComparisonsToAdd.Values.ToList().Insert(_db);
-                vsComparisonsToUpdate.Values.ToList().Update(_db);
-                conceptComparisonsToAdd.Values.ToList().Insert(_db);
-                conceptComparisonsToUpdate.Values.ToList().Update(_db);
+                _vsComparisons.ComparisonsToAdd.Insert(_db);
+                _vsComparisons.ComparisonsToUpdate.Update(_db);
+                _conceptComparisons.ComparisonsToAdd.Insert(_db);
+                _conceptComparisons.ComparisonsToUpdate.Update(_db);
             }
 
             // any structure triggers all of them
@@ -143,14 +146,10 @@ public class FhirDbComparer
                 (artifactFilter == FhirArtifactClassEnum.Profile) ||
                 (artifactFilter == FhirArtifactClassEnum.LogicalModel))
             {
-                Dictionary<int, DbStructureComparison> sdComparisonsToAdd = [];
-                Dictionary<int, DbStructureComparison> sdComparisonsToUpdate = [];
-                Dictionary<int, DbElementComparison> elementComparisonsToAdd = [];
-                Dictionary<int, DbElementComparison> elementComparisonsToUpdate = [];
-
-                Dictionary<(int sourceTypeGroup, int targetTypeGroup), DbElementTypeGroupComparison> typeGroupComparisonsToAdd = [];
-                Dictionary<(int sourceTypeGroup, int targetTypeGroup), DbElementTypeGroupComparison> typeGroupComparisonsToUpdate = [];
-
+                _sdComparisons.Clear();
+                _elementComparisons.Clear();
+                _typeComparisons.Clear();
+                _typeGroupComparisons.Clear();
 
                 // iterate over our artifact types
                 foreach (FhirArtifactClassEnum artifactClass in getArtifactClassSequence())
@@ -173,24 +172,20 @@ public class FhirDbComparer
                                 sourceSd,
                                 targetPackage,
                                 forward,
-                                reverse,
-                                sdComparisonsToAdd,
-                                sdComparisonsToUpdate,
-                                elementComparisonsToAdd,
-                                elementComparisonsToUpdate,
-                                typeGroupComparisonsToAdd,
-                                typeGroupComparisonsToUpdate);
+                                reverse);
                         }
                     }
                 }
 
                 // update the database
-                sdComparisonsToAdd.Values.Insert(_db);
-                sdComparisonsToUpdate.Values.Update(_db);
-                elementComparisonsToAdd.Values.Insert(_db);
-                elementComparisonsToUpdate.Values.Update(_db);
-                typeGroupComparisonsToAdd.Values.Insert(_db);
-                typeGroupComparisonsToUpdate.Values.Update(_db);
+                _sdComparisons.ComparisonsToAdd.Insert(_db);
+                _sdComparisons.ComparisonsToUpdate.Update(_db);
+                _elementComparisons.ComparisonsToAdd.Insert(_db);
+                _elementComparisons.ComparisonsToUpdate.Update(_db);
+                _typeComparisons.ComparisonsToAdd.Insert(_db);
+                _typeComparisons.ComparisonsToUpdate.Update(_db);
+                _typeGroupComparisons.ComparisonsToAdd.Insert(_db);
+                _typeGroupComparisons.ComparisonsToUpdate.Update(_db);
             }
         }
 
@@ -210,21 +205,28 @@ public class FhirDbComparer
         DbStructureDefinition sourceSd,
         DbFhirPackage targetPackage,
         DbFhirPackageComparisonPair forwardPair,
-        DbFhirPackageComparisonPair reversePair,
-        Dictionary<int, DbStructureComparison> sdComparisonsToAdd,
-        Dictionary<int, DbStructureComparison> sdComparisonsToUpdate,
-        Dictionary<int, DbElementComparison> elementComparisonsToAdd,
-        Dictionary<int, DbElementComparison> elementComparisonsToUpdate,
-        Dictionary<(int sourceTypeGroup, int targetTypeGroup), DbElementTypeGroupComparison> typeGroupComparisonsToAdd,
-        Dictionary<(int sourceTypeGroup, int targetTypeGroup), DbElementTypeGroupComparison> typeGroupComparisonsToUpdate)
+        DbFhirPackageComparisonPair reversePair)
     {
         // check for a existing comparisons
-        List<DbStructureComparison> forwardComparisons = DbStructureComparison.SelectList(
+        List<DbStructureComparison> forwardComparisons = _sdComparisons.ForSource(sourceSd.Key)
+            .Where(c => c.TargetFhirPackageKey == targetPackage.Key)
+            .ToList();
+
+        List<DbStructureComparison> existingDbComparisons = DbStructureComparison.SelectList(
             _db,
             PackageComparisonKey: forwardPair.Key,
             SourceFhirPackageKey: sourcePackage.Key,
             TargetFhirPackageKey: targetPackage.Key,
             SourceStructureKey: sourceSd.Key);
+
+        foreach (DbStructureComparison c in forwardComparisons)
+        {
+            if (existingDbComparisons.Contains(c))
+            {
+                continue;
+            }
+            existingDbComparisons.Add(c);
+        }    
 
         // if there are none, see if we can find an equivalent value set to compare with in the target
         if (forwardComparisons.Count == 0)
@@ -282,7 +284,7 @@ public class FhirDbComparer
                                 Message = tm.Comment,
                             };
 
-                            sdComparisonsToAdd[pc.Key] = pc;
+                            _sdComparisons.CacheAdd(pc);
                             forwardComparisons.Add(pc);
                         }
                     }
@@ -348,7 +350,7 @@ public class FhirDbComparer
                                 Message = message,
                             };
 
-                            sdComparisonsToAdd[sdc.Key] = sdc;
+                            _sdComparisons.CacheAdd(sdc);
                             forwardComparisons.Add(sdc);
                         }
                     }
@@ -359,9 +361,6 @@ public class FhirDbComparer
         // iterate across the forward comparisons
         foreach (DbStructureComparison forwardComparison in forwardComparisons)
         {
-            bool forwardModified = false;
-            bool inverseModified = false;
-
             // get the target value set for this comparison
             DbStructureDefinition targetSd = DbStructureDefinition.SelectSingle(
                 _db,
@@ -370,31 +369,37 @@ public class FhirDbComparer
 
             // look for an inverse comparison
             DbStructureComparison? inverseComparison = null;
-            if (forwardComparison.InverseComparisonKey == null)
+
+            if (forwardComparison.InverseComparisonKey != null)
             {
-                inverseComparison = DbStructureComparison.SelectSingle(
+                inverseComparison = _sdComparisons.Get((int)forwardComparison.InverseComparisonKey) ??
+                    DbStructureComparison.SelectSingle(
                     _db,
-                    PackageComparisonKey: reversePair.Key,
-                    SourceFhirPackageKey: targetPackage.Key,
-                    SourceStructureKey: forwardComparison.TargetStructureKey,
-                    TargetFhirPackageKey: sourcePackage.Key,
-                    TargetStructureKey: forwardComparison.SourceStructureKey);
+                    Key: forwardComparison.InverseComparisonKey);
             }
-            else
+
+            if (inverseComparison == null)
             {
-                inverseComparison = DbStructureComparison.SelectSingle(_db, Key: forwardComparison.InverseComparisonKey);
+                inverseComparison = _sdComparisons.Get(targetSd.Key, forwardComparison.SourceStructureKey) ??
+                    DbStructureComparison.SelectSingle(
+                        _db,
+                        PackageComparisonKey: reversePair.Key,
+                        SourceFhirPackageKey: targetPackage.Key,
+                        SourceStructureKey: forwardComparison.TargetStructureKey,
+                        TargetFhirPackageKey: sourcePackage.Key,
+                        TargetStructureKey: forwardComparison.SourceStructureKey);
             }
 
             if (inverseComparison == null)
             {
                 inverseComparison = invert(forwardComparison, reversePair);
-                sdComparisonsToAdd[inverseComparison.Key] = inverseComparison;
+                _sdComparisons.CacheAdd(inverseComparison);
             }
 
             if (forwardComparison.InverseComparisonKey != inverseComparison.Key)
             {
                 forwardComparison.InverseComparisonKey = inverseComparison.Key;
-                forwardModified = true;
+                _sdComparisons.Changed(inverseComparison);
             }
 
             // process this comparison
@@ -406,18 +411,16 @@ public class FhirDbComparer
                 forwardComparison,
                 inverseComparison,
                 forwardPair,
-                reversePair,
-                elementComparisonsToAdd,
-                elementComparisonsToUpdate);
+                reversePair);
 
             if (aggregateStructureRelationships(forwardComparison, sourceSd, targetSd))
             {
-                forwardModified = true;
+                _sdComparisons.Changed(forwardComparison);
             }
 
             if (aggregateStructureRelationships(inverseComparison, targetSd, sourceSd))
             {
-                inverseModified = true;
+                _sdComparisons.Changed(inverseComparison);
             }
 
             // update primitives manually according to known relationships
@@ -427,7 +430,9 @@ public class FhirDbComparer
                 forwardComparison.Relationship = sourcePM.Value.Relationship;
                 forwardComparison.ConceptDomainRelationship = sourcePM.Value.ConceptDomainRelationship;
                 forwardComparison.ValueDomainRelationship = sourcePM.Value.ValueDomainRelationship;
-                forwardModified = true;
+                forwardComparison.IsGenerated = true;
+                forwardComparison.Message = sourcePM.Value.Comment;
+                _sdComparisons.Changed(forwardComparison);
             }
 
             if (FhirTypeMappings.TryGetMapping(targetSd.Name, sourceSd.Name, out FhirTypeMappings.CodeGenTypeMapping? targetPM) &&
@@ -436,19 +441,9 @@ public class FhirDbComparer
                 inverseComparison.Relationship = targetPM.Value.Relationship;
                 inverseComparison.ConceptDomainRelationship = targetPM.Value.ConceptDomainRelationship;
                 inverseComparison.ValueDomainRelationship = targetPM.Value.ValueDomainRelationship;
-                inverseModified = true;
-            }
-
-            if (forwardModified &&
-                !sdComparisonsToAdd.ContainsKey(forwardComparison.Key))
-            {
-                sdComparisonsToUpdate[forwardComparison.Key] = forwardComparison;
-            }
-
-            if (inverseModified &&
-                !sdComparisonsToAdd.ContainsKey(inverseComparison.Key))
-            {
-                sdComparisonsToUpdate[inverseComparison.Key] = inverseComparison;
+                inverseComparison.IsGenerated = true;
+                inverseComparison.Message = targetPM.Value.Comment;
+                _sdComparisons.Changed(inverseComparison);
             }
         }
 
@@ -456,14 +451,166 @@ public class FhirDbComparer
     }
 
     private void doElementTypeGroupComparison(
+        DbElementComparison elementComparison,
         DbFhirPackage sourcePackage,
-        DbElementTypeGroup sourceTypeGroup,
+        DbElement sourceElement,
         DbFhirPackage targetPackage,
-        DbElementTypeGroup targetTypeGroup,
-        Dictionary<(int sourceTypeGroup, int targetTypeGroup), DbElementTypeGroupComparison> typeGroupComparisonsToAdd,
-        Dictionary<(int sourceTypeGroup, int targetTypeGroup), DbElementTypeGroupComparison> typeGroupComparisonsToUpdate)
+        DbElement targetElement)
     {
+        DbElementTypeGroupComparison? typeGroupComparison = null;
 
+        // check for an existing comparison
+        if (elementComparison.TypeGroupComparisonKey != null)
+        {
+            typeGroupComparison = _typeGroupComparisons.Get((int)elementComparison.TypeGroupComparisonKey) ??
+                DbElementTypeGroupComparison.SelectSingle(
+                    _db,
+                    Key: elementComparison.TypeGroupComparisonKey);
+        }
+
+        // if we haven't found one, look for a matching group by source and target
+        if (typeGroupComparison == null)
+        {
+            typeGroupComparison = _typeGroupComparisons.Get(sourceElement.ElementTypeGroupKey, targetElement.ElementTypeGroupKey) ??
+                DbElementTypeGroupComparison.SelectSingle(
+                    _db,
+                    SourceElementTypeGroupKey: sourceElement.ElementTypeGroupKey,
+                    TargetElementTypeGroupKey: targetElement.ElementTypeGroupKey);
+        }
+
+        // if we have one, we are done (they are only inserted completed)
+        if (typeGroupComparison != null)
+        {
+            if (elementComparison.TypeGroupComparisonKey != typeGroupComparison.Key)
+            {
+                elementComparison.TypeGroupComparisonKey = typeGroupComparison.Key;
+                _elementComparisons.Changed(elementComparison);
+            }
+            return;
+        }
+
+        // resolve the element type groups and types
+        DbElementTypeGroup sourceTypeGroup = DbElementTypeGroup.SelectSingle(
+            _db,
+            Key: sourceElement.ElementTypeGroupKey)
+            ?? throw new Exception($"Failed to resolve source element type group {sourceElement.ElementTypeGroupKey}");
+
+        List<DbElementTypeGroupMap> sourceTypeMaps = DbElementTypeGroupMap.SelectList(
+            _db,
+            FhirPackageKey: sourceElement.FhirPackageKey,
+            ElementTypeGroupKey: sourceTypeGroup.Key);
+
+        List<DbElementType> sourceTypeList = [];
+        foreach (DbElementTypeGroupMap tm in sourceTypeMaps)
+        {
+            DbElementType? et = DbElementType.SelectSingle(_db, Key: tm.ElementTypeKey);
+            if (et == null)
+            {
+                throw new Exception($"Failed to resolve source element type {tm.ElementTypeKey}");
+            }
+            sourceTypeList.Add(et);
+        }
+
+        ILookup<string?, DbElementType> sourceTypesByName = sourceTypeList.ToLookup(et => et.TypeName);
+
+        DbElementTypeGroup targetTypeGroup = DbElementTypeGroup.SelectSingle(
+            _db,
+            Key: targetElement.ElementTypeGroupKey)
+            ?? throw new Exception($"Failed to resolve target element type group {targetElement.ElementTypeGroupKey}");
+
+        List<DbElementTypeGroupMap> targetTypeMaps = DbElementTypeGroupMap.SelectList(
+            _db,
+            FhirPackageKey: targetElement.FhirPackageKey,
+            ElementTypeGroupKey: targetTypeGroup.Key);
+
+        List<DbElementType> targetTypeList = [];
+        foreach (DbElementTypeGroupMap tm in targetTypeMaps)
+        {
+            DbElementType? et = DbElementType.SelectSingle(_db, Key: tm.ElementTypeKey);
+            if (et == null)
+            {
+                throw new Exception($"Failed to resolve target element type {tm.ElementTypeKey}");
+            }
+            targetTypeList.Add(et);
+        }
+
+        ILookup<string?, DbElementType> targetTypesByName = targetTypeList
+            .ToLookup(et => et.TypeName);
+        ILookup<(string? typeName, string? typeProfile), DbElementType> targetTypesByNameAndProfile = targetTypeList
+            .ToLookup(et => (et.TypeName, et.TypeProfile));
+        ILookup<(string? typeName, string? typeProfile, string? targetProfile), DbElementType> targetTypeFullLookup = targetTypeList
+            .ToLookup(t => (t.TypeName, t.TypeProfile, t.TargetProfile));
+
+        Dictionary<DbElementType, List<(CMR? relationhip, DbElementType? targetType)>> typeComparisonResults = [];
+
+        // iterate over the source types and find exact matches
+        foreach (List<DbElementType> sourceTypeExpansion in sourceTypesByName)
+        {
+            string sourceTypeName = sourceType.TypeName ?? string.Empty;
+
+            // check for a matching type in the target
+            if (!targetTypesByName.Contains(sourceType.TypeName))
+            {
+                if (!typeComparisonResults.TryGetValue(sourceType, out List<(CMR? relationhip, DbElementType? targetType)>? resultList))
+                {
+                    typeComparisonResults[sourceType] = resultList = [];
+                }
+
+                resultList.Add((null, null));
+                continue;
+            }
+
+            // check for an exact matching target type
+            if (targetTypeFullLookup.Contains((sourceType.TypeName, sourceType.TypeProfile, sourceType.TargetProfile)))
+            {
+                if (!typeComparisonResults.TryGetValue(sourceType, out List<(CMR? relationhip, DbElementType? targetType)>? resultList))
+                {
+                    typeComparisonResults[sourceType] = resultList = [];
+                }
+
+                resultList.Add((CMR.Equivalent, targetTypeFullLookup[(sourceType.TypeName, sourceType.TypeProfile, sourceType.TargetProfile)].First()));
+                continue;
+            }
+
+            // check for a matching type name and type profile
+            if (targetTypesByNameAndProfile.Contains((sourceType.TypeName, sourceType.TypeProfile)))
+            {
+                if (!typeComparisonResults.TryGetValue(sourceType, out List<(CMR? relationhip, DbElementType? targetType)>? resultList))
+                {
+                    typeComparisonResults[sourceType] = resultList = [];
+                }
+
+                resultList.Add((CMR.SourceIsBroaderThanTarget, targetTypesByNameAndProfile[(sourceType.TypeName, sourceType.TypeProfile)].First()));
+                continue;
+            }
+
+            // iterate over the target types
+            foreach (DbElementType targetType in targetTypesByName[sourceType.Key])
+            {
+                // create the comparison
+                typeGroupComparison = new()
+                {
+                    Key = _comparisonDb.GetElementTypeGroupComparisonKey(),
+                    SourceFhirPackageKey = sourcePackage.Key,
+                    SourceElementKey = sourceElement.Key,
+                    SourceElementTypeGroupKey = sourceElement.ElementTypeGroupKey,
+                    SourceElementTypeKey = sourceType.Key,
+                    TargetFhirPackageKey = targetPackage.Key,
+                    TargetElementKey = targetElement.Key,
+                    TargetElementTypeGroupKey = targetElement.ElementTypeGroupKey,
+                    TargetElementTypeKey = targetType.Key,
+                    Relationship = CMR.Equivalent,
+                    IsGenerated = true,
+                    LastReviewedBy = null,
+                    LastReviewedOn = null,
+                };
+                _typeGroupComparisons.CacheAdd(typeGroupComparison);
+                elementComparison.TypeGroupComparisonKey = typeGroupComparison.Key;
+                _elementComparisons.Changed(elementComparison);
+            }
+        }
+
+        // process unmatched types
     }
 
     private void doElementComparisons(
@@ -474,9 +621,7 @@ public class FhirDbComparer
         DbStructureComparison forwardComparison,
         DbStructureComparison reverseComparison,
         DbFhirPackageComparisonPair forwardPair,
-        DbFhirPackageComparisonPair reversePair,
-        Dictionary<int, DbElementComparison> elementComparisonsToAdd,
-        Dictionary<int, DbElementComparison> elementComparisonsToUpdate)
+        DbFhirPackageComparisonPair reversePair)
     {
         // select only active and concrete concepts
         List<DbElement> sourceElements = DbElement.SelectList(_db, StructureKey: sourceSd.Key);
@@ -501,8 +646,6 @@ public class FhirDbComparer
                     ? CMR.Equivalent
                     : CMR.SourceIsBroaderThanTarget;
 
-                // TODO: check for a compatible type
-
                 // iterate over the possible targets
                 foreach (DbElement targetElement in targetElements)
                 {
@@ -522,6 +665,7 @@ public class FhirDbComparer
                         TargetElementToken = targetElement.Id,
                         TargetElementKey = targetElement.Key,
                         Relationship = relationship,
+                        TypeGroupComparisonKey = null,
                         ConceptDomainRelationship = null,
                         ValueDomainRelationship = null,
                         NoMap = false,
@@ -531,7 +675,7 @@ public class FhirDbComparer
                         LastReviewedOn = null,
                     };
 
-                    elementComparisonsToAdd.Add(comp.Key, comp);
+                    _elementComparisons.CacheAdd(comp);
                     comparisons.Add(comp);
                 }
             }
@@ -554,6 +698,7 @@ public class FhirDbComparer
                     TargetStructureUrl = forwardComparison.TargetCanonicalUnversioned,
                     TargetElementToken = null,
                     TargetElementKey = null,
+                    TypeGroupComparisonKey = null,
                     Relationship = null,
                     ConceptDomainRelationship = null,
                     ValueDomainRelationship = null,
@@ -565,7 +710,7 @@ public class FhirDbComparer
                 };
 
                 // insert into the database
-                elementComparisonsToAdd.Add(noMap.Key, noMap);
+                _elementComparisons.CacheAdd(noMap);
 
                 // nothing else to do on this pass
                 continue;
@@ -574,39 +719,50 @@ public class FhirDbComparer
             // iterate over the comparisons to check relationships
             foreach (DbElementComparison elementComparison in comparisons)
             {
-                bool forwardModified = false;
-                bool inverseModified = false;
-
                 DbElement? targetElement = (elementComparison.TargetElementKey == null)
                     ? null
                     : DbElement.SelectSingle(_db, Key: elementComparison.TargetElementKey);
 
-                DbElementComparison? inverseComparison = null;
-                if (elementComparison.TargetElementKey != null)
+                if (targetElement == null)
                 {
-                    if (forwardComparison.InverseComparisonKey == null)
+                    if (elementComparison.TargetElementKey != null)
                     {
-                        inverseComparison = DbElementComparison.SelectSingle(
-                                _db,
-                                StructureComparisonKey: reverseComparison.Key,
-                                SourceElementKey: elementComparison.TargetElementKey,
-                                TargetElementKey: elementComparison.SourceElementKey);
+                        throw new Exception($"Failed to resolve {elementComparison.TargetElementToken} ({elementComparison.TargetElementKey})");
                     }
-                    else
-                    {
-                        inverseComparison = DbElementComparison.SelectSingle(_db, Key: elementComparison.InverseComparisonKey);
-                    }
+
+                    // if there is no target (non-mapping element), there is nothing else to check
+                    continue;
                 }
 
-                // if there is no inverse and there should be, create one
-                if ((inverseComparison == null) &&
-                    (elementComparison.TargetElementKey != null))
+                DbElementComparison? inverseComparison = null;
+
+                if (elementComparison.InverseComparisonKey != null)
+                {
+                    inverseComparison = _elementComparisons.Get((int)elementComparison.InverseComparisonKey) ??
+                        DbElementComparison.SelectSingle(_db, Key: elementComparison.InverseComparisonKey);
+                }
+
+                if (inverseComparison == null)
+                {
+                    inverseComparison = _elementComparisons.Get(targetElement.Key, elementComparison.TargetElementKey) ??
+                        DbElementComparison.SelectSingle(
+                            _db,
+                            StructureComparisonKey: reverseComparison.Key,
+                            SourceElementKey: elementComparison.TargetElementKey,
+                            TargetElementKey: elementComparison.SourceElementKey);
+                }
+
+                // if there is no inverse we need to create it
+                if (inverseComparison == null)
                 {
                     inverseComparison = invert(elementComparison, sourceElement, targetElement!, reverseComparison, reversePair);
-                    elementComparisonsToAdd.Add(inverseComparison.Key, inverseComparison);
+                    _elementComparisons.CacheAdd(inverseComparison);
+                }
 
+                if (elementComparison.InverseComparisonKey != inverseComparison.Key)
+                {
                     elementComparison.InverseComparisonKey = inverseComparison.Key;
-                    forwardModified = true;
+                    _elementComparisons.Changed(elementComparison);
                 }
 
                 // do basic checks if this has not been reviewed
@@ -616,7 +772,7 @@ public class FhirDbComparer
                     if ((elementComparison.TargetElementKey == null) &&
                         (elementComparison.NoMap != true))
                     {
-                        forwardModified = true;
+                        _elementComparisons.Changed(elementComparison);
                         elementComparison.NoMap = true;
                     }
 
@@ -624,7 +780,7 @@ public class FhirDbComparer
                     if ((elementComparison.Relationship == CMR.Equivalent) &&
                         (comparisons.Count > 1))
                     {
-                        forwardModified = true;
+                        _elementComparisons.Changed(elementComparison);
 
                         // mark as not equivalent
                         elementComparison.Relationship = CMR.SourceIsBroaderThanTarget;
@@ -633,37 +789,30 @@ public class FhirDbComparer
                             $" `{sourceElement.Id}` maps to multiple elements in {targetSd.Name} and cannot be equivalent.";
                     }
 
+                    // do type check comparison
+                    doElementTypeGroupComparison(
+                        elementComparison,
+                        sourcePackage,
+                        sourceElement,
+                        targetPackage,
+                        targetElement);
+
                     // TODO: add actual checks
                 }
 
-                if (inverseComparison != null)
+                // check to see if the relationship makes sense as an inverse
+                CMR? expectedInverseRelationship = invert(elementComparison.Relationship);
+                if ((inverseComparison.LastReviewedOn != null) &&
+                    (inverseComparison.Relationship != expectedInverseRelationship))
                 {
-                    // check to see if the relationship makes sense as an inverse
-                    CMR? expected = invert(elementComparison.Relationship);
-                    if ((inverseComparison.LastReviewedOn != null) &&
-                        (inverseComparison.Relationship != expected))
-                    {
-                        inverseComparison.Message = inverseComparison.Message +
-                            $" Updated relationship from `{inverseComparison.Relationship}` to `{expected}`" +
-                            $" based on the inverse comparsion {elementComparison.Key}, which has a relationship" +
-                            $" of `{elementComparison.Relationship}`.";
-                        inverseComparison.Relationship = expected;
+                    inverseComparison.Message = inverseComparison.Message +
+                        $" Updated relationship from `{inverseComparison.Relationship}` to `{expectedInverseRelationship}`" +
+                        $" based on the inverse comparsion {elementComparison.Key}, which has a relationship" +
+                        $" of `{elementComparison.Relationship}`.";
+                    inverseComparison.Relationship = expectedInverseRelationship;
 
-                        inverseModified = true;
-                    }
+                    _elementComparisons.Changed(inverseComparison);
                 }
-
-                // if any changes have been made and this is not a new record, it needs to be updated
-                if (forwardModified && !elementComparisonsToAdd.ContainsKey(elementComparison.Key))
-                {
-                    elementComparisonsToUpdate[elementComparison.Key] = elementComparison;
-                }
-
-                if (inverseModified && !elementComparisonsToAdd.ContainsKey(inverseComparison!.Key))
-                {
-                    elementComparisonsToUpdate[inverseComparison.Key] = inverseComparison;
-                }
-
             }
         }
 
@@ -676,19 +825,28 @@ public class FhirDbComparer
         DbValueSet sourceVs,
         DbFhirPackage targetPackage,
         DbFhirPackageComparisonPair forwardPair,
-        DbFhirPackageComparisonPair reversePair,
-        Dictionary<int, DbValueSetComparison> vsComparisonsToAdd,
-        Dictionary<int, DbValueSetComparison> vsComparisonsToUpdate,
-        Dictionary<int, DbValueSetConceptComparison> conceptComparisonsToAdd,
-        Dictionary<int, DbValueSetConceptComparison> conceptComparisonsToUpdate)
+        DbFhirPackageComparisonPair reversePair)
     {
-        // check for a existing comparisons
-        List<DbValueSetComparison> forwardComparisons = DbValueSetComparison.SelectList(
+        // check for existing comparisons
+        List<DbValueSetComparison> forwardComparisons = _vsComparisons.ForSource(sourceVs.Key)
+            .Where(c => c.TargetFhirPackageKey == targetPackage.Key)
+            .ToList();
+
+        List<DbValueSetComparison> existingDbComparisons = DbValueSetComparison.SelectList(
             _db,
             PackageComparisonKey: forwardPair.Key,
             SourceFhirPackageKey: sourcePackage.Key,
             TargetFhirPackageKey: targetPackage.Key,
             SourceValueSetKey: sourceVs.Key);
+
+        foreach (DbValueSetComparison c in existingDbComparisons)
+        {
+            if (forwardComparisons.Contains(c))
+            {
+                continue;
+            }
+            forwardComparisons.Add(c);
+        }
 
         // if there are none, see if we can find an equivalent value set to compare with in the target
         if (forwardComparisons.Count == 0)
@@ -748,7 +906,7 @@ public class FhirDbComparer
                     Message = message,
                 };
 
-                vsComparisonsToAdd[vsc.Key] = vsc;
+                _vsComparisons.CacheAdd(vsc);
                 forwardComparisons.Add(vsc);
             }
         }
@@ -756,42 +914,46 @@ public class FhirDbComparer
         // iterate across the forward comparisons
         foreach (DbValueSetComparison forwardComparison in forwardComparisons)
         {
-            bool forwardModified = false;
-            bool inverseModified = false;
-
             // get the target value set for this comparison
             DbValueSet targetVs = DbValueSet.SelectSingle(
                 _db,
                 Key: forwardComparison.TargetValueSetKey)
                 ?? throw new Exception($"Could not resolve target ValueSet with Key: {forwardComparison.TargetValueSetKey} (`{forwardComparison.TargetCanonicalVersioned}`)");
 
-            // look for an inverse comparison
+            // look for a known inverse comparison
             DbValueSetComparison? inverseComparison = null;
-            if (forwardComparison.InverseComparisonKey == null)
+            if (forwardComparison.InverseComparisonKey != null)
             {
-                inverseComparison = DbValueSetComparison.SelectSingle(
-                    _db,
-                    PackageComparisonKey: reversePair.Key,
-                    SourceFhirPackageKey: targetPackage.Key,
-                    SourceValueSetKey: forwardComparison.TargetValueSetKey,
-                    TargetFhirPackageKey: sourcePackage.Key,
-                    TargetValueSetKey: forwardComparison.SourceValueSetKey);
-            }
-            else
-            {
-                inverseComparison = DbValueSetComparison.SelectSingle(_db, Key: forwardComparison.InverseComparisonKey);
+                inverseComparison = _vsComparisons.Get((int)forwardComparison.InverseComparisonKey) ??
+                    DbValueSetComparison.SelectSingle(_db, Key: forwardComparison.InverseComparisonKey);
             }
 
+            // look for an inverse comparison based on the source and target
+            if ((inverseComparison == null) &&
+                (forwardComparison.InverseComparisonKey == null))
+            {
+                inverseComparison = _vsComparisons.Get(targetVs.Key, forwardComparison.SourceContentKey)
+                    ?? DbValueSetComparison.SelectSingle(
+                        _db,
+                        PackageComparisonKey: reversePair.Key,
+                        SourceFhirPackageKey: targetPackage.Key,
+                        SourceValueSetKey: forwardComparison.TargetValueSetKey,
+                        TargetFhirPackageKey: sourcePackage.Key,
+                        TargetValueSetKey: forwardComparison.SourceValueSetKey);
+            }
+
+            // create a new inverse comparison if we don't have one
             if (inverseComparison == null)
             {
                 inverseComparison = invert(forwardComparison, reversePair);
-                vsComparisonsToAdd[inverseComparison.Key] = inverseComparison;
+                _vsComparisons.CacheAdd(inverseComparison);
             }
 
+            // check to see if the inverse comparison key is set
             if (forwardComparison.InverseComparisonKey != inverseComparison.Key)
             {
                 forwardComparison.InverseComparisonKey = inverseComparison.Key;
-                forwardModified = true;
+                _vsComparisons.Changed(inverseComparison);
             }
 
             // process this comparison
@@ -803,30 +965,16 @@ public class FhirDbComparer
                 forwardComparison,
                 inverseComparison,
                 forwardPair,
-                reversePair,
-                conceptComparisonsToAdd,
-                conceptComparisonsToUpdate);
+                reversePair);
 
             if (aggregateValueSetRelationships(forwardComparison, sourceVs, targetVs))
             {
-                forwardModified = true;
+                _vsComparisons.Changed(forwardComparison);
             }
 
             if (aggregateValueSetRelationships(inverseComparison, targetVs, sourceVs))
             {
-                inverseModified = true;
-            }
-
-            if (forwardModified &&
-                !vsComparisonsToAdd.ContainsKey(forwardComparison.Key))
-            {
-                vsComparisonsToUpdate[forwardComparison.Key] = forwardComparison;
-            }
-
-            if (inverseModified &&
-                !vsComparisonsToAdd.ContainsKey(inverseComparison.Key))
-            {
-                vsComparisonsToUpdate[inverseComparison.Key] = inverseComparison;
+                _vsComparisons.Changed(inverseComparison);
             }
         }
 
@@ -1014,9 +1162,7 @@ public class FhirDbComparer
         DbValueSetComparison forwardComparison,
         DbValueSetComparison reverseComparison,
         DbFhirPackageComparisonPair forwardPair,
-        DbFhirPackageComparisonPair reversePair,
-        Dictionary<int, DbValueSetConceptComparison> conceptComparisonsToAdd,
-        Dictionary<int, DbValueSetConceptComparison> conceptComparisonsToUpdate)
+        DbFhirPackageComparisonPair reversePair)
     {
         // select only active and concrete concepts
         List<DbValueSetConcept> sourceConcepts = DbValueSetConcept.SelectList(_db, ValueSetKey: sourceVs.Key, Inactive: false, Abstract: false);
@@ -1024,13 +1170,27 @@ public class FhirDbComparer
         // iterate over the source concepts to ensure every concept has a 
         foreach (DbValueSetConcept sourceConcept in sourceConcepts)
         {
-            // check for existing comparisons for this concept
-            List<DbValueSetConceptComparison> comparisons = DbValueSetConceptComparison.SelectList(
+            // look in our cache for existing comparisons
+            List<DbValueSetConceptComparison> comparisons = _conceptComparisons.ForSource(sourceConcept.Key)
+                .Where(c => c.TargetFhirPackageKey == targetPackage.Key)
+                .ToList();
+
+            List<DbValueSetConceptComparison> existingDbComparisons = DbValueSetConceptComparison.SelectList(
                 _db,
                 ValueSetComparisonKey: forwardComparison.Key,
                 SourceValueSetKey: sourceVs.Key,
                 SourceConceptKey: sourceConcept.Key,
                 TargetFhirPackageKey: targetPackage.Key);
+
+            // look at the database for exising comparisons
+            foreach (DbValueSetConceptComparison existingDbComparison in existingDbComparisons)
+            {
+                if (comparisons.Contains(existingDbComparison))
+                {
+                    continue;
+                }
+                comparisons.Add(existingDbComparison);
+            }
 
             // if there are no existing comparisons, see if we can find a matching concept
             if ((comparisons.Count == 0) &&
@@ -1071,7 +1231,7 @@ public class FhirDbComparer
                         LastReviewedOn = null,
                     };
 
-                    conceptComparisonsToAdd.Add(comp.Key, comp);
+                    _conceptComparisons.CacheAdd(comp);
                     comparisons.Add(comp);
                 }
             }
@@ -1099,7 +1259,7 @@ public class FhirDbComparer
                 };
 
                 // insert into the database
-                conceptComparisonsToAdd.Add(noMap.Key, noMap);
+                _conceptComparisons.CacheAdd(noMap);
 
                 // nothing else to do on this pass
                 continue;
@@ -1108,44 +1268,46 @@ public class FhirDbComparer
             // iterate over the comparisons to check relationships
             foreach (DbValueSetConceptComparison conceptComparison in comparisons)
             {
-                bool forwardModified = false;
-                bool inverseModified = false;
-
                 DbValueSetConcept? targetConcept = (conceptComparison.TargetConceptKey == null)
                     ? null
                     : DbValueSetConcept.SelectSingle(_db, Key: conceptComparison.TargetConceptKey);
 
+                // if there is no target, there is nothing to check
+                if (targetConcept == null)
+                {
+                    continue;
+                }
+
                 // look for an inverse comparison
                 DbValueSetConceptComparison? inverseComparison = null;
-                if (conceptComparison.TargetConceptKey != null)
+
+                if (conceptComparison.InverseComparisonKey != null)
                 {
-                    if (forwardComparison.InverseComparisonKey == null)
-                    {
-                        inverseComparison = DbValueSetConceptComparison.SelectSingle(
+                    inverseComparison = _conceptComparisons.Get((int)conceptComparison.InverseComparisonKey) ??
+                         DbValueSetConceptComparison.SelectSingle(_db, Key: conceptComparison.InverseComparisonKey);
+                }
+
+                if (inverseComparison == null)
+                {
+                    inverseComparison = _conceptComparisons.Get(targetConcept.Key, conceptComparison.SourceContentKey)
+                        ?? DbValueSetConceptComparison.SelectSingle(
                             _db,
                             PackageComparisonKey: reversePair.Key,
                             SourceFhirPackageKey: targetPackage.Key,
                             SourceValueSetKey: conceptComparison.TargetValueSetKey,
                             SourceConceptKey: conceptComparison.TargetConceptKey,
                             TargetFhirPackageKey: sourcePackage.Key,
-                            TargetValueSetKey: conceptComparison.SourceValueSetKey,
-                            TargetConceptKey: conceptComparison.SourceConceptKey);
-                    }
-                    else
-                    {
-                        inverseComparison = DbValueSetConceptComparison.SelectSingle(_db, Key: forwardComparison.InverseComparisonKey);
-                    }
+                            TargetValueSetKey: conceptComparison.SourceValueSetKey);
                 }
 
                 // if there is no inverse and there should be, create one
-                if ((inverseComparison == null) &&
-                    (conceptComparison.TargetConceptKey != null))
+                if (inverseComparison == null)
                 {
                     inverseComparison = invert(conceptComparison, sourceConcept, targetConcept!, reverseComparison, reversePair);
-                    conceptComparisonsToAdd.Add(inverseComparison.Key, inverseComparison);
+                    _conceptComparisons.CacheAdd(inverseComparison);
 
                     conceptComparison.InverseComparisonKey = inverseComparison.Key;
-                    forwardModified = true;
+                    _conceptComparisons.CacheUpdate(conceptComparison);
                 }
 
                 // do basic checks if this has not been reviewed
@@ -1155,7 +1317,7 @@ public class FhirDbComparer
                     if ((conceptComparison.TargetConceptKey == null) &&
                         (conceptComparison.NoMap != true))
                     {
-                        forwardModified = true;
+                        _conceptComparisons.CacheUpdate(conceptComparison);
                         conceptComparison.NoMap = true;
                     }
 
@@ -1165,7 +1327,7 @@ public class FhirDbComparer
                         XVerProcessor._escapeValveCodes.Contains(sourceConcept.Code) &&
                         (sourceVs.ActiveConcreteConceptCount != targetVs.ActiveConcreteConceptCount))
                     {
-                        forwardModified = true;
+                        _conceptComparisons.CacheUpdate(conceptComparison);
                         conceptComparison.Relationship = RelationshipForCounts(sourceVs.ActiveConcreteConceptCount, targetVs.ActiveConcreteConceptCount);
                         conceptComparison.IsGenerated = true;
                         conceptComparison.Message = conceptComparison.Message +
@@ -1176,7 +1338,7 @@ public class FhirDbComparer
                     if ((conceptComparison.Relationship == CMR.Equivalent) &&
                         (comparisons.Count > 1))
                     {
-                        forwardModified = true;
+                        _conceptComparisons.CacheUpdate(conceptComparison);
 
                         // mark as not equivalent
                         conceptComparison.Relationship = CMR.SourceIsBroaderThanTarget;
@@ -1198,21 +1360,8 @@ public class FhirDbComparer
                             $" based on the inverse comparsion {conceptComparison.Key}, which has a relationship" +
                             $" of `{conceptComparison.Relationship}`.";
                         inverseComparison.Relationship = expected;
-                        inverseModified = true;
+                        _conceptComparisons.CacheUpdate(inverseComparison);
                     }
-                }
-
-                // if any changes have been made and this is not a new record, it needs to be updated
-                if (forwardModified &&
-                    !conceptComparisonsToAdd.ContainsKey(conceptComparison.Key))
-                {
-                    conceptComparisonsToUpdate[conceptComparison.Key] = conceptComparison;
-                }
-
-                if (inverseModified &&
-                    !conceptComparisonsToAdd.ContainsKey(inverseComparison!.Key))
-                {
-                    conceptComparisonsToUpdate[inverseComparison.Key] = inverseComparison;
                 }
             }
         }
@@ -1321,6 +1470,7 @@ public class FhirDbComparer
             TargetStructureUrl = other.SourceStructureUrl,
             TargetElementKey = other.SourceElementKey,
             TargetElementToken = other.SourceElementToken,
+            TypeGroupComparisonKey = null,
             StructureComparisonKey = reverseCanonicalComparison.Key,
             Relationship = invert(other.Relationship),
             ConceptDomainRelationship = invert(other.ConceptDomainRelationship),
