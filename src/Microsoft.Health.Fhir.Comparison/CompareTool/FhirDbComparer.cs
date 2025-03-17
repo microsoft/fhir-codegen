@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,30 @@ namespace Microsoft.Health.Fhir.Comparison.CompareTool;
 
 public class FhirDbComparer
 {
-    
+    private record class CollatedType
+    {
+        public required string? TypeName { get; init; }
+        public required string[] TypeProfiles { get; init; }
+        public required string[] TargetProfiles { get; init; }
+        public required List<DbElementType> UnderlyingElements { get; init; }
+
+        public CollatedType() { }
+
+        [SetsRequiredMembers]
+        public CollatedType(List<DbElementType> types)
+        {
+            UnderlyingElements = types;
+            TypeName = types.First().TypeName;
+            TypeProfiles = types
+                .Where(st => (st.TypeName == TypeName) && (!string.IsNullOrEmpty(st.TypeProfile)))
+                .Select(st => st.TypeProfile!)
+                .ToArray();
+            TargetProfiles = types
+                .Where(st => (st.TypeName == TypeName) && (!string.IsNullOrEmpty(st.TargetProfile)))
+                .Select(st => st.TargetProfile!)
+                .ToArray();
+        }
+    }
 
     private readonly ComparisonDatabase _comparisonDb;
     private readonly IDbConnection _db;
@@ -459,23 +483,16 @@ public class FhirDbComparer
     {
         DbElementTypeGroupComparison? typeGroupComparison = null;
 
-        // check for an existing comparison
+        // check for an existing comparison that we have already processed (added or updated)
         if (elementComparison.TypeGroupComparisonKey != null)
         {
-            typeGroupComparison = _typeGroupComparisons.Get((int)elementComparison.TypeGroupComparisonKey) ??
-                DbElementTypeGroupComparison.SelectSingle(
-                    _db,
-                    Key: elementComparison.TypeGroupComparisonKey);
+            typeGroupComparison = _typeGroupComparisons.Get((int)elementComparison.TypeGroupComparisonKey);
         }
 
-        // if we haven't found one, look for a matching group by source and target
+        // if we haven't found one, look for a matching group by source and target that we have already processed
         if (typeGroupComparison == null)
         {
-            typeGroupComparison = _typeGroupComparisons.Get(sourceElement.ElementTypeGroupKey, targetElement.ElementTypeGroupKey) ??
-                DbElementTypeGroupComparison.SelectSingle(
-                    _db,
-                    SourceElementTypeGroupKey: sourceElement.ElementTypeGroupKey,
-                    TargetElementTypeGroupKey: targetElement.ElementTypeGroupKey);
+            typeGroupComparison = _typeGroupComparisons.Get(sourceElement.ElementTypeGroupKey, targetElement.ElementTypeGroupKey);
         }
 
         // if we have one, we are done (they are only inserted completed)
@@ -487,6 +504,22 @@ public class FhirDbComparer
                 _elementComparisons.Changed(elementComparison);
             }
             return;
+        }
+
+        // check for an existing comparison in the database
+        if (elementComparison.TypeGroupComparisonKey != null)
+        {
+            typeGroupComparison = DbElementTypeGroupComparison.SelectSingle(
+                _db,
+                Key: elementComparison.TypeGroupComparisonKey);
+        }
+
+        if (typeGroupComparison == null)
+        {
+            typeGroupComparison = DbElementTypeGroupComparison.SelectSingle(
+                _db,
+                SourceElementTypeGroupKey: sourceElement.ElementTypeGroupKey,
+                TargetElementTypeGroupKey: targetElement.ElementTypeGroupKey);
         }
 
         // resolve the element type groups and types
@@ -536,17 +569,23 @@ public class FhirDbComparer
 
         ILookup<string?, DbElementType> targetTypesByName = targetTypeList
             .ToLookup(et => et.TypeName);
-        ILookup<(string? typeName, string? typeProfile), DbElementType> targetTypesByNameAndProfile = targetTypeList
-            .ToLookup(et => (et.TypeName, et.TypeProfile));
-        ILookup<(string? typeName, string? typeProfile, string? targetProfile), DbElementType> targetTypeFullLookup = targetTypeList
-            .ToLookup(t => (t.TypeName, t.TypeProfile, t.TargetProfile));
 
-        Dictionary<DbElementType, List<(CMR? relationhip, DbElementType? targetType)>> typeComparisonResults = [];
-
-        // iterate over the source types and find exact matches
-        foreach (List<DbElementType> sourceTypeExpansion in sourceTypesByName)
+        Dictionary<string, CollatedType> collatedTargetTypes = [];
+        foreach (List<DbElementType> targetTypeWithProfiles in targetTypesByName)
         {
-            string sourceTypeName = sourceType.TypeName ?? string.Empty;
+            CollatedType collated = new(targetTypeWithProfiles);
+            collatedTargetTypes[collated.TypeName ?? string.Empty] = collated;
+        }
+
+        Dictionary<CollatedType, List<(CMR? relationhip, CollatedType targetCollated)>> typeComparisonResults = [];
+
+        // iterate over each of the types in the source element
+        foreach (List<DbElementType> sourceTypeWithProfiles in sourceTypesByName)
+        {
+            CollatedType sourceCollated = new(sourceTypeWithProfiles);
+
+
+
 
             // check for a matching type in the target
             if (!targetTypesByName.Contains(sourceType.TypeName))
