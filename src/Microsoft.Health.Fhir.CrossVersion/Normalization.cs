@@ -127,6 +127,28 @@ internal static class Normalization
         {
             ed.Base ??= new ElementDefinition.BaseComponent();
 
+            if ((ed.Base.Path == "Resource") &&
+                (sd.Id != "Resource") &&
+                (ed.Path == sd.Id))
+            {
+                ed.Base.Path = sd.Id;
+            }
+
+            if ((ed.Base.Path == "DomainResource") &&
+                (sd.Id != "DomainResource") &&
+                (ed.Path == sd.Id))
+            {
+                ed.Base.Path = sd.Id;
+            }
+
+            if ((ed.Base.Path == "Element") &&
+                (sd.Id != "Element") &&
+                (ed.Path == sd.Id))
+            {
+                ed.Base.Path = sd.Id;
+            }
+
+            // fix the base component
             if (string.IsNullOrEmpty(ed.Base.Path))
             {
                 // if this is a structure defining a new 'something', that is the correct base
@@ -146,8 +168,16 @@ internal static class Normalization
                 }
             }
 
-            ed.Min ??= 0;
+            // check the type of this element
+            if ((ed.Type.Count == 1) &&
+                (ed.Type[0].Code != sd.Id) &&
+                (ed.Type[0].Code != "Extension"))
+            {
+                ed.Type[0].Code = sd.Id;
+            }
 
+            // check cardinality
+            ed.Min ??= 0;
             if (string.IsNullOrEmpty(ed.Max))
             {
                 ed.Max = "*";

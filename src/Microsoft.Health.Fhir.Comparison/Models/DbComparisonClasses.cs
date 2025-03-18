@@ -13,6 +13,7 @@ using Microsoft.Health.Fhir.CodeGen.Utils;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 using fhir_codegen.SQLiteGenerator;
+using System.Diagnostics.CodeAnalysis;
 
 
 namespace Microsoft.Health.Fhir.Comparison.Models;
@@ -279,7 +280,10 @@ public partial class DbElementTypeComparison : DbPackageComparisonContent, IDbPa
 
     [CgSQLiteForeignKey(referenceTable: "ElementTypes", referenceColumn: nameof(DbElementType.Key))]
     public required int? TargetElementTypeKey { get; set; }
-    public required int? TargetElementTypeLiteral { get; set; }
+    public required string? TargetElementTypeLiteral { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "StructureComparisons", referenceColumn: nameof(DbStructureComparison.Key))]
+    public required int StructureComparisonKey { get; set; }
 
     public required bool? NoMap { get; set; }
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
@@ -346,8 +350,8 @@ public class DbComparisonCache<T>
     private readonly Dictionary<int, T> _toAdd = [];
     private readonly Dictionary<int, T> _toUpdate = [];
 
-    public bool TryGet(int key, out T? value) => _byKey.TryGetValue(key, out value);
-    public bool TryGet((int sourceKey, int? targetKey) pair, out T? value) => _byPair.TryGetValue(pair, out value);
+    public bool TryGet(int key, [NotNullWhen(true)] out T? value) => _byKey.TryGetValue(key, out value);
+    public bool TryGet((int sourceKey, int? targetKey) pair, [NotNullWhen(true)] out T? value) => _byPair.TryGetValue(pair, out value);
 
     public T? Get(int key) => _byKey.TryGetValue(key, out var value) ? value : default(T);
     public T? Get(int sourceKey, int? targetKey) => _byPair.TryGetValue((sourceKey, targetKey), out var value) ? value : default(T);
@@ -394,6 +398,8 @@ public class DbComparisonCache<T>
 
         _toUpdate[item.Key] = item;
     }
+
+    public int Count => _byKey.Count;
 }
 
 

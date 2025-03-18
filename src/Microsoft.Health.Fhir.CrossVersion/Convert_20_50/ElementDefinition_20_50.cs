@@ -147,6 +147,21 @@ public class ElementDefinition_20_50 : ICrossVersionProcessor<ElementDefinition>
         // normalize type repetitions
         Normalization.ReconcileElementTypeRepetitions(v);
 
+        // check to see if we have a reference type and the profiles should be moved to target profiles
+        foreach (ElementDefinition.TypeRefComponent? tr in v.Type)
+        {
+            if (tr.Code != "Reference")
+            {
+                continue;
+            }
+
+            if (tr.ProfileElement.Count != 0)
+            {
+                tr.TargetProfileElement.AddRange(tr.ProfileElement);
+                tr.ProfileElement.Clear();
+            }
+        }
+
         // note: we do not have IDs yet, but they will be generated at the StructureDefinition level
 
         return v;

@@ -26,9 +26,9 @@ public class FhirDbComparer
         public CollatedType() { }
 
         [SetsRequiredMembers]
-        public CollatedType(List<DbElementType> types)
+        public CollatedType(IEnumerable<DbElementType> types)
         {
-            UnderlyingElements = types;
+            UnderlyingElements = types is List<DbElementType> tl ? tl : types.ToList();
             TypeName = types.First().TypeName;
             TypeProfiles = types
                 .Where(st => (st.TypeName == TypeName) && (!string.IsNullOrEmpty(st.TypeProfile)))
@@ -522,6 +522,31 @@ public class FhirDbComparer
                 TargetElementTypeGroupKey: targetElement.ElementTypeGroupKey);
         }
 
+        // if we still don't have one, create a new one
+        if (typeGroupComparison == null)
+        {
+            typeGroupComparison = new()
+            {
+                Key = _comparisonDb.GetElementTypeGroupComparisonKey(),
+                PackageComparisonKey = elementComparison.PackageComparisonKey,
+                SourceFhirPackageKey = sourcePackage.Key,
+                SourceElementTypeGroupKey = sourceElement.ElementTypeGroupKey,
+                SourceElementTypeGroupLiteral = sourceElement.TypeGroupLiteral,
+                TargetFhirPackageKey = targetPackage.Key,
+                TargetElementTypeGroupKey = targetElement.ElementTypeGroupKey,
+                TargetElementTypeGroupLiteral = targetElement.TypeGroupLiteral,
+                Relationship = CMR.RelatedTo,
+                ConceptDomainRelationship = null,
+                ValueDomainRelationship = null,
+                NoMap = false,
+                Message = null,
+                IsGenerated = true,
+                LastReviewedBy = null,
+                LastReviewedOn = null,
+            };
+            _typeGroupComparisons.CacheAdd(typeGroupComparison);
+        }
+
         // resolve the element type groups and types
         DbElementTypeGroup sourceTypeGroup = DbElementTypeGroup.SelectSingle(
             _db,
@@ -571,82 +596,83 @@ public class FhirDbComparer
             .ToLookup(et => et.TypeName);
 
         Dictionary<string, CollatedType> collatedTargetTypes = [];
-        foreach (List<DbElementType> targetTypeWithProfiles in targetTypesByName)
+        foreach (IGrouping<string?, DbElementType> targetTypeWithProfiles in targetTypesByName)
         {
-            CollatedType collated = new(targetTypeWithProfiles);
+            CollatedType collated = new(targetTypeWithProfiles.AsEnumerable());
             collatedTargetTypes[collated.TypeName ?? string.Empty] = collated;
         }
 
+        HashSet<string> usedTargetTypes = [];
         Dictionary<CollatedType, List<(CMR? relationhip, CollatedType targetCollated)>> typeComparisonResults = [];
 
         // iterate over each of the types in the source element
-        foreach (List<DbElementType> sourceTypeWithProfiles in sourceTypesByName)
+        foreach (IGrouping<string?, DbElementType> sourceTypeWithProfiles in sourceTypesByName)
         {
             CollatedType sourceCollated = new(sourceTypeWithProfiles);
 
 
 
 
-            // check for a matching type in the target
-            if (!targetTypesByName.Contains(sourceType.TypeName))
-            {
-                if (!typeComparisonResults.TryGetValue(sourceType, out List<(CMR? relationhip, DbElementType? targetType)>? resultList))
-                {
-                    typeComparisonResults[sourceType] = resultList = [];
-                }
+            //// check for a matching type in the target
+            //if (!targetTypesByName.Contains(sourceType.TypeName))
+            //{
+            //    if (!typeComparisonResults.TryGetValue(sourceType, out List<(CMR? relationhip, DbElementType? targetType)>? resultList))
+            //    {
+            //        typeComparisonResults[sourceType] = resultList = [];
+            //    }
 
-                resultList.Add((null, null));
-                continue;
-            }
+            //    resultList.Add((null, null));
+            //    continue;
+            //}
 
-            // check for an exact matching target type
-            if (targetTypeFullLookup.Contains((sourceType.TypeName, sourceType.TypeProfile, sourceType.TargetProfile)))
-            {
-                if (!typeComparisonResults.TryGetValue(sourceType, out List<(CMR? relationhip, DbElementType? targetType)>? resultList))
-                {
-                    typeComparisonResults[sourceType] = resultList = [];
-                }
+            //// check for an exact matching target type
+            //if (targetTypeFullLookup.Contains((sourceType.TypeName, sourceType.TypeProfile, sourceType.TargetProfile)))
+            //{
+            //    if (!typeComparisonResults.TryGetValue(sourceType, out List<(CMR? relationhip, DbElementType? targetType)>? resultList))
+            //    {
+            //        typeComparisonResults[sourceType] = resultList = [];
+            //    }
 
-                resultList.Add((CMR.Equivalent, targetTypeFullLookup[(sourceType.TypeName, sourceType.TypeProfile, sourceType.TargetProfile)].First()));
-                continue;
-            }
+            //    resultList.Add((CMR.Equivalent, targetTypeFullLookup[(sourceType.TypeName, sourceType.TypeProfile, sourceType.TargetProfile)].First()));
+            //    continue;
+            //}
 
-            // check for a matching type name and type profile
-            if (targetTypesByNameAndProfile.Contains((sourceType.TypeName, sourceType.TypeProfile)))
-            {
-                if (!typeComparisonResults.TryGetValue(sourceType, out List<(CMR? relationhip, DbElementType? targetType)>? resultList))
-                {
-                    typeComparisonResults[sourceType] = resultList = [];
-                }
+            //// check for a matching type name and type profile
+            //if (targetTypesByNameAndProfile.Contains((sourceType.TypeName, sourceType.TypeProfile)))
+            //{
+            //    if (!typeComparisonResults.TryGetValue(sourceType, out List<(CMR? relationhip, DbElementType? targetType)>? resultList))
+            //    {
+            //        typeComparisonResults[sourceType] = resultList = [];
+            //    }
 
-                resultList.Add((CMR.SourceIsBroaderThanTarget, targetTypesByNameAndProfile[(sourceType.TypeName, sourceType.TypeProfile)].First()));
-                continue;
-            }
+            //    resultList.Add((CMR.SourceIsBroaderThanTarget, targetTypesByNameAndProfile[(sourceType.TypeName, sourceType.TypeProfile)].First()));
+            //    continue;
+            //}
 
-            // iterate over the target types
-            foreach (DbElementType targetType in targetTypesByName[sourceType.Key])
-            {
-                // create the comparison
-                typeGroupComparison = new()
-                {
-                    Key = _comparisonDb.GetElementTypeGroupComparisonKey(),
-                    SourceFhirPackageKey = sourcePackage.Key,
-                    SourceElementKey = sourceElement.Key,
-                    SourceElementTypeGroupKey = sourceElement.ElementTypeGroupKey,
-                    SourceElementTypeKey = sourceType.Key,
-                    TargetFhirPackageKey = targetPackage.Key,
-                    TargetElementKey = targetElement.Key,
-                    TargetElementTypeGroupKey = targetElement.ElementTypeGroupKey,
-                    TargetElementTypeKey = targetType.Key,
-                    Relationship = CMR.Equivalent,
-                    IsGenerated = true,
-                    LastReviewedBy = null,
-                    LastReviewedOn = null,
-                };
-                _typeGroupComparisons.CacheAdd(typeGroupComparison);
-                elementComparison.TypeGroupComparisonKey = typeGroupComparison.Key;
-                _elementComparisons.Changed(elementComparison);
-            }
+            //// iterate over the target types
+            //foreach (DbElementType targetType in targetTypesByName[sourceType.Key])
+            //{
+            //    // create the comparison
+            //    typeGroupComparison = new()
+            //    {
+            //        Key = _comparisonDb.GetElementTypeGroupComparisonKey(),
+            //        SourceFhirPackageKey = sourcePackage.Key,
+            //        SourceElementKey = sourceElement.Key,
+            //        SourceElementTypeGroupKey = sourceElement.ElementTypeGroupKey,
+            //        SourceElementTypeKey = sourceType.Key,
+            //        TargetFhirPackageKey = targetPackage.Key,
+            //        TargetElementKey = targetElement.Key,
+            //        TargetElementTypeGroupKey = targetElement.ElementTypeGroupKey,
+            //        TargetElementTypeKey = targetType.Key,
+            //        Relationship = CMR.Equivalent,
+            //        IsGenerated = true,
+            //        LastReviewedBy = null,
+            //        LastReviewedOn = null,
+            //    };
+            //    _typeGroupComparisons.CacheAdd(typeGroupComparison);
+            //    elementComparison.TypeGroupComparisonKey = typeGroupComparison.Key;
+            //    _elementComparisons.Changed(elementComparison);
+            //}
         }
 
         // process unmatched types

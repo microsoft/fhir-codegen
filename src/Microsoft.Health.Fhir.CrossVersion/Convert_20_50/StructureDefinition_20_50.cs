@@ -49,13 +49,15 @@ public class StructureDefinition_20_50 : ICrossVersionProcessor<StructureDefinit
             v.Derivation = StructureDefinition.TypeDerivationRule.Specialization;
         }
 
+        bool isPrimitive = FhirTypeUtils.TryGetPrimitiveInfo(v.Id, out FhirTypeUtils.FhirPrimitiveInfoRec primitiveInfo);
+
         // determine the kind - need to map odd cases from DSTU2 to later element after other processing
         switch (_lastKindLiteral)
         {
             case "datatype":
                 {
                     // check for primitive types (known list)
-                    if (FhirTypeUtils.TryGetPrimitiveInfo(v.Id, out FhirTypeUtils.FhirPrimitiveInfoRec primitiveInfo))
+                    if (isPrimitive)
                     {
                         Normalization.ReconcilePrimitiveType(v, primitiveInfo);
                     }
@@ -128,6 +130,22 @@ public class StructureDefinition_20_50 : ICrossVersionProcessor<StructureDefinit
             v.Name = string.Join(string.Empty, v.Name.Split(' ', '-', StringSplitOptions.RemoveEmptyEntries).Select(n => n = char.ToUpperInvariant(n[0]) + n.Substring(1)));
         }
 
+        // need to fix all the element paths for primitive types
+        if (isPrimitive)
+        {
+            if ((v.Snapshot?.Element.Count > 0) &&
+                (v.Snapshot.Element[0].Path != v.Id))
+            {
+                fixPrimitiveElements(v.Snapshot.Element, v.Id, v.Snapshot.Element[0].Path);
+            }
+
+            if ((v.Differential?.Element.Count > 0) &&
+                (v.Differential.Element[0].Path != v.Id))
+            {
+                fixPrimitiveElements(v.Differential.Element, v.Id, v.Differential.Element[0].Path);
+            }
+        }
+
         // reconcile the slice names for this structure manually
         buildElementIds(v);
 
@@ -141,6 +159,21 @@ public class StructureDefinition_20_50 : ICrossVersionProcessor<StructureDefinit
         //v.Snapshot = null;
 
         return v;
+
+        void fixPrimitiveElements(List<ElementDefinition> elements, string sdId, string baseSdId)
+        {
+            int baseSdIdLen = baseSdId.Length;
+
+            foreach (ElementDefinition ed in elements)
+            {
+                ed.Path = sdId + ed.Path[baseSdIdLen..];
+
+                if (ed.Base?.Path.StartsWith(baseSdId) ?? false)
+                {
+                    ed.Base.Path = sdId + ed.Base.Path[baseSdIdLen..];
+                }
+            }
+        }
 
         void resolveDataTypeKind()
         {

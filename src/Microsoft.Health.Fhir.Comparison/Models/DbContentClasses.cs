@@ -139,14 +139,17 @@ public partial class DbElementType : DbPackageContent
     public required string? TargetProfile { get; set; }
 
     [CgSQLiteIgnore]
-    public string Literal => $"{TypeName}({TypeProfile})[{TargetProfile}]";
+    public string Literal =>
+        (string.IsNullOrEmpty(TypeName) ? string.Empty : TypeName) +
+        (string.IsNullOrEmpty(TypeProfile) ? string.Empty : $"[{TypeProfile}]") +
+        (string.IsNullOrEmpty(TargetProfile) ? string.Empty : $"({TargetProfile})");
 }
 
 [CgSQLiteTable(tableName: "ElementTypeGroups")]
-[CgSQLiteIndex(nameof(GroupLiteral))]
+[CgSQLiteIndex(nameof(Literal))]
 public partial class DbElementTypeGroup : DbPackageContent
 {
-    public required string GroupLiteral { get; set; }
+    public required string Literal { get; set; }
 }
 
 [CgSQLiteTable(tableName: "ElementTypeGroupMap")]

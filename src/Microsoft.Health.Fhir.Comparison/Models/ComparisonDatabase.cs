@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Runtime.ConstrainedExecution;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -601,13 +602,17 @@ public class ComparisonDatabase : IDisposable
             return false;
         }
 
-        List<DbValueSetComparison> dbValueSetComparisons = [];
-        List<DbValueSetConceptComparison> dbValueSetConceptComparions = [];
-        List<DbUnresolvedConceptComparison> dbUnresolvedConceptComparisons = [];
-        List<DbStructureComparison> dbStructureComparisons = [];
-        List<DbUnresolvedStructureComparison> dbUnresolvedStructureComparisons = [];
-        List<DbElementComparison> dbElementComparisons = [];
-        List<DbUnresolvedElementComparison> dbUnresolvedElementComparisons = [];
+        DbComparisonCache<DbValueSetComparison> vsComparisons = new();
+        DbComparisonCache<DbValueSetConceptComparison> conceptComparisons = new();
+
+        DbComparisonCache<DbStructureComparison> sdComparisons = new();
+        DbComparisonCache<DbElementComparison> elementComparisons = new();
+        DbComparisonCache<DbElementTypeComparison> typeComparisons = new();
+        DbComparisonCache<DbElementTypeGroupComparison> typeGroupComparisons = new();
+
+        List<DbUnresolvedConceptComparison> uresolvedConceptComparisons = [];
+        List<DbUnresolvedStructureComparison> unresolvedSdComparisons = [];
+        List<DbUnresolvedElementComparison> unresolvedElementComparisons = [];
 
         // look for cross-version collections
         for (int definitionIndex = 1; definitionIndex < _definitions.Length; definitionIndex++)
@@ -635,6 +640,9 @@ public class ComparisonDatabase : IDisposable
             CrossVersionMapCollection cvLtoR = new(left, right, _dbPath, _loggerFactory);
             CrossVersionMapCollection cvRtoL = new(right, left, _dbPath, _loggerFactory);
 
+            // load our primitive maps first so they have lower keys (nice when browsing data)
+            loadDefaultPrimitiveMaps(left, leftDbPackage, right, rightDbPackage, dbPairLtoR);
+
             if (cvLtoR.TryLoadCrossVersionMaps(crossVersionMapSourcePath, true))
             {
                 processCrossVersionMaps(
@@ -649,6 +657,9 @@ public class ComparisonDatabase : IDisposable
             {
                 _logger.LogMapsNotLoaded(left.Key, right.Key);
             }
+
+            // load our primitive maps first so they have lower keys (nice when browsing data)
+            loadDefaultPrimitiveMaps(right, rightDbPackage, left, leftDbPackage, dbPairRtoL);
 
             if (cvRtoL.TryLoadCrossVersionMaps(crossVersionMapSourcePath, true))
             {
@@ -666,30 +677,246 @@ public class ComparisonDatabase : IDisposable
             }
         }
 
+        resolveStructureComparisonsToTypeComparisons();
+
+
         _logger.LogInformation("Inserting existing cross version maps into the database...");
 
-        _dbConnection.Insert(dbValueSetComparisons);
-        _logger.LogInformation($" <<< added {dbValueSetComparisons.Count} ValueSet Comparisons");
+        _dbConnection.Insert(vsComparisons.ComparisonsToAdd);
+        _logger.LogInformation($" <<< added {vsComparisons.Count} ValueSet Comparisons");
 
-        _dbConnection.Insert(dbValueSetConceptComparions);
-        _logger.LogInformation($" <<< added {dbValueSetConceptComparions.Count} ValueSet Concept Comparisons");
+        _dbConnection.Insert(conceptComparisons.ComparisonsToAdd);
+        _logger.LogInformation($" <<< added {conceptComparisons.Count} ValueSet Concept Comparisons");
 
-        _dbConnection.Insert(dbUnresolvedConceptComparisons);
-        _logger.LogInformation($" <<< added {dbUnresolvedConceptComparisons.Count} Unresolved ValueSet Concept Comparisons");
+        _dbConnection.Insert(uresolvedConceptComparisons);
+        _logger.LogInformation($" <<< added {uresolvedConceptComparisons.Count} Unresolved ValueSet Concept Comparisons");
 
-        _dbConnection.Insert(dbStructureComparisons);
-        _logger.LogInformation($" <<< added {dbStructureComparisons.Count} Structure Comparisons");
+        _dbConnection.Insert(sdComparisons.ComparisonsToAdd);
+        _logger.LogInformation($" <<< added {sdComparisons.Count} Structure Comparisons");
 
-        _dbConnection.Insert(dbUnresolvedStructureComparisons);
-        _logger.LogInformation($" <<< added {dbUnresolvedStructureComparisons.Count} Unresolved Structure Comparisons");
+        _dbConnection.Insert(unresolvedSdComparisons);
+        _logger.LogInformation($" <<< added {unresolvedSdComparisons.Count} Unresolved Structure Comparisons");
 
-        _dbConnection.Insert(dbElementComparisons);
-        _logger.LogInformation($" <<< added {dbElementComparisons.Count} Element Comparisons");
+        _dbConnection.Insert(elementComparisons.ComparisonsToAdd);
+        _logger.LogInformation($" <<< added {elementComparisons.Count} Element Comparisons");
 
-        _dbConnection.Insert(dbUnresolvedElementComparisons);
-        _logger.LogInformation($" <<< added {dbUnresolvedElementComparisons.Count} Unresolved Element Comparisons");
+        _dbConnection.Insert(typeComparisons.ComparisonsToAdd);
+        _logger.LogInformation($" <<< added {typeComparisons.Count} Element Type Comparisons");
+
+        _dbConnection.Insert(typeGroupComparisons.ComparisonsToAdd);
+        _logger.LogInformation($" <<< added {typeGroupComparisons.Count} Element Type Group Comparisons");
+
+        _dbConnection.Insert(unresolvedElementComparisons);
+        _logger.LogInformation($" <<< added {unresolvedElementComparisons.Count} Unresolved Element Comparisons");
 
         return true;
+
+        
+        void resolveStructureComparisonsToTypeComparisons()
+        {
+            // build a lookup for source element types
+            ILookup<(int PackageKey, string Literal), DbElementType> sourceElementTypes = DbElementType
+                .SelectList(_dbConnection)
+                .ToLookup(et => (et.FhirPackageKey, et.Literal));
+
+            // iterate over the structure comparisons in the cache
+            foreach (DbStructureComparison sdComparison in sdComparisons.ComparisonsToAdd)
+            {
+                // try to resolve the source structure
+                DbStructureDefinition sourceSd = DbStructureDefinition.SelectSingle(
+                    _dbConnection,
+                    FhirPackageKey: sdComparison.SourceFhirPackageKey,
+                    Key: sdComparison.SourceStructureKey)
+                    ?? throw new Exception($"Source structure {sdComparison.SourceStructureKey} not found in package: {sdComparison.SourceFhirPackageKey}!");
+
+                DbElementType? sourceElementType = DbElementType.SelectSingle(
+                    _dbConnection,
+                    FhirPackageKey: sdComparison.SourceFhirPackageKey,
+                    TypeName: sourceSd.Id,
+                    TypeProfileIsNull: true,
+                    TargetProfileIsNull: true);
+
+                // if the source type does not have a matching element, we can skip it
+                if (sourceElementType == null)
+                {
+                    continue;
+                }
+
+                // skip comparisons without targets
+                if (sdComparison.TargetStructureKey == null)
+                {
+                    // add as a non-mapping comparison
+                    DbElementTypeComparison nonMapping = new()
+                    {
+                        Key = Interlocked.Increment(ref _dbElementTypeComparisonIndex),
+                        PackageComparisonKey = sdComparison.PackageComparisonKey,
+                        SourceFhirPackageKey = sdComparison.SourceFhirPackageKey,
+                        TargetFhirPackageKey = sdComparison.TargetFhirPackageKey,
+                        StructureComparisonKey = sdComparison.Key,
+                        SourceElementTypeKey = sourceElementType.Key,
+                        SourceElementTypeLiteral = sourceElementType.Literal,
+                        TargetElementTypeKey = null,
+                        TargetElementTypeLiteral = null,
+                        Relationship = sdComparison.Relationship,
+                        ConceptDomainRelationship = sdComparison.ConceptDomainRelationship,
+                        ValueDomainRelationship = sdComparison.ValueDomainRelationship,
+                        IsGenerated = sdComparison.IsGenerated,
+                        LastReviewedBy = sdComparison.LastReviewedBy,
+                        LastReviewedOn = sdComparison.LastReviewedOn,
+                        Message = sdComparison.Message,
+                        NoMap = true,
+                    };
+
+                    typeComparisons.CacheAdd(nonMapping);
+
+                    continue;
+                }
+
+                // try to resolve the target structure
+                DbStructureDefinition targetSd = DbStructureDefinition.SelectSingle(
+                    _dbConnection,
+                    FhirPackageKey: sdComparison.TargetFhirPackageKey,
+                    Key: sdComparison.TargetStructureKey)
+                    ?? throw new Exception($"Target structure {sdComparison.TargetStructureKey} not found in package: {sdComparison.TargetFhirPackageKey}!");
+
+                DbElementType? targetElementType = DbElementType.SelectSingle(
+                    _dbConnection,
+                    FhirPackageKey: sdComparison.TargetFhirPackageKey,
+                    TypeName: targetSd.Id,
+                    TypeProfileIsNull: true,
+                    TargetProfileIsNull: true);
+
+                // only continue if we a target element type
+                if (targetElementType == null)
+                {
+                    continue;
+                }
+
+                // check for an inverse
+                _ = typeComparisons.TryGet((targetElementType.Key, sourceElementType.Key), out DbElementTypeComparison? inverseTypeComparison);
+
+                // no comparisons have been added at this point, so we can blindly add them
+                DbElementTypeComparison etc = new()
+                {
+                    Key = Interlocked.Increment(ref _dbElementTypeComparisonIndex),
+                    InverseComparisonKey = inverseTypeComparison?.Key,
+                    PackageComparisonKey = sdComparison.PackageComparisonKey,
+                    SourceFhirPackageKey = sdComparison.SourceFhirPackageKey,
+                    TargetFhirPackageKey = sdComparison.TargetFhirPackageKey,
+                    StructureComparisonKey = sdComparison.Key,
+                    SourceElementTypeKey = sourceElementType.Key,
+                    SourceElementTypeLiteral = sourceElementType.Literal,
+                    TargetElementTypeKey = targetElementType.Key,
+                    TargetElementTypeLiteral = targetElementType.Literal,
+                    Relationship = sdComparison.Relationship,
+                    ConceptDomainRelationship = sdComparison.ConceptDomainRelationship,
+                    ValueDomainRelationship = sdComparison.ValueDomainRelationship,
+                    IsGenerated = sdComparison.IsGenerated,
+                    LastReviewedBy = sdComparison.LastReviewedBy,
+                    LastReviewedOn = sdComparison.LastReviewedOn,
+                    Message = sdComparison.Message,
+                    NoMap = false,
+                };
+
+                typeComparisons.CacheAdd(etc);
+
+                if ((inverseTypeComparison != null) &&
+                    (inverseTypeComparison.InverseComparisonKey != etc.Key))
+                {
+                    // update the inverse comparison key
+                    inverseTypeComparison.InverseComparisonKey = etc.Key;
+                    typeComparisons.Changed(inverseTypeComparison);
+                }
+            }
+        }
+
+        void loadDefaultPrimitiveMaps(
+            DefinitionCollection source,
+            DbFhirPackage sourceDbPackage,
+            DefinitionCollection target,
+            DbFhirPackage targetDbPackage,
+            DbFhirPackageComparisonPair dbPackagePair)
+        {
+            // iterate over our known the primitives
+            foreach (FhirTypeMappings.CodeGenTypeMapping tm in FhirTypeMappings.PrimitiveMappings)
+            {
+                // make sure each of the types exists
+                if (!source.PrimitiveTypesByName.TryGetValue(tm.SourceType, out StructureDefinition? sourceSd) ||
+                    !target.PrimitiveTypesByName.TryGetValue(tm.TargetType, out StructureDefinition? targetSd))
+                {
+                    continue;
+                }
+
+                // resolve the database records
+                DbStructureDefinition sourceDbSd = DbStructureDefinition.SelectSingle(
+                    _dbConnection,
+                    FhirPackageKey: sourceDbPackage.Key,
+                    Id: sourceSd.Id)
+                    ?? throw new Exception($"Source structure {sourceSd.Id} not found in package: {sourceDbPackage.Key} ({sourceDbPackage.Name})!");
+
+                DbStructureDefinition targetDbSd = DbStructureDefinition.SelectSingle(
+                    _dbConnection,
+                    FhirPackageKey: targetDbPackage.Key,
+                    Id: targetSd.Id)
+                    ?? throw new Exception($"Target structure {targetSd.Id} not found in package: {targetDbPackage.Key} ({targetDbPackage.Name})!");
+
+                _ = sdComparisons.TryGet((targetDbSd.Key, sourceDbSd.Key), out DbStructureComparison? inverseSdComparison);
+
+                // look for an existing comparison record
+                if (!sdComparisons.TryGet((sourceDbSd.Key, targetDbSd.Key), out DbStructureComparison? sdComparison))
+                {
+                    // create our comparison record
+                    sdComparison = new()
+                    {
+                        Key = Interlocked.Increment(ref _dbStructureComparisonIndex),
+                        InverseComparisonKey = inverseSdComparison?.Key,
+                        PackageComparisonKey = dbPackagePair.Key,
+                        SourceFhirPackageKey = sourceDbPackage.Key,
+                        TargetFhirPackageKey = targetDbPackage.Key,
+                        SourceStructureKey = sourceDbSd.Key,
+                        SourceCanonicalVersioned = sourceDbSd.VersionedUrl,
+                        SourceCanonicalUnversioned = sourceDbSd.UnversionedUrl,
+                        SourceVersion = sourceDbSd.Version,
+                        SourceName = sourceDbSd.Name,
+                        TargetStructureKey = targetDbSd.Key,
+                        TargetCanonicalVersioned = targetDbSd.VersionedUrl,
+                        TargetCanonicalUnversioned = targetDbSd.UnversionedUrl,
+                        TargetVersion = targetDbSd.Version,
+                        TargetName = targetDbSd.Name,
+                        CompositeName = GetCompositeName(sourceDbPackage, targetDbSd, targetDbPackage, targetDbSd),
+                        SourceOverviewConceptMapUrl = null,
+                        SourceStructureFmlUrl = null,
+                        Relationship = tm.Relationship,
+                        ConceptDomainRelationship = tm.ConceptDomainRelationship,
+                        ValueDomainRelationship = tm.ValueDomainRelationship,
+                        IsGenerated = true,
+                        LastReviewedBy = null,
+                        LastReviewedOn = null,
+                        Message = tm.Comment,
+                    };
+
+                    sdComparisons.CacheAdd(sdComparison);
+                }
+
+                if (inverseSdComparison != null)
+                {
+                    if (sdComparison.InverseComparisonKey != inverseSdComparison.Key)
+                    {
+                        // update the inverse comparison key
+                        sdComparison.InverseComparisonKey = inverseSdComparison.Key;
+                        sdComparisons.Changed(sdComparison);
+                    }
+
+                    if (inverseSdComparison.InverseComparisonKey != sdComparison.Key)
+                    {
+                        // update the inverse comparison key
+                        inverseSdComparison.InverseComparisonKey = sdComparison.Key;
+                        sdComparisons.Changed(inverseSdComparison);
+                    }
+                }
+            }
+        }
+
 
         void processCrossVersionMaps(
             DefinitionCollection source,
@@ -743,8 +970,6 @@ public class ComparisonDatabase : IDisposable
                         continue;
                 }
             }
-
-            // iterate over all the 
         }
 
         void processStructureConceptMap(
@@ -768,46 +993,86 @@ public class ComparisonDatabase : IDisposable
                     FhirPackageKey: targetDbPackage.Key,
                     VersionedUrl: targetVersioned);
 
-            // check for a comparison record
-            DbStructureComparison? sdComparison = DbStructureComparison.SelectSingle(
-                _dbConnection,
-                PackageComparisonKey: dbPackagePair.Key,
-                SourceStructureKey: sourceDbPackage.Key,
-                TargetStructureKey: targetDbPackage.Key);
+            DbStructureComparison? sdComparison = null;
+            DbStructureComparison? inverseSdComparison = null;
 
+            // if we have a source and a target, get or make a comparison record
             if ((sourceDbSd != null) &&
-                (targetDbSd != null) &&
-                (sdComparison == null))
+                (targetDbSd != null))
             {
-                sdComparison = new()
-                {
-                    Key = Interlocked.Increment(ref _dbStructureComparisonIndex),
-                    PackageComparisonKey = dbPackagePair.Key,
-                    SourceFhirPackageKey = sourceDbPackage.Key,
-                    TargetFhirPackageKey = targetDbPackage.Key,
-                    SourceStructureKey = sourceDbSd.Key,
-                    SourceCanonicalVersioned = sourceDbSd.VersionedUrl,
-                    SourceCanonicalUnversioned = sourceDbSd.UnversionedUrl,
-                    SourceVersion = sourceDbSd.Version,
-                    SourceName = sourceDbSd.Name,
-                    TargetStructureKey = targetDbSd.Key,
-                    TargetCanonicalVersioned = targetDbSd.VersionedUrl,
-                    TargetCanonicalUnversioned = targetDbSd.UnversionedUrl,
-                    TargetVersion = targetDbSd.Version,
-                    TargetName = targetDbSd.Name,
-                    CompositeName = GetCompositeName(sourceDbPackage, targetDbSd, targetDbPackage, targetDbSd),
-                    SourceOverviewConceptMapUrl = cm.Url,
-                    SourceStructureFmlUrl = null,
-                    Relationship = null,
-                    ConceptDomainRelationship = (sourceDbSd.Name == targetDbSd.Name) ? CMR.Equivalent : null,
-                    ValueDomainRelationship = FhirDbComparer.RelationshipForCounts(sourceDbSd.SnapshotCount, targetDbSd.SnapshotCount),
-                    IsGenerated = false,
-                    LastReviewedBy = null,
-                    LastReviewedOn = null,
-                    Message = $"Imported from existing ConceptMap {cm.Id} ({cm.Url}).",
-                };
+                inverseSdComparison = DbStructureComparison.SelectSingle(
+                    _dbConnection,
+                    PackageComparisonKey: dbPackagePair.Key,
+                    SourceStructureKey: targetDbSd.Key,
+                    TargetStructureKey: sourceDbSd.Key);
 
-                dbStructureComparisons.Add(sdComparison);
+                if (inverseSdComparison == null)
+                {
+                    // check the cache
+                    _ = sdComparisons.TryGet((targetDbSd.Key, sourceDbSd.Key), out inverseSdComparison);
+                }
+
+                sdComparison = DbStructureComparison.SelectSingle(
+                    _dbConnection,
+                    PackageComparisonKey: dbPackagePair.Key,
+                    SourceStructureKey: sourceDbSd.Key,
+                    TargetStructureKey: targetDbSd.Key);
+
+                if (sdComparison == null)
+                {
+                    // check the cache
+                    _ = sdComparisons.TryGet((sourceDbSd.Key, targetDbSd.Key), out sdComparison);
+                }
+
+                // if we still don't have a record, create one
+                if (sdComparison == null)
+                {
+                    sdComparison = new()
+                    {
+                        Key = Interlocked.Increment(ref _dbStructureComparisonIndex),
+                        PackageComparisonKey = dbPackagePair.Key,
+                        SourceFhirPackageKey = sourceDbPackage.Key,
+                        TargetFhirPackageKey = targetDbPackage.Key,
+                        SourceStructureKey = sourceDbSd.Key,
+                        SourceCanonicalVersioned = sourceDbSd.VersionedUrl,
+                        SourceCanonicalUnversioned = sourceDbSd.UnversionedUrl,
+                        SourceVersion = sourceDbSd.Version,
+                        SourceName = sourceDbSd.Name,
+                        TargetStructureKey = targetDbSd.Key,
+                        TargetCanonicalVersioned = targetDbSd.VersionedUrl,
+                        TargetCanonicalUnversioned = targetDbSd.UnversionedUrl,
+                        TargetVersion = targetDbSd.Version,
+                        TargetName = targetDbSd.Name,
+                        CompositeName = GetCompositeName(sourceDbPackage, targetDbSd, targetDbPackage, targetDbSd),
+                        SourceOverviewConceptMapUrl = cm.Url,
+                        SourceStructureFmlUrl = null,
+                        Relationship = null,
+                        ConceptDomainRelationship = (sourceDbSd.Name == targetDbSd.Name) ? CMR.Equivalent : null,
+                        ValueDomainRelationship = FhirDbComparer.RelationshipForCounts(sourceDbSd.SnapshotCount, targetDbSd.SnapshotCount),
+                        IsGenerated = false,
+                        LastReviewedBy = null,
+                        LastReviewedOn = null,
+                        Message = $"Imported from existing ConceptMap {cm.Id} ({cm.Url}).",
+                    };
+
+                    sdComparisons.CacheAdd(sdComparison);
+                }
+
+                if (inverseSdComparison != null)
+                {
+                    if (sdComparison.InverseComparisonKey != inverseSdComparison.Key)
+                    {
+                        // update the inverse comparison key
+                        sdComparison.InverseComparisonKey = inverseSdComparison.Key;
+                        sdComparisons.Changed(sdComparison);
+                    }
+                    if (inverseSdComparison.InverseComparisonKey != sdComparison.Key)
+                    {
+                        // update the inverse comparison key
+                        inverseSdComparison.InverseComparisonKey = sdComparison.Key;
+                        sdComparisons.Changed(inverseSdComparison);
+                    }
+                }
             }
 
             DbUnresolvedStructureComparison? unresolvedSdComparison = DbUnresolvedStructureComparison.SelectSingle(
@@ -844,7 +1109,7 @@ public class ComparisonDatabase : IDisposable
                     Message = $"Imported from existing ConceptMap {cm.Id} ({cm.Url}).",
                 };
 
-                dbUnresolvedStructureComparisons.Add(unresolvedSdComparison);
+                unresolvedSdComparisons.Add(unresolvedSdComparison);
             }
 
             // iterate over the groups
@@ -968,7 +1233,7 @@ public class ComparisonDatabase : IDisposable
                     LastReviewedOn = null,
                 };
 
-                dbUnresolvedElementComparisons.Add(unresolved);
+                unresolvedElementComparisons.Add(unresolved);
 
                 return;
             }
@@ -1002,14 +1267,97 @@ public class ComparisonDatabase : IDisposable
                     LastReviewedOn = null,
                 };
 
-                dbUnresolvedElementComparisons.Add(unresolved);
+                unresolvedElementComparisons.Add(unresolved);
 
                 return;
             }
 
+            // resolve the type groups for the elements
+            DbElementTypeGroup sourceTypeGroup = DbElementTypeGroup.SelectSingle(
+                _dbConnection,
+                Key: sourceDbElement.ElementTypeGroupKey)
+                ?? throw new Exception($"Source element type group {sourceDbElement.ElementTypeGroupKey} not found!");
+
+            DbElementTypeGroup? targetTypeGroup = targetDbElement == null
+                ? null
+                : DbElementTypeGroup.SelectSingle(
+                    _dbConnection,
+                    Key: targetDbElement?.ElementTypeGroupKey);
+
+            if ((targetDbElement?.ElementTypeGroupKey != null) &&
+                (targetTypeGroup == null))
+            {
+                throw new Exception($"Target element type group {targetDbElement.ElementTypeGroupKey} not found!");
+            }
+
+            DbElementTypeGroupComparison? inverseTypeGroupComparison = null;
+            DbElementTypeGroupComparison? typeGroupComparison = null;
+
+            // if we have a target group, process it
+            if (targetTypeGroup != null)
+            {
+                // check the cache (we are loading initial contents - they can only be in the cache if they exist)
+                _ = typeGroupComparisons.TryGet((sourceTypeGroup.Key, targetTypeGroup.Key), out typeGroupComparison);
+                _ = typeGroupComparisons.TryGet((targetTypeGroup.Key, sourceTypeGroup.Key), out inverseTypeGroupComparison);
+
+                // if we still don't have it, create a new one
+                if (typeGroupComparison == null)
+                {
+                    typeGroupComparison = new()
+                    {
+                        Key = Interlocked.Increment(ref _dbElementTypeGroupComparisonIndex),
+                        InverseComparisonKey = inverseTypeGroupComparison?.Key,
+                        PackageComparisonKey = dbPackagePair.Key,
+                        SourceFhirPackageKey = dbPackagePair.SourcePackageKey,
+                        SourceElementTypeGroupKey = sourceTypeGroup.Key,
+                        SourceElementTypeGroupLiteral = sourceTypeGroup.Literal,
+                        TargetFhirPackageKey = dbPackagePair.TargetPackageKey,
+                        TargetElementTypeGroupKey = targetTypeGroup.Key,
+                        TargetElementTypeGroupLiteral = targetTypeGroup.Literal,
+                        Relationship = relationship,
+                        ConceptDomainRelationship = null,
+                        ValueDomainRelationship = null,
+                        Message = comment,
+                        NoMap = false,
+                        IsGenerated = false,
+                        LastReviewedBy = null,
+                        LastReviewedOn = null,
+                    };
+
+                    typeGroupComparisons.CacheAdd(typeGroupComparison);
+                }
+
+                if (inverseTypeGroupComparison != null)
+                {
+                    if (typeGroupComparison.InverseComparisonKey != inverseTypeGroupComparison.Key)
+                    {
+                        // update the inverse comparison key
+                        typeGroupComparison.InverseComparisonKey = inverseTypeGroupComparison.Key;
+                        typeGroupComparisons.Changed(typeGroupComparison);
+                    }
+
+                    if (inverseTypeGroupComparison.InverseComparisonKey != typeGroupComparison.Key)
+                    {
+                        // update the inverse comparison key
+                        inverseTypeGroupComparison.InverseComparisonKey = typeGroupComparison.Key;
+                        typeGroupComparisons.Changed(inverseTypeGroupComparison);
+                    }
+                }
+            }
+
+            // check the cache for an inverse record
+            DbElementComparison? inverseComparison = null;
+
+            if (targetDbElement != null)
+            {
+                _ = elementComparisons.TryGet((targetDbElement.Key, sourceDbElement.Key), out inverseComparison);
+            }
+
+            // create our record
             DbElementComparison resolved = new()
             {
                 Key = Interlocked.Increment(ref _dbElementComparisonIndex),
+                InverseComparisonKey = inverseComparison?.Key,
                 PackageComparisonKey = dbPackagePair.Key,
                 SourceFhirPackageKey = dbPackagePair.SourcePackageKey,
                 SourceStructureKey = sourceDbSd.Key,
@@ -1030,9 +1378,27 @@ public class ComparisonDatabase : IDisposable
                 IsGenerated = false,
                 LastReviewedBy = null,
                 LastReviewedOn = null,
+                TypeGroupComparisonKey = typeGroupComparison?.Key,
             };
 
-            dbElementComparisons.Add(resolved);
+            elementComparisons.CacheAdd(resolved);
+
+            if (inverseComparison != null)
+            {
+                if (resolved.InverseComparisonKey != inverseComparison.Key)
+                {
+                    // update the inverse comparison key
+                    resolved.InverseComparisonKey = inverseComparison.Key;
+                    elementComparisons.Changed(resolved);
+                }
+
+                if (inverseComparison.InverseComparisonKey != resolved.Key)
+                {
+                    // update the inverse comparison key
+                    inverseComparison.InverseComparisonKey = resolved.Key;
+                    elementComparisons.Changed(inverseComparison);
+                }
+            }
 
             return;
         }
@@ -1100,7 +1466,7 @@ public class ComparisonDatabase : IDisposable
                                 Message = message,
                             };
 
-                            dbUnresolvedStructureComparisons.Add(dbUnresolvedSdComparison);
+                            unresolvedSdComparisons.Add(dbUnresolvedSdComparison);
 
                             continue;
                         }
@@ -1141,7 +1507,7 @@ public class ComparisonDatabase : IDisposable
                             Message = $"Imported from existing ConceptMap {cm.Id} ({cm.Url}).",
                         };
 
-                        dbStructureComparisons.Add(dbSdComparison);
+                        sdComparisons.CacheAdd(dbSdComparison);
                     }
                 }
             }
@@ -1185,10 +1551,13 @@ public class ComparisonDatabase : IDisposable
                 }
             }
 
+            _ = vsComparisons.TryGet((targetDbVs.Key, sourceDbVs.Key), out DbValueSetComparison? inverseComparison);
+
             // create our canonical comparison record
             DbValueSetComparison dbVsComparison = new()
             {
                 Key = Interlocked.Increment(ref _dbValueSetComparisonIndex),
+                InverseComparisonKey = inverseComparison?.Key,
                 PackageComparisonKey = dbPackagePair.Key,
                 SourceFhirPackageKey = sourceDbPackage.Key,
                 TargetFhirPackageKey = targetDbPackage.Key,
@@ -1212,36 +1581,45 @@ public class ComparisonDatabase : IDisposable
                 Message = $"Imported from existing ConceptMap {cm.Id} ({cm.Url}).",
             };
 
-            dbValueSetComparisons.Add(dbVsComparison);
+            vsComparisons.CacheAdd(dbVsComparison);
+
+            if (inverseComparison != null)
+            {
+                if (dbVsComparison.InverseComparisonKey != inverseComparison.Key)
+                {
+                    // update the inverse comparison key
+                    dbVsComparison.InverseComparisonKey = inverseComparison.Key;
+                    vsComparisons.Changed(dbVsComparison);
+                }
+
+                if (inverseComparison.InverseComparisonKey != dbVsComparison.Key)
+                {
+                    // update the inverse comparison key
+                    inverseComparison.InverseComparisonKey = dbVsComparison.Key;
+                    vsComparisons.Changed(inverseComparison);
+                }
+            }
 
             // check for manual exclusion
             if (sourceDbVs.IsExcluded)
             {
                 dbVsComparison.Message += $" Note: comparison source: {sourceDbVs.Id} ({sourceDbVs.VersionedUrl}) has been manually excluded.";
-                //dbVsComparison.Message += $" Skipping due to manual exclusion of source content.";
-                //return;
             }
 
             if (targetDbVs.IsExcluded)
             {
                 dbVsComparison.Message += $" Note: comparison target: {targetDbVs.Id} ({targetDbVs.VersionedUrl}) has been manually excluded.";
-                //dbVsComparison.Message += $" Skipping due to manual exclusion of target content.";
-                //return;
             }
 
             // check for failure to expand
             if (sourceDbVs.CanExpand == false)
             {
                 dbVsComparison.Message += $" Note: source value set {sourceDbVs.Id} ({sourceDbVs.VersionedUrl}) cannot be expanded.";
-                //dbVsComparison.Message += $" Skipping because the source value set {sourceDbVs.Id} ({sourceDbVs.VersionedUrl}) cannot be expanded.";
-                //return;
             }
 
             if (targetDbVs.CanExpand == false)
             {
                 dbVsComparison.Message += $" Note: target value set {targetDbVs.Id} ({targetDbVs.VersionedUrl}) cannot be expanded.";
-                //dbVsComparison.Message += $" Skipping because the target value set {targetDbVs.Id} ({targetDbVs.VersionedUrl}) cannot be expanded.";
-                //return;
             }
 
             // process each group
@@ -1362,7 +1740,7 @@ public class ComparisonDatabase : IDisposable
                         LastReviewedOn = null,
                     };
 
-                    dbUnresolvedConceptComparisons.Add(unresolvedNoMap);
+                    uresolvedConceptComparisons.Add(unresolvedNoMap);
 
                     ////dbPackagePair.InvalidImportedConceptComparisons.Add(invalidComparison);
                     //dbVsComparison.InvalidImportedComparisons.Add(invalidComparison);
@@ -1389,7 +1767,7 @@ public class ComparisonDatabase : IDisposable
                     LastReviewedOn = null,
                 };
 
-                dbValueSetConceptComparions.Add(nonMappedComparison);
+                conceptComparisons.CacheAdd(nonMappedComparison);
 
                 return;
             }
@@ -1440,14 +1818,18 @@ public class ComparisonDatabase : IDisposable
                     LastReviewedOn = null,
                 };
 
-                dbUnresolvedConceptComparisons.Add(unresolvedComparison);
+                uresolvedConceptComparisons.Add(unresolvedComparison);
 
                 return;
             }
 
+            // check the cache for an inverse record
+            _ = conceptComparisons.TryGet((targetDbConcept.Key, sourceDbConcept.Key), out DbValueSetConceptComparison? inverseComparison);
+
             DbValueSetConceptComparison mappedComparison = new()
             {
                 Key = Interlocked.Increment(ref _dbConceptComparisonIndex),
+                InverseComparisonKey = inverseComparison?.Key,
                 PackageComparisonKey = dbPackagePair.Key,
                 SourceFhirPackageKey = dbPackagePair.SourcePackageKey,
                 SourceValueSetKey = sourceDbVs.Key,
@@ -1464,7 +1846,24 @@ public class ComparisonDatabase : IDisposable
                 LastReviewedOn = null,
             };
 
-            dbValueSetConceptComparions.Add(mappedComparison);
+            conceptComparisons.CacheAdd(mappedComparison);
+
+            if (inverseComparison != null)
+            {
+                if (mappedComparison.InverseComparisonKey != inverseComparison.Key)
+                {
+                    // update the inverse comparison key
+                    mappedComparison.InverseComparisonKey = inverseComparison.Key;
+                    conceptComparisons.Changed(mappedComparison);
+                }
+
+                if (inverseComparison.InverseComparisonKey != mappedComparison.Key)
+                {
+                    // update the inverse comparison key
+                    inverseComparison.InverseComparisonKey = mappedComparison.Key;
+                    conceptComparisons.Changed(inverseComparison);
+                }
+            }
         }
     }
 
@@ -1829,8 +2228,11 @@ public class ComparisonDatabase : IDisposable
             //(dc.LogicalModelsByUrl.Values, FhirArtifactClassEnum.LogicalModel),
             ];
 
-        string literalForType(string? typeName, string? typeProfile, string? targetProfile) => $"{typeName}({typeProfile})[{targetProfile}]";
-
+        string literalForType(string? typeName, string? typeProfile, string? targetProfile) =>
+            (string.IsNullOrEmpty(typeName) ? string.Empty : typeName) +
+            (string.IsNullOrEmpty(typeProfile) ? string.Empty : $"[{typeProfile}]") +
+            (string.IsNullOrEmpty(targetProfile) ? string.Empty : $"({targetProfile})");
+        
         void addElement(
             DbStructureDefinition dbStructure,
             StructureDefinition sd,
@@ -1983,7 +2385,9 @@ public class ComparisonDatabase : IDisposable
                 }
                 else
                 {
-                    string tl = literalForType(null, null, null);
+                    string btn = ed.cgBaseTypeName(dc, true);
+
+                    string tl = literalForType(btn, null, null);
 
                     if (!dbElementTypes.TryGetValue(tl, out DbElementType? dbElementType))
                     {
@@ -1991,7 +2395,7 @@ public class ComparisonDatabase : IDisposable
                         {
                             Key = Interlocked.Increment(ref _dbElementTypeIndex),
                             FhirPackageKey = dbStructure.FhirPackageKey,
-                            TypeName = null,
+                            TypeName = btn,
                             TypeProfile = null,
                             TargetProfile = null,
                         };
@@ -2015,7 +2419,7 @@ public class ComparisonDatabase : IDisposable
                 {
                     Key = Interlocked.Increment(ref _dbElementTypeGroupIndex),
                     FhirPackageKey = dbStructure.FhirPackageKey,
-                    GroupLiteral = typeGroupLiteral,
+                    Literal = typeGroupLiteral,
                 };
                 dbElementTypeGroups.Add(typeGroupLiteral, elementTypeGroup);
             }
