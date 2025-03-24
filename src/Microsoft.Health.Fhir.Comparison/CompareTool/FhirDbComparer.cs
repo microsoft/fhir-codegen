@@ -528,12 +528,25 @@ public class FhirDbComparer
                     SourceStructureKey: sourceCollated.TypeStructureKey,
                     TargetStructureKey: targetCollated.TypeStructureKey);
 
-                (CMR relationship, string message) typeProfileComparison = compareCollatedProfiles(sourceCollated.TypeProfiles, targetCollated.TypeProfiles);
+                (CMR relationship, string message) typeProfileComparison = compareCollatedProfiles(
+                    sourceCollated.TypeProfiles,
+                    targetCollated.TypeProfiles,
+                    sourceCollated.TypeName ?? string.Empty,
+                    "type");
+                (CMR relationship, string message) targetProfileComparison = compareCollatedProfiles(
+                    sourceCollated.TargetProfiles,
+                    targetCollated.TargetProfiles,
+                    sourceCollated.TypeName ?? string.Empty,
+                    "target");
 
                 comparisonList.Add(new()
                 {
                     TargetCollated = targetCollated,
                     SdComparison = sdComparison,
+                    TypeProfileRelationship = typeProfileComparison.relationship,
+                    TypeProfileMessage = typeProfileComparison.message,
+                    TargetProfileRelationship = targetProfileComparison.relationship,
+                    TargetProfileMessage = targetProfileComparison.message,
                 });
 
                 usedTargetTypes.Add(targetCollated.TypeName ?? string.Empty);
@@ -563,10 +576,25 @@ public class FhirDbComparer
                         continue;
                     }
 
+                    (CMR relationship, string message) typeProfileComparison = compareCollatedProfiles(
+                        sourceCollated.TypeProfiles,
+                        collated.TypeProfiles,
+                        (sourceCollated.TypeName ?? string.Empty) + ":" + (collated.TypeName ?? string.Empty),
+                        "type");
+                    (CMR relationship, string message) targetProfileComparison = compareCollatedProfiles(
+                        sourceCollated.TargetProfiles,
+                        collated.TargetProfiles,
+                        (sourceCollated.TypeName ?? string.Empty) + ":" + (collated.TypeName ?? string.Empty),
+                        "type");
+
                     comparisonList.Add(new()
                     {
                         TargetCollated = collated,
                         SdComparison = potential,
+                        TypeProfileRelationship = typeProfileComparison.relationship,
+                        TypeProfileMessage = typeProfileComparison.message,
+                        TargetProfileRelationship = targetProfileComparison.relationship,
+                        TargetProfileMessage = targetProfileComparison.message,
                     });
 
                     usedTargetTypes.Add(collated.TypeName ?? string.Empty);
@@ -578,8 +606,6 @@ public class FhirDbComparer
             {
                 continue;
             }
-
-
         }
 
         // be optimitistic
@@ -601,6 +627,8 @@ public class FhirDbComparer
             {
                 conceptRelationship = applyRelationship(conceptRelationship, tcRec.SdComparison?.ConceptDomainRelationship);
                 valueRelationship = applyRelationship(valueRelationship, tcRec.SdComparison?.ValueDomainRelationship);
+                valueRelationship = applyRelationship(valueRelationship, tcRec.TypeProfileRelationship);
+                valueRelationship = applyRelationship(valueRelationship, tcRec.TargetProfileRelationship);
             }
         }
 
@@ -612,8 +640,8 @@ public class FhirDbComparer
 
         if (noMap)
         {
-            conceptRelationship = CMR.SourceIsBroaderThanTarget;
-            valueRelationship = CMR.SourceIsBroaderThanTarget;
+            conceptRelationship =  applyRelationship(conceptRelationship, CMR.SourceIsBroaderThanTarget);
+            valueRelationship = applyRelationship(valueRelationship, CMR.SourceIsBroaderThanTarget);
         }
 
         // for simplicity, create a code-gen type mapping that applies relationship rules for us
@@ -652,22 +680,22 @@ public class FhirDbComparer
         _elementTypeComparisons.CacheAdd(etc);
         return etc;
 
-        (CMR relationship, string message) compareCollatedProfiles(string[] sourceProfileList, string[] targetProfileList)
+        (CMR relationship, string message) compareCollatedProfiles(string[] sourceProfileList, string[] targetProfileList, string typeName, string profileType)
         {
             if ((sourceProfileList.Length == 0) &&
                 (targetProfileList.Length == 0))
             {
-                return (CMR.Equivalent, "Neither type includes type profiles");
+                return (CMR.Equivalent, $"Neither element type {typeName} includes {profileType} profiles");
             }
 
             if (sourceProfileList.Length == 0)
             {
-                return (CMR.SourceIsBroaderThanTarget, $"Target added type profiles: {(string.Join(", ", targetProfileList))}");
+                return (CMR.SourceIsBroaderThanTarget, $"Target added {typeName} {profileType} profiles: {(string.Join(", ", targetProfileList))}");
             }
 
             if (targetProfileList.Length == 0)
             {
-                return (CMR.SourceIsNarrowerThanTarget, $"Target removed type profiles: {(string.Join(", ", sourceProfileList))}");
+                return (CMR.SourceIsNarrowerThanTarget, $"Target removed {typeName} {profileType} profiles: {(string.Join(", ", sourceProfileList))}");
             }
 
             HashSet<string> sourceTypeProfiles = new(sourceProfileList);
@@ -679,22 +707,22 @@ public class FhirDbComparer
             if ((missingProfiles.Count == 0) &&
                 (addedProfiles.Count == 0))
             {
-                return (CMR.Equivalent, "Type Profiles are equivalent");
+                return (CMR.Equivalent, $"Element type {typeName} {profileType} Profiles are equivalent");
             }
 
             if (missingProfiles.Count == 0)
             {
-                return (CMR.SourceIsBroaderThanTarget, $"Target added type profiles: {(string.Join(", ", addedProfiles))}");
+                return (CMR.SourceIsBroaderThanTarget, $"Target added {typeName} {profileType} profiles: {(string.Join(", ", addedProfiles))}");
             }
 
             if (addedProfiles.Count == 0)
             {
-                return (CMR.SourceIsNarrowerThanTarget, $"Target removed type profiles: {(string.Join(", ", missingProfiles))}");
+                return (CMR.SourceIsNarrowerThanTarget, $"Target removed {typeName} {profileType} profiles: {(string.Join(", ", missingProfiles))}");
             }
 
             return (
                 CMR.RelatedTo,
-                $"Target added type profiles: {(string.Join(", ", addedProfiles))}, removed type profiles: {(string.Join(", ", missingProfiles))}");
+                $"Target added {typeName} {profileType} profiles: {(string.Join(", ", addedProfiles))}, removed {profileType} profiles: {(string.Join(", ", missingProfiles))}");
         }
     }
 
