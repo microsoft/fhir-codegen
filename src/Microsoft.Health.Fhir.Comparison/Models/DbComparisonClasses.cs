@@ -261,9 +261,6 @@ public partial class DbElementComparison : DbPackageComparisonContent, IDbPackag
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
 
-    [CgSQLiteForeignKey(referenceTable: "ElementTypeComparisons", referenceColumn: nameof(DbElementTypeComparison.Key))]
-    public required int? TypeGroupComparisonKey { get; set; }
-
     [CgSQLiteIgnore]
     public int SourceContentKey => SourceElementKey;
     [CgSQLiteIgnore]
@@ -271,47 +268,34 @@ public partial class DbElementComparison : DbPackageComparisonContent, IDbPackag
 }
 
 [CgSQLiteTable(tableName: "ElementTypeComparisons")]
-[CgSQLiteIndex(nameof(SourceElementTypeKey), nameof(TargetElementTypeKey))]
+[CgSQLiteIndex(nameof(SourceElementKey), nameof(TargetElementKey))]
 public partial class DbElementTypeComparison : DbPackageComparisonContent, IDbPackageComparisonContent
 {
-    [CgSQLiteForeignKey(referenceTable: "ElementTypes", referenceColumn: nameof(DbElementType.Key))]
-    public required int SourceElementTypeKey { get; set; }
-    public required string SourceElementTypeLiteral { get; set; }
-
-    [CgSQLiteForeignKey(referenceTable: "ElementTypes", referenceColumn: nameof(DbElementType.Key))]
-    public required int? TargetElementTypeKey { get; set; }
-    public required string? TargetElementTypeLiteral { get; set; }
-
     [CgSQLiteForeignKey(referenceTable: "StructureComparisons", referenceColumn: nameof(DbStructureComparison.Key))]
     public required int StructureComparisonKey { get; set; }
 
+    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
+    public required int SourceStructureKey { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
+    public required int? TargetStructureKey { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElementType.Key))]
+    public required int SourceElementKey { get; set; }
+    public required string SourceElementTypeLiteral { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElementType.Key))]
+    public required int? TargetElementKey { get; set; }
+    public required string? TargetElementTypeLiteral { get; set; }
+
     public required bool? NoMap { get; set; }
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
 
     [CgSQLiteIgnore]
-    public int SourceContentKey => SourceElementTypeKey;
+    public int SourceContentKey => SourceElementKey;
     [CgSQLiteIgnore]
-    public int? TargetContentKey => TargetElementTypeKey;
-}
-
-[CgSQLiteTable(tableName: "ElementTypeGroupComparisons")]
-public partial class DbElementTypeGroupComparison : DbPackageComparisonContent, IDbPackageComparisonContent
-{
-    [CgSQLiteForeignKey(referenceTable: "ElementTypeGroups", referenceColumn: nameof(DbElementTypeGroup.Key))]
-    public required int SourceElementTypeGroupKey { get; set; }
-    public required string SourceElementTypeGroupLiteral { get; set; }
-    [CgSQLiteForeignKey(referenceTable: "ElementTypeGroups", referenceColumn: nameof(DbElementTypeGroup.Key))]
-    public required int? TargetElementTypeGroupKey { get; set; }
-    public required string? TargetElementTypeGroupLiteral { get; set; }
-    public required bool? NoMap { get; set; }
-    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
-    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
-
-    [CgSQLiteIgnore]
-    public int SourceContentKey => SourceElementTypeGroupKey;
-    [CgSQLiteIgnore]
-    public int? TargetContentKey => TargetElementTypeGroupKey;
+    public int? TargetContentKey => TargetElementKey;
 }
 
 

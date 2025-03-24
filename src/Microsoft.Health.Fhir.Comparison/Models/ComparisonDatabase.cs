@@ -223,8 +223,6 @@ public class ComparisonDatabase : IDisposable
             _dbStructureIndex = DbStructureDefinition.SelectMaxKey(_dbConnection) ?? 0;
             _dbElementIndex = DbElement.SelectMaxKey(_dbConnection) ?? 0;
             _dbElementTypeIndex = DbElementType.SelectMaxKey(_dbConnection) ?? 0;
-            _dbElementTypeGroupIndex = DbElementTypeGroup.SelectMaxKey(_dbConnection) ?? 0;
-            _dbElementTypeGroupMapIndex = DbElementTypeGroupMap.SelectMaxKey(_dbConnection) ?? 0;
 
             _dbValueSetComparisonIndex = DbValueSetComparison.SelectMaxKey(_dbConnection) ?? 0;
             _dbConceptComparisonIndex = DbValueSetConceptComparison.SelectMaxKey(_dbConnection) ?? 0;
@@ -233,8 +231,7 @@ public class ComparisonDatabase : IDisposable
             _dbStructureComparisonIndex = DbStructureComparison.SelectMaxKey(_dbConnection) ?? 0;
             _dbUnresolvedStructureComparisonIndex = DbUnresolvedStructureComparison.SelectMaxKey(_dbConnection) ?? 0;
 
-            _dbElementTypeComparisonIndex = DbElementTypeGroupMap.SelectMaxKey(_dbConnection) ?? 0;
-            _dbElementTypeGroupComparisonIndex = DbElementTypeGroup.SelectMaxKey(_dbConnection) ?? 0;
+            _dbElementTypeComparisonIndex = DbElementTypeComparison.SelectMaxKey(_dbConnection) ?? 0;
             _dbElementComparisonIndex = DbElementComparison.SelectMaxKey(_dbConnection) ?? 0;
             _dbUnresolvedElementComparisonIndex = DbUnresolvedElementComparison.SelectMaxKey(_dbConnection) ?? 0;
         }
@@ -306,12 +303,9 @@ public class ComparisonDatabase : IDisposable
                     DbStructureDefinition.Insert(targetDb, DbStructureDefinition.SelectList(sourceDb));
                     DbElement.Insert(targetDb, DbElement.SelectList(sourceDb));
                     DbElementType.Insert(targetDb, DbElementType.SelectList(sourceDb));
-                    DbElementTypeGroup.Insert(targetDb, DbElementTypeGroup.SelectList(sourceDb));
-                    DbElementTypeGroupMap.Insert(targetDb, DbElementTypeGroupMap.SelectList(sourceDb));
                     DbStructureComparison.Insert(targetDb, DbStructureComparison.SelectList(sourceDb));
                     DbUnresolvedStructureComparison.Insert(targetDb, DbUnresolvedStructureComparison.SelectList(sourceDb));
                     DbElementTypeComparison.Insert(targetDb, DbElementTypeComparison.SelectList(sourceDb));
-                    DbElementTypeGroupComparison.Insert(targetDb, DbElementTypeGroupComparison.SelectList(sourceDb));
                     DbElementComparison.Insert(targetDb, DbElementComparison.SelectList(sourceDb));
                     DbUnresolvedElementComparison.Insert(targetDb, DbUnresolvedElementComparison.SelectList(sourceDb));
                 }
@@ -331,12 +325,9 @@ public class ComparisonDatabase : IDisposable
                     DbStructureDefinition.Insert(targetDb, DbStructureDefinition.SelectList(sourceDb));
                     DbElement.Insert(targetDb, DbElement.SelectList(sourceDb));
                     DbElementType.Insert(targetDb, DbElementType.SelectList(sourceDb));
-                    DbElementTypeGroup.Insert(targetDb, DbElementTypeGroup.SelectList(sourceDb));
-                    DbElementTypeGroupMap.Insert(targetDb, DbElementTypeGroupMap.SelectList(sourceDb));
                     DbStructureComparison.Insert(targetDb, DbStructureComparison.SelectList(sourceDb));
                     DbUnresolvedStructureComparison.Insert(targetDb, DbUnresolvedStructureComparison.SelectList(sourceDb));
                     DbElementTypeComparison.Insert(targetDb, DbElementTypeComparison.SelectList(sourceDb));
-                    DbElementTypeGroupComparison.Insert(targetDb, DbElementTypeGroupComparison.SelectList(sourceDb));
                     DbElementComparison.Insert(targetDb, DbElementComparison.SelectList(sourceDb));
                     DbUnresolvedElementComparison.Insert(targetDb, DbUnresolvedElementComparison.SelectList(sourceDb));
                 }
@@ -368,12 +359,9 @@ public class ComparisonDatabase : IDisposable
                     DbStructureDefinition.DropTable(db);
                     DbElement.DropTable(db);
                     DbElementType.DropTable(db);
-                    DbElementTypeGroup.DropTable(db);
-                    DbElementTypeGroupMap.DropTable(db);
                     DbStructureComparison.DropTable(db);
                     DbUnresolvedStructureComparison.DropTable(db);
                     DbElementTypeComparison.DropTable(db);
-                    DbElementTypeGroupComparison.DropTable(db);
                     DbElementComparison.DropTable(db);
                     DbUnresolvedElementComparison.DropTable(db);
                 }
@@ -393,12 +381,9 @@ public class ComparisonDatabase : IDisposable
                     DbStructureDefinition.DropTable(db);
                     DbElement.DropTable(db);
                     DbElementType.DropTable(db);
-                    DbElementTypeGroup.DropTable(db);
-                    DbElementTypeGroupMap.DropTable(db);
                     DbStructureComparison.DropTable(db);
                     DbUnresolvedStructureComparison.DropTable(db);
                     DbElementTypeComparison.DropTable(db);
-                    DbElementTypeGroupComparison.DropTable(db);
                     DbElementComparison.DropTable(db);
                     DbUnresolvedElementComparison.DropTable(db);
                 }
@@ -430,12 +415,9 @@ public class ComparisonDatabase : IDisposable
                     DbStructureDefinition.CreateTable(db);
                     DbElement.CreateTable(db);
                     DbElementType.CreateTable(db);
-                    DbElementTypeGroup.CreateTable(db);
-                    DbElementTypeGroupMap.CreateTable(db);
                     DbStructureComparison.CreateTable(db);
                     DbUnresolvedStructureComparison.CreateTable(db);
                     DbElementTypeComparison.CreateTable(db);
-                    DbElementTypeGroupComparison.CreateTable(db);
                     DbElementComparison.CreateTable(db);
                     DbUnresolvedElementComparison.CreateTable(db);
                 }
@@ -455,12 +437,9 @@ public class ComparisonDatabase : IDisposable
                     DbStructureDefinition.CreateTable(db);
                     DbElement.CreateTable(db);
                     DbElementType.CreateTable(db);
-                    DbElementTypeGroup.CreateTable(db);
-                    DbElementTypeGroupMap.CreateTable(db);
                     DbStructureComparison.CreateTable(db);
                     DbUnresolvedStructureComparison.CreateTable(db);
                     DbElementTypeComparison.CreateTable(db);
-                    DbElementTypeGroupComparison.CreateTable(db);
                     DbElementComparison.CreateTable(db);
                     DbUnresolvedElementComparison.CreateTable(db);
                 }
@@ -608,7 +587,6 @@ public class ComparisonDatabase : IDisposable
         DbComparisonCache<DbStructureComparison> sdComparisons = new();
         DbComparisonCache<DbElementComparison> elementComparisons = new();
         DbComparisonCache<DbElementTypeComparison> typeComparisons = new();
-        DbComparisonCache<DbElementTypeGroupComparison> typeGroupComparisons = new();
 
         List<DbUnresolvedConceptComparison> uresolvedConceptComparisons = [];
         List<DbUnresolvedStructureComparison> unresolvedSdComparisons = [];
@@ -677,9 +655,6 @@ public class ComparisonDatabase : IDisposable
             }
         }
 
-        resolveStructureComparisonsToTypeComparisons();
-
-
         _logger.LogInformation("Inserting existing cross version maps into the database...");
 
         _dbConnection.Insert(vsComparisons.ComparisonsToAdd);
@@ -703,132 +678,10 @@ public class ComparisonDatabase : IDisposable
         _dbConnection.Insert(typeComparisons.ComparisonsToAdd);
         _logger.LogInformation($" <<< added {typeComparisons.Count} Element Type Comparisons");
 
-        _dbConnection.Insert(typeGroupComparisons.ComparisonsToAdd);
-        _logger.LogInformation($" <<< added {typeGroupComparisons.Count} Element Type Group Comparisons");
-
         _dbConnection.Insert(unresolvedElementComparisons);
         _logger.LogInformation($" <<< added {unresolvedElementComparisons.Count} Unresolved Element Comparisons");
 
         return true;
-
-        
-        void resolveStructureComparisonsToTypeComparisons()
-        {
-            // build a lookup for source element types
-            ILookup<(int PackageKey, string Literal), DbElementType> sourceElementTypes = DbElementType
-                .SelectList(_dbConnection)
-                .ToLookup(et => (et.FhirPackageKey, et.Literal));
-
-            // iterate over the structure comparisons in the cache
-            foreach (DbStructureComparison sdComparison in sdComparisons.ComparisonsToAdd)
-            {
-                // try to resolve the source structure
-                DbStructureDefinition sourceSd = DbStructureDefinition.SelectSingle(
-                    _dbConnection,
-                    FhirPackageKey: sdComparison.SourceFhirPackageKey,
-                    Key: sdComparison.SourceStructureKey)
-                    ?? throw new Exception($"Source structure {sdComparison.SourceStructureKey} not found in package: {sdComparison.SourceFhirPackageKey}!");
-
-                DbElementType? sourceElementType = DbElementType.SelectSingle(
-                    _dbConnection,
-                    FhirPackageKey: sdComparison.SourceFhirPackageKey,
-                    TypeName: sourceSd.Id,
-                    TypeProfileIsNull: true,
-                    TargetProfileIsNull: true);
-
-                // if the source type does not have a matching element, we can skip it
-                if (sourceElementType == null)
-                {
-                    continue;
-                }
-
-                // skip comparisons without targets
-                if (sdComparison.TargetStructureKey == null)
-                {
-                    // add as a non-mapping comparison
-                    DbElementTypeComparison nonMapping = new()
-                    {
-                        Key = Interlocked.Increment(ref _dbElementTypeComparisonIndex),
-                        PackageComparisonKey = sdComparison.PackageComparisonKey,
-                        SourceFhirPackageKey = sdComparison.SourceFhirPackageKey,
-                        TargetFhirPackageKey = sdComparison.TargetFhirPackageKey,
-                        StructureComparisonKey = sdComparison.Key,
-                        SourceElementTypeKey = sourceElementType.Key,
-                        SourceElementTypeLiteral = sourceElementType.Literal,
-                        TargetElementTypeKey = null,
-                        TargetElementTypeLiteral = null,
-                        Relationship = sdComparison.Relationship,
-                        ConceptDomainRelationship = sdComparison.ConceptDomainRelationship,
-                        ValueDomainRelationship = sdComparison.ValueDomainRelationship,
-                        IsGenerated = sdComparison.IsGenerated,
-                        LastReviewedBy = sdComparison.LastReviewedBy,
-                        LastReviewedOn = sdComparison.LastReviewedOn,
-                        Message = sdComparison.Message,
-                        NoMap = true,
-                    };
-
-                    typeComparisons.CacheAdd(nonMapping);
-
-                    continue;
-                }
-
-                // try to resolve the target structure
-                DbStructureDefinition targetSd = DbStructureDefinition.SelectSingle(
-                    _dbConnection,
-                    FhirPackageKey: sdComparison.TargetFhirPackageKey,
-                    Key: sdComparison.TargetStructureKey)
-                    ?? throw new Exception($"Target structure {sdComparison.TargetStructureKey} not found in package: {sdComparison.TargetFhirPackageKey}!");
-
-                DbElementType? targetElementType = DbElementType.SelectSingle(
-                    _dbConnection,
-                    FhirPackageKey: sdComparison.TargetFhirPackageKey,
-                    TypeName: targetSd.Id,
-                    TypeProfileIsNull: true,
-                    TargetProfileIsNull: true);
-
-                // only continue if we a target element type
-                if (targetElementType == null)
-                {
-                    continue;
-                }
-
-                // check for an inverse
-                _ = typeComparisons.TryGet((targetElementType.Key, sourceElementType.Key), out DbElementTypeComparison? inverseTypeComparison);
-
-                // no comparisons have been added at this point, so we can blindly add them
-                DbElementTypeComparison etc = new()
-                {
-                    Key = Interlocked.Increment(ref _dbElementTypeComparisonIndex),
-                    InverseComparisonKey = inverseTypeComparison?.Key,
-                    PackageComparisonKey = sdComparison.PackageComparisonKey,
-                    SourceFhirPackageKey = sdComparison.SourceFhirPackageKey,
-                    TargetFhirPackageKey = sdComparison.TargetFhirPackageKey,
-                    StructureComparisonKey = sdComparison.Key,
-                    SourceElementTypeKey = sourceElementType.Key,
-                    SourceElementTypeLiteral = sourceElementType.Literal,
-                    TargetElementTypeKey = targetElementType.Key,
-                    TargetElementTypeLiteral = targetElementType.Literal,
-                    Relationship = sdComparison.Relationship,
-                    ConceptDomainRelationship = sdComparison.ConceptDomainRelationship,
-                    ValueDomainRelationship = sdComparison.ValueDomainRelationship,
-                    IsGenerated = sdComparison.IsGenerated,
-                    LastReviewedBy = sdComparison.LastReviewedBy,
-                    LastReviewedOn = sdComparison.LastReviewedOn,
-                    Message = sdComparison.Message,
-                    NoMap = false,
-                };
-
-                typeComparisons.CacheAdd(etc);
-
-                if ((inverseTypeComparison != null) &&
-                    (inverseTypeComparison.InverseComparisonKey != etc.Key))
-                {
-                    // update the inverse comparison key
-                    inverseTypeComparison.InverseComparisonKey = etc.Key;
-                    typeComparisons.Changed(inverseTypeComparison);
-                }
-            }
-        }
 
         void loadDefaultPrimitiveMaps(
             DefinitionCollection source,
@@ -1272,79 +1125,6 @@ public class ComparisonDatabase : IDisposable
                 return;
             }
 
-            // resolve the type groups for the elements
-            DbElementTypeGroup sourceTypeGroup = DbElementTypeGroup.SelectSingle(
-                _dbConnection,
-                Key: sourceDbElement.ElementTypeGroupKey)
-                ?? throw new Exception($"Source element type group {sourceDbElement.ElementTypeGroupKey} not found!");
-
-            DbElementTypeGroup? targetTypeGroup = targetDbElement == null
-                ? null
-                : DbElementTypeGroup.SelectSingle(
-                    _dbConnection,
-                    Key: targetDbElement?.ElementTypeGroupKey);
-
-            if ((targetDbElement?.ElementTypeGroupKey != null) &&
-                (targetTypeGroup == null))
-            {
-                throw new Exception($"Target element type group {targetDbElement.ElementTypeGroupKey} not found!");
-            }
-
-            DbElementTypeGroupComparison? inverseTypeGroupComparison = null;
-            DbElementTypeGroupComparison? typeGroupComparison = null;
-
-            // if we have a target group, process it
-            if (targetTypeGroup != null)
-            {
-                // check the cache (we are loading initial contents - they can only be in the cache if they exist)
-                _ = typeGroupComparisons.TryGet((sourceTypeGroup.Key, targetTypeGroup.Key), out typeGroupComparison);
-                _ = typeGroupComparisons.TryGet((targetTypeGroup.Key, sourceTypeGroup.Key), out inverseTypeGroupComparison);
-
-                // if we still don't have it, create a new one
-                if (typeGroupComparison == null)
-                {
-                    typeGroupComparison = new()
-                    {
-                        Key = Interlocked.Increment(ref _dbElementTypeGroupComparisonIndex),
-                        InverseComparisonKey = inverseTypeGroupComparison?.Key,
-                        PackageComparisonKey = dbPackagePair.Key,
-                        SourceFhirPackageKey = dbPackagePair.SourcePackageKey,
-                        SourceElementTypeGroupKey = sourceTypeGroup.Key,
-                        SourceElementTypeGroupLiteral = sourceTypeGroup.Literal,
-                        TargetFhirPackageKey = dbPackagePair.TargetPackageKey,
-                        TargetElementTypeGroupKey = targetTypeGroup.Key,
-                        TargetElementTypeGroupLiteral = targetTypeGroup.Literal,
-                        Relationship = relationship,
-                        ConceptDomainRelationship = null,
-                        ValueDomainRelationship = null,
-                        Message = comment,
-                        NoMap = false,
-                        IsGenerated = false,
-                        LastReviewedBy = null,
-                        LastReviewedOn = null,
-                    };
-
-                    typeGroupComparisons.CacheAdd(typeGroupComparison);
-                }
-
-                if (inverseTypeGroupComparison != null)
-                {
-                    if (typeGroupComparison.InverseComparisonKey != inverseTypeGroupComparison.Key)
-                    {
-                        // update the inverse comparison key
-                        typeGroupComparison.InverseComparisonKey = inverseTypeGroupComparison.Key;
-                        typeGroupComparisons.Changed(typeGroupComparison);
-                    }
-
-                    if (inverseTypeGroupComparison.InverseComparisonKey != typeGroupComparison.Key)
-                    {
-                        // update the inverse comparison key
-                        inverseTypeGroupComparison.InverseComparisonKey = typeGroupComparison.Key;
-                        typeGroupComparisons.Changed(inverseTypeGroupComparison);
-                    }
-                }
-            }
-
             // check the cache for an inverse record
             DbElementComparison? inverseComparison = null;
 
@@ -1378,7 +1158,6 @@ public class ComparisonDatabase : IDisposable
                 IsGenerated = false,
                 LastReviewedBy = null,
                 LastReviewedOn = null,
-                TypeGroupComparisonKey = typeGroupComparison?.Key,
             };
 
             elementComparisons.CacheAdd(resolved);
@@ -2120,11 +1899,9 @@ public class ComparisonDatabase : IDisposable
         DefinitionCollection dc,
         HashSet<string> _exclusionSet)
     {
-        List<DbStructureDefinition> dbStructures = [];
+        Dictionary<string, DbStructureDefinition> dbStructures = [];
         List<DbElement> dbElements = [];
-        Dictionary<string, DbElementType> dbElementTypes = [];
-        Dictionary<string, DbElementTypeGroup> dbElementTypeGroups = [];
-        Dictionary<int, List<DbElementTypeGroupMap>> dbElementTypeGroupMaps = [];
+        List<DbElementType> dbElementTypes = [];
 
         // iterate over the types of structures
         foreach ((IEnumerable<StructureDefinition> structures, FhirArtifactClassEnum cgClass) in getStructures(dc))
@@ -2155,7 +1932,7 @@ public class ComparisonDatabase : IDisposable
                         DifferentialCount = sd.Differential?.Element.Count ?? 0,
                     };
 
-                    dbStructures.Add(sdmExcluded);
+                    dbStructures.Add(sd.Id, sdmExcluded);
 
                     continue;
                 }
@@ -2181,19 +1958,27 @@ public class ComparisonDatabase : IDisposable
                     DifferentialCount = sd.Differential?.Element.Count ?? 0,
                 };
 
-                dbStructures.Add(dbStructure);
+                dbStructures.Add(sd.Id, dbStructure);
 
                 // iterate over all the elements of the structure
                 foreach (ElementDefinition ed in sd.cgElements(skipSlices: false))
                 {
-                    addElement(
-                        dbStructure,
-                        sd,
-                        ed,
-                        dbElementTypes,
-                        dbElementTypeGroups,
-                        dbElementTypeGroupMaps);
+                    addElement(dbStructure, sd, ed);
                 }
+            }
+        }
+
+        // resolve the type structure keys (need to to after all structures have been added)
+        foreach (DbElementType dbElementType in dbElementTypes)
+        {
+            if (string.IsNullOrEmpty(dbElementType.TypeName))
+            {
+                continue;
+            }
+
+            if (dbStructures.TryGetValue(dbElementType.TypeName, out DbStructureDefinition? dbStructure))
+            {
+                dbElementType.TypeStructureKey = dbStructure.Key;
             }
         }
 
@@ -2201,20 +1986,14 @@ public class ComparisonDatabase : IDisposable
 
         _logger.LogInformation($"Inserting Structures for {pm.PackageId}@{pm.PackageVersion} into database...");
 
-        _dbConnection.Insert(dbStructures);
+        _dbConnection.Insert(dbStructures.Values);
         _logger.LogInformation($" <<< added {dbStructures.Count} Structures");
 
         _dbConnection.Insert(dbElements);
         _logger.LogInformation($" <<< added {dbElements.Count} Elements");
 
-        _dbConnection.Insert(dbElementTypes.Values);
+        _dbConnection.Insert(dbElementTypes);
         _logger.LogInformation($" <<< added {dbElementTypes.Count} Element Types");
-
-        _dbConnection.Insert(dbElementTypeGroups.Values);
-        _logger.LogInformation($" <<< added {dbElementTypeGroups.Count} Element Type Groups");
-
-        _dbConnection.Insert(dbElementTypeGroupMaps.Values.SelectMany(m => m));
-        _logger.LogInformation($" <<< added {dbElementTypeGroupMaps.Values.SelectMany(m => m).Count()} Element Type Group Maps");
 
         return;
 
@@ -2236,10 +2015,7 @@ public class ComparisonDatabase : IDisposable
         void addElement(
             DbStructureDefinition dbStructure,
             StructureDefinition sd,
-            ElementDefinition ed,
-            Dictionary<string, DbElementType> dbElementTypes,
-            Dictionary<string, DbElementTypeGroup> dbElementTypeGroups,
-            Dictionary<int, List<DbElementTypeGroupMap>> dbElementTypeGroupMaps)
+            ElementDefinition ed)
         {
             int elementKey = Interlocked.Increment(ref _dbElementIndex);
 
@@ -2250,7 +2026,7 @@ public class ComparisonDatabase : IDisposable
                 includeRoot: false,
                 skipSlices: true).Count();
 
-            List<DbElementType> elementTypes = [];
+            List<DbElementType> currentElementTypes = [];
 
             int? bindingVsKey = ed.Binding?.ValueSet == null
                 ? null
@@ -2265,22 +2041,19 @@ public class ComparisonDatabase : IDisposable
                 {
                     string tl = literalForType(tr.cgName(), null, null);
 
-                    if (dbElementTypes.TryGetValue(tl, out DbElementType? dbElementType))
-                    {
-                        elementTypes.Add(dbElementType);
-                        continue;
-                    }
-
                     DbElementType et = new()
                     {
                         Key = Interlocked.Increment(ref _dbElementTypeIndex),
                         FhirPackageKey = dbStructure.FhirPackageKey,
+                        StructureKey = dbStructure.Key,
+                        ElementKey = elementKey,
                         TypeName = tr.cgName(),
                         TypeProfile = null,
                         TargetProfile = null,
+                        TypeStructureKey = null,
                     };
-                    elementTypes.Add(et);
-                    dbElementTypes.Add(et.Literal, et);
+                    currentElementTypes.Add(et);
+                    dbElementTypes.Add( et);
 
                     continue;
                 }
@@ -2290,22 +2063,19 @@ public class ComparisonDatabase : IDisposable
                     foreach (Canonical tp in tr.TargetProfile)
                     {
                         string tl = literalForType(tr.cgName(), null, tp.Value);
-                        if (dbElementTypes.TryGetValue(tl, out DbElementType? dbElementType))
-                        {
-                            elementTypes.Add(dbElementType);
-                            continue;
-                        }
-
                         DbElementType et = new()
                         {
                             Key = Interlocked.Increment(ref _dbElementTypeIndex),
                             FhirPackageKey = dbStructure.FhirPackageKey,
+                            StructureKey = dbStructure.Key,
+                            ElementKey = elementKey,
                             TypeName = tr.cgName(),
                             TypeProfile = null,
                             TargetProfile = tp.Value,
+                            TypeStructureKey = null,
                         };
-                        elementTypes.Add(et);
-                        dbElementTypes.Add(et.Literal, et);
+                        currentElementTypes.Add(et);
+                        dbElementTypes.Add(et);
                     }
 
                     continue;
@@ -2316,22 +2086,19 @@ public class ComparisonDatabase : IDisposable
                     foreach (Canonical p in tr.Profile)
                     {
                         string tl = literalForType(tr.cgName(), p.Value, null);
-                        if (dbElementTypes.TryGetValue(tl, out DbElementType? dbElementType))
-                        {
-                            elementTypes.Add(dbElementType);
-                            continue;
-                        }
-
                         DbElementType et = new()
                         {
                             Key = Interlocked.Increment(ref _dbElementTypeIndex),
                             FhirPackageKey = dbStructure.FhirPackageKey,
+                            StructureKey = dbStructure.Key,
+                            ElementKey = elementKey,
                             TypeName = tr.cgName(),
                             TypeProfile = p.Value,
                             TargetProfile = null,
+                            TypeStructureKey = null,
                         };
-                        elementTypes.Add(et);
-                        dbElementTypes.Add(et.Literal, et);
+                        currentElementTypes.Add(et);
+                        dbElementTypes.Add(et);
                     }
 
                     continue;
@@ -2342,46 +2109,42 @@ public class ComparisonDatabase : IDisposable
                     foreach (Canonical tp in tr.TargetProfile)
                     {
                         string tl = literalForType(tr.cgName(), p.Value, tp.Value);
-                        if (dbElementTypes.TryGetValue(tl, out DbElementType? dbElementType))
-                        {
-                            elementTypes.Add(dbElementType);
-                            continue;
-                        }
-
                         DbElementType et = new()
                         {
                             Key = Interlocked.Increment(ref _dbElementTypeIndex),
                             FhirPackageKey = dbStructure.FhirPackageKey,
+                            StructureKey = dbStructure.Key,
+                            ElementKey = elementKey,
                             TypeName = tr.cgName(),
                             TypeProfile = p.Value,
                             TargetProfile = tp.Value,
+                            TypeStructureKey = null,
                         };
-                        elementTypes.Add(et);
-                        dbElementTypes.Add(et.Literal, et);
+                        currentElementTypes.Add(et);
+                        dbElementTypes.Add(et);
                     }
                 }
             }
 
-            if (elementTypes.Count == 0)
+            if (currentElementTypes.Count == 0)
             {
                 if (ed.ElementId == sd.Id)
                 {
                     string tl = literalForType(sd.Id, null, null);
 
-                    if (!dbElementTypes.TryGetValue(tl, out DbElementType? dbElementType))
+                    DbElementType et = new()
                     {
-                        dbElementType = new()
-                        {
-                            Key = Interlocked.Increment(ref _dbElementTypeIndex),
-                            FhirPackageKey = dbStructure.FhirPackageKey,
-                            TypeName = sd.Id,
-                            TypeProfile = null,
-                            TargetProfile = null,
-                        };
-                        dbElementTypes.Add(dbElementType.Literal, dbElementType);
-                    }
-
-                    elementTypes.Add(dbElementType);
+                        Key = Interlocked.Increment(ref _dbElementTypeIndex),
+                        FhirPackageKey = dbStructure.FhirPackageKey,
+                        StructureKey = dbStructure.Key,
+                        ElementKey = elementKey,
+                        TypeName = sd.Id,
+                        TypeProfile = null,
+                        TargetProfile = null,
+                        TypeStructureKey = null,
+                    };
+                    currentElementTypes.Add(et);
+                    dbElementTypes.Add(et);
                 }
                 else
                 {
@@ -2389,20 +2152,19 @@ public class ComparisonDatabase : IDisposable
 
                     string tl = literalForType(btn, null, null);
 
-                    if (!dbElementTypes.TryGetValue(tl, out DbElementType? dbElementType))
+                    DbElementType et = new()
                     {
-                        dbElementType = new()
-                        {
-                            Key = Interlocked.Increment(ref _dbElementTypeIndex),
-                            FhirPackageKey = dbStructure.FhirPackageKey,
-                            TypeName = btn,
-                            TypeProfile = null,
-                            TargetProfile = null,
-                        };
-                        dbElementTypes.Add(dbElementType.Literal, dbElementType);
-                    }
-
-                    elementTypes.Add(dbElementType);
+                        Key = Interlocked.Increment(ref _dbElementTypeIndex),
+                        FhirPackageKey = dbStructure.FhirPackageKey,
+                        StructureKey = dbStructure.Key,
+                        ElementKey = elementKey,
+                        TypeName = btn,
+                        TypeProfile = null,
+                        TargetProfile = null,
+                        TypeStructureKey = null,
+                    };
+                    currentElementTypes.Add(et);
+                    dbElementTypes.Add(et);
                 }
             }
 
@@ -2410,36 +2172,7 @@ public class ComparisonDatabase : IDisposable
             string? basePath = ed.Base?.Path;
 
             // check for a type group that has all the types we need
-            string typeGroupLiteral = string.Join(", ", elementTypes.OrderBy(et => et.Literal).Select(et => et.Literal));
-
-            if (!dbElementTypeGroups.TryGetValue(typeGroupLiteral, out DbElementTypeGroup? elementTypeGroup))
-            {
-                // create our type group
-                elementTypeGroup = new()
-                {
-                    Key = Interlocked.Increment(ref _dbElementTypeGroupIndex),
-                    FhirPackageKey = dbStructure.FhirPackageKey,
-                    Literal = typeGroupLiteral,
-                };
-                dbElementTypeGroups.Add(typeGroupLiteral, elementTypeGroup);
-            }
-
-            if (!dbElementTypeGroupMaps.TryGetValue(elementTypeGroup.Key, out List<DbElementTypeGroupMap>? elementTypeGroupMap))
-            {
-                elementTypeGroupMap = [];
-                foreach (DbElementType et in elementTypes)
-                {
-                    DbElementTypeGroupMap etgm = new()
-                    {
-                        Key = Interlocked.Increment(ref _dbElementTypeGroupMapIndex),
-                        FhirPackageKey = dbStructure.FhirPackageKey,
-                        ElementTypeKey = et.Key,
-                        ElementTypeGroupKey = elementTypeGroup.Key,
-                    };
-                    elementTypeGroupMap.Add(etgm);
-                }
-                dbElementTypeGroupMaps.Add(elementTypeGroup.Key, elementTypeGroupMap);
-            }
+            string typeGroupLiteral = string.Join(", ", currentElementTypes.OrderBy(et => et.Literal).Select(et => et.Literal));
 
             DbElement dbElement = new()
             {
@@ -2461,8 +2194,7 @@ public class ComparisonDatabase : IDisposable
                 ValueSetBindingStrength = ed.Binding?.Strength,
                 BindingValueSet = ed.Binding?.ValueSet,
                 BindingValueSetKey = bindingVsKey,
-                ElementTypeGroupKey = elementTypeGroup.Key,
-                TypeGroupLiteral = typeGroupLiteral,
+                CollatedTypeLiteral = typeGroupLiteral,
                 IsInherited = isInherited,
                 BasePath = basePath,
             };

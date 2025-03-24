@@ -99,6 +99,7 @@ public partial class DbStructureDefinition : DbCanonicalResource
 [CgSQLiteTable(tableName: "Elements")]
 [CgSQLiteIndex(nameof(StructureKey))]
 [CgSQLiteIndex(nameof(StructureKey), nameof(Id))]
+[CgSQLiteIndex(nameof(StructureKey), nameof(Path))]
 public partial class DbElement : DbPackageContent
 {
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
@@ -118,48 +119,42 @@ public partial class DbElement : DbPackageContent
 
     public required string? SliceName { get; set; }
 
-    public required int ElementTypeGroupKey { get; set; }
-    public required string TypeGroupLiteral { get; set; }
+    public required string CollatedTypeLiteral { get; set; }
 
     public required Hl7.Fhir.Model.BindingStrength? ValueSetBindingStrength { get; init; }
     public required string? BindingValueSet { get; set; }
     public required int? BindingValueSetKey { get; set; }
+
+    // TODO(ginoc): Add handling for additional bindings
 
     public required bool IsInherited { get; set; }
     public required string? BasePath { get; set; }
 }
 
 [CgSQLiteTable(tableName: "ElementTypes")]
+[CgSQLiteIndex(nameof(ElementKey))]
+[CgSQLiteIndex(nameof(ElementKey), nameof(TypeName))]
+[CgSQLiteIndex(nameof(ElementKey), nameof(TypeName), nameof(TypeProfile), nameof(TargetProfile))]
 [CgSQLiteIndex(nameof(TypeName))]
 [CgSQLiteIndex(nameof(TypeName), nameof(TypeProfile), nameof(TargetProfile))]
 public partial class DbElementType : DbPackageContent
 {
+    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
+    public required int StructureKey { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
+    public required int ElementKey { get; set; }
+
     public required string? TypeName { get; set; }
     public required string? TypeProfile { get; set; }
     public required string? TargetProfile { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
+    public required int? TypeStructureKey { get; set; }
 
     [CgSQLiteIgnore]
     public string Literal =>
         (string.IsNullOrEmpty(TypeName) ? string.Empty : TypeName) +
         (string.IsNullOrEmpty(TypeProfile) ? string.Empty : $"[{TypeProfile}]") +
         (string.IsNullOrEmpty(TargetProfile) ? string.Empty : $"({TargetProfile})");
-}
-
-[CgSQLiteTable(tableName: "ElementTypeGroups")]
-[CgSQLiteIndex(nameof(Literal))]
-public partial class DbElementTypeGroup : DbPackageContent
-{
-    public required string Literal { get; set; }
-}
-
-[CgSQLiteTable(tableName: "ElementTypeGroupMap")]
-[CgSQLiteIndex(nameof(ElementTypeGroupKey))]
-[CgSQLiteIndex(nameof(ElementTypeGroupKey), nameof(ElementTypeKey))]
-public partial class DbElementTypeGroupMap: DbPackageContent
-{
-    [CgSQLiteForeignKey(referenceTable: "ElementTypeGroups", referenceColumn: nameof(DbElementTypeGroup.Key))]
-    public int ElementTypeGroupKey { get; set; }
-
-    [CgSQLiteForeignKey(referenceTable: "ElementTypes", referenceColumn: nameof(DbElementType.Key))]
-    public int ElementTypeKey { get; set; }
 }
