@@ -515,7 +515,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             return null;
                         }
 
-                        public static List<{{{className}}}> SelectList(IDbConnection dbConnection, string? dbTableName = null, {{{string.Join(", ", getFnFilterParams(true))}}})
+                        public static List<{{{className}}}> SelectList(IDbConnection dbConnection, string? dbTableName = null, string[]? orderByProperties = null, string? orderByDirection = null, {{{string.Join(", ", getFnFilterParams(true))}}})
                         {
                             dbTableName ??= "{{{tableName}}}";
 
@@ -527,6 +527,19 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             bool addedCondition = false;
                     
                             {{{string.Join(_line_2, getConditionLines(true))}}}
+
+                            if ((orderByProperties != null) && (orderByProperties.Length > 0))
+                            {
+                                command.CommandText += $" ORDER BY {string.Join(", ", orderByProperties)}";
+                                if (orderByDirection?.StartsWith("d", StringComparison.OrdinalIgnoreCase) == true)
+                                {
+                                    command.CommandText += $" DESC";
+                                }
+                                else
+                                {
+                                    command.CommandText += $" ASC";
+                                }
+                            }
                     
                             using (IDataReader reader = command.ExecuteReader())
                             {
@@ -759,10 +772,10 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             return {{{className}}}.SelectSingle(dbCon, dbTableName, {{{string.Join(", ", getFnFilterArgs(true))}}});
                         }
 
-                        public static List<{{{className}}}> SelectList<T>(this IDbConnection dbCon, string? dbTableName = null, {{{string.Join(", ", getFnFilterParams(true))}}})
+                        public static List<{{{className}}}> SelectList<T>(this IDbConnection dbCon, string? dbTableName = null, string[]? orderByProperties = null, string? orderByDirection = null, {{{string.Join(", ", getFnFilterParams(true))}}})
                             where T : {{{className}}}
                         {
-                            return {{{className}}}.SelectList(dbCon, dbTableName, {{{string.Join(", ", getFnFilterArgs(true))}}});
+                            return {{{className}}}.SelectList(dbCon, dbTableName, orderByProperties, orderByDirection, {{{string.Join(", ", getFnFilterArgs(true))}}});
                         }
                                         
                         public static void Insert(this IDbConnection dbCon, {{{className}}} value, string? dbTableName = null)

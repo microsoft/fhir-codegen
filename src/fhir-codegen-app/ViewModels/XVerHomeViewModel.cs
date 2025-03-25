@@ -64,8 +64,8 @@ public partial class XVerHomeViewModel : ViewModelBase, INavigableViewModel
         
         try
         {
-            XVerProcessor xVerProcessor = new(xvc);
-            xVerProcessor.Compare();
+            //XVerProcessor xVerProcessor = new(xvc);
+            //xVerProcessor.Compare();
 
             complete = true;
         }

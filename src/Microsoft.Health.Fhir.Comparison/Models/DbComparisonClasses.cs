@@ -80,6 +80,7 @@ public abstract class DbPackageComparisonContent
 [CgSQLiteTable(tableName: "ValueSetComparisons")]
 [CgSQLiteIndex(nameof(PackageComparisonKey), nameof(SourceFhirPackageKey), nameof(TargetFhirPackageKey), nameof(SourceValueSetKey))]
 [CgSQLiteIndex(nameof(PackageComparisonKey), nameof(SourceFhirPackageKey), nameof(SourceValueSetKey), nameof(TargetFhirPackageKey), nameof(TargetValueSetKey))]
+[CgSQLiteIndex(nameof(SourceValueSetKey), nameof(TargetFhirPackageKey), nameof(TargetValueSetKey))]
 public partial class DbValueSetComparison : DbPackageComparisonContent, IDbPackageComparisonContent
 {
     [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]

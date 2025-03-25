@@ -24,6 +24,7 @@ using System.Data.Common;
 using System.Collections.Concurrent;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.Comparison.Models;
+using System.Xml.Linq;
 
 
 
@@ -43,7 +44,7 @@ internal static partial class XVerProcessorLogMessages
 
 internal static class XVerExtensions
 {
-    internal static string ForMdTable(this string value) => string.IsNullOrEmpty(value) ? string.Empty : value.Replace("|", "\\|").Replace("\n", "<br/>").Replace("\r", "<br/>");
+    internal static string ForMdTable(this string? value) => string.IsNullOrEmpty(value) ? string.Empty : value.Replace("|", "\\|").Replace("\n", "<br/>").Replace("\r", "<br/>");
 
     internal static string ComparisonKey(this ValueSet vs, string graphId) => graphId + "_" + vs.Name.ToPascalCase();
 }
@@ -139,89 +140,42 @@ public class XVerProcessor
         switch (command)
         {
             case "create-db":
-                LoadDatabase(true);
+                LoadDatabase(true, true);
                 LoadFhirCrossVersionMaps(preferV1Maps: true);
                 break;
 
             case "compare":
-                LoadDatabase(_config.ReloadDatabase);
+                LoadDatabase(_config.ReloadDatabase, true);
                 CompareInDatabase();
                 break;
 
             case "compare-vs":
-                LoadDatabase(_config.ReloadDatabase, FhirArtifactClassEnum.ValueSet);
+                LoadDatabase(_config.ReloadDatabase, true, FhirArtifactClassEnum.ValueSet);
                 CompareInDatabase(FhirArtifactClassEnum.ValueSet);
                 break;
 
             case "compare-sd":
-                LoadDatabase(_config.ReloadDatabase, FhirArtifactClassEnum.Resource);
+                LoadDatabase(_config.ReloadDatabase, false, FhirArtifactClassEnum.Resource);
                 CompareInDatabase(FhirArtifactClassEnum.Resource);
                 break;
 
-            case "convert-from-maps":
-                loadDefinitionCollections();
-                LoadFhirCrossVersionMaps(preferV1Maps: true);
-                break;
-
-            case "update-maps":
-                loadDefinitionCollections();
-                LoadFhirCrossVersionMaps(preferV1Maps: true);
-                Compare(saveUpdates: true);
-                break;
-
-            case "update-vs-maps":
-                loadDefinitionCollections();
-                LoadFhirCrossVersionMaps(preferV1Maps: true);
-                Compare(saveUpdates: true, artifactFilter: FhirArtifactClassEnum.ValueSet);
-                break;
-
-            case "update-type-maps":
-                loadDefinitionCollections();
-                LoadFhirCrossVersionMaps(preferV1Maps: true);
-                Compare(saveUpdates: true, artifactFilter: FhirArtifactClassEnum.PrimitiveType);
-                break;
-
-            case "update-resource-maps":
-                loadDefinitionCollections();
-                LoadFhirCrossVersionMaps(preferV1Maps: true);
-                Compare(saveUpdates: true, artifactFilter: FhirArtifactClassEnum.Resource);
-                break;
-
-            case "build-docs":
-                loadDefinitionCollections();
-                LoadFhirCrossVersionMaps(preferV1Maps: false);
-                WriteComparisonDocs();
-                break;
-
-            case "build-vs-docs":
-                loadDefinitionCollections();
-                LoadFhirCrossVersionMaps(preferV1Maps: false);
-                WriteComparisonDocs(artifactFilter: FhirArtifactClassEnum.ValueSet);
-                break;
-
-            case "build-type-docs":
-                loadDefinitionCollections();
-                LoadFhirCrossVersionMaps(preferV1Maps: false);
-                WriteComparisonDocs(artifactFilter: FhirArtifactClassEnum.PrimitiveType);
-                break;
-
-            case "build-resource-docs":
-                loadDefinitionCollections();
-                LoadFhirCrossVersionMaps(preferV1Maps: false);
-                WriteComparisonDocs(artifactFilter: FhirArtifactClassEnum.Resource);
+            case "docs":
+                LoadDatabase(false, false);
+                WriteDocsFromDatabase();
                 break;
 
             default:
-                loadDefinitionCollections();
+                LoadDatabase(true, true);
                 LoadFhirCrossVersionMaps(preferV1Maps: true);
-                Compare(saveUpdates: true);
-                WriteComparisonDocs();
+                CompareInDatabase();
+                WriteDocsFromDatabase();
                 break;
         }
     }
 
     public void LoadDatabase(
         bool forceCreate,
+        bool allowSourceCopy,
         FhirArtifactClassEnum? artifactFilter = null)
     {
         // check if we have a database filename
@@ -233,7 +187,8 @@ public class XVerProcessor
             if (_db != null)
             {
                 // check for copying from source
-                if (string.IsNullOrEmpty(_config.CrossVersionSourceDb))
+                if (!allowSourceCopy ||
+                    string.IsNullOrEmpty(_config.CrossVersionSourceDb))
                 {
                     return;
                 }
@@ -297,7 +252,7 @@ public class XVerProcessor
 
         if (_db == null)
         {
-            LoadDatabase(_config.ReloadDatabase);
+            LoadDatabase(_config.ReloadDatabase, true);
             if (_db == null)
             {
                 throw new Exception($"Failed to create or load a comparison database!");
@@ -310,87 +265,355 @@ public class XVerProcessor
         {
             _ = _db.TryLoadFhirCrossVersionMaps(_config.CrossVersionMapSourcePath);
         }
+    }
 
-        //_comparisonCache.Clear();
+    public void WriteDocsFromDatabase(FhirArtifactClassEnum? artifactFilter = null)
+    {
+        // check for no database
+        if (_db == null)
+        {
+            throw new Exception("Comparison cannot run without a loaded database!");
+        }
 
-        //// create our comparison objects
-        //for (int definitionIndex = 1; definitionIndex < _definitions.Length; definitionIndex++)
-        //{
-        //    DefinitionCollection left = _definitions[definitionIndex - 1];
-        //    DefinitionCollection right = _definitions[definitionIndex];
+        //string outputDir = !string.IsNullOrEmpty(_config.OutputDirectory)
+        //    ? _config.OutputDirectory
+        //    : _config.CrossVersionMapSourcePath;
 
-        //    if (_comparisonCache.ContainsKey((left.Key, right.Key)))
-        //    {
-        //        continue;
-        //    }
+        string outputDir = _config.CrossVersionMapSourcePath;
 
-        //    FhirCoreComparer comparer = new(
-        //        left,
-        //        right,
-        //        _config.LogFactory,
-        //        _config.CrossVersionMapSourcePath);
+        // check for no output location
+        if (string.IsNullOrEmpty(outputDir))
+        {
+            throw new Exception("Cannot write markdown docs without output or map source folder!");
+        }
 
-        //    _ = comparer.GetInitialCrossVersionMaps(preferV1Maps);
+        string docDir = Path.Combine(outputDir, "docs");
+        if (!Directory.Exists(docDir))
+        {
+            Directory.CreateDirectory(docDir);
+        }
 
-        //    // comparers are bidirectional
-        //    _comparisonCache.Add((left.Key, right.Key), comparer);
-        //    //_comparisonCache.Add((right.Key, left.Key), comparer);
-        //}
+        _logger.LogInformation($"Writing markdown documentation to {docDir}");
+
+        // if we are writing primitives, put the overall mapping doc in the root
+        if ((artifactFilter == null) ||
+            (artifactFilter == FhirArtifactClassEnum.PrimitiveType) ||
+            (artifactFilter == FhirArtifactClassEnum.ComplexType) ||
+            (artifactFilter == FhirArtifactClassEnum.Resource))
+        {
+            // write the generic primitive mappings (across all versions)
+            writeMarkdownRootPrimitiveMaps(docDir);
+        }
+
+        // grab the FHIR Packages we are processing
+        List<DbFhirPackage> packages = DbFhirPackage.SelectList(_db.DbConnection, orderByProperties: [nameof(DbFhirPackage.ShortName)]);
+        List<DbFhirPackageComparisonPair> packageComparisonPairs = DbFhirPackageComparisonPair.SelectList(
+            _db.DbConnection,
+            orderByProperties: [nameof(DbFhirPackageComparisonPair.SourcePackageKey), nameof(DbFhirPackageComparisonPair.TargetPackageKey)]);
+
+        // iterate over the list of packages
+        foreach (DbFhirPackage package in packages)
+        {
+            // create the export directory for this package
+            string packageDir = Path.Combine(docDir, FhirSanitizationUtils.SanitizeForProperty(package.ShortName));
+
+            // check for the directory already existing
+            if (Directory.Exists(packageDir))
+            {
+                // remove the directory and contents (start clean)
+                Directory.Delete(packageDir, true);
+            }
+
+            Directory.CreateDirectory(packageDir);
+
+            // write the contents of our value sets if requested
+            if ((artifactFilter == null) ||
+                (artifactFilter == FhirArtifactClassEnum.ValueSet))
+            {
+                writeMarkdownValueSets(packages, packageComparisonPairs, package, packageDir);
+            }
+        }
+    }
+
+    private void writeMarkdownValueSets(
+        List<DbFhirPackage> packages,
+        List<DbFhirPackageComparisonPair> packageComparisonPairs,
+        DbFhirPackage package, string dir)
+    {
+        string vsDir = Path.Combine(dir, "ValueSets");
+        if (!Directory.Exists(vsDir))
+        {
+            Directory.CreateDirectory(vsDir);
+        }
+
+        string overviewFilename = Path.Combine(dir, "ValueSets.md");
+
+        using ExportStreamWriter overviewWriter = createMarkdownWriter(overviewFilename, true, true);
+
+        writeMdOverviewIntroValueSets(overviewWriter, packages, package);
+
+        ConcurrentBag<string> overviewEntries = [];
+
+        // get the list of all Value Sets in this version
+        List<DbValueSet> valueSets = DbValueSet.SelectList(_db!.DbConnection, FhirPackageKey: package.Key);
+
+        // iterate over our value sets and generate documents
+        Parallel.ForEach(valueSets, (vs, cancellationToken) =>
+        {
+            // project this value set based on comparisons
+            List<DbVsCell?[]> projection = projectVs(packages, packageComparisonPairs, vs);
+
+            // get the overview entry for this value set
+            overviewEntries.Add(getMdOverviewEntry(packages, packageComparisonPairs, package, vs, projection));
+        });
+
+        // write our overview file
+        foreach (string line in overviewEntries.Order())
+        {
+            overviewWriter.WriteLineIndented(line);
+        }
+
+        return;
+    }
+
+    private record class DbVsCell : ICloneable
+    {
+        public required DbFhirPackage FhirPackage { get; set; }
+        public required DbValueSet Vs { get; set; }
+
+        public DbValueSet? LeftVs { get; set; } = null;
+        public DbValueSetComparison? LeftVsComparison { get; set; } = null;
+
+        public DbValueSet? RightVs { get; set; } = null;
+        public DbValueSetComparison? RightVsComparison { get; set; } = null;
+
+        object ICloneable.Clone() => this with { };
+    }
+
+    private List<DbVsCell?[]> projectVs(
+        List<DbFhirPackage> packages,
+        List<DbFhirPackageComparisonPair> packageComparisonPairs,
+        DbValueSet keyVs)
+    {
+        DbVsCell?[] row = new DbVsCell?[packages.Count];
+        int startCol = packages.FindIndex((fp) => fp.Key == keyVs.FhirPackageKey);
+        row[startCol] = new()
+        {
+            FhirPackage = packages[startCol],
+            Vs = keyVs,
+        };
+
+        List<DbVsCell?[]> right = [];
+
+        // project right
+        if (startCol < packages.Count)
+        {
+            right = projectVs(packages, row, startCol, true);
+        }
+
+        // if we started at the first definition, we are done
+        if (startCol == 0)
+        {
+            return right;
+        }
+
+        List<DbVsCell?[]> results = [];
+
+        // project left
+        foreach (DbVsCell?[] r in right)
+        {
+            results.AddRange(projectVs(packages, r, startCol, false));
+        }
+
+        return results;
+    }
+
+    private List<DbVsCell?[]> projectVs(
+        List<DbFhirPackage> packages,
+        DbVsCell?[] incomingRow,
+        int column,
+        bool projectRight)
+    {
+        if (incomingRow[column] == null)
+        {
+            return [incomingRow];
+        }
+
+        int nextCol = projectRight ? column + 1 : column - 1;
+        if ((nextCol < 0) || (nextCol >= incomingRow.Length))
+        {
+            return [incomingRow];
+        }
+
+        // look for comparisons from this value set to the next package
+        List<DbValueSetComparison> edges = DbValueSetComparison.SelectList(
+            _db!.DbConnection,
+            SourceValueSetKey: incomingRow[column]!.Vs.Key,
+            TargetFhirPackageKey: packages[nextCol].Key,
+            orderByProperties: [nameof(DbValueSetComparison.TargetValueSetKey)]);
+
+        if (edges.Count == 0)
+        {
+            return [incomingRow];
+        }
+
+        List<DbVsCell?[]> results = [];
+
+        // iterate over our neighbors
+        foreach (DbValueSetComparison edge in edges)
+        {
+            DbVsCell?[] row = edges.Count == 1 ? incomingRow : (DbVsCell?[])incomingRow.Clone();
+            if (projectRight == true)
+            {
+                row[nextCol] = new()
+                {
+                    FhirPackage = packages[nextCol],
+                    Vs = DbValueSet.SelectSingle(_db!.DbConnection, Key: edge.TargetValueSetKey) ?? throw new Exception($"Failed to resolve compared ValueSet: {edge.TargetValueSetKey}!"),
+                    LeftVs = incomingRow[column]!.Vs,
+                    LeftVsComparison = edge,
+                };
+
+                row[column]!.RightVs = row[nextCol]!.Vs;
+                row[column]!.RightVsComparison = edge;
+            }
+            else
+            {
+                row[nextCol] = new()
+                {
+                    FhirPackage = packages[nextCol],
+                    Vs = DbValueSet.SelectSingle(_db!.DbConnection, Key: edge.TargetValueSetKey) ?? throw new Exception($"Failed to resolve compared ValueSet: {edge.TargetValueSetKey}!"),
+                    RightVs = incomingRow[column]!.Vs,
+                    RightVsComparison = edge,
+                };
+
+                row[column]!.LeftVs = row[nextCol]!.Vs;
+                row[column]!.LeftVsComparison = edge;
+            }
+
+            // recurse
+            List<DbVsCell?[]> next = projectVs(packages, row, nextCol, projectRight);
+
+            // combine results
+            results.AddRange(next);
+        }
+
+        return results;
     }
 
 
-    public void Compare(bool? saveUpdates = null, FhirArtifactClassEnum? artifactFilter = null)
+    private string getMdOverviewEntry(
+        List<DbFhirPackage> packages,
+        List<DbFhirPackageComparisonPair> packageComparisonPairs,
+        DbFhirPackage package,
+        DbValueSet vs,
+        List<DbVsCell?[]> projection)
     {
-        if (_definitions.Length < 2)
+        List<string> mapsTo = [];
+        for (int i = 0; i < packages.Count; i++)
         {
-            throw new InvalidOperationException("At least two definitions are required to compare.");
-        }
-
-        // load the current cross version maps if necessary
-        if (_comparisonCache.Count == 0)
-        {
-            LoadFhirCrossVersionMaps(preferV1Maps: false);
-        }
-
-        if ((artifactFilter == null) ||
-            (artifactFilter == FhirArtifactClassEnum.ValueSet) ||
-            (artifactFilter == FhirArtifactClassEnum.Resource))
-        {
-            // discover the set of value sets that we want to compare across all selected versions
-            _vsUrlsToInclude = getValueSetsToCompare();
-        }
-
-        // walk the definitions to run the comparisons between each version pair
-        for (int definitionIndex = 1; definitionIndex < _definitions.Length; definitionIndex++)
-        {
-            DefinitionCollection left = _definitions[definitionIndex - 1];
-            DefinitionCollection right = _definitions[definitionIndex];
-
-            // grab the comparer for this pair (the same comparer will exist for either direction of the pair)
-            if (!_comparisonCache.TryGetValue((left.Key, right.Key), out FhirCoreComparer? comparer))
+            if (packages[i].Key == vs.FhirPackageKey)
             {
-                _logger.LogMapsNotFound($"{left.Key} -> {right.Key}");
                 continue;
             }
 
-            if ((artifactFilter == null) ||
-                (artifactFilter == FhirArtifactClassEnum.ValueSet) ||
-                (artifactFilter == FhirArtifactClassEnum.Resource))
-            {
-                // register our filtered sets of value sets
-                comparer.RegisterValueSetFilters(_vsUrlsToInclude[left.Key], _vsUrlsToInclude[right.Key]);
-            }
-
-            // run the comparison (bi-directional)
-            comparer.Compare(artifactFilter);
-
-            // save our results if necessary
-            if (saveUpdates ?? _config.SaveComparisonResult)
-            {
-                comparer.Save(artifactFilter);
-            }
+            mapsTo.Add(projection.Any(r => r[i] != null) ? "✔" : string.Empty);
         }
+
+        string expandCell = vs.CanExpand ? "✔" : $"✘ {vs.Message.ForMdTable()}";
+        string bindingCell = vs.StrongestBindingCore == BindingStrength.Required ? "💪" : string.Empty;
+        string excludedCell = vs.IsExcluded ? "⚠" : string.Empty;
+
+        return
+            $"| [{vs.Name.ForMdTable()}]({getVsFilename(vs.Name)})" +
+            $" | `{vs.VersionedUrl.ForMdTable()}`" +
+            $" | {vs.Description?.ForMdTable()}" +
+            $" | {expandCell}" +
+            $" | {bindingCell}" +
+            $" | {excludedCell}" +
+            $" | {string.Join(" | ", mapsTo)} |";
     }
+
+    private void writeMdOverviewIntroValueSets(
+        ExportStreamWriter writer,
+        List<DbFhirPackage> packages,
+        DbFhirPackage package)
+    {
+        writer.Write($"""
+            Keyed off: {package.PackageId}@{package.PackageVersion} - {package.ShortName}
+            Canonical: {package.CanonicalUrl}
+            
+            ## Value Set Overview
+
+            """);
+
+        List<string> headers = ["Name", "Canonical", "Description", "Expands", "Has Required Binding", "Excluded"];
+        foreach (DbFhirPackage targetPackage in packages.OrderBy(fp => fp.ShortName))
+        {
+            if (targetPackage.Key == package.Key)
+            {
+                continue;
+            }
+
+            headers.Add($"Path to {targetPackage.ShortName.ForMdTable()}");
+        }
+
+        writer.WriteLineIndented($"| {string.Join(" | ", headers)} |");
+        writer.WriteLineIndented($"| {string.Join(" | ", Enumerable.Repeat("---", headers.Count))} |");
+    }
+
+
+    //public void Compare(bool? saveUpdates = null, FhirArtifactClassEnum? artifactFilter = null)
+    //{
+    //    if (_definitions.Length < 2)
+    //    {
+    //        throw new InvalidOperationException("At least two definitions are required to compare.");
+    //    }
+
+    //    // load the current cross version maps if necessary
+    //    if (_comparisonCache.Count == 0)
+    //    {
+    //        LoadFhirCrossVersionMaps(preferV1Maps: false);
+    //    }
+
+    //    if ((artifactFilter == null) ||
+    //        (artifactFilter == FhirArtifactClassEnum.ValueSet) ||
+    //        (artifactFilter == FhirArtifactClassEnum.Resource))
+    //    {
+    //        // discover the set of value sets that we want to compare across all selected versions
+    //        _vsUrlsToInclude = getValueSetsToCompare();
+    //    }
+
+    //    // walk the definitions to run the comparisons between each version pair
+    //    for (int definitionIndex = 1; definitionIndex < _definitions.Length; definitionIndex++)
+    //    {
+    //        DefinitionCollection left = _definitions[definitionIndex - 1];
+    //        DefinitionCollection right = _definitions[definitionIndex];
+
+    //        // grab the comparer for this pair (the same comparer will exist for either direction of the pair)
+    //        if (!_comparisonCache.TryGetValue((left.Key, right.Key), out FhirCoreComparer? comparer))
+    //        {
+    //            _logger.LogMapsNotFound($"{left.Key} -> {right.Key}");
+    //            continue;
+    //        }
+
+    //        if ((artifactFilter == null) ||
+    //            (artifactFilter == FhirArtifactClassEnum.ValueSet) ||
+    //            (artifactFilter == FhirArtifactClassEnum.Resource))
+    //        {
+    //            // register our filtered sets of value sets
+    //            comparer.RegisterValueSetFilters(_vsUrlsToInclude[left.Key], _vsUrlsToInclude[right.Key]);
+    //        }
+
+    //        // run the comparison (bi-directional)
+    //        comparer.Compare(artifactFilter);
+
+    //        // save our results if necessary
+    //        if (saveUpdates ?? _config.SaveComparisonResult)
+    //        {
+    //            comparer.Save(artifactFilter);
+    //        }
+    //    }
+    //}
 
     /// <summary>
     /// Retrieves a dictionary of value sets to compare, based on required bindings and mappings between definition collections.
@@ -1541,8 +1764,8 @@ public class XVerProcessor
     private string getVsFilename(string sourceVsName, bool includeRelativeDir = true)
     {
         return includeRelativeDir
-            ? $"ValueSets/{sourceVsName}.md"
-            : sourceVsName + ".md";
+            ? $"ValueSets/{FhirSanitizationUtils.SanitizeForProperty(sourceVsName, convertToConvention: FhirNameConventionExtensions.NamingConvention.PascalCase)}.md"
+            : FhirSanitizationUtils.SanitizeForProperty(sourceVsName, convertToConvention: FhirNameConventionExtensions.NamingConvention.PascalCase) + ".md";
 
         //return includeRelativeDir
         //    ? $"ValueSets/{sourceVsName}_{cd.TargetDefinition.FhirSequence.ToRLiteral()}_{cd.Target?.Name.ToPascalCase()}"
