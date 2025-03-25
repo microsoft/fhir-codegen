@@ -1155,6 +1155,8 @@ public class ComparisonDatabase : IDisposable
                 TargetElementKey = targetDbElement?.Key,
                 TargetStructureUrl = targetStructureUrl,
                 TargetElementToken = targetToken,
+                ElementTypeComparisonKey = null,
+                BoundValueSetComparisonKey = null,
                 IsGenerated = false,
                 LastReviewedBy = null,
                 LastReviewedOn = null,

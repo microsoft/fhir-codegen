@@ -2908,9 +2908,10 @@ public class PackageComparer
             messages.Add($"{targetInfo.Name} allows more repetitions (max cardinality from {sourceInfo.MaxCardinalityString} to {targetInfo.MaxCardinalityString})");
         }
 
-        // check to see if there was not a required binding and now there is
+        // check to see if we need to test value set bindings
         if ((sourceInfo.ValueSetBindingStrength != null) || (targetInfo.ValueSetBindingStrength != null))
         {
+            // check to see if there was not a required binding and now there is
             if ((sourceInfo.ValueSetBindingStrength != BindingStrength.Required) && (targetInfo.ValueSetBindingStrength == BindingStrength.Required))
             {
                 relationship = ApplyRelationship(relationship, CMR.SourceIsNarrowerThanTarget);

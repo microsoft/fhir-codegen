@@ -261,6 +261,12 @@ public partial class DbElementComparison : DbPackageComparisonContent, IDbPackag
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
 
+    [CgSQLiteForeignKey(referenceTable: "ElementTypeComparisons", referenceColumn: nameof(DbElementTypeComparison.Key))]
+    public required int? ElementTypeComparisonKey { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "ValueSetComparisons", referenceColumn: nameof(DbValueSetComparison.Key))]
+    public required int? BoundValueSetComparisonKey { get; set; }
+
     [CgSQLiteIgnore]
     public int SourceContentKey => SourceElementKey;
     [CgSQLiteIgnore]
@@ -273,6 +279,9 @@ public partial class DbElementTypeComparison : DbPackageComparisonContent, IDbPa
 {
     [CgSQLiteForeignKey(referenceTable: "StructureComparisons", referenceColumn: nameof(DbStructureComparison.Key))]
     public required int StructureComparisonKey { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "ElementComparisons", referenceColumn: nameof(DbElementComparison.Key))]
+    public required int ElementComparisonKey { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
     public required int SourceStructureKey { get; set; }

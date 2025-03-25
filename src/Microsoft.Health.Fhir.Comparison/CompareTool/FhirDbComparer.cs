@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.Comparison.Models;
 using Microsoft.Health.Fhir.Comparison.XVer;
@@ -490,6 +491,16 @@ public class FhirDbComparer
         DbFhirPackage targetPackage,
         DbElement targetElement)
     {
+        // check for existing comparisons
+        DbElementTypeComparison? existing = _elementTypeComparisons.Get(elementComparison.Key) ??
+            DbElementTypeComparison.SelectSingle(_db, ElementComparisonKey: elementComparison.Key);
+
+        if ((existing != null) &&
+            (existing.LastReviewedOn != null))
+        {
+            return existing;
+        }
+
         List<DbElementType> sourceTypeList = DbElementType.SelectList(_db, ElementKey: sourceElement.Key);
         ILookup<string?, DbElementType> sourceTypesByName = sourceTypeList.ToLookup(et => et.TypeName);
 
@@ -644,6 +655,17 @@ public class FhirDbComparer
             valueRelationship = applyRelationship(valueRelationship, CMR.SourceIsBroaderThanTarget);
         }
 
+        DbElementTypeComparison? inverse = null;
+
+        // check for an inverse mapping
+        if (!_elementTypeComparisons.TryGet((targetElement.Key, sourceElement.Key), out inverse))
+        {
+            inverse = DbElementTypeComparison.SelectSingle(
+                _db,
+                SourceElementKey: targetElement.Key,
+                TargetElementKey: sourceElement.Key);
+        }
+
         // for simplicity, create a code-gen type mapping that applies relationship rules for us
         CodeGenTypeMapping cgTypeMapping = new(
             sourceElement.CollatedTypeLiteral,
@@ -651,10 +673,27 @@ public class FhirDbComparer
             conceptRelationship,
             valueRelationship);
 
-        // build an overal type comparison for this element
-        DbElementTypeComparison etc = new()
+        DbElementTypeComparison? typeComparison = existing;
+
+        // compare against our existing comparison if we have one
+        if ((existing != null) &&
+            (existing.Relationship != cgTypeMapping.Relationship))
+        {
+            existing.NoMap = noMap;
+            existing.Relationship = cgTypeMapping.Relationship;
+            existing.ConceptDomainRelationship = cgTypeMapping.ConceptDomainRelationship;
+            existing.ValueDomainRelationship = cgTypeMapping.ValueDomainRelationship;
+            existing.Message = cgTypeMapping.Comment;
+            existing.IsGenerated = true;
+            existing.LastReviewedBy = null;
+            existing.LastReviewedOn = null;
+        }
+
+        // build an overal type comparison for this element if we do not have one
+        typeComparison ??= new()
         {
             Key = _comparisonDb.GetElementTypeComparisonKey(),
+            InverseComparisonKey = inverse?.Key,
             SourceFhirPackageKey = sourcePackage.Key,
             SourceStructureKey = elementComparison.SourceStructureKey,
             SourceElementKey = sourceElement.Key,
@@ -665,6 +704,7 @@ public class FhirDbComparer
             TargetElementTypeLiteral = targetElement.CollatedTypeLiteral,
             PackageComparisonKey = elementComparison.PackageComparisonKey,
             StructureComparisonKey = elementComparison.StructureComparisonKey,
+            ElementComparisonKey = elementComparison.Key,
 
             Relationship = cgTypeMapping.Relationship,
             ConceptDomainRelationship = conceptRelationship,
@@ -677,8 +717,23 @@ public class FhirDbComparer
             LastReviewedOn = null,
         };
 
-        _elementTypeComparisons.CacheAdd(etc);
-        return etc;
+        if ((inverse != null) &&
+            (inverse.InverseComparisonKey != typeComparison.Key))
+        {
+            inverse.InverseComparisonKey = typeComparison.Key;
+            _elementTypeComparisons.Changed(inverse);
+        }
+
+        if (existing == null)
+        {
+            _elementTypeComparisons.CacheAdd(typeComparison);
+        }
+        else
+        {
+            _elementTypeComparisons.Changed(typeComparison);
+        }
+
+        return typeComparison;
 
         (CMR relationship, string message) compareCollatedProfiles(string[] sourceProfileList, string[] targetProfileList, string typeName, string profileType)
         {
@@ -738,6 +793,10 @@ public class FhirDbComparer
     {
         // select only active and concrete concepts
         List<DbElement> sourceElements = DbElement.SelectList(_db, StructureKey: sourceSd.Key);
+        HashSet<string> usedTargetElements = [];
+
+        // be optimistic
+        CMR aggregateStructureRelationship = CMR.Equivalent;
 
         // iterate over the source elements - note that each type for a choice tyes gets its own record
         foreach (DbElement sourceElement in sourceElements)
@@ -780,6 +839,16 @@ public class FhirDbComparer
                         Relationship = relationship,
                         ConceptDomainRelationship = null,
                         ValueDomainRelationship = null,
+                        ElementTypeComparisonKey = null,
+                        BoundValueSetComparisonKey = ((sourceElement.BindingValueSetKey != null) && (targetElement.BindingValueSetKey != null))
+                            ? DbValueSetComparison.SelectSingle(
+                                _db,
+                                PackageComparisonKey: forwardPair.Key,
+                                SourceFhirPackageKey: forwardPair.SourcePackageKey,
+                                TargetFhirPackageKey: forwardPair.TargetPackageKey,
+                                SourceValueSetKey: (int)sourceElement.BindingValueSetKey,
+                                TargetValueSetKey: (int)targetElement.BindingValueSetKey)?.Key
+                            : null,
                         NoMap = false,
                         Message = $"Created mapping based on literal match of id `{sourceElement.Id}`",
                         IsGenerated = true,
@@ -813,6 +882,8 @@ public class FhirDbComparer
                     Relationship = null,
                     ConceptDomainRelationship = null,
                     ValueDomainRelationship = null,
+                    ElementTypeComparisonKey = null,
+                    BoundValueSetComparisonKey = null,
                     NoMap = true,
                     Message = $"No mapping exists and no literal match found - created no-map entry for `{sourceSd.Name}`: `{sourceElement.Id}`",
                     IsGenerated = true,
@@ -842,8 +913,11 @@ public class FhirDbComparer
                     }
 
                     // if there is no target (non-mapping element), there is nothing else to check
+                    aggregateStructureRelationship = applyRelationship(aggregateStructureRelationship, CMR.SourceIsBroaderThanTarget);
                     continue;
                 }
+
+                usedTargetElements.Add(targetElement.Id);
 
                 DbElementComparison? inverseComparison = null;
 
@@ -879,36 +953,327 @@ public class FhirDbComparer
                 // do basic checks if this has not been reviewed
                 if (elementComparison.LastReviewedOn == null)
                 {
+                    // be optimitistic
+                    CMR conceptRelationship = elementComparison.ConceptDomainRelationship ?? CMR.Equivalent;
+                    CMR valueRelationship = elementComparison.ValueDomainRelationship ?? CMR.Equivalent;
+                    bool noMap = elementComparison.NoMap ?? false;
+                    bool isGenerated = elementComparison.IsGenerated ?? false;
+                    DbValueSetComparison? boundValueSetComparison = null;
+
+                    bool changed = false;
+                    List<string> messages = [];
+
                     // check for missing no-map value
                     if ((elementComparison.TargetElementKey == null) &&
-                        (elementComparison.NoMap != true))
+                        (noMap != true))
                     {
-                        _elementComparisons.Changed(elementComparison);
-                        elementComparison.NoMap = true;
+                        noMap = true;
+                        messages.Add("No mapping exists and no literal match found - created no-map entry.");
+                        changed = true;
                     }
 
                     // check for a single source with multiple targets and any that map as equivalent
                     if ((elementComparison.Relationship == CMR.Equivalent) &&
                         (comparisons.Count > 1))
                     {
-                        _elementComparisons.Changed(elementComparison);
-
                         // mark as not equivalent
-                        elementComparison.Relationship = CMR.SourceIsBroaderThanTarget;
-                        elementComparison.IsGenerated = true;
-                        elementComparison.Message = elementComparison.Message +
-                            $" `{sourceElement.Id}` maps to multiple elements in {targetSd.Name} and cannot be equivalent.";
+                        conceptRelationship = applyRelationship(conceptRelationship, CMR.SourceIsBroaderThanTarget);
+                        isGenerated = true;
+                        messages.Add($"`{sourceElement.Id}` maps to multiple elements in {targetSd.Name} and cannot be equivalent.");
+                        changed = true;
                     }
 
                     // do type check comparison
-                    DbElementTypeComparison etc = doElementTypeComparison(
+                    DbElementTypeComparison elementTypeComparison = doElementTypeComparison(
                         elementComparison,
                         sourcePackage,
                         sourceElement,
                         targetPackage,
                         targetElement);
 
-                    // TODO: add actual checks
+                    if (elementComparison.ElementTypeComparisonKey != elementTypeComparison.Key)
+                    {
+                        changed = true;
+                    }
+
+                    if (valueRelationship != elementTypeComparison.Relationship)
+                    {
+                        valueRelationship = applyRelationship(valueRelationship, elementTypeComparison.Relationship);
+                        messages.Add(
+                            $"Applied type comparison relationship of: `{elementTypeComparison.Relationship}`" +
+                            $" to existing value relationship: `{elementComparison.Relationship}`.");
+                        changed = true;
+                    }
+
+                    // check for optional becoming mandatory: target has a broader concept than source since it requires content
+                    if ((sourceElement.MinCardinality == 0) &&
+                        (targetElement.MinCardinality != 0))
+                    {
+                        conceptRelationship = applyRelationship(conceptRelationship, CMR.SourceIsNarrowerThanTarget);
+                        messages.Add($"`{targetElement.Name}` made the element mandatory (min cardinality from 0 to {targetElement.MinCardinality}).");
+                        changed = true;
+                    }
+
+                    // check for source allowing fewer than target requires: target has a broader concept and value than the source
+                    if (sourceElement.MinCardinality < targetElement.MinCardinality)
+                    {
+                        conceptRelationship = applyRelationship(conceptRelationship, CMR.SourceIsNarrowerThanTarget);
+                        valueRelationship = applyRelationship(valueRelationship, CMR.SourceIsNarrowerThanTarget);
+                        messages.Add($"`{targetElement.Name}` increased the minimum cardinality from {sourceElement.MinCardinality} to {targetElement.MinCardinality}.");
+                        changed = true;
+                    }
+
+                    // check for element being constrained out: source is broader than target in concept and value
+                    if ((sourceElement.MaxCardinality != 0) &&
+                        (targetElement.MaxCardinality == 0))
+                    {
+                        conceptRelationship = applyRelationship(conceptRelationship, CMR.SourceIsBroaderThanTarget);
+                        valueRelationship = applyRelationship(valueRelationship, CMR.SourceIsBroaderThanTarget);
+                        messages.Add(
+                            $"`{targetElement.Name}` constrained the element out" +
+                            $" (max cardinality from {sourceElement.MaxCardinalityString} to {targetElement.MaxCardinalityString}).");
+                        changed = true;
+                    }
+
+                    // check for changing from scalar to array: source is narrower than target in value
+                    if ((sourceElement.MaxCardinality == 1) &&
+                        (targetElement.MaxCardinality != 1))
+                    {
+                        valueRelationship = applyRelationship(valueRelationship, CMR.SourceIsNarrowerThanTarget);
+                        messages.Add($"`{targetElement.Name}` changed from scalar to array (max cardinality from 1 to {targetElement.MaxCardinality}).");
+                        changed = true;
+                    }
+
+                    // check for changing from array to scalar: source is broader than target in value
+                    if ((sourceElement.MaxCardinality != 1) &&
+                        (targetElement.MaxCardinality == 1))
+                    {
+                        valueRelationship = applyRelationship(valueRelationship, CMR.SourceIsBroaderThanTarget);
+                        messages.Add($"`{targetElement.Name}` changed from array to scalar (max cardinality from {sourceElement.MaxCardinalityString} to 1).");
+                        changed = true;
+                    }
+
+                    // check for source allowing more than target allows: target has a broader concept and value than the source
+                    if ((targetElement.MaxCardinality != -1) &&
+                        (sourceElement.MaxCardinality > targetElement.MaxCardinality))
+                    {
+                        conceptRelationship = applyRelationship(conceptRelationship, CMR.SourceIsBroaderThanTarget);
+                        valueRelationship = applyRelationship(valueRelationship, CMR.SourceIsBroaderThanTarget);
+                        messages.Add($"`{targetElement.Name}` decreased the maximum cardinality from {sourceElement.MaxCardinalityString} to {targetElement.MaxCardinalityString}.");
+                        changed = true;
+                    }
+
+                    // TODO: add handling for additional bindings
+                    // check to see if we need to test value set bindings
+                    if ((sourceElement.ValueSetBindingStrength != null) ||
+                        (targetElement.ValueSetBindingStrength != null))
+                    {
+                        // resolve the value set comparison between these element bindings
+                        boundValueSetComparison = ((sourceElement.BindingValueSetKey != null) && (targetElement.BindingValueSetKey != null))
+                            ? DbValueSetComparison.SelectSingle(
+                                _db,
+                                PackageComparisonKey: forwardPair.Key,
+                                SourceFhirPackageKey: forwardPair.SourcePackageKey,
+                                TargetFhirPackageKey: forwardPair.TargetPackageKey,
+                                SourceValueSetKey: (int)sourceElement.BindingValueSetKey,
+                                TargetValueSetKey: (int)targetElement.BindingValueSetKey)
+                            : null;
+
+                        DbValueSet? sourceValueSet = (sourceElement.BindingValueSetKey != null)
+                            ? DbValueSet.SelectSingle(_db, Key: sourceElement.BindingValueSetKey)
+                            : null;
+
+                        DbValueSet? targetValueSet = (targetElement.BindingValueSetKey != null)
+                            ? DbValueSet.SelectSingle(_db, Key: targetElement.BindingValueSetKey)
+                            : null;
+
+                        if (elementComparison.BoundValueSetComparisonKey != boundValueSetComparison?.Key)
+                        {
+                            changed = true;
+                        }
+
+                        // check for adding a required binding where there was not one: source is narrower than target in value set binding
+                        if ((sourceElement.ValueSetBindingStrength != Hl7.Fhir.Model.BindingStrength.Required) &&
+                            (targetElement.ValueSetBindingStrength == Hl7.Fhir.Model.BindingStrength.Required))
+                        {
+                            conceptRelationship = applyRelationship(conceptRelationship, CMR.SourceIsNarrowerThanTarget);
+                            valueRelationship = applyRelationship(valueRelationship, CMR.SourceIsNarrowerThanTarget);
+                            messages.Add($"`{targetElement.Name}` added a required value set binding to `{targetElement.BindingValueSet}`.");
+                            changed = true;
+                        }
+                        // check for an otherwise modified binding
+                        else if (sourceElement.ValueSetBindingStrength != targetElement.ValueSetBindingStrength)
+                        {
+                            // check for a more restrictive binding: source is narrower than target in value set binding
+                            if (BindingStrengthComparer.Instance.Compare(sourceElement.ValueSetBindingStrength, targetElement.ValueSetBindingStrength) > 0)
+                            {
+                                conceptRelationship = applyRelationship(conceptRelationship, CMR.SourceIsNarrowerThanTarget);
+                                valueRelationship = applyRelationship(valueRelationship, CMR.SourceIsNarrowerThanTarget);
+                            }
+                            else
+                            {
+                                // a less restrictive binding: source is broader than target in value set binding
+                                conceptRelationship = applyRelationship(conceptRelationship, CMR.SourceIsBroaderThanTarget);
+                                valueRelationship = applyRelationship(valueRelationship, CMR.SourceIsBroaderThanTarget);
+                            }
+
+                            // add a message based on relative change
+                            if (sourceElement.ValueSetBindingStrength == null)
+                            {
+                                messages.Add(
+                                    $"`{targetElement.Name}` added a value set binding of" +
+                                    $" `{targetElement.BindingValueSet}`" +
+                                    $" with strength {targetElement.ValueSetBindingStrength}.");
+                            }
+                            else if (targetElement.ValueSetBindingStrength == null)
+                            {
+                                messages.Add(
+                                    $"`{targetElement.Name}` removed the value set binding" +
+                                    $" of `{sourceElement.BindingValueSet}`," +
+                                    $" had strength of `{sourceElement.ValueSetBindingStrength}`.");
+                            }
+                            else
+                            {
+                                messages.Add(
+                                    $"`{targetElement.Name}` changed value set binding from" +
+                                    $" `{sourceElement.BindingValueSet}` (`{sourceElement.ValueSetBindingStrength}`)" +
+                                    $" to `{targetElement.BindingValueSet}` (`{targetElement.ValueSetBindingStrength}`).");
+                            }
+                            changed = true;
+                        }
+
+                        // check to see if we need to process the value set comparison due to binding constraints
+                        if ((sourceElement.ValueSetBindingStrength == Hl7.Fhir.Model.BindingStrength.Required) &&
+                            (targetElement.ValueSetBindingStrength == Hl7.Fhir.Model.BindingStrength.Required) &&
+                            (boundValueSetComparison != null))
+                        {
+                            List<DbElementType> sourceElementTypes = DbElementType.SelectList(_db, ElementKey: sourceElement.Key);
+                            List<DbElementType> targetElementTypes = DbElementType.SelectList(_db, ElementKey: targetElement.Key);
+
+                            // check for a code type in the source or target
+                            if (sourceElementTypes.Any(et => et.TypeName == "code") ||
+                                targetElementTypes.Any(et => et.TypeName == "code"))
+                            {
+                                // if the value set is equivalent or broadens, just apply the comparison
+                                if ((boundValueSetComparison.Relationship == CMR.Equivalent) ||
+                                    (boundValueSetComparison.Relationship == CMR.SourceIsNarrowerThanTarget))
+                                {
+                                    conceptRelationship = applyRelationship(conceptRelationship, boundValueSetComparison.Relationship);
+                                    valueRelationship = applyRelationship(valueRelationship, boundValueSetComparison.Relationship);
+                                    messages.Add($"Applied bound value set relationship of `{boundValueSetComparison.Relationship}`.");
+                                }
+                                else if ((sourceValueSet != null) && (targetValueSet != null))
+                                {
+                                    // need to resolve the value set contents to check codes
+                                    List<DbValueSetConcept> sourceVsConcepts = DbValueSetConcept.SelectList(_db, ValueSetKey: sourceElement.BindingValueSetKey);
+                                    HashSet<DbValueSetConcept> targetVsConcepts = new(DbValueSetConcept.SelectList(_db, ValueSetKey: targetElement.BindingValueSetKey));
+
+                                    // check for all codes having a match in the target
+                                    if (sourceVsConcepts.All(c => targetVsConcepts.Contains(c)))
+                                    {
+                                        // check for same number of concepts
+                                        if (sourceVsConcepts.Count == targetVsConcepts.Count)
+                                        {
+                                            conceptRelationship = applyRelationship(conceptRelationship, CMR.Equivalent);
+                                            valueRelationship = applyRelationship(valueRelationship, CMR.Equivalent);
+                                            messages.Add($"Source and target bound value sets have same number of codes and all codes match - required binding is COMPATIBLE for `code` type.");
+                                        }
+                                        else
+                                        {
+                                            conceptRelationship = applyRelationship(conceptRelationship, CMR.SourceIsNarrowerThanTarget);
+                                            valueRelationship = applyRelationship(valueRelationship, CMR.SourceIsNarrowerThanTarget);
+                                            messages.Add($"Target bound value set has more codes than source - required binding is COMPATIBLE for `code` type.");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        conceptRelationship = applyRelationship(conceptRelationship, boundValueSetComparison.Relationship);
+                                        valueRelationship = applyRelationship(valueRelationship, boundValueSetComparison.Relationship);
+                                        messages.Add(
+                                            $"Target value set is INCOMPATIBLE for a required binding on a `code` type," +
+                                            $" VS Relationship: {boundValueSetComparison.Relationship}.");
+                                    }
+                                }
+                                // excluded value sets are assumed compatible
+                                else if ((sourceValueSet?.IsExcluded == true) ||
+                                    (targetValueSet?.IsExcluded == true))
+                                {
+                                    conceptRelationship = applyRelationship(conceptRelationship, CMR.Equivalent);
+                                    valueRelationship = applyRelationship(valueRelationship, CMR.Equivalent);
+                                    messages.Add($"Source or target value set is excluded - assuming required binding is COMPATIBLE for `code` type.");
+                                }
+                                else
+                                {
+                                    conceptRelationship = applyRelationship(conceptRelationship, boundValueSetComparison.Relationship);
+                                    valueRelationship = applyRelationship(valueRelationship, boundValueSetComparison.Relationship);
+                                    messages.Add(
+                                        $"Source and target bound value sets are not compatible ({boundValueSetComparison.Relationship})" +
+                                        $" - required binding is INCOMPATIBLE for `code` type binding.");
+                                }
+
+                                changed = true;
+                            }
+
+                            // check if there are any non-code types in the source or target
+                            if (sourceElementTypes.Any(et => et.TypeName != "code") ||
+                                targetElementTypes.Any(et => et.TypeName != "code"))
+                            {
+                                // if the value set is equivalent or broadens, just apply the comparison
+                                if ((boundValueSetComparison.Relationship == CMR.Equivalent) ||
+                                    (boundValueSetComparison.Relationship == CMR.SourceIsNarrowerThanTarget))
+                                {
+                                    conceptRelationship = applyRelationship(conceptRelationship, boundValueSetComparison.Relationship);
+                                    valueRelationship = applyRelationship(valueRelationship, boundValueSetComparison.Relationship);
+                                    messages.Add($"Applied bound value set relationship of `{boundValueSetComparison.Relationship}`.");
+                                }
+                                // excluded value sets are assumed compatible
+                                else if ((sourceValueSet?.IsExcluded == true) ||
+                                    (targetValueSet?.IsExcluded == true))
+                                {
+                                    conceptRelationship = applyRelationship(conceptRelationship, CMR.Equivalent);
+                                    valueRelationship = applyRelationship(valueRelationship, CMR.Equivalent);
+                                    messages.Add($"Source or target value set is excluded - assuming required binding is COMPATIBLE for non-code type.");
+                                }
+                                else
+                                {
+                                    conceptRelationship = applyRelationship(conceptRelationship, boundValueSetComparison.Relationship);
+                                    valueRelationship = applyRelationship(valueRelationship, boundValueSetComparison.Relationship);
+                                    messages.Add(
+                                        $"Source and target bound value sets are not compatible ({boundValueSetComparison.Relationship})" +
+                                        $" - required binding is INCOMPATIBLE for non-code type binding.");
+                                }
+                                changed = true;
+                            }
+                        }
+                    }
+
+                    // combine the concept and value domain relationships
+                    CMR relationship = conceptRelationship switch
+                    {
+                        CMR.Equivalent => valueRelationship,
+                        _ => conceptRelationship,
+                    };
+
+                    if (elementComparison.Relationship != relationship)
+                    {
+                        messages.Add(
+                            $"Concept relationship `{conceptRelationship}` and value relationship `{valueRelationship}` combined for relationship: `{relationship}`");
+                        changed = true;
+                    }
+
+                    // if we changed something, apply all changes and update the record
+                    if (changed)
+                    {
+                        elementComparison.Relationship = relationship;
+                        elementComparison.ConceptDomainRelationship = conceptRelationship;
+                        elementComparison.ValueDomainRelationship = valueRelationship;
+                        elementComparison.NoMap = noMap;
+                        elementComparison.IsGenerated = isGenerated;
+                        elementComparison.Message = string.Join(" ", messages);
+                        elementComparison.ElementTypeComparisonKey = elementTypeComparison.Key;
+                        elementComparison.BoundValueSetComparisonKey = boundValueSetComparison?.Key;
+                        _elementComparisons.Changed(elementComparison);
+                    }
                 }
 
                 // check to see if the relationship makes sense as an inverse
@@ -924,6 +1289,9 @@ public class FhirDbComparer
 
                     _elementComparisons.Changed(inverseComparison);
                 }
+
+                // process the current element's relationship
+                aggregateStructureRelationship = applyRelationship(aggregateStructureRelationship, elementComparison.Relationship);
             }
         }
 
@@ -1566,6 +1934,18 @@ public class FhirDbComparer
         DbStructureComparison reverseCanonicalComparison,
         DbFhirPackageComparisonPair reversePair)
     {
+        int? inverseTypeComparisonKey = _elementTypeComparisons.Get(otherTargetElement.Key, otherSourceElement.Key)?.Key;
+        int? boundValueSetComparisonKey = (otherSourceElement.BindingValueSetKey == null) || (otherTargetElement.BindingValueSetKey == null)
+            ? null
+            : _vsComparisons.Get((int)otherTargetElement.BindingValueSetKey, otherSourceElement.BindingValueSetKey)?.Key ??
+                DbValueSetComparison.SelectSingle(
+                    _db,
+                    PackageComparisonKey: reversePair.Key,
+                    SourceFhirPackageKey: other.TargetFhirPackageKey,
+                    SourceValueSetKey: otherTargetElement.BindingValueSetKey,
+                    TargetFhirPackageKey: other.SourceFhirPackageKey,
+                    TargetValueSetKey: otherSourceElement.BindingValueSetKey)?.Key;
+
         return new()
         {
             Key = _comparisonDb.GetElementComparisonKey(),
@@ -1582,6 +1962,8 @@ public class FhirDbComparer
             TargetElementKey = other.SourceElementKey,
             TargetElementToken = other.SourceElementToken,
             StructureComparisonKey = reverseCanonicalComparison.Key,
+            ElementTypeComparisonKey = inverseTypeComparisonKey,
+            BoundValueSetComparisonKey = boundValueSetComparisonKey,
             Relationship = invert(other.Relationship),
             ConceptDomainRelationship = invert(other.ConceptDomainRelationship),
             ValueDomainRelationship = invert(other.ValueDomainRelationship),
