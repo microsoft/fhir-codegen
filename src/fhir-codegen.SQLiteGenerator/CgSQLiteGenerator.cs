@@ -230,13 +230,14 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
             ? symbolAttributeLookup[GeneratorAttributes._cgSQLiteTable].First().ConstructorArguments.FirstOrDefault().Value?.ToString() ?? className
             : className;
 
+        int? pkColIndex = null;
         string? pkColName = null;
         string? pkPropType = null;
         bool pkIsIdentity = false;
 
         List<string> createColLines = [];
         List<string> createFKLines = [];
-        List<(string name, string propType, string readerDirective, bool isPrimaryKey, bool isIdentity, bool isNullable, bool isEnum)> tableColInfo = [];
+        List<(string name, string propType, string shortRead, string readerDirective, bool isPrimaryKey, bool isIdentity, bool isNullable, bool isEnum)> tableColInfo = [];
 
         foreach (MemberDeclarationSyntax member in members)
         {
@@ -280,6 +281,21 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 pkIsIdentity = (propTypeName == "int" || propTypeName == "long");
             }
 
+            if (isPrimaryKey)
+            {
+                if (pkColName == null)
+                {
+                    throw new Exception("Primary key column name is null");
+                }
+
+                if (pkColName != propName)
+                {
+                    throw new Exception("Primary key column name does not match property name");
+                }
+
+                pkColIndex = tableColInfo.Count;
+            }
+
             // check for type nullability
             //bool nullable = Nullable.GetUnderlyingType(member.) != null;
             //bool nullable = new NullabilityInfoContext().Create(prop).WriteState is NullabilityState.Nullable;
@@ -289,15 +305,14 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
 
             if ((propTypeInfo.Type is INamedTypeSymbol ints) &&
                 (
-                (ints.TypeKind == TypeKind.Enum) ||
-                ((ints.TypeArguments.Length != 0) && (ints.TypeArguments[0].TypeKind == TypeKind.Enum)) ||
-                (ints.TypeKind == TypeKind.Struct) && (ints.TypeArguments.Length != 0) && ints.TypeArguments[0].ContainingNamespace.Name.StartsWith("HL7")
+                    (ints.TypeKind == TypeKind.Enum) ||
+                    ((ints.TypeArguments.Length != 0) && (ints.TypeArguments[0].TypeKind == TypeKind.Enum)) ||
+                    (ints.TypeKind == TypeKind.Struct) && (ints.TypeArguments.Length != 0) && ints.TypeArguments[0].ContainingNamespace.Name.StartsWith("HL7")
                 ))
             {
                 memberIsEnum = true;
 
                 // grab the enum type name
-
                 if (ints.TypeKind == TypeKind.Enum)
                 {
                     if (ints.ContainingType == null)
@@ -364,6 +379,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 tableColInfo.Add((
                     propName,
                     propTypeName,
+                    string.Format(readFormat.Remove(0, 6), pds.Identifier.ToString(), "reader", tableColInfo.Count),
                     string.Format(readFormat, pds.Identifier.ToString(), "reader", tableColInfo.Count),
                     isPrimaryKey,
                     isPrimaryKey && (propTypeName == "int" || propTypeName == "long"),
@@ -376,6 +392,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 tableColInfo.Add((
                     propName,
                     propTypeName,
+                    string.Format(readFormat.Remove(0, 6), pds.Identifier.ToString(), "reader", tableColInfo.Count),
                     string.Format(readFormat, pds.Identifier.ToString(), "reader", tableColInfo.Count),
                     isPrimaryKey,
                     isPrimaryKey && (propTypeName == "int" || propTypeName == "long"),
@@ -392,6 +409,9 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     propName,
                     propTypeName,
                     nullable
+                        ? string.Format(_sqliteNullableReadDirectives["enum"].Remove(0, 6), pds.Identifier.ToString(), "reader", tableColInfo.Count, enumTypeName)
+                        : string.Format(_sqliteReadDirectives["enum"].Remove(0, 6), pds.Identifier.ToString(), "reader", tableColInfo.Count, enumTypeName),
+                    nullable
                         ? string.Format(_sqliteNullableReadDirectives["enum"], pds.Identifier.ToString(), "reader", tableColInfo.Count, enumTypeName)
                         : string.Format(_sqliteReadDirectives["enum"], pds.Identifier.ToString(), "reader", tableColInfo.Count, enumTypeName),
                     isPrimaryKey,
@@ -405,6 +425,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 tableColInfo.Add((
                     pds.Identifier.ToString(),
                     propTypeName,
+                    $"// ERROR: could not determine retrieval directive for type {propName}:{propTypeName}",
                     $"// ERROR: could not determine retrieval directive for type {propName}:{propTypeName}",
                     isPrimaryKey,
                     isPrimaryKey && (propTypeName == "int" || propTypeName == "long"),
@@ -546,6 +567,33 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                                 while (reader.Read())
                                 {
                                     results.Add(new()
+                                    {
+                                        {{{string.Join(_comma_line_5, tableColInfo.Select(p => p.readerDirective))}}}
+                                    });
+                                }
+                            }
+                            return results;
+                        }
+
+                        public static Dictionary<{{{(pkColName == null ? "int" : pkPropType)}}}, {{{className}}}> SelectDict(IDbConnection dbConnection, string? dbTableName = null, {{{string.Join(", ", getFnFilterParams(true))}}})
+                        {
+                            dbTableName ??= "{{{tableName}}}";
+                    
+                            Dictionary<{{{(pkColName == null ? "int" : pkPropType)}}}, {{{className}}}> results = new();
+                    
+                            IDbCommand command = dbConnection.CreateCommand();
+                            command.CommandText = $"SELECT {{{string.Join(", ", tableColInfo.Select(p => p.name))}}} FROM {dbTableName}";
+                    
+                            bool addedCondition = false;
+                    
+                            {{{string.Join(_line_2, getConditionLines(true))}}}
+
+                            {{{(pkColName == null ? "int rowId = 0;" : string.Empty)}}}
+                            using (IDataReader reader = command.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    results.Add({{{(pkColName == null ? "rowId++" : tableColInfo[(int)pkColIndex!].shortRead)}}}, new()
                                     {
                                         {{{string.Join(_comma_line_5, tableColInfo.Select(p => p.readerDirective))}}}
                                     });
@@ -915,7 +963,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
 
         IEnumerable<string> getFnFilterParams(bool includeNullFilter)
         {
-            foreach ((string name, string propType, string _, bool _, bool _, bool isNullable, bool isEnum) in tableColInfo)
+            foreach ((string name, string propType, string _, string _, bool _, bool _, bool isNullable, bool isEnum) in tableColInfo)
             {
                 yield return $"{propType}? {name} = null";
 
@@ -928,7 +976,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
 
         IEnumerable<string> getFnFilterArgs(bool includeNullFilter)
         {
-            foreach ((string name, string propType, string _, bool _, bool _, bool isNullable, bool isEnum) in tableColInfo)
+            foreach ((string name, string propType, string _, string _, bool _, bool _, bool isNullable, bool isEnum) in tableColInfo)
             {
                 yield return name;
 
@@ -941,7 +989,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
 
         IEnumerable<string> getConditionLines(bool includeNullFilter)
         {
-            foreach ((string name, string propType, string _, bool _, bool _, bool isNullable, bool isEnum) in tableColInfo)
+            foreach ((string name, string propType, string _, string _, bool _, bool _, bool isNullable, bool isEnum) in tableColInfo)
             {
                 yield return $"if ({name} != null)";
                 yield return "{";
@@ -996,7 +1044,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 executeCommand = true;
             }
 
-            foreach ((string name, string _, string _, bool isPrimaryKey, bool isIdentity, bool isNullable, bool isEnum) in tableColInfo)
+            foreach ((string name, string _, string _, string _, bool isPrimaryKey, bool isIdentity, bool isNullable, bool isEnum) in tableColInfo)
             {
                 // do not insert identity key values
                 if (isIdentity && !includeIdentity)

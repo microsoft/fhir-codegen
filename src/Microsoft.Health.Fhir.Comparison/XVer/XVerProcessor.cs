@@ -25,6 +25,7 @@ using System.Collections.Concurrent;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.Comparison.Models;
 using System.Xml.Linq;
+using System.Data;
 
 
 
@@ -340,6 +341,8 @@ public class XVerProcessor
         List<DbFhirPackageComparisonPair> packageComparisonPairs,
         DbFhirPackage package, string dir)
     {
+        int keyPackageColIndex = packages.FindIndex(fp => fp.Key == package.Key);
+
         string vsDir = Path.Combine(dir, "ValueSets");
         if (!Directory.Exists(vsDir))
         {
@@ -350,9 +353,9 @@ public class XVerProcessor
 
         using ExportStreamWriter overviewWriter = createMarkdownWriter(overviewFilename, true, true);
 
-        writeMdOverviewIntroValueSets(overviewWriter, packages, package);
-
-        ConcurrentBag<string> overviewEntries = [];
+        ConcurrentBag<string> requiredOverviewEntries = [];
+        ConcurrentBag<string> excludedOverviewEntries = [];
+        ConcurrentBag<string> otherOverviewEntries = [];
 
         // get the list of all Value Sets in this version
         List<DbValueSet> valueSets = DbValueSet.SelectList(_db!.DbConnection, FhirPackageKey: package.Key);
@@ -360,150 +363,67 @@ public class XVerProcessor
         // iterate over our value sets and generate documents
         Parallel.ForEach(valueSets, (vs, cancellationToken) =>
         {
+            DbVsGraph vsGraph = new()
+            {
+                DB = _db!.DbConnection,
+                Packages = packages,
+                KeyVs = vs,
+                
+            };
+
             // project this value set based on comparisons
-            List<DbVsCell?[]> projection = projectVs(packages, packageComparisonPairs, vs);
+            List<DbVsCell?[]> projection = vsGraph.Project();
 
             // get the overview entry for this value set
-            overviewEntries.Add(getMdOverviewEntry(packages, packageComparisonPairs, package, vs, projection));
+            string content = getMdOverviewEntry(packages, package, vs, projection);
+
+            if (vs.IsExcluded == true)
+            {
+                excludedOverviewEntries.Add(content);
+            }
+            else if (vs.StrongestBindingCore == BindingStrength.Required)
+            {
+                // get the overview entry for this value set
+                requiredOverviewEntries.Add(content);
+            }
+            else
+            {
+                // get the overview entry for this value set
+                otherOverviewEntries.Add(content);
+            }
+
+            string filename = Path.Combine(vsDir, getVsFilename(vs.Name, includeRelativeDir: false));
+            using (ExportStreamWriter vsWriter = createMarkdownWriter(filename, true, true))
+            {
+                writeMdDetailedVs(_db!.DbConnection, vsWriter, packages, package, keyPackageColIndex, vs, vsGraph, projection);
+
+                //// check for failures - write a stub file with information about the value set
+                //if (ca.FailureCode != null)
+                //{
+                //    writeMdComparisonFailed(vsWriter, vs);
+                //    continue;
+                //}
+            }
+
         });
 
-        // write our overview file
-        foreach (string line in overviewEntries.Order())
+        ConcurrentBag<string>[] sectionEntries = [requiredOverviewEntries, excludedOverviewEntries, otherOverviewEntries];
+
+        // write sections
+        for (int i = 0; i < sectionEntries.Length; i++)
         {
-            overviewWriter.WriteLineIndented(line);
+            writeMdOverviewSectionVs(overviewWriter, packages, package, i);
+            foreach (string line in sectionEntries[i].Order())
+            {
+                overviewWriter.WriteLineIndented(line);
+            }
         }
 
         return;
     }
 
-    private record class DbVsCell : ICloneable
-    {
-        public required DbFhirPackage FhirPackage { get; set; }
-        public required DbValueSet Vs { get; set; }
-
-        public DbValueSet? LeftVs { get; set; } = null;
-        public DbValueSetComparison? LeftVsComparison { get; set; } = null;
-
-        public DbValueSet? RightVs { get; set; } = null;
-        public DbValueSetComparison? RightVsComparison { get; set; } = null;
-
-        object ICloneable.Clone() => this with { };
-    }
-
-    private List<DbVsCell?[]> projectVs(
-        List<DbFhirPackage> packages,
-        List<DbFhirPackageComparisonPair> packageComparisonPairs,
-        DbValueSet keyVs)
-    {
-        DbVsCell?[] row = new DbVsCell?[packages.Count];
-        int startCol = packages.FindIndex((fp) => fp.Key == keyVs.FhirPackageKey);
-        row[startCol] = new()
-        {
-            FhirPackage = packages[startCol],
-            Vs = keyVs,
-        };
-
-        List<DbVsCell?[]> right = [];
-
-        // project right
-        if (startCol < packages.Count)
-        {
-            right = projectVs(packages, row, startCol, true);
-        }
-
-        // if we started at the first definition, we are done
-        if (startCol == 0)
-        {
-            return right;
-        }
-
-        List<DbVsCell?[]> results = [];
-
-        // project left
-        foreach (DbVsCell?[] r in right)
-        {
-            results.AddRange(projectVs(packages, r, startCol, false));
-        }
-
-        return results;
-    }
-
-    private List<DbVsCell?[]> projectVs(
-        List<DbFhirPackage> packages,
-        DbVsCell?[] incomingRow,
-        int column,
-        bool projectRight)
-    {
-        if (incomingRow[column] == null)
-        {
-            return [incomingRow];
-        }
-
-        int nextCol = projectRight ? column + 1 : column - 1;
-        if ((nextCol < 0) || (nextCol >= incomingRow.Length))
-        {
-            return [incomingRow];
-        }
-
-        // look for comparisons from this value set to the next package
-        List<DbValueSetComparison> edges = DbValueSetComparison.SelectList(
-            _db!.DbConnection,
-            SourceValueSetKey: incomingRow[column]!.Vs.Key,
-            TargetFhirPackageKey: packages[nextCol].Key,
-            orderByProperties: [nameof(DbValueSetComparison.TargetValueSetKey)]);
-
-        if (edges.Count == 0)
-        {
-            return [incomingRow];
-        }
-
-        List<DbVsCell?[]> results = [];
-
-        // iterate over our neighbors
-        foreach (DbValueSetComparison edge in edges)
-        {
-            DbVsCell?[] row = edges.Count == 1 ? incomingRow : (DbVsCell?[])incomingRow.Clone();
-            if (projectRight == true)
-            {
-                row[nextCol] = new()
-                {
-                    FhirPackage = packages[nextCol],
-                    Vs = DbValueSet.SelectSingle(_db!.DbConnection, Key: edge.TargetValueSetKey) ?? throw new Exception($"Failed to resolve compared ValueSet: {edge.TargetValueSetKey}!"),
-                    LeftVs = incomingRow[column]!.Vs,
-                    LeftVsComparison = edge,
-                };
-
-                row[column]!.RightVs = row[nextCol]!.Vs;
-                row[column]!.RightVsComparison = edge;
-            }
-            else
-            {
-                row[nextCol] = new()
-                {
-                    FhirPackage = packages[nextCol],
-                    Vs = DbValueSet.SelectSingle(_db!.DbConnection, Key: edge.TargetValueSetKey) ?? throw new Exception($"Failed to resolve compared ValueSet: {edge.TargetValueSetKey}!"),
-                    RightVs = incomingRow[column]!.Vs,
-                    RightVsComparison = edge,
-                };
-
-                row[column]!.LeftVs = row[nextCol]!.Vs;
-                row[column]!.LeftVsComparison = edge;
-            }
-
-            // recurse
-            List<DbVsCell?[]> next = projectVs(packages, row, nextCol, projectRight);
-
-            // combine results
-            results.AddRange(next);
-        }
-
-        return results;
-    }
-
-
     private string getMdOverviewEntry(
         List<DbFhirPackage> packages,
-        List<DbFhirPackageComparisonPair> packageComparisonPairs,
         DbFhirPackage package,
         DbValueSet vs,
         List<DbVsCell?[]> projection)
@@ -520,33 +440,58 @@ public class XVerProcessor
         }
 
         string expandCell = vs.CanExpand ? "✔" : $"✘ {vs.Message.ForMdTable()}";
-        string bindingCell = vs.StrongestBindingCore == BindingStrength.Required ? "💪" : string.Empty;
-        string excludedCell = vs.IsExcluded ? "⚠" : string.Empty;
+        //string excludedCell = vs.IsExcluded ? "⚠" : string.Empty;
 
         return
             $"| [{vs.Name.ForMdTable()}]({getVsFilename(vs.Name)})" +
             $" | `{vs.VersionedUrl.ForMdTable()}`" +
             $" | {vs.Description?.ForMdTable()}" +
             $" | {expandCell}" +
-            $" | {bindingCell}" +
-            $" | {excludedCell}" +
             $" | {string.Join(" | ", mapsTo)} |";
     }
 
-    private void writeMdOverviewIntroValueSets(
+    private void writeMdOverviewSectionVs(
         ExportStreamWriter writer,
         List<DbFhirPackage> packages,
-        DbFhirPackage package)
+        DbFhirPackage package,
+        int section)
     {
-        writer.Write($"""
-            Keyed off: {package.PackageId}@{package.PackageVersion} - {package.ShortName}
-            Canonical: {package.CanonicalUrl}
+        switch (section)
+        {
+            case 0:
+                writer.Write($"""
+                    Keyed off: {package.PackageId}@{package.PackageVersion} - {package.ShortName}
+                    Canonical: {package.CanonicalUrl}
+
+                    # Contents
+
+                    * [Required-Binding Value Sets](#required-binding-value-sets)
+                    * [Excluded Value Sets](#excluded-value-sets)
+                    * [Other Value Sets](#other-value-sets)
             
-            ## Value Set Overview
+                    ## Required-Binding Value Sets
 
-            """);
+                    """);
+                break;
 
-        List<string> headers = ["Name", "Canonical", "Description", "Expands", "Has Required Binding", "Excluded"];
+            case 1:
+                writer.Write($"""
+
+                    ## Excluded Value Sets
+
+                    """);
+                break;
+
+            case 2:
+                writer.Write($"""
+
+                    ## Other Value Sets
+
+                    """);
+                break;
+        }
+
+        List<string> headers = ["Name", "Canonical", "Description", "Expands"];
         foreach (DbFhirPackage targetPackage in packages.OrderBy(fp => fp.ShortName))
         {
             if (targetPackage.Key == package.Key)
@@ -559,6 +504,414 @@ public class XVerProcessor
 
         writer.WriteLineIndented($"| {string.Join(" | ", headers)} |");
         writer.WriteLineIndented($"| {string.Join(" | ", Enumerable.Repeat("---", headers.Count))} |");
+    }
+
+
+    /// <summary>
+    /// Writes a detailed markdown with information about this value set, keyed from this version.
+    /// </summary>
+    /// <remarks>
+    /// Note this function is currently too long and very inefficient - will fix once output is
+    /// finalized.
+    /// </remarks>
+    /// <param name="writer">       The writer.</param>
+    /// <param name="keyVs">        The key vs.</param>
+    /// <param name="keyDc">        The key device-context.</param>
+    /// <param name="projection">   The projection.</param>
+    /// <param name="expanded">     True if expanded.</param>
+    /// <param name="expandMessage">Message describing the expand.</param>
+    private void writeMdDetailedVs(
+        IDbConnection db,
+        ExportStreamWriter writer,
+        List<DbFhirPackage> packages,
+        DbFhirPackage package,
+        int keyPackageColIndex,
+        DbValueSet keyVs,
+        DbVsGraph vsGraph,
+        List<DbVsCell?[]> projection)
+    {
+        writer.WriteLine($"""
+            ### {keyVs.Name}
+
+            |      |     |
+            | ---: | --- |
+            | Package | {package.PackageId.ForMdTable()}@{package.PackageVersion.ForMdTable()} |
+            | VS Name | {keyVs.Name.ForMdTable()} |
+            | Canonical URL | `{keyVs.UnversionedUrl.ForMdTable()}` |
+            | Version | {keyVs.Version.ForMdTable()} |
+            | Description | {keyVs.Description.ForMdTable()} |
+            | Status | `{keyVs.Status}` |
+            | Has Escape Valve Code | `{keyVs.HasEscapeValveCode}` |
+            | Database Key | `{keyVs.Key}` |
+            | Database Concept Count | `{keyVs.ConceptCount}` |
+            | Database Active Concept Count | `{keyVs.ActiveConcreteConceptCount}` |
+            """);
+
+        writer.WriteLine("### Bindings");
+        writer.WriteLine();
+        writer.WriteLine("| Source | Element | Binding | Strength | Element Short |");
+        writer.WriteLine("| ------ | ------- | ------- | -------- | ------------- |");
+
+        // get the elements with bindings
+        {
+            List<DbElement> boundElements = DbElement.SelectList(db, BindingValueSetKey: keyVs.Key, orderByProperties: [nameof(DbElement.Key)]);
+
+            foreach (DbElement ed in boundElements)
+            {
+                DbStructureDefinition? sd = DbStructureDefinition.SelectSingle(db, Key: ed.StructureKey);
+
+                if (sd == null)
+                {
+                    writer.WriteLine(
+                        $"| Unresolved Key: `{ed.StructureKey}`" +
+                        $" | `{ed.Path.ForMdTable()}`" +
+                        $" | `{ed.BindingValueSet.ForMdTable()}`" +
+                        $" | `{ed.ValueSetBindingStrength}`" +
+                        $" | {ed.Short.ForMdTable()}" +
+                        $" |");
+                }
+                else
+                {
+                    writer.WriteLine(
+                        $"| `{sd.UnversionedUrl.ForMdTable()}`" +
+                        $" | `{ed.Path.ForMdTable()}`" +
+                        $" | `{ed.BindingValueSet.ForMdTable()}`" +
+                        $" | `{ed.ValueSetBindingStrength}`" +
+                        $" | {ed.Short.ForMdTable()}" +
+                        $" |");
+                }
+            }
+        }
+
+        writer.WriteLine();
+
+        if (keyVs.CanExpand == false)
+        {
+            writer.WriteLine($"""
+                ### Expansion Failure
+
+                Failed to expand this value set: {keyVs.Message}
+                """);
+            return;
+        }
+
+        writer.WriteLine("### Referenced Systems");
+        writer.WriteLine();
+
+        if (string.IsNullOrEmpty(keyVs.ReferencedSystems))
+        {
+            writer.WriteLine("No referenced systems.");
+        }
+        else
+        {
+            string[] systems = keyVs.ReferencedSystems.Split(", ");
+            foreach (string system in systems)
+            {
+                writer.WriteLine($"* `{system}`");
+            }
+        }
+
+        // if there are no mappings, we are done writing this file
+        if ((projection.Count == 0) ||
+            (
+                (projection.Count == 1) &&
+                (projection[0][keyPackageColIndex]?.LeftComparison == null) &&
+                (projection[0][keyPackageColIndex]?.RightComparison == null)
+            ))
+        {
+            writer.WriteLine($"""
+                ### Empty Projection
+
+                This Value Set resulted in no projection (no mappings to other packages).
+
+                ### Codes
+
+                | System | Code | Display |
+                | ------ | ---- | ------- |
+                """);
+
+            foreach (DbValueSetConcept c in DbValueSetConcept.SelectList(db, ValueSetKey: keyVs.Key, orderByProperties: [nameof(DbValueSetConcept.System), nameof(DbValueSetConcept.Code)]))
+            {
+                writer.WriteLine(
+                    $"| `{c.System.ForMdTable()}`" +
+                    $" | `{c.Code.ForMdTable()}`" +
+                    $" | {c.Display?.ForMdTable()}" +
+                    $" |");
+            }
+
+            return;
+        }
+
+        int byTwoColumnCount = (packages.Count * 2) - 1;
+
+        string vsNamePascal = keyVs.Name.ToPascalCase();
+        string vsNameClean = FhirSanitizationUtils.SanitizeForProperty(keyVs.Name, convertToConvention: FhirNameConventionExtensions.NamingConvention.PascalCase);
+
+        string[] vsRootUrlsByVersion = packages.Select(fp => $"/docs/{FhirSanitizationUtils.SanitizeForProperty(fp.ShortName)}/ValueSets").ToArray();
+
+        (string key, bool hasMapping)[] allKeys = packages.Select((fp, i) => (fp.ShortName, projection.Any(r => r[i] != null))).ToArray();
+
+        // generate table showing the mappings
+        writer.WriteLine("### Mapping Table");
+        writer.WriteLine();
+        writer.WriteLine("| " + string.Join(" | Comparison | ", allKeys.Select(v => v.key)));
+        writeTableColumns(writer, "---", byTwoColumnCount, appendNewline: true);
+
+        foreach (DbVsCell?[] row in projection)
+        {
+            int column = -1;
+            // traverse columns
+            foreach (DbVsCell? cell in row)
+            {
+                column++;
+
+                if (cell == null)
+                {
+                    writer.Write("| | ");
+                    continue;
+                }
+
+                writer.Write(
+                    $"| [{cell.Vs.Name.ForMdTable()}]({vsRootUrlsByVersion[column]}/{getVsFilename(cell.Vs.Name, includeRelativeDir: false)})" +
+                    $"<br/>" +
+                    $" `{cell.Vs.VersionedUrl.ForMdTable()}` ");
+
+                if (column == (row.Length - 1))
+                {
+                    writer.WriteLine();
+                    continue;
+                }
+
+                (string toRight, string fromRight) = getMappingMdTableCell(cell, true);
+
+                // write mapping notes
+                writer.Write(
+                    $"| →→→→→→→ <br/> {toRight} <br/> →→→→→→→ " +
+                    $"<hr/>" +
+                    $"←←←←←←← <br/> {fromRight} <br/> ←←←←←←← ");
+            }
+        }
+        writer.WriteLine();
+
+        // write a section for the code table
+        writer.WriteLine("### Code Mappings");
+        writer.WriteLine();
+
+        int mapGroupIndex = 0;
+        //List<DbValueSetConcept> keyConcepts = DbValueSetConcept.SelectList(
+        //    db,
+        //    ValueSetKey: keyVs.Key,
+        //    orderByProperties: [nameof(DbValueSetConcept.System), nameof(DbValueSetConcept.Code)]);
+
+        foreach (DbVsCell?[] valueSetRow in projection)
+        {
+            if (valueSetRow[keyPackageColIndex] == null)
+            {
+                continue;
+            }
+
+            writer.WriteLine();
+            writer.WriteLine("#### Map Group " + mapGroupIndex++);
+            writer.WriteLine();
+            writer.WriteLine($"This group is centered on the Value Set {valueSetRow[keyPackageColIndex]!.Vs.Name} from {package.PackageId}@{package.PackageVersion} ({package.ShortName}, key {package.Key}).");
+            writer.WriteLine("All codes from this value set are listed while other value sets only show contents that have relationships with those codes.");
+            writer.WriteLine();
+
+            // write the table header
+            for (int col = 0; col < packages.Count; col++)
+            {
+                if (col > 0)
+                {
+                    writer.Write("| Relationship ");
+                }
+
+                DbVsCell? cell = valueSetRow[col];
+
+                if (cell == null)
+                {
+                    writer.Write("| *No Map* ");
+                    continue;
+                }
+
+                if (col == keyPackageColIndex)
+                {
+                    writer.Write($"| {cell.FhirPackage.ShortName} {cell.Vs.Name.ForMdTable()}");
+                }
+                else
+                {
+                    writer.Write($"| [{cell.FhirPackage.ShortName} {cell.Vs.Name.ForMdTable()}]({vsRootUrlsByVersion[col]}/{getVsFilename(cell.Vs.Name, includeRelativeDir: false)})");
+                }
+            }
+            writer.WriteLine();
+            writeTableColumns(writer, "---", byTwoColumnCount, appendNewline: true);
+
+            List<DbVsConceptCell?[]> conceptProjection = vsGraph.ProjectConcepts(valueSetRow);
+
+            HashSet<string>[] codesPerVs = packages.Select(_ => new HashSet<string>()).ToArray();
+            string? lastSystem = null;
+
+            // iterate over the components in the concept projection
+            foreach (DbVsConceptCell?[] conceptRow in conceptProjection)
+            {
+                if (conceptRow[keyPackageColIndex]?.Concept.System != lastSystem)
+                {
+                    lastSystem = conceptRow[keyPackageColIndex]?.Concept.System;
+                    writer.WriteLine($"""| <td colspan="{byTwoColumnCount - 1}">**{package.ShortName.ForMdTable()}** System: `{lastSystem.ForMdTable()}`""");
+
+                    //writeTableColumns(
+                    //    writer,
+                    //    $"""{package.ShortName.ForMdTable()} System:<br/>`{lastSystem.ForMdTable()}`""",
+                    //    byTwoColumnCount,
+                    //    appendNewline: true,
+                    //    valueOnlyInColumn: keyPackageColIndex * 2);
+                }
+
+                int column = -1;
+
+                // traverse columns
+                foreach (DbVsConceptCell? cell in conceptRow)
+                {
+                    column++;
+
+                    if (cell == null)
+                    {
+                        writer.Write("| | ");
+                        continue;
+                    }
+
+                    codesPerVs[column].Add(cell.Concept.FhirKey);
+
+                    if (column == keyPackageColIndex)
+                    {
+                        writer.Write($"| **`{cell.Concept.Code.ForMdTable()}`**");
+                    }
+                    else
+                    {
+                        writer.Write($"| `{cell.Concept.Code.ForMdTable()}`");
+                    }
+
+                    if (column == (conceptRow.Length - 1))
+                    {
+                        continue;
+                    }
+
+                    if ((cell.RightCell == null) ||
+                        (cell.RightComparison == null) ||
+                        (cell.RightConcept == null))
+                    {
+                        writer.Write("| ");
+                    }
+                    else
+                    {
+                        if (cell.RightComparison.Relationship != cell.RightCell.LeftComparison?.Relationship)
+                        {
+                            // write mapping notes
+                            writer.Write(
+                                $"| → {cell.RightComparison.Relationship} → " +
+                                $"<hr/>" +
+                                $"← {cell.RightCell.LeftComparison?.Relationship} ← ");
+                        }
+                        else if (cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.Equivalent)
+                        {
+                            writer.Write("| == ");
+                        }
+                        else if (cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget)
+                        {
+                            writer.Write("| > ");
+                        }
+                        else if (cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget)
+                        {
+                            writer.Write("| < ");
+                        }
+                        else
+                        {
+                            // write mapping notes
+                            writer.Write(
+                                $"| → {cell.RightComparison.Relationship} → " +
+                                $"<hr/>" +
+                                $"← {cell.RightCell.LeftComparison?.Relationship} ← ");
+                        }
+                    }
+                }
+
+                writer.WriteLine();
+
+                //// check for unmapped concepts
+                //if (!hasMap)
+                //{
+                //    for (int i = 0; i < valueSetRow.Length; i++)
+                //    {
+                //        if (i == keyPackageColIndex)
+                //        {
+                //            writer.Write($"| **`{component.Code.ForMdTable()}`**");
+                //        }
+                //        else
+                //        {
+                //            writer.Write("| ");
+                //        }
+                //    }
+                //    writer.WriteLine();
+                //}
+            }
+
+            // check for unused codes in value sets
+            for (int i = 0; i < valueSetRow.Length; i++)
+            {
+                if (i != 0)
+                {
+                    writer.Write("| ");
+                }
+
+                if (valueSetRow[i] == null)
+                {
+                    writer.Write("| ");
+                }
+                else
+                {
+                    writer.Write($"| *{codesPerVs[i].Count} of {valueSetRow[i]!.Vs.ConceptCount} codes used* ");
+                }
+            }
+            writer.WriteLine();
+
+            writer.WriteLine();
+        }
+
+        return;
+
+        //bool isRelated(ConceptDomainRelationshipCodes? relationship) =>
+        //    (relationship == ConceptDomainRelationshipCodes.Equivalent) ||
+        //    (relationship == ConceptDomainRelationshipCodes.SourceIsNarrowerThanTarget) ||
+        //    (relationship == ConceptDomainRelationshipCodes.SourceIsBroaderThanTarget) ||
+        //    (relationship == ConceptDomainRelationshipCodes.Related);
+    }
+
+    private (string to, string from) getMappingMdTableCell(DbVsCell cell, bool movingRight)
+    {
+        DbVsCell? targetCell = movingRight ? cell.RightCell : cell.LeftCell;
+
+        if (targetCell == null)
+        {
+            return ("*no map*", "*no map*");
+        }
+
+        DbValueSetComparison? toComparison = movingRight ? cell.RightComparison : cell.LeftComparison;
+        DbValueSetComparison? fromComparison = movingRight ? targetCell.LeftComparison : cell.RightComparison;
+
+        return (getLink(toComparison, targetCell), getLink(fromComparison, targetCell));
+
+        string getLink(DbValueSetComparison? comparison, DbVsCell? target)
+        {
+            if ((comparison == null) || (target == null))
+            {
+                return "*no map*";
+            }
+
+            //return $"`{comparison.CompositeName.ForMdTable()}` ({comparison.Key})";
+            return $"`{comparison.Key}`";
+
+            //return $"[{comparison.CompositeName.ForMdTable()} ({comparison.Key})]" +
+            //    $"(/input/codes_v2/{cell.DC.FhirSequence.ToRLiteral()}to{target.DC.FhirSequence.ToRLiteral()}/ConceptMap-{comparison.Name}.json)";
+        }
     }
 
 
@@ -1678,21 +2031,69 @@ public class XVerProcessor
         //    (relationship == ConceptDomainRelationshipCodes.Related);
     }
 
-    private void writeTableColumns(ExportStreamWriter writer, string value, int count, bool appendNewline = true)
+    private void writeTableColumns(
+        ExportStreamWriter writer,
+        string value,
+        int count,
+        bool appendNewline = true,
+        int? valueOnlyInColumn = null)
     {
+        if (valueOnlyInColumn == null)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                if (appendNewline && (i == count - 1))
+                {
+                    writer.WriteLine(" | " + value);
+                }
+                else if (i == 0)
+                {
+                    writer.Write("| " + value);
+                }
+                else
+                {
+                    writer.Write(" | " + value);
+                }
+            }
+
+            return;
+        }
+
+
         for (int i = 0; i < count; i++)
         {
             if (appendNewline && (i == count - 1))
             {
-                writer.WriteLine(" | " + value);
+                if (valueOnlyInColumn == i)
+                {
+                    writer.WriteLine(" | " + value);
+                }
+                else
+                {
+                    writer.WriteLine(" | ");
+                }
             }
             else if (i == 0)
             {
-                writer.Write("| " + value);
+                if (valueOnlyInColumn == i)
+                {
+                    writer.Write("| " + value);
+                }
+                else
+                {
+                    writer.Write("| ");
+                }
             }
             else
             {
-                writer.Write(" | " + value);
+                if (valueOnlyInColumn == i)
+                {
+                    writer.Write(" | " + value);
+                }
+                else
+                {
+                    writer.Write(" | ");
+                }
             }
         }
     }

@@ -73,7 +73,7 @@ public class FhirDbComparer
         FhirArtifactClassEnum? artifactFilter = null,
         HashSet<int>? comparisonPairFilterSet = null)
     {
-        Dictionary<int, DbFhirPackage> packages = DbFhirPackage.SelectList(_db).ToDictionary(p => p.Key);
+        Dictionary<int, DbFhirPackage> packages = DbFhirPackage.SelectDict(_db);
 
         // iterate over each FHIR Package we have
         foreach (DbFhirPackage sourcePackage in packages.Values)

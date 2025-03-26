@@ -66,7 +66,7 @@ public partial class DbValueSet : DbCanonicalResource
 
 [CgSQLiteTable(tableName: "Concepts")]
 [CgSQLiteIndex(nameof(ValueSetKey), nameof(Inactive), nameof(Abstract))]
-[CgSQLiteIndex(nameof(ValueSetKey), nameof(Code))]
+[CgSQLiteIndex(nameof(ValueSetKey), nameof(System), nameof(Code))]
 public partial class DbValueSetConcept : DbPackageContent
 {
     [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
@@ -77,6 +77,9 @@ public partial class DbValueSetConcept : DbPackageContent
     public required bool Inactive { get; set; }
     public required bool Abstract { get; set; }
     public required string? Properties { get; set; }
+
+    [CgSQLiteIgnore]
+    public string FhirKey => $"{System}#{Code}";
 }
 
 [CgSQLiteTable(tableName: "Structures")]
@@ -100,6 +103,7 @@ public partial class DbStructureDefinition : DbCanonicalResource
 [CgSQLiteIndex(nameof(StructureKey))]
 [CgSQLiteIndex(nameof(StructureKey), nameof(Id))]
 [CgSQLiteIndex(nameof(StructureKey), nameof(Path))]
+[CgSQLiteIndex(nameof(BindingValueSetKey))]
 public partial class DbElement : DbPackageContent
 {
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]

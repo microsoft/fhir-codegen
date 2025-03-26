@@ -112,6 +112,7 @@ public partial class DbValueSetComparison : DbPackageComparisonContent, IDbPacka
 
 [CgSQLiteTable(tableName: "ConceptComparisons")]
 [CgSQLiteIndex(nameof(ValueSetComparisonKey))]
+[CgSQLiteIndex(nameof(ValueSetComparisonKey), nameof(SourceConceptKey), nameof(TargetConceptKey))]
 [CgSQLiteIndex(nameof(ValueSetComparisonKey), nameof(SourceValueSetKey), nameof(SourceConceptKey), nameof(TargetFhirPackageKey))]
 [CgSQLiteIndex(nameof(PackageComparisonKey), nameof(SourceFhirPackageKey), nameof(SourceValueSetKey), nameof(SourceConceptKey), nameof(TargetFhirPackageKey), nameof(TargetValueSetKey), nameof(TargetConceptKey))]
 public partial class DbValueSetConceptComparison : DbPackageComparisonContent, IDbPackageComparisonContent
