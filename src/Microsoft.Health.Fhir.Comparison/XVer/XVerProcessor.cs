@@ -165,6 +165,16 @@ public class XVerProcessor
                 WriteDocsFromDatabase();
                 break;
 
+            case "docs-vs":
+                LoadDatabase(false, false);
+                WriteDocsFromDatabase(FhirArtifactClassEnum.ValueSet);
+                break;
+
+            case "docs-sd":
+                LoadDatabase(false, false);
+                WriteDocsFromDatabase(FhirArtifactClassEnum.Resource);
+                break;
+
             default:
                 LoadDatabase(true, true);
                 LoadFhirCrossVersionMaps(preferV1Maps: true);
@@ -333,13 +343,469 @@ public class XVerProcessor
             {
                 writeMarkdownValueSets(packages, packageComparisonPairs, package, packageDir);
             }
+
+            if ((artifactFilter == null) ||
+                (artifactFilter == FhirArtifactClassEnum.PrimitiveType) ||
+                (artifactFilter == FhirArtifactClassEnum.ComplexType) ||
+                (artifactFilter == FhirArtifactClassEnum.Resource))
+            {
+                //writeMarkdownStructures(packages, packageComparisonPairs, package, packageDir, FhirArtifactClassEnum.PrimitiveType);
+                writeMarkdownStructures(packages, packageComparisonPairs, package, packageDir, FhirArtifactClassEnum.ComplexType);
+                writeMarkdownStructures(packages, packageComparisonPairs, package, packageDir, FhirArtifactClassEnum.Resource);
+            }
         }
+    }
+
+    private void writeMarkdownStructures(
+        List<DbFhirPackage> packages,
+        List<DbFhirPackageComparisonPair> packageComparisonPairs,
+        DbFhirPackage package,
+        string dir,
+        FhirArtifactClassEnum artifactClass)
+    {
+        int keyPackageColIndex = packages.FindIndex(fp => fp.Key == package.Key);
+
+        string artifactPascal = artifactClass switch
+        {
+            FhirArtifactClassEnum.PrimitiveType => "PrimitiveTypes",
+            FhirArtifactClassEnum.ComplexType => "ComplexTypes",
+            FhirArtifactClassEnum.Resource => "Resources",
+            _ => throw new InvalidOperationException("Invalid artifact class."),
+        };
+
+        string artifactLower = artifactPascal.ToLowerInvariant();
+
+        string sdDir = Path.Combine(dir, artifactPascal);
+        if (!Directory.Exists(sdDir))
+        {
+            Directory.CreateDirectory(sdDir);
+        }
+
+        string overviewFilename = Path.Combine(dir, artifactPascal + ".md");
+
+        using ExportStreamWriter overviewWriter = createMarkdownWriter(overviewFilename, true, true);
+
+        ConcurrentBag<string> overviewEntries = [];
+
+        // get the list of all Value Sets in this version
+        List<DbStructureDefinition> structures = DbStructureDefinition.SelectList(
+            _db!.DbConnection,
+            FhirPackageKey: package.Key,
+            ArtifactClass: artifactClass);
+
+        // iterate over our value sets and generate documents
+        Parallel.ForEach(structures, (sd, cancellationToken) =>
+        {
+            DbGraphSd sdGraph = new()
+            {
+                DB = _db!.DbConnection,
+                Packages = packages,
+                KeySd = sd,
+            };
+
+            // project this value set based on comparisons
+            List<DbSdCell?[]> projection = sdGraph.Project();
+
+            // get the overview entry for this value set
+            string content = getMdOverviewEntry(packages, package, sd, projection);
+
+            // get the overview entry for this value set
+            overviewEntries.Add(content);
+
+            string filename = Path.Combine(sdDir, getSdFilename(sd.Name, artifactClass, includeRelativeDir: false));
+            using (ExportStreamWriter vsWriter = createMarkdownWriter(filename, true, true))
+            {
+                writeMdDetailedSd(_db!.DbConnection, vsWriter, packages, package, keyPackageColIndex, sd, sdGraph, projection);
+            }
+        });
+
+        writeMdOverviewSd(overviewWriter, packages, package, artifactClass);
+        foreach (string line in overviewEntries.Order())
+        {
+            overviewWriter.WriteLineIndented(line);
+        }
+
+        return;
+    }
+
+    private void writeMdDetailedSd(
+        IDbConnection db,
+        ExportStreamWriter writer,
+        List<DbFhirPackage> packages,
+        DbFhirPackage package,
+        int keyPackageColIndex,
+        DbStructureDefinition keySd,
+        DbGraphSd sdGraph,
+        List<DbSdCell?[]> projection)
+    {
+        writer.WriteLine($"""
+            ### {keySd.Name}
+
+            |      |     |
+            | ---: | --- |
+            | Package | {package.PackageId.ForMdTable()}@{package.PackageVersion.ForMdTable()} |
+            | Stucture Name | {keySd.Name.ForMdTable()} |
+            | Canonical URL | `{keySd.UnversionedUrl.ForMdTable()}` |
+            | Version | {keySd.Version.ForMdTable()} |
+            | Description | {keySd.Description.ForMdTable()} |
+            | Status | `{keySd.Status}` |
+            | Artifact Class | `{keySd.ArtifactClass}` |
+            | Database Key | `{keySd.Key}` |
+            | Database Snapshot Count | `{keySd.SnapshotCount}` |
+            | Database Differential Count | `{keySd.DifferentialCount}` |
+
+            ### Elements
+
+            | Id | Path | Name | Base Path | Short | Cardinality | Collated Type | Binding Strength | Binding Value Set |
+            | -- | ---- | ---- | --------- | ----- | ----------- | ------------- | ---------------- | ----------------- |
+            """);
+
+        foreach (DbElement e in DbElement.SelectList(db, StructureKey: keySd.Key, orderByProperties: [nameof(DbElement.Id)]))
+        {
+            writer.WriteLine(
+                $"| `{e.Id.ForMdTable()}`" +
+                $" | `{e.Path.ForMdTable()}`" +
+                $" | `{e.Name.ForMdTable()}`" +
+                $" | {e.BasePath?.ForMdTable()}" +
+                $" | {e.Short.ForMdTable()}" +
+                $" | {e.MinCardinality}..{e.MaxCardinalityString}" +
+                $" | {e.CollatedTypeLiteral.ForMdTable()}" +
+                $" | {(e.ValueSetBindingStrength == null ? string.Empty : "`" + e.ValueSetBindingStrength + "`")}" +
+                $" | {(e.BindingValueSet == null ? string.Empty : "`" + e.BindingValueSet + "`")}" +
+                $" |");
+        }
+
+        // if there are no mappings, we are done writing this file
+        if ((projection.Count == 0) ||
+            (
+                (projection.Count == 1) &&
+                (projection[0][keyPackageColIndex]?.LeftComparison == null) &&
+                (projection[0][keyPackageColIndex]?.RightComparison == null)
+            ))
+        {
+            writer.WriteLine($"""
+                ### Empty Projection
+
+                This Structure ({keySd.ArtifactClass}) resulted in no projection (no mappings to other packages).
+
+                """);
+
+            return;
+        }
+
+        int byTwoColumnCount = (packages.Count * 2) - 1;
+
+        string sdNamePascal = keySd.Name.ToPascalCase();
+        string sdNameClean = FhirSanitizationUtils.SanitizeForProperty(keySd.Name, convertToConvention: FhirNameConventionExtensions.NamingConvention.PascalCase);
+
+        string artifactPascal = keySd.ArtifactClass switch
+        {
+            FhirArtifactClassEnum.PrimitiveType => "PrimitiveTypes",
+            FhirArtifactClassEnum.ComplexType => "ComplexTypes",
+            FhirArtifactClassEnum.Resource => "Resources",
+            _ => throw new InvalidOperationException("Invalid artifact class."),
+        };
+
+        string[] sdRootUrlsByVersion = packages.Select(fp => $"/docs/{FhirSanitizationUtils.SanitizeForProperty(fp.ShortName)}/{artifactPascal}").ToArray();
+
+        (string key, bool hasMapping)[] allKeys = packages.Select((fp, i) => (fp.ShortName, projection.Any(r => r[i] != null))).ToArray();
+
+        // generate table showing the mappings
+        writer.WriteLine("### Mapping Table");
+        writer.WriteLine();
+        writer.WriteLine("| " + string.Join(" | Comparison | ", allKeys.Select(v => v.key)));
+        writeTableColumns(writer, "---", byTwoColumnCount, appendNewline: true);
+
+        foreach (DbSdCell?[] row in projection)
+        {
+            int column = -1;
+            // traverse columns
+            foreach (DbSdCell? cell in row)
+            {
+                column++;
+
+                if (cell == null)
+                {
+                    writer.Write("| | ");
+                    continue;
+                }
+
+                writer.Write(
+                    $"| [{cell.Sd.Name.ForMdTable()}]({sdRootUrlsByVersion[column]}/{getSdFilename(cell.Sd.Name, cell.Sd.ArtifactClass, includeRelativeDir: false)})" +
+                    $"<br/>" +
+                    $" `{cell.Sd.VersionedUrl.ForMdTable()}` ");
+
+                if (column == (row.Length - 1))
+                {
+                    writer.WriteLine();
+                    continue;
+                }
+
+                (string toRight, string fromRight) = getMappingMdTableCell(cell, true);
+
+                // write mapping notes
+                writer.Write(
+                    $"| →→→→→→→ <br/> {toRight} <br/> →→→→→→→ " +
+                    $"<hr/>" +
+                    $"←←←←←←← <br/> {fromRight} <br/> ←←←←←←← ");
+            }
+        }
+        writer.WriteLine();
+
+        // write a section for the element table
+        writer.WriteLine("### Element Mappings");
+        writer.WriteLine();
+
+        int mapGroupIndex = 0;
+
+        foreach (DbSdCell?[] structureRow in projection)
+        {
+            if (structureRow[keyPackageColIndex] == null)
+            {
+                continue;
+            }
+
+            writer.WriteLine();
+            writer.WriteLine("#### Map Group " + mapGroupIndex++);
+            writer.WriteLine();
+            writer.WriteLine($"This group is centered on the Structure Definition {structureRow[keyPackageColIndex]!.Sd.Name} from {package.PackageId}@{package.PackageVersion} ({package.ShortName}, key {package.Key}).");
+            writer.WriteLine("All elements from this structure are listed while other structures only show contents that have relationships with those elements.");
+            writer.WriteLine();
+
+            // write the table header
+            for (int col = 0; col < packages.Count; col++)
+            {
+                if (col > 0)
+                {
+                    writer.Write("| Relationship ");
+                }
+
+                DbSdCell? cell = structureRow[col];
+
+                if (cell == null)
+                {
+                    writer.Write("| *No Map* ");
+                    continue;
+                }
+
+                if (col == keyPackageColIndex)
+                {
+                    writer.Write($"| {cell.FhirPackage.ShortName} {cell.Sd.Name.ForMdTable()}");
+                }
+                else
+                {
+                    writer.Write($"| [{cell.FhirPackage.ShortName} {cell.Sd.Name.ForMdTable()}]({sdRootUrlsByVersion[col]}/{getSdFilename(cell.Sd.Name, cell.Sd.ArtifactClass, includeRelativeDir: false)})");
+                }
+            }
+            writer.WriteLine();
+            writeTableColumns(writer, "---", byTwoColumnCount, appendNewline: true);
+
+            List<DbElementCell?[]> elementProjection = sdGraph.ProjectElements(structureRow);
+
+            HashSet<string>[] elementsPerSd = packages.Select(_ => new HashSet<string>()).ToArray();
+
+            // iterate over the components in the concept projection
+            foreach (DbElementCell?[] elementRow in elementProjection)
+            {
+                int column = -1;
+
+                // traverse columns
+                foreach (DbElementCell? cell in elementRow)
+                {
+                    column++;
+
+                    if (cell == null)
+                    {
+                        writer.Write("| | ");
+                        continue;
+                    }
+
+                    elementsPerSd[column].Add(cell.Element.Id);
+
+                    if (column == keyPackageColIndex)
+                    {
+                        writer.Write($"| **`{cell.Element.Id.ForMdTable()}`**");
+                    }
+                    else
+                    {
+                        writer.Write($"| `{cell.Element.Id.ForMdTable()}`");
+                    }
+
+                    if (column == (elementRow.Length - 1))
+                    {
+                        continue;
+                    }
+
+                    if ((cell.RightCell == null) ||
+                        (cell.RightComparison == null) ||
+                        (cell.RightElement == null))
+                    {
+                        writer.Write("| ");
+                    }
+                    else
+                    {
+                        if (cell.RightComparison.Relationship != cell.RightCell.LeftComparison?.Relationship)
+                        {
+                            // write mapping notes
+                            writer.Write(
+                                $"| → {cell.RightComparison.Relationship} → " +
+                                $"<hr/>" +
+                                $"← {cell.RightCell.LeftComparison?.Relationship} ← ");
+                        }
+                        else if (cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.Equivalent)
+                        {
+                            writer.Write("| == ");
+                        }
+                        else if (cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget)
+                        {
+                            writer.Write("| > ");
+                        }
+                        else if (cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget)
+                        {
+                            writer.Write("| < ");
+                        }
+                        else
+                        {
+                            // write mapping notes
+                            writer.Write(
+                                $"| → {cell.RightComparison.Relationship} → " +
+                                $"<hr/>" +
+                                $"← {cell.RightCell.LeftComparison?.Relationship} ← ");
+                        }
+                    }
+                }
+
+                writer.WriteLine();
+            }
+
+            // check for unused elements in structures
+            for (int i = 0; i < structureRow.Length; i++)
+            {
+                if (i != 0)
+                {
+                    writer.Write("| ");
+                }
+
+                if (structureRow[i] == null)
+                {
+                    writer.Write("| ");
+                }
+                else
+                {
+                    writer.Write($"| *{elementsPerSd[i].Count} of {structureRow[i]!.Sd.SnapshotCount} elements used* ");
+                }
+            }
+
+            writer.WriteLine();
+            writer.WriteLine();
+        }
+
+        return;
+    }
+
+    private (string to, string from) getMappingMdTableCell(DbSdCell cell, bool movingRight)
+    {
+        DbSdCell? targetCell = movingRight ? cell.RightCell : cell.LeftCell;
+
+        if (targetCell == null)
+        {
+            return ("*no map*", "*no map*");
+        }
+
+        DbStructureComparison? toComparison = movingRight ? cell.RightComparison : cell.LeftComparison;
+        DbStructureComparison? fromComparison = movingRight ? targetCell.LeftComparison : cell.RightComparison;
+
+        return (getLink(toComparison, targetCell), getLink(fromComparison, targetCell));
+
+        string getLink(DbStructureComparison? comparison, DbSdCell? target)
+        {
+            if ((comparison == null) || (target == null))
+            {
+                return "*no map*";
+            }
+
+            //return $"`{comparison.CompositeName.ForMdTable()}` ({comparison.Key})";
+            return $"`{comparison.Key}`";
+
+            //return $"[{comparison.CompositeName.ForMdTable()} ({comparison.Key})]" +
+            //    $"(/input/codes_v2/{cell.DC.FhirSequence.ToRLiteral()}to{target.DC.FhirSequence.ToRLiteral()}/ConceptMap-{comparison.Name}.json)";
+        }
+    }
+
+    private void writeMdOverviewSd(
+        ExportStreamWriter writer,
+        List<DbFhirPackage> packages,
+        DbFhirPackage package,
+        FhirArtifactClassEnum artifactClass)
+    {
+        string artifactDisplay = artifactClass switch
+        {
+            FhirArtifactClassEnum.PrimitiveType => "Primitive Type",
+            FhirArtifactClassEnum.ComplexType => "Complex Type",
+            FhirArtifactClassEnum.Resource => "Resource",
+            _ => throw new InvalidOperationException("Invalid artifact class."),
+        };
+
+        /*
+            # Contents
+
+            * [Required-Binding Value Sets](#required-binding-value-sets)
+            * [Excluded Value Sets](#excluded-value-sets)
+            * [Other Value Sets](#other-value-sets)
+         */
+
+        writer.Write($"""
+            Keyed off: {package.PackageId}@{package.PackageVersion} - {package.ShortName}
+            Canonical: {package.CanonicalUrl}
+            
+            ## {artifactDisplay} Overview
+            
+            """);
+
+
+        List<string> headers = ["Name", "Canonical", "Description", ];
+        foreach (DbFhirPackage targetPackage in packages.OrderBy(fp => fp.ShortName))
+        {
+            if (targetPackage.Key == package.Key)
+            {
+                continue;
+            }
+
+            headers.Add($"Path to {targetPackage.ShortName.ForMdTable()}");
+        }
+
+        writer.WriteLineIndented($"| {string.Join(" | ", headers)} |");
+        writer.WriteLineIndented($"| {string.Join(" | ", Enumerable.Repeat("---", headers.Count))} |");
+    }
+
+    private string getMdOverviewEntry(
+        List<DbFhirPackage> packages,
+        DbFhirPackage package,
+        DbStructureDefinition sd,
+        List<DbSdCell?[]> projection)
+    {
+        List<string> mapsTo = [];
+        for (int i = 0; i < packages.Count; i++)
+        {
+            if (packages[i].Key == sd.FhirPackageKey)
+            {
+                continue;
+            }
+            mapsTo.Add(projection.Any(r => r[i] != null) ? "✔" : "");
+        }
+
+        return
+            $"| [{sd.Name.ForMdTable()}]({getSdFilename(sd.Name, sd.ArtifactClass)})" +
+            $" | `{sd.VersionedUrl.ForMdTable()}`" +
+            $" | {sd.Description.ForMdTable()}" +
+            $" | {string.Join(" | ", mapsTo)} |";
     }
 
     private void writeMarkdownValueSets(
         List<DbFhirPackage> packages,
         List<DbFhirPackageComparisonPair> packageComparisonPairs,
-        DbFhirPackage package, string dir)
+        DbFhirPackage package,
+        string dir)
     {
         int keyPackageColIndex = packages.FindIndex(fp => fp.Key == package.Key);
 
@@ -363,7 +829,7 @@ public class XVerProcessor
         // iterate over our value sets and generate documents
         Parallel.ForEach(valueSets, (vs, cancellationToken) =>
         {
-            DbVsGraph vsGraph = new()
+            DbGraphVs vsGraph = new()
             {
                 DB = _db!.DbConnection,
                 Packages = packages,
@@ -514,12 +980,6 @@ public class XVerProcessor
     /// Note this function is currently too long and very inefficient - will fix once output is
     /// finalized.
     /// </remarks>
-    /// <param name="writer">       The writer.</param>
-    /// <param name="keyVs">        The key vs.</param>
-    /// <param name="keyDc">        The key device-context.</param>
-    /// <param name="projection">   The projection.</param>
-    /// <param name="expanded">     True if expanded.</param>
-    /// <param name="expandMessage">Message describing the expand.</param>
     private void writeMdDetailedVs(
         IDbConnection db,
         ExportStreamWriter writer,
@@ -527,7 +987,7 @@ public class XVerProcessor
         DbFhirPackage package,
         int keyPackageColIndex,
         DbValueSet keyVs,
-        DbVsGraph vsGraph,
+        DbGraphVs vsGraph,
         List<DbVsCell?[]> projection)
     {
         writer.WriteLine($"""
@@ -835,23 +1295,6 @@ public class XVerProcessor
                 }
 
                 writer.WriteLine();
-
-                //// check for unmapped concepts
-                //if (!hasMap)
-                //{
-                //    for (int i = 0; i < valueSetRow.Length; i++)
-                //    {
-                //        if (i == keyPackageColIndex)
-                //        {
-                //            writer.Write($"| **`{component.Code.ForMdTable()}`**");
-                //        }
-                //        else
-                //        {
-                //            writer.Write("| ");
-                //        }
-                //    }
-                //    writer.WriteLine();
-                //}
             }
 
             // check for unused codes in value sets
@@ -871,18 +1314,12 @@ public class XVerProcessor
                     writer.Write($"| *{codesPerVs[i].Count} of {valueSetRow[i]!.Vs.ConceptCount} codes used* ");
                 }
             }
-            writer.WriteLine();
 
+            writer.WriteLine();
             writer.WriteLine();
         }
 
         return;
-
-        //bool isRelated(ConceptDomainRelationshipCodes? relationship) =>
-        //    (relationship == ConceptDomainRelationshipCodes.Equivalent) ||
-        //    (relationship == ConceptDomainRelationshipCodes.SourceIsNarrowerThanTarget) ||
-        //    (relationship == ConceptDomainRelationshipCodes.SourceIsBroaderThanTarget) ||
-        //    (relationship == ConceptDomainRelationshipCodes.Related);
     }
 
     private (string to, string from) getMappingMdTableCell(DbVsCell cell, bool movingRight)
@@ -1373,7 +1810,7 @@ public class XVerProcessor
 
             """);
 
-        List<string> headers = ["Canonical", "Name", "Description"];
+        List<string> headers = ["Canonical", "Name", "Description", ];
         foreach (DefinitionCollection targetDc in _definitions)
         {
             if (targetDc.Key == dc.Key)
@@ -1762,12 +2199,12 @@ public class XVerProcessor
             | URL | `{keyVs.Url.ForMdTable()}` |
             | Version | {keyVs.Version.ForMdTable()} |
             | Description | {keyVs.Description.ForMdTable()} |
-            """);
 
-        writer.WriteLine("### Bindings");
-        writer.WriteLine();
-        writer.WriteLine("| Source | Element | Binding | Strength |");
-        writer.WriteLine("| ------ | ------- | ------- | -------- |");
+            ### Bindings
+
+            | Source | Element | Binding | Strength |
+            | ------ | ------- | ------- | -------- |
+            """);
 
         // get the elements with bindings
         {
@@ -2109,8 +2546,8 @@ public class XVerProcessor
         };
 
         return includeRelativeDir
-            ? $"{artifactPascal}/{sourceName}.md"
-            : sourceName + ".md";
+            ? $"{artifactPascal}/{FhirSanitizationUtils.SanitizeForProperty(sourceName, convertToConvention: FhirNameConventionExtensions.NamingConvention.PascalCase)}.md"
+            : FhirSanitizationUtils.SanitizeForProperty(sourceName, convertToConvention: FhirNameConventionExtensions.NamingConvention.PascalCase) + ".md";
     }
 
     private (string overviewTo, string artifactTo, string overviewFrom, string artifactFrom) getConceptMapMdLinks(

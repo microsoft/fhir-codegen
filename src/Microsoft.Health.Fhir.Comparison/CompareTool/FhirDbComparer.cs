@@ -250,7 +250,7 @@ public class FhirDbComparer
                 continue;
             }
             existingDbComparisons.Add(c);
-        }    
+        }
 
         // if there are none, see if we can find an equivalent value set to compare with in the target
         if (forwardComparisons.Count == 0)

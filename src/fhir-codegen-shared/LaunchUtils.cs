@@ -103,6 +103,8 @@ internal static class LaunchUtils
                 ("compare-vs", "Run a comparison of ValueSet data and update the database"),
                 ("compare-sd", "Run a comparison of Structure data and update the database"),
                 ("docs", "Build Markdown docs from the database"),
+                ("docs-vs", "Build Markdown docs for ValueSet data from the database"),
+                ("docs-sd", "Build Markdown docs for Structure from the database"),
 
                 ("convert-from-maps", "Create XVer DB from existing maps"),
                 ("update-maps", "Update the FHIR Cross Version maps"),

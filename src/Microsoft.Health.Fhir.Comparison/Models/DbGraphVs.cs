@@ -52,7 +52,7 @@ public record class DbVsConceptCell : ICloneable
     object ICloneable.Clone() => this with { };
 }
 
-public class DbVsGraph
+public class DbGraphVs
 {
     private readonly IDbConnection _db = null!;
     private readonly List<DbFhirPackage> _packages = null!;
@@ -231,7 +231,6 @@ public class DbVsGraph
         }
 
         return results;
-
     }
 
     private List<DbVsConceptCell?[]> projectConcept(
