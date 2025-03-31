@@ -332,10 +332,39 @@ public class XVerProcessor
             if (Directory.Exists(packageDir))
             {
                 // remove the directory and contents (start clean)
-                Directory.Delete(packageDir, true);
-            }
+                if (artifactFilter == null)
+                {
+                    Directory.Delete(packageDir, true);
+                    Directory.CreateDirectory(packageDir);
+                }
+                else if (artifactFilter == FhirArtifactClassEnum.ValueSet)
+                {
+                    Directory.Delete(Path.Combine(packageDir, "ValueSets"), true);
+                }
+                else if ((artifactFilter == FhirArtifactClassEnum.PrimitiveType) ||
+                    (artifactFilter == FhirArtifactClassEnum.ComplexType) ||
+                    (artifactFilter == FhirArtifactClassEnum.Resource))
+                {
+                    if (Directory.Exists(Path.Combine(packageDir, "PrimitiveTypes")))
+                    {
+                        Directory.Delete(Path.Combine(packageDir, "PrimitiveTypes"), true);
+                    }
 
-            Directory.CreateDirectory(packageDir);
+                    if (Directory.Exists(Path.Combine(packageDir, "ComplexTypes")))
+                    {
+                        Directory.Delete(Path.Combine(packageDir, "ComplexTypes"), true);
+                    }
+
+                    if (Directory.Exists(Path.Combine(packageDir, "Resources")))
+                    {
+                        Directory.Delete(Path.Combine(packageDir, "Resources"), true);
+                    }
+                }
+            }
+            else
+            {
+                Directory.CreateDirectory(packageDir);
+            }
 
             // write the contents of our value sets if requested
             if ((artifactFilter == null) ||
@@ -395,6 +424,7 @@ public class XVerProcessor
 
         // iterate over our value sets and generate documents
         Parallel.ForEach(structures, (sd, cancellationToken) =>
+        //foreach (DbStructureDefinition sd in structures)
         {
             DbGraphSd sdGraph = new()
             {
@@ -418,6 +448,7 @@ public class XVerProcessor
                 writeMdDetailedSd(_db!.DbConnection, vsWriter, packages, package, keyPackageColIndex, sd, sdGraph, projection);
             }
         });
+        //}
 
         writeMdOverviewSd(overviewWriter, packages, package, artifactClass);
         foreach (string line in overviewEntries.Order())
@@ -545,9 +576,9 @@ public class XVerProcessor
 
                 // write mapping notes
                 writer.Write(
-                    $"| →→→→→→→ <br/> {toRight} <br/> →→→→→→→ " +
+                    $"| {toRight}" +
                     $"<hr/>" +
-                    $"←←←←←←← <br/> {fromRight} <br/> ←←←←←←← ");
+                    $"{fromRight}");
             }
         }
         writer.WriteLine();
@@ -709,26 +740,28 @@ public class XVerProcessor
 
         if (targetCell == null)
         {
-            return ("*no map*", "*no map*");
+            return ("<br/>*no map*<br/>", "<br/>*no map*<br/>");
         }
 
         DbStructureComparison? toComparison = movingRight ? cell.RightComparison : cell.LeftComparison;
         DbStructureComparison? fromComparison = movingRight ? targetCell.LeftComparison : cell.RightComparison;
 
-        return (getLink(toComparison, targetCell), getLink(fromComparison, targetCell));
+        return (getLink(toComparison, targetCell, "→→→→→→→"), getLink(fromComparison, targetCell, "←←←←←←←"));
 
-        string getLink(DbStructureComparison? comparison, DbSdCell? target)
+        string getLink(DbStructureComparison? comparison, DbSdCell? target, string arrows)
         {
             if ((comparison == null) || (target == null))
             {
-                return "*no map*";
+                return arrows + "<br/>*no map*<br/>" + arrows;
             }
 
-            //return $"`{comparison.CompositeName.ForMdTable()}` ({comparison.Key})";
-            return $"`{comparison.Key}`";
-
-            //return $"[{comparison.CompositeName.ForMdTable()} ({comparison.Key})]" +
-            //    $"(/input/codes_v2/{cell.DC.FhirSequence.ToRLiteral()}to{target.DC.FhirSequence.ToRLiteral()}/ConceptMap-{comparison.Name}.json)";
+            return
+                $"{arrows}" +
+                $"<br/>`{comparison.Relationship}`" +
+                $"<br/>- DBKey: `{comparison.Key}`" +
+                $"<br/>- Reviewed: `{comparison.LastReviewedOn?.ToString("o") ?? "n/a"}`" +
+                $"<br/>- By: `{comparison.LastReviewedBy ?? "n/a"}`" +
+                $"<br/>{arrows}";
         }
     }
 
@@ -1146,9 +1179,9 @@ public class XVerProcessor
 
                 // write mapping notes
                 writer.Write(
-                    $"| →→→→→→→ <br/> {toRight} <br/> →→→→→→→ " +
+                    $"| {toRight}" +
                     $"<hr/>" +
-                    $"←←←←←←← <br/> {fromRight} <br/> ←←←←←←← ");
+                    $"{fromRight}");
             }
         }
         writer.WriteLine();
@@ -1328,23 +1361,28 @@ public class XVerProcessor
 
         if (targetCell == null)
         {
-            return ("*no map*", "*no map*");
+            return ("<br/>*no map*<br/>", "<br/>*no map*<br/>");
         }
 
         DbValueSetComparison? toComparison = movingRight ? cell.RightComparison : cell.LeftComparison;
         DbValueSetComparison? fromComparison = movingRight ? targetCell.LeftComparison : cell.RightComparison;
 
-        return (getLink(toComparison, targetCell), getLink(fromComparison, targetCell));
+        return (getLink(toComparison, targetCell, "→→→→→→→"), getLink(fromComparison, targetCell, "←←←←←←←"));
 
-        string getLink(DbValueSetComparison? comparison, DbVsCell? target)
+        string getLink(DbValueSetComparison? comparison, DbVsCell? target, string arrows)
         {
             if ((comparison == null) || (target == null))
             {
-                return "*no map*";
+                return arrows + "<br/>*no map*<br/>" + arrows;
             }
 
-            //return $"`{comparison.CompositeName.ForMdTable()}` ({comparison.Key})";
-            return $"`{comparison.Key}`";
+            return
+                $"{arrows}" +
+                $"<br/>`{comparison.Relationship}`" +
+                $"<br/>- DBKey: `{comparison.Key}`" +
+                $"<br/>- Reviewed: `{comparison.LastReviewedOn?.ToString("o") ?? "n/a"}`" +
+                $"<br/>- By: `{comparison.LastReviewedBy ?? "n/a"}`" +
+                $"<br/>{arrows}";
 
             //return $"[{comparison.CompositeName.ForMdTable()} ({comparison.Key})]" +
             //    $"(/input/codes_v2/{cell.DC.FhirSequence.ToRLiteral()}to{target.DC.FhirSequence.ToRLiteral()}/ConceptMap-{comparison.Name}.json)";

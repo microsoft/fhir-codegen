@@ -243,13 +243,13 @@ public class FhirDbComparer
             TargetFhirPackageKey: targetPackage.Key,
             SourceStructureKey: sourceSd.Key);
 
-        foreach (DbStructureComparison c in forwardComparisons)
+        foreach (DbStructureComparison c in existingDbComparisons)
         {
-            if (existingDbComparisons.Contains(c))
+            if (forwardComparisons.Contains(c))
             {
                 continue;
             }
-            existingDbComparisons.Add(c);
+            forwardComparisons.Add(c);
         }
 
         // if there are none, see if we can find an equivalent value set to compare with in the target
@@ -394,7 +394,8 @@ public class FhirDbComparer
             // look for an inverse comparison
             DbStructureComparison? inverseComparison = null;
 
-            if (forwardComparison.InverseComparisonKey != null)
+            if ((forwardComparison.InverseComparisonKey != null) &&
+                (forwardComparison.InverseComparisonKey != -1))
             {
                 inverseComparison = _sdComparisons.Get((int)forwardComparison.InverseComparisonKey) ??
                     DbStructureComparison.SelectSingle(
@@ -423,6 +424,12 @@ public class FhirDbComparer
             if (forwardComparison.InverseComparisonKey != inverseComparison.Key)
             {
                 forwardComparison.InverseComparisonKey = inverseComparison.Key;
+                _sdComparisons.Changed(forwardComparison);
+            }
+
+            if (inverseComparison.InverseComparisonKey != forwardComparison.Key)
+            {
+                inverseComparison.InverseComparisonKey = forwardComparison.Key;
                 _sdComparisons.Changed(inverseComparison);
             }
 

@@ -1714,7 +1714,24 @@ public class ComparisonDatabase : IDisposable
             addStructuresToDb(pm, dc, _exclusionSet);
         }
 
+        // do value set post-processing
+        doValueSetPostProcessing(_escapeValveCodes);
+
         return true;
+    }
+
+    private void doValueSetPostProcessing(HashSet<string> _escapeValveCodes)
+    {
+        IDbCommand command = _dbConnection.CreateCommand();
+        command.CommandText = $"""
+            update {DbValueSet.DefaultTableName}
+            set HasEscapeValveCode = 1
+            where Key in (select distinct ValueSetKey from Concepts where Code in ({(string.Join(", ", _escapeValveCodes.Select(v => "'" + v + "'")))}) )
+            """;
+
+        command.ExecuteNonQuery();
+
+        return;
     }
 
     private void addValueSetsToDb(

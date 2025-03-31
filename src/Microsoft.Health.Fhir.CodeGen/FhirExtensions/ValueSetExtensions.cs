@@ -162,7 +162,7 @@ public static class ValueSetExtensions
         {
             foreach (ValueSet.ContainsComponent c in cc)
             {
-                if (codes.Contains(cgKey(c)))
+                if (codes.Contains(c.Code))
                 {
                     return true;
                 }

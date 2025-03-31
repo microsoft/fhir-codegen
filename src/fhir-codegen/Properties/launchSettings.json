@@ -185,6 +185,11 @@
             "commandLineArgs": "xver compare",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
+        "XVer compare-db-sd": {
+            "commandName": "Project",
+            "commandLineArgs": "xver compare-sd",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
         "XVer docs-db": {
             "commandName": "Project",
             "commandLineArgs": "xver docs",

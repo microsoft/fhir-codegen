@@ -135,6 +135,10 @@ public class ConfigRoot : ICodeGenConfig
     };
 
     /// <summary>Gets or sets the filename of the output file.</summary>
+    [ConfigOption(
+        ArgAliases = ["--output-filename", "--output-file"],
+        EnvName = "Output_Filename",
+        Description = "Filename to write output.")]
     public string OutputFilename { get; set; } = string.Empty;
 
     private static ConfigurationOption OutputFilenameParameter { get; } = new()
@@ -425,13 +429,61 @@ public class ConfigRoot : ICodeGenConfig
 
         object? parsed = parseResult.GetValueForOption(opt.CliOption);
 
-        if ((parsed != null) &&
-            (parsed is T typed))
+        if (parsed is System.CommandLine.Parsing.Token t)
         {
-            if (!typed.Equals(defaultValue))
+            switch (defaultValue)
             {
-                return typed;
+                case bool:
+                    return (T)((object?)Convert.ToBoolean(t.Value) ?? defaultValue);
+                case int:
+                    return (T)((object?)Convert.ToInt32(t.Value) ?? defaultValue);
+                case long:
+                    return (T)((object?)Convert.ToInt64(t.Value) ?? defaultValue);
+                case float:
+                    return (T)((object?)Convert.ToSingle(t.Value) ?? defaultValue);
+                case double:
+                    return (T)((object?)Convert.ToDouble(t.Value) ?? defaultValue);
+                case decimal:
+                    return (T)((object?)Convert.ToDecimal(t.Value) ?? defaultValue);
+                case string:
+                    return (T)((object?)Convert.ToString(t.Value) ?? defaultValue);
+                default:
+                    {
+                        if ((t.Value != null) &&
+                            (t.Value is T typed))
+                        {
+                            return typed;
+                        }
+                    }
+                    break;
             }
+        }
+
+        switch (parsed)
+        {
+            case bool:
+                return (T)((object?)Convert.ToBoolean(parsed) ?? defaultValue!);
+            case int:
+                return (T)((object?)Convert.ToInt32(parsed) ?? defaultValue!);
+            case long:
+                return (T)((object?)Convert.ToInt64(parsed) ?? defaultValue!);
+            case float:
+                return (T)((object?)Convert.ToSingle(parsed) ?? defaultValue!);
+            case double:
+                return (T)((object?)Convert.ToDouble(parsed) ?? defaultValue!);
+            case decimal:
+                return (T)((object?)Convert.ToDecimal(parsed) ?? defaultValue!);
+            case string:
+                return (T)((object?)Convert.ToString(parsed) ?? defaultValue!);
+            default:
+                {
+                    if ((parsed != null) &&
+                        (parsed is T typed))
+                    {
+                        return typed;
+                    }
+                }
+                break;
         }
 
         string? envValue = Environment.GetEnvironmentVariable(opt.EnvVarName);
