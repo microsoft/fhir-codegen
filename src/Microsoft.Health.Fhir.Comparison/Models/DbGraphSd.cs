@@ -299,7 +299,12 @@ public class DbGraphSd
         foreach (DbElementComparison edge in edges)
         {
             // resolve the concept
-            DbElement element = DbElement.SelectSingle(_db, Key: edge.TargetElementKey) ?? throw new Exception($"Failed to resolve compared element: {edge.TargetElementKey}!");
+            DbElement element = DbElement.SelectSingle(_db, Key: edge.TargetElementKey)
+                ?? throw new Exception($"Failed to resolve compared element: {edge.TargetElementKey}!");
+
+            DbElementComparison? inverseEdge = edge.InverseComparisonKey == null
+                ? null
+                : DbElementComparison.SelectSingle(_db, Key: edge.InverseComparisonKey);
 
             DbElementCell?[] row = edges.Count == 1 ? incomingRow : (DbElementCell?[])incomingRow.Clone();
             if (projectRight == true)
@@ -310,7 +315,7 @@ public class DbGraphSd
                     Element = element,
                     LeftCell = incomingRow[column]!,
                     LeftElement = incomingRow[column]!.Element,
-                    LeftComparison = edge,
+                    LeftComparison = inverseEdge,
                 };
 
                 row[column]!.RightCell = row[nextCol];
@@ -325,7 +330,7 @@ public class DbGraphSd
                     Element = element,
                     RightCell = incomingRow[column]!,
                     RightElement = incomingRow[column]!.Element,
-                    RightComparison = edge,
+                    RightComparison = inverseEdge,
                 };
 
                 row[column]!.LeftCell = row[nextCol];

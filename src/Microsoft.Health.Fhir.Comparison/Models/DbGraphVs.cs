@@ -299,7 +299,12 @@ public class DbGraphVs
         foreach (DbValueSetConceptComparison edge in edges)
         {
             // resolve the concept
-            DbValueSetConcept concept = DbValueSetConcept.SelectSingle(_db, Key: edge.TargetConceptKey) ?? throw new Exception($"Failed to resolve compared concept: {edge.TargetConceptKey}!");
+            DbValueSetConcept concept = DbValueSetConcept.SelectSingle(_db, Key: edge.TargetConceptKey)
+                ?? throw new Exception($"Failed to resolve compared concept: {edge.TargetConceptKey}!");
+
+            DbValueSetConceptComparison? inverseEdge = edge.InverseComparisonKey == null
+                ? null
+                : DbValueSetConceptComparison.SelectSingle(_db, Key: edge.InverseComparisonKey);
 
             DbVsConceptCell?[] row = edges.Count == 1 ? incomingRow : (DbVsConceptCell?[])incomingRow.Clone();
             if (projectRight == true)
@@ -310,7 +315,7 @@ public class DbGraphVs
                     Concept = concept,
                     LeftCell = incomingRow[column]!,
                     LeftConcept = incomingRow[column]!.Concept,
-                    LeftComparison = edge,
+                    LeftComparison = inverseEdge,
                 };
 
                 row[column]!.RightCell = row[nextCol];
@@ -325,7 +330,7 @@ public class DbGraphVs
                     Concept = concept,
                     RightCell = incomingRow[column]!,
                     RightConcept = incomingRow[column]!.Concept,
-                    RightComparison = edge,
+                    RightComparison = inverseEdge,
                 };
 
                 row[column]!.LeftCell = row[nextCol];

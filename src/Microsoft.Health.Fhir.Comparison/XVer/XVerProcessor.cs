@@ -675,33 +675,48 @@ public class XVerProcessor
                     }
                     else
                     {
-                        if (cell.RightComparison.Relationship != cell.RightCell.LeftComparison?.Relationship)
+                        if ((cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.Equivalent) &&
+                            (cell.RightCell.LeftComparison?.Relationship == ConceptMap.ConceptMapRelationship.Equivalent))
                         {
-                            // write mapping notes
-                            writer.Write(
-                                $"| → {cell.RightComparison.Relationship} → " +
-                                $"<hr/>" +
-                                $"← {cell.RightCell.LeftComparison?.Relationship} ← ");
+                            writer.Write($"| == ({cell.RightComparison.Key}/{cell.RightCell.LeftComparison?.Key})");
                         }
-                        else if (cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.Equivalent)
+                        else if ((cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget) &&
+                            (cell.RightCell.LeftComparison?.Relationship == ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget))
                         {
-                            writer.Write("| == ");
+                            writer.Write($"| ↢↢↢ ({cell.RightComparison.Key}/{cell.RightCell.LeftComparison?.Key})");
                         }
-                        else if (cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget)
+                        else if ((cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget) &&
+                            (cell.RightCell.LeftComparison?.Relationship == ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget))
                         {
-                            writer.Write("| > ");
+                            writer.Write($"| ↣↣↣ ({cell.RightComparison.Key}/{cell.RightCell.LeftComparison?.Key})");
                         }
-                        else if (cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget)
-                        {
-                            writer.Write("| < ");
-                        }
+                        //if (cell.RightComparison.Relationship != cell.RightCell.LeftComparison?.Relationship)
+                        //{
+                        //    // write mapping notes
+                        //    writer.Write(
+                        //        $"| → {cell.RightComparison.Relationship} → " +
+                        //        $"<hr/>" +
+                        //        $"← {cell.RightCell.LeftComparison?.Relationship} ← ");
+                        //}
+                        //else if (cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.Equivalent)
+                        //{
+                        //    writer.Write("| == ");
+                        //}
+                        //else if (cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget)
+                        //{
+                        //    writer.Write("| > ");
+                        //}
+                        //else if (cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget)
+                        //{
+                        //    writer.Write("| < ");
+                        //}
                         else
                         {
                             // write mapping notes
                             writer.Write(
-                                $"| → {cell.RightComparison.Relationship} → " +
+                                $"| →→ {cell.RightComparison.Relationship} ({cell.RightComparison.Key}) →→ " +
                                 $"<hr/>" +
-                                $"← {cell.RightCell.LeftComparison?.Relationship} ← ");
+                                $"←← {cell.RightCell.LeftComparison?.Relationship} ({cell.RightCell.LeftComparison?.Key}) ←← ");
                         }
                     }
                 }
@@ -1296,33 +1311,36 @@ public class XVerProcessor
                     }
                     else
                     {
-                        if (cell.RightComparison.Relationship != cell.RightCell.LeftComparison?.Relationship)
+                        if ((cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.Equivalent) &&
+                            (cell.RightCell.LeftComparison?.Relationship == ConceptMap.ConceptMapRelationship.Equivalent))
                         {
-                            // write mapping notes
-                            writer.Write(
-                                $"| → {cell.RightComparison.Relationship} → " +
-                                $"<hr/>" +
-                                $"← {cell.RightCell.LeftComparison?.Relationship} ← ");
+                            writer.Write($"| == ({cell.RightComparison.Key}/{cell.RightCell.LeftComparison?.Key})");
                         }
-                        else if (cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.Equivalent)
+                        else if ((cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget) &&
+                            (cell.RightCell.LeftComparison?.Relationship == ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget))
                         {
-                            writer.Write("| == ");
+                            writer.Write($"| ↢↢↢ ({cell.RightComparison.Key}/{cell.RightCell.LeftComparison?.Key})");
                         }
-                        else if (cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget)
+                        else if ((cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget) &&
+                            (cell.RightCell.LeftComparison?.Relationship == ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget))
                         {
-                            writer.Write("| > ");
+                            writer.Write($"| ↣↣↣ ({cell.RightComparison.Key}/{cell.RightCell.LeftComparison?.Key})");
                         }
-                        else if (cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget)
-                        {
-                            writer.Write("| < ");
-                        }
+                        //else if (cell.RightComparison.Relationship != cell.RightCell.LeftComparison?.Relationship)
+                        //{
+                        //    // write mapping notes
+                        //    writer.Write(
+                        //        $"| → {cell.RightComparison.Relationship} → " +
+                        //        $"<hr/>" +
+                        //        $"← {cell.RightCell.LeftComparison?.Relationship} ← ");
+                        //}
                         else
                         {
                             // write mapping notes
                             writer.Write(
-                                $"| → {cell.RightComparison.Relationship} → " +
+                                $"| →→ {cell.RightComparison.Relationship} ({cell.RightComparison.Key}) →→ " +
                                 $"<hr/>" +
-                                $"← {cell.RightCell.LeftComparison?.Relationship} ← ");
+                                $"←← {cell.RightCell.LeftComparison?.Relationship} ({cell.RightCell.LeftComparison?.Key}) ←← ");
                         }
                     }
                 }
