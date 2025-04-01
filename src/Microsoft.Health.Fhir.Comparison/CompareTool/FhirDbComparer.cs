@@ -385,6 +385,11 @@ public class FhirDbComparer
         // iterate across the forward comparisons
         foreach (DbStructureComparison forwardComparison in forwardComparisons)
         {
+            if (forwardComparison.LastReviewedOn != null)
+            {
+                continue;
+            }
+
             // get the target value set for this comparison
             DbStructureDefinition targetSd = DbStructureDefinition.SelectSingle(
                 _db,
@@ -1398,6 +1403,11 @@ public class FhirDbComparer
         // iterate across the forward comparisons
         foreach (DbValueSetComparison forwardComparison in forwardComparisons)
         {
+            if (forwardComparison.LastReviewedOn != null)
+            {
+                continue;
+            }
+
             // get the target value set for this comparison
             DbValueSet targetVs = DbValueSet.SelectSingle(
                 _db,

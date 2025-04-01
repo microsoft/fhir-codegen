@@ -133,7 +133,11 @@ public class XVerProcessor
         }
 
         _definitions = definitions.ToArray();
-        _definitions.ForEach((DefinitionCollection dc, int i) => { _definitionIndexes.Add(dc.Key, i); return true; });
+        _definitions.ForEach((DefinitionCollection dc, int i) =>
+        {
+            _definitionIndexes.Add(dc.Key, i);
+            return true;
+        });
     }
 
     public void ProcessCommand(string? command)
