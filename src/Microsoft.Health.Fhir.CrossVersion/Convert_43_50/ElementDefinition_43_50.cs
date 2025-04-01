@@ -5,6 +5,7 @@
 
 using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Model;
+using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 
 namespace Microsoft.Health.Fhir.CrossVersion.Convert_43_50;
 
@@ -24,7 +25,37 @@ public class ElementDefinition_43_50 : ICrossVersionProcessor<ElementDefinition>
 			Process(child, v);
 		}
 
-		return v;
+        // check for a binding with a max value set extension
+        if ((v.Binding != null) &&
+            (v.Binding.GetExtensionValue<Canonical>(CommonDefinitions.ExtUrlMaxValueSet) is Canonical maxVs))
+        {
+            // add an additional binding with the canonical value
+            v.Binding.Additional.Add(new()
+            {
+                Purpose = ElementDefinition.AdditionalBindingPurposeVS.Maximum,
+                ValueSet = maxVs,
+            });
+
+            // remove the extension
+            v.Binding.RemoveExtension(CommonDefinitions.ExtUrlMaxValueSet);
+        }
+
+        // check for a binding with a min value set extension
+        if ((v.Binding != null) &&
+            (v.Binding.GetExtensionValue<Canonical>(CommonDefinitions.ExtUrlMinValueSet) is Canonical minVs))
+        {
+            // add an additional binding with the canonical value
+            v.Binding.Additional.Add(new()
+            {
+                Purpose = ElementDefinition.AdditionalBindingPurposeVS.Minimum,
+                ValueSet = minVs,
+            });
+
+            // remove the extension
+            v.Binding.RemoveExtension(CommonDefinitions.ExtUrlMinValueSet);
+        }
+
+        return v;
 	}
 
 	public void Process(ISourceNode node, ElementDefinition current)

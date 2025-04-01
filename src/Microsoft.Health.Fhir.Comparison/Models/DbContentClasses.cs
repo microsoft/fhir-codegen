@@ -128,11 +128,31 @@ public partial class DbElement : DbPackageContent
     public required Hl7.Fhir.Model.BindingStrength? ValueSetBindingStrength { get; init; }
     public required string? BindingValueSet { get; set; }
     public required int? BindingValueSetKey { get; set; }
-
-    // TODO(ginoc): Add handling for additional bindings
+    public required int AdditionalBindingCount { get; set; }
 
     public required bool IsInherited { get; set; }
     public required string? BasePath { get; set; }
+    public required bool IsSimpleType { get; set; }
+}
+
+[CgSQLiteTable(tableName: "ElementAdditionalBindings")]
+[CgSQLiteIndex(nameof(ElementKey))]
+public partial class DbElementAdditionalBinding : DbPackageContent
+{
+    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
+    public int StructureKey { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
+    public required int ElementKey { get; set; }
+
+    public required string? FhirKey { get; set; }
+    public required Hl7.Fhir.Model.ElementDefinition.AdditionalBindingPurposeVS? Purpose { get; set; }
+    public required string? BindingValueSet { get; set; }
+    public required int? BindingValueSetKey { get; set; }
+    public required string? Documentation { get; set; }
+    public required string? ShortDocumentation { get; set; }
+    public required string? CollatedUsageContexts { get; set; }
+    public required bool? SatisfiedBySingleRepetition { get; set; }
 }
 
 [CgSQLiteTable(tableName: "ElementTypes")]

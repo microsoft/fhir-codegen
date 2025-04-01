@@ -9,6 +9,7 @@ using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Xml.Linq;
+using Fhir.Metrics;
 using Firely.Fhir.Packages;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Specification.Terminology;
@@ -535,6 +536,45 @@ public partial class DefinitionCollection
                 continue;
             }
 
+            // coerce 'bare' types in versions earlier than R5
+            switch (fhirVersion)
+            {
+                case FhirReleases.FhirSequenceCodes.DSTU2:
+                case FhirReleases.FhirSequenceCodes.STU3:
+                case FhirReleases.FhirSequenceCodes.R4:
+                case FhirReleases.FhirSequenceCodes.R4B:
+                    {
+                        if (((ed.ElementId == "Element.id") || (ed.Base?.Path == "Element.id") ||
+                             (ed.ElementId == "Resource.id") || (ed.Base?.Path == "Resource.id")) &&
+                            (ed.Type.Count == 1))
+                        {
+                            ed.Type[0] = new ElementDefinition.TypeRefComponent()
+                            {
+                                Code = "http://hl7.org/fhirpath/System.String",
+                                Extension = [new Extension
+                                {
+                                    Url = CommonDefinitions.ExtUrlFhirType,
+                                    Value = new FhirUrl("id"),
+                                }],
+                            };
+                        }
+                        else if (((ed.ElementId == "Extension.url") || (ed.Base?.Path == "Extension.url")) &&
+                                 (ed.Type.Count == 1))
+                        {
+                            ed.Type[0] = new ElementDefinition.TypeRefComponent()
+                            {
+                                Code = "http://hl7.org/fhirpath/System.String",
+                                Extension = [new Extension
+                                {
+                                    Url = CommonDefinitions.ExtUrlFhirType,
+                                    Value = new FhirUrl("uri"),
+                                }],
+                            };
+                        }
+                    }
+                    break;
+            }
+
             int lastDot = ed.Path.LastIndexOf('.');
             string parentPath = lastDot == -1 ? ed.Path : ed.Path.Substring(0, lastDot);
             int componentFieldOrder = 0;
@@ -665,6 +705,45 @@ public partial class DefinitionCollection
         // process each element in the differential
         foreach (ElementDefinition ed in elements)
         {
+            // coerce 'bare' types in versions earlier than R5
+            switch (fhirVersion)
+            {
+                case FhirReleases.FhirSequenceCodes.DSTU2:
+                case FhirReleases.FhirSequenceCodes.STU3:
+                case FhirReleases.FhirSequenceCodes.R4:
+                case FhirReleases.FhirSequenceCodes.R4B:
+                    {
+                        if (((ed.ElementId == "Element.id") || (ed.Base?.Path == "Element.id") ||
+                             (ed.ElementId == "Resource.id") || (ed.Base?.Path == "Resource.id")) &&
+                            (ed.Type.Count == 1))
+                        {
+                            ed.Type[0] = new ElementDefinition.TypeRefComponent()
+                            {
+                                Code = "http://hl7.org/fhirpath/System.String",
+                                Extension = [new Extension
+                                {
+                                    Url = CommonDefinitions.ExtUrlFhirType,
+                                    Value = new FhirUrl("id"),
+                                }],
+                            };
+                        }
+                        else if (((ed.ElementId == "Extension.url") || (ed.Base?.Path == "Extension.url")) &&
+                                 (ed.Type.Count == 1))
+                        {
+                            ed.Type[0] = new ElementDefinition.TypeRefComponent()
+                            {
+                                Code = "http://hl7.org/fhirpath/System.String",
+                                Extension = [new Extension
+                                {
+                                    Url = CommonDefinitions.ExtUrlFhirType,
+                                    Value = new FhirUrl("uri"),
+                                }],
+                            };
+                        }
+                    }
+                    break;
+            }
+
             int lastDot = ed.Path.LastIndexOf('.');
             string parentPath = lastDot == -1 ? ed.Path : ed.Path.Substring(0, lastDot);
             int componentFieldOrder = 0;
@@ -889,8 +968,40 @@ public partial class DefinitionCollection
     /// <param name="ed">           The ed.</param>
     private void CheckElementBindings(FhirArtifactClassEnum artifactClass, StructureDefinition sd, ElementDefinition ed)
     {
+        if (ed.Binding == null)
+        {
+            return;
+        }
+
+        List<ElementDefinition.AdditionalComponent> unboundAdditionalRequired = ed.Binding.Additional
+            .Where(ac =>
+                (ac.Usage.Count == 0) &&
+                ((ac.Purpose == ElementDefinition.AdditionalBindingPurposeVS.Maximum) || (ac.Purpose == ElementDefinition.AdditionalBindingPurposeVS.Required)))
+            .ToList();
+
+        // check for the scenario of a preferred binding but a max additional binding
+        if ((ed.Binding.Strength != BindingStrength.Required) &&
+            (unboundAdditionalRequired.Count != 0))
+        {
+            // add the preferred binding as an additional binding
+            ed.Binding.Additional.Add(new ElementDefinition.AdditionalComponent
+            {
+                Purpose = ElementDefinition.AdditionalBindingPurposeVS.Preferred,
+                ValueSet = ed.Binding.ValueSet,
+                Documentation = ed.Binding.Description,
+            });
+
+            // move the max additional binding to the preferred binding
+            ed.Binding.Strength = BindingStrength.Required;
+            ed.Binding.ValueSet = unboundAdditionalRequired[0].ValueSet;
+            ed.Binding.Description = unboundAdditionalRequired[0].Documentation;
+
+            // remove the max additional binding
+            ed.Binding.Additional.Remove(unboundAdditionalRequired[0]);
+        }
+
         // check for a value set binding
-        if ((ed.Binding != null) && (!string.IsNullOrEmpty(ed.Binding.ValueSet)))
+        if (!string.IsNullOrEmpty(ed.Binding.ValueSet))
         {
             string url = VersionedUrlForVs(ed.Binding.ValueSet);
 
@@ -1955,6 +2066,115 @@ public partial class DefinitionCollection
             case FhirArtifactClassEnum.Interface:
                 AddInterface(sd, fhirVersion, packageId, packageVersion);
                 break;
+        }
+    }
+
+    public bool TryReconcileElementInheritance()
+    {
+        // only need to process DSTU2 and STU3
+        if (FhirSequence != FhirReleases.FhirSequenceCodes.DSTU2 &&
+            FhirSequence != FhirReleases.FhirSequenceCodes.STU3)
+        {
+            return true;
+        }
+
+        // iterate over the structures we are interested in
+        foreach (IEnumerable<StructureDefinition> structures in (IEnumerable<StructureDefinition>[])[ _primitiveTypesByName.Values, _complexTypesByName.Values, _resourcesByName.Values ])
+        {
+            Parallel.ForEach(structures, (sd, cancellationToken) =>
+            {
+                // check for a base type
+                if (sd.BaseDefinition == null)
+                {
+                    return;
+                }
+
+                List<StructureDefinition> parentSds = [];
+                StructureDefinition currentSd = sd;
+                while (currentSd.BaseDefinition != null)
+                {
+                    if (!TryResolveByCanonicalUri(currentSd.BaseDefinition, out Resource? parentResource) ||
+                        !(parentResource is StructureDefinition parentSd))
+                    {
+                        break;
+                    }
+                    parentSds.Add(parentSd);
+                    currentSd = parentSd;
+                }
+
+                if (parentSds.Count == 0)
+                {
+                    return;
+                }
+
+                if (sd.Snapshot?.Element.Any() ?? false)
+                {
+                    addBaseTypes(sd, parentSds, true);
+                }
+                if (sd.Differential?.Element.Any() ?? false)
+                {
+                    addBaseTypes(sd, parentSds, false);
+                }
+            });
+        }
+
+        return true;
+
+        void addBaseTypes(StructureDefinition sd, List<StructureDefinition> parentSds, bool processSnapshot)
+        {
+            string currentPrefix = sd.Id + ".";
+            int currentPrefixLen = currentPrefix.Length;
+
+            IEnumerable<ElementDefinition> currentElements =
+                (processSnapshot
+                    ? sd.Snapshot?.Element.Where(ed => ed.Path.Length > currentPrefixLen)
+                    : sd.Differential?.Element.Where(ed => ed.Path.Length > currentPrefixLen))
+                ?? [];
+
+            Dictionary<string, ElementDefinition> inheritanceLookup = [];
+
+            // process structures starting from the nearest ancestor (will overwrite as we move up)
+            foreach (StructureDefinition parentSd in parentSds)
+            {
+                string parentPrefix = parentSd.Id + ".";
+                int parentPrefixLen = parentPrefix.Length;
+
+                IEnumerable<ElementDefinition> elements =
+                    (processSnapshot
+                        ? parentSd.Snapshot?.Element.Where(ed => ed.Path.Length > parentPrefixLen)
+                        : parentSd.Differential?.Element.Where(ed => ed.Path.Length > parentPrefixLen))
+                    ?? [];
+
+                foreach (ElementDefinition ed in elements)
+                {
+                    string modifiedPath = currentPrefix + ed.Path[parentPrefixLen..];
+                    inheritanceLookup[modifiedPath] = ed;
+                }
+            }
+
+            foreach (ElementDefinition ed in currentElements)
+            {
+                if (ed.Base != null)
+                {
+                    continue;
+                }
+
+                if (inheritanceLookup.TryGetValue(ed.Path, out ElementDefinition? inherited))
+                {
+                    ed.Base = new ElementDefinition.BaseComponent()
+                    {
+                        Path = inherited.Path,
+                        Min = ed.Min,
+                        Max = ed.Max,
+                    };
+
+                    // update the types so they are correct
+                    if (ed.Type.Count == inherited.Type.Count)
+                    {
+                        ed.Type = inherited.Type.Select(tr => (ElementDefinition.TypeRefComponent)tr.DeepCopy()).ToList();
+                    }
+                }
+            }
         }
     }
 

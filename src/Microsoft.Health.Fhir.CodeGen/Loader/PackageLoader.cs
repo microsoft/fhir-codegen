@@ -1198,6 +1198,12 @@ public partial class PackageLoader : IDisposable
             _ = await definitions.TryGenerateMissingSnapshots();
         }
 
+        // reconcile inheritance of elements
+        if (definitions != null)
+        {
+            _ = definitions.TryReconcileElementInheritance();
+        }
+
         // check for DSTU2 - need to reconcile profile snapshots that are missing elements
         if (definitions?.FhirSequence == FhirReleases.FhirSequenceCodes.DSTU2)
         {
