@@ -1717,7 +1717,54 @@ public class ComparisonDatabase : IDisposable
         // do value set post-processing
         doValueSetPostProcessing(_escapeValveCodes);
 
+        // do element post-processing
+        doElementPostProcessing();
+
         return true;
+    }
+
+    private void doElementPostProcessing()
+    {
+        {
+            IDbCommand command = _dbConnection.CreateCommand();
+            command.CommandText = $"""
+            update {DbElement.DefaultTableName}
+            set CollatedTypeLiteral = 'id'
+            where Name = 'id' and CollatedTypeLiteral = 'string' and (BasePath = 'Element.id' or Id = 'Element.id')
+            """;
+
+            command.ExecuteNonQuery();
+        }
+
+        {
+            List<DbFhirPackage> packages = DbFhirPackage.SelectList(_dbConnection);
+
+            foreach (DbFhirPackage pm in packages)
+            {
+                DbStructureDefinition? idSd = DbStructureDefinition.SelectSingle(
+                    _dbConnection,
+                    FhirPackageKey: pm.Key,
+                    Name: "id");
+
+                if (idSd == null)
+                {
+                    continue;
+                }
+
+                IDbCommand command = _dbConnection.CreateCommand();
+                command.CommandText = $"""
+                    update {DbElementType.DefaultTableName}
+                    set TypeName = 'id', TypeStructureKey = {idSd.Key}
+                    where FhirPackageKey = {pm.Key}
+                    and TypeName = 'string'
+                    and ElementKey in (select Key from Elements where Name = 'id' and (BasePath = 'Element.id' or Id = 'Element.id'))
+                    """;
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+        return;
     }
 
     private void doValueSetPostProcessing(HashSet<string> _escapeValveCodes)

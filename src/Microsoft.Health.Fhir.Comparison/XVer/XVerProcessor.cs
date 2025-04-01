@@ -678,18 +678,18 @@ public class XVerProcessor
                         if ((cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.Equivalent) &&
                             (cell.RightCell.LeftComparison?.Relationship == ConceptMap.ConceptMapRelationship.Equivalent))
                         {
-                            writer.Write($"| == ({cell.RightComparison.Key}/{cell.RightCell.LeftComparison?.Key})");
+                            writer.Write($"| _{cell.RightComparison.Relationship}_<br/>({cell.RightComparison.Key}/{cell.RightCell.LeftComparison?.Key})");
                         }
-                        else if ((cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget) &&
-                            (cell.RightCell.LeftComparison?.Relationship == ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget))
-                        {
-                            writer.Write($"| ↢↢↢ ({cell.RightComparison.Key}/{cell.RightCell.LeftComparison?.Key})");
-                        }
-                        else if ((cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget) &&
-                            (cell.RightCell.LeftComparison?.Relationship == ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget))
-                        {
-                            writer.Write($"| ↣↣↣ ({cell.RightComparison.Key}/{cell.RightCell.LeftComparison?.Key})");
-                        }
+                        //else if ((cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget) &&
+                        //    (cell.RightCell.LeftComparison?.Relationship == ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget))
+                        //{
+                        //    writer.Write($"| ↢↢↢ ({cell.RightComparison.Key}/{cell.RightCell.LeftComparison?.Key})");
+                        //}
+                        //else if ((cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget) &&
+                        //    (cell.RightCell.LeftComparison?.Relationship == ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget))
+                        //{
+                        //    writer.Write($"| ↣↣↣ ({cell.RightComparison.Key}/{cell.RightCell.LeftComparison?.Key})");
+                        //}
                         //if (cell.RightComparison.Relationship != cell.RightCell.LeftComparison?.Relationship)
                         //{
                         //    // write mapping notes
@@ -714,9 +714,9 @@ public class XVerProcessor
                         {
                             // write mapping notes
                             writer.Write(
-                                $"| →→ {cell.RightComparison.Relationship} ({cell.RightComparison.Key}) →→ " +
+                                $"| →→→→ _{cell.RightComparison.Relationship}_ →→→→ <br/>({cell.RightComparison.Key})" +
                                 $"<hr/>" +
-                                $"←← {cell.RightCell.LeftComparison?.Relationship} ({cell.RightCell.LeftComparison?.Key}) ←← ");
+                                $"←←←← _{cell.RightCell.LeftComparison?.Relationship}_ ←←←← <br/>({cell.RightCell.LeftComparison?.Key})");
                         }
                     }
                 }
@@ -1314,18 +1314,18 @@ public class XVerProcessor
                         if ((cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.Equivalent) &&
                             (cell.RightCell.LeftComparison?.Relationship == ConceptMap.ConceptMapRelationship.Equivalent))
                         {
-                            writer.Write($"| == ({cell.RightComparison.Key}/{cell.RightCell.LeftComparison?.Key})");
+                            writer.Write($"| _{cell.RightComparison.Relationship}_ <br/>({cell.RightComparison.Key}/{cell.RightCell.LeftComparison?.Key})");
                         }
-                        else if ((cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget) &&
-                            (cell.RightCell.LeftComparison?.Relationship == ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget))
-                        {
-                            writer.Write($"| ↢↢↢ ({cell.RightComparison.Key}/{cell.RightCell.LeftComparison?.Key})");
-                        }
-                        else if ((cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget) &&
-                            (cell.RightCell.LeftComparison?.Relationship == ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget))
-                        {
-                            writer.Write($"| ↣↣↣ ({cell.RightComparison.Key}/{cell.RightCell.LeftComparison?.Key})");
-                        }
+                        //else if ((cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget) &&
+                        //    (cell.RightCell.LeftComparison?.Relationship == ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget))
+                        //{
+                        //    writer.Write($"| ↢↢↢ ({cell.RightComparison.Key}/{cell.RightCell.LeftComparison?.Key})");
+                        //}
+                        //else if ((cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget) &&
+                        //    (cell.RightCell.LeftComparison?.Relationship == ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget))
+                        //{
+                        //    writer.Write($"| ↣↣↣ ({cell.RightComparison.Key}/{cell.RightCell.LeftComparison?.Key})");
+                        //}
                         //else if (cell.RightComparison.Relationship != cell.RightCell.LeftComparison?.Relationship)
                         //{
                         //    // write mapping notes
@@ -1338,9 +1338,9 @@ public class XVerProcessor
                         {
                             // write mapping notes
                             writer.Write(
-                                $"| →→ {cell.RightComparison.Relationship} ({cell.RightComparison.Key}) →→ " +
+                                $"| →→→→ _{cell.RightComparison.Relationship}_ →→→→ <br/>({cell.RightComparison.Key})" +
                                 $"<hr/>" +
-                                $"←← {cell.RightCell.LeftComparison?.Relationship} ({cell.RightCell.LeftComparison?.Key}) ←← ");
+                                $"←←←← _{cell.RightCell.LeftComparison?.Relationship}_ ←←←← <br/>({cell.RightCell.LeftComparison?.Key}) ");
                         }
                     }
                 }

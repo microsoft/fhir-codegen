@@ -455,8 +455,7 @@ public class FhirDbComparer
             }
 
             // update primitives manually according to known relationships
-            if (FhirTypeMappings.TryGetMapping(sourceSd.Name, targetSd.Name, out FhirTypeMappings.CodeGenTypeMapping? sourcePM) &&
-                (forwardComparison.Relationship != sourcePM.Value.Relationship))
+            if (FhirTypeMappings.TryGetMapping(sourceSd.Name, targetSd.Name, out FhirTypeMappings.CodeGenTypeMapping? sourcePM))
             {
                 forwardComparison.Relationship = sourcePM.Value.Relationship;
                 forwardComparison.ConceptDomainRelationship = sourcePM.Value.ConceptDomainRelationship;
@@ -466,8 +465,7 @@ public class FhirDbComparer
                 _sdComparisons.Changed(forwardComparison);
             }
 
-            if (FhirTypeMappings.TryGetMapping(targetSd.Name, sourceSd.Name, out FhirTypeMappings.CodeGenTypeMapping? targetPM) &&
-                (inverseComparison.Relationship != targetPM.Value.Relationship))
+            if (FhirTypeMappings.TryGetMapping(targetSd.Name, sourceSd.Name, out FhirTypeMappings.CodeGenTypeMapping? targetPM))
             {
                 inverseComparison.Relationship = targetPM.Value.Relationship;
                 inverseComparison.ConceptDomainRelationship = targetPM.Value.ConceptDomainRelationship;
