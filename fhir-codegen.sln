@@ -51,6 +51,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Health.Fhir.Compa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fhir-codegen.SQLiteGenerator", "src\fhir-codegen.SQLiteGenerator\fhir-codegen.SQLiteGenerator.csproj", "{C448739F-ADB8-42A2-B678-9C0CF7AEEE8C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xver_editor", "src\xver_editor\xver_editor.csproj", "{D2F4E9BA-1F1A-49B8-BADB-14EF52737A49}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,6 +103,10 @@ Global
 		{C448739F-ADB8-42A2-B678-9C0CF7AEEE8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C448739F-ADB8-42A2-B678-9C0CF7AEEE8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C448739F-ADB8-42A2-B678-9C0CF7AEEE8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2F4E9BA-1F1A-49B8-BADB-14EF52737A49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2F4E9BA-1F1A-49B8-BADB-14EF52737A49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2F4E9BA-1F1A-49B8-BADB-14EF52737A49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2F4E9BA-1F1A-49B8-BADB-14EF52737A49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -116,5 +122,6 @@ Global
 		src\fhir-codegen-shared\fhir-codegen-shared.projitems*{3e0b1f04-fa35-41fa-8c10-247f93f594d4}*SharedItemsImports = 5
 		src\fhir-codegen-shared\fhir-codegen-shared.projitems*{63a0038d-41d5-4642-813d-74a31e63623b}*SharedItemsImports = 13
 		src\fhir-codegen-shared\fhir-codegen-shared.projitems*{cc4d5356-bd06-48a8-b329-7c372201549a}*SharedItemsImports = 5
+		src\fhir-codegen-shared\fhir-codegen-shared.projitems*{d2f4e9ba-1f1a-49b8-badb-14ef52737a49}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal

@@ -1,0 +1,16 @@
+﻿@page "/"
+
+@using Markdig;
+
+<PageTitle>Home</PageTitle>
+
+<div>@processedContent</div>
+
+@code {
+    private MarkupString processedContent = new(string.Empty);
+
+    protected override void OnInitialized()
+    {
+        processedContent = new MarkupString(Markdown.ToHtml(xver_editor.Data.Global.WelcomeMarkdownContent));
+    }
+}

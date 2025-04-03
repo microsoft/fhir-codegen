@@ -146,7 +146,7 @@ public class StructureDefinitionGraph
                 }
 
                 // try to resolve the reverse mapping
-                bool hasReverse = pairsDown.TryGetValue((target, source), out var reverseMapping);
+                bool hasReverse = pairsDown.TryGetValue((target, source), out (ConceptMap.SourceElementComponent sourceElement, ConceptMap.TargetElementComponent targetElement) reverseMapping);
 
                 // add this edge
                 _edges.AddToValue(leftSd, new()
@@ -176,7 +176,7 @@ public class StructureDefinitionGraph
                 }
 
                 // try to resolve the reverse mapping
-                bool hasReverse = pairsUp.TryGetValue((target, source), out var reverseMapping);
+                bool hasReverse = pairsUp.TryGetValue((target, source), out (ConceptMap.SourceElementComponent sourceElement, ConceptMap.TargetElementComponent targetElement) reverseMapping);
 
                 // add this edge
                 _edges.AddToValue(rightSd, new()
@@ -236,7 +236,7 @@ public class StructureDefinitionGraph
                 }
 
                 // try to resolve the reverse mapping
-                bool hasReverse = pairsDown.TryGetValue((target, source), out var reverseMapping);
+                bool hasReverse = pairsDown.TryGetValue((target, source), out (ConceptMap.SourceElementComponent sourceElement, ConceptMap.TargetElementComponent targetElement) reverseMapping);
 
                 // add this edge
                 _edges.AddToValue(leftSd, new()
@@ -266,7 +266,7 @@ public class StructureDefinitionGraph
                 }
 
                 // try to resolve the reverse mapping
-                bool hasReverse = pairsUp.TryGetValue((target, source), out var reverseMapping);
+                bool hasReverse = pairsUp.TryGetValue((target, source), out (ConceptMap.SourceElementComponent sourceElement, ConceptMap.TargetElementComponent targetElement) reverseMapping);
 
                 // add this edge
                 _edges.AddToValue(rightSd, new()

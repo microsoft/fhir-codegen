@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <Import Project="..\..\fhir-codegen.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+  </PropertyGroup>
+
+  <!-- Solution-wide properties for NuGet packaging -->
+  <ItemGroup>
+    <PackageReference Include="Markdig" Version="0.40.0" />
+    <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="4.11.7" />
+    <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Emoji" Version="4.11.7" />
+    <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="4.11.7" />
+    <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
+    <PackageReference Include="System.CommandLine.NamingConventionBinder" Version="2.0.0-beta4.22272.1" />
+  </ItemGroup>
+
+  <!--<ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+    --><!--<FrameworkReference Include="Microsoft.AspNetCore.App" Version="8.0.14" />--><!--
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.14" />
+  </ItemGroup>-->
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
+    <!--<FrameworkReference Include="Microsoft.AspNetCore.App" Version="9.0.3" />-->
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Microsoft.Health.Fhir.CodeGenCommon\Microsoft.Health.Fhir.CodeGenCommon.csproj" />
+    <ProjectReference Include="..\Microsoft.Health.Fhir.Comparison\Microsoft.Health.Fhir.Comparison.csproj" />
+  </ItemGroup>
+
+  <Import Project="..\fhir-codegen-shared\fhir-codegen-shared.projitems" Label="Shared" />
+</Project>

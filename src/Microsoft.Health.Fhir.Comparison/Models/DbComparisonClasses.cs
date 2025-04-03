@@ -348,8 +348,8 @@ public class DbComparisonCache<T>
     public bool TryGet(int key, [NotNullWhen(true)] out T? value) => _byKey.TryGetValue(key, out value);
     public bool TryGet((int sourceKey, int? targetKey) pair, [NotNullWhen(true)] out T? value) => _byPair.TryGetValue(pair, out value);
 
-    public T? Get(int key) => _byKey.TryGetValue(key, out var value) ? value : default(T);
-    public T? Get(int sourceKey, int? targetKey) => _byPair.TryGetValue((sourceKey, targetKey), out var value) ? value : default(T);
+    public T? Get(int key) => _byKey.TryGetValue(key, out T? value) ? value : default(T);
+    public T? Get(int sourceKey, int? targetKey) => _byPair.TryGetValue((sourceKey, targetKey), out T? value) ? value : default(T);
 
     public IEnumerable<T> ForSource(int sourceKey)
     {

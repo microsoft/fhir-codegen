@@ -26,7 +26,6 @@ using System.Runtime.InteropServices;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
-using HarfBuzzSharp;
 
 
 namespace fhir_codegen_shared;
@@ -241,9 +240,9 @@ internal static class LaunchUtils
         return config;
     }
 
-    internal static Parser BuildParser(IConfiguration envConfig)
+    internal static Parser BuildParser(IConfiguration envConfig, RootCommand? rc = null)
     {
-        RootCommand command = BuildCommand(envConfig);
+        RootCommand command = rc ?? BuildCommand(envConfig);
 
         Parser parser = new CommandLineBuilder(command)
             .UseExceptionHandler((ex, ctx) =>
@@ -494,34 +493,34 @@ internal static class LaunchUtils
 
 
         return rootCommand;
+    }
 
-        void TrackIfEnum(Option option)
+    internal static void TrackIfEnum(Option option)
+    {
+        if (option.ValueType.IsEnum)
         {
-            if (option.ValueType.IsEnum)
+            _optsWithEnums.Add(option);
+            return;
+        }
+
+        if (option.ValueType.IsGenericType)
+        {
+            if (option.ValueType.GenericTypeArguments.First().IsEnum)
             {
                 _optsWithEnums.Add(option);
-                return;
             }
 
-            if (option.ValueType.IsGenericType)
+            return;
+        }
+
+        if (option.ValueType.IsArray)
+        {
+            if (option.ValueType.GetElementType()!.IsEnum)
             {
-                if (option.ValueType.GenericTypeArguments.First().IsEnum)
-                {
-                    _optsWithEnums.Add(option);
-                }
-
-                return;
+                _optsWithEnums.Add(option);
             }
 
-            if (option.ValueType.IsArray)
-            {
-                if (option.ValueType.GetElementType()!.IsEnum)
-                {
-                    _optsWithEnums.Add(option);
-                }
-
-                return;
-            }
+            return;
         }
     }
 
