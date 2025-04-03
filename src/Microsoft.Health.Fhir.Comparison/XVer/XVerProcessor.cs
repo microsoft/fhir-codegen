@@ -743,6 +743,13 @@ public class XVerProcessor
                 else
                 {
                     writer.Write($"| *{elementsPerSd[i].Count} of {structureRow[i]!.Sd.SnapshotCount} elements used* ");
+                    if (elementsPerSd[i].Count < structureRow[i]!.Sd.SnapshotCount)
+                    {
+                        HashSet<string> allElements = structureRow[i]!.Elements.Select(c => c.Id).ToHashSet();
+                        IEnumerable<string> unusedElements = allElements.Except(elementsPerSd[i]);
+                        writer.Write($"<br/>remaining elements:<br/>{string.Join(", ", unusedElements.Select(v => "`" + v + "`"))}");
+                    }
+
                 }
             }
 
@@ -1367,6 +1374,12 @@ public class XVerProcessor
                 else
                 {
                     writer.Write($"| *{codesPerVs[i].Count} of {valueSetRow[i]!.Vs.ConceptCount} codes used* ");
+                    if (codesPerVs[i].Count < valueSetRow[i]!.Vs.ConceptCount)
+                    {
+                        HashSet<string> allCodes = valueSetRow[i]!.Concepts.Select(c => c.FhirKey).ToHashSet();
+                        IEnumerable<string> unusedCodes = allCodes.Except(codesPerVs[i]);
+                        writer.Write($"<br/>remaining codes:<br/>{string.Join(", ", unusedCodes.Select(v => "`" + v.Split('#')[^1] + "`"))}");
+                    }
                 }
             }
 
