@@ -1,4 +1,4 @@
-﻿@page "/valuesetindex/{FhirPackageKey:int}"
+﻿@page "/valuesets/{FhirPackageKey:int}"
 
 @using Microsoft.Health.Fhir.Comparison.Models
 @using xver_editor.Services
@@ -34,11 +34,17 @@
 
         <div class="grid-container">
             <FluentDataGrid Items="@_filteredItems"
-            ShowHover="true"
-            ResizableColumns="true"
-            GridTemplateColumns="2fr 3fr 1fr 1fr 1fr 1fr 1fr 1fr"
-            class="valueset-grid"
-            Pagination="@pagination">
+                    ShowHover="true"
+                    ResizableColumns="true"
+                    GridTemplateColumns="60px 2fr 3fr 1fr 1fr 1fr 1fr 1fr 1fr"
+                    class="valueset-grid"
+                    Pagination="@pagination">
+                <TemplateColumn Title="" Sortable="false">
+                    <FluentButton IconStart="@(new Icons.Regular.Size16.Edit())"
+                                  Appearance="Appearance.Lightweight"
+                                  OnClick="@(() => NavigateToDetails(context))"
+                                  Title="View Details" />
+                </TemplateColumn>
                 <PropertyColumn Title="Name" Property="@(vsr => vsr.Vs.Name)" Sortable="true" IsDefaultSortColumn="true">
                     <ColumnOptions>
                         <div class="search-box">
@@ -107,7 +113,7 @@
 
     private NavPageInfoRec[] _navPages => new NavPageInfoRec[]
     {
-        new() { Display = $"{PackageShortName}: Value Sets", Link = $"/valuesetindex/{FhirPackageKey}?packageShort={PackageShortName}" },
+        new() { Display = $"{PackageShortName}: Value Sets", Link = $"/valuesets/{FhirPackageKey}?packageShort={PackageShortName}" },
     };
 
     private bool _onlyRequiredBindings = true;
@@ -141,61 +147,6 @@
     private string nameFilter = string.Empty;
     private string urlFilter = string.Empty;
 
-    private record class VsRecForUi
-    {
-        public required DbGraphVs Graph { get; init; }
-        public required DbValueSet Vs { get; init; }
-        public required List<DbVsCell?[]> Projection { get; init; }
-        public required Dictionary<int, bool> MapsTo { get; init; }
-        public required bool HasUnreviewed { get; init; }
-
-        [SetsRequiredMembers]
-        public VsRecForUi(System.Data.IDbConnection db, DbValueSet vs, List<DbFhirPackage> packages)
-        {
-            Vs = vs;
-            Graph = new()
-            {
-                DB = db,
-                Packages = packages,
-                KeyVs = vs,
-            };
-            Projection = Graph.Project();
-
-            bool hasUnreviewed = false;
-
-            Dictionary<int, bool> mapsTo = [];
-            for (int i = 0; i < packages.Count; i++)
-            {
-                if (packages[i].Key == vs.FhirPackageKey)
-                {
-                    if (hasUnreviewed == true)
-                    {
-                        continue;
-                    }
-
-                    if ((i > 0) &&
-                        Projection.Any(r => (r[i]?.LeftComparison != null) && (r[i]!.LeftComparison!.LastReviewedOn == null)))
-                    {
-                        hasUnreviewed = true;
-                    }
-
-                    if ((i < packages.Count - 1) &&
-                        Projection.Any(r => (r[i]?.RightComparison != null) && (r[i]!.RightComparison!.LastReviewedOn == null)))
-                    {
-                        hasUnreviewed = true;
-                    }
-
-                    continue;
-                }
-
-                mapsTo.Add(packages[i].Key, Projection.Any(r => r[i] != null) ? true : false);
-            }
-
-            MapsTo = mapsTo;
-            HasUnreviewed = hasUnreviewed;
-        }
-    }
-
     private List<DbFhirPackage> _packages = [];
 
     private int _totalValueSetCount = 0;
@@ -209,15 +160,17 @@
         ItemsPerPage = 25,
     };
 
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
+        base.OnInitialized();
         NavTracker?.NotifyNav(_navPages);
-        await LoadValueSets();
+        LoadValueSets();
     }
 
-    protected override async Task OnParametersSetAsync()
+    protected override void OnParametersSet()
     {
-        await LoadValueSets();
+        base.OnParametersSet();
+        LoadValueSets();
     }
 
     private void LoadPackages()
@@ -318,7 +271,7 @@
         return true;
     }
 
-    private async Task LoadValueSets()
+    private void LoadValueSets()
     {
         try
         {
@@ -360,4 +313,11 @@
             // uiRecs = Enumerable.Empty<VsRecForUi>().AsQueryable();
         }
     }
+
+    private void NavigateToDetails(VsRecForUi vsRec)
+    {
+        string url = $"/valuesets/{FhirPackageKey}/{vsRec.Vs.Key}?packageShort={PackageShortName}&vsName={Uri.EscapeDataString(vsRec.Vs.Name)}";
+        NavigationManager.NavigateTo(url);
+    }
+
 }

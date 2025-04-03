@@ -182,14 +182,16 @@ public class DbGraphVs
         return results;
     }
 
-    public List<DbVsConceptCell?[]> ProjectConcepts(DbVsCell?[] vsRow)
+    public List<DbVsConceptCell?[]> ProjectConcepts(DbVsCell?[] vsRow, int? keyColumnIndex = null)
     {
-        if (_keyCol == -1)
+        int keyColIndex = keyColumnIndex ??= _keyCol;
+
+        if (keyColIndex == -1)
         {
             throw new Exception("Key column not set!");
         }
 
-        if (vsRow[_keyCol] == null)
+        if (vsRow[keyColIndex] == null)
         {
             return [];
         }
@@ -197,11 +199,11 @@ public class DbGraphVs
         List<DbVsConceptCell?[]> results = [];
 
         // iterate over the concepts for this value set
-        foreach (DbValueSetConcept concept in vsRow[_keyCol]!.Concepts)
+        foreach (DbValueSetConcept concept in vsRow[keyColIndex]!.Concepts)
         {
             DbVsConceptCell?[] row = new DbVsConceptCell?[_packages.Count];
 
-            int startCol = _keyCol;
+            int startCol = keyColIndex;
             row[startCol] = new()
             {
                 VsCell = vsRow[startCol]!,
@@ -239,7 +241,8 @@ public class DbGraphVs
         int column,
         bool projectRight)
     {
-        if (incomingRow[column] == null)
+        if ((incomingRow[column] == null) ||
+            (vsRow[column] == null))
         {
             return [incomingRow];
         }
