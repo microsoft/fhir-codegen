@@ -1,11 +1,53 @@
 @import '/_content/Microsoft.FluentUI.AspNetCore.Components/css/reboot.css';
 
+/*:root {
+    --type-ramp-base-font-size: 1rem;
+    --type-ramp-base-line-height: 1.2rem;
+    --type-ramp-minus-1-font-size: 0.8rem;
+    --type-ramp-minus-1-line-height: 1rem;
+    --type-ramp-minus-2-font-size: 0.6rem;
+    --type-ramp-minus-2-line-height: 0.8rem;
+    --type-ramp-plus-1-font-size: 1.2rem;
+    --type-ramp-plus-1-line-height: 1.4rem;
+    --type-ramp-plus-2-font-size: 1.4rem;
+    --type-ramp-plus-2-line-height: 1.6rem;
+    --type-ramp-plus-3-font-size: 1.6rem;
+    --type-ramp-plus-3-line-height: 1.8rem;
+    --type-ramp-plus-4-font-size: 1.8rem;
+    --type-ramp-plus-4-line-height: 2.0rem;
+    --type-ramp-plus-5-font-size: 2.0rem;
+    --type-ramp-plus-5-line-height: 2.2rem;
+    --type-ramp-plus-6-font-size: 2.2rem;
+    --type-ramp-plus-6-line-height: 2.4rem;
+}
+*/
 body {
+    --type-ramp-base-font-size: 1rem;
+    --type-ramp-base-line-height: 1.4rem;
+    --type-ramp-minus-1-font-size: 0.8rem;
+    --type-ramp-minus-1-line-height: 1.2rem;
+    --type-ramp-minus-2-font-size: 0.6rem;
+    --type-ramp-minus-2-line-height: 1.0rem;
+    --type-ramp-plus-1-font-size: 1.2rem;
+    --type-ramp-plus-1-line-height: 1.6rem;
+    --type-ramp-plus-2-font-size: 1.4rem;
+    --type-ramp-plus-2-line-height: 1.8rem;
+    --type-ramp-plus-3-font-size: 1.6rem;
+    --type-ramp-plus-3-line-height: 2.0rem;
+    --type-ramp-plus-4-font-size: 1.8rem;
+    --type-ramp-plus-4-line-height: 2.2rem;
+    --type-ramp-plus-5-font-size: 2.0rem;
+    --type-ramp-plus-5-line-height: 2.4rem;
+    --type-ramp-plus-6-font-size: 2.2rem;
+    --type-ramp-plus-6-line-height: 2.6rem;
     --body-font: "Segoe UI Variable", "Segoe UI", sans-serif;
+    --font-monospace: "Cascadia Code", Consolas, "Courier New", "Liberation Mono", SFMono-Regular, Menlo, Monaco, monospace;
     font-family: var(--body-font);
     font-size: var(--type-ramp-base-font-size);
     line-height: var(--type-ramp-base-line-height);
     margin: 0;
+    --field-min-width: 400px;
+    --field-container-min-width: 420px;
 }
 
 .navmenu-icon {
@@ -20,14 +62,13 @@ body {
 
 .body-content {
     align-self: stretch;
-    height: calc(100dvh - 86px) !important;
+    height: unset !important;
     display: flex;
 }
 
 .content {
     padding: 0.5rem 1.5rem;
     align-self: stretch !important;
-    width: 100%;
 }
 
 .manage {
@@ -35,11 +76,23 @@ body {
 }
 
 footer {
+    display: grid;
+    grid-template-columns: 10px auto auto 10px;
     background: var(--neutral-layer-4);
     color: var(--neutral-foreground-rest);
     align-items: center;
     padding: 10px 10px;
 }
+
+    footer .link1 {
+        grid-column: 2;
+        justify-content: start;
+    }
+
+    footer .link2 {
+        grid-column: 3;
+        justify-self: end;
+    }
 
     footer a {
         color: var(--neutral-foreground-rest);
@@ -60,6 +113,13 @@ footer {
     padding: 5px;
 }
 
+ul li {
+    margin-bottom: 8px;
+}
+
+ul {
+    margin-bottom: 0px;
+}
 
 #blazor-error-ui {
     background: lightyellow;
@@ -124,19 +184,41 @@ footer {
         content: var(--blazor-load-percentage-text, "Loading");
     }
 
-code {
-    color: #c02d76;
+.indented {
+    margin-left: 32px;
+}
+
+.fluent-data-grid {
+    width: 100% !important;
+}
+
+.fluent-data-grid-row:not(.highlighted-row):not(:first-child):nth-child(2n+1) {
+    background-color: var(--neutral-fill-secondary-rest);
+}
+
+.fluent-data-grid-row:not(:first-child):hover {
+    background-color: var(--accent-base-color) !important;
+    /*background-color: var(--neutral-fill-hover) !important;*/
+}
+
+.highlighted-row {
+    background-color: var(--success) !important;
+    /*background-color: var(--neutral-fill-hover) !important;*/
+}
+
+fluent-text-field {
+    min-width: var(--field-min-width);
+}
+
+fluent-text-area {
+    min-width: var(--field-min-width);
+}
+
+fluent-number-field {
+    min-width: var(--field-min-width);
 }
 
 @media (max-width: 600px) {
-    .header-gutters {
-        margin: 0.5rem 3rem 0.5rem 1.5rem !important;
-    }
-
-    [dir="rtl"] .header-gutters {
-        margin: 0.5rem 1.5rem 0.5rem 3rem !important;
-    }
-
     .main {
         flex-direction: column !important;
         row-gap: 0 !important;
@@ -177,15 +259,57 @@ code {
         display: block;
         position: absolute;
         top: 15px;
-        left: unset;
         right: 20px;
         width: 20px;
         height: 20px;
         border: none;
     }
-
-    [dir="rtl"] .navmenu-icon {
-        left: 20px;
-        right: unset;
-    }
 }
+
+.copy-click {
+    position: relative;
+    padding-bottom: 2px;
+    text-decoration: none;
+    cursor: copy;
+    /*color: #484848;*/
+    border-bottom: 1px dashed #767676;
+    transition: background-color calc(var(--duration) * 2) var(--ease);
+}
+
+    .copy-click:after {
+        content: 'Click to copy';
+        position: absolute;
+        bottom: calc(100% + 6px);
+        left: 50%;
+        padding: 4px 8px;
+        white-space: nowrap;
+        background-color: white;
+        color: black;
+        border-radius: 4px;
+        box-shadow: 0 0 0 -12px rgba(0, 0, 0, 0);
+        pointer-events: none;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        opacity: 0;
+        -webkit-transform: translate(-50%, 12px);
+        transform: translate(-50%, 12px);
+        transition: box-shadow calc(var(--duration) / 1.5) var(--bounce), opacity calc(var(--duration) / 1.5) var(--bounce), -webkit-transform calc(var(--duration) / 1.5) var(--bounce);
+        transition: box-shadow calc(var(--duration) / 1.5) var(--bounce), opacity calc(var(--duration) / 1.5) var(--bounce), transform calc(var(--duration) / 1.5) var(--bounce);
+        transition: box-shadow calc(var(--duration) / 1.5) var(--bounce), opacity calc(var(--duration) / 1.5) var(--bounce), transform calc(var(--duration) / 1.5) var(--bounce), -webkit-transform calc(var(--duration) / 1.5) var(--bounce);
+    }
+
+    .copy-click.is-hovered:after {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        opacity: 1;
+        -webkit-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+        transition-timing-function: var(--ease);
+    }
+
+    .copy-click.is-copied {
+        background-color: yellow;
+    }
+
+        .copy-click.is-copied:after {
+            content: 'Copied!';
+        }

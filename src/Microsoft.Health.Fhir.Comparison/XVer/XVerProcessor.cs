@@ -893,7 +893,6 @@ public class XVerProcessor
                 DB = _db!.DbConnection,
                 Packages = packages,
                 KeyVs = vs,
-                
             };
 
             // project this value set based on comparisons

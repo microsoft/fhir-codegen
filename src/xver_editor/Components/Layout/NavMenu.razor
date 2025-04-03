@@ -14,6 +14,7 @@
         @foreach (DbFhirPackage package in DbFhirPackage.SelectList(DbService.DB, orderByProperties: [nameof(DbFhirPackage.PackageId), nameof(DbFhirPackage.PackageVersion)]))
         {
             <FluentNavGroup Title="@(package.ShortName)" Tooltip="@(package.PackageId + "@" + package.PackageVersion)" Icon="@(new Icons.Regular.Size24.CubeMultiple())" Expanded="true">
+                <FluentNavLink Icon="@(new Icons.Regular.Size24.Fire())" Href="@($"/valuesetindex/{package.Key}?packageShort={package.ShortName}")" Tooltip="Review Value Set Mappings">Value Sets</FluentNavLink>
 @*                 <FluentNavLink Icon="@(new Icons.Regular.Size24.Fire())" Href="@($"/store?store={key}")" Tooltip="FHIR Contents">FHIR Contents</FluentNavLink>
                 <FluentNavLink Icon="@(new Icons.Regular.Size20.ArrowExport())" Href="@($"/subscriptions/local?store={key}")" Tooltip="Local Subscriptions">Local Subscriptions</FluentNavLink>
                 <FluentNavLink Icon="@(new Icons.Regular.Size20.CloudArrowDown())" Href="@($"/subscriptions/notifications-received?store={key}")" Tooltip="Received Notifications">Received Notifications</FluentNavLink>

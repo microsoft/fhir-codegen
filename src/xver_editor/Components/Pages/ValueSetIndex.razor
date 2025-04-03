@@ -1,0 +1,363 @@
+﻿@page "/valuesetindex/{FhirPackageKey:int}"
+
+@using Microsoft.Health.Fhir.Comparison.Models
+@using xver_editor.Services
+@using Microsoft.FluentUI.AspNetCore.Components
+@using System.Diagnostics.CodeAnalysis
+@using System.Collections.Concurrent;
+
+@inject IXverDbService DbService
+@inject NavigationManager NavigationManager
+
+<FluentStack Orientation="Orientation.Vertical" VerticalGap="8">
+    <FluentLabel Typo="Typography.H4">Value Set Index for @PackageShortName - @_totalValueSetCount Value Sets</FluentLabel>
+
+    @if (uiRecs == null)
+    {
+        <FluentLabel Typo="Typography.Body">Loading...</FluentLabel>
+    }
+    else if (!uiRecs.Any())
+    {
+        <FluentLabel Typo="Typography.Body">No ValueSets found for this package.</FluentLabel>
+    }
+    else
+    {
+        <FluentGrid>
+            <FluentGridItem>
+                <FluentSwitch Label="Only with Required Binding" @bind-Value="OnlyRequiredBindings"></FluentSwitch>
+            </FluentGridItem>
+
+            <FluentGridItem>
+                <FluentSwitch Label="Only Unreviewed" @bind-Value="OnlyUnreviewed"></FluentSwitch>
+            </FluentGridItem>
+        </FluentGrid>
+
+        <div class="grid-container">
+            <FluentDataGrid Items="@_filteredItems"
+            ShowHover="true"
+            ResizableColumns="true"
+            GridTemplateColumns="2fr 3fr 1fr 1fr 1fr 1fr 1fr 1fr"
+            class="valueset-grid"
+            Pagination="@pagination">
+                <PropertyColumn Title="Name" Property="@(vsr => vsr.Vs.Name)" Sortable="true" IsDefaultSortColumn="true">
+                    <ColumnOptions>
+                        <div class="search-box">
+                            <FluentSearch type="search" Autofocus=true @bind-Value=nameFilter @oninput="HandleNameFilterChanged" @bind-Value:after="HandleNameFilterClear" Placeholder="ValueSet name..." />
+                        </div>
+                    </ColumnOptions>
+                </PropertyColumn>
+                <PropertyColumn Title="URL" Property="@(vsr => vsr.Vs.VersionedUrl)" Sortable="true">
+                    <ColumnOptions>
+                        <div class="search-box">
+                            <FluentSearch type="search" Autofocus=true @bind-Value=urlFilter @oninput="HandleUrlFilterChanged" @bind-Value:after="HandleUrlFilterClear" Placeholder="ValueSet URL..." />
+                        </div>
+                    </ColumnOptions>
+                </PropertyColumn>
+                <TemplateColumn Title="Unreviewed" Sortable="true">
+                    <FluentCheckbox Value="@(context.HasUnreviewed)" ReadOnly="true" />
+                </TemplateColumn>
+                @foreach (DbFhirPackage package in _packages)
+                {
+                    if (package.Key == FhirPackageKey)
+                    {
+                        continue;
+                    }
+
+                    @* <PropertyColumn Title="@package.ShortName" Property="@(vsr => vsr.MapsTo[package.Key])" Sortable="false"/> *@
+
+                    <TemplateColumn Title="@package.ShortName" Sortable="false">
+                        <FluentCheckbox Value="@(context.MapsTo[package.Key])" ReadOnly="true" />
+                    </TemplateColumn>
+                }
+            </FluentDataGrid>
+        </div>
+        <FluentPaginator State="@pagination" />
+    }
+</FluentStack>
+
+
+<style>
+    .grid-container {
+    margin-top: 1rem;
+    width: 100%;
+    }
+
+    /* Apply alternating row colors */
+    ::deep .valueset-grid fluent-data-grid-row:nth-child(even) {
+    background-color: var(--neutral-layer-4);
+    }
+
+    /* Highlight hovered row */
+    ::deep .valueset-grid fluent-data-grid-row:hover {
+    background-color: var(--neutral-layer-hover);
+    cursor: pointer;
+    }
+</style>
+
+@code {
+    [Parameter]
+    public int FhirPackageKey { get; set; }
+
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "packageShort")]
+    public string PackageShortName { get; set; } = string.Empty;
+
+    [CascadingParameter]
+    public INavTracker? NavTracker { get; set; } = null;
+
+    private NavPageInfoRec[] _navPages => new NavPageInfoRec[]
+    {
+        new() { Display = $"{PackageShortName}: Value Sets", Link = $"/valuesetindex/{FhirPackageKey}?packageShort={PackageShortName}" },
+    };
+
+    private bool _onlyRequiredBindings = true;
+    private bool OnlyRequiredBindings
+    {
+        get => _onlyRequiredBindings;
+        set
+        {
+            if (value != _onlyRequiredBindings)
+            {
+                _onlyRequiredBindings = value;
+                FilterItems();
+            }
+        }
+    }
+
+    private bool _onlyUnreviewed = true;
+    private bool OnlyUnreviewed
+    {
+        get => _onlyUnreviewed;
+        set
+        {
+            if (value != _onlyUnreviewed)
+            {
+                _onlyUnreviewed = value;
+                FilterItems();
+            }
+        }
+    }
+
+    private string nameFilter = string.Empty;
+    private string urlFilter = string.Empty;
+
+    private record class VsRecForUi
+    {
+        public required DbGraphVs Graph { get; init; }
+        public required DbValueSet Vs { get; init; }
+        public required List<DbVsCell?[]> Projection { get; init; }
+        public required Dictionary<int, bool> MapsTo { get; init; }
+        public required bool HasUnreviewed { get; init; }
+
+        [SetsRequiredMembers]
+        public VsRecForUi(System.Data.IDbConnection db, DbValueSet vs, List<DbFhirPackage> packages)
+        {
+            Vs = vs;
+            Graph = new()
+            {
+                DB = db,
+                Packages = packages,
+                KeyVs = vs,
+            };
+            Projection = Graph.Project();
+
+            bool hasUnreviewed = false;
+
+            Dictionary<int, bool> mapsTo = [];
+            for (int i = 0; i < packages.Count; i++)
+            {
+                if (packages[i].Key == vs.FhirPackageKey)
+                {
+                    if (hasUnreviewed == true)
+                    {
+                        continue;
+                    }
+
+                    if ((i > 0) &&
+                        Projection.Any(r => (r[i]?.LeftComparison != null) && (r[i]!.LeftComparison!.LastReviewedOn == null)))
+                    {
+                        hasUnreviewed = true;
+                    }
+
+                    if ((i < packages.Count - 1) &&
+                        Projection.Any(r => (r[i]?.RightComparison != null) && (r[i]!.RightComparison!.LastReviewedOn == null)))
+                    {
+                        hasUnreviewed = true;
+                    }
+
+                    continue;
+                }
+
+                mapsTo.Add(packages[i].Key, Projection.Any(r => r[i] != null) ? true : false);
+            }
+
+            MapsTo = mapsTo;
+            HasUnreviewed = hasUnreviewed;
+        }
+    }
+
+    private List<DbFhirPackage> _packages = [];
+
+    private int _totalValueSetCount = 0;
+    private VsRecForUi[] uiRecs = [];
+
+    private Lock _filterLock = new();
+    private IQueryable<VsRecForUi>? _filteredItems;
+
+    private PaginationState pagination = new PaginationState
+    {
+        ItemsPerPage = 25,
+    };
+
+    protected override async Task OnInitializedAsync()
+    {
+        NavTracker?.NotifyNav(_navPages);
+        await LoadValueSets();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await LoadValueSets();
+    }
+
+    private void LoadPackages()
+    {
+        try
+        {
+            _packages = DbFhirPackage.SelectList(
+                DbService.DB,
+                orderByProperties: [nameof(DbFhirPackage.ShortName)]);
+        }
+        catch (Exception)
+        {
+            _packages = [];
+        }
+    }
+
+    private void HandleNameFilterChanged(ChangeEventArgs args)
+    {
+        if (args.Value is string value)
+        {
+            nameFilter = value;
+            FilterItems();
+        }
+    }
+
+    private void HandleNameFilterClear()
+    {
+        if (string.IsNullOrWhiteSpace(nameFilter))
+        {
+            nameFilter = string.Empty;
+            FilterItems();
+        }
+    }
+
+    private void HandleUrlFilterChanged(ChangeEventArgs args)
+    {
+        if (args.Value is string value)
+        {
+            urlFilter = value;
+            FilterItems();
+        }
+    }
+
+    private void HandleUrlFilterClear()
+    {
+        if (string.IsNullOrWhiteSpace(nameFilter))
+        {
+            urlFilter = string.Empty;
+            FilterItems();
+        }
+    }
+
+    private void FilterItems()
+    {
+        lock (_filterLock)
+        {
+            _filteredItems = uiRecs
+                .Where(TestItem)
+                .AsQueryable();
+
+            pagination.SetTotalItemCountAsync(_filteredItems.Count(), true).Wait();
+
+            // if current page is now invalid, reset to first page
+            if (pagination.CurrentPageIndex > 0 &&
+                pagination.LastPageIndex.HasValue &&
+                pagination.CurrentPageIndex > pagination.LastPageIndex.Value)
+            {
+                pagination.SetCurrentPageIndexAsync(0).Wait();
+            }
+        }
+    }
+
+    private bool TestItem(VsRecForUi item)
+    {
+        if ((!string.IsNullOrEmpty(nameFilter)) &&
+            (!item.Vs.Name.Contains(nameFilter, StringComparison.OrdinalIgnoreCase)))
+        {
+            return false;
+        }
+
+        if ((!string.IsNullOrEmpty(urlFilter)) &&
+            (!item.Vs.VersionedUrl.Contains(urlFilter, StringComparison.OrdinalIgnoreCase)))
+        {
+            return false;
+        }
+
+        if (_onlyRequiredBindings &&
+            (item.Vs.StrongestBindingCore != Hl7.Fhir.Model.BindingStrength.Required))
+        {
+            return false;
+        }
+
+        if (_onlyUnreviewed && (item.HasUnreviewed == false))
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    private async Task LoadValueSets()
+    {
+        try
+        {
+            if (uiRecs.Length != 0)
+            {
+                return;
+            }
+
+            if (_packages.Count == 0)
+            {
+                LoadPackages();
+            }
+
+            // Query ValueSets for the specified FhirPackageKey
+            List<DbValueSet> valueSetsEnumerable = DbValueSet.SelectList(
+                DbService.DB,
+                FhirPackageKey: FhirPackageKey);
+
+            ConcurrentBag<VsRecForUi> cb = new();
+
+            Parallel.ForEach(
+                valueSetsEnumerable,
+                new ParallelOptions()
+                    {
+                        MaxDegreeOfParallelism = 3,
+                    },
+                (vs, cancellationToken) =>
+            {
+                VsRecForUi recForUi = new(DbService.DB, vs, _packages);
+                cb.Add(recForUi);
+            });
+
+            uiRecs = cb.ToArray();
+            _totalValueSetCount = uiRecs.Length;
+            FilterItems();
+        }
+        catch (Exception)
+        {
+            // uiRecs = Enumerable.Empty<VsRecForUi>().AsQueryable();
+        }
+    }
+}
