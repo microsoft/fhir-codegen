@@ -7,7 +7,7 @@ public record class VsRecForUi
 {
     public required DbGraphVs Graph { get; init; }
     public required DbValueSet Vs { get; init; }
-    public required List<DbVsCell?[]> Projection { get; init; }
+    public required List<DbVsRow> Projection { get; init; }
     public required Dictionary<int, bool> MapsTo { get; init; }
     public required bool HasUnreviewed { get; init; }
 

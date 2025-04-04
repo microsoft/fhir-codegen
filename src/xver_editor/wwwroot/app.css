@@ -313,3 +313,42 @@ fluent-number-field {
         .copy-click.is-copied:after {
             content: 'Copied!';
         }
+
+.grid-container {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.concept-popover-container {
+    max-height: 400px;
+    overflow-y: auto;
+    width: 1000px;
+}
+
+/* Apply alternating row colors */
+::deep .mapping-grid fluent-data-grid-row:nth-child(even) {
+    background-color: var(--neutral-layer-4);
+}
+
+/* Highlight hovered row */
+::deep .mapping-grid fluent-data-grid-row:hover {
+    background-color: var(--neutral-layer-hover);
+    cursor: pointer;
+}
+
+/* Add this to your style block */
+::deep .fluent-radio-group {
+    min-width: 250px;
+}
+
+::deep .fluent-radio {
+    margin-bottom: 4px;
+}
+
+::deep .popover-body {
+    padding: 12px;
+}

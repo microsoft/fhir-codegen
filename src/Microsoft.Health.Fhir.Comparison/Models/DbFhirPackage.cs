@@ -21,5 +21,11 @@ public partial class DbFhirPackage
     public required string ShortName { get; set; } = null!;
 
     public required Microsoft.Health.Fhir.CodeGenCommon.Packaging.FhirReleases.FhirSequenceCodes DefinitionFhirSequence { get; set; } = Microsoft.Health.Fhir.CodeGenCommon.Packaging.FhirReleases.FhirSequenceCodes.Unknown;
+
+    [CgSQLiteIgnore]
+    public string NpmId => (string.IsNullOrEmpty(PackageId) && string.IsNullOrEmpty(PackageVersion))
+    ? string.Empty
+    : $"{PackageId}@{PackageVersion}";
+
 }
 

@@ -5,8 +5,10 @@ using System.Data;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using fhir_codegen.SQLiteGenerator;
+using Hl7.Fhir.ElementModel.Types;
 using Microsoft.Data.Sqlite;
 
 
@@ -67,7 +69,7 @@ public partial class DbValueSet : DbCanonicalResource
 [CgSQLiteTable(tableName: "Concepts")]
 [CgSQLiteIndex(nameof(ValueSetKey), nameof(Inactive), nameof(Abstract))]
 [CgSQLiteIndex(nameof(ValueSetKey), nameof(System), nameof(Code))]
-public partial class DbValueSetConcept : DbPackageContent
+public partial class DbValueSetConcept : DbPackageContent, IEquatable<DbValueSetConcept>
 {
     [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
     public required int ValueSetKey { get; set; }
@@ -80,6 +82,72 @@ public partial class DbValueSetConcept : DbPackageContent
 
     [CgSQLiteIgnore]
     public string FhirKey => $"{System}#{Code}";
+
+    [CgSQLiteIgnore]
+    public string UiDisplay => (string.IsNullOrEmpty(Code) && string.IsNullOrEmpty(System))
+        ? "-"
+        : $"{Code} ({System})";
+
+    [CgSQLiteIgnore]
+    public string UiDisplayLong => (string.IsNullOrEmpty(Code) && string.IsNullOrEmpty(System))
+        ? "-"
+        : $"{Code} ({System}) - {Display}";
+
+    private static DbValueSetConcept _empty = EmptyCopy;
+
+    [CgSQLiteIgnore]
+    public static DbValueSetConcept Empty => _empty;
+
+    [CgSQLiteIgnore]
+    public static DbValueSetConcept EmptyCopy => new()
+    {
+        Key = -1,
+        FhirPackageKey = -1,
+        ValueSetKey = -1,
+        System = string.Empty,
+        Code = string.Empty,
+        Display = "No Concept Selected",
+        Inactive = false,
+        Abstract = false,
+        Properties = string.Empty,
+    };
+
+    bool IEquatable<DbValueSetConcept>.Equals(DbValueSetConcept? other)
+    {
+        if (other == null)
+        {
+            return false;
+        }
+
+        if (Key == -1)
+        {
+            return (System == other.System) && (Code == other.Code);
+        }
+
+        return Key == other.Key;
+    }
+
+    public override bool Equals(object? obj)
+    {
+        if (obj is not DbValueSetConcept other)
+        {
+            return false;
+        }
+
+        return ((IEquatable<DbValueSetConcept>)this).Equals(other);
+    }
+
+    public override int GetHashCode()
+    {
+        if (Key == -1)
+        {
+            return HashCode.Combine(System, Code);
+        }
+        else
+        {
+            return Key;
+        }
+    }
 }
 
 [CgSQLiteTable(tableName: "Structures")]

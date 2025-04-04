@@ -118,7 +118,7 @@
                                                     <div><strong>@cell.Vs.Name</strong></div>
                                                     <div>@cell.Vs.Id</div>
                                                     <div>
-                                                        <FluentBadge Appearance="@(cell.Vs.Key == ValueSetKey ? Appearance.Accent : Appearance.Neutral)">
+                                                        <FluentBadge Appearance="@(cell.Vs.Key == ValueSetKey ? Appearance.Outline : Appearance.Neutral)">
                                                             Concepts: @cell.Concepts.Count
                                                         </FluentBadge>
                                                     </div>
@@ -128,55 +128,50 @@
 
                                         @if (i < _packages.Count - 1)
                                         {
-                                            <TemplateColumn Title="Comparison">
+                                            <TemplateColumn Title="Comparison" TGridItem="DbVsRow">
                                                 @{
-                                                    (DbVsCell? cell, int cellIndex, DbValueSetComparison? toRight, DbValueSetComparison? fromRight) c = (
-                                                            context[packageIndex],
-                                                            packageIndex,
-                                                            context[packageIndex]?.RightComparison,
-                                                            packageIndex < _packages.Count - 1 ? context[packageIndex + 1]?.LeftComparison : null);
+                                                    DbVsCell? cell = context[packageIndex];
+                                                    int cellIndex = packageIndex;
+                                                    DbValueSetComparison? toRight = context[packageIndex]?.RightComparison;
+                                                    DbValueSetComparison? fromRight = packageIndex < _packages.Count - 1 ? context[packageIndex + 1]?.LeftComparison : null;
                                                 }
-                                                @if (c.cell != null)
+                                                @if (cell != null)
                                                 {
-                                                    @if (c.toRight != null)
+                                                    @if (toRight != null)
                                                     {
-                                                        <div>
-                                                            <FluentStack Orientation="Orientation.Vertical">
-                                                                <FluentIcon Value="@(new Icons.Regular.Size24.ArrowRight())" />
-                                                                <FluentBadge Appearance="@(c.toRight.LastReviewedOn == null ? Appearance.Accent : Appearance.Neutral)">
-                                                                    @(c.toRight.LastReviewedOn == null ? "Unreviewed" : "Reviewed")
-                                                                </FluentBadge>
-                                                                <FluentButton OnClick="@(() => SelectComparison(context, c.toRight, c.cellIndex, c.cellIndex + 1))"
-                                                                Appearance="Appearance.Outline" IconEnd="@(new Icons.Regular.Size16.WindowDevEdit())">
-                                                                    Details
-                                                                </FluentButton>
-                                                                <FluentLabel Typo="Typography.Body">DB Key: @c.toRight.Key</FluentLabel>
-                                                                <FluentLabel Typo="Typography.Body">@c.toRight.Relationship</FluentLabel>
-                                                                <FluentLabel Typo="Typography.Body">@(c.toRight.LastReviewedOn?.ToLongTimeString() ?? string.Empty)</FluentLabel>
-                                                                <FluentLabel Typo="Typography.Body">@(c.toRight.LastReviewedBy ?? string.Empty)</FluentLabel>
-                                                            </FluentStack>
-                                                        </div>
+                                                        <FluentStack Orientation="Orientation.Vertical">
+                                                            <FluentIcon Value="@(new Icons.Regular.Size24.ArrowRight())" />
+                                                            <FluentBadge Appearance="@(toRight.LastReviewedOn == null ? Appearance.Outline : Appearance.Neutral)">
+                                                                @(toRight.LastReviewedOn == null ? "Unreviewed" : "Reviewed")
+                                                            </FluentBadge>
+                                                            <FluentButton OnClick="@(() => SelectComparison(context, toRight, cellIndex, cellIndex + 1))"
+                                                            Appearance="Appearance.Outline" IconEnd="@(new Icons.Regular.Size16.WindowDevEdit())">
+                                                                Details
+                                                            </FluentButton>
+                                                            <FluentLabel Typo="Typography.Body">DB Key: @toRight.Key</FluentLabel>
+                                                            <FluentLabel Typo="Typography.Body">@toRight.Relationship</FluentLabel>
+                                                            <FluentLabel Typo="Typography.Body">@(toRight.LastReviewedOn?.ToLongTimeString() ?? string.Empty)</FluentLabel>
+                                                            <FluentLabel Typo="Typography.Body">@(toRight.LastReviewedBy ?? string.Empty)</FluentLabel>
+                                                        </FluentStack>
                                                     }
 
-                                                    @if (c.fromRight != null)
+                                                    @if (fromRight != null)
                                                     {
-                                                        <div>
-                                                            <FluentStack Orientation="Orientation.Vertical">
-                                                                <FluentIcon Value="@(new Icons.Regular.Size24.ArrowLeft())" />
-                                                                <FluentBadge Appearance="@(c.fromRight.LastReviewedOn == null ? Appearance.Accent : Appearance.Neutral)">
-                                                                    @(c.fromRight.LastReviewedOn == null ? "Unreviewed" : "Reviewed")
-                                                                </FluentBadge>
-                                                                <FluentButton OnClick="@(() => SelectComparison(context, c.fromRight, c.cellIndex + 1, c.cellIndex))"
-                                                                Appearance="Appearance.Outline"
-                                                                IconEnd="@(new Icons.Regular.Size16.WindowDevEdit())">
-                                                                    Details
-                                                                </FluentButton>
-                                                                <FluentLabel Typo="Typography.Body">DB Key: @c.fromRight.Key</FluentLabel>
-                                                                <FluentLabel Typo="Typography.Body">@c.fromRight.Relationship</FluentLabel>
-                                                                <FluentLabel Typo="Typography.Body">@(c.fromRight.LastReviewedOn?.ToLongTimeString() ?? string.Empty)</FluentLabel>
-                                                                <FluentLabel Typo="Typography.Body">@(c.fromRight.LastReviewedBy ?? string.Empty)</FluentLabel>
-                                                            </FluentStack>
-                                                        </div>
+                                                        <FluentStack Orientation="Orientation.Vertical">
+                                                            <FluentIcon Value="@(new Icons.Regular.Size24.ArrowLeft())" />
+                                                            <FluentBadge Appearance="@(fromRight.LastReviewedOn == null ? Appearance.Outline : Appearance.Neutral)">
+                                                                @(fromRight.LastReviewedOn == null ? "Unreviewed" : "Reviewed")
+                                                            </FluentBadge>
+                                                            <FluentButton OnClick="@(() => SelectComparison(context, fromRight, cellIndex + 1, cellIndex))"
+                                                            Appearance="Appearance.Outline"
+                                                            IconEnd="@(new Icons.Regular.Size16.WindowDevEdit())">
+                                                                Details
+                                                            </FluentButton>
+                                                            <FluentLabel Typo="Typography.Body">DB Key: @fromRight.Key</FluentLabel>
+                                                            <FluentLabel Typo="Typography.Body">@fromRight.Relationship</FluentLabel>
+                                                            <FluentLabel Typo="Typography.Body">@(fromRight.LastReviewedOn?.ToLongTimeString() ?? string.Empty)</FluentLabel>
+                                                            <FluentLabel Typo="Typography.Body">@(fromRight.LastReviewedBy ?? string.Empty)</FluentLabel>
+                                                        </FluentStack>
                                                     }
                                                 }
                                             </TemplateColumn>
@@ -191,10 +186,7 @@
             <FluentTab Id="comparisonDetails" Label="Comparison Details">
                 <FluentStack Orientation="Orientation.Vertical" VerticalGap="8">
                     <FluentLabel Typo="Typography.H5">Comparison Details</FluentLabel>
-
-                    @if ((selectedComparison == null) ||
-                    (comparisonSourceCell == null) ||
-                    (comparisonTargetCell == null))
+                    @if ((selectedComparison == null) || (csCell == null) || (ctCell == null))
                     {
                         <FluentCard>
                             <FluentLabel Typo="Typography.Body">Please select a comparison to review.</FluentLabel>
@@ -208,7 +200,7 @@
 
                             <FluentTextField Label="Comparison DB Key" Value="@selectedComparison.Key.ToString()" ReadOnly="true" />
 
-                            <FluentDataGrid GenerateHeader="GenerateHeaderOption.None" DisplayMode="DataGridDisplayMode.Table" TGridItem="string" role="grid" class="full-width">
+                            <FluentDataGrid GenerateHeader="GenerateHeaderOption.None" TGridItem="string" DisplayMode="DataGridDisplayMode.Table" role="grid" class="full-width">
                                 <FluentDataGridRow RowType="DataGridRowType.Header">
                                     <FluentDataGridCell GridColumn=1 CellType="DataGridCellType.ColumnHeader" Style="width: 20%;"></FluentDataGridCell>
                                     <FluentDataGridCell GridColumn=2 CellType="DataGridCellType.ColumnHeader" Style="width: 40%;">Source</FluentDataGridCell>
@@ -216,38 +208,38 @@
                                 </FluentDataGridRow>
                                 <FluentDataGridRow>
                                     <FluentDataGridCell GridColumn=1>Package</FluentDataGridCell>
-                                    <FluentDataGridCell GridColumn=2>@((comparisonSourcePackage?.PackageId ?? string.Empty) + (comparisonSourcePackage?.PackageVersion ?? string.Empty))</FluentDataGridCell>
-                                    <FluentDataGridCell GridColumn=3>@((comparisonTargetPackage?.PackageId ?? string.Empty) + (comparisonTargetPackage?.PackageVersion ?? string.Empty))</FluentDataGridCell>
+                                    <FluentDataGridCell GridColumn=2>@(csPackage?.NpmId ?? string.Empty)</FluentDataGridCell>
+                                    <FluentDataGridCell GridColumn=3>@(ctPackage?.NpmId ?? string.Empty)</FluentDataGridCell>
                                 </FluentDataGridRow>
                                 <FluentDataGridRow>
                                     <FluentDataGridCell GridColumn=1>Id</FluentDataGridCell>
-                                    <FluentDataGridCell GridColumn=2>@comparisonSourceCell.Vs.Id</FluentDataGridCell>
-                                    <FluentDataGridCell GridColumn=3>@comparisonTargetCell.Vs.Id</FluentDataGridCell>
+                                    <FluentDataGridCell GridColumn=2>@csCell.Vs.Id</FluentDataGridCell>
+                                    <FluentDataGridCell GridColumn=3>@ctCell.Vs.Id</FluentDataGridCell>
                                 </FluentDataGridRow>
                                 <FluentDataGridRow>
                                     <FluentDataGridCell GridColumn=1>Name</FluentDataGridCell>
-                                    <FluentDataGridCell GridColumn=2>@comparisonSourceCell.Vs.Name</FluentDataGridCell>
-                                    <FluentDataGridCell GridColumn=3>@comparisonTargetCell.Vs.Name</FluentDataGridCell>
+                                    <FluentDataGridCell GridColumn=2>@csCell.Vs.Name</FluentDataGridCell>
+                                    <FluentDataGridCell GridColumn=3>@ctCell.Vs.Name</FluentDataGridCell>
                                 </FluentDataGridRow>
                                 <FluentDataGridRow>
                                     <FluentDataGridCell GridColumn=1>URL</FluentDataGridCell>
-                                    <FluentDataGridCell GridColumn=2>@comparisonSourceCell.Vs.UnversionedUrl</FluentDataGridCell>
-                                    <FluentDataGridCell GridColumn=3>@comparisonTargetCell.Vs.UnversionedUrl</FluentDataGridCell>
+                                    <FluentDataGridCell GridColumn=2>@csCell.Vs.UnversionedUrl</FluentDataGridCell>
+                                    <FluentDataGridCell GridColumn=3>@ctCell.Vs.UnversionedUrl</FluentDataGridCell>
                                 </FluentDataGridRow>
                                 <FluentDataGridRow>
                                     <FluentDataGridCell GridColumn=1>Version</FluentDataGridCell>
-                                    <FluentDataGridCell GridColumn=2>@comparisonSourceCell.Vs.Version</FluentDataGridCell>
-                                    <FluentDataGridCell GridColumn=3>@comparisonTargetCell.Vs.Version</FluentDataGridCell>
+                                    <FluentDataGridCell GridColumn=2>@csCell.Vs.Version</FluentDataGridCell>
+                                    <FluentDataGridCell GridColumn=3>@ctCell.Vs.Version</FluentDataGridCell>
                                 </FluentDataGridRow>
                                 <FluentDataGridRow>
                                     <FluentDataGridCell GridColumn=1>Concept Count</FluentDataGridCell>
-                                    <FluentDataGridCell GridColumn=2>@comparisonSourceCell.Vs.ConceptCount</FluentDataGridCell>
-                                    <FluentDataGridCell GridColumn=3>@comparisonTargetCell.Vs.ConceptCount</FluentDataGridCell>
+                                    <FluentDataGridCell GridColumn=2>@csCell.Vs.ConceptCount</FluentDataGridCell>
+                                    <FluentDataGridCell GridColumn=3>@ctCell.Vs.ConceptCount</FluentDataGridCell>
                                 </FluentDataGridRow>
                                 <FluentDataGridRow>
                                     <FluentDataGridCell GridColumn=1>Active and Concrete</FluentDataGridCell>
-                                    <FluentDataGridCell GridColumn=2>@comparisonSourceCell.Vs.ActiveConcreteConceptCount</FluentDataGridCell>
-                                    <FluentDataGridCell GridColumn=3>@comparisonTargetCell.Vs.ActiveConcreteConceptCount</FluentDataGridCell>
+                                    <FluentDataGridCell GridColumn=2>@csCell.Vs.ActiveConcreteConceptCount</FluentDataGridCell>
+                                    <FluentDataGridCell GridColumn=3>@ctCell.Vs.ActiveConcreteConceptCount</FluentDataGridCell>
                                 </FluentDataGridRow>
                             </FluentDataGrid>
                         </FluentCard>
@@ -256,39 +248,132 @@
                             <FluentLabel Typo="Typography.H5">Concept Mapping</FluentLabel>
                             <br />
                             <div class="grid-container">
-                                <FluentDataGrid Items="conceptProjection" ShowHover="true" DisplayMode="DataGridDisplayMode.Table" role="grid" >
-                                    <PropertyColumn Title="Source System" Property="@(e => e[csIndex]!.Concept.System)" Sortable="true" />
-                                    <PropertyColumn Title="Source Code" Property="@(e => e[csIndex]!.Concept.Code)" Sortable="true" />
+                                <FluentDataGrid Items="conceptProjection" ShowHover="true" class="mapping-grid" RowSize="@DataGridRowSize.Large" GridTemplateColumns="2fr 0.5fr 1fr 2fr" >
+                                    <TemplateColumn Title="Source" Sortable="true" Tooltip="true" TooltipText="@(e => e[sourceColIndex]!.Concept.Display ?? e[sourceColIndex]!.Concept.FhirKey)">
+                                        <FluentLabel Typo="Typography.Body">@context[sourceColIndex]!.Concept.UiDisplay</FluentLabel>
+                                    </TemplateColumn>
 
                                     <TemplateColumn Title="NoMap" Sortable="false">
-                                        @if (cRight)
+                                        @if (compareRight)
                                         {
-                                            <FluentCheckbox Value="@(context[csIndex]!.RightComparison?.NoMap ?? true)" />
+                                            <FluentCheckbox Value="@(context[sourceColIndex]!.RightComparison?.NoMap ?? true)" />
                                         }
                                         else
                                         {
-                                            <FluentCheckbox Value="@(context[csIndex]!.LeftComparison?.NoMap ?? true)" />
+                                            <FluentCheckbox Value="@(context[sourceColIndex]!.LeftComparison?.NoMap ?? true)" />
                                         }
                                     </TemplateColumn>
 
                                     <TemplateColumn Title="Relationship" Sortable="false">
-                                        @if (cRight)
+                                        @if (compareRight)
                                         {
-                                            <FluentLabel Typo="Typography.Body">@(context[csIndex]!.RightComparison?.Relationship.ToString() ?? string.Empty)</FluentLabel>
+                                            var rowKey = $"right-{context[sourceColIndex]!.Concept.Key}";
+                                            var relationship = context[sourceColIndex]!.RightComparison?.Relationship ?? Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo;
+                                            <div>
+                                                <FluentButton Id="@($"rel-btn-{rowKey}")"
+                                                              Appearance="Appearance.Outline"
+                                                              OnClick="@(() => TogglePopover(rowKey))">
+                                                    @relationship.ToString()
+                                                </FluentButton>
+
+                                                <FluentPopover AnchorId="@($"rel-btn-{rowKey}")"
+                                                        VerticalPosition="VerticalPosition.Bottom"
+                                                        Open="@IsPopoverOpen(rowKey)"
+                                                        OpenChanged="@((value) => SetPopoverState(rowKey, value))">
+                                                    <Header>
+                                                        <FluentLabel Typo="Typography.Body">Select Relationship</FluentLabel>
+                                                    </Header>
+                                                    <Body>
+                                                        <FluentStack Orientation="Orientation.Vertical" VerticalGap="4">
+                                                            <FluentRadioGroup Value="@relationship"
+                                                                    Name="@($"rel-group-{rowKey}")"
+                                                                    Orientation="Orientation.Vertical"
+                                                                    ValueChanged="@(EventCallback.Factory.Create<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship>(this, (value) => UpdateRelationship(context, value, true)))">
+                                                                @foreach (var rel in _relationships)
+                                                                {
+                                                                    <FluentRadio Value="@rel">@rel.ToString()</FluentRadio>
+                                                                }
+                                                            </FluentRadioGroup>
+                                                        </FluentStack>
+                                                    </Body>
+                                                </FluentPopover>
+                                            </div>
                                         }
                                         else
                                         {
-                                            <FluentLabel Typo="Typography.Body">@(context[csIndex]!.LeftComparison?.Relationship.ToString() ?? string.Empty)</FluentLabel>
+                                            var rowKey = $"left-{context[sourceColIndex]!.Concept.Key}";
+                                            var relationship = context[sourceColIndex]!.LeftComparison?.Relationship ?? Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo;
+                                            <div>
+                                                <FluentButton Id="@($"rel-btn-{rowKey}")"
+                                                              Appearance="Appearance.Outline"
+                                                              OnClick="@(() => TogglePopover(rowKey))">
+                                                    @relationship.ToString()
+                                                </FluentButton>
+
+                                                <FluentPopover AnchorId="@($"rel-btn-{rowKey}")"
+                                                               VerticalPosition="VerticalPosition.Bottom"
+                                                               Open="@IsPopoverOpen(rowKey)"
+                                                               OpenChanged="@((value) => SetPopoverState(rowKey, value))">
+                                                    <Header>
+                                                        <FluentLabel Typo="Typography.Body">Select Relationship</FluentLabel>
+                                                    </Header>
+                                                    <Body>
+                                                        <FluentStack Orientation="Orientation.Vertical" VerticalGap="4">
+                                                            <FluentRadioGroup Value="@relationship"
+                                                            Name="@($"rel-group-{rowKey}")"
+                                                            Orientation="Orientation.Vertical"
+                                                            ValueChanged="@(EventCallback.Factory.Create<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship>(this, (value) => UpdateRelationship(context, value, false)))">
+                                                                @foreach (var rel in _relationships)
+                                                                {
+                                                                    <FluentRadio Value="@rel">@rel.ToString()</FluentRadio>
+                                                                }
+                                                            </FluentRadioGroup>
+                                                        </FluentStack>
+                                                    </Body>
+                                                </FluentPopover>
+                                            </div>
                                         }
                                     </TemplateColumn>
 
-                                    <TemplateColumn Title="Target System" Sortable="true">
-                                        <FluentLabel Typo="Typography.Body">@(context[ctIndex]?.Concept.System ?? string.Empty)</FluentLabel>
+                                    <TemplateColumn Title="Target" Sortable="true" Tooltip="true" TooltipText="@(e => e[targetColIndex]!.Concept.Display ?? e[targetColIndex]!.Concept.FhirKey)">
+                                        @{
+                                            var rowKey = $"target-{context[sourceColIndex]!.Concept.Key}";
+                                            var concept = context[targetColIndex]!.Concept;
+                                            <div>
+                                                <FluentButton Id="@($"target-btn-{rowKey}")"
+                                                        Appearance="Appearance.Outline"
+                                                        OnClick="@(() => TogglePopover(rowKey))">
+                                                    @concept.UiDisplay
+                                                </FluentButton>
+
+                                                <FluentPopover AnchorId="@($"target-btn-{rowKey}")"
+                                                               VerticalPosition="VerticalPosition.Bottom"
+                                                               Open="@IsPopoverOpen(rowKey)"
+                                                               OpenChanged="@((value) => SetPopoverState(rowKey, value))"
+                                                               class="concept-popover-container">
+                                                    <Header>
+                                                        <FluentLabel Typo="Typography.Body">Select Target Concept</FluentLabel>
+                                                    </Header>
+                                                    <Body>
+                                                        <FluentStack Orientation="Orientation.Vertical" VerticalGap="4">
+                                                            <FluentRadioGroup
+                                                                    Value="@concept.Key"
+                                                                    Name="@($"target-group-{rowKey}")"
+                                                                    Orientation="Orientation.Vertical"
+                                                                    ValueChanged="@(EventCallback.Factory.Create<int>(this, (value) => UpdateTargetConcept(context, value)))">
+                                                                @foreach (var cpt in ctConcepts)
+                                                                {
+                                                                    <FluentRadio Value="@cpt.Key">@cpt.UiDisplayLong</FluentRadio>
+                                                                }
+                                                            </FluentRadioGroup>
+                                                        </FluentStack>
+                                                    </Body>
+                                                </FluentPopover>
+                                            </div>
+                                        }
                                     </TemplateColumn>
 
-                                    <TemplateColumn Title="Target Code" Sortable="true">
-                                        <FluentLabel Typo="Typography.Body">@(context[ctIndex]?.Concept.Code ?? string.Empty)</FluentLabel>
-                                    </TemplateColumn>
+
                                 </FluentDataGrid>
                             </div>
                         </FluentCard>
@@ -299,29 +384,6 @@
         </FluentTabs>
     }
 </FluentStack>
-
-<style>
-    .grid-container {
-    margin-top: 1rem;
-    width: 100%;
-    }
-
-    .full-width {
-    width: 100%;
-    }
-
-    /* Apply alternating row colors */
-    ::deep .alternating-grid fluent-data-grid-row:nth-child(even) {
-    background-color: var(--neutral-layer-4);
-    }
-
-    /* Highlight hovered row */
-    ::deep .alternating-grid fluent-data-grid-row:hover {
-    background-color: var(--neutral-layer-hover);
-    cursor: pointer;
-    }
-</style>
-
 
 @code {
     [Parameter]
@@ -354,18 +416,27 @@
     private List<DbFhirPackage> _packages = [];
     private IQueryable<DbElement> _boundElements = Enumerable.Empty<DbElement>().AsQueryable();
     private Dictionary<int, DbStructureDefinition> _boundStructures = [];
-    private IQueryable<DbVsCell?[]>? graphProjection = null;
+    private IQueryable<DbVsRow>? graphProjection = null;
 
-    private DbVsCell?[] comparisonFilteredVsRow = [];
+    private Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship[] _relationships = [
+        Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.Equivalent,
+        Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget,
+        Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget,
+        Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.RelatedTo,
+        Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo,
+    ];
+
+    private DbVsRow comparisonFilteredVsRow = new(0, 0);
     private DbValueSetComparison? selectedComparison = null;
-    private int csIndex = 0;
-    private int ctIndex = 0;
-    private DbVsCell? comparisonSourceCell = null;
-    private DbVsCell? comparisonTargetCell = null;
-    private DbFhirPackage? comparisonSourcePackage = null;
-    private DbFhirPackage? comparisonTargetPackage = null;
-    private IQueryable<DbVsConceptCell?[]> conceptProjection = Enumerable.Empty<DbVsConceptCell?[]>().AsQueryable();
-    private bool cRight = true;
+    private int sourceColIndex = 0;
+    private int targetColIndex = 0;
+    private DbVsCell? csCell = null;
+    private DbVsCell? ctCell = null;
+    private DbFhirPackage? csPackage = null;
+    private DbFhirPackage? ctPackage = null;
+    private IQueryable<DbVsConceptRow> conceptProjection = Enumerable.Empty<DbVsConceptRow>().AsQueryable();
+    private bool compareRight = true;
+    private List<DbValueSetConcept> ctConcepts = [];
 
     protected override void OnInitialized()
     {
@@ -405,29 +476,125 @@
         return sb.ToString();
     }
 
+
+    // Track open state of popovers
+    private Dictionary<string, bool> _popoverStates = new();
+
+    private bool IsPopoverOpen(string key)
+    {
+        return _popoverStates.TryGetValue(key, out bool value) && value;
+    }
+
+    private void SetPopoverState(string key, bool value)
+    {
+        _popoverStates[key] = value;
+        StateHasChanged();
+    }
+
+    private void TogglePopover(string key)
+    {
+        if (!_popoverStates.TryGetValue(key, out bool currentValue))
+        {
+            currentValue = false;
+        }
+        _popoverStates[key] = !currentValue;
+        StateHasChanged();
+    }
+
+    private void UpdateRelationship(DbVsConceptRow conceptRow, object? newRelationship, bool isRightComparison)
+    {
+        if (newRelationship is Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship relationship &&
+            conceptRow != null &&
+            conceptRow[sourceColIndex] != null)
+        {
+            if (isRightComparison && conceptRow[sourceColIndex]!.RightComparison != null)
+            {
+                conceptRow[sourceColIndex]!.RightComparison!.Relationship = relationship;
+            }
+            else if (!isRightComparison && conceptRow[sourceColIndex]!.LeftComparison != null)
+            {
+                conceptRow[sourceColIndex]!.LeftComparison!.Relationship = relationship;
+            }
+
+            // Close the popover after selection
+            string key = isRightComparison
+                ? $"right-{conceptRow[sourceColIndex]!.Concept.Key}"
+                : $"left-{conceptRow[sourceColIndex]!.Concept.Key}";
+            SetPopoverState(key, false);
+        }
+    }
+
+    private void UpdateTargetConcept(DbVsConceptRow conceptRow, int conceptKey)
+    {
+        if ((conceptRow != null) &&
+            (conceptRow[targetColIndex] != null) &&
+            (ctConcepts.Find(c => c.Key == conceptKey) is DbValueSetConcept newConcept))
+        {
+            // Update the concept in the target cell
+            conceptRow[targetColIndex]!.Concept = newConcept;
+
+            // Close the popover after selection
+            string key = $"target-{conceptRow[sourceColIndex]!.Concept.Key}";
+            SetPopoverState(key, false);
+            StateHasChanged();
+        }
+    }
+
     private void SelectComparison(
-        DbVsCell?[] valueSetRow,
+        DbVsRow valueSetRow,
         DbValueSetComparison comparison,
         int sourceCellIndex,
         int targetCellIndex)
     {
-        comparisonFilteredVsRow = new DbVsCell?[valueSetRow.Length];
-        comparisonFilteredVsRow[sourceCellIndex] = valueSetRow[sourceCellIndex];
-        comparisonFilteredVsRow[targetCellIndex] = valueSetRow[targetCellIndex];
+        comparisonFilteredVsRow = valueSetRow.ShallowCopy(sourceCellIndex, targetCellIndex);
 
-        cRight = sourceCellIndex < targetCellIndex;
+        compareRight = sourceCellIndex < targetCellIndex;
         selectedComparison = comparison;
 
-        csIndex = sourceCellIndex;
-        comparisonSourceCell = valueSetRow[sourceCellIndex];
-        comparisonSourcePackage = _packages[sourceCellIndex];
+        sourceColIndex = sourceCellIndex;
+        csCell = valueSetRow[sourceCellIndex];
+        csPackage = _packages[sourceCellIndex];
 
-        ctIndex = targetCellIndex;
-        comparisonTargetCell = valueSetRow[targetCellIndex];
-        comparisonTargetPackage = _packages[targetCellIndex];
+        targetColIndex = targetCellIndex;
+        ctCell = valueSetRow[targetCellIndex];
+        ctPackage = _packages[targetCellIndex];
 
+        ctConcepts = DbValueSetConcept.SelectList(
+            DbService.DB,
+            FhirPackageKey: ctCell!.Vs.FhirPackageKey,
+            ValueSetKey: ctCell!.Vs.Key,
+            orderByProperties: [nameof(DbValueSetConcept.System), nameof(DbValueSetConcept.Code)]);
 
-        conceptProjection = (vsUiRec?.Graph.ProjectConcepts(comparisonFilteredVsRow, sourceCellIndex) ?? []).AsQueryable();
+        // grab the current projection
+        List<DbVsConceptRow> cp = vsUiRec!.Graph.ProjectConcepts(comparisonFilteredVsRow, sourceCellIndex);
+
+        // make sure we have cells for targets
+        foreach (DbVsConceptRow conceptRow in cp)
+        {
+            if (conceptRow[targetColIndex] == null)
+            {
+                conceptRow[targetColIndex] = new()
+                {
+                    VsCell = valueSetRow[targetCellIndex]!,
+                    Concept = DbValueSetConcept.EmptyCopy,
+                };
+
+                if (compareRight)
+                {
+                    conceptRow[targetColIndex]!.LeftCell = conceptRow[sourceColIndex];
+                    conceptRow[targetColIndex]!.LeftComparison = DbValueSetConceptComparison.EmptyCopy;
+                    conceptRow[targetColIndex]!.LeftConcept = conceptRow[sourceColIndex]!.Concept;
+                }
+                else
+                {
+                    conceptRow[targetColIndex]!.RightCell = conceptRow[sourceColIndex];
+                    conceptRow[targetColIndex]!.RightComparison = DbValueSetConceptComparison.EmptyCopy;
+                    conceptRow[targetColIndex]!.RightConcept = conceptRow[sourceColIndex]!.Concept;
+                }
+            }
+        }
+
+        conceptProjection = cp.AsQueryable();
 
         activeTabId = "comparisonDetails";
         StateHasChanged();

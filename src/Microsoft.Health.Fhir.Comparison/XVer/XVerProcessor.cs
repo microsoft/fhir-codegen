@@ -896,7 +896,7 @@ public class XVerProcessor
             };
 
             // project this value set based on comparisons
-            List<DbVsCell?[]> projection = vsGraph.Project();
+            List<DbVsRow> projection = vsGraph.Project();
 
             // get the overview entry for this value set
             string content = getMdOverviewEntry(packages, package, vs, projection);
@@ -950,7 +950,7 @@ public class XVerProcessor
         List<DbFhirPackage> packages,
         DbFhirPackage package,
         DbValueSet vs,
-        List<DbVsCell?[]> projection)
+        List<DbVsRow> projection)
     {
         List<string> mapsTo = [];
         for (int i = 0; i < packages.Count; i++)
@@ -1046,7 +1046,7 @@ public class XVerProcessor
         int keyPackageColIndex,
         DbValueSet keyVs,
         DbGraphVs vsGraph,
-        List<DbVsCell?[]> projection)
+        List<DbVsRow> projection)
     {
         writer.WriteLine($"""
             ### {keyVs.Name}
@@ -1175,7 +1175,7 @@ public class XVerProcessor
         writer.WriteLine("| " + string.Join(" | Comparison | ", allKeys.Select(v => v.key)));
         writeTableColumns(writer, "---", byTwoColumnCount, appendNewline: true);
 
-        foreach (DbVsCell?[] row in projection)
+        foreach (DbVsRow row in projection)
         {
             int column = -1;
             // traverse columns
@@ -1221,7 +1221,7 @@ public class XVerProcessor
         //    ValueSetKey: keyVs.Key,
         //    orderByProperties: [nameof(DbValueSetConcept.System), nameof(DbValueSetConcept.Code)]);
 
-        foreach (DbVsCell?[] valueSetRow in projection)
+        foreach (DbVsRow valueSetRow in projection)
         {
             if (valueSetRow[keyPackageColIndex] == null)
             {
@@ -1263,13 +1263,13 @@ public class XVerProcessor
             writer.WriteLine();
             writeTableColumns(writer, "---", byTwoColumnCount, appendNewline: true);
 
-            List<DbVsConceptCell?[]> conceptProjection = vsGraph.ProjectConcepts(valueSetRow);
+            List<DbVsConceptRow> conceptProjection = vsGraph.ProjectConcepts(valueSetRow);
 
             HashSet<string>[] codesPerVs = packages.Select(_ => new HashSet<string>()).ToArray();
             string? lastSystem = null;
 
             // iterate over the components in the concept projection
-            foreach (DbVsConceptCell?[] conceptRow in conceptProjection)
+            foreach (DbVsConceptRow conceptRow in conceptProjection)
             {
                 if (conceptRow[keyPackageColIndex]?.Concept.System != lastSystem)
                 {

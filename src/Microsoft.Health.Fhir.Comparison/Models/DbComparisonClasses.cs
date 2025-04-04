@@ -108,6 +108,35 @@ public partial class DbValueSetComparison : DbPackageComparisonContent, IDbPacka
     [CgSQLiteIgnore]
     public int? TargetContentKey => TargetValueSetKey;
 
+    private static DbValueSetComparison _empty = EmptyCopy;
+
+    [CgSQLiteIgnore]
+    public static DbValueSetComparison Empty => _empty;
+
+    [CgSQLiteIgnore]
+    public static DbValueSetComparison EmptyCopy => new()
+    {
+        Key = -1,
+        PackageComparisonKey = -1,
+        SourceFhirPackageKey = -1,
+        SourceValueSetKey = -1,
+        SourceCanonicalVersioned = string.Empty,
+        SourceCanonicalUnversioned = string.Empty,
+        SourceName = string.Empty,
+        SourceVersion = string.Empty,
+        TargetFhirPackageKey = -1,
+        TargetValueSetKey = null,
+        TargetCanonicalVersioned = null,
+        TargetCanonicalUnversioned = null,
+        TargetName = null,
+        TargetVersion = null,
+        CompositeName = string.Empty,
+        SourceConceptMapUrl = null,
+        SourceConceptMapAdditionalUrls = null,
+        Relationship = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo,
+        Message = null,
+        IsGenerated = false,
+    };
 }
 
 [CgSQLiteTable(tableName: "ConceptComparisons")]
@@ -138,6 +167,30 @@ public partial class DbValueSetConceptComparison : DbPackageComparisonContent, I
     public int SourceContentKey => SourceConceptKey;
     [CgSQLiteIgnore]
     public int? TargetContentKey => TargetConceptKey;
+
+
+    private static DbValueSetConceptComparison _empty = EmptyCopy;
+
+    [CgSQLiteIgnore]
+    public static DbValueSetConceptComparison Empty => _empty;
+
+    [CgSQLiteIgnore]
+    public static DbValueSetConceptComparison EmptyCopy => new()
+    {
+        Key = -1,
+        PackageComparisonKey = -1,
+        ValueSetComparisonKey = -1,
+        SourceFhirPackageKey = -1,
+        SourceValueSetKey = -1,
+        SourceConceptKey = -1,
+        TargetFhirPackageKey = -1,
+        TargetValueSetKey = null,
+        TargetConceptKey = null,
+        Relationship = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo,
+        Message = null,
+        NoMap = null,
+        IsGenerated = false,
+    };
 
 }
 

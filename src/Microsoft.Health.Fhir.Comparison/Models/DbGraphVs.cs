@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Hl7.Fhir.ElementModel.Types;
@@ -36,6 +38,100 @@ public record class DbVsCell : ICloneable
     object ICloneable.Clone() => this with { };
 }
 
+public class DbVsRow : IEnumerable<DbVsCell?>
+{
+    private readonly int _keyCol;
+    private readonly DbVsCell?[] _cells;
+
+    public DbVsRow(DbVsCell?[] cells)
+    {
+        _cells = cells;
+        _keyCol = Array.FindIndex(cells, cell => cell != null);
+    }
+    public DbVsRow(DbVsCell?[] cells, int keyCol = -1)
+    {
+        _cells = cells;
+        _keyCol = keyCol;
+    }
+    public DbVsRow(int size, int keyCol)
+    {
+        _cells = new DbVsCell?[size];
+        _keyCol = keyCol;
+    }
+
+    public int KeyCol => _keyCol;
+    public DbVsCell? KeyCell => _keyCol >= 0 ? _cells[_keyCol] : null;
+    public DbVsCell?[] Cells => _cells;
+
+    public int Length => _cells.Length;
+
+    // Add indexer to access cells directly
+    public DbVsCell? this[int index]
+    {
+        get
+        {
+            if (index >= 0 && index < _cells.Length)
+                return _cells[index];
+
+            return null;
+        }
+        set
+        {
+            if (index >= 0 && index < _cells.Length)
+                _cells[index] = value;
+        }
+    }
+
+    // Indexer to find a cell by package
+    public DbVsCell? this[DbFhirPackage package]
+    {
+        get
+        {
+            if (package == null)
+                return null;
+
+            return _cells.FirstOrDefault(cell =>
+                cell?.FhirPackage != null && cell.FhirPackage.Key == package.Key);
+        }
+    }
+
+    public DbVsRow DeepCopy()
+    {
+        DbVsCell?[] cells = new DbVsCell?[_cells.Length];
+        for (int i = 0; i < _cells.Length; i++)
+        {
+            cells[i] = _cells[i] == null ? null : _cells[i]! with { };
+        }
+        return new DbVsRow(cells, KeyCol);
+    }
+
+    public DbVsRow ShallowCopy()
+    {
+        DbVsCell?[] cells = new DbVsCell?[_cells.Length];
+        for (int i = 0; i < _cells.Length; i++)
+        {
+            cells[i] = _cells[i];
+        }
+        return new DbVsRow(cells, KeyCol);
+    }
+
+    public DbVsRow ShallowCopy(params int[] onlyCopyRows)
+    {
+        DbVsCell?[] cells = new DbVsCell?[_cells.Length];
+        for (int i = 0; i < _cells.Length; i++)
+        {
+            if (onlyCopyRows.Contains(i))
+                cells[i] = _cells[i];
+            else
+                cells[i] = null;
+        }
+        return new DbVsRow(cells, KeyCol);
+    }
+
+    public IEnumerator<DbVsCell?> GetEnumerator() => ((IEnumerable<DbVsCell?>)_cells).GetEnumerator();
+    IEnumerator IEnumerable.GetEnumerator() => _cells.GetEnumerator();
+}
+
 public record class DbVsConceptCell : ICloneable
 {
     public required DbVsCell VsCell { get; set; }
@@ -52,6 +148,96 @@ public record class DbVsConceptCell : ICloneable
     object ICloneable.Clone() => this with { };
 }
 
+public class DbVsConceptRow : IEnumerable<DbVsConceptCell?>
+{
+    private readonly int _keyCol;
+    private readonly DbVsConceptCell?[] _cells;
+
+    public DbVsConceptRow(DbVsConceptCell?[] cells)
+    {
+        _cells = cells;
+        _keyCol = Array.FindIndex(cells, cell => cell != null);
+    }
+    public DbVsConceptRow(DbVsConceptCell?[] cells, int keyCol = -1)
+    {
+        _cells = cells;
+        _keyCol = keyCol;
+    }
+    public DbVsConceptRow(int size, int keyCol)
+    {
+        _cells = new DbVsConceptCell?[size];
+        _keyCol = keyCol;
+    }
+
+    public int KeyCol => _keyCol;
+    public DbVsConceptCell? KeyCell => _keyCol >= 0 ? _cells[_keyCol] : null;
+    public DbVsConceptCell?[] Cells => _cells;
+    public int Length => _cells.Length;
+
+    // Add indexer to access cells directly
+    public DbVsConceptCell? this[int index]
+    {
+        get
+        {
+            if (index >= 0 && index < _cells.Length)
+                return _cells[index];
+            return null;
+        }
+        set
+        {
+            if (index >= 0 && index < _cells.Length)
+                _cells[index] = value;
+        }
+    }
+    // Indexer to find a cell by package
+    public DbVsConceptCell? this[DbFhirPackage package]
+    {
+        get
+        {
+            if (package == null)
+                return null;
+            return _cells.FirstOrDefault(cell =>
+                cell?.VsCell.FhirPackage != null && cell.VsCell.FhirPackage.Key == package.Key);
+        }
+    }
+
+    public DbVsConceptRow DeepCopy()
+    {
+        DbVsConceptCell?[] cells = new DbVsConceptCell?[_cells.Length];
+        for (int i = 0; i < _cells.Length; i++)
+        {
+            cells[i] = _cells[i] == null ? null : _cells[i]! with { };
+        }
+        return new DbVsConceptRow(cells, KeyCol);
+    }
+
+    public DbVsConceptRow ShallowCopy()
+    {
+        DbVsConceptCell?[] cells = new DbVsConceptCell?[_cells.Length];
+        for (int i = 0; i < _cells.Length; i++)
+        {
+            cells[i] = _cells[i];
+        }
+        return new DbVsConceptRow(cells, KeyCol);
+    }
+
+    public DbVsConceptRow ShallowCopy(params int[] onlyCopyRows)
+    {
+        DbVsConceptCell?[] cells = new DbVsConceptCell?[_cells.Length];
+        for (int i = 0; i < _cells.Length; i++)
+        {
+            if (onlyCopyRows.Contains(i))
+                cells[i] = _cells[i];
+            else
+                cells[i] = null;
+        }
+        return new DbVsConceptRow(cells, KeyCol);
+    }
+
+    public IEnumerator<DbVsConceptCell?> GetEnumerator() => ((IEnumerable<DbVsConceptCell?>)_cells).GetEnumerator();
+    IEnumerator IEnumerable.GetEnumerator() => _cells.GetEnumerator();
+}
+
 public class DbGraphVs
 {
     private readonly IDbConnection _db = null!;
@@ -63,10 +249,12 @@ public class DbGraphVs
     public required List<DbFhirPackage> Packages { get => _packages; init => _packages = value; }
     public required DbValueSet KeyVs { get => _keyVs; init => _keyVs = value; }
 
-    public List<DbVsCell?[]> Project()
+    public List<DbVsRow> Project()
     {
-        DbVsCell?[] row = new DbVsCell?[_packages.Count];
         int startCol = _packages.FindIndex((fp) => fp.Key == _keyVs.FhirPackageKey);
+        _keyCol = startCol;
+
+        DbVsRow row = new DbVsRow(_packages.Count, _keyCol);
         row[startCol] = new()
         {
             FhirPackage = _packages[startCol],
@@ -74,9 +262,7 @@ public class DbGraphVs
             Concepts = DbValueSetConcept.SelectList(_db, ValueSetKey: _keyVs.Key),
         };
 
-        _keyCol = startCol;
-
-        List<DbVsCell?[]> right = [];
+        List<DbVsRow> right = [];
 
         // project right
         if (startCol < _packages.Count)
@@ -90,10 +276,10 @@ public class DbGraphVs
             return right;
         }
 
-        List<DbVsCell?[]> results = [];
+        List<DbVsRow> results = [];
 
         // project left
-        foreach (DbVsCell?[] r in right)
+        foreach (DbVsRow r in right)
         {
             results.AddRange(projectVs(r, startCol, false));
         }
@@ -101,8 +287,8 @@ public class DbGraphVs
         return results;
     }
 
-    private List<DbVsCell?[]> projectVs(
-        DbVsCell?[] incomingRow,
+    private List<DbVsRow> projectVs(
+        DbVsRow incomingRow,
         int column,
         bool projectRight)
     {
@@ -129,7 +315,7 @@ public class DbGraphVs
             return [incomingRow];
         }
 
-        List<DbVsCell?[]> results = [];
+        List<DbVsRow> results = [];
 
         // iterate over our neighbors
         foreach (DbValueSetComparison edge in edges)
@@ -138,7 +324,7 @@ public class DbGraphVs
                 ? null
                 : DbValueSetComparison.SelectSingle(_db, Key: edge.InverseComparisonKey);
 
-            DbVsCell?[] row = edges.Count == 1 ? incomingRow : (DbVsCell?[])incomingRow.Clone();
+            DbVsRow row = edges.Count == 1 ? incomingRow : incomingRow.DeepCopy();
             if (projectRight == true)
             {
                 row[nextCol] = new()
@@ -173,7 +359,7 @@ public class DbGraphVs
             }
 
             // recurse
-            List<DbVsCell?[]> next = projectVs(row, nextCol, projectRight);
+            List<DbVsRow> next = projectVs(row, nextCol, projectRight);
 
             // combine results
             results.AddRange(next);
@@ -182,7 +368,7 @@ public class DbGraphVs
         return results;
     }
 
-    public List<DbVsConceptCell?[]> ProjectConcepts(DbVsCell?[] vsRow, int? keyColumnIndex = null)
+    public List<DbVsConceptRow> ProjectConcepts(DbVsRow vsRow, int? keyColumnIndex = null)
     {
         int keyColIndex = keyColumnIndex ??= _keyCol;
 
@@ -196,12 +382,12 @@ public class DbGraphVs
             return [];
         }
 
-        List<DbVsConceptCell?[]> results = [];
+        List<DbVsConceptRow> results = [];
 
         // iterate over the concepts for this value set
         foreach (DbValueSetConcept concept in vsRow[keyColIndex]!.Concepts)
         {
-            DbVsConceptCell?[] row = new DbVsConceptCell?[_packages.Count];
+            DbVsConceptRow row = new(_packages.Count, _keyCol);
 
             int startCol = keyColIndex;
             row[startCol] = new()
@@ -210,7 +396,7 @@ public class DbGraphVs
                 Concept = concept,
             };
 
-            List<DbVsConceptCell?[]> right = [];
+            List<DbVsConceptRow> right = [];
 
             // project right
             if (startCol < _packages.Count)
@@ -226,7 +412,7 @@ public class DbGraphVs
             }
 
             // project left and add as we go
-            foreach (DbVsConceptCell?[] r in right)
+            foreach (DbVsConceptRow r in right)
             {
                 results.AddRange(projectConcept(vsRow, r, startCol, false));
             }
@@ -235,9 +421,9 @@ public class DbGraphVs
         return results;
     }
 
-    private List<DbVsConceptCell?[]> projectConcept(
-        DbVsCell?[] vsRow,
-        DbVsConceptCell?[] incomingRow,
+    private List<DbVsConceptRow> projectConcept(
+        DbVsRow vsRow,
+        DbVsConceptRow incomingRow,
         int column,
         bool projectRight)
     {
@@ -296,7 +482,7 @@ public class DbGraphVs
             return [incomingRow];
         }
 
-        List<DbVsConceptCell?[]> results = [];
+        List<DbVsConceptRow> results = [];
 
         // iterate over our neighbors
         foreach (DbValueSetConceptComparison edge in edges)
@@ -309,7 +495,7 @@ public class DbGraphVs
                 ? null
                 : DbValueSetConceptComparison.SelectSingle(_db, Key: edge.InverseComparisonKey);
 
-            DbVsConceptCell?[] row = edges.Count == 1 ? incomingRow : (DbVsConceptCell?[])incomingRow.Clone();
+            DbVsConceptRow row = edges.Count == 1 ? incomingRow : incomingRow.DeepCopy();
             if (projectRight == true)
             {
                 row[nextCol] = new()
@@ -342,7 +528,7 @@ public class DbGraphVs
             }
 
             // recurse
-            List<DbVsConceptCell?[]> next = projectConcept(vsRow, row, nextCol, projectRight);
+            List<DbVsConceptRow> next = projectConcept(vsRow, row, nextCol, projectRight);
 
             // combine results
             results.AddRange(next);
