@@ -254,69 +254,23 @@
                                     </TemplateColumn>
 
                                     <TemplateColumn Title="NoMap" Sortable="false">
-                                        @if (compareRight)
-                                        {
-                                            <FluentCheckbox Value="@(context[sourceColIndex]!.RightComparison?.NoMap ?? true)" />
-                                        }
-                                        else
-                                        {
-                                            <FluentCheckbox Value="@(context[sourceColIndex]!.LeftComparison?.NoMap ?? true)" />
+                                        @{
+                                            var noMap = compareRight
+                                                ? context[sourceColIndex]!.RightComparison?.NoMap
+                                                : context[sourceColIndex]!.LeftComparison?.NoMap;
+
+                                            <FluentCheckbox Value="@(noMap ?? false)" />
                                         }
                                     </TemplateColumn>
 
                                     <TemplateColumn Title="Relationship" Sortable="false">
-                                        @if (compareRight)
-                                        {
-                                            var rowKey = $"right-{context[sourceColIndex]!.Concept.Key}";
-                                            var relationship = context[sourceColIndex]!.RightComparison?.Relationship;
-                                            <div>
-                                                <FluentButton Id="@($"rel-btn-{rowKey}")"
-                                                Appearance="Appearance.Outline"
-                                                OnClick="@(() => TogglePopover(rowKey))">
-                                                    @(relationship?.ToString() ?? "-")
-                                                </FluentButton>
-
-                                                <FluentPopover AnchorId="@($"rel-btn-{rowKey}")"
-                                                               VerticalPosition="VerticalPosition.Bottom"
-                                                               FixedPlacement="true"
-                                                Open="@IsPopoverOpen(rowKey)"
-                                                OpenChanged="@((value) => SetPopoverState(rowKey, value))">
-                                                    <Header>
-                                                        <FluentLabel Typo="Typography.Body">Select Relationship</FluentLabel>
-                                                    </Header>
-                                                    <Body>
-                                                        <FluentStack Orientation="Orientation.Vertical" VerticalGap="4">
-                                                            <FluentCombobox Items="@_relationships"
-                                                                            Name="@($"rel-group-{rowKey}")"
-                                                                            Width="950px"
-                                                                            Placeholder="Search for a relationship..."
-                                                                            OptionValue="@(i => i.Value.ToString() ?? string.Empty)"
-                                                                            OptionText="@(i => i.Text)"
-                                                                            Multiple="false"
-                                                                            Autocomplete="ComboboxAutocomplete.Inline"
-                                                                            Autofocus="true"
-                                                                            Open="true"
-                                                                            SelectedOptionChanged="@(EventCallback.Factory.Create<Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?>>(this, (value) => UpdateRelationship(context, value, true)))" />
-
-@* 
-                                                            <FluentRadioGroup Value="@relationship"
-                                                            Name="@($"rel-group-{rowKey}")"
-                                                            Orientation="Orientation.Vertical"
-                                                            ValueChanged="@(EventCallback.Factory.Create<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship>(this, (value) => UpdateRelationship(context, value, true)))">
-                                                                @foreach (var rel in _relationships)
-                                                                {
-                                                                    <FluentRadio Value="@rel">@rel.ToString()</FluentRadio>
-                                                                }
-                                                            </FluentRadioGroup>
- *@                                                        </FluentStack>
-                                                    </Body>
-                                                </FluentPopover>
-                                            </div>
-                                        }
-                                        else
-                                        {
-                                            var rowKey = $"left-{context[sourceColIndex]!.Concept.Key}";
-                                            var relationship = context[sourceColIndex]!.LeftComparison?.Relationship;
+                                        @{
+                                            var rowKey = compareRight
+                                                ? $"rel-{context[sourceColIndex]!.Concept.Key}-{(context[sourceColIndex]!.RightComparison?.Key ?? -1)}"
+                                                : $"rel-{context[sourceColIndex]!.Concept.Key}-{(context[sourceColIndex]!.LeftComparison?.Key ?? -1)}";
+                                            var relationship = compareRight
+                                                ? context[sourceColIndex]!.RightComparison?.Relationship
+                                                : context[sourceColIndex]!.LeftComparison?.Relationship;
                                             <div>
                                                 <FluentButton Id="@($"rel-btn-{rowKey}")"
                                                 Appearance="Appearance.Outline"
@@ -326,8 +280,8 @@
 
                                                 <FluentPopover AnchorId="@($"rel-btn-{rowKey}")"
                                                 VerticalPosition="VerticalPosition.Bottom"
-                                                               FixedPlacement="true"
-                                                               Open="@IsPopoverOpen(rowKey)"
+                                                FixedPlacement="true"
+                                                Open="@IsPopoverOpen(rowKey)"
                                                 OpenChanged="@((value) => SetPopoverState(rowKey, value))">
                                                     <Header>
                                                         <FluentLabel Typo="Typography.Body">Select Relationship</FluentLabel>
@@ -335,27 +289,17 @@
                                                     <Body>
                                                         <FluentStack Orientation="Orientation.Vertical" VerticalGap="4">
                                                             <FluentCombobox Items="@_relationships"
-                                                                            Name="@($"rel-group-{rowKey}")"
-                                                                            Width="950px"
-                                                                            Placeholder="Search for a relationship..."
-                                                                            OptionValue="@(i => i.Value.ToString() ?? string.Empty)"
-                                                                            OptionText="@(i => i.Text)"
-                                                                            Multiple="false"
-                                                                            Autocomplete="ComboboxAutocomplete.Inline"
-                                                                            Autofocus="true"
-                                                                            Open="true"
-                                                                            SelectedOptionChanged="@(EventCallback.Factory.Create<Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?>>(this, (value) => UpdateRelationship(context, value, false)))" />
-
-@*                                                             <FluentRadioGroup Value="@relationship"
                                                             Name="@($"rel-group-{rowKey}")"
-                                                            Orientation="Orientation.Vertical"
-                                                            ValueChanged="@(EventCallback.Factory.Create<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship>(this, (value) => UpdateRelationship(context, value, false)))">
-                                                                @foreach (var rel in _relationships)
-                                                                {
-                                                                    <FluentRadio Value="@rel">@rel.ToString()</FluentRadio>
-                                                                }
-                                                            </FluentRadioGroup>
- *@                                                        </FluentStack>
+                                                            Width="950px"
+                                                            Placeholder="Search for a relationship..."
+                                                            OptionValue="@(i => i.Value.ToString() ?? string.Empty)"
+                                                            OptionText="@(i => i.Text)"
+                                                            Multiple="false"
+                                                            Autocomplete="ComboboxAutocomplete.Inline"
+                                                            Autofocus="true"
+                                                            Open="true"
+                                                            SelectedOptionChanged="@(EventCallback.Factory.Create<Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?>>(this, (value) => UpdateRelationship(context, value)))" />
+                                                        </FluentStack>
                                                     </Body>
                                                 </FluentPopover>
                                             </div>
@@ -364,7 +308,9 @@
 
                                     <TemplateColumn Title="Target" Sortable="true" Tooltip="true" TooltipText="@(e => e[targetColIndex]!.Concept.Display ?? e[targetColIndex]!.Concept.FhirKey)">
                                         @{
-                                            var rowKey = $"target-{context[sourceColIndex]!.Concept.Key}";
+                                            var rowKey = compareRight
+                                                ? $"target-{context[sourceColIndex]!.Concept.Key}-{(context[sourceColIndex]!.RightComparison?.Key ?? -1)}"
+                                                : $"target-{context[sourceColIndex]!.Concept.Key}-{(context[sourceColIndex]!.LeftComparison?.Key ?? -1)}";
                                             var concept = context[targetColIndex]!.Concept;
                                             <div>
                                                 <FluentButton Id="@($"target-btn-{rowKey}")"
@@ -375,8 +321,8 @@
 
                                                 <FluentPopover AnchorId="@($"target-btn-{rowKey}")"
                                                 VerticalPosition="VerticalPosition.Bottom"
-                                                               FixedPlacement="true"
-                                                               Open="@IsPopoverOpen(rowKey)"
+                                                FixedPlacement="true"
+                                                Open="@IsPopoverOpen(rowKey)"
                                                 OpenChanged="@((value) => SetPopoverState(rowKey, value))"
                                                 class="concept-popover-container"
                                                 AutoFocus="true">
@@ -386,15 +332,15 @@
                                                     <Body>
                                                         <FluentStack Orientation="Orientation.Vertical" VerticalGap="4">
                                                             <FluentCombobox Items="@ctConcepts"
-                                                                Width="950px"
-                                                                Placeholder="Search for a concept..."
-                                                                OptionValue="@(i => i.Value?.Key.ToString() ?? string.Empty)"
-                                                                OptionText="@(i => i.Text)"
-                                                                Multiple="false"
-                                                                Autocomplete="ComboboxAutocomplete.Inline"
-                                                                Autofocus="true"
-                                                                Open="true"
-                                                                SelectedOptionChanged="@(EventCallback.Factory.Create<Option<DbValueSetConcept>>(this, (value) => UpdateTargetConcept(context, value)))"/>
+                                                            Width="950px"
+                                                            Placeholder="Search for a concept..."
+                                                            OptionValue="@(i => i.Value?.Key.ToString() ?? string.Empty)"
+                                                            OptionText="@(i => i.Text)"
+                                                            Multiple="false"
+                                                            Autocomplete="ComboboxAutocomplete.Inline"
+                                                            Autofocus="true"
+                                                            Open="true"
+                                                            SelectedOptionChanged="@(EventCallback.Factory.Create<Option<DbValueSetConcept>>(this, (value) => UpdateTargetConcept(context, value)))"/>
                                                         </FluentStack>
                                                     </Body>
                                                 </FluentPopover>
@@ -533,12 +479,12 @@
         StateHasChanged();
     }
 
-    private void UpdateRelationship(DbVsConceptRow conceptRow, object? selectedValue, bool isRightComparison)
+    private void UpdateRelationship(DbVsConceptRow conceptRow, object? selectedValue)
     {
         if ((conceptRow != null) &&
             (conceptRow[sourceColIndex] != null))
         {
-            if (isRightComparison && conceptRow[sourceColIndex]!.RightComparison != null)
+            if (compareRight && conceptRow[sourceColIndex]!.RightComparison != null)
             {
                 if ((selectedValue != null) &&
                     (selectedValue is Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?> r))
@@ -551,7 +497,7 @@
                     conceptRow[sourceColIndex]!.RightComparison!.Relationship = null;
                 }
             }
-            else if (!isRightComparison && conceptRow[sourceColIndex]!.LeftComparison != null)
+            else if (!compareRight && conceptRow[sourceColIndex]!.LeftComparison != null)
             {
                 if ((selectedValue != null) &&
                     (selectedValue is Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?> r))
@@ -566,9 +512,9 @@
             }
 
             // Close the popover after selection
-            string key = isRightComparison
-                ? $"right-{conceptRow[sourceColIndex]!.Concept.Key}"
-                : $"left-{conceptRow[sourceColIndex]!.Concept.Key}";
+            string key = compareRight
+                ? $"rel-{conceptRow[sourceColIndex]!.Concept.Key}-{(conceptRow[sourceColIndex]!.RightComparison?.Key ?? -1)}"
+                : $"rel-{conceptRow[sourceColIndex]!.Concept.Key}-{(conceptRow[sourceColIndex]!.LeftComparison?.Key ?? -1)}";
             SetPopoverState(key, false);
             StateHasChanged();
         }
@@ -591,7 +537,9 @@
             }
 
             // Close the popover after selection
-            string key = $"target-{conceptRow[sourceColIndex]!.Concept.Key}";
+            string key = compareRight
+                ? $"target-{conceptRow[sourceColIndex]!.Concept.Key}-{(conceptRow[sourceColIndex]!.RightComparison?.Key ?? -1)}"
+                : $"target-{conceptRow[sourceColIndex]!.Concept.Key}-{(conceptRow[sourceColIndex]!.LeftComparison?.Key ?? -1)}";
             SetPopoverState(key, false);
             StateHasChanged();
         }

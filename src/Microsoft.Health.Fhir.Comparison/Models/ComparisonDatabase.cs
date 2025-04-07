@@ -753,6 +753,7 @@ public class ComparisonDatabase : IDisposable
                         LastReviewedBy = null,
                         LastReviewedOn = null,
                         Message = tm.Comment,
+                        IsIdentical = null,
                     };
 
                     sdComparisons.CacheAdd(sdComparison);
@@ -913,6 +914,7 @@ public class ComparisonDatabase : IDisposable
                         LastReviewedBy = null,
                         LastReviewedOn = null,
                         Message = $"Imported from existing ConceptMap {cm.Id} ({cm.Url}).",
+                        IsIdentical = null,
                     };
 
                     sdComparisons.CacheAdd(sdComparison);
@@ -1167,6 +1169,7 @@ public class ComparisonDatabase : IDisposable
                 IsGenerated = false,
                 LastReviewedBy = null,
                 LastReviewedOn = null,
+                IsIdentical = null,
             };
 
             elementComparisons.CacheAdd(resolved);
@@ -1293,6 +1296,7 @@ public class ComparisonDatabase : IDisposable
                             LastReviewedBy = null,
                             LastReviewedOn = null,
                             Message = $"Imported from existing ConceptMap {cm.Id} ({cm.Url}).",
+                            IsIdentical = null,
                         };
 
                         sdComparisons.CacheAdd(dbSdComparison);
@@ -1366,6 +1370,8 @@ public class ComparisonDatabase : IDisposable
                 IsGenerated = false,
                 LastReviewedBy = null,
                 LastReviewedOn = null,
+                IsIdentical = null,
+                CodesAreIdentical = null,
                 Message = $"Imported from existing ConceptMap {cm.Id} ({cm.Url}).",
             };
 
@@ -1553,6 +1559,8 @@ public class ComparisonDatabase : IDisposable
                     IsGenerated = false,
                     LastReviewedBy = null,
                     LastReviewedOn = null,
+                    IsIdentical = null,
+                    CodesAreIdentical = null,
                 };
 
                 conceptComparisons.CacheAdd(nonMappedComparison);
@@ -1632,6 +1640,8 @@ public class ComparisonDatabase : IDisposable
                 IsGenerated = false,
                 LastReviewedBy = null,
                 LastReviewedOn = null,
+                IsIdentical = null,
+                CodesAreIdentical = null,
             };
 
             conceptComparisons.CacheAdd(mappedComparison);

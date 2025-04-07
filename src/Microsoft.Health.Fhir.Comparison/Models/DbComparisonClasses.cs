@@ -103,6 +103,9 @@ public partial class DbValueSetComparison : DbPackageComparisonContent, IDbPacka
     public required string? SourceConceptMapUrl { get; set; }
     public required string? SourceConceptMapAdditionalUrls { get; set; }
 
+    public required bool? IsIdentical { get; set; }
+    public required bool? CodesAreIdentical { get; set; }
+
     [CgSQLiteIgnore]
     public int SourceContentKey => SourceValueSetKey;
     [CgSQLiteIgnore]
@@ -136,6 +139,8 @@ public partial class DbValueSetComparison : DbPackageComparisonContent, IDbPacka
         Relationship = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo,
         Message = null,
         IsGenerated = false,
+        IsIdentical = null,
+        CodesAreIdentical = null,
     };
 }
 
@@ -162,12 +167,13 @@ public partial class DbValueSetConceptComparison : DbPackageComparisonContent, I
     public required int? TargetConceptKey { get; set; }
 
     public required bool? NoMap { get; set; }
+    public required bool? IsIdentical { get; set; }
+    public required bool? CodesAreIdentical { get; set; }
 
     [CgSQLiteIgnore]
     public int SourceContentKey => SourceConceptKey;
     [CgSQLiteIgnore]
     public int? TargetContentKey => TargetConceptKey;
-
 
     private static DbValueSetConceptComparison _empty = EmptyCopy;
 
@@ -190,6 +196,8 @@ public partial class DbValueSetConceptComparison : DbPackageComparisonContent, I
         Message = null,
         NoMap = null,
         IsGenerated = false,
+        IsIdentical = null,
+        CodesAreIdentical = null,
     };
 
 }
@@ -254,6 +262,7 @@ public partial class DbStructureComparison : DbPackageComparisonContent, IDbPack
 
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
+    public required bool? IsIdentical { get; set; }
 
     [CgSQLiteIgnore]
     public int SourceContentKey => SourceStructureKey;
@@ -321,6 +330,8 @@ public partial class DbElementComparison : DbPackageComparisonContent, IDbPackag
 
     [CgSQLiteForeignKey(referenceTable: "ValueSetComparisons", referenceColumn: nameof(DbValueSetComparison.Key))]
     public required int? BoundValueSetComparisonKey { get; set; }
+
+    public required bool? IsIdentical { get; set; }
 
     [CgSQLiteIgnore]
     public int SourceContentKey => SourceElementKey;

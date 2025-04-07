@@ -96,6 +96,9 @@ public partial class DbValueSetConcept : DbPackageContent, IEquatable<DbValueSet
     private static DbValueSetConcept _empty = EmptyCopy;
 
     [CgSQLiteIgnore]
+    public bool IsEmpty => Key == -1 && string.IsNullOrEmpty(System) && string.IsNullOrEmpty(Code) && string.IsNullOrEmpty(Display);
+
+    [CgSQLiteIgnore]
     public static DbValueSetConcept Empty => _empty;
 
     [CgSQLiteIgnore]

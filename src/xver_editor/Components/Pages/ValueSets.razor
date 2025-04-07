@@ -30,21 +30,25 @@
             <FluentGridItem>
                 <FluentSwitch Label="Only Unreviewed" @bind-Value="OnlyUnreviewed"></FluentSwitch>
             </FluentGridItem>
+
+            <FluentGridItem>
+                <FluentSwitch Label="Exclude all identical" @bind-Value="ExcludeIdentical"></FluentSwitch>
+            </FluentGridItem>
         </FluentGrid>
 
         <div class="grid-container">
             <FluentDataGrid Items="@_filteredItems"
-                    ShowHover="true"
-                    ResizableColumns="true"
-                    GridTemplateColumns="60px 2fr 3fr 1fr 1fr 1fr 1fr 1fr 1fr"
-                    class="valueset-grid"
-                    RowSize="@DataGridRowSize.Medium"
-                    Pagination="@pagination">
+            ShowHover="true"
+            ResizableColumns="true"
+            GridTemplateColumns="60px 2fr 3fr 1fr 1fr 1fr 1fr 1fr 1fr"
+            class="valueset-grid"
+            RowSize="@DataGridRowSize.Medium"
+            Pagination="@pagination">
                 <TemplateColumn Title="" Sortable="false">
                     <FluentButton IconStart="@(new Icons.Regular.Size16.Edit())"
-                                  Appearance="Appearance.Lightweight"
-                                  OnClick="@(() => NavigateToDetails(context))"
-                                  Title="View Details" />
+                    Appearance="Appearance.Lightweight"
+                    OnClick="@(() => NavigateToDetails(context))"
+                    Title="View Details" />
                 </TemplateColumn>
                 <PropertyColumn Title="Name" Property="@(vsr => vsr.Vs.Name)" Sortable="true" IsDefaultSortColumn="true">
                     <ColumnOptions>
@@ -140,6 +144,20 @@
             if (value != _onlyUnreviewed)
             {
                 _onlyUnreviewed = value;
+                FilterItems();
+            }
+        }
+    }
+
+    private bool _exlcludeIdentical = true;
+    private bool ExcludeIdentical
+    {
+        get => _exlcludeIdentical;
+        set
+        {
+            if (value != _exlcludeIdentical)
+            {
+                _exlcludeIdentical = value;
                 FilterItems();
             }
         }
@@ -265,6 +283,11 @@
         }
 
         if (_onlyUnreviewed && (item.HasUnreviewed == false))
+        {
+            return false;
+        }
+
+        if (_exlcludeIdentical && (item.AllIdentical == true))
         {
             return false;
         }

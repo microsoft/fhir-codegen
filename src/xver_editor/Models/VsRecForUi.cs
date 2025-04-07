@@ -10,6 +10,7 @@ public record class VsRecForUi
     public required List<DbVsRow> Projection { get; init; }
     public required Dictionary<int, bool> MapsTo { get; init; }
     public required bool HasUnreviewed { get; init; }
+    public required bool AllIdentical { get; init; }
 
     [SetsRequiredMembers]
     public VsRecForUi(System.Data.IDbConnection db, DbValueSet vs, List<DbFhirPackage> packages)
@@ -24,6 +25,7 @@ public record class VsRecForUi
         Projection = Graph.Project();
 
         bool hasUnreviewed = false;
+        bool allIdentical = true;
 
         Dictionary<int, bool> mapsTo = [];
         for (int i = 0; i < packages.Count; i++)
@@ -47,6 +49,19 @@ public record class VsRecForUi
                     hasUnreviewed = true;
                 }
 
+                if ((i > 0) &&
+                    Projection.Any(r => (r[i]?.LeftComparison != null) && (r[i]!.LeftComparison!.IsIdentical != true)))
+                {
+                    allIdentical = false;
+                }
+
+                if ((i < packages.Count - 1) &&
+                    Projection.Any(r => (r[i]?.RightComparison != null) && (r[i]!.RightComparison!.IsIdentical != true)))
+                {
+                    allIdentical = false;
+                }
+
+
                 continue;
             }
 
@@ -55,5 +70,6 @@ public record class VsRecForUi
 
         MapsTo = mapsTo;
         HasUnreviewed = hasUnreviewed;
+        AllIdentical = allIdentical;
     }
 }

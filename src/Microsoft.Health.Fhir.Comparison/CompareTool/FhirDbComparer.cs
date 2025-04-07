@@ -306,6 +306,7 @@ public class FhirDbComparer
                                 LastReviewedBy = null,
                                 LastReviewedOn = null,
                                 Message = tm.Comment,
+                                IsIdentical = null,
                             };
 
                             _sdComparisons.CacheAdd(pc);
@@ -372,6 +373,7 @@ public class FhirDbComparer
                                 LastReviewedBy = null,
                                 LastReviewedOn = null,
                                 Message = message,
+                                IsIdentical = null,
                             };
 
                             _sdComparisons.CacheAdd(sdc);
@@ -447,7 +449,21 @@ public class FhirDbComparer
                 forwardComparison,
                 inverseComparison,
                 forwardPair,
-                reversePair);
+                reversePair,
+                out bool identical);
+
+            // check for identical structures
+            if (forwardComparison.IsIdentical != identical)
+            {
+                forwardComparison.IsIdentical = identical;
+                _sdComparisons.Changed(forwardComparison);
+            }
+
+            if (inverseComparison.IsIdentical != forwardComparison.IsIdentical)
+            {
+                inverseComparison.IsIdentical = forwardComparison.IsIdentical;
+                _sdComparisons.Changed(inverseComparison);
+            }
 
             if (aggregateStructureRelationships(forwardComparison, sourceSd, targetSd))
             {
@@ -799,7 +815,8 @@ public class FhirDbComparer
         DbStructureComparison forwardComparison,
         DbStructureComparison reverseComparison,
         DbFhirPackageComparisonPair forwardPair,
-        DbFhirPackageComparisonPair reversePair)
+        DbFhirPackageComparisonPair reversePair,
+        out bool identical)
     {
         // select only active and concrete concepts
         List<DbElement> sourceElements = DbElement.SelectList(_db, StructureKey: sourceSd.Key);
@@ -807,6 +824,7 @@ public class FhirDbComparer
 
         // be optimistic
         CMR aggregateStructureRelationship = CMR.Equivalent;
+        identical = true;
 
         // iterate over the source elements - note that each type for a choice tyes gets its own record
         foreach (DbElement sourceElement in sourceElements)
@@ -864,6 +882,7 @@ public class FhirDbComparer
                         IsGenerated = true,
                         LastReviewedBy = null,
                         LastReviewedOn = null,
+                        IsIdentical = null,
                     };
 
                     _elementComparisons.CacheAdd(comp);
@@ -899,10 +918,13 @@ public class FhirDbComparer
                     IsGenerated = true,
                     LastReviewedBy = null,
                     LastReviewedOn = null,
+                    IsIdentical = null,
                 };
 
                 // insert into the database
                 _elementComparisons.CacheAdd(noMap);
+
+                identical = false;
 
                 // nothing else to do on this pass
                 continue;
@@ -1271,6 +1293,30 @@ public class FhirDbComparer
                         changed = true;
                     }
 
+                    // allow identical elements that have different base names
+                    if ((elementComparison.ConceptDomainRelationship == CMR.Equivalent) &&
+                        (elementComparison.ValueDomainRelationship == CMR.Equivalent) &&
+                        (elementComparison.Relationship == CMR.Equivalent) &&
+                        (sourceElement.Name == targetElement.Name) &&
+                        (sourceElement.CollatedTypeLiteral == targetElement.CollatedTypeLiteral) &&
+                        (sourceElement.BindingValueSet == targetElement.BindingValueSet))
+                    {
+                        elementComparison.IsIdentical = true;
+                        changed = true;
+                    }
+                    else
+                    {
+                        identical = false;
+                        elementComparison.IsIdentical = false;
+                        changed = true;
+                    }
+
+                    if (inverseComparison.IsIdentical != elementComparison.IsIdentical)
+                    {
+                        inverseComparison.IsIdentical = elementComparison.IsIdentical;
+                        _elementComparisons.Changed(inverseComparison);
+                    }
+
                     // if we changed something, apply all changes and update the record
                     if (changed)
                     {
@@ -1393,6 +1439,8 @@ public class FhirDbComparer
                     LastReviewedBy = null,
                     LastReviewedOn = null,
                     Message = message,
+                    IsIdentical = false,
+                    CodesAreIdentical = false,
                 };
 
                 _vsComparisons.CacheAdd(vsc);
@@ -1460,6 +1508,55 @@ public class FhirDbComparer
                 inverseComparison,
                 forwardPair,
                 reversePair);
+
+            // check for identical system and code flags
+            if ((forwardComparison.IsIdentical == null) || (forwardComparison.CodesAreIdentical == null))
+            {
+                // select only active and concrete concepts
+                List<DbValueSetConcept> sourceConcepts = DbValueSetConcept.SelectList(_db, ValueSetKey: sourceVs.Key, Inactive: false, Abstract: false);
+                List<DbValueSetConcept> targetConcepts = DbValueSetConcept.SelectList(_db, ValueSetKey: targetVs.Key, Inactive: false, Abstract: false);
+
+                if (sourceConcepts.Count != targetConcepts.Count)
+                {
+                    forwardComparison.IsIdentical = false;
+                    forwardComparison.CodesAreIdentical = false;
+                }
+                else
+                {
+                    HashSet<string> targetCombined = targetConcepts.Select(c => c.FhirKey).ToHashSet();
+
+                    if (sourceConcepts.All(c => targetCombined.Contains(c.FhirKey)))
+                    {
+                        forwardComparison.IsIdentical = true;
+                        forwardComparison.CodesAreIdentical = true;
+                    }
+                    else
+                    {
+                        HashSet<string> targetCodes = targetConcepts.Select(c => c.Code).ToHashSet();
+
+                        if (sourceConcepts.All(c => targetCodes.Contains(c.Code)))
+                        {
+                            forwardComparison.IsIdentical = false;
+                            forwardComparison.CodesAreIdentical = true;
+                        }
+                        else
+                        {
+                            forwardComparison.IsIdentical = false;
+                            forwardComparison.CodesAreIdentical = false;
+                        }
+                    }
+                }
+
+                _vsComparisons.Changed(forwardComparison);
+            }
+
+            if ((inverseComparison.IsIdentical == null) || (inverseComparison.CodesAreIdentical == null))
+            {
+                inverseComparison.IsIdentical = forwardComparison.IsIdentical;
+                inverseComparison.CodesAreIdentical = forwardComparison.CodesAreIdentical;
+
+                _vsComparisons.Changed(inverseComparison);
+            }
 
             if (aggregateValueSetRelationships(forwardComparison, sourceVs, targetVs))
             {
@@ -1699,9 +1796,22 @@ public class FhirDbComparer
                     targetConcepts = [exact];
                 }
 
-                CMR relationship = (targetConcepts.Count == 1)
-                    ? CMR.Equivalent
-                    : CMR.SourceIsBroaderThanTarget;
+                bool isIdentical;
+                bool codeIsIdentical;
+                CMR relationship;
+
+                if (targetConcepts.Count == 1)
+                {
+                    relationship = CMR.Equivalent;
+                    isIdentical = sourceConcept.FhirKey == targetConcepts[0].FhirKey;
+                    codeIsIdentical = sourceConcept.Code == targetConcepts[0].Code;
+                }
+                else
+                {
+                    relationship = CMR.SourceIsBroaderThanTarget;
+                    isIdentical = false;
+                    codeIsIdentical = false;
+                }
 
                 // iterate over the possible targets
                 foreach (DbValueSetConcept targetConcept in targetConcepts)
@@ -1723,6 +1833,8 @@ public class FhirDbComparer
                         IsGenerated = true,
                         LastReviewedBy = null,
                         LastReviewedOn = null,
+                        IsIdentical = isIdentical,
+                        CodesAreIdentical = codeIsIdentical,
                     };
 
                     _conceptComparisons.CacheAdd(comp);
@@ -1750,6 +1862,8 @@ public class FhirDbComparer
                     IsGenerated = true,
                     LastReviewedBy = null,
                     LastReviewedOn = null,
+                    IsIdentical = null,
+                    CodesAreIdentical = null,
                 };
 
                 // insert into the database
@@ -1909,6 +2023,7 @@ public class FhirDbComparer
                 LastReviewedBy = null,
                 LastReviewedOn = null,
                 Message = tm.Value.Comment,
+                IsIdentical = other.IsIdentical,
             };
         }
 
@@ -1939,6 +2054,7 @@ public class FhirDbComparer
             LastReviewedBy = null,
             LastReviewedOn = null,
             Message = $"Mapping was inverted from Structure comparison {other.Key} of {other.SourceCanonicalVersioned} -> {other.TargetCanonicalVersioned}",
+            IsIdentical = other.IsIdentical,
         };
     }
 
@@ -1988,6 +2104,7 @@ public class FhirDbComparer
             LastReviewedOn = null,
             Message = $"Mapping was inverted from Element comparison {other.Key}" +
                 $" of `{otherSourceElement.Id}` -> `{otherTargetElement.Id}`",
+            IsIdentical = other.IsIdentical,
         };
     }
 
@@ -2020,6 +2137,8 @@ public class FhirDbComparer
             LastReviewedBy = null,
             LastReviewedOn = null,
             Message = $"Mapping was inverted from ValueSet comparison {other.Key} of {other.SourceCanonicalVersioned} -> {other.TargetCanonicalVersioned}",
+            IsIdentical = other.IsIdentical,
+            CodesAreIdentical = other.CodesAreIdentical,
         };
     }
 
@@ -2050,6 +2169,8 @@ public class FhirDbComparer
             Message = $"Mapping was inverted from ValueSet Concept comparison {other.Key}" +
                 $" of `{otherSourceConcept.System}#{otherSourceConcept.Code}` ->" +
                 $" `{otherTargetConcept.System}#{otherTargetConcept.Code}`",
+            IsIdentical = other.IsIdentical,
+            CodesAreIdentical = other.CodesAreIdentical,
         };
     }
 
