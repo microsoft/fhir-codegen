@@ -38,13 +38,14 @@
                     <FluentBreadcrumbItem Appearance="Appearance.Accent" Href="@item.Link">@item.Display</FluentBreadcrumbItem>
                 }
             </FluentBreadcrumb>
-             <FluentSpacer />
-@*            <FluentSpacer Width="8" />
+            <FluentSpacer />
+            <FluentLabel>@ServerConfig.UserName</FluentLabel>
+            <FluentSpacer Width="8" />
             <FluentButton Title="Light/Dark Mode"
-                            BackgroundColor="var(--accent-base-color)"
-                            IconEnd="@(new Icons.Regular.Size20.DarkTheme())"
+            BackgroundColor="var(--accent-base-color)"
+            IconEnd="@(new Icons.Regular.Size20.DarkTheme())"
             OnClick="@ToggleMode" />
- *@        }
+        }
         else
         {
             <FluentButton Title="Navigation" IconEnd="@(new Icons.Regular.Size24.Navigation())" OnClick="@OpenNavPanel" Appearance="Appearance.Accent" />
@@ -58,12 +59,13 @@
                 }
             </FluentBreadcrumb>
             <FluentSpacer />
-@*             <FluentSpacer Width="8" />
+            <FluentTextField Value="@UserName" @onchange="@(SaveUsername)"/>
+            <FluentSpacer Width="8" />
             <FluentButton Title="Light/Dark Mode"
-                          Appearance="Appearance.Accent"
-                          IconEnd="@(new Icons.Regular.Size20.DarkTheme())"
-                          OnClick="@ToggleMode" />
- *@        }
+            Appearance="Appearance.Accent"
+            IconEnd="@(new Icons.Regular.Size20.DarkTheme())"
+            OnClick="@ToggleMode" />
+        }
     </FluentHeader>
 
     <FluentStack Class="main" Orientation="Orientation.Horizontal" Width="100%">
@@ -91,6 +93,8 @@
 
     /// <summary>Gets or sets the mode.</summary>
     public DesignThemeModes Mode { get; set; }
+
+    public string UserName { get; set; } = string.Empty;
 
     /// <summary>Gets the is dark mode.</summary>
     public bool IsDarkMode => (Mode == DesignThemeModes.Dark);
@@ -173,35 +177,52 @@
         OnThemeChanged?.Invoke(this, EventArgs.Empty);
     }
 
-    /// <summary>Executes the after render action.</summary>
-    /// <param name="firstRender">True to first render.</param>
-    protected override void OnAfterRender(bool firstRender)
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
             // first render of layout should log the version
             _ = JsLogAsync($"fhir xver: {GetType()?.Assembly?.GetName()?.Version?.ToString()}");
+            _ = JS.InvokeVoidAsync("processCopyable");
 
-            // try
-            // {
-            //     // use the RI name if there is one
-            //     if (!string.IsNullOrEmpty(ServerConfig.ReferenceImplementation))
-            //     {
-            //         homeTitle = $"FHIR XVer ({ServerConfig.ReferenceImplementation})";
-            //         // _crumbs[0] = new NavBreadcrumb($"Candle ({ServerConfig.ReferenceImplementation})", "#");
-            //     }
+            try
+            {
+                var un = await BrowserStore.GetAsync<string>("userName");
+                if (un.Value != null)
+                {
+                    UserName = un.Value;
+                }
+                else
+                {
+                    UserName = ServerConfig.UserName;
+                }
 
-            //     StateHasChanged();
-            // }
-            // catch (Exception)
-            // {
-            //     // ignore
-            // }
+                StateHasChanged();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                // ignore
+            }
+
+            if (string.IsNullOrEmpty(UserName))
+            {
+                UserName = ServerConfig.UserName;
+            }
         }
-
-        _ = JS.InvokeVoidAsync("processCopyable");
     }
-    
+
+    private void SaveUsername(ChangeEventArgs e)
+    {
+        if ((e.Value is string value) &&
+            (!string.IsNullOrEmpty(value)))
+        {
+            UserName = value;
+            // save the user name in the browser store
+            _ = BrowserStore.SetAsync("userName", value);
+        }
+    }
+
     /// <summary>Notifies the navigation manager about the current location.</summary>
     /// <param name="navTree"></param>
     public void NotifyNav(NavPageInfoRec[] navTree)

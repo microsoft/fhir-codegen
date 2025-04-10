@@ -4,14 +4,14 @@
 
 @implements IDialogContentComponent<string>
 
-@inject IXverDbService DbService
+@inject IXverService DbService
 
 
 <FluentDialogBody>
     <FluentNavMenu Id="main-menu" Width="250" Collapsible="false" Title="FHIR Candle">
         <FluentNavLink Icon="@(new Icons.Regular.Size24.Home())" Href="/" Tooltip="Home">Home</FluentNavLink>
 
-        @foreach (DbFhirPackage package in DbFhirPackage.SelectList(DbService.DB, orderByProperties: [nameof(DbFhirPackage.PackageId), nameof(DbFhirPackage.PackageVersion)]))
+        @foreach (DbFhirPackage package in DbFhirPackage.SelectList(DbService.DbConnection, orderByProperties: [nameof(DbFhirPackage.PackageId), nameof(DbFhirPackage.PackageVersion)]))
         {
             <FluentNavGroup Title="@(package.ShortName)" Tooltip="@(package.PackageId + "@" + package.PackageVersion)" Icon="@(new Icons.Regular.Size24.CubeMultiple())" Expanded="true">
                 <FluentNavLink Icon="@(new Icons.Regular.Size24.Fire())" Href="@($"/valuesets/{package.Key}?packageShort={package.ShortName}")" Tooltip="Review Value Set Mappings">Value Sets</FluentNavLink>

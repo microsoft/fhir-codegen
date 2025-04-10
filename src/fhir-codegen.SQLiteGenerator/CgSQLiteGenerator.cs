@@ -770,7 +770,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             }
                         }
                     
-                        public static void Delete(IDbConnection dbConnection, List<{{{className}}}> values, string? dbTableName = null)
+                        public static void Delete(IDbConnection dbConnection, IEnumerable<{{{className}}}> values, string? dbTableName = null)
                         {
                             dbTableName ??= "{{{tableName}}}";
                             
@@ -856,7 +856,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             {{{className}}}.Delete(dbCon, value, dbTableName);
                         }
                     
-                        public static void Delete(this IDbConnection dbCon, List<{{{className}}}> values, string? dbTableName = null)
+                        public static void Delete(this IDbConnection dbCon, IEnumerable<{{{className}}}> values, string? dbTableName = null)
                         {
                             {{{className}}}.Delete(dbCon, values, dbTableName);
                         }
@@ -892,7 +892,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             {{{className}}}.Delete(dbCon, value, dbTableName);
                         }
                     
-                        public static void Delete(this List<{{{className}}}> values, IDbConnection dbCon, string? dbTableName = null)
+                        public static void Delete(this IEnumerable<{{{className}}}> values, IDbConnection dbCon, string? dbTableName = null)
                         {
                             {{{className}}}.Delete(dbCon, values, dbTableName);
                         }

@@ -58,7 +58,7 @@ public class XverAppConfig: ICodeGenConfig
     [ConfigOption(
         ArgName = "--db",
         EnvName = "Comparison_Database_Path",
-        ArgArity = "1..1",
+        ArgArity = "0..1",
         Description = "Path or filename for the comparison database FHIR maps to load or export.")]
     public string CrossVersionDbPath { get; set; } = string.Empty;
 
@@ -69,8 +69,53 @@ public class XverAppConfig: ICodeGenConfig
         DefaultValue = string.Empty,
         CliOption = new System.CommandLine.Option<string?>("--db", "Path or filename for the comparison database FHIR maps to load or export.")
         {
-            Arity = System.CommandLine.ArgumentArity.ExactlyOne,
-            IsRequired = true,
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
+
+
+    [ConfigOption(
+    ArgName = "--user",
+        EnvName = "User_Name",
+        ArgArity = "0..1",
+        Description = "Default username to use when marking comparisons as reviewed.")]
+    public string UserName { get; set; } = string.Empty;
+
+    private static ConfigurationOption UserNameParameter => new()
+    {
+        Name = "User_Name",
+        EnvVarName = "User_Name",
+        DefaultValue = string.Empty,
+        CliOption = new System.CommandLine.Option<string?>("--user", "Default username to use when marking comparisons as reviewed.")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
+
+
+    /// <summary>
+    /// Gets or sets the pathname of the output directory.
+    /// </summary>
+    [ConfigOption(
+        ArgAliases = ["--output-path", "--output-directory", "--output-dir"],
+        EnvName = "Output_Path",
+        Description = "File or directory to write output.")]
+    public string OutputDirectory { get; set; } = ".";
+
+    /// <summary>
+    /// Gets or sets the configuration option for the output directory.
+    /// </summary>
+    private static ConfigurationOption OutputDirectoryParameter { get; } = new()
+    {
+        Name = "OutputPath",
+        EnvVarName = "Output_Path",
+        DefaultValue = ".",
+        CliOption = new System.CommandLine.Option<string>(["--output-path", "--output-directory", "--output-dir"], "File or directory to write output.")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
         },
     };
 
@@ -80,6 +125,8 @@ public class XverAppConfig: ICodeGenConfig
         ListenPortParameter,
         OpenBrowserParameter,
         CrossVersionDbPathParameter,
+        UserNameParameter,
+        OutputDirectoryParameter,
     ];
 
     /// <summary>
@@ -443,7 +490,43 @@ public class XverAppConfig: ICodeGenConfig
                     OpenBrowser = GetOpt(parseResult, opt, OpenBrowser);
                     break;
                 case "Comparison_Database_Path":
-                    CrossVersionDbPath = GetOpt(parseResult, opt, CrossVersionDbPath);
+                    {
+                        CrossVersionDbPath = GetOpt(parseResult, opt, CrossVersionDbPath);
+                        if (string.IsNullOrEmpty(CrossVersionDbPath))
+                        {
+                            CrossVersionDbPath = FindRelativeFile(string.Empty, "fhir-comparison.db");
+                        }
+
+                        if (string.IsNullOrEmpty(CrossVersionDbPath))
+                        {
+                            throw new FileNotFoundException($"Database is required! Use the --db option, Comparison_Database_Path environment variable, or run in a directory with a 'fhir-comparison.db' file.");
+                        }
+                    }
+                    break;
+                case "User_Name":
+                    {
+                        UserName = GetOpt(parseResult, opt, UserName);
+                        if (string.IsNullOrEmpty(UserName))
+                        {
+                            UserName = Environment.UserName;
+                        }
+                    }
+                    break;
+                case "OutputPath":
+                    {
+                        string dir = GetOpt(parseResult, opt, OutputDirectory);
+
+                        if (string.IsNullOrEmpty(dir))
+                        {
+                            dir = FindRelativeDir(string.Empty, ".");
+                        }
+                        else if (!Path.IsPathRooted(dir))
+                        {
+                            dir = FindRelativeDir(string.Empty, dir);
+                        }
+
+                        OutputDirectory = dir;
+                    }
                     break;
             }
         }

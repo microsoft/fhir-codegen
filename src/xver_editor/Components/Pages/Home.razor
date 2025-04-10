@@ -1,13 +1,29 @@
 ﻿@page "/"
 
 @using Markdig;
+@inject NavigationManager NavigationManager
 
 <PageTitle>Home</PageTitle>
 
-<div>@processedContent</div>
+<FluentStack Orientation="Orientation.Vertical">
+@*     <FluentStack Orientation="Orientation.Horizontal">
+        <FluentTextField Label="User Name" Value="@UserName"/>
+        <FluentButton IconStart="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Regular.Size20.Save())"
+        Appearance="Appearance.Outline"
+        Title="Save Changes"
+        OnClick="@(() => SaveChanges())">
+            Save
+        </FluentButton>
+    </FluentStack>
+ *@
+     <div>@processedContent</div>
+</FluentStack>
 
 @code {
     private MarkupString processedContent = new(string.Empty);
+
+    [CascadingParameter]
+    public INavTracker? NavTracker { get; set; } = null;
 
     protected override void OnInitialized()
     {

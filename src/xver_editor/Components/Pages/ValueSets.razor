@@ -6,7 +6,7 @@
 @using System.Diagnostics.CodeAnalysis
 @using System.Collections.Concurrent;
 
-@inject IXverDbService DbService
+@inject IXverService DbService
 @inject NavigationManager NavigationManager
 
 <FluentStack Orientation="Orientation.Vertical" VerticalGap="8">
@@ -48,7 +48,7 @@
                     <FluentButton IconStart="@(new Icons.Regular.Size16.Edit())"
                     Appearance="Appearance.Lightweight"
                     OnClick="@(() => NavigateToDetails(context))"
-                    Title="View Details" />
+                    Title="Review" />
                 </TemplateColumn>
                 <PropertyColumn Title="Name" Property="@(vsr => vsr.Vs.Name)" Sortable="true" IsDefaultSortColumn="true">
                     <ColumnOptions>
@@ -197,7 +197,7 @@
         try
         {
             _packages = DbFhirPackage.SelectList(
-                DbService.DB,
+                DbService.DbConnection,
                 orderByProperties: [nameof(DbFhirPackage.ShortName)]);
         }
         catch (Exception)
@@ -311,7 +311,7 @@
 
             // Query ValueSets for the specified FhirPackageKey
             List<DbValueSet> valueSetsEnumerable = DbValueSet.SelectList(
-                DbService.DB,
+                DbService.DbConnection,
                 FhirPackageKey: FhirPackageKey);
 
             ConcurrentBag<VsRecForUi> cb = new();
@@ -324,7 +324,7 @@
                     },
                 (vs, cancellationToken) =>
             {
-                VsRecForUi recForUi = new(DbService.DB, vs, _packages);
+                VsRecForUi recForUi = new(DbService.DbConnection, vs, _packages);
                 cb.Add(recForUi);
             });
 

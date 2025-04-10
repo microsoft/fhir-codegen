@@ -92,8 +92,8 @@ public class Program
             // add our configuration
             builder.Services.AddSingleton(config);
 
-            builder.Services.AddSingleton(typeof(IXverDbService), new XVerDbService(config));
-            builder.Services.AddHostedService<IXverDbService>(sp => (IXverDbService)sp.GetRequiredService(typeof(IXverDbService)));
+            builder.Services.AddSingleton(typeof(IXverService), new XVerService(config));
+            builder.Services.AddHostedService<IXverService>(sp => (IXverService)sp.GetRequiredService(typeof(IXverService)));
 
             builder.Services.AddHttpContextAccessor();
             builder.Services.AddControllers();

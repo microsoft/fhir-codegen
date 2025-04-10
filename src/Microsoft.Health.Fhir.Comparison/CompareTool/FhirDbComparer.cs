@@ -1669,12 +1669,28 @@ public class FhirDbComparer
         };
     }
 
+    public bool AggregateValueSetRelationships(DbValueSetComparison vsComparison)
+    {
+        DbValueSet? sourceVs = DbValueSet.SelectSingle(_db, Key: vsComparison.SourceValueSetKey);
+        DbValueSet? targetVs = DbValueSet.SelectSingle(_db, Key: vsComparison.TargetValueSetKey);
+
+        if ((sourceVs == null) || (targetVs == null))
+        {
+            throw new Exception($"Failed to resolve source or target value set for comparison {vsComparison.Key}");
+        }
+
+        return aggregateValueSetRelationships(vsComparison, sourceVs!, targetVs!);
+    }
+
     /// <summary>
     /// Aggregates the relationships of value sets within a FHIR package comparison.
     /// </summary>
     /// <param name="vsComparison">The comparison object for the value set.</param>
     /// <returns>True if the relationship was updated, otherwise false.</returns>
-    private bool aggregateValueSetRelationships(DbValueSetComparison vsComparison, DbValueSet sourceVs, DbValueSet targetVs)
+    private bool aggregateValueSetRelationships(
+        DbValueSetComparison vsComparison,
+        DbValueSet sourceVs,
+        DbValueSet targetVs)
     {
         List<DbValueSetConceptComparison> conceptComparisons = DbValueSetConceptComparison.SelectList(_db, ValueSetComparisonKey: vsComparison.Key);
         List<CMR?> relationships = conceptComparisons.Select(c => c.Relationship).Distinct().ToList();
@@ -1745,6 +1761,209 @@ public class FhirDbComparer
         _ => change ?? existing ?? CMR.NotRelatedTo,
     };
 
+    public (DbValueSetComparison? inverted, bool? changed) UpdateInversion(
+        DbValueSetComparison forwardComparison,
+        DbValueSetComparison? inverseComparsion = null)
+    {
+        bool addedInverse = false;
+
+        DbFhirPackageComparisonPair? inversePackagePair = DbFhirPackageComparisonPair.SelectSingle(
+            _db,
+            SourcePackageKey: forwardComparison.TargetFhirPackageKey,
+            TargetPackageKey: forwardComparison.SourceFhirPackageKey);
+
+        if (inversePackagePair == null)
+        {
+            return (null, null);
+        }
+
+        if ((inverseComparsion == null) &&
+            (forwardComparison.InverseComparisonKey != null))
+        {
+            // look for an existing inverse comparison
+            inverseComparsion = DbValueSetComparison.SelectSingle(
+                _db,
+                Key: forwardComparison.InverseComparisonKey);
+        }
+
+        if (inverseComparsion == null)
+        {
+            // create an inverse comparison
+            inverseComparsion = invert(forwardComparison, inversePackagePair);
+            addedInverse = true;
+        }
+
+        DbComparisonCache<DbValueSetConceptComparison> changes = new();
+
+        // get the source concepts
+        Dictionary<int, DbValueSetConcept> sourceConcepts = DbValueSetConcept.SelectDict(
+            _db,
+            ValueSetKey: forwardComparison.SourceValueSetKey,
+            Inactive: false,
+            Abstract: false);
+
+        // get the target concepts
+        Dictionary<int, DbValueSetConcept> targetConcepts = DbValueSetConcept.SelectDict(
+            _db,
+            ValueSetKey: forwardComparison.TargetValueSetKey,
+            Inactive: false,
+            Abstract: false);
+
+        // get the list of forward concept comparisons
+        List<DbValueSetConceptComparison> forwardConceptComparisons = DbValueSetConceptComparison.SelectList(
+            _db,
+            ValueSetComparisonKey: forwardComparison.Key,
+            SourceValueSetKey: forwardComparison.SourceValueSetKey,
+            TargetFhirPackageKey: forwardComparison.TargetFhirPackageKey);
+
+        // get the list of existing inverse concept comparisons
+        Dictionary<int, DbValueSetConceptComparison> existingInverseConceptComparisons = DbValueSetConceptComparison.SelectDict(
+            _db,
+            ValueSetComparisonKey: inverseComparsion.Key,
+            SourceValueSetKey: inverseComparsion.SourceValueSetKey,
+            TargetFhirPackageKey: inverseComparsion.TargetFhirPackageKey);
+
+        HashSet<int> usedInverseKeys = [];
+
+        List<DbValueSetConceptComparison> invertedComparisons = [];
+        foreach (DbValueSetConceptComparison forwardConceptComparison in forwardConceptComparisons)
+        {
+            if ((forwardConceptComparison.NoMap == true) ||
+                (forwardConceptComparison.TargetConceptKey == null))
+            {
+                continue;
+            }
+
+            // create a new inverse comparison
+            DbValueSetConceptComparison computedInverse = invert(
+                forwardConceptComparison,
+                sourceConcepts[forwardConceptComparison.SourceConceptKey],
+                targetConcepts[(int)forwardConceptComparison.TargetConceptKey],
+                inverseComparsion,
+                inversePackagePair);
+
+            if ((forwardConceptComparison.InverseComparisonKey == null) ||
+                (!existingInverseConceptComparisons.TryGetValue((int)forwardConceptComparison.InverseComparisonKey, out DbValueSetConceptComparison? existingInverse)))
+            {
+                usedInverseKeys.Add(computedInverse.Key);
+                changes.CacheAdd(computedInverse);
+
+                if (forwardConceptComparison.InverseComparisonKey != computedInverse.Key)
+                {
+                    forwardConceptComparison.InverseComparisonKey = computedInverse.Key;
+                    changes.CacheUpdate(forwardConceptComparison);
+                }
+
+                continue;
+            }
+
+            usedInverseKeys.Add(existingInverse.Key);
+
+            // check to see if the inverse comparison has the same relationship
+            if (existingInverse.Relationship != computedInverse.Relationship)
+            {
+                existingInverse.Relationship = computedInverse.Relationship;
+                changes.CacheUpdate(existingInverse);
+            }
+        }
+
+        // flag we are deleting any inverse comparisons that are not used
+        foreach ((int key, DbValueSetConceptComparison existing) in existingInverseConceptComparisons)
+        {
+            if (usedInverseKeys.Contains(key))
+            {
+                continue;
+            }
+            changes.CacheDelete(existing);
+        }
+
+        // apply inverse updates to the VS
+        if (addedInverse)
+        {
+            inverseComparsion.Insert(_db);
+        }
+        else
+        {
+            inverseComparsion.Update(_db);
+        }
+
+        // apply our concept changes
+        changes.ComparisonsToAdd.Insert(_db);
+        changes.ComparisonsToUpdate.Update(_db);
+        changes.ComparisonsToDelete.Delete(_db);
+
+        // return the comparison in case the caller needs it
+        return (inverseComparsion, changes.Count != 0);
+    }
+
+    public void ApplyVsConceptChanges(
+        List<DbVsConceptRow> originalProjection,
+        IEnumerable<DbVsConceptRow> updatedProjection,
+        int sourceColumnIndex,
+        bool isComparingRight,
+        string? reviewer)
+    {
+        DbComparisonCache<DbValueSetConceptComparison> changes = new();
+
+        ILookup<int, DbVsConceptRow> sourceConceptRows = originalProjection.ToLookup(c => c.RowNumber);
+
+        // traverse the locally-modified concept projection and determine changes (add/remove/update)
+        foreach (DbVsConceptRow row in updatedProjection)
+        {
+            if (row[sourceColumnIndex] == null)
+            {
+                continue;
+            }
+
+            DbVsConceptCell sourceConceptCell = row[sourceColumnIndex]!;
+            DbValueSetConceptComparison sourceToTargetComparison = isComparingRight
+                ? sourceConceptCell.RightComparison!
+                : sourceConceptCell.LeftComparison!;
+
+            // flag this has been compared if desired
+            if (reviewer != null)
+            {
+                sourceToTargetComparison.LastReviewedOn = DateTime.UtcNow;
+                sourceToTargetComparison.LastReviewedBy = reviewer;
+            }
+
+            // check for added rows
+            if (sourceToTargetComparison.Key == -1)
+            {
+                // get a good key value
+                sourceToTargetComparison.Key = _comparisonDb.GetConceptComparisonKey();
+
+                // cache the addition
+                changes.CacheAdd(sourceToTargetComparison);
+            }
+            else
+            {
+                // cache as an update
+                changes.CacheUpdate(sourceToTargetComparison);
+            }
+        }
+
+        // check for deleted rows
+        ILookup<int, DbVsConceptRow> currentConceptRows = updatedProjection.ToLookup(c => c.RowNumber);
+        foreach (DbVsConceptRow row in originalProjection)
+        {
+            if (!currentConceptRows.Contains(row.RowNumber))
+            {
+                DbVsConceptCell sourceConceptCell = row[sourceColumnIndex]!;
+                DbValueSetConceptComparison sourceToTargetComparison = isComparingRight
+                    ? sourceConceptCell.RightComparison!
+                    : sourceConceptCell.LeftComparison!;
+                // cache the deletion
+                changes.CacheDelete(sourceToTargetComparison);
+            }
+        }
+
+        // apply the changes to the concept comparisons
+        changes.ComparisonsToAdd.Insert(_db);
+        changes.ComparisonsToUpdate.Update(_db);
+        changes.ComparisonsToDelete.Delete(_db);
+    }
+
     private void doValueSetConceptComparisons(
         DbFhirPackage sourcePackage,
         DbValueSet sourceVs,
@@ -1758,7 +1977,6 @@ public class FhirDbComparer
         // select only active and concrete concepts
         List<DbValueSetConcept> sourceConcepts = DbValueSetConcept.SelectList(_db, ValueSetKey: sourceVs.Key, Inactive: false, Abstract: false);
 
-        // iterate over the source concepts to ensure every concept has a 
         foreach (DbValueSetConcept sourceConcept in sourceConcepts)
         {
             // look in our cache for existing comparisons

@@ -109,6 +109,24 @@ public class XVerProcessor
         _comparisonCache = [];
     }
 
+    public XVerProcessor(ComparisonDatabase db, string outputDirectory, ILoggerFactory loggerFactory)
+    {
+        _config = new()
+        {
+            CrossVersionDbPath = Path.Combine(db.DbFilePath, db.DbFileName),
+            OutputDirectory = outputDirectory,
+            LogFactory = loggerFactory,
+        };
+
+        _logger = loggerFactory.CreateLogger<XVerProcessor>();
+
+        _dbPath = db.DbFilePath;
+        _dbName = db.DbFileName;
+
+        _comparisonCache = [];
+        _db = db;
+    }
+
     private void loadDefinitionCollections()
     {
         List<DefinitionCollection> definitions = [];
@@ -787,6 +805,7 @@ public class XVerProcessor
                 $"<br/>- DBKey: `{comparison.Key}`" +
                 $"<br/>- Reviewed: `{comparison.LastReviewedOn?.ToString("o") ?? "n/a"}`" +
                 $"<br/>- By: `{comparison.LastReviewedBy ?? "n/a"}`" +
+                $"<br/>- Identical: `{comparison.IsIdentical ?? false}`" +
                 $"<br/>{arrows}";
         }
     }
@@ -1416,6 +1435,7 @@ public class XVerProcessor
                 $"<br/>- DBKey: `{comparison.Key}`" +
                 $"<br/>- Reviewed: `{comparison.LastReviewedOn?.ToString("o") ?? "n/a"}`" +
                 $"<br/>- By: `{comparison.LastReviewedBy ?? "n/a"}`" +
+                $"<br/>- Identical: `{comparison.IsIdentical ?? false}`" +
                 $"<br/>{arrows}";
 
             //return $"[{comparison.CompositeName.ForMdTable()} ({comparison.Key})]" +

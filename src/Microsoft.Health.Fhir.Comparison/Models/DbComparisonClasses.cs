@@ -14,6 +14,7 @@ using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 using fhir_codegen.SQLiteGenerator;
 using System.Diagnostics.CodeAnalysis;
+using System.Data;
 
 
 namespace Microsoft.Health.Fhir.Comparison.Models;
@@ -408,6 +409,7 @@ public class DbComparisonCache<T>
 
     private readonly Dictionary<int, T> _toAdd = [];
     private readonly Dictionary<int, T> _toUpdate = [];
+    private readonly Dictionary<int, T> _toDelete = [];
 
     public bool TryGet(int key, [NotNullWhen(true)] out T? value) => _byKey.TryGetValue(key, out value);
     public bool TryGet((int sourceKey, int? targetKey) pair, [NotNullWhen(true)] out T? value) => _byPair.TryGetValue(pair, out value);
@@ -424,6 +426,7 @@ public class DbComparisonCache<T>
 
     public IEnumerable<T> ComparisonsToAdd => _toAdd.Values;
     public IEnumerable<T> ComparisonsToUpdate => _toUpdate.Values;
+    public IEnumerable<T> ComparisonsToDelete => _toDelete.Values;
 
     public void Clear()
     {
@@ -431,6 +434,7 @@ public class DbComparisonCache<T>
         _byPair.Clear();
         _toAdd.Clear();
         _toUpdate.Clear();
+        _toDelete.Clear();
     }
 
     public void CacheAdd(T item)
@@ -447,12 +451,24 @@ public class DbComparisonCache<T>
         _toUpdate[item.Key] = item;
     }
 
+    public void CacheDelete(T item)
+    {
+        _byKey[item.Key] = item;
+        _byPair[(item.SourceContentKey, item.TargetContentKey)] = item;
+        _toDelete[item.Key] = item;
+    }
+
     public void Changed(T item)
     {
         if (_toAdd.ContainsKey(item.Key))
         {
             _toAdd[item.Key] = item;
             return;
+        }
+
+        if (_toDelete.ContainsKey(item.Key))
+        {
+            _toDelete.Remove(item.Key);
         }
 
         _toUpdate[item.Key] = item;

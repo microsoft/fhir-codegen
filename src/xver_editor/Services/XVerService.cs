@@ -1,11 +1,12 @@
 ﻿using System.Data;
+using Microsoft.Health.Fhir.Comparison.CompareTool;
 using Microsoft.Health.Fhir.Comparison.Models;
 using Microsoft.Health.Fhir.Comparison.XVer;
 using xver_editor.Config;
 
 namespace xver_editor.Services;
 
-public class XVerDbService : IXverDbService
+public class XVerService : IXverService
 {
     private XverAppConfig _config;
     private ILogger _logger;
@@ -15,7 +16,9 @@ public class XVerDbService : IXverDbService
     private string _dbPath;
     private string _dbName;
 
-    public XVerDbService(XverAppConfig config)
+    private FhirDbComparer? _fhirDbComparer = null;
+
+    public XVerService(XverAppConfig config)
     {
         _config = config;
         _logger = config.LogFactory.CreateLogger<XVerProcessor>();
@@ -32,7 +35,27 @@ public class XVerDbService : IXverDbService
         }
     }
 
-    public IDbConnection DB => _db?.DbConnection ?? throw new InvalidOperationException("Database not initialized.");
+    public IDbConnection DbConnection => _db?.DbConnection ?? throw new InvalidOperationException("Database not initialized.");
+    public ComparisonDatabase ComparisonDb => _db ?? throw new InvalidOperationException("Database not initialized.");
+    public FhirDbComparer Comparer => _fhirDbComparer ?? throw new InvalidOperationException("FhirDbComparer not initialized.");
+
+    public async Task WriteDocsFromDatabase(string? outputDirectory)
+    {
+        if (_db == null)
+        {
+            throw new InvalidOperationException("Database not initialized.");
+        }
+
+        outputDirectory ??= _config.OutputDirectory;
+
+        if (string.IsNullOrEmpty(outputDirectory))
+        {
+            throw new ArgumentNullException(nameof(outputDirectory));
+        }
+
+        XVerProcessor xverProcessor = new(_db, outputDirectory, _config.LogFactory);
+        await Task.Run(() => xverProcessor.WriteDocsFromDatabase());
+    }
 
     public Task StartAsync(CancellationToken cancellationToken)
     {
@@ -48,11 +71,14 @@ public class XVerDbService : IXverDbService
             _open = true;
         }
 
+        _fhirDbComparer = new(_db, _config.LogFactory);
+
         return Task.CompletedTask;
     }
 
     public Task StopAsync(CancellationToken cancellationToken)
     {
+        _fhirDbComparer = null;
         _db?.DbConnection.Close();
         _open = false;
 

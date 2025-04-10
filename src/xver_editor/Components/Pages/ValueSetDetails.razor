@@ -7,8 +7,9 @@
 @using System.Collections.Concurrent;
 @using System.Text;
 
-@inject IXverDbService DbService
+@inject IXverService Xver
 @inject NavigationManager NavigationManager
+@inject XverAppConfig ServerConfig
 
 <FluentStack Orientation="Orientation.Vertical" VerticalGap="8">
     <FluentLabel Typo="Typography.H4">Value Set details for @ValueSetName (DB Key: @ValueSetKey)</FluentLabel>
@@ -95,7 +96,10 @@
             </FluentTab>
             <FluentTab Id="mappingTable" Label="All-Version Mapping Table">
                 <FluentStack Orientation="Orientation.Vertical" VerticalGap="8">
-                    <FluentLabel Typo="Typography.H5">All-Version Mapping Table</FluentLabel>
+                    <FluentStack Orientation="Orientation.Horizontal">
+                        <FluentLabel Typo="Typography.H5">All-Version Mapping Table</FluentLabel>
+
+                    </FluentStack>
                     <FluentCard Width="100%">
                         <div class="grid-container" style="padding: 16px;">
                             @if (vsUiRec.Projection.Count == 0)
@@ -150,7 +154,7 @@
                                                             </FluentButton>
                                                             <FluentLabel Typo="Typography.Body">DB Key: @toRight.Key</FluentLabel>
                                                             <FluentLabel Typo="Typography.Body">@toRight.Relationship</FluentLabel>
-                                                            <FluentLabel Typo="Typography.Body">@(toRight.LastReviewedOn?.ToLongTimeString() ?? string.Empty)</FluentLabel>
+                                                            <FluentLabel Typo="Typography.Body">@(GetDateDisplay(toRight.LastReviewedOn))</FluentLabel>
                                                             <FluentLabel Typo="Typography.Body">@(toRight.LastReviewedBy ?? string.Empty)</FluentLabel>
                                                         </FluentStack>
                                                     }
@@ -169,7 +173,7 @@
                                                             </FluentButton>
                                                             <FluentLabel Typo="Typography.Body">DB Key: @fromRight.Key</FluentLabel>
                                                             <FluentLabel Typo="Typography.Body">@fromRight.Relationship</FluentLabel>
-                                                            <FluentLabel Typo="Typography.Body">@(fromRight.LastReviewedOn?.ToLongTimeString() ?? string.Empty)</FluentLabel>
+                                                            <FluentLabel Typo="Typography.Body">@(GetDateDisplay(fromRight.LastReviewedOn))</FluentLabel>
                                                             <FluentLabel Typo="Typography.Body">@(fromRight.LastReviewedBy ?? string.Empty)</FluentLabel>
                                                         </FluentStack>
                                                     }
@@ -245,10 +249,74 @@
                         </FluentCard>
 
                         <FluentCard Width="100%">
-                            <FluentLabel Typo="Typography.H5">Concept Mapping</FluentLabel>
+                            <FluentStack Orientation="Orientation.Horizontal">
+                                <FluentLabel Typo="Typography.H5">Concept Mapping</FluentLabel>
+                                @{
+                                    var popKey = "add-concept-row";
+                                    <div>
+                                        <FluentButton Id="@($"{popKey}-btn")" Appearance="Appearance.Outline" Title="Add new mapping row" OnClick="@(() => TogglePopover(popKey))">
+                                            <FluentIcon Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Regular.Size20.AddSquare())" Color="@Color.Success" />
+                                        </FluentButton>
+
+                                        <FluentPopover AnchorId="@($"{popKey}-btn")"
+                                            VerticalPosition="VerticalPosition.Bottom"
+                                            FixedPlacement="true"
+                                            Open="@IsPopoverOpen(popKey)"
+                                            OpenChanged="@((value) => SetPopoverState(popKey, value))">
+                                            <Header>
+                                                Select source concept...
+                                            </Header>
+                                            <Body>
+                                                <FluentCombobox Items="@_sourceConcepts"
+                                                Width="950px"
+                                                Placeholder="Search for a concept..."
+                                                OptionValue="@(i => i.Value?.Key.ToString() ?? string.Empty)"
+                                                OptionText="@(i => i.Text)"
+                                                Multiple="false"
+                                                Autocomplete="ComboboxAutocomplete.Inline"
+                                                Autofocus="true"
+                                                Open="true"
+                                                SelectedOptionChanged="@(EventCallback.Factory.Create<Option<DbValueSetConcept>>(this, (value) => AddConceptRow(value)))" />
+                                            </Body>
+                                        </FluentPopover>
+                                    </div>
+                                }
+                                <FluentButton IconStart="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Regular.Size20.Save())" Appearance="Appearance.Outline" Title="Mark Reviewd and Save Changes" OnClick="@(() => SaveChanges())">
+                                    Mark Reviewed and Save Changes
+                                </FluentButton>
+                                <FluentSwitch Label="Apply to inverse" @bind-Value="ApplyToInverse"></FluentSwitch>
+                            </FluentStack>
                             <br />
                             <div class="grid-container">
-                                <FluentDataGrid Items="conceptProjection" ShowHover="true" class="mapping-grid" RowSize="@DataGridRowSize.Large" GridTemplateColumns="2fr 0.5fr 1fr 2fr" >
+                                <FluentDataGrid Items="conceptProjection" ShowHover="true" class="mapping-grid" RowSize="@DataGridRowSize.Large" GridTemplateColumns="80px 2fr 0.5fr 1fr 2fr" >
+                                    <TemplateColumn Sortable="false">
+                                        @{
+                                            var rowKey = $"del-{context.RowNumber}";
+                                            <div>
+                                                <FluentButton Id="@($"del-btn-{rowKey}")"
+                                                Appearance="Appearance.Outline"
+                                                OnClick="@(() => TogglePopover(rowKey))"
+                                                Title="Delete this row">
+                                                    <FluentIcon Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Regular.Size20.SubtractSquare())" Color="@Color.Error" />
+                                                </FluentButton>
+
+                                                <FluentPopover AnchorId="@($"del-btn-{rowKey}")"
+                                                VerticalPosition="VerticalPosition.Bottom"
+                                                FixedPlacement="true"
+                                                Open="@IsPopoverOpen(rowKey)"
+                                                OpenChanged="@((value) => SetPopoverState(rowKey, value))">
+                                                    <Body>
+                                                        <FluentButton IconStart="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Regular.Size20.CheckmarkCircleWarning())"
+                                                        Appearance="Appearance.Outline"
+                                                        OnClick="@(() => DeleteConceptRow(context))">
+                                                            Confirm Delete
+                                                        </FluentButton>
+                                                    </Body>
+                                                </FluentPopover>
+                                            </div>
+                                        }
+                                    </TemplateColumn>
+
                                     <TemplateColumn Title="Source" Sortable="true" Tooltip="true" TooltipText="@(e => e[sourceColIndex]!.Concept.Display ?? e[sourceColIndex]!.Concept.FhirKey)">
                                         <FluentLabel Typo="Typography.Body">@context[sourceColIndex]!.Concept.UiDisplay</FluentLabel>
                                     </TemplateColumn>
@@ -265,9 +333,7 @@
 
                                     <TemplateColumn Title="Relationship" Sortable="false">
                                         @{
-                                            var rowKey = compareRight
-                                                ? $"rel-{context[sourceColIndex]!.Concept.Key}-{(context[sourceColIndex]!.RightComparison?.Key ?? -1)}"
-                                                : $"rel-{context[sourceColIndex]!.Concept.Key}-{(context[sourceColIndex]!.LeftComparison?.Key ?? -1)}";
+                                            var rowKey = $"rel-{context.RowNumber}";
                                             var relationship = compareRight
                                                 ? context[sourceColIndex]!.RightComparison?.Relationship
                                                 : context[sourceColIndex]!.LeftComparison?.Relationship;
@@ -308,9 +374,7 @@
 
                                     <TemplateColumn Title="Target" Sortable="true" Tooltip="true" TooltipText="@(e => e[targetColIndex]!.Concept.Display ?? e[targetColIndex]!.Concept.FhirKey)">
                                         @{
-                                            var rowKey = compareRight
-                                                ? $"target-{context[sourceColIndex]!.Concept.Key}-{(context[sourceColIndex]!.RightComparison?.Key ?? -1)}"
-                                                : $"target-{context[sourceColIndex]!.Concept.Key}-{(context[sourceColIndex]!.LeftComparison?.Key ?? -1)}";
+                                            var rowKey = $"target-{context.RowNumber}";
                                             var concept = context[targetColIndex]!.Concept;
                                             <div>
                                                 <FluentButton Id="@($"target-btn-{rowKey}")"
@@ -331,7 +395,7 @@
                                                     </Header>
                                                     <Body>
                                                         <FluentStack Orientation="Orientation.Vertical" VerticalGap="4">
-                                                            <FluentCombobox Items="@ctConcepts"
+                                                            <FluentCombobox Items="@_targetConcepts"
                                                             Width="950px"
                                                             Placeholder="Search for a concept..."
                                                             OptionValue="@(i => i.Value?.Key.ToString() ?? string.Empty)"
@@ -404,7 +468,10 @@
         new() { Text = "NOT related To", Value = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo },
     ];
 
-    private DbVsRow comparisonFilteredVsRow = new(0, 0);
+    private bool _hasChanges = false;
+    private bool ApplyToInverse { get; set; } = true;
+
+    private DbVsRow comparisonFilteredVsRow = new(0, 0, 0);
     private DbValueSetComparison? selectedComparison = null;
     private int sourceColIndex = 0;
     private int targetColIndex = 0;
@@ -412,9 +479,11 @@
     private DbVsCell? ctCell = null;
     private DbFhirPackage? csPackage = null;
     private DbFhirPackage? ctPackage = null;
+    private List<DbVsConceptRow> originalProjection = [];
     private IQueryable<DbVsConceptRow> conceptProjection = Enumerable.Empty<DbVsConceptRow>().AsQueryable();
     private bool compareRight = true;
-    private List<Option<DbValueSetConcept>> ctConcepts = [];
+    private List<Option<DbValueSetConcept>> _sourceConcepts = [];
+    private List<Option<DbValueSetConcept>> _targetConcepts = [];
 
     protected override void OnInitialized()
     {
@@ -454,7 +523,6 @@
         return sb.ToString();
     }
 
-
     // Track open state of popovers
     private Dictionary<string, bool> _popoverStates = new();
 
@@ -476,6 +544,145 @@
             currentValue = false;
         }
         _popoverStates[key] = !currentValue;
+        StateHasChanged();
+    }
+
+    private string GetDateDisplay(DateTime? date) => date == null
+        ? string.Empty
+        : date.Value.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
+
+    private void SaveChanges()
+    {
+        if (selectedComparison == null)
+        {
+            return;
+        }
+
+        string reviewer = NavTracker?.UserName ?? ServerConfig.UserName;
+
+        Xver.Comparer.ApplyVsConceptChanges(
+            originalProjection,
+            conceptProjection,
+            sourceColIndex,
+            compareRight,
+            reviewer);
+
+        // re-aggregate the concept comparisons for the value set
+        _ = Xver.Comparer.AggregateValueSetRelationships(selectedComparison);
+
+        // mark this value set comparison as reviewed
+        selectedComparison.LastReviewedOn = DateTime.UtcNow;
+        selectedComparison.LastReviewedBy = reviewer;
+        selectedComparison.Update(Xver.DbConnection);
+
+        // check if the user wants to apply the inverse changes
+        if (ApplyToInverse == true)
+        {
+            (DbValueSetComparison? inverse, bool? hasChanges) = Xver.Comparer.UpdateInversion(selectedComparison);
+
+            // if there is an inverse and it is not reviewed or changed because of these changes, bring it up
+            if ((inverse != null) &&
+                ((inverse.LastReviewedOn == null) ||(hasChanges == true)))
+            {
+                // find the correct value set row in the projection
+
+                DbVsRow? vsRow = graphProjection?.FirstOrDefault(v => v.RowNumber == comparisonFilteredVsRow.RowNumber);
+
+                if (vsRow != null)
+                {
+                    // move the UI
+                    SelectComparison(comparisonFilteredVsRow, inverse, targetColIndex, sourceColIndex);
+                    return;
+                }
+            }
+        }
+
+        // clear our selected comparison
+        ClearSelectedComparison();
+
+        // force reload of the mapping table
+        LoadValueSet(true);
+
+        // move the UI back to the mapping table
+        activeTabId = "mappingTable";
+        StateHasChanged();
+
+        return;
+    }
+
+    private void ClearSelectedComparison()
+    {
+        selectedComparison = null;
+        _sourceConcepts = [];
+        _targetConcepts = [];
+        originalProjection = [];
+        conceptProjection = Enumerable.Empty<DbVsConceptRow>().AsQueryable();
+    }
+
+    private void AddConceptRow(object? selectedValue)
+    {
+        if ((csCell != null) &&
+            (ctCell != null) &&
+            (selectedValue != null) &&
+            (selectedValue is Option<DbValueSetConcept> concept) &&
+            (concept.Value != null))
+        {
+            DbVsConceptRow row = new(_packages.Count, sourceColIndex, conceptProjection.Count());
+            row[sourceColIndex] = new()
+            {
+                VsCell = csCell,
+                Concept = concept.Value,
+            };
+
+            row[targetColIndex] = new()
+            {
+                VsCell = ctCell,
+                Concept = DbValueSetConcept.EmptyCopy,
+            };
+
+            if (compareRight)
+            {
+                row[targetColIndex]!.LeftCell = row[sourceColIndex];
+                row[targetColIndex]!.LeftComparison = DbValueSetConceptComparison.EmptyCopy;
+                row[targetColIndex]!.LeftConcept = row[sourceColIndex]!.Concept;
+            }
+            else
+            {
+                row[targetColIndex]!.RightCell = row[sourceColIndex];
+                row[targetColIndex]!.RightComparison = DbValueSetConceptComparison.EmptyCopy;
+                row[targetColIndex]!.RightConcept = row[sourceColIndex]!.Concept;
+            }
+
+            List<DbVsConceptRow> cp = [row, .. conceptProjection];
+            _hasChanges = true;
+
+            conceptProjection = cp.AsQueryable();
+        }
+
+        // Close the popover after selection
+        string key = $"add-concept-row";
+        SetPopoverState(key, false);
+        StateHasChanged();
+    }
+
+    private void DeleteConceptRow(DbVsConceptRow rowToRemove)
+    {
+        List<DbVsConceptRow> cp = [];
+        foreach (DbVsConceptRow row in conceptProjection)
+        {
+            if (row.RowNumber != rowToRemove.RowNumber)
+            {
+                cp.Add(row);
+            }
+        }
+
+        conceptProjection = cp.AsQueryable();
+        _hasChanges = true;
+
+        // Close the popover after selection
+        string key = $"del-{rowToRemove.RowNumber}";
+        SetPopoverState(key, false);
+        StateHasChanged();
         StateHasChanged();
     }
 
@@ -511,10 +718,10 @@
                 }
             }
 
+            _hasChanges = true;
+
             // Close the popover after selection
-            string key = compareRight
-                ? $"rel-{conceptRow[sourceColIndex]!.Concept.Key}-{(conceptRow[sourceColIndex]!.RightComparison?.Key ?? -1)}"
-                : $"rel-{conceptRow[sourceColIndex]!.Concept.Key}-{(conceptRow[sourceColIndex]!.LeftComparison?.Key ?? -1)}";
+            string key = $"rel-{conceptRow.RowNumber}";
             SetPopoverState(key, false);
             StateHasChanged();
         }
@@ -536,10 +743,10 @@
                 conceptRow[targetColIndex]!.Concept = DbValueSetConcept.EmptyCopy;
             }
 
+            _hasChanges = true;
+
             // Close the popover after selection
-            string key = compareRight
-                ? $"target-{conceptRow[sourceColIndex]!.Concept.Key}-{(conceptRow[sourceColIndex]!.RightComparison?.Key ?? -1)}"
-                : $"target-{conceptRow[sourceColIndex]!.Concept.Key}-{(conceptRow[sourceColIndex]!.LeftComparison?.Key ?? -1)}";
+            string key = $"target-{conceptRow.RowNumber}";
             SetPopoverState(key, false);
             StateHasChanged();
         }
@@ -551,7 +758,7 @@
         int sourceCellIndex,
         int targetCellIndex)
     {
-        comparisonFilteredVsRow = valueSetRow.ShallowCopy(sourceCellIndex, targetCellIndex);
+        comparisonFilteredVsRow = valueSetRow.ShallowCopy(null, sourceCellIndex, targetCellIndex);
 
         compareRight = sourceCellIndex < targetCellIndex;
         selectedComparison = comparison;
@@ -564,29 +771,41 @@
         ctCell = valueSetRow[targetCellIndex];
         ctPackage = _packages[targetCellIndex];
 
-        List<DbValueSetConcept> concepts = DbValueSetConcept.SelectList(
-            DbService.DB,
+        List<DbValueSetConcept> sourceConcepts = DbValueSetConcept.SelectList(
+            Xver.DbConnection,
+            FhirPackageKey: csCell!.Vs.FhirPackageKey,
+            ValueSetKey: csCell!.Vs.Key,
+            orderByProperties: [nameof(DbValueSetConcept.System), nameof(DbValueSetConcept.Code)]);
+
+        _sourceConcepts = sourceConcepts.Select(c => new Option<DbValueSetConcept>()
+        {
+            Text = c.UiDisplayLong,
+            Value = c,
+        }).ToList();
+
+        List<DbValueSetConcept> targetConcepts = DbValueSetConcept.SelectList(
+            Xver.DbConnection,
             FhirPackageKey: ctCell!.Vs.FhirPackageKey,
             ValueSetKey: ctCell!.Vs.Key,
             orderByProperties: [nameof(DbValueSetConcept.System), nameof(DbValueSetConcept.Code)]);
 
-        ctConcepts = [ new ()
+        _targetConcepts = [ new ()
         {
             Text = "-No Concept-",
             Value = DbValueSetConcept.EmptyCopy,
         }];
 
-        ctConcepts.AddRange(concepts.Select(c => new Option<DbValueSetConcept>()
+        _targetConcepts.AddRange(targetConcepts.Select(c => new Option<DbValueSetConcept>()
         {
             Text = c.UiDisplayLong,
             Value = c,
         }));
 
         // grab the current projection
-        List<DbVsConceptRow> cp = vsUiRec!.Graph.ProjectConcepts(comparisonFilteredVsRow, sourceCellIndex);
+        originalProjection = vsUiRec!.Graph.ProjectConcepts(comparisonFilteredVsRow, sourceCellIndex);
 
         // make sure we have cells for targets
-        foreach (DbVsConceptRow conceptRow in cp)
+        foreach (DbVsConceptRow conceptRow in originalProjection)
         {
             if (conceptRow[targetColIndex] == null)
             {
@@ -611,7 +830,7 @@
             }
         }
 
-        conceptProjection = cp.AsQueryable();
+        conceptProjection = originalProjection.AsQueryable();
 
         activeTabId = "comparisonDetails";
         StateHasChanged();
@@ -622,7 +841,7 @@
         try
         {
             _packages = DbFhirPackage.SelectList(
-                DbService.DB,
+                Xver.DbConnection,
                 orderByProperties: [nameof(DbFhirPackage.ShortName)]);
         }
         catch (Exception)
@@ -631,11 +850,11 @@
         }
     }
 
-    private void LoadValueSet()
+    private void LoadValueSet(bool forceReload = false)
     {
         try
         {
-            if (vsUiRec != null)
+            if ((vsUiRec != null) && !forceReload)
             {
                 return;
             }
@@ -647,7 +866,7 @@
 
             // Query ValueSets for the specified FhirPackageKey
             DbValueSet? vs = DbValueSet.SelectSingle(
-                DbService.DB,
+                Xver.DbConnection,
                 FhirPackageKey: FhirPackageKey,
                 Key: ValueSetKey);
 
@@ -657,7 +876,7 @@
             }
 
             _boundElements = DbElement.SelectList(
-                DbService.DB,
+                Xver.DbConnection,
                 BindingValueSetKey: ValueSetKey,
                 orderByProperties: [nameof(DbElement.Key)])
                 .AsQueryable();
@@ -670,7 +889,7 @@
                 }
 
                 DbStructureDefinition? structure = DbStructureDefinition.SelectSingle(
-                    DbService.DB,
+                    Xver.DbConnection,
                     Key: element.StructureKey);
                 if (structure != null)
                 {
@@ -678,8 +897,9 @@
                 }
             }
 
-            vsUiRec = new(DbService.DB, vs, _packages);
+            vsUiRec = new(Xver.DbConnection, vs, _packages);
             graphProjection = vsUiRec.Projection.AsQueryable();
+            StateHasChanged();
         }
         catch (Exception)
         {

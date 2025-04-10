@@ -9,6 +9,7 @@ public interface INavTracker
 
     /// <summary>Gets a value indicating whether this object is dark mode.</summary>
     bool IsDarkMode { get; }
+    string UserName { get; }
 
     /// <summary>Notifies a navigation.</summary>
     /// <param name="pages">The pages.</param>
