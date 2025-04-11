@@ -7,6 +7,7 @@
 @using System.Collections.Concurrent;
 @using System.Text;
 
+@inject IDialogService DialogService
 @inject IXverService Xver
 @inject NavigationManager NavigationManager
 @inject XverAppConfig ServerConfig
@@ -96,11 +97,47 @@
             </FluentTab>
             <FluentTab Id="mappingTable" Label="All-Version Mapping Table">
                 <FluentStack Orientation="Orientation.Vertical" VerticalGap="8">
-                    <FluentStack Orientation="Orientation.Horizontal">
-                        <FluentLabel Typo="Typography.H5">All-Version Mapping Table</FluentLabel>
-
-                    </FluentStack>
+                    <FluentLabel Typo="Typography.H5">All-Version Mapping Table</FluentLabel>
                     <FluentCard Width="100%">
+                        <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center">
+                            <FluentLabel Typo="Typography.Body">Add mapping for @ValueSetName</FluentLabel>
+                            @for (int i = 0; i < _packages.Count; i++)
+                            {
+                                int packageIndex = i;
+                                if (_packages[packageIndex].Key != FhirPackageKey)
+                                {
+                                    continue;
+                                }
+
+                                if (packageIndex > 0)
+                                {
+                                    int tpIndex = packageIndex - 1;
+                                    string dialogKey = $"add-vs-map-left";
+                                    <div>
+                                        <FluentButton Appearance="Appearance.Outline"
+                                        Title="@($"Add new mapping to {_packages[tpIndex].ShortName}")"
+                                        OnClick="@(() => ShowValueSetSelectionDialog(dialogKey, ValueSetKey, packageIndex, tpIndex))">
+                                            <FluentIcon Value="@(new Icons.Regular.Size20.Add())" />
+                                            <FluentIcon Value="@(new Icons.Regular.Size20.ArrowLeft())" />
+                                        </FluentButton>
+                                    </div>
+                                }
+
+                                if (packageIndex < (_packages.Count - 1))
+                                {
+                                    int tpIndex = packageIndex + 1;
+                                    string dialogKey = $"add-vs-map-right";
+                                    <div>
+                                        <FluentButton Appearance="Appearance.Outline"
+                                        Title="@($"Add new mapping to {_packages[packageIndex+1].ShortName}")"
+                                        OnClick="@(() => ShowValueSetSelectionDialog(dialogKey, ValueSetKey, packageIndex, tpIndex))">
+                                            <FluentIcon Value="@(new Icons.Regular.Size20.Add())" />
+                                            <FluentIcon Value="@(new Icons.Regular.Size20.ArrowRight())" />
+                                        </FluentButton>
+                                    </div>
+                                }
+                            }
+                        </FluentStack>
                         <div class="grid-container" style="padding: 16px;">
                             @if (vsUiRec.Projection.Count == 0)
                             {
@@ -118,15 +155,13 @@
                                             }
                                             @if (cell != null)
                                             {
-                                                <div>
-                                                    <div><strong>@cell.Vs.Name</strong></div>
-                                                    <div>@cell.Vs.Id</div>
-                                                    <div>
-                                                        <FluentBadge Appearance="@(cell.Vs.Key == ValueSetKey ? Appearance.Accent : Appearance.Neutral)">
-                                                            Concepts: @cell.Concepts.Count
-                                                        </FluentBadge>
-                                                    </div>
-                                                </div>
+                                                <FluentStack Orientation="Orientation.Vertical">
+                                                    <FluentLabel Typo="Typography.Header">@cell.Vs.Name</FluentLabel>
+                                                    <FluentLabel Typo="Typography.Body">@cell.Vs.Id</FluentLabel>
+                                                    <FluentBadge Appearance="@(cell.Vs.Key == ValueSetKey ? Appearance.Accent : Appearance.Neutral)">
+                                                        Concepts: @cell.Concepts.Count
+                                                    </FluentBadge>
+                                                </FluentStack>
                                             }
                                         </TemplateColumn>
 
@@ -199,57 +234,105 @@
                     else
                     {
                         <FluentCard Width="100%">
-                            <FluentLabel Typo="Typography.H5">@selectedComparison.CompositeName</FluentLabel>
-                            <br />
+                            <FluentStack Orientation="Orientation.Vertical">
+                                <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center">
+                                    <FluentLabel Typo="Typography.H5">@selectedComparison.CompositeName</FluentLabel>
+                                    <FluentButton Id="@($"del-vsc-btn")" Appearance="Appearance.Outline" Title="Delete this Mapping" OnClick="@(() => DeleteCurrentMapping())">
+                                        <FluentIcon Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Regular.Size20.Delete())" Color="@Color.Error" />
+                                    </FluentButton>
 
-                            <FluentTextField Label="Comparison DB Key" Value="@selectedComparison.Key.ToString()" ReadOnly="true" />
+                                </FluentStack>
 
-                            <FluentDataGrid GenerateHeader="GenerateHeaderOption.None" TGridItem="string" DisplayMode="DataGridDisplayMode.Table" role="grid" class="full-width">
-                                <FluentDataGridRow RowType="DataGridRowType.Header">
-                                    <FluentDataGridCell GridColumn=1 CellType="DataGridCellType.ColumnHeader" Style="width: 20%;"></FluentDataGridCell>
-                                    <FluentDataGridCell GridColumn=2 CellType="DataGridCellType.ColumnHeader" Style="width: 40%;">Source</FluentDataGridCell>
-                                    <FluentDataGridCell GridColumn=3 CellType="DataGridCellType.ColumnHeader" Style="width: 40%;">Target</FluentDataGridCell>
-                                </FluentDataGridRow>
-                                <FluentDataGridRow>
-                                    <FluentDataGridCell GridColumn=1>Package</FluentDataGridCell>
-                                    <FluentDataGridCell GridColumn=2>@(csPackage?.NpmId ?? string.Empty)</FluentDataGridCell>
-                                    <FluentDataGridCell GridColumn=3>@(ctPackage?.NpmId ?? string.Empty)</FluentDataGridCell>
-                                </FluentDataGridRow>
-                                <FluentDataGridRow>
-                                    <FluentDataGridCell GridColumn=1>Id</FluentDataGridCell>
-                                    <FluentDataGridCell GridColumn=2>@csCell.Vs.Id</FluentDataGridCell>
-                                    <FluentDataGridCell GridColumn=3>@ctCell.Vs.Id</FluentDataGridCell>
-                                </FluentDataGridRow>
-                                <FluentDataGridRow>
-                                    <FluentDataGridCell GridColumn=1>Name</FluentDataGridCell>
-                                    <FluentDataGridCell GridColumn=2>@csCell.Vs.Name</FluentDataGridCell>
-                                    <FluentDataGridCell GridColumn=3>@ctCell.Vs.Name</FluentDataGridCell>
-                                </FluentDataGridRow>
-                                <FluentDataGridRow>
-                                    <FluentDataGridCell GridColumn=1>URL</FluentDataGridCell>
-                                    <FluentDataGridCell GridColumn=2>@csCell.Vs.UnversionedUrl</FluentDataGridCell>
-                                    <FluentDataGridCell GridColumn=3>@ctCell.Vs.UnversionedUrl</FluentDataGridCell>
-                                </FluentDataGridRow>
-                                <FluentDataGridRow>
-                                    <FluentDataGridCell GridColumn=1>Version</FluentDataGridCell>
-                                    <FluentDataGridCell GridColumn=2>@csCell.Vs.Version</FluentDataGridCell>
-                                    <FluentDataGridCell GridColumn=3>@ctCell.Vs.Version</FluentDataGridCell>
-                                </FluentDataGridRow>
-                                <FluentDataGridRow>
-                                    <FluentDataGridCell GridColumn=1>Concept Count</FluentDataGridCell>
-                                    <FluentDataGridCell GridColumn=2>@csCell.Vs.ConceptCount</FluentDataGridCell>
-                                    <FluentDataGridCell GridColumn=3>@ctCell.Vs.ConceptCount</FluentDataGridCell>
-                                </FluentDataGridRow>
-                                <FluentDataGridRow>
-                                    <FluentDataGridCell GridColumn=1>Active and Concrete</FluentDataGridCell>
-                                    <FluentDataGridCell GridColumn=2>@csCell.Vs.ActiveConcreteConceptCount</FluentDataGridCell>
-                                    <FluentDataGridCell GridColumn=3>@ctCell.Vs.ActiveConcreteConceptCount</FluentDataGridCell>
-                                </FluentDataGridRow>
-                            </FluentDataGrid>
+                                <FluentTextField Label="Comparison DB Key" Value="@selectedComparison.Key.ToString()" ReadOnly="true" />
+
+                                <FluentDataGrid GenerateHeader="GenerateHeaderOption.None" TGridItem="string" DisplayMode="DataGridDisplayMode.Table" role="grid" class="full-width">
+                                    <FluentDataGridRow RowType="DataGridRowType.Header">
+                                        <FluentDataGridCell GridColumn=1 CellType="DataGridCellType.ColumnHeader" Style="width: 20%;"></FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=2 CellType="DataGridCellType.ColumnHeader" Style="width: 40%;">Source</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=3 CellType="DataGridCellType.ColumnHeader" Style="width: 40%;">Target</FluentDataGridCell>
+                                    </FluentDataGridRow>
+                                    <FluentDataGridRow>
+                                        <FluentDataGridCell GridColumn=1>Package</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=2>@(csPackage?.NpmId ?? string.Empty)</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=3>@(ctPackage?.NpmId ?? string.Empty)</FluentDataGridCell>
+                                    </FluentDataGridRow>
+                                    <FluentDataGridRow>
+                                        <FluentDataGridCell GridColumn=1>Id</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=2>@csCell.Vs.Id</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=3>@ctCell.Vs.Id</FluentDataGridCell>
+                                    </FluentDataGridRow>
+                                    <FluentDataGridRow>
+                                        <FluentDataGridCell GridColumn=1>Name</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=2>@csCell.Vs.Name</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=3>@ctCell.Vs.Name</FluentDataGridCell>
+                                    </FluentDataGridRow>
+                                    <FluentDataGridRow>
+                                        <FluentDataGridCell GridColumn=1>URL</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=2>@csCell.Vs.UnversionedUrl</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=3>@ctCell.Vs.UnversionedUrl</FluentDataGridCell>
+                                    </FluentDataGridRow>
+                                    <FluentDataGridRow>
+                                        <FluentDataGridCell GridColumn=1>Version</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=2>@csCell.Vs.Version</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=3>@ctCell.Vs.Version</FluentDataGridCell>
+                                    </FluentDataGridRow>
+                                    <FluentDataGridRow>
+                                        <FluentDataGridCell GridColumn=1>Concept Count</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=2>@csCell.Vs.ConceptCount</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=3>@ctCell.Vs.ConceptCount</FluentDataGridCell>
+                                    </FluentDataGridRow>
+                                    <FluentDataGridRow>
+                                        <FluentDataGridCell GridColumn=1>Active and Concrete</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=2>@csCell.Vs.ActiveConcreteConceptCount</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=3>@ctCell.Vs.ActiveConcreteConceptCount</FluentDataGridCell>
+                                    </FluentDataGridRow>
+                                </FluentDataGrid>
+                                <FluentLabel Typo="Typography.Body">ValueSet Relationship:</FluentLabel>
+                                @{
+                                    var rowKey = $"rel-vs";
+                                    var relationship = selectedComparison.Relationship;
+                                    <div>
+                                        <FluentButton Id="@($"{rowKey}-btn")"
+                                        Appearance="Appearance.Outline"
+                                        OnClick="@(() => TogglePopover(rowKey))">
+                                            @(relationship?.ToString() ?? "-")
+                                        </FluentButton>
+
+                                        <FluentPopover AnchorId="@($"{rowKey}-btn")"
+                                        VerticalPosition="VerticalPosition.Top"
+                                        FixedPlacement="true"
+                                        Open="@IsPopoverOpen(rowKey)"
+                                        OpenChanged="@((value) => SetPopoverState(rowKey, value))">
+                                            <Header>
+                                                <FluentLabel Typo="Typography.Body">Select Relationship</FluentLabel>
+                                            </Header>
+                                            <Body>
+                                                <FluentStack Orientation="Orientation.Vertical" VerticalGap="4">
+                                                    <FluentCombobox Items="@_relationships"
+                                                    Name="@($"{rowKey}-combo")"
+                                                    Width="950px"
+                                                    Placeholder="Search for a relationship..."
+                                                    OptionValue="@(i => i.Value.ToString() ?? string.Empty)"
+                                                    OptionText="@(i => i.Text)"
+                                                    Multiple="false"
+                                                    Autocomplete="ComboboxAutocomplete.Inline"
+                                                    Autofocus="true"
+                                                    Open="true"
+                                                    SelectedOptionChanged="@(EventCallback.Factory.Create<Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?>>(this, (value) => UpdateVsRelationship(value)))" />
+                                                </FluentStack>
+                                            </Body>
+                                        </FluentPopover>
+                                    </div>
+                                }
+                                <FluentTextField Label="Message" @bind-Value="@selectedComparison.Message" Class="full-width" />
+                                @* // add a div so that the combo box will display - otherwise it is truncated *@
+                                <div class="fluent-pop-container-spacer-short"></div>
+                            </FluentStack>
+
                         </FluentCard>
 
                         <FluentCard Width="100%">
-                            <FluentStack Orientation="Orientation.Horizontal">
+                            <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center">
                                 <FluentLabel Typo="Typography.H5">Concept Mapping</FluentLabel>
                                 @{
                                     var popKey = "add-concept-row";
@@ -259,10 +342,10 @@
                                         </FluentButton>
 
                                         <FluentPopover AnchorId="@($"{popKey}-btn")"
-                                            VerticalPosition="VerticalPosition.Bottom"
-                                            FixedPlacement="true"
-                                            Open="@IsPopoverOpen(popKey)"
-                                            OpenChanged="@((value) => SetPopoverState(popKey, value))">
+                                        VerticalPosition="VerticalPosition.Bottom"
+                                        FixedPlacement="true"
+                                        Open="@IsPopoverOpen(popKey)"
+                                        OpenChanged="@((value) => SetPopoverState(popKey, value))">
                                             <Header>
                                                 Select source concept...
                                             </Header>
@@ -293,14 +376,14 @@
                                         @{
                                             var rowKey = $"del-{context.RowNumber}";
                                             <div>
-                                                <FluentButton Id="@($"del-btn-{rowKey}")"
+                                                <FluentButton Id="@($"{rowKey}-btn")"
                                                 Appearance="Appearance.Outline"
                                                 OnClick="@(() => TogglePopover(rowKey))"
                                                 Title="Delete this row">
                                                     <FluentIcon Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Regular.Size20.SubtractSquare())" Color="@Color.Error" />
                                                 </FluentButton>
 
-                                                <FluentPopover AnchorId="@($"del-btn-{rowKey}")"
+                                                <FluentPopover AnchorId="@($"{rowKey}-btn")"
                                                 VerticalPosition="VerticalPosition.Bottom"
                                                 FixedPlacement="true"
                                                 Open="@IsPopoverOpen(rowKey)"
@@ -338,13 +421,13 @@
                                                 ? context[sourceColIndex]!.RightComparison?.Relationship
                                                 : context[sourceColIndex]!.LeftComparison?.Relationship;
                                             <div>
-                                                <FluentButton Id="@($"rel-btn-{rowKey}")"
+                                                <FluentButton Id="@($"{rowKey}-btn")"
                                                 Appearance="Appearance.Outline"
                                                 OnClick="@(() => TogglePopover(rowKey))">
                                                     @(relationship?.ToString() ?? "-")
                                                 </FluentButton>
 
-                                                <FluentPopover AnchorId="@($"rel-btn-{rowKey}")"
+                                                <FluentPopover AnchorId="@($"{rowKey}-btn")"
                                                 VerticalPosition="VerticalPosition.Bottom"
                                                 FixedPlacement="true"
                                                 Open="@IsPopoverOpen(rowKey)"
@@ -355,7 +438,7 @@
                                                     <Body>
                                                         <FluentStack Orientation="Orientation.Vertical" VerticalGap="4">
                                                             <FluentCombobox Items="@_relationships"
-                                                            Name="@($"rel-group-{rowKey}")"
+                                                            Name="@($"{rowKey}-combo")"
                                                             Width="950px"
                                                             Placeholder="Search for a relationship..."
                                                             OptionValue="@(i => i.Value.ToString() ?? string.Empty)"
@@ -377,13 +460,13 @@
                                             var rowKey = $"target-{context.RowNumber}";
                                             var concept = context[targetColIndex]!.Concept;
                                             <div>
-                                                <FluentButton Id="@($"target-btn-{rowKey}")"
+                                                <FluentButton Id="@($"{rowKey}-btn")"
                                                 Appearance="Appearance.Outline"
                                                 OnClick="@(() => TogglePopover(rowKey))">
                                                     @concept.UiDisplay
                                                 </FluentButton>
 
-                                                <FluentPopover AnchorId="@($"target-btn-{rowKey}")"
+                                                <FluentPopover AnchorId="@($"{rowKey}-btn")"
                                                 VerticalPosition="VerticalPosition.Bottom"
                                                 FixedPlacement="true"
                                                 Open="@IsPopoverOpen(rowKey)"
@@ -416,7 +499,7 @@
                                 </FluentDataGrid>
                             </div>
                             @* // add a div so that the combo box will display - otherwise it is truncated *@
-                            <div class="concept-popover-container"></div>
+                            <div class="fluent-pop-container-spacer-tall"></div>
                         </FluentCard>
                     }
                 </FluentStack>
@@ -426,12 +509,63 @@
     }
 </FluentStack>
 
+<FluentDialog @ref="valueSetSelectionDialog" 
+Modal="true"
+Hidden="@dialogHidden"
+Class="vs-dialog-container">
+    <FluentDialogHeader Visible="true">@valueSetDialogTitle</FluentDialogHeader>
+    <FluentDialogBody>
+        <FluentStack Orientation="Orientation.Vertical" VerticalGap="8">
+            <FluentTextField @bind-Value="valueSetSearchText" 
+            Placeholder="Type to filter value sets..."
+            @oninput="FilterValueSets" />
+
+            <div style="height: 400px; overflow-y: auto; margin-bottom: 16px;">
+                <FluentDataGrid Items="@filteredValueSets" 
+                ResizableColumns="true" 
+                GridTemplateColumns="1fr 2fr 1fr"
+                TGridItem="DbValueSet">
+                    <SelectColumn
+                    TGridItem="DbValueSet"
+                    SelectMode="DataGridSelectMode.Single"
+                    SelectFromEntireRow="true"
+                    @bind-SelectedItems="@selectedValueSets" />
+                    <PropertyColumn Title="Name" Property="@(vs => vs.Name)" Sortable="true" />
+                    <PropertyColumn Title="URL" Property="@(vs => vs.UnversionedUrl)" Sortable="true" />
+                    <PropertyColumn Title="Version" Property="@(vs => vs.Version)" Sortable="true" />
+                </FluentDataGrid>
+            </div>
+
+            @if (selectedValueSet != null)
+            {
+                <FluentCard>
+                    <FluentStack Orientation="Orientation.Vertical" VerticalGap="4">
+                        <FluentLabel Typo="Typography.H6">Selected Value Set</FluentLabel>
+                        <FluentLabel Typo="Typography.Body">Name: @selectedValueSet.Name</FluentLabel>
+                        <FluentLabel Typo="Typography.Body">URL: @selectedValueSet.UnversionedUrl</FluentLabel>
+                        <FluentLabel Typo="Typography.Body">Concepts: @selectedValueSet.ConceptCount</FluentLabel>
+                    </FluentStack>
+                </FluentCard>
+            }
+
+            <FluentStack Orientation="Orientation.Horizontal" HorizontalGap="8" HorizontalAlignment="HorizontalAlignment.End">
+                <FluentButton Appearance="Appearance.Outline" OnClick="CancelValueSetSelection">Cancel</FluentButton>
+                <FluentButton Appearance="Appearance.Accent" OnClick="SelectValueSet" Disabled="@(selectedValueSet == null)">Select</FluentButton>
+            </FluentStack>
+        </FluentStack>
+    </FluentDialogBody>
+
+</FluentDialog>
+
+
 @code {
     [Parameter]
     public int FhirPackageKey { get; set; }
 
     [Parameter]
     public int ValueSetKey { get; set; }
+
+    private int _loadedValueSetKey = -1;
 
     [Parameter]
     [SupplyParameterFromQuery(Name = "packageShort")]
@@ -468,11 +602,12 @@
         new() { Text = "NOT related To", Value = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo },
     ];
 
-    private bool _hasChanges = false;
     private bool ApplyToInverse { get; set; } = true;
 
     private DbVsRow comparisonFilteredVsRow = new(0, 0, 0);
     private DbValueSetComparison? selectedComparison = null;
+    private Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? initialVsRelationship = null;
+    private Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? manualVsRelationship = null;
     private int sourceColIndex = 0;
     private int targetColIndex = 0;
     private DbVsCell? csCell = null;
@@ -494,6 +629,11 @@
 
     protected override void OnParametersSet()
     {
+        if (ValueSetKey != _loadedValueSetKey)
+        {
+            NavTracker?.NotifyNav(_navPages);
+        }
+
         base.OnParametersSet();
         LoadValueSet();
     }
@@ -547,11 +687,117 @@
         StateHasChanged();
     }
 
+
+    // New fields for the ValueSet selection dialog
+    private FluentDialog? valueSetSelectionDialog;
+    private string valueSetDialogTitle = "Select Target Value Set...";
+    private string valueSetSearchText = "";
+    private List<DbValueSet> allValueSets = [];
+    private IQueryable<DbValueSet> filteredValueSets = Enumerable.Empty<DbValueSet>().AsQueryable();
+    private DbValueSet? selectedValueSet => selectedValueSets.FirstOrDefault();
+    private IEnumerable<DbValueSet> selectedValueSets = [];
+    private bool dialogHidden = true;
+
+    // Dialog context data
+    private string currentDialogKey = "";
+    private int currentSourceValueSetKey;
+    private int currentSourcePackageIndex;
+    private int currentTargetPackageIndex;
+
+    // Show the ValueSet selection dialog with appropriate context
+    private void ShowValueSetSelectionDialog(string dialogKey, int sourceValueSetKey, int sourcePackageIndex, int targetPackageIndex)
+    {
+        currentDialogKey = dialogKey;
+        currentSourceValueSetKey = sourceValueSetKey;
+        currentSourcePackageIndex = sourcePackageIndex;
+        currentTargetPackageIndex = targetPackageIndex;
+
+        // Set dialog title based on direction
+        valueSetDialogTitle = $"Select Value Set from {_packages[targetPackageIndex].ShortName}";
+
+        // Reset selection
+        selectedValueSets = [];
+        valueSetSearchText = "";
+
+        // Load value sets for the target package
+        LoadValueSetsForPackage(targetPackageIndex);
+
+        // Show dialog
+        // valueSetSelectionDialog?.Show();
+        dialogHidden = false;
+    }
+
+    // Primary action handler for the dialog
+    private void SelectValueSet()
+    {
+        if (selectedValueSet != null)
+        {
+            // Create a similar option object as used in the original code for compatibility
+            var selectedOption = new Option<DbValueSet>
+                {
+                    Text = selectedValueSet.Name + " - " + selectedValueSet.UnversionedUrl,
+                    Value = selectedValueSet
+                };
+
+            // Call the existing AddVsMapping with our selected value
+            AddVsMapping(currentDialogKey, currentSourceValueSetKey, currentSourcePackageIndex, currentTargetPackageIndex, selectedOption);
+        }
+
+        // valueSetSelectionDialog!.Hide();
+        dialogHidden = true;
+    }
+
+    // Secondary action handler for the dialog
+    private void CancelValueSetSelection()
+    {
+        // valueSetSelectionDialog!.Hide();
+        dialogHidden = true;
+    }
+
+    // Load value sets for a specific package
+    private void LoadValueSetsForPackage(int packageIndex)
+    {
+        try
+        {
+            allValueSets = DbValueSet.SelectList(
+                Xver.DbConnection,
+                FhirPackageKey: packageIndex,
+                orderByProperties: [nameof(DbValueSet.Name)]);
+
+            filteredValueSets = allValueSets.AsQueryable();
+        }
+        catch (Exception)
+        {
+            allValueSets = [];
+            filteredValueSets = Enumerable.Empty<DbValueSet>().AsQueryable();
+        }
+    }
+
+    // Filter value sets based on search text
+    private void FilterValueSets(ChangeEventArgs e)
+    {
+        string? searchText = e.Value?.ToString()?.ToLowerInvariant();
+
+        if (string.IsNullOrWhiteSpace(searchText))
+        {
+            filteredValueSets = allValueSets.AsQueryable();
+        }
+        else
+        {
+            filteredValueSets = allValueSets
+                .Where(vs =>
+                    vs.Name.ToLowerInvariant().Contains(searchText!) ||
+                    vs.UnversionedUrl.ToLowerInvariant().Contains(searchText!) ||
+                    (vs.Id?.ToLowerInvariant()?.Contains(searchText!) ?? false))
+                .AsQueryable();
+        }
+    }
+
     private string GetDateDisplay(DateTime? date) => date == null
         ? string.Empty
         : date.Value.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
 
-    private void SaveChanges()
+    private async Task SaveChanges()
     {
         if (selectedComparison == null)
         {
@@ -567,8 +813,40 @@
             compareRight,
             reviewer);
 
-        // re-aggregate the concept comparisons for the value set
+        // re-aggregate the concept comparisons for the value set if not manually set
         _ = Xver.Comparer.AggregateValueSetRelationships(selectedComparison);
+
+        // check for rules trying to override a manually-set relationship
+        if ((manualVsRelationship != null) &&
+            (manualVsRelationship != selectedComparison.Relationship))
+        {
+            IDialogReference dialog = await DialogService.ShowConfirmationAsync(
+                $"The ValueSet comparison wants to update to to <code>{selectedComparison.Relationship}</code>.",
+                $"Computed: {selectedComparison.Relationship}",
+                $"Specified: {manualVsRelationship}",
+                "ValueSet Relationship");
+            DialogResult result = await dialog.Result;
+
+            if (result.Cancelled == true)
+            {
+                selectedComparison.Relationship = manualVsRelationship;
+            }
+        }
+        else if ((initialVsRelationship != null) &&
+                 (initialVsRelationship != selectedComparison.Relationship))
+        {
+            IDialogReference dialog = await DialogService.ShowConfirmationAsync(
+                $"The ValueSet comparison wants to update to to <code>{selectedComparison.Relationship}</code>.",
+                $"Computed: {selectedComparison.Relationship}",
+                $"Old: {initialVsRelationship}",
+                "ValueSet Relationship");
+            DialogResult result = await dialog.Result;
+
+            if (result.Cancelled == true)
+            {
+                selectedComparison.Relationship = manualVsRelationship;
+            }
+        }
 
         // mark this value set comparison as reviewed
         selectedComparison.LastReviewedOn = DateTime.UtcNow;
@@ -585,7 +863,6 @@
                 ((inverse.LastReviewedOn == null) ||(hasChanges == true)))
             {
                 // find the correct value set row in the projection
-
                 DbVsRow? vsRow = graphProjection?.FirstOrDefault(v => v.RowNumber == comparisonFilteredVsRow.RowNumber);
 
                 if (vsRow != null)
@@ -617,6 +894,229 @@
         _targetConcepts = [];
         originalProjection = [];
         conceptProjection = Enumerable.Empty<DbVsConceptRow>().AsQueryable();
+    }
+
+    private async Task DeleteCurrentMapping()
+    {
+        if (selectedComparison == null)
+        {
+            return;
+        }
+
+        IDialogReference dialog = await DialogService.ShowConfirmationAsync(
+            $"Deleting this mapping cannot be undone!<br/>Are you sure you wish to delete <code>{selectedComparison.CompositeName}</code>",
+            "Confirm Delete",
+            "Cancel",
+            "Delete Mapping Confirmation");
+        DialogResult result = await dialog.Result;
+
+        if (result.Cancelled == true)
+        {
+            StateHasChanged();
+            return;
+        }
+
+        // check for an inverse comaprison
+        DbValueSetComparison? inverseComparison = selectedComparison.InverseComparisonKey != null
+            ? DbValueSetComparison.SelectSingle(
+                Xver.DbConnection,
+                Key: selectedComparison.InverseComparisonKey)
+            : null;
+
+        if (inverseComparison != null)
+        {
+            IDialogReference inverseDialog = await DialogService.ShowConfirmationAsync(
+                $"Would you also like to delete the inverse comparison: {inverseComparison.CompositeName} ({inverseComparison.Key})",
+                "Yes",
+                "No",
+                "Delete Inverse");
+            DialogResult inverseResult = await dialog.Result;
+
+            // delete the inverse comparison if needed
+            if (inverseResult.Cancelled == false)
+            {
+                // delete all the concept comparisons for this value set comparison
+                List<DbValueSetConceptComparison> inverseConceptComparisonsToDelete = DbValueSetConceptComparison.SelectList(
+                        Xver.DbConnection,
+                        ValueSetComparisonKey: inverseComparison.Key);
+
+                if (inverseConceptComparisonsToDelete.Count > 0)
+                {
+                    inverseConceptComparisonsToDelete.Delete(Xver.DbConnection);
+                }
+
+                // delete this value set comparison
+                inverseComparison.Delete(Xver.DbConnection);
+            }
+        }
+
+        // delete all the concept comparisons for this value set comparison
+        List<DbValueSetConceptComparison> conceptComparisonsToDelete = DbValueSetConceptComparison.SelectList(
+                Xver.DbConnection,
+                ValueSetComparisonKey: selectedComparison.Key);
+
+        if (conceptComparisonsToDelete.Count > 0)
+        {
+            conceptComparisonsToDelete.Delete(Xver.DbConnection);
+        }
+
+        // delete this value set comparison
+        selectedComparison.Delete(Xver.DbConnection);
+
+        // clear our selected comparison
+        ClearSelectedComparison();
+
+        // force reload of the mapping table
+        LoadValueSet(true);
+
+        // move the UI back to the mapping table
+        activeTabId = "mappingTable";
+        StateHasChanged();
+
+        return;
+    }
+
+    private void AddVsMapping(string popKey, int sourceValueSetKey, int sourcePackageIndex, int targetPackageIndex, object? selectedValue)
+    {
+        if ((selectedValue == null) ||
+            (selectedValue is not Option<DbValueSet> selectedOption) ||
+            (selectedOption.Value == null) ||
+            (selectedOption.Value is not DbValueSet targetVs))
+        {
+            // Close the popover after selection
+            SetPopoverState(popKey, false);
+            StateHasChanged();
+
+            return;
+        }
+
+        // resolve the package comparison
+        DbFhirPackageComparisonPair? packagePair = DbFhirPackageComparisonPair.SelectSingle(
+            Xver.DbConnection,
+            SourcePackageKey: _packages[sourcePackageIndex].Key,
+            TargetPackageKey: _packages[targetPackageIndex].Key);
+
+        if (packagePair == null)
+        {
+            // Close the popover after selection
+            SetPopoverState(popKey, false);
+            StateHasChanged();
+            return;
+        }
+
+        DbFhirPackageComparisonPair? reversePair = DbFhirPackageComparisonPair.SelectSingle(
+            Xver.DbConnection,
+            SourcePackageKey: _packages[targetPackageIndex].Key,
+            TargetPackageKey: _packages[sourcePackageIndex].Key);
+
+        if (reversePair == null)
+        {
+            // Close the popover after selection
+            SetPopoverState(popKey, false);
+            StateHasChanged();
+            return;
+        }
+
+        // resolve the source value set
+        DbValueSet? sourceVs = DbValueSet.SelectSingle(
+            Xver.DbConnection,
+            FhirPackageKey: _packages[sourcePackageIndex].Key,
+            Key: sourceValueSetKey);
+
+        if (sourceVs == null)
+        {
+            // Close the popover after selection
+            SetPopoverState(popKey, false);
+            StateHasChanged();
+            return;
+        }
+
+        // create a new value set comparison
+        DbValueSetComparison vsComparison = new()
+        {
+            Key = Xver.ComparisonDb.GetValueSetComparisonKey(),
+            PackageComparisonKey = packagePair.Key,
+            SourceFhirPackageKey = packagePair.SourcePackageKey,
+            TargetFhirPackageKey = packagePair.TargetPackageKey,
+            SourceValueSetKey = sourceValueSetKey,
+            SourceCanonicalVersioned = sourceVs.VersionedUrl,
+            SourceCanonicalUnversioned = sourceVs.UnversionedUrl,
+            SourceVersion = sourceVs.Version,
+            SourceName = sourceVs.Name,
+            TargetValueSetKey = targetVs.Key,
+            TargetCanonicalVersioned = targetVs.VersionedUrl,
+            TargetCanonicalUnversioned = targetVs.UnversionedUrl,
+            TargetVersion = targetVs.Version,
+            TargetName = targetVs.Name,
+            CompositeName = ComparisonDatabase.GetCompositeName(_packages[sourcePackageIndex], sourceVs, _packages[targetPackageIndex], targetVs),
+            SourceConceptMapUrl = null,
+            SourceConceptMapAdditionalUrls = null,
+            Relationship = null,
+            IsGenerated = false,
+            LastReviewedOn = null,
+            LastReviewedBy = null,
+            Message = null,
+            IsIdentical = false,
+            CodesAreIdentical = false,
+        };
+
+        DbComparisonCache<DbValueSetComparison> vsComparisons = new();
+        DbComparisonCache<DbValueSetConceptComparison> conceptComparisons = new();
+
+        vsComparisons.CacheAdd(vsComparison);
+
+        // run through the built-in comparison testing
+        Xver.Comparer.DoValueSetComparison(
+            vsComparisons,
+            conceptComparisons,
+            _packages[sourcePackageIndex],
+            sourceVs,
+            _packages[targetPackageIndex],
+            targetVs,
+            vsComparison,
+            packagePair,
+            reversePair);
+
+        // apply our changes
+        vsComparisons.ComparisonsToAdd.Insert(Xver.DbConnection);
+        vsComparisons.ComparisonsToUpdate.Update(Xver.DbConnection);
+        vsComparisons.ComparisonsToDelete.Delete(Xver.DbConnection);
+
+        conceptComparisons.ComparisonsToAdd.Insert(Xver.DbConnection);
+        conceptComparisons.ComparisonsToUpdate.Update(Xver.DbConnection);
+        conceptComparisons.ComparisonsToDelete.Delete(Xver.DbConnection);
+
+        // force reload of our UI contents
+        LoadValueSet(true);
+
+        // Close the popover after selection
+        SetPopoverState(popKey, false);
+        StateHasChanged();
+    }
+
+    private void UpdateVsRelationship(object? selectedValue)
+    {
+        string popKey = "rel-vs";
+
+        if (selectedComparison == null)
+        {
+            // Close the popover after selection
+            SetPopoverState(popKey, false);
+            StateHasChanged();
+
+            return;
+        }
+
+        if ((selectedValue != null) &&
+            (selectedValue is Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?> r))
+        {
+            selectedComparison.Relationship = r.Value;
+            manualVsRelationship = r.Value;
+        }
+
+        // Close the popover after selection
+        SetPopoverState(popKey, false);
+        StateHasChanged();
     }
 
     private void AddConceptRow(object? selectedValue)
@@ -654,7 +1154,6 @@
             }
 
             List<DbVsConceptRow> cp = [row, .. conceptProjection];
-            _hasChanges = true;
 
             conceptProjection = cp.AsQueryable();
         }
@@ -677,7 +1176,6 @@
         }
 
         conceptProjection = cp.AsQueryable();
-        _hasChanges = true;
 
         // Close the popover after selection
         string key = $"del-{rowToRemove.RowNumber}";
@@ -718,8 +1216,6 @@
                 }
             }
 
-            _hasChanges = true;
-
             // Close the popover after selection
             string key = $"rel-{conceptRow.RowNumber}";
             SetPopoverState(key, false);
@@ -743,8 +1239,6 @@
                 conceptRow[targetColIndex]!.Concept = DbValueSetConcept.EmptyCopy;
             }
 
-            _hasChanges = true;
-
             // Close the popover after selection
             string key = $"target-{conceptRow.RowNumber}";
             SetPopoverState(key, false);
@@ -762,6 +1256,8 @@
 
         compareRight = sourceCellIndex < targetCellIndex;
         selectedComparison = comparison;
+        initialVsRelationship = comparison.Relationship;
+        manualVsRelationship = null;
 
         sourceColIndex = sourceCellIndex;
         csCell = valueSetRow[sourceCellIndex];
@@ -854,10 +1350,17 @@
     {
         try
         {
-            if ((vsUiRec != null) && !forceReload)
+            if ((_loadedValueSetKey == ValueSetKey) && !forceReload)
             {
                 return;
             }
+
+            _loadedValueSetKey = ValueSetKey;
+
+            // if ((vsUiRec != null) && !forceReload)
+            // {
+            //     return;
+            // }
 
             if (_packages.Count == 0)
             {

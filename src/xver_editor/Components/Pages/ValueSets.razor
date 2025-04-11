@@ -109,6 +109,8 @@
     [Parameter]
     public int FhirPackageKey { get; set; }
 
+    private int _loadedFhirPackageKey = -1;
+
     [Parameter]
     [SupplyParameterFromQuery(Name = "packageShort")]
     public string PackageShortName { get; set; } = string.Empty;
@@ -188,6 +190,11 @@
 
     protected override void OnParametersSet()
     {
+        if (_loadedFhirPackageKey != FhirPackageKey)
+        {
+            NavTracker?.NotifyNav(_navPages);
+        }
+
         base.OnParametersSet();
         LoadValueSets();
     }
@@ -299,10 +306,17 @@
     {
         try
         {
-            if (uiRecs.Length != 0)
+            if (_loadedFhirPackageKey == FhirPackageKey)
             {
                 return;
             }
+
+            _loadedFhirPackageKey = FhirPackageKey;
+
+            // if (uiRecs.Length != 0)
+            // {
+            //     return;
+            // }
 
             if (_packages.Count == 0)
             {

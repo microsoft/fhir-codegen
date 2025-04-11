@@ -323,11 +323,28 @@ fluent-number-field {
     width: 100%;
 }
 
+.fluent-pop-container-spacer-short {
+    height: 100px;
+    min-height: 100px;
+    width: 100%;
+}
+
+.fluent-pop-container-spacer-tall {
+    height: 700px;
+    min-height: 700px;
+    width: 100%;
+}
+
 .concept-popover-container {
     height: 800px;
     min-height: 800px;
     /*max-height: 400px;*/
     overflow-y: auto;
+    width: 1000px;
+}
+
+.vs-dialog-container {
+    min-height: 800px;
     width: 1000px;
 }
 

@@ -1461,116 +1461,140 @@ public class FhirDbComparer
                 _db,
                 Key: forwardComparison.TargetValueSetKey)
                 ?? throw new Exception($"Could not resolve target ValueSet with Key: {forwardComparison.TargetValueSetKey} (`{forwardComparison.TargetCanonicalVersioned}`)");
-
-            // look for a known inverse comparison
-            DbValueSetComparison? inverseComparison = null;
-            if (forwardComparison.InverseComparisonKey != null)
-            {
-                inverseComparison = _vsComparisons.Get((int)forwardComparison.InverseComparisonKey) ??
-                    DbValueSetComparison.SelectSingle(_db, Key: forwardComparison.InverseComparisonKey);
-            }
-
-            // look for an inverse comparison based on the source and target
-            if ((inverseComparison == null) &&
-                (forwardComparison.InverseComparisonKey == null))
-            {
-                inverseComparison = _vsComparisons.Get(targetVs.Key, forwardComparison.SourceContentKey)
-                    ?? DbValueSetComparison.SelectSingle(
-                        _db,
-                        PackageComparisonKey: reversePair.Key,
-                        SourceFhirPackageKey: targetPackage.Key,
-                        SourceValueSetKey: forwardComparison.TargetValueSetKey,
-                        TargetFhirPackageKey: sourcePackage.Key,
-                        TargetValueSetKey: forwardComparison.SourceValueSetKey);
-            }
-
-            // create a new inverse comparison if we don't have one
-            if (inverseComparison == null)
-            {
-                inverseComparison = invert(forwardComparison, reversePair);
-                _vsComparisons.CacheAdd(inverseComparison);
-            }
-
-            // check to see if the inverse comparison key is set
-            if (forwardComparison.InverseComparisonKey != inverseComparison.Key)
-            {
-                forwardComparison.InverseComparisonKey = inverseComparison.Key;
-                _vsComparisons.Changed(inverseComparison);
-            }
-
-            // process this comparison
-            doValueSetConceptComparisons(
+            DoValueSetComparison(
+                _vsComparisons,
+                _conceptComparisons,
                 sourcePackage,
                 sourceVs,
                 targetPackage,
                 targetVs,
                 forwardComparison,
-                inverseComparison,
                 forwardPair,
                 reversePair);
-
-            // check for identical system and code flags
-            if ((forwardComparison.IsIdentical == null) || (forwardComparison.CodesAreIdentical == null))
-            {
-                // select only active and concrete concepts
-                List<DbValueSetConcept> sourceConcepts = DbValueSetConcept.SelectList(_db, ValueSetKey: sourceVs.Key, Inactive: false, Abstract: false);
-                List<DbValueSetConcept> targetConcepts = DbValueSetConcept.SelectList(_db, ValueSetKey: targetVs.Key, Inactive: false, Abstract: false);
-
-                if (sourceConcepts.Count != targetConcepts.Count)
-                {
-                    forwardComparison.IsIdentical = false;
-                    forwardComparison.CodesAreIdentical = false;
-                }
-                else
-                {
-                    HashSet<string> targetCombined = targetConcepts.Select(c => c.FhirKey).ToHashSet();
-
-                    if (sourceConcepts.All(c => targetCombined.Contains(c.FhirKey)))
-                    {
-                        forwardComparison.IsIdentical = true;
-                        forwardComparison.CodesAreIdentical = true;
-                    }
-                    else
-                    {
-                        HashSet<string> targetCodes = targetConcepts.Select(c => c.Code).ToHashSet();
-
-                        if (sourceConcepts.All(c => targetCodes.Contains(c.Code)))
-                        {
-                            forwardComparison.IsIdentical = false;
-                            forwardComparison.CodesAreIdentical = true;
-                        }
-                        else
-                        {
-                            forwardComparison.IsIdentical = false;
-                            forwardComparison.CodesAreIdentical = false;
-                        }
-                    }
-                }
-
-                _vsComparisons.Changed(forwardComparison);
-            }
-
-            if ((inverseComparison.IsIdentical == null) || (inverseComparison.CodesAreIdentical == null))
-            {
-                inverseComparison.IsIdentical = forwardComparison.IsIdentical;
-                inverseComparison.CodesAreIdentical = forwardComparison.CodesAreIdentical;
-
-                _vsComparisons.Changed(inverseComparison);
-            }
-
-            if (aggregateValueSetRelationships(forwardComparison, sourceVs, targetVs))
-            {
-                _vsComparisons.Changed(forwardComparison);
-            }
-
-            if (aggregateValueSetRelationships(inverseComparison, targetVs, sourceVs))
-            {
-                _vsComparisons.Changed(inverseComparison);
-            }
         }
 
         return;
     }
+
+    public void DoValueSetComparison(
+        DbComparisonCache<DbValueSetComparison> vsComparisons,
+        DbComparisonCache<DbValueSetConceptComparison> conceptComparisons,
+        DbFhirPackage sourcePackage,
+        DbValueSet sourceVs,
+        DbFhirPackage targetPackage,
+        DbValueSet targetVs,
+        DbValueSetComparison forwardComparison,
+        DbFhirPackageComparisonPair forwardPair,
+        DbFhirPackageComparisonPair reversePair)
+    {
+        // look for a known inverse comparison
+        DbValueSetComparison? inverseComparison = null;
+        if (forwardComparison.InverseComparisonKey != null)
+        {
+            inverseComparison = vsComparisons.Get((int)forwardComparison.InverseComparisonKey) ??
+                DbValueSetComparison.SelectSingle(_db, Key: forwardComparison.InverseComparisonKey);
+        }
+
+        // look for an inverse comparison based on the source and target
+        if ((inverseComparison == null) &&
+            (forwardComparison.InverseComparisonKey == null))
+        {
+            inverseComparison = vsComparisons.Get(targetVs.Key, forwardComparison.SourceContentKey)
+                ?? DbValueSetComparison.SelectSingle(
+                    _db,
+                    PackageComparisonKey: reversePair.Key,
+                    SourceFhirPackageKey: targetPackage.Key,
+                    SourceValueSetKey: forwardComparison.TargetValueSetKey,
+                    TargetFhirPackageKey: sourcePackage.Key,
+                    TargetValueSetKey: forwardComparison.SourceValueSetKey);
+        }
+
+        // create a new inverse comparison if we don't have one
+        if (inverseComparison == null)
+        {
+            inverseComparison = invert(forwardComparison, reversePair);
+            vsComparisons.CacheAdd(inverseComparison);
+        }
+
+        // check to see if the inverse comparison key is set
+        if (forwardComparison.InverseComparisonKey != inverseComparison.Key)
+        {
+            forwardComparison.InverseComparisonKey = inverseComparison.Key;
+            vsComparisons.Changed(inverseComparison);
+        }
+
+        // process this comparison
+        doValueSetConceptComparisons(
+            conceptComparisons,
+            sourcePackage,
+            sourceVs,
+            targetPackage,
+            targetVs,
+            forwardComparison,
+            inverseComparison,
+            forwardPair,
+            reversePair);
+
+        // check for identical system and code flags
+        if ((forwardComparison.IsIdentical == null) || (forwardComparison.CodesAreIdentical == null))
+        {
+            // select only active and concrete concepts
+            List<DbValueSetConcept> sourceConcepts = DbValueSetConcept.SelectList(_db, ValueSetKey: sourceVs.Key, Inactive: false, Abstract: false);
+            List<DbValueSetConcept> targetConcepts = DbValueSetConcept.SelectList(_db, ValueSetKey: targetVs.Key, Inactive: false, Abstract: false);
+
+            if (sourceConcepts.Count != targetConcepts.Count)
+            {
+                forwardComparison.IsIdentical = false;
+                forwardComparison.CodesAreIdentical = false;
+            }
+            else
+            {
+                HashSet<string> targetCombined = targetConcepts.Select(c => c.FhirKey).ToHashSet();
+
+                if (sourceConcepts.All(c => targetCombined.Contains(c.FhirKey)))
+                {
+                    forwardComparison.IsIdentical = true;
+                    forwardComparison.CodesAreIdentical = true;
+                }
+                else
+                {
+                    HashSet<string> targetCodes = targetConcepts.Select(c => c.Code).ToHashSet();
+
+                    if (sourceConcepts.All(c => targetCodes.Contains(c.Code)))
+                    {
+                        forwardComparison.IsIdentical = false;
+                        forwardComparison.CodesAreIdentical = true;
+                    }
+                    else
+                    {
+                        forwardComparison.IsIdentical = false;
+                        forwardComparison.CodesAreIdentical = false;
+                    }
+                }
+            }
+
+            vsComparisons.Changed(forwardComparison);
+        }
+
+        if ((inverseComparison.IsIdentical == null) || (inverseComparison.CodesAreIdentical == null))
+        {
+            inverseComparison.IsIdentical = forwardComparison.IsIdentical;
+            inverseComparison.CodesAreIdentical = forwardComparison.CodesAreIdentical;
+
+            vsComparisons.Changed(inverseComparison);
+        }
+
+        if (aggregateValueSetRelationships(forwardComparison, sourceVs, targetVs))
+        {
+            vsComparisons.Changed(forwardComparison);
+        }
+
+        if (aggregateValueSetRelationships(inverseComparison, targetVs, sourceVs))
+        {
+            vsComparisons.Changed(inverseComparison);
+        }
+    }
+
 
     /// <summary>
     /// Aggregates the relationships of value sets within a FHIR package comparison.
@@ -1965,6 +1989,7 @@ public class FhirDbComparer
     }
 
     private void doValueSetConceptComparisons(
+        DbComparisonCache<DbValueSetConceptComparison> conceptComparisons,
         DbFhirPackage sourcePackage,
         DbValueSet sourceVs,
         DbFhirPackage targetPackage,
@@ -1980,7 +2005,7 @@ public class FhirDbComparer
         foreach (DbValueSetConcept sourceConcept in sourceConcepts)
         {
             // look in our cache for existing comparisons
-            List<DbValueSetConceptComparison> comparisons = _conceptComparisons.ForSource(sourceConcept.Key)
+            List<DbValueSetConceptComparison> comparisons = conceptComparisons.ForSource(sourceConcept.Key)
                 .Where(c => c.TargetFhirPackageKey == targetPackage.Key)
                 .ToList();
 
@@ -2055,7 +2080,7 @@ public class FhirDbComparer
                         CodesAreIdentical = codeIsIdentical,
                     };
 
-                    _conceptComparisons.CacheAdd(comp);
+                    conceptComparisons.CacheAdd(comp);
                     comparisons.Add(comp);
                 }
             }
@@ -2085,7 +2110,7 @@ public class FhirDbComparer
                 };
 
                 // insert into the database
-                _conceptComparisons.CacheAdd(noMap);
+                conceptComparisons.CacheAdd(noMap);
 
                 // nothing else to do on this pass
                 continue;
@@ -2109,13 +2134,13 @@ public class FhirDbComparer
 
                 if (conceptComparison.InverseComparisonKey != null)
                 {
-                    inverseComparison = _conceptComparisons.Get((int)conceptComparison.InverseComparisonKey) ??
+                    inverseComparison = conceptComparisons.Get((int)conceptComparison.InverseComparisonKey) ??
                          DbValueSetConceptComparison.SelectSingle(_db, Key: conceptComparison.InverseComparisonKey);
                 }
 
                 if (inverseComparison == null)
                 {
-                    inverseComparison = _conceptComparisons.Get(targetConcept.Key, conceptComparison.SourceContentKey)
+                    inverseComparison = conceptComparisons.Get(targetConcept.Key, conceptComparison.SourceContentKey)
                         ?? DbValueSetConceptComparison.SelectSingle(
                             _db,
                             PackageComparisonKey: reversePair.Key,
@@ -2130,10 +2155,10 @@ public class FhirDbComparer
                 if (inverseComparison == null)
                 {
                     inverseComparison = invert(conceptComparison, sourceConcept, targetConcept!, reverseComparison, reversePair);
-                    _conceptComparisons.CacheAdd(inverseComparison);
+                    conceptComparisons.CacheAdd(inverseComparison);
 
                     conceptComparison.InverseComparisonKey = inverseComparison.Key;
-                    _conceptComparisons.CacheUpdate(conceptComparison);
+                    conceptComparisons.CacheUpdate(conceptComparison);
                 }
 
                 // do basic checks if this has not been reviewed
@@ -2143,7 +2168,7 @@ public class FhirDbComparer
                     if ((conceptComparison.TargetConceptKey == null) &&
                         (conceptComparison.NoMap != true))
                     {
-                        _conceptComparisons.CacheUpdate(conceptComparison);
+                        conceptComparisons.CacheUpdate(conceptComparison);
                         conceptComparison.NoMap = true;
                     }
 
@@ -2153,7 +2178,7 @@ public class FhirDbComparer
                         XVerProcessor._escapeValveCodes.Contains(sourceConcept.Code) &&
                         (sourceVs.ActiveConcreteConceptCount != targetVs.ActiveConcreteConceptCount))
                     {
-                        _conceptComparisons.CacheUpdate(conceptComparison);
+                        conceptComparisons.CacheUpdate(conceptComparison);
                         conceptComparison.Relationship = RelationshipForCounts(sourceVs.ActiveConcreteConceptCount, targetVs.ActiveConcreteConceptCount);
                         conceptComparison.IsGenerated = true;
                         conceptComparison.Message = conceptComparison.Message +
@@ -2164,7 +2189,7 @@ public class FhirDbComparer
                     if ((conceptComparison.Relationship == CMR.Equivalent) &&
                         (comparisons.Count > 1))
                     {
-                        _conceptComparisons.CacheUpdate(conceptComparison);
+                        conceptComparisons.CacheUpdate(conceptComparison);
 
                         // mark as not equivalent
                         conceptComparison.Relationship = CMR.SourceIsBroaderThanTarget;
@@ -2186,7 +2211,7 @@ public class FhirDbComparer
                             $" based on the inverse comparsion {conceptComparison.Key}, which has a relationship" +
                             $" of `{conceptComparison.Relationship}`.";
                         inverseComparison.Relationship = expected;
-                        _conceptComparisons.CacheUpdate(inverseComparison);
+                        conceptComparisons.CacheUpdate(inverseComparison);
                     }
                 }
             }

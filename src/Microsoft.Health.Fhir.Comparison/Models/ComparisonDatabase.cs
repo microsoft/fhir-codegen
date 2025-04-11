@@ -1665,7 +1665,7 @@ public class ComparisonDatabase : IDisposable
         }
     }
 
-    internal static string GetCompositeName(
+    public static string GetCompositeName(
         DbFhirPackage sourceDbPackage,
         DbCanonicalResource sourceDbCanonical,
         DbFhirPackage targetDbPackage,
@@ -1686,7 +1686,7 @@ public class ComparisonDatabase : IDisposable
             $"{FhirSanitizationUtils.SanitizeForProperty(targetDbCanonical.Name).ToPascalCase()}";
     }
 
-    internal static string GetCompositeName(
+    public static string GetCompositeName(
         string sourcePackageShortName,
         string sourceCanonicalName,
         string targetPacakgeShortName,

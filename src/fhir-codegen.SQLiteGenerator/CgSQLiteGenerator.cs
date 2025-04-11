@@ -763,6 +763,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                                     true,
                                     pkIsIdentity ? pkColName : null,
                                     pkPropType,
+                                    includeIdentity: true,
                                     identityOnly: true,
                                     setIdentity: false))}}}
                     
