@@ -1275,6 +1275,8 @@ Class="vs-dialog-container">
             Xver.DbConnection,
             FhirPackageKey: csCell!.Vs.FhirPackageKey,
             ValueSetKey: csCell!.Vs.Key,
+            Inactive: false,
+            Abstract: false,
             orderByProperties: [nameof(DbValueSetConcept.System), nameof(DbValueSetConcept.Code)]);
 
         _sourceConcepts = sourceConcepts.Select(c => new Option<DbValueSetConcept>()
@@ -1287,6 +1289,8 @@ Class="vs-dialog-container">
             Xver.DbConnection,
             FhirPackageKey: ctCell!.Vs.FhirPackageKey,
             ValueSetKey: ctCell!.Vs.Key,
+            Inactive: false,
+            Abstract: false,
             orderByProperties: [nameof(DbValueSetConcept.System), nameof(DbValueSetConcept.Code)]);
 
         _targetConcepts = [ new ()

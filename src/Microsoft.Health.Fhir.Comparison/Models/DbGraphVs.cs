@@ -274,7 +274,11 @@ public class DbGraphVs
         {
             FhirPackage = _packages[startCol],
             Vs = _keyVs,
-            Concepts = DbValueSetConcept.SelectList(_db, ValueSetKey: _keyVs.Key),
+            Concepts = DbValueSetConcept.SelectList(
+                _db,
+                ValueSetKey: _keyVs.Key,
+                Inactive: false,
+                Abstract: false),
         };
 
         List<DbVsRow> right = [];
@@ -347,7 +351,12 @@ public class DbGraphVs
                 {
                     FhirPackage = _packages[nextCol],
                     Vs = DbValueSet.SelectSingle(_db, Key: edge.TargetValueSetKey) ?? throw new Exception($"Failed to resolve compared ValueSet: {edge.TargetValueSetKey}!"),
-                    Concepts = DbValueSetConcept.SelectList(_db, ValueSetKey: edge.TargetValueSetKey, orderByProperties: [nameof(DbValueSetConcept.System), nameof(DbValueSetConcept.Code)]),
+                    Concepts = DbValueSetConcept.SelectList(
+                        _db,
+                        ValueSetKey: edge.TargetValueSetKey,
+                        Inactive: false,
+                        Abstract: false,
+                        orderByProperties: [nameof(DbValueSetConcept.System), nameof(DbValueSetConcept.Code)]),
                     LeftCell = incomingRow[column]!,
                     LeftVs = incomingRow[column]!.Vs,
                     LeftComparison = inverseEdge,
@@ -363,7 +372,12 @@ public class DbGraphVs
                 {
                     FhirPackage = _packages[nextCol],
                     Vs = DbValueSet.SelectSingle(_db, Key: edge.TargetValueSetKey) ?? throw new Exception($"Failed to resolve compared ValueSet: {edge.TargetValueSetKey}!"),
-                    Concepts = DbValueSetConcept.SelectList(_db, ValueSetKey: edge.TargetValueSetKey, orderByProperties: [nameof(DbValueSetConcept.System), nameof(DbValueSetConcept.Code)]),
+                    Concepts = DbValueSetConcept.SelectList(
+                        _db,
+                        ValueSetKey: edge.TargetValueSetKey,
+                        Inactive: false,
+                        Abstract: false,
+                        orderByProperties: [nameof(DbValueSetConcept.System), nameof(DbValueSetConcept.Code)]),
                     RightCell = incomingRow[column]!,
                     RightVs = incomingRow[column]!.Vs,
                     RightComparison = inverseEdge,

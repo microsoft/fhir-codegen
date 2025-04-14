@@ -1197,8 +1197,16 @@ public class FhirDbComparer
                                 else if ((sourceValueSet != null) && (targetValueSet != null))
                                 {
                                     // need to resolve the value set contents to check codes
-                                    List<DbValueSetConcept> sourceVsConcepts = DbValueSetConcept.SelectList(_db, ValueSetKey: sourceElement.BindingValueSetKey);
-                                    HashSet<DbValueSetConcept> targetVsConcepts = new(DbValueSetConcept.SelectList(_db, ValueSetKey: targetElement.BindingValueSetKey));
+                                    List<DbValueSetConcept> sourceVsConcepts = DbValueSetConcept.SelectList(
+                                        _db,
+                                        ValueSetKey: sourceElement.BindingValueSetKey,
+                                        Inactive: false,
+                                        Abstract: false);
+                                    HashSet<DbValueSetConcept> targetVsConcepts = new(DbValueSetConcept.SelectList(
+                                        _db,
+                                        ValueSetKey: targetElement.BindingValueSetKey,
+                                        Inactive: false,
+                                        Abstract: false));
 
                                     // check for all codes having a match in the target
                                     if (sourceVsConcepts.All(c => targetVsConcepts.Contains(c)))
@@ -2000,7 +2008,11 @@ public class FhirDbComparer
         DbFhirPackageComparisonPair reversePair)
     {
         // select only active and concrete concepts
-        List<DbValueSetConcept> sourceConcepts = DbValueSetConcept.SelectList(_db, ValueSetKey: sourceVs.Key, Inactive: false, Abstract: false);
+        List<DbValueSetConcept> sourceConcepts = DbValueSetConcept.SelectList(
+            _db,
+            ValueSetKey: sourceVs.Key,
+            Inactive: false,
+            Abstract: false);
 
         foreach (DbValueSetConcept sourceConcept in sourceConcepts)
         {

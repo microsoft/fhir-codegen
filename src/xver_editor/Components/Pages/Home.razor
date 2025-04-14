@@ -23,7 +23,7 @@
     <FluentLabel Typo="Typography.Body">Output Root</FluentLabel>
     <FluentStack Orientation="Orientation.Horizontal">
         <FluentTextField Value="@OutputDir" @onchange="@(e => SaveConfig("outputDir", e))" />
-        <FluentButton Disabled=@(!Xver.IsOpen && !isExporting) OnClick="@(e => WriteDocs())">Write Docs</FluentButton>
+        <FluentButton Disabled=@(!Xver.IsOpen || isExporting) OnClick="@(e => WriteDocs())">Write Docs</FluentButton>
         @if (isExporting)
         {
             <FluentProgressRing/>

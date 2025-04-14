@@ -89,9 +89,20 @@ public partial class DbValueSetConcept : DbPackageContent, IEquatable<DbValueSet
         : $"{Code} ({System})";
 
     [CgSQLiteIgnore]
-    public string UiDisplayLong => (string.IsNullOrEmpty(Code) && string.IsNullOrEmpty(System))
-        ? "-"
-        : $"{Code} ({System}) - {Display}";
+    public string UiDisplayLong
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(Code) && string.IsNullOrEmpty(System))
+            {
+                return "-";
+            }
+
+            return $"{Code} ({System}) - {Display}" +
+                (Inactive ? " *Inactive*" : string.Empty) +
+                (Abstract ? " *Abstract*" : string.Empty);
+        }
+    }
 
     private static DbValueSetConcept _empty = EmptyCopy;
 

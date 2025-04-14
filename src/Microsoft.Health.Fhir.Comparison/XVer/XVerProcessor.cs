@@ -1167,7 +1167,12 @@ public class XVerProcessor
                 | ------ | ---- | ------- |
                 """);
 
-            foreach (DbValueSetConcept c in DbValueSetConcept.SelectList(db, ValueSetKey: keyVs.Key, orderByProperties: [nameof(DbValueSetConcept.System), nameof(DbValueSetConcept.Code)]))
+            foreach (DbValueSetConcept c in DbValueSetConcept.SelectList(
+                db,
+                ValueSetKey: keyVs.Key,
+                Inactive: false,
+                Abstract: false,
+                orderByProperties: [nameof(DbValueSetConcept.System), nameof(DbValueSetConcept.Code)]))
             {
                 writer.WriteLine(
                     $"| `{c.System.ForMdTable()}`" +
