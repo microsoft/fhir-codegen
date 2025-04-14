@@ -209,53 +209,12 @@
             // first render of layout should log the version
             _ = JsLogAsync($"fhir xver: {GetType()?.Assembly?.GetName()?.Version?.ToString()}");
             await JS.InvokeVoidAsync("processCopyable");
-
-            // try
-            // {
-            //     var un = await BrowserStore.GetAsync<string>("userName");
-            //     if (un.Value != null)
-            //     {
-            //         UserName = un.Value;
-            //     }
-            //     else
-            //     {
-            //         UserName = ServerConfig.UserName;
-            //     }
-
-            //     StateHasChanged();
-            // }
-            // catch (Exception ex)
-            // {
-            //     Console.WriteLine(ex.Message);
-            //     // ignore
-            // }
-
-            // if (string.IsNullOrEmpty(UserName))
-            // {
-            //     UserName = ServerConfig.UserName;
-            // }
         }
     }
 
-    // private void SaveUsername(ChangeEventArgs e)
-    // {
-    //     if ((e.Value is string value) &&
-    //         (!string.IsNullOrEmpty(value)))
-    //     {
-    //         UserName = value;
-    //         // save the user name in the browser store
-    //         _ = BrowserStore.SetAsync("userName", value);
-    //     }
-    // }
-
-    public void NotifyStateHasChanged()
+    public void TriggerStateHasChanged()
     {
         StateHasChanged();
-        // NotifyStateHasChanged(this, EventArgs.Empty);
-        // OnThemeChanged?.Invoke(this, EventArgs.Empty);
-
-        // _ = OnParametersSetAsync();
-        // StateHasChanged();
     }
 
     /// <summary>Notifies the navigation manager about the current location.</summary>

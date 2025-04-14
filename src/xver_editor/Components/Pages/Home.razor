@@ -12,13 +12,24 @@
 <PageTitle>Home</PageTitle>
 
 <FluentStack Orientation="Orientation.Vertical">
-    <FluentTextField Label="Reviewer Name" Value="@UserName" @onchange="@(e => SaveData("userName", e))" />
+    <FluentTextField Label="Reviewer Name" Value="@UserName" @onchange="@(e => SaveConfig("userName", e))" />
 
     <FluentLabel Typo="Typography.Body">Database</FluentLabel>
     <FluentStack Orientation="Orientation.Horizontal">
-        <FluentTextField Value="@DbPath" @onchange="@(e => SaveData("db", e))" />
+        <FluentTextField Value="@DbPath" @onchange="@(e => SaveConfig("db", e))" />
         <FluentButton OnClick="@(e => OpenDb())">Open</FluentButton>
     </FluentStack>
+
+    <FluentLabel Typo="Typography.Body">Output Root</FluentLabel>
+    <FluentStack Orientation="Orientation.Horizontal">
+        <FluentTextField Value="@OutputDir" @onchange="@(e => SaveConfig("outputDir", e))" />
+        <FluentButton Disabled=@(!Xver.IsOpen && !isExporting) OnClick="@(e => WriteDocs())">Write Docs</FluentButton>
+        @if (isExporting)
+        {
+            <FluentProgressRing/>
+        }
+    </FluentStack>
+
 
     @*     <FluentStack Orientation="Orientation.Horizontal">
         <FluentTextField Label="User Name" Value="@UserName"/>
@@ -39,8 +50,11 @@
     [CascadingParameter]
     public INavTracker? NavTracker { get; set; } = null;
 
-    public string UserName { get; set; } = string.Empty;
-    public string DbPath { get; set; } = string.Empty;
+    private string UserName { get; set; } = string.Empty;
+    private string DbPath { get; set; } = string.Empty;
+    private string OutputDir { get; set; } = string.Empty;
+
+    private bool isExporting = false;
 
     // protected override void OnInitialized()
     // {
@@ -52,7 +66,7 @@
     {
         if (firstRender)
         {
-            await LoadData();
+            await LoadConfigVaues();
         }
     }
 
@@ -72,10 +86,19 @@
         }
 
         StateHasChanged();
-        NavTracker?.NotifyStateHasChanged();
+        NavTracker?.TriggerStateHasChanged();
     }
 
-    private async Task LoadData()
+    private async Task WriteDocs()
+    {
+        isExporting = true;
+        StateHasChanged();
+        await Xver.WriteDocsFromDatabase(OutputDir);
+        isExporting = false;
+        StateHasChanged();
+    }
+
+    private async Task LoadConfigVaues()
     {
         try
         {
@@ -126,9 +149,34 @@
         {
             DbPath = ServerConfig.CrossVersionDbPath;
         }
+
+        try
+        {
+            var un = await BrowserStore.GetAsync<string>("outputDir");
+            if (un.Value != null)
+            {
+                OutputDir = un.Value;
+            }
+            else
+            {
+                OutputDir = ServerConfig.OutputDirectory;
+            }
+
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            // ignore
+        }
+
+        if (string.IsNullOrEmpty(DbPath))
+        {
+            OutputDir = ServerConfig.OutputDirectory;
+        }
     }
 
-    private void SaveData(string key, ChangeEventArgs e)
+    private void SaveConfig(string key, ChangeEventArgs e)
     {
         if (e.Value == null)
         {
@@ -153,6 +201,13 @@
                                 ServerConfig.CrossVersionDbPath = strValue;
                                 StateHasChanged();
                                 OpenDb();
+                            }
+                            break;
+                        case "outputDir":
+                            {
+                                OutputDir = strValue;
+                                ServerConfig.OutputDirectory = strValue;
+                                StateHasChanged();
                             }
                             break;
                         default:

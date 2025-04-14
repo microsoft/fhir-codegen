@@ -300,7 +300,7 @@ public class XVerProcessor
         }
     }
 
-    public void WriteDocsFromDatabase(FhirArtifactClassEnum? artifactFilter = null)
+    public void WriteDocsFromDatabase(FhirArtifactClassEnum? artifactFilter = null, string? outputDir = null)
     {
         // check for no database
         if (_db == null)
@@ -312,7 +312,7 @@ public class XVerProcessor
         //    ? _config.OutputDirectory
         //    : _config.CrossVersionMapSourcePath;
 
-        string outputDir = _config.CrossVersionMapSourcePath;
+        outputDir ??= _config.CrossVersionMapSourcePath;
 
         // check for no output location
         if (string.IsNullOrEmpty(outputDir))

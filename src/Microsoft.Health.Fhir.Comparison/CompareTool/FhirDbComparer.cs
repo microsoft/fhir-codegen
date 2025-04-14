@@ -2129,6 +2129,19 @@ public class FhirDbComparer
                     continue;
                 }
 
+                // get the list of all comparisons that source this ValueSet and target the same concept
+                List<DbValueSetConceptComparison> targetComparisons = conceptComparisons.ForSource(targetConcept.Key)
+                    .Where(c => c.TargetFhirPackageKey == sourcePackage.Key)
+                    .ToList();
+
+                List<DbValueSetConceptComparison> existingTargetComparisons = DbValueSetConceptComparison.SelectList(
+                    _db,
+                    PackageComparisonKey: forwardPair.Key,
+                    SourceValueSetKey: sourceVs.Key,
+                    TargetConceptKey: targetConcept.Key);
+
+                targetComparisons.AddRange(existingTargetComparisons.Where(etc => !targetComparisons.Contains(etc)));
+
                 // look for an inverse comparison
                 DbValueSetConceptComparison? inverseComparison = null;
 
@@ -2187,7 +2200,7 @@ public class FhirDbComparer
 
                     // check for a single source with multiple targets and any that map as equivalent
                     if ((conceptComparison.Relationship == CMR.Equivalent) &&
-                        (comparisons.Count > 1))
+                        (targetComparisons.Count > 1))
                     {
                         conceptComparisons.CacheUpdate(conceptComparison);
 

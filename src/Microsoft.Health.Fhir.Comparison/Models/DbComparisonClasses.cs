@@ -150,6 +150,7 @@ public partial class DbValueSetComparison : DbPackageComparisonContent, IDbPacka
 [CgSQLiteIndex(nameof(ValueSetComparisonKey), nameof(SourceConceptKey), nameof(TargetConceptKey))]
 [CgSQLiteIndex(nameof(ValueSetComparisonKey), nameof(SourceValueSetKey), nameof(SourceConceptKey), nameof(TargetFhirPackageKey))]
 [CgSQLiteIndex(nameof(PackageComparisonKey), nameof(SourceFhirPackageKey), nameof(SourceValueSetKey), nameof(SourceConceptKey), nameof(TargetFhirPackageKey), nameof(TargetValueSetKey), nameof(TargetConceptKey))]
+[CgSQLiteIndex(nameof(ValueSetComparisonKey), nameof(SourceValueSetKey), nameof(TargetConceptKey))]
 public partial class DbValueSetConceptComparison : DbPackageComparisonContent, IDbPackageComparisonContent
 {
     [CgSQLiteForeignKey(referenceTable: "ValueSetComparisons", referenceColumn: nameof(DbValueSetComparison.Key))]
@@ -421,6 +422,13 @@ public class DbComparisonCache<T>
     {
         return _byPair
             .Where(kvp => kvp.Key.sourceKey == sourceKey)
+            .Select(kvp => kvp.Value);
+    }
+
+    public IEnumerable<T> ForTarget(int targetKey)
+    {
+        return _byPair
+            .Where(kvp => kvp.Key.targetKey == targetKey)
             .Select(kvp => kvp.Value);
     }
 

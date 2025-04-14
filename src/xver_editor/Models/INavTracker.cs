@@ -10,7 +10,7 @@ public interface INavTracker
     /// <summary>Gets a value indicating whether this object is dark mode.</summary>
     bool IsDarkMode { get; }
 
-    void NotifyStateHasChanged();
+    void TriggerStateHasChanged();
 
     /// <summary>Notifies a navigation.</summary>
     /// <param name="pages">The pages.</param>

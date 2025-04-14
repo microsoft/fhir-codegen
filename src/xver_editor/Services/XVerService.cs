@@ -131,7 +131,7 @@ public class XVerService : IXverService
         }
 
         XVerProcessor xverProcessor = new(_db, outputDirectory, _config.LogFactory);
-        await Task.Run(() => xverProcessor.WriteDocsFromDatabase());
+        await Task.Run(() => xverProcessor.WriteDocsFromDatabase(outputDir: outputDirectory));
     }
 
     public Task StartAsync(CancellationToken cancellationToken)
