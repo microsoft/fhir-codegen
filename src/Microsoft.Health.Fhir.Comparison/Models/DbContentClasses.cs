@@ -203,6 +203,9 @@ public partial class DbElement : DbPackageContent
     public required int MaxCardinality { get; set; }
     public required string MaxCardinalityString { get; set; }
 
+    [CgSQLiteIgnore]
+    public string FhirCardinalityString => $"{MinCardinality}..{MaxCardinalityString}";
+
     public required string? SliceName { get; set; }
 
     public required string CollatedTypeLiteral { get; set; }
@@ -215,6 +218,73 @@ public partial class DbElement : DbPackageContent
     public required bool IsInherited { get; set; }
     public required string? BasePath { get; set; }
     public required bool IsSimpleType { get; set; }
+
+
+    [CgSQLiteIgnore]
+    public string UiDisplay
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(Id))
+            {
+                return "-";
+            }
+
+            return $"{Id}" +
+                (string.IsNullOrEmpty(Short) ? string.Empty : " - " + Short);
+        }
+    }
+
+    [CgSQLiteIgnore]
+    public string UiDisplayLong
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(Id))
+            {
+                return "-";
+            }
+
+            return $"{Id} ({MinCardinality}..{MaxCardinalityString}, {CollatedTypeLiteral})" +
+                (string.IsNullOrEmpty(Short) ? string.Empty : " - " + Short);
+        }
+    }
+
+    private static DbElement _empty = EmptyCopy;
+
+    [CgSQLiteIgnore]
+    public bool IsEmpty => Key == -1 && string.IsNullOrEmpty(Id) && string.IsNullOrEmpty(Path);
+
+    [CgSQLiteIgnore]
+    public static DbElement Empty => _empty;
+
+    [CgSQLiteIgnore]
+    public static DbElement EmptyCopy => new()
+    {
+        Key = -1,
+        FhirPackageKey = -1,
+        StructureKey = -1,
+        ResourceFieldOrder = -1,
+        ComponentFieldOrder = -1,
+        Id = string.Empty,
+        Path = string.Empty,
+        ChildElementCount = 0,
+        Name = string.Empty,
+        Short = null,
+        Definition = null,
+        MinCardinality = 0,
+        MaxCardinality = 0,
+        MaxCardinalityString = string.Empty,
+        SliceName = null,
+        CollatedTypeLiteral = string.Empty,
+        ValueSetBindingStrength = null,
+        BindingValueSet = null,
+        BindingValueSetKey = null,
+        AdditionalBindingCount = 0,
+        IsInherited = false,
+        BasePath = null,
+        IsSimpleType = false,
+    };
 }
 
 [CgSQLiteTable(tableName: "ElementAdditionalBindings")]

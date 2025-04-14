@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -35,6 +36,111 @@ public record class DbSdCell : ICloneable
     object ICloneable.Clone() => this with { };
 }
 
+
+public class DbSdRow : IEnumerable<DbSdCell?>
+{
+    private readonly int _rowNumber;
+    private readonly int _keyCol;
+    private readonly DbSdCell?[] _cells;
+
+    public DbSdRow(DbSdCell?[] cells, int rowNumber)
+    {
+        _cells = cells;
+        _keyCol = Array.FindIndex(cells, cell => cell != null);
+        _rowNumber = rowNumber;
+    }
+    public DbSdRow(DbSdCell?[] cells, int rowNumber, int keyCol = -1)
+    {
+        _cells = cells;
+        _keyCol = keyCol;
+        _rowNumber = rowNumber;
+    }
+    public DbSdRow(int size, int keyCol, int rowNumber)
+    {
+        _cells = new DbSdCell?[size];
+        _keyCol = keyCol;
+        _rowNumber = rowNumber;
+    }
+
+    public int RowNumber => _rowNumber;
+    public int KeyCol => _keyCol;
+    public DbSdCell? KeyCell => _keyCol >= 0 ? _cells[_keyCol] : null;
+    public DbSdCell?[] Cells => _cells;
+
+    public int Length => _cells.Length;
+
+    // Add indexer to access cells directly
+    public DbSdCell? this[int index]
+    {
+        get
+        {
+            if (index >= 0 && index < _cells.Length)
+            {
+                return _cells[index];
+            }
+
+            return null;
+        }
+        set
+        {
+            if (index >= 0 && index < _cells.Length)
+            {
+                _cells[index] = value;
+            }
+        }
+    }
+
+    // Indexer to find a cell by package
+    public DbSdCell? this[DbFhirPackage package]
+    {
+        get
+        {
+            if (package == null)
+                return null;
+
+            return _cells.FirstOrDefault(cell =>
+                cell?.FhirPackage != null && cell.FhirPackage.Key == package.Key);
+        }
+    }
+
+    public DbSdRow DeepCopy(int? newRowNumber = null)
+    {
+        DbSdCell?[] cells = new DbSdCell?[_cells.Length];
+        for (int i = 0; i < _cells.Length; i++)
+        {
+            cells[i] = _cells[i] == null ? null : _cells[i]! with { };
+        }
+        return new DbSdRow(cells, newRowNumber ?? _rowNumber, KeyCol);
+    }
+
+    public DbSdRow ShallowCopy(int? newRowNumber = null)
+    {
+        DbSdCell?[] cells = new DbSdCell?[_cells.Length];
+        for (int i = 0; i < _cells.Length; i++)
+        {
+            cells[i] = _cells[i];
+        }
+        return new DbSdRow(cells, newRowNumber ?? _rowNumber, KeyCol);
+    }
+
+    public DbSdRow ShallowCopy(int? newRowNumber, params int[] onlyCopyRows)
+    {
+        DbSdCell?[] cells = new DbSdCell?[_cells.Length];
+        for (int i = 0; i < _cells.Length; i++)
+        {
+            if (onlyCopyRows.Contains(i))
+                cells[i] = _cells[i];
+            else
+                cells[i] = null;
+        }
+        return new DbSdRow(cells, newRowNumber ?? _rowNumber, KeyCol);
+    }
+
+    public IEnumerator<DbSdCell?> GetEnumerator() => ((IEnumerable<DbSdCell?>)_cells).GetEnumerator();
+    IEnumerator IEnumerable.GetEnumerator() => _cells.GetEnumerator();
+}
+
+
 public record class DbElementCell : ICloneable
 {
     public required DbSdCell SdCell { get; set; }
@@ -51,6 +157,102 @@ public record class DbElementCell : ICloneable
     object ICloneable.Clone() => this with { };
 }
 
+
+public class DbElementRow : IEnumerable<DbElementCell?>
+{
+    private readonly int _rowNumber;
+    private readonly int _keyCol;
+    private readonly DbElementCell?[] _cells;
+
+    public DbElementRow(DbElementCell?[] cells, int rowNumber)
+    {
+        _cells = cells;
+        _keyCol = Array.FindIndex(cells, cell => cell != null);
+        _rowNumber = rowNumber;
+    }
+    public DbElementRow(DbElementCell?[] cells, int rowNumber, int keyCol = -1)
+    {
+        _cells = cells;
+        _keyCol = keyCol;
+        _rowNumber = rowNumber;
+    }
+    public DbElementRow(int size, int keyCol, int rowNumber)
+    {
+        _cells = new DbElementCell?[size];
+        _keyCol = keyCol;
+        _rowNumber = rowNumber;
+    }
+
+    public int RowNumber => _rowNumber;
+    public int KeyCol => _keyCol;
+    public DbElementCell? KeyCell => _keyCol >= 0 ? _cells[_keyCol] : null;
+    public DbElementCell?[] Cells => _cells;
+    public int Length => _cells.Length;
+
+    // Add indexer to access cells directly
+    public DbElementCell? this[int index]
+    {
+        get
+        {
+            if (index >= 0 && index < _cells.Length)
+                return _cells[index];
+            return null;
+        }
+        set
+        {
+            if (index >= 0 && index < _cells.Length)
+                _cells[index] = value;
+        }
+    }
+    // Indexer to find a cell by package
+    public DbElementCell? this[DbFhirPackage package]
+    {
+        get
+        {
+            if (package == null)
+                return null;
+            return _cells.FirstOrDefault(cell =>
+                cell?.SdCell.FhirPackage != null && cell.SdCell.FhirPackage.Key == package.Key);
+        }
+    }
+
+    public DbElementRow DeepCopy(int? newRowNumber = null)
+    {
+        DbElementCell?[] cells = new DbElementCell?[_cells.Length];
+        for (int i = 0; i < _cells.Length; i++)
+        {
+            cells[i] = _cells[i] == null ? null : _cells[i]! with { };
+        }
+        return new DbElementRow(cells, newRowNumber ?? _rowNumber, KeyCol);
+    }
+
+    public DbElementRow ShallowCopy(int? newRowNumber = null)
+    {
+        DbElementCell?[] cells = new DbElementCell?[_cells.Length];
+        for (int i = 0; i < _cells.Length; i++)
+        {
+            cells[i] = _cells[i];
+        }
+        return new DbElementRow(cells, newRowNumber ?? _rowNumber, KeyCol);
+    }
+
+    public DbElementRow ShallowCopy(int? newRowNumber, params int[] onlyCopyRows)
+    {
+        DbElementCell?[] cells = new DbElementCell?[_cells.Length];
+        for (int i = 0; i < _cells.Length; i++)
+        {
+            if (onlyCopyRows.Contains(i))
+                cells[i] = _cells[i];
+            else
+                cells[i] = null;
+        }
+        return new DbElementRow(cells, newRowNumber ?? _rowNumber, KeyCol);
+    }
+
+    public IEnumerator<DbElementCell?> GetEnumerator() => ((IEnumerable<DbElementCell?>)_cells).GetEnumerator();
+    IEnumerator IEnumerable.GetEnumerator() => _cells.GetEnumerator();
+}
+
 public class DbGraphSd
 {
     private readonly IDbConnection _db = null!;
@@ -63,10 +265,13 @@ public class DbGraphSd
     public required DbStructureDefinition KeySd { get => _keySd; init => _keySd = value; }
 
 
-    public List<DbSdCell?[]> Project()
+    public List<DbSdRow> Project()
     {
-        DbSdCell?[] row = new DbSdCell?[_packages.Count];
+        int rowNumber = 0;
         int startCol = _packages.FindIndex((fp) => fp.Key == _keySd.FhirPackageKey);
+        _keyCol = startCol;
+
+        DbSdRow row = new DbSdRow(_packages.Count, _keyCol, rowNumber++);
         row[startCol] = new()
         {
             FhirPackage = _packages[startCol],
@@ -74,14 +279,12 @@ public class DbGraphSd
             Elements = DbElement.SelectList(_db, StructureKey: _keySd.Key),
         };
 
-        _keyCol = startCol;
-
-        List<DbSdCell?[]> right = [];
+        List<DbSdRow> right = [];
 
         // project right
         if (startCol < _packages.Count)
         {
-            right = projectSd(row, startCol, true);
+            right = projectSd(row, startCol, true, ref rowNumber);
         }
 
         // if we started at the first definition, we are done
@@ -90,21 +293,22 @@ public class DbGraphSd
             return right;
         }
 
-        List<DbSdCell?[]> results = [];
+        List<DbSdRow> results = [];
 
         // project left
-        foreach (DbSdCell?[] r in right)
+        foreach (DbSdRow r in right)
         {
-            results.AddRange(projectSd(r, startCol, false));
+            results.AddRange(projectSd(r, startCol, false, ref rowNumber));
         }
 
         return results;
     }
 
-    private List<DbSdCell?[]> projectSd(
-        DbSdCell?[] incomingRow,
+    private List<DbSdRow> projectSd(
+        DbSdRow incomingRow,
         int column,
-        bool projectRight)
+        bool projectRight,
+        ref int rowNumber)
     {
         if (incomingRow[column] == null)
         {
@@ -129,7 +333,7 @@ public class DbGraphSd
             return [incomingRow];
         }
 
-        List<DbSdCell?[]> results = [];
+        List<DbSdRow> results = [];
 
         // iterate over our neighbors
         foreach (DbStructureComparison edge in edges)
@@ -138,7 +342,7 @@ public class DbGraphSd
                 ? null
                 : DbStructureComparison.SelectSingle(_db, Key: edge.InverseComparisonKey);
 
-            DbSdCell?[] row = edges.Count == 1 ? incomingRow : (DbSdCell?[])incomingRow.Clone();
+            DbSdRow row = edges.Count == 1 ? incomingRow : incomingRow.DeepCopy(rowNumber++);
             if (projectRight == true)
             {
                 row[nextCol] = new()
@@ -173,7 +377,7 @@ public class DbGraphSd
             }
 
             // recurse
-            List<DbSdCell?[]> next = projectSd(row, nextCol, projectRight);
+            List<DbSdRow> next = projectSd(row, nextCol, projectRight, ref rowNumber);
 
             // combine results
             results.AddRange(next);
@@ -182,38 +386,41 @@ public class DbGraphSd
         return results;
     }
 
-    public List<DbElementCell?[]> ProjectElements(DbSdCell?[] sdRow)
+    public List<DbElementRow> ProjectElements(DbSdRow sdRow, int? keyColumnIndex = null)
     {
-        if (_keyCol == -1)
+        int keyColIndex = keyColumnIndex ??= _keyCol;
+
+        if (keyColIndex == -1)
         {
             throw new Exception("Key column not set!");
         }
 
-        if (sdRow[_keyCol] == null)
+        if (sdRow[keyColIndex] == null)
         {
             return [];
         }
 
-        List<DbElementCell?[]> results = [];
+        int rowIndex = 0;
+        List<DbElementRow> results = [];
 
         // iterate over the concepts for this value set
-        foreach (DbElement element in sdRow[_keyCol]!.Elements)
+        foreach (DbElement element in sdRow[keyColIndex]!.Elements)
         {
-            DbElementCell?[] row = new DbElementCell?[_packages.Count];
+            DbElementRow row = new DbElementRow(_packages.Count, keyColIndex, rowIndex++);
 
-            int startCol = _keyCol;
+            int startCol = keyColIndex;
             row[startCol] = new()
             {
                 SdCell = sdRow[startCol]!,
                 Element = element,
             };
 
-            List<DbElementCell?[]> right = [];
+            List<DbElementRow> right = [];
 
             // project right
             if (startCol < _packages.Count)
             {
-                right = projectElement(sdRow, row, startCol, true);
+                right = projectElement(sdRow, row, startCol, true, ref rowIndex);
             }
 
             // if we started at the first definition, we are done
@@ -224,22 +431,24 @@ public class DbGraphSd
             }
 
             // project left and add as we go
-            foreach (DbElementCell?[] r in right)
+            foreach (DbElementRow r in right)
             {
-                results.AddRange(projectElement(sdRow, r, startCol, false));
+                results.AddRange(projectElement(sdRow, r, startCol, false, ref rowIndex));
             }
         }
 
         return results;
     }
 
-    private List<DbElementCell?[]> projectElement(
-        DbSdCell?[] sdRow,
-        DbElementCell?[] incomingRow,
+    private List<DbElementRow> projectElement(
+        DbSdRow sdRow,
+        DbElementRow incomingRow,
         int column,
-        bool projectRight)
+        bool projectRight,
+        ref int rowNumber)
     {
-        if (incomingRow[column] == null)
+        if ((incomingRow[column] == null) ||
+            (sdRow[column] == null))
         {
             return [incomingRow];
         }
@@ -293,7 +502,7 @@ public class DbGraphSd
             return [incomingRow];
         }
 
-        List<DbElementCell?[]> results = [];
+        List<DbElementRow> results = [];
 
         // iterate over our neighbors
         foreach (DbElementComparison edge in edges)
@@ -306,7 +515,7 @@ public class DbGraphSd
                 ? null
                 : DbElementComparison.SelectSingle(_db, Key: edge.InverseComparisonKey);
 
-            DbElementCell?[] row = edges.Count == 1 ? incomingRow : (DbElementCell?[])incomingRow.Clone();
+            DbElementRow row = edges.Count == 1 ? incomingRow : incomingRow.DeepCopy(rowNumber++);
             if (projectRight == true)
             {
                 row[nextCol] = new()
@@ -339,7 +548,7 @@ public class DbGraphSd
             }
 
             // recurse
-            List<DbElementCell?[]> next = projectElement(sdRow, row, nextCol, projectRight);
+            List<DbElementRow> next = projectElement(sdRow, row, nextCol, projectRight, ref rowNumber);
 
             // combine results
             results.AddRange(next);

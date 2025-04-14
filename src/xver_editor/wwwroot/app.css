@@ -343,7 +343,20 @@ fluent-number-field {
     width: 1000px;
 }
 
+.element-popover-container {
+    height: 800px;
+    min-height: 800px;
+    /*max-height: 400px;*/
+    overflow-y: auto;
+    width: 1000px;
+}
+
 .vs-dialog-container {
+    min-height: 800px;
+    width: 1000px;
+}
+
+.sd-dialog-container {
     min-height: 800px;
     width: 1000px;
 }

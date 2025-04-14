@@ -339,6 +339,39 @@ public partial class DbElementComparison : DbPackageComparisonContent, IDbPackag
     public int SourceContentKey => SourceElementKey;
     [CgSQLiteIgnore]
     public int? TargetContentKey => TargetElementKey;
+
+
+    private static DbElementComparison _empty = EmptyCopy;
+
+    [CgSQLiteIgnore]
+    public static DbElementComparison Empty => _empty;
+
+    [CgSQLiteIgnore]
+    public static DbElementComparison EmptyCopy => new()
+    {
+        Key = -1,
+        PackageComparisonKey = -1,
+        StructureComparisonKey = -1,
+        SourceFhirPackageKey = -1,
+        SourceStructureKey = -1,
+        SourceElementKey = -1,
+        SourceStructureUrl = string.Empty,
+        SourceElementToken = string.Empty,
+        TargetFhirPackageKey = -1,
+        TargetStructureKey = null,
+        TargetElementKey = null,
+        TargetStructureUrl = null,
+        TargetElementToken = null,
+        Relationship = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo,
+        ConceptDomainRelationship = null,
+        ValueDomainRelationship = null,
+        Message = null,
+        NoMap = null,
+        IsGenerated = false,
+        IsIdentical = null,
+        ElementTypeComparisonKey = null,
+        BoundValueSetComparisonKey = null,
+    };
 }
 
 [CgSQLiteTable(tableName: "ElementTypeComparisons")]

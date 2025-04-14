@@ -224,6 +224,205 @@ public class FhirDbComparer
             ];
     }
 
+    public (DbStructureComparison? inverted, bool? changed) UpdateInversion(
+        DbStructureComparison forwardComparison,
+        DbStructureComparison? inverseComparsion = null)
+    {
+        bool addedInverse = false;
+
+        DbFhirPackageComparisonPair? inversePackagePair = DbFhirPackageComparisonPair.SelectSingle(
+            _db,
+            SourcePackageKey: forwardComparison.TargetFhirPackageKey,
+            TargetPackageKey: forwardComparison.SourceFhirPackageKey);
+
+        if (inversePackagePair == null)
+        {
+            return (null, null);
+        }
+
+        if ((inverseComparsion == null) &&
+            (forwardComparison.InverseComparisonKey != null))
+        {
+            // look for an existing inverse comparison
+            inverseComparsion = DbStructureComparison.SelectSingle(
+                _db,
+                Key: forwardComparison.InverseComparisonKey);
+        }
+
+        if (inverseComparsion == null)
+        {
+            // create an inverse comparison
+            inverseComparsion = invert(forwardComparison, inversePackagePair);
+            addedInverse = true;
+        }
+
+        DbComparisonCache<DbElementComparison> changes = new();
+
+        // get the source elements
+        Dictionary<int, DbElement> sourceElements = DbElement.SelectDict(
+            _db,
+            StructureKey: forwardComparison.SourceStructureKey);
+
+        // get the target elements
+        Dictionary<int, DbElement> targetElements = DbElement.SelectDict(
+            _db,
+            StructureKey: forwardComparison.TargetStructureKey);
+
+        // get the list of forward element comparisons
+        List<DbElementComparison> forwardElementComparisons = DbElementComparison.SelectList(
+            _db,
+            StructureComparisonKey: forwardComparison.Key,
+            SourceStructureKey: forwardComparison.SourceStructureKey,
+            TargetFhirPackageKey: forwardComparison.TargetFhirPackageKey);
+
+        // get the list of existing inverse element comparisons
+        Dictionary<int, DbElementComparison> existingInverseConceptComparisons = DbElementComparison.SelectDict(
+            _db,
+            StructureComparisonKey: inverseComparsion.Key,
+            SourceStructureKey: inverseComparsion.SourceStructureKey,
+            TargetFhirPackageKey: inverseComparsion.TargetFhirPackageKey);
+
+        HashSet<int> usedInverseKeys = [];
+
+        List<DbElementComparison> invertedComparisons = [];
+        foreach (DbElementComparison forwardConceptComparison in forwardElementComparisons)
+        {
+            if ((forwardConceptComparison.NoMap == true) ||
+                (forwardConceptComparison.TargetElementKey == null))
+            {
+                continue;
+            }
+
+            // create a new inverse comparison
+            DbElementComparison computedInverse = invert(
+                forwardConceptComparison,
+                sourceElements[forwardConceptComparison.SourceElementKey],
+                targetElements[(int)forwardConceptComparison.TargetElementKey],
+                inverseComparsion,
+                inversePackagePair);
+
+            if ((forwardConceptComparison.InverseComparisonKey == null) ||
+                (!existingInverseConceptComparisons.TryGetValue((int)forwardConceptComparison.InverseComparisonKey, out DbElementComparison? existingInverse)))
+            {
+                usedInverseKeys.Add(computedInverse.Key);
+                changes.CacheAdd(computedInverse);
+
+                if (forwardConceptComparison.InverseComparisonKey != computedInverse.Key)
+                {
+                    forwardConceptComparison.InverseComparisonKey = computedInverse.Key;
+                    changes.CacheUpdate(forwardConceptComparison);
+                }
+
+                continue;
+            }
+
+            usedInverseKeys.Add(existingInverse.Key);
+
+            // check to see if the inverse comparison has the same relationship
+            if (existingInverse.Relationship != computedInverse.Relationship)
+            {
+                existingInverse.Relationship = computedInverse.Relationship;
+                changes.CacheUpdate(existingInverse);
+            }
+        }
+
+        // flag we are deleting any inverse comparisons that are not used
+        foreach ((int key, DbElementComparison existing) in existingInverseConceptComparisons)
+        {
+            if (usedInverseKeys.Contains(key))
+            {
+                continue;
+            }
+            changes.CacheDelete(existing);
+        }
+
+        // apply inverse updates to the VS
+        if (addedInverse)
+        {
+            inverseComparsion.Insert(_db);
+        }
+        else
+        {
+            inverseComparsion.Update(_db);
+        }
+
+        // apply our concept changes
+        changes.ComparisonsToAdd.Insert(_db);
+        changes.ComparisonsToUpdate.Update(_db);
+        changes.ComparisonsToDelete.Delete(_db);
+
+        // return the comparison in case the caller needs it
+        return (inverseComparsion, changes.Count != 0);
+    }
+
+    public void ApplySdConceptChanges(
+        List<DbElementRow> originalProjection,
+        IEnumerable<DbElementRow> updatedProjection,
+        int sourceColumnIndex,
+        bool isComparingRight,
+        string? reviewer)
+    {
+        DbComparisonCache<DbElementComparison> changes = new();
+
+        ILookup<int, DbElementRow> sourceConceptRows = originalProjection.ToLookup(c => c.RowNumber);
+
+        // traverse the locally-modified concept projection and determine changes (add/remove/update)
+        foreach (DbElementRow row in updatedProjection)
+        {
+            if (row[sourceColumnIndex] == null)
+            {
+                continue;
+            }
+
+            DbElementCell sourceConceptCell = row[sourceColumnIndex]!;
+            DbElementComparison sourceToTargetComparison = isComparingRight
+                ? sourceConceptCell.RightComparison!
+                : sourceConceptCell.LeftComparison!;
+
+            // flag this has been compared if desired
+            if (reviewer != null)
+            {
+                sourceToTargetComparison.LastReviewedOn = DateTime.UtcNow;
+                sourceToTargetComparison.LastReviewedBy = reviewer;
+            }
+
+            // check for added rows
+            if (sourceToTargetComparison.Key == -1)
+            {
+                // get a good key value
+                sourceToTargetComparison.Key = _comparisonDb.GetConceptComparisonKey();
+
+                // cache the addition
+                changes.CacheAdd(sourceToTargetComparison);
+            }
+            else
+            {
+                // cache as an update
+                changes.CacheUpdate(sourceToTargetComparison);
+            }
+        }
+
+        // check for deleted rows
+        ILookup<int, DbElementRow> currentConceptRows = updatedProjection.ToLookup(c => c.RowNumber);
+        foreach (DbElementRow row in originalProjection)
+        {
+            if (!currentConceptRows.Contains(row.RowNumber))
+            {
+                DbElementCell sourceConceptCell = row[sourceColumnIndex]!;
+                DbElementComparison sourceToTargetComparison = isComparingRight
+                    ? sourceConceptCell.RightComparison!
+                    : sourceConceptCell.LeftComparison!;
+                // cache the deletion
+                changes.CacheDelete(sourceToTargetComparison);
+            }
+        }
+
+        // apply the changes to the concept comparisons
+        changes.ComparisonsToAdd.Insert(_db);
+        changes.ComparisonsToUpdate.Update(_db);
+        changes.ComparisonsToDelete.Delete(_db);
+    }
+
     private void doStructureComparisons(
         DbFhirPackage sourcePackage,
         DbStructureDefinition sourceSd,
@@ -398,106 +597,133 @@ public class FhirDbComparer
                 Key: forwardComparison.TargetStructureKey)
                 ?? throw new Exception($"Could not resolve target Structure with Key: {forwardComparison.TargetStructureKey} (`{forwardComparison.TargetCanonicalVersioned}`)");
 
-            // look for an inverse comparison
-            DbStructureComparison? inverseComparison = null;
-
-            if ((forwardComparison.InverseComparisonKey != null) &&
-                (forwardComparison.InverseComparisonKey != -1))
-            {
-                inverseComparison = _sdComparisons.Get((int)forwardComparison.InverseComparisonKey) ??
-                    DbStructureComparison.SelectSingle(
-                    _db,
-                    Key: forwardComparison.InverseComparisonKey);
-            }
-
-            if (inverseComparison == null)
-            {
-                inverseComparison = _sdComparisons.Get(targetSd.Key, forwardComparison.SourceStructureKey) ??
-                    DbStructureComparison.SelectSingle(
-                        _db,
-                        PackageComparisonKey: reversePair.Key,
-                        SourceFhirPackageKey: targetPackage.Key,
-                        SourceStructureKey: forwardComparison.TargetStructureKey,
-                        TargetFhirPackageKey: sourcePackage.Key,
-                        TargetStructureKey: forwardComparison.SourceStructureKey);
-            }
-
-            if (inverseComparison == null)
-            {
-                inverseComparison = invert(forwardComparison, reversePair);
-                _sdComparisons.CacheAdd(inverseComparison);
-            }
-
-            if (forwardComparison.InverseComparisonKey != inverseComparison.Key)
-            {
-                forwardComparison.InverseComparisonKey = inverseComparison.Key;
-                _sdComparisons.Changed(forwardComparison);
-            }
-
-            if (inverseComparison.InverseComparisonKey != forwardComparison.Key)
-            {
-                inverseComparison.InverseComparisonKey = forwardComparison.Key;
-                _sdComparisons.Changed(inverseComparison);
-            }
-
-            // process this comparison
-            doElementComparisons(
+            DoStructureComparison(
+                _sdComparisons,
+                _elementComparisons,
+                _elementTypeComparisons,
                 sourcePackage,
                 sourceSd,
                 targetPackage,
                 targetSd,
                 forwardComparison,
-                inverseComparison,
                 forwardPair,
-                reversePair,
-                out bool identical);
-
-            // check for identical structures
-            if (forwardComparison.IsIdentical != identical)
-            {
-                forwardComparison.IsIdentical = identical;
-                _sdComparisons.Changed(forwardComparison);
-            }
-
-            if (inverseComparison.IsIdentical != forwardComparison.IsIdentical)
-            {
-                inverseComparison.IsIdentical = forwardComparison.IsIdentical;
-                _sdComparisons.Changed(inverseComparison);
-            }
-
-            if (aggregateStructureRelationships(forwardComparison, sourceSd, targetSd))
-            {
-                _sdComparisons.Changed(forwardComparison);
-            }
-
-            if (aggregateStructureRelationships(inverseComparison, targetSd, sourceSd))
-            {
-                _sdComparisons.Changed(inverseComparison);
-            }
-
-            // update primitives manually according to known relationships
-            if (FhirTypeMappings.TryGetMapping(sourceSd.Name, targetSd.Name, out FhirTypeMappings.CodeGenTypeMapping? sourcePM))
-            {
-                forwardComparison.Relationship = sourcePM.Value.Relationship;
-                forwardComparison.ConceptDomainRelationship = sourcePM.Value.ConceptDomainRelationship;
-                forwardComparison.ValueDomainRelationship = sourcePM.Value.ValueDomainRelationship;
-                forwardComparison.IsGenerated = true;
-                forwardComparison.Message = sourcePM.Value.Comment;
-                _sdComparisons.Changed(forwardComparison);
-            }
-
-            if (FhirTypeMappings.TryGetMapping(targetSd.Name, sourceSd.Name, out FhirTypeMappings.CodeGenTypeMapping? targetPM))
-            {
-                inverseComparison.Relationship = targetPM.Value.Relationship;
-                inverseComparison.ConceptDomainRelationship = targetPM.Value.ConceptDomainRelationship;
-                inverseComparison.ValueDomainRelationship = targetPM.Value.ValueDomainRelationship;
-                inverseComparison.IsGenerated = true;
-                inverseComparison.Message = targetPM.Value.Comment;
-                _sdComparisons.Changed(inverseComparison);
-            }
+                reversePair);
         }
 
         return;
+    }
+
+    public void DoStructureComparison(
+        DbComparisonCache<DbStructureComparison> sdComparisons,
+        DbComparisonCache<DbElementComparison> elementComparisons,
+        DbComparisonCache<DbElementTypeComparison> elementTypeComparisons,
+        DbFhirPackage sourcePackage,
+        DbStructureDefinition sourceSd,
+        DbFhirPackage targetPackage,
+        DbStructureDefinition targetSd,
+        DbStructureComparison forwardComparison,
+        DbFhirPackageComparisonPair forwardPair,
+        DbFhirPackageComparisonPair reversePair)
+    {
+        // look for an inverse comparison
+        DbStructureComparison? inverseComparison = null;
+
+        if ((forwardComparison.InverseComparisonKey != null) &&
+            (forwardComparison.InverseComparisonKey != -1))
+        {
+            inverseComparison = sdComparisons.Get((int)forwardComparison.InverseComparisonKey) ??
+                DbStructureComparison.SelectSingle(
+                _db,
+                Key: forwardComparison.InverseComparisonKey);
+        }
+
+        if (inverseComparison == null)
+        {
+            inverseComparison = sdComparisons.Get(targetSd.Key, forwardComparison.SourceStructureKey) ??
+                DbStructureComparison.SelectSingle(
+                    _db,
+                    PackageComparisonKey: reversePair.Key,
+                    SourceFhirPackageKey: targetPackage.Key,
+                    SourceStructureKey: forwardComparison.TargetStructureKey,
+                    TargetFhirPackageKey: sourcePackage.Key,
+                    TargetStructureKey: forwardComparison.SourceStructureKey);
+        }
+
+        if (inverseComparison == null)
+        {
+            inverseComparison = invert(forwardComparison, reversePair);
+            sdComparisons.CacheAdd(inverseComparison);
+        }
+
+        if (forwardComparison.InverseComparisonKey != inverseComparison.Key)
+        {
+            forwardComparison.InverseComparisonKey = inverseComparison.Key;
+            sdComparisons.Changed(forwardComparison);
+        }
+
+        if (inverseComparison.InverseComparisonKey != forwardComparison.Key)
+        {
+            inverseComparison.InverseComparisonKey = forwardComparison.Key;
+            sdComparisons.Changed(inverseComparison);
+        }
+
+        // process this comparison
+        doElementComparisons(
+            elementComparisons,
+            elementTypeComparisons,
+            sourcePackage,
+            sourceSd,
+            targetPackage,
+            targetSd,
+            forwardComparison,
+            inverseComparison,
+            forwardPair,
+            reversePair,
+            out bool identical);
+
+        // check for identical structures
+        if (forwardComparison.IsIdentical != identical)
+        {
+            forwardComparison.IsIdentical = identical;
+            sdComparisons.Changed(forwardComparison);
+        }
+
+        if (inverseComparison.IsIdentical != forwardComparison.IsIdentical)
+        {
+            inverseComparison.IsIdentical = forwardComparison.IsIdentical;
+            sdComparisons.Changed(inverseComparison);
+        }
+
+        if (aggregateStructureRelationships(forwardComparison, sourceSd, targetSd))
+        {
+            sdComparisons.Changed(forwardComparison);
+        }
+
+        if (aggregateStructureRelationships(inverseComparison, targetSd, sourceSd))
+        {
+            sdComparisons.Changed(inverseComparison);
+        }
+
+        // update primitives manually according to known relationships
+        if (FhirTypeMappings.TryGetMapping(sourceSd.Name, targetSd.Name, out FhirTypeMappings.CodeGenTypeMapping? sourcePM))
+        {
+            forwardComparison.Relationship = sourcePM.Value.Relationship;
+            forwardComparison.ConceptDomainRelationship = sourcePM.Value.ConceptDomainRelationship;
+            forwardComparison.ValueDomainRelationship = sourcePM.Value.ValueDomainRelationship;
+            forwardComparison.IsGenerated = true;
+            forwardComparison.Message = sourcePM.Value.Comment;
+            sdComparisons.Changed(forwardComparison);
+        }
+
+        if (FhirTypeMappings.TryGetMapping(targetSd.Name, sourceSd.Name, out FhirTypeMappings.CodeGenTypeMapping? targetPM))
+        {
+            inverseComparison.Relationship = targetPM.Value.Relationship;
+            inverseComparison.ConceptDomainRelationship = targetPM.Value.ConceptDomainRelationship;
+            inverseComparison.ValueDomainRelationship = targetPM.Value.ValueDomainRelationship;
+            inverseComparison.IsGenerated = true;
+            inverseComparison.Message = targetPM.Value.Comment;
+            sdComparisons.Changed(inverseComparison);
+        }
     }
 
     private record class TypeComparisonTrackingRecord
@@ -511,6 +737,7 @@ public class FhirDbComparer
     }
 
     private DbElementTypeComparison doElementTypeComparison(
+        DbComparisonCache<DbElementTypeComparison> elementTypeComparisons,
         DbElementComparison elementComparison,
         DbFhirPackage sourcePackage,
         DbElement sourceElement,
@@ -518,7 +745,7 @@ public class FhirDbComparer
         DbElement targetElement)
     {
         // check for existing comparisons
-        DbElementTypeComparison? existing = _elementTypeComparisons.Get(elementComparison.Key) ??
+        DbElementTypeComparison? existing = elementTypeComparisons.Get(elementComparison.Key) ??
             DbElementTypeComparison.SelectSingle(_db, ElementComparisonKey: elementComparison.Key);
 
         if ((existing != null) &&
@@ -684,7 +911,7 @@ public class FhirDbComparer
         DbElementTypeComparison? inverse = null;
 
         // check for an inverse mapping
-        if (!_elementTypeComparisons.TryGet((targetElement.Key, sourceElement.Key), out inverse))
+        if (!elementTypeComparisons.TryGet((targetElement.Key, sourceElement.Key), out inverse))
         {
             inverse = DbElementTypeComparison.SelectSingle(
                 _db,
@@ -747,16 +974,16 @@ public class FhirDbComparer
             (inverse.InverseComparisonKey != typeComparison.Key))
         {
             inverse.InverseComparisonKey = typeComparison.Key;
-            _elementTypeComparisons.Changed(inverse);
+            elementTypeComparisons.Changed(inverse);
         }
 
         if (existing == null)
         {
-            _elementTypeComparisons.CacheAdd(typeComparison);
+            elementTypeComparisons.CacheAdd(typeComparison);
         }
         else
         {
-            _elementTypeComparisons.Changed(typeComparison);
+            elementTypeComparisons.Changed(typeComparison);
         }
 
         return typeComparison;
@@ -808,6 +1035,8 @@ public class FhirDbComparer
     }
 
     private void doElementComparisons(
+        DbComparisonCache<DbElementComparison> elementComparisons,
+        DbComparisonCache<DbElementTypeComparison> elementTypeComparisons,
         DbFhirPackage sourcePackage,
         DbStructureDefinition sourceSd,
         DbFhirPackage targetPackage,
@@ -922,7 +1151,7 @@ public class FhirDbComparer
                 };
 
                 // insert into the database
-                _elementComparisons.CacheAdd(noMap);
+                elementComparisons.CacheAdd(noMap);
 
                 identical = false;
 
@@ -973,13 +1202,13 @@ public class FhirDbComparer
                 if (inverseComparison == null)
                 {
                     inverseComparison = invert(elementComparison, sourceElement, targetElement!, reverseComparison, reversePair);
-                    _elementComparisons.CacheAdd(inverseComparison);
+                    elementComparisons.CacheAdd(inverseComparison);
                 }
 
                 if (elementComparison.InverseComparisonKey != inverseComparison.Key)
                 {
                     elementComparison.InverseComparisonKey = inverseComparison.Key;
-                    _elementComparisons.Changed(elementComparison);
+                    elementComparisons.Changed(elementComparison);
                 }
 
                 // do basic checks if this has not been reviewed
@@ -1017,6 +1246,7 @@ public class FhirDbComparer
 
                     // do type check comparison
                     DbElementTypeComparison elementTypeComparison = doElementTypeComparison(
+                        elementTypeComparisons,
                         elementComparison,
                         sourcePackage,
                         sourceElement,
@@ -1322,7 +1552,7 @@ public class FhirDbComparer
                     if (inverseComparison.IsIdentical != elementComparison.IsIdentical)
                     {
                         inverseComparison.IsIdentical = elementComparison.IsIdentical;
-                        _elementComparisons.Changed(inverseComparison);
+                        elementComparisons.Changed(inverseComparison);
                     }
 
                     // if we changed something, apply all changes and update the record
@@ -1336,7 +1566,7 @@ public class FhirDbComparer
                         elementComparison.Message = string.Join(" ", messages);
                         elementComparison.ElementTypeComparisonKey = elementTypeComparison.Key;
                         elementComparison.BoundValueSetComparisonKey = boundValueSetComparison?.Key;
-                        _elementComparisons.Changed(elementComparison);
+                        elementComparisons.Changed(elementComparison);
                     }
                 }
 
@@ -1351,7 +1581,7 @@ public class FhirDbComparer
                         $" of `{elementComparison.Relationship}`.";
                     inverseComparison.Relationship = expectedInverseRelationship;
 
-                    _elementComparisons.Changed(inverseComparison);
+                    elementComparisons.Changed(inverseComparison);
                 }
 
                 // process the current element's relationship
@@ -1603,6 +1833,18 @@ public class FhirDbComparer
         }
     }
 
+    public bool AggregateStructureRelationships(DbStructureComparison sdComparison)
+    {
+        DbStructureDefinition? sourceSd = DbStructureDefinition.SelectSingle(_db, Key: sdComparison.SourceStructureKey);
+        DbStructureDefinition? targetSd = DbStructureDefinition.SelectSingle(_db, Key: sdComparison.TargetStructureKey);
+
+        if ((sourceSd == null) || (targetSd == null))
+        {
+            throw new Exception($"Failed to resolve source or target structure for comparison {sdComparison.Key}");
+        }
+
+        return aggregateStructureRelationships(sdComparison, sourceSd!, targetSd!);
+    }
 
     /// <summary>
     /// Aggregates the relationships of value sets within a FHIR package comparison.

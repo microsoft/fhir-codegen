@@ -456,7 +456,7 @@ public class XVerProcessor
             };
 
             // project this value set based on comparisons
-            List<DbSdCell?[]> projection = sdGraph.Project();
+            List<DbSdRow> projection = sdGraph.Project();
 
             // get the overview entry for this value set
             string content = getMdOverviewEntry(packages, package, sd, projection);
@@ -489,7 +489,7 @@ public class XVerProcessor
         int keyPackageColIndex,
         DbStructureDefinition keySd,
         DbGraphSd sdGraph,
-        List<DbSdCell?[]> projection)
+        List<DbSdRow> projection)
     {
         writer.WriteLine($"""
             ### {keySd.Name}
@@ -569,7 +569,7 @@ public class XVerProcessor
         writer.WriteLine("| " + string.Join(" | Comparison | ", allKeys.Select(v => v.key)));
         writeTableColumns(writer, "---", byTwoColumnCount, appendNewline: true);
 
-        foreach (DbSdCell?[] row in projection)
+        foreach (DbSdRow row in projection)
         {
             int column = -1;
             // traverse columns
@@ -611,7 +611,7 @@ public class XVerProcessor
 
         int mapGroupIndex = 0;
 
-        foreach (DbSdCell?[] structureRow in projection)
+        foreach (DbSdRow structureRow in projection)
         {
             if (structureRow[keyPackageColIndex] == null)
             {
@@ -653,12 +653,12 @@ public class XVerProcessor
             writer.WriteLine();
             writeTableColumns(writer, "---", byTwoColumnCount, appendNewline: true);
 
-            List<DbElementCell?[]> elementProjection = sdGraph.ProjectElements(structureRow);
+            List<DbElementRow> elementProjection = sdGraph.ProjectElements(structureRow);
 
             HashSet<string>[] elementsPerSd = packages.Select(_ => new HashSet<string>()).ToArray();
 
             // iterate over the components in the concept projection
-            foreach (DbElementCell?[] elementRow in elementProjection)
+            foreach (DbElementRow elementRow in elementProjection)
             {
                 int column = -1;
 
@@ -860,7 +860,7 @@ public class XVerProcessor
         List<DbFhirPackage> packages,
         DbFhirPackage package,
         DbStructureDefinition sd,
-        List<DbSdCell?[]> projection)
+        List<DbSdRow> projection)
     {
         List<string> mapsTo = [];
         for (int i = 0; i < packages.Count; i++)

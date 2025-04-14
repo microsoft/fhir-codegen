@@ -1,0 +1,1677 @@
+﻿@page "/structures/{FhirPackageKey:int}/{StructureKey:int}"
+
+@using Microsoft.Health.Fhir.Comparison.Models
+@using xver_editor.Services
+@using Microsoft.FluentUI.AspNetCore.Components
+@using System.Diagnostics.CodeAnalysis
+@using System.Collections.Concurrent;
+@using System.Text;
+
+@inject IDialogService DialogService
+@inject IXverService Xver
+@inject NavigationManager NavigationManager
+@inject XverAppConfig ServerConfig
+
+<FluentStack Orientation="Orientation.Vertical" VerticalGap="8">
+    <FluentLabel Typo="Typography.H4">Structure details for @StructureName (DB Key: @StructureKey)</FluentLabel>
+
+    @if ((Xver.IsOpen == false) || (Xver.DbConnection == null))
+    {
+        <FluentLabel Typo="Typography.Body">Database not open.</FluentLabel>
+    }
+    else if (sdUiRec == null)
+    {
+        <FluentLabel Typo="Typography.Body">Loading...</FluentLabel>
+    }
+    else
+    {
+        <FluentTabs Width="100%" @ref="tabsComponent" ActiveTabId="@activeTabId">
+            <FluentTab Id="overview" Label="Overview">
+                <FluentStack Orientation="Orientation.Vertical" VerticalGap="8">
+                    <FluentLabel Typo="Typography.H5">Structure Info</FluentLabel>
+                    <FluentCard Width="100%">
+                        <div style="padding: 16px;">
+                            <FluentStack Orientation="Orientation.Vertical" VerticalGap="12">
+                                <FluentGrid Columns="2" ColumnSpan="2">
+                                    <FluentGridItem>
+                                        <FluentTextField Label="Name" Value="@sdUiRec.Sd.Name" ReadOnly="true" />
+                                    </FluentGridItem>
+                                    <FluentGridItem>
+                                        <FluentTextField Label="ID" Value="@sdUiRec.Sd.Id" ReadOnly="true" />
+                                    </FluentGridItem>
+                                    <FluentGridItem>
+                                        <FluentTextField Label="URL" Value="@sdUiRec.Sd.UnversionedUrl" ReadOnly="true" />
+                                    </FluentGridItem>
+                                    <FluentGridItem>
+                                        <FluentTextField Label="Version" Value="@sdUiRec.Sd.Version" ReadOnly="true" />
+                                    </FluentGridItem>
+                                    <FluentGridItem>
+                                        <FluentTextField Label="Category" Value="@sdUiRec.Sd.ArtifactClass.ToString()" ReadOnly="true" />
+                                    </FluentGridItem>
+                                    <FluentGridItem>
+                                        <FluentTextField Label="Description" Value="@sdUiRec.Sd.Description" ReadOnly="true" />
+                                    </FluentGridItem>
+                                    <FluentGridItem>
+                                        <FluentTextField Label="Publication Status" Value="@sdUiRec.Sd.Status.ToString()" ReadOnly="true" />
+                                    </FluentGridItem>
+                                    <FluentGridItem>
+                                        <FluentTextField Label="Snapshot Elements" Value="@sdUiRec.Sd.SnapshotCount.ToString()" ReadOnly="true" />
+                                    </FluentGridItem>
+                                    <FluentGridItem>
+                                        <FluentTextField Label="Differential Elements" Value="@sdUiRec.Sd.DifferentialCount.ToString()" ReadOnly="true" />
+                                    </FluentGridItem>
+                                    <FluentGridItem>
+                                        <FluentTextField Label="Message" Value="@(sdUiRec.Sd.Message ?? "None")" ReadOnly="true" />
+                                    </FluentGridItem>
+                                </FluentGrid>
+                            </FluentStack>
+                        </div>
+                    </FluentCard>
+
+                </FluentStack>
+            </FluentTab>
+            <FluentTab Id="mappingTable" Label="All-Version Mapping Table">
+                <FluentStack Orientation="Orientation.Vertical" VerticalGap="8">
+                    <FluentLabel Typo="Typography.H5">All-Version Mapping Table</FluentLabel>
+                    <FluentCard Width="100%">
+                        <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center">
+                            <FluentLabel Typo="Typography.Body">Add mapping for @StructureName</FluentLabel>
+                            @for (int i = 0; i < _packages.Count; i++)
+                            {
+                                int packageIndex = i;
+                                if (_packages[packageIndex].Key != FhirPackageKey)
+                                {
+                                    continue;
+                                }
+
+                                if (packageIndex > 0)
+                                {
+                                    int tpIndex = packageIndex - 1;
+                                    string dialogKey = $"add-sd-map-left";
+                                    <div>
+                                        <FluentButton Appearance="Appearance.Outline"
+                                        Title="@($"Add new mapping to {_packages[tpIndex].ShortName}")"
+                                        OnClick="@(() => ShowStructureSelectionDialog(dialogKey, StructureKey, packageIndex, tpIndex))">
+                                            <FluentIcon Value="@(new Icons.Regular.Size20.Add())" />
+                                            <FluentIcon Value="@(new Icons.Regular.Size20.ArrowLeft())" />
+                                        </FluentButton>
+                                    </div>
+                                }
+
+                                if (packageIndex < (_packages.Count - 1))
+                                {
+                                    int tpIndex = packageIndex + 1;
+                                    string dialogKey = $"add-sd-map-right";
+                                    <div>
+                                        <FluentButton Appearance="Appearance.Outline"
+                                        Title="@($"Add new mapping to {_packages[packageIndex+1].ShortName}")"
+                                        OnClick="@(() => ShowStructureSelectionDialog(dialogKey, StructureKey, packageIndex, tpIndex))">
+                                            <FluentIcon Value="@(new Icons.Regular.Size20.Add())" />
+                                            <FluentIcon Value="@(new Icons.Regular.Size20.ArrowRight())" />
+                                        </FluentButton>
+                                    </div>
+                                }
+                            }
+                        </FluentStack>
+                        <div class="grid-container" style="padding: 16px;">
+                            @if (sdUiRec.Projection.Count == 0)
+                            {
+                                <p>No mapping data available for this Structure.</p>
+                            }
+                            else
+                            {
+                                <FluentDataGrid Items="@graphProjection" ResizableColumns="true" GridTemplateColumns="@GetMappingTableColumns()" MultiLine="true" class="alternating-grid">
+                                    @for (int i = 0; i < _packages.Count; i++)
+                                    {
+                                        int packageIndex = i;
+                                        <TemplateColumn Title="@_packages[packageIndex].ShortName">
+                                            @{
+                                                DbSdCell? cell = context[packageIndex];
+                                            }
+                                            @if (cell != null)
+                                            {
+                                                <FluentStack Orientation="Orientation.Vertical">
+                                                    <FluentLabel Typo="Typography.Header">@cell.Sd.Name</FluentLabel>
+                                                    <FluentLabel Typo="Typography.Body">@cell.Sd.Id</FluentLabel>
+                                                    <FluentBadge Appearance="@(cell.Sd.Key == StructureKey ? Appearance.Accent : Appearance.Neutral)">
+                                                        Concepts: @cell.Elements.Count
+                                                    </FluentBadge>
+                                                </FluentStack>
+                                            }
+                                        </TemplateColumn>
+
+                                        @if (i < _packages.Count - 1)
+                                        {
+                                            <TemplateColumn Title="Comparison" TGridItem="DbSdRow">
+                                                @{
+                                                    DbSdCell? cell = context[packageIndex];
+                                                    int cellIndex = packageIndex;
+                                                    DbStructureComparison? toRight = context[packageIndex]?.RightComparison;
+                                                    DbStructureComparison? fromRight = packageIndex < _packages.Count - 1 ? context[packageIndex + 1]?.LeftComparison : null;
+                                                }
+                                                @if (cell != null)
+                                                {
+                                                    @if (toRight != null)
+                                                    {
+                                                        <FluentStack Orientation="Orientation.Vertical">
+                                                            <FluentIcon Value="@(new Icons.Regular.Size24.ArrowRight())" />
+                                                            <FluentBadge Appearance="@(toRight.LastReviewedOn == null ? Appearance.Accent : Appearance.Neutral)">
+                                                                @(toRight.LastReviewedOn == null ? "Unreviewed" : "Reviewed")
+                                                            </FluentBadge>
+                                                            <FluentButton OnClick="@(() => SelectComparison(context, toRight, cellIndex, cellIndex + 1))"
+                                                            Appearance="Appearance.Outline" IconEnd="@(new Icons.Regular.Size16.WindowDevEdit())">
+                                                                Details
+                                                            </FluentButton>
+                                                            <FluentLabel Typo="Typography.Body">DB Key: @toRight.Key</FluentLabel>
+                                                            <FluentLabel Typo="Typography.Body">@toRight.Relationship</FluentLabel>
+                                                            <FluentLabel Typo="Typography.Body">@(GetDateDisplay(toRight.LastReviewedOn))</FluentLabel>
+                                                            <FluentLabel Typo="Typography.Body">@(toRight.LastReviewedBy ?? string.Empty)</FluentLabel>
+                                                        </FluentStack>
+                                                    }
+
+                                                    @if (fromRight != null)
+                                                    {
+                                                        <FluentStack Orientation="Orientation.Vertical">
+                                                            <FluentIcon Value="@(new Icons.Regular.Size24.ArrowLeft())" />
+                                                            <FluentBadge Appearance="@(fromRight.LastReviewedOn == null ? Appearance.Accent : Appearance.Neutral)">
+                                                                @(fromRight.LastReviewedOn == null ? "Unreviewed" : "Reviewed")
+                                                            </FluentBadge>
+                                                            <FluentButton OnClick="@(() => SelectComparison(context, fromRight, cellIndex + 1, cellIndex))"
+                                                            Appearance="Appearance.Outline"
+                                                            IconEnd="@(new Icons.Regular.Size16.WindowDevEdit())">
+                                                                Details
+                                                            </FluentButton>
+                                                            <FluentLabel Typo="Typography.Body">DB Key: @fromRight.Key</FluentLabel>
+                                                            <FluentLabel Typo="Typography.Body">@fromRight.Relationship</FluentLabel>
+                                                            <FluentLabel Typo="Typography.Body">@(GetDateDisplay(fromRight.LastReviewedOn))</FluentLabel>
+                                                            <FluentLabel Typo="Typography.Body">@(fromRight.LastReviewedBy ?? string.Empty)</FluentLabel>
+                                                        </FluentStack>
+                                                    }
+                                                }
+                                            </TemplateColumn>
+                                        }
+                                    }
+                                </FluentDataGrid>
+                            }
+                        </div>
+                    </FluentCard>
+                </FluentStack>
+            </FluentTab>
+            <FluentTab Id="comparisonDetails" Label="Comparison Details">
+                <FluentStack Orientation="Orientation.Vertical" VerticalGap="8">
+                    <FluentLabel Typo="Typography.H5">Comparison Details</FluentLabel>
+                    @if ((selectedComparison == null) || (csCell == null) || (ctCell == null))
+                    {
+                        <FluentCard>
+                            <FluentLabel Typo="Typography.Body">Please select a comparison to review.</FluentLabel>
+                        </FluentCard>
+                    }
+                    else
+                    {
+                        <FluentCard Width="100%">
+                            <FluentStack Orientation="Orientation.Vertical">
+                                <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center">
+                                    <FluentLabel Typo="Typography.H5">@selectedComparison.CompositeName</FluentLabel>
+                                    <FluentButton Id="@($"del-sdc-btn")" Appearance="Appearance.Outline" Title="Delete this Mapping" OnClick="@(() => DeleteCurrentMapping())">
+                                        <FluentIcon Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Regular.Size20.Delete())" Color="@Color.Error" />
+                                    </FluentButton>
+
+                                </FluentStack>
+
+                                <FluentTextField Label="Comparison DB Key" Value="@selectedComparison.Key.ToString()" ReadOnly="true" />
+
+                                <FluentDataGrid GenerateHeader="GenerateHeaderOption.None" TGridItem="string" DisplayMode="DataGridDisplayMode.Table" role="grid" class="full-width">
+                                    <FluentDataGridRow RowType="DataGridRowType.Header">
+                                        <FluentDataGridCell GridColumn=1 CellType="DataGridCellType.ColumnHeader" Style="width: 20%;"></FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=2 CellType="DataGridCellType.ColumnHeader" Style="width: 40%;">Source</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=3 CellType="DataGridCellType.ColumnHeader" Style="width: 40%;">Target</FluentDataGridCell>
+                                    </FluentDataGridRow>
+                                    <FluentDataGridRow>
+                                        <FluentDataGridCell GridColumn=1>Package</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=2>@(csPackage?.NpmId ?? string.Empty)</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=3>@(ctPackage?.NpmId ?? string.Empty)</FluentDataGridCell>
+                                    </FluentDataGridRow>
+                                    <FluentDataGridRow>
+                                        <FluentDataGridCell GridColumn=1>Id</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=2>@csCell.Sd.Id</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=3>@ctCell.Sd.Id</FluentDataGridCell>
+                                    </FluentDataGridRow>
+                                    <FluentDataGridRow>
+                                        <FluentDataGridCell GridColumn=1>Name</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=2>@csCell.Sd.Name</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=3>@ctCell.Sd.Name</FluentDataGridCell>
+                                    </FluentDataGridRow>
+                                    <FluentDataGridRow>
+                                        <FluentDataGridCell GridColumn=1>URL</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=2>@csCell.Sd.UnversionedUrl</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=3>@ctCell.Sd.UnversionedUrl</FluentDataGridCell>
+                                    </FluentDataGridRow>
+                                    <FluentDataGridRow>
+                                        <FluentDataGridCell GridColumn=1>Version</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=2>@csCell.Sd.Version</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=3>@ctCell.Sd.Version</FluentDataGridCell>
+                                    </FluentDataGridRow>
+                                    <FluentDataGridRow>
+                                        <FluentDataGridCell GridColumn=1>Title</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=2>@csCell.Sd.Title</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=3>@ctCell.Sd.Title</FluentDataGridCell>
+                                    </FluentDataGridRow>
+                                    <FluentDataGridRow>
+                                        <FluentDataGridCell GridColumn=1>Description</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=2>@csCell.Sd.Description</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=3>@ctCell.Sd.Description</FluentDataGridCell>
+                                    </FluentDataGridRow>
+                                    <FluentDataGridRow>
+                                        <FluentDataGridCell GridColumn=1>Comment</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=2>@csCell.Sd.Comment</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=3>@ctCell.Sd.Comment</FluentDataGridCell>
+                                    </FluentDataGridRow>
+                                    <FluentDataGridRow>
+                                        <FluentDataGridCell GridColumn=1>Snapshot Count</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=2>@csCell.Sd.SnapshotCount</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=3>@ctCell.Sd.SnapshotCount</FluentDataGridCell>
+                                    </FluentDataGridRow>
+                                    <FluentDataGridRow>
+                                        <FluentDataGridCell GridColumn=1>Differential Count</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=2>@csCell.Sd.DifferentialCount</FluentDataGridCell>
+                                        <FluentDataGridCell GridColumn=3>@ctCell.Sd.DifferentialCount</FluentDataGridCell>
+                                    </FluentDataGridRow>
+                                </FluentDataGrid>
+                                <FluentLabel Typo="Typography.Body">Structure Relationship:</FluentLabel>
+                                @{
+                                    string relationshipRowKey = $"rel-sd";
+                                    Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? relationship = selectedComparison.Relationship;
+                                    <div>
+                                        <FluentButton Id="@($"{relationshipRowKey}-btn")"
+                                        Appearance="Appearance.Outline"
+                                        OnClick="@(() => TogglePopover(relationshipRowKey))">
+                                            @(relationship?.ToString() ?? "-")
+                                        </FluentButton>
+
+                                        <FluentPopover AnchorId="@($"{relationshipRowKey}-btn")"
+                                        VerticalPosition="VerticalPosition.Top"
+                                        FixedPlacement="true"
+                                        Open="@IsPopoverOpen(relationshipRowKey)"
+                                        OpenChanged="@((value) => SetPopoverState(relationshipRowKey, value))">
+                                            <Header>
+                                                <FluentLabel Typo="Typography.Body">Select Relationship</FluentLabel>
+                                            </Header>
+                                            <Body>
+                                                <FluentStack Orientation="Orientation.Vertical" VerticalGap="4">
+                                                    <FluentCombobox Items="@_relationships"
+                                                    Name="@($"{relationshipRowKey}-combo")"
+                                                    Width="950px"
+                                                    Placeholder="Search for a relationship..."
+                                                    OptionValue="@(i => i.Value.ToString() ?? string.Empty)"
+                                                    OptionText="@(i => i.Text)"
+                                                    Multiple="false"
+                                                    Autocomplete="ComboboxAutocomplete.Inline"
+                                                    Autofocus="true"
+                                                    Open="true"
+                                                    SelectedOptionChanged="@(EventCallback.Factory.Create<Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?>>(this, (value) => UpdateSdRelationship(value)))" />
+                                                </FluentStack>
+                                            </Body>
+                                        </FluentPopover>
+                                    </div>
+                                }
+
+                                <FluentLabel Typo="Typography.Body">Structure Concept-Domain Relationship:</FluentLabel>
+                                @{
+                                    string cdRowKey = $"rel-cd";
+                                    Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? cdRelationship = selectedComparison.ConceptDomainRelationship;
+                                    <div>
+                                        <FluentButton Id="@($"{cdRowKey}-btn")"
+                                        Appearance="Appearance.Outline"
+                                        OnClick="@(() => TogglePopover(cdRowKey))">
+                                            @(cdRelationship?.ToString() ?? "-")
+                                        </FluentButton>
+
+                                        <FluentPopover AnchorId="@($"{cdRowKey}-btn")"
+                                        VerticalPosition="VerticalPosition.Top"
+                                        FixedPlacement="true"
+                                        Open="@IsPopoverOpen(cdRowKey)"
+                                        OpenChanged="@((value) => SetPopoverState(cdRowKey, value))">
+                                            <Header>
+                                                <FluentLabel Typo="Typography.Body">Select Relationship</FluentLabel>
+                                            </Header>
+                                            <Body>
+                                                <FluentStack Orientation="Orientation.Vertical" VerticalGap="4">
+                                                    <FluentCombobox Items="@_relationships"
+                                                    Name="@($"{cdRowKey}-combo")"
+                                                    Width="950px"
+                                                    Placeholder="Search for a relationship..."
+                                                    OptionValue="@(i => i.Value.ToString() ?? string.Empty)"
+                                                    OptionText="@(i => i.Text)"
+                                                    Multiple="false"
+                                                    Autocomplete="ComboboxAutocomplete.Inline"
+                                                    Autofocus="true"
+                                                    Open="true"
+                                                    SelectedOptionChanged="@(EventCallback.Factory.Create<Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?>>(this, (value) => UpdateSdRelationship(value, "cd")))" />
+                                                </FluentStack>
+                                            </Body>
+                                        </FluentPopover>
+                                    </div>
+                                }
+
+                                <FluentLabel Typo="Typography.Body">Structure Value-Domain Relationship:</FluentLabel>
+                                @{
+                                    string vdRowKey = $"rel-vd";
+                                    Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? vdRelationship = selectedComparison.ValueDomainRelationship;
+                                    <div>
+                                        <FluentButton Id="@($"{vdRowKey}-btn")"
+                                        Appearance="Appearance.Outline"
+                                        OnClick="@(() => TogglePopover(vdRowKey))">
+                                            @(vdRelationship?.ToString() ?? "-")
+                                        </FluentButton>
+
+                                        <FluentPopover AnchorId="@($"{vdRowKey}-btn")"
+                                        VerticalPosition="VerticalPosition.Top"
+                                        FixedPlacement="true"
+                                        Open="@IsPopoverOpen(vdRowKey)"
+                                        OpenChanged="@((value) => SetPopoverState(vdRowKey, value))">
+                                            <Header>
+                                                <FluentLabel Typo="Typography.Body">Select Relationship</FluentLabel>
+                                            </Header>
+                                            <Body>
+                                                <FluentStack Orientation="Orientation.Vertical" VerticalGap="4">
+                                                    <FluentCombobox Items="@_relationships"
+                                                    Name="@($"{vdRowKey}-combo")"
+                                                    Width="950px"
+                                                    Placeholder="Search for a relationship..."
+                                                    OptionValue="@(i => i.Value.ToString() ?? string.Empty)"
+                                                    OptionText="@(i => i.Text)"
+                                                    Multiple="false"
+                                                    Autocomplete="ComboboxAutocomplete.Inline"
+                                                    Autofocus="true"
+                                                    Open="true"
+                                                    SelectedOptionChanged="@(EventCallback.Factory.Create<Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?>>(this, (value) => UpdateSdRelationship(value, "vd")))" />
+                                                </FluentStack>
+                                            </Body>
+                                        </FluentPopover>
+                                    </div>
+                                }
+                                <FluentTextField Label="Message" @bind-Value="@selectedComparison.Message" Class="full-width" />
+                                @* // add a div so that the combo box will display - otherwise it is truncated *@
+                                <div class="fluent-pop-container-spacer-short"></div>
+                            </FluentStack>
+
+                        </FluentCard>
+
+                        <FluentCard Width="100%">
+                            <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center">
+                                <FluentLabel Typo="Typography.H5">Element Mapping</FluentLabel>
+                                @{
+                                    var popKey = "add-element-row";
+                                    <div>
+                                        <FluentButton Id="@($"{popKey}-btn")" Appearance="Appearance.Outline" Title="Add new mapping row" OnClick="@(() => TogglePopover(popKey))">
+                                            <FluentIcon Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Regular.Size20.AddSquare())" Color="@Color.Success" />
+                                        </FluentButton>
+
+                                        <FluentPopover AnchorId="@($"{popKey}-btn")"
+                                        VerticalPosition="VerticalPosition.Bottom"
+                                        FixedPlacement="true"
+                                        Open="@IsPopoverOpen(popKey)"
+                                        OpenChanged="@((value) => SetPopoverState(popKey, value))">
+                                            <Header>
+                                                Select source element...
+                                            </Header>
+                                            <Body>
+                                                <FluentCombobox Items="@_sourceElements"
+                                                Width="950px"
+                                                Placeholder="Search for a element..."
+                                                OptionValue="@(i => i.Value?.Key.ToString() ?? string.Empty)"
+                                                OptionText="@(i => i.Text)"
+                                                Multiple="false"
+                                                Autocomplete="ComboboxAutocomplete.Inline"
+                                                Autofocus="true"
+                                                Open="true"
+                                                SelectedOptionChanged="@(EventCallback.Factory.Create<Option<DbElement>>(this, (value) => AddElementRow(value)))" />
+                                            </Body>
+                                        </FluentPopover>
+                                    </div>
+                                }
+                                <FluentButton IconStart="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Regular.Size20.Save())" Appearance="Appearance.Outline" Title="Mark Reviewd and Save Changes" OnClick="@(() => SaveChanges())">
+                                    Mark Reviewed and Save Changes
+                                </FluentButton>
+                                <FluentSwitch Label="Apply to inverse" @bind-Value="ApplyToInverse"></FluentSwitch>
+                            </FluentStack>
+                            <br />
+                            <div class="grid-container">
+                                <FluentDataGrid Items="elementProjection" ShowHover="true" class="mapping-grid" RowSize="@DataGridRowSize.Large" MultiLine="true" AutoFit="true">
+                                    <TemplateColumn Sortable="false">
+                                        @{
+                                            var rowKey = $"del-{context.RowNumber}";
+                                            <div>
+                                                <FluentButton Id="@($"{rowKey}-btn")"
+                                                Appearance="Appearance.Outline"
+                                                OnClick="@(() => TogglePopover(rowKey))"
+                                                Title="Delete this row">
+                                                    <FluentIcon Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Regular.Size20.SubtractSquare())" Color="@Color.Error" />
+                                                </FluentButton>
+
+                                                <FluentPopover AnchorId="@($"{rowKey}-btn")"
+                                                VerticalPosition="VerticalPosition.Bottom"
+                                                FixedPlacement="true"
+                                                Open="@IsPopoverOpen(rowKey)"
+                                                OpenChanged="@((value) => SetPopoverState(rowKey, value))">
+                                                    <Body>
+                                                        <FluentButton IconStart="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Regular.Size20.CheckmarkCircleWarning())"
+                                                        Appearance="Appearance.Outline"
+                                                        OnClick="@(() => DeleteElementRow(context))">
+                                                            Confirm Delete
+                                                        </FluentButton>
+                                                    </Body>
+                                                </FluentPopover>
+                                            </div>
+                                        }
+                                    </TemplateColumn>
+
+                                    <TemplateColumn Title="Source" Sortable="true" Tooltip="true" TooltipText="@(e => e[sourceColIndex]!.Element.UiDisplayLong)">
+                                        @{
+                                            DbElement element = context[sourceColIndex]!.Element;
+                                            <FluentStack Orientation="Orientation.Vertical">
+                                                <FluentLabel Typo="Typography.Header">@element.Id</FluentLabel>
+                                                <FluentTextField Label="Path" ReadOnly="true" Value="@element.Path" />
+                                                <FluentTextField Label="Base Path" ReadOnly="true" Value="@element.BasePath" />
+                                                <FluentTextField Label="Cardinality" ReadOnly="true" Value="@element.FhirCardinalityString" />
+                                                <FluentTextField Label="Type" ReadOnly="true" Value="@element.CollatedTypeLiteral" />
+                                                <FluentTextField Label="Short" ReadOnly="true" Value="@element.Short" />
+                                                <FluentTextArea Label="Definition" Class="full-width" ReadOnly="true" Value="@element.Definition" />
+                                                <FluentTextField Label="Binding Strength" ReadOnly="true" Value="@(element.ValueSetBindingStrength?.ToString())" />
+                                                <FluentTextField Label="Binding ValueSet" ReadOnly="true" Value="@element.BindingValueSet" />
+                                            </FluentStack>
+                                        }
+                                    </TemplateColumn>
+
+                                    <TemplateColumn Title="NoMap" Sortable="false">
+                                        @{
+                                            var noMap = compareRight
+                                                ? context[sourceColIndex]!.RightComparison?.NoMap
+                                                : context[sourceColIndex]!.LeftComparison?.NoMap;
+
+                                            <FluentCheckbox Value="@(noMap ?? false)" />
+                                        }
+                                    </TemplateColumn>
+
+                                    <TemplateColumn Title="Relationship" Sortable="false">
+                                        @{
+                                            var rowKey = $"rel-{context.RowNumber}";
+                                            var relationship = compareRight
+                                                ? context[sourceColIndex]!.RightComparison?.Relationship
+                                                : context[sourceColIndex]!.LeftComparison?.Relationship;
+                                            string? rMessage = compareRight
+                                                ? context[sourceColIndex]!.RightComparison?.Message
+                                                : context[sourceColIndex]!.LeftComparison?.Message;
+                                            <FluentStack Orientation="Orientation.Vertical">
+                                                <div>
+                                                    <FluentButton Id="@($"{rowKey}-btn")"
+                                                    Appearance="Appearance.Outline"
+                                                    OnClick="@(() => TogglePopover(rowKey))">
+                                                        @(relationship?.ToString() ?? "-")
+                                                    </FluentButton>
+
+                                                    <FluentPopover AnchorId="@($"{rowKey}-btn")"
+                                                    VerticalPosition="VerticalPosition.Bottom"
+                                                    FixedPlacement="true"
+                                                    Open="@IsPopoverOpen(rowKey)"
+                                                    OpenChanged="@((value) => SetPopoverState(rowKey, value))">
+                                                        <Header>
+                                                            <FluentLabel Typo="Typography.Body">Select Relationship</FluentLabel>
+                                                        </Header>
+                                                        <Body>
+                                                            <FluentStack Orientation="Orientation.Vertical" VerticalGap="4">
+                                                                <FluentCombobox Items="@_relationships"
+                                                                Name="@($"{rowKey}-combo")"
+                                                                Width="950px"
+                                                                Placeholder="Search for a relationship..."
+                                                                OptionValue="@(i => i.Value.ToString() ?? string.Empty)"
+                                                                OptionText="@(i => i.Text)"
+                                                                Multiple="false"
+                                                                Autocomplete="ComboboxAutocomplete.Inline"
+                                                                Autofocus="true"
+                                                                Open="true"
+                                                                SelectedOptionChanged="@(EventCallback.Factory.Create<Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?>>(this, (value) => UpdateRelationship(context, value)))" />
+                                                            </FluentStack>
+                                                        </Body>
+                                                    </FluentPopover>
+                                                </div>
+
+                                                <FluentTextArea Rows="10" Label="Message" Value="@rMessage" ValueChanged="@(EventCallback.Factory.Create<string?>(this, (value) => UpdateRelationshipMessage(context, value)))" />
+
+                                            </FluentStack>
+
+                                        }
+                                    </TemplateColumn>
+
+                                    <TemplateColumn Title="Concept Domain" Sortable="false">
+                                        @{
+                                            var rowKey = $"rel-cd-{context.RowNumber}";
+                                            var relationship = compareRight
+                                                ? context[sourceColIndex]!.RightComparison?.ConceptDomainRelationship
+                                                : context[sourceColIndex]!.LeftComparison?.ConceptDomainRelationship;
+                                            <div>
+                                                <FluentButton Id="@($"{rowKey}-btn")"
+                                                Appearance="Appearance.Outline"
+                                                OnClick="@(() => TogglePopover(rowKey))">
+                                                    @(relationship?.ToString() ?? "-")
+                                                </FluentButton>
+
+                                                <FluentPopover AnchorId="@($"{rowKey}-btn")"
+                                                VerticalPosition="VerticalPosition.Bottom"
+                                                FixedPlacement="true"
+                                                Open="@IsPopoverOpen(rowKey)"
+                                                OpenChanged="@((value) => SetPopoverState(rowKey, value))">
+                                                    <Header>
+                                                        <FluentLabel Typo="Typography.Body">Select Relationship</FluentLabel>
+                                                    </Header>
+                                                    <Body>
+                                                        <FluentStack Orientation="Orientation.Vertical" VerticalGap="4">
+                                                            <FluentCombobox Items="@_relationships"
+                                                            Name="@($"{rowKey}-combo")"
+                                                            Width="950px"
+                                                            Placeholder="Search for a relationship..."
+                                                            OptionValue="@(i => i.Value.ToString() ?? string.Empty)"
+                                                            OptionText="@(i => i.Text)"
+                                                            Multiple="false"
+                                                            Autocomplete="ComboboxAutocomplete.Inline"
+                                                            Autofocus="true"
+                                                            Open="true"
+                                                            SelectedOptionChanged="@(EventCallback.Factory.Create<Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?>>(this, (value) => UpdateRelationship(context, value, "vd")))" />
+                                                        </FluentStack>
+                                                    </Body>
+                                                </FluentPopover>
+                                            </div>
+                                        }
+                                    </TemplateColumn>
+
+                                    <TemplateColumn Title="Value Domain" Sortable="false">
+                                        @{
+                                            var rowKey = $"rel-vd-{context.RowNumber}";
+                                            var relationship = compareRight
+                                                ? context[sourceColIndex]!.RightComparison?.ValueDomainRelationship
+                                                : context[sourceColIndex]!.LeftComparison?.ValueDomainRelationship;
+                                            <div>
+                                                <FluentButton Id="@($"{rowKey}-btn")"
+                                                Appearance="Appearance.Outline"
+                                                OnClick="@(() => TogglePopover(rowKey))">
+                                                    @(relationship?.ToString() ?? "-")
+                                                </FluentButton>
+
+                                                <FluentPopover AnchorId="@($"{rowKey}-btn")"
+                                                VerticalPosition="VerticalPosition.Bottom"
+                                                FixedPlacement="true"
+                                                Open="@IsPopoverOpen(rowKey)"
+                                                OpenChanged="@((value) => SetPopoverState(rowKey, value))">
+                                                    <Header>
+                                                        <FluentLabel Typo="Typography.Body">Select Relationship</FluentLabel>
+                                                    </Header>
+                                                    <Body>
+                                                        <FluentStack Orientation="Orientation.Vertical" VerticalGap="4">
+                                                            <FluentCombobox Items="@_relationships"
+                                                            Name="@($"{rowKey}-combo")"
+                                                            Width="950px"
+                                                            Placeholder="Search for a relationship..."
+                                                            OptionValue="@(i => i.Value.ToString() ?? string.Empty)"
+                                                            OptionText="@(i => i.Text)"
+                                                            Multiple="false"
+                                                            Autocomplete="ComboboxAutocomplete.Inline"
+                                                            Autofocus="true"
+                                                            Open="true"
+                                                            SelectedOptionChanged="@(EventCallback.Factory.Create<Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?>>(this, (value) => UpdateRelationship(context, value, "cd")))" />
+                                                        </FluentStack>
+                                                    </Body>
+                                                </FluentPopover>
+                                            </div>
+                                        }
+                                    </TemplateColumn>
+
+                                    <TemplateColumn Title="Target" Sortable="true" Tooltip="true" TooltipText="@(e => e[targetColIndex]!.Element.Id ?? e[targetColIndex]!.Element.Path)">
+                                        @{
+                                            var rowKey = $"target-{context.RowNumber}";
+                                            DbElement element = context[targetColIndex]!.Element;
+
+                                            <FluentStack Orientation="Orientation.Vertical">
+                                                <div>
+                                                    <FluentButton Id="@($"{rowKey}-btn")"
+                                                    Appearance="Appearance.Outline"
+                                                    OnClick="@(() => TogglePopover(rowKey))">
+                                                        @element.UiDisplay
+                                                    </FluentButton>
+
+                                                    <FluentPopover AnchorId="@($"{rowKey}-btn")"
+                                                    VerticalPosition="VerticalPosition.Bottom"
+                                                    FixedPlacement="true"
+                                                    Open="@IsPopoverOpen(rowKey)"
+                                                    OpenChanged="@((value) => SetPopoverState(rowKey, value))"
+                                                    class="element-popover-container"
+                                                    AutoFocus="true">
+                                                        <Header>
+                                                            <FluentLabel Typo="Typography.Body">Select Target Element</FluentLabel>
+                                                        </Header>
+                                                        <Body>
+                                                            <FluentStack Orientation="Orientation.Vertical" VerticalGap="4">
+                                                                <FluentCombobox Items="@_targetElements"
+                                                                Width="950px"
+                                                                Placeholder="Search for a element..."
+                                                                OptionValue="@(i => i.Value?.Key.ToString() ?? string.Empty)"
+                                                                OptionText="@(i => i.Text)"
+                                                                Multiple="false"
+                                                                Autocomplete="ComboboxAutocomplete.Inline"
+                                                                Autofocus="true"
+                                                                Open="true"
+                                                                SelectedOptionChanged="@(EventCallback.Factory.Create<Option<DbElement>>(this, (value) => UpdateTargetElement(context, value)))" />
+                                                            </FluentStack>
+                                                        </Body>
+                                                    </FluentPopover>
+                                                </div>
+                                                <FluentTextField Label="Path" ReadOnly="true" Value="@element.Path" />
+                                                <FluentTextField Label="Base Path" ReadOnly="true" Value="@element.BasePath" />
+                                                <FluentTextField Label="Cardinality" ReadOnly="true" Value="@element.FhirCardinalityString" />
+                                                <FluentTextField Label="Type" ReadOnly="true" Value="@element.CollatedTypeLiteral" />
+                                                <FluentTextField Label="Short" ReadOnly="true" Value="@element.Short" />
+                                                <FluentTextArea Label="Definition" Class="full-width" ReadOnly="true" Value="@element.Definition" />
+                                                <FluentTextField Label="Binding Strength" ReadOnly="true" Value="@(element.ValueSetBindingStrength?.ToString())" />
+                                                <FluentTextField Label="Binding ValueSet" ReadOnly="true" Value="@element.BindingValueSet" />
+                                            </FluentStack>
+
+
+                                        }
+                                    </TemplateColumn>
+
+
+                                </FluentDataGrid>
+                            </div>
+                            @* // add a div so that the combo box will display - otherwise it is truncated *@
+                            <div class="fluent-pop-container-spacer-tall"></div>
+                        </FluentCard>
+                    }
+                </FluentStack>
+            </FluentTab>
+
+        </FluentTabs>
+    }
+</FluentStack>
+
+<FluentDialog @ref="structureSelectionDialog"
+Modal="true"
+Hidden="@dialogHidden"
+Class="sd-dialog-container">
+    <FluentDialogHeader Visible="true">@structureDialogTitle</FluentDialogHeader>
+    <FluentDialogBody>
+        <FluentStack Orientation="Orientation.Vertical" VerticalGap="8">
+            <FluentTextField @bind-Value="structureSearchText"
+            Placeholder="Type to filter structures..."
+            @oninput="FilterStructures" />
+
+            <div style="height: 400px; overflow-y: auto; margin-bottom: 16px;">
+                <FluentDataGrid Items="@filteredStructures"
+                ResizableColumns="true"
+                GridTemplateColumns="1fr 2fr 1fr"
+                TGridItem="DbStructureDefinition">
+                    <SelectColumn TGridItem="DbStructureDefinition"
+                    SelectMode="DataGridSelectMode.Single"
+                    SelectFromEntireRow="true"
+                    @bind-SelectedItems="@selectedStructures" />
+                    <PropertyColumn Title="Name" Property="@(vs => vs.Name)" Sortable="true" />
+                    <PropertyColumn Title="URL" Property="@(vs => vs.UnversionedUrl)" Sortable="true" />
+                    <PropertyColumn Title="Version" Property="@(vs => vs.Version)" Sortable="true" />
+                </FluentDataGrid>
+            </div>
+
+            @if (selectedStructure != null)
+            {
+                <FluentCard>
+                    <FluentStack Orientation="Orientation.Vertical" VerticalGap="4">
+                        <FluentLabel Typo="Typography.H6">Selected Structure</FluentLabel>
+                        <FluentLabel Typo="Typography.Body">Name: @selectedStructure.Name</FluentLabel>
+                        <FluentLabel Typo="Typography.Body">URL: @selectedStructure.UnversionedUrl</FluentLabel>
+                        <FluentLabel Typo="Typography.Body">Snapshot: @selectedStructure.SnapshotCount</FluentLabel>
+                        <FluentLabel Typo="Typography.Body">Differential: @selectedStructure.DifferentialCount</FluentLabel>
+                    </FluentStack>
+                </FluentCard>
+            }
+
+            <FluentStack Orientation="Orientation.Horizontal" HorizontalGap="8" HorizontalAlignment="HorizontalAlignment.End">
+                <FluentButton Appearance="Appearance.Outline" OnClick="CancelStructureSelection">Cancel</FluentButton>
+                <FluentButton Appearance="Appearance.Accent" OnClick="SelectStructure" Disabled="@(selectedStructure == null)">Select</FluentButton>
+            </FluentStack>
+        </FluentStack>
+    </FluentDialogBody>
+
+</FluentDialog>
+
+
+@code {
+    [Parameter]
+    public int FhirPackageKey { get; set; }
+
+    [Parameter]
+    public int StructureKey { get; set; }
+
+    private int _loadedStructureKey = -1;
+
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "packageShort")]
+    public string PackageShortName { get; set; } = string.Empty;
+
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "vsName")]
+    public string StructureName { get; set; } = string.Empty;
+
+    [CascadingParameter]
+    public INavTracker? NavTracker { get; set; } = null;
+
+    private NavPageInfoRec[] _navPages => new NavPageInfoRec[]
+    {
+        new() { Display = $"{PackageShortName}: Structures", Link = $"/structures/{FhirPackageKey}?packageShort={PackageShortName}" },
+        new() { Display = StructureName, Link = $"/structures/{FhirPackageKey}/{StructureKey}/?packageShort={PackageShortName}&vsName={StructureName}" },
+    };
+
+    private FluentTabs? tabsComponent;
+    private string activeTabId = "overview";
+
+    private SdRecForUi? sdUiRec = null;
+    private List<DbFhirPackage> _packages = [];
+    private IQueryable<DbSdRow>? graphProjection = null;
+
+    private Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?>[] _relationships = [
+        new() { Text = "- No Relationship -", Value = null },
+        new() { Text = "Equivalent", Value = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.Equivalent },
+        new() { Text = "Source is Narrower", Value = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget },
+        new() { Text = "Source is Broader", Value = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget },
+        new() { Text = "Related To", Value = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.RelatedTo },
+        new() { Text = "NOT related To", Value = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo },
+    ];
+
+    private bool ApplyToInverse { get; set; } = true;
+
+    private DbSdRow comparisonFilteredSdRow = new(0, 0, 0);
+    private DbStructureComparison? selectedComparison = null;
+    private Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? initialSdRelationship = null;
+    private Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? manualSdRelationship = null;
+    private int sourceColIndex = 0;
+    private int targetColIndex = 0;
+    private DbSdCell? csCell = null;
+    private DbSdCell? ctCell = null;
+    private DbFhirPackage? csPackage = null;
+    private DbFhirPackage? ctPackage = null;
+    private List<DbElementRow> originalProjection = [];
+    private IQueryable<DbElementRow> elementProjection = Enumerable.Empty<DbElementRow>().AsQueryable();
+    private bool compareRight = true;
+    private List<Option<DbElement>> _sourceElements = [];
+    private List<Option<DbElement>> _targetElements = [];
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        NavTracker?.NotifyNav(_navPages);
+        LoadStructure();
+    }
+
+    protected override void OnParametersSet()
+    {
+        if (StructureKey != _loadedStructureKey)
+        {
+            NavTracker?.NotifyNav(_navPages);
+        }
+
+        base.OnParametersSet();
+        LoadStructure();
+    }
+
+    private string GetMappingTableColumns()
+    {
+        // Calculate the columns - we need one for each package plus comparison columns between them
+        int packageCount = _packages.Count;
+        int comparisonCount = packageCount - 1; // One less comparison column than packages
+
+        // Build column template: package (1fr) + comparison (0.8fr) + package (1fr) + ...
+        System.Text.StringBuilder sb = new();
+        for (int i = 0; i < packageCount; i++)
+        {
+            sb.Append("1fr"); // Package column
+
+            if (i < comparisonCount)
+            {
+                sb.Append(" 0.8fr"); // Comparison column
+            }
+        }
+
+        return sb.ToString();
+    }
+
+    // Track open state of popovers
+    private Dictionary<string, bool> _popoverStates = new();
+
+    private bool IsPopoverOpen(string key)
+    {
+        return _popoverStates.TryGetValue(key, out bool value) && value;
+    }
+
+    private void SetPopoverState(string key, bool value)
+    {
+        _popoverStates[key] = value;
+        StateHasChanged();
+    }
+
+    private void TogglePopover(string key)
+    {
+        if (!_popoverStates.TryGetValue(key, out bool currentValue))
+        {
+            currentValue = false;
+        }
+        _popoverStates[key] = !currentValue;
+        StateHasChanged();
+    }
+
+
+    // New fields for the Structure selection dialog
+    private FluentDialog? structureSelectionDialog;
+    private string structureDialogTitle = "Select Target Structure...";
+    private string structureSearchText = "";
+    private List<DbStructureDefinition> allStructures = [];
+    private IQueryable<DbStructureDefinition> filteredStructures = Enumerable.Empty<DbStructureDefinition>().AsQueryable();
+    private DbStructureDefinition? selectedStructure => selectedStructures.FirstOrDefault();
+    private IEnumerable<DbStructureDefinition> selectedStructures = [];
+    private bool dialogHidden = true;
+
+    // Dialog context data
+    private string currentDialogKey = "";
+    private int currentSourceStructureKey;
+    private int currentSourcePackageIndex;
+    private int currentTargetPackageIndex;
+
+    // Show the Structure selection dialog with appropriate context
+    private void ShowStructureSelectionDialog(string dialogKey, int sourceStructureKey, int sourcePackageIndex, int targetPackageIndex)
+    {
+        currentDialogKey = dialogKey;
+        currentSourceStructureKey = sourceStructureKey;
+        currentSourcePackageIndex = sourcePackageIndex;
+        currentTargetPackageIndex = targetPackageIndex;
+
+        // Set dialog title based on direction
+        structureDialogTitle = $"Select Structure from {_packages[targetPackageIndex].ShortName}";
+
+        // Reset selection
+        selectedStructures = [];
+        structureSearchText = "";
+
+        // Load value sets for the target package
+        LoadStructuresForPackage(targetPackageIndex);
+
+        // Show dialog
+        // valueSetSelectionDialog?.Show();
+        dialogHidden = false;
+    }
+
+    // Primary action handler for the dialog
+    private void SelectStructure()
+    {
+        if (selectedStructure != null)
+        {
+            // Create a similar option object as used in the original code for compatibility
+            var selectedOption = new Option<DbStructureDefinition>
+                {
+                    Text = selectedStructure.Name + " - " + selectedStructure.UnversionedUrl,
+                    Value = selectedStructure
+                };
+
+            // Call the existing AddVsMapping with our selected value
+            AddVsMapping(currentDialogKey, currentSourceStructureKey, currentSourcePackageIndex, currentTargetPackageIndex, selectedOption);
+        }
+
+        // valueSetSelectionDialog!.Hide();
+        dialogHidden = true;
+    }
+
+    // Secondary action handler for the dialog
+    private void CancelStructureSelection()
+    {
+        // valueSetSelectionDialog!.Hide();
+        dialogHidden = true;
+    }
+
+    // Load value sets for a specific package
+    private void LoadStructuresForPackage(int packageIndex)
+    {
+        try
+        {
+            allStructures = DbStructureDefinition.SelectList(
+                Xver.DbConnection,
+                FhirPackageKey: packageIndex,
+                orderByProperties: [nameof(DbStructureDefinition.Name)]);
+
+            filteredStructures = allStructures.AsQueryable();
+        }
+        catch (Exception)
+        {
+            allStructures = [];
+            filteredStructures = Enumerable.Empty<DbStructureDefinition>().AsQueryable();
+        }
+    }
+
+    // Filter value sets based on search text
+    private void FilterStructures(ChangeEventArgs e)
+    {
+        string? searchText = e.Value?.ToString()?.ToLowerInvariant();
+
+        if (string.IsNullOrWhiteSpace(searchText))
+        {
+            filteredStructures = allStructures.AsQueryable();
+        }
+        else
+        {
+            filteredStructures = allStructures
+                .Where(vs =>
+                    vs.Name.ToLowerInvariant().Contains(searchText!) ||
+                    vs.UnversionedUrl.ToLowerInvariant().Contains(searchText!) ||
+                    (vs.Id?.ToLowerInvariant()?.Contains(searchText!) ?? false))
+                .AsQueryable();
+        }
+    }
+
+    private string GetDateDisplay(DateTime? date) => date == null
+        ? string.Empty
+        : date.Value.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
+
+    private async Task SaveChanges()
+    {
+        if (selectedComparison == null)
+        {
+            return;
+        }
+
+        string reviewer = ServerConfig.UserName;
+
+        Xver.Comparer.ApplySdConceptChanges(
+            originalProjection,
+            elementProjection,
+            sourceColIndex,
+            compareRight,
+            reviewer);
+
+        // re-aggregate the element comparisons for the value set if not manually set
+        _ = Xver.Comparer.AggregateStructureRelationships(selectedComparison);
+
+        // check for rules trying to override a manually-set relationship
+        if ((manualSdRelationship != null) &&
+            (manualSdRelationship != selectedComparison.Relationship))
+        {
+            IDialogReference dialog = await DialogService.ShowConfirmationAsync(
+                $"The Structure comparison wants to update to to <code>{selectedComparison.Relationship}</code>.",
+                $"Computed: {selectedComparison.Relationship}",
+                $"Specified: {manualSdRelationship}",
+                "Structure Relationship");
+            DialogResult result = await dialog.Result;
+
+            if (result.Cancelled == true)
+            {
+                selectedComparison.Relationship = manualSdRelationship;
+            }
+        }
+        else if ((initialSdRelationship != null) &&
+                 (initialSdRelationship != selectedComparison.Relationship))
+        {
+            IDialogReference dialog = await DialogService.ShowConfirmationAsync(
+                $"The Structure comparison wants to update to to <code>{selectedComparison.Relationship}</code>.",
+                $"Computed: {selectedComparison.Relationship}",
+                $"Old: {initialSdRelationship}",
+                "Structure Relationship");
+            DialogResult result = await dialog.Result;
+
+            if (result.Cancelled == true)
+            {
+                selectedComparison.Relationship = manualSdRelationship;
+            }
+        }
+
+        // mark this value set comparison as reviewed
+        selectedComparison.LastReviewedOn = DateTime.UtcNow;
+        selectedComparison.LastReviewedBy = reviewer;
+        selectedComparison.Update(Xver.DbConnection);
+
+        // check if the user wants to apply the inverse changes
+        if (ApplyToInverse == true)
+        {
+            (DbStructureComparison? inverse, bool? hasChanges) = Xver.Comparer.UpdateInversion(selectedComparison);
+
+            // if there is an inverse and it is not reviewed or changed because of these changes, bring it up
+            if ((inverse != null) &&
+                ((inverse.LastReviewedOn == null) || (hasChanges == true)))
+            {
+                // find the correct value set row in the projection
+                DbSdRow? sdRow = graphProjection?.FirstOrDefault(v => v.RowNumber == comparisonFilteredSdRow.RowNumber);
+
+                if (sdRow != null)
+                {
+                    // move the UI
+                    SelectComparison(comparisonFilteredSdRow, inverse, targetColIndex, sourceColIndex);
+                    return;
+                }
+            }
+        }
+
+        // clear our selected comparison
+        ClearSelectedComparison();
+
+        // force reload of the mapping table
+        LoadStructure(true);
+
+        // move the UI back to the mapping table
+        activeTabId = "mappingTable";
+        StateHasChanged();
+
+        return;
+    }
+
+    private void ClearSelectedComparison()
+    {
+        selectedComparison = null;
+        _sourceElements = [];
+        _targetElements = [];
+        originalProjection = [];
+        elementProjection = Enumerable.Empty<DbElementRow>().AsQueryable();
+    }
+
+    private async Task DeleteCurrentMapping()
+    {
+        if (selectedComparison == null)
+        {
+            return;
+        }
+
+        IDialogReference dialog = await DialogService.ShowConfirmationAsync(
+            $"Deleting this mapping cannot be undone!<br/>Are you sure you wish to delete <code>{selectedComparison.CompositeName}</code>",
+            "Confirm Delete",
+            "Cancel",
+            "Delete Mapping Confirmation");
+        DialogResult result = await dialog.Result;
+
+        if (result.Cancelled == true)
+        {
+            StateHasChanged();
+            return;
+        }
+
+        // check for an inverse comaprison
+        DbStructureComparison? inverseComparison = selectedComparison.InverseComparisonKey != null
+            ? DbStructureComparison.SelectSingle(
+                Xver.DbConnection,
+                Key: selectedComparison.InverseComparisonKey)
+            : null;
+
+        if (inverseComparison != null)
+        {
+            IDialogReference inverseDialog = await DialogService.ShowConfirmationAsync(
+                $"Would you also like to delete the inverse comparison: {inverseComparison.CompositeName} ({inverseComparison.Key})",
+                "Yes",
+                "No",
+                "Delete Inverse");
+            DialogResult inverseResult = await dialog.Result;
+
+            // delete the inverse comparison if needed
+            if (inverseResult.Cancelled == false)
+            {
+                // delete all the element comparisons for this structure comparison
+                List<DbElementComparison> inverseElementComparisonsToDelete = DbElementComparison.SelectList(
+                        Xver.DbConnection,
+                        StructureComparisonKey: inverseComparison.Key);
+
+                if (inverseElementComparisonsToDelete.Count > 0)
+                {
+                    inverseElementComparisonsToDelete.Delete(Xver.DbConnection);
+                }
+
+                // delete this element comparison
+                inverseComparison.Delete(Xver.DbConnection);
+            }
+        }
+
+        // delete all the element comparisons for this structure comparison
+        List<DbElementComparison> elementComparisonsToDelete = DbElementComparison.SelectList(
+                Xver.DbConnection,
+                StructureComparisonKey: selectedComparison.Key);
+
+        if (elementComparisonsToDelete.Count > 0)
+        {
+            elementComparisonsToDelete.Delete(Xver.DbConnection);
+        }
+
+        // delete this structure comparison
+        selectedComparison.Delete(Xver.DbConnection);
+
+        // clear our selected comparison
+        ClearSelectedComparison();
+
+        // force reload of the mapping table
+        LoadStructure(true);
+
+        // move the UI back to the mapping table
+        activeTabId = "mappingTable";
+        StateHasChanged();
+
+        return;
+    }
+
+    private void AddVsMapping(string popKey, int sourceStructureKey, int sourcePackageIndex, int targetPackageIndex, object? selectedValue)
+    {
+        if ((selectedValue == null) ||
+            (selectedValue is not Option<DbStructureDefinition> selectedOption) ||
+            (selectedOption.Value == null) ||
+            (selectedOption.Value is not DbStructureDefinition targetVs))
+        {
+            // Close the popover after selection
+            SetPopoverState(popKey, false);
+            StateHasChanged();
+
+            return;
+        }
+
+        // resolve the package comparison
+        DbFhirPackageComparisonPair? packagePair = DbFhirPackageComparisonPair.SelectSingle(
+            Xver.DbConnection,
+            SourcePackageKey: _packages[sourcePackageIndex].Key,
+            TargetPackageKey: _packages[targetPackageIndex].Key);
+
+        if (packagePair == null)
+        {
+            // Close the popover after selection
+            SetPopoverState(popKey, false);
+            StateHasChanged();
+            return;
+        }
+
+        DbFhirPackageComparisonPair? reversePair = DbFhirPackageComparisonPair.SelectSingle(
+            Xver.DbConnection,
+            SourcePackageKey: _packages[targetPackageIndex].Key,
+            TargetPackageKey: _packages[sourcePackageIndex].Key);
+
+        if (reversePair == null)
+        {
+            // Close the popover after selection
+            SetPopoverState(popKey, false);
+            StateHasChanged();
+            return;
+        }
+
+        // resolve the source value set
+        DbStructureDefinition? sourceSd = DbStructureDefinition.SelectSingle(
+            Xver.DbConnection,
+            FhirPackageKey: _packages[sourcePackageIndex].Key,
+            Key: sourceStructureKey);
+
+        if (sourceSd == null)
+        {
+            // Close the popover after selection
+            SetPopoverState(popKey, false);
+            StateHasChanged();
+            return;
+        }
+
+        // create a new value set comparison
+        DbStructureComparison sdComparison = new()
+            {
+                Key = Xver.ComparisonDb.GetStructureComparisonKey(),
+                PackageComparisonKey = packagePair.Key,
+                SourceFhirPackageKey = packagePair.SourcePackageKey,
+                TargetFhirPackageKey = packagePair.TargetPackageKey,
+                SourceStructureKey = sourceStructureKey,
+                SourceCanonicalVersioned = sourceSd.VersionedUrl,
+                SourceCanonicalUnversioned = sourceSd.UnversionedUrl,
+                SourceVersion = sourceSd.Version,
+                SourceName = sourceSd.Name,
+                TargetStructureKey = targetVs.Key,
+                TargetCanonicalVersioned = targetVs.VersionedUrl,
+                TargetCanonicalUnversioned = targetVs.UnversionedUrl,
+                TargetVersion = targetVs.Version,
+                TargetName = targetVs.Name,
+                CompositeName = ComparisonDatabase.GetCompositeName(_packages[sourcePackageIndex], sourceSd, _packages[targetPackageIndex], targetVs),
+                Relationship = null,
+                ConceptDomainRelationship = null,
+                ValueDomainRelationship = null,
+                IsGenerated = false,
+                LastReviewedOn = null,
+                LastReviewedBy = null,
+                Message = null,
+                IsIdentical = false,
+                SourceOverviewConceptMapUrl = null,
+                SourceStructureFmlUrl = null,
+            };
+
+        DbComparisonCache<DbStructureComparison> sdComparisons = new();
+        DbComparisonCache<DbElementComparison> elementComparisons = new();
+        DbComparisonCache<DbElementTypeComparison> elementTypeComparisons = new();
+
+        sdComparisons.CacheAdd(sdComparison);
+
+        // run through the built-in comparison testing
+        Xver.Comparer.DoStructureComparison(
+            sdComparisons,
+            elementComparisons,
+            elementTypeComparisons,
+            _packages[sourcePackageIndex],
+            sourceSd,
+            _packages[targetPackageIndex],
+            targetVs,
+            sdComparison,
+            packagePair,
+            reversePair);
+
+        // apply our changes
+        sdComparisons.ComparisonsToAdd.Insert(Xver.DbConnection);
+        sdComparisons.ComparisonsToUpdate.Update(Xver.DbConnection);
+        sdComparisons.ComparisonsToDelete.Delete(Xver.DbConnection);
+
+        elementComparisons.ComparisonsToAdd.Insert(Xver.DbConnection);
+        elementComparisons.ComparisonsToUpdate.Update(Xver.DbConnection);
+        elementComparisons.ComparisonsToDelete.Delete(Xver.DbConnection);
+
+        elementTypeComparisons.ComparisonsToAdd.Insert(Xver.DbConnection);
+        elementTypeComparisons.ComparisonsToUpdate.Update(Xver.DbConnection);
+        elementTypeComparisons.ComparisonsToDelete.Delete(Xver.DbConnection);
+
+        // force reload of our UI contents
+        LoadStructure(true);
+
+        // Close the popover after selection
+        SetPopoverState(popKey, false);
+        StateHasChanged();
+    }
+
+    private void UpdateSdRelationship(object? selectedValue, string? relationshipCategory = null)
+    {
+        string popKey = relationshipCategory switch
+        {
+            "cd" => "rel-cd",
+            "vd" => "rel-vd",
+            _ => $"rel-sd"
+        };
+
+        if (selectedComparison == null)
+        {
+            // Close the popover after selection
+            SetPopoverState(popKey, false);
+            StateHasChanged();
+
+            return;
+        }
+
+        if ((selectedValue != null) &&
+            (selectedValue is Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?> r))
+        {
+            switch (relationshipCategory)
+            {
+                case "cd":
+                    selectedComparison.ConceptDomainRelationship = r.Value;
+                    break;
+                case "vd":
+                    selectedComparison.ValueDomainRelationship = r.Value;
+                    break;
+                default:
+                    selectedComparison.Relationship = r.Value;
+                    break;
+            }
+            manualSdRelationship = r.Value;
+        }
+
+        // Close the popover after selection
+        SetPopoverState(popKey, false);
+        StateHasChanged();
+    }
+
+    private void AddElementRow(object? selectedValue)
+    {
+        if ((csCell != null) &&
+            (ctCell != null) &&
+            (selectedValue != null) &&
+            (selectedValue is Option<DbElement> element) &&
+            (element.Value != null))
+        {
+            DbElementRow row = new(_packages.Count, sourceColIndex, elementProjection.Count());
+            row[sourceColIndex] = new()
+                {
+                    SdCell = csCell,
+                    Element = element.Value,
+                };
+
+            row[targetColIndex] = new()
+                {
+                    SdCell = ctCell,
+                    Element = DbElement.EmptyCopy,
+                };
+
+            if (compareRight)
+            {
+                row[targetColIndex]!.LeftCell = row[sourceColIndex];
+                row[targetColIndex]!.LeftComparison = DbElementComparison.EmptyCopy;
+                row[targetColIndex]!.LeftElement = row[sourceColIndex]!.Element;
+            }
+            else
+            {
+                row[targetColIndex]!.RightCell = row[sourceColIndex];
+                row[targetColIndex]!.RightComparison = DbElementComparison.EmptyCopy;
+                row[targetColIndex]!.RightElement = row[sourceColIndex]!.Element;
+            }
+
+            List<DbElementRow> cp = [row, .. elementProjection];
+
+            elementProjection = cp.AsQueryable();
+        }
+
+        // Close the popover after selection
+        string key = $"add-element-row";
+        SetPopoverState(key, false);
+        StateHasChanged();
+    }
+
+    private void DeleteElementRow(DbElementRow rowToRemove)
+    {
+        List<DbElementRow> cp = [];
+        foreach (DbElementRow row in elementProjection)
+        {
+            if (row.RowNumber != rowToRemove.RowNumber)
+            {
+                cp.Add(row);
+            }
+        }
+
+        elementProjection = cp.AsQueryable();
+
+        // Close the popover after selection
+        string key = $"del-{rowToRemove.RowNumber}";
+        SetPopoverState(key, false);
+        StateHasChanged();
+        StateHasChanged();
+    }
+
+    private void UpdateRelationshipMessage(DbElementRow elementRow, object? selectedValue)
+    {
+        if ((elementRow == null) ||
+            (elementRow[sourceColIndex] == null))
+        {
+            return;
+        }
+
+        if (compareRight && elementRow[sourceColIndex]!.RightComparison != null)
+        {
+            if (selectedValue is string sv)
+            {
+                elementRow[sourceColIndex]!.RightComparison!.Message = sv;
+            }
+            else
+            {
+                elementRow[sourceColIndex]!.RightComparison!.Message = null;
+            }
+        }
+        else if (!compareRight && elementRow[sourceColIndex]!.LeftComparison != null)
+        {
+            if (selectedValue is string sv)
+            {
+                elementRow[sourceColIndex]!.LeftComparison!.Message = sv;
+            }
+            else
+            {
+                elementRow[sourceColIndex]!.LeftComparison!.Message = null;
+            }
+        }
+
+        StateHasChanged();
+    }
+
+    private void UpdateRelationship(DbElementRow elementRow, object? selectedValue, string? relationshipCategory = null)
+    {
+        if ((elementRow == null) ||
+            (elementRow[sourceColIndex] == null))
+        {
+            return;
+        }
+
+        if (compareRight && elementRow[sourceColIndex]!.RightComparison != null)
+        {
+            if ((selectedValue != null) &&
+                (selectedValue is Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?> r))
+            {
+                // Update the relationship in the target cell
+                switch (relationshipCategory)
+                {
+                    case "cd":
+                        elementRow[sourceColIndex]!.RightComparison!.ConceptDomainRelationship = r.Value;
+                        break;
+                    case "vd":
+                        elementRow[sourceColIndex]!.RightComparison!.ValueDomainRelationship = r.Value;
+                        break;
+                    default:
+                        elementRow[sourceColIndex]!.RightComparison!.Relationship = r.Value;
+                        break;
+                }
+            }
+            else
+            {
+                switch (relationshipCategory)
+                {
+                    case "cd":
+                        elementRow[sourceColIndex]!.RightComparison!.ConceptDomainRelationship = null;
+                        break;
+                    case "vd":
+                        elementRow[sourceColIndex]!.RightComparison!.ValueDomainRelationship = null;
+                        break;
+                    default:
+                        elementRow[sourceColIndex]!.RightComparison!.Relationship = null;
+                        break;
+                }
+            }
+        }
+        else if (!compareRight && elementRow[sourceColIndex]!.LeftComparison != null)
+        {
+            if ((selectedValue != null) &&
+                (selectedValue is Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?> r))
+            {
+                // Update the relationship in the target cell
+                switch (relationshipCategory)
+                {
+                    case "cd":
+                        elementRow[sourceColIndex]!.LeftComparison!.ConceptDomainRelationship = r.Value;
+                        break;
+                    case "vd":
+                        elementRow[sourceColIndex]!.LeftComparison!.ValueDomainRelationship = r.Value;
+                        break;
+                    default:
+                        elementRow[sourceColIndex]!.LeftComparison!.Relationship = r.Value;
+                        break;
+                }
+
+            }
+            else
+            {
+                switch (relationshipCategory)
+                {
+                    case "cd":
+                        elementRow[sourceColIndex]!.LeftComparison!.ConceptDomainRelationship = null;
+                        break;
+                    case "vd":
+                        elementRow[sourceColIndex]!.LeftComparison!.ValueDomainRelationship = null;
+                        break;
+                    default:
+                        elementRow[sourceColIndex]!.LeftComparison!.Relationship = null;
+                        break;
+                }
+            }
+        }
+
+        // Close the popover after selection
+        string key = relationshipCategory switch
+        {
+            "cd" => $"rel-cd-{elementRow.RowNumber}",
+            "vd" => $"rel-vd-{elementRow.RowNumber}",
+            _ => $"rel-{elementRow.RowNumber}"
+        };
+        SetPopoverState(key, false);
+        StateHasChanged();
+    }
+
+    private void UpdateTargetElement(DbElementRow elementRow, object? selectedValue)
+    {
+        if ((elementRow != null) &&
+            (elementRow[targetColIndex] != null))
+        {
+            if ((selectedValue != null) &&
+                (selectedValue is Option<DbElement> newConcept))
+            {
+                // Update the element in the target cell
+                elementRow[targetColIndex]!.Element = newConcept.Value!;
+            }
+            else
+            {
+                elementRow[targetColIndex]!.Element = DbElement.EmptyCopy;
+            }
+
+            // Close the popover after selection
+            string key = $"target-{elementRow.RowNumber}";
+            SetPopoverState(key, false);
+            StateHasChanged();
+        }
+    }
+
+    private void SelectComparison(
+        DbSdRow structureRow,
+        DbStructureComparison comparison,
+        int sourceCellIndex,
+        int targetCellIndex)
+    {
+        comparisonFilteredSdRow = structureRow.ShallowCopy(null, sourceCellIndex, targetCellIndex);
+
+        compareRight = sourceCellIndex < targetCellIndex;
+        selectedComparison = comparison;
+        initialSdRelationship = comparison.Relationship;
+        manualSdRelationship = null;
+
+        sourceColIndex = sourceCellIndex;
+        csCell = structureRow[sourceCellIndex];
+        csPackage = _packages[sourceCellIndex];
+
+        targetColIndex = targetCellIndex;
+        ctCell = structureRow[targetCellIndex];
+        ctPackage = _packages[targetCellIndex];
+
+        List<DbElement> sourceElements = DbElement.SelectList(
+            Xver.DbConnection,
+            FhirPackageKey: csCell!.Sd.FhirPackageKey,
+            StructureKey: csCell!.Sd.Key,
+            orderByProperties: [nameof(DbElement.ResourceFieldOrder)]);
+
+        _sourceElements = sourceElements.Select(c => new Option<DbElement>()
+            {
+                Text = c.UiDisplayLong,
+                Value = c,
+            }).ToList();
+
+        List<DbElement> targetConcepts = DbElement.SelectList(
+            Xver.DbConnection,
+            FhirPackageKey: ctCell!.Sd.FhirPackageKey,
+            StructureKey: ctCell!.Sd.Key,
+            orderByProperties: [nameof(DbElement.Id)]);
+
+        _targetElements = [ new ()
+        {
+            Text = "-No Concept-",
+            Value = DbElement.EmptyCopy,
+        }];
+
+        _targetElements.AddRange(targetConcepts.Select(c => new Option<DbElement>()
+            {
+                Text = c.UiDisplayLong,
+                Value = c,
+            }));
+
+        // grab the current projection
+        originalProjection = sdUiRec!.Graph.ProjectElements(comparisonFilteredSdRow, sourceCellIndex);
+
+        // make sure we have cells for targets
+        foreach (DbElementRow elementRow in originalProjection)
+        {
+            if (elementRow[targetColIndex] == null)
+            {
+                elementRow[targetColIndex] = new()
+                    {
+                        SdCell = structureRow[targetCellIndex]!,
+                        Element = DbElement.EmptyCopy,
+                    };
+
+                if (compareRight)
+                {
+                    elementRow[targetColIndex]!.LeftCell = elementRow[sourceColIndex];
+                    elementRow[targetColIndex]!.LeftComparison = DbElementComparison.EmptyCopy;
+                    elementRow[targetColIndex]!.LeftElement = elementRow[sourceColIndex]!.Element;
+                }
+                else
+                {
+                    elementRow[targetColIndex]!.RightCell = elementRow[sourceColIndex];
+                    elementRow[targetColIndex]!.RightComparison = DbElementComparison.EmptyCopy;
+                    elementRow[targetColIndex]!.RightElement = elementRow[sourceColIndex]!.Element;
+                }
+            }
+        }
+
+        elementProjection = originalProjection.AsQueryable();
+
+        activeTabId = "comparisonDetails";
+        StateHasChanged();
+    }
+
+    private void LoadPackages()
+    {
+        try
+        {
+            _packages = DbFhirPackage.SelectList(
+                Xver.DbConnection,
+                orderByProperties: [nameof(DbFhirPackage.ShortName)]);
+        }
+        catch (Exception)
+        {
+            _packages = [];
+        }
+    }
+
+    private void LoadStructure(bool forceReload = false)
+    {
+        try
+        {
+            if ((Xver.IsOpen == false) ||
+                (Xver.DbConnection == null) ||
+                (Xver.Comparer == null))
+            {
+                return;
+            }
+
+            if ((_loadedStructureKey == StructureKey) && !forceReload)
+            {
+                return;
+            }
+
+            _loadedStructureKey = StructureKey;
+
+            if (_packages.Count == 0)
+            {
+                LoadPackages();
+            }
+
+            // Query Structures for the specified FhirPackageKey
+            DbStructureDefinition? sd = DbStructureDefinition.SelectSingle(
+                Xver.DbConnection,
+                FhirPackageKey: FhirPackageKey,
+                Key: StructureKey);
+
+            if (sd == null)
+            {
+                return;
+            }
+
+            sdUiRec = new(Xver.DbConnection, sd, _packages);
+            graphProjection = sdUiRec.Projection.AsQueryable();
+            StateHasChanged();
+        }
+        catch (Exception)
+        {
+        }
+    }
+}
