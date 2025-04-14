@@ -1,12 +1,26 @@
 ﻿@page "/"
 
 @using Markdig;
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
+
 @inject NavigationManager NavigationManager
+@inject XverAppConfig ServerConfig
+@inject IXverService Xver
+@inject ProtectedLocalStorage BrowserStore
+@inject IDialogService DialogService
 
 <PageTitle>Home</PageTitle>
 
 <FluentStack Orientation="Orientation.Vertical">
-@*     <FluentStack Orientation="Orientation.Horizontal">
+    <FluentTextField Label="Reviewer Name" Value="@UserName" @onchange="@(e => SaveData("userName", e))" />
+
+    <FluentLabel Typo="Typography.Body">Database</FluentLabel>
+    <FluentStack Orientation="Orientation.Horizontal">
+        <FluentTextField Value="@DbPath" @onchange="@(e => SaveData("db", e))" />
+        <FluentButton OnClick="@(e => OpenDb())">Open</FluentButton>
+    </FluentStack>
+
+    @*     <FluentStack Orientation="Orientation.Horizontal">
         <FluentTextField Label="User Name" Value="@UserName"/>
         <FluentButton IconStart="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Regular.Size20.Save())"
         Appearance="Appearance.Outline"
@@ -16,7 +30,7 @@
         </FluentButton>
     </FluentStack>
  *@
-     <div>@processedContent</div>
+    @* <div>@processedContent</div> *@
 </FluentStack>
 
 @code {
@@ -25,8 +39,131 @@
     [CascadingParameter]
     public INavTracker? NavTracker { get; set; } = null;
 
-    protected override void OnInitialized()
+    public string UserName { get; set; } = string.Empty;
+    public string DbPath { get; set; } = string.Empty;
+
+    // protected override void OnInitialized()
+    // {
+    //     processedContent = new MarkupString(Markdown.ToHtml(xver_editor.Data.Global.WelcomeMarkdownContent));
+    // }
+
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        processedContent = new MarkupString(Markdown.ToHtml(xver_editor.Data.Global.WelcomeMarkdownContent));
+        if (firstRender)
+        {
+            await LoadData();
+        }
     }
+
+    private void OpenDb()
+    {
+        (bool success, string? message) = Xver.Init(DbPath);
+
+        if (success)
+        {
+            message ??= "Database initialized.";
+            DialogService.ShowSuccess(message);
+        }
+        else
+        {
+            message ??= "Database initialization failed.";
+            DialogService.ShowError(message);
+        }
+
+        StateHasChanged();
+        NavTracker?.NotifyStateHasChanged();
+    }
+
+    private async Task LoadData()
+    {
+        try
+        {
+            var un = await BrowserStore.GetAsync<string>("userName");
+            if (un.Value != null)
+            {
+                UserName = un.Value;
+            }
+            else
+            {
+                UserName = ServerConfig.UserName;
+            }
+
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            // ignore
+        }
+
+        if (string.IsNullOrEmpty(UserName))
+        {
+            UserName = ServerConfig.UserName;
+        }
+
+        try
+        {
+            var un = await BrowserStore.GetAsync<string>("db");
+            if (un.Value != null)
+            {
+                DbPath = un.Value;
+            }
+            else
+            {
+                DbPath = ServerConfig.CrossVersionDbPath;
+            }
+
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            // ignore
+        }
+
+        if (string.IsNullOrEmpty(DbPath))
+        {
+            DbPath = ServerConfig.CrossVersionDbPath;
+        }
+    }
+
+    private void SaveData(string key, ChangeEventArgs e)
+    {
+        if (e.Value == null)
+        {
+            return;
+        }
+
+        switch (e.Value)
+        {
+            case string strValue:
+                {
+                    switch (key)
+                    {
+                        case "userName":
+                            {
+                                UserName = strValue;
+                                ServerConfig.UserName = strValue;
+                            }
+                            break;
+                        case "db":
+                            {
+                                DbPath = strValue;
+                                ServerConfig.CrossVersionDbPath = strValue;
+                                StateHasChanged();
+                                OpenDb();
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+
+                    // save the user name in the browser store
+                    _ = BrowserStore.SetAsync(key, strValue);
+                }
+                break;
+        }
+    }
+
 }

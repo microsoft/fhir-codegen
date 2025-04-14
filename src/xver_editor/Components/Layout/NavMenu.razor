@@ -4,16 +4,16 @@
 
 @implements IDialogContentComponent<string>
 
-@inject IXverService DbService
+@inject IXverService Xver
 
 
 <FluentDialogBody>
     <FluentNavMenu Id="main-menu" Width="250" Collapsible="false" Title="FHIR Candle">
         <FluentNavLink Icon="@(new Icons.Regular.Size24.Home())" Href="/" Tooltip="Home">Home</FluentNavLink>
 
-        @foreach (DbFhirPackage package in DbFhirPackage.SelectList(DbService.DbConnection, orderByProperties: [nameof(DbFhirPackage.PackageId), nameof(DbFhirPackage.PackageVersion)]))
+        @foreach (DbFhirPackage package in Xver.Packages.OrderBy(p => p.NpmId))
         {
-            <FluentNavGroup Title="@(package.ShortName)" Tooltip="@(package.PackageId + "@" + package.PackageVersion)" Icon="@(new Icons.Regular.Size24.CubeMultiple())" Expanded="true">
+            <FluentNavGroup Title="@(package.ShortName)" Tooltip="@(package.NpmId)" Icon="@(new Icons.Regular.Size24.CubeMultiple())" Expanded="true">
                 <FluentNavLink Icon="@(new Icons.Regular.Size24.Fire())" Href="@($"/valuesets/{package.Key}?packageShort={package.ShortName}")" Tooltip="Review Value Set Mappings">Value Sets</FluentNavLink>
 @*                 <FluentNavLink Icon="@(new Icons.Regular.Size24.Fire())" Href="@($"/store?store={key}")" Tooltip="FHIR Contents">FHIR Contents</FluentNavLink>
                 <FluentNavLink Icon="@(new Icons.Regular.Size20.ArrowExport())" Href="@($"/subscriptions/local?store={key}")" Tooltip="Local Subscriptions">Local Subscriptions</FluentNavLink>

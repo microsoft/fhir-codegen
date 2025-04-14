@@ -10,11 +10,10 @@ public class XVerService : IXverService
 {
     private XverAppConfig _config;
     private ILogger _logger;
-    private ComparisonDatabase? _db;
+    private ComparisonDatabase? _db = null;
     private bool _open = false;
 
-    private string _dbPath;
-    private string _dbName;
+    private string? _dbFilename = null;
 
     private FhirDbComparer? _fhirDbComparer = null;
 
@@ -22,22 +21,100 @@ public class XVerService : IXverService
     {
         _config = config;
         _logger = config.LogFactory.CreateLogger<XVerProcessor>();
-
-        if (_config.CrossVersionDbPath.EndsWith(".db"))
-        {
-            _dbPath = Path.GetDirectoryName(_config.CrossVersionDbPath) ?? _config.CrossVersionDbPath;
-            _dbName = Path.GetFileName(_config.CrossVersionDbPath) ?? _config.CrossVersionDbPath;
-        }
-        else
-        {
-            _dbPath = _config.CrossVersionDbPath;
-            _dbName = "fhir-comparison.db";
-        }
     }
 
     public IDbConnection DbConnection => _db?.DbConnection ?? throw new InvalidOperationException("Database not initialized.");
     public ComparisonDatabase ComparisonDb => _db ?? throw new InvalidOperationException("Database not initialized.");
     public FhirDbComparer Comparer => _fhirDbComparer ?? throw new InvalidOperationException("FhirDbComparer not initialized.");
+    public IQueryable<DbFhirPackage> Packages { get; private set; } = Enumerable.Empty<DbFhirPackage>().AsQueryable();
+    public bool IsOpen => _open;
+
+    public (bool success, string? message) Init(string? path = null)
+    {
+        if (string.IsNullOrEmpty(path))
+        {
+            if (string.IsNullOrEmpty(_config.CrossVersionDbPath))
+            {
+                return (false, "No database path provided.");
+            }
+
+            path = _config.CrossVersionDbPath;
+        }
+
+        string dbPath;
+        string dbFile;
+
+        if (path.EndsWith(".db"))
+        {
+            if (!File.Exists(path))
+            {
+                return (false, $"Database file not found: {path}");
+            }
+
+            dbPath = Path.GetDirectoryName(path) ?? "/";
+            dbFile = Path.GetFileName(path);
+        }
+        else
+        {
+            if (!Directory.Exists(path))
+            {
+                return (false, $"Database directory not found: {path}");
+            }
+
+            if (!File.Exists(Path.Combine(path, "fhir-comparison.db")))
+            {
+                return (false, $"Database file not specified and fhir-comparison.db not found in path: {path}");
+            }
+
+            dbPath = Path.GetDirectoryName(path) ?? "/";
+            dbFile = "fhir-comparison.db";
+        }
+
+        _dbFilename = Path.Combine(dbPath, dbFile);
+
+        if (_fhirDbComparer != null)
+        {
+            _fhirDbComparer = null;
+        }
+
+        if (_db != null)
+        {
+            _open = false;
+            _db.DbConnection.Close();
+            _db = null;
+        }
+
+        _db = new(dbPath, dbFile);
+        _open = true;
+
+        _db.DbConnection.Open();
+        _open = true;
+
+        Packages = DbFhirPackage
+            .SelectList(_db.DbConnection, orderByProperties: [nameof(DbFhirPackage.Key)])
+            .AsQueryable();
+
+        _fhirDbComparer = new(_db, _config.LogFactory);
+
+        return (true, $"Opened database {_dbFilename}");
+    }
+
+    public void CloseDb()
+    {
+        if (_fhirDbComparer != null)
+        {
+            _fhirDbComparer = null;
+        }
+
+        if (_db != null)
+        {
+            _db.DbConnection.Close();
+            _db = null;
+        }
+
+        Packages = Enumerable.Empty<DbFhirPackage>().AsQueryable();
+        _open = false;
+    }
 
     public async Task WriteDocsFromDatabase(string? outputDirectory)
     {
@@ -59,19 +136,8 @@ public class XVerService : IXverService
 
     public Task StartAsync(CancellationToken cancellationToken)
     {
-        if (_db == null)
-        {
-            _db = new(_dbPath, _dbName);
-            _open = true;
-        }
-
-        if (!_open)
-        {
-            _db.DbConnection.Open();
-            _open = true;
-        }
-
-        _fhirDbComparer = new(_db, _config.LogFactory);
+        // try to initialize in case there was a database provided via CLI or environment variable
+        _ = Init();
 
         return Task.CompletedTask;
     }

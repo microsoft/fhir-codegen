@@ -6,13 +6,17 @@
 @using System.Diagnostics.CodeAnalysis
 @using System.Collections.Concurrent;
 
-@inject IXverService DbService
+@inject IXverService Xver
 @inject NavigationManager NavigationManager
 
 <FluentStack Orientation="Orientation.Vertical" VerticalGap="8">
     <FluentLabel Typo="Typography.H4">Value Set Index for @PackageShortName - @_totalValueSetCount Value Sets</FluentLabel>
 
-    @if (uiRecs == null)
+    @if ((Xver.IsOpen == false) || (Xver.DbConnection == null))
+    {
+        <FluentLabel Typo="Typography.Body">Database not open.</FluentLabel>
+    }
+    else if (uiRecs == null)
     {
         <FluentLabel Typo="Typography.Body">Loading...</FluentLabel>
     }
@@ -204,7 +208,7 @@
         try
         {
             _packages = DbFhirPackage.SelectList(
-                DbService.DbConnection,
+                Xver.DbConnection,
                 orderByProperties: [nameof(DbFhirPackage.ShortName)]);
         }
         catch (Exception)
@@ -306,6 +310,13 @@
     {
         try
         {
+            if ((Xver.IsOpen == false) || (Xver.DbConnection == null))
+            {
+                uiRecs = Array.Empty<VsRecForUi>();
+                _totalValueSetCount = 0;
+                return;
+            }
+
             if (_loadedFhirPackageKey == FhirPackageKey)
             {
                 return;
@@ -325,7 +336,7 @@
 
             // Query ValueSets for the specified FhirPackageKey
             List<DbValueSet> valueSetsEnumerable = DbValueSet.SelectList(
-                DbService.DbConnection,
+                Xver.DbConnection,
                 FhirPackageKey: FhirPackageKey);
 
             ConcurrentBag<VsRecForUi> cb = new();
@@ -338,7 +349,7 @@
                     },
                 (vs, cancellationToken) =>
             {
-                VsRecForUi recForUi = new(DbService.DbConnection, vs, _packages);
+                VsRecForUi recForUi = new(Xver.DbConnection, vs, _packages);
                 cb.Add(recForUi);
             });
 

@@ -9,6 +9,7 @@
 @inject XverAppConfig ServerConfig
 @inject IJSRuntime JS
 @inject IDialogService DialogService
+@inject IXverService Xver
 
 @implements INavTracker
 
@@ -39,8 +40,21 @@
                 }
             </FluentBreadcrumb>
             <FluentSpacer />
-            <FluentLabel>@ServerConfig.UserName</FluentLabel>
+
+            @if (Xver.IsOpen)
+            {
+                <FluentIcon Title="Connected" Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.DatabasePlugConnected().WithColor("#00cc00"))" />
+            }
+            else
+            {
+                <FluentIcon Title="NOT Connected" Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.PlugDisconnected().WithColor(Color.Error))" />
+            }
             <FluentSpacer Width="8" />
+
+            @*
+            <FluentTextField Value="@UserName" @onchange="@(SaveUsername)"/>
+            <FluentSpacer Width="8" />
+ *@
             <FluentButton Title="Light/Dark Mode"
             BackgroundColor="var(--accent-base-color)"
             IconEnd="@(new Icons.Regular.Size20.DarkTheme())"
@@ -59,8 +73,21 @@
                 }
             </FluentBreadcrumb>
             <FluentSpacer />
+
+            @if (Xver.IsOpen)
+            {
+                <FluentIcon Title="Connected" Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.DatabasePlugConnected().WithColor("#00cc00"))" />
+            }
+            else
+            {
+                <FluentIcon Title="NOT Connected" Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.PlugDisconnected().WithColor(Color.Error))" />
+            }
+            <FluentSpacer Width="8" />
+
+            @*
             <FluentTextField Value="@UserName" @onchange="@(SaveUsername)"/>
             <FluentSpacer Width="8" />
+ *@
             <FluentButton Title="Light/Dark Mode"
             Appearance="Appearance.Accent"
             IconEnd="@(new Icons.Regular.Size20.DarkTheme())"
@@ -93,8 +120,6 @@
 
     /// <summary>Gets or sets the mode.</summary>
     public DesignThemeModes Mode { get; set; }
-
-    public string UserName { get; set; } = string.Empty;
 
     /// <summary>Gets the is dark mode.</summary>
     public bool IsDarkMode => (Mode == DesignThemeModes.Dark);
@@ -183,44 +208,54 @@
         {
             // first render of layout should log the version
             _ = JsLogAsync($"fhir xver: {GetType()?.Assembly?.GetName()?.Version?.ToString()}");
-            _ = JS.InvokeVoidAsync("processCopyable");
+            await JS.InvokeVoidAsync("processCopyable");
 
-            try
-            {
-                var un = await BrowserStore.GetAsync<string>("userName");
-                if (un.Value != null)
-                {
-                    UserName = un.Value;
-                }
-                else
-                {
-                    UserName = ServerConfig.UserName;
-                }
+            // try
+            // {
+            //     var un = await BrowserStore.GetAsync<string>("userName");
+            //     if (un.Value != null)
+            //     {
+            //         UserName = un.Value;
+            //     }
+            //     else
+            //     {
+            //         UserName = ServerConfig.UserName;
+            //     }
 
-                StateHasChanged();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                // ignore
-            }
+            //     StateHasChanged();
+            // }
+            // catch (Exception ex)
+            // {
+            //     Console.WriteLine(ex.Message);
+            //     // ignore
+            // }
 
-            if (string.IsNullOrEmpty(UserName))
-            {
-                UserName = ServerConfig.UserName;
-            }
+            // if (string.IsNullOrEmpty(UserName))
+            // {
+            //     UserName = ServerConfig.UserName;
+            // }
         }
     }
 
-    private void SaveUsername(ChangeEventArgs e)
+    // private void SaveUsername(ChangeEventArgs e)
+    // {
+    //     if ((e.Value is string value) &&
+    //         (!string.IsNullOrEmpty(value)))
+    //     {
+    //         UserName = value;
+    //         // save the user name in the browser store
+    //         _ = BrowserStore.SetAsync("userName", value);
+    //     }
+    // }
+
+    public void NotifyStateHasChanged()
     {
-        if ((e.Value is string value) &&
-            (!string.IsNullOrEmpty(value)))
-        {
-            UserName = value;
-            // save the user name in the browser store
-            _ = BrowserStore.SetAsync("userName", value);
-        }
+        StateHasChanged();
+        // NotifyStateHasChanged(this, EventArgs.Empty);
+        // OnThemeChanged?.Invoke(this, EventArgs.Empty);
+
+        // _ = OnParametersSetAsync();
+        // StateHasChanged();
     }
 
     /// <summary>Notifies the navigation manager about the current location.</summary>

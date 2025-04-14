@@ -15,7 +15,11 @@
 <FluentStack Orientation="Orientation.Vertical" VerticalGap="8">
     <FluentLabel Typo="Typography.H4">Value Set details for @ValueSetName (DB Key: @ValueSetKey)</FluentLabel>
 
-    @if (vsUiRec == null)
+    @if ((Xver.IsOpen == false) || (Xver.DbConnection == null))
+    {
+        <FluentLabel Typo="Typography.Body">Database not open.</FluentLabel>
+    }
+    else if (vsUiRec == null)
     {
         <FluentLabel Typo="Typography.Body">Loading...</FluentLabel>
     }
@@ -804,7 +808,7 @@ Class="vs-dialog-container">
             return;
         }
 
-        string reviewer = NavTracker?.UserName ?? ServerConfig.UserName;
+        string reviewer = ServerConfig.UserName;
 
         Xver.Comparer.ApplyVsConceptChanges(
             originalProjection,
@@ -1350,6 +1354,13 @@ Class="vs-dialog-container">
     {
         try
         {
+            if ((Xver.IsOpen == false) ||
+                (Xver.DbConnection == null) ||
+                (Xver.Comparer == null))
+            {
+                return;
+            }
+
             if ((_loadedValueSetKey == ValueSetKey) && !forceReload)
             {
                 return;

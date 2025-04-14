@@ -10,5 +10,12 @@ public interface IXverService : IHostedService
     ComparisonDatabase ComparisonDb { get; }
     FhirDbComparer Comparer { get; }
 
+    IQueryable<DbFhirPackage> Packages { get; }
+    bool IsOpen { get; }
+
+    (bool success, string? message) Init(string? path = null);
+
+    void CloseDb();
+
     Task WriteDocsFromDatabase(string outputDirectory);
 }
