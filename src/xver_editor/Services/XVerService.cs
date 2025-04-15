@@ -137,7 +137,14 @@ public class XVerService : IXverService
     public Task StartAsync(CancellationToken cancellationToken)
     {
         // try to initialize in case there was a database provided via CLI or environment variable
-        _ = Init();
+        try
+        {
+            _ = Init();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Failed to initialize XVerService, user will need to specify a database and initialize.");
+        }
 
         return Task.CompletedTask;
     }
