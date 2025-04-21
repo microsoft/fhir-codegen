@@ -323,9 +323,20 @@ fluent-number-field {
     width: 100%;
 }
 
+.almost-full-width {
+    width: calc(100% - 32px);
+}
+
+
 .fluent-pop-container-spacer-short {
     height: 100px;
     min-height: 100px;
+    width: 100%;
+}
+
+.fluent-pop-container-spacer-med {
+    height: 300px;
+    min-height: 300px;
     width: 100%;
 }
 

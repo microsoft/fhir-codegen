@@ -256,7 +256,7 @@ public class FhirDbComparer
             addedInverse = true;
         }
 
-        DbComparisonCache<DbElementComparison> changes = new();
+        DbComparisonCache<DbElementComparison> elementChanges = new();
 
         // get the source elements
         Dictionary<int, DbElement> sourceElements = DbElement.SelectDict(
@@ -305,12 +305,12 @@ public class FhirDbComparer
                 (!existingInverseConceptComparisons.TryGetValue((int)forwardConceptComparison.InverseComparisonKey, out DbElementComparison? existingInverse)))
             {
                 usedInverseKeys.Add(computedInverse.Key);
-                changes.CacheAdd(computedInverse);
+                elementChanges.CacheAdd(computedInverse);
 
                 if (forwardConceptComparison.InverseComparisonKey != computedInverse.Key)
                 {
                     forwardConceptComparison.InverseComparisonKey = computedInverse.Key;
-                    changes.CacheUpdate(forwardConceptComparison);
+                    elementChanges.CacheUpdate(forwardConceptComparison);
                 }
 
                 continue;
@@ -322,7 +322,7 @@ public class FhirDbComparer
             if (existingInverse.Relationship != computedInverse.Relationship)
             {
                 existingInverse.Relationship = computedInverse.Relationship;
-                changes.CacheUpdate(existingInverse);
+                elementChanges.CacheUpdate(existingInverse);
             }
         }
 
@@ -333,7 +333,7 @@ public class FhirDbComparer
             {
                 continue;
             }
-            changes.CacheDelete(existing);
+            elementChanges.CacheDelete(existing);
         }
 
         // apply inverse updates to the VS
@@ -347,12 +347,12 @@ public class FhirDbComparer
         }
 
         // apply our concept changes
-        changes.ComparisonsToAdd.Insert(_db);
-        changes.ComparisonsToUpdate.Update(_db);
-        changes.ComparisonsToDelete.Delete(_db);
+        elementChanges.ComparisonsToAdd.Insert(_db);
+        elementChanges.ComparisonsToUpdate.Update(_db);
+        elementChanges.ComparisonsToDelete.Delete(_db);
 
         // return the comparison in case the caller needs it
-        return (inverseComparsion, changes.Count != 0);
+        return (inverseComparsion, elementChanges.Count != 0);
     }
 
     public void ApplySdConceptChanges(
@@ -1066,9 +1066,12 @@ public class FhirDbComparer
                 SourceElementKey: sourceElement.Key,
                 TargetFhirPackageKey: targetPackage.Key);
 
+            // build an estimated target id
+            string possibleTargetId = sourceElement.Id.Replace(sourceSd.Name, targetSd.Name, StringComparison.Ordinal);
+
             // if there are no existing comparisons, see if we can find a matching element
             if ((comparisons.Count == 0) &&
-                (DbElement.SelectList(_db, StructureKey: targetSd.Key, Id: sourceElement.Id) is List<DbElement> targetElements) &&
+                (DbElement.SelectList(_db, StructureKey: targetSd.Key, Id: possibleTargetId) is List<DbElement> targetElements) &&
                 (targetElements.Count != 0))
             {
                 CMR relationship = (targetElements.Count == 1)
@@ -1114,7 +1117,7 @@ public class FhirDbComparer
                         IsIdentical = null,
                     };
 
-                    _elementComparisons.CacheAdd(comp);
+                    elementComparisons.CacheAdd(comp);
                     comparisons.Add(comp);
                 }
             }
@@ -1184,13 +1187,13 @@ public class FhirDbComparer
 
                 if (elementComparison.InverseComparisonKey != null)
                 {
-                    inverseComparison = _elementComparisons.Get((int)elementComparison.InverseComparisonKey) ??
+                    inverseComparison = elementComparisons.Get((int)elementComparison.InverseComparisonKey) ??
                         DbElementComparison.SelectSingle(_db, Key: elementComparison.InverseComparisonKey);
                 }
 
                 if (inverseComparison == null)
                 {
-                    inverseComparison = _elementComparisons.Get(targetElement.Key, elementComparison.TargetElementKey) ??
+                    inverseComparison = elementComparisons.Get(targetElement.Key, elementComparison.TargetElementKey) ??
                         DbElementComparison.SelectSingle(
                             _db,
                             StructureComparisonKey: reverseComparison.Key,
@@ -1201,7 +1204,7 @@ public class FhirDbComparer
                 // if there is no inverse we need to create it
                 if (inverseComparison == null)
                 {
-                    inverseComparison = invert(elementComparison, sourceElement, targetElement!, reverseComparison, reversePair);
+                    inverseComparison = invert(elementComparison, sourceElement, targetElement!, reverseComparison, reversePair, elementTypeComparisons);
                     elementComparisons.CacheAdd(inverseComparison);
                 }
 
@@ -2573,9 +2576,11 @@ public class FhirDbComparer
         DbElement otherSourceElement,
         DbElement otherTargetElement,
         DbStructureComparison reverseCanonicalComparison,
-        DbFhirPackageComparisonPair reversePair)
+        DbFhirPackageComparisonPair reversePair,
+        DbComparisonCache<DbElementTypeComparison>? elementTypeComparisons = null)
     {
-        int? inverseTypeComparisonKey = _elementTypeComparisons.Get(otherTargetElement.Key, otherSourceElement.Key)?.Key;
+        int? inverseTypeComparisonKey = elementTypeComparisons?.Get(otherTargetElement.Key, otherSourceElement.Key)?.Key
+            ?? DbElementTypeComparison.SelectSingle(_db, SourceElementKey: otherTargetElement.Key, TargetElementKey: otherSourceElement.Key)?.Key;
         int? boundValueSetComparisonKey = (otherSourceElement.BindingValueSetKey == null) || (otherTargetElement.BindingValueSetKey == null)
             ? null
             : _vsComparisons.Get((int)otherTargetElement.BindingValueSetKey, otherSourceElement.BindingValueSetKey)?.Key ??

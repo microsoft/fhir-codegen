@@ -73,3 +73,25 @@ public record class SdRecForUi
         AllIdentical = allIdentical;
     }
 }
+
+public class ElementRecForUi
+{
+    public required DbElement Element {get; set;}
+    public required string Text { get; set; }
+    public required IQueryable<ElementProjectionForUi> ElementProjections {get; set;}
+}
+
+public class ElementProjectionForUi
+{
+    public required DbElementRow Row { get; set; }
+    public required DbElementCell SourceCell { get; set; }
+    public required DbElementCell TargetCell { get; set; }
+    public required DbElementComparison Comparison { get; set; }
+
+    public string RowKey => Row.RowNumber.ToString();
+    public string DelKey => $"del-{Row.RowNumber}";
+    public string RelKey => $"rel-{Row.RowNumber}";
+    public string CdKey => $"rel-cd-{Row.RowNumber}";
+    public string VdKey => $"rel-vd-{Row.RowNumber}";
+    public string TargetKey => $"target-vd-{Row.RowNumber}";
+}

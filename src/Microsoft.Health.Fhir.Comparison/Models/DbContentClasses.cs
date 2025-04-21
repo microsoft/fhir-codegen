@@ -236,6 +236,20 @@ public partial class DbElement : DbPackageContent
     }
 
     [CgSQLiteIgnore]
+    public string UiDisplayWithType
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(Id))
+            {
+                return "-";
+            }
+
+            return $"{Id} ({MinCardinality}..{MaxCardinalityString}, {CollatedTypeLiteral})";
+        }
+    }
+
+    [CgSQLiteIgnore]
     public string UiDisplayLong
     {
         get
