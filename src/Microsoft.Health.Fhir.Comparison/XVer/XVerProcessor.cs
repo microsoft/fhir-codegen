@@ -26,6 +26,8 @@ using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.Comparison.Models;
 using System.Xml.Linq;
 using System.Data;
+using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
+using Hl7.Fhir.Serialization;
 
 
 
@@ -52,6 +54,8 @@ internal static class XVerExtensions
 
 public class XVerProcessor
 {
+    private const string _crossDefinitionVersion = "0.7.0";
+
     internal static readonly ComparisonDirection[] _directions = [ComparisonDirection.Up, ComparisonDirection.Down];
 
     internal static readonly HashSet<string> _exclusionSet =
@@ -197,11 +201,17 @@ public class XVerProcessor
                 WriteDocsFromDatabase(FhirArtifactClassEnum.Resource);
                 break;
 
+            case "fhir":
+                LoadDatabase(false, false);
+                WriteFhirFromDatabase();
+                break;
+
             default:
                 LoadDatabase(true, true);
                 LoadFhirCrossVersionMaps(preferV1Maps: true);
                 CompareInDatabase();
                 WriteDocsFromDatabase();
+                WriteFhirFromDatabase();
                 break;
         }
     }
@@ -300,12 +310,359 @@ public class XVerProcessor
         }
     }
 
+
+    public void WriteFhirFromDatabase(string? outputDir = null)
+    {
+        // check for no database
+        if (_db == null)
+        {
+            throw new Exception("Cannot generate FHIR artifacts without a loaded database!");
+        }
+
+        outputDir ??= _config.CrossVersionMapSourcePath;
+
+        // check for no output location
+        if (string.IsNullOrEmpty(outputDir))
+        {
+            throw new Exception("Cannot write FHIR artifacts without output or map source folder!");
+        }
+
+        string fhirDir = Path.Combine(outputDir, "fhir");
+        if (Directory.Exists(fhirDir))
+        {
+            Directory.Delete(fhirDir, true);
+        }
+
+        Directory.CreateDirectory(fhirDir);
+
+        _logger.LogInformation($"Writing cross-version FHIR artifacts to {fhirDir}");
+
+        // grab the FHIR Packages we are processing
+        List<DbFhirPackage> packages = DbFhirPackage.SelectList(_db.DbConnection, orderByProperties: [nameof(DbFhirPackage.ShortName)]);
+        List<DbFhirPackageComparisonPair> packageComparisonPairs = DbFhirPackageComparisonPair.SelectList(
+            _db.DbConnection,
+            orderByProperties: [nameof(DbFhirPackageComparisonPair.SourcePackageKey), nameof(DbFhirPackageComparisonPair.TargetPackageKey)]);
+
+        ConcurrentDictionary<int, string> differentialVsBySourceKey = [];
+
+
+        // iterate over the list of packages
+        for (int focusPackageIndex = 0; focusPackageIndex < packages.Count; focusPackageIndex++)
+        {
+            _logger.LogInformation($"Processing package {focusPackageIndex + 1} of {packages.Count}: {packages[focusPackageIndex].ShortName}");
+
+            Dictionary<(int sourceVsKey, int targetPackageId), ValueSet>  xverValueSets = buildXverValueSets(packages, focusPackageIndex);
+
+            writeXverValueSets(packages, focusPackageIndex, xverValueSets, fhirDir);
+            //writeFhirValueSets(packages, i, packageComparisonPairs, fhirDir, differentialVsBySourceKey);
+        }
+
+        // //writeFhirStructures(packageComparisonPairs, fhirDir, differentialVsBySourceKey, FhirArtifactClassEnum.PrimitiveType);
+        //writeFhirStructures(packageComparisonPairs, fhirDir, differentialVsBySourceKey, FhirArtifactClassEnum.ComplexType); 
+        //writeFhirStructures(packageComparisonPairs, fhirDir, differentialVsBySourceKey, FhirArtifactClassEnum.Resource);
+    }
+
+    private void writeXverValueSets(
+        List<DbFhirPackage> packages,
+        int focusPackageIndex,
+        Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
+        string fhirDir)
+    {
+        Dictionary<int, DbFhirPackage> packageDict = packages.ToDictionary(p => p.Key);
+        DbFhirPackage focusPackage = packages[focusPackageIndex];
+
+        // iterate over the value sets
+        foreach (((int sourceVsKey, int targetPackageId), ValueSet vs) in xverValueSets)
+        {
+            DbFhirPackage targetPackage = packageDict[targetPackageId];
+
+            // build a path for this direction
+            string dir = Path.Combine(fhirDir, focusPackage.ShortName + "-for-" + targetPackage.ShortName);
+            if (!Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+
+            // write the value set to a file
+            string filename = $"ValueSet-{vs.Id}.json";
+            string path = Path.Combine(dir, filename);
+            File.WriteAllText(path, vs.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+        }
+    }
+
+    private Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> buildXverValueSets(
+        List<DbFhirPackage> packages,
+        int sourcePackageIndex)
+    {
+        DbFhirPackage sourcePackage = packages[sourcePackageIndex];
+
+        Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets = [];
+
+        // get the list of value sets in this version that have a required binding
+        List<DbValueSet> valueSets = DbValueSet.SelectList(
+            _db!.DbConnection,
+            FhirPackageKey: sourcePackage.Key,
+            StrongestBindingCore: BindingStrength.Required);
+
+        // iterate over the value sets
+        foreach (DbValueSet vs in valueSets)
+        {
+            // build a graph for this value set
+            DbGraphVs vsGraph = new()
+            {
+                DB = _db!.DbConnection,
+                Packages = packages,
+                KeyVs = vs,
+            };
+
+            // project this value set based on comparisons
+            List<DbVsRow> vsProjection = vsGraph.Project();
+
+            // build a dictionary of all concept projections, by concept key
+            Dictionary<int, List<DbVsConceptRow>> conceptProjectionDict = [];
+            foreach (DbVsRow vsRow in vsProjection)
+            {
+                List<DbVsConceptRow> conceptProjections = vsGraph.ProjectConcepts(vsRow);
+                foreach (DbVsConceptRow vsConceptRow in conceptProjections)
+                {
+                    if (vsConceptRow.KeyCell == null)
+                    {
+                        continue;
+                    }
+
+                    if (!conceptProjectionDict.TryGetValue(vsConceptRow.KeyCell.Concept.Key, out List<DbVsConceptRow>? conceptList))
+                    {
+                        conceptList = [];
+                        conceptProjectionDict.Add(vsConceptRow.KeyCell.Concept.Key, conceptList);
+                    }
+
+                    conceptList.Add(vsConceptRow);
+                }
+            }
+
+            // build the value sets for this package
+            buildXverValueSets(
+                packages,
+                sourcePackageIndex,
+                vs,
+                conceptProjectionDict,
+                xverValueSets);
+        }
+
+        return xverValueSets;
+    }
+
+    private void buildXverValueSets(
+        List<DbFhirPackage> packages,
+        int sourcePackageIndex,
+        DbValueSet sourceVs,
+        Dictionary<int, List<DbVsConceptRow>> conceptProjectionDict,
+        Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
+        HashSet<int>? conceptsWithoutEquivalent = null,
+        ValueSet? xverVs = null,
+        int currentPackageIndex = -1,
+        int targetPackageIndex = -1)
+    {
+        // check for starting conditions
+        if ((currentPackageIndex == -1) ||
+            (targetPackageIndex == -1))
+        {
+            // if we are not the last package, build upwards
+            if (sourcePackageIndex < (packages.Count - 1))
+            {
+                buildXverValueSets(
+                    packages,
+                    sourcePackageIndex,
+                    sourceVs,
+                    conceptProjectionDict,
+                    xverValueSets,
+                    conceptsWithoutEquivalent,
+                    xverVs,
+                    currentPackageIndex: sourcePackageIndex,
+                    targetPackageIndex: sourcePackageIndex + 1);
+            }
+
+            // if we are not the first package, build downwards
+            if (sourcePackageIndex > 0)
+            {
+                buildXverValueSets(
+                    packages,
+                    sourcePackageIndex,
+                    sourceVs,
+                    conceptProjectionDict,
+                    xverValueSets,
+                    conceptsWithoutEquivalent,
+                    xverVs,
+                    currentPackageIndex: sourcePackageIndex,
+                    targetPackageIndex: sourcePackageIndex - 1);
+            }
+
+            // done
+            return;
+        }
+
+        bool testingRight = currentPackageIndex < targetPackageIndex;
+        bool testingLeft = !testingRight;
+        conceptsWithoutEquivalent ??= [];
+
+        DbFhirPackage sourcePackage = packages[sourcePackageIndex];
+        DbFhirPackage targetPackage = packages[targetPackageIndex];
+
+        //string sourceDashTarget = $"{sourcePackage.ShortName}-{targetPackage.ShortName}";
+        string vsId = $"{sourcePackage.ShortName}-{sourceVs.Id}-for-{targetPackage.ShortName}";
+        //string vsId = $"{sourceDashTarget}-{sourceVs.Id}";
+
+        ValueSet vs = new()
+        {
+            Url = $"http://hl7.org/fhir/uv/xver/{sourcePackage.FhirVersionShort}/ValueSet/{vsId}",
+            Id = vsId,
+            Version = _crossDefinitionVersion,
+            Name = vsId,
+            Title = $"Cross-version VS for {sourcePackage.ShortName}.{sourceVs.Name} for use in FHIR {targetPackage.ShortName}",
+            Status = PublicationStatus.Draft,
+            Experimental = false,
+            DateElement = new FhirDateTime(DateTimeOffset.Now),
+            Description = $"This cross-version ValueSet represents concepts from {sourceVs.VersionedUrl} for use in FHIR {targetPackage.ShortName}." +
+                    $" Concepts not present here have direct `equivalent` mappings crossing all versions from {sourcePackage.ShortName} to {targetPackage.ShortName}.",
+            Compose = new()
+            {
+                Include = [],
+            },
+            Expansion = new()
+            {
+                Contains = [],
+            },
+        };
+
+        Dictionary<string, ValueSet.ConceptSetComponent> composeIncludes = [];
+
+        // if we have an existing VS, start with the compose and expansion from that one (note that nonEquivalentConceptKeys will already be populated)
+        if (xverVs != null)
+        {
+            vs.Compose = (ValueSet.ComposeComponent)xverVs.Compose.DeepCopy();
+            foreach (ValueSet.ConceptSetComponent composeInclude in vs.Compose.Include)
+            {
+                composeIncludes.Add(composeInclude.System + "|" + composeInclude.Version, composeInclude);
+            }
+
+            vs.Expansion = (ValueSet.ExpansionComponent)xverVs.Expansion.DeepCopy();
+        }
+
+        // iterate over the projections
+        foreach ((int sourceConceptKey, List<DbVsConceptRow> conceptProjections) in conceptProjectionDict)
+        {
+            // skip if we know this concept has already mapped out
+            if (conceptsWithoutEquivalent.Contains(sourceConceptKey))
+            {
+                continue;
+            }
+
+            // check to see if we have any equivalent mappings
+            if (testingRight &&
+                conceptProjections.Any((DbVsConceptRow vsConceptRow) => vsConceptRow[currentPackageIndex]?.RightComparison?.Relationship == CMR.Equivalent))
+            {
+                continue;
+            }
+
+            if (testingLeft &&
+                conceptProjections.Any((DbVsConceptRow vsConceptRow) => vsConceptRow[currentPackageIndex]?.LeftComparison?.Relationship == CMR.Equivalent))
+            {
+                continue;
+            }
+
+            // add this concept as not directly equivalent
+            conceptsWithoutEquivalent.Add(sourceConceptKey);
+
+            // check to see if we have this concept
+            DbValueSetConcept concept = conceptProjections[0].KeyCell?.Concept ?? throw new Exception($"Failed to resolve concept for {sourceConceptKey} in {sourceVs.Name}!");
+
+            string composeKey = concept.System + "|" + concept.SystemVersion;
+
+            if (!composeIncludes.TryGetValue(composeKey, out ValueSet.ConceptSetComponent? composeInclude))
+            {
+                // create a new include for this concept
+                composeInclude = new()
+                {
+                    System = concept.System,
+                    Version = concept.SystemVersion,
+                    Concept = [],
+                };
+                composeIncludes.Add(composeKey, composeInclude);
+                vs.Compose.Include.Add(composeInclude);
+            }
+
+            composeInclude.Concept.Add(new()
+            {
+                Code = concept.Code,
+                Display = concept.Display,
+            });
+
+            // add this concept to the expansion
+            vs.Expansion.Contains.Add(new()
+            {
+                System = concept.System,
+                Version = concept.SystemVersion,
+                Code = concept.Code,
+                Display = concept.Display,
+            });
+        }
+
+        // add this value set to the dictionary if it has any concepts
+        if (vs.Expansion.Contains.Count > 0)
+        {
+            xverValueSets.Add((sourceVs.Key, targetPackage.Key), vs);
+        }
+
+        // check for continuing to the next package to the right
+        if (testingRight &&
+            (targetPackageIndex < packages.Count - 1))
+        {
+            // build the value set for this package
+            buildXverValueSets(
+                packages,
+                sourcePackageIndex,
+                sourceVs,
+                conceptProjectionDict,
+                xverValueSets,
+                conceptsWithoutEquivalent,
+                vs,
+                currentPackageIndex: targetPackageIndex,
+                targetPackageIndex: targetPackageIndex + 1);
+        }
+
+        // check for continuing to the next package to the left
+        if (testingLeft &&
+            (targetPackageIndex > 0))
+        {
+            // build the value set for this package
+            buildXverValueSets(
+                packages,
+                sourcePackageIndex,
+                sourceVs,
+                conceptProjectionDict,
+                xverValueSets,
+                conceptsWithoutEquivalent,
+                vs,
+                currentPackageIndex: targetPackageIndex,
+                targetPackageIndex: targetPackageIndex - 1);
+        }
+
+        return;
+    }
+
+
+
+
+
+
+
+
     public void WriteDocsFromDatabase(FhirArtifactClassEnum? artifactFilter = null, string? outputDir = null)
     {
         // check for no database
         if (_db == null)
         {
-            throw new Exception("Comparison cannot run without a loaded database!");
+            throw new Exception("Cannot generate docs without a loaded database!");
         }
 
         //string outputDir = !string.IsNullOrEmpty(_config.OutputDirectory)

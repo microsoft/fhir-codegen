@@ -74,6 +74,7 @@ public partial class DbValueSetConcept : DbPackageContent, IEquatable<DbValueSet
     [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
     public required int ValueSetKey { get; set; }
     public required string System { get; set; }
+    public required string SystemVersion { get; set; }
     public required string Code { get; set; }
     public required string? Display { get; set; }
     public required bool Inactive { get; set; }
@@ -119,6 +120,7 @@ public partial class DbValueSetConcept : DbPackageContent, IEquatable<DbValueSet
         FhirPackageKey = -1,
         ValueSetKey = -1,
         System = string.Empty,
+        SystemVersion = string.Empty,
         Code = string.Empty,
         Display = "No Concept Selected",
         Inactive = false,

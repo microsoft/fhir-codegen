@@ -499,6 +499,7 @@ public class ComparisonDatabase : IDisposable
                     ShortName = shortName,
                     PackageId = dc.MainPackageId,
                     PackageVersion = dc.MainPackageVersion,
+                    FhirVersionShort = dc.FhirSequence.ToShortVersion(),
                     CanonicalUrl = dc.MainPackageCanonical,
                     DefinitionFhirSequence = dc.FhirSequence,
                 };
@@ -1950,6 +1951,7 @@ public class ComparisonDatabase : IDisposable
                     FhirPackageKey = pm.Key,
                     ValueSetKey = dbVs.Key,
                     System = fc.System,
+                    SystemVersion = fc.Version,
                     Code = fc.Code,
                     Display = fc.Display,
                     Inactive = (fc.IsInactive == true),

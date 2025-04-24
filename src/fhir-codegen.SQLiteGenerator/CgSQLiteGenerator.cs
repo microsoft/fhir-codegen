@@ -602,6 +602,30 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             return results;
                         }
 
+                        public static int SelectCount(IDbConnection dbConnection, string? dbTableName = null, {{{string.Join(", ", getFnFilterParams(true))}}})
+                        {
+                            dbTableName ??= "{{{tableName}}}";
+                    
+                            IDbCommand command = dbConnection.CreateCommand();
+                            command.CommandText = $"SELECT COUNT({{{(pkColName == null ? "*" : pkColName)}}}) FROM {dbTableName}";
+                    
+                            bool addedCondition = false;
+                    
+                            {{{string.Join(_line_2, getConditionLines(true))}}}
+
+                            object? result = command.ExecuteScalar();
+                            if (result is int value)
+                            {
+                                return value;
+                            }
+                            else if (result is long l)
+                            {
+                                return {{{((pkColName == null) || (pkPropType == "int") ? "Convert.ToInt32(l)" : "null")}}};
+                            }
+
+                            return -1;
+                        }
+
                         public static {{{(pkColName == null ? "void" : pkPropType)}}} Insert(IDbConnection dbConnection, {{{className}}} value, string? dbTableName = null)
                         {
                             dbTableName ??= "{{{tableName}}}";
@@ -826,7 +850,13 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                         {
                             return {{{className}}}.SelectList(dbCon, dbTableName, orderByProperties, orderByDirection, {{{string.Join(", ", getFnFilterArgs(true))}}});
                         }
-                                        
+
+                        public static int SelectCount<T>(this IDbConnection dbCon, string? dbTableName = null, {{{string.Join(", ", getFnFilterParams(true))}}})
+                            where T : {{{className}}}
+                        {
+                            return {{{className}}}.SelectCount(dbCon, dbTableName, {{{string.Join(", ", getFnFilterArgs(true))}}});
+                        }
+                                                            
                         public static void Insert(this IDbConnection dbCon, {{{className}}} value, string? dbTableName = null)
                         {
                             {{{className}}}.Insert(dbCon, value, dbTableName);

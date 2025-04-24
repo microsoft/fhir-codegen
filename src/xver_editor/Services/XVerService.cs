@@ -134,6 +134,24 @@ public class XVerService : IXverService
         await Task.Run(() => xverProcessor.WriteDocsFromDatabase(outputDir: outputDirectory));
     }
 
+    public async Task WriteFhirFromDatabase(string? outputDirectory)
+    {
+        if (_db == null)
+        {
+            throw new InvalidOperationException("Database not initialized.");
+        }
+
+        outputDirectory ??= _config.OutputDirectory;
+
+        if (string.IsNullOrEmpty(outputDirectory))
+        {
+            throw new ArgumentNullException(nameof(outputDirectory));
+        }
+
+        XVerProcessor xverProcessor = new(_db, outputDirectory, _config.LogFactory);
+        await Task.Run(() => xverProcessor.WriteFhirFromDatabase(outputDir: outputDirectory));
+    }
+
     public Task StartAsync(CancellationToken cancellationToken)
     {
         // try to initialize in case there was a database provided via CLI or environment variable

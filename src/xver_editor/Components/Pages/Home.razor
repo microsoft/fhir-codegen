@@ -23,11 +23,19 @@
     <FluentLabel Typo="Typography.Body">Output Root</FluentLabel>
     <FluentStack Orientation="Orientation.Horizontal">
         <FluentTextField Value="@OutputDir" @onchange="@(e => SaveConfig("outputDir", e))" />
-        <FluentButton Disabled=@(!Xver.IsOpen || isExporting) OnClick="@(e => WriteDocs())">Write Docs</FluentButton>
-        @if (isExporting)
+
+        <FluentButton Disabled=@(!Xver.IsOpen || isWritingDocs) OnClick="@(e => WriteDocs())">Write Docs</FluentButton>
+        @if (isWritingDocs)
         {
             <FluentProgressRing/>
         }
+
+        <FluentButton Disabled=@(!Xver.IsOpen || isWritingFhir) OnClick="@(e => WriteFhir())">Write FHIR Artifacts</FluentButton>
+        @if (isWritingFhir)
+        {
+            <FluentProgressRing />
+        }
+
     </FluentStack>
 
 
@@ -54,7 +62,8 @@
     private string DbPath { get; set; } = string.Empty;
     private string OutputDir { get; set; } = string.Empty;
 
-    private bool isExporting = false;
+    private bool isWritingDocs = false;
+    private bool isWritingFhir = false;
 
     // protected override void OnInitialized()
     // {
@@ -91,10 +100,19 @@
 
     private async Task WriteDocs()
     {
-        isExporting = true;
+        isWritingDocs = true;
         StateHasChanged();
         await Xver.WriteDocsFromDatabase(OutputDir);
-        isExporting = false;
+        isWritingDocs = false;
+        StateHasChanged();
+    }
+
+    private async Task WriteFhir()
+    {
+        isWritingFhir = true;
+        StateHasChanged();
+        await Xver.WriteFhirFromDatabase(OutputDir);
+        isWritingFhir = false;
         StateHasChanged();
     }
 

@@ -17,6 +17,7 @@ public partial class DbFhirPackage
     public required string Name { get; set; } = null!;
     public required string PackageId { get; set; } = null!;
     public required string PackageVersion { get; set; } = null!;
+    public required string FhirVersionShort { get; set; } = null!;
     public required string CanonicalUrl { get; set; } = null!;
     public required string ShortName { get; set; } = null!;
 

@@ -104,6 +104,7 @@ internal static class LaunchUtils
                 ("docs", "Build Markdown docs from the database"),
                 ("docs-vs", "Build Markdown docs for ValueSet data from the database"),
                 ("docs-sd", "Build Markdown docs for Structure from the database"),
+                ("fhir", "Build FHIR artifacts from the database"),
 
                 ("convert-from-maps", "Create XVer DB from existing maps"),
                 ("update-maps", "Update the FHIR Cross Version maps"),

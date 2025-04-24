@@ -262,6 +262,8 @@ public class DbGraphVs
     public required IDbConnection DB { get => _db; init => _db = value; }
     public required List<DbFhirPackage> Packages { get => _packages; init => _packages = value; }
     public required DbValueSet KeyVs { get => _keyVs; init => _keyVs = value; }
+    public bool IncludeInactive { get; set; } = false;
+    public bool IncludeAbstract { get; set; } = false;
 
     public List<DbVsRow> Project()
     {
@@ -277,8 +279,8 @@ public class DbGraphVs
             Concepts = DbValueSetConcept.SelectList(
                 _db,
                 ValueSetKey: _keyVs.Key,
-                Inactive: false,
-                Abstract: false),
+                Inactive: IncludeInactive,
+                Abstract: IncludeAbstract),
         };
 
         List<DbVsRow> right = [];

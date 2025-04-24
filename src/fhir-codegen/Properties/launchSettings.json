@@ -185,24 +185,14 @@
             "commandLineArgs": "xver compare",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
-        "XVer compare-db-sd": {
-            "commandName": "Project",
-            "commandLineArgs": "xver compare-sd",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
         "XVer docs-db": {
             "commandName": "Project",
             "commandLineArgs": "xver docs",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
-        "XVer docs-db-vs": {
+        "XVer fhir-db": {
             "commandName": "Project",
-            "commandLineArgs": "xver docs-vs",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "XVer docs-db-sd": {
-            "commandName": "Project",
-            "commandLineArgs": "xver docs-sd",
+            "commandLineArgs": "xver fhir",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "CQL R4": {
