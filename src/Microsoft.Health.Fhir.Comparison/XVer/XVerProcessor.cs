@@ -355,6 +355,13 @@ public class XVerProcessor
 
             writeXverValueSets(packages, focusPackageIndex, xverValueSets, fhirDir);
             //writeFhirValueSets(packages, i, packageComparisonPairs, fhirDir, differentialVsBySourceKey);
+
+            Dictionary<(int sourceElementKey, int targetPackageId), StructureDefinition> xverExtensions = [];
+            buildXverStructures(packages, focusPackageIndex, xverValueSets, xverExtensions, FhirArtifactClassEnum.ComplexType);
+            buildXverStructures(packages, focusPackageIndex, xverValueSets, xverExtensions, FhirArtifactClassEnum.Resource);
+
+            writeXverStructures(packages, focusPackageIndex, xverExtensions, fhirDir);
+
         }
 
         // //writeFhirStructures(packageComparisonPairs, fhirDir, differentialVsBySourceKey, FhirArtifactClassEnum.PrimitiveType);
@@ -649,6 +656,290 @@ public class XVerProcessor
 
         return;
     }
+
+    private void writeXverStructures(
+        List<DbFhirPackage> packages,
+        int focusPackageIndex,
+        Dictionary<(int sourceElementKey, int targetPackageId), StructureDefinition> xverExtensions,
+        string fhirDir)
+    {
+        Dictionary<int, DbFhirPackage> packageDict = packages.ToDictionary(p => p.Key);
+        DbFhirPackage focusPackage = packages[focusPackageIndex];
+
+        // iterate over the value sets
+        foreach (((int sourceKey, int targetPackageId), StructureDefinition sd) in xverExtensions)
+        {
+            DbFhirPackage targetPackage = packageDict[targetPackageId];
+
+            // build a path for this direction
+            string dir = Path.Combine(fhirDir, focusPackage.ShortName + "-for-" + targetPackage.ShortName);
+            if (!Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+
+            // write the value set to a file
+            string filename = $"StructureDefinition-{sd.Id}.json";
+            string path = Path.Combine(dir, filename);
+            File.WriteAllText(path, sd.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+        }
+    }
+
+    private void buildXverStructures(
+        List<DbFhirPackage> packages,
+        int sourcePackageIndex,
+        Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
+        Dictionary<(int sourceElementKey, int targetPackageId), StructureDefinition> xverExtensions,
+        FhirArtifactClassEnum artifactClass)
+    {
+        DbFhirPackage sourcePackage = packages[sourcePackageIndex];
+
+        // resolve the extension types for this version of FHIR
+        HashSet<string> allowedExtensionTypes = getAllowedExtensionTypes(sourcePackage.Key);
+
+        // get the list of structures in this version
+        List<DbStructureDefinition> structures = DbStructureDefinition.SelectList(
+                _db!.DbConnection,
+                FhirPackageKey: sourcePackage.Key,
+                ArtifactClass: artifactClass);
+
+        // iterate over the structures
+        foreach (DbStructureDefinition sd in structures)
+        {
+            // build a graph for this value set
+            DbGraphSd sdGraph = new()
+            {
+                DB = _db!.DbConnection,
+                Packages = packages,
+                KeySd = sd,
+            };
+
+            // project this structure based on comparisons
+            List<DbSdRow> sdProjection = sdGraph.Project();
+
+            // build a dictionary of all concept projections, by concept key
+            Dictionary<int, List<DbElementRow>> elementProjectionDict = [];
+            foreach (DbSdRow sdRow in sdProjection)
+            {
+                List<DbElementRow> elementProjections = sdGraph.ProjectElements(sdRow);
+                foreach (DbElementRow sdElementRow in elementProjections)
+                {
+                    if (sdElementRow.KeyCell == null)
+                    {
+                        continue;
+                    }
+
+                    if (!elementProjectionDict.TryGetValue(sdElementRow.KeyCell.Element.Key, out List<DbElementRow>? elementList))
+                    {
+                        elementList = [];
+                        elementProjectionDict.Add(sdElementRow.KeyCell.Element.Key, elementList);
+                    }
+
+                    elementList.Add(sdElementRow);
+                }
+            }
+
+            // build the value sets for this package
+            buildXverStructures(
+                packages,
+                sourcePackageIndex,
+                allowedExtensionTypes,
+                xverValueSets,
+                sd,
+                elementProjectionDict,
+                xverExtensions);
+        }
+
+        return;
+
+        HashSet<string> getAllowedExtensionTypes(int packageKey)
+        {
+            // resolve the 'extension' structure definition
+            DbStructureDefinition? extSd = DbStructureDefinition.SelectSingle(
+                _db!.DbConnection,
+                FhirPackageKey: packageKey,
+                Name: "Extension");
+
+            if (extSd == null)
+            {
+                return [];
+            }
+
+            // get the 'value[x]' element
+            DbElement? extValueElement = DbElement.SelectSingle(
+                _db!.DbConnection,
+                StructureKey: extSd.Key,
+                Id: "Extension.value[x]");
+
+            if (extValueElement == null)
+            {
+                return [];
+            }
+
+            // get the types allowed in the Extension.value element
+            List<DbElementType> extValueTypes = DbElementType.SelectList(
+                _db!.DbConnection,
+                ElementKey: extValueElement.Key);
+
+            return new HashSet<string>(extValueTypes.Select(et => et.TypeName!));
+        }
+    }
+
+    private void buildXverStructures(
+        List<DbFhirPackage> packages,
+        int sourcePackageIndex,
+        HashSet<string> allowedExtensionTypes,
+        Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
+        DbStructureDefinition sourceSd,
+        Dictionary<int, List<DbElementRow>> elementProjectionDict,
+        Dictionary<(int sourceElementKey, int targetPackageId), StructureDefinition> xverExtensions,
+        HashSet<int>? elementsWithoutEquivalent = null,
+        int currentPackageIndex = -1,
+        int targetPackageIndex = -1)
+    {
+        // check for starting conditions
+        if ((currentPackageIndex == -1) ||
+            (targetPackageIndex == -1))
+        {
+            // if we are not the last package, build upwards
+            if (sourcePackageIndex < (packages.Count - 1))
+            {
+                buildXverStructures(
+                    packages,
+                    sourcePackageIndex,
+                    allowedExtensionTypes,
+                    xverValueSets,
+                    sourceSd,
+                    elementProjectionDict,
+                    xverExtensions,
+                    elementsWithoutEquivalent,
+                    currentPackageIndex: sourcePackageIndex,
+                    targetPackageIndex: sourcePackageIndex + 1);
+            }
+
+            // if we are not the first package, build downwards
+            if (sourcePackageIndex > 0)
+            {
+                buildXverStructures(
+                    packages,
+                    sourcePackageIndex,
+                    allowedExtensionTypes,
+                    xverValueSets,
+                    sourceSd,
+                    elementProjectionDict,
+                    xverExtensions,
+                    elementsWithoutEquivalent,
+                    currentPackageIndex: sourcePackageIndex,
+                    targetPackageIndex: sourcePackageIndex - 1);
+            }
+
+            // done
+            return;
+        }
+
+        bool testingRight = currentPackageIndex < targetPackageIndex;
+        bool testingLeft = !testingRight;
+        elementsWithoutEquivalent ??= [];
+
+        DbFhirPackage sourcePackage = packages[sourcePackageIndex];
+        DbFhirPackage targetPackage = packages[targetPackageIndex];
+
+        // iterate over the projections
+        foreach ((int sourceElementKey, List<DbElementRow> elementProjections) in elementProjectionDict)
+        {
+            // skip if we know this element has already mapped out
+            if (elementsWithoutEquivalent.Contains(sourceElementKey))
+            {
+                continue;
+            }
+
+            // check to see if we have any equivalent mappings
+            if (testingRight &&
+                elementProjections.Any((DbElementRow elementRow) => elementRow[currentPackageIndex]?.RightComparison?.Relationship == CMR.Equivalent))
+            {
+                continue;
+            }
+
+            if (testingLeft &&
+                elementProjections.Any((DbElementRow elementRow) => elementRow[currentPackageIndex]?.LeftComparison?.Relationship == CMR.Equivalent))
+            {
+                continue;
+            }
+
+            // add this element as not directly equivalent
+            elementsWithoutEquivalent.Add(sourceElementKey);
+
+            // check to see if we have this element
+            DbElement element = elementProjections[0].KeyCell?.Element ?? throw new Exception($"Failed to resolve element for {sourceElementKey} in {sourceSd.Name}!");
+
+            string sdId = $"{sourcePackage.ShortName}-{element.Path}-for-{targetPackage.ShortName}";
+
+            StructureDefinition sd = new()
+            {
+                Url = $"http://hl7.org/fhir/uv/xver/{sourcePackage.FhirVersionShort}/StructureDefinition/{sdId}",
+                Id = sdId,
+                Version = _crossDefinitionVersion,
+                Name = sdId,
+                Title = $"Cross-version Extension for {sourcePackage.ShortName}.{element.Path} for use in FHIR {targetPackage.ShortName}",
+                Status = PublicationStatus.Draft,
+                Experimental = false,
+                DateElement = new FhirDateTime(DateTimeOffset.Now),
+                Description = $"This cross-version extension represents the {element.Path} element from {sourceSd.VersionedUrl} for use in FHIR {targetPackage.ShortName}.",
+            };
+
+            /*
+             * TODO:
+             * - filter target types based on allowed types (HashSet)
+             * - map types that do not exist based on their mappings (e.g., R2:Quantity <-> R3:SimpleQuantity)
+             * - make complex extensions based on elements in the tree
+             * - filter top-level structures/elements for new types (only allow entire structures)
+             * - determine correct targets
+             */
+
+            // add this element extension to the dictionary
+            xverExtensions.Add((element.Key, targetPackage.Key), sd);
+        }
+
+
+        // check for continuing to the next package to the right
+        if (testingRight &&
+            (targetPackageIndex < packages.Count - 1))
+        {
+            // build the value set for this package
+            buildXverStructures(
+                packages,
+                sourcePackageIndex,
+                allowedExtensionTypes,
+                xverValueSets,
+                sourceSd,
+                elementProjectionDict,
+                xverExtensions,
+                elementsWithoutEquivalent,
+                currentPackageIndex: targetPackageIndex,
+                targetPackageIndex: targetPackageIndex + 1);
+        }
+
+        // check for continuing to the next package to the left
+        if (testingLeft &&
+            (targetPackageIndex > 0))
+        {
+            // build the value set for this package
+            buildXverStructures(
+                packages,
+                sourcePackageIndex,
+                allowedExtensionTypes,
+                xverValueSets,
+                sourceSd,
+                elementProjectionDict,
+                xverExtensions,
+                elementsWithoutEquivalent,
+                currentPackageIndex: targetPackageIndex,
+                targetPackageIndex: targetPackageIndex - 1);
+        }
+
+        return;
+    }
+
 
 
 
