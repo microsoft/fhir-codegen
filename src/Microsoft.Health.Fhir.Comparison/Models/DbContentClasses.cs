@@ -193,6 +193,8 @@ public partial class DbElement : DbPackageContent
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
     public int StructureKey { get; set; }
 
+    public required int? ParentElementKey { get; set; }
+
     public required int ResourceFieldOrder { get; set; }
     public required int ComponentFieldOrder { get; set; }
     public required string Id { get; set; }
@@ -280,6 +282,7 @@ public partial class DbElement : DbPackageContent
         Key = -1,
         FhirPackageKey = -1,
         StructureKey = -1,
+        ParentElementKey = null,
         ResourceFieldOrder = -1,
         ComponentFieldOrder = -1,
         Id = string.Empty,

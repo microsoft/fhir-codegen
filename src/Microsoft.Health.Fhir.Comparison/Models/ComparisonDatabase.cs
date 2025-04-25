@@ -1985,7 +1985,7 @@ public class ComparisonDatabase : IDisposable
         HashSet<string> _exclusionSet)
     {
         Dictionary<string, DbStructureDefinition> dbStructures = [];
-        List<DbElement> dbElements = [];
+        Dictionary<string, DbElement> dbElements = [];
         List<DbElementType> dbElementTypes = [];
         List<DbElementAdditionalBinding> dbAdditionalBindings = [];
 
@@ -2075,7 +2075,7 @@ public class ComparisonDatabase : IDisposable
         _dbConnection.Insert(dbStructures.Values);
         _logger.LogInformation($" <<< added {dbStructures.Count} Structures");
 
-        _dbConnection.Insert(dbElements);
+        _dbConnection.Insert(dbElements.Values);
         _logger.LogInformation($" <<< added {dbElements.Count} Elements");
 
         _dbConnection.Insert(dbElementTypes);
@@ -2292,12 +2292,25 @@ public class ComparisonDatabase : IDisposable
             // check for a type group that has all the types we need
             string typeGroupLiteral = string.Join(", ", currentElementTypes.OrderBy(et => et.Literal).Select(et => et.Literal));
 
+            int resourceFieldOrder = ed.cgFieldOrder();
+            int? parentElementDbKey = null;
+
+            if (resourceFieldOrder != 0)
+            {
+                string parentKey = dbStructure.Key.ToString() + ":" + ed.ElementId.Substring(0, ed.ElementId.LastIndexOf('.'));
+                if (dbElements.TryGetValue(parentKey, out DbElement? parentElement))
+                {
+                    parentElementDbKey = parentElement.Key;
+                }
+            }
+
             DbElement dbElement = new()
             {
                 Key = elementKey,
                 FhirPackageKey = pm.Key,
                 StructureKey = dbStructure.Key,
-                ResourceFieldOrder = ed.cgFieldOrder(),
+                ParentElementKey = parentElementDbKey,
+                ResourceFieldOrder = resourceFieldOrder,
                 ComponentFieldOrder = ed.cgComponentFieldOrder(),
                 Id = ed.ElementId,
                 Path = ed.Path,
@@ -2319,7 +2332,7 @@ public class ComparisonDatabase : IDisposable
                 IsSimpleType = ed.cgIsSimple(),
             };
 
-            dbElements.Add(dbElement);
+            dbElements.Add(dbStructure.Key.ToString() + ":" + ed.ElementId, dbElement);
         }
     }
 

@@ -706,48 +706,14 @@ public class XVerProcessor
         // iterate over the structures
         foreach (DbStructureDefinition sd in structures)
         {
-            // build a graph for this value set
-            DbGraphSd sdGraph = new()
-            {
-                DB = _db!.DbConnection,
-                Packages = packages,
-                KeySd = sd,
-            };
-
-            // project this structure based on comparisons
-            List<DbSdRow> sdProjection = sdGraph.Project();
-
-            // build a dictionary of all concept projections, by concept key
-            Dictionary<int, List<DbElementRow>> elementProjectionDict = [];
-            foreach (DbSdRow sdRow in sdProjection)
-            {
-                List<DbElementRow> elementProjections = sdGraph.ProjectElements(sdRow);
-                foreach (DbElementRow sdElementRow in elementProjections)
-                {
-                    if (sdElementRow.KeyCell == null)
-                    {
-                        continue;
-                    }
-
-                    if (!elementProjectionDict.TryGetValue(sdElementRow.KeyCell.Element.Key, out List<DbElementRow>? elementList))
-                    {
-                        elementList = [];
-                        elementProjectionDict.Add(sdElementRow.KeyCell.Element.Key, elementList);
-                    }
-
-                    elementList.Add(sdElementRow);
-                }
-            }
-
             // build the value sets for this package
             buildXverStructures(
+                xverExtensions,
                 packages,
                 sourcePackageIndex,
                 allowedExtensionTypes,
                 xverValueSets,
-                sd,
-                elementProjectionDict,
-                xverExtensions);
+                sd);
         }
 
         return;
@@ -786,17 +752,53 @@ public class XVerProcessor
     }
 
     private void buildXverStructures(
+        Dictionary<(int sourceElementKey, int targetPackageId), StructureDefinition> xverExtensions,
         List<DbFhirPackage> packages,
         int sourcePackageIndex,
         HashSet<string> allowedExtensionTypes,
         Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
         DbStructureDefinition sourceSd,
-        Dictionary<int, List<DbElementRow>> elementProjectionDict,
-        Dictionary<(int sourceElementKey, int targetPackageId), StructureDefinition> xverExtensions,
+        Dictionary<int, List<DbElementRow>>? elementProjectionDict = null,
         HashSet<int>? elementsWithoutEquivalent = null,
         int currentPackageIndex = -1,
         int targetPackageIndex = -1)
     {
+        if (elementProjectionDict == null)
+        {
+            // build a graph for this value set
+            DbGraphSd sdGraph = new()
+            {
+                DB = _db!.DbConnection,
+                Packages = packages,
+                KeySd = sourceSd,
+            };
+
+            // project this structure based on comparisons
+            List<DbSdRow> sdProjection = sdGraph.Project();
+
+            // build a dictionary of all concept projections, by concept key
+            elementProjectionDict = [];
+            foreach (DbSdRow sdRow in sdProjection)
+            {
+                List<DbElementRow> elementProjections = sdGraph.ProjectElements(sdRow);
+                foreach (DbElementRow sdElementRow in elementProjections)
+                {
+                    if (sdElementRow.KeyCell == null)
+                    {
+                        continue;
+                    }
+
+                    if (!elementProjectionDict.TryGetValue(sdElementRow.KeyCell.Element.Key, out List<DbElementRow>? elementList))
+                    {
+                        elementList = [];
+                        elementProjectionDict.Add(sdElementRow.KeyCell.Element.Key, elementList);
+                    }
+
+                    elementList.Add(sdElementRow);
+                }
+            }
+        }
+
         // check for starting conditions
         if ((currentPackageIndex == -1) ||
             (targetPackageIndex == -1))
@@ -805,13 +807,13 @@ public class XVerProcessor
             if (sourcePackageIndex < (packages.Count - 1))
             {
                 buildXverStructures(
+                    xverExtensions,
                     packages,
                     sourcePackageIndex,
                     allowedExtensionTypes,
                     xverValueSets,
                     sourceSd,
                     elementProjectionDict,
-                    xverExtensions,
                     elementsWithoutEquivalent,
                     currentPackageIndex: sourcePackageIndex,
                     targetPackageIndex: sourcePackageIndex + 1);
@@ -821,13 +823,13 @@ public class XVerProcessor
             if (sourcePackageIndex > 0)
             {
                 buildXverStructures(
+                    xverExtensions,
                     packages,
                     sourcePackageIndex,
                     allowedExtensionTypes,
                     xverValueSets,
                     sourceSd,
                     elementProjectionDict,
-                    xverExtensions,
                     elementsWithoutEquivalent,
                     currentPackageIndex: sourcePackageIndex,
                     targetPackageIndex: sourcePackageIndex - 1);
@@ -844,34 +846,20 @@ public class XVerProcessor
         DbFhirPackage sourcePackage = packages[sourcePackageIndex];
         DbFhirPackage targetPackage = packages[targetPackageIndex];
 
-        // iterate over the projections
-        foreach ((int sourceElementKey, List<DbElementRow> elementProjections) in elementProjectionDict)
+        // check for the entire structure being unmapped (e.g., new resource)
+        bool isUnmappedStructure = !elementProjectionDict.Values.Any(rows => rows.Any(row => row[targetPackage] != null));
+
+        // if this is an unmapped structure, the entire structure is unmapped
+        if (isUnmappedStructure)
         {
-            // skip if we know this element has already mapped out
-            if (elementsWithoutEquivalent.Contains(sourceElementKey))
-            {
-                continue;
-            }
+            // resolve the root row
+            DbElementRow rootRow = elementProjectionDict
+                .Values
+                .First(rows => rows.Any(row => row.KeyCell?.Element.ResourceFieldOrder == 0)).First();
 
-            // check to see if we have any equivalent mappings
-            if (testingRight &&
-                elementProjections.Any((DbElementRow elementRow) => elementRow[currentPackageIndex]?.RightComparison?.Relationship == CMR.Equivalent))
-            {
-                continue;
-            }
-
-            if (testingLeft &&
-                elementProjections.Any((DbElementRow elementRow) => elementRow[currentPackageIndex]?.LeftComparison?.Relationship == CMR.Equivalent))
-            {
-                continue;
-            }
-
-            // add this element as not directly equivalent
-            elementsWithoutEquivalent.Add(sourceElementKey);
-
-            // check to see if we have this element
-            DbElement element = elementProjections[0].KeyCell?.Element ?? throw new Exception($"Failed to resolve element for {sourceElementKey} in {sourceSd.Name}!");
-
+            // resolve the root element
+            DbElement element = rootRow.KeyCell!.Element;
+            
             string sdId = $"{sourcePackage.ShortName}-{element.Path}-for-{targetPackage.ShortName}";
 
             StructureDefinition sd = new()
@@ -899,7 +887,89 @@ public class XVerProcessor
             // add this element extension to the dictionary
             xverExtensions.Add((element.Key, targetPackage.Key), sd);
         }
+        else
+        {
+            Dictionary<int, int> includedChildCounts = [];
+            List<DbElementCell> cellsNeedingExtensions = [];
 
+            // iterate over the projections, sorted by the key cell resource field order
+            foreach ((int sourceElementKey, List<DbElementRow> elementProjections) in elementProjectionDict.OrderBy(kvp => kvp.Value.First().KeyCell!.Element.ResourceFieldOrder))
+            {
+                // skip if we know this element has already mapped out
+                if (elementsWithoutEquivalent.Contains(sourceElementKey))
+                {
+                    continue;
+                }
+
+                // check to see if we have any equivalent mappings
+                if (testingRight &&
+                    elementProjections.Any((DbElementRow elementRow) => elementRow[currentPackageIndex]?.RightComparison?.Relationship == CMR.Equivalent))
+                {
+                    continue;
+                }
+
+                if (testingLeft &&
+                    elementProjections.Any((DbElementRow elementRow) => elementRow[currentPackageIndex]?.LeftComparison?.Relationship == CMR.Equivalent))
+                {
+                    continue;
+                }
+
+                // add this element as not directly equivalent
+                elementsWithoutEquivalent.Add(sourceElementKey);
+
+                cellsNeedingExtensions.Add(elementProjections[0].KeyCell!);
+
+                // resolve the element to build the parent id
+                DbElement element = elementProjections[0].KeyCell?.Element ?? throw new Exception($"Failed to resolve element for {sourceElementKey} in {sourceSd.Name}!");
+
+                // if this is not the root element, track the unmapped child count for later comparison
+                if (element.ParentElementKey != null)
+                {
+                    if (!includedChildCounts.TryGetValue((int)element.ParentElementKey, out int includedChildCount))
+                    {
+                        includedChildCount = 0;
+                    }
+
+                    includedChildCount++;
+                    includedChildCounts[(int)element.ParentElementKey] = includedChildCount;
+                }
+
+                string sdId = $"{sourcePackage.ShortName}-{element.Path}-for-{targetPackage.ShortName}";
+
+                StructureDefinition sd = new()
+                {
+                    Url = $"http://hl7.org/fhir/uv/xver/{sourcePackage.FhirVersionShort}/StructureDefinition/{sdId}",
+                    Id = sdId,
+                    Version = _crossDefinitionVersion,
+                    Name = sdId,
+                    Title = $"Cross-version Extension for {sourcePackage.ShortName}.{element.Path} for use in FHIR {targetPackage.ShortName}",
+                    Status = PublicationStatus.Draft,
+                    Experimental = false,
+                    DateElement = new FhirDateTime(DateTimeOffset.Now),
+                    Description = $"This cross-version extension represents the {element.Path} element from {sourceSd.VersionedUrl} for use in FHIR {targetPackage.ShortName}.",
+                };
+
+                /*
+                 * TODO:
+                 * - filter target types based on allowed types (HashSet)
+                 * - map types that do not exist based on their mappings (e.g., R2:Quantity <-> R3:SimpleQuantity)
+                 * - make complex extensions based on elements in the tree
+                 * - filter top-level structures/elements for new types (only allow entire structures)
+                 * - determine correct targets
+                 */
+
+                // add this element extension to the dictionary
+                xverExtensions.Add((element.Key, targetPackage.Key), sd);
+            }
+
+            Dictionary<int, (DbElementCell elementCell, StructureDefinition extensionSd)> proposedExtensionsByKey = [];
+
+            // iterate over our list of elements we are including, sorted by resource field order
+            foreach (DbElementCell elementCell in cellsNeedingExtensions.OrderBy(ec => ec.Element.ResourceFieldOrder))
+            {
+                // 
+            }
+        }
 
         // check for continuing to the next package to the right
         if (testingRight &&
@@ -907,13 +977,13 @@ public class XVerProcessor
         {
             // build the value set for this package
             buildXverStructures(
+                xverExtensions,
                 packages,
                 sourcePackageIndex,
                 allowedExtensionTypes,
                 xverValueSets,
                 sourceSd,
                 elementProjectionDict,
-                xverExtensions,
                 elementsWithoutEquivalent,
                 currentPackageIndex: targetPackageIndex,
                 targetPackageIndex: targetPackageIndex + 1);
@@ -925,13 +995,13 @@ public class XVerProcessor
         {
             // build the value set for this package
             buildXverStructures(
+                xverExtensions,
                 packages,
                 sourcePackageIndex,
                 allowedExtensionTypes,
                 xverValueSets,
                 sourceSd,
                 elementProjectionDict,
-                xverExtensions,
                 elementsWithoutEquivalent,
                 currentPackageIndex: targetPackageIndex,
                 targetPackageIndex: targetPackageIndex - 1);
