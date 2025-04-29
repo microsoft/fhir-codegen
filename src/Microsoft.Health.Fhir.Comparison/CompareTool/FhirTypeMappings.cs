@@ -97,7 +97,7 @@ public class FhirTypeMappings
 
         new("id", "id", CMR.Equivalent, CMR.Equivalent),
         new("id", "code", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget),
-        new("id", "oid", CMR.Equivalent, CMR.SourceIsBroaderThanTarget),
+        new("id", "oid", CMR.Equivalent, CMR.NotRelatedTo),
         new("id", "string", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget),
 
         new("instant", "instant", CMR.Equivalent, CMR.Equivalent),
@@ -121,7 +121,7 @@ public class FhirTypeMappings
 
         new("positiveInt", "positiveInt", CMR.Equivalent, CMR.Equivalent),
         new("positiveInt", "integer", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget),
-        new("positiveInt", "unsignedInt", CMR.Equivalent, CMR.SourceIsBroaderThanTarget),
+        new("positiveInt", "unsignedInt", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget),
 
         new("string", "string", CMR.Equivalent, CMR.Equivalent),
         new("string", "canonical", CMR.Equivalent, CMR.SourceIsBroaderThanTarget),
@@ -137,7 +137,7 @@ public class FhirTypeMappings
         new("unsignedInt", "unsignedInt", CMR.Equivalent, CMR.Equivalent),
         new("unsignedInt", "decimal", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget),
         new("unsignedInt", "integer", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget),
-        new("unsignedInt", "positiveInt", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget),
+        new("unsignedInt", "positiveInt", CMR.Equivalent, CMR.SourceIsBroaderThanTarget),
 
         new("uri", "uri", CMR.Equivalent, CMR.Equivalent),
         new("uri", "canonical", CMR.Equivalent, CMR.Equivalent),

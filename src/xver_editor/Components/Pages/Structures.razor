@@ -51,6 +51,10 @@
                 <TemplateColumn Title="" Sortable="false">
                     <FluentButton IconStart="@(new Icons.Regular.Size16.Edit())"
                                   Appearance="Appearance.Lightweight"
+                                  OnClick="@(() => NavigateToDetails(context, true))"
+                                  Title="Review" />
+                    <FluentButton IconStart="@(new Icons.Regular.Size16.Edit())"
+                                  Appearance="Appearance.Lightweight"
                                   OnClick="@(() => NavigateToDetails(context))"
                                   Title="Review" />
                 </TemplateColumn>
@@ -394,9 +398,11 @@
         }
     }
 
-    private void NavigateToDetails(SdRecForUi sdRec)
+    private void NavigateToDetails(SdRecForUi sdRec, bool useGrid = false)
     {
-        string url = $"/structures/{FhirPackageKey}/{sdRec.Sd.Key}?packageShort={PackageShortName}&sdName={Uri.EscapeDataString(sdRec.Sd.Name)}";
+        string url = useGrid
+        ? $"/structuremapping/{FhirPackageKey}/{sdRec.Sd.Key}?packageShort={PackageShortName}&sdName={Uri.EscapeDataString(sdRec.Sd.Name)}"
+        : $"/structures/{FhirPackageKey}/{sdRec.Sd.Key}?packageShort={PackageShortName}&sdName={Uri.EscapeDataString(sdRec.Sd.Name)}";
         NavigationManager.NavigateTo(url);
     }
 

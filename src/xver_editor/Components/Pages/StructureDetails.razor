@@ -753,7 +753,7 @@ Class="sd-dialog-container">
     public string PackageShortName { get; set; } = string.Empty;
 
     [Parameter]
-    [SupplyParameterFromQuery(Name = "vsName")]
+    [SupplyParameterFromQuery(Name = "sdName")]
     public string StructureName { get; set; } = string.Empty;
 
     [CascadingParameter]
@@ -762,7 +762,7 @@ Class="sd-dialog-container">
     private NavPageInfoRec[] _navPages => new NavPageInfoRec[]
     {
         new() { Display = $"{PackageShortName}: Structures", Link = $"/structures/{FhirPackageKey}?packageShort={PackageShortName}" },
-        new() { Display = StructureName, Link = $"/structures/{FhirPackageKey}/{StructureKey}/?packageShort={PackageShortName}&vsName={StructureName}" },
+        new() { Display = StructureName, Link = $"/structures/{FhirPackageKey}/{StructureKey}/?packageShort={PackageShortName}&sdName={StructureName}" },
     };
 
     private FluentTabs? tabsComponent;

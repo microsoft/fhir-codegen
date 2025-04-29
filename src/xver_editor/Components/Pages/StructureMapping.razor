@@ -1,0 +1,389 @@
+﻿@page "/structuremapping/{FhirPackageKey:int}/{StructureKey:int}"
+
+@using Microsoft.Health.Fhir.Comparison.Models
+@using xver_editor.Services
+@using Microsoft.FluentUI.AspNetCore.Components
+@using System.Diagnostics.CodeAnalysis
+@using System.Collections.Concurrent;
+@using System.Text;
+
+@inject IDialogService DialogService
+@inject IXverService Xver
+@inject NavigationManager NavigationManager
+@inject XverAppConfig ServerConfig
+
+<FluentStack Orientation="Orientation.Vertical" VerticalGap="8">
+    <FluentLabel Typo="Typography.H4">Structure details for @StructureName (DB Key: @StructureKey)</FluentLabel>
+
+    @if ((Xver.IsOpen == false) || (Xver.DbConnection == null))
+    {
+        <FluentLabel Typo="Typography.Body">Database not open.</FluentLabel>
+    }
+    else if ((sdUiRec == null) || (sdGraphProjection == null))
+    {
+        <FluentLabel Typo="Typography.Body">Loading...</FluentLabel>
+    }
+    else if (sdUiRec.Projection.Count == 0)
+    {
+        <FluentLabel Typo="Typography.Body">No mappings found for this structure.</FluentLabel>
+    }
+    else
+    {
+        <FluentLabel Typo="Typography.Header">Select a structure mapping group:</FluentLabel>
+        <FluentDataGrid Items="@sdGraphProjection"
+        ResizableColumns="false"
+        GridTemplateColumns="@GetMappingTableColumns()"
+        MultiLine="true"
+        class="alternating-grid">
+            <SelectColumn SelectMode="DataGridSelectMode.Single"
+            TGridItem="DbSdRow"
+            SelectFromEntireRow="true"
+            Property="@(r => r.RowNumber == _selectedSdRowNumber)"
+            OnSelect="@(e => StructureMappingRowSelected(e.Item, e.Selected))" />
+            @for (int i = 0; i < _packages.Count; i++)
+            {
+                int packageIndex = i;
+                <TemplateColumn Title="@_packages[packageIndex].ShortName">
+                    @{
+                        DbSdCell? cell = context[packageIndex];
+                    }
+                    @if (cell != null)
+                    {
+                        <FluentStack Orientation="Orientation.Vertical">
+                            <FluentLabel Typo="Typography.H6">@cell.Sd.Name</FluentLabel>
+                            <FluentBadge Appearance="@(cell.Sd.Key == StructureKey ? Appearance.Accent : Appearance.Neutral)">
+                                Elements: @cell.Elements.Count
+                            </FluentBadge>
+                        </FluentStack>
+                    }
+                </TemplateColumn>
+
+                @if (i < _packages.Count - 1)
+                {
+                    <TemplateColumn Title="Comparison" TGridItem="DbSdRow">
+                        @{
+                            DbSdCell? cell = context[packageIndex];
+                            int cellIndex = packageIndex;
+                            DbStructureComparison? toRight = context[packageIndex]?.RightComparison;
+                            DbStructureComparison? fromRight = packageIndex < _packages.Count - 1 ? context[packageIndex + 1]?.LeftComparison : null;
+                        }
+                        @if (cell != null)
+                        {
+                            @if (toRight != null)
+                            {
+                                <FluentStack Orientation="Orientation.Vertical">
+                                    <FluentIcon Value="@(new Icons.Regular.Size24.ArrowRight())" />
+                                    <FluentBadge Appearance="@(toRight.LastReviewedOn == null ? Appearance.Accent : Appearance.Neutral)">
+                                        @(toRight.LastReviewedOn == null ? "Unreviewed" : "Reviewed")
+                                    </FluentBadge>
+                                    <FluentLabel Typo="Typography.Body">@toRight.Relationship</FluentLabel>
+                                    <FluentLabel Typo="Typography.Body">@(GetDateDisplay(toRight.LastReviewedOn))</FluentLabel>
+                                    <FluentLabel Typo="Typography.Body">@(toRight.LastReviewedBy ?? string.Empty)</FluentLabel>
+                                </FluentStack>
+                            }
+
+                            @if (fromRight != null)
+                            {
+                                <FluentStack Orientation="Orientation.Vertical">
+                                    <FluentIcon Value="@(new Icons.Regular.Size24.ArrowLeft())" />
+                                    <FluentBadge Appearance="@(fromRight.LastReviewedOn == null ? Appearance.Accent : Appearance.Neutral)">
+                                        @(fromRight.LastReviewedOn == null ? "Unreviewed" : "Reviewed")
+                                    </FluentBadge>
+                                    <FluentLabel Typo="Typography.Body">@fromRight.Relationship</FluentLabel>
+                                    <FluentLabel Typo="Typography.Body">@(GetDateDisplay(fromRight.LastReviewedOn))</FluentLabel>
+                                    <FluentLabel Typo="Typography.Body">@(fromRight.LastReviewedBy ?? string.Empty)</FluentLabel>
+                                </FluentStack>
+                            }
+                        }
+                    </TemplateColumn>
+                }
+            }
+        </FluentDataGrid>
+
+        <br/>
+        <hr/>
+        <FluentLabel Typo="Typography.Header">Review element mappings:</FluentLabel>
+
+        <FluentDataGrid Items="@elementGraphProjection"
+        ResizableColumns="false"
+        GridTemplateColumns="@GetMappingTableColumns()"
+        MultiLine="true"
+        ShowHover="true"
+        class="alternating-grid">
+            @for (int i = 0; i < _packages.Count; i++)
+            {
+                int packageIndex = i;
+                <TemplateColumn Title="@_packages[packageIndex].ShortName">
+                    @{
+                        DbElementCell? cell = context[packageIndex];
+                    }
+                    @if (cell != null)
+                    {
+                        <FluentStack Orientation="Orientation.Horizontal">
+                            <FluentIcon Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.Info())" Title="@(cell.Element.UiDisplayLong)" />
+                            <FluentLabel Typo="Typography.H6">@cell.Element.Id</FluentLabel>
+                        </FluentStack>
+                    }
+                </TemplateColumn>
+
+                @if (i < _packages.Count - 1)
+                {
+                    <TemplateColumn Title="Comparison" TGridItem="DbElementRow">
+                        @{
+                            DbElementCell? cell = context[packageIndex];
+                            // int cellIndex = packageIndex;
+                            // DbElementComparison? toRight = context[packageIndex]?.RightComparison;
+                            // DbElementComparison? fromRight = packageIndex < _packages.Count - 1 ? context[packageIndex + 1]?.LeftComparison : null;
+                        }
+                        @if (cell == null)
+                        {
+                            <FluentButton>Add</FluentButton>
+                        }
+                        else if (cell.BidirectionalRight != null)
+                        {
+                            <FluentStack Orientation="Orientation.Vertical">
+                                @if (cell.BidirectionalRight == BidirectionalRelationshipCodes.Mismatched)
+                                {
+                                    <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center">
+                                        <FluentIcon Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Color.Size20.Warning())" />
+                                        <FluentLabel Typo="Typography.Body"><code>@(cell.BidirectionalRight?.ToString() ?? string.Empty)</code></FluentLabel>
+                                        <FluentIcon Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Color.Size20.Warning())" />
+                                    </FluentStack>
+                                }
+                                else
+                                {
+                                    <FluentLabel Typo="Typography.Body"><code>@(cell.BidirectionalRight?.ToString() ?? string.Empty)</code></FluentLabel>
+                                }
+
+                                <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center">
+                                    <FluentIcon id="@($"fr-{context.RowNumber}-{packageIndex}-message")"
+                                                Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleLeft())"
+                                                Title="@(cell.FromRightMessage)" />
+                                    <FluentButton>Edit</FluentButton>
+                                    <FluentIcon id="@($"tr-{context.RowNumber}-{packageIndex}-message")"
+                                                Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleRight())"
+                                                Title="@(cell.ToRightMessage)" />
+                                </FluentStack>
+                            </FluentStack>
+
+@*                             <FluentCombobox Items="@_bidirectionalRelationships"
+                                Name="@($"{context.RowNumber}-{packageIndex}-r-combo")"
+                                Width="200px"
+                                Height="700px"
+                                Placeholder="Search for a relationship..."
+                                OptionValue="@(i => i.Value.ToString() ?? string.Empty)"
+                                OptionText="@(i => i.Text)"
+                                Value="@(cell.BidirectionalRight?.ToString() ?? string.Empty)"
+                                Multiple="false"
+                                Autocomplete="ComboboxAutocomplete.Inline"
+                                Autofocus="true"
+                                Open="true"
+                                SelectedOptionChanged="@(EventCallback.Factory.Create<Option<BidirectionalRelationshipCodes>>(this, (value) => ElementRelationshipChanged(context, cell, value)))" />
+                            <br/>
+ *@
+                        }
+                        else
+                        {
+
+                        }
+                    </TemplateColumn>
+                }
+            }
+        </FluentDataGrid>
+
+    }
+</FluentStack>
+
+@code {
+
+    [Parameter]
+    public int FhirPackageKey { get; set; }
+
+    [Parameter]
+    public int StructureKey { get; set; }
+
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "packageShort")]
+    public string PackageShortName { get; set; } = string.Empty;
+
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "sdName")]
+    public string StructureName { get; set; } = string.Empty;
+
+    [CascadingParameter]
+    public INavTracker? NavTracker { get; set; } = null;
+
+    private NavPageInfoRec[] _navPages => new NavPageInfoRec[]
+    {
+        new() { Display = $"{PackageShortName}: Structures", Link = $"/structures/{FhirPackageKey}?packageShort={PackageShortName}" },
+        new() { Display = StructureName, Link = $"/structuremapping/{FhirPackageKey}/{StructureKey}/?packageShort={PackageShortName}&sdName={StructureName}" },
+    };
+
+    int _selectedSdRowNumber = -1;
+
+    private int _loadedStructureKey = -1;
+    private SdRecForUi? sdUiRec = null;
+    private List<DbFhirPackage> _packages = [];
+    private IQueryable<DbSdRow>? sdGraphProjection = null;
+    private List<DbElementRow> initialElementProjection = [];
+    private IQueryable<DbElementRow>? elementGraphProjection = null;
+
+    private Option<BidirectionalRelationshipCodes>[] _bidirectionalRelationships = [
+        new() { Text = "None", Value = BidirectionalRelationshipCodes.None },
+        new() { Text = "Equivalent", Value = BidirectionalRelationshipCodes.Equivalent },
+        new() { Text = "Newer Narrows", Value = BidirectionalRelationshipCodes.NewerNarrows },
+        new() { Text = "Newer Broadens", Value = BidirectionalRelationshipCodes.NewerBroadens },
+        new()
+        {
+            Text = "Mismatched",
+            Value = BidirectionalRelationshipCodes.Mismatched,
+            // Icon = (new Microsoft.FluentUI.AspNetCore.Components.Icons.Color.Size20.Warning(), null, "start"),
+        },
+    ];
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        NavTracker?.NotifyNav(_navPages);
+        LoadStructure();
+    }
+
+    protected override void OnParametersSet()
+    {
+        if (StructureKey != _loadedStructureKey)
+        {
+            NavTracker?.NotifyNav(_navPages);
+        }
+
+        base.OnParametersSet();
+        LoadStructure();
+    }
+
+    private void ElementRelationshipChanged(DbElementRow elementRow, DbElementCell? cell, object? value)
+    {
+        if (value is Option<BidirectionalRelationshipCodes> opt)
+        {
+            Console.Write("");
+        }
+    }
+
+    private void StructureMappingRowSelected(DbSdRow r, bool selected)
+    {
+        if (selected == true)
+        {
+            _selectedSdRowNumber = r.RowNumber;
+            LoadMappingRow(r);
+            StateHasChanged();
+        }
+    }
+
+    private string GetMappingTableColumns(bool addSelectionCol = false)
+    {
+        // Calculate the columns - we need one for each package plus comparison columns between them
+        int packageCount = _packages.Count;
+        int comparisonCount = packageCount - 1; // One less comparison column than packages
+
+        // Build column template: package (1fr) + comparison (0.8fr) + package (1fr) + ...
+        List<string> cols = [];
+
+        if (addSelectionCol)
+        {
+            cols.Add("60 px");
+        }
+
+        for (int i = 0; i < packageCount; i++)
+        {
+            cols.Add("1fr"); // Package column
+
+            if (i < comparisonCount)
+            {
+                cols.Add("0.8fr"); // Comparison column
+            }
+        }
+
+        return string.Join(' ', cols);
+    }
+
+
+    private void LoadPackages()
+    {
+        try
+        {
+            _packages = DbFhirPackage.SelectList(
+                Xver.DbConnection,
+                orderByProperties: [nameof(DbFhirPackage.ShortName)]);
+        }
+        catch (Exception)
+        {
+            _packages = [];
+        }
+    }
+
+    private string GetDateDisplay(DateTime? date) => date == null
+        ? string.Empty
+        : date.Value.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
+
+    private void LoadMappingRow(DbSdRow row)
+    {
+        if (sdUiRec == null)
+        {
+            initialElementProjection = [];
+            elementGraphProjection = initialElementProjection.AsQueryable();
+
+            return;
+        }
+
+        initialElementProjection = sdUiRec.Graph.ProjectElements(row);
+        elementGraphProjection = initialElementProjection.AsQueryable();
+        StateHasChanged();
+    }
+
+    private void LoadStructure(bool forceReload = false)
+    {
+        try
+        {
+            if ((Xver.IsOpen == false) ||
+                (Xver.DbConnection == null) ||
+                (Xver.Comparer == null))
+            {
+                return;
+            }
+
+            if ((_loadedStructureKey == StructureKey) && !forceReload)
+            {
+                return;
+            }
+
+            _loadedStructureKey = StructureKey;
+
+            if (_packages.Count == 0)
+            {
+                LoadPackages();
+            }
+
+            // Query Structures for the specified FhirPackageKey
+            DbStructureDefinition? sd = DbStructureDefinition.SelectSingle(
+                Xver.DbConnection,
+                FhirPackageKey: FhirPackageKey,
+                Key: StructureKey);
+
+            if (sd == null)
+            {
+                return;
+            }
+
+            sdUiRec = new(Xver.DbConnection, sd, _packages);
+            sdGraphProjection = sdUiRec.Projection.AsQueryable();
+
+            _selectedSdRowNumber = 0;
+            if (sdUiRec.Projection.Count > 0)
+            {
+                LoadMappingRow(sdUiRec.Projection[0]);
+            }
+
+            StateHasChanged();
+        }
+        catch (Exception)
+        {
+        }
+    }
+}

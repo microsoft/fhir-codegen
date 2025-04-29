@@ -35,6 +35,73 @@ public record class DbVsCell : ICloneable
     public DbValueSet? RightVs { get; set; } = null;
     public DbValueSetComparison? RightComparison { get; set; } = null;
 
+    public BidirectionalRelationshipCodes? BidirectionalRight
+    {
+        get
+        {
+            if ((RightComparison == null) || (RightCell?.LeftComparison == null))
+            {
+                return null;
+            }
+
+            Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? up = RightComparison.Relationship;
+            Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? down = RightCell.LeftComparison.Relationship;
+
+            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.Equivalent) &&
+                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.Equivalent))
+            {
+                return BidirectionalRelationshipCodes.Equivalent;
+            }
+
+            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget) &&
+                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget))
+            {
+                return BidirectionalRelationshipCodes.NewerNarrows;
+            }
+
+            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget) &&
+                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget))
+            {
+                return BidirectionalRelationshipCodes.NewerBroadens;
+            }
+
+            return BidirectionalRelationshipCodes.Mismatched;
+        }
+    }
+
+    public BidirectionalRelationshipCodes? BidirectionalLeft
+    {
+        get
+        {
+            if ((LeftComparison == null) || (LeftCell?.RightComparison == null))
+            {
+                return null;
+            }
+
+            Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? up = LeftCell.RightComparison.Relationship;
+            Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? down = LeftComparison.Relationship;
+
+            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.Equivalent) &&
+                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.Equivalent))
+            {
+                return BidirectionalRelationshipCodes.Equivalent;
+            }
+
+            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget) &&
+                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget))
+            {
+                return BidirectionalRelationshipCodes.NewerNarrows;
+            }
+
+            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget) &&
+                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget))
+            {
+                return BidirectionalRelationshipCodes.NewerBroadens;
+            }
+
+            return BidirectionalRelationshipCodes.Mismatched;
+        }
+    }
     object ICloneable.Clone() => this with { };
 }
 
@@ -154,6 +221,73 @@ public record class DbVsConceptCell : ICloneable
     public DbValueSetConcept? RightConcept { get; set; } = null;
     public DbValueSetConceptComparison? RightComparison { get; set; } = null;
 
+    public BidirectionalRelationshipCodes? BidirectionalRight
+    {
+        get
+        {
+            if ((RightComparison == null) || (RightCell?.LeftComparison == null))
+            {
+                return null;
+            }
+
+            Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? up = RightComparison.Relationship;
+            Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? down = RightCell.LeftComparison.Relationship;
+
+            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.Equivalent) &&
+                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.Equivalent))
+            {
+                return BidirectionalRelationshipCodes.Equivalent;
+            }
+
+            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget) &&
+                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget))
+            {
+                return BidirectionalRelationshipCodes.NewerNarrows;
+            }
+
+            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget) &&
+                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget))
+            {
+                return BidirectionalRelationshipCodes.NewerBroadens;
+            }
+
+            return BidirectionalRelationshipCodes.Mismatched;
+        }
+    }
+
+    public BidirectionalRelationshipCodes? BidirectionalLeft
+    {
+        get
+        {
+            if ((LeftComparison == null) || (LeftCell?.RightComparison == null))
+            {
+                return null;
+            }
+
+            Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? up = LeftCell.RightComparison.Relationship;
+            Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? down = LeftComparison.Relationship;
+
+            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.Equivalent) &&
+                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.Equivalent))
+            {
+                return BidirectionalRelationshipCodes.Equivalent;
+            }
+
+            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget) &&
+                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget))
+            {
+                return BidirectionalRelationshipCodes.NewerNarrows;
+            }
+
+            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget) &&
+                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget))
+            {
+                return BidirectionalRelationshipCodes.NewerBroadens;
+            }
+
+            return BidirectionalRelationshipCodes.Mismatched;
+        }
+    }
     object ICloneable.Clone() => this with { };
 }
 

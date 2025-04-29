@@ -19,6 +19,14 @@ using System.Data;
 
 namespace Microsoft.Health.Fhir.Comparison.Models;
 
+public enum BidirectionalRelationshipCodes
+{
+    None = 0,
+    Equivalent,
+    NewerNarrows,
+    NewerBroadens,
+    Mismatched,
+}
 
 [CgSQLiteTable(tableName: "PackageComparisonPairs")]
 public partial class DbFhirPackageComparisonPair
