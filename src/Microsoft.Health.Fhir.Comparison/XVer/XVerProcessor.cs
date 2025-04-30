@@ -62,6 +62,7 @@ public class XVerProcessor
     [
         "http://hl7.org/fhir/ValueSet/ucum-units",
         "http://hl7.org/fhir/ValueSet/all-languages",
+        "http://tools.ietf.org/html/bcp47",             // DSTU2 version of all-languages
         "http://hl7.org/fhir/ValueSet/mimetypes",
         //"http://hl7.org/fhir/ValueSet/use-context",
         //"http://hl7.org/fhir/ValueSet/jurisdiction",

@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Security.AccessControl;
 using System.Text;
 using Hl7.Fhir.Model;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
@@ -153,6 +154,27 @@ public class FhirTypeMappings
         new("xhtml", "xhtml", CMR.Equivalent, CMR.Equivalent),
     ];
 
+    internal static ILookup<(string, string), CodeGenTypeMapping> PrimitiveMappingLookup =
+        PrimitiveMappings.ToLookup(m => (m.SourceType, m.TargetType), m => m);
+
+    internal static readonly Dictionary<string, CodeGenTypeMapping> CompositeMappingOverrides = new()
+    {
+        { "R2-Quantity-R3-Age", new("Quantity", "Age", CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget) },
+        { "R2-Quantity-R3-Count", new("Quantity", "Count", CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget) },
+        { "R2-Quantity-R3-Distance", new("Quantity", "Distance", CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget) },
+        { "R2-Quantity-R3-Duration", new("Quantity", "Duration", CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget) },
+        { "R2-Quantity-R3-Money", new("Quantity", "Money", CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget) },
+        { "R2-Quantity-R3-SimpleQuantity", new("Quantity", "SimpleQuantity", CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget) },
+
+        { "R3-Age-R2-Quantity", new("Age", "Quantity", CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget) },
+        { "R3-Count-R2-Quantity", new("Count", "Quantity", CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget) },
+        { "R3-Distance-R2-Quantity", new("Distance", "Quantity", CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget) },
+        { "R3-Duration-R2-Quantity", new("Duration", "Quantity", CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget) },
+        { "R3-Money-R2-Quantity", new("Money", "Quantity", CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget) },
+        { "R3-SimpleQuantity-R2-Quantity", new("SimpleQuantity", "Quantity", CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget) },
+    };
+
+
     static internal bool TryGetMapping(
         string sourceType,
         string targetType,
@@ -169,4 +191,5 @@ public class FhirTypeMappings
         mapping = default;
         return false;
     }
+
 }

@@ -113,16 +113,17 @@
             @for (int i = 0; i < _packages.Count; i++)
             {
                 int packageIndex = i;
-                <TemplateColumn Title="@_packages[packageIndex].ShortName">
+                <TemplateColumn Title="@_packages[packageIndex].ShortName" Tooltip="true" TooltipText="@(c => c[packageIndex]?.Element.UiDisplayLong)">
                     @{
                         DbElementCell? cell = context[packageIndex];
                     }
                     @if (cell != null)
                     {
-                        <FluentStack Orientation="Orientation.Horizontal">
-                            <FluentIcon Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.Info())" Title="@(cell.Element.UiDisplayLong)" />
-                            <FluentLabel Typo="Typography.H6">@cell.Element.Id</FluentLabel>
-                        </FluentStack>
+                        <FluentLabel Typo="Typography.H6">@cell.Element.Id</FluentLabel>
+                    }
+                    else
+                    {
+                        <FluentLabel Typo="Typography.Body"><em>No map target for @_packages[packageIndex].ShortName</em></FluentLabel>
                     }
                 </TemplateColumn>
 
@@ -233,6 +234,8 @@
         new() { Text = "Equivalent", Value = BidirectionalRelationshipCodes.Equivalent },
         new() { Text = "Newer Narrows", Value = BidirectionalRelationshipCodes.NewerNarrows },
         new() { Text = "Newer Broadens", Value = BidirectionalRelationshipCodes.NewerBroadens },
+        new() { Text = "Related", Value = BidirectionalRelationshipCodes.Related },
+        new() { Text = "NOT Related", Value = BidirectionalRelationshipCodes.NotRelated },
         new()
         {
             Text = "Mismatched",

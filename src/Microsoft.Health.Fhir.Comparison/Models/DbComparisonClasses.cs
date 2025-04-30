@@ -25,6 +25,8 @@ public enum BidirectionalRelationshipCodes
     Equivalent,
     NewerNarrows,
     NewerBroadens,
+    Related,
+    NotRelated,
     Mismatched,
 }
 
@@ -510,15 +512,25 @@ public class DbComparisonCache<T>
 
     public void Changed(T item)
     {
-        if (_toAdd.ContainsKey(item.Key))
+        if (!_byKey.ContainsKey(item.Key))
         {
-            _toAdd[item.Key] = item;
-            return;
+            _byKey[item.Key] = item;
+        }
+
+        if (!_byPair.ContainsKey((item.SourceContentKey, item.TargetContentKey)))
+        {
+            _byPair[(item.SourceContentKey, item.TargetContentKey)] = item;
         }
 
         if (_toDelete.ContainsKey(item.Key))
         {
             _toDelete.Remove(item.Key);
+        }
+
+        if (_toAdd.ContainsKey(item.Key))
+        {
+            _toAdd[item.Key] = item;
+            return;
         }
 
         _toUpdate[item.Key] = item;

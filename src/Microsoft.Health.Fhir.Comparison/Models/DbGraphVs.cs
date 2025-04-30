@@ -56,13 +56,25 @@ public record class DbVsCell : ICloneable
             if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget) &&
                 (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget))
             {
-                return BidirectionalRelationshipCodes.NewerNarrows;
+                return BidirectionalRelationshipCodes.NewerBroadens;
             }
 
             if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget) &&
                 (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget))
             {
-                return BidirectionalRelationshipCodes.NewerBroadens;
+                return BidirectionalRelationshipCodes.NewerNarrows;
+            }
+
+            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.RelatedTo) &&
+                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.RelatedTo))
+            {
+                return BidirectionalRelationshipCodes.Related;
+            }
+
+            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo) &&
+                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo))
+            {
+                return BidirectionalRelationshipCodes.NotRelated;
             }
 
             return BidirectionalRelationshipCodes.Mismatched;
@@ -90,13 +102,25 @@ public record class DbVsCell : ICloneable
             if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget) &&
                 (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget))
             {
-                return BidirectionalRelationshipCodes.NewerNarrows;
+                return BidirectionalRelationshipCodes.NewerBroadens;
             }
 
             if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget) &&
                 (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget))
             {
-                return BidirectionalRelationshipCodes.NewerBroadens;
+                return BidirectionalRelationshipCodes.NewerNarrows;
+            }
+
+            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.RelatedTo) &&
+                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.RelatedTo))
+            {
+                return BidirectionalRelationshipCodes.Related;
+            }
+
+            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo) &&
+                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo))
+            {
+                return BidirectionalRelationshipCodes.NotRelated;
             }
 
             return BidirectionalRelationshipCodes.Mismatched;
@@ -242,13 +266,25 @@ public record class DbVsConceptCell : ICloneable
             if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget) &&
                 (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget))
             {
-                return BidirectionalRelationshipCodes.NewerNarrows;
+                return BidirectionalRelationshipCodes.NewerBroadens;
             }
 
             if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget) &&
                 (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget))
             {
-                return BidirectionalRelationshipCodes.NewerBroadens;
+                return BidirectionalRelationshipCodes.NewerNarrows;
+            }
+
+            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.RelatedTo) &&
+                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.RelatedTo))
+            {
+                return BidirectionalRelationshipCodes.Related;
+            }
+
+            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo) &&
+                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo))
+            {
+                return BidirectionalRelationshipCodes.NotRelated;
             }
 
             return BidirectionalRelationshipCodes.Mismatched;
@@ -276,13 +312,25 @@ public record class DbVsConceptCell : ICloneable
             if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget) &&
                 (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget))
             {
-                return BidirectionalRelationshipCodes.NewerNarrows;
+                return BidirectionalRelationshipCodes.NewerBroadens;
             }
 
             if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget) &&
                 (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget))
             {
-                return BidirectionalRelationshipCodes.NewerBroadens;
+                return BidirectionalRelationshipCodes.NewerNarrows;
+            }
+
+            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.RelatedTo) &&
+                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.RelatedTo))
+            {
+                return BidirectionalRelationshipCodes.Related;
+            }
+
+            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo) &&
+                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo))
+            {
+                return BidirectionalRelationshipCodes.NotRelated;
             }
 
             return BidirectionalRelationshipCodes.Mismatched;
