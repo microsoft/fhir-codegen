@@ -35,6 +35,21 @@ public record class DbVsCell : ICloneable
     public DbValueSet? RightVs { get; set; } = null;
     public DbValueSetComparison? RightComparison { get; set; } = null;
 
+    public string ToRightMessage => (RightComparison == null)
+        ? string.Empty
+        : $"{RightComparison.Relationship}: {RightComparison.Message}";
+
+    public string FromRightMessage => (RightCell?.LeftComparison == null)
+        ? string.Empty
+        : $"{RightCell.LeftComparison.Relationship}: {RightCell.LeftComparison.Message}";
+
+    public string ToLeftMessage => (LeftComparison == null)
+        ? string.Empty
+        : $"{LeftComparison.Relationship}: {LeftComparison.Message}";
+    public string FromLeftMessage => (LeftCell?.RightComparison == null)
+        ? string.Empty
+        : $"{LeftCell.RightComparison.Relationship}: {LeftCell.RightComparison.Message}";
+
     public BidirectionalRelationshipCodes? BidirectionalRight
     {
         get
@@ -244,6 +259,21 @@ public record class DbVsConceptCell : ICloneable
     public DbVsConceptCell? RightCell { get; set; } = null;
     public DbValueSetConcept? RightConcept { get; set; } = null;
     public DbValueSetConceptComparison? RightComparison { get; set; } = null;
+
+    public string ToRightMessage => (RightComparison == null)
+        ? string.Empty
+        : $"{RightComparison.Relationship}: {RightComparison.Message}";
+
+    public string FromRightMessage => (RightCell?.LeftComparison == null)
+        ? string.Empty
+        : $"{RightCell.LeftComparison.Relationship}: {RightCell.LeftComparison.Message}";
+
+    public string ToLeftMessage => (LeftComparison == null)
+        ? string.Empty
+        : $"{LeftComparison.Relationship}: {LeftComparison.Message}";
+    public string FromLeftMessage => (LeftCell?.RightComparison == null)
+        ? string.Empty
+        : $"{LeftCell.RightComparison.Relationship}: {LeftCell.RightComparison.Message}";
 
     public BidirectionalRelationshipCodes? BidirectionalRight
     {

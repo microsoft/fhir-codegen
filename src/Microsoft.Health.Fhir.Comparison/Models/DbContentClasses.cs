@@ -99,7 +99,7 @@ public partial class DbValueSetConcept : DbPackageContent, IEquatable<DbValueSet
                 return "-";
             }
 
-            return $"{Code} ({System}) - {Display}" +
+            return $"{Code} ({System}): {Display}" +
                 (Inactive ? " *Inactive*" : string.Empty) +
                 (Abstract ? " *Abstract*" : string.Empty);
         }

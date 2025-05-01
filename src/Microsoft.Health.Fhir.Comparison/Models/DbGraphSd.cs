@@ -33,6 +33,21 @@ public record class DbSdCell : ICloneable
     public DbStructureDefinition? RightSd { get; set; } = null;
     public DbStructureComparison? RightComparison { get; set; } = null;
 
+    public string ToRightMessage => (RightComparison == null)
+        ? string.Empty
+        : $"{RightComparison.Relationship}: {RightComparison.Message}";
+
+    public string FromRightMessage => (RightCell?.LeftComparison == null)
+        ? string.Empty
+        : $"{RightCell.LeftComparison.Relationship}: {RightCell.LeftComparison.Message}";
+
+    public string ToLeftMessage => (LeftComparison == null)
+        ? string.Empty
+        : $"{LeftComparison.Relationship}: {LeftComparison.Message}";
+    public string FromLeftMessage => (LeftCell?.RightComparison == null)
+        ? string.Empty
+        : $"{LeftCell.RightComparison.Relationship}: {LeftCell.RightComparison.Message}";
+
     public BidirectionalRelationshipCodes? BidirectionalRight
     {
         get

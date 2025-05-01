@@ -401,8 +401,8 @@
     private void NavigateToDetails(SdRecForUi sdRec, bool useGrid = false)
     {
         string url = useGrid
-        ? $"/structuremapping/{FhirPackageKey}/{sdRec.Sd.Key}?packageShort={PackageShortName}&sdName={Uri.EscapeDataString(sdRec.Sd.Name)}"
-        : $"/structures/{FhirPackageKey}/{sdRec.Sd.Key}?packageShort={PackageShortName}&sdName={Uri.EscapeDataString(sdRec.Sd.Name)}";
+            ? $"/structuremapping/{FhirPackageKey}/{sdRec.Sd.Key}?packageShort={PackageShortName}&sdName={Uri.EscapeDataString(sdRec.Sd.Name)}"
+            : $"/structures/{FhirPackageKey}/{sdRec.Sd.Key}?packageShort={PackageShortName}&sdName={Uri.EscapeDataString(sdRec.Sd.Name)}";
         NavigationManager.NavigateTo(url);
     }
 

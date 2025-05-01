@@ -50,9 +50,13 @@
             Pagination="@pagination">
                 <TemplateColumn Title="" Sortable="false">
                     <FluentButton IconStart="@(new Icons.Regular.Size16.Edit())"
-                    Appearance="Appearance.Lightweight"
-                    OnClick="@(() => NavigateToDetails(context))"
-                    Title="Review" />
+                                  Appearance="Appearance.Lightweight"
+                                  OnClick="@(() => NavigateToDetails(context, true))"
+                                  Title="Review" />
+                    <FluentButton IconStart="@(new Icons.Regular.Size16.Edit())"
+                        Appearance="Appearance.Lightweight"
+                        OnClick="@(() => NavigateToDetails(context))"
+                        Title="Review" />
                 </TemplateColumn>
                 <PropertyColumn Title="Name" Property="@(vsr => vsr.Vs.Name)" Sortable="true" IsDefaultSortColumn="true">
                     <ColumnOptions>
@@ -363,9 +367,11 @@
         }
     }
 
-    private void NavigateToDetails(VsRecForUi vsRec)
+    private void NavigateToDetails(VsRecForUi vsRec, bool useGrid = false)
     {
-        string url = $"/valuesets/{FhirPackageKey}/{vsRec.Vs.Key}?packageShort={PackageShortName}&vsName={Uri.EscapeDataString(vsRec.Vs.Name)}";
+        string url = useGrid
+            ? $"/valuesetmapping/{FhirPackageKey}/{vsRec.Vs.Key}?packageShort={PackageShortName}&vsName={Uri.EscapeDataString(vsRec.Vs.Name)}"
+            : $"/valuesets/{FhirPackageKey}/{vsRec.Vs.Key}?packageShort={PackageShortName}&vsName={Uri.EscapeDataString(vsRec.Vs.Name)}";
         NavigationManager.NavigateTo(url);
     }
 
