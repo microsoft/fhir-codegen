@@ -423,22 +423,19 @@ public class XVerProcessor
                 KeyVs = vs,
             };
 
-            // project this value set based on comparisons
-            List<DbVsRow> vsProjection = vsGraph.Project();
-
             // build a dictionary of all concept projections, by concept key
-            Dictionary<int, List<DbVsConceptRow>> conceptProjectionDict = [];
-            foreach (DbVsRow vsRow in vsProjection)
+            Dictionary<int, List<DbGraphVs.DbVsConceptRow>> conceptProjectionDict = [];
+            foreach (DbGraphVs.DbVsRow vsRow in vsGraph.Projection)
             {
-                List<DbVsConceptRow> conceptProjections = vsGraph.ProjectConcepts(vsRow);
-                foreach (DbVsConceptRow vsConceptRow in conceptProjections)
+                List<DbGraphVs.DbVsConceptRow> conceptProjections = vsRow.Projection;
+                foreach (DbGraphVs.DbVsConceptRow vsConceptRow in conceptProjections)
                 {
                     if (vsConceptRow.KeyCell == null)
                     {
                         continue;
                     }
 
-                    if (!conceptProjectionDict.TryGetValue(vsConceptRow.KeyCell.Concept.Key, out List<DbVsConceptRow>? conceptList))
+                    if (!conceptProjectionDict.TryGetValue(vsConceptRow.KeyCell.Concept.Key, out List<DbGraphVs.DbVsConceptRow>? conceptList))
                     {
                         conceptList = [];
                         conceptProjectionDict.Add(vsConceptRow.KeyCell.Concept.Key, conceptList);
@@ -464,7 +461,7 @@ public class XVerProcessor
         List<DbFhirPackage> packages,
         int sourcePackageIndex,
         DbValueSet sourceVs,
-        Dictionary<int, List<DbVsConceptRow>> conceptProjectionDict,
+        Dictionary<int, List<DbGraphVs.DbVsConceptRow>> conceptProjectionDict,
         Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
         HashSet<int>? conceptsWithoutEquivalent = null,
         ValueSet? xverVs = null,
@@ -557,7 +554,7 @@ public class XVerProcessor
         }
 
         // iterate over the projections
-        foreach ((int sourceConceptKey, List<DbVsConceptRow> conceptProjections) in conceptProjectionDict)
+        foreach ((int sourceConceptKey, List<DbGraphVs.DbVsConceptRow> conceptProjections) in conceptProjectionDict)
         {
             // skip if we know this concept has already mapped out
             if (conceptsWithoutEquivalent.Contains(sourceConceptKey))
@@ -567,13 +564,13 @@ public class XVerProcessor
 
             // check to see if we have any equivalent mappings
             if (testingRight &&
-                conceptProjections.Any((DbVsConceptRow vsConceptRow) => vsConceptRow[currentPackageIndex]?.RightComparison?.Relationship == CMR.Equivalent))
+                conceptProjections.Any((DbGraphVs.DbVsConceptRow vsConceptRow) => vsConceptRow[currentPackageIndex]?.RightComparison?.Relationship == CMR.Equivalent))
             {
                 continue;
             }
 
             if (testingLeft &&
-                conceptProjections.Any((DbVsConceptRow vsConceptRow) => vsConceptRow[currentPackageIndex]?.LeftComparison?.Relationship == CMR.Equivalent))
+                conceptProjections.Any((DbGraphVs.DbVsConceptRow vsConceptRow) => vsConceptRow[currentPackageIndex]?.LeftComparison?.Relationship == CMR.Equivalent))
             {
                 continue;
             }
@@ -1633,11 +1630,8 @@ public class XVerProcessor
                 KeyVs = vs,
             };
 
-            // project this value set based on comparisons
-            List<DbVsRow> projection = vsGraph.Project();
-
             // get the overview entry for this value set
-            string content = getMdOverviewEntry(packages, package, vs, projection);
+            string content = getMdOverviewEntry(packages, package, vs, vsGraph.Projection);
 
             if (vs.IsExcluded == true)
             {
@@ -1657,7 +1651,7 @@ public class XVerProcessor
             string filename = Path.Combine(vsDir, getVsFilename(vs.Name, includeRelativeDir: false));
             using (ExportStreamWriter vsWriter = createMarkdownWriter(filename, true, true))
             {
-                writeMdDetailedVs(_db!.DbConnection, vsWriter, packages, package, keyPackageColIndex, vs, vsGraph, projection);
+                writeMdDetailedVs(_db!.DbConnection, vsWriter, packages, package, keyPackageColIndex, vs, vsGraph);
 
                 //// check for failures - write a stub file with information about the value set
                 //if (ca.FailureCode != null)
@@ -1688,7 +1682,7 @@ public class XVerProcessor
         List<DbFhirPackage> packages,
         DbFhirPackage package,
         DbValueSet vs,
-        List<DbVsRow> projection)
+        List<DbGraphVs.DbVsRow> projection)
     {
         List<string> mapsTo = [];
         for (int i = 0; i < packages.Count; i++)
@@ -1783,8 +1777,7 @@ public class XVerProcessor
         DbFhirPackage package,
         int keyPackageColIndex,
         DbValueSet keyVs,
-        DbGraphVs vsGraph,
-        List<DbVsRow> projection)
+        DbGraphVs vsGraph)
     {
         writer.WriteLine($"""
             ### {keyVs.Name}
@@ -1868,11 +1861,11 @@ public class XVerProcessor
         }
 
         // if there are no mappings, we are done writing this file
-        if ((projection.Count == 0) ||
+        if ((vsGraph.Projection.Count == 0) ||
             (
-                (projection.Count == 1) &&
-                (projection[0][keyPackageColIndex]?.LeftComparison == null) &&
-                (projection[0][keyPackageColIndex]?.RightComparison == null)
+                (vsGraph.Projection.Count == 1) &&
+                (vsGraph.Projection[0][keyPackageColIndex]?.LeftComparison == null) &&
+                (vsGraph.Projection[0][keyPackageColIndex]?.RightComparison == null)
             ))
         {
             writer.WriteLine($"""
@@ -1910,7 +1903,7 @@ public class XVerProcessor
 
         string[] vsRootUrlsByVersion = packages.Select(fp => $"/docs/{FhirSanitizationUtils.SanitizeForProperty(fp.ShortName)}/ValueSets").ToArray();
 
-        (string key, bool hasMapping)[] allKeys = packages.Select((fp, i) => (fp.ShortName, projection.Any(r => r[i] != null))).ToArray();
+        (string key, bool hasMapping)[] allKeys = packages.Select((fp, i) => (fp.ShortName, vsGraph.Projection.Any(r => r[i] != null))).ToArray();
 
         // generate table showing the mappings
         writer.WriteLine("### Mapping Table");
@@ -1918,11 +1911,11 @@ public class XVerProcessor
         writer.WriteLine("| " + string.Join(" | Comparison | ", allKeys.Select(v => v.key)));
         writeTableColumns(writer, "---", byTwoColumnCount, appendNewline: true);
 
-        foreach (DbVsRow row in projection)
+        foreach (DbGraphVs.DbVsRow row in vsGraph.Projection)
         {
             int column = -1;
             // traverse columns
-            foreach (DbVsCell? cell in row)
+            foreach (DbGraphVs.DbVsCell? cell in row)
             {
                 column++;
 
@@ -1964,7 +1957,7 @@ public class XVerProcessor
         //    ValueSetKey: keyVs.Key,
         //    orderByProperties: [nameof(DbValueSetConcept.System), nameof(DbValueSetConcept.Code)]);
 
-        foreach (DbVsRow valueSetRow in projection)
+        foreach (DbGraphVs.DbVsRow valueSetRow in vsGraph.Projection)
         {
             if (valueSetRow[keyPackageColIndex] == null)
             {
@@ -1986,7 +1979,7 @@ public class XVerProcessor
                     writer.Write("| Relationship ");
                 }
 
-                DbVsCell? cell = valueSetRow[col];
+                DbGraphVs.DbVsCell? cell = valueSetRow[col];
 
                 if (cell == null)
                 {
@@ -1996,23 +1989,21 @@ public class XVerProcessor
 
                 if (col == keyPackageColIndex)
                 {
-                    writer.Write($"| {cell.FhirPackage.ShortName} {cell.Vs.Name.ForMdTable()}");
+                    writer.Write($"| {packages[keyPackageColIndex].ShortName} {cell.Vs.Name.ForMdTable()}");
                 }
                 else
                 {
-                    writer.Write($"| [{cell.FhirPackage.ShortName} {cell.Vs.Name.ForMdTable()}]({vsRootUrlsByVersion[col]}/{getVsFilename(cell.Vs.Name, includeRelativeDir: false)})");
+                    writer.Write($"| [{packages[keyPackageColIndex].ShortName} {cell.Vs.Name.ForMdTable()}]({vsRootUrlsByVersion[col]}/{getVsFilename(cell.Vs.Name, includeRelativeDir: false)})");
                 }
             }
             writer.WriteLine();
             writeTableColumns(writer, "---", byTwoColumnCount, appendNewline: true);
 
-            List<DbVsConceptRow> conceptProjection = vsGraph.ProjectConcepts(valueSetRow);
-
             HashSet<string>[] codesPerVs = packages.Select(_ => new HashSet<string>()).ToArray();
             string? lastSystem = null;
 
             // iterate over the components in the concept projection
-            foreach (DbVsConceptRow conceptRow in conceptProjection)
+            foreach (DbGraphVs.DbVsConceptRow conceptRow in valueSetRow.Projection)
             {
                 if (conceptRow[keyPackageColIndex]?.Concept.System != lastSystem)
                 {
@@ -2030,7 +2021,7 @@ public class XVerProcessor
                 int column = -1;
 
                 // traverse columns
-                foreach (DbVsConceptCell? cell in conceptRow)
+                foreach (DbGraphVs.DbVsConceptCell? cell in conceptRow)
                 {
                     column++;
 
@@ -2132,9 +2123,9 @@ public class XVerProcessor
         return;
     }
 
-    private (string to, string from) getMappingMdTableCell(DbVsCell cell, bool movingRight)
+    private (string to, string from) getMappingMdTableCell(DbGraphVs.DbVsCell cell, bool movingRight)
     {
-        DbVsCell? targetCell = movingRight ? cell.RightCell : cell.LeftCell;
+        DbGraphVs.DbVsCell? targetCell = movingRight ? cell.RightCell : cell.LeftCell;
 
         if (targetCell == null)
         {
@@ -2146,7 +2137,7 @@ public class XVerProcessor
 
         return (getLink(toComparison, targetCell, "→→→→→→→"), getLink(fromComparison, targetCell, "←←←←←←←"));
 
-        string getLink(DbValueSetComparison? comparison, DbVsCell? target, string arrows)
+        string getLink(DbValueSetComparison? comparison, DbGraphVs.DbVsCell? target, string arrows)
         {
             if ((comparison == null) || (target == null))
             {

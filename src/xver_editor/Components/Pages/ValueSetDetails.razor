@@ -6,6 +6,7 @@
 @using System.Diagnostics.CodeAnalysis
 @using System.Collections.Concurrent;
 @using System.Text;
+@using static Microsoft.Health.Fhir.Comparison.Models.DbGraphVs;
 
 @inject IDialogService DialogService
 @inject IXverService Xver
@@ -380,7 +381,7 @@
                                 <FluentDataGrid Items="conceptProjection" ShowHover="true" class="mapping-grid" RowSize="@DataGridRowSize.Large" GridTemplateColumns="80px 2fr 0.5fr 1fr 2fr" >
                                     <TemplateColumn Sortable="false">
                                         @{
-                                            var rowKey = $"del-{context.RowNumber}";
+                                            var rowKey = $"del-{context.RowId}";
                                             <div>
                                                 <FluentButton Id="@($"{rowKey}-btn")"
                                                 Appearance="Appearance.Outline"
@@ -422,7 +423,7 @@
 
                                     <TemplateColumn Title="Relationship" Sortable="false">
                                         @{
-                                            var rowKey = $"rel-{context.RowNumber}";
+                                            var rowKey = $"rel-{context.RowId}";
                                             var relationship = compareRight
                                                 ? context[sourceColIndex]!.RightComparison?.Relationship
                                                 : context[sourceColIndex]!.LeftComparison?.Relationship;
@@ -464,7 +465,7 @@
 
                                     <TemplateColumn Title="Target" Sortable="true" Tooltip="true" TooltipText="@(e => e[targetColIndex]!.Concept.Display ?? e[targetColIndex]!.Concept.FhirKey)">
                                         @{
-                                            var rowKey = $"target-{context.RowNumber}";
+                                            var rowKey = $"target-{context.RowId}";
                                             var concept = context[targetColIndex]!.Concept;
                                             <div>
                                                 <FluentButton Id="@($"{rowKey}-btn")"
@@ -612,7 +613,7 @@ Class="vs-dialog-container">
 
     private bool ApplyToInverse { get; set; } = true;
 
-    private DbVsRow comparisonFilteredVsRow = new(0, 0, 0);
+    private DbVsRow? comparisonFilteredVsRow = null;
     private DbValueSetComparison? selectedComparison = null;
     private Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? initialVsRelationship = null;
     private Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? manualVsRelationship = null;
@@ -871,7 +872,7 @@ Class="vs-dialog-container">
                 ((inverse.LastReviewedOn == null) ||(hasChanges == true)))
             {
                 // find the correct value set row in the projection
-                DbVsRow? vsRow = graphProjection?.FirstOrDefault(v => v.RowNumber == comparisonFilteredVsRow.RowNumber);
+                DbVsRow? vsRow = graphProjection?.FirstOrDefault(v => v.RowId == comparisonFilteredVsRow.RowId);
 
                 if (vsRow != null)
                 {
@@ -1129,21 +1130,25 @@ Class="vs-dialog-container">
 
     private void AddConceptRow(object? selectedValue)
     {
-        if ((csCell != null) &&
+        if ((comparisonFilteredVsRow != null) &&
+            (csCell != null) &&
             (ctCell != null) &&
             (selectedValue != null) &&
             (selectedValue is Option<DbValueSetConcept> concept) &&
             (concept.Value != null))
         {
-            DbVsConceptRow row = new(_packages.Count, sourceColIndex, conceptProjection.Count());
+            // DbVsConceptRow row = new(_packages.Count, sourceColIndex, conceptProjection.Count());
+            DbVsConceptRow row = new(vsUiRec!.Graph, comparisonFilteredVsRow);
             row[sourceColIndex] = new()
             {
+                Row = row,
                 VsCell = csCell,
                 Concept = concept.Value,
             };
 
             row[targetColIndex] = new()
             {
+                Row = row,
                 VsCell = ctCell,
                 Concept = DbValueSetConcept.EmptyCopy,
             };
@@ -1177,7 +1182,7 @@ Class="vs-dialog-container">
         List<DbVsConceptRow> cp = [];
         foreach (DbVsConceptRow row in conceptProjection)
         {
-            if (row.RowNumber != rowToRemove.RowNumber)
+            if (row.RowId != rowToRemove.RowId)
             {
                 cp.Add(row);
             }
@@ -1186,7 +1191,7 @@ Class="vs-dialog-container">
         conceptProjection = cp.AsQueryable();
 
         // Close the popover after selection
-        string key = $"del-{rowToRemove.RowNumber}";
+        string key = $"del-{rowToRemove.RowId}";
         SetPopoverState(key, false);
         StateHasChanged();
         StateHasChanged();
@@ -1225,7 +1230,7 @@ Class="vs-dialog-container">
             }
 
             // Close the popover after selection
-            string key = $"rel-{conceptRow.RowNumber}";
+            string key = $"rel-{conceptRow.RowId}";
             SetPopoverState(key, false);
             StateHasChanged();
         }
@@ -1248,7 +1253,7 @@ Class="vs-dialog-container">
             }
 
             // Close the popover after selection
-            string key = $"target-{conceptRow.RowNumber}";
+            string key = $"target-{conceptRow.RowId}";
             SetPopoverState(key, false);
             StateHasChanged();
         }
@@ -1260,7 +1265,7 @@ Class="vs-dialog-container">
         int sourceCellIndex,
         int targetCellIndex)
     {
-        comparisonFilteredVsRow = valueSetRow.ShallowCopy(null, sourceCellIndex, targetCellIndex);
+        comparisonFilteredVsRow = valueSetRow.ShallowCopy(true);
 
         compareRight = sourceCellIndex < targetCellIndex;
         selectedComparison = comparison;
@@ -1310,7 +1315,7 @@ Class="vs-dialog-container">
         }));
 
         // grab the current projection
-        originalProjection = vsUiRec!.Graph.ProjectConcepts(comparisonFilteredVsRow, sourceCellIndex);
+        originalProjection = comparisonFilteredVsRow.Projection;    // vsUiRec!.Graph.Projection.ProjectConcepts(comparisonFilteredVsRow, sourceCellIndex);
 
         // make sure we have cells for targets
         foreach (DbVsConceptRow conceptRow in originalProjection)
@@ -1319,6 +1324,7 @@ Class="vs-dialog-container">
             {
                 conceptRow[targetColIndex] = new()
                 {
+                    Row = conceptRow,
                     VsCell = valueSetRow[targetCellIndex]!,
                     Concept = DbValueSetConcept.EmptyCopy,
                 };

@@ -7,7 +7,7 @@ public record class VsRecForUi
 {
     public required DbGraphVs Graph { get; init; }
     public required DbValueSet Vs { get; init; }
-    public required List<DbVsRow> Projection { get; init; }
+    public required List<DbGraphVs.DbVsRow> Projection { get; init; }
     public required Dictionary<int, bool> MapsTo { get; init; }
     public required bool HasUnreviewed { get; init; }
     public required bool AllIdentical { get; init; }
@@ -22,7 +22,7 @@ public record class VsRecForUi
             Packages = packages,
             KeyVs = vs,
         };
-        Projection = Graph.Project();
+        Projection = Graph.BuildProjection();
 
         bool hasUnreviewed = false;
         bool allIdentical = true;

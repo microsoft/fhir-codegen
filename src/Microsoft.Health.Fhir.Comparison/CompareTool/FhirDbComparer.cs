@@ -2320,25 +2320,23 @@ public class FhirDbComparer
     }
 
     public void ApplyVsConceptChanges(
-        List<DbVsConceptRow> originalProjection,
-        IEnumerable<DbVsConceptRow> updatedProjection,
+        List<DbGraphVs.DbVsConceptRow> originalProjection,
+        IEnumerable<DbGraphVs.DbVsConceptRow> updatedProjection,
         int sourceColumnIndex,
         bool isComparingRight,
         string? reviewer)
     {
         DbComparisonCache<DbValueSetConceptComparison> changes = new();
 
-        ILookup<int, DbVsConceptRow> sourceConceptRows = originalProjection.ToLookup(c => c.RowNumber);
-
         // traverse the locally-modified concept projection and determine changes (add/remove/update)
-        foreach (DbVsConceptRow row in updatedProjection)
+        foreach (DbGraphVs.DbVsConceptRow row in updatedProjection)
         {
             if (row[sourceColumnIndex] == null)
             {
                 continue;
             }
 
-            DbVsConceptCell sourceConceptCell = row[sourceColumnIndex]!;
+            DbGraphVs.DbVsConceptCell sourceConceptCell = row[sourceColumnIndex]!;
             DbValueSetConceptComparison sourceToTargetComparison = isComparingRight
                 ? sourceConceptCell.RightComparison!
                 : sourceConceptCell.LeftComparison!;
@@ -2367,12 +2365,12 @@ public class FhirDbComparer
         }
 
         // check for deleted rows
-        ILookup<int, DbVsConceptRow> currentConceptRows = updatedProjection.ToLookup(c => c.RowNumber);
-        foreach (DbVsConceptRow row in originalProjection)
+        ILookup<Guid, DbGraphVs.DbVsConceptRow> currentConceptRows = updatedProjection.ToLookup(c => c.RowId);
+        foreach (DbGraphVs.DbVsConceptRow row in originalProjection)
         {
-            if (!currentConceptRows.Contains(row.RowNumber))
+            if (!currentConceptRows.Contains(row.RowId))
             {
-                DbVsConceptCell sourceConceptCell = row[sourceColumnIndex]!;
+                DbGraphVs.DbVsConceptCell sourceConceptCell = row[sourceColumnIndex]!;
                 DbValueSetConceptComparison sourceToTargetComparison = isComparingRight
                     ? sourceConceptCell.RightComparison!
                     : sourceConceptCell.LeftComparison!;

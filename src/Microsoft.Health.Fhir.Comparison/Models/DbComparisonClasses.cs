@@ -30,6 +30,120 @@ public enum BidirectionalRelationshipCodes
     Mismatched,
 }
 
+public interface IDbComparisonCell
+{
+    IDbComparisonCell? LeftCell { get; }
+    DbPackageComparisonContent? LeftComparison { get; }
+
+    IDbComparisonCell? RightCell { get; }
+    DbPackageComparisonContent? RightComparison { get; }
+}
+
+public static class DbComparisonCellExtensions
+{
+    public static string ToRightMessage(this IDbComparisonCell c) => (c.RightComparison == null)
+        ? string.Empty
+        : $"{c.RightComparison.Relationship}: {c.RightComparison.Message}";
+
+    public static string FromRightMessage(this IDbComparisonCell c) => (c.RightCell?.LeftComparison == null)
+        ? string.Empty
+        : $"{c.RightCell.LeftComparison.Relationship}: {c.RightCell.LeftComparison.Message}";
+
+    public static string ToLeftMessage(this IDbComparisonCell c) => (c.LeftComparison == null)
+        ? string.Empty
+        : $"{c.LeftComparison.Relationship}: {c.LeftComparison.Message}";
+    public static string FromLeftMessage(this IDbComparisonCell c) => (c.LeftCell?.RightComparison == null)
+        ? string.Empty
+        : $"{c.LeftCell.RightComparison.Relationship}: {c.LeftCell.RightComparison.Message}";
+
+    public static BidirectionalRelationshipCodes? BidirectionalRight(this IDbComparisonCell c)
+    {
+        if ((c.RightComparison == null) || (c.RightCell?.LeftComparison == null))
+        {
+            return null;
+        }
+
+        Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? up = c.RightComparison.Relationship;
+        Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? down = c.RightCell.LeftComparison.Relationship;
+
+        if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.Equivalent) &&
+            (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.Equivalent))
+        {
+            return BidirectionalRelationshipCodes.Equivalent;
+        }
+
+        if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget) &&
+            (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget))
+        {
+            return BidirectionalRelationshipCodes.NewerBroadens;
+        }
+
+        if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget) &&
+            (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget))
+        {
+            return BidirectionalRelationshipCodes.NewerNarrows;
+        }
+
+        if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.RelatedTo) &&
+            (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.RelatedTo))
+        {
+            return BidirectionalRelationshipCodes.Related;
+        }
+
+        if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo) &&
+            (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo))
+        {
+            return BidirectionalRelationshipCodes.NotRelated;
+        }
+
+        return BidirectionalRelationshipCodes.Mismatched;
+    }
+
+    public static BidirectionalRelationshipCodes? BidirectionalLeft(this IDbComparisonCell c)
+    {
+        if ((c.LeftComparison == null) || (c.LeftCell?.RightComparison == null))
+        {
+            return null;
+        }
+
+        Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? up = c.LeftCell.RightComparison.Relationship;
+        Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? down = c.LeftComparison.Relationship;
+
+        if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.Equivalent) &&
+            (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.Equivalent))
+        {
+            return BidirectionalRelationshipCodes.Equivalent;
+        }
+
+        if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget) &&
+            (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget))
+        {
+            return BidirectionalRelationshipCodes.NewerBroadens;
+        }
+
+        if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget) &&
+            (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget))
+        {
+            return BidirectionalRelationshipCodes.NewerNarrows;
+        }
+
+        if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.RelatedTo) &&
+            (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.RelatedTo))
+        {
+            return BidirectionalRelationshipCodes.Related;
+        }
+
+        if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo) &&
+            (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo))
+        {
+            return BidirectionalRelationshipCodes.NotRelated;
+        }
+
+        return BidirectionalRelationshipCodes.Mismatched;
+    }
+}
+
+
 [CgSQLiteTable(tableName: "PackageComparisonPairs")]
 public partial class DbFhirPackageComparisonPair
 {

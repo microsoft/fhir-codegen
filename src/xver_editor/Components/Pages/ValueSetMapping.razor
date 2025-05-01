@@ -7,6 +7,7 @@
 @using System.Collections.Concurrent;
 @using System.Text;
 
+
 @inject IDialogService DialogService
 @inject IXverService Xver
 @inject NavigationManager NavigationManager
@@ -36,16 +37,16 @@
         MultiLine="true"
         class="alternating-grid">
             <SelectColumn SelectMode="DataGridSelectMode.Single"
-            TGridItem="DbVsRow"
+            TGridItem="DbGraphVs.DbVsRow"
             SelectFromEntireRow="true"
-            Property="@(r => r.RowNumber == _selectedVsRowNumber)"
+            Property="@(r => r.RowId == _selectedVsRowId)"
             OnSelect="@(e => StructureMappingRowSelected(e.Item, e.Selected))" />
             @for (int i = 0; i < _packages.Count; i++)
             {
                 int packageIndex = i;
                 <TemplateColumn Title="@_packages[packageIndex].ShortName">
                     @{
-                        DbVsCell? cell = context[packageIndex];
+                        DbGraphVs.DbVsCell? cell = context[packageIndex];
                     }
                     @if (cell != null)
                     {
@@ -60,9 +61,9 @@
 
                 @if (packageIndex < _packages.Count - 1)
                 {
-                    <TemplateColumn Title="@(GetComparisonColName(packageIndex))" TGridItem="DbVsRow">
+                    <TemplateColumn Title="@(GetComparisonColName(packageIndex))" TGridItem="DbGraphVs.DbVsRow">
                         @{
-                            DbVsCell? cell = context[packageIndex];
+                            DbGraphVs.DbVsCell? cell = context[packageIndex];
                         }
                         @if (cell == null)
                         {
@@ -71,27 +72,27 @@
                         else
                         {
                             <FluentStack Orientation="Orientation.Vertical">
-                                @if (cell.BidirectionalRight == BidirectionalRelationshipCodes.Mismatched)
+                                @if (cell.BidirectionalRight() == BidirectionalRelationshipCodes.Mismatched)
                                 {
                                     <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center">
                                         <FluentIcon Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Color.Size20.Warning())" />
-                                        <FluentLabel Typo="Typography.Body"><code>@(cell.BidirectionalRight?.ToString() ?? string.Empty)</code></FluentLabel>
+                                        <FluentLabel Typo="Typography.Body"><code>@(cell.BidirectionalRight()?.ToString() ?? string.Empty)</code></FluentLabel>
                                         <FluentIcon Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Color.Size20.Warning())" />
                                     </FluentStack>
                                 }
                                 else
                                 {
-                                    <FluentLabel Typo="Typography.Body"><code>@(cell.BidirectionalRight?.ToString() ?? string.Empty)</code></FluentLabel>
+                                    <FluentLabel Typo="Typography.Body"><code>@(cell.BidirectionalRight()?.ToString() ?? string.Empty)</code></FluentLabel>
                                 }
 
                                 <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center">
-                                    <FluentIcon id="@($"fr-{context.RowNumber}-{packageIndex}-message")"
+                                    <FluentIcon id="@($"fr-{context.RowId}-{packageIndex}-message")"
                                     Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleLeft())"
-                                    Title="@(cell.FromRightMessage)" />
+                                    Title="@(cell.FromRightMessage())" />
                                     <FluentButton>Edit</FluentButton>
-                                    <FluentIcon id="@($"tr-{context.RowNumber}-{packageIndex}-message")"
+                                    <FluentIcon id="@($"tr-{context.RowId}-{packageIndex}-message")"
                                     Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleRight())"
-                                    Title="@(cell.ToRightMessage)" />
+                                    Title="@(cell.ToRightMessage())" />
                                 </FluentStack>
                             </FluentStack>
                         }
@@ -105,17 +106,17 @@
         <FluentLabel Typo="Typography.Header">Review element mappings:</FluentLabel>
 
         <FluentDataGrid Items="@conceptGraphProjection"
-                        ResizableColumns="false"
-                        GridTemplateColumns="@GetMappingTableColumns()"
-                        MultiLine="true"
-                        ShowHover="true"
-                        class="alternating-grid">
+        ResizableColumns="false"
+        GridTemplateColumns="@GetMappingTableColumns()"
+        MultiLine="true"
+        ShowHover="true"
+        class="alternating-grid">
             @for (int i = 0; i < _packages.Count; i++)
             {
                 int packageIndex = i;
-                <TemplateColumn Title="@_mappingColNames[packageIndex]" Tooltip="true" TooltipText="@(c => c[packageIndex]?.Concept.UiDisplayLong)">
+                <TemplateColumn Title="@_packages[packageIndex].ShortName" Tooltip="true" TooltipText="@(c => c[packageIndex]?.Concept.UiDisplayLong)">
                     @{
-                        DbVsConceptCell? cell = context[packageIndex];
+                        DbGraphVs.DbVsConceptCell? cell = context[packageIndex];
                     }
                     @if (cell != null)
                     {
@@ -130,38 +131,38 @@
                 // add a comparison column if we are between two packages
                 @if (packageIndex < _packages.Count - 1)
                 {
-                    <TemplateColumn Title="@(GetComparisonColName(packageIndex))" TGridItem="DbVsConceptRow">
+                    <TemplateColumn Title="@(GetComparisonColName(packageIndex))" TGridItem="DbGraphVs.DbVsConceptRow">
                         @{
-                            DbVsConceptCell? cell = context[packageIndex];
+                            DbGraphVs.DbVsConceptCell? cell = context[packageIndex];
                         }
                         @if (cell == null)
                         {
                             <FluentButton>Add</FluentButton>
                         }
-                        else if (cell.BidirectionalRight != null)
+                        else if (cell.BidirectionalRight() != null)
                         {
                             <FluentStack Orientation="Orientation.Vertical">
-                                @if (cell.BidirectionalRight == BidirectionalRelationshipCodes.Mismatched)
+                                @if (cell.BidirectionalRight() == BidirectionalRelationshipCodes.Mismatched)
                                 {
                                     <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center">
                                         <FluentIcon Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Color.Size20.Warning())" />
-                                        <FluentLabel Typo="Typography.Body"><code>@(cell.BidirectionalRight?.ToString() ?? string.Empty)</code></FluentLabel>
+                                        <FluentLabel Typo="Typography.Body"><code>@(cell.BidirectionalRight()?.ToString() ?? string.Empty)</code></FluentLabel>
                                         <FluentIcon Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Color.Size20.Warning())" />
                                     </FluentStack>
                                 }
                                 else
                                 {
-                                    <FluentLabel Typo="Typography.Body"><code>@(cell.BidirectionalRight?.ToString() ?? string.Empty)</code></FluentLabel>
+                                    <FluentLabel Typo="Typography.Body"><code>@(cell.BidirectionalRight()?.ToString() ?? string.Empty)</code></FluentLabel>
                                 }
 
                                 <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center">
-                                    <FluentIcon id="@($"fr-{context.RowNumber}-{packageIndex}-message")"
+                                    <FluentIcon id="@($"fr-{context.RowId}-{packageIndex}-message")"
                                     Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleLeft())"
-                                    Title="@(cell.FromRightMessage)" />
+                                    Title="@(cell.FromRightMessage())" />
                                     <FluentButton>Edit</FluentButton>
-                                    <FluentIcon id="@($"tr-{context.RowNumber}-{packageIndex}-message")"
+                                    <FluentIcon id="@($"tr-{context.RowId}-{packageIndex}-message")"
                                     Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleRight())"
-                                    Title="@(cell.ToRightMessage)" />
+                                    Title="@(cell.ToRightMessage())" />
                                 </FluentStack>
                             </FluentStack>
 
@@ -218,15 +219,14 @@
         new() { Display = ValueSetName, Link = $"/valuesetmapping/{FhirPackageKey}/{ValueSetKey}/?packageShort={PackageShortName}&vsName={ValueSetName}" },
     };
 
-    int _selectedVsRowNumber = -1;
+    private Guid _selectedVsRowId = Guid.Empty;
 
     private int _loadedVsKey = -1;
     private VsRecForUi? vsUiRec = null;
     private List<DbFhirPackage> _packages = [];
-    private string[] _mappingColNames = [];
-    private IQueryable<DbVsRow>? vsGraphProjection = null;
-    private List<DbVsConceptRow> initialConceptProjection = [];
-    private IQueryable<DbVsConceptRow>? conceptGraphProjection = null;
+    private IQueryable<DbGraphVs.DbVsRow>? vsGraphProjection = null;
+    private List<DbGraphVs.DbVsConceptRow> initialConceptProjection = [];
+    private IQueryable<DbGraphVs.DbVsConceptRow>? conceptGraphProjection = null;
 
     private Option<BidirectionalRelationshipCodes>[] _bidirectionalRelationships = [
         new() { Text = "None", Value = BidirectionalRelationshipCodes.None },
@@ -261,13 +261,9 @@
         LoadValueSet();
     }
 
-    private string GetMappingColName(int index) => _mappingColNames.Length == 0
-        ? string.Empty
-        : _mappingColNames[index];
-
     private string GetComparisonColName(int index) => _packages[index].ShortName + "-" + _packages[index + 1].ShortName;
 
-    private void ElementRelationshipChanged(DbVsConceptRow elementRow, DbVsConceptCell? cell, object? value)
+    private void ElementRelationshipChanged(DbGraphVs.DbVsConceptRow elementRow, DbGraphVs.DbVsConceptCell? cell, object? value)
     {
         if (value is Option<BidirectionalRelationshipCodes> opt)
         {
@@ -275,7 +271,7 @@
         }
     }
 
-    private void StructureMappingRowSelected(DbVsRow r, bool selected)
+    private void StructureMappingRowSelected(DbGraphVs.DbVsRow r, bool selected)
     {
         if (selected == true)
         {
@@ -330,7 +326,7 @@
         ? string.Empty
         : date.Value.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
 
-    private void LoadMappingRow(DbVsRow row)
+    private void LoadMappingRow(DbGraphVs.DbVsRow row)
     {
         if (vsUiRec == null)
         {
@@ -340,12 +336,12 @@
             return;
         }
 
-        if (_selectedVsRowNumber != row.RowNumber)
+        if (_selectedVsRowId != row.RowId)
         {
-            _selectedVsRowNumber = row.RowNumber;
+            _selectedVsRowId = row.RowId;
         }
 
-        initialConceptProjection = vsUiRec.Graph.ProjectConcepts(row);
+        initialConceptProjection = row.Projection;
         conceptGraphProjection = initialConceptProjection.AsQueryable();
         StateHasChanged();
     }
@@ -389,18 +385,11 @@
 
             if (vsUiRec.Projection.Count > 0)
             {
-                List<string> mappingColNames = [];
-                for (int i = 0; i < _packages.Count; i++)
-                {
-                    mappingColNames.Add(_packages[i].ShortName + ":" + (vsUiRec.Projection[0].Cells[i]?.Vs.Name ?? "-"));
-                }
-                _mappingColNames = mappingColNames.ToArray();
-
                 LoadMappingRow(vsUiRec.Projection[0]);
             }
             else
             {
-                _selectedVsRowNumber = -1;
+                _selectedVsRowId = Guid.Empty;
             }
 
             StateHasChanged();
