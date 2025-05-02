@@ -12,8 +12,11 @@
 @inject NavigationManager NavigationManager
 @inject XverAppConfig ServerConfig
 
+<PageTitle>@($"Mapping {PackageShortName}:{StructureName}")</PageTitle>
+
 <FluentStack Orientation="Orientation.Vertical" VerticalGap="8">
-    <FluentLabel Typo="Typography.H4">Structure details for @StructureName (DB Key: @StructureKey)</FluentLabel>
+    <FluentLabel Typo="Typography.H4">Structure mapping for @($"{PackageShortName}:{StructureName}")</FluentLabel>
+    @* <FluentLabel Typo="Typography.Body">DB Key: @StructureKey</FluentLabel> *@
 
     @if ((Xver.IsOpen == false) || (Xver.DbConnection == null))
     {
@@ -29,6 +32,9 @@
     }
     else
     {
+        <FluentLabel Typo="Typography.Body">FHIR Specification: <FluentAnchor Appearance="Appearance.Hypertext" Href="@sdUiRec.GetFhirUrl()" Target="_blank">@StructureName</FluentAnchor></FluentLabel>
+        <br/>
+
         <FluentLabel Typo="Typography.Header">Select a structure mapping group:</FluentLabel>
         <FluentDataGrid Items="@sdGraphProjection"
         ResizableColumns="false"
@@ -36,16 +42,16 @@
         MultiLine="true"
         class="alternating-grid">
             <SelectColumn SelectMode="DataGridSelectMode.Single"
-            TGridItem="DbSdRow"
+                          TGridItem="DbGraphSd.DbSdRow"
             SelectFromEntireRow="true"
-            Property="@(r => r.RowNumber == _selectedSdRowNumber)"
+            Property="@(r => r.RowId == _selectedSdRowId)"
             OnSelect="@(e => StructureMappingRowSelected(e.Item, e.Selected))" />
             @for (int i = 0; i < _packages.Count; i++)
             {
                 int packageIndex = i;
                 <TemplateColumn Title="@_packages[packageIndex].ShortName">
                     @{
-                        DbSdCell? cell = context[packageIndex];
+                        DbGraphSd.DbSdCell? cell = context[packageIndex];
                     }
                     @if (cell != null)
                     {
@@ -60,9 +66,9 @@
 
                 @if (i < _packages.Count - 1)
                 {
-                    <TemplateColumn Title="Comparison" TGridItem="DbSdRow">
+                    <TemplateColumn Title="Comparison" TGridItem="DbGraphSd.DbSdRow">
                         @{
-                            DbSdCell? cell = context[packageIndex];
+                            DbGraphSd.DbSdCell? cell = context[packageIndex];
                             // int cellIndex = packageIndex;
                             // DbStructureComparison? toRight = context[packageIndex]?.RightComparison;
                             // DbStructureComparison? fromRight = packageIndex < _packages.Count - 1 ? context[packageIndex + 1]?.LeftComparison : null;
@@ -74,27 +80,27 @@
                         else
                         {
                             <FluentStack Orientation="Orientation.Vertical">
-                                @if (cell.BidirectionalRight == BidirectionalRelationshipCodes.Mismatched)
+                                @if (cell.BidirectionalRight() == BidirectionalRelationshipCodes.Mismatched)
                                 {
                                     <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center">
                                         <FluentIcon Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Color.Size20.Warning())" />
-                                        <FluentLabel Typo="Typography.Body"><code>@(cell.BidirectionalRight?.ToString() ?? string.Empty)</code></FluentLabel>
+                                        <FluentLabel Typo="Typography.Body"><code>@(cell.BidirectionalRight()?.ToString() ?? string.Empty)</code></FluentLabel>
                                         <FluentIcon Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Color.Size20.Warning())" />
                                     </FluentStack>
                                 }
                                 else
                                 {
-                                    <FluentLabel Typo="Typography.Body"><code>@(cell.BidirectionalRight?.ToString() ?? string.Empty)</code></FluentLabel>
+                                    <FluentLabel Typo="Typography.Body"><code>@(cell.BidirectionalRight()?.ToString() ?? string.Empty)</code></FluentLabel>
                                 }
 
                                 <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center">
-                                    <FluentIcon id="@($"fr-{context.RowNumber}-{packageIndex}-message")"
+                                    <FluentIcon id="@($"fr-{context.RowId}-{packageIndex}-message")"
                                                 Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleLeft())"
-                                                Title="@(cell.FromRightMessage)" />
+                                                Title="@(cell.FromRightMessage())" />
                                     <FluentButton>Edit</FluentButton>
-                                    <FluentIcon id="@($"tr-{context.RowNumber}-{packageIndex}-message")"
+                                    <FluentIcon id="@($"tr-{context.RowId}-{packageIndex}-message")"
                                                 Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleRight())"
-                                                Title="@(cell.ToRightMessage)" />
+                                                Title="@(cell.ToRightMessage())" />
                                 </FluentStack>
                             </FluentStack>
                         }
@@ -118,7 +124,7 @@
                 int packageIndex = i;
                 <TemplateColumn Title="@_packages[packageIndex].ShortName" Tooltip="true" TooltipText="@(c => c[packageIndex]?.Element.UiDisplayLong)">
                     @{
-                        DbElementCell? cell = context[packageIndex];
+                        DbGraphSd.DbElementCell? cell = context[packageIndex];
                     }
                     @if (cell != null)
                     {
@@ -132,9 +138,9 @@
 
                 @if (i < _packages.Count - 1)
                 {
-                    <TemplateColumn Title="Comparison" TGridItem="DbElementRow">
+                    <TemplateColumn Title="Comparison" TGridItem="DbGraphSd.DbElementRow">
                         @{
-                            DbElementCell? cell = context[packageIndex];
+                            DbGraphSd.DbElementCell? cell = context[packageIndex];
                             // int cellIndex = packageIndex;
                             // DbElementComparison? toRight = context[packageIndex]?.RightComparison;
                             // DbElementComparison? fromRight = packageIndex < _packages.Count - 1 ? context[packageIndex + 1]?.LeftComparison : null;
@@ -146,27 +152,27 @@
                         else if (cell.BidirectionalRight != null)
                         {
                             <FluentStack Orientation="Orientation.Vertical">
-                                @if (cell.BidirectionalRight == BidirectionalRelationshipCodes.Mismatched)
+                                @if (cell.BidirectionalRight() == BidirectionalRelationshipCodes.Mismatched)
                                 {
                                     <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center">
                                         <FluentIcon Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Color.Size20.Warning())" />
-                                        <FluentLabel Typo="Typography.Body"><code>@(cell.BidirectionalRight?.ToString() ?? string.Empty)</code></FluentLabel>
+                                        <FluentLabel Typo="Typography.Body"><code>@(cell.BidirectionalRight()?.ToString() ?? string.Empty)</code></FluentLabel>
                                         <FluentIcon Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Color.Size20.Warning())" />
                                     </FluentStack>
                                 }
                                 else
                                 {
-                                    <FluentLabel Typo="Typography.Body"><code>@(cell.BidirectionalRight?.ToString() ?? string.Empty)</code></FluentLabel>
+                                    <FluentLabel Typo="Typography.Body"><code>@(cell.BidirectionalRight()?.ToString() ?? string.Empty)</code></FluentLabel>
                                 }
 
                                 <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center">
-                                    <FluentIcon id="@($"fr-{context.RowNumber}-{packageIndex}-message")"
+                                    <FluentIcon id="@($"fr-{context.RowId}-{packageIndex}-message")"
                                                 Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleLeft())"
-                                                Title="@(cell.FromRightMessage)" />
+                                                Title="@(cell.FromRightMessage())" />
                                     <FluentButton>Edit</FluentButton>
-                                    <FluentIcon id="@($"tr-{context.RowNumber}-{packageIndex}-message")"
+                                    <FluentIcon id="@($"tr-{context.RowId}-{packageIndex}-message")"
                                                 Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleRight())"
-                                                Title="@(cell.ToRightMessage)" />
+                                                Title="@(cell.ToRightMessage())" />
                                 </FluentStack>
                             </FluentStack>
 
@@ -223,14 +229,14 @@
         new() { Display = StructureName, Link = $"/structuremapping/{FhirPackageKey}/{StructureKey}/?packageShort={PackageShortName}&sdName={StructureName}" },
     };
 
-    int _selectedSdRowNumber = -1;
+    private Guid _selectedSdRowId = Guid.Empty;
 
     private int _loadedStructureKey = -1;
     private SdRecForUi? sdUiRec = null;
     private List<DbFhirPackage> _packages = [];
-    private IQueryable<DbSdRow>? sdGraphProjection = null;
-    private List<DbElementRow> initialElementProjection = [];
-    private IQueryable<DbElementRow>? elementGraphProjection = null;
+    private IQueryable<DbGraphSd.DbSdRow>? sdGraphProjection = null;
+    private List<DbGraphSd.DbElementRow> initialElementProjection = [];
+    private IQueryable<DbGraphSd.DbElementRow>? elementGraphProjection = null;
 
     private Option<BidirectionalRelationshipCodes>[] _bidirectionalRelationships = [
         new() { Text = "None", Value = BidirectionalRelationshipCodes.None },
@@ -264,7 +270,7 @@
         LoadStructure();
     }
 
-    private void ElementRelationshipChanged(DbElementRow elementRow, DbElementCell? cell, object? value)
+    private void ElementRelationshipChanged(DbGraphSd.DbElementRow elementRow, DbGraphSd.DbElementCell? cell, object? value)
     {
         if (value is Option<BidirectionalRelationshipCodes> opt)
         {
@@ -272,11 +278,11 @@
         }
     }
 
-    private void StructureMappingRowSelected(DbSdRow r, bool selected)
+    private void StructureMappingRowSelected(DbGraphSd.DbSdRow r, bool selected)
     {
         if (selected == true)
         {
-            _selectedSdRowNumber = r.RowNumber;
+            _selectedSdRowId = r.RowId;
             LoadMappingRow(r);
             StateHasChanged();
         }
@@ -328,7 +334,7 @@
         ? string.Empty
         : date.Value.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
 
-    private void LoadMappingRow(DbSdRow row)
+    private void LoadMappingRow(DbGraphSd.DbSdRow row)
     {
         if (sdUiRec == null)
         {
@@ -338,7 +344,7 @@
             return;
         }
 
-        initialElementProjection = sdUiRec.Graph.ProjectElements(row);
+        initialElementProjection = row.Projection;
         elementGraphProjection = initialElementProjection.AsQueryable();
         StateHasChanged();
     }
@@ -380,7 +386,7 @@
             sdUiRec = new(Xver.DbConnection, sd, _packages);
             sdGraphProjection = sdUiRec.Projection.AsQueryable();
 
-            _selectedSdRowNumber = 0;
+            _selectedSdRowId = Guid.Empty;
             if (sdUiRec.Projection.Count > 0)
             {
                 LoadMappingRow(sdUiRec.Projection[0]);

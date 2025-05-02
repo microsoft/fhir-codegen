@@ -5,496 +5,463 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.Health.Fhir.Comparison.Models.DbGraphVs;
 
 namespace Microsoft.Health.Fhir.Comparison.Models;
 
-public record class DbSdCell : ICloneable
-{
-    private readonly List<DbElement> _elements = null!;
-    private readonly ILookup<int, DbElement> _elementsByKey = null!;
-
-    public required DbFhirPackage FhirPackage { get; init; }
-    public required DbStructureDefinition Sd { get; init; }
-    public required List<DbElement> Elements
-    {
-        get => _elements;
-        init
-        {
-            _elements = value;
-            _elementsByKey = value.ToLookup((c) => c.Key);
-        }
-    }
-
-    public DbSdCell? LeftCell { get; set; } = null;
-    public DbStructureDefinition? LeftSd { get; set; } = null;
-    public DbStructureComparison? LeftComparison { get; set; } = null;
-
-    public DbSdCell? RightCell { get; set; } = null;
-    public DbStructureDefinition? RightSd { get; set; } = null;
-    public DbStructureComparison? RightComparison { get; set; } = null;
-
-    public string ToRightMessage => (RightComparison == null)
-        ? string.Empty
-        : $"{RightComparison.Relationship}: {RightComparison.Message}";
-
-    public string FromRightMessage => (RightCell?.LeftComparison == null)
-        ? string.Empty
-        : $"{RightCell.LeftComparison.Relationship}: {RightCell.LeftComparison.Message}";
-
-    public string ToLeftMessage => (LeftComparison == null)
-        ? string.Empty
-        : $"{LeftComparison.Relationship}: {LeftComparison.Message}";
-    public string FromLeftMessage => (LeftCell?.RightComparison == null)
-        ? string.Empty
-        : $"{LeftCell.RightComparison.Relationship}: {LeftCell.RightComparison.Message}";
-
-    public BidirectionalRelationshipCodes? BidirectionalRight
-    {
-        get
-        {
-            if ((RightComparison == null) || (RightCell?.LeftComparison == null))
-            {
-                return null;
-            }
-
-            Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? up = RightComparison.Relationship;
-            Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? down = RightCell.LeftComparison.Relationship;
-
-            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.Equivalent) &&
-                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.Equivalent))
-            {
-                return BidirectionalRelationshipCodes.Equivalent;
-            }
-
-            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget) &&
-                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget))
-            {
-                return BidirectionalRelationshipCodes.NewerNarrows;
-            }
-
-            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget) &&
-                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget))
-            {
-                return BidirectionalRelationshipCodes.NewerBroadens;
-            }
-
-            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.RelatedTo) &&
-                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.RelatedTo))
-            {
-                return BidirectionalRelationshipCodes.Related;
-            }
-
-            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo) &&
-                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo))
-            {
-                return BidirectionalRelationshipCodes.NotRelated;
-            }
-
-            return BidirectionalRelationshipCodes.Mismatched;
-        }
-    }
-
-    public BidirectionalRelationshipCodes? BidirectionalLeft
-    {
-        get
-        {
-            if ((LeftComparison == null) || (LeftCell?.RightComparison == null))
-            {
-                return null;
-            }
-
-            Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? up = LeftCell.RightComparison.Relationship;
-            Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? down = LeftComparison.Relationship;
-
-            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.Equivalent) &&
-                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.Equivalent))
-            {
-                return BidirectionalRelationshipCodes.Equivalent;
-            }
-
-            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget) &&
-                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget))
-            {
-                return BidirectionalRelationshipCodes.NewerBroadens;
-            }
-
-            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget) &&
-                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget))
-            {
-                return BidirectionalRelationshipCodes.NewerNarrows;
-            }
-
-            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.RelatedTo) &&
-                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.RelatedTo))
-            {
-                return BidirectionalRelationshipCodes.Related;
-            }
-
-            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo) &&
-                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo))
-            {
-                return BidirectionalRelationshipCodes.NotRelated;
-            }
-
-            return BidirectionalRelationshipCodes.Mismatched;
-        }
-    }
-
-    object ICloneable.Clone() => this with { };
-
-    public override string ToString() => FhirPackage.ShortName + ":" + Sd.Name;
-}
-
-
-public class DbSdRow : IEnumerable<DbSdCell?>
-{
-    private readonly int _rowNumber;
-    private readonly int _keyCol;
-    private readonly DbSdCell?[] _cells;
-
-    public DbSdRow(DbSdCell?[] cells, int rowNumber)
-    {
-        _cells = cells;
-        _keyCol = Array.FindIndex(cells, cell => cell != null);
-        _rowNumber = rowNumber;
-    }
-    public DbSdRow(DbSdCell?[] cells, int rowNumber, int keyCol = -1)
-    {
-        _cells = cells;
-        _keyCol = keyCol;
-        _rowNumber = rowNumber;
-    }
-    public DbSdRow(int size, int keyCol, int rowNumber)
-    {
-        _cells = new DbSdCell?[size];
-        _keyCol = keyCol;
-        _rowNumber = rowNumber;
-    }
-
-    public int RowNumber => _rowNumber;
-    public int KeyCol => _keyCol;
-    public DbSdCell? KeyCell => _keyCol >= 0 ? _cells[_keyCol] : null;
-    public DbSdCell?[] Cells => _cells;
-
-    public int Length => _cells.Length;
-
-    public override string ToString() => string.Join(" - ", _cells.Select(c => c?.ToString() ?? string.Empty));
-
-    // Add indexer to access cells directly
-    public DbSdCell? this[int index]
-    {
-        get
-        {
-            if (index >= 0 && index < _cells.Length)
-            {
-                return _cells[index];
-            }
-
-            return null;
-        }
-        set
-        {
-            if (index >= 0 && index < _cells.Length)
-            {
-                _cells[index] = value;
-            }
-        }
-    }
-
-    // Indexer to find a cell by package
-    public DbSdCell? this[DbFhirPackage package]
-    {
-        get
-        {
-            if (package == null)
-                return null;
-
-            return _cells.FirstOrDefault(cell =>
-                cell?.FhirPackage != null && cell.FhirPackage.Key == package.Key);
-        }
-    }
-
-    public DbSdRow DeepCopy(int? newRowNumber = null)
-    {
-        DbSdCell?[] cells = new DbSdCell?[_cells.Length];
-        for (int i = 0; i < _cells.Length; i++)
-        {
-            cells[i] = _cells[i] == null ? null : _cells[i]! with { };
-        }
-        return new DbSdRow(cells, newRowNumber ?? _rowNumber, KeyCol);
-    }
-
-    public DbSdRow ShallowCopy(int? newRowNumber = null)
-    {
-        DbSdCell?[] cells = new DbSdCell?[_cells.Length];
-        for (int i = 0; i < _cells.Length; i++)
-        {
-            cells[i] = _cells[i];
-        }
-        return new DbSdRow(cells, newRowNumber ?? _rowNumber, KeyCol);
-    }
-
-    public DbSdRow ShallowCopy(int? newRowNumber, params int[] onlyCopyRows)
-    {
-        DbSdCell?[] cells = new DbSdCell?[_cells.Length];
-        for (int i = 0; i < _cells.Length; i++)
-        {
-            if (onlyCopyRows.Contains(i))
-                cells[i] = _cells[i];
-            else
-                cells[i] = null;
-        }
-        return new DbSdRow(cells, newRowNumber ?? _rowNumber, KeyCol);
-    }
-
-    public IEnumerator<DbSdCell?> GetEnumerator() => ((IEnumerable<DbSdCell?>)_cells).GetEnumerator();
-    IEnumerator IEnumerable.GetEnumerator() => _cells.GetEnumerator();
-}
-
-
-public record class DbElementCell : ICloneable
-{
-    public required DbSdCell SdCell { get; set; }
-    public required DbElement Element { get; set; }
-
-    public DbElementCell? LeftCell { get; set; } = null;
-    public DbElement? LeftElement { get; set; } = null;
-    public DbElementComparison? LeftComparison { get; set; } = null;
-
-    public DbElementCell? RightCell { get; set; } = null;
-    public DbElement? RightElement { get; set; } = null;
-    public DbElementComparison? RightComparison { get; set; } = null;
-
-    public string ToRightMessage => (RightComparison == null)
-        ? string.Empty
-        : $"{RightComparison.Relationship}: {RightComparison.Message}";
-
-    public string FromRightMessage => (RightCell?.LeftComparison == null)
-        ? string.Empty
-        : $"{RightCell.LeftComparison.Relationship}: {RightCell.LeftComparison.Message}";
-    
-    public string ToLeftMessage => (LeftComparison == null)
-        ? string.Empty
-        : $"{LeftComparison.Relationship}: {LeftComparison.Message}";
-    public string FromLeftMessage => (LeftCell?.RightComparison == null)
-        ? string.Empty
-        : $"{LeftCell.RightComparison.Relationship}: {LeftCell.RightComparison.Message}";
-
-    public BidirectionalRelationshipCodes? BidirectionalRight
-    {
-        get
-        {
-            if ((RightComparison == null) || (RightCell?.LeftComparison == null))
-            {
-                return null;
-            }
-
-            Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? up = RightComparison.Relationship;
-            Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? down = RightCell.LeftComparison.Relationship;
-
-            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.Equivalent) &&
-                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.Equivalent))
-            {
-                return BidirectionalRelationshipCodes.Equivalent;
-            }
-
-            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget) &&
-                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget))
-            {
-                return BidirectionalRelationshipCodes.NewerBroadens;
-            }
-
-            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget) &&
-                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget))
-            {
-                return BidirectionalRelationshipCodes.NewerNarrows;
-            }
-
-            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.RelatedTo) &&
-                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.RelatedTo))
-            {
-                return BidirectionalRelationshipCodes.Related;
-            }
-
-            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo) &&
-                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo))
-            {
-                return BidirectionalRelationshipCodes.NotRelated;
-            }
-
-            return BidirectionalRelationshipCodes.Mismatched;
-        }
-    }
-
-    public BidirectionalRelationshipCodes? BidirectionalLeft
-    {
-        get
-        {
-            if ((LeftComparison == null) || (LeftCell?.RightComparison == null))
-            {
-                return null;
-            }
-
-            Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? up = LeftCell.RightComparison.Relationship;
-            Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? down = LeftComparison.Relationship;
-
-            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.Equivalent) &&
-                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.Equivalent))
-            {
-                return BidirectionalRelationshipCodes.Equivalent;
-            }
-
-            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget) &&
-                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget))
-            {
-                return BidirectionalRelationshipCodes.NewerBroadens;
-            }
-
-            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget) &&
-                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget))
-            {
-                return BidirectionalRelationshipCodes.NewerNarrows;
-            }
-
-            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.RelatedTo) &&
-                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.RelatedTo))
-            {
-                return BidirectionalRelationshipCodes.Related;
-            }
-
-            if ((up == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo) &&
-                (down == Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo))
-            {
-                return BidirectionalRelationshipCodes.NotRelated;
-            }
-
-
-            return BidirectionalRelationshipCodes.Mismatched;
-        }
-    }
-
-    object ICloneable.Clone() => this with { };
-}
-
-
-public class DbElementRow : IEnumerable<DbElementCell?>
-{
-    private readonly int _rowNumber;
-    private readonly int _keyCol;
-    private readonly DbElementCell?[] _cells;
-
-    public DbElementRow(DbElementCell?[] cells, int rowNumber)
-    {
-        _cells = cells;
-        _keyCol = Array.FindIndex(cells, cell => cell != null);
-        _rowNumber = rowNumber;
-    }
-    public DbElementRow(DbElementCell?[] cells, int rowNumber, int keyCol = -1)
-    {
-        _cells = cells;
-        _keyCol = keyCol;
-        _rowNumber = rowNumber;
-    }
-    public DbElementRow(int size, int keyCol, int rowNumber)
-    {
-        _cells = new DbElementCell?[size];
-        _keyCol = keyCol;
-        _rowNumber = rowNumber;
-    }
-
-    public int RowNumber => _rowNumber;
-    public int KeyCol => _keyCol;
-    public DbElementCell? KeyCell => _keyCol >= 0 ? _cells[_keyCol] : null;
-    public DbElementCell?[] Cells => _cells;
-    public int Length => _cells.Length;
-
-    // Add indexer to access cells directly
-    public DbElementCell? this[int index]
-    {
-        get
-        {
-            if (index >= 0 && index < _cells.Length)
-                return _cells[index];
-            return null;
-        }
-        set
-        {
-            if (index >= 0 && index < _cells.Length)
-                _cells[index] = value;
-        }
-    }
-    // Indexer to find a cell by package
-    public DbElementCell? this[DbFhirPackage package]
-    {
-        get
-        {
-            if (package == null)
-                return null;
-            return _cells.FirstOrDefault(cell =>
-                cell?.SdCell.FhirPackage != null && cell.SdCell.FhirPackage.Key == package.Key);
-        }
-    }
-
-    public DbElementRow DeepCopy(int? newRowNumber = null)
-    {
-        DbElementCell?[] cells = new DbElementCell?[_cells.Length];
-        for (int i = 0; i < _cells.Length; i++)
-        {
-            cells[i] = _cells[i] == null ? null : _cells[i]! with { };
-        }
-        return new DbElementRow(cells, newRowNumber ?? _rowNumber, KeyCol);
-    }
-
-    public DbElementRow ShallowCopy(int? newRowNumber = null)
-    {
-        DbElementCell?[] cells = new DbElementCell?[_cells.Length];
-        for (int i = 0; i < _cells.Length; i++)
-        {
-            cells[i] = _cells[i];
-        }
-        return new DbElementRow(cells, newRowNumber ?? _rowNumber, KeyCol);
-    }
-
-    public DbElementRow ShallowCopy(int? newRowNumber, params int[] onlyCopyRows)
-    {
-        DbElementCell?[] cells = new DbElementCell?[_cells.Length];
-        for (int i = 0; i < _cells.Length; i++)
-        {
-            if (onlyCopyRows.Contains(i))
-                cells[i] = _cells[i];
-            else
-                cells[i] = null;
-        }
-        return new DbElementRow(cells, newRowNumber ?? _rowNumber, KeyCol);
-    }
-
-    public IEnumerator<DbElementCell?> GetEnumerator() => ((IEnumerable<DbElementCell?>)_cells).GetEnumerator();
-    IEnumerator IEnumerable.GetEnumerator() => _cells.GetEnumerator();
-}
 
 public class DbGraphSd
 {
-    private readonly IDbConnection _db = null!;
-    private readonly List<DbFhirPackage> _packages = null!;
-    private readonly DbStructureDefinition _keySd = null!;
-    private int _keyCol = -1;
+    protected readonly IDbConnection _db = null!;
+    protected readonly List<DbFhirPackage> _packages = null!;
+    protected readonly DbStructureDefinition _keySd = null!;
+    protected int _keyCol = -1;
 
     public required IDbConnection DB { get => _db; init => _db = value; }
     public required List<DbFhirPackage> Packages { get => _packages; init => _packages = value; }
     public required DbStructureDefinition KeySd { get => _keySd; init => _keySd = value; }
 
+    private List<DbSdRow>? _projection = null;
+    public List<DbSdRow> Projection => _projection ?? BuildProjection();
 
-    public List<DbSdRow> Project()
+
+    public record class DbSdCell : IDbComparisonCell, ICloneable
     {
-        int rowNumber = 0;
+        private readonly List<DbElement> _elements = null!;
+
+        public required DbSdRow Row { get; init; }
+        public required int FhirPackageIndex { get; init; }
+        public required DbStructureDefinition Sd { get; init; }
+        public required List<DbElement> Elements
+        {
+            get => _elements;
+            init
+            {
+                _elements = value;
+            }
+        }
+
+        public DbSdCell? LeftCell { get; set; } = null;
+        public DbStructureDefinition? LeftSd { get; set; } = null;
+        public DbStructureComparison? LeftComparison { get; set; } = null;
+
+        public DbSdCell? RightCell { get; set; } = null;
+        public DbStructureDefinition? RightSd { get; set; } = null;
+        public DbStructureComparison? RightComparison { get; set; } = null;
+        IDbComparisonCell? IDbComparisonCell.LeftCell => LeftCell;
+        DbPackageComparisonContent? IDbComparisonCell.LeftComparison => LeftComparison;
+        IDbComparisonCell? IDbComparisonCell.RightCell => RightCell;
+        DbPackageComparisonContent? IDbComparisonCell.RightComparison => RightComparison;
+
+        object ICloneable.Clone() => this with { };
+
+        public override string ToString() => Row._graph._packages[FhirPackageIndex].ShortName + ":" + Sd.Name;
+    }
+
+
+    public class DbSdRow : IEnumerable<DbSdCell?>
+    {
+        internal DbGraphSd _graph;
+        protected readonly Guid _uuid;
+        private readonly DbSdCell?[] _cells;
+
+        public DbSdRow(
+            DbGraphSd graph,
+            DbSdCell?[]? cells = null,
+            Guid? uuid = null)
+        {
+            _uuid = uuid ?? Guid.NewGuid();
+            _graph = graph;
+            _cells = cells ?? new DbSdCell?[_graph._packages.Count];
+        }
+
+
+        public Guid RowId => _uuid;
+        public DbSdCell? KeyCell => _graph._keyCol >= 0 ? _cells[_graph._keyCol] : null;
+        public DbSdCell?[] Cells => _cells;
+        public int Length => _cells.Length;
+
+        private List<DbElementRow>? _projection = null;
+        public List<DbElementRow> Projection => _projection ??= BuildProjection(_graph._keyCol);
+
+        public override string ToString() => string.Join(" - ", _cells.Select(c => c?.ToString() ?? string.Empty));
+
+        // Add indexer to access cells directly
+        public DbSdCell? this[int index]
+        {
+            get
+            {
+                if (index >= 0 && index < _cells.Length)
+                {
+                    return _cells[index];
+                }
+
+                return null;
+            }
+            set
+            {
+                if (index >= 0 && index < _cells.Length)
+                {
+                    _cells[index] = value;
+                }
+            }
+        }
+
+        // Indexer to find a cell by package
+        public DbSdCell? this[DbFhirPackage package]
+        {
+            get
+            {
+                if (package == null)
+                {
+                    return null;
+                }
+
+                return _cells.FirstOrDefault(cell => cell?.Sd.FhirPackageKey == package.Key);
+            }
+        }
+
+
+        public List<DbElementRow> BuildProjection(int? keyColumnIndex = null)
+        {
+            int keyColIndex = keyColumnIndex ??= _graph._keyCol;
+
+            if (keyColIndex == -1)
+            {
+                throw new Exception("Key column not set!");
+            }
+
+            if (_cells[keyColIndex] == null)
+            {
+                return [];
+            }
+
+            List<DbElementRow> results = [];
+
+            // iterate over the concepts for this value set
+            foreach (DbElement element in _cells[keyColIndex]!.Elements)
+            {
+                DbElementRow row = new DbElementRow(_graph, this);
+
+                int startCol = keyColIndex;
+                row[startCol] = new()
+                {
+                    Row = row,
+                    SdCell = _cells[startCol]!,
+                    Element = element,
+                };
+
+                List<DbElementRow> right = [];
+
+                // project right
+                if (startCol < _graph._packages.Count)
+                {
+                    right = projectElement(row, startCol, true);
+                }
+
+                // if we started at the first definition, we are done
+                if (startCol == 0)
+                {
+                    results.AddRange(right);
+                    continue;
+                }
+
+                // project left and add as we go
+                foreach (DbElementRow r in right)
+                {
+                    results.AddRange(projectElement(r, startCol, false));
+                }
+            }
+
+            return results;
+        }
+
+        private List<DbElementRow> projectElement(
+            DbElementRow incomingRow,
+            int column,
+            bool projectRight)
+        {
+            if ((incomingRow[column] == null) ||
+                (_cells[column] == null))
+            {
+                return [incomingRow];
+            }
+
+            int nextCol = projectRight ? column + 1 : column - 1;
+            if ((nextCol < 0) || (nextCol >= incomingRow.Length))
+            {
+                return [incomingRow];
+            }
+
+            if (projectRight &&
+                ((_cells[column]!.RightCell == null) || (_cells[column]!.RightComparison == null)))
+            {
+                return [incomingRow];
+            }
+
+            if ((!projectRight) &&
+                ((_cells[column]!.LeftCell == null) || (_cells[column]!.LeftComparison == null)))
+            {
+                return [incomingRow];
+            }
+
+            int comparisonKey = projectRight
+                ? _cells[column]!.RightComparison!.Key
+                : _cells[column]!.LeftComparison!.Key;
+
+            // look for the concept comparisons for this ValueSet comparison and concept
+            List<DbElementComparison> edges = DbElementComparison.SelectList(
+                _graph._db,
+                StructureComparisonKey: comparisonKey,
+                SourceElementKey: incomingRow[column]!.Element.Key,
+                orderByProperties: [nameof(DbElementComparison.TargetElementKey)]);
+
+            if (edges.Count == 0)
+            {
+                return [incomingRow];
+            }
+
+            if ((edges.Count == 1) &&
+                (edges[0].NoMap == true))
+            {
+                if (projectRight)
+                {
+                    incomingRow[column]!.RightComparison = edges[0];
+                }
+                else
+                {
+                    incomingRow[column]!.LeftComparison = edges[0];
+                }
+
+                return [incomingRow];
+            }
+
+            List<DbElementRow> results = [];
+
+            // iterate over our neighbors
+            foreach (DbElementComparison edge in edges)
+            {
+                // resolve the concept
+                DbElement element = DbElement.SelectSingle(_graph._db, Key: edge.TargetElementKey)
+                    ?? throw new Exception($"Failed to resolve compared element: {edge.TargetElementKey}!");
+
+                DbElementComparison? inverseEdge = edge.InverseComparisonKey == null
+                    ? null
+                    : DbElementComparison.SelectSingle(_graph._db, Key: edge.InverseComparisonKey);
+
+                DbElementRow row = edges.Count == 1 ? incomingRow : incomingRow.DeepCopy(false);
+                if (projectRight == true)
+                {
+                    row[nextCol] = new()
+                    {
+                        Row = row,
+                        SdCell = _cells[nextCol]!,
+                        Element = element,
+                        LeftCell = incomingRow[column]!,
+                        LeftElement = incomingRow[column]!.Element,
+                        LeftComparison = inverseEdge,
+                    };
+
+                    row[column]!.RightCell = row[nextCol];
+                    row[column]!.RightElement = row[nextCol]!.Element;
+                    row[column]!.RightComparison = edge;
+                }
+                else
+                {
+                    row[nextCol] = new()
+                    {
+                        Row = row,
+                        SdCell = _cells[nextCol]!,
+                        Element = element,
+                        RightCell = incomingRow[column]!,
+                        RightElement = incomingRow[column]!.Element,
+                        RightComparison = inverseEdge,
+                    };
+
+                    row[column]!.LeftCell = row[nextCol];
+                    row[column]!.RightElement = row[nextCol]!.Element;
+                    row[column]!.LeftComparison = edge;
+                }
+
+                // recurse
+                List<DbElementRow> next = projectElement(row, nextCol, projectRight);
+
+                // combine results
+                results.AddRange(next);
+            }
+
+            return results;
+        }
+
+        public DbSdRow DeepCopy(bool copyGuid)
+        {
+            DbSdCell?[] cells = new DbSdCell?[_cells.Length];
+            for (int i = 0; i < _cells.Length; i++)
+            {
+                cells[i] = _cells[i] == null ? null : _cells[i]! with { };
+            }
+            return new DbSdRow(_graph, cells, copyGuid ? _uuid : null);
+        }
+
+        public DbSdRow ShallowCopy(bool copyGuid)
+        {
+            DbSdCell?[] cells = _cells.Select(v => v).ToArray();
+            return new DbSdRow(_graph, cells, copyGuid ? _uuid : null);
+        }
+
+        public DbSdRow ShallowCopy(bool copyGuid, params int[] onlyCopyRows)
+        {
+            DbSdCell?[] cells = new DbSdCell?[_cells.Length];
+            for (int i = 0; i < _cells.Length; i++)
+            {
+                if (onlyCopyRows.Contains(i))
+                {
+                    cells[i] = _cells[i];
+                }
+                else
+                {
+                    cells[i] = null;
+                }
+            }
+            return new DbSdRow(_graph, cells, copyGuid ? _uuid : null);
+        }
+
+        public IEnumerator<DbSdCell?> GetEnumerator() => ((IEnumerable<DbSdCell?>)_cells).GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => _cells.GetEnumerator();
+    }
+
+
+    public record class DbElementCell : IDbComparisonCell, ICloneable
+    {
+        public required DbElementRow Row { get; init; }
+        public required DbSdCell SdCell { get; set; }
+        public required DbElement Element { get; set; }
+
+        public DbElementCell? LeftCell { get; set; } = null;
+        public DbElement? LeftElement { get; set; } = null;
+        public DbElementComparison? LeftComparison { get; set; } = null;
+
+        public DbElementCell? RightCell { get; set; } = null;
+        public DbElement? RightElement { get; set; } = null;
+        public DbElementComparison? RightComparison { get; set; } = null;
+
+        IDbComparisonCell? IDbComparisonCell.LeftCell => LeftCell;
+        DbPackageComparisonContent? IDbComparisonCell.LeftComparison => LeftComparison;
+        IDbComparisonCell? IDbComparisonCell.RightCell => RightCell;
+        DbPackageComparisonContent? IDbComparisonCell.RightComparison => RightComparison;
+
+        object ICloneable.Clone() => this with { };
+    }
+
+
+    public class DbElementRow : IEnumerable<DbElementCell?>
+    {
+        private readonly Guid _uuid;
+        private readonly DbGraphSd _graph;
+        private readonly DbSdRow _sdRow;
+        private readonly DbElementCell?[] _cells;
+
+        public DbElementRow(
+            DbGraphSd graph,
+            DbSdRow sdRow,
+            DbElementCell?[]? cells = null,
+            Guid? uuid = null)
+        {
+            _uuid = uuid ?? Guid.NewGuid();
+            _graph = graph;
+            _sdRow = sdRow;
+            _cells = cells ?? new DbElementCell?[_graph._packages.Count];
+        }
+
+        public Guid RowId => _uuid;
+        public int KeyCol => _graph._keyCol;
+        public DbElementCell? KeyCell => _graph._keyCol >= 0 ? _cells[_graph._keyCol] : null;
+        public DbElementCell?[] Cells => _cells;
+        public int Length => _cells.Length;
+
+        // Add indexer to access cells directly
+        public DbElementCell? this[int index]
+        {
+            get
+            {
+                if (index >= 0 && index < _cells.Length)
+                {
+                    return _cells[index];
+                }
+
+                return null;
+            }
+            set
+            {
+                if (index >= 0 && index < _cells.Length)
+                {
+                    _cells[index] = value;
+                }
+            }
+        }
+        // Indexer to find a cell by package
+        public DbElementCell? this[DbFhirPackage package]
+        {
+            get
+            {
+                if (package == null)
+                {
+                    return null;
+                }
+
+                return _cells.FirstOrDefault(cell => cell?.SdCell.Sd.FhirPackageKey == package.Key);
+            }
+        }
+
+        public DbElementRow DeepCopy(bool copyGuid)
+        {
+            DbElementCell?[] cells = new DbElementCell?[_cells.Length];
+            for (int i = 0; i < _cells.Length; i++)
+            {
+                cells[i] = _cells[i] == null ? null : _cells[i]! with { };
+            }
+            return new DbElementRow(_graph, _sdRow, cells, copyGuid ? _uuid : null);
+        }
+
+        public DbElementRow ShallowCopy(bool copyGuid)
+        {
+            DbElementCell?[] cells = new DbElementCell?[_cells.Length];
+            for (int i = 0; i < _cells.Length; i++)
+            {
+                cells[i] = _cells[i];
+            }
+            return new DbElementRow(_graph, _sdRow, cells, copyGuid ? _uuid : null);
+        }
+
+        public DbElementRow ShallowCopy(bool copyGuid, params int[] onlyCopyRows)
+        {
+            DbElementCell?[] cells = new DbElementCell?[_cells.Length];
+            for (int i = 0; i < _cells.Length; i++)
+            {
+                if (onlyCopyRows.Contains(i))
+                    cells[i] = _cells[i];
+                else
+                    cells[i] = null;
+            }
+            return new DbElementRow(_graph, _sdRow, cells, copyGuid ? _uuid : null);
+        }
+
+        public IEnumerator<DbElementCell?> GetEnumerator() => ((IEnumerable<DbElementCell?>)_cells).GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => _cells.GetEnumerator();
+    }
+
+
+    public List<DbSdRow> BuildProjection()
+    {
         int startCol = _packages.FindIndex((fp) => fp.Key == _keySd.FhirPackageKey);
         _keyCol = startCol;
 
-        DbSdRow row = new DbSdRow(_packages.Count, _keyCol, rowNumber++);
+        DbSdRow row = new DbSdRow(this);
         row[startCol] = new()
         {
-            FhirPackage = _packages[startCol],
+            Row = row,
             Sd = _keySd,
+            FhirPackageIndex = startCol,
             Elements = DbElement.SelectList(_db, StructureKey: _keySd.Key),
         };
 
@@ -503,7 +470,7 @@ public class DbGraphSd
         // project right
         if (startCol < _packages.Count)
         {
-            right = projectSd(row, startCol, true, ref rowNumber);
+            right = projectSd(row, startCol, projectRight: true);
         }
 
         // if we started at the first definition, we are done
@@ -517,7 +484,7 @@ public class DbGraphSd
         // project left
         foreach (DbSdRow r in right)
         {
-            results.AddRange(projectSd(r, startCol, false, ref rowNumber));
+            results.AddRange(projectSd(r, startCol, projectRight: false));
         }
 
         return results;
@@ -526,8 +493,7 @@ public class DbGraphSd
     private List<DbSdRow> projectSd(
         DbSdRow incomingRow,
         int column,
-        bool projectRight,
-        ref int rowNumber)
+        bool projectRight)
     {
         if (incomingRow[column] == null)
         {
@@ -561,12 +527,13 @@ public class DbGraphSd
                 ? null
                 : DbStructureComparison.SelectSingle(_db, Key: edge.InverseComparisonKey);
 
-            DbSdRow row = edges.Count == 1 ? incomingRow : incomingRow.DeepCopy(rowNumber++);
+            DbSdRow row = edges.Count == 1 ? incomingRow : incomingRow.DeepCopy(false);
             if (projectRight == true)
             {
-                row[nextCol] = new()
+                row[nextCol] = new DbSdCell()
                 {
-                    FhirPackage = _packages[nextCol],
+                    Row = row,
+                    FhirPackageIndex = nextCol,
                     Sd = DbStructureDefinition.SelectSingle(_db, Key: edge.TargetStructureKey) ?? throw new Exception($"Failed to resolve compared Structure: {edge.TargetStructureKey}!"),
                     Elements = DbElement.SelectList(_db, StructureKey: edge.TargetStructureKey, orderByProperties: [nameof(DbElement.Id)]),
                     LeftCell = incomingRow[column]!,
@@ -582,7 +549,8 @@ public class DbGraphSd
             {
                 row[nextCol] = new()
                 {
-                    FhirPackage = _packages[nextCol],
+                    Row = row,
+                    FhirPackageIndex = nextCol,
                     Sd = DbStructureDefinition.SelectSingle(_db, Key: edge.TargetStructureKey) ?? throw new Exception($"Failed to resolve compared Structure: {edge.TargetStructureKey}!"),
                     Elements = DbElement.SelectList(_db, StructureKey: edge.TargetStructureKey, orderByProperties: [nameof(DbElement.Id)]),
                     RightCell = incomingRow[column]!,
@@ -596,178 +564,7 @@ public class DbGraphSd
             }
 
             // recurse
-            List<DbSdRow> next = projectSd(row, nextCol, projectRight, ref rowNumber);
-
-            // combine results
-            results.AddRange(next);
-        }
-
-        return results;
-    }
-
-    public List<DbElementRow> ProjectElements(DbSdRow sdRow, int? keyColumnIndex = null)
-    {
-        int keyColIndex = keyColumnIndex ??= _keyCol;
-
-        if (keyColIndex == -1)
-        {
-            throw new Exception("Key column not set!");
-        }
-
-        if (sdRow[keyColIndex] == null)
-        {
-            return [];
-        }
-
-        int rowIndex = 0;
-        List<DbElementRow> results = [];
-
-        // iterate over the concepts for this value set
-        foreach (DbElement element in sdRow[keyColIndex]!.Elements)
-        {
-            DbElementRow row = new DbElementRow(_packages.Count, keyColIndex, rowIndex++);
-
-            int startCol = keyColIndex;
-            row[startCol] = new()
-            {
-                SdCell = sdRow[startCol]!,
-                Element = element,
-            };
-
-            List<DbElementRow> right = [];
-
-            // project right
-            if (startCol < _packages.Count)
-            {
-                right = projectElement(sdRow, row, startCol, true, ref rowIndex);
-            }
-
-            // if we started at the first definition, we are done
-            if (startCol == 0)
-            {
-                results.AddRange(right);
-                continue;
-            }
-
-            // project left and add as we go
-            foreach (DbElementRow r in right)
-            {
-                results.AddRange(projectElement(sdRow, r, startCol, false, ref rowIndex));
-            }
-        }
-
-        return results;
-    }
-
-    private List<DbElementRow> projectElement(
-        DbSdRow sdRow,
-        DbElementRow incomingRow,
-        int column,
-        bool projectRight,
-        ref int rowNumber)
-    {
-        if ((incomingRow[column] == null) ||
-            (sdRow[column] == null))
-        {
-            return [incomingRow];
-        }
-
-        int nextCol = projectRight ? column + 1 : column - 1;
-        if ((nextCol < 0) || (nextCol >= incomingRow.Length))
-        {
-            return [incomingRow];
-        }
-
-        if (projectRight &&
-            ((sdRow[column]!.RightCell == null) || (sdRow[column]!.RightComparison == null)))
-        {
-            return [incomingRow];
-        }
-
-        if ((!projectRight) &&
-            ((sdRow[column]!.LeftCell == null) || (sdRow[column]!.LeftComparison == null)))
-        {
-            return [incomingRow];
-        }
-
-        int comparisonKey = projectRight
-            ? sdRow[column]!.RightComparison!.Key
-            : sdRow[column]!.LeftComparison!.Key;
-
-        // look for the concept comparisons for this ValueSet comparison and concept
-        List<DbElementComparison> edges = DbElementComparison.SelectList(
-            _db,
-            StructureComparisonKey: comparisonKey,
-            SourceElementKey: incomingRow[column]!.Element.Key,
-            orderByProperties: [nameof(DbElementComparison.TargetElementKey)]);
-
-        if (edges.Count == 0)
-        {
-            return [incomingRow];
-        }
-
-        if ((edges.Count == 1) &&
-            (edges[0].NoMap == true))
-        {
-            if (projectRight)
-            {
-                incomingRow[column]!.RightComparison = edges[0];
-            }
-            else
-            {
-                incomingRow[column]!.LeftComparison = edges[0];
-            }
-
-            return [incomingRow];
-        }
-
-        List<DbElementRow> results = [];
-
-        // iterate over our neighbors
-        foreach (DbElementComparison edge in edges)
-        {
-            // resolve the concept
-            DbElement element = DbElement.SelectSingle(_db, Key: edge.TargetElementKey)
-                ?? throw new Exception($"Failed to resolve compared element: {edge.TargetElementKey}!");
-
-            DbElementComparison? inverseEdge = edge.InverseComparisonKey == null
-                ? null
-                : DbElementComparison.SelectSingle(_db, Key: edge.InverseComparisonKey);
-
-            DbElementRow row = edges.Count == 1 ? incomingRow : incomingRow.DeepCopy(rowNumber++);
-            if (projectRight == true)
-            {
-                row[nextCol] = new()
-                {
-                    SdCell = sdRow[nextCol]!,
-                    Element = element,
-                    LeftCell = incomingRow[column]!,
-                    LeftElement = incomingRow[column]!.Element,
-                    LeftComparison = inverseEdge,
-                };
-
-                row[column]!.RightCell = row[nextCol];
-                row[column]!.RightElement = row[nextCol]!.Element;
-                row[column]!.RightComparison = edge;
-            }
-            else
-            {
-                row[nextCol] = new()
-                {
-                    SdCell = sdRow[nextCol]!,
-                    Element = element,
-                    RightCell = incomingRow[column]!,
-                    RightElement = incomingRow[column]!.Element,
-                    RightComparison = inverseEdge,
-                };
-
-                row[column]!.LeftCell = row[nextCol];
-                row[column]!.RightElement = row[nextCol]!.Element;
-                row[column]!.LeftComparison = edge;
-            }
-
-            // recurse
-            List<DbElementRow> next = projectElement(sdRow, row, nextCol, projectRight, ref rowNumber);
+            List<DbSdRow> next = projectSd(row, nextCol, projectRight);
 
             // combine results
             results.AddRange(next);

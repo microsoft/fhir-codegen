@@ -129,7 +129,6 @@ public class DbGraphVs
             }
         }
 
-
         public List<DbVsConceptRow> BuildConceptProjection(int? keyColumnIndex = null)
         {
             int keyColIndex = keyColumnIndex ??= _graph._keyCol;
@@ -181,6 +180,7 @@ public class DbGraphVs
                 }
             }
 
+            // update our local projection copy
             _projection = results;
 
             return _projection;
@@ -475,7 +475,6 @@ public class DbGraphVs
         IEnumerator IEnumerable.GetEnumerator() => _cells.GetEnumerator();
     }
 
-
     public List<DbVsRow> BuildProjection()
     {
         int startCol = _packages.FindIndex((fp) => fp.Key == _keyVs.FhirPackageKey);
@@ -498,7 +497,7 @@ public class DbGraphVs
         // project right
         if (startCol < _packages.Count)
         {
-            right = projectVs(row, startCol, true);
+            right = projectVs(row, startCol, projectRight: true);
         }
 
         // if we started at the first definition, we are done
@@ -512,7 +511,7 @@ public class DbGraphVs
         // project left
         foreach (DbVsRow r in right)
         {
-            results.AddRange(projectVs(r, startCol, false));
+            results.AddRange(projectVs(r, startCol, projectRight: false));
         }
 
         _projection = results;

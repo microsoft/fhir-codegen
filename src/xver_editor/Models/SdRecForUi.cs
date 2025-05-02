@@ -7,7 +7,7 @@ public record class SdRecForUi
 {
     public required DbGraphSd Graph { get; init; }
     public required DbStructureDefinition Sd { get; init; }
-    public required List<DbSdRow> Projection { get; init; }
+    public required List<DbGraphSd.DbSdRow> Projection { get; init; }
     public required Dictionary<int, bool> MapsTo { get; init; }
     public required bool HasUnreviewed { get; init; }
     public required bool AllIdentical { get; init; }
@@ -22,7 +22,7 @@ public record class SdRecForUi
             Packages = packages,
             KeySd = sd,
         };
-        Projection = Graph.Project();
+        Projection = Graph.BuildProjection();
 
         bool hasUnreviewed = false;
         bool allIdentical = true;
@@ -72,6 +72,42 @@ public record class SdRecForUi
         HasUnreviewed = hasUnreviewed;
         AllIdentical = allIdentical;
     }
+
+    public string GetFhirUrl()
+    {
+        DbFhirPackage package = Graph.Packages.First(p => p.Key == Sd.FhirPackageKey);
+
+        string fhirUrlRoot = package.FhirVersionShort switch
+        {
+            "1.0" => "http://hl7.org/fhir/DSTU2/",
+            "3.0" => "http://hl7.org/fhir/STU3/",
+            "4.0" => "http://hl7.org/fhir/R4/",
+            "4.3" => "http://hl7.org/fhir/R4B/",
+            "5.0" => "http://hl7.org/fhir/R5/",
+            "6.0" => "http://build.fhir.org/",
+            _ => throw new NotImplementedException($"Fhir version {package.FhirVersionShort} not implemented"),
+        };
+
+        switch (Sd.ArtifactClass)
+        {
+            case Microsoft.Health.Fhir.CodeGenCommon.Models.FhirArtifactClassEnum.PrimitiveType:
+                {
+                    return fhirUrlRoot + "datatypes.html#" + Sd.Name;
+                }
+
+            case Microsoft.Health.Fhir.CodeGenCommon.Models.FhirArtifactClassEnum.ComplexType:
+                {
+                    return fhirUrlRoot + "metadatatypes.html#" + Sd.Name;
+                }
+
+            case Microsoft.Health.Fhir.CodeGenCommon.Models.FhirArtifactClassEnum.Resource:
+                {
+                    return fhirUrlRoot + Sd.Name + ".html";
+                }
+        }
+
+        return Sd.UnversionedUrl.Replace("http://hl7.org/fhir/", fhirUrlRoot);
+    }
 }
 
 public class ElementRecForUi
@@ -83,15 +119,15 @@ public class ElementRecForUi
 
 public class ElementProjectionForUi
 {
-    public required DbElementRow Row { get; set; }
-    public required DbElementCell SourceCell { get; set; }
-    public required DbElementCell TargetCell { get; set; }
+    public required DbGraphSd.DbElementRow Row { get; set; }
+    public required DbGraphSd.DbElementCell SourceCell { get; set; }
+    public required DbGraphSd.DbElementCell TargetCell { get; set; }
     public required DbElementComparison Comparison { get; set; }
 
-    public string RowKey => Row.RowNumber.ToString();
-    public string DelKey => $"del-{Row.RowNumber}";
-    public string RelKey => $"rel-{Row.RowNumber}";
-    public string CdKey => $"rel-cd-{Row.RowNumber}";
-    public string VdKey => $"rel-vd-{Row.RowNumber}";
-    public string TargetKey => $"target-vd-{Row.RowNumber}";
+    public string RowKey => Row.RowId.ToString();
+    public string DelKey => $"del-{Row.RowId}";
+    public string RelKey => $"rel-{Row.RowId}";
+    public string CdKey => $"rel-cd-{Row.RowId}";
+    public string VdKey => $"rel-vd-{Row.RowId}";
+    public string TargetKey => $"target-vd-{Row.RowId}";
 }

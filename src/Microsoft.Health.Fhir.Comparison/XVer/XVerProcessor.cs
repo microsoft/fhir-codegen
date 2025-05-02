@@ -756,7 +756,7 @@ public class XVerProcessor
         HashSet<string> allowedExtensionTypes,
         Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
         DbStructureDefinition sourceSd,
-        Dictionary<int, List<DbElementRow>>? elementProjectionDict = null,
+        Dictionary<int, List<DbGraphSd.DbElementRow>>? elementProjectionDict = null,
         HashSet<int>? elementsWithoutEquivalent = null,
         int currentPackageIndex = -1,
         int targetPackageIndex = -1)
@@ -771,22 +771,18 @@ public class XVerProcessor
                 KeySd = sourceSd,
             };
 
-            // project this structure based on comparisons
-            List<DbSdRow> sdProjection = sdGraph.Project();
-
             // build a dictionary of all concept projections, by concept key
             elementProjectionDict = [];
-            foreach (DbSdRow sdRow in sdProjection)
+            foreach (DbGraphSd.DbSdRow sdRow in sdGraph.Projection)
             {
-                List<DbElementRow> elementProjections = sdGraph.ProjectElements(sdRow);
-                foreach (DbElementRow sdElementRow in elementProjections)
+                foreach (DbGraphSd.DbElementRow sdElementRow in sdRow.Projection)
                 {
                     if (sdElementRow.KeyCell == null)
                     {
                         continue;
                     }
 
-                    if (!elementProjectionDict.TryGetValue(sdElementRow.KeyCell.Element.Key, out List<DbElementRow>? elementList))
+                    if (!elementProjectionDict.TryGetValue(sdElementRow.KeyCell.Element.Key, out List<DbGraphSd.DbElementRow>? elementList))
                     {
                         elementList = [];
                         elementProjectionDict.Add(sdElementRow.KeyCell.Element.Key, elementList);
@@ -851,7 +847,7 @@ public class XVerProcessor
         if (isUnmappedStructure)
         {
             // resolve the root row
-            DbElementRow rootRow = elementProjectionDict
+            DbGraphSd.DbElementRow rootRow = elementProjectionDict
                 .Values
                 .First(rows => rows.Any(row => row.KeyCell?.Element.ResourceFieldOrder == 0)).First();
 
@@ -888,10 +884,10 @@ public class XVerProcessor
         else
         {
             Dictionary<int, int> includedChildCounts = [];
-            List<DbElementCell> cellsNeedingExtensions = [];
+            List<DbGraphSd.DbElementCell> cellsNeedingExtensions = [];
 
             // iterate over the projections, sorted by the key cell resource field order
-            foreach ((int sourceElementKey, List<DbElementRow> elementProjections) in elementProjectionDict.OrderBy(kvp => kvp.Value.First().KeyCell!.Element.ResourceFieldOrder))
+            foreach ((int sourceElementKey, List<DbGraphSd.DbElementRow> elementProjections) in elementProjectionDict.OrderBy(kvp => kvp.Value.First().KeyCell!.Element.ResourceFieldOrder))
             {
                 // skip if we know this element has already mapped out
                 if (elementsWithoutEquivalent.Contains(sourceElementKey))
@@ -901,13 +897,13 @@ public class XVerProcessor
 
                 // check to see if we have any equivalent mappings
                 if (testingRight &&
-                    elementProjections.Any((DbElementRow elementRow) => elementRow[currentPackageIndex]?.RightComparison?.Relationship == CMR.Equivalent))
+                    elementProjections.Any((DbGraphSd.DbElementRow elementRow) => elementRow[currentPackageIndex]?.RightComparison?.Relationship == CMR.Equivalent))
                 {
                     continue;
                 }
 
                 if (testingLeft &&
-                    elementProjections.Any((DbElementRow elementRow) => elementRow[currentPackageIndex]?.LeftComparison?.Relationship == CMR.Equivalent))
+                    elementProjections.Any((DbGraphSd.DbElementRow elementRow) => elementRow[currentPackageIndex]?.LeftComparison?.Relationship == CMR.Equivalent))
                 {
                     continue;
                 }
@@ -960,12 +956,12 @@ public class XVerProcessor
                 xverExtensions.Add((element.Key, targetPackage.Key), sd);
             }
 
-            Dictionary<int, (DbElementCell elementCell, StructureDefinition extensionSd)> proposedExtensionsByKey = [];
+            Dictionary<int, (DbGraphSd.DbElementCell elementCell, StructureDefinition extensionSd)> proposedExtensionsByKey = [];
 
             // iterate over our list of elements we are including, sorted by resource field order
-            foreach (DbElementCell elementCell in cellsNeedingExtensions.OrderBy(ec => ec.Element.ResourceFieldOrder))
+            foreach (DbGraphSd.DbElementCell elementCell in cellsNeedingExtensions.OrderBy(ec => ec.Element.ResourceFieldOrder))
             {
-                // 
+                // TODO(ginoc)
             }
         }
 
@@ -1171,11 +1167,8 @@ public class XVerProcessor
                 KeySd = sd,
             };
 
-            // project this value set based on comparisons
-            List<DbSdRow> projection = sdGraph.Project();
-
             // get the overview entry for this value set
-            string content = getMdOverviewEntry(packages, package, sd, projection);
+            string content = getMdOverviewEntry(packages, package, sd, sdGraph.Projection);
 
             // get the overview entry for this value set
             overviewEntries.Add(content);
@@ -1183,7 +1176,7 @@ public class XVerProcessor
             string filename = Path.Combine(sdDir, getSdFilename(sd.Name, artifactClass, includeRelativeDir: false));
             using (ExportStreamWriter vsWriter = createMarkdownWriter(filename, true, true))
             {
-                writeMdDetailedSd(_db!.DbConnection, vsWriter, packages, package, keyPackageColIndex, sd, sdGraph, projection);
+                writeMdDetailedSd(_db!.DbConnection, vsWriter, packages, package, keyPackageColIndex, sd, sdGraph);
             }
         });
         //}
@@ -1204,8 +1197,7 @@ public class XVerProcessor
         DbFhirPackage package,
         int keyPackageColIndex,
         DbStructureDefinition keySd,
-        DbGraphSd sdGraph,
-        List<DbSdRow> projection)
+        DbGraphSd sdGraph)
     {
         writer.WriteLine($"""
             ### {keySd.Name}
@@ -1245,11 +1237,11 @@ public class XVerProcessor
         }
 
         // if there are no mappings, we are done writing this file
-        if ((projection.Count == 0) ||
+        if ((sdGraph.Projection.Count == 0) ||
             (
-                (projection.Count == 1) &&
-                (projection[0][keyPackageColIndex]?.LeftComparison == null) &&
-                (projection[0][keyPackageColIndex]?.RightComparison == null)
+                (sdGraph.Projection.Count == 1) &&
+                (sdGraph.Projection[0][keyPackageColIndex]?.LeftComparison == null) &&
+                (sdGraph.Projection[0][keyPackageColIndex]?.RightComparison == null)
             ))
         {
             writer.WriteLine($"""
@@ -1277,7 +1269,7 @@ public class XVerProcessor
 
         string[] sdRootUrlsByVersion = packages.Select(fp => $"/docs/{FhirSanitizationUtils.SanitizeForProperty(fp.ShortName)}/{artifactPascal}").ToArray();
 
-        (string key, bool hasMapping)[] allKeys = packages.Select((fp, i) => (fp.ShortName, projection.Any(r => r[i] != null))).ToArray();
+        (string key, bool hasMapping)[] allKeys = packages.Select((fp, i) => (fp.ShortName, sdGraph.Projection.Any(r => r[i] != null))).ToArray();
 
         // generate table showing the mappings
         writer.WriteLine("### Mapping Table");
@@ -1285,11 +1277,11 @@ public class XVerProcessor
         writer.WriteLine("| " + string.Join(" | Comparison | ", allKeys.Select(v => v.key)));
         writeTableColumns(writer, "---", byTwoColumnCount, appendNewline: true);
 
-        foreach (DbSdRow row in projection)
+        foreach (DbGraphSd.DbSdRow row in sdGraph.Projection)
         {
             int column = -1;
             // traverse columns
-            foreach (DbSdCell? cell in row)
+            foreach (DbGraphSd.DbSdCell? cell in row)
             {
                 column++;
 
@@ -1327,7 +1319,7 @@ public class XVerProcessor
 
         int mapGroupIndex = 0;
 
-        foreach (DbSdRow structureRow in projection)
+        foreach (DbGraphSd.DbSdRow structureRow in sdGraph.Projection)
         {
             if (structureRow[keyPackageColIndex] == null)
             {
@@ -1349,7 +1341,7 @@ public class XVerProcessor
                     writer.Write("| Relationship ");
                 }
 
-                DbSdCell? cell = structureRow[col];
+                DbGraphSd.DbSdCell? cell = structureRow[col];
 
                 if (cell == null)
                 {
@@ -1359,27 +1351,25 @@ public class XVerProcessor
 
                 if (col == keyPackageColIndex)
                 {
-                    writer.Write($"| {cell.FhirPackage.ShortName} {cell.Sd.Name.ForMdTable()}");
+                    writer.Write($"| {packages[col].ShortName} {cell.Sd.Name.ForMdTable()}");
                 }
                 else
                 {
-                    writer.Write($"| [{cell.FhirPackage.ShortName} {cell.Sd.Name.ForMdTable()}]({sdRootUrlsByVersion[col]}/{getSdFilename(cell.Sd.Name, cell.Sd.ArtifactClass, includeRelativeDir: false)})");
+                    writer.Write($"| [{packages[col].ShortName} {cell.Sd.Name.ForMdTable()}]({sdRootUrlsByVersion[col]}/{getSdFilename(cell.Sd.Name, cell.Sd.ArtifactClass, includeRelativeDir: false)})");
                 }
             }
             writer.WriteLine();
             writeTableColumns(writer, "---", byTwoColumnCount, appendNewline: true);
 
-            List<DbElementRow> elementProjection = sdGraph.ProjectElements(structureRow);
-
             HashSet<string>[] elementsPerSd = packages.Select(_ => new HashSet<string>()).ToArray();
 
             // iterate over the components in the concept projection
-            foreach (DbElementRow elementRow in elementProjection)
+            foreach (DbGraphSd.DbElementRow elementRow in structureRow.Projection)
             {
                 int column = -1;
 
                 // traverse columns
-                foreach (DbElementCell? cell in elementRow)
+                foreach (DbGraphSd.DbElementCell? cell in elementRow)
                 {
                     column++;
 
@@ -1494,9 +1484,9 @@ public class XVerProcessor
         return;
     }
 
-    private (string to, string from) getMappingMdTableCell(DbSdCell cell, bool movingRight)
+    private (string to, string from) getMappingMdTableCell(DbGraphSd.DbSdCell cell, bool movingRight)
     {
-        DbSdCell? targetCell = movingRight ? cell.RightCell : cell.LeftCell;
+        DbGraphSd.DbSdCell? targetCell = movingRight ? cell.RightCell : cell.LeftCell;
 
         if (targetCell == null)
         {
@@ -1508,7 +1498,7 @@ public class XVerProcessor
 
         return (getLink(toComparison, targetCell, "→→→→→→→"), getLink(fromComparison, targetCell, "←←←←←←←"));
 
-        string getLink(DbStructureComparison? comparison, DbSdCell? target, string arrows)
+        string getLink(DbStructureComparison? comparison, DbGraphSd.DbSdCell? target, string arrows)
         {
             if ((comparison == null) || (target == null))
             {
@@ -1576,7 +1566,7 @@ public class XVerProcessor
         List<DbFhirPackage> packages,
         DbFhirPackage package,
         DbStructureDefinition sd,
-        List<DbSdRow> projection)
+        List<DbGraphSd.DbSdRow> projection)
     {
         List<string> mapsTo = [];
         for (int i = 0; i < packages.Count; i++)

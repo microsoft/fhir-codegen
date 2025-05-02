@@ -401,25 +401,23 @@ public class FhirDbComparer
     }
 
     public void ApplySdConceptChanges(
-        List<DbElementRow> originalProjection,
-        IEnumerable<DbElementRow> updatedProjection,
+        List<DbGraphSd.DbElementRow> originalProjection,
+        IEnumerable<DbGraphSd.DbElementRow> updatedProjection,
         int sourceColumnIndex,
         bool isComparingRight,
         string? reviewer)
     {
         DbComparisonCache<DbElementComparison> changes = new();
 
-        ILookup<int, DbElementRow> sourceConceptRows = originalProjection.ToLookup(c => c.RowNumber);
-
         // traverse the locally-modified concept projection and determine changes (add/remove/update)
-        foreach (DbElementRow row in updatedProjection)
+        foreach (DbGraphSd.DbElementRow row in updatedProjection)
         {
             if (row[sourceColumnIndex] == null)
             {
                 continue;
             }
 
-            DbElementCell sourceConceptCell = row[sourceColumnIndex]!;
+            DbGraphSd.DbElementCell sourceConceptCell = row[sourceColumnIndex]!;
             DbElementComparison sourceToTargetComparison = isComparingRight
                 ? sourceConceptCell.RightComparison!
                 : sourceConceptCell.LeftComparison!;
@@ -448,12 +446,12 @@ public class FhirDbComparer
         }
 
         // check for deleted rows
-        ILookup<int, DbElementRow> currentConceptRows = updatedProjection.ToLookup(c => c.RowNumber);
-        foreach (DbElementRow row in originalProjection)
+        ILookup<Guid, DbGraphSd.DbElementRow> currentConceptRows = updatedProjection.ToLookup(c => c.RowId);
+        foreach (DbGraphSd.DbElementRow row in originalProjection)
         {
-            if (!currentConceptRows.Contains(row.RowNumber))
+            if (!currentConceptRows.Contains(row.RowId))
             {
-                DbElementCell sourceConceptCell = row[sourceColumnIndex]!;
+                DbGraphSd.DbElementCell sourceConceptCell = row[sourceColumnIndex]!;
                 DbElementComparison sourceToTargetComparison = isComparingRight
                     ? sourceConceptCell.RightComparison!
                     : sourceConceptCell.LeftComparison!;
