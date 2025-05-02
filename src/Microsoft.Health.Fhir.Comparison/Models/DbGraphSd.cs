@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Hl7.Fhir.ElementModel.Types;
 using static Microsoft.Health.Fhir.Comparison.Models.DbGraphVs;
 
 namespace Microsoft.Health.Fhir.Comparison.Models;
@@ -86,6 +87,16 @@ public class DbGraphSd
 
         public override string ToString() => string.Join(" - ", _cells.Select(c => c?.ToString() ?? string.Empty));
 
+        public DbSdCell? CellAt(int index)
+        {
+            if (index >= 0 && index < _cells.Length)
+            {
+                return _cells[index];
+            }
+            return null;
+        }
+
+
         // Add indexer to access cells directly
         public DbSdCell? this[int index]
         {
@@ -122,7 +133,7 @@ public class DbGraphSd
         }
 
 
-        public List<DbElementRow> BuildProjection(int? keyColumnIndex = null)
+        public List<DbElementRow> BuildProjection(int? keyColumnIndex = null, bool fullJoin = false)
         {
             int keyColIndex = keyColumnIndex ??= _graph._keyCol;
 
@@ -136,9 +147,10 @@ public class DbGraphSd
                 return [];
             }
 
+            HashSet<int> usedElementKeys = [];
             List<DbElementRow> results = [];
 
-            // iterate over the concepts for this value set
+            // iterate over the elements for this structure
             foreach (DbElement element in _cells[keyColIndex]!.Elements)
             {
                 DbElementRow row = new DbElementRow(_graph, this);
@@ -151,12 +163,14 @@ public class DbGraphSd
                     Element = element,
                 };
 
+                usedElementKeys.Add(element.Key);
+
                 List<DbElementRow> right = [];
 
                 // project right
                 if (startCol < _graph._packages.Count)
                 {
-                    right = projectElement(row, startCol, true);
+                    right = projectElement(row, startCol, true, usedElementKeys);
                 }
 
                 // if we started at the first definition, we are done
@@ -169,9 +183,120 @@ public class DbGraphSd
                 // project left and add as we go
                 foreach (DbElementRow r in right)
                 {
-                    results.AddRange(projectElement(r, startCol, false));
+                    results.AddRange(projectElement(r, startCol, false, usedElementKeys));
                 }
             }
+
+
+            // if we are doing a full join, check for unused SD mappings
+            if (fullJoin)
+            {
+                if (keyColIndex < (_graph._packages.Count - 1))
+                {
+                    for (int colIndex = keyColIndex + 1; colIndex < _graph._packages.Count; colIndex++)
+                    {
+                        if (_cells[colIndex] == null)
+                        {
+                            continue;
+                        }
+
+                        foreach (DbElement element in _cells[colIndex]!.Elements)
+                        {
+                            if (usedElementKeys.Contains(element.Key))
+                            {
+                                continue;
+                            }
+
+                            // add a new row
+                            DbElementRow row = new DbElementRow(_graph, this);
+
+                            row[colIndex] = new()
+                            {
+                                Row = row,
+                                SdCell = _cells[colIndex]!,
+                                Element = element,
+                            };
+
+                            usedElementKeys.Add(element.Key);
+
+                            List<DbElementRow> right = [];
+
+                            // project right
+                            if (colIndex < _graph._packages.Count)
+                            {
+                                right = projectElement(row, colIndex, true, usedElementKeys);
+                            }
+
+                            // if we started at the first definition, we are done
+                            if (colIndex == 0)
+                            {
+                                results.AddRange(right);
+                                continue;
+                            }
+
+                            // project left and add as we go
+                            foreach (DbElementRow r in right)
+                            {
+                                results.AddRange(projectElement(r, colIndex, false, usedElementKeys));
+                            }
+                        }
+                    }
+                }
+
+                if (keyColIndex > 0)
+                {
+                    for (int colIndex = keyColIndex - 1; colIndex >= 0; colIndex--)
+                    {
+                        if (_cells[colIndex] == null)
+                        {
+                            continue;
+                        }
+
+                        foreach (DbElement element in _cells[colIndex]!.Elements)
+                        {
+                            if (usedElementKeys.Contains(element.Key))
+                            {
+                                continue;
+                            }
+
+                            // add a new row
+                            DbElementRow row = new DbElementRow(_graph, this);
+
+                            row[colIndex] = new()
+                            {
+                                Row = row,
+                                SdCell = _cells[colIndex]!,
+                                Element = element,
+                            };
+
+                            usedElementKeys.Add(element.Key);
+
+                            List<DbElementRow> right = [];
+
+                            // project right
+                            if (colIndex < _graph._packages.Count)
+                            {
+                                right = projectElement(row, colIndex, true, usedElementKeys);
+                            }
+
+                            // if we started at the first definition, we are done
+                            if (colIndex == 0)
+                            {
+                                results.AddRange(right);
+                                continue;
+                            }
+
+                            // project left and add as we go
+                            foreach (DbElementRow r in right)
+                            {
+                                results.AddRange(projectElement(r, colIndex, false, usedElementKeys));
+                            }
+                        }
+                    }
+                }
+            }
+
+            _projection = results;
 
             return results;
         }
@@ -179,7 +304,8 @@ public class DbGraphSd
         private List<DbElementRow> projectElement(
             DbElementRow incomingRow,
             int column,
-            bool projectRight)
+            bool projectRight,
+            HashSet<int> usedElementKeys)
         {
             if ((incomingRow[column] == null) ||
                 (_cells[column] == null))
@@ -283,8 +409,10 @@ public class DbGraphSd
                     row[column]!.LeftComparison = edge;
                 }
 
+                usedElementKeys.Add(element.Key);
+
                 // recurse
-                List<DbElementRow> next = projectElement(row, nextCol, projectRight);
+                List<DbElementRow> next = projectElement(row, nextCol, projectRight, usedElementKeys);
 
                 // combine results
                 results.AddRange(next);

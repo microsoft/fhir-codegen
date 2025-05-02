@@ -42,7 +42,7 @@
         MultiLine="true"
         class="alternating-grid">
             <SelectColumn SelectMode="DataGridSelectMode.Single"
-                          TGridItem="DbGraphSd.DbSdRow"
+            TGridItem="DbGraphSd.DbSdRow"
             SelectFromEntireRow="true"
             Property="@(r => r.RowId == _selectedSdRowId)"
             OnSelect="@(e => StructureMappingRowSelected(e.Item, e.Selected))" />
@@ -95,12 +95,12 @@
 
                                 <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center">
                                     <FluentIcon id="@($"fr-{context.RowId}-{packageIndex}-message")"
-                                                Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleLeft())"
-                                                Title="@(cell.FromRightMessage())" />
+                                    Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleLeft())"
+                                    Title="@(cell.FromRightMessage())" />
                                     <FluentButton>Edit</FluentButton>
                                     <FluentIcon id="@($"tr-{context.RowId}-{packageIndex}-message")"
-                                                Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleRight())"
-                                                Title="@(cell.ToRightMessage())" />
+                                    Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleRight())"
+                                    Title="@(cell.ToRightMessage())" />
                                 </FluentStack>
                             </FluentStack>
                         }
@@ -109,30 +109,85 @@
             }
         </FluentDataGrid>
 
-        <br/>
-        <hr/>
+        <br />
+
+        @if (_selectedSdRow != null)
+        {
+            <FluentLabel Typo="Typography.Header">Add new mapping:</FluentLabel>
+            @foreach (DbGraphSd.DbSdCell? cell in _selectedSdRow)
+            {
+                if (cell == null)
+                {
+                    continue;
+                }
+
+                <FluentStack Orientation="Orientation.Horizontal">
+                    @if (cell.FhirPackageIndex > 0)
+                    {
+                        int tpIndex = cell.FhirPackageIndex - 1;
+                        string dialogKey = $"add-lmap-{cell.Sd.Key}";
+                        <div>
+                            @* <FluentIcon Value="@(new Icons.Regular.Size20.Add())" /> *@
+                            @* <FluentIcon Value="@(new Icons.Regular.Size20.ArrowLeft())" /> *@
+                            <FluentButton Appearance="Appearance.Outline"
+                            Title="@($"Add new mapping to {_packages[tpIndex].ShortName}")"
+                            OnClick="@(() => ShowStructureSelectionDialog(dialogKey, StructureKey, cell.FhirPackageIndex, tpIndex))">
+                                <FluentLabel Typo="Typography.Body">@($"{_packages[cell.FhirPackageIndex].ShortName}:{cell.Sd.Name} to FHIR {_packages[tpIndex].ShortName}")</FluentLabel>
+                            </FluentButton>
+                        </div>
+                    }
+
+                    @if (cell.FhirPackageIndex < (_packages.Count - 1))
+                    {
+                        int tpIndex = cell.FhirPackageIndex + 1;
+                        string dialogKey = $"add-rmap-{cell.Sd.Key}";
+                        <div>
+                            @* <FluentIcon Value="@(new Icons.Regular.Size20.Add())" /> *@
+                            @* <FluentIcon Value="@(new Icons.Regular.Size20.ArrowRight())" /> *@
+                            <FluentButton Appearance="Appearance.Outline"
+                            Title="@($"Add new mapping to {_packages[tpIndex].ShortName}")"
+                            OnClick="@(() => ShowStructureSelectionDialog(dialogKey, StructureKey, cell.FhirPackageIndex, tpIndex))">
+                                <FluentLabel Typo="Typography.Body">@($"{_packages[cell.FhirPackageIndex].ShortName}:{cell.Sd.Name} to FHIR {_packages[tpIndex].ShortName}")</FluentLabel>
+                            </FluentButton>
+                        </div>
+                    }
+                </FluentStack>
+            }
+        }
+
+        <hr />
         <FluentLabel Typo="Typography.Header">Review element mappings:</FluentLabel>
 
         <FluentDataGrid Items="@elementGraphProjection"
-        ResizableColumns="false"
-        GridTemplateColumns="@GetMappingTableColumns()"
-        MultiLine="true"
-        ShowHover="true"
-        class="alternating-grid">
+                        ResizableColumns="true"
+                        GridTemplateColumns="@GetMappingTableColumns()"
+                        MultiLine="true"
+                        ShowHover="true"
+                        class="alternating-grid">
             @for (int i = 0; i < _packages.Count; i++)
             {
                 int packageIndex = i;
-                <TemplateColumn Title="@_packages[packageIndex].ShortName" Tooltip="true" TooltipText="@(c => c[packageIndex]?.Element.UiDisplayLong)">
+
+                <TemplateColumn Sortable="true"
+                                SortBy="@_elementSorters[packageIndex]"
+                                Tooltip="true"
+                                TooltipText="@(c => c[packageIndex]?.Element.UiDisplayLong)"
+                                Title="@(_selectedSdRow?.CellAt(packageIndex)?.Sd.Name)">
                     @{
-                        DbGraphSd.DbElementCell? cell = context[packageIndex];
-                    }
-                    @if (cell != null)
-                    {
-                        <FluentLabel Typo="Typography.H6">@cell.Element.Id</FluentLabel>
-                    }
-                    else
-                    {
-                        <FluentLabel Typo="Typography.Body"><em>No map target for @_packages[packageIndex].ShortName</em></FluentLabel>
+                        string[] components = context[packageIndex]?.Element.Id.Split('.') ?? [];
+                        foreach (string component in components)
+                        {
+                            if (component == components[0])
+                            {
+                                <FluentBadge Appearance="Appearance.Neutral">@component</FluentBadge>
+                            }
+                            else
+                            {
+                                <br/>
+                                <FluentBadge Appearance="Appearance.Lightweight">.</FluentBadge>
+                                <FluentBadge Appearance="Appearance.Neutral">@component</FluentBadge>
+                            }
+                        }
                     }
                 </TemplateColumn>
 
@@ -167,16 +222,16 @@
 
                                 <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center">
                                     <FluentIcon id="@($"fr-{context.RowId}-{packageIndex}-message")"
-                                                Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleLeft())"
-                                                Title="@(cell.FromRightMessage())" />
+                                    Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleLeft())"
+                                    Title="@(cell.FromRightMessage())" />
                                     <FluentButton>Edit</FluentButton>
                                     <FluentIcon id="@($"tr-{context.RowId}-{packageIndex}-message")"
-                                                Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleRight())"
-                                                Title="@(cell.ToRightMessage())" />
+                                    Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleRight())"
+                                    Title="@(cell.ToRightMessage())" />
                                 </FluentStack>
                             </FluentStack>
 
-@*                             <FluentCombobox Items="@_bidirectionalRelationships"
+                            @*                             <FluentCombobox Items="@_bidirectionalRelationships"
                                 Name="@($"{context.RowNumber}-{packageIndex}-r-combo")"
                                 Width="200px"
                                 Height="700px"
@@ -194,7 +249,7 @@
                         }
                         else
                         {
-
+                            <FluentBadge Fill="highlight" BackgroundColor="red" Color="white">ELSE</FluentBadge>
                         }
                     </TemplateColumn>
                 }
@@ -203,6 +258,55 @@
 
     }
 </FluentStack>
+
+
+<FluentDialog @ref="structureSelectionDialog"
+Modal="true"
+Hidden="@dialogHidden"
+Class="vs-dialog-container">
+    <FluentDialogHeader Visible="true">@structureDialogTitle</FluentDialogHeader>
+    <FluentDialogBody>
+        <FluentStack Orientation="Orientation.Vertical" VerticalGap="8">
+            <FluentTextField @bind-Value="structureSearchText"
+            Placeholder="Type to filter value sets..."
+            @oninput="FilterStructures" />
+
+            <div style="height: 400px; overflow-y: auto; margin-bottom: 16px;">
+                <FluentDataGrid Items="@filteredStructures"
+                ResizableColumns="true"
+                GridTemplateColumns="1fr 2fr 1fr"
+                TGridItem="DbStructureDefinition">
+                    <SelectColumn TGridItem="DbStructureDefinition"
+                    SelectMode="DataGridSelectMode.Single"
+                    SelectFromEntireRow="true"
+                    @bind-SelectedItems="@selectedStructures" />
+                    <PropertyColumn Title="Name" Property="@(vs => vs.Name)" Sortable="true" />
+                    <PropertyColumn Title="URL" Property="@(vs => vs.UnversionedUrl)" Sortable="true" />
+                    <PropertyColumn Title="Version" Property="@(vs => vs.Version)" Sortable="true" />
+                </FluentDataGrid>
+            </div>
+
+            @if (selectedStructure != null)
+            {
+                <FluentCard>
+                    <FluentStack Orientation="Orientation.Vertical" VerticalGap="4">
+                        <FluentLabel Typo="Typography.H6">Selected Value Set</FluentLabel>
+                        <FluentLabel Typo="Typography.Body">Name: @selectedStructure.Name</FluentLabel>
+                        <FluentLabel Typo="Typography.Body">URL: @selectedStructure.UnversionedUrl</FluentLabel>
+                        <FluentLabel Typo="Typography.Body">Elements: @selectedStructure.SnapshotCount</FluentLabel>
+                    </FluentStack>
+                </FluentCard>
+            }
+
+            <FluentStack Orientation="Orientation.Horizontal" HorizontalGap="8" HorizontalAlignment="HorizontalAlignment.End">
+                <FluentButton Appearance="Appearance.Outline" OnClick="CancelValueSetSelection">Cancel</FluentButton>
+                <FluentButton Appearance="Appearance.Accent" OnClick="SelectStructure" Disabled="@(selectedStructure == null)">Select</FluentButton>
+            </FluentStack>
+        </FluentStack>
+    </FluentDialogBody>
+
+</FluentDialog>
+
 
 @code {
 
@@ -230,6 +334,17 @@
     };
 
     private Guid _selectedSdRowId = Guid.Empty;
+    private DbGraphSd.DbSdRow? _selectedSdRow = null;
+
+    private GridSort<DbGraphSd.DbElementRow>[] _elementSorters = [
+        GridSort<DbGraphSd.DbElementRow>.ByAscending(r => r[0] == null ? int.MaxValue : r[0]!.Element.ResourceFieldOrder),
+        GridSort<DbGraphSd.DbElementRow>.ByAscending(r => r[1] == null ? int.MaxValue : r[1]!.Element.ResourceFieldOrder),
+        GridSort<DbGraphSd.DbElementRow>.ByAscending(r => r[2] == null ? int.MaxValue : r[2]!.Element.ResourceFieldOrder),
+        GridSort<DbGraphSd.DbElementRow>.ByAscending(r => r[3] == null ? int.MaxValue : r[3]!.Element.ResourceFieldOrder),
+        GridSort<DbGraphSd.DbElementRow>.ByAscending(r => r[4] == null ? int.MaxValue : r[4]!.Element.ResourceFieldOrder),
+        GridSort<DbGraphSd.DbElementRow>.ByAscending(r => r[5] == null ? int.MaxValue : r[5]!.Element.ResourceFieldOrder),
+        GridSort<DbGraphSd.DbElementRow>.ByAscending(r => r[6] == null ? int.MaxValue : r[6]!.Element.ResourceFieldOrder),
+    ];
 
     private int _loadedStructureKey = -1;
     private SdRecForUi? sdUiRec = null;
@@ -316,6 +431,260 @@
     }
 
 
+    // Track open state of popovers
+    private Dictionary<string, bool> _popoverStates = new();
+
+    private bool IsPopoverOpen(string key)
+    {
+        return _popoverStates.TryGetValue(key, out bool value) && value;
+    }
+
+    private void SetPopoverState(string key, bool value)
+    {
+        _popoverStates[key] = value;
+        StateHasChanged();
+    }
+
+    private void TogglePopover(string key)
+    {
+        if (!_popoverStates.TryGetValue(key, out bool currentValue))
+        {
+            currentValue = false;
+        }
+        _popoverStates[key] = !currentValue;
+        StateHasChanged();
+    }
+
+
+    // New fields for the structure selection dialog
+    private FluentDialog? structureSelectionDialog;
+    private string structureDialogTitle = "Select Target Structure...";
+    private string structureSearchText = "";
+    private List<DbStructureDefinition> allStructures = [];
+    private IQueryable<DbStructureDefinition> filteredStructures = Enumerable.Empty<DbStructureDefinition>().AsQueryable();
+    private DbStructureDefinition? selectedStructure => selectedStructures.FirstOrDefault();
+    private IEnumerable<DbStructureDefinition> selectedStructures = [];
+    private bool dialogHidden = true;
+
+    // Dialog context data
+    private string currentDialogKey = "";
+    private int currentSourceValueSetKey;
+    private int currentSourcePackageIndex;
+    private int currentTargetPackageIndex;
+
+    // Show the ValueSet selection dialog with appropriate context
+    private void ShowStructureSelectionDialog(string dialogKey, int sourceStructureKey, int sourcePackageIndex, int targetPackageIndex)
+    {
+        currentDialogKey = dialogKey;
+        currentSourceValueSetKey = sourceStructureKey;
+        currentSourcePackageIndex = sourcePackageIndex;
+        currentTargetPackageIndex = targetPackageIndex;
+
+        // Set dialog title based on direction
+        structureDialogTitle = $"Select Structure from {_packages[targetPackageIndex].ShortName}";
+
+        // Reset selection
+        selectedStructures = [];
+        structureSearchText = "";
+
+        // Load structures for the target package
+        LoadStructuresForPackage(targetPackageIndex);
+
+        // Show dialog
+        dialogHidden = false;
+    }
+
+    // Primary action handler for the dialog
+    private void SelectStructure()
+    {
+        if (selectedStructure != null)
+        {
+            // Create a similar option object as used in the original code for compatibility
+            Option<DbStructureDefinition> selectedOption = new()
+                {
+                    Text = selectedStructure.Name + " - " + selectedStructure.UnversionedUrl,
+                    Value = selectedStructure
+                };
+
+            // Call the existing AddVsMapping with our selected value
+            AddSdMapping(currentDialogKey, currentSourceValueSetKey, currentSourcePackageIndex, currentTargetPackageIndex, selectedOption);
+        }
+
+        // valueSetSelectionDialog!.Hide();
+        dialogHidden = true;
+    }
+
+    private void AddSdMapping(string popKey, int sourceStructureKey, int sourcePackageIndex, int targetPackageIndex, object? selectedValue)
+    {
+        if ((selectedValue == null) ||
+            (selectedValue is not Option<DbStructureDefinition> selectedOption) ||
+            (selectedOption.Value == null) ||
+            (selectedOption.Value is not DbStructureDefinition targetSd))
+        {
+            // Close the popover after selection
+            SetPopoverState(popKey, false);
+            StateHasChanged();
+
+            return;
+        }
+
+        // resolve the package comparison
+        DbFhirPackageComparisonPair? packagePair = DbFhirPackageComparisonPair.SelectSingle(
+            Xver.DbConnection,
+            SourcePackageKey: _packages[sourcePackageIndex].Key,
+            TargetPackageKey: _packages[targetPackageIndex].Key);
+
+        if (packagePair == null)
+        {
+            // Close the popover after selection
+            SetPopoverState(popKey, false);
+            StateHasChanged();
+            return;
+        }
+
+        DbFhirPackageComparisonPair? reversePair = DbFhirPackageComparisonPair.SelectSingle(
+            Xver.DbConnection,
+            SourcePackageKey: _packages[targetPackageIndex].Key,
+            TargetPackageKey: _packages[sourcePackageIndex].Key);
+
+        if (reversePair == null)
+        {
+            // Close the popover after selection
+            SetPopoverState(popKey, false);
+            StateHasChanged();
+            return;
+        }
+
+        // resolve the source value set
+        DbStructureDefinition? sourceSd = DbStructureDefinition.SelectSingle(
+            Xver.DbConnection,
+            FhirPackageKey: _packages[sourcePackageIndex].Key,
+            Key: sourceStructureKey);
+
+        if (sourceSd == null)
+        {
+            // Close the popover after selection
+            SetPopoverState(popKey, false);
+            StateHasChanged();
+            return;
+        }
+
+        // create a new value set comparison
+        DbStructureComparison sdComparison = new()
+        {
+            Key = Xver.ComparisonDb.GetStructureComparisonKey(),
+            PackageComparisonKey = packagePair.Key,
+            SourceFhirPackageKey = packagePair.SourcePackageKey,
+            TargetFhirPackageKey = packagePair.TargetPackageKey,
+            SourceStructureKey = sourceStructureKey,
+            SourceCanonicalVersioned = sourceSd.VersionedUrl,
+            SourceCanonicalUnversioned = sourceSd.UnversionedUrl,
+            SourceVersion = sourceSd.Version,
+            SourceName = sourceSd.Name,
+            TargetStructureKey = targetSd.Key,
+            TargetCanonicalVersioned = targetSd.VersionedUrl,
+            TargetCanonicalUnversioned = targetSd.UnversionedUrl,
+            TargetVersion = targetSd.Version,
+            TargetName = targetSd.Name,
+            CompositeName = ComparisonDatabase.GetCompositeName(_packages[sourcePackageIndex], sourceSd, _packages[targetPackageIndex], targetSd),
+            SourceOverviewConceptMapUrl = null,
+            SourceStructureFmlUrl = null,
+            Relationship = null,
+            ConceptDomainRelationship = null,
+            ValueDomainRelationship = null,
+            IsGenerated = false,
+            LastReviewedOn = null,
+            LastReviewedBy = null,
+            Message = null,
+            IsIdentical = false,
+        };
+
+        DbComparisonCache<DbStructureComparison> sdComparisons = new();
+        DbComparisonCache<DbElementComparison> elementComparisons = new();
+        DbComparisonCache<DbElementTypeComparison> elementTypeComparisons = new();
+
+        sdComparisons.CacheAdd(sdComparison);
+
+        // run through the built-in comparison testing
+        Xver.Comparer.DoStructureComparison(
+            sdComparisons,
+            elementComparisons,
+            elementTypeComparisons,
+            _packages[sourcePackageIndex],
+            sourceSd,
+            _packages[targetPackageIndex],
+            targetSd,
+            sdComparison,
+            packagePair,
+            reversePair);
+
+        // apply our changes
+        sdComparisons.ComparisonsToAdd.Insert(Xver.DbConnection);
+        sdComparisons.ComparisonsToUpdate.Update(Xver.DbConnection);
+        sdComparisons.ComparisonsToDelete.Delete(Xver.DbConnection);
+
+        elementComparisons.ComparisonsToAdd.Insert(Xver.DbConnection);
+        elementComparisons.ComparisonsToUpdate.Update(Xver.DbConnection);
+        elementComparisons.ComparisonsToDelete.Delete(Xver.DbConnection);
+
+        elementTypeComparisons.ComparisonsToAdd.Insert(Xver.DbConnection);
+        elementTypeComparisons.ComparisonsToUpdate.Update(Xver.DbConnection);
+        elementTypeComparisons.ComparisonsToDelete.Delete(Xver.DbConnection);
+
+        // force reload of our UI contents
+        LoadStructure(true);
+
+        // Close the popover after selection
+        SetPopoverState(popKey, false);
+        StateHasChanged();
+    }
+
+    // Secondary action handler for the dialog
+    private void CancelValueSetSelection()
+    {
+        // valueSetSelectionDialog!.Hide();
+        dialogHidden = true;
+    }
+
+    // Load value sets for a specific package
+    private void LoadStructuresForPackage(int packageIndex)
+    {
+        try
+        {
+            allStructures = DbStructureDefinition.SelectList(
+                Xver.DbConnection,
+                FhirPackageKey: _packages[packageIndex].Key,
+                orderByProperties: [nameof(DbStructureDefinition.Name)]);
+
+            filteredStructures = allStructures.AsQueryable();
+        }
+        catch (Exception)
+        {
+            allStructures = [];
+            filteredStructures = Enumerable.Empty<DbStructureDefinition>().AsQueryable();
+        }
+    }
+
+    // Filter value sets based on search text
+    private void FilterStructures(ChangeEventArgs e)
+    {
+        string? searchText = e.Value?.ToString()?.ToLowerInvariant();
+
+        if (string.IsNullOrWhiteSpace(searchText))
+        {
+            filteredStructures = allStructures.AsQueryable();
+        }
+        else
+        {
+            filteredStructures = allStructures
+                .Where(vs =>
+                    vs.Name.ToLowerInvariant().Contains(searchText!) ||
+                    vs.UnversionedUrl.ToLowerInvariant().Contains(searchText!) ||
+                    (vs.Id?.ToLowerInvariant()?.Contains(searchText!) ?? false))
+                .AsQueryable();
+        }
+    }
+
     private void LoadPackages()
     {
         try
@@ -344,8 +713,17 @@
             return;
         }
 
+        if (_selectedSdRowId != row.RowId)
+        {
+            _selectedSdRowId = row.RowId;
+            _selectedSdRow = row;
+        }
+
+        row.BuildProjection(fullJoin: true);
+
         initialElementProjection = row.Projection;
         elementGraphProjection = initialElementProjection.AsQueryable();
+
         StateHasChanged();
     }
 
@@ -390,6 +768,11 @@
             if (sdUiRec.Projection.Count > 0)
             {
                 LoadMappingRow(sdUiRec.Projection[0]);
+            }
+            else
+            {
+                _selectedSdRow = null;
+                _selectedSdRowId = Guid.Empty;
             }
 
             StateHasChanged();

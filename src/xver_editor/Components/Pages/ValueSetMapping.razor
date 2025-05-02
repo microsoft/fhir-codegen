@@ -13,8 +13,10 @@
 @inject NavigationManager NavigationManager
 @inject XverAppConfig ServerConfig
 
+<PageTitle>@($"Mapping {PackageShortName}:{ValueSetName}")</PageTitle>
+
 <FluentStack Orientation="Orientation.Vertical" VerticalGap="8">
-    <FluentLabel Typo="Typography.H4">Value Set details for @ValueSetName (DB Key: @ValueSetKey)</FluentLabel>
+    <FluentLabel Typo="Typography.H4">Mapping Details details for @PackageShortName @ValueSetName</FluentLabel>
 
     @if ((Xver.IsOpen == false) || (Xver.DbConnection == null))
     {
@@ -102,31 +104,72 @@
         </FluentDataGrid>
 
         <br />
+
+        @if (_selectedVsRow != null)
+        {
+            <FluentLabel Typo="Typography.Header">Add new mapping:</FluentLabel>
+                @foreach (DbGraphVs.DbVsCell? cell in _selectedVsRow)
+                {
+                    if (cell == null)
+                    {
+                        continue;
+                    }
+
+                    <FluentStack Orientation="Orientation.Horizontal">
+                        @if (cell.FhirPackageIndex > 0)
+                        {
+                            int tpIndex = cell.FhirPackageIndex - 1;
+                            string dialogKey = $"add-lmap-{cell.Vs.Key}";
+                            <div>
+                                @* <FluentIcon Value="@(new Icons.Regular.Size20.Add())" /> *@
+                                @* <FluentIcon Value="@(new Icons.Regular.Size20.ArrowLeft())" /> *@
+                                <FluentButton Appearance="Appearance.Outline"
+                                              Title="@($"Add new mapping to {_packages[tpIndex].ShortName}")"
+                                              OnClick="@(() => ShowValueSetSelectionDialog(dialogKey, ValueSetKey, cell.FhirPackageIndex, tpIndex))">
+                                    <FluentLabel Typo="Typography.Body">@($"{_packages[cell.FhirPackageIndex].ShortName}:{cell.Vs.Name} to FHIR {_packages[tpIndex].ShortName}")</FluentLabel>
+                                </FluentButton>
+                            </div>
+                        }
+
+                        @if (cell.FhirPackageIndex < (_packages.Count - 1))
+                        {
+                            int tpIndex = cell.FhirPackageIndex + 1;
+                            string dialogKey = $"add-rmap-{cell.Vs.Key}";
+                            <div>
+                                @* <FluentIcon Value="@(new Icons.Regular.Size20.Add())" /> *@
+                                @* <FluentIcon Value="@(new Icons.Regular.Size20.ArrowRight())" /> *@
+                            <FluentButton Appearance="Appearance.Outline"
+                                              Title="@($"Add new mapping to {_packages[tpIndex].ShortName}")"
+                                              OnClick="@(() => ShowValueSetSelectionDialog(dialogKey, ValueSetKey, cell.FhirPackageIndex, tpIndex))">
+                                    <FluentLabel Typo="Typography.Body">@($"{_packages[cell.FhirPackageIndex].ShortName}:{cell.Vs.Name} to FHIR {_packages[tpIndex].ShortName}")</FluentLabel>
+                                </FluentButton>
+                            </div>
+                        }
+                    </FluentStack>
+                }
+        }
+
         <hr />
         <FluentLabel Typo="Typography.Header">Review element mappings:</FluentLabel>
 
         <FluentDataGrid Items="@conceptGraphProjection"
-        ResizableColumns="false"
-        GridTemplateColumns="@GetMappingTableColumns()"
-        MultiLine="true"
-        ShowHover="true"
-        class="alternating-grid">
+                        ResizableColumns="true"
+                        GridTemplateColumns="@GetMappingTableColumns()"
+                        MultiLine="true"
+                        ShowHover="true"
+                        GenerateHeader="GenerateHeaderOption.Sticky"
+                        class="alternating-grid">
             @for (int i = 0; i < _packages.Count; i++)
             {
                 int packageIndex = i;
-                <TemplateColumn Title="@_packages[packageIndex].ShortName" Tooltip="true" TooltipText="@(c => c[packageIndex]?.Concept.UiDisplayLong)">
-                    @{
-                        DbGraphVs.DbVsConceptCell? cell = context[packageIndex];
-                    }
-                    @if (cell != null)
-                    {
-                        <FluentLabel Typo="Typography.H6">@cell.Concept.Code</FluentLabel>
-                    }
-                    else
-                    {
-                        <FluentLabel Typo="Typography.Body"><em>No map target for @_packages[packageIndex].ShortName</em></FluentLabel>
-                    }
-                </TemplateColumn>
+                
+                <PropertyColumn Sortable="true"
+                                Title="@(_selectedVsRow?.CellAt(packageIndex)?.Vs.Name)"
+                                Tooltip="true"
+                                TooltipText="@(c => c[packageIndex]?.Concept.UiDisplayLong)"
+                                Property="@(r => r[packageIndex] == null ? "-" : r[packageIndex]!.Concept.Code)">
+                </PropertyColumn>
+
 
                 // add a comparison column if we are between two packages
                 @if (packageIndex < _packages.Count - 1)
@@ -135,7 +178,7 @@
                         @{
                             DbGraphVs.DbVsConceptCell? cell = context[packageIndex];
                         }
-                        @if (cell == null)
+                        @if ((cell == null) || (cell.RightCell == null))
                         {
                             <FluentButton>Add</FluentButton>
                         }
@@ -191,8 +234,86 @@
             }
         </FluentDataGrid>
 
+        <!-- Add a grid for unused codes -->
+@*         <FluentDataGrid GridTemplateColumns="@GetMappingTableColumns()"
+        GenerateHeader="GenerateHeaderOption.None"
+        TGridItem="string"
+        class="alternating-grid"
+        DisplayMode="DataGridDisplayMode.Grid"
+        MultiLine="true"
+        ResizableColumns="false">
+            <FluentDataGridRow>
+                @for (int i = 0; i < _packages.Count; i++)
+                {
+                    int packageIndex = i;
+                    <FluentDataGridCell title="@(_selectedVsRow?.CellAt(packageIndex)?.Vs.Name)">
+                        <FluentLabel Typo="Typography.H6">@_selectedVsRow?.CellAt(packageIndex)?.Vs.Name</FluentLabel>
+                    </FluentDataGridCell>
+
+                    // add a comparison column if we are between two packages
+                    @if (packageIndex < _packages.Count - 1)
+                    {
+                        <FluentDataGridCell>
+                            <FluentLabel Typo="Typography.H4">@GetComparisonColName(packageIndex)</FluentLabel>
+                        </FluentDataGridCell>
+                    }
+                }
+            </FluentDataGridRow>
+        </FluentDataGrid>
+ *@
+
     }
 </FluentStack>
+
+
+
+<FluentDialog @ref="valueSetSelectionDialog"
+                Modal="true"
+                Hidden="@dialogHidden"
+                Class="vs-dialog-container">
+    <FluentDialogHeader Visible="true">@valueSetDialogTitle</FluentDialogHeader>
+    <FluentDialogBody>
+        <FluentStack Orientation="Orientation.Vertical" VerticalGap="8">
+            <FluentTextField @bind-Value="valueSetSearchText"
+            Placeholder="Type to filter value sets..."
+            @oninput="FilterValueSets" />
+
+            <div style="height: 400px; overflow-y: auto; margin-bottom: 16px;">
+                <FluentDataGrid Items="@filteredValueSets"
+                ResizableColumns="true"
+                GridTemplateColumns="1fr 2fr 1fr"
+                TGridItem="DbValueSet">
+                    <SelectColumn TGridItem="DbValueSet"
+                    SelectMode="DataGridSelectMode.Single"
+                    SelectFromEntireRow="true"
+                    @bind-SelectedItems="@selectedValueSets" />
+                    <PropertyColumn Title="Name" Property="@(vs => vs.Name)" Sortable="true" />
+                    <PropertyColumn Title="URL" Property="@(vs => vs.UnversionedUrl)" Sortable="true" />
+                    <PropertyColumn Title="Version" Property="@(vs => vs.Version)" Sortable="true" />
+                </FluentDataGrid>
+            </div>
+
+            @if (selectedValueSet != null)
+            {
+                <FluentCard>
+                    <FluentStack Orientation="Orientation.Vertical" VerticalGap="4">
+                        <FluentLabel Typo="Typography.H6">Selected Value Set</FluentLabel>
+                        <FluentLabel Typo="Typography.Body">Name: @selectedValueSet.Name</FluentLabel>
+                        <FluentLabel Typo="Typography.Body">URL: @selectedValueSet.UnversionedUrl</FluentLabel>
+                        <FluentLabel Typo="Typography.Body">Concepts: @selectedValueSet.ConceptCount</FluentLabel>
+                    </FluentStack>
+                </FluentCard>
+            }
+
+            <FluentStack Orientation="Orientation.Horizontal" HorizontalGap="8" HorizontalAlignment="HorizontalAlignment.End">
+                <FluentButton Appearance="Appearance.Outline" OnClick="CancelValueSetSelection">Cancel</FluentButton>
+                <FluentButton Appearance="Appearance.Accent" OnClick="SelectValueSet" Disabled="@(selectedValueSet == null)">Select</FluentButton>
+            </FluentStack>
+        </FluentStack>
+    </FluentDialogBody>
+
+</FluentDialog>
+
 
 @code {
 
@@ -221,6 +342,7 @@
 
     private Guid _selectedVsRowId = Guid.Empty;
 
+    private DbGraphVs.DbVsRow? _selectedVsRow = null;
     private int _loadedVsKey = -1;
     private VsRecForUi? vsUiRec = null;
     private List<DbFhirPackage> _packages = [];
@@ -307,6 +429,254 @@
         return string.Join(' ', cols);
     }
 
+    // Track open state of popovers
+    private Dictionary<string, bool> _popoverStates = new();
+
+    private bool IsPopoverOpen(string key)
+    {
+        return _popoverStates.TryGetValue(key, out bool value) && value;
+    }
+
+    private void SetPopoverState(string key, bool value)
+    {
+        _popoverStates[key] = value;
+        StateHasChanged();
+    }
+
+    private void TogglePopover(string key)
+    {
+        if (!_popoverStates.TryGetValue(key, out bool currentValue))
+        {
+            currentValue = false;
+        }
+        _popoverStates[key] = !currentValue;
+        StateHasChanged();
+    }
+
+
+    // New fields for the ValueSet selection dialog
+    private FluentDialog? valueSetSelectionDialog;
+    private string valueSetDialogTitle = "Select Target Value Set...";
+    private string valueSetSearchText = "";
+    private List<DbValueSet> allValueSets = [];
+    private IQueryable<DbValueSet> filteredValueSets = Enumerable.Empty<DbValueSet>().AsQueryable();
+    private DbValueSet? selectedValueSet => selectedValueSets.FirstOrDefault();
+    private IEnumerable<DbValueSet> selectedValueSets = [];
+    private bool dialogHidden = true;
+
+    // Dialog context data
+    private string currentDialogKey = "";
+    private int currentSourceValueSetKey;
+    private int currentSourcePackageIndex;
+    private int currentTargetPackageIndex;
+
+    // Show the ValueSet selection dialog with appropriate context
+    private void ShowValueSetSelectionDialog(string dialogKey, int sourceValueSetKey, int sourcePackageIndex, int targetPackageIndex)
+    {
+        currentDialogKey = dialogKey;
+        currentSourceValueSetKey = sourceValueSetKey;
+        currentSourcePackageIndex = sourcePackageIndex;
+        currentTargetPackageIndex = targetPackageIndex;
+
+        // Set dialog title based on direction
+        valueSetDialogTitle = $"Select Value Set from {_packages[targetPackageIndex].ShortName}";
+
+        // Reset selection
+        selectedValueSets = [];
+        valueSetSearchText = "";
+
+        // Load value sets for the target package
+        LoadValueSetsForPackage(targetPackageIndex);
+
+        // Show dialog
+        // valueSetSelectionDialog?.Show();
+        dialogHidden = false;
+    }
+
+    // Primary action handler for the dialog
+    private void SelectValueSet()
+    {
+        if (selectedValueSet != null)
+        {
+            // Create a similar option object as used in the original code for compatibility
+            Option<DbValueSet> selectedOption = new()
+            {
+                Text = selectedValueSet.Name + " - " + selectedValueSet.UnversionedUrl,
+                Value = selectedValueSet
+            };
+
+            // Call the existing AddVsMapping with our selected value
+            AddVsMapping(currentDialogKey, currentSourceValueSetKey, currentSourcePackageIndex, currentTargetPackageIndex, selectedOption);
+        }
+
+        // valueSetSelectionDialog!.Hide();
+        dialogHidden = true;
+    }
+
+
+    private void AddVsMapping(string popKey, int sourceValueSetKey, int sourcePackageIndex, int targetPackageIndex, object? selectedValue)
+    {
+        if ((selectedValue == null) ||
+            (selectedValue is not Option<DbValueSet> selectedOption) ||
+            (selectedOption.Value == null) ||
+            (selectedOption.Value is not DbValueSet targetVs))
+        {
+            // Close the popover after selection
+            SetPopoverState(popKey, false);
+            StateHasChanged();
+
+            return;
+        }
+
+        // resolve the package comparison
+        DbFhirPackageComparisonPair? packagePair = DbFhirPackageComparisonPair.SelectSingle(
+            Xver.DbConnection,
+            SourcePackageKey: _packages[sourcePackageIndex].Key,
+            TargetPackageKey: _packages[targetPackageIndex].Key);
+
+        if (packagePair == null)
+        {
+            // Close the popover after selection
+            SetPopoverState(popKey, false);
+            StateHasChanged();
+            return;
+        }
+
+        DbFhirPackageComparisonPair? reversePair = DbFhirPackageComparisonPair.SelectSingle(
+            Xver.DbConnection,
+            SourcePackageKey: _packages[targetPackageIndex].Key,
+            TargetPackageKey: _packages[sourcePackageIndex].Key);
+
+        if (reversePair == null)
+        {
+            // Close the popover after selection
+            SetPopoverState(popKey, false);
+            StateHasChanged();
+            return;
+        }
+
+        // resolve the source value set
+        DbValueSet? sourceVs = DbValueSet.SelectSingle(
+            Xver.DbConnection,
+            FhirPackageKey: _packages[sourcePackageIndex].Key,
+            Key: sourceValueSetKey);
+
+        if (sourceVs == null)
+        {
+            // Close the popover after selection
+            SetPopoverState(popKey, false);
+            StateHasChanged();
+            return;
+        }
+
+        // create a new value set comparison
+        DbValueSetComparison vsComparison = new()
+            {
+                Key = Xver.ComparisonDb.GetValueSetComparisonKey(),
+                PackageComparisonKey = packagePair.Key,
+                SourceFhirPackageKey = packagePair.SourcePackageKey,
+                TargetFhirPackageKey = packagePair.TargetPackageKey,
+                SourceValueSetKey = sourceValueSetKey,
+                SourceCanonicalVersioned = sourceVs.VersionedUrl,
+                SourceCanonicalUnversioned = sourceVs.UnversionedUrl,
+                SourceVersion = sourceVs.Version,
+                SourceName = sourceVs.Name,
+                TargetValueSetKey = targetVs.Key,
+                TargetCanonicalVersioned = targetVs.VersionedUrl,
+                TargetCanonicalUnversioned = targetVs.UnversionedUrl,
+                TargetVersion = targetVs.Version,
+                TargetName = targetVs.Name,
+                CompositeName = ComparisonDatabase.GetCompositeName(_packages[sourcePackageIndex], sourceVs, _packages[targetPackageIndex], targetVs),
+                SourceConceptMapUrl = null,
+                SourceConceptMapAdditionalUrls = null,
+                Relationship = null,
+                IsGenerated = false,
+                LastReviewedOn = null,
+                LastReviewedBy = null,
+                Message = null,
+                IsIdentical = false,
+                CodesAreIdentical = false,
+            };
+
+        DbComparisonCache<DbValueSetComparison> vsComparisons = new();
+        DbComparisonCache<DbValueSetConceptComparison> conceptComparisons = new();
+
+        vsComparisons.CacheAdd(vsComparison);
+
+        // run through the built-in comparison testing
+        Xver.Comparer.DoValueSetComparison(
+            vsComparisons,
+            conceptComparisons,
+            _packages[sourcePackageIndex],
+            sourceVs,
+            _packages[targetPackageIndex],
+            targetVs,
+            vsComparison,
+            packagePair,
+            reversePair);
+
+        // apply our changes
+        vsComparisons.ComparisonsToAdd.Insert(Xver.DbConnection);
+        vsComparisons.ComparisonsToUpdate.Update(Xver.DbConnection);
+        vsComparisons.ComparisonsToDelete.Delete(Xver.DbConnection);
+
+        conceptComparisons.ComparisonsToAdd.Insert(Xver.DbConnection);
+        conceptComparisons.ComparisonsToUpdate.Update(Xver.DbConnection);
+        conceptComparisons.ComparisonsToDelete.Delete(Xver.DbConnection);
+
+        // force reload of our UI contents
+        LoadValueSet(true);
+
+        // Close the popover after selection
+        SetPopoverState(popKey, false);
+        StateHasChanged();
+    }
+
+    // Secondary action handler for the dialog
+    private void CancelValueSetSelection()
+    {
+        // valueSetSelectionDialog!.Hide();
+        dialogHidden = true;
+    }
+
+    // Load value sets for a specific package
+    private void LoadValueSetsForPackage(int packageIndex)
+    {
+        try
+        {
+            allValueSets = DbValueSet.SelectList(
+                Xver.DbConnection,
+                FhirPackageKey: _packages[packageIndex].Key,
+                orderByProperties: [nameof(DbValueSet.Name)]);
+
+            filteredValueSets = allValueSets.AsQueryable();
+        }
+        catch (Exception)
+        {
+            allValueSets = [];
+            filteredValueSets = Enumerable.Empty<DbValueSet>().AsQueryable();
+        }
+    }
+
+    // Filter value sets based on search text
+    private void FilterValueSets(ChangeEventArgs e)
+    {
+        string? searchText = e.Value?.ToString()?.ToLowerInvariant();
+
+        if (string.IsNullOrWhiteSpace(searchText))
+        {
+            filteredValueSets = allValueSets.AsQueryable();
+        }
+        else
+        {
+            filteredValueSets = allValueSets
+                .Where(vs =>
+                    vs.Name.ToLowerInvariant().Contains(searchText!) ||
+                    vs.UnversionedUrl.ToLowerInvariant().Contains(searchText!) ||
+                    (vs.Id?.ToLowerInvariant()?.Contains(searchText!) ?? false))
+                .AsQueryable();
+        }
+    }
 
     private void LoadPackages()
     {
@@ -339,7 +709,10 @@
         if (_selectedVsRowId != row.RowId)
         {
             _selectedVsRowId = row.RowId;
+            _selectedVsRow = row;
         }
+
+        row.BuildConceptProjection(fullJoin: true);
 
         initialConceptProjection = row.Projection;
         conceptGraphProjection = initialConceptProjection.AsQueryable();
@@ -390,6 +763,7 @@
             else
             {
                 _selectedVsRowId = Guid.Empty;
+                _selectedVsRow = null;
             }
 
             StateHasChanged();

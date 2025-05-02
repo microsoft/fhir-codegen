@@ -33,6 +33,7 @@ public class DbGraphVs
         private readonly List<DbValueSetConcept> _concepts = null!;
 
         public required DbVsRow Row { get; init; }
+        public required int FhirPackageIndex { get; init; }
         public required DbValueSet Vs { get; init; }
         public required List<DbValueSetConcept> Concepts
         {
@@ -94,6 +95,15 @@ public class DbGraphVs
 
         public int Length => _cells.Length;
 
+        public DbVsCell? CellAt(int index)
+        {
+            if (index >= 0 && index < _cells.Length)
+            {
+                return _cells[index];
+            }
+            return null;
+        }
+
         // Add indexer to access cells directly
         public DbVsCell? this[int index]
         {
@@ -129,7 +139,7 @@ public class DbGraphVs
             }
         }
 
-        public List<DbVsConceptRow> BuildConceptProjection(int? keyColumnIndex = null)
+        public List<DbVsConceptRow> BuildConceptProjection(int? keyColumnIndex = null, bool fullJoin = false)
         {
             int keyColIndex = keyColumnIndex ??= _graph._keyCol;
 
@@ -143,6 +153,7 @@ public class DbGraphVs
                 return [];
             }
 
+            HashSet<int> usedConceptKeys = [];
             List<DbVsConceptRow> results = [];
 
             // iterate over the concepts for this value set
@@ -158,12 +169,14 @@ public class DbGraphVs
                     Concept = concept,
                 };
 
+                usedConceptKeys.Add(concept.Key);
+
                 List<DbVsConceptRow> right = [];
 
                 // project right
                 if (startCol < _graph._packages.Count)
                 {
-                    right = projectConcept(row, startCol, true);
+                    right = projectConcept(row, startCol, true, usedConceptKeys);
                 }
 
                 // if we started at the first definition, we are done
@@ -176,7 +189,115 @@ public class DbGraphVs
                 // project left and add as we go
                 foreach (DbVsConceptRow r in right)
                 {
-                    results.AddRange(projectConcept(r, startCol, false));
+                    results.AddRange(projectConcept(r, startCol, false, usedConceptKeys));
+                }
+            }
+
+            // if we are doing a full join, check for unused VS mappings
+            if (fullJoin)
+            {
+                if (keyColIndex < (_graph._packages.Count - 1))
+                {
+                    for (int colIndex = keyColIndex + 1; colIndex < _graph._packages.Count; colIndex++)
+                    {
+                        if (_cells[colIndex] == null)
+                        {
+                            continue;
+                        }
+
+                        foreach (DbValueSetConcept concept in _cells[colIndex]!.Concepts)
+                        {
+                            if (usedConceptKeys.Contains(concept.Key))
+                            {
+                                continue;
+                            }
+
+                            // add a new row
+                            DbVsConceptRow row = new(_graph, this);
+
+                            row[colIndex] = new()
+                            {
+                                Row = row,
+                                VsCell = _cells[colIndex]!,
+                                Concept = concept,
+                            };
+
+                            usedConceptKeys.Add(concept.Key);
+
+                            List<DbVsConceptRow> right = [];
+
+                            // project right
+                            if (colIndex < _graph._packages.Count)
+                            {
+                                right = projectConcept(row, colIndex, true, usedConceptKeys);
+                            }
+
+                            // if we started at the first definition, we are done
+                            if (colIndex == 0)
+                            {
+                                results.AddRange(right);
+                                continue;
+                            }
+
+                            // project left and add as we go
+                            foreach (DbVsConceptRow r in right)
+                            {
+                                results.AddRange(projectConcept(r, colIndex, false, usedConceptKeys));
+                            }
+                        }
+                    }
+                }
+
+                if (keyColIndex > 0)
+                {
+                    for (int colIndex = keyColIndex - 1; colIndex >= 0; colIndex--)
+                    {
+                        if (_cells[colIndex] == null)
+                        {
+                            continue;
+                        }
+
+                        foreach (DbValueSetConcept concept in _cells[colIndex]!.Concepts)
+                        {
+                            if (usedConceptKeys.Contains(concept.Key))
+                            {
+                                continue;
+                            }
+
+                            // add a new row
+                            DbVsConceptRow row = new(_graph, this);
+
+                            row[colIndex] = new()
+                            {
+                                Row = row,
+                                VsCell = _cells[colIndex]!,
+                                Concept = concept,
+                            };
+
+                            usedConceptKeys.Add(concept.Key);
+
+                            List<DbVsConceptRow> right = [];
+
+                            // project right
+                            if (colIndex < _graph._packages.Count)
+                            {
+                                right = projectConcept(row, colIndex, true, usedConceptKeys);
+                            }
+
+                            // if we started at the first definition, we are done
+                            if (colIndex == 0)
+                            {
+                                results.AddRange(right);
+                                continue;
+                            }
+
+                            // project left and add as we go
+                            foreach (DbVsConceptRow r in right)
+                            {
+                                results.AddRange(projectConcept(r, colIndex, false, usedConceptKeys));
+                            }
+                        }
+                    }
                 }
             }
 
@@ -189,7 +310,8 @@ public class DbGraphVs
         private List<DbVsConceptRow> projectConcept(
             DbVsConceptRow incomingRow,
             int column,
-            bool projectRight)
+            bool projectRight,
+            HashSet<int> usedConceptKeys)
         {
             if ((incomingRow[column] == null) ||
                 (_cells[column] == null))
@@ -293,8 +415,10 @@ public class DbGraphVs
                     row[column]!.LeftComparison = edge;
                 }
 
+                usedConceptKeys.Add(concept.Key);
+
                 // recurse
-                List<DbVsConceptRow> next = projectConcept(row, nextCol, projectRight);
+                List<DbVsConceptRow> next = projectConcept(row, nextCol, projectRight, usedConceptKeys);
 
                 // combine results
                 results.AddRange(next);
@@ -484,6 +608,7 @@ public class DbGraphVs
         row[startCol] = new()
         {
             Row = row,
+            FhirPackageIndex = startCol,
             Vs = _keyVs,
             Concepts = DbValueSetConcept.SelectList(
                 _db,
@@ -562,6 +687,7 @@ public class DbGraphVs
                 row[nextCol] = new()
                 {
                     Row = row,
+                    FhirPackageIndex = nextCol,
                     Vs = DbValueSet.SelectSingle(_db, Key: edge.TargetValueSetKey) ?? throw new Exception($"Failed to resolve compared ValueSet: {edge.TargetValueSetKey}!"),
                     Concepts = DbValueSetConcept.SelectList(
                         _db,
@@ -583,6 +709,7 @@ public class DbGraphVs
                 row[nextCol] = new()
                 {
                     Row = row,
+                    FhirPackageIndex = nextCol,
                     Vs = DbValueSet.SelectSingle(_db, Key: edge.TargetValueSetKey) ?? throw new Exception($"Failed to resolve compared ValueSet: {edge.TargetValueSetKey}!"),
                     Concepts = DbValueSetConcept.SelectList(
                         _db,
