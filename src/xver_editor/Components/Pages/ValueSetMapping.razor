@@ -46,7 +46,7 @@
             @for (int i = 0; i < _packages.Count; i++)
             {
                 int packageIndex = i;
-                <TemplateColumn Title="@_packages[packageIndex].ShortName">
+                <TemplateColumn Title="@_packages[packageIndex].ShortName" Tooltip="true" TooltipText="@(c => c.CellAt(packageIndex)?.Vs.UiDisplayLong)">
                     @{
                         DbGraphVs.DbVsCell? cell = context[packageIndex];
                     }
@@ -107,82 +107,111 @@
 
         @if (_selectedVsRow != null)
         {
-            <FluentLabel Typo="Typography.Header">Add new mapping:</FluentLabel>
-                @foreach (DbGraphVs.DbVsCell? cell in _selectedVsRow)
+            <FluentDataGrid GenerateHeader="GenerateHeaderOption.None" TGridItem="string" DisplayMode="DataGridDisplayMode.Table" >
+                <FluentDataGridRow RowType="DataGridRowType.Header">
+                    <FluentDataGridCell GridColumn="1">
+                        <FluentLabel Typo="Typography.Header">Add new mapping:</FluentLabel>
+                    </FluentDataGridCell>
+                </FluentDataGridRow>
+
+                @foreach ((DbGraphVs.DbVsCell? cell, int cellIndex) in _selectedVsRow.Select((value, idx) => (value, idx)))
                 {
                     if (cell == null)
                     {
                         continue;
                     }
 
-                    <FluentStack Orientation="Orientation.Horizontal">
-                        @if (cell.FhirPackageIndex > 0)
-                        {
-                            int tpIndex = cell.FhirPackageIndex - 1;
-                            string dialogKey = $"add-lmap-{cell.Vs.Key}";
-                            <div>
-                                @* <FluentIcon Value="@(new Icons.Regular.Size20.Add())" /> *@
-                                @* <FluentIcon Value="@(new Icons.Regular.Size20.ArrowLeft())" /> *@
-                                <FluentButton Appearance="Appearance.Outline"
-                                              Title="@($"Add new mapping to {_packages[tpIndex].ShortName}")"
-                                              OnClick="@(() => ShowValueSetSelectionDialog(dialogKey, ValueSetKey, cell.FhirPackageIndex, tpIndex))">
-                                    <FluentLabel Typo="Typography.Body">@($"{_packages[cell.FhirPackageIndex].ShortName}:{cell.Vs.Name} to FHIR {_packages[tpIndex].ShortName}")</FluentLabel>
-                                </FluentButton>
-                            </div>
-                        }
-
-                        @if (cell.FhirPackageIndex < (_packages.Count - 1))
-                        {
-                            int tpIndex = cell.FhirPackageIndex + 1;
-                            string dialogKey = $"add-rmap-{cell.Vs.Key}";
-                            <div>
-                                @* <FluentIcon Value="@(new Icons.Regular.Size20.Add())" /> *@
-                                @* <FluentIcon Value="@(new Icons.Regular.Size20.ArrowRight())" /> *@
-                            <FluentButton Appearance="Appearance.Outline"
-                                              Title="@($"Add new mapping to {_packages[tpIndex].ShortName}")"
-                                              OnClick="@(() => ShowValueSetSelectionDialog(dialogKey, ValueSetKey, cell.FhirPackageIndex, tpIndex))">
-                                    <FluentLabel Typo="Typography.Body">@($"{_packages[cell.FhirPackageIndex].ShortName}:{cell.Vs.Name} to FHIR {_packages[tpIndex].ShortName}")</FluentLabel>
-                                </FluentButton>
-                            </div>
-                        }
-                    </FluentStack>
+                    <FluentDataGridRow RowType="DataGridRowType.Default">
+                        <FluentDataGridCell GridColumn=1>@($"{_packages[cellIndex].ShortName}:{cell.Vs.Name}")</FluentDataGridCell>
+                        <FluentDataGridCell GridColumn=2>
+                            @if (cellIndex > 0)
+                            {
+                                int tpIndex = cellIndex - 1;
+                                string dialogKey = $"add-lmap-{cell.Vs.Key}";
+                                <div>
+                                    <FluentButton Appearance="Appearance.Outline"
+                                    Title="@($"Add new mapping from {_packages[cellIndex].ShortName}:{cell.Vs.Name} to {_packages[tpIndex].ShortName}")"
+                                    OnClick="@(() => ShowValueSetSelectionDialog(dialogKey, ValueSetKey, cellIndex, tpIndex))">
+                                        <FluentLabel Typo="Typography.Body">@($"{_packages[cellIndex].ShortName}:{cell.Vs.Name} to FHIR {_packages[tpIndex].ShortName}")</FluentLabel>
+                                    </FluentButton>
+                                </div>
+                            }
+                        </FluentDataGridCell>
+                        <FluentDataGridCell GridColumn=3>
+                            @if (cellIndex < _lastPackageIndex)
+                            {
+                                int tpIndex = cellIndex + 1;
+                                string dialogKey = $"add-rmap-{cell.Vs.Key}";
+                                <div>
+                                    <FluentButton Appearance="Appearance.Outline"
+                                    Title="@($"Add new mapping from {_packages[cellIndex].ShortName}:{cell.Vs.Name} to {_packages[tpIndex].ShortName}")"
+                                    OnClick="@(() => ShowValueSetSelectionDialog(dialogKey, ValueSetKey, cellIndex, tpIndex))">
+                                        <FluentLabel Typo="Typography.Body">@($"{_packages[cellIndex].ShortName}:{cell.Vs.Name} to FHIR {_packages[tpIndex].ShortName}")</FluentLabel>
+                                    </FluentButton>
+                                </div>
+                            }
+                        </FluentDataGridCell>
+                    </FluentDataGridRow>
                 }
+            </FluentDataGrid>
         }
 
         <hr />
         <FluentLabel Typo="Typography.Header">Review element mappings:</FluentLabel>
 
         <FluentDataGrid Items="@conceptGraphProjection"
-                        ResizableColumns="true"
-                        GridTemplateColumns="@GetMappingTableColumns()"
-                        MultiLine="true"
-                        ShowHover="true"
-                        GenerateHeader="GenerateHeaderOption.Sticky"
-                        class="alternating-grid">
+        ResizableColumns="true"
+        GridTemplateColumns="@GetMappingTableColumns()"
+        MultiLine="true"
+        ShowHover="true"
+        GenerateHeader="GenerateHeaderOption.Sticky">
             @for (int i = 0; i < _packages.Count; i++)
             {
                 int packageIndex = i;
-                
-                <PropertyColumn Sortable="true"
-                                Title="@(_selectedVsRow?.CellAt(packageIndex)?.Vs.Name)"
+                <TemplateColumn Sortable="true"
+                                SortBy="@_conceptSorters[packageIndex]"
+                                HeaderTooltip="@(_selectedVsRow?.CellAt(packageIndex)?.Vs.UiDisplayLong)"
                                 Tooltip="true"
-                                TooltipText="@(c => c[packageIndex]?.Concept.UiDisplayLong)"
-                                Property="@(r => r[packageIndex] == null ? "-" : r[packageIndex]!.Concept.Code)">
-                </PropertyColumn>
+                                TooltipText="@(c => c[packageIndex]?.Concept.UiDisplayLong ?? $"Add mapping to {_packages[packageIndex].ShortName}:{_selectedVsRow?.CellAt(packageIndex)?.Vs.Name}")"
+                                Title="@(_selectedVsRow?.CellAt(packageIndex)?.Vs.Name)">
+                    @{
+                        if (context[packageIndex] == null)
+                        {
+                            (bool neighborDown, bool neighborUp) = context.HasNeigbors(packageIndex);
+                            if (neighborDown)
+                            {
+                                <FluentButton>Add mapping to @_packages[packageIndex].ShortName</FluentButton>
+                            }
+
+                            if (neighborDown && neighborUp)
+                            {
+                                <br />
+                            }
+
+                            if (neighborUp)
+                            {
+                                <FluentButton>Add mapping to @_packages[packageIndex].ShortName</FluentButton>
+                            }
+                        }
+                        else
+                        {
+                            <FluentBadge Appearance="Appearance.Accent">@(context[packageIndex]?.Concept.Code)</FluentBadge>
+                        }
+                    }
+                </TemplateColumn>
 
 
                 // add a comparison column if we are between two packages
-                @if (packageIndex < _packages.Count - 1)
+                @if (packageIndex < _lastPackageIndex)
                 {
-                    <TemplateColumn Title="@(GetComparisonColName(packageIndex))" TGridItem="DbGraphVs.DbVsConceptRow">
+                    <TemplateColumn Title="@(GetComparisonColName(packageIndex))" HeaderTooltip="@(GetComparisonColName(packageIndex))" TGridItem="DbGraphVs.DbVsConceptRow">
                         @{
                             DbGraphVs.DbVsConceptCell? cell = context[packageIndex];
                         }
                         @if ((cell == null) || (cell.RightCell == null))
                         {
-                            <FluentButton>Add</FluentButton>
                         }
-                        else if (cell.BidirectionalRight() != null)
+                        else
                         {
                             <FluentStack Orientation="Orientation.Vertical">
                                 @if (cell.BidirectionalRight() == BidirectionalRelationshipCodes.Mismatched)
@@ -224,10 +253,6 @@
                                 SelectedOptionChanged="@(EventCallback.Factory.Create<Option<BidirectionalRelationshipCodes>>(this, (value) => ElementRelationshipChanged(context, cell, value)))" />
                             <br/>
     *@
-                        }
-                        else
-                        {
-
                         }
                     </TemplateColumn>
                 }
@@ -341,11 +366,22 @@
     };
 
     private Guid _selectedVsRowId = Guid.Empty;
-
     private DbGraphVs.DbVsRow? _selectedVsRow = null;
+
+    private GridSort<DbGraphVs.DbVsConceptRow>[] _conceptSorters = [
+        GridSort<DbGraphVs.DbVsConceptRow>.ByAscending(r => r[0] == null ? string.Empty : r[0]!.Concept.Code),
+        GridSort<DbGraphVs.DbVsConceptRow>.ByAscending(r => r[1] == null ? string.Empty : r[1]!.Concept.Code),
+        GridSort<DbGraphVs.DbVsConceptRow>.ByAscending(r => r[2] == null ? string.Empty : r[2]!.Concept.Code),
+        GridSort<DbGraphVs.DbVsConceptRow>.ByAscending(r => r[3] == null ? string.Empty : r[3]!.Concept.Code),
+        GridSort<DbGraphVs.DbVsConceptRow>.ByAscending(r => r[4] == null ? string.Empty : r[4]!.Concept.Code),
+        GridSort<DbGraphVs.DbVsConceptRow>.ByAscending(r => r[5] == null ? string.Empty : r[5]!.Concept.Code),
+        GridSort<DbGraphVs.DbVsConceptRow>.ByAscending(r => r[6] == null ? string.Empty : r[6]!.Concept.Code),
+    ];
+
     private int _loadedVsKey = -1;
     private VsRecForUi? vsUiRec = null;
     private List<DbFhirPackage> _packages = [];
+    private int _lastPackageIndex = -1;
     private IQueryable<DbGraphVs.DbVsRow>? vsGraphProjection = null;
     private List<DbGraphVs.DbVsConceptRow> initialConceptProjection = [];
     private IQueryable<DbGraphVs.DbVsConceptRow>? conceptGraphProjection = null;
@@ -685,10 +721,12 @@
             _packages = DbFhirPackage.SelectList(
                 Xver.DbConnection,
                 orderByProperties: [nameof(DbFhirPackage.ShortName)]);
+            _lastPackageIndex = _packages.Count - 1;
         }
         catch (Exception)
         {
             _packages = [];
+            _lastPackageIndex = -1;
         }
     }
 

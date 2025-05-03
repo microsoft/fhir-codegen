@@ -369,19 +369,19 @@ fluent-number-field {
 
 .sd-dialog-container {
     min-height: 800px;
-    width: 1000px;
+    width: 1200px;
 }
 
 /* Apply alternating row colors */
-::deep .mapping-grid fluent-data-grid-row:nth-child(even) {
+/*::deep .mapping-grid fluent-data-grid-row:nth-child(even) {
     background-color: var(--neutral-layer-4);
-}
+}*/
 
 /* Highlight hovered row */
-::deep .mapping-grid fluent-data-grid-row:hover {
+/*::deep .mapping-grid fluent-data-grid-row:hover {
     background-color: var(--neutral-layer-hover);
     cursor: pointer;
-}
+}*/
 
 /* Add this to your style block */
 ::deep .fluent-radio-group {

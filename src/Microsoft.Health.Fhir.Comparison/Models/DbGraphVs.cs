@@ -529,6 +529,22 @@ public class DbGraphVs
         public DbVsConceptCell?[] Cells => _cells;
         public int Length => _cells.Length;
 
+        public (bool, bool) HasNeigbors(int index)
+        {
+            if (index == 0)
+            {
+                return (false, _cells[1] != null);
+            }
+
+            if (index == _cells.Length - 1)
+            {
+                return (_cells[_cells.Length - 2] != null, false);
+            }
+
+            return (_cells[index - 1] != null, _cells[index + 1] != null);
+        }
+
+
         // Add indexer to access cells directly
         public DbVsConceptCell? this[int index]
         {

@@ -1492,16 +1492,67 @@ public class FhirDbComparer
 
                 // check to see if the relationship makes sense as an inverse
                 CMR? expectedInverseRelationship = invert(elementComparison.Relationship);
-                if ((inverseComparison.LastReviewedOn == null) &&
-                    (inverseComparison.Relationship != expectedInverseRelationship))
+                if (inverseComparison.Relationship != expectedInverseRelationship)
                 {
-                    inverseComparison.Message = inverseComparison.Message +
-                        $" Updated relationship from `{inverseComparison.Relationship}` to `{expectedInverseRelationship}`" +
-                        $" based on the inverse comparsion {elementComparison.Key}, which has a relationship" +
-                        $" of `{elementComparison.Relationship}`.";
-                    inverseComparison.Relationship = expectedInverseRelationship;
+                    // check for both being reviewed
+                    if ((elementComparison.LastReviewedOn != null) &&
+                        (inverseComparison.LastReviewedOn != null))
+                    {
+                        // cannot update either
+                    }
+                    //// if the current has been reviewed, update the inverse
+                    //else if (elementComparison.LastReviewedOn != null)
+                    //{
+                    //    inverseComparison.Message = inverseComparison.Message +
+                    //        $" Updated relationship from `{inverseComparison.Relationship}` to `{expectedInverseRelationship}`" +
+                    //        $" based on the inverse comparsion {elementComparison.Key}, which has a relationship" +
+                    //        $" of `{elementComparison.Relationship}`.";
+                    //    inverseComparison.Relationship = expectedInverseRelationship;
+                    //    elementComparisons.Changed(inverseComparison);
+                    //}
+                    // if the inverse has been reviewed, update the current
+                    else if (inverseComparison.LastReviewedOn != null)
+                    {
+                        CMR? updatedCurrentRelationship = invert(inverseComparison.Relationship);
 
-                    elementComparisons.Changed(inverseComparison);
+                        elementComparison.Message = elementComparison.Message +
+                            $" Updated relationship from `{elementComparison.Relationship}` to `{updatedCurrentRelationship}`" +
+                            $" based on the inverse comparsion which has a relationship" +
+                            $" of `{inverseComparison.Relationship}`.";
+                        elementComparison.Relationship = updatedCurrentRelationship;
+                        elementComparisons.Changed(elementComparison);
+                    }
+                    else
+                    {
+                        // if one is equivalent and the other is not, we want the not-equivalent by default
+                        if ((elementComparison.Relationship == CMR.Equivalent) &&
+                            (inverseComparison.Relationship != CMR.Equivalent))
+                        {
+                            // update the current record
+                            CMR? updatedCurrentRelationship = invert(inverseComparison.Relationship);
+
+                            elementComparison.Message = elementComparison.Message +
+                                $" Updated relationship from `{elementComparison.Relationship}` to `{updatedCurrentRelationship}`" +
+                                $" based on the inverse comparsion which has a relationship" +
+                                $" of `{inverseComparison.Relationship}`.";
+                            elementComparison.Relationship = updatedCurrentRelationship;
+                            elementComparisons.Changed(elementComparison);
+                        }
+                        else if ((elementComparison.Relationship != CMR.Equivalent) &&
+                                 (inverseComparison.Relationship == CMR.Equivalent))
+                        {
+                            // update the inverse record
+                            inverseComparison.Message = inverseComparison.Message +
+                                $" Updated relationship from `{inverseComparison.Relationship}` to `{expectedInverseRelationship}`" +
+                                $" based on the inverse comparsion which has a relationship" +
+                                $" of `{elementComparison.Relationship}`.";
+                            inverseComparison.Relationship = expectedInverseRelationship;
+                            elementComparisons.Changed(inverseComparison);
+                        }
+
+                        // odd relationship - leave as mismatched so that a user will review
+                    }
+
                 }
 
                 // process the current element's relationship
@@ -2618,12 +2669,61 @@ public class FhirDbComparer
                     if ((inverseComparison.LastReviewedOn == null) &&
                         (inverseComparison.Relationship != expected))
                     {
-                        inverseComparison.Message = inverseComparison.Message +
-                            $" Updated relationship from `{inverseComparison.Relationship}` to `{expected}`" +
-                            $" based on the inverse comparsion {conceptComparison.Key}, which has a relationship" +
-                            $" of `{conceptComparison.Relationship}`.";
-                        inverseComparison.Relationship = expected;
-                        conceptComparisons.CacheUpdate(inverseComparison);
+                        // check for both being reviewed
+                        if ((conceptComparison.LastReviewedOn != null) &&
+                            (inverseComparison.LastReviewedOn != null))
+                        {
+                            // cannot update either
+                        }
+                        // if the inverse has been reviewed, update the current
+                        else if (inverseComparison.LastReviewedOn != null)
+                        {
+                            CMR? updatedCurrentRelationship = invert(inverseComparison.Relationship);
+
+                            conceptComparison.Message = conceptComparison.Message +
+                                $" Updated relationship from `{conceptComparison.Relationship}` to `{updatedCurrentRelationship}`" +
+                                $" based on the inverse comparsion which has a relationship" +
+                                $" of `{inverseComparison.Relationship}`.";
+                            conceptComparison.Relationship = updatedCurrentRelationship;
+                            conceptComparisons.Changed(conceptComparison);
+                        }
+                        else
+                        {
+                            // if one is equivalent and the other is not, we want the not-equivalent by default
+                            if ((conceptComparison.Relationship == CMR.Equivalent) &&
+                                (inverseComparison.Relationship != CMR.Equivalent))
+                            {
+                                // update the current record
+                                CMR? updatedCurrentRelationship = invert(inverseComparison.Relationship);
+
+                                conceptComparison.Message = conceptComparison.Message +
+                                    $" Updated relationship from `{conceptComparison.Relationship}` to `{updatedCurrentRelationship}`" +
+                                    $" based on the inverse comparsion which has a relationship" +
+                                    $" of `{inverseComparison.Relationship}`.";
+                                conceptComparison.Relationship = updatedCurrentRelationship;
+                                conceptComparisons.Changed(conceptComparison);
+                            }
+                            else if ((conceptComparison.Relationship != CMR.Equivalent) &&
+                                     (inverseComparison.Relationship == CMR.Equivalent))
+                            {
+                                // update the inverse record
+                                inverseComparison.Message = inverseComparison.Message +
+                                    $" Updated relationship from `{inverseComparison.Relationship}` to `{expected}`" +
+                                    $" based on the inverse comparsion which has a relationship" +
+                                    $" of `{conceptComparison.Relationship}`.";
+                                inverseComparison.Relationship = expected;
+                                conceptComparisons.Changed(inverseComparison);
+                            }
+
+                            // odd relationship - leave as mismatched so that a user will review
+                        }
+
+                        //inverseComparison.Message = inverseComparison.Message +
+                        //    $" Updated relationship from `{inverseComparison.Relationship}` to `{expected}`" +
+                        //    $" based on the inverse comparsion {conceptComparison.Key}, which has a relationship" +
+                        //    $" of `{conceptComparison.Relationship}`.";
+                        //inverseComparison.Relationship = expected;
+                        //conceptComparisons.CacheUpdate(inverseComparison);
                     }
                 }
             }

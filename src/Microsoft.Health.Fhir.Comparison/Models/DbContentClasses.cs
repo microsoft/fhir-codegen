@@ -64,6 +64,36 @@ public partial class DbValueSet : DbCanonicalResource
     public required Hl7.Fhir.Model.BindingStrength? StrongestBindingExtended { get; set; }
     public required Hl7.Fhir.Model.BindingStrength? StrongestBindingExtendedCode { get; set; }
     public required Hl7.Fhir.Model.BindingStrength? StrongestBindingExtendedCoding { get; set; }
+
+
+    [CgSQLiteIgnore]
+    public string UiDisplay
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(Name))
+            {
+                return "-";
+            }
+
+            return $"{Name}: {VersionedUrl}";
+        }
+    }
+
+    [CgSQLiteIgnore]
+    public string UiDisplayLong
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(Name))
+            {
+                return "-";
+            }
+
+            return $"{Name}: {VersionedUrl}, Concepts: {ConceptCount}" +
+                (string.IsNullOrEmpty(Description) ? string.Empty : " - " + Description);
+        }
+    }
 }
 
 [CgSQLiteTable(tableName: "Concepts")]
@@ -180,6 +210,37 @@ public partial class DbStructureDefinition : DbCanonicalResource
 
     public required int SnapshotCount { get; set; }
     public required int DifferentialCount { get; set; }
+
+    [CgSQLiteIgnore]
+    public string UiDisplay
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(Name))
+            {
+                return "-";
+            }
+
+            return $"{Name}" +
+                (string.IsNullOrEmpty(Title) ? string.Empty : " - " + Title);
+        }
+    }
+
+    [CgSQLiteIgnore]
+    public string UiDisplayLong
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(Name))
+            {
+                return "-";
+            }
+
+            return $"{Name}, Snapshot: {SnapshotCount}, Diff: {DifferentialCount}" +
+                (string.IsNullOrEmpty(Title) ? string.Empty : " - " + Title) +
+                (string.IsNullOrEmpty(Description) ? string.Empty : " - " + Description);
+        }
+    }
 }
 
 

@@ -49,7 +49,7 @@
             @for (int i = 0; i < _packages.Count; i++)
             {
                 int packageIndex = i;
-                <TemplateColumn Title="@_packages[packageIndex].ShortName">
+                <TemplateColumn Title="@_packages[packageIndex].ShortName" Tooltip="true" TooltipText="@(c => c.CellAt(packageIndex)?.Sd.UiDisplayLong)">
                     @{
                         DbGraphSd.DbSdCell? cell = context[packageIndex];
                     }
@@ -113,98 +113,129 @@
 
         @if (_selectedSdRow != null)
         {
-            <FluentLabel Typo="Typography.Header">Add new mapping:</FluentLabel>
-            @foreach (DbGraphSd.DbSdCell? cell in _selectedSdRow)
-            {
-                if (cell == null)
+            <FluentDataGrid GenerateHeader="GenerateHeaderOption.None" TGridItem="string" DisplayMode="DataGridDisplayMode.Table" role="grid">
+                <FluentDataGridRow RowType="DataGridRowType.Header">
+                    <FluentDataGridCell GridColumn="1">
+                        <FluentLabel Typo="Typography.Header">Add new mapping:</FluentLabel>
+                    </FluentDataGridCell>
+                </FluentDataGridRow>
+
+                @foreach ((DbGraphSd.DbSdCell? cell, int cellIndex) in _selectedSdRow.Select((value, idx) => (value, idx)))
                 {
-                    continue;
+                    if (cell == null)
+                    {
+                        continue;
+                    }
+
+                    <FluentDataGridRow>
+                        <FluentDataGridCell GridColumn=1>@($"{_packages[cellIndex].ShortName}:{cell.Sd.Name}")</FluentDataGridCell>
+                        <FluentDataGridCell GridColumn=2>
+                            @if (cellIndex > 0)
+                            {
+                                int tpIndex = cellIndex - 1;
+                                string dialogKey = $"add-lmap-{cell.Sd.Key}";
+                                <div>
+                                    <FluentButton Appearance="Appearance.Outline"
+                                                  Title="@($"Add new mapping from {_packages[cellIndex].ShortName}:{cell.Sd.Name} to {_packages[tpIndex].ShortName}")"
+                                                  OnClick="@(() => ShowStructureSelectionDialog(dialogKey, StructureKey, cellIndex, tpIndex))">
+                                        <FluentLabel Typo="Typography.Body">@($"{_packages[cellIndex].ShortName}:{cell.Sd.Name} to FHIR {_packages[tpIndex].ShortName}")</FluentLabel>
+                                    </FluentButton>
+                                </div>
+                            }
+                        </FluentDataGridCell>
+                        <FluentDataGridCell GridColumn=3>
+                            @if (cellIndex < _lastPackageIndex)
+                            {
+                                int tpIndex = cellIndex + 1;
+                                string dialogKey = $"add-rmap-{cell.Sd.Key}";
+                                <div>
+                                    <FluentButton Appearance="Appearance.Outline"
+                                                  Title="@($"Add new mapping from {_packages[cellIndex].ShortName}:{cell.Sd.Name} to {_packages[tpIndex].ShortName}")"
+                                                  OnClick="@(() => ShowStructureSelectionDialog(dialogKey, StructureKey, cellIndex, tpIndex))">
+                                        <FluentLabel Typo="Typography.Body">@($"{_packages[cellIndex].ShortName}:{cell.Sd.Name} to FHIR {_packages[tpIndex].ShortName}")</FluentLabel>
+                                    </FluentButton>
+                                </div>
+                            }
+                        </FluentDataGridCell>
+                    </FluentDataGridRow>
                 }
-
-                <FluentStack Orientation="Orientation.Horizontal">
-                    @if (cell.FhirPackageIndex > 0)
-                    {
-                        int tpIndex = cell.FhirPackageIndex - 1;
-                        string dialogKey = $"add-lmap-{cell.Sd.Key}";
-                        <div>
-                            @* <FluentIcon Value="@(new Icons.Regular.Size20.Add())" /> *@
-                            @* <FluentIcon Value="@(new Icons.Regular.Size20.ArrowLeft())" /> *@
-                            <FluentButton Appearance="Appearance.Outline"
-                            Title="@($"Add new mapping to {_packages[tpIndex].ShortName}")"
-                            OnClick="@(() => ShowStructureSelectionDialog(dialogKey, StructureKey, cell.FhirPackageIndex, tpIndex))">
-                                <FluentLabel Typo="Typography.Body">@($"{_packages[cell.FhirPackageIndex].ShortName}:{cell.Sd.Name} to FHIR {_packages[tpIndex].ShortName}")</FluentLabel>
-                            </FluentButton>
-                        </div>
-                    }
-
-                    @if (cell.FhirPackageIndex < (_packages.Count - 1))
-                    {
-                        int tpIndex = cell.FhirPackageIndex + 1;
-                        string dialogKey = $"add-rmap-{cell.Sd.Key}";
-                        <div>
-                            @* <FluentIcon Value="@(new Icons.Regular.Size20.Add())" /> *@
-                            @* <FluentIcon Value="@(new Icons.Regular.Size20.ArrowRight())" /> *@
-                            <FluentButton Appearance="Appearance.Outline"
-                            Title="@($"Add new mapping to {_packages[tpIndex].ShortName}")"
-                            OnClick="@(() => ShowStructureSelectionDialog(dialogKey, StructureKey, cell.FhirPackageIndex, tpIndex))">
-                                <FluentLabel Typo="Typography.Body">@($"{_packages[cell.FhirPackageIndex].ShortName}:{cell.Sd.Name} to FHIR {_packages[tpIndex].ShortName}")</FluentLabel>
-                            </FluentButton>
-                        </div>
-                    }
-                </FluentStack>
-            }
+            </FluentDataGrid> 
         }
 
         <hr />
         <FluentLabel Typo="Typography.Header">Review element mappings:</FluentLabel>
 
         <FluentDataGrid Items="@elementGraphProjection"
-                        ResizableColumns="true"
-                        GridTemplateColumns="@GetMappingTableColumns()"
-                        MultiLine="true"
-                        ShowHover="true"
-                        class="alternating-grid">
+        ResizableColumns="true"
+        GridTemplateColumns="@GetMappingTableColumns()"
+        MultiLine="true"
+        ShowHover="true"
+        class="alternating-grid">
             @for (int i = 0; i < _packages.Count; i++)
             {
                 int packageIndex = i;
 
                 <TemplateColumn Sortable="true"
                                 SortBy="@_elementSorters[packageIndex]"
+                                HeaderTooltip="@(_selectedSdRow?.CellAt(packageIndex)?.Sd.UiDisplayLong)"
                                 Tooltip="true"
-                                TooltipText="@(c => c[packageIndex]?.Element.UiDisplayLong)"
+                                TooltipText="@(c => c[packageIndex]?.Element.UiDisplayLong ?? $"Add mapping to {_packages[packageIndex].ShortName}:{_selectedSdRow?.CellAt(packageIndex)?.Sd.Name}")"
                                 Title="@(_selectedSdRow?.CellAt(packageIndex)?.Sd.Name)">
                     @{
-                        string[] components = context[packageIndex]?.Element.Id.Split('.') ?? [];
-                        foreach (string component in components)
+                        if (context[packageIndex] == null)
                         {
-                            if (component == components[0])
+                            (bool neighborDown, bool neighborUp) = context.HasNeigbors(packageIndex);
+                            if (neighborDown)
                             {
-                                <FluentBadge Appearance="Appearance.Neutral">@component</FluentBadge>
+                                <FluentButton>Add mapping to @_packages[packageIndex].ShortName</FluentButton>
                             }
-                            else
+
+                            if (neighborDown && neighborUp)
                             {
                                 <br/>
-                                <FluentBadge Appearance="Appearance.Lightweight">.</FluentBadge>
-                                <FluentBadge Appearance="Appearance.Neutral">@component</FluentBadge>
+                            }
+
+                            if (neighborUp)
+                            {
+                                <FluentButton>Add mapping to @_packages[packageIndex].ShortName</FluentButton>
+                            }
+                        }
+                        else
+                        {
+                            string[] components = context[packageIndex]!.Element.Id.Split('.') ?? [];
+                            foreach ((string component, int componentIndex) in components.Select((value, idx) => (value, idx)))
+                            {
+                                Appearance ba = componentIndex == _lastPackageIndex ? Appearance.Accent : Appearance.Neutral;
+                                if (componentIndex == 0)
+                                {
+                                    <FluentBadge Appearance="@ba">@component</FluentBadge>
+                                }
+                                else
+                                {
+                                    <br />
+                                    <FluentBadge Appearance="Appearance.Lightweight">.</FluentBadge>
+                                    <FluentBadge Appearance="@ba">@component</FluentBadge>
+                                }
                             }
                         }
                     }
                 </TemplateColumn>
 
-                @if (i < _packages.Count - 1)
+                @if (packageIndex < _lastPackageIndex)
                 {
-                    <TemplateColumn Title="Comparison" TGridItem="DbGraphSd.DbElementRow">
+                    <TemplateColumn Title="@(GetComparisonColName(packageIndex))" HeaderTooltip="@(GetComparisonColName(packageIndex))" TGridItem="DbGraphSd.DbElementRow">
                         @{
                             DbGraphSd.DbElementCell? cell = context[packageIndex];
                             // int cellIndex = packageIndex;
                             // DbElementComparison? toRight = context[packageIndex]?.RightComparison;
                             // DbElementComparison? fromRight = packageIndex < _packages.Count - 1 ? context[packageIndex + 1]?.LeftComparison : null;
                         }
-                        @if (cell == null)
+                        @if ((cell == null) || (cell.RightCell == null))
                         {
-                            <FluentButton>Add</FluentButton>
+                            @* <FluentBadge Fill="highlight" BackgroundColor="red" Color="white">ELSE</FluentBadge> *@
+                            @* <FluentButton>Add</FluentButton> *@
                         }
-                        else if (cell.BidirectionalRight != null)
+                        else
                         {
                             <FluentStack Orientation="Orientation.Vertical">
                                 @if (cell.BidirectionalRight() == BidirectionalRelationshipCodes.Mismatched)
@@ -247,10 +278,6 @@
                             <br/>
  *@
                         }
-                        else
-                        {
-                            <FluentBadge Fill="highlight" BackgroundColor="red" Color="white">ELSE</FluentBadge>
-                        }
                     </TemplateColumn>
                 }
             }
@@ -263,12 +290,12 @@
 <FluentDialog @ref="structureSelectionDialog"
 Modal="true"
 Hidden="@dialogHidden"
-Class="vs-dialog-container">
+Class="sd-dialog-container">
     <FluentDialogHeader Visible="true">@structureDialogTitle</FluentDialogHeader>
     <FluentDialogBody>
         <FluentStack Orientation="Orientation.Vertical" VerticalGap="8">
             <FluentTextField @bind-Value="structureSearchText"
-            Placeholder="Type to filter value sets..."
+            Placeholder="Type to filter structures..."
             @oninput="FilterStructures" />
 
             <div style="height: 400px; overflow-y: auto; margin-bottom: 16px;">
@@ -280,9 +307,9 @@ Class="vs-dialog-container">
                     SelectMode="DataGridSelectMode.Single"
                     SelectFromEntireRow="true"
                     @bind-SelectedItems="@selectedStructures" />
-                    <PropertyColumn Title="Name" Property="@(vs => vs.Name)" Sortable="true" />
-                    <PropertyColumn Title="URL" Property="@(vs => vs.UnversionedUrl)" Sortable="true" />
-                    <PropertyColumn Title="Version" Property="@(vs => vs.Version)" Sortable="true" />
+                    <PropertyColumn Title="Name" Property="@(sd => sd.Name)" Sortable="true" Tooltip="true" TooltipText="@(sd => sd.UiDisplayLong)" />
+                    <PropertyColumn Title="URL" Property="@(sd => sd.UnversionedUrl)" Sortable="true" Tooltip="true" TooltipText="@(sd => sd.UnversionedUrl)"/>
+                    <PropertyColumn Title="Version" Property="@(sd => sd.Version)" Sortable="true" />
                 </FluentDataGrid>
             </div>
 
@@ -290,7 +317,7 @@ Class="vs-dialog-container">
             {
                 <FluentCard>
                     <FluentStack Orientation="Orientation.Vertical" VerticalGap="4">
-                        <FluentLabel Typo="Typography.H6">Selected Value Set</FluentLabel>
+                        <FluentLabel Typo="Typography.H6">Selected Structure</FluentLabel>
                         <FluentLabel Typo="Typography.Body">Name: @selectedStructure.Name</FluentLabel>
                         <FluentLabel Typo="Typography.Body">URL: @selectedStructure.UnversionedUrl</FluentLabel>
                         <FluentLabel Typo="Typography.Body">Elements: @selectedStructure.SnapshotCount</FluentLabel>
@@ -349,6 +376,7 @@ Class="vs-dialog-container">
     private int _loadedStructureKey = -1;
     private SdRecForUi? sdUiRec = null;
     private List<DbFhirPackage> _packages = [];
+    private int _lastPackageIndex = -1;
     private IQueryable<DbGraphSd.DbSdRow>? sdGraphProjection = null;
     private List<DbGraphSd.DbElementRow> initialElementProjection = [];
     private IQueryable<DbGraphSd.DbElementRow>? elementGraphProjection = null;
@@ -384,6 +412,8 @@ Class="vs-dialog-container">
         base.OnParametersSet();
         LoadStructure();
     }
+
+    private string GetComparisonColName(int index) => _packages[index].ShortName + "-" + _packages[index + 1].ShortName;
 
     private void ElementRelationshipChanged(DbGraphSd.DbElementRow elementRow, DbGraphSd.DbElementCell? cell, object? value)
     {
@@ -692,10 +722,13 @@ Class="vs-dialog-container">
             _packages = DbFhirPackage.SelectList(
                 Xver.DbConnection,
                 orderByProperties: [nameof(DbFhirPackage.ShortName)]);
+
+            _lastPackageIndex = _packages.Count - 1;
         }
         catch (Exception)
         {
             _packages = [];
+            _lastPackageIndex = -1;
         }
     }
 

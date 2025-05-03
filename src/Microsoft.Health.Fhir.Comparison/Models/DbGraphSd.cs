@@ -96,6 +96,20 @@ public class DbGraphSd
             return null;
         }
 
+        public bool HasNeigbor(int index)
+        {
+            if (index == 0)
+            {
+                return _cells[1] != null;
+            }
+
+            if (index == _cells.Length - 1)
+            {
+                return _cells[_cells.Length - 2] != null;
+            }
+
+            return (_cells[index - 1] != null) || (_cells[index + 1] != null);
+        }
 
         // Add indexer to access cells directly
         public DbSdCell? this[int index]
@@ -506,6 +520,21 @@ public class DbGraphSd
         public DbElementCell? KeyCell => _graph._keyCol >= 0 ? _cells[_graph._keyCol] : null;
         public DbElementCell?[] Cells => _cells;
         public int Length => _cells.Length;
+
+        public (bool, bool) HasNeigbors(int index)
+        {
+            if (index == 0)
+            {
+                return (false, _cells[1] != null);
+            }
+
+            if (index == _cells.Length - 1)
+            {
+                return (_cells[_cells.Length - 2] != null, false);
+            }
+
+            return (_cells[index - 1] != null, _cells[index + 1] != null);
+        }
 
         // Add indexer to access cells directly
         public DbElementCell? this[int index]
