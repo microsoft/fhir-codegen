@@ -131,7 +131,7 @@
                                 <div>
                                     <FluentButton Appearance="Appearance.Outline"
                                     Title="@($"Add new mapping from {_packages[cellIndex].ShortName}:{cell.Vs.Name} to {_packages[tpIndex].ShortName}")"
-                                    OnClick="@(() => ShowValueSetSelectionDialog(dialogKey, ValueSetKey, cellIndex, tpIndex))">
+                                    OnClick="@(() => ShowValueSetSelectionDialog(dialogKey, cellIndex, tpIndex))">
                                         <FluentLabel Typo="Typography.Body">@($"{_packages[cellIndex].ShortName}:{cell.Vs.Name} to FHIR {_packages[tpIndex].ShortName}")</FluentLabel>
                                     </FluentButton>
                                 </div>
@@ -144,8 +144,8 @@
                                 string dialogKey = $"add-rmap-{cell.Vs.Key}";
                                 <div>
                                     <FluentButton Appearance="Appearance.Outline"
-                                    Title="@($"Add new mapping from {_packages[cellIndex].ShortName}:{cell.Vs.Name} to {_packages[tpIndex].ShortName}")"
-                                    OnClick="@(() => ShowValueSetSelectionDialog(dialogKey, ValueSetKey, cellIndex, tpIndex))">
+                                                Title="@($"Add new mapping from {_packages[cellIndex].ShortName}:{cell.Vs.Name} to {_packages[tpIndex].ShortName}")"
+                                                OnClick="@(() => ShowValueSetSelectionDialog(dialogKey, cellIndex, tpIndex))">
                                         <FluentLabel Typo="Typography.Body">@($"{_packages[cellIndex].ShortName}:{cell.Vs.Name} to FHIR {_packages[tpIndex].ShortName}")</FluentLabel>
                                     </FluentButton>
                                 </div>
@@ -160,11 +160,11 @@
         <FluentLabel Typo="Typography.Header">Review element mappings:</FluentLabel>
 
         <FluentDataGrid Items="@conceptGraphProjection"
-        ResizableColumns="true"
-        GridTemplateColumns="@GetMappingTableColumns()"
-        MultiLine="true"
-        ShowHover="true"
-        GenerateHeader="GenerateHeaderOption.Sticky">
+                        ResizableColumns="true"
+                        GridTemplateColumns="@GetMappingTableColumns()"
+                        MultiLine="true"
+                        ShowHover="true"
+                        GenerateHeader="GenerateHeaderOption.Sticky">
             @for (int i = 0; i < _packages.Count; i++)
             {
                 int packageIndex = i;
@@ -306,15 +306,15 @@
             <div style="height: 400px; overflow-y: auto; margin-bottom: 16px;">
                 <FluentDataGrid Items="@filteredValueSets"
                 ResizableColumns="true"
-                GridTemplateColumns="1fr 2fr 1fr"
+                GridTemplateColumns="80px 1fr 2fr 1fr"
                 TGridItem="DbValueSet">
                     <SelectColumn TGridItem="DbValueSet"
                     SelectMode="DataGridSelectMode.Single"
                     SelectFromEntireRow="true"
                     @bind-SelectedItems="@selectedValueSets" />
-                    <PropertyColumn Title="Name" Property="@(vs => vs.Name)" Sortable="true" />
-                    <PropertyColumn Title="URL" Property="@(vs => vs.UnversionedUrl)" Sortable="true" />
-                    <PropertyColumn Title="Version" Property="@(vs => vs.Version)" Sortable="true" />
+                    <PropertyColumn Title="Name" Property="@(vs => vs.Name)" Sortable="true" Tooltip="true" TooltipText="@(vs => vs.UiDisplayLong)" />
+                    <PropertyColumn Title="URL" Property="@(vs => vs.UnversionedUrl)" Sortable="true" Tooltip="true" TooltipText="@(vs => vs.UnversionedUrl)" />
+                    <PropertyColumn Title="Version" Property="@(vs => vs.Version)" Sortable="true" Tooltip="true" TooltipText="@(vs => vs.Version)" />
                 </FluentDataGrid>
             </div>
 
@@ -324,7 +324,9 @@
                     <FluentStack Orientation="Orientation.Vertical" VerticalGap="4">
                         <FluentLabel Typo="Typography.H6">Selected Value Set</FluentLabel>
                         <FluentLabel Typo="Typography.Body">Name: @selectedValueSet.Name</FluentLabel>
-                        <FluentLabel Typo="Typography.Body">URL: @selectedValueSet.UnversionedUrl</FluentLabel>
+                        <FluentLabel Typo="Typography.Body">URL: @selectedValueSet.VersionedUrl</FluentLabel>
+                        <FluentLabel Typo="Typography.Body">Title: @selectedValueSet.Title</FluentLabel>
+                        <FluentLabel Typo="Typography.Body">Description: @selectedValueSet.Description</FluentLabel>
                         <FluentLabel Typo="Typography.Body">Concepts: @selectedValueSet.ConceptCount</FluentLabel>
                     </FluentStack>
                 </FluentCard>
@@ -507,15 +509,21 @@
     private int currentTargetPackageIndex;
 
     // Show the ValueSet selection dialog with appropriate context
-    private void ShowValueSetSelectionDialog(string dialogKey, int sourceValueSetKey, int sourcePackageIndex, int targetPackageIndex)
+    private void ShowValueSetSelectionDialog(string dialogKey, int sourcePackageIndex, int targetPackageIndex)
     {
+        if (_selectedVsRow == null)
+        {
+            return;
+        }
+
+
         currentDialogKey = dialogKey;
-        currentSourceValueSetKey = sourceValueSetKey;
+        currentSourceValueSetKey = _selectedVsRow[sourcePackageIndex]!.Vs.Key;
         currentSourcePackageIndex = sourcePackageIndex;
         currentTargetPackageIndex = targetPackageIndex;
 
         // Set dialog title based on direction
-        valueSetDialogTitle = $"Select Value Set from {_packages[targetPackageIndex].ShortName}";
+        valueSetDialogTitle = $"Select target for {_packages[sourcePackageIndex].ShortName}:{_selectedVsRow[sourcePackageIndex]!.Vs.Name} for FHIR {_packages[targetPackageIndex].ShortName}";
 
         // Reset selection
         selectedValueSets = [];

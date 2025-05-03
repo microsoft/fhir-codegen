@@ -364,12 +364,14 @@ fluent-number-field {
 
 .vs-dialog-container {
     min-height: 800px;
-    width: 1000px;
+    /*width: 1000px;*/
+    --dialog-width: 1200px !important;
 }
 
 .sd-dialog-container {
     min-height: 800px;
-    width: 1200px;
+    /*width: 1200px;*/
+    --dialog-width: 1200px !important;
 }
 
 /* Apply alternating row colors */

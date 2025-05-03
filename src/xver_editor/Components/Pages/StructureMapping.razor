@@ -136,8 +136,8 @@
                                 string dialogKey = $"add-lmap-{cell.Sd.Key}";
                                 <div>
                                     <FluentButton Appearance="Appearance.Outline"
-                                                  Title="@($"Add new mapping from {_packages[cellIndex].ShortName}:{cell.Sd.Name} to {_packages[tpIndex].ShortName}")"
-                                                  OnClick="@(() => ShowStructureSelectionDialog(dialogKey, StructureKey, cellIndex, tpIndex))">
+                                    Title="@($"Add new mapping from {_packages[cellIndex].ShortName}:{cell.Sd.Name} to {_packages[tpIndex].ShortName}")"
+                                    OnClick="@(() => ShowStructureSelectionDialog(dialogKey, cellIndex, tpIndex))">
                                         <FluentLabel Typo="Typography.Body">@($"{_packages[cellIndex].ShortName}:{cell.Sd.Name} to FHIR {_packages[tpIndex].ShortName}")</FluentLabel>
                                     </FluentButton>
                                 </div>
@@ -150,8 +150,8 @@
                                 string dialogKey = $"add-rmap-{cell.Sd.Key}";
                                 <div>
                                     <FluentButton Appearance="Appearance.Outline"
-                                                  Title="@($"Add new mapping from {_packages[cellIndex].ShortName}:{cell.Sd.Name} to {_packages[tpIndex].ShortName}")"
-                                                  OnClick="@(() => ShowStructureSelectionDialog(dialogKey, StructureKey, cellIndex, tpIndex))">
+                                    Title="@($"Add new mapping from {_packages[cellIndex].ShortName}:{cell.Sd.Name} to {_packages[tpIndex].ShortName}")"
+                                    OnClick="@(() => ShowStructureSelectionDialog(dialogKey, cellIndex, tpIndex))">
                                         <FluentLabel Typo="Typography.Body">@($"{_packages[cellIndex].ShortName}:{cell.Sd.Name} to FHIR {_packages[tpIndex].ShortName}")</FluentLabel>
                                     </FluentButton>
                                 </div>
@@ -176,11 +176,11 @@
                 int packageIndex = i;
 
                 <TemplateColumn Sortable="true"
-                                SortBy="@_elementSorters[packageIndex]"
-                                HeaderTooltip="@(_selectedSdRow?.CellAt(packageIndex)?.Sd.UiDisplayLong)"
-                                Tooltip="true"
-                                TooltipText="@(c => c[packageIndex]?.Element.UiDisplayLong ?? $"Add mapping to {_packages[packageIndex].ShortName}:{_selectedSdRow?.CellAt(packageIndex)?.Sd.Name}")"
-                                Title="@(_selectedSdRow?.CellAt(packageIndex)?.Sd.Name)">
+                SortBy="@_elementSorters[packageIndex]"
+                HeaderTooltip="@(_selectedSdRow?.CellAt(packageIndex)?.Sd.UiDisplayLong)"
+                Tooltip="true"
+                TooltipText="@(c => c[packageIndex]?.Element.UiDisplayLong ?? $"Add mapping to {_packages[packageIndex].ShortName}:{_selectedSdRow?.CellAt(packageIndex)?.Sd.Name}")"
+                Title="@(_selectedSdRow?.CellAt(packageIndex)?.Sd.Name)">
                     @{
                         if (context[packageIndex] == null)
                         {
@@ -288,28 +288,24 @@
 
 
 <FluentDialog @ref="structureSelectionDialog"
-Modal="true"
-Hidden="@dialogHidden"
-Class="sd-dialog-container">
+                Modal="true"
+                Hidden="@dialogHidden"
+                Class="sd-dialog-container">
     <FluentDialogHeader Visible="true">@structureDialogTitle</FluentDialogHeader>
     <FluentDialogBody>
-        <FluentStack Orientation="Orientation.Vertical" VerticalGap="8">
-            <FluentTextField @bind-Value="structureSearchText"
-            Placeholder="Type to filter structures..."
-            @oninput="FilterStructures" />
-
+        <FluentStack Orientation="Orientation.Vertical" VerticalGap="8" Width="100%">
+            <FluentTextField @bind-Value="structureSearchText" Placeholder="Type to filter structures..." @oninput="FilterStructures" />
             <div style="height: 400px; overflow-y: auto; margin-bottom: 16px;">
                 <FluentDataGrid Items="@filteredStructures"
-                ResizableColumns="true"
-                GridTemplateColumns="1fr 2fr 1fr"
-                TGridItem="DbStructureDefinition">
+                                ResizableColumns="true"
+                                GridTemplateColumns="80px 1fr 2fr"
+                                TGridItem="DbStructureDefinition">
                     <SelectColumn TGridItem="DbStructureDefinition"
-                    SelectMode="DataGridSelectMode.Single"
-                    SelectFromEntireRow="true"
-                    @bind-SelectedItems="@selectedStructures" />
-                    <PropertyColumn Title="Name" Property="@(sd => sd.Name)" Sortable="true" Tooltip="true" TooltipText="@(sd => sd.UiDisplayLong)" />
-                    <PropertyColumn Title="URL" Property="@(sd => sd.UnversionedUrl)" Sortable="true" Tooltip="true" TooltipText="@(sd => sd.UnversionedUrl)"/>
-                    <PropertyColumn Title="Version" Property="@(sd => sd.Version)" Sortable="true" />
+                                    SelectMode="DataGridSelectMode.Single"
+                                    SelectFromEntireRow="true"
+                                    @bind-SelectedItems="@selectedStructures" />
+                    <PropertyColumn Title="Name" Property="@(sd => sd.Name)" Sortable="true" Tooltip="true" IsDefaultSortColumn="true" TooltipText="@(sd => sd.UiDisplayLong)" />
+                    <PropertyColumn Title="Title" Property="@(sd => sd.Title)" Sortable="true" Tooltip="true" TooltipText="@(sd => sd.Title)"/>
                 </FluentDataGrid>
             </div>
 
@@ -320,7 +316,8 @@ Class="sd-dialog-container">
                         <FluentLabel Typo="Typography.H6">Selected Structure</FluentLabel>
                         <FluentLabel Typo="Typography.Body">Name: @selectedStructure.Name</FluentLabel>
                         <FluentLabel Typo="Typography.Body">URL: @selectedStructure.UnversionedUrl</FluentLabel>
-                        <FluentLabel Typo="Typography.Body">Elements: @selectedStructure.SnapshotCount</FluentLabel>
+                        <FluentLabel Typo="Typography.Body">Snapshot: @selectedStructure.SnapshotCount</FluentLabel>
+                        <FluentLabel Typo="Typography.Body">Title: @selectedStructure.Title</FluentLabel>
                     </FluentStack>
                 </FluentCard>
             }
@@ -331,7 +328,6 @@ Class="sd-dialog-container">
             </FluentStack>
         </FluentStack>
     </FluentDialogBody>
-
 </FluentDialog>
 
 
@@ -498,20 +494,25 @@ Class="sd-dialog-container">
 
     // Dialog context data
     private string currentDialogKey = "";
-    private int currentSourceValueSetKey;
+    private int currentSourceStructureKey;
     private int currentSourcePackageIndex;
     private int currentTargetPackageIndex;
 
     // Show the ValueSet selection dialog with appropriate context
-    private void ShowStructureSelectionDialog(string dialogKey, int sourceStructureKey, int sourcePackageIndex, int targetPackageIndex)
+    private void ShowStructureSelectionDialog(string dialogKey, int sourcePackageIndex, int targetPackageIndex)
     {
+        if (_selectedSdRow == null)
+        {
+            return;
+        }
+
         currentDialogKey = dialogKey;
-        currentSourceValueSetKey = sourceStructureKey;
+        currentSourceStructureKey = _selectedSdRow[sourcePackageIndex]!.Sd.Key;
         currentSourcePackageIndex = sourcePackageIndex;
         currentTargetPackageIndex = targetPackageIndex;
 
         // Set dialog title based on direction
-        structureDialogTitle = $"Select Structure from {_packages[targetPackageIndex].ShortName}";
+        structureDialogTitle = $"Select target for {_packages[sourcePackageIndex].ShortName}:{_selectedSdRow[sourcePackageIndex]!.Sd.Name} to FHIR {_packages[targetPackageIndex].ShortName}";
 
         // Reset selection
         selectedStructures = [];
@@ -537,7 +538,7 @@ Class="sd-dialog-container">
                 };
 
             // Call the existing AddVsMapping with our selected value
-            AddSdMapping(currentDialogKey, currentSourceValueSetKey, currentSourcePackageIndex, currentTargetPackageIndex, selectedOption);
+            AddSdMapping(currentDialogKey, currentSourceStructureKey, currentSourcePackageIndex, currentTargetPackageIndex, selectedOption);
         }
 
         // valueSetSelectionDialog!.Hide();
@@ -684,7 +685,17 @@ Class="sd-dialog-container">
             allStructures = DbStructureDefinition.SelectList(
                 Xver.DbConnection,
                 FhirPackageKey: _packages[packageIndex].Key,
-                orderByProperties: [nameof(DbStructureDefinition.Name)]);
+                ArtifactClass: Microsoft.Health.Fhir.CodeGenCommon.Models.FhirArtifactClassEnum.PrimitiveType);
+
+            allStructures.AddRange(DbStructureDefinition.SelectList(
+                Xver.DbConnection,
+                FhirPackageKey: _packages[packageIndex].Key,
+                ArtifactClass: Microsoft.Health.Fhir.CodeGenCommon.Models.FhirArtifactClassEnum.ComplexType));
+
+            allStructures.AddRange(DbStructureDefinition.SelectList(
+                Xver.DbConnection,
+                FhirPackageKey: _packages[packageIndex].Key,
+                ArtifactClass: Microsoft.Health.Fhir.CodeGenCommon.Models.FhirArtifactClassEnum.Resource));
 
             filteredStructures = allStructures.AsQueryable();
         }
@@ -708,8 +719,9 @@ Class="sd-dialog-container">
         {
             filteredStructures = allStructures
                 .Where(vs =>
-                    vs.Name.ToLowerInvariant().Contains(searchText!) ||
-                    vs.UnversionedUrl.ToLowerInvariant().Contains(searchText!) ||
+                    vs.Name.Contains(searchText!, StringComparison.OrdinalIgnoreCase) ||
+                    (vs.Title?.Contains(searchText!, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                    (vs.Description?.Contains(searchText!, StringComparison.OrdinalIgnoreCase) ?? false) ||
                     (vs.Id?.ToLowerInvariant()?.Contains(searchText!) ?? false))
                 .AsQueryable();
         }
