@@ -363,16 +363,55 @@ fluent-number-field {
 }
 
 .vs-dialog-container {
+    height: calc(100dvh - 100px);
     min-height: 800px;
     /*width: 1000px;*/
-    --dialog-width: 1200px !important;
+    /*--dialog-width: 1200px !important;*/
+    --dialog-width: calc(100dvw - 100px) !important;
 }
 
 .sd-dialog-container {
+    height: calc(100dvh - 100px);
     min-height: 800px;
     /*width: 1200px;*/
-    --dialog-width: 1200px !important;
+    /*--dialog-width: 1200px !important;*/
+    --dialog-width: calc(100dvw - 100px) !important;
 }
+
+.ed-dialog-container {
+    height: calc(100dvh - 100px);
+    min-height: 800px;
+    /*width: 1200px;*/
+    /*--dialog-width: 1600px !important;*/
+    /*--dialog-width: 90% !important;*/
+    --dialog-width: calc(100dvw - 100px) !important;
+}
+
+.ed-tree-view-container {
+    /*width: 780px;*/
+    width: calc(50vw - 70px) !important;
+    overflow-x: scroll;
+    height: calc(45dvh) !important;
+    overflow-y: scroll;
+}
+
+.concept-dialog-container {
+    height: calc(100dvh - 100px);
+    min-height: 800px;
+    /*width: 1200px;*/
+    /*--dialog-width: 1600px !important;*/
+    /*--dialog-width: 90% !important;*/
+    --dialog-width: calc(100dvw - 100px) !important;
+}
+
+.concept-tree-view-container {
+    /*width: 780px;*/
+    width: calc(50vw - 70px) !important;
+    overflow-x: scroll;
+    height: calc(45dvh) !important;
+    overflow-y: scroll;
+}
+
 
 /* Apply alternating row colors */
 /*::deep .mapping-grid fluent-data-grid-row:nth-child(even) {

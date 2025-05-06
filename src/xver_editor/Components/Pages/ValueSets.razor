@@ -55,10 +55,10 @@
                                   Appearance="Appearance.Lightweight"
                                   OnClick="@(() => NavigateToDetails(context, true))"
                                   Title="Review" />
-                    <FluentButton IconStart="@(new Icons.Regular.Size16.Edit())"
+                    @* <FluentButton IconStart="@(new Icons.Regular.Size16.Edit())"
                         Appearance="Appearance.Lightweight"
                         OnClick="@(() => NavigateToDetails(context))"
-                        Title="Review" />
+                        Title="Review" /> *@
                 </TemplateColumn>
                 <PropertyColumn Title="Name" Property="@(vsr => vsr.Vs.Name)" Sortable="true" IsDefaultSortColumn="true">
                     <ColumnOptions>

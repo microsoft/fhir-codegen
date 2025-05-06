@@ -310,7 +310,7 @@ public partial class DbElement : DbPackageContent
                 return "-";
             }
 
-            return $"{Id} ({MinCardinality}..{MaxCardinalityString}, {CollatedTypeLiteral})";
+            return $"{Id} ({MinCardinality}..{MaxCardinalityString}, {CollatedTypeLiteral.Replace("http://hl7.org/fhir/StructureDefinition/", string.Empty)})";
         }
     }
 
@@ -324,7 +324,7 @@ public partial class DbElement : DbPackageContent
                 return "-";
             }
 
-            return $"{Id} ({MinCardinality}..{MaxCardinalityString}, {CollatedTypeLiteral})" +
+            return $"{Id} ({MinCardinality}..{MaxCardinalityString}, {CollatedTypeLiteral.Replace("http://hl7.org/fhir/StructureDefinition/", string.Empty)})" +
                 (string.IsNullOrEmpty(Short) ? string.Empty : " - " + Short);
         }
     }

@@ -20,174 +20,172 @@
 
     @if ((Xver.IsOpen == false) || (Xver.DbConnection == null))
     {
-        <FluentLabel Typo="Typography.Body">Database not open.</FluentLabel>
+    <FluentLabel Typo="Typography.Body">Database not open.</FluentLabel>
     }
     else if ((sdUiRec == null) || (sdGraphProjection == null))
     {
-        <FluentLabel Typo="Typography.Body">Loading...</FluentLabel>
+    <FluentLabel Typo="Typography.Body">Loading...</FluentLabel>
     }
     else if (sdUiRec.Projection.Count == 0)
     {
-        <FluentLabel Typo="Typography.Body">No mappings found for this structure.</FluentLabel>
+    <FluentLabel Typo="Typography.Body">No mappings found for this structure.</FluentLabel>
     }
     else
     {
-        <FluentLabel Typo="Typography.Body">FHIR Specification: <FluentAnchor Appearance="Appearance.Hypertext" Href="@sdUiRec.GetFhirUrl()" Target="_blank">@StructureName</FluentAnchor></FluentLabel>
-        <br/>
+    @* <FluentLabel Typo="Typography.Body">FHIR Specification: <FluentAnchor Appearance="Appearance.Hypertext" Href="@sdUiRec.GetFhirUrl()" Target="_blank">@StructureName</FluentAnchor></FluentLabel> *@
+    @* <br/> *@
 
-        <FluentLabel Typo="Typography.Header">Select a structure mapping group:</FluentLabel>
-        <FluentDataGrid Items="@sdGraphProjection"
-        ResizableColumns="false"
-        GridTemplateColumns="@GetMappingTableColumns()"
-        MultiLine="true"
-        class="alternating-grid">
-            <SelectColumn SelectMode="DataGridSelectMode.Single"
-            TGridItem="DbGraphSd.DbSdRow"
-            SelectFromEntireRow="true"
-            Property="@(r => r.RowId == _selectedSdRowId)"
-            OnSelect="@(e => StructureMappingRowSelected(e.Item, e.Selected))" />
-            @for (int i = 0; i < _packages.Count; i++)
+    <FluentLabel Typo="Typography.Header">Select a structure mapping group:</FluentLabel>
+    <FluentDataGrid Items="@sdGraphProjection"
+    ResizableColumns="false"
+    GridTemplateColumns="@GetMappingTableColumns()"
+    MultiLine="true"
+    class="alternating-grid">
+        <SelectColumn SelectMode="DataGridSelectMode.Single"
+        TGridItem="DbGraphSd.DbSdRow"
+        SelectFromEntireRow="true"
+        Property="@(r => r.RowId == _selectedSdRowId)"
+        OnSelect="@(e => StructureMappingRowSelected(e.Item, e.Selected))" />
+        @for (int i = 0; i < _packages.Count; i++)
+        {
+            int packageIndex = i;
+            <TemplateColumn Title="@_packages[packageIndex].ShortName" Tooltip="true" TooltipText="@(c => c.CellAt(packageIndex)?.Sd.UiDisplayLong)">
+                @{
+                    DbGraphSd.DbSdCell? cell = context[packageIndex];
+                }
+                @if (cell != null)
+                {
+                    <FluentStack Orientation="Orientation.Vertical">
+                        <FluentLabel Typo="Typography.H6">@cell.Sd.Name</FluentLabel>
+                        <FluentBadge Appearance="@(cell.Sd.Key == StructureKey ? Appearance.Accent : Appearance.Neutral)">
+                            Elements: @cell.Elements.Count
+                        </FluentBadge>
+                    </FluentStack>
+                }
+            </TemplateColumn>
+
+            @if (i < _packages.Count - 1)
             {
-                int packageIndex = i;
-                <TemplateColumn Title="@_packages[packageIndex].ShortName" Tooltip="true" TooltipText="@(c => c.CellAt(packageIndex)?.Sd.UiDisplayLong)">
+                <TemplateColumn Title="Comparison" TGridItem="DbGraphSd.DbSdRow">
                     @{
                         DbGraphSd.DbSdCell? cell = context[packageIndex];
+                        // int cellIndex = packageIndex;
+                        // DbStructureComparison? toRight = context[packageIndex]?.RightComparison;
+                        // DbStructureComparison? fromRight = packageIndex < _packages.Count - 1 ? context[packageIndex + 1]?.LeftComparison : null;
                     }
-                    @if (cell != null)
+                    @if (cell == null)
+                    {
+                        <FluentButton>Add</FluentButton>
+                    }
+                    else
                     {
                         <FluentStack Orientation="Orientation.Vertical">
-                            <FluentLabel Typo="Typography.H6">@cell.Sd.Name</FluentLabel>
-                            <FluentBadge Appearance="@(cell.Sd.Key == StructureKey ? Appearance.Accent : Appearance.Neutral)">
-                                Elements: @cell.Elements.Count
-                            </FluentBadge>
+                            @if (cell.BidirectionalRight() == BidirectionalRelationshipCodes.Mismatched)
+                            {
+                                <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center">
+                                    <FluentIcon Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Color.Size20.Warning())" />
+                                    <FluentLabel Typo="Typography.Body"><code>@(cell.BidirectionalRight()?.ToString() ?? string.Empty)</code></FluentLabel>
+                                    <FluentIcon Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Color.Size20.Warning())" />
+                                </FluentStack>
+                            }
+                            else
+                            {
+                                <FluentLabel Typo="Typography.Body"><code>@(cell.BidirectionalRight()?.ToString() ?? string.Empty)</code></FluentLabel>
+                            }
+
+                            <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center">
+                                <FluentIcon id="@($"fr-{context.RowId}-{packageIndex}-message")"
+                                Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleLeft())"
+                                Title="@(cell.FromRightMessage())" />
+                                <FluentButton OnClick="@(() => ShowElementMappingDialog(context.RowId, packageIndex, packageIndex + 1))">Edit</FluentButton>
+                                <FluentIcon id="@($"tr-{context.RowId}-{packageIndex}-message")"
+                                Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleRight())"
+                                Title="@(cell.ToRightMessage())" />
+                            </FluentStack>
                         </FluentStack>
                     }
                 </TemplateColumn>
-
-                @if (i < _packages.Count - 1)
-                {
-                    <TemplateColumn Title="Comparison" TGridItem="DbGraphSd.DbSdRow">
-                        @{
-                            DbGraphSd.DbSdCell? cell = context[packageIndex];
-                            // int cellIndex = packageIndex;
-                            // DbStructureComparison? toRight = context[packageIndex]?.RightComparison;
-                            // DbStructureComparison? fromRight = packageIndex < _packages.Count - 1 ? context[packageIndex + 1]?.LeftComparison : null;
-                        }
-                        @if (cell == null)
-                        {
-                            <FluentButton>Add</FluentButton>
-                        }
-                        else
-                        {
-                            <FluentStack Orientation="Orientation.Vertical">
-                                @if (cell.BidirectionalRight() == BidirectionalRelationshipCodes.Mismatched)
-                                {
-                                    <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center">
-                                        <FluentIcon Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Color.Size20.Warning())" />
-                                        <FluentLabel Typo="Typography.Body"><code>@(cell.BidirectionalRight()?.ToString() ?? string.Empty)</code></FluentLabel>
-                                        <FluentIcon Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Color.Size20.Warning())" />
-                                    </FluentStack>
-                                }
-                                else
-                                {
-                                    <FluentLabel Typo="Typography.Body"><code>@(cell.BidirectionalRight()?.ToString() ?? string.Empty)</code></FluentLabel>
-                                }
-
-                                <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center">
-                                    <FluentIcon id="@($"fr-{context.RowId}-{packageIndex}-message")"
-                                    Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleLeft())"
-                                    Title="@(cell.FromRightMessage())" />
-                                    <FluentButton>Edit</FluentButton>
-                                    <FluentIcon id="@($"tr-{context.RowId}-{packageIndex}-message")"
-                                    Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleRight())"
-                                    Title="@(cell.ToRightMessage())" />
-                                </FluentStack>
-                            </FluentStack>
-                        }
-                    </TemplateColumn>
-                }
             }
-        </FluentDataGrid>
+        }
+    </FluentDataGrid>
 
-        <br />
+    <br />
 
-        @if (_selectedSdRow != null)
-        {
-            <FluentDataGrid GenerateHeader="GenerateHeaderOption.None" TGridItem="string" DisplayMode="DataGridDisplayMode.Table" role="grid">
-                <FluentDataGridRow RowType="DataGridRowType.Header">
-                    <FluentDataGridCell GridColumn="1">
-                        <FluentLabel Typo="Typography.Header">Add new mapping:</FluentLabel>
+    @if (_selectedSdRow != null)
+    {
+        <FluentDataGrid GenerateHeader="GenerateHeaderOption.None" TGridItem="string" DisplayMode="DataGridDisplayMode.Table" role="grid">
+            <FluentDataGridRow RowType="DataGridRowType.Header">
+                <FluentDataGridCell GridColumn="1">
+                    <FluentLabel Typo="Typography.Header">Add new mapping:</FluentLabel>
+                </FluentDataGridCell>
+            </FluentDataGridRow>
+
+            @foreach ((DbGraphSd.DbSdCell? cell, int cellIndex) in _selectedSdRow.Select((value, idx) => (value, idx)))
+            {
+                if (cell == null)
+                {
+                    continue;
+                }
+
+                <FluentDataGridRow>
+                    <FluentDataGridCell GridColumn=1>@($"{_packages[cellIndex].ShortName}:{cell.Sd.Name}")</FluentDataGridCell>
+                    <FluentDataGridCell GridColumn=2>
+                        @if (cellIndex > 0)
+                        {
+                            int tpIndex = cellIndex - 1;
+                            <div>
+                                <FluentButton Appearance="Appearance.Outline"
+                                Title="@($"Add new mapping from {_packages[cellIndex].ShortName}:{cell.Sd.Name} to {_packages[tpIndex].ShortName}")"
+                                OnClick="@(() => ShowStructureSelectionDialog(cellIndex, tpIndex))">
+                                    <FluentLabel Typo="Typography.Body">@($"{_packages[cellIndex].ShortName}:{cell.Sd.Name} to FHIR {_packages[tpIndex].ShortName}")</FluentLabel>
+                                </FluentButton>
+                            </div>
+                        }
+                    </FluentDataGridCell>
+                    <FluentDataGridCell GridColumn=3>
+                        @if (cellIndex < _lastPackageIndex)
+                        {
+                            int tpIndex = cellIndex + 1;
+                            <div>
+                                <FluentButton Appearance="Appearance.Outline"
+                                Title="@($"Add new mapping from {_packages[cellIndex].ShortName}:{cell.Sd.Name} to {_packages[tpIndex].ShortName}")"
+                                OnClick="@(() => ShowStructureSelectionDialog(cellIndex, tpIndex))">
+                                    <FluentLabel Typo="Typography.Body">@($"{_packages[cellIndex].ShortName}:{cell.Sd.Name} to FHIR {_packages[tpIndex].ShortName}")</FluentLabel>
+                                </FluentButton>
+                            </div>
+                        }
                     </FluentDataGridCell>
                 </FluentDataGridRow>
+            }
+        </FluentDataGrid> 
+    }
 
-                @foreach ((DbGraphSd.DbSdCell? cell, int cellIndex) in _selectedSdRow.Select((value, idx) => (value, idx)))
-                {
-                    if (cell == null)
-                    {
-                        continue;
-                    }
+    <hr />
+    <FluentLabel Typo="Typography.Header">Review element mappings:</FluentLabel>
 
-                    <FluentDataGridRow>
-                        <FluentDataGridCell GridColumn=1>@($"{_packages[cellIndex].ShortName}:{cell.Sd.Name}")</FluentDataGridCell>
-                        <FluentDataGridCell GridColumn=2>
-                            @if (cellIndex > 0)
-                            {
-                                int tpIndex = cellIndex - 1;
-                                string dialogKey = $"add-lmap-{cell.Sd.Key}";
-                                <div>
-                                    <FluentButton Appearance="Appearance.Outline"
-                                    Title="@($"Add new mapping from {_packages[cellIndex].ShortName}:{cell.Sd.Name} to {_packages[tpIndex].ShortName}")"
-                                    OnClick="@(() => ShowStructureSelectionDialog(dialogKey, cellIndex, tpIndex))">
-                                        <FluentLabel Typo="Typography.Body">@($"{_packages[cellIndex].ShortName}:{cell.Sd.Name} to FHIR {_packages[tpIndex].ShortName}")</FluentLabel>
-                                    </FluentButton>
-                                </div>
-                            }
-                        </FluentDataGridCell>
-                        <FluentDataGridCell GridColumn=3>
-                            @if (cellIndex < _lastPackageIndex)
-                            {
-                                int tpIndex = cellIndex + 1;
-                                string dialogKey = $"add-rmap-{cell.Sd.Key}";
-                                <div>
-                                    <FluentButton Appearance="Appearance.Outline"
-                                    Title="@($"Add new mapping from {_packages[cellIndex].ShortName}:{cell.Sd.Name} to {_packages[tpIndex].ShortName}")"
-                                    OnClick="@(() => ShowStructureSelectionDialog(dialogKey, cellIndex, tpIndex))">
-                                        <FluentLabel Typo="Typography.Body">@($"{_packages[cellIndex].ShortName}:{cell.Sd.Name} to FHIR {_packages[tpIndex].ShortName}")</FluentLabel>
-                                    </FluentButton>
-                                </div>
-                            }
-                        </FluentDataGridCell>
-                    </FluentDataGridRow>
-                }
-            </FluentDataGrid> 
-        }
+    <FluentDataGrid Items="@elementGraphProjection"
+    ResizableColumns="true"
+    GridTemplateColumns="@GetMappingTableColumns()"
+    MultiLine="true"
+    ShowHover="true"
+    class="alternating-grid">
+        @for (int i = 0; i < _packages.Count; i++)
+        {
+            int packageIndex = i;
 
-        <hr />
-        <FluentLabel Typo="Typography.Header">Review element mappings:</FluentLabel>
-
-        <FluentDataGrid Items="@elementGraphProjection"
-        ResizableColumns="true"
-        GridTemplateColumns="@GetMappingTableColumns()"
-        MultiLine="true"
-        ShowHover="true"
-        class="alternating-grid">
-            @for (int i = 0; i < _packages.Count; i++)
-            {
-                int packageIndex = i;
-
-                <TemplateColumn Sortable="true"
-                SortBy="@_elementSorters[packageIndex]"
+            <TemplateColumn Sortable="true"
+            SortBy="@_elementSorters[packageIndex]"
+                Title="@(_selectedSdRow?.CellAt(packageIndex)?.Sd.Name)"
                 HeaderTooltip="@(_selectedSdRow?.CellAt(packageIndex)?.Sd.UiDisplayLong)"
-                Tooltip="true"
                 TooltipText="@(c => c[packageIndex]?.Element.UiDisplayLong ?? $"Add mapping to {_packages[packageIndex].ShortName}:{_selectedSdRow?.CellAt(packageIndex)?.Sd.Name}")"
-                Title="@(_selectedSdRow?.CellAt(packageIndex)?.Sd.Name)">
+                                Tooltip="true">
                     @{
                         if (context[packageIndex] == null)
                         {
                             (bool neighborDown, bool neighborUp) = context.HasNeigbors(packageIndex);
                             if (neighborDown)
                             {
-                                <FluentButton>Add mapping to @_packages[packageIndex].ShortName</FluentButton>
+                                <FluentButton OnClick="@(() => ShowElementMappingDialog(context.RowId, packageIndex - 1, packageIndex))">Add mapping to @_packages[packageIndex].ShortName</FluentButton>
                             }
 
                             if (neighborDown && neighborUp)
@@ -197,15 +195,16 @@
 
                             if (neighborUp)
                             {
-                                <FluentButton>Add mapping to @_packages[packageIndex].ShortName</FluentButton>
+                                <FluentButton OnClick="@(() => ShowElementMappingDialog(context.RowId, packageIndex + 1, packageIndex))">Add mapping to @_packages[packageIndex].ShortName</FluentButton>
                             }
                         }
                         else
                         {
                             string[] components = context[packageIndex]!.Element.Id.Split('.') ?? [];
+                            int lastComponentIndex = components.Length - 1;
                             foreach ((string component, int componentIndex) in components.Select((value, idx) => (value, idx)))
                             {
-                                Appearance ba = componentIndex == _lastPackageIndex ? Appearance.Accent : Appearance.Neutral;
+                                Appearance ba = componentIndex == lastComponentIndex ? Appearance.Accent : Appearance.Neutral;
                                 if (componentIndex == 0)
                                 {
                                     <FluentBadge Appearance="@ba">@component</FluentBadge>
@@ -242,7 +241,7 @@
                                 {
                                     <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center">
                                         <FluentIcon Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Color.Size20.Warning())" />
-                                        <FluentLabel Typo="Typography.Body"><code>@(cell.BidirectionalRight()?.ToString() ?? string.Empty)</code></FluentLabel>
+                                        <FluentLabel Typo="Typography.Body"><code>MISMATCHED</code></FluentLabel>
                                         <FluentIcon Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Color.Size20.Warning())" />
                                     </FluentStack>
                                 }
@@ -255,7 +254,7 @@
                                     <FluentIcon id="@($"fr-{context.RowId}-{packageIndex}-message")"
                                     Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleLeft())"
                                     Title="@(cell.FromRightMessage())" />
-                                    <FluentButton>Edit</FluentButton>
+                                    <FluentButton OnClick="@(() => ShowElementMappingDialog(context.RowId, packageIndex, packageIndex + 1))">Edit</FluentButton>
                                     <FluentIcon id="@($"tr-{context.RowId}-{packageIndex}-message")"
                                     Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleRight())"
                                     Title="@(cell.ToRightMessage())" />
@@ -288,22 +287,22 @@
 
 
 <FluentDialog @ref="structureSelectionDialog"
-                Modal="true"
-                Hidden="@dialogHidden"
-                Class="sd-dialog-container">
+Modal="true"
+Hidden="@(visibleDialog != VisibleDialogCodes.StructureSelection)"
+Class="sd-dialog-container">
     <FluentDialogHeader Visible="true">@structureDialogTitle</FluentDialogHeader>
     <FluentDialogBody>
         <FluentStack Orientation="Orientation.Vertical" VerticalGap="8" Width="100%">
             <FluentTextField @bind-Value="structureSearchText" Placeholder="Type to filter structures..." @oninput="FilterStructures" />
             <div style="height: 400px; overflow-y: auto; margin-bottom: 16px;">
                 <FluentDataGrid Items="@filteredStructures"
-                                ResizableColumns="true"
-                                GridTemplateColumns="80px 1fr 2fr"
-                                TGridItem="DbStructureDefinition">
+                ResizableColumns="true"
+                GridTemplateColumns="80px 1fr 2fr"
+                TGridItem="DbStructureDefinition">
                     <SelectColumn TGridItem="DbStructureDefinition"
-                                    SelectMode="DataGridSelectMode.Single"
-                                    SelectFromEntireRow="true"
-                                    @bind-SelectedItems="@selectedStructures" />
+                    SelectMode="DataGridSelectMode.Single"
+                    SelectFromEntireRow="true"
+                    @bind-SelectedItems="@selectedStructures" />
                     <PropertyColumn Title="Name" Property="@(sd => sd.Name)" Sortable="true" Tooltip="true" IsDefaultSortColumn="true" TooltipText="@(sd => sd.UiDisplayLong)" />
                     <PropertyColumn Title="Title" Property="@(sd => sd.Title)" Sortable="true" Tooltip="true" TooltipText="@(sd => sd.Title)"/>
                 </FluentDataGrid>
@@ -323,7 +322,7 @@
             }
 
             <FluentStack Orientation="Orientation.Horizontal" HorizontalGap="8" HorizontalAlignment="HorizontalAlignment.End">
-                <FluentButton Appearance="Appearance.Outline" OnClick="CancelValueSetSelection">Cancel</FluentButton>
+                <FluentButton Appearance="Appearance.Outline" OnClick="CancelStructureSelection">Cancel</FluentButton>
                 <FluentButton Appearance="Appearance.Accent" OnClick="SelectStructure" Disabled="@(selectedStructure == null)">Select</FluentButton>
             </FluentStack>
         </FluentStack>
@@ -331,7 +330,103 @@
 </FluentDialog>
 
 
+
+<FluentDialog @ref="elementMappingDialog"
+Modal="true"
+Hidden="@(visibleDialog != VisibleDialogCodes.ElementMapping)"
+Class="ed-dialog-container">
+    <FluentDialogHeader Visible="true">Edit Element Mapping</FluentDialogHeader>
+    <FluentDialogBody>
+        <FluentStack Orientation="Orientation.Vertical" VerticalGap="8">
+            <FluentStack Orientation="Orientation.Horizontal" Width="100%">
+                <div class="ed-tree-view-container">
+                    <FluentTreeView @ref="elementMappingTreeLeft" Items="@mappingLeftItems" SelectedItem="@mappingLeftSelected" OnSelectedChange="HandleLeftMappingSelectionChanged">
+                        <ItemTemplate>
+                            <code>@context.Text</code>
+                        </ItemTemplate>
+                    </FluentTreeView>
+                </div>
+                @* <FluentIcon Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Regular.Size20.ArrowBidirectionalLeftRight())" /> *@
+                <div class="ed-tree-view-container">
+                    <FluentTreeView @ref="elementMappingTreeRight" Items="@mappingRightItems" SelectedItem="@mappingRightSelected" OnSelectedChange="HandleRightMappingSelectionChanged">
+                        <ItemTemplate>
+                            <code>@context.Text</code>
+                        </ItemTemplate>
+                    </FluentTreeView>
+                </div>
+            </FluentStack>
+            <hr/>
+
+            <FluentLabel Typo="Typography.Body"><b>Left:</b> @_packages[mappingLeftColId].ShortName @mappingLeftSd?.Sd.Name: <code>@mappingLeftSelected?.Text</code></FluentLabel>
+            @* <FluentLabel Typo="Typography.Body">Maps as <code>@mapLRRelationship?.Text</code></FluentLabel> *@
+            <FluentLabel Typo="Typography.Body"><b><code>Left to Right:</code></b></FluentLabel>
+            <FluentLabel Typo="Typography.Body">Overall Relationship:</FluentLabel>
+            <FluentCombobox Items="@_relationships"
+            Class="full-width"
+            Placeholder="Search for a relationship..."
+            OptionValue="@(i => i?.Value.ToString() ?? string.Empty)"
+            OptionText="@(i => i?.Text)"
+            @bind-SelectedOption="@mapLRRelationship"
+            Multiple="false"
+            Autocomplete="ComboboxAutocomplete.Inline"/>
+            @* <FluentLabel Typo="Typography.Body">Conceptually: <code>@mapLRConceptRelationship</code></FluentLabel> *@
+            <FluentLabel Typo="Typography.Body">Concept Domain Relationship:</FluentLabel>
+            <FluentCombobox Items="@_relationships"
+            Class="full-width"
+            Placeholder="Search for a relationship..."
+            OptionValue="@(i => i?.Value.ToString() ?? string.Empty)"
+            OptionText="@(i => i?.Text)"
+            @bind-SelectedOption="@mapLRConceptRelationship"
+            Multiple="false"
+            Autocomplete="ComboboxAutocomplete.Inline" />
+            <FluentLabel Typo="Typography.Body">Mapping Message:</FluentLabel>
+            <FluentTextField @bind-Value="@mapLRMessage" Class="full-width" />
+
+            <FluentLabel Typo="Typography.Body"><b>Right:</b> @_packages[mappingRightColId].ShortName @mappingRightSd?.Sd.Name: <code>@mappingRightSelected?.Text</code></FluentLabel>
+            @* <FluentLabel Typo="Typography.Body">Maps as <code>@mapRLRelationship</code></FluentLabel> *@
+            <FluentLabel Typo="Typography.Body"><b><code>Right to Left:</code></b></FluentLabel>
+            <FluentLabel Typo="Typography.Body">Overall Relationship:</FluentLabel>
+            <FluentCombobox Items="@_relationships"
+            Class="full-width"
+            Placeholder="Search for a relationship..."
+            OptionValue="@(i => i?.Value.ToString() ?? string.Empty)"
+            OptionText="@(i => i?.Text)"
+            @bind-SelectedOption="@mapRLRelationship"
+            Multiple="false"
+            Autocomplete="ComboboxAutocomplete.Inline" />
+            @* <FluentLabel Typo="Typography.Body">Conceptually: <code>@mapRLConceptRelationship</code></FluentLabel> *@
+            <FluentLabel Typo="Typography.Body">Concept Domain Relationship:</FluentLabel>
+            <FluentCombobox Items="@_relationships"
+            Class="full-width"
+            Placeholder="Search for a relationship..."
+            OptionValue="@(i => i?.Value.ToString() ?? string.Empty)"
+            OptionText="@(i => i?.Text)"
+            @bind-SelectedOption="@mapRLConceptRelationship"
+            Multiple="false"
+            Autocomplete="ComboboxAutocomplete.Inline" />
+            <FluentLabel Typo="Typography.Body">Mapping Message:</FluentLabel>
+            <FluentTextField @bind-Value="@mapRLMessage" Class="full-width" />
+
+            <FluentStack Orientation="Orientation.Horizontal" HorizontalGap="8" HorizontalAlignment="HorizontalAlignment.Stretch">
+                <FluentButton BackgroundColor="var(--error)" Color="#ffffff" IconStart="@(new Icons.Regular.Size16.Delete())" OnClick="DeleteElementMapping">Delete</FluentButton>
+                <FluentSpacer />
+                <FluentButton Appearance="Appearance.Outline" IconStart="@(new Icons.Regular.Size16.Prohibited())" OnClick="CancelElementSelection">Cancel</FluentButton>
+                <FluentButton Appearance="Appearance.Accent" IconStart="@(new Icons.Regular.Size16.Save())" OnClick="UpdateElementMapping">Update</FluentButton>
+            </FluentStack>
+        </FluentStack>
+    </FluentDialogBody>
+</FluentDialog>
+
+
+
 @code {
+    private enum VisibleDialogCodes
+    {
+        None,
+        StructureSelection,
+        ElementMapping,
+        Confirmation,
+    }
 
     [Parameter]
     public int FhirPackageKey { get; set; }
@@ -423,7 +518,7 @@
     {
         if (selected == true)
         {
-            _selectedSdRowId = r.RowId;
+            // _selectedSdRowId = r.RowId;
             LoadMappingRow(r);
             StateHasChanged();
         }
@@ -481,8 +576,530 @@
         StateHasChanged();
     }
 
+    private FluentDialog? elementMappingDialog;
+    private FluentTreeView? elementMappingTreeLeft;
+    private FluentTreeView? elementMappingTreeRight;
+    private List<ITreeViewItem> mappingLeftItems = [];
+    private List<ITreeViewItem> mappingRightItems = [];
+    private DbGraphSd.DbElementRow? _focusElementRow = null;
+    private int mappingLeftColId = 0;
+    private int mappingRightColId = 0;
+    private DbGraphSd.DbSdCell? mappingLeftSd = null;
+    private DbGraphSd.DbSdCell? mappingRightSd = null;
+    private DbElementComparison? mapLRComparison = null;
+    private DbElementComparison? mapRLComparison = null;
+    private ITreeViewItem? mappingLeftSelected = null;
+    private ITreeViewItem? mappingRightSelected = null;
+    private Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?>? mapLRRelationship = null;
+    private Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?>? mapLRConceptRelationship = null;
+    private string? mapLRMessage = null;
+    private Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?>? mapRLRelationship = null;
+    private Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?>? mapRLConceptRelationship = null;
+    private string? mapRLMessage = null;
 
-    // New fields for the structure selection dialog
+    private Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?>[] _relationships = [
+        new() { Text = "- No Relationship -", Value = null },
+        new() { Text = "Equivalent", Value = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.Equivalent },
+        new() { Text = "Source is Narrower", Value = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget },
+        new() { Text = "Source is Broader", Value = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget },
+        new() { Text = "Related To", Value = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.RelatedTo },
+        new() { Text = "NOT related To", Value = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo },
+    ];
+
+    private void ShowElementMappingDialog(Guid conceptRowId, int sourceCol, int targetCol)
+    {
+        if ((_selectedSdRow == null) ||
+            (_selectedSdRow[sourceCol] == null) ||
+            (_selectedSdRow[targetCol] == null))
+        {
+            ClearElementSelection();
+            return;
+        }
+
+        // resolve the element row
+        _focusElementRow = initialElementProjection.FirstOrDefault(r => r.RowId == conceptRowId);
+
+        if (_focusElementRow == null)
+        {
+            ClearElementSelection();
+            return;
+        }
+
+        // build our element trees
+        BuildElementTrees(_focusElementRow, sourceCol, targetCol);
+
+        // // Set dialog title based on direction
+        // elementDialogTitle = $"Select target for {_packages[sourceCol].ShortName}:{_focusElementRow[sourceCol]!.Element.Id}" +
+        //     $" to FHIR {_packages[targetCol].ShortName}:{_selectedSdRow[targetCol]!.Sd.Name}";
+
+        // // Reset selection
+        // selectedStructures = [];
+        // structureSearchText = "";
+
+        // // Load structures for the target package
+        // LoadStructuresForPackage(targetCol);
+
+        // Show dialog
+        visibleDialog = VisibleDialogCodes.ElementMapping;
+    }
+
+    private void BuildElementTrees(DbGraphSd.DbElementRow focusRow, int sourceCol, int targetCol)
+    {
+        mappingLeftSelected = null;
+        mappingRightSelected = null;
+
+        if ((_selectedSdRow == null) ||
+            (_selectedSdRow[sourceCol] == null) ||
+            (_selectedSdRow[targetCol] == null))
+        {
+            ClearElementSelection();
+
+            return;
+        }
+
+        bool isLeftToRight = sourceCol < targetCol;
+
+        mappingLeftColId = isLeftToRight ? sourceCol: targetCol;
+        mappingRightColId = isLeftToRight ? targetCol : sourceCol;
+
+        mappingLeftSd = _selectedSdRow[mappingLeftColId];
+        mapLRComparison = isLeftToRight ? focusRow[mappingLeftColId]?.RightComparison : focusRow[mappingRightColId]?.LeftComparison;
+        mappingRightSd = _selectedSdRow[mappingRightColId];
+        mapRLComparison = isLeftToRight ? focusRow[mappingRightColId]?.LeftComparison : focusRow[mappingLeftColId]?.RightComparison;
+
+        (mappingLeftItems, mappingLeftSelected) = BuildTreeItemsForSd(mappingLeftSd!, focusRow[mappingLeftColId]?.Element, mappingLeftColId);
+        (mappingRightItems, mappingRightSelected) = BuildTreeItemsForSd(mappingRightSd!, focusRow[mappingRightColId]?.Element, mappingRightColId);
+
+        mapLRRelationship = mapLRComparison?.Relationship == null
+            ? null
+            : _relationships.FirstOrDefault(ro => ro.Value == mapLRComparison.Relationship);
+        mapLRConceptRelationship = mapLRComparison?.ConceptDomainRelationship == null
+            ? null
+            : _relationships.FirstOrDefault(ro => ro.Value == mapLRComparison.ConceptDomainRelationship);
+        mapLRMessage = mapLRComparison?.Message;
+
+        mapRLRelationship = mapRLComparison?.Relationship == null
+            ? null
+            : _relationships.FirstOrDefault(ro => ro.Value == mapRLComparison.Relationship);
+        mapRLConceptRelationship = mapRLComparison?.ConceptDomainRelationship == null
+            ? null
+            : _relationships.FirstOrDefault(ro => ro.Value == mapRLComparison.ConceptDomainRelationship);
+        mapRLMessage = mapRLComparison?.Message;
+    }
+
+    private Icon IconFolderCollapsed = new Icons.Regular.Size20.Folder();
+    private Icon IconFolderExpanded = new Icons.Regular.Size20.FolderOpen();
+    private Icon IconElement = new Icons.Regular.Size20.CodeBlock();
+    private Icon IconNoMap = new Icons.Regular.Size20.Prohibited();
+
+    private (List<ITreeViewItem> items, ITreeViewItem? selectedItem) BuildTreeItemsForSd(DbGraphSd.DbSdCell sdCell, DbElement? selectedElement, int packageIndex)
+    {
+        if (sdCell.Elements.Count == 0)
+        {
+            return ([], null);
+        }
+
+        ILookup<int, DbElement> elementsByKey = sdCell.Elements.ToLookup(e => e.Key);
+        ILookup<int, DbElement> elementsByParent = sdCell.Elements.ToLookup(e => e.ParentElementKey ?? -1);
+        Dictionary<string, TreeViewItem> itemsById = [];
+
+        ITreeViewItem? selectedItem = null;
+        List<TreeViewItem> rootItems = [];
+
+        // add a 'remove mapping' root
+        rootItems.Add(new TreeViewItem
+            {
+                Id = string.Empty,
+                Text = "No Map",
+                Items = new List<TreeViewItem>(),
+                Expanded = true,
+                IconCollapsed = IconNoMap,
+                IconExpanded = IconNoMap,
+            });
+
+        if (selectedElement == null)
+        {
+            selectedItem = rootItems[0];
+        }
+
+        foreach (DbElement element in sdCell.Elements.OrderBy(e => e.ResourceFieldOrder))
+        {
+            // this is the root
+            if (element.ParentElementKey == null)
+            {
+                TreeViewItem item = new()
+                {
+                    Id = element.Id,
+                    Text = _packages[packageIndex].ShortName + ": " + element.UiDisplayLong,
+                    Items = new List<TreeViewItem>(),
+                    Expanded = true,
+                    IconCollapsed = IconFolderCollapsed,
+                    IconExpanded = IconFolderExpanded,
+                };
+                itemsById[element.Id] = item;
+                rootItems.Add(item);
+
+                if (element.Id == selectedElement?.Id)
+                {
+                    selectedItem = item;
+                }
+
+                continue;
+            }
+
+            // resolve the parent element
+            DbElement parentElement = elementsByKey[(int)element.ParentElementKey].First();
+            if (!itemsById.TryGetValue(parentElement.Id, out TreeViewItem? parentItem))
+            {
+                parentItem = new TreeViewItem
+                {
+                    Id = parentElement.Id,
+                    Text = parentElement.UiDisplayLong,
+                    Items = new List<TreeViewItem>(),
+                    Expanded = true,
+                    IconCollapsed = parentElement.ChildElementCount == 0 ? IconElement : IconFolderCollapsed,
+                    IconExpanded = parentElement.ChildElementCount == 0 ? IconElement : IconFolderExpanded,
+                };
+                itemsById[parentElement.Id] = parentItem;
+            }
+
+            TreeViewItem currentItem = new TreeViewItem
+            {
+                Id = element.Id,
+                Text = element.UiDisplayLong,
+                Items = new List<TreeViewItem>(),
+                Expanded = true,
+                IconCollapsed = element.ChildElementCount == 0 ? IconElement : IconFolderCollapsed,
+                IconExpanded = element.ChildElementCount == 0 ? IconElement : IconFolderExpanded,
+            };
+
+            itemsById[element.Id] = currentItem;
+            if ((selectedElement != null) &&
+                (selectedElement.Id == element.Id))
+            {
+                selectedItem = currentItem;
+            }
+
+            if (parentItem.Items is null)
+            {
+                parentItem.Items = new List<TreeViewItem>
+                {
+                    currentItem,
+                };
+            }
+            else if (parentItem.Items is List<TreeViewItem> childItems)
+            {
+                childItems.Add(currentItem);
+            }
+            else
+            {
+                currentItem.Items = [.. parentItem.Items, currentItem];
+            }
+        }
+
+        return (rootItems.ToList<ITreeViewItem>(), selectedItem);
+    }
+
+    private void HandleLeftMappingSelectionChanged(FluentTreeItem item)
+    {
+        HandleMappingElementSelectionChanged(item, isLeft: true);
+    }
+
+    private void HandleRightMappingSelectionChanged(FluentTreeItem item)
+    {
+        HandleMappingElementSelectionChanged(item, isLeft: false);
+    }
+
+    private void HandleMappingElementSelectionChanged(FluentTreeItem item, bool isLeft)
+    {
+        if ((item == null) || (item.Id == null))
+        {
+            return;
+        }
+
+        string id = item.Id;
+
+        foreach (ITreeViewItem tvItem in isLeft ? mappingLeftItems : mappingRightItems)
+        {
+            ITreeViewItem? foundItem = findItem(tvItem, id);
+            if (foundItem != null)
+            {
+                if (isLeft)
+                {
+                    mappingLeftSelected = foundItem;
+                }
+                else
+                {
+                    mappingRightSelected = foundItem;
+                }
+                break;
+            }
+        }
+
+        StateHasChanged();
+
+        return;
+
+        ITreeViewItem? findItem(ITreeViewItem currentItem, string id)
+        {
+            if (currentItem.Id == id)
+            {
+                return currentItem;
+            }
+
+            if ((!id.StartsWith(currentItem.Id)) ||
+                (currentItem.Items == null))
+            {
+                return null;
+            }
+
+            foreach (ITreeViewItem childItem in currentItem.Items)
+            {
+                ITreeViewItem? foundItem = findItem(childItem, id);
+                if (foundItem != null)
+                {
+                    return foundItem;
+                }
+            }
+
+            return null;
+        }
+    }
+
+    private void CancelElementSelection()
+    {
+        ClearElementSelection();
+    }
+
+    private void ClearElementSelection()
+    {
+        mappingLeftColId = 0;
+        mappingLeftSd = null;
+        mappingLeftItems = [];
+        mapLRRelationship = null;
+        mapLRConceptRelationship = null;
+        mapLRMessage = null;
+
+        mappingRightColId = 0;
+        mappingRightSd = null;
+        mappingRightItems = [];
+        mapRLRelationship = null;
+        mapRLConceptRelationship = null;
+        mapRLMessage = null;
+
+        // valueSetSelectionDialog!.Hide();
+        visibleDialog = VisibleDialogCodes.None;
+    }
+
+    private async Task DeleteElementMapping()
+    {
+        if ((mapLRComparison == null) &&
+            (mapRLComparison == null))
+        {
+            ClearElementSelection();
+        }
+
+        // need to hide the dialog because these all use the same dialog service
+        visibleDialog = VisibleDialogCodes.Confirmation;
+
+        IDialogReference dialog = await DialogService.ShowConfirmationAsync(
+            $"This will delete the comparison records between:<br/>" +
+                $"<code>{mappingLeftSelected?.Text}</code><br/>" +
+                $" - and -<br/>" +
+                $"<code>{mappingRightSelected?.Text}</code>",
+            "Confirm Delete",
+            "Cancel",
+            "Element Mapping");
+        DialogResult result = await dialog.Result;
+
+        if (result.Cancelled == true)
+        {
+            // go back to mapping window
+            visibleDialog = VisibleDialogCodes.ElementMapping;
+            return;
+        }
+
+        try
+        {
+            mapLRComparison?.Delete(Xver.ComparisonDb.DbConnection);
+        }
+        catch { }
+
+        try
+        {
+            mapRLComparison?.Delete(Xver.ComparisonDb.DbConnection);
+        }
+        catch { }
+
+        // force a reload of the content to get updated mappings
+        if (_selectedSdRow != null)
+        {
+            LoadMappingRow(_selectedSdRow);
+        }
+
+        ClearElementSelection();
+    }
+
+    private void UpdateElementMapping()
+    {
+        if ((_focusElementRow == null) ||
+            (_selectedSdRow == null) ||
+            (_selectedSdRow[mappingLeftColId] == null) ||
+            (_selectedSdRow[mappingRightColId] == null))
+        {
+            ClearElementSelection();
+            return;
+        }
+
+        // resolve the selected tree items
+        DbElement? leftTreeElement = (mappingLeftSelected == null) || string.IsNullOrEmpty(mappingLeftSelected.Id)
+            ? null
+            : _selectedSdRow[mappingLeftColId]!.Elements.FirstOrDefault(e => e.Id == mappingLeftSelected.Id);
+
+        DbElement? rightTreeElement = (mappingRightSelected == null) || string.IsNullOrEmpty(mappingRightSelected.Id)
+            ? null
+            : _selectedSdRow[mappingRightColId]!.Elements.FirstOrDefault(e => e.Id == mappingRightSelected.Id);
+
+        bool isLeftToRight = mappingLeftColId < mappingRightColId;
+
+        bool addingLR = false;
+        bool deletingLR = false;
+        bool addingRL = false;
+        bool deletingRL = false;
+
+        // check if there is no left element selected
+        if (leftTreeElement == null)
+        {
+            // check if we need to delete the Left to Right comparison record
+            deletingLR = mapLRComparison != null;
+        }
+        else
+        {
+            // check if we need to create the Left to Right comparison record
+            if (mapLRComparison == null)
+            {
+                mapLRComparison = DbElementComparison.EmptyCopy;
+                mapLRComparison.Key = Xver.ComparisonDb.GetElementComparisonKey();
+                addingLR = true;
+            }
+
+            mapLRComparison.PackageComparisonKey = _selectedSdRow[mappingLeftColId]!.RightComparison!.PackageComparisonKey;
+            mapLRComparison.StructureComparisonKey = _selectedSdRow[mappingLeftColId]!.RightComparison!.Key;
+            mapLRComparison.SourceFhirPackageKey = _selectedSdRow[mappingLeftColId]!.Sd.FhirPackageKey;
+            mapLRComparison.SourceStructureKey = _selectedSdRow[mappingLeftColId]!.Sd.Key;
+            mapLRComparison.SourceStructureUrl = _selectedSdRow[mappingLeftColId]!.Sd.UnversionedUrl;
+            mapLRComparison.TargetFhirPackageKey = _selectedSdRow[mappingRightColId]!.Sd.FhirPackageKey;
+            mapLRComparison.TargetStructureKey = _selectedSdRow[mappingRightColId]!.Sd.Key;
+            mapLRComparison.TargetStructureUrl = _selectedSdRow[mappingRightColId]!.Sd.UnversionedUrl;
+            mapLRComparison.SourceElementKey = leftTreeElement.Key;
+            mapLRComparison.SourceElementToken = leftTreeElement.Id;
+            mapLRComparison.TargetElementKey = rightTreeElement?.Key;
+            mapLRComparison.TargetElementToken = rightTreeElement?.Id;
+            mapLRComparison.Relationship = deletingRL ? null : mapLRRelationship?.Value;
+            mapLRComparison.ConceptDomainRelationship = deletingRL ? null : mapLRConceptRelationship?.Value;
+            // mapLRComparison.ValueDomainRelationship = null;
+            mapLRComparison.Message = mapLRMessage;
+            mapLRComparison.NoMap = deletingRL ? true : null;
+            mapLRComparison.IsGenerated = false;
+
+            // if the comparison has changed, we cannot rely on the existing comparison information
+            if (mapLRComparison.Key != _focusElementRow[mappingLeftColId]?.RightComparison?.Key)
+            {
+                mapLRComparison.IsIdentical = null;
+                mapLRComparison.ElementTypeComparisonKey = null;
+                mapLRComparison.BoundValueSetComparisonKey = null;
+            }
+        }
+
+        // check if there is no right element selected
+        if (rightTreeElement == null)
+        {
+            // check if we need to delete the Right to Left comparison record
+            deletingRL = mapRLComparison != null;
+        }
+        else
+        { 
+            if (mapRLComparison == null)
+            {
+                mapRLComparison = DbElementComparison.EmptyCopy;
+                mapRLComparison.Key = Xver.ComparisonDb.GetElementComparisonKey();
+                addingRL = true;
+            }
+
+            mapRLComparison.PackageComparisonKey = _selectedSdRow[mappingRightColId]!.LeftComparison!.PackageComparisonKey;
+            mapRLComparison.StructureComparisonKey = _selectedSdRow[mappingRightColId]!.LeftComparison!.Key;
+            mapRLComparison.SourceFhirPackageKey = _selectedSdRow[mappingRightColId]!.Sd.FhirPackageKey;
+            mapRLComparison.SourceStructureKey = _selectedSdRow[mappingRightColId]!.Sd.Key;
+            mapRLComparison.SourceStructureUrl = _selectedSdRow[mappingRightColId]!.Sd.UnversionedUrl;
+            mapRLComparison.TargetFhirPackageKey = _selectedSdRow[mappingLeftColId]!.Sd.FhirPackageKey;
+            mapRLComparison.TargetStructureKey = _selectedSdRow[mappingLeftColId]!.Sd.Key;
+            mapRLComparison.TargetStructureUrl = _selectedSdRow[mappingLeftColId]!.Sd.UnversionedUrl;
+            mapRLComparison.SourceElementKey = rightTreeElement.Key;
+            mapRLComparison.SourceElementToken = rightTreeElement.Id;
+            mapRLComparison.TargetElementKey = leftTreeElement?.Key;
+            mapRLComparison.TargetElementToken = leftTreeElement?.Id;
+            mapRLComparison.Relationship = deletingLR ? null : mapRLRelationship?.Value;
+            mapRLComparison.ConceptDomainRelationship = deletingLR ? null : mapRLConceptRelationship?.Value;
+            // mapRLComparison.ValueDomainRelationship = null;
+            mapRLComparison.Message = mapRLMessage;
+            mapRLComparison.NoMap = deletingLR ? true : null;
+            mapRLComparison.IsGenerated = false;
+
+            // if the comparison has changed, we cannot rely on the existing comparison information
+            if (mapRLComparison.Key != _focusElementRow[mappingRightColId]?.LeftComparison?.Key)
+            {
+                mapRLComparison.IsIdentical = null;
+                mapRLComparison.ElementTypeComparisonKey = null;
+                mapRLComparison.BoundValueSetComparisonKey = null;
+            }
+        }
+
+        // fix inverse keys
+        if (mapLRComparison != null)
+        {
+            mapLRComparison.InverseComparisonKey = mapRLComparison?.Key;
+        }
+
+        if (mapRLComparison != null)
+        {
+            mapRLComparison.InverseComparisonKey = mapLRComparison?.Key;
+        }
+
+        // update the database
+        if (deletingLR)
+        {
+            mapLRComparison?.Delete(Xver.ComparisonDb.DbConnection);
+        }
+        else if (addingLR)
+        {
+            mapLRComparison!.Insert(Xver.ComparisonDb.DbConnection);
+        }
+        else
+        {
+            mapLRComparison!.Update(Xver.ComparisonDb.DbConnection);
+        }
+
+        if (deletingRL)
+        {
+            mapRLComparison?.Delete(Xver.ComparisonDb.DbConnection);
+        }
+        else if (addingRL)
+        {
+            mapRLComparison!.Insert(Xver.ComparisonDb.DbConnection);
+        }
+        else
+        {
+            mapRLComparison!.Update(Xver.ComparisonDb.DbConnection);
+        }
+
+        // force a reload of the content to get updating mappings
+        LoadMappingRow(_selectedSdRow);
+
+        // go back to the main UI
+        ClearElementSelection();
+    }
+
+
     private FluentDialog? structureSelectionDialog;
     private string structureDialogTitle = "Select Target Structure...";
     private string structureSearchText = "";
@@ -490,23 +1107,20 @@
     private IQueryable<DbStructureDefinition> filteredStructures = Enumerable.Empty<DbStructureDefinition>().AsQueryable();
     private DbStructureDefinition? selectedStructure => selectedStructures.FirstOrDefault();
     private IEnumerable<DbStructureDefinition> selectedStructures = [];
-    private bool dialogHidden = true;
+    private VisibleDialogCodes visibleDialog = VisibleDialogCodes.None;
 
     // Dialog context data
-    private string currentDialogKey = "";
     private int currentSourceStructureKey;
     private int currentSourcePackageIndex;
     private int currentTargetPackageIndex;
 
-    // Show the ValueSet selection dialog with appropriate context
-    private void ShowStructureSelectionDialog(string dialogKey, int sourcePackageIndex, int targetPackageIndex)
+    private void ShowStructureSelectionDialog(int sourcePackageIndex, int targetPackageIndex)
     {
         if (_selectedSdRow == null)
         {
             return;
         }
 
-        currentDialogKey = dialogKey;
         currentSourceStructureKey = _selectedSdRow[sourcePackageIndex]!.Sd.Key;
         currentSourcePackageIndex = sourcePackageIndex;
         currentTargetPackageIndex = targetPackageIndex;
@@ -522,7 +1136,7 @@
         LoadStructuresForPackage(targetPackageIndex);
 
         // Show dialog
-        dialogHidden = false;
+        visibleDialog = VisibleDialogCodes.StructureSelection;
     }
 
     // Primary action handler for the dialog
@@ -538,24 +1152,20 @@
                 };
 
             // Call the existing AddVsMapping with our selected value
-            AddSdMapping(currentDialogKey, currentSourceStructureKey, currentSourcePackageIndex, currentTargetPackageIndex, selectedOption);
+            AddSdMapping(currentSourceStructureKey, currentSourcePackageIndex, currentTargetPackageIndex, selectedOption);
         }
 
         // valueSetSelectionDialog!.Hide();
-        dialogHidden = true;
+        visibleDialog = VisibleDialogCodes.None;
     }
 
-    private void AddSdMapping(string popKey, int sourceStructureKey, int sourcePackageIndex, int targetPackageIndex, object? selectedValue)
+    private void AddSdMapping(int sourceStructureKey, int sourcePackageIndex, int targetPackageIndex, object? selectedValue)
     {
         if ((selectedValue == null) ||
             (selectedValue is not Option<DbStructureDefinition> selectedOption) ||
             (selectedOption.Value == null) ||
             (selectedOption.Value is not DbStructureDefinition targetSd))
         {
-            // Close the popover after selection
-            SetPopoverState(popKey, false);
-            StateHasChanged();
-
             return;
         }
 
@@ -567,9 +1177,6 @@
 
         if (packagePair == null)
         {
-            // Close the popover after selection
-            SetPopoverState(popKey, false);
-            StateHasChanged();
             return;
         }
 
@@ -580,9 +1187,6 @@
 
         if (reversePair == null)
         {
-            // Close the popover after selection
-            SetPopoverState(popKey, false);
-            StateHasChanged();
             return;
         }
 
@@ -594,9 +1198,6 @@
 
         if (sourceSd == null)
         {
-            // Close the popover after selection
-            SetPopoverState(popKey, false);
-            StateHasChanged();
             return;
         }
 
@@ -664,20 +1265,15 @@
 
         // force reload of our UI contents
         LoadStructure(true);
-
-        // Close the popover after selection
-        SetPopoverState(popKey, false);
-        StateHasChanged();
     }
 
     // Secondary action handler for the dialog
-    private void CancelValueSetSelection()
+    private void CancelStructureSelection()
     {
         // valueSetSelectionDialog!.Hide();
-        dialogHidden = true;
+        visibleDialog = VisibleDialogCodes.None;
     }
 
-    // Load value sets for a specific package
     private void LoadStructuresForPackage(int packageIndex)
     {
         try
@@ -706,7 +1302,6 @@
         }
     }
 
-    // Filter value sets based on search text
     private void FilterStructures(ChangeEventArgs e)
     {
         string? searchText = e.Value?.ToString()?.ToLowerInvariant();
