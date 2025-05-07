@@ -56,6 +56,26 @@ public static class DbComparisonCellExtensions
         ? string.Empty
         : $"{c.LeftCell.RightComparison.Relationship}: {c.LeftCell.RightComparison.Message}";
 
+    public static Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? LeftToRight(this BidirectionalRelationshipCodes br) => br switch
+    {
+        BidirectionalRelationshipCodes.Equivalent => Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.Equivalent,
+        BidirectionalRelationshipCodes.NewerNarrows => Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget,
+        BidirectionalRelationshipCodes.NewerBroadens => Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget,
+        BidirectionalRelationshipCodes.Related => Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.RelatedTo,
+        BidirectionalRelationshipCodes.NotRelated => Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo,
+        _ => null,
+    };
+
+    public static Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? RightToLeft(this BidirectionalRelationshipCodes br) => br switch
+    {
+        BidirectionalRelationshipCodes.Equivalent => Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.Equivalent,
+        BidirectionalRelationshipCodes.NewerNarrows => Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget,
+        BidirectionalRelationshipCodes.NewerBroadens => Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget,
+        BidirectionalRelationshipCodes.Related => Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.RelatedTo,
+        BidirectionalRelationshipCodes.NotRelated => Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo,
+        _ => null,
+    };
+
     public static BidirectionalRelationshipCodes? BidirectionalRight(this IDbComparisonCell c)
     {
         if ((c.RightComparison == null) || (c.RightCell?.LeftComparison == null))

@@ -833,6 +833,23 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                                 transaction.Commit();
                             }
                         }
+
+                        public static void Delete(IDbConnection dbConnection, string? dbTableName = null, {{{string.Join(", ", getFnFilterParams(true))}}})
+                        {
+                            dbTableName ??= "{{{tableName}}}";
+                    
+                            using (IDbTransaction transaction = dbConnection.BeginTransaction())
+                            {
+                                IDbCommand command = dbConnection.CreateCommand();
+                                command.CommandText = $"DELETE FROM {dbTableName}";
+                                        
+                                bool addedCondition = false;
+                    
+                                {{{string.Join(_line_2, getConditionLines(true))}}}
+
+                                transaction.Commit();
+                            }
+                        }
                     }
 
                     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -891,7 +908,11 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                         {
                             {{{className}}}.Delete(dbCon, values, dbTableName);
                         }
-                    
+
+                        public static void Delete(this IDbConnection dbCon, string? dbTableName = null, {{{string.Join(", ", getFnFilterParams(true))}}})
+                        {
+                            {{{className}}}.Delete(dbCon, dbTableName, {{{string.Join(", ", getFnFilterArgs(true))}}});
+                        }
 
                         public static void Insert(this {{{className}}} value, IDbConnection dbCon, string? dbTableName = null)
                         {
