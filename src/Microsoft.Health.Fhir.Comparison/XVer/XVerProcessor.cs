@@ -28,6 +28,8 @@ using System.Xml.Linq;
 using System.Data;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Specification.Snapshot;
+using static System.Net.Mime.MediaTypeNames;
 
 
 
@@ -346,6 +348,45 @@ public class XVerProcessor
 
         ConcurrentDictionary<int, string> differentialVsBySourceKey = [];
 
+        Dictionary<int, HashSet<string>> basicElementPathsByPackageKey = [];
+
+        // iterate over the packages to build the Basic resource element paths
+        foreach (DbFhirPackage package in packages)
+        {
+            basicElementPathsByPackageKey[package.Key] = [];
+
+            // check for a basic structure
+            DbStructureDefinition? basicResource = DbStructureDefinition.SelectSingle(
+                _db.DbConnection,
+                FhirPackageKey: package.Key,
+                Name: "Basic",
+                ArtifactClass: FhirArtifactClassEnum.Resource);
+
+            if (basicResource == null)
+            {
+                continue;
+            }
+
+            // get the elements for this structure
+            List<DbElement> basicElements = DbElement.SelectList(
+                _db.DbConnection,
+                StructureKey: basicResource.Key);
+
+            // iterate over the elements
+            foreach (DbElement element in basicElements)
+            {
+                // skip root and elements with empty paths
+                if ((element.ResourceFieldOrder == 0) ||
+                    string.IsNullOrEmpty(element.Path))
+                {
+                    continue;
+                }
+
+                // add the path to the dictionary, but strip "Basic" from the front
+                basicElementPathsByPackageKey[package.Key].Add(element.Path.Substring(5));
+            }
+        }
+
 
         // iterate over the list of packages
         for (int focusPackageIndex = 0; focusPackageIndex < packages.Count; focusPackageIndex++)
@@ -358,8 +399,8 @@ public class XVerProcessor
             //writeFhirValueSets(packages, i, packageComparisonPairs, fhirDir, differentialVsBySourceKey);
 
             Dictionary<(int sourceElementKey, int targetPackageId), StructureDefinition> xverExtensions = [];
-            buildXverStructures(packages, focusPackageIndex, xverValueSets, xverExtensions, FhirArtifactClassEnum.ComplexType);
-            buildXverStructures(packages, focusPackageIndex, xverValueSets, xverExtensions, FhirArtifactClassEnum.Resource);
+            buildXverStructures(packages, focusPackageIndex, xverValueSets, basicElementPathsByPackageKey, xverExtensions, FhirArtifactClassEnum.ComplexType);
+            buildXverStructures(packages, focusPackageIndex, xverValueSets, basicElementPathsByPackageKey, xverExtensions, FhirArtifactClassEnum.Resource);
 
             writeXverStructures(packages, focusPackageIndex, xverExtensions, fhirDir);
 
@@ -687,6 +728,7 @@ public class XVerProcessor
         List<DbFhirPackage> packages,
         int sourcePackageIndex,
         Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
+        Dictionary<int, HashSet<string>> basicElementPathsByPackageKey,
         Dictionary<(int sourceElementKey, int targetPackageId), StructureDefinition> xverExtensions,
         FhirArtifactClassEnum artifactClass)
     {
@@ -711,6 +753,7 @@ public class XVerProcessor
                 sourcePackageIndex,
                 allowedExtensionTypes,
                 xverValueSets,
+                basicElementPathsByPackageKey,
                 sd);
         }
 
@@ -755,6 +798,7 @@ public class XVerProcessor
         int sourcePackageIndex,
         HashSet<string> allowedExtensionTypes,
         Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
+        Dictionary<int, HashSet<string>> basicElementPathsByPackageKey,
         DbStructureDefinition sourceSd,
         Dictionary<int, List<DbGraphSd.DbElementRow>>? elementProjectionDict = null,
         HashSet<int>? elementsWithoutEquivalent = null,
@@ -763,7 +807,7 @@ public class XVerProcessor
     {
         if (elementProjectionDict == null)
         {
-            // build a graph for this value set
+            // build a graph for this structure
             DbGraphSd sdGraph = new()
             {
                 DB = _db!.DbConnection,
@@ -771,7 +815,7 @@ public class XVerProcessor
                 KeySd = sourceSd,
             };
 
-            // build a dictionary of all concept projections, by concept key
+            // build a dictionary of all element projections, by element key
             elementProjectionDict = [];
             foreach (DbGraphSd.DbSdRow sdRow in sdGraph.Projection)
             {
@@ -806,6 +850,7 @@ public class XVerProcessor
                     sourcePackageIndex,
                     allowedExtensionTypes,
                     xverValueSets,
+                    basicElementPathsByPackageKey,
                     sourceSd,
                     elementProjectionDict,
                     elementsWithoutEquivalent,
@@ -822,6 +867,7 @@ public class XVerProcessor
                     sourcePackageIndex,
                     allowedExtensionTypes,
                     xverValueSets,
+                    basicElementPathsByPackageKey,
                     sourceSd,
                     elementProjectionDict,
                     elementsWithoutEquivalent,
@@ -832,6 +878,9 @@ public class XVerProcessor
             // done
             return;
         }
+
+        // resolve the basic element hash for testing
+        HashSet<string> basicElementPaths = basicElementPathsByPackageKey[packages[targetPackageIndex].Key];
 
         bool testingRight = currentPackageIndex < targetPackageIndex;
         bool testingLeft = !testingRight;
@@ -849,37 +898,188 @@ public class XVerProcessor
             // resolve the root row
             DbGraphSd.DbElementRow rootRow = elementProjectionDict
                 .Values
-                .First(rows => rows.Any(row => row.KeyCell?.Element.ResourceFieldOrder == 0)).First();
+                .First(rows => rows.Any(row => row.KeyCell?.Element.ResourceFieldOrder == 0))
+                .First();
 
             // resolve the root element
-            DbElement element = rootRow.KeyCell!.Element;
-            
-            string sdId = $"{sourcePackage.ShortName}-{element.Path}-for-{targetPackage.ShortName}";
+            DbElement rootElement = rootRow.KeyCell!.Element;
+            int rootPathLen = rootElement.Path.Length;
+
+            string sdId = $"{sourcePackage.ShortName}-{rootElement.Path}-for-{targetPackage.ShortName}";
+
+            // determine the context based on the closest path that has a target
+            StructureDefinition.ContextComponent context = new() {
+                Type = StructureDefinition.ExtensionContextType.Element,
+                Expression = "Basic",
+            };
 
             StructureDefinition sd = new()
             {
-                Url = $"http://hl7.org/fhir/uv/xver/{sourcePackage.FhirVersionShort}/StructureDefinition/{sdId}",
                 Id = sdId,
-                Version = _crossDefinitionVersion,
+                Url = $"http://hl7.org/fhir/uv/xver/{sourcePackage.FhirVersionShort}/StructureDefinition/{sdId}",
                 Name = sdId,
-                Title = $"Cross-version Extension for {sourcePackage.ShortName}.{element.Path} for use in FHIR {targetPackage.ShortName}",
+                Version = _crossDefinitionVersion,
+                DateElement = new FhirDateTime(DateTimeOffset.Now),
+                Title = $"Cross-version Extension for {sourcePackage.ShortName}.{rootElement.Path} for use in FHIR {targetPackage.ShortName}",
+                Description = $"This cross-version extension represents the {rootElement.Path} Structure from {sourceSd.VersionedUrl} for use in FHIR {targetPackage.ShortName}.",
                 Status = PublicationStatus.Draft,
                 Experimental = false,
-                DateElement = new FhirDateTime(DateTimeOffset.Now),
-                Description = $"This cross-version extension represents the {element.Path} element from {sourceSd.VersionedUrl} for use in FHIR {targetPackage.ShortName}.",
+                FhirVersion = FHIRVersion.N5_0_0,
+                Kind = StructureDefinition.StructureDefinitionKind.ComplexType,
+                Abstract = false,
+                Context = [context],
+                Type = "Extension",
+                BaseDefinition = "http://hl7.org/fhir/StructureDefinition/Extension",
+                Derivation = StructureDefinition.TypeDerivationRule.Constraint,
+                Differential = new()
+                {
+                    Element = [],
+                },
             };
 
+            Dictionary<int, string> extPathByElementKey = [];
+
+            // iterate over the source elements, sorted by the key cell resource field order
+            foreach ((int sourceElementKey, List<DbGraphSd.DbElementRow> elementProjections) in elementProjectionDict.OrderBy(kvp => kvp.Value.First().KeyCell!.Element.ResourceFieldOrder))
+            {
+                // just grab the first row
+                DbGraphSd.DbElementRow elementRow = elementProjections[0];
+
+                // resolve the key element from the row
+                DbElement element = elementRow.KeyCell?.Element ?? throw new Exception($"Failed to resolve element for {sourceElementKey} in {sourceSd.Name}!");
+
+                // check to see if this is in the basic resource
+                if ((element.Path.Length > rootPathLen) &&
+                    basicElementPaths.Contains(element.Path.Substring(rootPathLen)))
+                {
+                    continue;
+                }
+
+                // check to see if there is a parent
+                bool hasParentPath = false;
+                string parentElementPath = string.Empty;
+
+                if ((element.ParentElementKey != null) &&
+                    elementProjectionDict.TryGetValue(element.ParentElementKey.Value, out List<DbGraphSd.DbElementRow>? parentProjection) &&
+                    (parentProjection?.FirstOrDefault()?.KeyCell?.Element is DbElement parentElement))
+                {
+                    if (extPathByElementKey.TryGetValue(parentElement.Key, out string? parentExtPath))
+                    {
+                        parentElementPath = parentExtPath;
+                        hasParentPath = true;
+                    }
+                }
+
+                string extensionElementPath = hasParentPath
+                    ? $"{parentElementPath}.extension:{element.Name}"
+                    : "Extension";
+
+                extPathByElementKey[element.Key] = extensionElementPath;
+
+                ElementDefinition extensionEd = new()
+                {
+                    Path = extensionElementPath,
+                    Min = element.MinCardinality,
+                    Max = element.MaxCardinalityString,
+                    Short = element.Short,
+                    Definition = element.Definition,
+                };
+
+                ElementDefinition? extensionEdValue = null;
+
+                // check to see if we are adding a value type
+                if (element.ChildElementCount == 0)
+                {
+                    extensionEdValue = new()
+                    {
+                        Path = extensionElementPath + ".value[x]",
+                        Short = element.Short,
+                        Definition = element.Definition,
+                        Type = [],
+                    };
+
+                    // build the value types
+                    List<DbElementType> valueTypes = DbElementType.SelectList(
+                        _db!.DbConnection,
+                        ElementKey: element.Key);
+
+                    Dictionary<string, ElementDefinition.TypeRefComponent> edValueTypes = [];
+
+                    foreach (DbElementType valueType in valueTypes)
+                    {
+                        //// check for a type that is not allowed
+                        //if (!allowedExtensionTypes.Contains(valueType.TypeName!))
+                        //{
+                        //    continue;
+                        //}
+
+                        if (valueType.TypeName == null)
+                        {
+                            continue;
+                        }
+
+                        if (edValueTypes.TryGetValue(valueType.TypeName, out ElementDefinition.TypeRefComponent? edValueType))
+                        {
+                            if (valueType.TypeProfile != null)
+                            {
+                                edValueType.ProfileElement.Add(new Canonical(valueType.TypeProfile));
+                            }
+
+                            if (valueType.TargetProfile != null)
+                            {
+                                edValueType.TargetProfileElement.Add(new Canonical(valueType.TargetProfile));
+                            }
+
+                            continue;
+                        }
+
+                        // create a new type reference
+                        edValueType = new()
+                        {
+                            Code = valueType.TypeName,
+                            ProfileElement = valueType.TypeProfile == null ? [] : [new Canonical(valueType.TypeProfile)],
+                            TargetProfileElement = valueType.TargetProfile == null ? [] : [new Canonical(valueType.TargetProfile)],
+                        };
+                        edValueTypes.Add(valueType.TypeName, edValueType);
+
+
+                        // add the type to the extension
+                        extensionEdValue.Type.Add(new()
+                        {
+                            Code = valueType.TypeName,
+                            ProfileElement = valueType.TypeProfile == null ? [] : [new Canonical(valueType.TypeProfile)],
+                            TargetProfileElement = valueType.TargetProfile == null ? [] : [new Canonical(valueType.TargetProfile)],
+                        });
+                    }
+                }
+
+                // add to our structure
+                sd.Differential.Element.Add(extensionEd);
+
+                if (extensionEdValue != null)
+                {
+                    sd.Differential.Element.Add(extensionEdValue);
+                }
+            }
+
+
             /*
-             * TODO:
-             * - filter target types based on allowed types (HashSet)
-             * - map types that do not exist based on their mappings (e.g., R2:Quantity <-> R3:SimpleQuantity)
-             * - make complex extensions based on elements in the tree
-             * - filter top-level structures/elements for new types (only allow entire structures)
-             * - determine correct targets
-             */
+                * TODO:
+                * - filter target types based on allowed types (HashSet)
+                * - map types that do not exist based on their mappings (e.g., R2:Quantity <-> R3:SimpleQuantity)
+                * - make complex extensions based on elements in the tree
+                * - filter top-level structures/elements for new types (only allow entire structures)
+                * - determine correct targets
+                */
+
+            //// create a new snapshot
+            //sd.Snapshot = new StructureDefinition.SnapshotComponent();
+
 
             // add this element extension to the dictionary
-            xverExtensions.Add((element.Key, targetPackage.Key), sd);
+            xverExtensions.Add((rootElement.Key, targetPackage.Key), sd);
+
+
         }
         else
         {
@@ -965,6 +1165,8 @@ public class XVerProcessor
             }
         }
 
+
+
         // check for continuing to the next package to the right
         if (testingRight &&
             (targetPackageIndex < packages.Count - 1))
@@ -976,6 +1178,7 @@ public class XVerProcessor
                 sourcePackageIndex,
                 allowedExtensionTypes,
                 xverValueSets,
+                basicElementPathsByPackageKey,
                 sourceSd,
                 elementProjectionDict,
                 elementsWithoutEquivalent,
@@ -994,6 +1197,7 @@ public class XVerProcessor
                 sourcePackageIndex,
                 allowedExtensionTypes,
                 xverValueSets,
+                basicElementPathsByPackageKey,
                 sourceSd,
                 elementProjectionDict,
                 elementsWithoutEquivalent,
