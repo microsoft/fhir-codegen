@@ -67,9 +67,9 @@
                         @{
                             DbGraphVs.DbVsCell? cell = context[packageIndex];
                         }
-                        @if (cell == null)
+                        @if ((cell == null) || (cell.RightCell == null))
                         {
-                            <FluentButton>Add</FluentButton>
+                            @* <FluentButton>Add</FluentButton> *@
                         }
                         else
                         {
@@ -89,8 +89,18 @@
 
                                 <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center">
                                     <FluentIcon id="@($"fr-{context.RowId}-{packageIndex}-message")"
-                                    Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleLeft())"
-                                    Title="@(cell.FromRightMessage())" />
+                                                Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleLeft())"
+                                                Title="@(cell.FromRightMessage())" />
+
+                                    @if (cell.RightCell?.LeftComparison?.LastReviewedOn == null)
+                                    {
+                                        <FluentIcon Title="Unreviewed" Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Regular.Size20.Question())" />
+                                    }
+                                    else
+                                    {
+                                        <FluentIcon Title="@($"Reviewed by: {cell.RightCell!.LeftComparison!.LastReviewedBy} on {GetDateDisplay(cell.RightCell!.LeftComparison!.LastReviewedOn)}")"
+                                                    Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Regular.Size20.Checkmark())" />
+                                    }
 
                                     @{
                                         string colKey = $"er-{context.RowId}-{packageIndex}";
@@ -133,10 +143,19 @@
                                         <FluentIcon Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Regular.Size20.Delete())" Color="@Color.Error" />
                                     </FluentButton>
 
+                                    @if (cell.RightComparison?.LastReviewedOn == null)
+                                    {
+                                        <FluentIcon Title="Unreviewed" Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Regular.Size20.Question())" />
+                                    }
+                                    else
+                                    {
+                                        <FluentIcon Title="@($"Reviewed by: {cell.RightComparison!.LastReviewedBy} on {GetDateDisplay(cell.RightComparison!.LastReviewedOn)}")"
+                                                    Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Regular.Size20.Checkmark())" />
+                                    }
 
                                     <FluentIcon id="@($"tr-{context.RowId}-{packageIndex}-message")"
-                                    Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleRight())"
-                                    Title="@(cell.ToRightMessage())" />
+                                                Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleRight())"
+                                                Title="@(cell.ToRightMessage())" />
                                 </FluentStack>
                             </FluentStack>
                         }
@@ -197,7 +216,13 @@
         }
 
         <hr />
-        <FluentLabel Typo="Typography.Header">Review concept mappings:</FluentLabel>
+
+        <FluentStack Orientation="Orientation.Horizontal">
+            <FluentLabel Typo="Typography.Header">Review concept mappings:</FluentLabel>
+            <FluentButton IconStart="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Regular.Size20.Checkmark())" Appearance="Appearance.Outline" Title="Mark displayed mappings as reviewed" OnClick="@(() => MarkReviewed())">
+                Mark Reviewed
+            </FluentButton>
+        </FluentStack>
 
         <FluentDataGrid Items="@conceptGraphProjection"
         ResizableColumns="true"
@@ -269,12 +294,34 @@
 
                                 <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center">
                                     <FluentIcon id="@($"fr-{context.RowId}-{packageIndex}-message")"
-                                    Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleLeft())"
-                                    Title="@(cell.FromRightMessage())" />
+                                                Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleLeft())"
+                                                Title="@(cell.FromRightMessage())" />
+
+                                    @if (cell.RightCell?.LeftComparison?.LastReviewedOn == null)
+                                    {
+                                        <FluentIcon Title="Unreviewed" Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Regular.Size20.Question())" />
+                                    }
+                                    else
+                                    {
+                                        <FluentIcon Title="@($"Reviewed by: {cell.RightCell!.LeftComparison!.LastReviewedBy} on {GetDateDisplay(cell.RightCell!.LeftComparison!.LastReviewedOn)}")"
+                                                    Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Regular.Size20.Checkmark())" />
+                                    }
+
                                     <FluentButton OnClick="@(() => ShowConceptMappingDialog(context.RowId, packageIndex, packageIndex + 1))">Edit</FluentButton>
+
+                                    @if (cell.RightComparison?.LastReviewedOn == null)
+                                    {
+                                        <FluentIcon Title="Unreviewed" Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Regular.Size20.Question())" />
+                                    }
+                                    else
+                                    {
+                                        <FluentIcon Title="@($"Reviewed by: {cell.RightComparison!.LastReviewedBy} on {GetDateDisplay(cell.RightComparison!.LastReviewedOn)}")"
+                                                    Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Regular.Size20.Checkmark())" />
+                                    }
+
                                     <FluentIcon id="@($"tr-{context.RowId}-{packageIndex}-message")"
-                                    Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleRight())"
-                                    Title="@(cell.ToRightMessage())" />
+                                                Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleRight())"
+                                                Title="@(cell.ToRightMessage())" />
                                 </FluentStack>
                             </FluentStack>
 
@@ -575,7 +622,6 @@ Class="concept-dialog-container">
         StateHasChanged();
     }
 
-    #if true
     private FluentDialog? conceptMappingDialog;
     private FluentTreeView? conceptMappingTreeLeft;
     private FluentTreeView? conceptMappingTreeRight;
@@ -1057,8 +1103,35 @@ Class="concept-dialog-container">
         // go back to the main UI
         ClearConceptSelection();
     }
-    #endif
 
+    private async Task MarkReviewed()
+    {
+        if (_selectedVsRow == null)
+        {
+            return;
+        }
+
+        string reviewer = ServerConfig.UserName;
+
+        Xver.Comparer.MarkVsMappingsReviewed(
+            _selectedVsRow,
+            initialConceptProjection,
+            reviewer);
+
+        IDialogReference dialog = await DialogService.ShowSuccessAsync(
+            "All mappings for the currently selected mapping group have been marked as reviewed.");
+        DialogResult result = await dialog.Result;
+        _ = dialog.CloseAsync();
+
+        // force reload of the mapping table
+        LoadValueSet(true);
+
+        // move the UI back to default
+        visibleDialog = VisibleDialogCodes.None;
+        StateHasChanged();
+
+        return;
+    }
 
     private FluentDialog? valueSetSelectionDialog;
     private string valueSetDialogTitle = "Select Target Value Set...";

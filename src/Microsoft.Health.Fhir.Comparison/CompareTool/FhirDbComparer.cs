@@ -400,7 +400,102 @@ public class FhirDbComparer
         return (inverseComparsion, elementChanges.Count != 0);
     }
 
-    public void ApplySdConceptChanges(
+    public void MarkSdMappingsReviewed(
+        DbGraphSd.DbSdRow sdRow,
+        List<DbGraphSd.DbElementRow> elementProjection,
+        string? reviewer)
+    {
+        DbComparisonCache<DbStructureComparison> sdChanges = new();
+        DbComparisonCache<DbElementComparison> edChanges = new();
+
+        // iterate over each of the structure cells
+        foreach (DbGraphSd.DbSdCell? sdCell in sdRow.Cells)
+        {
+            if (sdCell == null)
+            {
+                continue;
+            }
+
+            // check for a left comparison
+            if (sdCell.LeftComparison != null)
+            {
+                sdCell.LeftComparison.LastReviewedOn = DateTime.UtcNow;
+                sdCell.LeftComparison.LastReviewedBy = reviewer;
+                sdChanges.CacheUpdate(sdCell.LeftComparison);
+            }
+
+            // check for a right comparison
+            if (sdCell.RightComparison != null)
+            {
+                sdCell.RightComparison.LastReviewedOn = DateTime.UtcNow;
+                sdCell.RightComparison.LastReviewedBy = reviewer;
+                sdChanges.CacheUpdate(sdCell.RightComparison);
+            }
+        }
+
+        // traverse the element projection
+        foreach (DbGraphSd.DbElementRow edRow in elementProjection)
+        {
+            // iterate over the cells in the row
+            foreach (DbGraphSd.DbElementCell? edCell in edRow.Cells)
+            {
+                if (edCell == null)
+                {
+                    continue;
+                }
+
+                // check for a left comparison
+                if (edCell.LeftComparison != null)
+                {
+                    edCell.LeftComparison.LastReviewedOn = DateTime.UtcNow;
+                    edCell.LeftComparison.LastReviewedBy = reviewer;
+                    edChanges.CacheUpdate(edCell.LeftComparison);
+                }
+
+                // check for a right comparison
+                if (edCell.RightComparison != null)
+                {
+                    edCell.RightComparison.LastReviewedOn = DateTime.UtcNow;
+                    edCell.RightComparison.LastReviewedBy = reviewer;
+                    edChanges.CacheUpdate(edCell.RightComparison);
+                }
+            }
+        }
+
+        // apply the changes to the structure comparisons
+        if (sdChanges.ComparisonsToAdd.Any())
+        {
+            sdChanges.ComparisonsToAdd.Insert(_db);
+        }
+
+        if (sdChanges.ComparisonsToUpdate.Any())
+        {
+            sdChanges.ComparisonsToUpdate.Update(_db);
+        }
+
+        if (sdChanges.ComparisonsToDelete.Any())
+        {
+            sdChanges.ComparisonsToDelete.Delete(_db);
+        }
+
+        // apply the changes to the element comparisons
+        if (edChanges.ComparisonsToAdd.Any())
+        {
+            edChanges.ComparisonsToAdd.Insert(_db);
+        }
+
+        if (edChanges.ComparisonsToUpdate.Any())
+        {
+            edChanges.ComparisonsToUpdate.Update(_db);
+        }
+
+        if (edChanges.ComparisonsToDelete.Any())
+        {
+            edChanges.ComparisonsToDelete.Delete(_db);
+        }
+    }
+
+    public void ApplySdElementChanges(
         List<DbGraphSd.DbElementRow> originalProjection,
         IEnumerable<DbGraphSd.DbElementRow> updatedProjection,
         int sourceColumnIndex,
@@ -2366,6 +2461,101 @@ public class FhirDbComparer
 
         // return the comparison in case the caller needs it
         return (inverseComparsion, changes.Count != 0);
+    }
+
+    public void MarkVsMappingsReviewed(
+        DbGraphVs.DbVsRow vsRow,
+        List<DbGraphVs.DbVsConceptRow> conceptProjection,
+        string? reviewer)
+    {
+        DbComparisonCache<DbValueSetComparison> vsChanges = new();
+        DbComparisonCache<DbValueSetConceptComparison> conceptChanges = new();
+
+        // iterate over each of the structure cells
+        foreach (DbGraphVs.DbVsCell? vsCell in vsRow.Cells)
+        {
+            if (vsCell == null)
+            {
+                continue;
+            }
+
+            // check for a left comparison
+            if (vsCell.LeftComparison != null)
+            {
+                vsCell.LeftComparison.LastReviewedOn = DateTime.UtcNow;
+                vsCell.LeftComparison.LastReviewedBy = reviewer;
+                vsChanges.CacheUpdate(vsCell.LeftComparison);
+            }
+
+            // check for a right comparison
+            if (vsCell.RightComparison != null)
+            {
+                vsCell.RightComparison.LastReviewedOn = DateTime.UtcNow;
+                vsCell.RightComparison.LastReviewedBy = reviewer;
+                vsChanges.CacheUpdate(vsCell.RightComparison);
+            }
+        }
+
+        // traverse the concept projection
+        foreach (DbGraphVs.DbVsConceptRow conceptRow in conceptProjection)
+        {
+            // iterate over the cells in the row
+            foreach (DbGraphVs.DbVsConceptCell? conceptCell in conceptRow.Cells)
+            {
+                if (conceptCell == null)
+                {
+                    continue;
+                }
+
+                // check for a left comparison
+                if (conceptCell.LeftComparison != null)
+                {
+                    conceptCell.LeftComparison.LastReviewedOn = DateTime.UtcNow;
+                    conceptCell.LeftComparison.LastReviewedBy = reviewer;
+                    conceptChanges.CacheUpdate(conceptCell.LeftComparison);
+                }
+
+                // check for a right comparison
+                if (conceptCell.RightComparison != null)
+                {
+                    conceptCell.RightComparison.LastReviewedOn = DateTime.UtcNow;
+                    conceptCell.RightComparison.LastReviewedBy = reviewer;
+                    conceptChanges.CacheUpdate(conceptCell.RightComparison);
+                }
+            }
+        }
+
+        // apply the changes to the structure comparisons
+        if (vsChanges.ComparisonsToAdd.Any())
+        {
+            vsChanges.ComparisonsToAdd.Insert(_db);
+        }
+
+        if (vsChanges.ComparisonsToUpdate.Any())
+        {
+            vsChanges.ComparisonsToUpdate.Update(_db);
+        }
+
+        if (vsChanges.ComparisonsToDelete.Any())
+        {
+            vsChanges.ComparisonsToDelete.Delete(_db);
+        }
+
+        // apply the changes to the element comparisons
+        if (conceptChanges.ComparisonsToAdd.Any())
+        {
+            conceptChanges.ComparisonsToAdd.Insert(_db);
+        }
+
+        if (conceptChanges.ComparisonsToUpdate.Any())
+        {
+            conceptChanges.ComparisonsToUpdate.Update(_db);
+        }
+
+        if (conceptChanges.ComparisonsToDelete.Any())
+        {
+            conceptChanges.ComparisonsToDelete.Delete(_db);
+        }
     }
 
     public void ApplyVsConceptChanges(
