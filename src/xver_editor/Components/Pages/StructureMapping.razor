@@ -79,7 +79,7 @@
                         }
                         else
                         {
-                            <FluentStack Orientation="Orientation.Vertical">
+                            <FluentStack Orientation="Orientation.Vertical" Class="@(ClassForCell(cell.BidirectionalRight()))">
                                 @if (cell.BidirectionalRight() == BidirectionalRelationshipCodes.Mismatched)
                                 {
                                     <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center">
@@ -272,7 +272,10 @@
                                 Appearance ba = componentIndex == lastComponentIndex ? Appearance.Accent : Appearance.Neutral;
                                 if (componentIndex == 0)
                                 {
-                                    <FluentBadge Appearance="@ba">@component</FluentBadge>
+                                    if (lastComponentIndex == 0)
+                                    {
+                                        <FluentBadge Appearance="@ba">@component</FluentBadge>
+                                    }
                                 }
                                 else
                                 {
@@ -301,7 +304,7 @@
                         }
                         else
                         {
-                            <FluentStack Orientation="Orientation.Vertical">
+                            <FluentStack Orientation="Orientation.Vertical" Class="@(ClassForCell(cell.BidirectionalRight()))">
                                 @if (cell.BidirectionalRight() == BidirectionalRelationshipCodes.Mismatched)
                                 {
                                     <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center">
@@ -346,6 +349,33 @@
                                     Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ArrowCircleRight())"
                                     Title="@(cell.ToRightMessage())" />
                                 </FluentStack>
+
+                                @if ((cell.RightCell?.LeftVsComparison != null) || (cell.RightVsComparison != null))
+                                {
+                                    <FluentStack Orientation="Orientation.Horizontal">
+                                        @if ((cell.RightCell?.BoundValueSet != null) && (cell.RightCell?.LeftVsComparison != null))
+                                        {
+                                            <FluentAnchor Appearance="Appearance.Hypertext" Href="@($"valuesetmapping/{cell.RightCell.BoundValueSet.FhirPackageKey}/{cell.RightCell.BoundValueSet.Key}/?packageShort={_packages[packageIndex+1].ShortName}&vsName={cell.RightCell.BoundValueSet.Name}")">
+                                                <FluentIcon Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Regular.Size20.ArrowCircleLeft())" />
+                                            </FluentAnchor>
+
+                                            <FluentIcon Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Regular.Size20.Info())" Title="@cell.RightCell.LeftVsComparison.TechnicalMessage" />
+                                        }
+
+                                        <FluentLabel Typo="Typography.Body">|</FluentLabel>
+
+                                        @if ((cell.BoundValueSet != null) && (cell.RightVsComparison != null))
+                                        {
+                                            <FluentIcon Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Regular.Size20.Info())" Title="@cell.RightVsComparison.TechnicalMessage" />
+
+                                            <FluentAnchor Appearance="Appearance.Hypertext" Href="@($"valuesetmapping/{cell.BoundValueSet.FhirPackageKey}/{cell.BoundValueSet.Key}/?packageShort={_packages[packageIndex].ShortName}&vsName={cell.BoundValueSet.Name}")">
+                                                <FluentIcon Value="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Regular.Size20.ArrowCircleRight())" />
+                                            </FluentAnchor>
+                                        }
+
+                                    </FluentStack>
+                                }
+
                             </FluentStack>
 
                             @*                             <FluentCombobox Items="@_bidirectionalRelationships"
@@ -474,23 +504,23 @@ Class="ed-dialog-container">
             <FluentLabel Typo="Typography.Body"><b><code>Right to Left:</code></b></FluentLabel>
             <FluentLabel Typo="Typography.Body">Overall Relationship:</FluentLabel>
             <FluentCombobox Items="@_relationships"
-            Class="full-width"
-            Placeholder="Search for a relationship..."
-            OptionValue="@(i => i?.Value.ToString() ?? string.Empty)"
-            OptionText="@(i => i?.Text)"
-            @bind-SelectedOption="@mapRLRelationship"
-            Multiple="false"
-            Autocomplete="ComboboxAutocomplete.Inline" />
+                            Class="full-width"
+                            Placeholder="Search for a relationship..."
+                            OptionValue="@(i => i?.Value.ToString() ?? string.Empty)"
+                            OptionText="@(i => i?.Text)"
+                            @bind-SelectedOption="@mapRLRelationship"
+                            Multiple="false"
+                            Autocomplete="ComboboxAutocomplete.Inline" />
             @* <FluentLabel Typo="Typography.Body">Conceptually: <code>@mapRLConceptRelationship</code></FluentLabel> *@
             <FluentLabel Typo="Typography.Body">Concept Domain Relationship:</FluentLabel>
             <FluentCombobox Items="@_relationships"
-            Class="full-width"
-            Placeholder="Search for a relationship..."
-            OptionValue="@(i => i?.Value.ToString() ?? string.Empty)"
-            OptionText="@(i => i?.Text)"
-            @bind-SelectedOption="@mapRLConceptRelationship"
-            Multiple="false"
-            Autocomplete="ComboboxAutocomplete.Inline" />
+                            Class="full-width"
+                            Placeholder="Search for a relationship..."
+                            OptionValue="@(i => i?.Value.ToString() ?? string.Empty)"
+                            OptionText="@(i => i?.Text)"
+                            @bind-SelectedOption="@mapRLConceptRelationship"
+                            Multiple="false"
+                            Autocomplete="ComboboxAutocomplete.Inline" />
             <FluentLabel Typo="Typography.Body">Mapping Message:</FluentLabel>
             <FluentTextField @bind-Value="@mapRLMessage" Class="full-width" />
 
@@ -590,6 +620,18 @@ Class="ed-dialog-container">
         base.OnParametersSet();
         LoadStructure();
     }
+
+    private string ClassForCell(BidirectionalRelationshipCodes? relationship) => relationship switch
+    {
+        BidirectionalRelationshipCodes.Mismatched => "relation-mismatched",
+        BidirectionalRelationshipCodes.None => "relation-none",
+        BidirectionalRelationshipCodes.Equivalent => "relation-equivalent",
+        BidirectionalRelationshipCodes.NewerNarrows => "relation-newer-narrows",
+        BidirectionalRelationshipCodes.NewerBroadens => "relation-newer-broadens",
+        BidirectionalRelationshipCodes.Related => "relation-related",
+        BidirectionalRelationshipCodes.NotRelated => "relation-not-related",
+        _ => string.Empty,
+    };
 
     private string GetComparisonColName(int index) => _packages[index].ShortName + "-" + _packages[index + 1].ShortName;
 
@@ -763,7 +805,7 @@ Class="ed-dialog-container">
         mapLRConceptRelationship = mapLRComparison?.ConceptDomainRelationship == null
             ? null
             : _relationships.FirstOrDefault(ro => ro.Value == mapLRComparison.ConceptDomainRelationship);
-        mapLRMessage = mapLRComparison?.Message;
+        mapLRMessage = mapLRComparison?.TechnicalMessage;
 
         mapRLRelationship = mapRLComparison?.Relationship == null
             ? null
@@ -771,7 +813,7 @@ Class="ed-dialog-container">
         mapRLConceptRelationship = mapRLComparison?.ConceptDomainRelationship == null
             ? null
             : _relationships.FirstOrDefault(ro => ro.Value == mapRLComparison.ConceptDomainRelationship);
-        mapRLMessage = mapRLComparison?.Message;
+        mapRLMessage = mapRLComparison?.TechnicalMessage;
     }
 
     private Icon IconFolderCollapsed = new Icons.Regular.Size20.Folder();
@@ -1085,7 +1127,7 @@ Class="ed-dialog-container">
             mapLRComparison.Relationship = deletingRL ? null : mapLRRelationship?.Value;
             mapLRComparison.ConceptDomainRelationship = deletingRL ? null : mapLRConceptRelationship?.Value;
             // mapLRComparison.ValueDomainRelationship = null;
-            mapLRComparison.Message = mapLRMessage;
+            mapLRComparison.TechnicalMessage = mapLRMessage;
             mapLRComparison.NoMap = deletingRL ? true : null;
             mapLRComparison.IsGenerated = false;
 
@@ -1128,7 +1170,7 @@ Class="ed-dialog-container">
             mapRLComparison.Relationship = deletingLR ? null : mapRLRelationship?.Value;
             mapRLComparison.ConceptDomainRelationship = deletingLR ? null : mapRLConceptRelationship?.Value;
             // mapRLComparison.ValueDomainRelationship = null;
-            mapRLComparison.Message = mapRLMessage;
+            mapRLComparison.TechnicalMessage = mapRLMessage;
             mapRLComparison.NoMap = deletingLR ? true : null;
             mapRLComparison.IsGenerated = false;
 
@@ -1417,7 +1459,8 @@ Class="ed-dialog-container">
             IsGenerated = false,
             LastReviewedOn = null,
             LastReviewedBy = null,
-            Message = null,
+            TechnicalMessage = null,
+            UserMessage = null,
             IsIdentical = false,
         };
 

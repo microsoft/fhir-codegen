@@ -642,7 +642,8 @@ public class FhirDbComparer
                                 IsGenerated = true,
                                 LastReviewedBy = null,
                                 LastReviewedOn = null,
-                                Message = tm.Comment,
+                                TechnicalMessage = tm.Comment,
+                                UserMessage = null,
                                 IsIdentical = null,
                             };
 
@@ -709,7 +710,8 @@ public class FhirDbComparer
                                 IsGenerated = true,
                                 LastReviewedBy = null,
                                 LastReviewedOn = null,
-                                Message = message,
+                                TechnicalMessage = message,
+                                UserMessage = null,
                                 IsIdentical = null,
                             };
 
@@ -807,7 +809,7 @@ public class FhirDbComparer
         }
 
         // process this comparison
-        doElementComparisons(
+        List< DbElementComparison> sdElementComparisons = doElementComparisons(
             sdComparisons,
             elementComparisons,
             elementTypeComparisons,
@@ -851,7 +853,7 @@ public class FhirDbComparer
             forwardComparison.ConceptDomainRelationship = forwardOverride.ConceptDomainRelationship;
             forwardComparison.ValueDomainRelationship = forwardOverride.ValueDomainRelationship;
             forwardComparison.IsGenerated = true;
-            forwardComparison.Message = forwardOverride.Comment;
+            forwardComparison.TechnicalMessage = forwardOverride.Comment;
             sdComparisons.Changed(forwardComparison);
         }
         else if (FhirTypeMappings.TryGetMapping(sourceSd.Name, targetSd.Name, out FhirTypeMappings.CodeGenTypeMapping? sourcePM))
@@ -860,7 +862,7 @@ public class FhirDbComparer
             forwardComparison.ConceptDomainRelationship = sourcePM.Value.ConceptDomainRelationship;
             forwardComparison.ValueDomainRelationship = sourcePM.Value.ValueDomainRelationship;
             forwardComparison.IsGenerated = true;
-            forwardComparison.Message = sourcePM.Value.Comment;
+            forwardComparison.TechnicalMessage = sourcePM.Value.Comment;
             sdComparisons.Changed(forwardComparison);
         }
 
@@ -870,7 +872,7 @@ public class FhirDbComparer
             inverseComparison.ConceptDomainRelationship = inverseOverride.ConceptDomainRelationship;
             inverseComparison.ValueDomainRelationship = inverseOverride.ValueDomainRelationship;
             inverseComparison.IsGenerated = true;
-            inverseComparison.Message = inverseOverride.Comment;
+            inverseComparison.TechnicalMessage = inverseOverride.Comment;
             sdComparisons.Changed(inverseComparison);
         }
         else if (FhirTypeMappings.TryGetMapping(targetSd.Name, sourceSd.Name, out FhirTypeMappings.CodeGenTypeMapping? targetPM))
@@ -879,9 +881,58 @@ public class FhirDbComparer
             inverseComparison.ConceptDomainRelationship = targetPM.Value.ConceptDomainRelationship;
             inverseComparison.ValueDomainRelationship = targetPM.Value.ValueDomainRelationship;
             inverseComparison.IsGenerated = true;
-            inverseComparison.Message = targetPM.Value.Comment;
+            inverseComparison.TechnicalMessage = targetPM.Value.Comment;
             sdComparisons.Changed(inverseComparison);
         }
+
+        // build a user message
+        List<string> messages = [];
+
+        if (forwardComparison.Relationship == CMR.Equivalent)
+        {
+            messages.Add($"FHIR {sourcePackage.ShortName}:{sourceSd.Name} " +
+                $" maps to {targetPackage.ShortName}:{targetSd.Name} as {forwardComparison.Relationship}.");
+        }
+        else
+        {
+            messages.Add($"FHIR {sourcePackage.ShortName}:{sourceSd.Name} " +
+                $" maps to {targetPackage.ShortName}:{targetSd.Name} as {forwardComparison.Relationship} based on the element comparisons:");
+
+            ILookup<int, DbElementComparison> elementComparisonsBySourceKey = sdElementComparisons.ToLookup(c => c.SourceElementKey);
+
+            foreach (DbElement element in DbElement.SelectList(_db, StructureKey: sourceSd.Key, orderByProperties: [nameof(DbElement.ResourceFieldOrder)]))
+            {
+                if (!elementComparisonsBySourceKey.Contains(element.Key))
+                {
+                    messages.Add($"* `{element.Id}` has no mapping to {targetPackage.ShortName}:{targetSd.Name}");
+                    continue;
+                }
+
+                foreach (DbElementComparison elementComparison in elementComparisonsBySourceKey[element.Key])
+                {
+                    if (elementComparison.Relationship == CMR.Equivalent)
+                    {
+                        continue;
+                    }
+
+                    if (elementComparison.UserMessage != null)
+                    {
+                        messages.Add("* " + elementComparison.UserMessage);
+                    }
+                    else if (DbElement.SelectSingle(_db, Key: elementComparison.TargetElementKey) is DbElement targetElement)
+                    {
+                        messages.Add($"* `{element.Id}` maps to `{targetElement.Id}` as {elementComparison.Relationship}");
+                    }
+                    else
+                    {
+                        messages.Add($"* `{element.Id}` does not map to {targetPackage.ShortName}:{targetSd.Name}");
+                    }
+                }
+            }
+        }
+
+        forwardComparison.UserMessage = string.Join("\n", messages);
+        sdComparisons.Changed(forwardComparison);
     }
 
     private record class TypeComparisonTrackingRecord
@@ -1127,7 +1178,7 @@ public class FhirDbComparer
             existing.Relationship = cgTypeMapping.Relationship;
             existing.ConceptDomainRelationship = cgTypeMapping.ConceptDomainRelationship;
             existing.ValueDomainRelationship = cgTypeMapping.ValueDomainRelationship;
-            existing.Message = cgTypeMapping.Comment;
+            existing.TechnicalMessage = cgTypeMapping.Comment;
             existing.IsGenerated = true;
             existing.LastReviewedBy = null;
             existing.LastReviewedOn = null;
@@ -1153,7 +1204,9 @@ public class FhirDbComparer
             Relationship = cgTypeMapping.Relationship,
             ConceptDomainRelationship = conceptRelationship,
             ValueDomainRelationship = valueRelationship,
-            Message = cgTypeMapping.Comment,
+            TechnicalMessage = cgTypeMapping.Comment,
+            UserMessage = null,
+
             NoMap = noMap,
 
             IsGenerated = true,
@@ -1225,7 +1278,7 @@ public class FhirDbComparer
         }
     }
 
-    private void doElementComparisons(
+    private List<DbElementComparison> doElementComparisons(
         DbComparisonCache<DbStructureComparison> sdComparisons,
         DbComparisonCache<DbElementComparison> elementComparisons,
         DbComparisonCache<DbElementTypeComparison> elementTypeComparisons,
@@ -1239,6 +1292,8 @@ public class FhirDbComparer
         DbFhirPackageComparisonPair reversePair,
         out bool identical)
     {
+        List<DbElementComparison> sdElementComparisons = [];
+
         // select only active and concrete concepts
         List<DbElement> sourceElements = DbElement.SelectList(_db, StructureKey: sourceSd.Key);
         HashSet<string> usedTargetElements = [];
@@ -1302,7 +1357,9 @@ public class FhirDbComparer
                                 TargetValueSetKey: (int)targetElement.BindingValueSetKey)?.Key
                             : null,
                         NoMap = false,
-                        Message = $"Created mapping based on literal match of id `{sourceElement.Id}`",
+                        TechnicalMessage = $"Created mapping based on literal match of id `{sourceElement.Id}`",
+                        UserMessage = $"Mapping for FHIR {sourcePackage.ShortName}:{sourceSd.Name} element `{sourceElement.Id}`" +
+                            $" to FHIR {targetPackage.ShortName}:{targetSd.Name} element `{targetElement.Id}`",
                         IsGenerated = true,
                         LastReviewedBy = null,
                         LastReviewedOn = null,
@@ -1338,7 +1395,8 @@ public class FhirDbComparer
                     ElementTypeComparisonKey = null,
                     BoundValueSetComparisonKey = null,
                     NoMap = true,
-                    Message = $"No mapping exists and no literal match found - created no-map entry for `{sourceSd.Name}`: `{sourceElement.Id}`",
+                    TechnicalMessage = $"No mapping exists and no literal match found - created no-map entry for `{sourceSd.Name}`: `{sourceElement.Id}`",
+                    UserMessage = $"FHIR {sourcePackage.ShortName}:{sourceSd.Name} element `{sourceElement.Id}` has no related element in FHIR {targetPackage.ShortName}:{targetSd.Name}",
                     IsGenerated = true,
                     LastReviewedBy = null,
                     LastReviewedOn = null,
@@ -1357,6 +1415,8 @@ public class FhirDbComparer
             // iterate over the comparisons to check relationships
             foreach (DbElementComparison elementComparison in comparisons)
             {
+                sdElementComparisons.Add(elementComparison);
+
                 DbElement? targetElement = (elementComparison.TargetElementKey == null)
                     ? null
                     : DbElement.SelectSingle(_db, Key: elementComparison.TargetElementKey);
@@ -1464,22 +1524,24 @@ public class FhirDbComparer
                     }
 
                     // check for optional becoming mandatory: target has a broader concept than source since it requires content
-                    if ((sourceElement.MinCardinality == 0) &&
-                        (targetElement.MinCardinality != 0))
-                    {
-                        conceptRelationship = applyRelationship(conceptRelationship, CMR.SourceIsNarrowerThanTarget);
-                        messages.Add($"`{targetElement.Name}` made the element mandatory (min cardinality from 0 to {targetElement.MinCardinality}).");
-                        changed = true;
-                    }
+                    // note: 2025.05.10 - Grahame and I agree that there is nothing we need an extension for here - you cannot say anything differently
+                    //if ((sourceElement.MinCardinality == 0) &&
+                    //    (targetElement.MinCardinality != 0))
+                    //{
+                    //    conceptRelationship = applyRelationship(conceptRelationship, CMR.SourceIsNarrowerThanTarget);
+                    //    messages.Add($"`{targetElement.Name}` made the element mandatory (min cardinality from 0 to {targetElement.MinCardinality}).");
+                    //    changed = true;
+                    //}
 
                     // check for source allowing fewer than target requires: target has a broader concept and value than the source
-                    if (sourceElement.MinCardinality < targetElement.MinCardinality)
-                    {
-                        conceptRelationship = applyRelationship(conceptRelationship, CMR.SourceIsNarrowerThanTarget);
-                        valueRelationship = applyRelationship(valueRelationship, CMR.SourceIsNarrowerThanTarget);
-                        messages.Add($"`{targetElement.Name}` increased the minimum cardinality from {sourceElement.MinCardinality} to {targetElement.MinCardinality}.");
-                        changed = true;
-                    }
+                    // note: 2025.05.10 - Grahame and I agree that there is nothing we need an extension for here - you cannot say anything differently
+                    //if (sourceElement.MinCardinality < targetElement.MinCardinality)
+                    //{
+                    //    conceptRelationship = applyRelationship(conceptRelationship, CMR.SourceIsNarrowerThanTarget);
+                    //    valueRelationship = applyRelationship(valueRelationship, CMR.SourceIsNarrowerThanTarget);
+                    //    messages.Add($"`{targetElement.Name}` increased the minimum cardinality from {sourceElement.MinCardinality} to {targetElement.MinCardinality}.");
+                    //    changed = true;
+                    //}
 
                     // check for element being constrained out: source is broader than target in concept and value
                     if ((sourceElement.MaxCardinality != 0) &&
@@ -1578,7 +1640,7 @@ public class FhirDbComparer
                         elementComparison.ValueDomainRelationship = valueRelationship;
                         elementComparison.NoMap = noMap;
                         elementComparison.IsGenerated = isGenerated;
-                        elementComparison.Message = string.Join(" ", messages);
+                        elementComparison.TechnicalMessage = string.Join(" ", messages);
                         elementComparison.ElementTypeComparisonKey = elementTypeComparison.Key;
                         elementComparison.BoundValueSetComparisonKey = boundValueSetComparison?.Key;
                         elementComparisons.Changed(elementComparison);
@@ -1610,7 +1672,7 @@ public class FhirDbComparer
                     {
                         CMR? updatedCurrentRelationship = invert(inverseComparison.Relationship);
 
-                        elementComparison.Message = elementComparison.Message +
+                        elementComparison.TechnicalMessage = elementComparison.TechnicalMessage +
                             $" Updated relationship from `{elementComparison.Relationship}` to `{updatedCurrentRelationship}`" +
                             $" based on the inverse comparsion which has a relationship" +
                             $" of `{inverseComparison.Relationship}`.";
@@ -1626,7 +1688,7 @@ public class FhirDbComparer
                             // update the current record
                             CMR? updatedCurrentRelationship = invert(inverseComparison.Relationship);
 
-                            elementComparison.Message = elementComparison.Message +
+                            elementComparison.TechnicalMessage = elementComparison.TechnicalMessage +
                                 $" Updated relationship from `{elementComparison.Relationship}` to `{updatedCurrentRelationship}`" +
                                 $" based on the inverse comparsion which has a relationship" +
                                 $" of `{inverseComparison.Relationship}`.";
@@ -1637,7 +1699,7 @@ public class FhirDbComparer
                                  (inverseComparison.Relationship == CMR.Equivalent))
                         {
                             // update the inverse record
-                            inverseComparison.Message = inverseComparison.Message +
+                            inverseComparison.TechnicalMessage = inverseComparison.TechnicalMessage +
                                 $" Updated relationship from `{inverseComparison.Relationship}` to `{expectedInverseRelationship}`" +
                                 $" based on the inverse comparsion which has a relationship" +
                                 $" of `{elementComparison.Relationship}`.";
@@ -1655,7 +1717,7 @@ public class FhirDbComparer
             }
         }
 
-        return;
+        return sdElementComparisons;
     }
 
     private void doElementBindingComparison(
@@ -1917,12 +1979,12 @@ public class FhirDbComparer
         // if there are none, see if we can find an equivalent value set to compare with in the target
         if (forwardComparisons.Count == 0)
         {
-            string message = "Inferred comparison based on ";
+            string techMessage = "Inferred comparison based on ";
 
             List<DbValueSet> potentialTargets = DbValueSet.SelectList(_db, FhirPackageKey: targetPackage.Key, UnversionedUrl: sourceVs.UnversionedUrl);
             if (potentialTargets.Count != 0)
             {
-                message += $" unversioned URL match from source: `{sourceVs.UnversionedUrl}`";
+                techMessage += $" unversioned URL match from source: `{sourceVs.UnversionedUrl}`";
             }
             else
             {
@@ -1930,7 +1992,7 @@ public class FhirDbComparer
 
                 if (potentialTargets.Count != 0)
                 {
-                    message += $" Name match from source: `{sourceVs.Name}`";
+                    techMessage += $" Name match from source: `{sourceVs.Name}`";
                 }
                 else
                 {
@@ -1938,7 +2000,7 @@ public class FhirDbComparer
 
                     if (potentialTargets.Count != 0)
                     {
-                        message += $" Id match from source: {sourceVs.Id}";
+                        techMessage += $" Id match from source: {sourceVs.Id}";
                     }
                 }
             }
@@ -1969,7 +2031,9 @@ public class FhirDbComparer
                     IsGenerated = true,
                     LastReviewedBy = null,
                     LastReviewedOn = null,
-                    Message = message,
+                    TechnicalMessage = techMessage,
+                    UserMessage = $"Value Set {sourcePackage.ShortName}:{sourceVs.Name} (`{sourceVs.VersionedUrl}`)" +
+                        $" maps to {targetPackage.ShortName}:{targetVs.Name} (`{targetVs.VersionedUrl}`)",
                     IsIdentical = false,
                     CodesAreIdentical = false,
                 };
@@ -1988,10 +2052,9 @@ public class FhirDbComparer
             }
 
             // get the target value set for this comparison
-            DbValueSet targetVs = DbValueSet.SelectSingle(
-                _db,
-                Key: forwardComparison.TargetValueSetKey)
+            DbValueSet targetVs = DbValueSet.SelectSingle(_db, Key: forwardComparison.TargetValueSetKey)
                 ?? throw new Exception($"Could not resolve target ValueSet with Key: {forwardComparison.TargetValueSetKey} (`{forwardComparison.TargetCanonicalVersioned}`)");
+
             DoValueSetComparison(
                 _vsComparisons,
                 _conceptComparisons,
@@ -2055,7 +2118,7 @@ public class FhirDbComparer
         }
 
         // process this comparison
-        doValueSetConceptComparisons(
+        List<DbValueSetConceptComparison> vsConceptComparisons = doValueSetConceptComparisons(
             conceptComparisons,
             sourcePackage,
             sourceVs,
@@ -2124,6 +2187,55 @@ public class FhirDbComparer
         {
             vsComparisons.Changed(inverseComparison);
         }
+
+        // build a user message
+        List<string> messages = [];
+
+        if (forwardComparison.Relationship == CMR.Equivalent)
+        {
+            messages.Add($"FHIR {sourcePackage.ShortName}:{sourceVs.Name} (`{sourceVs.VersionedUrl}`)" +
+                $" maps to {targetPackage.ShortName}:{targetVs.Name} (`{targetVs.VersionedUrl}`) as {forwardComparison.Relationship}.");
+        }
+        else
+        {
+            messages.Add($"FHIR {sourcePackage.ShortName}:{sourceVs.Name} (`{sourceVs.VersionedUrl}`)" +
+                $" maps to {targetPackage.ShortName}:{targetVs.Name} (`{targetVs.VersionedUrl}`) as {forwardComparison.Relationship} based on the concept comparisons:");
+
+            ILookup<int, DbValueSetConceptComparison> conceptComparisonsBySourceKey = vsConceptComparisons.ToLookup(c => c.SourceConceptKey);
+
+            foreach (DbValueSetConcept concept in DbValueSetConcept.SelectList(_db, ValueSetKey: sourceVs.Key, Inactive: false, Abstract: false))
+            {
+                if (!conceptComparisonsBySourceKey.Contains(concept.Key))
+                {
+                    messages.Add($"* `{concept.System}`#`{concept.Code}` has no comparison into `{targetVs.VersionedUrl}`");
+                    continue;
+                }
+
+                foreach (DbValueSetConceptComparison conceptComparison in conceptComparisonsBySourceKey[concept.Key])
+                {
+                    if (conceptComparison.Relationship == CMR.Equivalent)
+                    {
+                        continue;
+                    }
+
+                    if (conceptComparison.UserMessage != null)
+                    {
+                        messages.Add("* " + conceptComparison.UserMessage);
+                    }
+                    else if (DbValueSetConcept.SelectSingle(_db, Key: conceptComparison.TargetConceptKey) is DbValueSetConcept targetConcept)
+                    {
+                        messages.Add($"* `{concept.System}`#`{concept.Code}` maps to `{targetConcept.System}`#`{targetConcept.Code}` as {conceptComparison.Relationship}.");
+                    }
+                    else
+                    {
+                        messages.Add($"* `{concept.System}`#`{concept.Code}` has no target concept.");
+                    }
+                }
+            }
+        }
+
+        forwardComparison.UserMessage = string.Join("\n", messages);
+        vsComparisons.Changed(forwardComparison);
     }
 
     public bool AggregateStructureRelationships(DbStructureComparison sdComparison)
@@ -2624,7 +2736,7 @@ public class FhirDbComparer
         changes.ComparisonsToDelete.Delete(_db);
     }
 
-    private void doValueSetConceptComparisons(
+    private List<DbValueSetConceptComparison> doValueSetConceptComparisons(
         DbComparisonCache<DbValueSetConceptComparison> conceptComparisons,
         DbFhirPackage sourcePackage,
         DbValueSet sourceVs,
@@ -2635,6 +2747,8 @@ public class FhirDbComparer
         DbFhirPackageComparisonPair forwardPair,
         DbFhirPackageComparisonPair reversePair)
     {
+        List<DbValueSetConceptComparison> vsConceptComparisons = [];
+
         // select only active and concrete concepts
         List<DbValueSetConcept> sourceConcepts = DbValueSetConcept.SelectList(
             _db,
@@ -2712,7 +2826,9 @@ public class FhirDbComparer
                         TargetConceptKey = targetConcept.Key,
                         Relationship = relationship,
                         NoMap = false,
-                        Message = $"Created mapping based on literal match of code `{sourceConcept.Code}`",
+                        TechnicalMessage = $"Created mapping based on literal match of code `{sourceConcept.Code}`",
+                        UserMessage = $"`{sourceConcept.System}`#`{sourceConcept.Code}`" +
+                            $" maps to {targetPackage.ShortName} `{targetConcept.System}`#`{targetConcept.Code}`",
                         IsGenerated = true,
                         LastReviewedBy = null,
                         LastReviewedOn = null,
@@ -2741,7 +2857,8 @@ public class FhirDbComparer
                     TargetConceptKey = null,
                     Relationship = null,
                     NoMap = true,
-                    Message = $"No mapping exists and no literal match found - created no-map entry for `{sourceVs.VersionedUrl}`#`{sourceConcept.Code}`",
+                    TechnicalMessage = $"No mapping exists and no literal match found - created no-map entry for `{sourceVs.VersionedUrl}`#`{sourceConcept.Code}`",
+                    UserMessage = $"There is no mapping for FHIR {sourcePackage.ShortName}:{sourceVs.Name} (`{sourceVs.VersionedUrl}`) into FHIR {targetPackage.ShortName}",
                     IsGenerated = true,
                     LastReviewedBy = null,
                     LastReviewedOn = null,
@@ -2759,6 +2876,8 @@ public class FhirDbComparer
             // iterate over the comparisons to check relationships
             foreach (DbValueSetConceptComparison conceptComparison in comparisons)
             {
+                vsConceptComparisons.Add(conceptComparison);
+
                 DbValueSetConcept? targetConcept = (conceptComparison.TargetConceptKey == null)
                     ? null
                     : DbValueSetConcept.SelectSingle(_db, Key: conceptComparison.TargetConceptKey);
@@ -2811,7 +2930,7 @@ public class FhirDbComparer
                     conceptComparisons.CacheAdd(inverseComparison);
 
                     conceptComparison.InverseComparisonKey = inverseComparison.Key;
-                    conceptComparisons.CacheUpdate(conceptComparison);
+                    conceptComparisons.Changed(conceptComparison);
                 }
 
                 // do basic checks if this has not been reviewed
@@ -2821,7 +2940,7 @@ public class FhirDbComparer
                     if ((conceptComparison.TargetConceptKey == null) &&
                         (conceptComparison.NoMap != true))
                     {
-                        conceptComparisons.CacheUpdate(conceptComparison);
+                        conceptComparisons.Changed(conceptComparison);
                         conceptComparison.NoMap = true;
                     }
 
@@ -2831,10 +2950,12 @@ public class FhirDbComparer
                         XVerProcessor._escapeValveCodes.Contains(sourceConcept.Code) &&
                         (sourceVs.ActiveConcreteConceptCount != targetVs.ActiveConcreteConceptCount))
                     {
-                        conceptComparisons.CacheUpdate(conceptComparison);
+                        conceptComparisons.Changed(conceptComparison);
                         conceptComparison.Relationship = RelationshipForCounts(sourceVs.ActiveConcreteConceptCount, targetVs.ActiveConcreteConceptCount);
                         conceptComparison.IsGenerated = true;
-                        conceptComparison.Message = conceptComparison.Message +
+                        conceptComparison.TechnicalMessage = conceptComparison.TechnicalMessage +
+                            $" Escape-valve code `{sourceConcept.Code}` maps to `{targetConcept.Code}`, but represent different concept domains (different number of codes).";
+                        conceptComparison.UserMessage = conceptComparison.UserMessage +
                             $" Escape-valve code `{sourceConcept.Code}` maps to `{targetConcept.Code}`, but represent different concept domains (different number of codes).";
                     }
 
@@ -2842,13 +2963,23 @@ public class FhirDbComparer
                     if ((conceptComparison.Relationship == CMR.Equivalent) &&
                         (targetComparisons.Count > 1))
                     {
-                        conceptComparisons.CacheUpdate(conceptComparison);
+                        conceptComparisons.Changed(conceptComparison);
+
+                        // build a target concept list
+                        List<DbValueSetConcept?> targetConceptCodes = targetComparisons
+                            .Where(tc => tc.TargetConceptKey != null)
+                            .Select(tc => DbValueSetConcept.SelectSingle(_db, Key: tc.TargetConceptKey))
+                            .Where(c => c != null)
+                            .ToList();
 
                         // mark as not equivalent
                         conceptComparison.Relationship = CMR.SourceIsBroaderThanTarget;
                         conceptComparison.IsGenerated = true;
-                        conceptComparison.Message = conceptComparison.Message +
-                            $" `{sourceConcept.Code}` maps to multiple codes in {targetVs.VersionedUrl} and cannot be equivalent.";
+                        conceptComparison.TechnicalMessage = conceptComparison.TechnicalMessage +
+                            $" `{sourceConcept.Code}` maps to multiple codes in `{targetVs.VersionedUrl}` and cannot be equivalent.";
+                        conceptComparison.UserMessage = conceptComparison.UserMessage +
+                            $", but maps to multiple codes in {targetVs.VersionedUrl} and cannot be equivalent:" +
+                            $" {string.Join("", targetConceptCodes.Select(c => $"`{c?.System}`#`{c?.Code}`"))}.";
                     }
                 }
 
@@ -2870,7 +3001,7 @@ public class FhirDbComparer
                         {
                             CMR? updatedCurrentRelationship = invert(inverseComparison.Relationship);
 
-                            conceptComparison.Message = conceptComparison.Message +
+                            conceptComparison.TechnicalMessage = conceptComparison.TechnicalMessage +
                                 $" Updated relationship from `{conceptComparison.Relationship}` to `{updatedCurrentRelationship}`" +
                                 $" based on the inverse comparsion which has a relationship" +
                                 $" of `{inverseComparison.Relationship}`.";
@@ -2886,7 +3017,7 @@ public class FhirDbComparer
                                 // update the current record
                                 CMR? updatedCurrentRelationship = invert(inverseComparison.Relationship);
 
-                                conceptComparison.Message = conceptComparison.Message +
+                                conceptComparison.TechnicalMessage = conceptComparison.TechnicalMessage +
                                     $" Updated relationship from `{conceptComparison.Relationship}` to `{updatedCurrentRelationship}`" +
                                     $" based on the inverse comparsion which has a relationship" +
                                     $" of `{inverseComparison.Relationship}`.";
@@ -2897,7 +3028,7 @@ public class FhirDbComparer
                                      (inverseComparison.Relationship == CMR.Equivalent))
                             {
                                 // update the inverse record
-                                inverseComparison.Message = inverseComparison.Message +
+                                inverseComparison.TechnicalMessage = inverseComparison.TechnicalMessage +
                                     $" Updated relationship from `{inverseComparison.Relationship}` to `{expected}`" +
                                     $" based on the inverse comparsion which has a relationship" +
                                     $" of `{conceptComparison.Relationship}`.";
@@ -2919,7 +3050,7 @@ public class FhirDbComparer
             }
         }
 
-        return;
+        return vsConceptComparisons;
     }
 
     private DbFhirPackageComparisonPair invert(DbFhirPackageComparisonPair other)
@@ -2967,10 +3098,16 @@ public class FhirDbComparer
                 IsGenerated = true,
                 LastReviewedBy = null,
                 LastReviewedOn = null,
-                Message = tm.Value.Comment,
+                TechnicalMessage = tm.Value.Comment,
+                UserMessage = null,
                 IsIdentical = other.IsIdentical,
             };
         }
+
+        DbFhirPackage? iSourcePackage = DbFhirPackage.SelectSingle(_db, Key: other.TargetFhirPackageKey);
+        DbFhirPackage? iTargetPackage = DbFhirPackage.SelectSingle(_db, Key: other.SourceFhirPackageKey);
+        DbStructureDefinition? iSourceSd = DbStructureDefinition.SelectSingle(_db, Key: other.TargetStructureKey);
+        DbStructureDefinition? iTargetSd = DbStructureDefinition.SelectSingle(_db, Key: other.SourceStructureKey);
 
         return new()
         {
@@ -2998,7 +3135,8 @@ public class FhirDbComparer
             IsGenerated = true,
             LastReviewedBy = null,
             LastReviewedOn = null,
-            Message = $"Mapping was inverted from Structure comparison {other.Key} of {other.SourceCanonicalVersioned} -> {other.TargetCanonicalVersioned}",
+            TechnicalMessage = $"Mapping was inverted from Structure comparison {other.Key} of {other.SourceCanonicalVersioned} -> {other.TargetCanonicalVersioned}",
+            UserMessage = $"Mapping from FHIR {iSourcePackage?.ShortName}:{iSourceSd?.Name} to FHIR {iTargetPackage?.ShortName}:{iTargetSd?.Name}",
             IsIdentical = other.IsIdentical,
         };
     }
@@ -3023,6 +3161,11 @@ public class FhirDbComparer
                     SourceValueSetKey: otherTargetElement.BindingValueSetKey,
                     TargetFhirPackageKey: other.SourceFhirPackageKey,
                     TargetValueSetKey: otherSourceElement.BindingValueSetKey)?.Key;
+
+        DbFhirPackage? iSourcePackage = DbFhirPackage.SelectSingle(_db, Key: other.TargetFhirPackageKey);
+        DbFhirPackage? iTargetPackage = DbFhirPackage.SelectSingle(_db, Key: other.SourceFhirPackageKey);
+        DbStructureDefinition? iSourceSd = DbStructureDefinition.SelectSingle(_db, Key: other.TargetStructureKey);
+        DbStructureDefinition? iTargetSd = DbStructureDefinition.SelectSingle(_db, Key: other.SourceStructureKey);
 
         return new()
         {
@@ -3049,8 +3192,10 @@ public class FhirDbComparer
             IsGenerated = true,
             LastReviewedBy = null,
             LastReviewedOn = null,
-            Message = $"Mapping was inverted from Element comparison {other.Key}" +
+            TechnicalMessage = $"Mapping was inverted from Element comparison {other.Key}" +
                 $" of `{otherSourceElement.Id}` -> `{otherTargetElement.Id}`",
+            UserMessage = $"Element `{other.TargetElementKey}`" +
+                $" maps to {iTargetPackage?.ShortName} `{other.SourceElementKey}`",
             IsIdentical = other.IsIdentical,
         };
     }
@@ -3059,6 +3204,11 @@ public class FhirDbComparer
         DbValueSetComparison other,
         DbFhirPackageComparisonPair reversePair)
     {
+        DbFhirPackage? iSourcePackage = DbFhirPackage.SelectSingle(_db, Key: other.TargetFhirPackageKey);
+        DbFhirPackage? iTargetPackage = DbFhirPackage.SelectSingle(_db, Key: other.SourceFhirPackageKey);
+        DbValueSet? iSourceVs = DbValueSet.SelectSingle(_db, Key: other.TargetValueSetKey);
+        DbValueSet? iTargetVs = DbValueSet.SelectSingle(_db, Key: other.SourceValueSetKey);
+
         return new()
         {
             Key = _comparisonDb.GetValueSetComparisonKey(),
@@ -3083,7 +3233,9 @@ public class FhirDbComparer
             IsGenerated = true,
             LastReviewedBy = null,
             LastReviewedOn = null,
-            Message = $"Mapping was inverted from ValueSet comparison {other.Key} of {other.SourceCanonicalVersioned} -> {other.TargetCanonicalVersioned}",
+            TechnicalMessage = $"Mapping was inverted from ValueSet comparison {other.Key} of {other.SourceCanonicalVersioned} -> {other.TargetCanonicalVersioned}",
+            UserMessage = $"Mapping from FHIR {iSourcePackage?.ShortName}:{iSourceVs?.Name} (`{iSourceVs?.VersionedUrl}`) " +
+                $"to FHIR {iTargetPackage?.ShortName}:{iTargetVs?.Name} (`{iTargetVs?.VersionedUrl}`)",
             IsIdentical = other.IsIdentical,
             CodesAreIdentical = other.CodesAreIdentical,
         };
@@ -3096,6 +3248,13 @@ public class FhirDbComparer
         DbValueSetComparison reverseCanonicalComparison,
         DbFhirPackageComparisonPair reversePair)
     {
+        DbFhirPackage? iSourcePackage = DbFhirPackage.SelectSingle(_db, Key: other.TargetFhirPackageKey);
+        DbFhirPackage? iTargetPackage = DbFhirPackage.SelectSingle(_db, Key: other.SourceFhirPackageKey);
+        DbValueSet? iSourceVs = DbValueSet.SelectSingle(_db, Key: other.TargetValueSetKey);
+        DbValueSet? iTargetVs = DbValueSet.SelectSingle(_db, Key: other.SourceValueSetKey);
+        DbValueSetConcept? iSourceConcept = DbValueSetConcept.SelectSingle(_db, Key: other.TargetConceptKey);
+        DbValueSetConcept? iTargetConcept = DbValueSetConcept.SelectSingle(_db, Key: other.SourceConceptKey);
+
         return new()
         {
             Key = _comparisonDb.GetConceptComparisonKey(),
@@ -3113,9 +3272,11 @@ public class FhirDbComparer
             IsGenerated = true,
             LastReviewedBy = null,
             LastReviewedOn = null,
-            Message = $"Mapping was inverted from ValueSet Concept comparison {other.Key}" +
+            TechnicalMessage = $"Mapping was inverted from ValueSet Concept comparison {other.Key}" +
                 $" of `{otherSourceConcept.System}#{otherSourceConcept.Code}` ->" +
                 $" `{otherTargetConcept.System}#{otherTargetConcept.Code}`",
+            UserMessage = $"`{iSourceConcept?.System}`#`{iSourceConcept?.Code}`" +
+                $" maps to FHIR `{iTargetConcept?.System}`#`{iTargetConcept?.Code}`",
             IsIdentical = other.IsIdentical,
             CodesAreIdentical = other.CodesAreIdentical,
         };

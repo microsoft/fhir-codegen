@@ -396,7 +396,7 @@
                                 }
 
                                 <FluentLabel Typo="Typography.H5">Structure Mapping Message:</FluentLabel>
-                                <FluentTextField Label="Message" @bind-Value="@selectedComparison.Message" Class="full-width" />
+                                <FluentTextField Label="Message" @bind-Value="@selectedComparison.TechnicalMessage" Class="full-width" />
 
                                 @* // add a div so that the combo box will display - otherwise it is truncated *@
                                 <div class="fluent-pop-container-spacer-short"></div>
@@ -485,7 +485,7 @@
 
                                                                 @if (rowContext.Comparison.NoMap != true)
                                                                 {
-                                                                    string rMessage = rowContext.Comparison.Message ?? string.Empty;
+                                                                    string rMessage = rowContext.Comparison.TechnicalMessage ?? string.Empty;
 
                                                                     <FluentLabel Typo="Typography.H6">Overall Relationship</FluentLabel>
                                                                     <div>
@@ -1233,7 +1233,8 @@ Class="sd-dialog-container">
                 IsGenerated = false,
                 LastReviewedOn = null,
                 LastReviewedBy = null,
-                Message = null,
+                TechnicalMessage = null,
+                UserMessage = null,
                 IsIdentical = false,
                 SourceOverviewConceptMapUrl = null,
                 SourceStructureFmlUrl = null,
@@ -1340,6 +1341,11 @@ Class="sd-dialog-container">
             Row = row,
             SdCell = csCell,
             Element = element.Value,
+            BoundValueSet = element.Value.BindingValueSetKey == null
+                ? null
+                : DbValueSet.SelectSingle(
+                    Xver.DbConnection,
+                    Key: element.Value.BindingValueSetKey),
         };
 
         row[targetColIndex] = new()
@@ -1347,6 +1353,7 @@ Class="sd-dialog-container">
             Row = row,
             SdCell = ctCell,
             Element = DbElement.EmptyCopy,
+                BoundValueSet = null,
         };
 
         if (compareRight)
@@ -1406,22 +1413,22 @@ Class="sd-dialog-container">
         {
             if (selectedValue is string sv)
             {
-                elementRow[sourceColIndex]!.RightComparison!.Message = sv;
+                elementRow[sourceColIndex]!.RightComparison!.TechnicalMessage = sv;
             }
             else
             {
-                elementRow[sourceColIndex]!.RightComparison!.Message = null;
+                elementRow[sourceColIndex]!.RightComparison!.TechnicalMessage = null;
             }
         }
         else if (!compareRight && elementRow[sourceColIndex]!.LeftComparison != null)
         {
             if (selectedValue is string sv)
             {
-                elementRow[sourceColIndex]!.LeftComparison!.Message = sv;
+                elementRow[sourceColIndex]!.LeftComparison!.TechnicalMessage = sv;
             }
             else
             {
-                elementRow[sourceColIndex]!.LeftComparison!.Message = null;
+                elementRow[sourceColIndex]!.LeftComparison!.TechnicalMessage = null;
             }
         }
 
@@ -1642,6 +1649,7 @@ Class="sd-dialog-container">
                     Row = elementRow,
                     SdCell = structureRow[targetCellIndex]!,
                     Element = DbElement.EmptyCopy,
+                    BoundValueSet = null,
                 };
 
                 if (compareRight)

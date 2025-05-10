@@ -43,18 +43,18 @@ public static class DbComparisonCellExtensions
 {
     public static string ToRightMessage(this IDbComparisonCell c) => (c.RightComparison == null)
         ? string.Empty
-        : $"{c.RightComparison.Relationship}: {c.RightComparison.Message}";
+        : $"{c.RightComparison.Relationship}: {c.RightComparison.TechnicalMessage}";
 
     public static string FromRightMessage(this IDbComparisonCell c) => (c.RightCell?.LeftComparison == null)
         ? string.Empty
-        : $"{c.RightCell.LeftComparison.Relationship}: {c.RightCell.LeftComparison.Message}";
+        : $"{c.RightCell.LeftComparison.Relationship}: {c.RightCell.LeftComparison.TechnicalMessage}";
 
     public static string ToLeftMessage(this IDbComparisonCell c) => (c.LeftComparison == null)
         ? string.Empty
-        : $"{c.LeftComparison.Relationship}: {c.LeftComparison.Message}";
+        : $"{c.LeftComparison.Relationship}: {c.LeftComparison.TechnicalMessage}";
     public static string FromLeftMessage(this IDbComparisonCell c) => (c.LeftCell?.RightComparison == null)
         ? string.Empty
-        : $"{c.LeftCell.RightComparison.Relationship}: {c.LeftCell.RightComparison.Message}";
+        : $"{c.LeftCell.RightComparison.Relationship}: {c.LeftCell.RightComparison.TechnicalMessage}";
 
     public static Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? LeftToRight(this BidirectionalRelationshipCodes br) => br switch
     {
@@ -215,7 +215,8 @@ public abstract class DbPackageComparisonContent
     public required int TargetFhirPackageKey { get; set; }
 
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; set; }
-    public required string? Message { get; set; }
+    public required string? TechnicalMessage { get; set; }
+    public required string? UserMessage { get; set; }
     public required bool? IsGenerated { get; set; }
     public string? LastReviewedBy { get; set; } = null;
     public DateTime? LastReviewedOn { get; set; } = null;
@@ -282,7 +283,8 @@ public partial class DbValueSetComparison : DbPackageComparisonContent, IDbPacka
         SourceConceptMapUrl = null,
         SourceConceptMapAdditionalUrls = null,
         Relationship = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo,
-        Message = null,
+        TechnicalMessage = null,
+        UserMessage = null,
         IsGenerated = false,
         IsIdentical = null,
         CodesAreIdentical = null,
@@ -340,7 +342,8 @@ public partial class DbValueSetConceptComparison : DbPackageComparisonContent, I
         TargetValueSetKey = null,
         TargetConceptKey = null,
         Relationship = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo,
-        Message = null,
+        TechnicalMessage = null,
+        UserMessage = null,
         NoMap = null,
         IsGenerated = false,
         IsIdentical = null,
@@ -510,7 +513,8 @@ public partial class DbElementComparison : DbPackageComparisonContent, IDbPackag
         Relationship = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo,
         ConceptDomainRelationship = null,
         ValueDomainRelationship = null,
-        Message = null,
+        TechnicalMessage = null,
+        UserMessage = null,
         NoMap = null,
         IsGenerated = false,
         IsIdentical = null,

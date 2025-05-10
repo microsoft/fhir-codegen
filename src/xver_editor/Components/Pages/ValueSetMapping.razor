@@ -73,7 +73,7 @@
                         }
                         else
                         {
-                            <FluentStack Orientation="Orientation.Vertical">
+                            <FluentStack Orientation="Orientation.Vertical" Class="@(ClassForCell(cell.BidirectionalRight()))">
                                 @if (cell.BidirectionalRight() == BidirectionalRelationshipCodes.Mismatched)
                                 {
                                     <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center">
@@ -278,7 +278,7 @@
                         }
                         else
                         {
-                            <FluentStack Orientation="Orientation.Vertical">
+                            <FluentStack Orientation="Orientation.Vertical" Class="@(ClassForCell(cell.BidirectionalRight()))">
                                 @if (cell.BidirectionalRight() == BidirectionalRelationshipCodes.Mismatched)
                                 {
                                     <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center">
@@ -571,6 +571,18 @@ Class="concept-dialog-container">
         }
     }
 
+    private string ClassForCell(BidirectionalRelationshipCodes? relationship) => relationship switch
+    {
+        BidirectionalRelationshipCodes.Mismatched => "relation-mismatched",
+        BidirectionalRelationshipCodes.None => "relation-none",
+        BidirectionalRelationshipCodes.Equivalent => "relation-equivalent",
+        BidirectionalRelationshipCodes.NewerNarrows => "relation-newer-narrows",
+        BidirectionalRelationshipCodes.NewerBroadens => "relation-newer-broadens",
+        BidirectionalRelationshipCodes.Related => "relation-related",
+        BidirectionalRelationshipCodes.NotRelated => "relation-not-related",
+        _ => string.Empty,
+    };
+
     private string GetMappingTableColumns(bool addSelectionCol = false)
     {
         // Calculate the columns - we need one for each package plus comparison columns between them
@@ -717,12 +729,12 @@ Class="concept-dialog-container">
         mapLRRelationship = mapLRComparison?.Relationship == null
             ? null
             : _relationships.FirstOrDefault(ro => ro.Value == mapLRComparison.Relationship);
-        mapLRMessage = mapLRComparison?.Message;
+        mapLRMessage = mapLRComparison?.TechnicalMessage;
 
         mapRLRelationship = mapRLComparison?.Relationship == null
             ? null
             : _relationships.FirstOrDefault(ro => ro.Value == mapRLComparison.Relationship);
-        mapRLMessage = mapRLComparison?.Message;
+        mapRLMessage = mapRLComparison?.TechnicalMessage;
     }
 
     private Icon IconFolderCollapsed = new Icons.Regular.Size20.Folder();
@@ -1005,7 +1017,7 @@ Class="concept-dialog-container">
             mapLRComparison.SourceConceptKey = leftTreeConcept.Key;
             mapLRComparison.TargetConceptKey = rightTreeConcept?.Key;
             mapLRComparison.Relationship = deletingRL ? null : mapLRRelationship?.Value;
-            mapLRComparison.Message = mapLRMessage;
+            mapLRComparison.TechnicalMessage = mapLRMessage;
             mapLRComparison.NoMap = deletingRL ? true : null;
             mapLRComparison.IsGenerated = false;
 
@@ -1041,7 +1053,7 @@ Class="concept-dialog-container">
             mapRLComparison.SourceConceptKey = rightTreeConcept.Key;
             mapRLComparison.TargetConceptKey = leftTreeConcept?.Key;
             mapRLComparison.Relationship = deletingLR ? null : mapRLRelationship?.Value;
-            mapRLComparison.Message = mapRLMessage;
+            mapRLComparison.TechnicalMessage = mapRLMessage;
             mapRLComparison.NoMap = deletingLR ? true : null;
             mapRLComparison.IsGenerated = false;
 
@@ -1350,7 +1362,8 @@ Class="concept-dialog-container">
                 IsGenerated = false,
                 LastReviewedOn = null,
                 LastReviewedBy = null,
-                Message = null,
+                TechnicalMessage = null,
+                UserMessage = null,
                 IsIdentical = false,
                 CodesAreIdentical = false,
             };

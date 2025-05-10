@@ -753,7 +753,8 @@ public class ComparisonDatabase : IDisposable
                         IsGenerated = true,
                         LastReviewedBy = null,
                         LastReviewedOn = null,
-                        Message = tm.Comment,
+                        TechnicalMessage = tm.Comment,
+                        UserMessage = $"Mapping of FHIR {sourceDbPackage.ShortName}:{sourceDbSd.Name} to {targetDbPackage.ShortName}:{targetDbSd.Name}",
                         IsIdentical = null,
                     };
 
@@ -914,7 +915,8 @@ public class ComparisonDatabase : IDisposable
                         IsGenerated = false,
                         LastReviewedBy = null,
                         LastReviewedOn = null,
-                        Message = $"Imported from existing ConceptMap {cm.Id} ({cm.Url}).",
+                        TechnicalMessage = $"Imported from existing ConceptMap {cm.Id} ({cm.Url}).",
+                        UserMessage = $"Mapping of FHIR {sourceDbPackage.ShortName}:{sourceDbSd.Name} to {targetDbPackage.ShortName}:{targetDbSd.Name}",
                         IsIdentical = null,
                     };
 
@@ -969,7 +971,8 @@ public class ComparisonDatabase : IDisposable
                     IsGenerated = false,
                     LastReviewedBy = null,
                     LastReviewedOn = null,
-                    Message = $"Imported from existing ConceptMap {cm.Id} ({cm.Url}).",
+                    TechnicalMessage = $"Imported from existing ConceptMap {cm.Id} ({cm.Url}).",
+                    UserMessage = null,
                 };
 
                 unresolvedSdComparisons.Add(unresolvedSdComparison);
@@ -1066,6 +1069,16 @@ public class ComparisonDatabase : IDisposable
             string? targetStructureUrl = null,
             string? targetToken = null)
         {
+            DbFhirPackage sourceDbPackage = DbFhirPackage.SelectSingle(
+                _dbConnection,
+                Key: dbPackagePair.SourcePackageKey)
+                ?? throw new Exception($"Source package {dbPackagePair.SourcePackageKey} not found in the database!");
+
+            DbFhirPackage targetDbPackage = DbFhirPackage.SelectSingle(
+                _dbConnection,
+                Key: dbPackagePair.TargetPackageKey)
+                ?? throw new Exception($"Target package {dbPackagePair.TargetPackageKey} not found in the database!");
+
             if ((dbUnresolvedSdComparison != null) ||
                 (dbSdComparison == null) ||
                 (sourceDbSd == null))
@@ -1084,7 +1097,8 @@ public class ComparisonDatabase : IDisposable
                     UnresolvedStructureComparisonKey = dbUnresolvedSdComparison?.Key,
                     Relationship = relationship,
                     NoMap = noMap,
-                    Message = comment + $" Record found in {cm.Id} ({cm.Url}) with unresolved structure mapping {sourceStructureUrl} -> {targetStructureUrl}.",
+                    TechnicalMessage = comment + $" Record found in {cm.Id} ({cm.Url}) with unresolved structure mapping {sourceStructureUrl} -> {targetStructureUrl}.",
+                    UserMessage = null,
                     SourceElementExists = sourceDbElement != null,
                     SourceStructureUrl = sourceStructureUrl,
                     SourceElementToken = sourceToken,
@@ -1118,7 +1132,8 @@ public class ComparisonDatabase : IDisposable
                     UnresolvedStructureComparisonKey = dbUnresolvedSdComparison?.Key,
                     Relationship = relationship,
                     NoMap = noMap,
-                    Message = comment + $" Record found in {cm.Id} ({cm.Url}) with unresolved element mapping {sourceStructureUrl}:{sourceToken} -> {targetStructureUrl}:{targetToken}.",
+                    TechnicalMessage = comment + $" Record found in {cm.Id} ({cm.Url}) with unresolved element mapping {sourceStructureUrl}:{sourceToken} -> {targetStructureUrl}:{targetToken}.",
+                    UserMessage = null,
                     SourceElementExists = sourceDbElement != null,
                     SourceStructureUrl = sourceStructureUrl,
                     SourceElementToken = sourceToken,
@@ -1158,7 +1173,9 @@ public class ComparisonDatabase : IDisposable
                 NoMap = noMap,
                 ConceptDomainRelationship = null,
                 ValueDomainRelationship = null,
-                Message = comment,
+                TechnicalMessage = comment,
+                UserMessage = $"Mapping of FHIR {sourceDbPackage.ShortName}:{sourceDbSd.Name} element `{sourceDbElement.Id}`" +
+                    $" to {targetDbPackage.ShortName}:{targetDbSd?.Name} element `{targetDbElement?.Path}`",
                 SourceElementKey = sourceDbElement.Key,
                 SourceStructureUrl = sourceStructureUrl,
                 SourceElementToken = sourceToken,
@@ -1255,7 +1272,8 @@ public class ComparisonDatabase : IDisposable
                                 IsGenerated = false,
                                 LastReviewedBy = null,
                                 LastReviewedOn = null,
-                                Message = message,
+                                TechnicalMessage = message,
+                                UserMessage = null,
                             };
 
                             unresolvedSdComparisons.Add(dbUnresolvedSdComparison);
@@ -1296,7 +1314,8 @@ public class ComparisonDatabase : IDisposable
                             IsGenerated = false,
                             LastReviewedBy = null,
                             LastReviewedOn = null,
-                            Message = $"Imported from existing ConceptMap {cm.Id} ({cm.Url}).",
+                            TechnicalMessage = $"Imported from existing ConceptMap {cm.Id} ({cm.Url}).",
+                            UserMessage = $"Mapping of FHIR {sourceDbPackage.ShortName}:{sourceDbSd.Name} to {targetDbPackage.ShortName}:{targetDbSd.Name}",
                             IsIdentical = null,
                         };
 
@@ -1373,7 +1392,8 @@ public class ComparisonDatabase : IDisposable
                 LastReviewedOn = null,
                 IsIdentical = null,
                 CodesAreIdentical = null,
-                Message = $"Imported from existing ConceptMap {cm.Id} ({cm.Url}).",
+                TechnicalMessage = $"Imported from existing ConceptMap {cm.Id} ({cm.Url}).",
+                UserMessage = $"Mapping of FHIR {sourceDbPackage.ShortName}:{sourceDbVs.Name} to {targetDbPackage.ShortName}:{targetDbVs.Name}",
             };
 
             vsComparisons.CacheAdd(dbVsComparison);
@@ -1398,23 +1418,23 @@ public class ComparisonDatabase : IDisposable
             // check for manual exclusion
             if (sourceDbVs.IsExcluded)
             {
-                dbVsComparison.Message += $" Note: comparison source: {sourceDbVs.Id} ({sourceDbVs.VersionedUrl}) has been manually excluded.";
+                dbVsComparison.TechnicalMessage += $" Note: comparison source: {sourceDbVs.Id} ({sourceDbVs.VersionedUrl}) has been manually excluded.";
             }
 
             if (targetDbVs.IsExcluded)
             {
-                dbVsComparison.Message += $" Note: comparison target: {targetDbVs.Id} ({targetDbVs.VersionedUrl}) has been manually excluded.";
+                dbVsComparison.TechnicalMessage += $" Note: comparison target: {targetDbVs.Id} ({targetDbVs.VersionedUrl}) has been manually excluded.";
             }
 
             // check for failure to expand
             if (sourceDbVs.CanExpand == false)
             {
-                dbVsComparison.Message += $" Note: source value set {sourceDbVs.Id} ({sourceDbVs.VersionedUrl}) cannot be expanded.";
+                dbVsComparison.TechnicalMessage += $" Note: source value set {sourceDbVs.Id} ({sourceDbVs.VersionedUrl}) cannot be expanded.";
             }
 
             if (targetDbVs.CanExpand == false)
             {
-                dbVsComparison.Message += $" Note: target value set {targetDbVs.Id} ({targetDbVs.VersionedUrl}) cannot be expanded.";
+                dbVsComparison.TechnicalMessage += $" Note: target value set {targetDbVs.Id} ({targetDbVs.VersionedUrl}) cannot be expanded.";
             }
 
             // process each group
@@ -1438,7 +1458,9 @@ public class ComparisonDatabase : IDisposable
                     {
                         addVsConceptComparison(
                             dbPackagePair,
+                            sourceDbPackage,
                             sourceDbVs,
+                            targetDbPackage,
                             targetDbVs,
                             dbVsComparison,
                             cm,
@@ -1464,7 +1486,9 @@ public class ComparisonDatabase : IDisposable
 
                         addVsConceptComparison(
                             dbPackagePair,
+                            sourceDbPackage,
                             sourceDbVs,
+                            targetDbPackage,
                             targetDbVs,
                             dbVsComparison,
                             cm,
@@ -1487,7 +1511,9 @@ public class ComparisonDatabase : IDisposable
 
         void addVsConceptComparison(
             DbFhirPackageComparisonPair dbPackagePair,
+            DbFhirPackage sourceDbPackage,
             DbValueSet sourceDbVs,
+            DbFhirPackage targetDbPackage,
             DbValueSet targetDbVs,
             DbValueSetComparison dbVsComparison,
             ConceptMap cm,
@@ -1519,7 +1545,8 @@ public class ComparisonDatabase : IDisposable
                         ConceptMapUrl = cm.Url,
                         Relationship = null,
                         NoMap = true,
-                        Message = $"Code flagged as noMap in {cm.Id} ({cm.Url}), but does not exist in source {sourceDbVs.Id} ({sourceDbVs.VersionedUrl}).",
+                        TechnicalMessage = $"Code flagged as noMap in {cm.Id} ({cm.Url}), but does not exist in source {sourceDbVs.Id} ({sourceDbVs.VersionedUrl}).",
+                        UserMessage = null,
                         SourceConceptExists = false,
                         SourceConceptKey = null,
                         SourceSystem = sourceSystem,
@@ -1556,7 +1583,9 @@ public class ComparisonDatabase : IDisposable
                     TargetConceptKey = null,
                     Relationship = null,
                     NoMap = true,
-                    Message = $"Code flagged as noMap in {cm.Id} ({cm.Url})",
+                    TechnicalMessage = $"Code flagged as noMap in {cm.Id} ({cm.Url})",
+                    UserMessage = $"FHIR {sourceDbPackage.ShortName}:{sourceDbVs.Name} (`{sourceDbVs.VersionedUrl}`) concept `{sourceDbConcept.System}`#`{sourceDbConcept.Code}`" +
+                        $" does not map to FHIR {targetDbPackage.ShortName}:{targetDbVs.Name}.",
                     IsGenerated = false,
                     LastReviewedBy = null,
                     LastReviewedOn = null,
@@ -1599,7 +1628,8 @@ public class ComparisonDatabase : IDisposable
                     ConceptMapUrl = cm.Url,
                     Relationship = relationship,
                     NoMap = targetCode == null,
-                    Message = message,
+                    TechnicalMessage = message,
+                    UserMessage = null,
                     SourceConceptExists = sourceExists,
                     SourceConceptKey = sourceDbConcept?.Key,
                     SourceSystem = sourceSystem,
@@ -1637,7 +1667,9 @@ public class ComparisonDatabase : IDisposable
                 TargetConceptKey = targetDbConcept.Key,
                 Relationship = relationship,
                 NoMap = false,
-                Message = $"Loaded existing mapping of `{sourceDbVs.VersionedUrl}`#`{sourceDbConcept.Code}` to `{targetDbVs.VersionedUrl}`#`{targetDbConcept.Code}` by {cm.Id} ({cm.Url})",
+                TechnicalMessage = $"Loaded existing mapping of `{sourceDbVs.VersionedUrl}`#`{sourceDbConcept.Code}` to `{targetDbVs.VersionedUrl}`#`{targetDbConcept.Code}` by {cm.Id} ({cm.Url})",
+                UserMessage = $"FHIR {sourceDbPackage.ShortName}:{sourceDbVs.Name} (`{sourceDbVs.VersionedUrl}`) code `{sourceDbVs.VersionedUrl}`#`{sourceDbConcept.Code}`" +
+                    $" maps to FHIR {targetDbPackage.ShortName}:{targetDbVs.Name} (`{targetDbVs.VersionedUrl}`) code `{targetDbVs.VersionedUrl}`#`{targetDbConcept.Code}`",
                 IsGenerated = false,
                 LastReviewedBy = null,
                 LastReviewedOn = null,

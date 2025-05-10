@@ -327,6 +327,28 @@ fluent-number-field {
     width: calc(100% - 32px);
 }
 
+.relation-equivalent {
+    background-color: var(--neutral-fill-rest);
+}
+.relation-newer-narrows {
+    background-color: yellow;
+}
+.relation-newer-broadens {
+    background-color: yellow;
+}
+.relation-related {
+    background-color: yellow;
+}
+.relation-not-related {
+    background-color: yellow;
+}
+.relation-mismatched {
+    background-color: #b32121;
+}
+.relation-none {
+    background-color: #b32121;
+}
+
 
 .fluent-pop-container-spacer-short {
     height: 100px;

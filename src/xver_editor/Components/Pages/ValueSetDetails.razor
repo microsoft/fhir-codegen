@@ -330,7 +330,7 @@
                                         </FluentPopover>
                                     </div>
                                 }
-                                <FluentTextField Label="Message" @bind-Value="@selectedComparison.Message" Class="full-width" />
+                                <FluentTextField Label="Message" @bind-Value="@selectedComparison.TechnicalMessage" Class="full-width" />
                                 @* // add a div so that the combo box will display - otherwise it is truncated *@
                                 <div class="fluent-pop-container-spacer-short"></div>
                             </FluentStack>
@@ -1065,7 +1065,7 @@ Class="vs-dialog-container">
             IsGenerated = false,
             LastReviewedOn = null,
             LastReviewedBy = null,
-            Message = null,
+            TechnicalMessage = null,
             IsIdentical = false,
             CodesAreIdentical = false,
         };

@@ -175,6 +175,9 @@ public class DbGraphSd
                     Row = row,
                     SdCell = _cells[startCol]!,
                     Element = element,
+                    BoundValueSet = element.BindingValueSetKey == null
+                        ? null
+                        : DbValueSet.SelectSingle(_graph._db, Key: element.BindingValueSetKey),
                 };
 
                 usedElementKeys.Add(element.Key);
@@ -229,6 +232,9 @@ public class DbGraphSd
                                 Row = row,
                                 SdCell = _cells[colIndex]!,
                                 Element = element,
+                                BoundValueSet = element.BindingValueSetKey == null
+                                    ? null
+                                    : DbValueSet.SelectSingle(_graph._db, Key: element.BindingValueSetKey),
                             };
 
                             usedElementKeys.Add(element.Key);
@@ -281,6 +287,9 @@ public class DbGraphSd
                                 Row = row,
                                 SdCell = _cells[colIndex]!,
                                 Element = element,
+                                BoundValueSet = element.BindingValueSetKey == null
+                                    ? null
+                                    : DbValueSet.SelectSingle(_graph._db, Key: element.BindingValueSetKey),
                             };
 
                             usedElementKeys.Add(element.Key);
@@ -367,10 +376,16 @@ public class DbGraphSd
                 if (projectRight)
                 {
                     incomingRow[column]!.RightComparison = edges[0];
+                    incomingRow[column]!.RightVsComparison = edges[0].BoundValueSetComparisonKey == null
+                        ? null
+                        : DbValueSetComparison.SelectSingle(_graph._db, Key: edges[0].BoundValueSetComparisonKey);
                 }
                 else
                 {
                     incomingRow[column]!.LeftComparison = edges[0];
+                    incomingRow[column]!.LeftVsComparison = edges[0].BoundValueSetComparisonKey == null
+                        ? null
+                        : DbValueSetComparison.SelectSingle(_graph._db, Key: edges[0].BoundValueSetComparisonKey);
                 }
 
                 return [incomingRow];
@@ -397,14 +412,23 @@ public class DbGraphSd
                         Row = row,
                         SdCell = _cells[nextCol]!,
                         Element = element,
+                        BoundValueSet = element.BindingValueSetKey == null
+                            ? null
+                            : DbValueSet.SelectSingle(_graph._db, Key: element.BindingValueSetKey),
                         LeftCell = incomingRow[column]!,
                         LeftElement = incomingRow[column]!.Element,
                         LeftComparison = inverseEdge,
+                        LeftVsComparison = inverseEdge?.BoundValueSetComparisonKey == null
+                            ? null
+                            : DbValueSetComparison.SelectSingle(_graph._db, Key: inverseEdge.BoundValueSetComparisonKey),
                     };
 
                     row[column]!.RightCell = row[nextCol];
                     row[column]!.RightElement = row[nextCol]!.Element;
                     row[column]!.RightComparison = edge;
+                    row[column]!.RightVsComparison = edge.BoundValueSetComparisonKey == null
+                        ? null
+                        : DbValueSetComparison.SelectSingle(_graph._db, Key: edge.BoundValueSetComparisonKey);
                 }
                 else
                 {
@@ -413,14 +437,23 @@ public class DbGraphSd
                         Row = row,
                         SdCell = _cells[nextCol]!,
                         Element = element,
+                        BoundValueSet = element.BindingValueSetKey == null
+                            ? null
+                            : DbValueSet.SelectSingle(_graph._db, Key: element.BindingValueSetKey),
                         RightCell = incomingRow[column]!,
                         RightElement = incomingRow[column]!.Element,
                         RightComparison = inverseEdge,
+                        RightVsComparison = inverseEdge?.BoundValueSetComparisonKey == null
+                            ? null
+                            : DbValueSetComparison.SelectSingle(_graph._db, Key: inverseEdge.BoundValueSetComparisonKey),
                     };
 
                     row[column]!.LeftCell = row[nextCol];
                     row[column]!.RightElement = row[nextCol]!.Element;
                     row[column]!.LeftComparison = edge;
+                    row[column]!.LeftVsComparison = edge.BoundValueSetComparisonKey == null
+                        ? null
+                        : DbValueSetComparison.SelectSingle(_graph._db, Key: edge.BoundValueSetComparisonKey);
                 }
 
                 usedElementKeys.Add(element.Key);
@@ -478,14 +511,17 @@ public class DbGraphSd
         public required DbElementRow Row { get; init; }
         public required DbSdCell SdCell { get; set; }
         public required DbElement Element { get; set; }
+        public required DbValueSet? BoundValueSet { get; set; }
 
         public DbElementCell? LeftCell { get; set; } = null;
         public DbElement? LeftElement { get; set; } = null;
         public DbElementComparison? LeftComparison { get; set; } = null;
+        public DbValueSetComparison? LeftVsComparison { get; set; } = null;
 
         public DbElementCell? RightCell { get; set; } = null;
         public DbElement? RightElement { get; set; } = null;
         public DbElementComparison? RightComparison { get; set; } = null;
+        public DbValueSetComparison? RightVsComparison { get; set; } = null;
 
         IDbComparisonCell? IDbComparisonCell.LeftCell => LeftCell;
         DbPackageComparisonContent? IDbComparisonCell.LeftComparison => LeftComparison;
