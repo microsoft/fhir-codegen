@@ -498,31 +498,33 @@ Class="ed-dialog-container">
             Autocomplete="ComboboxAutocomplete.Inline" />
             <FluentLabel Typo="Typography.Body">Mapping Message:</FluentLabel>
             <FluentTextField @bind-Value="@mapLRMessage" Class="full-width" />
+            <FluentTextArea @bind-Value="@mapLRUserMessage" Class="full-width" Rows="5" />
 
             <FluentLabel Typo="Typography.Body"><b>Right:</b> @_packages[mappingRightColId].ShortName @mappingRightSd?.Sd.Name: <code>@mappingRightSelected?.Text</code></FluentLabel>
             @* <FluentLabel Typo="Typography.Body">Maps as <code>@mapRLRelationship</code></FluentLabel> *@
             <FluentLabel Typo="Typography.Body"><b><code>Right to Left:</code></b></FluentLabel>
             <FluentLabel Typo="Typography.Body">Overall Relationship:</FluentLabel>
             <FluentCombobox Items="@_relationships"
-                            Class="full-width"
-                            Placeholder="Search for a relationship..."
-                            OptionValue="@(i => i?.Value.ToString() ?? string.Empty)"
-                            OptionText="@(i => i?.Text)"
-                            @bind-SelectedOption="@mapRLRelationship"
-                            Multiple="false"
-                            Autocomplete="ComboboxAutocomplete.Inline" />
+            Class="full-width"
+            Placeholder="Search for a relationship..."
+            OptionValue="@(i => i?.Value.ToString() ?? string.Empty)"
+            OptionText="@(i => i?.Text)"
+            @bind-SelectedOption="@mapRLRelationship"
+            Multiple="false"
+            Autocomplete="ComboboxAutocomplete.Inline" />
             @* <FluentLabel Typo="Typography.Body">Conceptually: <code>@mapRLConceptRelationship</code></FluentLabel> *@
             <FluentLabel Typo="Typography.Body">Concept Domain Relationship:</FluentLabel>
             <FluentCombobox Items="@_relationships"
-                            Class="full-width"
-                            Placeholder="Search for a relationship..."
-                            OptionValue="@(i => i?.Value.ToString() ?? string.Empty)"
-                            OptionText="@(i => i?.Text)"
-                            @bind-SelectedOption="@mapRLConceptRelationship"
-                            Multiple="false"
-                            Autocomplete="ComboboxAutocomplete.Inline" />
+            Class="full-width"
+            Placeholder="Search for a relationship..."
+            OptionValue="@(i => i?.Value.ToString() ?? string.Empty)"
+            OptionText="@(i => i?.Text)"
+            @bind-SelectedOption="@mapRLConceptRelationship"
+            Multiple="false"
+            Autocomplete="ComboboxAutocomplete.Inline" />
             <FluentLabel Typo="Typography.Body">Mapping Message:</FluentLabel>
             <FluentTextField @bind-Value="@mapRLMessage" Class="full-width" />
+            <FluentTextArea @bind-Value="@mapRLUserMessage" Class="full-width" Rows="5" />
 
             <FluentStack Orientation="Orientation.Horizontal" HorizontalGap="8" HorizontalAlignment="HorizontalAlignment.Stretch">
                 <FluentButton BackgroundColor="var(--error)" Color="#ffffff" IconStart="@(new Icons.Regular.Size16.Delete())" OnClick="DeleteElementMapping">Delete</FluentButton>
@@ -722,9 +724,11 @@ Class="ed-dialog-container">
     private Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?>? mapLRRelationship = null;
     private Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?>? mapLRConceptRelationship = null;
     private string? mapLRMessage = null;
+    private string? mapLRUserMessage = null;
     private Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?>? mapRLRelationship = null;
     private Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?>? mapRLConceptRelationship = null;
     private string? mapRLMessage = null;
+    private string? mapRLUserMessage = null;
 
     private Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?>[] _relationships = [
         new() { Text = "- No Relationship -", Value = null },
@@ -806,6 +810,7 @@ Class="ed-dialog-container">
             ? null
             : _relationships.FirstOrDefault(ro => ro.Value == mapLRComparison.ConceptDomainRelationship);
         mapLRMessage = mapLRComparison?.TechnicalMessage;
+        mapLRUserMessage = mapLRComparison?.UserMessage;
 
         mapRLRelationship = mapRLComparison?.Relationship == null
             ? null
@@ -814,6 +819,7 @@ Class="ed-dialog-container">
             ? null
             : _relationships.FirstOrDefault(ro => ro.Value == mapRLComparison.ConceptDomainRelationship);
         mapRLMessage = mapRLComparison?.TechnicalMessage;
+        mapRLUserMessage = mapRLComparison?.UserMessage;
     }
 
     private Icon IconFolderCollapsed = new Icons.Regular.Size20.Folder();
@@ -1008,6 +1014,7 @@ Class="ed-dialog-container">
         mapLRRelationship = null;
         mapLRConceptRelationship = null;
         mapLRMessage = null;
+        mapLRUserMessage = null;
 
         mappingRightColId = 0;
         mappingRightSd = null;
@@ -1015,6 +1022,7 @@ Class="ed-dialog-container">
         mapRLRelationship = null;
         mapRLConceptRelationship = null;
         mapRLMessage = null;
+        mapRLUserMessage = null;
 
         // valueSetSelectionDialog!.Hide();
         visibleDialog = VisibleDialogCodes.None;
@@ -1128,6 +1136,7 @@ Class="ed-dialog-container">
             mapLRComparison.ConceptDomainRelationship = deletingRL ? null : mapLRConceptRelationship?.Value;
             // mapLRComparison.ValueDomainRelationship = null;
             mapLRComparison.TechnicalMessage = mapLRMessage;
+            mapLRComparison.UserMessage = mapLRUserMessage;
             mapLRComparison.NoMap = deletingRL ? true : null;
             mapLRComparison.IsGenerated = false;
 
@@ -1171,6 +1180,7 @@ Class="ed-dialog-container">
             mapRLComparison.ConceptDomainRelationship = deletingLR ? null : mapRLConceptRelationship?.Value;
             // mapRLComparison.ValueDomainRelationship = null;
             mapRLComparison.TechnicalMessage = mapRLMessage;
+            mapRLComparison.UserMessage = mapRLUserMessage;
             mapRLComparison.NoMap = deletingLR ? true : null;
             mapRLComparison.IsGenerated = false;
 

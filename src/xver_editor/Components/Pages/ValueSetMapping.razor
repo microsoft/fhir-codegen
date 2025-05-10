@@ -439,6 +439,7 @@ Class="concept-dialog-container">
             Autocomplete="ComboboxAutocomplete.Inline" />
             <FluentLabel Typo="Typography.Body">Mapping Message:</FluentLabel>
             <FluentTextField @bind-Value="@mapLRMessage" Class="full-width" />
+            <FluentTextArea @bind-Value="@mapLRUserMessage" Class="full-width" Rows="5" />
 
             <FluentLabel Typo="Typography.Body"><b>Right:</b> @_packages[mappingRightColId].ShortName @mappingRightSd?.Vs.Name: <code>@mappingRightSelected?.Text</code></FluentLabel>
             @* <FluentLabel Typo="Typography.Body">Maps as <code>@mapRLRelationship</code></FluentLabel> *@
@@ -454,6 +455,7 @@ Class="concept-dialog-container">
             Autocomplete="ComboboxAutocomplete.Inline" />
             <FluentLabel Typo="Typography.Body">Mapping Message:</FluentLabel>
             <FluentTextField @bind-Value="@mapRLMessage" Class="full-width" />
+            <FluentTextArea @bind-Value="@mapRLUserMessage" Class="full-width" Rows="5" />
 
             <FluentStack Orientation="Orientation.Horizontal" HorizontalGap="8" HorizontalAlignment="HorizontalAlignment.Stretch">
                 <FluentButton BackgroundColor="var(--error)" Color="#ffffff" IconStart="@(new Icons.Regular.Size16.Delete())" OnClick="DeleteConceptMapping">Delete</FluentButton>
@@ -650,8 +652,10 @@ Class="concept-dialog-container">
     private ITreeViewItem? mappingRightSelected = null;
     private Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?>? mapLRRelationship = null;
     private string? mapLRMessage = null;
+    private string? mapLRUserMessage = null;
     private Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?>? mapRLRelationship = null;
     private string? mapRLMessage = null;
+    private string? mapRLUserMessage = null;
 
     private Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?>[] _relationships = [
         new() { Text = "- No Relationship -", Value = null },
@@ -730,11 +734,13 @@ Class="concept-dialog-container">
             ? null
             : _relationships.FirstOrDefault(ro => ro.Value == mapLRComparison.Relationship);
         mapLRMessage = mapLRComparison?.TechnicalMessage;
+        mapLRUserMessage = mapLRComparison?.UserMessage;
 
         mapRLRelationship = mapRLComparison?.Relationship == null
             ? null
             : _relationships.FirstOrDefault(ro => ro.Value == mapRLComparison.Relationship);
         mapRLMessage = mapRLComparison?.TechnicalMessage;
+        mapRLUserMessage = mapRLComparison?.UserMessage;
     }
 
     private Icon IconFolderCollapsed = new Icons.Regular.Size20.Folder();
@@ -905,12 +911,14 @@ Class="concept-dialog-container">
         mappingLeftItems = [];
         mapLRRelationship = null;
         mapLRMessage = null;
+        mapLRUserMessage = null;
 
         mappingRightColId = 0;
         mappingRightSd = null;
         mappingRightItems = [];
         mapRLRelationship = null;
         mapRLMessage = null;
+        mapRLUserMessage = null;
 
         // valueSetSelectionDialog!.Hide();
         visibleDialog = VisibleDialogCodes.None;
@@ -1018,6 +1026,7 @@ Class="concept-dialog-container">
             mapLRComparison.TargetConceptKey = rightTreeConcept?.Key;
             mapLRComparison.Relationship = deletingRL ? null : mapLRRelationship?.Value;
             mapLRComparison.TechnicalMessage = mapLRMessage;
+            mapLRComparison.UserMessage = mapLRUserMessage;
             mapLRComparison.NoMap = deletingRL ? true : null;
             mapLRComparison.IsGenerated = false;
 
@@ -1054,6 +1063,7 @@ Class="concept-dialog-container">
             mapRLComparison.TargetConceptKey = leftTreeConcept?.Key;
             mapRLComparison.Relationship = deletingLR ? null : mapRLRelationship?.Value;
             mapRLComparison.TechnicalMessage = mapRLMessage;
+            mapRLComparison.UserMessage = mapRLUserMessage;
             mapRLComparison.NoMap = deletingLR ? true : null;
             mapRLComparison.IsGenerated = false;
 

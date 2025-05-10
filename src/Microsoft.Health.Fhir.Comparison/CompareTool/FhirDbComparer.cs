@@ -1118,6 +1118,8 @@ public class FhirDbComparer
         CMR valueRelationship = CMR.Equivalent;
         bool noMap = true;
 
+        List<string> userMessages = [];
+
         foreach ((CollatedType collated, List<TypeComparisonTrackingRecord> comparisonList) in typeComparisons)
         {
             // if we don't have any matches, this type is a no-map
@@ -1134,6 +1136,18 @@ public class FhirDbComparer
                 valueRelationship = applyRelationship(valueRelationship, tcRec.SdComparison?.ValueDomainRelationship);
                 valueRelationship = applyRelationship(valueRelationship, tcRec.TypeProfileRelationship);
                 valueRelationship = applyRelationship(valueRelationship, tcRec.TargetProfileRelationship);
+
+                if ((tcRec.TypeProfileRelationship != CMR.Equivalent) &&
+                    !string.IsNullOrEmpty(tcRec.TypeProfileMessage))
+                {
+                    userMessages.Add(tcRec.TypeProfileMessage);
+                }
+
+                if ((tcRec.TargetProfileRelationship != CMR.Equivalent) &&
+                    !string.IsNullOrEmpty(tcRec.TargetProfileMessage))
+                {
+                    userMessages.Add(tcRec.TargetProfileMessage);
+                }
             }
         }
 
@@ -1141,12 +1155,17 @@ public class FhirDbComparer
         if (usedTargetTypes.Count < collatedTargetTypes.Count)
         {
             valueRelationship = applyRelationship(valueRelationship, CMR.SourceIsNarrowerThanTarget);
+
+            List<string> unusedTargetTypes = collatedTargetTypes.Keys.Except(usedTargetTypes).ToList();
+
+            userMessages.Add($"Added the types: {string.Join(", ", unusedTargetTypes.Select(t => $"`{t}`"))}");
         }
 
         if (noMap)
         {
             conceptRelationship =  applyRelationship(conceptRelationship, CMR.SourceIsBroaderThanTarget);
             valueRelationship = applyRelationship(valueRelationship, CMR.SourceIsBroaderThanTarget);
+            userMessages = [$"Has no type mapping"];
         }
 
         DbElementTypeComparison? inverse = null;
@@ -1179,6 +1198,7 @@ public class FhirDbComparer
             existing.ConceptDomainRelationship = cgTypeMapping.ConceptDomainRelationship;
             existing.ValueDomainRelationship = cgTypeMapping.ValueDomainRelationship;
             existing.TechnicalMessage = cgTypeMapping.Comment;
+            existing.UserMessage = string.Join(" ", userMessages);
             existing.IsGenerated = true;
             existing.LastReviewedBy = null;
             existing.LastReviewedOn = null;
@@ -1205,7 +1225,7 @@ public class FhirDbComparer
             ConceptDomainRelationship = conceptRelationship,
             ValueDomainRelationship = valueRelationship,
             TechnicalMessage = cgTypeMapping.Comment,
-            UserMessage = null,
+            UserMessage = string.Join(" ", userMessages),
 
             NoMap = noMap,
 
@@ -1396,7 +1416,7 @@ public class FhirDbComparer
                     BoundValueSetComparisonKey = null,
                     NoMap = true,
                     TechnicalMessage = $"No mapping exists and no literal match found - created no-map entry for `{sourceSd.Name}`: `{sourceElement.Id}`",
-                    UserMessage = $"FHIR {sourcePackage.ShortName}:{sourceSd.Name} element `{sourceElement.Id}` has no related element in FHIR {targetPackage.ShortName}:{targetSd.Name}",
+                    UserMessage = $"`{sourceElement.Id}` has no related element in {targetPackage.ShortName}:{targetSd.Name}",
                     IsGenerated = true,
                     LastReviewedBy = null,
                     LastReviewedOn = null,
@@ -1479,6 +1499,9 @@ public class FhirDbComparer
                     bool changed = false;
                     List<string> messages = [];
 
+                    bool firstMessageOnly = false;
+                    List<string> userMessages = [];
+
                     // check for missing no-map value
                     if ((elementComparison.TargetElementKey == null) &&
                         (noMap != true))
@@ -1486,6 +1509,13 @@ public class FhirDbComparer
                         noMap = true;
                         messages.Add("No mapping exists and no literal match found - created no-map entry.");
                         changed = true;
+
+                        userMessages.Add($"`{sourceElement.Id}` does not map to {targetPackage.ShortName} `{targetSd.Name}`.");
+                        firstMessageOnly = true;
+                    }
+                    else
+                    {
+                        userMessages.Add($"`{sourceElement.Id}` maps to {targetPackage.ShortName} `{targetElement.Id}`.");
                     }
 
                     // check for a single source with multiple targets and any that map as equivalent
@@ -1497,6 +1527,18 @@ public class FhirDbComparer
                         isGenerated = true;
                         messages.Add($"`{sourceElement.Id}` maps to multiple elements in {targetSd.Name} and cannot be equivalent.");
                         changed = true;
+
+                        if (!firstMessageOnly)
+                        {
+                            List<DbElement> tes = comparisons
+                                .Select(c => c.TargetElementKey)
+                                .Where(tk => tk != null)
+                                .Distinct()
+                                .Select(tk => DbElement.SelectSingle(_db, Key: tk)!)
+                                .ToList();
+
+                            userMessages.Add($"To multiple elements in {targetSd.Name}: ({string.Join(", ", tes.Select(e => $"`{e.Id}`"))}).");
+                        }
                     }
 
                     // do type check comparison
@@ -1520,6 +1562,11 @@ public class FhirDbComparer
                         messages.Add(
                             $"Applied type comparison relationship of: `{elementTypeComparison.Relationship}`" +
                             $" to existing value relationship: `{elementComparison.Relationship}`.");
+
+                        if (elementTypeComparison.UserMessage != null)
+                        {
+                            userMessages.Add(elementTypeComparison.UserMessage);
+                        }
                         changed = true;
                     }
 
@@ -1553,6 +1600,9 @@ public class FhirDbComparer
                             $"`{targetElement.Name}` constrained the element out" +
                             $" (max cardinality from {sourceElement.MaxCardinalityString} to {targetElement.MaxCardinalityString}).");
                         changed = true;
+
+                        userMessages.Add($"{targetSd.Name} constrained `{targetElement.Id}` out" +
+                            $" (max cardinality from {sourceElement.MaxCardinalityString} to {targetElement.MaxCardinalityString}).");
                     }
 
                     // check for changing from scalar to array: source is narrower than target in value
@@ -1562,6 +1612,9 @@ public class FhirDbComparer
                         valueRelationship = applyRelationship(valueRelationship, CMR.SourceIsNarrowerThanTarget);
                         messages.Add($"`{targetElement.Name}` changed from scalar to array (max cardinality from 1 to {targetElement.MaxCardinality}).");
                         changed = true;
+
+                        userMessages.Add($"Changed from a single value to an array" +
+                            $" (max cardinality from {sourceElement.MaxCardinalityString} to {targetElement.MaxCardinalityString}).");
                     }
 
                     // check for changing from array to scalar: source is broader than target in value
@@ -1571,6 +1624,9 @@ public class FhirDbComparer
                         valueRelationship = applyRelationship(valueRelationship, CMR.SourceIsBroaderThanTarget);
                         messages.Add($"`{targetElement.Name}` changed from array to scalar (max cardinality from {sourceElement.MaxCardinalityString} to 1).");
                         changed = true;
+
+                        userMessages.Add($"Changed from an array to a single value" +
+                            $" (max cardinality from {sourceElement.MaxCardinalityString} to {targetElement.MaxCardinalityString}).");
                     }
 
                     // check for source allowing more than target allows: target has a broader concept and value than the source
@@ -1581,6 +1637,8 @@ public class FhirDbComparer
                         valueRelationship = applyRelationship(valueRelationship, CMR.SourceIsBroaderThanTarget);
                         messages.Add($"`{targetElement.Name}` decreased the maximum cardinality from {sourceElement.MaxCardinalityString} to {targetElement.MaxCardinalityString}.");
                         changed = true;
+
+                        userMessages.Add($"Decreased the maximum cardinality from {sourceElement.MaxCardinalityString} to {targetElement.MaxCardinalityString}.");
                     }
 
                     doElementBindingComparison(
@@ -1592,6 +1650,7 @@ public class FhirDbComparer
                         ref conceptRelationship,
                         ref valueRelationship,
                         messages,
+                        userMessages,
                         ref changed);
 
                     // combine the concept and value domain relationships
@@ -1631,6 +1690,18 @@ public class FhirDbComparer
                         inverseComparison.IsIdentical = elementComparison.IsIdentical;
                         elementComparisons.Changed(inverseComparison);
                     }
+
+                    if (firstMessageOnly)
+                    {
+                        elementComparison.UserMessage = userMessages.First();
+                    }
+                    else
+                    {
+                        userMessages.Add($"So is mapped as {relationship}.");
+                        elementComparison.UserMessage = string.Join(' ', userMessages);
+                    }
+
+                    changed = true;
 
                     // if we changed something, apply all changes and update the record
                     if (changed)
@@ -1729,6 +1800,7 @@ public class FhirDbComparer
         ref CMR conceptRelationship,
         ref CMR valueRelationship,
         List<string> messages,
+        List<string> userMessages,
         ref bool changed)
     {
         if ((sourceElement.ValueSetBindingStrength == null) &&
@@ -1751,6 +1823,7 @@ public class FhirDbComparer
             conceptRelationship = applyRelationship(conceptRelationship, CMR.SourceIsNarrowerThanTarget);
             valueRelationship = applyRelationship(valueRelationship, CMR.SourceIsNarrowerThanTarget);
             messages.Add($"`{targetElement.Name}` added a required value set binding to `{targetElement.BindingValueSet}`.");
+            userMessages.Add($"`{targetElement.Name}` added a required value set binding to `{targetElement.BindingValueSet}`.");
             changed = true;
 
             // regardless of any other changes, this is a narrowing of content - we don't need to check anything else
@@ -1764,6 +1837,7 @@ public class FhirDbComparer
             conceptRelationship = applyRelationship(conceptRelationship, CMR.SourceIsBroaderThanTarget);
             valueRelationship = applyRelationship(valueRelationship, CMR.SourceIsBroaderThanTarget);
             messages.Add($"`{targetElement.Name}` removed the required value set binding to `{sourceElement.BindingValueSet}`.");
+            userMessages.Add($"`{targetElement.Name}` removed the required value set binding to `{sourceElement.BindingValueSet}`.");
             changed = true;
 
             // regardless of any other changes, this is a broadening of content - we don't need to check anything else
@@ -1790,6 +1864,7 @@ public class FhirDbComparer
         if (excludeSource && excludeTarget)
         {
             messages.Add($"Failed to resolve or expand both `{sourceElement.BindingValueSet}` and `{targetElement.BindingValueSet}`.");
+            userMessages.Add($"The Value Set bindings of `{sourceElement.BindingValueSet}` and `{targetElement.BindingValueSet}` could not be expanded, so the binding was ignored.");
             changed = true;
             return;
         }
@@ -1800,6 +1875,7 @@ public class FhirDbComparer
             conceptRelationship = applyRelationship(conceptRelationship, CMR.SourceIsBroaderThanTarget);
             valueRelationship = applyRelationship(valueRelationship, CMR.SourceIsBroaderThanTarget);
             messages.Add($"Failed to resolve or expand the source value set `{sourceElement.BindingValueSet}`, assuming the target is narrower.");
+            userMessages.Add($"The source Value Set bindings of `{sourceElement.BindingValueSet}` could not be expanded, so it is assumed to contain more contents.");
             changed = true;
             return;
         }
@@ -1809,7 +1885,8 @@ public class FhirDbComparer
         {
             conceptRelationship = applyRelationship(conceptRelationship, CMR.SourceIsNarrowerThanTarget);
             valueRelationship = applyRelationship(valueRelationship, CMR.SourceIsNarrowerThanTarget);
-            messages.Add($"Failed to resolve or expand the target value set `{sourceElement.BindingValueSet}`, assuming the target is broader.");
+            messages.Add($"Failed to resolve or expand the target value set `{targetElement.BindingValueSet}`, assuming the target is broader.");
+            userMessages.Add($"The target Value Set bindings of `{targetElement.BindingValueSet}` could not be expanded, so it is assumed to contain more contents.");
             changed = true;
             return;
         }
@@ -1879,12 +1956,14 @@ public class FhirDbComparer
                         conceptRelationship = applyRelationship(conceptRelationship, CMR.Equivalent);
                         valueRelationship = applyRelationship(valueRelationship, CMR.Equivalent);
                         messages.Add($"Source and target bound value sets have same number of codes and all codes match - required binding is COMPATIBLE for `code` type.");
+                        userMessages.Add($"The source and target bound value sets have same number of codes and all codes match, so the required binding is COMPATIBLE for a required binding on a `code` type.");
                     }
                     else
                     {
                         conceptRelationship = applyRelationship(conceptRelationship, CMR.SourceIsNarrowerThanTarget);
                         valueRelationship = applyRelationship(valueRelationship, CMR.SourceIsNarrowerThanTarget);
                         messages.Add($"Target bound value set has more codes than source - required binding is COMPATIBLE for `code` type.");
+                        userMessages.Add($"The target bound value set has more codes than source, so the required binding is COMPATIBLE for a required binding on a `code` type in this direction.");
                     }
                 }
                 else
@@ -1894,6 +1973,7 @@ public class FhirDbComparer
                     messages.Add(
                         $"Target value set is INCOMPATIBLE for a required binding on a `code` type," +
                         $" VS Relationship: {boundValueSetComparison.Relationship}.");
+                    userMessages.Add($"The value set relationship of {boundValueSetComparison.Relationship} is INCOMPATIBLE for a required binding on a `code` type in this direction.");
                 }
             }
             // excluded value sets are assumed compatible
@@ -1903,6 +1983,7 @@ public class FhirDbComparer
                 conceptRelationship = applyRelationship(conceptRelationship, CMR.Equivalent);
                 valueRelationship = applyRelationship(valueRelationship, CMR.Equivalent);
                 messages.Add($"Source or target value set is excluded - assuming required binding is COMPATIBLE for `code` type.");
+                userMessages.Add($"The source or target value set has been manually flagged as COMPATIBLE for a required binding on a `code` type in this direction.");
             }
             else
             {
@@ -1911,6 +1992,7 @@ public class FhirDbComparer
                 messages.Add(
                     $"Source and target bound value sets are not compatible ({boundValueSetComparison.Relationship})" +
                     $" - required binding is INCOMPATIBLE for `code` type binding.");
+                userMessages.Add($"The value set relationship of {boundValueSetComparison.Relationship} is INCOMPATIBLE for a required binding on a `code` type in this direction.");
             }
 
             changed = true;
@@ -1935,6 +2017,7 @@ public class FhirDbComparer
                 conceptRelationship = applyRelationship(conceptRelationship, CMR.Equivalent);
                 valueRelationship = applyRelationship(valueRelationship, CMR.Equivalent);
                 messages.Add($"Source or target value set is excluded - assuming required binding is COMPATIBLE for non-code type.");
+                userMessages.Add($"The source or target value set has been manually flagged as COMPATIBLE for the `code` type in this direction.");
             }
             else
             {
@@ -1943,6 +2026,7 @@ public class FhirDbComparer
                 messages.Add(
                     $"Source and target bound value sets are not compatible ({boundValueSetComparison.Relationship})" +
                     $" - required binding is INCOMPATIBLE for non-code type binding.");
+                userMessages.Add($"The value set relationship of {boundValueSetComparison.Relationship} is INCOMPATIBLE for a required binding on a non-`code` type in this direction.");
             }
             changed = true;
         }
@@ -2936,6 +3020,10 @@ public class FhirDbComparer
                 // do basic checks if this has not been reviewed
                 if (conceptComparison.LastReviewedOn == null)
                 {
+                    bool userMessageIsComplete = false;
+                    string userMessage = $"`{sourceConcept.System}`#`{sourceConcept.Code}`" +
+                        $" maps to {targetPackage.ShortName} `{targetConcept.System}`#`{targetConcept.Code}`";
+
                     // check for missing no-map value
                     if ((conceptComparison.TargetConceptKey == null) &&
                         (conceptComparison.NoMap != true))
@@ -2954,9 +3042,11 @@ public class FhirDbComparer
                         conceptComparison.Relationship = RelationshipForCounts(sourceVs.ActiveConcreteConceptCount, targetVs.ActiveConcreteConceptCount);
                         conceptComparison.IsGenerated = true;
                         conceptComparison.TechnicalMessage = conceptComparison.TechnicalMessage +
-                            $" Escape-valve code `{sourceConcept.Code}` maps to `{targetConcept.Code}`, but represent different concept domains (different number of codes).";
-                        conceptComparison.UserMessage = conceptComparison.UserMessage +
-                            $" Escape-valve code `{sourceConcept.Code}` maps to `{targetConcept.Code}`, but represent different concept domains (different number of codes).";
+                            $" Escape-valve code `{sourceConcept.System}`#`{sourceConcept.Code}` maps to `{targetConcept.System}`#`{targetConcept.Code}`, but represent different concept domains (different number of codes).";
+                        userMessage = $"Escape-valve code `{sourceConcept.System}`#`{sourceConcept.Code}`" +
+                            $" maps to `{targetConcept.System}`#`{targetConcept.Code}`," +
+                            $" but represent different concept domains (different number of codes).";
+                        userMessageIsComplete = true;
                     }
 
                     // check for a single source with multiple targets and any that map as equivalent
@@ -2977,10 +3067,21 @@ public class FhirDbComparer
                         conceptComparison.IsGenerated = true;
                         conceptComparison.TechnicalMessage = conceptComparison.TechnicalMessage +
                             $" `{sourceConcept.Code}` maps to multiple codes in `{targetVs.VersionedUrl}` and cannot be equivalent.";
-                        conceptComparison.UserMessage = conceptComparison.UserMessage +
-                            $", but maps to multiple codes in {targetVs.VersionedUrl} and cannot be equivalent:" +
-                            $" {string.Join("", targetConceptCodes.Select(c => $"`{c?.System}`#`{c?.Code}`"))}.";
+
+                        if (!userMessageIsComplete)
+                        {
+                            userMessage += $", but maps to multiple codes in {targetVs.VersionedUrl}:" +
+                                $" ({string.Join(", ", targetConceptCodes.Select(c => $"`{c?.System}`#`{c?.Code}`"))}), so maps as";
+                        }
                     }
+                
+                    if (!userMessageIsComplete)
+                    {
+                        userMessage += $" as {conceptComparison.Relationship}.";
+                    }
+
+                    conceptComparison.UserMessage = userMessage;
+                    conceptComparisons.Changed(conceptComparison);
                 }
 
                 if (inverseComparison != null)
