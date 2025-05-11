@@ -277,6 +277,7 @@ public class XVerProcessor
 
     private record class PackageXverSupport
     {
+        public required int PackageIndex { get; init; }
         public required DbFhirPackage Package { get; init; }
         public HashSet<string> BasicElements { get; init; } = [];
         public HashSet<string> AllowedExtensionTypes { get; init; } = [];
@@ -360,10 +361,11 @@ public class XVerProcessor
         List<PackageXverSupport> packageSupports = [];
 
         // iterate over the packages to build the Basic resource element paths
-        foreach (DbFhirPackage package in packages)
+        foreach ((DbFhirPackage package, int index) in packages.Select((p, i) => (p, i)))
         {
             PackageXverSupport packageSupport = new()
             {
+                PackageIndex = index,
                 Package = package,
                 BasicElements = [],
             };
@@ -791,14 +793,233 @@ public class XVerProcessor
         // iterate over the structures
         foreach (DbStructureDefinition sd in structures)
         {
-            // build the value sets for this package
-            buildXverStructures(
-                xverExtensions,
-                packageSupports,
-                sourcePackageIndex,
-                allowedExtensionTypes,
-                xverValueSets,
-                sd);
+            // build a graph for this structure
+            DbGraphSd sdGraph = new()
+            {
+                DB = _db!.DbConnection,
+                Packages = packageSupports.Select(ps => ps.Package).ToList(),
+                KeySd = sd,
+            };
+
+            // build a dictionary of all element projections, by element key
+            Dictionary<int, List<DbGraphSd.DbElementRow>> elementProjectionDict = [];
+            foreach (DbGraphSd.DbSdRow sdRow in sdGraph.Projection)
+            {
+                foreach (DbGraphSd.DbElementRow sdElementRow in sdRow.Projection)
+                {
+                    if (sdElementRow.KeyCell == null)
+                    {
+                        continue;
+                    }
+
+                    if (!elementProjectionDict.TryGetValue(sdElementRow.KeyCell.Element.Key, out List<DbGraphSd.DbElementRow>? elementList))
+                    {
+                        elementList = [];
+                        elementProjectionDict.Add(sdElementRow.KeyCell.Element.Key, elementList);
+                    }
+
+                    elementList.Add(sdElementRow);
+                }
+            }
+
+            List<HashSet<int>> generatedElementKeys = [];
+            for (int i = 0; i < packageSupports.Count; i++)
+            {
+                generatedElementKeys.Add([]);
+            }
+
+            // iterate over the elements of our structure
+            foreach (DbElement element in DbElement.SelectList(_db!.DbConnection, StructureKey: sd.Key, orderByProperties: [nameof(DbElement.ResourceFieldOrder)]))
+            {
+                // resolve the projection rows for this element
+                List<DbGraphSd.DbElementRow> elementProjection = elementProjectionDict[element.Key];
+
+                bool extensionNeeded = false;
+
+                // work upwards first
+                for (int currentIndex = sourcePackageIndex; currentIndex < (packageSupports.Count - 1); currentIndex++)
+                {
+                    // if we already generated the parent of this element, flag it as added and move on
+                    if ((element.ParentElementKey != null) &&
+                        generatedElementKeys[currentIndex + 1].Contains(element.ParentElementKey.Value))
+                    {
+                        // add this element to the generated list
+                        generatedElementKeys[currentIndex + 1].Add(element.Key);
+                        continue;
+                    }
+
+                    // do not generate if this element is equivalent in the target basic resource
+                    if ((element.ParentElementKey != null) &&
+                        packageSupports[currentIndex+1].BasicElements.Contains(element.Path.Substring(sd.Name.Length)))
+                    {
+                        continue;
+                    }
+
+                    List<DbElementComparison> comparisons = [];
+
+                    // resolve the current column
+                    List<DbGraphSd.DbElementCell?> sourceCells = elementProjection
+                        .Select(row => row[currentIndex])
+                        .ToList();
+
+                    // if we have not hit a need for the extension yet in this direction, test the curent pair
+                    if (!extensionNeeded)
+                    {
+                        // only generate entire structures if there is no mappable structure in the target
+                        if (element.ResourceFieldOrder == 0)
+                        {
+                            extensionNeeded = (sourceCells.Count == 0) || (sourceCells.All(c => c?.Element == null));
+                        }
+                        // if we have no mappings, we need a new extension
+                        else if (sourceCells.Count == 0)
+                        {
+                            extensionNeeded = true;
+                        }
+                        // if all cells or right projections are null, we need an extension
+                        else if (sourceCells.All(cell => cell?.RightCell == null))
+                        {
+                            extensionNeeded = true;
+                        }
+                        // need to check aggregate relationship
+                        else
+                        {
+                            // easier to check inverse here
+                            extensionNeeded = true;
+
+                            foreach (DbGraphSd.DbElementCell? cell in sourceCells)
+                            {
+                                // do not need to generate if equivalent or source is broader
+                                if ((cell?.RightComparison?.Relationship == CMR.Equivalent) ||
+                                    (cell?.RightComparison?.Relationship == CMR.SourceIsBroaderThanTarget))
+                                {
+                                    extensionNeeded = false;
+                                    comparisons.Add(cell.RightComparison);
+                                }
+                            }
+                        }
+                    }
+
+                    // if we still do not need an extension, go to next package
+                    if (!extensionNeeded)
+                    {
+                        continue;
+                    }
+
+                    // check to see if we have already generated this extension
+                    if (xverExtensions.ContainsKey((element.Key, packageSupports[currentIndex + 1].Package.Key)))
+                    {
+                        continue;
+                    }
+
+                    // build an extension for the original source element to target the current target version
+                    StructureDefinition? extSd = createExtensionSd(
+                        packageSupports[sourcePackageIndex],
+                        packageSupports[currentIndex + 1],
+                        sd,
+                        element,
+                        comparisons,
+                        xverValueSets);
+
+                    if (extSd != null)
+                    {
+                        xverExtensions.Add((element.Key, packageSupports[currentIndex + 1].Package.Key), extSd);
+                        generatedElementKeys[currentIndex + 1].Add(element.Key);
+                    }
+                }
+
+                extensionNeeded = false;
+
+                // then work downwards
+                for (int currentIndex = sourcePackageIndex; currentIndex > 0; currentIndex--)
+                {
+                    // if we already generated the parent of this element, flag it as added and move on
+                    if ((element.ParentElementKey != null) &&
+                        generatedElementKeys[currentIndex - 1].Contains(element.ParentElementKey.Value))
+                    {
+                        // add this element to the generated list
+                        generatedElementKeys[currentIndex - 1].Add(element.Key);
+                        continue;
+                    }
+
+                    // do not generate if this element is equivalent in the target basic resource
+                    if ((element.ParentElementKey != null) &&
+                        packageSupports[currentIndex - 1].BasicElements.Contains(element.Path.Substring(sd.Name.Length)))
+                    {
+                        continue;
+                    }
+
+                    List<DbElementComparison> comparisons = [];
+
+                    // resolve the current column
+                    List<DbGraphSd.DbElementCell?> sourceCells = elementProjection
+                        .Select(row => row[currentIndex])
+                        .ToList();
+
+                    // if we have not hit a need for the extension yet in this direction, test the curent pair
+                    if (!extensionNeeded)
+                    {
+                        // only generate entire structures if there is no mappable structure in the target
+                        if (element.ResourceFieldOrder == 0)
+                        {
+                            extensionNeeded = (sourceCells.Count == 0) || (sourceCells.All(c => c?.Element == null));
+                        }
+                        // if we have no mappings, we need a new extension
+                        else if (sourceCells.Count == 0)
+                        {
+                            extensionNeeded = true;
+                        }
+                        // if all cells or left projections are null, we need an extension
+                        else if (sourceCells.All(cell => cell?.LeftComparison == null))
+                        {
+                            extensionNeeded = true;
+                        }
+                        // need to check aggregate relationship
+                        else
+                        {
+                            // easier to check inverse here
+                            extensionNeeded = true;
+
+                            foreach (DbGraphSd.DbElementCell? cell in sourceCells)
+                            {
+                                // do not need to generate if equivalent or source is broader
+                                if ((cell?.LeftComparison?.Relationship == CMR.Equivalent) ||
+                                    (cell?.LeftComparison?.Relationship == CMR.SourceIsBroaderThanTarget))
+                                {
+                                    extensionNeeded = false;
+                                    comparisons.Add(cell.LeftComparison);
+                                }
+                            }
+                        }
+                    }
+
+                    // if we still do not need an extension, go to next package
+                    if (!extensionNeeded)
+                    {
+                        continue;
+                    }
+
+                    // check to see if we have already generated this extension
+                    if (xverExtensions.ContainsKey((element.Key, packageSupports[currentIndex-1].Package.Key)))
+                    {
+                        continue;
+                    }
+
+                    // build an extension for the original source element to target the current target version
+                    StructureDefinition? extSd = createExtensionSd(
+                        packageSupports[sourcePackageIndex],
+                        packageSupports[currentIndex - 1],
+                        sd,
+                        element,
+                        comparisons,
+                        xverValueSets);
+
+                    if (extSd != null)
+                    {
+                        xverExtensions.Add((element.Key, packageSupports[currentIndex - 1].Package.Key), extSd);
+                        generatedElementKeys[currentIndex - 1].Add(element.Key);
+                    }
+                }
+            }
         }
 
         return;
@@ -836,268 +1057,269 @@ public class XVerProcessor
         }
     }
 
-    private void buildXverStructures(
-        Dictionary<(int sourceElementKey, int targetPackageId), StructureDefinition> xverExtensions,
-        List<PackageXverSupport> packageSupports,
-        int sourcePackageIndex,
-        HashSet<string> allowedExtensionTypes,
-        Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
-        DbStructureDefinition sourceSd,
-        Dictionary<int, List<DbGraphSd.DbElementRow>>? elementProjectionDict = null,
-        HashSet<int>? elementsWithoutEquivalent = null,
-        int currentPackageIndex = -1,
-        int targetPackageIndex = -1)
-    {
-        if (elementProjectionDict == null)
-        {
-            // build a graph for this structure
-            DbGraphSd sdGraph = new()
-            {
-                DB = _db!.DbConnection,
-                Packages = packageSupports.Select(ps => ps.Package).ToList(),
-                KeySd = sourceSd,
-            };
+    //private void buildXverStructures(
+    //    Dictionary<(int sourceElementKey, int targetPackageId), StructureDefinition> xverExtensions,
+    //    List<PackageXverSupport> packageSupports,
+    //    int sourcePackageIndex,
+    //    HashSet<string> allowedExtensionTypes,
+    //    Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
+    //    DbStructureDefinition sourceSd,
+    //    Dictionary<int, List<DbGraphSd.DbElementRow>>? elementProjectionDict = null,
+    //    HashSet<int>? elementsWithoutEquivalent = null,
+    //    int currentPackageIndex = -1,
+    //    int targetPackageIndex = -1)
+    //{
+    //    if (elementProjectionDict == null)
+    //    {
+    //        // build a graph for this structure
+    //        DbGraphSd sdGraph = new()
+    //        {
+    //            DB = _db!.DbConnection,
+    //            Packages = packageSupports.Select(ps => ps.Package).ToList(),
+    //            KeySd = sourceSd,
+    //        };
 
-            // build a dictionary of all element projections, by element key
-            elementProjectionDict = [];
-            foreach (DbGraphSd.DbSdRow sdRow in sdGraph.Projection)
-            {
-                foreach (DbGraphSd.DbElementRow sdElementRow in sdRow.Projection)
-                {
-                    if (sdElementRow.KeyCell == null)
-                    {
-                        continue;
-                    }
+    //        // build a dictionary of all element projections, by element key
+    //        elementProjectionDict = [];
+    //        foreach (DbGraphSd.DbSdRow sdRow in sdGraph.Projection)
+    //        {
+    //            foreach (DbGraphSd.DbElementRow sdElementRow in sdRow.Projection)
+    //            {
+    //                if (sdElementRow.KeyCell == null)
+    //                {
+    //                    continue;
+    //                }
 
-                    if (!elementProjectionDict.TryGetValue(sdElementRow.KeyCell.Element.Key, out List<DbGraphSd.DbElementRow>? elementList))
-                    {
-                        elementList = [];
-                        elementProjectionDict.Add(sdElementRow.KeyCell.Element.Key, elementList);
-                    }
+    //                if (!elementProjectionDict.TryGetValue(sdElementRow.KeyCell.Element.Key, out List<DbGraphSd.DbElementRow>? elementList))
+    //                {
+    //                    elementList = [];
+    //                    elementProjectionDict.Add(sdElementRow.KeyCell.Element.Key, elementList);
+    //                }
 
-                    elementList.Add(sdElementRow);
-                }
-            }
-        }
+    //                elementList.Add(sdElementRow);
+    //            }
+    //        }
+    //    }
 
-        // check for starting conditions
-        if ((currentPackageIndex == -1) ||
-            (targetPackageIndex == -1))
-        {
-            // if we are not the last package, build upwards
-            if (sourcePackageIndex < (packageSupports.Count - 1))
-            {
-                buildXverStructures(
-                    xverExtensions,
-                    packageSupports,
-                    sourcePackageIndex,
-                    allowedExtensionTypes,
-                    xverValueSets,
-                    sourceSd,
-                    elementProjectionDict,
-                    elementsWithoutEquivalent,
-                    currentPackageIndex: sourcePackageIndex,
-                    targetPackageIndex: sourcePackageIndex + 1);
-            }
+    //    // check for starting conditions
+    //    if ((currentPackageIndex == -1) ||
+    //        (targetPackageIndex == -1))
+    //    {
+    //        // if we are not the last package, build upwards
+    //        if (sourcePackageIndex < (packageSupports.Count - 1))
+    //        {
+    //            buildXverStructures(
+    //                xverExtensions,
+    //                packageSupports,
+    //                sourcePackageIndex,
+    //                allowedExtensionTypes,
+    //                xverValueSets,
+    //                sourceSd,
+    //                elementProjectionDict,
+    //                elementsWithoutEquivalent,
+    //                currentPackageIndex: sourcePackageIndex,
+    //                targetPackageIndex: sourcePackageIndex + 1);
+    //        }
 
-            // if we are not the first package, build downwards
-            if (sourcePackageIndex > 0)
-            {
-                buildXverStructures(
-                    xverExtensions,
-                    packageSupports,
-                    sourcePackageIndex,
-                    allowedExtensionTypes,
-                    xverValueSets,
-                    sourceSd,
-                    elementProjectionDict,
-                    elementsWithoutEquivalent,
-                    currentPackageIndex: sourcePackageIndex,
-                    targetPackageIndex: sourcePackageIndex - 1);
-            }
+    //        // if we are not the first package, build downwards
+    //        if (sourcePackageIndex > 0)
+    //        {
+    //            buildXverStructures(
+    //                xverExtensions,
+    //                packageSupports,
+    //                sourcePackageIndex,
+    //                allowedExtensionTypes,
+    //                xverValueSets,
+    //                sourceSd,
+    //                elementProjectionDict,
+    //                elementsWithoutEquivalent,
+    //                currentPackageIndex: sourcePackageIndex,
+    //                targetPackageIndex: sourcePackageIndex - 1);
+    //        }
 
-            // done
-            return;
-        }
+    //        // done
+    //        return;
+    //    }
 
-        // resolve the basic element hash for testing
-        bool testingRight = currentPackageIndex < targetPackageIndex;
-        bool testingLeft = !testingRight;
-        elementsWithoutEquivalent ??= [];
+    //    // resolve the basic element hash for testing
+    //    bool testingRight = currentPackageIndex < targetPackageIndex;
+    //    bool testingLeft = !testingRight;
+    //    elementsWithoutEquivalent ??= [];
 
-        DbFhirPackage sourcePackage = packageSupports[sourcePackageIndex].Package;
-        DbFhirPackage targetPackage = packageSupports[targetPackageIndex].Package;
+    //    DbFhirPackage sourcePackage = packageSupports[sourcePackageIndex].Package;
+    //    DbFhirPackage targetPackage = packageSupports[targetPackageIndex].Package;
 
-        // check for the entire structure being unmapped (e.g., new resource)
-        bool isUnmappedStructure = !elementProjectionDict.Values.Any(rows => rows.Any(row => row[targetPackage] != null));
+    //    // check for the entire structure being unmapped (e.g., new resource)
+    //    bool isUnmappedStructure = !elementProjectionDict.Values.Any(rows => rows.Any(row => row[targetPackage] != null));
 
-        // if this is an unmapped structure, the entire structure is unmapped
-        if (isUnmappedStructure)
-        {
-            // resolve the root row
-            DbGraphSd.DbElementRow rootRow = elementProjectionDict
-                .Values
-                .First(rows => rows.Any(row => row.KeyCell?.Element.ResourceFieldOrder == 0))
-                .First();
-
-
-            StructureDefinition sd = createExtensionSd(
-                packageSupports[sourcePackageIndex],
-                packageSupports[targetPackageIndex],
-                sourceSd,
-                rootRow.KeyCell!.Element,
-                elementProjectionDict);
+    //    // if this is an unmapped structure, the entire structure is unmapped
+    //    if (isUnmappedStructure)
+    //    {
+    //        // resolve the root row
+    //        DbGraphSd.DbElementRow rootRow = elementProjectionDict
+    //            .Values
+    //            .First(rows => rows.Any(row => row.KeyCell?.Element.ResourceFieldOrder == 0))
+    //            .First();
 
 
-            /*
-                * TODO:
-                * - filter target types based on allowed types (HashSet)
-                * - map types that do not exist based on their mappings (e.g., R2:Quantity <-> R3:SimpleQuantity)
-                * - make complex extensions based on elements in the tree
-                * - filter top-level structures/elements for new types (only allow entire structures)
-                * - determine correct targets
-                */
-
-            //// create a new snapshot
-            //sd.Snapshot = new StructureDefinition.SnapshotComponent();
+    //        StructureDefinition sd = createExtensionSd(
+    //            packageSupports[sourcePackageIndex],
+    //            packageSupports[targetPackageIndex],
+    //            sourceSd,
+    //            rootRow.KeyCell!.Element,
+    //            elementProjectionDict);
 
 
-            // add this element extension to the dictionary
-            xverExtensions.Add((rootRow.KeyCell!.Element.Key, targetPackage.Key), sd);
+    //        /*
+    //            * TODO:
+    //            * - filter target types based on allowed types (HashSet)
+    //            * - map types that do not exist based on their mappings (e.g., R2:Quantity <-> R3:SimpleQuantity)
+    //            * - make complex extensions based on elements in the tree
+    //            * - filter top-level structures/elements for new types (only allow entire structures)
+    //            * - determine correct targets
+    //            */
+
+    //        //// create a new snapshot
+    //        //sd.Snapshot = new StructureDefinition.SnapshotComponent();
 
 
-        }
-        else
-        {
-            Dictionary<int, int> includedChildCounts = [];
-            List<DbGraphSd.DbElementCell> cellsNeedingExtensions = [];
-
-            // iterate over the projections, sorted by the key cell resource field order
-            foreach ((int sourceElementKey, List<DbGraphSd.DbElementRow> elementProjections) in elementProjectionDict.OrderBy(kvp => kvp.Value.First().KeyCell!.Element.ResourceFieldOrder))
-            {
-                // skip testing if we know this element has already mapped out - always must generate
-                if (elementsWithoutEquivalent.Contains(sourceElementKey))
-                {
-                    continue;
-                }
-
-                // check to see if we have any equivalent mappings
-                if (testingRight &&
-                    elementProjections.Any((DbGraphSd.DbElementRow elementRow) => elementRow[currentPackageIndex]?.RightComparison?.Relationship == CMR.Equivalent))
-                {
-                    continue;
-                }
-
-                if (testingLeft &&
-                    elementProjections.Any((DbGraphSd.DbElementRow elementRow) => elementRow[currentPackageIndex]?.LeftComparison?.Relationship == CMR.Equivalent))
-                {
-                    continue;
-                }
-
-                // add this element as not directly equivalent
-                elementsWithoutEquivalent.Add(sourceElementKey);
-
-                cellsNeedingExtensions.Add(elementProjections[0].KeyCell!);
-
-                // resolve the element to build the parent id
-                DbElement element = elementProjections[0].KeyCell?.Element ?? throw new Exception($"Failed to resolve element for {sourceElementKey} in {sourceSd.Name}!");
-
-                // if this is not the root element, track the unmapped child count for later comparison
-                if (element.ParentElementKey != null)
-                {
-                    if (!includedChildCounts.TryGetValue((int)element.ParentElementKey, out int includedChildCount))
-                    {
-                        includedChildCount = 0;
-                    }
-
-                    includedChildCount++;
-                    includedChildCounts[(int)element.ParentElementKey] = includedChildCount;
-                }
-
-                string sdId = $"{sourcePackage.ShortName}-{element.Path}-for-{targetPackage.ShortName}";
-
-                StructureDefinition sd = new()
-                {
-                    Url = $"http://hl7.org/fhir/uv/xver/{sourcePackage.FhirVersionShort}/StructureDefinition/{sdId}",
-                    Id = sdId,
-                    Version = _crossDefinitionVersion,
-                    Name = sdId,
-                    Title = $"Cross-version Extension for {sourcePackage.ShortName}.{element.Path} for use in FHIR {targetPackage.ShortName}",
-                    Status = PublicationStatus.Draft,
-                    Experimental = false,
-                    DateElement = new FhirDateTime(DateTimeOffset.Now),
-                    Description = $"This cross-version extension represents the {element.Path} element from {sourceSd.VersionedUrl} for use in FHIR {targetPackage.ShortName}.",
-                };
-
-                /*
-                 * TODO:
-                 * - filter target types based on allowed types (HashSet)
-                 * - map types that do not exist based on their mappings (e.g., R2:Quantity <-> R3:SimpleQuantity)
-                 * - make complex extensions based on elements in the tree
-                 * - filter top-level structures/elements for new types (only allow entire structures)
-                 * - determine correct targets
-                 */
-
-                // add this element extension to the dictionary
-                xverExtensions.Add((element.Key, targetPackage.Key), sd);
-            }
-
-            Dictionary<int, (DbGraphSd.DbElementCell elementCell, StructureDefinition extensionSd)> proposedExtensionsByKey = [];
-
-            // iterate over our list of elements we are including, sorted by resource field order
-            foreach (DbGraphSd.DbElementCell elementCell in cellsNeedingExtensions.OrderBy(ec => ec.Element.ResourceFieldOrder))
-            {
-                // TODO(ginoc)
-            }
-        }
+    //        // add this element extension to the dictionary
+    //        xverExtensions.Add((rootRow.KeyCell!.Element.Key, targetPackage.Key), sd);
 
 
+    //    }
+    //    else
+    //    {
+    //        Dictionary<int, int> includedChildCounts = [];
+    //        List<DbGraphSd.DbElementCell> cellsNeedingExtensions = [];
 
-        // check for continuing to the next package to the right
-        if (testingRight &&
-            (targetPackageIndex < packageSupports.Count - 1))
-        {
-            // build the value set for this package
-            buildXverStructures(
-                xverExtensions,
-                packageSupports,
-                sourcePackageIndex,
-                allowedExtensionTypes,
-                xverValueSets,
-                sourceSd,
-                elementProjectionDict,
-                elementsWithoutEquivalent,
-                currentPackageIndex: targetPackageIndex,
-                targetPackageIndex: targetPackageIndex + 1);
-        }
+    //        // iterate over the projections, sorted by the key cell resource field order
+    //        foreach ((int sourceElementKey, List<DbGraphSd.DbElementRow> elementProjections) in elementProjectionDict.OrderBy(kvp => kvp.Value.First().KeyCell!.Element.ResourceFieldOrder))
+    //        {
+    //            // skip testing if we know this element has already mapped out - always must generate
+    //            if (elementsWithoutEquivalent.Contains(sourceElementKey))
+    //            {
+    //                continue;
+    //            }
 
-        // check for continuing to the next package to the left
-        if (testingLeft &&
-            (targetPackageIndex > 0))
-        {
-            // build the value set for this package
-            buildXverStructures(
-                xverExtensions,
-                packageSupports,
-                sourcePackageIndex,
-                allowedExtensionTypes,
-                xverValueSets,
-                sourceSd,
-                elementProjectionDict,
-                elementsWithoutEquivalent,
-                currentPackageIndex: targetPackageIndex,
-                targetPackageIndex: targetPackageIndex - 1);
-        }
+    //            // check to see if we have any equivalent mappings
+    //            if (testingRight &&
+    //                elementProjections.Any((DbGraphSd.DbElementRow elementRow) => elementRow[currentPackageIndex]?.RightComparison?.Relationship == CMR.Equivalent))
+    //            {
+    //                continue;
+    //            }
 
-        return;
-    }
+    //            if (testingLeft &&
+    //                elementProjections.Any((DbGraphSd.DbElementRow elementRow) => elementRow[currentPackageIndex]?.LeftComparison?.Relationship == CMR.Equivalent))
+    //            {
+    //                continue;
+    //            }
 
-    private StructureDefinition createExtensionSd(
+    //            // add this element as not directly equivalent
+    //            elementsWithoutEquivalent.Add(sourceElementKey);
+
+    //            cellsNeedingExtensions.Add(elementProjections[0].KeyCell!);
+
+    //            // resolve the element to build the parent id
+    //            DbElement element = elementProjections[0].KeyCell?.Element ?? throw new Exception($"Failed to resolve element for {sourceElementKey} in {sourceSd.Name}!");
+
+    //            // if this is not the root element, track the unmapped child count for later comparison
+    //            if (element.ParentElementKey != null)
+    //            {
+    //                if (!includedChildCounts.TryGetValue((int)element.ParentElementKey, out int includedChildCount))
+    //                {
+    //                    includedChildCount = 0;
+    //                }
+
+    //                includedChildCount++;
+    //                includedChildCounts[(int)element.ParentElementKey] = includedChildCount;
+    //            }
+
+    //            string sdId = $"{sourcePackage.ShortName}-{element.Path}-for-{targetPackage.ShortName}";
+
+    //            StructureDefinition sd = new()
+    //            {
+    //                Url = $"http://hl7.org/fhir/uv/xver/{sourcePackage.FhirVersionShort}/StructureDefinition/{sdId}",
+    //                Id = sdId,
+    //                Version = _crossDefinitionVersion,
+    //                Name = sdId,
+    //                Title = $"Cross-version Extension for {sourcePackage.ShortName}.{element.Path} for use in FHIR {targetPackage.ShortName}",
+    //                Status = PublicationStatus.Draft,
+    //                Experimental = false,
+    //                DateElement = new FhirDateTime(DateTimeOffset.Now),
+    //                Description = $"This cross-version extension represents the {element.Path} element from {sourceSd.VersionedUrl} for use in FHIR {targetPackage.ShortName}.",
+    //            };
+
+    //            /*
+    //             * TODO:
+    //             * - filter target types based on allowed types (HashSet)
+    //             * - map types that do not exist based on their mappings (e.g., R2:Quantity <-> R3:SimpleQuantity)
+    //             * - make complex extensions based on elements in the tree
+    //             * - filter top-level structures/elements for new types (only allow entire structures)
+    //             * - determine correct targets
+    //             */
+
+    //            // add this element extension to the dictionary
+    //            xverExtensions.Add((element.Key, targetPackage.Key), sd);
+    //        }
+
+    //        Dictionary<int, (DbGraphSd.DbElementCell elementCell, StructureDefinition extensionSd)> proposedExtensionsByKey = [];
+
+    //        // iterate over our list of elements we are including, sorted by resource field order
+    //        foreach (DbGraphSd.DbElementCell elementCell in cellsNeedingExtensions.OrderBy(ec => ec.Element.ResourceFieldOrder))
+    //        {
+    //            // TODO(ginoc)
+    //        }
+    //    }
+
+
+
+    //    // check for continuing to the next package to the right
+    //    if (testingRight &&
+    //        (targetPackageIndex < packageSupports.Count - 1))
+    //    {
+    //        // build the value set for this package
+    //        buildXverStructures(
+    //            xverExtensions,
+    //            packageSupports,
+    //            sourcePackageIndex,
+    //            allowedExtensionTypes,
+    //            xverValueSets,
+    //            sourceSd,
+    //            elementProjectionDict,
+    //            elementsWithoutEquivalent,
+    //            currentPackageIndex: targetPackageIndex,
+    //            targetPackageIndex: targetPackageIndex + 1);
+    //    }
+
+    //    // check for continuing to the next package to the left
+    //    if (testingLeft &&
+    //        (targetPackageIndex > 0))
+    //    {
+    //        // build the value set for this package
+    //        buildXverStructures(
+    //            xverExtensions,
+    //            packageSupports,
+    //            sourcePackageIndex,
+    //            allowedExtensionTypes,
+    //            xverValueSets,
+    //            sourceSd,
+    //            elementProjectionDict,
+    //            elementsWithoutEquivalent,
+    //            currentPackageIndex: targetPackageIndex,
+    //            targetPackageIndex: targetPackageIndex - 1);
+    //    }
+
+    //    return;
+    //}
+
+    private StructureDefinition? createExtensionSd(
         PackageXverSupport sourcePackageSupport,
         PackageXverSupport targetPackageSupport,
-        DbStructureDefinition dbSd,
+        DbStructureDefinition sd,
         DbElement element,
-        Dictionary<int, List<DbGraphSd.DbElementRow>> elementProjectionDict)
+        List<DbElementComparison> relevantComparisons,
+        Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets)
     {
         DbFhirPackage sourcePackage = sourcePackageSupport.Package;
         DbFhirPackage targetPackage = targetPackageSupport.Package;
@@ -1107,17 +1329,18 @@ public class XVerProcessor
         //string sdId = $"{sourcePackage.ShortName}-{element.Path}-for-{targetPackage.ShortName}";
         string sdId = $"extension-{element.Path}";
 
-        // resolve the root element
+        bool isRootElement = element.ResourceFieldOrder == 0;
         int elementPathLen = element.Path.Length;
 
+        // TODO: determine the correct context
         // determine the context based on the closest path that has a target
         StructureDefinition.ContextComponent context = new()
         {
             Type = StructureDefinition.ExtensionContextType.Element,
-            Expression = "Basic",
+            Expression = isRootElement ? "Basic" : "Element",
         };
 
-        StructureDefinition sd = new()
+        StructureDefinition extSd = new()
         {
             Id = sdId,
             Url = $"http://hl7.org/fhir/uv/xver/{sourcePackage.FhirVersionShort}/StructureDefinition/{sdId}",
@@ -1125,7 +1348,7 @@ public class XVerProcessor
             Version = _crossDefinitionVersion,
             DateElement = new FhirDateTime(DateTimeOffset.Now),
             Title = $"Cross-version Extension for {sourcePackage.ShortName}.{element.Path} for use in FHIR {targetPackage.ShortName}",
-            Description = $"This cross-version extension represents the {element.Path} Structure from {dbSd.VersionedUrl} for use in FHIR {targetPackage.ShortName}.",
+            Description = $"This cross-version extension represents {element.Path} from {sd.VersionedUrl} for use in FHIR {targetPackage.ShortName}.",
             Status = PublicationStatus.Draft,
             Experimental = false,
             FhirVersion = FHIRVersion.N5_0_0,
@@ -1143,134 +1366,734 @@ public class XVerProcessor
 
         Dictionary<int, string> extPathByElementKey = [];
 
-        // iterate over the source elements, sorted by the key cell resource field order
-        foreach ((int sourceElementKey, List<DbGraphSd.DbElementRow> elementProjections) in elementProjectionDict.OrderBy(kvp => kvp.Value.First().KeyCell!.Element.ResourceFieldOrder))
+        // add this element to the structure, including the child elements
+        addElementToExtension(
+            extSd,
+            "Extension",
+            "Extension",
+            sourcePackageSupport,
+            targetPackageSupport,
+            sd,
+            element,
+            relevantComparisons,
+            xverValueSets);
+
+        return extSd;
+    }
+
+    private (string? shortText, string? definition, string? comment) getTextForExtensionElement(DbElement ed, string? reason)
+    {
+        List<string> strings = [];
+
+        if (!string.IsNullOrEmpty(ed.Short))
         {
-            // just grab the first row
-            DbGraphSd.DbElementRow elementRow = elementProjections[0];
+            strings.Add(ed.Short);
+        }
 
-            // resolve the key element from the row
-            DbElement currentElement = elementRow.KeyCell?.Element ?? throw new Exception($"Failed to resolve element for {sourceElementKey} in {dbSd.Name}!");
+        if (!string.IsNullOrEmpty(ed.Definition) &&
+            !ed.Definition.Equals(ed.Short, StringComparison.Ordinal) &&
+            !ed.Definition.Equals(ed.Short + ".", StringComparison.Ordinal))
+        {
+            strings.Add(ed.Definition);
+        }
 
-            // check to see if this is in the basic resource and contains this element
-            if ((currentElement.Path.Length > elementPathLen) &&
-                basicElementPaths.Contains(element.Path.Substring(elementPathLen)))
+        if (!string.IsNullOrEmpty(reason))
+        {
+            strings.Add(reason!);
+        }
+
+        switch (strings.Count)
+        {
+            case 0:
+                return (null, null, null);
+
+            case 1:
+                return (strings[0], null, null);
+
+            case 2:
+                return (strings[0], strings[1], null);
+
+            default:
+                return (strings[0], strings[1], string.Join("\n", strings.Skip(2)));
+        }
+    }
+
+    private void addElementToExtension(
+        StructureDefinition extSd,
+        string extElementId,
+        string extElementPath,
+        PackageXverSupport sourcePackageSupport,
+        PackageXverSupport targetPackageSupport,
+        DbStructureDefinition sd,
+        DbElement element,
+        List<DbElementComparison> relevantComparisons,
+        Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets)
+    {
+        // do not build extensions for extension or base elements
+        switch (element.CollatedTypeLiteral)
+        {
+            case "Extension":
+            case "Base":
+                return;
+        }
+
+        HashSet<string> basicElementPaths = targetPackageSupport.BasicElements;
+
+        // check to see if this element is in the 'basic' resource of this version (do not add)
+        if ((element.Path.Length > sd.Name.Length) &&
+            basicElementPaths.Contains(element.Path.Substring(sd.Name.Length)))
+        {
+            return;
+        }
+
+        int sourceCol = sourcePackageSupport.PackageIndex;
+        int targetCol = targetPackageSupport.PackageIndex;
+
+        string? reason = relevantComparisons.Count == 0
+            ? null
+            : string.Join(' ', relevantComparisons.Select(c => c.UserMessage ?? string.Empty));
+
+        (string? edShortText, string? edDefinition, string? edComment) = getTextForExtensionElement(element, reason);
+
+        ElementDefinition extEd = new()
+        {
+            ElementId = extElementId,
+            Path = extElementPath,
+            Short = edShortText,
+            Definition = edDefinition,
+            Comment = edComment,
+            Min = element.MinCardinality,
+            Max = element.MaxCardinalityString,
+            IsModifier = element.IsModifier,
+        };
+
+        extSd.Differential.Element.Add(extEd);
+
+        // if there are no child elements, we are done
+        if (element.ChildElementCount != 0)
+        {
+            // if we have child extensions, we cannot have a value
+            extSd.Differential.Element.Add(new()
+            {
+                ElementId = extElementId + ".extension",
+                Path = extElementPath + ".extension",
+                Slicing = new()
+                {
+                    Discriminator = [
+                        new() {
+                            Type = ElementDefinition.DiscriminatorType.Value,
+                            Path = "url",
+                        }
+                    ],
+                },
+                Max = "*",
+            });
+
+            // iterate over our child elements and add them
+            foreach (DbElement childElement in DbElement.SelectList(
+                _db!.DbConnection,
+                ParentElementKey: element.Key,
+                orderByProperties: [nameof(DbElement.ResourceFieldOrder)]))
+            {
+                // add this child element to the extension
+                addElementToExtension(
+                    extSd,
+                    $"{extElementId}.extension:{childElement.Name}",
+                    $"{extElementPath}.extension",
+                    sourcePackageSupport,
+                    targetPackageSupport,
+                    sd,
+                    childElement,
+                    relevantComparisons,
+                    xverValueSets);
+            }
+
+            extSd.Differential.Element.Add(new()
+            {
+                ElementId = extElementId + ".value[x]",
+                Path = extElementPath + ".value[x]",
+                Max = "0",
+            });
+
+            return;
+        }
+
+        bool addedEdExt = false;
+
+
+        bool addedEdValue = false;
+        bool addedEdValueExtension = false;
+        ElementDefinition? extEdValueExtension = null;
+        ElementDefinition extensionEdValue = new()
+        {
+            ElementId = extElementId + ".value[x]",
+            Path = extElementPath + ".value[x]",
+            Short = edShortText,
+            Definition = edDefinition,
+            Comment = edComment,
+            Type = [],
+        };
+
+        // check to see if we need to add a binding
+        if ((element.ValueSetBindingStrength != null) &&
+            (element.BindingValueSet != null))
+        {
+            string vsUrl;
+
+            if ((element.BindingValueSetKey != null) &&
+                xverValueSets.TryGetValue((element.BindingValueSetKey.Value, targetPackageSupport.Package.Key), out ValueSet? vs))
+            {
+                vsUrl = vs.Url;
+            }
+            else
+            {
+                vsUrl = element.BindingValueSet;
+            }
+
+            extensionEdValue.Binding = new()
+            {
+                Strength = element.ValueSetBindingStrength,
+                Description = element.BindingDescription,
+                ValueSet = vsUrl,
+            };
+        }
+
+        // build the value types
+        List<DbElementType> elementValueTypes = DbElementType.SelectList(
+            _db!.DbConnection,
+            ElementKey: element.Key);
+
+        // setup a lookup by type name
+        ILookup<string, DbElementType> collectedValueTypes = elementValueTypes.ToLookup(t => t.TypeName ?? string.Empty);
+        List<string> extAllowedTypes = [];
+        Dictionary<string, List<string>> extReplaceableTypes = [];
+        List<string> extMappedTypes = [];
+
+        // categorize the types based on how we process them
+        foreach (string valueTypeName in elementValueTypes.Select(t => t.TypeName ?? string.Empty).Distinct())
+        {
+            if (targetPackageSupport.AllowedExtensionTypes.Contains(valueTypeName))
+            {
+                extAllowedTypes.Add(valueTypeName);
+                continue;
+            }
+
+            if (FhirTypeMappings.PrimitiveTypeFallbacks.TryGetValue(valueTypeName, out string? replacementType))
+            {
+                if (!extReplaceableTypes.TryGetValue(replacementType, out List<string>? replaceableTypes))
+                {
+                    replaceableTypes = [];
+                    extReplaceableTypes.Add(replacementType, replaceableTypes);
+                }
+                extReplaceableTypes[replacementType].Add(valueTypeName);
+                continue;
+            }
+
+            extMappedTypes.Add(valueTypeName);
+        }
+
+        HashSet<string> usedTypes = [];
+
+        // process mapped types (extension before value)
+        foreach (string typeName in extMappedTypes)
+        {
+            if (!addedEdExt)
+            {
+                extSd.Differential.Element.Add(new()
+                {
+                    ElementId = extElementId + ".extension",
+                    Path = extElementPath + ".extension",
+                    Slicing = new()
+                    {
+                        Discriminator = [
+                            new()
+                            {
+                                Type = ElementDefinition.DiscriminatorType.Value,
+                                Path = "url",
+                            }
+                        ],
+                    },
+                    Max = "*",
+                });
+
+                extSd.Differential.Element.Add(new()
+                {
+                    ElementId = extElementId + ".extension:_datatype",
+                    Path = extElementPath + ".extension",
+                    SliceName = "_datatype",
+                    Short = $"Data type name for {element.Id} from FHIR {sourcePackageSupport.Package.ShortName}",
+                    Definition = $"Data type name for {element.Id} from FHIR {sourcePackageSupport.Package.ShortName}",
+                    Min = 1,
+                    Max = "1",
+                    Type = [
+                        new()
+                        {
+                            Code = "Extension",
+                            Profile = ["http://hl7.org/fhir/StructureDefinition/_datatype"],
+                        }
+                    ],
+                });
+
+                addedEdExt = true;
+            }
+
+            // resolve this structure
+            DbStructureDefinition? etSd = DbStructureDefinition.SelectSingle(
+                _db!.DbConnection,
+                FhirPackageKey: sourcePackageSupport.Package.Key,
+                Name: typeName);
+
+            if (etSd == null)
             {
                 continue;
             }
 
-            // check to see if there is a parent
-            bool hasParentPath = false;
-            string parentElementPath = string.Empty;
+            // get the elements for this structure
+            List<DbElement> etElements = DbElement.SelectList(
+                _db!.DbConnection,
+                StructureKey: etSd.Key,
+                orderByProperties: [nameof(DbElement.ResourceFieldOrder)]);
 
-            if ((element.ParentElementKey != null) &&
-                elementProjectionDict.TryGetValue(element.ParentElementKey.Value, out List<DbGraphSd.DbElementRow>? parentProjection) &&
-                (parentProjection?.FirstOrDefault()?.KeyCell?.Element is DbElement parentElement))
+            // iterate over the elements to add them to the extension
+            foreach (DbElement etElement in etElements)
             {
-                if (extPathByElementKey.TryGetValue(parentElement.Key, out string? parentExtPath))
-                {
-                    parentElementPath = parentExtPath;
-                    hasParentPath = true;
-                }
+                addElementToExtension(
+                    extSd,
+                    $"{extElementId}.extension:{etElement.Path}",
+                    $"{extElementPath}.extension",
+                    sourcePackageSupport,
+                    targetPackageSupport,
+                    sd,
+                    etElement,
+                    relevantComparisons,
+                    xverValueSets);
             }
 
-            string extensionElementPath = hasParentPath
-                ? $"{parentElementPath}.extension:{element.Name}"
-                : "Extension";
-
-            extPathByElementKey[element.Key] = extensionElementPath;
-
-            ElementDefinition extensionEd = new()
-            {
-                Path = extensionElementPath,
-                Min = element.MinCardinality,
-                Max = element.MaxCardinalityString,
-                Short = element.Short,
-                Definition = element.Definition,
-            };
-
-            ElementDefinition? extensionEdValue = null;
-
-            // check to see if we are adding a value type
-            if (element.ChildElementCount == 0)
-            {
-                extensionEdValue = new()
-                {
-                    Path = extensionElementPath + ".value[x]",
-                    Short = element.Short,
-                    Definition = element.Definition,
-                    Type = [],
-                };
-
-                // build the value types
-                List<DbElementType> valueTypes = DbElementType.SelectList(
-                    _db!.DbConnection,
-                    ElementKey: element.Key);
-
-                Dictionary<string, ElementDefinition.TypeRefComponent> edValueTypes = [];
-
-                foreach (DbElementType valueType in valueTypes)
-                {
-                    //// check for a type that is not allowed
-                    //if (!allowedExtensionTypes.Contains(valueType.TypeName!))
-                    //{
-                    //    continue;
-                    //}
-
-                    if (valueType.TypeName == null)
-                    {
-                        continue;
-                    }
-
-                    if (edValueTypes.TryGetValue(valueType.TypeName, out ElementDefinition.TypeRefComponent? edValueType))
-                    {
-                        if (valueType.TypeProfile != null)
-                        {
-                            edValueType.ProfileElement.Add(new Canonical(valueType.TypeProfile));
-                        }
-
-                        if (valueType.TargetProfile != null)
-                        {
-                            edValueType.TargetProfileElement.Add(new Canonical(valueType.TargetProfile));
-                        }
-
-                        continue;
-                    }
-
-                    // create a new type reference
-                    edValueType = new()
-                    {
-                        Code = valueType.TypeName,
-                        ProfileElement = valueType.TypeProfile == null ? [] : [new Canonical(valueType.TypeProfile)],
-                        TargetProfileElement = valueType.TargetProfile == null ? [] : [new Canonical(valueType.TargetProfile)],
-                    };
-                    edValueTypes.Add(valueType.TypeName, edValueType);
-
-
-                    // add the type to the extension
-                    extensionEdValue.Type.Add(new()
-                    {
-                        Code = valueType.TypeName,
-                        ProfileElement = valueType.TypeProfile == null ? [] : [new Canonical(valueType.TypeProfile)],
-                        TargetProfileElement = valueType.TargetProfile == null ? [] : [new Canonical(valueType.TargetProfile)],
-                    });
-                }
-            }
-
-            // add to our structure
-            sd.Differential.Element.Add(extensionEd);
-
-            if (extensionEdValue != null)
-            {
-                sd.Differential.Element.Add(extensionEdValue);
-            }
         }
 
-        return sd;
+        // process allowed and replaceable types
+        foreach (string typeName in extAllowedTypes)
+        {
+            if (usedTypes.Contains(typeName))
+            {
+                continue;
+            }
+
+            // add the value element if we are supposed to
+            if (!addedEdValue)
+            {
+                extSd.Differential.Element.Add(extensionEdValue);
+                addedEdValue = true;
+            }
+
+            // consolidate profiles
+            List<string> typeProfiles = collectedValueTypes[typeName].Select(t => t.TypeProfile).Where(t => t != null)!.ToList<string>();
+            List<string> targetProfiles = collectedValueTypes[typeName].Select(t => t.TargetProfile).Where(t => t != null)!.ToList<string>();
+
+            // create a new type reference
+            ElementDefinition.TypeRefComponent? edValueType = new()
+            {
+                Code = typeName,
+                ProfileElement = typeProfiles.Select(v => new Canonical(v)).ToList(),
+                TargetProfileElement = targetProfiles.Select(v => new Canonical(v)).ToList(),
+            };
+
+            extensionEdValue.Type.Add(edValueType);
+
+            // check to see if we use the type to contain data from another type too (need extensions)
+            if (extReplaceableTypes.TryGetValue(typeName, out List<string>? replaceableTypes))
+            {
+                if (!addedEdValueExtension)
+                {
+                    extSd.Differential.Element.Add(new()
+                    {
+                        ElementId = extElementId + ".value[x].extension",
+                        Path = extElementPath + ".value[x].extension",
+                        Slicing = new()
+                        {
+                            Discriminator = [
+                                new()
+                            {
+                                Type = ElementDefinition.DiscriminatorType.Value,
+                                Path = "url",
+                            }
+                            ],
+                        },
+                        Max = "*",
+                    });
+
+                    extSd.Differential.Element.Add(new()
+                    {
+                        ElementId = extElementId + ".value[x].extension:_datatype",
+                        Path = extElementPath + ".value[x].extension",
+                        SliceName = "_datatype",
+                        Short = $"Data type name for {element.Id} from FHIR {sourcePackageSupport.Package.ShortName}",
+                        Definition = $"Data type name for {element.Id} from FHIR {sourcePackageSupport.Package.ShortName}",
+                        Min = 0,
+                        Max = "1",
+                        Type = [
+                            new()
+                        {
+                            Code = "Extension",
+                            Profile = ["http://hl7.org/fhir/StructureDefinition/_datatype"],
+                        }
+                        ],
+                    });
+
+                    addedEdValueExtension = true;
+                }
+
+                if ((replaceableTypes.Count == 1) &&
+                    (extEdValueExtension == null))
+                {
+                    extEdValueExtension = new()
+                    {
+                        ElementId = extElementId + ".value[x].extension:_datatype.value[x]",
+                        Path = extElementPath + ".value[x].extension.value[x]",
+                        Min = 1,
+                        Max = "1",
+                        Type = [
+                            new()
+                            {
+                                Code = "string",
+                            }
+                        ],
+                        Fixed = new FhirString(replaceableTypes.First()),
+                    };
+
+                    extSd.Differential.Element.Add(extEdValueExtension);
+                }
+                else if (extEdValueExtension == null)
+                {
+                    extEdValueExtension = new()
+                    {
+                        ElementId = extElementId + ".value[x].extension:_datatype.value[x]",
+                        Path = extElementPath + ".value[x].extension.value[x]",
+                        Short = string.Join('|', replaceableTypes),
+                        Definition = $"Must be one of: {string.Join(", ", replaceableTypes)}",
+                        Min = 1,
+                        Max = "1",
+                        Type = [
+                            new()
+                            {
+                                Code = "string",
+                            }
+                        ],
+                    };
+
+                    extSd.Differential.Element.Add(extEdValueExtension);
+                }
+                else
+                {
+                    extEdValueExtension.Short += "|" + string.Join('|', replaceableTypes);
+                    extEdValueExtension.Definition = $"Must be one of: {extEdValueExtension.Short.Replace("|", ", ")}";
+                    extEdValueExtension.Fixed = null;
+                }
+            }
+
+            usedTypes.Add(typeName);
+        }
+
+        // check for any missed replaceable types
+        foreach ((string typeName, List<string> replaceableTypes) in extReplaceableTypes)
+        {
+            if (usedTypes.Contains(typeName))
+            {
+                continue;
+            }
+
+            // add the value element if we are supposed to
+            if (!addedEdValue)
+            {
+                extSd.Differential.Element.Add(extensionEdValue);
+                addedEdValue = true;
+            }
+
+            // create a new type reference
+            ElementDefinition.TypeRefComponent? edValueType = new()
+            {
+                Code = typeName,
+            };
+
+            extensionEdValue.Type.Add(edValueType);
+
+            if (!addedEdValueExtension)
+            {
+                extSd.Differential.Element.Add(new()
+                {
+                    ElementId = extElementId + ".value[x].extension",
+                    Path = extElementPath + ".value[x].extension",
+                    Slicing = new()
+                    {
+                        Discriminator = [
+                            new()
+                            {
+                                Type = ElementDefinition.DiscriminatorType.Value,
+                                Path = "url",
+                            }
+                        ],
+                    },
+                    Max = "*",
+                });
+
+                extSd.Differential.Element.Add(new()
+                {
+                    ElementId = extElementId + ".value[x].extension:_datatype",
+                    Path = extElementPath + ".value[x].extension",
+                    SliceName = "_datatype",
+                    Short = $"Data type name for {element.Id} from FHIR {sourcePackageSupport.Package.ShortName}",
+                    Definition = $"Data type name for {element.Id} from FHIR {sourcePackageSupport.Package.ShortName}",
+                    Min = 0,
+                    Max = "1",
+                    Type = [
+                        new()
+                        {
+                            Code = "Extension",
+                            Profile = ["http://hl7.org/fhir/StructureDefinition/_datatype"],
+                        }
+                    ],
+                });
+
+                addedEdValueExtension = true;
+            }
+
+            if ((replaceableTypes.Count == 1) &&
+                (extEdValueExtension == null))
+            {
+                extEdValueExtension = new()
+                {
+                    ElementId = extElementId + ".value[x].extension:_datatype.value[x]",
+                    Path = extElementPath + ".value[x].extension.value[x]",
+                    Min = 1,
+                    Max = "1",
+                    Type = [
+                        new()
+                            {
+                                Code = "string",
+                            }
+                    ],
+                    Fixed = new FhirString(replaceableTypes.First()),
+                };
+
+                extSd.Differential.Element.Add(extEdValueExtension);
+            }
+            else if (extEdValueExtension == null)
+            {
+                extEdValueExtension = new()
+                {
+                    ElementId = extElementId + ".value[x].extension:_datatype.value[x]",
+                    Path = extElementPath + ".value[x].extension.value[x]",
+                    Short = string.Join('|', replaceableTypes),
+                    Definition = $"Must be one of: {string.Join(", ", replaceableTypes)}",
+                    Min = 1,
+                    Max = "1",
+                    Type = [
+                        new()
+                            {
+                                Code = "string",
+                            }
+                    ],
+                };
+
+                extSd.Differential.Element.Add(extEdValueExtension);
+            }
+            else
+            {
+                extEdValueExtension.Short += "|" + string.Join('|', replaceableTypes);
+                extEdValueExtension.Definition = $"Must be one of: {extEdValueExtension.Short.Replace("|", ", ")}";
+                extEdValueExtension.Fixed = null;
+            }
+
+            usedTypes.Add(typeName);
+        }
+
+
+
+
+        //Dictionary<string, List<string>> valueExtendedDatatypes = [];
+        //Dictionary<string, ElementDefinition.TypeRefComponent> edValueTypes = [];
+
+        //// iterate over the types for this element
+        //foreach (DbElementType valueType in elementValueTypes)
+        //{
+        //    if (valueType.TypeName == null)
+        //    {
+        //        continue;
+        //    }
+
+        //    string typeName = valueType.TypeName;
+        //    bool extendedType = !targetPackageSupport.AllowedExtensionTypes.Contains(valueType.TypeName!);
+
+        //    // check for a type that is not allowed but has a fallback
+        //    if (extendedType &&
+        //        FhirTypeMappings.PrimitiveTypeFallbacks.TryGetValue(typeName, out string? replacementType))
+        //    {
+        //        // add a flag so we create '_datatype' extensions correctly
+        //        if (!valueExtendedDatatypes.TryGetValue(replacementType, out List<string>? extendedTypes))
+        //        {
+        //            extendedTypes = [];
+        //            valueExtendedDatatypes.Add(replacementType, extendedTypes);
+        //        }
+        //        extendedTypes.Add(typeName);
+
+        //        // update the type and continue to the standard addition code
+        //        typeName = replacementType;
+        //    }
+        //    // check for any other types that are not allowed
+        //    else if (extendedType)
+        //    {
+        //        extSd.Differential.Element.Add(new()
+        //        {
+        //            ElementId = extElementPath + ".extension",
+        //            Path = extElementPath + ".extension",
+        //            Slicing = new()
+        //            {
+        //                Discriminator = [
+        //                new() {
+        //                    Type = ElementDefinition.DiscriminatorType.Value,
+        //                    Path = "url",
+        //                }
+        //                ],
+        //            },
+        //            Max = "*",
+        //        });
+
+
+        //        //                {
+        //        //    "id": "Extension.extension:_datatype",
+        //        //    "path": "Extension.extension",
+        //        //    "sliceName": "_datatype",
+        //        //    "short": "DataType name 'CodeableReference' from R5",
+        //        //    "definition": "DataType name 'CodeableReference' from R5",
+        //        //    "min": 1,
+        //        //    "max": "1",
+        //        //    "type": [
+        //        //        {
+        //        //            "code": "Extension",
+        //        //            "profile": [
+        //        //                "http://hl7.org/fhir/StructureDefinition/_datatype"
+        //        //            ]
+        //        //        }
+        //        //    ]
+        //        //},
+        //        //{
+        //        //    "id": "Extension.extension:_datatype.value[x]",
+        //        //    "path": "Extension.extension.value[x]",
+        //        //    "min": 1,
+        //        //    "type": [
+        //        //        {
+        //        //            "code": "string"
+        //        //        }
+        //        //    ],
+        //        //    "fixedString": "CodeableReference"
+        //        //},
+
+
+
+        //        string etvId = elementValueTypes.Count == 1
+        //            ? $"{extElementPath}.extension"
+        //            : $"{extElementPath}.extension:value.extension";
+
+        //        string etvPath = elementValueTypes.Count == 1
+        //            ? $"{extElementPath}.extension"
+        //            : $"{extElementPath}.extension:value.extension";
+
+        //        // need to add this element datatype structure as extension components (ensure we only add this once)
+        //        extSd.Differential.Element.Add(new()
+        //        {
+        //            ElementId = $"{extElementPath}.extension:value",
+        //            Path = $"{extElementPath}.extension",
+        //            Short = edShortText,
+        //            Definition = edDefinition,
+        //            Comment = edComment,
+        //            Min = element.MinCardinality,
+        //            Max = element.MaxCardinalityString,
+        //            IsModifier = element.IsModifier,
+        //        });
+
+        //        extSd.Differential.Element.Add(new()
+        //        {
+        //            Path = $"{extElementPath}.extension:value._datatype",
+        //            Short = $"Data type name for {et} from FHIR {targetPackageSupport.Package.ShortName}",
+        //            Min = 1,
+        //            Max = "1",
+        //        });
+
+
+        //        // add this extended type as a 'value'
+        //        if (!valueExtendedDatatypes.TryGetValue("value", out List<string>? vts))
+        //        {
+        //            vts = [];
+        //            valueExtendedDatatypes.Add("value", vts);
+        //        }
+        //        vts.Add(typeName);
+
+
+        //        // do not continue processing this type
+        //        continue;
+        //    }
+
+        //    // check if this type has already been added
+        //    if (edValueTypes.TryGetValue(typeName, out ElementDefinition.TypeRefComponent? edValueType))
+        //    {
+        //        if (valueType.TypeProfile != null)
+        //        {
+        //            edValueType.ProfileElement.Add(new Canonical(valueType.TypeProfile));
+        //        }
+
+        //        if (valueType.TargetProfile != null)
+        //        {
+        //            edValueType.TargetProfileElement.Add(new Canonical(valueType.TargetProfile));
+        //        }
+
+        //        // do not continue processing this type
+        //        continue;
+        //    }
+
+        //    // create a new type reference
+        //    edValueType = new()
+        //    {
+        //        Code = typeName,
+        //        ProfileElement = valueType.TypeProfile == null ? [] : [new Canonical(valueType.TypeProfile)],
+        //        TargetProfileElement = valueType.TargetProfile == null ? [] : [new Canonical(valueType.TargetProfile)],
+        //    };
+        //    edValueTypes.Add(typeName, edValueType);
+
+
+        //    // add the type to the extension
+        //    extensionEdValue.Type.Add(new()
+        //    {
+        //        Code = typeName,
+        //        ProfileElement = valueType.TypeProfile == null ? [] : [new Canonical(valueType.TypeProfile)],
+        //        TargetProfileElement = valueType.TargetProfile == null ? [] : [new Canonical(valueType.TargetProfile)],
+        //    });
+        //}
+
+        //// TODO: process extended types to add _datatype extension slots
+        //foreach ((string typeName, List<string> extendedTypes) in valueExtendedDatatypes)
+        //{
+        //    if (typeName == "value")
+        //    {
+        //        if (extendedValueEd == null)
+        //        {
+        //            continue;
+        //        }
+
+        //        foreach (string et in extendedTypes)
+        //        {
+        //            extSd.Differential.Element.Add(new()
+        //            {
+        //                Path = $"{extElementPath}.extension:value._datatype",
+        //                Short = $"Data type name for {et} from FHIR {targetPackageSupport.Package.ShortName}",
+        //                Min = 1,
+        //                Max = "1",
+        //            });
+        //        }
+        //    }
+        //}
+
+        // TODO: sort the elements so they are in the order we want them
     }
-
-
-
 
 
 

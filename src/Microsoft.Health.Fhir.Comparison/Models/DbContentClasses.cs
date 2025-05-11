@@ -14,6 +14,18 @@ using Microsoft.Data.Sqlite;
 
 namespace Microsoft.Health.Fhir.Comparison.Models;
 
+
+[CgSQLiteTable(tableName: "ExtensionSubstitutions")]
+public partial class DbExtensionSubstitution
+{
+    [CgSQLiteKey]
+    public int Key { get; set; } = -1;
+
+    public required string ReplacementUrl { get; set; }
+    public required string SourceElementId { get; set; }
+    public required string Context { get; set; }
+}
+
 [CgSQLiteBaseClass]
 public abstract class DbPackageContent
 {
@@ -248,6 +260,8 @@ public partial class DbStructureDefinition : DbCanonicalResource
 [CgSQLiteIndex(nameof(StructureKey))]
 [CgSQLiteIndex(nameof(StructureKey), nameof(Id))]
 [CgSQLiteIndex(nameof(StructureKey), nameof(Path))]
+[CgSQLiteIndex(nameof(StructureKey), nameof(ResourceFieldOrder))]
+[CgSQLiteIndex(nameof(ParentElementKey), nameof(ResourceFieldOrder))]
 [CgSQLiteIndex(nameof(BindingValueSetKey))]
 public partial class DbElement : DbPackageContent
 {
@@ -279,10 +293,12 @@ public partial class DbElement : DbPackageContent
     public required string? BindingValueSet { get; set; }
     public required int? BindingValueSetKey { get; set; }
     public required int AdditionalBindingCount { get; set; }
+    public required string? BindingDescription { get; set; }
 
     public required bool IsInherited { get; set; }
     public required string? BasePath { get; set; }
     public required bool IsSimpleType { get; set; }
+    public required bool IsModifier { get; set; }
 
 
     [CgSQLiteIgnore]
@@ -360,10 +376,12 @@ public partial class DbElement : DbPackageContent
         ValueSetBindingStrength = null,
         BindingValueSet = null,
         BindingValueSetKey = null,
+        BindingDescription = null,
         AdditionalBindingCount = 0,
         IsInherited = false,
         BasePath = null,
         IsSimpleType = false,
+        IsModifier = false,
     };
 }
 

@@ -85,6 +85,7 @@ public class ComparisonDatabase : IDisposable
     private int _dbElementTypeGroupComparisonIndex = 0;
     private int _dbElementComparisonIndex = 0;
     private int _dbUnresolvedElementComparisonIndex = 0;
+    private int _dbExtensionSubstitutionIndex = 0;
 
     public ComparisonDatabase(
         DefinitionCollection[] definitions,
@@ -212,6 +213,7 @@ public class ComparisonDatabase : IDisposable
     public int GetElementTypeGroupComparisonKey() => Interlocked.Increment(ref _dbElementTypeGroupComparisonIndex);
     public int GetElementComparisonKey() => Interlocked.Increment(ref _dbElementComparisonIndex);
     public int GetUnresolvedElementComparisonKey() => Interlocked.Increment(ref _dbUnresolvedElementComparisonIndex);
+    public int GetExtensionSubstitutionKey() => Interlocked.Increment(ref _dbExtensionSubstitutionIndex);
 
     private void getCurrentIndexValues()
     {
@@ -234,6 +236,8 @@ public class ComparisonDatabase : IDisposable
             _dbElementTypeComparisonIndex = DbElementTypeComparison.SelectMaxKey(_dbConnection) ?? 0;
             _dbElementComparisonIndex = DbElementComparison.SelectMaxKey(_dbConnection) ?? 0;
             _dbUnresolvedElementComparisonIndex = DbUnresolvedElementComparison.SelectMaxKey(_dbConnection) ?? 0;
+
+            _dbExtensionSubstitutionIndex = DbExtensionSubstitution.SelectMaxKey(_dbConnection) ?? 0;
         }
         catch (Exception ex)
         {
@@ -309,6 +313,8 @@ public class ComparisonDatabase : IDisposable
                     DbElementTypeComparison.Insert(targetDb, DbElementTypeComparison.SelectList(sourceDb));
                     DbElementComparison.Insert(targetDb, DbElementComparison.SelectList(sourceDb));
                     DbUnresolvedElementComparison.Insert(targetDb, DbUnresolvedElementComparison.SelectList(sourceDb));
+
+                    DbExtensionSubstitution.Insert(targetDb, DbExtensionSubstitution.SelectList(sourceDb));
                 }
                 break;
 
@@ -332,6 +338,8 @@ public class ComparisonDatabase : IDisposable
                     DbElementTypeComparison.Insert(targetDb, DbElementTypeComparison.SelectList(sourceDb));
                     DbElementComparison.Insert(targetDb, DbElementComparison.SelectList(sourceDb));
                     DbUnresolvedElementComparison.Insert(targetDb, DbUnresolvedElementComparison.SelectList(sourceDb));
+
+                    DbExtensionSubstitution.Insert(targetDb, DbExtensionSubstitution.SelectList(sourceDb));
                 }
                 break;
         }
@@ -367,6 +375,8 @@ public class ComparisonDatabase : IDisposable
                     DbElementTypeComparison.DropTable(db);
                     DbElementComparison.DropTable(db);
                     DbUnresolvedElementComparison.DropTable(db);
+
+                    DbExtensionSubstitution.DropTable(db);
                 }
                 break;
 
@@ -390,6 +400,8 @@ public class ComparisonDatabase : IDisposable
                     DbElementTypeComparison.DropTable(db);
                     DbElementComparison.DropTable(db);
                     DbUnresolvedElementComparison.DropTable(db);
+
+                    DbExtensionSubstitution.DropTable(db);
                 }
                 break;
         }
@@ -448,9 +460,40 @@ public class ComparisonDatabase : IDisposable
                     DbElementTypeComparison.CreateTable(db);
                     DbElementComparison.CreateTable(db);
                     DbUnresolvedElementComparison.CreateTable(db);
+
+                    DbExtensionSubstitution.CreateTable(db);
                 }
                 break;
         }
+    }
+
+    private void loadKnownSubstitutions()
+    {
+        List<DbExtensionSubstitution> substitutions = [
+            new()
+            {
+                Key = GetExtensionSubstitutionKey(),
+                ReplacementUrl = "http://hl7.org/fhir/StructureDefinition/patient-animal",
+                SourceElementId = "Patient.animal",
+                Context = "Patient",
+            },
+            new()
+            {
+                Key = GetExtensionSubstitutionKey(),
+                ReplacementUrl = "http://hl7.org/fhir/StructureDefinition/conceptmap-notarget-comment",
+                SourceElementId = "ConceptMap.group.element.target.comment",
+                Context = "ConceptMap.group.element",
+            },
+            //new()
+            //{
+            //    Key = GetExtensionSubstitutionKey(),
+            //    ReplacementUrl = "http://hl7.org/fhir/guide-parameter-code",
+            //    SourceElementId = "ImplementationGuide.definition.parameter",
+            //    Context = "ImplementationGuide.definition.parameter",
+            //},
+        ];
+
+        substitutions.Insert(_dbConnection);
     }
 
     /// <summary>
@@ -560,6 +603,8 @@ public class ComparisonDatabase : IDisposable
                 _dbConnection.Insert(dbPairRtoL);
             }
         }
+
+        loadKnownSubstitutions();
     }
 
     public bool TryLoadFhirCrossVersionMaps(string crossVersionMapSourcePath)
@@ -2357,11 +2402,13 @@ public class ComparisonDatabase : IDisposable
                 ValueSetBindingStrength = ed.Binding?.Strength,
                 BindingValueSet = ed.Binding?.ValueSet,
                 BindingValueSetKey = bindingVsKey,
+                BindingDescription = ed.Binding?.Description,
                 AdditionalBindingCount = additionalBindingCount,
                 CollatedTypeLiteral = typeGroupLiteral,
                 IsInherited = isInherited,
                 BasePath = basePath,
                 IsSimpleType = ed.cgIsSimple(),
+                IsModifier = ed.IsModifier == true,
             };
 
             dbElements.Add(dbStructure.Key.ToString() + ":" + ed.ElementId, dbElement);

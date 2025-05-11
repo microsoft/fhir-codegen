@@ -154,6 +154,20 @@ public class FhirTypeMappings
         new("xhtml", "xhtml", CMR.Equivalent, CMR.Equivalent),
     ];
 
+    internal static Dictionary<string, string> PrimitiveTypeFallbacks = new()
+    {
+        { "canonical", "uri" },
+        { "code", "string" },
+        { "integer64", "string" },
+        { "markdown", "string" },
+        { "oid", "uri" },
+        { "positiveInt", "integer" },
+        { "unsignedInt", "integer" },
+        { "url", "uri" },
+        { "uuid", "uri" },
+        { "xhtml", "uri" },
+    };
+
     internal static ILookup<(string, string), CodeGenTypeMapping> PrimitiveMappingLookup =
         PrimitiveMappings.ToLookup(m => (m.SourceType, m.TargetType), m => m);
 
