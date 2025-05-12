@@ -753,6 +753,8 @@ public class XVerProcessor
         Dictionary<int, DbFhirPackage> packageDict = packageSupports.Select(ps => ps.Package).ToDictionary(p => p.Key);
         DbFhirPackage focusPackage = packageSupports[focusPackageIndex].Package;
 
+        int fileIndex = 0;
+
         // iterate over the value sets
         foreach (((int sourceKey, int targetPackageId), StructureDefinition sd) in xverExtensions)
         {
@@ -767,8 +769,18 @@ public class XVerProcessor
 
             // write the value set to a file
             string filename = $"StructureDefinition-{sd.Id}.json";
+
+            //if (sd.Id.Length > 50)
+            //{
+            //    int maxLen = Math.Min(45, sd.Id.Length-1);
+            //    int stopChar = sd.Id.LastIndexOf('.', maxLen, maxLen);
+
+            //    filename = $"StructureDefinition-{sd.Id.Substring(0, stopChar)}-{fileIndex:D6}.json";
+            //}
+
             string path = Path.Combine(dir, filename);
             File.WriteAllText(path, sd.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+            fileIndex++;
         }
     }
 
@@ -1313,6 +1325,61 @@ public class XVerProcessor
     //    return;
     //}
 
+    private string collapsePathForId(string path)
+    {
+        string pathClean = path.Replace("[x]", string.Empty);
+        string[] components = pathClean.Replace("[x]", string.Empty).Split('.');
+        switch (components.Length)
+        {
+            case 0:
+                return pathClean;
+
+            case 1:
+                return pathClean;
+
+            case 2:
+                {
+                    if (pathClean.Length > 45)
+                    {
+                        string rName = (components[0].Length > 20)
+                            ? components[0].Where(c => char.IsUpper(c)).ToString()!
+                            : components[0];
+
+                        string eName = (components[1].Length > 20)
+                            ? components[1].Where(c => char.IsUpper(c)).ToString()!
+                            : components[1];
+
+                        return rName + "." + eName;
+                    }
+
+                    return pathClean;
+                }
+
+            default:
+                {
+                    // use the full first and last, and one character from each in-between
+
+                    if (components[0].Length > 20)
+                    {
+                        components[0] = components[0].Where(c => char.IsUpper(c)).ToString()!;
+                    }
+
+                    for (int i = 1; i < components.Length - 2; i++)
+                    {
+                        components[i] = components[i][0].ToString();
+                    }
+
+                    if (components[^1].Length > 20)
+                    {
+                        components[^1] = components[^1].Where(c => char.IsUpper(c)).ToString()!;
+                    }
+
+                    return string.Join('.', components);
+                }
+
+        }
+    }
+
     private StructureDefinition? createExtensionSd(
         PackageXverSupport sourcePackageSupport,
         PackageXverSupport targetPackageSupport,
@@ -1327,7 +1394,7 @@ public class XVerProcessor
         HashSet<string> basicElementPaths = targetPackageSupport.BasicElements;
 
         //string sdId = $"{sourcePackage.ShortName}-{element.Path}-for-{targetPackage.ShortName}";
-        string sdId = $"extension-{element.Path}";
+        string sdId = $"extension-{collapsePathForId(element.Path)}";
 
         bool isRootElement = element.ResourceFieldOrder == 0;
         int elementPathLen = element.Path.Length;
@@ -1343,7 +1410,7 @@ public class XVerProcessor
         StructureDefinition extSd = new()
         {
             Id = sdId,
-            Url = $"http://hl7.org/fhir/uv/xver/{sourcePackage.FhirVersionShort}/StructureDefinition/{sdId}",
+            Url = $"http://hl7.org/fhir/uv/xver/{sourcePackage.FhirVersionShort}/StructureDefinition/extension-{element.Path.Replace("[x]", string.Empty)}",
             Name = sdId,
             Version = _crossDefinitionVersion,
             DateElement = new FhirDateTime(DateTimeOffset.Now),
@@ -1371,12 +1438,23 @@ public class XVerProcessor
             extSd,
             "Extension",
             "Extension",
+            null,
             sourcePackageSupport,
             targetPackageSupport,
             sd,
             element,
             relevantComparisons,
             xverValueSets);
+
+        // fix the URL in the definition (needs to be last element)
+        extSd.Differential.Element.Add(new()
+        {
+            ElementId = "Extension.url",
+            Path = "Extension.url",
+            Min = 1,
+            Max = "1",
+            Fixed = new FhirUri(extSd.Url)
+        });
 
         return extSd;
     }
@@ -1422,6 +1500,7 @@ public class XVerProcessor
         StructureDefinition extSd,
         string extElementId,
         string extElementPath,
+        string? sliceName,
         PackageXverSupport sourcePackageSupport,
         PackageXverSupport targetPackageSupport,
         DbStructureDefinition sd,
@@ -1459,6 +1538,7 @@ public class XVerProcessor
         {
             ElementId = extElementId,
             Path = extElementPath,
+            SliceName = sliceName,
             Short = edShortText,
             Definition = edDefinition,
             Comment = edComment,
@@ -1485,7 +1565,10 @@ public class XVerProcessor
                             Path = "url",
                         }
                     ],
+                    Ordered = false,
+                    Rules = ElementDefinition.SlicingRules.Closed,
                 },
+                Min = 0,
                 Max = "*",
             });
 
@@ -1500,6 +1583,7 @@ public class XVerProcessor
                     extSd,
                     $"{extElementId}.extension:{childElement.Name}",
                     $"{extElementPath}.extension",
+                    childElement.Name,
                     sourcePackageSupport,
                     targetPackageSupport,
                     sd,
@@ -1519,7 +1603,6 @@ public class XVerProcessor
         }
 
         bool addedEdExt = false;
-
 
         bool addedEdValue = false;
         bool addedEdValueExtension = false;
@@ -1634,6 +1717,23 @@ public class XVerProcessor
                     ],
                 });
 
+                //extSd.Differential.Element.Add(new()
+                //{
+                //    ElementId = extElementId + ".extension:_datatype.url",
+                //    Path = extElementPath + ".extension.url",
+                //    Short = $"Source of the definition for the extension code - a logical name or a URL.",
+                //    Definition = $"Data type name for {element.Id} from FHIR {sourcePackageSupport.Package.ShortName}",
+                //    Min = 1,
+                //    Max = "1",
+                //    Type = [
+                //        new()
+                //        {
+                //            Code = "Extension",
+                //            Profile = ["http://hl7.org/fhir/StructureDefinition/_datatype"],
+                //        }
+                //    ],
+                //});
+
                 addedEdExt = true;
             }
 
@@ -1659,8 +1759,9 @@ public class XVerProcessor
             {
                 addElementToExtension(
                     extSd,
-                    $"{extElementId}.extension:{etElement.Path}",
+                    $"{extElementId}.extension:{etElement.Name}",
                     $"{extElementPath}.extension",
+                    etElement.Name,
                     sourcePackageSupport,
                     targetPackageSupport,
                     sd,
@@ -1907,192 +2008,7 @@ public class XVerProcessor
             usedTypes.Add(typeName);
         }
 
-
-
-
-        //Dictionary<string, List<string>> valueExtendedDatatypes = [];
-        //Dictionary<string, ElementDefinition.TypeRefComponent> edValueTypes = [];
-
-        //// iterate over the types for this element
-        //foreach (DbElementType valueType in elementValueTypes)
-        //{
-        //    if (valueType.TypeName == null)
-        //    {
-        //        continue;
-        //    }
-
-        //    string typeName = valueType.TypeName;
-        //    bool extendedType = !targetPackageSupport.AllowedExtensionTypes.Contains(valueType.TypeName!);
-
-        //    // check for a type that is not allowed but has a fallback
-        //    if (extendedType &&
-        //        FhirTypeMappings.PrimitiveTypeFallbacks.TryGetValue(typeName, out string? replacementType))
-        //    {
-        //        // add a flag so we create '_datatype' extensions correctly
-        //        if (!valueExtendedDatatypes.TryGetValue(replacementType, out List<string>? extendedTypes))
-        //        {
-        //            extendedTypes = [];
-        //            valueExtendedDatatypes.Add(replacementType, extendedTypes);
-        //        }
-        //        extendedTypes.Add(typeName);
-
-        //        // update the type and continue to the standard addition code
-        //        typeName = replacementType;
-        //    }
-        //    // check for any other types that are not allowed
-        //    else if (extendedType)
-        //    {
-        //        extSd.Differential.Element.Add(new()
-        //        {
-        //            ElementId = extElementPath + ".extension",
-        //            Path = extElementPath + ".extension",
-        //            Slicing = new()
-        //            {
-        //                Discriminator = [
-        //                new() {
-        //                    Type = ElementDefinition.DiscriminatorType.Value,
-        //                    Path = "url",
-        //                }
-        //                ],
-        //            },
-        //            Max = "*",
-        //        });
-
-
-        //        //                {
-        //        //    "id": "Extension.extension:_datatype",
-        //        //    "path": "Extension.extension",
-        //        //    "sliceName": "_datatype",
-        //        //    "short": "DataType name 'CodeableReference' from R5",
-        //        //    "definition": "DataType name 'CodeableReference' from R5",
-        //        //    "min": 1,
-        //        //    "max": "1",
-        //        //    "type": [
-        //        //        {
-        //        //            "code": "Extension",
-        //        //            "profile": [
-        //        //                "http://hl7.org/fhir/StructureDefinition/_datatype"
-        //        //            ]
-        //        //        }
-        //        //    ]
-        //        //},
-        //        //{
-        //        //    "id": "Extension.extension:_datatype.value[x]",
-        //        //    "path": "Extension.extension.value[x]",
-        //        //    "min": 1,
-        //        //    "type": [
-        //        //        {
-        //        //            "code": "string"
-        //        //        }
-        //        //    ],
-        //        //    "fixedString": "CodeableReference"
-        //        //},
-
-
-
-        //        string etvId = elementValueTypes.Count == 1
-        //            ? $"{extElementPath}.extension"
-        //            : $"{extElementPath}.extension:value.extension";
-
-        //        string etvPath = elementValueTypes.Count == 1
-        //            ? $"{extElementPath}.extension"
-        //            : $"{extElementPath}.extension:value.extension";
-
-        //        // need to add this element datatype structure as extension components (ensure we only add this once)
-        //        extSd.Differential.Element.Add(new()
-        //        {
-        //            ElementId = $"{extElementPath}.extension:value",
-        //            Path = $"{extElementPath}.extension",
-        //            Short = edShortText,
-        //            Definition = edDefinition,
-        //            Comment = edComment,
-        //            Min = element.MinCardinality,
-        //            Max = element.MaxCardinalityString,
-        //            IsModifier = element.IsModifier,
-        //        });
-
-        //        extSd.Differential.Element.Add(new()
-        //        {
-        //            Path = $"{extElementPath}.extension:value._datatype",
-        //            Short = $"Data type name for {et} from FHIR {targetPackageSupport.Package.ShortName}",
-        //            Min = 1,
-        //            Max = "1",
-        //        });
-
-
-        //        // add this extended type as a 'value'
-        //        if (!valueExtendedDatatypes.TryGetValue("value", out List<string>? vts))
-        //        {
-        //            vts = [];
-        //            valueExtendedDatatypes.Add("value", vts);
-        //        }
-        //        vts.Add(typeName);
-
-
-        //        // do not continue processing this type
-        //        continue;
-        //    }
-
-        //    // check if this type has already been added
-        //    if (edValueTypes.TryGetValue(typeName, out ElementDefinition.TypeRefComponent? edValueType))
-        //    {
-        //        if (valueType.TypeProfile != null)
-        //        {
-        //            edValueType.ProfileElement.Add(new Canonical(valueType.TypeProfile));
-        //        }
-
-        //        if (valueType.TargetProfile != null)
-        //        {
-        //            edValueType.TargetProfileElement.Add(new Canonical(valueType.TargetProfile));
-        //        }
-
-        //        // do not continue processing this type
-        //        continue;
-        //    }
-
-        //    // create a new type reference
-        //    edValueType = new()
-        //    {
-        //        Code = typeName,
-        //        ProfileElement = valueType.TypeProfile == null ? [] : [new Canonical(valueType.TypeProfile)],
-        //        TargetProfileElement = valueType.TargetProfile == null ? [] : [new Canonical(valueType.TargetProfile)],
-        //    };
-        //    edValueTypes.Add(typeName, edValueType);
-
-
-        //    // add the type to the extension
-        //    extensionEdValue.Type.Add(new()
-        //    {
-        //        Code = typeName,
-        //        ProfileElement = valueType.TypeProfile == null ? [] : [new Canonical(valueType.TypeProfile)],
-        //        TargetProfileElement = valueType.TargetProfile == null ? [] : [new Canonical(valueType.TargetProfile)],
-        //    });
-        //}
-
-        //// TODO: process extended types to add _datatype extension slots
-        //foreach ((string typeName, List<string> extendedTypes) in valueExtendedDatatypes)
-        //{
-        //    if (typeName == "value")
-        //    {
-        //        if (extendedValueEd == null)
-        //        {
-        //            continue;
-        //        }
-
-        //        foreach (string et in extendedTypes)
-        //        {
-        //            extSd.Differential.Element.Add(new()
-        //            {
-        //                Path = $"{extElementPath}.extension:value._datatype",
-        //                Short = $"Data type name for {et} from FHIR {targetPackageSupport.Package.ShortName}",
-        //                Min = 1,
-        //                Max = "1",
-        //            });
-        //        }
-        //    }
-        //}
-
-        // TODO: sort the elements so they are in the order we want them
+        return;
     }
 
 
