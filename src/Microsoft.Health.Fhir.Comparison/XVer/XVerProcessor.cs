@@ -30,6 +30,7 @@ using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification.Snapshot;
 using static System.Net.Mime.MediaTypeNames;
+using Hl7.FhirPath.Sprache;
 
 
 
@@ -1342,11 +1343,11 @@ public class XVerProcessor
                     if (pathClean.Length > 45)
                     {
                         string rName = (components[0].Length > 20)
-                            ? components[0].Where(c => char.IsUpper(c)).ToString()!
+                            ? new string(components[0].Where(char.IsUpper).ToArray())
                             : components[0];
 
                         string eName = (components[1].Length > 20)
-                            ? components[1].Where(c => char.IsUpper(c)).ToString()!
+                            ? $"{components[1][0]}" + new string(components[1].Where(char.IsUpper).ToArray())
                             : components[1];
 
                         return rName + "." + eName;
@@ -1358,20 +1359,19 @@ public class XVerProcessor
             default:
                 {
                     // use the full first and last, and one character from each in-between
-
                     if (components[0].Length > 20)
                     {
-                        components[0] = components[0].Where(c => char.IsUpper(c)).ToString()!;
+                        components[0] = new string(components[0].Where(char.IsUpper).ToArray());
                     }
 
-                    for (int i = 1; i < components.Length - 2; i++)
+                    for (int i = 1; i < components.Length - 1; i++)
                     {
-                        components[i] = components[i][0].ToString();
+                        components[i] = $"{components[i][0]}{components[i][1]}";
                     }
 
-                    if (components[^1].Length > 20)
+                    if (components.Last().Length > 20)
                     {
-                        components[^1] = components[^1].Where(c => char.IsUpper(c)).ToString()!;
+                        components[components.Length - 1] = $"{components[components.Length - 1][0]}" + new string(components[0].Where(char.IsUpper).ToArray());
                     }
 
                     return string.Join('.', components);
