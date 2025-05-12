@@ -878,10 +878,16 @@ public class XVerProcessor
                     // if we have not hit a need for the extension yet in this direction, test the curent pair
                     if (!extensionNeeded)
                     {
-                        // only generate entire structures if there is no mappable structure in the target
-                        if (element.ResourceFieldOrder == 0)
+                        // check to see if this element has been mapped in the previous version
+                        if ((currentIndex > sourcePackageIndex) &&
+                            generatedElementKeys[currentIndex-1].Contains(element.Key))
                         {
-                            extensionNeeded = (sourceCells.Count == 0) || (sourceCells.All(c => c?.Element == null));
+                            extensionNeeded = true;
+                        }
+                        // only generate entire structures if there is no mappable structure in the target
+                        else if (element.ResourceFieldOrder == 0)
+                        {
+                            extensionNeeded = (sourceCells.Count == 0) || (sourceCells.All(c => (c?.Element == null) || (c?.RightComparison == null)));
                         }
                         // if we have no mappings, we need a new extension
                         else if (sourceCells.Count == 0)
@@ -971,10 +977,16 @@ public class XVerProcessor
                     // if we have not hit a need for the extension yet in this direction, test the curent pair
                     if (!extensionNeeded)
                     {
-                        // only generate entire structures if there is no mappable structure in the target
-                        if (element.ResourceFieldOrder == 0)
+                        // check to see if this element has been mapped in the previous version
+                        if ((currentIndex < sourcePackageIndex) &&
+                            generatedElementKeys[currentIndex + 1].Contains(element.Key))
                         {
-                            extensionNeeded = (sourceCells.Count == 0) || (sourceCells.All(c => c?.Element == null));
+                            extensionNeeded = true;
+                        }
+                        // only generate entire structures if there is no mappable structure in the target
+                        else if (element.ResourceFieldOrder == 0)
+                        {
+                            extensionNeeded = (sourceCells.Count == 0) || (sourceCells.All(c => (c?.Element == null) || (c?.LeftComparison == null)));
                         }
                         // if we have no mappings, we need a new extension
                         else if (sourceCells.Count == 0)
@@ -1366,7 +1378,10 @@ public class XVerProcessor
 
                     for (int i = 1; i < components.Length - 1; i++)
                     {
-                        components[i] = $"{components[i][0]}{components[i][1]}";
+                        if (components[i].Length > 3)
+                        {
+                            components[i] = $"{components[i][0]}{components[i][1]}";
+                        }
                     }
 
                     if (components.Last().Length > 20)

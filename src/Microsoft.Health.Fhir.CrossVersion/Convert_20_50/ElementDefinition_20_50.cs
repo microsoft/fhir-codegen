@@ -163,35 +163,64 @@ public class ElementDefinition_20_50 : ICrossVersionProcessor<ElementDefinition>
             }
         }
 
-        // check for a binding with a max value set extension
-        if ((v.Binding != null) &&
-            (v.Binding.GetExtensionValue<Canonical>(CommonDefinitions.ExtUrlMaxValueSet) is Canonical maxVs))
+        // check for a binding
+        if (v.Binding != null)
         {
-            // add an additional binding with the canonical value
-            v.Binding.Additional.Add(new()
+            // check for a Max Value Set Extension with a canonical URL
+            if (v.Binding.GetExtensionValue<Canonical>(CommonDefinitions.ExtUrlMaxValueSet) is Canonical maxValueSetCanonical)
             {
-                Purpose = ElementDefinition.AdditionalBindingPurposeVS.Maximum,
-                ValueSet = maxVs,
-            });
+                // add an additional binding with the canonical value
+                v.Binding.Additional.Add(new()
+                {
+                    Purpose = ElementDefinition.AdditionalBindingPurposeVS.Maximum,
+                    ValueSet = maxValueSetCanonical,
+                });
 
-            // remove the extension
-            v.Binding.RemoveExtension(CommonDefinitions.ExtUrlMaxValueSet);
+                // remove the extension
+                v.Binding.RemoveExtension(CommonDefinitions.ExtUrlMaxValueSet);
+            }
+            // check for a Max Value Set Extension with a reference
+            else if (v.Binding.GetExtensionValue<ResourceReference>(CommonDefinitions.ExtUrlMaxValueSet) is ResourceReference maxValueSetReference)
+            {
+                // add an additional binding with the canonical value
+                v.Binding.Additional.Add(new()
+                {
+                    Purpose = ElementDefinition.AdditionalBindingPurposeVS.Maximum,
+                    ValueSet = maxValueSetReference.Reference,
+                });
+
+                // remove the extension
+                v.Binding.RemoveExtension(CommonDefinitions.ExtUrlMaxValueSet);
+            }
+
+            // check for a Min Value Set Extension with a canonical URL
+            if (v.Binding.GetExtensionValue<Canonical>(CommonDefinitions.ExtUrlMinValueSet) is Canonical minValueSetCanonical)
+            {
+                // add an additional binding with the canonical value
+                v.Binding.Additional.Add(new()
+                {
+                    Purpose = ElementDefinition.AdditionalBindingPurposeVS.Minimum,
+                    ValueSet = minValueSetCanonical,
+                });
+
+                // remove the extension
+                v.Binding.RemoveExtension(CommonDefinitions.ExtUrlMinValueSet);
+            }
+            // check for a Min Value Set Extension with a reference
+            else if (v.Binding.GetExtensionValue<ResourceReference>(CommonDefinitions.ExtUrlMinValueSet) is ResourceReference minValueSetReference)
+            {
+                // add an additional binding with the canonical value
+                v.Binding.Additional.Add(new()
+                {
+                    Purpose = ElementDefinition.AdditionalBindingPurposeVS.Minimum,
+                    ValueSet = minValueSetReference.Reference,
+                });
+
+                // remove the extension
+                v.Binding.RemoveExtension(CommonDefinitions.ExtUrlMinValueSet);
+            }
         }
 
-        // check for a binding with a min value set extension
-        if ((v.Binding != null) &&
-            (v.Binding.GetExtensionValue<Canonical>(CommonDefinitions.ExtUrlMinValueSet) is Canonical minVs))
-        {
-            // add an additional binding with the canonical value
-            v.Binding.Additional.Add(new()
-            {
-                Purpose = ElementDefinition.AdditionalBindingPurposeVS.Minimum,
-                ValueSet = minVs,
-            });
-
-            // remove the extension
-            v.Binding.RemoveExtension(CommonDefinitions.ExtUrlMinValueSet);
-        }
 
         // note: we do not have IDs yet, but they will be generated at the StructureDefinition level
 
