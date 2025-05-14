@@ -2409,6 +2409,7 @@ public class ComparisonDatabase : IDisposable
                 BasePath = basePath,
                 IsSimpleType = ed.cgIsSimple(),
                 IsModifier = ed.IsModifier == true,
+                IsModifierReason = ed.IsModifierReason,
             };
 
             dbElements.Add(dbStructure.Key.ToString() + ":" + ed.ElementId, dbElement);

@@ -775,14 +775,6 @@ public class XVerProcessor
             // write the value set to a file
             string filename = $"StructureDefinition-{sd.Id}.json";
 
-            //if (sd.Id.Length > 50)
-            //{
-            //    int maxLen = Math.Min(45, sd.Id.Length-1);
-            //    int stopChar = sd.Id.LastIndexOf('.', maxLen, maxLen);
-
-            //    filename = $"StructureDefinition-{sd.Id.Substring(0, stopChar)}-{fileIndex:D6}.json";
-            //}
-
             string path = Path.Combine(dir, filename);
             File.WriteAllText(path, sd.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
             fileIndex++;
@@ -1537,7 +1529,7 @@ public class XVerProcessor
         }
 
         // skip id elements, they are part of every element and do not need to be written
-        if (extElementId == "Extension.extension:id")
+        if (extElementId.EndsWith(".extension:id", StringComparison.Ordinal))
         {
             return;
         }
@@ -1571,6 +1563,8 @@ public class XVerProcessor
             Min = element.MinCardinality,
             Max = element.MaxCardinalityString,
             IsModifier = element.IsModifier,
+            IsModifierReason = element.IsModifierReason
+                ?? (element.IsModifier == true ? $"This extension is a modifier because the target element {element.Id} is flagged IsModifier" : null),
         };
 
         extSd.Differential.Element.Add(extEd);
@@ -1618,21 +1612,21 @@ public class XVerProcessor
                     xverValueSets);
             }
 
-            extSd.Differential.Element.Add(new()
-            {
-                ElementId = extElementId + ".value[x]",
-                Path = extElementPath + ".value[x]",
-                Max = "0",
-            });
+            //extSd.Differential.Element.Add(new()
+            //{
+            //    ElementId = extElementId + ".value[x]",
+            //    Path = extElementPath + ".value[x]",
+            //    Max = "0",
+            //});
 
             return;
         }
 
-        bool addedEdExt = false;
+        //bool addedEdExt = false;
 
         bool addedEdValue = false;
-        bool addedEdValueExtension = false;
-        ElementDefinition? extEdValueExtension = null;
+        //bool addedEdValueExtension = false;
+        //ElementDefinition? extEdValueExtension = null;
         ElementDefinition extensionEdValue = new()
         {
             ElementId = extElementId + ".value[x]",
@@ -1808,10 +1802,15 @@ public class XVerProcessor
                 continue;
             }
 
+            // get the root element of the structure
+            DbElement etRootElement = DbElement.SelectSingle(_db!.DbConnection, StructureKey: etSd.Key, ResourceFieldOrder: 0)
+                ?? throw new Exception($"Failed to resolve the root element of {etSd.Name} ({etSd.Key})");
+
             // get the elements for this structure
             List<DbElement> etElements = DbElement.SelectList(
                 _db!.DbConnection,
                 StructureKey: etSd.Key,
+                ParentElementKey: etRootElement.Key,
                 orderByProperties: [nameof(DbElement.ResourceFieldOrder)]);
 
             // iterate over the elements to add them to the extension

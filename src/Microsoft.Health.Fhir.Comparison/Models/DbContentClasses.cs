@@ -299,6 +299,7 @@ public partial class DbElement : DbPackageContent
     public required string? BasePath { get; set; }
     public required bool IsSimpleType { get; set; }
     public required bool IsModifier { get; set; }
+    public required string? IsModifierReason { get; set; }
 
 
     [CgSQLiteIgnore]
@@ -382,6 +383,7 @@ public partial class DbElement : DbPackageContent
         BasePath = null,
         IsSimpleType = false,
         IsModifier = false,
+        IsModifierReason = null,
     };
 }
 
