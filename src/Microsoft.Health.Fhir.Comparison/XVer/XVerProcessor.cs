@@ -539,7 +539,7 @@ public class XVerProcessor
                 using ExportStreamWriter writer = createMarkdownWriter(Path.Combine(dir, filename), false, false);
 
                 // write a header
-                writer.WriteLine($"### Lookup for FHIR {sourcePackage.ShortName} {sourceStructureName} for FHIR  ");
+                writer.WriteLine($"### Lookup for FHIR {sourcePackage.ShortName} {sourceStructureName} for use in FHIR {targetPackage.ShortName}");
 
                 writer.WriteLine();
                 writer.WriteLine("| Source Element | Usage | Target |");
@@ -959,11 +959,40 @@ public class XVerProcessor
                 generatedElementKeys.Add([]);
             }
 
+            List<bool> structureMapsToBasic = [];
+
             // iterate over the elements of our structure
             foreach (DbElement element in DbElement.SelectList(_db!.DbConnection, StructureKey: sd.Key, orderByProperties: [nameof(DbElement.ResourceFieldOrder)]))
             {
                 // resolve the projection rows for this element
                 List<DbGraphSd.DbElementRow> elementProjection = elementProjectionDict[element.Key];
+
+                // check to see if this is the root element
+                if (element.ResourceFieldOrder == 0)
+                {
+                    // iterate across each target version to see if this resource maps at all
+                    for (int i = 0; i < packageSupports.Count; i++)
+                    {
+                        if (i == sourcePackageIndex)
+                        {
+                            structureMapsToBasic.Add(false);
+                            continue;
+                        }
+
+                        // resolve the current column
+                        List<DbGraphSd.DbElementCell?> sourceCells = elementProjection
+                            .Select(row => row[i])
+                            .ToList();
+
+                        if (i > sourcePackageIndex)
+                        {
+                            structureMapsToBasic.Add((sourceCells.Count == 0) || (sourceCells.All(c => (c?.Element == null) || (c?.RightComparison == null))));
+                            continue;
+                        }
+
+                        structureMapsToBasic.Add((sourceCells.Count == 0) || (sourceCells.All(c => (c?.Element == null) || (c?.LeftComparison == null))));
+                    }
+                }
 
                 bool extensionNeeded = false;
 
@@ -994,7 +1023,8 @@ public class XVerProcessor
                     }
 
                     // do not generate if this element is equivalent in the target basic resource
-                    if ((element.ParentElementKey != null) &&
+                    if (structureMapsToBasic[targetPackageIndex] &&
+                        (element.ParentElementKey != null) &&
                         packageSupports[targetPackageIndex].BasicElements.Contains(element.Path.Substring(sd.Name.Length)))
                     {
                         xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
@@ -1030,7 +1060,7 @@ public class XVerProcessor
                         // only generate entire structures if there is no mappable structure in the target
                         else if (element.ResourceFieldOrder == 0)
                         {
-                            extensionNeeded = (sourceCells.Count == 0) || (sourceCells.All(c => (c?.Element == null) || (c?.RightComparison == null)));
+                            extensionNeeded = structureMapsToBasic[targetPackageIndex];
                         }
                         // if we have no mappings, we need a new extension
                         else if (sourceCells.Count == 0)
@@ -1170,7 +1200,8 @@ public class XVerProcessor
                     }
 
                     // do not generate if this element is equivalent in the target basic resource
-                    if ((element.ParentElementKey != null) &&
+                    if (structureMapsToBasic[targetPackageIndex] &&
+                        (element.ParentElementKey != null) &&
                         packageSupports[targetPackageIndex].BasicElements.Contains(element.Path.Substring(sd.Name.Length)))
                     {
                         xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
@@ -1206,7 +1237,7 @@ public class XVerProcessor
                         // only generate entire structures if there is no mappable structure in the target
                         else if (element.ResourceFieldOrder == 0)
                         {
-                            extensionNeeded = (sourceCells.Count == 0) || (sourceCells.All(c => (c?.Element == null) || (c?.LeftComparison == null)));
+                            extensionNeeded = structureMapsToBasic[targetPackageIndex];
                         }
                         // if we have no mappings, we need a new extension
                         else if (sourceCells.Count == 0)
