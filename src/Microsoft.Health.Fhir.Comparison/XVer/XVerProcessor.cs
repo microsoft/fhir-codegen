@@ -326,6 +326,27 @@ public class XVerProcessor
     }
 
 
+    private enum XverOutcomeCodes
+    {
+        UseElementSameName,
+        UseElementRenamed,
+        UseExtension,
+        UseExtensionFromAncestor,
+        UseBasicElement,
+    }
+
+    private record class XverOutcome
+    {
+        public required int SourcePackageKey { get; init; }
+        public required string SourceStructureName { get; init; }
+        public required string SourceElementId { get; init; }
+        public required int SourceElementFieldOrder { get; init; }
+        public required int TargetPackageKey { get; init; }
+        public required XverOutcomeCodes OutcomeCode { get; init; }
+        public required string? TargetElementId { get; init; }
+        public required string? TargetExtensionUrl { get; init; }
+    }
+
     public void WriteFhirFromDatabase(string? outputDir = null)
     {
         // check for no database
@@ -361,6 +382,7 @@ public class XVerProcessor
         ConcurrentDictionary<int, string> differentialVsBySourceKey = [];
 
         Dictionary<int, HashSet<string>> basicElementPathsByPackageKey = [];
+        Dictionary<(int, string), List<List<XverOutcome>>> xverOutcomes = [];
 
         List<PackageXverSupport> packageSupports = [];
 
@@ -470,16 +492,70 @@ public class XVerProcessor
             //writeFhirValueSets(packages, i, packageComparisonPairs, fhirDir, differentialVsBySourceKey);
 
             Dictionary<(int sourceElementKey, int targetPackageId), StructureDefinition> xverExtensions = [];
-            buildXverStructures(packageSupports, focusPackageIndex, xverValueSets, xverExtensions, FhirArtifactClassEnum.ComplexType);
-            buildXverStructures(packageSupports, focusPackageIndex, xverValueSets, xverExtensions, FhirArtifactClassEnum.Resource);
+            buildXverStructures(packageSupports, focusPackageIndex, xverValueSets, xverExtensions, xverOutcomes, FhirArtifactClassEnum.ComplexType);
+            buildXverStructures(packageSupports, focusPackageIndex, xverValueSets, xverExtensions, xverOutcomes, FhirArtifactClassEnum.Resource);
 
             writeXverStructures(packageSupports, focusPackageIndex, xverExtensions, fhirDir);
         }
+
+        // write all of our outcome lists
+        writeXverOutcomes(packageSupports, xverOutcomes, Path.Combine(outputDir, "outcomes"));
 
         // //writeFhirStructures(packageComparisonPairs, fhirDir, differentialVsBySourceKey, FhirArtifactClassEnum.PrimitiveType);
         //writeFhirStructures(packageComparisonPairs, fhirDir, differentialVsBySourceKey, FhirArtifactClassEnum.ComplexType); 
         //writeFhirStructures(packageComparisonPairs, fhirDir, differentialVsBySourceKey, FhirArtifactClassEnum.Resource);
     }
+
+    private void writeXverOutcomes(
+        List<PackageXverSupport> packageSupports,
+        Dictionary<(int, string), List<List<XverOutcome>>> xverOutcomes,
+        string outputDir)
+    {
+        // iterate over each structure in each source package
+        foreach (((int sourcePackageIndex, string sourceStructureName), List<List<XverOutcome>> structureOutcomesByTarget) in xverOutcomes)
+        {
+            // iterate across each of our targets
+            foreach ((List<XverOutcome> outcomes, int targetPackageIndex) in structureOutcomesByTarget.Select((ol, i) => (ol, i)))
+            {
+                if (sourcePackageIndex == targetPackageIndex)
+                {
+                    continue;
+                }
+
+                DbFhirPackage sourcePackage = packageSupports[sourcePackageIndex].Package;
+                DbFhirPackage targetPackage = packageSupports[targetPackageIndex].Package;
+
+                string dir = Path.Combine(outputDir, $"{sourcePackage.ShortName}-for-{targetPackage.ShortName}");
+
+                if (!Directory.Exists(dir))
+                {
+                    Directory.CreateDirectory(dir);
+                }
+
+                // create a filename for this structure's md file
+                string filename = $"Lookup-{sourcePackage.ShortName}-{sourceStructureName}-{targetPackage.ShortName}.md";
+
+                // open our file
+                using ExportStreamWriter writer = createMarkdownWriter(Path.Combine(dir, filename), false, false);
+
+                // write a header
+                writer.WriteLine($"### Lookup for FHIR {sourcePackage.ShortName} {sourceStructureName} for FHIR  ");
+
+                writer.WriteLine();
+                writer.WriteLine("| Source Element | Usage | Target |");
+                writer.WriteLine("| -------------- | ----- | ------ |");
+
+                // iterate over the elements of this structure in element order
+                foreach (XverOutcome outcome in outcomes.OrderBy(xo => xo.SourceElementFieldOrder))
+                {
+                    writer.WriteLine($"| {outcome.SourceElementId} | {outcome.OutcomeCode} | {outcome.TargetElementId ?? outcome.TargetExtensionUrl ?? "-"} |");
+                }
+
+                writer.Close();
+            }
+        }
+    }
+
 
     private void writeXverValueSets(
         List<DbFhirPackage> packages,
@@ -816,11 +892,13 @@ public class XVerProcessor
         }
     }
 
+
     private void buildXverStructures(
         List<PackageXverSupport> packageSupports,
         int sourcePackageIndex,
         Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
         Dictionary<(int sourceElementKey, int targetPackageId), StructureDefinition> xverExtensions,
+        Dictionary<(int, string), List<List<XverOutcome>>> xverOutcomes,
         FhirArtifactClassEnum artifactClass)
     {
         DbFhirPackage sourcePackage = packageSupports[sourcePackageIndex].Package;
@@ -837,6 +915,15 @@ public class XVerProcessor
         // iterate over the structures
         foreach (DbStructureDefinition sd in structures)
         {
+            if (!xverOutcomes.ContainsKey((sourcePackageIndex, sd.Name)))
+            {
+                xverOutcomes[(sourcePackageIndex, sd.Name)] = [];
+                for (int i = 0; i < packageSupports.Count; i++)
+                {
+                    xverOutcomes[(sourcePackageIndex, sd.Name)].Add([]);
+                }
+            }
+
             // build a graph for this structure
             DbGraphSd sdGraph = new()
             {
@@ -883,19 +970,44 @@ public class XVerProcessor
                 // work upwards first
                 for (int currentIndex = sourcePackageIndex; currentIndex < (packageSupports.Count - 1); currentIndex++)
                 {
+                    int targetPackageIndex = currentIndex + 1;
+                    DbFhirPackage targetPackage = packageSupports[targetPackageIndex].Package;
+
                     // if we already generated the parent of this element, flag it as added and move on
                     if ((element.ParentElementKey != null) &&
-                        generatedElementKeys[currentIndex + 1].Contains(element.ParentElementKey.Value))
+                        generatedElementKeys[targetPackageIndex].Contains(element.ParentElementKey.Value))
                     {
                         // add this element to the generated list
-                        generatedElementKeys[currentIndex + 1].Add(element.Key);
+                        generatedElementKeys[targetPackageIndex].Add(element.Key);
+                        xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
+                        {
+                            SourcePackageKey = sourcePackage.Key,
+                            SourceStructureName = sd.Name,
+                            SourceElementId = element.Id,
+                            SourceElementFieldOrder = element.ResourceFieldOrder,
+                            TargetPackageKey = targetPackage.Key,
+                            OutcomeCode = XverOutcomeCodes.UseExtensionFromAncestor,
+                            TargetElementId = null,
+                            TargetExtensionUrl = null,
+                        });
                         continue;
                     }
 
                     // do not generate if this element is equivalent in the target basic resource
                     if ((element.ParentElementKey != null) &&
-                        packageSupports[currentIndex+1].BasicElements.Contains(element.Path.Substring(sd.Name.Length)))
+                        packageSupports[targetPackageIndex].BasicElements.Contains(element.Path.Substring(sd.Name.Length)))
                     {
+                        xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
+                        {
+                            SourcePackageKey = sourcePackage.Key,
+                            SourceStructureName = sd.Name,
+                            SourceElementId = element.Id,
+                            SourceElementFieldOrder = element.ResourceFieldOrder,
+                            TargetPackageKey = targetPackage.Key,
+                            OutcomeCode = XverOutcomeCodes.UseBasicElement,
+                            TargetElementId = null,
+                            TargetExtensionUrl = null,
+                        });
                         continue;
                     }
 
@@ -943,6 +1055,36 @@ public class XVerProcessor
                                     (cell?.RightComparison?.Relationship == CMR.SourceIsBroaderThanTarget))
                                 {
                                     extensionNeeded = false;
+
+                                    if (cell!.RightCell?.Element.Id == element.Id)
+                                    {
+                                        xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
+                                        {
+                                            SourcePackageKey = sourcePackage.Key,
+                                            SourceStructureName = sd.Name,
+                                            SourceElementId = element.Id,
+                                            SourceElementFieldOrder = element.ResourceFieldOrder,
+                                            TargetPackageKey = targetPackage.Key,
+                                            OutcomeCode = XverOutcomeCodes.UseElementSameName,
+                                            TargetElementId = cell!.RightCell!.Element.Id,
+                                            TargetExtensionUrl = null,
+                                        });
+                                    }
+                                    else
+                                    {
+                                        xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
+                                        {
+                                            SourcePackageKey = sourcePackage.Key,
+                                            SourceStructureName = sd.Name,
+                                            SourceElementId = element.Id,
+                                            SourceElementFieldOrder = element.ResourceFieldOrder,
+                                            TargetPackageKey = targetPackage.Key,
+                                            OutcomeCode = XverOutcomeCodes.UseElementRenamed,
+                                            TargetElementId = cell!.RightCell!.Element.Id,
+                                            TargetExtensionUrl = null,
+                                        });
+                                    }
+
                                     break;
                                 }
                             }
@@ -956,7 +1098,7 @@ public class XVerProcessor
                     }
 
                     // check to see if we have already generated this extension
-                    if (xverExtensions.ContainsKey((element.Key, packageSupports[currentIndex + 1].Package.Key)))
+                    if (xverExtensions.ContainsKey((element.Key, targetPackage.Key)))
                     {
                         continue;
                     }
@@ -974,7 +1116,7 @@ public class XVerProcessor
                     // build an extension for the original source element to target the current target version
                     StructureDefinition? extSd = createExtensionSd(
                         packageSupports[sourcePackageIndex],
-                        packageSupports[currentIndex + 1],
+                        packageSupports[targetPackageIndex],
                         sd,
                         element,
                         comparisons,
@@ -982,8 +1124,20 @@ public class XVerProcessor
 
                     if (extSd != null)
                     {
-                        xverExtensions.Add((element.Key, packageSupports[currentIndex + 1].Package.Key), extSd);
-                        generatedElementKeys[currentIndex + 1].Add(element.Key);
+                        xverExtensions.Add((element.Key, packageSupports[targetPackageIndex].Package.Key), extSd);
+                        generatedElementKeys[targetPackageIndex].Add(element.Key);
+
+                        xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
+                        {
+                            SourcePackageKey = sourcePackage.Key,
+                            SourceStructureName = sd.Name,
+                            SourceElementId = element.Id,
+                            SourceElementFieldOrder = element.ResourceFieldOrder,
+                            TargetPackageKey = targetPackage.Key,
+                            OutcomeCode = XverOutcomeCodes.UseExtension,
+                            TargetElementId = null,
+                            TargetExtensionUrl = extSd.Url,
+                        });
                     }
                 }
 
@@ -992,19 +1146,44 @@ public class XVerProcessor
                 // then work downwards
                 for (int currentIndex = sourcePackageIndex; currentIndex > 0; currentIndex--)
                 {
+                    int targetPackageIndex = currentIndex - 1;
+                    DbFhirPackage targetPackage = packageSupports[targetPackageIndex].Package;
+
                     // if we already generated the parent of this element, flag it as added and move on
                     if ((element.ParentElementKey != null) &&
-                        generatedElementKeys[currentIndex - 1].Contains(element.ParentElementKey.Value))
+                        generatedElementKeys[targetPackageIndex].Contains(element.ParentElementKey.Value))
                     {
                         // add this element to the generated list
-                        generatedElementKeys[currentIndex - 1].Add(element.Key);
+                        generatedElementKeys[targetPackageIndex].Add(element.Key);
+                        xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
+                        {
+                            SourcePackageKey = sourcePackage.Key,
+                            SourceStructureName = sd.Name,
+                            SourceElementId = element.Id,
+                            SourceElementFieldOrder = element.ResourceFieldOrder,
+                            TargetPackageKey = targetPackage.Key,
+                            OutcomeCode = XverOutcomeCodes.UseExtensionFromAncestor,
+                            TargetElementId = null,
+                            TargetExtensionUrl = null,
+                        });
                         continue;
                     }
 
                     // do not generate if this element is equivalent in the target basic resource
                     if ((element.ParentElementKey != null) &&
-                        packageSupports[currentIndex - 1].BasicElements.Contains(element.Path.Substring(sd.Name.Length)))
+                        packageSupports[targetPackageIndex].BasicElements.Contains(element.Path.Substring(sd.Name.Length)))
                     {
+                        xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
+                        {
+                            SourcePackageKey = sourcePackage.Key,
+                            SourceStructureName = sd.Name,
+                            SourceElementId = element.Id,
+                            SourceElementFieldOrder = element.ResourceFieldOrder,
+                            TargetPackageKey = targetPackage.Key,
+                            OutcomeCode = XverOutcomeCodes.UseBasicElement,
+                            TargetElementId = null,
+                            TargetExtensionUrl = null,
+                        });
                         continue;
                     }
 
@@ -1052,6 +1231,35 @@ public class XVerProcessor
                                     (cell?.LeftComparison?.Relationship == CMR.SourceIsBroaderThanTarget))
                                 {
                                     extensionNeeded = false;
+
+                                    if (cell!.RightCell?.Element.Id == element.Id)
+                                    {
+                                        xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
+                                        {
+                                            SourcePackageKey = sourcePackage.Key,
+                                            SourceStructureName = sd.Name,
+                                            SourceElementId = element.Id,
+                                            SourceElementFieldOrder = element.ResourceFieldOrder,
+                                            TargetPackageKey = targetPackage.Key,
+                                            OutcomeCode = XverOutcomeCodes.UseElementSameName,
+                                            TargetElementId = cell!.LeftCell!.Element.Id,
+                                            TargetExtensionUrl = null,
+                                        });
+                                    }
+                                    else
+                                    {
+                                        xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
+                                        {
+                                            SourcePackageKey = sourcePackage.Key,
+                                            SourceStructureName = sd.Name,
+                                            SourceElementId = element.Id,
+                                            SourceElementFieldOrder = element.ResourceFieldOrder,
+                                            TargetPackageKey = targetPackage.Key,
+                                            OutcomeCode = XverOutcomeCodes.UseElementRenamed,
+                                            TargetElementId = cell!.LeftCell!.Element.Id,
+                                            TargetExtensionUrl = null,
+                                        });
+                                    }
                                     break;
                                 }
                             }
@@ -1065,11 +1273,10 @@ public class XVerProcessor
                     }
 
                     // check to see if we have already generated this extension
-                    if (xverExtensions.ContainsKey((element.Key, packageSupports[currentIndex-1].Package.Key)))
+                    if (xverExtensions.ContainsKey((element.Key, targetPackage.Key)))
                     {
                         continue;
                     }
-
 
                     foreach (DbGraphSd.DbElementCell? cell in sourceCells)
                     {
@@ -1084,7 +1291,7 @@ public class XVerProcessor
                     // build an extension for the original source element to target the current target version
                     StructureDefinition? extSd = createExtensionSd(
                         packageSupports[sourcePackageIndex],
-                        packageSupports[currentIndex - 1],
+                        packageSupports[targetPackageIndex],
                         sd,
                         element,
                         comparisons,
@@ -1092,8 +1299,20 @@ public class XVerProcessor
 
                     if (extSd != null)
                     {
-                        xverExtensions.Add((element.Key, packageSupports[currentIndex - 1].Package.Key), extSd);
-                        generatedElementKeys[currentIndex - 1].Add(element.Key);
+                        xverExtensions.Add((element.Key, targetPackage.Key), extSd);
+                        generatedElementKeys[targetPackageIndex].Add(element.Key);
+
+                        xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
+                        {
+                            SourcePackageKey = sourcePackage.Key,
+                            SourceStructureName = sd.Name,
+                            SourceElementId = element.Id,
+                            SourceElementFieldOrder = element.ResourceFieldOrder,
+                            TargetPackageKey = targetPackage.Key,
+                            OutcomeCode = XverOutcomeCodes.UseExtension,
+                            TargetElementId = null,
+                            TargetExtensionUrl = extSd.Url,
+                        });
                     }
                 }
             }
