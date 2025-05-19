@@ -32,6 +32,7 @@ using Hl7.Fhir.Specification.Snapshot;
 using static System.Net.Mime.MediaTypeNames;
 using Hl7.FhirPath.Sprache;
 using Tasks = System.Threading.Tasks;
+using System.IO;
 
 
 namespace Microsoft.Health.Fhir.Comparison.XVer;
@@ -496,6 +497,8 @@ public class XVerProcessor
             buildXverStructures(packageSupports, focusPackageIndex, xverValueSets, xverExtensions, xverOutcomes, FhirArtifactClassEnum.Resource);
 
             writeXverStructures(packageSupports, focusPackageIndex, xverExtensions, fhirDir);
+
+            writeXverSupportFiles(packageSupports, focusPackageIndex, xverValueSets, xverExtensions, fhirDir);
         }
 
         // write all of our outcome lists
@@ -504,6 +507,452 @@ public class XVerProcessor
         // //writeFhirStructures(packageComparisonPairs, fhirDir, differentialVsBySourceKey, FhirArtifactClassEnum.PrimitiveType);
         //writeFhirStructures(packageComparisonPairs, fhirDir, differentialVsBySourceKey, FhirArtifactClassEnum.ComplexType); 
         //writeFhirStructures(packageComparisonPairs, fhirDir, differentialVsBySourceKey, FhirArtifactClassEnum.Resource);
+    }
+
+    private void writeXverSupportFiles(
+        List<PackageXverSupport> packageSupports,
+        int focusPackageIndex,
+        Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
+        Dictionary<(int sourceElementKey, int targetPackageId), StructureDefinition> xverExtensions,
+        string fhirDir)
+    {
+        DbFhirPackage sourcePackage = packageSupports[focusPackageIndex].Package;
+
+        foreach (PackageXverSupport targetSupport in packageSupports)
+        {
+            if (targetSupport.Package.Key == sourcePackage.Key)
+            {
+                continue;
+            }
+
+            string id = $"hl7.fhir.uv.xver.{sourcePackage.ShortName.ToLowerInvariant()}-{targetSupport.Package.ShortName.ToLowerInvariant()}";
+
+            // build and write the ImplementationGuide resource
+            {
+                string igJson;
+
+                if (targetSupport.Package.FhirVersionShort.StartsWith('4'))
+                {
+                    igJson = getIgJsonR4(sourcePackage, targetSupport.Package, xverValueSets, xverExtensions, id);
+                }
+                else if (targetSupport.Package.FhirVersionShort.StartsWith('5'))
+                {
+                    igJson = getIgJsonR5(sourcePackage, targetSupport.Package, xverValueSets, xverExtensions, id);
+                }
+                else
+                {
+                    // TODO: Implment DSTU2 and STU3
+                    continue;
+                }
+
+                string filename = $"ImplementationGuide-{id}.json";
+                File.WriteAllText(Path.Combine(fhirDir, $"{sourcePackage.ShortName}-for-{targetSupport.Package.ShortName}", filename), igJson);
+            }
+
+            // build and write the package.manifest.json file
+            {
+                string pmJson = $$$"""
+                    {
+                      "version" : "{{{_crossDefinitionVersion}}}",
+                      "fhirVersion" : ["{{{targetSupport.Package.PackageVersion}}}"],
+                      "date" : "{{{DateTime.Now.ToString("yyyyMMddHHmmss")}}}",
+                      "name" : "{{{id}}}",
+                      "jurisdiction" : "http://unstats.un.org/unsd/methods/m49/m49.htm#001"
+                    }
+                    """;
+
+                string filename = "package.manifest.json";
+                File.WriteAllText(Path.Combine(fhirDir, $"{sourcePackage.ShortName}-for-{targetSupport.Package.ShortName}", filename), pmJson);
+            }
+
+            // build and write the .index.json file
+            {
+                string indexJson = getIndexJson(sourcePackage, targetSupport.Package, xverValueSets, xverExtensions, id);
+                string filename = ".index.json";
+                File.WriteAllText(Path.Combine(fhirDir, $"{sourcePackage.ShortName}-for-{targetSupport.Package.ShortName}", filename), indexJson);
+            }
+
+            // build and write the package.json file
+            {
+                string packageJson = $$$"""
+                    {
+                        "name" : "{{{id}}}",
+                        "version" : "{{{_crossDefinitionVersion}}}",
+                        "tools-version" : 3,
+                        "type" : "IG",
+                        "date" : "{{{DateTime.Now.ToString("yyyyMMddHHmmss")}}}",
+                        "license" : "CC0-1.0",
+                        "canonical" : "http://hl7.org/fhir/uv/xver",
+                        "notForPublication" : true,
+                        "url" : "http://hl7.org/fhir/uv/xver",
+                        "title" : "XVer-{{{sourcePackage.ShortName}}}-{{{targetSupport.Package.ShortName}}}",
+                        "description" : "Cross Version Extensions for using FHIR {{{sourcePackage.ShortName}}} in FHIR {{{targetSupport.Package.ShortName}}}",
+                        "fhirVersions" : ["{{{targetSupport.Package.PackageVersion}}}"],
+                        "dependencies" : {
+                            "{{{targetSupport.Package.PackageId}}}" : "{{{targetSupport.Package.PackageVersion}}}",
+                            "hl7.terminology.{{{targetSupport.Package.ShortName.ToLowerInvariant()}}}" : "6.3.0",
+                            "hl7.fhir.uv.extensions.{{{targetSupport.Package.ShortName.ToLowerInvariant()}}}" : "5.2.0",
+                            "hl7.fhir.uv.tools.{{{targetSupport.Package.ShortName.ToLowerInvariant()}}}" : "current"
+                        },
+                        "author" : "HL7 International / FHIR Infrastructure",
+                        "maintainers" : [
+                            {
+                                "name" : "HL7 International / FHIR Infrastructure",
+                                "url" : "http://www.hl7.org/Special/committees/fiwg"
+                            }
+                        ],
+                        "directories" : {
+                            "lib" : "package",
+                            "example" : "example"
+                        },
+                        "jurisdiction" : "http://unstats.un.org/unsd/methods/m49/m49.htm#001"
+                    }
+                    """;
+
+                string filename = "package.json";
+                File.WriteAllText(Path.Combine(fhirDir, $"{sourcePackage.ShortName}-for-{targetSupport.Package.ShortName}", filename), packageJson);
+            }
+        }
+    }
+
+    private string getIndexJson(
+        DbFhirPackage sourcePackage,
+        DbFhirPackage targetPackage,
+        Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
+        Dictionary<(int sourceElementKey, int targetPackageId), StructureDefinition> xverExtensions,
+        string id)
+    {
+        // build the list of structures we are defining
+        List<string> structureJsons = [];
+        foreach (((int sourceElementKey, int targetPackageId), StructureDefinition sd) in xverExtensions)
+        {
+            if (targetPackageId != targetPackage.Key)
+            {
+                continue;
+            }
+
+            structureJsons.Add($$$"""
+                {
+                    "filename" : "StructureDefinition-{{{sd.Id}}}.json",
+                    "resourceType" : "StructureDefinition",
+                    "id" : "{{{sd.Id}}}",
+                    "url" : "{{{sd.Url}}}",
+                    "version" : "{{{_crossDefinitionVersion}}}",
+                    "kind" : "complex-type",
+                    "type" : "Extension",
+                    "derivation" : "constraint"
+                }
+                """);
+        }
+
+        // build the list of value sets we are defining
+        List<string> valueSetJsons = [];
+        foreach (((int sourceElementKey, int targetPackageId), ValueSet vs) in xverValueSets)
+        {
+            if (targetPackageId != targetPackage.Key)
+            {
+                continue;
+            }
+
+            valueSetJsons.Add($$$"""
+                {
+                    "filename" : "ValueSet-{{{vs.Id}}}.json",
+                    "resourceType" : "ValueSet",
+                    "id" : "{{{vs.Id}}}",
+                    "url" : "{{{vs.Url}}}",
+                    "version" : "{{{_crossDefinitionVersion}}}"
+                }
+                """);
+        }
+
+        string indexJson = $$$"""
+            {
+                "index-version" : 2,
+                "files" : [
+                    {
+                        "filename" : "ImplementationGuide-{{{id}}}.json",
+                        "resourceType" : "ImplementationGuide",
+                        "id" : "{{{id}}}",
+                        "url" : "http://hl7.org/fhir/uv/xver/ImplementationGuide/{{{id}}}",
+                        "version" : "{{{_crossDefinitionVersion}}}"
+                    },
+                    {{{string.Join(", ", structureJsons)}}},
+                    {{{string.Join(", ", valueSetJsons)}}}
+                ]
+            }
+            """;
+
+        return indexJson;
+    }
+
+
+    private string getIgJsonR5(
+        DbFhirPackage sourcePackage,
+        DbFhirPackage targetPackage,
+        Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
+        Dictionary<(int sourceElementKey, int targetPackageId), StructureDefinition> xverExtensions,
+        string id)
+    {
+        ImplementationGuide ig = new()
+        {
+            Id = id,
+            Extension = [
+                new()
+                {
+                    Url = "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+                    Value = new Code("trial-use"),
+                },
+                new()
+                {
+                    Url = "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+                    Value = new Code("fhir"),
+                }
+            ],
+            Url = $"http://hl7.org/fhir/uv/xver/ImplementationGuide/{id}",
+            Version = _crossDefinitionVersion,
+            Name = $"XVer_{sourcePackage.ShortName.ToLowerInvariant()}_{targetPackage.ShortName.ToLowerInvariant()}",
+            Title = $"XVer-{sourcePackage.ShortName}-{targetPackage.ShortName}",
+            Status = PublicationStatus.Active,
+            Date = "2025-05-19T00:00:00+00:00",
+            Publisher = "HL7 International / FHIR Infrastructure",
+            Contact = [
+                new()
+                {
+                    Name = "HL7 International / FHIR Infrastructure",
+                    Telecom = [
+                        new()
+                        {
+                            System = ContactPoint.ContactPointSystem.Url,
+                            Value = "http://www.hl7.org/Special/committees/fiwg",
+                        },
+                    ],
+                }
+            ],
+            Description = $"Cross Version Extensions for using FHIR {sourcePackage.ShortName} in FHIR {targetPackage.ShortName}",
+            Jurisdiction = [
+                new()
+                {
+                    Coding = [
+                        new()
+                        {
+                            System = "http://unstats.un.org/unsd/methods/m49/m49.htm",
+                            Code = "001",
+                            Display = "World",
+                        }
+                    ],
+                }
+            ],
+            PackageId = $"hl7.fhir.uv.xver.{sourcePackage.ShortName.ToLowerInvariant()}-{targetPackage.ShortName.ToLowerInvariant()}",
+            License = ImplementationGuide.SPDXLicense.CC01_0,
+            FhirVersion = [FHIRVersion.N5_0_0],
+            DependsOn = [
+                new()
+                {
+                    ElementId = "hl7tx",
+                    Uri = "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
+                    PackageId = "hl7.terminology.r5",
+                    Version = "6.3.0",
+                    Extension = [
+                        new()
+                        {
+                            Url = "http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment",
+                            Value = new Markdown("Automatically added as a dependency - all IGs depend on HL7 Terminology"),
+                        },
+                    ],
+                },
+                new()
+                {
+                    ElementId = "hl7_fhir_uv_extensions",
+                    Uri = "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",
+                    PackageId = "hl7.fhir.uv.extensions.r5",
+                    Version = "5.2.0",
+                },
+                new()
+                {
+                    ElementId = "hl7_fhir_uv_tools",
+                    Uri = "http://hl7.org/fhir/tools/ImplementationGuide/hl7.fhir.uv.tools",
+                    PackageId = "hl7.fhir.uv.tools.r5",
+                    Version = "current",
+                },
+            ],
+            Definition = new()
+            {
+                Resource = [],
+            }
+        };
+
+        // add our structures
+        foreach (((int sourceElementKey, int targetPackageId), StructureDefinition sd) in xverExtensions)
+        {
+            if (targetPackageId != targetPackage.Key)
+            {
+                continue;
+            }
+
+            ig.Definition.Resource.Add(new()
+            {
+                Reference = new ResourceReference($"StructureDefinition/{sd.Id}"),
+                Name = sd.Name,
+                Description = sd.Description,
+                Extension = [
+                    new()
+                    {
+                        Url = "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+                        Value = new FhirString("StructureDefinition:extension"),
+                    },
+                ],
+            });
+        }
+
+        // add our value sets
+        foreach (((int sourceElementKey, int targetPackageId), ValueSet vs) in xverValueSets)
+        {
+            if (targetPackageId != targetPackage.Key)
+            {
+                continue;
+            }
+
+            ig.Definition.Resource.Add(new()
+            {
+                Reference = new ResourceReference($"StructureDefinition/{vs.Id}"),
+                Name = vs.Name,
+                Description = vs.Description,
+                Extension = [
+                    new()
+                    {
+                        Url = "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+                        Value = new FhirString("ValueSet"),
+                    },
+                ],
+            });
+        }
+
+        return ig.ToJson(new FhirJsonSerializationSettings() { Pretty = true });
+    }
+
+    private string getIgJsonR4(
+        DbFhirPackage sourcePackage,
+        DbFhirPackage targetPackage,
+        Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
+        Dictionary<(int sourceElementKey, int targetPackageId), StructureDefinition> xverExtensions,
+        string id)
+    {
+        // build the list of structures we are defining
+        List<string> structureJsons = [];
+        foreach (((int sourceElementKey, int targetPackageId), StructureDefinition sd) in xverExtensions)
+        {
+            if (targetPackageId != targetPackage.Key)
+            {
+                continue;
+            }
+
+            structureJsons.Add($$$"""
+                {
+                    "extension" : [{
+                        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+                        "valueString" : "StructureDefinition:extension"
+                    }],
+                    "reference" : {
+                        "reference" : "StructureDefinition/{{{sd.Id}}}"
+                    },
+                    "name" : "{{{sd.Name}}}",
+                    "description" : "{{{sd.Description}}}"
+                }
+                """);
+        }
+
+        // build the list of value sets we are defining
+        List<string> valueSetJsons = [];
+        foreach (((int sourceElementKey, int targetPackageId), ValueSet vs) in xverValueSets)
+        {
+            if (targetPackageId != targetPackage.Key)
+            {
+                continue;
+            }
+
+            valueSetJsons.Add($$$"""
+                {
+                    "extension" : [{
+                        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+                        "valueString" : "ValueSet"
+                    }],
+                    "reference" : {
+                        "reference" : "ValueSet/{{{vs.Id}}}"
+                    },
+                    "name" : "{{{vs.Name}}}",
+                    "description" : "{{{vs.Description}}}"
+                }
+                """);
+        }
+
+        string igJson = $$$"""
+            {
+              "resourceType" : "ImplementationGuide",
+              "id" : "hl7.fhir.uv.xver.{{{sourcePackage.ShortName.ToLowerInvariant()}}}-{{{targetPackage.ShortName.ToLowerInvariant()}}}",
+              "extension" : [{
+                "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+                "valueCode" : "trial-use"
+              },
+              {
+                "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+                "valueCode" : "fhir"
+              }],
+              "url" : "http://hl7.org/fhir/uv/xver/ImplementationGuide/hl7.fhir.uv.xver.{{{sourcePackage.ShortName.ToLowerInvariant()}}}-{{{targetPackage.ShortName.ToLowerInvariant()}}}",
+              "version" : "{{{_crossDefinitionVersion}}}",
+              "name" : "XVer_{{{sourcePackage.ShortName.ToLowerInvariant()}}}_{{{targetPackage.ShortName.ToLowerInvariant()}}}",
+              "title" : "XVer-{{{sourcePackage.ShortName}}}-{{{targetPackage.ShortName}}}",
+              "status" : "active",
+              "date" : "2025-05-19T00:00:00+00:00",
+              "publisher" : "HL7 International / FHIR Infrastructure",
+              "contact" : [{
+                "name" : "HL7 International / FHIR Infrastructure",
+                "telecom" : [{
+                  "system" : "url",
+                  "value" : "http://www.hl7.org/Special/committees/fiwg"
+                }]
+              }],
+              "description" : "Cross Version Extensions for using FHIR {{{sourcePackage.ShortName}}} in FHIR {{{targetPackage.ShortName}}}",
+              "jurisdiction" : [{
+                "coding" : [{
+                  "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
+                  "code" : "001",
+                  "display" : "World"
+                }]
+              }],
+              "packageId" : "hl7.fhir.uv.xver.{{{sourcePackage.ShortName.ToLowerInvariant()}}}-{{{targetPackage.ShortName.ToLowerInvariant()}}}",
+              "license" : "CC0-1.0",
+              "fhirVersion" : ["{{{targetPackage.PackageVersion}}}"],
+              "dependsOn" : [{
+                "id" : "hl7tx",
+                "extension" : [{
+                  "url" : "http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment",
+                  "valueMarkdown" : "Automatically added as a dependency - all IGs depend on HL7 Terminology"
+                }],
+                "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
+                "packageId" : "hl7.terminology.{{{targetPackage.ShortName.ToLowerInvariant()}}}",
+                "version" : "6.3.0"
+              },
+              {
+                "id" : "hl7_fhir_uv_extensions",
+                "uri" : "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",
+                "packageId" : "hl7.fhir.uv.extensions.{{{targetPackage.ShortName.ToLowerInvariant()}}}",
+                "version" : "5.2.0"
+              },
+              {
+                "id" : "hl7_fhir_uv_tools",
+                "uri" : "http://hl7.org/fhir/tools/ImplementationGuide/hl7.fhir.uv.tools",
+                "packageId" : "hl7.fhir.uv.tools.{{{targetPackage.ShortName.ToLowerInvariant()}}}",
+                "version" : "current"
+              }],
+              "definition" : {
+                "resource" : [
+                {{{string.Join(", ", structureJsons)}}},
+                {{{string.Join(", ", valueSetJsons)}}}]
+              }
+            }
+            """;
+
+        return igJson;
     }
 
     private void writeXverOutcomes(
