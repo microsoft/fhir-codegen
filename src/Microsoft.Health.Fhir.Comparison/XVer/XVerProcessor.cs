@@ -31,7 +31,7 @@ using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification.Snapshot;
 using static System.Net.Mime.MediaTypeNames;
 using Hl7.FhirPath.Sprache;
-
+using Tasks = System.Threading.Tasks;
 
 
 namespace Microsoft.Health.Fhir.Comparison.XVer;
@@ -282,6 +282,9 @@ public class XVerProcessor
         public required DbFhirPackage Package { get; init; }
         public HashSet<string> BasicElements { get; init; } = [];
         public HashSet<string> AllowedExtensionTypes { get; init; } = [];
+        public DefinitionCollection? CoreDC { get; set; } = null;
+        public Hl7.Fhir.Specification.Snapshot.SnapshotGenerator? SnapshotGenerator { get; set; } = null;
+
     }
 
     /// <summary>
@@ -364,11 +367,25 @@ public class XVerProcessor
         // iterate over the packages to build the Basic resource element paths
         foreach ((DbFhirPackage package, int index) in packages.Select((p, i) => (p, i)))
         {
+            // need to create a definition collection with the matching core package so that we can build everything
+            string packageDirective = $"{package.PackageId}#{package.PackageVersion}";
+
+            // create a loader because these are all different FHIR core versions
+            using CodeGen.Loader.PackageLoader loader = new(_config, new()
+            {
+                JsonModel = CodeGen.Loader.LoaderOptions.JsonDeserializationModel.SystemTextJson,
+            });
+
+            DefinitionCollection coreDc = loader.LoadPackages([packageDirective]).Result
+                ?? throw new Exception($"Could not load package: {packageDirective}");
+
             PackageXverSupport packageSupport = new()
             {
                 PackageIndex = index,
                 Package = package,
                 BasicElements = [],
+                CoreDC = coreDc,
+                SnapshotGenerator = new(coreDc),
             };
 
             packageSupports.Add(packageSupport);
@@ -440,10 +457,10 @@ public class XVerProcessor
         // iterate over the list of packages
         for (int focusPackageIndex = 0; focusPackageIndex < packages.Count; focusPackageIndex++)
         {
-            //if (focusPackageIndex != packages.Count - 1)
-            //{
-            //    continue;
-            //}
+            if (focusPackageIndex != packages.Count - 1)
+            {
+                continue;
+            }
 
             _logger.LogInformation($"Processing package {focusPackageIndex + 1} of {packages.Count}: {packages[focusPackageIndex].ShortName}");
 
@@ -757,12 +774,30 @@ public class XVerProcessor
     {
         Dictionary<int, DbFhirPackage> packageDict = packageSupports.Select(ps => ps.Package).ToDictionary(p => p.Key);
         DbFhirPackage focusPackage = packageSupports[focusPackageIndex].Package;
+        SnapshotGenerator sg = packageSupports[focusPackageIndex].SnapshotGenerator!;
 
         int fileIndex = 0;
 
         // iterate over the value sets
         foreach (((int sourceKey, int targetPackageId), StructureDefinition sd) in xverExtensions)
         {
+            try
+            {
+                if (sd.Snapshot == null)
+                {
+                    // create a new snapshot
+                    sd.Snapshot = new StructureDefinition.SnapshotComponent();
+                }
+
+                // a valid snapshot will always have at least the root element
+                if (sd.Snapshot.Element.Count == 0)
+                {
+                    sd.Snapshot.Element = sg.GenerateAsync(sd).Result;
+                }
+            }
+            catch (Exception) { }
+
+
             DbFhirPackage targetPackage = packageDict[targetPackageId];
 
             // build a path for this direction
@@ -908,7 +943,7 @@ public class XVerProcessor
                                     (cell?.RightComparison?.Relationship == CMR.SourceIsBroaderThanTarget))
                                 {
                                     extensionNeeded = false;
-                                    comparisons.Add(cell.RightComparison);
+                                    break;
                                 }
                             }
                         }
@@ -924,6 +959,16 @@ public class XVerProcessor
                     if (xverExtensions.ContainsKey((element.Key, packageSupports[currentIndex + 1].Package.Key)))
                     {
                         continue;
+                    }
+
+                    foreach (DbGraphSd.DbElementCell? cell in sourceCells)
+                    {
+                        if (cell?.RightComparison == null)
+                        {
+                            continue;
+                        }
+
+                        comparisons.Add(cell.RightComparison);
                     }
 
                     // build an extension for the original source element to target the current target version
@@ -1007,7 +1052,7 @@ public class XVerProcessor
                                     (cell?.LeftComparison?.Relationship == CMR.SourceIsBroaderThanTarget))
                                 {
                                     extensionNeeded = false;
-                                    comparisons.Add(cell.LeftComparison);
+                                    break;
                                 }
                             }
                         }
@@ -1023,6 +1068,17 @@ public class XVerProcessor
                     if (xverExtensions.ContainsKey((element.Key, packageSupports[currentIndex-1].Package.Key)))
                     {
                         continue;
+                    }
+
+
+                    foreach (DbGraphSd.DbElementCell? cell in sourceCells)
+                    {
+                        if (cell?.LeftComparison == null)
+                        {
+                            continue;
+                        }
+
+                        comparisons.Add(cell.LeftComparison);
                     }
 
                     // build an extension for the original source element to target the current target version
@@ -1410,30 +1466,77 @@ public class XVerProcessor
         bool isRootElement = element.ResourceFieldOrder == 0;
         int elementPathLen = element.Path.Length;
 
-        // TODO: determine the correct context
-        // determine the context based on the closest path that has a target
-        StructureDefinition.ContextComponent context = new()
+        List<StructureDefinition.ContextComponent> contexts = [];
+
+        // if our source element is a resource or datatype, we can only apply it to the basic resource
+        if (isRootElement)
         {
-            Type = StructureDefinition.ExtensionContextType.Element,
-            Expression = isRootElement ? "Basic" : "Element",
-        };
+            contexts.Add(new()
+            {
+                Type = StructureDefinition.ExtensionContextType.Element,
+                Expression = "Basic",
+            });
+        }
+        // if there is exactly one comparison relevant here, use it as the source
+        else if (relevantComparisons.Count == 0)
+        {
+            // check to see if this structure type exists
+            string sdName = element.Path.Split('.')[0];
+            if (targetPackageSupport.CoreDC!.ComplexTypesByName.ContainsKey(sdName) ||
+                targetPackageSupport.CoreDC!.ResourcesByName.ContainsKey(sdName))
+            {
+                contexts.Add(new()
+                {
+                    Type = StructureDefinition.ExtensionContextType.Element,
+                    Expression = sdName,
+                });
+            }
+            else
+            {
+                contexts.Add(new()
+                {
+                    Type = StructureDefinition.ExtensionContextType.Element,
+                    Expression = "Element",
+                });
+            }
+        }
+        else
+        {
+            // build the list of possible contexts
+            List<string> possible = relevantComparisons.Select(comp => comp.TargetElementToken ?? string.Empty).Distinct().ToList();
+
+            // make sure the element exists in the target version
+            possible = possible.Where(pe => targetPackageSupport.CoreDC!.TryFindElementByPath(pe, out _, out _)).ToList();
+
+            if (possible.Count == 0)
+            {
+                possible.Add("Element");
+            }
+
+            contexts = possible.Select(pe => new StructureDefinition.ContextComponent()
+            {
+                Type = StructureDefinition.ExtensionContextType.Element,
+                Expression = pe,
+            }).ToList();
+        }
+
 
         StructureDefinition extSd = new()
         {
             Id = sdId,
             //Url = $"http://hl7.org/fhir/uv/xver/{sourcePackage.FhirVersionShort}/StructureDefinition/extension-{element.Path.Replace("[x]", string.Empty)}",
             Url = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/extension-{element.Path.Replace("[x]", string.Empty)}",
-            Name = sdId,
+            Name = sdId.Replace('-', '_').Replace('.', '_'),
             Version = _crossDefinitionVersion,
+            FhirVersion = EnumUtility.ParseLiteral<FHIRVersion>(targetPackageSupport!.CoreDC!.FhirVersionLiteral) ?? FHIRVersion.N5_0_0,
             DateElement = new FhirDateTime(DateTimeOffset.Now),
             Title = $"Cross-version Extension for {sourcePackage.ShortName}.{element.Path} for use in FHIR {targetPackage.ShortName}",
             Description = $"This cross-version extension represents {element.Path} from {sd.VersionedUrl} for use in FHIR {targetPackage.ShortName}.",
             Status = PublicationStatus.Draft,
             Experimental = false,
-            FhirVersion = FHIRVersion.N5_0_0,
             Kind = StructureDefinition.StructureDefinitionKind.ComplexType,
             Abstract = false,
-            Context = [context],
+            Context = contexts,
             Type = "Extension",
             BaseDefinition = "http://hl7.org/fhir/StructureDefinition/Extension",
             Derivation = StructureDefinition.TypeDerivationRule.Constraint,
@@ -1572,8 +1675,7 @@ public class XVerProcessor
         // if there are no child elements, we are done
         if (element.ChildElementCount != 0)
         {
-            // if we have child extensions, we cannot have a value
-            extSd.Differential.Element.Add(new()
+            ElementDefinition edForChildren = new()
             {
                 ElementId = extElementId + ".extension",
                 Path = extElementPath + ".extension",
@@ -1590,7 +1692,12 @@ public class XVerProcessor
                 },
                 Min = 0,
                 Max = "*",
-            });
+            };
+
+            // if we have child extensions, we cannot have a value
+            extSd.Differential.Element.Add(edForChildren);
+
+            int minRequired = 0;
 
             // iterate over our child elements and add them
             foreach (DbElement childElement in DbElement.SelectList(
@@ -1598,6 +1705,8 @@ public class XVerProcessor
                 ParentElementKey: element.Key,
                 orderByProperties: [nameof(DbElement.ResourceFieldOrder)]))
             {
+                minRequired += childElement.MinCardinality;
+
                 // add this child element to the extension
                 addElementToExtension(
                     extSd,
@@ -1618,6 +1727,8 @@ public class XVerProcessor
             //    Path = extElementPath + ".value[x]",
             //    Max = "0",
             //});
+
+            edForChildren.Min = minRequired;
 
             return;
         }
