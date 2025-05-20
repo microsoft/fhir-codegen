@@ -33,6 +33,7 @@ using static System.Net.Mime.MediaTypeNames;
 using Hl7.FhirPath.Sprache;
 using Tasks = System.Threading.Tasks;
 using System.IO;
+using System.Reflection.Metadata;
 
 
 namespace Microsoft.Health.Fhir.Comparison.XVer;
@@ -2550,11 +2551,39 @@ public class XVerProcessor
         Dictionary<string, List<string>> extReplaceableTypes = [];
         List<string> extMappedTypes = [];
 
+        HashSet<string> quantityProfilesMovedToTypes = [];
+
         // categorize the types based on how we process them
         foreach (string valueTypeName in elementValueTypes.Select(t => t.TypeName ?? string.Empty).Distinct())
         {
             if (targetPackageSupport.AllowedExtensionTypes.Contains(valueTypeName))
             {
+                // check for this being the "Quantity" type to do special type profile handling
+                if (valueTypeName == "Quantity")
+                {
+                    List<string> typeProfiles = collectedValueTypes[valueTypeName].Select(t => t.TypeProfile).Where(t => t != null)!.ToList<string>();
+
+                    if (typeProfiles.Count > 0)
+                    {
+                        // check the profiled types
+                        foreach (string typeProfile in typeProfiles)
+                        {
+                            string tpShort = typeProfile.Split('/')[^1];
+                            if (targetPackageSupport.AllowedExtensionTypes.Contains(tpShort))
+                            {
+                                quantityProfilesMovedToTypes.Add(tpShort);
+                                extAllowedTypes.Add(tpShort);
+                            }
+                        }
+
+                        // skip this quantity if it was only this type
+                        if (typeProfiles.Count == quantityProfilesMovedToTypes.Count)
+                        {
+                            continue;
+                        }
+                    }
+                }
+
                 extAllowedTypes.Add(valueTypeName);
                 continue;
             }
@@ -2587,87 +2616,6 @@ public class XVerProcessor
                 extElementId,           //extElementId + ".value[x].extension",
                 extElementPath,         //extElementPath + ".value[x].extension",
                 typeName);
-
-            //if (!addedEdExt)
-            //{
-            //    extSd.Differential.Element.Add(new()
-            //    {
-            //        ElementId = extElementId + ".extension",
-            //        Path = extElementPath + ".extension",
-            //        Slicing = new()
-            //        {
-            //            Discriminator = [
-            //                new()
-            //                {
-            //                    Type = ElementDefinition.DiscriminatorType.Value,
-            //                    Path = "url",
-            //                }
-            //            ],
-            //        },
-            //        Max = "*",
-            //    });
-
-            //    extSd.Differential.Element.Add(new()
-            //    {
-            //        ElementId = extElementId + ".extension:_datatype",
-            //        Path = extElementPath + ".extension",
-            //        SliceName = "_datatype",
-            //        Short = $"Data type name for {element.Id} from FHIR {sourcePackageSupport.Package.ShortName}",
-            //        Definition = $"Data type name for {element.Id} from FHIR {sourcePackageSupport.Package.ShortName}",
-            //        Min = 1,
-            //        Max = "1",
-            //        Type = [
-            //            new()
-            //            {
-            //                Code = "Extension",
-            //                Profile = ["http://hl7.org/fhir/StructureDefinition/_datatype"],
-            //            }
-            //        ],
-            //    });
-
-            //    extSd.Differential.Element.Add(new()
-            //    {
-            //        ElementId = extElementId + ".extension:_datatype.value[x]",
-            //        Path = extElementPath + ".extension.value[x]",
-            //        Min = 1,
-            //        Max = "1",
-            //        Type = [
-            //            new()
-            //            {
-            //                Code = "string",
-            //            }
-            //        ],
-            //        Fixed = new FhirString(typeName),
-            //    });
-
-            //    extSd.Differential.Element.Add(new()
-            //    {
-            //        ElementId = extElementId + ".extension:_datatype.url",
-            //        Path = extElementPath + ".extension.url",
-            //        Min = 1,
-            //        Max = "1",
-            //        Fixed = new FhirUri("_datatype")
-            //    });
-
-            //    //extSd.Differential.Element.Add(new()
-            //    //{
-            //    //    ElementId = extElementId + ".extension:_datatype.url",
-            //    //    Path = extElementPath + ".extension.url",
-            //    //    Short = $"Source of the definition for the extension code - a logical name or a URL.",
-            //    //    Definition = $"Data type name for {element.Id} from FHIR {sourcePackageSupport.Package.ShortName}",
-            //    //    Min = 1,
-            //    //    Max = "1",
-            //    //    Type = [
-            //    //        new()
-            //    //        {
-            //    //            Code = "Extension",
-            //    //            Profile = ["http://hl7.org/fhir/StructureDefinition/_datatype"],
-            //    //        }
-            //    //    ],
-            //    //});
-
-            //    addedEdExt = true;
-            //}
 
             // resolve this structure
             DbStructureDefinition? etSd = DbStructureDefinition.SelectSingle(
@@ -2708,8 +2656,8 @@ public class XVerProcessor
             }
         }
 
-        // process allowed and replaceable types
-        foreach (string typeName in extAllowedTypes)
+        // process replaced quantity types
+        foreach (string typeName in quantityProfilesMovedToTypes)
         {
             if (usedTypes.Contains(typeName))
             {
@@ -2724,8 +2672,8 @@ public class XVerProcessor
             }
 
             // consolidate profiles
-            List<string> typeProfiles = collectedValueTypes[typeName].Select(t => t.TypeProfile).Where(t => t != null)!.ToList<string>();
-            List<string> targetProfiles = collectedValueTypes[typeName].Select(t => t.TargetProfile).Where(t => t != null)!.ToList<string>();
+            List<string> typeProfiles = collectedValueTypes.Contains(typeName) ? collectedValueTypes[typeName].Select(t => t.TypeProfile).Where(t => t != null)!.ToList<string>() : [];
+            List<string> targetProfiles = collectedValueTypes.Contains(typeName) ? collectedValueTypes[typeName].Select(t => t.TargetProfile).Where(t => t != null)!.ToList<string>() : [];
 
             // create a new type reference
             ElementDefinition.TypeRefComponent? edValueType = new()
@@ -2752,93 +2700,67 @@ public class XVerProcessor
                         extElementPath,         //extElementPath + ".value[x].extension",
                         rt);
                 }
+            }
 
-                //if (!addedEdValueExtension)
-                //{
-                //    extSd.Differential.Element.Add(new()
-                //    {
-                //        ElementId = extElementId + ".value[x].extension",
-                //        Path = extElementPath + ".value[x].extension",
-                //        Slicing = new()
-                //        {
-                //            Discriminator = [
-                //                new()
-                //            {
-                //                Type = ElementDefinition.DiscriminatorType.Value,
-                //                Path = "url",
-                //            }
-                //            ],
-                //        },
-                //        Max = "*",
-                //    });
+            usedTypes.Add(typeName);
+        }
 
-                //    extSd.Differential.Element.Add(new()
-                //    {
-                //        ElementId = extElementId + ".value[x].extension:_datatype",
-                //        Path = extElementPath + ".value[x].extension",
-                //        SliceName = "_datatype",
-                //        Short = $"Data type name for {element.Id} from FHIR {sourcePackageSupport.Package.ShortName}",
-                //        Definition = $"Data type name for {element.Id} from FHIR {sourcePackageSupport.Package.ShortName}",
-                //        Min = 0,
-                //        Max = "1",
-                //        Type = [
-                //            new()
-                //        {
-                //            Code = "Extension",
-                //            Profile = ["http://hl7.org/fhir/StructureDefinition/_datatype"],
-                //        }
-                //        ],
-                //    });
+        // process allowed and replaceable types
+        foreach (string typeName in extAllowedTypes)
+        {
+            if (usedTypes.Contains(typeName))
+            {
+                continue;
+            }
 
-                //    addedEdValueExtension = true;
-                //}
+            // add the value element if we are supposed to
+            if (!addedEdValue)
+            {
+                extSd.Differential.Element.Add(extensionEdValue);
+                addedEdValue = true;
+            }
 
-                //if ((replaceableTypes.Count == 1) &&
-                //    (extEdValueExtension == null))
-                //{
-                //    extEdValueExtension = new()
-                //    {
-                //        ElementId = extElementId + ".value[x].extension:_datatype.value[x]",
-                //        Path = extElementPath + ".value[x].extension.value[x]",
-                //        Min = 1,
-                //        Max = "1",
-                //        Type = [
-                //            new()
-                //            {
-                //                Code = "string",
-                //            }
-                //        ],
-                //        Fixed = new FhirString(replaceableTypes.First()),
-                //    };
+            // consolidate profiles
+            List<string> typeProfiles = collectedValueTypes[typeName].Select(t => t.TypeProfile).Where(t => t != null)!.ToList<string>();
+            List<string> targetProfiles = collectedValueTypes[typeName].Select(t => t.TargetProfile).Where(t => t != null)!.ToList<string>();
 
-                //    extSd.Differential.Element.Add(extEdValueExtension);
-                //}
-                //else if (extEdValueExtension == null)
-                //{
-                //    extEdValueExtension = new()
-                //    {
-                //        ElementId = extElementId + ".value[x].extension:_datatype.value[x]",
-                //        Path = extElementPath + ".value[x].extension.value[x]",
-                //        Short = string.Join('|', replaceableTypes),
-                //        Definition = $"Must be one of: {string.Join(", ", replaceableTypes)}",
-                //        Min = 1,
-                //        Max = "1",
-                //        Type = [
-                //            new()
-                //            {
-                //                Code = "string",
-                //            }
-                //        ],
-                //    };
+            // remove any quantity type profiles that got promoted
+            if ((typeName == "Quantity") &&
+                (typeProfiles.Count > 0) &&
+                (quantityProfilesMovedToTypes.Count > 0))
+            {
+                List<string> toRemove = typeProfiles.Where(tp => quantityProfilesMovedToTypes.Contains(tp.Split('/')[^1])).ToList();
+                foreach (string tr in toRemove)
+                {
+                    typeProfiles.Remove(tr);
+                }
+            }
 
-                //    extSd.Differential.Element.Add(extEdValueExtension);
-                //}
-                //else
-                //{
-                //    extEdValueExtension.Short += "|" + string.Join('|', replaceableTypes);
-                //    extEdValueExtension.Definition = $"Must be one of: {extEdValueExtension.Short.Replace("|", ", ")}";
-                //    extEdValueExtension.Fixed = null;
-                //}
+            // create a new type reference
+            ElementDefinition.TypeRefComponent? edValueType = new()
+            {
+                Code = typeName,
+                ProfileElement = typeProfiles.Select(v => new Canonical(v)).ToList(),
+                TargetProfileElement = targetProfiles.Select(v => new Canonical(v)).ToList(),
+            };
+
+            extensionEdValue.Type.Add(edValueType);
+
+            // check to see if we use the type to contain data from another type too (need extensions)
+            if (extReplaceableTypes.TryGetValue(typeName, out List<string>? replaceableTypes))
+            {
+                // add each of the replaceable types
+                foreach (string rt in replaceableTypes)
+                {
+                    addDatatypeExtension(
+                        extSd,
+                        element,
+                        sourcePackageSupport,
+                        ref extensionDatatypeValueElement,
+                        extElementId,           //extElementId + ".value[x].extension",
+                        extElementPath,         //extElementPath + ".value[x].extension",
+                        rt);
+                }
             }
 
             usedTypes.Add(typeName);
@@ -2879,93 +2801,6 @@ public class XVerProcessor
                     extElementPath,         //extElementPath + ".value[x].extension",
                     rt);
             }
-
-            //if (!addedEdValueExtension)
-            //{
-            //    //extSd.Differential.Element.Add(new()
-            //    //{
-            //    //    ElementId = extElementId + ".value[x].extension",
-            //    //    Path = extElementPath + ".value[x].extension",
-            //    //    Slicing = new()
-            //    //    {
-            //    //        Discriminator = [
-            //    //            new()
-            //    //            {
-            //    //                Type = ElementDefinition.DiscriminatorType.Value,
-            //    //                Path = "url",
-            //    //            }
-            //    //        ],
-            //    //    },
-            //    //    Max = "*",
-            //    //});
-
-            //    //extSd.Differential.Element.Add(new()
-            //    //{
-            //    //    ElementId = extElementId + ".value[x].extension:_datatype",
-            //    //    Path = extElementPath + ".value[x].extension",
-            //    //    SliceName = "_datatype",
-            //    //    Short = $"Data type name for {element.Id} from FHIR {sourcePackageSupport.Package.ShortName}",
-            //    //    Definition = $"Data type name for {element.Id} from FHIR {sourcePackageSupport.Package.ShortName}",
-            //    //    Min = 0,
-            //    //    Max = "1",
-            //    //    Type = [
-            //    //        new()
-            //    //        {
-            //    //            Code = "Extension",
-            //    //            Profile = ["http://hl7.org/fhir/StructureDefinition/_datatype"],
-            //    //        }
-            //    //    ],
-            //    //});
-
-            //    addedEdValueExtension = true;
-            //}
-
-            //if ((replaceableTypes.Count == 1) &&
-            //    (extEdValueExtension == null))
-            //{
-            //    //extEdValueExtension = new()
-            //    //{
-            //    //    ElementId = extElementId + ".value[x].extension:_datatype.value[x]",
-            //    //    Path = extElementPath + ".value[x].extension.value[x]",
-            //    //    Min = 1,
-            //    //    Max = "1",
-            //    //    Type = [
-            //    //        new()
-            //    //            {
-            //    //                Code = "string",
-            //    //            }
-            //    //    ],
-            //    //    Fixed = new FhirString(replaceableTypes.First()),
-            //    //};
-
-            //    //extSd.Differential.Element.Add(extEdValueExtension);
-            //}
-            //else if (extEdValueExtension == null)
-            //{
-            //    extEdValueExtension = new()
-            //    {
-            //        ElementId = extElementId + ".value[x].extension:_datatype.value[x]",
-            //        Path = extElementPath + ".value[x].extension.value[x]",
-            //        Short = string.Join('|', replaceableTypes),
-            //        Definition = $"Must be one of: {string.Join(", ", replaceableTypes)}",
-            //        Min = 1,
-            //        Max = "1",
-            //        Type = [
-            //            new()
-            //                {
-            //                    Code = "string",
-            //                }
-            //        ],
-            //    };
-
-            //    extSd.Differential.Element.Add(extEdValueExtension);
-            //}
-            //else
-            //{
-            //    extEdValueExtension.Short += "|" + string.Join('|', replaceableTypes);
-            //    extEdValueExtension.Definition = $"Must be one of: {extEdValueExtension.Short.Replace("|", ", ")}";
-            //    extEdValueExtension.Fixed = null;
-            //}
 
             usedTypes.Add(typeName);
         }
