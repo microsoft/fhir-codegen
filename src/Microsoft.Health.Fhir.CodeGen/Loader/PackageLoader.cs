@@ -174,7 +174,7 @@ public partial class PackageLoader : IDisposable
 
         _defaultFhirVersion = FhirReleases.FhirVersionToSequence(_rootConfiguration.FhirVersion);
 
-        _jsonOptions = opts.FhirJsonOptions;
+        _jsonOptions = opts.FhirJsonOptions.UsingMode(DeserializerModes.Ostrich);
         _jsonParser = new(opts.FhirJsonSettings);
 
 #if !DISABLE_XML

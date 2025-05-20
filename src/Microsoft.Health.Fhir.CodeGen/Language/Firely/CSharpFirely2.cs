@@ -939,6 +939,14 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
 
             foreach (SearchParameter sp in resourceSearchParams.Values.OrderBy(s => s.Name))
             {
+                // TODO:R6: Add support for the 'resource' search parameter type
+                if ((sp.TypeElement.ObjectValue is string rt) &&
+                    (rt == "resource"))
+                {
+                    Console.WriteLine($"Skipping SearchParameter {sp.Id} ({sp.Url}) because it is target type of 'resource'!!!");
+                    continue;
+                }
+
                 if (sp.Experimental == true)
                 {
                     continue;
