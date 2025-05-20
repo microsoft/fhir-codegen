@@ -480,10 +480,10 @@ public class XVerProcessor
         // iterate over the list of packages
         for (int focusPackageIndex = 0; focusPackageIndex < packages.Count; focusPackageIndex++)
         {
-            if (focusPackageIndex != packages.Count - 1)
-            {
-                continue;
-            }
+            //if (focusPackageIndex != packages.Count - 1)
+            //{
+            //    continue;
+            //}
 
             _logger.LogInformation($"Processing package {focusPackageIndex + 1} of {packages.Count}: {packages[focusPackageIndex].ShortName}");
 
