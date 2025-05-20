@@ -20,6 +20,9 @@
         <FluentButton OnClick="@(e => OpenDb())">Open</FluentButton>
     </FluentStack>
 
+    <FluentLabel Typo="Typography.Body">FHIR Artifact Version</FluentLabel>
+    <FluentTextField Value="@OutputVersion" @onchange="@(e => SaveConfig("outputVersion", e))"/>
+
     <FluentLabel Typo="Typography.Body">Output Root</FluentLabel>
     <FluentStack Orientation="Orientation.Horizontal">
         <FluentTextField Value="@OutputDir" @onchange="@(e => SaveConfig("outputDir", e))" />
@@ -61,6 +64,7 @@
     private string UserName { get; set; } = string.Empty;
     private string DbPath { get; set; } = string.Empty;
     private string OutputDir { get; set; } = string.Empty;
+    private string OutputVersion { get; set; } = string.Empty;
 
     private bool isWritingDocs = false;
     private bool isWritingFhir = false;
@@ -111,7 +115,7 @@
     {
         isWritingFhir = true;
         StateHasChanged();
-        await Xver.WriteFhirFromDatabase(OutputDir);
+        await Xver.WriteFhirFromDatabase(OutputDir, OutputVersion);
         isWritingFhir = false;
         StateHasChanged();
     }
@@ -170,6 +174,31 @@
 
         try
         {
+            var un = await BrowserStore.GetAsync<string>("outputVersion");
+            if (un.Value != null)
+            {
+                OutputVersion = un.Value;
+            }
+            else
+            {
+                OutputVersion = "0.1.0-snapshot";
+            }
+
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            // ignore
+        }
+
+        if (string.IsNullOrEmpty(OutputVersion))
+        {
+            OutputVersion = "0.1.0-snapshot";
+        }
+
+        try
+        {
             var un = await BrowserStore.GetAsync<string>("outputDir");
             if (un.Value != null)
             {
@@ -188,7 +217,7 @@
             // ignore
         }
 
-        if (string.IsNullOrEmpty(DbPath))
+        if (string.IsNullOrEmpty(OutputDir))
         {
             OutputDir = ServerConfig.OutputDirectory;
         }

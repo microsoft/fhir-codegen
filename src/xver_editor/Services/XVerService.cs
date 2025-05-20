@@ -134,7 +134,7 @@ public class XVerService : IXverService
         await Task.Run(() => xverProcessor.WriteDocsFromDatabase(outputDir: outputDirectory));
     }
 
-    public async Task WriteFhirFromDatabase(string? outputDirectory)
+    public async Task WriteFhirFromDatabase(string? outputDirectory, string? version)
     {
         if (_db == null)
         {
@@ -149,7 +149,7 @@ public class XVerService : IXverService
         }
 
         XVerProcessor xverProcessor = new(_db, outputDirectory, _config.LogFactory);
-        await Task.Run(() => xverProcessor.WriteFhirFromDatabase(outputDir: outputDirectory));
+        await Task.Run(() => xverProcessor.WriteFhirFromDatabase(outputDir: outputDirectory, version: version));
     }
 
     public Task StartAsync(CancellationToken cancellationToken)

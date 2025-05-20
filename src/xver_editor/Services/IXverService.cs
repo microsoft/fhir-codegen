@@ -18,5 +18,5 @@ public interface IXverService : IHostedService
     void CloseDb();
 
     Task WriteDocsFromDatabase(string outputDirectory);
-    Task WriteFhirFromDatabase(string outputDirectory);
+    Task WriteFhirFromDatabase(string outputDirectory, string version);
 }

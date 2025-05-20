@@ -130,6 +130,24 @@ public class ConfigXVer : ConfigRoot
         },
     };
 
+    [ConfigOption(
+        ArgName = "--xver-version",
+        EnvName = "Xver_Artifact_Version",
+        ArgArity = "0..1",
+        Description = "The version number to use when exporting XVer artifacts.")]
+    public string XverArtifactVersion { get; set; } = string.Empty;
+
+    private static ConfigurationOption XverArtifactVersionParameter => new()
+    {
+        Name = "Xver_Artifact_Version",
+        EnvVarName = "Xver_Artifact_Version",
+        DefaultValue = string.Empty,
+        CliOption = new System.CommandLine.Option<string?>("--xver-version", "The version number to use when exporting XVer artifacts.")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
 
 
 
@@ -200,6 +218,7 @@ public class ConfigXVer : ConfigRoot
         ReloadDatabaseParameter,
         CrossVersionSourceDbParameter,
         ComparisonPairFilterKeysParameter,
+        XverArtifactVersionParameter,
         NoOutputParameter,
         SaveComparisonResultParameter,
         CrossVersionMapSourcePathParameter,
@@ -237,6 +256,9 @@ public class ConfigXVer : ConfigRoot
                     break;
                 case "Comparison_Pair_Filter_Key":
                     ComparisonPairFilterKeys = GetOptHash(parseResult, opt.CliOption, ComparisonPairFilterKeys);
+                    break;
+                case "Xver_Artifact_Version":
+                    XverArtifactVersion = GetOpt(parseResult, opt, XverArtifactVersion);
                     break;
                 case "No_Output":
                     NoOutput = GetOpt(parseResult, opt, NoOutput);

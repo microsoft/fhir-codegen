@@ -192,7 +192,7 @@
         },
         "XVer fhir-db": {
             "commandName": "Project",
-            "commandLineArgs": "xver fhir",
+            "commandLineArgs": "xver fhir --xver-version 0.7.0-snapshot",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "CQL R4": {

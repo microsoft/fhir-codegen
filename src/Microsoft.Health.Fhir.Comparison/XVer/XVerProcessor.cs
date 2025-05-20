@@ -58,7 +58,7 @@ internal static class XVerExtensions
 
 public class XVerProcessor
 {
-    private const string _crossDefinitionVersion = "0.7.0";
+    private string _crossDefinitionVersion = "0.7.0";
 
     internal static readonly ComparisonDirection[] _directions = [ComparisonDirection.Up, ComparisonDirection.Down];
 
@@ -348,7 +348,7 @@ public class XVerProcessor
         public required string? TargetExtensionUrl { get; init; }
     }
 
-    public void WriteFhirFromDatabase(string? outputDir = null)
+    public void WriteFhirFromDatabase(string? version = null, string? outputDir = null)
     {
         // check for no database
         if (_db == null)
@@ -372,7 +372,16 @@ public class XVerProcessor
 
         Directory.CreateDirectory(fhirDir);
 
-        _logger.LogInformation($"Writing cross-version FHIR artifacts to {fhirDir}");
+        if (string.IsNullOrEmpty(version))
+        {
+            _crossDefinitionVersion = _config.XverArtifactVersion;
+        }
+        else
+        {
+            _crossDefinitionVersion = version;
+        }
+
+        _logger.LogInformation($"Writing cross-version FHIR artifacts to {fhirDir} with version {_crossDefinitionVersion}");
 
         // grab the FHIR Packages we are processing
         List<DbFhirPackage> packages = DbFhirPackage.SelectList(_db.DbConnection, orderByProperties: [nameof(DbFhirPackage.ShortName)]);
@@ -480,6 +489,12 @@ public class XVerProcessor
         // iterate over the list of packages
         for (int focusPackageIndex = 0; focusPackageIndex < packages.Count; focusPackageIndex++)
         {
+            // ignore DSTU2 for now
+            //if (packageSupports[focusPackageIndex].Package.DefinitionFhirSequence == FhirReleases.FhirSequenceCodes.DSTU2)
+            //{
+            //    continue;
+            //}
+
             //if (focusPackageIndex != packages.Count - 1)
             //{
             //    continue;
@@ -1340,7 +1355,8 @@ public class XVerProcessor
     {
         Dictionary<int, DbFhirPackage> packageDict = packageSupports.Select(ps => ps.Package).ToDictionary(p => p.Key);
         DbFhirPackage focusPackage = packageSupports[focusPackageIndex].Package;
-        SnapshotGenerator sg = packageSupports[focusPackageIndex].SnapshotGenerator!;
+
+        ILookup<int, SnapshotGenerator?> generatorsById = packageSupports.ToLookup(ps => ps.Package.Key, ps => ps.SnapshotGenerator);
 
         int fileIndex = 0;
 
@@ -1358,7 +1374,8 @@ public class XVerProcessor
                 // a valid snapshot will always have at least the root element
                 if (sd.Snapshot.Element.Count == 0)
                 {
-                    sd.Snapshot.Element = sg.GenerateAsync(sd).Result;
+                    //sd.Snapshot.Element = packageSupports[targetPackageId].SnapshotGenerator?.GenerateAsync(sd).Result ?? [];
+                    sd.Snapshot.Element = generatorsById[targetPackageId]?.FirstOrDefault()?.GenerateAsync(sd).Result ?? [];
                 }
             }
             catch (Exception) { }
@@ -2491,6 +2508,10 @@ public class XVerProcessor
             Short = edShortText,
             Definition = edDefinition,
             Comment = edComment,
+            Base = new()
+            {
+                Path = "Extension.value[x]",
+            },
             Type = [],
         };
 
@@ -2989,6 +3010,10 @@ public class XVerProcessor
                 Comment = $"Must be: {typeName}",
                 Min = 1,
                 Max = "1",
+                Base = new()
+                {
+                    Path = "Extension.value[x]",
+                },
                 Type = [
                         new()
                             {
