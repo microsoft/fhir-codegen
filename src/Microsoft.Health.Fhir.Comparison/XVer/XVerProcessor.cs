@@ -502,7 +502,7 @@ public class XVerProcessor
         }
 
         // write all of our outcome lists
-        writeXverOutcomes(packageSupports, xverOutcomes, Path.Combine(outputDir, "outcomes"));
+        writeXverOutcomes(packageSupports, xverOutcomes, fhirDir);
 
         // //writeFhirStructures(packageComparisonPairs, fhirDir, differentialVsBySourceKey, FhirArtifactClassEnum.PrimitiveType);
         //writeFhirStructures(packageComparisonPairs, fhirDir, differentialVsBySourceKey, FhirArtifactClassEnum.ComplexType); 
@@ -546,7 +546,7 @@ public class XVerProcessor
                 }
 
                 string filename = $"ImplementationGuide-{id}.json";
-                File.WriteAllText(Path.Combine(fhirDir, $"{sourcePackage.ShortName}-for-{targetSupport.Package.ShortName}", filename), igJson);
+                File.WriteAllText(Path.Combine(fhirDir, $"{sourcePackage.ShortName}-for-{targetSupport.Package.ShortName}", "package", filename), igJson);
             }
 
             // build and write the package.manifest.json file
@@ -562,14 +562,14 @@ public class XVerProcessor
                     """;
 
                 string filename = "package.manifest.json";
-                File.WriteAllText(Path.Combine(fhirDir, $"{sourcePackage.ShortName}-for-{targetSupport.Package.ShortName}", filename), pmJson);
+                File.WriteAllText(Path.Combine(fhirDir, $"{sourcePackage.ShortName}-for-{targetSupport.Package.ShortName}", "package", filename), pmJson);
             }
 
             // build and write the .index.json file
             {
                 string indexJson = getIndexJson(sourcePackage, targetSupport.Package, xverValueSets, xverExtensions, id);
                 string filename = ".index.json";
-                File.WriteAllText(Path.Combine(fhirDir, $"{sourcePackage.ShortName}-for-{targetSupport.Package.ShortName}", filename), indexJson);
+                File.WriteAllText(Path.Combine(fhirDir, $"{sourcePackage.ShortName}-for-{targetSupport.Package.ShortName}", "package", filename), indexJson);
             }
 
             // build and write the package.json file
@@ -610,7 +610,7 @@ public class XVerProcessor
                     """;
 
                 string filename = "package.json";
-                File.WriteAllText(Path.Combine(fhirDir, $"{sourcePackage.ShortName}-for-{targetSupport.Package.ShortName}", filename), packageJson);
+                File.WriteAllText(Path.Combine(fhirDir, $"{sourcePackage.ShortName}-for-{targetSupport.Package.ShortName}", "package", filename), packageJson);
             }
         }
     }
@@ -958,8 +958,10 @@ public class XVerProcessor
     private void writeXverOutcomes(
         List<PackageXverSupport> packageSupports,
         Dictionary<(int, string), List<List<XverOutcome>>> xverOutcomes,
-        string outputDir)
+        string fhirDir)
     {
+        HashSet<string> createdDirs = [];
+
         // iterate over each structure in each source package
         foreach (((int sourcePackageIndex, string sourceStructureName), List<List<XverOutcome>> structureOutcomesByTarget) in xverOutcomes)
         {
@@ -974,33 +976,66 @@ public class XVerProcessor
                 DbFhirPackage sourcePackage = packageSupports[sourcePackageIndex].Package;
                 DbFhirPackage targetPackage = packageSupports[targetPackageIndex].Package;
 
-                string dir = Path.Combine(outputDir, $"{sourcePackage.ShortName}-for-{targetPackage.ShortName}");
-
-                if (!Directory.Exists(dir))
+                string packageFor = $"{sourcePackage.ShortName}-for-{targetPackage.ShortName}";
+                string dir;
+                if (createdDirs.Contains(packageFor))
                 {
-                    Directory.CreateDirectory(dir);
+                    dir = Path.Combine(fhirDir, packageFor, "package", "doc");
+                }
+                else
+                {
+                    dir = Path.Combine(fhirDir, $"{sourcePackage.ShortName}-for-{targetPackage.ShortName}");
+                    if (!Directory.Exists(dir))
+                    {
+                        Directory.CreateDirectory(dir);
+                    }
+
+                    dir = Path.Combine(dir, "package");
+                    if (!Directory.Exists(dir))
+                    {
+                        Directory.CreateDirectory(dir);
+                    }
+
+                    dir = Path.Combine(dir, "doc");
+                    if (!Directory.Exists(dir))
+                    {
+                        Directory.CreateDirectory(dir);
+                    }
+
+                    createdDirs.Add(packageFor);
                 }
 
                 // create a filename for this structure's md file
-                string filename = $"Lookup-{sourcePackage.ShortName}-{sourceStructureName}-{targetPackage.ShortName}.md";
+                string mdFilename = $"Lookup-{sourcePackage.ShortName}-{sourceStructureName}-{targetPackage.ShortName}.md";
+                string htmlFilename = $"Lookup-{sourcePackage.ShortName}-{sourceStructureName}-{targetPackage.ShortName}.html";
 
-                // open our file
-                using ExportStreamWriter writer = createMarkdownWriter(Path.Combine(dir, filename), false, false);
+                // open our files
+                using ExportStreamWriter mdWriter = createMarkdownWriter(Path.Combine(dir, mdFilename), false, false);
+                using ExportStreamWriter htmlWriter = createHtmlWriter(Path.Combine(dir, htmlFilename), false, false);
 
                 // write a header
-                writer.WriteLine($"### Lookup for FHIR {sourcePackage.ShortName} {sourceStructureName} for use in FHIR {targetPackage.ShortName}");
+                mdWriter.WriteLine($"### Lookup for FHIR {sourcePackage.ShortName} {sourceStructureName} for use in FHIR {targetPackage.ShortName}");
+                htmlWriter.WriteLine($"<h2>Lookup for FHIR {sourcePackage.ShortName} {sourceStructureName} for use in FHIR {targetPackage.ShortName}</h2>");
 
-                writer.WriteLine();
-                writer.WriteLine("| Source Element | Usage | Target |");
-                writer.WriteLine("| -------------- | ----- | ------ |");
+                mdWriter.WriteLine();
+                mdWriter.WriteLine("| Source Element | Usage | Target |");
+                mdWriter.WriteLine("| -------------- | ----- | ------ |");
+
+                htmlWriter.WriteLine();
+                htmlWriter.WriteLine("<table border=\"1\">");
+                htmlWriter.WriteLine("<tr><th>Source Element</th><th>Usage</th><th>Target</th></tr>");
 
                 // iterate over the elements of this structure in element order
                 foreach (XverOutcome outcome in outcomes.OrderBy(xo => xo.SourceElementFieldOrder))
                 {
-                    writer.WriteLine($"| {outcome.SourceElementId} | {outcome.OutcomeCode} | {outcome.TargetElementId ?? outcome.TargetExtensionUrl ?? "-"} |");
+                    mdWriter.WriteLine($"| {outcome.SourceElementId} | {outcome.OutcomeCode} | {outcome.TargetElementId ?? outcome.TargetExtensionUrl ?? "-"} |");
+                    htmlWriter.WriteLine($"<tr><td>{outcome.SourceElementId}</td><td>{outcome.OutcomeCode}</td><td>{outcome.TargetElementId ?? outcome.TargetExtensionUrl ?? "-"}</td></tr>");
                 }
 
-                writer.Close();
+                htmlWriter.WriteLine("</table>");
+
+                mdWriter.Close();
+                htmlWriter.Close();
             }
         }
     }
@@ -1022,6 +1057,12 @@ public class XVerProcessor
 
             // build a path for this direction
             string dir = Path.Combine(fhirDir, focusPackage.ShortName + "-for-" + targetPackage.ShortName);
+            if (!Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+
+            dir = Path.Combine(dir, "package");
             if (!Directory.Exists(dir))
             {
                 Directory.CreateDirectory(dir);
@@ -1327,6 +1368,12 @@ public class XVerProcessor
 
             // build a path for this direction
             string dir = Path.Combine(fhirDir, focusPackage.ShortName + "-for-" + targetPackage.ShortName);
+            if (!Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+
+            dir = Path.Combine(dir, "package");
             if (!Directory.Exists(dir))
             {
                 Directory.CreateDirectory(dir);
@@ -5448,6 +5495,37 @@ public class XVerProcessor
         throw new IOException("Failed to create file after 3 attempts.");
     }
 
+    private ExportStreamWriter createHtmlWriter(string filename, bool writeGenerationHeader = true, bool includeGenerationTime = false)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            try
+            {
+                ExportStreamWriter writer = new(filename);
+
+                if (writeGenerationHeader)
+                {
+                    writer.WriteLine($"<h2>Comparison of {string.Join(", ", _definitions.Select(dc => dc.Key))}</h2>");
+
+                    if (includeGenerationTime)
+                    {
+                        writer.WriteLine($"Generated at {DateTime.Now.ToString("F")}");
+                    }
+
+                    writer.WriteLine();
+                }
+
+                return writer;
+            }
+            catch (IOException)
+            {
+                // wait a bit and try again
+                Thread.Sleep(1000);
+            }
+        }
+
+        throw new IOException("Failed to create file after 3 attempts.");
+    }
 
     /// <summary>
     /// Applies the relationship between existing and change concept domain relationship codes.
