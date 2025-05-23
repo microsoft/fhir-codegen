@@ -7,6 +7,7 @@ using System.Reflection.Metadata;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using fhir_codegen.SQLiteGenerator;
 using Hl7.Fhir.ElementModel.Types;
 using Microsoft.Data.Sqlite;
@@ -16,6 +17,7 @@ namespace Microsoft.Health.Fhir.Comparison.Models;
 
 
 [CgSQLiteTable(tableName: "ExtensionSubstitutions")]
+[CgSQLiteIndex(nameof(SourceElementId))]
 public partial class DbExtensionSubstitution
 {
     [CgSQLiteKey]

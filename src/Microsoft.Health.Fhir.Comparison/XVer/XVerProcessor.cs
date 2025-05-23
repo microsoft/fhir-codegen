@@ -347,6 +347,7 @@ public class XVerProcessor
         public required XverOutcomeCodes OutcomeCode { get; init; }
         public required string? TargetElementId { get; init; }
         public required string? TargetExtensionUrl { get; init; }
+        public required string? ReplacementExtensionUrl { get; init; }
     }
 
     private class XverPackageIndexInfo
@@ -523,7 +524,7 @@ public class XVerProcessor
             writeXverValueSets(packages, focusPackageIndex, xverValueSets, fhirDir);
             //writeFhirValueSets(packages, i, packageComparisonPairs, fhirDir, differentialVsBySourceKey);
 
-            Dictionary<(int sourceElementKey, int targetPackageId), StructureDefinition> xverExtensions = [];
+            Dictionary<(int sourceElementKey, int targetPackageId), (StructureDefinition, DbExtensionSubstitution?)> xverExtensions = [];
             buildXverStructures(packageSupports, focusPackageIndex, xverValueSets, xverExtensions, xverOutcomes, FhirArtifactClassEnum.ComplexType);
             buildXverStructures(packageSupports, focusPackageIndex, xverValueSets, xverExtensions, xverOutcomes, FhirArtifactClassEnum.Resource);
 
@@ -726,7 +727,7 @@ public class XVerProcessor
         List<PackageXverSupport> packageSupports,
         int focusPackageIndex,
         Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
-        Dictionary<(int sourceElementKey, int targetPackageId), StructureDefinition> xverExtensions,
+        Dictionary<(int sourceElementKey, int targetPackageId), (StructureDefinition, DbExtensionSubstitution?)> xverExtensions,
         string fhirDir)
     {
         List<XverPackageIndexInfo> infos = [];
@@ -845,13 +846,18 @@ public class XVerProcessor
         DbFhirPackage sourcePackage,
         DbFhirPackage targetPackage,
         Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
-        Dictionary<(int sourceElementKey, int targetPackageId), StructureDefinition> xverExtensions,
+        Dictionary<(int sourceElementKey, int targetPackageId), (StructureDefinition, DbExtensionSubstitution?)> xverExtensions,
         XverPackageIndexInfo indexInfo)
     {
         // build the list of structures we are defining
-        foreach (((int sourceElementKey, int targetPackageId), StructureDefinition sd) in xverExtensions)
+        foreach (((int sourceElementKey, int targetPackageId), (StructureDefinition sd, DbExtensionSubstitution? extensionSubstitution)) in xverExtensions)
         {
             if (targetPackageId != targetPackage.Key)
+            {
+                continue;
+            }
+
+            if (extensionSubstitution != null)
             {
                 continue;
             }
@@ -956,7 +962,7 @@ public class XVerProcessor
         DbFhirPackage sourcePackage,
         DbFhirPackage targetPackage,
         Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
-        Dictionary<(int sourceElementKey, int targetPackageId), StructureDefinition> xverExtensions,
+        Dictionary<(int sourceElementKey, int targetPackageId), (StructureDefinition, DbExtensionSubstitution?)> xverExtensions,
         XverPackageIndexInfo indexInfo)
     {
         ImplementationGuide ig = new()
@@ -1048,9 +1054,14 @@ public class XVerProcessor
         };
 
         // add our structures
-        foreach (((int sourceElementKey, int targetPackageId), StructureDefinition sd) in xverExtensions)
+        foreach (((int sourceElementKey, int targetPackageId), (StructureDefinition sd, DbExtensionSubstitution? extensionSubstitution)) in xverExtensions)
         {
             if (targetPackageId != targetPackage.Key)
+            {
+                continue;
+            }
+
+            if (extensionSubstitution != null)
             {
                 continue;
             }
@@ -1222,13 +1233,18 @@ public class XVerProcessor
         DbFhirPackage sourcePackage,
         DbFhirPackage targetPackage,
         Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
-        Dictionary<(int sourceElementKey, int targetPackageId), StructureDefinition> xverExtensions,
+        Dictionary<(int sourceElementKey, int targetPackageId), (StructureDefinition, DbExtensionSubstitution?)> xverExtensions,
         XverPackageIndexInfo indexInfo)
     {
         // build the list of structures we are defining
-        foreach (((int sourceElementKey, int targetPackageId), StructureDefinition sd) in xverExtensions)
+        foreach (((int sourceElementKey, int targetPackageId), (StructureDefinition sd, DbExtensionSubstitution? extensionSubstitution)) in xverExtensions)
         {
             if (targetPackageId != targetPackage.Key)
+            {
+                continue;
+            }
+
+            if (extensionSubstitution != null)
             {
                 continue;
             }
@@ -1545,8 +1561,9 @@ public class XVerProcessor
                 // iterate over the elements of this structure in element order
                 foreach (XverOutcome outcome in outcomes.OrderBy(xo => xo.SourceElementFieldOrder))
                 {
-                    mdWriter.WriteLine($"| {outcome.SourceElementId} | {outcome.OutcomeCode} | {outcome.TargetElementId ?? outcome.TargetExtensionUrl ?? "-"} |");
-                    htmlWriter.WriteLine($"<tr><td>{outcome.SourceElementId}</td><td>{outcome.OutcomeCode}</td><td>{outcome.TargetElementId ?? outcome.TargetExtensionUrl ?? "-"}</td></tr>");
+                    string target = outcome.ReplacementExtensionUrl ?? outcome.TargetElementId ?? outcome.TargetExtensionUrl ?? "-";
+                    mdWriter.WriteLine($"| {outcome.SourceElementId} | {outcome.OutcomeCode} | {target} |");
+                    htmlWriter.WriteLine($"<tr><td>{outcome.SourceElementId}</td><td>{outcome.OutcomeCode}</td><td>{target}</td></tr>");
                 }
 
                 htmlWriter.WriteLine("</table>");
@@ -1852,7 +1869,7 @@ public class XVerProcessor
     private void writeXverStructures(
         List<PackageXverSupport> packageSupports,
         int focusPackageIndex,
-        Dictionary<(int sourceElementKey, int targetPackageId), StructureDefinition> xverExtensions,
+        Dictionary<(int sourceElementKey, int targetPackageId), (StructureDefinition, DbExtensionSubstitution?)> xverExtensions,
         string fhirDir)
     {
         Dictionary<int, DbFhirPackage> packageDict = packageSupports.Select(ps => ps.Package).ToDictionary(p => p.Key);
@@ -1860,11 +1877,15 @@ public class XVerProcessor
 
         ILookup<int, SnapshotGenerator?> generatorsById = packageSupports.ToLookup(ps => ps.Package.Key, ps => ps.SnapshotGenerator);
 
-        int fileIndex = 0;
-
-        // iterate over the value sets
-        foreach (((int sourceKey, int targetPackageId), StructureDefinition sd) in xverExtensions)
+        // iterate over the structures
+        foreach (((int sourceKey, int targetPackageId), (StructureDefinition sd, DbExtensionSubstitution? extensionSubstitution)) in xverExtensions)
         {
+            // if this extension is substituted out, we do not need to write it
+            if (extensionSubstitution != null)
+            {
+                continue;
+            }
+
             try
             {
                 if (sd.Snapshot == null)
@@ -1881,7 +1902,6 @@ public class XVerProcessor
                 }
             }
             catch (Exception) { }
-
 
             DbFhirPackage targetPackage = packageDict[targetPackageId];
 
@@ -1903,7 +1923,6 @@ public class XVerProcessor
 
             string path = Path.Combine(dir, filename);
             File.WriteAllText(path, sd.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
-            fileIndex++;
         }
     }
 
@@ -1912,7 +1931,7 @@ public class XVerProcessor
         List<PackageXverSupport> packageSupports,
         int sourcePackageIndex,
         Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
-        Dictionary<(int sourceElementKey, int targetPackageId), StructureDefinition> xverExtensions,
+        Dictionary<(int sourceElementKey, int targetPackageId), (StructureDefinition, DbExtensionSubstitution?)> xverExtensions,
         Dictionary<(int, string), List<List<XverOutcome>>> xverOutcomes,
         FhirArtifactClassEnum artifactClass)
     {
@@ -2016,6 +2035,7 @@ public class XVerProcessor
                             OutcomeCode = XverOutcomeCodes.UseExtensionFromAncestor,
                             TargetElementId = null,
                             TargetExtensionUrl = null,
+                            ReplacementExtensionUrl = null,
                         });
                         continue;
                     }
@@ -2035,6 +2055,7 @@ public class XVerProcessor
                             OutcomeCode = XverOutcomeCodes.UseBasicElement,
                             TargetElementId = null,
                             TargetExtensionUrl = null,
+                            ReplacementExtensionUrl = null,
                         });
                         continue;
                     }
@@ -2096,6 +2117,7 @@ public class XVerProcessor
                                             OutcomeCode = XverOutcomeCodes.UseElementSameName,
                                             TargetElementId = cell!.RightCell!.Element.Id,
                                             TargetExtensionUrl = null,
+                                            ReplacementExtensionUrl = null,
                                         });
                                     }
                                     else
@@ -2110,6 +2132,7 @@ public class XVerProcessor
                                             OutcomeCode = XverOutcomeCodes.UseElementRenamed,
                                             TargetElementId = cell!.RightCell!.Element.Id,
                                             TargetExtensionUrl = null,
+                                            ReplacementExtensionUrl = null,
                                         });
                                     }
 
@@ -2155,7 +2178,9 @@ public class XVerProcessor
 
                     if (extSd != null)
                     {
-                        xverExtensions.Add((element.Key, packageSupports[targetPackageIndex].Package.Key), extSd);
+                        DbExtensionSubstitution? extSub = DbExtensionSubstitution.SelectSingle(_db!.DbConnection, SourceElementId: element.Id);
+
+                        xverExtensions.Add((element.Key, packageSupports[targetPackageIndex].Package.Key), (extSd, extSub));
                         generatedElementKeys[targetPackageIndex].Add(element.Key);
 
                         xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
@@ -2168,6 +2193,7 @@ public class XVerProcessor
                             OutcomeCode = XverOutcomeCodes.UseExtension,
                             TargetElementId = null,
                             TargetExtensionUrl = extSd.Url,
+                            ReplacementExtensionUrl = extSub?.ReplacementUrl
                         });
                     }
                 }
@@ -2196,6 +2222,7 @@ public class XVerProcessor
                             OutcomeCode = XverOutcomeCodes.UseExtensionFromAncestor,
                             TargetElementId = null,
                             TargetExtensionUrl = null,
+                            ReplacementExtensionUrl = null,
                         });
                         continue;
                     }
@@ -2215,6 +2242,7 @@ public class XVerProcessor
                             OutcomeCode = XverOutcomeCodes.UseBasicElement,
                             TargetElementId = null,
                             TargetExtensionUrl = null,
+                            ReplacementExtensionUrl = null,
                         });
                         continue;
                     }
@@ -2276,6 +2304,7 @@ public class XVerProcessor
                                             OutcomeCode = XverOutcomeCodes.UseElementSameName,
                                             TargetElementId = cell!.LeftCell!.Element.Id,
                                             TargetExtensionUrl = null,
+                                            ReplacementExtensionUrl = null,
                                         });
                                     }
                                     else
@@ -2290,6 +2319,7 @@ public class XVerProcessor
                                             OutcomeCode = XverOutcomeCodes.UseElementRenamed,
                                             TargetElementId = cell!.LeftCell!.Element.Id,
                                             TargetExtensionUrl = null,
+                                            ReplacementExtensionUrl = null,
                                         });
                                     }
                                     break;
@@ -2334,7 +2364,9 @@ public class XVerProcessor
 
                     if (extSd != null)
                     {
-                        xverExtensions.Add((element.Key, targetPackage.Key), extSd);
+                        DbExtensionSubstitution? extSub = DbExtensionSubstitution.SelectSingle(_db!.DbConnection, SourceElementId: element.Id);
+
+                        xverExtensions.Add((element.Key, targetPackage.Key), (extSd, extSub));
                         generatedElementKeys[targetPackageIndex].Add(element.Key);
 
                         xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
@@ -2347,6 +2379,7 @@ public class XVerProcessor
                             OutcomeCode = XverOutcomeCodes.UseExtension,
                             TargetElementId = null,
                             TargetExtensionUrl = extSd.Url,
+                            ReplacementExtensionUrl = extSub?.ReplacementUrl,
                         });
                     }
                 }
