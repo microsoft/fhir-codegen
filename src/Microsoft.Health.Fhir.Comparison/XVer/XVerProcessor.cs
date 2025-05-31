@@ -2040,7 +2040,7 @@ public class XVerProcessor
                         continue;
                     }
 
-                    // do not generate if this element is equivalent in the target basic resource
+                    // do not generate if this element is part of a mapped structure and has an equivalent in the target's basic resource definition
                     if (structureMapsToBasic[targetPackageIndex] &&
                         (element.ParentElementKey != null) &&
                         packageSupports[targetPackageIndex].BasicElements.Contains(element.Path.Substring(sd.Name.Length)))
@@ -2070,7 +2070,7 @@ public class XVerProcessor
                     // if we have not hit a need for the extension yet in this direction, test the curent pair
                     if (!extensionNeeded)
                     {
-                        // check to see if this element has been mapped in the previous version
+                        // check to see if this element has already been mapped in the previous version
                         if ((currentIndex > sourcePackageIndex) &&
                             generatedElementKeys[currentIndex-1].Contains(element.Key))
                         {
@@ -2099,9 +2099,9 @@ public class XVerProcessor
 
                             foreach (DbGraphSd.DbElementCell? cell in sourceCells)
                             {
-                                // do not need to generate if equivalent or source is broader
+                                // do not need to generate if equivalent or source is NARROWER
                                 if ((cell?.RightComparison?.Relationship == CMR.Equivalent) ||
-                                    (cell?.RightComparison?.Relationship == CMR.SourceIsBroaderThanTarget))
+                                    (cell?.RightComparison?.Relationship == CMR.SourceIsNarrowerThanTarget))
                                 {
                                     extensionNeeded = false;
 
@@ -2286,9 +2286,9 @@ public class XVerProcessor
 
                             foreach (DbGraphSd.DbElementCell? cell in sourceCells)
                             {
-                                // do not need to generate if equivalent or source is broader
+                                // do not need to generate if equivalent or source is NARROWER
                                 if ((cell?.LeftComparison?.Relationship == CMR.Equivalent) ||
-                                    (cell?.LeftComparison?.Relationship == CMR.SourceIsBroaderThanTarget))
+                                    (cell?.LeftComparison?.Relationship == CMR.SourceIsNarrowerThanTarget))
                                 {
                                     extensionNeeded = false;
 
