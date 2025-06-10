@@ -335,6 +335,7 @@ public class XVerProcessor
         UseExtension,
         UseExtensionFromAncestor,
         UseBasicElement,
+        UseOneOfElements,
     }
 
     private record class XverOutcome
@@ -2097,48 +2098,76 @@ public class XVerProcessor
                             // easier to check inverse here
                             extensionNeeded = true;
 
-                            foreach (DbGraphSd.DbElementCell? cell in sourceCells)
+                            List<DbGraphSd.DbElementCell> matchedCells = sourceCells
+                                .Where(c => (c?.RightComparison?.Relationship == CMR.Equivalent) || (c?.RightComparison?.Relationship == CMR.SourceIsNarrowerThanTarget))
+                                .Select(c => c!)
+                                .ToList();
+
+                            if (matchedCells.Count != 0)
                             {
-                                // do not need to generate if equivalent or source is NARROWER
-                                if ((cell?.RightComparison?.Relationship == CMR.Equivalent) ||
-                                    (cell?.RightComparison?.Relationship == CMR.SourceIsNarrowerThanTarget))
+                                extensionNeeded = false;
+                                XverOutcomeCodes oc = matchedCells.Count > 1
+                                    ? XverOutcomeCodes.UseOneOfElements
+                                    : matchedCells[0].RightCell?.Element.Id == element.Id
+                                        ? XverOutcomeCodes.UseElementSameName
+                                        : XverOutcomeCodes.UseElementRenamed;
+
+                                xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
                                 {
-                                    extensionNeeded = false;
-
-                                    if (cell!.RightCell?.Element.Id == element.Id)
-                                    {
-                                        xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
-                                        {
-                                            SourcePackageKey = sourcePackage.Key,
-                                            SourceStructureName = sd.Name,
-                                            SourceElementId = element.Id,
-                                            SourceElementFieldOrder = element.ResourceFieldOrder,
-                                            TargetPackageKey = targetPackage.Key,
-                                            OutcomeCode = XverOutcomeCodes.UseElementSameName,
-                                            TargetElementId = cell!.RightCell!.Element.Id,
-                                            TargetExtensionUrl = null,
-                                            ReplacementExtensionUrl = null,
-                                        });
-                                    }
-                                    else
-                                    {
-                                        xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
-                                        {
-                                            SourcePackageKey = sourcePackage.Key,
-                                            SourceStructureName = sd.Name,
-                                            SourceElementId = element.Id,
-                                            SourceElementFieldOrder = element.ResourceFieldOrder,
-                                            TargetPackageKey = targetPackage.Key,
-                                            OutcomeCode = XverOutcomeCodes.UseElementRenamed,
-                                            TargetElementId = cell!.RightCell!.Element.Id,
-                                            TargetExtensionUrl = null,
-                                            ReplacementExtensionUrl = null,
-                                        });
-                                    }
-
-                                    break;
-                                }
+                                    SourcePackageKey = sourcePackage.Key,
+                                    SourceStructureName = sd.Name,
+                                    SourceElementId = element.Id,
+                                    SourceElementFieldOrder = element.ResourceFieldOrder,
+                                    TargetPackageKey = targetPackage.Key,
+                                    OutcomeCode = oc,
+                                    TargetElementId = string.Join(',', matchedCells.Select(c => c.RightCell?.Element.Id)),
+                                    TargetExtensionUrl = null,
+                                    ReplacementExtensionUrl = null,
+                                });
                             }
+
+                            //foreach (DbGraphSd.DbElementCell? cell in sourceCells)
+                            //{
+                            //    // do not need to generate if equivalent or source is NARROWER
+                            //    if ((cell?.RightComparison?.Relationship == CMR.Equivalent) ||
+                            //        (cell?.RightComparison?.Relationship == CMR.SourceIsNarrowerThanTarget))
+                            //    {
+                            //        extensionNeeded = false;
+
+                            //        if (cell!.RightCell?.Element.Id == element.Id)
+                            //        {
+                            //            xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
+                            //            {
+                            //                SourcePackageKey = sourcePackage.Key,
+                            //                SourceStructureName = sd.Name,
+                            //                SourceElementId = element.Id,
+                            //                SourceElementFieldOrder = element.ResourceFieldOrder,
+                            //                TargetPackageKey = targetPackage.Key,
+                            //                OutcomeCode = XverOutcomeCodes.UseElementSameName,
+                            //                TargetElementId = cell!.RightCell!.Element.Id,
+                            //                TargetExtensionUrl = null,
+                            //                ReplacementExtensionUrl = null,
+                            //            });
+                            //        }
+                            //        else
+                            //        {
+                            //            xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
+                            //            {
+                            //                SourcePackageKey = sourcePackage.Key,
+                            //                SourceStructureName = sd.Name,
+                            //                SourceElementId = element.Id,
+                            //                SourceElementFieldOrder = element.ResourceFieldOrder,
+                            //                TargetPackageKey = targetPackage.Key,
+                            //                OutcomeCode = XverOutcomeCodes.UseElementRenamed,
+                            //                TargetElementId = cell!.RightCell!.Element.Id,
+                            //                TargetExtensionUrl = null,
+                            //                ReplacementExtensionUrl = null,
+                            //            });
+                            //        }
+
+                            //        break;
+                            //    }
+                            //}
                         }
                     }
 
@@ -2284,47 +2313,75 @@ public class XVerProcessor
                             // easier to check inverse here
                             extensionNeeded = true;
 
-                            foreach (DbGraphSd.DbElementCell? cell in sourceCells)
-                            {
-                                // do not need to generate if equivalent or source is NARROWER
-                                if ((cell?.LeftComparison?.Relationship == CMR.Equivalent) ||
-                                    (cell?.LeftComparison?.Relationship == CMR.SourceIsNarrowerThanTarget))
-                                {
-                                    extensionNeeded = false;
+                            List<DbGraphSd.DbElementCell> matchedCells = sourceCells
+                                .Where(c => (c?.LeftComparison?.Relationship == CMR.Equivalent) || (c?.LeftComparison?.Relationship == CMR.SourceIsNarrowerThanTarget))
+                                .Select(c => c!)
+                                .ToList();
 
-                                    if (cell!.RightCell?.Element.Id == element.Id)
-                                    {
-                                        xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
-                                        {
-                                            SourcePackageKey = sourcePackage.Key,
-                                            SourceStructureName = sd.Name,
-                                            SourceElementId = element.Id,
-                                            SourceElementFieldOrder = element.ResourceFieldOrder,
-                                            TargetPackageKey = targetPackage.Key,
-                                            OutcomeCode = XverOutcomeCodes.UseElementSameName,
-                                            TargetElementId = cell!.LeftCell!.Element.Id,
-                                            TargetExtensionUrl = null,
-                                            ReplacementExtensionUrl = null,
-                                        });
-                                    }
-                                    else
-                                    {
-                                        xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
-                                        {
-                                            SourcePackageKey = sourcePackage.Key,
-                                            SourceStructureName = sd.Name,
-                                            SourceElementId = element.Id,
-                                            SourceElementFieldOrder = element.ResourceFieldOrder,
-                                            TargetPackageKey = targetPackage.Key,
-                                            OutcomeCode = XverOutcomeCodes.UseElementRenamed,
-                                            TargetElementId = cell!.LeftCell!.Element.Id,
-                                            TargetExtensionUrl = null,
-                                            ReplacementExtensionUrl = null,
-                                        });
-                                    }
-                                    break;
-                                }
+                            if (matchedCells.Count != 0)
+                            {
+                                extensionNeeded = false;
+                                XverOutcomeCodes oc = matchedCells.Count > 1
+                                    ? XverOutcomeCodes.UseOneOfElements
+                                    : matchedCells[0].LeftCell?.Element.Id == element.Id
+                                        ? XverOutcomeCodes.UseElementSameName
+                                        : XverOutcomeCodes.UseElementRenamed;
+
+                                xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
+                                {
+                                    SourcePackageKey = sourcePackage.Key,
+                                    SourceStructureName = sd.Name,
+                                    SourceElementId = element.Id,
+                                    SourceElementFieldOrder = element.ResourceFieldOrder,
+                                    TargetPackageKey = targetPackage.Key,
+                                    OutcomeCode = oc,
+                                    TargetElementId = string.Join(',', matchedCells.Select(c => c.LeftCell?.Element.Id)),
+                                    TargetExtensionUrl = null,
+                                    ReplacementExtensionUrl = null,
+                                });
                             }
+
+                            //foreach (DbGraphSd.DbElementCell? cell in sourceCells)
+                            //{
+                            //    // do not need to generate if equivalent or source is NARROWER
+                            //    if ((cell?.LeftComparison?.Relationship == CMR.Equivalent) ||
+                            //        (cell?.LeftComparison?.Relationship == CMR.SourceIsNarrowerThanTarget))
+                            //    {
+                            //        extensionNeeded = false;
+
+                            //        if (cell!.LeftCell?.Element.Id == element.Id)
+                            //        {
+                            //            xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
+                            //            {
+                            //                SourcePackageKey = sourcePackage.Key,
+                            //                SourceStructureName = sd.Name,
+                            //                SourceElementId = element.Id,
+                            //                SourceElementFieldOrder = element.ResourceFieldOrder,
+                            //                TargetPackageKey = targetPackage.Key,
+                            //                OutcomeCode = XverOutcomeCodes.UseElementSameName,
+                            //                TargetElementId = cell!.LeftCell!.Element.Id,
+                            //                TargetExtensionUrl = null,
+                            //                ReplacementExtensionUrl = null,
+                            //            });
+                            //        }
+                            //        else
+                            //        {
+                            //            xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
+                            //            {
+                            //                SourcePackageKey = sourcePackage.Key,
+                            //                SourceStructureName = sd.Name,
+                            //                SourceElementId = element.Id,
+                            //                SourceElementFieldOrder = element.ResourceFieldOrder,
+                            //                TargetPackageKey = targetPackage.Key,
+                            //                OutcomeCode = XverOutcomeCodes.UseElementRenamed,
+                            //                TargetElementId = cell!.LeftCell!.Element.Id,
+                            //                TargetExtensionUrl = null,
+                            //                ReplacementExtensionUrl = null,
+                            //            });
+                            //        }
+                            //        break;
+                            //    }
+                            //}
                         }
                     }
 
@@ -3106,6 +3163,8 @@ public class XVerProcessor
             Base = new()
             {
                 Path = "Extension.value[x]",
+                Min = 0,
+                Max = "1",
             },
             Type = [],
         };
@@ -3442,6 +3501,8 @@ public class XVerProcessor
                 Base = new()
                 {
                     Path = "Extension.value[x]",
+                    Min = 0,
+                    Max = "1",
                 },
                 Type = [
                         new()
