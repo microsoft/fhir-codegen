@@ -38,31 +38,75 @@ using System.Formats.Tar;
 
 namespace Microsoft.Health.Fhir.Comparison.XVer;
 
+/// <summary>
+/// Provides logging message templates for cross-version processing events.
+/// </summary>
 internal static partial class XVerProcessorLogMessages
 {
+    /// <summary>
+    /// Logs a warning when cross-version maps could not be loaded for a given key.
+    /// </summary>
+    /// <param name="logger">The logger instance.</param>
+    /// <param name="cvMapKey">The cross-version map key.</param>
     [LoggerMessage(Level = LogLevel.Warning, Message = "Failed to load requested cross-version maps for {cvMapKey}! Processing will be only algorithmic!")]
     internal static partial void LogMapsNotFound(this ILogger logger, string cvMapKey);
 
+    /// <summary>
+    /// Logs a warning when a ValueSet could not be expanded for comparison.
+    /// </summary>
+    /// <param name="logger">The logger instance.</param>
+    /// <param name="url">The ValueSet URL.</param>
+    /// <param name="details">Additional details about the failure.</param>
     [LoggerMessage(Level = LogLevel.Warning, Message = "Failed to expand ValueSet {url} for comparison: {details}")]
     internal static partial void LogValueSetNotExpanded(this ILogger logger, string url, string? details);
 
+    /// <summary>
+    /// Logs a warning when a ValueSet could not be retrieved from a data collection.
+    /// </summary>
+    /// <param name="logger">The logger instance.</param>
+    /// <param name="url">The ValueSet URL.</param>
+    /// <param name="dcKey">The data collection key.</param>
     [LoggerMessage(Level = LogLevel.Warning, Message = "Failed to retrieve ValueSet {url} from {dcKey}")]
     internal static partial void LogValueSetNotFound(this ILogger logger, string url, string dcKey);
 }
 
+/// <summary>
+/// Extension methods for cross-version processing.
+/// </summary>
 internal static class XVerExtensions
 {
+    /// <summary>
+    /// Escapes special characters for Markdown table output.
+    /// </summary>
+    /// <param name="value">The string value to escape.</param>
+    /// <returns>The escaped string for Markdown tables.</returns>
+
     internal static string ForMdTable(this string? value) => string.IsNullOrEmpty(value) ? string.Empty : value.Replace("|", "\\|").Replace("\n", "<br/>").Replace("\r", "<br/>");
 
+    /// <summary>
+    /// Generates a comparison key for a ValueSet and graph identifier.
+    /// </summary>
+    /// <param name="vs">The ValueSet.</param>
+    /// <param name="graphId">The graph identifier.</param>
+    /// <returns>The comparison key string.</returns>
     internal static string ComparisonKey(this ValueSet vs, string graphId) => graphId + "_" + vs.Name.ToPascalCase();
 }
 
+/// <summary>
+/// Processes cross-version FHIR package comparisons, generates artifacts, and manages database operations.
+/// </summary>
 public class XVerProcessor
 {
     private string _crossDefinitionVersion = "0.7.0";
 
+    /// <summary>
+    /// The directions for comparison (Up and Down).
+    /// </summary>
     internal static readonly ComparisonDirection[] _directions = [ComparisonDirection.Up, ComparisonDirection.Down];
 
+    /// <summary>
+    /// Set of ValueSet URLs to exclude from processing.
+    /// </summary>
     internal static readonly HashSet<string> _exclusionSet =
     [
         "http://hl7.org/fhir/ValueSet/ucum-units",
@@ -73,6 +117,9 @@ public class XVerProcessor
         //"http://hl7.org/fhir/ValueSet/jurisdiction",
     ];
 
+    /// <summary>
+    /// Set of codes considered as "escape valve" codes (e.g., OTHER, UNKNOWN).
+    /// </summary>
     internal static readonly HashSet<string> _escapeValveCodes = [
         "OTHER",
         "Other",
@@ -96,6 +143,10 @@ public class XVerProcessor
     private string _dbPath;
     private string? _dbName;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="XVerProcessor"/> class using configuration.
+    /// </summary>
+    /// <param name="config">The cross-version configuration.</param>
     public XVerProcessor(ConfigXVer config)
     {
         _config = config;
@@ -119,6 +170,12 @@ public class XVerProcessor
         _comparisonCache = [];
     }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="XVerProcessor"/> class using an existing database.
+    /// </summary>
+    /// <param name="db">The comparison database.</param>
+    /// <param name="outputDirectory">The output directory for artifacts.</param>
+    /// <param name="loggerFactory">The logger factory.</param>
     public XVerProcessor(ComparisonDatabase db, string outputDirectory, ILoggerFactory loggerFactory)
     {
         _config = new()
@@ -135,8 +192,14 @@ public class XVerProcessor
 
         _comparisonCache = [];
         _db = db;
-    }
-
+    }    /// <summary>
+    /// Loads FHIR package definition collections based on configuration settings.
+    /// </summary>
+    /// <remarks>
+    /// This method iterates through the configured comparison packages, validates they are FHIR Core packages,
+    /// creates package loaders, loads the packages, and populates the internal definitions array and indexes.
+    /// </remarks>
+    /// <exception cref="Exception">Thrown when a package is not a FHIR Core package or when package loading fails.</exception>
     private void loadDefinitionCollections()
     {
         List<DefinitionCollection> definitions = [];
@@ -168,6 +231,10 @@ public class XVerProcessor
         });
     }
 
+    /// <summary>
+    /// Processes a command to perform cross-version operations such as database creation, comparison, or documentation generation.
+    /// </summary>
+    /// <param name="command">The command to process.</param>
     public void ProcessCommand(string? command)
     {
         switch (command)
@@ -222,6 +289,12 @@ public class XVerProcessor
         }
     }
 
+    /// <summary>
+    /// Loads or creates the comparison database, optionally filtering by artifact type.
+    /// </summary>
+    /// <param name="forceCreate">Whether to force creation of the database.</param>
+    /// <param name="allowSourceCopy">Whether to allow copying from a source database.</param>
+    /// <param name="artifactFilter">Optional artifact type filter.</param>
     public void LoadDatabase(
         bool forceCreate,
         bool allowSourceCopy,
@@ -267,6 +340,10 @@ public class XVerProcessor
         return;
     }
 
+    /// <summary>
+    /// Runs the comparison process in the loaded database for the specified artifact type.
+    /// </summary>
+    /// <param name="artifactFilter">Optional artifact type filter.</param>
     public void CompareInDatabase(FhirArtifactClassEnum? artifactFilter = null)
     {
         if (_db == null)
@@ -278,22 +355,42 @@ public class XVerProcessor
         dbComparer.Compare(artifactFilter, _config.ComparisonPairFilterKeys);
     }
 
+    /// <summary>
+    /// Represents support information for a FHIR package during cross-version processing.
+    /// </summary>
     private record class PackageXverSupport
     {
+        /// <summary>
+        /// Gets the package index.
+        /// </summary>
         public required int PackageIndex { get; init; }
+        /// <summary>
+        /// Gets the FHIR package.
+        /// </summary>
         public required DbFhirPackage Package { get; init; }
+        /// <summary>
+        /// Gets the set of basic element paths.
+        /// </summary>
         public HashSet<string> BasicElements { get; init; } = [];
+        /// <summary>
+        /// Gets the set of allowed extension types.
+        /// </summary>
         public HashSet<string> AllowedExtensionTypes { get; init; } = [];
+        /// <summary>
+        /// Gets or sets the core definition collection.
+        /// </summary>
         public DefinitionCollection? CoreDC { get; set; } = null;
+        /// <summary>
+        /// Gets or sets the snapshot generator.
+        /// </summary>
         public Hl7.Fhir.Specification.Snapshot.SnapshotGenerator? SnapshotGenerator { get; set; } = null;
-
     }
 
     /// <summary>
     /// Loads the definitions and initializes the comparison cache.
     /// </summary>
     /// <remarks>
-    /// TODO(ginoc): this is only used to convert origin maps into the database.
+    /// This is only used to convert origin maps into the database.
     /// </remarks>
     /// <param name="preferV1Maps">Indicates whether to prefer version 1 maps.</param>
     /// <exception cref="InvalidOperationException">Thrown when there are less than two definitions available for comparison.</exception>
@@ -328,42 +425,147 @@ public class XVerProcessor
     }
 
 
+    /// <summary>
+    /// Enumerates the possible outcomes for cross-version element mapping in FHIR processing.
+    /// </summary>
     private enum XverOutcomeCodes
     {
+        /// <summary>
+        /// The element is used with the same name in the target version.
+        /// </summary>
         UseElementSameName,
+        /// <summary>
+        /// The element is used but has been renamed in the target version.
+        /// </summary>
         UseElementRenamed,
+        /// <summary>
+        /// The element is represented as an extension in the target version.
+        /// </summary>
         UseExtension,
+        /// <summary>
+        /// The element is represented as an extension inherited from an ancestor.
+        /// </summary>
         UseExtensionFromAncestor,
+        /// <summary>
+        /// The element is mapped to a basic element in the target version.
+        /// </summary>
         UseBasicElement,
+        /// <summary>
+        /// The element is mapped to one of several possible elements in the target version.
+        /// </summary>
         UseOneOfElements,
     }
 
+    /// <summary>
+    /// Represents the outcome of a cross-version element mapping operation.
+    /// </summary>
     private record class XverOutcome
     {
+        /// <summary>
+        /// Gets the key of the source FHIR package.
+        /// </summary>
         public required int SourcePackageKey { get; init; }
+
+        /// <summary>
+        /// Gets the name of the source structure.
+        /// </summary>
         public required string SourceStructureName { get; init; }
+
+        /// <summary>
+        /// Gets the identifier of the source element.
+        /// </summary>
         public required string SourceElementId { get; init; }
+
+        /// <summary>
+        /// Gets the field order of the source element within the structure.
+        /// </summary>
         public required int SourceElementFieldOrder { get; init; }
+
+        /// <summary>
+        /// Gets the key of the target FHIR package.
+        /// </summary>
         public required int TargetPackageKey { get; init; }
+
+        /// <summary>
+        /// Gets the outcome code describing the mapping result.
+        /// </summary>
         public required XverOutcomeCodes OutcomeCode { get; init; }
+
+        /// <summary>
+        /// Gets the identifier of the target element, if applicable.
+        /// </summary>
         public required string? TargetElementId { get; init; }
+
+        /// <summary>
+        /// Gets the URL of the target extension, if the mapping resulted in an extension.
+        /// </summary>
         public required string? TargetExtensionUrl { get; init; }
+
+        /// <summary>
+        /// Gets the URL of a replacement extension, if the mapping resulted in a substitution.
+        /// </summary>
         public required string? ReplacementExtensionUrl { get; init; }
     }
 
+    /// <summary>
+    /// Represents index information for a cross-version FHIR package, including references to supporting structures and value sets.
+    /// </summary>
     private class XverPackageIndexInfo
     {
+        /// <summary>
+        /// Gets or sets the source package support information.
+        /// </summary>
         public required PackageXverSupport SourcePackageSupport { get; set; }
+
+        /// <summary>
+        /// Gets or sets the target package support information.
+        /// </summary>
         public required PackageXverSupport TargetPackageSupport { get; set; }
+
+        /// <summary>
+        /// Gets or sets the unique package identifier for this cross-version package.
+        /// </summary>
         public required string PackageId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of JSON strings representing indexed structure definitions.
+        /// </summary>
         public List<string> IndexStructureJsons { get; set; } = [];
+
+        /// <summary>
+        /// Gets or sets the list of JSON strings representing indexed value sets.
+        /// </summary>
         public List<string> IndexValueSetJsons { get; set; } = [];
+
+        /// <summary>
+        /// Gets or sets the list of JSON strings for ImplementationGuide structure resources.
+        /// </summary>
         public List<string> IgStructureJsons { get; set; } = [];
+
+        /// <summary>
+        /// Gets or sets the list of JSON strings for ImplementationGuide value set resources.
+        /// </summary>
         public List<string> IgValueSetJsons { get; set; } = [];
+
+        /// <summary>
+        /// Gets or sets the list of ImplementationGuide structure resource components.
+        /// </summary>
         public List<ImplementationGuide.ResourceComponent> IgStructures { get; set; } = [];
+
+        /// <summary>
+        /// Gets or sets the list of ImplementationGuide value set resource components.
+        /// </summary>
         public List<ImplementationGuide.ResourceComponent> IgValueSets { get; set; } = [];
     }
 
+    /// <summary>
+    /// Generates cross-version FHIR artifacts from the loaded database, including ValueSets, StructureDefinitions, and ImplementationGuides.
+    /// </summary>
+    /// <param name="version">Optional artifact version to use; if null, uses the configured artifact version.</param>
+    /// <param name="outputDir">Optional output directory; if null, uses the configured map source path.</param>
+    /// <exception cref="Exception">
+    /// Thrown if the database is not loaded or if the output directory is not specified.
+    /// </exception>
     public void WriteFhirFromDatabase(string? version = null, string? outputDir = null)
     {
         // check for no database
@@ -576,6 +778,15 @@ public class XVerProcessor
         }
     }
 
+    /// <summary>
+    /// Creates a compressed .tgz (tar.gz) archive from the specified source directory.
+    /// </summary>
+    /// <param name="sourceDirectory">The directory to archive and compress.</param>
+    /// <param name="outputTgzFile">The path to the output .tgz file.</param>
+    /// <remarks>
+    /// This method creates a tar archive of the specified directory and compresses it using GZip.
+    /// If an error occurs during the process, a message is written to the console.
+    /// </remarks>
     private static void createTgzFromDirectory(string sourceDirectory, string outputTgzFile)
     {
         try
@@ -593,6 +804,12 @@ public class XVerProcessor
         }
     }
 
+    /// <summary>
+    /// Writes the ImplementationGuide, manifest, index, and package.json files for each validation package.
+    /// </summary>
+    /// <param name="packageSupports">The list of package support objects representing each FHIR package.</param>
+    /// <param name="allPackageIndexInfos">The list of all cross-version package index information objects.</param>
+    /// <param name="fhirDir">The root directory where FHIR artifacts are written.</param>
     private void writeXverValidationPackageSupportFiles(
         List<PackageXverSupport> packageSupports,
         List<XverPackageIndexInfo> allPackageIndexInfos,
@@ -724,6 +941,15 @@ public class XVerProcessor
         }
     }
 
+    /// <summary>
+    /// Writes ImplementationGuide, manifest, index, and package.json files for each single source-target package combination.
+    /// </summary>
+    /// <param name="packageSupports">The list of package support objects representing each FHIR package.</param>
+    /// <param name="focusPackageIndex">The index of the source package in the packageSupports list.</param>
+    /// <param name="xverValueSets">The dictionary of cross-version ValueSets, keyed by (source ValueSet key, target package id).</param>
+    /// <param name="xverExtensions">The dictionary of cross-version StructureDefinitions (extensions), keyed by (source element key, target package id).</param>
+    /// <param name="fhirDir">The root directory where FHIR artifacts are written.</param>
+    /// <returns>A list of <see cref="XverPackageIndexInfo"/> objects containing index information for each source-target package combination.</returns>
     private List<XverPackageIndexInfo> writeXverSinglePackageSupportFiles(
         List<PackageXverSupport> packageSupports,
         int focusPackageIndex,
@@ -843,6 +1069,16 @@ public class XVerProcessor
         return infos;
     }
 
+    /// <summary>
+    /// Generates the .index.json content for a cross-version package, listing all FHIR package contents
+    /// defined for a specific source-target package combination.
+    /// </summary>
+    /// <param name="sourcePackage">The source <see cref="DbFhirPackage"/> for the cross-version package.</param>
+    /// <param name="targetPackage">The target <see cref="DbFhirPackage"/> for the cross-version package.</param>
+    /// <param name="xverValueSets">A dictionary of cross-version <see cref="ValueSet"/>s, keyed by (source ValueSet key, target package id).</param>
+    /// <param name="xverExtensions">A dictionary of cross-version <see cref="StructureDefinition"/>s (extensions), keyed by (source element key, target package id).</param>
+    /// <param name="indexInfo">The <see cref="XverPackageIndexInfo"/> object to populate with index entries.</param>
+    /// <returns>A JSON string representing the .index.json file for the cross-version package.</returns>
     private string getIndexJson(
         DbFhirPackage sourcePackage,
         DbFhirPackage targetPackage,
@@ -916,6 +1152,15 @@ public class XVerProcessor
         return indexJson;
     }
 
+    /// <summary>
+    /// Generates the .index.json content for a cross-version package, listing all FHIR package contents
+    /// defined for a specific source-target package combination.
+    /// </summary>
+    /// <param name="package">The <see cref="DbFhirPackage"/> representing the package for which the index is generated.</param>
+    /// <param name="packageId">The unique package identifier for this cross-version package.</param>
+    /// <param name="internalDependencies">A list of internal package dependencies, each as a tuple of package ID and version.</param>
+    /// <param name="targetInfos">A list of <see cref="XverPackageIndexInfo"/> objects containing index information for each target package.</param>
+    /// <returns>A JSON string representing the .index.json file for the cross-version package.</returns>
 
     private string getIndexJson(
         DbFhirPackage package,
@@ -1878,6 +2123,8 @@ public class XVerProcessor
 
         ILookup<int, SnapshotGenerator?> generatorsById = packageSupports.ToLookup(ps => ps.Package.Key, ps => ps.SnapshotGenerator);
 
+        FhirJsonSerializer jsonSerializer = new FhirJsonSerializer(new SerializerSettings() { Pretty = true });
+
         // iterate over the structures
         foreach (((int sourceKey, int targetPackageId), (StructureDefinition sd, DbExtensionSubstitution? extensionSubstitution)) in xverExtensions)
         {
@@ -1901,6 +2148,24 @@ public class XVerProcessor
                     //sd.Snapshot.Element = packageSupports[targetPackageId].SnapshotGenerator?.GenerateAsync(sd).Result ?? [];
                     sd.Snapshot.Element = generatorsById[targetPackageId]?.FirstOrDefault()?.GenerateAsync(sd).Result ?? [];
                 }
+
+                // check for two copies of 'Extension.url' - current issue with the snapshot generator
+                List<ElementDefinition> urlElements = sd.Snapshot.Element.Where(e => e.Path == "Extension.url").ToList();
+
+                if (urlElements.Count > 1)
+                {
+                    // remove all but the first
+                    for (int i = 1; i < urlElements.Count; i++)
+                    {
+                        sd.Snapshot.Element.Remove(urlElements[i]);
+                    }
+                }
+
+                //if ((sd.FhirVersion == FHIRVersion.N4_0_1) &&
+                //    (sd.Id == "ext-R5-Device.category"))
+                //{
+                //    Console.Write("");
+                //}
             }
             catch (Exception) { }
 
@@ -1923,7 +2188,8 @@ public class XVerProcessor
             string filename = $"StructureDefinition-{sd.Id}.json";
 
             string path = Path.Combine(dir, filename);
-            File.WriteAllText(path, sd.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+            //File.WriteAllText(path, sd.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+            File.WriteAllText(path, jsonSerializer.SerializeToString(sd));
         }
     }
 
@@ -2874,6 +3140,23 @@ public class XVerProcessor
         }
     }
 
+    /// <summary>
+    /// Creates a StructureDefinition for a cross-version extension based on the provided source and target package supports,
+    /// structure definition, and element. This method determines the appropriate extension context, builds the extension StructureDefinition,
+    /// and adds the relevant elements and child elements to the differential.
+    /// </summary>
+    /// <param name="sourceIndex">The index of the source package in the package supports list.</param>
+    /// <param name="sourcePackageSupport">The source package support information.</param>
+    /// <param name="targetIndex">The index of the target package in the package supports list.</param>
+    /// <param name="targetPackageSupport">The target package support information.</param>
+    /// <param name="sd">The source StructureDefinition from which the element originates.</param>
+    /// <param name="element">The source DbElement to add to the extension.</param>
+    /// <param name="relevantComparisons">A list of relevant element comparisons for this element.</param>
+    /// <param name="elementProjectionDict">A dictionary mapping element keys to their projection rows for context discovery.</param>
+    /// <param name="xverValueSets">A dictionary of cross-version ValueSets, keyed by (source ValueSet key, target package ID).</param>
+    /// <returns>
+    /// A new <see cref="StructureDefinition"/> representing the cross-version extension, or <c>null</c> if the extension cannot be created.
+    /// </returns>
     private StructureDefinition? createExtensionSd(
         int sourceIndex,
         PackageXverSupport sourcePackageSupport,
@@ -2976,19 +3259,38 @@ public class XVerProcessor
             relevantComparisons,
             xverValueSets);
 
-        // fix the URL in the definition (needs to be last element)
         extSd.Differential.Element.Add(new()
         {
             ElementId = "Extension.url",
             Path = "Extension.url",
             Min = 1,
             Max = "1",
+            Base = new()
+            {
+                Path = "Extension.url",
+                Min = 1,
+                Max = "1",
+            },
             Fixed = new FhirUri(extSd.Url)
         });
 
         return extSd;
     }
 
+    /// <summary>
+    /// Extracts and combines the short, definition, and comment text for an extension element.
+    /// </summary>
+    /// <param name="ed">The <see cref="DbElement"/> representing the FHIR element.</param>
+    /// <param name="reason">An optional reason or additional context to include in the comment.</param>
+    /// <returns>
+    /// A tuple containing the short text, definition, and comment for the extension element.
+    /// The tuple values are:
+    /// <list type="bullet">
+    /// <item><description><c>shortText</c>: The short description of the element, or <c>null</c> if not available.</description></item>
+    /// <item><description><c>definition</c>: The detailed definition of the element, or <c>null</c> if not available or redundant with <c>shortText</c>.</description></item>
+    /// <item><description><c>comment</c>: Additional comments, including the <paramref name="reason"/>, or <c>null</c> if not available.</description></item>
+    /// </list>
+    /// </returns>
     private (string? shortText, string? definition, string? comment) getTextForExtensionElement(DbElement ed, string? reason)
     {
         List<string> strings = [];
@@ -3026,6 +3328,19 @@ public class XVerProcessor
         }
     }
 
+    /// <summary>
+    /// Adds an element and its children to the extension StructureDefinition.
+    /// </summary>
+    /// <param name="extSd">The extension StructureDefinition to which the element will be added.</param>
+    /// <param name="extElementId">The element ID for the extension element.</param>
+    /// <param name="extElementPath">The FHIR path for the extension element.</param>
+    /// <param name="sliceName">The slice name, if applicable, for the extension element.</param>
+    /// <param name="sourcePackageSupport">The source package support information.</param>
+    /// <param name="targetPackageSupport">The target package support information.</param>
+    /// <param name="sd">The source StructureDefinition from which the element originates.</param>
+    /// <param name="element">The source DbElement to add to the extension.</param>
+    /// <param name="relevantComparisons">A list of relevant element comparisons for this element.</param>
+    /// <param name="xverValueSets">A dictionary of cross-version ValueSets, keyed by (source ValueSet key, target package ID).</param>
     private void addElementToExtension(
         StructureDefinition extSd,
         string extElementId,
@@ -3085,6 +3400,25 @@ public class XVerProcessor
                 ?? (element.IsModifier == true ? $"This extension is a modifier because the target element {element.Id} is flagged IsModifier" : null),
         };
 
+        if (extElementPath == "Extension")
+        {
+            extEd.Base = new()
+            {
+                Path = "Extension",
+                Min = 0,
+                Max = "*",
+            };
+        }
+        else
+        {
+            extEd.Base = new()
+            {
+                Path = "Extension.extension",
+                Min = 0,
+                Max = "*",
+            };
+        }
+
         extSd.Differential.Element.Add(extEd);
 
         // if there are no child elements, we are done
@@ -3107,6 +3441,12 @@ public class XVerProcessor
                 },
                 Min = 0,
                 Max = "*",
+                Base = new()
+                {
+                    Path = "Element.extension",
+                    Min = 0,
+                    Max = "*",
+                },
             };
 
             // if we have child extensions, we cannot have a value
@@ -3461,6 +3801,21 @@ public class XVerProcessor
         return;
     }
 
+    /// <summary>
+    /// Adds a datatype extension element to the provided <see cref="StructureDefinition"/> for a given type name.
+    /// This method ensures that the extension for the datatype is created only once, and if already present,
+    /// updates the fixed value and comment to include the new type.
+    /// </summary>
+    /// <param name="extSd">The <see cref="StructureDefinition"/> to which the datatype extension will be added.</param>
+    /// <param name="sourceDbElement">The source <see cref="DbElement"/> representing the FHIR element being extended.</param>
+    /// <param name="sourcePackageSupport">The <see cref="PackageXverSupport"/> for the source FHIR package.</param>
+    /// <param name="extensionDatatypeValueElement">
+    /// A reference to the <see cref="ElementDefinition"/> representing the extension's value element.
+    /// This will be initialized if not already present.
+    /// </param>
+    /// <param name="parentId">The parent element ID for the extension element.</param>
+    /// <param name="parentPath">The parent FHIR path for the extension element.</param>
+    /// <param name="typeName">The name of the datatype to add as an extension.</param>
     private void addDatatypeExtension(
         StructureDefinition extSd,
         DbElement sourceDbElement,
@@ -3482,6 +3837,12 @@ public class XVerProcessor
                 Definition = $"Data type name for {sourceDbElement.Id} from FHIR {sourcePackageSupport.Package.ShortName}",
                 Min = 0,
                 Max = "1",
+                Base = new()
+                {
+                    Path = "Extension.extension",
+                    Min = 0,
+                    Max = "*",
+                },
                 Type = [
                         new()
                         {
